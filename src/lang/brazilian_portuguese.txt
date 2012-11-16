@@ -1145,13 +1145,13 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Permitir a cons
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Se ativado, trilhos e estações podem ser construídas na maioria das inclinações. Se desativado, são permitidas apenas em inclinações correspondentes à direção da via, sem precisar de fundações
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir paisagismo sob edifícios, ruas, etc. (auto nivelação): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite paisagismo sob edifícios e vias sem precisar removê-las
-STR_CONFIG_SETTING_CATCHMENT                                    :Permitir dimensionamento mais realista das áreas de abrangência: {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :Dimensionamento mais realista das áreas de abrangência: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Exibe áreas de abrangência de para diferentes tipos de estações e aeroportos
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir a remoção de mais rodovias, pontes, etc. das cidades: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Torna mais fácil remover infraestrutura e edifícios de cidades
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Tamanho máximo de trens: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Define o tamanho máximo dos trens
-STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA}quadrado{P "" s}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} quadrado{P "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Quantidade de fumaça/fagulhas das locomotivas: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Define a quantidade de fumaça ou fagulhas emitidas pelos veículos
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Sistema de aceleração de trens: {STRING}
@@ -1235,14 +1235,14 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite a const
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir estações drive-through nas ruas de outros competidores: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permite a construção de paradas nas laterais das ruas em vias de outras companhias
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Permitir construção de estações adjacentes: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Permite estações diferentes adjacentes
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Permite construir várias estações, uma do lado da outra, criando estações mistas
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Ativar múltiplos conjuntos NewGRF de locomotivas: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Opção de compatibilidade para NewGRFs velhos. Não desative isso a não ser que você saiba o que está fazendo!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Impossível alterar essa configuração enquanto houverem veículos
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manutenção de Infraestrutura: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Quando ativado, infraestrutura gera custos de manutenção. O custo aumenta proporcionalmente à malha de transportes, afetando companhias maiores mais do que as menores
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportos nunca expiram: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportos nunca saem de linha: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ativando essa config. mantém todos os tipos de aeroportos disponíveis à construção após sua introdução
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Alerta na perda do veículo: {STRING}
@@ -1254,7 +1254,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Sim, mas exclui
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de todos os veículos
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar se o lucro de um veículo se torna negativo: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quando ativado, uma mensagem é enviada quando um veículo não gerou lucro durante um ano-calendário
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veículos nunca expiram: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veículos nunca saem de linha: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quanto ativado, mantém todos os modelos de veículos disponíveis após serem introduzidos
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Auto-renovação de veículos quando ficam velhos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quando ativado, os veículos próximos do fim da vida útil são automaticamente substituídos quando as condições forem atingidas
@@ -1263,7 +1263,7 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Idade relativa 
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} m{P 0 ês eses} antes
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} m{P 0 ês eses} depois
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Dinheiro mínimo para fazer auto-renovação: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Quantidade mínima de dinheiro mínimo que deva ter em caixa antes de considerar renovação automática
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Quantia mínima de dinheiro que deva ter em caixa antes de considerar renovação automática. Clique no valor para escolher um valor mais preciso
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duração da mensagem de erro: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Define quanto tempo as janelas de erro (vermelhas) ficam abertas antes de fecharem automaticamente. Erros críticos devem ser fechados manualmente.
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segundo{P "" s}
@@ -1365,7 +1365,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ativa o uso da 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Usar indicadores de carga: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Seleciona se os indicadores de carga são exibidos sobre os veículos (des)carregando
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Exibir plano de horário em tiques ao invés de dias: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Mostra tempos de viagem, nos planos de horário, em tiques, ao invés de dias
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Mostra tempos de viagem, nos planos de horário, em tiques, ao invés de dias. Um tique equivale a 1/74 dia, ou 1/30 segundo.
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostrar chegada e saída nos planos de horário: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Exibe tempos de chegada e partida anticipados nos planos de horário
 STR_CONFIG_SETTING_QUICKGOTO                                    :Criar rapidamente ordens para um veículo: {STRING}
@@ -1387,11 +1387,11 @@ STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Quando ativado,
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Máximo de trens por companhia: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Máx. de trens que uma companhia pode ter
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Máximo de automóveis por companhia: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Máx de automóveis que uma companhia pode ter
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Quantidade máxima de automóveis que uma companhia pode ter
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Máximo de aeronaves por companhia: {STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Máx de aeronaves que uma companhia pode ter
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Quantidade máxima de aeronaves que uma companhia pode ter
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Máximo de embarcações por companhia: {STRING}
-STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Máx de embarcações que uma companhia pode ter
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Quantidade máxima de embarcações que uma companhia pode ter
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desativar trens para o computador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Ativado, impede que jogadores controlados pelo computador construam trens
@@ -1422,9 +1422,9 @@ STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Define o interv
 STR_CONFIG_SETTING_NOSERVICE                                    :Desativar manutenção quando as quebras estão desativadas: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Quando ativado, veículos não sofrem manutenção se não puderem quebrar
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ativar limite de velocidade dos vagões: {STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ativado, usa limites de velocidade para vagões para decidir a velocidade máx. de um trem
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ativado, usa limites de velocidade para vagões para decidir a velocidade máxima de um trem
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desativar ferrovias elétricas: {STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ativado, remove a necessidade de trilhos elétricos para locomotivas elétricas
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ativado, remove a necessidade de trilhos elétricos para locomotivas elétricas, permitindo-nas usar trilhos normais
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Noticias coloridas aparecem em: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Ano a partir do qual os jornais são impressos em cor. Antes disso, serão em preto-e-branco
@@ -1432,7 +1432,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Data de início
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Ativar economia regular (alterações menores): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Quando ativado, a produção de indústrias muda com mais frequência, e mais sutilmente
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permite comprar ações de outras empresas: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Se ativado, permite a compra e venda de ações de companhias. Ações ficam disponíveis para companhias com uma idade mínima
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Se ativado, permite a compra e venda de ações de companhias. Ações de outras empresas poderão serem compradas após um período de tempo após a fundação da empresa
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentagem paga em cada etapa em sistemas de baldeação: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentagem do lucro dado a cada estação de baldeação em sistemas de mais de um transporte, dando mais controle de lucro
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Ao arrastar, colocar sinais a cada: {STRING}
@@ -1456,19 +1456,19 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Avançados apen
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todos
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Disposição de ruas para novas cidades: {STRING}
-STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Layout para a construção das ruas das cidades
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Define como as estradas construídas por cidades serão planejadas
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :padrão
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :melhores estradas
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grade 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grade 3x3
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :random
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleatório
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Permitir cidades construir novas ruas?: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permite cidades construírem ruas para o crescimento. Desative para prevenir as prefeituras construírem as ruas por si sós
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Permitir cidades construirem cruzamentos de nível: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Se ativado, permite as cidades construírem passagens de nível
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Se ativado, permite as cidades construírem ruas que atravessam ferrovias
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permitir controle de ruído de aeronaves pelas cidades: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Se desativado, podem haver 2 aeroportos por cidade. Se ativado, o número de aeroportos depende do controle de ruído da cidade, que depende da população, tamanho e distância do aeroporto
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundando cidades no jogo: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundação de cidades no jogo: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Se ativado, permite jogadores construírem novas cidades
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :proibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permitido
@@ -1503,14 +1503,14 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Velocidade de crescimento de cidade: {STRING}
-STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Velocidade de crescim. de cidades
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Velocidade com a qual as cidades expandem
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nenhum
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Devagar
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rápido
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Muito rápido
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporção de cidades que virarão cidades grandes: {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Quantidade de cidades que se tornação uma cidade grande, ou seja, uma cidade que começa e cresce mais rápido
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Quantidade de cidades que se tornação uma cidade grande, ou seja, uma cidade que começa maior e cresce mais rápido
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 a cada {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :nenhuma
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador do tamanho inicial da cidade: {STRING}
@@ -1529,7 +1529,7 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Intera�
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinais
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Manejo de carga
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computadores
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autosubstituir
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Auto-renovação
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Manutenção
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Rota
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trens
@@ -2076,13 +2076,13 @@ STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... impo
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Gráficos padrão
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :IA
-STR_CONTENT_TYPE_AI_LIBRARY                                     :IA's disponíveis
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Biblioteca de IA's
 STR_CONTENT_TYPE_SCENARIO                                       :Cenário
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa topográfico
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons padrão
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Músicsas padrão
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script do jogo
-STR_CONTENT_TYPE_GS_LIBRARY                                     :GS's disponíveis
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Biblioteca de GS's
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Baixando conteúdo...

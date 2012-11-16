@@ -2424,7 +2424,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Camps
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Terreny nevat
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Desert
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} via
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Via de {STRING}
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} via amb senyals de bloc
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} via amb pre-senyals
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} via amb senyals de sortida

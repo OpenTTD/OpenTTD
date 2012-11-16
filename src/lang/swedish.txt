@@ -1118,6 +1118,7 @@ STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Visa:
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avancerade inställningar
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expertinställningar / alla inställningar
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Inställningar med annat värde än standardvärdet
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Inställningar med annat värde än dina inställningar för nytt spel
 
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
@@ -1199,6 +1200,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :slutet
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Vägfordonsköer (med kvanteffekter): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Gör så att vägfordon väntar framför ett upptaget genomfarts-stopp tills dess att det är ledigt.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Scrolla vyn när musen är vid kanten: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :När det är aktiverat börjar vyer scrolla när muspekaren är nära fönstrets kant
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :avstängd
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :huvudvy, endast helskärm
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :huvudvy

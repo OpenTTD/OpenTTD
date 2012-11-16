@@ -1213,7 +1213,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Postavke kompan
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Prikaži:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Sužava doljnju listu prikazom samo izmijenjenih postavki
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Sve postavke
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Osnovne postavke
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Napredne postavke
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Postavke za napredne korisnike / sve postavke
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Postavke sa drugačijim vrijednostima od osnovnih
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Postavke ne-klijenta sa drugačijim vrijednostima od osnovnih
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Postavke sa drugačijim vrijednostima od postavki vaše nove igre
