@@ -154,7 +154,7 @@ STR_ABBREV_WHEAT                                                :{TINY_FONT}BL
 STR_ABBREV_RUBBER                                               :{TINY_FONT}CX
 STR_ABBREV_SUGAR                                                :{TINY_FONT}SU
 STR_ABBREV_TOYS                                                 :{TINY_FONT}JO
-STR_ABBREV_SWEETS                                               :{TINY_FONT}XU
+STR_ABBREV_SWEETS                                               :{TINY_FONT}DO
 STR_ABBREV_COLA                                                 :{TINY_FONT}RF
 STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}CS
 STR_ABBREV_BUBBLES                                              :{TINY_FONT}BM
@@ -1343,7 +1343,7 @@ STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Activa el despl
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Utilitza el format de data curta {STRING} en els jocs desats
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format de la data en els noms dels arxius dels jocs desats
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :llarga (31st Dec 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :llarga (31 Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curta (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
@@ -1475,7 +1475,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permès
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permès, disposició de poble personalitzada
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Situació dels arbres al joc: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controla l'aparició aleatòria dels arbres durant el joc. Això podria afectar a les indústries que es basen en el creixement dels arbres, per ex. les serralleries
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controla l'aparició aleatòria dels arbres durant el joc. Això podria afectar a les indústries que es basen en el creixement dels arbres, per exemple les serradores
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :cap {RED}(inhabilita la fusteria)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :només a les selves tropicals
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :a tot arreu
@@ -4214,7 +4214,7 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Banc-Guardiola 
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :{G=Femenin}Mina de Carbó
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=Femenin}Central Tèrmica
-STR_INDUSTRY_NAME_SAWMILL                                       :{G=Femenin}Serralleria
+STR_INDUSTRY_NAME_SAWMILL                                       :{G=Femenin}Serradora
 STR_INDUSTRY_NAME_FOREST                                        :{G=Masculin}Bosc
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=Femenin}Refineria de Petroli
 STR_INDUSTRY_NAME_OIL_RIG                                       :{G=Femenin}Plataforma Petrolífera
@@ -4560,7 +4560,7 @@ STR_FORMAT_BUOY_NAME                                            :{G=Femenin}{TOW
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{G=Femenin}{TOWN} Boia #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :{G=Femenin}(Companyia {COMMA})
 STR_FORMAT_GROUP_NAME                                           :{G=Masculin}Grup {COMMA}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}: {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{G=Masculin}{TOWN} Punt de Control
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{G=Masculin}{TOWN} Punt de Control #{COMMA}
 
