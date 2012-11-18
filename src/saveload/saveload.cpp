@@ -1913,7 +1913,7 @@ struct LZOLoadFilter : LoadFilter {
 		if (tmp[0] != lzo_adler32(0, out, size + sizeof(uint32))) SlErrorCorrupt("Bad checksum");
 
 		/* Decompress */
-		lzo1x_decompress(out + sizeof(uint32) * 1, size, buf, &len, NULL);
+		lzo1x_decompress_safe(out + sizeof(uint32) * 1, size, buf, &len, NULL);
 		return len;
 	}
 };
