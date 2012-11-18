@@ -143,7 +143,6 @@ STR_CARGO_SINGULAR_TOY.subs                                     :{G=n}Παιχν
 STR_CARGO_SINGULAR_CANDY                                        :{G=n}Γλυκό
 STR_CARGO_SINGULAR_CANDY.subs                                   :{G=n}Γλυκα
 STR_CARGO_SINGULAR_COLA                                         :{G=f}Κόλα
-STR_CARGO_SINGULAR_COLA.subs                                    :{G=f}Κόλα
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=n}Μαλλί της γριάς
 STR_CARGO_SINGULAR_COTTON_CANDY.subs                            :{G=n}Μαλλί της γριάς
 STR_CARGO_SINGULAR_BUBBLE                                       :{G=f}Φυσαλίδα
@@ -255,7 +254,7 @@ STR_COLOUR_GREY                                                 :Γκρι
 STR_COLOUR_WHITE                                                :Λευκό
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} μαω
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} χλμ/ώρα
 STR_UNITS_VELOCITY_SI                                           :{COMMA} μ/δ
 
@@ -300,7 +299,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Κάντ
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Εναλλαγή μεγάλου/μικρού παραθύρου
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Μπάρα Κύλισης - μετακινεί την λίστα πάνω/κάτω
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Μπάρα κίνησης - κινεί τη λίστα αριστερά/δεξιά
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Κατεδάφιση κτιρίων κ.λπ. σε συγκεκριμένο τετράγωνο. Με Ctrl επιλέγετε την επιφάνεια διαγώνια. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Κατεδάφιση κτιρίων κλπ. σε συγκεκριμένο τετράγωνο. Το Ctrl επιλέγει την επιφάνεια διαγώνια. Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Προεπιλογή
@@ -321,7 +320,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Περι
 # These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Πληθυσμός
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Όνομα
-STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Μέρα
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Ημερομηνία
 # These are used in dropdowns
 STR_SORT_BY_NAME                                                :Όνομα
 STR_SORT_BY_PRODUCTION                                          :Παραγωγή
@@ -343,7 +342,7 @@ STR_SORT_BY_FACILITY                                            :Τύπος στ
 STR_SORT_BY_WAITING                                             :Αξία φορτίου σε αναμονή
 STR_SORT_BY_RATING_MAX                                          :Υψηλότερη βαθμολογία φορτίου
 STR_SORT_BY_RATING_MIN                                          :Χαμηλότερη βαθμολογία φορτίου
-STR_SORT_BY_ENGINE_ID                                           :EngineID (κλασσική ταξινόμηση)
+STR_SORT_BY_ENGINE_ID                                           :EngineID (κλασική ταξινόμηση)
 STR_SORT_BY_COST                                                :Κόστος
 STR_SORT_BY_POWER                                               :Δύναμη
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Δύναμη έλξης
@@ -367,10 +366,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Εμφά
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Εμφάνιση γραφημάτων
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Εμφάνιση πίνακα κατάταξης των εταιριών
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Χρηματοδοτήστε την κατασκευή νέας βιομηχανίας
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Εμφάνιση λίστας τρένων της εταιρίας. Ctrl+κλικ εναλλάσει το ανοίγμα της λίστας ομάδων/οχημάτων
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Εμφάνιση λίστας με τα οδικά οχήματα της εταιρίας. Ctrl+κλικ εναλλάσει το άνοιγμα της λίστας ομάδων/οχημάτων
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Εμφάνιση λίστας με τα πλοία της εταιρίας. Ctrl+κλικ εναλλάσει το ανοίγμα της λίστας ομάδων/οχημάτων
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Εμφάνιση λίστας με τα αεροσκάφη της εταιρίας. Το Ctrl+κλικ εναλλάσει το ανοίγμα της λίστας ομάδων/οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Εμφάνιση λίστας τρένων της εταιρίας. Το Ctrl+Κλικ εναλλάσσει το ανοίγμα της λίστας ομάδων/οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Εμφάνιση λίστας με τα οδικά οχήματα της εταιρίας. Το Ctrl+Κλικ εναλλάσσει το άνοιγμα της λίστας ομάδων/οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Εμφάνιση λίστας με τα πλοία της εταιρίας. Το Ctrl+Κλικ εναλλάσσει το ανοίγμα της λίστας ομάδων/οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Εμφάνιση λίστας με τα αεροσκάφη της εταιρίας. Το Ctrl+Κλικ εναλλάσσει το ανοίγμα της λίστας ομάδων/οχημάτων
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Μεγέθυνση εικόνας
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Σμίκρυνση εικόνας
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Κατασκευή σιδηροτροχιάς
@@ -393,11 +392,11 @@ STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Κάντ
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Εμφάνιση χάρτη, καταλόγου πόλεων
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Δημιουργία τοπίου
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Δημιουργία πόλης
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Δημιουργία Βιομηχανίας
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Δημιουργία βιομηχανίας
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Κατασκευή δρόμου
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Φύτευση Δέντρων. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Φύτευση Δέντρων. Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Τοποθέτηση πινακίδας
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Τοποθέτηση αντικειμένου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Τοποθέτηση αντικειμένου. Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Αποθήκευση σεναρίου
@@ -421,9 +420,9 @@ STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Εμφάνισ�
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Εμφάνιση ονομάτων σημείων καθοδήγησης
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Εμφάνιση πινακίδων
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Εμφανίζονται τα σήματα και τα ονόματα των ανταγωνιστών
-STR_SETTINGS_MENU_FULL_ANIMATION                                :Πλήρες animation
-STR_SETTINGS_MENU_FULL_DETAIL                                   :Πλήρης λεπτομέρειες
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Διαφανή κτίρια
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Πλήρης κίνηση
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Πλήρης λεπτομέρεια
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Διαφανές κτίρια
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Διάφανες ταμπέλες
 ############ range ends here
 
@@ -460,7 +459,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Ποσοστά 
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Πίνακας κατάταξης επιχείρησης
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Πίνακας κατάταξης επιχειρήσεων
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Λεπτομερής εκτίμηση απόδοσης
 ############ range ends here
 
@@ -472,13 +471,13 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Χρηματο�
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Κατασκευή σιδηρόδρομου
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Κατασκευή ηλεκτροδοτουμένου σιδηρόδρομου
-STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Κατασκευή Monorail
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Κατασκευή μονόγραμμου
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Κατασκευή MagLev
 ############ range ends here
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Κατασκευή δρόμου
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Κατασκευή τροχιόδρομου(τραμ)
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Κατασκευή τροχιόδρομου (τραμ)
 ############ range ends here
 
 ############ range for waterways construction menu starts
@@ -502,18 +501,18 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Ήχος/Μου
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Τελευταίο μήνυμα/αναφορά νέων
 STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Ρυθμίσεις μηνυμάτων
-STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Ιστορικό Μηνυμάτων
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Ιστορικό μηνυμάτων
 ############ range ends here
 
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Πληροφορίες περιοχής εδάφους
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Εναλλαγή Κονσόλας
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Εναλλαγή κονσόλας
 STR_ABOUT_MENU_AI_DEBUG                                         :Αποσφαλμάτωση AI και δέσμης ενεργειών παιχνιδιού
 STR_ABOUT_MENU_SCREENSHOT                                       :Στιγμιότυπο οθόνης
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Στιγμιότυπο οθόνης μέγιστης μεγέθυνσης
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Στιγμιότυπο οθόνης τυπικής μεγέθυνσης
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Στιγμιότυπο οθόνης για ολο το χάρτη(Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Στιγμιότυπο οθόνης για ολό τον χάρτη
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Σχετικά με το 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ευθυγραμμιστής στοιχεών
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Εναλλαγή πλαισίου οριοθέτησης
@@ -590,13 +589,13 @@ STR_MONTH_ABBREV_JAN                                            :Ιαν
 STR_MONTH_ABBREV_FEB                                            :Φεβ
 STR_MONTH_ABBREV_MAR                                            :Μαρ
 STR_MONTH_ABBREV_APR                                            :Απρ
-STR_MONTH_ABBREV_MAY                                            :Μαϊ
-STR_MONTH_ABBREV_JUN                                            :Ιουν
-STR_MONTH_ABBREV_JUL                                            :Ιουλ
-STR_MONTH_ABBREV_AUG                                            :Αυγ
+STR_MONTH_ABBREV_MAY                                            :Μάι
+STR_MONTH_ABBREV_JUN                                            :Ιούν
+STR_MONTH_ABBREV_JUL                                            :Ιούλ
+STR_MONTH_ABBREV_AUG                                            :Αύγ
 STR_MONTH_ABBREV_SEP                                            :Σεπ
 STR_MONTH_ABBREV_OCT                                            :Οκτ
-STR_MONTH_ABBREV_NOV                                            :Νοε
+STR_MONTH_ABBREV_NOV                                            :Νοέ
 STR_MONTH_ABBREV_DEC                                            :Δεκ
 
 STR_MONTH_JAN                                                   :Ιανουάριος
@@ -606,7 +605,7 @@ STR_MONTH_APR                                                   :Απρίλιο�
 STR_MONTH_MAY                                                   :Μάιος
 STR_MONTH_JUN                                                   :Ιούνιος
 STR_MONTH_JUL                                                   :Ιούλιος
-STR_MONTH_AUG                                                   :Άυγουστος
+STR_MONTH_AUG                                                   :Αύγουστος
 STR_MONTH_SEP                                                   :Σεπτέμβριος
 STR_MONTH_OCT                                                   :Οκτώβριος
 STR_MONTH_NOV                                                   :Νοέμβριος
@@ -614,8 +613,8 @@ STR_MONTH_DEC                                                   :Δεκέμβρ�
 ############ range for months ends
 
 # Graph window
-STR_GRAPH_KEY_BUTTON                                            :{BLACK}Κλειδί
-STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Εμφάνιση κλειδιού στα γραφήματα
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}Υπόμνημα
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Εμφάνιση υπομνήματος στα γραφήματα
 STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
@@ -676,11 +675,11 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Δάνε
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Σύνολο:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Απαρίθμηση των οχημάτων που απέφεραν κέρδος πέρσι. Περιλαμβανομένων των επιγείων οχημάτων, τρένων, πλοίων και αεροσκαφών.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Αριθμός των πρόσφατα επισκευασμένων σταθμών. Σταιμοί τραίνων, στάσεις λεωφορείων, αεροδρόμια, κ.ο.κ. προσμετρώνται ξεχωριστά, ακόμα κι αν ανήκουν στον ίδιο σταθμό.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Αριθμός των πρόσφατα επισκευασμένων σταθμών. Σταθμοί τραίνων, στάσεις λεωφορείων, αεροδρόμια, κ.ο.κ. προσμετρώνται ξεχωριστά, ακόμα κι αν ανήκουν στον ίδιο σταθμό.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Το κέρδος του οχήματος με το μικρότερο εισόδημα (μόνο οχήματα παλιότερα των 2 ετών θα λαμβάνονται υπόψην)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν σε ένα τρίμηνο με το μικρότερο κέρδος των τελευταίων 12 τριμήνων
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν σε ένα τρίμηνο με το μεγαλύτερο κέρδος των τελευταίων 12 τριμήνων
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Μονάδες εμπορεύματος που παραδόθηκαν στα τελευταία τέσσερα τετράμηνα
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Μονάδες εμπορεύματος που παραδόθηκαν στα τελευταία τέσσερα τρίμηνα
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Αριθμός των τύπων εμπορεύματων που παραδόθηκαν το τελευταίο τετράμηνο
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Ποσό χρημάτων που διαθέτει η εταιρία στην τράπεζα
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Το ποσό των χρημάτων που έχει πάρει η εταιρία ως δάνειο
@@ -709,19 +708,19 @@ STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLA
 STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Πρόγραμμα
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Πλοήγηση στο προηγούμενο κομμάτι της συλλογής
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Πλοήγηση στο επόμενο κομμάτι της συλλογής
-STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Σταμάτημα αναπαραγωγής
+STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Διακοπή αναπαραγωγής
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Έναρξη αναπαραγωγής
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Μετακινήστε τις γραμμές κύλισης για ρύθμιση έντασης
-STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Επιλογή προγράμματος 'όλα τα κομμάτια'
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Επιλογή προγράμματος 'παλιό στυλ'
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Επιλογή προγράμματος 'νέο στυλ'
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Επιλογή προγράμματος 'Ezy Street στυλ μουσικής'
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Επιλογή προγράμματος 'Προσαρμοσμένο 1'
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Επιλογή προγράμματος 'Προσαρμοσμένο 2'
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Επιλογή προγράμματος «όλα τα κομμάτια»
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Επιλογή προγράμματος «παλιό στυλ»
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Επιλογή προγράμματος «νέο στυλ»
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Επιλογή προγράμματος «στυλ μουσικής Ezy Street»
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Επιλογή προγράμματος «Προσαρμοσμένο 1»
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Επιλογή προγράμματος «Προσαρμοσμένο 2»
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Εναλλαγή τυχαίας αναπαραγωγής on/off στο πρόγραμμα
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Εμφάνιση παραθύρου επιλογής μουσικού κομματιού
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Ένα σετ μουσικής επιλέχτηκε χωρίς τραγούδια. Κανένα τραγούδι δεν θα παιχτεί
+STR_ERROR_NO_SONGS                                              :{WHITE}Επιλέχτηκε σετ μουσικής χωρίς τραγούδια. Κανένα τραγούδι δεν θα παιχτεί
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Επιλογή Μουσικού Προγράμματος
@@ -729,7 +728,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTB
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Λίστα σιδηροτροχιών
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Πρόγραμμα - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Καθαρισμός
-STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Καθαρισμός τρέχοντος προγράμματος (Προσαρμοσμένο1 ή Προσαρμοσμένο2 μόνο)
+STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Καθαρισμός τρέχοντος προγράμματος (μόνο Προσαρμοσμένο 1 ή Προσαρμοσμένο 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Κάντε κλικ στο μουσικό κομμάτι για προσθήκη στο τρέχον πρόγραμμα (Προσαρμοσμένο1 ή Προσαρμοσμένο2 μόνο)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Κάντε κλικ στο τραγούδι για να το αφαιρέσετε από το πρόγραμμα (Προσαρμοσμένο 1 ή 2 μόνο)
 
@@ -746,8 +745,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Τυχοδιώ�
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Μεγιστάνας του Αιώνα
 STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} έφτασε στο επίπεδο '{STRING}'
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} της εταιρίας {COMPANY} έφτασε στο επίπεδο '{STRING}'!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} έφτασε στο επίπεδο «{STRING}»
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{G "Ο" "Η" ""} {PRESIDENT_NAME} της εταιρίας {COMPANY} έφτασε στο επίπεδο «{STRING}»!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Χάρτης - {STRING}
@@ -759,13 +758,13 @@ STR_SMALLMAP_TYPE_ROUTES                                        :Διαδρομ�
 STR_SMALLMAP_TYPE_VEGETATION                                    :Βλάστηση
 STR_SMALLMAP_TYPE_OWNERS                                        :Ιδιοκτήτες
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Εμφάνιση περιγραμμάτων εδάφους στο χάρτη
-STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Εμφάνιση οχημάτων στο χάρτη
-STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Εμφάνιση βιομηχανιών στο χάρτη
-STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Εμφάνιση μεταφορικών οδών στο χάρτη
+STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Εμφάνιση οχημάτων στον χάρτη
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Εμφάνιση βιομηχανιών στον χάρτη
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Εμφάνιση μεταφορικών οδών στον χάρτη
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Εμφάνιση βλάστησης στο χάρτη
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Εμφάνιση ιδιοκτητών γης στο χάρτη
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Επιλέξτε μια βιομηχανία για εναλλαγή εμφάνισής της. Ctrl+Κλικ απενεργοποιεί όλους τους τύπους εκτός του επιλεγμένου. Ctrl+Κλικ ξανά για την επαναφορά όλων των τύπων
-STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Επιλέξτε μια εταιρεία για εναλλαγή εμφάνισης της περιουσίας της. Ctrl+Κλικ απενεργοποιεί όλες τις εταιρείες εκτός της επιλεγμένης. Ctrl+Κλικ ξανά για την επαναφορά όλων των εταιρειών
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Επιλέξτε μια βιομηχανία για εναλλαγή εμφάνισής της. Το Ctrl+Κλικ απενεργοποιεί όλους τους τύπους εκτός του επιλεγμένου. Πατήστε Ctrl+Κλικ ξανά για την επαναφορά όλων των τύπων
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Επιλέξτε μια εταιρεία για εναλλαγή εμφάνισης της περιουσίας της. Το Ctrl+Κλικ απενεργοποιεί όλες τις εταιρείες εκτός της επιλεγμένης. Πατήστε Ctrl+Κλικ ξανά για την επαναφορά όλων των εταιρειών
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Δρόμοι
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Σιδηρόδρομοι
@@ -775,7 +774,7 @@ STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Τρένα
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Οχήματα
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Πλοία
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Αεροσκάφος
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Αεροσκάφη
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Διαδρομές Μεταφορών
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Δάσος
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Σιδηροδρομικός Σταθμός
@@ -796,19 +795,19 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Έρημος
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Χιόνι
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Εναλλαγή ονομάτων πόλεων στο χάρτη
-STR_SMALLMAP_CENTER                                             :{BLACK}Κεντράρισμα του μικρού χάρτη στην τρέχουσα θέση
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Εναλλαγή ονομάτων πόλεων στον χάρτη
+STR_SMALLMAP_CENTER                                             :{BLACK}Κεντράρισμα του μικρού χάρτη στη τρέχουσα θέση
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Απενεργοποίηση όλων
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Ενεργοποίηση όλων
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Εμφάνιση ύψους
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Εμφάνιση καμίας βιομηχανίας στο χάρτη
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Εμφάνιση όλων των βιομηχανιών στο χάρτη
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Εμφάνιση καμίας βιομηχανίας στον χάρτη
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Εμφάνιση όλων των βιομηχανιών στον χάρτη
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Εναλλάγη εμφάνισης υψομετρικού χάρτη
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Απόκρυψη όλων των ιδιοκτησιών των εταιριών στο χάρτη
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Εμφάνιση όλων των ιδιοκτησιών των εταιριών στο χάρτη
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Απόκρυψη όλων των ιδιοκτησιών των εταιριών στον χάρτη
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Εμφάνιση όλων των ιδιοκτησιών των εταιριών στον χάρτη
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Εμφάνιση τελευταίου μηνύματος ή αναφοράς νέων
@@ -825,22 +824,22 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Μήνυμα
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Επιλογές Μηνυμάτων
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Ρύθμιση όλων των μηνυμάτων σε: Κλειστά / Περιγραφή / Ολόκληρα
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Ρύθμιση όλων των τύπων μηνυμάτων σε: Απενεργοποιημένα / Περιλήψεις / Ολόκληρα
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Αναπαραγωγή ήχου για μηνύματα σε περιγραφή
-STR_NEWS_MESSAGES_OFF                                           :Κλειστό
-STR_NEWS_MESSAGES_SUMMARY                                       :Περιγραφή
-STR_NEWS_MESSAGES_FULL                                          :Ολόκληρο
+STR_NEWS_MESSAGES_OFF                                           :Απενεργοποιημένα
+STR_NEWS_MESSAGES_SUMMARY                                       :Περιλήψεις
+STR_NEWS_MESSAGES_FULL                                          :Ολόκληρα
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Τύποι μηνυμάτων:
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Άφιξη πρώτου οχήματος στο σταθμό του παίκτη
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Άφιξη του πρώτου οχήματος το σταθμό του αντιπάλου
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Άφιξη πρώτου οχήματος σε σταθμό του παίκτη
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Άφιξη του πρώτου οχήματος σε σταθμό του αντιπάλου
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Ατυχήματα / καταστροφές
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Πληροφορίες εταιρίας
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Έναρξη των βιομηχανιών
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Κλείσιμο βιομηχανιών
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Οικονομικές αλλαγές
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Αλλαγή της παραγωγής των βιομηχανιών που εξυπηρετούνται από την εταιρία
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Διαφοροποιήσεις στην παραγωγή των βιομηχανιών που εξυπηρετούνται από ανταγωνιστή(ες)
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Διαφοροποιήσεις στην παραγωγή των βιομηχανιών που εξυπηρετούνται από ανταγωνιστή(-ές)
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Άλλες διαφοροποιήσεις στη παραγωγή
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Συμβουλές / πληροφορίες για τα εταιρικά οχήματα
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Νέα οχήματα
@@ -850,56 +849,56 @@ STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Γεν�
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο τρένο φτάνει στο στάθμο {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο λεωφορείο φτάνει στη στάση {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο φορτηγό φτάνει στο σταθμό {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο επιβάτικο τραμ φτάνει στη στάση {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο εμπορευματικό τραμ φτάνει στο σταθμό {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο πλοίο φτάνει στο λιμάνι {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο αεροσκάφος φτάνει στο {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν. . .{}Το πρώτο τρένο φτάνει στον στάθμο {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν. . .{}Το πρώτο λεωφορείο φτάνει στη στάση {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν. . .{}Το πρώτο φορτηγό φτάνει στον σταθμό {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν . . .{}Το πρώτο επιβάτικο τραμ φτάνει στη στάση {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν. . .{}Το πρώτο εμπορευματικό τραμ φτάνει στον σταθμό {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν . . .{}Το πρώτο πλοίο φτάνει στο λιμάνι {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν . . .{}Το πρώτο αεροσκάφος φτάνει στο {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Σύγκρουση Τρένων!{}{COMMA} σκοτώθηκαν σε σύγκρουση
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Σύγκρουση Τρένων!{}{COMMA} σκοτώθηκαν στη σύγκρουση
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Σύγκρουση Οχήματος!{}Ο οδηγός σκοτώθησε σε σύγκρουση με τρένο
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Σύγκρουση Οχήματος!{}{COMMA} σκοτώθηκαν σε σύγκρουση με τρένο
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Συντριβή αεροπλάνου!{}{COMMA} σκοτώθηκαν στο αεροδρόμιο {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Συντριβή Αεροπλάνου!{} Τελείωσαν τα καύσιμα του, {COMMA} σκοτώθηκαν
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Συντριβή Αεροπλάνου!{}{COMMA} σκοτώθηκαν στο αεροδρόμιο {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Συντριβή Αεροπλάνου!{}Τελείωσαν τα καύσιμα του, {COMMA} νεκροί
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Ατύχημα με ζέπελιν στο σταθμό {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Όχημα καταστράφηκε σε σύγκρουση με ΑΤΙΑ!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Έκρηξη διυλιστηρίου κοντά στη πόλη {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Εργοστάσιο καταστράφηκε κάτω από ύποπτες συνθήκες κοντά στο {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}Α.Τ.Ι.Α. προσγειώθηκε κοντά στο {TOWN}!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Ατύχημα με ζέπελιν στον σταθμό {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Όχημα καταστράφηκε σε σύγκρουση με «ΟΥΦΟ»!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Έκρηξη διυλιστηρίου κοντά στο {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Εργοστάσιο καταστράφηκε υπό ύποπτες συνθήκες κοντά στο {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}«ΟΥΦΟ» προσγειώθηκε κοντά στο {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Κατάρρευση ανθρακωρυχείου αφήνει τα σημάδια της καταστροφής κοντά στη πόλη {TOWN}!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Πλημμύρα!{}Τουλάχιστον {COMMA} αγνοούμενοι, το πιθανότερο νεκροί μετά από μεγάλη πλημμύρα!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Εταιρία μεταφορών σε πρόβλημα!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}Η εταιρία {STRING} θα πωληθεί ή θα κυρήξει πτώχευση αν δεν αυξηθεί σύντομα η απόδοσή της!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Συγχώνευση εταιριών μεταφοράς!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}Η εταιρία {STRING} πουλήθηκε στην {STRING} για το ποσό των {CURRENCY_LONG}!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}Η {STRING} πουλήθηκε στην {STRING} για το ποσό των {CURRENCY_LONG}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Χρεωκοπία!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}Η {STRING} έκλεισε από τους πιστωτές της και όλα τα περιουσιακά στοιχεία της εκποιήθηκαν!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}Η {STRING} κλείστηκε από τους πιστωτές της και όλα τα περιουσιακά στοιχεία της εκποιήθηκαν!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Ίδρυση νέας εταιρίας μεταφορών!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}Η {STRING} ξεκινά τις κατασκευές κοντά στην πόλη {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}Η {STRING} εξαγοράστηκε από την {STRING}!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Διευθυντής)
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}({G "Διευθυντής" "Διευθύντρια" "")
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} χορηγός εταιρία στη κατασκεύη της νέας πόλης {TOWN}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}Η {STRING} χορήγεισε την κατασκεύη της νέας πόλης {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Νέ{G ος α ο} {STRING} υπό κατασκευή κοντά στην πόλη {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Νέ{G "ος" "α" "ο"} {STRING} υπό κατασκευή κοντά στην πόλη {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Νέο {STRING} φυτεύεται κοντά στην πόλη {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{G 0:2 Ο Η Το} {STRING} ανακοίνωσε άμεσο κλείσιμο!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Προβλήματα στην προμήθεια υλικών αναγκάζουν {G το τη το} {STRING} να κλείσει αμέσως!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Προβλήματα στην προμήθεια υλικών αναγκάζουν {G τον τη το} {STRING} να κλείσει αμέσως!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Η έλλειψη δέντρων αναγκάζει την βιομηχανία {STRING} να κλείσει αμέσως!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Ευρωπαϊκή Οικονομική Ένωση!{}{}Το Ευρώ είναι πλέον το μοναδικό νόμισμα για τις καθημερινές συναλλαγές στην χώρα σας!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Οικονομική και Νομισματική Ένωση!{}{}Το Ευρώ είναι πλέον το μοναδικό νόμισμα για τις καθημερινές συναλλαγές στη χώρα σας!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Παγκόσμια Ύφεση!{}{}Οι οικονομολόγοι φοβούνται τα χειρότερα καθώς η οικονομία πιάνει πάτο!
-STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Ύφεση Τέλος!{}{}Κέρδη στο εμπόριο δίνει σιγουριά στις βιομηχανίες καθώς η οικονομία δυναμώνει!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Τέρμα η Ύφεση!{}{}Κέρδη στο εμπόριο δίνουν σιγουριά στις βιομηχανίες καθώς η οικονομία δυναμώνει!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{G Ο Η Το} {INDUSTRY} ανεβάζει την παραγωγή!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Νέα φλέβα άνθρακα βρέθηκε στα {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Νέα αποθέματα πετρελαίου βρέθηκαν στις {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Βελτιωμένες μέθοδοι καλλιέργειας στην {INDUSTRY} αναμένεται να διπλασιάσουν την παραγωγή!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Βελτιωμένες μέθοδοι καλλιέργειας στην {INDUSTRY} αναμένονται να διπλασιάσουν την παραγωγή!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK} Η παραγωγή {STRING.geniki} στ{G o η ο} {INDUSTRY} αυξήθηκε κατά {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}Η παραγωγή στ{G o η ο} {INDUSTRY} μειώθηκε κατά 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Μόλυνση από έντομα προκαλεί καταστροφή στη {INDUSTRY}!{}Η παραγωγή μειώθηκε κατά 50%
@@ -1200,6 +1199,9 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Αυτή
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Προηγμένες Ρυθμίσεις
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(δεν υπάρχει διαθέσιμη επεξήγηση)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Προκαθορισμένη τιμή: {ORANGE}{STRING}
+
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Βασικές ρυθμίσεις
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Προχωρημένες ρυθμίσεις
 
 STR_CONFIG_SETTING_OFF                                          :Ανενεργό
 STR_CONFIG_SETTING_ON                                           :Ενεργό
@@ -2212,8 +2214,8 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Κατα
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Μετατροπή σιδηροτροχιάς σε σημείο καθοδήγησης. Ctrl ενεργοποιεί συνένωση σημείων καθοδήγησης. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Κατασκευή σταθμού τρένων. Ctrl ενεργοποιηει συνένωση σταθμών.Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Κατασκευή σηματοδοτών. Ctrl εναλλάσει σηματοφόρους/σηματοδότες. {}Σύροντας κατασκευάζει σηματοδότες σε μια ευθεία σιδηροδρόμου. Ctrl κατασκευάζει μέχρι την επομένη διαστάυρωση {}Ctrl+κλικ εναλλάσει το άνοιγμα του παραθύρου επιλογής σηματοδοτών. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Κατασκευή γέφυρας σιδηρόδρομου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Κατασκευή τούνελ σιδηρόδρομου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Κατασκευή γέφυρας σιδηρόδρομου. Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Κατασκευή τούνελ σιδηρόδρομου. Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για σιδηρόδρομους, σηματοδότες, σημείων καθοδήγησης και σταθμών. Κρατώντας το Ctrl αφαιρεί και το σιδηρόδρομο απο τα σημεία καθοδήγησης και σταθμούς
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Μετατροπή/Αλλαγή τύπου γραμμής. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
 
@@ -2285,21 +2287,21 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Σιλικόν�
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Κατασκευή Δρόμου
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Κατασκευή τροχιόδρομου(τραμ)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Κατασκευή κομματιού δρόμου. Ctrl εναλλάσει την κατασκευή/αφαίρεση δρόμου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Κατασκευή κομματιού τροχιόδρομου(τραμ). Ctrl εναλλάσει την κατασκευή/αφαίρεση τροχιόδρομου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Κατασκευή οδικού δικτύου χρησιμοποιώντας τον Αυτόματο Δρόμο. Ctrl εναλλάσει την κατασκευή/αφαίρεση δρόμου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Κατασκευή γραμμής τραμ χρησιμοποιώντας την Αυτόματη Γραμμή για τραμ. Ctrl εναλλάσει την κατασκευή/αφαίρεση τροχιόδρομου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων (για αγορά και επισκευή οχημάτων). Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων τραμ (για αγορά και επισκευή οχημάτων). Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Κατασκευή σταθμού λεωφορείων. Ctrl ενεργοποιηεί συνένωση σταθμών. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Κατασκευή επιβατικού σταθμού τραμ. Ctrl ενεργοποιηει συνένωση επιβατικών σταθμών. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Κατασκευή σταθμού φόρτωσης φορτηγών. Ctrl ενεργοποιεί συνένωση σταθμών φόρτωσης. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Κατασκευή εμπορευματικού σταθμού τραμ. Ctrl ενεργοποιεί συνένωση εμπορευματικών σταθμών. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Κατασκευή κομματιού δρόμου. Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση δρόμου. Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Κατασκευή κομματιού τροχιόδρομου(τραμ). Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση τροχιόδρομου. Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Κατασκευή οδικού δικτύου με χρήση της λειτουργίας Αυτόματου Δρόμου. Το Ctrl εναλλάσσει την κατασκευή/αφαίρεση δρόμου. Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Κατασκευή γραμμής τραμ με χρήση της λειτουργίας Αυτόματης Γραμμής. Το Ctrl εναλλάσει την κατασκευή/αφαίρεση τροχιόδρομου. Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων (για αγορά και επισκευή οχημάτων). Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων τραμ (για αγορά και επισκευή οχημάτων). Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Κατασκευή σταθμού λεωφορείων. Το Ctrl ενεργοποιηεί συνένωση σταθμών. Το Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Κατασκευή επιβατικού σταθμού τραμ. Το Ctrl ενεργοποιηει συνένωση επιβατικών σταθμών. Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Κατασκευή σταθμού φόρτωσης φορτηγών. Το Ctrl ενεργοποιεί συνένωση σταθμών φόρτωσης. Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Κατασκευή εμπορευματικού σταθμού τραμ. Το Ctrl ενεργοποιεί συνένωση εμπορευματικών σταθμών. Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ενεργοποίηση/Απενεργοποίηση μονόδρομων
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Κατασκευή γέφυρας δρόμου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Κατασκευή γέφυρας τροχιόδρομου(τραμ). Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Κατασκευή τούνελ δρόμου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Κατασκευή τούνελ τροχιόδρομου(τραμ). Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Κατασκευή γέφυρας δρόμου. Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Κατασκευή γέφυρας τροχιόδρομου(τραμ). Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Κατασκευή τούνελ δρόμου. Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Κατασκευή τούνελ τροχιόδρομου(τραμ). Το Shift εναλλάσσει χτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για αυτοκινητόδρομους
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Εναλλαγή κτισίματος/αφαίρεσης της κατασκευής τροχιόδρομου
 
@@ -3532,7 +3534,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Δρομολόγια
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Αλλαγή στην προβολή δρομολογίων
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Λίστα εντολών - κλικ σε μια εντολή για να την επιλέξετε. Ctrl+κλικ μετακινεί στον προορισμό της οδηγίας
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Λίστα εντολών - κλικ σε μια εντολή για να την επιλέξετε. Το Ctrl+Κλικ μετακινεί στον προορισμό της οδηγίας
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
@@ -3550,7 +3552,7 @@ STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Αλλά
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Πλήρης φορτωση οποιουδήποτε εμπορεύματος
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Φορτώση εαν υπάρχει διαθεσίμο
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Πλήρης φόρτωση όλων των εμπορευμάτων
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Πλήρης φορτωση οποιουδήποτε εμπορεύματος
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Πλήρης φόρτωση οποιουδήποτε εμπορεύματος
 STR_ORDER_DROP_NO_LOADING                                       :Δίχως φόρτωση
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Αλλάξε τη συμπεριφορά φόρτωσης για την τονισμένη εντολή
 
@@ -4301,7 +4303,7 @@ STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=n}Υλοτο
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=n}Δάσος Μαλλιού της Γριάς
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=n}Εργοστάσιο Γλυκών
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Φάρμα Μπαταριών
-STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=f}Πηγή Κόλα
+STR_INDUSTRY_NAME_COLA_WELLS                                    :Πηγή Κόλας
 STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=n}Κατάστημα Παιχνιδιών
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=n}Εργοστάσιο Παιχνιδιών
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=f}Πηγές Πλαστικού

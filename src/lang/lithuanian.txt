@@ -1298,6 +1298,9 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Šis vei
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Sudėtingesni nustatymai
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtras:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Išskleisti viską
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Suskleisti viską
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(paaiškinimo nėra)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Numatytoji reikšmė: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Nuostatos galiojimo lygmuo: {ORANGE}{STRING}
@@ -1306,6 +1309,15 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :žaidimo (įra�
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :žaidimo (įrašoma kiekvieną kartą išsaugant žaidimą. Galioja tik šiuo metu aktyviai kompanijai ir tik aktyviam žaidimui)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :kompanijos (įrašoma pradedant naują žaidimą)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :kompanijos (įrašoma kiekvieną kartą išsaugant žaidimą. Galioja tik šiuo metu aktyviai kompanijai)
+
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Rodyti:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Rodyti tik tam tikros rūšies nuostatas
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :pagrindines nuostatas
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :sudėtingesnes nuostatos
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :visas nuostatas
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :nuostatas, kurių reikšmės skiriasi nuo numatytųjų
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :ne kliento nuostatas, kurių reikšmės skiriasi nuo numatytųjų
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :nuostatas, kurių reikšmės skiriasi nuo naujai pradedamo žaidimo nuostatų
 
 STR_CONFIG_SETTING_OFF                                          :Ne
 STR_CONFIG_SETTING_ON                                           :Taip
