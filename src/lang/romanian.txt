@@ -1254,14 +1254,31 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :pentru toate ve
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avertisment dacă profitul unui vehicul este negativ: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :După activare, o notificare este afișată dacă un vehicul nu a facut nici un profit intr-un an calendaristic
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehiculele nu expiră niciodată: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :După activare, toate modelele de vehicule rămân disponibile permanent după introducerea lor
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Înnoire automată pentru vehiculele învechite: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :După activare, orice vehicul care este învechit va fi reînnoit automat când condițiile de înlocuire automată sunt îndeplinite
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autoreînnoire când vehiculul {STRING} vârsta maximă
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Vârsta aproximativă când un vehicul ar trebui autoreînnoit
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :mai are {COMMA} lun{P 0 ă i} până la
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :a depășit cu {COMMA} lun{P 0 ă i}
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Fonduri minime pentru înnoire automată: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Suma minimă care trebuie să rămână disponibilă atunci când se face autoreînnoirea
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Durata de afișare a mesajelor de eroare: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Durata afișării mesajelor de eroare în fereastra roșie. Unele mesaje de eroare (cele critice) nu sunt închise automat după trecerea acestei perioade, și trebuie închise manual.
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} secund{P 0 ă e}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Afișează texte informative: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Durata dinaintea afișării textelor informative când se ține mouse-ul pe un element al interfeței. Alternativ, afișarea textelor informative poate fi setată pentru click-dreapta
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :După {COMMA} secund{P 0 ă e}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Click dreapta
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Afişează populaţia unui oras lângă nume: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Afișează populația orașelor în numele afișate pe hartă
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grosimea liniilor din grafice: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grosimea liniilor din grafice. O linie subțire este mai informativă, o linie mai groasă este mai ușor de văzut și are culorile mai usor de distins
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generator teren: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distanța maximă de la marginea hărții pentru rafinării: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinăriile de petrol vor fi construite doar la marginea hărţii, sau pe coastă, în cazul harţilor insulare
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Grosimea stratului de zăpadă: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Duritatea terenului (doar pt TerraGenesis) : {STRING}
@@ -1282,7 +1299,10 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Dacă este deza
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una sau mai multe suprafeţe din marginea nordică nu sunt goale
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una sau mai multe suprafeţe din marginea hărţii nu contin apă
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Întinderea maximă a stațiilor: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Zona maximă în care o stație se poate întinde. Valorile mari vor încetini jocul
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Service automat pentru elicoptere la helipaduri: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Efectueaza service pentru elicoptere la fiecare aterizare, chiar dacă nu există hangar acolo
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Conectează bara de instrumente pentru peisaj cu cea de construcţii feroviare/auto/navale/aeriene: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Culoarea terenului folosită pentru harta mică: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde

@@ -1987,7 +1987,7 @@ STR_NETWORK_ERROR_CLIENT_DESYNC                                 :비동기화 �
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :지도 불러오기 실패
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :연결 손실
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :프로토콜 오류
-STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF 안맞음
+STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF 안 맞음
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :권한 없음
 STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :잘못된 패킷 수신
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :잘못된 버전
@@ -2646,7 +2646,7 @@ STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}파일�
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}버젼: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}최소 이용 가능한 버전: {SILVER}{NUM}
-STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5합: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}색상표: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}파라미터: {SILVER}{STRING}
 
@@ -2704,7 +2704,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING}의 �
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING}{G 1 "은" "는"} 반드시 {STRING} 앞에 불러와야 합니다.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING}{G 1 "은" "는"} 반드시 {STRING} 뒤에 불러와야 합니다.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING}는 OpenTTD {STRING} 버전이나 그 이상이 필요합니다.
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 파일 자체는 번역용으로 디자인됨
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 파일이 번역을 위해 만들어졌습니다
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :NewGRF이 너무 많습니다.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{2:STRING}{G 2 "을" "를"} 포함한 정적 NewGRF {1:STRING}{G 1 "을" "를"} 불러오는 것은 비동기화를 일으킬 수 있습니다.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :예기치 않은 스프라이트 (스프라이트 {3:NUM})
@@ -2737,7 +2737,7 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}호환�
 STR_NEWGRF_LIST_MISSING                                         :{RED}파일 없음
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}'는 비동기화 혹은 충돌을 일으킬 수 있습니다.
+STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}'의 행동은 비동기화 혹은 충돌을 일으킬 수 있습니다.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고 안에 있지 않으면 동력차량의 상태가 바뀝니다.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고 안에 있지 않으면 차량 길이가 바뀝니다.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'의 열차 '{0:VEHICLE}'{P "은" "는"} 잘못된 길이값을 가지고 있습니다. NewGRF에 의한 문제일 것입니다. 게임이 비동기화/충돌을 일으킬 수 있습니다.
@@ -2748,11 +2748,11 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}콜백 함수({1:HEX})가 알 수 없거나 잘못된 결과 값({2:HEX})을 반환했습니다.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
-STR_NEWGRF_INVALID_CARGO                                        :<인식오류 화물>
+STR_NEWGRF_INVALID_CARGO                                        :<알 수 없는 화물>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
-STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA}<인식오류 화물>의
-STR_NEWGRF_INVALID_ENGINE                                       :<인식오류 차량모델>
-STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<인식오류 산업시설>
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :<알 수 없는 화물> {COMMA}
+STR_NEWGRF_INVALID_ENGINE                                       :<알 수 없는 차량 모델>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<알 수 없는 산업시설>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF 검색
