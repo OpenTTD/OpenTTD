@@ -880,7 +880,7 @@ STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Ίδρυση νέας εταιρίας μεταφορών!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}Η {STRING} ξεκινά τις κατασκευές κοντά στην πόλη {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}Η {STRING} εξαγοράστηκε από την {STRING}!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}({G "Διευθυντής" "Διευθύντρια" "")
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}({G 0 "Διευθυντής" "Διευθύντρια" ""})
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}Η {STRING} χορήγεισε την κατασκεύη της νέας πόλης {TOWN}!
 
