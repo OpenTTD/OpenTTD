@@ -923,10 +923,10 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}Το {VE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}Το {VEHICLE} δεν μπορεί να βρει δρόμο να συνεχίσει
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{G Ο Η Το} {VEHICLE} χάθηκε
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Το κέρδος του {VEHICLE} πέρυσι ήταν {CURRENCY_LONG}
-STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} δεν μπορεί να μεταβεί στον επόμενο προορισμό λόγω υπερβολικής απόστασης
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{G Ο Η Το} {VEHICLE} δεν μπορεί να μεταβεί στον επόμενο προορισμό λόγω υπερβολικής απόστασης
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Το {VEHICLE} σταμάτησε γιατί μια εντολή μετατροπής απέτυχε
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Αποτυχία Αυτόματης Ανανέωσης για το {VEHICLE}{}{STRING}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Αποτυχία αυτόματης ανανέωσης για το {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Ένα νέο {STRING} είναι πλεόν διαθέσιμο!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
