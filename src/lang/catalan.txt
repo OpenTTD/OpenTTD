@@ -1476,7 +1476,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permès, dispos
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Situació dels arbres al joc: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controla l'aparició aleatòria dels arbres durant el joc. Això podria afectar a les indústries que es basen en el creixement dels arbres, per exemple les serradores
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :cap {RED}(inhabilita la fusteria)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :cap {RED}(inhabilita la serradora)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :només a les selves tropicals
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :a tot arreu
 
