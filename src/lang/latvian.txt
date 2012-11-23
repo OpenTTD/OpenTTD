@@ -1432,6 +1432,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Velkot izvietot
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Iestatīt attālumus, kādos līdz nākamajam šķērslim (signālierīcei, dzelzceļa mezglam) uz ceļa tiks būvētas signālierīces, ja tās tiek vilktas
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} lauciņ{P 0 a a a}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Velkot paturēt vienādu attālumu starp signālierīcēm: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Signālierīču izvietošanas uzvedības izvēle, kad to veic ar Ctrl+velkot. Ja izslēgts, signālierīces tiek novietotas pie tuneļiem un tiltiem, lai izvairītos no gariem posmiem bez signālierīcēm. Ja ieslēgts, signālierīces tiek izvietotas uz katra N lauciņa, atvieglojot to izkārtošanu gar paralēliem sliežu ceļiem
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automātiski būvēt semaforus pirms: {STRING} gada
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Izvēlēties gadu, kad ceļiem sāks izmantot elektriskās signālierīces. Pirms šā gada tiks izmantotas neelektriskās signālierīces (kam ir tieši tāda pati funkcija, bet ar atšķirīgu izskatu)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ieslēgt signālierīču grafisko lietotāja saskarni: {STRING}
