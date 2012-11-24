@@ -985,28 +985,28 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} parėmė naujo miesto statybą {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Statomas naujas {STRING} netoli miesto: {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Sodinamas naujas {STRING} netoli miesto: {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Statoma{G s ""} nauja{G s ""} {STRING} netoli miesto {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Sodinama{G s ""} nauja{G s ""} {STRING} netoli miesto {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} praneša apie neatidėliotiną uždarymą!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Tiekimo problemos verčia {STRING} paskelbti apie uždarymą!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Medienos trukūmas verčia {STRING} pasklebti apie neatidėliotiną uždarymą!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Dėl tiekimo problemų {STRING} netrukus bus uždaryta{G 0 s ""}!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Dėl medienos trūkumo {STRING} netrukus bus uždaryta{G 0 s ""}!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Bendras Europos sąjungos piniginis vienetas - Euras!{}{}Nuo šiol Euras tampa pagrindine valiuta kasdieniniuose atsiskaitymuose!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Pasaulinė krizė!{}{}Ekonomikai griūvant, finansų ekspertai bijo paties blogiausio!
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Krizė įveikta!{}{}Prekybos pagyvejimas suteikia naujų vilčių pramonės įmonėms!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} didina produkcijos apimtis!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}{INDUSTRY} praneša apie rastus naujus anglies išteklius!{}Produkciją tikimasi padvigubinti!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}{INDUSTRY} praneša apie rastus naujus anglies išteklius!{}Produkciją tikimasi padvigubinti!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY} pagerino žemdirbystės metodus ir tikisi padvigubinti produkciją!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}{INDUSTRY} praneša apie rastus naujus akmens anglies telkinius!{}Produkciją tikimasi padvigubinti!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}{INDUSTRY} praneša apie rastus naujus naftos telkinius!{}Produkciją tikimasi padvigubinti!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY} praneša apie įdiegtus naujus žemdirbystės metodus! Produkciją tikimasi padvigubinti!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING.ko} produkcija auga ({INDUSTRY}) - {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} produkcija krenta 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Vabzdžių anplūdžio baimė verčia {INDUSTRY} sumažinti produkciją 50%.
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING.ko} produkcija krenta ({INDUSTRY}) - {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} praneša apie perpus sumažėsiančią produkciją
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY} praneša apie dėl vabzdžių antplūdžio perpus sumažėsiančią produkciją
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Krenta {STRING.ko} produkcija ({INDUSTRY.kur}, {COMMA}%)!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} laukia depe
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} laukia depe
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} laukia garaže
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} laukia doke
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} laukia angare
 
@@ -4462,43 +4462,85 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Paršiukų bank
 
 ##id 0x4800
 # industry names
-STR_INDUSTRY_NAME_COAL_MINE                                     :anglies kasykla
-STR_INDUSTRY_NAME_POWER_STATION                                 :elektrinė
-STR_INDUSTRY_NAME_SAWMILL                                       :lentpjūvė
-STR_INDUSTRY_NAME_FOREST                                        :miškas
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :naftos perdirbimo įmonė
-STR_INDUSTRY_NAME_OIL_RIG                                       :naftos platformoje
-STR_INDUSTRY_NAME_FACTORY                                       :gamykla
-STR_INDUSTRY_NAME_PRINTING_WORKS                                :spaustuvė
-STR_INDUSTRY_NAME_STEEL_MILL                                    :plieno liejykla
-STR_INDUSTRY_NAME_FARM                                          :ūkis
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :vario rūdos kasykla
-STR_INDUSTRY_NAME_OIL_WELLS                                     :naftos gręžinys
-STR_INDUSTRY_NAME_BANK                                          :bankas
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Maisto perdirbimo įmonė
-STR_INDUSTRY_NAME_PAPER_MILL                                    :popieriaus fabrikas
-STR_INDUSTRY_NAME_GOLD_MINE                                     :aukso kasykla
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :bankas
-STR_INDUSTRY_NAME_DIAMOND_MINE                                  :deimantų kasykla
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :geležies rūdos kasykla
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :vaisiu plantacija
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :kaučiuko plantacija
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :vandens gręžinys
-STR_INDUSTRY_NAME_WATER_TOWER                                   :vandentiekio bokštas
-STR_INDUSTRY_NAME_FACTORY_2                                     :gamykla
-STR_INDUSTRY_NAME_FARM_2                                        :ūkis
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Lentpjūvė
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :ledinukų miškas
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :saldumynų fabrikas
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :Baterijų ūkis
-STR_INDUSTRY_NAME_COLA_WELLS                                    :kolos šulinys
-STR_INDUSTRY_NAME_TOY_SHOP                                      :žaislų parduotuvė
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :žaislų fabrikas
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Plastiko fontanai
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Putojančių gėrimų gamykla
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :burbulų generatorius
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :saldainių fabrikas
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :cukraus kasykla
+STR_INDUSTRY_NAME_COAL_MINE                                     :{G=mot}anglies kasykla
+STR_INDUSTRY_NAME_COAL_MINE.kas                                 :{G=mot}anglies kasykla
+STR_INDUSTRY_NAME_COAL_MINE.ko                                  :{G=mot}anglies kasyklos
+STR_INDUSTRY_NAME_COAL_MINE.kam                                 :{G=mot}anglies kasyklai
+STR_INDUSTRY_NAME_COAL_MINE.ka                                  :{G=mot}anglies kasyklą
+STR_INDUSTRY_NAME_COAL_MINE.kuo                                 :{G=mot}anglies kasykla
+STR_INDUSTRY_NAME_COAL_MINE.kur                                 :{G=mot}anglies kasykloje
+STR_INDUSTRY_NAME_COAL_MINE.kreip                               :{G=mot}anglies kasykla
+STR_INDUSTRY_NAME_POWER_STATION                                 :{G=mot}elektrinė
+STR_INDUSTRY_NAME_POWER_STATION.kas                             :{G=mot}elektrinė
+STR_INDUSTRY_NAME_POWER_STATION.ko                              :{G=mot}elektrinės
+STR_INDUSTRY_NAME_POWER_STATION.kam                             :{G=mot}elektrinei
+STR_INDUSTRY_NAME_POWER_STATION.ka                              :{G=mot}elektrinę
+STR_INDUSTRY_NAME_POWER_STATION.kuo                             :{G=mot}elektrine
+STR_INDUSTRY_NAME_POWER_STATION.kur                             :{G=mot}elektrinėje
+STR_INDUSTRY_NAME_POWER_STATION.kreip                           :{G=mot}elektrine
+STR_INDUSTRY_NAME_SAWMILL                                       :{G=mot}lentpjūvė
+STR_INDUSTRY_NAME_SAWMILL.kas                                   :{G=mot}lentpjūvė
+STR_INDUSTRY_NAME_SAWMILL.ko                                    :{G=mot}lentpjūvės
+STR_INDUSTRY_NAME_SAWMILL.kam                                   :{G=mot}lentpjūvei
+STR_INDUSTRY_NAME_SAWMILL.ka                                    :{G=mot}lentpjūvę
+STR_INDUSTRY_NAME_SAWMILL.kuo                                   :{G=mot}lentpjūve
+STR_INDUSTRY_NAME_SAWMILL.kur                                   :{G=mot}lentpjūvėje
+STR_INDUSTRY_NAME_SAWMILL.kreip                                 :{G=mot}lentpjūve
+STR_INDUSTRY_NAME_FOREST                                        :{G=vyr}miškas
+STR_INDUSTRY_NAME_FOREST.kas                                    :{G=vyr}miškas
+STR_INDUSTRY_NAME_FOREST.ko                                     :{G=vyr}miško
+STR_INDUSTRY_NAME_FOREST.kam                                    :{G=vyr}miškui
+STR_INDUSTRY_NAME_FOREST.ka                                     :{G=vyr}mišką
+STR_INDUSTRY_NAME_FOREST.kuo                                    :{G=vyr}mišku
+STR_INDUSTRY_NAME_FOREST.kur                                    :{G=vyr}miške
+STR_INDUSTRY_NAME_FOREST.kreip                                  :{G=vyr}miške
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=mot}naftos perdirbimo įmonė
+STR_INDUSTRY_NAME_OIL_REFINERY.kas                              :{G=mot}naftos perdirbimo įmonė
+STR_INDUSTRY_NAME_OIL_REFINERY.ko                               :{G=mot}naftos perdirbimo įmonės
+STR_INDUSTRY_NAME_OIL_REFINERY.kam                              :{G=mot}naftos perdirbimo įmonei
+STR_INDUSTRY_NAME_OIL_REFINERY.ka                               :{G=mot}naftos perdirbimo įmonę
+STR_INDUSTRY_NAME_OIL_REFINERY.kuo                              :{G=mot}naftos perdirbimo įmone
+STR_INDUSTRY_NAME_OIL_REFINERY.kur                              :{G=mot}naftos perdirbimo įmonėje
+STR_INDUSTRY_NAME_OIL_REFINERY.kreip                            :{G=mot}naftos perdirbimo įmone
+STR_INDUSTRY_NAME_OIL_RIG                                       :{G=mot}naftos platforma
+STR_INDUSTRY_NAME_OIL_RIG.kas                                   :{G=mot}naftos platforma
+STR_INDUSTRY_NAME_OIL_RIG.ko                                    :{G=mot}naftos platformos
+STR_INDUSTRY_NAME_OIL_RIG.kam                                   :{G=mot}naftos platformai
+STR_INDUSTRY_NAME_OIL_RIG.ka                                    :{G=mot}naftos platformą
+STR_INDUSTRY_NAME_OIL_RIG.kuo                                   :{G=mot}naftos platforma
+STR_INDUSTRY_NAME_OIL_RIG.kur                                   :{G=mot}naftos platformoje
+STR_INDUSTRY_NAME_OIL_RIG.kreip                                 :{G=mot}naftos platforma
+STR_INDUSTRY_NAME_FACTORY                                       :{G=mot}gamykla
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=mot}spaustuvė
+STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=mot}plieno liejykla
+STR_INDUSTRY_NAME_FARM                                          :{G=vyr}ūkis
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=mot}vario rūdos kasykla
+STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=vyr}naftos gręžinys
+STR_INDUSTRY_NAME_BANK                                          :{G=vyr}bankas
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=mot}maisto perdirbimo įmonė
+STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=vyr}popieriaus fabrikas
+STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=mot}aukso kasykla
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=vyr}bankas
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=mot}deimantų kasykla
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=mot}geležies rūdos kasykla
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=mot}vaisių plantacija
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=mot}kaučiukmedžių plantacija
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=vyr}vandens gręžinys
+STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=vyr}vandentiekio bokštas
+STR_INDUSTRY_NAME_FACTORY_2                                     :{G=mot}gamykla
+STR_INDUSTRY_NAME_FARM_2                                        :{G=vyr}ūkis
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=mot}lentpjūvė
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=vyr}ledinukų miškas
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=vyr}saldumynų fabrikas
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=vyr}baterijų ūkis
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=vyr}kolos šulinys
+STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=mot}žaislų parduotuvė
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=vyr}žaislų fabrikas
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=vyr}plastiko fontanai
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=mot}putojančių gėrimų gamykla
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=vyr}burbulų generatorius
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=vyr}saldainių fabrikas
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=mot}cukraus kasykla
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
