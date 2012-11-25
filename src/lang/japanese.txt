@@ -1101,6 +1101,7 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}拡張�
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :（説明がありません）
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}デフォルト設定：{ORANGE}{STRING}
 
+
 STR_CONFIG_SETTING_OFF                                          :切
 STR_CONFIG_SETTING_ON                                           :入
 STR_CONFIG_SETTING_DISABLED                                     :切
@@ -3383,7 +3384,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}<TODO: Can't be translated without knowing more about the context. ie. What kind of licence? Driver's licence? EULA kind of licence? Registration key kind of licence? Where is this used in the English version?>
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}ライセンス
 
 
 # Vehicle loading indicators

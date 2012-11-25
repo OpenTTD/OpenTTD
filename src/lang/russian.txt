@@ -528,6 +528,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Рейтинг 
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Список предприятий
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Производственные цепочки
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Создать новое предприятие
 ############ range ends here
 
@@ -2573,6 +2574,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Пока
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Показать производителей сырья и потребителей продукции этого предприятия
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Показать на карте
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Показать на карте выбранные предприятия
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Выберите груз
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Выберите груз для отображения
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Выберите предприятие
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Выберите предприятие для отображения
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Информация о территории

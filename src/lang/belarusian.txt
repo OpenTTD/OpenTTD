@@ -563,7 +563,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Даўжыня: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Плошча: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Даўжыня: {NUM}{}Розніца вышыняў: {HEIGHT}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Даўжыня: {NUM}{}Розьніца вышыняў: {HEIGHT}
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Плошча: {NUM} x {NUM}{}Розьніца вышыняў: {HEIGHT}
 
 
@@ -613,7 +613,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Пака
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Сьпiс станцыяў
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Паказаць фінансавую інфармацыю кампаніі
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Паказаць агульную інфармацыю аб кампаніі
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Паказаць графiкi
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Паказаць ґрафiкi
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Паказаць рэйтынгі кампаніяў
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Сьпіс існуючых прадпрыемстваў; заснаваньне новых
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Сьпіс цягнікоў. Ctrl+клік пераключае адлюстраваньне па групах
@@ -924,32 +924,32 @@ STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKG
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Трэк
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Назва
 STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Выпадковы выбар
-STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Праграма
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Праґрама
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Перайсьці да папярэдняга трэка ў падборцы
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Перайсьці да наступнага трэка ў падборцы
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Спыніць музыку
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Запусьціць музыку
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Пасуньце паўзункі, каб наладзіць гучнасьць музыкі й гукавых эфэктаў
-STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Выбраць праграму «Усе трэкі»
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Выбраць праграму «Стары стыль»
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Выбраць праграму «Новы стыль»
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Выбраць праграму «Вулічны стыль»
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Выбраць праграму «Уласная 1» (вызначаную карыстальнікам)
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Выбраць праграму «Уласная 2» (вызначаную карыстальнікам)
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Выбраць праґраму «Усе трэкі»
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Выбраць праґраму «Стары стыль»
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Выбраць праґраму «Новы стыль»
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Выбраць праґраму «Вулічны стыль»
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Выбраць праґраму «Уласная 1» (вызначаную карыстальнікам)
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Выбраць праґраму «Уласная 2» (вызначаную карыстальнікам)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Уключыць/выключыць выпадковы выбар трэкаў
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Паказаць вакно выбару трэкаў
 
-STR_ERROR_NO_SONGS                                              :{WHITE}У выбранай праграме адсутнічае музыка
+STR_ERROR_NO_SONGS                                              :{WHITE}У выбранай праґраме адсутнічае музыка
 
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Выбар музычнай праграмы
+STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Выбар музычнай праґрамы
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} «{STRING}»
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Сьпіс трэкаў
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programme — «{STRING}»
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Ачысьціць
-STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Ачысьціць сьпіс уласнай праграмы
-STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Клікніце па назьве трэка, каб дадаць яго ва ўласную праграму
-STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Клікніце па назьве трэка, каб выдаліць яго з уласнай праграмы
+STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Ачысьціць сьпіс уласнай праґрамы
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Клікніце па назьве трэка, каб дадаць яго ва ўласную праґраму
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Клікніце па назьве трэка, каб выдаліць яго з уласнай праґрамы
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Найбуйнейшыя кампаніі, якія дасягнулі {NUM}{}({STRING} узроўня складанасьці)
@@ -1083,7 +1083,7 @@ STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLAC
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Авіякатастрофа!{}У самалёце скончылася паліва, {COMMA} человек{P "" і ""} загіну{P ў лі ла} пры падзенні!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Катастрофа цэпеліна над аэрадромам {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Аўтамабіль знішчаны пры сутыкненьні з НЛА!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Аўтамабіль зьнішчаны пры сутыкненьні з НЛА!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Выбух на нафтаперапрацоўчым заводзе каля г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Выбух на фабрыцы пры падазроных абставінах каля г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}НЛА прызямлілася каля г.{NBSP}{TOWN}!
@@ -1420,7 +1420,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Вашы
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Пашыраныя наладкі
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Фільтр:
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Фільтар:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Разгарнуць усё
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Згарнуць усё
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(няма тлумачэньня)
@@ -1436,10 +1436,10 @@ STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Пака
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Адлюстроўваць у сьпісе толькі зьмененыя наладкі
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Базавыя наладкі
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Пашыраныя наладкі
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Спецыяльныя наладкі / усе наладкі
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Наладкі са значэньнямі, якія адрозніваюцца ад значэньняў па змаўчаньні
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Някліенцкія наладкi са значэньнямі, адрознымі ад значэньняў па змаўчаньні
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Наладкі са значэньнямі, якія адрозніваюцца ад наладак новай гульні
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Спэцыяльныя наладкі / усе наладкі
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Наладкі са значэньнямі, якія адрозьніваюцца ад значэньняў па змоўчаньні
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Някліенцкія наладкi са значэньнямі, адрознымі ад значэньняў па змоўчаньні
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Наладкі са значэньнямі, якія адрозьніваюцца ад наладак новай гульні
 
 STR_CONFIG_SETTING_OFF                                          :не
 STR_CONFIG_SETTING_ON                                           :так
@@ -1589,8 +1589,8 @@ STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :пачакаў�
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :па правым кліку
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Паказваць колькасьць жыхароў горада ў назьве: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Паказваць у надпісах на мапе колькасьць жыхароў населеных пунктаў адразу пасьля іх назвы.
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Таўшчыня лiнiяў у графiках: {STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Таўшчыня лініяў ґрафікаў. Тонкая лінія дакладней, тоўстую лягчэй убачыць і адрозніць колер.
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Таўшчыня лiнiяў у ґрафiках: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Таўшчыня лініяў ґрафікаў. Тонкая лінія дакладней, тоўстую лягчэй убачыць і адрозьніць колер.
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Ґенэратар зямлі: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Арыґінальны
@@ -1634,7 +1634,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Кантрал�
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Паказваць замеры пры будаўніцтве: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Паказваць адлегласьць у клетках і розьніцу ў вышынях, калі нешта будуецца "працяжкай" (з націснутай кнопкай мышы).
 STR_CONFIG_SETTING_LIVERIES                                     :Паказваць індывідуальныя афарбоўкі транспарту (два фірмовыя колеры): {STRING}
-STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Ўжываньне спэцыфічных афарбовак (ліўрэй) для канкрэтнага тыпу транспартных сродкаў (у адрозненьне ад фірмовага колеру ўсёй кампаніі).
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Ўжываньне спэцыфічных афарбовак (ліўрэй) для канкрэтнага тыпу транспартных сродкаў (у адрозьненьне ад фірмовага колеру ўсёй кампаніі).
 STR_CONFIG_SETTING_LIVERIES_NONE                                :не
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :толькі для сваёй кампаніі
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :для ўсіх кампаніяў
@@ -1882,7 +1882,7 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :несумяш�
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :невядомы
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... узровень сьцiсканьня (кампрэсii) '{STRING}' няправiльны
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... фармат захаванай гульнi '{STRING}' недаступны. Зварот да '{STRING}'
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... набор графікі "{STRING}" ня знойдзены
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... набор ґрафікі "{STRING}" ня знойдзены
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... набор гукаў "{STRING}" ня знойдзены
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... набор музыкі "{STRING}" ня знойдзены
 
@@ -2430,9 +2430,9 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... зл
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... немагчыма запісаць файл
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не ўдалося распакаваць запампаваны файл
 
-STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Адсутная графiка
-STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD патрабуе графiкi для функцыянаваньня, але ня можа знайсьцi нiякай. Вы дазваляеце OpenTTD спампаваць ды ўсталяваць гэтую графiку?
-STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Так, спампаваць графiку
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Адсутная ґрафiка
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD патрабуе ґрафiкi для функцыянаваньня, але ня можа знайсьцi нiякай. Вы дазваляеце OpenTTD спампаваць ды ўсталяваць гэтую ґрафiку?
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Так, спампаваць ґрафiку
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Не, выйсьцi з OpenTTD
 
 # Transparency settings window
@@ -2619,7 +2619,7 @@ STR_AIRPORT_INTERNATIONAL                                       :Міжнаро�
 STR_AIRPORT_COMMUTER                                            :Прыгарадны
 STR_AIRPORT_INTERCONTINENTAL                                    :Міжкантынентальны
 STR_AIRPORT_HELIPORT                                            :Шрубалётная пляцоўка
-STR_AIRPORT_HELIDEPOT                                           :Шрубалётны ангар
+STR_AIRPORT_HELIDEPOT                                           :Шрубалётны анґар
 STR_AIRPORT_HELISTATION                                         :Шрубалётная база
 
 STR_AIRPORT_CLASS_SMALL                                         :Малыя аэрапорты
@@ -3079,7 +3079,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Мяня
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Цягнік «{VEHICLE}», які належыць «{COMPANY}», мае няправільную даўжыню. Верагодна, гэта выклікана праблемамі ў файле новай ґрафікі. Гульня можа рассынхранізавацца або «выляцець».
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF «{0:STRING}» падае няправільную інфармацыю.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Інфармацыя аб умяшчальнасьці/пераабсталяваньнi для лякаматыва «{1:ENGINE}» пасьля пабудовы адрозніваецца ад зьвестак у сьпісе пакупкі, што можа перашкодзіць функцыі аўтаабнаўленьня/аўтазамены карэктна зрабіць пераабсталяваньне.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Інфармацыя аб умяшчальнасьці/пераабсталяваньнi для лякаматыва «{1:ENGINE}» пасьля пабудовы адрозьніваецца ад зьвестак у сьпісе пакупкі, што можа перашкодзіць функцыі аўтаабнаўленьня/аўтазамены карэктна зрабіць пераабсталяваньне.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}«{1:STRING}» выклікаў бясконцы цыкл.
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Функцыя зваротнага выклiку {1:HEX} вярнула невядомы/беспадстаўны вынiк {2:HEX}
 
@@ -3099,9 +3099,9 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Пошук ар
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Сьпіс таблічак: {COMMA} табліч{P ка кi ак}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Рэґiстр
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Ачысьціць фільтр
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Ачысьціць фільтар
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Пераключыць праверку рэґістра пры параўнанні назваў таблiчак з фільтрам
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Ачысьціць фільтр
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Ачысьціць фільтар
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Зьмяніць надпіс на таблічцы
@@ -4589,9 +4589,9 @@ STR_INDUSTRY_NAME_OIL_RIG.acc                                   :нафтазд�
 STR_INDUSTRY_NAME_FACTORY                                       :{G=m}Завод
 STR_INDUSTRY_NAME_FACTORY.gen                                   :завода
 STR_INDUSTRY_NAME_FACTORY.acc                                   :завод
-STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Тыпаграфiя
-STR_INDUSTRY_NAME_PRINTING_WORKS.gen                            :тыпаграфii
-STR_INDUSTRY_NAME_PRINTING_WORKS.acc                            :тыпаграфію
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Тыпаґрафiя
+STR_INDUSTRY_NAME_PRINTING_WORKS.gen                            :тыпаґрафii
+STR_INDUSTRY_NAME_PRINTING_WORKS.acc                            :тыпаґрафію
 STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=m}Сталеліцейны завод
 STR_INDUSTRY_NAME_STEEL_MILL.gen                                :сталеліцейнага завода
 STR_INDUSTRY_NAME_STEEL_MILL.acc                                :сталеліцейны завод

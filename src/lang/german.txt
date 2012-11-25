@@ -403,6 +403,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Leistungsaufsch
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industrieverzeichnis
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Wirtschaftsketten
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Neue Industrie finanzieren
 ############ range ends here
 
@@ -2390,6 +2391,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Produkti
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Zeige Industrien, die Fracht liefern oder akzeptieren
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Verweis auf Übersichtskarte
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Wähle auch die angezeigte Industrie auf der Übersichtskarte
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Fracht wählen
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Fracht wählen, die angezeigt werden soll
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Industrie wählen
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Industrie wählen, die angezeigt werden soll
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Gebietsinformation

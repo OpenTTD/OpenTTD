@@ -772,7 +772,7 @@ STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLAC
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}{STATION}에서 체펠린 재앙이 발생했습니다!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}UFO의 폭격으로 자동차가 파괴되었습니다!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}{TOWN} 근처의 석유 정제소가 폭발하였습니다!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}{TOWN} 근처의 정유 공장에서 폭발 사고가 발생하였습니다!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}{TOWN} 근처의 공장이 의심스러운 상황으로 인해 파괴되었습니다!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}UFO가 {TOWN} 근처에 착륙했습니다!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}{TOWN} 근처 탄광이 함몰되어 그 파괴의 흔적을 남겼습니다!
@@ -1279,8 +1279,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :그래프의 �
 STR_CONFIG_SETTING_LAND_GENERATOR                               :지형 만들기: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :오리지널
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :천지창조
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :석유 정제소의 최대 건설 범위: 지도 맨 끝에서부터 {STRING} 이내
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :석유 정제소는 지도의 동서남북 끝 경계 근처에만 건설할 수 있습니다.
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :정유 공장의 최대 건설 범위: 지도 맨 끝에서부터 {STRING} 이내
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :정유 공장은 지도의 동서남북 끝 경계 근처에만 건설할 수 있습니다.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :만년설의 높이: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :지형의 거친 정도 ('천지창조' 전용): {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :매우 부드럽게
@@ -4216,7 +4216,7 @@ STR_INDUSTRY_NAME_COAL_MINE                                     :{G=m}탄광
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}발전소
 STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}제재소
 STR_INDUSTRY_NAME_FOREST                                        :숲
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=f}석유 정제소
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=m}정유 공장
 STR_INDUSTRY_NAME_OIL_RIG                                       :유전
 STR_INDUSTRY_NAME_FACTORY                                       :공장
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :인쇄소

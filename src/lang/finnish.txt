@@ -402,6 +402,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Suoritearvioint
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Teollisuushakemisto
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Teollisuusketjut
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Rakenna uutta teollisuutta
 ############ range ends here
 
@@ -2389,6 +2390,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Näytä 
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Näytä rahdin tuottajat ja hyväksyvät teollisuudet
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Yhdistä karttaan
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Valitse näytetyt teollisuudet kartalla
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Valitse rahti
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Valitse rahti, jonka haluat näyttää
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Valitse teollisuus
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Valitse teollisuus, jonka haluat näyttää
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Maa-aluetiedot

@@ -1098,6 +1098,9 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Akzio ho
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Konfigurazio aurreratuak
 
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Oinarrizko ezarpenak
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Ezarpen aurreratuak
+
 STR_CONFIG_SETTING_OFF                                          :Itzalita
 STR_CONFIG_SETTING_ON                                           :Piztuta
 STR_CONFIG_SETTING_DISABLED                                     :desaktibatua
@@ -1752,10 +1755,12 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 
 
+
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
 ############ range for rating ends
+
 
 
 
