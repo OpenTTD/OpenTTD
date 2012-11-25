@@ -1409,7 +1409,7 @@ static const NWidgetPart _nested_industry_cargoes_widgets[] = {
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_IC_NOTIFY),
 					SetDataTip(STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP, STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP),
-				NWidget(WWT_PANEL, COLOUR_BROWN), SetFill(1, 0), SetResize(1, 0), EndContainer(),
+				NWidget(WWT_PANEL, COLOUR_BROWN), SetFill(1, 0), SetResize(0, 0), EndContainer(),
 				NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_IC_IND_DROPDOWN), SetFill(0, 0), SetResize(0, 0),
 						SetDataTip(STR_INDUSTRY_CARGOES_SELECT_INDUSTRY, STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP),
 				NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_IC_CARGO_DROPDOWN), SetFill(0, 0), SetResize(0, 0),
