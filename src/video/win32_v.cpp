@@ -282,11 +282,20 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 		settings.dmPelsHeight = _wnd.height_org;
 		settings.dmDisplayFrequency = _display_hz;
 
+		/* Check for 8 bpp support. */
+		if (settings.dmBitsPerPel != 32 && ChangeDisplaySettings(&settings, CDS_FULLSCREEN | CDS_TEST) != DISP_CHANGE_SUCCESSFUL) {
+			settings.dmBitsPerPel = 32;
+		}
+
 		/* Test fullscreen with current resolution, if it fails use desktop resolution. */
 		if (ChangeDisplaySettings(&settings, CDS_FULLSCREEN | CDS_TEST) != DISP_CHANGE_SUCCESSFUL) {
 			RECT r;
 			GetWindowRect(GetDesktopWindow(), &r);
-			return this->ChangeResolution(r.right - r.left, r.bottom - r.top);
+			/* Guard against recursion. If we already failed here once, just fall through to
+			 * the next ChangeDisplaySettings call which will fail and error out appropriately. */
+			if (settings.dmPelsWidth != r.right - r.left || settings.dmPelsHeight != r.bottom - r.top) {
+				return this->ChangeResolution(r.right - r.left, r.bottom - r.top);
+			}
 		}
 
 		if (ChangeDisplaySettings(&settings, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL) {
