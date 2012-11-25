@@ -1458,6 +1458,8 @@ public:
 		WID_IC_NOTIFY                                = ::WID_IC_NOTIFY,                                ///< Row of buttons at the bottom.
 		WID_IC_PANEL                                 = ::WID_IC_PANEL,                                 ///< Panel that shows the chain.
 		WID_IC_SCROLLBAR                             = ::WID_IC_SCROLLBAR,                             ///< Scrollbar of the panel.
+		WID_IC_CARGO_DROPDOWN                        = ::WID_IC_CARGO_DROPDOWN,                        ///< Select cargo dropdown.
+		WID_IC_IND_DROPDOWN                          = ::WID_IC_IND_DROPDOWN,                          ///< Select industry dropdown.
 	};
 
 	/* automatically generated from ../../widgets/intro_widget.h */

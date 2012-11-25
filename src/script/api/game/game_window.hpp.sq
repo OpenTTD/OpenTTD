@@ -564,6 +564,8 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_IC_NOTIFY,                             "WID_IC_NOTIFY");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_IC_PANEL,                              "WID_IC_PANEL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_IC_SCROLLBAR,                          "WID_IC_SCROLLBAR");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_IC_CARGO_DROPDOWN,                     "WID_IC_CARGO_DROPDOWN");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_IC_IND_DROPDOWN,                       "WID_IC_IND_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_GENERATE_GAME,                     "WID_SGI_GENERATE_GAME");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_LOAD_GAME,                         "WID_SGI_LOAD_GAME");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_PLAY_SCENARIO,                     "WID_SGI_PLAY_SCENARIO");

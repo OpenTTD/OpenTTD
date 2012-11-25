@@ -36,7 +36,7 @@
 #include "core/backup_type.hpp"
 #include "genworld.h"
 #include "smallmap_gui.h"
-
+#include "widgets/dropdown_type.h"
 #include "widgets/industry_widget.h"
 
 #include "table/strings.h"
@@ -1410,6 +1410,10 @@ static const NWidgetPart _nested_industry_cargoes_widgets[] = {
 				NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_IC_NOTIFY),
 					SetDataTip(STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP, STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP),
 				NWidget(WWT_PANEL, COLOUR_BROWN), SetFill(1, 0), SetResize(1, 0), EndContainer(),
+				NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_IC_IND_DROPDOWN), SetFill(0, 0), SetResize(0, 0),
+						SetDataTip(STR_INDUSTRY_CARGOES_SELECT_INDUSTRY, STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP),
+				NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_IC_CARGO_DROPDOWN), SetFill(0, 0), SetResize(0, 0),
+						SetDataTip(STR_INDUSTRY_CARGOES_SELECT_CARGO, STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
@@ -2023,7 +2027,8 @@ struct IndustryCargoesWindow : public Window {
 
 	Fields fields;  ///< Fields to display in the #WID_IC_PANEL.
 	uint ind_cargo; ///< If less than #NUM_INDUSTRYTYPES, an industry type, else a cargo id + NUM_INDUSTRYTYPES.
-
+	Dimension cargo_textsize; ///< Size to hold any cargo text, as well as STR_INDUSTRY_CARGOES_SELECT_CARGO.
+	Dimension ind_textsize;   ///< Size to hold any industry type text, as well as STR_INDUSTRY_CARGOES_SELECT_INDUSTRY.
 	Scrollbar *vscroll;
 
 	IndustryCargoesWindow(int id) : Window()
@@ -2045,19 +2050,28 @@ struct IndustryCargoesWindow : public Window {
 		CargoesField::small_height = d.height;
 
 		/* Decide about the size of the box holding the text of an industry type. */
-		d.height = 0;
+		this->ind_textsize.width = 0;
+		this->ind_textsize.height = 0;
 		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 			const IndustrySpec *indsp = GetIndustrySpec(it);
 			if (!indsp->enabled) continue;
-			SetDParam(0, indsp->name);
-			d = maxdim(d, GetStringBoundingBox(STR_JUST_STRING));
+			this->ind_textsize = maxdim(this->ind_textsize, GetStringBoundingBox(indsp->name));
 		}
-		/* Box must also be wide enough to hold any cargo label. */
+		d.width = max(d.width, this->ind_textsize.width);
+		d.height = this->ind_textsize.height;
+		this->ind_textsize = maxdim(this->ind_textsize, GetStringBoundingBox(STR_INDUSTRY_CARGOES_SELECT_INDUSTRY));
+
+		/* Compute max size of the cargo texts. */
+		this->cargo_textsize.width = 0;
+		this->cargo_textsize.height = 0;
 		for (uint i = 0; i < NUM_CARGO; i++) {
 			const CargoSpec *csp = CargoSpec::Get(i);
 			if (!csp->IsValid()) continue;
-			d = maxdim(d, GetStringBoundingBox(csp->name));
+			this->cargo_textsize = maxdim(this->cargo_textsize, GetStringBoundingBox(csp->name));
 		}
+		d = maxdim(d, this->cargo_textsize); // Box must also be wide enough to hold any cargo label.
+		this->cargo_textsize = maxdim(this->cargo_textsize, GetStringBoundingBox(STR_INDUSTRY_CARGOES_SELECT_CARGO));
+
 		d.width  += 2 * HOR_TEXT_PADDING;
 		/* Ensure the height is enough for the industry type text, for the horizontal connections, and for the cargo labels. */
 		uint min_ind_height = CargoesField::VERT_CARGO_EDGE * 2 + MAX_CARGOES * FONT_HEIGHT_NORMAL + (MAX_CARGOES - 1) *  CargoesField::VERT_CARGO_SPACE;
@@ -2069,9 +2083,19 @@ struct IndustryCargoesWindow : public Window {
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget != WID_IC_PANEL) return;
+		switch (widget) {
+			case WID_IC_PANEL:
+				size->width = WD_FRAMETEXT_LEFT + CargoesField::industry_width * 3 + CargoesField::CARGO_FIELD_WIDTH * 2 + WD_FRAMETEXT_RIGHT;
+				break;
 
-		size->width = WD_FRAMETEXT_LEFT + CargoesField::industry_width * 3 + CargoesField::CARGO_FIELD_WIDTH * 2 + WD_FRAMETEXT_RIGHT;
+			case WID_IC_IND_DROPDOWN:
+				size->width = max(size->width, this->ind_textsize.width + padding.width);
+				break;
+
+			case WID_IC_CARGO_DROPDOWN:
+				size->width = max(size->width, this->cargo_textsize.width + padding.width);
+				break;
+		}
 	}
 
 
@@ -2540,6 +2564,53 @@ struct IndustryCargoesWindow : public Window {
 					this->NotifySmallmap();
 				}
 				break;
+
+			case WID_IC_CARGO_DROPDOWN: {
+				DropDownList *lst = new DropDownList;
+				const CargoSpec *cs;
+				FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
+					lst->push_back(new DropDownListStringItem(cs->name, cs->Index(), false));
+				}
+				if (lst->size() == 0) {
+					delete lst;
+					break;
+				}
+				int selected = (this->ind_cargo >= NUM_INDUSTRYTYPES) ? this->ind_cargo - NUM_INDUSTRYTYPES : -1;
+				ShowDropDownList(this, lst, selected, WID_IC_CARGO_DROPDOWN, 0, true);
+				break;
+			}
+
+			case WID_IC_IND_DROPDOWN: {
+				DropDownList *lst = new DropDownList;
+				for (uint8 i = 0; i < NUM_INDUSTRYTYPES; i++) {
+					IndustryType ind = _sorted_industry_types[i];
+					const IndustrySpec *indsp = GetIndustrySpec(ind);
+					if (!indsp->enabled) continue;
+					lst->push_back(new DropDownListStringItem(indsp->name, ind, false));
+				}
+				if (lst->size() == 0) {
+					delete lst;
+					break;
+				}
+				int selected = (this->ind_cargo < NUM_INDUSTRYTYPES) ? this->ind_cargo : -1;
+				ShowDropDownList(this, lst, selected, WID_IC_IND_DROPDOWN, 0, true);
+				break;
+			}
+		}
+	}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		if (index < 0) return;
+
+		switch (widget) {
+			case WID_IC_CARGO_DROPDOWN:
+				this->ComputeCargoDisplay(index);
+				break;
+
+			case WID_IC_IND_DROPDOWN:
+				this->ComputeIndustryDisplay(index);
+				break;
 		}
 	}
 
@@ -2593,11 +2664,20 @@ const int IndustryCargoesWindow::VERT_TEXT_PADDING = 5; ///< Vertical padding ar
 
 /**
  * Open the industry and cargoes window.
- * @param id Industry type to display.
+ * @param id Industry type to display, \c NUM_INDUSTRYTYPES selects a default industry type.
  */
 static void ShowIndustryCargoesWindow(IndustryType id)
 {
-	assert(id < NUM_INDUSTRYTYPES);
+	if (id >= NUM_INDUSTRYTYPES) {
+		for (uint8 i = 0; i < NUM_INDUSTRYTYPES; i++) {
+			const IndustrySpec *indsp = GetIndustrySpec(_sorted_industry_types[i]);
+			if (indsp->enabled) {
+				id = _sorted_industry_types[i];
+				break;
+			}
+		}
+		if (id >= NUM_INDUSTRYTYPES) return;
+	}
 
 	Window *w = BringWindowToFrontById(WC_INDUSTRY_CARGOES, 0);
 	if (w != NULL) {
@@ -2605,4 +2685,10 @@ static void ShowIndustryCargoesWindow(IndustryType id)
 		return;
 	}
 	new IndustryCargoesWindow(id);
+}
+
+/** Open the industry and cargoes window with an industry. */
+void ShowIndustryCargoesWindow()
+{
+	ShowIndustryCargoesWindow(NUM_INDUSTRYTYPES);
 }

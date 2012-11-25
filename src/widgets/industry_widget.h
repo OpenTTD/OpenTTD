@@ -40,10 +40,12 @@ enum IndustryDirectoryWidgets {
 
 /** Widgets of the #IndustryCargoesWindow class */
 enum IndustryCargoesWidgets {
-	WID_IC_CAPTION,   ///< Caption of the window.
-	WID_IC_NOTIFY,    ///< Row of buttons at the bottom.
-	WID_IC_PANEL,     ///< Panel that shows the chain.
-	WID_IC_SCROLLBAR, ///< Scrollbar of the panel.
+	WID_IC_CAPTION,        ///< Caption of the window.
+	WID_IC_NOTIFY,         ///< Row of buttons at the bottom.
+	WID_IC_PANEL,          ///< Panel that shows the chain.
+	WID_IC_SCROLLBAR,      ///< Scrollbar of the panel.
+	WID_IC_CARGO_DROPDOWN, ///< Select cargo dropdown.
+	WID_IC_IND_DROPDOWN,   ///< Select industry dropdown.
 };
 
 #endif /* WIDGETS_INDUSTRY_WIDGET_H */

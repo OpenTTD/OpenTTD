@@ -634,7 +634,7 @@ static CallBackFunction MenuClickLeague(int index)
 static CallBackFunction ToolbarIndustryClick(Window *w)
 {
 	/* Disable build-industry menu if we are a spectator */
-	PopupMainToolbMenu(w, WID_TN_INDUSTRIES, STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, (_local_company == COMPANY_SPECTATOR) ? 1 : 2);
+	PopupMainToolbMenu(w, WID_TN_INDUSTRIES, STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, (_local_company == COMPANY_SPECTATOR) ? 2 : 3);
 	return CBF_NONE;
 }
 
@@ -647,8 +647,9 @@ static CallBackFunction ToolbarIndustryClick(Window *w)
 static CallBackFunction MenuClickIndustry(int index)
 {
 	switch (index) {
-		case 0: ShowIndustryDirectory();   break;
-		case 1: ShowBuildIndustryWindow(); break;
+		case 0: ShowIndustryDirectory();     break;
+		case 1: ShowIndustryCargoesWindow(); break;
+		case 2: ShowBuildIndustryWindow();   break;
 	}
 	return CBF_NONE;
 }
