@@ -662,6 +662,8 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NG_CONN_BTN,                           "WID_NG_CONN_BTN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NG_CLIENT_LABEL,                       "WID_NG_CLIENT_LABEL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NG_CLIENT,                             "WID_NG_CLIENT");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NG_FILTER_LABEL,                       "WID_NG_FILTER_LABEL");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NG_FILTER,                             "WID_NG_FILTER");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NG_HEADER,                             "WID_NG_HEADER");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NG_NAME,                               "WID_NG_NAME");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NG_CLIENTS,                            "WID_NG_CLIENTS");

@@ -37,6 +37,8 @@
 #include "table/strings.h"
 #include "../table/sprites.h"
 
+#include "../stringfilter_type.h"
+
 
 static void ShowNetworkStartServerWindow();
 static void ShowNetworkLobbyWindow(NetworkGameList *ngl);
@@ -77,7 +79,7 @@ void UpdateNetworkGameWindow()
 	InvalidateWindowData(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME, 0);
 }
 
-typedef GUIList<NetworkGameList*> GUIGameServerList;
+typedef GUIList<NetworkGameList*, StringFilter&> GUIGameServerList;
 typedef uint16 ServerListPosition;
 static const ServerListPosition SLP_INVALID = 0xFFFF;
 
@@ -216,19 +218,22 @@ protected:
 
 	/* Constants for sorting servers */
 	static GUIGameServerList::SortFunction * const sorter_funcs[];
+	static GUIGameServerList::FilterFunction * const filter_funcs[];
 
 	NetworkGameList *server;      ///< selected server
 	NetworkGameList *last_joined; ///< the last joined server
 	GUIGameServerList servers;    ///< list with game servers.
 	ServerListPosition list_pos;  ///< position of the selected server
-	Scrollbar *vscroll;
+	Scrollbar *vscroll;           ///< vertical scrollbar of the list of servers
 	QueryString name_editbox;     ///< Client name editbox.
+	QueryString filter_editbox;   ///< Editbox for filter on servers
 
 	/**
-	 * (Re)build the network game list as its amount has changed because
-	 * an item has been added or deleted for example
+	 * (Re)build the GUI network game list (a.k.a. this->servers) as some
+	 * major change has occurred. It ensures appropriate filtering and
+	 * sorting, if both or either one is enabled.
 	 */
-	void BuildNetworkGameList()
+	void BuildGUINetworkGameList()
 	{
 		if (!this->servers.NeedRebuild()) return;
 
@@ -239,9 +244,24 @@ protected:
 			*this->servers.Append() = ngl;
 		}
 
+		/* Apply the filter condition immediately, if a search string has been provided. */
+		StringFilter sf;
+		sf.SetFilterTerm(this->filter_editbox.text.buf);
+
+		if (!sf.IsEmpty()) {
+			this->servers.SetFilterState(true);
+			this->servers.Filter(sf);
+		} else {
+			this->servers.SetFilterState(false);
+		}
+
 		this->servers.Compact();
 		this->servers.RebuildDone();
 		this->vscroll->SetCount(this->servers.Length());
+
+		/* Sort the list of network games as requested. */
+		this->servers.Sort();
+		this->UpdateListPos();
 	}
 
 	/**
@@ -344,6 +364,16 @@ protected:
 		}
 	}
 
+	static bool CDECL NGameSearchFilter(NetworkGameList * const *item, StringFilter &sf)
+	{
+		assert(item != NULL);
+		assert((*item) != NULL);
+
+		sf.ResetState();
+		sf.AddLine((*item)->info.server_name);
+		return sf.GetState();
+	}
+
 	/**
 	 * Draw a single server line.
 	 * @param cur_item  the server to draw.
@@ -428,7 +458,7 @@ protected:
 	}
 
 public:
-	NetworkGameWindow(const WindowDesc *desc) : name_editbox(NETWORK_CLIENT_NAME_LENGTH)
+	NetworkGameWindow(const WindowDesc *desc) : name_editbox(NETWORK_CLIENT_NAME_LENGTH), filter_editbox(120)
 	{
 		this->list_pos = SLP_INVALID;
 		this->server = NULL;
@@ -440,7 +470,10 @@ public:
 		this->querystrings[WID_NG_CLIENT] = &this->name_editbox;
 		this->name_editbox.text.Assign(_settings_client.network.client_name);
 		this->name_editbox.afilter = CS_ALPHANUMERAL;
-		this->SetFocusedWidget(WID_NG_CLIENT);
+
+		this->querystrings[WID_NG_FILTER] = &this->filter_editbox;
+		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;
+		this->SetFocusedWidget(WID_NG_FILTER);
 
 		this->last_joined = NetworkGameListAddItem(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
 		this->server = this->last_joined;
@@ -448,8 +481,8 @@ public:
 
 		this->servers.SetListing(this->last_sorting);
 		this->servers.SetSortFuncs(this->sorter_funcs);
+		this->servers.SetFilterFuncs(this->filter_funcs);
 		this->servers.ForceRebuild();
-		this->SortNetworkGameList();
 	}
 
 	~NetworkGameWindow()
@@ -561,7 +594,7 @@ public:
 	virtual void OnPaint()
 	{
 		if (this->servers.NeedRebuild()) {
-			this->BuildNetworkGameList();
+			this->BuildGUINetworkGameList();
 		}
 		this->SortNetworkGameList();
 
@@ -681,7 +714,7 @@ public:
 				this->SetDirty();
 				break;
 
-			case WID_NG_MATRIX: { // Matrix to show networkgames
+			case WID_NG_MATRIX: { // Show available network games
 				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NG_MATRIX);
 				this->server = (id_v < this->servers.Length()) ? this->servers[id_v] : NULL;
 				this->list_pos = (server == NULL) ? SLP_INVALID : id_v;
@@ -838,6 +871,14 @@ public:
 	virtual void OnEditboxChanged(int wid)
 	{
 		switch (wid) {
+			case WID_NG_FILTER: {
+				this->servers.ForceRebuild();
+				this->BuildGUINetworkGameList();
+				this->ScrollToSelectedServer();
+				this->SetDirty();
+				break;
+			}
+
 			case WID_NG_CLIENT:
 				/* Make sure the name does not start with a space, so TAB completion works */
 				if (!StrEmpty(this->name_editbox.text.buf) && this->name_editbox.text.buf[0] != ' ') {
@@ -876,6 +917,10 @@ GUIGameServerList::SortFunction * const NetworkGameWindow::sorter_funcs[] = {
 	&NGameAllowedSorter
 };
 
+GUIGameServerList::FilterFunction * const NetworkGameWindow::filter_funcs[] = {
+	&NGameSearchFilter
+};
+
 static NWidgetBase *MakeResizableHeader(int *biggest_index)
 {
 	*biggest_index = max<int>(*biggest_index, WID_NG_INFO);
@@ -891,17 +936,19 @@ static const NWidgetPart _nested_network_game_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, WID_NG_MAIN),
 		NWidget(NWID_VERTICAL), SetPIP(10, 7, 0),
 			NWidget(NWID_HORIZONTAL), SetPIP(10, 7, 10),
-				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, WID_NG_CONNECTION), SetDataTip(STR_NETWORK_SERVER_LIST_CONNECTION, STR_NULL),
-				NWidget(WWT_DROPDOWN, COLOUR_LIGHT_BLUE, WID_NG_CONN_BTN),
-										SetDataTip(STR_BLACK_STRING, STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP),
-				NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
-				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, WID_NG_CLIENT_LABEL), SetDataTip(STR_NETWORK_SERVER_LIST_PLAYER_NAME, STR_NULL),
-				NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, WID_NG_CLIENT), SetMinimalSize(151, 12),
-										SetDataTip(STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE, STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(10, 7, 10),
 				/* LEFT SIDE */
-				NWidget(NWID_VERTICAL),
+				NWidget(NWID_VERTICAL), SetPIP(0, 7, 0),
+					NWidget(NWID_HORIZONTAL), SetPIP(0, 7, 0),
+						NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, WID_NG_CONNECTION), SetDataTip(STR_NETWORK_SERVER_LIST_CONNECTION, STR_NULL),
+						NWidget(WWT_DROPDOWN, COLOUR_LIGHT_BLUE, WID_NG_CONN_BTN),
+											SetDataTip(STR_BLACK_STRING, STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP),
+						NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
+					EndContainer(),
+					NWidget(NWID_HORIZONTAL), SetPIP(0, 7, 0),
+						NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, WID_NG_FILTER_LABEL), SetDataTip(STR_LIST_FILTER_TITLE, STR_NULL),
+						NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, WID_NG_FILTER), SetMinimalSize(251, 12), SetFill(1, 0), SetResize(1, 0),
+											SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+					EndContainer(),
 					NWidget(NWID_HORIZONTAL),
 						NWidget(NWID_VERTICAL),
 							NWidgetFunction(MakeResizableHeader),
@@ -910,36 +957,44 @@ static const NWidgetPart _nested_network_game_widgets[] = {
 						EndContainer(),
 						NWidget(NWID_VSCROLLBAR, COLOUR_LIGHT_BLUE, WID_NG_SCROLLBAR),
 					EndContainer(),
-					NWidget(NWID_SPACER), SetMinimalSize(0, 7), SetResize(1, 0), SetFill(1, 1),
-					NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, WID_NG_LASTJOINED_LABEL), SetFill(1, 0),
-										SetDataTip(STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER, STR_NULL), SetResize(1, 0),
-					NWidget(NWID_HORIZONTAL),
-						NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, WID_NG_LASTJOINED), SetFill(1, 0), SetResize(1, 0),
-											SetDataTip(0x0, STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST),
+					NWidget(NWID_VERTICAL),
+						NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, WID_NG_LASTJOINED_LABEL), SetFill(1, 0),
+											SetDataTip(STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER, STR_NULL), SetResize(1, 0),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, WID_NG_LASTJOINED), SetFill(1, 0), SetResize(1, 0),
+												SetDataTip(0x0, STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST),
+							EndContainer(),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NG_LASTJOINED_SPACER), SetFill(0, 0),
 						EndContainer(),
-						NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NG_LASTJOINED_SPACER), SetFill(0, 0),
 					EndContainer(),
 				EndContainer(),
 				/* RIGHT SIDE */
-				NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, WID_NG_DETAILS),
-					NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(5, 5, 5),
-						NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NG_DETAILS_SPACER), SetMinimalSize(140, 155), SetResize(0, 1), SetFill(1, 1), // Make sure it's at least this wide
-						NWidget(NWID_HORIZONTAL, NC_NONE), SetPIP(5, 5, 5),
-							NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NG_NEWGRF_MISSING_SEL),
-								NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_NEWGRF_MISSING), SetFill(1, 0), SetDataTip(STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON, STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP),
-								NWidget(NWID_SPACER), SetFill(1, 0),
+				NWidget(NWID_VERTICAL), SetPIP(0, 7, 0),
+					NWidget(NWID_HORIZONTAL), SetPIP(0, 7, 0),
+						NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, WID_NG_CLIENT_LABEL), SetDataTip(STR_NETWORK_SERVER_LIST_PLAYER_NAME, STR_NULL),
+						NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, WID_NG_CLIENT), SetMinimalSize(151, 12), SetFill(1, 0), SetResize(1, 0),
+											SetDataTip(STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE, STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP),
+					EndContainer(),
+					NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, WID_NG_DETAILS),
+						NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(5, 5, 5),
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NG_DETAILS_SPACER), SetMinimalSize(140, 155), SetResize(0, 1), SetFill(1, 1), // Make sure it's at least this wide
+							NWidget(NWID_HORIZONTAL, NC_NONE), SetPIP(5, 5, 5),
+								NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NG_NEWGRF_MISSING_SEL),
+									NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_NEWGRF_MISSING), SetFill(1, 0), SetDataTip(STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON, STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP),
+									NWidget(NWID_SPACER), SetFill(1, 0),
+								EndContainer(),
 							EndContainer(),
-						EndContainer(),
-						NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(5, 5, 5),
-							NWidget(NWID_SPACER), SetFill(1, 0),
-							NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NG_NEWGRF_SEL),
-								NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_NEWGRF), SetFill(1, 0), SetDataTip(STR_INTRO_NEWGRF_SETTINGS, STR_NULL),
+							NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(5, 5, 5),
 								NWidget(NWID_SPACER), SetFill(1, 0),
+								NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NG_NEWGRF_SEL),
+									NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_NEWGRF), SetFill(1, 0), SetDataTip(STR_INTRO_NEWGRF_SETTINGS, STR_NULL),
+									NWidget(NWID_SPACER), SetFill(1, 0),
+								EndContainer(),
 							EndContainer(),
-						EndContainer(),
-						NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(5, 5, 5),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_JOIN), SetFill(1, 0), SetDataTip(STR_NETWORK_SERVER_LIST_JOIN_GAME, STR_NULL),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_REFRESH), SetFill(1, 0), SetDataTip(STR_NETWORK_SERVER_LIST_REFRESH, STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP),
+							NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(5, 5, 5),
+								NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_JOIN), SetFill(1, 0), SetDataTip(STR_NETWORK_SERVER_LIST_JOIN_GAME, STR_NULL),
+								NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_REFRESH), SetFill(1, 0), SetDataTip(STR_NETWORK_SERVER_LIST_REFRESH, STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP),
+							EndContainer(),
 						EndContainer(),
 					EndContainer(),
 				EndContainer(),
