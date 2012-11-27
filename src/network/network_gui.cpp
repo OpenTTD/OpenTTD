@@ -837,13 +837,15 @@ public:
 
 	virtual void OnEditboxChanged(int wid)
 	{
-		if (wid == WID_NG_CLIENT) {
-			/* The name is only allowed when it starts with a letter! */
-			if (!StrEmpty(this->name_editbox.text.buf) && this->name_editbox.text.buf[0] != ' ') {
-				strecpy(_settings_client.network.client_name, this->name_editbox.text.buf, lastof(_settings_client.network.client_name));
-			} else {
-				strecpy(_settings_client.network.client_name, "Player", lastof(_settings_client.network.client_name));
-			}
+		switch (wid) {
+			case WID_NG_CLIENT:
+				/* Make sure the name does not start with a space, so TAB completion works */
+				if (!StrEmpty(this->name_editbox.text.buf) && this->name_editbox.text.buf[0] != ' ') {
+					strecpy(_settings_client.network.client_name, this->name_editbox.text.buf, lastof(_settings_client.network.client_name));
+				} else {
+					strecpy(_settings_client.network.client_name, "Player", lastof(_settings_client.network.client_name));
+				}
+				break;
 		}
 	}
 
