@@ -597,6 +597,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Išsamus veiklo
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Pramonės katalogas
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Gamybos grandinės
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finansuoti naują pramonės įmonę
 ############ range ends here
 
@@ -1000,7 +1001,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}{INDUSTRY} praneša apie rastus naujus akmens anglies telkinius!{}Produkciją tikimasi padvigubinti!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}{INDUSTRY} praneša apie rastus naujus naftos telkinius!{}Produkciją tikimasi padvigubinti!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY} praneša apie įdiegtus naujus žemdirbystės metodus! Produkciją tikimasi padvigubinti!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING.ko} produkcija auga ({INDUSTRY}) - {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Auga {STRING.ko} produkcija ({INDUSTRY.kur}, {COMMA}%)!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} praneša apie perpus sumažėsiančią produkciją
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY} praneša apie dėl vabzdžių antplūdžio perpus sumažėsiančią produkciją
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Krenta {STRING.ko} produkcija ({INDUSTRY.kur}, {COMMA}%)!
@@ -2573,17 +2574,21 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Statyti
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansuoti
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Pramonės grandinė {STRING} pramonei
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Pramonės grandinė {STRING} kroviniams
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Gamybos pramonės šakos
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Priimančios pramonės šakos
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Gamybos grandinė {STRING.kam}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Gamybos grandinė {STRING.kam}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Tiekiančios įmonės
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Priimančios įmonės
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Namai
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Paspauskite ant pramonės tam, kad pamatytumėte tiekėjus ir pirkėjus
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Paspauskite ant krovinio tam, kad pamatytumėte tiekėjus ir pirkėjus
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Spragtelkite, jei norite pamatyti šios pramonės įmonės tiekėjus ir pirkėjus
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Spragtelkite, jei norite pamatyti šio krovinio tiekėjus ir pirkėjus
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Parodyti grandinę
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Parodyti krovinį tiekiančias ir priimančias pramones
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Nuoroda į mažą žemėlapį
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Pasirinkti pavaizduotas pramones taip pat ir mažajame žemėlapyje
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Parodyti krovinį tiekiančias ir priimančias pramonės įmones
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Nuoroda į žemėlapį
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Parodyti pasirinktą grandinę žemėlapyje
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Krovinio tipas
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Pasirinkite krovinio tipą, kurio gamybos grandinę norite peržiūrėti
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Pramonės įmonė
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Pasirinkite pramonės įmonę, kurios gamybos grandinę norite peržiūrėti
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informacija apie žemės plotą
@@ -4511,36 +4516,253 @@ STR_INDUSTRY_NAME_OIL_RIG.kuo                                   :{G=mot}naftos p
 STR_INDUSTRY_NAME_OIL_RIG.kur                                   :{G=mot}naftos platformoje
 STR_INDUSTRY_NAME_OIL_RIG.kreip                                 :{G=mot}naftos platforma
 STR_INDUSTRY_NAME_FACTORY                                       :{G=mot}gamykla
+STR_INDUSTRY_NAME_FACTORY.kas                                   :{G=mot}gamykla
+STR_INDUSTRY_NAME_FACTORY.ko                                    :{G=mot}gamyklos
+STR_INDUSTRY_NAME_FACTORY.kam                                   :{G=mot}gamyklai
+STR_INDUSTRY_NAME_FACTORY.ka                                    :{G=mot}gamyklą
+STR_INDUSTRY_NAME_FACTORY.kuo                                   :{G=mot}gamykla
+STR_INDUSTRY_NAME_FACTORY.kur                                   :{G=mot}gamykloje
+STR_INDUSTRY_NAME_FACTORY.kreip                                 :{G=mot}gamykla
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=mot}spaustuvė
+STR_INDUSTRY_NAME_PRINTING_WORKS.kas                            :{G=mot}spaustuvė
+STR_INDUSTRY_NAME_PRINTING_WORKS.ko                             :{G=mot}spaustuvės
+STR_INDUSTRY_NAME_PRINTING_WORKS.kam                            :{G=mot}spaustuvei
+STR_INDUSTRY_NAME_PRINTING_WORKS.ka                             :{G=mot}spaustuvę
+STR_INDUSTRY_NAME_PRINTING_WORKS.kuo                            :{G=mot}spaustuve
+STR_INDUSTRY_NAME_PRINTING_WORKS.kur                            :{G=mot}spaustuvėje
+STR_INDUSTRY_NAME_PRINTING_WORKS.kreip                          :{G=mot}spaustuve
 STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=mot}plieno liejykla
+STR_INDUSTRY_NAME_STEEL_MILL.kas                                :{G=mot}plieno liejykla
+STR_INDUSTRY_NAME_STEEL_MILL.ko                                 :{G=mot}plieno liejyklos
+STR_INDUSTRY_NAME_STEEL_MILL.kam                                :{G=mot}plieno liejyklai
+STR_INDUSTRY_NAME_STEEL_MILL.ka                                 :{G=mot}plieno liejyklą
+STR_INDUSTRY_NAME_STEEL_MILL.kuo                                :{G=mot}plieno liejykla
+STR_INDUSTRY_NAME_STEEL_MILL.kur                                :{G=mot}plieno liejykloje
+STR_INDUSTRY_NAME_STEEL_MILL.kreip                              :{G=mot}plieno liejykla
 STR_INDUSTRY_NAME_FARM                                          :{G=vyr}ūkis
+STR_INDUSTRY_NAME_FARM.kas                                      :{G=vyr}ūkis
+STR_INDUSTRY_NAME_FARM.ko                                       :{G=vyr}ūkio
+STR_INDUSTRY_NAME_FARM.kam                                      :{G=vyr}ūkiui
+STR_INDUSTRY_NAME_FARM.ka                                       :{G=vyr}ūkį
+STR_INDUSTRY_NAME_FARM.kuo                                      :{G=vyr}ūkiu
+STR_INDUSTRY_NAME_FARM.kur                                      :{G=vyr}ūkyje
+STR_INDUSTRY_NAME_FARM.kreip                                    :{G=vyr}ūki
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=mot}vario rūdos kasykla
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.kas                           :{G=mot}vario rūdos kasykla
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.ko                            :{G=mot}vario rūdos kasyklos
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.kam                           :{G=mot}vario rūdos kasyklai
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.ka                            :{G=mot}vario rūdos kasyklą
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.kuo                           :{G=mot}vario rūdos kasykla
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.kur                           :{G=mot}vario rūdos kasykloje
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.kreip                         :{G=mot}vario rūdos kasykla
 STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=vyr}naftos gręžinys
+STR_INDUSTRY_NAME_OIL_WELLS.kas                                 :{G=vyr}naftos gręžinys
+STR_INDUSTRY_NAME_OIL_WELLS.ko                                  :{G=vyr}naftos gręžinio
+STR_INDUSTRY_NAME_OIL_WELLS.kam                                 :{G=vyr}naftos gręžiniui
+STR_INDUSTRY_NAME_OIL_WELLS.ka                                  :{G=vyr}naftos gręžinį
+STR_INDUSTRY_NAME_OIL_WELLS.kuo                                 :{G=vyr}naftos gręžiniu
+STR_INDUSTRY_NAME_OIL_WELLS.kur                                 :{G=vyr}naftos gręžinyje
+STR_INDUSTRY_NAME_OIL_WELLS.kreip                               :{G=vyr}naftos gręžiny
 STR_INDUSTRY_NAME_BANK                                          :{G=vyr}bankas
+STR_INDUSTRY_NAME_BANK.kas                                      :{G=vyr}bankas
+STR_INDUSTRY_NAME_BANK.ko                                       :{G=vyr}banko
+STR_INDUSTRY_NAME_BANK.kam                                      :{G=vyr}bankui
+STR_INDUSTRY_NAME_BANK.ka                                       :{G=vyr}banką
+STR_INDUSTRY_NAME_BANK.kuo                                      :{G=vyr}banku
+STR_INDUSTRY_NAME_BANK.kur                                      :{G=vyr}banke
+STR_INDUSTRY_NAME_BANK.kreip                                    :{G=vyr}banke
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=mot}maisto perdirbimo įmonė
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.kas                     :{G=mot}maisto perdirbimo įmonė
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.ko                      :{G=mot}maisto perdirbimo įmonės
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.kam                     :{G=mot}maisto perdirbimo įmonei
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.ka                      :{G=mot}maisto perdirbimo įmonę
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.kuo                     :{G=mot}maisto perdirbimo įmone
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.kur                     :{G=mot}maisto perdirbimo įmonėje
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.kreip                   :{G=mot}maisto perdirbimo įmone
 STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=vyr}popieriaus fabrikas
+STR_INDUSTRY_NAME_PAPER_MILL.kas                                :{G=vyr}popieriaus fabrikas
+STR_INDUSTRY_NAME_PAPER_MILL.ko                                 :{G=vyr}popieriaus fabriko
+STR_INDUSTRY_NAME_PAPER_MILL.kam                                :{G=vyr}popieriaus fabrikui
+STR_INDUSTRY_NAME_PAPER_MILL.ka                                 :{G=vyr}popieriaus fabriką
+STR_INDUSTRY_NAME_PAPER_MILL.kuo                                :{G=vyr}popieriaus fabriku
+STR_INDUSTRY_NAME_PAPER_MILL.kur                                :{G=vyr}popieriaus fabrike
+STR_INDUSTRY_NAME_PAPER_MILL.kreip                              :{G=vyr}popieriaus fabrike
 STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=mot}aukso kasykla
+STR_INDUSTRY_NAME_GOLD_MINE.kas                                 :{G=mot}aukso kasykla
+STR_INDUSTRY_NAME_GOLD_MINE.ko                                  :{G=mot}aukso kasyklos
+STR_INDUSTRY_NAME_GOLD_MINE.kam                                 :{G=mot}aukso kasyklai
+STR_INDUSTRY_NAME_GOLD_MINE.ka                                  :{G=mot}aukso kasyklą
+STR_INDUSTRY_NAME_GOLD_MINE.kuo                                 :{G=mot}aukso kasykla
+STR_INDUSTRY_NAME_GOLD_MINE.kur                                 :{G=mot}aukso kasykloje
+STR_INDUSTRY_NAME_GOLD_MINE.kreip                               :{G=mot}aukso kasykla
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=vyr}bankas
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.kas                        :{G=vyr}bankas
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.ko                         :{G=vyr}banko
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.kam                        :{G=vyr}bankui
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.ka                         :{G=vyr}banką
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.kuo                        :{G=vyr}banku
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.kur                        :{G=vyr}banke
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.kreip                      :{G=vyr}banke
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=mot}deimantų kasykla
+STR_INDUSTRY_NAME_DIAMOND_MINE.kas                              :{G=mot}deimantų kasykla
+STR_INDUSTRY_NAME_DIAMOND_MINE.ko                               :{G=mot}deimantų kasyklos
+STR_INDUSTRY_NAME_DIAMOND_MINE.kam                              :{G=mot}deimantų kasyklai
+STR_INDUSTRY_NAME_DIAMOND_MINE.ka                               :{G=mot}deimantų kasyklą
+STR_INDUSTRY_NAME_DIAMOND_MINE.kuo                              :{G=mot}deimantų kasykla
+STR_INDUSTRY_NAME_DIAMOND_MINE.kur                              :{G=mot}deimantų kasykloje
+STR_INDUSTRY_NAME_DIAMOND_MINE.kreip                            :{G=mot}deimantų kasykla
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=mot}geležies rūdos kasykla
+STR_INDUSTRY_NAME_IRON_ORE_MINE.kas                             :{G=mot}geležies rūdos kasykla
+STR_INDUSTRY_NAME_IRON_ORE_MINE.ko                              :{G=mot}geležies rūdos kasyklos
+STR_INDUSTRY_NAME_IRON_ORE_MINE.kam                             :{G=mot}geležies rūdos kasyklai
+STR_INDUSTRY_NAME_IRON_ORE_MINE.ka                              :{G=mot}geležies rūdos kasyklą
+STR_INDUSTRY_NAME_IRON_ORE_MINE.kuo                             :{G=mot}geležies rūdos kasykla
+STR_INDUSTRY_NAME_IRON_ORE_MINE.kur                             :{G=mot}geležies rūdos kasykloje
+STR_INDUSTRY_NAME_IRON_ORE_MINE.kreip                           :{G=mot}geležies rūdos kasykla
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=mot}vaisių plantacija
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.kas                          :{G=mot}vaisių plantacija
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.ko                           :{G=mot}vaisių plantacijos
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.kam                          :{G=mot}vaisių plantacijai
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.ka                           :{G=mot}vaisių plantaciją
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.kuo                          :{G=mot}vaisių plantacija
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.kur                          :{G=mot}vaisių plantacijoje
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.kreip                        :{G=mot}vaisių plantacija
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=mot}kaučiukmedžių plantacija
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.kas                         :{G=mot}kaučiukmedžių plantacija
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.ko                          :{G=mot}kaučiukmedžių plantacijos
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.kam                         :{G=mot}kaučiukmedžių plantacijai
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.ka                          :{G=mot}kaučiukmedžių plantaciją
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.kuo                         :{G=mot}kaučiukmedžių plantacija
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.kur                         :{G=mot}kaučiukmedžių plantacijoje
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.kreip                       :{G=mot}kaučiukmedžių plantacija
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=vyr}vandens gręžinys
+STR_INDUSTRY_NAME_WATER_SUPPLY.kas                              :{G=vyr}vandens gręžinys
+STR_INDUSTRY_NAME_WATER_SUPPLY.ko                               :{G=vyr}vandens gręžinio
+STR_INDUSTRY_NAME_WATER_SUPPLY.kam                              :{G=vyr}vandens gręžiniui
+STR_INDUSTRY_NAME_WATER_SUPPLY.ka                               :{G=vyr}vandens gręžinį
+STR_INDUSTRY_NAME_WATER_SUPPLY.kuo                              :{G=vyr}vandens gręžiniu
+STR_INDUSTRY_NAME_WATER_SUPPLY.kur                              :{G=vyr}vandens gręžinyje
+STR_INDUSTRY_NAME_WATER_SUPPLY.kreip                            :{G=vyr}vandens gręžiny
 STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=vyr}vandentiekio bokštas
+STR_INDUSTRY_NAME_WATER_TOWER.kas                               :{G=vyr}vandentiekio bokštas
+STR_INDUSTRY_NAME_WATER_TOWER.ko                                :{G=vyr}vandentiekio bokšto
+STR_INDUSTRY_NAME_WATER_TOWER.kam                               :{G=vyr}vandentiekio bokštui
+STR_INDUSTRY_NAME_WATER_TOWER.ka                                :{G=vyr}vandentiekio bokštą
+STR_INDUSTRY_NAME_WATER_TOWER.kuo                               :{G=vyr}vandentiekio bokštu
+STR_INDUSTRY_NAME_WATER_TOWER.kur                               :{G=vyr}vandentiekio bokšte
+STR_INDUSTRY_NAME_WATER_TOWER.kreip                             :{G=vyr}vandentiekio bokšte
 STR_INDUSTRY_NAME_FACTORY_2                                     :{G=mot}gamykla
+STR_INDUSTRY_NAME_FACTORY_2.kas                                 :{G=mot}gamykla
+STR_INDUSTRY_NAME_FACTORY_2.ko                                  :{G=mot}gamyklos
+STR_INDUSTRY_NAME_FACTORY_2.kam                                 :{G=mot}gamyklai
+STR_INDUSTRY_NAME_FACTORY_2.ka                                  :{G=mot}gamyklą
+STR_INDUSTRY_NAME_FACTORY_2.kuo                                 :{G=mot}gamykla
+STR_INDUSTRY_NAME_FACTORY_2.kur                                 :{G=mot}gamykloje
+STR_INDUSTRY_NAME_FACTORY_2.kreip                               :{G=mot}gamykla
 STR_INDUSTRY_NAME_FARM_2                                        :{G=vyr}ūkis
+STR_INDUSTRY_NAME_FARM_2.kas                                    :{G=vyr}ūkis
+STR_INDUSTRY_NAME_FARM_2.ko                                     :{G=vyr}ūkio
+STR_INDUSTRY_NAME_FARM_2.kam                                    :{G=vyr}ūkiui
+STR_INDUSTRY_NAME_FARM_2.ka                                     :{G=vyr}ūkį
+STR_INDUSTRY_NAME_FARM_2.kuo                                    :{G=vyr}ūkiu
+STR_INDUSTRY_NAME_FARM_2.kur                                    :{G=vyr}ūkyje
+STR_INDUSTRY_NAME_FARM_2.kreip                                  :{G=vyr}ūki
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=mot}lentpjūvė
+STR_INDUSTRY_NAME_LUMBER_MILL.kas                               :{G=mot}lentpjūvė
+STR_INDUSTRY_NAME_LUMBER_MILL.ko                                :{G=mot}lentpjūvės
+STR_INDUSTRY_NAME_LUMBER_MILL.kam                               :{G=mot}lentpjūvei
+STR_INDUSTRY_NAME_LUMBER_MILL.ka                                :{G=mot}lentpjūvę
+STR_INDUSTRY_NAME_LUMBER_MILL.kuo                               :{G=mot}lentpjūve
+STR_INDUSTRY_NAME_LUMBER_MILL.kur                               :{G=mot}lentpjūvėje
+STR_INDUSTRY_NAME_LUMBER_MILL.kreip                             :{G=mot}lentpjūve
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=vyr}ledinukų miškas
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.kas                       :{G=vyr}ledinukų miškas
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.ko                        :{G=vyr}ledinukų miško
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.kam                       :{G=vyr}ledinukų miškui
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.ka                        :{G=vyr}ledinukų mišką
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.kuo                       :{G=vyr}ledinukų mišku
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.kur                       :{G=vyr}ledinukų miške
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.kreip                     :{G=vyr}ledinukų miške
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=vyr}saldumynų fabrikas
+STR_INDUSTRY_NAME_CANDY_FACTORY.kas                             :{G=vyr}saldumynų fabrikas
+STR_INDUSTRY_NAME_CANDY_FACTORY.ko                              :{G=vyr}saldumynų fabriko
+STR_INDUSTRY_NAME_CANDY_FACTORY.kam                             :{G=vyr}saldumynų fabrikui
+STR_INDUSTRY_NAME_CANDY_FACTORY.ka                              :{G=vyr}saldumynų fabriką
+STR_INDUSTRY_NAME_CANDY_FACTORY.kuo                             :{G=vyr}saldumynų fabriku
+STR_INDUSTRY_NAME_CANDY_FACTORY.kur                             :{G=vyr}saldumynų fabrike
+STR_INDUSTRY_NAME_CANDY_FACTORY.kreip                           :{G=vyr}saldumynų fabrike
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=vyr}baterijų ūkis
+STR_INDUSTRY_NAME_BATTERY_FARM.kas                              :{G=vyr}baterijų ūkis
+STR_INDUSTRY_NAME_BATTERY_FARM.ko                               :{G=vyr}baterijų ūkio
+STR_INDUSTRY_NAME_BATTERY_FARM.kam                              :{G=vyr}baterijų ūkiui
+STR_INDUSTRY_NAME_BATTERY_FARM.ka                               :{G=vyr}baterijų ūkį
+STR_INDUSTRY_NAME_BATTERY_FARM.kuo                              :{G=vyr}baterijų ūkiu
+STR_INDUSTRY_NAME_BATTERY_FARM.kur                              :{G=vyr}baterijų ūkyje
+STR_INDUSTRY_NAME_BATTERY_FARM.kreip                            :{G=vyr}baterijų ūki
 STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=vyr}kolos šulinys
+STR_INDUSTRY_NAME_COLA_WELLS.kas                                :{G=vyr}kolos šulinys
+STR_INDUSTRY_NAME_COLA_WELLS.ko                                 :{G=vyr}kolos šulinio
+STR_INDUSTRY_NAME_COLA_WELLS.kam                                :{G=vyr}kolos šuliniui
+STR_INDUSTRY_NAME_COLA_WELLS.ka                                 :{G=vyr}kolos šulinį
+STR_INDUSTRY_NAME_COLA_WELLS.kuo                                :{G=vyr}kolos šuliniu
+STR_INDUSTRY_NAME_COLA_WELLS.kur                                :{G=vyr}kolos šulinyje
+STR_INDUSTRY_NAME_COLA_WELLS.kreip                              :{G=vyr}kolos šuliny
 STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=mot}žaislų parduotuvė
+STR_INDUSTRY_NAME_TOY_SHOP.kas                                  :{G=mot}žaislų parduotuvė
+STR_INDUSTRY_NAME_TOY_SHOP.ko                                   :{G=mot}žaislų parduotuvės
+STR_INDUSTRY_NAME_TOY_SHOP.kam                                  :{G=mot}žaislų parduotuvei
+STR_INDUSTRY_NAME_TOY_SHOP.ka                                   :{G=mot}žaislų parduotuvę
+STR_INDUSTRY_NAME_TOY_SHOP.kuo                                  :{G=mot}žaislų parduotuve
+STR_INDUSTRY_NAME_TOY_SHOP.kur                                  :{G=mot}žaislų parduotuvėje
+STR_INDUSTRY_NAME_TOY_SHOP.kreip                                :{G=mot}žaislų parduotuve
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=vyr}žaislų fabrikas
+STR_INDUSTRY_NAME_TOY_FACTORY.kas                               :{G=vyr}žaislų fabrikas
+STR_INDUSTRY_NAME_TOY_FACTORY.ko                                :{G=vyr}žaislų fabriko
+STR_INDUSTRY_NAME_TOY_FACTORY.kam                               :{G=vyr}žaislų fabrikui
+STR_INDUSTRY_NAME_TOY_FACTORY.ka                                :{G=vyr}žaislų fabriką
+STR_INDUSTRY_NAME_TOY_FACTORY.kuo                               :{G=vyr}žaislų fabriku
+STR_INDUSTRY_NAME_TOY_FACTORY.kur                               :{G=vyr}žaislų fabrike
+STR_INDUSTRY_NAME_TOY_FACTORY.kreip                             :{G=vyr}žaislų fabrike
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=vyr}plastiko fontanai
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.kas                         :{G=vyr}plastiko fontanai
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.ko                          :{G=vyr}plastiko fontanų
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.kam                         :{G=vyr}plastiko fontanams
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.ka                          :{G=vyr}plastiko fontanus
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.kuo                         :{G=vyr}plastiko fontanais
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.kur                         :{G=vyr}plastiko fontanuose
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.kreip                       :{G=vyr}plastiko fontanai
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=mot}putojančių gėrimų gamykla
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.kas                       :{G=mot}putojančių gėrimų gamykla
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.ko                        :{G=mot}putojančių gėrimų gamyklos
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.kam                       :{G=mot}putojančių gėrimų gamyklai
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.ka                        :{G=mot}putojančių gėrimų gamyklą
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.kuo                       :{G=mot}putojančių gėrimų gamykla
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.kur                       :{G=mot}putojančių gėrimų gamykloje
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.kreip                     :{G=mot}putojančių gėrimų gamykla
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=vyr}burbulų generatorius
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.kas                          :{G=vyr}burbulų generatorius
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.ko                           :{G=vyr}burbulų generatoriaus
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.kam                          :{G=vyr}burbulų generatoriui
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.ka                           :{G=vyr}burbulų generatorius
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.kuo                          :{G=vyr}burbulų generatoriais
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.kur                          :{G=vyr}burbulų generatoriuose
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.kreip                        :{G=vyr}burbulų generatoriau
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=vyr}saldainių fabrikas
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.kas                             :{G=vyr}saldainių fabrikas
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.ko                              :{G=vyr}saldainių fabriko
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.kam                             :{G=vyr}saldainių fabrikui
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.ka                              :{G=vyr}saldainių fabriką
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.kuo                             :{G=vyr}saldainių fabriku
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.kur                             :{G=vyr}saldainių fabrike
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.kreip                           :{G=vyr}saldainių fabrike
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=mot}cukraus kasykla
+STR_INDUSTRY_NAME_SUGAR_MINE.kas                                :{G=mot}cukraus kasykla
+STR_INDUSTRY_NAME_SUGAR_MINE.ko                                 :{G=mot}cukraus kasyklos
+STR_INDUSTRY_NAME_SUGAR_MINE.kam                                :{G=mot}cukraus kasyklai
+STR_INDUSTRY_NAME_SUGAR_MINE.ka                                 :{G=mot}cukraus kasyklą
+STR_INDUSTRY_NAME_SUGAR_MINE.kuo                                :{G=mot}cukraus kasykla
+STR_INDUSTRY_NAME_SUGAR_MINE.kur                                :{G=mot}cukraus kasykloje
+STR_INDUSTRY_NAME_SUGAR_MINE.kreip                              :{G=mot}cukraus kasykla
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!

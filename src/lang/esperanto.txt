@@ -399,6 +399,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detala rendimen
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industria katalogo
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Industriaj ĉenoj
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fondu novan industrion
 ############ range ends here
 
@@ -1086,6 +1087,13 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Ĉi tiu 
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancitaj agordoj
+
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Bazniveloj agordoj
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Altnivelaj agordoj
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Altnivelaj agordoj / ĉiu agordoj
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :agordoj kiuj malsimilas al la originala
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Ne-klientaj agordoj kiu malsimilas al la originalaj
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Agordoj kiu malsimilas al via novajuldaj agordoj
 
 STR_CONFIG_SETTING_OFF                                          :Malaktiva
 STR_CONFIG_SETTING_ON                                           :Aktiva
@@ -2106,6 +2114,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Montru �
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Montru ŝarĝoj provizantajn kaj akceptantajn industriojn
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Sinsekvigu al karteto
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Ankaŭ elektu la montrajn industriojn je la karteto
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Elektu Ŝarĝon
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Electu la ŝarĝon, kiun vi deziras montri
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Electu industrion
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Elektu industrion, kiun vi deziras montri
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landregionaj informoj
@@ -2535,6 +2547,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Akceptas
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Montri liston de akceptataj ŝarĝoj.
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Akceptiĝas: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Takso
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Montru stacian takson
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Loka takso de transportservoj:
@@ -2560,6 +2573,7 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Montru �
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Montru ĉiujn ŝipojn kun ĉi tiu stacio en la plano
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Alinomi stacion/ŝarĝejon
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}

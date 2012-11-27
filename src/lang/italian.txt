@@ -404,6 +404,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Valutazione det
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Elenco industrie
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Catene di distribuzione
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finanzia nuova industria
 ############ range ends here
 
@@ -2417,6 +2418,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Catena d
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostra la catena di industrie fornitrici e clienti
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Collega alla minimappa
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Seleziona le industrie visualizzate anche sulla minimappa
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Seleziona carico
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Seleziona il carico da mostrare
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Seleziona industria
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Seleziona l'industria da mostrare
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informazioni sull'area di terreno

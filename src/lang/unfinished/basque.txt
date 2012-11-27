@@ -373,7 +373,7 @@ STR_FILE_MENU_EXIT                                              :Irten
 
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Munduko mapa
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ikuspegi extra
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :lehio extra
 STR_MAP_MENU_SIGN_LIST                                          :Errotulu zerrenda
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Herri direktorioa
@@ -402,6 +402,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Errendimentu xe
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industria direktorioa
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Industri katea
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Industria berri bat eraiki
 ############ range ends here
 
@@ -453,6 +454,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Mapa osoaren ar
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'-ri buruz
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :"Sprit" lerrokatzailea
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Kaxen neurriak aldatu
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Txandakatu bloke zikinen kolorea
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -851,6 +853,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Diru-laguntza {STRING}entzako da!{}{}{STRING} {STRING}tik {STRING}ra doan zerbitzuak laukoitza irabaziko du hurrengo urtean zehar!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK} Trafiko nahaste-borrastea {TOWN}en!{}{} {STRING}k ordaindutako errepideen konponketa plana sei hilabeterako arazoak esanguratzen die gidariei!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Garraio monopolia!!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN}ko udaletxeak {STRING}rekin urte beterako erabateko garraio-eskubideen kontratua sinatu du!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Leihoa {COMMA}
@@ -893,6 +897,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Turkiarra 
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Eslovakiar Koroa (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Erreal Brasildarra (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estoniar Koroa (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lituaniako Litas-ak (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Hego koreako Won-a (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Hego Afrikako Rand-a (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Pertsonalizatua...
 ############ end of currency region
 
@@ -1097,9 +1104,26 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Akzio ho
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Konfigurazio aurreratuak
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Lokarri iragazkia:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Guztia haunditu
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Guztia kolapsatu
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(Ez dago azalpen erabilgarririk)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Balio lehenetsia: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Mota ezarpena: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Bezero ezarpenak (Ez dago gorden bilduta; joku guztiei eragiten die)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Joku ezarpenak (Gorden bilduta; bakarrik joku berriei eragiten die)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Joku ezarpenak (Gorden bilduta; bakarrik uneko jokoari eragiten dio)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Konpainia ezarpenak (Gorden bilduta; bakarrik joku berriei eragingo die)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Konpainia ezarpenak (Gorden bilduta; bakarrik uneko konpainiari eragiten dio)
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Erakutsi
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Beheko zerrenda laburtu bakarrik aldatutako ezarpenak erakutsiz
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Oinarrizko ezarpenak
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Ezarpen aurreratuak
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Adituentzako ezarpenak / Ezarpen guztiak
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ezarpenak lehenetsitakoen balio ezberdinarekin
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Bezero-eza ezarpenak lehenetsitakoen balio ezberdinarekin
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Balio ezberdinak dituzten ezarpenak zure joko berriaren ezarpenekin alderatuta
 
 STR_CONFIG_SETTING_OFF                                          :Itzalita
 STR_CONFIG_SETTING_ON                                           :Piztuta
@@ -1118,10 +1142,18 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Erdia
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Eskuina
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Aldapa eta kostan eraikitzea baimendu: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Gaitua badago, bideak eta geltokiak mendi magal gehienetan eraiki daitezke. Desgaitua badago, bakarrik onartuko dira bidearen norabidearekin bat datozen mendi magalak
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Eraikinen, trenbideen etabarren azpian paisaia aldatzea baimendu. (autoaldapak): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Eraikin eta bideen azpian paisaia aldatzea baimendu hauek kendu gabe
 STR_CONFIG_SETTING_CATCHMENT                                    :Bilketa guneen tamaina errealago egitea baimendu: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Tamaina ezberdinetako jasotze eremuak izan mota ezberdinetako geltoki eta aireportuentzat
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Herriarenak diren errepide, zubi eta tunel gehiago kentzea baimendu: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Herrien eraikin eta infraestrukturak kentzea errazago egin.
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Gehienezko tren luzera: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Ezarri gehienezko tren luzera
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} fitxa{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Trenaren ke/txinparta kantitatea: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Ezarri zenbat ke edo zenbat txinparta igorriko duten ibilgailuek
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Trenaren azelerazio modeloa: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Ibilgailuen azelerazio modelua: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Itsasontzi eta trenei 90 graduko biraketak debekatu: {STRING}
@@ -1143,8 +1175,13 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :erdian
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :amaieratik urrun
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Errepide ibilgailuen lerroketak(quantum efektuekin): {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Leioa mugitu kurtsorea ertzean dagoenean: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desgaitua
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Lehio nagusia, bakarrik pantaila osoa
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Lehio nagusia
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Lehio guztiak
 STR_CONFIG_SETTING_BRIBE                                        :Udaletxeko agintariak erostea baimendu: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Garraiatzeko eskubide esklusiboen erosketa baimendu: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Konpainia batek erabateko garraio eskubideak erosten baditu, aukarien geltokiek (bidaiari zehin ondasun) ez dute inolako ondasunik jasoko urte oso batez
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Eraikinak ordaintzea baimendu: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Bertako errepideak hobetzea utzi: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Beste empresei dirua bidaltzea baimendu: {STRING}
@@ -1177,6 +1214,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Marren lodiera 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Lur sortzailea: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originala
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Petroleo findegiak bakarrik maparen ertzatik hurbil eraiki daitezke, kostan irla mapetan
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Elurra hasten den altuera: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Paisaiaren malkartasun maila (TerraGenesis erabiltzean soilik) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Oso Leuna
@@ -1192,6 +1230,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Erlojuko orratz
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Erlojuko orratzen erara
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Eszenario-mapa lauak hartzen duten altuera maila: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Maparen ertzean dauden laukitxoetan paisaia eraldatzea baimendu: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Desgaituta badago, maparen mugak itsasoa izango dira beti
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ipar ertzean dauden laukitxoetako bat, edo bat baino gehiago ez daude hutsik
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Edozein ertzean dauden laukitxo bat edo bat baino gehiagotan ez da urik egongo
 
@@ -1336,6 +1375,9 @@ STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ez da aurkitu
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistema NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :bateraezina OpenTTD bertsio honetarako
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :ezezaguna
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... jaramonik ez egiten Grafiko baseari '{STRING}': ez da aurkitu
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... jaramonik ez egiten Soinu Paketeari '{STRING}': ez da aurkitu
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... jaramonik ez egiten musika paketeari'{STRING}': ez da aurkitu
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1568,6 +1610,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Elkartea
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Industrien kargaren suministroa eta onarpena erakutsi
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link-a mapa txikira
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Mapa txikian agertzen diren industriak aukeratu
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Aukeratu karga
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Aukeratu ikusi nahi duzun karga
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Aukeratu industria
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Aukeratu ikusi nahi duzun industria
 
 # Land area window
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Aireportu mota: {LTBLUE}{STRING}
@@ -1907,6 +1953,8 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARG
 
 
 # Vehicle refit
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Gaitasun berria: {GOLD}{CARGO_LONG}{}{BLACK}Onuren berritzea: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Gaitasun berria: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Onuren berritzea: {GREEN}{CURRENCY_LONG}
 
 
 
@@ -2018,6 +2066,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 

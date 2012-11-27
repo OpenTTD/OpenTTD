@@ -127,7 +127,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} d
 STR_QUANTITY_BATTERIES                                          :{COMMA} batterie{P "" s}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} de plastique
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} boisson{P "" s} gazeuse{P "" s}
-STR_QUANTITY_N_A                                                :N/D
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -230,7 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Renommer
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fermer la fenêtre
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titre de fenêtre - Faire glisser pour déplacer la fenêtre
-STR_TOOLTIP_SHADE                                               :{BLACK}Enrouler la fenêtre - N'afficher que la barre de titre
+STR_TOOLTIP_SHADE                                               :{BLACK}Réduire la fenêtre - N'affiche que la barre de titre
 STR_TOOLTIP_DEBUG                                               :{BLACK}Afficher les informations de débogage NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Marquer cette fenêtre comme ineffaçable pour la touche «{NBSP}Fermer toutes les fenêtres{NBSP}»
 STR_TOOLTIP_RESIZE                                              :{BLACK}Cliquer et faire glisser pour redimensionner la fenêtre
@@ -403,6 +403,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Détail des per
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Annuaire des industries
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Chaînes des industries
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financer une nouvelle industrie
 ############ range ends here
 
@@ -1118,7 +1119,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Paramètre de c
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Afficher{NBSP}:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restreint la liste ci-dessous en ne montrant que les paramètres modifiés
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Tous les paramètres
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Options de base
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Options avancées
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Paramètres expert / Tous les paramètres
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Paramètres avec une valeur différente du défaut
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Paramètre non-client avec une valeur différente du défaut
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Paramètres avec une valeur différente des paramètres de nouvelle partie
@@ -2388,13 +2391,17 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Afficher
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Afficher la chaîne des industries fournisseuses et clientes de ce type de marchandise
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Lier à la mini-carte
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Afficher les industries correspondantes sur la mini-carte
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Selectionner la marchandise
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Choisir la marchandise à afficher
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Sélectionner l'industrie
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Choisir l'industrie à afficher
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informations sur le terrain
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Coût si démolition{NBSP}: {LTBLUE}N/D
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Coût si démolition{NBSP}: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Gain si démolition{NBSP}: {LTBLUE}{CURRENCY_LONG}
-STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/D
+STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/A
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Propriétaire{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Propriétaire de la route{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Propriétaire du tramway{NBSP}: {LTBLUE}{STRING}
