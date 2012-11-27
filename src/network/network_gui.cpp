@@ -329,27 +329,19 @@ protected:
 	/** Sort the server list */
 	void SortNetworkGameList()
 	{
-		bool did_sort = this->servers.Sort();
-		/* In case of 0 or 1 servers there is no sorting, thus this->list_pos
-		 * isn't set to a "sane" value. So, we only take the short way out
-		 * when we did not (re)sort and we have a valid this->list_pos, or
-		 * there are no servers to actually select. */
-		if (!did_sort && (this->list_pos != SLP_INVALID || this->servers.Length() == 0)) return;
+		if (this->servers.Sort()) this->UpdateListPos();
+	}
 
-		/* After sorting ngl->sort_list contains the sorted items. Put these back
-		 * into the original list. Basically nothing has changed, we are only
-		 * shuffling the ->next pointers. While iterating, look for the
-		 * currently selected server and set list_pos to its position */
+	/** Set this->list_pos to match this->server */
+	void UpdateListPos()
+	{
 		this->list_pos = SLP_INVALID;
-		_network_game_list = this->servers[0];
-		NetworkGameList *item = _network_game_list;
-		if (item == this->server) this->list_pos = 0;
-		for (uint i = 1; i != this->servers.Length(); i++) {
-			item->next = this->servers[i];
-			item = item->next;
-			if (item == this->server) this->list_pos = i;
+		for (uint i = 0; i != this->servers.Length(); i++) {
+			if (this->servers[i] == this->server) {
+				this->list_pos = i;
+				break;
+			}
 		}
-		item->next = NULL;
 	}
 
 	/**
@@ -705,12 +697,7 @@ public:
 					this->server = this->last_joined;
 
 					/* search the position of the newly selected server */
-					for (uint i = 0; i < this->servers.Length(); i++) {
-						if (this->servers[i] == this->server) {
-							this->list_pos = i;
-							break;
-						}
-					}
+					this->UpdateListPos();
 					this->ScrollToSelectedServer();
 					this->SetDirty();
 
@@ -797,22 +784,22 @@ public:
 			switch (keycode) {
 				case WKC_UP:
 					/* scroll up by one */
-					if (this->server == NULL) return ES_HANDLED;
+					if (this->list_pos == SLP_INVALID) return ES_HANDLED;
 					if (this->list_pos > 0) this->list_pos--;
 					break;
 				case WKC_DOWN:
 					/* scroll down by one */
-					if (this->server == NULL) return ES_HANDLED;
+					if (this->list_pos == SLP_INVALID) return ES_HANDLED;
 					if (this->list_pos < this->servers.Length() - 1) this->list_pos++;
 					break;
 				case WKC_PAGEUP:
 					/* scroll up a page */
-					if (this->server == NULL) return ES_HANDLED;
+					if (this->list_pos == SLP_INVALID) return ES_HANDLED;
 					this->list_pos = (this->list_pos < this->vscroll->GetCapacity()) ? 0 : this->list_pos - this->vscroll->GetCapacity();
 					break;
 				case WKC_PAGEDOWN:
 					/* scroll down a page */
-					if (this->server == NULL) return ES_HANDLED;
+					if (this->list_pos == SLP_INVALID) return ES_HANDLED;
 					this->list_pos = min(this->list_pos + this->vscroll->GetCapacity(), (int)this->servers.Length() - 1);
 					break;
 				case WKC_HOME:
