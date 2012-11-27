@@ -596,7 +596,9 @@ public:
 		if (this->servers.NeedRebuild()) {
 			this->BuildGUINetworkGameList();
 		}
-		this->SortNetworkGameList();
+		if (this->servers.NeedResort()) {
+			this->SortNetworkGameList();
+		}
 
 		NetworkGameList *sel = this->server;
 		/* 'Refresh' button invisible if no server selected */
