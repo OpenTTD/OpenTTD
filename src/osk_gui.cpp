@@ -124,7 +124,7 @@ struct OskWindow : public Window {
 
 			if (HasBit(_keystate, KEYS_SHIFT)) {
 				ToggleBit(_keystate, KEYS_SHIFT);
-				this->GetWidget<NWidgetCore>(WID_OSK_SHIFT)->colour = HasBit(_keystate, KEYS_SHIFT) ? COLOUR_WHITE : COLOUR_GREY;
+				this->UpdateOskState();
 				this->SetDirty();
 			}
 			/* Return focus to the parent widget and window. */
