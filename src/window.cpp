@@ -2269,7 +2269,12 @@ EventState Window::HandleEditBoxKey(int wid, uint16 key, uint16 keycode)
 
 	switch (query->HandleEditBoxKey(this, wid, key, keycode, state)) {
 		case HEBR_EDITING:
+			this->SetWidgetDirty(wid);
 			this->OnEditboxChanged(wid);
+			break;
+
+		case HEBR_CURSOR:
+			this->SetWidgetDirty(wid);
 			break;
 
 		case HEBR_CONFIRM:

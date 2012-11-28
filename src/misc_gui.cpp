@@ -719,6 +719,8 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 
 	state = ES_HANDLED;
 
+	bool edited = false;
+
 	switch (keycode) {
 		case WKC_ESC: return HEBR_CANCEL;
 
@@ -728,7 +730,7 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 		case (WKC_META | 'V'):
 #endif
 		case (WKC_CTRL | 'V'):
-			if (this->text.InsertClipboard()) w->SetWidgetDirty(wid);
+			edited = this->text.InsertClipboard();
 			break;
 
 #ifdef WITH_COCOA
@@ -736,22 +738,22 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 #endif
 		case (WKC_CTRL | 'U'):
 			this->text.DeleteAll();
-			w->SetWidgetDirty(wid);
+			edited = true;
 			break;
 
 		case WKC_BACKSPACE: case WKC_DELETE:
 		case WKC_CTRL | WKC_BACKSPACE: case WKC_CTRL | WKC_DELETE:
-			if (this->text.DeleteChar(keycode)) w->SetWidgetDirty(wid);
+			edited = this->text.DeleteChar(keycode);
 			break;
 
 		case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
 		case WKC_CTRL | WKC_LEFT: case WKC_CTRL | WKC_RIGHT:
-			if (this->text.MovePos(keycode)) w->SetWidgetDirty(wid);
+			this->text.MovePos(keycode);
 			break;
 
 		default:
 			if (IsValidChar(key, this->afilter)) {
-				if (this->text.InsertChar(key)) w->SetWidgetDirty(wid);
+				edited = this->text.InsertChar(key);
 			} else {
 				state = ES_NOT_HANDLED;
 			}
@@ -760,7 +762,7 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 	Window *osk = FindWindowById(WC_OSK, 0);
 	if (osk != NULL && osk->parent == w) osk->InvalidateData();
 
-	return HEBR_EDITING;
+	return edited ? HEBR_EDITING : HEBR_CURSOR;
 }
 
 void QueryString::HandleEditBox(Window *w, int wid)

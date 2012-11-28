@@ -120,7 +120,7 @@ struct OskWindow : public Window {
 
 			if (!IsValidChar(c, this->qs->afilter)) return;
 
-			if (this->qs->text.InsertChar(c)) this->InvalidateParent();
+			if (this->qs->text.InsertChar(c)) this->OnEditboxChanged(WID_OSK_TEXT);
 
 			if (HasBit(_keystate, KEYS_SHIFT)) {
 				ToggleBit(_keystate, KEYS_SHIFT);
@@ -135,7 +135,7 @@ struct OskWindow : public Window {
 
 		switch (widget) {
 			case WID_OSK_BACKSPACE:
-				if (this->qs->text.DeleteChar(WKC_BACKSPACE)) this->InvalidateParent();
+				if (this->qs->text.DeleteChar(WKC_BACKSPACE)) this->OnEditboxChanged(WID_OSK_TEXT);
 				break;
 
 			case WID_OSK_SPECIAL:
@@ -159,15 +159,15 @@ struct OskWindow : public Window {
 				break;
 
 			case WID_OSK_SPACE:
-				if (this->qs->text.InsertChar(' ')) this->InvalidateParent();
+				if (this->qs->text.InsertChar(' ')) this->OnEditboxChanged(WID_OSK_TEXT);
 				break;
 
 			case WID_OSK_LEFT:
-				if (this->qs->text.MovePos(WKC_LEFT)) this->InvalidateParent();
+				if (this->qs->text.MovePos(WKC_LEFT)) this->InvalidateData();
 				break;
 
 			case WID_OSK_RIGHT:
-				if (this->qs->text.MovePos(WKC_RIGHT)) this->InvalidateParent();
+				if (this->qs->text.MovePos(WKC_RIGHT)) this->InvalidateData();
 				break;
 
 			case WID_OSK_OK:
@@ -190,7 +190,7 @@ struct OskWindow : public Window {
 				} else { // or reset to original string
 					qs->text.Assign(this->orig_str_buf);
 					qs->text.MovePos(WKC_END);
-					this->InvalidateParent();
+					this->OnEditboxChanged(WID_OSK_TEXT);
 					delete this;
 				}
 				break;
@@ -200,12 +200,11 @@ struct OskWindow : public Window {
 		SetFocusedWindow(this->parent);
 	}
 
-	void InvalidateParent()
+	virtual void OnEditboxChanged(int widget)
 	{
-		this->parent->OnEditboxChanged(this->text_btn);
-
 		this->SetWidgetDirty(WID_OSK_TEXT);
-		if (this->parent != NULL) this->parent->SetWidgetDirty(this->text_btn);
+		this->parent->OnEditboxChanged(this->text_btn);
+		this->parent->SetWidgetDirty(this->text_btn);
 	}
 
 	virtual void OnMouseLoop()
@@ -224,6 +223,7 @@ struct OskWindow : public Window {
 	{
 		if (!gui_scope) return;
 		this->SetWidgetDirty(WID_OSK_TEXT);
+		this->parent->SetWidgetDirty(this->text_btn);
 	}
 };
 

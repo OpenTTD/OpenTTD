@@ -21,10 +21,11 @@
  */
 enum HandleEditBoxResult
 {
-	HEBR_EDITING = 0, // Other key pressed.
-	HEBR_CONFIRM,     // Return or enter key pressed.
-	HEBR_CANCEL,      // Escape key pressed.
-	HEBR_NOT_FOCUSED, // Edit box widget not focused.
+	HEBR_EDITING,     ///< Editbox content changed.
+	HEBR_CURSOR,      ///< Non-text change, e.g. cursor position.
+	HEBR_CONFIRM,     ///< Return or enter key pressed.
+	HEBR_CANCEL,      ///< Escape key pressed.
+	HEBR_NOT_FOCUSED, ///< Edit box widget not focused.
 };
 
 /**
