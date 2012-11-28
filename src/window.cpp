@@ -422,12 +422,6 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 			(w->desc_flags & WDF_NO_FOCUS) == 0 &&  // Don't lose focus to toolbars
 			widget_type != WWT_CLOSEBOX) {          // Don't change focused window if 'X' (close button) was clicked
 		focused_widget_changed = true;
-		if (_focused_window != NULL) {
-			_focused_window->OnFocusLost();
-
-			/* The window that lost focus may have had opened a OSK, window so close it, unless the user has clicked on the OSK window. */
-			if (w->window_class != WC_OSK) DeleteWindowById(WC_OSK, 0);
-		}
 		SetFocusedWindow(w);
 		w->OnFocus();
 	}
@@ -440,13 +434,9 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 	int widget_index = nw->index; ///< Index of the widget
 
 	/* Clicked on a widget that is not disabled.
-	 * So unless the clicked widget is the caption bar, change focus to this widget */
-	if (widget_type != WWT_CAPTION) {
-		/* Close the OSK window if a edit box loses focus */
-		if (w->nested_focus != NULL &&  w->nested_focus->type == WWT_EDITBOX && w->nested_focus != nw && w->window_class != WC_OSK) {
-			DeleteWindowById(WC_OSK, 0);
-		}
-
+	 * So unless the clicked widget is the caption bar, change focus to this widget.
+	 * Exception: In the OSK we always want the editbox to stay focussed. */
+	if (widget_type != WWT_CAPTION && w->window_class != WC_OSK) {
 		/* focused_widget_changed is 'now' only true if the window this widget
 		 * is in gained focus. In that case it must remain true, also if the
 		 * local widget focus did not change. As such it's the logical-or of
@@ -1199,10 +1189,10 @@ void Window::InitializeData(const WindowDesc *desc, WindowNumber window_number)
 	this->resize.step_width  = this->nested_root->resize_x;
 	this->resize.step_height = this->nested_root->resize_y;
 
-	/* Give focus to the opened window unless it is the OSK window or a text box
+	/* Give focus to the opened window unless a text box
 	 * of focused window has focus (so we don't interrupt typing). But if the new
 	 * window has a text box, then take focus anyway. */
-	if (this->window_class != WC_OSK && (!EditBoxInGlobalFocus() || this->nested_root->GetWidgetOfType(WWT_EDITBOX) != NULL)) SetFocusedWindow(this);
+	if (!EditBoxInGlobalFocus() || this->nested_root->GetWidgetOfType(WWT_EDITBOX) != NULL) SetFocusedWindow(this);
 
 	/* Insert the window into the correct location in the z-ordering. */
 	AddWindowToZOrdering(this);
@@ -2275,10 +2265,14 @@ EventState Window::HandleEditBoxKey(int wid, uint16 key, uint16 keycode)
 
 		case HEBR_CURSOR:
 			this->SetWidgetDirty(wid);
+			/* For the OSK also invalidate the parent window */
+			if (this->window_class == WC_OSK) this->InvalidateData();
 			break;
 
 		case HEBR_CONFIRM:
-			if (query->ok_button >= 0) {
+			if (this->window_class == WC_OSK) {
+				this->OnClick(Point(), WID_OSK_OK, 1);
+			} else if (query->ok_button >= 0) {
 				this->OnClick(Point(), query->ok_button, 1);
 			} else {
 				action = query->ok_button;
@@ -2286,7 +2280,9 @@ EventState Window::HandleEditBoxKey(int wid, uint16 key, uint16 keycode)
 			break;
 
 		case HEBR_CANCEL:
-			if (query->cancel_button >= 0) {
+			if (this->window_class == WC_OSK) {
+				this->OnClick(Point(), WID_OSK_CANCEL, 1);
+			} else if (query->cancel_button >= 0) {
 				this->OnClick(Point(), query->cancel_button, 1);
 			} else {
 				action = query->cancel_button;

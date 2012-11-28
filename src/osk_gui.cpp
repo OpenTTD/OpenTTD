@@ -53,11 +53,13 @@ struct OskWindow : public Window {
 		this->caption = (par_wid->widget_data != STR_NULL) ? par_wid->widget_data : this->qs->caption;
 		this->text_btn   = button;
 		this->text       = &this->qs->text;
+		this->querystrings[WID_OSK_TEXT] = this->qs;
 
 		/* make a copy in case we need to reset later */
 		this->orig_str_buf = strdup(this->qs->text.buf);
 
 		this->InitNested(desc, 0);
+		this->SetFocusedWidget(WID_OSK_TEXT);
 
 		/* Not needed by default. */
 		this->DisableWidget(WID_OSK_SPECIAL);
@@ -105,13 +107,6 @@ struct OskWindow : public Window {
 			TC_BLACK);
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-
-		this->qs->DrawEditBox(this, WID_OSK_TEXT);
-	}
-
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		/* clicked a letter */
@@ -127,9 +122,6 @@ struct OskWindow : public Window {
 				this->UpdateOskState();
 				this->SetDirty();
 			}
-			/* Return focus to the parent widget and window. */
-			this->parent->SetFocusedWidget(this->text_btn);
-			SetFocusedWindow(this->parent);
 			return;
 		}
 
@@ -195,9 +187,6 @@ struct OskWindow : public Window {
 				}
 				break;
 		}
-		/* Return focus to the parent widget and window. */
-		this->parent->SetFocusedWidget(this->text_btn);
-		SetFocusedWindow(this->parent);
 	}
 
 	virtual void OnEditboxChanged(int widget)
@@ -207,23 +196,16 @@ struct OskWindow : public Window {
 		this->parent->SetWidgetDirty(this->text_btn);
 	}
 
-	virtual void OnMouseLoop()
-	{
-		this->qs->HandleEditBox(this, WID_OSK_TEXT);
-		/* make the caret of the parent window also blink */
-		this->parent->SetWidgetDirty(this->text_btn);
-	}
-
-	/**
-	 * Some data on this window has become invalid.
-	 * @param data Information about the changed data.
-	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
-	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (!gui_scope) return;
 		this->SetWidgetDirty(WID_OSK_TEXT);
 		this->parent->SetWidgetDirty(this->text_btn);
+	}
+
+	virtual void OnFocusLost()
+	{
+		delete this;
 	}
 };
 
@@ -447,4 +429,16 @@ void UpdateOSKOriginalText(const Window *parent, int button)
 	osk->orig_str_buf = strdup(osk->qs->text.buf);
 
 	osk->SetDirty();
+}
+
+/**
+ * Check whether the OSK is opened for a specific editbox.
+ * @parent w Window to check for
+ * @param button Editbox of \a w to check for
+ * @return true if the OSK is oppened for \a button.
+ */
+bool IsOSKOpenedFor(const Window *w, int button)
+{
+	OskWindow *osk = dynamic_cast<OskWindow *>(FindWindowById(WC_OSK, 0));
+	return osk != NULL && osk->parent == w && osk->text_btn == button;
 }

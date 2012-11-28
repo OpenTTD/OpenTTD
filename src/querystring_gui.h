@@ -62,8 +62,6 @@ struct QueryString {
 		free(this->orig);
 	}
 
-private:
-	bool HasEditBoxFocus(const Window *w, int wid) const;
 public:
 	void DrawEditBox(const Window *w, int wid) const;
 	void ClickEditBox(Window *w, Point pt, int wid, int click_count, bool focus_changed);
@@ -73,5 +71,6 @@ public:
 
 void ShowOnScreenKeyboard(Window *parent, int button);
 void UpdateOSKOriginalText(const Window *parent, int button);
+bool IsOSKOpenedFor(const Window *w, int button);
 
 #endif /* QUERYSTRING_GUI_H */

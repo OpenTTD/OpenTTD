@@ -706,16 +706,9 @@ void GuiShowTooltips(Window *parent, StringID str, uint paramcount, const uint64
 	new TooltipsWindow(parent, str, paramcount, params, close_tooltip);
 }
 
-bool QueryString::HasEditBoxFocus(const Window *w, int wid) const
-{
-	if (w->IsWidgetGloballyFocused(wid)) return true;
-	if (w->window_class != WC_OSK || _focused_window != w->parent) return false;
-	return w->parent->nested_focus != NULL && w->parent->nested_focus->type == WWT_EDITBOX;
-}
-
 HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, EventState &state)
 {
-	if (!QueryString::HasEditBoxFocus(w, wid)) return HEBR_NOT_FOCUSED;
+	if (!w->IsWidgetGloballyFocused(wid)) return HEBR_NOT_FOCUSED;
 
 	state = ES_HANDLED;
 
@@ -757,24 +750,19 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 			} else {
 				state = ES_NOT_HANDLED;
 			}
+			break;
 	}
-
-	Window *osk = FindWindowById(WC_OSK, 0);
-	if (osk != NULL && osk->parent == w) osk->InvalidateData();
 
 	return edited ? HEBR_EDITING : HEBR_CURSOR;
 }
 
 void QueryString::HandleEditBox(Window *w, int wid)
 {
-	if (HasEditBoxFocus(w, wid) && this->text.HandleCaret()) {
+	if (w->IsWidgetGloballyFocused(wid) && this->text.HandleCaret()) {
 		w->SetWidgetDirty(wid);
-		/* When we're not the OSK, notify 'our' OSK to redraw the widget,
-		 * so the caret changes appropriately. */
-		if (w->window_class != WC_OSK) {
-			Window *w_osk = FindWindowById(WC_OSK, 0);
-			if (w_osk != NULL && w_osk->parent == w) w_osk->InvalidateData();
-		}
+
+		/* For the OSK also invalidate the parent window */
+		if (w->window_class == WC_OSK) w->InvalidateData();
 	}
 }
 
@@ -818,7 +806,8 @@ void QueryString::DrawEditBox(const Window *w, int wid) const
 	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
 
 	DrawString(delta, tb->pixels, 0, tb->buf, TC_YELLOW);
-	if (HasEditBoxFocus(w, wid) && tb->caret) {
+	bool focussed = w->IsWidgetGloballyFocused(wid) || IsOSKOpenedFor(w, wid);
+	if (focussed && tb->caret) {
 		int caret_width = GetStringBoundingBox("_").width;
 		DrawString(tb->caretxoffs + delta, tb->caretxoffs + delta + caret_width, 0, "_", TC_WHITE);
 	}
