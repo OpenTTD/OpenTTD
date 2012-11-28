@@ -530,6 +530,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} фут{
 STR_UNITS_HEIGHT_SI                                             :{COMMA} м
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Фільтр:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Увядзіце радок фільтра
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Увядзіце ключавое слова для фільтрацыі сьпісу
 
@@ -715,6 +716,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Дэталіз�
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Пералік прамысловасьці
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Вытворчыя ланцужкі
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Заснаваць новае прадпрыемства
 ############ range ends here
 
@@ -2726,6 +2728,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Пака
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Паказаць вытворцаў сыравіны й спажыўцоў прадукцыі гэтага прадпрыемства
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Лiнк да мiнiмапы
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Выберыце паказаныя прадпрыемствы таксама й на мiнiмапе
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Выберыце груз
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Выберыце груз для адлюстравання
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Выберыце прадпрыемства
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Выберыце прадпрыемства для адлюстравання
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Інфармацыя аб участку зямлі

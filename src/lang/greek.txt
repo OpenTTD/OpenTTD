@@ -933,17 +933,17 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Ένα νέο {STRING} είναι πλέον διαθέσιμο!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}Ο σταθμός {STATION} δεν δέχεται πια {STRING}
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}Ο σταθμός {STATION} δεν δέχεται πια {STRING} ούτε {STRING}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}Ο σταθμός {STATION} δεν δέχεται πια ούτε {STRING} ούτε {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}Ο σταθμός {STATION} τώρα δέχεται {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}Ο σταθμός {STATION} τώρα δέχεται {STRING} και {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Έληξε η προσφορά επιδότησης:{}{}{STRING} από {G το τη το} {STRING} πρός {G το τη το} {STRING} δεν θα επιδοτείται πλέον.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Έληξε η προσφορά επιδότησης:{}{}{STRING} από {G τον τη το} {STRING} πρός {G τον τη το} {STRING} δεν θα επιδοτείται πλέον.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Η επιδότηση αποσύρθηκε:{}{}Η υπηρεσια για {STRING.subs} απο το {STRING} προς το {STRING} δεν επιδοτείται πλέον.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Προσφορά χρηματοδότησης υπηρεσίας:{}{}Η πρώτη υπηρεσία για {STRING.subs} από {G το τη το} {STRING} προς {G το τη το} {STRING} επιχορηγείται για ένα έτος από την τοπική αρχή!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Η χρηματοδότηση της υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING.subs} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται 50% παραπάνω για ένα έτος!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING.subs} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται διπλά για το επόμενο έτος!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Προσφορά χρηματοδότησης υπηρεσίας:{}{}Η πρώτη υπηρεσία για {STRING.subs} από {G τον τη το} {STRING} προς {G τον τη το} {STRING} επιχορηγείται για ένα έτος από την τοπική αρχή!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Η χρηματοδότηση της υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING.subs} από τον σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται 50% παραπάνω για ένα έτος!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING.subs} από τον σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται διπλά για το επόμενο έτος!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING.subs} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται τριπλά για το επόμενο έτος!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING.subs} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται τετραπλά για το επόμενο έτος!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING.subs} από τον σταθμό {STRING} προς τον σταθμό {STRING} θα χρεώνεται τετραπλά για το επόμενο έτος!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Χαώδης κίνηση στην πόλη {TOWN}!{}{}Χρηματοδοτήθηκε πρόγραμμα ανακατασκευής των δρόμων από την εταιρία {STRING} και προκαλεί 6 μήνες μιζέριας στους οδηγούς!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Μονοπώλιο μεταφορών!
@@ -962,11 +962,11 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Νομι
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Επιλογή νομισματικών μονάδων
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Αγγλική Λίρα (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Δολλάριο Η.Π.Α. ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ευρώ (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Ιαπωνικό Γιεν (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Αυστραικό Σελίνι (ATS)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Στερλίνα Ηνωμένου Βασιλείου (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Δολλάριο Η.Π.Α. (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ευρώ (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Ιαπωνικό Γιεν (JPY)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Αυστριακό Σελίνι (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Βελγικό Φράγκο (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Ελβετικό Φράγκο (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Τσέχικη Κορώνα (CZK)
@@ -975,7 +975,7 @@ STR_GAME_OPTIONS_CURRENCY_DKK                                   :Δανέζικ�
 STR_GAME_OPTIONS_CURRENCY_ESP                                   :Ισπανική Πεσέτα (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Φινλανδικό Μάρκο (FIM)
 STR_GAME_OPTIONS_CURRENCY_FRF                                   :Γαλλικό Φράγκο (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Δραχμή(δρχ.)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Ελληνική Δραχμή (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ουγγρικό Φλουρί (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Ισλανδική Κορώνα (ISK)
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Ιταλική Λίρα (ITL)
@@ -983,16 +983,16 @@ STR_GAME_OPTIONS_CURRENCY_NLG                                   :Ολλανδι�
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Νορβηγική Κορώνα (NOK)
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Πολωνικό Ζλότυ (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Ρουμάνικο Λευ (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ρώσσικες Ρούβλες (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Σλοβένικο Tolar (SIT)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ρωσικό Ρούβλι (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Σλοβένικο Τολάρ (SIT)
 STR_GAME_OPTIONS_CURRENCY_SEK                                   :Σουηδική Κορώνα (SEK)
 STR_GAME_OPTIONS_CURRENCY_TRY                                   :Τούρκικη Λίρα (TRY)
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Σλοβάκικη Κορώνα (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Βραζιλιάνικο Real (BRL)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Βραζιλιάνικο Ρεάλ (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Εσθονική Κορώνα (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Λιθουανικά Λίτα (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Νοτιοκορεάτικα Γουόν (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Νοτιοαφρικανικά Ραντ (ZAR)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Λιθουανική Λίτα (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Νοτιοκορεάτικο Γουόν (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Νοτιοαφρικάνικο Ραντ (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Άλλο...
 ############ end of currency region
 
@@ -1026,7 +1026,7 @@ STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Φινλανδ�
 STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Πολωνικά
 STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Σλοβάκικα
 STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Νορβηγικά
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Όυγγαρικά
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ουγγρικά
 STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Αυστριακά
 STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Ρουμάνικα
 STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Τσέχικα
@@ -1047,7 +1047,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Κάθε 6 μή
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Κάθε 12 μήνες
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Γλώσσα
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Επιλογή της γλώσσας σε χρήση
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Επιλογή της γλώσσας του παιχνιδιού
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Σε όλη την οθόνη
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Τσεκάρεται αυτό το κουτάκι ωστε να παίξετε το OpenTTD σε όλη την οθόνη
@@ -1073,7 +1073,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Επιλ
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} κατεστραμμέν{P ο α} αρχεί{P ο α}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Επιπλέον πληροφορίες σχετικά με το βασικό σετ μουσικής
 
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Κατάσταση Πλήρης Οθόνης απέτυχε
+STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Θέση του παιχνιδιού σε λειτουργία πλήρης οθόνης απέτυχε
 
 # Custom currency window
 
@@ -1098,7 +1098,7 @@ STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Να γ�
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Να γίνει η μετάβαση σε Ευρώ αργότερα
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Προεπισκόπιση: {ORANGE}{CURRENCY_LONG}
-STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Λίρες (£) στο νόμισμά σας
+STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 λίρες (£) στο νόμισμά σας
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Αλλαγή παραμέτρων προσαρμοσμένου νομίσματος
 
 # Difficulty level window
@@ -1115,13 +1115,13 @@ STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Εμφά
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Αποθήκευση
 
 ############ range for difficulty settings starts
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Μέγιστος αρ. αντιπάλων: {ORANGE}{COMMA}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Μέγιστος αρ. ανταγωνιστών: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Αρ. πόλεων: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Αρ. βιομηχανιών: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Μέγιστο αρχικό δάνειο: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Αρχικό επιτόκιο: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Λειτουργικά έξοδα οχημάτων: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Ταχύτητα κατασκευής αντιπάλων: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Ταχύτητα κατασκευής ανταγωνιστών: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Βλάβες οχημάτων: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Πολλαπλασιαστής χρηματοδότησης: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Κόστος κατασκευής: {ORANGE}{STRING}
@@ -1177,10 +1177,10 @@ STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
 
-STR_TERRAIN_TYPE_VERY_FLAT                                      :Πολύ επίπεδο
+STR_TERRAIN_TYPE_VERY_FLAT                                      :Πολύ Επίπεδο
 STR_TERRAIN_TYPE_FLAT                                           :Επίπεδο
-STR_TERRAIN_TYPE_HILLY                                          :Με λόφους
-STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Με βουνά
+STR_TERRAIN_TYPE_HILLY                                          :Λοφώδες
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Βουνώδες
 
 STR_ECONOMY_STEADY                                              :Σταθερή
 STR_ECONOMY_FLUCTUATING                                         :Κυμαινόμενη
@@ -1192,26 +1192,32 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Ανεκτικ�
 STR_CITY_APPROVAL_TOLERANT                                      :Υπομονετικό
 STR_CITY_APPROVAL_HOSTILE                                       :Εχθρικό
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Δεν είναι διαθέσιμο κανένα κατάλληλο Als...{}Μπορείτε να κατεβάσετε αρκετά AIs μέσω του συστήματος 'Online περιεχομένου'
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Δεν είναι διαθέσιμο κανένα κατάλληλο Al...{}Μπορείτε να κατεβάσετε AIs μέσω του συστήματος «Online περιεχομένου»
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Αυτή η ενέργεια άλλαξε το επίπεδο δυσκολίας στο προσαρμοσμένο
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Προηγμένες Ρυθμίσεις
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Φιλτράρισμα:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Επέκταση όλων
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Σύμπτυξη όλων
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(δεν υπάρχει διαθέσιμη επεξήγηση)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Προκαθορισμένη τιμή: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Τύπος ρύθμισης: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Προβολή:
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Βασικές ρυθμίσεις
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Προχωρημένες ρυθμίσεις
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Προχωρημένες ρυθμίσεις / όλες οι ρυθμίσεις
 
 STR_CONFIG_SETTING_OFF                                          :Ανενεργό
 STR_CONFIG_SETTING_ON                                           :Ενεργό
 STR_CONFIG_SETTING_DISABLED                                     :απενεργοποιημένο
 
-STR_CONFIG_SETTING_COMPANIES_OFF                                :όχι
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Ανένεργο
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Η εταιρία μου
 STR_CONFIG_SETTING_COMPANIES_ALL                                :Όλες οι εταιρίες
 
-STR_CONFIG_SETTING_NONE                                         :Κανένα
+STR_CONFIG_SETTING_NONE                                         :Καμία
 STR_CONFIG_SETTING_ORIGINAL                                     :Γνήσιο
 STR_CONFIG_SETTING_REALISTIC                                    :Ρεαλιστικό
 

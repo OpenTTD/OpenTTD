@@ -313,6 +313,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtriraj niz:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Unesi znak za filter
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Unesite ključnu riječ kako bi filtrirali popis
 
@@ -498,6 +499,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaljna ocjena
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Popis industrija
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Industrijski lanci
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financiraj novu industriju
 ############ range ends here
 
@@ -2485,6 +2487,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Prikaži
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Prikaži industrije koje dobavljaju i primaju teret
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Poveznica na malu mapu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Odaberi prikazane industrije također i na maloj mapi
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Odaberi teret
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Odaberi teret koji želiš prikazati
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Odaberi industriju
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Odaberi industriju koju želiš prikazati
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Podaci o zemlji

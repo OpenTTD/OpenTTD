@@ -343,6 +343,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} фут{
 STR_UNITS_HEIGHT_SI                                             :{COMMA} м
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Фильтр:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Введите строку фильтра
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Введите ключевое слово для фильтрации списка
 

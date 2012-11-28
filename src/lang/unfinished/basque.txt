@@ -217,6 +217,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Lokarri iragazkia:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sartu lokarri iragazkia
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sartu hitz bat iragazkian zerrendan aurkitzeko
 
@@ -538,8 +539,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Ordainketa 10 unitate entregatzeagatik (edo 10,000 litro) 20 karratuko distatziako karga bategatik
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Dena gaitu
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Dena desgaitu
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Karga guztiak ikusi, karga salneurriaren grafikoan
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ez ikusi kargarik karga salneurriaren grafikoan
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Zama guztiak ikusi, zama salneurriaren grafikoan
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ez ikusi zamarik zama salneurriaren grafikoan
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Aukeratu zama mota on/off grafikoan
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -1155,10 +1156,19 @@ STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} fitxa{P
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Trenaren ke/txinparta kantitatea: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Ezarri zenbat ke edo zenbat txinparta igorriko duten ibilgailuek
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Trenaren azelerazio modeloa: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Aukeratu trenen azeleraziorako fisika eredua. "Jatorrizko" ereduak ibilgailu guztiak berdin moteltzen ditu. Eredu "Errealista"k mendi magaletan eta kurbetan jasaten den moteldura propietate ezberdinetan oinarritzen da, ibilgailuaren luzeran eta trakzioan adibidez
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Ibilgailuen azelerazio modelua: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Aukeratu errepide ibilgailuen azeleraziorako fisika eredua. "Jatorrizko" ereduak ibilgailu guztiak berdin moteltzen ditu. Eredu "Errealista"k mendi magaletan eta kurbetan jasaten den moteldura propietate ezberdinetan oinarritzen da, trakzioan adibidez
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Mendi magalaren joera trenentzako: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Mendi magal laukien inklinazioa trenentzako. Balio altuak maldak igotzea zailtzen dute
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Mendi magaleren inklinazioa errepide ibilgailuentzako: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Mendi magal laukien inklinazioa errepide ibilgailuentzako. Balio altuak maldak igotzea zailtzen dute.
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Itsasontzi eta trenei 90 graduko biraketak debekatu: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Elkarren ondoan ez baina oso hurbil dauden geltokiak bateratu : {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Geltoki bati zatiak gehitu dauden zatiak ukitu gabe. Zati berriak gehitzerakoan Crtl+klikatu sakatu beharko da.
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Zamatzeko algoritmo hobetua erabili: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Gaitua badago, geltokian dauden ibilgailuak sekuentzalki kargatuko dira. Hurrengo ibilgailuaren karga bakarrik hasiko da aurreko ibilgailua betetzeko adina karga badago
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Ibilgailuak mailaka zamatu: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflazioa: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Geltoki batetan bakarrik bertan hartzen duten zama baino ez utzi: {STRING}
@@ -1330,7 +1340,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ezer ez {RED}(e
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :bakarrik euri basoetan
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :leku guztietan
 
-STR_CONFIG_SETTING_STATUSBAR_POS                                :Egoera posizioa {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Egoera posizioa: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normala
@@ -2201,6 +2211,10 @@ STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoo
 
 ##id 0x4800
 # industry names
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :Petrolio findegia
+STR_INDUSTRY_NAME_OIL_RIG                                       :Petrolio perforazioa
+STR_INDUSTRY_NAME_FACTORY                                       :Fabrika
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :Inprimaketa lanak
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
