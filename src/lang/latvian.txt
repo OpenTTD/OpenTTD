@@ -219,6 +219,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pēdas
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtra virkne:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Ievadīt filtra virkni
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Ievadīt atslēgvārdu, lai filtrētu sarakstu
 

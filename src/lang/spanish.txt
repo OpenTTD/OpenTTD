@@ -218,6 +218,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pies
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Patrón de filtrado:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Escriba un patrón de filtrado
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduzca una palabra clave para filtrar la lista
 

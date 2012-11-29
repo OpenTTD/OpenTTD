@@ -530,7 +530,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} фут{
 STR_UNITS_HEIGHT_SI                                             :{COMMA} м
 
 # Common window strings
-STR_LIST_FILTER_TITLE                                           :{BLACK}Фільтр:
+STR_LIST_FILTER_TITLE                                           :{BLACK}Фільтар:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Увядзіце радок фільтра
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Увядзіце ключавое слова для фільтрацыі сьпісу
 
@@ -2729,7 +2729,7 @@ STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Пака
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Лiнк да мiнiмапы
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Выберыце паказаныя прадпрыемствы таксама й на мiнiмапе
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Выберыце груз
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Выберыце груз для адлюстравання
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Выберыце груз для адлюстраваньня
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Выберыце прадпрыемства
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Выберыце прадпрыемства для адлюстравання
 
