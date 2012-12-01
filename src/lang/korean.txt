@@ -218,6 +218,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}검색할 문자열:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}검색할 문자를 입력하세요
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}검색할 키워드를 입력하세요
 
@@ -403,6 +404,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :상세 성취�
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :산업시설 목록
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :산업시설 연계
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :새 산업시설 건설
 ############ range ends here
 
@@ -2390,6 +2392,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}산업�
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}이 산업시설에서 생산되고 소비되는 화물을 보여줍니다.
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}지도에 표시
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}위 산업망에 표시된 산업을 소형지도에서 볼 수 있게 합니다.
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}화물 선택
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}표시할 화물을 선택하세요.
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}산업시설 선택
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}표시할 산업시설을 선택하세요.
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}이 지역의 지형 정보

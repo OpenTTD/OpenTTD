@@ -218,6 +218,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{G=Masculin}{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Cadena de filtre:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introdueix una cadena de filtre
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introdueix una paraula clau per filtrar la llista de
 
@@ -2619,7 +2620,7 @@ STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informac
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Arxius NewGRF actius
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Arxius NewGRF inactius
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Selecciona configuració:
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Cadena filtrant:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Cadena de filtre:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carrega la predefinició seleccionada
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Desa predef.
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Desa la llista actual com a predefinició
@@ -3635,9 +3636,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horari -
 STR_TIMETABLE_NO_TRAVEL                                         :Sense viatge
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viatge (automàtic; programat per la següent ordre manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viatge (fora d'horari)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Travel amb almenys {2:VELOCITY} (sense horari)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viatja com a molt a {2:VELOCITY} (sense horari)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viatge a {STRING}
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viatge per {STRING} amb almenys {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viatja durant {STRING} com a molt a {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :i estigues {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :i viatge per {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} di{P a es}

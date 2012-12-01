@@ -342,6 +342,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} фт
 STR_UNITS_HEIGHT_SI                                             :{COMMA} м
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Фільтр:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Введіть рядок фільтру
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Введіть ключове слово для фільтраціі списку
 
@@ -527,6 +528,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Детальн�
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Список підприємств
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Виробничі ланцюжки
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Заснувати підприємство
 ############ range ends here
 
@@ -1242,7 +1244,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Налашту�
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Показати:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Показати лише налаштування, які було змінено
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Усі налаштування
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Основні налаштування
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Розширені налаштування
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Всі / експертні налаштування
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Налаштування, що відрізняються від дефолтних
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Неклієнтскі налаштування, що відрізняються від дефолтних
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Налаштування, що відрізняються від налаштувань нової гри
@@ -2512,6 +2516,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Пока
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Показати виробників та споживачів
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Приєднати до мінікарти
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Ви також можете вибирати промисловість на мінікарті
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Вибір типу вантажів
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Оберіть тип вантажу для відображення
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Вибір виробництва
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Оберіть виробництва для відображення
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Інформація про ділянку

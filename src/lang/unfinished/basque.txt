@@ -1165,49 +1165,86 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Mendi magaleren inklinazioa errepide ibilgailuentzako: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Mendi magal laukien inklinazioa errepide ibilgailuentzako. Balio altuak maldak igotzea zailtzen dute.
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Itsasontzi eta trenei 90 graduko biraketak debekatu: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 graduko bihurgunek trenbide horizontalari trenbide bertikala jarraitzen dionean gertatzen da, trenak 90 graduko bihurgunea egingo du ohiko 45 graduko bihurguneen ordez. Honako hau itsasuntzientzat aplikatzen da ere
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Elkarren ondoan ez baina oso hurbil dauden geltokiak bateratu : {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Geltoki bati zatiak gehitu dauden zatiak ukitu gabe. Zati berriak gehitzerakoan Crtl+klikatu sakatu beharko da.
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Zamatzeko algoritmo hobetua erabili: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Gaitua badago, geltokian dauden ibilgailuak sekuentzalki kargatuko dira. Hurrengo ibilgailuaren karga bakarrik hasiko da aurreko ibilgailua betetzeko adina karga badago
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Ibilgailuak mailaka zamatu: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Ibilgailuak gradualki zamatu ibilgailu bakoitzaren zamaketa denbora espezifikazioak erabiliz, guztia batera zamatuko duen denbora finkoa erabili ordez, zama kopuruan oinarritzen dena
 STR_CONFIG_SETTING_INFLATION                                    :Inflazioa: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Gaitu inflazioa ekonomiari, kosteak salneurriak baino pixka bat azkarrago igoko dira
 STR_CONFIG_SETTING_SELECTGOODS                                  :Geltoki batetan bakarrik bertan hartzen duten zama baino ez utzi: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Bakarrik zamak geltokietara eraman ibilgailu batek zama hori jasotzera joan bada. Honek geltokietan garraiatuak ez diren zamen kalifikazio txarrak ekiditzen ditu
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Zubien gehienezko luzera: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Zubiak eraikitzeko gehienezko luzera
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Tunel baten gehienezko luzera: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Tunelak eraikitzeko gehienezko luzera
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Industria primarioa eraikitzeko era: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Erauzketa industriak sortzeko modua. "Ez" haukeratuz gero ezingo dira eraiki. "Erauzketa" haukeratuz gero eraikitzeko aukera dago baina maparen edozein tokitan agertu daiteke erauzketa industria, erauzketak huts egin dezake ere. "Beste industriak bezala" haukeratuz gero erauzketa industriak eraldaketa industriak bezala eraiki ahalko dira, nahi den tokian.
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ezer ez
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :beste industriak bezala
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospekzioa
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :lurzail laua industrien inguruan: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Lursail lau kopurua indutriaren inguruan. Honek industrien inguruan bideak, geletokiak, etab. eraikitzeko lursaila egongo dela bermatzen du
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Indutria berdin asko baimendu hiri bakoitzean: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalean, herri batek ez du industria mota errepikatuak onartzen. Ezarpen honekin herrietan industria mota errepikatuak eraiki ahalko dira.
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Seinaleak erakutsi: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Aukeratu trenbidearen ze aldean jarri nahi den seinalea
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Ezkerrean
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Gidatzeko aldean
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Eskuinaldean
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Finantzien informazio taula urtearen bukaeran agertu: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Gaitua badago, finantza lehioa urte bakoitzaren amaieran agertuko da konpainiaren finantza egoeraren azterketa errazteko
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Agindu berriak "ez gelditu" dira beti: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalean, ibilgailuek zeharkatzen duten geltoki bakoitzean geldialdia egiten dute. Aukera hau gaituz gero, bere helmugara iritsiko dira beste geltokietan geldialdirik egin gabe. Kontuan hartu aukera honek agindu berrientzako balio lehentsi bat zehazten duela. Aginduak portaera ezberdinetara egokitu daitezke
 STR_CONFIG_SETTING_STOP_LOCATION                                :Trenen agindu berriak beti nasaren {STRING} n gelditzea dira
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Lehenezpenez trena geltokian non kokatuko den. 'Hasieran' esan nahi du sarreratik gertu, 'Erdian' esan nahi du geltokiaren erdialdean, 'Amaieran' esan nahi du sarreratik hurruti. Kontuan hartu agindu berrientzako balio lehentsi bat zehazten duela. Aginduak portaera ezberdinetara egokitu daitezke
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :amaieratik gertu
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :erdian
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :amaieratik urrun
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Errepide ibilgailuen lerroketak(quantum efektuekin): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Errepide ibligaluak okupatutako errepideen aurrean itxaronaraztea errepidea hustu arte
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Leioa mugitu kurtsorea ertzean dagoenean: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Gaitua dagoenean, sagua pantailaren ertzara hurbiltzerakoan mapa mugitzen hasiko da
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desgaitua
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Lehio nagusia, bakarrik pantaila osoa
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Lehio nagusia
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Lehio guztiak
 STR_CONFIG_SETTING_BRIBE                                        :Udaletxeko agintariak erostea baimendu: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Konpainiei utzi udaletxeak sobornatzen. Inspektore batek sobornoa antzematen badu, konpainiak sei hilabetez debekatua izango du herrian aritzea
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Garraiatzeko eskubide esklusiboen erosketa baimendu: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Konpainia batek erabateko garraio eskubideak erosten baditu, aukarien geltokiek (bidaiari zehin ondasun) ez dute inolako ondasunik jasoko urte oso batez
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Eraikinak ordaintzea baimendu: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Konpainiek herriei eraikin berriak eraikitzeko dirua eman ahalko diete
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Bertako errepideak hobetzea utzi: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Konpainiei onartu herriei errepideen berrerakuntzarako dirua ematea, errepide garraioan oinarritutako zerbitzuak boikoteatzeko
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Beste empresei dirua bidaltzea baimendu: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Konpainien arteko diru transferentziak onartu jokalari anitzeko modua
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Zamaren pisuaren biderkatzailea tren astunagoak simulatzeko: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Trenek zamak eramatea eragiten dien moteldura zehaztu. Balio altuek moteldura areagotzen dute, batez ere maldetan
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Hegazkinen abiadura faktorea: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Hegazkinen abiadura erlatiboa zehaztu beste ibilgailuekin alderatuta, hezkinen irabaziak murrizteko
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Hegazkinen akzidente kopurua : {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Hegazkien istripu aukerak zehaztu
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :bat ere ez
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :gutxitua
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :arrunta
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Herrien errepideetan zehar gidatzen diren errepide geltokiak baimendu : {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Herrien menpe dauden errepideetan zehar-gidatzeko-errepide-geldialdiak bahimendu
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Arerioen errepideetan zehar-gidatzeko-errepide-geltokiak baimendu: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Beste konpainien menpe dauden errepideetan zehar-gidatzeko-errepide-geldialdiak bahimendu
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Alboko geltokiak eraikitzea baimendu: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Geltoki ezberdinak bata bestea ukitzea baimendu
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :NewGRF set bat baino gehiago erabili ahal izatea aktibatu: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :NewGRF zaharren bateragarritasun aukera. Ez ezgaitu hau ez badakizu zer egiten hari zaren!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Hau ezin da aldatu ibilgailuak daudenean
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Azpiegituren mantentze-lana: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Gaitua dagoenean, azpiegiturek mantentze kostuak eragiten dituzte. Kostuak garraio sarearekin proportzionalki hazten dira, hau da, kostu handiagoak izango dituzten konpainia handiagoek
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aireportuei inoiz ez zaie epea amaitzen: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Gaitua badago, aireportu mota ezberdinak betirako egongo dira aukeran
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Abisatu ibilgailu bat galduta badagoen: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Ibilgailuen aginduak aztertu: {STRING}
