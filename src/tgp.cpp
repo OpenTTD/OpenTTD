@@ -290,7 +290,7 @@ static inline height_t RandomHeight(amplitude_t rMax)
  * One interpolation and noise round
  *
  * The heights on the map are generated in an iterative process.
- * We start off with a frequency of 1 (log_frequency == 0), and generate heights only for corners on the most coarsely mesh
+ * We start off with a frequency of 1 (log_frequency == 0), and generate heights only for corners on the most coarsest mesh
  * (i.e. only for x/y coordinates which are multiples of the minimum edge length).
  *
  * After this initial step the frequency is doubled (log_frequency incremented) each iteration to generate corners on the next finer mesh.

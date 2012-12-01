@@ -1218,7 +1218,7 @@ static size_t ReferenceToInt(const void *obj, SLRefType rt)
 
 /**
  * Pointers cannot be loaded from a savegame, so this function
- * gets the index from the savegame and returns the appropiate
+ * gets the index from the savegame and returns the appropriate
  * pointer from the already loaded base.
  * Remember that an index of 0 is a NULL pointer so all indices
  * are +1 so vehicle 0 is saved as 1.
@@ -1675,7 +1675,7 @@ static void SlStubSaveProc()
 
 /**
  * Save a chunk of data (eg. vehicles, stations, etc.). Each chunk is
- * prefixed by an ID identifying it, followed by data, and terminator where appropiate
+ * prefixed by an ID identifying it, followed by data, and terminator where appropriate
  * @param ch The chunkhandler that will be used for the operation
  */
 static void SlSaveChunk(const ChunkHandler *ch)
@@ -1730,7 +1730,7 @@ static void SlSaveChunks()
  * Find the ChunkHandler that will be used for processing the found
  * chunk in the savegame or in memory
  * @param id the chunk in question
- * @return returns the appropiate chunkhandler
+ * @return returns the appropriate chunkhandler
  */
 static const ChunkHandler *SlFindChunkHandler(uint32 id)
 {
@@ -2408,7 +2408,7 @@ static void SaveFileError()
 
 /**
  * We have written the whole game into memory, _memory_savegame, now find
- * and appropiate compressor and start writing to file.
+ * and appropriate compressor and start writing to file.
  */
 static SaveOrLoadResult SaveFileToDisk(bool threaded)
 {

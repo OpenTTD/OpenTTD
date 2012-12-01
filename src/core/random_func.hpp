@@ -135,7 +135,7 @@ static inline bool Chance16(const uint a, const uint b)
  * This function uses the same parameters as Chance16. The third parameter
  * must be a variable the randomize-number from Random() is saved in.
  *
- * The low 16 bits of r will already be used and can therefor not be passed to
+ * The low 16 bits of r will already be used and can therefore not be passed to
  * Chance16I. One can only send the high 16 bits to Chance16I.
  *
  * @see Chance16I()

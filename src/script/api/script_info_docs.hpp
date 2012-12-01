@@ -133,7 +133,7 @@ public:
 	 * Can a non-developer select Script for a new game.
 	 *
 	 * The idea behind this function is to 'forbid' using your script with a new
-	 *  game if you for example specificly wrote it for a certain scenario.
+	 *  game if you for example specifically wrote it for a certain scenario.
 	 *
 	 * @return True if the Script can be selected from the GUI as non-developer.
 	 * @note This function is optional. Default is false.
@@ -153,13 +153,13 @@ public:
 
 	/**
 	 * Gets the API version this Script is written for. If this function
-	 * does not exist API compatability with version 0.7 is assumed.
+	 * does not exist API compatibility with version 0.7 is assumed.
 	 * If the function returns something OpenTTD does not understand,
 	 * for example a newer version or a string that is not a version,
 	 * the Script will not be loaded.
 	 *
 	 * Although in the future we might need to make a separate
-	 * compatability 'wrapper' for a specific version of OpenTTD, for
+	 * compatibility 'wrapper' for a specific version of OpenTTD, for
 	 * example '0.7.1', we will use only the major and minor number
 	 * and not the bugfix number as valid return for this function.
 	 *
@@ -246,7 +246,7 @@ public:
 	 * @param setting_name The name of the setting.
 	 * @param value_names A table that maps values to names. The first
 	 *   character of every identifier is ignored and the rest should
-	 *   be the an integer of the value you define a name for. The value
+	 *   be an integer of the value you define a name for. The value
 	 *   is a short description of that value.
 	 * To define labels for a setting named "competition_level" you could
 	 * for example call it like this:

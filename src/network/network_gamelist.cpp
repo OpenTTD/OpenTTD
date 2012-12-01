@@ -171,7 +171,7 @@ void NetworkGameListRequery()
 void NetworkAfterNewGRFScan()
 {
 	for (NetworkGameList *item = _network_game_list; item != NULL; item = item->next) {
-		/* Reset compatability state */
+		/* Reset compatibility state */
 		item->info.compatible = item->info.version_compatible;
 
 		for (GRFConfig *c = item->info.grfconfig; c != NULL; c = c->next) {
@@ -181,13 +181,13 @@ void NetworkAfterNewGRFScan()
 			if (f == NULL) {
 				/* Don't know the GRF, so mark game incompatible and the (possibly)
 				 * already resolved name for this GRF (another server has sent the
-				 * name of the GRF already */
+				 * name of the GRF already. */
 				c->name->Release();
 				c->name = FindUnknownGRFName(c->ident.grfid, c->ident.md5sum, true);
 				c->name->AddRef();
 				c->status = GCS_NOT_FOUND;
 
-				/* If we miss a file, we're obviously incompatible */
+				/* If we miss a file, we're obviously incompatible. */
 				item->info.compatible = false;
 			} else {
 				c->filename = f->filename;

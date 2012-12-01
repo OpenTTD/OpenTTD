@@ -109,7 +109,7 @@ static inline void GetAllCargoSuffixes(uint cb_offset, CargoSuffixType cst, cons
 	}
 }
 
-IndustryType _sorted_industry_types[NUM_INDUSTRYTYPES];
+IndustryType _sorted_industry_types[NUM_INDUSTRYTYPES]; ///< Industry types sorted by name.
 
 /** Sort industry types by their name. */
 static int CDECL IndustryTypeNameSorter(const IndustryType *a, const IndustryType *b)

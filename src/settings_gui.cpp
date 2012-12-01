@@ -1396,7 +1396,7 @@ bool SettingEntry::UpdateFilterState(StringFilter &filter, bool force_visible, R
  *  |    |-- setting
  * \endverbatim
  * The left-most vertical line is not wanted. It is prevented by setting the
- * appropiate bit in the \a parent_last parameter.
+ * appropriate bit in the \a parent_last parameter.
  *
  * @param settings_ptr Pointer to current values of all settings
  * @param left         Left-most position in window/panel to start drawing \a first_row

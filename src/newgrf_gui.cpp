@@ -1399,7 +1399,7 @@ private:
 				const GRFConfig *best = FindGRFConfig(c->ident.grfid, HasBit(c->flags, GCF_INVALID) ? FGCM_NEWEST : FGCM_NEWEST_VALID);
 				/*
 				 * If the best version is 0, then all NewGRF with this GRF ID
-				 * have version 0, so for backward compatability reasons we
+				 * have version 0, so for backward compatibility reasons we
 				 * want to show them all.
 				 * If we are the best version, then we definitely want to
 				 * show that NewGRF!.

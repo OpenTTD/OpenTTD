@@ -13,18 +13,18 @@
 #define BITMATH_FUNC_HPP
 
 /**
- * Fetch n bits from x, started at bit s.
+ * Fetch \a n bits from \a x, started at bit \a s.
  *
- * This function can be used to fetch n bits from the value x. The
- * s value set the startposition to read. The startposition is
- * count from the LSB and starts at 0. The result starts at a
+ * This function can be used to fetch \a n bits from the value \a x. The
+ * \a s value set the start position to read. The start position is
+ * count from the LSB and starts at \c 0. The result starts at a
  * LSB, as this isn't just an and-bitmask but also some
  * bit-shifting operations. GB(0xFF, 2, 1) will so
  * return 0x01 (0000 0001) instead of
  * 0x04 (0000 0100).
  *
  * @param x The value to read some bits.
- * @param s The startposition to read some bits.
+ * @param s The start position to read some bits.
  * @param n The number of bits to read.
  * @return The selected bits, aligned to a LSB.
  */
@@ -44,10 +44,10 @@ static inline uint GB(const T x, const uint8 s, const uint8 n)
  * This is not a bug, its a feature.
  *
  * @note Parameter \a x must be a variable as the result is saved there.
- * @note To avoid unexpecting results the value of \a d should not use more
+ * @note To avoid unexpected results the value of \a d should not use more
  *       space as the provided space of \a n bits (log2)
  * @param x The variable to change some bits
- * @param s The startposition for the new bits
+ * @param s The start position for the new bits
  * @param n The size/window for the new bits
  * @param d The actually new bits to save in the defined position.
  * @return The new value of \a x
@@ -61,19 +61,19 @@ static inline T SB(T &x, const uint8 s, const uint8 n, const U d)
 }
 
 /**
- * Add i to n bits of x starting at bit s.
+ * Add \a i to \a n bits of \a x starting at bit \a s.
  *
- * This add the value of i on n bits of x starting at bit s. The parameters x,
- * s, i are similar to #GB besides x must be a variable as the result are
+ * This adds the value of \a i on \a n bits of \a x starting at bit \a s. The parameters \a x,
+ * \a s, \a i are similar to #GB. Besides, \ a x must be a variable as the result are
  * saved there. An overflow does not affect the following bits of the given
  * bit window and is simply ignored.
  *
  * @note Parameter x must be a variable as the result is saved there.
  * @param x The variable to add some bits at some position
- * @param s The startposition of the addition
+ * @param s The start position of the addition
  * @param n The size/window for the addition
- * @param i The value to add at the given startposition in the given window.
- * @return The new value of x
+ * @param i The value to add at the given start position in the given window.
+ * @return The new value of \a x
  */
 template <typename T, typename U>
 static inline T AB(T &x, const uint8 s, const uint8 n, const U i)
@@ -87,8 +87,8 @@ static inline T AB(T &x, const uint8 s, const uint8 n, const U i)
  * Checks if a bit in a value is set.
  *
  * This function checks if a bit inside a value is set or not.
- * The y value specific the position of the bit, started at the
- * LSB and count from 0.
+ * The \a y value specific the position of the bit, started at the
+ * LSB and count from \c 0.
  *
  * @param x The value to check
  * @param y The position of the bit to check, started from the LSB
@@ -165,7 +165,7 @@ static inline T ClrBit(T &x, const uint8 y)
  * changed and the value is also returned. Parameter y defines the bit
  * to toggle and starts at the LSB with 0.
  *
- * @param x The varliable to toggle the bit
+ * @param x The variable to toggle the bit
  * @param y The bit position to toggle
  * @return The new value of the old value with the bit toggled
  */
@@ -281,11 +281,11 @@ static inline bool HasAtMostOneBit(T value)
 }
 
 /**
- * ROtate x Left by n
+ * ROtate \a x Left by \a n
  *
  * @note Assumes a byte has 8 bits
  * @param x The value which we want to rotate
- * @param n The number how many we waht to rotate
+ * @param n The number how many we want to rotate
  * @return A bit rotated number
  */
 template <typename T>
@@ -295,11 +295,11 @@ static inline T ROL(const T x, const uint8 n)
 }
 
 /**
- * ROtate x Right by n
+ * ROtate \a x Right by \a n
  *
  * @note Assumes a byte has 8 bits
  * @param x The value which we want to rotate
- * @param n The number how many we waht to rotate
+ * @param n The number how many we want to rotate
  * @return A bit rotated number
  */
 template <typename T>

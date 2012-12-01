@@ -29,7 +29,7 @@ enum PacketGameType {
 	/*
 	 * These first three pair of packets (thus six in
 	 * total) must remain in this order for backward
-	 * and forward compatability between clients that
+	 * and forward compatibility between clients that
 	 * are trying to join directly.
 	 */
 

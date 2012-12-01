@@ -17,9 +17,9 @@
 
 /* The reason this exists in C++, is that a user can trash his ai/ or game/ dir,
  *  leaving no Scripts available. The complexity to solve this is insane, and
- *  therefor the alternative is used, and make sure there is always a Script
+ *  therefore the alternative is used, and make sure there is always a Script
  *  available, no matter what the situation is. By defining it in C++, there
- *  is simply no way a user can delete it, and therefor safe to use. It has
+ *  is simply no way a user can delete it, and therefore safe to use. It has
  *  to be noted that this Script is complete invisible for the user, and impossible
  *  to select manual. It is a fail-over in case no Scripts are available.
  */

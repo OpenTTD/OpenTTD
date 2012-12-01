@@ -113,7 +113,7 @@ public:
 
 	/**
 	 * Move a vehicle to a group.
-	 * @param group_id The group to move the vehicel to.
+	 * @param group_id The group to move the vehicle to.
 	 * @param vehicle_id The vehicle to move to the group.
 	 * @pre IsValidGroup(group_id) || group_id == GROUP_DEFAULT.
 	 * @pre ScriptVehicle::IsValidVehicle(vehicle_id).
@@ -129,7 +129,7 @@ public:
 	 *  (auto)replaced with a longer variant (longer wagons or longer engines)
 	 *  If enabled, wagons are removed from the end of the vehicle until it
 	 *  fits in the same number of tiles as it did before.
-	 * @param keep_length If true, wagons will be removed if the a new engine is longer.
+	 * @param keep_length If true, wagons will be removed if the new engine is longer.
 	 * @return True if and only if the value was successfully changed.
 	 */
 	static bool EnableWagonRemoval(bool keep_length);

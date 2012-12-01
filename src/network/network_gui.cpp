@@ -72,7 +72,6 @@ void SortNetworkLanguages()
 /**
  * Update the network new window because a new server is
  * found on the network.
- * @param unselect unselect the currently selected item
  */
 void UpdateNetworkGameWindow()
 {
@@ -850,7 +849,7 @@ public:
 
 			this->server = this->servers[this->list_pos];
 
-			/* scroll to the new server if it is outside the current range */
+			/* Scroll to the new server if it is outside the current range. */
 			this->ScrollToSelectedServer();
 
 			/* redraw window */
@@ -1037,7 +1036,7 @@ void ShowNetworkGameWindow()
 	/* Only show once */
 	if (first) {
 		first = false;
-		/* add all servers from the config file to our list */
+		/* Add all servers from the config file to our list. */
 		for (char **iter = _network_host_list.Begin(); iter != _network_host_list.End(); iter++) {
 			NetworkAddServer(*iter);
 		}
@@ -1101,7 +1100,7 @@ struct NetworkStartServerWindow : public Window {
 	{
 		switch (widget) {
 			case WID_NSS_SETPWD:
-				/* if password is set, draw red '*' next to 'Set password' button */
+				/* If password is set, draw red '*' next to 'Set password' button. */
 				if (!StrEmpty(_settings_client.network.server_password)) DrawString(r.right + WD_FRAMERECT_LEFT, this->width - WD_FRAMERECT_RIGHT, r.top, "*", TC_RED);
 		}
 	}
@@ -1126,7 +1125,7 @@ struct NetworkStartServerWindow : public Window {
 			case WID_NSS_CLIENTS_BTND:    case WID_NSS_CLIENTS_BTNU:    // Click on up/down button for number of clients
 			case WID_NSS_COMPANIES_BTND:  case WID_NSS_COMPANIES_BTNU:  // Click on up/down button for number of companies
 			case WID_NSS_SPECTATORS_BTND: case WID_NSS_SPECTATORS_BTNU: // Click on up/down button for number of spectators
-				/* Don't allow too fast scrolling */
+				/* Don't allow too fast scrolling. */
 				if (!(this->flags & WF_TIMEOUT) || this->timeout_timer <= 1) {
 					this->HandleButtonClick(widget);
 					this->SetDirty();
@@ -1353,7 +1352,7 @@ static void ShowNetworkStartServerWindow()
 }
 
 struct NetworkLobbyWindow : public Window {
-	CompanyID company;       ///< Select company
+	CompanyID company;       ///< Selected company
 	NetworkGameList *server; ///< Selected server
 	NetworkCompanyInfo company_info[MAX_COMPANIES];
 	Scrollbar *vscroll;
@@ -1369,7 +1368,7 @@ struct NetworkLobbyWindow : public Window {
 
 	CompanyID NetworkLobbyFindCompanyIndex(byte pos) const
 	{
-		/* Scroll through all this->company_info and get the 'pos' item that is not empty */
+		/* Scroll through all this->company_info and get the 'pos' item that is not empty. */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
 			if (!StrEmpty(this->company_info[i].company_name)) {
 				if (pos-- == 0) return i;
@@ -1423,11 +1422,11 @@ struct NetworkLobbyWindow : public Window {
 	{
 		const NetworkGameInfo *gi = &this->server->info;
 
-		/* Join button is disabled when no company is selected and for AI companies*/
+		/* Join button is disabled when no company is selected and for AI companies. */
 		this->SetWidgetDisabledState(WID_NL_JOIN, this->company == INVALID_COMPANY || GetLobbyCompanyInfo(this->company)->ai);
-		/* Cannot start new company if there are too many */
+		/* Cannot start new company if there are too many. */
 		this->SetWidgetDisabledState(WID_NL_NEW, gi->companies_on >= gi->companies_max);
-		/* Cannot spectate if there are too many spectators */
+		/* Cannot spectate if there are too many spectators. */
 		this->SetWidgetDisabledState(WID_NL_SPECTATE, gi->spectators_on >= gi->spectators_max);
 
 		this->vscroll->SetCount(gi->companies_on);
@@ -1481,7 +1480,7 @@ struct NetworkLobbyWindow : public Window {
 	void DrawDetails(const Rect &r) const
 	{
 		const int detail_height = 12 + FONT_HEIGHT_NORMAL + 12;
-		/* Draw info about selected company when it is selected in the left window */
+		/* Draw info about selected company when it is selected in the left window. */
 		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.top + detail_height - 1, PC_DARK_BLUE);
 		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + 12, STR_NETWORK_GAME_LOBBY_COMPANY_INFO, TC_FROMSTRING, SA_HOR_CENTER);
 
@@ -1559,7 +1558,7 @@ struct NetworkLobbyWindow : public Window {
 			}
 
 			case WID_NL_JOIN:     // Join company
-				/* Button can be clicked only when it is enabled */
+				/* Button can be clicked only when it is enabled. */
 				NetworkClientConnectGame(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port), this->company);
 				break;
 
@@ -1757,13 +1756,13 @@ struct NetworkClientListPopupWindow : Window {
 		this->AddAction(STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL, &ClientList_SpeakToAll);
 
 		if (_network_own_client_id != ci->client_id) {
-			/* We are no spectator and the company we want to give money to is no spectator and money gifts are allowed */
+			/* We are no spectator and the company we want to give money to is no spectator and money gifts are allowed. */
 			if (Company::IsValidID(_local_company) && Company::IsValidID(ci->client_playas) && _settings_game.economy.give_money) {
 				this->AddAction(STR_NETWORK_CLIENTLIST_GIVE_MONEY, &ClientList_GiveMoney);
 			}
 		}
 
-		/* A server can kick clients (but not himself) */
+		/* A server can kick clients (but not himself). */
 		if (_network_server && _network_own_client_id != ci->client_id) {
 			this->AddAction(STR_NETWORK_CLIENTLIST_KICK, &ClientList_Kick);
 			this->AddAction(STR_NETWORK_CLIENTLIST_BAN, &ClientList_Ban);

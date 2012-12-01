@@ -1092,7 +1092,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 			return true;
 		}
 	}
-	/* Quit if it selecting an appropiate bridge type fails a large number of times. */
+	/* Quit if it selecting an appropriate bridge type fails a large number of times. */
 	return false;
 }
 

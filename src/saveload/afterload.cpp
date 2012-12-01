@@ -636,7 +636,7 @@ bool AfterLoadGame()
 	SetDate(_date, _date_fract);
 
 	/*
-	 * Force the old behaviour for compatability reasons with old savegames.
+	 * Force the old behaviour for compatibility reasons with old savegames.
 	 *
 	 * Note that there is no non-stop in here. This is because the setting could have
 	 * either value in TTDPatch. To convert it properly the user has to make sure the
