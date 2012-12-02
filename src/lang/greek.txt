@@ -1203,11 +1203,20 @@ STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Σύμπ
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(δεν υπάρχει διαθέσιμη επεξήγηση)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Προκαθορισμένη τιμή: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Τύπος ρύθμισης: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Ρύθμιση πελάτη (δεν αποθηκεύεται στα αποθηκευμένα παιχνίδια, επηρεάζει όλα τα παιχνίδια)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Ρύθμιση παιχνιδιού (αποθηκεύεται σε αποθηκευμένα παιχνίδια, επηρεάζει μόνο νέα παιχνίδια)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Ρύθμιση παιχνιδιού (αποθηκεύεται σε αποθηκευμένα παιχνίδια, επηρεάζει μόνο το τρέχον παιχνίδι)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Ρύθμιση εταιρείας (αποθηκεύεται σε αποθηκευμένα παιχνίδια, επηρεάζει μόνο νέα παιχνίδια)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ρύθμιση εταιρείας (αποθηκεύεται σε αποθηκευμένα παιχνίδια, επηρεάζει μόνο την τρέχουσα εταιρεία)
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Προβολή:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Μειώνει την παρακάτω λίστα προβάλλοντας μόνο αλλαγμένες ρυθμίσεις
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Βασικές ρυθμίσεις
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Προχωρημένες ρυθμίσεις
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Προχωρημένες ρυθμίσεις / όλες οι ρυθμίσεις
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ρυθμίσεις με διαφορετική τιμή από την προκαθωρισμένη
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Ρυθμίσεις όχι του πελάτη με διαφορετική τιμή από την προκαθωρισμένη
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ρυθμίσεις με διαφορετική τιμή από τις ρυθμίσεις νέου παιχνιδιού σας
 
 STR_CONFIG_SETTING_OFF                                          :Ανενεργό
 STR_CONFIG_SETTING_ON                                           :Ενεργό
@@ -1288,146 +1297,151 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :στη μέση
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :μακρινό άκρο
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Ουρά οχημάτων (με κβαντικά εφέ): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Υποχρεώνεται το όχημα να περιμένει μπροστά από τις κατειλημμένες στάσεις μέχρι να ελευθερωθούν
-STR_CONFIG_SETTING_AUTOSCROLL                                   :Μετακίνηση παραθύρου όταν είναι το ποντίκι στην άκρη: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Μετακίνηση παραθύρου όταν το ποντίκι είναι στην άκρη: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Όταν είναι ενεργή, η εμφάνιση θα κυλά όταν το ποντίκι είναι κοντά στην άκρη του παραθύρου
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :απενεργοποιημένη
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :κύρια εμφάνιση, μόνο σε πλήρη οθόνη
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :κύρια εμφάνιση
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :κάθε εμφάνιση
 STR_CONFIG_SETTING_BRIBE                                        :Επιτρέπεται η δωροδοκία της τοπικής αρχής: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Επιτρέπεται στις εταιρείες να προσπαθήσουν να δωροδοκήσουν την τοπική αρχή. Αν η δωροδοκία γίνει αντιληπτή από τον ελεγκτή, η εταιρεία δε θα μπορεί να ενεργήσει στην πόλη για έξι μήνες
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Επιτρέπεται η αγορά αποκλειστικών δικαιωμάτων μεταφοράς: {STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Αν μια εταιρεία αγοράσει τα αποκλειστικά δικαιώματα μεταφορών σε μια πόλη, οι σταθμοί των αντιπάλων δε θα λαμβάνουν φορτία (επιβάτες και εμπορεύματα) για έναν ολόκληρο χρόνο
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Να επιτρέπεται η κατασκευή κτιρίων: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Αν μια εταιρεία αγοράσει τα αποκλειστικά δικαιώματα μεταφορών σε μια πόλη, οι σταθμοί των αντιπάλων δεν θα λαμβάνουν φορτία (επιβάτες και εμπορεύματα) για έναν ολόκληρο χρόνο
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Επιτρέπεται η κατασκευή κτιρίων: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Επιτρέπεται στις εταιρείες να δίνουν χρήματα στις πόλεις για να χρηματοδοτήσουν νέα σπίτια
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Να επιτρέπεται η ανακατασκευή των τοπικών δρόμων: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Επιτρέπεται στις εταιρείες να δίνουν χρήματα στις πόλεις για επανακατασκευή των δρόμων ώστε να σαμποτάρονται οι οδικές υπηρεσίες στην πόλη
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Να επιτρέπεται η αποστολή χρημάτων σε άλλες εταιρίες: {STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Επιτρέπεται η μεταφορά χρημάτων μεταξύ των εταιρειών στους πολλαπλούς παίκτες
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Επιτρέπεται η επιδότηση ανακατασκευής των τοπικών δρόμων: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Επιτρέπεται στις εταιρείες να δίνουν χρήματα στις πόλεις για ανακατασκευή των δρόμων ώστε να σαμποτάρονται οι οδικές υπηρεσίες στην πόλη
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Επιτρέπεται η αποστολή χρημάτων σε άλλες εταιρίες: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Επιτρέπεται η μεταφορά χρημάτων μεταξύ των εταιρειών σε παιχνίδια πολλαπλών παικτών
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Πολλαπλασιαστής βάρους σε φορτία για εξομοίωση βαρέων τρένων: {STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Ορίζεται ο αντίκτυπος της μεταφοράς φορτίων στα τραίνα. Υψηλότερη τιμή κάνει τη μεταφορά φορτίων πιο απαιτητική γι' αυτά, ειδικά στους λόφους
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Ορίζεται ο αντίκτυπος της μεταφοράς φορτίων στα τραίνα. Υψηλότερη τιμή κάνει τη μεταφορά φορτίων πιο απαιτητική για τραίνα, ιδιαίτερα στους λόφους
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Παράγοντας ταχύτητας αεροπλάνων: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Ορίζεται η σχετική ταχύτητα των αεροπλάνων συγκριτικά με τους άλλους τύπους οχημάτων, ώστε να μειώνεται το ποσό του εισοδήματος από μεταφορές με αεροσκάφη
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :Αριθμός των αεροπορικών ατυχυμάτων: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :Αριθμός των αεροπορικών ατυχημάτων: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Ορίστε την πιθανότητα συντριβής ενός αεροσκάφους
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :καθόλου
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :μειωμένος
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :κανονικός
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Επιτρέππνται οι στάσεις σε δρόμους ιδιοκτησίας των πόλεων : {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Επιτρέπεται η κατασκευή στάσεων πάνω σε δρόμους ιδιοκτησίας των πόλεων
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :μειωμένη
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :κανονική
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Επιτρέπονται οι στάσεις σε δρόμους που είναι ιδιοκτησία των πόλεων : {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Επιτρέπεται η κατασκευή στάσεων πάνω σε δρόμους που είναι ιδιοκτησία των πόλεων
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Επιτρέπονται οι στάσεις σε δρόμους που ανήκουν σε ανταγωνιστές: {STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Επιτρέπεται η κατασκευή στάσεων πάνω σε δρόμους ιδιοκτησίας των ανταγωνιστών
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Επιτρέπεται η κατασκευή στάσεων πάνω σε δρόμους που ανοίκουν σε ανταγωνιστές
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Επιτρέπεται η κατασκευή παρακείμενων σταθμών: {STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Επιτρέπεται διαφορετικοί σταθμοί να ακουμπούν μεταξύ τους
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Επιτρέπεται να ακουμπούν μεταξύ τους διαφορετικοί σταθμοί
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Επιτρέπεται η χρήση πολλαπλών μηχανών από τα NewGRF: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Επιλογή συμβατότητας για παλιά NewGRF. Μην το απενεργοποιείτε, εκτός αν ξέρετε ακριβώς τι κάνετε!
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Επιλογή συμβατότητας για παλιά NewGRF. Μην την απενεργοποιήσετε, εκτός αν ξέρετε καλά τι κάνετε!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Δεν είναι δυνατή η αλλαγή αυτής της ρύθμισης όταν υπάρχουν οχήματα.
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Συντήρηση υποδομής: {STRING}
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Όταν είναι ενεργοποιημένο, οι υποδομές προκαλούν έξοδα συντήρησης. Το κόστος μεγαλώνει δυσανάλογα με το μέγεθος του δικτύου, επηρεάζοντας έτσι τις μεγάλες εταιρείες περισσότερο από τις μικρότερες
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Όταν είναι ενεργοποιημένη, οι υποδομές προκαλούν έξοδα συντήρησης. Το κόστος μεγαλώνει δυσανάλογα με το μέγεθος του δικτύου, επηρεάζοντας έτσι τις μεγάλες εταιρείες περισσότερο από τις μικρότερες
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Τα αεροδρόμια δεν λήγουν ποτέ: {STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ενεργοποιώντας αυτή τη ρύθμιση κάθε τύπος αεροδρομίου παραμένει διαθέσιμο για πάντα μετά την παρουσίασή του
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ενεργοποιώντας αυτήν τη ρύθμιση κάθε τύπος αεροδρομίου παραμένει διαθέσιμο για πάντα μετά την παρουσίασή του
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Ειδοποίηση όταν ένα όχημα χαθεί: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Ενεργοποίηση μηνυμάτων σχετικά με οχήματα που δεν καταφέρνουν να βρουν διαδρομή για τον προορισμό τους
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Επανεξέταση οδηγιών τρένων: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Όταν είναι ενεργοποιημένο, οι εντολές των οχημάτων ελέγχονται περιοδικά και μερικά προφανή προβλήματα αναφέρονται με ένα μήνυμα νέων όταν διαπιστώνονται
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Όταν είναι ενεργοποιημένη, οι εντολές των οχημάτων ελέγχονται περιοδικά και μερικά προφανή προβλήματα αναφέρονται με ένα μήνυμα νέων όταν διαπιστώνονται
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :όχι
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ναι, αλλά εξαιρούνται τα σταματημένα οχήματα
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :από όλα τα οχήματα
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ειδοποίηση όταν τα έσοδα ενός οχήματος είναι αρνητικά: {STRING}
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Όταν είναι ενεργοποιημένο, στέλνεται μήνυμα νέων όταν κάποιο όχημα δεν έχει αποφέρει κέρδος εντός ενός ημερολογιακού έτους
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :για όλα τα οχήματα
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ειδοποίηση όταν τα έσοδα ενός οχήματου είναι αρνητικά: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Όταν είναι ενεργοποιημένη, στέλνεται μήνυμα νέων όταν κάποιο όχημα δεν έχει αποφέρει κέρδος εντός ενός ημερολογιακού έτους
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Τα οχήματα δεν λήγουν ποτέ: {STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Όταν είναι ενεργοποιημένο, όλα τα μοντέλα οχημάτων παραμένουν διαθέσιμα για πάντα μετά την παρουσίασή τους
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Αυτόματη Ανανέωση όταν ένα όχημα παλιώνει: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Όταν είναι ενεργοποιημένο, τα οχήματα που πλησιάζουν το τέλος της ζωής τους αντικαθίσταται αυτόματα όταν πληρούνται οι προϋποθέσεις αντικατάστασής του
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Όταν είναι ενεργοποιημένη, όλα τα μοντέλα οχημάτων παραμένουν διαθέσιμα για πάντα μετά την παρουσίασή τους
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Αυτόματη ανανέωση όταν ένα όχημα παλιώνει: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Όταν είναι ενεργοποιημένη, τα οχήματα που πλησιάζουν το τέλος της ζωής τους αντικαθίσταται αυτόματα όταν πληρούνται οι προϋποθέσεις αντικατάστασής του
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Αυτόματη αντικατάστηση όταν κάποιο όχημα είναι {STRING} μέγιστης ηλικίας
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Σχετική ηλικία κατά την οποία κάποιο όχημα θα πρέπει να εξετάζεται για αυτόματη ανανέωνση
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Σχετική ηλικία κατά την οποία κάποιο όχημα θα πρέπει να εξεταστεί για αυτόματη ανανέωση
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} μήν{P 0 α ες} πριν
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} μήν{P 0 α ες} μετά
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Αυτόματη Ανανέωση με τα ελάχιστα απαιτούμενα χρήματα: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Αυτόματη ανανέωση με τα ελάχιστα απαιτούμενα χρήματα: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Ελάχιστο χρηματικό ποσό που θα πρέπει να υπολείπεται στην τράπεζα πριν εξεταστεί η αυτόματη ανανέωση των οχημάτων
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Διάρκεια μηνύματος σφάλματος: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Διάρκεια εμφάνισης μηνύματων σφάλματος σε κόκκινο παράθυρο. Σημειώστε ότι μερικά (κρίσιμα) μηνύματα σφάλματος δεν κλείνουν αυτόματα μετά από αυτόν τον χρόνο, αλλά πρέπει να κλείσουν χειροκίνητα
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} δευτερόλεπτ{P 0 ο α}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Εμφάνιση αναδυόμενων μηνυμάτων: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Καθυστέρηση πριν την εμφάνιση των επεξηγήσεων όταν o κέρσορας βρίσκεται πάνω από κάποιο στοιχείο της διεπαφής. Εναλλακτικά οι επεξηγήσεις μπορούν να συνδεθούν με το δεξί κουμπί του ποντικιού
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Καθυστέρηση πριν την εμφάνιση των επεξηγήσεων όταν ο κέρσορας βρίσκεται πάνω από κάποιο στοιχείο της διεπαφής. Εναλλακτικά, οι επεξηγήσεις μπορούν να συνδεθούν με το δεξί κουμπί του ποντικιού
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Ο κέρσορας βρίσκεται από πάνω για {COMMA} δευτερόλεπτ{P 0 ο α}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Δεξί κουμπί
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Εμφάνιση πληθυσμού πόλης στο όνομα της πόλης: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Εμφάνιση του πληθυσμού των πόλεων στην ετικέτα τους πάνω στο χάρτη
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Πάχος γραμμών στα γραφήματα: {STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Πάχος γραμμών στα γραφήματα. Οι λεπτές γραμμές διαβάζονται με μεγαλύτερη ακρίβεια, οι παχύτερες είναι πιο ευδιάκριτες κα να τα χρώματα ξεχωρίσουν ευκολότερα
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Πάχος γραμμών στα γραφήματα. Οι λεπτές γραμμές διαβάζονται με μεγαλύτερη ακρίβεια, οι παχύτερες είναι πιο ευδιάκριτες και τα χρώματα ξεχωρίσουν ευκολότερα
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :Γεννήτρια Γης: {STRING}
-STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Αυθεντικό
-STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :ΤεραΓένεση
+STR_CONFIG_SETTING_LAND_GENERATOR                               :Γεννήτρια γης: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Αυθεντική
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :ΓέννησηΓης
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Μέγιστη απόσταση από την άκρη του χάρτη για τα Διυλιστήρια: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Τα Διυλιστήρια κατασκευάζονται κοντά στην άκρη του χάρτη, το οποίο είναι ακτή για τους νησιωτικούς χάρτες
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Τα Διυλιστήρια κατασκευάζονται κοντά στην άκρη του χάρτη, η οποία είναι ακτή σε νησιωτικούς χάρτες
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Κορυφογραμμή χιονιού: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Σκληρότητα επιφάνειας (ΤεραΓέννεση μόνο) : {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Πολύ απαλή
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ανωμαλία επιφάνειας (μόνο με ΓέννησηΓης) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Πολύ Απαλή
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Απαλή
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Σκληρή
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Πολύ ανώμαλη
-STR_CONFIG_SETTING_TREE_PLACER                                  :Αλγόριθμος τοποθέτησης Δέντρων: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ανώμαλη
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Πολύ Ανώμαλη
+STR_CONFIG_SETTING_TREE_PLACER                                  :Αλγόριθμος τοποθέτησης δέντρων: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Κανένας
-STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Αυθεντικό
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Αυθεντικός
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Βελτιωμένος
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Περιστροφή χάρτη υψομετρίας: {STRING}
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Αντίθετη Φορά Ρολογιού
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Δεξιόστροφα
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Το επίπεδο ύψους που παίρνει ένα επίπεδο σενάριο: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Να επιτρέπεται η διαμόρφωση εδάφους στις άκρες του χάρτη: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Όταν είναι απενεργοποιημένο, τα όρια του χάρτη θα είναι πάντα ωκεανός
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ένα ή περισσότερα τετράγωνίδια στην βόρεια άκρη δεν είναι κενά
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ένα ή περισσότερα τετράγωνίδια σε μια από τις άκρες δεν είναι στο νερό
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Αριστερόστροφη
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Δεξιόστροφη
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Το επίπεδο ύψους που παίρνει ένα σενάριο: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Επιτρέπεται η διαμόρφωση εδάφους στις άκρες του χάρτη: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Όταν είναι απενεργοποιημένη, τα όρια του χάρτη θα είναι πάντα ωκεανός
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ένα ή περισσότερα τετραγωνίδια στην βόρεια άκρη δεν είναι κενά
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ένα ή περισσότερα τετραγωνίδια σε μια από τις άκρες δεν είναι νερό
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Μέγιστη έκταση σταθμού: {STRING}
-STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Μέγιστη περιοχή στην οποία μπορούν να εκτείνονται τα τμήματα κάθε σταθμού. Σημειώστε ότι υψηλές τιμές καθυστερούν το παιχνίδι
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Μέγιστη περιοχή στην οποία μπορούν να εκτείνονται τα τμήματα ενός σταθμού. Σημειώστε ότι υψηλές τιμές καθυστερούν το παιχνίδι
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Αυτόματη επισκευή ελικοπτέρων στα ελικοδρόμια: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Επισκευή ελικοπτέρων μετά από κάθε προσγείωση, ακόμη κι αν δεν υπάρχει υπόστεγο στο αεροδρόμιο
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Σύνδεση γραμμής εργαλείων τοπίου με γραμμή εργαλείων σιδηροτροχιάς/δρόμου/νερού/αεροδρομίου: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Όταν ανοίγει γραμμή εργαλείων κατασκευής κάποιου τύπου μεταφορικών μέσων, ανοίγει επίσης η γραμμή εργαλείων για τη μορφοποίηση του εδάφους
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Χρώμα εδάφους που χρησιμοποιείται στον μικροχάρτη: {STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Χρώμα εδάφους στο μικρό χάρτη
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Χρώμα εδάφους που χρησιμοποιείται στον μικρό χάρτη: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Χρώμα εδάφους στον μικρό χάρτη
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Πράσινο
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Σκούρο πράσινο
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Βιολετί
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Ανάποδη μετακίνηση οθόνης: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Συμπεριφορά όταν κυλίεται ο χάρτης με το δεξί κουμπί του ποντικιού. Όταν είναι απενεργοποιημένο, το ποντίκι μετακινή την κάμερα. Όταν είναι ενεργοποιημένο, το ποντίκι μετακινεί τον χάρτη
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Συμπεριφορά όταν κυλίεται ο χάρτης με το δεξί κουμπί του ποντικιού. Όταν είναι απενεργοποιημένη, το ποντίκι μετακινεί την κάμερα. Όταν είναι ενεργοποιημένη, το ποντίκι μετακινεί τον χάρτη
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Ομαλή μετάβαση οθόνης: {STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Ελέγξτε τον τρόπο με τον οποίο η κύρια προβολή κυλίεται σε μια συγκεκριμένη θέση όταν πατάτε πάνω στον μικρό χάρτη ή όταν δίνετε εντολή για μετάβαση σε ένα συγκεκριμένο αντικέιμενο στο χάρτη. Όταν είναι ενεργοποιημένο, η κύλιση γίνεται ομαλά, όταν είναι απενεργοποιημένο μεταβαίνει απ' ευθείας στο επιλεγμένο σημείο
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Ελέγξτε τον τρόπο με τον οποίο η κύρια προβολή κυλίεται σε μια συγκεκριμένη θέση όταν πατάτε πάνω στον μικρό χάρτη ή όταν δίνετε εντολή για μετάβαση σε ένα συγκεκριμένο αντικείμενο στον χάρτη. Όταν είναι ενεργοποιημένη, η κύλιση γίνεται ομαλά, και όταν είναι απενεργοποιημένη μεταβαίνει απ' ευθείας στο επιλεγμένο σημείο
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Εμφάνιση εργαλείου μετρήσεως όταν χρησιμοποιούνται διάφορα εργαλεία: {STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Εμφάνιση αποστάσεων τετραγωνιδίων και υψομετρικών διαφορών όταν γίνονται λειτουργίες κατασκευών σύροντας
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Εμφάνιση αποστάσεων τετραγωνίδιον και υψομετρικών διαφορών όταν γίνονται λειτουργίες κατασκευών με σύρσιμο του κέρσορα
 STR_CONFIG_SETTING_LIVERIES                                     :Εμφάνιση χρωμάτων των εταιριών: {STRING}
-STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Έλεγξτε τη χρήση του χρωματικού μοτίβου των τύπων των οχημάτων για τα οχήματα (σε αντίθεση με τα εταιρικά)
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Ελέγξτε τη χρήση του χρωματικού μοτίβου των τύπων των οχημάτων για τα οχήματα (σε αντίθεση με τα εταιρικά)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Κανένας
-STR_CONFIG_SETTING_LIVERIES_OWN                                 :Η Εταιρία μου
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Η εταιρία μου
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Όλες οι εταιρίες
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Προτίμηση ομαδικού chat με <ENTER>: {STRING}
-STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Αλλαγή της σύνδεσης του εσωετρικού και του κοινού chat της εταιρείας σε <ENTER> αντίστοιχα <Ctrl+ENTER>
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Προτίμηση ομαδικής συνομιλίας με το <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Αλλαγή του πλήκτρου της εσωτερικής με της κοινής συνομιλίας της εταιρείας απο <ENTER> σε <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Λειτουργία ροδέλας κύλισης: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Ενεργοποίηση κύλισης με δισδιάστατους τροχούς ποντικιών
-STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom στο χάρτη
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Μετακίνηση στο χάρτη
-STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Κλειστό
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Ζουμ στον χάρτη
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Μετακίνηση στον χάρτη
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Απενεργοποιημένος
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Ταχύτητα ροδέλας μετακίνησης χάρτη: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Έλεγχος της ευαισθησίας του τροχού του ποντικιού κατά την κύλιση
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Εξομοίωση δεξιού κλικ {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Επιλέξτε τον τρόπο μίμησης των πατημάτων του δεξιού κουμπιού του ποντικιού
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Κλικ
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-Κλικ
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :όχι
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control+Κλικ
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Απενεργοποιημένος
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Μετάβαση με αριστερό κλικ: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Ενεργοποίηση της κύλισης του χάρτη σύροντας τον με το αριστερό κουμπί του ποντικιού. Αυτό είναι ιδιαίτερα χρήσιμο για την κύλιση όταν χρησιμοποιείται οθόνη αφής
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Χρήση της {STRING} ημερολογιακής μορφής στα ονόματα αποθηκευμένων παιχνίδιών.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Χρήση της {STRING} ημερολογιακής μορφής στα ονόματα αποθηκευμένων παιχνιδιών
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Μορφή της ημερομηνίας στα αρχεία αποθήκευσης παιχνιδιών
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :μεγάλη (31 Δεκ 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :μακριά (31 Δεκ 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :σύντομη (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Η προεπιλεγμένη παλέτα για NewGRFs δεν ορίζει ορθά παλέτα: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Η προκαθορισμένη παλέτα που θα χρησιμοποιείται από τα NewGRF όταν δεν ορίζεται ποιό χρειάζονται
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Η προεπιλεγμένη παλέτα για NewGRF δεν ορίζει ορθά παλέτα: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Η προκαθορισμένη παλέτα που θα χρησιμοποιείται για τα NewGRF που δεν έχουν ορίσει ποια χρειάζονται
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Παλέτα DOS
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Παλέτα Windows
 
@@ -1445,34 +1459,34 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :Χρήση δε
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Επιλέξτε εάν οι δείκτες φόρτωσης εμφανίζονται πάνω από τα οχήματα που φορτώνουν ή ξεφορτώνουν
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Εμφάνιση δρομολογίων σε στιγμές αντί για ημέρες: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Εμφάνιση χρόνων ταξιδιού στα χρονοδιαγράμματα σε χρόνο παιχνιδιού αντί σε ημέρες
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Εμφάνιση άφιξη και αναχώρηση στα δρομολόγια: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Εμφάνιση αναμενώμενης ώρας άφιξης και αναχώρησης στα χρονοδιαγράμματα
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Εμφάνιση αφίξεων και αναχωρήσεων στα δρομολόγια: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Εμφάνιση αναμενόμενης ώρας άφιξης και αναχώρησης στα χρονοδιαγράμματα
 STR_CONFIG_SETTING_QUICKGOTO                                    :Γρήγορη δημιουργία εντολών για τα οχήματα: {STRING}
-STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Προ-επιλογή του "Μετάβαση σε" όταν ανοίγει το παράθυρο των εντολών
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Προεπιλογή του «Μετάβαση σε» όταν ανοίγει το παράθυρο των εντολών
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Προεπιλογή τύπου σιδηροτροχιάς (μετά από νέο παιχνίδι/φόρτωση παιχνιδιού): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Επιλογή τύπου ραγών που επιλέγεται όταν αρχίζει ή φορτώνεται ένα παιχνίδι. Με το "Πρώτος διαθέσιμος" επιλέγεται ο παλαιότερος τύπος ραγών, με το "τελευταίος διαθέσιμος" επιλέγεται ο νεότερος τύπος ραγών και με το "περισσότερης χρήσης" επιλέγεται ο τύπος που χρησιμοποιείται περισσότερο την τρέχουσα στιγμή
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Επιλογή τύπου ραγών που επιλέγεται όταν αρχίζει ή φορτώνεται ένα παιχνίδι. Με το «πρώτος διαθέσιμος» επιλέγεται ο παλαιότερος τύπος ραγών, με το «τελευταίος διαθέσιμος» επιλέγεται ο νεότερος τύπος ραγών και με το «περισσότερης χρήσης» επιλέγεται ο τύπος που χρησιμοποιείται περισσότερο την τρέχουσα στιγμή
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Πρώτος διαθέσιμος
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Τελευταίος διαθέσιμος
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Περισσότερο χρησιμοποιούμενος
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Εμφάνιση κλεισμένων γραμμών: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Δίνεται ένα διαφορετικό χρώμα στις κατειλημμένες ράγες για να σας βοηθήσουν με προβλήματα όταν τα τραίνα αρνούνται να εισέλθουν σε τμήματα με βάση τροχιές
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Διατήρηση των οικοδομικών εργαλείων ενεργών μετά από χρήση τους: {STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Διατήρηση ανοικτών των εργαλείων για γέφυρες, σήραγγες, κλπ. μετά από τη χρήση
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Διατήρηση ανοικτών των εργαλείων για γέφυρες, σήραγγες, κλπ μετά από τη χρήση
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Ομαδοποίηση εξόδων στο παράθυρο οικονομικών της εταιρίας: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Ορίστε τη μορφή για το παράθυρο των εξόδων της εταιρείας
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Απενεργοποιήση των υποδομών για τα οχήματα που δεν είναι διαθέσιμα: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Όταν είναι ενεργοποιημένο, οι υποβομές είναι διαθέσιμες μόνο όταν είναι διαθέσιμα οχήματα, αποτρέποντας σπατάλη χρόνου και χρημάτων σε μη χρησιμοποιήσιμες υποδομές
-STR_CONFIG_SETTING_MAX_TRAINS                                   :Μέγιστος αριθμός τρένων ανα εταιρία: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Απενεργοποίηση των υποδομών για τα οχήματα που δεν είναι διαθέσιμα: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Όταν είναι ενεργοποιημένο, οι υποδομές είναι διαθέσιμες μόνο όταν υπάρχουν διαθέσιμα οχήματα, αποτρέποντας σπατάλη χρόνου και χρημάτων σε μη χρησιμοποιήσιμες υποδομές
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Μέγιστος αριθμός τρένων ανά εταιρία: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Μέγιστος αριθμός τραίνων που μπορεί να έχει μια εταιρεία
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Μέγιστα οχήματα ανα εταιρία: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Μέγιστα οχήματα ανά εταιρία: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Μέγιστος αριθμός οδικών οχημάτων που μπορεί να έχει μια εταιρεία
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Μέγιστα αεροσκάφη ανα εταιρία: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Μέγιστα αεροσκάφη ανά εταιρία: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Μέγιστος αριθμός αεροσκαφών που μπορεί να έχει μια εταιρεία
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Μέγιστα πλοία ανά εταιρία: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Μέγιστος αριθμός πλοίων που μπορεί να έχει μια εταιρεία
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Απενεργοποίηση τρένων υπολογιστή: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Απενεργοποίηση τρένων για τον υπολογιστή: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Ενεργοποιώντας αυτήν τη ρύθμιση κάνει αδύνατη την κατασκευή τραίνων από παίκτη του υπολογιστή
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Απενεργοποίηση οχημάτων υπολογιστή: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Ενεργοποιώντας αυτήν τη ρύθμιση κάνει αδύνατη την κατασκευή οδικών οχημάτων από παίκτη του υπολογιστή
@@ -1481,13 +1495,13 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Ενεργοπ�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Απενεργοποίηση πλοίων υπολογιστή: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ενεργοποιώντας αυτήν τη ρύθμιση κάνει αδύνατη την κατασκευή πλοίων από παίκτη του υπολογιστή
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Επιτρέπονται AI σε παιχνίδι για πολλούς παίκτες: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Επιτρέπονται AI σε παιχνίδια πολλών παικτών: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Επιτρέπεται η συμμετοχή παικτών υπολογιστή AI σε παιχνίδια πολλαπλών παικτών
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#εντολών πριν τη παύση δεσμών ενεργειών: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Μέγιστος αριθμός βημάτων υπολογισμού που κάνει κάποιο σενάριο σε κάθε σειρά
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Τα διαστήματα μεταξύ συντήρησης είναι σε ποσοστά: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Επιλέξτε εάν η επισκευή των οχημάτων εξαρτάται από τον χρόνο που πέρασε από την τελευταία επισκευτή ή από την μείωση της αξιοπιστίας κατά ένα συγκεκριμένο ποσοστό της μέγιστης αξιοπιστίας
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Επιλέξτε εάν η επισκευή των οχημάτων εξαρτάται από τον χρόνο που πέρασε από την τελευταία επισκευή ή από την μείωση της αξιοπιστίας κατά ένα συγκεκριμένο ποσοστό της μέγιστης αξιοπιστίας
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Προκαθορισμένο διάστημα μεταξύ επισκευών για τα τραίνα: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Ορίστε το προκαθορισμένο διάστημα μεταξύ συντηρήσεων για τα νέα οχήματα τραίνων, όταν δεν δίνεται άλλο διάστημα για το όχημα
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} ημέρ{P 0 α ες}/%
@@ -1499,27 +1513,27 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Ορίστε τ
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Προκαθορισμένο διάστημα μεταξύ επισκευών για τα πλοία: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Ορίστε το προκαθορισμένο διάστημα μεταξύ συντηρήσεων για τα νέα πλοία, όταν δεν δίνεται άλλο διάστημα για το πλοίο
 STR_CONFIG_SETTING_NOSERVICE                                    :Απενεργοποίηση επισκευών όταν οι βλάβες είναι απενεργοποιημένες: {STRING}
-STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Όταν είναι ενεργοποιημένο, τα οχήματα δεν συντηρούνται όταν δεν είναι δινατό να χαλάσουν
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Όταν είναι ενεργοποιημένη, τα οχήματα δεν συντηρούνται όταν δεν είναι δυνατό να χαλάσουν
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ενεργοποίηση ορίων ταχύτητας βαγονιών: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Όταν είναι ενεργοποιημένο, χρησιμοποιούνται και τα όρια ταχύτητας των βαγονιών όταν αποφασίζεται η μέγιστη ταχύτητα ενός τραίνου
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Απενεργοποίηση ηλεκτρικών σιδηροτροχιών: {STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ενεργοποιώντας αυτήν την ρύθμιση απενεργοποιείται η ανάγκη ηλεκτροδότησης των σιδηροτροχιών για μπορέσουν να λειτουργήσουν οι ηλεκτρικές μηχανές σε αυτές
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ενεργοποιώντας αυτήν την ρύθμιση απενεργοποιείται η ανάγκη ηλεκτροδότησης των σιδηροτροχιών για να μπορέσουν σε αυτές να λειτουργήσουν οι ηλεκτρικές μηχανές
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Τα έγχρωμα νέα εμφανίζονται από το: {STRING}
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Το έτος κατά το οποίο οι ανακοινώσεις στην εφημερίδα εκτυπώνονται έγχρωμες. Πριν από αυτό, εκτυπώνονται μονόχρωμες ασπρόμαυρες
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Το έτος κατά το οποίο οι ανακοινώσεις στην εφημερίδα εκτυπώνονται έγχρωμες. Πριν από αυτό το έτος, εκτυπώνονται μονόχρωμες και ασπρόμαυρες
 STR_CONFIG_SETTING_STARTING_YEAR                                :Έτος εκκίνησης: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Ενεργοποίηση ομαλής οικονομίας (περισσότερες, μικρότερες αλλαγές): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Όταν είναι ενεργοποιημένο, η παραγωγή των βιομηχανιών αλλάζει συχνότερα και σε μικρότερα βήματα. Αυτή η ρύθμιση συνήθως δεν έχει καμία επίδραση όταν οι τύποι των βιομηχανιών παρέχονται από ένα NewGRF
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ενεργοποίηση δυνατότητας αγοράς μετοχών από άλλες εταιρίες: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Όταν είναι ενεργοποιημένο, επιτρέπεται η αγοραπωλησία εταιρικών μετοχών. Οι μετοχές θα είναι διαθέσιμες μόνο όταν οι εταιρείες φτάνουν μια ορισμένη ηλικιά
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Όταν είναι ενεργοποιημένη, η παραγωγή των βιομηχανιών αλλάζει συχνότερα και σε μικρότερα βήματα. Αυτή η ρύθμιση συνήθως δεν έχει καμία επίδραση όταν οι τύποι των βιομηχανιών παρέχονται από NewGRF
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ενεργοποίηση της δυνατότητας αγοράς μετοχών από άλλες εταιρίες: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Όταν είναι ενεργοποιημένη, επιτρέπεται η αγοραπωλησία εταιρικών μετοχών. Οι μετοχές θα είναι διαθέσιμες μόνο όταν οι εταιρείες φτάνουν μια ορισμένη ηλικία
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Το ποσοστό κέρδους από το σκέλος μεταφοράς στα συστήματα τροφοδότησης: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Το ποσοστό του εισοδήματος που δίνεται στα ενδιάμεσα σκέλη των συστημάτων τροφοδότησης, δίνοντας μεγαλύτερο έλεγχο στο εισόδημα
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Όταν σύρετε, τοποθετούνται σήματα κάθε: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Ορισμός απόστασης στην οποία θα τοποθετούνται σήματα σε μια γραμμή και μέχρι το επόμενο εμπόδιο (σήμα, διακλάδωση), όταν σύρονται σήματα
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Ορισμός απόστασης στην οποία θα τοποθετούνται σήματα σε μια γραμμή και μέχρι το επόμενο εμπόδιο (σήμα, διακλάδωση), αν σύρονται τα σήματα
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} τετραγωνίδι{P 0 ο α}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Όταν σύρετε, διατηρείται σταθερή απόσταση μεταξύ των σημάτων: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Επιλέξτε τη συμπεριφορά της τοποθέτησης σημάτων όταν πατάτε Ctrl και σύρετε. Όταν είναι απενεργοποιημένο, τα σήματα τοποθετούνται γύρω από σήραγγες και γέφυρες για να αποφεύγονται μεγάλα τμήματα χωρίς σήματα. Όταν είναι ενεργοποιημένο, τα σήματα τοποθετούνται κάθε ν τετραγωνίδια, κάνοντας την ευθυγράμμιση των σημάτων σε παράλληλες γραμμές ευκολότερη
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Αυτόματο χτίσιμο σηματοφόρων πρίν από το: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Αυτόματο χτίσιμο σηματοφόρων πριν από το: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Ορίζεται το έτος κατά το οποίο θα χρησιμοποιούνται τα ηλεκτρικά σήματα στις σιδηροτροχιές. Πριν από αυτό, θα χρησιμοποιούνται μηχανικά σήματα (που έχουν ακριβώς την ίδια λειτουργία, αλλά έχουν διαφορετική μορφή)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ενεργοποίηση του μενού σηματοδοτών: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Εμφανίζεται ένα παράθυρο για την επιλογή του τύπου του σήματος που θα τοποθετηθεί, αντί για την απλή μετατροπή από τον έναν τύπο στον άλλο χωρίς παράθυρο, με πάτημα πάνω σε τοποθετημένα σήματα κρατώντας το Ctrl
@@ -1527,34 +1541,34 @@ STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Τύπος ση
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Προκαθορισμένος τύπος σημάτων που χρησιμοποιείται
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Σηματοδότες τμήματος
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Σηματοδότες τροχιάς
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Σηματοδότες μονοδρομής τροχιάς
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Σηματοδότες μονόδρομης τροχιάς
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Περιήγηση στους τύπους σηματοδότησης: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Επιλέξτε τους τύπους σημάτων μεταξύ των οποίων θα γίνονται οι αλλαγές, όταν πατάτε πάνω σε ένα τοποθετημένο σήμα κρατώντας το Ctlr
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Επιλέξτε τους τύπους σημάτων μεταξύ των οποίων θα γίνονται οι αλλαγές, όταν πατάτε πάνω σε ένα τοποθετημένο σήμα κρατώντας το Ctrl
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Μόνο σηματοδότες τμήματος
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Μόνο σηματοδότες τροχιάς
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Όλα
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Όλοι
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Σχέδιο δρόμων για νέες πόλεις: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Μορφή οδικών δικτύων για τις πόλεις
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Αρχικό
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Καλύτεροι δρόμοι
-STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Πλέγμα 2x2
-STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Πλέγμα 3x3
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :αρχική
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :καλύτεροι δρόμοι
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :πλέγμα 2x2
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :πλέγμα 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :τυχαίο
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Οι πόλεις επιτρέπεται να χτίσουν δρόμους: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Επιτρέπεται στις πόλεις να κατασκευάζουν δρόμους για ανάπτυξη. Απενεργοποιήστε για να αποτρέπονται οι τοπικές αρχές από την αυτόνομη κατασκευή δρόμων
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Οι πόλεις επιτρέπουν το χτίσιμο ισοπέδων διασταυρώσεων: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Ενεργοποιώντας αυτήν την ρύθμιση επιτρέπει στις πόλεις να κατασκευάζουν επίπεδες διαβάσεις
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :Επιτρεπεται η πόλη να ελέγχει το επίπεδο θορύβου των αεροδρομίων: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Με αυτήν τη ρύθμιση απενεργοποιημένη, μπορεί να υπάρχουν δύο αεροδρόμια σε κάθε πόλη. Με αυτήν τη ρύθμιση ενεργοποιημένη, ο αριθμός των αεροδρομίων σε μια πόλη περιορίζεται από την αποδοχή του θορύβου από την πόλη, η οποία εξαρτάται από τον πληθυσμό, το μέγεθος του αεροδρομίου και από την απόστασή του
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :Ιδρύση πολέων στο παιχνίδι: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Ενεργοποιώντας αυτήν την ρύθμιση επιτρέπει στους παίκτες να ιδρύουν νέες πόλεις στο παιχνίδι
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Οι πόλεις επιτρέπουν το χτίσιμο ισόπεδων διασταυρώσεων: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Ενεργοποιώντας αυτήν τη ρύθμιση επιτρέπει στις πόλεις να κατασκευάζουν επίπεδες διαβάσεις
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Επιτρέπεται η πόλη να ελέγχει το επίπεδο θορύβου των αεροδρομίων: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Με αυτήν τη ρύθμιση απενεργοποιημένη, γίνεται να υπάρχουν δύο αεροδρόμια σε κάθε πόλη. Με αυτήν τη ρύθμιση ενεργοποιημένη, ο αριθμός των αεροδρομίων σε μια πόλη περιορίζεται από την αποδοχή του θορύβου από την πόλη, η οποία εξαρτάται από τον πληθυσμό, το μέγεθος του αεροδρομίου και από την απόστασή του από την πόλη
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Ίδρυση πόλεων στο παιχνίδι: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Ενεργοποιώντας αυτήν την ρύθμιση επιτρέπει στους παίκτες να ιδρύσουν νέες πόλεις στο παιχνίδι
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :δεν επιτρέπεται
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :επιτρέπεται
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :επιτρεπέται, προσαρμοσμένο σχέδιο πόλης
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :επιτρέπεται, προσαρμοσμένο σχέδιο πόλης
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Τοποθέτηση δέντρων εντός παιχνιδιού: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Έλεγχος της τυχαίας εμφάνισης δέντρων κατά τη διάρκεια του παιχνιδιού. Αυτό είναι πιθανό να επηρεάσει βιομηχανίες που εξαρτώνται από την ανάπτυξη των δέντρων, όπως για παράδειγμα οι υλοτομείες
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Έλεγχος της τυχαίας εμφάνισης δέντρων κατά τη διάρκεια του παιχνιδιού. Αυτό είναι πιθανό να επηρεάσει βιομηχανίες που εξαρτώνται από την ανάπτυξη των δέντρων, όπως για παράδειγμα οι υλοτομίες
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Κανένα {RED}(Καταστρέφει το ξυλουργείο)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :μόνο σε δάση
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :παντού

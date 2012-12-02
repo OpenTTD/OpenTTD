@@ -582,7 +582,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Dirua:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Mailegua:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Guztira:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Azken urtean onurak lortu dituzten garraioak; honek errepideko garraioak, trenak, itsasontziak eta hegazkinak sartzen ditu
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Azken urtean onurak lortu dituzten ibilgailuak; honek errepideko garraioak, trenak, itsasontziak eta hegazkinak sartzen ditu
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Oraintsu zerbitzatuta dauden geltokien zatien zenbakia. Geltokiko edozein zati (adib. tren geltokia, autobuseko geldialdia, aireportua) zenbatuta dago, nahiz eta beste geltoki batekin konektatuta egon
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Onura gutxien eduki duen garraioa (bakarrik 2 urte baino zaharragoak dira kontuan hartuta)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Azken 12 laurdenen artean, gutxien irabazi duzun laurdenean lortu duzun dirua
@@ -1247,16 +1247,33 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aireportuei ino
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Gaitua badago, aireportu mota ezberdinak betirako egongo dira aukeran
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Abisatu ibilgailu bat galduta badagoen: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Mezuak aktibatu ibilgailuek ez dutenean bere helmugara iristeko bidea aurkitzen
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Ibilgailuen aginduak aztertu: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Gaitua dagoenean, aginduak periodikoki egiaztatuko dira, bestelako arazoak gertatzen badira mezuen bidez jakinaraziko dira
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ez
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :bai, baina geldi dauden garraioak baztertu
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :garraio guztiena
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ohartarazi ibilgailu baten irabazketak negatiboak badira: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Gaitua dagoenean, mezu bidez urte oso batean onurarik lortu ez dituzten ibilgailuez ohartaraziko da
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Ibilgailuei inoiz ez zaie epea amaitzen: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Gaitua dagoenean, ibilgailu modelo ezberdinak betirako egongo dira erabilgarri
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Ibilgailu bat zaharra bihurtzen denean automatikoki berritzea: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Gaitua dagoenean, Ibilgailuek bere lan-bizitza amaitzear dutenean eta beharrezko baldintzak betetzen badira automatikoki berrituko dira
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Ibilgailuak automatikoki berritu bere adina {STRING} denean
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Ibilgailu bat atomatikoki berritzeko kontuan hartu behar den urte kopuru erlatiboa
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} hilabete{P 0 "" s} lehenago
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} hilabete{P 0 "" s} beranduago
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Ibilgailuak berritzeko behar den gutxienezko dirua: {STRING}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Herriaren bistanleria herriaren izen kartela erakutsi: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Bankuan gutxienez eduki beharko den diru kopurua ibilgailuen berritze automatikoa erabiltzen hasteko
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Akats mezuen iraupena: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Lehio gorrian agertzen diren akats mezuen iraupena automatikoki itxi baino lehen. Kontuan hartu zeinbait akats mezu (Kritikoak) ez direla automatikoki itxiko ezarritako denbora pasa eta gero, eskuz itxi behako dira
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Erakutsi argibideak: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Sagua, interfazeko elementu batzuen gainean jartzerakoan, argibideak bistaratu aurretik pasa beharko den denbora. Elementu batzuetan saguko eskuineko botoia sakatu beharko da
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Klikatu eskuineko botoiarekin
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Herriaren bistanleria herriaren izen kartelan ikusgai izan: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Herriaren bistanleria herriaren izen kartelan ikusgai izan
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Marren lodiera grafikoetan: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grafikoen marren lodiera. Marra fina irakurtzeko errazagoa da, marra lodia ikusteko errazagoa da eta koloreak hobeto ezberdinduko dira
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Lur sortzailea: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originala
@@ -1336,7 +1353,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Erreserbatutako
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Eraikitze tresnak aktibaturik uzti erabili eta gero: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Talde gastuak kompainiaren finantza leihoan: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Azpiegituren eraiketa galarazi erabiltzeko ibilgailurik ez badago: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Azpiturak eraikitzea debekatu ibilgailu egokiak eskuragarri ez daudenean: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Kompainikiko gehienezko trenak: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Gehienezko errepide ibilgailuak kompainikiko: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Gehienezko aireontziak kompainikiko: {STRING}

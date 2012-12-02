@@ -99,7 +99,7 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA} Passag�
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} Kuel
 STR_QUANTITY_MAIL                                               :{COMMA} Posts{P aak äck}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} Ueleg
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} Liewensmëttelkëscht{P "" en}
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} Béischt{P "" en}
 STR_QUANTITY_GOODS                                              :{COMMA} Wuerenkëscht{P "" en}
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} Kaar
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} Holz
@@ -217,6 +217,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filter Wieder:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filter string
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Wuert fir d'Lëscht ze filtern
 
@@ -402,6 +403,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detailéiert Pe
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industrielëscht
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Industrieketten
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finanzéiert eng nei Industrie
 ############ range ends here
 
@@ -546,7 +548,7 @@ STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Weis det
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Legend vun den Firmengrafiken
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klickt hei fir d'Firma an der Grafik an/aus zeschalten
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klick hei fir d'Firma an der Grafik an/aus zeschalten
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Firmenliga Tabell
@@ -569,7 +571,7 @@ STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Detailler fir des Firma uweisen
 ############ Those following lines need to be in this order!!
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Gefierter:
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Gefierer:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Statiounen:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. Profit:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. Akommes:
@@ -636,7 +638,7 @@ STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLA
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Leschen
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Den gewielten Program reseten (nëmmen Benotzerdéf.1 oder Benotzerdéf.2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klick op d'Lidd fir et zum aktuellen Program dobäi zesetzen (nëmmen Benotzerdéf.1 oder Benotzerdéf.2)
-STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klickt op d'Lidd fir et vum aktuellen Programm ze läschen (Benotzerdefinéiert 1 an 2 nëmmen)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klick op d'Lidd fir et vum aktuellen Programm ze läschen (Benotzerdefinéiert 1 an 2 nëmmen)
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top Firmen dei {NUM}{}({STRING} Level) erreescht hunn
@@ -956,7 +958,7 @@ STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Sprooch
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Wielt d'Interfacesprooch
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Vollbild
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Klickt dës Optioun un fir OpenTTD am Vollbild ze spillen
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Klick dës Optioun un fir OpenTTD am Vollbild ze spillen
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Bildopléisung
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Wielt d'Bildopléisung
@@ -1313,7 +1315,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Moof
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Deen aneren Wee scrollen: {STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Verhalen beim Scrollen vun der Kaart mat der rietser Maustast. Wann ausgeschalt, beweegt d'Maus d'Kamera. Wann ugeschalt, beweegt d'Maus d'Kaart
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Feinen Scrolling: {STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrolléiert wéi d'Haptusiicht op eng bestëmmten Positioun scrollt, wann een op déi kléng Kaart klickt oder en Befehl fir ob en spezifescht Objet ze scrollen gëtt. wann ugeschalt, gëtt bis dohin gescrollt, wann ausgeschalt, spréngt d'Vue op den Zielobjet
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrolléiert wéi d'Haptusiicht op eng bestëmmten Positioun scrollt, wann een op déi kléng Kaart klickt oder en Befehl fir ob en spezifescht Objet ze scrollen gëtt. Wann ugeschalt, gëtt bis dohin gescrollt, wann ausgeschalt, spréngt d'Vue op den Zielobjet
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Weis en Mooss-Tooltip wann verschidden Bau-Tools benotzt ginn: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Weis Felderdistanzen an Héichtenënnerscheed beim Zéien während dem Bauen un
 STR_CONFIG_SETTING_LIVERIES                                     :Weis Firmentracht: {STRING}
@@ -1659,7 +1661,7 @@ STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Weis d'S
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Weis Fliger Faarfschemen
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Wiel d'Primärfaarf fir den ausgewieltenen Schema. Ctrl+Klick wielt dës Faarf fir all Schema
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Wiel d'Sekundärfaarf fir den ausgewieltenen Schema. Ctrl+Klick wielt dës Faarf fir all Schema
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Wiel en Faarfschema fir ze änneren, oder en puer Schemen mat CTRL+Klick. Klickt op d'Këscht fir d'Schemanotzung ze wiesselen
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Wiel en Faarfschema fir ze änneren, oder e puer Schemen mat CTRL+Klick. Klick op d'Këscht fir d'Schemanotzung ze wiesselen
 
 STR_LIVERY_DEFAULT                                              :Standard Tracht
 STR_LIVERY_STEAM                                                :Damplok
@@ -1765,9 +1767,9 @@ STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Joer
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Unzuel vun Joer wou{}daat Spill leeft
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Sprooch, Serverversioun, etc.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klickt op en Spill fir et ze selectéieren
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Klick op en Spill aus der Lëscht fir et auszewielen
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server deems du d'leschte Kéier bäigetrueden bass:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klickt fir den Server ze wielen deen der d'leschte Kéier haat
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klick fir den Server ze wielen deens du d'leschte Kéier haas
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPILL INFO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Spiller: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -2389,6 +2391,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Weis "Ke
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Weis Industrien un déi Wueren liwweren an akzeptéiren
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link op déi kleng Kaart
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Selektéiert déi ugewisen Industrien och op der klenger Kaart
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Gidder wielen
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Wiel d'Gidder déis du wëlls uweisen
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Industrie wielen
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Wiel d'Industrie déis du wëlls uweisen
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land Informatiounen
@@ -2518,7 +2524,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Szenario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Szenario lueden
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Lued Héichtenkaart
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Héichtenkaart späichern
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klickt hei fir op d'Standard Späicher-/Luedeverzeeschnis ze goen
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klick hei fir op d'Standard Späicher-/Luedeverzeeschnis ze goen
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} fräi
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lëscht vun den Laafwierker, Dossieren an Späicherstänn
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Momentan gewielten Numm fir den Spillstand
@@ -2777,7 +2783,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Gëff en
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Stied
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Keng -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Stiednimm - klickt op den Numm fir d'Usiicht drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht vun der Stad
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Stiednimm - klick op den Numm fir d'Usiicht drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht vun der Stad
 STR_TOWN_POPULATION                                             :{BLACK}Weltbevölkerung: {COMMA}
 
 # Town view window
@@ -2813,7 +2819,7 @@ STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} G
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Transportfirmen Bewertung:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Verfügbar Optiounen:
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lëscht vun Saachen déi an der Stad gemaach kënnen ginn - klickt op eng Optioun fir méi Informatiounen
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lëscht vun Saachen déi an der Stad gemaach kënnen ginn - klick op eng Optioun fir méi Informatiounen
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Maach ët
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Féiert déi ungewielten Optioun aus
 
@@ -3041,7 +3047,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Keng 
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% transportéiert)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportéiert)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Fabrikennimm - klickt op en Numm fir d'Usiicht do drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht op d'Industrie
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrienimm - klick op en Numm fir d'Usiicht do drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht op d'Industrie
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3072,10 +3078,10 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Schëff{P "" er}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Fliger
 
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Zich - klickt op den Zuch fir Informatiounen
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Stroossengefierer - klickt op en Gefiert fir Informatiounen
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Schëffer - Klickt op d'Schëff fir Informatiounen
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Fliger - Klickt op den Fliger fir Informatiounen
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Zich - klick op den Zuch fir Informatiounen
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Stroossengefierer - klick op en Gefier fir Informatiounen
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Schëffer - Klick op d'Schëff fir Informatiounen
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Fliger - Klick op den Fliger fir Informatiounen
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit dëst Joer: {CURRENCY_LONG} (lescht Joer: {CURRENCY_LONG})
 
@@ -3095,8 +3101,8 @@ STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :An den Depot sc
 STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :An den Depot schécken
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :An den Hangar schécken
 
-STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Klickt fir all Gefierer an der Lëscht ze stoppen
-STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Klickt fir all Gefirer an der Lëscht ze starten
+STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Klick fir all Gefierer an der Lëscht ze stoppen
+STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Klick fir all Gefirer an der Lëscht ze starten
 
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Gedeelten Opträg vun {COMMA} Gefier{P t er}
 
@@ -3111,11 +3117,11 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Ongruppéiert S
 STR_GROUP_DEFAULT_SHIPS                                         :Ongruppéiert Schëffer
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ongruppéiert Fligeren
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Gruppen - klickt op eng Grupp fir d'Gefierer aus där Grupp ze gesinn
-STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klickt fir eng Grupp ze maachen
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Gruppen - klick op eng Grupp fir d'Gefierer aus där Grupp ze gesinn
+STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klick fir eng Grupp ze maachen
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Déi ungewielten Grupp läschen
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Déi ungewielten Grupp ëmbenennen
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klickt fir déi Grupp vum globalen "Autoersetzen" auszeschléissen
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klick fir déi Grupp vum globalen "Autoersetzen" auszeschléissen
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Gedeelten Gefierer bäisetzen
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :All Gefierer wechhuelen
@@ -3154,10 +3160,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Alles ausser {C
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Zéikraaft: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Distanz: {GOLD}{COMMA} Felder
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Zuchlëscht - klickt op en Zuch fir Informatiounen
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Stroossengefiert Lëscht - klickt op en Gefiert fir Informatiounen
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Schëffslëscht - Klickt op d'Schëff fir Informatiounen
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Fligerlëscht - Klickt op den Fliger fir Informatiounen
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Zuchlëscht - klick op en Zuch fir Informatiounen
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Stroossengefierlëscht - klick op en Gefier fir Informatiounen
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Schëffslëscht - Klick op d'Schëff fir Informatiounen
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Fligerlëscht - Klick op den Fliger fir Informatiounen
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Gefiert kafen
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Gefiert kafen
@@ -3232,10 +3238,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Gefiert 
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Schëff klonen
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Fliger klonen
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dëst baut eng Kopie vun engem Zuch mat all den Wagonen. Klickt op dësen Knäppchen an dann op en Zuch am Depot oder baussen. Ctrl+Klick fir Opträg ze deelen. Shift+Klick weist ongeféier Käschten ouni Kaf
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Keeft eng Kopie vum Stroossengefiert. Klickt dësen Kneppchen an dann op en Stroossengefiert am oder baussent dem Depot. Ctrl+Klick deelt och d'Opträg. Shift+Klick weist ongeféier Käschten ouni Kaf
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dëst baut eng Kopie vum Schëff. Klickt op dësen Knäppchen an dann op en Schëff am Depot oder baussen.Ctrl+Klick kopéiert och d'Opträg. Shift+Klick weist ongeféier Käschten ouni Kaf
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dëst baut eng Kopie vun engem Fliger. Klickt op dësen Knäppchen, an dann op en Fliger am Hangar oder baussen. Ctrl+Klick fir Uerder ze deelen. Shift+Klick weist ongeféier Käschten ouni Kaf
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dëst baut eng Kopie vun engem Zuch mat all den Wagonen. Klick op dësen Knäppchen an dann op en Zuch am Depot oder baussen. Ctrl+Klick fir Opträg ze deelen. Shift+Klick weist ongeféier Käschten ouni Kaf
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Keeft eng Kopie vum Stroossengefier. Klick dësen Kneppchen an dann op en Stroossengefier am oder baussent dem Depot. Ctrl+Klick deelt och d'Opträg. Shift+Klick weist ongeféier Käschten ouni Kaf
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dëst baut eng Kopie vum Schëff. Klick op dësen Knäppchen an dann op en Schëff am Depot oder baussen.Ctrl+Klick kopéiert och d'Opträg. Shift+Klick weist ongeféier Käschten ouni Kaf
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dëst baut eng Kopie vun engem Fliger. Klick op dësen Knäppchen, an dann op en Fliger am Hangar oder baussen. Ctrl+Klick fir Uerder ze deelen. Shift+Klick weist ongeféier Käschten ouni Kaf
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Zentréiert d'Usiicht op den Depot. Ctrl+Klick erstellt eng nei Usiicht op den Depot
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Zentréiert d'Usiicht op den Depot. Ctrl+Klick erstellt eng nei Usiicht op den Depot
@@ -3247,15 +3253,15 @@ STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Lëscht 
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Lëscht mat all Schëffer an dësem Depot
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Lëscht mat all Fliger am Hangar op dësem Fluchhafen
 
-STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klickt fir all Zicham Depot ze stoppen
-STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Klickt fir all Gefierer am Depot ze stoppen
-STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Klickt fir all Schëffer am Depot ze stoppen
-STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Klickt fir all Fliger am Hangar ze stoppen
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klick fir all Zich am Depot ze stoppen
+STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Klick fir all Gefierer am Depot ze stoppen
+STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Klick fir all Schëffer am Depot ze stoppen
+STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Klick fir all Fliger am Hangar ze stoppen
 
-STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Klickt fir all Zich am Depot ze starten
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Klick fir all Zich am Depot ze starten
 STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Klick fir all Gefierer am Depot ze starten
-STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Klickt fir all Schëff am Depot ze starten
-STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Klickt fir all Fliger am Hangar ze starten
+STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Klick fir all Schëff am Schapp ze starten
+STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Klick fir all Fliger am Hangar ze starten
 
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du verkeefs grad all Gefierer am Depot. Bass du sécher ?
 
@@ -3263,7 +3269,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du verk
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Meldung vum Gefiertenhiersteller
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mir hunn elo en neien {STRING} gebaut - bass du dorun interesséiert dëst Gefiert 1 Joer exklusiv ze notzen, fir ze testen op et komplett maarträif ass?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :Lokomotiv
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :Stroossengefiert
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :Stroossengefier
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :Fliger
 STR_ENGINE_PREVIEW_SHIP                                         :Schëff
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :Monorail Lokomotiv
@@ -3279,7 +3285,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Käschte
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Tausch{STRING} - {STRING} aus
 STR_REPLACE_VEHICLE_TRAIN                                       :Zuch
-STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Stroossengefihr
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Stroossengefier
 STR_REPLACE_VEHICLE_SHIP                                        :Schëff
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Fliger
 
@@ -3349,10 +3355,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Weist St
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Weist Schëffdetailer
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Weist d'Fligerdetailer
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Momentan Aktioun - klickt hei fir den Zuch ze stopen/starten. Ctrl+Klick fir op Destinatioun ze scrollen
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Momentan Aktioun - klickt hei fir d'Gefiert ze stoppen/starten. Ctrl+Klick fir op Destinatioun ze scrollen
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Momentan Aktioun - Klickt hei fir d'Schëff ze stoppen/starten. Ctrl+Klick fir op Destinatioun ze scrollen
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Momentan Aktioun - Klickt hei fir den Fliger ze stoppen/starten. Ctrl+Klick fir op Destinatioun ze scrollen
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Momentan Aktioun - klick hei fir den Zuch ze stoppen/starten. Ctrl+Klick fir op Destinatioun ze scrollen
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Momentan Aktioun - klick hei fir d'Gefier ze stoppen/starten. Ctrl+Klick fir op Destinatioun ze scrollen
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Momentan Aktioun - Klick hei fir d'Schëff ze stoppen/starten. Ctrl+Klick fir op Destinatioun ze scrollen
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Momentan Aktioun - Klick hei fir den Fliger ze stoppen/starten. Ctrl+Klick fir op Destinatioun ze scrollen
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Lueden / Entlueden
@@ -3469,7 +3475,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Zäitplang
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Wiesselt op d'Zäitplangunzeig
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Optragslëscht - Klickt op en Optrag fir en ze selectéieren. Ctrl+Klick scrollt op d'Optragdestinatioun
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Optragslëscht - Klick op en Optrag fir en ze selectéieren. Ctrl+Klick scrollt op d'Optragdestinatioun
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
@@ -3624,7 +3630,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Opträg
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Wiesselt op d'Opträgunzeig
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Zäitplang - klickt op en Optrag fir en ze wielen
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Zäitplang - klick op en Optrag fir en ze wielen
 
 STR_TIMETABLE_NO_TRAVEL                                         :Net ënnerwee
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Rees(automatesch; Zaitplang durch manuell Opträg)
@@ -3736,7 +3742,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}All Para
 STR_AI_LIST_CAPTION                                             :{WHITE}Verfügbar {STRING}
 STR_AI_LIST_CAPTION_AI                                          :KIs
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Spill-Scripter
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Klickt fir en Script ze selectéieren
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Klick fir en Script auszewielen
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}
 STR_AI_LIST_VERSION                                             :{LTBLUE}Versioun: {ORANGE}{NUM}
@@ -4352,7 +4358,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Passagéierwago
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Postwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Kuelenwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Uelegwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Liewensmëttelwagon
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Béischtelwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Güterwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Kaarwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Holzwagon
