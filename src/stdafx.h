@@ -168,6 +168,7 @@
 	#pragma warning(disable: 4244)  // 'conversion' conversion from 'type1' to 'type2', possible loss of data
 	#pragma warning(disable: 4761)  // integral size mismatch in argument : conversion supplied
 	#pragma warning(disable: 4200)  // nonstandard extension used : zero-sized array in struct/union
+	#pragma warning(disable: 4355)  // 'this' : used in base member initializer list
 
 	#if (_MSC_VER < 1400)                   // MSVC 2005 safety checks
 		#error "Only MSVC 2005 or higher are supported. MSVC 2003 and earlier are not! Upgrade your compiler."
