@@ -293,7 +293,7 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 			GetWindowRect(GetDesktopWindow(), &r);
 			/* Guard against recursion. If we already failed here once, just fall through to
 			 * the next ChangeDisplaySettings call which will fail and error out appropriately. */
-			if (settings.dmPelsWidth != r.right - r.left || settings.dmPelsHeight != r.bottom - r.top) {
+			if ((int)settings.dmPelsWidth != r.right - r.left || (int)settings.dmPelsHeight != r.bottom - r.top) {
 				return this->ChangeResolution(r.right - r.left, r.bottom - r.top);
 			}
 		}
