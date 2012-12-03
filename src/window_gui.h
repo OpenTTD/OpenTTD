@@ -463,7 +463,7 @@ public:
 	}
 
 	void UnfocusFocusedWidget();
-	bool SetFocusedWidget(byte widget_index);
+	bool SetFocusedWidget(int widget_index);
 
 	EventState HandleEditBoxKey(int wid, uint16 key, uint16 keycode);
 

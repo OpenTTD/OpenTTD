@@ -304,10 +304,10 @@ void Window::UnfocusFocusedWidget()
  * @param widget_index Index of the widget in the window to set the focus to.
  * @return Focus has changed.
  */
-bool Window::SetFocusedWidget(byte widget_index)
+bool Window::SetFocusedWidget(int widget_index)
 {
 	/* Do nothing if widget_index is already focused, or if it wasn't a valid widget. */
-	if (widget_index >= this->nested_array_size) return false;
+	if ((uint)widget_index >= this->nested_array_size) return false;
 
 	assert(this->nested_array[widget_index] != NULL); // Setting focus to a non-existing widget is a bad idea.
 	if (this->nested_focus != NULL) {
