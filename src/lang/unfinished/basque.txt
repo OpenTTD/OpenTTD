@@ -228,7 +228,7 @@ STR_BUTTON_SORT_BY                                              :{BLACK}Agertu
 STR_BUTTON_LOCATION                                             :{BLACK}Kokapena
 STR_BUTTON_RENAME                                               :{BLACK}Berrizendatu
 
-STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Itxi leihoa
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Lehioa itxi
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Leiho izena - Arrastatu hau leihoa mugitzeko
 STR_TOOLTIP_SHADE                                               :{BLACK}Itzal leihoa - titulu barra bakarrik ikusten da
 STR_TOOLTIP_DEBUG                                               :{BLACK}NewGRF depurazio informazioa ikusi
@@ -318,7 +318,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Zabaldu 
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Erakutsi soinu/musika leihoa
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Erakutsi azken mezu/albiste erreportaia, erakutsi mezu aukerak
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Lur arearen informazioa, konsola, script debug, screenshots, OpenTTDri buruz
-STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Erreminta barra
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Tresna barra aldatu
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Eszenarioa gorde, eszenarioa kargatu, eszenarioaren editorea itxi, irten
@@ -408,15 +408,15 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Industria berri
 ############ range ends here
 
 ############ range for railway construction menu starts
-STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Trenbide eraiketa
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Trenbidea eraiki
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Trenbide elektrikoaren eraiketa
-STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monorailaren eraiketa
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Maglevaren eraiketa
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monorail trenbidea eraiki
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Trenbide magnetikoa eraiki
 ############ range ends here
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Errepide eraiketa
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tranvia eraiketa
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tranbia eraiki
 ############ range ends here
 
 ############ range for waterways construction menu starts
@@ -424,7 +424,7 @@ STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Ibaibide eraike
 ############ range ends here
 
 ############ range for airport construction menu starts
-STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Aireportu eraiketa
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Aireportua eraiki
 ############ range ends here
 
 ############ range for landscaping menu starts
@@ -564,7 +564,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Lehendakaria
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Performantzia balorazio xehetua
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Errendimendu balorazio zehatza
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Xehetasuna
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -685,7 +685,7 @@ STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Hegazkinak
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Garraio-Ibilbideak
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Basoa
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Trenbide Geltokiak
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Tren Geltokiak
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Kamioi karga badia
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Bus Geltokia
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Aireportua/Heliportua
@@ -1206,7 +1206,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :amaieratik urru
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Errepide ibilgailuen lerroketak(quantum efektuekin): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Errepide ibligaluak okupatutako errepideen aurrean itxaronaraztea errepidea hustu arte
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Leihoa mugitu sagua ertzean dagoenean: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Gaitua dagoenean, sagua pantailaren ertzara hurbiltzerakoan mapa mugitzen hasiko da
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Gaitua dagoenean, sagua lehioen ertzara hurbiltzerakoan mapa mugitzen hasiko da
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desgaitua
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Lehio nagusia, bakarrik pantaila osoa
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Lehio nagusia
@@ -1267,8 +1267,10 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Ibilgailuak ber
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Bankuan gutxienez eduki beharko den diru kopurua ibilgailuen berritze automatikoa erabiltzen hasteko
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Akats mezuen iraupena: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Lehio gorrian agertzen diren akats mezuen iraupena automatikoki itxi baino lehen. Kontuan hartu zeinbait akats mezu (Kritikoak) ez direla automatikoki itxiko ezarritako denbora pasa eta gero, eskuz itxi behako dira
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segundu{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Erakutsi argibideak: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Sagua, interfazeko elementu batzuen gainean jartzerakoan, argibideak bistaratu aurretik pasa beharko den denbora. Elementu batzuetan saguko eskuineko botoia sakatu beharko da
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Sagua gainean mantendu {COMMA} segunduz
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Klikatu eskuineko botoiarekin
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Herriaren bistanleria herriaren izen kartelan ikusgai izan: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Herriaren bistanleria herriaren izen kartelan ikusgai izan
@@ -1474,11 +1476,27 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :onartua
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Gaitua herrien diseinu pertsonalizatua
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Zuhaitzen kokapena jokuan: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Jokua bitartean zuhaitzen ausazko landatzea kontrolatu. Zuhaitzen landatzean oinarritzen diren industriei eragin dezake, zerrategiei adibidez
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ezer ez {RED}(egur fabrika gelditzen du)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :bakarrik euri basoetan
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :leku guztietan
 
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :Tresna barra nagusiaren kokapena: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Tresna barra nagusia posizio horizontalean pantailaren goiko aldean
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Egoera posizioa: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Tresna barra nagusia posizio horizontalean pantailaren beheko aldean
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Leiho atxikitze erradioa: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Mugitzen ari den lehioa gertu dagoenarekin automatikoki lerrokatu aurretik onartuko den gutxiengo distantzia
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Desgaitu
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Lehio ez itsaskorren gehienezko kopurua: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Irekitako lehio ez itsakorren kopurua irekitako lehengo lehioa automatikoki itxi baino lehen
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Desgaitu
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Gehienezko hurbiltasun zoom-a: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Lehioen gehienezko hurbiltasun zoom-a. Hurbiltasun zoom balio altuak erabiltzea memoria beharrak handiagotuko ditu
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Gehienezko urruntasun zoom-a : {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Lehioen gehienezko urruntasun zoom-a. Urruntasun zoom balio altuak erabiltzea grafikoen moteltzea eragin dezake
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normala
@@ -1486,11 +1504,20 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Herriaren hazkuntza-abiadura: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Herrien hazkuntza abiadura
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ezer ez
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Motel
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normala
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Arina
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Oso arina
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Hiri bilakatuko diren herrien proportzioa: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Hiri bilakatuko diren herrien kopurua, herri hauek handiagoak eta azkarrago hazten dira
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :{COMMA}-tik bat
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Bat ere ez
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Herrien hasierako tamainaren biderkatzailea: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Joku hasieran hirien bataz besteko tamaina herri normalekin alderatuta
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Errepideak eraikitzerakoan elementu ez egokiak eragotzi: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Errepide berreraikuntza ordaintzerakoan irteerarik gabeko errepideak kentzea
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfacea
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Eraikuntza
@@ -1515,14 +1542,31 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :Originala
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Gomendatua)
 
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Trenen ibilbide bilatzailea: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Trenek erabiliko duten ibilbide bilatzailea
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Errepide ibilgailuen ibilbide bilatzailea: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Errepide ibilgailuek erabiliko duten ibilbide bilatzailea
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Itsasontzien ibilbide bilatzailea: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Itsasontziek erabiliko duten ibilbide bilatzailea
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Seinaletan automatikoki buelta ematea: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Trenak seinaleetan buelta ematea baimendu, denbora luzez itxaroten ari badira
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ezarpenaren balioa aldatu
 
 # Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Konfigurazio artxiboaren akatsa...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... akatsa matrizean '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE} '{STRING}' baliogabea '{STRING}'-arentzako
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... trailing characters at end of setting '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... NewGRF '{STRING}' desgaitzen: GRF ID '{STRING}' errepikatua
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... NewGRF baliogabea desgaitzen '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ez da aurkitu
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :Ez segurua erabilera estatikoarentzat
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistema NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :bateraezina OpenTTD bertsio honetarako
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :ezezaguna
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... '{STRING}' konpresio maila ez da baliozkoa
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... Gordetako jokuen '{STRING}' formatua ez dago erabilgarri . '{STRING}' erabiltzen
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... jaramonik ez egiten Grafiko baseari '{STRING}': ez da aurkitu
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... jaramonik ez egiten Soinu Paketeari '{STRING}': ez da aurkitu
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... jaramonik ez egiten musika paketeari'{STRING}': ez da aurkitu
@@ -1531,9 +1575,9 @@ STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... jara
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Partida Berria
-STR_INTRO_LOAD_GAME                                             :{BLACK}Partida Kargatu
+STR_INTRO_LOAD_GAME                                             :{BLACK}Jokua Kargatu
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Eszenarioa Jokatu
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Altuera mapa jokatu
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Garaiera mapa jokatu
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Eszenario Editorea
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijokoa
 
@@ -1542,18 +1586,34 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Zailtasu
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ezarpen Aurreratuak
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-ren Ezarpenak
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Edukiak Online Kontsultatu
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}IA/Joku Scripten Ezarpenak
 STR_INTRO_QUIT                                                  :{BLACK}Irten
 
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Joku berria hasi. Krtl+klik mapa konfigurazioa desgaitzen du
+STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Gordetako jokua kargatu
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Joku berria hasi, altuera mapa erabiliz
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Joku berria hasi, eszenatoki pertsonalizatuak erabiliz
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Eszenatoki pertsonalizatua eraiki
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Multijokalari joko bat hasi
 
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Aukeratu 'Klima epela' paisai gisa
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Aukeratu 'Klima artikoa' paisai gisa
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Aukeratu 'Klima tropikala' paisai gisa
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Aukeratu 'Jostailu mundua' paisai gisa
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Jokoaren aukerak erakutsi
+STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Zailtasun aukerak erakutsi
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Ezarpen aurreratuak erakutsi
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF ezarpenak erakutsi
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Bilatu eduki berria eta eguneratua deskargatzeko
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}IA/Joku Scripten Ezarpenak
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD'-tik Irten
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Itzultze honi {NUM} string{P "" s} falta zaio. Mesedez OpenTTD hobeago egiten lagundu itzultzaile bezala aritzen. Ikusi readme.txt zehetasunentzako.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Irten
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Zihur zaude OpenTTD-tik irten nahi duzula eta {STRING}-ra itzuli?
 STR_QUIT_YES                                                    :{BLACK}Bai
 STR_QUIT_NO                                                     :{BLACK}Ez
 
@@ -1571,105 +1631,524 @@ STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Jokoa Utzi
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Ziur zaude joku hau utzi nahi duzula?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Seguru al zaude eszenario hau utzi nahi duzula?
 
 # Cheat window
+STR_CHEATS                                                      :{WHITE}Trukoak
+STR_CHEATS_TOOLTIP                                              :{BLACK}Kontrol laukiek erakutsiko dute trukoak erabili badituzu
+STR_CHEATS_WARNING                                              :{BLACK}Abisua! Zure kideak traizionatzear zaude. Gogoratu traizioa ez dela inoiz ahaztuko
+STR_CHEAT_MONEY                                                 :{LTBLUE}Dirua {CURRENCY_LONG}-etan areagotu
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE} {ORANGE}{COMMA} konpainiarekin jolastu
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magikoa (edozer ezabatzen du): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunelak bata bestea gurutzatu dezakete: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Hegazkinek ez dute (maiz) istripurik izango aireportu txikietan lurreratzerakoan: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Klima epeleko paisaia
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Klima artikoko paisaia
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Klima tropikaleko paisaia
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Jostailu munduko paisaia
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Data aldatu: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Aurtengo urtea aldatu
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Produkzio balioak aldatzea baimendu: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}Kolore eskema berria
 
+STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Erakutsi kolore eskema orokorrak
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Erakutsi trenen kolore eskemak
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Erakutsi errepide ibilgailuen kolore eskemak
+STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Erakutsi itsasontzien kolore eskemak
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Erakutsi hegazkinen kolore eskemak
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Aukeratu kolore nagusia aukeratutako eskemarentzat. Krtl+Klik eginez kolorea eskema guztientzat erabiliko da
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Aukeratu bigarren kolorea aukeratutako eskemarentzat. Krtl+Klik eginez kolorea eskema guztientzat erabiliko da
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Aukeratu aldatu nahi den kolore eskema, edo eskema aunitz Krtl+klik eginez. Klikatu laukitxoan eskema aldatzeko.
 
+STR_LIVERY_DEFAULT                                              :Oinarrizko liburutegia
+STR_LIVERY_STEAM                                                :Lurrinezko lokomotora
+STR_LIVERY_DIESEL                                               :Diesel motorea
+STR_LIVERY_ELECTRIC                                             :Motore elektrikoa
+STR_LIVERY_MONORAIL                                             :Monorail motorea
+STR_LIVERY_MAGLEV                                               :Trenbide Magnetikorako motorea
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Bidaiarientzako bagoia (lurrinezkoa)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Bidaiarientzako bagoia (Diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Bidaiarientzako bagoia (Elektrikoa)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Bidaiarientzako bagoia (Monorail)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Bidaiarientzako bagoia (Magnetikoa)
+STR_LIVERY_FREIGHT_WAGON                                        :Merkantzia bagoia
+STR_LIVERY_BUS                                                  :Autobusa
+STR_LIVERY_TRUCK                                                :Kamioia
+STR_LIVERY_PASSENGER_SHIP                                       :Bidaiari ferria
+STR_LIVERY_FREIGHT_SHIP                                         :Merkantzietarako itsasontzia
+STR_LIVERY_HELICOPTER                                           :Helikopteroa
+STR_LIVERY_SMALL_PLANE                                          :Hegazkin txikia
+STR_LIVERY_LARGE_PLANE                                          :Hegazkin haundia
+STR_LIVERY_PASSENGER_TRAM                                       :Bidaiari tranbia
+STR_LIVERY_FREIGHT_TRAM                                         :Merkantzietarako Tranbia
 
 # Face selection window
+STR_FACE_CAPTION                                                :{WHITE}Aurpegia aukeratu
+STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Bertan behera utzi aurpegia aukeratu
+STR_FACE_OK_TOOLTIP                                             :{BLACK}Aurpegi berria onartu
 
+STR_FACE_MALE_BUTTON                                            :{BLACK}Gizonezkoa
+STR_FACE_MALE_TOOLTIP                                           :{BLACK}Aukeratu gizonezko aurpegiak
+STR_FACE_FEMALE_BUTTON                                          :{BLACK}Emakumea
+STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Aukeratu emakumezko aurpegiak
+STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Aurpegi berria
+STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Ausazko aurpegia sortu
+STR_FACE_ADVANCED                                               :{BLACK}Aukera aurreratuak
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Aurpegi aukera aurreratuak
+STR_FACE_SIMPLE                                                 :{BLACK}Oinarrizkoa
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Oinarrizko aurpegi aukera
+STR_FACE_LOAD                                                   :{BLACK}Kargatu
+STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Aurpegi kargatu
+STR_FACE_LOAD_DONE                                              :{WHITE}Zure aurpegia OpenTTD konfigurazio artxibotik kargatu da
+STR_FACE_FACECODE                                               :{BLACK}Jokalariaren aurpegi zenbakia
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Lehendakariaren aurpegi zenbakia aukeratu/ikusi
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Lehendakariaren aurpegi zenbakia aldatu/ikusi
+STR_FACE_FACECODE_SET                                           :{WHITE}Aurpegi berrirako zenbakia ezarri da
+STR_FACE_FACECODE_ERR                                           :{WHITE}Ezin izan da aurpegi berrirako zenbakia ezarri - 0 eta 4,294,967,295 arteko zenbakia izan behar du!
+STR_FACE_SAVE                                                   :{BLACK}Gorde
+STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Aurpegia gorde
+STR_FACE_SAVE_DONE                                              :{WHITE}Aurpegia zure aurpegi gogoko bezala gorde da OpenTTDko konfigurazio artxiboan
+STR_FACE_EUROPEAN                                               :{BLACK}Europarra
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Europarren aurpegiak aukeratu
+STR_FACE_AFRICAN                                                :{BLACK}Afrikarra
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Afrikarren aurpegiak aukeratu
+STR_FACE_YES                                                    :Bai
+STR_FACE_NO                                                     :Ez
+STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Gaitu biboteak eta belarritakoak
+STR_FACE_HAIR                                                   :Ilea:
+STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Ilea aldatu
+STR_FACE_EYEBROWS                                               :Bekainak:
+STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Bekainak aldatu
+STR_FACE_EYECOLOUR                                              :Begien kolorea:
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Begien kolorea aldatu
+STR_FACE_GLASSES                                                :Betaurrekoak:
+STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Betaurrikoak gaitu
+STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Betaurrekoak aldatu
+STR_FACE_NOSE                                                   :Sudurra:
+STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Sudurra aldatu
+STR_FACE_LIPS                                                   :Ezpainak:
+STR_FACE_MOUSTACHE                                              :Bibotea:
+STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Aldatu ezpainak eta bibotea
+STR_FACE_CHIN                                                   :Kokotsa:
+STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Kokotsa aldatu
+STR_FACE_JACKET                                                 :Jaka:
+STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Jaka aldatu
+STR_FACE_COLLAR                                                 :Lepokoa:
+STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Lepokoa aldatu
+STR_FACE_TIE                                                    :Korbata:
+STR_FACE_EARRING                                                :Belarritakoak:
+STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Aldatu korbata eta belarritakoak
 
 # Network server list
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijokalaria
+STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Konexioa:
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Aukeratu interneteko jokua edo LAN jokuarean artean
+STR_NETWORK_SERVER_LIST_LAN                                     :LAN
+STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
+STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Jokalariaren izena:
+STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Izen honen bidez ezagutua izango zara beste jokalarien artean
 
+STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Izena
+STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Jokuaren izena
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Bezeroak
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Online bezeroak / Gehienezko bezeroak{}Online konpainiak / Gehienezko konpainiak
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Maparen tamaina
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Jokuaren maparen tamaina{}Klik egin area arabera ordenatzeko
+STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Data
+STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Egungo data
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Urteak
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Jokua martxan dagoenetik pasa diren urteak {}
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Hizkuntza, zerbitzariaren bertsioa, etab.
 
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Joku bat aukeratzeko Klikatu
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Erabili duzun azken zerbitzaria:
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klikatu erabili duzun azken zerbitzaria berriro erabiltzeko
 
+STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}JOKUAREN INFORMAZIOA
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Bezeroak: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Hizkuntza: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Paisaia: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Maparen tamaina: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Zerbitzariaren bertsioa: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Zerbitzariaren helbidea: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Hasiera data: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Egungo data: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Babestutako pasahitza!
+STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}Zerbitzaria ez dago konektatua
+STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}ZERBITZARIA BETETA DAGO
+STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}BERTSIOA EZ DATOR BAT
+STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF-A EZ DATOR BAT
 
+STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Jokoan sartu
+STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Zerbitzaria freskatu
+STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Zerbitzariaren informazioa freskatu
 
+STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Zerbitzaria bilatu
+STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Sarean zerbitzariak bilatu
+STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Zerbitzaria gehitu
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Zerrendara zerbitzari bat gehitu martxa dauden jokoak bilatuko dituena
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Zerbitzari bat sortu
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Zure zerbitzaria sortu
 
+STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Sartu zure izena
+STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Sartu antolatzailearen helbidea
 
 # Start new multiplayer server
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Multijokalari joko berri bat hasi
 
+STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Jokoaren izena:
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Jokuaren izena multijokalari menuan ikusgai egongo da
+STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Pasahitza ezarri
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Babestu zure jokua pasahitz batekin ez baduzu nahi publikoa izatea
 
+STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
+STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (Iragarkiak)
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} Bezero
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Gehienezko bezeroak:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Gehienezko bezero kopurua aukeratu. Ez da beharrezkoa guztia betetzea
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} konpainia
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Gehienezko konpainia kopurua:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Zerbitzaria konpainia kupuru zehatz batera mugatu
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} ikusle
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Gehienezko ikusle kopurua:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Zerbitzaria ikusle kupuru zehatz batera mugatu
+STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Hitzegiten den hizkuntza:
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Beste jokalariek erabiltzen ari den hizkuntza ezagutu ahalko dute
 
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Sare joku batentzako izena sartu
 
 # Network game languages
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY                                            :Edozein
+STR_NETWORK_LANG_ENGLISH                                        :Ingelera
+STR_NETWORK_LANG_GERMAN                                         :Alemaniera
+STR_NETWORK_LANG_FRENCH                                         :Frantsesa
+STR_NETWORK_LANG_BRAZILIAN                                      :Brasilera
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgariera
+STR_NETWORK_LANG_CHINESE                                        :Txinera
+STR_NETWORK_LANG_CZECH                                          :Txekiera
+STR_NETWORK_LANG_DANISH                                         :Danimarkiera
+STR_NETWORK_LANG_DUTCH                                          :Holandera
+STR_NETWORK_LANG_ESPERANTO                                      :Esperantoa
+STR_NETWORK_LANG_FINNISH                                        :Finlandera
+STR_NETWORK_LANG_HUNGARIAN                                      :Hungariera
+STR_NETWORK_LANG_ICELANDIC                                      :Islandiera
+STR_NETWORK_LANG_ITALIAN                                        :Italiera
+STR_NETWORK_LANG_JAPANESE                                       :Japoniera
+STR_NETWORK_LANG_KOREAN                                         :Koreera
+STR_NETWORK_LANG_LITHUANIAN                                     :Lituaniera
+STR_NETWORK_LANG_NORWEGIAN                                      :Norbegiera
+STR_NETWORK_LANG_POLISH                                         :Poloniera
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugesa
+STR_NETWORK_LANG_ROMANIAN                                       :Errumaniera
+STR_NETWORK_LANG_RUSSIAN                                        :Errusiera
+STR_NETWORK_LANG_SLOVAK                                         :Eslabiera
+STR_NETWORK_LANG_SLOVENIAN                                      :Eslobeniera
+STR_NETWORK_LANG_SPANISH                                        :Gaztelera
+STR_NETWORK_LANG_SWEDISH                                        :Suediera
+STR_NETWORK_LANG_TURKISH                                        :Turkiera
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainera
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaanera
+STR_NETWORK_LANG_CROATIAN                                       :Kroatiera
+STR_NETWORK_LANG_CATALAN                                        :Katalana
+STR_NETWORK_LANG_ESTONIAN                                       :Estoniera
+STR_NETWORK_LANG_GALICIAN                                       :Galiziera
+STR_NETWORK_LANG_GREEK                                          :Greziera
+STR_NETWORK_LANG_LATVIAN                                        :Letoniera
 ############ End of leave-in-this-order
 
 # Network game lobby
+STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Multijokalari joku itxia
 
+STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Sartzeko prestatzen: {ORANGE}{STRING}
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Joku honetan egun dauden konpainien zerrenda. Konpainia batera batu zaitezke edo konpainia berria sortu dezakezu lekua badago
 
+STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}KONPAINIA INFORMAZIOA
+STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Konpainia izena: {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Sortutako urtea: {WHITE}{NUM}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Konpainiaren balioa: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Egungo balorazioa: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Iazko diru sarrerak: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Errendimendua: {WHITE}{NUM}
 
+STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Ibilgailuak: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
+STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Geltokiak: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
+STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Jokalariak: {WHITE}{STRING}
 
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Konpainia berria
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Konpainia berria sortu
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Ikusle jokua
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Jokuan ikusle bezala sartu
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Konpainian sartu
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Konpainia hau kudeatzen lagundu
 
 # Network connecting window
+STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Konektatzen...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Konektatzen...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Baimentzen...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Itxoiten...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Mapa deskargatzen...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Datuak kudeatzen...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Erregistratzen...
 
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Jokuaren informazioa jasotzen...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Konpainiaren informazioa jasotzen...
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} bezero zure aurrean
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} orain arte deskargatuta
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} orain arte deskargatuta
 
+STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Deskonektatua
 
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Zerbitzaria babestua dago. Pasahitza sartu
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Konpainia babestua dago. Pasahitza sartu
 
 # Network company list added strings
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Bezero zerrenda
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Ikusle
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Konpainia berria
 
 # Network client list
+STR_NETWORK_CLIENTLIST_KICK                                     :Kanporatu
+STR_NETWORK_CLIENTLIST_BAN                                      :Debekatu
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dirua eman
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Guztiei hitz egin
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Konpainiari hitz egin
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Mezu pribatua
 
+STR_NETWORK_SERVER                                              :Zerbitzaria
+STR_NETWORK_CLIENT                                              :Bezeroa
+STR_NETWORK_SPECTATORS                                          :Ikusleak
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Eman nahi duzun diru kantitatea ezarri
 
 # Network set password
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ez gorde sartutako pasahitza
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Konpainiari pasahitz berria ezarri
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Konpainiaren pasahitza
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Konpainiaren pasahitz lehenetsia
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Konpainia pasahitz hau kopainia berrientzako lehenetsi
 
 # Network company info join/password
+STR_COMPANY_VIEW_JOIN                                           :{BLACK}Sartu
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Sartu eta konpainia honekin jokatu
+STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Pasahitza
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Pasahitzak zure konpainia babestuko du ez baimendutako bezeroetaz
+STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Konpainia pasahitza ezarri
 
 # Network chat
+STR_NETWORK_CHAT_SEND                                           :{BLACK}Bidali
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Private] {STRING}:
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
 
+STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] To {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Sare txatean testua sartu
 
 # Network messages
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ezin da sare gailurik aurkitu edo konpilatu SAREA_GAITU gabe
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Ezin izan da sare jokorik aurkitu
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Zerbitzriak ez dio eskariari erantzun
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Ezin izan da konektatu NewGRF-a ez datorrelako bat duzunarekin
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sare jokuaren sinkronizazioak huts egin du
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Sare jokuaren konexioa galdu da
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Ezin izan da gordetako jokua kargatu
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Ezin izan da zerbitzari berria hasi
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Ezin izan da konektatu
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Konexioa #{NUM} denboraz kanpo
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Protokolo akatsa aurkitu da, konexioa itxiz
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Bezero honen bertsioa ez dator bat zerbitzariaren bertsioarekin
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Pasahitz okerra
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Zerbitzaria beteta dago
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Zerbitzari honetatik kanporatua zaude
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Jokutik kanporatua izan zara
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Zerbitzari honetan trukoak ez daude baimenduta
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Komandu gehiegi bidaltzen hari zara zerbitzarira
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Luzeegia hartu duzu pasahitza idatzi
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Zure ordenagailua motelegia da serbidorean egoteko
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Zure ordenagailuak denbora gehiegi egon da mapa daskargatzen
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Zure ordenagailuak denbora gehiegi egon da zerbitzarian sartzeko
 
 ############ Leave those lines in this order!!
+STR_NETWORK_ERROR_CLIENT_GENERAL                                :Akats orokorra
+STR_NETWORK_ERROR_CLIENT_DESYNC                                 :Sinkronizazio akatsa
+STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :Ezin izan da mapa kargatu
+STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :Konexioa galdu da
+STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :Protokolo akatsa
+STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF-a ez dator bat
+STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :ez dago baimenduta
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :Pakete baliogabea edo ustekabekoa jaso da
+STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :Bertsioa akatsa
+STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :Izen hori erabiltzen ari da
+STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :Pasahitz okerra
+STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :Docommand-an okerreko konpainia
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :Zerbitzaritik kanporatua
+STR_NETWORK_ERROR_CLIENT_CHEATER                                :trukoak erabiltzen saiatu da
+STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :zerbitzaria beteta
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :komandu gehiegi bidali dira
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :ez da garaiz pasahita jaso
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :Itxaron denbora orokorra
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :mapa deskargatzeko denbora gehiegi erabili da
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :mapa prozesatzeko denbora gehiegi erabili da
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Konexio galera posiblea
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Azkeneko {NUM} segunduetan ez da zerbitzaritik daturik jaso
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Jokua pausatua ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Jokua pausatua jarraitzen du ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Jokua pausatua jarraitzen du ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Jokua pausatua jarraitzen du ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Jokua pausatua jarraitzen du ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Jokua ez dago pausatua ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :Jokalari kopurua
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :bezeroak konektatzen
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :eskuz
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :script jokua
 ############ End of leave-in-this-order
+STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :uzten
+STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} jokura batu da
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} jokura batu da (Client #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} Konpainiara batu da #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ikusle bezala batu da
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} konpainia berria sortu du (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} jokua utzi du ({2:STRING})
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING}-k bere izena {STRING}-ra aldatu du
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} zure empresa eman {2:CURRENCY_LONG}
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Zuk eman diozu {1:STRING} {2:CURRENCY_LONG}
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Zebitzariak saioa itxi du
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Zerbitzaria berriro hasten ari da...{}Mesedez itxaron...
 
 # Content downloading window
+STR_CONTENT_TITLE                                               :{WHITE}Edukiak deskargatzen
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Mota
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Eduki mota
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Izena
+STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Edukien izena
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Lerroan sakatu ezaugarriak ikusteko{}Laukitxoan sakatu aukeratzeko
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Guztia aukeratu
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Markatu deskargatuak izango diren edukiak
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Bertsio berriak haukeratu
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Haukeratu dituzun edukiak berrituko dituzten edukiak deskargatuak izateko
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Guztia desmarkatu
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Dekargatuak izango ez diren eduki guztiak markatu
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Etiketa/izen iragazkia:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Webgunera joan
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Eduki honen webgunera joan
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Deskargatu
+STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Aukeratutako edukiak deskargatzen hasi
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Deskargatzeko tamaina: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}EDUKIAREN INFORMAZIOA
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Ez duzu aukeratu deskargatzeko
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Desgarkatzeko aukeratu duzu
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Mendekotasun hau deskargatzeko aukeratua izan da
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Iada eduki hau daukazu
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Edukia ezezaguna da eta ezin da OpenTTD-n deskargatu
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER} {STRING} ordezkoa da
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Izena: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Bertsioa: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Deskribapena: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Mota: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Deskarga tamaina: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Honengatik aurkeratua: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Menpekotasunak: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Etiketak: {WHITE}{STRING}
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD "zlib" euskarria gabe eraikia izan da...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ezin da edukia deskargatu!
 
 # Order of these is important!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Oinarrizko grafikoak
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :IA
+STR_CONTENT_TYPE_AI_LIBRARY                                     :IA Liburutegiak
+STR_CONTENT_TYPE_SCENARIO                                       :Eszenatokia
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Garaiera mapa
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Oinarrizko soinuak
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Base musika
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Jokuaren Script-a
+STR_CONTENT_TYPE_GS_LIBRARY                                     :GS Liburutegia
 
 # Content downloading progress window
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Edukia deskargatzen...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Artxiboak eskatzen...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Orain deskargatzen {STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Deskarga bukatua
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} {BYTES} deskargatua ({NUM} %)
 
 # Content downloading error messages
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Ezin izan da eduki zerbitzarira konektatu...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Deskargat huts egin du...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... konexioa galdu da
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... idatzi ezin daitekeen artxiboa
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Ezin izan da deskonprimitu deskargatutako artxiboa
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Grafikoak faltatzen dira
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD-k grafikoak behar ditu funtzionatzeko baina ez ditu aurkitzen. Baimena ematen diozu grafiko hauek deskargatu eta instalatzeko?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Bai, grafikoak jaitsi
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ez, OpenTTD itxi
 
 # Transparency settings window
+STR_TRANSPARENCY_CAPTION                                        :{WHITE}Gardentasun aukerak
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Seinaleen gardentasuna aldatu. Ktrl+Klik blokeatzeko
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Zuhaitzen gardentasuna aldatu. Ktrl+Klik blokeatzeko
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Etxeen gardentasuna aldatu. Ktrl+Klik blokeatzeko
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Industrien gardentasuna aldatu. Ktrl+Klik blokeatzeko
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Geltoki, garaje, iteresguneak eta bestelako eraikinen gardentasuna aldatu. Ktrl+Klik blokeatzeko
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Zubien gardentasuna aldatu. Ktrl+Klik blokeatzeko
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Itsasargi eta antenen gardentasuna aldatu. Ktrl+Klik blokeatzeko
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}katenariaren gardentasuna aldatu. Ktrl+Klik blokeatzeko
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Zama adierazleen gardentasuna aldatu. Ktrl+Klik blokeatzeko
+STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Objektuak ikusezinak egin, gardenak izan ordez
 
 # Base for station construction window(s)
+STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Geltoki eremua erakutsi
+STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Itzali
+STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Piztu
+STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Geltoki eremua itzali
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Geltoki eremua piztu
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Onartzen da: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Hornidurak: {GOLD}{CARGO_LIST}
 
 # Join station window
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Geltokia batu
+STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Geltoki bereizitua eraiki
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Bidepuntua lotu
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Ibilbide puntu bereizitua eraiki
 
 # Rail construction toolbar
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Trenbidea eraiki
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Trenbide elektrikoa eraiki
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monorail trenbidea eraiki
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Trenbide magnetikoa eraiki
 
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Trenbidea eraiki. Ktrl ezabatzea baimenduko du. Shift gutxi gora beherako kosteak ikustea baimenduko du
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Trenbideak eraiki Autotrenbide modua erabiliz. Ktrl ezabatzea baimenduko du. Shift gutxi gora beherako kosteak ikustea baimenduko du
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Tren biltegia eraiki (trenak erosteko eta mantenimendua egiteko). Shift gutxi beherako kostea erakutsiko du
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Trenbidea ibilbide puntuan bihurtu. Ktrl ibilbide puntuak batzea ahalbidetzen du. Shift gutxi gora beherako kostea erakutsiko du
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Tren geltokia eraiki. Ktrl geltokiak batzea ahalbidetzen du. Shift gutxi gora beherako kostea erakutsiko du
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Trenbide seinaleak eraiki. Ktrl seinale mekaniko/elektrioen artean aldatzen du{}Arrastrazerakoan seinaleak eraikitzen dira trenbide zuzen batean. Ktrl seinaleak eraikitzen ditu hurrengo bidegurutzea arte{}Ktrl+Klik Seinale moten lehioa irekitzen du. Shift gutxi gora beherako kostea erakutsiko du
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Trenbide zubia eraiki. Shift gutxi gora beherako kostea erakutsiko du
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Trenbide tunela eraiki. Shift gutxi gora beherako kostea erakutsiko du
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Trenbide, seinale, ibilbide puntuak eta geltokiak ezabatu. Ktrl mantendu geltoki eta ibilbide puntuen trenbidea ezabatzeko
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Trenbidea berritu. Shift gutxi gora beherako kostea erakutsiko du
 
 STR_RAIL_NAME_RAILROAD                                          :Trenbidea
 STR_RAIL_NAME_ELRAIL                                            :Trenbide elektrikoa
@@ -1677,34 +2156,128 @@ STR_RAIL_NAME_MONORAIL                                          :Monoraila
 STR_RAIL_NAME_MAGLEV                                            :Maglev
 
 # Rail depot construction window
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Tren biltegien norabidea
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Tren biltegien norabidea aukeratu
 
 # Rail waypoint construction window
+STR_WAYPOINT_CAPTION                                            :{WHITE}Bidepuntua
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Bidepuntu mota aukeratu
 
 # Rail station construction window
+STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Tren geltokiak aukeratu
+STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Norabidea
+STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Tren geltokiaren norabidea aukeratu
+STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Anden kopurua
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Tren geltokiaren anden kopurua aukeratu
+STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Geltokiaren luzera
+STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Geltokiaren luzera aukeratu
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrastratzerakoan eraiki
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Geltokia eraiki arrastratzerakoan
 
+STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Eraikiko den geltoki mota
+STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Eraikiko den geltoki mota
 
+STR_STATION_CLASS_DFLT                                          :Oinarrizko geltokia
+STR_STATION_CLASS_WAYP                                          :Bidepuntuak
 
 # Signal window
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Seinale aukerak
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK} Blokeo seinalea (mekanikoa){}Oinarrizkoena den seinale mota, bloke berdinean tren bakarra egotea ahalbidetzen duena
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sarrera seinalea (mekanikoa){}Berde egongo da hurrengo sekzioan irteera seinale bat edo bat baino gehiago berde badago. Bestela gorria egongo da
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Irteera seinalea (mekanikoa){} Blokeo seinalea bezala funtzionatzen du, baina beharrezko da sarrera seinaleak eta konbo aurre-seinaleak kolore egokia izateko
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Konbo seinalea (mekanikoa){}Sarrera seinale eta irteera seinale bezala funtzionatzen du. Honek ahalbidetzen du aurre-seinale zuhaitz haundiak eraikitzea
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Bide seinalea (mekanikoa){}Bide seinalea bloke batean tren bat baino gehiago egotea ahalbidetzen du, trenak gelditzeko bide egokia erreserbatu badezake. Oinarrizko bide seinaleak atzekaldetik pasa daitezke
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Norabide bakarreko bide seinalea (mekanikoa){}Norabide bakarreko bide seinalea bloke berdinean tren bat baino gehiago egotea ahalbidetzen du, trenak gelditzeko tokia aurkitu badezake. Ezin dira atzekaldetik pasa
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blokeo seinalea (elektrikoa){}Oinarrizkoena den seinale mota, bloke berdinean tren bakarra egotea ahalbidetzen duena
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sarrera seinalea (elektrikoa){}Berde egongo da hurrengo sekzioan irteera seinale bat edo bat baino gehiago berde badago. Bestela gorria egongo da
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Irteera seinalea (elektrikoa){} Blokeo seinalea bezala funtzionatzen du, baina beharrezko da sarrera seinaleak eta konbo aurre-seinaleak kolore egokia izateko
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Konbo seinalea (elektrikoa){}Sarrera seinale eta irteera seinale bezala funtzionatzen du. Honek ahalbidetzen du aurre-seinale zuhaitz haundiak eraikitzea
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Bide seinalea (elektrikoa){}Bide seinalea bloke batean tren bat baino gehiago egotea ahalbidetzen du, trenak gelditzeko bide egokia erreserbatu badezake. Oinarrizko bide seinaleak atzekaldetik pasa daitezke
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Norabide bakarreko bide seinalea (elektrikoa){}Norabide bakarreko bide seinalea bloke berdinean tren bat baino gehiago egotea ahalbidetzen du, trenak gelditzeko tokia aurkitu badezake. Ezin dira atzekaldetik pasa
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Seinaleak aldatu{}Aukeratua dagoenean, aukeratutako seinalea aldatuko da hautatutako seinale motagatik. Krtl+Klik mota aldatuko du, Shift+Klik gutxi gora beherako kostea erakutsiko du
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Arrastratzerakoan seinale dentsitatea
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Seinale dentsitatea jeitsi
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Seinale dentsitatea igo
 
 # Bridge selection window
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Trenbide zubia aukeratu
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Errepide zubia aukeratu
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Zubi aukerak - eraiki nahi duzun zubian klik egin
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Altzairuzko zubi esekia
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :Altzairuzko habe zubia
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Altzairuzko mentsula zubia
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Hormigoizko zubi esekia
+STR_BRIDGE_NAME_WOODEN                                          :Egurrezkoa
+STR_BRIDGE_NAME_CONCRETE                                        :Hormigoizkoa
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Altzairuzko zubi tubularra
+STR_BRIDGE_TUBULAR_SILICON                                      :Siliziozko zubi tubularra
 
 
 # Road construction toolbar
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Errepidea eraiki
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tranbia eraiki
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Errepide zatia eraiki. Ktrl errepidea ezabatuko du. Shift gutxi gora beherako kostea erakutsi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tranbia eraiki. Ktrl tranbia ezabatuko du. Shift gutxi gora beherako kostea erakutsiko du
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Errepidea eraiki autoerrepide modua erabiliz. Ktrl errepidea ezabatuko du. Shift gutxi gora beherako kostea erakutsiko du
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Tranbia eraiki Autotranbia modua erabiliz. Ktrl tranbia ezabatuko du. Shift gutxi gora beherako kostea erakutsiko du
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Errepide ibilgailuen gordailua eraiki (ibilgailuak erosi eta mantenimendua egiteko). Shift gutxi gora beherako kortua erakutsi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tranbia gordailua eraiki (tranbiak erosi eta mantenimendua egiteko). Shift gutxi gora beherako kortua erakutsi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Autobus geltokia eraiki. Ktrl geltokiak batzea ahalbidetzen du. Shift gutxi gora beherako kostea erakutsi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Tranbientzako bidaiari geltokia eraiki. Ktrl geltokiak batzea ahalbidetzen du. Shift gutxi gora beherako kostea erakutsi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Komioientzako geltokia eraiki. Ktrl geltokiak batzea ahalbidetzen du. Shift gutxi gora beherako kostea erakutsi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Tranbientzako merkantzia geltokia eraiki. Ktrl geltokiak batzea ahalbidetzen du. Shift gutxi gora beherako kostea erakutsi
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Norabide bakarreko errepideak jarri
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Errepide zubiak eraiki. Shift gutxi gora beherako kostea erakutsi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Tranbia zubiak eraiki. Shift gutxi gora beherako kostea erakutsi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Errepide tunela eraiki. Shift gutxi gora beherako kostea erakutsi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Tranbia tunela eraiki. Shift gutxi gora beherako kostea erakutsi
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Errepidea ezabatu
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Tranbia ezabatu
 
 # Road depot construction window
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Errepide biltegien norabidea
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Aukeratu errepide biltokien norabidea
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Tranbia biltegien norabidea
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Aukeratu tranbia biltokien norabidea
 
 # Road vehicle station construction window
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Autobus geltokien norabidea
+STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Aukeratu autobus geltokien norabidea
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Kamioi geltokien norabidea
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Aukeratu kamioi geltokien norabidea
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Tranbientzako bidaiari geltokiaren norabidea
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Tranbideentzako bidaiari geltokien norabidea aukeratu
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Tranbientzako merkantzia geltokien norabidea
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}tranbientzako merkantzia geltokien norabidea aukeratu
 
 # Waterways toolbar (last two for SE only)
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Urbideak eraiki
+STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Urbideak
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Urbideak eraiki. Shift gutxi gora beherako kostea erakutsi
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Garaiera ezberdinak dituzten urbideak konektatu. Shift gutxi gora beherako kostea erakutsi
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Itsasontzi biltegia eraiki (itsasontziak erosi eta mantenimendua egiteko). Shift gutxi gora beherako kostea erakutsi
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Itsaontzi kaiak eraiki. Ktrl kaiak batzea ahalbidetzen du. Shift gutxi gora beherako kostea erakutsi
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Bidepuntu bezala erabiliko den boia eraiki. Shift gutxi gora beherako kostea erakutsi
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Akueduktoa eraiki. Shift gutxi gora beherako kostea erakutsi
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Ur eremua zehaztu{}Urbidea egin
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Ibaiak sortu
 
 # Ship depot construction window
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Itsasontzi biltegien norabidea
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Itsasontzi biltegien norabidea aukeratu
 
 # Dock construction window
+STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Kaia
 
 # Airport toolbar
+STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aireportua
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Aireportua eraiki. Ktrl aireportuak batzea ahalbidetzen du. Shift gutxi gora beherako kostea erakutsiko du
 
 # Airport construction window
+STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Aireportu mota aukeratu
+STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Aireportuaren tamaina aukeratu
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Aireportu klasea
 STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Diseinua {NUM}
 
@@ -1712,6 +2285,7 @@ STR_AIRPORT_SMALL                                               :Txikia
 STR_AIRPORT_CITY                                                :Hiria
 STR_AIRPORT_METRO                                               :Metropolitarra
 STR_AIRPORT_INTERNATIONAL                                       :Internazionala
+STR_AIRPORT_COMMUTER                                            :Ertaina
 STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinentala
 STR_AIRPORT_HELIPORT                                            :Heliportua
 STR_AIRPORT_HELIDEPOT                                           :Helikoptero garajea
@@ -1719,10 +2293,17 @@ STR_AIRPORT_HELISTATION                                         :Heliportua
 
 STR_AIRPORT_CLASS_SMALL                                         :Aireportu txikiak
 STR_AIRPORT_CLASS_LARGE                                         :Aireportu haundiak
+STR_AIRPORT_CLASS_HUB                                           :Aireportu zentralak
 STR_AIRPORT_CLASS_HELIPORTS                                     :Helikoptero aireportua
 
+STR_STATION_BUILD_NOISE                                         :{BLACK}Sortutako soinua: {GOLD}{COMMA}
 
 # Landscaping toolbar
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Paisai editorea
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Lur sail baten ertza jeitsi. Arrastratzerakoan lehendabizi aukeratutako lur sailaren garaiera arrastratuko da. Ktrl zonaldea diagonalki aukeratuko du. Shift gutxi gora beherako kostua erakutsi
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Lur sail baten ertza igo. Arrastratzerakoan lehendabizi aukeratutako lur sailaren garaiera arrastratuko da. Ktrl zonaldea diagonalki aukeratuko du. Shift gutxi gora beherako kostua erakutsi
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Hautatuako ertzaren garaierara lautu. Krtl eremua diagonalki lautuko du. Shift gutxi gora beherako kostea erakutsi
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Lur sail bat gorde etorkizunerako. Shift gutxi gora beherako kostea erakutsi
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektu hautaketa
@@ -1735,16 +2316,68 @@ STR_OBJECT_CLASS_LTHS                                           :Itsasargiak
 STR_OBJECT_CLASS_TRNS                                           :Igorgailuak
 
 # Tree planting window (last two for SE only)
+STR_PLANT_TREE_CAPTION                                          :{WHITE}Zuhaitzak
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK} Aukeratu landatuko diren zuhaitz motak. Laukiak zuhaitza badauka mota ezberdinetako zuhaitz gehio geituko ditu
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Ausazko zuhaitz motak
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Ausazko zuhaitz motak landatu. Shift gutxi gora beherako kostea erakutsi
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Ausazko zuhaitzak
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Zuhaitzak landatu mapan zehar
 
 # Land generation window (SE)
+STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Paisaia sortu
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Haitzak ezarri
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Desertu eremua zehaztu.{}Krtl ezabatzeko
+STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Igo beharreko lur saila haunditu/txikitu
+STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Jeitsi beharreko lur saila handitu/txikitu
+STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Ausazko paisaia sortu
+STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Eszenatoki berria sortu
+STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Paisaia berrezarri
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Ezabatu kanpainien jabego pribatuak
 
+STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Berrezarri paisaia
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Ziur zaude konpainien jabego pribatuak ezabatu nahi dituzula?
 
 # Town generation window (SE)
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Herria sortu
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Herri berria
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Herri berria sortu. Shift+Klik gutxi gora beherako kostua erakutsi
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Ausazko herria
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Herria sortu ausazko tokian
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Ausazko herri multzoa sortu
+STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Mapa ausazko herriekin bete
 
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Herriaren izena:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Herriaren izena sartu
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klikatu izena emateko
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Ausazko izena
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Auszko izen berria sortu
 
+STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Herriaren tamaina:
+STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Txikia
+STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Ertaina
+STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Haundia
+STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Ausazkoa
+STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Herriaren tamaina aukeratu
+STR_FOUND_TOWN_CITY                                             :{BLACK}Hiria
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Hiriak herriak baino azkarrago hazten dira{}Ezarpenen arabera sortzerakoan handiagoak izan daitezke
 
+STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Herri errepideen diseinua:
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Herriaren errepide diseinua aukeratu
+STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Jatorrizkoa
+STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Errepideen hobekuntza
+STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 errepideak
+STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 errepideak
+STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Ausazkoa
 
 # Fund new industry window
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Industria berria sortu
+STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Aukeratu zerrendatik industria egokia
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Ausazko industri ugari sortu
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Mapa ausazko industriekin bete
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Kostea: {YELLOW}{CURRENCY_LONG}
+STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Erauzketa
+STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Eraiki
+STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Sortu
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrien elkartea {STRING} industriarentzako
@@ -1764,25 +2397,114 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Aukeratu
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Aukeratu ikusi nahi duzun industria
 
 # Land area window
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Lur sailaren informazioa
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Desegiteko kostua: {LTBLUE}N/A
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Desegiteko kostua: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Diru sarrerak ezabatzerakoan: {LTBLUE}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/A
+STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Jabea: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Errepidearen jabea: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Tranbia jabea: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Trenbidearen jabea: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Udaletxea {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ezer ez
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordenadak: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Eraikia: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Geltoki mota: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Geltoki mota: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Aireportu mota: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Aireportuaren izena: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Aireportuko fitxa izena: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Onartutako zama: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Trenbidearen abiadura muga: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
+STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Haitzak
+STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Paisai zakarra
+STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Paisai ukitu gabea
+STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Belarra
+STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Eremuak
+STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Elurrez estalitako paisaia
+STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Desertua
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} Trenbidea
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} Trenbidea blokeo seinalearekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} trenbidea aurre-seinalekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} trenbidea irteera seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} trenbidea konbo seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} trenbidea bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} trenbidea norabide bakarreko bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} trenbidea blokeo seinale eta aurre-seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} trenbidea blokeo seinale eta irteera seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} trenbidea blokeo seinalea eta konbo seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} trenbidea blokeo seinaleekin eta bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} Trenbidea blokeo eta norabide bakarreko bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} trenbidea aurre-seinale eta irteera seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} trenbidea aurre-seinale eta konbo seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} trenbidea aurre-seinale eta bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} trenbidea aurre-seinale eta norabide bakarreko bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} trenbidea irteera seinale eta konbo seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} trenbidea irteera seinale eta bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} trenbidea irteera seinale eta norabide bakarreko bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} trenbidea konbo seinale eta bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} trenbide konbo seinale eta norabide bakarreko bide seinaleekin
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} trenbidea bide seinale eta norabide bakarreko seinaleekina
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} tren biltegia
 
+STR_LAI_ROAD_DESCRIPTION_ROAD                                   :errepidea
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Errepidea farolekin
+STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Zuhaitzez inguratutako errepidea
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Errepide ibilgailuen biltegia
+STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Errepide/trenbide pasabidea
+STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Tranbia
 
 # Houses come directly from their building names
+STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (eraikitzen)
 
+STR_LAI_TREE_NAME_TREES                                         :Zuhaitzak
+STR_LAI_TREE_NAME_RAINFOREST                                    :Basoa
+STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Kaktusak
 
+STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Tren geltokia
+STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Aireportu hangarra
+STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Aireportua
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Kamioiak zamatzeko eremua
+STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Autobus geltokia
+STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Itsasontzientazko kaia
+STR_LAI_STATION_DESCRIPTION_BUOY                                :Buia
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Bidepuntua
 
+STR_LAI_WATER_DESCRIPTION_WATER                                 :Ura
+STR_LAI_WATER_DESCRIPTION_CANAL                                 :Urbidea
+STR_LAI_WATER_DESCRIPTION_LOCK                                  :Esklusa
+STR_LAI_WATER_DESCRIPTION_RIVER                                 :Ibaia
+STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Kostaldea edo ibai ertza
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Itsasontzi biltegia
 
 # Industries come directly from their industry names
 
+STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Tren tunela
+STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Errepide tunela
 
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Trenentzako altzairuzko zubi esekia
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Altzairuzko trenbide habe zubia
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Trenentzako altzairuzko mentsula zubia
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Hormigoizko trenbide zubi esekia
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Trenentzako egurrezko zubia
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Trenentzako hormigoizko zubia
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Trenentzako zubi tubularra
 
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Altzairuzko zubi esekia
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Altzairuzko habe zubia
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Altzairuzko mentsula zubia
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Hormigoizko zubi esekia
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Egurrezko zubia
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Hormigoizko zubia
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Zubi tubularra
 
+STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akueduktoa
 
 STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Transmisorea
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Itsasargia
@@ -1790,9 +2512,26 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Konpainiaren eg
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Konpainia jabe den lur saila
 
 # About OpenTTD window
+STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD-ri buruz
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD bertsioa {REV}
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2012 The OpenTTD team
 
 # Save/load game/scenario
+STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Gordetako jokua
+STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Jokua kargatu
+STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Eszenatokia gorde
+STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Eszenatokia kargatu
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Garaiera mapa kargatu
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Altuera mapa gorde
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hemen klikatu gorde/kargatu direktoriora joateko
+STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} libre
+STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Driver, direktorio eta gordetako joku artxiboen zerrenda
+STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Jokua gordetzeko aukeratutako izena
+STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Ezabatu
+STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Ezabatu aukeratutako joku gordea
+STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Gorde
+STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Jokua gorde, aukeratutako izenarekin
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Kargatu
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Aukeratutako partida kargatu
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Jokoaren Xehetasunak
@@ -1800,35 +2539,108 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ez dago 
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
+STR_SAVELOAD_OSKTITLE                                           :{BLACK}Jokua gordetzeko izena ezarri
 
 # World generation
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Mundua sortu
+STR_MAPGEN_MAPSIZE                                              :{BLACK}Maparen tamaina:
 STR_MAPGEN_BY                                                   :{BLACK}*
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Herri kopurua:
+STR_MAPGEN_DATE                                                 :{BLACK}Data:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Industria kopurua:
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Elur garaiera:
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Igo puntu batean elur garaiera
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Jeitsi puntu batean elur garaiera
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Ausazko hazia:
+STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klikatu ausazko hazia ezartzeko
+STR_MAPGEN_RANDOM                                               :{BLACK}Ausaz egin
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Ausazko hazia aldatu paisaia sortzeko
+STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Paisaia sortzailea:
+STR_MAPGEN_TREE_PLACER                                          :{BLACK}Zuhaitz algoritmoa:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Lur mota:
+STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Itsas maila:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Errekak:
+STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Leuntasuna:
 STR_MAPGEN_VARIETY                                              :{BLACK}Barietateen distribuzioa:
+STR_MAPGEN_GENERATE                                             :{WHITE}Sortu
 
 # Strings for map borders at game generation
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Maparen ertzak:
+STR_MAPGEN_NORTHWEST                                            :{BLACK}Ipar mendebaldea
+STR_MAPGEN_NORTHEAST                                            :{BLACK}Iparekialdea
+STR_MAPGEN_SOUTHEAST                                            :{BLACK}Hegoekialdea
+STR_MAPGEN_SOUTHWEST                                            :{BLACK}Hegomendebaldea
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Modu askea
+STR_MAPGEN_BORDER_WATER                                         :{BLACK}Ura
+STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Ausazkoa
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Ausazkoa
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Eskuz egin
 
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Garaiera maparen norabidea:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Garaiera maparen izena:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamaina:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Ausazko hazia ezarri
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Elur garaiera aldatu
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Hasierako urtea aldatu
 
 # SE Map generation
+STR_SE_MAPGEN_CAPTION                                           :{WHITE}Eszenatoki mota
+STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Paisai laua
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Paisai laua sortu
+STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Ausazko paisaia
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Paisai lauaren garaiera:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Paisai lauaren garaiera puntu bat jeitsi
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Paisai lauaren garaiera puntu bat igo
 
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Paisai lauaren garaiera aldatu
 
 # Map generation progress
+STR_GENERATION_WORLD                                            :{WHITE}Mundua sortzen...
+STR_GENERATION_ABORT                                            :{BLACK}Gelditu
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Gelditu mundua sortzea
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Benetan geldiarazi nahi duzu sorkuntza?
+STR_GENERATION_PROGRESS                                         :{WHITE} %{NUM} beteta
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Mundua sortu
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Erreka sorkuntza
+STR_GENERATION_TREE_GENERATION                                  :{BLACK} Zuhaitzak sortu
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objektu sorkuntza
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}Eremu zakarra eta haitzez beteta sortu
+STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Jokuaren ezarpenak
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Lauki buelta abiarazten
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Scripta abiarazten
+STR_GENERATION_PREPARING_GAME                                   :{BLACK}Jokua prestatzen
 
 # NewGRF settings
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF ezarpenak
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF-aren informazio zehaztua
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}NewGRF-ko artxibo aktiboak
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}NewGRF artxibo ez aktiboak
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Aukeratu aurre-ezarria
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Iragazle lokarria:
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Aurretik aukeratutako ezarpenak kargatu
+STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Aurre ezarpenak gorde
+STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Gorde zerrenda aurre ezarpena bezala
+STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Aurre ezarpenaren izena ezarri
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Aurre ezarpenak ezabatu
+STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Ezabatu aukeratutako aurre ezarpenak
+STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Gehitu
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Aukeratutako NewGRF artxiboa zure konfiguraziora gehitu
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Artxiboak berriro eskaneatu
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}NewGRF artxiboen lista eguneratu
+STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Ezabatu
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Ezabatu aukeratutako NewGRFa zerrendatik
+STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Gora mugitu
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Aukeratutako NewGRFa gora mugitu
+STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Behera mugitu
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mugitu aukeratutako NewGRFa zerrendan behera
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Instalatutako NewGRFen zerrenda
 
+STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Parametroak ezarri
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Erakutsi parametroak
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Paleta aldatu
 
 
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Bertsioa: {SILVER}{NUM}
@@ -2516,7 +3328,7 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Bidepuntua
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Bidepuntua #{COMMA}
 
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Tren garajea
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Tren biltegia
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Tren garajea #{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN}Garajea
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Garajea#{COMMA}
