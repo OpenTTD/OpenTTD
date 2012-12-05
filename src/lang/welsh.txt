@@ -1057,11 +1057,7 @@ STR_TERRAIN_TYPE_FLAT                                           :Gwastad
 STR_TERRAIN_TYPE_HILLY                                          :Bryniog
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Mynyddig
 
-STR_ECONOMY_STEADY                                              :Cyson
-STR_ECONOMY_FLUCTUATING                                         :Anghyson
 
-STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Ar ddiwedd y lein ac mewn gorsafoedd
-STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Ar ddiwedd y lein yn unig
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Bodlon
 STR_CITY_APPROVAL_TOLERANT                                      :Hapus

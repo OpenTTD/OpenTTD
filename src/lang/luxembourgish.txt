@@ -1059,11 +1059,7 @@ STR_TERRAIN_TYPE_FLAT                                           :Flaach
 STR_TERRAIN_TYPE_HILLY                                          :Hiwwelech
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bierger
 
-STR_ECONOMY_STEADY                                              :Konstant
-STR_ECONOMY_FLUCTUATING                                         :Variabel
 
-STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Um Enn vun der Streck, an an den Statiounen
-STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Um Enn vun der Streck nëmmen
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Erlaabend
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant

@@ -1208,11 +1208,7 @@ STR_TERRAIN_TYPE_FLAT                                           :Raven
 STR_TERRAIN_TYPE_HILLY                                          :Hribovit
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Gorat
 
-STR_ECONOMY_STEADY                                              :Stabilna
-STR_ECONOMY_FLUCTUATING                                         :Nihajoča
 
-STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Na koncu linije in na postajah
-STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Samo na koncu linije
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Dopustno
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantno

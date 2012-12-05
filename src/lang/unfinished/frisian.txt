@@ -1041,11 +1041,7 @@ STR_TERRAIN_TYPE_FLAT                                           :Flak
 STR_TERRAIN_TYPE_HILLY                                          :Heuvelachtich
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergachtich
 
-STR_ECONOMY_STEADY                                              :Stabyl
-STR_ECONOMY_FLUCTUATING                                         :Wikseljend
 
-STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Oane ein fan it spoar, en op stasjons
-STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Allinich oane ein fan'e line
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Tajouwend
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant

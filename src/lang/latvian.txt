@@ -1061,11 +1061,7 @@ STR_TERRAIN_TYPE_FLAT                                           :Līdzens
 STR_TERRAIN_TYPE_HILLY                                          :Paugurains
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Kalnains
 
-STR_ECONOMY_STEADY                                              :stabila
-STR_ECONOMY_FLUCTUATING                                         :pulsējoša
 
-STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :līniju beigās un stacijās
-STR_REVERSE_AT_END_OF_LINE_ONLY                                 :tikai līniju beigās
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :pieļaujoša
 STR_CITY_APPROVAL_TOLERANT                                      :iecietīga

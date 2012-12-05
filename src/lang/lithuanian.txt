@@ -1254,11 +1254,7 @@ STR_TERRAIN_TYPE_FLAT                                           :Lygumos
 STR_TERRAIN_TYPE_HILLY                                          :Kalvos
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Kalnai
 
-STR_ECONOMY_STEADY                                              :Pastovi
-STR_ECONOMY_FLUCTUATING                                         :Kintanti
 
-STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Bėgių pabaigoje, stotelėse
-STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Tik bėgių pabaigoje
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Atlaidus
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantiškas

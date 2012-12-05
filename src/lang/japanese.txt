@@ -1052,11 +1052,7 @@ STR_TERRAIN_TYPE_FLAT                                           :平地
 STR_TERRAIN_TYPE_HILLY                                          :丘陵地
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :山岳地
 
-STR_ECONOMY_STEADY                                              :安定的
-STR_ECONOMY_FLUCTUATING                                         :変動的
 
-STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :線路終点と駅
-STR_REVERSE_AT_END_OF_LINE_ONLY                                 :線路終点のみ
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :寛大
 STR_CITY_APPROVAL_TOLERANT                                      :寛容

@@ -1439,11 +1439,7 @@ STR_TERRAIN_TYPE_FLAT                                           :Płaski
 STR_TERRAIN_TYPE_HILLY                                          :Pagórkowaty
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Górski
 
-STR_ECONOMY_STEADY                                              :Stabilna
-STR_ECONOMY_FLUCTUATING                                         :Zmienna
 
-STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Na końcu trasy i na stacjach
-STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Tylko na końcu trasy
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Przyjazne
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerancyjne

@@ -1061,11 +1061,7 @@ STR_TERRAIN_TYPE_FLAT                                           :Pianeggiante
 STR_TERRAIN_TYPE_HILLY                                          :Collinare
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montuoso
 
-STR_ECONOMY_STEADY                                              :Stabile
-STR_ECONOMY_FLUCTUATING                                         :Fluttuante
 
-STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Alla fine della linea, e alle stazioni
-STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Solo alla fine della linea
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo
 STR_CITY_APPROVAL_TOLERANT                                      :Tollerante

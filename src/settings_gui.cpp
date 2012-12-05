@@ -1528,6 +1528,7 @@ static SettingEntry _settings_stations[] = {
 static SettingsPage _settings_stations_page = {_settings_stations, lengthof(_settings_stations)};
 
 static SettingEntry _settings_economy_towns[] = {
+	SettingEntry("difficulty.town_council_tolerance"),
 	SettingEntry("economy.bribe"),
 	SettingEntry("economy.exclusive_rights"),
 	SettingEntry("economy.fund_roads"),
@@ -1564,15 +1565,23 @@ static SettingEntry _settings_economy[] = {
 	SettingEntry(&_settings_economy_industries_page, STR_CONFIG_SETTING_ECONOMY_INDUSTRIES),
 	SettingEntry(&_settings_economy_scripts_page, STR_CONFIG_SETTING_ECONOMY_SCRIPTS),
 	SettingEntry("economy.inflation"),
+	SettingEntry("difficulty.initial_interest"),
+	SettingEntry("difficulty.max_loan"),
+	SettingEntry("difficulty.subsidy_multiplier"),
+	SettingEntry("difficulty.economy"),
 	SettingEntry("economy.smooth_economy"),
 	SettingEntry("economy.feeder_payment_share"),
 	SettingEntry("economy.infrastructure_maintenance"),
+	SettingEntry("difficulty.vehicle_costs"),
+	SettingEntry("difficulty.construction_cost"),
+	SettingEntry("difficulty.disasters"),
 };
 /** Economy sub-page */
 static SettingsPage _settings_economy_page = {_settings_economy, lengthof(_settings_economy)};
 
 static SettingEntry _settings_ai_npc[] = {
 	SettingEntry("script.settings_profile"),
+	SettingEntry("difficulty.competitor_speed"),
 	SettingEntry("ai.ai_in_multiplayer"),
 	SettingEntry("ai.ai_disable_veh_train"),
 	SettingEntry("ai.ai_disable_veh_roadveh"),
@@ -1614,6 +1623,7 @@ static SettingEntry _settings_vehicles_servicing[] = {
 	SettingEntry("vehicle.servint_roadveh"),
 	SettingEntry("vehicle.servint_ships"),
 	SettingEntry("vehicle.servint_aircraft"),
+	SettingEntry("difficulty.vehicle_breakdowns"),
 	SettingEntry("order.no_servicing_if_no_breakdowns"),
 	SettingEntry("order.serviceathelipad"),
 };
@@ -1621,6 +1631,7 @@ static SettingEntry _settings_vehicles_servicing[] = {
 static SettingsPage _settings_vehicles_servicing_page = {_settings_vehicles_servicing, lengthof(_settings_vehicles_servicing)};
 
 static SettingEntry _settings_vehicles_trains[] = {
+	SettingEntry("difficulty.line_reverse_mode"),
 	SettingEntry("pf.reverse_at_signals"),
 	SettingEntry("vehicle.train_acceleration_model"),
 	SettingEntry("vehicle.train_slope_steepness"),

@@ -1028,11 +1028,7 @@ STR_TERRAIN_TYPE_FLAT                                           :Slétt
 STR_TERRAIN_TYPE_HILLY                                          :Hæðótt
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Fjallótt
 
-STR_ECONOMY_STEADY                                              :Stöðugur
-STR_ECONOMY_FLUCTUATING                                         :Óstöðugur
 
-STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Á enda brautar, og á lestarstöðvum
-STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Aðeins á enda brautar
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Eftirgefin
 STR_CITY_APPROVAL_TOLERANT                                      :Umburðarlynd

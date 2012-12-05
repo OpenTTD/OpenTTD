@@ -1155,11 +1155,7 @@ STR_TERRAIN_TYPE_FLAT                                           :Ravno
 STR_TERRAIN_TYPE_HILLY                                          :Brežuljkasto
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Brdovito
 
-STR_ECONOMY_STEADY                                              :Stabilno
-STR_ECONOMY_FLUCTUATING                                         :Promjenjivo
 
-STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Na kraju pruge, i na postaji
-STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Isključivo na kraju pruge
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Dopustiv
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantan
