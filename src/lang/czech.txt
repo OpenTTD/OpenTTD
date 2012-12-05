@@ -287,6 +287,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} stop{P 
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrovat řetězec:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vložte filtr
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vložte klíčové slovo pro filtr seznamu
 
@@ -472,6 +473,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Podrobné hodno
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Seznam průmyslu
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Průmyslové řetězce
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Investovat do průmyslu
 ############ range ends here
 
@@ -1197,6 +1199,15 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Nastavení hry 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavení společnosti (zachováno v uložených hrách; ovlivní pouze nové hry)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavení společnosti (uchováno v uložené hře; ovlivní pouze stávající společnost)
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Zobrazit:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Zobrazovat v seznamu níže pouze změněná nastavení
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Základní nastavení
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Pokročilé nastavení
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expertní nastavení / všechna nastavení
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Nastavení s jinou než defaultní hodnotou
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Ne-klientské nastavení s jinou než defaultní hodnotou
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Nastavení s jinou hodnotou než tvé nastavení nových her
+
 STR_CONFIG_SETTING_OFF                                          :vypnuto
 STR_CONFIG_SETTING_ON                                           :zapnuto
 STR_CONFIG_SETTING_DISABLED                                     :vypnuto
@@ -1390,6 +1401,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Ovládá jak se
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Ukázat rozměry při použití stavebních nástrojů: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Zobrazovat vzdálenost a výškový rozdíl při výstavbě tahem.
 STR_CONFIG_SETTING_LIVERIES                                     :Zobrazovat barvy společnosti pro: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Kontrolovat použití nátěrů různých typů vozidel vzhledem k firemním specifikacím
 STR_CONFIG_SETTING_LIVERIES_NONE                                :žádnou společnost
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :jen vlastní společnost
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :všechny společnosti
@@ -1510,15 +1522,18 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Při tažení u
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Nastav vzdálenost v jaké budou semafory vystavěny za překážkou (vyhybka) při stavbě tahem
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} polí
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Při přetahování udržovat stálou vzdálenost mezi signály: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Zvol chování umisťování semaforů při Ctrl+tažení. Pokud je vypnuto, semafory jsou umístěny okolo mostů a tunelů aby se zabránilo velkým úsekům bez semaforů. Pokud je povoleno, semafory jsou umístěny každých N polí, takže je zarovnání semaforů u souběžných tratí jednoduší.
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Semafory automaticky stavět do roku: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Nastav rok, ve kterém budou používány elektrické semafory. Před tímto rokem jsou používány mechanické, které fungují stejně ale mají jiný vzhled
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Okno pro stavbu návěstidel: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Zobrazovat okno pro vybrání typu semaforů místo "bezokeního" měnění pomocí ctrl+kliku při jejich stavbě.
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Výchozí typ návěstidla: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Výchozí typ semaforu k použití
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :obyčejné
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :dokonalejší (PBS)
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :jednosměrné dokonalejší (PBS)
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Vybírat dokola návěstidla: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Vyber které semafory budou nabízeny při Ctrl+klikání při jejich stavbě.
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :pouze obyčejná
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :pouze dokonalejší (PBS)
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :všechna
@@ -1531,9 +1546,11 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :mřížka 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :mřížka 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :náhodně
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Města smějí stavět silnice: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Povolí městům stavět silnice pro růst. Zakaž k zabránění výstavby silnic městy.
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Města mohou stavět přejezdy: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Povolení tohoto nastavení umožní městům, budovat železniční přejezdy
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Umožnit městům ovlivňovat hlukový limit pro letiště: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Pokud je vypnuto, ve každém městě mohou být dvě letiště. Pokud je zapnuto, počet letišť bude omezen hlukovými limity města, což závisí na jeho populaci, velikosti letiště a jeho vzdálenosti od centra města
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Zakládání měst během hry: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Povoluje hráčům zakládat nové města během hry
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zakázáno
@@ -1541,6 +1558,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :povoleno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :povoleno s výběrem rozložení a velikosti města
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Umístění stromů ve hře: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Náhodné umisťování stromů během hry. Může ovlivnit průmysl závisející na růstu stromů, například pily.
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nikde {RED}(nefunguje pila)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :jen v deštných pralesech
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :všude
@@ -2461,6 +2479,10 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.acc                        :{BLACK}Odkaz na
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.loc                        :{BLACK}Odkazu na malou mapu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.ins                        :{BLACK}Odkazem na malou mapu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Vyber zobrazený průmysl také na minimapě
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Vyber náklad
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Vyber náklad který chceš zobrazit
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Vyber průmysl
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Vyber průmysl který chceš zobrazit
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informace o uzemí
