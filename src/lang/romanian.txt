@@ -1419,7 +1419,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Direcţ
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenuri
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Oraşe
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrii
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Scripturi
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

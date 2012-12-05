@@ -1311,7 +1311,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}مسی�
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}قطارها
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}شهرها
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}صنایع
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}کدها
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :اصلی
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

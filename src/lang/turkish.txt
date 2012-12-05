@@ -1316,7 +1316,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Yönlen
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenler
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Şehirler
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Endüstri
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Betikler
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Orjinal
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

@@ -1592,7 +1592,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Δρο�
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Τρένα
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Πόλεις
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Βιομηχανίες
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Δέσμες ενεργειών
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Αρχικό
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

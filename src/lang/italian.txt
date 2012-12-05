@@ -1524,7 +1524,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Instrad
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Treni
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Città
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrie
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Script
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Originale
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

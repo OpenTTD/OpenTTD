@@ -1300,7 +1300,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}经由
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}列车
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}城镇
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}工业设施
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}脚本
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :原始的
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

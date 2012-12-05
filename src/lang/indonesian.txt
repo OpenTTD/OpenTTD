@@ -1329,7 +1329,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Pengara
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Kereta
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Kota
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industri
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Scripts
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Asli
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

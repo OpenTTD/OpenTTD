@@ -1500,7 +1500,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Biderak
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenak
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Herriak
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriak
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Scriptak
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Originala
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

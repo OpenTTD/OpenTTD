@@ -1500,7 +1500,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routebe
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Treinen
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Steden
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrieën
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Scripts
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Origineel
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

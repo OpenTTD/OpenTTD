@@ -1301,7 +1301,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}เล�
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}รถไฟ
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}เมือง
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}อุตสาหกรรม
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}สคริปต์
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :ดั้งเดิม
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

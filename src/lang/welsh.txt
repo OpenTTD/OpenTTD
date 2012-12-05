@@ -1333,7 +1333,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Llwybro
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenau
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Trefi
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Diwydiannau
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Sgriptiau
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Gwreiddiol
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

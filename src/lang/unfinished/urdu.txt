@@ -1308,7 +1308,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}روٹ�
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}ریل گاڑیاں
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}شہر
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}صنعتیں
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}اسکرپٹس
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :اصلی
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

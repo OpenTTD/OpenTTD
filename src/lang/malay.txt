@@ -1302,7 +1302,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Laluan
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Keretapi
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Bandar-bandar
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industri-industri
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Skrip
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Asal
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

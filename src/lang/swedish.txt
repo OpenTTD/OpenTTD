@@ -1495,7 +1495,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Planeri
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tåg
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Städer
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrier
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Skript
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Standard
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

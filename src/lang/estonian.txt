@@ -1420,7 +1420,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Marsruu
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Rongid
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Linnad
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Tööstused
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Skriptid
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Algne
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

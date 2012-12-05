@@ -1497,7 +1497,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Rutiran
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vozovi
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Naselja
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrije
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Skripte
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Originalno
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

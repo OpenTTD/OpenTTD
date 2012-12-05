@@ -1106,7 +1106,6 @@ STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}பர�
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}இரயில் வண்டிகள்
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}நகரங்கள்
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}தொழிற்சாலைகள்
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}வரிவடிவங்கள்
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :அசல்
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

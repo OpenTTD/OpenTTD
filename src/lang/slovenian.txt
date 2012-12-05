@@ -1619,7 +1619,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Usmerja
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlaki
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Mesta
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrije
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Skripti
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

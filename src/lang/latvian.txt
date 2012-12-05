@@ -1492,7 +1492,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Pārvie
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vilcieni
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Pilsētas
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Ražotnes
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Skripti
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Sākotnējais
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

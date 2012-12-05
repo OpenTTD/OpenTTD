@@ -1549,7 +1549,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Smerova
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlaky
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Mestá
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Priemysel
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Skripty
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Pôvodný
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

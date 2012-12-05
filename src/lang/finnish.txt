@@ -1500,7 +1500,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Reitity
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Junat
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Kaupungit
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Laitokset
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Skriptit
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Alkuperäinen
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

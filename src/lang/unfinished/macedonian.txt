@@ -885,7 +885,6 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}скрипти
 
 
 

@@ -1501,7 +1501,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Wegsuch
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Züge
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Städte
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrien
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Scripts
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

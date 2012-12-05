@@ -1292,7 +1292,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}路線
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}列車
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}市鎮
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}工業
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}腳本
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :預設
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

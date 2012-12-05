@@ -1442,7 +1442,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Roete
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Treine
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Dorpe
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Nywerhede
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Skripte
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Oorspronklik
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

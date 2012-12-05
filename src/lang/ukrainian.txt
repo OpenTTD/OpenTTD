@@ -1625,7 +1625,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Мар�
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Поїзди
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Міста
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Підприємства
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Скрипти
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :стандартний
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

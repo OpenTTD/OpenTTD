@@ -1554,16 +1554,10 @@ static SettingEntry _settings_economy_industries[] = {
 /** Industries sub-page */
 static SettingsPage _settings_economy_industries_page = {_settings_economy_industries, lengthof(_settings_economy_industries)};
 
-static SettingEntry _settings_economy_scripts[] = {
-	SettingEntry("script.script_max_opcode_till_suspend"),
-};
-/** Scripts sub-page */
-static SettingsPage _settings_economy_scripts_page = {_settings_economy_scripts, lengthof(_settings_economy_scripts)};
 
 static SettingEntry _settings_economy[] = {
 	SettingEntry(&_settings_economy_towns_page, STR_CONFIG_SETTING_ECONOMY_TOWNS),
 	SettingEntry(&_settings_economy_industries_page, STR_CONFIG_SETTING_ECONOMY_INDUSTRIES),
-	SettingEntry(&_settings_economy_scripts_page, STR_CONFIG_SETTING_ECONOMY_SCRIPTS),
 	SettingEntry("economy.inflation"),
 	SettingEntry("difficulty.initial_interest"),
 	SettingEntry("difficulty.max_loan"),
@@ -1581,6 +1575,7 @@ static SettingsPage _settings_economy_page = {_settings_economy, lengthof(_setti
 
 static SettingEntry _settings_ai_npc[] = {
 	SettingEntry("script.settings_profile"),
+	SettingEntry("script.script_max_opcode_till_suspend"),
 	SettingEntry("difficulty.competitor_speed"),
 	SettingEntry("ai.ai_in_multiplayer"),
 	SettingEntry("ai.ai_disable_veh_train"),

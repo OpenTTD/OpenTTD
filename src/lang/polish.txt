@@ -1880,7 +1880,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Wyznacz
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Pociągi
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Miasta
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Przedsiębiorstwa
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Skrypty
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Oryginalne
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

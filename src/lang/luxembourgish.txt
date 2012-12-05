@@ -1500,7 +1500,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routenp
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Zich
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Stied
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrien
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Scripter
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

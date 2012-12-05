@@ -1301,7 +1301,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE} الم
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE} قطارات
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE} مدن
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE} مصانع
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}الاسكربت
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :اصلي
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

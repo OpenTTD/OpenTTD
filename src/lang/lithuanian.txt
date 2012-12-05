@@ -1695,7 +1695,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Maršru
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Traukiniai
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Miestai
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Gamyklos
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Skriptai
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Originalus
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF

@@ -1501,7 +1501,6 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}경로�
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}열차
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}도시
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}산업시설
-STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}스크립트
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :오리지널
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
