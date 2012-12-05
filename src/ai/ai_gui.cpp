@@ -416,21 +416,6 @@ struct AISettingsWindow : public Window {
 		}
 	}
 
-	/**
-	 * Check whether we modified the difficulty level or not.
-	 */
-	void CheckDifficultyLevel()
-	{
-		if (_game_mode == GM_MENU) {
-			if (_settings_newgame.difficulty.diff_level != SP_CUSTOM) {
-				_settings_newgame.difficulty.diff_level = SP_CUSTOM;
-				ShowErrorMessage(STR_WARNING_DIFFICULTY_TO_CUSTOM, INVALID_STRING_ID, WL_WARNING);
-			}
-		} else if (_settings_game.difficulty.diff_level != SP_CUSTOM) {
-			IConsoleSetSetting("difficulty.diff_level", SP_CUSTOM);
-		}
-	}
-
 	virtual void OnPaint()
 	{
 		if (this->closing_dropdown) {
@@ -517,8 +502,6 @@ struct AISettingsWindow : public Window {
 						this->ai_config->SetSetting(config_item.name, new_val);
 						this->clicked_button = num;
 						this->timeout = 5;
-
-						this->CheckDifficultyLevel();
 					}
 				} else if (!bool_item && !config_item.complete_labels) {
 					/* Display a query box so users can enter a custom value. */
@@ -550,7 +533,6 @@ struct AISettingsWindow : public Window {
 		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (it->flags & SCRIPTCONFIG_INGAME) == 0) return;
 		int32 value = atoi(str);
 		this->ai_config->SetSetting((*it).name, value);
-		this->CheckDifficultyLevel();
 		this->SetDirty();
 	}
 
@@ -561,7 +543,6 @@ struct AISettingsWindow : public Window {
 		for (int i = 0; i < this->clicked_row; i++) it++;
 		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (it->flags & SCRIPTCONFIG_INGAME) == 0) return;
 		this->ai_config->SetSetting((*it).name, index);
-		this->CheckDifficultyLevel();
 		this->SetDirty();
 	}
 

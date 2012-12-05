@@ -80,7 +80,7 @@ int AIConfig::GetSetting(const char *name) const
 {
 	if (this->info == NULL) {
 		SettingValueList::const_iterator it = this->settings.find(name);
-		if (it == this->settings.end() || GetGameSettings().difficulty.diff_level != SP_CUSTOM) {
+		if (it == this->settings.end()) {
 			assert(strcmp("start_date", name) == 0);
 			switch (GetGameSettings().difficulty.diff_level) {
 				case SP_EASY:   return AI::START_NEXT_EASY;
