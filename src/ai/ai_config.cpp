@@ -80,13 +80,13 @@ int AIConfig::GetSetting(const char *name) const
 {
 	if (this->info == NULL) {
 		SettingValueList::const_iterator it = this->settings.find(name);
-		if (it == this->settings.end() || GetGameSettings().difficulty.diff_level != 3) {
+		if (it == this->settings.end() || GetGameSettings().difficulty.diff_level != SP_CUSTOM) {
 			assert(strcmp("start_date", name) == 0);
 			switch (GetGameSettings().difficulty.diff_level) {
-				case 0: return AI::START_NEXT_EASY;
-				case 1: return AI::START_NEXT_MEDIUM;
-				case 2: return AI::START_NEXT_HARD;
-				case 3: return AI::START_NEXT_MEDIUM;
+				case SP_EASY:   return AI::START_NEXT_EASY;
+				case SP_MEDIUM: return AI::START_NEXT_MEDIUM;
+				case SP_HARD:   return AI::START_NEXT_HARD;
+				case SP_CUSTOM: return AI::START_NEXT_MEDIUM;
 				default: NOT_REACHED();
 			}
 		}

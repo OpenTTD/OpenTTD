@@ -294,10 +294,10 @@ int ScriptInfo::GetSettingDefaultValue(const char *name) const
 		if (strcmp((*it).name, name) != 0) continue;
 		/* The default value depends on the difficulty level */
 		switch (GetGameSettings().difficulty.diff_level) {
-			case 0: return (*it).easy_value;
-			case 1: return (*it).medium_value;
-			case 2: return (*it).hard_value;
-			case 3: return (*it).custom_value;
+			case SP_EASY:   return (*it).easy_value;
+			case SP_MEDIUM: return (*it).medium_value;
+			case SP_HARD:   return (*it).hard_value;
+			case SP_CUSTOM: return (*it).custom_value;
 			default: NOT_REACHED();
 		}
 	}

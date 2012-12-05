@@ -422,12 +422,12 @@ struct AISettingsWindow : public Window {
 	void CheckDifficultyLevel()
 	{
 		if (_game_mode == GM_MENU) {
-			if (_settings_newgame.difficulty.diff_level != 3) {
-				_settings_newgame.difficulty.diff_level = 3;
+			if (_settings_newgame.difficulty.diff_level != SP_CUSTOM) {
+				_settings_newgame.difficulty.diff_level = SP_CUSTOM;
 				ShowErrorMessage(STR_WARNING_DIFFICULTY_TO_CUSTOM, INVALID_STRING_ID, WL_WARNING);
 			}
-		} else if (_settings_game.difficulty.diff_level != 3) {
-			IConsoleSetSetting("difficulty.diff_level", 3);
+		} else if (_settings_game.difficulty.diff_level != SP_CUSTOM) {
+			IConsoleSetSetting("difficulty.diff_level", SP_CUSTOM);
 		}
 	}
 

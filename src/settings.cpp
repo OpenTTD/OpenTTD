@@ -1032,7 +1032,7 @@ static bool InvalidateCompanyInfrastructureWindow(int32 p1)
  * R: area restructuring (0 = permissive, 2 = hostile)
  * S: the difficulty level
  */
-static const DifficultySettings _default_game_diff[3] = { /*
+static const DifficultySettings _default_game_diff[SP_END] = { /*
 	 A, C, D,      E, F, G, H, J, K, L, M, N, O, P, Q, R, S*/
 	{2, 2, 4, 300000, 2, 0, 2, 1, 2, 0, 1, 0, 0, 0, 0, 0, 0}, ///< easy
 	{4, 2, 3, 150000, 3, 1, 3, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1}, ///< medium
@@ -1041,12 +1041,11 @@ static const DifficultySettings _default_game_diff[3] = { /*
 
 void SetDifficultyLevel(int mode, DifficultySettings *gm_opt)
 {
-	assert(mode <= 3);
-
-	if (mode != 3) {
+	if (mode != SP_CUSTOM) {
+		assert(mode >= SP_BEGIN && mode < SP_END);
 		*gm_opt = _default_game_diff[mode];
 	} else {
-		gm_opt->diff_level = 3;
+		gm_opt->diff_level = SP_CUSTOM;
 	}
 }
 
@@ -1054,7 +1053,7 @@ void SetDifficultyLevel(int mode, DifficultySettings *gm_opt)
 static void ValidateSettings()
 {
 	/* Force the difficulty levels to correct values if they are invalid. */
-	if (_settings_newgame.difficulty.diff_level != 3) {
+	if (_settings_newgame.difficulty.diff_level != SP_CUSTOM) {
 		SetDifficultyLevel(_settings_newgame.difficulty.diff_level, &_settings_newgame.difficulty);
 	}
 
@@ -1077,13 +1076,13 @@ static bool DifficultyReset(int32 level)
 static bool DifficultyChange(int32)
 {
 	if (_game_mode == GM_MENU) {
-		if (_settings_newgame.difficulty.diff_level != 3) {
+		if (_settings_newgame.difficulty.diff_level != SP_CUSTOM) {
 			ShowErrorMessage(STR_WARNING_DIFFICULTY_TO_CUSTOM, INVALID_STRING_ID, WL_WARNING);
-			_settings_newgame.difficulty.diff_level = 3;
+			_settings_newgame.difficulty.diff_level = SP_CUSTOM;
 		}
 		SetWindowClassesDirty(WC_SELECT_GAME);
 	} else {
-		_settings_game.difficulty.diff_level = 3;
+		_settings_game.difficulty.diff_level = SP_CUSTOM;
 	}
 
 	/* If we are a network-client, update the difficult setting (if it is open).

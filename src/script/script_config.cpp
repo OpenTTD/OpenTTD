@@ -87,7 +87,7 @@ void ScriptConfig::ClearConfigList()
 int ScriptConfig::GetSetting(const char *name) const
 {
 	/* Return default values if the difficulty is not set to Custom */
-	if (GetGameSettings().difficulty.diff_level != 3) {
+	if (GetGameSettings().difficulty.diff_level != SP_CUSTOM) {
 		return this->info->GetSettingDefaultValue(name);
 	}
 

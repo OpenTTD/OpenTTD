@@ -14,6 +14,7 @@
 
 #include "strings_type.h"
 #include "company_type.h"
+#include "settings_type.h"
 
 struct HighScore {
 	char company[100];
@@ -21,7 +22,7 @@ struct HighScore {
 	uint16 score;   ///< do NOT change type, will break hs.dat
 };
 
-extern HighScore _highscore_table[5][5]; // 4 difficulty-settings (+ network); top 5
+extern HighScore _highscore_table[SP_HIGHSCORE_END][5];
 
 void SaveToHighScore();
 void LoadFromHighScore();

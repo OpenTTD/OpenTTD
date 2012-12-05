@@ -103,10 +103,10 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 			}
 		}
 
-		/* In a network game show the endscores of the custom difficulty 'network' which is the last one
-		 * as well as generate a TOP5 of that game, and not an all-time top5. */
+		/* In a network game show the endscores of the custom difficulty 'network' which is
+		 * a TOP5 of that game, and not an all-time TOP5. */
 		if (_networking) {
-			this->window_number = lengthof(_highscore_table) - 1;
+			this->window_number = SP_MULTIPLAYER;
 			this->rank = SaveHighScoreValueNetwork();
 		} else {
 			/* in single player _local company is always valid */

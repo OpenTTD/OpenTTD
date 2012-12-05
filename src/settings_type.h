@@ -20,6 +20,23 @@
 #include "zoom_type.h"
 #include "openttd.h"
 
+
+/** Settings profiles and highscore tables. */
+enum SettingsProfile {
+	SP_BEGIN = 0,
+	SP_EASY = SP_BEGIN,                       ///< Easy difficulty.
+	SP_MEDIUM,                                ///< Medium difficulty.
+	SP_HARD,                                  ///< Hard difficulty.
+
+	SP_END,                                   ///< End of setting profiles.
+
+	SP_CUSTOM = SP_END,                       ///< No profile, special "custom" highscore.
+	SP_SAVED_HIGHSCORE_END,                   ///< End of saved highscore tables.
+
+	SP_MULTIPLAYER = SP_SAVED_HIGHSCORE_END,  ///< Special "multiplayer" highscore. Not saved, always specific to the current game.
+	SP_HIGHSCORE_END,                         ///< End of highscore tables.
+};
+
 /** Available industry map generation densities. */
 enum IndustryDensity {
 	ID_FUND_ONLY, ///< The game does not build industries.
@@ -50,7 +67,7 @@ struct DifficultySettings {
 	byte   line_reverse_mode;                ///< reversing at stations or not
 	byte   disasters;                        ///< are disasters enabled
 	byte   town_council_tolerance;           ///< minimum required town ratings to be allowed to demolish stuff
-	byte   diff_level;                       ///< the difficulty level
+	byte   diff_level;                       ///< the difficulty level. @see SettingsProfile
 };
 
 /** Settings related to the GUI and other stuff that is not saved in the savegame. */

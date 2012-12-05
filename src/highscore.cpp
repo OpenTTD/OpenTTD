@@ -20,7 +20,7 @@
 #include "core/sort_func.hpp"
 #include "debug.h"
 
-HighScore _highscore_table[5][5]; // 4 difficulty-settings (+ network); top 5
+HighScore _highscore_table[SP_HIGHSCORE_END][5]; ///< various difficulty-settings; top 5
 char *_highscore_file; ///< The file to store the highscore data in.
 
 static const StringID _endgame_perf_titles[] = {
@@ -82,8 +82,10 @@ static int CDECL HighScoreSorter(const Company * const *a, const Company * const
 	return (*b)->old_economy[0].performance_history - (*a)->old_economy[0].performance_history;
 }
 
-/* Save the highscores in a network game when it has ended */
-#define LAST_HS_ITEM lengthof(_highscore_table) - 1
+/**
+ * Save the highscores in a network game when it has ended
+ * @return Position of the local company in the highscore list.
+ */
 int8 SaveHighScoreValueNetwork()
 {
 	const Company *c;
@@ -99,11 +101,11 @@ int8 SaveHighScoreValueNetwork()
 	{
 		uint i;
 
-		memset(_highscore_table[LAST_HS_ITEM], 0, sizeof(_highscore_table[0]));
+		memset(_highscore_table[SP_MULTIPLAYER], 0, sizeof(_highscore_table[SP_MULTIPLAYER]));
 
 		/* Copy over Top5 companies */
-		for (i = 0; i < lengthof(_highscore_table[LAST_HS_ITEM]) && i < count; i++) {
-			HighScore *hs = &_highscore_table[LAST_HS_ITEM][i];
+		for (i = 0; i < lengthof(_highscore_table[SP_MULTIPLAYER]) && i < count; i++) {
+			HighScore *hs = &_highscore_table[SP_MULTIPLAYER][i];
 
 			SetDParam(0, cl[i]->index);
 			SetDParam(1, cl[i]->index);
@@ -129,7 +131,7 @@ void SaveToHighScore()
 		uint i;
 		HighScore *hs;
 
-		for (i = 0; i < LAST_HS_ITEM; i++) { // don't save network highscores
+		for (i = 0; i < SP_SAVED_HIGHSCORE_END; i++) {
 			for (hs = _highscore_table[i]; hs != endof(_highscore_table[i]); hs++) {
 				/* First character is a command character, so strlen will fail on that */
 				byte length = min(sizeof(hs->company), StrEmpty(hs->company) ? 0 : (int)strlen(&hs->company[1]) + 1);
@@ -139,7 +141,7 @@ void SaveToHighScore()
 						fwrite(&hs->score, sizeof(hs->score), 1, fp) != 1 ||
 						fwrite("  ", 2, 1, fp)                       != 1) { // XXX - placeholder for hs->title, not saved anymore; compatibility
 					DEBUG(misc, 1, "Could not save highscore.");
-					i = LAST_HS_ITEM;
+					i = SP_SAVED_HIGHSCORE_END;
 					break;
 				}
 			}
@@ -159,7 +161,7 @@ void LoadFromHighScore()
 		uint i;
 		HighScore *hs;
 
-		for (i = 0; i < LAST_HS_ITEM; i++) { // don't load network highscores
+		for (i = 0; i < SP_SAVED_HIGHSCORE_END; i++) {
 			for (hs = _highscore_table[i]; hs != endof(_highscore_table[i]); hs++) {
 				byte length;
 				if (fread(&length, sizeof(length), 1, fp)       !=  1 ||
@@ -167,7 +169,7 @@ void LoadFromHighScore()
 						fread(&hs->score, sizeof(hs->score), 1, fp) !=  1 ||
 						fseek(fp, 2, SEEK_CUR)                      == -1) { // XXX - placeholder for hs->title, not saved anymore; compatibility
 					DEBUG(misc, 1, "Highscore corrupted");
-					i = LAST_HS_ITEM;
+					i = SP_SAVED_HIGHSCORE_END;
 					break;
 				}
 				*lastof(hs->company) = '\0';
