@@ -1332,6 +1332,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scroll map
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Off
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Map scrollwheel speed: {STRING2}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Control the sensitivity of mouse-wheel scrolling
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :On screen keyboard: {STRING2}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Select the method to open the on screen keyboard for entering text into editboxes only using the pointing device. This is meant for small devices without actual keyboard
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Disabled
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Double click
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Single click (when focussed)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Single click (immediately)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Right-click emulation: {STRING2}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Select the method to emulate right mouse-button clicks

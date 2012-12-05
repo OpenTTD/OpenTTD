@@ -30,6 +30,15 @@
 
 #include "table/strings.h"
 
+/** Method to open the OSK. */
+enum OskActivation {
+	OSKA_DISABLED,           ///< The OSK shall not be activated at all.
+	OSKA_DOUBLE_CLICK,       ///< Double click on the edit box opens OSK.
+	OSKA_SINGLE_CLICK,       ///< Single click after focus click opens OSK.
+	OSKA_IMMEDIATELY,        ///< Focussing click already opens OSK.
+};
+
+
 static const NWidgetPart _nested_land_info_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -835,8 +844,10 @@ void QueryString::ClickEditBox(Window *w, Point pt, int wid, int click_count, bo
 		return;
 	}
 
-	if (!focus_changed && w->window_class != WC_OSK) {
-		/* Open the OSK window if clicked on an edit box, while not changing focus */
+	if (w->window_class != WC_OSK && _settings_client.gui.osk_activation != OSKA_DISABLED &&
+		(!focus_changed || _settings_client.gui.osk_activation == OSKA_IMMEDIATELY) &&
+		(click_count == 2 || _settings_client.gui.osk_activation != OSKA_DOUBLE_CLICK)) {
+		/* Open the OSK window */
 		ShowOnScreenKeyboard(w, wid);
 	}
 }

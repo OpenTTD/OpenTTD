@@ -1728,6 +1728,7 @@ static SettingEntry _settings_ui_interaction[] = {
 	 *  Since it's also able to completely disable the scrollwheel will we display it on all platforms anyway */
 	SettingEntry("gui.scrollwheel_scrolling"),
 	SettingEntry("gui.scrollwheel_multiplier"),
+	SettingEntry("gui.osk_activation"),
 #ifdef __APPLE__
 	/* We might need to emulate a right mouse button on mac */
 	SettingEntry("gui.right_mouse_btn_emulation"),
