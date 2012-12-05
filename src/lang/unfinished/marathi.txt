@@ -561,11 +561,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :अन्य
 
 
 
-# Difficulty level window
-
-
-############ range for difficulty settings starts
-############ range for difficulty settings ends
 
 
 

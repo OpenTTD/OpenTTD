@@ -347,7 +347,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Gadael
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Dewisiadau Gêm
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Gosodiadau Anhawster
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Gosodiadau uwch
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Gosodiadau AI / sgript Gêm
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Gosodiadau NewGRF
@@ -1007,30 +1006,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Rhagolw
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Punt (£) yn eich arian cyfaddas
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Newid paramedrau arian cyfaddas
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Lefel Anhawster
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Dangos Siart Sgôr Uchaf
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Cadw
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Uchafswm nifer y cystadleuwyr: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Nifer trefi: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Nifer diwydiannau: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Uchafswm y benthyciad cychwynnol: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Graddfa log gychwynnol: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Côst rhedeg cerbydau: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Cyflymder adeiladu y cystadleuwyr: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Dibynadwyedd Cerbydau: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Lluosogydd Cymhorthdal: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Côst adeiladu: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Math tirwedd: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Nifer y llynnoedd /afonydd: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Economi: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Trenau'n gallu troi'n eu hôl: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Trychinebau: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Agwedd y cyngor tuag at addasu'r ardal: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Dim
 STR_FUNDING_ONLY                                                :Ariannu'n unig
@@ -1403,7 +1379,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Golygydd
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Amlchwaraewr
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Dewisiadau Gêm
-STR_INTRO_DIFFICULTY                                            :{BLACK}Anhawster
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ffurfweddu Addasiadau
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Gosodiadau NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Gwirio Cynnwys Ar-lein
@@ -1423,7 +1398,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Dewis ti
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Dewis tirwedd teganau
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Dangos dewisiadau'r gêm
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Dangos dewisiadau anhawster
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Ffurfweddu'r Addasiadau
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Dangos gosodiadau NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Gwirio am gynnwys newydd neu wedi'i ddiweddaru i'w lwytho i lawr

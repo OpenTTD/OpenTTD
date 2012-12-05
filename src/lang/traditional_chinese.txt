@@ -345,7 +345,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :離開
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :遊戲選項
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :難易設定
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :進階設定
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / 遊戲腳本設定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 設定
@@ -999,30 +998,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}預覽�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}將10000 Pound (£)換算成你的幣值
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}修改自訂幣值參數
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}難易度
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}顯示排行榜
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}儲存
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}競爭對手數目上限：{ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}市鎮數量：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}工業數量：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}最初貸款上限：{ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}起始利率：{ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}交通工具營運成本：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}競爭對手發展速度：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}交通工具故障率：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}補助倍率：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}興建費用：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}地形種類：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}海／湖比率：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}經濟波動：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}列車倒轉：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}災難：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}市議會對區域重建的態度：{ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :無
 STR_FUNDING_ONLY                                                :只挹注資金
@@ -1350,7 +1326,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}場景�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}多人遊戲
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}遊戲選項
-STR_INTRO_DIFFICULTY                                            :{BLACK}難易度
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}進階設定
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 設定
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}檢查線上內容
@@ -1370,7 +1345,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}選擇�
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}選擇「玩具樂園」場景風格
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}顯示遊戲選項
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}顯示難易選項
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}顯示進階設定
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}顯示 NewGRF 設定
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}檢查有無最新或可更新的內容可下載

@@ -347,7 +347,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Ieşire din joc
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opţiunile jocului
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Setări dificultate
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Setări avansate
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Setări IA / Script Joc
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Setări NewGRF
@@ -1007,30 +1006,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Previzu
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 de Lire sterline (£) în moneda proprie
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Schimbă un parametru al monedei proprii
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Nivel de dificultate
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Afişează clasamentul celor mai bune punctaje
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Salvează
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Numărul maxim de companii concurente: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Numărul de oraşe de pe hartă: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Numărul de obiective industriale: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Valoarea maximă a împrumutului iniţial: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Rata iniţială a dobânzii: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Costul de exploatare al vehiculelor: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Viteza de construcţie a concurenţilor: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Defecţiunile vehiculelor: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Multiplicatorul pentru veniturile subvenţionate: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Costul construcţiilor: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Tipul de teren: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Volumul de apă pe hartă: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Economie: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Trenurile întorc: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Dezastre: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Reacţia autorităţilor la modificarea mediului: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Nimic
 STR_FUNDING_ONLY                                                :Doar finanțare
@@ -1493,7 +1469,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor h
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multiplayer
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opţiuni
-STR_INTRO_DIFFICULTY                                            :{BLACK}Dificultate
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Setări avansate
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Setări NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Resurse online
@@ -1513,7 +1488,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Alege pe
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Alege peisajul 'ţara jucăriilor'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Afişează opţiunile jocului
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Afişează opţiunile pentru alegerea dificultăţii
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Afişează setările avansate
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afişează setările NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verifică dacă există resurse noi sau actualizate pentru descărcare

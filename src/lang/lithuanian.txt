@@ -543,7 +543,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Išeiti
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Žaidimo nustatymai
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Sunkumo lygio nustatymai
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Sudėtingesni nustatymai
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :DI / Žaidimo nustatymai
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Papild. grafikos nustatymai (NewGRF)
@@ -1204,30 +1203,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Perži�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 svarų (£) jūsų valiuta
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Keisti pasirinktos valiutos nustatymus
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Sunkumo lygis
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Rodyti rezultatų lentelę
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Išsaugoti
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimalus priešininkų skaičius: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Miestų kiekis žemėlapyje: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Gamyklų kiekis žemėlapyje: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maksimali paskola: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Pradinis palūkanų procentas: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Išlaidų transporto priem. eksploatacijai lygis: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Priešininkų konstrukcijų statymo greitis: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Trensporto priemonių gedimo lygis: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Daugiklis subsidijoms: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Statybų kainos: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Vietovės tipas: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Vandens telkinių gausa: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomika: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Traukiniai apsisukimas: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Nelaimės, katastrofos: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Miesto valdžios požiūris į aplinkos pertvarkymą: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Nėra
 STR_FUNDING_ONLY                                                :Tik finansavimas
@@ -1769,7 +1745,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenarij
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Žaidimas tinkle
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Žaidimo nustatymai
-STR_INTRO_DIFFICULTY                                            :{BLACK}Sunkumo lygis
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Sudėtingesni nustatymai
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Papild. grafikos nustatymai
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Patikrinti interneto turinį
@@ -1789,7 +1764,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Pasirink
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Pasirink žemėlapio tipą 'žaislų šalis'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Rodyti žaidimo nustatymus
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Rodyti sudėtingumo nustatymus
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Rodyti sudėtingesnius nustatymus
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Atvaizduoti NewGRF nustatymus
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Patikrinti dėl naujų ir atnaujintą turinį atsisiuntimui

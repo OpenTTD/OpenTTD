@@ -347,7 +347,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Keluar
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pengaturan permainan
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Pengaturan tingkat kesulitan
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Pengaturan lanjutan
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Pengaturan AI / Skrip Permainan
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Pengaturan NewGRF
@@ -1002,30 +1001,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Contoh:
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pound (£) pada mata uang Anda
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ubah sendiri parameter mata uang
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Tingkat kesulitan
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Tampilkan tabel skor tertinggi
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Simpan
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Jumlah pesaing maksimal: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Jumlah kota: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Jumlah industri: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Jumlah pinjaman maksimal: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Tingkat suku bunga awal: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Biaya operasional kendaraan: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Kecepatan para pesaing membangun: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Bus/truk mogok : {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Faktor kali angka subsidi: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Biaya pembangunan: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Jenis Dataran: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Area perairan: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomi: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Kereta berbalik arah: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Bencana alam: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Sikap pemkot saat restrukturisasi wilayah: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Tidak ada
 STR_FUNDING_ONLY                                                :Hanya pendanaan
@@ -1396,7 +1372,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor S
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Bermain bersama
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pengaturan Permainan
-STR_INTRO_DIFFICULTY                                            :{BLACK}Tingkat kesulitan
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Pengaturan lanjutan
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Pengaturan NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Cari konten
@@ -1416,7 +1391,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Pilih ga
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Pilih gaya lansekap 'Taman Bermain'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Tampilkan opsi permainan
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Tampilkan opsi tingkat kesulitan
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Tampilkan Pengaturan lanjutan
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Tampilkan setting NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Cari konten baru dan pembaruan untuk diunduh

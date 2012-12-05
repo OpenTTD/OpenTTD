@@ -345,7 +345,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Hætta
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Stillingar
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Erfiðleikastig
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Þróaðri stillingar
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF stillingar
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gegnsæisstillingar
@@ -987,30 +986,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Dæmi: 
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10.000 pund (£) í þessum gjaldmiðli
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Breyta sérvöldum gjaldeyri
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Erfiðleikastig
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Sýna topplistann
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Vista
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Hámarksfjöldi keppinauta: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Fjöldi bæja: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Fjöldi iðnaða: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Hámarkslán í upphafi: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Vextir í upphafi: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Rekstrarkostnaður farartækja: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Byggingarhraði keppinauta: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Bilanatíðni farartækja: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Margföldun ríkisstyrks: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Byggingarkostnaður: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Gerð landslags: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Magn sjávar/lækja: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Efnahagur: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Snúningur lestar: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Hamfarir: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Afstaða borgaryfirvalda til landmótunar: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Engin
 STR_NUM_VERY_LOW                                                :Mjög Lágt
@@ -1305,7 +1281,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Landslag
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Fjölspilun
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Stillingar
-STR_INTRO_DIFFICULTY                                            :{BLACK}Erfiðleikastig
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Þróaðar Stillingar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Stillingar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Ná í viðbætur af netinu
@@ -1324,7 +1299,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Eyðimer
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Leikfangalandslag
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Stilla OpenTTD
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Stilla erfiðleikastig
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Birta þróaðar stillingar
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Sýna NewGRF stillingar
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skoða viðbætur sem hægt er að ná í af netinu

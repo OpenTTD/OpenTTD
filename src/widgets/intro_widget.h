@@ -27,7 +27,7 @@ enum SelectGameIntroWidgets {
 	WID_SGI_TRANSLATION_SELECTION, ///< Translation selection.
 	WID_SGI_TRANSLATION,           ///< Translation.
 	WID_SGI_OPTIONS,               ///< Options button.
-	WID_SGI_DIFFICULTIES,          ///< Difficulties button.
+	WID_SGI_HIGHSCORE,             ///< Highscore button.
 	WID_SGI_SETTINGS_OPTIONS,      ///< Settings button.
 	WID_SGI_GRF_SETTINGS,          ///< NewGRF button.
 	WID_SGI_CONTENT_DOWNLOAD,      ///< Content Download button.

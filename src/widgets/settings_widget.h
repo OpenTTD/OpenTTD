@@ -37,15 +37,6 @@ enum GameOptionsWidgets {
 	WID_GO_BASE_MUSIC_DESCRIPTION = WID_GO_BASE_MUSIC_TEXTFILE + TFT_END, ///< Description of selected base music set.
 };
 
-/** Widgets of the #GameDifficultyWindow class. */
-enum GameDifficultyWidgets {
-	WID_GD_HIGHSCORE,     ///< Highscore button.
-	WID_GD_ACCEPT,        ///< Accept button.
-	WID_GD_CANCEL,        ///< Cancel button.
-
-	WID_GD_OPTIONS_START, ///< Start of the options.
-};
-
 /** Widgets of the #GameSettingsWindow class. */
 enum GameSettingsWidgets {
 	WID_GS_FILTER,             ///< Text filter.

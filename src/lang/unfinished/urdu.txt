@@ -348,7 +348,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :باہر نکل
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :کھیل کے اختیارات
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :مشکلات چنئے
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :اعلی اختیارات
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / کھیل کے اختیارات
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF اختیارات
@@ -1002,30 +1001,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}جائ�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}اپنی کرنسی میں 10000 پاونڈ (£)
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}اپنی مرضی کے کرنسی پیرامیٹر کو تبدیل کریں
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}مشکلات کا درجہ
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}زیادہ اسکور کا جدول دیکھیں
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}محفوظ کریں
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}مدمقابلوں کی زیادہ سے زیادہ تعداد: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}شہروں کی تعداد: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}صنعتوں کی تعداد: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}زیادہ سے زیادہ شروعاتی قرصہ: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}ابتدائی شرحِ سود: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}گاڑی چلانے کا خرچہ: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}مد مقابلوں کی تعمیر کی رفتار: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}گاڑی خراب ہوگئی: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}امداد کا ضارِب: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}تعمیر کا خرچہ: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}خطے کی قسم: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}سُمندر/جھیلوں کی تعداد: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}معیشت: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}ریل گاڑی اُلٹی چلنا: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}تباہیاں: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}سٹی کونسل کا علاقے میں تعمیرات (تبدیلیوں) کے بارے میں رویہ: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :کوئی نہیں
 STR_FUNDING_ONLY                                                :صرف فنڈنگ
@@ -1375,7 +1351,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}منظر
 STR_INTRO_MULTIPLAYER                                           :{BLACK}زیادہ کھلاڑی
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}کھیل کے اختیارات
-STR_INTRO_DIFFICULTY                                            :{BLACK}مشکل
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}ایڈوانسڈ سیٹنگ
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF چنئے
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}آن لائن مواد دیکھیں
@@ -1395,7 +1370,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}منظر
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}منظر کشی کا 'toyland' طریقہ چُنئیے
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}کھیل کے اختیارات دکھائیں
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}مشکلات کے اختیارات دیکھیئے
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}ایڈوانسڈ سیتنگز دیکھیئے
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF سیٹنگز دیکھیئے
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}نئے اور ترمیم شدہ مواد کو ڈاون لوڈ کرنے کے لئے چیک کریں

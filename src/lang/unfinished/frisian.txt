@@ -347,7 +347,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Ofslute
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spul opsje
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Swierrichheid ynstellings
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :wiidweidiche ynstellings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ynstellings
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Trochsjoch opsjes
@@ -995,30 +994,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Foarbyl
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pûn (£) yn dien muntienheid
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Feroarje opsje fan oanpaste faluta
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Swierichheid
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Lit hi-scorekaart sjen
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Bewarje
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimum oantal tsjinstanders: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Oantal stêden: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Oantal yndustrieën: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maksimale rinte: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Hichte rinte: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Ûnderhâldskosten fan reau: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Konstruksjegong fan tsjinstanders: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Reau hawwe pech: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Subsydzje fermannichfâldiger: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Konstruksjekosten: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Terreinsoart: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Oantal seeën/marren: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomy: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Draaie fan trein: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Rampen: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Hâlding fan de gemeente m.b.t. lânskiplike oanpassingen: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Gjin
 STR_FUNDING_ONLY                                                :Allinnich finansierje
@@ -1335,7 +1311,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Lânskip
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multispiler
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spul Opsjes
-STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilikhyd
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avansearre ynstellings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF ynstellings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sikje online ynhâld
@@ -1354,7 +1329,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Selektea
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selektear 'boartersguodlân' lânskip
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Lit spul opsjes sjen
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Lit swierrichheid opsjes sjen
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Lit avansearre ynstellings sjen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Lit NewGRF ynstellings sjen
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Strún ynternet ôf om nije ynhâld del te heljen

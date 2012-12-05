@@ -25,7 +25,6 @@ void InitializeGUI();
 
 /* settings_gui.cpp */
 void ShowGameOptions();
-void ShowGameDifficulty();
 void ShowGameSettings();
 
 /* train_gui.cpp */

@@ -41,6 +41,7 @@
 #include "newgrf_debug.h"
 #include "hotkeys.h"
 #include "engine_base.h"
+#include "highscore.h"
 
 #include "widgets/toolbar_widget.h"
 
@@ -243,7 +244,6 @@ static CallBackFunction ToolbarFastForwardClick(Window *w)
  */
 enum OptionMenuEntries {
 	OME_GAMEOPTIONS,
-	OME_DIFFICULTIES,
 	OME_SETTINGS,
 	OME_SCRIPT_SETTINGS,
 	OME_NEWGRFSETTINGS,
@@ -269,7 +269,6 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 {
 	DropDownList *list = new DropDownList();
 	list->push_back(new DropDownListStringItem(STR_SETTINGS_MENU_GAME_OPTIONS,             OME_GAMEOPTIONS, false));
-	list->push_back(new DropDownListStringItem(STR_SETTINGS_MENU_DIFFICULTY_SETTINGS,      OME_DIFFICULTIES, false));
 	list->push_back(new DropDownListStringItem(STR_SETTINGS_MENU_CONFIG_SETTINGS,          OME_SETTINGS, false));
 	/* Changes to the per-AI settings don't get send from the server to the clients. Clients get
 	 * the settings once they join but never update it. As such don't show the window at all
@@ -303,7 +302,6 @@ static CallBackFunction MenuClickSettings(int index)
 {
 	switch (index) {
 		case OME_GAMEOPTIONS:          ShowGameOptions();                               return CBF_NONE;
-		case OME_DIFFICULTIES:         ShowGameDifficulty();                            return CBF_NONE;
 		case OME_SETTINGS:             ShowGameSettings();                              return CBF_NONE;
 		case OME_SCRIPT_SETTINGS:      ShowAIConfigWindow();                            return CBF_NONE;
 		case OME_NEWGRFSETTINGS:       ShowNewGRFSettings(!_networking && _settings_client.gui.UserIsAllowedToChangeNewGRFs(), true, true, &_grfconfig); return CBF_NONE;
@@ -610,7 +608,7 @@ static CallBackFunction MenuClickGraphs(int index)
 
 static CallBackFunction ToolbarLeagueClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_LEAGUE, STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE, 2);
+	PopupMainToolbMenu(w, WID_TN_LEAGUE, STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE, _networking ? 2 : 3);
 	return CBF_NONE;
 }
 
@@ -625,6 +623,7 @@ static CallBackFunction MenuClickLeague(int index)
 	switch (index) {
 		case 0: ShowCompanyLeagueTable();      break;
 		case 1: ShowPerformanceRatingDetail(); break;
+		case 2: ShowHighscoreTable(); break;
 	}
 	return CBF_NONE;
 }

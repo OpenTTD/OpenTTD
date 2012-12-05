@@ -348,7 +348,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Verlaat
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spel opsies
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Moelikheid stellings
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Gevorderde stellings
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/Spel skript instellings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF stellings
@@ -1008,30 +1007,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Voorsko
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pond (£) in jou koers
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}verander gebruiklike koers parameter
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Moeite Vlak
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Vertoon hooglopendetellings kaart
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Bewaar
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimum no. mededingers: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}No. van dorpe: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}No. van nywerhede: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maksimum inisieele lening: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Inisieele rente koers: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Voertuig loopkoste: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Konstruksie spoed van mededinge: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Voertuig komplikasies: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Subsidie vermenigvuld: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}koste van konstruksie: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Landskap tipe: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Hoeveelheid see/panne: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomie: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Trein omkeer: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Rampe: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Stad raad se houding na area herstruktuuring: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Geen
 STR_FUNDING_ONLY                                                :Befondsing alleen
@@ -1516,7 +1492,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenario
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multispeler
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spel Opsies
-STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilikheid
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Gevorderde stellings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Stellings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kyk Na Aanlyn Inhoud
@@ -1536,7 +1511,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Kies 'su
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Kies 'speelgoedland' landskap styl
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Vertoon speletjie opsies
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Vertoon moelikheid stellings
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Toon gevorderde stellings
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Wys NewGRF stellings
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kyk vir nuwe of bygewerkde inhoud om af te laai

@@ -410,7 +410,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Kilépés
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Beállítások
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nehézségi beállítások
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Haladó beállítások
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :MI / Játékszkript beállítások
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF beállítások
@@ -1071,30 +1070,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Előné
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Font (£) a pénznemedben
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}A saját pénznem paramétereinek megváltoztatása
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Nehézségi szint
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Legjobb pontok
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Ment
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Ellenfelek száma legfeljebb: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Városok száma: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Gazdasági épületek száma: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Max. kezdeti kölcsön: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Éves kamatláb: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Jármű fenntartási költség: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Ellenfelek építkezési sebessége: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Járművek lerobbanása: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Támogatások szorzója: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Építkezés költsége: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Terep típusa: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Tenger/tavak mennyisége: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Gazdasági élet: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Vonatok fordítása: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Katasztrófák: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}A városi tanács hozzáállása a területrendezéshez: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Semmi
 STR_FUNDING_ONLY                                                :Csak finanszírozás
@@ -1627,7 +1603,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Pályasz
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Hálózati játék
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Beállítások
-STR_INTRO_DIFFICULTY                                            :{BLACK}Nehézség
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Haladó beállítások
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF beállítások
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Letölthető tartalmak
@@ -1647,7 +1622,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Szubtró
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Játékvilág táj kiválasztása
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}A játék beállításainak megjelenítése
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}A nehézségi beállítások megjelenítése
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Haladó beállítások megjelenítése
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF beállítások megjelenítése
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Új és frissített tartalmak megtekintése és letöltése

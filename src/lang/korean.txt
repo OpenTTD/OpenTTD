@@ -349,7 +349,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :게임 종료
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :게임 옵션
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :난이도 설정
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :고급 설정
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / 게임 스크립트 설정
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 설정
@@ -1010,30 +1009,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}미리�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 파운드(£)에 해당하는 사용자 화폐 단위입니다.
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}사용자 화폐 변수 변경
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}난이도
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}고득점 차트 보이기
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}저장
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}최대 경쟁자수: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}도시 수: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}산업시설 수: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}초기 최고 대출액: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}초기 이자율: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}차량 운행비용: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}경쟁자의 건설 속도: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}차량 고장: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}보조금 지급: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}건설 가격: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}지형 타입: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}물/호수의 양: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}경제: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}열차 회차: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}재앙: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}도시 지역 당국의 재건설/파괴에 대한 태도: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :없음
 STR_FUNDING_ONLY                                                :투자만
@@ -1575,7 +1551,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}시나�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}멀티 플레이
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}게임 설정
-STR_INTRO_DIFFICULTY                                            :{BLACK}난이도
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}고급 설정
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 설정
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라인 콘텐츠 다운로드
@@ -1595,7 +1570,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}아열�
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}장난감나라 선택
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}게임 설정 창을 보여줍니다
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}난이도 설정 창을 보여줍니다
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}고급 설정 표시
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF 세팅을 봅니다
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다.

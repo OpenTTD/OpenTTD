@@ -26,7 +26,6 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WN_GAME_OPTIONS_NEWGRF_STATE,              "WN_GAME_OPTIONS_NEWGRF_STATE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WN_GAME_OPTIONS_MESSAGE_OPTION,            "WN_GAME_OPTIONS_MESSAGE_OPTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WN_GAME_OPTIONS_GAME_OPTIONS,              "WN_GAME_OPTIONS_GAME_OPTIONS");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WN_GAME_OPTIONS_GAME_DIFFICULTY,           "WN_GAME_OPTIONS_GAME_DIFFICULTY");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WN_GAME_OPTIONS_GAME_SETTINGS,             "WN_GAME_OPTIONS_GAME_SETTINGS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WN_QUERY_STRING,                           "WN_QUERY_STRING");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WN_QUERY_STRING_SIGN,                      "WN_QUERY_STRING_SIGN");
@@ -579,7 +578,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_TRANSLATION_SELECTION,             "WID_SGI_TRANSLATION_SELECTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_TRANSLATION,                       "WID_SGI_TRANSLATION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_OPTIONS,                           "WID_SGI_OPTIONS");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_DIFFICULTIES,                      "WID_SGI_DIFFICULTIES");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_HIGHSCORE,                         "WID_SGI_HIGHSCORE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_SETTINGS_OPTIONS,                  "WID_SGI_SETTINGS_OPTIONS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_GRF_SETTINGS,                      "WID_SGI_GRF_SETTINGS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SGI_CONTENT_DOWNLOAD,                  "WID_SGI_CONTENT_DOWNLOAD");
@@ -990,10 +989,6 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_BASE_MUSIC_STATUS,                  "WID_GO_BASE_MUSIC_STATUS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_BASE_MUSIC_TEXTFILE,                "WID_GO_BASE_MUSIC_TEXTFILE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_BASE_MUSIC_DESCRIPTION,             "WID_GO_BASE_MUSIC_DESCRIPTION");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GD_HIGHSCORE,                          "WID_GD_HIGHSCORE");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GD_ACCEPT,                             "WID_GD_ACCEPT");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GD_CANCEL,                             "WID_GD_CANCEL");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GD_OPTIONS_START,                      "WID_GD_OPTIONS_START");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GS_FILTER,                             "WID_GS_FILTER");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GS_OPTIONSPANEL,                       "WID_GS_OPTIONSPANEL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GS_SCROLLBAR,                          "WID_GS_SCROLLBAR");

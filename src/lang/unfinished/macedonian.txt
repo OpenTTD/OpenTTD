@@ -347,7 +347,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Напушти
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :игра опции
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Ниво на тешкотија подесувања
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :напредни поставувања
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :АИ / игри поставувања
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :НовGRF подесувања
@@ -829,11 +828,6 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Секој ме
 
 
 
-# Difficulty level window
-
-
-############ range for difficulty settings starts
-############ range for difficulty settings ends
 
 STR_NUM_CUSTOM_NUMBER                                           :Прилагодено ({NUM})
 
@@ -920,7 +914,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Сцен
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Повеќе играчи
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Опции на Играта
-STR_INTRO_DIFFICULTY                                            :{BLACK}Тежина
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}АИ / Играта Подесувања
 
 

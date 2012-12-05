@@ -347,7 +347,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :خروج
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :تنظیمات بازی
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :تنظیمات سختی
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :تنظیمات پیشرفته
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :هوش مصنوعی / تنظیمات بازی
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :تنظیمات NewGRF
@@ -1005,30 +1004,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}پیش�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}۱۰۰۰۰ پوند (£) به واحد پول شما می شود
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}تغییر دلخواه پارامترهای واحد پول
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}سطح سختی
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}نمایش لیست بالاترین امتیاز
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}ذخیره
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}حد اکثر تعداد رقبا :{ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}تعداد شهر ها: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}تعداد کارخانه ها: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}حد اکثر وام اولیه: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}میزان سود نخست: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}هزینه نگهداری خودروها: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}سرعت ساخت رقیبان: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}خرابی های خودرو: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}مضرب یارانه: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}هزینه ساخت: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}پستی و بلندی ها: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}تعداد دریا/دریاچه ها: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}اقتصاد: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}تغییر جهت قطار: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}بلایا: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}نگرش شورای شهر نسبت به بازسازی منطقه: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :هیچکدام
 STR_FUNDING_ONLY                                                :فقط سرمایه گذاری
@@ -1378,7 +1354,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}ساخت
 STR_INTRO_MULTIPLAYER                                           :{BLACK}بازی چند نفره
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}تنضیمات بازی
-STR_INTRO_DIFFICULTY                                            :{BLACK}سختی
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}تنظیمات پیشرفته
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}تنظیمات NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}چک کردن محتوی آنلاین
@@ -1398,7 +1373,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}انتخ
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}انتخاب «سرزمین اسباب بازی‌ها» برای سبک بازی
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}نشان دادن تنظیمات بازی
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK} نشان دادن تنظیمات سختی
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}نمایش تنظیمات پیشرفته
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}نمایش تنظیمات NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}بررسی وجود مجموعه ها و به روز رسانی های جدید در اینترنت

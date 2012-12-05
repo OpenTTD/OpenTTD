@@ -348,7 +348,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Sulje
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pelin asetukset
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Vaikeusasetukset
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Lisäasetukset
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Tekoälyn/Peliskriptin asetukset
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-asetukset
@@ -1009,30 +1008,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Esikats
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10 000 puntaa (£) valuutassasi
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Vaihda oman valuutan parametria.
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Vaikeusaste
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Näytä pistetaulukko
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Tallenna
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Vastustajien enimmäismäärä: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Kaupunkien määrä: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Teollisuuden määrä: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Lainan enimmäismäärä alussa: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Korko alussa: {ORANGE}{COMMA}{NBSP}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Ajoneuvojen käyttökustannukset: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Vastustajien rakennusnopeus: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Ajoneuvojen hajoaminen: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Tukikerroin: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Rakentamisen kustannus: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Maaston tyyppi: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Meren/järvien määrä: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Talous: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Junien kääntyminen: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Onnettomuudet: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Kaupunginvaltuuston asenne alueen uudelleenjärjestelyyn: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Ei mitään
 STR_FUNDING_ONLY                                                :Vain rahoitetut
@@ -1574,7 +1550,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Skenaari
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Moninpeli
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pelin asetukset
-STR_INTRO_DIFFICULTY                                            :{BLACK}Vaikeusaste:
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Lisäasetukset
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-asetukset
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tarkista Online-sisältö
@@ -1594,7 +1569,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Valitse 
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Valitse 'lelumaan' maastotyyppi.
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Näytä peliasetukset.
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Näytä vaikeusasetukset.
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Näytä edistyneemmät asetukset
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näytä NewGRF-asetukset
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tarkista uutta ja päivitettyä sisältöä ladattavaksi

@@ -350,7 +350,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Iziet
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spēles opcijas
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Grūtības iestatījumi
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Papildu iestatījumi
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :MI/spēles skriptu iestatījumi
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF iestatījumi
@@ -1011,30 +1010,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Priekš
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 mārciņas (£) jūsu valūtā
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mainīt pielāgotās valūtas rādītāju
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Grūtības pakāpe
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Rādīt vērtējumu tabulu
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Saglabāt
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimālais sāncenšu daudzums: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Pilsētu daudzums: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Ražotņu daudzums: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maksimālais sākotnējais aizdevums: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Sākotnējā aizdevuma procentu likme: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Transportlīdzekļu kārtējās izmaksas: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Sāncenšu būvniecības ātrums: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Transportlīdzekļu lūšana: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Subsīdiju reizinātājs: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Būvniecības izmaksas: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Apvidus reljefs: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Jūru/ezeru daudzums: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomika: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Vilcieni var braukt uz pretējo pusi: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Katastrofas: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Pilsētu domju attieksme pret platību pārbūvi: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Nav
 STR_FUNDING_ONLY                                                :Tikai līdzekļu piešķiršana
@@ -1566,7 +1542,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenāri
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Vairākspēlētāju spēle
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spēles opcijas
-STR_INTRO_DIFFICULTY                                            :{BLACK}Grūtības pakāpe
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Papildu iestatījumi
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF iestatījumi
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Pārbaudīt tiešsaistes saturu
@@ -1586,7 +1561,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Izvēlē
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Izvēlēties 'rotaļlietu zemes' ainavas stilu
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Rādīt spēles opcijas
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Rādīt grūtības pakāpju opcijas
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Rādīt papildu iestatījumus
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Rādīt NewGRF iestatījumus
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pārbaudīt vai lejupielādei nav pieejams jauns un atjaunināts saturs

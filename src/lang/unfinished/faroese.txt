@@ -338,7 +338,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Gevst
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spæl møguleikar
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Sværheidsgrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Víðka innstilling
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NýggjGRF innstilling
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gjøgnumskygnis møguleikar
@@ -690,11 +689,6 @@ STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungarsk
 
 
 
-# Difficulty level window
-
-
-############ range for difficulty settings starts
-############ range for difficulty settings ends
 
 
 

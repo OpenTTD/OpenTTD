@@ -661,7 +661,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Выхад
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Наладкі гульні
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Наладкі складанасьцi
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Пашыраныя наладкі
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Наладкі ШІ / скрыпту
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Наладкі NewGRF
@@ -1322,30 +1321,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Узо�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 брыт. фунтаў (£) у вашай валюце
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Зьмяніць парамэтр уласнай валюты
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Узровень складанасьцi
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Паказаць табліцу рэкордаў
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Захаваць
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Максымальная колькасьць канкурэнтаў: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Колькасьць гарадоў: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Колькасьць прадпрыемстваў: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Максымальная пачатковая пазыка: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Пачатковая працэнтовая стаўка: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Выдаткі на ўтрыманьне транспарту: {ORANGE}{STRING.p}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Хуткасьць будаўніцтва канкурэнтаў: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Паломкі транспарту: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Множнік даходу ад субсыдыяў: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Кошт будаўніцтва: {ORANGE}{STRING.m}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Тып мясцовасьці: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Колькасьць азёр/мораў: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Эканоміка: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Разварот цягнікоў: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Катастрофы: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Стаўленьне гарадзкіх уладаў да зьмяненьня тэрыторыі: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Няма
 STR_FUNDING_ONLY                                                :Будаваць самому
@@ -1887,7 +1863,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Рэда
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Сеткавая гульня
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Наладкі гульні
-STR_INTRO_DIFFICULTY                                            :{BLACK}Складанасьць
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Пашыраныя наладкі
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Наладкi NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Праверыць анлайн-кантэнт
@@ -1907,7 +1882,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Выбр
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Выбраць цацачны сьвет
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Паказаць наладкі гульні
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Паказаць наладкі складанасьці
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Паказаць пашыраныя наладкі
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Паказаць наладкі NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Праверыць новы й абноўлены кантэнт, каб спампаваць

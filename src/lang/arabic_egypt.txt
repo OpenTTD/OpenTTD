@@ -347,7 +347,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :انهاء
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :خيارات اللعبة
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :خيارات الصعوبة
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :اعدادات متقدمة
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :الذكاء الصناعي/ اعدادات اللعبة
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :إعدادات جرافيك جديده
@@ -1001,30 +1000,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}عرض:
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK} 10000 جنية استرليني في عملتك
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}غير الخيارات الاختيارة
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}مستوى الصعوبة
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}عرض النتائج العليا
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}حفظ
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}العدد الاقصى للمتنافسين: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}عدد المدن: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}عدد المرافق الصناعية: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}اعلى حد للقرض المبدئي: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}نسبة الفائدة المبدئية: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}تكلفة تشغيل المركبات: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}سرعة البناء للمنافسين: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}تعطل المركبات: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}مضاعفة العروض: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}تكلفة البناء: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}نوع التضاريس: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}مقدار البحار/ البحيرات: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}الاقتصاد: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}عكس القطار: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}الكوارث: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}موقف البلدية من تغيير التضاريس{ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :بدون
 STR_FUNDING_ONLY                                                :التمويل فقط
@@ -1367,7 +1343,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}محرر
 STR_INTRO_MULTIPLAYER                                           :{BLACK}لعب جماعي
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}خيارات اللعبة
-STR_INTRO_DIFFICULTY                                            :{BLACK} مستوى الصعوبة
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}الاعدادات المتقدمة
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK} اعدادات NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK} ابحث عن المحتوى على الانتر نت
@@ -1386,7 +1361,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}اختي
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}اختيار نمط الألعاب
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}عرض خيارات اللعبة
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}عرض خيارات الصعوبة
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}عرض الاعدادات المتقدمة
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK} عرض اعدادات newGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK} ابحث عن محتوى جديد او تحديث

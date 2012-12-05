@@ -347,7 +347,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Avsluta
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinställningar
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Svårighetsgrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avancerade inställningar
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Inställningar för AI / spelskript
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Inställningar för NewGRF
@@ -1007,30 +1006,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Förhan
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pund (£) i din valuta
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ändra valutaparametrar
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Svårighetsgrad
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Visa highscore-lista
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Spara
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Max antal motståndare: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Antal städer: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Antal industrier: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maxstorlek på lån: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Initial ränta: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Löpande kostnader för fordon: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Bygghastighet för motståndare: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Motorstopp för fordon: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Subventionsmultiplikator: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Kostnad för konstruktion: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Typ av terräng: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Mängd sjöar/hav: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomi: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Tåg kan vända: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Katastrofer: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Stadens attityd mot områdesombyggnad: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Ingen
 STR_FUNDING_ONLY                                                :Endast finansiering
@@ -1569,7 +1545,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenario
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Flera spelare
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelinställningar
-STR_INTRO_DIFFICULTY                                            :{BLACK}Svårighetsgrad
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avancerade inställningar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-inställningar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kontrollera online-innehåll
@@ -1589,7 +1564,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Välj 's
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Välj 'leksaksland' som typ av landskap
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Visa spelinställningar
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Visa inställningar för svårighetsgrad
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Visa avancerade inställningar
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Visa inställningar för NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kolla efter nytt och nyuppdaterat innehåll för nedladdning

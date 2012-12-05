@@ -96,7 +96,6 @@ public:
 		WN_GAME_OPTIONS_NEWGRF_STATE                 = ::WN_GAME_OPTIONS_NEWGRF_STATE,                 ///< NewGRF settings.
 		WN_GAME_OPTIONS_MESSAGE_OPTION               = ::WN_GAME_OPTIONS_MESSAGE_OPTION,               ///< News settings.
 		WN_GAME_OPTIONS_GAME_OPTIONS                 = ::WN_GAME_OPTIONS_GAME_OPTIONS,                 ///< Game options.
-		WN_GAME_OPTIONS_GAME_DIFFICULTY              = ::WN_GAME_OPTIONS_GAME_DIFFICULTY,              ///< Game difficulty.
 		WN_GAME_OPTIONS_GAME_SETTINGS                = ::WN_GAME_OPTIONS_GAME_SETTINGS,                ///< Game settings.
 
 		WN_QUERY_STRING                              = ::WN_QUERY_STRING,                              ///< Query string.
@@ -682,7 +681,6 @@ public:
 		 *   - #WN_GAME_OPTIONS_NEWGRF_STATE = #NewGRFStateWidgets
 		 *   - #WN_GAME_OPTIONS_MESSAGE_OPTION = #MessageOptionWidgets
 		 *   - #WN_GAME_OPTIONS_GAME_OPTIONS = #GameOptionsWidgets
-		 *   - #WN_GAME_OPTIONS_GAME_DIFFICULTY = #GameDifficultyWidgets
 		 *   - #WN_GAME_OPTIONS_GAME_SETTINGS = #GameSettingsWidgets
 		 */
 		WC_GAME_OPTIONS                              = ::WC_GAME_OPTIONS,
@@ -1478,7 +1476,7 @@ public:
 		WID_SGI_TRANSLATION_SELECTION                = ::WID_SGI_TRANSLATION_SELECTION,                ///< Translation selection.
 		WID_SGI_TRANSLATION                          = ::WID_SGI_TRANSLATION,                          ///< Translation.
 		WID_SGI_OPTIONS                              = ::WID_SGI_OPTIONS,                              ///< Options button.
-		WID_SGI_DIFFICULTIES                         = ::WID_SGI_DIFFICULTIES,                         ///< Difficulties button.
+		WID_SGI_HIGHSCORE                            = ::WID_SGI_HIGHSCORE,                            ///< Highscore button.
 		WID_SGI_SETTINGS_OPTIONS                     = ::WID_SGI_SETTINGS_OPTIONS,                     ///< Settings button.
 		WID_SGI_GRF_SETTINGS                         = ::WID_SGI_GRF_SETTINGS,                         ///< NewGRF button.
 		WID_SGI_CONTENT_DOWNLOAD                     = ::WID_SGI_CONTENT_DOWNLOAD,                     ///< Content Download button.
@@ -2094,15 +2092,6 @@ public:
 		WID_GO_BASE_MUSIC_STATUS                     = ::WID_GO_BASE_MUSIC_STATUS,                     ///< Info about corrupted files etc.
 		WID_GO_BASE_MUSIC_TEXTFILE                   = ::WID_GO_BASE_MUSIC_TEXTFILE,                   ///< Open base music readme, changelog (+1) or license (+2).
 		WID_GO_BASE_MUSIC_DESCRIPTION                = ::WID_GO_BASE_MUSIC_DESCRIPTION,                ///< Description of selected base music set.
-	};
-
-	/** Widgets of the #GameDifficultyWindow class. */
-	enum GameDifficultyWidgets {
-		WID_GD_HIGHSCORE                             = ::WID_GD_HIGHSCORE,                             ///< Highscore button.
-		WID_GD_ACCEPT                                = ::WID_GD_ACCEPT,                                ///< Accept button.
-		WID_GD_CANCEL                                = ::WID_GD_CANCEL,                                ///< Cancel button.
-
-		WID_GD_OPTIONS_START                         = ::WID_GD_OPTIONS_START,                         ///< Start of the options.
 	};
 
 	/** Widgets of the #GameSettingsWindow class. */

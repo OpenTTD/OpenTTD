@@ -347,7 +347,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :ออก
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ตัวเลือกเกม
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :กำหนดระดับความยาก
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :กำหนดค่าขั้นสูง
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :ตั้งค่าสคริปต์ AI/Game
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :กำหนดค่า NewGRF
@@ -1002,30 +1001,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}แส�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 ปอนด์สเตอร์ลิง (£) ในสกุลเงินของคุณ
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}เปลี่ยนการกำหนดค่าตัวแปรสกุลเงิน
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}ระดับความยาก
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}แสดงแผนผังการจัดอันดับคะแนน
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}บันทึก
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}จำนวนผู้ร่วมแข่งขันสูงสุด: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}จำนวนของเมือง: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}จำนวนโรงงานอุตสาหกรรม: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}กู้ยืมขั้นต้นได้สูงสุด: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}อัตราดอกเบี้ยขั้นต้น: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}ค่าใช้จ่ายการเดินรถ: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}ความเร็วในการก่อสร้างของผู้ร่วมแข่งขัน: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}พาหนะเสียหาย: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}ตัวคูณเงินสนับสนุน: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}ราคาของการก่อสร้าง: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}ชนิดของภูมิประเทศ: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}ปริมาณของน้ำทะเล/ทะเลสาบ: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}สภาพเศรษฐกิจ: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}การกลับของขบวนรถไฟ: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}ภัยพิบัติ: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}ทัศนคติของสภาเมืองเกี่ยวกับการปรับโครงสร้างพื้นที่: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :ไม่มี
 STR_FUNDING_ONLY                                                :ระดมทุนเท่านั้น
@@ -1367,7 +1343,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}โป�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}เล่นหลายคน
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}ตัวเลือกเกม
-STR_INTRO_DIFFICULTY                                            :{BLACK}ความยาก
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}การตั้งค่าของความก้าวหน้า
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}การตั้งค่า NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}ตรวจสอบเนื้อหาออนไลน์
@@ -1387,7 +1362,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}เล�
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}เลือกสภาพภูมิประเทศ 'เมืองของเล่น'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}แสดงตัวเลือกเกม
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}แสดงตัวเลือกความยาก
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}แสดงการกำหนดค่าขั้นสูง
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}แสดงการกำหนดค่า NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}ตรวจสอบเนื้อหาใหม่และการปรับปรุงสำหรับดาวโหลด

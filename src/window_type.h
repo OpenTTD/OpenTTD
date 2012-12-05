@@ -19,7 +19,6 @@ enum WindowNumberEnum {
 	WN_GAME_OPTIONS_NEWGRF_STATE,    ///< NewGRF settings.
 	WN_GAME_OPTIONS_MESSAGE_OPTION,  ///< News settings.
 	WN_GAME_OPTIONS_GAME_OPTIONS,    ///< Game options.
-	WN_GAME_OPTIONS_GAME_DIFFICULTY, ///< Game difficulty.
 	WN_GAME_OPTIONS_GAME_SETTINGS,   ///< Game settings.
 
 	WN_QUERY_STRING = 0,  ///< Query string.
@@ -601,7 +600,6 @@ enum WindowClass {
 	 *   - #WN_GAME_OPTIONS_NEWGRF_STATE = #NewGRFStateWidgets
 	 *   - #WN_GAME_OPTIONS_MESSAGE_OPTION = #MessageOptionWidgets
 	 *   - #WN_GAME_OPTIONS_GAME_OPTIONS = #GameOptionsWidgets
-	 *   - #WN_GAME_OPTIONS_GAME_DIFFICULTY = #GameDifficultyWidgets
 	 *   - #WN_GAME_OPTIONS_GAME_SETTINGS = #GameSettingsWidgets
 	 */
 	WC_GAME_OPTIONS,

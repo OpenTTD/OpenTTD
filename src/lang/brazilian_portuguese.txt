@@ -348,7 +348,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Sair
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opções do jogo
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Definições de dificuldade
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Definições avançadas
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Configurações de IA /Script do jogo
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Definições do NewGRF
@@ -1008,30 +1007,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Previs�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Libras (£) na sua moeda
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Alterar o parâmetro de moeda personalizada
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :Nível de Dificuldade{WHITE}
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Exibir tabela de maiores pontuações
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Salvar
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Número máximo de concorrentes: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Quantidade de cidades: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Quantidade de indústrias: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Empréstimo máximo inicial: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Taxa de juros inicial: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Custos de manutenção dos veículos: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Velocidade de construção dos oponentes: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Quebras de veículos: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Multiplicador dos subsídios: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Custos de construção: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Tipo de terreno: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Quantidade de mar/lagos: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Economia: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Inverter trem: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Desastres: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Atitude das prefeituras sobre reestruturamentos: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Nenhum
 STR_FUNDING_ONLY                                                :Apenas financiamento
@@ -1573,7 +1549,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor d
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multi-jogador
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opções do Jogo
-STR_INTRO_DIFFICULTY                                            :{BLACK}Dificuldade
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Configurações avançadas
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configurar NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Checar conteúdo on-line
@@ -1593,7 +1568,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Selecion
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selecionar cenário do estilo 'toyland'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Exibir opções de jogo
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Exibir opções de dificuldade
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Exibe as configurações avançadas
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Exibir configs. dos NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Checar por conteúdo novo e atualizado para baixar

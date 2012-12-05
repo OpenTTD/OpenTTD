@@ -347,7 +347,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Thoát
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Cấu hình trò chơi
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Thiết lập độ khó
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Thiết lập nâng cao
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Thiết lập AI / Game script
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Thông số NewGRF
@@ -1007,30 +1006,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Xem tr�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pound (£) tính bằng tiền của bạn
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Sửa tham số của tiền tự chỉnh
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Cấp Độ Khó
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Hiện danh sách điểm cao
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Lưu
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Số đối thủ cạnh tranh tối đa: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Số thị trấn: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Số nhà máy: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Tiền vay tối đa ban đầu : {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Độ nổi tiếng ban đầu: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Giá vận hành phương tiện: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Tốc độ xây dựng của đối thủ: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Hư hỏng phương tiện: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Cấp số nhân trợ cấp: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Giá trả cho việc xây dựng: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Kiểu địa chất: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Độ bao phủ của biển/sông: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Nền kinh tế: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Quay tàu hỏa: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Thiên tai: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Quan điểm của hội đồng thành phố về cơ cấu lại khu vực: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Không Có
 STR_FUNDING_ONLY                                                :Chỉ Cấp Vốn
@@ -1523,7 +1499,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Biên T�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Chơi Trên Mạng
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Cấu Hình Trò Chơi
-STR_INTRO_DIFFICULTY                                            :{BLACK}Độ Khó
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Thiết Lập Nâng Cao
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Thiết Lập NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Các Nội Dung Trên Mạng
@@ -1543,7 +1518,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Chọn k
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Chọn kiểu quang cảnh 'đồ chơi'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Hiển thị cấu hình của trò chơi
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Hiện thỉ tùy chỉnh độ khó
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Hiển thị tùy chỉnh nâng cao
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Hiển thị tùy chỉnh NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kiểm tra những nội dung mới & cập nhật để tải về

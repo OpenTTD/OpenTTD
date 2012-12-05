@@ -521,14 +521,6 @@ STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суф�
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Малтанласа пӑхса тухни: {ORANGE}{CURRENCY_LONG}
 
-# Difficulty level window
-
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Упра
-
-############ range for difficulty settings starts
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Экономика: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Инкек: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Ҫук
 STR_NUM_CUSTOM                                                  :Харпӑр хӑй

@@ -348,7 +348,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Quitter
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Options du Jeu
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Niveau de difficulté
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Configuration avancée
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Configuration des scripts
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Paramètres NewGRF
@@ -1009,30 +1008,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prévis
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10{NBSP}000 livres (£) dans cette devise
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Changer les paramètres de la devise personnalisée
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Niveau de difficulté
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Afficher le tableau des scores
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Sauver
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Nombre maximal de concurrents{NBSP}: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Nombre de villes{NBSP}: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Nombre d'industries{NBSP}: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Emprunt initial maximum{NBSP}: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Taux d'intérêt initial{NBSP}: {ORANGE}{COMMA}{NBSP}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Coûts d'entretien{NBSP}: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Vitesse de développement des concurrents{NBSP}: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Pannes des véhicules{NBSP}: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Multiplicateur de subvention{NBSP}: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Coût des constructions{NBSP}: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Type de terrain{NBSP}: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Quantité de mer/lacs{NBSP}: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Économie{NBSP}: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Demi-tour des trains{NBSP}: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Catastrophes{NBSP}: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Attitude de la municipalité face au repaysagement{NBSP}: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Aucune
 STR_FUNDING_ONLY                                                :Financement uniquement
@@ -1574,7 +1550,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Éditeur
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Mode multijoueurs
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Options
-STR_INTRO_DIFFICULTY                                            :{BLACK}Difficulté
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Options avancées
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Paramètres NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Vérifier le contenu en ligne
@@ -1594,7 +1569,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Sélecti
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Sélectionner l'environnement «{NBSP}Monde{NBSP}des{NBSP}Jouets{NBSP}»
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Afficher les options du jeu
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Afficher les options de niveau de difficulté
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Afficher les options avancées
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afficher la configuration des NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Vérifier les contenus nouveaux ou mis à jour téléchargeables

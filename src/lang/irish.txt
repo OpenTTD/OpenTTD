@@ -347,7 +347,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Scoir
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Roghanna an chluiche
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Socruithe deacrachta
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Ardsocruithe
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Socruithe scripte AI/Cluiche
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Socruithe NewGRF
@@ -999,30 +998,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Réamha
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Punt (£) i d'airgeadra
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Athraigh paraiméadar d'airgeadra saincheaptha
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Leibhéal deacrachta
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Taispeáin cairt na scór is airde
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Sábháil
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Uaslíon na n-iomaitheoirí: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Líon na mbailte: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Líon na dtionscal: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Uas-iasacht tosaigh: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Ráta úis tosaigh: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Costais le feithiclí a rith: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Luas tógála na n-iomaitheoirí: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Cliseadh feithiclí: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Iolraitheoir na bhfordeontas: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Costas tógála: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Cineál tír-raoin: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Méid farraige/locha: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Geilleagar: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Aisiompú traenacha: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Tubaistí: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Dearcadh na comhairle cathrach i leith athstruchtúrú an cheantair: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Ceann ar bith
 STR_FUNDING_ONLY                                                :Maoiniú amháin
@@ -1340,7 +1316,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Eagarth�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Ilimreoirí
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Roghanna an Chluiche
-STR_INTRO_DIFFICULTY                                            :{BLACK}Deacracht
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ardsocruithe
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Socruithe NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Seiceáil Inneachar Ar Líne
@@ -1359,7 +1334,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Roghnaig
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Roghnaigh stíl tírdhreacha 'tír na mbréagán'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Taispeáin roghanna an chluiche
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Taispeáin roghanna deacrachta
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Taispeáin ardsocruithe
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Taispeáin socruithe NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Seiceáil le haghaidh inneachar nua agus nuashonruithe le híoslódáil

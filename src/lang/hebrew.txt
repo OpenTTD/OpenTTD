@@ -358,7 +358,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :יציאה
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :אפשרויות המשחק
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :הגדרות קושי
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :הגדרות מתקדמות
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :הגדרות GRF חדש
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :אפשרויות שקיפות
@@ -999,30 +998,7 @@ STR_CURRENCY_PREVIEW                                            :{ORANGE}{CURREN
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 ליש"ט (£) במטבע שלך
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}שנה פרמטר עבור מטבע מותאם אישית
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}דרגת קושי
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}הצג טבלת שיאים
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}שמירה
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{ORANGE}{COMMA}{LTBLUE} : מספר מתחרים מירבי
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{ORANGE}{STRING}{LTBLUE} : כמות העיירות
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{ORANGE}{STRING}{LTBLUE} : מספר התעשיות
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{ORANGE}{CURRENCY_LONG}{LTBLUE} : שיעור ההלוואה הראשונית
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{ORANGE}{COMMA}%{LTBLUE} : שיעור ריבית התחלתי
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{ORANGE}{STRING}{LTBLUE} : עלות הפעלת כלי תחבורה
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{ORANGE}{STRING}{LTBLUE} : מהירות הבנייה של המתחרים
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{ORANGE}{STRING}{LTBLUE} : תקלות רכבים
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}מכפיל סובסידיה: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{ORANGE}{STRING}{LTBLUE} :מחיר הבנייה
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{ORANGE}{STRING}{LTBLUE} : סוג הקרקע
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{ORANGE}{STRING}{LTBLUE} : כמות ימים/אגמים
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{ORANGE}{STRING}{LTBLUE} : כלכלה
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{ORANGE}{STRING}{LTBLUE} : היפוך כיוון תנועת רכבות
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{ORANGE}{STRING}{LTBLUE} : אסונות
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{ORANGE}{STRING}{LTBLUE} :יחס הרשויות המקומיות כלפי בנייה בשיטחן
-############ range for difficulty settings ends
 
 STR_NONE                                                        :ללא
 STR_NUM_VERY_LOW                                                :נמוך מאוד
@@ -1315,7 +1291,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}עורך
 STR_INTRO_MULTIPLAYER                                           :{BLACK}משחק מרובה שחקנים
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}אפשרויות
-STR_INTRO_DIFFICULTY                                            :{BLACK}
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}הגדרות מתקדמות
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}(NewGRF)הגדרות שדרוג גראפי
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK} בדוק תוכן מקוון
@@ -1334,7 +1309,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}אקלי
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}ארץ הצעצועים
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}הצג הגדרות משחק
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}הצג הגדרות קושי
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}הצג הגדרות מתקדמות
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}הצג הגדרות שדרוג גראפי
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK} חפש תוכן חדש/מעודכן להורדה

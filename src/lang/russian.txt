@@ -474,7 +474,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Выход
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Настройки игры
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Настройки сложности
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Расширенные настройки
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Настройки ИИ / скрипта
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Настройки NewGRF
@@ -1155,30 +1154,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Обр�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 англ. фунтов (£) в вашей валюте
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Изменить параметр валюты
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Уровень сложности
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Показать таблицу рекордов
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Сохранить
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Максимальное количество конкурентов: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Количество городов: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Количество предприятий: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Максимальная стартовая ссуда: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Начальная процентная ставка: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Затраты на содержание транспорта: {ORANGE}{STRING.p}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Скорость строительства конкурентов: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Интенсивность поломок транспорта: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Множитель дохода от субсидий: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Затраты на строительство: {ORANGE}{STRING.p}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Тип местности: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Количество морей и озёр: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Экономика: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Разворот поездов: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Катастрофы: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Отношение властей к изменению территорий: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Нет
 STR_FUNDING_ONLY                                                :Строить самому
@@ -1726,7 +1702,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Реда
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Сетевая игра
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Настройки игры
-STR_INTRO_DIFFICULTY                                            :{BLACK}Сложность
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Расширенные настройки
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Настройки NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Проверить онлайн-контент
@@ -1746,7 +1721,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Выбр
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Выбрать игрушечный мир
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Открыть настройки игры
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Настроить сложность игры
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Показать расширенные настройки
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показать настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Найти новый и обновлённый контент для загрузки

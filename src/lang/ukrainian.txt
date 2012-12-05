@@ -473,7 +473,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Вихід
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Налаштування гри
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Налаштування складності
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Розширені налаштування
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Налаштування AI / Ігрового скрипта
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Налаштування NewGRF
@@ -1134,30 +1133,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Від�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 фунтів (£) у вашій валюті
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Налаштування іншої грошової одиниці
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Рівень складності
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Показати таблицю рекордів
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Зберегти
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Кількість конкурентів: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Кількість міст: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Кількість підприємств: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Початкова позика: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Відсоткова ставка: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Транспортні витрати: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Швидкість будівництва конкурентів: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Вихід з ладу техніки: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Множник для субсидій: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Вартість будівництва: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Тип рельєфу: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Кількість морів/озер: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Економіка: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Поїзди розвертаються: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Стихійні лиха/катастрофи: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Відношення влади до перебудови території міста: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :нема
 STR_FUNDING_ONLY                                                :засновувати власноруч
@@ -1699,7 +1675,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Реда
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Мережева гра
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Налаштування гри
-STR_INTRO_DIFFICULTY                                            :{BLACK}Складність
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Розширені налаштування
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Налаштування NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Додатковий контент
@@ -1719,7 +1694,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Вибр
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Вибрати 'іграшковий' варіант
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Показати налаштування гри
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Показати налаштування складності
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Показати розширені налаштування
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показати настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Перевірити доступний для завантаження додатковий контент

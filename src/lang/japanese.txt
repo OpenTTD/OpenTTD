@@ -347,7 +347,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :OpenTTDを終�
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ゲームオプションの設定
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :難易度の設定
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :追加機能の設定
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AIとかスクリプトの設定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRFの設定
@@ -1002,30 +1001,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}プレ�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}お使いの通貨で£10,000（英ポンド）
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}カスタム通貨の設定を変更
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}難易度
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}ハイスコアを表示
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}保存
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}競争者数の上限：{ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}市町村数：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}産業数：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}初期の最大借入金：{ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}初期の金利：{ORANGE}{COMMA}％
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}車両の運転費：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}競争者の建設速度：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}乗り物の故障：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}助成金のレベル：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}建設の価値：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}地形の種類：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}海／湖の数量：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}経済の傾向：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}列車の反転：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}災害：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}町議会の地域の再構築に関わる姿勢：{ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :なし
 STR_FUNDING_ONLY                                                :出資のみ
@@ -1367,7 +1343,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}シナ�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}マルチプレイヤーゲーム
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}ゲームの基本設定
-STR_INTRO_DIFFICULTY                                            :{BLACK} 難易度
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}拡張設定(パッチ設定)
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRFの設定
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}オンラインの項目を確認
@@ -1386,7 +1361,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}亜熱�
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}玩具国を選択します
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}ゲームの設定を表示します
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}難易度の設定を表示します
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}パッチ･拡張設定を表示
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF の設定を表示
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}コンテンツの新規追加または更新のチェックとダウンロード

@@ -348,7 +348,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Quit
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Game options
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Difficulty settings
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Advanced settings
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/Game script settings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF settings
@@ -1009,30 +1008,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Preview
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pound (£) in your currency
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Change custom currency parameter
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Difficulty Level
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Show hi-score chart
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Save
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maximum no. competitors: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}No. of towns: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}No. of industries: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maximum initial loan: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Initial interest rate: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Vehicle running costs: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Construction speed of competitors: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Vehicle breakdowns: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Subsidy multiplier: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Cost of construction: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Terrain type: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Quantity of sea/lakes: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Economy: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Train reversing: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Disasters: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}City council's attitude towards area restructuring: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :None
 STR_FUNDING_ONLY                                                :Funding only
@@ -1574,7 +1550,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenario
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multiplayer
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Game Options
-STR_INTRO_DIFFICULTY                                            :{BLACK}Difficulty
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Advanced Settings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Settings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Check Online Content
@@ -1594,7 +1569,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Select '
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Select 'toyland' landscape style
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Display game options
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Display difficulty options
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Display advanced settings
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Display NewGRF settings
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check for new and updated content to download

@@ -349,7 +349,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Avslutt
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinstillingar
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Vanskegrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avanserte instillingar
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI- / Spelinnstillingar
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-innstillingar
@@ -1003,30 +1002,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eksempe
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 pund (£) i din valuta
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Byt eigendefinert valutaparameter
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Vanskegrad
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Syne rekordlista
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Lagre
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maks. antal konkurrentar: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Antal byar: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Antal industriar: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maks. startlån: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Startrente: {ORANGE}{COMMA}{NBSP}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Driftskostnader for køyretøy: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Konstruksjonshastigheit hos konkurrentar: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Køyretøyhavari: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Subisidiemultiplikator: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Konstruksjonskostnader: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Terrengtype: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Mengd sjø/innsjøar: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Økonomi: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Togreversering: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Katastrofar: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Bystyrets haldning til ombyggjing av felt: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Ingen
 STR_FUNDING_ONLY                                                :Kun finansiering
@@ -1371,7 +1347,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenario
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Fleirspelar
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelinnstillingar
-STR_INTRO_DIFFICULTY                                            :{BLACK}Vanskegrad
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avanserte innstillingar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-innstillingar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sjå etter innhald på nett
@@ -1391,7 +1366,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Vel subt
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vel leiketøyland-miljø
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Syne spelinstillingar
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Syne vanskegrad-instillingar
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Syne avanserte innstillingar
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Syne NewGRF-instillingar
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Sjå etter nytt og oppdatert innhald som kan lastas ned

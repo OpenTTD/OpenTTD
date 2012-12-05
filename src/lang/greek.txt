@@ -410,7 +410,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Έξοδος
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Επιλογές παιχνιδιού
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Ρυθμίσεις δυσκολίας
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Προχωρημένες ρυθμίσεις
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Ρυθμίσεις ΑΙ και δέσμης ενεργειών παιχνιδιού
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ρυθμίσεις NewGRF
@@ -1101,30 +1100,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Προ�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 λίρες (£) στο νόμισμά σας
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Αλλαγή παραμέτρων προσαρμοσμένου νομίσματος
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Βαθμός Δυσκολίας
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Εμφάνιση γραφήματος με τις καλύτερες βαθμολογίες
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Αποθήκευση
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Μέγιστος αρ. ανταγωνιστών: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Αρ. πόλεων: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Αρ. βιομηχανιών: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Μέγιστο αρχικό δάνειο: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Αρχικό επιτόκιο: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Λειτουργικά έξοδα οχημάτων: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Ταχύτητα κατασκευής ανταγωνιστών: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Βλάβες οχημάτων: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Πολλαπλασιαστής χρηματοδότησης: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Κόστος κατασκευής: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Τύπος εδάφους: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Ποσότητα θάλασσας/λιμνών: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Οικονομία: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Περιστροφή τρένων: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Καταστροφές: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Θέση δημοτικού συμβουλίου σχετικά με την αναδόμηση της περιοχής: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Κανένα
 STR_FUNDING_ONLY                                                :Χρηματοδότηση μονο
@@ -1663,7 +1639,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Επεξ
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Παιχνίδι Πολλών Παικτών
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Επιλογές Παιχνιδιού
-STR_INTRO_DIFFICULTY                                            :{G=f}{BLACK}Δυσκολία
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Προηγμένες Ρυθμίσεις
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ρυθμίσεις NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Έλεγχος Online περιεχομένου
@@ -1683,7 +1658,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Επιλ
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Επιλογή 'παιχνιδούπολης' στυλ τοπίου
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Εμφάνιση επιλογών παιχνιδιού
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Εμφάνιση επιλογών δυσκολίας
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Εμφάνιση προηγμένων ρυθμίσεων
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Εμφάνιση ρυθμίσεων NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Έλεγχος για νέο και ανανεωμένο περιεχόμενο για κατέβασμα

@@ -411,7 +411,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Koniec
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Nastavenia hry
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nastavenie obtiažnosti
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Rozšírené nastavenia
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Umelá inteligencia / Nastavenia hry
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Nastavenie NewGRF
@@ -1075,30 +1074,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Nahlad:
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 libier (£) vo vašej mene
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmeniť parametre vlastnej meny
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Úroveň obtiažnosti
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Zobraziť tabuľku najlepších
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Ulozit
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maximálny počet konkurentov: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Počet miest: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Počet priemyslu: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maximálny prvotný úver: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Počiatočný úrok: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Nákladnosť prevádzky vozidiel: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Rýchlosť konkurencie: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Poruchy vozidiel: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Násobok dotácií: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Nákladnosť výstavby: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Typ terénu: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Rozloha vodnej plochy: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomika: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Otáčanie vlakov: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Havárie: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Postoj miestnej správy k stavebným úpravám: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Žiadny
 STR_FUNDING_ONLY                                                :Iba financovanie
@@ -1623,7 +1599,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor s
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Viacero hráčov
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Nastavenia hry
-STR_INTRO_DIFFICULTY                                            :{BLACK}Obtiažnosť
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Rozšírené nastavenia
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Nastavenia NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Skontrolovať online obsah
@@ -1643,7 +1618,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Vybrať 
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vybrať krajinu hračiek
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Zobraziť nastavenia hry
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Zobraziť nastavenia obtiažnosti
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Zobraziť rozšírené nastavenia
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Zobraziť NewGRF nastavenia
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skontrolovať nový a aktualizovaný obsah pre stiahnutie

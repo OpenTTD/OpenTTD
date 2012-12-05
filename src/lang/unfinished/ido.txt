@@ -489,13 +489,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altra
 
 
 
-# Difficulty level window
-
-
-############ range for difficulty settings starts
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomio: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Dizastri: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NUM_LOW                                                     :Basa
 STR_NUM_NORMAL                                                  :Normala

@@ -348,7 +348,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Oyundan Çık
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Seçenekler
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Zorluk Ayarları
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Gelişmiş ayarlar
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :YZ / Oyun ayarları
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ayarları
@@ -1008,30 +1007,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Önizle
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Sterlin'in (£) para biriminizdeki karşılığı
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Özel para birimini değiştir
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Zorluk seviyesi
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Skor tablosunu göster
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Kaydet
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}En fazla rakip: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Şehirler: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Sanayi: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}En fazla kredi: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Başlangıç faizi: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Bakım ücretleri: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Rakip inşa hızı: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Araç bozulmaları: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Teşvik çarpanı: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}İnşa fiyatları: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Yeryüzü tipi: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Deniz/göl miktarı: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomi: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Tren geri dönüşü: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Felaketler: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Belediyenin töleransi: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Hiç
 STR_FUNDING_ONLY                                                :Yalnızca yatırım
@@ -1383,7 +1359,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Senaryo 
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Çok Oyunculu
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Seçenekler
-STR_INTRO_DIFFICULTY                                            :{BLACK}Zorluk
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Gelişmiş Ayarlar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Ayarları
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Çevrimiçi İçeriği Kontrol Et
@@ -1403,7 +1378,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}'tropik'
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}'oyuncak' yer stilini seç
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Seçenekleri göster
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Zorluk ayarlarını göster
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Gelişmiş ayarları görüntüle
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF ayarlarını göster
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}İndirilecek yeni ve güncellenmiş içeriği kontrol et

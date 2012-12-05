@@ -348,7 +348,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Afsluiten
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelopties
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Moeilijkheidsgraad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Geavanceerde instellingen
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/Game script instellingen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF instellingen
@@ -1009,30 +1008,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Voorbee
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pound (£) in jouw munteenheid
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Verander optie van aangepaste valuta
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Moeilijkheidsgraad
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Bekijk topscorelijst
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Opslaan
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maximaal aantal tegenstanders: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Aantal steden: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Aantal industrieën: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maximale startlening: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Startrente: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Bedrijfskosten van voertuigen: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Bouwsnelheid van tegenstanders: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Voertuigdefecten: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Vermenigvuldigingsfactor subsidies: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Bouwkosten: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Terreinsoort: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Hoeveelheid zee/meren: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Economie: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Treinen draaien om: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Rampen: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Houding van gemeente m.b.t. landschapsaanpassingen: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Geen
 STR_FUNDING_ONLY                                                :Alleen financieren
@@ -1574,7 +1550,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenario
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multiplayer
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelopties
-STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilijkheidsgraad
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Geavanceerde instellingen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-instellingen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online inhoud zoeken
@@ -1594,7 +1569,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Kies sub
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Kies speelgoedlandschap
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Toon spelopties
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Toon moeilijkheidsgraad
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Toon geavanceerde instellingen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Toon NewGRF-instellingen
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Zoeken naar nieuwe en aangepaste inhoud om te downloaden

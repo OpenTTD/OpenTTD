@@ -348,7 +348,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Irten
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Jokoaren aukerak
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Zailtasun ezarpenak
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Ezarpen aurreratuak
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :IA/Jokoaren scriptaren ezaugarriak
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ezarpenak
@@ -1009,30 +1008,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Aurreik
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 libra (£) zure dibisan
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Dibisa pertsonalaren ezaugarriak aldatu
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Zailtasun maila
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Puntuazio altuenen taula erakutsi
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Gorde
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Konpetitzaile kopuru maximoa: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Hiri kopurua: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Industri kopurua: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Hasteko mailegu maximoa: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Hasteko interes kopurua: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Ibilgailuen mantenimendu kostua: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Lehiakideen eraikuntza abiadura: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Ibilgailuen matxura: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Subentzioen biderkatzailea: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Eraiketzeko kostua: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Lursail mota: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Itsaso/laku kopurua: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomia: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Trenei buelta ematea: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Desastreak: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Udaletxearen jarrera udala aldatu nahi duzunean: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Ezer ez
 STR_FUNDING_ONLY                                                :Finantzazioa bakarrik
@@ -1574,7 +1550,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Eszenari
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijokoa
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Joko Ezarpenak
-STR_INTRO_DIFFICULTY                                            :{BLACK}Zailtasuna
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ezarpen Aurreratuak
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-ren Ezarpenak
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Edukiak Online Kontsultatu
@@ -1594,7 +1569,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Aukeratu
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Aukeratu 'Jostailu mundua' paisai gisa
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Jokoaren aukerak erakutsi
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Zailtasun aukerak erakutsi
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Ezarpen aurreratuak erakutsi
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF ezarpenak erakutsi
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Bilatu eduki berria eta eguneratua deskargatzeko

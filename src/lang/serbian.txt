@@ -535,7 +535,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Izađi
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcije
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Podešavanje težine
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Detaljna podešavanja
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Podešavanja VI/Skripte partije
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF podešavanja
@@ -1197,30 +1196,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Primer:
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 funti (£) u vašoj moneti
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Promena parametara sopstvene monete
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Nivo težine
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Prikaži igrače upisane u listu najboljih
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Sačuvaj
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Najveći broj suparnika: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Broj naselja: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Broj fabrika: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Najveća početna pozajmica: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Početna interesna kamata: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Troškovi održavanja vozila: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Brzina gradnje suparnika: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Kvarovi vozila: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Množilac premije kod subvencija: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Troškovi gradnje: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Vrsta terena: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Količina mora/jezera: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomija: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Promena smera vozova: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Katastrofe: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Stav vlasti naselja prema radovima na njihovoj teritoriji: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Nijedan
 STR_FUNDING_ONLY                                                :Samo finansiranje
@@ -1564,7 +1540,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor S
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Partija preko Mreže
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcije
-STR_INTRO_DIFFICULTY                                            :{BLACK}Težina igre:
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Napredna Podešavanja
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Podešavanja
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Spisak Dodataka na Mreži
@@ -1584,7 +1559,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Izbor su
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Izbor 'zemlje igračaka'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Prikazuje opcije igre
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Prikazuje opcije težine igre
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Prikazuje prozor sa detaljnim podešavanjima
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikazuje NewGRF podešavanja
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pregled novih i ažureiranih dodatka za preuzimanje

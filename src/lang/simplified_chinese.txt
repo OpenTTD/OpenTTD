@@ -347,7 +347,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :退出
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :游戏选项
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :难度设定
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :高级设置
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / 脚本 设定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 设置
@@ -1001,30 +1000,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}预览�
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 英磅(£) 兑换自定义货币的数量
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}改变当前的货币参数
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}难度设定
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}查看高分榜
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}保存
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}最大竞争对手个数：{ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}城镇数量：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}工业数量：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}初始贷款额度：{ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}初始贷款利率：{ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}车辆运行费用：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}竞争对手建设速度：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}车辆故障：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}财政援助项目倍率：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}建设费用：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}地形：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}海面/湖面面积：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}经济：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}列车调头：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}灾难：{ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}市政厅对辖区内建设的态度：{ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :没有
 STR_FUNDING_ONLY                                                :不生成
@@ -1366,7 +1342,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}场景�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}联机游戏
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}游戏选项
-STR_INTRO_DIFFICULTY                                            :{BLACK}难度
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}高级设置
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 设置
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}在线查找扩展包
@@ -1386,7 +1361,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}选择 '
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}选择 '玩具' 景观风格
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}显示游戏选项
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}显示难度选项
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}显示高级设置
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}显示GRF设定
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}连接服务器并查找扩展包

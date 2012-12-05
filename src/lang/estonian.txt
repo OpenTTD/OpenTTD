@@ -404,7 +404,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Välju
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Mängu valikud
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Raskusastme seadistused
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Täpsemad seaded
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Tehismõistuse / Mängu skriptide seaded
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF seadistused
@@ -1064,30 +1063,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eelvaad
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 naela (£) sinu valuutas
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Muuda personaalse valuuta parameetreid
 
-# Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Raskusaste
-
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Näita mängijate edetabelit
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Salvesta
-
-############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Vastaste piirmäär: {ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Linnade sagedus: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Tööstuste arv: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Suurim alustuslaen: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Intress alguses: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Sõidukite käituskulud: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Konkurentide ehitustempo: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Sõidukirikked: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Toetuse suurus: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Ehitushinnad: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Maastiku tüüp: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Merede/järvede kogus: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Majandus: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Rongide ümberpööramine: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Katastroofid: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Linnanõukogu suhtumine maastikukujundusse: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_NONE                                                        :Pole
 STR_FUNDING_ONLY                                                :Ainult rahastamine
@@ -1487,7 +1463,6 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Stsenaar
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Võrgumäng
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Mängu valikud
-STR_INTRO_DIFFICULTY                                            :{BLACK}Raskusaste
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Täpsemad seaded
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF seadistused
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Internetisisu kontrollimine
@@ -1507,7 +1482,6 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Vali 'l�
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vali 'mänguasjamaa' maastik
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Kuva mängu valikuid
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Kuva raskusastmete valikuid
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Näidata täpsemaid seadeid
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näita NewGRF-seadeid
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Otsi allalaadimiseks uut ja uuendatud sisu
