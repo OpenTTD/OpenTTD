@@ -1845,6 +1845,7 @@ static SettingEntry _settings_economy[] = {
 static SettingsPage _settings_economy_page = {_settings_economy, lengthof(_settings_economy)};
 
 static SettingEntry _settings_ai_npc[] = {
+	SettingEntry("script.settings_profile"),
 	SettingEntry("ai.ai_in_multiplayer"),
 	SettingEntry("ai.ai_disable_veh_train"),
 	SettingEntry("ai.ai_disable_veh_roadveh"),

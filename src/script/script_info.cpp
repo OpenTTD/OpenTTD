@@ -293,7 +293,7 @@ int ScriptInfo::GetSettingDefaultValue(const char *name) const
 	for (ScriptConfigItemList::const_iterator it = this->config_list.begin(); it != this->config_list.end(); it++) {
 		if (strcmp((*it).name, name) != 0) continue;
 		/* The default value depends on the difficulty level */
-		switch (GetGameSettings().difficulty.diff_level) {
+		switch (GetGameSettings().script.settings_profile) {
 			case SP_EASY:   return (*it).easy_value;
 			case SP_MEDIUM: return (*it).medium_value;
 			case SP_HARD:   return (*it).hard_value;

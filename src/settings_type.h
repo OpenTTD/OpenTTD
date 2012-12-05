@@ -288,6 +288,7 @@ struct AISettings {
 
 /** Settings related to scripts. */
 struct ScriptSettings {
+	uint8  settings_profile;                 ///< difficulty profile to set initial settings of scripts, esp. random AIs
 	uint32 script_max_opcode_till_suspend;   ///< max opcode calls till scripts will suspend
 };
 
