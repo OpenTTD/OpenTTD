@@ -859,10 +859,7 @@ public:
 			/* skip deprecated difficulty options */
 			if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 			int32 value = (int32)ReadValue(GetVariableAddress(&this->opt_mod_temp, &sd->save), sd->save.conv);
-			bool disable = (sd->desc.flags & SGF_NEWGAME_ONLY) &&
-					(_game_mode == GM_NORMAL ||
-					(_game_mode == GM_EDITOR && (sd->desc.flags & SGF_SCENEDIT_TOO) == 0));
-
+			bool disable = !sd->IsEditable();
 			this->SetWidgetDisabledState(WID_GD_OPTIONS_START + i * 3 + 0, disable || sdb->min == value);
 			this->SetWidgetDisabledState(WID_GD_OPTIONS_START + i * 3 + 1, disable || sdb->max == (uint32)value);
 		}
@@ -1517,7 +1514,6 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 	const SettingDesc *sd = this->d.entry.setting;
 	const SettingDescBase *sdb = &sd->desc;
 	const void *var = ResolveVariableAddress(settings_ptr, sd);
-	bool editable = true;
 
 	bool rtl = _current_text_dir == TD_RTL;
 	uint buttons_left = rtl ? right + 1 - SETTING_BUTTON_WIDTH : left;
@@ -1526,9 +1522,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 	uint button_y = y + (SETTING_HEIGHT - SETTING_BUTTON_HEIGHT) / 2;
 
 	/* We do not allow changes of some items when we are a client in a networkgame */
-	if (!(sd->save.conv & SLF_NO_NETWORK_SYNC) && _networking && !_network_server && !(sdb->flags & SGF_PER_COMPANY)) editable = false;
-	if ((sdb->flags & SGF_NETWORK_ONLY) && !_networking) editable = false;
-	if ((sdb->flags & SGF_NO_NETWORK) && _networking) editable = false;
+	bool editable = sd->IsEditable();
 
 	SetDParam(0, highlight ? STR_ORANGE_STRING1_WHITE : STR_ORANGE_STRING1_LTBLUE);
 	int32 value = (int32)ReadValue(var, sd->save.conv);
@@ -2177,8 +2171,7 @@ struct GameSettingsWindow : Window {
 		const SettingDesc *sd = pe->d.entry.setting;
 
 		/* return if action is only active in network, or only settable by server */
-		if ((!(sd->save.conv & SLF_NO_NETWORK_SYNC) && _networking && !_network_server && !(sd->desc.flags & SGF_PER_COMPANY)) ||
-				((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) || ((sd->desc.flags & SGF_NO_NETWORK) && _networking)) {
+		if (!sd->IsEditable()) {
 			this->SetDisplayedHelpText(pe);
 			return;
 		}

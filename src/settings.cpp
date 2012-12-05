@@ -732,6 +732,22 @@ static void IniSaveSettingList(IniFile *ini, const char *grpname, StringList *li
 	}
 }
 
+/**
+ * Check whether the setting is editable in the current gamemode.
+ * @param do_command true if this is about checking a command from the server.
+ * @return true if editable.
+ */
+bool SettingDesc::IsEditable(bool do_command) const
+{
+	if (!do_command && !(this->save.conv & SLF_NO_NETWORK_SYNC) && _networking && !_network_server && !(this->desc.flags & SGF_PER_COMPANY)) return false;
+	if ((this->desc.flags & SGF_NETWORK_ONLY) && !_networking && _game_mode != GM_MENU) return false;
+	if ((this->desc.flags & SGF_NO_NETWORK) && _networking) return false;
+	if ((this->desc.flags & SGF_NEWGAME_ONLY) &&
+			(_game_mode == GM_NORMAL ||
+			(_game_mode == GM_EDITOR && !(this->desc.flags & SGF_SCENEDIT_TOO)))) return false;
+	return true;
+}
+
 /* Begin - Callback Functions for the various settings. */
 
 /** Reposition the main toolbar as the setting changed. */
@@ -1782,13 +1798,7 @@ CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if (sd == NULL) return CMD_ERROR;
 	if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) return CMD_ERROR;
 
-	if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking && _game_mode != GM_MENU) return CMD_ERROR;
-	if ((sd->desc.flags & SGF_NO_NETWORK) && _networking) return CMD_ERROR;
-	if ((sd->desc.flags & SGF_NEWGAME_ONLY) &&
-			(_game_mode == GM_NORMAL ||
-			(_game_mode == GM_EDITOR && (sd->desc.flags & SGF_SCENEDIT_TOO) == 0))) {
-		return CMD_ERROR;
-	}
+	if (!sd->IsEditable(true)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		void *var = GetVariableAddress(&GetGameSettings(), &sd->save);

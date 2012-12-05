@@ -101,6 +101,8 @@ struct SettingDescBase {
 struct SettingDesc {
 	SettingDescBase desc;   ///< Settings structure (going to configuration file)
 	SaveLoad save;          ///< Internal structure (going to savegame, parts to config)
+
+	bool IsEditable(bool do_command = false) const;
 };
 
 /* NOTE: The only difference between SettingDesc and SettingDescGlob is
