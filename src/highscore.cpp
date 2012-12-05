@@ -52,7 +52,7 @@ StringID EndGameGetPerformanceTitleFromValue(uint value)
 /** Save the highscore for the company */
 int8 SaveHighScoreValue(const Company *c)
 {
-	HighScore *hs = _highscore_table[_settings_game.difficulty.diff_level];
+	HighScore *hs = _highscore_table[SP_CUSTOM];
 	uint i;
 	uint16 score = c->old_economy[0].performance_history;
 

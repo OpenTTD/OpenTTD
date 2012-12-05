@@ -641,7 +641,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Cliquer 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Cliquer sur une piste pour la retirer du programme courant (Personnalisé 1 ou Personnalisé 2 seulement)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Meilleures compagnies qui ont atteint {NUM}{}(Niveau {STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Meilleures compagnies qui ont atteint {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tableau du Championnat des compagnies en {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Homme d'affaires
@@ -1012,13 +1012,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Changer 
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Niveau de difficulté
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Facile
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Moyen
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Difficile
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Personnalisé
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Afficher le tableau des scores
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Sauver
 
@@ -1101,7 +1094,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolérante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Aucune IA utilisable...{}Vous pouvez télécharger diverses IA via le système de «{NBSP}Contenu en ligne{NBSP}».
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Cette action a modifié le niveau de difficulté en «{NBSP}Personnalisé{NBSP}»
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Options avancées
@@ -1582,7 +1574,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Éditeur
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Mode multijoueurs
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Options
-STR_INTRO_DIFFICULTY                                            :{BLACK}Difficulté ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Difficulté
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Options avancées
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Paramètres NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Vérifier le contenu en ligne

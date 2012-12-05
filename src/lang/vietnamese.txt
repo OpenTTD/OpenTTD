@@ -639,7 +639,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Click v�
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Click vào bài nhạc để xóa khỏi chương trình hiện tại (cho "Tự chọn 1" hay "Tự chọn 2")
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Những công ty đứng đầu đã đạt được {NUM}{}({STRING} Level)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Những công ty đứng đầu đã đạt được {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Bảng tầm cỡ công ty trong {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Doanh Nhân
@@ -1010,13 +1010,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Sửa th
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Cấp Độ Khó
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Dễ
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Trung Bình
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Khó
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Tự Chỉnh
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Hiện danh sách điểm cao
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Lưu
 
@@ -1099,7 +1092,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Vừa phải
 STR_CITY_APPROVAL_HOSTILE                                       :Khó khăn
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Không có AI nào phù hợp...{}Bạn có thể tải các AI từ mục 'Online Content'
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Hành động này thay đổi độ khó về tự tùy chỉnh
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Thiết Lập Nâng Cao
@@ -1531,7 +1523,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Biên T�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Chơi Trên Mạng
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Cấu Hình Trò Chơi
-STR_INTRO_DIFFICULTY                                            :{BLACK}Độ Khó ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Độ Khó
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Thiết Lập Nâng Cao
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Thiết Lập NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Các Nội Dung Trên Mạng

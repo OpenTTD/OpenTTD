@@ -737,7 +737,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klikni n
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikni na glazbenu traku kako bi ju uklonio iz trenutnog programa (samo Proizvoljno 1 ili Proizvoljno 2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Najbolje tvrtke koje su dosigle razinu {NUM}{}({STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Najbolje tvrtke koje su dosigle razinu {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tablica tvrtki u {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Privrednik
@@ -1108,13 +1108,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Promijen
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Težina igre
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Lagano
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Umjereno
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Teško
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Proizvoljna igra
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Pokaži tablice najboljih rezultata
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Spremi
 
@@ -1197,7 +1190,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerantan
 STR_CITY_APPROVAL_HOSTILE                                       :Agresivan
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Odgovarajuća UI nije dostupna...{}Možete preuzeti nekoliko UI pomoću sustava 'Online sadržaja'
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Ova je radnja promjenila razinu težine na proizvoljno
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredne postavke
@@ -1678,7 +1670,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor s
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Više igrača
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Postavke igre
-STR_INTRO_DIFFICULTY                                            :{BLACK}Težina ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Težina
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Napredne postavke
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Postavke
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Provjeri online sadržaj

@@ -639,7 +639,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Click on
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Click on music track to remove it from current programme (Custom1 or Custom2 only)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top companies who reached {NUM}{}({STRING} Level)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top companies who reached {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Company League Table in {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Businessman
@@ -1008,13 +1008,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Change c
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Difficulty Level
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Easy
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Medium
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Hard
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Custom
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Show hi-score chart
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Save
 
@@ -1097,7 +1090,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No suitable AIs available...{}You can download several AIs via the 'Online Content' system
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}This action changed the difficulty level to custom
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Advanced Settings
@@ -1385,7 +1377,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenario
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multiplayer
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Game Options
-STR_INTRO_DIFFICULTY                                            :{BLACK}Difficulty ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Difficulty
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Advanced Settings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Settings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Check Online Content

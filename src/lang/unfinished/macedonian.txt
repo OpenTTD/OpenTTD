@@ -637,7 +637,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Клик
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Кликнете на песна за да го отстраните од тековната програма (Прилагодено 1 или 2 Прилагодено само)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Топ компании што постигнаа {NUM}{}({STRING} Ниво)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Топ компании што постигнаа {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Компанијата табелата во {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Бизнисмен
@@ -831,9 +831,6 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Секој ме
 
 # Difficulty level window
 
-############ range for difficulty levels starts
-############ range for difficulty levels ends
-
 
 ############ range for difficulty settings starts
 ############ range for difficulty settings ends
@@ -923,7 +920,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Сцен
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Повеќе играчи
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Опции на Играта
-STR_INTRO_DIFFICULTY                                            :{BLACK}Тежина ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Тежина
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}АИ / Играта Подесувања
 
 

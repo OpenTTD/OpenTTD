@@ -906,13 +906,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}மு�
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}கடினத்தின் அளவு
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}எளிது
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}நடுத்தரம்
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}அதிகம்
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}மாற்றியமைத்தது
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}மதிப்பெண் விளக்க அட்டவணையைக் காட்டு
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}சேமி
 
@@ -1160,7 +1153,7 @@ STR_INTRO_NEW_GAME                                              :{BLACK}பு�
 STR_INTRO_LOAD_GAME                                             :{BLACK}ஆட்டத்தை ஏற்று
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}ஆட்டத்தின் அமைப்புகள்
-STR_INTRO_DIFFICULTY                                            :{BLACK}கடினம் ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}கடினம்
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}அமைப்புகள்
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF அமைப்புகள்
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}கோப்புகளை இணையதளத்தில் தேடு

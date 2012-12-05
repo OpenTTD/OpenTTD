@@ -638,7 +638,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}موجو
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}موجودہ پروگرام میں سے نکالنے کے لئے گانے پر کلک کریں (صرف اپنی مرضی کے مطابق 1 یا 2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}سر فہرست کمپنیاں جو {NUM}{}({STRING} کے مقام پر پہنچیں)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}سر فہرست کمپنیاں جو {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}کمپنیوں کی فہرست میں {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :کاروباری
@@ -1005,13 +1005,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}اپنی
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}مشکلات کا درجہ
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}آسان
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}درمیانہ
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}مشکل
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}اپنی مرضی کا
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}زیادہ اسکور کا جدول دیکھیں
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}محفوظ کریں
 
@@ -1093,7 +1086,6 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :اجازت دی
 STR_CITY_APPROVAL_TOLERANT                                      :برداشت کرنے والا
 STR_CITY_APPROVAL_HOSTILE                                       :مخالفانہ
 
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}اس عمل نے مشکل کی سطح کو اپنی مرضی کا کر دیا ہے
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}ایڈوانسڈ سیٹنگ
@@ -1383,7 +1375,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}منظر
 STR_INTRO_MULTIPLAYER                                           :{BLACK}زیادہ کھلاڑی
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}کھیل کے اختیارات
-STR_INTRO_DIFFICULTY                                            :{BLACK}مشکل ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}مشکل
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}ایڈوانسڈ سیٹنگ
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF چنئے
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}آن لائن مواد دیکھیں

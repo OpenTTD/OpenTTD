@@ -703,7 +703,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Kliknú�
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kliknite na hudobnú stopu pre jej odstránenie z programu (len Vlastný1 alebo Vlastný2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Najlepšie spoločnosti, ktoré dosiahli {NUM}{}({STRING} úroveň)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Najlepšie spoločnosti, ktoré dosiahli {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tabuľka spoločnosti v roku {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :{G=z}Obchodníčka
@@ -1078,13 +1078,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmeniť 
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Úroveň obtiažnosti
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Lahká
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Stredná
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Tažká
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Vlastná
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Zobraziť tabuľku najlepších
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Ulozit
 
@@ -1167,7 +1160,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerantny
 STR_CITY_APPROVAL_HOSTILE                                       :Odmietavy
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nieje dostupné žiadne použiteľné AI...{}Niekoľko AI je možné stiahnuť cez 'Online obsah'
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Obtiažnosť sa zmenila na vlastnú
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Rozšírené nastavenia
@@ -1631,7 +1623,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor s
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Viacero hráčov
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Nastavenia hry
-STR_INTRO_DIFFICULTY                                            :{BLACK}Obtiažnosť ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Obtiažnosť
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Rozšírené nastavenia
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Nastavenia NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Skontrolovať online obsah

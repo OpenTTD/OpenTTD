@@ -5727,7 +5727,7 @@ bool GetGlobalVariable(byte param, uint32 *value, const GRFFile *grffile)
 			return true;
 
 		case 0x22: // difficulty level
-			*value = _settings_game.difficulty.diff_level;
+			*value = SP_CUSTOM;
 			return true;
 
 		case 0x23: // long format date

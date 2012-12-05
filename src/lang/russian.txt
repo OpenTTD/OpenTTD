@@ -779,7 +779,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Щёлк
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Выберите дорожку для удаления из пользовательского списка
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Крупнейшие компании, достигшие {NUM} года{}({STRING} уровень сложности)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Крупнейшие компании, достигшие {NUM} года
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Порядковая таблица компаний в {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Бизнесмен
@@ -1158,17 +1158,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Изме
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Уровень сложности
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Лёгкий
-STR_DIFFICULTY_LEVEL_EASY.f                                     :{BLACK}лёгкая
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Средний
-STR_DIFFICULTY_LEVEL_MEDIUM.f                                   :{BLACK}средняя
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Тяжёлый
-STR_DIFFICULTY_LEVEL_HARD.f                                     :{BLACK}тяжёлая
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Пользов.
-STR_DIFFICULTY_LEVEL_CUSTOM.f                                   :{BLACK}пользов.
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Показать таблицу рекордов
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Сохранить
 
@@ -1255,7 +1244,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Терпимо�
 STR_CITY_APPROVAL_HOSTILE                                       :Враждебное
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Модули ИИ отсутствуют.{}Их можно скачать через систему проверки онлайн-контента.
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Ваши действия сменили уровень сложности на пользовательский
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Расширенные настройки
@@ -1738,7 +1726,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Реда
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Сетевая игра
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Настройки игры
-STR_INTRO_DIFFICULTY                                            :{BLACK}Сложность ({STRING.f})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Сложность
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Расширенные настройки
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Настройки NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Проверить онлайн-контент

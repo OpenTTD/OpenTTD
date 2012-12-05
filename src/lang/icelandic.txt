@@ -631,7 +631,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Veldu la
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Smelltu á lag til að fjarlægja það úr listanum (á aðeins við um Sérvalið1 og Sérvalið2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Efstu fyrirtæki sem náðu {NUM}{}({STRING} stig)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Efstu fyrirtæki sem náðu {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Sambandstafla fyrirtækis í {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Viðskiptamaður
@@ -990,13 +990,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Breyta s
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Erfiðleikastig
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Auðvelt
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Miðlungs
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Erfitt
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Sérsniðið
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Sýna topplistann
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Vista
 
@@ -1070,7 +1063,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Umburðarlynd
 STR_CITY_APPROVAL_HOSTILE                                       :Fjandsamleg
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Engin nothæf gervigreind í boði...{}Þú getur hlaðið niður mörgum gervigreindum í gegnum 'Ná í viðbætur af netinu' viðmótið
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Þessi stilling breytti erfiðleikastigi í sérsniðið
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Þróaðar stillingar
@@ -1313,7 +1305,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Landslag
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Fjölspilun
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Stillingar
-STR_INTRO_DIFFICULTY                                            :{BLACK}Erfiðleikastig ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Erfiðleikastig
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Þróaðar Stillingar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Stillingar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Ná í viðbætur af netinu

@@ -640,7 +640,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Kullanı
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kullanılan programdan kaldırılacak parçaya tıklayın (Özel1 veya Özel2 için)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK} {NUM}{} yılına erişen en iyi şirketler ({STRING} Seviye)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK} {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK} {NUM} senesindeki şirket ligi
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :İşadamı
@@ -1011,13 +1011,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Özel pa
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Zorluk seviyesi
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Kolay
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Orta
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Zor
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Özel
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Skor tablosunu göster
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Kaydet
 
@@ -1100,7 +1093,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Töleranslı
 STR_CITY_APPROVAL_HOSTILE                                       :Katı
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Uygun YZ'ler yok...{}'Çevrimiçi içerik' sistemiyle pek çok YZ indirebilirsiniz
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Bu işlem zorluk seviyesini özel'e getirdi
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Gelişmiş Ayarlar
@@ -1391,7 +1383,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Senaryo 
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Çok Oyunculu
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Seçenekler
-STR_INTRO_DIFFICULTY                                            :{BLACK}Zorluk ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Zorluk
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Gelişmiş Ayarlar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Ayarları
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Çevrimiçi İçeriği Kontrol Et

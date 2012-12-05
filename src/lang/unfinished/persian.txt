@@ -638,7 +638,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}روی �
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}روی آهنگ کلیک کنید تا از برنامه فعلی پاک شوند (فقط لیست سفارشی 1 و سفارشی 2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}بالانرین شرکت هایی که به مرحله {NUM}{}({STRING} رسیدند)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}بالانرین شرکت هایی که به مرحله {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}جدول اتحادیه شرکت ها در {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :تاجر
@@ -1008,13 +1008,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}تغیی
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}سطح سختی
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}ساده
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}متوسط
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}سخت
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}انتخابی
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}نمایش لیست بالاترین امتیاز
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}ذخیره
 
@@ -1097,7 +1090,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :سخت گیر
 STR_CITY_APPROVAL_HOSTILE                                       :دشمنانه
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}هیچ بسته هوش مصنوعی موجود نیست...{}شما می توانید چندین بسته هوش مصنوعی(AI) را از قسمت محتویات برخط بارگیری کنید
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}این کار سبب شد که میزان سختی بازی به دلخواه تغییر کند
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}تنظیمات پیشرفته
@@ -1386,7 +1378,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}ساخت
 STR_INTRO_MULTIPLAYER                                           :{BLACK}بازی چند نفره
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}تنضیمات بازی
-STR_INTRO_DIFFICULTY                                            :{BLACK}سختی ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}سختی
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}تنظیمات پیشرفته
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}تنظیمات NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}چک کردن محتوی آنلاین

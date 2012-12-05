@@ -1020,7 +1020,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik na 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kliknij na ścieżce muzycznej aby usunąć ją z wybranego programu (Wlasny1 lub Wlasny2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Ranking firm, które osiągnęły rok {NUM}{}(Poziom {STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Ranking firm, które osiągnęły rok {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tabela Ligi Firm w {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Biznesmen
@@ -1392,13 +1392,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmień p
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Poziom trudności
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Łatwy
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Średni
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Trudny
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Własny
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Pokaż najlepsze wyniki
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Zapisz
 
@@ -1481,7 +1474,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerancyjne
 STR_CITY_APPROVAL_HOSTILE                                       :Wrogie
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Brak pasujących SI...{}Możesz pobrać wszystkie SI przez system "Zawartości online"
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Zmieniono poziom trudności na "własny"
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ustawienia zaawansowane
@@ -1962,7 +1954,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Edytor s
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Gra wieloosobowa
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcje gry
-STR_INTRO_DIFFICULTY                                            :{BLACK}Trudność ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Trudność
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ustawienia zaawansowane
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ustawienia NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sprawdź dodatki online

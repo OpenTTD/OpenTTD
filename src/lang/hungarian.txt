@@ -702,7 +702,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Kattints
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kattints a zeneszámra annak az aktuális zenei műsorból való eltávolításához (csak Saját 1 és Saját 2 esetén)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Legjobb vállalatok melyek elérték {NUM}-t{}({STRING} Szinten)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Legjobb vállalatok melyek elérték {NUM}-t
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Vállalatok helyezései {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Üzletember
@@ -1074,13 +1074,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}A saját
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Nehézségi szint
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Könnyű
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Közepes
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Nehéz
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Egyéni
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Legjobb pontok
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Ment
 
@@ -1163,7 +1156,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Toleráns
 STR_CITY_APPROVAL_HOSTILE                                       :Ellenséges
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nincsen megfelelő MI...{}Letölthetsz néhány MI-t a tartalomletöltő rendszeren keresztül
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Ez a módosítás megváltoztatta a nehézségi szintet egyedire.
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Haladó beállítások
@@ -1635,7 +1627,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Pályasz
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Hálózati játék
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Beállítások
-STR_INTRO_DIFFICULTY                                            :{BLACK}Nehézség ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Nehézség
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Haladó beállítások
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF beállítások
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Letölthető tartalmak

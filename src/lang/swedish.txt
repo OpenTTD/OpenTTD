@@ -639,7 +639,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klicka p
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klicka på ett musikstycket för att ta bort det från spellistan (endast Personlig1 och Personlig2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}De bästa företagen som nådde {NUM}{}(nivå {STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}De bästa företagen som nådde {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Företagslista för {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Affärsman
@@ -1010,13 +1010,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ändra v
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Svårighetsgrad
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Lätt
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Mellan
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Svår
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Valfri
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Visa highscore-lista
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Spara
 
@@ -1099,7 +1092,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fientlig
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ingen passande datorspelare finns tillgänglig...{}Du kan ladda ner ett flertal datorspelare via 'Online Content'-systemet
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denna åtgärd ändrade svårighetsgraden till egen-inställd
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancerade inställningar
@@ -1577,7 +1569,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenario
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Flera spelare
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelinställningar
-STR_INTRO_DIFFICULTY                                            :{BLACK}Svårighetsgrad ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Svårighetsgrad
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avancerade inställningar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-inställningar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kontrollera online-innehåll

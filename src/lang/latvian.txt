@@ -643,7 +643,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klikšķ
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikšķināt uz mūzikas celiņa, lai to izdzēstu no pašreizējās programmas (tikai Pielāgotā1 un Pielāgotā2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Labākie uzņēmumi, kuri sasnieguši {NUM}{}({STRING} līmeni)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Labākie uzņēmumi, kuri sasnieguši {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Uzņēmumu rangu sarakstā {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Darījumu cilvēks
@@ -1014,13 +1014,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mainīt 
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Grūtības pakāpe
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Viegla
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Vidēja
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Smaga
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Pielāgota
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Rādīt vērtējumu tabulu
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Saglabāt
 
@@ -1103,7 +1096,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :iecietīga
 STR_CITY_APPROVAL_HOSTILE                                       :naidīga
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nav pieejami derīgi MI...{}Jūs varat lejuplādēt dažādus MI, izmantojot sistēmu 'Tiešsaistes saturs'
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Šī rīcība nomainīja grūtības pakāpi uz pielāgoto
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Papildu iestatījumi
@@ -1574,7 +1566,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenāri
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Vairākspēlētāju spēle
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spēles opcijas
-STR_INTRO_DIFFICULTY                                            :{BLACK}Grūtības pakāpe ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Grūtības pakāpe
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Papildu iestatījumi
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF iestatījumi
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Pārbaudīt tiešsaistes saturu

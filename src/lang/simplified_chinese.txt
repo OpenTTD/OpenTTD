@@ -638,7 +638,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}点击�
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}点击音乐曲目以从当前播放列表中删除{}(仅限自定义1或自定义2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}达到 {NUM} 的顶级公司！{}({STRING} 级别)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}达到 {NUM} 的顶级公司！
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}在{NUM}年，公司表现值排名
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :运输个体户
@@ -1004,13 +1004,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}改变�
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}难度设定
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}简单
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}中等
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}困难
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}自定义
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}查看高分榜
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}保存
 
@@ -1093,7 +1086,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :隐忍
 STR_CITY_APPROVAL_HOSTILE                                       :对立
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}无合适的 AI 可用...{}你可以在线下载各种 AI 。
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}已将游戏难度设置为自定义级别
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}高级设置
@@ -1374,7 +1366,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}场景�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}联机游戏
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}游戏选项
-STR_INTRO_DIFFICULTY                                            :{BLACK}难度 ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}难度
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}高级设置
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 设置
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}在线查找扩展包

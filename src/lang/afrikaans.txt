@@ -640,7 +640,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Kliek op
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kliek op musiek lied om te verwyder van huidige program (Slegs Gewoonte1 of Gewoonte2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Beste maatskappye wat {NUM}{}({STRING} Vlak) behaal het
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Beste maatskappye wat {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Maatskappy Liga Tafel in {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Sakeman
@@ -1011,13 +1011,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}verander
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Moeite Vlak
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Maklik
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Gemiddel
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Streng
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Pasmaak
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Vertoon hooglopendetellings kaart
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Bewaar
 
@@ -1100,7 +1093,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Toelaatbaar
 STR_CITY_APPROVAL_HOSTILE                                       :Vyandelik
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen geskikte KI beskikbaar...{}Jy kan verskeie KI's aflaai deur middel van die 'Aanlyn Inhoud' stelsel
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Hierdie aksie verander die moeite vlak to gebruiklike
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Gevorderde stellings
@@ -1524,7 +1516,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenario
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multispeler
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spel Opsies
-STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilikheid ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilikheid
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Gevorderde stellings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Stellings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kyk Na Aanlyn Inhoud

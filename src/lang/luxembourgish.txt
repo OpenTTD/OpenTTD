@@ -641,7 +641,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klick op
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klick op d'Lidd fir et vum aktuellen Programm ze läschen (Benotzerdefinéiert 1 an 2 nëmmen)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top Firmen dei {NUM}{}({STRING} Level) erreescht hunn
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top Firmen dei {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Firmenligatabell an {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Kafmann
@@ -1012,13 +1012,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Änner W
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Schwieregkeetsgrad
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Einfach
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Mëttel
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Schwéier
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Benotzerdefinéiert
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Weist Beschtenlëscht
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Späicheren
 
@@ -1101,7 +1094,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Ofleenend
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Keng KI fonnt...{}KI kënnen iwwert den 'Online Content' system downgeload gin
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Des Aktioun setzt d'Schwieregkeet op "eegen"
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Erweidert Astellungen
@@ -1582,7 +1574,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Szenarie
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multiplayer
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spilloptiounen
-STR_INTRO_DIFFICULTY                                            :{BLACK}Schwieregkeet ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Schwieregkeet
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Erweidert Astellungen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Astellungen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Check Online Inhalt

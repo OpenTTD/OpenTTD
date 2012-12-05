@@ -523,13 +523,6 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Мал�
 
 # Difficulty level window
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Ҫӑмӑл
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Вӑтам
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Йывӑр
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Харпӑр хӑй
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Упра
 
 ############ range for difficulty settings starts

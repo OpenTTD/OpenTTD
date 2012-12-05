@@ -723,7 +723,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Skladba 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Hudební stopu odstraníš ze současného programu (pouze u vlastního) kliknutím na ni
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Nejlepší společnosti, které dosáhly {NUM}{}({STRING} úroveň)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Nejlepší společnosti, které dosáhly {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tabulka společností v roce {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Obchodník
@@ -1094,13 +1094,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Změnit 
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Obtížnost
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Lehká
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Střední
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Těžká
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Vlastní
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Zobraz tabulku nejlepších výsledků
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Uložit
 
@@ -1183,7 +1176,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :tolerantní
 STR_CITY_APPROVAL_HOSTILE                                       :zaujatý
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Žádná vhodná AI není k dispozici...{}Některé AI lze stáhnout pomocí služby "Stahovat součásti"
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Tato akce změnila úroveň obtížnosti na 'vlastní'
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Pokročilé nastavení
@@ -1664,7 +1656,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor s
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Více hráčů
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Možnosti hry
-STR_INTRO_DIFFICULTY                                            :{BLACK}Obtížnost ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Obtížnost
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Pokročilé nastavení
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Nastavení grafik
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Stahovat součásti

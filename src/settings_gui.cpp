@@ -701,19 +701,11 @@ public:
 	{
 		this->InitNested(desc, WN_GAME_OPTIONS_GAME_DIFFICULTY);
 
-		/* Setup disabled buttons when creating window
-		 * disable all other difficulty buttons during gameplay except for 'custom' */
-		this->SetWidgetsDisabledState(_game_mode != GM_MENU,
-			WID_GD_LVL_EASY,
-			WID_GD_LVL_MEDIUM,
-			WID_GD_LVL_HARD,
-			WID_GD_LVL_CUSTOM,
-			WIDGET_LIST_END);
 		this->SetWidgetDisabledState(WID_GD_HIGHSCORE, _game_mode == GM_EDITOR || _networking); // highscore chart in multiplayer
 		this->SetWidgetDisabledState(WID_GD_ACCEPT, _networking && !_network_server); // Save-button in multiplayer (and if client)
 
 		/* Read data */
-		this->OnInvalidateData(GOID_DIFFICULTY_CHANGED);
+		this->opt_mod_temp = GetGameSettings();
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -774,9 +766,6 @@ public:
 
 			/* save value in temporary variable */
 			WriteValue(GetVariableAddress(&this->opt_mod_temp, &sd->save), sd->save.conv, val);
-			this->RaiseWidget(WID_GD_LVL_EASY + this->opt_mod_temp.difficulty.diff_level);
-			SetDifficultyLevel(3, &this->opt_mod_temp.difficulty); // set difficulty level to custom
-			this->LowerWidget(WID_GD_LVL_CUSTOM);
 			this->InvalidateData();
 
 			if (widget / 3 == 0 &&
@@ -788,28 +777,14 @@ public:
 		}
 
 		switch (widget) {
-			case WID_GD_LVL_EASY:
-			case WID_GD_LVL_MEDIUM:
-			case WID_GD_LVL_HARD:
-			case WID_GD_LVL_CUSTOM:
-				/* temporarily change difficulty level */
-				this->RaiseWidget(WID_GD_LVL_EASY + this->opt_mod_temp.difficulty.diff_level);
-				SetDifficultyLevel(widget - WID_GD_LVL_EASY, &this->opt_mod_temp.difficulty);
-				this->LowerWidget(WID_GD_LVL_EASY + this->opt_mod_temp.difficulty.diff_level);
-				this->InvalidateData();
-				break;
-
 			case WID_GD_HIGHSCORE: // Highscore Table
-				ShowHighscoreTable(this->opt_mod_temp.difficulty.diff_level, -1);
+				ShowHighscoreTable();
 				break;
 
 			case WID_GD_ACCEPT: { // Save button - save changes
 				GameSettings *opt_ptr = &GetGameSettings();
 
 				uint i;
-				GetSettingFromName("difficulty.diff_level", &i);
-				DoCommandP(0, i, this->opt_mod_temp.difficulty.diff_level, CMD_CHANGE_SETTING);
-
 				const SettingDesc *sd = GetSettingFromName("difficulty.max_no_competitors", &i);
 				for (uint btn = 0; btn != GAME_DIFFICULTY_NUM; btn++, sd++) {
 					int32 new_val = (int32)ReadValue(GetVariableAddress(&this->opt_mod_temp, &sd->save), sd->save.conv);
@@ -841,16 +816,6 @@ public:
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (!gui_scope) return;
-
-		if (data == GOID_DIFFICULTY_CHANGED) {
-			/* Window was created or settings were changed on server. Reread everything. */
-
-			/* Copy current settings (ingame or in intro) to temporary holding place
-			 * change that when setting stuff, copy back on clicking 'OK' */
-			this->opt_mod_temp = GetGameSettings();
-
-			this->LowerWidget(WID_GD_LVL_EASY + this->opt_mod_temp.difficulty.diff_level);
-		}
 
 		uint i;
 		const SettingDesc *sd = GetSettingFromName("difficulty.max_no_competitors", &i);
@@ -910,12 +875,6 @@ static const NWidgetPart _nested_game_difficulty_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_DIFFICULTY_LEVEL_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_MAUVE),
 		NWidget(NWID_VERTICAL), SetPIP(2, 0, 2),
-			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 0, 10),
-				NWidget(WWT_TEXTBTN, COLOUR_YELLOW, WID_GD_LVL_EASY), SetDataTip(STR_DIFFICULTY_LEVEL_EASY, STR_NULL), SetFill(1, 0),
-				NWidget(WWT_TEXTBTN, COLOUR_YELLOW, WID_GD_LVL_MEDIUM), SetDataTip(STR_DIFFICULTY_LEVEL_MEDIUM, STR_NULL), SetFill(1, 0),
-				NWidget(WWT_TEXTBTN, COLOUR_YELLOW, WID_GD_LVL_HARD), SetDataTip(STR_DIFFICULTY_LEVEL_HARD, STR_NULL), SetFill(1, 0),
-				NWidget(WWT_TEXTBTN, COLOUR_YELLOW, WID_GD_LVL_CUSTOM), SetDataTip(STR_DIFFICULTY_LEVEL_CUSTOM, STR_NULL), SetFill(1, 0),
-			EndContainer(),
 			NWidget(NWID_HORIZONTAL), SetPIP(10, 0, 10),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_GD_HIGHSCORE), SetDataTip(STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON, STR_NULL), SetFill(1, 0),
 			EndContainer(),

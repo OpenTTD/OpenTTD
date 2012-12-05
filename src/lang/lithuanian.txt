@@ -836,7 +836,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Paspausk
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Spragtelėjus takelį, jis pašalinamas iš dabartinės programos (tik „Speciali 1“ ir „Speciali 2“)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Geriausios kompanijos, kurios pasiekė {NUM}{}({STRING} lygį)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Geriausios kompanijos, kurios pasiekė {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Kompaniju Lygos lentele {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Komersantas
@@ -1207,13 +1207,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Keisti p
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Sunkumo lygis
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Lengvas
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Vidutinis
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Sunkus
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Individualus
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Rodyti rezultatų lentelę
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Išsaugoti
 
@@ -1296,7 +1289,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerantiškas
 STR_CITY_APPROVAL_HOSTILE                                       :Priešiškas
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nerasta tinkamų DI... {}Galite parsisiųsti keletą DI naudonat 'Turinio internete' sistemą
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Šis veiksmas pakeitė sunkumo lygį į specialų
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Sudėtingesni nustatymai
@@ -1777,7 +1769,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenarij
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Žaidimas tinkle
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Žaidimo nustatymai
-STR_INTRO_DIFFICULTY                                            :{BLACK}Sunkumo lygis ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Sunkumo lygis
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Sudėtingesni nustatymai
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Papild. grafikos nustatymai
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Patikrinti interneto turinį

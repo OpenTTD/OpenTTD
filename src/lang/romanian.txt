@@ -639,7 +639,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Click pe
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Apasă pe melodie pentru a o elimina din programul actual (doar Custom1 sau Custom2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Primele companii care au atins {NUM}{}(Nivelul {STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Primele companii care au atins {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Clasamentul companiilor în {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Om de afaceri
@@ -1010,13 +1010,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Schimbă
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Nivel de dificultate
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Uşor
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Mediu
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Greu
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Personalizat
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Afişează clasamentul celor mai bune punctaje
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Salvează
 
@@ -1099,7 +1092,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerantă
 STR_CITY_APPROVAL_HOSTILE                                       :Ostilă
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nu este disponibil nici un modul de Inteligenţă Artificială...{}Puteţi descărca diferite module de Inteligenţă Artificială prin sistemul de 'Resurse Online'
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Această acţiune a setat nivelul de difficultate în "Personalizat"
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Setări avansate
@@ -1501,7 +1493,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor h
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multiplayer
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opţiuni
-STR_INTRO_DIFFICULTY                                            :{BLACK}Dificultate: {STRING}
+STR_INTRO_DIFFICULTY                                            :{BLACK}Dificultate
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Setări avansate
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Setări NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Resurse online

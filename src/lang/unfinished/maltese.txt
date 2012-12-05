@@ -425,9 +425,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 # Difficulty level window
 
-############ range for difficulty levels starts
-############ range for difficulty levels ends
-
 
 ############ range for difficulty settings starts
 ############ range for difficulty settings ends

@@ -633,7 +633,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik op 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik op musyknûmmer om't út it aktive programma it heljen (allinnich Oanpast1 of Oanpast2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top bedriuwen dy't niveau {NUM}{}({STRING} helle ha)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top bedriuwen dy't niveau {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Bedriuwskompetysjetabel yn {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Sakeman
@@ -998,13 +998,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Feroarje
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Swierichheid
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Maklik
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Gewoan
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Dreech
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Oanpast
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Lit hi-scorekaart sjen
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Bewarje
 
@@ -1083,7 +1076,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fijannich
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Gjin brûkbere AIs beskikber...{}jo kinne ferskillende AIs downloade fia it 'Online Content' systeem
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Dizze aksje post de swierrichheidsgraad oan nei 'oanpost'
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avansearre ynstellings
@@ -1343,7 +1335,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Lânskip
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multispiler
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spul Opsjes
-STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilikhyd ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilikhyd
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avansearre ynstellings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF ynstellings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sikje online ynhâld

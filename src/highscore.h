@@ -29,6 +29,6 @@ void LoadFromHighScore();
 int8 SaveHighScoreValue(const Company *c);
 int8 SaveHighScoreValueNetwork();
 StringID EndGameGetPerformanceTitleFromValue(uint value);
-void ShowHighscoreTable(int difficulty, int8 rank);
+void ShowHighscoreTable(int difficulty = SP_CUSTOM, int8 rank = -1);
 
 #endif /* HIGHSCORE_H */

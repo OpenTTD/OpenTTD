@@ -990,10 +990,6 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_BASE_MUSIC_STATUS,                  "WID_GO_BASE_MUSIC_STATUS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_BASE_MUSIC_TEXTFILE,                "WID_GO_BASE_MUSIC_TEXTFILE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GO_BASE_MUSIC_DESCRIPTION,             "WID_GO_BASE_MUSIC_DESCRIPTION");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GD_LVL_EASY,                           "WID_GD_LVL_EASY");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GD_LVL_MEDIUM,                         "WID_GD_LVL_MEDIUM");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GD_LVL_HARD,                           "WID_GD_LVL_HARD");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GD_LVL_CUSTOM,                         "WID_GD_LVL_CUSTOM");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GD_HIGHSCORE,                          "WID_GD_HIGHSCORE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GD_ACCEPT,                             "WID_GD_ACCEPT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GD_CANCEL,                             "WID_GD_CANCEL");

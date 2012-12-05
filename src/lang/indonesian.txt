@@ -638,7 +638,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik pad
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik pada track musik untuk menghapusnya dari program saat ini. (Bebas 1 atau Bebas 2 saja)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Perusahaan tertinggi yang mencapai tahun {NUM}{}(Level {STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Perusahaan tertinggi yang mencapai tahun {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tabel Liga Perusahaan {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Pengusaha
@@ -1005,13 +1005,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ubah sen
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Tingkat kesulitan
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Mudah
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Sedang
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Sulit
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Bebas
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Tampilkan tabel skor tertinggi
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Simpan
 
@@ -1094,7 +1087,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Toleran
 STR_CITY_APPROVAL_HOSTILE                                       :Bermusuhan
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Tidak terdapat pemain AI ...{}anda dapat mengunduh beberapa macam AI lewat "Cari Konten"
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Tindakan ini menyebabkan tingkat kesulitan menjadi bebas
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Pengaturan lanjutan
@@ -1404,7 +1396,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor S
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Bermain bersama
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pengaturan Permainan
-STR_INTRO_DIFFICULTY                                            :{BLACK}Tingkat kesulitan ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Tingkat kesulitan
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Pengaturan lanjutan
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Pengaturan NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Cari konten

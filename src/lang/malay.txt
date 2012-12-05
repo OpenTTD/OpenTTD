@@ -639,7 +639,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik pad
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik pada lagu untuk mengeluarkan daripada rancangan semasa (Pilihan Diri 1 atau Pilihan Diri 2 sahaja)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Syarikat-syarikat utama yang mencapai {NUM}{}({STRING} Level)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Syarikat-syarikat utama yang mencapai {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Jadual Liga Syarikat dalam {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Ahli perniagaan
@@ -1005,13 +1005,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Tukar pa
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Tahap kesukaran
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Mudah
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Biasa
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Susah
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Pilihan diri
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Tunjukkan carta markah tertinggi
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Simpan
 
@@ -1094,7 +1087,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Bertoleransi
 STR_CITY_APPROVAL_HOSTILE                                       :Kurang mengizinkan
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Tiada AI yang bersesuaian...{}Anda boleh memuat turun beberapa AI dari sistem 'Kandungan Atas Talian'
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Perbuatan ini telah menukar tahap kesukaran kepada pilihan diri
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Tetapan Lanjutan
@@ -1377,7 +1369,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Penyunti
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Pemain berbilang
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pilihan Permainan
-STR_INTRO_DIFFICULTY                                            :{BLACK}Kesukaran ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Kesukaran
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Tetapan Lanjutan
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Tetapan NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Periksa Kandungan Atas Talian

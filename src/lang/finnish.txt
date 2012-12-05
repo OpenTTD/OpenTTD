@@ -641,7 +641,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Valitse 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikkaa raitaa poistaaksesi se nykyisestä ohjelmasta (ainoastaan Custom1 tai Custom2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Parhaat yhtiöt, jotka saavuttivat vuoden {NUM}{}(taso: {STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Parhaat yhtiöt, jotka saavuttivat vuoden {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Yhtiökilpailutaulukko vuonna {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Liikemies
@@ -1012,13 +1012,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Vaihda o
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Vaikeusaste
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Helppo
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Keskitaso
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Vaikea
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Oma
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Näytä pistetaulukko
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Tallenna
 
@@ -1101,7 +1094,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Suvaitseva
 STR_CITY_APPROVAL_HOSTILE                                       :Vihamielinen
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ei soveltuvia tekoälyjä saatavilla...{}Voit ladata tekoälyjä 'Online-Sisältö'-palvelulla
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Tehty toiminto vaihtoi vaikeustason mukautetuksi
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Lisäasetukset
@@ -1582,7 +1574,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Skenaari
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Moninpeli
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pelin asetukset
-STR_INTRO_DIFFICULTY                                            :{BLACK}Vaikeusaste: ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Vaikeusaste:
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Lisäasetukset
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-asetukset
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tarkista Online-sisältö

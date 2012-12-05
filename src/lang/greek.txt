@@ -733,7 +733,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Κάντ
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Κάντε κλικ στο τραγούδι για να το αφαιρέσετε από το πρόγραμμα (Προσαρμοσμένο 1 ή 2 μόνο)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Οι καλύτερες εταιρίες που έφτασαν το {NUM}{}({STRING} Επίπεδο)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Οι καλύτερες εταιρίες που έφτασαν το {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Πίνακας Πρωταθλήματος Εταιριών σε {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA},
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Επαγγελματίας
@@ -1104,13 +1104,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Αλλα
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Βαθμός Δυσκολίας
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Εύκολο
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Μέτριο
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Δύσκολο
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Παραμετροποιήσιμο
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Εμφάνιση γραφήματος με τις καλύτερες βαθμολογίες
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Αποθήκευση
 
@@ -1193,7 +1186,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Υπομονε�
 STR_CITY_APPROVAL_HOSTILE                                       :Εχθρική
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Δεν είναι διαθέσιμο κανένα κατάλληλο Al...{}Μπορείτε να κατεβάσετε AIs μέσω του συστήματος «Online περιεχομένου»
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Αυτή η ενέργεια άλλαξε το επίπεδο δυσκολίας στο προσαρμοσμένο
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Προηγμένες Ρυθμίσεις
@@ -1671,7 +1663,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Επεξ
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Παιχνίδι Πολλών Παικτών
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Επιλογές Παιχνιδιού
-STR_INTRO_DIFFICULTY                                            :{G=f}{BLACK}Δυσκολία ({STRING})
+STR_INTRO_DIFFICULTY                                            :{G=f}{BLACK}Δυσκολία
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Προηγμένες Ρυθμίσεις
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ρυθμίσεις NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Έλεγχος Online περιεχομένου

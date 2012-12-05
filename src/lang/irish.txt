@@ -639,7 +639,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Cliceái
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Cliceáil ar rian ceoil chun é a bhaint ón gclár reatha (Saincheaptha1 nó Sainche
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Cuideachtaí is fearr a bhain amach {NUM}{}(Leibhéal {STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Cuideachtaí is fearr a bhain amach {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tábla Sraithe na gCuideachtaí in {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Fear gnó
@@ -1002,13 +1002,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Athraigh
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Leibhéal deacrachta
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Éasca
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Meánach
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Deacair
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Saincheaptha
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Taispeáin cairt na scór is airde
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Sábháil
 
@@ -1091,7 +1084,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Fulangach
 STR_CITY_APPROVAL_HOSTILE                                       :Naimhdeach
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Níl aon AI oiriúnach ar fáil...{}Is féidir leat roinnt AI a íoslódáil tríd an gcóras 'Inneachar Ar Líne'
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}D'athraigh an gníomh seo an leibhéal deacrachta go saincheaptha
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ardsocruithe
@@ -1348,7 +1340,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Eagarth�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Ilimreoirí
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Roghanna an Chluiche
-STR_INTRO_DIFFICULTY                                            :{BLACK}Deacracht ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Deacracht
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ardsocruithe
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Socruithe NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Seiceáil Inneachar Ar Líne

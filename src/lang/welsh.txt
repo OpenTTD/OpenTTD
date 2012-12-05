@@ -639,7 +639,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Cliciwch
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Cliciwch i dynnu trac cerddoriaeth o'r rhaglen gyfredol (Cyfaddas 1 Neu Cyfaddas 2 yn unig)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Y Cwmnïau Brig a gyrhaeddodd Lefel {NUM}{}({STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Y Cwmnïau Brig a gyrhaeddodd Lefel {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Y Tabl Cynghrair Cwmnïau yn {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Dyn Busnes
@@ -1010,13 +1010,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Newid pa
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Lefel Anhawster
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Hawdd
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Canolig
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Anodd
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Personol
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Dangos Siart Sgôr Uchaf
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Cadw
 
@@ -1099,7 +1092,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Hapus
 STR_CITY_APPROVAL_HOSTILE                                       :Gwrthwynebus
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Dim AI addas ar gael...{}Gallwch llawrlwytho sawl AI drwy'r system 'Cynnwys Ar-lein'
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Newidiodd y weithred hon y gêm i un personol
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ffurfweddu Addasiadau
@@ -1411,7 +1403,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Golygydd
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Amlchwaraewr
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Dewisiadau Gêm
-STR_INTRO_DIFFICULTY                                            :{BLACK}Anhawster ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Anhawster
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ffurfweddu Addasiadau
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Gosodiadau NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Gwirio Cynnwys Ar-lein

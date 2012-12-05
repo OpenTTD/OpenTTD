@@ -634,7 +634,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Alklaku 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Alklaku muzikeron por viŝi el la nuna programo (nur propra)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Superkompanioj kiuj atingis {NUM}{}(Nivelo {STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Superkompanioj kiuj atingis {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Kompania tabelo en {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Kompaniisto
@@ -994,13 +994,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ŝanĝi 
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Malfacilec-nivelo
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Facile
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Meze
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Malfacile
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Ŝanĝite
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Montru plej bonajn ludantojn
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Konservu
 
@@ -1083,7 +1076,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Gastige
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Neniu taŭga AI estas disponebla...{}Kelkaj AI-oj estas elŝuteblaj per la sistemo 'Enreta Enhavo'.
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Ĉi tiu ago ŝanĝis la malfacilec-nivelon al 'ŝanĝite'
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancitaj agordoj
@@ -1346,7 +1338,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenarkr
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Pluraj Ludantoj
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Ludaj Opcioj
-STR_INTRO_DIFFICULTY                                            :{BLACK}Malfacileco ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Malfacileco
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avancitaj agordoj
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Agordoj de NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Provu Enretan Enhavon

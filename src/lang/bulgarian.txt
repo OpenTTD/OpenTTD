@@ -634,7 +634,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Нати
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Натиснете върху парче за да го премахнете от програмата (Custom1 и Custom2 само)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Първите компании достигнали {NUM}{}(ниво {STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Първите компании достигнали {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Таблица Лига на компании в {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Бизнесмен
@@ -997,13 +997,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Пром
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Ниво на трудност
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}лесно
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}средно
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}трудно
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}специална
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Покажи класирането
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Запис
 
@@ -1080,7 +1073,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :толеран�
 STR_CITY_APPROVAL_HOSTILE                                       :враждебни
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Няма подходящи AI...{}Можете да свалите допълнителни AI чрез системата Online Content (Онлайн Съдържание)
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Това действие промени нивото на трудност на custom
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Настройки за напреднали
@@ -1338,7 +1330,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Реда
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Онлайн играчи
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Настройки
-STR_INTRO_DIFFICULTY                                            :{BLACK}Сложност ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Сложност
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Настройки за напреднали
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF настройки
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Провери онлайн съдържанието

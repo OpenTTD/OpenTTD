@@ -766,7 +766,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Вибе
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Клікніть на мелодії для її видалення зі списку (лише Набір1 та Набір2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Кращі компанії, які досягли {NUM}{}({STRING} рівень)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Кращі компанії, які досягли {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Таблиця компаній з {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Бізнесмен
@@ -1137,13 +1137,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Нала
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Рівень складності
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Легкий
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Середній
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Важкий
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Вибірковий
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Показати таблицю рекордів
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Зберегти
 
@@ -1226,7 +1219,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :терпиме
 STR_CITY_APPROVAL_HOSTILE                                       :вороже
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Немає відповідних AI...{}Ви можете завантажити кілька AI через систему 'Вмісту в Інтернеті'
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Змінити рівень складності
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Розширені налаштування
@@ -1707,7 +1699,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Реда
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Мережева гра
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Налаштування гри
-STR_INTRO_DIFFICULTY                                            :{BLACK}Складність ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Складність
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Розширені налаштування
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Налаштування NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Додатковий контент

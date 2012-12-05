@@ -641,7 +641,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Musika k
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Musika kantan clik egin uneko programatik ezabatzeko (Perstonala1 edo Pertsonala2 bakarrik)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top companiak {NUM}{}({STRING} Nibela lortu dutenak)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top companiak {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Konpainien Ligaren Tabla {NUM}-tan
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Negozio gizona
@@ -1012,13 +1012,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Dibisa p
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Zailtasun maila
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Erraza
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Erdikoa
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Zaila
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Pertsonalizatua
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Puntuazio altuenen taula erakutsi
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Gorde
 
@@ -1101,7 +1094,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Jasanbera
 STR_CITY_APPROVAL_HOSTILE                                       :Kontrakoa
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ez dago IA egokirik aukeratzeko..{}IA asko jaitsi ditzakezu 'Online edukiera' sistemaren bidez
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Akzio honek zailtasun maila pertsonalizatura aldatuko du
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Konfigurazio aurreratuak
@@ -1582,7 +1574,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Eszenari
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijokoa
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Joko Ezarpenak
-STR_INTRO_DIFFICULTY                                            :{BLACK}Zailtasuna ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Zailtasuna
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ezarpen Aurreratuak
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-ren Ezarpenak
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Edukiak Online Kontsultatu

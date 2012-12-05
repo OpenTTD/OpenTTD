@@ -55,11 +55,6 @@ struct SelectGameWindow : public Window {
 		this->SetWidgetLoweredState(WID_SGI_TOYLAND_LANDSCAPE,   _settings_newgame.game_creation.landscape == LT_TOYLAND);
 	}
 
-	virtual void SetStringParameters(int widget) const
-	{
-		if (widget == WID_SGI_DIFFICULTIES) SetDParam(0, STR_DIFFICULTY_LEVEL_EASY + _settings_newgame.difficulty.diff_level);
-	}
-
 	virtual void OnInit()
 	{
 		bool missing = _current_language->missing >= _settings_client.gui.missing_strings_threshold && !IsReleasedVersion();
@@ -79,18 +74,6 @@ struct SelectGameWindow : public Window {
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case WID_SGI_DIFFICULTIES: {
-				Dimension textdim = {0, 0};
-				for (uint i = STR_DIFFICULTY_LEVEL_EASY; i <= STR_DIFFICULTY_LEVEL_CUSTOM; i++) {
-					SetDParam(0, i);
-					textdim = maxdim(textdim, GetStringBoundingBox(STR_INTRO_DIFFICULTY));
-				}
-				textdim.width += padding.width;
-				textdim.height += padding.height;
-				*size = maxdim(*size, textdim);
-				break;
-			}
-
 			case WID_SGI_TRANSLATION: {
 				SetDParam(0, _current_language->missing);
 				int height = GetStringHeight(STR_INTRO_TRANSLATION, size->width);

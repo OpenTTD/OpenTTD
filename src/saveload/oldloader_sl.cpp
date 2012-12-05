@@ -1573,6 +1573,7 @@ extern TileIndex _cur_tileloop_tile;
 extern uint16 _disaster_delay;
 extern byte _trees_tick_ctr;
 extern byte _age_cargo_skip_counter; // From misc_sl.cpp
+extern uint8 _old_diff_level;
 static const OldChunks main_chunk[] = {
 	OCL_ASSERT( OC_TTD, 0 ),
 	OCL_ASSERT( OC_TTO, 0 ),
@@ -1718,7 +1719,7 @@ static const OldChunks main_chunk[] = {
 
 	OCL_ASSERT( OC_TTD, 0x77130 ),
 
-	OCL_VAR (  OC_UINT8,    1, &_settings_game.difficulty.diff_level ),
+	OCL_VAR (  OC_UINT8,    1, &_old_diff_level ),
 
 	OCL_VAR ( OC_TTD | OC_UINT8,    1, &_settings_game.game_creation.landscape ),
 	OCL_VAR ( OC_TTD | OC_UINT8,    1, &_trees_tick_ctr ),
@@ -1777,7 +1778,7 @@ bool LoadTTDMain(LoadgameState *ls)
 	FixOldVehicles();
 
 	/* We have a new difficulty setting */
-	_settings_game.difficulty.town_council_tolerance = Clamp(_settings_game.difficulty.diff_level, 0, 2);
+	_settings_game.difficulty.town_council_tolerance = Clamp(_old_diff_level, 0, 2);
 
 	DEBUG(oldloader, 3, "Finished converting game data");
 	DEBUG(oldloader, 1, "TTD(Patch) savegame successfully converted");
@@ -1820,7 +1821,7 @@ bool LoadTTOMain(LoadgameState *ls)
 	FixTTOCompanies();
 
 	/* We have a new difficulty setting */
-	_settings_game.difficulty.town_council_tolerance = Clamp(_settings_game.difficulty.diff_level, 0, 2);
+	_settings_game.difficulty.town_council_tolerance = Clamp(_old_diff_level, 0, 2);
 
 	/* SVXConverter about cargo payment rates correction:
 	 * "increase them to compensate for the faster time advance in TTD compared to TTO

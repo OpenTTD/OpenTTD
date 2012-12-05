@@ -792,7 +792,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klikni n
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikni na skladbo, če jo želiš odstraniti iz programa (samo Poljubno1 ali Poljubno2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Najboljša podjetja, ki so dosegla {NUM}{}({STRING} nivo)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Najboljša podjetja, ki so dosegla {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Seznam najboljših podjetij v {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Poslovnež
@@ -1161,13 +1161,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zamenjaj
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Težavnostna stopnja
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Preprosto
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Srednje
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Težko
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Po meri
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Prikaži tabelo najboljših
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Shrani
 
@@ -1250,7 +1243,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerantno
 STR_CITY_APPROVAL_HOSTILE                                       :Sovražno
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ni na voljo nobene uporabne UI.{}UI so na voljo preko 'Prenosa vsebin'.
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Zamenjava stopnje na način "po meri"
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredne nastavitve
@@ -1698,7 +1690,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Urejeval
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Več igralcev
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Možnosti
-STR_INTRO_DIFFICULTY                                            :{BLACK}Težavnost ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Težavnost
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Napredne nastavitve
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF nastavitve
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Preveri razpoložljive vsebine

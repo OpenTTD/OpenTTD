@@ -642,7 +642,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Clica a 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Clica a la pista de música per treure-la del programa actual (només Personalitzat 1 o Personalitzat 2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Principals empreses en aconseguir el Nivell {NUM}{}({STRING} )
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Principals empreses en aconseguir el Nivell {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Taula de Lliga d'Empreses a {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Empresari
@@ -1013,13 +1013,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Canvia e
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Nivell de Dificultat
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Fàcil
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Mitjà
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Difícil
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Personalitzable
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Veure la taula de les majors puntuacions
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Desa
 
@@ -1102,7 +1095,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No hi ha cap IA disponible...{}Podeu descarregar-ne a través del 'Contingut en línia'
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Aquesta acció canviarà el nivell de dificultat a personalitzat
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Paràmetres avançats
@@ -1583,7 +1575,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor d
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijugador
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcions del Joc
-STR_INTRO_DIFFICULTY                                            :{BLACK}Dificultat ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Dificultat
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Paràmetres avançats
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Extensions NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contingut en línia

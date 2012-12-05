@@ -641,7 +641,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik op 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik op het nummer om deze uit het programma te verwijderen (alleen Aangepast1 en Aangepast2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top bedrijven die {NUM} bereikt hebben{}({STRING} Niveau)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top bedrijven die {NUM} bereikt hebben
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Bedrijfscompetitietabel in {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Zakenman
@@ -1012,13 +1012,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Verander
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Moeilijkheidsgraad
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Gemakkelijk
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Gemiddeld
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Moeilijk
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Aangepast
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Bekijk topscorelijst
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Opslaan
 
@@ -1101,7 +1094,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Vijandig
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen bruikbare AIs beschikbaar...{}U kunt diverse AI's downloaden via het 'Online Content' systeem
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Deze actie past de moeilijkheidsgraad aan naar 'aangepast'
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Geavanceerde instellingen
@@ -1582,7 +1574,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenario
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multiplayer
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelopties
-STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilijkheidsgraad ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilijkheidsgraad
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Geavanceerde instellingen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-instellingen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online inhoud zoeken

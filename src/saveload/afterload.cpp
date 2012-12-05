@@ -2756,8 +2756,9 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(178)) {
+		extern uint8 _old_diff_level;
 		/* Initialise script settings profile */
-		_settings_game.script.settings_profile = IsInsideMM(_settings_game.difficulty.diff_level, SP_BEGIN, SP_END) ? _settings_game.difficulty.diff_level : (uint)SP_MEDIUM;
+		_settings_game.script.settings_profile = IsInsideMM(_old_diff_level, SP_BEGIN, SP_END) ? _old_diff_level : (uint)SP_MEDIUM;
 	}
 
 	/* Road stops is 'only' updating some caches */

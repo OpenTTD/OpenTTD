@@ -641,7 +641,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Clique n
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Faça clique numa faixa para a remover da lista (Personaliz. 1 ou Personaliz. 2 apenas)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top de empresas que chegaram a {NUM}{}(Nível {STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top de empresas que chegaram a {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tabela de Liga de Empresas em {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Negociante
@@ -1012,13 +1012,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mudar pa
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :Nível de Dificuldade{WHITE}
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Fácil
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Médio
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Difícil
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Personalizado
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Mostrar melhores pontuações
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Guardar
 
@@ -1101,7 +1094,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Não existem IA utilizáveis...{}Pode encontrar IAs disponiveis pelo sistema 'Verificar conteúdo online'
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Esta acção mudou o nível de dificuldade para Personalizado
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Opções Avançadas
@@ -1475,7 +1467,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor d
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multi-jogador
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opções do Jogo
-STR_INTRO_DIFFICULTY                                            :{BLACK}Dificuldade ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Dificuldade
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Opções Avançadas
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Definições NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Verificar Conteúdo Online

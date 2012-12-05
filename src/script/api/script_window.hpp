@@ -2098,10 +2098,6 @@ public:
 
 	/** Widgets of the #GameDifficultyWindow class. */
 	enum GameDifficultyWidgets {
-		WID_GD_LVL_EASY                              = ::WID_GD_LVL_EASY,                              ///< Easy level button.
-		WID_GD_LVL_MEDIUM                            = ::WID_GD_LVL_MEDIUM,                            ///< Medium level button.
-		WID_GD_LVL_HARD                              = ::WID_GD_LVL_HARD,                              ///< Hard level button.
-		WID_GD_LVL_CUSTOM                            = ::WID_GD_LVL_CUSTOM,                            ///< Custom level button.
 		WID_GD_HIGHSCORE                             = ::WID_GD_HIGHSCORE,                             ///< Highscore button.
 		WID_GD_ACCEPT                                = ::WID_GD_ACCEPT,                                ///< Accept button.
 		WID_GD_CANCEL                                = ::WID_GD_CANCEL,                                ///< Cancel button.

@@ -954,7 +954,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Клік
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Клікніце па назьве трэка, каб выдаліць яго з уласнай праґрамы
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Найбуйнейшыя кампаніі, якія дасягнулі {NUM}{}({STRING} узроўня складанасьці)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Найбуйнейшыя кампаніі, якія дасягнулі {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Табліца кампаніяў у {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Бізнэсоўца
@@ -1325,17 +1325,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Зьмя
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Узровень складанасьцi
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Лёгкі
-STR_DIFFICULTY_LEVEL_EASY.f                                     :{BLACK}лёгкая
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Сярэдні
-STR_DIFFICULTY_LEVEL_MEDIUM.f                                   :{BLACK}сярэдняя
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Цяжкі
-STR_DIFFICULTY_LEVEL_HARD.f                                     :{BLACK}цяжкая
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Уласны
-STR_DIFFICULTY_LEVEL_CUSTOM.f                                   :{BLACK}уласная
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Паказаць табліцу рэкордаў
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Захаваць
 
@@ -1418,7 +1407,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Памярко�
 STR_CITY_APPROVAL_HOSTILE                                       :Варожае
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Модулі штучнага інтэлекту (ШІ/AI) адсутнічаюць.{}Іх можна спампаваць праз сістэму праверкі "анлайн-кантэнту".
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Вашыя дзеяньні зьмянілі ўзровень складанасьці на "Ўласны"
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Пашыраныя наладкі
@@ -1899,7 +1887,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Рэда
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Сеткавая гульня
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Наладкі гульні
-STR_INTRO_DIFFICULTY                                            :{BLACK}Складанасьць ({STRING.f})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Складанасьць
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Пашыраныя наладкі
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Наладкi NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Праверыць анлайн-кантэнт

@@ -643,7 +643,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}(לחץ 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}(לחץ על רצועה כדי להסיר אותה מהתוכנית הנוחכית(מותאם אישית 1 או מותאם אישית 2 בלבד
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}חמש החברות שהגיעו לשנת {NUM}{}({STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}חמש החברות שהגיעו לשנת {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}טבלת ליגה של חברות ב {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}.{COMMA}
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :איש עסקים
@@ -1002,13 +1002,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}שנה �
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}דרגת קושי
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}קל
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}בינוני
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}קשה
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}מותאם אישית
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}הצג טבלת שיאים
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}שמירה
 
@@ -1085,7 +1078,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :סביר
 STR_CITY_APPROVAL_HOSTILE                                       :עויין
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}אין בינות מלאכותיות מתאימות...{}באפשרותך להוריד בינות מלאכותיות בעזרת מערכת ה'תוכן המקוון'
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}פעולה זו קבעה רמת קושי מותאמת אישית
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}הגדרות מתקדמות
@@ -1323,7 +1315,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}עורך
 STR_INTRO_MULTIPLAYER                                           :{BLACK}משחק מרובה שחקנים
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}אפשרויות
-STR_INTRO_DIFFICULTY                                            :{BLACK}({STRING})דרגת קושי
+STR_INTRO_DIFFICULTY                                            :{BLACK}
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}הגדרות מתקדמות
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}(NewGRF)הגדרות שדרוג גראפי
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK} בדוק תוכן מקוון

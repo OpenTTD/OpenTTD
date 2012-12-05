@@ -619,7 +619,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Pincha n
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Pincha na pista de música para borrala do programa actual (Só Persoal1 ou Persoal2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Mellores compañías que chegaron ó {NUM}{}(Nivel {STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Mellores compañías que chegaron ó {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Táboa da Liga de Compañías en {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Home de negocios
@@ -977,13 +977,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambiar 
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Nivel de Dificultade
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Fácil
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Medio
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Difícil
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Persoal
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Mostra-la lista das mellores puntuacións
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Grabar
 
@@ -1056,7 +1049,6 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Esta acción cambiou o nivel de dificultade a Personalizado
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Opcións Avanzadas
@@ -1281,7 +1273,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor D
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multixogador
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcións da Partida
-STR_INTRO_DIFFICULTY                                            :{BLACK}Dificultade ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Dificultade
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Opcións Avanzadas
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configuración NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Comprobar Contido Online

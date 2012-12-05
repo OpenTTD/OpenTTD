@@ -642,7 +642,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klicke a
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klicke auf einen Musiktitel, um ihn aus der aktuellen Liste zu entfernen (nur für Benutzerdefiniert 1 und 2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Beste Firmen, die {NUM} erreichten{}(Schwierigkeitsgrad {STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Beste Firmen, die {NUM} erreichten
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Firmentabelle in {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Geschäftsmann
@@ -1013,13 +1013,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Paramete
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Schwierigkeitsgrad
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Leicht
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Normal
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Schwer
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}benutzerdefiniert
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Highscoretabelle zeigen
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Speichern
 
@@ -1102,7 +1095,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Mäßig
 STR_CITY_APPROVAL_HOSTILE                                       :Gering
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Keine KI gefunden...{}Verschiedene KI sind via 'Erweiterungen herunterladen' verfügbar
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Hierdurch wurde der Schwierigkeitsgrad auf "benutzerdefiniert" gestellt
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Erweiterte Einstellungen
@@ -1583,7 +1575,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Szenarie
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Mehrspieler
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spieleinstellungen
-STR_INTRO_DIFFICULTY                                            :{BLACK}Schwierigkeit ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Schwierigkeit
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Erweiterte Einstellungen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-Einstellungen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Erweiterungen herunterladen

@@ -642,7 +642,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Pulse en
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Pulsa sobre la canción para quitarla del programa actual (Solo Personalizado1 y Personalizado2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top de empresas que han alcanzado {NUM}{}(Nivel {STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Top de empresas que han alcanzado {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tabla clasificatoria de empresas en {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Hombre de negocios
@@ -1013,13 +1013,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambiar 
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Nivel de dificultad
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Fácil
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Media
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Difícil
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Personalizada
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Ver gráfica de altas puntuaciones
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Guardar
 
@@ -1102,7 +1095,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se encontraron IAs apropiadas...{}Puedes descargar IAs a través del sistema de 'Contenido Online'
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Esta acción cambia el nivel de dificultad a personalizado
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Opciones avanzadas
@@ -1583,7 +1575,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor d
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijugador
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opciones de Juego
-STR_INTRO_DIFFICULTY                                            :{BLACK}Dificultad ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Dificultad
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Opciones Avanzadas
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configuración NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenido Online

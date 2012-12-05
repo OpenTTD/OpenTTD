@@ -1027,86 +1027,14 @@ static bool InvalidateCompanyInfrastructureWindow(int32 p1)
 	return true;
 }
 
-/*
- * A: competitors
- * B: competitor start time. Deprecated since savegame version 110.
- * C: town count (3 = high, 0 = very low)
- * D: industry count (4 = high, 0 = none)
- * E: inital loan (in GBP)
- * F: interest rate
- * G: running costs (0 = low, 2 = high)
- * H: construction speed of competitors (0 = very slow, 4 = very fast)
- * I: competitor intelligence. Deprecated since savegame version 110.
- * J: breakdowns (0 = off, 2 = normal)
- * K: subsidy multiplier (0 = 1.5, 3 = 4.0)
- * L: construction cost (0-2)
- * M: terrain type (0 = very flat, 3 = mountainous)
- * N: amount of water (0 = very low, 3 = high)
- * O: economy (0 = steady, 1 = fluctuating)
- * P: Train reversing (0 = end of line + stations, 1 = end of line)
- * Q: disasters
- * R: area restructuring (0 = permissive, 2 = hostile)
- * S: the difficulty level
- */
-static const DifficultySettings _default_game_diff[SP_END] = { /*
-	 A, C, D,      E, F, G, H, J, K, L, M, N, O, P, Q, R, S*/
-	{2, 2, 4, 300000, 2, 0, 2, 1, 2, 0, 1, 0, 0, 0, 0, 0, 0}, ///< easy
-	{4, 2, 3, 150000, 3, 1, 3, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1}, ///< medium
-	{7, 3, 3, 100000, 4, 1, 3, 2, 0, 2, 3, 2, 1, 1, 1, 2, 2}, ///< hard
-};
-
-void SetDifficultyLevel(int mode, DifficultySettings *gm_opt)
-{
-	if (mode != SP_CUSTOM) {
-		assert(mode >= SP_BEGIN && mode < SP_END);
-		*gm_opt = _default_game_diff[mode];
-	} else {
-		gm_opt->diff_level = SP_CUSTOM;
-	}
-}
-
 /** Checks if any settings are set to incorrect values, and sets them to correct values in that case. */
 static void ValidateSettings()
 {
-	/* Force the difficulty levels to correct values if they are invalid. */
-	if (_settings_newgame.difficulty.diff_level != SP_CUSTOM) {
-		SetDifficultyLevel(_settings_newgame.difficulty.diff_level, &_settings_newgame.difficulty);
-	}
-
 	/* Do not allow a custom sea level with the original land generator. */
 	if (_settings_newgame.game_creation.land_generator == 0 &&
 			_settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
 		_settings_newgame.difficulty.quantity_sea_lakes = CUSTOM_SEA_LEVEL_MIN_PERCENTAGE;
 	}
-}
-
-static bool DifficultyReset(int32 level)
-{
-	/* In game / in the scenario editor you can set the difficulty level only to custom. This is
-	 * needed by the AI Gui code that sets the difficulty level when you change any AI settings. */
-	if (_game_mode != GM_MENU && level != 3) return false;
-	SetDifficultyLevel(level, &GetGameSettings().difficulty);
-	return true;
-}
-
-static bool DifficultyChange(int32)
-{
-	if (_game_mode == GM_MENU) {
-		if (_settings_newgame.difficulty.diff_level != SP_CUSTOM) {
-			ShowErrorMessage(STR_WARNING_DIFFICULTY_TO_CUSTOM, INVALID_STRING_ID, WL_WARNING);
-			_settings_newgame.difficulty.diff_level = SP_CUSTOM;
-		}
-		SetWindowClassesDirty(WC_SELECT_GAME);
-	} else {
-		_settings_game.difficulty.diff_level = SP_CUSTOM;
-	}
-
-	/* If we are a network-client, update the difficult setting (if it is open).
-	 * Use this instead of just dirtying the window because we need to load in
-	 * the new difficulty settings */
-	if (_networking) InvalidateWindowClassesData(WC_GAME_OPTIONS, GOID_DIFFICULTY_CHANGED);
-
-	return true;
 }
 
 static bool DifficultyNoiseChange(int32 i)
@@ -1118,7 +1046,7 @@ static bool DifficultyNoiseChange(int32 i)
 		}
 	}
 
-	return DifficultyChange(i);
+	return true;
 }
 
 static bool MaxNoAIsChange(int32 i)
@@ -1129,7 +1057,7 @@ static bool MaxNoAIsChange(int32 i)
 		ShowErrorMessage(STR_WARNING_NO_SUITABLE_AI, INVALID_STRING_ID, WL_CRITICAL);
 	}
 
-	return DifficultyChange(i);
+	return true;
 }
 
 /**

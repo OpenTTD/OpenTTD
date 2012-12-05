@@ -638,7 +638,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}اضغط
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}اضغط على المسار لازالته من القائمة
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}الشركات الكبرى التي وصلت لـ {NUM}{}) {STRING} مستوى)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}الشركات الكبرى التي وصلت لـ {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}ترتيب الشركات {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :رجل اعمال
@@ -1004,13 +1004,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}غير �
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}مستوى الصعوبة
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}سهل
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}متوسط
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}صعب
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}مخصص
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}عرض النتائج العليا
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}حفظ
 
@@ -1093,7 +1086,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :متقبل
 STR_CITY_APPROVAL_HOSTILE                                       :معاد
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}لايوجد ذكاء اصطناعي متاح ...{}تستطيع تجميل العديد من الذكاء الاصطناعي عن طريق اللانترنت
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}هذا التغيير سيحول مستوى الصعوبة الى اختياري
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}الاعدادات المتقدمة
@@ -1375,7 +1367,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}محرر
 STR_INTRO_MULTIPLAYER                                           :{BLACK}لعب جماعي
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}خيارات اللعبة
-STR_INTRO_DIFFICULTY                                            :{BLACK} مستوى الصعوبة ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK} مستوى الصعوبة
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}الاعدادات المتقدمة
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK} اعدادات NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK} ابحث عن المحتوى على الانتر نت

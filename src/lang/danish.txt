@@ -641,7 +641,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik på
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik på et musiknummer for at fjerne det fra programlisten (kun for Custom1/Custom2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Bedste virksomheder, som har nået {NUM}{}({STRING} Niveau)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Bedste virksomheder, som har nået {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Selskabsoversigt i {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Forretningsmand
@@ -1012,13 +1012,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Skift br
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Sværhedsgrad
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Nem
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Mellem
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Svær
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Speciel
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Vis higscoreliste
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Gem
 
@@ -1101,7 +1094,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fjendtlig
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Der blev ikke fundet en egnet computer-spiller...{}Du kan downloade flere forskellige computer-spillere gennem 'Online Indhold'.
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denne handling ændrer sværhedsgraden til speciel
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancerede indstillinger
@@ -1537,7 +1529,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenarie
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Netværksspil
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spilvalg
-STR_INTRO_DIFFICULTY                                            :{BLACK}Sværhedsgrad ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Sværhedsgrad
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avancerede indstillinger
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF indstillinger
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tjek Online Indhold

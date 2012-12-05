@@ -39,10 +39,6 @@ enum GameOptionsWidgets {
 
 /** Widgets of the #GameDifficultyWindow class. */
 enum GameDifficultyWidgets {
-	WID_GD_LVL_EASY,      ///< Easy level button.
-	WID_GD_LVL_MEDIUM,    ///< Medium level button.
-	WID_GD_LVL_HARD,      ///< Hard level button.
-	WID_GD_LVL_CUSTOM,    ///< Custom level button.
 	WID_GD_HIGHSCORE,     ///< Highscore button.
 	WID_GD_ACCEPT,        ///< Accept button.
 	WID_GD_CANCEL,        ///< Cancel button.

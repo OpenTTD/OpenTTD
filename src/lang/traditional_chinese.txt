@@ -633,7 +633,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}點擊�
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}點選音樂從目前清單中移除 (僅限「自訂一」或「自訂二」
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}公司已達到 {NUM}{}({STRING} 等級)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}公司已達到 {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}公司排行榜 {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :商人
@@ -1002,13 +1002,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}修改�
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}難易度
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}簡單
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}普通
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}困難
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}自訂
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}顯示排行榜
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}儲存
 
@@ -1091,7 +1084,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :能忍受
 STR_CITY_APPROVAL_HOSTILE                                       :抱敵意
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}無適合的 AI 可使用...{}您可以從「線上內容」系統中下載各種 AI。
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}這個動作會將難度變成自訂
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}進階設定
@@ -1358,7 +1350,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}場景�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}多人遊戲
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}遊戲選項
-STR_INTRO_DIFFICULTY                                            :{BLACK}難易度 ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}難易度
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}進階設定
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 設定
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}檢查線上內容

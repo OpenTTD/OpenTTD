@@ -640,7 +640,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klikk p�
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikk p책 eit musikkspor for 책 fjerne det fr책 gjeldande program (Gjeld berre eigendefinert 1 og 2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Beste firma som n책dde {NUM}{}({STRING} Niv책)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Beste firma som n책dde {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Firmarangering i {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Forretningsmann
@@ -1006,13 +1006,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Byt eige
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Vanskegrad
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Lett
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Middels
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Vanskelig
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Eigendefinert
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Syne rekordlista
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Lagre
 
@@ -1095,7 +1088,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fiendsleg
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Inga passande AIer tilgjengeleg...{}Du kan lasta ned fleire AI'ar fr책 nettet med spelets nedlastingssystem.
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denne handlinga endra vanskegraden til eigendefinert
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avanserte innstillingar
@@ -1379,7 +1371,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenario
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Fleirspelar
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelinnstillingar
-STR_INTRO_DIFFICULTY                                            :{BLACK}Vanskegrad ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Vanskegrad
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avanserte innstillingar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-innstillingar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sj책 etter innhald p책 nett

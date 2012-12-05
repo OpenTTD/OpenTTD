@@ -642,7 +642,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}음악 �
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}음악 목록에서 트랙을 제거하려면 클릭하세요 (사용자1, 사용자2만 사용 가능)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}{NUM}에 달성한 최고의 회사 ({STRING} 난이도)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}{NUM}에 달성한 최고의 회사
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}{NUM}의 회사 성취도 목록
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :{G=f}초보자
@@ -1013,13 +1013,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}사용�
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}난이도
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}쉬움
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}중간
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}어려움
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}사용자
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}고득점 차트 보이기
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}저장
 
@@ -1102,7 +1095,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :신경 씀
 STR_CITY_APPROVAL_HOSTILE                                       :싫어함
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}사용하기 적합한 AI가 없습니다...{}'온라인 콘텐츠' 시스템을 통해 AI를 다운받을 수 있습니다.
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}이 행위는 난이도를 사용자 설정으로 변경합니다
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}고급 설정
@@ -1583,7 +1575,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}시나�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}멀티 플레이
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}게임 설정
-STR_INTRO_DIFFICULTY                                            :{BLACK}난이도 ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}난이도
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}고급 설정
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 설정
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라인 콘텐츠 다운로드

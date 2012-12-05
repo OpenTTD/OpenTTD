@@ -639,7 +639,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}คล�
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}คลิกที่ชื่อเพลงเพื่อลบออกจากโปรแกรม (Custom1 or Custom2 เท่านั้น)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}บริษัทชั้นนำที่ก้าวไปสู่ {NUM}{}(ระดับ{STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}บริษัทชั้นนำที่ก้าวไปสู่ {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}ตารางแสดงการแข่งขันของบริษัทใน {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :นักธุรกิจ
@@ -1005,13 +1005,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}เป�
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}ระดับความยาก
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}ง่าย
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}ปานกลาง
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}ยาก
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}กำหนดเอง
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}แสดงแผนผังการจัดอันดับคะแนน
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}บันทึก
 
@@ -1094,7 +1087,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :พอผ่อ
 STR_CITY_APPROVAL_HOSTILE                                       :ไม่เป็นมิตร
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}ไม่มี AI ที่เหมาะสมปรากฎ...{}คุณสามารถดาวน์โหลด AI จากระบบ 'Online Content'
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}มีการเปลี่ยนแปลงระดับความยากเป็นแบบกำหนดเอง
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}ปรับแต่งเพิ่มเติม
@@ -1375,7 +1367,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}โป�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}เล่นหลายคน
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}ตัวเลือกเกม
-STR_INTRO_DIFFICULTY                                            :{BLACK}ความยาก ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}ความยาก
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}การตั้งค่าของความก้าวหน้า
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}การตั้งค่า NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}ตรวจสอบเนื้อหาออนไลน์

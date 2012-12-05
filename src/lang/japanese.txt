@@ -636,7 +636,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}曲を�
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}曲をクリックすると、曲を選択したプレイリストから除外します。（カスタム1/2 のみ）
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}{NUM}年に到達した会社のハイスコア{}（難易度： {STRING}）
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}{NUM}年に到達した会社のハイスコア
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}{NUM}の会社の格付けの順位
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :事務家
@@ -1005,13 +1005,6 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}カス�
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}難易度
 
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}簡単
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}普通
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}難しい
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}カスタム
-############ range for difficulty levels ends
-
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}ハイスコアを表示
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}保存
 
@@ -1094,7 +1087,6 @@ STR_CITY_APPROVAL_TOLERANT                                      :寛容
 STR_CITY_APPROVAL_HOSTILE                                       :対立
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}適切なAIがありません...{}いくつかのAIは「オンラインの項目を確認」からダウンロード可能です
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}この動作によって難易度がカスタムになりました。
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}拡張設定･パッチ設定
@@ -1375,7 +1367,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}シナ�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}マルチプレイヤーゲーム
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}ゲームの基本設定
-STR_INTRO_DIFFICULTY                                            :{BLACK} 難易度 ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK} 難易度
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}拡張設定(パッチ設定)
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRFの設定
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}オンラインの項目を確認
