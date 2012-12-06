@@ -523,6 +523,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Вартіст�
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Рейтингова таблиця
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Детальний рейтинг продуктивності
+STR_GRAPH_MENU_HIGHSCORE                                        :Таблиця рекордів
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1184,8 +1185,6 @@ STR_TERRAIN_TYPE_FLAT                                           :рівнинн�
 STR_TERRAIN_TYPE_HILLY                                          :пагористий
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :гористий
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :допустиме
 STR_CITY_APPROVAL_TOLERANT                                      :терпиме
 STR_CITY_APPROVAL_HOSTILE                                       :вороже
@@ -1217,7 +1216,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Налашту�
 
 STR_CONFIG_SETTING_OFF                                          :ні
 STR_CONFIG_SETTING_ON                                           :так
-STR_CONFIG_SETTING_DISABLED                                     :вимкнено
+STR_CONFIG_SETTING_DISABLED                                     :Вимкнено
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :ні
 STR_CONFIG_SETTING_COMPANIES_OWN                                :для власної компанії
@@ -1230,6 +1229,29 @@ STR_CONFIG_SETTING_REALISTIC                                    :реаліст�
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :ліворуч
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :по центру
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :праворуч
+
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максимальна сума позики: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максимальна сума позики для компанії (без урахування інфляції)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Процентна ставка: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Процентна ставка за позиками; також контролює інфляцію, якщо увімкнена
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Експлуатаційні витрати: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Встановіть рівень обслуговування та експлуатаційні витрати на транспорт та інфраструктуру
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Швидкість будівництва: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Обмеження кількості будівельних дій для ШІ
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Поломки транспорту: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Встановіть частоту поломок недостатньо якісно обслугованого транспорту
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Множник субсидій: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Встановіть множник оплати за субсидовані перевезення
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Вартість будівництва: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Встановити рівень витрат на будівництво та придбання
+STR_CONFIG_SETTING_RECESSIONS                                   :Рецесії: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Якщо увімкнено, рецесії можуть відбуватися кожні декілька років. Під час рецессії обсяг всіх виробництв значно знижений (він повертається на попередній рівень, коли рецесія закінчується)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Заборонити поїздам розвертатися на станціях: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Якщо увімкнено, поїзди не будуть розвертатися у не кінцевих зупинках, якщо є коротший шлях до їх наступного пункту призначення при русі заднім ходом
+STR_CONFIG_SETTING_DISASTERS                                    :Стихійні лиха: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Перемкнути стихійні лиха, які можуть випадково зруйнувати транспорт або інфраструктуру
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Ставлення ради міста до реструктуризації його території: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Виберіть, який рівень шуму та руйнування довкілля компаніями впливає на їх рейтинг для міст та подальші будівельні дії в їх межах
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Дозволити будівництво на схилах та узбережжях: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :При включенні шляхи та станції можна будувати на більшості схилів. При відключенні допускається лише будівництво, що не потребує добудови фундаментів (шляхи за напрямом схилу, станції на повністю рівній землі)
@@ -1271,9 +1293,9 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Максима�
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Максимально допустима довжина тунелів
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Спосіб створення сировинних підприємств: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Спосіб створення сировинних підприємств:{}- заборонено: створення сировинних підприємств заборонено;{}- як інші: створюються звічайним способом у вказанному гравцем місці;{}- геологічна розвідка: створюються у випадковому місці або не створються зовсім.
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :заборонено
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :як інші
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :геологічна розвідка
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Заборонено
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Як інші індустрії
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Геологічна розвідка
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Рівний простір навколо підприємств: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Розмір рівного простору навколо підприємств, що гарантує наявність вільного місця для будівництва шляхів, тощо.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Дозволити декілька однотипних підприємств на місто: {STRING}
@@ -1296,10 +1318,10 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Автотра�
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :При включенні дорожній транспорт буде очікувати в черзі перед зайнятими зупинками.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Прокручувати вікно, коли курсор з краю: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :При включенні вміст вікон огляду буде прокручуватись при підведенні курсора до краю вікна
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :вимкнено
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :головне вікно тільки в повноекранному режимі
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :головне вікно
-STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :кожне вікно огляду
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Вимкнено
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Головне вікно тільки в повноекранному режимі
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Головне вікно
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Кожне вікно огляду
 STR_CONFIG_SETTING_BRIBE                                        :Дозволити підкуп місцевої влади: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Дозволяє компаніям давати хабарі місцевій владі. Якщо підкуп буде викрито, протягом 6 місяців компанія не матиме змоги взаємодіяти з владою міста.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Дозволити придбання ексклюзивних прав: {STRING}
@@ -1317,9 +1339,9 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Налашту�
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Частота повітряних катастроф: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Налаштування частоти повітряних катастроф
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :немає
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :низька
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :нормальна
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Немає
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Низька
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Нормальна
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Дозволити встановлення зупинок на дорогах міста: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Дозволяє встановлення зупинок на дорогах, якими володіє місто.
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Дозволити встановлення зупинок на дорогах конкурентів: {STRING}
@@ -1339,9 +1361,9 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Повідом�
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Вмикає/вимикає повідомлення, коли транспортний засіб не в змозі знайти шлях до пункту призначення.
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Перевіряти завдання транспорту: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :При включенні завдання транспортних засобів періодично перевіряються з метою своєчасного попередження про помилки або проблеми.
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ні
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :так, крім зупиненого транспорту
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :так, для всього транспорту
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Ні
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Так, крім зупиненого транспорту
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Так, для всього транспорту
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Попереджувати про збиткові транспортні засоби: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Вмикає/вимикає повідомлення про транспортні засоби, що не принесли прибутку на протязі року.
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспортні засоби не застарівають: {STRING}
@@ -1421,6 +1443,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :прокрут�
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :немає
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Швидкість прокрутки колесом миші: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Налаштування чутливості прокрутки колесом миші
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Екранна клавіатура: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Виберіть спосіб відкриття екранної клавіатури для введення тексту у поля тільки за допомогою вказівного пристрою. Це призначено для невеликих пристроїв без фактичної клавіатури
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Вимкнено
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Подвійний клік
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Одиночний клік (коли виділено)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Одиночний клік (негайно)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Емуляція правого кліку: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Задає спосіб емуляції правого кліку
@@ -1446,10 +1474,10 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Пауза на
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :При включенні на початку гри автоматично вмикається пауза.
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Дозволити в режимі паузи: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Вибір дій, доступних в режимі паузи.
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :ніяких дій
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :всі дії, крім будівництва
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :всі дії, крім зміни ландшафту
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :будь-які дії
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Ніяких дій
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Всі дії, крім будівництва
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Всі дії, крім зміни ландшафту
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Всі дії
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Відкривати розширенний список транспорту: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Вмикає використання розширенного інтерфейсу списків транспорту, що має інструменти групування транспортних засобів.
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Показувати індикатори завантаження: {STRING}
@@ -1492,6 +1520,12 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Заборон�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Заборонити комп'ютеру використання кораблів: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Забороняє віртуальним гравцям використання водного транспорту.
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Параметри профілю за умовчанням: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Виберіть, який профіль налаштувань використовувати випадковому ШІ або для початкових значень при додаванні нового ШІ або сценарію гри
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Легкий
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Середній
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Складний
+
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Дозволити AI у колективній грі: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Дозволяє участь віртуальних гравців у колективній грі
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Максимально допустима кількість #opcodes: {STRING}
@@ -1502,7 +1536,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Налашту�
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Інтервал техогляду залізничного транспорту: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Налаштування інтервалу техогляду для нового залізничного транспорту (встановлений інтервал може бути змінено окремо для кожного транспортного засобу в його інтерфейсі).
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} д{P ень ні нів}/%
-STR_CONFIG_SETTING_SERVINT_DISABLED                             :відключено
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Відключено
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Інтервал техогляду дорожнього транспорту: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Налаштування інтервалу техогляду для нового дорожнього транспорту (встановлений інтервал може бути змінено окремо для кожного транспортного засобу в його інтерфейсі).
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Інтервал техогляду повітряного транспорту: {STRING}
@@ -1547,11 +1581,11 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :всі
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Тип дорожньої сітки для нових міст: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Тип дорожньої сітки міста.
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :стандартна
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :покращена
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Стандартна
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Покращений алгоритм
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :сітка 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :сітка 3x3
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :випадково
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Випадково
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Міська влада може будувати дороги: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Дозволяє містам самостійно будувати дороги в процесі росту. Відключить, якщо хочете власноруч будувати міські дороги..
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Міська влада може будувати переїзди: {STRING}
@@ -1560,15 +1594,15 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Міська в
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :При відключенні дозволяється будувати два аеропорти на місто. Інакше кількість аеропортів буде залежати від допустимого рівня шуму, що в свою чергу залежить від населення міста, розміру аеропорта та відстані між аеропортами.
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Засновування нових міст під час гри: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Дозволяє заснування нових міст гравцями під час гри.
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :заборонено
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :дозволено
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :дозволено (з вибором дорожньої сітки)
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Заборонено
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Дозволено
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Дозволено (з вибором дорожньої сітки)
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Поява дерев під час гри: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Налаштування випадкової появи дерев на карті в процесі гри. Ця настройка також впливає на відповідні підприємства, такі як лісопилки.
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :відсутня {RED}(зупиняться лісопилки)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :тільки у тропіках
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :скрізь
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Відсутня {RED}(зупиняє лісопилки)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Тільки у тропіках
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Скрізь
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Позиція головного меню: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Горизонтальна позиція основної панелі інструментів.
@@ -1577,7 +1611,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Горизон�
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Радіус прилипання вікон: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Дистанція між вікнами, при якій вікно, що переміщують, буде автоматично вирівноватися та "прилипати" до сусідніх вікон.
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} піксел{P ь і ів}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :відключено
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Відключено
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Максимальна кількість вікон (що не прилипають): {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Максимально допустима кількість незакріплених вікон. При відкритті нових вікон зверх вказаної кількості старі вікна будуть закриватися.
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
@@ -1602,7 +1636,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :дуже шви
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Співвідношення кількості мегаполісів: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Кількість міст-мегаполісів в загальній кількості міст, що засновуються на початку гри. Мегаполіси можуть мати з самого початку значно більше населення (що контролюється налаштуванням множника населення) та ростуть швидше.
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 з {COMMA}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :жодного
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Жодного
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Множник розміру мегаполісів: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Середньостатистичне відношення початкового розміру мегаполісів порівняно зі звичайними містами.
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Прибрати безглузді елементи доріг під час їх будівництва: {STRING}
@@ -1670,6 +1704,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Реда
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Мережева гра
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Налаштування гри
+STR_INTRO_HIGHSCORE                                             :{BLACK}Таблиця рекордів
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Розширені налаштування
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Налаштування NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Додатковий контент
@@ -1689,6 +1724,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Вибр
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Вибрати 'іграшковий' варіант
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Показати налаштування гри
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Показати таблицю рекордів
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Показати розширені налаштування
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показати настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Перевірити доступний для завантаження додатковий контент

@@ -398,6 +398,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Rahtitaksat
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Yhtiökilpataulukko
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Suoritearviointi
+STR_GRAPH_MENU_HIGHSCORE                                        :Pistetaulukko
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1059,8 +1060,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Tasainen
 STR_TERRAIN_TYPE_HILLY                                          :Kukkulainen
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Vuoristoinen
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Salliva
 STR_CITY_APPROVAL_TOLERANT                                      :Suvaitseva
 STR_CITY_APPROVAL_HOSTILE                                       :Vihamielinen
@@ -1092,7 +1091,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Asetukset, joid
 
 STR_CONFIG_SETTING_OFF                                          :pois
 STR_CONFIG_SETTING_ON                                           :päällä
-STR_CONFIG_SETTING_DISABLED                                     :pois käytöstä
+STR_CONFIG_SETTING_DISABLED                                     :Pois käytöstä
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Pois
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Oma yhtiö
@@ -1105,6 +1104,29 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistinen
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vasemmalla
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :keskellä
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :oikealla
+
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Suurin mahdollinen laina alussa: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Suurin mahdollinen yhtiön ottama laina (ottamatta huomioon inflaatiota)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Korko: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lainan korko; ohjaa myös inflaatiota mikäli käytössä
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Käyttökustannukset: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Määritä kulkuneuvojen sekä infrastruktuurin ylläpito- ja käyttökustannusten taso
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Rakennusnopeus: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Rajoita tekoälyn rakennustoimien määrää
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Ajoneuvojen hajoaminen: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Määritä kuinka usein puutteellisesti huolletut ajoneuvot voivat hajota
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Tukikerroin: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Määritä kuinka paljon tuetuista yhteyksistä maksetaan
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Rakennuskustannukset: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Määritä rakennus- ja ostokustannusten taso
+STR_CONFIG_SETTING_RECESSIONS                                   :Lamat: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Mikäli käytössä, muutaman vuoden välein saattaa ilmaantua taloudellinen lama. Laman aikana kaikki tuotanto on huomattavasti alhaisempaa (palautuu normaalille tasolle laman päätyttyä)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Estä junien kääntyminen asemilla: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Mikäli käytössä, junat eivät käänny ei-pääteasemilla vaikka kääntymisen jälkeen saatavilla olisi lyhempi reitti
+STR_CONFIG_SETTING_DISASTERS                                    :Onnettomuudet: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ottaa käyttöön onnettomuudet jotka saattavat ajoittain estää tai tuhota liikennettä tai infrastruktuuria
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Kaupunginvaltuuston asenne alueiden uudelleenjärjestelyyn: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Valitse, kuinka paljon yhtiöiden aiheuttama melu ja ympäristövahingot vaikuttavat niiden arvioihin sekä tuleviin rakennustoimiin alueella
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Rakentaminen rinteisiin ja rannikolle sallittu: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Mikäli käytössä, ratoja ja asemia voidaan rakentaa useimmille rinteille. Mikäli pois käytöstä, niitä voidaan rakentaa vain radalle sopivaan maastoon joka ei vaadi perustuksia
@@ -1146,9 +1168,9 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Suurin sallittu
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Suurin sallittu pituus tunneleita rakennettaessa
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manuaalinen raakateollisuuden rakentamistapa: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Ensisijaisten teollisuuslaitosten rahoitustapa. 'ei mitään' tarkoittaa, että rahoitus ei ole mahdollista, 'koekaivaus' tarkoittaa, että rahoitus on mahdollista mutta teollisuuslaitos rakennetaan sattumanvaraiselle paikalle kartalla tai rakennus epäonnistuu, 'kuten muut tehtaat' tarkoittaa, että rakentaminen onnistuu kuten kaikkien muidenkin teollisuuslaitosten kohdalla
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ei mikään
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kuten muut tehtaat
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :koekaivaus
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Ei mikään
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Kuten muut tehtaat
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Koekaivaus
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Teollisuutta ympäröivä tasainen maasto: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Teollisuuslaitosten ympärillä oleva tasainen maasto. Tämä varmistaa että teollisuuslaitosten ympärillä on tyhjää tilaa esimerkiksi ratojen ja asemien rakantamiseen
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Kaupungissa voi olla useita samanlaisia teollisuustyyppejä: {STRING}
@@ -1171,10 +1193,10 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Ajoneuvohen jon
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Ajoneuvot odottavat pysäkkien edessä kunnes ne vapautuvat
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Vieritä ikkunaa, kun hiiri osuu reunaan: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Mikäli käytössä, näkymät siirtyvät hiiren ollessa lähellä ikkunan reunaa
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :pois käytöstä
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :päänäkymässä, vain koko ruudun tilassa
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :päänäkymässä
-STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :kaikissa näkymissä
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Pois käytöstä
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Päänäkymässä, vain koko ruudun tilassa
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Päänäkymässä
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Kaikissa näkymissä
 STR_CONFIG_SETTING_BRIBE                                        :Salli viranomaisten lahjominen: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Salli yhtiöiden yrittää paikallisviranomaisten lahjontaa. Jos lahjontayritys paljastuu, yhtiö ei voi toimia kaupungissa kuuteen kuukauteen
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Salli kuljetusyksinoikeuksien ostaminen: {STRING}
@@ -1192,9 +1214,9 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Määritä lent
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Lentokoneonnettomuuksien määrä: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Määrittää lento-onnettomuuksien todennäköisyyden
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ei yhtään
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :vähennetty
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :tavallinen
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ei yhtään
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Vähennetty
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Tavallinen
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Läpiajettavat pysäkit kaupungin teille: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Sallii pysäkkien rakentamisen kaupunkien omistamille teille
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Salli läpiajettavat pysäkit kilpailijoiden omistamilla teillä: {STRING}
@@ -1214,9 +1236,9 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Varoita, jos ku
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Lähetä viesti, jos kulkuneuvo ei löydä reittiä määränpäähänsä
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Tarkista ajoneuvojen pysähdykset: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Mikäli käytössä, kulkuneuvojen määräykset tarkistetaan väliajoin ja havaituista ongelmista ilmoitetaan uutisviestillä
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ei
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :kyllä, mutta ei pysäytetyille
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :kaikille ajoneuvoille
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Ei
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Kyllä, mutta ei pysäytetyille
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :aikille ajoneuvoille
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varoita, jos kulkuneuvon tulos on negatiivinen: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Mikäli käytössä, uutisviesti lähetetään jos kulkuneuvo ei ole tuottanut rahaa viimeisen kalenterivuoden aikana
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Ajoneuvot eivät vanhene: {STRING}
@@ -1296,6 +1318,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :kartan vieritys
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :ei käytössä
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Rullan nopeus: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Määritä hiiren rullan herkkyys näkymää siirrettäessä
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Virtuaalinäppäimistö: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Valitse tapa, jolla virtuaalinäppäimistö avataan syötettäessä tekstiä kun käytössä on ainoastaan osoitinlaite. Tämä on tarkoitettu pienille laitteille, joissa ei ole fyysistä näppäimistöä
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Pois käytöstä
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Tuplaklikkaus
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Yksi klikkaus (kun kohdistettuna)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Yksi klikkaus (välittömästi)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Oikean painikkeen emulointi: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Määritä kuinka hiiren oikean näppäimen painalluksia emuloidaan
@@ -1321,10 +1349,10 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Uusi peli alkaa
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Mikäli käytössä, peli pysäytetään automaattisesti uuden pelin alussa, mahdollistaen esimerkiksi kartan tarkemman tutkimisen
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Pelin ollessa pysäytetty, salli: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Valitse käytössä olevat toiminnot pelin ollessa pysäytettynä
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :ei mitkään toiminnot
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :kaikki ei-rakennustoiminnot
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :kaikki paitsi maastonmuokkaustoiminnot
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :kaikki toiminnot
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Ei mitkään toiminnot
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Kaikki ei-rakennustoiminnot
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Kaikki paitsi maastonmuokkaustoiminnot
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Kaikki toiminnot
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Edistynyt ajoneuvolista: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Salli kehittyneiden kulkuneuvolistojen käyttö kulkuneuvojen ryhmittelyssä
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Lastausilmaisimet: {STRING}
@@ -1367,6 +1395,12 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Mikäli käytö
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Tietokoneella ei ole laivoja: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Mikäli käytössä, laivojen rakentaminen ei ole mahdollista tietokonepelaajille
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Oletusarvoinen asetusprofiili: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Valitse, mitä asetusprofiilia käytetään sattumanvaraisille tekoälyille tai alkuarvoille lisättäessä uutta tekoälyä tai peliskriptiä
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Helppo
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Keskitaso
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Vaikea
+
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Salli tekoälyt moninpelissä: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Sallii tietokonepelaajien osallistumisen moninpeleihin
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodet ennen skriptin pysäyttämistä: {STRING}
@@ -1377,7 +1411,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Määritä, aih
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Junien huoltoväli oletuksena: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Määritä oletushuoltoväli uusille junille mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} päivä{P 0 "" ä}/%
-STR_CONFIG_SETTING_SERVINT_DISABLED                             :pois käytöstä
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Pois käytöstä
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Ajoneuvojen huoltoväli oletuksena: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Määritä oletushuoltoväli uusille ajoneuvoille mikäli kulkuneuvolle ei ole määritelty erillistä huoltoväliä
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Lentokoneiden huoltoväli oletuksena: {STRING}
@@ -1422,11 +1456,11 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Kaikki
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Uusissa kaupungeissa käytettävä tiekaava: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Kaupunkien käyttämä tieverkon kaava
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :oletus
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :parempia teitä
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Alkuperäinen
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Parempia teitä
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2-ruudukko
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3-ruudukko
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :satunnainen
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Satunnainen
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Kaupungit saavat rakentaa teitä: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Salli kaupunkien rakentaa teitä kasvaessaan. Mikäli pois käytöstä, kaupungit eivät voi rakentaa teitä itse
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Kaupungit saavat rakentaa tasoristeyksiä: {STRING}
@@ -1435,15 +1469,15 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Käytä kaupunk
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Mikäli pois käytöstä, kaupungissa voi olla kaksi lentokentää. Mikäli käytössä, lentokenttien määrä kaupungissa rajoittuu kaupungin melurajan mukaan. Meluraja riippuu asukasluvusta ja lentokentän koosta sekä etäisyydestä
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Kaupunkien perustaminen pelissä: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Mikäli käytössä, pelaajat voivat perustaa uusia kaupunkeja
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :kielletty
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :sallittu
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :sallittu, oma kaupugin kaava
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Kielletty
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Sallittu
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Sallittu, oma kaupugin kaava
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Puiden istutus pelissä: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Määrittää puiden sattumanvaraisen luomisen. Tämä voi vaikuttaa teollisuuslaitoksiin jotka ovat riippuvaisia puiden kasvamisesta, esimerkiksi sahat
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ei ollenkaan {RED}(rikkoo sahan)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :vain sademetsiin
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :kaikkialle
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ei ollenkaan {RED}(rikkoo sahan)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Vain sademetsiin
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Kaikkialle
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Päätyökalupalkin sijainti: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Ruudun yläreunassa olevan työkalupalkin sijainti leveyssuunnassa
@@ -1452,7 +1486,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Ruudun alareuna
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Ikkunoiden kiinnittymisetäisyys: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Ikkunoiden välinen etäisyys ennen niiden kohdistamista toistensa kanssa
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pikseli{P 0 "" ä}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :pois käytöstä
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Pois käytöstä
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Suurin sallittu ei-kiinnitettyjen ikkunoiden lukumäärä: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Suurin sallittu ei-kiinnitettyjen ikkunoiden määrä ennen vanhojen ikkunoiden sulkemista uusien ikkunoiden tieltä
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
@@ -1477,7 +1511,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Erittäin nopea
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Suurkaupunkien osuus: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Suurkaupungiksi muuttuvien kaupunkien määrä, eli kaupungit jotka ovat suurempia ja kasvavat nopeammin
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 / {COMMA}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ei yhtään
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ei yhtään
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Kasvukerroin alussa: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Suurkaupunkien keskimääräinen koko suhteessa normaaleihin kaupunkeihin pelin alussa
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Poista turhat tie-elementit tienrakennuksen aikana: {STRING}
@@ -1545,6 +1579,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Skenaari
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Moninpeli
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pelin asetukset
+STR_INTRO_HIGHSCORE                                             :{BLACK}Pistetaulukko
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Lisäasetukset
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-asetukset
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tarkista Online-sisältö
@@ -1564,6 +1599,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Valitse 
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Valitse 'lelumaan' maastotyyppi.
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Näytä peliasetukset.
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Näytä pistetaulukko
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Näytä edistyneemmät asetukset
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näytä NewGRF-asetukset
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tarkista uutta ja päivitettyä sisältöä ladattavaksi

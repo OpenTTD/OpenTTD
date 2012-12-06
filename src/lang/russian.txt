@@ -524,6 +524,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :График о
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Табель о рангах
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Рейтинг в деталях
+STR_GRAPH_MENU_HIGHSCORE                                        :Таблица рекордов
 ############ range ends here
 
 ############ range for industry menu starts
@@ -716,7 +717,7 @@ STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Макс
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Доставлено:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Груз:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Деньги:
-STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Займ:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Заём:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Всего:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Количество транспортных средств, принёсших доход в прошлом году.
@@ -727,7 +728,7 @@ STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Наиб
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Кол-во груза, доставленного за последние 4 квартала
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Количество типов груза, доставленного за последний квартал
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Количество денег на банковском счету компании
-STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Размер ссуды, полученной этой компанией в банке
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Размер займа, полученного этой компанией в банке
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Всего пунктов из общего количества возможных
 
 # Music window
@@ -1209,8 +1210,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Плоский
 STR_TERRAIN_TYPE_HILLY                                          :Холмистый
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Гористый
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Дозволяющее
 STR_CITY_APPROVAL_TOLERANT                                      :Терпимое
 STR_CITY_APPROVAL_HOSTILE                                       :Враждебное
@@ -1257,6 +1256,29 @@ STR_CONFIG_SETTING_REALISTIC.f                                  :реалист�
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :слева
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :посередине
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :справа
+
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максимальная сумма займа: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максимальная сумма займа для компании (без учета инфляции)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Процентная ставка: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Процентная ставка по займам; также контролирует инфляцию, если та включена
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Эксплуатационные расходы: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Установите уровень обслуживания и эксплуатационные расходы на транспорт и инфраструктуру
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Скорость строительства: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Ограничьте количество строительных мероприятий для ИИ
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Поломки транспорта: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Задайте частоту поломок недостаточно качественно обслуженного транспорта
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Множитель субсидий: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Установите множитель оплаты за субсидируемые перевозки
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Затраты на строительство: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Установите уровень затрат на строительство и приобретение
+STR_CONFIG_SETTING_RECESSIONS                                   :Спады: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Если включено, спад может наступать раз в несколько лет. Во время спада весь объём производства значительно ниже (он возвращается к прежнему уровню, когда спад заканчивается)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Запретить разворот поездов на станциях: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Если включено, поезда не будут разворачиваться на проходных станциях, если есть более короткий путь к следующему пункту назначения, не требующий разворота
+STR_CONFIG_SETTING_DISASTERS                                    :Бедствия: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Переключите бедствия, которые могут время от времени блокировать или уничтожать транспортные средства или инфраструктуру
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Отношение городского совета к реструктуризации окрестностей: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Выберите уровень шума и загрязнения окружающей среды компаниями, влияющий на их рейтинг в городах и возможность дальнейшего строительства около городов
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Разрешить строительство на склонах и берегах: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :При включении пути и станции можно строить на склонах с использованием насыпей. При отключении пути можно строить только на склонах, ориентация которых совпадает с направлением дороги.
@@ -1448,6 +1470,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :для смещ
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :не использовать
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Скорость смещения обзора прокруткой колеса мыши: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Настройка скорости смещения обзора с помощью колеса прокрутки
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Экранная клавиатура: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Выберите способ открытия экранной клавиатуры для ввода текста в поля только с помощью указывающего устройства. Это предназначено для небольших устройств без фактической клавиатуры
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Отключено
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Двойной щелчок
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Одиночный щелчок (когда выделено)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Одиночный щелчок (немедленно)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Эмуляция нажатия правой кнопки мыши: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Выбор способа эмуляции нажатия правой кнопки мыши
@@ -1518,6 +1546,12 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Не допус
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Запрет строительства воздушных судов для игроков, управляемых компьютером
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Не допускать постройки кораблей компьютером: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Запрет строительства кораблей для игроков, управляемых компьютером
+
+STR_CONFIG_SETTING_AI_PROFILE                                   :Исходный профиль настроек: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Выберите, какой профиль настроек использовать случайному ИИ или для начальных значений при добавлении нового ИИ или сценария игры
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Лёгкий
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Средний
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Сложный
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Разрешить ИИ в сетевой игре: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Разрешить игрокам, управляемым компьютером, участвовать в сетевых играх
@@ -1697,6 +1731,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Реда
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Сетевая игра
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Настройки игры
+STR_INTRO_HIGHSCORE                                             :{BLACK}Таблица рекордов
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Расширенные настройки
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Настройки NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Проверить онлайн-контент
@@ -1716,6 +1751,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Выбр
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Выбрать игрушечный мир
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Открыть настройки игры
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Показать таблицу рекордов
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Показать расширенные настройки
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показать настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Найти новый и обновлённый контент для загрузки
@@ -3108,13 +3144,13 @@ STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURREN
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}ИТОГО:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Баланс:
-STR_FINANCES_LOAN_TITLE                                         :{WHITE}Ссуда:
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Кредитный лимит: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_LOAN_TITLE                                         :{WHITE}Заём
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Максимальный заём: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Занять {CURRENCY_LONG}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Взять деньги в кредит. Ctrl+щелчок - увеличить кредит до максимума.
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Взять деньги взаймы. Ctrl+щелчок - увеличить заём до максимума.
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Отдать {CURRENCY_LONG}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Вернуть часть ссуды. Ctrl+щелчок - вернуть всё, по возможности.
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Вернуть часть займа. Ctrl+щелчок - вернуть всё, по возможности.
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Инфраструктура
 
 # Company view
@@ -4026,12 +4062,12 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... уж
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Невозможно изменить название компании...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Невозможно изменить имя директора...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... максимально допустимый размер ссуды - {CURRENCY_LONG}.
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... максимально допустимый размер займа - {CURRENCY_LONG}.
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Невозможно занять больше денег...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... ссуда полностью погашена
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... заём полностью погашен
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... требуется {CURRENCY_LONG}
-STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Невозможно погасить ссуду...
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Невозможно отдать ссуженные банком деньги...
+STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Невозможно погасить заём...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Невозможно отдать занятые у банка деньги...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Невозможно приобрести компанию...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Невозможно построить штаб-квартиру компании...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Невозможно купить 25% акций этой компании...

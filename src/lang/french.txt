@@ -218,6 +218,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtre{NBSP}:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Entrer le filtre
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Entrer un mot-clé pour filtrer la liste
 
@@ -398,6 +399,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Valeur des marc
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Classement des compagnies
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Détail des performances
+STR_GRAPH_MENU_HIGHSCORE                                        :Meilleurs scores
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1059,8 +1061,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Plat
 STR_TERRAIN_TYPE_HILLY                                          :Collinaire
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montagneux
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Laxiste
 STR_CITY_APPROVAL_TOLERANT                                      :Tolérante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
@@ -1092,7 +1092,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Paramètres ave
 
 STR_CONFIG_SETTING_OFF                                          :Désactivé
 STR_CONFIG_SETTING_ON                                           :Activé
-STR_CONFIG_SETTING_DISABLED                                     :Inactif
+STR_CONFIG_SETTING_DISABLED                                     :Désactivé
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Désactivé
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Propre compagnie
@@ -1105,6 +1105,29 @@ STR_CONFIG_SETTING_REALISTIC                                    :Réaliste
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :À gauche
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrée
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :À droite
+
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Emprunt initial maximum{NBSP}: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Montant maximum qu'une compagnie peut emprunter (sans tenir compte de l'inflation)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Taux d'intérêt{NBSP}: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taux d’intérêt de l'emprunt; contrôle également l'inflation si activé
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Coûts d'entretien{NBSP}: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Définit le niveau des coûts d'entretien et de fonctionnement des véhicules et des infrastructures
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Vitesse de construction{NBSP}: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limite le nombre d'actions de constructions pour les IAs
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Pannes des véhicules{NBSP}: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Contrôle la fréquence des pannes des véhicule incorrectement entretenus
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicateur de subvention{NBSP}: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Définit combien rapportent les lignes subventionnées
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Coûts de construction{NBSP}: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Définit le niveau des coûts de construction et d'achat
+STR_CONFIG_SETTING_RECESSIONS                                   :Récessions{NBSP}: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si activé, des récessions peuvent se produire toutes les quelques années. Pendant une récession, toute la production baisse de façon significative (elle retourne à son niveau antérieur à la fin de la récession)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Interdire le retournement des trains dans les stations{NBSP}: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si activé, les trains de se retourneront plus dans les stations non terminus, s'il y a un chemin plus court vers leur prochaine destination en se retournant
+STR_CONFIG_SETTING_DISASTERS                                    :Catastrophes{NBSP}: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activer/Désactiver les catastrophes qui peuvent occasionnellement bloquer ou détruire des véhicules ou des infrastructures
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Attitude du conseil municipal envers la restructuration de la zone{NBSP}: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Définit comment le bruit et les dommages environnementaux des compagnies affectent leur réputation et leurs prochaines actions de constructions dans la zone
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Construction côtière et sur pentes{NBSP}: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Si activé, les voies et les stations peuvent être construites sur la plupart des pentes. Si désactivé, elles sont autorisées uniquement sur les pentes correspondant à la direction de la voie et ne requérant pas de fondations.
@@ -1146,9 +1169,9 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Longueur maximu
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Longueur maximum pour la construction des tunnels
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Méthode de construction manuelle des industries primaires{NBSP}: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Méthode de fondation d'une industrie primaire{NBSP}:{}«{NBSP}Aucune{NBSP}» signifie qu'il n'est pas possible d'en fonder.{}«{NBSP}Prospection{NBSP} signifie que la fondation est possible, mais la construction sera placée aléatoirement sur la carte et peut tout aussi bien échouer.{NBSP}«{NBSP}Comme les autres industries{NBSP}» signifie que les industries primaires peuvent être construites par les compagnies où elles le désirent comme les industries secondaires.
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :aucune
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :comme les autres industries
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :par prospection
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Aucune
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Comme les autres industries
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Par prospection
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Terrain plat autour des industries{NBSP}: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Quantité de terrain plat autour d'une industrie. Cela assure qu'un espace vide sera disponible autour d'une industrie pour construire des voies, etc.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permettre plusieurs industries similaires par ville{NBSP}: {STRING}
@@ -1171,10 +1194,10 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Mise en file de
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Les véhicules routiers attendront à l'entrée des arrêts occupés jusqu'à ce qu'ils ne le soient plus
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Faire défiler la vue quand le pointeur est au bord{NBSP}: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Si activé, les vues commenceront a défiler quand la souris sera proche des bords de la fenêtre
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :désactivé
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :vue principale, uniquement en plein écran
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :vue principale
-STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :chaque vue
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Désactivé
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Vue principale, uniquement en plein écran
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Vue principale
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Chaque vue
 STR_CONFIG_SETTING_BRIBE                                        :Permettre la corruption de la municipalité{NBSP}: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Autoriser les compagnies à essayer de corrompre la municipalité. Si la corruption est découverte par un enquêteur, la compagnie ne pourra rien faire dans la ville pendant six mois
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Autoriser l'achat des droits de transport exclusifs{NBSP}: {STRING}
@@ -1296,6 +1319,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Défilement de 
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Désactivé
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Vitesse de défilement de la carte avec la molette{NBSP}: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Contrôle la sensibilité du défilement à la molette
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Clavier virtuel{NBSP}: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Choisir la méthode pour ouvrir le clavier visuel pour entrer du texte dans les zones d'édition en utilisant uniquement un périphérique de pointage. Cela est fait pour les petit périphériques sans clavier physique
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Désactivé
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Double clic
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Simple clic (avec le focus)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Simple clic (immédiatement)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Émulation du clic droit{NBSP}: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Choisir la méthode pour émuler les clics du bouton droit de la souris
@@ -1321,10 +1350,10 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pause automatiq
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Lorsqu'il est activé, la partie sera mise en pause automatiquement au démarrage, afin de permettre une étude approfondie de la carte
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Actions autorisées pendant la pause{NBSP}: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Choisir quelles actions peuvent être effectuées lorsque la partie est suspendue
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :aucune
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :toutes hors construction
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :toutes sauf celles modifiant le terrain
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :toutes
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Aucune
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Toutes hors construction
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Toutes sauf celles modifiant le terrain
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Toutes
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Utiliser la liste de véhicules avancée{NBSP}: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Active l'utilisation des listes de véhicule avancées pour grouper les véhicules
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Utiliser les indicateurs de chargement{NBSP}: {STRING}
@@ -1367,6 +1396,12 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :En activant ce 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Désactiver les navires pour l'ordinateur{NBSP}: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :En activant ce paramètre, il sera impossible de construire des navires pour l'ordinateur
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Profil de réglage par défaut{NBSP}: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Définir le profil des réglages à utiliser pour les IAs aléatoires ou pour les valeurs initiales lors de l'ajout d'une nouvelle IA ou d'un script de jeu
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Facile
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Moyen
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Difficile
+
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permettre les IA en multi-joueurs{NBSP}: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Autorise les Intelligences Artificielles à participer aux parties multijoueurs
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Nombre d'opcodes avant d'interrompre les scripts{NBSP}: {STRING}
@@ -1377,7 +1412,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Choisir si l'en
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalle d'entretien par défaut pour les trains{NBSP}: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Défini l'intervalle d'entretien par défaut des nouveaux véhicules ferroviaires, si aucun intervalle d'entretien n'est définit pour le véhicule
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} jour{P 0 "" s}/%
-STR_CONFIG_SETTING_SERVINT_DISABLED                             :désactivé
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Désactivé
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalle d'entretien par défaut pour les véhicules routiers{NBSP}: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Défini l'intervalle d'entretien par défaut des nouveaux véhicules routiers, si aucun intervalle d'entretien n'est définit pour le véhicule
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalle d'entretien par défaut pour les aéronefs{NBSP}: {STRING}
@@ -1422,11 +1457,11 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :tous les signau
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Agencement des routes pour les nouvelles villes{NBSP}: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Agencement du réseau routier des villes
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :original
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :meilleures routes
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Original
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Meilleures routes
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grille 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grille 3x3
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aléatoire
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Aléatoire
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Autoriser la construction des routes par les villes{NBSP}: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Autoriser les villes à construire des routes pour se développer. Désactiver pour empêcher les villes de construire elles-mêmes des routes.
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Autoriser la construction des passages à niveau par les villes{NBSP}: {STRING}
@@ -1435,15 +1470,15 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permettre plus 
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Avec ce paramètre désactivé, il peut y avoir deux aéroports dans chaque ville. Avec ce paramètre désactivé, le nombre d'aéroports dans une ville est limité par le bruit qu'elle accepte, celui-ci dépend de la population, de la taille de l'aéroport et de la distance
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fonder des villes en cours de jeu{NBSP}: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Activer ce paramètre permet aux joueurs de fonder de nouvelles villes dans la partie
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :interdit
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :autorisé
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :autorisé, y compris l'agencement personnalisé des routes
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Interdit
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Autorisé
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Autorisé, y compris l'agencement personnalisé des routes
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Plantation d'arbres durant la partie{NBSP}: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Contrôle l'apparition aléatoire des arbres durant la partie. Cela peut affecter les industries qui dépendent de la croissance des arbres, par exemple les scieries
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nulle part {RED}(les scieries ne fonctionneront plus)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :seulement dans les forêts tropicales
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :partout
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Nulle part {RED}(les scieries ne fonctionneront plus)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Seulement dans les forêts tropicales
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Partout
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Position de la barre d'outils principale{NBSP}: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Position horizontale de la barre d'outils principale en haut de l'écran
@@ -1452,7 +1487,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Position horizo
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Rayon d'attraction des fenêtres{NBSP}: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Distance entre les fenêtres avant que la fenêtre déplacée soit alignée automatiquement sur les fenêtres proches
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :désactivé
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Désactivé
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Nombre maximum de fenêtres non punaisées{NBSP}: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Nombre de fenêtre non punaisées ouvertes avant que les anciennes fenêtres soient fermées automatiquement pour faire de la place aux nouvelles fenêtres
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
@@ -1477,7 +1512,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Très rapide
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proportion des villes qui deviendront des métropoles{NBSP}: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Quantité de villes qui deviendront une métropole, soit une ville qui commence plus large et s'étend plus vite
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 sur {COMMA}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :aucune
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Aucune
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicateur initial pour la taille des métropoles{NBSP}: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Taille moyenne des métropoles par rapport aux villes normales au début de la partie
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Retirer les éléments absurdes lors de la construction des routes{NBSP}: {STRING}
@@ -1545,6 +1580,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Éditeur
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Mode multijoueurs
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Options
+STR_INTRO_HIGHSCORE                                             :{BLACK}Meilleurs scores
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Options avancées
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Paramètres NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Vérifier le contenu en ligne
@@ -1564,6 +1600,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Sélecti
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Sélectionner l'environnement «{NBSP}Monde{NBSP}des{NBSP}Jouets{NBSP}»
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Afficher les options du jeu
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Afficher le tableau des meilleurs scores
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Afficher les options avancées
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afficher la configuration des NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Vérifier les contenus nouveaux ou mis à jour téléchargeables

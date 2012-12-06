@@ -1151,8 +1151,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Επίπεδο
 STR_TERRAIN_TYPE_HILLY                                          :Λοφώδες
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Βουνώδες
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Ανεκτική
 STR_CITY_APPROVAL_TOLERANT                                      :Υπομονετική
 STR_CITY_APPROVAL_HOSTILE                                       :Εχθρική
@@ -1197,6 +1195,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Ρεαλιστ�
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Αριστερά
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Κέντρο
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Δεξιά
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Επιτρέπεται το χτίσιμο σε πλαγιές και ακτές: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Όταν είναι ενεργοποιημένο, οι σιδηροτροχιές και σταθμοί μπορούν να κτισθούν στις περισσότερες κλίσεις. Όταν είναι απενεργοποιημένο, επιτρέπονται μόνο όπου αντιστοιχούν στην κατεύθυνση της σιδηροτροχιάς και γι' αυτό δεν χρειάζονται θεμέλια
@@ -1459,6 +1458,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Ενεργοπ�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Απενεργοποίηση πλοίων υπολογιστή: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ενεργοποιώντας αυτήν τη ρύθμιση κάνει αδύνατη την κατασκευή πλοίων από παίκτη του υπολογιστή
 
+
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Επιτρέπονται AI σε παιχνίδια πολλών παικτών: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Επιτρέπεται η συμμετοχή παικτών υπολογιστή AI σε παιχνίδια πολλαπλών παικτών
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#εντολών πριν τη παύση δεσμών ενεργειών: {STRING}
@@ -1526,16 +1526,16 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Ενεργοπ�
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Επιτρέπεται η πόλη να ελέγχει το επίπεδο θορύβου των αεροδρομίων: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Με αυτήν τη ρύθμιση απενεργοποιημένη, γίνεται να υπάρχουν δύο αεροδρόμια σε κάθε πόλη. Με αυτήν τη ρύθμιση ενεργοποιημένη, ο αριθμός των αεροδρομίων σε μια πόλη περιορίζεται από την αποδοχή του θορύβου από την πόλη, η οποία εξαρτάται από τον πληθυσμό, το μέγεθος του αεροδρομίου και από την απόστασή του από την πόλη
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Ίδρυση πόλεων στο παιχνίδι: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Ενεργοποιώντας αυτήν την ρύθμιση επιτρέπει στους παίκτες να ιδρύσουν νέες πόλεις στο παιχνίδι
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :δεν επιτρέπεται
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :επιτρέπεται
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :επιτρέπεται, προσαρμοσμένο σχέδιο πόλης
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Ενεργοποιώντας αυτήν τη ρύθμιση επιτρέπει στους παίκτες να ιδρύσουν νέες πόλεις στο παιχνίδι
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Δεν επιτρέπεται
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Επιτρέπεται
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Επιτρέπεται, προσαρμοσμένο σχέδιο πόλης
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Τοποθέτηση δέντρων εντός παιχνιδιού: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Έλεγχος της τυχαίας εμφάνισης δέντρων κατά τη διάρκεια του παιχνιδιού. Αυτό είναι πιθανό να επηρεάσει βιομηχανίες που εξαρτώνται από την ανάπτυξη των δέντρων, όπως για παράδειγμα οι υλοτομίες
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Κανένα {RED}(Καταστρέφει το ξυλουργείο)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :μόνο σε δάση
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :παντού
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Κανένα {RED}(καταστρέφει το ξυλουργείο)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Μόνο σε τροπικά δάση
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Παντού
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Θέση κύριας εργαλειοθήκης: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Οριζόντια τοποθέτηση της κύριας γραμμής εργαλείων στο επάνω μέρος της οθόνης
@@ -1544,15 +1544,15 @@ STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Οριζόντ�
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Ακτίνα έλξης παράθυρου: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Απόσταση μεταξύ παραθύρων πριν το παράθυρο που μετακινείται ευθυγραμμιστεί αυτόματα με τα γειτονικά
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} εικονοστοιχεί{P 0 ο α}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :απενεργοποιημένο
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Απενεργοποιημένη
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Μέγιστο όριο μη καρφωμένων παραθύρων: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Αριθμός μη μόνιμων ανοικτών παράθυρων πριν παλαιότερα παράθυρα κλείσουν αυτόματα για να κάνουν χώρα για τα νεότερα
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :απενεργοποιημένο
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Μέγιστο επίπεδο μεγέθυνσης: {STRING}
-STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Το μέγιστο επίπεδο μεγέθυνσης στα παράθυρα προβολών. Σημειώστε ότι ενεργοποιώντας υψηλότερα επίπεδα μεγενθύσεων αυξάνονται οι απαιτήσεις σε μνήμη
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Το μέγιστο επίπεδο μεγέθυνσης στα παράθυρα προβολών. Σημειώστε ότι ενεργοποιώντας υψηλότερα επίπεδα μεγεθύνσεων αυξάνονται οι απαιτήσεις σε μνήμη
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Μέγιστο επίπεδο σμίκρυνσης: {STRING}
-STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Το μέγιστο επίπεδο σμίκρυνσης στα παράθυρα προβολών. Υψηλότερα επίπεδα σημικρύνσεων είναι πιθανό να προκαλέσουν υστερήσεις
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Το μέγιστο επίπεδο σμίκρυνσης στα παράθυρα προβολών. Υψηλότερα επίπεδα σμικρύνσεων είναι πιθανό να προκαλέσουν υστερήσεις
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Κανονικό
@@ -1569,7 +1569,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Πολύ γρή
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Αναλογία πόλεων που θα γίνουν μεγάλες: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Αριθμός πόλεων που θα γίνουν μεγάλες, ώστε μια πόλη που ξεκινά μεγαλύτερη να μεγαλώνει ταχύτερα
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 σε {COMMA}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :κανένα
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Καμία
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Αρχικός πολλαπλασιαστής μεγέθους πόλης: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Μέσο μέγεθος μεγάλων πόλεων σε σχέση με τις κανονικές στην αρχή του παιχνιδιού
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Να αφαιρούνται παράλογα στοιχεία δρόμων κατά την κατασκευή τους: {STRING}

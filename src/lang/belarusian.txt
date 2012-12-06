@@ -711,6 +711,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Ґрафік а
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Табліца фірмаў
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Дэталізаваны рэйтынг кампаніі
+STR_GRAPH_MENU_HIGHSCORE                                        :Табліца рэкордаў
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1372,8 +1373,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Раўнінн�
 STR_TERRAIN_TYPE_HILLY                                          :Узгорастая
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Гарыстая
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Дазваляючае
 STR_CITY_APPROVAL_TOLERANT                                      :Памяркоўнае
 STR_CITY_APPROVAL_HOSTILE                                       :Варожае
@@ -1418,6 +1417,29 @@ STR_CONFIG_SETTING_REALISTIC                                    :рэаліст�
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :леваруч
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :ў цэнтры
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :праваруч
+
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максімальная сума пазыкі: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максімальная сума пазыкі для кампаніі (без уліку інфляцыі)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Працэнтная стаўка: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Працэнтная стаўка па пазыках; таксама кантралюе інфляцыю, калі тая ўключана
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Эксплуатацыйныя выдаткі: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Усталюйце ўзровень абслугоўваньня і эксплуатацыйныя выдаткі на транспарт і інфраструктуру
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Хуткасць будаўніцтва: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Абмяжуйце колькасць будаўнічых мерапрыемстваў для ШІ
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Паломкі транспарта: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Задайце частасць паломак недастаткова якасна абслужанага транспарта
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Множнік субсідый: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Усталюйце множнік аплаты за перавозкі, якія субсідуюцца
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Выдаткі на будаўніцтва: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Усталюйце ўзровень выдаткаў на будаўніцтва і набыццё
+STR_CONFIG_SETTING_RECESSIONS                                   :Спады: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Калі ўключана, спад можа наставаць раз у некалькі гадоў. Падчас спаду ўвесь аб'ём вытворчасці значна ніжэй (ён вяртаецца да ранейшага ўзроўня, калі спад сканчаецца)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Забараніць разварот цягнікоў на станцыях: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Калі ўключана, цягнікі не будуць заварочвацца на прахадных станцыях, калі ёсць карацейшы шлях да наступнага пункта прызначэньня, што не патрабуе развароту
+STR_CONFIG_SETTING_DISASTERS                                    :Бедствы: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Пераключыце бедствы, якія могуць час ад часу блякаваць ці знішчаць транспартныя сродкі ці інфраструктуру
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Стаўленне гарадской рады да рэструктурызацыі наваколляў: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Выберыце ўзровень шуму і забруджваньня навакольнага асяроддзя кампаніямі, які ўплывае на іх рэйтынг у гарадах і магчымасьць далейшага будаўніцтва каля гарадоў
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Дазволіць будаўніцтва на сьхілах і на беразе: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Калі ўключана, рэйкі й станцыі ня могуць будавацца на сьхілах. Калі адключана, то можна будаваць на сьхілах, якія адпавядаюць напрамку рэйкаў і таму не патрабуюць фундамэнтаў.
@@ -1609,6 +1631,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :для пера
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :не выкарыстоўваць
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Шпаркасьць перамяшчэньня колам мышы: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Кантроль чульлівасьці кола мышы да пракруткі.
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Экранная клавіятура: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Выберыце спосаб адкрыцця экраннай клавіятуры для ўводу тэксту ў палі толькі з дапамогай паказвальнай прылады. Гэта прызначана для невялікіх прылад без фактычнай клавіятуры
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Адключана
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Падвойная пстрычка
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Адзіночная пстрычка (калі выдзелена)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Адзіночная пстрычка (неадкладна)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Эмуляцыя правага кліка мышы: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Выбаць мэтад імітацыі націсьненьня правай кнопкі мышы.
@@ -1679,6 +1707,12 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Забаран�
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Уключэньне гэтай наладкі робіць немагчымым набыцьцё паветраных суднаў для кампутарнага гульца.
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Забараніць пабудову караблёў кампутарам: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Уключэньне гэтай наладкі робіць немагчымым набыцьцё караблёў для кампутарнага гульца.
+
+STR_CONFIG_SETTING_AI_PROFILE                                   :Зыходны профіль наладак: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Выберыце, які профіль наладак выкарыстоўваць выпадковаму ШІ ці для пачатковых значэнняў пры даданні новага ШІ ці сцэнара гульні
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Лёгкі
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Сярэдні
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Цяжкі
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Дазволіць штучны інтэлект (ШІ/AI) у сеткавай гульні: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Дазволіць кампутарным гульцам (штучнаму інтэлекту) браць удзел у сеткавых гульнях.
@@ -1754,7 +1788,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :дазволе�
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Расстаноўка дрэваў у гульні: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Кантроль адвольнага з'яўленьня дрэваў падчас гульні. Гэта можа закрануць прадпрыемствы, якія залежаць ад росту дрэваў, напрыклад, пільні.
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :адключана {RED}(пільні ня змогуць працавацьl)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :адключана {RED}(пільні ня змогуць працаваць)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :толькі ў трапічных джунґлях
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :усюды
 
@@ -1858,6 +1892,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Рэда
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Сеткавая гульня
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Наладкі гульні
+STR_INTRO_HIGHSCORE                                             :{BLACK}Табліца рэкордаў
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Пашыраныя наладкі
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Наладкi NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Праверыць анлайн-кантэнт
@@ -1877,6 +1912,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Выбр
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Выбраць цацачны сьвет
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Паказаць наладкі гульні
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Паказаць табліцу рэкордаў
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Паказаць пашыраныя наладкі
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Паказаць наладкі NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Праверыць новы й абноўлены кантэнт, каб спампаваць

@@ -1059,8 +1059,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Vlak
 STR_TERRAIN_TYPE_HILLY                                          :Heuvelachtig
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergachtig
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Toegeeflijk
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Vijandig
@@ -1092,7 +1090,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Instellingen me
 
 STR_CONFIG_SETTING_OFF                                          :Uit
 STR_CONFIG_SETTING_ON                                           :Aan
-STR_CONFIG_SETTING_DISABLED                                     :uitgeschakeld
+STR_CONFIG_SETTING_DISABLED                                     :Uitgeschakeld
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Uit
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Eigen bedrijf
@@ -1105,6 +1103,23 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistisch
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Links
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midden
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Rechts
+
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Bouwsnelheid: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Beperk de hoeveelheid bouwactiviteiten voor computerspeler
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :voertuig storingen: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controle hoe vaak onvoldoende onderhouden voertuigen kaport kunnen gaan
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidie indicator: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Instellen hoeveel wordt betaald voor gesubsidieerde verbindingen
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Bouwkosten: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Het niveau van bouw- en aankoopkosten
+STR_CONFIG_SETTING_RECESSIONS                                   :Recessies: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Als ingeschakeld recessies kunnen optreden om de paar jaar. Tijdens een recessie alle productie is aanzienlijk lager (Deze keert terug naar het vorige niveau als de recessie voorbij is)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Niet toestaan dat treinen keren in stations: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Indien ingeschakeld treinen zullen niet omkeren in niet-eind stations, als er een kortere weg naar hun volgende bestemming is bij omkeren
+STR_CONFIG_SETTING_DISASTERS                                    :Rampen: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Schakel rampen die af en toe voertuigen kunnen blokkeren of vernietigen of infrastructuur
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Gemeenteraad's houding ten opzichte van herstructurering gebied: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Kies hoeveel lawaai en schade aan het milieu door bedrijven beïnvloeden de stad waardering en hun acties in hun bouwgebied
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Bouwen op hellingen en kusten toestaan: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Indien ingeschakeld kunnen sporen en stations gebouwd worden op hellingen. Indien uitgeschakeld kunnen stations en sporen alleen gebouwd worden op hellingen waar geen fundering nodig is en alleen in de richting van het spoor.
@@ -1146,9 +1161,9 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tunnel 
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximum lengte voor te bouwen tunnels
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Handmatige bouwmethode voor primaire industrieën: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Wijze van financiering van een primaire industrie. 'geen' betekent dat het niet mogelijk is om te financieren, 'prospectie' betekent dat financiering mogelijk is, maar de bouw vindt plaats in een willekeurige plek op de kaart en kan mislukken ook, "als andere bedrijfstakken": ruwe industrieën kan worden geconstrueerd door bedrijven als verwerkende industrie in elke positie zij willen
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :geen
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :zoals andere industrieën
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :proberen
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Geen
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Zoals andere industrieën
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Proberen
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Plat gebied rond industrieën: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Hoeveelheid ruimte rond een industrie. Dit zorgt ervoor dat lege ruimte rond een industrie beschikbaar blijft voor sporen, stations, wegen enz.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Meerdere vergelijkbare industrieën per stad toestaan: {STRING}
@@ -1171,9 +1186,9 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Wachtrijvorming
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Wegvoertuigen laten stoppen voor een bezet wegstation tot ze toestemming krijgen om door te gaan.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Verschuif scherm als muis aan de rand is: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Wanneer aan, subvenster start met scrollen wanneer de muis vlak bij de rand van de window komt
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :uit
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :hoofd kijkvenster, alleen volledigscherm
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :hoofd kijkvenster
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Uitgeschakeld
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Hoofd kijkvenster, alleen volledigscherm
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Hoofd kijkvenster
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Elk kijkvenster
 STR_CONFIG_SETTING_BRIBE                                        :Omkopen van de gemeente toestaan: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Toestaan dat bedrijven mogen proberen de plaatselijke gemeente autoriteit om te kopen. Als de omkoping wordt opgemerkt door een inspecteur, zal de onderneming niet in staat zijn om in de stad actie te ondernemen voor zes maanden
@@ -1214,9 +1229,9 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Waarschuw wanne
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Veroorzaakt berichten over voertuigen die niet in staat zijn om een pad naar hun bestemming te vinden
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Controleer orders van voertuigen: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Wanneer ingeschakeld, worden de orders van de voertuigen regelmatig gecontroleerd, en sommige voor de hand liggende problemen worden gemeld met een nieuwsbericht bij detectie
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nee
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, maar sluit gestopte voertuigen uit
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :van alle voertuigen
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nee
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ja, maar sluit gestopte voertuigen uit
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Van alle voertuigen
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Waarschuw als inkomsten van een voertuig negatief zijn: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Wanneer ingeschakeld, wordt een nieuws-bericht verstuurd wanneer een voertuig geen winst heeft gemaakt in een kalenderjaar
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Voertuigen verlopen nooit: {STRING}
@@ -1321,10 +1336,10 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatisch pau
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Wanneer ingeschakeld, het spel zal automatisch pauzeren bij het starten van een nieuw spel, waardoor nadere bestudering van de kaart mogelijk is
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Toestaan wanneer gepauzeerd: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Selecteer welke acties kunnen worden uitgevoerd terwijl het spel is gepauzeerd
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :geen mogelijkheden
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :alle niet-constructie mogelijkheden
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :alles behalve landschapsaanpassingen
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :alle mogelijkheden
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Geen mogelijkheden
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Alle niet-constructie mogelijkheden
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Alles behalve landschapsaanpassingen
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Alle mogelijkheden
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Gebruik de geavanceerde voertuigenlijst: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Schakel het gebruik van de geavanceerde voertuigenlijsten in voor het groeperen van voertuigen
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Gebruik laadindicatoren: {STRING}
@@ -1367,6 +1382,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Het inschakelen
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Schepen voor de computer uitschakelen: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Het inschakelen van deze instelling maakt het het bouwen van schepen onmogelijk voor een computer-speler
 
+
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Laat computerspelers toe in netwerkspel: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Sta door computer gegenereerde speler toe deel te nemen in multiplayer spelen.
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes voordat scripts worden gestopt: {STRING}
@@ -1377,7 +1393,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Kies of onderho
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standaard onderhoudsinterval voor treinen: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Stel de standaard service-interval voor nieuwe railvoertuigen, als er geen expliciete service-interval is ingesteld voor het voertuig
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 "" en}/%
-STR_CONFIG_SETTING_SERVINT_DISABLED                             :uitgeschakeld
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Uitgeschakeld
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Standaard onderhoudsinterval voor wegvoertuigen: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Stel de standaard service-interval voor nieuwe wegvoertuigen, als er geen expliciete service-interval is ingesteld voor het voertuig
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standaard onderhoudsinterval voor vliegtuigen: {STRING}
@@ -1422,11 +1438,11 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Allemaal
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Wegpatroon voor nieuwe steden: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Patroon voor het wegennetwerk van steden.
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :origineel
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :betere wegen
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Origineel
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Betere wegen
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 raster
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 raster
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :willekeurig
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Willekeurig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Steden mogen wegen bouwen: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Sta steden toe om wegen te bouwen ten behoeve van groei. Schakel deze optie uit om gemeentebesturen ervan te weerhouden zelf wegen te bouwen.
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Steden mogen gelijkvloerse kruisingen bouwen: {STRING}
@@ -1435,15 +1451,15 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Geluidsniveauco
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Met deze instelling uitgeschakeld kunnen er twee luchthavens in elke stad zijn. Als deze instelling is ingeschakeld, wordt het aantal luchthavens in een stad beperkt door het lawaai tollerantie van de stad, die afhankelijk is van de bevolking en de luchthaven grootte en afstand
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Steden stichten in spel: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Het inschakelen van deze instelling laat spelers toe om nieuwe steden op te richten tijdens het spel.
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :verboden
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :toestaan
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :toestaan, eigen wegpatroon
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Verboden
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Toestaan
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Toestaan, eigen wegpatroon
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Plaatsing van bomen in het spel: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Beheer willekeurig verschijnen van bomen tijdens het spel. Dit kan gevolgen hebben voor industrietakken die afhankelijk zijn van groei van bomen, bijvoorbeeld houtzagerijen
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :geen {RED}(houtzagerij werkt niet)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :alleen in regenwouden
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :overal
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Geen {RED}(houtzagerij werkt niet)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Alleen in regenwouden
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Overal
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Positie van algemene knoppenbalk: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontale positie van de algemene taakbalk aan de bovenkant van het scherm.
@@ -1452,7 +1468,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :De horizontale 
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Windowssnap radius: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Afstand tussen vensters voordat het venster wordt verplaatst wordt automatisch uitgelijnd naar de nabijgelegen vensters
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :uitgeschakeld
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Uitgeschakeld
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximum aantal (niet-sticky) vensters: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Aantal niet-klevende open vensters voor oude vensters automatisch worden gesloten om ruimte voor nieuwe vensters te maken
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
@@ -1477,7 +1493,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Heel snel
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Verhouding van gemeenten die steden zullen worden: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Aantal steden dat een stad wordt, dus een stad die begint groter en groeit sneller
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 op {COMMA}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :geen
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Geen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Stadsgroei-indicator: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gemiddelde grootte van steden in vergelijking tot normale steden bij het begin van het spel.
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Verwijder rare weg-elementen tijdens het repareren van de weg: {STRING}

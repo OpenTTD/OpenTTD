@@ -400,6 +400,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Grafico tariffe
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Classifica società
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Valutazione dettagliata prestazioni
+STR_GRAPH_MENU_HIGHSCORE                                        :Punteggi migliori
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1061,8 +1062,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Pianeggiante
 STR_TERRAIN_TYPE_HILLY                                          :Collinare
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montuoso
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo
 STR_CITY_APPROVAL_TOLERANT                                      :Tollerante
 STR_CITY_APPROVAL_HOSTILE                                       :Ostile
@@ -1129,6 +1128,29 @@ STR_CONFIG_SETTING_REALISTIC.fp                                 :Realistiche
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Sinistra
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Destra
+
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Prestito massimo iniziale: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Ammontare massimo di denaro che una compagnia può chiedere in prestito (senza tenere conto dell'inflazione)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Tasso d'interesse: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tasso d'interesse sul prestito; controlla anche l'abilitazione dell'inflazione
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Costi d'esercizio: {STRING.mp}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Imposta il livello dei costi di manutenzione ed esercizio di veicoli e infrastrutture
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocità di costruzione: {STRING.fs}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limita la frequenza delle azioni di costruzione delle IA
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Guasti dei veicoli: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controlla quanto frequentemente si guastano i veicoli non adeguatamente manutenuti
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Moltiplicatore sussidi: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Imposta quanto viene pagato per i collegamenti sovvenzionati
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costi di costruzione: {STRING.mp}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Imposta il livello dei costi di costruzione e acquisto
+STR_CONFIG_SETTING_RECESSIONS                                   :Recessioni: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se abilitato, a intervalli di qualche anno possono verificarsi delle recessioni. Durante una recessione i livelli di produzione sono considerevolmente ridotti (per tornare al livello precedente una volta finita la recessione)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Non consentire inversione dei treni alle stazioni: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se abilitato, i treni non invertono la marcia nelle stazioni passanti, neanche nel caso in cui invertendo la marcia sia possibile raggiungere la destinazione successiva con un percorso più breve
+STR_CONFIG_SETTING_DISASTERS                                    :Disastri: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Controlla l'attivazione dei disastri che, occasionalmente, possono bloccare o distruggere i veicoli e le infrastrutture
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Atteggiamento della città in merito alle modifiche: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Seleziona il modo in cui il rumore e i danni all'ambiente da parte delle compagnie possono influenzare la valutazione delle città e le successive operazioni di costruzione nell'area controllata
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Consenti la costruzione su pendii e coste: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Se abilitato, binari e stazioni possono essere costruiti sulla maggior parte dei pendii. Se disabilitato, è permesso costruirli solo su pendii rivolti nella stessa direzione, per i quali non è necessario costruire fondamenta
@@ -1320,6 +1342,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scorrimento map
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Nessuna
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Velocità rotellina mappa: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controlla la sensibilità dello scorrimento con rotelilna del mouse
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Tastiera su schermo: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Seleziona il metodo il metodo di apertura della tastiera su schermo per l'inserimento di testo
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Disabilitata
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Doppio clic
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Clic (con casella di testo attiva)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Clic (immediato)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulazione clic destro: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Seleziona il metodo per emulare i clic con il tasto destro del mouse
@@ -1390,6 +1418,12 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Disabilita aero
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Abilitando questa impostazione si rende impossibile la costruzione di aeromobili da parte di un giocatore controllato dal computer
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Disabilita navi delle IA: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Abilitando questa impostazione si rende impossibile la costruzione di navi da parte di un giocatore controllato dal computer
+
+STR_CONFIG_SETTING_AI_PROFILE                                   :Profilo impostazioni predefinito: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Seleziona quale profilo di impostazioni utilizzare per le IA casuali o da usare come predefinito quando si aggiunge una nuova IA o Script
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Facile
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Medio
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Difficile
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Consenti le IA nelle partite multigiocatore: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Consente ai giocatori controllati dal computer di partecipare alle partite multigiocatore
@@ -1569,6 +1603,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor d
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multigiocatore
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opzioni di gioco
+STR_INTRO_HIGHSCORE                                             :{BLACK}Punteggi migliori
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Impostazioni avanzate
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Impostazioni NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenuti online
@@ -1588,6 +1623,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Selezion
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Seleziona il paesaggio 'città dei giocattoli'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Mostra le opzioni di gioco
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostra la tabella dei punteggi migliori
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Mostra le impostazioni avanzate
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra le impostazioni NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Controlla la disponibilità di contenuti nuovi o aggiornati da scaricare

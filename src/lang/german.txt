@@ -399,6 +399,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Frachtratendiag
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Firmentabelle
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Leistungsaufschlüsselung
+STR_GRAPH_MENU_HIGHSCORE                                        :Bestenliste
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1060,8 +1061,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Flach
 STR_TERRAIN_TYPE_HILLY                                          :Hügelig
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergig
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Hoch
 STR_CITY_APPROVAL_TOLERANT                                      :Mäßig
 STR_CITY_APPROVAL_HOSTILE                                       :Gering
@@ -1106,6 +1105,29 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistisch
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Links
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Mitte
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Rechts
+
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximaler, anfänglicher Kredit: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximaler Kredit für eine Firma (ohne Berücksichtigung der Inflation)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Zinssatz: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Zinssatz für Kredite; beeinflußt auch die Inflation, falls aktiv
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Betriebskosten: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Stellt die Höhe der Unterhalts- und Betriebskosten für Fahrzeuge und Infrastruktur ein
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Baugeschwindigkeit: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Begrenze die Anzahl der Bau-Aktionen für KIs
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Fahrzeugpannen: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Einstellen wie oft unzureichend gewartete Fahrzeuge Pannen haben können
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subventions-Multiplikator: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Einstellen wieviel für subventionierte Verbindungen gezahlt wird
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Baukosten: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Höhe der Bau- und Einkaufskosten festlegen
+STR_CONFIG_SETTING_RECESSIONS                                   :Rezessionen: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Falls aktiv, können Rezessionen alle paar Jahre auftreten. Während einer Rezession ist die Produktion aller Industrien viel niedriger (und kehrt zum Ende der Rezession zum gleichen Level zurück wie vor der Rezession)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Zügen das Umdrehen in Bahnhöfen verbieten: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Falls aktiv, werden Züge in Durchgangsbahnhöfen nicht umdrehen, auch wenn ein kürzerer Pfad zum nächsten Zielbahnhof mittels umdrehen verfügbar ist
+STR_CONFIG_SETTING_DISASTERS                                    :Katastrophen: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Katastrophen umschalten, welche gelegentlich Fahrzeugeoder Infrastruktur blockieren oder zerstören
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Haltung der Stadtverwaltung gegenüber Landschaftsumgestaltungen: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Auswählen wieviel Lärm und Umweltschäden von Firmen deren Bewertung bei den Städten beeinflußt
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Das Bauen an Hängen und Küsten erlauben: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Falls aktiviert, können Transportwege und Stationen an die meisten Hänge gebaut werden. Falls deaktiviert, dürfen sie nur dann an einen Hang gebaut werden, wenn dafür keine Fundamente errichtet werden müssen
@@ -1297,6 +1319,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Hauptansicht ve
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Aus
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Mausradgeschwindigkeit auf dem Spielfeld: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Lege die Empfindlichkeit des Mausrads beim Scrollen fest
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :On-screen Tastatur: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Wählen der Methode, um die on-screen-Tastatur für die Texteingabe in Eingabefeldern bei der Verwendung von Zeigegeräten zu aktivieren. Dieses ist für kleine Geräte ohne tatsächliche Tastatur gedacht
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :De-aktiviert
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Doppel-Klick
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Einfach-Klick (wenn hervorgehoben)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Einfach-Klick (sofort)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Rechtsklick-Emulation: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Lege die Methode, die rechte Maustaste zu emulieren, fest
@@ -1367,6 +1395,12 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Flugzeuge für 
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Verbiete Computerspielern, Luftfahrzeuge zu kaufen
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Schiffe für den Computer abschalten: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Verbiete Computerspielern, Schiffe zu kaufen
+
+STR_CONFIG_SETTING_AI_PROFILE                                   :Standard-Einstellungen: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Wählen, welches Einstellungs-Profil für zufällige KIs oder anfängliche Werte von KIs oder Spielscripten genommen werden soll
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Leicht
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mittel
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Schwierig
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :KI im Mehrspielermodus erlauben: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Erlaube die Teilnahme von Computerspielern im Mehrspielermodus
@@ -1546,6 +1580,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Szenarie
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Mehrspieler
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spieleinstellungen
+STR_INTRO_HIGHSCORE                                             :{BLACK}Bestenliste
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Erweiterte Einstellungen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-Einstellungen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Erweiterungen herunterladen
@@ -1565,6 +1600,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Landscha
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Spielzeugland auswählen
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Spieleinstellungen anzeigen und/oder ändern
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Zeige die Bestenliste
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Erweiterte Einstellungen anzeigen und/oder ändern
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF-Einstellungen anzeigen und/oder ändern
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Prüfe auf neue oder aktualisierte Erweiterungen zum Herunterladen
