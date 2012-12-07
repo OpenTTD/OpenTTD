@@ -1049,8 +1049,6 @@ STR_TERRAIN_TYPE_FLAT                                           :平坦
 STR_TERRAIN_TYPE_HILLY                                          :丘陵
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :高山
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :寬容
 STR_CITY_APPROVAL_TOLERANT                                      :能忍受
 STR_CITY_APPROVAL_HOSTILE                                       :抱敵意
@@ -1059,6 +1057,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}無適�
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}進階設定
+
 
 STR_CONFIG_SETTING_OFF                                          :關
 STR_CONFIG_SETTING_ON                                           :開
@@ -1075,6 +1074,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :真實
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :靠左
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :置中
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :靠右
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :可在斜坡及岸邊興建：{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :允許在建築物或軌道底下改變地形斜度 (autoslope)：{STRING}
@@ -1215,6 +1215,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :不允許電腦
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :不允許電腦使用車輛：{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :不允許電腦使用飛機：{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :不允許電腦使用船舶：{STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :多人遊戲中允許電腦 AI 加入：{STRING}
 

@@ -33,7 +33,7 @@ STR_CARGO_PLURAL_MAIL                                           :Posta
 STR_CARGO_PLURAL_OIL                                            :Petroleoa
 STR_CARGO_PLURAL_LIVESTOCK                                      :Abereak
 STR_CARGO_PLURAL_GOODS                                          :Merkantzia kaxak
-STR_CARGO_PLURAL_GRAIN                                          :Aleak
+STR_CARGO_PLURAL_GRAIN                                          :Garaua
 STR_CARGO_PLURAL_WOOD                                           :Egurra
 STR_CARGO_PLURAL_IRON_ORE                                       :Burdin Mea
 STR_CARGO_PLURAL_STEEL                                          :Altzairua
@@ -52,9 +52,9 @@ STR_CARGO_PLURAL_SUGAR                                          :Azukrea
 STR_CARGO_PLURAL_TOYS                                           :Jostailuak
 STR_CARGO_PLURAL_CANDY                                          :Gozokiak
 STR_CARGO_PLURAL_COLA                                           :Kola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Piruleta
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Kotoiezko Azukrea
 STR_CARGO_PLURAL_BUBBLES                                        :Burbuilak
-STR_CARGO_PLURAL_TOFFEE                                         :Toffeea
+STR_CARGO_PLURAL_TOFFEE                                         :Gozoki lehengaia
 STR_CARGO_PLURAL_BATTERIES                                      :Pilak
 STR_CARGO_PLURAL_PLASTIC                                        :Plastikoa
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Edari Burbuilatsuak
@@ -65,13 +65,13 @@ STR_CARGO_SINGULAR_PASSENGER                                    :Bidaiariak
 STR_CARGO_SINGULAR_COAL                                         :Ikatza
 STR_CARGO_SINGULAR_MAIL                                         :Posta
 STR_CARGO_SINGULAR_OIL                                          :Petroleoa
-STR_CARGO_SINGULAR_LIVESTOCK                                    :Aberea
+STR_CARGO_SINGULAR_LIVESTOCK                                    :Abereak
 STR_CARGO_SINGULAR_GOODS                                        :Merkantzia kaxa
 STR_CARGO_SINGULAR_GRAIN                                        :Garaua
 STR_CARGO_SINGULAR_WOOD                                         :Egurra
 STR_CARGO_SINGULAR_IRON_ORE                                     :Burdin Mea
 STR_CARGO_SINGULAR_STEEL                                        :Altzairua
-STR_CARGO_SINGULAR_VALUABLES                                    :Baliozko Objektua
+STR_CARGO_SINGULAR_VALUABLES                                    :Baliozko Objektuak
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Kobre Mea
 STR_CARGO_SINGULAR_MAIZE                                        :Garia
 STR_CARGO_SINGULAR_FRUIT                                        :Fruta
@@ -82,50 +82,50 @@ STR_CARGO_SINGULAR_GOLD                                         :Urrea
 STR_CARGO_SINGULAR_WATER                                        :Ura
 STR_CARGO_SINGULAR_WHEAT                                        :Garia
 STR_CARGO_SINGULAR_RUBBER                                       :Goma
-STR_CARGO_SINGULAR_SUGAR                                        :Azukre
-STR_CARGO_SINGULAR_TOY                                          :Jostailu
+STR_CARGO_SINGULAR_SUGAR                                        :Azukrea
+STR_CARGO_SINGULAR_TOY                                          :Jostailua
 STR_CARGO_SINGULAR_CANDY                                        :Gozoki
 STR_CARGO_SINGULAR_COLA                                         :Kola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Piruleta
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Kotoiezko Azukrea
 STR_CARGO_SINGULAR_BUBBLE                                       :Burbuila
-STR_CARGO_SINGULAR_TOFFEE                                       :Toffeea
+STR_CARGO_SINGULAR_TOFFEE                                       :Gozoki lehengaia
 STR_CARGO_SINGULAR_BATTERY                                      :Pila
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastikoa
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Edari Burbuilatsua
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} bidaiari{P "" ak}
+STR_QUANTITY_PASSENGERS                                         :{COMMA} bidaiari
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} ikatzarena
-STR_QUANTITY_MAIL                                               :{COMMA} poltsa{P "" s} postarena
+STR_QUANTITY_MAIL                                               :{COMMA} posta zaku
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} olioarena
-STR_QUANTITY_LIVESTOCK                                          :{COMMA}Abere unitate
-STR_QUANTITY_GOODS                                              :{COMMA}kaxa{P "" s}merkantziena
-STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} garauarena
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}Abere buru
+STR_QUANTITY_GOODS                                              :{COMMA} merkantzia kaxa
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} garau
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} egurrarena
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} burdin mearena
-STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} altzairuena
-STR_QUANTITY_VALUABLES                                          :{COMMA}zaku{P "" s}baliozko objektuena
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} kobre mearena
-STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} artoarena
-STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} frutarena
-STR_QUANTITY_DIAMONDS                                           :{COMMA} zaku{P "" s} diamanteena
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} burdin mea
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} altzairu
+STR_QUANTITY_VALUABLES                                          :{COMMA} baliozko objektu zaku
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} kobre mea
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} arto
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} fruta
+STR_QUANTITY_DIAMONDS                                           :{COMMA} diamante zaku
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} janariarena
-STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} paperarena
-STR_QUANTITY_GOLD                                               :{COMMA} zaku{P "" s} urrearena
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} paper
+STR_QUANTITY_GOLD                                               :{COMMA} urre zaku
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} urarena
-STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} gariarena
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} gari
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} gomarena
-STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} azukrearena
-STR_QUANTITY_TOYS                                               :{COMMA} jostailuena{P "" s}
-STR_QUANTITY_SWEETS                                             :{COMMA} zaku{P "" s} gozokiena
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} azukre
+STR_QUANTITY_TOYS                                               :{COMMA} jostailu
+STR_QUANTITY_SWEETS                                             :{COMMA} gozoki zaku
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} kolarena
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} piruletena
-STR_QUANTITY_BUBBLES                                            :{COMMA} burbuilena{P "" s}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} toffeearena
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} kotoi azukre
+STR_QUANTITY_BUBBLES                                            :{COMMA} burbuil
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} gozoki lehengai
 STR_QUANTITY_BATTERIES                                          :{COMMA} pila{P y k}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} plastikoarena
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} edari burbuilatsua {P "" k}
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} edari burbuilatsu
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}EZ
 STR_ABBREV_ALL                                                  :{TINY_FONT}DEN
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} bidaiaria{P "" k}
-STR_BAGS                                                        :{COMMA} zakua{P "" k}
-STR_TONS                                                        :{COMMA} tona{P "" k}
-STR_LITERS                                                      :{COMMA} litroa{P "" k}
-STR_ITEMS                                                       :{COMMA} elementua{P "" k}
-STR_CRATES                                                      :{COMMA} kaxa{P "" k}
+STR_PASSENGERS                                                  :{COMMA} bidaiari
+STR_BAGS                                                        :{COMMA} zaku
+STR_TONS                                                        :{COMMA} tona
+STR_LITERS                                                      :{COMMA} litro
+STR_ITEMS                                                       :{COMMA} elementu
+STR_CRATES                                                      :{COMMA} kaxa
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Urdin Iluna
@@ -202,7 +202,7 @@ STR_UNITS_POWER_SI                                              :{COMMA}kW
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tona{P "" k}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tona
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
@@ -235,8 +235,8 @@ STR_TOOLTIP_DEBUG                                               :{BLACK}NewGRF d
 STR_TOOLTIP_STICKY                                              :{BLACK}Markatu leiho hau itxiezina bezala 'Zarratu Leiho Guztiak' gakoarekin
 STR_TOOLTIP_RESIZE                                              :{BLACK}Click eta arrastatu leiho honi tamaina aldatzeko
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Aldatu handia/txikia leihoaren tamaina
-STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Korritu barra - korrituz zerrenda gora/behera
-STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Korritu Barra - korrituz zerrenda ezkerra/eskuma
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra mugitu - zerrendan gora/behera mugitu
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra mugitu - zerrendan ezkerra/eskuinera mugitu
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Eraikinak etab. edo lur karratu bat eraistea. Ctrl area diagonalki aukeratzen du. Mayus eraikinaren kostu estimatua erakusten du.
 
 # Query window
@@ -261,7 +261,7 @@ STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Izena
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 # These are used in dropdowns
 STR_SORT_BY_NAME                                                :Izena
-STR_SORT_BY_PRODUCTION                                          :Produkzioa
+STR_SORT_BY_PRODUCTION                                          :Ekoizpena
 STR_SORT_BY_TYPE                                                :Mota
 STR_SORT_BY_TRANSPORTED                                         :Garraiatua
 STR_SORT_BY_NUMBER                                              :Numeroa
@@ -269,7 +269,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :Onura azken urt
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Onura urte honetan
 STR_SORT_BY_AGE                                                 :Adina
 STR_SORT_BY_RELIABILITY                                         :Fidakortasuna
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Erabateko edukiera karga era bakoitzeko
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Erabateko edukiera zama mota bakoitzeko
 STR_SORT_BY_MAX_SPEED                                           :Gehienezko abiadura
 STR_SORT_BY_MODEL                                               :Modeloa
 STR_SORT_BY_VALUE                                               :Balioa
@@ -287,14 +287,14 @@ STR_SORT_BY_TRACTIVE_EFFORT                                     :Trakzio indarra
 STR_SORT_BY_INTRO_DATE                                          :Introdukzio Data
 STR_SORT_BY_RUNNING_COST                                        :Operazio Kostak
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potentzia/Operazio Kostak
-STR_SORT_BY_CARGO_CAPACITY                                      :Karga Edukiera
+STR_SORT_BY_CARGO_CAPACITY                                      :Zama Edukiera
 STR_SORT_BY_RANGE                                               :Irismena
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Jokoa pausatu
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Jokoa bizkor aurreratu
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Ezarpenak
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Partida gorde, partida honetaz irten, jokotik irten
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Jokoa gorde, joko honetatik irten, jokotik irten
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Erakutsi mapa, ikusbegi extra edo kartelen zerrenda
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Erakutsi herri direktorioa
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subsidioak erakutsi
@@ -389,10 +389,10 @@ STR_SUBSIDIES_MENU_GOAL                                         :Oraingo helmuga
 ############ range for graph menu starts
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Operazio benefizioen grafikoa
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Irabazien grafikoa
-STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Entregatutako kargaren grafikoa
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Entregatutako zama grafikoa
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Errendimendu historiako grafikoa
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Konpaniako balioaren grafikoa
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Karga ordainketaren tasa
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Zama salneurriak
 ############ range ends here
 
 ############ range for company league menu starts
@@ -587,8 +587,8 @@ STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Oraintsu
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Onura gutxien eduki duen garraioa (bakarrik 2 urte baino zaharragoak dira kontuan hartuta)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Azken 12 laurdenen artean, gutxien irabazi duzun laurdenean lortu duzun dirua
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Azken 12 laurdenen artean, gehien irabazi duzun laurdenean irabazi duzun dirua
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Entregatutako karga azkeneko lau laurdenetan
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Entregatutako karga tipo zenbakia azkeneko laudenean
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Entregatutako zama azkeneko lau laurdenetan
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Entregatutako zama mota ezberdinen zenbakia azkeneko laudenean
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Konpania honek duen dirua bankuan
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Konpania honek hartu duen dirua mailegutan
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Punto gehienak puntu posibleak kontatu gabe
@@ -685,7 +685,7 @@ STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Hegazkinak
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Garraio-Ibilbideak
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Basoa
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Tren Geltokiak
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Tren Geltokia
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Kamioi karga badia
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Bus Geltokia
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Aireportua/Heliportua
@@ -746,9 +746,9 @@ STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Konpain
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Industrien zabalerak
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Industrien itxierak
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Ekonomia aldaketak
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Produkzio aldaketak konpaniagatik zerbitzatutako industriatan
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Produkzio aldaketak lehiakidearen(en) zerbitzatutako industriatan
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}OBeste indutria produkzio aldaketak
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Ekoizpen aldaketak konpaniagatik zerbitzatutako industrietan
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Ekoizpen aldaketak lehiakidearen(en) zerbitzatutako industrietan
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Beste indutria ekoizpen aldaketak
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Konpainiaren ibilgailuei buruzko informazioa/aholkuak
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Garraio berriak
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Aldaketak zama onarpenean
@@ -803,14 +803,14 @@ STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLAC
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Munduko ekonomiaren atzeraldia!{}{}Finantza adituak beldurrez, ekonomiaren erortzearekin!
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}¡Ekonomia atzeraldia bukatu da!{}{}¡Komertzio igoerak konfiantza eman die industriei!
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} produkzioa igo du!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}¡Ikatz-zain berri bat aurkitu da {INDUSTRY}-en!{}¡Produkzioa bikoizteko itxaropena dago!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}¡Petrolio hornidura berri bar aurkitu da {INDUSTRY}-en!{}¡Produkzioa bikoizteko itxaropena dago !
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}¡Landatze metodo berriek {INDUSTRY}-an produkzioa bikoizteko itxaropena dakarte!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} produkzioa {INDUSTRY}-an %{COMMA} igo da!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} produkzioak behera egin du %50 bat
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}¡Intsektuek eragindako hondamena {INDUSTRY}-an!{}Produkzioa %50 jaitsi da
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING}¡ {INDUSTRY}-an %{COMMA} jaitsi da produkzioa!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} ekoizpena handitu du!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}¡Ikatz-zain berri bat aurkitu da {INDUSTRY}-en!{}¡Ekoizpena bikoizteko itxaropena dago!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}¡Petrolio hornidura berri bar aurkitu da {INDUSTRY}-en!{}¡Ekoizpena bikoizteko itxaropena dago !
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}¡Landatze metodo berriek {INDUSTRY}-an ekoizpena bikoizteko itxaropena dakarte!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} ekoizpena {INDUSTRY}-an %{COMMA} igo da!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} ekoizpenak behera egin du %50 bat
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}¡Intsektuek eragindako hondamena {INDUSTRY}-an!{}Ekoizpena %50 jaitsi da
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING}¡ {INDUSTRY}-an %{COMMA} jaitsi da ekoizpena!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} deposituan itxaroten dago
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} deposituan itxaroten dago
@@ -840,8 +840,8 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING} berri bat orain erabilgarri!  -  {ENGINE}
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} ez du gehiago onartzen {STRING}
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} ez du gehiago onartzen {STRING} edo {STRING}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} ez du gehiago {STRING} onartzen
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} ez du gehiago {STRING} edo {STRING} onartzen
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} orain {STRING} onartzen du
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION}{STRING} eta {STRING} orain onartzen ditu
 
@@ -969,7 +969,7 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Screensh
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafiko basea markatu
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Aukeratu erabili beharreko grafiko paketea
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} galdutako/puskatutako artxiboa{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} galdutako/hautsitako artxiboa{P "" k}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Markatutako grafiko basearen informazio gehiago
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Musika pakete basikoa
@@ -978,7 +978,7 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Soinu pa
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Base musika konfiguratu
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Aukeratu erabili beharreko musika paketea
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fitxategi hondatua{P "" s}
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} hautsitako artcxiboa{P "" k}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Musika paketearen informazio gehiago
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Pantaila osoko moduak huts egin du
@@ -1075,9 +1075,9 @@ STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(Ez dago azalpe
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Balio lehenetsia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Mota ezarpena: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Bezero ezarpenak (Ez dago gorden bilduta; joku guztiei eragiten die)
-STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Joku ezarpenak (Gorden bilduta; bakarrik joku berriei eragiten die)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Jokoaren ezarpenak (Gorden bilduta; bakarrik joko berriei eragiten die)
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Joku ezarpenak (Gorden bilduta; bakarrik uneko jokoari eragiten dio)
-STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Konpainia ezarpenak (Gorden bilduta; bakarrik joku berriei eragingo die)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Konpainia ezarpenak (Gorden bilduta; bakarrik joko berriei eragingo die)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Konpainia ezarpenak (Gorden bilduta; bakarrik uneko konpainiari eragiten dio)
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Erakutsi
@@ -1325,7 +1325,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Klik bikoitza
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Klik bakarra (enfokatua dagoenean)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Klik bakarra (Berehala)
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Xaguaren eskumako botoiaren emulazioa: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Xaguaren eskuineko botoiaren emulazioa: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Aukeratu saguaren eskuineko botoiaren klikak emulatzeko modua
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komandoa+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Klik
@@ -1346,7 +1346,7 @@ STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS paleta
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows paleta
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatikoki jokoa pausan jarri joko berri bat hastearakoan: {STRING}
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Gaitua dagoenean, partida berria hasterakoan automatikoki pausatua egongo da, aldez aurretik mapa aztertzeko
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Gaitua dagoenean, joko berria hasterakoan automatikoki pausatua egongo da, aldez aurretik mapa aztertzeko
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Jokoa geldituta dagoenean baimendu: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Aukeratu baimenduta dauden ekintzak jokua pausatua dagoenean
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Ekintzarik ez
@@ -1363,7 +1363,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Helduerak eta i
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Erakutsi aurreikusitako iritsiera eta irteera denborak denbora tauletan
 STR_CONFIG_SETTING_QUICKGOTO                                    :Ibilgailu aginduen sorrera azkarra: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :'Nora joan' aurrez hautatu agindu lehioak irekitzerakoan
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Lehenetsiko trenbide mota (partida berria hastean/partida kargatzean): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Lehenetsitako trenbide mota (joko berria hastean/jokoa kargatzean): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Jokua hasi edo jokua kargatu eta gero trenbide lanabesetan lehenetsiko den trenbide mota. 'Zaharrena' trenbide mota zaharrena lehenetsiko da, 'Berriena' trenbide mota berriena lehenetsiko da, 'Erabiliena' trenbide mota erabiliena lehenetsiko da
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Lehena eskuragarri
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Azkena eskuragarri
@@ -1571,7 +1571,7 @@ STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... jara
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
-STR_INTRO_NEW_GAME                                              :{BLACK}Partida Berria
+STR_INTRO_NEW_GAME                                              :{BLACK}Joko Berria
 STR_INTRO_LOAD_GAME                                             :{BLACK}Jokua Kargatu
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Eszenarioa Jokatu
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Garaiera mapa jokatu
@@ -1586,10 +1586,10 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Edukiak 
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}IA/Joku Scripten Ezarpenak
 STR_INTRO_QUIT                                                  :{BLACK}Irten
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Joku berria hasi. Krtl+klik mapa konfigurazioa desgaitzen du
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Joko berria hasi. Krtl+klik mapa konfigurazioa desgaitzen du
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Gordetako jokua kargatu
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Joku berria hasi, altuera mapa erabiliz
-STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Joku berria hasi, eszenatoki pertsonalizatuak erabiliz
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Joko berria hasi, altuera mapa erabiliz
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Joko berria hasi, eszenatoki pertsonalizatuak erabiliz
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Eszenatoki pertsonalizatua eraiki
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Multijokalari joko bat hasi
 
@@ -1606,7 +1606,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Bilatu e
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}IA/Joku Scripten Ezarpenak
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD'-tik Irten
 
-STR_INTRO_TRANSLATION                                           :{BLACK}Itzultze honi {NUM} string{P "" s} falta zaio. Mesedez OpenTTD hobeago egiten lagundu itzultzaile bezala aritzen. Ikusi readme.txt zehetasunentzako.
+STR_INTRO_TRANSLATION                                           :{BLACK}Itzultze honi {NUM} string falta zaio/zaizkio. Mesedez OpenTTD hobeago egiten lagundu itzultzaile bezala aritzen. Ikusi readme.txt xehetasunentzako.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Irten
@@ -1646,7 +1646,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Klima tropikale
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Jostailu munduko paisaia
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Data aldatu: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Aurtengo urtea aldatu
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Produkzio balioak aldatzea baimendu: {ORANGE}{STRING}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ekoizpen balioak aldatzea baimendu: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}Kolore eskema berria
@@ -2385,11 +2385,11 @@ STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Etxeak
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Egin klik industrian haren hornitzaile eta bezeroak ikusteko
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Egin klik cargan haren hornitzaile eta bezeroak ikusteko
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Elkartea erakutsi
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Industrien kargaren suministroa eta onarpena erakutsi
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Industrien zama hornidura eta onarpenak erakutsi
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link-a mapa txikira
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Mapa txikian agertzen diren industriak aukeratu
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Aukeratu karga
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Aukeratu ikusi nahi duzun karga
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Aukeratu zama
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Aukeratu ikusi nahi duzun zama
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Aukeratu industria
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Aukeratu ikusi nahi duzun industria
 
@@ -2530,7 +2530,7 @@ STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Ezabatu 
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Gorde
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Jokua gorde, aukeratutako izenarekin
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Kargatu
-STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Aukeratutako partida kargatu
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Aukeratutako jokoa kargatu
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Jokoaren Xehetasunak
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ez dago informaziorik
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2698,7 +2698,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Kontuz: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Akatsa {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Larria: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF errore larria gertatu da: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF-an akats larria gertatu da: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ez du funtzionatuko OpenTTD-k esandakoTTDPatch bertsioarekin
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} {STRING} TTD bertsioarentzat da
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} {STRING}arekin erabiltzeko diseinatua izan da
@@ -2722,7 +2722,7 @@ STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Grafiko deseinu
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Kontuz!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Abiarazitako jokuan aldaketak egin behar dituzu. Honek erroreak sortu ditzake OpenTTD-n edo jokuan. Ez bidali arazo hauen informerik{}Ziur zaude egin nahi duzula?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Abiarazitako jokuan aldaketak egin behar dituzu. Honek akatsak sortu ditzake OpenTTD-n edo jokuan. Ez bidali arazo hauen informerik{}Ziur zaude egin nahi duzula?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ezin artxiboa gehitu: GRF ID bikoiztua
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Bat datorren artxiboa ez da aurkitu (GRF bateragarria kargatua)
@@ -2759,7 +2759,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria bali
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE} NewGRF berriak bilatzen.
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK} NewGRFak bilatzen. Zenbatekoaren arabera tartetxo baterako luza litzateke...
-STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF eskaneatuak {NUM} NewGRF kopurutik
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF eskaneatuak {NUM} NewGRF kopurutik kanpo
 STR_NEWGRF_SCAN_ARCHIVES                                        :Fitxategiak bilatzen
 
 # Sign list window
@@ -2792,9 +2792,9 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Posta ko
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Beharrezko zama herri hazkunderako:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} beharrezkoa
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} Neguan beharrezkoa
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} jasota
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregatua
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (beharrezkoa)
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (Bidalita)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregatua)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Herria {ORANGE}{COMMA}{BLACK} egunero hazten da
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Herria {ORANGE}{COMMA}{BLACK} egunero hazten da (sortutako eraikuntzak)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Herria {RED}ez da {BLACK} hazten ari
@@ -3051,7 +3051,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Azken hilabetearen ekoizpena:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} (%{COMMA}garraiatua)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Ikuspegi nagusia industrian kokatu. Ktrl+Klik ikuspegi lehio berri bat irekiko du industriaren kokapenarekin
-STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produkzio maila: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Ekoizpen kopurua: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Beharrezkoa du: {YELLOW}{STRING}{STRING}
@@ -3067,10 +3067,10 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Ekoizpen
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ekoizpena aldatu (8 eta 2040 arteko multiploa)
-STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Produkzio portzentaia aldatu (portzentaia, %800 arte)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ekoizpen ehunekoa aldatu (ehunekoa, %800 arte)
 
 # Vehicle lists
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} tren
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tren
 STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Errepide ibilgailu
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Itsasontzi
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Hegazkin
@@ -3668,6 +3668,7 @@ STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Atzerape
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Atzerapen kontagailua garbitu, ibilgailua garaiz itsiko dela adieraziko da
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automatikoki bete
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Ordutegia automatikoki bete eginbeharreko hurrengo garraiaroaren balioekin (Ktrl+klik itxarote denborak mantetzen saiatzeko)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Espero zena
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programatuta
@@ -3687,22 +3688,33 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Urtea au
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}IA/Joku script-a garbitu
+STR_AI_DEBUG                                                    :{WHITE}IA/Joku Script Garbitzailea
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Script-aren izena
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}IA-ren Ezarpenak
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}IA-ren hautaketak aldatu
 STR_AI_DEBUG_RELOAD                                             :{BLACK}IA birkargatu
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}IA kendu, script-a birkargatu, eta IA berrabiarazi
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Haustura gaitu/desgaitu IA baten erregistro mezua haustura soka batekin bat egiten duenean
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Haustura:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Haustura
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Ia baten erregistro mezua kate honekin bat egiten duenean, jokua pausatuko da
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Bat egindako kasua
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Gaitu bateragarritasuna IA-en erregistro mezuak hautsitako katearekin alderatzen direnean
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Jarraitu
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Berriz ere jokatu eta IA-rekin jarraitu
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}IA honen depurazio emaitza ikusi
 STR_AI_GAME_SCRIPT                                              :{BLACK}Jokuaren Script-a
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Joakuaren scrip erregistroa begiratu
 
+STR_ERROR_AI_NO_AI_FOUND                                        :Ez da IA egokirik aurkitu kargatzeko.{}IA honek ez du ezer egingo.{}IA ezberdinak deskargatu ditzakezu "Online edukia"ren bidez
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Abiarazitako script bat hautsi da. Mesedez script-aren egileari jakinarazi IA/Joku Script Garbitzaileko lehioaren pantaila argazkia hateraz
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}IA/Joku Script Garbitzailearen lehioa bakarrik zerbitzariarentzako erabilgarria da
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION                                           :{WHITE}IA/Joku Script-aren Ezarpenak
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Hurrengo jokuan kargatuko den Joku Script-a
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Hurrengo jokuan kargatuko diren IA-k
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jokalaria
 STR_AI_CONFIG_RANDOM_AI                                         :Ausazko IA
 STR_AI_CONFIG_NONE                                              :(ezer ez)
@@ -3721,8 +3733,11 @@ STR_AI_CONFIG_CHANGE_AI                                         :IA
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Script jokua
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Bestelako script bat kargatu
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Ezarpenak
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Script-aren ezarpenak aldatu
 
 # Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}Eskuragarria {STRING}
+STR_AI_LIST_CAPTION_AI                                          :IAk
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Jokuaren Script-a
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klikatu script-a aukeratzeko
 
@@ -3742,10 +3757,12 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Jokuaren Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Itxi
 STR_AI_SETTINGS_RESET                                           :{BLACK}Berrabiarazi
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :IA hau abiarazteko pasa beharko diren egunak (gutxi gora behera): {ORANGE}{STRING}
 
 
 # Textfile window
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} ren "irakur nazazu" artxiboa
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}-aren aldaketak
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} rako lizentzia
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Ikusi "irakur nazazu"
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Aldaketak
@@ -3786,119 +3803,351 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Ezin daiteke ar
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Ezin daiteke artxiboa idatzi
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Artxiboen integraltasuna konprobatzeak huts egin du
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ez dago baliagarri>
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Tranbiarik gabeko bertsio batean gorde zen. Tranbia guztiak ezabatuak izan dira
 
 # Map generation messages
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Mapa sortzea bertan behera...{}... herriak kokatzeko lekurik ez
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... ez dago herririk eszenatoki honetan
 
+STR_ERROR_PNGMAP                                                :{WHITE}Ezin izan da PNG-tik paisaia kargatu ...
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... ez da artxiboa aurkitu
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... ezin izan da grafikoa aldatu. 8 edo 24-bit PNG irudia beharrezko da
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... Zerbait gaizki joan da (matxuratutako artxiboa ziurrenik)
 
+STR_ERROR_BMPMAP                                                :{WHITE}Ezin izan da BMP-tik paisaia kargatu ...
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ezin izan da irudi mota birmoldatu
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... irudia handiegia da
 
+STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Eskala abisua
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ez da gomendagarria maparen jatorrizko tamaina asko aldatzea. Hala eta guztiz ere jarraitu?
 
 # Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Soinu multzo bakarra aurkitu da. Soinu gehiago nahi badituzu instalatu online edukietatik
 
 # Screenshot related messages
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Pantaila argazkia '{STRING}' bezala gordeta
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Pantaila argazkiak huts egin du!
 
 # Error message titles
+STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Mezua
+STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}{STRING} bidalitako mezua
 
 # Generic construction errors
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Maparen ertza itzalita
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Maparen ertzetik hurbilegi
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Diru nahikorik ez - {CURRENCY_LONG} beharrezkoa da
+STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Lursail laua beharrezkoa
+STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Lursailaren malda norabide okerrean
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ezin da hau egin...
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Lehendabizi eraikinia eraitsi
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Ezin izan da area garbitu...
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... leku desegokia
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}...dagoeneko eraikia
+STR_ERROR_OWNED_BY                                              :{WHITE}... {STRING} jabegoa
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... area beste konpainia batena da
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... terraformazio mugara iritsi da
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... karratua nibelazio mugara iritsi da
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... gehienez landatu daitezkeen zuhaitz kopurura iritsi da
+STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Ezin da izena errepikatu
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} bidean
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ezin da jokoa geldituta dagoenean
 
 # Local authority errors
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} udaletxeak ez du baimentzen
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} udaletxeak ez du beste aireportu baten eraikuntza baimentzen
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} udaletxeak ez du beste aireportu baten eraikuntza baimentzen zatara arazoengatik
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Zure soborno saiakera herrialdeko inspektore batek antzeman du
 
 # Levelling errors
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Ezin izan da lursaila igo...
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Ezin izan da lursaila jeitsi...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Ezin izan da lursaila lautu...
+STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Eskabazioak tunela kaltetuko luke
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... dagoeneko itsas mailan
+STR_ERROR_TOO_HIGH                                              :{WHITE}... altuegi
+STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... dagoeneko lautua
 
 # Company related errors
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Ezin da konpainiaren izena aldatu...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Ezin da lehendakariaren izena aldatu...
 
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... geheienzko milegua {CURRENCY_LONG} da
+STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Ezin da diru gehiago eskatu...
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... ez dago mailegurik ordaintzeko
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} beharrezkoa
+STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Ezin da mailegua ordaindu...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Ezin da mailegatutako dirua eman...
+STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Ezin da konpainia erosi...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Ezin izan da konpainiaren egoitza eraiki...
+STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Ezin izan da konpainiaren akzioen %25a erosi...
+STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Ezin izan da konpainiaren akzioen %25a saldu...
+STR_ERROR_PROTECTED                                             :{WHITE}Konpainia gazteegia da akzioak izateko...
 
 # Town related errors
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ezin izan da herririk sortu
+STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Ezin izan da herriak berrizendatu...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Ezin izan da herririk aurkitu...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Ezin da hiria haunditu...
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... maparen ertzetik hurbilegi
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... beste herritik hurbilegi
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... herri gehiegi
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ez dago leku gehiagorik mapan
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Herriak ez du errepiderik eraikiko. Herriek errepideak eraiki ahal izateko Ezarpen Aurreratuak->Ekonomia->Herriak
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Errepide lanak egiten
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Geltoki edo gordailu bat herriari lotua dago edo ezin izan da herriaren jabegoa den lauki bat ezabatu
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... ez dago leku egokirik estatua batentzat hiri honen erdian
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... industria gehiegi
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Ezin izan da indutriarik sortu...
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Ezin izan da {STRING} hemen sortu...
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Ezin da idustri mota hau hemen eraiki...
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... beste industriatik hurbilegi
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... lehedabizi herri bat aurkitu behar da
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... bakarrik herri bakoitzetik bat
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... bakarrik 1200 biztanletik gorako herrietan eraiki daiteke
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... bakarrik basoetan eraiki daiteke
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... bakarrik desertuan eraiki daiteke
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... bakarrik herrietan eraiki daiteke (etxeak ordezkatuz)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... bakarrik herriko erdigunetik hurbil eraiki daiteke
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... area baxuetan bakarrik eraiki daiteke
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... bakarrik eraiki daiteke maparen ertzetik hurbil
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... Basoak bakarrik elur garaieratik gora eraiki daitezke
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... bakarrik elur garaieratik gora eraiki daiteke
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... bakarrik elur garaieratik behera eraiki daiteke
 
 # Station construction related errors
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Ezin da tren gordailua hemen eraiki...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Ezin izan da autobus geltokia eraiki...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Ezin izan da kamioi geltokia eraiki...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Ezin izan da bidaiarientzako tanbia geltokia eraiki...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Ezin izan da mekantziendako tanbia geltokia eraiki...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Ezin da kaia hemen eraiki...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Ezin da aireportua hemen eraiki...
 
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Geltoki bat baino gehiagorekin mugatzen du
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... geltoki zabalegia
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Geltoki gehiegi
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Tren geltoki zati gehiegi
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Autobus geltoki gehiegi
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Kamioi geltoki gehiegi
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Geltoki batetik hurbilegi
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Kai batetik hurbilegi
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Aireportu batetik hurbilegi
+STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Ezinda geltokia berrizendatu...
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... errepide hau herriaren jabegoa da
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... errepidea norabide okerrean dago
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... geltokietan zehar gidatzean ezin da ertzik egon
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... geltokietan zehar gidatzean ezin da bidegurutzerik egon
 
 # Station destruction related errors
+STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Ezin da geltokiaren zatia ezabatu...
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Lehendabizi tren geltokia ezabatu
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Ezin da autobus geltokia ezabatu...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Ezin da kamioi geltokia ezabatu...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Ezin da bidaiarientzako tanbia geltokia ezabatu...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Ezin da merkantziendako tanbia geltokia ezabatu...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Lehendabizi geltokia kendu behar duzu
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... ez dago geltokirik hemen
 
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Lehendabizi tren geltokia ezabatu
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Lehendabizi autobus geltokia ezabatu
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Lehendabizi kamioi geltokia ezabatu
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Lehendabizi bidaiarientzako tranbia geltokia ezabatu
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Lehendabizi merkantziendako tranbia geltokia ezabatu
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Lehendabizi kaia ezabatu
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Lehendabizi aireportua ezabatu
 
 # Waypoint related errors
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Bidepuntu bat baino gehiagorekin mugatzen du
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Beste bidepuntutik hurbilegi
 
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Ezin da tren bidepuntua hemen eraiki...
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Ezin da buia hemen eraiki...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Ezin da bidepuntua berrizendatu...
 
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Ezin da tren bidepuntua ezabatu...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Lehendabizi tren bidepuntua ezabatu
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... buia bidean
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... buia beste konpainia batek erabiltzen ari du!
 
 # Depot related errors
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Ezin da tren gordailua hemen eraiki...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Ezin da ibilgailu gordailua hemen eraiki...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ezin da trabia gordailua hemen eraiki...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ezin da itsasontzi gordailua hemen eraiki...
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ezin da garajearen izena aldatu...
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... tren gordailuaren barruan geldiarazi behar da
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... gordailu barnean gelditua egon behar du
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... ontzitegiaren barruan geldiarazi behar da
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... hangar barruan geldiarazi behar da
 
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trenak bakarrik aldatu daitezke gordailu barnean geldituak daudenean
+STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren luzeegia
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Ezin da ibilgailuaren norabidea aldatu...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... unidade bat baino gehiago ditu
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Trenbide mota bateraezinak
 
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Ezin da ibilgailua mugitu...
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Atzekaldeko moterak beti jarraituko du aurrealdekoa
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Ezin izan da gordailura joateko ibilbidea aurkitu
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Ezin izan da herriko gordailua aurkitu
 
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Gordailu mota okerra
 
 # Autoreplace related errors
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} luzeegia da ordezkatua izan ondoren
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ordezkatze automatikorik ez/ezarritako berritze arauak
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(diru muga)
 
 # Rail construction errors
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Ezinezko bide konbinaketa
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Lehendabizi seinaleak kendu behar dituzu
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ez dago trenbide egokirik
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Lehendabizi trenbidea ezabatu
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Errepidea norabide bakarrekoa da edo blokeatua dago
 STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Ezin dira maila bereko pasaguneak egin trenbide mota honetan
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Ezin da seinalerik hemen eraiki...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Ezin da trenbiderik hemen eraiki...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Ezin da hemengo trenbidea ezabatu...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Ezin dira hemengo seinaleak ezabatu...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Ezin dira seinaleak hemen aldatu...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... ez dago trenbiderik
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... ez dago seinalerik
 
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Ezin da trenbidea hemen aldatu...
 
 # Road construction errors
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Lehendabizi errepidea ezabatu
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... norabide bakarreki errepideak ezin dute bidegurutzerik izan
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Ezin da errepiderik hemen eraiki...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Ezin da hemen tranbiarik eraiki...
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Ezin da hemen errepiderik ezabatu...
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Ezin da hemen tranbiarik ezabatu...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... ez dago biderik
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... ez dago tranbia biderik
 
 # Waterway construction errors
+STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ezin dira hemen urbideak eraiki...
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Ezin da esklusa hemen eraiki...
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Ezin dira ibaiak hemen jarri...
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... uretan eraiki behar da
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... ezin da uretan eraiki
 STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}ezin da itsasoan eraiki...
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}ezin da kanalean eraiki...
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}ezin da errekan eraiki...
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Lehendabizi urbidea ezabatu
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Ezin da akueduktua hemen eraiki...
 
 # Tree related errors
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... dagoeneko zuhaitz bat dago
 STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... zuhaitz motarentzat lur txarra
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}EZin da zuhaitza hemen landatu...
 
 # Bridge related errors
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Ezin da zubia hemen eraiki...
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Lehendabizi zubia eraitsi
+STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Ezin da puntu berdinean hasi eta bukatu
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Zubiaren ertzak ez daude garaiera berdinean
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Zubia lursailerako baxuegia da
+STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Hasiera eta bukaera lerro berdinean egon behar dute
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... zubiaren bi muturrak lurrean egon behar dute
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... zubia luzeegia da
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Zubia mapatik kanpo amaituko zuen
 
 # Tunnel related errors
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Ezin da tunela hemen eraiki...
+STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Tunelaren sarrerarentzako leku ezegokia
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Lehendabizi tunela eraitsi
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Beste tunel bat dago eraikitzen ari zarenaren bidean
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunela mapatik kanpo bukatuko da
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Ezin da tunelaren bukaera eraiki
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunel luzeegia
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... objektu gehiegi daude
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Ezin da objektu hau eraiki...
+STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objektua bidean
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... konpainiaren egoitza bidean
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Ezin da lursail hau erosi...
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... zu zara honen jabea!
 
 # Group related errors
+STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Ezin da taldea sortu...
+STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Ezin da taldea ezabatu...
+STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Ezin da taldea berrizendatu...
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Ezin dira taldearen ibilgailu guztiak ezabatu...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Ezin da taldeari ibilgailua gehitu...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Ezin da taldeari ibilgailu konpartitua gehitu...
 
 # Generic vehicle errors
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Trena bidean
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Errepide ibilgailua bidean
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Itasontzia bidean
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Hegazkina bidean
 
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Ezin da trena birmoldatu...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Ezin da errepide ibilgailua birmoldatu...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Ezin da itsasontzia birmoldatu...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Ezin da hegazkina birmoldatu...
 
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Ezin da trena izendatu...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Ezin da errepide ibilgailua izendatu...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Ezin da itsasontzia izendatu...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Ezin da hegazkina izendatu...
 
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Ezin da trena gelditu/abiarazi...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Ezin da errepide ibilgailua gelditu/abiarazi...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Ezin da itsasontzia gelditu/abiarazi...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Ezin da hegazkina gelditu/abiarazi...
 
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Ezin da trena gordailura eraman...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Ezin da errepide ibilgailua gordailura eraman...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Ezin da itsasontzia gordailura eraman...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Ezin da hegazkina hangarrera eraman...
 
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Ezin da trenbide ibilgailua erosi...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Ezin da errepide ibilgailua erosi...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Ezin da itsasontzia erosi...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Ezin da hegazkina erosi...
 
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Ezin da tren mota berrizendatu...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Ezin da errepide ibilgailu mota berrizendatu...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Ezin da itsasontzi mota berrizendatu...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Ezin da hegazkin mota berrizendatu...
 
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Ezin da trenbide ibilgailua saldu...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Ezin da errepide ibilgailua saldu...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Ezin da itsasontzia saldu...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Ezin da hegazkina saldu...
 
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Ibilgailua ez dago eskuragarri
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Ibilgailua ez dago eskuragarri
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Itsasontzia ez dago eskuragarri
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Hegazkina ez dago eskuragarri
 
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Jokuan ibilgailu gehiegi
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ezin da garraio tartea aldatu...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... garraioa suntsituta
 
 # Specific vehicle errors
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ezin da trena seinalea pasatzera behartu, istripu arriskua...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ezin da trenaren norabidea aldatu...
 STR_ERROR_TRAIN_START_NO_POWER                                  :Trenak ez du potentziarik
 
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}EZin da ibilgailu errepidearen norabidea aldatu...
 
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Hegazkina airean dago
 
 # Order related errors
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Ez dago aginduetzako toki gehiago
+STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Agindu gehiegi
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Ezin da agindu berria sartu...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Ezin da agindu hau ezabatu...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Ezin da agindua aldatu...
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Ezin da agindua mugitu...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Ezin da agindua saltatu...
@@ -3975,7 +4224,7 @@ STR_INDUSTRY_NAME_FACTORY                                       :Fabrika
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :Inprimaketa lanak
 STR_INDUSTRY_NAME_STEEL_MILL                                    :Altzairu Fundizioa
 STR_INDUSTRY_NAME_FARM                                          :Baserrria
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Kupre Meategia
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Kobre Meategia
 STR_INDUSTRY_NAME_OIL_WELLS                                     :Petroleo Erauzketa
 STR_INDUSTRY_NAME_BANK                                          :Bankua
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Janaria Ekoizteko Fabrika
@@ -3983,17 +4232,24 @@ STR_INDUSTRY_NAME_PAPER_MILL                                    :Papelera
 STR_INDUSTRY_NAME_GOLD_MINE                                     :Urre Meategia
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Bankua
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Diamante Meategia
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Burni Meategia
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Burdin Meategia
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Fruta Ekoizlea
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Goma Ekoizlea
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Ur Hornidura
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Ur Dorrea
 STR_INDUSTRY_NAME_FACTORY_2                                     :Fabrika
 STR_INDUSTRY_NAME_FARM_2                                        :Baserria
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Zerrategia
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Kotoiezko Azukre Basoa
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Gozoki Fabrika
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Pila Baserria
+STR_INDUSTRY_NAME_COLA_WELLS                                    :Kola Erauzketa
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Jostailu Denda
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Jostailu Fabrika
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Plastiko Iturria
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Edari freskagarrien Fabrika
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Edari Burbuilatsuen Fabrika
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Burbuila Ekoizlea
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Gozoki Lehengai Erauzketa
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Azukre Harrobia
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -4027,6 +4283,7 @@ STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Eranskina
+STR_SV_STNAME_SIDINGS                                           :{STRING} Bazterbideak
 STR_SV_STNAME_BRANCH                                            :{STRING} Adarra
 STR_SV_STNAME_UPPER                                             :{STRING} goikaldea
 STR_SV_STNAME_LOWER                                             :{STRING} behealdea
@@ -4072,21 +4329,24 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Abere bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Merkantzia bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Garau bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Egur bagoia
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Burni mineral bagoia
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Burdin mea bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Altzairu bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Bagoi blindatua
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Janari bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Paper bagoia
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Kupre mineral bagoia
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Kobre mea bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Ur tankea
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Fruta bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Goma bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Azukre bagoia
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Kotoiezko Azukre bagoia
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Gozoki lehengai bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Burbuila bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Kola tankea
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Gozoki bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Jostailu bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Pila bagoia
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Freskagarri bagoia
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Edari burbuilatsu bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Plastiko bagoia
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elektrikoa)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elektrikoa)
@@ -4099,21 +4359,24 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Abere bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Merkantzia bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Garau bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Egur bagoia
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Burni mineral bagoia
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Burdin mea bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Altzairu bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Bagoi blindatua
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Janari bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Paper bagoia
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Kupre mineral bagoia
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Kobre meal bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Ur tankea
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Fruta bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Goma bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Azukre bagoia
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Kotoiezako Azukre bagoia
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Gozoki lehengai bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Burbuila tankea
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Kola tankea
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Gozoki bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Jostailu bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Pila bagoia
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Freskagarri bagoia
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Edari Burbuilatsu bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Plastiko bagoia
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Elektrikoa)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Elektrikoa)
@@ -4128,22 +4391,24 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Abere bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Merkantzia bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Garau bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Egur bagoia
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Burni mineral bagoia
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Burdin mea bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Altzairu bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Bagoi blindatua
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Janari bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Paper bagoia
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :kupre bagoia
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Kobre mea bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Ur tankea
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Fruta bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Goma bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Azukre bagoia
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Kotoiezko Azukre bagoia
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Gozoki lehengai bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Burbuil bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Kola bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Gozoki bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Jostailu bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Pila bagoia
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Freskagarri bagoia
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Edari Burbuilatsu bagoia
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Plastiko bagoia
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal Autobusa
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard Autobusa
@@ -4212,9 +4477,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow Koka-K
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover Azukre-kotoi Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught Azukre-kotoi Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow Azukre-kotoi Kamioia
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover Toffee Kamioia
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught Toffee Kamioia
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow Toffee Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover Gozoki lehengai Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught Gozoki lehengai Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow Gozoki lehengai Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover Jostailu Furgpneta
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught Jostailu Furgoneta
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow Jostailu Furgoneta
@@ -4224,9 +4489,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow Gozoki
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover Pila Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught Pila Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow Pila Kamioia
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover Freskagarri Kamioia
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught Freskagarri Kamioia
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow Freskagarri Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover Edari Burbuilatsu Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught Edari Burbuilatsu Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow Edari Burbuilatsu Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover Plastiko Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught Plastiko Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow Plastiko Kamioia
@@ -4241,9 +4506,9 @@ STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 Ho
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug Biadiari Ferry-a
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake Bidaiari Ferry-a
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate Zamaontzia
-STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Ondasun ontzia
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover Ondasun ontzia
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut Ondasun ontzia
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Zamaontzia
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover Zamaontzia
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut Zamaontzia
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart

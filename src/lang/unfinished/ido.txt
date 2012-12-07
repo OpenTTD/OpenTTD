@@ -518,13 +518,13 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Kustumigita ({N
 
 
 
-
-
 # Advanced settings window
 
 
 
+
 STR_CONFIG_SETTING_NONE                                         :Nulo
+
 
 
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nulo
@@ -536,6 +536,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verda
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Obskur-verda
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
+
 
 
 
@@ -860,10 +861,12 @@ STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_L
 
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aceptas: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
 ############ range for rating ends
+
 
 
 

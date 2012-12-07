@@ -1059,8 +1059,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Fladt
 STR_TERRAIN_TYPE_HILLY                                          :Bakket
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bjergrigt
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Passiv
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fjendtlig
@@ -1105,6 +1103,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistisk
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Venstre
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Center
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Højre
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillad bygning på skråninger og kyster: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Hvis den er aktiveret, kan spor og stationer bygges på de fleste skråninger. Hvis den er deaktiveret, er de kun tilladt på skråninger, som svarer til retningen af sporet og kræver derfor ikke fundament
@@ -1356,6 +1355,7 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Deaktiver køre
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Aktivering af denne indstilling gør bygning af vejkøretøjer umuligt for en computer modstander
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Deaktiver fly for computeren: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Deaktiver skibe for computeren: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tillad computerspillere i netværksspil: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes før scriptet bliver stoppet: {STRING}

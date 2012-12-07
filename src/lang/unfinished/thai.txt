@@ -1052,8 +1052,6 @@ STR_TERRAIN_TYPE_FLAT                                           :แบนรา
 STR_TERRAIN_TYPE_HILLY                                          :เป็นเนิน
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :แบบภูเขา
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :อนุญาต
 STR_CITY_APPROVAL_TOLERANT                                      :พอผ่อนผันให้ได้
 STR_CITY_APPROVAL_HOSTILE                                       :ไม่เป็นมิตร
@@ -1062,6 +1060,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}ไม�
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}ปรับแต่งเพิ่มเติม
+
 
 STR_CONFIG_SETTING_OFF                                          :ปิด
 STR_CONFIG_SETTING_ON                                           :เปิด
@@ -1078,6 +1077,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :สมจริ
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :ซ้าย
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :กลาง
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :ขวา
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :อนุญาตให้สร้างบนที่ชันและริมตลิ่ง: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :อนุญาตให้เปลี่ยนสภาพพื้นผิวใต้สิ่งก่อสร้าง, ราง, ฯลฯ (ปรับความชันอัตโนมัติ): {STRING}
@@ -1221,6 +1221,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :ไม่ยอ
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :ไม่ยอมให้มียานพาหนะสำหรับคอมพิวเตอร์: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :ไม่ยอมให้มีเครื่องบินสำหรับคอมพิวเตอร์: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :ไม่ยอมให้มีเรือสำหรับคอมพิวเตอร์: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :อนุญาตให้ใช้ปัญญาประดิษฐ์ (AI) สำหรับหลายผู้เล่น: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :จำนวน opcodes ก่อนที่สคริปต์ถูกหยุด: {STRING}

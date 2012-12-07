@@ -1238,7 +1238,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW                                 :Tarkista ajoneu
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Mikäli käytössä, kulkuneuvojen määräykset tarkistetaan väliajoin ja havaituista ongelmista ilmoitetaan uutisviestillä
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Ei
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Kyllä, mutta ei pysäytetyille
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :aikille ajoneuvoille
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Kaikille ajoneuvoille
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varoita, jos kulkuneuvon tulos on negatiivinen: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Mikäli käytössä, uutisviesti lähetetään jos kulkuneuvo ei ole tuottanut rahaa viimeisen kalenterivuoden aikana
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Ajoneuvot eivät vanhene: {STRING}

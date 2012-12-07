@@ -1114,8 +1114,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Tasane
 STR_TERRAIN_TYPE_HILLY                                          :Künklik
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Mägine
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Soodustav
 STR_CITY_APPROVAL_TOLERANT                                      :Salliv
 STR_CITY_APPROVAL_HOSTILE                                       :Vaenulik
@@ -1126,6 +1124,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Sobiv te
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Täpsemad seaded
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(seletus puudub)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Vaikeväärtus: {ORANGE}{STRING}
+
 
 STR_CONFIG_SETTING_OFF                                          :Väljas
 STR_CONFIG_SETTING_ON                                           :Sees
@@ -1142,6 +1141,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Reaalne
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vasakul
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Keskel
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Paremal
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Nõlvadele ja kallastele ehitamine: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Kui lubatud, saab teid ja jaamu ehitada enamikle nõlvadele. Kui keelatud, siis on need lubatud ainult nõlvadel, mis vastavad rööbastee suunale ja mis eeldavad seega vundamenti.
@@ -1340,6 +1340,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Rongikeeld arvu
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Sõidukikeeld arvutile: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Õhusõidukikeeld arvutile: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Laevakeeld arvutile: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tehismõistus võrgumängudes: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcode-d ennem skripte on peatatud: {STRING}

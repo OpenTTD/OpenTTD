@@ -1041,8 +1041,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Flak
 STR_TERRAIN_TYPE_HILLY                                          :Heuvelachtich
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergachtich
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Tajouwend
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fijannich
@@ -1051,6 +1049,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Gjin br�
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avansearre ynstellings
+
 
 STR_CONFIG_SETTING_OFF                                          :út
 STR_CONFIG_SETTING_ON                                           :oan
@@ -1067,6 +1066,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistysk
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Lofts
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midden
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Rjochts
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :It boue op in helling tastean: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Omkriten oanpasse under gebouen, spoaren, ensafuorthinne tastean (autoslope): {STRING}
@@ -1205,6 +1205,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Ferbied treinen
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Ferbied auto's foar computerspiler: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Ferbied Fleantúg foar computerspiler: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Ferbied skippen foar computerspiler: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Stea AIs ta yn multiplayer: {STRING}
 
@@ -2079,6 +2080,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aksepteart: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
@@ -2093,6 +2095,7 @@ STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Sintrear
 
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Jow stasjon in nije namme
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}

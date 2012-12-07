@@ -1343,7 +1343,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Nessuna
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Velocità rotellina mappa: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controlla la sensibilità dello scorrimento con rotelilna del mouse
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Tastiera su schermo: {STRING}
-STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Seleziona il metodo il metodo di apertura della tastiera su schermo per l'inserimento di testo
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Seleziona il metodo di apertura della tastiera su schermo per l'inserimento di testo col solo uso del dispsitivo di puntamento. Adatto per i dispositivi portatili, privi di tastiera fisica
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Disabilitata
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Doppio clic
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Clic (con casella di testo attiva)

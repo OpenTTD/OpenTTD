@@ -1058,8 +1058,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Plat
 STR_TERRAIN_TYPE_HILLY                                          :Koppierig
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergagtig
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissief
 STR_CITY_APPROVAL_TOLERANT                                      :Toelaatbaar
 STR_CITY_APPROVAL_HOSTILE                                       :Vyandelik
@@ -1094,6 +1092,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realisties
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Links
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Senter
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Regs
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Laat bou op skuinstes en kuslyn toe: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :As geaktiveer, kan spore en stasies op meeste hellings gebou word. Indien gedeaktiveer, kan hulle net gebou work op hellings wat die rigting van die spoor volg, en dus geen fondasies verg nie
@@ -1327,6 +1326,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Sper treine vir
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Sper pad voertuie vir rekenaar: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Sper vliegtuie vir rekenaar: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Sper skepe vir rekenaar: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Laat AI in multispeler toe: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Laat AI Rekenaaar spelers by 'n multi-speler spel toe

@@ -1061,8 +1061,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Līdzens
 STR_TERRAIN_TYPE_HILLY                                          :Paugurains
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Kalnains
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :pieļaujoša
 STR_CITY_APPROVAL_TOLERANT                                      :iecietīga
 STR_CITY_APPROVAL_HOSTILE                                       :naidīga
@@ -1107,6 +1105,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :reālistiskais
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :pa kreisi
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centrā
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :pa labi
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Atļaut būvēt nogāzēs un piekrastēs: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ja ieslēgts, ceļus un stacijas var būvēt uz vairums nogāzēm. Ja izslēgts, tas ir atļauts tikai uz ceļu virzienam atbilstošām nogāzēm un tādēļ nav nepieciešami ieguldījumi
@@ -1363,6 +1362,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Atspējot dator
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Šā iestatījuma ieslēgšana padara neiespējamu lidaparātu būvēšanu datoram
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Atspējot datoram kuģus: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Šā iestatījuma ieslēgšana padara neiespējamu kuģu būvēšanu datoram
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Atļaut MI vairākspēlētāju spēlēs: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Atļaut MI nespēlētāju tēliem (datora vadītiem) piedalīties vairākspēlētāju spēlēs

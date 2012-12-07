@@ -1235,7 +1235,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максима�
 STR_CONFIG_SETTING_INTEREST_RATE                                :Процентна ставка: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Процентна ставка за позиками; також контролює інфляцію, якщо увімкнена
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Експлуатаційні витрати: {STRING}
-STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Встановіть рівень обслуговування та експлуатаційні витрати на транспорт та інфраструктуру
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Встановіть вартість обслуговування та експлуатаційні витрати на транспорт та інфраструктуру
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Швидкість будівництва: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Обмеження кількості будівельних дій для ШІ
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Поломки транспорту: {STRING}

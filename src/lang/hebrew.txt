@@ -1043,8 +1043,6 @@ STR_TERRAIN_TYPE_FLAT                                           :שטוח
 STR_TERRAIN_TYPE_HILLY                                          :נוף גבעות
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :הררי
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :מתירני
 STR_CITY_APPROVAL_TOLERANT                                      :סביר
 STR_CITY_APPROVAL_HOSTILE                                       :עויין
@@ -1053,6 +1051,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}אין �
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}הגדרות מתקדמות
+
 
 STR_CONFIG_SETTING_OFF                                          :כבוי
 STR_CONFIG_SETTING_ON                                           :דלוק
@@ -1066,6 +1065,7 @@ STR_CONFIG_SETTING_COMPANIES_ALL                                :עבור כל �
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :שמאל
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :מרכז
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :ימין
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :אפשר לבנות על מידרונות וחופים: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{STRING} :'אפשר יצירת מילוי עפר תחת מבנים, פסי רכבת וכו
@@ -1195,6 +1195,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :מנע הפעל
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{STRING} :מנע הפעלת אוטובוסים/משאיות ע”י שחקני המחשב
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{STRING} :מנע הפעלת כלי טייס ע”י שחקני המחשב
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{STRING} :מנע הפעלת כלי שייט ע”י שחקני המחשב
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{STRING} :אפשר שחקני מחשב במשחק רשת
 
@@ -2455,6 +2456,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}מקבל
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}הצג רשימת סוגי המטען שהתחנה מקבלת
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}מקבלת: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}דירוג
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}הצג את דירוג השירות
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK} :דירוג מקומי של שירותי הובלה
@@ -2480,6 +2482,7 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}הצג �
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}הצג את כל כלי השייט העוברים דרך תחנה זו
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :שנה שם של תחנה/אזור טעינה
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}

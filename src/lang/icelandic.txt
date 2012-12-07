@@ -1028,8 +1028,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Slétt
 STR_TERRAIN_TYPE_HILLY                                          :Hæðótt
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Fjallótt
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Eftirgefin
 STR_CITY_APPROVAL_TOLERANT                                      :Umburðarlynd
 STR_CITY_APPROVAL_HOSTILE                                       :Fjandsamleg
@@ -1038,6 +1036,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Engin no
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Þróaðar stillingar
+
 
 STR_CONFIG_SETTING_OFF                                          :Nei
 STR_CONFIG_SETTING_ON                                           :Já
@@ -1054,6 +1053,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Raunverulegt
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vinstri
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Miðja
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Hægri
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Leyfilegt að byggja í halla og á strönd: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Leyfa landslagsbreytingar undir byggingum, teinum o.fl. (landfylling): {STRING}
@@ -1184,6 +1184,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Útiloka lestir
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Útiloka bifreiðir frá tölvu: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Útiloka flugvélar frá tölvu: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Útiloka skip frá tölvu: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Leyfa gervigreind í fjölspilun: {STRING}
 
@@ -2486,6 +2487,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Tekur vi
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Sýna lista yfir móttækilegan varning
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Móttekur: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Einkunn
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Sýna einkunn stöðvar
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Staðbundin einkunn flutningsþjónustu:
@@ -2511,6 +2513,7 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Sýna al
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Sýna öll skip sem hafa þessa stöð á áætlun
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Endurnefna stöð/lestunarsvæði
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}

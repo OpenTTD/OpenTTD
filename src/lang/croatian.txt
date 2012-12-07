@@ -1155,8 +1155,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Ravno
 STR_TERRAIN_TYPE_HILLY                                          :Brežuljkasto
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Brdovito
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Dopustiv
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantan
 STR_CITY_APPROVAL_HOSTILE                                       :Agresivan
@@ -1201,6 +1199,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realističan
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Lijevo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sredina
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Desno
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Dopusti izgradnju na kosinama i obalama: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ukoliko je uključenom, tračnice i stanice se mogu graditi na većini nagiba. Ukoliko je isključeni, dozvoljava se njihova gradnja samo na nagibima koji se podudaraju smjerom tračnica i tada ne trebaju temelje
@@ -1462,6 +1461,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Isključi zrako
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Uključivanjem ove postavke, računalo-igrač neće moći koristiti zrakoplove
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Isključi brodove za računalo: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Uključivanjem ove postavke, računalo-igrač neće moći koristiti brodove
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Dopusti UI u mrežnoj igri: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Dozvoli UI računalnim-igračima da sudjeluju u igrama za više igrača

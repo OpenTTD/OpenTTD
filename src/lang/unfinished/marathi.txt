@@ -576,15 +576,15 @@ STR_SUBSIDY_X4                                                  :x४
 
 
 
-
-
 # Advanced settings window
+
 
 
 
 STR_CONFIG_SETTING_NONE                                         :नाही
 STR_CONFIG_SETTING_ORIGINAL                                     :मुळ
 STR_CONFIG_SETTING_REALISTIC                                    :खरेखुरे
+
 
 
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :वाहनांचा धूर/ठिणग्या: {STRING}
@@ -600,6 +600,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन �
 
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :कोणतीही कृती नाही
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :सर्व कृत्या
+
 
 
 
@@ -981,6 +982,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 
 
+
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
@@ -993,6 +995,7 @@ STR_CARGO_RATING_VERY_GOOD                                      :अतिशय
 STR_CARGO_RATING_EXCELLENT                                      :अव्वल
 STR_CARGO_RATING_OUTSTANDING                                    :उत्कृष्ट
 ############ range for rating ends
+
 
 
 

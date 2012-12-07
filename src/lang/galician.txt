@@ -1015,8 +1015,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Chan
 STR_TERRAIN_TYPE_HILLY                                          :Accidentado
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montañoso
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
@@ -1024,6 +1022,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Opcións Avanzadas
+
 
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On
@@ -1040,6 +1039,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realista
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerda
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dereita
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permiti-la construción en rampas e costas: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir terraformación baixo edificios, pistas, etc. (autopendente): {STRING}
@@ -1160,6 +1160,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Deshabilita-los
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Deshabilita-los vehículos de estrada para o ordenador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Deshabilita-los avións para o ordenador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Deshabilita-los barcos para o ordenador: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permitir IA en multixogador: {STRING}
 
@@ -2391,6 +2392,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acepta
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostrar a lista da carga aceptada
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Acepta: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Puntuacións:
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostra-las puntuacións da estación
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Puntuación local para o servizo de transporte:
@@ -2416,6 +2418,7 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Mostrar 
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostrar tódolos barcos que teñen esta estación nas súas ordes
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renomear estación/área de carga
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}

@@ -953,8 +953,6 @@ STR_TERRAIN_TYPE_MOUNTAINOUS                                    :மலைகள
 
 
 
-
-
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}சிறப்பு அமைப்புகள்
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}வடிகட்டி:
@@ -988,6 +986,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :இயற்க
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :இடது
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :நடு
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :வலது
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :கரைகளிலும் சரிவுகளிலும் கட்ட அனுமதி: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :இரயில்களின் அதிகபட்ச நீளம்: {STRING}
@@ -1055,6 +1054,7 @@ STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :விண்ட
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :அதிகமாக பயன்படுத்தியவை
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :தகுந்த வாகனம் இல்லாதபோது Disable infrastructure building: {STRING}
+
 
 
 

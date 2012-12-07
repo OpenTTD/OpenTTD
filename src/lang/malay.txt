@@ -1052,8 +1052,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Rata
 STR_TERRAIN_TYPE_HILLY                                          :Berbukit
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergunung
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Mengizinkan
 STR_CITY_APPROVAL_TOLERANT                                      :Bertoleransi
 STR_CITY_APPROVAL_HOSTILE                                       :Kurang mengizinkan
@@ -1062,6 +1060,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Tiada AI
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Tetapan Lanjutan
+
 
 STR_CONFIG_SETTING_OFF                                          :Matikan
 STR_CONFIG_SETTING_ON                                           :Hidupkan
@@ -1078,6 +1077,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistik
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kiri
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Tengah
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Kanan
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Benarkan pembinaan di tepi pantai dan cerun bukit: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Benarkan pengubahsuaian tanah di bawah bangunan, landasan, dan sebagainya (autocerun): {STRING}
@@ -1222,6 +1222,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Nafikan keretap
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Nafikan kenderaan jalanraya untuk komputer: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Nafikan pesawat untuk komputer: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Nafikan kapal untuk komputer: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Benarkan Kepintaran Tiruan dalam permainan pemain berbilang: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes sebelum skrip adalah digantung: {STRING}
@@ -2657,6 +2658,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Terima
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Tunjukkan senarai kargo yang diterima
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Menerima: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Penarafan
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Tunjukkan penarafan stesen
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Penarafan tempatan untuk perkhidmatan pengangkutan:
@@ -2682,6 +2684,7 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Tunjukka
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Tunjukkan semua kapal yang mengandungi stesen ini dalam jadual mereka
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Namakan semula stesen/ruang punggahan
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}

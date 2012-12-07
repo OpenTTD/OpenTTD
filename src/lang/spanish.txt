@@ -1060,8 +1060,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Llano
 STR_TERRAIN_TYPE_HILLY                                          :Accidentado
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montañoso
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
@@ -1106,6 +1104,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realista
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Izquierda
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Derecha
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permitir la construcción en cuestas y orillas: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Si se habilita, las vías y estaciones pueden construirse sobre pendiente. Si se deshabilita, las vías solamente pueden construirse sobre pendientes que sigan la misma dirección
@@ -1367,6 +1366,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Desactivar aero
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Activar esta opción deshabilita la construcción de aeronaves para IAs
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactivar barcos para el ordenador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Activar esta opción deshabilita la construcción de barcos para IAs
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permitir IAs en multijugador: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permite a los jugadores controlados por el ordenador participar en partidas multijugador

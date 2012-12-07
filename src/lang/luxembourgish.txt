@@ -1059,8 +1059,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Flaach
 STR_TERRAIN_TYPE_HILLY                                          :Hiwwelech
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bierger
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Erlaabend
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Ofleenend
@@ -1105,6 +1103,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistësch
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Lénks
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Zentréiert
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Riets
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Erlaabt d'Bauen op Küsten an op Ofhäng: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Wann ugeschalt, kënnen Schinnen an Statiounen op den meeschten Häng gebaut ginn. Wann ausgeschalt, kënnen se just an der Richtung vum Hang gebaut ginn an brauchen dann keen Fundament
@@ -1366,6 +1365,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Fligeren fir de
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Wann dës Astellung ugeschalt ass, kann en Computergéigner keng Fligeren bauen
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Schëffer fir den Computer ausschalten: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Wann dës Astellung ugeschalt ass, kann en Computergéigner keng Schëffer bauen
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Erlaabt KI am Multiplayer: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Erlaabt Computergéigner an Multiplayer Spiller matzeman

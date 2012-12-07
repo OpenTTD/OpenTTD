@@ -700,8 +700,6 @@ STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungarsk
 
 
 
-
-
 # Advanced settings window
 
 
@@ -715,7 +713,10 @@ STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungarsk
 
 
 
+
+
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 
 
 
@@ -1007,10 +1008,12 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 
 
+
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
 ############ range for rating ends
+
 
 
 

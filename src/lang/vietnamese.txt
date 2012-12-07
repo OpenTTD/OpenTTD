@@ -1057,8 +1057,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Phẳng
 STR_TERRAIN_TYPE_HILLY                                          :Núi
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Núi Cao
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Dễ dãi
 STR_CITY_APPROVAL_TOLERANT                                      :Vừa phải
 STR_CITY_APPROVAL_HOSTILE                                       :Khó khăn
@@ -1076,6 +1074,7 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Thiết lập t
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Thiết lập công ty (chứa trong save; chỉ tác động tới các ván chơi mới)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Thiết lập công ty (chứa trong save; chỉ tác động tới công ty hiện tại)
 
+
 STR_CONFIG_SETTING_OFF                                          :Tắt
 STR_CONFIG_SETTING_ON                                           :Bật
 STR_CONFIG_SETTING_DISABLED                                     :tắt
@@ -1091,6 +1090,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Giống Thực
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Trái
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Giữa
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Phải
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Cho phép xây dựng trên dốc và bờ biển: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Nếu bật, đường đi và trạm có thể được xây trên hầu hết các loại dốc. Nếu tắt, chúng chỉ có thể được xây trên đoạn dốc có cùng chiều với đường đi
@@ -1338,6 +1338,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Bật thiết l
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Nhân vật máy không được mua xe ôtô: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Nhân vật máy không được mua máy bay: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Nhân vật máy không được mua tàu thủy: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Cho phép AI ở chế độ nhiều người chơi: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#mã lệnh trước kịch bản tạm ngưng: {STRING}

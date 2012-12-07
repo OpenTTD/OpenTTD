@@ -1121,8 +1121,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Sík
 STR_TERRAIN_TYPE_HILLY                                          :Dombos
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Hegyes
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Engedékeny
 STR_CITY_APPROVAL_TOLERANT                                      :Toleráns
 STR_CITY_APPROVAL_HOSTILE                                       :Ellenséges
@@ -1158,6 +1156,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Valósághű
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Balra
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Középen
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Jobbra
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Lejtőre és partokra építés: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Bekapcsolva utak, vasutak és állomások lejtőre is építhetőek. Kikapcsolva csak olyan lejtőre építhetőek, melyek megegyeznek a lejtő irányával és nem igényelnek egyéb létesítményeket
@@ -1419,6 +1418,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Repülőgépek 
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Bekapcsolva a számítógép által irányított ellenfelek nem építhetnek repülőket
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Hajók tiltása a gépi ellenfeleknek: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Bekapcsolva a számítógép által irányított ellenfelek nem építhetnek hajókat
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Számítógépes ellenfelek a hálózati játékokban: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Számítógép által irányított játékosok részvételének engedélyezése többjátékos játékokban

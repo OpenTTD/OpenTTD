@@ -1049,8 +1049,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Réidh
 STR_TERRAIN_TYPE_HILLY                                          :Cnocach
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Sléibhtiúil
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Tugtar cead
 STR_CITY_APPROVAL_TOLERANT                                      :Fulangach
 STR_CITY_APPROVAL_HOSTILE                                       :Naimhdeach
@@ -1059,6 +1057,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Níl aon
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ardsocruithe
+
 
 STR_CONFIG_SETTING_OFF                                          :As
 STR_CONFIG_SETTING_ON                                           :Air
@@ -1075,6 +1074,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Réalaíoch
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Ar chlé
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sa lár
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Ar dheis
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Ceadaigh tógáil a dhéanamh ar fhánaí agus ar chóstaí: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Ceadaigh athrú talún faoi fhoirgnimh, ráillí iarnróid srl. (uathfhánú): {STRING}
@@ -1217,6 +1217,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Díchumasaigh t
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Díchumasaigh feithiclí bóthair don ríomhaire: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Díchumasaigh aerárthaigh don ríomhare: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Díchumasaigh longa don ríomhare: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Ceadaigh AIanna i gcluiche ilimreora: {STRING}
 
@@ -2534,6 +2535,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Glactar 
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Taispeáin liosta den lastas a ghlactar leis
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Glactar le: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Rátálacha
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Taispeáin rátálacha na stáisiún
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Rátáil áitiúil na seirbhíse iompair:
@@ -2559,6 +2561,7 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Taispeá
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Taispeáin gach long a bhfuil an stáisiún seo ar a sceideal
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Athainmnigh stáisiún/limistéar lódála
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}

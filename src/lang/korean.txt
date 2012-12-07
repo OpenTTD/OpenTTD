@@ -1060,8 +1060,6 @@ STR_TERRAIN_TYPE_FLAT                                           :평탄함
 STR_TERRAIN_TYPE_HILLY                                          :언덕
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :산
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :신경 안씀
 STR_CITY_APPROVAL_TOLERANT                                      :신경 씀
 STR_CITY_APPROVAL_HOSTILE                                       :싫어함
@@ -1106,6 +1104,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :현실적
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :왼쪽
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :가운데
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :오른쪽
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :경사/해안가 위의 건설을 허용: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :이 옵션을 켜면 도로, 철도, 역 등을 대부분의 경사에 설치할 수 있게 됩니다. 이 옵션을 끄면 오직 트랙의 방향과 일치하는 경사에만 설치가 가능하기 때문에 기반 지형을 만들 필요가 없습니다.
@@ -1367,6 +1366,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :컴퓨터의 �
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :이 옵션을 켜면 컴퓨터 플레이어가 항공기를 사용할 수 없게 됩니다.
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :컴퓨터의 선박 사용을 허가하지 않음: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :이 옵션을 켜면 컴퓨터 플레이어가 선박을 사용할 수 없게 됩니다.
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :멀티플레이에서 컴퓨터 플레이어의 참여를 허용: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :멀티 플레이 게임에서 인공지능 컴퓨터 플레이어가 참여하는 것을 허용합니다.

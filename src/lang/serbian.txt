@@ -1247,8 +1247,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Brdski
 STR_TERRAIN_TYPE_HILLY                                          :Brdskio-planinski
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Planinski
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Popustljiv
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantan
 STR_CITY_APPROVAL_HOSTILE                                       :Neprijateljski
@@ -1257,6 +1255,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nisu dos
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredna Podešavanja
+
 
 STR_CONFIG_SETTING_OFF                                          :Ne
 STR_CONFIG_SETTING_ON                                           :Da
@@ -1273,6 +1272,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistična
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Levo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sredina
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Desno
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Dozvoljena gradnja na kosinama i obalama: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Dozvoljena izmena nagiba ispod zgrada, koloseka, itd. (autoslope): {STRING}
@@ -1417,6 +1417,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Računar ne mo�
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Računar ne može da koristi drumski prevoz: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Računar ne može da koristi vazdušni prevoz: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Računar ne može da koristi vodni prevoz: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Dozvoljena VI u mrežnoj partiji: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Suspendovanje #opkodova pre skripti: {STRING}
@@ -2852,6 +2853,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Prihvata
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Prikaži spisak tovara koje stanica prihvata
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Prihvata: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ocene
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Prikaži ocene stanice
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Kotiranje lokalnih prevoznih usluga:
@@ -2877,6 +2879,7 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Prikazuj
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Prikazuje sve brodove koji imaju ovu stanicu u svom voznom redu
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Preimenuj stanicu
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}

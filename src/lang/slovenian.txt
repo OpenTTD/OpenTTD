@@ -1208,8 +1208,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Raven
 STR_TERRAIN_TYPE_HILLY                                          :Hribovit
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Gorat
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Dopustno
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantno
 STR_CITY_APPROVAL_HOSTILE                                       :Sovražno
@@ -1219,6 +1217,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ni na vo
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredne nastavitve
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ni razpoložljive razlage)
+
 
 STR_CONFIG_SETTING_OFF                                          :Izklopi
 STR_CONFIG_SETTING_ON                                           :Vklopi
@@ -1235,6 +1234,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistično
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Levo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sredina
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Desno
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Dovoli gradnjo hiš na nagibih ali obali: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Dovoli oblikovanje terena pod objekti, tiri, ipd. (samonaklon): {STRING}
@@ -1485,6 +1485,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Onemogoči leta
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Če je omogočeno, računalniški tekmec ne more graditi letal.
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Onemogoči ladje za računalnik: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Če je omogočeno, računalniški tekmec ne more graditi ladij.
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Dovoli UI v večigralskem načinu: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Dovoli UI računalniškim tekmecem sodelovanje v večigralskem načinu.

@@ -1057,8 +1057,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Platt
 STR_TERRAIN_TYPE_HILLY                                          :Kullig
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergig
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Eftergiven
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fientlig
@@ -1100,6 +1098,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistisk
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vänster
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrerad
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Höger
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillåt konstruktion på sluttningar och kuster: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Om det är aktiverat kan räls och stationer byggas på de flesta sluttningar. Om det är inaktiverat är de bara tillåtna att bygga på sluttningar som motsvarar spårens riktning och därför inte kräver någon grund
@@ -1361,6 +1360,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Förbjud luftfa
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :När denna inställning aktiveras blir det omöjligt för datorspelare att bygga flygplan
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Förbjud skepp för datorn: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :När denna inställning aktiveras blir det omöjligt för datorspelare att bygga skepp
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tillåt datorspelare i flerspelarläge: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Tillåt datorstyrda AI-spelare att delta i spel för flera spelare

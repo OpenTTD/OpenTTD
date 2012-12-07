@@ -1125,8 +1125,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Rovný
 STR_TERRAIN_TYPE_HILLY                                          :Kopcovitý
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Horský
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Pozitivny
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantny
 STR_CITY_APPROVAL_HOSTILE                                       :Odmietavy
@@ -1144,6 +1142,7 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Nastavenia hry 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavenia spoločnosti (uložia sa; ovplyvní iba nové hry)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavenia spoločnosti (uložia sa; ovplyvní iba aktuálnu firmu)
 
+
 STR_CONFIG_SETTING_OFF                                          :nie
 STR_CONFIG_SETTING_ON                                           :áno
 STR_CONFIG_SETTING_DISABLED                                     :zakázané
@@ -1159,6 +1158,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistické
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vlavo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :v strede
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Umožniť výstavbu na svahoch a na pobreží: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ak je zapnuté, trate a stanice môžu byť stavané na svahoch. Ak je vypnuté, stavanie je možné len na svahoch ktoré su rovnakého smeru ako trate čiže nepotrebujú podporu
@@ -1415,6 +1415,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Zakázať lieta
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Povolením nastavenia znemožní počítačovým hráčom budovať lietadlá.
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Zakázať lode pre počítač: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Povolením nastavenia znemožní počítačovým hráčom budovať lode.
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Povoliť AI-ov v hre viacerých hráčov: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Povoliť AI počítačovým hráčom hrať "Hru viacerých hráčov".

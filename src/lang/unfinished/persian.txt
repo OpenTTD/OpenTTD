@@ -1055,8 +1055,6 @@ STR_TERRAIN_TYPE_FLAT                                           :یکدست
 STR_TERRAIN_TYPE_HILLY                                          :تپه مانند
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :کوه مانند
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :آسان گیر
 STR_CITY_APPROVAL_TOLERANT                                      :سخت گیر
 STR_CITY_APPROVAL_HOSTILE                                       :دشمنانه
@@ -1067,6 +1065,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}هیچ �
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}تنظیمات پیشرفته
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(بدون شرح)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}مقدار پیش فرض: {ORANGE}{STRING}
+
 
 STR_CONFIG_SETTING_OFF                                          :خاموش
 STR_CONFIG_SETTING_ON                                           :روشن
@@ -1083,6 +1082,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :واقعی
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :چپ
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :مرکز
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :راست
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :اجازه ساخت در دامنه ها و سواحل: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :اجازه محوطه سازی در زیر ساختمان ، ریلها، و غیره (شیب خودکار): {STRING}
@@ -1231,6 +1231,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :غیرفعال 
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :غیر فعال بودن خودروی‌جاده‌ای برای رایانه: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :غیر‌فعال بودن هواپیما برای رایانه: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :غیر فعال بودن کشتی برای رایانه: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :امکان حضور هوش مصنوعی در بازی چندنفره: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes before scripts are suspended: {STRING}

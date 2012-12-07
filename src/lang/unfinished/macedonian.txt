@@ -842,9 +842,8 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Прилаго�
 
 
 
-
-
 # Advanced settings window
+
 
 
 
@@ -853,11 +852,13 @@ STR_CONFIG_SETTING_ORIGINAL                                     :Авторск�
 STR_CONFIG_SETTING_REALISTIC                                    :Реален
 
 
+
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Износ на локомотива чад / искри: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Инфраструктура за одржување: {STRING}
 
 
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Дебелина на линии во графици: {STRING}
+
 
 
 
@@ -1316,10 +1317,12 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Прифаќа: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
 ############ range for rating ends
+
 
 
 

@@ -1041,8 +1041,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Ebene
 STR_TERRAIN_TYPE_HILLY                                          :Montete
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Monte
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permeseme
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Gastige
@@ -1074,6 +1072,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Reala
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Maldekstre
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dekstre
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permesu konstrui sur kliniĝoj kaj bordoj: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permesu terecigon sub konstruaĵoj, trakoj, ktp. (aŭtodeklivo): {STRING}
@@ -1214,6 +1213,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Malebligu trajn
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Malebligu stratveturilojn por la komputilo: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Malebligu aviadilojn por la komputilo: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Malebligu ŝipojn por la komputilo: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permesu ArtefaritajnIntelektojn en pluropaj ludoj: {STRING}
 

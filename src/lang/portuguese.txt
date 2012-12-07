@@ -1059,8 +1059,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Plano
 STR_TERRAIN_TYPE_HILLY                                          :Acidentado
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montanhoso
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
@@ -1104,6 +1102,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realista
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerda
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Direita
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permitir a construção em declives e encostas: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Se ligado, linhas de comboio e estações podem ser construídas na maior parte das inclinações. Se desligado, só são permitidos em inclinações com a mesma direção não necessitando de alicerces
@@ -1302,6 +1301,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desactivar comb
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Desactivar veículos rodoviários para o computador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Desactivar aeronaves para o computador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactivar barcos para o computador: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permitir IAs em multi-jogador: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes antes de os scripts serem suspensos: {STRING}

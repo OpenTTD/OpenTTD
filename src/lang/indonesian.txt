@@ -1052,8 +1052,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Datar
 STR_TERRAIN_TYPE_HILLY                                          :Berbukit
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Pegunungan
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Selalu boleh
 STR_CITY_APPROVAL_TOLERANT                                      :Toleran
 STR_CITY_APPROVAL_HOSTILE                                       :Bermusuhan
@@ -1089,6 +1087,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistis
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kiri
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Tengah
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Kanan
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Ijinkan pembangunan di lereng dan pantai: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Ijinkan pembentukan slop dibawah bangunan, rel, dsb. (otomatiskan): {STRING}
@@ -1249,6 +1248,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Non-aktifkan ke
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Non-aktifkan kendaraan jalan raya bagi pemain komputer: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Non-aktifkan pesawat bagi pemain komputer: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Non-aktifkan kapal bagi pemain komputer: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Ijinkan kecerdasan pada modus banyak pemain: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes sebelum scripts di-tahan: {STRING}

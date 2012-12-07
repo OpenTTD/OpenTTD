@@ -1038,8 +1038,6 @@ STR_TERRAIN_TYPE_FLAT                                           :равнине�
 STR_TERRAIN_TYPE_HILLY                                          :хълмист
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :планински
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :разрешаващи
 STR_CITY_APPROVAL_TOLERANT                                      :толерантни
 STR_CITY_APPROVAL_HOSTILE                                       :враждебни
@@ -1048,6 +1046,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Няма
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Настройки за напреднали
+
 
 STR_CONFIG_SETTING_OFF                                          :изключено
 STR_CONFIG_SETTING_ON                                           :включено
@@ -1072,6 +1071,7 @@ STR_CONFIG_SETTING_REALISTIC.p                                  :Реалист�
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :ляво
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :център
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :дясно
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Строене на склонове и брегове: {STRING.n}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Тераформиране под постройки (autoslope): {STRING}
@@ -1208,6 +1208,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Премахв�
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Премахване на пътните превозни средства за компютърния играч: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Премахване на летателните машини за компютърния играч: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Премахване на корабите за компютърния играч: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Позволи AI в мрежова игра: {STRING}
 
@@ -2550,6 +2551,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Прие
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Покажи списък с приетите товари
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Приема: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейтинги
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Покажи нивото на обслужване
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Местно ниво на обслужване:
@@ -2575,6 +2577,7 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Пока
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Показване на всички кораби които спират на пристанището
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Преименуване на станция
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}

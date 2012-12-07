@@ -1439,8 +1439,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Płaski
 STR_TERRAIN_TYPE_HILLY                                          :Pagórkowaty
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Górski
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Przyjazne
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerancyjne
 STR_CITY_APPROVAL_HOSTILE                                       :Wrogie
@@ -1485,6 +1483,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :realistycznie
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :z lewej strony
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :wyśrodkowany
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :z prawej strony
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Pozwól budować na pochyłym terenie i wybrzeżach: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Jeśli włączone, to tory i stacje można budować na większości stoków. Jeśli wyłączone, można je budować tylko na stokach w tym samym kierunku, co tory, tak, że nie potrzeba fundamentów
@@ -1746,6 +1745,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Samoloty niedos
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Włączona opcja nie pozwala na budowanie lotnisk graczom komputerowym
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Statki niedostępne dla komputera: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Włączona opcja nie pozwala na budowanie statków graczom komputerowym
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Pozwól na SI w grze wieloosobowej: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Pozwól komputerowym graczom SI na udział w grach dla wielu graczy

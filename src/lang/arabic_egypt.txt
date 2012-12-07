@@ -1051,8 +1051,6 @@ STR_TERRAIN_TYPE_FLAT                                           :مسطح
 STR_TERRAIN_TYPE_HILLY                                          :مرتفعات - هضاب
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :جبال
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :متساهل
 STR_CITY_APPROVAL_TOLERANT                                      :متقبل
 STR_CITY_APPROVAL_HOSTILE                                       :معاد
@@ -1061,6 +1059,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}لايو
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}الاعدادات المتقدمة
+
 
 STR_CONFIG_SETTING_OFF                                          :قفل
 STR_CONFIG_SETTING_ON                                           :فتح
@@ -1077,6 +1076,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :واقعي
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :يسار
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :متوسط
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :يمين
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :السماح بالبناء على المنحدرات و السواحل: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :السماح باعادة بناء التلال تحت المباني, الطرق, الخ .-الانحدار الذاتي- {STRING}
@@ -1221,6 +1221,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :حظر القط
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :حظر العربات على الكمبيوتر: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :حظر الطائرات على الحاسوب: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :حظر السفن على الحاسوب: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            : السماح بالذكاء الصناعي في اللعب الجماعي : {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes قبل تعليق الاسكربت: {STRING}
@@ -2607,6 +2608,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}يستق
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}عرض لائحة بالبضائع المقبولة
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}يقبل: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}معدل النقل
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}اظهار معدل النقل للمحطة
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}التقييم المحلي لخدمات النقل:
@@ -2632,6 +2634,7 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK} عرض 
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}عرض جميع السفن المرتبطة بهذا المرفئ
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :اعادة تسمية المحطة
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}

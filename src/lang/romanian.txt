@@ -1057,8 +1057,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Plat
 STR_TERRAIN_TYPE_HILLY                                          :Deluros
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Muntos
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permisivă
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantă
 STR_CITY_APPROVAL_HOSTILE                                       :Ostilă
@@ -1103,6 +1101,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realist
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :stânga
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centru
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :dreapta
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permite construirea pe coastă şi în pantă: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Dacă este activat, şinele şi staţiile pot fi construite pe majoritatea pantelor. Dacă este dezactivat, acestea pot fi construite doar pe pante care coincid cu direcţia şinelor şi astfel nu necesită fundaţie
@@ -1331,6 +1330,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Dezactivează t
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Dezactivează autovehiculele pentru jucătorii controlaţi de calculator: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Dezactivează aeronavele pentru jucătorii controlaţi de calculator: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Dezactivează navele pentru jucătorii controlaţi de calculator: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permite Inteligenţă Artificială în multiplayer: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Număr opcodes înainte de suspendarea scripturilor: {STRING}

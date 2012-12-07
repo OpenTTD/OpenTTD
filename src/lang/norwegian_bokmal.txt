@@ -1059,8 +1059,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Flatt
 STR_TERRAIN_TYPE_HILLY                                          :Åslendt
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Berglendt
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Ettergivende
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fientlig
@@ -1105,6 +1103,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistisk
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Venstre
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midtstilt
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Høyre
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillat bygging på skråninger og i vannkanten: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Om dette slås på kan spor og stasjoner bygges på de fleste hellninger. Om slått av, vil de kun tillates på hellninger med samme retning som sporet, og vil da ikke trenge fundamenter.
@@ -1274,6 +1273,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Hindre datamask
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Hindre datamaskinen i å bygge kjøretøy: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Hindre datamaskinen i å bygge luftfartøy: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Hindre datamaskinen i å bygge skip: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tillat AIer i flerspiller: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes før skript er avbrutt: {STRING}

@@ -1058,8 +1058,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Düz
 STR_TERRAIN_TYPE_HILLY                                          :Engebeli
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Dağlık
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :İzne tabi
 STR_CITY_APPROVAL_TOLERANT                                      :Töleranslı
 STR_CITY_APPROVAL_HOSTILE                                       :Katı
@@ -1077,6 +1075,7 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Oyun ayarları 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Şirket ayarları (kayıtlı dosyada saklandı; sadece yeni oyunu etkilemektedir)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Şirket ayarları (kayıtlı dosyada saklandı; sadece mevcut şirketi etkilemektedir)
 
+
 STR_CONFIG_SETTING_OFF                                          :Kapalı
 STR_CONFIG_SETTING_ON                                           :Açık
 STR_CONFIG_SETTING_DISABLED                                     :engellenmiş
@@ -1092,6 +1091,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Gerçekçi
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Sol
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Orta
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Sağ
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Kıyılara ve eğimli araziye inşaat izni: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Binaların, yolların, rayların v.b. altındaki araziyi değiştirmeye izin ver (otomatik eğim): {STRING}
@@ -1236,6 +1236,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Bilgisayar tren
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Bilgisayar araba kullanmasın: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Bilgisayar uçak kullanmasın: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Bilgisayar gemi kullanmasın: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Çok oyunculuda yapay zekâ olsun: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Betikler duraklatılıncaya kadar çalıştırılacak opkod sayısı: {STRING}

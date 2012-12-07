@@ -1051,8 +1051,6 @@ STR_TERRAIN_TYPE_FLAT                                           :平整
 STR_TERRAIN_TYPE_HILLY                                          :丘陵
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :山地
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :宽容
 STR_CITY_APPROVAL_TOLERANT                                      :隐忍
 STR_CITY_APPROVAL_HOSTILE                                       :对立
@@ -1061,6 +1059,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}无合�
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}高级设置
+
 
 STR_CONFIG_SETTING_OFF                                          :关闭
 STR_CONFIG_SETTING_ON                                           :打开
@@ -1077,6 +1076,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :真实
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :左侧
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :中央
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右侧
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :允许在斜坡和河岸上建设：{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :允许在建筑、轨道等下方改变地形（自动斜坡）： {STRING}
@@ -1221,6 +1221,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :禁止电脑使
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :禁止电脑使用汽车：{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :禁止电脑使用飞机：{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :禁止电脑使用船只：{STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :联机游戏时允许电脑玩家(AI)： {STRING}
 
@@ -2651,6 +2652,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}接受
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}显示接受的货物列表
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}接受：{WHITE}{CARGO_LIST}
+
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}评价
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}显示车站评价

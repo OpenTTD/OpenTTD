@@ -1052,8 +1052,6 @@ STR_TERRAIN_TYPE_FLAT                                           :سیدھا
 STR_TERRAIN_TYPE_HILLY                                          :ٹیلوں والا
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :پہاڑی
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :اجازت دینے والا
 STR_CITY_APPROVAL_TOLERANT                                      :برداشت کرنے والا
 STR_CITY_APPROVAL_HOSTILE                                       :مخالفانہ
@@ -1062,6 +1060,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :مخالفان�
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}ایڈوانسڈ سیٹنگ
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(کوئی وضاحت موجود نہیں)
+
 
 STR_CONFIG_SETTING_OFF                                          :بند
 STR_CONFIG_SETTING_ON                                           :آن
@@ -1078,6 +1077,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :حقیقت پس
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :بائیں
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :درمیان
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :دائیں
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :ڈھلان اور ساحل پر تعمیر کی اجازت: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :تعمیرات کے نیچے منظر کشی کی اجازت: {STRING}
@@ -1229,6 +1229,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :کمپیوٹر 
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :کمپیوٹر کے لئے گاڑیاں غیر فعال کریں: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :کمپیوٹر کے لئے ہوائی جہاز غیر فعال کریں: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :کمپیوٹر کے لئے بحری جہاز غیر فعال کریں: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :زیادہ کھلاڑیوں والے کھیل میں AI کی اجازت دیں: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :اسکرپٹس کے معطل ہونے سے پہلے #opcodes: {STRING}

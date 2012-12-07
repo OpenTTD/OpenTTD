@@ -1254,8 +1254,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Lygumos
 STR_TERRAIN_TYPE_HILLY                                          :Kalvos
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Kalnai
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Atlaidus
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantiškas
 STR_CITY_APPROVAL_HOSTILE                                       :Priešiškas
@@ -1300,6 +1298,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Tikroviškas
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kairėje
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centruoti
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dešinėje
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Leisti statybas pakrantėse ir ant šlaitų: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Leisti statyti bėgius, stoteles bei kitus objektus ant šlaitų. Priešingu atveju ant šlaito bus galima tiesti tik bėgius ir tik šlaito kryptimi
@@ -1561,6 +1560,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Uždrausti komp
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Įjungus šį nustatymą, statyti lėktuvų kompiuterio žaidėjui bus neįmanoma
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Uždrausti kompiuteriui laivus: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Įjungus šį nustatymą, statyti laivų kompiuterio žaidėjui bus neįmanoma
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Leisti DI Interneto režime: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Leisti DI kompiuterio žaidėjus dalyvauti Interneto režime

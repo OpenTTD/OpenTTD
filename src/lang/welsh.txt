@@ -1057,8 +1057,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Gwastad
 STR_TERRAIN_TYPE_HILLY                                          :Bryniog
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Mynyddig
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Bodlon
 STR_CITY_APPROVAL_TOLERANT                                      :Hapus
 STR_CITY_APPROVAL_HOSTILE                                       :Gwrthwynebus
@@ -1076,6 +1074,7 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Gosodiad gêm (
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Gosodiad cwmni (storir yn y ffeiliau cadw; yn effeithio ar gemau newydd yn unig)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Gosodiad cwmni (storir yn y ffeil gadw; yn effeithio ar y cwmni presennol yn unig)
 
+
 STR_CONFIG_SETTING_OFF                                          :I Ffwrdd
 STR_CONFIG_SETTING_ON                                           :Ymlaen
 STR_CONFIG_SETTING_DISABLED                                     :analluogwyd
@@ -1091,6 +1090,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistig
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Chwith
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Canol
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :De
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Caniatáu adeiladu a'r lethrau ac arfordiroedd {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Os y galluogir, gellir adeiladu traciau a gorsafoedd ar y rhan helaeth o lethrau. Os yr analluogir, feu caniateir ar lethrau sy'n gweddu at lwybr y trac yn unig (h.y. heb angen eu tanseilio)
@@ -1253,6 +1253,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Analluogi trena
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Analluogi cerbyd ffordd ar gyfer y cyfrifiadur: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Analluogi awyren ar gyfer y cyfrifiadur: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Analluogi llongau ar gyfer y cyfrifiadur: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Caniatáu AIau mewn gemau amlchwaraewr: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Nifer y gweithredoedd cyn diarddel sgriptiau: {STRING}

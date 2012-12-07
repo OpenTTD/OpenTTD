@@ -1052,8 +1052,6 @@ STR_TERRAIN_TYPE_FLAT                                           :平地
 STR_TERRAIN_TYPE_HILLY                                          :丘陵地
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :山岳地
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :寛大
 STR_CITY_APPROVAL_TOLERANT                                      :寛容
 STR_CITY_APPROVAL_HOSTILE                                       :対立
@@ -1081,6 +1079,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :リアルな
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :左
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :中位
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :傾斜地／海岸上の建設を許容：{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :建物、道路、鉄道などの下の地形変更を許容：{STRING}
@@ -1243,6 +1242,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :コンピュー
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :コンピュータは道路車両を使用しない：{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :コンピュータは飛行機を使用しない：{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :コンピュータは船舶を使用しない：{STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :マルチプレイヤーゲームで AI を許容（実験的）：{STRING}
 

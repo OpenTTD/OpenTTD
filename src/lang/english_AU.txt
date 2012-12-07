@@ -1055,8 +1055,6 @@ STR_TERRAIN_TYPE_FLAT                                           :Flat
 STR_TERRAIN_TYPE_HILLY                                          :Hilly
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Mountainous
 
-
-
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissive
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
@@ -1065,6 +1063,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No suita
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Advanced Settings
+
 
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On
@@ -1081,6 +1080,7 @@ STR_CONFIG_SETTING_REALISTIC                                    :Realistic
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Left
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Right
+
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Allow building on slopes and coasts: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Allow landscaping under buildings, tracks, etc. (autoslope): {STRING}
@@ -1229,6 +1229,7 @@ STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Disable trains 
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Disable road vehicles for computer: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Disable aircraft for computer: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Disable ships for computer: {STRING}
+
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Allow AIs in multiplayer: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes before scripts are suspended: {STRING}
@@ -2664,6 +2665,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepts
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Show list of accepted cargo
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepts: {WHITE}{CARGO_LIST}
+
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ratings
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Show station ratings
