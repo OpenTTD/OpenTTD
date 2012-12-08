@@ -399,6 +399,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifas de pago
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabla de ranking de empresas
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detalles del rendimiento
+STR_GRAPH_MENU_HIGHSCORE                                        :Tabla de puntuaciones
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1091,7 +1092,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Opciones con un
 
 STR_CONFIG_SETTING_OFF                                          :No
 STR_CONFIG_SETTING_ON                                           :Sí
-STR_CONFIG_SETTING_DISABLED                                     :desactivado
+STR_CONFIG_SETTING_DISABLED                                     :Desactivado
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Apagado
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Propia empresa
@@ -1105,6 +1106,28 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Izquierda
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Derecha
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Máximo préstamo inicial: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Máxima cantidad que una compañía puede tomar en un préstamo (sin tener en cuenta la inflación)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Porcentaje de interés: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Porcentaje de interés de los préstamos; también controla la inflación en el caso de que esté activada
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Costes de operación: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Permite fijar el nivel de los costes de mantenimiento y operación de vehículos e infraestructuras
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidad de construcción: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limita la velocidad de las acciones de construcción para las IAs
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Averías de vehículos: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controla la frecuencia con la que los vehículos que no hayan tenido un mantenimiento adecuado se rompen
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicador por subsidio: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Permite fijar a cuanto se pagan las conexiones con subsidio
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costes de construcción: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Fija el nivel de los costes de construcción y compra
+STR_CONFIG_SETTING_RECESSIONS                                   :Recesiones: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si se activa, ocurrirán recesiones cada pocos años. Durante una recesión, toda la producción es significante menor (volverá a su nivel anterior una vez acabe la recesión)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Prohibir cambio de dirección de trenes en estaciones: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si se activa, los trenes no se darán la vuelta en estaciones no finales en el caso de que haya un camino más cercano si se dan la vuelta
+STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activa desastres que ocasionalmente pueden bloquear o destruir vehículos o infraestructuras
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de los pueblos frente a reestructuraciones en su zona: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Permite elegir la medida en la que el ruido y el daño ambiental causado por las compañías afecta a su clasificación local en los pueblos
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permitir la construcción en cuestas y orillas: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Si se habilita, las vías y estaciones pueden construirse sobre pendiente. Si se deshabilita, las vías solamente pueden construirse sobre pendientes que sigan la misma dirección
@@ -1146,9 +1169,9 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Longitud máxim
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Máxima longitud permitida para túneles
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Método de construcción de industria primaria: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Forma de fundar industrias primarias. 'ninguno' significa que no se puede crear ninguna, 'prospeccón' significa que es posible crear nuevas industrias, pero que éstas aparecen en un lugar aleatorio del mapa y pueden fallar. 'como las otras industrias' significa que las industrias primarias pueden construirse como el resto de industrias en cualquier lugar que se quiera
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ninguno
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :como las otras industrias
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospección
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Ninguno
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Como las otras industrias
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospección
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Área plana alrededor de industrias: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Cantidad de espacio plano alrededor de las industrias. Esto permite que haya espacio libre alrededor de las industrias para construir
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Construcción de más de una industria similar por pueblo: {STRING}
@@ -1171,10 +1194,10 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Cola de vehícu
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Hace que los vehículos de carretera esperen en frente de las paradas ocupadas hasta que queden libres
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Desplazar ventana mediante el cursor en los bordes: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Cuando esta opción está activa, las vistas empezarán a desplazarse cuando el ratón esté cerca del borde de la ventana
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :desactivado
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :vista principal, solo en pantalla completa
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :vista principal
-STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :todas las vistas
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desactivado
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Vista principal, solo en pantalla completa
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Vista principal
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Todas las vistas
 STR_CONFIG_SETTING_BRIBE                                        :Permitir sobornos a la autoridad local: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite a las compañías intentar sobornar a las autoridades locales. Si el soborno es descubierto por un inspector, la compañía no podrá actuar en el pueblo durante seis meses
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permitir comprar derechos de transporte exclusivos: {STRING}
@@ -1192,9 +1215,9 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Permite fijar l
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Cantidad de aviones estrellados: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Fija la probabilidad de que ocurran accidentes aéreos
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ninguno
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reducida
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ninguno
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reducida
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permite construir paradas sobre carreteras de pueblo: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite construir estaciones de carretera de paso en carreteras que sean propiedad de pueblos
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir pasar a través de las paradas de carretera de los competidores: {STRING}
@@ -1212,11 +1235,11 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Permite a todos
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avisar si un vehículo se ha perdido: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Muestra mensajes indicando aquellos vehículos que no sean capaces de encontrar una ruta a su destino
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :Revisar órdenes de los vehículos: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Revisar órdenes de vehículos: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Cuando se activa, se comprueban periódicamente las órdenes de los vehículos, y los problemas que se encuentren se reportan con un mensaje
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :no
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :sí, pero excluye los detenidos
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de todos los vehículos
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :No
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Si, excluyendo los detenidos
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Todos
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar si las ganancias de un vehículo son negativas: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Si se activa, se muestra un mensaje cuando un vehículo no haya obtenido ningún beneficio durante un año
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Los vehículos nunca caducan: {STRING}
@@ -1296,6 +1319,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Desplazamiento 
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Nada
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Velocidad de la rueda del ratón sobre el mapa: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controla la sensibilidad de la rueda del ratón
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Teclado en pantalla: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Permite seleccionar el método para abrir el teclado en pantalla para escribir texto empleando solamente el puntero. Esta opción está pensada para dispositivos pequeños sin teclado físico
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Deshabilitado
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Doble click
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Un solo click (con foco)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Un solo click (inmediatamente)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulación del botón derecho: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Selecciona el método para emular los clicks con el botón derecho del ratón
@@ -1321,10 +1350,10 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pausar automát
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Si se activa, el juego se pausará automáticamente al comenzar nuevas partidas para permitir revisar el mapa
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Al pausar el juego, permitir: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Permite seleccionar las acciones que se pueden llevar a cabo mientras el juego está en pausa
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :ninguna acción
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :todas las acciones salvo las de construcción
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :todas salvo acciones que modifiquen el terreno
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :todas las acciones
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Ninguna acción
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Todas las acciones salvo las de construcción
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Todas las acciones que no modifiquen el terreno
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Todas las acciones
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Usar lista avanzada de vehículos: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Activa el uso de listas de vehículos avanzadas para agrupar vehículos
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Usar indicadores de carga: {STRING}
@@ -1367,6 +1396,11 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Activar esta op
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactivar barcos para el ordenador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Activar esta opción deshabilita la construcción de barcos para IAs
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Perfil por defecto: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Permite decidir el perfil a emplear apra IAs aleatorias o para los valores iniciales al añadir una nueva IA o un script de juego
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Fácil
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Intermedio
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Difícil
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permitir IAs en multijugador: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permite a los jugadores controlados por el ordenador participar en partidas multijugador
@@ -1378,7 +1412,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Permite escoger
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo de mantenimiento por defecto para trenes: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Fija el intervalo de mantenimiento por defecto para vehículos de ferrocarril nuevos, que se empleará si no se define un intervalo de forma explícita para ese vehículo
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dia{P 0 "" s}/%
-STR_CONFIG_SETTING_SERVINT_DISABLED                             :deshabilitado
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deshabilitado
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalo de mantenimiento por defecto para vehículos de carretera: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Fija el intervalo de mantenimiento por defecto para vehículos de carretera nuevos, que se empleará si no se define un intervalo de forma explícita para ese vehículo
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalo de mantenimiento por defecto para aeronaves: {STRING}
@@ -1423,11 +1457,11 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todas
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Patrón de carreteras para los nuevos pueblos: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Patrón de carreteras a usar para las redes de transporte de los pueblos
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :por defecto
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :mejorado
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Original
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Mejorado
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :rejilla 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :rejilla 3x3
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleatorio
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Aleatorio
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Permitir que los pueblos construyan carreteras: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permite a los pueblos construir carreteras para crecer. Si se deshabilita, las autoridades del pueblo no podrán construir ninguna carretera
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Permitir a las ciudades construir pasos a nivel: {STRING}
@@ -1436,15 +1470,15 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permitir al pue
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Con esta opción desactivada, solamente puede haber dos aeropuertos por pueblo. Si se activa, el número de aeropuertos en un pueblo depende del nivel de aceptación de ruido del mismo, el cual depende de la población, del tamaño de los aeropuertos y de la distancia a la que estén
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundar pueblos: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Permite a los jugadores crear nuevos pueblos durante la partida
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prohibido
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permitido
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permitido, patrón de carreteras personalizado
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Prohibido
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permitido, patrón de carreteras personalizado
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Crecimiento de árboles durante el juego: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controla la aparición aleatoria de árboles durante la partida. Esto puede afectar a industrias que dependen del crecimiento de árboles, como los aserraderos
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ninguno {RED}(rompe aserradero subtropical)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :solo en selva
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :todas partes
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Solo en selva
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Cualquier parte
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posición de la barra de herramientas principal: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Posicionamiento horizontal de la barra de herramientas principal en la parte superior de la pantalla
@@ -1478,7 +1512,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Muy rápida
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporción de pueblos que se convertirá en ciudades: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Número de pueblos que se convertirán en ciudades. Las ciudades comienzan siendo más grandes y crecen más rápido
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 de cada {COMMA}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ninguno
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ninguna
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador inicial tamaño de ciudad: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamaño medio de las ciudades en relación a los pueblos normales al comienzo de la partida
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Quitar absurdos de la carretera durante su construcción: {STRING}
@@ -1494,7 +1528,7 @@ STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Opcione
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interacción
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Señales
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Manejo de carga
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jugadores de la CPU
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jugadores de la CPU (IAs)
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Renovación automática
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servicio
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Rutas
@@ -1546,6 +1580,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor d
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijugador
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opciones de Juego
+STR_INTRO_HIGHSCORE                                             :{BLACK}Tabla de Puntuaciones
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Opciones Avanzadas
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configuración NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenido Online
@@ -1565,6 +1600,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Elegir e
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elegir estilo de terreno 'juguetelandia'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Muestra las opciones del juego
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostrar tabla de puntuaciones
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Mostrar las opciones avanzadas
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Muestra ajustes de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprobar si hay nuevos contenidos actualizados para descargar

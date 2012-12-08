@@ -1237,7 +1237,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Процент�
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Експлуатаційні витрати: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Встановіть вартість обслуговування та експлуатаційні витрати на транспорт та інфраструктуру
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Швидкість будівництва: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Обмеження кількості будівельних дій для ШІ
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Обмеження кількості будівельних дій для AI
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Поломки транспорту: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Встановіть частоту поломок недостатньо якісно обслугованого транспорту
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Множник субсидій: {STRING}

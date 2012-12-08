@@ -400,6 +400,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Kravas apmaksas
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Uzņēmumu rangu saraksts
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detalizēts uzņēmējdarbības vērtējums
+STR_GRAPH_MENU_HIGHSCORE                                        :Sasniegumu tabula
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1106,6 +1107,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :pa kreisi
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centrā
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :pa labi
 
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Būvēšanas ātrums: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Būvēšanas izmaksas: {STRING}
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Atļaut būvēt nogāzēs un piekrastēs: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ja ieslēgts, ceļus un stacijas var būvēt uz vairums nogāzēm. Ja izslēgts, tas ir atļauts tikai uz ceļu virzienam atbilstošām nogāzēm un tādēļ nav nepieciešami ieguldījumi
@@ -1363,6 +1366,10 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Šā iestatīju
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Atspējot datoram kuģus: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Šā iestatījuma ieslēgšana padara neiespējamu kuģu būvēšanu datoram
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Noklusējuma iestatījumu profils: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :viegls
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :vidējs
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :smags
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Atļaut MI vairākspēlētāju spēlēs: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Atļaut MI nespēlētāju tēliem (datora vadītiem) piedalīties vairākspēlētāju spēlēs
@@ -1537,6 +1544,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenāri
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Vairākspēlētāju spēle
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spēles opcijas
+STR_INTRO_HIGHSCORE                                             :{BLACK}Sasniegumu tabula
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Papildu iestatījumi
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF iestatījumi
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Pārbaudīt tiešsaistes saturu
@@ -1556,6 +1564,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Izvēlē
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Izvēlēties 'rotaļlietu zemes' ainavas stilu
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Rādīt spēles opcijas
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Rādīt sasniegumu tabulu
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Rādīt papildu iestatījumus
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Rādīt NewGRF iestatījumus
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pārbaudīt vai lejupielādei nav pieejams jauns un atjaunināts saturs
