@@ -890,19 +890,35 @@ static void ShowNewsMessage(const NewsItem *ni)
 /** Show previous news item */
 void ShowLastNewsMessage()
 {
+	const NewsItem *ni = NULL;
 	if (_total_news == 0) {
 		return;
 	} else if (_forced_news == NULL) {
 		/* Not forced any news yet, show the current one, unless a news window is
 		 * open (which can only be the current one), then show the previous item */
 		const Window *w = FindWindowById(WC_NEWS_WINDOW, 0);
-		ShowNewsMessage((w == NULL || (_current_news == _oldest_news)) ? _current_news : _current_news->prev);
+		ni = (w == NULL || (_current_news == _oldest_news)) ? _current_news : _current_news->prev;
 	} else if (_forced_news == _oldest_news) {
 		/* We have reached the oldest news, start anew with the latest */
-		ShowNewsMessage(_latest_news);
+		ni = _latest_news;
 	} else {
 		/* 'Scrolling' through news history show each one in turn */
-		ShowNewsMessage(_forced_news->prev);
+		ni = _forced_news->prev;
+	}
+	bool wrap = false;
+	for (;;) {
+		if (_news_type_data[ni->type].display != ND_OFF) {
+			ShowNewsMessage(ni);
+			break;
+		}
+
+		ni = ni->prev;
+		if (ni == NULL) {
+			if (wrap) break;
+			/* We have reached the oldest news, start anew with the latest */
+			ni = _latest_news;
+			wrap = true;
+		}
 	}
 }
 
