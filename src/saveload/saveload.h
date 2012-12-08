@@ -409,7 +409,6 @@ enum ChunkType {
 	CH_SPARSE_ARRAY =  2,
 	CH_TYPE_MASK    =  3,
 	CH_LAST         =  8, ///< Last chunk in this array.
-	CH_AUTO_LENGTH  = 16,
 };
 
 /**
