@@ -104,7 +104,7 @@ struct StatusBarWindow : Window {
 		Dimension d;
 		switch (widget) {
 			case WID_S_LEFT:
-				SetDParam(0, MAX_YEAR * DAYS_IN_YEAR);
+				SetDParamMaxValue(0, MAX_YEAR * DAYS_IN_YEAR);
 				d = GetStringBoundingBox(STR_WHITE_DATE_LONG);
 				break;
 

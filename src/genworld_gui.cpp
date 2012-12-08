@@ -449,12 +449,12 @@ struct GenerateLandscapeWindow : public Window {
 
 			case WID_GL_MAPSIZE_X_PULLDOWN:
 			case WID_GL_MAPSIZE_Y_PULLDOWN:
-				SetDParam(0, MAX_MAP_SIZE);
+				SetDParamMaxValue(0, MAX_MAP_SIZE);
 				*size = GetStringBoundingBox(STR_JUST_INT);
 				break;
 
 			case WID_GL_SNOW_LEVEL_TEXT:
-				SetDParam(0, MAX_TILE_HEIGHT);
+				SetDParamMaxValue(0, MAX_TILE_HEIGHT);
 				*size = GetStringBoundingBox(STR_JUST_INT);
 				break;
 
@@ -466,7 +466,7 @@ struct GenerateLandscapeWindow : public Window {
 
 			case WID_GL_TOWN_PULLDOWN:
 				strs = _num_towns;
-				SetDParam(0, CUSTOM_TOWN_MAX_NUMBER);
+				SetDParamMaxValue(0, CUSTOM_TOWN_MAX_NUMBER);
 				*size = GetStringBoundingBox(STR_NUM_CUSTOM_NUMBER);
 				break;
 
@@ -476,7 +476,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_TERRAIN_PULLDOWN:    strs = _elevations; break;
 			case WID_GL_WATER_PULLDOWN:
 				strs = _sea_lakes;
-				SetDParam(0, CUSTOM_SEA_LEVEL_MAX_PERCENTAGE);
+				SetDParamMaxValue(0, CUSTOM_SEA_LEVEL_MAX_PERCENTAGE);
 				*size = GetStringBoundingBox(STR_SEA_LEVEL_CUSTOM_PERCENTAGE);
 				break;
 
@@ -923,11 +923,11 @@ struct CreateScenarioWindow : public Window
 
 			case WID_CS_MAPSIZE_X_PULLDOWN:
 			case WID_CS_MAPSIZE_Y_PULLDOWN:
-				SetDParam(0, MAX_MAP_SIZE);
+				SetDParamMaxValue(0, MAX_MAP_SIZE);
 				break;
 
 			case WID_CS_FLAT_LAND_HEIGHT_TEXT:
-				SetDParam(0, MAX_TILE_HEIGHT);
+				SetDParamMaxValue(0, MAX_TILE_HEIGHT);
 				break;
 
 			default:
@@ -1194,7 +1194,7 @@ struct GenerateProgressWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GP_PROGRESS_BAR: {
-				SetDParam(0, 100);
+				SetDParamMaxValue(0, 100);
 				*size = GetStringBoundingBox(STR_GENERATION_PROGRESS);
 				/* We need some spacing for the 'border' */
 				size->height += 8;

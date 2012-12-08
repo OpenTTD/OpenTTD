@@ -1097,7 +1097,7 @@ public:
 		if (widget != WID_O_ORDER_LIST) return;
 
 		bool rtl = _current_text_dir == TD_RTL;
-		SetDParam(0, 99);
+		SetDParamMaxValue(0, this->vehicle->GetNumOrders(), 2);
 		int index_column_width = GetStringBoundingBox(STR_ORDER_INDEX).width + 2 * GetSpriteSize(rtl ? SPR_ARROW_RIGHT : SPR_ARROW_LEFT).width + 3;
 		int middle = rtl ? r.right - WD_FRAMETEXT_RIGHT - index_column_width : r.left + WD_FRAMETEXT_LEFT + index_column_width;
 

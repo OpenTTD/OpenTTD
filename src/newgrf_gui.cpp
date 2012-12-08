@@ -197,7 +197,7 @@ struct NewGRFParametersWindow : public Window {
 			}
 
 			case WID_NP_NUMPAR: {
-				SetDParam(0, 999);
+				SetDParamMaxValue(0, lengthof(this->grf_config->param));
 				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
 				d.width += padding.width;
 				d.height += padding.height;
@@ -1965,7 +1965,7 @@ struct ScanProgressWindow : public Window {
 	{
 		switch (widget) {
 			case WID_SP_PROGRESS_BAR: {
-				SetDParam(0, 100);
+				SetDParamMaxValue(0, 100);
 				*size = GetStringBoundingBox(STR_GENERATION_PROGRESS);
 				/* We need some spacing for the 'border' */
 				size->height += 8;
@@ -1974,8 +1974,8 @@ struct ScanProgressWindow : public Window {
 			}
 
 			case WID_SP_PROGRESS_TEXT:
-				SetDParam(0, 9999);
-				SetDParam(1, 9999);
+				SetDParamMaxDigits(0, 4);
+				SetDParamMaxDigits(1, 4);
 				/* We really don't know the width. We could determine it by scanning the NewGRFs,
 				 * but this is the status window for scanning them... */
 				size->width = max(400U, GetStringBoundingBox(STR_NEWGRF_SCAN_STATUS).width);

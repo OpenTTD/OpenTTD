@@ -91,6 +91,38 @@ void StringParameters::ShiftParameters(uint amount)
 }
 
 /**
+ * Set DParam n to some number that is suitable for string size computations.
+ * @param n Index of the string parameter.
+ * @param max_value The biggest value which shall be displayed.
+ *                  For the result only the number of digits of \a max_value matter.
+ * @param min_count Minimum number of digits indepentent of \a max.
+ */
+void SetDParamMaxValue(uint n, uint64 max_value, uint min_count)
+{
+	uint num_digits = 1;
+	while (max_value >= 10) {
+		num_digits++;
+		max_value /= 10;
+	}
+	SetDParamMaxDigits(n, max(min_count, num_digits));
+}
+
+/**
+ * Set DParam n to some number that is suitable for string size computations.
+ * @param n Index of the string parameter.
+ * @param count Number of digits which shall be displayable.
+ */
+void SetDParamMaxDigits(uint n, uint count)
+{
+	static const uint biggest_digit = 8; ///< Digit with the biggest string width.
+	uint64 val = biggest_digit;
+	for (; count > 1; count--) {
+		val = 10 * val + biggest_digit;
+	}
+	SetDParam(n, val);
+}
+
+/**
  * Copy \a num string parameters from array \a src into the global string parameter array.
  * @param offs Index in the global array to copy the first string parameter to.
  * @param src  Source array of string parameters.

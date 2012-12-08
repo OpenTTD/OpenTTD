@@ -579,7 +579,7 @@ struct DepotWindow : Window {
 				uint min_height = 0;
 
 				if (this->type == VEH_TRAIN) {
-					SetDParam(0, 1000);
+					SetDParamMaxValue(0, 1000);
 					SetDParam(1, 1);
 					this->count_width = GetStringBoundingBox(STR_TINY_BLACK_DECIMAL).width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 				} else {

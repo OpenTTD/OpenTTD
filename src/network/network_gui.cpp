@@ -526,24 +526,24 @@ public:
 
 			case WID_NG_CLIENTS:
 				size->width += 2 * WD_SORTBUTTON_ARROW_WIDTH; // Make space for the arrow
-				SetDParam(0, MAX_CLIENTS);
-				SetDParam(1, MAX_CLIENTS);
-				SetDParam(2, MAX_COMPANIES);
-				SetDParam(3, MAX_COMPANIES);
+				SetDParamMaxValue(0, MAX_CLIENTS);
+				SetDParamMaxValue(1, MAX_CLIENTS);
+				SetDParamMaxValue(2, MAX_COMPANIES);
+				SetDParamMaxValue(3, MAX_COMPANIES);
 				*size = maxdim(*size, GetStringBoundingBox(STR_NETWORK_SERVER_LIST_GENERAL_ONLINE));
 				break;
 
 			case WID_NG_MAPSIZE:
 				size->width += 2 * WD_SORTBUTTON_ARROW_WIDTH; // Make space for the arrow
-				SetDParam(0, MAX_MAP_SIZE);
-				SetDParam(1, MAX_MAP_SIZE);
+				SetDParamMaxValue(0, MAX_MAP_SIZE);
+				SetDParamMaxValue(1, MAX_MAP_SIZE);
 				*size = maxdim(*size, GetStringBoundingBox(STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT));
 				break;
 
 			case WID_NG_DATE:
 			case WID_NG_YEARS:
 				size->width += 2 * WD_SORTBUTTON_ARROW_WIDTH; // Make space for the arrow
-				SetDParam(0, 99999);
+				SetDParamMaxValue(0, 5);
 				*size = maxdim(*size, GetStringBoundingBox(STR_JUST_INT));
 				break;
 
@@ -2071,12 +2071,12 @@ struct NetworkJoinStatusWindow : Window {
 		}
 
 		/* For the number of waiting (other) players */
-		SetDParam(0, MAX_CLIENTS);
+		SetDParamMaxValue(0, MAX_CLIENTS);
 		width = max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_WAITING).width);
 
 		/* Account for downloading ~ 10 MiB */
-		SetDParam(0, 10000000);
-		SetDParam(1, 10000000);
+		SetDParamMaxDigits(0, 8);
+		SetDParamMaxDigits(1, 8);
 		width = max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_DOWNLOADING_1).width);
 		width = max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_DOWNLOADING_2).width);
 

@@ -117,10 +117,8 @@ struct SetDateWindow : Window {
 				break;
 
 			case WID_SD_YEAR:
-				for (Year i = this->min_year; i <= this->max_year; i++) {
-					SetDParam(0, i);
-					d = maxdim(d, GetStringBoundingBox(STR_JUST_INT));
-				}
+				SetDParamMaxValue(0, this->max_year);
+				d = maxdim(d, GetStringBoundingBox(STR_JUST_INT));
 				break;
 		}
 

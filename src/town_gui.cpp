@@ -780,7 +780,7 @@ public:
 					assert(t != NULL);
 
 					SetDParam(0, t->index);
-					SetDParam(1, 10000000); // 10^7
+					SetDParamMaxDigits(1, 8);
 					d = maxdim(d, GetStringBoundingBox(STR_TOWN_DIRECTORY_TOWN));
 				}
 				Dimension icon_size = GetSpriteSize(SPR_TOWN_RATING_GOOD);
@@ -794,7 +794,7 @@ public:
 				break;
 			}
 			case WID_TD_WORLD_POPULATION: {
-				SetDParam(0, 1000000000); // 10^9
+				SetDParamMaxDigits(0, 10);
 				Dimension d = GetStringBoundingBox(STR_TOWN_POPULATION);
 				d.width += padding.width;
 				d.height += padding.height;

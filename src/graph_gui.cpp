@@ -504,7 +504,7 @@ public:
 			}
 		} else {
 			/* Draw the label under the data point rather than on the grid line. */
-			SetDParam(0, this->x_values_start + this->num_on_x_axis * this->x_values_increment);
+			SetDParamMaxValue(0, this->x_values_start + this->num_on_x_axis * this->x_values_increment);
 			x_label_width = GetStringBoundingBox(STR_GRAPH_Y_LABEL_NUMBER).width;
 		}
 
@@ -1322,10 +1322,10 @@ struct PerformanceRatingDetailWindow : Window {
 				for (uint i = SCORE_BEGIN; i < SCORE_END; i++) {
 					score_info_width = max(score_info_width, GetStringBoundingBox(STR_PERFORMANCE_DETAIL_VEHICLES + i).width);
 				}
-				SetDParam(0, 1000);
+				SetDParamMaxValue(0, 1000);
 				score_info_width += GetStringBoundingBox(STR_BLACK_COMMA).width + WD_FRAMERECT_LEFT;
 
-				SetDParam(0, 100);
+				SetDParamMaxValue(0, 100);
 				this->bar_width = GetStringBoundingBox(STR_PERFORMANCE_DETAIL_PERCENT).width + 20; // Wide bars!
 
 				/* At this number we are roughly at the max; it can become wider,

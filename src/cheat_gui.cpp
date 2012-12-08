@@ -259,7 +259,7 @@ struct CheatWindow : Window {
 
 						/* Draw coloured flag for change company cheat */
 						case STR_CHEAT_CHANGE_COMPANY:
-							SetDParam(0, 15);
+							SetDParamMaxValue(0, MAX_COMPANIES);
 							width = max(width, GetStringBoundingBox(ce->str).width + 10 + 10);
 							break;
 

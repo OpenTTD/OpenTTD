@@ -274,7 +274,7 @@ struct SignListWindow : Window, SignList {
 			}
 
 			case WID_SIL_CAPTION:
-				SetDParam(0, max<size_t>(1000, Sign::GetPoolSize()));
+				SetDParamMaxValue(0, Sign::GetPoolSize(), 3);
 				*size = GetStringBoundingBox(STR_SIGN_LIST_CAPTION);
 				size->height += padding.height;
 				size->width  += padding.width;
