@@ -110,6 +110,14 @@ struct EnginePreviewWindow : Window {
 				break;
 		}
 	}
+
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	{
+		if (!gui_scope) return;
+
+		EngineID engine = this->window_number;
+		if (Engine::Get(engine)->preview_company != _local_company) delete this;
+	}
 };
 
 static const WindowDesc _engine_preview_desc(

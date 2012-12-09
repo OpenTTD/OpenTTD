@@ -749,6 +749,13 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company)
 	/* Update the toolbar. */
 	if (e->type == VEH_ROAD) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_ROAD);
 	if (e->type == VEH_SHIP) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_WATER);
+
+	/* Notify preview window, that it might want to close.
+	 * Note: We cannot directly close the window.
+	 *       In singleplayer this function is called from the preview window, so
+	 *       we have to use the GUI-scope scheduling of InvalidateWindowData.
+	 */
+	InvalidateWindowData(WC_ENGINE_PREVIEW, eid);
 }
 
 /**
