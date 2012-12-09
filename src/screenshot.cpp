@@ -24,6 +24,7 @@
 #include "window_gui.h"
 #include "window_func.h"
 #include "tile_map.h"
+#include "landscape.h"
 
 #include "table/strings.h"
 
@@ -742,49 +743,57 @@ static bool MakeSmallScreenshot(bool crashlog)
 			BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth(), _cur_palette.palette);
 }
 
-/** Make a zoomed-in screenshot of the currently visible area. */
-static bool MakeZoomedInScreenshot(ZoomLevel zl)
+/**
+ * Configure a ViewPort for rendering (a part of) the map into a screenshot.
+ * @param t Screenshot type
+ * @param [out] vp Result viewport
+ */
+void SetupScreenshotViewport(ScreenshotType t, ViewPort *vp)
 {
-	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
-	ViewPort vp;
+	/* Determine world coordinates of screenshot */
+	if (t == SC_WORLD) {
+		vp->zoom = ZOOM_LVL_WORLD_SCREENSHOT;
 
-	vp.zoom = zl;
-	vp.left = w->viewport->left;
-	vp.top = w->viewport->top;
-	vp.virtual_left = w->viewport->virtual_left;
-	vp.virtual_top = w->viewport->virtual_top;
-	vp.virtual_width = w->viewport->virtual_width;
-	vp.width = UnScaleByZoom(vp.virtual_width, vp.zoom);
-	vp.virtual_height = w->viewport->virtual_height;
-	vp.height = UnScaleByZoom(vp.virtual_height, vp.zoom);
+		TileIndex north_tile = _settings_game.construction.freeform_edges ? TileXY(1, 1) : TileXY(0, 0);
+		TileIndex south_tile = MapSize() - 1;
 
-	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
-	return sf->proc(MakeScreenshotName(SCREENSHOT_NAME, sf->extension), LargeWorldCallback, &vp, vp.width, vp.height,
-			BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth(), _cur_palette.palette);
+		/* We need to account for a hill or high building at tile 0,0. */
+		int extra_height_top = TilePixelHeight(north_tile) + 150;
+		/* If there is a hill at the bottom don't create a large black area. */
+		int reclaim_height_bottom = TilePixelHeight(south_tile);
+
+		vp->virtual_left   = RemapCoords(TileX(south_tile) * TILE_SIZE, TileY(north_tile) * TILE_SIZE, 0).x;
+		vp->virtual_top    = RemapCoords(TileX(north_tile) * TILE_SIZE, TileY(north_tile) * TILE_SIZE, extra_height_top).y;
+		vp->virtual_width  = RemapCoords(TileX(north_tile) * TILE_SIZE, TileY(south_tile) * TILE_SIZE, 0).x                     - vp->virtual_left + 1;
+		vp->virtual_height = RemapCoords(TileX(south_tile) * TILE_SIZE, TileY(south_tile) * TILE_SIZE, reclaim_height_bottom).y - vp->virtual_top  + 1;
+	} else {
+		vp->zoom = (t == SC_ZOOMEDIN) ? _settings_client.gui.zoom_min : ZOOM_LVL_VIEWPORT;
+
+		Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+		vp->virtual_left   = w->viewport->virtual_left;
+		vp->virtual_top    = w->viewport->virtual_top;
+		vp->virtual_width  = w->viewport->virtual_width;
+		vp->virtual_height = w->viewport->virtual_height;
+	}
+
+	/* Compute pixel coordinates */
+	vp->left = 0;
+	vp->top = 0;
+	vp->width  = UnScaleByZoom(vp->virtual_width,  vp->zoom);
+	vp->height = UnScaleByZoom(vp->virtual_height, vp->zoom);
 }
 
-/** Make a screenshot of the whole map. */
-static bool MakeWorldScreenshot()
+/**
+ * Make a screenshot of the map.
+ * @param t Screenshot type: World or viewport screenshot
+ * @return true on success
+ */
+static bool MakeLargeWorldScreenshot(ScreenshotType t)
 {
 	ViewPort vp;
-	const ScreenshotFormat *sf;
+	SetupScreenshotViewport(t, &vp);
 
-	/* We need to account for a hill or high building at tile 0,0. */
-	int extra_height_top = TilePixelHeight(0) + 150;
-	/* If there is a hill at the bottom don't create a large black area. */
-	int reclaim_height_bottom = TilePixelHeight(MapSize() - 1);
-
-	vp.zoom = ZOOM_LVL_WORLD_SCREENSHOT;
-	vp.left = 0;
-	vp.top = 0;
-	vp.virtual_left = -(int)MapMaxX() * TILE_PIXELS * ZOOM_LVL_BASE;
-	vp.virtual_top = -extra_height_top * ZOOM_LVL_BASE;
-	vp.virtual_width = (MapMaxX() + MapMaxY()) * TILE_PIXELS;
-	vp.width = vp.virtual_width;
-	vp.virtual_height = ((MapMaxX() + MapMaxY()) * TILE_PIXELS >> 1) + extra_height_top - reclaim_height_bottom;
-	vp.height = vp.virtual_height;
-
-	sf = _screenshot_formats + _cur_screenshot_format;
+	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
 	return sf->proc(MakeScreenshotName(SCREENSHOT_NAME, sf->extension), LargeWorldCallback, &vp, vp.width, vp.height,
 			BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth(), _cur_palette.palette);
 }
@@ -862,15 +871,9 @@ bool MakeScreenshot(ScreenshotType t, const char *name)
 			break;
 
 		case SC_ZOOMEDIN:
-			ret = MakeZoomedInScreenshot(_settings_client.gui.zoom_min);
-			break;
-
 		case SC_DEFAULTZOOM:
-			ret = MakeZoomedInScreenshot(ZOOM_LVL_VIEWPORT);
-			break;
-
 		case SC_WORLD:
-			ret = MakeWorldScreenshot();
+			ret = MakeLargeWorldScreenshot(t);
 			break;
 
 		case SC_HEIGHTMAP: {
