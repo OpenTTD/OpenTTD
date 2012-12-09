@@ -9148,9 +9148,6 @@ ERROR: IsEnd() is invalid as Begin() is never called
         GetDestinationType():  1
         GetDestinationIndex(): 7
         GetCargoType():        0
-  GetNextEvent:          instance
-    GetEventType:        6
-      Unknown Event
   IsEventWaiting:        false
 
 --Math--
