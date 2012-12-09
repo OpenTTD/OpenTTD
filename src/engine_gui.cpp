@@ -64,6 +64,9 @@ struct EnginePreviewWindow : Window {
 	EnginePreviewWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
 		this->InitNested(desc, window_number);
+
+		/* There is no way to recover the window; so disallow closure via DEL; unless SHIFT+DEL */
+		this->flags |= WF_STICKY;
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
