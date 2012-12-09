@@ -22,7 +22,7 @@ const char *GetCurrentScreenshotExtension();
 /** Type of requested screenshot */
 enum ScreenshotType {
 	SC_VIEWPORT,    ///< Screenshot of viewport.
-	SC_RAW,         ///< Raw screenshot from blitter buffer.
+	SC_CRASHLOG,    ///< Raw screenshot from blitter buffer.
 	SC_ZOOMEDIN,    ///< Fully zoomed in screenshot of the visible area.
 	SC_DEFAULTZOOM, ///< Zoomed to default zoom level screenshot of the visible area.
 	SC_WORLD,       ///< World screenshot.

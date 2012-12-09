@@ -698,9 +698,10 @@ static void LargeWorldCallback(void *userdata, void *buf, uint y, uint pitch, ui
  * Construct a pathname for a screenshot file.
  * @param default_fn Default filename.
  * @param ext        Extension to use.
+ * @param crashlog   Create path for crash.png
  * @return Pathname for a screenshot file.
  */
-static const char *MakeScreenshotName(const char *default_fn, const char *ext)
+static const char *MakeScreenshotName(const char *default_fn, const char *ext, bool crashlog = false)
 {
 	bool generate = StrEmpty(_screenshot_name);
 
@@ -716,8 +717,10 @@ static const char *MakeScreenshotName(const char *default_fn, const char *ext)
 	size_t len = strlen(_screenshot_name);
 	snprintf(&_screenshot_name[len], lengthof(_screenshot_name) - len, ".%s", ext);
 
+	const char *screenshot_dir = crashlog ? _personal_dir : FiosGetScreenshotDir();
+
 	for (uint serial = 1;; serial++) {
-		if (snprintf(_full_screenshot_name, lengthof(_full_screenshot_name), "%s%s", _personal_dir, _screenshot_name) >= (int)lengthof(_full_screenshot_name)) {
+		if (snprintf(_full_screenshot_name, lengthof(_full_screenshot_name), "%s%s", screenshot_dir, _screenshot_name) >= (int)lengthof(_full_screenshot_name)) {
 			/* We need more characters than MAX_PATH -> end with error */
 			_full_screenshot_name[0] = '\0';
 			break;
@@ -732,10 +735,10 @@ static const char *MakeScreenshotName(const char *default_fn, const char *ext)
 }
 
 /** Make a screenshot of the current screen. */
-static bool MakeSmallScreenshot()
+static bool MakeSmallScreenshot(bool crashlog)
 {
 	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
-	return sf->proc(MakeScreenshotName(SCREENSHOT_NAME, sf->extension), CurrentScreenCallback, NULL, _screen.width, _screen.height,
+	return sf->proc(MakeScreenshotName(SCREENSHOT_NAME, sf->extension, crashlog), CurrentScreenCallback, NULL, _screen.width, _screen.height,
 			BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth(), _cur_palette.palette);
 }
 
@@ -851,8 +854,11 @@ bool MakeScreenshot(ScreenshotType t, const char *name)
 	bool ret;
 	switch (t) {
 		case SC_VIEWPORT:
-		case SC_RAW:
-			ret = MakeSmallScreenshot();
+			ret = MakeSmallScreenshot(false);
+			break;
+
+		case SC_CRASHLOG:
+			ret = MakeSmallScreenshot(true);
 			break;
 
 		case SC_ZOOMEDIN:

@@ -283,6 +283,7 @@ static const char * const _subdirs[] = {
 	"ai" PATHSEP "library" PATHSEP,
 	"game" PATHSEP,
 	"game" PATHSEP "library" PATHSEP,
+	"screenshot" PATHSEP,
 };
 assert_compile(lengthof(_subdirs) == NUM_SUBDIRS);
 
@@ -1202,7 +1203,7 @@ void DeterminePaths(const char *exe)
 #endif
 
 	static const Subdirectory default_subdirs[] = {
-		SAVE_DIR, AUTOSAVE_DIR, SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR
+		SAVE_DIR, AUTOSAVE_DIR, SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR, SCREENSHOT_DIR
 	};
 
 	for (uint i = 0; i < lengthof(default_subdirs); i++) {

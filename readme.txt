@@ -299,7 +299,7 @@ your operating system:
 Different types of data or extensions go into different subdirectories of the
 chosen main OpenTTD directory:
 	Config File:         (no subdirectory)
-	Screenshots:         (no subdirectory)
+	Screenshots:         screenshot
 	Base Graphics:       baseset                 (or a subdirectory thereof)
 	Sound Sets:          baseset                 (or a subdirectory thereof)
 	NewGRFs:             newgrf                  (or a subdirectory thereof)

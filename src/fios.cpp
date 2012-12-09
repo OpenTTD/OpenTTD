@@ -555,6 +555,22 @@ void FiosGetHeightmapList(SaveLoadDialogMode mode)
 	FiosGetFileList(mode, &FiosGetHeightmapListCallback, strcmp(base_path, _fios_path) == 0 ? HEIGHTMAP_DIR : NO_DIRECTORY);
 }
 
+/**
+ * Get the directory for screenshots.
+ * @return path to screenshots
+ */
+const char *FiosGetScreenshotDir()
+{
+	static char *fios_screenshot_path = NULL;
+
+	if (fios_screenshot_path == NULL) {
+		fios_screenshot_path = MallocT<char>(MAX_PATH);
+		FioGetDirectory(fios_screenshot_path, MAX_PATH, SCREENSHOT_DIR);
+	}
+
+	return fios_screenshot_path;
+}
+
 #if defined(ENABLE_NETWORK)
 #include "network/network_content.h"
 #include "3rdparty/md5/md5.h"
