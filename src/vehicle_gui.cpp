@@ -2525,9 +2525,13 @@ public:
 				ShowVehicleDetailsWindow(v);
 				break;
 			case WID_VV_CLONE: // clone vehicle
+				/* Suppress the vehicle GUI when share-cloning.
+				 * There is no point to it except for starting the vehicle.
+				 * For starting the vehicle the player has to open the depot GUI, which is
+				 * most likely already open, but is also visible in the vehicle viewport. */
 				DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0,
 										_vehicle_command_translation_table[VCT_CMD_CLONE_VEH][v->type],
-										CcCloneVehicle);
+										_ctrl_pressed ? NULL : CcCloneVehicle);
 				break;
 			case WID_VV_TURN_AROUND: // turn around
 				assert(v->IsGroundVehicle());

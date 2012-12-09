@@ -821,7 +821,8 @@ struct DepotWindow : Window {
 	 */
 	virtual bool OnVehicleSelect(const Vehicle *v)
 	{
-		if (DoCommandP(this->window_number, v->index, _ctrl_pressed ? 1 : 0, CMD_CLONE_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_TRAIN + v->type), CcCloneVehicle)) {
+		/* Suppress the vehicle GUI when share-cloning. There is no point to it, starting vehicles can also be done via the depot GUI. */
+		if (DoCommandP(this->window_number, v->index, _ctrl_pressed ? 1 : 0, CMD_CLONE_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_TRAIN + v->type), _ctrl_pressed ? NULL : CcCloneVehicle)) {
 			ResetObjectToPlace();
 		}
 		return true;
