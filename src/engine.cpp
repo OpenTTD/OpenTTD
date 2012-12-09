@@ -924,6 +924,9 @@ static void NewVehicleAvailable(Engine *e)
 	/* Update the toolbar. */
 	if (e->type == VEH_ROAD) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_ROAD);
 	if (e->type == VEH_SHIP) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_WATER);
+
+	/* Close pending preview windows */
+	DeleteWindowById(WC_ENGINE_PREVIEW, index);
 }
 
 /** Monthly update of the availability, reliability, and preview offers of the engines. */
