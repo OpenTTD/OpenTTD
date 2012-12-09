@@ -38,10 +38,7 @@
 #include "console_func.h"
 #include "engine_base.h"
 #include "game/game.hpp"
-
-#ifdef ENABLE_NETWORK
-	#include "table/strings.h"
-#endif /* ENABLE_NETWORK */
+#include "table/strings.h"
 
 /* scriptfile handling */
 static bool _script_running; ///< Script is running (used to abort execution when #ConReturn is encountered).
@@ -1531,6 +1528,45 @@ DEF_CONSOLE_CMD(ConListAliases)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConCompanies)
+{
+	if (argc == 0) {
+		IConsoleHelp("List the details of all companies in the game. Usage 'companies'");
+		return true;
+	}
+
+	Company *c;
+	FOR_ALL_COMPANIES(c) {
+		/* Grab the company name */
+		char company_name[512];
+		SetDParam(0, c->index);
+		GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
+
+		const char *password_state = "";
+		if (c->is_ai) {
+			password_state = "AI";
+		}
+#ifdef ENABLE_NETWORK
+		else if (_network_server) {
+				password_state = StrEmpty(_network_company_states[c->index].password) ? "unprotected" : "protected";
+		}
+#endif
+
+		char colour[512];
+		GetString(colour, STR_COLOUR_DARK_BLUE + _company_colours[c->index], lastof(colour));
+		IConsolePrintF(CC_INFO, "#:%d(%s) Company Name: '%s'  Year Founded: %d  Money: " OTTD_PRINTF64 "  Loan: " OTTD_PRINTF64 "  Value: " OTTD_PRINTF64 "  (T:%d, R:%d, P:%d, S:%d) %s",
+			c->index + 1, colour, company_name,
+			c->inaugurated_year, (int64)c->money, (int64)c->current_loan, (int64)CalculateCompanyValue(c),
+			c->group_all[VEH_TRAIN].num_vehicle,
+			c->group_all[VEH_ROAD].num_vehicle,
+			c->group_all[VEH_AIRCRAFT].num_vehicle,
+			c->group_all[VEH_SHIP].num_vehicle,
+			password_state);
+	}
+
+	return true;
+}
+
 #ifdef ENABLE_NETWORK
 
 DEF_CONSOLE_CMD(ConSay)
@@ -1547,38 +1583,6 @@ DEF_CONSOLE_CMD(ConSay)
 	} else {
 		bool from_admin = (_redirect_console_to_admin < INVALID_ADMIN_ID);
 		NetworkServerSendChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, argv[1], CLIENT_ID_SERVER, from_admin);
-	}
-
-	return true;
-}
-
-DEF_CONSOLE_CMD(ConCompanies)
-{
-	if (argc == 0) {
-		IConsoleHelp("List the in-game details of all clients connected to the server. Usage 'companies'");
-		return true;
-	}
-	NetworkCompanyStats company_stats[MAX_COMPANIES];
-	NetworkPopulateCompanyStats(company_stats);
-
-	Company *c;
-	FOR_ALL_COMPANIES(c) {
-		/* Grab the company name */
-		char company_name[NETWORK_COMPANY_NAME_LENGTH];
-		SetDParam(0, c->index);
-		GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
-
-		char buffer[512];
-		const NetworkCompanyStats *stats = &company_stats[c->index];
-
-		GetString(buffer, STR_COLOUR_DARK_BLUE + _company_colours[c->index], lastof(buffer));
-		IConsolePrintF(CC_INFO, "#:%d(%s) Company Name: '%s'  Year Founded: %d  Money: " OTTD_PRINTF64 "  Loan: " OTTD_PRINTF64 "  Value: " OTTD_PRINTF64 "  (T:%d, R:%d, P:%d, S:%d) %sprotected",
-			c->index + 1, buffer, company_name, c->inaugurated_year, (int64)c->money, (int64)c->current_loan, (int64)CalculateCompanyValue(c),
-			/* trains      */ stats->num_vehicle[0],
-			/* lorry + bus */ stats->num_vehicle[1] + stats->num_vehicle[2],
-			/* planes      */ stats->num_vehicle[3],
-			/* ships       */ stats->num_vehicle[4],
-			/* protected   */ StrEmpty(_network_company_states[c->index].password) ? "un" : "");
 	}
 
 	return true;
@@ -1939,6 +1943,9 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("list_game_libs", ConListGameLibs);
 	IConsoleCmdRegister("rescan_game",    ConRescanGame);
 
+	IConsoleCmdRegister("companies",       ConCompanies);
+	IConsoleAliasRegister("players",       "companies");
+
 	/* networking functions */
 #ifdef ENABLE_NETWORK
 /* Content downloading is only available with ZLIB */
@@ -1948,8 +1955,6 @@ void IConsoleStdLibRegister()
 
 	/*** Networking commands ***/
 	IConsoleCmdRegister("say",             ConSay, ConHookNeedNetwork);
-	IConsoleCmdRegister("companies",       ConCompanies, ConHookServerOnly);
-	IConsoleAliasRegister("players",       "companies");
 	IConsoleCmdRegister("say_company",     ConSayCompany, ConHookNeedNetwork);
 	IConsoleAliasRegister("say_player",    "say_company %+");
 	IConsoleCmdRegister("say_client",      ConSayClient, ConHookNeedNetwork);
