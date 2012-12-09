@@ -3827,6 +3827,9 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Cambiar
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Solamente se encontró un conjunto de sonidos vacío. Si lo desea, instale un conjunto de sonidos a través del 'Contenido Online'
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Captura de pantalla gigante
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}La captura de pantalla tendrá una resolución {COMMA} x {COMMA} pixeles. Realizar la captura puede llevar un tiempo. ¿Desea continuar?
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de pantalla realizada con éxito en '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}¡Captura de pantalla fallida!
 
