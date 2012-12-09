@@ -445,7 +445,8 @@ static bool FixTTOEngines()
 			e->info.climates = 1;
 		}
 
-		e->preview_company_rank = 0;
+		e->preview_company = INVALID_COMPANY;
+		e->preview_asked = (CompanyMask)-1;
 		e->preview_wait = 0;
 		e->name = NULL;
 	}
@@ -1401,7 +1402,7 @@ static const OldChunks engine_chunk[] = {
 
 	OCL_NULL( 1 ), // lifelength
 	OCL_SVAR(  OC_UINT8, Engine, flags ),
-	OCL_SVAR(  OC_UINT8, Engine, preview_company_rank ),
+	OCL_NULL( 1 ), // preview_company_rank
 	OCL_SVAR(  OC_UINT8, Engine, preview_wait ),
 
 	OCL_CNULL( OC_TTD, 2 ), ///< railtype + junk

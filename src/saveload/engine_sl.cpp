@@ -30,7 +30,9 @@ static const SaveLoad _engine_desc[] = {
 
 	SLE_CONDNULL(1,                                                        0, 120),
 	     SLE_VAR(Engine, flags,               SLE_UINT8),
-	     SLE_VAR(Engine, preview_company_rank,SLE_UINT8),
+	SLE_CONDNULL(1,                                                        0, 178), // old preview_company_rank
+	 SLE_CONDVAR(Engine, preview_asked,       SLE_UINT16,                179, SL_MAX_VERSION),
+	 SLE_CONDVAR(Engine, preview_company,     SLE_UINT8,                 179, SL_MAX_VERSION),
 	     SLE_VAR(Engine, preview_wait,        SLE_UINT8),
 	SLE_CONDNULL(1,                                                        0,  44),
 	 SLE_CONDVAR(Engine, company_avail,       SLE_FILE_U8  | SLE_VAR_U16,  0, 103),
@@ -67,6 +69,14 @@ static void Load_ENGN()
 	while ((index = SlIterateArray()) != -1) {
 		Engine *e = GetTempDataEngine(index);
 		SlObject(e, _engine_desc);
+
+		if (IsSavegameVersionBefore(179)) {
+			/* preview_company_rank was replaced with preview_company and preview_asked.
+			 * Just cancel any previews. */
+			e->flags &= ~4; // ENGINE_OFFER_WINDOW_OPEN
+			e->preview_company = INVALID_COMPANY;
+			e->preview_asked = (CompanyMask)-1;
+		}
 	}
 }
 
@@ -91,7 +101,8 @@ void CopyTempEngineData()
 		e->duration_phase_2    = se->duration_phase_2;
 		e->duration_phase_3    = se->duration_phase_3;
 		e->flags               = se->flags;
-		e->preview_company_rank= se->preview_company_rank;
+		e->preview_asked       = se->preview_asked;
+		e->preview_company     = se->preview_company;
 		e->preview_wait        = se->preview_wait;
 		e->company_avail       = se->company_avail;
 		if (se->name != NULL) e->name = strdup(se->name);

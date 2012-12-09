@@ -33,8 +33,9 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	uint16 duration_phase_2;    ///< Second reliability phase in months, keeping #reliability_max.
 	uint16 duration_phase_3;    ///< Third reliability phase on months, decaying to #reliability_final.
 	byte flags;                 ///< Flags of the engine. @see EngineFlags
-	uint8 preview_company_rank; ///< Rank of the company that is offered a preview. \c 0xFF means no company.
-	byte preview_wait;          ///< Daily countdown timer for timeout of offering the engine to the #preview_company_rank company.
+	CompanyMask preview_asked;  ///< Bit for each company which has already been offered a preview.
+	CompanyByte preview_company;///< Company which is currently being offered a preview \c INVALID_COMPANY means no company.
+	byte preview_wait;          ///< Daily countdown timer for timeout of offering the engine to the #preview_company company.
 	CompanyMask company_avail;  ///< Bit for each company whether the engine is available for that company.
 	uint8 original_image_index; ///< Original vehicle image index, thus the image index of the overridden vehicle
 	VehicleType type;           ///< %Vehicle type, ie #VEH_ROAD, #VEH_TRAIN, etc.

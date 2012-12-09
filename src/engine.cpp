@@ -740,7 +740,8 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company)
 		SetBit(c->avail_roadtypes, HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 	}
 
-	e->preview_company_rank = 0xFF;
+	e->preview_company = INVALID_COMPANY;
+	e->preview_asked = (CompanyMask)-1;
 	if (company == _local_company) {
 		AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 	}
@@ -751,32 +752,23 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company)
 }
 
 /**
- * Get the N-th best company.
- * @param pp Value N, 1 means best, 2 means second best, etc.
- * @return N-th best company if it exists, #INVALID_COMPANY otherwise.
+ * Get the best company for an engine preview.
+ * @param e Engine to preview.
+ * @return Best company if it exists, #INVALID_COMPANY otherwise.
  */
-static CompanyID GetBestCompany(uint8 pp)
+static CompanyID GetPreviewCompany(Engine *e)
 {
-	CompanyID best_company;
-	CompanyMask mask = 0;
+	CompanyID best_company = INVALID_COMPANY;
 
-	do {
-		int32 best_hist = -1;
-		best_company = INVALID_COMPANY;
-
-		const Company *c;
-		FOR_ALL_COMPANIES(c) {
-			if (c->block_preview == 0 && !HasBit(mask, c->index) &&
-					c->old_economy[0].performance_history > best_hist) {
-				best_hist = c->old_economy[0].performance_history;
-				best_company = c->index;
-			}
+	int32 best_hist = -1;
+	const Company *c;
+	FOR_ALL_COMPANIES(c) {
+		if (c->block_preview == 0 && !HasBit(e->preview_asked, c->index) &&
+				c->old_economy[0].performance_history > best_hist) {
+			best_hist = c->old_economy[0].performance_history;
+			best_company = c->index;
 		}
-
-		if (best_company == INVALID_COMPANY) return INVALID_COMPANY;
-
-		SetBit(mask, best_company);
-	} while (--pp != 0);
+	}
 
 	return best_company;
 }
@@ -811,29 +803,28 @@ void EnginesDailyLoop()
 	FOR_ALL_ENGINES(e) {
 		EngineID i = e->index;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) {
-			if (e->flags & ENGINE_OFFER_WINDOW_OPEN) {
-				if (e->preview_company_rank != 0xFF && !--e->preview_wait) {
-					e->flags &= ~ENGINE_OFFER_WINDOW_OPEN;
+			if (e->preview_company != INVALID_COMPANY) {
+				if (!--e->preview_wait) {
 					DeleteWindowById(WC_ENGINE_PREVIEW, i);
-					e->preview_company_rank++;
+					e->preview_company = INVALID_COMPANY;
 				}
-			} else if (e->preview_company_rank != 0xFF) {
-				CompanyID best_company = GetBestCompany(e->preview_company_rank);
+			} else if (CountBits(e->preview_asked) < MAX_COMPANIES) {
+				e->preview_company = GetPreviewCompany(e);
 
-				if (best_company == INVALID_COMPANY) {
-					e->preview_company_rank = 0xFF;
+				if (e->preview_company == INVALID_COMPANY) {
+					e->preview_asked = (CompanyMask)-1;
 					continue;
 				}
 
-				e->flags |= ENGINE_OFFER_WINDOW_OPEN;
+				SetBit(e->preview_asked, e->preview_company);
 				e->preview_wait = 20;
 				/* AIs are intentionally not skipped for preview even if they cannot build a certain
 				 * vehicle type. This is done to not give poor performing human companies an "unfair"
 				 * boost that they wouldn't have gotten against other human companies. The check on
 				 * the line below is just to make AIs not notice that they have a preview if they
 				 * cannot build the vehicle. */
-				if (!IsVehicleTypeDisabled(e->type, true)) AI::NewEvent(best_company, new ScriptEventEnginePreview(i));
-				if (IsInteractiveCompany(best_company)) ShowEnginePreviewWindow(i);
+				if (!IsVehicleTypeDisabled(e->type, true)) AI::NewEvent(e->preview_company, new ScriptEventEnginePreview(i));
+				if (IsInteractiveCompany(e->preview_company)) ShowEnginePreviewWindow(i);
 			}
 		}
 	}
@@ -852,7 +843,7 @@ void EnginesDailyLoop()
 CommandCost CmdWantEnginePreview(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Engine *e = Engine::GetIfValid(p1);
-	if (e == NULL || GetBestCompany(e->preview_company_rank) != _current_company) return CMD_ERROR;
+	if (e == NULL || e->preview_company != _current_company) return CMD_ERROR;
 
 	if (flags & DC_EXEC) AcceptEnginePreview(p1, _current_company);
 
@@ -953,13 +944,13 @@ void EnginesMonthlyLoop()
 				 * make sense to show the preview dialog to any company. */
 				if (IsVehicleTypeDisabled(e->type, false)) continue;
 
+				/* Do not introduce new rail wagons */
+				if (IsWagon(e->index)) continue;
+
 				/* Show preview dialog to one of the companies. */
 				e->flags |= ENGINE_EXCLUSIVE_PREVIEW;
-
-				/* Do not introduce new rail wagons */
-				if (!IsWagon(e->index)) {
-					e->preview_company_rank = 1; // Give to the company with the highest rating.
-				}
+				e->preview_company = INVALID_COMPANY;
+				e->preview_asked = 0;
 			}
 		}
 
