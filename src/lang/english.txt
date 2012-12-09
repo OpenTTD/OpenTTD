@@ -3826,6 +3826,9 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Resizin
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Only a fallback sound set was found. If you want sounds, install a sound set via the content download system
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Huge screenshot
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}The screenshot will have a resolution of {COMMA} x {COMMA} pixels. Taking the screenshot may take a while. Do you want to continue?
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot successfully saved as '{RAW_STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screenshot failed!
 
