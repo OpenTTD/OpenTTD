@@ -29,6 +29,7 @@
 #include "engine_base.h"
 #include "company_base.h"
 #include "vehicle_func.h"
+#include "articulated_vehicles.h"
 
 #include "table/strings.h"
 #include "table/engines.h"
@@ -767,13 +768,25 @@ static CompanyID GetPreviewCompany(Engine *e)
 {
 	CompanyID best_company = INVALID_COMPANY;
 
+	/* For trains the cargomask has no useful meaning, since you can attach other wagons */
+	uint32 cargomask = e->type != VEH_TRAIN ? GetUnionOfArticulatedRefitMasks(e->index, true) : (uint32)-1;
+
 	int32 best_hist = -1;
 	const Company *c;
 	FOR_ALL_COMPANIES(c) {
 		if (c->block_preview == 0 && !HasBit(e->preview_asked, c->index) &&
 				c->old_economy[0].performance_history > best_hist) {
-			best_hist = c->old_economy[0].performance_history;
-			best_company = c->index;
+
+			/* Check whether the company uses similar vehicles */
+			Vehicle *v;
+			FOR_ALL_VEHICLES(v) {
+				if (v->owner != c->index || v->type != e->type) continue;
+				if (!v->GetEngine()->CanCarryCargo() || !HasBit(cargomask, v->cargo_type)) continue;
+
+				best_hist = c->old_economy[0].performance_history;
+				best_company = c->index;
+				break;
+			}
 		}
 	}
 
