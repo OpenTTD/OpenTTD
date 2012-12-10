@@ -1470,7 +1470,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ustawienia z wa
 
 STR_CONFIG_SETTING_OFF                                          :wył.
 STR_CONFIG_SETTING_ON                                           :wł.
-STR_CONFIG_SETTING_DISABLED                                     :niedostępne
+STR_CONFIG_SETTING_DISABLED                                     :Wyłączone
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :wył.
 STR_CONFIG_SETTING_COMPANIES_OWN                                :dla własnej firmy
@@ -1484,6 +1484,10 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :z lewej strony
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :wyśrodkowany
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :z prawej strony
 
+STR_CONFIG_SETTING_DISASTERS                                    :Katastrofy: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ustaw katastrofy, które mogą okazjonalnie zablokować lub zniszczyć pojazdy albo infrastrukturę
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Nastawienie władz miasta do przekształcania terenu: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Wybierz jak bardzo hałas i niszczenie środowiska przez firmy wpływa na ich ocenę przez miasto i dalsze konstrukcje na ich obszarze
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Pozwól budować na pochyłym terenie i wybrzeżach: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Jeśli włączone, to tory i stacje można budować na większości stoków. Jeśli wyłączone, można je budować tylko na stokach w tym samym kierunku, co tory, tak, że nie potrzeba fundamentów
@@ -1525,9 +1529,9 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksymalna dłu
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksymalna długość budowanych tuneli
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Budowa przedsiębiorstw wydobywczych: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metoda finansowania podstawowego przemysłu. 'żadne' oznacza brak możliwości finansowania czegokolwiek, 'obiecujące' oznacza, że finansowanie jest możliwe, ale konstrukcja pojawi się w losowym miejscu na mapie oraz losowo budowa może zakończyć się porażką, 'jak inne gałęzi przemysłu' oznacza, że przemysł wydobywczy może być budowany tak jak fabryki przetwórcze, w dowolnym miejscu
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :budowa niedostępna
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jak inne przedsiębiorstwa
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :przez poszukiwanie
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Niedostępna
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Jak inne przedsiębiorstwa
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Poszukiwania
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Płaska przestrzeń wokół przedsiębiorstw: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Ilość płaskiej przestrzeni wokół zakładu. To zapewnia puste miejsce dostępne przy zakładach do budowy torów itp.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Pozwól na wiele podobnych przedsiębiorstw w mieście: {STRING}
@@ -1550,10 +1554,10 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Ustawianie się
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Każ pojazdom drogowych czekać przed zajętymi przystankami dopóki nie zostaną zwolnione
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Przesuń okno, kiedy kursor jest przy krawędzi: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Kiedy włączone, okna podglądu będą się przewijać, gdy kursor znajdzie się przy krańcu okna
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :wyłączone
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :główne okno podglądu, tylko w trybie pełnego ekran
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :główne okno podglądu
-STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :wszystkie okna podglądu
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Wyłączone
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Główne okno podglądu, tylko w trybie pełnego ekran
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Główne okno podglądu
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Wszystkie okna podglądu
 STR_CONFIG_SETTING_BRIBE                                        :Pozwól dawać łapówki lokalnym władzom: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Pozwalaj firmom na próby przekupienia lokalnych władz miast. Jeśli przekupstwo zostanie wykryte przez inspektora, firma nie będzie mogła działać w danym mieście przez 6 miesięcy
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Pozwól na kupno wyłączności transportowej: {STRING}
@@ -1571,9 +1575,9 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Ustaw zależną
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Liczba katastrof lotniczych: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Ustaw szanse na katastrofy lotnicze
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :brak
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :zredukowana
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalna
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Brak
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Zredukowana
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normalna
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Pozwól na budowę przystanków przelotowych na drogach miejskich: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Pozwalaj budować przystanki przelotowe na drogach własnościowych miast
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Pozwól na przejazd przez przystanki należące do przeciwników: {STRING}
@@ -1593,9 +1597,9 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Ostrzeż, jeśl
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Pokazuj wiadomości o pojazdach, które nie są w stanie znaleźć ścieżki do swoich wyznaczonych celów
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Kontroluj polecenia pojazdów: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Kiedy włączone, rozkazy wszystkich pojazdów są sprawdzane co jakiś czas, a wykryte nieprawidłowości są zgłaszane w oknach wiadomości
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nie
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :tak, ale wyklucz zatrzymane
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :wszystkich pojazdów
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nie
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Tak, ale wyklucz zatrzymane
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Wszystkich pojazdów
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Powiadom, jeśli pojazd przynosi straty: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Kiedy włączone, otrzymasz wiadomość o tym, że pojazd nie przyniósł żadnych zysków w całym roku kalendarzowym
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Pojazdy nigdy nie są wycofywane: {STRING}
@@ -1700,10 +1704,10 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatycznie w
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Kiedy włączone, gra zostanie automatycznie zatrzymana na samym początku, pozwalając na lepsze rozpoznanie mapy
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Zezwól w czasie wstrzymania gry na: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Wybierz, jakich akcji można dokonywac, gdy gra jest wstrzymana
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :brak działań
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :wszystkie działania niezwiązane z konstrukcją
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :wszystkie oprócz działań modyfikujących krajobraz
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :wszystkie działania
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Brak działań
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Wszystkie niezwiązane z konstrukcją
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Wszystkie oprócz modyfikowania terenu
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Wszystkie działania
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Używaj zaawansowanej listy pojazdów: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Wlącz obsługę zaawansowanych list pojazdów do grupowania pojazdów
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Pokazuj wskaźniki załadunku: {STRING}
@@ -1757,7 +1761,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Wybierz, czy se
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Domyślny interwał serwisowania pociągów: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Ustaw domyślny okres serwisowania dla nowych pojazdów kolejowych, jeśli takowy nie istnieje dla określonego pojazdu
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} d{P zień ni ni}/%
-STR_CONFIG_SETTING_SERVINT_DISABLED                             :wyłączone
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Wyłączone
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Domyślny interwał serwisowania pojazdów: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Ustaw domyślny okres serwisowania dla nowych pojazdów drogowych, jeśli takowy nie istnieje dla określonego pojazdu
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Domyślny interwał serwisowania samolotów: {STRING}
@@ -1802,11 +1806,11 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :wszystkie
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Układ dróg dla nowych miast: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Układ sieci dróg w miastach
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :standardowy
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :lepsze drogi
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Oryginalny
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Lepsze drogi
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :siatka 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :siatka 3x3
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :losowy
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Losowy
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Miasta, które mogą budować drogi: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Pozwalaj miastom na budowę dróg, by się rozrastać. Wyłącz, by miasta same nie mogły budować dróg
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Miasta, które mogą budować przejazdy kolejowe: {STRING}
@@ -1815,15 +1819,15 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Pozwól miastom
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kiedy ta opcja jest wyłączona, w miastach można zbudować 2 lotniska. Kiedy opcja jest włączona, dopuszczalna liczba lotnisk jest określana przez tolerancję hałasu w mieście, która zależy od populacji oraz rozmiaru i odległości od lotniska
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Zakładanie miast w grze: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Aktywacja tej opcji umożliwia graczom zakładanie nowych miast w grze
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zabronione
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :dozwolone
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :dozwolone, dowolny układ miasta
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Zabronione
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Dozwolone
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Dozwolone, dowolny układ miasta
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Rozmieszczenie drzew w grze: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Losowe pojawianie się drzew podczas gry. Może mieć to wpływ na zakłady opierające się na wyrastaniu drzew, np. tartaki
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :brak {RED}(przerywa pracę tartaku)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tylko w lasach deszczowych
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :wszędzie
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Brak {RED}(tartaki nie działają)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Tylko w lasach deszczowych
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Wszędzie
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Pozycja głównego paska narzędzi: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Pozioma pozycja głównego paska narzędzi na górze ekranu
@@ -1832,7 +1836,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Pozioma pozycja
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Promień przyciągania okna: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Odległość między okienkami zanim przesuwane okno zostanie automatycznie dosunięte do sąsiedniego okna
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piksel{P "" e i}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :wyłączone
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Wyłączone
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksymalna liczba nie przyszpilonych okien: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Liczba nie przyklejonych okienek zanim stare okienka zostaną automatycznie zamknięte, by zrobić miejsce dla nowych
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
@@ -1857,7 +1861,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :bardzo duża
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporcje miejscowości, które będą miastami: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Liczba miasteczek, które staną się miastami, czyli miasteczka od początku większe i rozwijające się szybciej
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 z {COMMA}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :żadne
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Żadne
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Początkowy mnożnik rozmiarów metropolii: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Średni rozmiar dużych miast w porównaniu do normalnych miast na początku gry
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Usuwaj absurdalne fragmenty ulicy podczas rekonstrukcji dróg: {STRING}
@@ -4176,6 +4180,9 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Nie zal
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Znaleziono tylko podstawowy schemat dźwiękowy. Jeśli chcesz mieć pełny dźwięk, zainstaluj inny schemat dźwiękowy używając menadżera pobierania
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Ogromny zrzut ekranu
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Zrzut ekranu będzie miał rozdzielczość {COMMA} x {COMMA} pikseli. Zrzut ekranu może zająć chwilę. Kontynuować?
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Zrzut ekranu zapisany na dysk z powodzeniem '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Błąd zrzutu ekranu!
 

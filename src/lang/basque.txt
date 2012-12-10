@@ -302,7 +302,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Erakutsi
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Erakutsi konpaniaren finantza informazioa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Erakutsi konpaniaren informazio generala
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafikoak erakutsi
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Erakutsi konpaniaren elkarte zerrenda
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Erakutsi konpanien ligako taula
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Eraiki industria berria edo industri guztien zerrenda erakutsi
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Erakutsi konpaniako trenen zerrenda. Ctrl+Click talde/garraioen zerrenda agertzea uzten du
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Konpaniako errepideko garraioen zerrenda erakutsi. Ctrl+Click taldeen/garraioen zerrenda zabaltzen uzten du
@@ -834,7 +834,7 @@ STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} ez da hurrengo geltokira iristeko gai, irismen-kanpo baitago.
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} gelditua izan da agindutako eraldaketa tronpatu eta gero
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autoberriketak huts egin du {VEHICLE}an{}{STRING}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Berritze automatikoak huts egin du {VEHICLE}an{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}{STRING} berri bat orain erabilgarri!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
@@ -922,7 +922,7 @@ STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Herrien 
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Herrien izenen estiloak aukeratu
 
 ############ start of townname region
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ingelesak (Originala)
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ingelesa (Jatorrizkoa)
 STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Frantsesak
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Alemaniarrak
 STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Ingelesa (Adizionala)
@@ -1028,8 +1028,8 @@ STR_VARIETY_MEDIUM                                              :Erdia
 STR_VARIETY_HIGH                                                :Altu
 STR_VARIETY_VERY_HIGH                                           :Oso Altu
 
-STR_AI_SPEED_VERY_SLOW                                          :Oso poliki
-STR_AI_SPEED_SLOW                                               :Poliki
+STR_AI_SPEED_VERY_SLOW                                          :Oso Motela
+STR_AI_SPEED_SLOW                                               :Motela
 STR_AI_SPEED_MEDIUM                                             :Arrunta
 STR_AI_SPEED_FAST                                               :Azkarra
 STR_AI_SPEED_VERY_FAST                                          :Oso azkarra
@@ -1098,7 +1098,7 @@ STR_CONFIG_SETTING_COMPANIES_OWN                                :Nire konpainia
 STR_CONFIG_SETTING_COMPANIES_ALL                                :Konpainia guztiak
 
 STR_CONFIG_SETTING_NONE                                         :Bat ere ez
-STR_CONFIG_SETTING_ORIGINAL                                     :Originala
+STR_CONFIG_SETTING_ORIGINAL                                     :Jatorrizkoa
 STR_CONFIG_SETTING_REALISTIC                                    :Errealista
 
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Ezkerra
@@ -1121,18 +1121,18 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Eraikuntza kost
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Erosketa eta eraikuntza kostuak ezarri
 STR_CONFIG_SETTING_RECESSIONS                                   :Atzerapen ekonomikoak: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Gaitua dagoenean, atzeratze ekonomikoa urte gutxika gertatuko da. Atzeratze ekonomikoan, fabriken ekoizpena dexente gutxituko da (Aurreko balioetara bueltatuko da atzerapena amaitzerakoan)
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Desgaitu trenak geltokietan buelta ematea: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Trenak geltokietan buelta eman ahal izatea: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Gaitua dagoenean, trenak ezingo dute geltokietan (trebidea bertan bukatzen ez denean) buelta eman, nahiz eta biderik motzena izan helmugara iristeko
 STR_CONFIG_SETTING_DISASTERS                                    :Hondamendiak: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Azpiegiturak eta ibilgailuak suntsitu edo blokeatu ditzaketen hondamendiak txandakatu
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Udaletxearen jarrera area berestrukturatzeko: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Udaletxearen jarrera bere lurrak berregituratzeko: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Aukeratu zenbateraino eragingo dion konpainia bati herri batean zarata sortzea eta ingurumena kaltetzea, herrian duen balorazioa txartuz eta eraikin berriak egiteko baimena mugatuz
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Aldapa eta kostan eraikitzea baimendu: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Gaitua badago, bideak eta geltokiak mendi magal gehienetan eraiki daitezke. Desgaitua badago, bakarrik onartuko dira bidearen norabidearekin bat datozen mendi magalak
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Eraikinen, trenbideen etabarren azpian paisaia aldatzea baimendu. (autoaldapak): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Eraikin eta bideen azpian paisaia aldatzea baimendu hauek kendu gabe
-STR_CONFIG_SETTING_CATCHMENT                                    :Bilketa guneen tamaina errealago egitea baimendu: {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :Geltokien irismen eremu hedapena errealagoa egitea baimendu: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Tamaina ezberdinetako jasotze eremuak izan mota ezberdinetako geltoki eta aireportuentzat
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Herriarenak diren errepide, zubi eta tunel gehiago kentzea baimendu: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Herrien eraikin eta infraestrukturak kentzea errazago egin.
@@ -1141,11 +1141,11 @@ STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Ezarri gehienez
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} lauki
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Trenaren ke/txinparta kantitatea: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Ezarri zenbat ke edo zenbat txinparta igorriko duten ibilgailuek
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Trenaren azelerazio modeloa: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Trenen azelerazio modeloa: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Aukeratu trenen azeleraziorako fisika eredua. "Jatorrizko" ereduak ibilgailu guztiak berdin moteltzen ditu. Eredu "Errealista"k mendi magaletan eta kurbetan jasaten den moteldura propietate ezberdinetan oinarritzen da, ibilgailuaren luzeran eta trakzioan adibidez
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Ibilgailuen azelerazio modelua: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Aukeratu errepide ibilgailuen azeleraziorako fisika eredua. "Jatorrizko" ereduak ibilgailu guztiak berdin moteltzen ditu. Eredu "Errealista"k mendi magaletan eta kurbetan jasaten den moteldura propietate ezberdinetan oinarritzen da, trakzioan adibidez
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Mendi magalaren joera trenentzako: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Mendi magalen inklinazioa trenentzako: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Mendi magal laukien inklinazioa trenentzako. Balio altuak maldak igotzea zailtzen dute
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Mendi magaleren inklinazioa errepide ibilgailuentzako: {STRING}
@@ -1160,7 +1160,7 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :Ibilgailuak mai
 STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Ibilgailuak gradualki zamatu ibilgailu bakoitzaren zamaketa denbora espezifikazioak erabiliz, guztia batera zamatuko duen denbora finkoa erabili ordez, zama kopuruan oinarritzen dena
 STR_CONFIG_SETTING_INFLATION                                    :Inflazioa: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Gaitu inflazioa ekonomiari, kosteak salneurriak baino pixka bat azkarrago igoko dira
-STR_CONFIG_SETTING_SELECTGOODS                                  :Geltoki batetan bakarrik bertan hartzen duten zama baino ez utzi: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :Geltokietan bakarrik onartutako zama utzi : {STRING}
 STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Bakarrik zamak geltokietara eraman ibilgailu batek zama hori jasotzera joan bada. Honek geltokietan garraiatuak ez diren zamen kalifikazio txarrak ekiditzen ditu
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Zubien gehienezko luzera: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Zubiak eraikitzeko gehienezko luzera
@@ -1171,7 +1171,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Erauzketa indus
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Ezer ez
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Beste industriak bezala
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Erauzketa
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :lurzail laua industrien inguruan: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Lursail laua industrien inguruan: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Lursail lau kopurua indutriaren inguruan. Honek industrien inguruan bideak, geletokiak, etab. eraikitzeko lursaila egongo dela bermatzen du
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Indutria berdin asko baimendu hiri bakoitzean: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalean, herri batek ez du industria mota errepikatuak onartzen. Ezarpen honekin herrietan industria mota errepikatuak eraiki ahalko dira.
@@ -1210,7 +1210,7 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Konpainien arte
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Zamaren pisuaren biderkatzailea tren astunagoak simulatzeko: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Trenek zamak eramatea eragiten dien moteldura zehaztu. Balio altuek moteldura areagotzen dute, batez ere maldetan
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Hegazkinen abiadura faktorea: {STRING}
-STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Hegazkinen abiadura erlatiboa zehaztu beste ibilgailuekin alderatuta, hezkinen irabaziak murrizteko
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Hegazkinen abiadura erlatiboa zehaztu beste ibilgailuekin alderatuta, hegazkinen irabaziak murrizteko
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Hegazkinen istripu kopurua : {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Hegazkien istripu aukerak zehaztu
@@ -1243,12 +1243,12 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ohartarazi ibil
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Gaitua dagoenean, mezu bidez urte oso batean irabazirik lortu ez dituzten ibilgailuez ohartaraziko da
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Ibilgailuei inoiz ez zaie epea amaitzen: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Gaitua dagoenean, ibilgailu modelo ezberdinak betirako egongo dira erabilgarri
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Ibilgailu bat zaharra bihurtzen denean automatikoki berritzea: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Ibilgailu bat zahartzen denean automatikoki berritu: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Gaitua dagoenean, Ibilgailuek bere lan-bizitza amaitzear dutenean eta beharrezko baldintzak betetzen badira automatikoki berrituko dira
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Ibilgailuak automatikoki berritu bere adina {STRING} denean
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Ibilgailu bat atomatikoki berritzeko kontuan hartu behar den urte kopuru erlatiboa
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} hilabete{P 0 "" s} lehenago
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} hilabete{P 0 "" s} beranduago
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} hilabete lehenago
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} hilabete beranduago
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Ibilgailuak berritzeko behar den gutxienezko dirua: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Bankuan gutxienez eduki beharko den diru kopurua ibilgailuen berritze automatikoa erabiltzen hasteko
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Akats mezuen iraupena: {STRING}
@@ -1264,7 +1264,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Marren lodiera 
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grafikoen marren lodiera. Marra fina irakurtzeko errazagoa da, marra lodia ikusteko errazagoa da eta koloreak hobeto ezberdinduko dira
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Lur sortzailea: {STRING}
-STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originala
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Jatorrizkoa
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Petroleo Findegitik maparen ertzera dagoen gehienezko distantzia: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Petroleo findegiak bakarrik maparen ertzatik hurbil eraiki daitezke, kostan irla mapetan
@@ -1276,7 +1276,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Zakarra
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Oso Zakarra
 STR_CONFIG_SETTING_TREE_PLACER                                  :Zuhaitz kokatzeko algoritmoa: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ezer ez
-STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originala
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Jatorrizkoa
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Hobetua
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Altuera mapen rotazioa: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Erlojuko orratzen kontrara
@@ -1289,7 +1289,7 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Edozein 
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Geltokien gehienezko hedapena: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Geltoki zati baten gehienezko hedapen azalera. Balio altuek jokoa motelduko dute
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Heliportuetan helikopteroak automatikoki hornitu: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Heliportuetan helikopteroen mantenimendua automatikoki egin: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Helikopteroen mantenimendua egin lurreratze bakoitzean, nahiz eta tailerrik ez egon
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Paisaia eraldatzeko lanabesak tren/ura/errepide/aireportu eraikitzeko tauletan agertzea: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Garraio mota baten eraikuntza lanabesak irekitzerakoan ireki paisaia eraldatzeko lanabesak ere
@@ -1403,14 +1403,14 @@ STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Zaila
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Multijokalari moduan IA baimentzea: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Baimendu ordenagailu jokalariak (IA) jokalari anitzeko jokoetan parte hartzera
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes scriptak amatuta izan baino lehen: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcode kopurua scriptak itzali baino lehen: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Script batek eman ditzakeen gehienezko konputazio pausuak txanda bakoitzean
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Ikuskatze datak ehunekoetan ematea: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Mantenimendurako denbora tarteak ehunekoetan ematea: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Aukeratu ibilgailuen mantenimendua azken zerbitzutik pasatutako denboragatik aktibatzea edo fidegarritasun ehunekoaren gutxiengo jakin batera iristeagatik aktibatzea
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Trenen mantenimendurako lehenetsitako denbora tarteak: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Ezarri tren berrientzako lehenetsiko diren mantenimendu denbora tarteak, ez bada ezartzen denbora tarte esplizituak ezarriko dira
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} eguna{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} egun/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desgaitua
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Errepide ibilgailuen mantenimendurako lehenetsitako denbora tarteak: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Ezarri errepide ibilgailu berrientzako lehenetsiko diren mantenimendu denbora tarteak, ez bada ezartzen denbora tarte esplizituak ezarriko dira
@@ -1436,21 +1436,21 @@ STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Elikadura siste
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Elikadura sistemetan eman beharreko irabazien ehunekoa, irabaziengain kontrol gehiago emanez
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Arrastratzerakoan, seinaleak jarri: {STRING} laukitik behin
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Aukeratu trenbide seinaleak arrastratzerakoan eraikitzeko distantzia hurrengo oztopoarekin topo egin arte (Seinalea, bidegurutzea)
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} laukia{P 0 "" s}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} laukia
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Arrastratzekoan mantedu seinaleen arteko distantzia finkoa: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Aukeratu seinaleak eraikitzearen portaera Krtl+arrastratu erabiltzen denean
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Aurreko seinaleak automatikoki eraiki: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatikoki seinale mkanikoak eraiki {STRING} baino lehen
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Aukeratu trenentzako seinale elektrikoak noiz egongo diren erabilgarri. Urte hau baino lehengo seinale mekanikoak erabiliko dira (funtzio berdinak dituzte)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Gaitu GUI seinaleak: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Erakutsi seinale ezberdinak eraikitzeko lehioa ireki, lehiorik gabeko aukera ordez non Krtl+klik bidez seinale ezberdinak eraikitzen diren
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Erakutsi seinale ezberdinak eraikitzeko lehioa, lehiorik gabeko aukera ordez non Krtl+klik bidez seinale ezberdinak eraikitzen diren
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Eraikiko den seinale lehenetsia: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Erabiliko den seinale lehenetsia
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Seinaleak blokeatu
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blokeo seinaleak
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Bide-seinaleak
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Joaneko bide-seinaleak
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Aldatu seinale mota ezberdinen artean: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Aukeratu ze seinale ezberdinen artean aldatuko den seinale lanabesarekin Ktrl+klik eginez eraikitako seinale baten gainean
-STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Seinaleak bakarrik blokeatu
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Blokeo seinaleak bakarrik
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Bide-seinaleak bakarrik
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Denak
 
@@ -1458,12 +1458,12 @@ STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Errepide disein
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Herrien errepide sarearen diseinua
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Jatorrizkoa
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Errepide hobeak
-STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 sareta
-STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 sareta
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Ausazko
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 sarea
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 sarea
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Ausazkoa
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Herriek errepideak eraiki ditzakete: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Baimendu herriek beraien hazkunderako errepideak erakitzea. Desgaitu herriek errepiderik ez eraikitzeko
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Hirietan egin daitezke maila bereko pasaguneak: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Hirietan maila bereko pasaguneak egin daitezke : {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Gaitua dagoenean herriek trenbideetatik pasabideak eraiki ahalko dituzte
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Herriek aireportuen soinu kantitatea kontrolatzea baimendu: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Aukera hau desgaitua dagoenean bi aireportu egon daitezke herri bakoitzean. Gaitua dagoenean, herrien aireportu kopurua soinu kantitean, biztalerian, aireportuaren tamainan eta herritik dagoen distantzian oinarrituko da
@@ -1504,10 +1504,10 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Herriaren hazkuntza-abiadura: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Herrien hazkuntza abiadura
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ezer ez
-STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Motel
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Motela
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normala
-STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Arina
-STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Oso arina
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Azkarra
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Oso azkarra
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Hiri bilakatuko diren herrien proportzioa: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Hiri bilakatuko diren herrien kopurua, herri hauek handiagoak eta azkarrago hazten dira
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :{COMMA}-tik bat
@@ -1526,16 +1526,16 @@ STR_CONFIG_SETTING_AI                                           :{ORANGE}Lehiaki
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Aukerak erakutsi
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakzioa
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seinaleak
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Zamen manipulazioa
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Zamak
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ordenagailu jokalariak
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoberritzea
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Zerbitzuak
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Bideraketa
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Berritze automatikoa
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Mantenimendua
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ibilbideak
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenak
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Herriak
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriak
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :Originala
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Jatorrizkoa
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Gomendatua)
 
@@ -2377,14 +2377,14 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Eraiki
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Sortu
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrien elkartea {STRING} industriarentzako
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industri katea {STRING} industriarentzako
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrien katea {STRING} kargarentzako
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Ekoizten duten industriak
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Onartzen duten industriak
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Etxeak
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Egin klik industrian haren hornitzaile eta bezeroak ikusteko
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Egin klik cargan haren hornitzaile eta bezeroak ikusteko
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Elkartea erakutsi
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Industri katea
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Industrien zama hornidura eta onarpenak erakutsi
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link-a mapa txikira
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Mapa txikian agertzen diren industriak aukeratu
@@ -3560,8 +3560,8 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Ordutegi
 STR_ORDER_GO_TO_WAYPOINT                                        :Hemendik joan {WAYPOINT}
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Hemendik joan gelditu gabe {WAYPOINT}
 
-STR_ORDER_SERVICE_AT                                            :Mantenimendua non
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Gelditu gabeko mantenimendua non
+STR_ORDER_SERVICE_AT                                            :Mantenimendua
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Gelditu gabeko mantenimendua
 
 STR_ORDER_NEAREST_DEPOT                                         :hurbilena
 STR_ORDER_NEAREST_HANGAR                                        :Hangar hurbilena
@@ -3826,6 +3826,9 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ez da g
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Soinu multzo bakarra aurkitu da. Soinu gehiago nahi badituzu instalatu online edukietatik
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Pantaila argazki handia
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Pantailaren erresoluzioa {COMMA} x {COMMA} pixel izango da. Pantailaren argazkia hateratzea luzatu daiteke. Jarraitu nahi al duzu?
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Pantaila argazkia '{STRING}' bezala gordeta
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Pantaila argazkiak huts egin du!
 
@@ -4179,16 +4182,16 @@ STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoo
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Ofizina eraikin handia
-STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Ofizina blokea
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Bulego blokea
 STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Pisu bloke txikia
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Eliza
-STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Ofizina bloke luzea
+STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Bulego bloke luzea
 STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Herriko etxeak
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Hotela
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :Estatua
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Iturria
 STR_TOWN_BUILDING_NAME_PARK_1                                   :Parkea
-STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Ofizina blokea
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Bulego blokea
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Dendak eta bulegoak
 STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Bulego eraikin modernoa
 STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Biltegia
@@ -4568,7 +4571,7 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Bidepunt
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Tren gordailua
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Tren gordailua #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN}Errepide ibilgailu gordailua
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Errepide ibilgailu gordailua(n)
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Errepide ibilgailu gordailua #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Ontzitegia
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Ontzitegia #{COMMA}

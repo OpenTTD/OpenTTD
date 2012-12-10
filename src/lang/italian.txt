@@ -3854,6 +3854,9 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ridimen
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}È stato trovato soltanto il pacchetto sonoro predefinito. Per i suoni, installare un pacchetto sonoro tramite il sistema di download contenuti
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Screenshot di grandi dimensioni
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Lo screenshot avrà una risoluzione di {COMMA} x {COMMA} pixel. La creazione dello screenshot può richiedere molto tempo. Continuare?
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot salvato con successo come '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screenshot non riuscito!
 

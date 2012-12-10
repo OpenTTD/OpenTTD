@@ -1181,8 +1181,8 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Ρυθμίσε�
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ρυθμίσεις με διαφορετική τιμή από τις ρυθμίσεις νέου παιχνιδιού σας
 
 STR_CONFIG_SETTING_OFF                                          :Ανενεργό
-STR_CONFIG_SETTING_ON                                           :Ενεργό
-STR_CONFIG_SETTING_DISABLED                                     :απενεργοποιημένο
+STR_CONFIG_SETTING_ON                                           :Ενεργή
+STR_CONFIG_SETTING_DISABLED                                     :Ανένεργη
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Ανένεργο
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Η εταιρία μου
@@ -1515,10 +1515,10 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Όλοι
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Σχέδιο δρόμων για νέες πόλεις: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Μορφή οδικών δικτύων για τις πόλεις
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :αρχική
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :καλύτεροι δρόμοι
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Καλύτεροι δρόμοι
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :πλέγμα 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :πλέγμα 3x3
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :τυχαίο
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Τυχαίο
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Οι πόλεις επιτρέπεται να χτίσουν δρόμους: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Επιτρέπεται στις πόλεις να κατασκευάζουν δρόμους για ανάπτυξη. Απενεργοποιήστε για να αποτρέπονται οι τοπικές αρχές από την αυτόνομη κατασκευή δρόμων
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Οι πόλεις επιτρέπουν το χτίσιμο ισόπεδων διασταυρώσεων: {STRING}
@@ -1598,72 +1598,77 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Συνίσταται)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Μέθοδος δρομολόγησης για τρένα: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Αναζήτηση διαδρομής που χρησιμοποιείται στα τραίνα
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Μέθοδος διαπίστωσης διαδρομής που χρησιμοποιείται για τα τραίνα
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Μέθοδος δρομολόγησης για οχήματα δρόμου: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Αναζήτηση διαδρομής που χρησιμοποιείται στα οδικά οχήματα
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Μέθοδος διαπίστωσης διαδρομής που χρησιμοποιείται για τα οδικά οχήματα
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Μέθοδος δρομολόγησης για πλοία: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Αναζήτηση διαδρομής που χρησιμοποιείται στα πλοία
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Αυτομάτη αναστροφή σε σηματοδότες: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Μέθοδος διαπίστωσης διαδρομής που χρησιμοποιείται για τα πλοία
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Αυτόματη αναστροφή σε σηματοδότες: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Επιτρέπεται στα τραίνα να αντιστραφούν σε σήμα, εάν περιμένουν εκεί για πολύ ώρα
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Αλλαγή τιμής ρύθμισης
 
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}Σφάλμα στο αρχείο ρυθμίσεων
-STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... σφάλμα στον πίνακα '{STRING}'
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... άκυρη τιμή '{STRING}' για '{STRING}'
-STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... καταληκτικοί χαρακτήρες στο τέλος της ρύθμισης '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... αγνοείται το NewGRF '{STRING}': διπλότυπο GRF ID του '{STRING}'
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... αγνοείταο το άκυρο NewGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... σφάλμα στον πίνακα «{STRING}»
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... η τιμή «{STRING}» είναι άκυρη για «{STRING}»
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... καταληκτικοί χαρακτήρες στο τέλος της ρύθμισης «{STRING}»
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... αγνοείται το NewGRF «{STRING}»: διπλότυπο GRF ID του «{STRING}»
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... αγνοείται το άκυρο NewGRF «{STRING}»: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :δεν βρέθηκε
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :ανασφαλής για στατική χρήση
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :σύστημα NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :ασύμβατο με αυτήν την έκδοση του OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :άγνωστο
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... το επίπεδο συμπίεσης '{STRING}' είναι άκυρο
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... ο τύπος αρχείου αποθήκευσης '{STRING}' δεν είναι διαθέσιμος. Επαναφορά σε '{STRING}'
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... το επίπεδο συμπίεσης «{STRING}» είναι άκυρο
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... ο τύπος αρχείου αποθήκευσης «{STRING}» δεν είναι διαθέσιμος. Επαναφορά σε «{STRING}»
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... αγνόηση βασικού σετ γραφικών «{STRING}»: δεν βρέθηκε
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... αγνόηση βασικού σετ ήχων «{STRING}»: δεν βρέθηκε
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... αγνόηση βασικού σετ μουσικής «{STRING}»: δεν βρέθηκε
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Νέο Παιχνίδι
 STR_INTRO_LOAD_GAME                                             :{BLACK}Φόρτωση Παιχνιδιού
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Παιξτε Σενάριο
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Παίξτε Υψομετρίκο Χάρτη
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Επεξεργαστής Σεναρίου
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Παίξτε Σενάριο
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Παίξτε Υψομετρικό Χάρτη
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Επεξεργαστής Σεναρίων
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Παιχνίδι Πολλών Παικτών
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Επιλογές Παιχνιδιού
+STR_INTRO_HIGHSCORE                                             :{BLACK}Πίνακας Βαθμολογιών
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Προηγμένες Ρυθμίσεις
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ρυθμίσεις NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Έλεγχος Online περιεχομένου
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Ρυθμίσεις AI και δέσμης ενεργειών παιχνιδιού
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Έλεγχος Διαδικτυακού Περιεχομένου
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Ρυθμίσεις AI και Δέσμης Ενεργειών Παιχνιδιού
 STR_INTRO_QUIT                                                  :{BLACK}Έξοδος
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού. Ctrl+κλικ παρακάμπτει την ρύθμιση του χάρτη
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού. Το Ctrl+Κλικ παρακάμπτει τη ρύθμιση του χάρτη
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Φόρτωση αποθηκευμένου παιχνιδιού
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Εκκίνηση νέου παιχνιδιού, χρησιμοποιώντας χάρτη υψομετρίας
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Εκκίνηση νέου παιχνιδιού με χρήση χάρτη υψομετρίας
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Έναρξη νέου παιχνιδιού, χρησιμοποιώντας ένα προσαρμοσμένο σενάριο
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Δημιουργία προσαρμοσμένου κόσμου/σεναρίου
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Έναρξη παιχνιδιού με πολλούς παίκτες
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Επιλογή 'εύκρατου' στυλ τοπίου
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Επιλογή 'υπό-αρκτικού' στυλ τοπίου
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Επιλογή 'υπό-τροπικού' στυλ τοπίου
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Επιλογή 'παιχνιδούπολης' στυλ τοπίου
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Επιλογή «εύκρατου» στυλ τοπίου
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Επιλογή «υπό-αρκτικού» στυλ τοπίου
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Επιλογή «υπό-τροπικού» στυλ τοπίου
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Επιλογή στυλ τοπίου «παιχνιδούπολης»
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Εμφάνιση επιλογών παιχνιδιού
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Εμφάνιση του πίνακα βαθμολογιών
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Εμφάνιση προηγμένων ρυθμίσεων
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Εμφάνιση ρυθμίσεων NewGRF
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Έλεγχος για νέο και ανανεωμένο περιεχόμενο για κατέβασμα
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Προβολή AI και ρυθμίσεων δέσμης ενεργειών παιχνιδιού
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Έξοδος από το 'OpenTTD'
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Έλεγχος για νέο και ανανεωμένο περιεχόμενο για λήψη
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Εμφάνιση ρυθμίσεων για AI και της δέσμης ενεργειών του παιχνιδιού
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Έξοδος από το «OpenTTD»
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Λείπουν {NUM} παράμετροι από τη μετάφραση. Παρακαλούμε βοηθήστε να κάνουμε το OpenTTD καλύτερο εγγραφόμενοι ως μεταφραστές. Δείτε το αρχείο readme.txt για λεπτομέρειες.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Έξοδος
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Είστε σίγουρος/η ότι θέλετε να εγκαταλείψετε το OpenTTD και να επιστρέψετε στο {STRING};
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Είστε σίγουροι ότι θέλετε να εγκαταλείψετε το OpenTTD και να επιστρέψετε στο {STRING};
 STR_QUIT_YES                                                    :{BLACK}Ναι
 STR_QUIT_NO                                                     :{BLACK}Όχι
 
@@ -1686,14 +1691,14 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Είσ�
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheats
-STR_CHEATS_TOOLTIP                                              :{BLACK}Τα κουτάκια δείχνουν αν έχετε χρησιμοποιήσει αυτό το cheat πρίν
-STR_CHEATS_WARNING                                              :{BLACK}Προσοχή! Είστε έτοιμος να προδώσετε τους φίλους ανταγωνιστές σας. Θυμηθείτε ότι αυτή η ντροπή θα μείνει για πάντα.
+STR_CHEATS_TOOLTIP                                              :{BLACK}Τα κουτάκια δείχνουν αν έχετε χρησιμοποιήσει αυτό το cheat εκ των προτέρων
+STR_CHEATS_WARNING                                              :{BLACK}Προσοχή! Είστε έτοιμοι να προδώσετε τους φίλους ανταγωνιστές σας. Θυμηθείτε ότι αυτή η ντροπή θα μείνει για πάντα.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Αύξηση χρημάτων κατά {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Παίζετε με την εταιρία: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Μαγική μπουλντόζα (αφαιρεί βιομηχανίες, αμετακίνητα αντικείμενα): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Τα τούνελ μπορούν να διασταυρώνονται: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Τα Jet δεν θα συγκρούονται (συχνά) σε μικρά αεροδρόμια: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Συγκρατημένο τοπίο
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Τα jet δε θα συγκρούονται (συχνά) σε μικρά αεροδρόμια: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Εύκρατο τοπίο
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Πολικό τοπίο
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Υποτροπικό τοπίο
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Τοπίο παιχνιδότοπου
@@ -1709,32 +1714,32 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Εμφά
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Εμφάνιση χρωματικών μοτίβων οχημάτων δρόμου
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Εμφάνιση χρωματικών μοτίβων πλοίων
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Εμφάνιση χρωματικών μοτίβων αεροσκαφών
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Επιλογή του βασικού χρώματος για το επιλεγμένο θέμα. Με Ctrl+Κλικ ορίζεται το χρώμα σε κάθε θέμα.
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Επιλογή του βασικού χρώματος για το επιλεγμένο θέμα. Με Ctrl+Κλικ ορίζεται το χρώμα σε κάθε θέμα
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Επιλογή του δευτερεύοντος χρώματος για το επιλεγμένο μοτίβο. Με Ctrl+Κλικ ορίζεται το χρώμα για κάθε θέμα
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Επιλέξτε το χρωματικό μοτίβο για αλλαγή ή πολλά μοτίβα με Ctrl+Κλικ. Κάντε κλικ στο κουτάκι για να επιλέξετε τη χρήση του μοτίβου
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Επιλέξτε το χρωματικό μοτίβο για αλλαγή ή πολλαπλά μοτίβα με Ctrl+Κλικ. Κάντε κλικ στο κουτάκι για να επιλέξετε τη χρήση του μοτίβου
 
 STR_LIVERY_DEFAULT                                              :Πρότυπο Μοτίβου Χρωμάτων
 STR_LIVERY_STEAM                                                :Ατμοκίνητη Μηχανή
 STR_LIVERY_DIESEL                                               :Πετρελαιοκίνητη Μηχανή
 STR_LIVERY_ELECTRIC                                             :Ηλεκτροκίνητη Μηχανή
-STR_LIVERY_MONORAIL                                             :Μηχανή Monorail
+STR_LIVERY_MONORAIL                                             :Μηχανή Μονόγραμμου
 STR_LIVERY_MAGLEV                                               :Μηχανή Maglev
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :Επιβατηγό Βαγόνι (Ατμού)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Επιβατηγό Βαγόνι (Πετρελαίου)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Επιβατηγό Βαγόνι (Ηλεκτρικό)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Επιβατηγό Βαγόνι (Monorail)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Επιβατηγό Βαγόνι (Maglev)
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Επιβατικό Βαγόνι (Ατμού)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Επιβατικό Βαγόνι (Πετρελαίου)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Επιβατικό Βαγόνι (Ηλεκτρικό)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Επιβατικό Βαγόνι (Monorail)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Επιβατικό Βαγόνι (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Εμπορικό Βαγόνι
 STR_LIVERY_BUS                                                  :Λεωφορείο
 STR_LIVERY_TRUCK                                                :Φορτηγό
-STR_LIVERY_PASSENGER_SHIP                                       :Επιβατηγό πλοίο
+STR_LIVERY_PASSENGER_SHIP                                       :Επιβατικό πλοίο
 STR_LIVERY_FREIGHT_SHIP                                         :Εμπορικό Πλοίο
 STR_LIVERY_HELICOPTER                                           :Ελικόπτερο
 STR_LIVERY_SMALL_PLANE                                          :Μικρό Αεροπλάνο
 STR_LIVERY_LARGE_PLANE                                          :Μεγάλο Αεροπλάνο
-STR_LIVERY_PASSENGER_TRAM                                       :Επιβατηγό Τραμ
+STR_LIVERY_PASSENGER_TRAM                                       :Επιβατικό Τραμ
 STR_LIVERY_FREIGHT_TRAM                                         :Εμπορικό Τράμ
 
 # Face selection window
@@ -1757,12 +1762,12 @@ STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Φόρτ
 STR_FACE_LOAD_DONE                                              :{WHITE}Το αγαπημένο πρόσωπο έχει φορτωθεί από το αρχείο ρυθμίσεων του OpenTTD
 STR_FACE_FACECODE                                               :{BLACK}Αρ. προσώπου παίκτη
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Εμφάνιση και/ή επιλογή του αριθμού του προσώπου του παίκτη
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Προβολη και/ή ορισμός του αριθμού του προσώπου του παίκτη
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Προβολή και/ή ορισμός του αριθμού του προσώπου του παίκτη
 STR_FACE_FACECODE_SET                                           :{WHITE}Ο νέος αριθμός προσώπου έχει οριστεί
 STR_FACE_FACECODE_ERR                                           :{WHITE}Δεν μπορεί να οριστεί ο αριθμός προσώπου του παίκτη - πρέπει να είναι αριθμητικός μεταξύ του 0 και του 4.294.967.295!
 STR_FACE_SAVE                                                   :{BLACK}Αποθήκευση
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Αποθήκευση αγαπημένου προσώπου
-STR_FACE_SAVE_DONE                                              :{WHITE}Αυτό το πρόσωπο θα αποθηκεύτει ως αγαπημένο στο αρχείο ρυθμίσεων του OpenTTD
+STR_FACE_SAVE_DONE                                              :{WHITE}Αυτό το πρόσωπο θα αποθηκευτεί ως αγαπημένο στο αρχείο ρυθμίσεων του OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}Ευρωπαϊκό
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Επιλογή ευρωπαϊκών προσώπων
 STR_FACE_AFRICAN                                                :{BLACK}Αφρικάνικο
@@ -1788,8 +1793,8 @@ STR_FACE_CHIN                                                   :Πηγούνι:
 STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Αλλάξτε πηγούνι
 STR_FACE_JACKET                                                 :Σακάκι:
 STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Αλλάξτε σακάκι
-STR_FACE_COLLAR                                                 :Κολλάρο:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Αλλαγή κολλάρου
+STR_FACE_COLLAR                                                 :Γιακάς:
+STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Αλλαγή γιακά
 STR_FACE_TIE                                                    :Γραβάτα:
 STR_FACE_EARRING                                                :Σκουλαρίκι:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Αλλαγή γραβάτας ή σκουλαρικιού
@@ -1797,9 +1802,9 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Αλλα
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Παιχνίδι πολλών παικτών
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Σύνδεση:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Επιλέξτε μεταξύ παιχνιδιού στο Internet ή τοπικού (LAN) παιχνιδιού
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Επιλέξτε μεταξύ διαδικτυακού παιχνιδιού ή τοπικού (LAN) παιχνιδιού
 STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
+STR_NETWORK_SERVER_LIST_INTERNET                                :Διαδίκτυο
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Όνομα παίκτη:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Αυτό είναι το όνομα με το οποίο θα σας αναγνωρίζουν οι άλλοι παίκτες
 
@@ -1807,7 +1812,7 @@ STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Όνομ
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Όνομα του παιχνιδιού
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Συμμετέχοντες
-STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Συμμετέχοντες online / μέγιστος αριθμός συμμετεχόντων{}Εταιρίες online / μέγιστος αριθμός εταιριών
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Συμμετέχοντες συνδεδεμένοι / μέγιστος αριθμός συμμετεχόντων{}Εταιρίες συνδεδεμένες / μέγιστος αριθμός εταιριών
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Μέγεθος χάρτη
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Μέγεθος χάρτη του παιχνιδιού{}Κάντε κλικ για ταξινόμηση ανά περιοχή
@@ -1817,7 +1822,7 @@ STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Χρόν
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Αριθμός χρόνων{}που τρέχει το παιχνίδι
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Γλώσσα, έκδοση διακομιστή, κλπ.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Κάντε κλικ σε ένα παιχνίδι από την λίστα για το επιλέξετε
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Κάντε κλικ σε ένα παιχνίδι από τη λίστα για το επιλέξετε
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Ο διακομιστής που συμμετείχατε την τελευταία φορά:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Κάντε κλικ για να επιλέξετε το διακομιστή που συμμετείχατε την τελευταία φορά
 
@@ -1842,8 +1847,8 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Αναν
 
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Βρείτε το διακομιστή
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Ψάξτε το δίκτυο για ένα διακομιστή
-STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Προσθέστε ένα διακομιστή
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Προσθέτει ένα διακομιστή στην λίστα ο οποίος θα ελέγχεται κάθε φορά για ενεργά παιχνίδια.
+STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Προσθήκη διακομιστή
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Προσθέτει ένα διακομιστή στη λίστα ο οποίος θα ελέγχεται κάθε φορά για ενεργά παιχνίδια.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Εκκίνηση διακομιστή
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Ξεκινήστε το δικό σας διακομιστή
 
@@ -1855,22 +1860,22 @@ STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Έναρ
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Όνομα παιχνιδιού:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Το όνομα του παιχνιδιού θα εμφανιστεί στους άλλους παίκτες στο μενού επιλογής παιχνιδιού για πολλούς παίκτες
-STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Θέστε κωδικό
+STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Θέση κωδικού
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Προστατέψτε το παιχνίδι με έναν κωδικό εάν δε θέλετε να είναι δημοσίως προσβάσιμο
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (αναγγελία)
+STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Διαδίκτυο
+STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Διαδίκτυο (αναγγελία)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} συμπαίκτ{P ης ες}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Μέγιστος αριθμός συμμετεχόντων:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Επιλέξτε τον μέγιστο αριθμό συμμετεχόντων. Δεν είναι ανάγκη να γεμίσουν όλες οι θέσεις
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} εταιρί{P α ες}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} εταιρεί{P α ες}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Μέγιστος αριθμός εταιριών:
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Περιορισμός του διακομιστή σε συγκεκριμένο αριθμό εταιριών
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Περιορισμός του διακομιστή σε συγκεκριμένο αριθμό εταιρειών
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} θεατ{P ής ές}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Μέγιστος αριθμός θεατών:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Περιορισμός του διακομιστή σε συγκεκριμένο αριθμό θεατών
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Ομιλούμενη γλώσσα:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Οι υπόλοιποι παίκτες θα γνωρίζουν ποια γλώσσα ομιλείται στο διακομιστή
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Οι υπόλοιποι παίκτες θα γνωρίζουν ποια γλώσσα ομιλείται στον διακομιστή
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Εισάγετε το όνομα του δικτυακού παιχνιδιού
 
@@ -1887,11 +1892,11 @@ STR_NETWORK_LANG_CZECH                                          :Τσεχικά
 STR_NETWORK_LANG_DANISH                                         :Δανικά
 STR_NETWORK_LANG_DUTCH                                          :Ολλανδικά
 STR_NETWORK_LANG_ESPERANTO                                      :Εσπεράντο
-STR_NETWORK_LANG_FINNISH                                        :Φινλανδικά
+STR_NETWORK_LANG_FINNISH                                        :Φιλανδικά
 STR_NETWORK_LANG_HUNGARIAN                                      :Ουγγρικά
 STR_NETWORK_LANG_ICELANDIC                                      :Ισλανδικά
 STR_NETWORK_LANG_ITALIAN                                        :Ιταλικά
-STR_NETWORK_LANG_JAPANESE                                       :Γιαπωνέζικα
+STR_NETWORK_LANG_JAPANESE                                       :Ιαπωνικά
 STR_NETWORK_LANG_KOREAN                                         :Κορεατικά
 STR_NETWORK_LANG_LITHUANIAN                                     :Λιθουανικά
 STR_NETWORK_LANG_NORWEGIAN                                      :Νορβηγικά
@@ -1905,7 +1910,7 @@ STR_NETWORK_LANG_SPANISH                                        :Ισπανικ�
 STR_NETWORK_LANG_SWEDISH                                        :Σουηδικά
 STR_NETWORK_LANG_TURKISH                                        :Τουρκικά
 STR_NETWORK_LANG_UKRAINIAN                                      :Ουκρανικά
-STR_NETWORK_LANG_AFRIKAANS                                      :Αφρικανικά
+STR_NETWORK_LANG_AFRIKAANS                                      :Αφρικάνς
 STR_NETWORK_LANG_CROATIAN                                       :Κροατικά
 STR_NETWORK_LANG_CATALAN                                        :Καταλανικά
 STR_NETWORK_LANG_ESTONIAN                                       :Εσθονικά
@@ -1918,13 +1923,13 @@ STR_NETWORK_LANG_LATVIAN                                        :Λετονικ�
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Αίθουσα παιχνιδιού για πολλούς παίκτες
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Προετοιμασία για συμμετοχή: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Λίστα όλων των εταιριών αυτή τη στιγμή στο παιχνίδι. Μπορείτε είτε να συμμετάσχετε σε μία ή να δημιουργήσετε μια νέα αν υπάρχει κενή θέση
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Λίστα όλων των εταιρειών αυτήν τη στιγμή στο παιχνίδι. Μπορείτε είτε να συμμετάσχετε σε μία ή να δημιουργήσετε μια νέα αν υπάρχει κενή θέση
 
-STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}ΠΛΗΡΟΦΟΡΙΕΣ ΕΤΑΙΡΙΑΣ
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Όνομα εταιρίας: {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}ΠΛΗΡΟΦΟΡΙΕΣ ΕΤΑΙΡΕΙΑΣ
+STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Όνομα εταιρείας: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Ίδρυση: {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Αξία εταιρίας: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Τρέχων ισοζυγίο: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Αξία εταιρείας: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Τρέχων ισοζύγιο: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Έσοδα τελευταίας χρονιάς: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Απόδοση: {WHITE}{NUM}
 
@@ -1932,26 +1937,26 @@ STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Οχή�
 STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Σταθμοί: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
 STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Παίκτες: {WHITE}{STRING}
 
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Νέα εταιρία
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Δημιουργία νέας εταιρίας
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Νέα εταιρεία
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Δημιουργία νέας εταιρείας
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Παρακολούθηση παιχνιδιού
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Δείτε το παιχνίδι ως θεατής
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Συμμετοχή σε εταιρία
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Βοηθείστε στην διαχείριση αυτής της εταιρίας
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Συμμετοχή σε εταιρεία
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Βοηθήστε στη διαχείριση αυτής της εταιρείας
 
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Σύνδεση...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Σύνδεση..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Εξουσιοδότηση..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Αναμονή..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Κατέβασμα χάρτη..
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Επεξεργασία δεδομένων..
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Καταχώρηση..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Σύνδεση...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Εξουσιοδότηση...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Αναμονή...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Λήψη χάρτη...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Επεξεργασία δεδομένων...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Καταχώρηση...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Ανεύρεση πληροφοριών του παιχνιδιού..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ανεύρεση πληροφοριών της εταρίας...
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Ανεύρεση πληροφοριών του παιχνιδιού...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ανεύρεση πληροφοριών της εταιρείας...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} συμπαίκτ{P ης ες} είναι πριν από σας
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} κατέβηκαν μέχρι τώρα
@@ -1960,90 +1965,90 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Αποσύνδεση
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Ο διακομιστής προστατεύεται από κωδικό. Εισάγετε κωδικό
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Η εταιρία προστατεύεται από κωδικό. Εισάγετε κωδικό
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Η εταιρεία προστατεύεται από κωδικό. Εισάγετε κωδικό
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Λίστα συμμετεχόντων
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Παρακολούθηση
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Νεα εταιρία
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Νέα εταιρεία
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Εκδίωξη
-STR_NETWORK_CLIENTLIST_BAN                                      :Εκδίωξη
+STR_NETWORK_CLIENTLIST_BAN                                      :Απαγόρευση
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Δώστε χρήματα
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Μιλήστε σε όλους
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Μιλήστε στην εταιρία
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Μιλήστε στην εταιρεία
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Προσωπικό μήνυμα
 
 STR_NETWORK_SERVER                                              :Διακομιστής
 STR_NETWORK_CLIENT                                              :Πελάτης
 STR_NETWORK_SPECTATORS                                          :Θεατές
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Εισάγετε το πόσο των χρήματων που θέλετε να δώσετε
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Εισάγετε το πόσο των χρημάτων που θέλετε να δώσετε
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Να μην αποθηκευτεί ο κωδικός
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Δώστε στην εταιρία νέο κωδικό
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Κωδικός εταιρίας
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Προεπιλεγμένος κωδικός εταιρίας
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Χρήση αυτού του κωδικού ως προεπιλογή για τις νέες εταιρίες
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Δώστε στην εταιρεία νέο κωδικό
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Κωδικός εταιρείας
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Προεπιλεγμένος κωδικός εταιρείας
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Χρήση αυτού του κωδικού ως προεπιλογή για τις νέες εταιρείες
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Συμμετοχή
-STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Συμμετοχή και παιχνίδι ως αυτή η εταιρία
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Συμμετάσχετε και παίξτε ως αυτήν την εταιρία
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Κωδικός
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Προστατεύστε την εταιρία με κωδικό ώστε να αποφύγετε την συμμετοχή ανεπιθύμητων παικτών.
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Θέστε τον κωδικό της εταιρίας
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Προστατεύστε την εταιρεία με κωδικό ώστε να αποφύγετε την συμμετοχή ανεπιθύμητων παικτών
+STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Θέση του κωδικού της εταιρείας
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Αποστολή
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Ομάδα] :
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Προσωπικό] {STRING}:
-STR_NETWORK_CHAT_ALL_CAPTION                                    :[Σε όλους] :
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Όλοι] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Ομάδα] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Ομάδα] Σε {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT                                         :[Προσωπικό] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Προσωπικό] Σε {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_ALL                                            :[Σε όλους] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Όλοι] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Εισάγετε το κείμενο για δικτυακή συζήτηση
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Δεν βρέθηκε συσκευή δικτύου ή έγινε μεταγλώτηση χώρις παράμετρο ENABLE_NETWORK
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Δεν βρέθηκε συσκευή δικτύου ή έγινε μεταγλώττιση χωρίς την παράμετρο ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Δεν βρέθηκε κάποιο δικτυακό παιχνίδι
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Ο διακομιστής δεν απάντησε στο αίτημα
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Απέτυχε η σύνδεση λόγο ασυμφωνίας NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Συγχρονισμός δικτυακού παιχνιδιού απέτυχε
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Χάθηκε η σύνδεση δικτυακού παιχνιδιού
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Δεν είναι δυνατό το φόρτωμα αποθηκευμένου παιχνιδιού
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Δεν ήταν δυνατή η φόρτωση αποθηκευμένου παιχνιδιού
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Δεν είναι δυνατή η εκκίνηση του διακομιστή
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Η σύνδεση δεν είναι δυνατή
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Τελειώσε ο χρόνος της σύνδεσης #{NUM}
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Έγινε ενα λάθος πρωτόκολλου και η σύνδεση έκλεισε
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Η υποέκδοση του πελάτη δεν ταιριάζει με την υποέκδοση του διακομιστή
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Δεν ήταν δυνατή η σύνδεση
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Τελείωσε ο χρόνος της σύνδεσης #{NUM}
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Υπήρξε λάθος πρωτοκόλλου και η σύνδεση έκλεισε
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Η έκδοση του πελάτη δεν ταιριάζει με την έκδοση του διακομιστή
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Λανθασμένος κωδικός
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Ο διακομιστής είναι γεμάτος
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Έχει απαγορευτεί η είσοδος σας από το διακομιστή
-STR_NETWORK_ERROR_KICKED                                        :{WHITE}Έχετε εκδιωχτεί από το παιχνίδι
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Έχει απαγορευτεί η είσοδος σας από τον διακομιστή
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Έχετε εκδιωχθεί από το παιχνίδι
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Η χρήση cheats δεν επιτρέπεται σε αυτό το διακομιστή
-STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Αποστέλνεις πάρα πολλές εντολές στο διακομιστή
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Αποστείλατε πάρα πολλές εντολές στον διακομιστή
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Χρειαστήκατε πολύ χρόνο για να συμπληρώσετε τον κωδικό
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ο υπολογιστής σας είναι πολύ αργός για να ακολουθήσει το διακομιστή
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Ο υπολογιστής σας χρειάστηκε πολύ χρόνο για να κατεβάσει το χάρτη
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Ο υπολογιστής σας χρειάστηκε πολύ χρόνο για να κατεβάσει τον χάρτη
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Ο υπολογιστής σας χρειάστηκε πολύ χρόνο για να συνδεθεί με τον διακομιστή
 
 ############ Leave those lines in this order!!
-STR_NETWORK_ERROR_CLIENT_GENERAL                                :Γενικό πρόβλημα
-STR_NETWORK_ERROR_CLIENT_DESYNC                                 :Πρόβλημα συγχρονισμού
-STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :Δεν είναι δυνατή η φορτώση του χάρτη
-STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :Η σύνδεση χάθηκε
-STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :Λάθος πρωτόκολλου
-STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Αναντιστοιχία NewGRF
-STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :Μη εξουσιοδοτημένο
+STR_NETWORK_ERROR_CLIENT_GENERAL                                :γενικό πρόβλημα
+STR_NETWORK_ERROR_CLIENT_DESYNC                                 :πρόβλημα συγχρονισμού
+STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :δεν ήταν δυνατή η φόρτωση του χάρτη
+STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :η σύνδεση χάθηκε
+STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :λάθος πρωτοκόλλου
+STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :αναντιστοιχία NewGRF
+STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :μη εξουσιοδοτημένοι
 STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :έγινε λήψη εσφαλμένου ή αναπάντεχου πακέτου
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :λάθος έκδοση
-STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :το όνομα χρησιμοποιείται
-STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :λάθος κωδικός
+STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :το όνομα είναι ήδη σε χρήση
+STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :λανθασμένος κωδικός
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :λάθος company-id στο DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :Εκδιωχθήκατε από το διακομιστή
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :προσπαθησε να χρησιμοποιησει cheat
@@ -3867,6 +3872,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Αλλ�
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Μόνο το σετ ανάγκης ήχου βρέθηκε.Αν θέλετε ήχους, εγκαταστήστε ένα πακέτο ήχων μέσω του συστήματος μεταφόρτωσης υλικού.
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Το στιγμιότυπο οθόνης αποθηκεύθηκε επιτυχώς ώς '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Το στιγμιότυπο οθόνης απέτυχε!
 

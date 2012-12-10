@@ -398,6 +398,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Vrachtprijzen
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Bedrijfscompetitietabel
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Gedetailleerde prestatiescore
+STR_GRAPH_MENU_HIGHSCORE                                        :Score tabel
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1104,6 +1105,12 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Links
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midden
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Rechts
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximale beginlening: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximale bedrag een bedrijf kan lenen (zonder rekening te houden met de inflatie)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Rente van lening: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Percentage rente op lening; bepaald ook het inflatiecijfer wanneer ingeschakeld
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Brandstofkosten: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Het niveau van onderhoud en bedrijfskosten van voertuigen en infrastuctuur
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Bouwsnelheid: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Beperk de hoeveelheid bouwactiviteiten voor computerspeler
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :voertuig storingen: {STRING}
@@ -1311,6 +1318,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scroll kaart
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Uit
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Muiswielsnelheid: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Regel de gevoeligheid van het muis-wiel scrollen
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Toetsenbord op scherm: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Selecteer de methode om het toetsenbord op het scherm te openen voor tekst invoeren in editboxes alleen met behulp van het aanwijsapparaat. Dit is bedoeld voor kleine apparaten zonder toetsenbord
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Uitgeschakeld
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dubbel klik
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Enkel klik (met focus)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enkel klik (immediately)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Rechtsklikemulatie: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Selecteer de methode die rechter muisknop klikken nabootst
@@ -1382,6 +1395,11 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Het inschakelen
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Schepen voor de computer uitschakelen: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Het inschakelen van deze instelling maakt het het bouwen van schepen onmogelijk voor een computer-speler
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Standaard instellingenprofiel: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Kies welke instellingsprofiel moet worden gebruikt bij willekeurige AI's of als start waardes, wanneer een nieuwe AI of Game Script wordt toegevoegd
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Makkelijk
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Gemiddeld
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Moeilijk
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Laat computerspelers toe in netwerkspel: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Sta door computer gegenereerde speler toe deel te nemen in multiplayer spelen.
@@ -1561,6 +1579,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenario
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multiplayer
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelopties
+STR_INTRO_HIGHSCORE                                             :{BLACK}Score tabel
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Geavanceerde instellingen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-instellingen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online inhoud zoeken
@@ -1580,6 +1599,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Kies sub
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Kies speelgoedlandschap
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Toon spelopties
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Toon score tabel
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Toon geavanceerde instellingen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Toon NewGRF-instellingen
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Zoeken naar nieuwe en aangepaste inhoud om te downloaden
@@ -3806,6 +3826,9 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Het aan
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Alleen backup geluid is gevonden. Als je geluid wilt, installeer dan een geluiddsset via het downloadsysteem
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Groot schermafdruk
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}De schermafdruk heeft een resolutie van {COMMA} x {COMMA} pixels. De schermafdruk maken kan even duren. Verder gaan?
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Schermprint succesvol opgeslagen als '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Schermprint mislukt!
 

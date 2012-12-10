@@ -21,7 +21,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
-STR_UNDEFINED                                                   :(frażi mhux definit)
+STR_UNDEFINED                                                   :(frażi mhix definita)
 STR_JUST_NOTHING                                                :Xejn
 
 # Cargo related strings
@@ -441,6 +441,23 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 
 
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Stabbilixxi l-kosti għal manutenzjoni u servizzi fuq vetturi u infrastruttura
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Veloċita' tal-kostruzzjoni: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Illimita l-ammont massimu ta' kostruzzjonijiet għall-AI
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Ħsarat fil-vetturi: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Ikkontrolla kemm-il darba vettura li ma ingħatatx servizz riċentament tieqaf
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplikatur tas-sussidju: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Stabbilixxi kemm jiġi mħallas għal konnessjonijiet sussidjati
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Kosti tal-kostruzzjoni: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Stabbilixxi l-livell ta' kostruzzjoni u l-prezz tax-xiri
+STR_CONFIG_SETTING_RECESSIONS                                   :Riċessjonijiet: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jekk mixgħula kull ftit snin tista' sseħħ riċessjoni. Waqt riċessjoni, il-produzzjoni ta' kollox tonqos (tirritorna għal kemm kienet qabel kif tgħaddi r-riċessjoni)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Tħallix li ferrovija ddur lura fi stazzjon: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Jekk tinxtegħel, ferroviji ma jdurux lura fi stazzjonijiet li mhumiex fit-tarf, jekk teżisti rotta iqsar għad-destinazzjoni li jmiss
+STR_CONFIG_SETTING_DISASTERS                                    :Diżastri: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ixgħel jew itfi diżastri li xi drabi jistgħu jaffetwaw jew ikissru vetturi jew infrastrutturi
+STR_CONFIG_SETTING_CITY_APPROVAL                                :L-attitudni tal-kunsill lokali lejn bidliet fil-viċinanzi: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Iddeċiedi kemm l-ammont ta storbju u danni lill-ambjent ta' kumpanija jaffetwaw il-klassifikazzjoni tagħhom mar-raħal u proġetti oħra tal-futur
 
 
 
@@ -452,8 +469,10 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avza jekk jinti
 
 
 
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :l-ebda azzjoni
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :l-azzjonijiet kollha
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :L-ebda azzjoni
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :L-azzjonijiet kollha
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Uza l-lista avvanzata tal-vetturi: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uzu tal-listi avvanzati tal-vetturi biex tghaqqad il-vetturi fi gruppi
 
 
 
@@ -984,6 +1003,9 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лице
 # Soundset messages
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE} Stampa kbira hafna
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}L-istampa se jkollha reżoluzzjoni ta {COMMA} x {COMMA}
+
 
 # Error message titles
 

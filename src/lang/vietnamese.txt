@@ -217,6 +217,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Lọc chuỗi:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Nhập chuỗi lọc
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Nhập từ khóa vào để lọc danh sách
 
@@ -397,10 +398,12 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Bảng giá cư
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Bảng tầm cỡ công ty
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Chi tiết hệ số năng suất
+STR_GRAPH_MENU_HIGHSCORE                                        :Bảng điểm chơi cao nhất
 ############ range ends here
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Danh mục các ngành
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Chuỗi cung ứng
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Góp vốn xây nhà máy mới
 ############ range ends here
 
@@ -1065,6 +1068,9 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Không c
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Thiết Lập Nâng Cao
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Lọc chuỗi:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Mở xuống tất cả
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Đóng lại tất cả
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(hiện không có giải thích nào)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Giá trị mặc định: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Kiểu thiết lập: {ORANGE}{STRING}
@@ -1074,10 +1080,18 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Thiết lập t
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Thiết lập công ty (chứa trong save; chỉ tác động tới các ván chơi mới)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Thiết lập công ty (chứa trong save; chỉ tác động tới công ty hiện tại)
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Hiển thị:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Chỉ hiển thị danh sách các thiết lập đã bị thay đổi
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Tùy chọn cơ bản
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Tùy chọn nâng cao
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Thiết lập chuyên gia/tất cả thiết lập
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Thiết lập khác với giá trị mặc định
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Thiết lập chung với giá trị khác giá trị mặc định
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :THiết lập giá trị mới khác với giá trị cho ván chơi mới
 
 STR_CONFIG_SETTING_OFF                                          :Tắt
 STR_CONFIG_SETTING_ON                                           :Bật
-STR_CONFIG_SETTING_DISABLED                                     :tắt
+STR_CONFIG_SETTING_DISABLED                                     :Tắt
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Tắt
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Công ty mình
@@ -1091,6 +1105,25 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Trái
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Giữa
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Phải
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Khoảng vay khởi nghiệp tối đa: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Hạn mức tối đa một công ty có thể vay (không tính lạm phát)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Lãi suất vay: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lãi xuất vay; ảnh hưởng tới cả lạm pháp nếu bật tùy chọn đó
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Chi phí hoạt động: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Thiết lập mức độ tính chi phí bảo trì và vận hành đối với phương tiện và hạ tầng giao thông
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Tốc độ xây dựng: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Giới hạn hành động xây dựng của AI
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Mức hỏng hóc phương tiên: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Thiết lập mức độ hỏng hóc đối với phương tiện không bảo trì thường xuyên
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Tỉ lệ chi trả: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Thiết lập mức chi trả cho tuyến vận chuyển phụ trợ
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Chi phí xây dựng: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Thiết lập mức độ xây dựng và chi phí mua sắm
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Không cho phép tàu hỏa quay đầu ở ga: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Nếu bật thì tàu hỏa sẽ không quay đẩu đối với ga không phải đầu cuối, quay đầu nếu có một đường ngắn hơn tới đích
+STR_CONFIG_SETTING_DISASTERS                                    :Thảm họa: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Thay đổi tùy chọn để thảm họa đôi lúc ngăn chặn hoặc phá hủy phương tiện và công trình hạ tầng
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Lựa chọn mức độ ảnh hưởng môi trường và tiếng ồn gây ra bởi các công ty sẽ ảnh hưởng uy tín của công ty đối với chính quyền địa phương và các hoạt động xây dựng của họ trong địa bàn
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Cho phép xây dựng trên dốc và bờ biển: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Nếu bật, đường đi và trạm có thể được xây trên hầu hết các loại dốc. Nếu tắt, chúng chỉ có thể được xây trên đoạn dốc có cùng chiều với đường đi
@@ -1156,6 +1189,11 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :đầu xa
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Xe ôtô xếp hàng (với hiệu ứng quantum): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Tùy chọn sẽ khiến ôtô đứng đợi ở trước điểm dừng cho tới khi có chỗ vào
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Cuộn cửa sổ chính khi con trỏ gần mép: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Khi bật, vùng nhìn sẽ cuộn khi con trỏ đến cạnh cửa sổ
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Tắt
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Cửa sổ chính trong chế độ toàn màn hình
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Cửa sổ chính
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Mọi cửa sổ bổ sung
 STR_CONFIG_SETTING_BRIBE                                        :Cho phép hối lộ chính quyền địa phương: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Cho phép công ty thử hối lộ quan chức địa phương. Nếu việc hối lộ bị phát giác, công ty sẽ không được làm gì ở địa phương đó 6 tháng
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Cho phép mua quyền vận tải độc quyền: {STRING}
@@ -1277,6 +1315,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Cuộn bản đ
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Tắt
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Tốc độ cuộn bản đồ bằng chuột: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Điều chỉnh độ nhạy của bánh xe cuộn
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Bàn phím ảo: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Chọn phương thức mở bàn phím ảo để nhập chữ với con trỏ. Có ích đối với các thiết bị không có bàn phím
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Tắt
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Nháy kép
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Nháy đơn (nếu đang kích hoạt)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Nháy đơn (ngay lập tức)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Giả lập click chuột phải: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Chọn phương thức giả lập nút phải chuột
@@ -1303,7 +1347,7 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Khi bật, ván
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Khi tạm dừng thì cho phép: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Lựa chọn các hành động có thể làm khi ván chơi đang tạm dừng
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :không có thao tác nào
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :tất cả những thao tác không liên quan đến xây dựng
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :tất cả những thao tác phi xây dựng
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :tất cả ngoại trừ chỉnh sửa địa hình
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :tất cả thao tác
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Danh sách phương tiện nâng cao: {STRING}
@@ -1339,12 +1383,22 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Nhân vật má
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Nhân vật máy không được mua máy bay: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Nhân vật máy không được mua tàu thủy: {STRING}
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Giá trị thiết lập mặc định: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Lực chọn mức độ khó đối với AI ngẫu nhiên hoặc giá trị mặc định khi thêm AI mới hay kịch bản trò trơi
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Dễ
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Trung bình
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Khó
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Cho phép AI ở chế độ nhiều người chơi: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#mã lệnh trước kịch bản tạm ngưng: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Tần suất bảo trì theo đơn vị phần trăm: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Tần suất bảo trì mặc định đối với tàu hỏa: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} ngày/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :tắt
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Tần suất bảo trì mặc định đối với ôtô: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Tần suất bảo trì mặc định đối với máy bay: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Tần suất bảo trì mặc định đối với tàu thủy: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Tắt bảo trì khi đặt tắt tuỳ chọn hỏng hóc: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Bật giới hạn tốc độ toa tàu: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Không dùng tàu điện: {STRING}
@@ -1353,6 +1407,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Tin tức có m
 STR_CONFIG_SETTING_STARTING_YEAR                                :Năm bắt đầu: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Nền kinh tế ít biến động: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Cho phép mua cổ phần của các công ty khác: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Tỉ lệ lợi tức cổ phiếu chi trả cho môi giới: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Khi kéo, đặt đèn tín hiệu mỗi: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Đặt khoảng cách để xây liên tiếp các đèn tín hiệu khi được kéo
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} ô
@@ -1373,7 +1428,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tất cả
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Kiểu đường sá của đô thị mới: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Kiểu đường sá của đô thị
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :nguyên bản
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :nhiều đường
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :đường hợp lý hơn
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :lưới 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :lưới 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ngẫu nhiên
@@ -1392,8 +1447,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :cho phép, tùy
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Trồng cây trong trò chơi: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Điều khiển sự xuất hiện tự dộng của cây cối khi đang chơi. Điều này có thể ảnh hưởng đến những nhà máy dựa vào cây cối, ví dự như nhà máy chế biến gỗgỗ
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :không có {RED}(nhà máy chế biến gỗ bị ngưng)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :chỉ trong rừng nhiệt đới
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :mọi nơi
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Chỉ trong rừng nhiệt đới
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Mọi nơi
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Vị trí của thanh công cụ chính: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Vị trí nằm ngang của thanh công cụ chính ở phía trên màn hình
@@ -1402,7 +1457,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Vị trí nằm
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Bán kính dính cửa sổ: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Khoảng cách giữa các cửa sổ để nó tự động sắp ngay ngắn khi chuyển đến gần
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} điểm ảnh
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :tắt
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Tắt
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Giới hạn số lượng cửa sổ (không-neo): {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Số lượng cửa sổ chưa neo (tối đa) trước khi tự động đóng để nhường chỗ khi mở cửa sổ mới
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
@@ -1427,7 +1482,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Cực nhanh
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Tỷ lệ đô thị sẽ trở nên thành phố: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Số lượng đô thị sẽ trở nên thành phố, đô thị đó sẽ rộng hơn và phát triển nhanh hơn
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 trong {COMMA}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :không
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Không
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Hệ số quy mô đô thị coi là thành phố: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Kích thước trung bình của thành phố tỉ lệ với đô thị lúc bắt đầu trò chơi
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Bỏ đi những khúc đường ngớ ngẩn khi xây dựng đường: {STRING}
@@ -1495,6 +1550,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Biên T�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Chơi Trên Mạng
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Cấu Hình Trò Chơi
+STR_INTRO_HIGHSCORE                                             :{BLACK}Bảng điểm chơi cao nhất
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Thiết Lập Nâng Cao
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Thiết Lập NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Các Nội Dung Trên Mạng
@@ -1514,6 +1570,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Chọn k
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Chọn kiểu quang cảnh 'đồ chơi'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Hiển thị cấu hình của trò chơi
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Hiện bảng điểm chơi cao nhất
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Hiển thị tùy chỉnh nâng cao
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Hiển thị tùy chỉnh NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kiểm tra những nội dung mới & cập nhật để tải về
@@ -2302,6 +2359,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Hiển t
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Hiển thị khả năng cung ứng và chấp nhận hàng hoá của nhà máy
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Liên kết với bản đồ nhỏ
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Chọn các nhà máy hiển thị ở bản đồ nhỏ luôn thể
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Chọn hàng hóa
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Chọn loại hàng hóa mà bạn muốn hiển thị
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Chọn nhà máy
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Chọn loại nhà máy mà bạn muốn hiển thị
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Thông Tin Địa Lý
@@ -3736,6 +3797,9 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Co dãn
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Chỉ có 1 bộ âm thanh phụ. Nếu bạn muốn thêm các âm thanh, cài thêm các bộ âm thanh tải về qua nội dung trực tuyến.
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Ảnh chụp cực lớn
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Ảnh chụp màn hình có độ phân giải {COMMA} x {COMMA} điểm. Chụp ảnh màn hình sẽ ngưng trò chơi chút ít, bạn có muốn vậy không??
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Chụp màn hình lưu thành file là '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Chụp màn hình bị lỗi!
 

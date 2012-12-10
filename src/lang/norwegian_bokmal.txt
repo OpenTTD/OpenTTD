@@ -1083,14 +1083,14 @@ STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Vis:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Viser kun endrede innstillinger i listen nedenfor
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grunnleggende innstillinger
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avanserte innstillinger
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Alle innstillinger
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Avanserte innstillinger / alle innstillinger
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Innstillinger med annen verdi enn standarden
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Innstillinger hos andre enn klienten som har annen verdi enn standard
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Innstillinger med annen verdi enn innstillingene dine for nye spill
 
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
-STR_CONFIG_SETTING_DISABLED                                     :deaktivert
+STR_CONFIG_SETTING_DISABLED                                     :Deaktivert
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Av
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Eget firma
@@ -1136,7 +1136,7 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimal tunnel
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimal lengde for tunneller
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Konstruksjonsmetode for primærindustri: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Ingen
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Som andre næringer
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Som andre industrier
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospekterer
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Flatt område rundt industrier: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Mengde flatmark rundt en industri. Dette sikrer at det er plass til å bygge spor og stasjoner i nærheten av industrien.
@@ -1149,8 +1149,8 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :midten
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :enden
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Kjøretøykø (med kvantumseffekter): {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Flytt på bildet hvis pilen er nær ytterkantene av skjermen: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :deaktivert
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :hoved tillegsvindu, bare fullskjerm
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Deaktivert
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Hoved tillegsvindu, bare fullskjerm
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :hoved tillegsvindu
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :alle tillegsvindu
 STR_CONFIG_SETTING_BRIBE                                        :Tillat bestikkelser av bystyret: {STRING}
@@ -1479,7 +1479,7 @@ STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Vis kjø
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Vis skipsfargetemaer
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Vis luftfartøyfargetemaer
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Velg primærfarge for valgte tema. Ctrl+Klikk vil bruke denne fargen på alt
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Velg sekundærfarge for valgte tema
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Velg sekundærfarge for valgte tema. Ctrl+Klikk kommer til å bruke denne fargen for alle temaene.
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Velg fargetemaet du ønsker å endre, eller flere fargetemaer med Ctrl+klikk. Klikk på boksen for å vise bruken av fargetemaene
 
 STR_LIVERY_DEFAULT                                              :Standardfarger
@@ -3644,6 +3644,9 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Å endr
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Kun et reservelydsett ble funnet. Hvis du vil ha lyder, installer et lydsett via spillets nedlastingssystem.
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Stort skjermbildet
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Skjermbildet kommer til å ha en oppløsning av {COMMA} x {COMMA} pixler. Å ta et skjermbildet kan ta sin tid. Vil du fortsette?
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skjermbildet ble lagret som '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Skjermbilde mislyktes!
 
