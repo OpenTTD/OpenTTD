@@ -777,6 +777,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Stawki za ładu
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Wykres Ligi Firm
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Szczegółowa tabela efektywności
+STR_GRAPH_MENU_HIGHSCORE                                        :Tabela wyników
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1484,6 +1485,22 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :z lewej strony
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :wyśrodkowany
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :z prawej strony
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksymalna wysokość początkowej pożyczki: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksymalna wysokość pożyczki jaką firma może zaciągnąć (nie uwzględnia inflacji)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Oprocentowanie: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Oprocentowanie pożyczki; kontroluje też inflację jeśli włączona
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Koszty amortyzacji: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Ustaw poziom kosztów utrzymania i amortyzacji pojazdów i infrastruktury
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Szybkość budowy: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Ogranicz ilość czynności konstrukcyjnych wykonywanych przez SI
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Awarie pojazdów: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Kontroluj jak często nieodpowiednio serwisowane pojazdy mogą się psuć
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Mnożnik dofinansowania: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Ustaw wysokość zapłaty za połączenia dofinansowywane
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Koszty konstrukcji: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Ustaw poziom kosztów konstrukcji i kupna
+STR_CONFIG_SETTING_RECESSIONS                                   :Kryzys: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Nie pozwalaj pociągom zawracać na stacjach: {STRING}
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofy: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ustaw katastrofy, które mogą okazjonalnie zablokować lub zniszczyć pojazdy albo infrastrukturę
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Nastawienie władz miasta do przekształcania terenu: {STRING}
@@ -1679,6 +1696,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :przesuń widok
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :wył.
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Prędkość przesuwania widoku: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontroluj czułość przewijania kółkiem myszki
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Pojedyncze kliknięcie (natychmiast)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulacja prawego przycisku myszy: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Wybierz metodę emulacji klikania prawym przyciskiem myszki
@@ -1750,6 +1768,10 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Włączona opcj
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Statki niedostępne dla komputera: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Włączona opcja nie pozwala na budowanie statków graczom komputerowym
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Domyślny profil ustawień: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Łatwy
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Średni
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Trudny
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Pozwól na SI w grze wieloosobowej: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Pozwól komputerowym graczom SI na udział w grach dla wielu graczy
@@ -1929,6 +1951,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Edytor s
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Gra wieloosobowa
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcje gry
+STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela wyników
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ustawienia zaawansowane
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ustawienia NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sprawdź dodatki online
@@ -1948,6 +1971,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Wybierz 
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Wybierz krajobraz 'zabawkowy'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Wyświetl opcje gry
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Wyświetl tabelę wyników
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Wyświetl ustawienia zaawansowane
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Wyświetl ustawienia NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Poszukaj nowych lub zaktualizowanych dodatków do pobrania

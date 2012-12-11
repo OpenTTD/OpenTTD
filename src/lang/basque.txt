@@ -339,7 +339,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objektua
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Eszenarioa gorde
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Eszenarioa kargatu
-STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Altuera mapa gorde
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Garaiera mapa gorde
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Garaiera-mapa kargatu
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Eszenario editoretik irten
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -710,10 +710,10 @@ STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COM
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Dena desgaitu
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Dena gaitu
-STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Altuera erakutsi
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Garaiera erakutsi
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Ez erakutsi industriarik mapan
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Erakutsi industria guztiak mapan
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Altuera mapa erakutsi/ ez erakutsi
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Garaiera mapa erakutsi/ ez erakutsi
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Ez erakutsi konpainiaren jabetzak mapan.
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Erakutsi konpaniaren propietate denak mapan
 
@@ -1268,7 +1268,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Jatorrizkoa
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Petroleo Findegitik maparen ertzera dagoen gehienezko distantzia: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Petroleo findegiak bakarrik maparen ertzatik hurbil eraiki daitezke, kostan irla mapetan
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Elurra hasten den altuera: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Elur garaiera: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Paisaiaren malkartasun maila (TerraGenesis erabiltzean soilik) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Oso Leuna
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Leuna
@@ -1278,10 +1278,10 @@ STR_CONFIG_SETTING_TREE_PLACER                                  :Zuhaitz kokatze
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ezer ez
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Jatorrizkoa
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Hobetua
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Altuera mapen rotazioa: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Garaiera maparen norabidea: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Erlojuko orratzen kontrara
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Erlojuko orratzen erara
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Eszenario-mapa lauak hartzen duten altuera maila: {STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Eszenario mapa lauak hartzen duten garaiera: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Maparen ertzean dauden laukitxoetan paisaia eraldatzea baimendu: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Desgaituta badago, maparen mugak itsasoa izango dira beti
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ipar ertzean dauden laukitxoetako bat, edo bat baino gehiago ez daude hutsik
@@ -1303,7 +1303,7 @@ STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Mapan zehar sag
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Mapan zehar mugitzerakoan, abiadura moteltzea: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrolatu nola mugituko den ikuspegia lehio nagusitik zehar, puntu jakin batera joateko mapa txikian sakatzen denean edo objektu zehatz batera joateko agintzen denean
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Eraikitze tresna ezberdinak erabiltzerakoan neurtresna erakutsi: {STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Erakutsi lauki kopuruak eta altuera ezberdintasunak eraikuntza ekintzetan sagua arrastatzerakoan
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Erakutsi lauki kopuruak eta garaiera ezberdintasunak eraikuntza ekintzetan sagua arrastatzerakoan
 STR_CONFIG_SETTING_LIVERIES                                     :Konpainien geltokiak erakutsi: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Kontrolatu ibilgailu mota zehatzen liburutegiak ibilgailuentzako (konpainia zehatzen ordez)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ezer ez
@@ -1588,7 +1588,7 @@ STR_INTRO_QUIT                                                  :{BLACK}Irten
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Joko berria hasi. Krtl+klik mapa konfigurazioa desgaitzen du
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Gordetako jokoa kargatu
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Joko berria hasi, altuera mapa erabiliz
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Joko berria hasi, garaiera mapa erabiliz
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Joko berria hasi, eszenatoki pertsonalizatuak erabiliz
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Eszenatoki pertsonalizatua eraiki
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Multijokalari joko bat hasi
@@ -2520,7 +2520,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Jokoa ka
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Eszenatokia gorde
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Eszenatokia kargatu
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Garaiera mapa kargatu
-STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Altuera mapa gorde
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Garaiera mapa gorde
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hemen klikatu gorde/kargatu direktoriora joateko
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} libre
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Driver, direktorio eta gordetako joko artxiboen zerrenda

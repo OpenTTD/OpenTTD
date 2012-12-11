@@ -3827,6 +3827,9 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Trop re
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Seuls les effets sonores de secours ont été trouvés. Si vous voulez des effets sonores, installez un pack de sons via le système de téléchargement de contenus.
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Très grande capture d'écran
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}La capture d'écran aura une résolution de {COMMA} x {COMMA} pixels. Faire cette capture peut prendre un moment . Êtes-vous sûr de vouloir continuer{NBSP}?
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Copie d'écran enregistrée avec succès sous "{STRING}"
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Échec de la copie d'écran{NBSP}!
 

@@ -3922,6 +3922,9 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Prekomj
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Pronađen je samo sigurnosni zvučni sustav. Ako želite zvukove, instalirajte set zvukova kroz sustav za preuzimanje sadržaja.
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Velika slika
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Slika će imati rezoluciju od {COMMA} x {COMMA} piksela. Slikanje može potrajati. Da li želite nastaviti?
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Slika zaslona uspješno spremljena kao '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Slika zaslona nije uspjela!
 

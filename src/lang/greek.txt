@@ -1237,9 +1237,9 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Μέγιστο 
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Μέγιστο μήκος για κτίσιμο συράγγων
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Χειροκίνητη μέθοδος κατασκευής βιομηχανιών πρώτων υλών: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Μέθοδος χρηματοδότησης πρωτογενούς βιομηχανίας. «Καμία» σημαίνει ότι δεν γίνεται να χρηματοδοτηθεί καμία βιομηχανία, «Αναζήτηση» σημαίνει ότι η χρηματοδότηση είναι εφικτή, αλλά η κατασκευή πραγματοποιείται σε τυχαίο σημείο του χάρτη και είναι πιθανό να αποτύχει, «Όπως οι άλλες βιομηχανίες» σημαίνει πως οι πρωτογενείς βιομηχανίες είναι εφικτό να κατασκευαστούν από εταιρείες όπως οι δευτερογενείς βιομηχανίες σε οποιαδήποτε θέση θέλουν
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :καμία
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :όπως οι άλλες βιομηχανίες
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :αναζήτηση
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Καμία
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Όπως οι άλλες βιομηχανίες
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Αναζήτηση
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Επίπεδη περιοχή γύρω από βιομηχανίες: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Επίπεδος χώρος γύρω από μια βιομηχανία. Αυτό εξασφαλίζει ότι θα παραμείνει διαθέσιμος κενός χώρος γύρω από μια βιομηχανία για να κτισθούν γραμμές, κλπ
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Επιτρέπονται πολλαπλές όμοιες βιομηχανίες ανά πόλη: {STRING}
@@ -1262,10 +1262,10 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Ουρά οχη
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Υποχρεώνεται το όχημα να περιμένει μπροστά από τις κατειλημμένες στάσεις μέχρι να ελευθερωθούν
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Μετακίνηση παραθύρου όταν το ποντίκι είναι στην άκρη: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Όταν είναι ενεργή, η εμφάνιση θα κυλά όταν το ποντίκι είναι κοντά στην άκρη του παραθύρου
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :απενεργοποιημένη
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :κύρια εμφάνιση, μόνο σε πλήρη οθόνη
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :κύρια εμφάνιση
-STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :κάθε εμφάνιση
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Απενεργοποιημένη
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Κύρια εμφάνιση, μόνο σε πλήρη οθόνη
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Κύρια εμφάνιση
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Κάθε εμφάνιση
 STR_CONFIG_SETTING_BRIBE                                        :Επιτρέπεται η δωροδοκία της τοπικής αρχής: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Επιτρέπεται στις εταιρείες να προσπαθήσουν να δωροδοκήσουν την τοπική αρχή. Αν η δωροδοκία γίνει αντιληπτή από τον ελεγκτή, η εταιρεία δε θα μπορεί να ενεργήσει στην πόλη για έξι μήνες
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Επιτρέπεται η αγορά αποκλειστικών δικαιωμάτων μεταφοράς: {STRING}
@@ -1283,9 +1283,9 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Ορίζετα�
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Αριθμός των αεροπορικών ατυχημάτων: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Ορίστε την πιθανότητα συντριβής ενός αεροσκάφους
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :καθόλου
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :μειωμένη
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :κανονική
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Καθόλου
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Μειωμένη
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Κανονική
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Επιτρέπονται οι στάσεις σε δρόμους που είναι ιδιοκτησία των πόλεων : {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Επιτρέπεται η κατασκευή στάσεων πάνω σε δρόμους που είναι ιδιοκτησία των πόλεων
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Επιτρέπονται οι στάσεις σε δρόμους που ανήκουν σε ανταγωνιστές: {STRING}
@@ -1305,9 +1305,9 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Ειδοποί�
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Ενεργοποίηση μηνυμάτων σχετικά με οχήματα που δεν καταφέρνουν να βρουν διαδρομή για τον προορισμό τους
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Επανεξέταση οδηγιών τρένων: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Όταν είναι ενεργοποιημένη, οι εντολές των οχημάτων ελέγχονται περιοδικά και μερικά προφανή προβλήματα αναφέρονται με ένα μήνυμα νέων όταν διαπιστώνονται
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :όχι
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ναι, αλλά εξαιρούνται τα σταματημένα οχήματα
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :για όλα τα οχήματα
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Όχι
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ναι, αλλά εξαιρούνται τα σταματημένα οχήματα
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Για όλα τα οχήματα
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ειδοποίηση όταν τα έσοδα ενός οχήματου είναι αρνητικά: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Όταν είναι ενεργοποιημένη, στέλνεται μήνυμα νέων όταν κάποιο όχημα δεν έχει αποφέρει κέρδος εντός ενός ημερολογιακού έτους
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Τα οχήματα δεν λήγουν ποτέ: {STRING}
@@ -1412,10 +1412,10 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Αυτόματ�
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Όταν είναι ενεργοποιημένο, τα νέα παιχνίδια ξεκινούν σε παύση αυτόματα, επιτρέποντας καλύτερη μελέτη του χάρτη
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Όταν το παιχνίδι είναι σε παύση επιτρέπονται: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Επιλογή των ενεργειών που μπορούν να εκτελεστούν όταν το παιχνίδι είναι σε παύση
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :καμία ενέργεια
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :όλες οι μη κατασκευαστικές ενέργειες
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :ολές εκτός από τις ενέργειες διαμόρφωσης τοπίου
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :όλες οι ενέργειες
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Καμία ενέργεια
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Όλες οι μη κατασκευαστικές ενέργειες
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Όλες εκτός από τις ενέργειες διαμόρφωσης τοπίου
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Όλες οι ενέργειες
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Χρήση της προχωρημένης λίστας οχημάτων: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ενεργοποίηση χρήσης των προχωρημένων καταλόγων οχημάτων για την ομαδοποίηση των οχημάτων
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Χρήση δεικτών φόρτωσης: {STRING}
@@ -1469,7 +1469,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Επιλέξτ�
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Προκαθορισμένο διάστημα μεταξύ επισκευών για τα τραίνα: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Ορίστε το προκαθορισμένο διάστημα μεταξύ συντηρήσεων για τα νέα οχήματα τραίνων, όταν δεν δίνεται άλλο διάστημα για το όχημα
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} ημέρ{P 0 α ες}/%
-STR_CONFIG_SETTING_SERVINT_DISABLED                             :απενεργοποιημένο
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Απενεργοποιημένο
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Προκαθορισμένο διάστημα μεταξύ συντηρήσεων για οδικά οχήματα: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Ορίστε το προκαθορισμένο διάστημα μεταξύ συντηρήσεων για τα νέα οδικά οχήματα, όταν δεν δίνεται άλλο διάστημα για το όχημα
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Προκαθορισμένο διάστημα επισκευών αεροσκαφών: {STRING}

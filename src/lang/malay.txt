@@ -21,14 +21,14 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
-STR_UNDEFINED                                                   :(garis tidak ditentukan)
+STR_UNDEFINED                                                   :(baris tidak ditentukan)
 STR_JUST_NOTHING                                                :Tiada apa
 
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Penumpang
-STR_CARGO_PLURAL_COAL                                           :Arang Batu
+STR_CARGO_PLURAL_COAL                                           :Arang batu
 STR_CARGO_PLURAL_MAIL                                           :Surat
 STR_CARGO_PLURAL_OIL                                            :Minyak
 STR_CARGO_PLURAL_LIVESTOCK                                      :Ternakan
@@ -68,7 +68,7 @@ STR_CARGO_SINGULAR_OIL                                          :Minyak
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Ternakan
 STR_CARGO_SINGULAR_GOODS                                        :Barangan
 STR_CARGO_SINGULAR_GRAIN                                        :Bijirin
-STR_CARGO_SINGULAR_WOOD                                         :Kayu Balak
+STR_CARGO_SINGULAR_WOOD                                         :Kayu
 STR_CARGO_SINGULAR_IRON_ORE                                     :Bijih Besi
 STR_CARGO_SINGULAR_STEEL                                        :Keluli
 STR_CARGO_SINGULAR_VALUABLES                                    :Barang Berharga
@@ -84,11 +84,11 @@ STR_CARGO_SINGULAR_WHEAT                                        :Gandum
 STR_CARGO_SINGULAR_RUBBER                                       :Getah
 STR_CARGO_SINGULAR_SUGAR                                        :Gula
 STR_CARGO_SINGULAR_TOY                                          :Mainan
-STR_CARGO_SINGULAR_CANDY                                        :Gula-gula
+STR_CARGO_SINGULAR_CANDY                                        :Manisan
 STR_CARGO_SINGULAR_COLA                                         :Minuman Kola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Gula-gula Kapas
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Gula kapas
 STR_CARGO_SINGULAR_BUBBLE                                       :Buih
-STR_CARGO_SINGULAR_TOFFEE                                       :Toffee
+STR_CARGO_SINGULAR_TOFFEE                                       :Tofi
 STR_CARGO_SINGULAR_BATTERY                                      :Bateri
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastik
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Minuman Bergas
@@ -100,7 +100,7 @@ STR_QUANTITY_COAL                                               :{WEIGHT_LONG} a
 STR_QUANTITY_MAIL                                               :{COMMA} beg surat
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} minyak
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} ekor ternakan
-STR_QUANTITY_GOODS                                              :{COMMA} kotak mengandungi barangan
+STR_QUANTITY_GOODS                                              :{COMMA} kotak barangan
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} bijirin
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} kayu
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} bijih besi
@@ -738,7 +738,7 @@ STR_NEWS_MESSAGES_FULL                                          :Penuh
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Jenis Pesanan:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Ketibaan kenderaan di stesen pemain
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Ketibaan kenderaan di stesen pesaing
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Kemalangan / malapetaka
+STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Kemalangan / bencana
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Maklumat syarikat
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Pembukaan industri
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Penutupan industri
@@ -1078,6 +1078,16 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kiri
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Tengah
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Kanan
 
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Tetapkan jumlah bayaran untuk sambungan bersubsidi
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Kos pembinaan: {STRING}
+STR_CONFIG_SETTING_RECESSIONS                                   :Kemelesetan: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jika diupayakan, kemelesetan mungkin berlaku setiap tahun. Semasa kemelesetan, pengeluaran adalah lebih rendah (ia kembali ke tahap sebelumnya apabila kemelesetan berakhir)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Kereta api dilarang berpatah balik di stesen: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Jika diupayakan kereta api tidak kembali di stesen bukan perhentian, ia berpatah balik ke destinasi berikutnya jika ada jalan pintas
+STR_CONFIG_SETTING_DISASTERS                                    :Bencana: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Jika kereta api diupayakan tidak kembali ke stesen bukan perhentian, ia diterbalikkan ke destinasi berikutnya jika ada jalan pintas
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Sikap majlis bandaraya terhadap penyusunan semula kawasan: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Pilih tahap kebisingan dan kerosakan persekitaran
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Benarkan pembinaan di tepi pantai dan cerun bukit: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Benarkan pengubahsuaian tanah di bawah bangunan, landasan, dan sebagainya (autocerun): {STRING}
@@ -1258,13 +1268,13 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Bandar-bandar d
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Benarkan kadar kebisingan yang dikawal oleh bandar untuk lapangan terbang: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Pembinaan bandar dalam permainan: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :tidak dibenarkan
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :dibenarkan
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :dibenarkan, susunan bandar sendiri
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Dibenarkan
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Dibenarkan, susunan bandar sendiri
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Peletakan pokok-pokok dalam permainan: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :tiada {RED}(kilang kayu balak tidak akan berfungsi)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :hanya di hutan hujan
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :merata tempat
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Tiada {RED}(kilang kayu tidak berfungsi)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Hanya di hutan hujan
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Setiap tempat
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Kedudukan palang alat utama: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Kedudukan palang status: {STRING}
@@ -3569,6 +3579,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Menukar
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Hanya satu set bunyi "fallback" ditemui. Jika anda mahu bunyi, pasang satu set bunyi melalui sistem memuat turun kandungan
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Bidikan skrin terlalu besar
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Pembidik skrin akan mempunyai resolusi {COMMA} x {COMMA} pixel. Mengambil pembidik skrin mungkin mengambil masa. Anda ingin teruskan?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Tangkapan skrin berjaya disimpan sebagai '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Tangkapan skrin gagal!
