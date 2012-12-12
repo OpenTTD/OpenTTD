@@ -1091,7 +1091,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :이 게임 내�
 
 STR_CONFIG_SETTING_OFF                                          :아니오
 STR_CONFIG_SETTING_ON                                           :예
-STR_CONFIG_SETTING_DISABLED                                     :사용불가
+STR_CONFIG_SETTING_DISABLED                                     :사용 안 함
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :끄기
 STR_CONFIG_SETTING_COMPANIES_OWN                                :내 회사만
@@ -1105,6 +1105,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :왼쪽
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :가운데
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :오른쪽
 
+STR_CONFIG_SETTING_CITY_APPROVAL                                :지역 개발에 대한 도시 의회의 태도: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :회사가 유발하는 소음과 환경 파괴가 회사에 대한 도시의 평가치와 향후 해당 지역에서의 건설 행동에 얼마나 영향을 미칠지 선택하십시오.
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :경사/해안가 위의 건설을 허용: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :이 옵션을 켜면 도로, 철도, 역 등을 대부분의 경사에 설치할 수 있게 됩니다. 이 옵션을 끄면 오직 트랙의 방향과 일치하는 경사에만 설치가 가능하기 때문에 기반 지형을 만들 필요가 없습니다.
@@ -1146,9 +1148,9 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :터널의 최�
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :터널의 최대 길이를 제한할 수 있습니다.
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :1차 산업 시설 건설 방법: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :1차 산업 시설에 대한 투자 방법을 선택합니다. '없음'은 투자가 불가능함을 뜻하고, '건설 가능 (무작위 위치)'은 투자는 가능하지만 지도 상 임의의 장소에 산업시설이 들어서거나 투자에 실패할 수 있음을 의미하고, '건설 가능 (위치 선택 가능)'은 생산 산업 시설처럼 회사가 원하는 위치에 7배 비용을 주고 설치가 가능함을 의미합니다.
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :없음 (건설 불가)
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :건설 불가
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :건설 가능 (위치 선택 가능, 7배 비용)
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :건설 가능 (무작위 위치)
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :투자 (무작위 위치에 건설)
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :산업 시설 주위의 평지: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :산업 시설 주위에 필요한 평지의 넓이를 설정합니다. 이 옵션을 설정한 만큼 철로나 도로, 기타 시설을 설치할 수 있도록 산업시설 주위에 반드시 빈 평지를 제공합니다.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :한 도시에 비슷한 산업시설을 여러 개 건설할 수 있게 허용: {STRING}
@@ -1214,9 +1216,9 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :차량이 길�
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :다음 목적지로 가기 위한 경로를 찾을 수 없는 차량이 있으면 뉴스 메시지로 알려줍니다.
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :차량의 경로를 검사: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :이 옵션을 켜면 차량의 경로를 주기적으로 검사하여 문제가 발견되면 뉴스 메시지로 알려줍니다.
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :아니요
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :예 (정지된 차량 제외)
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :예 (모든 차량)
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :검사하지 않음
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :정지한 차량을 제외하고 검사
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :모든 차량을 검사
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :차량의 수입이 적자일때 경고하기: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :이 옵션을 켜면 지난 해에 수익이 없는 차량이 있으면 뉴스 메시지로 알려줍니다.
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :옛날 차량을 사라지지 않고 계속 만들 수 있게 함: {STRING}
@@ -1321,8 +1323,8 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :새 게임을 �
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :이 옵션을 켜면, 새로은 게임을 시작할 때 지도를 더욱 살펴볼 수 있도록 게임을 자동으로 일시정시시킵니다.
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :일시정지시 가능한 행동: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :게임이 일시정지 되어있는 동안에 할 수 있는 행동을 선택합니다.
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :아무 것도 못함
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :모든 비건설적 행동
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :아무 것도 못 함
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :모든 비건설적인 행동
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :지형 편집을 제외한 모든 행동
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :모든 행동
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :고급화된 차량 목록 사용: {STRING}
@@ -1438,13 +1440,13 @@ STR_CONFIG_SETTING_TOWN_FOUNDING                                :게임 도중�
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :플레이어가 게임 중에 새로운 도시를 설립하는 것을 허용합니다.
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :금지
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :허용
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :허용, 도시 레이아웃 선택가능.
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :허용, 도시 구조 선택 가능
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :게임도중 나무가 자동적으로 번식: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :게임 중에 나무가 자동적으로 번식하는지 여부를 조절합니다. 이 옵션은 열대 우림의 벌목소처럼 나무의 성장에 의존하는 산업 시설에 영향을 끼칠 수 있습니다.
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :불가능 {RED}(제재소에 의해 벌목)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :열대 우림 지역에서만 가능
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :모든 지역에서 가능
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :자라지 않음 {RED}(제재소에 의해 벌목될 수 있음)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :열대 우림 지역에서만
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :어디서나
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :주메뉴의 위치: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :주 메뉴가 화면 상단의 어느 위치에 표시될지를 선택합니다.
@@ -3791,6 +3793,9 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}원본 
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}게임에 대체 사운드만 존재합니다. 다른 사운드를 원하신다면, 컨텐츠 다운로드 시스템에서 사운드 세트를 받아서 설치하세요.
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}대형 스크린 샷
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}스크린 샷의 이미지 크기는 {COMMA} x {COMMA} 픽셀이 될 것입니다. 스크린 샷을 찍는 데에는 시간이 다소 걸릴 수 있습니다. 계속하시겠습니까?
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}스크린 샷이 '{STRING}' 로 저장되었습니다.
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}스크린 샷을 찍지 못했습니다!
 
