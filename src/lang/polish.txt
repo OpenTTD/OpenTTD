@@ -1696,6 +1696,9 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :przesuń widok
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :wył.
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Prędkość przesuwania widoku: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontroluj czułość przewijania kółkiem myszki
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Klawiatura ekranowa: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Wyłączone
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Podwójny klik
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Pojedyncze kliknięcie (natychmiast)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulacja prawego przycisku myszy: {STRING}

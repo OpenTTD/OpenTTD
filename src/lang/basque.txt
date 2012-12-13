@@ -3985,7 +3985,7 @@ STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ezin da 
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... tren gordailuaren barruan geldiarazi behar da
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... gordailu barnean gelditua egon behar du
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... ontzitegiaren barruan geldiarazi behar da
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... itsasontzi gordailuaren barruan geldiarazi behar da
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... hangar barruan geldiarazi behar da
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trenak bakarrik aldatu daitezke gordailu barnean geldituak daudenean
@@ -4573,8 +4573,8 @@ STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Tren gor
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Tren gordailua #{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Errepide ibilgailu gordailua(n)
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Errepide ibilgailu gordailua #{COMMA}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Ontzitegia
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Ontzitegia #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Itsasontzi gordailua
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Itsasontzi gordailua #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangarra
 
 STR_UNKNOWN_STATION                                             :Geltoki ezezaguna
