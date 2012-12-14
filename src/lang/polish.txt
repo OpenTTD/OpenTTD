@@ -1500,7 +1500,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Ustaw wysokoś�
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Koszty konstrukcji: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Ustaw poziom kosztów konstrukcji i kupna
 STR_CONFIG_SETTING_RECESSIONS                                   :Kryzys: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jeśli włączone, kryzys może wystąpić co kilka lat. Podczas kryzysu produkcja jest znacznie niższa (powraca do poprzedniego poziomu, kiedy kryzys się kończy)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Nie pozwalaj pociągom zawracać na stacjach: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Jeśli włączone, pociągi nie będą zawracać na stacjach dwu-wjazdowych, nawet jeśli droga do następnego celu jest krótsza po zawróceniu
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofy: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ustaw katastrofy, które mogą okazjonalnie zablokować lub zniszczyć pojazdy albo infrastrukturę
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Nastawienie władz miasta do przekształcania terenu: {STRING}
@@ -1697,8 +1699,10 @@ STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :wył.
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Prędkość przesuwania widoku: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontroluj czułość przewijania kółkiem myszki
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Klawiatura ekranowa: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Wybierz metodę włączania klawiatury ekranowej do wprowadzania tekstu do pól tekstowych używając tylko urządzenia wskazującego. Jest to dedykowane dla małych urządzeń bez klawiatury
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Wyłączone
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Podwójny klik
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Pojedyncze kliknięcie (w przybliżeniu)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Pojedyncze kliknięcie (natychmiast)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulacja prawego przycisku myszy: {STRING}
@@ -1772,6 +1776,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Statki niedost�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Włączona opcja nie pozwala na budowanie statków graczom komputerowym
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Domyślny profil ustawień: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Wybierz, którego profilu ustawień używać dla losowych SI lub dla wartości początkowych przy dodawaniu nowych SI lub Game Script
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Łatwy
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Średni
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Trudny

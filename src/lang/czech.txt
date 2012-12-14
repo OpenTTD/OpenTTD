@@ -1186,6 +1186,10 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vlevo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :uprostřed
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
 
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Cena provozu: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Rychlost výstavby: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Cena výstavby: {STRING}
+STR_CONFIG_SETTING_DISASTERS                                    :Katastrofy: {STRING}
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Povolit výstavbu na svazích kopců a na pobřežích: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Pokud je zapnuto, tratě a stanice mohou být postaveny na většině svahů. Pokud ne, mohou být postaveny pouze na svazích stejného směru tak, že nevyžadují žádné základy.
@@ -1377,6 +1381,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :pohyb po mapě
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :nic
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Rychlost skrolovacího kolečka: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Určuje citlivost kolečka myši při posouvání
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Klávesnice na obrazovce: {STRING}
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulace pravého tlačítka: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Vybrat metodu emulování stisknutí pravého tlačítka myši
@@ -3884,6 +3889,9 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Tak vel
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Byl nalezen pouze nouzový zvukový soubor. Pokud chcete zvuky, nainstalujte prosim zvukové soubory skrze systém stahování obsahu
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Velký screenshot
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Snímek obrazovky bude mít rozlišení {COMMA} x {COMMA} pixelů. Toto může nějakou chvíli trvat. Chcete pokračovat?
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot úspěšně uložen jako '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screenshot neuložen!
 
