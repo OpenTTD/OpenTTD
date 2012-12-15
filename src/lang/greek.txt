@@ -464,6 +464,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Λεπτομε�
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Κατάλογος Βιομηχανιών
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Αλυσίδες βιομηχανιών
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Χρηματοδότηση νέας βιομηχανίας
 ############ range ends here
 
@@ -1196,6 +1197,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Αριστερ�
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Κέντρο
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Δεξιά
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Μέγιστο αρχικό δάνειο: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE                                :Επιτόκιο: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Λειτουργικά έξοδα: {STRING}
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Επιτρέπεται το χτίσιμο σε πλαγιές και ακτές: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Όταν είναι ενεργοποιημένο, οι σιδηροτροχιές και σταθμοί μπορούν να κτισθούν στις περισσότερες κλίσεις. Όταν είναι απενεργοποιημένο, επιτρέπονται μόνο όπου αντιστοιχούν στην κατεύθυνση της σιδηροτροχιάς και γι' αυτό δεν χρειάζονται θεμέλια

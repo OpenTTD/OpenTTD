@@ -2717,6 +2717,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Conté múltiples entrades d'acció 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :S'ha llegit després del final d'un pseudo-sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Al joc de gràfics base establert actualment li falten un nombre d'sprites.{}Si us plau actualitza el joc de gràfics base
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Als gràfics base actualment utilitzats els hi falta un nombre d'sprites.{}Si us plau actualitza el conjunt de gràfics base.{}Com que estàs jugant amb una {YELLOW}versió de desenvolupament d'OpenTTD{WHITE}, pot ser que necessitis una {YELLOW}versió de desenvolupament dels gràfics base{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Els recursos GRF demanats no estan disponibles (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ha estat desactivat per {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Format de disposició d'sprite invàlid/desconegut (sprite {3:NUM})
