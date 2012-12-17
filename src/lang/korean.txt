@@ -235,7 +235,7 @@ STR_TOOLTIP_SHADE                                               :{BLACK}윈도�
 STR_TOOLTIP_DEBUG                                               :{BLACK}NewGRF 디버그 정보를 보여주기
 STR_TOOLTIP_STICKY                                              :{BLACK}이 창을 '모든 창 닫기' 키로 닫을 수 없게 고정합니다
 STR_TOOLTIP_RESIZE                                              :{BLACK}이 창의 크기를 조절하려면 여기를 클릭하고 드래그하세요
-STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}대형/소형 창 크기 토글
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}대형/소형 창 크기 전환
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}스크롤바 - 목록을 상/하로 스크롤하세요
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}스크롤바 - 목록을 좌/우로 스크롤하세요
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}직사각형 모양의 영역에 있는 건물과 땅 등을 부숩니다. CTRL을 누른 채로 사용하면 대각선 영역 선택이 가능합니다. SHIFT를 누른채로 사용하면 예상 가격을 볼 수 있습니다.
@@ -296,7 +296,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}게임�
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}게임 시간을 빠르게 가도록 합니다.
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}옵션
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}게임을 저장하거나, 그만두거나, 게임을 종료합니다
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}지도, 외부화면, 팻말 목록 보여주기
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}지도, 외부 화면, 팻말 목록을 보여줍니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}도시 메뉴를 표시합니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}보조금 메뉴를 표시합니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}각 회사의 정거장 목록을 표시합니다.
@@ -316,7 +316,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}도로 �
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}항만 시설을 건설합니다.
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}항공 시설을 건설합니다.
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}땅 올리기/내리기, 나무 심기 등의 일를 하기 위한 지형편집창을 엽니다.
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}사운드/음악 창을 엽니다.
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}효과음/배경 음악 창을 엽니다.
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}최근 메시지/뉴스 기록이나 메시지 설정을 엽니다.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}지역 정보, 콘솔, 스크립트 디버그, 스크린샷, OpenTTD에 대한 정보를 보여줍니다.
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}툴바 변경
@@ -340,8 +340,8 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}오브�
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :시나리오 저장
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :시나리오 불러오기
-STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Heightmap 저장
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Heightmap 불러오기
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :높이맵 저장
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :높이맵 불러오기
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :시나리오 에디터 종료
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :게임 종료
@@ -399,6 +399,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :화물 운송�
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :회사 성취도 순위
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :상세 성취도
+STR_GRAPH_MENU_HIGHSCORE                                        :고득점 순위표
 ############ range ends here
 
 ############ range for industry menu starts
@@ -434,7 +435,7 @@ STR_LANDSCAPING_MENU_PLACE_SIGN                                 :팻말 달기
 ############ range ends here
 
 ############ range for music menu starts
-STR_TOOLBAR_SOUND_MUSIC                                         :사운드/음악
+STR_TOOLBAR_SOUND_MUSIC                                         :효과음/배경 음악
 ############ range ends here
 
 ############ range for message menu starts
@@ -616,9 +617,9 @@ STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLA
 STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}프로그램
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}이전 트랙으로 건너뛰기
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}다음 트랙으로 건너뛰기
-STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}음악 중지
-STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}음악 재생
-STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}음악과 사운드 효과 음량을 조절하려면 슬라이더를 드래그하세요
+STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}배경 음악 중지
+STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}배경 음악 재생
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}배경 음악과 효과음의 음량을 조절하려면 슬라이더를 움직이세요.
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}'모든 트랙' 프로그램을 선택합니다
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}'고전 스타일 음악' 프로그램을 선택합니다
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}'뉴 스타일 음악' 프로그램을 선택합니다
@@ -626,19 +627,19 @@ STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Str
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}'사용자 1' (유저 정의) 음악 프로그램을 선택합니다
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'사용자 2' (유저 정의) 음악 프로그램을 선택합니다
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}무작위 재생 켜기/끄기
-STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}음악 트랙 선택창 보이기
+STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}배경 음악 트랙 선택창 보이기
 
-STR_ERROR_NO_SONGS                                              :{WHITE}음악 세트에 노래가 없습니다. 노래가 연주되지 않을 것입니다.
+STR_ERROR_NO_SONGS                                              :{WHITE}배경 음악 목록에 노래가 없어 배경 음악이 재생 되지 않습니다.
 
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}음악 프로그램 선택
+STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}배경 음악 프로그램 선택
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}트랙 인덱스
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}프로그램 - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}초기화
-STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}현재 음악 프로그램을 초기화합니다 (사용자1, 사용자2에서만 선택 가능합니다)
-STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}음악 목록에 트랙을 추가하려면 클릭하세요 (사용자1, 사용자2만 사용 가능합니다)
-STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}음악 목록에서 트랙을 제거하려면 클릭하세요 (사용자1, 사용자2만 사용 가능)
+STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}현재 배경 음악 프로그램을 초기화합니다 (사용자1, 사용자2에서만 선택 가능합니다)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}배경 음악 목록에 음악을 추가하려면 클릭하세요 (사용자1, 사용자2만 사용 가능합니다)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}배경 음악 목록에서 음악을 제거하려면 클릭하세요 (사용자1, 사용자2만 사용 가능)
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}{NUM}에 달성한 최고의 회사
@@ -710,10 +711,10 @@ STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COM
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}모두 사용 안함
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}모두 사용
-STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}고도 보여주기
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}높이 표시
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}지도상에 모든 사업 보여주기 않기
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}지도상에 모든 산업 보여주기
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}고도 표시 토글
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}지형의 높낮이를 표시합니다.
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}그 어떤 회사 속성도 지도에서 표시하지 않음
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}모든 회사의 속성을 지도에서 표시하지 않음
 
@@ -733,7 +734,7 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}메시지
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}메시지 설정
 STR_NEWS_MESSAGES_ALL                                           :{YELLOW}모든 타입의 메시지를 일괄변경: 끄기 / 요약 / 전체
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}요약된 메시지와 함께 소리를 들려줍니다
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}메시지를 하단 상태표시줄에 요약하여 효과음과 함께 알려줍니다
 STR_NEWS_MESSAGES_OFF                                           :끄기
 STR_NEWS_MESSAGES_SUMMARY                                       :요약
 STR_NEWS_MESSAGES_FULL                                          :전체
@@ -970,16 +971,16 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}사용�
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}기본 그래픽 세트
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}사용할 기본 그래픽을 선택하세요
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM}개 파일 손실
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}기본 그래픽 세트에 대한 추가 정보
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}기본 그래픽 세트에 대한 추가 정보를 봅니다.
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}기본 사운드 세트
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}사용할 기본 사운드 세트를 선택하시오
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}기본 사운드 세트에 대한 추가 정보
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}기본 효과음 세트
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}게임에 사용할 기본 효과음 세트를 선택하십시오.
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}기본 효과음 세트에 대한 추가 정보를 봅니다.
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}기본 음악 세트
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}사용할 기본 음악 세트를 선택하세요
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}기본 배경 음악 세트
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}사용할 기본 배경 음악 세트를 선택하세요
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM}개의 파일이 손상되었습니다.
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}기본 음악 세트에 대한 추가 정보
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}기본 배경 음악 세트에 대한 추가 정보를 봅니다.
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}풀스크린 모드 실패
 
@@ -1105,6 +1106,26 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :왼쪽
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :가운데
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :오른쪽
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :최대 초기 대출금: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :한 회사가 최대한 빌릴 수 있는 (계좌에 인플레이션을 고려하지 않고 들어오는) 대출금의 양을 조절할 수 있습니다.
+STR_CONFIG_SETTING_INTEREST_RATE                                :대출 금리: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :대출 금리입니다. 인플레이션 옵션에 영향을 받습니다.
+STR_CONFIG_SETTING_RUNNING_COSTS                                :운행 비용: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :차량의 운행 비용과 기반시설 유지비의 수준을 설정하십시오.
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :건설 속도: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :AI의 건설 행동량을 제한하여 건설 속도를 조절할 수 있습니다.
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :차량 고장 빈도수: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :점검을 제대로 받지 않은 차량이 얼마나 자주 고장나도록 할 지를 조절하십시오.
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :보조금 배수: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :보조금을 얼마나 지급할 지 설정하십시오.
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :건설 가격: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :건설 및 구매 가격의 수준을 설정하십시오.
+STR_CONFIG_SETTING_RECESSIONS                                   :경제 불황: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :이 옵션을 켜면 몇 년마다 경제 불황이 발생할 수 있습니다. 불황 기간 동안에는 모든 화물의 생산량이 확연히 줄어듭니다. (불황이 끝나면 이전 수준으로 회복)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :열차가 역 내에서 회차하는 것을 금지: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :이 옵션을 켜면 회차했을 때 다음 목적지까지 가는 더 짧은 경로가 있어도 열차가 비두단식 역에서 회차할 수 없게 됩니다.
+STR_CONFIG_SETTING_DISASTERS                                    :재앙: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :블록이나 차량, 기반시설을 가끔씩 파괴하는 재앙을 켜거나 끕니다.
 STR_CONFIG_SETTING_CITY_APPROVAL                                :지역 개발에 대한 도시 의회의 태도: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :회사가 유발하는 소음과 환경 파괴가 회사에 대한 도시의 평가치와 향후 해당 지역에서의 건설 행동에 얼마나 영향을 미칠지 선택하십시오.
 
@@ -1258,7 +1279,7 @@ STR_CONFIG_SETTING_TREE_PLACER                                  :나무 배치 �
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :없음
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :오리지널
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :향상됨
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Heightmap 회전: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :높이맵 회전: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :반시계방향
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :시계방향
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :평지 시나리오의 평지 높이: {STRING}
@@ -1298,6 +1319,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :지도 스크�
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :끄기
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :지도 스크롤 속도: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :마우스 휠 스크롤의 민감도를 설정합니다.
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :화상 키보드: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :마우스와 같은 장치만을 이용하여 입력 칸에 글자를 입력하기 위해 화상 키보드를 어떤 방식으로 띄울지 선택하십시오. 이 옵션은 스마트폰 등 실제 키보드가 없는 소형 기기를 사용하는 분을 위한 기능입니다.
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :사용 안 함
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :더블 클릭
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :한 번 클릭 (커서가 활성화되어 있을 때)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :한 번 클릭 (즉시)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :오른쪽 클릭 매크로: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :오른쪽 마우스 버튼 클릭을 대신할 방법을 선택합니다.
@@ -1369,6 +1396,11 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :이 옵션을 �
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :컴퓨터의 선박 사용을 허가하지 않음: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :이 옵션을 켜면 컴퓨터 플레이어가 선박을 사용할 수 없게 됩니다.
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :기본 설정 난이도: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :무작위 인공지능이 사용할 난이도 설정이나 AI나 게임 스크립트를 추가할 때의 난이도 초기값을 고르십시오.
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :쉬움
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :중간
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :어려움
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :멀티플레이에서 컴퓨터 플레이어의 참여를 허용: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :멀티 플레이 게임에서 인공지능 컴퓨터 플레이어가 참여하는 것을 허용합니다.
@@ -1543,11 +1575,12 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 STR_INTRO_NEW_GAME                                              :{BLACK}새 게임
 STR_INTRO_LOAD_GAME                                             :{BLACK}불러오기
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}시나리오 플레이
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Heightmap 플레이
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}높이맵 플레이
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}시나리오 에디터
 STR_INTRO_MULTIPLAYER                                           :{BLACK}멀티 플레이
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}게임 설정
+STR_INTRO_HIGHSCORE                                             :{BLACK}고득점 순위표
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}고급 설정
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 설정
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라인 콘텐츠 다운로드
@@ -1555,8 +1588,8 @@ STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / 게
 STR_INTRO_QUIT                                                  :{BLACK}종료
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}새 게임을 시작합니다.{}Ctrl+클릭하시면 지도 설정을 건너뛰고 바로 시작합니다.
-STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}저장한 게임을 불러옵니다
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Heightmap을 지형으로 사용하여 게임을 시작합니다.
+STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}저장한 게임을 불러옵니다.
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}높이맵을 지형으로 사용하여, 새로운 게임을 시작합니다.
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}사용자 시나리오로 새 게임을 시작합니다
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}사용자 게임/시나리오를 만듭니다
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}멀티 플레이 게임을 시작합니다
@@ -1566,9 +1599,10 @@ STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}냉대 �
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}아열대 기후 선택
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}장난감나라 선택
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}게임 설정 창을 보여줍니다
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}고급 설정 표시
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF 세팅을 봅니다
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}게임 설정 창을 보여줍니다.
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}고득점 순위표를 보여줍니다.
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}고급 설정 창을 엽니다.
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF 설정 창을 엽니다.
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다.
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}AI와 게임 스크립트 설정 표시
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD'를 종료합니다
@@ -2043,9 +2077,9 @@ STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :인공지능
 STR_CONTENT_TYPE_AI_LIBRARY                                     :인공지능 라이브러리
 STR_CONTENT_TYPE_SCENARIO                                       :시나리오
-STR_CONTENT_TYPE_HEIGHTMAP                                      :Heightmap
-STR_CONTENT_TYPE_BASE_SOUNDS                                    :기본 사운드
-STR_CONTENT_TYPE_BASE_MUSIC                                     :기본 음악
+STR_CONTENT_TYPE_HEIGHTMAP                                      :높이맵
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :기본 효과음
+STR_CONTENT_TYPE_BASE_MUSIC                                     :기본 배경 음악
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :게임 스크립트
 STR_CONTENT_TYPE_GS_LIBRARY                                     :GS 라이브러리
 
@@ -2486,8 +2520,8 @@ STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}게임 �
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}게임 불러오기
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}시나리오 저장하기
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}시나리오 불러오기
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Heightmap 불러오기
-STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Heightmap 저장
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}높이맵 불러오기
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}높이맵 저장
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}기본 저장/불러오기 폴더로 이동하려면 여기를 클릭하세요
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} 남음
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}드라이프, 폴더, 저장된 게임 파일의 목록입니다
@@ -2497,7 +2531,7 @@ STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}현재 �
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}저장
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}선택한 이름으로 현재 게임을 저장합니다
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}불러오기
-STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}선택한 게임을 불러옵니다
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}선택한 게임을 불러옵니다.
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}게임 상세 정보
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}사용 가능한 정보 없음.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2540,8 +2574,8 @@ STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}임의
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}임의
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}사용자 정의
 
-STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Heightmap 방향:
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Heightmap 이름:
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}높이맵 방향:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}높이맵 이름:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}크기:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
@@ -2586,20 +2620,20 @@ STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}프리�
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}검색할 문자열:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}선택한 프리셋을 불러옵니다
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}프리셋 저장
-STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}현재 목록을 프리셋으로 저장
+STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}현재 목록을 프리셋으로 저장합니다.
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}프리셋 이름 입력
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}프리셋 제거
-STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}현재 선택한 프리셋 제거
+STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}현재 선택한 프리셋을 삭제합니다.
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}추가
-STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}설정에 선택한 NewGRF 추가
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}선택한 NewGRF 파일을 내 설정에 추가합니다.
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}파일 재검색
-STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}사용 가능한 NewGRF 파일 목록을 업데이트합니다
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}사용 가능한 NewGRF 파일을 다시 검색합니다.
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}제거
-STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}선택한 NewGRF 파일을 목록에서 제거
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}선택한 NewGRF 파일을 목록에서 제거합니다.
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}위로
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}선택한 NewGRF 파일을 위로 올림
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}선택한 NewGRF 파일의 순서를 위로 올립니다.
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}아래로
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}선택한 NewGRF 파일을 아래로 내림
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}선택한 NewGRF 파일의 순서를 아래로 내립니다.
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}설치된 NewGRF의 목록입니다.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}파라미터 설정
@@ -2683,6 +2717,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :여러 개의 액션 8 엔트리 포함 (스프라이트 {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :모조-스프라이트의 지나간 끝을 읽음 (스프라이트 {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}최근에 이용한 기본 그래픽 세트에 객체가 많이 손실되었습니다.{}기본 그래픽 세트를 업데이트 하십시오.
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}현재 사용중인 기본 그래픽에 그래픽이 다수 존재하지 않습니다.{}기본 그래픽 세트를 업데이트해 주십시오.{}현재 당신이 {YELLOW}OpenTTD의 개발 버전{WHITE}을 사용하고 있기 때문에, {YELLOW}기본 그래픽의 개발 버전{WHITE}이 필요할 수 있습니다.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :요청한 GRF 자원을 사용할 수 없음 (스프라이트 {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING}(은)는 {STRING} 때문에 사용할 수 없습니다
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :유효하지 않은/알 수 없는 스프라이트 구조 유형 (스프라이트 {3:NUM})
@@ -3790,7 +3825,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}지도 �
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}원본 지도의 크기를 너무 많이 조절하는 것은 좋지 않습니다. 그래도 계속하시겠습니까?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}게임에 대체 사운드만 존재합니다. 다른 사운드를 원하신다면, 컨텐츠 다운로드 시스템에서 사운드 세트를 받아서 설치하세요.
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}게임에 대체 효과음 이외의 효과음이 없습니다. 효과음을 듣고 싶으시면, 온라인 컨텐츠 다운로드 시스템에서 효과음 세트를 받아서 설치하세요.
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}대형 스크린 샷
