@@ -1172,7 +1172,10 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Tiada
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Seperti industri lain
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Mencarigali
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Kawasan rata di seratah industri: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Jumlah ruang rata di kawasan industri. Ini memastikan ruang kosong akan kekal tersedia di kawasan bangunan industri dan sebagainya
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Benarkan pelbagai industri sejenis di setiap bandar: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Biasanya sebuah bandar tidak mahu lebih daripada beberapa industri. Dengan tetapan ini membolehakn beberapa industri di bandar yang sama
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Pamer isyarat: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Tunjukkan tetingkap kewangan setiap penghujung tahun: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Arahan baru ialah 'tanpa henti' secara lazim: {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :Arahan keretapi baru berhenti secara lazim di pletfom {STRING}
