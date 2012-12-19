@@ -1340,9 +1340,9 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Didžiausias tu
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Didžiausias galimas tunelio ilgis
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Pirminių pramonės įmonių statybos būdas: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Pirminių, t.y. tiekiančių žaliavas, pramonės įmonių statybos būdas. „Negalimas“ reiškia, jog pirminės pramonės įmonės įkurti neleidžiama. „Resursų žvalgyba“ reiškia, kad įkūrimas yra įmanomas, bet pati įmonė bus pastatyta atsitiktinėje žemėlapio vietoje. Be to, yra galimybė, kad žvalgyba nenusiseks ir įmonės bus nepastatyta iš viso. „Kaip kitų gamyklų“ reiškia, kad žaliavas tiekianti įmonė gali būti pastatyta bet kurioje pageidautinoje vietoje
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :negalimas
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kaip ir kitų gamyklų
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :resursų žvalgyba
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Negalimas
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Kaip ir kitų gamyklų
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Resursų žvalgyba
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Lygi vieta aplink gamyklas: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Privalomo lygaus paviršiaus, supančio gamyklą, kiekis. Taip užtikrinama, kad, pastačius gamykla, dar liks vietos stotelėms, keliams, bėgiams ir kitai infrastruktūrai
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Leisti kelias panašias pramonės įmones viename mieste: {STRING}
@@ -1365,10 +1365,10 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Automobilių vi
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Jei kelyje pasitaikys kliūtis (ar tiesiog krovos aikštelė bus užimta), automobiliai nebandys grūstis, o stos į tvarkingą eilę
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Slinkti vaizdą pelei esant prie krašto: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Pelės žymikliui priartėjus prie pagrindinio ar papildomo peržiūros langų krašto, vaizdas jame gali būti slenkamas.
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :neslinkti
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :pagrindiniame lange, jei jis užima visą ekraną
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :pagrindiniame lange
-STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :visuose peržiūros languose
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Neslinkti
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Pagrindiniame lange, jei jis užima visą ekraną
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Pagrindiniame lange
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Visuose peržiūros languose
 STR_CONFIG_SETTING_BRIBE                                        :Leisti papirkinėti miesto valdžią: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Leisti kompanijoms papirkinėti vietinę valdžią. Jei bandymas papirti bus išaiškintas, kompanijai šešiems mėnesiams bus atimta galimybė vykdyti veiklą mieste (pvz., pradėti reklamos kampanija, remontuoti kelius ir pan.)
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Leisti pirkti išskirtines transporto teises: {STRING}
@@ -1386,9 +1386,9 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Lyginant su kit
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Lėktuvų avarijų kiekis: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Nustatyti lėktuvo sudužimo tikimybę
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :jokių
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :retesni
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalūs
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Jokių
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Retesni
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normalus
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Leisti pravažiuojamąsias stoteles miesto keliuose: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Leidžia statyti pravažiuojamojo tipo stoteles miestams priklausiančiuose keliuose
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Leisti pravažiuojamąsias stoteles priešininko keliuose: {STRING}
@@ -1408,9 +1408,9 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Pranešti apie 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Jei kuri nors transporto priemonė neberas kelio link užduoties tikslo ir pasiklys, bus parodytas informacinis pranešimas
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Transporto priemonių užduočių peržiūra: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Transporto priemonių užduotys yra reguliariai peržiūrimos ir, suradus kokių nors problemų (pvz., neteisinga stotelė), parodomas informacinis pranešimas
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :neperžiūrėti
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :peržiūrėti tik aktyvias
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :peržiūrėti visas
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Ne
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Taip, išskyrus sustabdytas transporto priemones
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Peržiūrėti visas
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Perspėti, jei transporto priemonė yra nuostolinga: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Jei transporto priemonė kalendorinius metus baigė nuostolingai, parodomas atitinkamas informacinis pranešimas
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Transporto priemonės niekada nepasensta: {STRING}
@@ -1515,10 +1515,10 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatinė pau
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Pradėjus naują žaidimą, laiko tėkmė bus pristabdyta, taip suteikiant progą atidžiau išstudijuoti žemėlapį
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Kuomet pristabdytas, leisti: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Pasirinkite, kokius veiksmus galėsite atlikti, kai žaidimas yra sustabdytas
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :jokių veiksmų
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :visi ne statybiniai veiksmai
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :visi, išskyrus landšafto, modifikavimo veiksmai
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :visi pasirinkimai
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Jokių veiksmų
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Visi ne statybiniai veiksmai
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Visi, išskyrus landšafto modifikavimo veiksmų
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Visi pasirinkimai
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Naudoti išplėstinį transporto priemonių sąrašą: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Išplėstinio (su grupavimo funkcijomis) transporto priemonių sąrašo naudojimo parinktys
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Rodyti krovos indikatorius: {STRING}
@@ -1617,11 +1617,11 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Visus
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Kelių išdėstymas naujiems miestams: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Kelių tinklų planas miestuose
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :numatytas
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :geresni keliai
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Originalus
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Geresni keliai
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 laukeliai
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 laukeliai
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :atsitiktinis
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Atsitiktinis
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Miestams leidžiama tiesti kelius: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Leisti miestams statyti kelius miesto augimui. Išjungti, kad užkirstų kelią miesto institucijoms statyti kelius patiems
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Miestams leidžiama statyti sankryžas tame pačiame lygyje: {STRING}
@@ -1630,15 +1630,15 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Leisti miestams
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Išjungus šį nustatymą, gali būti tik du oro uostai kiekviename mieste. Įjungus šį nustatymą, oro uostų skaičius mieste yra ribojamas pagal miesto triukšmo lygio palankumo, kurį nurodo gyventojų skaičius, oro uosto dydis bei atstumas
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Naujų miestų kurimas žaidime: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Įjungiant šį nustatymą, žaidėjai gali įkurti naujus miestus žaidime
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :uždrausta
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :leista
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :leista, pasirinktinis miestų išdėstymas
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Uždrausta
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Leista
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Leista, pasirinktinis miestų išdėstymas
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Savaiminis medžių atsiradimas: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Savaiminio medžių išdygimo nuostatos. Atkreipkite dėmesį, kad šios nuostatos gali paveikti kai kurių pramonės įmonių, pvz., lentpjūvių, darbą
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nėra {RED}(trukdo lentpjūvėms)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tik tropiniuose miškuose
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :betkur
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Visur
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Pagrindinės įrankių juostos pozicija: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Pagrindinės įrankių lentelės horizontali padėtis ekrano viršuje
@@ -1672,7 +1672,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Labai greitas
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Miestelių, tampančių miestais, santykis: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Kiekis miestų, kurie taps miestais, kurie yra didesni ir auga greitai
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 iš {COMMA}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Išjungta
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nenaudojamas
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Pradinis miestų dydžio daugiklis: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Vidutinis miestų dydis santykiu su normaliais miestais žaidimo pradžioje
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Panaikinti beprasmius kelio elementus kelių statybos metu: {STRING}
@@ -4041,6 +4041,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Perdary
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Rasta tik fiktyvi garsų biblioteka. Jeigu norite garsų žaidime, įdiekite garsų rinkinį naudojant parsisiuntimų sistemą.
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Ekrano vaizdas išsaugotas kaip „{STRING}“
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekrano vaizdas neišsaugotas!
 

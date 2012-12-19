@@ -218,6 +218,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Süzgeç metni:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Süzgeç metnini girin
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Listeyi filtrelemek için bir anahtar sözcük girin
 
@@ -398,10 +399,12 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Kargo ödeme ta
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Şirketler ligi tablosu
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Ayrıntılı performans seviyesi
+STR_GRAPH_MENU_HIGHSCORE                                        :Puan tablosu
 ############ range ends here
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Fabrika listesi
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Sanayi zincirleri
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Yeni fabrika kur
 ############ range ends here
 
@@ -1066,6 +1069,9 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Uygun YZ
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Gelişmiş Ayarlar
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Süzgeç metni:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Tümünü genişlet
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Tümünü kısalt
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(açıklama bulunmamaktadır)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Varsayılan değer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Ayar tipi: {ORANGE}{STRING}
@@ -1075,6 +1081,10 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Oyun ayarları 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Şirket ayarları (kayıtlı dosyada saklandı; sadece yeni oyunu etkilemektedir)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Şirket ayarları (kayıtlı dosyada saklandı; sadece mevcut şirketi etkilemektedir)
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Göster:
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Temel ayarlar
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gelişmiş ayarlar
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Uzman ayarları / tüm ayarlar
 
 STR_CONFIG_SETTING_OFF                                          :Kapalı
 STR_CONFIG_SETTING_ON                                           :Açık
@@ -1092,6 +1102,26 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Sol
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Orta
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Sağ
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :En yüsek açılış borcu: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Bir şirketin alabileceği en fazla borç (enflasyon hesaba katılmadan)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Faiz oranı: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Borç faiz oranı; aynı zamanda eğer aktifse enflasyonu da belirler
+STR_CONFIG_SETTING_RUNNING_COSTS                                :İşletme giderleri: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Araçlar ve altyapı için bakım ve işletme giderlerinin seviyesini ayarlayın
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :İnşaat hızı: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :YZler için inşaat hareketi sayısını sınırlayın
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Araç bozulmaları: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Yetersiz bakım gören araçların ne sıklıkta bozulacağını ayarlayın
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Ödenek çarpanı: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Sübvanse edilen bağlantılar için ne kadar ödeneceğini belirleyin
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :İnşaat maliyetleri: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :İnşaat ve satın alma maliyet seviyesini belirleyin
+STR_CONFIG_SETTING_RECESSIONS                                   :Ekonomik krizler: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Trenlerin istasyonda yön değiştirmesini yasakla: {STRING}
+STR_CONFIG_SETTING_DISASTERS                                    :Felaketler: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Araçları ya da altyapıyı yok edebilecek felaketleri açın ya da kapatın
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Arazi şekillendirmeye karşı belediye meclisinin tavrı: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Şirketlerin sebep olduğu gürültü ve çevreye zararın kasaba reytinlerini ve ilerideki inşaatlarını nasıl etkileyeceğini seçin
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Kıyılara ve eğimli araziye inşaat izni: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Binaların, yolların, rayların v.b. altındaki araziyi değiştirmeye izin ver (otomatik eğim): {STRING}
@@ -1190,6 +1220,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Haritayı yakı
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Haritayı kaydır
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Kapalı
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Tekerlek hızı: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Görsel klavye: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Kapalı
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Çift tık
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Tek tık (odaklanmışken)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Tek tık (anında)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Sağ tıklama öykünümü: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komut-tıklama
@@ -1237,6 +1272,10 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Bilgisayar arab
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Bilgisayar uçak kullanmasın: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Bilgisayar gemi kullanmasın: {STRING}
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Varsayılan ayar profili: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Kolay
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Orta zorluk
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Zor
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Çok oyunculuda yapay zekâ olsun: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Betikler duraklatılıncaya kadar çalıştırılacak opkod sayısı: {STRING}
@@ -1355,6 +1394,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Senaryo 
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Çok Oyunculu
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Seçenekler
+STR_INTRO_HIGHSCORE                                             :{BLACK}Puan Tablosu
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Gelişmiş Ayarlar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Ayarları
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Çevrimiçi İçeriği Kontrol Et
@@ -1374,6 +1414,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}'tropik'
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}'oyuncak' yer stilini seç
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Seçenekleri göster
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Puan tablosunu göster
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Gelişmiş ayarları görüntüle
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF ayarlarını göster
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}İndirilecek yeni ve güncellenmiş içeriği kontrol et
@@ -2162,6 +2203,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Zinciri 
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Kargo sağlayan ve kabul eden fabrikaları göster
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Küçük haritaya bağla
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Gösterilen fabrikaları küçük haritada da seç
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Kargo seçin
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Göstermek istediğiniz kargoyu seçin
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Fabrika seçin
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Göstermek istediğiniz fabrikaları seçin
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Arazi Bilgisi
@@ -2486,6 +2531,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Birden çok Action 8 girişi içeriyor (sprayt {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pseudo-sprayt bitiminden sonrasını okudu (sprayt {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Kullanımda olan temel grafik kümesi bazı spraytları içermiyor.{}Lütfen temel grafik kümesini güncelleyin
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Kullanımdaki temel grafik seti bazı spraytları içermiyor.{}Lütfen temel grafik setinizi güncelleyin .{}{YELLOW}OpenTTD'nin geliştirme kopyasını {WHITE}kullandığınız için, {YELLOW}temel grafiklerin de{WHITE} geliştirme kopyasını kullanmalısınız.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :İstenen GRF kaynakları mevcut değil (sprayt {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} {STRING} tarafından deaktive edildi
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Geçersiz bilinmeyen sprayt yerleşim biçimi (sprayt {3:NUM})
@@ -3584,6 +3630,9 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Kaynak 
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Yalnız yedek ses kümesi bulundu. Ses istiyorsanız, içerik indirme sisteminden ses kümesi indirin
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Dev ekran görüntüsü
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Ekran görüntüsünün çözünürlüğü {COMMA} x {COMMA} piksel. Görüntüyü kaydetmek biraz zaman alabilir. Devam etmek istiyor musunuz?
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Ekran görüntüsü '{STRING}' olarak kaydedildi
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekran görüntüsü alınamadı!
 
