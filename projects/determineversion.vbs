@@ -177,6 +177,9 @@ Function DetermineSVNVersion()
 				' Make sure index is in sync with disk
 				Set oExec = WshShell.Exec("git update-index --refresh")
 				If Err.Number = 0 Then
+					' StdOut and StdErr share a 4kB buffer so prevent it from filling up as we don't care about the output
+					oExec.StdOut.Close
+					oExec.StdErr.Close
 					' Wait till the application is finished ...
 					Do While oExec.Status = 0
 						WScript.Sleep 10
