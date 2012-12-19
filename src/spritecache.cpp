@@ -845,7 +845,7 @@ static void GfxInitSpriteCache()
 {
 	/* initialize sprite cache heap */
 	int bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
-	uint target_size = _sprite_cache_size * 1024 * 1024 * max(1, bpp / 8);
+	uint target_size = (bpp > 0 ? _sprite_cache_size * bpp / 8 : 1) * 1024 * 1024;
 
 	if (_spritecache_ptr == NULL || _allocated_sprite_cache_size != target_size) {
 		free(_spritecache_ptr);
