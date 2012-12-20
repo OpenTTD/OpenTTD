@@ -403,6 +403,11 @@ int Train::GetCurrentMaxSpeed() const
 			max_speed = min(max_speed, 61);
 			break;
 		}
+
+		/* Vehicle is on the middle part of a bridge. */
+		if (u->track == TRACK_BIT_WORMHOLE && !(u->vehstatus & VS_HIDDEN)) {
+			max_speed = min(max_speed, GetBridgeSpec(GetBridgeType(u->tile))->speed);
+		}
 	}
 
 	max_speed = min(max_speed, this->current_order.max_speed);
@@ -3250,14 +3255,6 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 				}
 			}
 		} else {
-			/* In a tunnel or on a bridge
-			 * - for tunnels, only the part when the vehicle is not visible (part of enter/exit tile too)
-			 * - for bridges, only the middle part - without the bridge heads */
-			if (!(v->vehstatus & VS_HIDDEN)) {
-				Train *first = v->First();
-				first->cur_speed = min(first->cur_speed, GetBridgeSpec(GetBridgeType(v->tile))->speed);
-			}
-
 			if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) && HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
 				/* Perform look-ahead on tunnel exit. */
 				if (v->IsFrontEngine()) {

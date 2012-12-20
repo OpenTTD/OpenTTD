@@ -421,6 +421,11 @@ inline int RoadVehicle::GetCurrentMaxSpeed() const
 		} else if ((u->direction & 1) == 0) {
 			max_speed = this->vcache.cached_max_speed * 3 / 4;
 		}
+
+		/* Vehicle is on the middle part of a bridge. */
+		if (u->state == RVSB_WORMHOLE && !(u->vehstatus & VS_HIDDEN)) {
+			max_speed = min(max_speed, GetBridgeSpec(GetBridgeType(u->tile))->speed * 2);
+		}
 	}
 
 	return min(max_speed, this->current_order.max_speed * 2);
@@ -1094,12 +1099,6 @@ static bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *p
 	if (v->state == RVSB_WORMHOLE) {
 		/* Vehicle is entering a depot or is on a bridge or in a tunnel */
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
-
-		/* Apply bridge speed limit */
-		if (!(v->vehstatus & VS_HIDDEN)) {
-			RoadVehicle *first = v->First();
-			first->cur_speed = min(first->cur_speed, GetBridgeSpec(GetBridgeType(v->tile))->speed * 2);
-		}
 
 		if (v->IsFrontEngine()) {
 			const Vehicle *u = RoadVehFindCloseTo(v, gp.x, gp.y, v->direction);
