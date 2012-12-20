@@ -146,6 +146,35 @@ struct GoalListWindow : Window {
 		*size = maxdim(*size, d);
 	}
 
+	/**
+	 * Draws either the global goals or the company goal section.
+	 * This is a helper method for DrawWidget.
+	 */
+	void DrawPartialGoalList(int &pos, const int cap, int x, int y, int right, bool global_section) const
+	{
+		if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, global_section ? STR_GOALS_GLOBAL_TITLE : STR_GOALS_COMPANY_TITLE);
+		pos++;
+
+		uint num = 0;
+		const Goal *s;
+		FOR_ALL_GOALS(s) {
+			if (global_section ? s->company == INVALID_COMPANY : s->company == _local_company && s->company != INVALID_COMPANY) {
+				if (IsInsideMM(pos, 0, cap)) {
+					/* Display the goal */
+					SetDParamStr(0, s->text);
+					DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_GOALS_TEXT);
+				}
+				pos++;
+				num++;
+			}
+		}
+
+		if (num == 0) {
+			if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_GOALS_NONE);
+			pos++;
+		}
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget != WID_GL_PANEL) return;
@@ -160,51 +189,12 @@ struct GoalListWindow : Window {
 		int pos = -this->vscroll->GetPosition();
 		const int cap = this->vscroll->GetCapacity();
 
-		/* Section for drawing the global goals */
-		if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_GOALS_GLOBAL_TITLE);
+		/* Draw partial list with global goals */
+		DrawPartialGoalList(pos, cap, x, y, right, true);
+
+		/* Draw partial list with company goals */
 		pos++;
-
-		uint num = 0;
-		const Goal *s;
-		FOR_ALL_GOALS(s) {
-			if (s->company == INVALID_COMPANY) {
-				if (IsInsideMM(pos, 0, cap)) {
-					/* Display the goal */
-					SetDParamStr(0, s->text);
-					DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_GOALS_TEXT);
-				}
-				pos++;
-				num++;
-			}
-		}
-
-		if (num == 0) {
-			if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_GOALS_NONE);
-			pos++;
-		}
-
-		/* Section for drawing the company goals */
-		pos++;
-		if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_GOALS_COMPANY_TITLE);
-		pos++;
-		num = 0;
-
-		FOR_ALL_GOALS(s) {
-			if (s->company == _local_company && s->company != INVALID_COMPANY) {
-				if (IsInsideMM(pos, 0, cap)) {
-					/* Display the goal */
-					SetDParamStr(0, s->text);
-					DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_GOALS_TEXT);
-				}
-				pos++;
-				num++;
-			}
-		}
-
-		if (num == 0) {
-			if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_GOALS_NONE);
-			pos++;
-		}
+		DrawPartialGoalList(pos, cap, x, y, right, false);
 	}
 
 	virtual void OnResize()
