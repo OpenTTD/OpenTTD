@@ -236,12 +236,12 @@ struct TimetableWindow : Window {
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		switch (data) {
-			case -666:
+			case VIWD_AUTOREPLACE:
 				/* Autoreplace replaced the vehicle */
 				this->vehicle = Vehicle::Get(this->window_number);
 				break;
 
-			case -1:
+			case VIWD_REMOVE_ALL_ORDERS:
 				/* Removed / replaced all orders (after deleting / sharing) */
 				if (this->sel_index == -1) break;
 
@@ -249,7 +249,7 @@ struct TimetableWindow : Window {
 				this->sel_index = -1;
 				break;
 
-			case -2:
+			case VIWD_MODIFY_ORDERS:
 				if (!gui_scope) break;
 				this->UpdateSelectionStates();
 				this->ReInit();

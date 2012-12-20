@@ -534,7 +534,7 @@ struct RefitWindow : public Window {
 			if (this->sel == -1) this->vscroll->ScrollTowards(0);
 		} else {
 			/* Rebuild the refit list */
-			this->OnInvalidateData(0);
+			this->OnInvalidateData(VIWD_CONSIST_CHANGED);
 		}
 	}
 
@@ -707,8 +707,8 @@ struct RefitWindow : public Window {
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		switch (data) {
-			case -666: // Autoreplace replaced the vehicle; selected_vehicle became invalid.
-			case 0: { // The consist has changed; rebuild the entire list.
+			case VIWD_AUTOREPLACE: // Autoreplace replaced the vehicle; selected_vehicle became invalid.
+			case VIWD_CONSIST_CHANGED: { // The consist has changed; rebuild the entire list.
 				/* Clear the selection. */
 				Vehicle *v = Vehicle::Get(this->window_number);
 				this->selected_vehicle = v->index;
@@ -1127,7 +1127,7 @@ static inline void ChangeVehicleWindow(WindowClass window_class, VehicleID from_
 		}
 
 		/* Notify the window. */
-		w->InvalidateData(-666, false);
+		w->InvalidateData(VIWD_AUTOREPLACE, false);
 	}
 }
 
@@ -1760,7 +1760,7 @@ struct VehicleDetailsWindow : Window {
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (data == -666) {
+		if (data == VIWD_AUTOREPLACE) {
 			/* Autoreplace replaced the vehicle.
 			 * Nothing to do for this window. */
 			return;
@@ -2585,7 +2585,7 @@ public:
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (data == -666) {
+		if (data == VIWD_AUTOREPLACE) {
 			/* Autoreplace replaced the vehicle.
 			 * Nothing to do for this window. */
 			return;

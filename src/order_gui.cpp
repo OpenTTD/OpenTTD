@@ -820,7 +820,7 @@ public:
 
 			if (station_orders < 2) this->OrderClick_Goto(0);
 		}
-		this->OnInvalidateData(-2);
+		this->OnInvalidateData(VIWD_MODIFY_ORDERS);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -866,13 +866,13 @@ public:
 		VehicleOrderID to   = INVALID_VEH_ORDER_ID;
 
 		switch (data) {
-			case -666:
+			case VIWD_AUTOREPLACE:
 				/* Autoreplace replaced the vehicle */
 				this->vehicle = Vehicle::Get(this->window_number);
 				this->UpdateAutoRefitState();
 				break;
 
-			case -1:
+			case VIWD_REMOVE_ALL_ORDERS:
 				/* Removed / replaced all orders (after deleting / sharing) */
 				if (this->selected_order == -1) break;
 
@@ -881,7 +881,7 @@ public:
 				this->selected_order = -1;
 				break;
 
-			case -2:
+			case VIWD_MODIFY_ORDERS:
 				/* Some other order changes */
 				break;
 

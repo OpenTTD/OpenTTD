@@ -29,6 +29,14 @@ enum TrainDetailsWindowTabs {
 	TDW_TAB_TOTALS,    ///< Tab with sum of total cargo transported
 };
 
+/** Special values for vehicle-related windows for the data parameter of #InvalidateWindowData. */
+enum VehicleInvalidateWindowData {
+	VIWD_REMOVE_ALL_ORDERS = -1, ///< Removed / replaced all orders (after deleting / sharing).
+	VIWD_MODIFY_ORDERS     = -2, ///< Other order modifications.
+	VIWD_CONSIST_CHANGED   = -3, ///< Vehicle composition was changed.
+	VIWD_AUTOREPLACE       = -4, ///< Autoreplace replaced the vehicle.
+};
+
 int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number);
 
 void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID selection, EngineImageType image_type, int skip, VehicleID drag_dest = INVALID_VEHICLE);
