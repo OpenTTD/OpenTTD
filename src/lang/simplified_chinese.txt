@@ -217,6 +217,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} 英呎
 STR_UNITS_HEIGHT_SI                                             :{COMMA} 公尺
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}过滤字串:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}输入过滤器字符串
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}输入用以过滤此列表的关键词
 
@@ -397,10 +398,12 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :货物运费图
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :公司评价排名
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :公司评价明细
+STR_GRAPH_MENU_HIGHSCORE                                        :高分榜
 ############ range ends here
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :工业列表
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :产业链
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :新建工业设施
 ############ range ends here
 
@@ -1060,6 +1063,8 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}无合�
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}高级设置
 
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :基础设置
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :高级设置
 
 STR_CONFIG_SETTING_OFF                                          :关闭
 STR_CONFIG_SETTING_ON                                           :打开
@@ -1077,6 +1082,28 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :左侧
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :中央
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右侧
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :最大初始贷款: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :公司最大贷款额（不考虑通货膨胀的影响）
+STR_CONFIG_SETTING_INTEREST_RATE                                :贷款利率: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :贷款利率；如果通货膨胀启用，将同时影响通货膨胀率。
+STR_CONFIG_SETTING_RUNNING_COSTS                                :运营费用: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :设置维护费用、运营费用的难度
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :建设速度: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :AI建设频率的上限
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :车辆损坏: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :设置运输工具故障率
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :补贴系数: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :设置线路补贴额度
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建设费用: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :设置建设费用和交易费用难度
+STR_CONFIG_SETTING_RECESSIONS                                   :经济衰退: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :启用后，经济衰退将每隔几年就出现。在衰退期内，所有产出将大幅下降直至衰退结束。
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :禁止列车在站台调头: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :启用后，如果列车有到下一站的捷径，列车将不在非终点站台调头，
+STR_CONFIG_SETTING_DISASTERS                                    :灾难: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :灾难可能引起堵车或者车祸或者建筑损毁。
+STR_CONFIG_SETTING_CITY_APPROVAL                                :地区政府对区域改造的态度: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :设置相关参数以决定各公司造成的噪音及环境破坏时，各城镇对该公司的评价及未来区域建设的影响。
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :允许在斜坡和河岸上建设：{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :允许在建筑、轨道等下方改变地形（自动斜坡）： {STRING}
@@ -1175,6 +1202,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :缩放地图
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :滚动地图
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :关闭
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :地图滚动速度：{STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :开启屏幕键盘: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :当输入文本或编辑框里是否使用屏幕键盘。适用于没有物理键盘的设备。
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :禁止
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :双击
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :单击(当前焦点)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :单击 (立即)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :右键模拟： {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :按住Command键 点击
@@ -1222,6 +1255,11 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :禁止电脑使
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :禁止电脑使用飞机：{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :禁止电脑使用船只：{STRING}
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :默认设置属性: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :设置随机添加AI或脚本时的AI初始属性。
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :简单
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :中等
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :困难
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :联机游戏时允许电脑玩家(AI)： {STRING}
 
@@ -1338,6 +1376,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}场景�
 STR_INTRO_MULTIPLAYER                                           :{BLACK}联机游戏
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}游戏选项
+STR_INTRO_HIGHSCORE                                             :{BLACK}高分榜
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}高级设置
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 设置
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}在线查找扩展包
@@ -1357,6 +1396,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}选择 '
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}选择 '玩具' 景观风格
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}显示游戏选项
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}显示高分榜
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}显示高级设置
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}显示GRF设定
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}连接服务器并查找扩展包
@@ -2145,6 +2185,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}显示�
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}显示货物的上下游工业
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}在缩略地图显示
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}将该产业链的工业显示在缩略地图中
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}选择货物
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}选择需要显示的货物
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}选择工业
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}选择需要显示的工业
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地块信息
@@ -2468,6 +2512,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :尝试使用非
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 含有损坏的图形元素{}所有损坏的图形元素{}将显示为红色的问号（？）
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :具有多个Action 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}当前基础图组缺失参数.{}请进行修正
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}当前使用的基础图形包参数有误。{}请更新基础图形包。{}如果你正在使用 {YELLOW}OPENTTD的开发测试版{WHITE}，你需要 {YELLOW}相应配套的基础图形包。{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :GRF源文件不可访问 (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} 被 {STRING} 禁用
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :错误/未知的sprite输出格式 (sprite {3:NUM})
@@ -3568,6 +3613,9 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}不推�
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}只找到一个备用音效库；若您需要正式版音效，请通过在线扩展包下载安装音效库
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}超大截图
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}屏幕截图需要 {COMMA} x {COMMA} 像素。 截图将需要一段时间。确认继续截图？
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}屏幕截图已经被成功保存为{} '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}屏幕截图失败！
 
