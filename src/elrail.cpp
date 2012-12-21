@@ -129,9 +129,13 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 		/* If the neighbor tile is either not electrified or has no tracks that can be reached
 		 * from this tile, mark all trackdirs that can be reached from the neighbour tile
-		 * as needing no catenary. */
-		RailType rt = GetTileRailType(TileAddByDiagDir(t, d));
-		if (rt == INVALID_RAILTYPE || !HasCatenary(rt) || (TrackStatusToTrackBits(GetTileTrackStatus(TileAddByDiagDir(t, d), TRANSPORT_RAIL, 0)) & DiagdirReachesTracks(d)) == TRACK_BIT_NONE) {
+		 * as needing no catenary. We make an exception for blocked station tiles with a matching
+		 * axis that still display wires to preserve visual continuity. */
+		TileIndex next_tile = TileAddByDiagDir(t, d);
+		RailType rt = GetTileRailType(next_tile);
+		if (rt == INVALID_RAILTYPE || !HasCatenary(rt) ||
+				((TrackStatusToTrackBits(GetTileTrackStatus(next_tile, TRANSPORT_RAIL, 0)) & DiagdirReachesTracks(d)) == TRACK_BIT_NONE &&
+				(!HasStationTileRail(next_tile) || GetRailStationAxis(next_tile) != DiagDirToAxis(d) || !CanStationTileHaveWires(next_tile)))) {
 			neighbour_tdb |= DiagdirReachesTrackdirs(ReverseDiagDir(d));
 		}
 	}
