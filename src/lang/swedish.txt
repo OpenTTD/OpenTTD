@@ -1099,7 +1099,10 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vänster
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrerad
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Höger
 
+STR_CONFIG_SETTING_INTEREST_RATE                                :Räntenivå: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Driftkostnader: {STRING}
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofer: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Välj hur mycket ett företags oväsen och miljöpåverkan ska påverka dess anseende och möjlighet till vidare byggnationer i området
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillåt konstruktion på sluttningar och kuster: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Om det är aktiverat kan räls och stationer byggas på de flesta sluttningar. Om det är inaktiverat är de bara tillåtna att bygga på sluttningar som motsvarar spårens riktning och därför inte kräver någon grund
@@ -3787,6 +3790,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}För st
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Endast ett reservdata-ljudsett hittades. Om du vill ha ljud, installera ett ljudsett via nerladdnings-systemet
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Gigantisk skärmdump
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Skärmdumpen kommer ha en upplösning av {COMMA} x {COMMA} pixlar. Tagandet av skärmdumpen kan ta en stund. Vill du fortsätta?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skärmdump sparades som '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Skärmdump misslyckades!

@@ -2806,7 +2806,7 @@ STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autorita
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Mostra informació de l'autoritat local
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Canvia el nom de la població
 
-STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Desplega
+STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Eixampla
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Incrementa la mida de la població
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Esborra
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Esborra totalment aquesta població

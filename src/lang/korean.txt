@@ -2760,7 +2760,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<알 수 없는
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF 검색
-STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF을 검색하는 중입니다. 파일의 양에 따라 시간이 걸릴 수도 있습니다...
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF을 검색하는 중입니다. 파일 개수에 따라 시간이 조금 걸릴 수 있습니다...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}약 {1:NUM}개의 NewGRF 중에서 {0:NUM}개의 NewGRF을 찾았습니다
 STR_NEWGRF_SCAN_ARCHIVES                                        :자료 검색
 
