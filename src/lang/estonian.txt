@@ -493,7 +493,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Heli/muusika
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Viimane teade
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Teadete seadistused
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Teadete ajalugu
 ############ range ends here
 
@@ -783,16 +782,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Sõnumit
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Nimekiri hiljutistest uudistest
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Teade
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Teadete valikud
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Vali kõikide uudiste tüüp: Väljas / Kokkuvõte / Täielikult
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Mängi heli ka kokkuvõetud uudistele
 STR_NEWS_MESSAGES_OFF                                           :Väljas
 STR_NEWS_MESSAGES_SUMMARY                                       :Lühike
 STR_NEWS_MESSAGES_FULL                                          :Täielik
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Teateliigid:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Esimese sõiduki saabumine mängija jaama
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Esimese sõiduki saabumine vastase jaama
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Õnnetused / katastroofid

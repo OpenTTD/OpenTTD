@@ -440,7 +440,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sound/Musik
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Letzte Mitteilung/Nachricht
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Nachrichtenoptionen
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Vergangene Nachrichten
 ############ range ends here
 
@@ -730,16 +729,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Nachrich
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Eine Liste der aktuellen Nachrichten
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mitteilung
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Nachrichtenoptionen
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Einstellung für alle Nachrichtenarten (an/aus/Ticker)
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Sound für Tickermeldungen abspielen
 STR_NEWS_MESSAGES_OFF                                           :Aus
 STR_NEWS_MESSAGES_SUMMARY                                       :Ticker
 STR_NEWS_MESSAGES_FULL                                          :Zeitung
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Nachrichtenart:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Ankunft des ersten Fahrzeugs an Station des Spielers
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Ankunft des ersten Fahrzeugs an Station eines Mitbewerbers
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Unfälle/Katastrophen

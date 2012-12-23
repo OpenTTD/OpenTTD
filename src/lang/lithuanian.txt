@@ -633,7 +633,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Garsas/muzika
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Paskutinė žinutė/naujiena
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Žinučių nustatymai
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Žinučių istorija
 ############ range ends here
 
@@ -923,16 +922,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Žinuči
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Paskutinių žinučių sąrašas
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Pranešimas
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Žinučių nustatymai
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Pranesimu nustatymai (ijungta/isjungta/santrauka)
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Groti garsus pasirodzius naujienu santraukoms
 STR_NEWS_MESSAGES_OFF                                           :Išjungta
 STR_NEWS_MESSAGES_SUMMARY                                       :Santrauka
 STR_NEWS_MESSAGES_FULL                                          :Pilnas
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Žinučių tipai:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Pirmosios transporto priemonės atvykimas į žaidėjo stotelę
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Pirmosios transporto priemonės atvykimas į konkurento stotelę
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Avarijos / nelaimės

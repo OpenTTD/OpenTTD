@@ -437,7 +437,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :آواز و م�
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :پچھلا پیعام/ خبر
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :اختیاراتِ پعغام
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :تاریخِ پیغامات
 ############ range ends here
 
@@ -723,16 +722,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}پران
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}حالیہ پیغاموں کی فہرست
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}پیغام
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}پیغاموں کے اختیارات
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}تمام قسم کے پیغاموں کو بند/خلاصہ/مکمل کریں
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}خبروں کے خلاصے کے لے آواز چلائیں
 STR_NEWS_MESSAGES_OFF                                           :بند
 STR_NEWS_MESSAGES_SUMMARY                                       :خلاصہ
 STR_NEWS_MESSAGES_FULL                                          :مکمل
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}پیغاموں کی اقسام:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}کھلاڑی کے اسٹیشن پر پہلی گاڑی کی آمد
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}مقابل کے اسٹیشن پر پہلی گاڑی کی آمد
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}حادثے / تباہیاں

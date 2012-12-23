@@ -436,7 +436,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sunet/muzică
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Ultimul mesaj/ultima ştire
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Setări mesaje
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Lista ultimelor mesaje
 ############ range ends here
 
@@ -726,16 +725,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Cronolog
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}O listă a celor mai recente mesaje
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mesaj
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Opţiuni mesaje
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Setare pentru tipurile de mesaje (Oprit/ Rezumat/ Întreg)
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Sunet pentru ştirile scurte
 STR_NEWS_MESSAGES_OFF                                           :Oprit
 STR_NEWS_MESSAGES_SUMMARY                                       :Pe scurt
 STR_NEWS_MESSAGES_FULL                                          :Pe larg
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Tipuri mesaje:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Sosirea primului vehicul la una din staţiile tale
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Sosirea primului vehicul la una din staţiile competitorilor
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Accidente / dezastre

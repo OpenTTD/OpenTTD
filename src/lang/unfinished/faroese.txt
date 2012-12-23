@@ -420,7 +420,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Ljóð/ tónlei
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Seinastu boð/tíðinda frásøgn
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Boð innstilling
 ############ range ends here
 
 ############ range for about menu starts
@@ -575,7 +574,6 @@ STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {C
 # News message history
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 
 
 

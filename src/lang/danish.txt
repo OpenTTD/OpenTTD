@@ -438,7 +438,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Lyd/Musik
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Seneste besked/nyhedsrapport
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Beskedindstillinger
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Tidligere beskeder
 ############ range ends here
 
@@ -728,16 +727,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Beskedhi
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}En liste over seneste nyheder
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Besked
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Beskedvalg
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Sæt alle beskedtyper til: Fra / Kortfattet / Fuld
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Afspil lyd for refererede nyheder
 STR_NEWS_MESSAGES_OFF                                           :Fra
 STR_NEWS_MESSAGES_SUMMARY                                       :Kortfattet
 STR_NEWS_MESSAGES_FULL                                          :Fuld
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Beskedtyper:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Ankomst af første køretøj til spillerens station
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Ankomst af første køretøj til modstanderens station
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Uheld / katastrofer

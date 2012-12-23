@@ -436,7 +436,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :الموسيق�
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :الرسالة الأخيرة/التقرير الجديد
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :اعدادات الرسائل
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :الرسائل السابقة
 ############ range ends here
 
@@ -725,16 +724,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}الرس
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}قائمة بآخر الاخبار
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}رسالة
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}خيارات الرسائل
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}تعديل كل الرسائل الى: ايقاف/ مختصر /كامل
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}اصدار صوت عند عرض رسالة جديدة
 STR_NEWS_MESSAGES_OFF                                           :اغلاق
 STR_NEWS_MESSAGES_SUMMARY                                       :ملخص
 STR_NEWS_MESSAGES_FULL                                          :ممتلئ
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}انواع الرسائل
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}وصول اول مركبة لمحطة اللاعب
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}وصول اول مركبة لمحطة الخصوم
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}الحوادث/الأزمات

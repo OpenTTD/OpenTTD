@@ -433,7 +433,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :音效／背景
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :上次訊息／新聞報告
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :訊息設定
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :訊息記錄
 ############ range ends here
 
@@ -720,16 +719,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}訊息�
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}列出最近的新聞內容
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}訊息
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}訊息選項
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}將所有訊息設為：關閉／摘要／完整
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}摘要訊息發出聲音提示
 STR_NEWS_MESSAGES_OFF                                           :關閉
 STR_NEWS_MESSAGES_SUMMARY                                       :摘要
 STR_NEWS_MESSAGES_FULL                                          :詳細
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}訊息種類：
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}首輛交通工具抵達玩家的車站
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}首輛交通工具抵達競爭對手的車站
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}意外／災難

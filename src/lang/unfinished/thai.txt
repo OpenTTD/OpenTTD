@@ -436,7 +436,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :เสียง
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :ข้อความล่าสุด/รายงานข่าว
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :กำหนดค่าการแสดงข้อความ
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :ดูข้อความย้อนหลัง
 ############ range ends here
 
@@ -726,16 +725,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}ข้�
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}รายการแสดงข้อความข่าวเมื่อเร็วๆนี้
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}ข้อความ
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}ตัวเลือกข้อความ
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}ตั้งการแสดงข้อความทุกประเภทเป็น: ปิด / แสดงข้อความเลื่อน/ แสดงแบบเต็ม
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}ให้มีเสียงเตือนเมื่อมีข้อความข่าว
 STR_NEWS_MESSAGES_OFF                                           :ปิด
 STR_NEWS_MESSAGES_SUMMARY                                       :แสดงข้อความในแถบเลื่อน
 STR_NEWS_MESSAGES_FULL                                          :แสดงข้อความแบบเต็ม
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}รูปแบบข้อความ:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}เมื่อมียานยนต์แรกมาถึงสถานีของผู้เล่น
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}เมื่อมียานยนต์แรกมาถึงสถานีของคู่แข่ง
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}อุบัติเหตุ / อุบัติภัย

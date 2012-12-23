@@ -42,17 +42,4 @@ enum MessageHistoryWidgets {
 	WID_MH_SCROLLBAR,  ///< Scrollbar for the list.
 };
 
-/** Widgets of the #MessageOptionsWindow class. */
-enum MessageOptionWidgets {
-	WID_MO_BACKGROUND,        ///< Background of the window.
-	WID_MO_LABEL,             ///< Top label.
-	WID_MO_DROP_SUMMARY,      ///< Dropdown that adjusts at once the level for all settings.
-	WID_MO_LABEL_SUMMARY,     ///< Label of the summary drop down.
-	WID_MO_SOUNDTICKER,       ///< Button for (de)activating sound on events.
-	WID_MO_SOUNDTICKER_LABEL, ///< Label of the soundticker button.
-
-	WID_MO_START_OPTION,      ///< First widget that is part of a group [<][label][>] [description].
-	WID_MO_END_OPTION = WID_MO_START_OPTION + NT_END * MOS_WIDG_PER_SETTING, ///< First widget after the groups.
-};
-
 #endif /* WIDGETS_NEWS_WIDGET_H */

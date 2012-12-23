@@ -752,7 +752,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Гукі/муз
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Апошняе паведамленьне
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Наладкi паведамленьняў
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Гісторыя паведамленьняў
 ############ range ends here
 
@@ -1042,16 +1041,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Гіст
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Сьпіс нядаўніх навін
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  —  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Паведамленьне
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Наладкі паведамленьняў
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Усталяваць усе тыпы паведамленьняў на Выкл. / Сьцісла / Цалкам (падрабязна)
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Прайграваць гукі пры атрыманьні сьціслых паведамленьняў
 STR_NEWS_MESSAGES_OFF                                           :Выкл.
 STR_NEWS_MESSAGES_SUMMARY                                       :Сьцісла
 STR_NEWS_MESSAGES_FULL                                          :Цалкам
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Тыпы паведамленьняў:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Прыбыцьцё першага транспартнага сродку на станцыю гульца
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Першы транспартны сродак на станцыю канкурэнта
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Здарэньні й катастрофы

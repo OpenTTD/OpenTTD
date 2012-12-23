@@ -94,7 +94,6 @@ public:
 		WN_GAME_OPTIONS_AI                           = ::WN_GAME_OPTIONS_AI,                           ///< AI settings.
 		WN_GAME_OPTIONS_ABOUT                        = ::WN_GAME_OPTIONS_ABOUT,                        ///< About window.
 		WN_GAME_OPTIONS_NEWGRF_STATE                 = ::WN_GAME_OPTIONS_NEWGRF_STATE,                 ///< NewGRF settings.
-		WN_GAME_OPTIONS_MESSAGE_OPTION               = ::WN_GAME_OPTIONS_MESSAGE_OPTION,               ///< News settings.
 		WN_GAME_OPTIONS_GAME_OPTIONS                 = ::WN_GAME_OPTIONS_GAME_OPTIONS,                 ///< Game options.
 		WN_GAME_OPTIONS_GAME_SETTINGS                = ::WN_GAME_OPTIONS_GAME_SETTINGS,                ///< Game settings.
 
@@ -679,7 +678,6 @@ public:
 		 *   - #WN_GAME_OPTIONS_AI = #AIConfigWidgets
 		 *   - #WN_GAME_OPTIONS_ABOUT = #AboutWidgets
 		 *   - #WN_GAME_OPTIONS_NEWGRF_STATE = #NewGRFStateWidgets
-		 *   - #WN_GAME_OPTIONS_MESSAGE_OPTION = #MessageOptionWidgets
 		 *   - #WN_GAME_OPTIONS_GAME_OPTIONS = #GameOptionsWidgets
 		 *   - #WN_GAME_OPTIONS_GAME_SETTINGS = #GameSettingsWidgets
 		 */
@@ -1835,19 +1833,6 @@ public:
 		WID_MH_STICKYBOX                             = ::WID_MH_STICKYBOX,                             ///< Stickybox.
 		WID_MH_BACKGROUND                            = ::WID_MH_BACKGROUND,                            ///< Background of the window.
 		WID_MH_SCROLLBAR                             = ::WID_MH_SCROLLBAR,                             ///< Scrollbar for the list.
-	};
-
-	/** Widgets of the #MessageOptionsWindow class. */
-	enum MessageOptionWidgets {
-		WID_MO_BACKGROUND                            = ::WID_MO_BACKGROUND,                            ///< Background of the window.
-		WID_MO_LABEL                                 = ::WID_MO_LABEL,                                 ///< Top label.
-		WID_MO_DROP_SUMMARY                          = ::WID_MO_DROP_SUMMARY,                          ///< Dropdown that adjusts at once the level for all settings.
-		WID_MO_LABEL_SUMMARY                         = ::WID_MO_LABEL_SUMMARY,                         ///< Label of the summary drop down.
-		WID_MO_SOUNDTICKER                           = ::WID_MO_SOUNDTICKER,                           ///< Button for (de)activating sound on events.
-		WID_MO_SOUNDTICKER_LABEL                     = ::WID_MO_SOUNDTICKER_LABEL,                     ///< Label of the soundticker button.
-
-		WID_MO_START_OPTION                          = ::WID_MO_START_OPTION,                          ///< First widget that is part of a group [<][label][>] [description].
-		WID_MO_END_OPTION                            = ::WID_MO_END_OPTION,                            ///< First widget after the groups.
 	};
 
 	/* automatically generated from ../../widgets/object_widget.h */

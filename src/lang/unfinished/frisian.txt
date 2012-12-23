@@ -433,7 +433,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Lûd/musyk
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Lêste (neis)berjocht
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Berjocht ynstellings
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berjochtenskiednis
 ############ range ends here
 
@@ -720,16 +719,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Berjocht
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}In list fan Nije neisberjochten
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Berjocht
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Berjocht Opsjes
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Set alle berjochtensoarten nei: Út / Gearfetting / Hielendal
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Musykje ôfspielje by gearfette nijsberjochten
 STR_NEWS_MESSAGES_OFF                                           :Ut
 STR_NEWS_MESSAGES_SUMMARY                                       :Gearfetting
 STR_NEWS_MESSAGES_FULL                                          :Folslein
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Berjochttypes:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Oankomst fan earste reau op stasjon fan spyler
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Oankomst fan earste reau op stasjon fan tsjinstander
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Ûngelokken / rampen

@@ -436,7 +436,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sain/cerddoriae
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Neges/Adroddiad newyddion ddiwethaf
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Gosodiadau negeseuon
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Hanes negeseuon
 ############ range ends here
 
@@ -726,16 +725,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Hanes Ne
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Rhestr o'r negeseuon newyddion diweddaraf
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Neges
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Dangos Dewisiadau Negeseuon
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Gosod pob math o neges: I Ffwrdd / Crynodeb/ Yn Llawn
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Chwarae sain ar gyfer negeseuon newyddion cryno
 STR_NEWS_MESSAGES_OFF                                           :I Ffwrdd
 STR_NEWS_MESSAGES_SUMMARY                                       :Crynodeb
 STR_NEWS_MESSAGES_FULL                                          :Llawn
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Mathau Negeseuon
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Y cerbyd cyntaf yn cyrraedd gorsaf y chwaraewr
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Y cerbyd cyntaf yn cyrraedd gorsaf cystadleuydd
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Damweiniau / trychinebau

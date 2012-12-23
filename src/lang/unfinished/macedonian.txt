@@ -436,7 +436,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Звук/муз
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Последната порака/вест
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Поставки за пораки
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :порака историјата
 ############ range ends here
 
@@ -724,16 +723,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}пора
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Листа на последните вести пораки
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Порака
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Опции за пораки
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Намести сите типови на пораки на: Исклучување / Краток преглед / Целосна
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Пушти звук за сумирани вести пораки
 STR_NEWS_MESSAGES_OFF                                           :исклучен
 STR_NEWS_MESSAGES_SUMMARY                                       :резиме
 STR_NEWS_MESSAGES_FULL                                          :целосна
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Типови на пораки:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Пристигнување на првото возило на станицата на играчот
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Пристигнување на прво возило на конкурентска станица
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Несреќи / хаварии

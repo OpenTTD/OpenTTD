@@ -428,9 +428,7 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ВӐ
 # News message history
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Пӗлтерӳ
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Майлаштару пӗлтерӗвӗ
 STR_NEWS_MESSAGES_OFF                                           :Сӳнтер
 STR_NEWS_MESSAGES_SUMMARY                                       :Кӗске
 STR_NEWS_MESSAGES_FULL                                          :Тулли

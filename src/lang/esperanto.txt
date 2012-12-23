@@ -434,7 +434,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sono/muziko
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Lasta mesaĝo/novaĵo
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Mesaĝaj agordoj
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Mesaĝa Historio
 ############ range ends here
 
@@ -720,16 +719,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Mesaĝa 
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Listo da aktualaj novaĵoj
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mesaĝo
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Mesaĝaj opcioj
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Turnu ĉiujn mesaĝtipojn al: Ne / Resume/ Plene
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Ludu sonon por resumaj novaĵoj
 STR_NEWS_MESSAGES_OFF                                           :Ne
 STR_NEWS_MESSAGES_SUMMARY                                       :Resume
 STR_NEWS_MESSAGES_FULL                                          :Plene
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Mesaĝtipoj:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Unua veturilo atingas propran stacion
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Unua veturilo atingas konkurantan stacion
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Akcidentoj / katastrofoj

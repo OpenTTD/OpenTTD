@@ -437,7 +437,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Ljud/musik
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Senaste meddelandet/nyheten
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Meddelandeinställningar
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Meddelandehistorik
 ############ range ends here
 
@@ -727,16 +726,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Meddelan
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}En lista med de senaste nyheterna
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Meddelande
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Meddelandeinställningar
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Inställning för alla meddelandetyper (på/av/summarisk)
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Spela upp ljud för summariska nyhetsmeddelanden
 STR_NEWS_MESSAGES_OFF                                           :Av
 STR_NEWS_MESSAGES_SUMMARY                                       :Summarisk
 STR_NEWS_MESSAGES_FULL                                          :På
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Meddelandetyper:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Första fordonets ankomst till spelarens stn.
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Första fordonets ankomst till konkurrents stn.
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Olyckor / katastrofer

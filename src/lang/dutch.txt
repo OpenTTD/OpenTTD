@@ -439,7 +439,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Geluid/muziek
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Laatste (nieuws)bericht
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Berichtinstellingen
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berichtengeschiedenis
 ############ range ends here
 
@@ -729,16 +728,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Berichte
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Een lijst met recente nieuwsberichten
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Bericht
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Berichtopties
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Instelling voor alle berichtsoorten (Uit/Samengevat/Volledig)
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Speel een geluid af voor samengevatte nieuwsberichten
 STR_NEWS_MESSAGES_OFF                                           :Uit
 STR_NEWS_MESSAGES_SUMMARY                                       :Samengevat
 STR_NEWS_MESSAGES_FULL                                          :Volledig
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Berichtsoorten:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Eerste voertuig bij eigen station
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Eerste voertuig bij station van een concurrent
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Ongelukken/rampen

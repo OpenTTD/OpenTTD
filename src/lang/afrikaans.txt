@@ -437,7 +437,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Klank/musiek
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Laaste boodskap/nuus verslag
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Boodskap opsies
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Boodskap Geskidenis
 ############ range ends here
 
@@ -727,16 +726,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Boodskap
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}'n Lys van al die onlangs nuus boodskappe
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Boodskap
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Boodskap Opsies
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Stel alle boodskap tipes na: Af/Opsomming/Volle
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Speel geluid vir opsommige nuus boodskappe
 STR_NEWS_MESSAGES_OFF                                           :Af
 STR_NEWS_MESSAGES_SUMMARY                                       :Opsomming
 STR_NEWS_MESSAGES_FULL                                          :Vol
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Boodskap tipes:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Aankoms van eerste voertuig by speler se stasie
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Aankoms van eerste voertuig by mededinger se stasie
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Ongelukke / rampe

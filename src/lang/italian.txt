@@ -441,7 +441,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Suoni/musica
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Ultimo messaggio/notizia
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Impostazioni messaggi
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Cronologia messaggi
 ############ range ends here
 
@@ -731,16 +730,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Cronolog
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Elenco delle notizie recenti
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Messaggio
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Opzioni messaggi
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Impostazione per tutti i tipi di messaggio
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Riproduci un suono per le notizie ridotte a sommario
 STR_NEWS_MESSAGES_OFF                                           :No
 STR_NEWS_MESSAGES_SUMMARY                                       :Sommario
 STR_NEWS_MESSAGES_FULL                                          :Completo
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Tipi messaggi:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Arrivo del primo veicolo alle stazioni della compagnia
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Arrivo del primo veicolo alle stazioni di un avversario
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Incidenti / disastri

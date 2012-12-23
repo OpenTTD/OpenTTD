@@ -13,7 +13,6 @@
 #define NEWS_GUI_H
 
 void ShowLastNewsMessage();
-void ShowMessageOptions();
 void ShowMessageHistory();
 
 #endif /* NEWS_GUI_H */

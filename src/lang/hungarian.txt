@@ -499,7 +499,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Hang/zene
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Legutóbbi üzenet/újsághír
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Üzenetek beállításai
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Előző üzenetek
 ############ range ends here
 
@@ -790,16 +789,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Előző 
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Az előző hírüzenetek listája
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Üzenet
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Üzenetek beállításai
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Összes üzenettípus beállítása (ki / kivonat / teljes)
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Figyelmeztető hang lejátszása rövid üzenetnél
 STR_NEWS_MESSAGES_OFF                                           :Ki
 STR_NEWS_MESSAGES_SUMMARY                                       :Kivonat
 STR_NEWS_MESSAGES_FULL                                          :Teljes
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Üzenetfajták:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Első jármű megérkezése a játékos megállójába
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Első jármű megérkezése az ellenfél megállójába
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Balesetek / természeti csapások

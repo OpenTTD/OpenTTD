@@ -436,7 +436,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :صدا/موسی
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :گزارش آخرین پیام/خبر
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :تنظیمات پیغام ها
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :تاریخچه پیام ها
 ############ range ends here
 
@@ -725,16 +724,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}تاری
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}لیست آخرین پیام های اخباری
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}پیغام
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}انتخاب های پیغام ها
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}ثبت همه پیام ها به صورت : خاموش/خلاصه/کامل
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}پخش صدا برای پیام های خبری خلاصه
 STR_NEWS_MESSAGES_OFF                                           :خاموش
 STR_NEWS_MESSAGES_SUMMARY                                       :خلاصه
 STR_NEWS_MESSAGES_FULL                                          :کامل
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}انواع پیغام ها
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}رسیدن اولین وسیله نقلیه به یکی ازایستگاه های بازیکن
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}رسیدن اولین وسیله نقلیه به یکی ازایستگاه ها کامپوتر
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}حوادث / بلایا

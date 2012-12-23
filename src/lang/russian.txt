@@ -565,7 +565,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Звук/муз
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Последняя новость
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Настройки сообщений
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :История сообщений
 ############ range ends here
 
@@ -874,16 +873,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Исто
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Список недавних новостей
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Сообщение
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Настройки сообщений
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Установить все сообщения в Выкл./Кратко/Полно
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Проигрывать звук при получении новых сообщений
 STR_NEWS_MESSAGES_OFF                                           :Выкл
 STR_NEWS_MESSAGES_SUMMARY                                       :Кратко
 STR_NEWS_MESSAGES_FULL                                          :Полно
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Типы сообщений:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Первое транспортное средство игрока на станции
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Первое транспортное средство конкурента на станции
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Аварии и катастрофы

@@ -564,7 +564,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Звук/Муз
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Останнє повідомлення
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Налаштування повідомлень
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Історія повідомлень
 ############ range ends here
 
@@ -854,16 +853,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Істо
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Список останніх повідомлень
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Повідомлення
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Налаштування повідомлень
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Задати відображення всіх типів повідомлень: Не показувати / Скорочено / Повністю
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Звукове сповіщення для підсумкових новин
 STR_NEWS_MESSAGES_OFF                                           :Не показувати
 STR_NEWS_MESSAGES_SUMMARY                                       :Скорочено
 STR_NEWS_MESSAGES_FULL                                          :Повністю
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Типи повідомлень:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Прибуття першого транспорту на станцію гравця
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Прибуття першого транспорту на станцію конкурента
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Нещасні випадки / стихійні лиха

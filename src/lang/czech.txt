@@ -508,7 +508,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Zvuk/Hudba
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Poslední zpráva nebo článek
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Nastavení zpráv
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historie zpráv
 ############ range ends here
 
@@ -810,16 +809,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Historie
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Seznam předešlých zpráv
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Zpráva
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Možnosti zpráv
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Nastavení všech zpráv (zapnuty/vypnuty/stručně)
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Přehrát zvuk pro stručné novinové zprávy
 STR_NEWS_MESSAGES_OFF                                           :Vypnuto
 STR_NEWS_MESSAGES_SUMMARY                                       :Shrnutí
 STR_NEWS_MESSAGES_FULL                                          :Plná
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Typy zpráv:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Příjezd prvního vozidla do hráčovy stanice
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Příjezd prvního vozidla do konkurenční stanice
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Nehody a katastrofy

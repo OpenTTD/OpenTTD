@@ -429,7 +429,6 @@ STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {C
 
 # News message history
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Sendajo
 
 

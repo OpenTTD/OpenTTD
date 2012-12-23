@@ -439,7 +439,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :声音/音乐
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :最新消息/新闻
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :消息选项
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :消息历史
 ############ range ends here
 
@@ -728,16 +727,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}消息�
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}最新的新闻列表
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}消息
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}消息选项
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}将所有信息调整为：关闭/摘要/完全
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}为摘要的信息播放声音
 STR_NEWS_MESSAGES_OFF                                           :关闭
 STR_NEWS_MESSAGES_SUMMARY                                       :摘要
 STR_NEWS_MESSAGES_FULL                                          :完全
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}消息类型：
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}玩家车站的剪彩仪式
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}对手车站的剪彩仪式
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}事故/灾难

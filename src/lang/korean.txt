@@ -440,7 +440,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :효과음/배�
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :최근 메시지/뉴스 기록
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :메시지 설정
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :과거 메시지 목록
 ############ range ends here
 
@@ -730,16 +729,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}메시�
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}최근 뉴스 메시지의 기록입니다
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}메시지
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}메시지 설정
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}모든 타입의 메시지를 일괄변경: 끄기 / 요약 / 전체
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}메시지를 하단 상태표시줄에 요약하여 효과음과 함께 알려줍니다
 STR_NEWS_MESSAGES_OFF                                           :끄기
 STR_NEWS_MESSAGES_SUMMARY                                       :요약
 STR_NEWS_MESSAGES_FULL                                          :전체
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}메시지 종류:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}당신의 첫 차량 도착
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}경쟁사의 첫 차량 도착
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}사고 / 재앙

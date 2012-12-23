@@ -439,7 +439,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sound/music
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Last message/news report
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Message settings
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Message history
 ############ range ends here
 
@@ -729,16 +728,11 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Message 
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}A list of the recent news messages
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING5}
 
-# Message settings window
-STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Message
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Message Options
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Set all message types to: Off / Summary/ Full
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Play sound for summarised news messages
 STR_NEWS_MESSAGES_OFF                                           :Off
 STR_NEWS_MESSAGES_SUMMARY                                       :Summary
 STR_NEWS_MESSAGES_FULL                                          :Full
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Message types:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Arrival of first vehicle at player's station
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Arrival of first vehicle at competitor's station
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Accidents / disasters
@@ -755,6 +749,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Changes
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidies
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}General information
 
+STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Message
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{RAW_STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Citizens celebrate . . .{}First train arrives at {STATION}!

@@ -500,7 +500,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Ήχος/Μου
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Τελευταίο μήνυμα/αναφορά νέων
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Ρυθμίσεις μηνυμάτων
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Ιστορικό μηνυμάτων
 ############ range ends here
 
@@ -821,16 +820,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Ιστο
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Λίστα των πρόσφατων μηνυμάτων ειδήσεων
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Μήνυμα
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Επιλογές Μηνυμάτων
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Ρύθμιση όλων των τύπων μηνυμάτων σε: Απενεργοποιημένα / Περιλήψεις / Ολόκληρα
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Αναπαραγωγή ήχου για μηνύματα σε περιγραφή
 STR_NEWS_MESSAGES_OFF                                           :Απενεργοποιημένα
 STR_NEWS_MESSAGES_SUMMARY                                       :Περιλήψεις
 STR_NEWS_MESSAGES_FULL                                          :Ολόκληρα
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Τύποι μηνυμάτων:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Άφιξη πρώτου οχήματος σε σταθμό του παίκτη
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Άφιξη του πρώτου οχήματος σε σταθμό του αντιπάλου
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Ατυχήματα / καταστροφές

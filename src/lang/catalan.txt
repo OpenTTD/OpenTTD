@@ -440,7 +440,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :So/música
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Darrer missatge/notícia
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Preferències dels Missatges
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historial de Missatges
 ############ range ends here
 
@@ -730,16 +729,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Històri
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Llista de les notícies més recents
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Missatge
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Opcions de Missatges
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Ajusta tots els tipus de missatges a: Inactiu / Resum / Complet
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Emetre so per als nous missatges resumits
 STR_NEWS_MESSAGES_OFF                                           :Fora
 STR_NEWS_MESSAGES_SUMMARY                                       :Resum
 STR_NEWS_MESSAGES_FULL                                          :Complet
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Tipus de Missatges:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Arribada del 1er. vehicle a una estació pròpia
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Arribada del 1er. vehicle a una estació competidora
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Accidents / desastres

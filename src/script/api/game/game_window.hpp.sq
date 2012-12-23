@@ -24,7 +24,6 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WN_GAME_OPTIONS_AI,                        "WN_GAME_OPTIONS_AI");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WN_GAME_OPTIONS_ABOUT,                     "WN_GAME_OPTIONS_ABOUT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WN_GAME_OPTIONS_NEWGRF_STATE,              "WN_GAME_OPTIONS_NEWGRF_STATE");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WN_GAME_OPTIONS_MESSAGE_OPTION,            "WN_GAME_OPTIONS_MESSAGE_OPTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WN_GAME_OPTIONS_GAME_OPTIONS,              "WN_GAME_OPTIONS_GAME_OPTIONS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WN_GAME_OPTIONS_GAME_SETTINGS,             "WN_GAME_OPTIONS_GAME_SETTINGS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WN_QUERY_STRING,                           "WN_QUERY_STRING");
@@ -809,14 +808,6 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MH_STICKYBOX,                          "WID_MH_STICKYBOX");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MH_BACKGROUND,                         "WID_MH_BACKGROUND");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MH_SCROLLBAR,                          "WID_MH_SCROLLBAR");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MO_BACKGROUND,                         "WID_MO_BACKGROUND");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MO_LABEL,                              "WID_MO_LABEL");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MO_DROP_SUMMARY,                       "WID_MO_DROP_SUMMARY");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MO_LABEL_SUMMARY,                      "WID_MO_LABEL_SUMMARY");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MO_SOUNDTICKER,                        "WID_MO_SOUNDTICKER");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MO_SOUNDTICKER_LABEL,                  "WID_MO_SOUNDTICKER_LABEL");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MO_START_OPTION,                       "WID_MO_START_OPTION");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_MO_END_OPTION,                         "WID_MO_END_OPTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BO_CLASS_LIST,                         "WID_BO_CLASS_LIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BO_SCROLLBAR,                          "WID_BO_SCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BO_OBJECT_MATRIX,                      "WID_BO_OBJECT_MATRIX");

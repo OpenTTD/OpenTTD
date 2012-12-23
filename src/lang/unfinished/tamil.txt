@@ -431,7 +431,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :ஒலி/இ�
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :கடைசி செய்தி/செய்தி அறிவிக்கை
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :செய்தி அமைப்புகள்
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :செய்தி வரலாறு
 ############ range ends here
 
@@ -676,14 +675,11 @@ STR_MESSAGE_HISTORY                                             :{WHITE}செ�
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}சமீப செய்திகளின் பட்டியல்
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}செய்தி
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}செய்தி அமைப்புகள்
 STR_NEWS_MESSAGES_OFF                                           :நிறுத்து
 STR_NEWS_MESSAGES_SUMMARY                                       :தொகுப்பு
 STR_NEWS_MESSAGES_FULL                                          :முழு
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}செய்தி வகைகள்:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}விளையாடுபவரின் நிலையத்திற்கு முதல் வாகனம் வருகை புரிந்தது
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}போட்டியாளரின் நிலையத்திற்கு முதல் வாகனம் வருகை புரிந்தது
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}விபத்துகள் / பேரழிவுகள்

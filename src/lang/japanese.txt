@@ -436,7 +436,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :効果音／音
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :最後のメッセージとニュース
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :メッセージの設定
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :メッセージの履歴
 ############ range ends here
 
@@ -723,16 +722,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}メッ�
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}最近のニュースやメッセージのリストです。
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}メッセージ
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}メッセージの設定
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}全てのメッセージの表示を切り替え
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}ニュースを簡易表示するときに音を鳴らす。
 STR_NEWS_MESSAGES_OFF                                           :切
 STR_NEWS_MESSAGES_SUMMARY                                       :簡易
 STR_NEWS_MESSAGES_FULL                                          :完全
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}メッセージの表示方法
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}自分の新しい駅に初めて車両が到着
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}競争相手の新しい駅に初めて車両が到着
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}事故／災害

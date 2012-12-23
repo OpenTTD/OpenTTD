@@ -436,7 +436,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Fuaim/ceol
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Teachtaireacht/tuairisc nuachta deiridh
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Socruithe teachtaireachtaí
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Stair na dteachtaireachtaí
 ############ range ends here
 
@@ -724,16 +723,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Stair na
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Liosta de gach teachtaireacht nuachta le déanaí
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Teachtaireacht
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Roghanna Teachtaireachtaí
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Socraigh gach cineál teachtaireacht go: As / Achoimre/ Iomlán
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Seinn fuaim le haghaidh teachtaireachtaí nuachta achomair
 STR_NEWS_MESSAGES_OFF                                           :As
 STR_NEWS_MESSAGES_SUMMARY                                       :Achoimre
 STR_NEWS_MESSAGES_FULL                                          :Iomlán
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Cineálacha teachtaireachta:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Tagann an chéad fheiticil isteach i stáisiún imreora
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Tagann an chéad fheithicil isteach i stáisiún iomaitheora
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Timpistí / tubaistí

@@ -364,7 +364,6 @@ STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {C
 
 # News message history
 
-# Message settings window
 
 
 

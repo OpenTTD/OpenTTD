@@ -535,7 +535,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Zvuk/glazba
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Poslijednja poruka/vijest
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Postavke poruka
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Povijest poruka
 ############ range ends here
 
@@ -825,16 +824,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Povijest
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Popis nedavnih novinskih poruka
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Poruka
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Postavke poruka
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Postavi sve vrste poruka na: Isključeno / Sažeto / Potpuno
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Odsviraj zvuk za sve sažete novinske poruke
 STR_NEWS_MESSAGES_OFF                                           :Isključeno
 STR_NEWS_MESSAGES_SUMMARY                                       :Sažetak
 STR_NEWS_MESSAGES_FULL                                          :Puno
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Vrste poruka:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Dolazak prvog vozila na postaju igrača
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Dolazak prvog vozila na postaju suparnika
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Nesreće / katastrofe

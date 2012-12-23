@@ -358,7 +358,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :ध्वनी
 ############ range ends here
 
 ############ range for message menu starts
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :निरोपांचे पर्याय
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :निरोपांचा इतिहास
 ############ range ends here
 
@@ -452,7 +451,6 @@ STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {C
 # News message history
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 
 
 

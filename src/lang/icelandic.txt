@@ -431,7 +431,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Hljóð/tónlis
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Síðustu skilaboð/frétt
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Skilaboðastillingar
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Saga skilaboða
 ############ range ends here
 
@@ -713,16 +712,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Saga ski
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Listi yfir nýlegar fréttir
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Skilaboð
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Skilaboðastillingar
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Stillingar fyrir allar gerðir skilaboða (á/af/úrtak)
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Spila hljóð með fréttaúrtaki
 STR_NEWS_MESSAGES_OFF                                           :Af
 STR_NEWS_MESSAGES_SUMMARY                                       :Úrtak
 STR_NEWS_MESSAGES_FULL                                          :Allt
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Skilaboðategundir:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Aðkoma fyrsta farartækis á stöð leikmanns
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Aðkoma fyrsta farartækis á stöð andstæðings
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Slys / hamfarir

@@ -439,7 +439,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Âm thanh/nhạ
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Thư/bản tin cuối cùng
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Cài đặt thông báo
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Thông báo cũ
 ############ range ends here
 
@@ -729,16 +728,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Lịch S
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Danh sách những tin tức gần đây
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Thông Điệp
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Tùy Chọn Thông Điệp
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Đặt tất cả loại thông điệp thành: Tắt/ Giản Lược/ Đủ
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Phát âm thanh khi có thông báo tổng kết
 STR_NEWS_MESSAGES_OFF                                           :Tắt
 STR_NEWS_MESSAGES_SUMMARY                                       :Giản Lược
 STR_NEWS_MESSAGES_FULL                                          :Đủ
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Loại thông báo:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Phương tiện đầu tiên đỗ trạm chúng ta
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Phương tiện đầu tiền đỗ trạm đối thủ
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Tai nạn / thiên tai

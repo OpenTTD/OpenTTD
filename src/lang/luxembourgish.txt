@@ -438,7 +438,6 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sound/Musék
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Läscht Meldung/Neiegkeet
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Meldungsanstellungen
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Meldungshistorie
 ############ range ends here
 
@@ -728,16 +727,12 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Meldungs
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Eng Lëscht vun den leschten Meldungen
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
-# Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Meldung
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Meldungsoptiounen
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Stellt all d'Meldungstypen op: Aus / Resumé / Ganz
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Sound ofspillen fir zesummegefaassten Meldungen
 STR_NEWS_MESSAGES_OFF                                           :Aus
 STR_NEWS_MESSAGES_SUMMARY                                       :Resumé
 STR_NEWS_MESSAGES_FULL                                          :Ganz
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Meldungstyp:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Ukonft vum éischten Gefiert op enger Spillerstatioun
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Ukonft vum éischten Gefiert op enger Géigenspillerstatioun
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Accidenter / Katastrophen
