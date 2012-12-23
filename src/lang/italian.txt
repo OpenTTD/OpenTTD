@@ -2788,9 +2788,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Ricerca di arch
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Elenco cartelli - {COMMA} cartell{P o i}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Maiuscole/minuscole
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Svuota filtro
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Attiva/disattiva la corrispondenza di lettere maiuscole/minuscole nel confronto fra i nomi dei cartelli e il filtro
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Svuota la casella del filtro
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Modifica testo del cartello

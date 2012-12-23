@@ -2807,9 +2807,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Σάρωση γ
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Λίστα πινακίδων - {COMMA} Πινακίδ{P α ες}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Αντιστοίχιση πεζών/κεφαλαίων
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Καθαρισμός φίλτρου
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Εναλλαγή ταύτισης μεγέθους κατά τη σύγκρισης ονομάτων πινακίδων με τη συμβολοσειρά αναζήτησης
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Καθαρισμός κειμένου φίλτρου
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Αλλαγή κειμένου πινακίδας

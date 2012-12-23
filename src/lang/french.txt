@@ -2761,9 +2761,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Recherche des a
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste des panneaux - {COMMA} panneau{P "" x}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Respecter la casse
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Enlever le filtre
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Activer ou non le respect de la casse pour la comparaison entre le texte des panneaux et l'entrée dans le filtre
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Enlever le filtre
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Éditer le texte du panneau

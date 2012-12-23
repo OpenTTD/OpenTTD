@@ -2884,9 +2884,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Шукаю ар
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список позначень - {COMMA} Позначен{P ня ня ь}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Регістр
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Очистити фільтр
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Перемкнути регістр при порівнянні назви позначок з фільтром
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Очистити рядок фільтру
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Редагування напису

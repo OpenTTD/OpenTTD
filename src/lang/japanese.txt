@@ -2454,9 +2454,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :アーカイブ
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}標示のリスト - {COMMA}つの標示
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}一致
-STR_SIGN_LIST_CLEAR                                             :{BLACK}フィルターを消去
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}フィルターの適用方法を一致/不一致で切り替える
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}フィルターを消去する
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}標示のテキストを編集

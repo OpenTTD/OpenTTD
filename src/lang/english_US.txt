@@ -2760,9 +2760,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Scanning for ar
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Sign List - {COMMA} Sign{P "" s}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Match case
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Clear filter
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Toggle matching case when comparing sign names against the filter string
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Clear filter string
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edit sign text

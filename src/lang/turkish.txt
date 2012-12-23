@@ -2578,9 +2578,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Arşivler taran
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Tabela Listesi - {COMMA} Tabela
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Büyük/küçük harf eşleştir
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Süzgeci temizle
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Tabela adlarını süzgeç metniyle karşılaştırırken büyük/küçük harf eşleştirmeyi aç/kapa
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Süzgeç metnini temizle
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Tabelayı değiştir

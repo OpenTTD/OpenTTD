@@ -2633,9 +2633,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Arhiivide otsim
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Siltide nimekiri - {COMMA} Silt{P "" i}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Tõstutundlik
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Tühista filter
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Lülita sisse/välja tõstutundlikkuse kasutamine siltide filtreerimisel
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Tühista teksti filter
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Sildi muutmine

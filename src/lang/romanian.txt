@@ -2638,9 +2638,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Scanez pentru a
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de semne - {COMMA} Semne
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Potrivire majuscule/minuscule
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Şterge filtrul
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Comută potrivirea de majuscule/minuscule când se compara numele semnelor cu textul filtrului
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Şterge textul filtrului
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editează textul semnului

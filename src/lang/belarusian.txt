@@ -3093,9 +3093,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Пошук ар
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Сьпіс таблічак: {COMMA} табліч{P ка кi ак}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Рэґiстр
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Ачысьціць фільтар
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Пераключыць праверку рэґістра пры параўнанні назваў таблiчак з фільтрам
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Ачысьціць фільтар
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Зьмяніць надпіс на таблічцы

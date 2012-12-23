@@ -2760,9 +2760,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Skannataan arki
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Kylttilista - {COMMA} kylttiä
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Kirjainkoon täsmäys
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Tyhjennä suodatin
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Kytke kirjainkoon täsmäys kun verrataan kylttien nimiä suodatintekstiin
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Tyhjennä suodatinteksti
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Muokkaa kyltin tekstiä.

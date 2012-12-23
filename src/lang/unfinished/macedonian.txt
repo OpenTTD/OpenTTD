@@ -1259,9 +1259,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<валиден
 
 # Sign list window
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Совпаѓање на
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Исчисти филтер
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Вклучи појавување случај кога се споредуваат знак имиња против низа филтер
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Исчисти филтер низа
 
 # Sign window
 

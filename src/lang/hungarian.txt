@@ -2772,9 +2772,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Archív fájlok
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Kis- és nagybetűk megkülönböztetése
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Szűrő törlése
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Kis- és nagybetűk megkülönböztetése a feliratok szövegei és a szűrő kulcsszó összehasonlítása közben
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Szűrő kulcsszó törlése
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Felirat szerkesztése

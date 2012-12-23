@@ -2723,9 +2723,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Archiver scanne
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Schëlderlëscht - {COMMA} Schëld{P "" er}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Zoutreffenden Fall
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Filter läschen
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Zoutreffend Fäll wiesselen wann Schëldernimm mam String-Filter verglach ginn
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Filter string läschen
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Schëldtext änneren

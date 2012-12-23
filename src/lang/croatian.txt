@@ -2856,9 +2856,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Tražim arhive
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Popis znakova - {COMMA} znak{P "" a ova}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Velika i mala slova
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Poništi filter
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Koristi/ne koristi velika i mala slova kod usporedbe imena oznaka sa imenima sa slijedom filtera
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Poništi slijed filtera
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Izmijeni tekst znaka

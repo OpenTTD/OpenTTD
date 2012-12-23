@@ -1005,7 +1005,6 @@ STR_NEWGRF_LIST_NONE                                            :Ҫук
 # NewGRF scanning window
 
 # Sign list window
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Филтр тасат
 
 # Sign window
 

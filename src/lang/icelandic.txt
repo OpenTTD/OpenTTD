@@ -2377,9 +2377,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid indust
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Merkjalisti - {COMMA} Merki{P "" s}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Stemma há-/lágstafi
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Hreinsa síu
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Skifta á milli há-/lágstafa stemmingu þegar nöfn skilta eru borin saman við síaðan texta
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Hreinsa síu
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Breyta texta skiltis

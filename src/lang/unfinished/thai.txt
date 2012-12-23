@@ -2334,8 +2334,6 @@ STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}ตร�
 STR_NEWGRF_SCAN_ARCHIVES                                        :ตรวจหาแฟ้มข้อมูล
 
 # Sign list window
-STR_SIGN_LIST_CLEAR                                             :{BLACK}ล้างตัวกรอง
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}ยกเลิกคำกรอง
 
 # Sign window
 

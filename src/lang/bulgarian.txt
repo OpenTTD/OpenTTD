@@ -2419,8 +2419,6 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невалдн
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Списък с табели - {COMMA} Табел{P а и}
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Изчисти филтър
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Изчисти филтър
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Промяна текста на знака

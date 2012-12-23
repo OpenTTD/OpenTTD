@@ -2449,9 +2449,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :審視檔案中
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}標誌清單 - 標誌 {COMMA} 個
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}符合大小寫
-STR_SIGN_LIST_CLEAR                                             :{BLACK}清除過濾條件
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}切換比對標誌名稱是否與篩選字串相符時是否要符合大小寫
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}清除篩選字串
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}編輯標誌文字

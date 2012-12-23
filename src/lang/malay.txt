@@ -2635,9 +2635,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Mengimbas arkib
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Senarai Papan Tanda - {COMMA} Papan Tanda
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Padankan kes
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Padamkan saringan
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Papar/padam kes yang hampir sama apabila membandingkan nama tanda terhadap rentetan penapis
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Kosongkan rentetan penapis
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Tukarkan teks papan tanda

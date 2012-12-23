@@ -2710,9 +2710,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Pretraživanje 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Spisak Znakova - {COMMA} Znak{P "" a ova}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Podudaranje vel. slova
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Ukloni filter
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Uključuje/isključuje podudaranje malih i velikih slova tokom poređenja naziva znakova sa filter niskom
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Uklanja filter nisku
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Unos teksta znaka

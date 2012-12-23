@@ -2516,9 +2516,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :جستجوی د
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}لیست امضاء - {COMMA} امضاء{P "" "ها"}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}حالت تطبیق
-STR_SIGN_LIST_CLEAR                                             :{BLACK}پاک کردن همه فیلترها
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}تاثیر/عدم تاثیر کوچک یا بزرگ بودن حروف برای فیلتر کردن
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}پاک کردن متن فیلتر
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}تغییر نام علامت

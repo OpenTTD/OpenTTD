@@ -2616,9 +2616,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Procurar por ar
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Sinais - {COMMA} Sina{P l is}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Maiúsculas/Minúsculas
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Apagar filtro
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Ligar/desligar correspondência de maiúsculas/minúsculas com a frase a filtrar
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Apagar frase filtro
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar texto do sinal

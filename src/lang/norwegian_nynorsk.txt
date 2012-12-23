@@ -2517,9 +2517,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Skannar arkiv
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} Skilt{P "" er}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Skriftformgjenkjenning
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Rens filter
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Byt mellom skriftformgjenkjennelse ved sammenligning av skiltnavn mot filterstrengen
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Rens filterstreng
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Skriv inn skilttekst

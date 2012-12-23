@@ -2761,9 +2761,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :자료 검색
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}팻말 목록 - 팻말 {COMMA}개
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}대소문자 구분
-STR_SIGN_LIST_CLEAR                                             :{BLACK}검색 초기화
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}팻말의 이름을 비교할 때 검색 문자열의 대소문자 구분 여부를 선택합니다
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}검색 문자열을 초기화합니다
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}팻말 내용 고치기

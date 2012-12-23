@@ -2533,9 +2533,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Memindai arsip
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Daftar tanda - {COMMA} Tanda
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Persis besar-kecil
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Hapus penyaringan
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Hidup matikan pengecekan besar-kecil huruf pada pengenal dengan kotak pencarian
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Hapus penyaringan
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ubah tulisan di tanda pengenal

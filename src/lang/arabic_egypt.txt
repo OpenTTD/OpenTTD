@@ -2488,9 +2488,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :البحث لل
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}قائمة العلامات - {COMMA} علامة
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}طابق الحالة
-STR_SIGN_LIST_CLEAR                                             :{BLACK}امسح الفلتر
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}اظهر الحالات المتشابهه عند مقارنة اسماء العلامات بالفلاتر
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}امسح الفلتر
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}عدل نص العلامة

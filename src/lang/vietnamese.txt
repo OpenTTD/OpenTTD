@@ -2730,9 +2730,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Đang quét t�
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Danh Sách Biển Hiệu - {COMMA} Biển Hiệu
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Giống nhau
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Xóa bộ lọc
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Bật/tắt so sánh hoa thường tên biển hiệu với chuỗi nhập
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Xóa chuỗi lọc
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Sửa biển hiệu

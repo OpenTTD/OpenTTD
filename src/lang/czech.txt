@@ -2816,9 +2816,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Hledám archivy
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisků - {COMMA} popis{P ek ky ků}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Shoda
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Čistý filtr
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Přepne rozlišování velikosti písmen při filtrování popisků
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Vyčisti filtr
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Upravit text popisku

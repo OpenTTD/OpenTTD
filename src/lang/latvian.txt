@@ -2727,9 +2727,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Skenē arhīvus
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zīmju saraksts - {COMMA} zīm{P e es ju}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Saskaņot lielos/mazos burtus
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Notīrīt filtru
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Pārslēgt lielo/mazo burtu ievērošanu, filtrējot zīmju nosaukumus
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Notīrīt filtra virkni
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Labot zīmi

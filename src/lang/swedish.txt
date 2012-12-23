@@ -2728,9 +2728,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Skannar efter a
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skyltlista - {COMMA} Skylt{P "" ar}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Matcha VERSALER/gemener
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Rensa sökfilter
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Slå på/av matchning av VERSALER/gemener när skyltnamn matchas mot sökfiltret
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Rensa sökfilter
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ändra skylttext

@@ -2836,9 +2836,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Iskanje arhivov
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam oznak - {COMMA} oznak{P a i e ""}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Ujemanje začetnic
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Počisti filter
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Vključi ujemanje začetnic pri primerjanju imen znakov s filtrom
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Počisti vrstico filtra
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Uredi znak

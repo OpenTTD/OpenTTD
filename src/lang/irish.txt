@@ -2421,9 +2421,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<tionscal neamh
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liosta Comhartaí - {COMMA} {P Ch Ch Ch gC C}omhartha
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Meaitseáil an cás
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Glan scagaire
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Scoránaigh idir an cás a mheaitseáil agus ainmneacha comharthaí á gcur i gcomparáid leis an teaghrán scagtha
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Glan teaghrán scagtha
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Cuir téacs an chomhartha in eagar

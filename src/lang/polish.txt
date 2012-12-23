@@ -3140,9 +3140,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Skanowanie w po
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista napisów - {COMMA} napis{P "" y ów}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Wielkość znaków
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Czyść filtr
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Przełącza uwzględnianie wielkości znaków przy porównywaniu tekstu napisu z filtrem
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Czyści pole filtru
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edycja tekstu napisu

@@ -2769,9 +2769,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Skenovanie arch
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popis{P "" y ov}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Vyžadovať správnu veľkosť písmen
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Zmazať filter
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Brať/nebrať do úvahy veľkosť písmen pri porovnávaní textu popisov s filtrovacím reťazcom
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Zmazať filtrovací reťazec
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Upravit text popisu

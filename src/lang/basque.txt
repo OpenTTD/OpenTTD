@@ -2759,9 +2759,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Fitxategiak bil
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seinale zerrenda - {COMMA} Seinaleak
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Bat egin maiuskula eta minuskulak
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Iragazkia garbitu
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Bateragarritasuna aldatu seinale izenak soka iragazkiarekin alderatzekoan
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Lokarri iragazkia garbitu
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Seinalearen testua aldatu

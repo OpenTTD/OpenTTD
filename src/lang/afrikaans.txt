@@ -2661,9 +2661,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Skandering van 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Teken Lys - {COMMA} Teken{P "" s}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Ooreenstemmende case
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Maak Filter Skoon
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Skakel ooreenstemmende kas wanneer teken naam vergelyk word teen die filter string
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Maak filter string skoon
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Redigeer teken teks

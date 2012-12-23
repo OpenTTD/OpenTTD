@@ -2577,9 +2577,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Skanner etter a
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} skilt
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Skriftformgjenkjennelse
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Rens filter
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Veksle mellom skriftformgjenkjennelse ved sammenligning av skiltnavn mot filterstrengen
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Rens filterstreng
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Skriv inn skilttekst

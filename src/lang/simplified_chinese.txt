@@ -2556,9 +2556,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :正在扫描压
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}标志列表 - {COMMA} 个标志
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}符合大小写
-STR_SIGN_LIST_CLEAR                                             :{BLACK}消除过滤条件
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}显示大小写符合过滤字符串的标志列表
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}清除过滤字符串
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}标记标志文字

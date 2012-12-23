@@ -2918,9 +2918,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Ieškoma archyv
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Ženklų sąrašas - {COMMA} ženkl{P as ai ų}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Tikrinti didž./maž. raides
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Panaikinti filtrą
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Įjungti/išjungti didžiųjų raidžių tikrinimą kai ieškoma stočių vardų pagal filtrą
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Panaikinti filtrą
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Redaguoti ženklo tekstą

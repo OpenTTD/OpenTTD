@@ -2718,9 +2718,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Procurando arqu
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Placas - {COMMA} Placa{P "" s}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Diferenciar caixa alta
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Limpar filtro
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Ativa/Desativa a diferenciação de caixa alta na comparação dos nomes pelo filtro
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Limpar filtro
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar texto da placa

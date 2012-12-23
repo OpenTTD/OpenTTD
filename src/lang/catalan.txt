@@ -2761,9 +2761,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Escanejant arxi
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} Senyal{P "" s}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Coincideix Majúscules/Minúscules
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Neteja el filtre
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Commuta minúscules/majúscules en comparar els noms de les senyals contra la cadena filtrant
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Neteja la cadena de filtre
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edita el text de la senyal

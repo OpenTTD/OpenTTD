@@ -2678,9 +2678,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Scanner for ark
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste over skilte - {COMMA} Skilt{P "" e}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Match store og små bogstaver
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Slet filter
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Vis matchende stort/lille bogstav når der sammenlignes skiltenavne med filter teksten
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Slet filter streng
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ændre skiltets tekst

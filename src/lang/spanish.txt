@@ -2761,9 +2761,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Comprobando arc
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de carteles - {COMMA} Cartel{P "" es}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Mayúsculas/minúsculas
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Borrar filtro
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Activa/desactiva la comprobación de mayúsculas y minúsculas al filtrar la lista de carteles
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Borrar texto de filtrado
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar texto del cartel

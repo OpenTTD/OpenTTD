@@ -2399,9 +2399,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Trovas por arĥ
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Signolisto - {COMMA} Signo{P "" j}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Parigu kazon
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Viŝu filtrilo
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Aktivu/Malaktivu parigan kazon dum komparanta signajn nomojn kontraŭ la filtra teksto
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Viŝu filtrotekston
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ŝanĝu afiŝan tekston

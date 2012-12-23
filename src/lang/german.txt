@@ -2760,9 +2760,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Archivdateien w
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Schilderliste ({COMMA} Schild{P "" er})
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Groß-/Kleinschreibung beachten
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Suchbegriff löschen
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Umschalten zwischen Beachtung und Nichtbeachtung der Groß- und Kleinschreibung beim Vergleich von Schildern mit dem Suchbegriff
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Suchbegriff löschen
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Schildtext ändern

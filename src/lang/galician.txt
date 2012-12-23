@@ -2285,7 +2285,6 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Sinais - {COMMA} Sina{P l is}
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Borrar filtro
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edita lo texto do sinal

@@ -2549,9 +2549,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Sganio am archi
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Rhestr Arwyddion - {COMMA} Arwydd
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Cydweddu priflythrennu
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Clirio'r hidlydd
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Toglo cydweddu prif lythrennau pan yn cymharu enwau arwyddion yn erbyn y llinyn hidlo
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Clirio'r llinyn hidlo
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Golygu testun arwydd

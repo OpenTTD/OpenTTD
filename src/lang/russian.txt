@@ -2940,9 +2940,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Поиск ар
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список табличек - {COMMA} таблич{P ка ки ек}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Регистр
-STR_SIGN_LIST_CLEAR                                             :{BLACK}Очистить фильтр
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Переключить проверку регистра при сравнении названий табличек с фильтром
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Очистить фильтр
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Изменить текст таблички
