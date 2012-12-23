@@ -217,6 +217,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} fot
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Sökfilter:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriv in sökfilter
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Skriv in ett sökord att filtrera listan efter
 
@@ -1101,6 +1102,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Höger
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Räntenivå: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Driftkostnader: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Styr hur ofta otillräckligt servade fordon kan få motorstopp
+STR_CONFIG_SETTING_RECESSIONS                                   :Lågkonjunkturer: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Om det är aktiverat så kan lågkonjunkturer uppstå med ett antal års mellanrum. Under en lågkonjunktur är all produktion avsevärt lägre (men återgår till det normala när lågkonjunkturen är över)
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofer: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Välj hur mycket ett företags oväsen och miljöpåverkan ska påverka dess anseende och möjlighet till vidare byggnationer i området
 
@@ -1169,10 +1173,10 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Vägfordonsköe
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Gör så att vägfordon väntar framför ett upptaget genomfarts-stopp tills dess att det är ledigt.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Scrolla vyn när musen är vid kanten: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :När det är aktiverat börjar vyer scrolla när muspekaren är nära fönstrets kant
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :avstängd
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :huvudvy, endast helskärm
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :huvudvy
-STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :alla vyfönster
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Avstängd
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Huvudvy, endast helskärm
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Huvudvy
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Alla vyfönster
 STR_CONFIG_SETTING_BRIBE                                        :Tillåt mutning av de lokala myndigheterna: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Tillåt företag att försöka muta de lokala myndigheterna. Om mutan upptäcks av en inspektör kommer företaget inte ha möjlighet att verka i staden i sex månader
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tillåt köp av exklusiva transporträttigheter: {STRING}
@@ -1190,9 +1194,9 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Ställ in relat
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Antal flygplanskrascher: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Ställ in hur stor risken för en flygolycka ska vara
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :inga
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reducerad
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Inga
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reducerad
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillåt genomfarts-stopp på stadsägda vägar: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Tillåt konstruktion av genomfarts-stopp på stadsägda vägar
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Tillåt dina fordon att köra genom motståndarens hållplatser: {STRING}
@@ -1212,7 +1216,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Varna om fordon
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Aktiverar meddelanden om fordon som är oförmögna att hitta vägen till deras destination.
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Granska fordonens destinationer: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Om det är aktiverat så kontrolleras fordonens order periodiskt och när uppenbara problem identifieras rapporteras detta med ett nyhetsmeddelande
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nej
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nej
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ja, förutom för stannade fordon
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Ja, för alla fordon
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varna om ett fordons inkomst är negativ: {STRING}
@@ -1295,6 +1299,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Avstängd
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Mushjulshastighet: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontrollera känsligheten hos skrollning med mushjulet
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dubbelklick
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enkelklick (omedelbart)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Högerklicksemulering: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Välj metod för att emulera klick med musens högra knapp
@@ -1320,10 +1325,10 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pausa automatis
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Om det är aktiverat kommer OpenTTD automatiskt att pausa vid start av ett nytt spel, så att kartan kan studeras noggrannare
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :När spelet är pausat, tillåt: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Välj vilka handlingar som är tillåtna att utföra medan spelet är pausat
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :inga åtgärder
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :allt förutom att bygga
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :allt förutom landskapsarkitektur
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :alla åtgärder
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Inga åtgärder
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Allt förutom att bygga
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Allt förutom landskapsarkitektur
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Alla åtgärder
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Använd den avancerade fordonslistan: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Möjliggör användning av avancerade fordonslistor för gruppering av fordon
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Använd lastningsindikatorer: {STRING}
@@ -1426,10 +1431,10 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alla
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Vägnätslayout för nya städer: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Layout för städernas vägnät
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :standard
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :bättre vägar
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Bättre vägar
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 rutnät
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 rutnät
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :slumpmässig
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Slumpmässig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Städer tillåts bygga vägar: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Tillåt städer att bygga vägar för att kunna växa. Stäng av för att hindra städernas lokala myndigheter från att själva bygga vägar
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Städer är tillåtna att bygga plankorsningar: {STRING}
@@ -1438,15 +1443,15 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Tillåt stadsko
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Med denna inställning avstängd kan det finnas max två flygplatser i varje stad. Med inställningen påslagen begränsas antalet flygplatser i en stad istället av vilken bullernivå staden accepterar, vilket styrs av populationen, flygplatsens storlek och avstånd till staden
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Grunda städer i spelet: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Om denna inställning aktiveras blir det möjligt för spelare att grunda nya städer i spelet
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :förbjuden
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tillåten
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tillåten, vanlig stads-layout
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Förbjuden
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Tillåten
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Tillåten, vanlig stads-layout
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Placering av träd i spelläge: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Kontrollera den slumpmässiga uppkomsten av träd under spelets gång. Detta kan påverka industrier som är beroende av växande träd, till exempel sågverk
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :inga {RED}(förstör sågverk)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :bara i regnskogar
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :överallt
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Inga {RED}(förstör sågverk)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Bara i regnskogar
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Överallt
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Verktygsradens position: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Verktygsradens horisontella position i skärmens överkant

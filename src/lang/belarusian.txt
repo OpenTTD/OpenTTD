@@ -591,8 +591,8 @@ STR_SORT_BY_LIFE_TIME                                           :Рэшткав�
 STR_SORT_BY_TIMETABLE_DELAY                                     :Адставаньне ад ґрафіку
 STR_SORT_BY_FACILITY                                            :Тып станцыі
 STR_SORT_BY_WAITING                                             :Коль-ць грузу на станцыі
-STR_SORT_BY_RATING_MAX                                          :Найвышэйшы рэйтынг
-STR_SORT_BY_RATING_MIN                                          :Ніжэйшы рэйтынг
+STR_SORT_BY_RATING_MAX                                          :Найвышэйшы рэйтынґ
+STR_SORT_BY_RATING_MIN                                          :Ніжэйшы рэйтынґ
 STR_SORT_BY_ENGINE_ID                                           :Назва, серыя
 STR_SORT_BY_COST                                                :Кошт
 STR_SORT_BY_POWER                                               :Магутнасьць
@@ -615,7 +615,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Сьпi�
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Паказаць фінансавую інфармацыю кампаніі
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Паказаць агульную інфармацыю аб кампаніі
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Паказаць ґрафiкi
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Паказаць рэйтынгі кампаніяў
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Паказаць рэйтынґі кампаніяў
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Сьпіс існуючых прадпрыемстваў; заснаваньне новых
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Сьпіс цягнікоў. Ctrl+клік пераключае адлюстраваньне па групах
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Сьпіс аўтатранспарту. Ctrl+клік пераключае адлюстраваньне па групах
@@ -703,14 +703,14 @@ STR_SUBSIDIES_MENU_GOAL                                         :Бягучыя 
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Ґрафік прыбытку
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Ґрафік даходу
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Ґрафік дастаўленага грузу
-STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Ґрафік рэйтынгу кампаніі
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Ґрафік рэйтынґу кампаніі
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Ґрафік вартасьці кампаніі
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Ґрафік аплаты перавозак
 ############ range ends here
 
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Табліца фірмаў
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Дэталізаваны рэйтынг кампаніі
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Дэталізаваны рэйтынґ кампаніі
 STR_GRAPH_MENU_HIGHSCORE                                        :Табліца рэкордаў
 ############ range ends here
 
@@ -844,7 +844,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Ґрафік аперацыйнага прыбытку
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Ґрафік даходу
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Колькасьць перавезеных грузаў
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Рэйтынг кампаніі (макс. = 1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Рэйтынґ кампаніі (макс. = 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Вартасьць кампаніі
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Тарыфы на перавозку грузаў
@@ -857,7 +857,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Схав
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Уключыць/выключыць адлюстраваньне грузу на ґрафіку
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
-STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Паказаць складнікі рэйтынгу
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Паказаць складнікі рэйтынґу
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Леґенда
@@ -877,7 +877,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Прэзідэ�
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Маґнат
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Рэйтынг у дэталях
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Рэйтынґ у дэталях
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Дэталі
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -1418,28 +1418,28 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :леваруч
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :ў цэнтры
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :праваруч
 
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максімальная сума пазыкі: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максімальная сума пазыкі для кампаніі (без уліку інфляцыі)
-STR_CONFIG_SETTING_INTEREST_RATE                                :Працэнтная стаўка: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Працэнтная стаўка па пазыках; таксама кантралюе інфляцыю, калі тая ўключана
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максымальная сума пазыкі: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максымальная сума пазыкі для кампаніі (без уліку інфляцыі)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Адсоткавая стаўка: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Адсоткавая стаўка па пазыках; таксама кантралюе інфляцыю, калі тая ўключана
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Эксплуатацыйныя выдаткі: {STRING}
-STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Усталюйце ўзровень абслугоўваньня і эксплуатацыйныя выдаткі на транспарт і інфраструктуру
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Хуткасць будаўніцтва: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Абмяжуйце колькасць будаўнічых мерапрыемстваў для ШІ
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Усталюйце ўзровень абслугоўваньня й эксплуатацыйныя выдаткі на транспарт й інфраструктуру
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Хуткасьць будаўніцтва: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Абмяжуйце колькасьць будаўнічых мэрапрыемстваў для ШІ
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Паломкі транспарта: {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Задайце частасць паломак недастаткова якасна абслужанага транспарта
-STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Множнік субсідый: {STRING}
-STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Усталюйце множнік аплаты за перавозкі, якія субсідуюцца
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Задайце частасьць паломак недастаткова якасна абслужанага транспарта
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Множнік субсыдыяў: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Усталюйце множнік аплаты за перавозкі, якія субсыдуюцца
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Выдаткі на будаўніцтва: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Усталюйце ўзровень выдаткаў на будаўніцтва і набыццё
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Усталюйце ўзровень выдаткаў на будаўніцтва й набыцьцё
 STR_CONFIG_SETTING_RECESSIONS                                   :Спады: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Калі ўключана, спад можа наставаць раз у некалькі гадоў. Падчас спаду ўвесь аб'ём вытворчасці значна ніжэй (ён вяртаецца да ранейшага ўзроўня, калі спад сканчаецца)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Калі ўключана, спад можа наставаць раз у некалькі гадоў. Падчас спаду ўвесь аб'ём вытворчасьці значна ніжэй (ён вяртаецца да ранейшага ўзроўня, калі спад сканчаецца)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Забараніць разварот цягнікоў на станцыях: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Калі ўключана, цягнікі не будуць заварочвацца на прахадных станцыях, калі ёсць карацейшы шлях да наступнага пункта прызначэньня, што не патрабуе развароту
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Калі ўключана, цягнікі ня будуць заварочвацца на прахадных станцыях, калі ёсць карацейшы шлях да наступнага пункта прызначэньня, што не патрабуе развароту
 STR_CONFIG_SETTING_DISASTERS                                    :Бедствы: {STRING}
-STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Пераключыце бедствы, якія могуць час ад часу блякаваць ці знішчаць транспартныя сродкі ці інфраструктуру
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Стаўленне гарадской рады да рэструктурызацыі наваколляў: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Выберыце ўзровень шуму і забруджваньня навакольнага асяроддзя кампаніямі, які ўплывае на іх рэйтынг у гарадах і магчымасьць далейшага будаўніцтва каля гарадоў
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Пераключыце бедствы, якія могуць час ад часу блякаваць ці зьнішчаць транспартныя сродкі ды інфраструктуру
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Стаўленьне гарадзкой рады да рэструктурызацыі навакольляў: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Выберыце ўзровень шуму й забруджваньня навакольнага асяроддзя кампаніямі, які ўплывае на іх рэйтынґ у гарадах і магчымасьць далейшага будаўніцтва каля гарадоў
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Дазволіць будаўніцтва на сьхілах і на беразе: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Калі ўключана, рэйкі й станцыі ня могуць будавацца на сьхілах. Калі адключана, то можна будаваць на сьхілах, якія адпавядаюць напрамку рэйкаў і таму не патрабуюць фундамэнтаў.
@@ -1474,7 +1474,7 @@ STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Паступо�
 STR_CONFIG_SETTING_INFLATION                                    :Уключыць інфляцыю: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Уключыць інфляцыю ў эканоміцы, калі кошты растуць нязначна хутчэй за выплаты
 STR_CONFIG_SETTING_SELECTGOODS                                  :Пастаўляць груз на станцыю, толькі калі на яго быў попыт: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Пастаўляць груз на станцыю, калі на яго быў попыт з транспарта, які загружаецца. Гэта прадухіляе кепскія рэйтынгі для грузаў, якія не вывозяцца са станцыі.
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Пастаўляць груз на станцыю, калі на яго быў попыт з транспарта, які загружаецца. Гэта прадухіляе кепскія рэйтынґі для грузаў, якія не вывозяцца са станцыі.
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Максымальная даўжыня мастоў: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Максымальная даўжыня мастоў, якія вы можаце пабудаваць
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Максымальная даўжыня тунэляў: {STRING}
@@ -1632,9 +1632,9 @@ STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :не выкар
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Шпаркасьць перамяшчэньня колам мышы: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Кантроль чульлівасьці кола мышы да пракруткі.
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Экранная клавіятура: {STRING}
-STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Выберыце спосаб адкрыцця экраннай клавіятуры для ўводу тэксту ў палі толькі з дапамогай паказвальнай прылады. Гэта прызначана для невялікіх прылад без фактычнай клавіятуры
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Выберыце спосаб адкрыцьця экраннай клавіятуры для ўводу тэксту ў палі толькі з дапамогай паказвальнай прылады. (Прызначана для невялікіх прылад без фактычнай клавіятуры)
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Адключана
-STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Падвойная пстрычка
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Падвоеная пстрычка
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Адзіночная пстрычка (калі выдзелена)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Адзіночная пстрычка (неадкладна)
 
@@ -1709,7 +1709,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Забаран�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Уключэньне гэтай наладкі робіць немагчымым набыцьцё караблёў для кампутарнага гульца.
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Зыходны профіль наладак: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Выберыце, які профіль наладак выкарыстоўваць выпадковаму ШІ ці для пачатковых значэнняў пры даданні новага ШІ ці сцэнара гульні
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Выберыце, які профіль наладак выкарыстоўваць выпадковаму ШІ ці для пачатковых значэньняў пры даданні новага ШІ ці сцэнара гульні
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Лёгкі
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Сярэдні
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Цяжкі
@@ -2724,7 +2724,7 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Выбе
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Выберыце груз
 STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Выберыце груз для адлюстраваньня
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Выберыце прадпрыемства
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Выберыце прадпрыемства для адлюстравання
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Выберыце прадпрыемства для адлюстраваньня
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Інфармацыя аб участку зямлі
@@ -3049,7 +3049,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Утрымлiвае некалькі блёкаў «Action 8» (спрайт {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Чытаньне па-за канцом псэўда-спрайту (спрайт {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}У бягучым наборы базавай ґрафікі адсутнічаюць выявы некаторых аб'ектаў.{}Калі ласка, абнавіце модуль базавай ґрафікі.
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}У выкарыстоўваным наборы базавай графікі адсутнічаюць некаторыя малюнкі.{}Калі ласка, абнавіце набор малюнкаў.{}Вам можа спатрэбіцца {YELLOW}тэставая версія графічнага набору{WHITE}, таму што ў вас {YELLOW}тэставая версія OpenTTD{WHITE}.
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}У выкарыстаным наборы базавай ґрафікі адсутнічаюць некаторыя малюнкі.{}Калі ласка, абнавіце набор малюнкаў.{}Вам можа спатрэбіцца {YELLOW}тэставая вэрсія ґрафічнага набору{WHITE}, таму што ў вас {YELLOW}тэставая вэрсія OpenTTD{WHITE}.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Запытаныя рэсурсы GRF недаступныя (спрайт {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} быў адключаны з-за {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Недапушчальны/невядомы фармат размяшчэньня спрайтаў (спрайт {3:NUM})
@@ -3147,7 +3147,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Перайме�
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Адміністрацыя г. {NBSP}{TOWN}
-STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Рэйтынг транспартных кампаніяў
+STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Рэйтынґ транспартных кампаніяў
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Даступныя дзеяньні:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Сьпіс магчымых дзеяньняў у гэтым горадзе: пстрыкніце для дадатковых зьвестак
@@ -3170,7 +3170,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Пра�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Усталяваць статую ў гонар вашай кампаніі.{}Кошт: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Прафінансаваць будаўніцтва новых камерцыйных будынкаў у горадзе.{}Кошт: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Купіць гадавыя эксклюзіўныя правы на транспартныя перавозкі ў горадзе. Адміністрацыя дазволіць карыстацца ТОЛЬКІ вашымі станцыямі.{}Кошт: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Даць хабар гарадзкой адміністрацыі для павышэньня рэйтынгу. Існуе рызыка санкцыяў, калі факт хабару раскрыецца.{}Кошт: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Даць хабар гарадзкой адміністрацыі для павышэньня рэйтынґу. Існуе рызыка санкцыяў, калі факт хабару раскрыецца.{}Кошт: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Задачы
@@ -3239,9 +3239,9 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Прым
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Гэта станцыя мае эксклюзыўныя транспартныя правы ў гэтым населеным пункце.
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} набыў эксклюзыўныя транспартныя правы ў гэтым населеным пункце.
 
-STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рэйтынг
-STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Паказаць рэйтынг станцыі
-STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Мясцовы рэйтынг транспартнай кампаніі:
+STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рэйтынґ
+STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Паказаць рэйтынґ станцыі
+STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Мясцовы рэйтынґ транспартнай кампаніі:
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
@@ -4181,7 +4181,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Бягу
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Велізарны здымак экрана
-STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Здымак экрана будзе мець памеры {COMMA} х {COMMA} пікселяў. Яго стварэньне зойме некаторы час. Працягнуць?
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Здымак экрана будзе мець памеры {COMMA} х {COMMA} піксэляў. Яго стварэньне зойме некаторы час. Працягнуць?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Здымак экрана захаваны пад імем «{STRING}»
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Не атрымалася захаваць здымак экрана

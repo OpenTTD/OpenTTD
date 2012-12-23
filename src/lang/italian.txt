@@ -2770,7 +2770,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}File manca
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Il comportamento del NewGRF '{0:STRING}' può causare errori di sincronizzazione e/o crash
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ha modificato lo stato di vagone motorizzato di '{1:ENGINE}' al di fuori del deposito
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ha modificato la lunghezza vericolo di '{1:ENGINE}' al di fuori del deposito
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ha modificato la lunghezza del veicolo '{1:ENGINE}' fuori dal deposito
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Il treno '{VEHICLE}' della '{COMPANY}' ha una lunghezza non valida, probabilmente a causa di problemi con un NewGRF. È possibile che si verifichino errori di sincronizzazione o crash
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Informazioni scorrette fornite dal NewGRF '{0:STRING}'
