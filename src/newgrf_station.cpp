@@ -843,10 +843,16 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 
 	SpriteID image = sprites->ground.sprite;
 	PaletteID pal = sprites->ground.pal;
-	image += HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE) ? ground_relocation : total_offset;
-	if (HasBit(pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) pal += ground_relocation;
-
-	DrawSprite(image, GroundSpritePaletteTransform(image, pal, palette), x, y);
+	RailTrackOffset overlay_offset;
+	if (rti != NULL && rti->UsesOverlay() && SplitGroundSpriteForOverlay(NULL, &image, &overlay_offset)) {
+		SpriteID ground = GetCustomRailSprite(rti, INVALID_TILE, RTSG_GROUND);
+		DrawSprite(image, PAL_NONE, x, y);
+		DrawSprite(ground + overlay_offset, PAL_NONE, x, y);
+	} else {
+		image += HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE) ? ground_relocation : total_offset;
+		if (HasBit(pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) pal += ground_relocation;
+		DrawSprite(image, GroundSpritePaletteTransform(image, pal, palette), x, y);
+	}
 
 	DrawRailTileSeqInGUI(x, y, sprites, total_offset, relocation, palette);
 

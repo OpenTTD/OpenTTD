@@ -2559,7 +2559,7 @@ const DrawTileSprites *GetStationTileLayout(StationType st, byte gfx)
  * @param [out]    overlay_offset Overlay to draw.
  * @return true if overlay can be drawn.
  */
-static bool SplitGroundSpriteForOverlay(const TileInfo *ti, SpriteID *ground, RailTrackOffset *overlay_offset)
+bool SplitGroundSpriteForOverlay(const TileInfo *ti, SpriteID *ground, RailTrackOffset *overlay_offset)
 {
 	bool snow_desert;
 	switch (*ground) {
