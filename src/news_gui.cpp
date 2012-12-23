@@ -32,6 +32,7 @@
 #include "core/geometry_func.hpp"
 #include "command_func.h"
 #include "company_base.h"
+#include "settings_internal.h"
 
 #include "widgets/news_widget.h"
 
@@ -222,26 +223,39 @@ const WindowDesc* GetNewsWindowLayout(NewsFlag flags)
 /**
  * Per-NewsType data
  */
-NewsTypeData _news_type_data[] = {
-	/*            name,              age, sound,           display,    description */
-	NewsTypeData("arrival_player",    60, SND_1D_APPLAUSE, ND_FULL,    STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN       ),  ///< NT_ARRIVAL_COMPANY
-	NewsTypeData("arrival_other",     60, SND_1D_APPLAUSE, ND_SUMMARY, STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER     ),  ///< NT_ARRIVAL_OTHER
-	NewsTypeData("accident",          90, SND_BEGIN,       ND_FULL,    STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                ),  ///< NT_ACCIDENT
-	NewsTypeData("company_info",      60, SND_BEGIN,       ND_FULL,    STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                ),  ///< NT_COMPANY_INFO
-	NewsTypeData("open",              90, SND_BEGIN,       ND_SUMMARY, STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                      ),  ///< NT_INDUSTRY_OPEN
-	NewsTypeData("close",             90, SND_BEGIN,       ND_SUMMARY, STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                     ),  ///< NT_INDUSTRY_CLOSE
-	NewsTypeData("economy",           30, SND_BEGIN,       ND_FULL,    STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                    ),  ///< NT_ECONOMY
-	NewsTypeData("production_player", 30, SND_BEGIN,       ND_SUMMARY, STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY ),  ///< NT_INDUSTRY_COMPANY
-	NewsTypeData("production_other",  30, SND_BEGIN,       ND_OFF,     STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER   ),  ///< NT_INDUSTRY_OTHER
-	NewsTypeData("production_nobody", 30, SND_BEGIN,       ND_OFF,     STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED          ),  ///< NT_INDUSTRY_NOBODY
-	NewsTypeData("advice",           150, SND_BEGIN,       ND_FULL,    STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY      ),  ///< NT_ADVICE
-	NewsTypeData("new_vehicles",      30, SND_1E_OOOOH,    ND_FULL,    STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                       ),  ///< NT_NEW_VEHICLES
-	NewsTypeData("acceptance",        90, SND_BEGIN,       ND_FULL,    STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE        ),  ///< NT_ACCEPTANCE
-	NewsTypeData("subsidies",        180, SND_BEGIN,       ND_SUMMARY, STR_NEWS_MESSAGE_TYPE_SUBSIDIES                          ),  ///< NT_SUBSIDIES
-	NewsTypeData("general",           60, SND_BEGIN,       ND_FULL,    STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                ),  ///< NT_GENERAL
+static NewsTypeData _news_type_data[] = {
+	/*            name,                           age, sound,          */
+	NewsTypeData("news_display.arrival_player",    60, SND_1D_APPLAUSE ),  ///< NT_ARRIVAL_COMPANY
+	NewsTypeData("news_display.arrival_other",     60, SND_1D_APPLAUSE ),  ///< NT_ARRIVAL_OTHER
+	NewsTypeData("news_display.accident",          90, SND_BEGIN       ),  ///< NT_ACCIDENT
+	NewsTypeData("news_display.company_info",      60, SND_BEGIN       ),  ///< NT_COMPANY_INFO
+	NewsTypeData("news_display.open",              90, SND_BEGIN       ),  ///< NT_INDUSTRY_OPEN
+	NewsTypeData("news_display.close",             90, SND_BEGIN       ),  ///< NT_INDUSTRY_CLOSE
+	NewsTypeData("news_display.economy",           30, SND_BEGIN       ),  ///< NT_ECONOMY
+	NewsTypeData("news_display.production_player", 30, SND_BEGIN       ),  ///< NT_INDUSTRY_COMPANY
+	NewsTypeData("news_display.production_other",  30, SND_BEGIN       ),  ///< NT_INDUSTRY_OTHER
+	NewsTypeData("news_display.production_nobody", 30, SND_BEGIN       ),  ///< NT_INDUSTRY_NOBODY
+	NewsTypeData("news_display.advice",           150, SND_BEGIN       ),  ///< NT_ADVICE
+	NewsTypeData("news_display.new_vehicles",      30, SND_1E_OOOOH    ),  ///< NT_NEW_VEHICLES
+	NewsTypeData("news_display.acceptance",        90, SND_BEGIN       ),  ///< NT_ACCEPTANCE
+	NewsTypeData("news_display.subsidies",        180, SND_BEGIN       ),  ///< NT_SUBSIDIES
+	NewsTypeData("news_display.general",           60, SND_BEGIN       ),  ///< NT_GENERAL
 };
 
 assert_compile(lengthof(_news_type_data) == NT_END);
+
+/**
+ * Return the news display option.
+ * @return display options
+ */
+NewsDisplay NewsTypeData::GetDisplay() const
+{
+	uint index;
+	const SettingDesc *sd = GetSettingFromName(this->name, &index);
+	assert(sd != NULL);
+	void *ptr = GetVariableAddress(NULL, &sd->save);
+	return (NewsDisplay)ReadValue(ptr, sd->save.conv);
+}
 
 /** Window class displaying a news item. */
 struct NewsWindow : Window {
@@ -587,7 +601,7 @@ static void MoveToNextItem()
 		/* check the date, don't show too old items */
 		if (_date - _news_type_data[type].age > ni->date) return;
 
-		switch (_news_type_data[type].display) {
+		switch (_news_type_data[type].GetDisplay()) {
 			default: NOT_REACHED();
 			case ND_OFF: // Off - show nothing only a small reminder in the status bar
 				InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SHOW_REMINDER);
@@ -907,7 +921,7 @@ void ShowLastNewsMessage()
 	}
 	bool wrap = false;
 	for (;;) {
-		if (_news_type_data[ni->type].display != ND_OFF) {
+		if (_news_type_data[ni->type].GetDisplay() != ND_OFF) {
 			ShowNewsMessage(ni);
 			break;
 		}

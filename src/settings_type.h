@@ -182,6 +182,25 @@ struct LocaleSettings {
 	char  *digit_decimal_separator;          ///< decimal separator
 };
 
+/** Settings related to news */
+struct NewsSettings {
+	uint8 arrival_player;                                 ///< NewsDisplay of vehicles arriving at new stations of current player
+	uint8 arrival_other;                                  ///< NewsDisplay of vehicles arriving at new stations of other players
+	uint8 accident;                                       ///< NewsDisplay of accidents that occur
+	uint8 company_info;                                   ///< NewsDisplay of general company information
+	uint8 open;                                           ///< NewsDisplay on new industry constructions
+	uint8 close;                                          ///< NewsDisplay about closing industries
+	uint8 economy;                                        ///< NewsDisplay on economical changes
+	uint8 production_player;                              ///< NewsDisplay of production changes of industries affecting current player
+	uint8 production_other;                               ///< NewsDisplay of production changes of industries affecting competitors
+	uint8 production_nobody;                              ///< NewsDisplay of production changes of industries affecting no one
+	uint8 advice;                                         ///< NewsDisplay on advice affecting the player's vehicles
+	uint8 new_vehicles;                                   ///< NewsDisplay of new vehicles becoming available
+	uint8 acceptance;                                     ///< NewsDisplay on changes affecting the acceptance of cargo at stations
+	uint8 subsidies;                                      ///< NewsDisplay of changes on subsidies
+	uint8 general;                                        ///< NewsDisplay of other topics
+};
+
 /** All settings related to the network. */
 struct NetworkSettings {
 #ifdef ENABLE_NETWORK
@@ -496,6 +515,7 @@ struct ClientSettings {
 	NetworkSettings      network;            ///< settings related to the network
 	CompanySettings      company;            ///< default values for per-company settings
 	MusicSettings        music;              ///< settings related to music/sound
+	NewsSettings         news_display;       ///< news display settings.
 };
 
 /** The current settings for this game. */

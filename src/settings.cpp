@@ -1243,81 +1243,6 @@ static void HandleOldDiffCustom(bool savegame)
 	}
 }
 
-/**
- * tries to convert newly introduced news settings based on old ones
- * @param name pointer to the string defining name of the old news config
- * @param value pointer to the string defining value of the old news config
- * @returns true if conversion could have been made
- */
-static bool ConvertOldNewsSetting(const char *name, const char *value)
-{
-	if (strcasecmp(name, "openclose") == 0) {
-		/* openclose has been split in "open" and "close".
-		 * So the job is now to decrypt the value of the old news config
-		 * and give it to the two newly introduced ones*/
-
-		NewsDisplay display = ND_OFF; // default
-		if (strcasecmp(value, "full") == 0) {
-			display = ND_FULL;
-		} else if (strcasecmp(value, "summarized") == 0) {
-			display = ND_SUMMARY;
-		}
-		/* tranfert of values */
-		_news_type_data[NT_INDUSTRY_OPEN].display = display;
-		_news_type_data[NT_INDUSTRY_CLOSE].display = display;
-		return true;
-	}
-	return false;
-}
-
-/**
- * Load newstype settings from a configuration file.
- * @param ini the configuration to read from.
- * @param grpname Name of the group containing the news type settings.
- */
-static void NewsDisplayLoadConfig(IniFile *ini, const char *grpname)
-{
-	IniGroup *group = ini->GetGroup(grpname);
-	IniItem *item;
-
-	/* If no group exists, return */
-	if (group == NULL) return;
-
-	for (item = group->item; item != NULL; item = item->next) {
-		int news_item = -1;
-		for (int i = 0; i < NT_END; i++) {
-			if (strcasecmp(item->name, _news_type_data[i].name) == 0) {
-				news_item = i;
-				break;
-			}
-		}
-
-		/* the config been read is not within current aceptable config */
-		if (news_item == -1) {
-			/* if the conversion function cannot process it, advice by a debug warning*/
-			if (!ConvertOldNewsSetting(item->name, item->value)) {
-				DEBUG(misc, 0, "Invalid display option: %s", item->name);
-			}
-			/* in all cases, there is nothing left to do */
-			continue;
-		}
-
-		if (StrEmpty(item->value)) {
-			DEBUG(misc, 0, "Empty display value for newstype %s", item->name);
-			continue;
-		} else if (strcasecmp(item->value, "full") == 0) {
-			_news_type_data[news_item].display = ND_FULL;
-		} else if (strcasecmp(item->value, "off") == 0) {
-			_news_type_data[news_item].display = ND_OFF;
-		} else if (strcasecmp(item->value, "summarized") == 0) {
-			_news_type_data[news_item].display = ND_SUMMARY;
-		} else {
-			DEBUG(misc, 0, "Invalid display value for newstype %s: %s", item->name, item->value);
-			continue;
-		}
-	}
-}
-
 static void AILoadConfig(IniFile *ini, const char *grpname)
 {
 	IniGroup *group = ini->GetGroup(grpname);
@@ -1447,25 +1372,6 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 	return first;
 }
 
-/**
- * Write newstype settings to a configuration file.
- * @param ini     The configuration to write to.
- * @param grpname Name of the group containing the news type settings.
- */
-static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname)
-{
-	IniGroup *group = ini->GetGroup(grpname);
-
-	for (int i = 0; i < NT_END; i++) {
-		const char *value;
-		int v = _news_type_data[i].display;
-
-		value = (v == ND_OFF ? "off" : (v == ND_SUMMARY ? "summarized" : "full"));
-
-		group->GetItem(_news_type_data[i].name, true)->SetValue(value);
-	}
-}
-
 static void AISaveConfig(IniFile *ini, const char *grpname)
 {
 	IniGroup *group = ini->GetGroup(grpname);
@@ -1593,7 +1499,6 @@ void LoadFromConfig(bool minimal)
 	if (!minimal) {
 		_grfconfig_newgame = GRFLoadConfig(ini, "newgrf", false);
 		_grfconfig_static  = GRFLoadConfig(ini, "newgrf-static", true);
-		NewsDisplayLoadConfig(ini, "news_display");
 		AILoadConfig(ini, "ai_players");
 		GameLoadConfig(ini, "game_scripts");
 
@@ -1625,7 +1530,6 @@ void SaveToConfig()
 	HandleSettingDescs(ini, IniSaveSettings, IniSaveSettingList);
 	GRFSaveConfig(ini, "newgrf", _grfconfig_newgame);
 	GRFSaveConfig(ini, "newgrf-static", _grfconfig_static);
-	NewsDisplaySaveConfig(ini, "news_display");
 	AISaveConfig(ini, "ai_players");
 	GameSaveConfig(ini, "game_scripts");
 	SaveVersionInConfig(ini);
