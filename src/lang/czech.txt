@@ -810,7 +810,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Seznam p
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Zpráva
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Přehrát zvuk pro stručné novinové zprávy
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Vypnuto
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Shrnutí
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Plná

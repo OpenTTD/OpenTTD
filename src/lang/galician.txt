@@ -700,7 +700,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Unha lis
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mensaxe
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Reproducir son para mensaxes de noticias resumidas
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Apagado
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sumario
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo

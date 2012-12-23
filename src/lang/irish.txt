@@ -724,7 +724,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Liosta d
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Teachtaireacht
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Seinn fuaim le haghaidh teachtaireachtaí nuachta achomair
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :As
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Achoimre
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Iomlán

@@ -726,7 +726,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Rhestr o
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Neges
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Chwarae sain ar gyfer negeseuon newyddion cryno
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :I Ffwrdd
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Crynodeb
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Llawn

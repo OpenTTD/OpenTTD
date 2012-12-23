@@ -713,7 +713,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Listi yf
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Skilaboð
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Spila hljóð með fréttaúrtaki
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Af
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Úrtak
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Allt

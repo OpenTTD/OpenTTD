@@ -39,7 +39,6 @@
 #include "table/strings.h"
 
 const NewsItem *_statusbar_news_item = NULL;
-bool _news_ticker_sound; ///< Make a ticker sound when a news item is published.
 
 static uint MIN_NEWS_AMOUNT = 30;           ///< prefered minimum amount of news messages
 static uint _total_news = 0;                ///< current number of news items
@@ -540,7 +539,7 @@ static void ShowNewspaper(const NewsItem *ni)
 /** Show news item in the ticker */
 static void ShowTicker(const NewsItem *ni)
 {
-	if (_news_ticker_sound) SndPlayFx(SND_16_MORSE);
+	if (_settings_client.sound.news_ticker) SndPlayFx(SND_16_MORSE);
 
 	_statusbar_news_item = ni;
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SHOW_TICKER);

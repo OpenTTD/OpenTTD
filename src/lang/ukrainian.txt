@@ -854,7 +854,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Спис
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Повідомлення
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Звукове сповіщення для підсумкових новин
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Не показувати
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Скорочено
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Повністю

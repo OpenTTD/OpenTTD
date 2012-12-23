@@ -730,7 +730,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Llista d
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Missatge
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Emetre so per als nous missatges resumits
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Fora
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resum
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Complet

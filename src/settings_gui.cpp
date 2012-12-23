@@ -1458,6 +1458,12 @@ static SettingEntry _settings_ui_interaction[] = {
 /** Interaction sub-page */
 static SettingsPage _settings_ui_interaction_page = {_settings_ui_interaction, lengthof(_settings_ui_interaction)};
 
+static SettingEntry _settings_ui_sound[] = {
+	SettingEntry("sound.news_ticker"),
+};
+/** Sound effects sub-page */
+static SettingsPage _settings_ui_sound_page = {_settings_ui_sound, lengthof(_settings_ui_sound)};
+
 static SettingEntry _settings_ui_news[] = {
 	SettingEntry("news_display.arrival_player"),
 	SettingEntry("news_display.arrival_other"),
@@ -1474,6 +1480,7 @@ static SettingEntry _settings_ui_news[] = {
 	SettingEntry("news_display.acceptance"),
 	SettingEntry("news_display.subsidies"),
 	SettingEntry("news_display.general"),
+	SettingEntry("gui.coloured_news_year"),
 };
 /** News sub-page */
 static SettingsPage _settings_ui_news_page = {_settings_ui_news, lengthof(_settings_ui_news)};
@@ -1481,6 +1488,7 @@ static SettingsPage _settings_ui_news_page = {_settings_ui_news, lengthof(_setti
 static SettingEntry _settings_ui[] = {
 	SettingEntry(&_settings_ui_display_page, STR_CONFIG_SETTING_DISPLAY_OPTIONS),
 	SettingEntry(&_settings_ui_interaction_page, STR_CONFIG_SETTING_INTERACTION),
+	SettingEntry(&_settings_ui_sound_page, STR_CONFIG_SETTING_SOUND),
 	SettingEntry(&_settings_ui_news_page, STR_CONFIG_SETTING_NEWS),
 	SettingEntry("gui.show_finances"),
 	SettingEntry("gui.errmsg_duration"),
@@ -1496,7 +1504,6 @@ static SettingEntry _settings_ui[] = {
 	SettingEntry("gui.default_rail_type"),
 	SettingEntry("gui.disable_unsuitable_building"),
 	SettingEntry("gui.persistent_buildingtools"),
-	SettingEntry("gui.coloured_news_year"),
 };
 /** Interface subpage */
 static SettingsPage _settings_ui_page = {_settings_ui, lengthof(_settings_ui)};

@@ -730,7 +730,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Liste de
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Message
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Émettre un son pour les bulletins sommaires
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Aucun
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sommaire
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Complet

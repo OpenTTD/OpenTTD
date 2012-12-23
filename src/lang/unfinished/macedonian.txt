@@ -724,7 +724,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Лист
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Порака
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Пушти звук за сумирани вести пораки
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :исклучен
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :резиме
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :целосна

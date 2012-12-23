@@ -731,7 +731,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Neseno z
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Ziņojums
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Atskaņot signālu kopsavilkuma ziņojumiem
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Izslēgts
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Kopsavilkums
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pilns

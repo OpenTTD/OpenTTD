@@ -923,7 +923,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Paskutin
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Pranešimas
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Groti garsus pasirodzius naujienu santraukoms
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Išjungta
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Santrauka
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pilnas

@@ -726,7 +726,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}รา�
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}ข้อความ
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}ให้มีเสียงเตือนเมื่อมีข้อความข่าว
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :ปิด
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :แสดงข้อความในแถบเลื่อน
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :แสดงข้อความแบบเต็ม

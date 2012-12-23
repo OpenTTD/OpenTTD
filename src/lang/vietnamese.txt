@@ -729,7 +729,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Danh sá
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Thông Điệp
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Phát âm thanh khi có thông báo tổng kết
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Tắt
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Giản Lược
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Đủ

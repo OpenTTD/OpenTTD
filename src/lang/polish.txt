@@ -1109,7 +1109,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Lista os
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Wiadomość
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Graj dźwięki przy sumarycznych wiadomościach
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Wyłączone
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sumaryczne
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pełne

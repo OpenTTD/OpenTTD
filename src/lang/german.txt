@@ -730,7 +730,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Eine Lis
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mitteilung
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Sound für Tickermeldungen abspielen
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Aus
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Ticker
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Zeitung

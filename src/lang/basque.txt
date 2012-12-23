@@ -729,7 +729,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Azken al
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mezua
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Soinua entzun laburtutako notizi mezuetan
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Off
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sumarioa
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Betea

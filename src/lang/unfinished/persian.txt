@@ -725,7 +725,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}لیست
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}پیغام
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}پخش صدا برای پیام های خبری خلاصه
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :خاموش
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :خلاصه
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :کامل

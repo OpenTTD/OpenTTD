@@ -728,7 +728,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}最新�
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}消息
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}为摘要的信息播放声音
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :关闭
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :摘要
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :完全

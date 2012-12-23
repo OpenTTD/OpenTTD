@@ -728,7 +728,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}En liste
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Besked
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Afspil lyd for refererede nyheder
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Fra
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Kortfattet
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Fuld

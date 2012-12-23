@@ -720,7 +720,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}列出�
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}訊息
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}摘要訊息發出聲音提示
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :關閉
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :摘要
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :詳細

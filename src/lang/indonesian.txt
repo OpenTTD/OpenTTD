@@ -725,7 +725,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Daftar p
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Pesan
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Mainkan suara untuk berita yang diringkas
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Mati
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Ringkasan
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Penuh

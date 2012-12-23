@@ -783,7 +783,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Nimekiri
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Teade
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Mängi heli ka kokkuvõetud uudistele
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Väljas
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Lühike
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Täielik

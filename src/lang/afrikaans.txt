@@ -727,7 +727,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}'n Lys v
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Boodskap
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Speel geluid vir opsommige nuus boodskappe
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Af
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Opsomming
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Vol

@@ -727,7 +727,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}En lista
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Meddelande
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Spela upp ljud för summariska nyhetsmeddelanden
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Av
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Summarisk
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :På

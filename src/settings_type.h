@@ -162,6 +162,11 @@ struct GUISettings {
 	}
 };
 
+/** Settings related to sound effects. */
+struct SoundSettings {
+	bool   news_ticker;                      ///< Play a ticker sound when a news item is published.
+};
+
 /** Settings related to music. */
 struct MusicSettings {
 	byte playlist;     ///< The playlist (number) to play
@@ -514,6 +519,7 @@ struct ClientSettings {
 	GUISettings          gui;                ///< settings related to the GUI
 	NetworkSettings      network;            ///< settings related to the network
 	CompanySettings      company;            ///< default values for per-company settings
+	SoundSettings        sound;              ///< sound effect settings
 	MusicSettings        music;              ///< settings related to music/sound
 	NewsSettings         news_display;       ///< news display settings.
 };

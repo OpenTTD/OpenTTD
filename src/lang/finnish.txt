@@ -729,7 +729,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Lista vi
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Viesti
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Soita ääni tiivistetyn uutisviestin kohdalla
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Pois
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Tiivistelmä
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Täysi

@@ -1042,7 +1042,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Сьпі
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  —  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Паведамленьне
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Прайграваць гукі пры атрыманьні сьціслых паведамленьняў
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Выкл.
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Сьцісла
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Цалкам

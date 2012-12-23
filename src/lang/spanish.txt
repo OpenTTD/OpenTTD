@@ -730,7 +730,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Listado 
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mensaje
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Reproducir sonido para resumen de noticias
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Apagado
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resumen
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo

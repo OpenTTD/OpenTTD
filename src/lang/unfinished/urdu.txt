@@ -723,7 +723,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}حالی
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}پیغام
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}خبروں کے خلاصے کے لے آواز چلائیں
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :بند
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :خلاصہ
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :مکمل

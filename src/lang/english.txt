@@ -728,8 +728,6 @@ STR_MESSAGE_HISTORY                                             :{WHITE}Message 
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}A list of the recent news messages
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING5}
 
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Play sound for summarised news messages
-
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Message
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{RAW_STRING}
 
@@ -1351,6 +1349,9 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Keep the buildi
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Group expenses in company finance window: {STRING2}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Define the layout for the company expenses window
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :News ticker: {STRING2}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Play sound for summarised news messages
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Disable infrastructure building when no suitable vehicles are available: {STRING2}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :When enabled, infrastructure is only available if there are also vehicles available, preventing waste of time and money on unusable infrastructure
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Max trains per company: {STRING2}
@@ -1536,6 +1537,7 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economy
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competitors
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Display options
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaction
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Sound effects
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}News and messages
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signals
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Cargo handling

@@ -879,7 +879,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Seznam z
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Sporočilo
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Zaigraj zvok ob povzetku novega sporočila
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Izključeno
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Povzetek
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Polno

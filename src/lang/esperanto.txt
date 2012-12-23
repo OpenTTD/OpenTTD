@@ -720,7 +720,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Listo da
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mesaĝo
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Ludu sonon por resumaj novaĵoj
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Ne
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resume
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Plene

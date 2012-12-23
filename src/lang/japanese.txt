@@ -723,7 +723,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}最近�
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}メッセージ
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}ニュースを簡易表示するときに音を鳴らす。
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :切
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :簡易
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :完全

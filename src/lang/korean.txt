@@ -730,7 +730,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}최근 �
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}메시지
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}메시지를 하단 상태표시줄에 요약하여 효과음과 함께 알려줍니다
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :끄기
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :요약
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :전체

@@ -727,7 +727,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Ei liste
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Melding
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Spel av lyd for nyhetssamandrag
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Av
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Samandrag
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Fullt

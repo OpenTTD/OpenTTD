@@ -728,7 +728,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Eng Lës
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Meldung
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Sound ofspillen fir zesummegefaassten Meldungen
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Aus
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resumé
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Ganz

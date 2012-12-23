@@ -725,7 +725,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}רשימ
 STR_MESSAGE_NEWS_FORMAT                                         :{1:STRING}  -  {0:STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}הודעה
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}נגן סאונד להודעות תמציות
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :כבוי
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :תמצית
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :מלא
