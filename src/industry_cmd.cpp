@@ -540,9 +540,11 @@ static void AnimateTile_Industry(TileIndex tile)
 		if ((_tick_counter & 1) == 0) {
 			byte m = GetAnimationFrame(tile) + 1;
 
-			switch (m & 7) {
-			case 2: SndPlayTileFx(SND_2D_RIP_2, tile); break;
-			case 6: SndPlayTileFx(SND_29_RIP, tile); break;
+			if (_settings_client.sound.ambient) {
+				switch (m & 7) {
+					case 2: SndPlayTileFx(SND_2D_RIP_2, tile); break;
+					case 6: SndPlayTileFx(SND_29_RIP, tile); break;
+				}
 			}
 
 			if (m >= 96) {
@@ -559,7 +561,7 @@ static void AnimateTile_Industry(TileIndex tile)
 		if ((_tick_counter & 3) == 0) {
 			byte m = GetAnimationFrame(tile);
 
-			if (_industry_anim_offs_toffee[m] == 0xFF) {
+			if (_industry_anim_offs_toffee[m] == 0xFF && _settings_client.sound.ambient) {
 				SndPlayTileFx(SND_30_CARTOON_SOUND, tile);
 			}
 
@@ -606,9 +608,9 @@ static void AnimateTile_Industry(TileIndex tile)
 			byte m = GetAnimationFrame(tile) + 1;
 
 			switch (m) {
-				case  1: SndPlayTileFx(SND_2C_MACHINERY, tile); break;
-				case 23: SndPlayTileFx(SND_2B_COMEDY_HIT, tile); break;
-				case 28: SndPlayTileFx(SND_2A_EXTRACT_AND_POP, tile); break;
+				case  1: if (_settings_client.sound.ambient) SndPlayTileFx(SND_2C_MACHINERY, tile); break;
+				case 23: if (_settings_client.sound.ambient) SndPlayTileFx(SND_2B_COMEDY_HIT, tile); break;
+				case 28: if (_settings_client.sound.ambient) SndPlayTileFx(SND_2A_EXTRACT_AND_POP, tile); break;
 				default:
 					if (m >= 50) {
 						int n = GetIndustryAnimationLoop(tile) + 1;
@@ -671,7 +673,7 @@ static void AnimateTile_Industry(TileIndex tile)
 					byte m = GetAnimationFrame(tile);
 					if (!(m & 0x40)) {
 						SetAnimationFrame(tile, m | 0x40);
-						SndPlayTileFx(SND_0B_MINING_MACHINERY, tile);
+						if (_settings_client.sound.ambient) SndPlayTileFx(SND_0B_MINING_MACHINERY, tile);
 					}
 					if (state & 7) return;
 				} else {
@@ -772,7 +774,7 @@ static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 		{ 49,  59, 60,  65 },
 	};
 
-	SndPlayTileFx(SND_2E_EXTRACT_AND_POP, tile);
+	if (_settings_client.sound.ambient) SndPlayTileFx(SND_2E_EXTRACT_AND_POP, tile);
 
 	int dir = Random() & 3;
 
@@ -860,7 +862,7 @@ static void TileLoop_Industry(TileIndex tile)
 
 	case GFX_POWERPLANT_SPARKS:
 		if (Chance16(1, 3)) {
-			SndPlayTileFx(SND_0C_ELECTRIC_SPARK, tile);
+			if (_settings_client.sound.ambient) SndPlayTileFx(SND_0C_ELECTRIC_SPARK, tile);
 			AddAnimatedTile(tile);
 		}
 		break;
@@ -1061,7 +1063,7 @@ static bool SearchLumberMillTrees(TileIndex tile, void *user_data)
 
 		_industry_sound_ctr = 1;
 		_industry_sound_tile = tile;
-		SndPlayTileFx(SND_38_CHAINSAW, tile);
+		if (_settings_client.sound.ambient) SndPlayTileFx(SND_38_CHAINSAW, tile);
 
 		DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 
@@ -1098,7 +1100,7 @@ static void ProduceIndustryGoods(Industry *i)
 	if ((i->counter & 0x3F) == 0) {
 		uint32 r;
 		uint num;
-		if (Chance16R(1, 14, r) && (num = indsp->number_of_sounds) != 0) {
+		if (Chance16R(1, 14, r) && (num = indsp->number_of_sounds) != 0 && _settings_client.sound.ambient) {
 			SndPlayTileFx(
 				(SoundFx)(indsp->random_sounds[((r >> 16) * num) >> 16]),
 				i->location.tile);
@@ -1157,10 +1159,10 @@ void OnTick_Industry()
 		_industry_sound_ctr++;
 
 		if (_industry_sound_ctr == 75) {
-			SndPlayTileFx(SND_37_BALLOON_SQUEAK, _industry_sound_tile);
+			if (_settings_client.sound.ambient) SndPlayTileFx(SND_37_BALLOON_SQUEAK, _industry_sound_tile);
 		} else if (_industry_sound_ctr == 160) {
 			_industry_sound_ctr = 0;
-			SndPlayTileFx(SND_36_CARTOON_CRASH, _industry_sound_tile);
+			if (_settings_client.sound.ambient) SndPlayTileFx(SND_36_CARTOON_CRASH, _industry_sound_tile);
 		}
 	}
 

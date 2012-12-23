@@ -85,7 +85,7 @@ struct AnimationBase {
 
 				/* If the lower 7 bits of the upper byte of the callback
 				 * result are not empty, it is a sound effect. */
-				if (GB(callback, 8, 7) != 0) PlayTileSound(spec->grf_prop.grffile, GB(callback, 8, 7), tile);
+				if (GB(callback, 8, 7) != 0 && _settings_client.sound.ambient) PlayTileSound(spec->grf_prop.grffile, GB(callback, 8, 7), tile);
 			}
 		}
 
@@ -134,6 +134,6 @@ struct AnimationBase {
 
 		/* If the lower 7 bits of the upper byte of the callback
 		 * result are not empty, it is a sound effect. */
-		if (GB(callback, 8, 7) != 0) PlayTileSound(spec->grf_prop.grffile, GB(callback, 8, 7), tile);
+		if (GB(callback, 8, 7) != 0 && _settings_client.sound.ambient) PlayTileSound(spec->grf_prop.grffile, GB(callback, 8, 7), tile);
 	}
 };

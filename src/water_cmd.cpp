@@ -915,7 +915,7 @@ static void FloodVehicle(Vehicle *v)
 	SetDParam(0, pass);
 	AddVehicleNewsItem(STR_NEWS_DISASTER_FLOOD_VEHICLE, NT_ACCIDENT, v->index);
 	CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
-	SndPlayVehicleFx(SND_12_EXPLOSION, v);
+	if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_12_EXPLOSION, v);
 }
 
 /**

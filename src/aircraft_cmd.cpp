@@ -1171,7 +1171,7 @@ static void CrashAirplane(Aircraft *v)
 	AddVehicleNewsItem(newsitem, NT_ACCIDENT, v->index, st != NULL ? st->index : INVALID_STATION);
 
 	ModifyStationRatingAround(v->tile, v->owner, -160, 30);
-	SndPlayVehicleFx(SND_12_EXPLOSION, v);
+	if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_12_EXPLOSION, v);
 }
 
 /**

@@ -1660,7 +1660,7 @@ void UpdateLevelCrossing(TileIndex tile, bool sound)
 
 	if (new_state != IsCrossingBarred(tile)) {
 		if (new_state && sound) {
-			SndPlayTileFx(SND_0E_LEVEL_CROSSING, tile);
+			if (_settings_client.sound.ambient) SndPlayTileFx(SND_0E_LEVEL_CROSSING, tile);
 		}
 		SetCrossingBarred(tile, new_state);
 		MarkTileDirtyByTile(tile);
@@ -1677,7 +1677,7 @@ static inline void MaybeBarCrossingWithSound(TileIndex tile)
 {
 	if (!IsCrossingBarred(tile)) {
 		BarCrossing(tile);
-		SndPlayTileFx(SND_0E_LEVEL_CROSSING, tile);
+		if (_settings_client.sound.ambient) SndPlayTileFx(SND_0E_LEVEL_CROSSING, tile);
 		MarkTileDirtyByTile(tile);
 	}
 }
@@ -3034,7 +3034,7 @@ static bool CheckTrainCollision(Train *v)
 	AddVehicleNewsItem(STR_NEWS_TRAIN_CRASH, NT_ACCIDENT, v->index);
 
 	ModifyStationRatingAround(v->tile, v->owner, -160, 30);
-	SndPlayVehicleFx(SND_13_BIG_CRASH, v);
+	if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_13_BIG_CRASH, v);
 	return true;
 }
 
@@ -3277,7 +3277,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 
 					/* If we are approaching a crossing that is reserved, play the sound now. */
 					TileIndex crossing = TrainApproachingCrossingTile(v);
-					if (crossing != INVALID_TILE && HasCrossingReservation(crossing)) SndPlayTileFx(SND_0E_LEVEL_CROSSING, crossing);
+					if (crossing != INVALID_TILE && HasCrossingReservation(crossing) && _settings_client.sound.new_year) SndPlayTileFx(SND_0E_LEVEL_CROSSING, crossing);
 
 					/* Always try to extend the reservation when entering a tile. */
 					CheckNextTrainTile(v);

@@ -725,9 +725,9 @@ void CompaniesYearlyLoop()
 		ShowCompanyFinances(_local_company);
 		c = Company::Get(_local_company);
 		if (c->num_valid_stat_ent > 5 && c->old_economy[0].performance_history < c->old_economy[4].performance_history) {
-			SndPlayFx(SND_01_BAD_YEAR);
+			if (_settings_client.sound.new_year) SndPlayFx(SND_01_BAD_YEAR);
 		} else {
-			SndPlayFx(SND_00_GOOD_YEAR);
+			if (_settings_client.sound.new_year) SndPlayFx(SND_00_GOOD_YEAR);
 		}
 	}
 }

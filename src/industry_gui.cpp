@@ -2557,7 +2557,7 @@ struct IndustryCargoesWindow : public Window {
 			case WID_IC_NOTIFY:
 				this->ToggleWidgetLoweredState(WID_IC_NOTIFY);
 				this->SetWidgetDirty(WID_IC_NOTIFY);
-				SndPlayFx(SND_15_BEEP);
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 
 				if (this->IsWidgetLowered(WID_IC_NOTIFY)) {
 					if (FindWindowByClass(WC_SMALLMAP) == NULL) ShowSmallMap();

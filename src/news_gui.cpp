@@ -531,7 +531,7 @@ private:
 static void ShowNewspaper(const NewsItem *ni)
 {
 	SoundFx sound = _news_type_data[ni->type].sound;
-	if (sound != 0) SndPlayFx(sound);
+	if (sound != 0 && _settings_client.sound.news_full) SndPlayFx(sound);
 
 	new NewsWindow(GetNewsWindowLayout(ni->flags), ni);
 }

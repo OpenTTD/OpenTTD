@@ -254,7 +254,7 @@ void AmbientSoundEffectCallback(TileIndex tile)
 
 	/* Only run every 1/200-th time. */
 	uint32 r; // Save for later
-	if (!Chance16R(1, 200, r)) return;
+	if (!Chance16R(1, 200, r) || !_settings_client.sound.ambient) return;
 
 	/* Prepare resolver object. */
 	GenericResolverObject object(false, CBID_SOUNDS_AMBIENT_EFFECT);

@@ -134,7 +134,7 @@ public:
 				break;
 
 			case WID_BT_MANY_RANDOM: // place trees randomly over the landscape
-				SndPlayFx(SND_15_BEEP);
+				if (_settings_client.sound.confirm) SndPlayFx(SND_15_BEEP);
 				PlaceTreesRandomly();
 				MarkWholeScreenDirty();
 				break;

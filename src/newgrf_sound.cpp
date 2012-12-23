@@ -18,6 +18,7 @@
 #include "sound_func.h"
 #include "fileio_func.h"
 #include "debug.h"
+#include "settings_type.h"
 
 static SmallVector<SoundEntry, 8> _sounds;
 
@@ -167,6 +168,8 @@ bool LoadNewGRFSound(SoundEntry *sound)
  */
 bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event)
 {
+	if (!_settings_client.sound.vehicle) return true;
+
 	const GRFFile *file = v->GetGRF();
 	uint16 callback;
 

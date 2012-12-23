@@ -40,13 +40,13 @@ void CcBuildDocks(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p
 {
 	if (result.Failed()) return;
 
-	SndPlayTileFx(SND_02_SPLAT, tile);
+	if (_settings_client.sound.confirm) SndPlayTileFx(SND_02_SPLAT, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 }
 
 void CcBuildCanal(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (result.Succeeded()) SndPlayTileFx(SND_02_SPLAT, tile);
+	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_02_SPLAT, tile);
 }
 
 
@@ -436,7 +436,7 @@ public:
 				this->RaiseWidget(_settings_client.gui.station_show_coverage + BDSW_LT_OFF);
 				_settings_client.gui.station_show_coverage = (widget != BDSW_LT_OFF);
 				this->LowerWidget(_settings_client.gui.station_show_coverage + BDSW_LT_OFF);
-				SndPlayFx(SND_15_BEEP);
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				break;
 		}
@@ -514,7 +514,7 @@ public:
 				this->RaiseWidget(_ship_depot_direction + WID_BDD_X);
 				_ship_depot_direction = (widget == WID_BDD_X ? AXIS_X : AXIS_Y);
 				this->LowerWidget(_ship_depot_direction + WID_BDD_X);
-				SndPlayFx(SND_15_BEEP);
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				UpdateDocksDirection();
 				this->SetDirty();
 				break;

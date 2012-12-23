@@ -39,7 +39,7 @@
 void CcTerraform(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (result.Succeeded()) {
-		SndPlayTileFx(SND_1F_SPLAT, tile);
+		if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT, tile);
 	} else {
 		extern TileIndex _terraform_err_tile;
 		SetRedErrorSquare(_terraform_err_tile);
@@ -87,7 +87,7 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
 		success = true;
 	}
 
-	if (success) SndPlayTileFx(SND_1F_SPLAT, end);
+	if (success && _settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT, end);
 }
 
 /**
@@ -411,7 +411,7 @@ static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 
 		if (ta.w == 0 || ta.h == 0) return;
 
-		SndPlayTileFx(SND_1F_SPLAT, tile);
+		if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT, tile);
 
 		uint h;
 		if (mode != 0) {
@@ -630,7 +630,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 				if (!IsInsideMM(size, 1, 8 + 1)) return;
 				_terraform_size = size;
 
-				SndPlayFx(SND_15_BEEP);
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				break;
 			}

@@ -85,7 +85,7 @@ static bool IsStationAvailable(const StationSpec *statspec)
 
 void CcPlaySound1E(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (result.Succeeded()) SndPlayTileFx(SND_20_SPLAT_2, tile);
+	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_20_SPLAT_2, tile);
 }
 
 static void GenericPlaceRail(TileIndex tile, int cmd)
@@ -132,7 +132,7 @@ void CcRailDepot(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
 
 	DiagDirection dir = (DiagDirection)p2;
 
-	SndPlayTileFx(SND_20_SPLAT_2, tile);
+	if (_settings_client.sound.confirm) SndPlayTileFx(SND_20_SPLAT_2, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 
 	tile += TileOffsByDiagDir(dir);
@@ -170,7 +170,7 @@ void CcStation(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (result.Failed()) return;
 
-	SndPlayTileFx(SND_20_SPLAT_2, tile);
+	if (_settings_client.sound.confirm) SndPlayTileFx(SND_20_SPLAT_2, tile);
 	/* Only close the station builder window if the default station and non persistent building is chosen. */
 	if (_railstation.station_class == STAT_CLASS_DFLT && _railstation.station_type == 0 && !_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 }
@@ -271,7 +271,7 @@ static void PlaceRail_Bridge(TileIndex tile, Window *w)
 void CcBuildRailTunnel(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (result.Succeeded()) {
-		SndPlayTileFx(SND_20_SPLAT_2, tile);
+		if (_settings_client.sound.confirm) SndPlayTileFx(SND_20_SPLAT_2, tile);
 		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	} else {
 		SetRedErrorSquare(_build_tunnel_endtile);
@@ -321,7 +321,7 @@ static void BuildRailClick_Remove(Window *w)
 {
 	if (w->IsWidgetDisabled(WID_RAT_REMOVE)) return;
 	ToggleRailButton_Remove(w);
-	SndPlayFx(SND_15_BEEP);
+	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 
 	/* handle station builder */
 	if (w->IsWidgetLowered(WID_RAT_BUILD_STATION)) {
@@ -1162,7 +1162,7 @@ public:
 				this->RaiseWidget(_railstation.orientation + WID_BRAS_PLATFORM_DIR_X);
 				_railstation.orientation = (Axis)(widget - WID_BRAS_PLATFORM_DIR_X);
 				this->LowerWidget(_railstation.orientation + WID_BRAS_PLATFORM_DIR_X);
-				SndPlayFx(SND_15_BEEP);
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				DeleteWindowById(WC_SELECT_STATION, 0);
 				break;
@@ -1196,7 +1196,7 @@ public:
 
 				this->LowerWidget(_settings_client.gui.station_numtracks + WID_BRAS_PLATFORM_NUM_BEGIN);
 				this->LowerWidget(_settings_client.gui.station_platlength + WID_BRAS_PLATFORM_LEN_BEGIN);
-				SndPlayFx(SND_15_BEEP);
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				DeleteWindowById(WC_SELECT_STATION, 0);
 				break;
@@ -1231,7 +1231,7 @@ public:
 
 				this->LowerWidget(_settings_client.gui.station_numtracks + WID_BRAS_PLATFORM_NUM_BEGIN);
 				this->LowerWidget(_settings_client.gui.station_platlength + WID_BRAS_PLATFORM_LEN_BEGIN);
-				SndPlayFx(SND_15_BEEP);
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				DeleteWindowById(WC_SELECT_STATION, 0);
 				break;
@@ -1265,7 +1265,7 @@ public:
 
 				this->SetWidgetLoweredState(_settings_client.gui.station_numtracks + WID_BRAS_PLATFORM_NUM_BEGIN, !_settings_client.gui.station_dragdrop);
 				this->SetWidgetLoweredState(_settings_client.gui.station_platlength + WID_BRAS_PLATFORM_LEN_BEGIN, !_settings_client.gui.station_dragdrop);
-				SndPlayFx(SND_15_BEEP);
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				DeleteWindowById(WC_SELECT_STATION, 0);
 				break;
@@ -1277,7 +1277,7 @@ public:
 
 				this->SetWidgetLoweredState(WID_BRAS_HIGHLIGHT_OFF, !_settings_client.gui.station_show_coverage);
 				this->SetWidgetLoweredState(WID_BRAS_HIGHLIGHT_ON, _settings_client.gui.station_show_coverage);
-				SndPlayFx(SND_15_BEEP);
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				break;
 
@@ -1299,7 +1299,7 @@ public:
 							matrix->SetCount(_railstation.station_count);
 							matrix->SetClicked(_railstation.station_type);
 						}
-						SndPlayFx(SND_15_BEEP);
+						if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 						this->SetDirty();
 						DeleteWindowById(WC_SELECT_STATION, 0);
 						break;
@@ -1322,7 +1322,7 @@ public:
 				this->CheckSelectedSize(statspec);
 				this->GetWidget<NWidgetMatrix>(WID_BRAS_MATRIX)->SetClicked(_railstation.station_type);
 
-				SndPlayFx(SND_15_BEEP);
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				DeleteWindowById(WC_SELECT_STATION, 0);
 				break;
@@ -1653,7 +1653,7 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 				this->RaiseWidget(_build_depot_direction + WID_BRAD_DEPOT_NE);
 				_build_depot_direction = (DiagDirection)(widget - WID_BRAD_DEPOT_NE);
 				this->LowerWidget(_build_depot_direction + WID_BRAD_DEPOT_NE);
-				SndPlayFx(SND_15_BEEP);
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				break;
 		}
@@ -1759,7 +1759,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 
 				_cur_waypoint_type = type;
 				this->GetWidget<NWidgetMatrix>(WID_BRW_WAYPOINT_MATRIX)->SetClicked(_cur_waypoint_type);
-				SndPlayFx(SND_15_BEEP);
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				break;
 			}

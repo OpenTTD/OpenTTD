@@ -13,6 +13,7 @@
 #include "window_gui.h"
 #include "transparency.h"
 #include "sound_func.h"
+#include "settings_type.h"
 
 #include "widgets/transparency_widget.h"
 
@@ -76,7 +77,7 @@ public:
 			} else {
 				/* toggle the bit of the transparencies variable and play a sound */
 				ToggleTransparency((TransparencyOption)(widget - WID_TT_BEGIN));
-				SndPlayFx(SND_15_BEEP);
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				MarkWholeScreenDirty();
 			}
 		} else if (widget == WID_TT_BUTTONS) {
@@ -90,7 +91,7 @@ public:
 			if (i == WID_TT_LOADING || i == WID_TT_END) return;
 
 			ToggleInvisibility((TransparencyOption)(i - WID_TT_BEGIN));
-			SndPlayFx(SND_15_BEEP);
+			if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 
 			/* Redraw whole screen only if transparency is set */
 			if (IsTransparencySet((TransparencyOption)(i - WID_TT_BEGIN))) {

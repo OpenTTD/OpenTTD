@@ -548,7 +548,7 @@ static void RoadVehCrash(RoadVehicle *v)
 	);
 
 	ModifyStationRatingAround(v->tile, v->owner, -160, 22);
-	SndPlayVehicleFx(SND_12_EXPLOSION, v);
+	if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_12_EXPLOSION, v);
 }
 
 static bool RoadVehCheckTrainCrash(RoadVehicle *v)

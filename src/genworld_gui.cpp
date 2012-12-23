@@ -263,7 +263,7 @@ static void StartGeneratingLandscape(GenenerateLandscapeWindowMode mode)
 	MakeNewgameSettingsLive();
 	ResetGRFConfig(true);
 
-	SndPlayFx(SND_15_BEEP);
+	if (_settings_client.sound.confirm) SndPlayFx(SND_15_BEEP);
 	switch (mode) {
 		case GLWM_GENERATE:  _switch_mode = (_game_mode == GM_EDITOR) ? SM_GENRANDLAND    : SM_NEWGAME;         break;
 		case GLWM_HEIGHTMAP: _switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP; break;

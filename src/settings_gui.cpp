@@ -1459,7 +1459,14 @@ static SettingEntry _settings_ui_interaction[] = {
 static SettingsPage _settings_ui_interaction_page = {_settings_ui_interaction, lengthof(_settings_ui_interaction)};
 
 static SettingEntry _settings_ui_sound[] = {
+	SettingEntry("sound.click_beep"),
+	SettingEntry("sound.confirm"),
 	SettingEntry("sound.news_ticker"),
+	SettingEntry("sound.news_full"),
+	SettingEntry("sound.new_year"),
+	SettingEntry("sound.disaster"),
+	SettingEntry("sound.vehicle"),
+	SettingEntry("sound.ambient"),
 };
 /** Sound effects sub-page */
 static SettingsPage _settings_ui_sound_page = {_settings_ui_sound, lengthof(_settings_ui_sound)};

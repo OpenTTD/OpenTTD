@@ -253,7 +253,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 
 	if (++v->age == 1) {
 		CreateEffectVehicleRel(v, 0, 7, 8, EV_EXPLOSION_LARGE);
-		SndPlayVehicleFx(SND_12_EXPLOSION, v);
+		if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_12_EXPLOSION, v);
 		v->image_override = SPR_BLIMP_CRASHING;
 	} else if (v->age == 70) {
 		v->image_override = SPR_BLIMP_CRASHED;
@@ -361,7 +361,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		/* Destroy? */
 		if (v->age > 50) {
 			CreateEffectVehicleRel(v, 0, 7, 8, EV_EXPLOSION_LARGE);
-			SndPlayVehicleFx(SND_12_EXPLOSION, v);
+			if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_12_EXPLOSION, v);
 			delete v;
 			return false;
 		}
@@ -431,7 +431,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, boo
 
 			SetDParam(0, i->town->index);
 			AddIndustryNewsItem(news_message, NT_ACCIDENT, i->index); // delete the news, when the industry closes
-			SndPlayTileFx(SND_12_EXPLOSION, i->location.tile);
+			if (_settings_client.sound.disaster) SndPlayTileFx(SND_12_EXPLOSION, i->location.tile);
 		}
 	} else if (v->current_order.GetDestination() == 0) {
 		int x = v->x_pos + ((leave_at_top ? -15 : 15) * TILE_SIZE);
@@ -596,7 +596,7 @@ static bool DisasterTick_Big_Ufo_Destroyer(DisasterVehicle *v)
 		v->current_order.SetDestination(1);
 
 		CreateEffectVehicleRel(u, 0, 7, 8, EV_EXPLOSION_LARGE);
-		SndPlayVehicleFx(SND_12_EXPLOSION, u);
+		if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_12_EXPLOSION, u);
 
 		delete u;
 

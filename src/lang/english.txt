@@ -1351,6 +1351,20 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Define the layo
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :News ticker: {STRING2}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Play sound for summarised news messages
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Newspaper: {STRING2}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Play sound upon display of newspapers
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :End of year: {STRING2}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Play sound effect at the end of a year summarising the company's performance during the year compared to the previous year
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construction: {STRING2}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Play sound effect on successful constructions or other actions
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Button clicks: {STRING2}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Beep when clicking buttons
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Disasters/accidents: {STRING2}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Play sound effects of accidents and disasters
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vehicles: {STRING2}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Play sound effects of vehicles
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambient: {STRING2}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Play ambient sound effects of landscape, industries and towns
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Disable infrastructure building when no suitable vehicles are available: {STRING2}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :When enabled, infrastructure is only available if there are also vehicles available, preventing waste of time and money on unusable infrastructure

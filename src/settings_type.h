@@ -165,6 +165,13 @@ struct GUISettings {
 /** Settings related to sound effects. */
 struct SoundSettings {
 	bool   news_ticker;                      ///< Play a ticker sound when a news item is published.
+	bool   news_full;                        ///< Play sound effects associated to certain news types.
+	bool   new_year;                         ///< Play sound on new year, summarising the performance during the last year.
+	bool   confirm;                          ///< Play sound effect on succesful constructions or other actions.
+	bool   click_beep;                       ///< Beep on a random selection of buttons.
+	bool   disaster;                         ///< Play disaster and accident sounds.
+	bool   vehicle;                          ///< Play vehicle sound effects.
+	bool   ambient;                          ///< Play ambient, industry and town sounds.
 };
 
 /** Settings related to music. */
