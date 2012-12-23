@@ -156,6 +156,25 @@ void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID eng
 }
 
 /**
+ * Get the size of the sprite of a road vehicle sprite heading west (used for lists).
+ * @param engine The engine to get the sprite from.
+ * @param[out] width The width of the sprite.
+ * @param[out] height The height of the sprite.
+ * @param[out] xoffs Number of pixels to shift the sprite to the right.
+ * @param[out] yoffs Number of pixels to shift the sprite downwards.
+ * @param image_type Context the sprite is used in.
+ */
+void GetRoadVehSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type)
+{
+	const Sprite *spr = GetSprite(GetRoadVehIcon(engine, image_type), ST_NORMAL);
+
+	width  = UnScaleByZoom(spr->width, ZOOM_LVL_GUI);
+	height = UnScaleByZoom(spr->height, ZOOM_LVL_GUI);
+	xoffs  = UnScaleByZoom(spr->x_offs, ZOOM_LVL_GUI);
+	yoffs  = UnScaleByZoom(spr->y_offs, ZOOM_LVL_GUI);
+}
+
+/**
  * Get length of a road vehicle.
  * @param v Road vehicle to query length.
  * @return Length of the given road vehicle.

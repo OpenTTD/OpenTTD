@@ -15,7 +15,7 @@
 #include "vehicle_base.h"
 #include "water_map.h"
 
-void GetShipSpriteSize(EngineID engine, uint &width, uint &height, EngineImageType image_type);
+void GetShipSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
 WaterClass GetEffectiveWaterClass(TileIndex tile);
 
 /**

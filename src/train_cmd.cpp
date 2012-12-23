@@ -528,6 +528,39 @@ void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engin
 }
 
 /**
+ * Get the size of the sprite of a train sprite heading west, or both heads (used for lists).
+ * @param engine The engine to get the sprite from.
+ * @param[out] width The width of the sprite.
+ * @param[out] height The height of the sprite.
+ * @param[out] xoffs Number of pixels to shift the sprite to the right.
+ * @param[out] yoffs Number of pixels to shift the sprite downwards.
+ * @param image_type Context the sprite is used in.
+ */
+void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type)
+{
+	int y = 0;
+
+	SpriteID sprite = GetRailIcon(engine, false, y, image_type);
+	const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
+
+	width  = UnScaleByZoom(real_sprite->width, ZOOM_LVL_GUI);
+	height = UnScaleByZoom(real_sprite->height, ZOOM_LVL_GUI);
+	xoffs  = UnScaleByZoom(real_sprite->x_offs, ZOOM_LVL_GUI);
+	yoffs  = UnScaleByZoom(real_sprite->y_offs, ZOOM_LVL_GUI);
+
+	if (RailVehInfo(engine)->railveh_type == RAILVEH_MULTIHEAD) {
+		sprite = GetRailIcon(engine, true, y, image_type);
+		real_sprite = GetSprite(sprite, ST_NORMAL);
+
+		/* Calculate values relative to an imaginary center between the two sprites. */
+		width = TRAININFO_DEFAULT_VEHICLE_WIDTH + UnScaleByZoom(real_sprite->width, ZOOM_LVL_GUI) + UnScaleByZoom(real_sprite->x_offs, ZOOM_LVL_GUI) - xoffs;
+		height = max<uint>(height, UnScaleByZoom(real_sprite->height, ZOOM_LVL_GUI));
+		xoffs  = xoffs - TRAININFO_DEFAULT_VEHICLE_WIDTH / 2;
+		yoffs  = min(yoffs, UnScaleByZoom(real_sprite->y_offs, ZOOM_LVL_GUI));
+	}
+}
+
+/**
  * Build a railroad wagon.
  * @param tile     tile of the depot where rail-vehicle is built.
  * @param flags    type of operation.

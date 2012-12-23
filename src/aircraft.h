@@ -32,7 +32,7 @@ enum VehicleAirFlags {
 
 
 void HandleAircraftEnterHangar(Aircraft *v);
-void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height, EngineImageType image_type);
+void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
 void UpdateAirplanesOnNewStation(const Station *st);
 void UpdateAircraftCache(Aircraft *v, bool update_range = false);
 

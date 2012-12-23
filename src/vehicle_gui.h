@@ -66,6 +66,15 @@ static inline uint GetVehicleHeight(VehicleType type)
 
 int GetVehicleWidth(Vehicle *v, EngineImageType image_type);
 
+/** Dimensions of a cell in the purchase/depot windows. */
+struct VehicleCellSize {
+	uint height;       ///< Vehicle cell height.
+	uint extend_left;  ///< Extend of the cell to the left.
+	uint extend_right; ///< Extend of the cell to the right.
+};
+
+VehicleCellSize GetVehicleImageCellSize(VehicleType type, EngineImageType image_type);
+
 /**
  * Get WindowClass for vehicle list of given vehicle type
  * @param vt vehicle type to check

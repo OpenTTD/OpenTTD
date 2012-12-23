@@ -11,6 +11,7 @@
 
 #include "stdafx.h"
 #include "train.h"
+#include "roadveh.h"
 #include "ship.h"
 #include "aircraft.h"
 #include "gui.h"
@@ -141,41 +142,63 @@ static void TrainDepotMoveVehicle(const Vehicle *wagon, VehicleID sel, const Veh
 	DoCommandP(v->tile, v->index | (_ctrl_pressed ? 1 : 0) << 20, wagon == NULL ? INVALID_VEHICLE : wagon->index, CMD_MOVE_RAIL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_MOVE_VEHICLE));
 }
 
-/**
- * Array containing the cell size in pixels of the #WID_D_MATRIX widget for each vehicle type.
- * @note The train vehicle type uses the entire row for each train.
- */
-static Dimension _base_block_sizes[4];
+static VehicleCellSize _base_block_sizes_depot[VEH_COMPANY_END];    ///< Cell size for vehicle images in the depot view.
+static VehicleCellSize _base_block_sizes_purchase[VEH_COMPANY_END]; ///< Cell size for vehicle images in the purchase list.
 
-static void InitBlocksizeForShipAircraft(VehicleType type)
+/**
+ * Get the GUI cell size for a vehicle image.
+ * @param type Vehicle type to get the size for.
+ * @param image_type Image type to get size for.
+ * @pre image_type == EIT_IN_DEPOT || image_type == EIT_PURCHASE
+ * @return Cell dimensions for the vehicle and image type.
+ */
+VehicleCellSize GetVehicleImageCellSize(VehicleType type, EngineImageType image_type)
 {
-	uint max_width  = 0;
+	switch (image_type) {
+		case EIT_IN_DEPOT: return _base_block_sizes_depot[type];
+		case EIT_PURCHASE: return _base_block_sizes_purchase[type];
+		default: NOT_REACHED();
+	}
+}
+
+static void InitBlocksizeForVehicles(VehicleType type, EngineImageType image_type)
+{
+	int max_extend_left  = 0;
+	int max_extend_right = 0;
 	uint max_height = 0;
 
 	const Engine *e;
 	FOR_ALL_ENGINES_OF_TYPE(e, type) {
 		EngineID eid = e->index;
 		uint x, y;
+		int x_offs, y_offs;
 
 		switch (type) {
 			default: NOT_REACHED();
-			case VEH_SHIP:     GetShipSpriteSize(    eid, x, y, EIT_IN_DEPOT); break;
-			case VEH_AIRCRAFT: GetAircraftSpriteSize(eid, x, y, EIT_IN_DEPOT); break;
+			case VEH_TRAIN:    GetTrainSpriteSize(   eid, x, y, x_offs, y_offs, image_type); break;
+			case VEH_ROAD:     GetRoadVehSpriteSize( eid, x, y, x_offs, y_offs, image_type); break;
+			case VEH_SHIP:     GetShipSpriteSize(    eid, x, y, x_offs, y_offs, image_type); break;
+			case VEH_AIRCRAFT: GetAircraftSpriteSize(eid, x, y, x_offs, y_offs, image_type); break;
 		}
-		if (x > max_width)  max_width  = x;
 		if (y > max_height) max_height = y;
+		if (-x_offs > max_extend_left) max_extend_left = -x_offs;
+		if ((int)x + x_offs > max_extend_right) max_extend_right = x + x_offs;
 	}
 
-	switch (type) {
+	switch (image_type) {
+		case EIT_IN_DEPOT:
+			_base_block_sizes_depot[type].height       = max(GetVehicleHeight(type), max_height);
+			_base_block_sizes_depot[type].extend_left  = Clamp(max_extend_left, 16, 98);
+			_base_block_sizes_depot[type].extend_right = Clamp(max_extend_right, 16, 98);
+			break;
+		case EIT_PURCHASE:
+			_base_block_sizes_purchase[type].height       = max(GetVehicleHeight(type), max_height);
+			_base_block_sizes_purchase[type].extend_left  = Clamp(max_extend_left, 16, 98);
+			_base_block_sizes_purchase[type].extend_right = Clamp(max_extend_right, 16, 98);
+			break;
+
 		default: NOT_REACHED();
-		case VEH_SHIP:
-			_base_block_sizes[VEH_SHIP].width = max(76U, max_width);
-			break;
-		case VEH_AIRCRAFT:
-			_base_block_sizes[VEH_AIRCRAFT].width = max(67U, max_width);
-			break;
 	}
-	_base_block_sizes[type].height = max(GetVehicleHeight(type), max_height);
 }
 
 /**
@@ -184,14 +207,10 @@ static void InitBlocksizeForShipAircraft(VehicleType type)
  */
 void InitDepotWindowBlockSizes()
 {
-	_base_block_sizes[VEH_TRAIN].width = 0;
-	_base_block_sizes[VEH_TRAIN].height = GetVehicleHeight(VEH_TRAIN);
-
-	_base_block_sizes[VEH_ROAD].width = 32;
-	_base_block_sizes[VEH_ROAD].height = GetVehicleHeight(VEH_ROAD);
-
-	InitBlocksizeForShipAircraft(VEH_SHIP);
-	InitBlocksizeForShipAircraft(VEH_AIRCRAFT);
+	for (VehicleType vt = VEH_BEGIN; vt < VEH_COMPANY_END; vt++) {
+		InitBlocksizeForVehicles(vt, EIT_IN_DEPOT);
+		InitBlocksizeForVehicles(vt, EIT_PURCHASE);
+	}
 }
 
 static void DepotSellAllConfirmationCallback(Window *w, bool confirmed);
@@ -600,13 +619,13 @@ struct DepotWindow : Window {
 				}
 				int base_width = this->count_width + this->header_width;
 
-				resize->height = max(_base_block_sizes[this->type].height, min_height);
+				resize->height = max<uint>(GetVehicleImageCellSize(this->type, EIT_IN_DEPOT).height, min_height);
 				if (this->type == VEH_TRAIN) {
 					resize->width = 1;
 					size->width = base_width + 2 * 29; // about 2 parts
 					size->height = resize->height * 6;
 				} else {
-					resize->width = base_width + _base_block_sizes[this->type].width;
+					resize->width = base_width + GetVehicleImageCellSize(this->type, EIT_IN_DEPOT).extend_left + GetVehicleImageCellSize(this->type, EIT_IN_DEPOT).extend_right;
 					size->width = resize->width * (this->type == VEH_ROAD ? 5 : 3);
 					size->height = resize->height * (this->type == VEH_ROAD ? 5 : 3);
 				}

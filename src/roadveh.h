@@ -80,6 +80,7 @@ static const uint RVC_DEPOT_STOP_FRAME                   = 11;
 static const byte RV_OVERTAKE_TIMEOUT = 35;
 
 void RoadVehUpdateCache(RoadVehicle *v, bool same_length = false);
+void GetRoadVehSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
 
 /**
  * Buses, trucks and trams belong to this class.
