@@ -721,25 +721,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}訊息
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}摘要訊息發出聲音提示
-STR_NEWS_MESSAGES_OFF                                           :關閉
-STR_NEWS_MESSAGES_SUMMARY                                       :摘要
-STR_NEWS_MESSAGES_FULL                                          :詳細
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :關閉
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :摘要
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :詳細
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}首輛交通工具抵達玩家的車站
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}首輛交通工具抵達競爭對手的車站
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}意外／災難
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}公司資訊
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}開放工業
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}關閉工業
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}經濟景氣的變動
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}由自家公司提供服務的工業產量變動
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}由競爭對手提供服務的工業產量變動
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}其他工業產量變更
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}自家公司交通工具的建議或資訊
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}新交通工具
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}可接收貨物的變動
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}補助資訊
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}一般資訊
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :首輛交通工具抵達玩家的車站: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :首輛交通工具抵達競爭對手的車站: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :意外／災難: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :公司資訊: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :開放工業: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :關閉工業: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :經濟景氣的變動: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :由自家公司提供服務的工業產量變動: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :由競爭對手提供服務的工業產量變動: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :其他工業產量變更: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :自家公司交通工具的建議或資訊: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :新交通工具: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :可接收貨物的變動: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :補助資訊: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :一般資訊: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

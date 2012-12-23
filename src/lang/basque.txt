@@ -730,25 +730,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mezua
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Soinua entzun laburtutako notizi mezuetan
-STR_NEWS_MESSAGES_OFF                                           :Off
-STR_NEWS_MESSAGES_SUMMARY                                       :Sumarioa
-STR_NEWS_MESSAGES_FULL                                          :Betea
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Off
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sumarioa
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Betea
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Lehenengo garraioaren etorrera jokalariaren geltokira
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Lehenengo garraioaren etorrera lehiakidearen geltokira
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Istripuak / hondamendiak
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Konpainien informazioa
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Industrien zabalerak
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Industrien itxierak
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Ekonomia aldaketak
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Ekoizpen aldaketak konpaniagatik zerbitzatutako industrietan
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Ekoizpen aldaketak lehiakidearen(en) zerbitzatutako industrietan
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Beste indutria ekoizpen aldaketak
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Konpainiaren ibilgailuei buruzko informazioa/aholkuak
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Garraio berriak
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Aldaketak zama onarpenean
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidioak
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informazio generala
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Lehenengo garraioaren etorrera jokalariaren geltokira: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Lehenengo garraioaren etorrera lehiakidearen geltokira: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Istripuak / hondamendiak: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Konpainien informazioa: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Industrien zabalerak: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Industrien itxierak: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomia aldaketak: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Ekoizpen aldaketak konpaniagatik zerbitzatutako industrietan: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Ekoizpen aldaketak lehiakidearen(en) zerbitzatutako industrietan: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Beste indutria ekoizpen aldaketak: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Konpainiaren ibilgailuei buruzko informazioa/aholkuak: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Garraio berriak: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Aldaketak zama onarpenean: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidioak: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informazio generala: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

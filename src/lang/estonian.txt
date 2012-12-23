@@ -784,25 +784,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Teade
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Mängi heli ka kokkuvõetud uudistele
-STR_NEWS_MESSAGES_OFF                                           :Väljas
-STR_NEWS_MESSAGES_SUMMARY                                       :Lühike
-STR_NEWS_MESSAGES_FULL                                          :Täielik
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Väljas
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Lühike
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Täielik
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Esimese sõiduki saabumine mängija jaama
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Esimese sõiduki saabumine vastase jaama
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Õnnetused / katastroofid
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Ettevõtte teave
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Tööstuste avamine
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Tööstuste sulgemine
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Muutused majanduses
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Ettevõtte poolt teenindavate tööstuste toodangumuutused
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Konkurentide poolt teenindavate tööstuste toodangumuutused
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Ülejäänud tööstuste toodangumuutused
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Teave ja nõuanded ettevõtte sõidukite kohta
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Uued sõidukid
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Veoste vastuvõtutingimuste muutumine
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Toetused
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Üldine teave
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Esimese sõiduki saabumine mängija jaama: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Esimese sõiduki saabumine vastase jaama: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Õnnetused / katastroofid: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Ettevõtte teave: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Tööstuste avamine: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Tööstuste sulgemine: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Muutused majanduses: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Ettevõtte poolt teenindavate tööstuste toodangumuutused: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Konkurentide poolt teenindavate tööstuste toodangumuutused: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Ülejäänud tööstuste toodangumuutused: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Teave ja nõuanded ettevõtte sõidukite kohta: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Uued sõidukid: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Veoste vastuvõtutingimuste muutumine: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Toetused: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Üldine teave: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

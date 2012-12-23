@@ -791,25 +791,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Üzenet
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Figyelmeztető hang lejátszása rövid üzenetnél
-STR_NEWS_MESSAGES_OFF                                           :Ki
-STR_NEWS_MESSAGES_SUMMARY                                       :Kivonat
-STR_NEWS_MESSAGES_FULL                                          :Teljes
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Ki
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Kivonat
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Teljes
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Első jármű megérkezése a játékos megállójába
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Első jármű megérkezése az ellenfél megállójába
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Balesetek / természeti csapások
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Vállalati információk
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Új gazdasági épületek megjelenése
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Gazdasági épületek bezárása
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Gazdasági változások
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Termelésváltozások a vállalatod által kiszolgált gazdasági létesítményeknél
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Termelésváltozások a konkurenseid által kiszolgált gazdasági létesítményeknél
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Más gazdasági termelési változások
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}A vállalat járműveire vonatkozó ötletek / információk
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Új járművek
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Rakományok elfogadásainak változásai
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Támogatások
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Általános információk
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Első jármű megérkezése a játékos megállójába: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Első jármű megérkezése az ellenfél megállójába: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Balesetek / természeti csapások: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Vállalati információk: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Új gazdasági épületek megjelenése: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Gazdasági épületek bezárása: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Gazdasági változások: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Termelésváltozások a vállalatod által kiszolgált gazdasági létesítményeknél: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Termelésváltozások a konkurenseid által kiszolgált gazdasági létesítményeknél: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Más gazdasági termelési változások: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :A vállalat járműveire vonatkozó ötletek / információk: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Új járművek: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Rakományok elfogadásainak változásai: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Támogatások: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Általános információk: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

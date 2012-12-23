@@ -727,25 +727,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mesaj
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Sunet pentru ştirile scurte
-STR_NEWS_MESSAGES_OFF                                           :Oprit
-STR_NEWS_MESSAGES_SUMMARY                                       :Pe scurt
-STR_NEWS_MESSAGES_FULL                                          :Pe larg
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Oprit
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Pe scurt
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pe larg
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Sosirea primului vehicul la una din staţiile tale
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Sosirea primului vehicul la una din staţiile competitorilor
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Accidente / dezastre
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Informaţii despre companie
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Inaugurare industrii
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Închidere industrii
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Schimbări economice
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Schimbări de producţie ale industriilor partenere cu compania
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Schimbări de producţie ale industriilor partenere cu concurenţa
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Alte schimbări în producţia industrială
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Sugestii / informaţii despre vehiculele companiei
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Vehicule noi
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Schimbări ale acceptării mărfurilor
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subvenţii
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informaţii generale
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Sosirea primului vehicul la una din staţiile tale: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Sosirea primului vehicul la una din staţiile competitorilor: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidente / dezastre: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informaţii despre companie: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Inaugurare industrii: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Închidere industrii: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Schimbări economice: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Schimbări de producţie ale industriilor partenere cu compania: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Schimbări de producţie ale industriilor partenere cu concurenţa: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Alte schimbări în producţia industrială: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Sugestii / informaţii despre vehiculele companiei: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Vehicule noi: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Schimbări ale acceptării mărfurilor: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvenţii: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informaţii generale: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

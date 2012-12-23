@@ -730,25 +730,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Thông Điệp
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Phát âm thanh khi có thông báo tổng kết
-STR_NEWS_MESSAGES_OFF                                           :Tắt
-STR_NEWS_MESSAGES_SUMMARY                                       :Giản Lược
-STR_NEWS_MESSAGES_FULL                                          :Đủ
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Tắt
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Giản Lược
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Đủ
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Phương tiện đầu tiên đỗ trạm chúng ta
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Phương tiện đầu tiền đỗ trạm đối thủ
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Tai nạn / thiên tai
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Thông tin công ty
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Nhà máy mới mở
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Nhà máy đóng cửa
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Những thay đổi của nền kinh tế
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Các nhà máy do công ty đang vận chuyển có sản lượng thay đổi
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Các nhà máy do công ty đối thủ đang vận chuyển có sản lượng thay đổi
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Các nhà máy khác có sản lượng thay đổi
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Lời khuyên / thông tin cho những phương tiện của công ty
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Phương tiện mới
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Thay đổi về việc nhận hàng vận chuyển
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Tiền trợ cấp
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Thông tin chung
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Phương tiện đầu tiên đỗ trạm chúng ta: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Phương tiện đầu tiền đỗ trạm đối thủ: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Tai nạn / thiên tai: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Thông tin công ty: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Nhà máy mới mở: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Nhà máy đóng cửa: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Những thay đổi của nền kinh tế: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Các nhà máy do công ty đang vận chuyển có sản lượng thay đổi: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Các nhà máy do công ty đối thủ đang vận chuyển có sản lượng thay đổi: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Các nhà máy khác có sản lượng thay đổi: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Lời khuyên / thông tin cho những phương tiện của công ty: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Phương tiện mới: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Thay đổi về việc nhận hàng vận chuyển: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Tiền trợ cấp: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Thông tin chung: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

@@ -429,11 +429,11 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ВӐ
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Пӗлтерӳ
-STR_NEWS_MESSAGES_OFF                                           :Сӳнтер
-STR_NEWS_MESSAGES_SUMMARY                                       :Кӗске
-STR_NEWS_MESSAGES_FULL                                          :Тулли
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Сӳнтер
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Кӗске
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Тулли
 
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Грантсем
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Грантсем: {STRING}
 
 
 

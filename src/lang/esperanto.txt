@@ -721,25 +721,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mesaĝo
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Ludu sonon por resumaj novaĵoj
-STR_NEWS_MESSAGES_OFF                                           :Ne
-STR_NEWS_MESSAGES_SUMMARY                                       :Resume
-STR_NEWS_MESSAGES_FULL                                          :Plene
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Ne
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resume
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Plene
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Unua veturilo atingas propran stacion
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Unua veturilo atingas konkurantan stacion
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Akcidentoj / katastrofoj
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Kompaniaj informoj
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Malfermiĝo de industrioj
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Fermiĝo de industrioj
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Ekonomiaj ŝanĝoj
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Profuktadŝanĝiĝoj de industrioj servitaj de la kompanio
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Profuktadŝanĝiĝoj de industrioj servitaj de konkuranto(j)
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Aliaj industriaj produktadŝanĝiĝoj
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Konsilo / informoj pri kompania veturilaro
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Novaj veturiloj
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Ŝarĝakceptado ŝanĝiĝas
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subvencioj
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Ĝeneralaj informoj
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Unua veturilo atingas propran stacion: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Unua veturilo atingas konkurantan stacion: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Akcidentoj / katastrofoj: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Kompaniaj informoj: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Malfermiĝo de industrioj: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Fermiĝo de industrioj: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomiaj ŝanĝoj: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Profuktadŝanĝiĝoj de industrioj servitaj de la kompanio: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Profuktadŝanĝiĝoj de industrioj servitaj de konkuranto(j): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Aliaj industriaj produktadŝanĝiĝoj: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Konsilo / informoj pri kompania veturilaro: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Novaj veturiloj: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Ŝarĝakceptado ŝanĝiĝas: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencioj: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Ĝeneralaj informoj: {STRING}
 
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua trajno alvenas ĉe {STATION}!

@@ -924,25 +924,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Pranešimas
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Groti garsus pasirodzius naujienu santraukoms
-STR_NEWS_MESSAGES_OFF                                           :Išjungta
-STR_NEWS_MESSAGES_SUMMARY                                       :Santrauka
-STR_NEWS_MESSAGES_FULL                                          :Pilnas
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Išjungta
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Santrauka
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pilnas
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Pirmosios transporto priemonės atvykimas į žaidėjo stotelę
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Pirmosios transporto priemonės atvykimas į konkurento stotelę
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Avarijos / nelaimės
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Kompanijos informacija
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Gamyklų atidarymas
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Gamyklų uždarymas
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Ekonomikos pokyčiai
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Gamyklų aptarnaujamų kompanijos gamybos pasikeitimas
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Gamyklų aptarnaujamų kitų kompanijų gamybos pasikeitimas
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Kitų gamyklų gamybos pasikeitimas
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Patarimai / informacija apie kompanijos transporto priemones
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Naujos transporto priemonės
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Prekių supirkimo pokyčiai
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidijos
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Bendroji informacija
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Pirmosios transporto priemonės atvykimas į žaidėjo stotelę: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Pirmosios transporto priemonės atvykimas į konkurento stotelę: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Avarijos / nelaimės: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Kompanijos informacija: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Gamyklų atidarymas: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Gamyklų uždarymas: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomikos pokyčiai: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Gamyklų aptarnaujamų kompanijos gamybos pasikeitimas: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Gamyklų aptarnaujamų kitų kompanijų gamybos pasikeitimas: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Kitų gamyklų gamybos pasikeitimas: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Patarimai / informacija apie kompanijos transporto priemones: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Naujos transporto priemonės: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Prekių supirkimo pokyčiai: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidijos: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Bendroji informacija: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

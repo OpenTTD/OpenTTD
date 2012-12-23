@@ -1110,25 +1110,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Wiadomość
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Graj dźwięki przy sumarycznych wiadomościach
-STR_NEWS_MESSAGES_OFF                                           :Wyłączone
-STR_NEWS_MESSAGES_SUMMARY                                       :Sumaryczne
-STR_NEWS_MESSAGES_FULL                                          :Pełne
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Wyłączone
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sumaryczne
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pełne
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Przybycie pierwszego pojazdu do stacji gracza
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Przybycie pierwszego pojazdu do stacji przeciwnika
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Wypadki / klęski
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Informacja firmy
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Otwarcie przedsiębiorstw
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Zamknięcie przedsiębiorstw
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Zmiany ekonomiczne
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Zmiany w produkcji przedsiębiorstw obsługiwanych przez firmę
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Zmiany w produkcji przedsiębiorstw obsługiwanych przez przeciwników
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Zmiany w produkcji w pozostałych przedsiębiorstwach
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Rada / informacja o pojazdach firmy
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nowe pojazdy
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Zmiany w akceptowaniu ładunku
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsydia
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Ogólne informacje
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Przybycie pierwszego pojazdu do stacji gracza: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Przybycie pierwszego pojazdu do stacji przeciwnika: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Wypadki / klęski: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informacja firmy: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Otwarcie przedsiębiorstw: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zamknięcie przedsiębiorstw: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Zmiany ekonomiczne: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Zmiany w produkcji przedsiębiorstw obsługiwanych przez firmę: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Zmiany w produkcji przedsiębiorstw obsługiwanych przez przeciwników: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Zmiany w produkcji w pozostałych przedsiębiorstwach: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Rada / informacja o pojazdach firmy: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nowe pojazdy: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Zmiany w akceptowaniu ładunku: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsydia: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Ogólne informacje: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

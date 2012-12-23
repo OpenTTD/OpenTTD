@@ -728,25 +728,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Boodskap
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Speel geluid vir opsommige nuus boodskappe
-STR_NEWS_MESSAGES_OFF                                           :Af
-STR_NEWS_MESSAGES_SUMMARY                                       :Opsomming
-STR_NEWS_MESSAGES_FULL                                          :Vol
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Af
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Opsomming
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Vol
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Aankoms van eerste voertuig by speler se stasie
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Aankoms van eerste voertuig by mededinger se stasie
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Ongelukke / rampe
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Maatskappy informasie
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Opening van industrieë
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Toemaak van industrieë
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Ekonomie veranderings
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Verandering in produksie van industrieë voorsien deur die maatskapy
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Produksie veranderings van nywerhede wat deur mededingers bedien word
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Ander nywerheid produksie veranderings
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Advies / informasie van maatskappy se voertuie
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nuwe voertuie
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Veranderings van vrag aanvaarding
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidies
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Algemene informasie
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Aankoms van eerste voertuig by speler se stasie: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Aankoms van eerste voertuig by mededinger se stasie: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ongelukke / rampe: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Maatskappy informasie: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Opening van industrieë: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Toemaak van industrieë: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomie veranderings: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Verandering in produksie van industrieë voorsien deur die maatskapy: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produksie veranderings van nywerhede wat deur mededingers bedien word: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Ander nywerheid produksie veranderings: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Advies / informasie van maatskappy se voertuie: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nuwe voertuie: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Veranderings van vrag aanvaarding: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidies: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Algemene informasie: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

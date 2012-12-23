@@ -714,25 +714,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Skilaboð
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Spila hljóð með fréttaúrtaki
-STR_NEWS_MESSAGES_OFF                                           :Af
-STR_NEWS_MESSAGES_SUMMARY                                       :Úrtak
-STR_NEWS_MESSAGES_FULL                                          :Allt
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Af
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Úrtak
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Allt
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Aðkoma fyrsta farartækis á stöð leikmanns
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Aðkoma fyrsta farartækis á stöð andstæðings
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Slys / hamfarir
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Fyrirtækisupplýsingar
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Opnun Iðnaðar
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Lokun Iðnaðar
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Efnahagsbreytingar
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Framleiðslubreytingar á iðnaði þjónað af fyrirtækinu
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Framleiðslubreytingar fyrirtækja þjónustuð af mótherjum
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Aðrar framleiðslubreytingar
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Ráð / upplýsingar um faratæki fyrirtækisins
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Ný farartæki
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Breyting á viðtöku farms
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Samstarfssamningar
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Almennar upplýsingar
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Aðkoma fyrsta farartækis á stöð leikmanns: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Aðkoma fyrsta farartækis á stöð andstæðings: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Slys / hamfarir: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Fyrirtækisupplýsingar: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Opnun Iðnaðar: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Lokun Iðnaðar: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Efnahagsbreytingar: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Framleiðslubreytingar á iðnaði þjónað af fyrirtækinu: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Framleiðslubreytingar fyrirtækja þjónustuð af mótherjum: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Aðrar framleiðslubreytingar: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Ráð / upplýsingar um faratæki fyrirtækisins: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Ný farartæki: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Breyting á viðtöku farms: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Samstarfssamningar: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Almennar upplýsingar: {STRING}
 
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Bæjarbúar fagna . . .{}Fyrsta lest kemur við á {STATION}!

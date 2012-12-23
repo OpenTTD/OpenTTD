@@ -727,25 +727,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}ข้อความ
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}ให้มีเสียงเตือนเมื่อมีข้อความข่าว
-STR_NEWS_MESSAGES_OFF                                           :ปิด
-STR_NEWS_MESSAGES_SUMMARY                                       :แสดงข้อความในแถบเลื่อน
-STR_NEWS_MESSAGES_FULL                                          :แสดงข้อความแบบเต็ม
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :ปิด
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :แสดงข้อความในแถบเลื่อน
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :แสดงข้อความแบบเต็ม
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}เมื่อมียานยนต์แรกมาถึงสถานีของผู้เล่น
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}เมื่อมียานยนต์แรกมาถึงสถานีของคู่แข่ง
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}อุบัติเหตุ / อุบัติภัย
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}ข้อมูลข่าวสารของบริษัท
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}การเปิดตัวของอุตสาหกรรม
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}การปิดตัวของอุตสาหกรรม
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}การเปลี่ยนแปลงทางเศรษฐกิจ
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}ผลผลิตที่ส่งออกให้บริษัทของเรา
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}ผลผลิตที่ส่งออกให้บริษัทคู่แข่ง
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}อุตสาหกรรมอื่นๆต้องการแลกเปลี่ยนสินค้า
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}คำแนะนำ / ข้อมูลเกี่ยวกับยานยนต์ของบริษัท
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}ยานยนต์ใหม่ๆ
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}การเปลี่ยนแปลงการรับสินค้า
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}โครงการที่มีงบประมาณสนับสนุน
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}ข้อมูลทั่วไป
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :เมื่อมียานยนต์แรกมาถึงสถานีของผู้เล่น: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :เมื่อมียานยนต์แรกมาถึงสถานีของคู่แข่ง: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :อุบัติเหตุ / อุบัติภัย: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :ข้อมูลข่าวสารของบริษัท: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :การเปิดตัวของอุตสาหกรรม: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :การปิดตัวของอุตสาหกรรม: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :การเปลี่ยนแปลงทางเศรษฐกิจ: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :ผลผลิตที่ส่งออกให้บริษัทของเรา: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :ผลผลิตที่ส่งออกให้บริษัทคู่แข่ง: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :อุตสาหกรรมอื่นๆต้องการแลกเปลี่ยนสินค้า: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :คำแนะนำ / ข้อมูลเกี่ยวกับยานยนต์ของบริษัท: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :ยานยนต์ใหม่ๆ: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :การเปลี่ยนแปลงการรับสินค้า: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :โครงการที่มีงบประมาณสนับสนุน: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :ข้อมูลทั่วไป: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

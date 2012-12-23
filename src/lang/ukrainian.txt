@@ -855,25 +855,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Повідомлення
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Звукове сповіщення для підсумкових новин
-STR_NEWS_MESSAGES_OFF                                           :Не показувати
-STR_NEWS_MESSAGES_SUMMARY                                       :Скорочено
-STR_NEWS_MESSAGES_FULL                                          :Повністю
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Не показувати
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Скорочено
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Повністю
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Прибуття першого транспорту на станцію гравця
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Прибуття першого транспорту на станцію конкурента
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Нещасні випадки / стихійні лиха
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Інформація щодо компанії
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Відкриття підприємств
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Закриття підприємств
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Зміни в економіці
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Зміни обсягів виробництва на підприємствах, обслуговуваних компанією
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Зміна обсягів виробництва на підприємствах, обслуговуваних суперниками
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Зміни обсягів виробництва на інших підприємствах
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Поради / інформація про транспорт компанії
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Новий транспорт
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Зміни в списку грузів, що приймаються
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Субсидії
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Загальна інформація
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Прибуття першого транспорту на станцію гравця: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Прибуття першого транспорту на станцію конкурента: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Нещасні випадки / стихійні лиха: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Інформація щодо компанії: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Відкриття підприємств: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Закриття підприємств: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Зміни в економіці: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Зміни обсягів виробництва на підприємствах, обслуговуваних компанією: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Зміна обсягів виробництва на підприємствах, обслуговуваних суперниками: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Зміни обсягів виробництва на інших підприємствах: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Поради / інформація про транспорт компанії: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Новий транспорт: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Зміни в списку грузів, що приймаються: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Субсидії: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Загальна інформація: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

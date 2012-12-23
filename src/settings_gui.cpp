@@ -1458,9 +1458,30 @@ static SettingEntry _settings_ui_interaction[] = {
 /** Interaction sub-page */
 static SettingsPage _settings_ui_interaction_page = {_settings_ui_interaction, lengthof(_settings_ui_interaction)};
 
+static SettingEntry _settings_ui_news[] = {
+	SettingEntry("news_display.arrival_player"),
+	SettingEntry("news_display.arrival_other"),
+	SettingEntry("news_display.accident"),
+	SettingEntry("news_display.company_info"),
+	SettingEntry("news_display.open"),
+	SettingEntry("news_display.close"),
+	SettingEntry("news_display.economy"),
+	SettingEntry("news_display.production_player"),
+	SettingEntry("news_display.production_other"),
+	SettingEntry("news_display.production_nobody"),
+	SettingEntry("news_display.advice"),
+	SettingEntry("news_display.new_vehicles"),
+	SettingEntry("news_display.acceptance"),
+	SettingEntry("news_display.subsidies"),
+	SettingEntry("news_display.general"),
+};
+/** News sub-page */
+static SettingsPage _settings_ui_news_page = {_settings_ui_news, lengthof(_settings_ui_news)};
+
 static SettingEntry _settings_ui[] = {
 	SettingEntry(&_settings_ui_display_page, STR_CONFIG_SETTING_DISPLAY_OPTIONS),
 	SettingEntry(&_settings_ui_interaction_page, STR_CONFIG_SETTING_INTERACTION),
+	SettingEntry(&_settings_ui_news_page, STR_CONFIG_SETTING_NEWS),
 	SettingEntry("gui.show_finances"),
 	SettingEntry("gui.errmsg_duration"),
 	SettingEntry("gui.hover_delay"),

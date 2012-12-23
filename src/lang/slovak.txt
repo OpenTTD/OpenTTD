@@ -795,25 +795,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Správa
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Prehrať zvuk pre stručné novinové správy
-STR_NEWS_MESSAGES_OFF                                           :Vypnuté
-STR_NEWS_MESSAGES_SUMMARY                                       :Obsah
-STR_NEWS_MESSAGES_FULL                                          :Plné
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Vypnuté
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Obsah
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Plné
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Príchod prvého vozidla do stanice hráča
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Príchod prvého vozidla do stanice konkurencie
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Havárie / Katastrofy
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Informácie o spoločnosti
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Vznik priemyslu
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Zánik priemyslu
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Zmeny v ekonomike
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Zmeny produkcie priemyslu obsluhovaného spoločnosťou
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Zmeny produkcie priemyslu obsluhovaného konkurenciou
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Ostatné zmeny produkcie priemyslu
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Rady / informácie o vozidlách spoločnosti
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nové vozidlá
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Zmeny príjmu nákladu
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Dotácie
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Hlavné informácie
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Príchod prvého vozidla do stanice hráča: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Príchod prvého vozidla do stanice konkurencie: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Havárie / Katastrofy: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informácie o spoločnosti: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Vznik priemyslu: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zánik priemyslu: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Zmeny v ekonomike: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Zmeny produkcie priemyslu obsluhovaného spoločnosťou: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Zmeny produkcie priemyslu obsluhovaného konkurenciou: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Ostatné zmeny produkcie priemyslu: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Rady / informácie o vozidlách spoločnosti: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nové vozidlá: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Zmeny príjmu nákladu: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Dotácie: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Hlavné informácie: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

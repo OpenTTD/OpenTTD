@@ -730,25 +730,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Viesti
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Soita ääni tiivistetyn uutisviestin kohdalla
-STR_NEWS_MESSAGES_OFF                                           :Pois
-STR_NEWS_MESSAGES_SUMMARY                                       :Tiivistelmä
-STR_NEWS_MESSAGES_FULL                                          :Täysi
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Pois
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Tiivistelmä
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Täysi
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Ensimmäinen ajoneuvo saapuu pelaajan asemalle.
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Ensimmäinen ajoneuvo saapuu kilpailijan asemalle.
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Vahingot/onnettomuudet
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Yhtiön tiedot
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Uutta teollisuutta
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Lakkautettavaa teollisuutta
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Talouden muutokset
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Tuotantomuutokset laitoksissa, joita yhtiö palvelee
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Tuotantomuutokset laitoksissa, joita kilpailija(t) palvelevat
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Muita muutoksia tuotannossa
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Neuvoja / tietoa yhtiön kulkuneuvoista
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Uudet ajoneuvot
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Rahdin vastaanottamisen muutokset
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Tuet
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Yleistä tietoa
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Ensimmäinen ajoneuvo saapuu pelaajan asemalle.: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Ensimmäinen ajoneuvo saapuu kilpailijan asemalle.: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Vahingot/onnettomuudet: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Yhtiön tiedot: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Uutta teollisuutta: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Lakkautettavaa teollisuutta: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Talouden muutokset: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Tuotantomuutokset laitoksissa, joita yhtiö palvelee: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Tuotantomuutokset laitoksissa, joita kilpailija(t) palvelevat: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Muita muutoksia tuotannossa: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Neuvoja / tietoa yhtiön kulkuneuvoista: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Uudet ajoneuvot: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Rahdin vastaanottamisen muutokset: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Tuet: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Yleistä tietoa: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

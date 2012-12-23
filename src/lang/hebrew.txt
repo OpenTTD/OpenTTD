@@ -726,25 +726,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{1:STRING}  -  
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}הודעה
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}נגן סאונד להודעות תמציות
-STR_NEWS_MESSAGES_OFF                                           :כבוי
-STR_NEWS_MESSAGES_SUMMARY                                       :תמצית
-STR_NEWS_MESSAGES_FULL                                          :מלא
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :כבוי
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :תמצית
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :מלא
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}הגעה של כלי תחבורה ראשון לתחנה של השחקן
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}הגעת כלי תחבורה ראשון לתחנה של מתחרה
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}תאונות / אסונות
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}מידע על החברה
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}פתיחת תעשיות
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}סגירת תעשיות
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}שינויים בכלכלה
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}שינויים ביצור של תעשיות בשירות החברה
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}שינויים ביצור של תעשיות בשירות המתחרה/ים
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}שינויים ביצור תעשיה אחרת
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}עיצות/מידע על כלי רכב של החברה
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}דגמים חדשים
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}שינויים במטענים המתקבלים
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}סובסידיות
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}מידע כללי
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :הגעה של כלי תחבורה ראשון לתחנה של השחקן: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :הגעת כלי תחבורה ראשון לתחנה של מתחרה: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :תאונות / אסונות: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :מידע על החברה: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :פתיחת תעשיות: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :סגירת תעשיות: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :שינויים בכלכלה: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :שינויים ביצור של תעשיות בשירות החברה: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :שינויים ביצור של תעשיות בשירות המתחרה/ים: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :שינויים ביצור תעשיה אחרת: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :עיצות/מידע על כלי רכב של החברה: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :דגמים חדשים: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :שינויים במטענים המתקבלים: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :סובסידיות: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :מידע כללי: {STRING}
 
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}התושבים חוגגים . . .{}רכבת ראשונה הגיעה ל{STATION}!

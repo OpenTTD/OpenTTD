@@ -729,25 +729,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}消息
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}为摘要的信息播放声音
-STR_NEWS_MESSAGES_OFF                                           :关闭
-STR_NEWS_MESSAGES_SUMMARY                                       :摘要
-STR_NEWS_MESSAGES_FULL                                          :完全
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :关闭
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :摘要
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :完全
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}玩家车站的剪彩仪式
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}对手车站的剪彩仪式
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}事故/灾难
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}公司信息
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}工业开业
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}工业倒闭
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}经济变化
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}自家公司服务的工业产量变化信息
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}对手公司服务的工业产量变化信息
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}其它工业产量变化信息
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}对于企业车辆的建议及信息
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}新车型
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}货物接受情况变更
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}财政补贴
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}综合信息
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :玩家车站的剪彩仪式: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :对手车站的剪彩仪式: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :事故/灾难: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :公司信息: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :工业开业: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :工业倒闭: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :经济变化: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :自家公司服务的工业产量变化信息: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :对手公司服务的工业产量变化信息: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :其它工业产量变化信息: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :对于企业车辆的建议及信息: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :新车型: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :货物接受情况变更: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :财政补贴: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :综合信息: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

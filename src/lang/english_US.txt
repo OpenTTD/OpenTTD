@@ -730,25 +730,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Message
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Play sound for summarized newsmessages
-STR_NEWS_MESSAGES_OFF                                           :Off
-STR_NEWS_MESSAGES_SUMMARY                                       :Summary
-STR_NEWS_MESSAGES_FULL                                          :Full
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Off
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Summary
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Full
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Arrival of first vehicle at player's station
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Arrival of first vehicle at competitor's station
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Accidents / disasters
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Company information
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Opening of industries
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Closing of industries
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Economy changes
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Production changes of industries served by the company
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Production changes of industries served by competitor(s)
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Other industry production changes
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Advice / information on company's vehicles
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}New vehicles
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Changes of cargo acceptance
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidies
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}General information
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arrival of first vehicle at player's station: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arrival of first vehicle at competitor's station: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / disasters: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Company information: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Opening of industries: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Closing of industries: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Economy changes: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Production changes of industries served by the company: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Production changes of industries served by competitor(s): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Other industry production changes: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Advice / information on company's vehicles: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :New vehicles: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Changes of cargo acceptance: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidies: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :General information: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

@@ -731,25 +731,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Missatge
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Emetre so per als nous missatges resumits
-STR_NEWS_MESSAGES_OFF                                           :Fora
-STR_NEWS_MESSAGES_SUMMARY                                       :Resum
-STR_NEWS_MESSAGES_FULL                                          :Complet
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Fora
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resum
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Complet
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Arribada del 1er. vehicle a una estació pròpia
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Arribada del 1er. vehicle a una estació competidora
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Accidents / desastres
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Informació de l'Empresa
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Obertura d'indústries
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Tancament d'indústries
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Canvis de l'Economia
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Canvis de producció de les indústries aprovisionades per la companyia
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Canvis de producció en indústries proveïdes pel competidor(s)
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Altres canvis de producció de la indústria
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Alertes / informació sobre els vehicles de la companyia
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nous vehicles
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Canvis en l'admissió de càrrega
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subvencions
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informació General
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arribada del 1er. vehicle a una estació pròpia: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arribada del 1er. vehicle a una estació competidora: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / desastres: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informació de l'Empresa: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Obertura d'indústries: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Tancament d'indústries: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Canvis de l'Economia: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Canvis de producció de les indústries aprovisionades per la companyia: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Canvis de producció en indústries proveïdes pel competidor(s): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Altres canvis de producció de la indústria: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Alertes / informació sobre els vehicles de la companyia: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nous vehicles: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Canvis en l'admissió de càrrega: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencions: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informació General: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

@@ -676,20 +676,20 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}சம�
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}செய்தி
-STR_NEWS_MESSAGES_OFF                                           :நிறுத்து
-STR_NEWS_MESSAGES_SUMMARY                                       :தொகுப்பு
-STR_NEWS_MESSAGES_FULL                                          :முழு
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :நிறுத்து
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :தொகுப்பு
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :முழு
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}விளையாடுபவரின் நிலையத்திற்கு முதல் வாகனம் வருகை புரிந்தது
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}போட்டியாளரின் நிலையத்திற்கு முதல் வாகனம் வருகை புரிந்தது
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}விபத்துகள் / பேரழிவுகள்
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}நிறுவனத்தின் விவரம்
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}தொழிற்சாலைகளின் திறப்பு
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}தொழிற்சாலைகளின் மூடல்
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}பொருளாதார மாற்றங்கள்
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}புதிய வாகனங்கள்
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}மானியங்கள்
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}பொதுவான விவரம்
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :விளையாடுபவரின் நிலையத்திற்கு முதல் வாகனம் வருகை புரிந்தது: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :போட்டியாளரின் நிலையத்திற்கு முதல் வாகனம் வருகை புரிந்தது: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :விபத்துகள் / பேரழிவுகள்: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :நிறுவனத்தின் விவரம்: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :தொழிற்சாலைகளின் திறப்பு: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :தொழிற்சாலைகளின் மூடல்: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :பொருளாதார மாற்றங்கள்: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :புதிய வாகனங்கள்: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :மானியங்கள்: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :பொதுவான விவரம்: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

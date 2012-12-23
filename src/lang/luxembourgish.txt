@@ -729,25 +729,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Meldung
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Sound ofspillen fir zesummegefaassten Meldungen
-STR_NEWS_MESSAGES_OFF                                           :Aus
-STR_NEWS_MESSAGES_SUMMARY                                       :Resumé
-STR_NEWS_MESSAGES_FULL                                          :Ganz
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Aus
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resumé
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Ganz
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Ukonft vum éischten Gefiert op enger Spillerstatioun
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Ukonft vum éischten Gefiert op enger Géigenspillerstatioun
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Accidenter / Katastrophen
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Firmeninformatiounen
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Industrieeröffnung
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Industrie gëtt zougemaach
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Wirtschaftsännerungen
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Produktiounswiessel vun der Industrie dei vun der Firma betreit gëtt
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Produktiounswiessel vun der Industrie dei vun der Konkurenz betreit gëtt
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Aanern Industriellen Produktiounswiessel
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Hinweis / Informatioun iwwert Firmengefierer
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nei Gefierer
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Ännerungen vun acceptéiert Luedungen
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subventiounen
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Generel Informatiounen
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Ukonft vum éischten Gefiert op enger Spillerstatioun: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Ukonft vum éischten Gefiert op enger Géigenspillerstatioun: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidenter / Katastrophen: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Firmeninformatiounen: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Industrieeröffnung: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Industrie gëtt zougemaach: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Wirtschaftsännerungen: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produktiounswiessel vun der Industrie dei vun der Firma betreit gëtt: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produktiounswiessel vun der Industrie dei vun der Konkurenz betreit gëtt: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Aanern Industriellen Produktiounswiessel: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Hinweis / Informatioun iwwert Firmengefierer: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nei Gefierer: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Ännerungen vun acceptéiert Luedungen: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventiounen: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Generel Informatiounen: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

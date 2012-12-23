@@ -732,25 +732,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Messaggio
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Riproduci un suono per le notizie ridotte a sommario
-STR_NEWS_MESSAGES_OFF                                           :No
-STR_NEWS_MESSAGES_SUMMARY                                       :Sommario
-STR_NEWS_MESSAGES_FULL                                          :Completo
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :No
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sommario
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Arrivo del primo veicolo alle stazioni della compagnia
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Arrivo del primo veicolo alle stazioni di un avversario
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Incidenti / disastri
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Informazioni sulla compagnia
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Apertura di industrie
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Chiusura di industrie
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Cambiamenti economici
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Cambiamenti produzione industrie servite dalla compagnia
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Cambiamenti produzione industrie servite dagli avversari
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Altri cambiamenti di produzione industrie
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Consigli / informazioni sui veicoli della compagnia
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nuovi veicoli
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Cambiamenti della merce accettata
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Sussidi
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informazioni generali
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arrivo del primo veicolo alle stazioni della compagnia: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arrivo del primo veicolo alle stazioni di un avversario: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Incidenti / disastri: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informazioni sulla compagnia: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Apertura di industrie: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Chiusura di industrie: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Cambiamenti economici: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Cambiamenti produzione industrie servite dalla compagnia: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Cambiamenti produzione industrie servite dagli avversari: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Altri cambiamenti di produzione industrie: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Consigli / informazioni sui veicoli della compagnia: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nuovi veicoli: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Cambiamenti della merce accettata: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Sussidi: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informazioni generali: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

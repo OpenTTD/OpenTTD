@@ -725,25 +725,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Teachtaireacht
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Seinn fuaim le haghaidh teachtaireachtaí nuachta achomair
-STR_NEWS_MESSAGES_OFF                                           :As
-STR_NEWS_MESSAGES_SUMMARY                                       :Achoimre
-STR_NEWS_MESSAGES_FULL                                          :Iomlán
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :As
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Achoimre
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Iomlán
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Tagann an chéad fheiticil isteach i stáisiún imreora
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Tagann an chéad fheithicil isteach i stáisiún iomaitheora
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Timpistí / tubaistí
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Faisnéis cuideachta
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Tionscail ag oscailt
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Tionscail ag dúnadh
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Athruithe sa gheilleagar
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Athruithe sa táirgeadh i measc tionscail a mbíonn an chuideachta ag freastal orthu
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Athruithe sa táirgeadh i measc tionscail a mbíonn iomaitheoir(í) ag freastal orthu
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Athruithe eile i dtáirgeadh tionscail
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Comhairle / faisnéis maidir le feithiclí na cuideachta
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Feithiclí nua
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Athruithe ar an lastas a nglactar leis
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Fordheontais
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Faisnéis ginearálta
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Tagann an chéad fheiticil isteach i stáisiún imreora: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Tagann an chéad fheithicil isteach i stáisiún iomaitheora: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Timpistí / tubaistí: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Faisnéis cuideachta: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Tionscail ag oscailt: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Tionscail ag dúnadh: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Athruithe sa gheilleagar: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Athruithe sa táirgeadh i measc tionscail a mbíonn an chuideachta ag freastal orthu: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Athruithe sa táirgeadh i measc tionscail a mbíonn iomaitheoir(í) ag freastal orthu: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Athruithe eile i dtáirgeadh tionscail: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Comhairle / faisnéis maidir le feithiclí na cuideachta: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Feithiclí nua: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Athruithe ar an lastas a nglactar leis: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Fordheontais: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Faisnéis ginearálta: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

@@ -728,25 +728,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Meddelande
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Spela upp ljud för summariska nyhetsmeddelanden
-STR_NEWS_MESSAGES_OFF                                           :Av
-STR_NEWS_MESSAGES_SUMMARY                                       :Summarisk
-STR_NEWS_MESSAGES_FULL                                          :På
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Av
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Summarisk
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :På
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Första fordonets ankomst till spelarens stn.
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Första fordonets ankomst till konkurrents stn.
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Olyckor / katastrofer
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Företagsinformation
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Invigning av industrier
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Nedläggning av Industrier
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Ekonomiska förändringar
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Produktionsförändring vid industri som företaget betjänar
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Produktionsförändring vid industri som motståndare betjänar
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Andra produktionsförändringar vid industrier.
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Råd / information om företagets fordon
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nya fordon
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Ändringar i godsacceptans
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subventioner
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Övergripande information
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Första fordonets ankomst till spelarens stn.: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Första fordonets ankomst till konkurrents stn.: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Olyckor / katastrofer: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Företagsinformation: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Invigning av industrier: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Nedläggning av Industrier: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomiska förändringar: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produktionsförändring vid industri som företaget betjänar: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produktionsförändring vid industri som motståndare betjänar: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Andra produktionsförändringar vid industrier.: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Råd / information om företagets fordon: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nya fordon: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Ändringar i godsacceptans: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventioner: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Övergripande information: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

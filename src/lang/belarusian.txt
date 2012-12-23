@@ -1043,25 +1043,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  —  
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Паведамленьне
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Прайграваць гукі пры атрыманьні сьціслых паведамленьняў
-STR_NEWS_MESSAGES_OFF                                           :Выкл.
-STR_NEWS_MESSAGES_SUMMARY                                       :Сьцісла
-STR_NEWS_MESSAGES_FULL                                          :Цалкам
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Выкл.
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Сьцісла
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Цалкам
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Прыбыцьцё першага транспартнага сродку на станцыю гульца
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Першы транспартны сродак на станцыю канкурэнта
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Здарэньні й катастрофы
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Інфармацыя аб Кампаніі
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Адкрыцьцё новых прадпрыемстваў
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Закрыцьцё прадпрыемстваў
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Зьмены ў эканоміцы
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Зьмены ў прадукцыйнасьці прадпрыемстваў, якія абслугоўвае Кампанія
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Зьмены ў прадукцыйнасьці прадпрыемстваў, якія абслугоўвае канкурэнт(-ы)
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Зьмены ў прадукцыйнасьці прадпрыемстваў, якія ніхто не абслугоўвае
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Парады / зьвесткі аб транспартных сродках гульца
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Новы транспарт
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Зьмены ў сьпісах грузаў, якія прымаюцца станцыямі
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Субсыдыі
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Агульная інфармацыя
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Прыбыцьцё першага транспартнага сродку на станцыю гульца: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Першы транспартны сродак на станцыю канкурэнта: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Здарэньні й катастрофы: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Інфармацыя аб Кампаніі: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Адкрыцьцё новых прадпрыемстваў: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Закрыцьцё прадпрыемстваў: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Зьмены ў эканоміцы: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Зьмены ў прадукцыйнасьці прадпрыемстваў, якія абслугоўвае Кампанія: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Зьмены ў прадукцыйнасьці прадпрыемстваў, якія абслугоўвае канкурэнт(-ы): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Зьмены ў прадукцыйнасьці прадпрыемстваў, якія ніхто не абслугоўвае: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Парады / зьвесткі аб транспартных сродках гульца: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Новы транспарт: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Зьмены ў сьпісах грузаў, якія прымаюцца станцыямі: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Субсыдыі: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Агульная інфармацыя: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

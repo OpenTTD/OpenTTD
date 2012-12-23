@@ -875,25 +875,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Сообщение
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Проигрывать звук при получении новых сообщений
-STR_NEWS_MESSAGES_OFF                                           :Выкл
-STR_NEWS_MESSAGES_SUMMARY                                       :Кратко
-STR_NEWS_MESSAGES_FULL                                          :Полно
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Выкл
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Кратко
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Полно
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Первое транспортное средство игрока на станции
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Первое транспортное средство конкурента на станции
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Аварии и катастрофы
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Информация о Компании
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Открытие предприятий
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Закрытие предприятий
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Изменения в экономике
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Изм. производительности предприятий, обслуж. компанией
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Изм. производительности предприятий, обслуж. конкурентами
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Изм. производительности предпр., никем не обслуживаемых
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Советы/сведения по транспорту компании
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Новый транспорт
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Изменения в списке принимаемых грузов
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Субсидии
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Общая информация
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Первое транспортное средство игрока на станции: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Первое транспортное средство конкурента на станции: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Аварии и катастрофы: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Информация о Компании: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Открытие предприятий: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Закрытие предприятий: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Изменения в экономике: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Изм. производительности предприятий, обслуж. компанией: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Изм. производительности предприятий, обслуж. конкурентами: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Изм. производительности предпр., никем не обслуживаемых: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Советы/сведения по транспорту компании: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Новый транспорт: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Изменения в списке принимаемых грузов: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Субсидии: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Общая информация: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

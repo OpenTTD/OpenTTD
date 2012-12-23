@@ -730,25 +730,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Pesanan
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Mainkan bunyi untuk mesej berita ringkas
-STR_NEWS_MESSAGES_OFF                                           :Padam
-STR_NEWS_MESSAGES_SUMMARY                                       :Ringkasan
-STR_NEWS_MESSAGES_FULL                                          :Penuh
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Padam
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Ringkasan
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Penuh
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Ketibaan kenderaan di stesen pemain
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Ketibaan kenderaan di stesen pesaing
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Kemalangan / bencana
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Maklumat syarikat
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Pembukaan industri
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Penutupan industri
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Perubahan ekonomi
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Perubahan pengeluaran industri-industri yang diservis oleh syarikat
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Perubahan pengeluaran industri-industri yang diservis oleh pesaing
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Pengubaran pengeluaran industri lain
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Nasihat / maklumat tentang kenderaan syarikat
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Kenderaan baru
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Penukaran pada penerimaan kargo
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidi
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Maklumat umum
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Ketibaan kenderaan di stesen pemain: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Ketibaan kenderaan di stesen pesaing: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Kemalangan / bencana: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Maklumat syarikat: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Pembukaan industri: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Penutupan industri: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Perubahan ekonomi: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Perubahan pengeluaran industri-industri yang diservis oleh syarikat: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Perubahan pengeluaran industri-industri yang diservis oleh pesaing: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Pengubaran pengeluaran industri lain: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Nasihat / maklumat tentang kenderaan syarikat: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Kenderaan baru: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Penukaran pada penerimaan kargo: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidi: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Maklumat umum: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

@@ -727,25 +727,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Neges
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Chwarae sain ar gyfer negeseuon newyddion cryno
-STR_NEWS_MESSAGES_OFF                                           :I Ffwrdd
-STR_NEWS_MESSAGES_SUMMARY                                       :Crynodeb
-STR_NEWS_MESSAGES_FULL                                          :Llawn
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :I Ffwrdd
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Crynodeb
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Llawn
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Y cerbyd cyntaf yn cyrraedd gorsaf y chwaraewr
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Y cerbyd cyntaf yn cyrraedd gorsaf cystadleuydd
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Damweiniau / trychinebau
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Gwybodaeth Cwmnïau
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Cychwyn diwydiannau
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Cau diwydiannau
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Newidiadau yn yr economi
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Newid yng nghynyrch diwydiannau a wasanaethir gan y cwmni
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Newid yng nghynyrch diwydiannau a wasanaethir gan gystadleuw(y)r
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Newidiadau cynyrch diwydiannau eraill
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Cyngor / gwybodaeth am gerbydau cwmni
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Cerbydau Newydd
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Newidiadau i'r llwythi sy'n cael eu derbyn
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Cymorthdaliadau
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Gwybodaeth Gyffredinol
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Y cerbyd cyntaf yn cyrraedd gorsaf y chwaraewr: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Y cerbyd cyntaf yn cyrraedd gorsaf cystadleuydd: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Damweiniau / trychinebau: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Gwybodaeth Cwmnïau: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Cychwyn diwydiannau: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Cau diwydiannau: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Newidiadau yn yr economi: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Newid yng nghynyrch diwydiannau a wasanaethir gan y cwmni: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Newid yng nghynyrch diwydiannau a wasanaethir gan gystadleuw(y)r: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Newidiadau cynyrch diwydiannau eraill: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Cyngor / gwybodaeth am gerbydau cwmni: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Cerbydau Newydd: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Newidiadau i'r llwythi sy'n cael eu derbyn: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Cymorthdaliadau: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Gwybodaeth Gyffredinol: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

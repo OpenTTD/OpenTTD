@@ -822,25 +822,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Μήνυμα
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Αναπαραγωγή ήχου για μηνύματα σε περιγραφή
-STR_NEWS_MESSAGES_OFF                                           :Απενεργοποιημένα
-STR_NEWS_MESSAGES_SUMMARY                                       :Περιλήψεις
-STR_NEWS_MESSAGES_FULL                                          :Ολόκληρα
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Απενεργοποιημένα
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Περιλήψεις
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Ολόκληρα
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Άφιξη πρώτου οχήματος σε σταθμό του παίκτη
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Άφιξη του πρώτου οχήματος σε σταθμό του αντιπάλου
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Ατυχήματα / καταστροφές
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Πληροφορίες εταιρίας
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Έναρξη των βιομηχανιών
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Κλείσιμο βιομηχανιών
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Οικονομικές αλλαγές
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Αλλαγή της παραγωγής των βιομηχανιών που εξυπηρετούνται από την εταιρία
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Διαφοροποιήσεις στην παραγωγή των βιομηχανιών που εξυπηρετούνται από ανταγωνιστή(-ές)
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Άλλες διαφοροποιήσεις στη παραγωγή
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Συμβουλές / πληροφορίες για τα εταιρικά οχήματα
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Νέα οχήματα
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Αλλαγές στην αποδοχή φορτίου
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Επιχορηγήσεις
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Γενικές πληροφορίες
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Άφιξη πρώτου οχήματος σε σταθμό του παίκτη: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Άφιξη του πρώτου οχήματος σε σταθμό του αντιπάλου: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ατυχήματα / καταστροφές: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Πληροφορίες εταιρίας: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Έναρξη των βιομηχανιών: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Κλείσιμο βιομηχανιών: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Οικονομικές αλλαγές: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Αλλαγή της παραγωγής των βιομηχανιών που εξυπηρετούνται από την εταιρία: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Διαφοροποιήσεις στην παραγωγή των βιομηχανιών που εξυπηρετούνται από ανταγωνιστή(-ές): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Άλλες διαφοροποιήσεις στη παραγωγή: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Συμβουλές / πληροφορίες για τα εταιρικά οχήματα: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Νέα οχήματα: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Αλλαγές στην αποδοχή φορτίου: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Επιχορηγήσεις: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Γενικές πληροφορίες: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

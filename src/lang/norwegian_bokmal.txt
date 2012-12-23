@@ -729,25 +729,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Melding
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Spill av en lyd ved nyhetssammendrag
-STR_NEWS_MESSAGES_OFF                                           :Av
-STR_NEWS_MESSAGES_SUMMARY                                       :Sammendrag
-STR_NEWS_MESSAGES_FULL                                          :Fullt
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Av
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sammendrag
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Fullt
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Første kjøretøy på spillers stasjon
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Første kjøretøy på motstanders stasjon
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Ulykker / katastrofer
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Firmainformasjon
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Åpning av industrier
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Stenging av industrier
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Økonomiske endringer
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Produksjonsendringer hos industrier ekspedert av firmaet
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Produksjonsendringer hos industrier ekspedert av motspiller(e)
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Andre industriproduksjonsendringer
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Forslag / informasjon om firmaets kjøretøyer
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nye kjøretøy
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Endringer i godtatte varer
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidier
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Generell informasjon
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Første kjøretøy på spillers stasjon: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Første kjøretøy på motstanders stasjon: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ulykker / katastrofer: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Firmainformasjon: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Åpning av industrier: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Stenging av industrier: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Økonomiske endringer: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produksjonsendringer hos industrier ekspedert av firmaet: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produksjonsendringer hos industrier ekspedert av motspiller(e): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Andre industriproduksjonsendringer: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Forslag / informasjon om firmaets kjøretøyer: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nye kjøretøy: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Endringer i godtatte varer: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidier: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Generell informasjon: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

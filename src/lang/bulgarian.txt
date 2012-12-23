@@ -720,25 +720,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Съобщение
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Покажи обобщените новини със звук
-STR_NEWS_MESSAGES_OFF                                           :изключено
-STR_NEWS_MESSAGES_SUMMARY                                       :Обобщение
-STR_NEWS_MESSAGES_FULL                                          :Пълно
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :изключено
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Обобщение
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Пълно
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Първа кола пристигнала в станция
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Първо пристигане на превозно средство в конкурентна станция
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Инциденти / бедствия
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Информация за компанията
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Откриване на индустрии
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Закриане на индустрии
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Промени в икономиката
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Промяна на продукцията в индустрии обслужвани от играча
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Промяна в производството на индустрия обслужвана от конкуренцията
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Промяна в производството на индустрия
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Съвет / инфомация относно превозните средства на играча
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Нови превозни средства
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Промени в приемането на товари
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Субсидии
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Обща информация
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Първа кола пристигнала в станция: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Първо пристигане на превозно средство в конкурентна станция: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Инциденти / бедствия: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Информация за компанията: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Откриване на индустрии: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Закриане на индустрии: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Промени в икономиката: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Промяна на продукцията в индустрии обслужвани от играча: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Промяна в производството на индустрия обслужвана от конкуренцията: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Промяна в производството на индустрия: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Съвет / инфомация относно превозните средства на играча: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Нови превозни средства: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Промени в приемането на товари: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Субсидии: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Обща информация: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

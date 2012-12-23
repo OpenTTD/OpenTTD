@@ -721,25 +721,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Berjocht
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Musykje ôfspielje by gearfette nijsberjochten
-STR_NEWS_MESSAGES_OFF                                           :Ut
-STR_NEWS_MESSAGES_SUMMARY                                       :Gearfetting
-STR_NEWS_MESSAGES_FULL                                          :Folslein
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Ut
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Gearfetting
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Folslein
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Oankomst fan earste reau op stasjon fan spyler
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Oankomst fan earste reau op stasjon fan tsjinstander
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Ûngelokken / rampen
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Bedriuws ynformaasje
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Iepenje fan yndustryen
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Slute fan yndustryen
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Feroarings yn 'e ekonomie
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Produksjeferoarings fan yndustryen betsjinne troch it bedriuw
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Produksjeferoarings fan yndustryen betsjinne troch konkurrint(en)
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Produksjeferoarings oare yndustryen
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Advys / ynformaasje oer bedriuws reauen
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nije reauen
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Feroarings yn akseptearje fan fracht
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsydzjes
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Algemiene ynformaasje
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Oankomst fan earste reau op stasjon fan spyler: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Oankomst fan earste reau op stasjon fan tsjinstander: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ûngelokken / rampen: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Bedriuws ynformaasje: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Iepenje fan yndustryen: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Slute fan yndustryen: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Feroarings yn 'e ekonomie: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produksjeferoarings fan yndustryen betsjinne troch it bedriuw: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produksjeferoarings fan yndustryen betsjinne troch konkurrint(en): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Produksjeferoarings oare yndustryen: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Advys / ynformaasje oer bedriuws reauen: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nije reauen: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Feroarings yn akseptearje fan fracht: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsydzjes: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Algemiene ynformaasje: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

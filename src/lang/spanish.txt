@@ -731,25 +731,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mensaje
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Reproducir sonido para resumen de noticias
-STR_NEWS_MESSAGES_OFF                                           :Apagado
-STR_NEWS_MESSAGES_SUMMARY                                       :Resumen
-STR_NEWS_MESSAGES_FULL                                          :Completo
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Apagado
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resumen
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Llegada del primer vehículo a una estación del jugador
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Llegada del primer vehículo a una estación de la competencia
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Accidentes / desastres
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Información de la empresa
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Apertura de industrias
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Cierre de industrias
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Cambios en la economía
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Cambios de producción en industrias atendidas por la empresa
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Cambios de producción en las industrias servidas por los competidores
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Cambios de producción de otras industrias
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Aviso / información de los vehículos de la empresa
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nuevos vehículos
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Cambios en la aceptación de carga
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subvenciones
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Información general
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Llegada del primer vehículo a una estación del jugador: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Llegada del primer vehículo a una estación de la competencia: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidentes / desastres: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Información de la empresa: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Apertura de industrias: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Cierre de industrias: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Cambios en la economía: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Cambios de producción en industrias atendidas por la empresa: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Cambios de producción en las industrias servidas por los competidores: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Cambios de producción de otras industrias: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Aviso / información de los vehículos de la empresa: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nuevos vehículos: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Cambios en la aceptación de carga: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvenciones: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Información general: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

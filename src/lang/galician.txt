@@ -701,25 +701,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mensaxe
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Reproducir son para mensaxes de noticias resumidas
-STR_NEWS_MESSAGES_OFF                                           :Apagado
-STR_NEWS_MESSAGES_SUMMARY                                       :Sumario
-STR_NEWS_MESSAGES_FULL                                          :Completo
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Apagado
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sumario
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Chegada do 1º vehículo a estación do xogador
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Chegada do 1º vehículo a estación dun oponente
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Accidentes / desastres
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Información da compañía
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Apertura de industrias
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Pecha unha industria
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Cambios económicos
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Cambios de producción nas industrias servidas pola compañía
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Cambios na producción das industrias servidas polos competidores
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Cambios de producción doutras industrias
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Consello / información acerca dos vehículos da compañía
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Novos vehículos
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Cambios na admisión de carga
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidios
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Información xeral
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Chegada do 1º vehículo a estación do xogador: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Chegada do 1º vehículo a estación dun oponente: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidentes / desastres: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Información da compañía: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Apertura de industrias: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Pecha unha industria: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Cambios económicos: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Cambios de producción nas industrias servidas pola compañía: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Cambios na producción das industrias servidas polos competidores: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Cambios de producción doutras industrias: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Consello / información acerca dos vehículos da compañía: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Novos vehículos: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Cambios na admisión de carga: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidios: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Información xeral: {STRING}
 
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Celebración cidadá . . .{}Chega o primeiro tren a {STATION}!

@@ -726,25 +726,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}پیغام
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}پخش صدا برای پیام های خبری خلاصه
-STR_NEWS_MESSAGES_OFF                                           :خاموش
-STR_NEWS_MESSAGES_SUMMARY                                       :خلاصه
-STR_NEWS_MESSAGES_FULL                                          :کامل
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :خاموش
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :خلاصه
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :کامل
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}رسیدن اولین وسیله نقلیه به یکی ازایستگاه های بازیکن
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}رسیدن اولین وسیله نقلیه به یکی ازایستگاه ها کامپوتر
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}حوادث / بلایا
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}اطلاعات شرکت
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}بازگشایی صنایع
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}بستن صنایع
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}تغییرات اقتصادی
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}تغییرات تولید صنایع در خدمت شرکت
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}تغییرات تولید صنایع در خدمت رقیب(ها)
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}تغیرات تولید بقیه شرکت ها
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}راهنمایی یا اطلاعات درباره ی وسایل حمل و نقل شرکت
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}وسیله نقلیه جدید
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}تغیرات دریاف کالا
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}کمک هزینه
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}توضیهات کلی
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :رسیدن اولین وسیله نقلیه به یکی ازایستگاه های بازیکن: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :رسیدن اولین وسیله نقلیه به یکی ازایستگاه ها کامپوتر: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :حوادث / بلایا: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :اطلاعات شرکت: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :بازگشایی صنایع: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :بستن صنایع: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :تغییرات اقتصادی: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :تغییرات تولید صنایع در خدمت شرکت: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :تغییرات تولید صنایع در خدمت رقیب(ها): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :تغیرات تولید بقیه شرکت ها: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :راهنمایی یا اطلاعات درباره ی وسایل حمل و نقل شرکت: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :وسیله نقلیه جدید: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :تغیرات دریاف کالا: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :کمک هزینه: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :توضیهات کلی: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

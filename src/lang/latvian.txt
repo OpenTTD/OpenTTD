@@ -732,25 +732,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Ziņojums
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Atskaņot signālu kopsavilkuma ziņojumiem
-STR_NEWS_MESSAGES_OFF                                           :Izslēgts
-STR_NEWS_MESSAGES_SUMMARY                                       :Kopsavilkums
-STR_NEWS_MESSAGES_FULL                                          :Pilns
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Izslēgts
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Kopsavilkums
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pilns
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Spēlētaja stacijā ierodas pirmais transportlīdzeklis
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Sāncenša stacijā ierodas pirmais transportlīdzeklis
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Negadījumi / katastrofas
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Uzņēmuma informācija
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Ražotņu atklāšana
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Ražotņu slēgšana
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Ekonomikas izmaiņas
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Ražošanas izmaiņas uzņēmuma apkalpotajās ražotnēs
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Ražošanas izmaiņas sāncenšu apkalpotajās ražotnēs
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Citas ražošanas apjomu izmaiņas
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Padomi / informācija par uzņēmuma transportlīdzekļiem
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Jauni transportlīdzekļi
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Izmaiņas kravu pieņemšanā
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsīdijas
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Vispārējā informācija
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Spēlētaja stacijā ierodas pirmais transportlīdzeklis: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Sāncenša stacijā ierodas pirmais transportlīdzeklis: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Negadījumi / katastrofas: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Uzņēmuma informācija: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Ražotņu atklāšana: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Ražotņu slēgšana: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomikas izmaiņas: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Ražošanas izmaiņas uzņēmuma apkalpotajās ražotnēs: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Ražošanas izmaiņas sāncenšu apkalpotajās ražotnēs: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Citas ražošanas apjomu izmaiņas: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Padomi / informācija par uzņēmuma transportlīdzekļiem: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Jauni transportlīdzekļi: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Izmaiņas kravu pieņemšanā: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsīdijas: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Vispārējā informācija: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

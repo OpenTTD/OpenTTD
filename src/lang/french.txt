@@ -731,25 +731,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Message
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Émettre un son pour les bulletins sommaires
-STR_NEWS_MESSAGES_OFF                                           :Aucun
-STR_NEWS_MESSAGES_SUMMARY                                       :Sommaire
-STR_NEWS_MESSAGES_FULL                                          :Complet
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Aucun
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sommaire
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Complet
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Arrivée du premier véhicule dans la station du joueur
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Arrivée du premier véhicule dans la station d'un concurrent
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Accidents / Catastrophes
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Informations corporatives
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Ouvertures d'industries
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Fermetures d'industries
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Changements économiques
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Changements de production des industries desservies par la compagnie
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Changements de production des industries desservies par les concurrents
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Changements de production des industries non desservies
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Conseils / Informations sur les véhicules de la compagnie
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nouveaux véhicules
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Changements d'acceptation de marchandises
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subventions
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informations générales
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arrivée du premier véhicule dans la station du joueur: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arrivée du premier véhicule dans la station d'un concurrent: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / Catastrophes: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informations corporatives: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Ouvertures d'industries: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Fermetures d'industries: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Changements économiques: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Changements de production des industries desservies par la compagnie: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Changements de production des industries desservies par les concurrents: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Changements de production des industries non desservies: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Conseils / Informations sur les véhicules de la compagnie: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nouveaux véhicules: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Changements d'acceptation de marchandises: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventions: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informations générales: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

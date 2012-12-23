@@ -726,25 +726,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}رسالة
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}اصدار صوت عند عرض رسالة جديدة
-STR_NEWS_MESSAGES_OFF                                           :اغلاق
-STR_NEWS_MESSAGES_SUMMARY                                       :ملخص
-STR_NEWS_MESSAGES_FULL                                          :ممتلئ
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :اغلاق
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :ملخص
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :ممتلئ
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}وصول اول مركبة لمحطة اللاعب
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}وصول اول مركبة لمحطة الخصوم
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}الحوادث/الأزمات
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}معلومات الشركة
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}تشغيل مصنع جديد
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}اغلاق مصنع
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}التغيرات الأقتصادية
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}تغير في انتاج مصنع مشمول بخدمات الشركة
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}تغير في انتاج مصنع مشمول بخدمات الشركات الأخرى
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}تغير انتاج المصانع الأخرى
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}نصائح/ معلومات حول مركبات الشركة
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}المركبات الجديدة
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}تغييرات قبول الشحن
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}العروض
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}معلومات عامة
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :وصول اول مركبة لمحطة اللاعب: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :وصول اول مركبة لمحطة الخصوم: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :الحوادث/الأزمات: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :معلومات الشركة: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :تشغيل مصنع جديد: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :اغلاق مصنع: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :التغيرات الأقتصادية: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :تغير في انتاج مصنع مشمول بخدمات الشركة: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :تغير في انتاج مصنع مشمول بخدمات الشركات الأخرى: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :تغير انتاج المصانع الأخرى: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :نصائح/ معلومات حول مركبات الشركة: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :المركبات الجديدة: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :تغييرات قبول الشحن: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :العروض: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :معلومات عامة: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

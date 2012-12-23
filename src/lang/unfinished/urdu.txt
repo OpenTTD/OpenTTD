@@ -724,25 +724,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}پیغام
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}خبروں کے خلاصے کے لے آواز چلائیں
-STR_NEWS_MESSAGES_OFF                                           :بند
-STR_NEWS_MESSAGES_SUMMARY                                       :خلاصہ
-STR_NEWS_MESSAGES_FULL                                          :مکمل
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :بند
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :خلاصہ
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :مکمل
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}کھلاڑی کے اسٹیشن پر پہلی گاڑی کی آمد
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}مقابل کے اسٹیشن پر پہلی گاڑی کی آمد
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}حادثے / تباہیاں
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}کمپنی کی معلومات
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}صنعتوں کا افتتاح
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}صنعتوں کی بندش
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}معیشت بدل گئی
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}کمپنی کی خدمات حاصل کرنے والی صنعتوں کی پیداوار میں تبدیلی
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}مُقابل کی خدمات حاصل کرنے والی صنعتوں کی پیداوار میں تبدیلی
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}دوسری صنعت کی پیداوار میں تبدیلی
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}کمپنی کی گاڑیوں کے بارے پیں نصیحت / معلومات
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}نئی گاڑیاں
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}کارگو کی منظوری میں تبدیلی
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}امداد
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}عمومی معلومات
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :کھلاڑی کے اسٹیشن پر پہلی گاڑی کی آمد: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :مقابل کے اسٹیشن پر پہلی گاڑی کی آمد: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :حادثے / تباہیاں: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :کمپنی کی معلومات: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :صنعتوں کا افتتاح: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :صنعتوں کی بندش: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :معیشت بدل گئی: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :کمپنی کی خدمات حاصل کرنے والی صنعتوں کی پیداوار میں تبدیلی: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :مُقابل کی خدمات حاصل کرنے والی صنعتوں کی پیداوار میں تبدیلی: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :دوسری صنعت کی پیداوار میں تبدیلی: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :کمپنی کی گاڑیوں کے بارے پیں نصیحت / معلومات: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :نئی گاڑیاں: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :کارگو کی منظوری میں تبدیلی: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :امداد: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :عمومی معلومات: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

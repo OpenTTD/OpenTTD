@@ -724,25 +724,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}メッセージ
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}ニュースを簡易表示するときに音を鳴らす。
-STR_NEWS_MESSAGES_OFF                                           :切
-STR_NEWS_MESSAGES_SUMMARY                                       :簡易
-STR_NEWS_MESSAGES_FULL                                          :完全
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :切
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :簡易
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :完全
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}自分の新しい駅に初めて車両が到着
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}競争相手の新しい駅に初めて車両が到着
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}事故／災害
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}会社情報
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}産業の開業
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}産業の閉業
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}経済の変化
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}自分が運送している産業の生産量の変化
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}競争相手が運送している産業の生産量の変化
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}その他の産業の生産量の変化
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}会社の車両の勧告／情報
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}新しい乗り物の登場
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}受入れする貨物の変化
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}助成金
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}一般情報
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :自分の新しい駅に初めて車両が到着: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :競争相手の新しい駅に初めて車両が到着: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :事故／災害: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :会社情報: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :産業の開業: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :産業の閉業: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :経済の変化: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :自分が運送している産業の生産量の変化: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :競争相手が運送している産業の生産量の変化: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :その他の産業の生産量の変化: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :会社の車両の勧告／情報: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :新しい乗り物の登場: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :受入れする貨物の変化: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :助成金: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :一般情報: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 

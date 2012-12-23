@@ -922,25 +922,25 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Poruka
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Zvučni signal za sažeta novinska obaveštenja
-STR_NEWS_MESSAGES_OFF                                           :Isključeno
-STR_NEWS_MESSAGES_SUMMARY                                       :Sažeto
-STR_NEWS_MESSAGES_FULL                                          :Potpuno
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Isključeno
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sažeto
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Potpuno
 
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Dolazak prvog vozila na igračevu stanicu
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Dolazak prvog vozila na suparničku stanicu
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Udesi/nepogode
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Podaci o preduzeću
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Otvaranje nove fabrike
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Zatvaranje fabrike
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Promene u ekonomiji
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Promene u proizvodnji usluženih industrija
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Promene u proizvodnji industrija usluženih konkurencijom
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Promene u proizvodnji ostalih industrija
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Savet / Izveštaji o vozilima preduzeća
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nova vozila
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Promene u prihvatanju tovara
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subvencije
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Opšta obaveštenja
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Dolazak prvog vozila na igračevu stanicu: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Dolazak prvog vozila na suparničku stanicu: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Udesi/nepogode: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Podaci o preduzeću: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Otvaranje nove fabrike: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zatvaranje fabrike: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Promene u ekonomiji: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Promene u proizvodnji usluženih industrija: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Promene u proizvodnji industrija usluženih konkurencijom: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Promene u proizvodnji ostalih industrija: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Savet / Izveštaji o vozilima preduzeća: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nova vozila: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Promene u prihvatanju tovara: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencije: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Opšta obaveštenja: {STRING}
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
