@@ -130,6 +130,7 @@ private:
 };
 
 extern uint32 _cargo_mask;
+extern uint32 _standard_cargo_mask;
 
 void SetupCargoForClimate(LandscapeID l);
 CargoID GetCargoIDByLabel(CargoLabel cl);

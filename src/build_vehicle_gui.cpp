@@ -516,7 +516,7 @@ static const StringID _sort_listing[][12] = {{
 static bool CDECL CargoFilter(const EngineID *eid, const CargoID cid)
 {
 	if (cid == CF_ANY) return true;
-	uint32 refit_mask = GetUnionOfArticulatedRefitMasks(*eid, true);
+	uint32 refit_mask = GetUnionOfArticulatedRefitMasks(*eid, true) & _standard_cargo_mask;
 	return (cid == CF_NONE ? refit_mask == 0 : HasBit(refit_mask, cid));
 }
 
