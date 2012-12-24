@@ -730,26 +730,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Listado 
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mensaje
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Apagado
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resumen
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Llegada del primer vehículo a una estación del jugador: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Llegada del primer vehículo a una estación de la competencia: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidentes / desastres: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Información de la empresa: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Apertura de industrias: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Cierre de industrias: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Cambios en la economía: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Cambios de producción en industrias atendidas por la empresa: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Cambios de producción en las industrias servidas por los competidores: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Cambios de producción de otras industrias: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Aviso / información de los vehículos de la empresa: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nuevos vehículos: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Cambios en la aceptación de carga: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvenciones: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Información general: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Los ciudadanos celebran . . .{}¡Primer tren llega a {STATION}!
@@ -1370,6 +1350,23 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantiene las he
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupar costes en la ventana de finanzas: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Define el diseño de la ventana de finanzas
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Noticias resumidas: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reproducir sonido para mensajes de noticias resumidos
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Noticias: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Reproducir sonido al mostrar noticias
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Final del año: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reproducir efecto de sonido al mostrar el resumen anual del rendimiento de la compañía al terminar el año
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construcción: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reproducir un efecto de sonido al construir exitosamente o realizar otras acciones
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Click de botones: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Pitido al pulsar botones
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Desastres/accidentes: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Reproducir efectos de sonido de accidentes y desastres
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vehículos: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Reproducir efectos de sonido de vehículos
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiental: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reproducir efectos de sonido ambientales de terreno, industrias y pueblos
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Deshabilitar construcción de infraestructuras cuando no haya vehículos apropiados disponibles: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Cuando se activa, solamente se pueden construir infraestructuras si hay vehículos disponibles para ellas, previniendo un gasto innecesario de tiempo y dinero
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Número máximo de trenes por empresa: {STRING}
@@ -1419,6 +1416,41 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activar límite
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Si se activa, se tienen en cuenta los límites de velocidad de los vagones a la hora de decidir la máxima velocidad de un tren
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactivar ferrocarriles eléctricos: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Si se activa, no es necesario electrificar los ferrocarriles para hacer que los trenes eléctricos puedan recorrerlos
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Llegada del primer vehículo a una estación del jugador: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Mostrar una noticia cuando llega el primer vehículo a la estación del jugador
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Llegada del primer vehículo a una estación de la competencia: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Mostrar una noticia cuando llega el primer vehículo a la estación de un competidor
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidentes / desastres: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostrar noticias cuando ocurre un accidente o un desastre
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Información de la empresa: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostrar una noticia cuando una nueva compañía es creada, o cuando alguna compañía está en peligro de quiebra
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Apertura de industrias: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Mostrar noticia cuando nuevas industrias abren
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Cierre de industrias: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Mostrar noticias cuando una industria cierra
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Cambios en la economía: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Mostrar noticias sobre cambios globales a la economía
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Cambios de producción en industrias atendidas por la empresa: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Mostrar una noticia cuando el nivel de producción de una industria que está servida por tu compañía cambia
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Cambios de producción en las industrias servidas por los competidores: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Mostrar una noticia cuando el nivel de producción de una industria que está servida por compañías competidoras cambia
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Cambios de producción de otras industrias: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Mostrar una noticia cuando el nivel de producción de una industria que no está servida por tu compañía o competidores cambia
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Aviso / información de los vehículos de la empresa: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Mostrar mensajes sobre vehículos que requieren atención
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nuevos vehículos: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Mostrar noticias sobre nuevos tipos de vehículo disponibles
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Cambios en la aceptación de carga: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Mostrar mensajes sobre cambios de aceptación de carga en estaciones
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvenciones: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Mostrar noticias sobre eventos relativos a subsidios
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Información general: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Mostrar noticias de eventos generales, tales como la compra de derechos de transporte exclusivos o el pago de reconstrucción de carreteras locales
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Apagado
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resumen
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Noticias en color aparecen en: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Año en el cual los periódicos empezarán a imprimirse en color. Antes de ese año solamente usarán una escala de grises
@@ -1520,6 +1552,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Econom�
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidores
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Opciones de visualización
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interacción
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efectos de sonido
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Noticias y mensajes
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Señales
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Manejo de carga
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jugadores de la CPU (IAs)

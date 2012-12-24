@@ -825,26 +825,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Popis ne
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Poruka
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Isključeno
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sažetak
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Puno
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Dolazak prvog vozila na postaju igrača: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Dolazak prvog vozila na postaju suparnika: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Nesreće / katastrofe: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Podaci vezani za tvrtku: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Otvaranje industrije: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zatvaranje industrije: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Promjene u gospodarstvu: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Promjene u proizvodnji industrija koje opslužuje tvrtka: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Promjene u proizvodnji industrija koje opslužuju suparnici: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Ostale izmjene u proizvodnji industrija: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Savjeti / informacije o vozilima tvrtke: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nova vozila: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Promjene u prihvaćanju tereta: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencije: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Opće informacije: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Građani slave . . .{}Prvi vlak je stigao na postaju {STATION}!
@@ -1465,6 +1445,23 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Zadrži otvoren
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupiraj troškove u financijskom prozoru tvrtke: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Odredi izgled prozora troškova kompanije
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Skraćene novosti: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Sviraj zvuk kod skraćenih poruka novosti
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Novine: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Sviraj zvuk kod prikaza novina
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Kraj godine: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Sviraj zvučne efekte na kraju godine sumirajući uspjeh kompanije tijekom godine uspoređujući ga sa prethodnom godinom
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Gradnja: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Sviraj zvučne efekte kod uspješne gradnje ili drugih akcija
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Klik na dugmadi: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Bip kod klikanja na dugmad
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastrofe/nesreće: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Sviraj zvučne efekte nesreća i katastrofa
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vozila: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Sviraj zvučne efekte vozila
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Okolina: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Sviraj zvučne efekte okoline pejzaža, industrija i gradova
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Isključi gradnju infrastrukture kada odgovarajuća vozila nisu dostupna: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Kada je uključeno, infrastruktura je dostupna samo ako su dostupna i vozila za nju, sprečavajući trošenje vremena i novca na neupotrebljivu infrastrukturu
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maksimalan broj vlakova po kompaniji: {STRING}
@@ -1514,6 +1511,41 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Omogući ograni
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kada je uključeno, koristiti će se i limit brzine vagona kod određivanja najveće brzine nekog vlaka
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Onemogući električnu prugu: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Uključivanjem ove postavke, isključuje se potreba elektrificiranja pruge da bi po njoj mogli voziti električni vlakovi
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Dolazak prvog vozila na postaju igrača: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Prikaži novine kada prvo vozilo dođe na stanicu novog igrača
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Dolazak prvog vozila na postaju suparnika: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Prikaži novine kada prvo vozilo dođe na suparnikovu stanicu
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Nesreće / katastrofe: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Prikaži novine kod nesreća ili katastrofa
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Podaci vezani za tvrtku: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Prikai novine kada se pojavi nova kompanije ili kada kompanije riskiraju bankrot
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Otvaranje industrije: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Prikaži novine kada se nove industrije otvaraju
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zatvaranje industrije: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Prikaži novine kada se industrije zatvaraju
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Promjene u gospodarstvu: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Prikaži novine vezano za globalne promjene u ekonomiji
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Promjene u proizvodnji industrija koje opslužuje tvrtka: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Prikaži novine kod promjene proizvodnih nivoa industrija koje servisira kompanija
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Promjene u proizvodnji industrija koje opslužuju suparnici: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Prikaži novine kod promjene proizvodnih nivoa industrija koje servisiraju suparnici
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Ostale izmjene u proizvodnji industrija: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Prikaži novine kod promjene proizvodnih nivoa industrija koje ne servisira kompanija ili suparnici
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Savjeti / informacije o vozilima tvrtke: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Prikaži poruke o vozilima koje trebaju pozornost
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nova vozila: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Prikaži novine kada neki novi tip vozila postane dostupan
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Promjene u prihvaćanju tereta: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Prikaži poruke o stanicama koje mijenjaju prihvaćanje nekih tereta
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencije: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Prikaži novine vezano za događaje o subvencijama
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Opće informacije: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Prikaži novine vezano za opće događaje kao za kupnju ekskluzivnih prava ili financiranje rekonstrukcije cesta
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Isključeno
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sažetak
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Puno
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Vijesti u boji pojavljuju se: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Godina u kojoj će se novine početi izdavati u boji. Prije ove godine, koriste se crno/bijele novine
@@ -1615,6 +1647,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Suparnici
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Postavke prikaza
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakcija
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvučni efekti
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Novosti i poruke
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signali
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Tretiranje tereta
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računalni igrači

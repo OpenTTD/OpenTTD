@@ -730,26 +730,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Liste de
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Message
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Aucun
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sommaire
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Complet
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arrivée du premier véhicule dans la station du joueur: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arrivée du premier véhicule dans la station d'un concurrent: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / Catastrophes: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informations corporatives: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Ouvertures d'industries: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Fermetures d'industries: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Changements économiques: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Changements de production des industries desservies par la compagnie: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Changements de production des industries desservies par les concurrents: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Changements de production des industries non desservies: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Conseils / Informations sur les véhicules de la compagnie: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nouveaux véhicules: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Changements d'acceptation de marchandises: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventions: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informations générales: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Les habitants célèbrent . . .{}Le premier train arrive à {STATION}{NBSP}!
@@ -1370,6 +1350,23 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Garde les outil
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Regrouper les dépenses dans la fenêtre des finances{NBSP}: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Définit la mise en forme de la fenêtre des dépenses de la compagnie
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Bulletin{NBSP}: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Jouer un son pour les bulletins
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Journal{NBSP}: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Jouer un son à l'affichage des journaux
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Fin de l'année{NBSP}: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Jouer un effet sonore à la fin de l'année résumant la performance de la compagnie durant l'année comparée à l'année précédente
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construction{NBSP}: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Jouer un effet sonore pour les constructions réussies ou d'autres actions
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Clics des boutons{NBSP}: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Émettre un bip lors des clics sur les boutons
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Désastres/accidents{NBSP}: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Jouer les effets sonores des accidents et des désastres
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Véhicules{NBSP}: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Jouer les effets sonores des véhicules
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiance{NBSP}: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Jouer les effets sonores d'ambiance du terrain, des industries et des villes
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Désactiver la construction d'infrastructure lorsqu'il n'y a pas de véhicule adapté disponible{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Lorsqu'il est activé, les infrastructures ne sont disponibles que si des véhicules sont disponibles, évitant de gaspiller du temps et de l'argent pour des infrastructures inutilisables
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Nombre maximum de trains par compagnie{NBSP}: {STRING}
@@ -1419,6 +1416,41 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activer la vite
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Lorsqu'il est activé, utiliser la vitesse limite des wagons pour déterminer la vitesse maximum d'un train
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Désactiver les rails électriques{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Activer ce paramètre désactive le besoin d'avoir des voies électrifiées pour faire rouler des engins électriques
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arrivée du premier véhicule dans la station du joueur: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Afficher un journal quand le premier véhicule arrive à une nouvelle station de la compagnie
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arrivée du premier véhicule dans la station d'un concurrent: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Afficher un journal quand le premier véhicule arrive à une nouvelle station d'un concurrent
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / Catastrophes: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Afficher un journal quand des accidents ou des désastres se produisent
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informations corporatives: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Afficher un journal quand une nouvelle compagnie débute, ou quand des compagnies risquent la banqueroute
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Ouvertures d'industries: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Afficher un journal quand une industrie ouvre
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Fermetures d'industries: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Afficher un journal quand une industrie ferme
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Changements économiques: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Afficher un journal au sujet des changements globaux de l'économie
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Changements de production des industries desservies par la compagnie: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Afficher un journal lors du changement du niveau de production des industries desservies par la compagnie
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Changements de production des industries desservies par les concurrents: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Afficher un journal lors du changement du niveau de production des industries desservies par les concurrents
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Changements de production des industries non desservies: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Afficher un journal lors du changement du niveau de production des industries qui ne sont desservies ni par la compagnie, ni par les concurrents
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Conseils / Informations sur les véhicules de la compagnie: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Afficher les messages au sujet des véhicules requérant une attention
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nouveaux véhicules: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Afficher un journal quand un nouveau type de véhicule devient disponible
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Changements d'acceptation de marchandises: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Afficher les messages au sujet des stations changeant l'acceptation de certaines marchandises
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventions: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Afficher un journal au sujet des événements relatifs aux subventions
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informations générales: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Afficher le journal au sujet des événements généraux, comme l'achat de droits exclusifs ou le financement de la reconstruction des routes
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Aucun
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sommaire
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Complet
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Les journaux en couleur apparaissent en{NBSP}: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Année à partir de laquelle les annonces des journaux sont imprimées en couleur. Avant cette année ils sont en noir et blanc
@@ -1520,6 +1552,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Économ
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Compétiteurs
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Options d'affichage
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaction
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Effets sonores
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Journaux et messages
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaux
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Gestion des cargaisons
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Intelligence artificielle

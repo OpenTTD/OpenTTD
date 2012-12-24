@@ -730,26 +730,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Eine Lis
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mitteilung
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Aus
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Ticker
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Zeitung
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Ankunft des ersten Fahrzeugs an Station des Spielers: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Ankunft des ersten Fahrzeugs an Station eines Mitbewerbers: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Unfälle/Katastrophen: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Firmenmitteilungen: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Eröffnung von Industrien: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Schließung von Industrien: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Änderungen der Wirtschaftslage: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produktionsänderung von Industrien, die der Spieler bedient: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produktionsänderung von Industrien, die ein Mitbewerber bedient: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Produktionsänderungen anderer Industrien: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Rat / Informationen zu Fahrzeugen der Firma: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Neue Fahrzeuge: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Änderungen angenommener Fracht: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventionen: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Allgemeine Nachrichten: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Die Einwohner feiern . . .{}Der erste Zug erreicht {STATION}!
@@ -1188,7 +1168,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Fahrzeugwartesc
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Lässt Straßenfahrzeuge so lange vor einer besetzten Haltestelle warten, bis sie frei wird
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Spielfeld scrollen, wenn die Maus am Bildrand anstößt: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Falls aktiv wird der Kartenausschnit scrollen, wenn die Maus nahe dem Fensterrand ist
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :ausgeschaltet
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Ausgeschaltet
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Hauptfenster, nur bei Vollbildschirm
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Hauptfenster
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Jede Ansicht
@@ -1209,9 +1189,9 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Setze die Gesch
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1/{COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Anzahl Flugzeugabstürze: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Stellt die Wahrscheinlichkeit für Flugzeugunglücke ein
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :keine
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :verringert
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Keine
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Verringert
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Bus- und Lkw-Haltestellen auf städtischen Straßen erlauben: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Erlaubt die Errichtung von Bus- und Lkw-Haltestellen auf städtischen Straßen
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Bus- und Lkw-Haltestellen auf Straßen von Mitbewerbern erlauben: {STRING}
@@ -1344,7 +1324,7 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatische Pa
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Starte ein Spiel im Pausenmodus; dies erlaubt vor Spielstart, die Karte ausführlich zu betrachten.
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Erlauben während angehaltenen Spiels: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Lege fest, welche Tätigkeiten im Pausenmodus durchgeführt werden dürfen
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :keine Tätigkeiten
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Keine Tätigkeiten
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Alle Tätigkeiten, die keine Bautätigkeiten sind
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Alle Tätigkeiten außer Landschaftsbau
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Alle Tätigkeiten
@@ -1369,6 +1349,23 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Belasse Bauwerk
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Die Bauwerkzeuge für Brücken, Tunnel, etc. nach Benutzung weiter aktiviert lassen
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Zwischensummen für Kategorien bei Firmenausgaben:{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Lege das Layout für das Fenster mit den Firmenausgaben fest
+
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Nachrichtenticker: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Soundeffekte für Kurzfassungen von Nachrichten abspielen (Ticker)
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Zeitung: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Soundeffekte bei der Anzeige der Zeitung abspielen
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Jahresende: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Soundeffekte beim Jahresrückblick auf die Bilanzen der vergangenen Jahre
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Baumaßnahmen: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Soundeffekte bei Baumaßnahmen oder anderen Aktionen abspielen
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Klich auf Knöpfe: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Piepton bei Klick auf Knöpfe
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastrophen und Unfälle: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Soundeffekte von Unfällen und Katastrophen abspielen
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Fahrzeuge: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Soundeffekte von Fahrzeugen abspielen
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Umgebungsgeräusche: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Soundeffekte für Landschaft, Industrien und Städte
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Bau von Infrastruktur verbieten, wenn dafür keine Fahrzeuge verfügbar sind: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Zeige Infrastruktur nur, wenn sie auch von Fahrzeugen genutzt werden kann, um Verschwendung von Zeit und Geld auf den Bau von unnützer Infrastruktur zu vermeiden
@@ -1406,7 +1403,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Lege fest, ob F
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standard-Wartungsintervall für Züge: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Setze das Standardwartungsintervall für Schienenfahrzeuge. Dieses Wartungsintervall wird von allen Zügen eingehalten, denen kein individuelles Wartungsintervall zugewiesen worden ist
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} Tag{P 0 "" e}/%
-STR_CONFIG_SETTING_SERVINT_DISABLED                             :deaktiviert
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deaktiviert
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Standard-Wartungsintervall für Straßenfahrzeuge: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Setze das Standardwartungsintervall für Straßenfahrzeuge. Dieses Wartungsintervall wird von allen Fahrzeugen eingehalten, denen kein individuelles Wartungsintervall zugewiesen worden ist
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standard-Wartungsintervall für Luftfahrzeuge: {STRING}
@@ -1419,6 +1416,41 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Berücksichtige
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Begrenze die Höchstgeschwindigkeit eines Zuges durch die jeweiligen Höchstgeschwindigkeiten der mitgeführten Waggons
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiviere elektrifizierte Strecken: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Erlaube Elektrolokomotiven das Fahren auf nicht elektrifizierten Gleisen
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Ankunft des ersten Fahrzeugs an Station des Spielers: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Zeitung anzeigen, wenn das erste Fahrzeug an einem eigenen Bahnhof eintrifft
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Ankunft des ersten Fahrzeugs an Station eines Mitbewerbers: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Zeitung anzeigen, wenn das erste Fahrzeug am Bahnhof eines Wettbewerbers eintrifft
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Unfälle/Katastrophen: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Zeitung anzeigen, wenn Unfälle oder Katastrophen auftreten
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Firmenmitteilungen: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Zeitung anzeigen, wenn neue Firmen gegründet werden oder kurz vor dem Bankrott stehen
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Eröffnung von Industrien: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Zeitung anzeigen, wenn Industrien eröffnen
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Schließung von Industrien: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Zeitung anzeigen, wenn Industrien schließen
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Änderungen der Wirtschaftslage: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Zeitung anzeigen bei Änderungen der globalen Konjunktur
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produktionsänderung von Industrien, die der Spieler bedient: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Zeitung anzeigen, wenn die Produktion von Industrien sich ändert, die von der eigenen Firma bedient werden
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produktionsänderung von Industrien, die ein Mitbewerber bedient: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Zeitung anzeigen, wenn die Produktion von Industrien sich ändert, die von Wettbewerbern bedient werden
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Produktionsänderungen anderer Industrien: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Zeitung anzeigen, wenn die Produktion von Industrien sich ändert, die von keiner Firma bedient werden
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Rat / Informationen zu Fahrzeugen der Firma: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Nachrichten anzeigen, wenn Fahrzeuge Aufmerksamkeit benötigen (wie fehlerhafte Aufträge, mangelnde Wartung,...)
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Neue Fahrzeuge: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Zeitung anzeigen, wenn neue Fahrzeugtypen verfügbar werden
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Änderungen angenommener Fracht: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Nachrichten anzeigen, die Änderungen der aktzeptierten Fracht von Bahnhöfen betreffen
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventionen: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Zeitung anzeigen bei Ereignissen, die Subventionen betreffen
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Allgemeine Nachrichten: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Zeitung anzeigen bei allgemeinen Ereignissen wie Erwerb exklusiver Transportrechte oder der Finanzierung von Straßenbauarbeiten
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Aus
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Ticker
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Zeitung
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Farbige Nachrichten erscheinen ab: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Jahr in dem die Zeitung in Farbe herausgebracht wird. Vor diesem Jahr erscheint sie in Schwarz-Weiß-Druck
@@ -1464,14 +1496,14 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Stadt kontrolli
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Wird diese Option deaktiviert, erlaubt jede Stadt den Bau von maximal zwei Flughäfen (nicht pro Spieler, sondern insgesamt). Wenn aktiviert, ist der Bau von Flughäfen durch die Lärmbelastung begrenzt. Die maximal zumutbare Lärmbelastung hängt von der Stadtgröße, der Flughafengröße und dem Abstand des Flughafens von der Stadtmitte ab
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Städte im Spiel gründen: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Erlaube Spielern die Gründung neuer Städte während des Spiels
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :verboten
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :erlaubt
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :erlaubt mit wählbarem Straßenbauplan
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Verboten
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Erlaubt
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Erlaubt, mit wählbarem Straßenbauplan
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Platzierung von Bäumen während des Spiels: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Lege das Ausmaß des zufälligen Baumwachstums während des Spiels fest. Dies kann Industrien wie die Sägemühle beeinflussen, welche auf nachwachsende Bäume angewiesen sind
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nirgends {RED}(macht Sägemühle nutzlos)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :nur im Regenwald
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Nirgends {RED}(macht Sägemühle nutzlos)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Nur im Regenwald
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :überall
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Position der Werkzeugleiste: {STRING}
@@ -1520,6 +1552,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Wirtsch
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Mitbewerber
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Darstellung
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaktion
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soundeffekte
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Nachrichten
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signale
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Frachtbehandlung
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerspieler
@@ -2291,7 +2325,7 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :Flughäfen für
 STR_STATION_BUILD_NOISE                                         :{BLACK}Lärmbelastung: {GOLD}{COMMA}
 
 # Landscaping toolbar
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landschaftsveränderung
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landschaftsbau
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Land absenken. Shift schaltet zwischen Bauen und Kostenvoranschlag um
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Land anheben. Shift schaltet zwischen Bauen und Kostenvoranschlag um
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Höhe ausgleichen. Shift schaltet zwischen Bauen und Kostenvoranschlag um
@@ -2711,6 +2745,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Enthält mehrere Action 8 - Einträge (Sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lesezugriff über das Ende des Pseudosprites hinaus (Sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Den momentan verwendeten Basisgrafiken fehlen Sprites.{}Durch ein Update der Basisgrafiken kann dieser Fehler behoben werden
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Den momentan verwendeten Basisgrafiken fehlen einige Sprites.{}Bitte update die Basisgrafiken.{}Weil dieses eine {YELLOW}Entwickler-Version von OpenTTD{WHITE} ist, ist es möglich, dass auch eine {YELLOW}Entwickler-Version der Basisgrafiken{WHITE} benötigt wird.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Die angeforderte GRF-Ressource ist nicht verfügbar (Sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} wurde von {STRING} deaktiviert
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ungültiges oder unbekanntes Format für Spritelayout (Sprite {3:NUM})
@@ -3819,6 +3854,9 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Zu star
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Nur ein leeres Platzhalter-Soundset wurde gefunden. Soundsets können bei Bedarf als Erweiterung heruntergeladen werden (siehe Hauptmenü)
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Riesiger Screenshot
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Der Screenshot wird die Auflösung von {COMMA} x {COMMA} Pixeln haben. Das kann einige Zeit dauern. Soll fortgefahren werden?
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot gespeichert als '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screenshot fehlgeschlagen
 
@@ -3839,7 +3877,7 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... unge
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ist bereits gebaut
 STR_ERROR_OWNED_BY                                              :{WHITE}... Eigentum von {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... das Gebiet gehört einer anderen Firma
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... Obergrenze für Landschaftsveränderungen erreicht
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... Obergrenze für Landschaftsbau erreicht
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... Obergrenze für Abrissarbeiten erreicht
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... Obergrenze für Baumpflanzungen erreicht
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Name bereits vergeben
@@ -4007,11 +4045,11 @@ STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Signal k
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Gleise können hier nicht verlegt werden...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Gleise können nicht abgerissen werden...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Signale können hier nicht entfernt werden...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kann Signale hier nicht umbauen...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kann Signaltyp hier nicht ändern...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... hier ist kein Gleis
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... hier sind keine Signale
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Gleistyp kann hier nicht verändert werden...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Gleistyp kann hier nicht geändert werden...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Straße muss erst entfernt werden

@@ -874,26 +874,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Спис
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Сообщение
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Выкл
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Кратко
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Полно
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Первое транспортное средство игрока на станции: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Первое транспортное средство конкурента на станции: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Аварии и катастрофы: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Информация о Компании: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Открытие предприятий: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Закрытие предприятий: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Изменения в экономике: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Изм. производительности предприятий, обслуж. компанией: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Изм. производительности предприятий, обслуж. конкурентами: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Изм. производительности предпр., никем не обслуживаемых: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Советы/сведения по транспорту компании: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Новый транспорт: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Изменения в списке принимаемых грузов: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Субсидии: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Общая информация: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Жители празднуют!{}Первый поезд прибыл на станцию {STATION}!
@@ -1521,6 +1501,23 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Инструм�
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Группировать расходы в окне финансов компании: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Разделять доходы и расходы в окне финансовой информации компании
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Бегущая строка: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Воспроизводить звук при появлении бегущей строки с новостями
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Новости: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Воспроизводить звуковые эффекты при публикации новостных статей
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :В конце года: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Воспроизводить звуковой эффект при отображении финансового отчёта компании за прошедшие годы
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Строительство: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Использовать звуковые эффекты при строительстве и подобных действиях
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Нажатия кнопок: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Воспроизводить звук нажатий на кнопки
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Аварии/катастрофы: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Воспроизводить звук аварий и катастроф
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Транспорт: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Воспроизводить звук, издаваемый транспортом
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Фон: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Воспроизводить фоновый шум ландшафта, предприятий и городов
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Отключить создание инфраструктуры, если нет подходящих доступных ТС: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Экономит время и деньги, отключая инструменты создания инфраструктуры, для которой не существует доступных транспортных средств
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Максимальное количество поездов на игрока: {STRING}
@@ -1570,6 +1567,41 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Учитыва�
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :При наличии в составе вагонов с ограничением скорости учитывать это ограничение при определении максимальной скорости состава
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Выключить электрифицированную железную дорогу: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :При включении этой настройки электровозы смогут ездить по неэлектрифицированной железной дороге
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Первое транспортное средство игрока на станции: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Показывать новости о первом транспортном средстве, прибывающем на станцию игрока
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Первое транспортное средство конкурента на станции: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Показывать новости о первом транспортном средстве, прибывающем на станцию конкурента
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Аварии и катастрофы: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Показывать новости об авариях и катастрофах
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Информация о Компании: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Показывать новости об основании и риске банкротства транспортных компаний
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Открытие предприятий: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Показывать новости об открывающихся предприятиях
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Закрытие предприятий: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Показывать новости о закрывающихся предприятиях
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Изменения в экономике: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Показывать новости о глобальных изменениях в экономике
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Изм. производительности предприятий, обслуж. компанией: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Показывать новости об изменении производительности предприятий, обслуживаемых компанией игрока
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Изм. производительности предприятий, обслуж. конкурентами: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Показывать новости об изменении производительности предприятий, обслуживаемых конкурентами
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Изм. производительности предпр., никем не обслуживаемых: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Показывать новости об изменении производительности никем не обслуживаемых предприятий
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Советы/сведения по транспорту компании: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Показывать сообщения о транспортных средствах, на которые следует обратить внимание
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Новый транспорт: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Показывать новости о новых моделях транспортных средств
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Изменения в списке принимаемых грузов: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Показывать сообщения об изменении списка принимаемых станциями грузов
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Субсидии: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Показывать новости, связанные с субсидиями
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Общая информация: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Показывать общие новости, вроде покупки эксклюзивных транспортных прав или проведениии реконструкции дорог
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Выкл
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Кратко
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Полно
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Цветные газеты появляются в {STRING} году
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Обычно в газетах печатают чёрно-белые изображения, а начиная с указанного года - цветные
@@ -1671,6 +1703,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Эко�
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Конкуренты
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Настройки экрана
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Взаимодействие
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звуковые эффекты
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Новости и сообщения
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Сигналы
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Перемещение грузов
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Искусственный интеллект

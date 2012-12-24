@@ -729,26 +729,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Danh sá
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Thông Điệp
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Tắt
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Giản Lược
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Đủ
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Phương tiện đầu tiên đỗ trạm chúng ta: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Phương tiện đầu tiền đỗ trạm đối thủ: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Tai nạn / thiên tai: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Thông tin công ty: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Nhà máy mới mở: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Nhà máy đóng cửa: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Những thay đổi của nền kinh tế: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Các nhà máy do công ty đang vận chuyển có sản lượng thay đổi: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Các nhà máy do công ty đối thủ đang vận chuyển có sản lượng thay đổi: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Các nhà máy khác có sản lượng thay đổi: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Lời khuyên / thông tin cho những phương tiện của công ty: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Phương tiện mới: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Thay đổi về việc nhận hàng vận chuyển: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Tiền trợ cấp: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Thông tin chung: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Tàu hoả đầu tiên đến {STATION}!
@@ -1362,6 +1342,23 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Hiện đườn
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Vẫn giữ công cụ xây dựng sau khi dùng: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Phân nhóm thu nhập/chi phí trong bảng tài chính: {STRING}
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Tin tức tóm tắt: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Phát âm thanh khi hiển thị các tin tức tóm tắt.
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Báo chí: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Phát âm thanh khi có báo mới
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Kết thúc cuối năm: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Phát âm thanh cuối mỗi năm khi hiển thị bảng tổng kết hiệu quả cuối năm so với năm cũ
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Xây dựng: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Phát âm thanh khi xây dựng hoặc các hoạt động khác hoàn thành
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Bấm nút: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Bíp khi bấm nút
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Tai nạn/thiên tai: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Phát hiệu ứng âm thanh của các vụ tai nạn và thiên tai
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Phương tiện: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Phát hiệu ứng âm thanh của phương tiện
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Âm thanh nền: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Phát các âm thanh hiệu ứng nền đối với đất, khu công nghiệp và đô thị
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Tắt việc xây dựng hạ tầng nếu không có phương tiện thích hợp nào sẵn có: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Số tàu hỏa tối đa mỗi người chơi: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Số xe ôtô tối đa mỗi người chơi: {STRING}
@@ -1396,6 +1393,41 @@ STR_CONFIG_SETTING_SERVINT_SHIPS                                :Tần suất b�
 STR_CONFIG_SETTING_NOSERVICE                                    :Tắt bảo trì khi đặt tắt tuỳ chọn hỏng hóc: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Bật giới hạn tốc độ toa tàu: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Không dùng tàu điện: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Phương tiện đầu tiên đỗ trạm chúng ta: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Hiển thị tin tức khi phương tiện khai trương ga/bến của bạn
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Phương tiện đầu tiền đỗ trạm đối thủ: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Hiển thị tin tức khi phương tiên khai trương ga/bến của đối thủ cạnh tranh
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Tai nạn / thiên tai: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Hiển thị tin tức về các vụ tại nạn hoặc thiên tai xảy ra
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Thông tin công ty: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Hiển thị tin tức khi có một công ty mới khai trương, hoặc các công ty có nguy cơ phá sản
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Nhà máy mới mở: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Hiển thị tin tức khi có nhà máy mới khai trương
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Nhà máy đóng cửa: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Hiển thị tin tức khi có nhà máy đóng cửa
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Những thay đổi của nền kinh tế: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Hiển thị tin tức về sự thay đổi tình hình kinh tế chung
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Các nhà máy do công ty đang vận chuyển có sản lượng thay đổi: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Hiển thị tin tức khi có sự thay đổi sản lượng nhà máy, mà nhà máy đó đang được chuyên chở bởi công ty bạn
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Các nhà máy do công ty đối thủ đang vận chuyển có sản lượng thay đổi: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Hiện thị tin tức khi có sự thay đổi sản lượng đối với nhà máy mà nhà máy đó được chuyên chở bởi đối thủ cạnh tranh
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Các nhà máy khác có sản lượng thay đổi: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Hiển thị tin tức về sự thay đổi sản lượng của các nhà máy, mà hiện thời chưa được ai chuyên chở (kể cả bạn)
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Lời khuyên / thông tin cho những phương tiện của công ty: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Hiển thị thông điệp về phương tiện cần lưu ý
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Phương tiện mới: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Hiển thị tin tức khi có một loại phương tiện mới xuất xưởng
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Thay đổi về việc nhận hàng vận chuyển: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Hiển thị thông báo về sự thay đổi của ga bến đối với việc chấp nhận hàng hóa
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Tiền trợ cấp: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Hiển tin tức về các sự kiện liên quan đến chuỗi cung ứng
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Thông tin chung: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Hiển thị thông tin về các sự kiện chung, ví dụ như ai đó mua đặc quyền vận tải một năm hoặc tài trợ xây dựng lại đường xá
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Tắt
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Giản Lược
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Đủ
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Tin tức có màu xuất hiện vào năm: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Năm bắt đầu: {STRING}
@@ -1490,6 +1522,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Kinh T�
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Đối Thủ
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Tùy chỉnh hiển thị
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Tương tác
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hiệu ứng âm thanh
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Tin tức
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Đèn báo
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Bốc/dỡ hàng
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nhân vật máy
@@ -2681,6 +2715,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Có nhiều mục thực thi 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Đọc quá giới hạn của sprite giả (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Gói đồ họa bạn đang dùng thiếu một số mẫu đồ họa.{}Hãy cập nhật gói đồ họa lên phiên bản mới.
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Bộ file đồ họa hiện tại thiết một số sprites.{}Hãy cập nhật phiên bản mới.{}Bởi vì bạn chơi {YELLOW}một phiên bản thử nghiệm đang phát triển OpenTTD{WHITE}, bạn cần phải có cả {YELLOW}bộ file đồ họa đang được phát triển nữa{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Dữ liệu GRF theo yêu cầu không hợp lệ (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} bị tắt bởi {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Định dạng Sprite không hợp lệ hoặc chưa định nghĩa (sprite {3:NUM})

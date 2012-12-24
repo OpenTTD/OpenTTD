@@ -729,26 +729,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Lista vi
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Viesti
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Pois
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Tiivistelmä
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Täysi
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Ensimmäinen ajoneuvo saapuu pelaajan asemalle.: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Ensimmäinen ajoneuvo saapuu kilpailijan asemalle.: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Vahingot/onnettomuudet: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Yhtiön tiedot: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Uutta teollisuutta: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Lakkautettavaa teollisuutta: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Talouden muutokset: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Tuotantomuutokset laitoksissa, joita yhtiö palvelee: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Tuotantomuutokset laitoksissa, joita kilpailija(t) palvelevat: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Muita muutoksia tuotannossa: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Neuvoja / tietoa yhtiön kulkuneuvoista: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Uudet ajoneuvot: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Rahdin vastaanottamisen muutokset: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Tuet: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Yleistä tietoa: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}Ensimmäinen juna saapuu asemalle {STATION}!
@@ -1369,6 +1349,23 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Pidä siltojen,
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Ryhmitä kulut yhtiön rahoitusikkunassa: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Määritä asettelu yhtiön rahoitusikkunalle
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Uutiset: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Toista ääni tiivistetyille uutisviesteille
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Sanomalehti: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Toista ääni sanomalehden ilmestyessä
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Vuoden loppu: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Toista ääniefekti vuoden lopussa verrattaessa yhtiön tulosta edelliseen vuoteen
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Rakentaminen: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Toista ääniefekti onnistuneen rakennus- tai muun toiminnon jälkeen
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Painikkeiden klikkaus: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Piippaa klikattaessa painikkeita
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Vahingot/onnettomuudet: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Toista vahinkojen ja onnettomuuksien ääniä
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Ajoneuvot: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Toista ajoneuvojen ääniä
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ympäristö: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Toista ympäristön, kuten maaston, teollisuuden ja kaupunkien ääniä
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Poista käytöstä infrastruktuurin rakennus kun sopivia kulkuneuvoja ei ole saatavilla: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Mikäli käytössä, infrastruktuuri on saatavilla vain jos sille on saatavilla kulkuneuvoja, välttäen ajan ja rahan tuhlaamisen infrastruktuuriin, jota ei voida käyttää
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Suurin sallittu junien määrä yhtiötä kohden: {STRING}
@@ -1418,6 +1415,41 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ota käyttöön
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Mikäli käytössä, vaunujen nopeusrajoitusta käytetään junan maksiminopeuden määrittämisessä
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Poista sähköradat käytöstä: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Mikäli käytössä, sähköveturit toimivat ei-sähköistetyillä radoilla
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Ensimmäinen ajoneuvo saapuu pelaajan asemalle.: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Näytä sanomalehti ensimmäisen ajoneuvon saapuessa pelaajan uudelle asemalle
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Ensimmäinen ajoneuvo saapuu kilpailijan asemalle.: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Näytä sanomalehti ensimmäisen ajoneuvon saapuessa kilpailijan uudelle asemalle
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Vahingot/onnettomuudet: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Näytä sanomalehti vahingon tai onnettomuuden sattuessa
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Yhtiön tiedot: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Näytä sanomalehti kun uusi yhtiö aloittaa toimintansa ja yhtiöiden ollessa lähellä konkurssia
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Uutta teollisuutta: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Näytä sanomalehti uusien teollisuuslaitosten avautuessa
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Lakkautettavaa teollisuutta: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Näytä sanomalehti teollisuuslaitosten sulkeutuessa
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Talouden muutokset: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Näytä sanomalehti taloustilanteen muuttuessa
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Tuotantomuutokset laitoksissa, joita yhtiö palvelee: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Näytä sanomalehti tuotannon muuttuessa teollisuudessa, jota oma yhtiö palvelee
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Tuotantomuutokset laitoksissa, joita kilpailija(t) palvelevat: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Näytä sanomalehti tuotannon muuttuessa teollisuudessa, jota kilpaileva yhtiö palvelee
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Muita muutoksia tuotannossa: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Näytä sanomalehti tuotannon muuttuessa teollisuudessa, jota oma tai kilpaileva yhtiö ei palvele
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Neuvoja / tietoa yhtiön kulkuneuvoista: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Näytä viesti ajoneuvon vaatiessa huomiota
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Uudet ajoneuvot: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Näytä sanomalehti kun saatavilla on uusi ajoneuvotyyppi
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Rahdin vastaanottamisen muutokset: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Näytä viesti kun asemat muuttavat hyväksymäänsä rahtia
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Tuet: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Näytä sanomalehti tukiin liittyvistä tapahtumista
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Yleistä tietoa: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Näytä sanomalehti yleisille tapahtumille, kuten kuljetusyksinoikeuksien ostamiselle tai tieverkon uusimiselle
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Pois
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Tiivistelmä
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Täysi
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Värilliset uutiset ilmestyvät: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Vuosi, jonka jälkeen sanomalehdet ovat värillisiä. Ennen tätä vuotta sanomalehdet käyttävät mustavalkoisia kuvia
@@ -1519,6 +1551,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Talous
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Kilpailijat
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Näyttöasetukset
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Vuorovaikutus
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ääniefektit
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Uutiset ja viestit
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Opastimet
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Rahdin käsittely
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Tietokonepelaajat

@@ -730,26 +730,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Llista d
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Missatge
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Fora
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resum
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Complet
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arribada del 1er. vehicle a una estació pròpia: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arribada del 1er. vehicle a una estació competidora: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / desastres: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informació de l'Empresa: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Obertura d'indústries: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Tancament d'indústries: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Canvis de l'Economia: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Canvis de producció de les indústries aprovisionades per la companyia: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Canvis de producció en indústries proveïdes pel competidor(s): {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Altres canvis de producció de la indústria: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Alertes / informació sobre els vehicles de la companyia: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nous vehicles: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Canvis en l'admissió de càrrega: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencions: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informació General: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Celebració popular . . .{} Arribada del 1er. tren a {STATION}!
@@ -1370,6 +1350,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantingues les 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupa les despeses a la finestra de finances de la companyia: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Defineix la disposició de la companyia a la finestra de despeses
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desactiva la construcció d'infrastructures quan no hi hagi disponibles vehicles adequats: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Quan està activat, la infrastructura només està disponible si hi ha també vehicles disponibles, prevenint perdre temps i diners en infraestructures no utilitzables
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Màx. trens per companyia: {STRING}
@@ -1419,6 +1400,26 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activa limit de
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quan està activat, també utilitza els límits de velocitat dels vagons per decidir la velocitat màxima del tren
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactiva vies electrificades: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Activant aquest paràmetre es desactiva el requeriment d'electrificar les vies per poder fer-hi circular locomotores elèctriques
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arribada del 1er. vehicle a una estació pròpia: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arribada del 1er. vehicle a una estació competidora: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / desastres: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informació de l'Empresa: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Obertura d'indústries: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Tancament d'indústries: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Canvis de l'Economia: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Canvis de producció de les indústries aprovisionades per la companyia: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Canvis de producció en indústries proveïdes pel competidor(s): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Altres canvis de producció de la indústria: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Alertes / informació sobre els vehicles de la companyia: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nous vehicles: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Canvis en l'admissió de càrrega: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencions: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informació General: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Fora
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resum
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Complet
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Les notícies en color apareixen el: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Any en que els diaris comencen a fer els anunciaments impresos en color. Abans d'aquest any, s'utilitza el blanc i negre
@@ -4225,7 +4226,7 @@ STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=Femenin}Mina
 STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=Masculin}Pou de Petroli
 STR_INDUSTRY_NAME_BANK                                          :{G=Masculin}Banc
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=Femenin}Planta de Manipulació de Queviures
-STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=Femenin}Paperera
+STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=Femenin}Indústria Paperera
 STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=Femenin}Mina d'Or
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=Masculin}Banc
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=Femenin}Mina de Diamants

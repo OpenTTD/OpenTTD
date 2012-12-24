@@ -729,26 +729,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}A list o
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Message
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Off
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Summary
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Full
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arrival of first vehicle at player's station: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arrival of first vehicle at competitor's station: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / disasters: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Company information: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Opening of industries: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Closing of industries: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Economy changes: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Production changes of industries served by the company: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Production changes of industries served by competitor(s): {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Other industry production changes: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Advice / information on company's vehicles: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :New vehicles: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Changes of cargo acceptance: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidies: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :General information: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Citizens celebrate . . .{}First train arrives at {STATION}!
@@ -1369,6 +1349,23 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Keep the buildi
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Group expenses in company finance window: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Define the layout for the company expenses window
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :News ticker: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Play sound for summarised news messages
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Newspaper: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Play sound upon display of newspapers
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :End of year: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Play sound effect at the end of a year summarising the company's performance during the year compared to the previous year
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construction: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Play sound effect on successful constructions or other actions
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Button clicks: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Beep when clicking buttons
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Disasters/accidents: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Play sound effects of accidents and disasters
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vehicles: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Play sound effects of vehicles
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambient: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Play ambient sound effects of landscape, industries and towns
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Disable infrastructure building when no suitable vehicles are available: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :When enabled, infrastructure is only available if there are also vehicles available, preventing waste of time and money on unusable infrastructure
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Max trains per company: {STRING}
@@ -1418,6 +1415,41 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Enable railroad
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :When enabled, also use speed limits of wagons for deciding the maximum speed of a train
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Disable electric rails: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Enabling this setting disables the requirement to electrify tracks to make electric engines run on them
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arrival of first vehicle at player's station: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Display a newspaper when the first vehicle arrives at a new player's station
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arrival of first vehicle at competitor's station: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Display a newspaper when the first vehicle arrives at a new competitor's station
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / disasters: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Display a newspaper when accidents or disasters occurs
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Company information: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Display a newspaper when a new company starts, or when companies are risking to bankrupt
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Opening of industries: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Display a newspaper when new industries open
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Closing of industries: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Display a newspaper when industries close down
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Economy changes: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Display a newspaper about global changes to enconomy
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Production changes of industries served by the company: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Display a newspaper when the production level of industries change, which are served by the company
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Production changes of industries served by competitor(s): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Display a newspaper when the production level of industries change, which are served by the competitors
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Other industry production changes: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Display a newspaper when the production level of industries change, which are not served by the company or competitors
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Advice / information on company's vehicles: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Display messages about vehicles needing attention
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :New vehicles: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Display a newspaper when a new vehicle type becomes available
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Changes of cargo acceptance: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Display messages about stations changing acceptance of some cargos
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidies: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Display a newspaper about subsidy related events
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :General information: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Display newspaper about general events, such as purchase of exclusive rights or funding of road reconstruction
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Off
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Summary
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Full
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Colored news appears in: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Year that the newspaper announcements get printed in color. Before this year, it uses monochrome black/white
@@ -1519,6 +1551,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economy
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competitors
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Display options
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaction
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Sound effects
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}News and messages
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signals
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Cargo handling
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer players
