@@ -281,10 +281,10 @@ DECLARE_ENUM_AS_BIT_SET(NWidgetDisplay)
  */
 class NWidgetCore : public NWidgetResizeBase {
 public:
-	NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint16 widget_data, StringID tool_tip);
+	NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint32 widget_data, StringID tool_tip);
 
 	void SetIndex(int index);
-	void SetDataTip(uint16 widget_data, StringID tool_tip);
+	void SetDataTip(uint32 widget_data, StringID tool_tip);
 
 	inline void SetLowered(bool lowered);
 	inline bool IsLowered() const;
@@ -300,7 +300,7 @@ public:
 	NWidgetDisplay disp_flags; ///< Flags that affect display and interaction with the widget.
 	Colours colour;            ///< Colour of this widget.
 	int index;                 ///< Index of the nested widget in the widget array of the window (\c -1 means 'not used').
-	uint16 widget_data;        ///< Data of the widget. @see Widget::data
+	uint32 widget_data;        ///< Data of the widget. @see Widget::data
 	StringID tool_tip;         ///< Tooltip of the widget. @see Widget::tootips
 	int scrollbar_index;       ///< Index of an attached scrollbar.
 	TextColour highlight_colour; ///< Colour of highlight.

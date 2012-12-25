@@ -1212,7 +1212,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			has_missing    |= c->status == GCS_NOT_FOUND;
 			has_compatible |= HasBit(c->flags, GCF_COMPATIBLE);
 		}
-		uint16 widget_data;
+		uint32 widget_data;
 		StringID tool_tip;
 		if (has_missing || has_compatible) {
 			widget_data = STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON;

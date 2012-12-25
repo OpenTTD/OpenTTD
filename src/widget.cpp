@@ -822,7 +822,7 @@ void NWidgetResizeBase::AssignSizePosition(SizingType sizing, uint x, uint y, ui
  * @param widget_data Data component of the widget. @see Widget::data
  * @param tool_tip    Tool tip of the widget. @see Widget::tootips
  */
-NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint16 widget_data, StringID tool_tip) : NWidgetResizeBase(tp, fill_x, fill_y)
+NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint32 widget_data, StringID tool_tip) : NWidgetResizeBase(tp, fill_x, fill_y)
 {
 	this->colour = colour;
 	this->index = -1;
@@ -846,7 +846,7 @@ void NWidgetCore::SetIndex(int index)
  * @param widget_data Data to use.
  * @param tool_tip    Tool tip string to use.
  */
-void NWidgetCore::SetDataTip(uint16 widget_data, StringID tool_tip)
+void NWidgetCore::SetDataTip(uint32 widget_data, StringID tool_tip)
 {
 	this->widget_data = widget_data;
 	this->tool_tip = tool_tip;
