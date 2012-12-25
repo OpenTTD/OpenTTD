@@ -728,26 +728,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}最新�
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}消息
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :关闭
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :摘要
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :完全
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :玩家车站的剪彩仪式: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :对手车站的剪彩仪式: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :事故/灾难: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :公司信息: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :工业开业: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :工业倒闭: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :经济变化: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :自家公司服务的工业产量变化信息: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :对手公司服务的工业产量变化信息: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :其它工业产量变化信息: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :对于企业车辆的建议及信息: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :新车型: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :货物接受情况变更: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :财政补贴: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :综合信息: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}市民举行庆祝仪式……{}第一列火车抵达 {STATION}！
@@ -847,6 +827,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STRING} 运送到 {STRING} 将获得四倍的报酬！
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}的交通陷入混乱！{}{}由 {STRING} 资助的市政道路重建导致市内交通瘫痪 6 个月！
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}垄断运输!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN}一年期的运输专营权已经被{STRING}购买!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}视点 {COMMA}
@@ -1056,9 +1038,25 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}无合�
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}高级设置
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}关键字过滤:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}展开全部
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}关闭全部
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}默认值: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}设置类型: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :当前客户端设置（不保存，影响所有游戏）
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :当前游戏设置（可保存在存档中，仅对新游戏生效）
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :当前游戏设置（可保存在存档中，仅对当前游戏生效）
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :当前公司设置（可保存在存档中，仅对新游戏生效）
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :当前公司设置（可保存在存档中，仅对现行公司生效）
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}显示:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}仅显示修改过的选项
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :基础设置
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :高级设置
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :高级设置/全部设置
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :修改默认值
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :适用于服务器端的设置
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :设置一个与当前游戏设置不同的值
 
 STR_CONFIG_SETTING_OFF                                          :关闭
 STR_CONFIG_SETTING_ON                                           :打开
@@ -1125,8 +1123,13 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :中间
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :远端
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :汽车自动排队 (有量子效应)： {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :当鼠标移动到屏幕边缘时移动屏幕：{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :禁用
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :主视点，仅全屏模式
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :主视点
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :每个视角
 STR_CONFIG_SETTING_BRIBE                                        :允许贿赂地方政府：{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :允许买断经营权： {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :如果一家公司购买了城市独家经营权，其它公司的站台将在一年之内不再产生乘客或者货物。
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :允许新建房屋: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :允许使用资助地方道路修整功能: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :允许向其他公司转移资金： {STRING}
@@ -1159,6 +1162,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :图表曲线宽
 STR_CONFIG_SETTING_LAND_GENERATOR                               :生成地形：{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :原始算法
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :新算法
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :炼油厂只能在地图边缘建设或者海岛海岸。
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪线高度：{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地面粗糙度 (仅限 TerraGenesis)：{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :非常光滑
@@ -1174,6 +1178,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :逆时针
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :顺时针
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :由水面场景得到的高度：{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :允许调整地图边缘的地块地形：{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :禁用后，地图边缘将变成海洋
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}一个或多个北边的地块不是闲置的
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}一个或多个地图某边的地块不是水域
 
@@ -1238,6 +1243,23 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :显示预留的
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :建造工具使用后仍选中： {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :企业财政窗口中的组群支出：{STRING}
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :产业新闻: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :每月初产业新闻音效
+STR_CONFIG_SETTING_SOUND_NEWS                                   :报纸: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :显示报纸时的音效
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :年终: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :在年末弹出报表时，播放相应音效
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :建设: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :播放成功建设或其它动作时的音效
+STR_CONFIG_SETTING_SOUND_CLICK                                  :点击按钮: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :按一下按钮时发出蜂鸣声
+STR_CONFIG_SETTING_SOUND_DISASTER                               :灾难/事故: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :播放灾难和事故音效
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :交通工具: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :播放运输工具音效
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :音效：{STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放环境、工业和城镇音效
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :不显示没有对应车辆的轨道建设面板: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :每间公司最大火车数量：{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :每间公司最大汽车数量：{STRING}
@@ -1261,6 +1283,40 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :保养周期(�
 STR_CONFIG_SETTING_NOSERVICE                                    :在无故障模式下禁用保养周期：{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :启动车辆限速：{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :禁用电气化铁路：{STRING}
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :玩家车站的剪彩仪式: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :报纸报道运输工具到达新玩家的站台情况
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :对手车站的剪彩仪式: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :报纸报道竞争对手运输工具新到一个站台的情况
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :事故/灾难: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :报纸报道事故或灾难发生情况
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :公司信息: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :报纸报道新公司开业或者预警倒闭风险
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :工业开业: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :报纸报道产业投产
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :工业倒闭: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :报纸报道产业倒闭
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :经济变化: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :报纸报道全球经济变化情况
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :自家公司服务的工业产量变化信息: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :报纸报道玩家产业的产量变化情况
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :对手公司服务的工业产量变化信息: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :报纸报道竞争对手的产业产量变化情况
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :其它工业产量变化信息: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :报纸报道非玩家或竞争对手的工业产量变化
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :对于企业车辆的建议及信息: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :显示运输工具需要关注的消息
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :新车型: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :显示新运输工具上市的消息
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :货物接受情况变更: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :显示站台接受货物种类变更的消息
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :财政补贴: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :综合信息: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :显示普通事件新闻，例如购买运输专营权或市场道路整修。
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :关闭
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :摘要
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :完全
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :彩色新闻出现在 {STRING} 年以后
 STR_CONFIG_SETTING_STARTING_YEAR                                :开始年份：{STRING}
@@ -1324,6 +1380,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}经济
 STR_CONFIG_SETTING_AI                                           :{ORANGE}竞争
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}显示选项
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}互动
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}音响效果
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}新闻和消息
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}信号灯
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}货物处理
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}电脑玩家
@@ -1358,6 +1416,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :与当前版本
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :未知
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... 压缩等级 '{STRING}' 无效
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}...存档格式 '{STRING}' 不适用. 请转换成 '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... 禁用基础图形设置 '{STRING}': 未找到
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... 禁用基础意义设置 '{STRING}': 未找到
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... 禁用基础音乐设置 '{STRING}': 未找到
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3230,7 +3291,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}运力�
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (改装)
 STR_REFIT_TITLE                                                 :{GOLD}选择要运输的货物类型：
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}新的装载能力：{GOLD}{CARGO_LONG}{}{BLACK}改装费用：{RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}新装载量: {GOLD}{CARGO_LONG}{}{BLACK}改装后收入: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}新的运载类型： {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}改装所需： {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}新装载量: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}改装后收入: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}请选择要改装的车辆. 拖动鼠标可多选.点击空白区域选择整辆列车. Ctrl+左键 选定该车厢及其之后车厢。
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}选择希望列车装载的货物类型
@@ -3557,6 +3620,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}支出：{CURRENCY_LONG}

@@ -730,26 +730,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}최근 �
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}메시지
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :끄기
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :요약
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :전체
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :당신의 첫 차량 도착: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :경쟁사의 첫 차량 도착: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :사고 / 재앙: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :회사 정보: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :산업시설의 건설: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :산업시설의 폐쇄: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :경제 변화: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :회사가 달성한 생산량 변동량: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :경쟁자에 의한 산업시설의 생산 변화: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :다른 산업 생산물 변화: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :회사의 차량에 관한 권고/정보: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :새 차량: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :역에서 받는 화물의 변경: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :보조금: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :일반 정보: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}시민들이 축하하고 있습니다 . . .{}{STATION}에 처음으로 열차가 도착했습니다!
@@ -1370,6 +1350,23 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :다리, 터널 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :재정 창에서 비용 그룹화: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :재정 창에 나타나는 회사 비용을 어떻게 표시할 지 설정합니다.
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :뉴스 자막: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :요약된 뉴스 메시지가 나타나면 효과음을 재생합니다.
+STR_CONFIG_SETTING_SOUND_NEWS                                   :새로운 소식: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :새로운 소식을 표시할 때 효과음을 재생합니다.
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :연말: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :작년과 비교한 올해 회사의 성취도를 요약하면서 연말에 효과음을 재생합니다.
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :건설: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :성공적인 건설이나 다른 행동시 효과음을 재생합니다.
+STR_CONFIG_SETTING_SOUND_CLICK                                  :버튼 클릭: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :버튼을 클릭할 때 효과음을 재생합니다.
+STR_CONFIG_SETTING_SOUND_DISASTER                               :재앙/사고: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :사고나 재앙 효과음을 재생합니다.
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :차량: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :차량의 효과음을 재생합니다.
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :주변 소리: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :주변 풍경이나 산업시설, 도시의 효과음을 재생합니다.
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :사용 가능한 차량이 없을 경우 해당 기반시설 비활성화: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :이 옵션을 켜면, 불필요하게 시간과 돈을 낭비하지 않도록 차량이 존재하지 않는 기반시설을 설치할 수 없게 됩니다.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :최대 열차 수: {STRING}
@@ -1419,6 +1416,41 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :화물차 속�
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :이 옵션을 켜면 열차의 최대 속도를 낮추기 위해 화물칸의 속도 제한을 사용합니다.
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :전기 철도를 사용하지 않음: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :이 옵션을 켜면 전기 기관차가 일반 철도에서도 달릴 수 있도록 요구사항을 제거합니다.
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :당신의 첫 차량 도착: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :나의 새 역사에 처음으로 차량이 도착하면 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :경쟁사의 첫 차량 도착: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :경쟁자의 새 역사에 처음으로 차량이 도착하면 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :사고 / 재앙: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :사고나 재앙이 일어났을 때 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :회사 정보: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :새로운 회사가 열리거나, 파산 위기에 처했을 때 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :산업시설의 건설: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :새로운 산업시설이 건설되면 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :산업시설의 폐쇄: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :산업시설이 폐쇄될 때 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :경제 변화: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :전 세계적인 경제에 변화가 생기면 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :회사가 달성한 생산량 변동량: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :내 회사가 수송하고 있는 산업 시설의 생산량이 변하면 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :경쟁자에 의한 산업시설의 생산 변화: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :경쟁사가 수송하고 있는 산업 시설의 생산량이 변하면 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :다른 산업 생산물 변화: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :내 회사나 경쟁사가 수송하고 있지 않은 산업 시설의 생산량이 변하면 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :회사의 차량에 관한 권고/정보: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :주의를 기울여야하는 차량에 대한 메시지를 표시합니다.
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :새 차량: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :새로운 차량 종류를 사용할 수 있게 되면 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :역에서 받는 화물의 변경: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :역사가 받을 수 있는 화물이 변경될 경우 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :보조금: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :보조금과 관련된 소식을 메시지로 알려줍니다.
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :일반 정보: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :도로 재건축 투자나 수송 독점권의 구입 등과 같은 일반적인 사건에 대한 소식을 메시지로 알려줍니다.
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :끄기
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :요약
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :전체
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{STRING}년부터 컬러로 된 뉴스가 나옴
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :신문이 컬러로 나오게 되는 연도를 설정합니다. 이 연도 이전까지는 신문이 흑백으로 나옵니다.
@@ -1520,6 +1552,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}경제
 STR_CONFIG_SETTING_AI                                           :{ORANGE}경쟁자
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}디스플레이 옵션
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}조작 옵션
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}효과음
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}뉴스와 메시지
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}신호기
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}화물
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}컴퓨터 옵션
