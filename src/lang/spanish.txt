@@ -1063,6 +1063,14 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Opciones de exp
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Opciones con un valor diferente al valor por defecto
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Opciones con un valor diferente a las opciones de partida nueva
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restringe la lista a ciertos tipos de opciones
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Todas las opciones
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Opciones de cliente (no se almacena en partidas guardadas, afecta a todas las partidas)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Opciones de juego (se almacena en las partidas guardadas, afecta solamente a partidas nuevas)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Opciones de juego (se almacena en las partidas guardadas, afecta solamente a la partida actual)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Opciones de empresa (se almacena en las partidas guardadas, afecta solamente a partidas nuevas)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Opciones de empresa (se almacena en las partidas guardadas, afecta solamente a la compañía actual)
+
 STR_CONFIG_SETTING_OFF                                          :No
 STR_CONFIG_SETTING_ON                                           :Sí
 STR_CONFIG_SETTING_DISABLED                                     :Desactivado

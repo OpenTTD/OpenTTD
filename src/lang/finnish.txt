@@ -1062,6 +1062,14 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Kehittyneet ase
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Asetukset, joiden arvo poikkeaa oletusarvosta
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Asetukset, joiden arvo poikkeaa uusille peleille määritellystä arvosta
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Rajaa alla olevaa listaa näyttämään vain tietyt asetustyypit
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Kaikki asetukset
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Paikalliset asetukset (ei tallenneta pelitallenteisiin; vaikuttavat kaikkiin peleihin)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Pelin asetukset (tallennetaan pelitallenteisiin; vaikuttavat vain uusiin peleihin)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Pelin asetukset (tallennetaan pelitallenteeseen; vaikuttavat vain nykyiseen peliin)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Yhtiön asetukset (tallennetaan pelitallenteisiin; vaikuttavat vain uusiin peleihin)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Yhtiön asetukset (tallennetaan pelitallenteeseen; vaikuttavat ainoastaan nykyiseen yhtiöön)
+
 STR_CONFIG_SETTING_OFF                                          :pois
 STR_CONFIG_SETTING_ON                                           :päällä
 STR_CONFIG_SETTING_DISABLED                                     :Pois käytöstä

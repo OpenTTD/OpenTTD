@@ -1063,6 +1063,14 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Alle Einstellun
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Einstellungen mit Werten verschieden von OpenTTDs Standardwerten
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Einstellungen mit einem Wert verschieden von den eigenen Einstellungen für neue Spiele
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Schränkt die Liste auf bestimme Einstellungs-Typen ein
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alle Einstellungen
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Nutzer-Einstellungen (nicht in Spielständen gespeichert; beeinflußt alle Spiele)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spiel-spezifische Einstellungen (im Spielstand gespeichert; beeinflußt nur neue Spiele)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spiel-spezifische Einstellungen (im Spielstand gespeichert; beeinflußt nur aktuelles Spiel)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Firmeneinstellungen (im Spielstand gesichert; beeinflußt nur neue Spiele)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firmeneinstellungen (im Spielstand gesichert; beeinflußt nur die aktuelle Firma)
+
 STR_CONFIG_SETTING_OFF                                          :Aus
 STR_CONFIG_SETTING_ON                                           :An
 STR_CONFIG_SETTING_DISABLED                                     :ausgeschaltet
