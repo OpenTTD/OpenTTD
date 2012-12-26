@@ -169,6 +169,8 @@ static void InitBlocksizeForVehicles(VehicleType type, EngineImageType image_typ
 
 	const Engine *e;
 	FOR_ALL_ENGINES_OF_TYPE(e, type) {
+		if (!e->IsEnabled()) continue;
+
 		EngineID eid = e->index;
 		uint x, y;
 		int x_offs, y_offs;
