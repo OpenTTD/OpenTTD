@@ -1791,8 +1791,9 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlag flags)
 				cost.AddCost(ret);
 			}
 
-			/* when bankrupting, don't make water dirty, there could be a ship on lower halftile */
-			if (water_ground && !(flags & DC_BANKRUPT)) {
+			/* When bankrupting, don't make water dirty, there could be a ship on lower halftile.
+			 * Same holds for non-companies clearing the tile, e.g. disasters. */
+			if (water_ground && !(flags & DC_BANKRUPT) && Company::IsValidID(_current_company)) {
 				CommandCost ret = EnsureNoVehicleOnGround(tile);
 				if (ret.Failed()) return ret;
 
