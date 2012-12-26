@@ -734,6 +734,7 @@ enum RestrictionMode {
 struct SettingFilter {
 	StringFilter string;     ///< Filter string.
 	RestrictionMode mode;    ///< Filter based on category.
+	SettingType type;       ///< Filter based on type.
 };
 
 /** Data structure describing a single setting in a tab */
@@ -1077,11 +1078,11 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 	bool visible = true;
 	switch (this->flags & SEF_KIND_MASK) {
 		case SEF_SETTING_KIND: {
+			const SettingDesc *sd = this->d.entry.setting;
 			if (!force_visible && !filter.string.IsEmpty()) {
 				/* Process the search text filter for this item. */
 				filter.string.ResetState();
 
-				const SettingDesc *sd = this->d.entry.setting;
 				const SettingDescBase *sdb = &sd->desc;
 
 				SetDParam(0, STR_EMPTY);
@@ -1090,6 +1091,7 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 
 				visible = filter.string.GetState();
 			}
+			if (filter.type != ST_ALL) visible = visible && sd->GetType() == filter.type;
 			visible = visible && this->IsVisibleByRestrictionMode(filter.mode);
 			break;
 		}
@@ -1749,6 +1751,7 @@ struct GameSettingsWindow : Window {
 		static bool first_time = true;
 
 		filter.mode = (RestrictionMode)_settings_client.gui.settings_restriction_mode;
+		filter.type = ST_ALL;
 		settings_ptr = &GetGameSettings();
 
 		/* Build up the dynamic settings-array only once per OpenTTD session */
@@ -1824,6 +1827,15 @@ struct GameSettingsWindow : Window {
 			case WID_GS_RESTRICT_DROPDOWN:
 				SetDParam(0, _game_settings_restrict_dropdown[this->filter.mode]);
 				break;
+
+			case WID_GS_TYPE_DROPDOWN:
+				switch (this->filter.type) {
+					case ST_GAME:    SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME); break;
+					case ST_COMPANY: SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME); break;
+					case ST_CLIENT:  SetDParam(0, STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT); break;
+					default:         SetDParam(0, STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL); break;
+				}
+				break;
 		}
 	}
 
@@ -1841,6 +1853,14 @@ struct GameSettingsWindow : Window {
 
 					list->push_back(new DropDownListStringItem(_game_settings_restrict_dropdown[mode], mode, disabled));
 				}
+				break;
+
+			case WID_GS_TYPE_DROPDOWN:
+				list = new DropDownList();
+				list->push_back(new DropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL, ST_ALL, false));
+				list->push_back(new DropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME, ST_GAME, false));
+				list->push_back(new DropDownListStringItem(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME, ST_COMPANY, false));
+				list->push_back(new DropDownListStringItem(STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT, ST_CLIENT, false));
 				break;
 		}
 		return list;
@@ -1912,6 +1932,15 @@ struct GameSettingsWindow : Window {
 				if (list != NULL) {
 					ShowDropDownList(this, list, this->filter.mode, widget);
 				}
+				break;
+			}
+
+			case WID_GS_TYPE_DROPDOWN: {
+				DropDownList *list = this->BuildDropDownList(widget);
+				if (list != NULL) {
+					ShowDropDownList(this, list, this->filter.type, widget);
+				}
+				break;
 			}
 		}
 
@@ -2120,6 +2149,11 @@ struct GameSettingsWindow : Window {
 				this->InvalidateData();
 				break;
 
+			case WID_GS_TYPE_DROPDOWN:
+				this->filter.type = (SettingType)index;
+				this->InvalidateData();
+				break;
+
 			default:
 				if (widget < 0) {
 					/* Deal with drop down boxes on the panel. */
@@ -2207,7 +2241,10 @@ static const NWidgetPart _nested_settings_selection_widgets[] = {
 		NWidget(NWID_HORIZONTAL), SetPadding(WD_TEXTPANEL_TOP, 0, WD_TEXTPANEL_BOTTOM, 0),
 				SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_RIGHT),
 			NWidget(WWT_TEXT, COLOUR_MAUVE, WID_GS_RESTRICT_LABEL), SetDataTip(STR_CONFIG_SETTING_RESTRICT_LABEL, STR_NULL),
-			NWidget(WWT_DROPDOWN, COLOUR_MAUVE, WID_GS_RESTRICT_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_BLACK_STRING, STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT), SetFill(1, 0), SetResize(1, 0),
+			NWidget(NWID_VERTICAL), SetPIP(0, WD_PAR_VSEP_NORMAL, 0),
+				NWidget(WWT_DROPDOWN, COLOUR_MAUVE, WID_GS_RESTRICT_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_BLACK_STRING, STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_DROPDOWN, COLOUR_MAUVE, WID_GS_TYPE_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_BLACK_STRING, STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT), SetFill(1, 0), SetResize(1, 0),
+			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL), SetPadding(0, 0, WD_TEXTPANEL_BOTTOM, 0),
 				SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_RIGHT),

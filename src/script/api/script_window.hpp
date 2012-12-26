@@ -2089,6 +2089,7 @@ public:
 		WID_GS_COLLAPSE_ALL                          = ::WID_GS_COLLAPSE_ALL,                          ///< Collapse all button.
 		WID_GS_RESTRICT_LABEL                        = ::WID_GS_RESTRICT_LABEL,                        ///< Label upfront to drop down box to restrict the list of settings to show
 		WID_GS_RESTRICT_DROPDOWN                     = ::WID_GS_RESTRICT_DROPDOWN,                     ///< The drop down box to restrict the list of settings
+		WID_GS_TYPE_DROPDOWN                         = ::WID_GS_TYPE_DROPDOWN,                         ///< The drop down box to choose client/game/company/all settings
 	};
 
 	/** Widgets of the #CustomCurrencyWindow class. */

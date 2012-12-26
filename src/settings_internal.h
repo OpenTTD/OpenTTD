@@ -83,6 +83,8 @@ enum SettingType {
 	ST_GAME,      ///< Game setting.
 	ST_COMPANY,   ///< Company setting.
 	ST_CLIENT,    ///< Client setting.
+
+	ST_ALL,       ///< Used in setting filter to match all types.
 };
 
 typedef bool OnChange(int32 var);           ///< callback prototype on data modification

@@ -988,6 +988,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GS_COLLAPSE_ALL,                       "WID_GS_COLLAPSE_ALL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GS_RESTRICT_LABEL,                     "WID_GS_RESTRICT_LABEL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GS_RESTRICT_DROPDOWN,                  "WID_GS_RESTRICT_DROPDOWN");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GS_TYPE_DROPDOWN,                      "WID_GS_TYPE_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_CC_RATE_DOWN,                          "WID_CC_RATE_DOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_CC_RATE_UP,                            "WID_CC_RATE_UP");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_CC_RATE,                               "WID_CC_RATE");
