@@ -136,6 +136,11 @@ static StationID FindNearestHangar(const Aircraft *v)
 
 		/* v->tile can't be used here, when aircraft is flying v->tile is set to 0 */
 		uint distance = DistanceSquare(vtile, st->airport.tile);
+		if (v->acache.cached_max_range_sqr != 0) {
+			/* Check if our current destination can be reached from the depot airport. */
+			const Station *cur_dest = GetTargetAirportIfValid(v);
+			if (cur_dest != NULL && DistanceSquare(st->airport.tile, cur_dest->airport.tile) > v->acache.cached_max_range_sqr) continue;
+		}
 		if (distance < best || index == INVALID_STATION) {
 			best = distance;
 			index = st->index;
