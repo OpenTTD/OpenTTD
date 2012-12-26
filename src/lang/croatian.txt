@@ -1156,7 +1156,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Osnovne postavk
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Napredne postavke
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Postavke za napredne korisnike / sve postavke
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Postavke sa drugačijim vrijednostima od osnovnih
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Postavke ne-klijenta sa drugačijim vrijednostima od osnovnih
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Postavke sa drugačijim vrijednostima od postavki vaše nove igre
 
 STR_CONFIG_SETTING_OFF                                          :Isključeno

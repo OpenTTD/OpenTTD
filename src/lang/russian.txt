@@ -1210,7 +1210,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Основны�
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Расширенные настройки
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Специальные настройки / все настройки
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Настройки со значениями, отличающимися от значений по умолчанию
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Неклиентские настройки со значениями, отличающимися от значений по умолчанию
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Настройки со значениями, отличающимися от настроек новой игры
 
 STR_CONFIG_SETTING_OFF                                          :нет

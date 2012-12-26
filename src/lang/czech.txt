@@ -1161,7 +1161,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Základní nast
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Pokročilé nastavení
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expertní nastavení / všechna nastavení
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Nastavení s jinou než defaultní hodnotou
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Ne-klientské nastavení s jinou než defaultní hodnotou
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Nastavení s jinou hodnotou než tvé nastavení nových her
 
 STR_CONFIG_SETTING_OFF                                          :vypnuto

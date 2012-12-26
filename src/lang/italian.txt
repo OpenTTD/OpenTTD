@@ -1062,7 +1062,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Impostazioni di
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Impostazioni avanzate
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Tutte le impostazioni (utenti esperti)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Impostazioni con un valore diverso da quello predefinito
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Impostazioni non relative ai client con un valore diverso da quello predefinito
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Impostazioni con un valore diverso di quello impostato a inizio partita
 
 STR_CONFIG_SETTING_OFF                                          :No

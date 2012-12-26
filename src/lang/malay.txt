@@ -1080,7 +1080,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Tetapan asas
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Tetapan tambahan
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Pakar tetapan / semua tetapan
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Tetapan dengan nilai berbeza dari yang lalai
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Jumlah pinjaman maksimum yang boleh dipinjam oleh syarikat (tanpa mengambil kira inflasi)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Tetapan dengan nilai yang berbeza daripada tetapan baru permainananda
 
 STR_CONFIG_SETTING_OFF                                          :Matikan

@@ -1061,7 +1061,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Options de base
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Options avancées
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Paramètres expert / Tous les paramètres
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Paramètres avec une valeur différente du défaut
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Paramètre non-client avec une valeur différente du défaut
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Paramètres avec une valeur différente des paramètres de nouvelle partie
 
 STR_CONFIG_SETTING_OFF                                          :Désactivé

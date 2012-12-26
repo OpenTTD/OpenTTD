@@ -1393,7 +1393,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Базавыя 
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Пашыраныя наладкі
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Спэцыяльныя наладкі / усе наладкі
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Наладкі са значэньнямі, якія адрозьніваюцца ад значэньняў па змоўчаньні
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Някліенцкія наладкi са значэньнямі, адрознымі ад значэньняў па змоўчаньні
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Наладкі са значэньнямі, якія адрозьніваюцца ад наладак новай гульні
 
 STR_CONFIG_SETTING_OFF                                          :не

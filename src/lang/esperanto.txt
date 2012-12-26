@@ -1048,7 +1048,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Bazniveloj agor
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Altnivelaj agordoj
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Altnivelaj agordoj / ĉiu agordoj
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :agordoj kiuj malsimilas al la originala
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Ne-klientaj agordoj kiu malsimilas al la originalaj
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Agordoj kiu malsimilas al via novajuldaj agordoj
 
 STR_CONFIG_SETTING_OFF                                          :Malaktiva

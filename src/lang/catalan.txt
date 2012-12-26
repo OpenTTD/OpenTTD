@@ -1061,7 +1061,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Paràmetres bà
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Paràmetres avançats
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Paràmetres per experts / tots els paràmetres
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Paràmetres amb un valor diferent del predeterminat
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Paràmetres aliens al client amb un valor diferent del predeterminat
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Paràmetres amb un valor diferent dels paràmetres del joc nou
 
 STR_CONFIG_SETTING_OFF                                          :Inactiu

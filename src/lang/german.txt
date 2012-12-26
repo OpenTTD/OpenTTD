@@ -1061,7 +1061,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grundlegende Ei
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Erweiterte Einstellungen
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Alle Einstellungen
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Einstellungen mit Werten verschieden von OpenTTDs Standardwerten
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Karten-spezifische Einstellungen mit Werten verschieden von OpenTTDs Standardwerten
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Einstellungen mit einem Wert verschieden von den eigenen Einstellungen für neue Spiele
 
 STR_CONFIG_SETTING_OFF                                          :Aus

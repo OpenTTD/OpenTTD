@@ -1460,7 +1460,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Ustawienia pods
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Ustawienia zaawansowane
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ustawienia eksperta / wszystkie ustawienia
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ustawienie z inną wartością niż domyślna
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Ustawienia inne niż klienta z wartością inną niż domyślna
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ustawienia z wartościami innymi niż twoje ustawienia dla nowej gry
 
 STR_CONFIG_SETTING_OFF                                          :wył.

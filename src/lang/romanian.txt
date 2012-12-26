@@ -1077,7 +1077,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Setări de baz�
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Setări avansate
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Setări expert / toate setările
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Setări cu altă valoare decît cea prestabilită
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Setări non-client cu altă valoare decît cea prestabilită
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Setări cu valori diferite față de cele setate de tine pentru joc nou
 
 STR_CONFIG_SETTING_OFF                                          :Inactiv

@@ -1060,7 +1060,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Tùy chọn cơ
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Tùy chọn nâng cao
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Thiết lập chuyên gia/tất cả thiết lập
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Thiết lập khác với giá trị mặc định
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Thiết lập chung với giá trị khác giá trị mặc định
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :THiết lập giá trị mới khác với giá trị cho ván chơi mới
 
 STR_CONFIG_SETTING_OFF                                          :Tắt

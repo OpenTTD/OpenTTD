@@ -1061,7 +1061,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Opciones básic
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Opciones avanzadas
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Opciones de experto / todas las opciones
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Opciones con un valor diferente al valor por defecto
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Opciones de servidor con un valor diferente al de por defecto
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Opciones con un valor diferente a las opciones de partida nueva
 
 STR_CONFIG_SETTING_OFF                                          :No

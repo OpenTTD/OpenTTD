@@ -1274,7 +1274,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :pagrindines nuo
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :sudėtingesnes nuostatos
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :visas nuostatas
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :nuostatas, kurių reikšmės skiriasi nuo numatytųjų
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :ne kliento nuostatas, kurių reikšmės skiriasi nuo numatytųjų
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :nuostatas, kurių reikšmės skiriasi nuo naujai pradedamo žaidimo nuostatų
 
 STR_CONFIG_SETTING_OFF                                          :Ne

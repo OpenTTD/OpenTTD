@@ -1079,7 +1079,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basic Astellung
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Erweidert Astellungen
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expertenastellungen / All Astellungen
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Astellungen mat engem aneren Wäert wéi den Standardwäert
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Net-Client Astellungen mat engem aneren Wäert wéi den Standardwäert
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Astellungen mat engem aneren Wäert wéi d'Neit-Spill-Astellungen
 
 STR_CONFIG_SETTING_OFF                                          :Aus

@@ -1080,7 +1080,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Gewone instelli
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Geavanceerde instellingen
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Geavanceerde instellingen / Alle instellingen
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Instellingen met een andere waarde dan de standaard
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Non-client instellingen met een andere waarde dan de standaard
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Instellingen met een andere waarde dan je 'nieuw spel' instellingen
 
 STR_CONFIG_SETTING_OFF                                          :Uit

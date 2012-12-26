@@ -1063,7 +1063,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Pengaturan dasa
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Pengaturan lanjut
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Pengaturan mahir / semua aturan
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Pengaturan dengan nilai berbeda dari nilai asli
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Pengaturan non-klien dengan nilai berbeda dari nilai asli
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Pengaturan dengan nilai berbeda dari pengaturan permainan baru
 
 STR_CONFIG_SETTING_OFF                                          :Tidak

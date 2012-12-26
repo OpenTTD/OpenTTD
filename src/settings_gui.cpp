@@ -725,7 +725,6 @@ enum RestrictionMode {
 	RM_ADVANCED,                         ///< Display settings associated to the "advanced" list.
 	RM_ALL,                              ///< List all settings regardless of the default/newgame/... values.
 	RM_CHANGED_AGAINST_DEFAULT,          ///< Show only settings which are different compared to default values.
-	RM_CHANGED_AGAINST_DEFAULT_WO_LOCAL, ///< Show only non-local settings which are different compared to default values.
 	RM_CHANGED_AGAINST_NEW,              ///< Show only settings which are different compared to the user's new game setting values.
 	RM_END,                              ///< End for iteration.
 };
@@ -1030,11 +1029,6 @@ bool SettingEntry::IsVisibleByRestrictionMode(RestrictionMode mode) const
 	assert((this->flags & SEF_KIND_MASK) == SEF_SETTING_KIND);
 	const SettingDesc *sd = this->d.entry.setting;
 
-	if (mode == RM_CHANGED_AGAINST_DEFAULT_WO_LOCAL && (sd->save.conv & SLF_NO_NETWORK_SYNC) != 0) {
-		/* Hide local settings when comparing our settings against those of the server. */
-		return false;
-	}
-
 	if (mode == RM_BASIC) return (this->d.entry.setting->desc.cat & SC_BASIC_LIST) != 0;
 	if (mode == RM_ADVANCED) return (this->d.entry.setting->desc.cat & SC_ADVANCED_LIST) != 0;
 
@@ -1044,7 +1038,7 @@ bool SettingEntry::IsVisibleByRestrictionMode(RestrictionMode mode) const
 
 	int64 filter_value;
 
-	if (mode == RM_CHANGED_AGAINST_DEFAULT || mode == RM_CHANGED_AGAINST_DEFAULT_WO_LOCAL) {
+	if (mode == RM_CHANGED_AGAINST_DEFAULT) {
 		/* This entry shall only be visible, if the value deviates from its default value. */
 
 		/* Read the default value. */
@@ -1721,7 +1715,6 @@ static const StringID _game_settings_restrict_dropdown[] = {
 	STR_CONFIG_SETTING_RESTRICT_ADVANCED,                         // RM_ADVANCED
 	STR_CONFIG_SETTING_RESTRICT_ALL,                              // RM_ALL
 	STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT,          // RM_CHANGED_AGAINST_DEFAULT
-	STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL, // RM_CHANGED_AGAINST_DEFAULT_WO_LOCAL
 	STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW,              // RM_CHANGED_AGAINST_NEW
 };
 assert_compile(lengthof(_game_settings_restrict_dropdown) == RM_END);
@@ -2134,7 +2127,6 @@ struct GameSettingsWindow : Window {
 			case WID_GS_RESTRICT_DROPDOWN:
 				this->filter.mode = (RestrictionMode)index;
 				if (this->filter.mode == RM_CHANGED_AGAINST_DEFAULT ||
-						this->filter.mode == RM_CHANGED_AGAINST_DEFAULT_WO_LOCAL ||
 						this->filter.mode == RM_CHANGED_AGAINST_NEW) {
 
 					if (!this->manually_changed_folding) {

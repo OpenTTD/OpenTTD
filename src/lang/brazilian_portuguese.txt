@@ -1078,7 +1078,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Configs. básic
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Configs. avançadas
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Configs. expert / todas as configs.
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Configs. com valor diferente do padrão
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Configs. baseados no servidor com um valor dif. do padrão
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Configs. com um valor diferente das configs. para novos jogos
 
 STR_CONFIG_SETTING_OFF                                          :Desl.

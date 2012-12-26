@@ -1080,7 +1080,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Oinarrizko ezar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Ezarpen aurreratuak
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Adituentzako ezarpenak / Ezarpen guztiak
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ezarpenak lehenetsitakoen balio ezberdinarekin
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Bezero-eza ezarpenak lehenetsitakoen balio ezberdinarekin
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Balio ezberdinak dituzten ezarpenak zure joko berriaren ezarpenekin alderatuta
 
 STR_CONFIG_SETTING_OFF                                          :Itzalita

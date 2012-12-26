@@ -1060,7 +1060,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basic settings
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Advanced settings
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expert settings / all settings
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Settings with a different value than the default
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Non-client settings with a different value than the default
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Settings with a different value than your new-game settings
 
 STR_CONFIG_SETTING_OFF                                          :Off

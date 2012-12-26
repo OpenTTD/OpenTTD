@@ -1061,7 +1061,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :기본 설정
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :고급 설정
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :전문가 설정 / 모든 설정
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :기본값과 다른 값을 가진 설정
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :기본값과 다른 값을 가진 (게임 저장 파일에 저장되는) 설정
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :이 게임 내에서 다른 값을 가진 설정
 
 STR_CONFIG_SETTING_OFF                                          :아니오

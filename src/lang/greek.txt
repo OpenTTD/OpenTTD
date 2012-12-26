@@ -1172,7 +1172,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Βασικές 
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Προχωρημένες ρυθμίσεις
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Προχωρημένες ρυθμίσεις / όλες οι ρυθμίσεις
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ρυθμίσεις με διαφορετική τιμή από την προκαθωρισμένη
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Ρυθμίσεις όχι του πελάτη με διαφορετική τιμή από την προκαθωρισμένη
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ρυθμίσεις με διαφορετική τιμή από τις ρυθμίσεις νέου παιχνιδιού σας
 
 STR_CONFIG_SETTING_OFF                                          :Ανενεργό

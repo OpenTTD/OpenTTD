@@ -1082,7 +1082,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Pamatiestatīju
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Papildu iestatījumi
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Lietpratēju iestatījumi / visi iestatījumi
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Iestatījumi ar atšķirīgu vērtību nekā noklusējuma
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Uz klienta programmu neattiecošies iestatījumi ar atšķirīgu vērtību nekā noklusējuma
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Iestatījumi ar atšķirīgu vērtību nekā jūsu jaunajai spēlei
 
 STR_CONFIG_SETTING_OFF                                          :izslēgts

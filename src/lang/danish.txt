@@ -1079,7 +1079,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grund Indstilli
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avancerede indstillinger
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspert indstillinger / alle indstillinger
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Indstillinger med en anden værdi end standard
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Ikke-klient indstillinger med en anden værdi end standard
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Indstillinger med en anden værdi end dine nyt-spil indstillinger
 
 STR_CONFIG_SETTING_OFF                                          :Fra

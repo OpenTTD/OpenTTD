@@ -1060,7 +1060,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Perusasetukset
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Lisäasetukset
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Kehittyneet asetukset / kaikki asetukset
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Asetukset, joiden arvo poikkeaa oletusarvosta
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Ei-paikalliset asetukset, joiden arvo poikkeaa oletusarvosta
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Asetukset, joiden arvo poikkeaa uusille peleille määritellystä arvosta
 
 STR_CONFIG_SETTING_OFF                                          :pois
