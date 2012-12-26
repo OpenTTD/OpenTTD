@@ -730,6 +730,12 @@ enum RestrictionMode {
 	RM_END,                              ///< End for iteration.
 };
 
+/** Filter for settings list. */
+struct SettingFilter {
+	StringFilter string;     ///< Filter string.
+	RestrictionMode mode;    ///< Filter based on category.
+};
+
 /** Data structure describing a single setting in a tab */
 struct SettingEntry {
 	byte flags; ///< Flags of the setting entry. @see SettingEntryFlags
@@ -760,7 +766,7 @@ struct SettingEntry {
 	uint GetMaxHelpHeight(int maxw);
 
 	bool IsFiltered() const;
-	bool UpdateFilterState(StringFilter &filter, bool force_visible, RestrictionMode mode);
+	bool UpdateFilterState(SettingFilter &filter, bool force_visible);
 
 	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, uint cur_row, uint parent_last, SettingEntry *selected);
 
@@ -796,7 +802,7 @@ struct SettingsPage {
 	SettingEntry *FindEntry(uint row, uint *cur_row) const;
 	uint GetMaxHelpHeight(int maxw);
 
-	bool UpdateFilterState(StringFilter &filter, bool force_visible, RestrictionMode mode);
+	bool UpdateFilterState(SettingFilter &filter, bool force_visible);
 
 	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, SettingEntry *selected, uint cur_row = 0, uint parent_last = 0) const;
 };
@@ -1060,41 +1066,40 @@ bool SettingEntry::IsVisibleByRestrictionMode(RestrictionMode mode) const
 
 /**
  * Update the filter state.
- * @param filter String filter
+ * @param filter Filter
  * @param force_visible Whether to force all items visible, no matter what (due to filter text; not affected by restriction drop down box).
- * @param mode Additional way of filtering only changed settings on this screen (see restriction drop down box).
  * @return true if item remains visible
  */
-bool SettingEntry::UpdateFilterState(StringFilter &filter, bool force_visible, RestrictionMode mode)
+bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 {
 	CLRBITS(this->flags, SEF_FILTERED);
 
 	bool visible = true;
 	switch (this->flags & SEF_KIND_MASK) {
 		case SEF_SETTING_KIND: {
-			if (!force_visible && !filter.IsEmpty()) {
+			if (!force_visible && !filter.string.IsEmpty()) {
 				/* Process the search text filter for this item. */
-				filter.ResetState();
+				filter.string.ResetState();
 
 				const SettingDesc *sd = this->d.entry.setting;
 				const SettingDescBase *sdb = &sd->desc;
 
 				SetDParam(0, STR_EMPTY);
-				filter.AddLine(sdb->str);
-				filter.AddLine(this->GetHelpText());
+				filter.string.AddLine(sdb->str);
+				filter.string.AddLine(this->GetHelpText());
 
-				visible = filter.GetState();
+				visible = filter.string.GetState();
 			}
-			visible = visible && this->IsVisibleByRestrictionMode(mode);
+			visible = visible && this->IsVisibleByRestrictionMode(filter.mode);
 			break;
 		}
 		case SEF_SUBTREE_KIND: {
-			if (!force_visible && !filter.IsEmpty()) {
-				filter.ResetState();
-				filter.AddLine(this->d.sub.title);
-				force_visible = filter.GetState();
+			if (!force_visible && !filter.string.IsEmpty()) {
+				filter.string.ResetState();
+				filter.string.AddLine(this->d.sub.title);
+				force_visible = filter.string.GetState();
 			}
-			visible = this->d.sub.page->UpdateFilterState(filter, force_visible, mode);
+			visible = this->d.sub.page->UpdateFilterState(filter, force_visible);
 			break;
 		}
 		default: NOT_REACHED();
@@ -1312,17 +1317,16 @@ void SettingsPage::GetFoldingState(bool &all_folded, bool &all_unfolded) const
 
 /**
  * Update the filter state.
- * @param filter String filter
+ * @param filter Filter
  * @param force_visible Whether to force all items visible, no matter what
- * @param mode Additional way of filtering only changed settings on this screen (see restriction drop down box).
  * @return true if item remains visible
  */
-bool SettingsPage::UpdateFilterState(StringFilter &filter, bool force_visible, RestrictionMode mode)
+bool SettingsPage::UpdateFilterState(SettingFilter &filter, bool force_visible)
 {
 	bool visible = false;
 	bool first_visible = true;
 	for (int field = this->num - 1; field >= 0; field--) {
-		visible |= this->entries[field].UpdateFilterState(filter, force_visible, mode);
+		visible |= this->entries[field].UpdateFilterState(filter, force_visible);
 		this->entries[field].SetLastField(first_visible);
 		if (visible && first_visible) first_visible = false;
 	}
@@ -1734,18 +1738,17 @@ struct GameSettingsWindow : Window {
 	SettingEntry *valuedropdown_entry; ///< If non-NULL, pointer to the value for which a dropdown window is currently opened.
 	bool closing_dropdown;             ///< True, if the dropdown list is currently closing.
 
-	StringFilter string_filter;        ///< Text filter for settings.
+	SettingFilter filter;              ///< Filter for the list.
 	QueryString filter_editbox;        ///< Filter editbox;
 	bool manually_changed_folding;     ///< Whether the user expanded/collapsed something manually.
 
-	RestrictionMode cur_restriction_mode; ///< Currently selected index of the drop down list for the restrict drop down.
-
 	Scrollbar *vscroll;
 
-	GameSettingsWindow(const WindowDesc *desc) : filter_editbox(50), cur_restriction_mode((RestrictionMode)_settings_client.gui.settings_restriction_mode)
+	GameSettingsWindow(const WindowDesc *desc) : filter_editbox(50)
 	{
 		static bool first_time = true;
 
+		filter.mode = (RestrictionMode)_settings_client.gui.settings_restriction_mode;
 		settings_ptr = &GetGameSettings();
 
 		/* Build up the dynamic settings-array only once per OpenTTD session */
@@ -1819,7 +1822,7 @@ struct GameSettingsWindow : Window {
 	{
 		switch (widget) {
 			case WID_GS_RESTRICT_DROPDOWN:
-				SetDParam(0, _game_settings_restrict_dropdown[this->cur_restriction_mode]);
+				SetDParam(0, _game_settings_restrict_dropdown[this->filter.mode]);
 				break;
 		}
 	}
@@ -1907,7 +1910,7 @@ struct GameSettingsWindow : Window {
 			case WID_GS_RESTRICT_DROPDOWN: {
 				DropDownList *list = this->BuildDropDownList(widget);
 				if (list != NULL) {
-					ShowDropDownList(this, list, this->cur_restriction_mode, widget);
+					ShowDropDownList(this, list, this->filter.mode, widget);
 				}
 			}
 		}
@@ -2100,19 +2103,19 @@ struct GameSettingsWindow : Window {
 	{
 		switch (widget) {
 			case WID_GS_RESTRICT_DROPDOWN:
-				this->cur_restriction_mode = (RestrictionMode)index;
-				if (this->cur_restriction_mode == RM_CHANGED_AGAINST_DEFAULT ||
-						this->cur_restriction_mode == RM_CHANGED_AGAINST_DEFAULT_WO_LOCAL ||
-						this->cur_restriction_mode == RM_CHANGED_AGAINST_NEW) {
+				this->filter.mode = (RestrictionMode)index;
+				if (this->filter.mode == RM_CHANGED_AGAINST_DEFAULT ||
+						this->filter.mode == RM_CHANGED_AGAINST_DEFAULT_WO_LOCAL ||
+						this->filter.mode == RM_CHANGED_AGAINST_NEW) {
 
 					if (!this->manually_changed_folding) {
 						/* Expand all when selecting 'changes'. Update the filter state first, in case it becomes less restrictive in some cases. */
-						_settings_main_page.UpdateFilterState(string_filter, false, this->cur_restriction_mode);
+						_settings_main_page.UpdateFilterState(this->filter, false);
 						_settings_main_page.UnFoldAll();
 					}
 				} else {
 					/* Non-'changes' filter. Save as default. */
-					_settings_client.gui.settings_restriction_mode = this->cur_restriction_mode;
+					_settings_client.gui.settings_restriction_mode = this->filter.mode;
 				}
 				this->InvalidateData();
 				break;
@@ -2159,7 +2162,7 @@ struct GameSettingsWindow : Window {
 	{
 		if (!gui_scope) return;
 
-		_settings_main_page.UpdateFilterState(string_filter, false, this->cur_restriction_mode);
+		_settings_main_page.UpdateFilterState(this->filter, false);
 
 		this->vscroll->SetCount(_settings_main_page.Length());
 
@@ -2177,8 +2180,8 @@ struct GameSettingsWindow : Window {
 	virtual void OnEditboxChanged(int wid)
 	{
 		if (wid == WID_GS_FILTER) {
-			string_filter.SetFilterTerm(this->filter_editbox.text.buf);
-			if (!string_filter.IsEmpty() && !this->manually_changed_folding) {
+			this->filter.string.SetFilterTerm(this->filter_editbox.text.buf);
+			if (!this->filter.string.IsEmpty() && !this->manually_changed_folding) {
 				/* User never expanded/collapsed single pages and entered a filter term.
 				 * Expand everything, to save weird expand clicks, */
 				_settings_main_page.UnFoldAll();
