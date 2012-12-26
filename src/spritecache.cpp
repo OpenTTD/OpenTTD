@@ -810,7 +810,7 @@ static void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, S
  */
 void *GetRawSprite(SpriteID sprite, SpriteType type, AllocatorProc *allocator)
 {
-	assert(IsMapgenSpriteID(sprite) == (type == ST_MAPGEN));
+	assert(type != ST_MAPGEN || IsMapgenSpriteID(sprite));
 	assert(type < ST_INVALID);
 
 	if (!SpriteExists(sprite)) {
