@@ -2099,57 +2099,61 @@ struct GameSettingsWindow : Window {
 
 	virtual void OnDropdownSelect(int widget, int index)
 	{
-		if (widget == WID_GS_RESTRICT_DROPDOWN) {
-			this->cur_restriction_mode = (RestrictionMode)index;
-			if (this->cur_restriction_mode == RM_CHANGED_AGAINST_DEFAULT ||
-					this->cur_restriction_mode == RM_CHANGED_AGAINST_DEFAULT_WO_LOCAL ||
-					this->cur_restriction_mode == RM_CHANGED_AGAINST_NEW) {
+		switch (widget) {
+			case WID_GS_RESTRICT_DROPDOWN:
+				this->cur_restriction_mode = (RestrictionMode)index;
+				if (this->cur_restriction_mode == RM_CHANGED_AGAINST_DEFAULT ||
+						this->cur_restriction_mode == RM_CHANGED_AGAINST_DEFAULT_WO_LOCAL ||
+						this->cur_restriction_mode == RM_CHANGED_AGAINST_NEW) {
 
-				if (!this->manually_changed_folding) {
-					/* Expand all when selecting 'changes'. Update the filter state first, in case it becomes less restrictive in some cases. */
-					_settings_main_page.UpdateFilterState(string_filter, false, this->cur_restriction_mode);
-					_settings_main_page.UnFoldAll();
+					if (!this->manually_changed_folding) {
+						/* Expand all when selecting 'changes'. Update the filter state first, in case it becomes less restrictive in some cases. */
+						_settings_main_page.UpdateFilterState(string_filter, false, this->cur_restriction_mode);
+						_settings_main_page.UnFoldAll();
+					}
+				} else {
+					/* Non-'changes' filter. Save as default. */
+					_settings_client.gui.settings_restriction_mode = this->cur_restriction_mode;
 				}
-			} else {
-				/* Non-'changes' filter. Save as default. */
-				_settings_client.gui.settings_restriction_mode = this->cur_restriction_mode;
-			}
-			this->InvalidateData();
-			return;
+				this->InvalidateData();
+				break;
+
+			default:
+				if (widget < 0) {
+					/* Deal with drop down boxes on the panel. */
+					assert(this->valuedropdown_entry != NULL);
+					const SettingDesc *sd = this->valuedropdown_entry->d.entry.setting;
+					assert(sd->desc.flags & SGF_MULTISTRING);
+
+					if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
+						SetCompanySetting(this->valuedropdown_entry->d.entry.index, index);
+					} else {
+						SetSettingValue(this->valuedropdown_entry->d.entry.index, index);
+					}
+
+					this->SetDirty();
+				}
+				break;
 		}
-
-		/* Deal with drop down boxes on the panel. */
-		assert(this->valuedropdown_entry != NULL);
-		const SettingDesc *sd = this->valuedropdown_entry->d.entry.setting;
-		assert(sd->desc.flags & SGF_MULTISTRING);
-
-		if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
-			SetCompanySetting(this->valuedropdown_entry->d.entry.index, index);
-		} else {
-			SetSettingValue(this->valuedropdown_entry->d.entry.index, index);
-		}
-
-		this->SetDirty();
 	}
 
 	virtual void OnDropdownClose(Point pt, int widget, int index, bool instant_close)
 	{
-		if (widget == WID_GS_RESTRICT_DROPDOWN) {
+		if (widget >= 0) {
 			/* Normally the default implementation of OnDropdownClose() takes care of
-			 * a few things. We want that behaviour here too, but only for this one
-			 * "normal" dropdown box. The special dropdown boxes added for every
+			 * a few things. We want that behaviour here too, but only for
+			 * "normal" dropdown boxes. The special dropdown boxes added for every
 			 * setting that needs one can't have this call. */
 			Window::OnDropdownClose(pt, widget, index, instant_close);
-			return;
+		} else {
+			/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
+			 * the same dropdown button was clicked again, and then not open the dropdown again.
+			 * So, we only remember that it was closed, and process it on the next OnPaint, which is
+			 * after OnClick. */
+			assert(this->valuedropdown_entry != NULL);
+			this->closing_dropdown = true;
+			this->SetDirty();
 		}
-
-		/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
-		 * the same dropdown button was clicked again, and then not open the dropdown again.
-		 * So, we only remember that it was closed, and process it on the next OnPaint, which is
-		 * after OnClick. */
-		assert(this->valuedropdown_entry != NULL);
-		this->closing_dropdown = true;
-		this->SetDirty();
 	}
 
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
