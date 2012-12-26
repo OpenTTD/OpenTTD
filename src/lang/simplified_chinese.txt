@@ -1055,7 +1055,6 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :基础设置
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :高级设置
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :高级设置/全部设置
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :修改默认值
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :适用于服务器端的设置
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :设置一个与当前游戏设置不同的值
 
 STR_CONFIG_SETTING_OFF                                          :关闭
