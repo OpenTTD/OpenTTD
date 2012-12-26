@@ -748,6 +748,16 @@ bool SettingDesc::IsEditable(bool do_command) const
 	return true;
 }
 
+/**
+ * Return the type of the setting.
+ * @return type of setting
+ */
+SettingType SettingDesc::GetType() const
+{
+	if (this->desc.flags & SGF_PER_COMPANY) return ST_COMPANY;
+	return (this->save.conv & SLF_NOT_IN_SAVE) ? ST_CLIENT : ST_GAME;
+}
+
 /* Begin - Callback Functions for the various settings. */
 
 /** Reposition the main toolbar as the setting changed. */

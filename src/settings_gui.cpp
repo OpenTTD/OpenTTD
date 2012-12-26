@@ -1856,12 +1856,11 @@ struct GameSettingsWindow : Window {
 					const SettingDesc *sd = this->last_clicked->d.entry.setting;
 
 					int y = r.top;
-					if (sd->desc.flags & SGF_PER_COMPANY) {
-						SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_COMPANY_INGAME);
-					} else if (sd->save.conv & SLF_NOT_IN_SAVE) {
-						SetDParam(0, STR_CONFIG_SETTING_TYPE_CLIENT);
-					} else {
-						SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_GAME_MENU : STR_CONFIG_SETTING_TYPE_GAME_INGAME);
+					switch (sd->GetType()) {
+						case ST_COMPANY: SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_COMPANY_INGAME); break;
+						case ST_CLIENT:  SetDParam(0, STR_CONFIG_SETTING_TYPE_CLIENT); break;
+						case ST_GAME:    SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_GAME_MENU : STR_CONFIG_SETTING_TYPE_GAME_INGAME); break;
+						default: NOT_REACHED();
 					}
 					DrawString(r.left, r.right, y, STR_CONFIG_SETTING_TYPE);
 					y += FONT_HEIGHT_NORMAL;

@@ -76,6 +76,14 @@ enum SettingCategory {
 	SC_END,
 };
 
+/**
+ * Type of settings for filtering.
+ */
+enum SettingType {
+	ST_GAME,      ///< Game setting.
+	ST_COMPANY,   ///< Company setting.
+	ST_CLIENT,    ///< Client setting.
+};
 
 typedef bool OnChange(int32 var);           ///< callback prototype on data modification
 typedef size_t OnConvert(const char *value); ///< callback prototype for convertion error
@@ -103,6 +111,7 @@ struct SettingDesc {
 	SaveLoad save;          ///< Internal structure (going to savegame, parts to config)
 
 	bool IsEditable(bool do_command = false) const;
+	SettingType GetType() const;
 };
 
 /* NOTE: The only difference between SettingDesc and SettingDescGlob is
