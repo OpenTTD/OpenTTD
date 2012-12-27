@@ -1063,6 +1063,14 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :전문가 설�
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :기본값과 다른 값을 가진 설정
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :이 게임 내에서 다른 값을 가진 설정
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}특정 설정 종류만 아래 목록에 표시합니다.
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :모든 설정
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :접속자 설정 (게임 저장 파일에 저장되지 않음; 모든 게임에 적용됨)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :게임 설정 (게임 저장 파일에 저장됨; 새 게임에만 적용됨)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :게임 설정 (게임 저장 파일에 저장됨; 현재 게임에만 적용됨)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :회사 설정 (게임 저장 파일에 저장됨; 새 게임에만 적용됨)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :회사 설정 (게임 저장 파일에 저장됨; 현재 회사에만 적용됨)
+
 STR_CONFIG_SETTING_OFF                                          :아니오
 STR_CONFIG_SETTING_ON                                           :예
 STR_CONFIG_SETTING_DISABLED                                     :사용 안 함

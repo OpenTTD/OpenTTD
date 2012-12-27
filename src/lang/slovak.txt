@@ -794,26 +794,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Zoznam p
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Správa
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Vypnuté
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Obsah
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Plné
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Príchod prvého vozidla do stanice hráča: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Príchod prvého vozidla do stanice konkurencie: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Havárie / Katastrofy: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informácie o spoločnosti: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Vznik priemyslu: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zánik priemyslu: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Zmeny v ekonomike: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Zmeny produkcie priemyslu obsluhovaného spoločnosťou: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Zmeny produkcie priemyslu obsluhovaného konkurenciou: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Ostatné zmeny produkcie priemyslu: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Rady / informácie o vozidlách spoločnosti: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nové vozidlá: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Zmeny príjmu nákladu: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Dotácie: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Hlavné informácie: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Mesto oslavuje . . .{}Prvý vlak dorazil do stanice {STATION}!
@@ -1137,6 +1117,8 @@ STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavenia spol
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavenia spoločnosti (uložia sa; ovplyvní iba aktuálnu firmu)
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Nastavenia spoločnosti (uchované v uloženej hre; ovplyvnia iba aktuálnu spoločnosť)
+
 STR_CONFIG_SETTING_OFF                                          :nie
 STR_CONFIG_SETTING_ON                                           :áno
 STR_CONFIG_SETTING_DISABLED                                     :zakázané
@@ -1390,6 +1372,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Zachovaj okno s
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Zoskupiť výdavky v okne financií spoločnosti: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definujte rozloženie okna s financiami.
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Zakázať výstavbu infraštruktúry ak nieje dostupné žiadne vhodné vozidlo: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ak je zapnuté, infraštruktúra je k dispozícii len ak su k nej pripojené vozidlá. Toto predchádza plýtvaniu peniazmi a časom pri nepoužiteľnej infraštruktúre.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximálny počet vlakov hráča: {STRING}
@@ -1434,6 +1417,26 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Obmedzenie rýc
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ak je zapnuté, použijú sa tiež rýchlostné obmedzenia pre vagóny na obmedzenie celkovej rýchlosti vlakov.
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Zakázať elektrifikovanú železnicu: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Povolením nastavenia vypne nutnosť elektrifikovať železnice aby na nich mohli jazdiť elektrické vlaky.
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Príchod prvého vozidla do stanice hráča: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Príchod prvého vozidla do stanice konkurencie: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Havárie / Katastrofy: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informácie o spoločnosti: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Vznik priemyslu: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zánik priemyslu: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Zmeny v ekonomike: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Zmeny produkcie priemyslu obsluhovaného spoločnosťou: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Zmeny produkcie priemyslu obsluhovaného konkurenciou: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Ostatné zmeny produkcie priemyslu: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Rady / informácie o vozidlách spoločnosti: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nové vozidlá: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Zmeny príjmu nákladu: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Dotácie: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Hlavné informácie: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Vypnuté
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Obsah
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Plné
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Zobraziť správy farebne od roku: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Rok od ktorého začnú vychádzať farebné noviny. Pred týmto rokom budú noviny čierno/biele.
@@ -3824,6 +3827,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Príli�
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Bola nájdená len núdzová sada zvukov. Pre viac zvukových efektov je potrebné stiahnuť zvukovú sadu cez online.
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Snímka bola uložená na disk ako '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Uloženie snímky zlyhalo!
 

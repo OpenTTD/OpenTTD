@@ -1064,6 +1064,14 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Tutte le impost
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Impostazioni con un valore diverso da quello predefinito
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Impostazioni con un valore diverso di quello impostato a inizio partita
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Limita la lista sottostante alle impostazioni di un tipo specifico
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tutte le impostazioni
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Impostazione del client (non conservata nei salvataggi; influenza tutte le partite)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Impostazione di gioco (conservata nei salvataggi; influenza solo le nuove partite)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Impostazione di gioco (conservata nel salvataggio; influenza solo la partita corrente)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Impostazione della compagnia (conservata nei salvataggi; influenza solo le nuove partite)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Impostazione della compagnia (conservata nel salvataggio; influenza solo la compagnia corrente)
+
 STR_CONFIG_SETTING_OFF                                          :No
 STR_CONFIG_SETTING_OFF.ms                                       :No
 STR_CONFIG_SETTING_OFF.mp                                       :No

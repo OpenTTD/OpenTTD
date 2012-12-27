@@ -728,26 +728,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}En liste
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Melding
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Av
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sammendrag
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Fullt
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Første kjøretøy på spillers stasjon: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Første kjøretøy på motstanders stasjon: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ulykker / katastrofer: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Firmainformasjon: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Åpning av industrier: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Stenging av industrier: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Økonomiske endringer: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produksjonsendringer hos industrier ekspedert av firmaet: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produksjonsendringer hos industrier ekspedert av motspiller(e): {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Andre industriproduksjonsendringer: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Forslag / informasjon om firmaets kjøretøyer: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nye kjøretøy: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Endringer i godtatte varer: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidier: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Generell informasjon: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Borgerne jubler . . .{}Første tog ankommer {STATION}!
@@ -1081,6 +1061,8 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Avanserte innst
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Innstillinger med annen verdi enn standarden
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Innstillinger med annen verdi enn innstillingene dine for nye spill
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alle instillinger
+
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
 STR_CONFIG_SETTING_DISABLED                                     :Deaktivert
@@ -1256,6 +1238,13 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Vis reserverte 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :La byggingsverktøy være aktive etter bruk: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupper utgifter i firmaets finansvindu: {STRING}
 
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastrofer/ulykker: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Spill av lydeffekter til ulykker og katastrofer
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Kjøretøy: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Spill lydeffekter til kjøretøy
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omgivelse: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spill bakgrunns-lydeffekter til landskap, industrier og byer
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Fjern infrastrukturbygging før tilhørende kjøretøy er tilgjengelige: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks antall tog per firma: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks antall kjøretøy per firma: {STRING}
@@ -1275,6 +1264,27 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Vedlikeholdsint
 STR_CONFIG_SETTING_NOSERVICE                                    :Deaktiver vedlikehold når havarier er slått av: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktiver fartsgrenser for vogner: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiver elektriske tog: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Første kjøretøy på spillers stasjon: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Første kjøretøy på motstanders stasjon: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ulykker / katastrofer: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Firmainformasjon: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Åpning av industrier: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Stenging av industrier: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Økonomiske endringer: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Vis en nyhetsoppdatering om globale forandringer i økonomi
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produksjonsendringer hos industrier ekspedert av firmaet: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produksjonsendringer hos industrier ekspedert av motspiller(e): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Andre industriproduksjonsendringer: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Forslag / informasjon om firmaets kjøretøyer: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nye kjøretøy: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Endringer i godtatte varer: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidier: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Generell informasjon: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Av
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sammendrag
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Fullt
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Farge i avisen kommer i: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Start spillet i år: {STRING}

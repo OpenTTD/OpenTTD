@@ -1158,6 +1158,14 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Postavke za nap
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Postavke sa drugačijim vrijednostima od osnovnih
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Postavke sa drugačijim vrijednostima od postavki vaše nove igre
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Dozvoljava popis samo ispod određene postavke
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Sve postavke
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Postavke klijenta (nisu spremljene prilikom snimanja; utječu na sve igre)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Postavke igre (spremljene prilikom snimanja; utječu samo na nove igre)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Postavke igre (spremljene prilikom snimanja; utječu samo na tekuću igru)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Postavke kompanije (spremljene prilikom snimanja; utječu samo na nove igre)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Postavke kompanije (spremljene prilikom snimanja; utječu samo na trenutnu kompaniju)
+
 STR_CONFIG_SETTING_OFF                                          :Isključeno
 STR_CONFIG_SETTING_ON                                           :Uključeno
 STR_CONFIG_SETTING_DISABLED                                     :Isključeno
@@ -1544,7 +1552,7 @@ STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Prikaži novine
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Isključeno
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sažetak
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Puno
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Sve
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Vijesti u boji pojavljuju se: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Godina u kojoj će se novine početi izdavati u boji. Prije ove godine, koriste se crno/bijele novine

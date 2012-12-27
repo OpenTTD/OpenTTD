@@ -1062,6 +1062,14 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expert settings
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Settings with a different value than the default
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Settings with a different value than your new-game settings
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restricts the list below to certain setting types
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :All settings
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Client settings (not stored in saves; affects all games)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Game settings (stored in saves; affects only new games)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Game settings (stored in save; affects only current game)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Company settings (stored in saves; affects only new games)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Company settings (stored in save; affects only current company)
+
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On
 STR_CONFIG_SETTING_DISABLED                                     :Disabled

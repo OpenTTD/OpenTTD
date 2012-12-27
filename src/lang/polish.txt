@@ -1109,26 +1109,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Lista os
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Wiadomość
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Wyłączone
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sumaryczne
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pełne
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Przybycie pierwszego pojazdu do stacji gracza: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Przybycie pierwszego pojazdu do stacji przeciwnika: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Wypadki / klęski: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informacja firmy: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Otwarcie przedsiębiorstw: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zamknięcie przedsiębiorstw: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Zmiany ekonomiczne: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Zmiany w produkcji przedsiębiorstw obsługiwanych przez firmę: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Zmiany w produkcji przedsiębiorstw obsługiwanych przez przeciwników: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Zmiany w produkcji w pozostałych przedsiębiorstwach: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Rada / informacja o pojazdach firmy: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nowe pojazdy: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Zmiany w akceptowaniu ładunku: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsydia: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Ogólne informacje: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Mieszkańcy świętują . . .{}Pierwszy pociąg przybył do {STATION}!
@@ -1462,6 +1442,10 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ustawienia eksp
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ustawienie z inną wartością niż domyślna
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ustawienia z wartościami innymi niż twoje ustawienia dla nowej gry
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Wszystkie ustawienia
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Ustawienia firmy (przechowywane w pliku zapisu; mają wpływ tylko w nowo rozpoczętych grach)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Ustawienia firmy (przechowywane w pliku zapisu; mają wpływ tylko na aktualnie aktywną firmę)
+
 STR_CONFIG_SETTING_OFF                                          :wył.
 STR_CONFIG_SETTING_ON                                           :wł.
 STR_CONFIG_SETTING_DISABLED                                     :Wyłączone
@@ -1748,6 +1732,14 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Zachowaj narzę
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Pogrupuj wydatki w oknie finsnasów firmy: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Określa układ okienka wydatków firmy
 
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Koniec roku: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Budowa: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Kliknięcia: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Wypadki/katastrofy: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Odtwarzaj efekty dźwiękowe wypadków i katastrof
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Pojazdy: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Odtwarzaj efekty dźwiękowe pojazdów
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Zablokuj budowę infrastruktury, kiedy brak odpowiednich pojazdów: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Kiedy włączone, rodzaj infrastruktury jest dostępny tylko wtedy, gdy są dostępne również pojazdy, zapobiegając marnowaniu czasu i pieniędzy na zbędną infrastrukturę
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks. liczba pociągów na firmę: {STRING}
@@ -1797,6 +1789,26 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Włącz limity 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kiedy włączone, użyj także ograniczenia prędkości dla wagonów do obliczenia maksymalnej prędkości pociągu
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Zabroń korzystania z kolei elektrycznych: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Włączając to ustawienie, nie jest już wymagane elektryfikowanie torów, aby elektrowozy mogły po nich jeździć
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Przybycie pierwszego pojazdu do stacji gracza: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Przybycie pierwszego pojazdu do stacji przeciwnika: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Wypadki / klęski: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informacja firmy: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Otwarcie przedsiębiorstw: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zamknięcie przedsiębiorstw: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Zmiany ekonomiczne: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Zmiany w produkcji przedsiębiorstw obsługiwanych przez firmę: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Zmiany w produkcji przedsiębiorstw obsługiwanych przez przeciwników: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Zmiany w produkcji w pozostałych przedsiębiorstwach: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Rada / informacja o pojazdach firmy: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nowe pojazdy: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Zmiany w akceptowaniu ładunku: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsydia: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Ogólne informacje: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Wyłączone
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sumaryczne
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pełne
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Pojawienie się kolorowych wiadomości w: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Rok, w którym wiadomości w gazetach są drukowane w kolorze. Przed tym rokiem drukowane są monochromatyczne czarno-białe

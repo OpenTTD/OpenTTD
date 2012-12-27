@@ -399,7 +399,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifes de paga
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Taula de la Lliga d'Empreses
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detall de ratis de rendiment
-STR_GRAPH_MENU_HIGHSCORE                                        :Taula de récords
+STR_GRAPH_MENU_HIGHSCORE                                        :Taula de rècords
 ############ range ends here
 
 ############ range for industry menu starts
@@ -732,13 +732,13 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Missatge
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Celebració popular . . .{} Arribada del 1er. tren a {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Celebració popular . . .{}Primer autobús arriba a {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Celebració popular . . .{}Primer camió arriba a {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Celebració popular...{}El primer tren arriba a {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Celebració popular...{}El primer autobús arriba a {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Celebració popular...{}El primer camió arriba a {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Els ciutadans celebren . . .{}El primer tramvia de passatgers arriba a {STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Els ciutadans celebren . . .{}El primer tramvia de mercaderies arriba a {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Celebració popular . . .{}El 1er. vaixell arriba a {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Celebració popular . . .{}El primer avió arriba a {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Celebració popular...{}El primer vaixell arriba a {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Celebració popular...{}El primer avió arriba a {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Accident de Tren!{}{COMMA} moren en una bola de foc després de la col·lisió
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Accident d'automòbil!{}El conductor mor en una bola de foc després de la col·lisió amb un tren
@@ -1063,6 +1063,14 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Paràmetres per
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Paràmetres amb un valor diferent del predeterminat
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Paràmetres amb un valor diferent dels paràmetres del joc nou
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restringeix la llista de sota a certs tipus de paràmetres
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tots els paràmetres
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Paràmetres del client (no s'emmagatzemen als jocs desats; afecten tots els jocs)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Paràmetres del joc (emmagatzemats als jocs desats; afecta només els jocs nous)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Paràmetres del joc (emmagatzemats al joc desat; afecta només al joc actual)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Paràmetres de la companyia (emmagatzemats al jocs desats; afecta només els jocs nous)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Paràmetres de la companyia (emmagatzemats al joc desat; afecta només la companyia actual)
+
 STR_CONFIG_SETTING_OFF                                          :Inactiu
 STR_CONFIG_SETTING_ON                                           :Actiu
 STR_CONFIG_SETTING_DISABLED                                     :Desactivat
@@ -1081,12 +1089,12 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dreta
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Préstec inicial màxim: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantitat màxima de préstec que pot demanar una companyia (sense tenir en compte l'inflació)
-STR_CONFIG_SETTING_INTEREST_RATE                                :Tassa d'interés: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tassa d'interés del préstec; també controla l'inflatió si està activat
+STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa d'interès: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taxa d'interès dels préstecs; també controla la inflació si està activada
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costos d'utilització: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Fixa el nivell de manteniment i els costos d'utilització dels vehicles i infraestructures
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocitat de construcció: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limita la quantitat d'accions de construcció per part dels IAs
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limita la quantitat d'accions de construcció per part de les IA
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Avaries de vehicles: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controla cada quan els vehicles revisats inadequadament s'espatllen
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicador del subsidi: {STRING}
@@ -1349,6 +1357,15 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantingues les 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupa les despeses a la finestra de finances de la companyia: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Defineix la disposició de la companyia a la finestra de despeses
 
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reprodueix un efecte de so al final de l'any quan apareix el resum financer de l'empresa
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Botons: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Sona quan es cliquen els botons
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Desastres i accidents: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Reprodueix els efectes de so d'accidents i desastres
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vehicles: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Reprodueix els efectes de so dels vehicles
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambient: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reprodueix efectes de so ambient del paisatge, les indústries i els pobles
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desactiva la construcció d'infrastructures quan no hi hagi disponibles vehicles adequats: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Quan està activat, la infrastructura només està disponible si hi ha també vehicles disponibles, prevenint perdre temps i diners en infraestructures no utilitzables
@@ -1371,7 +1388,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactiva vaixe
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Activant aquesta opció fa que sigui impossible construir vaixells al jugador de l'ordenador
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Perfil de paràmetres predeterminat: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Escull quin perfil de paràmetres utilitzar per IAs aleatòries o com a valors inicials quan s'afegeix una nova IA o Script del joc
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Escull quin perfil de paràmetres utilitzar per IA aleatòries o com a valors inicials quan s'afegeix una nova IA o Script del joc
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Fàcil
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mitjà
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Difícil
@@ -1400,15 +1417,15 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quan està acti
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactiva vies electrificades: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Activant aquest paràmetre es desactiva el requeriment d'electrificar les vies per poder fer-hi circular locomotores elèctriques
 
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arribada del 1er. vehicle a una estació pròpia: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arribada del 1er. vehicle a una estació competidora: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arribada del primer vehicle a una estació pròpia: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arribada del primer vehicle a una estació competidora: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / desastres: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informació de l'Empresa: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Obertura d'indústries: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Tancament d'indústries: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Canvis de l'Economia: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Canvis de producció de les indústries aprovisionades per la companyia: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Canvis de producció en indústries proveïdes pel competidor(s): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Canvis de producció en indústries proveïdes pels competidors: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Altres canvis de producció de la indústria: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Alertes / informació sobre els vehicles de la companyia: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nous vehicles: {STRING}
@@ -1574,7 +1591,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor d
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijugador
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcions del Joc
-STR_INTRO_HIGHSCORE                                             :{BLACK}Taula de récords
+STR_INTRO_HIGHSCORE                                             :{BLACK}Taula de rècords
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Paràmetres avançats
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Extensions NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contingut en línia
@@ -1594,7 +1611,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Seleccio
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selecciona l'estil de paisatge 'toyland'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Mostra les opcions del joc
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostra la taula de récords
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostra la taula de rècords
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Mostra paràmetres avançats
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra els paràmetres NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprova si hi ha continguts nous i actualitzats per a descarregar
@@ -2723,9 +2740,9 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Estàs 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No es pot afegir l'arxiu: ID GRF duplicada
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}No s'ha trobat un arxiu coincident (els GRF compatibles s'han carregat)
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}S'han carregat els GRF(s) compatibles pels arxius faltants
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Els arxius GRF(s) faltants han estat desactivats
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Falten arxiu(s) GRF
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}S'han carregat els GRF compatibles pels arxius faltants
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Els fitxers GRF faltants han estat desactivats
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Falten fitxers GRF
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Treure la pausa pot provocar fallades d'OpenTTD. No informis d'errors a causa de fallades subseqüents.{}Estàs segur de voler treure la pausa?
 
 # NewGRF status
@@ -2738,7 +2755,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Arxius que
 STR_NEWGRF_BROKEN                                               :{WHITE}El comportament dels NewGRF '{0:STRING}' probablement causarà desincronitzacions i/o penjades
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Canvia l'estat del vagó amb potència per '{1:ENGINE}' quan no sigui dins la cotxera
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Canvia la llargada del vehicle pel '{1:ENGINE}' quan no sigui dins del dipòsit
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren '{VEHICLE}' pertanyent a la '{COMPANY}' té una llargada invàlida. Això està causat probablement per problemes amb els NewGRFs. El joc podria desincronitzar-se i/o penjar-se
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren '{VEHICLE}' pertanyent a '{COMPANY}' té una llargada invàlida. Això està causat probablement per problemes amb els NewGRFs. El joc podria desincronitzar-se o penjar-se
 
 STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{0:STRING}' està donant informació incorrecta
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La informació de càrrega/remodelació per '{1:ENGINE}' no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de autorenova/-substitueix
@@ -3701,14 +3718,14 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Veure la
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script de joc
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Comprova el registre de l'script de joc
 
-STR_ERROR_AI_NO_AI_FOUND                                        :No s'ha trobat una IA adequada per carregar.{}Aquesta IA és una IA falsa i no farà res.{}Pots descarregar diverses IAs via el sistema de "Contingut en línia"
+STR_ERROR_AI_NO_AI_FOUND                                        :No s'ha trobat una IA adequada per carregar.{}Aquesta IA és una IA falsa i no farà res.{}Pots descarregar diverses IA via el sistema de "Contingut en línia"
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Un dels scripts executant-se s'ha penjat. Si us plau reporta això a l'autor de l'script amb una captura de pantalla de la finestra de depuració IA/Script del Joc
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}IA/La finestra de depuració de l'Script del Joc només està disponible pel servidor
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}IA/Configuració dels Scripts del joc
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}L'Script del Joc que serà carregat al proper joc
-STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Les IAs que seran carregades al proper joc
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Les IA que seran carregades al proper joc
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador humà
 STR_AI_CONFIG_RANDOM_AI                                         :IA Aleatòria
 STR_AI_CONFIG_NONE                                              :(cap)
@@ -3719,7 +3736,7 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mou Aval
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mou la IA selecionada avall a la llista
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script del Joc
-STR_AI_CONFIG_AI                                                :{SILVER}IAs
+STR_AI_CONFIG_AI                                                :{SILVER}IA
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Selecciona {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
@@ -3731,7 +3748,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configur
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Disponible {STRING}
-STR_AI_LIST_CAPTION_AI                                          :IAs
+STR_AI_LIST_CAPTION_AI                                          :IA
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts del Joc
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Clica per a seleccionar un script
 

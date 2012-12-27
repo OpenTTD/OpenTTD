@@ -729,26 +729,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Een lijs
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Bericht
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Uit
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Samengevat
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Volledig
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Eerste voertuig bij eigen station: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Eerste voertuig bij station van een concurrent: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ongelukken/rampen: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Bedrijfsinformatie: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Openen van industrieën: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Sluiten van industrieën: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Veranderingen in de economie: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Productieveranderingen van industrieën bediend door het bedrijf: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Productieveranderingen van industrieën bediend door concurrent(en): {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Andere productieveranderingen van industrieën: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Advies / informatie over voertuigen van het bedrijf: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nieuwe voertuigen: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Verandering van geaccepteerde vrachtsoorten: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidies: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Algemene informatie: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Inwoners feesten . . .{}Eerste trein arriveert in {STATION}!
@@ -1082,6 +1062,14 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Geavanceerde in
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Instellingen met een andere waarde dan de standaard
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Instellingen met een andere waarde dan je 'nieuw spel' instellingen
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Filter de lijst hieronder op bepaalde instellingstypen
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alle instellingen
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Gebruikersinstellingen (niet opgeslagen in bestand; heeft betrekking op alle spellen)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spelinstellingen (Opgeslagen in bestand; hebben alleen betrekking op nieuw spel)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Bedrijfsinstellingen (Opgeslagen in bestand; hebben alleen betrekking op huidig spel)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Bedrijfsinstellingen (Opgeslagen in bestand; heeft alleen betrekking op nieuwe spellen)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Bedrijfsinstellingen (Opgeslagen in bestand; hebben alleen betrekking op huidig bedrijf)
+
 STR_CONFIG_SETTING_OFF                                          :Uit
 STR_CONFIG_SETTING_ON                                           :Aan
 STR_CONFIG_SETTING_DISABLED                                     :Uitgeschakeld
@@ -1368,6 +1356,23 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Houd de bouwhul
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Groepeer uitgaven in bedrijfsfinanciënscherm: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definieer de lay-out voor het bedrijf uitgaven venster
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Nieuwsticker: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Speel geluidseffect voor samenvatting nieuwsberichten
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Krant: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Speel geluidseffect bij het tonen van de krant
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Einde jaar: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Speel geluidseffecten bij de samenvatting van resultaten gedurende het jaar ten opzichte van het jaar ervoor aan het einde van het jaar
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Bouw: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Speel geluidseffecten van succesvolle constructies of andere acties
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Knop kliks: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Piep bij het likken op knoppen
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Rampen/ongelukken: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Speel geluidseffecten van ongelukken en rampen
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Voertuigen: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Speel geluidseffecten van voertuigen
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambient: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Speel ambient geluidseffecten van landschap, industrieën en steden
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Bouwen van infrastructuur uitschakelen wanneer geen geschikt voertuig beschikbaar is: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Wanneer ingeschakeld, de infrastructuur is alleen beschikbaar als er ook voertuigen beschikbaar zijn, het voorkomen van verspilling van tijd en geld aan onbruikbare infrastructuur
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximaal aantal treinen per bedrijf: {STRING}
@@ -1417,6 +1422,41 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Schakel snelhei
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Wanneer ingeschakeld, ook gebruik maken van snelheidsbeperkingen van wagons voor het bepalen van de maximale snelheid van een trein
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Schakel elektrische sporen uit: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Het inschakelen van deze instelling schakelt de verplichting voor spoorelektrificatie voor elektrische treinen uit
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Eerste voertuig bij eigen station: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Toon een krant als het eerste voertuig arriveert op een station van de speler
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Eerste voertuig bij station van een concurrent: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Toon een krant als het eerste voertuig arriveert op een nieuw station van een concurrent
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ongelukken/rampen: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Toon een krant bij ongevallen of rampen
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Bedrijfsinformatie: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Toon een krant als een nieuw bedrijf start, of wanneer een bedrijf het risico loopt om falliet te gaan
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Openen van industrieën: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Toon een krant als nieuwe industrieën worden geopend
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Sluiten van industrieën: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Toon een krant als industrieën sluiten
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Veranderingen in de economie: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Toon een krant over wereldwijde wijzigingen in de economie
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Productieveranderingen van industrieën bediend door het bedrijf: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Toon een krant als het productieniveau van een industrie verandert, die worden bediend door het bedrijf
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Productieveranderingen van industrieën bediend door concurrent(en): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Toon een krant als het productieniveau van een industrie verandert, die worden bediend door concurrenten
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Andere productieveranderingen van industrieën: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Toon een krant als het productieniveau van de industrie verandert, die niet worden bediend door het bedrijf of de concurrenten
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Advies / informatie over voertuigen van het bedrijf: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Toon berichten over voertuigen die aandacht nodig hebben
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nieuwe voertuigen: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Toon een krant als een nieuw type voertuig beschikbaar komt
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Verandering van geaccepteerde vrachtsoorten: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Toon een bericht over gewijzigde acceptatie van goederen van stations
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidies: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Toon een krant over subsidie ​​gerelateerde gebeurtenissen
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Algemene informatie: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Weergave krant over algemene gebeurtenissen, zoals de aankoop van exclusieve rechten of financiering van weg-reconstructie
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Uit
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Samengevat
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Volledig
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Kleurenfoto's komen in: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Jaar dat de krant aankondigingen in kleur worden afgedrukt. Voor dit jaar wordt zwart-wit gebruikt
@@ -1518,6 +1558,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Tegenstanders
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Weergave-opties
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interactie
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Geluidseffecten
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Nieuws en berichten
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seinen
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Vrachtafhandeling
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerspelers

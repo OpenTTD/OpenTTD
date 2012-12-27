@@ -1057,6 +1057,9 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :高级设置/�
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :修改默认值
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :设置一个与当前游戏设置不同的值
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :当前公司设置（可保存在存档中，仅对新游戏生效）
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :当前公司设置（可保存在存档中，仅对当前公司生效）
+
 STR_CONFIG_SETTING_OFF                                          :关闭
 STR_CONFIG_SETTING_ON                                           :打开
 STR_CONFIG_SETTING_DISABLED                                     :禁用

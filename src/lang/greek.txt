@@ -821,26 +821,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Λίστ
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Μήνυμα
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Απενεργοποιημένα
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Περιλήψεις
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Ολόκληρα
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Άφιξη πρώτου οχήματος σε σταθμό του παίκτη: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Άφιξη του πρώτου οχήματος σε σταθμό του αντιπάλου: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ατυχήματα / καταστροφές: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Πληροφορίες εταιρίας: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Έναρξη των βιομηχανιών: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Κλείσιμο βιομηχανιών: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Οικονομικές αλλαγές: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Αλλαγή της παραγωγής των βιομηχανιών που εξυπηρετούνται από την εταιρία: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Διαφοροποιήσεις στην παραγωγή των βιομηχανιών που εξυπηρετούνται από ανταγωνιστή(-ές): {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Άλλες διαφοροποιήσεις στη παραγωγή: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Συμβουλές / πληροφορίες για τα εταιρικά οχήματα: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Νέα οχήματα: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Αλλαγές στην αποδοχή φορτίου: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Επιχορηγήσεις: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Γενικές πληροφορίες: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν. . .{}Το πρώτο τρένο φτάνει στον στάθμο {STATION}!
@@ -1174,6 +1154,7 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Προχωρη�
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ρυθμίσεις με διαφορετική τιμή από την προκαθωρισμένη
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ρυθμίσεις με διαφορετική τιμή από τις ρυθμίσεις νέου παιχνιδιού σας
 
+
 STR_CONFIG_SETTING_OFF                                          :Ανενεργό
 STR_CONFIG_SETTING_ON                                           :Ενεργή
 STR_CONFIG_SETTING_DISABLED                                     :Ανένεργη
@@ -1435,6 +1416,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Διατήρη�
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Ομαδοποίηση εξόδων στο παράθυρο οικονομικών της εταιρίας: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Ορίστε τη μορφή για το παράθυρο των εξόδων της εταιρείας
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Απενεργοποίηση των υποδομών για τα οχήματα που δεν είναι διαθέσιμα: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Όταν είναι ενεργοποιημένο, οι υποδομές είναι διαθέσιμες μόνο όταν υπάρχουν διαθέσιμα οχήματα, αποτρέποντας σπατάλη χρόνου και χρημάτων σε μη χρησιμοποιήσιμες υποδομές
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Μέγιστος αριθμός τρένων ανά εταιρία: {STRING}
@@ -1479,6 +1461,26 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ενεργοπ�
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Όταν είναι ενεργοποιημένο, χρησιμοποιούνται και τα όρια ταχύτητας των βαγονιών όταν αποφασίζεται η μέγιστη ταχύτητα ενός τραίνου
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Απενεργοποίηση ηλεκτρικών σιδηροτροχιών: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ενεργοποιώντας αυτήν την ρύθμιση απενεργοποιείται η ανάγκη ηλεκτροδότησης των σιδηροτροχιών για να μπορέσουν σε αυτές να λειτουργήσουν οι ηλεκτρικές μηχανές
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Άφιξη πρώτου οχήματος σε σταθμό του παίκτη: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Άφιξη του πρώτου οχήματος σε σταθμό του αντιπάλου: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ατυχήματα / καταστροφές: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Πληροφορίες εταιρίας: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Έναρξη των βιομηχανιών: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Κλείσιμο βιομηχανιών: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Οικονομικές αλλαγές: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Αλλαγή της παραγωγής των βιομηχανιών που εξυπηρετούνται από την εταιρία: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Διαφοροποιήσεις στην παραγωγή των βιομηχανιών που εξυπηρετούνται από ανταγωνιστή(-ές): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Άλλες διαφοροποιήσεις στη παραγωγή: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Συμβουλές / πληροφορίες για τα εταιρικά οχήματα: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Νέα οχήματα: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Αλλαγές στην αποδοχή φορτίου: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Επιχορηγήσεις: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Γενικές πληροφορίες: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Απενεργοποιημένα
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Περιλήψεις
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Ολόκληρα
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Τα έγχρωμα νέα εμφανίζονται από το: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Το έτος κατά το οποίο οι ανακοινώσεις στην εφημερίδα εκτυπώνονται έγχρωμες. Πριν από αυτό το έτος, εκτυπώνονται μονόχρωμες και ασπρόμαυρες
@@ -1961,7 +1963,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Αποσύνδεση
 
-STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Ο διακομιστής προστατεύεται από κωδικό. Εισάγετε κωδικό
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Η πρόσβαση στον διακομιστή προστατεύεται. Εισάγετε τον κωδικό
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Η εταιρεία προστατεύεται από κωδικό. Εισάγετε κωδικό
 
 # Network company list added strings
@@ -2030,7 +2032,7 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Έχετ
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Η χρήση cheats δεν επιτρέπεται σε αυτό το διακομιστή
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Αποστείλατε πάρα πολλές εντολές στον διακομιστή
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Χρειαστήκατε πολύ χρόνο για να συμπληρώσετε τον κωδικό
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ο υπολογιστής σας είναι πολύ αργός για να ακολουθήσει το διακομιστή
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ο υπολογιστής σας είναι πολύ αργός για να διατηρήσει συγχρόνιση με τον διακομιστή
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Ο υπολογιστής σας χρειάστηκε πολύ χρόνο για να κατεβάσει τον χάρτη
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Ο υπολογιστής σας χρειάστηκε πολύ χρόνο για να συνδεθεί με τον διακομιστή
 
@@ -2047,7 +2049,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :λάθος έκ
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :το όνομα είναι ήδη σε χρήση
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :λανθασμένος κωδικός
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :λάθος company-id στο DoCommand
-STR_NETWORK_ERROR_CLIENT_KICKED                                 :Εκδιωχθήκατε από το διακομιστή
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :εκδιωχθήκατε από το διακομιστή
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :προσπαθησε να χρησιμοποιησει cheat
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :Διακομιστής γεμάτος
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :στέλνει πάρα πολλές εντολές

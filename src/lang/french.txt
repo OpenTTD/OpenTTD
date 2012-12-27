@@ -1063,6 +1063,14 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Paramètres exp
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Paramètres avec une valeur différente du défaut
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Paramètres avec une valeur différente des paramètres de nouvelle partie
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restreint la liste ci-dessous à certains types de paramètres
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tous les paramètres
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Paramètres du client (n'est pas enregistré dans les sauvegardes{NBSP}; affecte toutes les parties)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Paramètres de jeu (enregistré dans les sauvegardes{NBSP}; affecte uniquement les nouvelles parties)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Paramètres de jeu (enregistrés dans les sauvegardes{NBSP}; affecte uniquement la partie actuelle)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Paramètres de compagnie (enregistrés dans les sauvegardes{NBSP}; affecte uniquement les nouvelles parties)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Paramètres de compagnie (enregistré dans les sauvegardes{NBSP}; affecte uniquement la compagnie actuelle)
+
 STR_CONFIG_SETTING_OFF                                          :Désactivé
 STR_CONFIG_SETTING_ON                                           :Activé
 STR_CONFIG_SETTING_DISABLED                                     :Désactivé
