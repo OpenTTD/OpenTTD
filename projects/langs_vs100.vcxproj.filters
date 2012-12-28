@@ -13,6 +13,9 @@
     <CustomBuild Include="..\src\lang\arabic_egypt.txt">
       <Filter>Translations</Filter>
     </CustomBuild>
+    <CustomBuild Include="..\src\lang\basque.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
     <CustomBuild Include="..\src\lang\belarusian.txt">
       <Filter>Translations</Filter>
     </CustomBuild>
