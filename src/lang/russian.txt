@@ -1515,7 +1515,7 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Воспрои�
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :В конце года: {STRING}
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Воспроизводить звуковой эффект при отображении финансового отчёта компании за прошедшие годы
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Строительство: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Использовать звуковые эффекты при строительстве и подобных действиях
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Воспроизводить звуковые эффекты при завершении строительства и других действий
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Нажатия кнопок: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Воспроизводить звук нажатий на кнопки
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Аварии/катастрофы: {STRING}
@@ -1604,7 +1604,7 @@ STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Показыв�
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Субсидии: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Показывать новости, связанные с субсидиями
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Общая информация: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Показывать общие новости, вроде покупки эксклюзивных транспортных прав или проведениии реконструкции дорог
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Показывать общие новости, вроде покупки эксклюзивных транспортных прав или проведения реконструкции дорог
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Выкл
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Кратко

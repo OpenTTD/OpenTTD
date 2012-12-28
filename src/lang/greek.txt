@@ -2051,8 +2051,8 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :λανθασμ�
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :λάθος company-id στο DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :εκδιωχθήκατε από το διακομιστή
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :προσπαθησε να χρησιμοποιησει cheat
-STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :Διακομιστής γεμάτος
-STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :στέλνει πάρα πολλές εντολές
+STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :διακομιστής γεμάτος
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :έστελνε πάρα πολλές εντολές
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :δεν παραλήφθηκε κωδικός εντός του ορισμένου χρόνου
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :γενικό χρονικό όριο
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :η μεταφόρτωση του χάρτη καθυστέρησε υπερβολικά
@@ -2060,7 +2060,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :η επεξερ
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Πιθανή απώλεια σύνδεσης
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}T{P 0 ο α} {NUM} δευτερόλεπτ{P ο α} κάνενα δεδομένο δεν έχει από το διακομιστή
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}T{P 0 ο α} τελευταί{P 0 ο α} {NUM} δευτερόλεπτ{P ο α} δεν έχουν παραληφθεί καθόλου δεδομένα από τον διακομιστή
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2081,23 +2081,23 @@ STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} σ
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} συμμετέχει στο παιχνίδι (Πελάτης #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} συμμετέχει στην εταιρία #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} συμμετέχει στους θεατές
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ξεκίνησε μια νεα εταιρία (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ξεκίνησε μια νέα εταιρία (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} αποχώρησε από το παιχνίδι ({2:STRING})
-STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} άλλαξε το όνομα του/της σε {STRING}
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} άλλαξαν το όνομά τους σε {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} έδωσε στην εταιρία σας {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Δώσατε {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Ο διακομιστής έκλεισε την συνεδρία
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Ο διακομιστής κάνει επανεκκίνηση...{}Παρακαλώ πολύ...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Ο διακομιστής επανεκκινεί...{}Παρακαλώ περιμένετε...
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Κατέβασμα περιεχόμενου
+STR_CONTENT_TITLE                                               :{WHITE}Περιεχόμενο κατεβαίνει
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Τύπος
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Τύπος περιεχόμενου
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Όνομα
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Το όνομα του περιεχομένου
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Κάντε κλικ σε μια γράμμη για να δείτε λεπτομέριες{} Κάντε κλικ στο κουτάκι για το επιλέξετε για κατέβασμα
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Κάντε κλικ σε μια γραμμή για να δείτε λεπτομέρειες{}Κάντε κλικ στο κουτάκι για το επιλέξετε για κατέβασμα
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Επιλογή όλων
-STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Μαρκάρισμα όλων των περιοχομένων για κατέβασμα
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Μαρκάρισμα όλων των περιεχομένων για κατέβασμα
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Επιλέξτε αναβαθμίσεις
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Μαρκάρισμα όλων των περιεχόμενων που είναι για αναβάθμιση υπάρχωντων περιεχόμενων για κατέβασμα
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Αποεπιλογή όλων

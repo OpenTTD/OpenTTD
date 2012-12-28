@@ -1442,7 +1442,11 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ustawienia eksp
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ustawienie z inną wartością niż domyślna
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ustawienia z wartościami innymi niż twoje ustawienia dla nowej gry
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Ogranicza poniższą listę do pewnych typów ustawień
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Wszystkie ustawienia
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Ustawienia klienta (nie przechowywane w plikach zapisu; wpływa na wszystkie gry)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Ustawienia gry (przechowywane w pliku zapisu; wpływa tylko na nowe gry)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Ustawienia gry (przechowywane w pliku zapisu; wpływa tylko na aktualną grę)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Ustawienia firmy (przechowywane w pliku zapisu; mają wpływ tylko w nowo rozpoczętych grach)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Ustawienia firmy (przechowywane w pliku zapisu; mają wpływ tylko na aktualnie aktywną firmę)
 
@@ -1732,13 +1736,21 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Zachowaj narzę
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Pogrupuj wydatki w oknie finsnasów firmy: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Określa układ okienka wydatków firmy
 
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Odtwarzaj dźwięk dla podsumowania wiadomości
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Gazeta: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Odtwarzaj dźwięk po wyświetleniu gazety
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Koniec roku: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Odtwarzaj dźwięk na koniec roku podsumowując roczne postępy przedsiębiorstwa w porównaniu do roku poprzedniego
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Budowa: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Odtwarzaj efekt dźwiękowy po udanej konstrukcji lub innych czynnościach
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Kliknięcia: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Dźwięk przy kliknięciach
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Wypadki/katastrofy: {STRING}
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Odtwarzaj efekty dźwiękowe wypadków i katastrof
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Pojazdy: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Odtwarzaj efekty dźwiękowe pojazdów
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Odgłosy: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Odtwarzaj dźwięki otoczenia - środowisko, przedsiębiorstwa i miasta
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Zablokuj budowę infrastruktury, kiedy brak odpowiednich pojazdów: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Kiedy włączone, rodzaj infrastruktury jest dostępny tylko wtedy, gdy są dostępne również pojazdy, zapobiegając marnowaniu czasu i pieniędzy na zbędną infrastrukturę
@@ -1791,20 +1803,35 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Zabroń korzyst
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Włączając to ustawienie, nie jest już wymagane elektryfikowanie torów, aby elektrowozy mogły po nich jeździć
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Przybycie pierwszego pojazdu do stacji gracza: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Wyświetl wiadomość w gazecie kiedy pierwszy pojazd dojedzie do stacji gracza
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Przybycie pierwszego pojazdu do stacji przeciwnika: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Wyświetl wiadomość w gazecie kiedy pierwszy pojazd dojedzie do stacji nowego konkurenta
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Wypadki / klęski: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Wyświetl wiadomość w gazecie kiedy zdarzy się wypadek lub nastąpi katastrofa
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informacja firmy: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Wyświetl wiadomość w gazecie kiedy powstaje nowa firma lub kiedy istniejącym firmom grozi bankructwo
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Otwarcie przedsiębiorstw: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Wyświetl wiadomość w gazecie kiedy powstają nowe przedsiębiorstwa
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zamknięcie przedsiębiorstw: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Wyświetl wiadomość w gazecie kiedy przedsiębiorstwa są likwidowane
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Zmiany ekonomiczne: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Wyświetl wiadomość w gazecie o globalbych zmianach ekonomicznych
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Zmiany w produkcji przedsiębiorstw obsługiwanych przez firmę: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Wyświetl wiadomość w gazecie kiedy zmieniają się poziomy produkcji przedsiębiorstw, które są obsługiwane przez firmę
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Zmiany w produkcji przedsiębiorstw obsługiwanych przez przeciwników: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Wyświetl wiadomość w gazecie kiedy zmieniają się poziomy produkcji przedsiębiorstw, które są obsługiwane przez konkurencyjne firmy
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Zmiany w produkcji w pozostałych przedsiębiorstwach: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Wyświetl wiadomość w gazecie kiedy zmieniają się poziomy produkcji przedsiębiorstw, które nie są obsługiwane przez konkurencyjne firmy
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Rada / informacja o pojazdach firmy: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Wyświetl wiadomość o pojazdach wymagających uwagi
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nowe pojazdy: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Wyświetl wiadomość w gazecie o dostępnym nowym typie pojazdu
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Zmiany w akceptowaniu ładunku: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Wyświetl wiadomość o zmianach w akceptowaniu towarów przez stacje
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsydia: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Wyświetl wiadomość w gazecie o wydarzeniach związanych z subsydiami
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Ogólne informacje: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Wyświetl wiadomość w gazecie o wydarzeniach takich jak zakup ekskluzywnych praw lub fundowanie przebudowy dróg
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Wyłączone
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sumaryczne
@@ -1910,6 +1937,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Rywale
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Opcje wyświetlania
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakcja
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efekty dźwiękowe
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Wiadomości
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sygnały
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Obsługa ładunków
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Gracze komputerowi
