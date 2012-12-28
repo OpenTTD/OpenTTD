@@ -472,7 +472,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Χρηματο�
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Κατασκευή σιδηρόδρομου
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Κατασκευή ηλεκτροδοτουμένου σιδηρόδρομου
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Κατασκευή μονόγραμμου
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Κατασκευή MagLev
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Κατασκευή Maglev
 ############ range ends here
 
 ############ range for road construction menu starts

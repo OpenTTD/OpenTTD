@@ -403,7 +403,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fjármagna nýj
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Járnbrautarlestarframkvæmdir
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Rafmagnsteina framkvæmdir
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Einteinungsframkvæmdir
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :MagLev framkvæmdir
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Maglev framkvæmdir
 ############ range ends here
 
 ############ range for road construction menu starts
@@ -1800,7 +1800,7 @@ STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Reisa a
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Járnbrautarlestarframkvæmdir
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Raflestaframkvæmdir
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Einteinungsframkvæmdir
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :MagLev framkvæmdir
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Maglev framkvæmdir
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Leggja lestarteina. Ctrl velur byggja/fjarlægja fyrir lestarframkvæmdir
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Leggja lestarteina í Sjálvirkiteina ham. Ctrl velur byggja/farjlæga fyrir lestarframkvæmdir

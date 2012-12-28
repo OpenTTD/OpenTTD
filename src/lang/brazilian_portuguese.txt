@@ -2090,7 +2090,7 @@ STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Constru
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construir ferrovias
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construir ferrovias (elétricas)
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construir ferrovias (monotrilho)
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construir ferrovias MagLev
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construir ferrovias Maglev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir ferrovias. Ctrl alterna entre construção/remoção de trilhos. Shift altera construção/preço estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir ferrovias usando o modo Autotrilho. Ctrl alterna entre construção/remoçao de trilhos. Shift altera construção/preço estimado
@@ -3079,7 +3079,7 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomear
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Novos Veículos Ferroviários
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nova Locomotiva Elétrica
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nova Locomotiva Monotrilho
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nova Locomotiva MagLev
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nova Locomotiva Maglev
 
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Trens
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Novos Automóveis
