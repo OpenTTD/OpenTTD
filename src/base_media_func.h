@@ -137,12 +137,16 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 		switch (T::CheckMD5(file, BASESET_DIR)) {
 			case MD5File::CR_MATCH:
 				this->valid_files++;
-				/* FALL THROUGH */
+				this->found_files++;
+				break;
+
 			case MD5File::CR_MISMATCH:
+				DEBUG(grf, 1, "MD5 checksum mismatch for: %s (in %s)", filename, full_filename);
 				this->found_files++;
 				break;
 
 			case MD5File::CR_NO_FILE:
+				DEBUG(grf, 1, "The file %s specified in %s is missing", filename, full_filename);
 				break;
 		}
 	}
@@ -180,7 +184,8 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length,
 			/* The more complete set takes precedence over the version number. */
 			if ((duplicate->valid_files == set->valid_files && duplicate->version >= set->version) ||
 					duplicate->valid_files > set->valid_files) {
-				DEBUG(grf, 1, "Not adding %s (%i) as base " SET_TYPE " set (duplicate)", set->name, set->version);
+				DEBUG(grf, 1, "Not adding %s (%i) as base " SET_TYPE " set (duplicate, %s)", set->name, set->version,
+						duplicate->valid_files > set->valid_files ? "less valid files" : "lower version");
 				set->next = BaseMedia<Tbase_set>::duplicate_sets;
 				BaseMedia<Tbase_set>::duplicate_sets = set;
 			} else {
@@ -195,7 +200,8 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length,
 				 * version number until a new game is started which isn't a big problem */
 				if (BaseMedia<Tbase_set>::used_set == duplicate) BaseMedia<Tbase_set>::used_set = set;
 
-				DEBUG(grf, 1, "Removing %s (%i) as base " SET_TYPE " set (duplicate)", duplicate->name, duplicate->version);
+				DEBUG(grf, 1, "Removing %s (%i) as base " SET_TYPE " set (duplicate, %s)", duplicate->name, duplicate->version,
+						duplicate->valid_files < set->valid_files ? "less valid files" : "lower version");
 				duplicate->next = BaseMedia<Tbase_set>::duplicate_sets;
 				BaseMedia<Tbase_set>::duplicate_sets = duplicate;
 				ret = true;
