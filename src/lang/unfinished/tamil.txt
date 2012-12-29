@@ -676,21 +676,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}சம�
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}செய்தி
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :நிறுத்து
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :தொகுப்பு
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :முழு
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :விளையாடுபவரின் நிலையத்திற்கு முதல் வாகனம் வருகை புரிந்தது: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :போட்டியாளரின் நிலையத்திற்கு முதல் வாகனம் வருகை புரிந்தது: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :விபத்துகள் / பேரழிவுகள்: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :நிறுவனத்தின் விவரம்: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :தொழிற்சாலைகளின் திறப்பு: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :தொழிற்சாலைகளின் மூடல்: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :பொருளாதார மாற்றங்கள்: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :புதிய வாகனங்கள்: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :மானியங்கள்: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :பொதுவான விவரம்: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}மக்கள் கொண்டாடுகிறார்கள் . . .{}முதல் இரயில் {STATION} வந்தது!
@@ -967,6 +952,7 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :அடிப்
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :சிறப்பு அமைப்புகள்
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :அதிக / அனைத்து அமைப்புகள்
 
+
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On
 STR_CONFIG_SETTING_DISABLED                                     :செயலிழக்க செய்யப்பட்டது
@@ -1049,6 +1035,7 @@ STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :விண்ட
 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :அதிகமாக பயன்படுத்தியவை
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :தகுந்த வாகனம் இல்லாதபோது Disable infrastructure building: {STRING}
 
 
@@ -1056,6 +1043,21 @@ STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :தகுந்
 
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} நாள்{P "நாள்" நாட்கள்}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :செயலிழக்க செய்யப்பட்டது
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :விளையாடுபவரின் நிலையத்திற்கு முதல் வாகனம் வருகை புரிந்தது: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :போட்டியாளரின் நிலையத்திற்கு முதல் வாகனம் வருகை புரிந்தது: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :விபத்துகள் / பேரழிவுகள்: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :நிறுவனத்தின் விவரம்: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :தொழிற்சாலைகளின் திறப்பு: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :தொழிற்சாலைகளின் மூடல்: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :பொருளாதார மாற்றங்கள்: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :புதிய வாகனங்கள்: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :மானியங்கள்: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :பொதுவான விவரம்: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :நிறுத்து
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :தொகுப்பு
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :முழு
 
 STR_CONFIG_SETTING_STARTING_YEAR                                :தொடங்கும் வருடம்: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :அனைத்தும்
@@ -2628,6 +2630,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}மூ�
 # Soundset messages
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}திரைபிடிப்பு வெற்றிகரமாக '{STRING}' என பதிவு செய்யப்பட்டது
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}திரைபிடிப்பு தோல்வியடைந்தது!
 

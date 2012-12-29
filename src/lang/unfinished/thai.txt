@@ -726,26 +726,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}รา�
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}ข้อความ
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :ปิด
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :แสดงข้อความในแถบเลื่อน
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :แสดงข้อความแบบเต็ม
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :เมื่อมียานยนต์แรกมาถึงสถานีของผู้เล่น: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :เมื่อมียานยนต์แรกมาถึงสถานีของคู่แข่ง: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :อุบัติเหตุ / อุบัติภัย: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :ข้อมูลข่าวสารของบริษัท: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :การเปิดตัวของอุตสาหกรรม: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :การปิดตัวของอุตสาหกรรม: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :การเปลี่ยนแปลงทางเศรษฐกิจ: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :ผลผลิตที่ส่งออกให้บริษัทของเรา: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :ผลผลิตที่ส่งออกให้บริษัทคู่แข่ง: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :อุตสาหกรรมอื่นๆต้องการแลกเปลี่ยนสินค้า: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :คำแนะนำ / ข้อมูลเกี่ยวกับยานยนต์ของบริษัท: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :ยานยนต์ใหม่ๆ: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :การเปลี่ยนแปลงการรับสินค้า: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :โครงการที่มีงบประมาณสนับสนุน: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :ข้อมูลทั่วไป: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}ผู้คนต่างยินดี . . .{}รถไฟขบวนแรกเทียบชานชาลาที่ {STATION}!
@@ -1056,6 +1036,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}ไม�
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}ปรับแต่งเพิ่มเติม
 
 
+
 STR_CONFIG_SETTING_OFF                                          :ปิด
 STR_CONFIG_SETTING_ON                                           :เปิด
 STR_CONFIG_SETTING_DISABLED                                     :ไม่ให้เรียกใช้งาน
@@ -1205,6 +1186,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :แสดงร
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :ให้คงการแสดงเครื่องมือการสร้างหลังการใช้: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :จัดกลุ่มรายจ่ายในหน้าต่างการเงินของบริษัท: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :ปิดการใช้งานในส่วนของสิ่งปลูกสร้างสาธารณูปโภคเมื่อไม่มียานพาหนะที่เหมาะสม: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :ขบวนรถไฟมากที่สุดต่อผู้เล่น: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :ยานพาหนะมากที่สุดต่อผู้เล่น: {STRING}
@@ -1224,6 +1206,26 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :ระยะเ
 STR_CONFIG_SETTING_NOSERVICE                                    :ไม่ใช้งานการซ่อมบำรุงเมื่อตั้งเป็นไม่มีการขัดข้อง: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :เปิดใช้งานการจำกัดความเร็วของคันบรรทุก: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :ไม่ยอมให้มีรางไฟฟ้า: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :เมื่อมียานยนต์แรกมาถึงสถานีของผู้เล่น: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :เมื่อมียานยนต์แรกมาถึงสถานีของคู่แข่ง: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :อุบัติเหตุ / อุบัติภัย: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :ข้อมูลข่าวสารของบริษัท: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :การเปิดตัวของอุตสาหกรรม: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :การปิดตัวของอุตสาหกรรม: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :การเปลี่ยนแปลงทางเศรษฐกิจ: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :ผลผลิตที่ส่งออกให้บริษัทของเรา: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :ผลผลิตที่ส่งออกให้บริษัทคู่แข่ง: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :อุตสาหกรรมอื่นๆต้องการแลกเปลี่ยนสินค้า: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :คำแนะนำ / ข้อมูลเกี่ยวกับยานยนต์ของบริษัท: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :ยานยนต์ใหม่ๆ: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :การเปลี่ยนแปลงการรับสินค้า: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :โครงการที่มีงบประมาณสนับสนุน: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :ข้อมูลทั่วไป: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :ปิด
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :แสดงข้อความในแถบเลื่อน
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :แสดงข้อความแบบเต็ม
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :ข่าวที่เป็นสีปรากฎในปี: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :ปีที่เริ่มต้น: {STRING}
@@ -2715,6 +2717,7 @@ STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... ภ�
 # Soundset messages
 
 # Screenshot related messages
+
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}ข้อความ

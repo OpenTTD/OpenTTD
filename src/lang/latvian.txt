@@ -731,26 +731,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Neseno z
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Ziņojums
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Izslēgts
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Kopsavilkums
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pilns
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Spēlētaja stacijā ierodas pirmais transportlīdzeklis: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Sāncenša stacijā ierodas pirmais transportlīdzeklis: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Negadījumi / katastrofas: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Uzņēmuma informācija: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Ražotņu atklāšana: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Ražotņu slēgšana: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomikas izmaiņas: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Ražošanas izmaiņas uzņēmuma apkalpotajās ražotnēs: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Ražošanas izmaiņas sāncenšu apkalpotajās ražotnēs: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Citas ražošanas apjomu izmaiņas: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Padomi / informācija par uzņēmuma transportlīdzekļiem: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Jauni transportlīdzekļi: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Izmaiņas kravu pieņemšanā: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsīdijas: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Vispārējā informācija: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Pilsētnieki līksmo . . .{}Pirmais vilciens ierodas {STATION}!
@@ -1084,6 +1064,14 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Lietpratēju ie
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Iestatījumi ar atšķirīgu vērtību nekā noklusējuma
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Iestatījumi ar atšķirīgu vērtību nekā jūsu jaunajai spēlei
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Ierobežo zemāk esošo sarakstu ar noteiktiem iestatījumu veidiem
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Visi iestatījumi
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Klienta programmas iestatījumi (netiek iekļauti saglabājumos, ietekmē visas spēles)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spēles iestatījumi (tiek iekļauti saglabājumos, ietekmē tikai jaunās spēles)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spēles iestatījumi (tiek iekļauti saglabājumā, ietekmē tikai pašreizējo spēli)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Uzņēmuma iestatījumi (tiek iekļauti saglabājumos, ietekmē tikai jaunās spēles)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Uzņēmuma iestatījumi (tiek iekļauti saglabājumā, ietekmē tikai pašreizējo uzņēmumu)
+
 STR_CONFIG_SETTING_OFF                                          :izslēgts
 STR_CONFIG_SETTING_ON                                           :ieslēgts
 STR_CONFIG_SETTING_DISABLED                                     :atspējots
@@ -1100,8 +1088,17 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :pa kreisi
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centrā
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :pa labi
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimālais sākotnējais aizdevums: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE                                :Procentu likme: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Kārtējās izmaksas: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Būvēšanas ātrums: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Transportlīdzekļu bojāšanās: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsīdiju reizinātājs: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Būvēšanas izmaksas: {STRING}
+STR_CONFIG_SETTING_RECESSIONS                                   :Lejupslīde: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Neatļaut vilcienu apgriešanos stacijās: {STRING}
+STR_CONFIG_SETTING_DISASTERS                                    :Katastrofas: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Pilsētu domju attieksme pret platības pārstrukturēšanu: {STRING}
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Atļaut būvēt nogāzēs un piekrastēs: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ja ieslēgts, ceļus un stacijas var būvēt uz vairums nogāzēm. Ja izslēgts, tas ir atļauts tikai uz ceļu virzienam atbilstošām nogāzēm un tādēļ nav nepieciešami ieguldījumi
@@ -1290,6 +1287,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :ritināt karti
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :izslēgts
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Peles ritenīša ātrums: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Vadīt peles ritenīša ritināšanas jutīgumu
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Ekrāntastatūra: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :atspējota
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :dubultklikšķis
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :viens klikšķis (kad fokusēta)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :viens klikšķis (nekavējoties)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Labā klikšķa emulēšana: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Izvēlēties peles labās pogas klikšķu emulēšanas paņēmienu
@@ -1339,6 +1341,16 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Pēc lietošana
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupēt izdevumu sadaļas uzņēmuma finanšu informācijas logā: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Noteikt uzņēmuma izdevumu loga izkārtojumu
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Jaunumu josla: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Avīze: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Gada beigas: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Būvniecība: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Pogu klikšķi: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Skan signāls, kad noklikšķina uz pogas
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastrofas/negadījumi: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Transportlīdzekļi: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Apkārtne: {STRING}
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Atspējot infrastruktūras būvēšanu, ja nav piemērotu transportlīdzekļu: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ja ieslēgts, infrastruktūra ir pieejama tikai tad, ja tur ir pieejami arī transportlīdzekļi, novēršot laika un naudas izšķiešanu par nelietojamu infrastruktūru
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maksimālais vilcienu skaits uzņēmumā: {STRING}
@@ -1379,12 +1391,32 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Lidaparātu apk
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Izvēlēties jauniem lidaparātiem apkopju noklusējuma starplaiku, ja transportlīdzeklim tas nav noteikts
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Kuģu apkopju noklusējuma starplaiks: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Izvēlēties jauniem kuģiem apkopju noklusējuma starplaiku, ja transportlīdzeklim tas nav noteikts
-STR_CONFIG_SETTING_NOSERVICE                                    :Aizliegt apkopi, kad sabojāšanās ir izslēgta: {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :Aizliegt apkopi, kad bojāšanās ir izslēgta: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ja ieslēgts, transportlīdzekļiem netiek veikta apkope. Jo tie nebojājas
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ieslēgt vagonu ātruma ierobežojumus: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ja ieslēgts, var izmantot vagonu ātruma ierobežojumus, lai lemtu par vilcienu maksimālo ātrumu
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Atspējot elektrificēto dzelzceļu: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Šī iestatījuma ieslēgšana atcels ceļu elektrifikācijas prasību, lai pa tiem varētu pārvietoties elektrolokomotīves
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Spēlētaja stacijā ierodas pirmais transportlīdzeklis: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Sāncenša stacijā ierodas pirmais transportlīdzeklis: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Negadījumi / katastrofas: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Uzņēmuma informācija: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Ražotņu atklāšana: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Ražotņu slēgšana: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomikas izmaiņas: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Ražošanas izmaiņas uzņēmuma apkalpotajās ražotnēs: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Ražošanas izmaiņas sāncenšu apkalpotajās ražotnēs: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Citas ražošanas apjomu izmaiņas: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Padomi / informācija par uzņēmuma transportlīdzekļiem: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Jauni transportlīdzekļi: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Izmaiņas kravu pieņemšanā: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsīdijas: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Vispārējā informācija: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :izslēgts
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :kopsavilkums
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :pilns
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Krāsaini avīžu raksti parādās: {STRING} gadā
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Gads kad sāk drukāt krāsainas avīzes. Pirms šā gada tās ir melnbaltas
@@ -1483,6 +1515,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Sāncenši
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Ekrāna opcijas
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Mijiedarbība
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Skaņas efekti
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Avīžu raksti un ziņojumi
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signāli
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Kravu pārvietošana
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nespēlētāju tēli (datora vadīti)
@@ -3789,6 +3823,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Nav iet
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Atrasts tikai iestrādātais skaņu komplekts. Ja vēlaties skaņas, instalējiet komplektu no satura lejupielādes sistēmas
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Ekrānuzņēmums veiksmīgi saglabāts kā '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekrānuzņēmums neizdevās!
 

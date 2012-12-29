@@ -879,26 +879,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Seznam z
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Sporočilo
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Izključeno
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Povzetek
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Polno
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Prihod prvega vozila na igralčevo postajo: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Prihod prvega vozila na nasprotnikovo postajo: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Nesreče / katastrofe: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informacije o podjetju: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Odpiranje industrij: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zapiranje industrij: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomske spremembe: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Sprememba proizvodnje industrij v oskrbi podjetja: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Proizvodne spremembe industrij v oskrbi tekmecev: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Spremembe proizvodnje drugih industrij: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Nasveti / informacije o vozilih podjetja: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nova vozila: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Spremebe v sprejemanju tovora: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencije: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Splošne Informacije: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Prebivalci praznujejo . . .{}Prvi vlak je slovesno pripeljal{}na postajo {STATION}!
@@ -1213,6 +1193,7 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredne
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ni razpoložljive razlage)
 
 
+
 STR_CONFIG_SETTING_OFF                                          :Izklopi
 STR_CONFIG_SETTING_ON                                           :Vklopi
 STR_CONFIG_SETTING_DISABLED                                     :onemogočeno
@@ -1460,6 +1441,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Ohrani orodja z
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Prikaži stroške v tabeli financ po skupinah: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definiraj obliko za okno stroškov podjetja
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Onemogoči infrastrukurno stavbo, če ni na voljo nobenih ustreznih vozil: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Če je omogočeno, je samo v primeru vozil na razpolago vidna infrastruktura, za preprečevanje vlaganja časa in denarja v neuporabno infrastrukturo.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Največ vlakov na podjetje: {STRING}
@@ -1504,6 +1486,26 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Omogoči omejit
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Če je omogočeno, se upošteva tudi omejitve hitrosti posameznih vagonov pri najvišji hitrosti vlaka.
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Onemogoči električne tire: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Če je omogočeno, ni potrebna elektrifikacija železnice za električni pogon.
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Prihod prvega vozila na igralčevo postajo: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Prihod prvega vozila na nasprotnikovo postajo: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Nesreče / katastrofe: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informacije o podjetju: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Odpiranje industrij: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zapiranje industrij: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomske spremembe: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Sprememba proizvodnje industrij v oskrbi podjetja: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Proizvodne spremembe industrij v oskrbi tekmecev: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Spremembe proizvodnje drugih industrij: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Nasveti / informacije o vozilih podjetja: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nova vozila: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Spremebe v sprejemanju tovora: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencije: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Splošne Informacije: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Izključeno
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Povzetek
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Polno
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Barvni časopis se pojavi leta: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Leto začetka barvnega časopisa. Pred tem je črno-bel.
@@ -3891,6 +3893,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Preveli
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Samo rezerven zvočni komplet je bil najden. Če želiš zvok, namesti zvočni komplet preko sistema prenosov
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Slika je uspešno zajeta kot {} '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Zajemanje slike ni uspelo!!!
 

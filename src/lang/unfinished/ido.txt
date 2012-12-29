@@ -441,8 +441,6 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Sendajo
 
 
 
-
-
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
@@ -522,6 +520,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Kustumigita ({N
 
 
 
+
 STR_CONFIG_SETTING_NONE                                         :Nulo
 
 
@@ -535,6 +534,9 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verda
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Obskur-verda
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
+
+
+
 
 
 
@@ -1130,6 +1132,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 # Soundset messages
 
 # Screenshot related messages
+
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Sendajo

@@ -724,26 +724,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Liosta d
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Teachtaireacht
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :As
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Achoimre
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Iomlán
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Tagann an chéad fheiticil isteach i stáisiún imreora: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Tagann an chéad fheithicil isteach i stáisiún iomaitheora: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Timpistí / tubaistí: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Faisnéis cuideachta: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Tionscail ag oscailt: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Tionscail ag dúnadh: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Athruithe sa gheilleagar: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Athruithe sa táirgeadh i measc tionscail a mbíonn an chuideachta ag freastal orthu: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Athruithe sa táirgeadh i measc tionscail a mbíonn iomaitheoir(í) ag freastal orthu: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Athruithe eile i dtáirgeadh tionscail: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Comhairle / faisnéis maidir le feithiclí na cuideachta: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Feithiclí nua: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Athruithe ar an lastas a nglactar leis: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Fordheontais: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Faisnéis ginearálta: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Saoránaigh ag ceiliúradh . . .{}Tagann an chéad traein isteach ag {STATION}!
@@ -1053,6 +1033,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Níl aon
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ardsocruithe
 
 
+
 STR_CONFIG_SETTING_OFF                                          :As
 STR_CONFIG_SETTING_ON                                           :Air
 STR_CONFIG_SETTING_DISABLED                                     :díchumasaithe
@@ -1201,6 +1182,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Taispeáin iarn
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Fág uirlisí tógála gníomhach i ndiaidh úsáide: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Speansais an ghrúpa i bhfuinneog airgeadais cuideachta: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Díchumasaigh tógáil bonneagair nuair nach bhfuil aon fheithicil oiriúnach ar fáil: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Uaslíon na dtraenacha in aghaidh na cuideachta: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Uaslíon na bhfeithiclí bóthair in aghaidh na cuideachta: {STRING}
@@ -1219,6 +1201,26 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Eatraimh seirbh
 STR_CONFIG_SETTING_NOSERVICE                                    :Díchumasaigh seirbhísiú nuair nach mbíonn aon bhriseadh síos: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Cumasaigh teorainneacha luais vaigíní: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Díchumasaigh ráillí leictreacha: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Tagann an chéad fheiticil isteach i stáisiún imreora: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Tagann an chéad fheithicil isteach i stáisiún iomaitheora: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Timpistí / tubaistí: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Faisnéis cuideachta: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Tionscail ag oscailt: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Tionscail ag dúnadh: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Athruithe sa gheilleagar: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Athruithe sa táirgeadh i measc tionscail a mbíonn an chuideachta ag freastal orthu: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Athruithe sa táirgeadh i measc tionscail a mbíonn iomaitheoir(í) ag freastal orthu: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Athruithe eile i dtáirgeadh tionscail: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Comhairle / faisnéis maidir le feithiclí na cuideachta: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Feithiclí nua: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Athruithe ar an lastas a nglactar leis: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Fordheontais: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Faisnéis ginearálta: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :As
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Achoimre
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Iomlán
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Bíonn nuacht daite ann don chéad uair in: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Bliain tosaigh: {STRING}
@@ -3372,6 +3374,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ní mho
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Níor aimsíodh ach sraith fuaimeanna tacachumais. Má tá fuaimeanna uait, suiteáil sraith fuaimeanna sa chóras íoslódála inneachair.
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Sábháladh an seat scáileáin mar '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Theip ar an seat scáileáin!
 

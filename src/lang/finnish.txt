@@ -1367,11 +1367,11 @@ STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Toista äänief
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Painikkeiden klikkaus: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Piippaa klikattaessa painikkeita
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Vahingot/onnettomuudet: {STRING}
-STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Toista vahinkojen ja onnettomuuksien ääniä
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Toista vahinkojen ja onnettomuuksien äänet
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Ajoneuvot: {STRING}
-STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Toista ajoneuvojen ääniä
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Toista ajoneuvojen äänet
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ympäristö: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Toista ympäristön, kuten maaston, teollisuuden ja kaupunkien ääniä
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Toista ympäristön, kuten maaston, teollisuuden ja kaupunkien äänet
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Poista käytöstä infrastruktuurin rakennus kun sopivia kulkuneuvoja ei ole saatavilla: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Mikäli käytössä, infrastruktuuri on saatavilla vain jos sille on saatavilla kulkuneuvoja, välttäen ajan ja rahan tuhlaamisen infrastruktuuriin, jota ei voida käyttää
@@ -1430,7 +1430,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Näytä sanomal
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Vahingot/onnettomuudet: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Näytä sanomalehti vahingon tai onnettomuuden sattuessa
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Yhtiön tiedot: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Näytä sanomalehti kun uusi yhtiö aloittaa toimintansa ja yhtiöiden ollessa lähellä konkurssia
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Näytä sanomalehti kun uusi yhtiö aloittaa toimintansa tai kun jokin yhtiö on lähellä konkurssia
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Uutta teollisuutta: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Näytä sanomalehti uusien teollisuuslaitosten avautuessa
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Lakkautettavaa teollisuutta: {STRING}

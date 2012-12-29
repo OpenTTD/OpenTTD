@@ -727,26 +727,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}'n Lys v
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Boodskap
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Af
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Opsomming
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Vol
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Aankoms van eerste voertuig by speler se stasie: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Aankoms van eerste voertuig by mededinger se stasie: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ongelukke / rampe: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Maatskappy informasie: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Opening van industrieë: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Toemaak van industrieë: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomie veranderings: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Verandering in produksie van industrieë voorsien deur die maatskapy: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produksie veranderings van nywerhede wat deur mededingers bedien word: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Ander nywerheid produksie veranderings: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Advies / informasie van maatskappy se voertuie: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nuwe voertuie: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Veranderings van vrag aanvaarding: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidies: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Algemene informasie: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Burgers vier fees . . .{}Eerste trein arriveer by {STATION}!
@@ -1071,6 +1051,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Maatskappy inst
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Vertoon:
 
+
 STR_CONFIG_SETTING_OFF                                          :Af
 STR_CONFIG_SETTING_ON                                           :Aan
 STR_CONFIG_SETTING_DISABLED                                     :gedeaktiveer
@@ -1306,6 +1287,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Wys gereserveer
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Hou bou gereedskap aktief na gebruik: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Groep uitgawes in maatskappy finansies venster: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Deaktiveer infrastruktuur bouery as geen geskikte voertuie beskikbaar is nie: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Max treine per speler: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimum hoeveelheid treine was 'n besigheid kan hê
@@ -1336,6 +1318,26 @@ STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standaard diens
 STR_CONFIG_SETTING_NOSERVICE                                    :Sper diens wanneer komplikasies is na geen gestel: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Laat wa spoed beperkings toe: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiveer elektriese spoore: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Aankoms van eerste voertuig by speler se stasie: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Aankoms van eerste voertuig by mededinger se stasie: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ongelukke / rampe: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Maatskappy informasie: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Opening van industrieë: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Toemaak van industrieë: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomie veranderings: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Verandering in produksie van industrieë voorsien deur die maatskapy: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produksie veranderings van nywerhede wat deur mededingers bedien word: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Ander nywerheid produksie veranderings: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Advies / informasie van maatskappy se voertuie: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nuwe voertuie: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Veranderings van vrag aanvaarding: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidies: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Algemene informasie: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Af
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Opsomming
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Vol
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Gekleurde nuus verskyn in: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Jaar om te begin: {STRING}
@@ -3718,6 +3720,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Om die 
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Kon slegs 'n nood klank stel op spoor. Gaan na 'Aanlyn Inhoud' om klank stelle af te laai
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skermkiekie suksesvol gestoor as '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Skermskoot het misluk!
 

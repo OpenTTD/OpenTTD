@@ -725,26 +725,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}רשימ
 STR_MESSAGE_NEWS_FORMAT                                         :{1:STRING}  -  {0:STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}הודעה
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :כבוי
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :תמצית
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :מלא
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :הגעה של כלי תחבורה ראשון לתחנה של השחקן: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :הגעת כלי תחבורה ראשון לתחנה של מתחרה: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :תאונות / אסונות: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :מידע על החברה: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :פתיחת תעשיות: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :סגירת תעשיות: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :שינויים בכלכלה: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :שינויים ביצור של תעשיות בשירות החברה: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :שינויים ביצור של תעשיות בשירות המתחרה/ים: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :שינויים ביצור תעשיה אחרת: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :עיצות/מידע על כלי רכב של החברה: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :דגמים חדשים: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :שינויים במטענים המתקבלים: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :סובסידיות: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :מידע כללי: {STRING}
-
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}התושבים חוגגים . . .{}רכבת ראשונה הגיעה ל{STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}תושבים חוגגים . . .{}אוטובוס ראשון הגיע ל{STATION}!
@@ -1047,6 +1027,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}אין �
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}הגדרות מתקדמות
 
 
+
 STR_CONFIG_SETTING_OFF                                          :כבוי
 STR_CONFIG_SETTING_ON                                           :דלוק
 STR_CONFIG_SETTING_DISABLED                                     :מבוטל
@@ -1180,6 +1161,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{STRING} :הד�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{STRING}: שמור על כלי הבנייה פעילים לאחר השימוש
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{STRING} : קבץ הוצאות בחלון הכספים של החברה
 
+
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{STRING} :מספר רכבות מירבי לשחקן
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{STRING} :מספר משאיות/אוטובוסים מירבי לשחקן
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{STRING} :מספר כלי טייס מירבי לשחקן
@@ -1197,6 +1179,26 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{STRING} :הצ�
 STR_CONFIG_SETTING_NOSERVICE                                    :{STRING} :בטל טיפולים כאשר האפשרות לביטול תקלות נבחרה
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{STRING} :אפשר הגבלת מהירות עבור קרונות רכבת
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{STRING} : בטל פסים חשמליים
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :הגעה של כלי תחבורה ראשון לתחנה של השחקן: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :הגעת כלי תחבורה ראשון לתחנה של מתחרה: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :תאונות / אסונות: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :מידע על החברה: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :פתיחת תעשיות: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :סגירת תעשיות: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :שינויים בכלכלה: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :שינויים ביצור של תעשיות בשירות החברה: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :שינויים ביצור של תעשיות בשירות המתחרה/ים: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :שינויים ביצור תעשיה אחרת: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :עיצות/מידע על כלי רכב של החברה: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :דגמים חדשים: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :שינויים במטענים המתקבלים: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :סובסידיות: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :מידע כללי: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :כבוי
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :תמצית
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :מלא
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{STRING} :הצג חדשות צבעוניות החל משנת
 STR_CONFIG_SETTING_STARTING_YEAR                                :{STRING} :שנת התחלה
@@ -3272,6 +3274,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}?שינ
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}נמצאה ערכת צלילים לגיבוי בלבד. אם ברצונך לשמוע צלילים במשחק, יש להתקין ערכת צלילים בעזרת מערכת הורדת תוכן.
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}תמונת המסך נשמרה בהצלחה כ-'{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}!לא יכול ליצור תמונה
 

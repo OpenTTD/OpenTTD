@@ -720,26 +720,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}In list 
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Berjocht
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Ut
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Gearfetting
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Folslein
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Oankomst fan earste reau op stasjon fan spyler: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Oankomst fan earste reau op stasjon fan tsjinstander: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ûngelokken / rampen: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Bedriuws ynformaasje: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Iepenje fan yndustryen: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Slute fan yndustryen: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Feroarings yn 'e ekonomie: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produksjeferoarings fan yndustryen betsjinne troch it bedriuw: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produksjeferoarings fan yndustryen betsjinne troch konkurrint(en): {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Produksjeferoarings oare yndustryen: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Advys / ynformaasje oer bedriuws reauen: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nije reauen: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Feroarings yn akseptearje fan fracht: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsydzjes: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Algemiene ynformaasje: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Ynwenners fiere feest . . .{}Earste trein komt oan yn {STATION}!
@@ -1045,6 +1025,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Gjin br�
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avansearre ynstellings
 
 
+
 STR_CONFIG_SETTING_OFF                                          :út
 STR_CONFIG_SETTING_ON                                           :oan
 STR_CONFIG_SETTING_DISABLED                                     :utskeakele
@@ -1189,6 +1170,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Lit reservearre
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :lit bouark akttyf nei gebrûk: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Groepearje útjefte yn bedriuwsfinânsjesskerm: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Ynfrastruktuer bouwurk stilsette wannear't gjin geskikte reau beskikber binne: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maksimum oantal treinen per bedriuw: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maksimum oantal auto's per bedriuw: {STRING}
@@ -1207,6 +1189,26 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :reperaasje skem
 STR_CONFIG_SETTING_NOSERVICE                                    :Gjin ûnderhald as stikken gean út steat: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Wagon snelheids limiet: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :skeakelje elektryske spoaren út: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Oankomst fan earste reau op stasjon fan spyler: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Oankomst fan earste reau op stasjon fan tsjinstander: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ûngelokken / rampen: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Bedriuws ynformaasje: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Iepenje fan yndustryen: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Slute fan yndustryen: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Feroarings yn 'e ekonomie: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produksjeferoarings fan yndustryen betsjinne troch it bedriuw: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produksjeferoarings fan yndustryen betsjinne troch konkurrint(en): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Produksjeferoarings oare yndustryen: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Advys / ynformaasje oer bedriuws reauen: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nije reauen: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Feroarings yn akseptearje fan fracht: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsydzjes: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Algemiene ynformaasje: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Ut
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Gearfetting
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Folslein
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Krante verskient yn kleur yn: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Begjin jier: {STRING}
@@ -2470,6 +2472,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<net beskikber>
 # Soundset messages
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skermfoto opslein as '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Koe gjin skermfoto meitsje!
 

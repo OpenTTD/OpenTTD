@@ -700,26 +700,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Unha lis
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mensaxe
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Apagado
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sumario
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Chegada do 1º vehículo a estación do xogador: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Chegada do 1º vehículo a estación dun oponente: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidentes / desastres: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Información da compañía: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Apertura de industrias: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Pecha unha industria: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Cambios económicos: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Cambios de producción nas industrias servidas pola compañía: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Cambios na producción das industrias servidas polos competidores: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Cambios de producción doutras industrias: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Consello / información acerca dos vehículos da compañía: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Novos vehículos: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Cambios na admisión de carga: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidios: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Información xeral: {STRING}
-
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Celebración cidadá . . .{}Chega o primeiro tren a {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Celebración cidadá . . .{}¡Chega o primeiro autobús a {STATION}!
@@ -1018,6 +998,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Opcións Avanzadas
 
 
+
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On
 STR_CONFIG_SETTING_DISABLED                                     :deshabilitado
@@ -1145,6 +1126,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último dispoñ
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Máis usado
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostra-las vías reservadas: {STRING}
 
+
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Nº máximo de trens por xogador: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Nº máximo de vehículos de estrada por xogador: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Nº máximo de avións por xogador: {STRING}
@@ -1162,6 +1144,26 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervalos de s
 STR_CONFIG_SETTING_NOSERVICE                                    :Deshabilita-lo servizo cando as roturas están a ningún: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activa-los límites de velocidade dos vagóns: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactivar vías electrificadas: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Chegada do 1º vehículo a estación do xogador: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Chegada do 1º vehículo a estación dun oponente: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidentes / desastres: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Información da compañía: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Apertura de industrias: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Pecha unha industria: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Cambios económicos: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Cambios de producción nas industrias servidas pola compañía: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Cambios na producción das industrias servidas polos competidores: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Cambios de producción doutras industrias: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Consello / información acerca dos vehículos da compañía: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Novos vehículos: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Cambios na admisión de carga: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidios: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Información xeral: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Apagado
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sumario
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Data de aparición das noticias en cor: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Data de comezo: {STRING}
@@ -3193,6 +3195,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Non se 
 # Soundset messages
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de pantalla grabada con éxito no disco como '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}¡Captura de pantalla fallida!
 

@@ -320,7 +320,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}معلو
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}بدل صف الادوات
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}حفظ/فتح/خروج من محرر الخرائط
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}حفظ, فتح, خروج من محرر الخرائط
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}النسخة المفتوحة
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}محرر الخريطة
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}العودة بتاريخ البدأ سنة واحدة
@@ -725,26 +725,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}قائم
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}رسالة
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :اغلاق
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :ملخص
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :ممتلئ
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :وصول اول مركبة لمحطة اللاعب: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :وصول اول مركبة لمحطة الخصوم: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :الحوادث/الأزمات: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :معلومات الشركة: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :تشغيل مصنع جديد: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :اغلاق مصنع: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :التغيرات الأقتصادية: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :تغير في انتاج مصنع مشمول بخدمات الشركة: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :تغير في انتاج مصنع مشمول بخدمات الشركات الأخرى: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :تغير انتاج المصانع الأخرى: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :نصائح/ معلومات حول مركبات الشركة: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :المركبات الجديدة: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :تغييرات قبول الشحن: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :العروض: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :معلومات عامة: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK} ... المواطنون يحتفلون{} اول قطار وصل في {STATION}!
@@ -1055,6 +1035,14 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}لايو
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}الاعدادات المتقدمة
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}احصر القائمة على انواع اعدادات محددة
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :كل الاعدادات
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :اعدادات العميل (غير مخزن في المحفوظات, يؤثر على كل الالعاب)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :اعدادات اللعبة (مخزن في المحفوظات, يؤثر على الالعاب الجديدة فقط)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :اعدادات اللعبة (مخزن في المحفوظات, يؤثر على اللعبة الحالية فقط)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :اعدادات الشركة (مخزن في المحفوظات, يؤثر على الالعاب الجديدة فقط)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :اعدادات الشركة (مخزن في المحفوظات: يؤثر على الشركة الحالية فقط)
+
 STR_CONFIG_SETTING_OFF                                          :قفل
 STR_CONFIG_SETTING_ON                                           :فتح
 STR_CONFIG_SETTING_DISABLED                                     :غير مفعل
@@ -1077,10 +1065,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :السماح ب
 STR_CONFIG_SETTING_CATCHMENT                                    :السماح بحدود اكثر واقعية للمحطات بحسب الحجم: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :السماح بحذف اكثر من الطرق المملوكة للمدينة و الجسور و غيرها: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :كمية دخان/شرار القطارات:{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     : موديل تسارع القطارات: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :موديل تسارع القطارات: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :نمط تسارع عربات الطريق: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :منع القطارات والسفن من الدوران بزاوية تسعين درجة : {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        : السماح بربط محطتين غير متجاورتين : {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :السماح بربط محطتين غير متجاورتين : {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :أستخدام خوارزمية التحميل المحسنه: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :تحميل القطارات بالتدريج: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :التضخم: {STRING}
@@ -1109,20 +1097,20 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :بدون
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :منخفض
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :طبيعي
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :السماح للعربات العبور خلال المواقف المملوكة داخل المدن {STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      : السماح بمرور العربات خلال المحطات المملوكة للمنافسين: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :السماح بمرور العربات خلال المحطات المملوكة للمنافسين: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :السماح ببناء محطات متلاصقة{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :السماح بتعدد محركات NewGFR {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}تغير هذا الخيار غير متاح عندما يكون هناك عربات
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :صيانة البنية التحتية: {STRING}
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        : المطارات لا تنتهي صلاحيتها {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :المطارات لا تنتهي صلاحيتها {STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :حذر إذا فقدت المركبة {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :استعراض اوامر العربات: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :لا
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :نعم, بستثناء العربات المتوقفة
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :نعم, بستثناء العربات الموقوفه
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :لكل العربات
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             : حذر عندما يكون الدخل سالبا :{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :حذر عندما يكون الدخل سالبا :{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :المركبات لا تنتهي صلاحيتها ابدا : {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :جدد العربات عندما تصبح قديمة : {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :التجديد التلقائي عند توفر السيولة الدنيا للتجديد: {STRING}
@@ -1133,7 +1121,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :مولد الأ
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :الأصلي
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :مرتفعات منزلقة
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :ارتفاع خط الثلج: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         : خشونة التضاريس (سفر التكوين فقط ) :({STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :خشونة التضاريس (سفر التكوين فقط ) :({STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :ناعم جدا
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :ناعم
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :خشن
@@ -1146,7 +1134,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :اتجاة خر
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :عكس عقارب الساعة
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :مع عقارب الساعة
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :الأرتفاع الأعلى في محرر الخريطة لسطح المستوي: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        : السماح بتعديل الحدود الحرة للخريطة:  {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :السماح بتعديل الحدود الحرة للخريطة: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}مربع او اكثر غير فارغ في الحدود الشمالية
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}مربع او اكثر من حدود الخريطة لا يكون بحر
 
@@ -1177,7 +1165,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :عدم استخ
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :تصفح بالزر الايسر: {STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    : استخدم {STRING} نمط التاريخ لاسم اللعبة المحفوظة
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :استخدم {STRING} نمط التاريخ لاسم اللعبة المحفوظة
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :طويل - 31 ديسمبر 2008
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :قصير - 31 - 12 - 2008
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ايزو 31-12-2008
@@ -1196,14 +1184,31 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :استخدام 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :تفعيل مؤشر التحميل: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :عرض جدولة الأعمال بالمهام بدلا من الأيام: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :عرض الوصول و المغادرة في جدولة الاعمال: {STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    : إنشاء سريع لأوامر المركبات: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :إنشاء سريع لأوامر المركبات: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :سكة الحديد القياسية (بعد بدأ لعبة جديدة أو تحميل لعبة): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :القديم
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :الجديد
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :الأكثر استخداما
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :اظهار الطرق المحجوزة: {STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     : ابقاء ادوات البناء فعالة بعد استخدامها: {STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              : النفقات للمجموعة في النافذة المالية: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :ابقاء ادوات البناء فعالة بعد استخدامها: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :النفقات للمجموعة في النافذة المالية: {STRING}
+
+STR_CONFIG_SETTING_SOUND_TICKER                                 :خبر: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :شغل صوت تاثيري عند عرض ملخص الاخبار
+STR_CONFIG_SETTING_SOUND_NEWS                                   :الجرائد: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :شغل صوت تاثيري عند عرض الجرائد
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :نهاية العام: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :شغل صوت مؤثر عند عرض ملخص اداء الشركة
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :اعمال انشائية: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :شغل صوت تاثيري عند اكتمال عمل انشائي او غيره
+STR_CONFIG_SETTING_SOUND_CLICK                                  :صوت النقرة: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :صوت نقرة عند الضغط على زر
+STR_CONFIG_SETTING_SOUND_DISASTER                               :حوادث و كوارث: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :شغل اصوات الحوادث و الكوارث
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :العربات: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :شغل اصوات العربات
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :مؤثرات: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :شغل مؤثرات صوتية في المناظر و المصانع و المدن
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :عطل ادوات البناء عند عدم وجود عربات متاحة لها: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :الحد الأعلى لعدد القطارات لكل لاعب: {STRING}
@@ -1217,13 +1222,33 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :حظر الطا
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :حظر السفن على الحاسوب: {STRING}
 
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            : السماح بالذكاء الصناعي في اللعب الجماعي : {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :السماح بالذكاء الصناعي في اللعب الجماعي : {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes قبل تعليق الاسكربت: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :فترات الصيانة بالنسبة المئوية : {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :الغاء الصيانة عندما يكون التعطيل للمركبات غير مفعل: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :السماح بتحديد سرعة العربات: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :تعطيل سكة القطار الكهربائي: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :وصول اول مركبة لمحطة اللاعب: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :وصول اول مركبة لمحطة الخصوم: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :الحوادث/الأزمات: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :معلومات الشركة: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :تشغيل مصنع جديد: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :اغلاق مصنع: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :التغيرات الأقتصادية: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :تغير في انتاج مصنع مشمول بخدمات الشركة: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :تغير في انتاج مصنع مشمول بخدمات الشركات الأخرى: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :تغير انتاج المصانع الأخرى: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :نصائح/ معلومات حول مركبات الشركة: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :المركبات الجديدة: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :تغييرات قبول الشحن: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :العروض: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :معلومات عامة: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :اغلاق
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :ملخص
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :ممتلئ
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :الاخبار الملونة تظهر في: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :سنة البدايه: {STRING}
@@ -1240,19 +1265,19 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :اشارات ا
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :اشارات الطريق فقط
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :الكل
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  : تصميم الطرق للمدن الجديدة : {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :تصميم الطرق للمدن الجديدة : {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :قياسي
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :طرق افضل
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :شبكة 2*2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :شبكة 3*3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :عشوائي
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             : السماح للمدن ببناء طرق: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :السماح للمدن ببناء طرق: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :يسمح للمدن ببناء تقاطعات متعددة: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :السماح للمدن بالتحكم بضجيج المطارات: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :انشاء المدن اثناء اللعب: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :محذور
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :مسموح
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :مسموح - نمط مدينة قياسي
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :مسموح - نمط مدينة قابل للتعديل
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :اضافة الاشجار اثناء اللعب: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :بدون {RED}-المشغولات الخشبية معطل-
@@ -1261,7 +1286,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :كل مكان
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :موقع شريط الأدوات الرئيسي: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :موقع شريط المعلومات: {STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT                                   : حدود نعومة النوافذ - غير ملتصقة - :{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :حدود نعومة النوافذ - غير ملتصقة - :{STRING}
 STR_CONFIG_SETTING_ZOOM_MIN                                     :اقصى حدود التقريب: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :اقصى حدود التقريب: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :X4
@@ -1287,6 +1312,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}الأ�
 STR_CONFIG_SETTING_AI                                           :{ORANGE}المتنافسين
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}عرض الخيارات
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE} التفاعل
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}الصوت
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}الاخبار و الرسائل
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}الإشارات
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE} طريقة التحميل
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE} لاعبين الحاسوب
@@ -1303,7 +1330,7 @@ STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(م�
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :موجد الطريق- قصاص الطريق - للقطارات:{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :موجد الطريق (قصاص الأثر) للعربات: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         : موجد طريق العبور للسفن: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :موجد طريق العبور للسفن: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :العكس عند الإشارات: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}عدل قيمة التغيير
@@ -3466,6 +3493,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}اعا�
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}لايوجد غير مجموعة اصوات. اذا اردت اصوات, نصب مجموعة صوتية من خلال نظام التحميل.
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}صورة من الشاشة حفظت بنجاح باسم: '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}لم يتم حفظ الصورة
 

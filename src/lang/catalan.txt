@@ -1049,11 +1049,11 @@ STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Plega-ho
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(Cap explicació disponible)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor per defecte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipus de paràmetre: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TYPE_CLIENT                                  :Paràmetres del client (no s'emmagatzemen als jocs desats; afecta tots els jocs)
-STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Paràmetres del joc (emmagatzemats al jocs desats; afecta només als jocs nous)
-STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Paràmetres del joc (emmagatzemats al joc desat; afecta només al joc actual)
-STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Paràmetres de la companyia (emmagatzemats al jocs desats; afecta només als jocs nous)
-STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Paràmetres de la companyia (emmagatzemats al joc desat; afecta només la companyia actual)
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Paràmetre del client (no s'emmagatzema als jocs desats; afecta tots els jocs)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Paràmetre del joc (emmagatzemat als jocs desats; afecta només els jocs nous)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Paràmetre del joc (emmagatzemat al joc desat; només afecta el joc actual)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Paràmetre de la companyia (emmagatzemat als jocs desats; només afecta els jocs nous)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Paràmetre de la companyia (emmagatzemat al joc desat; només afecta la companyia actual)
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Mostra:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restringeix la llista de sota mostrant només els paràmetres canviats
@@ -1066,10 +1066,10 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Paràmetres amb
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restringeix la llista de sota a certs tipus de paràmetres
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tots els paràmetres
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Paràmetres del client (no s'emmagatzemen als jocs desats; afecten tots els jocs)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Paràmetres del joc (emmagatzemats als jocs desats; afecta només els jocs nous)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Paràmetres del joc (emmagatzemats al joc desat; afecta només al joc actual)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Paràmetres de la companyia (emmagatzemats al jocs desats; afecta només els jocs nous)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Paràmetres de la companyia (emmagatzemats al joc desat; afecta només la companyia actual)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Paràmetres del joc (emmagatzemats als jocs desats; només afecten els jocs nous)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Paràmetres del joc (emmagatzemats al joc desat; només afecten el joc actual)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Paràmetres de la companyia (emmagatzemats al jocs desats; només afecten els jocs nous)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Paràmetres de la companyia (emmagatzemats al joc desat; només afecten la companyia actual)
 
 STR_CONFIG_SETTING_OFF                                          :Inactiu
 STR_CONFIG_SETTING_ON                                           :Actiu
@@ -1357,7 +1357,14 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantingues les 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupa les despeses a la finestra de finances de la companyia: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Defineix la disposició de la companyia a la finestra de despeses
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Barra de notícies: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reprodueix un so quan apareixen les notícies resumides a la barra inferior
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Notícies: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Reprodueix un so quan apareix una notícia
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Cap d'any: {STRING}
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reprodueix un efecte de so al final de l'any quan apareix el resum financer de l'empresa
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construcció: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reprodueix un efecte de so quan es realitzin amb èxit construccions o altres accions
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Botons: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Sona quan es cliquen els botons
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Desastres i accidents: {STRING}
@@ -1418,20 +1425,35 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactiva vies 
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Activant aquest paràmetre es desactiva el requeriment d'electrificar les vies per poder fer-hi circular locomotores elèctriques
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Arribada del primer vehicle a una estació pròpia: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Mostra les notícies quan arribi el primer vehicle a una estació del jugador
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arribada del primer vehicle a una estació competidora: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Mostra les notícies quan arribi el primer vehicle a una estació d'un competidor
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / desastres: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostra les notícies d'accidents i desastres
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informació de l'Empresa: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostra les notícies de companyies noves que es creen i de companyies en risc de fer fallida
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Obertura d'indústries: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Mostra les notícies d'aparicions d'indústries noves
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Tancament d'indústries: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Mostra les notícies d'indústries que tanquen
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Canvis de l'Economia: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Mostra les notícies de canvis globals a l'economia
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Canvis de producció de les indústries aprovisionades per la companyia: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Mostra les notícies de canvis als nivells de producció de les indústries proveïdes per la companyia pròpia
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Canvis de producció en indústries proveïdes pels competidors: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Mostra les notícies de canvis als nivells de producció de les indústries proveïdes pels competidors
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Altres canvis de producció de la indústria: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Mostra les notícies de canvis als nivells de producció de les indústries que no estan proveïdes ni per la companyia ni pels competidors
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Alertes / informació sobre els vehicles de la companyia: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Mostra missatges sobre vehicles que necessitin atenció
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nous vehicles: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Mostra les notícies d'aparicions de nous tipus de vehicles
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Canvis en l'admissió de càrrega: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Mostra missatges quan les estacions canviïn l'acceptació d'alguna càrrega
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencions: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Mostra les notícies d'esdeveniments relacionats amb subsidis
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informació General: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Mostra les notícies d'esdeveniments generals, com ara compra de drets exclusius o finançar la reconstrucció de carrers
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Fora
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resum
@@ -1537,6 +1559,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidors
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Opcions de pantalla
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interacció
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efectes de so
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Notícies i missatges
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Senyals
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Manipulació de la càrrega
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jugadors de l'ordenador

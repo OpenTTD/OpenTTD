@@ -585,8 +585,6 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 
 
-
-
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
@@ -713,7 +711,11 @@ STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungarsk
 
 
 
+
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
+
+
 
 
 
@@ -1246,6 +1248,7 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 # Soundset messages
 
 # Screenshot related messages
+
 
 # Error message titles
 

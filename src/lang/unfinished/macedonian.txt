@@ -724,26 +724,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Лист
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Порака
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :исклучен
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :резиме
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :целосна
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Пристигнување на првото возило на станицата на играчот: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Пристигнување на прво возило на конкурентска станица: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Несреќи / хаварии: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Информации за компанијата: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Отворање на индустрии: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Затворање на индустрии: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Промени во економијата: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Производство промени на индустрии сервира од страна на компанијата: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Производство промени на индустрии сервира од страна конкурент(и): {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Други индустрија производство промени: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Совет / информации за возилата на компанијата: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Нови возила: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Промени во прием на товар: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Субвенции: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Општи информации: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Граѓаните го слават. . .{}Првиот воз пристигнува во {STATION}!
@@ -841,6 +821,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Прилаго�
 
 
 
+
 STR_CONFIG_SETTING_NONE                                         :Никој
 STR_CONFIG_SETTING_ORIGINAL                                     :Авторски
 STR_CONFIG_SETTING_REALISTIC                                    :Реален
@@ -863,8 +844,29 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Дебелин�
 
 
 
+
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#ОПкодови пред скрипти се суспендирани: {STRING}
 
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Пристигнување на првото возило на станицата на играчот: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Пристигнување на прво возило на конкурентска станица: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Несреќи / хаварии: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Информации за компанијата: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Отворање на индустрии: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Затворање на индустрии: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Промени во економијата: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Производство промени на индустрии сервира од страна на компанијата: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Производство промени на индустрии сервира од страна конкурент(и): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Други индустрија производство промени: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Совет / информации за возилата на компанијата: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Нови возила: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Промени во прием на товар: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Субвенции: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Општи информации: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :исклучен
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :резиме
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :целосна
 
 
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Градови смеете да изгради ниво премини: {STRING}
@@ -1649,6 +1651,7 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... мо
 # Soundset messages
 
 # Screenshot related messages
+
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Порака

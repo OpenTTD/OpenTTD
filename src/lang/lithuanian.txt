@@ -923,26 +923,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Paskutin
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Pranešimas
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Išjungta
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Santrauka
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pilnas
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Pirmosios transporto priemonės atvykimas į žaidėjo stotelę: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Pirmosios transporto priemonės atvykimas į konkurento stotelę: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Avarijos / nelaimės: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Kompanijos informacija: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Gamyklų atidarymas: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Gamyklų uždarymas: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomikos pokyčiai: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Gamyklų aptarnaujamų kompanijos gamybos pasikeitimas: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Gamyklų aptarnaujamų kitų kompanijų gamybos pasikeitimas: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Kitų gamyklų gamybos pasikeitimas: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Patarimai / informacija apie kompanijos transporto priemones: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Naujos transporto priemonės: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Prekių supirkimo pokyčiai: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidijos: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Bendroji informacija: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Gyventojai džiūgauja. . .{}Pirmas traukinys atvažiavo į {STATION}!
@@ -1276,6 +1256,7 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :visas nuostatas
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :nuostatas, kurių reikšmės skiriasi nuo numatytųjų
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :nuostatas, kurių reikšmės skiriasi nuo naujai pradedamo žaidimo nuostatų
 
+
 STR_CONFIG_SETTING_OFF                                          :Ne
 STR_CONFIG_SETTING_ON                                           :Taip
 STR_CONFIG_SETTING_DISABLED                                     :išjungta
@@ -1534,6 +1515,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Laikyti statyb�
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupuoti išlaidas finansinės ataskaitos lange: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Nustatyti kompanijos išlaidų lango planą
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Drausti infrastruktūros plėtimą kai nėra tam tinkamų transporto priemonių: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Kai įjungta, infrastruktūra yra galima, jeigu ten taip pat yra galimų automobilių. Tam kad užkirstų kelią, laiko ir pinigų švaistimo nereikalingai infrastruktūrai
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Didžiausias traukinių skaičius vienam žaidėjui: {STRING}
@@ -1578,6 +1560,26 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktyvinti vagon
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Įjungus šią nuostatą, vagonų maksimalus leistinas greitis įtakos maksimalų viso traukinio greitį
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Uždrausti elektrinius bėgius: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Įjungiant šį nustatymą išjungia elektrifikuotų bėgių reikalavimą padaryti elektrinius variklius veikti ant jų
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Pirmosios transporto priemonės atvykimas į žaidėjo stotelę: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Pirmosios transporto priemonės atvykimas į konkurento stotelę: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Avarijos / nelaimės: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Kompanijos informacija: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Gamyklų atidarymas: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Gamyklų uždarymas: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomikos pokyčiai: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Gamyklų aptarnaujamų kompanijos gamybos pasikeitimas: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Gamyklų aptarnaujamų kitų kompanijų gamybos pasikeitimas: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Kitų gamyklų gamybos pasikeitimas: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Patarimai / informacija apie kompanijos transporto priemones: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Naujos transporto priemonės: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Prekių supirkimo pokyčiai: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidijos: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Bendroji informacija: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Išjungta
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Santrauka
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pilnas
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Spalvotos naujienos atsiranda: {STRING} metais
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Metai, kai laikraščių antraštės tampa spalvotos. Iki tol jos būna monochominės

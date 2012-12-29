@@ -455,8 +455,6 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 
 
-
-
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(व्यवस्थापक)
 
 
@@ -579,6 +577,7 @@ STR_SUBSIDY_X4                                                  :x४
 
 
 
+
 STR_CONFIG_SETTING_NONE                                         :नाही
 STR_CONFIG_SETTING_ORIGINAL                                     :मुळ
 STR_CONFIG_SETTING_REALISTIC                                    :खरेखुरे
@@ -598,6 +597,9 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन �
 
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :कोणतीही कृती नाही
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :सर्व कृत्या
+
+
+
 
 
 
@@ -1277,6 +1279,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}अं�
 # Soundset messages
 
 # Screenshot related messages
+
 
 # Error message titles
 

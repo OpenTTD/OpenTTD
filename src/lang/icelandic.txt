@@ -167,7 +167,7 @@ STR_ABBREV_ALL                                                  :{TINY_FONT}ALLT
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} farþeg{P i ar}
-STR_BAGS                                                        :{COMMA} pokar
+STR_BAGS                                                        :{COMMA} pokar{P "" s}
 STR_TONS                                                        :{COMMA} tonn
 STR_LITERS                                                      :{COMMA} lítrar
 STR_ITEMS                                                       :{COMMA} hlutir
@@ -713,26 +713,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Listi yf
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Skilaboð
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Af
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Úrtak
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Allt
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Aðkoma fyrsta farartækis á stöð leikmanns: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Aðkoma fyrsta farartækis á stöð andstæðings: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Slys / hamfarir: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Fyrirtækisupplýsingar: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Opnun Iðnaðar: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Lokun Iðnaðar: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Efnahagsbreytingar: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Framleiðslubreytingar á iðnaði þjónað af fyrirtækinu: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Framleiðslubreytingar fyrirtækja þjónustuð af mótherjum: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Aðrar framleiðslubreytingar: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Ráð / upplýsingar um faratæki fyrirtækisins: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Ný farartæki: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Breyting á viðtöku farms: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Samstarfssamningar: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Almennar upplýsingar: {STRING}
-
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Bæjarbúar fagna . . .{}Fyrsta lest kemur við á {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Bæjarbúar fagna . . .{}Fyrsti strætisvagn kemur við á {STATION}!
@@ -1032,6 +1012,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Engin no
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Þróaðar stillingar
 
 
+
 STR_CONFIG_SETTING_OFF                                          :Nei
 STR_CONFIG_SETTING_ON                                           :Já
 STR_CONFIG_SETTING_DISABLED                                     :óvirkt
@@ -1080,7 +1061,7 @@ STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Heimila sölu �
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Heimila peningagreiðslur til annarra fyrirtækja: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Margfalda þyngd farms til að líkja eftir þyngri lestum: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Fjöldi flugvélaslysa: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Engin
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :engin
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :fækkuð
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :miðlungs
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Leyfa strætóstöðvar á gangstéttum bæja: {STRING}
@@ -1169,6 +1150,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Sýna frátekin
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Halda byggingartólum virkum eftir notkun: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Hópa saman útgjöld í fjármálaglugga: {STRING}
 
+
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Lestir á leikmann mest: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Bifreiðir á leikmann mest: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Flugvélar á leikmann mest: {STRING}
@@ -1186,6 +1168,26 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Tími milli vi�
 STR_CONFIG_SETTING_NOSERVICE                                    :Leggja niður viðhald þegar bilanir eru stilltar af: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Leyfa hraðatakmarkanir vagna: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Ekki nota rafknúnar lestir: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Aðkoma fyrsta farartækis á stöð leikmanns: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Aðkoma fyrsta farartækis á stöð andstæðings: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Slys / hamfarir: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Fyrirtækisupplýsingar: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Opnun Iðnaðar: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Lokun Iðnaðar: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Efnahagsbreytingar: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Framleiðslubreytingar á iðnaði þjónað af fyrirtækinu: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Framleiðslubreytingar fyrirtækja þjónustuð af mótherjum: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Aðrar framleiðslubreytingar: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Ráð / upplýsingar um faratæki fyrirtækisins: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Ný farartæki: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Breyting á viðtöku farms: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Samstarfssamningar: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Almennar upplýsingar: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Af
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Úrtak
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Allt
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Fréttir byrja að birtast í lit árið: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Upphafsár: {STRING}
@@ -1214,10 +1216,10 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Leyfa stjórn �
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Stofna bæi í leik: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :bannað
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :leyft
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :leyft, venjulegt bæjarskipulag
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :leyft, sérsniðið bæjarskipulag
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Staðsetning trjáa í leik: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Engin {RED}(ónýtir timburverksmiðju)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Engin {RED}(skemmir timburverksmiðjur)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :aðeins í regnskógum
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :allstaðar
 
@@ -3301,6 +3303,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ekki er
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Fann aðeins varahljóðsafn. Ef þú vilt hljóð geturðu sett þau upp með innbyggðu efnisveitunni.
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skjámynd vistuð sem '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekki tókst að taka skjámynd!
 

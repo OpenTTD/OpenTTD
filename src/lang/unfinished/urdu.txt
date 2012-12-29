@@ -723,26 +723,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}حالی
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}پیغام
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :بند
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :خلاصہ
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :مکمل
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :کھلاڑی کے اسٹیشن پر پہلی گاڑی کی آمد: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :مقابل کے اسٹیشن پر پہلی گاڑی کی آمد: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :حادثے / تباہیاں: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :کمپنی کی معلومات: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :صنعتوں کا افتتاح: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :صنعتوں کی بندش: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :معیشت بدل گئی: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :کمپنی کی خدمات حاصل کرنے والی صنعتوں کی پیداوار میں تبدیلی: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :مُقابل کی خدمات حاصل کرنے والی صنعتوں کی پیداوار میں تبدیلی: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :دوسری صنعت کی پیداوار میں تبدیلی: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :کمپنی کی گاڑیوں کے بارے پیں نصیحت / معلومات: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :نئی گاڑیاں: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :کارگو کی منظوری میں تبدیلی: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :امداد: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :عمومی معلومات: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}شہریوں کا جشن ۔ ۔ ۔{}پہلی ریل گاڑی {STATION} پر پہنچی
@@ -1056,6 +1036,7 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}ایڈو
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(کوئی وضاحت موجود نہیں)
 
 
+
 STR_CONFIG_SETTING_OFF                                          :بند
 STR_CONFIG_SETTING_ON                                           :آن
 STR_CONFIG_SETTING_DISABLED                                     :غیر فعال
@@ -1213,6 +1194,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :مخصوص پٹ
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :تعمیراتی ٹول کو استعمال کے بعد فعال رکھیں: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :کمپنی کی مالیاتی ونڈو میں اخراجات کو اکٹھا دکھائیں: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :موزوں گاڑیاں نہ ہونے کی صورت میں عمارت کو غیر فعال کر دیں: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :کمپنی کی زیادہ سے زیادہ ریل گاڑیاں: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :کمپنی کی زیادہ سے زیادہ گاڑیاں: {STRING}
@@ -1232,6 +1214,26 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :مرمتی وق
 STR_CONFIG_SETTING_NOSERVICE                                    :گاڑیوں کی خرابی غیر فعال ہونے کی صورت میں مرمت بھی غیر فعال کر دیں: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :مال گاڑی کی حد رفتار فعال کریں: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :الیلٹرک ریل گاڑیاں غیر فعال کریں: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :کھلاڑی کے اسٹیشن پر پہلی گاڑی کی آمد: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :مقابل کے اسٹیشن پر پہلی گاڑی کی آمد: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :حادثے / تباہیاں: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :کمپنی کی معلومات: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :صنعتوں کا افتتاح: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :صنعتوں کی بندش: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :معیشت بدل گئی: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :کمپنی کی خدمات حاصل کرنے والی صنعتوں کی پیداوار میں تبدیلی: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :مُقابل کی خدمات حاصل کرنے والی صنعتوں کی پیداوار میں تبدیلی: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :دوسری صنعت کی پیداوار میں تبدیلی: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :کمپنی کی گاڑیوں کے بارے پیں نصیحت / معلومات: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :نئی گاڑیاں: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :کارگو کی منظوری میں تبدیلی: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :امداد: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :عمومی معلومات: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :بند
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :خلاصہ
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :مکمل
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :رنگین خبریں کون سے سال سے شروع ہوں: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :شروعاتی سال: {STRING}
@@ -2528,6 +2530,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}لائس
 # Soundset messages
 
 # Screenshot related messages
+
 
 # Error message titles
 

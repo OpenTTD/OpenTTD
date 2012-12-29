@@ -725,26 +725,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}لیست
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}پیغام
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :خاموش
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :خلاصه
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :کامل
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :رسیدن اولین وسیله نقلیه به یکی ازایستگاه های بازیکن: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :رسیدن اولین وسیله نقلیه به یکی ازایستگاه ها کامپوتر: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :حوادث / بلایا: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :اطلاعات شرکت: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :بازگشایی صنایع: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :بستن صنایع: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :تغییرات اقتصادی: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :تغییرات تولید صنایع در خدمت شرکت: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :تغییرات تولید صنایع در خدمت رقیب(ها): {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :تغیرات تولید بقیه شرکت ها: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :راهنمایی یا اطلاعات درباره ی وسایل حمل و نقل شرکت: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :وسیله نقلیه جدید: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :تغیرات دریاف کالا: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :کمک هزینه: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :توضیهات کلی: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}شهروندان ورود اولین قطار را به {STATION} تبریک گفتند!
@@ -1061,6 +1041,7 @@ STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(بدون شر�
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}مقدار پیش فرض: {ORANGE}{STRING}
 
 
+
 STR_CONFIG_SETTING_OFF                                          :خاموش
 STR_CONFIG_SETTING_ON                                           :روشن
 STR_CONFIG_SETTING_DISABLED                                     :غیر فعال
@@ -1215,6 +1196,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :نمایش ری
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :فعال ماندن ابزار ساخت و ساز پس از استفاده: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :گروه‌بندی هزینه‌ها در پنجره مالی شرکت: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :غیر فعال کردن ساختمان مربوط به خودرویی که در دسترس نیست: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :بیشترین قطار یک شرکت: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :بیشترین خودروی‌جاده‌ای یک شرکت: {STRING}
@@ -1234,6 +1216,26 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :درصد زما
 STR_CONFIG_SETTING_NOSERVICE                                    :غیرفعال کردن تعمیر/بازنگری کلیه وسایل نقلیه وقتی که طبق تنظیمات بازی خودرو ها خراب نشوند : {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :فعال کردن حد برای سرعت واگن: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :غیر فعال کردن ریل برقی: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :رسیدن اولین وسیله نقلیه به یکی ازایستگاه های بازیکن: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :رسیدن اولین وسیله نقلیه به یکی ازایستگاه ها کامپوتر: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :حوادث / بلایا: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :اطلاعات شرکت: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :بازگشایی صنایع: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :بستن صنایع: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :تغییرات اقتصادی: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :تغییرات تولید صنایع در خدمت شرکت: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :تغییرات تولید صنایع در خدمت رقیب(ها): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :تغیرات تولید بقیه شرکت ها: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :راهنمایی یا اطلاعات درباره ی وسایل حمل و نقل شرکت: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :وسیله نقلیه جدید: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :تغیرات دریاف کالا: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :کمک هزینه: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :توضیهات کلی: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :خاموش
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :خلاصه
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :کامل
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :نمایش خبرهای رنگی در سال: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :سال شروع: {STRING}
@@ -3156,6 +3158,7 @@ STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}تصوی
 # Soundset messages
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}تصویر با موفقیت در {STRING} ذخیره شد
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}تصویر از بازی ذخیره نشد
 

@@ -719,26 +719,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Спис
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Съобщение
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :изключено
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Обобщение
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Пълно
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Първа кола пристигнала в станция: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Първо пристигане на превозно средство в конкурентна станция: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Инциденти / бедствия: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Информация за компанията: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Откриване на индустрии: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Закриане на индустрии: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Промени в икономиката: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Промяна на продукцията в индустрии обслужвани от играча: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Промяна в производството на индустрия обслужвана от конкуренцията: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Промяна в производството на индустрия: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Съвет / инфомация относно превозните средства на играча: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Нови превозни средства: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Промени в приемането на товари: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Субсидии: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Обща информация: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Хората празнуват . . .{}Първи влак пристигна на {STATION}!
@@ -1042,6 +1022,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Няма
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Настройки за напреднали
 
 
+
 STR_CONFIG_SETTING_OFF                                          :изключено
 STR_CONFIG_SETTING_ON                                           :включено
 STR_CONFIG_SETTING_DISABLED                                     :изключено
@@ -1192,6 +1173,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Покажи з
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Запази инстументите активни след употреба: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Групирай разходите във финансовия прозорец на компанията: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Изключване строеж на инфраструктура, когато съответващите превозни средства са недостъпни:{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Макс. брой влакове за компания: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Макс. брой коли за компания: {STRING}
@@ -1210,6 +1192,26 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Интерва�
 STR_CONFIG_SETTING_NOSERVICE                                    :Без сервиз когато повредите са изключени: {STRING.n}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Вагоните имат ограничение на скоростта: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Без електрически влакове: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Първа кола пристигнала в станция: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Първо пристигане на превозно средство в конкурентна станция: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Инциденти / бедствия: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Информация за компанията: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Откриване на индустрии: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Закриане на индустрии: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Промени в икономиката: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Промяна на продукцията в индустрии обслужвани от играча: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Промяна в производството на индустрия обслужвана от конкуренцията: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Промяна в производството на индустрия: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Съвет / инфомация относно превозните средства на играча: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Нови превозни средства: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Промени в приемането на товари: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Субсидии: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Обща информация: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :изключено
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Обобщение
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Пълно
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Цветни новини се появяват през: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Начална година: {STRING}
@@ -3377,6 +3379,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Пре�
 # Soundset messages
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Екраноснимката е успешно зъхранена с името '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Екраноснимката не се получи!
 

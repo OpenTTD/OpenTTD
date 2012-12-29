@@ -727,26 +727,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Ei liste
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Melding
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Av
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Samandrag
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Fullt
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Første køyretøy kjem fram på stasjonen til spelaren: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Første køyretøy kjem fram på stasjonen til motstandaren: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ulykker/katastrofar: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Firmainformasjon: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Nyopning av industriar: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Nedlegging av industriar: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Økonomiske endringar: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produksjonsendringar i industriar betjent av firmaet: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produksjonsendringar for industriar betente av konkurrent(ar): {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Produksonsendringar for andre industriar: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Råd / informasjon om firmaet's køyretøy: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nye køyretøy: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Endringar i godtekne varer: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidiar: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Generell informasjon: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Innbyggjarane jublar . . .{}Første tog kjem til {STATION}!
@@ -1057,6 +1037,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Inga pas
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avanserte innstillingar
 
 
+
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
 STR_CONFIG_SETTING_DISABLED                                     :deaktivert
@@ -1208,6 +1189,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Syne reserverte
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Hold byggjeverktya aktive etter bruk: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupper utgifter i firmarekneskapen-vindauget: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Ikkje tillet konstruksjon av infrastruktur om ingen passande køyretøy er tilgjengeleg: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks antal tog per firma: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks antal bilar per firma: {STRING}
@@ -1227,6 +1209,26 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Vedlikehaldsint
 STR_CONFIG_SETTING_NOSERVICE                                    :Deaktiver vedlikehald når havari er slått av: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktiver fartsgrenser for vogner: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiver elektriske tog: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Første køyretøy kjem fram på stasjonen til spelaren: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Første køyretøy kjem fram på stasjonen til motstandaren: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ulykker/katastrofar: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Firmainformasjon: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Nyopning av industriar: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Nedlegging av industriar: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Økonomiske endringar: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produksjonsendringar i industriar betjent av firmaet: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produksjonsendringar for industriar betente av konkurrent(ar): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Produksonsendringar for andre industriar: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Råd / informasjon om firmaet's køyretøy: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nye køyretøy: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Endringar i godtekne varer: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidiar: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Generell informasjon: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Av
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Samandrag
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Fullt
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Avisa vert trykt i fargar i: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Start spelet i år {STRING}
@@ -3569,6 +3571,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Å endr
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Kun eit reservelydsett ble funne. Hvis du vil ha lyder, installer eit lydsett via innhaldsnedlastinga
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skjermdumpen vart lagra som '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Skjermdump gjekk gale!
 

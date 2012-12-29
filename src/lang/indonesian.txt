@@ -2624,6 +2624,7 @@ STR_GOAL_QUESTION_CAPTION_WARNING                               :Peringatan
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Kesalahan
 
 ### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Batal
 STR_GOAL_QUESTION_BUTTON_OK                                     :Oke
 STR_GOAL_QUESTION_BUTTON_NO                                     :Tidak
 STR_GOAL_QUESTION_BUTTON_YES                                    :Ya

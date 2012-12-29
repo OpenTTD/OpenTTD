@@ -729,26 +729,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Azken al
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mezua
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Off
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sumarioa
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Betea
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Lehenengo garraioaren etorrera jokalariaren geltokira: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Lehenengo garraioaren etorrera lehiakidearen geltokira: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Istripuak / hondamendiak: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Konpainien informazioa: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Industrien zabalerak: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Industrien itxierak: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomia aldaketak: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Ekoizpen aldaketak konpaniagatik zerbitzatutako industrietan: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Ekoizpen aldaketak lehiakidearen(en) zerbitzatutako industrietan: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Beste indutria ekoizpen aldaketak: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Konpainiaren ibilgailuei buruzko informazioa/aholkuak: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Garraio berriak: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Aldaketak zama onarpenean: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidioak: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informazio generala: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Hiritarrak ospatzen dute . . .{} {STATION}era heltzen den lehenengo trena!
@@ -1082,6 +1062,7 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Adituentzako ez
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ezarpenak lehenetsitakoen balio ezberdinarekin
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Balio ezberdinak dituzten ezarpenak zure joko berriaren ezarpenekin alderatuta
 
+
 STR_CONFIG_SETTING_OFF                                          :Itzalita
 STR_CONFIG_SETTING_ON                                           :Piztuta
 STR_CONFIG_SETTING_DISABLED                                     :Desgaitua
@@ -1368,6 +1349,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantendu zubi, 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Talde gastuak konpainiaren finantza leihoan: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Konpainiako gastuen lehioaren diseinua
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Azpiturak eraikitzea debekatu ibilgailu egokiak ez daudenean eskuragarri: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Gaitua dagoenean, ezingo da azpiegiturarik eraiki azpiegitura horren ibilgailuak ez badaude eskuragarri, denbora eta dirua aurreztuz
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Konpainiek eduki ditzaketen gehienezko tren kopurua: {STRING}
@@ -1417,6 +1399,26 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Bagoiaren abiad
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Gaitua dagoenean, bagoien gehienezko abiadura erabili trenen geheienezko abiadura zehazteko
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Trenbide elektrikoa desaktibatu: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Gaitua dagoenean, ez da beharrezkoa izango trenbideak elektrifikatzea tren elektrikoak funtzionatzeko
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Lehenengo garraioaren etorrera jokalariaren geltokira: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Lehenengo garraioaren etorrera lehiakidearen geltokira: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Istripuak / hondamendiak: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Konpainien informazioa: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Industrien zabalerak: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Industrien itxierak: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomia aldaketak: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Ekoizpen aldaketak konpaniagatik zerbitzatutako industrietan: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Ekoizpen aldaketak lehiakidearen(en) zerbitzatutako industrietan: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Beste indutria ekoizpen aldaketak: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Konpainiaren ibilgailuei buruzko informazioa/aholkuak: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Garraio berriak: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Aldaketak zama onarpenean: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidioak: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informazio generala: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Off
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sumarioa
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Betea
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Kolorezko albisteak {STRING}. urtean agertzen dira
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Egunkarien mezuak kolorean imprimatuko diren urtea. Urte hau baino lehenago txuri/beltz monokromoa erabiliko da

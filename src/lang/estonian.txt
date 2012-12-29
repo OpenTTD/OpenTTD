@@ -783,26 +783,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Nimekiri
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Teade
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Väljas
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Lühike
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Täielik
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Esimese sõiduki saabumine mängija jaama: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Esimese sõiduki saabumine vastase jaama: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Õnnetused / katastroofid: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Ettevõtte teave: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Tööstuste avamine: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Tööstuste sulgemine: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Muutused majanduses: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Ettevõtte poolt teenindavate tööstuste toodangumuutused: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Konkurentide poolt teenindavate tööstuste toodangumuutused: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Ülejäänud tööstuste toodangumuutused: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Teave ja nõuanded ettevõtte sõidukite kohta: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Uued sõidukid: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Veoste vastuvõtutingimuste muutumine: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Toetused: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Üldine teave: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Rahvas rõõmustab. . .{}{STATION} jaama saabus esimene rong!
@@ -1120,6 +1100,7 @@ STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(seletus puudub
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Vaikeväärtus: {ORANGE}{STRING}
 
 
+
 STR_CONFIG_SETTING_OFF                                          :Väljas
 STR_CONFIG_SETTING_ON                                           :Sees
 STR_CONFIG_SETTING_DISABLED                                     :väljas
@@ -1324,6 +1305,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Varundatud rada
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Ehitustööriistad pärast kasutamist tegusad: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Kulutuste rühmitamine ettevõtte finantsaknas: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Blokeeri infrastruktuuri ehitamine kui sobivad sõidukid puuduvad: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Enim ronge ettevõtte kohta: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Enim mootorsõidukeid ettevõtte kohta: {STRING}
@@ -1343,6 +1325,26 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Protsentides ho
 STR_CONFIG_SETTING_NOSERVICE                                    :Hoolduse keelamine rikete väljalülitamisel: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Vagunite kiiruspiirangud: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Elektrirongide keeld: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Esimese sõiduki saabumine mängija jaama: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Esimese sõiduki saabumine vastase jaama: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Õnnetused / katastroofid: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Ettevõtte teave: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Tööstuste avamine: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Tööstuste sulgemine: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Muutused majanduses: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Ettevõtte poolt teenindavate tööstuste toodangumuutused: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Konkurentide poolt teenindavate tööstuste toodangumuutused: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Ülejäänud tööstuste toodangumuutused: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Teave ja nõuanded ettevõtte sõidukite kohta: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Uued sõidukid: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Veoste vastuvõtutingimuste muutumine: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Toetused: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Üldine teave: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Väljas
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Lühike
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Täielik
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Värvilised uudised ilmuvad aastast {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Alustamise aeg: {STRING}
@@ -3681,6 +3683,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Kaardi 
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Mäng ei leidnud helisid. Helid saad paigaldada Internetisisu laadimise aknast
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Ekraanitõmmis edukalt salvestatud nimega '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekraanitõmmise võtmine nurjus!
 

@@ -726,26 +726,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Rhestr o
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Neges
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :I Ffwrdd
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Crynodeb
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Llawn
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Y cerbyd cyntaf yn cyrraedd gorsaf y chwaraewr: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Y cerbyd cyntaf yn cyrraedd gorsaf cystadleuydd: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Damweiniau / trychinebau: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Gwybodaeth Cwmnïau: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Cychwyn diwydiannau: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Cau diwydiannau: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Newidiadau yn yr economi: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Newid yng nghynyrch diwydiannau a wasanaethir gan y cwmni: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Newid yng nghynyrch diwydiannau a wasanaethir gan gystadleuw(y)r: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Newidiadau cynyrch diwydiannau eraill: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Cyngor / gwybodaeth am gerbydau cwmni: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Cerbydau Newydd: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Newidiadau i'r llwythi sy'n cael eu derbyn: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Cymorthdaliadau: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Gwybodaeth Gyffredinol: {STRING}
-
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Mae'r trigolion yn dathlu . . .{}Mae'r trên cyntaf wedi cyrraedd {STATION}!
@@ -1069,6 +1049,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Gosodiad cwmni 
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Gosodiad cwmni (storir yn y ffeil gadw; yn effeithio ar y cwmni presennol yn unig)
 
 
+
 STR_CONFIG_SETTING_OFF                                          :I Ffwrdd
 STR_CONFIG_SETTING_ON                                           :Ymlaen
 STR_CONFIG_SETTING_DISABLED                                     :analluogwyd
@@ -1237,6 +1218,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Dangos traciau 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Cadw'r offer adeiladu yn weithredol wedi ei ddefnydd: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grwpio costau yn ffenestr cyllid y cwmni: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Analluogi adeiladu tanadeiledd pan nad oes cerbydau addas ar gael: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Uchafswm nifer trenau cwmni: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Uchafswm cerbydau ffordd cwmni: {STRING}
@@ -1256,6 +1238,26 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Dangos y cyfnod
 STR_CONFIG_SETTING_NOSERVICE                                    :Analluogi gwasanaethau pan fydd torri i lawr wedi ei osod i Ddim: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Galluogi terfynau cyflymder wagenni: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Analluogi cledrau trydan: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Y cerbyd cyntaf yn cyrraedd gorsaf y chwaraewr: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Y cerbyd cyntaf yn cyrraedd gorsaf cystadleuydd: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Damweiniau / trychinebau: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Gwybodaeth Cwmnïau: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Cychwyn diwydiannau: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Cau diwydiannau: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Newidiadau yn yr economi: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Newid yng nghynyrch diwydiannau a wasanaethir gan y cwmni: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Newid yng nghynyrch diwydiannau a wasanaethir gan gystadleuw(y)r: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Newidiadau cynyrch diwydiannau eraill: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Cyngor / gwybodaeth am gerbydau cwmni: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Cerbydau Newydd: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Newidiadau i'r llwythi sy'n cael eu derbyn: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Cymorthdaliadau: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Gwybodaeth Gyffredinol: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :I Ffwrdd
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Crynodeb
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Llawn
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Bydd newyddion lliw yn ymddangos yn: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Blwyddyn dechreuol: {STRING}
@@ -3600,6 +3602,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ni argy
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Dim ond set sain wrth gefn a ganfuwyd. Os ydych am gael sain, llawrlwythwch set sain drwy'r system llawrlwytho cynnwys
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Cadwyd y ciplun yn llwyddiannus fel '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Methodd y ciplun!
 

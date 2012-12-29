@@ -429,12 +429,6 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ВӐ
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Пӗлтерӳ
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Сӳнтер
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Кӗске
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Тулли
-
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Грантсем: {STRING}
-
 
 
 
@@ -544,6 +538,7 @@ STR_SUBSIDY_X4                                                  :x4
 # Advanced settings window
 
 
+
 STR_CONFIG_SETTING_OFF                                          :Сӳнтер
 STR_CONFIG_SETTING_ON                                           :Ҫут
 STR_CONFIG_SETTING_DISABLED                                     :хастар мар
@@ -587,6 +582,13 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 
 
+
+
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Грантсем: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Сӳнтер
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Кӗске
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Тулли
 
 
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :чӑн
@@ -1277,6 +1279,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<палӑ ма�
 # Soundset messages
 
 # Screenshot related messages
+
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ӑнӑҫсӑр экран сӑнӗ
 
 # Error message titles

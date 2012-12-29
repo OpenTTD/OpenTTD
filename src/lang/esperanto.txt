@@ -720,26 +720,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Listo da
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mesaĝo
-STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Ne
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resume
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Plene
-
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Unua veturilo atingas propran stacion: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Unua veturilo atingas konkurantan stacion: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Akcidentoj / katastrofoj: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Kompaniaj informoj: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Malfermiĝo de industrioj: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Fermiĝo de industrioj: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomiaj ŝanĝoj: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Profuktadŝanĝiĝoj de industrioj servitaj de la kompanio: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Profuktadŝanĝiĝoj de industrioj servitaj de konkuranto(j): {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Aliaj industriaj produktadŝanĝiĝoj: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :Konsilo / informoj pri kompania veturilaro: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Novaj veturiloj: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Ŝarĝakceptado ŝanĝiĝas: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencioj: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Ĝeneralaj informoj: {STRING}
-
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua trajno alvenas ĉe {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua buso alvenas en {STATION}!
@@ -1050,6 +1030,7 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Altnivelaj agor
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :agordoj kiuj malsimilas al la originala
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Agordoj kiu malsimilas al via novajuldaj agordoj
 
+
 STR_CONFIG_SETTING_OFF                                          :Malaktiva
 STR_CONFIG_SETTING_ON                                           :Aktiva
 STR_CONFIG_SETTING_DISABLED                                     :malaktiva
@@ -1196,6 +1177,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Montru rezervit
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Lasu aktivaj la konstruilojn post uzado: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupigu elspezojn en kompania financfenestro: {STRING}
 
+
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Malaktivu fondan konstruon kiam decaj veturiloj ne estas disponebla: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Trajna maksimumo por ĉiu ludanto: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Stratveturila maksimumo por ĉiu ludanto: {STRING}
@@ -1214,6 +1196,26 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Prizorginterval
 STR_CONFIG_SETTING_NOSERVICE                                    :Malŝaltu prizorgadon se rompiĝoj ne okazas: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktivigu vagonajn rapideclimojn: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Malŝaltu elektrajn relojn: {STRING}
+
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Unua veturilo atingas propran stacion: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Unua veturilo atingas konkurantan stacion: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Akcidentoj / katastrofoj: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Kompaniaj informoj: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Malfermiĝo de industrioj: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Fermiĝo de industrioj: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomiaj ŝanĝoj: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Profuktadŝanĝiĝoj de industrioj servitaj de la kompanio: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Profuktadŝanĝiĝoj de industrioj servitaj de konkuranto(j): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Aliaj industriaj produktadŝanĝiĝoj: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Konsilo / informoj pri kompania veturilaro: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Novaj veturiloj: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Ŝarĝakceptado ŝanĝiĝas: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencioj: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Ĝeneralaj informoj: {STRING}
+
+STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Ne
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resume
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Plene
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Koloraj novaĵoj aperas en: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Komenca jaro: {STRING}
@@ -3345,6 +3347,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ne reko
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Sola bakupa sona aro estis trovata. Se vi bezonas sonojn, instalu sonan aron per la enhava elŝulta sistemo
 
 # Screenshot related messages
+
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Ekranfoto sukcese konserviĝis kiel '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekranfoto fiaskis!
 
