@@ -217,6 +217,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Kata penyaring:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Masukkan kata penyaring
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Masukkan kata kunci untuk menyaring daftar
 
@@ -397,10 +398,12 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Daftar biaya ka
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabel Perusahaan
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Rating kemampuan secara rinci
+STR_GRAPH_MENU_HIGHSCORE                                        :Tabel Skor
 ############ range ends here
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Daftar Industri
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Rantai industri
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Danai industri baru
 ############ range ends here
 
@@ -824,6 +827,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsidi diberikan kepada {STRING}!{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} akan dibayar empat kali lipat hingga tahun depan!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Kekacauan lalu lintas di {TOWN}!{}{}Program perbaikan jalan yang dibiayai oleh {STRING} mengakibat kesengsaraan bagi pengendara selama 6 bulan!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopoli transportasi!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Pemkot Kota {TOWN} menandatangani kontrak dengan {STRING} untuk hak transportasi eksklusif selama 1 tahun!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Viewport {COMMA}
@@ -866,6 +871,8 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Turki (TRY
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna Slovakia (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real Brazilia (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni Estonia (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Lithuania (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Korea Selatan (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Afrika Selatan (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Atur sendiri...
 ############ end of currency region
@@ -1035,6 +1042,8 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Tidak te
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Pengaturan lanjutan
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Penyaring kata:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Perluas semua
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Persempit semua
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(penjelasan belum tersedia)
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Perlihatkan:

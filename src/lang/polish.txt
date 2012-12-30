@@ -1183,7 +1183,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} bardzo się starzeje
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} bardzo się starzeje i potrzebuje natychmiastowej wymiany
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nie potrafi znaleźć trasy, aby kontynuować
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} zgubił się
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} się zgubił
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Dochód {VEHICLE} w zeszłym roku to {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} nie może dotrzeć do kolejnego punktu docelowego, ponieważ jest on poza zasięgiem
 
@@ -1988,8 +1988,8 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nowa gra
 STR_INTRO_LOAD_GAME                                             :{BLACK}Wczytaj grę
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Zagraj scenariusz
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Zagraj z mapy wysokości
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Scenariusze
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Graj z mapą wysokościową
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Edytor scenariuszy
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Gra wieloosobowa
 
@@ -2055,9 +2055,9 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Grasz j
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczny buldożer (usuwanie przedsiębiorstw, obiektów nieprzesuwalnych): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunele mogą się przecinać: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Odrzutowce nie będą rozbijać się (często) na małych lotniskach: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Krajobraz umiarkowany
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Krajobraz arktyczny
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Krajobraz tropikalny
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Klimat umiarkowany
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Klimat arktyczny
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Klimat tropikalny
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Krajobraz zabawkowy
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Zmień datę: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Zmiana obecnego roku
@@ -2191,7 +2191,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Rozmiar
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Wersja serwera: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adres serwera: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Data uruchomienia: {WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Bieżąca data: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Aktualna data: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Chronione hasłem!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERWER WYŁĄCZONY
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERWER PEŁNY

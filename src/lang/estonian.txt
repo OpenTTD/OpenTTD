@@ -1100,6 +1100,11 @@ STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(seletus puudub
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Vaikeväärtus: {ORANGE}{STRING}
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Kõik seadistused
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Mängu seaded (hoitakse salvestuses; mõjutab ainult uusi mänge)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Mängu seaded (hoitakse salvestuses; mõjutab ainult praegust mängu)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Firma seaded (hoitakse salvestuses; mõjutab ainult uusi mänge)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firma seaded (hoitakse salvestuses; mõjutab ainult praegust firmat)
 
 STR_CONFIG_SETTING_OFF                                          :Väljas
 STR_CONFIG_SETTING_ON                                           :Sees
@@ -1305,6 +1310,14 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Varundatud rada
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Ehitustööriistad pärast kasutamist tegusad: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Kulutuste rühmitamine ettevõtte finantsaknas: {STRING}
 
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Ajaleht: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Mängi häält ajalehe vaatamisel
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Aasta lõpp: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Ehitis: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Mängi heliefekti edukatel rajamistel või muudel tegevustel
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Nupu vajutused: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Piiksu nuppe klõpsates
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Mängi sõidukite helieffekte
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Blokeeri infrastruktuuri ehitamine kui sobivad sõidukid puuduvad: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Enim ronge ettevõtte kohta: {STRING}
@@ -1377,8 +1390,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :lubatud, koos l
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Puude lisamine keset mängu: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :mitte kuhugi {RED}(saeveski ei saa töötada)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :ainult vihmametsadesse
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :igale poole
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Ainult vihmametsadesse
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Igale poole
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Tööriistariba asukoht: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Seisundiriba asukoht: {STRING}
@@ -1408,6 +1421,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Majandu
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurendid
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Kuvaseaded
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Suhtlemine
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Heliefektid
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Uudised ja sõnumid
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaalid
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Kauba käsitlemine
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Arvutimängijad
@@ -3154,9 +3169,11 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vali ase
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vali uus vedur, millega sa soovid vasakult valitud vedurit asendada.
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Alusta Sõidukite Vahetamist
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Asenda ainult vanu sõidukeid
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Vajuta vasakul asuva veduri asendamiseks paremal valitud veduriga
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ei asenda praegu
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ühtegi veovahendit pole valitud
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} kui vana
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lõpeta Sõidukite Asendamine
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Vajuta lõpetamaks vasakult valitud veduri asendust
 
@@ -3683,6 +3700,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Kaardi 
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Mäng ei leidnud helisid. Helid saad paigaldada Internetisisu laadimise aknast
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Hiiglaslik pilt
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Ekraanitõmmis edukalt salvestatud nimega '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekraanitõmmise võtmine nurjus!
@@ -3706,6 +3724,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... oman
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... ala kuulub teisele ettevõttele
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... maastikukujunduse limiit ületatud
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... maaala puhastamise limiit ületatud
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... puu istutamise limiit ületatud
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nime ei tohi korduda
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} on ees
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Pole lubatud kui mäng seisab
@@ -3767,6 +3786,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... saab
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... saab ehitada ainult vihmametsadesse
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... saab ehitada ainult kõrbesse
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... saab ainult linnadesse ehitada
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... saab ainult linna keskpunkti lähedale ehitada
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... saab ainult madalatele aladele ehitada
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... saab ainult ehitada kaardi serva
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... metsa saab istutada ainult lumepiirist kõrgemale

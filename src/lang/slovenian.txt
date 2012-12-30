@@ -732,7 +732,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Posojilo
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Skupaj:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Število vozil, ki so imela zadnje leto dobiček. Všteta so cestna vozila, vlaki, ladje in letala
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Število delov postaj. Vsak del postaje (npr. avtobusna, železniška, letališče) je štet, tudi če so povezani v eno
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Število nedavno servisiranih postaj. Železniške postaje, avtobusne postaje, letališča in ostale vrste postaj so štete ločeno, čeprav spadajo pod isto postajo
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Dobiček vozila z najnižjim prihodkom (samo vozila, starejša od 2 let)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Znesek denarja v četrtini z najnižjim dobičkom od zadnjih 12 četrtin
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Znesek denarja v četrtini z najvišjim dobičkom zadnjih 12 četrtin
@@ -1193,10 +1193,17 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredne
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ni razpoložljive razlage)
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Omeji spodnji seznam na le določene tipe nastavitev
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Vse nastavitve
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Nastavitve gostov (se ne zapiše ob shranjevanju; vpliva na vse igre)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Nastavitve igre (zapisane ob shranjevanju; vplivajo le na nove igre)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Nastavitve igre (zapisane ob shranjevanju; vplivajo le na trenutno igro)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Nastavitve podjetja (zapisane ob shranjevanju; vplivajo le na nove igre)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Nastavitve podjetja (zapisane ob shranjevanju; vplivajo le na trenutno podjetje)
 
 STR_CONFIG_SETTING_OFF                                          :Izklopi
 STR_CONFIG_SETTING_ON                                           :Vklopi
-STR_CONFIG_SETTING_DISABLED                                     :onemogočeno
+STR_CONFIG_SETTING_DISABLED                                     :Onemogočeno
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Izklop
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Lastno podjetje
@@ -1212,6 +1219,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Desno
 
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Dovoli gradnjo hiš na nagibih ali obali: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Če je omogočeno, so lahko tračnice in postaje zgradjene na večini pobočij. Če je onemogočeno, so dovoljene le na pobočjih, ki ustrezajo smeri tračnic in zato ne zahtevajo temelje.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Dovoli oblikovanje terena pod objekti, tiri, ipd. (samonaklon): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Dovoli spremembo terena pod zgradbami in tiri brez odstranitve
 STR_CONFIG_SETTING_CATCHMENT                                    :Dovoli bolj resnični območni zajem postaj: {STRING}
@@ -1250,9 +1258,9 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Največja dolž
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Največja dolžina gradnje predorov
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Glavni ročni način gradnje industrij: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Način vlaganja v primarno industrijo. Perspektivna pomeni, da se gradnja izvrši naključno na ozemlju in lahko tudi propade v težavah. Kot ostale industrije pa se gradijo za družbo kjerkoli ji ustreza.
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :brez
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kot ostale industrije
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :obetaven
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Nobena
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Kot ostale industrije
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Obetaven
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Ravnina okrog industrij: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Ravnina okrog industrije. To zagotovi okrog industrije ravnino za gradnjo poti.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Dovoli več enakih industrij na mesto: {STRING}
@@ -1290,9 +1298,9 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Nastavitev rela
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Število letalskih nesreč: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Nastavitev verjetnosti letalske nesreče
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :brez
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :zmanjšano
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalno
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Brez
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Zmanjšano
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normalno
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Dovoli prehodne postaje na cestah v lasti mest: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Dovoli gradnjo pretočnih postaj na cesti, ki je v lasti mesta.
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Dovoli prevoženja postaj na tekmečevih cestah: {STRING}
@@ -1312,9 +1320,9 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Opozori, če se
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Sporočila o vozilih, ki ne najdejo poti do cilja.
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Pregled ukazov vozila: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Če je omogočeno, se občasno preverjajo ukazi vozil in ob napaki se prikaže sporočilo.
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ne
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :da, toda izloči ustavljena vozila
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :vseh vozil
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Ne
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Da, toda izloči ustavljena vozila
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Vseh vozil
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Opozori, če je prihodek vozila negativen: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Če je omogočeno, se odpre sporočilo, v kolikor neko vozilo ni ustvarilo dobička v koledarskem letu.
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila nikoli ne dotrajajo: {STRING}
@@ -1361,6 +1369,8 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Omogoči obliko
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Eno ali več polj na severnem robu ni praznih
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Eno ali več polj na robu ni vodnatih
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Največji razpon postaje: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Največja površina na kateri so lahko deli ene postaje. Vzamite v obzir, da lahko visoke vrednosti upočasnijo igro.
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Avtomatski servis helikopterjev na pristajališču: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Servisiranje helikopterjev po vsakem pristanku, tudi če ni hangarja na letališču.
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Pripni orodje za teren k orodju za gradnjo cest/železnic itd.: {STRING}
@@ -1415,10 +1425,10 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Avtomatsko pavz
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Če je omogočeno, se igra avtomatsko pavzira ob zagonu nove igre, za preučitev ozemlja.
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Med pavzo dovoli: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Izbor operacij, izvedljivih med pavzo.
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :nič dejanj
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :vsa dejanja, ki niso povezana z gradnjo
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :vsa dejanja razen urejanja ozemlja
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :vsa dejanja
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Nobeno dejanje
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Vsa negradbena dejanja
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Vsa dejanja razen urejanja pokrajine
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Vsa dejanja
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Uporabi napreden seznam vozil: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Omogoči uporabo naprednih seznamov vozil za skupine
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Uporabi pregledno polnenje: {STRING}
@@ -1441,6 +1451,22 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Ohrani orodja z
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Prikaži stroške v tabeli financ po skupinah: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definiraj obliko za okno stroškov podjetja
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Povzetek novic: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Predvajaj zvok za sporočila o povzetkih novic
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Časopis: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Predvajaj zvok ob prikazu časopisa
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Konec leta: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Predvajaj zvočni efekt na koncu leta ob povzetku uspešnosti podjetja skozi leto v primerjavi s predhodnim letom
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Gradnja: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Predvajaj zvočni efekt ob uspešnih izgradnjah ali drugih dejanjih
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Zvok gumbov: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Zvok ob pritisku na gumb
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastrofe/nesreče: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Predvajaj zvočne efekte nesreč in katastrof
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vozila: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Predvajaj zvoke vozil
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Okolje: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Predvajaj okoljske zvočne efekte pokrajin, industrij in mest
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Onemogoči infrastrukurno stavbo, če ni na voljo nobenih ustreznih vozil: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Če je omogočeno, je samo v primeru vozil na razpolago vidna infrastruktura, za preprečevanje vlaganja časa in denarja v neuporabno infrastrukturo.
@@ -1473,7 +1499,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Izbira, ali se 
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Privzeto servisno obdobje vlakov: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Nastavitev privzetega obdobja servisiranja za železniška vozila, razen če ni izjemno nastavljeno obdobje za posamično vozilo.
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} d{P 0 an neva dni dni}/%
-STR_CONFIG_SETTING_SERVINT_DISABLED                             :onemogočeno
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Onemogočeno
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Privzeto servisno obdobje cestnih vozil: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Nastavitev privzetega obdobja servisiranja za cestna vozila, razen če ni izjemno nastavljeno obdobje za posamično vozilo.
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Privzeto servisno obdobje letal: {STRING}
@@ -1495,13 +1521,21 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Odpiranje indus
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zapiranje industrij: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomske spremembe: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Sprememba proizvodnje industrij v oskrbi podjetja: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Prikaži časopis ob spremembi proizvajalne ravni industrij, ki jih servisira podjetje ali tekmeci
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Proizvodne spremembe industrij v oskrbi tekmecev: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Prikaži časopis ob spremembi proizvajalne ravni industrij, ki jih servisira tekmec
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Spremembe proizvodnje drugih industrij: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Prikaži časopis ob spremembi proizvajalne ravni industrij, ki jih ne servisira podjetje ali tekmeci
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Nasveti / informacije o vozilih podjetja: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Prikaži sporočilo, ko vozila potrebujejo pozornost
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nova vozila: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Prikaži sporočilo, ko postane novo vozilo na voljo
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Spremebe v sprejemanju tovora: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Prikaži sporočilo on spremembi sprejemanja nekaterih vrst tovora na postajah
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencije: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Prikaz časopis o subvencijskih povezanih dogodkov
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Splošne Informacije: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Prikaži časopis o splošnih novicah, kot so nakupi izključih pravic ali financiranja obnov cest
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Izključeno
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Povzetek
@@ -1538,11 +1572,11 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Vse
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Oblika cest za nova mesta: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Postavitev cestnega omrežja mest
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :privzeto
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :boljše ceste
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Privzeto
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Boljše ceste
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 mreža
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 mreža
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :naključno
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Naključno
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Mesta lahko gradijo ceste: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Dovoli mestom gradnjo cest za širjenje. Onemogočeno - mesta sama ne morejo graditi cest.
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Mestom je dovoljena izgradnja istonivojnih prehodov: {STRING}
@@ -1551,15 +1585,15 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Omogoči mestni
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Če je onemogočeno, lahko mesta sprejmejo po 2 letališči. Omogočeno - Število letališč se sprejme po hrupu, odvisno od št. prebivalcev, oddaljenosti, velikosti.
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Ustanavljanje mest v igri: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Če je omogočeno, lahko igralci ustanovijo nova mesta.
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prepovedano
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :dovoljeno
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :dovoljeno, oblika mesta po meri
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Prepovedano
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Dovoljeno
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Dovoljeno, oblika mesta po meri
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Sajenje dreves znotraj igre: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Kontrola naključne vrste dreves med igro. To lahko vpliva na gozdarski obrat.
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :brez {RED}(onemogoči gozdarski obrat)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :samo v deževnem gozdu
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :povsod
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Nadziraj naključne vrste dreves med igro. To lahko vpliva na industrije, ki so odvisne od rasti dreves, na primer gozdarski obrat.
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Nikjer {RED}(onemogoči gozdarski obrat)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Samo v deževnih gozovih
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Povsod
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Pozicija glavne orodne vrstice: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Vodoravna pozicija glavne orodne vrstice na vrhu zaslona.
@@ -1568,7 +1602,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Vodoravna pozic
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Območje lepljenja oken: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Razmak med okni, preden se poravnajo s sosednjim.
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piks{P 0 el la le lov}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :onemogočeno
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Onemogočeno
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Največje število nelepljivih oken: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Število nelepljivih odprtih oken preden se stara začno zapirati.
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
@@ -1593,7 +1627,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Zelo hitro
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Delež naselij, ki bodo postala mesta: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Količina naselij, ki bodo postala mesta, ne glede na to, da mesta, ki startajo večja, rastejo hitreje.
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 na {COMMA}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :brez
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Noben
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Začetni faktor rasti mesta: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Povprečna velikost mest relativno gledano na normalna naselja na začetku igre.
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Odstrani absurdne cestne elemente med gradnjo cest: {STRING}
@@ -1607,6 +1641,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Tekmeci
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Prikaži možnosti
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaktivnost
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvočni učinki
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Novice in sporočila
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signali
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Upravljanje tovora
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računalniški igralci

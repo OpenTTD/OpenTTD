@@ -1061,10 +1061,16 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspert indstil
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Indstillinger med en anden værdi end standard
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Indstillinger med en anden værdi end dine nyt-spil indstillinger
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alle indstillinger
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Klient indstilling (ikke lagret i gemt spil, påvirker alle spil)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spil indstilling (lagret i gemt spil, påvirker kun nye spil)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spil indstilling (lagret i gemt spil, påvirker kun det aktuelt spil)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Firma indstilling (lagret i gemt spil; påvirker kun nye spil)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firma indstilling (lagret i gemt spil; påvirker kun aktuelt selskab)
 
 STR_CONFIG_SETTING_OFF                                          :Fra
 STR_CONFIG_SETTING_ON                                           :Til
-STR_CONFIG_SETTING_DISABLED                                     :deaktiveret
+STR_CONFIG_SETTING_DISABLED                                     :Deaktiveret
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Fra
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Eget firma
@@ -1078,6 +1084,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Venstre
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Center
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Højre
 
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Køretøjs nedbrud: {STRING}
+STR_CONFIG_SETTING_DISASTERS                                    :Katastrofer: {STRING}
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillad bygning på skråninger og kyster: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Hvis den er aktiveret, kan spor og stationer bygges på de fleste skråninger. Hvis den er deaktiveret, er de kun tilladt på skråninger, som svarer til retningen af sporet og kræver derfor ikke fundament
@@ -1119,9 +1127,9 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimal tunnel
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimal længde af tunneler
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Metode til manuel opførsel af primær industri: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metode til finansiering af en primær industri. 'Ingen' betyder, at det ikke er muligt at finansiere nogen, 'efterforskning' betyder finansiering er mulig, men byggeriet sker et tilfældigt sted på kortet, og kan lige så godt slå fejl, "som andre industrier" betyder rå industrier kan konstrueres af firmaer ligesom forarbejdningsindustrier i enhver position de ønsker
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ingen
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre industrier
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :efterforskning
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Ingen
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Som andre industrier
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Efterforskning
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Fladt område omkring industier: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Mængden af ​​fladt område omkring en industri. Dette sikrer tom plads vil forblive tilgængelige omkring en industri for bygge spor osv.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Tillad flere af samme slags industri per by: {STRING}
@@ -1144,10 +1152,10 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Kødannelse af 
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Få et køretøj til at vente foran optaget veje indtil de er ryddet
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Panorér vindue når musen er ved kanten: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Når den er aktiveret, vil skærmbilledet begynde at rulle, når musen er nær kanten af skærmen
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :deaktiveret
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :hoved visningsport, kun i fuldskærm
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :hoved visningsport
-STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :alle visningsporte
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Deaktiveret
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Hoved visningsport, kun i fuldskærm
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Hoved visningsport
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Alle visningsporte
 STR_CONFIG_SETTING_BRIBE                                        :Tillad bestikkelse af de lokale myndigheder: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Tillade firmaer at forsøge at bestikke den lokale myndighed. Hvis bestikkelsen bliver opdaget af en inspektør vil selskabet ikke være i stand til at handle i byen i seks måneder
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tillad køb af eksklusive transportrettigheder: {STRING}
@@ -1165,9 +1173,9 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Indstil den rel
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Antal flystyrt: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Angiv chancen for et flystyrt sker
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ingen
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ingen
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduceret
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillad gennemkørsels-stop på veje ejet af en by: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Tillad konstruktion af gennemkørsels-stop på by-ejede veje
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Tillad gennemkørsels-stoppesteder på veje ejet af konkurrenter: {STRING}
@@ -1188,8 +1196,8 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Få meddelelser
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Kontroller køretøjers ordreliste: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Hvis aktiveret, bliver ordrerne af køretøjerne regelmæssigt kontrolleret, og nogle åbenlyse problemer rapporteres med en nyhedsmeddelelse når de opdages
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nej
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, men udelad stoppede køretøjer
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :af alle køretøjer
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ja, men udelad stoppede køretøjer
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Af alle køretøjer
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Advar hvis et køretøjs indtjening er negativ: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Når aktiveret, bliver en nyhedsmeddelelse sendt når et køretøj der ikke har haft overskud inden for et kalenderår
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Køretøjernes levealder udløber aldrig: {STRING}
@@ -1289,10 +1297,10 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Sæt automatisk
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Når aktiveret, vil spillet automatisk pause når du starter et nyt spil, det giver mulighed for at studerer kortet nærmere
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Når pauset tillad: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Vælg hvilke handlinger der kan udføres, mens spillet er sat på pause
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :ingen handlinger
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Ingen handlinger
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Alle ikke-byggemæssige handlinger
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :alle på nær landskabs-ændrende handlinger
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :alle handlinger
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Alle på nær landskabs-ændrende handlinger
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Alle handlinger
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Brug avanceret køretøjsliste: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Aktiver brug af avancerede køretøjs-lister for gruppering af køretøjer
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Benyt laste-indikatorer: {STRING}
@@ -1314,8 +1322,14 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupper udgifte
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definer layout for firmaets udgifter-vindue
 
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Nyhedsavis: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Afspil lyd ved visning af aviser
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Årets slutning: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Konstruktion: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Knap tryk: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Bip ved klik på knapperne
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastrofer/Ulykker: {STRING}
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Afspil uheld og katastrofers lydeffekter
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Køretøjer: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Afspil køretøjers lydeffekter
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Deaktiver bygning af infrastruktur når ingen passende køretøjer er tilgængelige: {STRING}
@@ -1341,7 +1355,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes før s
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Service intervaller er i procent: {STRING}
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 "" e}/%
-STR_CONFIG_SETTING_SERVINT_DISABLED                             :deaktiveret
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deaktiveret
 STR_CONFIG_SETTING_NOSERVICE                                    :Slå service fra, når nedbrud er sat til ingen: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktiver hastighedsbegrænsning for vogne: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Slå elektriske jernbaner fra: {STRING}
@@ -1349,15 +1363,21 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Slå elektriske
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Ankomst af første køretøj til spillerens station: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Ankomst af første køretøj til modstanderens station: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Uheld / katastrofer: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Vis en avis når ulykker eller katastrofer opstår
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Selskabsinformation: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Åbning af industrier: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Vis en avis når nye industrier åbner
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Lukning af industrier: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Vis en avis når industrier lukker ned
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Økonomiændringer: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Vis en avis om globale ændringer i økonomi
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produktionsændringer i industrier betjent af firmaet: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produktionsændringer for industrier forsynet af deltager(e): {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Andre produktionsændringer for industri: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Råd / information om firmaets køretøjer: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Vis meddelelser om køretøjer der kræver opmærksomhed
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nye køretøjer: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Vis en avis, når en ny køretøjstype bliver tilgængelig
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Ændring i accepteret fragt: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Tilskudsordninger: {STRING}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Generel information: {STRING}
@@ -1388,28 +1408,28 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Vej-layout for nye byer: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Layout for vejnettet i byer
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :standard
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :bedre veje
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Standard
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Bedre veje
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 gitter
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :tilfældig
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Tilfældig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Byer kan bygge veje: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Byer kan bygge niveaukryds: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Tillad byer at fastsætte støjgrænser for lufthavne: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :At stifte byer i selve spillet: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :ikke tilladt
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tilladt
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tilladt, tilpasset by-layout
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Ikke tilladt
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Tilladt
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Tilladt, tilpasset by-layout
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Placering af træer i spillet: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ingen {RED}(ødelægger træfabrik)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :kun i regnskove
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :alle steder
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ingen {RED}(ødelægger træfabrik)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Kun i regnskove
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Alle steder
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Placering af værktøjslinje: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Position af statusbar: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :deaktiveret
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Deaktiveret
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Vinduesbegræsning (ikke-sticky): {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :deaktiveret
@@ -1431,7 +1451,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Meget hurtig
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Andel af byer der er storbyer: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Mængden af byer der vil blive bestragtet som storbyer, og derfor er større og vokser hurtigere
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 ud af {COMMA}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ingen
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ingen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Startværdi for bystørrelsesfaktor: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gennemsnitlig størrelse af storbyer i forhold til normale byer ved start af spillet
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Fjern absurde vejelementer under opførelse af vej: {STRING}
@@ -3744,6 +3764,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}At ænd
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Kun nød lydsetet blev fundet. Hvis du gerne vil have lyd bliver du nød til at installere et lydsæt ved hjælp af indholds download systemet.
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Kæmpe skærmbillede
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skærmbilledet blev gemt som '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Fejl under tagning af skærmbillede!

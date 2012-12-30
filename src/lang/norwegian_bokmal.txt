@@ -219,6 +219,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} fot
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filterstreng:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriv inn søkefilter
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Skriv inn et søkeord for å filtrere listen med
 
@@ -404,6 +405,7 @@ STR_GRAPH_MENU_HIGHSCORE                                        :Tavle med høye
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Liste over industrier
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Industrikjeder
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finansier ny industri
 ############ range ends here
 
@@ -1126,72 +1128,128 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Togakselerasjon
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Velg fysikkmodell for togakselerasjon. Originalmodellen gjør at alle tog går saktere i oppoverbakke, mens den realistiske modellen tar flere faktorer i betraktning.
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Kjøretøyers akselerasjonstype: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Velg fysikkmodell for kjøretøyakselerasjon. Originalmodellen gjør at alle kjøretøy går sakte i motbakke. Den realistiske modellen tar flere forhold med kjøretøyene i betraktning.
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Skråningens bratthet for tog: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Brattheten av et skrått kartelement for et tog. Høyere verdier gjør det vanskeligere å klatre en bakke
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA} %
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Skråningens bratthet for veikjøretøy: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Brattheten av et skrått kartelement for et veikjøretøy. Høyere verdier gjør det vanskeligere å kjøre opp bakken
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Forby tog og skip å gjøre 90° svinger: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-graders svinger oppstår når et horisontalt spor etterfølges av et vertikalt spor på tilstøtende kartelement, som dermed fører til at toget må snu 90 grader når det krysser kartelementet, istedenfor de vanlige 45 grader for andre spor-kombinasjoner. Dette gjelder også for båters svingradius
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Tillat sammenslåing av stasjoner som ikke ligger inntil hverandre: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Gjør det mulig å legge til deler til en stasjon uten at de er direkte vid siden av hverandre. Bruk Ctrl+klikk for å bygge slike stasjoner.
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Bruk forbedret lastealgoritme: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Hvis aktivert, vil flere kjøretøy som venter på en stasjon lastes sekvensielt. Lasting av neste kjøretøy begynner først når det er nok last tilgjengelig for å fylle opp det første kjøretøyet
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Last kjøretøy gradvis: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Gradvis laste kjøretøy ved å bruke kjøretøyenes spesifikke lastetider, i stedet for å laste alt på én gang med en fast varighet som bare avhenger av mengden gods lastet
 STR_CONFIG_SETTING_INFLATION                                    :Inflasjon: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Aktiver inflasjon i økonomien, der kostnader stiger litt raskere enn betalinger
 STR_CONFIG_SETTING_SELECTGOODS                                  :Lever varer til en stasjon kun hvis det er etterspørsel: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Bare levere gods til en stasjon som som har blitt forespurt fra et lastende kjøretøy. Dette forhindrer dårlige karakterer for gods som ikke betjenes på en stasjon
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimal brolengde: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimal lengde for broer
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimal tunnellengde: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimal lengde for tunneller
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Konstruksjonsmetode for primærindustri: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metode for finansiering av en primærindustri. 'none' betyr at det ikke er mulig å finansiere noen, 'prospecting' betyr at at finansiering er mulig, men oppbyggingen skjer på et tilfeldig sted på kartet og kan like godt mislykkes, 'as other industries' betyr at råvareindustri kan bygges opp av selskaper som prosessindustri i hvilke som helst posisjoner
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Ingen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Som andre industrier
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospekterer
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Flatt område rundt industrier: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Mengde flatmark rundt en industri. Dette sikrer at det er plass til å bygge spor og stasjoner i nærheten av industrien.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Tillat flere like industrier i samme by: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalt vil en by ikke ha mer enn én næring av samme type. Med denne innstillingen vil det tillates flere næringer av samme type i samme by
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Vis signaler: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Velg på hvilken side av skinnene signalene blir plassert
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Til venstre
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :På kjøre-siden
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Til høyre
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Vis regnskap ved nyttår: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Hvis aktivert, spretter økonomivinduet opp på slutten av hvert år for å muliggjør en enkel inspeksjon av selskapets økonomiske status
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nye ordre er 'direkte' som standard: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalt vil et kjøretøy stoppe på alle stasjoner det passerer. Ved å aktivere denne innstillingen, vil det kjøre gjennom alle stasjoner på vei til sin endelige destinasjon uten å stoppe. Merk at denne innstillingen bare definerer en standardverdi for nye ordre. Individuelle ordre kan uansett settes til begge atferder
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nye togordre stopper som standard ved {STRING} av plattformen
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Plass hvor toget vil stoppe på plattformen som standard. Valget 'near end' betyr nær inngangspunktet og 'far end' betyr langt unna inngangspunktet. Merk at denne innstillingen bare definerer en standardverdi for nye ordre. Individuelle ordre kan uansett settes til begge atferder
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :nær slutten
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :midten
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :enden
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Kjøretøykø (med kvantumseffekter): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Gjør at veikjøretøy må vente foran okkuperte veihindringer inntil de er fjernet
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Flytt på bildet hvis pilen er nær ytterkantene av skjermen: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Når aktivert, vil synsfeltet begynne å rulle når musen er nær kanten av vinduet
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Deaktivert
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Hoved tillegsvindu, bare fullskjerm
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :hoved tillegsvindu
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :alle tillegsvindu
 STR_CONFIG_SETTING_BRIBE                                        :Tillat bestikkelser av bystyret: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Tillat selskaper å prøve å bestikke de lokale myndighetene i byen. Hvis bestikkelsen blir oppdaget av en inspektør, vil selskapet ikke være i stand til å gjøre forretninger i byen de neste seks månedene
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tillat kjøp av eksklusive transportrettigheter: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Om et firma kjøper eksklusive transportrettigheter for en by, vil ikke motstandernes stasjoner motta varer eller passasjorer på ett år.
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Tillat finansiering av bygninger: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Tillat firmaer å gi penger til byer til bygging av nye bygninger
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Tillat finansiering av lokal veikonstruksjon: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Tillat selskaper å gi penger til byer for omlegging av veinettet for å sabotere veibaserte tjenester i byen
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Tillat pengeoverføring til andre firmaer: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Tillat firmaer å overføre penger til andre firmaer i flerspillermodus
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Vektmultiplikator for last til å simulere tunge tog: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Still virkningen av å frakte gods i tog. En høyere verdi gjør det mer krevende for tog å frakte gods, spesielt i bakker
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Flyfart faktor: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Still den relative hastigheten til fly sammenlignet med andre kjøretøy, for å redusere inntekter ved luftfrakt
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Antall flystyrter: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Bestem sjansen for en flykatastrofe
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ingen
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Redusert
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normalt
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillat stoppesteder med gjennomkjøring på by-eide veier: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Tillat bygging av stoppesteder med gjennomkjøring på by-eide veier
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Tillat stoppesteder med gjennomkjøring på motstander-eide veier: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Tillat bygging av gjennomkjørbare lastestasjoner på veier eid av andre selskaper
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Tillat bygging av nærliggende stasjoner: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Tillat forskjellige stasjoner å være i hverandre
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Aktiver flere NewGRF-kjernesett: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Kompatibilitets-valg for gamle NewGRF-filer. Ikke deaktivér dette med mindre du vet nøyaktig hva du gjør!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det er ikke mulig å endre denne innstillingen når det allerede finnes kjøretøy.
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Vedlikehold av infrastruktur: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Når aktivert, medfører infrastruktur vedlikeholdskostnader. Kostnadene vokser over-proporsjonalt med nettverkets størrelse, og påvirker dermed større selskaper mer enn de små
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flyplasser utgår aldri: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Aktivering av denne innstillingen gjør at hver type flyplass forblir tilgjengelig for alltid etter at sin introduksjon
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Varsle hvis et kjøretøy har kjørt seg vill: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Utløser meldinger om kjøretøy som ikke finner en rute til deres angitte destinasjon
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Inspiser kjøretøyenes ordre: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Når aktivert, blir ordrene til kjøretøyene regelmessig kontrollert, og noen åpenbare problemer blir rapportert med en nyhetsmelding når de oppages
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nei
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ja, men utelukk stoppede kjøretøy
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Alle kjøretøy
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Advar hvis inntekten til et kjøretøy er negativ: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Når aktivert, vil en nyhetsmelding vises når et kjøretøy ikke har tjent penger i løpet av ett kalenderår
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kjøretøy utgår aldri: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Når aktivert, vil alle kjøretøysmodeller være tilgjengelig for alltid etter de introduseres
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoforny kjøretøy når det blir gammelt: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Når aktivert, blir et kjøretøy som nærmer seg slutten av sin levetid automatisk erstattet når betingelsene for fornyelse er oppfylt
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autoforny kjøretøy når det er {STRING} maks alder
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relativ alder når kjøretøy burde bli vurdert autofornyet
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} måned{P 0 "" s} før
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} måned{P 0 "" s} etter
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimum formue for autofornyelse av kjøretøy: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minste pengemengde som må være igjen i banken for å vurdere automatisk fornying av kjøretøy
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Varighet av error-melding: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Varighet for visning av feilmeldinger i et rødt vindu. Vær oppmerksom på at noen (kritiske) feilmeldinger ikke lukkes automatisk etter dette tidspunktet, men må lukkes manuelt
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} andre{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Vis verktøytips: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Forsinkelse før verktøytips vises når musen svever over elementer i grensesnittet. Alternativt kan verktøytips bindes til den høyre museknappen
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hovre i {COMMA} sekund{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Høyreklikk
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Vis byers innbyggertall i tittelfeltet: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Vis inbyggertallet i byer i tittelfeltet på kartet
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Graflinjenes tykkelse: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Linjebredde i grafene. En tynn linje er mer presis å lese av, mens en tykkere linje er lettere å se, og farger er lettere å skille
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landskapsgenerator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Orginal
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maks distanse fra kant for Olje Raffinerier: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olje rafinerier er bare bygd nær kartets kanter, det er ved kysten på øy kart
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snøgrense: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ulendthet på terreng (kun TerraGenesis): {STRING}
@@ -1212,25 +1270,37 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Når deaktivert
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}En eller flere ruter ved den nordlige kanten av kartet er ikke tom(me)
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}En eller flere ruter ved en av kantene på kartet er ikke vann
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Maks stasjonspredning: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maksimalt areal som delene av en enkelt stasjon kan spres ut på. Vær oppmerksom på at høye verdier vil gjøre spillet tregere
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Automatisk vedlikehold ved helikopterplass: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Utfør vedlikehold av helikoptre etter hver landing, selv om det ikke er noen depot på flyplassen
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Koble landskapsverktøylinjen til bygningsverktøylinjene: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Når du åpner verktøylinjen for en transporttype, åpne også verktøylinjen for landskapsendring
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Landfarge brukt på oversiktskartet: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Farge på terrenget på minikartet
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grønn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mørkegrønn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fiolett
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Snu rulleretningen: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Opptreden ved rulling av kartet med høyre museknapp. Når deaktivert, beveger musen kameraet. Når aktivert, beveger musen kartet
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Myk rulling: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Velge hvordan synsfeltet ruller til en bestemt posisjon når du klikker på det lille kartet, eller ved utstedelse av en kommando for å gå til et bestemt objekt på kartet. Hvis aktivert, ruller synsfeltet jevnt, og hvis deaktivert hopper det direkte til det valgte punktet
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Vis målingsverktøy ved bruk av byggingsverktøy: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Vise avstander mellom kartelementer samt høydeforskjeller når du drar linjer ved byggevirksomhet
 STR_CONFIG_SETTING_LIVERIES                                     :Vis firmaovertakelser: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Kontrollér bruken av kjøretøystype-spesifikke lakkeringer (i motsetning til selskaps-spesifikke)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ingen
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eget firma
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Alle firmaer
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Foretrekk lagsamtale med <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Bytte bindingen av selskapets interne og offentlige kommunikasjon til <ENTER>, henholdsvis <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Rullehjulets funksjon: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Tillat rulling med todimensjonale musehjul
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom kartet
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Rull kartet
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Av
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Rullehjulets hastighet på kartet: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontroller sensitiviteten til rulling med muse-hjulet
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Skjermtastatur: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Velg metode for å åpne skjerm-tastaturet for inntasting av tekst i tekstbokser ved hjelp av pekeenheten. Dette er ment for små enheter uten fysisk tastatur
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Deaktivert
@@ -1239,39 +1309,54 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Enkelt klikk (v
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enkelt klikk (umiddelbart)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Høyreklikkemulering: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Velg metoden å etterligne høyreklikk
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando+klikk
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+klikk
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Venstre-klikk rulling: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Tillat rulling av kartet ved å dra det med den venstre museknappen. Dette er spesielt nyttig når du bruker en berøringsskjerm
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Bruk {STRING} datoformat i navn på lagrede spill.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datoformat i lagrede spills filnavn
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. Des 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Antatt palett for NewGRFer uten spesifisert palett: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Standardpalett å bruke for NewGRF filer som ikke angir hvilken palett de trenger
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS palett
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palett
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pause automatisk ved start av nytt spill: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Når aktivert, vil spillet automatisk pause når du starter et nytt spill, for å tillate nærmere studie av kartet
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Når spillet er på pause, tillat: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Velg hvilke handlinger som kan bli gjort når spillet er pauset
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Ingen handlinger
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Alt utenom konstruksjon
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Alt utenom landskapsendringer
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Alle handlinger
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Bruk avansert kjøretøyliste: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Aktiver bruk av de avanserte kjøretøyslistene for guppering av kjøretøy
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Bruk lastingsindikatorer: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Velg hvorvidt lasteindikatorer vises over kjøretøy som lastes eller losses
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Vis rutetabell i antall tikk i stedet for antall dager: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Vis reisetider i tidstabeller i spillets 'tidsenheter' fremfor dager
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Vis ankomst og avgang i rutetabeller: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Vise forventede ankomst- og avgangstider i rutetabeller
 STR_CONFIG_SETTING_QUICKGOTO                                    :Rask opprettelse av kjøretøyordre: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Forhåndsvelg 'gå til markøren' når ordre-vinduet åpnes
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Standard jernbanetype (etter nytt/innlastet spill): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Jernbanetype som velges når man starter eller laster et spill. 'første tilgjengelige' velger den eldste typen spor, 'siste tilgjengelige' velger den nyeste typen spor og 'mest brukt' velger den typen som for tiden er mest i bruk
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Første tilgjengelige
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Siste tilgjengelige
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest brukt
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Vis reserverte spor: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Gi reserverte spor en annen farge for å bistå med problemer hvor tog nekter å entre sti-baserte blokker
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :La byggingsverktøy være aktive etter bruk: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Holde verktøylinjen for bruer, tunneler, osv åpnet etter bruk
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupper utgifter i firmaets finansvindu: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definer oppsettet for vinduet som viser selskapets utgifter
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Nyhetstavle: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Spille av lyd for oppsummerte nyhetsmeldinger
@@ -1291,15 +1376,24 @@ STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omgivelse: {STR
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spill bakgrunns-lydeffekter til landskap, industrier og byer
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Fjern infrastrukturbygging før tilhørende kjøretøy er tilgjengelige: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Når aktivert, vil infrastruktur bare være tilgjengelig hvis det også finnes kjøretøy tilgjengelig, for å forhindre sløsing av tid og penger på ubrukelig infrastruktur
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks antall tog per firma: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimalt antall tog som et selskap kan ha
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks antall kjøretøy per firma: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maksimalt antall veikjøretøy som et selskap kan ha
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maks antall luftfartøy per firma: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maksimalt antall fly som et selskap kan ha
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Maks antall skip per firma: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maksimalt antall skip som et selskap kan ha
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Hindre datamaskinen i å bygge tog: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Aktivering av denne innstillingen gjør bygging av tog umulig for en datamaskin-spiller
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Hindre datamaskinen i å bygge kjøretøy: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Aktivering av denne innstillingen gjør bygging av veikjøretøy umulig for en datamaskin-spiller
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Hindre datamaskinen i å bygge luftfartøy: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Aktivering av denne innstillingen gjør bygging av fly umulig for en datamaskin-spiller
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Hindre datamaskinen i å bygge skip: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Aktivering av denne innstillingen gjør bygging av skip umulig for en datamaskin-spiller
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Profil for standardinnstillinger: {STRING}
 STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Velg hvilken innstillingsprofil som skal brukes for tilfeldige data-spillere eller for startverdier når du legger til nye data-spillere eller spill-skript
@@ -1308,12 +1402,28 @@ STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Middels
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Vanskelig
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tillat AIer i flerspiller: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Tillat datamaskin-spillere å delta i flerspiller-spill
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes før skript er avbrutt: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maksimalt antall beregningstrinn et skript kan ta i én omgang
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Vedlikeholdsintervaller er i prosent: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Velge om vedlikehold av kjøretøyer utløses av tiden som er forløpt fra siste gjennomførte vedlikehold, eller av at pålitelighet dropper under en bestemt prosent av maksimal pålitelighet
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standard vedlikeholdsintervall for tog: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Angi standard vedlikeholdsintervall for nye skinnegående kjøretøy, hvis det ikke er satt noe serviceintervall for kjøretøyet
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deaktivert
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Standard vedlikeholdsintervall for veikjøretøy: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Angi standard vedlikeholdsintervall for nye veikjøretøy, hvis det ikke er satt noe vedlikeholdsintervall for kjøretøyet
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standard vedlikeholdsintervall for fly: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Angi standard vedlikeholdsintervall for nye fly, hvis det ikke er angitt noe vedlikeholdsintervall for flyet
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standard vedlikeholdsintervall for skip: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Angi standard vedlikeholdsintervall for nye skip, hvis det ikke er angitt noe vedlikeholdsintervall for fartøyet
 STR_CONFIG_SETTING_NOSERVICE                                    :Deaktiver vedlikehold når havarier er slått av: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Når aktivert, vil kjøretøy ikke bli vedlikeholdt hvis de ikke kan bryte sammen
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktiver fartsgrenser for vogner: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Når aktivert, brukes også fartsgrenser til vogner for å avgjøre den maksimale hastigheten til et tog
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiver elektriske tog: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Aktivering av denne innstillingen deaktiverer kravet om å elektrifisere spor for å tillate at elektriske motorer kan kjøre på dem
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Første kjøretøy på spillers stasjon: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Vise en nyhetsoppdatering når det første kjøretøyet ankommer stasjonen til en ny spiller
@@ -1351,45 +1461,75 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sammendrag
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Fullt
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Farge i avisen kommer i: {STRING}
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Året der avisannonseringene bli vist i farger. Før dette året blir alle annonseringer vist i svart/hvitt.
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Året der avisannonseringene bli vist i farger. Før dette året blir alle annonseringer vist i svart/hvitt,
 STR_CONFIG_SETTING_STARTING_YEAR                                :Start spillet i år: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Jevn økonomi (flere, mindre endringer): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Når aktivert, endrer industriproduksjonen seg oftere, og i mindre trinn. Denne innstillingen har vanligvis ingen effekt hvis industriene er gitt av et NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillat aksjekjøp i andre firmaer: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Når aktivert, tillates kjøp og salg av selskapers aksjer. Aksjer vil kun være tilgjengelig selskaper som når en viss alder
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Prosentandel av etappe-overskudd som skal betales i innmatingssystem: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Andel av inntekten gitt til de mellomliggende etapper i et overføringssystem, noe som gir mer kontroll over inntektene
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Når du drar en linje, plasser signaler hver: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Angi distansen for når signaler vil bli bygget på et spor frem til neste hinder (signal, kryss), hvis signaler blir dratt
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} kartelement{P 0 "" s}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Når du drar en linje, oppretthold fast avstand mellom signaler: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Velg opptredenen av signalplassering når ved Ctrl + dragning av signaler. Hvis deaktivert, blir signaler plassert ved tunneler eller broer for å unngå lange strekninger uten signaler. Hvis aktivert, blir signalene plassert for hver N ruter, noe som gjør justering av signaler på parallelle spor enklere
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Bygg vingesignal automatisk før: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Angi året når elektriske signal vil bi tatt i bruk for spor. Før dette året vil ikke-elektriske signal bli brukt (som har nøyaktig samme funksjon, men forskjellig utseende)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Aktiver signalgrensesnittet: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Vis et vindu for å velge hvilke singaltyper som skal bygges, i stedet for vindusløs signaltype-rotasjon når man Ctrl + klikker på byggesignaler
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Standard signaltype: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Standard signaltype som blir brukt
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blokksignaler
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Avanserte signaler
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Enveis avanserte signaler
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Bla gjennom signaltyper: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Velg hvilke signaltyper å gå gjennom når Ctrl+trykke på et bygg signal med signal-verktøyet
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Kun blokksignaler
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Kun avanserte signaler
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Veiløsning for nye byer: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Løsning for veinettverket i byer
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Original
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Bedre veier
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 Rutenett
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 Rutenett
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Tilfeldig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Byer kan bygge veier: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Tillat byer å bygge veier for å vokse. Deaktiver for å forhindre bystyrer å bygge veier på egenhånd
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Byer har lov å bygge overganger: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Ved å aktivere denne innstillingen, tillates byer å bygge nivå kryssinger
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Tillat bykontrollert støynivå for flyplasser: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Med denne innstillingen deaktivert kan det være to flyplasser i hver by. Med denne innstillingen aktivert, antall flyplasser i en by blir bestemt av lydaksepteringen i byen, som avhenger av innbyggertall, flyplasstørrelse og avstand
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Grunnlegging av byer i spillet: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Ved å aktivere denne innstillingen tillates spillere å grunnlegge nye byer i spillet
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Forbudt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Tillatt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Tillatt, egendefinert oppsett av by
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Plassering av trær i spillet: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Kontroll tilfeldige utseender til tre under spillet. Dette kan påvirke industrier som avhenger av trevekst, for eksempel trelast
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ingen {RED}(ødelegger sagbruk)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Kun i regnskog
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Overalt
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Plassering av hovedverktøylinje: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horisontal posisjon av hoved verktøylinjen på toppen av skjermen
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Statusbarens posisjon: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Horisontal posisjon av status verktøylinjen på bunnen av skjermen
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Vinduers smekkeradius: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Avstanden mellom vinduer før vinduet som blir flyttet automatisk tilpasset nærliggende vinduer
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piksel{P 0 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Deaktivert
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksimalt antall flytende vinduer: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Antall ikke-klebrige åpne vinduer før gamle vinduer automatisk blir lukket for å gi plass til nye vinduer
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :deaktivert
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maks zoom-inn nivå: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maksimalt forstørrelsesnivå for synsfelt. Vær oppmerksom på at aktivering av høyere forstørrelsesnivå øker minnekravet
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maks zoom-ut nivå: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maksimalt 'zoom-ut' nivå for synsfelt. Høye ut-zoomingsnivåer kan føre til hakking når det brukes
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
@@ -1397,11 +1537,14 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Hastighet for byenes vekst: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Hastigheten byer vokser med
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ingen
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Sakte
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rask
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Veldig rask
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Andel av tettsteder som vil bli til byer: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Mengden av tettsteder som vil bli til byer, altså tettsteder som er større i starten og vokser raskere
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 av {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ingen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Innledende bystørrelsesmultiplikator: {STRING}
@@ -2282,6 +2425,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Vis kjed
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Vis vareleverings- og vareaksepterende industrier
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link til oversiktskart
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Velg de viste industriene på oversiktskartet i tillegg
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Velg last
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK} Velg lasten du vil vise
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Velg industri
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Velg industrien du vil vise
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informasjon om landområde

@@ -1022,6 +1022,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Няма
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Настройки за напреднали
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Всички настройки
 
 STR_CONFIG_SETTING_OFF                                          :изключено
 STR_CONFIG_SETTING_ON                                           :включено
@@ -1047,6 +1048,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :ляво
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :център
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :дясно
 
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Умножител на субсидии: {STRING}
+STR_CONFIG_SETTING_RECESSIONS                                   :Рецесии: {STRING}
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Строене на склонове и брегове: {STRING.n}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Тераформиране под постройки (autoslope): {STRING}
@@ -1185,6 +1188,9 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Премахв�
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Премахване на летателните машини за компютърния играч: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Премахване на корабите за компютърния играч: {STRING}
 
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Лесно
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Средно
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Трудно
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Позволи AI в мрежова игра: {STRING}
 
@@ -1267,6 +1273,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ико�
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Съперници
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Покажи опциите
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Взаимодействие
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Звукови ефекти
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Новини и съобщения
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Сигнали
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Обработката на товари
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Компютърни играчи
@@ -3379,6 +3387,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Пре�
 # Soundset messages
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Голям скрииншот
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Екраноснимката е успешно зъхранена с името '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Екраноснимката не се получи!
@@ -3572,6 +3581,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Тук �
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Тук не може да бъде построена трамвайна линия...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Пътя не може да се махне...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не може да се разруши трамвайната линия...
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... няма трамвайни линии
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Тук не е възможно да се прокопае канал...
@@ -3579,6 +3589,7 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Тук �
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Не можеш да сложиш реката тук...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... трябва да се построи във вода
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... това не може да бъде построено във водата
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... не може да се строи на река
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Първо трябва да бъде разрушен каналът
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Тук не може да бъде построен акведукт...
 
@@ -3594,6 +3605,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Мост
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Мостът е ту нисък за теренът
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Началото и краят трябва да са на една линия
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... краищата на моста трябва да бъдат на земя
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... мостът е много дълъг
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Мостът ще свърши извън картата
 
 # Tunnel related errors
@@ -3603,6 +3615,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Първ
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Друг тунел пречи
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Тунела би завършил извън картата
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Не може да бъде изкопан другия край на тунела
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... тунелът е много дълъг
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... прекалено много обекти

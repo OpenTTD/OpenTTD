@@ -1436,7 +1436,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Display a newsp
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Closing of industries: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Display a newspaper when industries close down
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Economy changes: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Display a newspaper about global changes to enconomy
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Display a newspaper about global changes to economy
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Production changes of industries served by the company: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Display a newspaper when the production level of industries change, which are served by the company
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Production changes of industries served by competitor(s): {STRING}

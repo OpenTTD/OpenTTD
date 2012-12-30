@@ -1132,7 +1132,7 @@ STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Výchoz
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Typ nastavení: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Nastavení klienta (není uchováno v uložených hrách; ovlivní všechny hry)
 STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Nastavení hry (uchováno v uložených hrách; ovlivní pouze nové hry)
-STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Nastavení hry (uchováno v uložené hře; ovlivní pouze stávající hru))
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Nastavení hry (uchováno v uložené hře; ovlivní pouze stávající hru)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavení společnosti (uchováno v uložených hrách; ovlivní pouze nové hry)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavení společnosti (uchováno v uložené hře; ovlivní pouze stávající společnost)
 
@@ -1153,7 +1153,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Nastavení spol
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Nastavení společnosti (uchováno v uložené hře; ovlivní pouze stávající společnost)
 
 STR_CONFIG_SETTING_OFF                                          :vypnuto
-STR_CONFIG_SETTING_ON                                           :zapnuto
+STR_CONFIG_SETTING_ON                                           :Zapnuto
 STR_CONFIG_SETTING_DISABLED                                     :vypnuto
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :ne
@@ -1175,9 +1175,11 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Výše úroků 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Cena provozu: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Nastav cenu držby a provozu vozidel a infrastruktury
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Rychlost výstavby: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Omezit výstavbu AI
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Omezení výstavby AI
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Poruchy vozidel: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Určuje jak často se může špatně udržované vozidlo porouchat
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Výše dotací: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Nastavuje jak moc jsou dotovaná spojení dotována
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Cena výstavby: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nastav cenu výstavby a nákupu
 STR_CONFIG_SETTING_RECESSIONS                                   :Krize: {STRING}
@@ -1253,8 +1255,8 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :na konci
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Silniční vozidla stojí fronty (s kvantovým efektem): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Vozidlo bude stát před zastávkou dokud se neuvolní
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Posouvat okno, když je kurzor na okraji: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Pokud povoleno, pohledy se začnou posouvat pokud bude kurzor v blízkosti okraje okna
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :vypnuto
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Pokud je zapnuto, pohledy se začnou posouvat pokud bude kurzor v blízkosti okraje okna
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Vypnuto
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :hlavní pohled, pouze full-screen
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :hlavní pohled
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :všechny pohledy
@@ -1288,7 +1290,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Více grafický
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Možnost kompatibility pro starší grafiky. Nevypínej, pokud nevíš co přesně děláš!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Toto nastavení nemůže být změněno, když jsou ve hře již nějaká vozidla
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Udržování infrastruktury: {STRING}
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Pokud je povoleno, je třeba platit za údržbu infrastruktury. Náklady vzrůstají společně s velikostí dopravní sítě, takže velké společnosti platí více než malé.
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Pokud je zapnuto, je třeba platit za údržbu infrastruktury. Náklady vzrůstají společně s velikostí dopravní sítě, takže velké společnosti platí více než malé.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Žádný druh letiště nezastará: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Povolení této možnosti způsobí, že všechny druhy letišť zůstanou po uvedení dostupné napořád. (nezastarají).
@@ -1296,16 +1298,16 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Povolení této
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Varovat pokud se ztratí vozidlo: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Zapne zobrazování zpráv o vozidlech, která nemohou najít cestu do cíle.
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Kontrolovat příkazy vozidel: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Pokud je povoleno, příkazy vozidel jsou pravidelně kontrolovány a určité problémy jsou hlášeny pomocí informačních zpráv.
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Pokud je zapnuto, příkazy vozidel jsou pravidelně kontrolovány a určité problémy jsou hlášeny pomocí informačních zpráv.
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ano, kromě zastavených vozidel
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ano, u všech vozidel
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varovat, pokud vozidlo prodělává: {STRING}
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Pokud je povoleno, budou zobrazovány zprávy o vozidlech, která v posledním kalendářním roce neměla žádný zisk.
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Pokud je zapnuto, budou zobrazovány zprávy o vozidlech, která v posledním kalendářním roce neměla žádný zisk.
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozidlům se nikdy nezastaví výroba ('nezastarají'): {STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Pokud je povoleno, všechny modely vlaků zůstanou po uvedení dostupné napořád. (nezastarají)
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Pokud je zapnuto, všechny modely vlaků zůstanou po uvedení dostupné napořád. (nezastarají)
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automaticky nahradit dopravní prostředek, když zestárne: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Pokud je povoleno, vozidla na konci své plánované životnosti budou automaticky nahrazena, když jsou splněny podmínky pro automatické obnovení.
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Pokud je zapnuto, vozidla na konci své plánované životnosti budou automaticky nahrazena, když jsou splněny podmínky pro automatické obnovení.
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automaticky nahradit vozidlo {STRING} před/po dosažení životnosti
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relativní věk kdy by měli být vozidlo automaticky vyměněno za nové
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} měsíc{P "" e ů} před
@@ -1434,6 +1436,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Nechat nástroj
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Zobrazovat odděleně příjmy a výdaje v přehledu financí: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Určuje rozložení okna s firemními výdaji
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Noviny - shrnutí: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Přehrávat zvuk při zobrazení shrnutí zprávy
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Noviny: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Přehrát zvuk při zobrazení novin
@@ -1451,7 +1454,7 @@ STR_CONFIG_SETTING_SOUND_AMBIENT                                :Zvuky prostřed
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Přehrávat zvukové efekty terénu, průmyslu a měst
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Zakázat zastávky, když nejsou dostupná příslušná vozidla: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Pokud je zapnuto, infrastruktura je dostupná pouze pokud jsou k dyspozici vozidla, která ji mohou používat. Zamezí ztrátě času a peněz za budovaní nevyužitelné infrastruktury
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Pokud je zapnuto, infrastruktura je dostupná pouze pokud jsou k dispozici vozidla, která ji mohou používat. Zamezí ztrátě času a peněz za budovaní nevyužitelné infrastruktury
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximum vlaků na hráče: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximální počet vlaků, které může společnost vlastnit
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximum silničních vozidel na společnost: {STRING}
@@ -1471,6 +1474,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Zakázat počí
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Zapnutím této volby znemožníte budování lodí hráčům, kteří jsou ovládání počítačem (AI)
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Výchozí nastavení: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Vyber, který profil nastavení se použije pro náhnodné AI nebo jako úvodní hodnoty po přidání AI nebo herního skriptu do hry
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lehká
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Střední
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Těžká
@@ -1495,7 +1499,7 @@ STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Nastaví defaul
 STR_CONFIG_SETTING_NOSERVICE                                    :Vypnout servisy, když jsou vypnuty poruchy: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Pokud je zapnuto, vozidla nejezdí do servisu pokud se nemohou porouchat, tedy pokud jsou vypnuty poruchy
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Zapnout omezení rychlosti vagonů: {STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Pokud povoleno, použije rychlostní omezení vagónů při stanovení maximální rychlosti vlaku
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Pokud zapnuto, použije rychlostní omezení vagónů při stanovení maximální rychlosti vlaku
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Vypnout elektrickou železnici: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Zapnutím této možnosti odstraní potřebu elektrifikované trati pro elektrické lokomotivy
 

@@ -871,6 +871,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :土耳其里拉
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :斯洛伐克克朗 (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :巴西里亚伊 (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :爱沙尼亚克鲁恩 (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :立陶宛立特（LTL）
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :韩元（KRW）
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :南非兰特（ZAR）
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :自定义…
 ############ end of currency region
 
@@ -1041,6 +1044,7 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}高级�
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}关键字过滤:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}展开全部
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}关闭全部
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :（没有可用的提示）
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}默认值: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}设置类型: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :当前客户端设置（不保存，影响所有游戏）
@@ -1057,6 +1061,11 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :高级设置/�
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :修改默认值
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :设置一个与当前游戏设置不同的值
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}限定某一类设置显示在下面列表中
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :所有设置
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :客户端设置（不保存在存档中，影响所有游戏）
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :当前游戏设置（可保存在存档中，仅对新游戏生效）
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :当前游戏设置（可保存在存档中，仅对当前游戏生效）
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :当前公司设置（可保存在存档中，仅对新游戏生效）
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :当前公司设置（可保存在存档中，仅对当前公司生效）
 
@@ -1100,18 +1109,40 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :地区政府对
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :设置相关参数以决定各公司造成的噪音及环境破坏时，各城镇对该公司的评价及未来区域建设的影响。
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :允许在斜坡和河岸上建设：{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :启用时轨道和站台能够建造在斜坡上，禁止时只能建设与斜坡方向相同的轨道，因而不需要改变地形
 STR_CONFIG_SETTING_AUTOSLOPE                                    :允许在建筑、轨道等下方改变地形（自动斜坡）： {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :允许更真实的客源范围：{STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :启用时不同类型的车站和机场有不同的客源范围
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :允许拆除更多的由城镇所有的公路、桥梁、隧道等：{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :启用时更容易拆除城市自有的设施和建筑
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :火车的最大长度：{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :设置火车的最大长度
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} 格
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :火车头产生的蒸气/火花数量: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :设置由火车头产生的蒸汽或者火花数量
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :列车加速度： {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :选择列车加速度模型，选“原版”时斜坡对所有列车影响相同，“真实”时影响因素包括斜坡长度、转弯半径、牵引力等
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :汽车加速模型: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :选择汽车加速度模型，选“原版”时斜坡对所有汽车影响相同，选“真实”时依赖引擎性能，比如“牵引力”
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :斜坡对火车的影响率：{STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :每一格斜坡对火车速度的影响率，数值越大，火车越难爬上山
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :斜坡对汽车速度影响率: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :每一格斜坡对汽车速度的影响率，数值越大，汽车越难爬上山
 STR_CONFIG_SETTING_FORBID_90_DEG                                :禁止列车和轮船 90 度转弯：{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :允许非毗邻站台合并：{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :“打开”时允许为已经存在的车站添加不相邻的站台，建造新的部分时需要按住Ctrl键
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :使用进阶的装货算法：{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :“打开”时，多辆车在一个车站依次排队装货，只有当货物足够装满第一列车时才同时为下一列车装货
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :装货时循序渐进：{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :通货膨胀：{STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :“打开”通货膨胀时，支出比收入增长得稍快
 STR_CONFIG_SETTING_SELECTGOODS                                  :仅在车站接受此货物时卸货：{STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :“打开”时只有车站接收此货物时才卸载
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :桥梁的最大长度: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :建设桥梁时允许的最大长度
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :隧道最大长度: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :建设隧道时允许的最大长度
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :原料工业建设方式： {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :不允许
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :同其他工业
