@@ -98,7 +98,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gosdrykkja
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} farþeg{P i ar}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} af kolum
-STR_QUANTITY_MAIL                                               :{COMMA} pokar af pósti
+STR_QUANTITY_MAIL                                               :{COMMA} pok{P i ar} af pósti
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} af olíu
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} grip{P u i}r
 STR_QUANTITY_GOODS                                              :{COMMA} kass{P i ar} af vörum
@@ -167,11 +167,11 @@ STR_ABBREV_ALL                                                  :{TINY_FONT}ALLT
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} farþeg{P i ar}
-STR_BAGS                                                        :{COMMA} pokar{P "" s}
+STR_BAGS                                                        :{COMMA} pok{P i ar}
 STR_TONS                                                        :{COMMA} tonn
-STR_LITERS                                                      :{COMMA} lítrar
-STR_ITEMS                                                       :{COMMA} hlutir
-STR_CRATES                                                      :{COMMA} kassar
+STR_LITERS                                                      :{COMMA} lítr{P i ar}
+STR_ITEMS                                                       :{COMMA} hlut{P ur ir}
+STR_CRATES                                                      :{COMMA} kass{P i ar}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Dökkblár
@@ -454,6 +454,8 @@ STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Taka skjáskot 
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Risa skjámynd
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Um 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Samstilla hreyfimynd
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Sýna/fela afmörkunar kassa
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Sýna/fela litun á endurteiknuðum hlutum
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -669,6 +671,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Sýna i�
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Sýna flutningsleiðir á korti
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Sýna uppskerur á korti
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Sýna lóðareigendur á korti
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Smelltu á iðnað til að sýna/fela hann á kortinu. Ctrl+Smella felur allan iðnað fyrir utan þann sem þú velur. Ctrl+Smella á hann aftur til að birta allar tegundir iðnaðar
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Smelltu á fyrirtæki til að sýna/fela eignir þess. Ctrl+Smella til að fela öll fyrirtæki fyrir utan það sem þú velur. Ctrl+Smella á það aftur til að birta öll fyrirtæki
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Vegir
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Járnbrautir
@@ -702,6 +706,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Sýna/fela bæjarnöfn á korti
 STR_SMALLMAP_CENTER                                             :{BLACK}Miðjustilla smákortið miðað við núverandi staðsetningu
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Fela allt
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Sýna allt
@@ -709,6 +714,8 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Sýna h�
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Sýna ekki iðnaði
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Sýna alla iðnaði
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Sýna/fela hæðakort
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Fela eignir allra fyrirtækja á kortinu
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Sýna eignir allra fyrirtækja á kortinu
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Sýna seinustu skilaboð eða fréttatilkynningu
@@ -723,6 +730,7 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Listi yf
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Skilaboð
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Bæjarbúar fagna . . .{}Fyrsta lest kemur við á {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Bæjarbúar fagna . . .{}Fyrsti strætisvagn kemur við á {STATION}!
@@ -755,7 +763,7 @@ STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nýtt flutningsfyrirtæki stofnað!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} hefur byggingu nálægt {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} hefur verið yfirtekið af {STRING}!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Forstöðumaður)
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Framkvæmdastjóri)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} fjármagnaði nýjan bæ: {TOWN}!
 
@@ -798,6 +806,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ratar ekki á áfangastað
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} er týnd.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Hagnaður síðasta árs af {VEHICLE} nam {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kemst ekki á næsta áfangastað vegna þess að hann er of langt í burtu
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stöðvaði vegna þess að umbeðin endursetning klikkaði
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Sjálfvirk uppfærsla brást fyrir {VEHICLE}{}{STRING}
@@ -864,6 +873,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Tyrknesk líra 
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slóvakísk kórúna (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasilísk ríla (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Eistnesk Króna (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litháenskt litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Suðurkóreskt vonn (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Suður-Afrískt rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sérvalið...
 ############ end of currency region
 
@@ -941,7 +953,7 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Aukauppl
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Grunntónlistarsafn
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Veld grunntónlistarsafn til að nota
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} ónýt skrá{P "" s}
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} ónýt{P "" ar} skrá{P "" r}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Auka upplýsingar um grunntónlistarsafnið
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Skjáfyllihamur brást
@@ -975,11 +987,14 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Breyta s
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Hámarksfjöldi keppinauta: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Engin
+STR_FUNDING_ONLY                                                :Með fjármögnun
+STR_MINIMAL                                                     :Lágmark
 STR_NUM_VERY_LOW                                                :Mjög Lágt
 STR_NUM_LOW                                                     :Fáir
 STR_NUM_NORMAL                                                  :Miðlungs
 STR_NUM_HIGH                                                    :Margir
 STR_NUM_CUSTOM                                                  :Sérstillt
+STR_NUM_CUSTOM_NUMBER                                           :Sérstillt ({NUM})
 
 STR_VARIETY_NONE                                                :Engin
 STR_VARIETY_VERY_LOW                                            :Mjög lágt
@@ -998,7 +1013,13 @@ STR_SEA_LEVEL_VERY_LOW                                          :Mjög lítið
 STR_SEA_LEVEL_LOW                                               :Lítið
 STR_SEA_LEVEL_MEDIUM                                            :Miðlungs
 STR_SEA_LEVEL_HIGH                                              :Mikið
+STR_SEA_LEVEL_CUSTOM                                            :Sérstillt
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Sérstillt ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Engar
+STR_RIVERS_FEW                                                  :Fáar
+STR_RIVERS_MODERATE                                             :Miðlungs
+STR_RIVERS_LOT                                                  :Margar
 
 STR_DISASTER_NONE                                               :Ekkert
 STR_DISASTER_REDUCED                                            :Minnkað
@@ -1025,6 +1046,7 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ítarleg
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Sía:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Þenja út
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Draga saman
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(engin skýring til)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Sjálfgefið gildi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Gerð stillingar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Tölvustilling (ekki geymt í vistunarskrám; hefur áhrif á alla leiki)
@@ -1091,37 +1113,79 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Veldu hversu mi
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Leyfilegt að byggja í halla og á strönd: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ef þessi stilling er virk er hægt að byggja lestarteina og stöðvar í flestum brekkum. Ef hún er óvirk er það bara hægt í brekkum sem snúa í sömu átt og teinarnir og því þurfa þeir engar undirstöður
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Leyfa landslagsbreytingar undir byggingum, teinum o.fl. (landfylling): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Leyfa mótun á landslagi undir byggingum og teinum án þess að þurfa að fjarlægja
 STR_CONFIG_SETTING_CATCHMENT                                    :Raunverulegri stærð svæðis sem stöðvar ná yfir: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Mismunandi stærð á söfnunarsvæðum fyrir mismunandi stöðvar og flugvelli
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Leyfa meiri eyðingu vega, brúa, gangna o.s.frv. í eigu bæjar: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Að það sé auðveldara að fjarlægja byggingar og mannvirki í eigu bæjarins
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Hámarks lengd lestar: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Hver er hámarks lengd lestanna
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} reit{P 0 ur ir}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Magn reyks/neista frá lestum: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Hversu mikill reikur eða neistar koma frá farartækjum
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Hröðun lesta: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Veldu hvernig eðlisfræði virkar á hröðun lesta. "Upprunalegt" er þannig að brekkur hafa sömu áhrif á allar lestar. "Raunverulegt" er þannig að áhrif brekkna og beygja fer eftir mismunandi þáttum, eins og lengd og togkraft lestanna
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Hröðun bifreiða: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Veldu hvernig eðlisfræði virkar á hröðun bíla. "Upprunalegt" er þannig að brekkur hafa sömu áhrif á alla bíla. "Raunverulegt" er þannig að áhrif brekkna fer eftir mismunandi þáttum, eins og til dæmis togkraft bílsins
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Halli á brekkum fyrir lestir: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Halli á brekkum fyrir lest. Hærri gildi gera það erfiðara fyrir lestina að fara upp brekkuna
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Halli á brekkum fyrir bíla: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Halli á brekkum fyrir bíla. Hærri gildi gera það erfiðara fyrir bíla að fara upp brekkunar
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Banna lestum og skipum að taka 90° beygjur: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 gráðu beygjur verða þegar láréttir lestarteinar liggja saman við lóðrétta lestarteina, þannig að lestin beygir 90 gráður þegar hún fer milli reita í staðinn fyrir 45 gráður fyrir aðrar samsetningar lestarteina. Þetta á einnig við um beygjuradíus skipa
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Leyfa sameiningu stöðva sem ekki tengjast á korti: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Gerir mögulegt að bæta við stöð án þess að reitirnir liggi saman. Það þarf að halda Ctrl+Smella þegar bætt er við stöðina
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Nota endurbættan algóriþma við hleðslu: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Ef þetta er virkt þá eru farartækin sem bíða á stöðinni hlaðinn eftir röð. Hleðsla á næsta farartæki byrjar aðeins þegar það bíður nógur farmur til að fylla fyrsta ökutækið
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Ferma farartæki smám saman: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Smám saman hlaða farartækin eftir ákveðnum tíma sem miðast við hvert farartæki, í staðinn fyrir að hlaða öllu í einu á ákveðnum tíma sem miðast við magn farmsins
 STR_CONFIG_SETTING_INFLATION                                    :Verðbólga: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Hafa verðbólgu, þá eykst kostnaður aðeins hraðar en greiðslur
 STR_CONFIG_SETTING_SELECTGOODS                                  :Aðeins afhlaða farmi á stöðvum þar sem er eftirspurn: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Aðeins afhlaða farm á stöðvar sem taka á móti fluttum farmi. Það kemur í veg fyrir að farmur fái slæma einkunn á stöð sem ekki tekur við viðkomandi farmi
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Hámarks lengd á brúm: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Hámarks lengd á brúm sem á að byggja
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Hámarks lengd á göngum: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Hámarks lengd á göngum sem á að byggja
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Fjármögnun nýrra hráefnisiðnaða: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Aðferðir við að fjármagna hráefnisiðnað. 'Enginn' þýðir að það er ekki hægt að fjármagna iðnaðinn, 'Með jarðefnisleit' þýðir að fjármögnun er möguleg, en iðnaðurinn er byggður á tilviljunnarkenndum stað á kortinu og gæti þess vegna mistekist, 'Eins og annar iðnaður' þýðir að hráefnisiðnaður getur verið fjármagnaður eins og annar iðnaður og á þeim stað sem fyrirtækið kýs
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Engin
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Eins og annar iðnaður
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Með jarðefnisleit
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Slétt svæði í kringum iðnað: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Stærð slétts svæðis í kringum iðnað. Þetta tryggir að nóg sé að auðu svæði í kringum iðnað til að byggja lestarteina og fleira
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Leyfa marga svipaða iðnaði í sama bæ: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Venjulega vilja bæir ekki fleiri en einn iðnað af hverri tegund. Með þessari stillingu á munu bæjir leyfa nokkra iðnaði af sömu gerð í kringum sama bæinn
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Sýna lestarljós: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Veldu hvoru megin við lestarteinana á að setja lestarljósin
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Vinstra megin
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Akstursstefnu megin
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Hægra megin
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Sýna fjármálaglugga í lok árs: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Ef þetta er virkt þá koma fjárhagsupplýsingar fyrirtækisins við enda hvers árs til að auðvelda yfirlit yfir fjárhag fyrirtækisins
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nýjar skipanir eru "hraðleiðar" sem sjálfgildi {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Venjulega stoppa farartæki á öllum stöðvum sem þau fara í gegnum. Með því að virkja þessa stillingu mun faratækið fara í gegnum allar þær stöðvar á leið sinni án þess að stoppa. Athugið, þessi stilling skilgreinir aðeins hver sjálfgefin stilling er fyrir nýjar skipanir. Hægt er að breyta þessum stillingum fyrir hvert og eitt farartæki
 STR_CONFIG_SETTING_STOP_LOCATION                                :Við nýja áfangastaði stöðva lestir sjálfgefið við {STRING} brautarpallsins
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Sjálfgefin stilling hvar lestin stoppar á brautarpallinum. 'upphaf' þýðir nálægt þeim hluta sem lestin kemur inn í lestarstöðina, 'miðju' þýðir fyrir miðju lestarstöðvarinnar og 'enda' þýðir fjærst þeim hluta sem lestin kom inn í lestarstöðina. Athugið, þessi stilling skilgreinir aðeins hver sjálfgefin stilling er fyrir nýjar skipanir. Hægt er að breyta þessum stillingum fyrir hvert og eitt farartæki
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :upphaf
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :miðju
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :enda
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Bifreiðir bíða í röð (með skömmtunaráhrifum): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Bílar verða að bíða fyrir aftan vegahindranir þar til þær hafa verið fjarlægðar
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Færa sjónarhorn þegar músin nálgast brún gluggans: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Ef þessi stilling er virk þá færist landslagið til hliðar ef músin er við jaðra gluggans
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Óvirkt
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Aðal sjónarhorn, aðeins í fullum skjá
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Aðal sjónarhorn
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Öll sjónarhorn
 STR_CONFIG_SETTING_BRIBE                                        :Leyfilegt að múta bæjaryfirvöldum: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Fyrirtæki geta reint að múta borgarstjórn. Ef eftirlistmenn uppgötva að verið sé múta bæjarstjórn, mun fyrirtækið ekki geta starfað í bænum í sex mánuði
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Heimila sölu á sérleyfi til flutninga: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ef fyrirtæki kaupir sérleyfi af bæjaryfirvöldum munu stöðvar keppinauta (farþegar og farmur) ekki fá neinn farm í heilt ár
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Leyfa byggingastyrki: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Leyfa fyrirtækjum að gefa bæjum peninga til að styrkja byggingu nýrra húsa
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Leyfa styrki til að endurnýja vegi bæjarins: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Heimila peningagreiðslur til annarra fyrirtækja: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Margfalda þyngd farms til að líkja eftir þyngri lestum: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Fjöldi flugvélaslysa: {STRING}
@@ -1373,9 +1437,9 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Leiðsögukerfi
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Breyta gildi stillingar
 
 # Config errors
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... sleppi grunngrafík '{STRING}': finnst ekki
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... sleppi grunn hljóðsafni '{STRING}': finnst ekki
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... sleppi grunn tónlistarsafni '{STRING}': finnst ekki
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... sleppi grunngrafík, '{STRING}' finnst ekki
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... sleppi grunn hljóðsafni, '{STRING}' finnst ekki
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... sleppi grunn tónlistarsafni, '{STRING}' finnst ekki
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1705,7 +1769,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Sk
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Næ í upplýsingar um leik..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Næ í upplýsingar um fyrirtæki..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} þjónar fyrir framan þig
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} þjón{P n ar} fyrir framan þig
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} niðurhöluð hingaðtil
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Aftengjast
@@ -2085,14 +2149,14 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kaupa la
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Hlutaval
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Veldu hlut til að byggja
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Sýnishorn af hlutnum
-STR_OBJECT_BUILD_SIZE                                           :{BLACK}Stærð: {GOLD}{NUM} x {NUM} fletir
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Stærð: {GOLD}{NUM} x {NUM} reitir
 
 STR_OBJECT_CLASS_LTHS                                           :Vitar
 STR_OBJECT_CLASS_TRNS                                           :Sendar
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Tré
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Veldu trjátegund sem á að gróðursetja
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Veldu trjátegund sem á að gróðursetja. Ef það er fyrir tré á reitnum, verðu fleiri trjám mismunandi trjám plantað óhað hvaða tegund hefur verið valin
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tré af handahófskenndri gerð
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Gróðursetja tré af handahófskenndri gerð
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Tré af handahófi
@@ -2242,7 +2306,7 @@ STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Vegagöng
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Stálhengibrú, lestir
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Stálburðarbitabrú, lestir
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Stálsvifbitabrú, lestir
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Stálsvifbitabrú fyrir lestir
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Styrkt steypuhengirbú, lestir
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Viðarbrú, lestir
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Steypubrú, lestir
@@ -2250,7 +2314,7 @@ STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Rörabrú, lest
 
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Stálhengibrú, vegur
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Stálburðarbitabrú, vegur
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Stálsvifbitabrú, vegur
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Stálsvifbitabrú fyrir vegi
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Styrkt steypuhengibrú, vegur
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Viðarbrú, vegur
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Stepubrú, vegur
@@ -2498,7 +2562,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid indust
 # NewGRF scanning window
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Merkjalisti - {COMMA} Merki{P "" s}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Merkjalisti - {COMMA} Merki
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Stemma há-/lágstafi
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Skifta á milli há-/lágstafa stemmingu þegar nöfn skilta eru borin saman við síaðan texta
 
@@ -2584,7 +2648,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Ýttu á
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nöfn stöðva - ýttu á nafn til að færa miðju sjónarhorns á stöð. Ctrl+Smelltu til að opna sýnisglugga yfir þessari stöð
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Haltu CTRL inni til að velja fleiri en einn hlut
-STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stöðvar
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stöð{P "" var}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ekkert -
@@ -2670,7 +2734,7 @@ STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Borga ti
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Manager)
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Framkvæmdastjóri)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Hafið: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Litaskema:
@@ -2682,6 +2746,8 @@ STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Engin
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Heildarverðmæti fyrirtækis: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% í eigu {COMPANY})
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} vatns reit{P ur ir}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} stöðvar reit{P ur ir}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Byggja HS
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Byggja höfðustöðvar fyrirtækisins
@@ -2741,8 +2807,8 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Framlei�
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Breyta framleiðslu (margfeldi af 8, allt að 2040)
 
 # Vehicle lists
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Lestir
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Bílar
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Lest{P "" ir}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Bíl{P l ar}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Skip
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Flugvél
 
@@ -2772,7 +2838,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Senda í skýli
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Smelltu til að stöðva öll farartæki á listanum
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Smelltu til að ræsa öll farartæki á listanum
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Samnýttar skipanir {COMMA} {P farartækis farartækja}
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Samnýttar skipanir {COMMA} farartæk{P is ja}
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Allar lestir
@@ -2863,7 +2929,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Endurnefna ský
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} farartæki{P "" s}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} farartæki{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Lestir - dragðu farartæki til að bæta við/fjarlægja úr lest, hægri smelltu fyrir upplýsingar. Haltu inni Ctrl til að láta aðgerðina virka á eftirfarandi keðju
@@ -3451,6 +3517,7 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... óhe
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... nú þegar byggt
 STR_ERROR_OWNED_BY                                              :{WHITE}... í eigu {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... svæðið er í eigu annars fyrirtækis
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... ekki hægt að hreinsa fleiri reiti
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nafnið verður að vera sérstætt
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} er fyrir
 

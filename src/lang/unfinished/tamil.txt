@@ -217,6 +217,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} அட�
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}வடிகட்டி தொடர்:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Enter filter string
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Enter a keyword to filter the list for
 
@@ -313,12 +314,14 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}இர�
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}சாலைகள் கட்டு
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}கப்பல் செப்பனிடுமிடம் கட்டு
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}விமான நிலையங்கள் கட்டு
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}நிலப்பரப்பு கருவிப்பட்டையினைத் திறந்து, நிலத்தை உயர்த்த/தாழ்த்த, மரங்களை நட, மற்றவை etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}இசை மையம் காண்பி
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}கடைசி செய்தி அறிக்கை/தகவல்களை காட்டு, தகவல் விருப்பங்களை காட்டு
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}நிலப்பகுதி விவரங்கள், console, வரிவடிவம் சர்பார்த்தல், திரைபிடிப்புகள்,OpenTTD பற்றி
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}கருவிப் பட்டை மாற்று
 
 # Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}சித்திரக்காட்சியினை பதிவுசெய், பதிவேற்றவும், திருத்தியைவிட்டு வெளியேறவும், வெளியேறவும்
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}சித்திரக்காட்சி திருத்தி
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}ஆட்டத்தின் ஆரம்ப தேதியினை ஒரு வருடம் பின் நகர்த்து
@@ -331,11 +334,13 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}தொ�
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}சாலை திருத்த வேலை
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}மரங்களை நடு. Shift toggles கட்டடம்/மொத்த செலவுகள்
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}தகவல் பலகை வை
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}பொருளினை இடவும். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடுகள்
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :சித்திரக்காட்சியை பதி
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :சித்திரக்காட்சியை ஏற்று
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :வரைபடத்தினை சேமி
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :உயர்படத்தினை பதிவேற்றவும்
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :சித்திரக்காட்சி திருத்தியை விட்டுச் செல்
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :வெளியேறு
@@ -396,6 +401,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :விவரம
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :தொழிற்சாலைகளின் பட்டியல்
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :தொழிற்சாலைத் தொடர்கள்
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :புதிய தொழிற்சாலையை நிறுவு
 ############ range ends here
 
@@ -440,9 +446,13 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :முனையத்தை மாற்று
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/வரிவடிவம் சரிபார்
 STR_ABOUT_MENU_SCREENSHOT                                       :திரைபிடிப்பு
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :முழுமையாக பெரிதாக்கிய நிலையில் திரைப்பிடிப்பு செய்
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :பெரிதாக்கிய நிலையில் திரைப்பிடிப்பு செய்
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :முழு வரைபடத்தையும் திரைபிடிப்பு செய்
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' பற்றி
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :ஸ்ரைட்டு அலைனர்
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :எல்லைக் கட்டங்களை மாற்றவும்
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :அழுக்கான கட்டங்களின் நிறத்தை மாற்று
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -542,6 +552,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :போக்க
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :போக்குவரத்து ஒருங்கிணைப்பாளர்
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :தட மேற்பார்வையாளர்
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :நிறுவனர்
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :தலைவர்
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :நிறுவனர்
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :ஜனாதிபதி
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :டைகூன்
@@ -566,6 +577,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}கட�
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}மொத்தம்:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}சென்ற வருடம் லாபமடைந்த வாகனங்களின் எண்ணிக்கை. இதில் இரயில், சாலை, விமானம் மற்றும் கப்பல் வாகனங்கள் அடங்கும்
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}குறைந்தபட்ச வருமானம் உடைய வாகனத்தின் லாபம்(இரண்டு வருடங்கள் பழைய வாகனங்கள் மட்டும் கணக்கில் எடுக்கப்பட்டுள்ளது)
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}கடந்த நான்கு காலாண்டுகளில் சேர்க்கப்பட்ட சரக்கு பெட்டிகள்
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}கடந்த காலாண்டில் கையாளப்பட்ட சரக்கு வகைகள்
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}இந்த நிறுவனம் வங்கியில் வைத்திருக்கும் பணம்
@@ -580,6 +592,7 @@ STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLA
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}பாடல்பட்டியல் 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}பாடல்பட்டியல் 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}ஒலி அளவு
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}ஒலியமைப்புகளின் அளவு
 STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}குறைந்தபட்ச
 STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}அதிகபட்ச
 STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
@@ -591,6 +604,8 @@ STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLA
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}தலைப்பு
 STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}வெவேறு பாடல்கள்
 STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}புரோகிராம்
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}தேர்ந்தெடுக்கப்பட்ட முந்தின பாட்டிற்கு தாவவும்
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}தேர்ந்தெடுக்கப்பட்ட அடுத்த பாட்டிற்கு தாவவும்
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}இசையை நிறுத்து
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}இசையினை ஆரம்பி
 
@@ -598,6 +613,7 @@ STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}இச�
 # Playlist window
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}இசைத்தடம் வரிசை
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}பிரோகிராம் - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}அழி
 
 # Highscore window
@@ -1534,6 +1550,7 @@ STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}மொ�
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}கொப்புகளின் விவரம்
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}நீங்கள் இதை பதிவிறக்கம் செய்ய தேர்ந்தெடுக்கவில்லை
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}நீங்கள் இதை பதிவிறக்கம் செய்ய தேர்ந்தேடுத்துள்ளீர்கள்
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}இது பதிவிறக்க தேர்ந்தெடுக்கப்பட்டுள்ளது
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}இது ஏற்கனவே உங்களிடம் உள்ளது
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}பெயர்: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}பதிப்பு: {WHITE}{STRING}
@@ -1550,6 +1567,7 @@ STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... க�
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :அடிப்படை அசையூட்டம்
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :AI நூலகம்
 STR_CONTENT_TYPE_SCENARIO                                       :திரைக்காட்சி
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :அடிப்படை ஒலிகள்
 STR_CONTENT_TYPE_BASE_MUSIC                                     :அடிப்படை இசை
@@ -1564,15 +1582,18 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}பத�
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} இல் {BYTES} பதிவிறக்கமாகியுள்ளது ({NUM} %)
 
 # Content downloading error messages
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}சர்வருடன் இணைக்க இயலவில்லை...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}பதிவிறக்கம் ரத்தானது...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... தொடர்பு துண்டிக்கப்பட்டது
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... கோப்பில் எழுத முடியாது
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}பதிவிறக்கம் செய்யப்பட்ட கோப்பினை விரிவாக்க முடியவில்லை
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}அசைவூட்டங்கள் இல்லை
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}ஆம், அசையூட்டங்களை பதிவிறக்கம் செய்
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}இல்லை, OpenTTD-ஐ விட்டு வெளியேறு
 
 # Transparency settings window
+STR_TRANSPARENCY_CAPTION                                        :{WHITE}ஒளி அமைப்புகள்
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}நிறுத்து
@@ -1605,14 +1626,21 @@ STR_RAIL_NAME_MAGLEV                                            :மேக்ல
 STR_WAYPOINT_CAPTION                                            :{WHITE}பாதைப்புள்ளி
 
 # Rail station construction window
+STR_STATION_BUILD_ORIENTATION                                   :{BLACK}திசையமைவு
+STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}இரயில்வே நிலையத்தின் திசையமைவினை தேர்ந்தெடுக்கவும்
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}தடங்களின் எண்ணிக்கை
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}இரயில் நிலையத்தின் நடைமேடைகளின் எண்ணிக்கையினை தேர்ந்தெடுக்கவும்
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}நிலையத்தின் நீளம்
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}இரயில் நிலையத்தின் நீளத்தினை தேர்ந்தெடு
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}இழுத்து விடவும்
 
+STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}கட்டப்போகும் நிலையத்தின் வகையினைத் தேர்ந்தெடுக்கவும்
 
+STR_STATION_CLASS_DFLT                                          :முதன்மை நிலையம்
 STR_STATION_CLASS_WAYP                                          :பாதைப்புள்ளிகள்
 
 # Signal window
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}சிக்னல் தேர்ந்தெடுத்தல்
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}இரயில்வே பாலத்தினை தேர்ந்தெடு
@@ -1632,6 +1660,10 @@ STR_BRIDGE_TUBULAR_SILICON                                      :குழாய
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}சாலை கட்டுமானம்
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}ட்ரேம்வே கட்டுமானம்
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}சாலை வாகன பணிமனையினை கட்டவும் (வாகங்களை வாங்க மற்றும் பழுதுபார்க்க). Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}ட்ராம் வாகன பணிமனையினை கட்டவும் (வாகங்களை வாங்க மற்றும் பழுதுபார்க்க). Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}பேருந்து நிலையத்தினை கட்டவும். Ctrl அழுத்தினால் நிலையங்களினை இணைக்கலாம். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}ட்ராம் பயணிகள் நிலையத்தினை கட்டவும். Ctrl அழுத்தினால் நிலையங்களினை இணைக்கலாம். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}ஒருவழிப்பாதைகளை செயல்படுத்து/முடக்கு
 
 # Road depot construction window
@@ -2616,6 +2648,8 @@ STR_TIMETABLE_NOT_TIMETABLEABLE                                 :பயணம்
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :பயணம் (நேர அட்டவணை இடப்படாதது)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} காலத்திற்கு பயணி
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{STRING} காலத்திற்கு பயணி, அதிகபட்ச வேகம் {VELOCITY}
+STR_TIMETABLE_STAY_FOR                                          :மற்றும் {STRING} இற்கு நிற்கவும்
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :மற்றும் {STRING} இற்கு பயணிக்கவும்
 STR_TIMETABLE_DAYS                                              :{COMMA} நாள்{P "" கள்}
 STR_TIMETABLE_TICKS                                             :{COMMA} நொடி{P "" கள்}
 
@@ -2640,8 +2674,11 @@ STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}வே�
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}வேகத்தடையை நீக்கு
 
 
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}தானியங்கிநிறப்பான்
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}எதிர்ப்பார்க்கப்படுவது
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}அட்டவணையிடப்பட்ட
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}எதிர்பார்க்கப்பட்ட மற்றும் அட்டவணையிடப்பட்ட மாற்றவும்
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
@@ -2650,12 +2687,14 @@ STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 # Date window (for timetable)
 STR_DATE_CAPTION                                                :{WHITE}தேதியை அமை
 STR_DATE_SET_DATE                                               :{BLACK}தேதியை அமை
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}நேர அட்டவணையின் தொடக்கத் தேதியாக தேர்ந்தெடுக்கப்பட்டத் தேதியினை பயன்படுத்தவும்
 STR_DATE_DAY_TOOLTIP                                            :{BLACK}நாளினைத் தேர்ந்தெடு
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}மாதத்தினை தேர்ந்திடு
 STR_DATE_YEAR_TOOLTIP                                           :{BLACK}வருடத்தை தேர்ந்தெடுr
 
 
 # AI debug window
+STR_AI_DEBUG                                                    :{WHITE}AI/ஆட்டத்தின் வரிவடிவம் சரிபார்த்தல்
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}ஸ்கிரிப்டின் பெயர்
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}அமைப்புகள்
@@ -2717,6 +2756,8 @@ STR_AI_SETTINGS_START_DELAY                                     :இந்த AI
 
 
 # Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} இன் படிப்பு அறி
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} இன் மாற்றங்கள் பதிவேடு
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} இன் அனுமதி
 STR_TEXTFILE_VIEW_README                                        :{BLACK}படிக்க வேண்டியதை பார்வையிடு
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}மாற்றங்கள் பதிவேடு
@@ -2780,6 +2821,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}மூ�
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}பெரிய திரைப்பிடிப்பு
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}திரைப்பிடிப்பின் அளவு {COMMA} x {COMMA} பிக்சல்கள். திரைப்பிடிப்பு எடுக்க சிறிது நேரமாகும். தொடர விருப்பமா?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}திரைபிடிப்பு வெற்றிகரமாக '{STRING}' என பதிவு செய்யப்பட்டது
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}திரைபிடிப்பு தோல்வியடைந்தது!
@@ -2893,6 +2935,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}மற�
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}நிறுத்தத்தின் பெயரை மாற்ற இயலாது...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... இது நகரத்திற்கு சொந்தமான சாலையாகும்
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... சாலை தப்பான திசையை நோக்கி உள்ளது
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... வழித்தட நிறுத்தங்களில் முனைகள் அமைக்க இயலாது
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... வழித்தட நிறுத்தங்களில் சந்திப்புகள் அமையாது
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}நிறுத்தத்தின் பகுதியை நீக்க இயலாது...

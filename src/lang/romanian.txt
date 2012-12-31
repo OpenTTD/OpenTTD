@@ -1083,6 +1083,22 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :stânga
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centru
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :dreapta
 
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Viteza de construcție: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limitează numărul de acțiuni de construcție pentru AI
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Defecțiuni ale vehiculelor: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controlează cât de des se defectează vehiculele prost întreținute
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicator al subvențiilor: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Alege cât de mult se plătește pentru conexiuni subvenționate
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costuri de construcție: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Alege nivelul de construcție și costurile de achiziție
+STR_CONFIG_SETTING_RECESSIONS                                   :Recesiuni: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Dacă este activată, este posibil să existe recesiuni la perioade de câțiva ani. În timpul recesiunii, toată producția este semnificativ mai mică (revine la nivelul anterior când recesiunea se termină)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Nu permite întoarcerea trenurilor in statie: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Dacă este activată, trenurile nu vor intoarce într-o stație care nu este capăt de linie, dacă există o cale mai scurtă către destinația următoare la întoarcere
+STR_CONFIG_SETTING_DISASTERS                                    :Dezastre: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Comută dezastre care ocazional pot bloca sau distruge vehicule sau infrastructură
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitudinea consiliului orașului cu privire la restructurarea zonei: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Alege în ce măsură poluarea fonică si deranjamentul local provocat de o companie va afecta impresia orașului despre aceasta, si viitoarele planuri de construcție in zonă
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permite construirea pe coastă şi în pantă: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Dacă este activat, şinele şi staţiile pot fi construite pe majoritatea pantelor. Dacă este dezactivat, acestea pot fi construite doar pe pante care coincid cu direcţia şinelor şi astfel nu necesită fundaţie
@@ -1322,7 +1338,9 @@ STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Dezactivează c
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Nr. max. de trenuri per companie: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Nr. max. de autovehicule per companie: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Nr. max. de aeronave per companie: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Numărul maxim de aeronave pe care o companie le poate deține
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Nr. max. de nave per companie: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Numărul maxim de nave pe care o companie le poate deține
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Dezactivează trenurile pentru jucătorii controlaţi de calculator: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Dezactivează autovehiculele pentru jucătorii controlaţi de calculator: {STRING}
@@ -1339,18 +1357,31 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activează limi
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Dezactivează şinele electrice: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Sosirea primului vehicul la una din staţiile tale: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Afișează un ziar când o stație nouă a companiei primește primul vehicul
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Sosirea primului vehicul la una din staţiile competitorilor: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Afișează un ziar când o stație nouă a unui competitor primește primul vehicul
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidente / dezastre: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Afișează un ziar când există un accident sau un dezastru natural
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informaţii despre companie: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Afișează un ziar când o nouă companie este înființată, sau când o companie este pe cale de a intra în faliment
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Inaugurare industrii: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Afișează un ziar când o nouă industrie este înființată
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Închidere industrii: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Afișează un ziar când o industrie este inchisă
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Schimbări economice: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Afișează un ziar când apar schimbări globale ale economiei
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Schimbări de producţie ale industriilor partenere cu compania: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Afișează un ziar când nivelul de producție al unei industrii, deservită de companie, se schimbă
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Schimbări de producţie ale industriilor partenere cu concurenţa: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Afișează un ziar când nivelul de producție al unei industrii, deservită de competitori, se schimbă
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Alte schimbări în producţia industrială: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Afișează un ziar când nivelul de producție al unei industrii, neservită de companie sau competitori, se schimbă
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Sugestii / informaţii despre vehiculele companiei: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Afișează mesaje referitoare la vehicule care trebuie inspectate
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Vehicule noi: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Afișează un ziar când un nou tip de vehicul devine disponibil
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Schimbări ale acceptării mărfurilor: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Afișează mesaje referitoare la modificarea tipurilor de cargo acceptate de către stații
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvenţii: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Afișează ziarul evenimentelor legate de subvenții
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informaţii generale: {STRING}
@@ -1398,6 +1429,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :peste tot
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Poziţia barei principale de instrumente: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Poziţia barei de stare: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Numărul maxim de ferestre nefixate: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :dezactivat
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Nivelul maxim de apropiere imagine: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Nivelul maxim de îndepărtare imagine: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :x4
@@ -2617,6 +2649,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Conține mai multe intrări pentru Acțiunea 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Citire după sfârşitul preudo-elementului grafic (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Unele imagini lipsesc din setul grafic de bază.{}Vă rugăm actualizaţi setul grafic de bază
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE} Pachetul grafic de bază folosit în acest moment este incomplet, un număr de sprite-uri lipsesc ..{}Trebuie să actualizezi acest pachet grafic de bază.{}Deoarece te joci o {YELLOW}versiune de dezvoltare a OpenTTD{WHITE}, este posibil să ai nevoie de o {YELLOW}versiune de dezvoltare a pachetului grafic de bază{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Resursele GRF solicitate nu sunt disponibile (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} a fost dezactivat de {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Structură necunoscută/invalidă pentru elementul grafic (sprite {3:NUM})
@@ -3599,7 +3632,7 @@ STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Opreşte
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Opreşte la
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Când un mesaj al modului de IA se potriveşte cu acest string, se suspendă jocul
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Potrivire majuscule/minuscule
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Comuntă potrivirea pe majuscule/minuscule când se compară fişierele log de la IA cu string-ul de oprire
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Comută potrivirea pe majuscule/minuscule când se compară fişierele log ale AI cu string-ul de oprire
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuă
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Continuă execuţia modulului de Inteligenţă Artificială
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vizualizează datele de debug ale acestui modul de IA
@@ -3725,6 +3758,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Redimen
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Doar un set nul de efecte sonore a fost găsit. Dacă doreşti sunete, instalează un set de sunete folosind sistemul de Resurse Online
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Imagine de dimensiune foarte mare
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Imaginea capturata va avea o dimensiune de {COMMA} x {COMMA} pixeli. Realizarea unei capturi va dura puțin timp. Dorești să continui?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Imagine salvată cu succes pe disc în fişierul '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Imaginea nu a putut fi capturată!

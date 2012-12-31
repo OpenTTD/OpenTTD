@@ -584,9 +584,9 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}종합:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}작년에 수익을 낸 차량의 수를 나타냅니다. 자동차, 열차, 선박, 항공기를 포함합니다.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}현재 영업 중인 역사의 수를 나타냅니다. 기차 역, 버스 정류장, 공항 등은 같은 역으로 묶여있어도 따로 집계됩니다.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}가장 낮은 수입을 가진 차량의 이익입니다. (2년 이상된 열차에 한함)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}지난 12분기동안 최소 이익을 달성한 열차가 번 돈의 양입니다.
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}지난 12분기동안 최대 이익을 달성한 열차가 번 돈의 양입니다.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}가장 낮은 수입을 가진 차량의 이익입니다. (2년 이상된 차량만 계산)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}지난 12분기동안 최소 이익을 달성한 차량이 번 돈의 양입니다.
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}지난 12분기동안 최대 이익을 달성한 차량이 번 돈의 양입니다.
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}지난 4분기동안 수송한 화물량입니다.
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}지난 1분기에 수송한 화물의 종류 수입니다.
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}회사가 소지한 재정입니다.
@@ -2836,18 +2836,18 @@ STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}도시�
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}도시 소음 제한: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}이 도시의 위치로 시점을 변경합니다. Ctrl+클릭하면 이 도시 위치를 기준으로 새로운 외부 화면을 엽니다.
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}지역 당국
-STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}지역당국 정보 보기
-STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}도시 이름 변경
+STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}지역 당국의 정보를 보여줍니다.
+STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}도시 이름을 변경합니다.
 
-STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}확장하기
-STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}도시 크기 키우기
+STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}확장
+STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}도시의 크기를 키웁니다.
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}삭제
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}이 도시를 완전히 삭제
 
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :도시 이름 변경
 
 # Town local authority window
-STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} 지역당국
+STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} 지역 당국
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}회사 운송 성취도:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}가능한 행동:
@@ -3892,8 +3892,8 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}중간�
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}일시 정지 중에는 할 수 없습니다
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}에 대한 낮은 성취도로 인해 지역당국이 이 행위를 거절했습니다!
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} 지역당국은 이 도시에 다른 공항이 들어서는 것을 거부합니다!
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}에 대한 회사의 낮은 성취도로 인해 지역 당국이 이 행위를 거절했습니다!
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} 지역 당국이 이 도시에 다른 공항이 들어서는 것을 거부하였습니다!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} 지역 당국이 소음 문제로 인해 공항 건설을 거부하였습니다
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}당신의 뇌물 수수 행위가 지역 당국에 의해 발각되었습니다!
 
@@ -3912,7 +3912,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}사장�
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... 허용된 최대 대출금은 {CURRENCY_LONG} 입니다.
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}더이상 돈을 빌릴 수 없습니다...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... 값아야할 대출금이 없습니다.
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... 값아야 할 대출금이 없습니다.
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY_LONG} 필요합니다.
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}대출금을 갚을 수 없습니다...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}은행에서 빌린 돈은 송금할 수 없습니다...
@@ -3986,7 +3986,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}버스�
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}트럭 터미널을 제거할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}승객 전차 정거장을 제거할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}화물 전차 정거장을 제거할 수 없습니다...
-STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}정류장을 먼저 제거하십시오
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}정류장을 먼저 제거하십시오.
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... 여기에는 정거장이 없습니다.
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}철도역을 먼저 제거하십시오.

@@ -218,6 +218,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pé(s)
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Chave de filtragem:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Insira uma frase para filtrar por
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Insira uma palavra-chave para filtrar a lista por
 
@@ -1060,6 +1061,7 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Opções Básic
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Opções Avançadas
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Opções Avançadas / Todas as Opções
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Opções com um valor diferente das de origem
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Preferências com um valor diferente das preferências para novos jogos
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restringe a lista abaixo para mostrar apenas certos tipos de opções
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Todas as configurações
@@ -1085,12 +1087,35 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerda
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Direita
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Valor máximo do empréstimo inicial: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantia máxima que uma companhia pode pedir (sem ter em conta a inflação)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa de juro: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taxa de juro do empréstimo; também controla a inflacção se activo
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Custos operacionais: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Configurar nível de manutenção e custos operacionais de veículos e infraestrutura
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidade de construção: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limitar o número de acções de construção para IAs
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Avarias de veículos: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controla quão frequentemente veículos inadequadamento mantidos podem avariar
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicador de subsídio: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Define quanto é pago para ligações subsidiadas
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Custos de construção: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Configurar o nível de construção e custos de compra
+STR_CONFIG_SETTING_RECESSIONS                                   :Recessões: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se activo, podem ocorrer recessões em intervalos de poucos anos. Durante uma recessão a produção em geral é mais baixa (volta aos níveis anteriores quando termina)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Desabilitar inversão de combóios nas estações: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se activo, combóios não podem inverter marcha em estações não-terminais, se existir um caminho mais curto para o destino seguinte com inversão
+STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activa desastres que podem ocasionalmente bloquear ou destruir veículos ou infraestruturas
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitude da do Concelho Municipal em relação a reestruturação de áreas: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escolha quanto ruído e estragos ambientais causados pelas empresas afecta o rating da povoação e futuras acções de construção na área
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permitir a construção em declives e encostas: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Se ligado, linhas de comboio e estações podem ser construídas na maior parte das inclinações. Se desligado, só são permitidos em inclinações com a mesma direção não necessitando de alicerces
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir formação de terra sob os edifícios, vias, etc. (auto-declive): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permitir formação de terras debaixo de edifícios e linhas sem os remover
 STR_CONFIG_SETTING_CATCHMENT                                    :Dimensionamento mais realista de áreas de abrangência: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Haver diferentes áreas de cobertura para diferentes tipos de estações e aeroportos
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir remover mais mais estradas, pontes e túneis detidos pela cidade: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Facilitar a remoçar de edifícios e infraestruturas detidas pela cidade
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Tamanho máximo de comboios: {STRING}
@@ -1309,6 +1334,8 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permitir IAs em
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes antes de os scripts serem suspensos: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Os intervalos de serviço são em percentagem: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalo de serviço para aeronaves por omissão: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalo de serviço para navios por omissão: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Não fazer manutenção quando não há avarias: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activar limites de velocidade para vagões: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactivar carris electrificados: {STRING}
@@ -1326,7 +1353,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Mostrar um jorn
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Fecho de indústrias: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Mostrar um jornal quando uma indústria fecha
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Alterações económicas: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Mostrar um jornal sobre alterações globais na economia
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Mostrar um jornal quando ocorrem alterações globais na economia
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Alterações de produção nas indústrias servidas pelo jogador: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Mostrar um jornal na alteração da produção de indústrias servidas pelo jogador
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Mudanças na produção das industrias servidas pelo(s) oponentes: {STRING}
@@ -1353,9 +1380,11 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Ano em que os a
 STR_CONFIG_SETTING_STARTING_YEAR                                :Data de início: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activar economia regular (alterações menores): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permite comprar acções de outras empresas: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Quando activo, permite a compra e venda de acções de companhias. As acções apenas estarão disponíveis quando a companhia atinge uma determinada idade.
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Usar automaticamente sinais clássicos antes de: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activar ferramenta de sinais: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipo de farol padrão para construir: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipo de sinal a usar por omissão
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Sinais de bloqueio
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Sinais de rota
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Sinais de sentido único
@@ -1374,6 +1403,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :As cidades têm
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Cidades podem construir passagens de nível: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permitir que a cidade controle o nível de ruído dos aeroportos: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundar cidades no jogo: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Activar esta preferência permite aos jogadores fundar novas povoações no jogo
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Proibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permitido, estrutura personalizada da cidade

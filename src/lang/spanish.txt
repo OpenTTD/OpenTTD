@@ -2103,7 +2103,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Tamaño
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Seleccionado debido a: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependencias: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Etiquetas: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD está compilado sin soporte "zlib"...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD ha sido compilado sin soporte "zlib"...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ¡No es posible descargar contenido!
 
 # Order of these is important!

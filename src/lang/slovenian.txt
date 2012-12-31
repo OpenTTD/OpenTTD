@@ -370,6 +370,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtriraj niz:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vnesite niz za filtriranje
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vnesite ključno besedo, s katero se bo filtriral seznam
 
@@ -550,10 +551,12 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Graf plačila z
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabela lige podjetij
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Podrobna ocena uspeha
+STR_GRAPH_MENU_HIGHSCORE                                        :Tabela najboljših rezultatov
 ############ range ends here
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Imenik industrij
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Industrijske verige
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financiraj novo industrijo
 ############ range ends here
 
@@ -978,6 +981,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvencija podeljena podjetju{STRING}!{}{}Prevoz {STRING.r} od {STRING} do {STRING} bo prinesel štirikratni prihodek{}za naslednje leto!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Prometni kaos v mestu {TOWN}!{}{}Obnovitvena dela, ki jih financira podjetje {STRING},{}bodo prinesla 6 mesecev nevšečnosti{}voznikom motornih vozil!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transportni monopol!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Lokalna oblast kraja {TOWN} je podpisala pogodbo s/z {STRING} o eno letni izključni pravici za transport.
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pogled {COMMA}
@@ -1190,7 +1195,12 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ni na vo
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredne nastavitve
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtriraj niz:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Razširi vse
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skrči vse
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ni razpoložljive razlage)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Privzeta vrednost: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Vrsta nastavitve: {ORANGE}{STRING}
 
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Omeji spodnji seznam na le določene tipe nastavitev
@@ -1351,6 +1361,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :Urejevalnik ter
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Največja oddaljenost rafinerij nafte od roba: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Naftne rafinerije se nahajajo le pri robu kater, to je ob obali na otoških kartah
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Nadmorska višina snežne odeje: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Valovitost terena (samo TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Zelo zglajen
@@ -3554,7 +3565,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Zmogljiv
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Preuredi)
 STR_REFIT_TITLE                                                 :{GOLD}Izberi tip tovora:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova zmogljivost: {GOLD}{CARGO_LONG}{}{BLACK}Cena preureditve: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nova zmogljivost: {GOLD}{CARGO_LONG}{}{BLACK}Prihodek iz preureditve: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova zmogljivost: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cena preureditve: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nova zmoljivost: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Prihodek iz preureditve: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Izberi vozila za preureditev. Povleci z miško, da izbereš več vozil. Klik na prazen prostor bo izbral celotno vozilo. Ctrl+Klik bo izbral vozilo in tista, ki mu sledijo
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Izberi nov tip tovora za prevoz z vlakom
@@ -3881,6 +3894,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Cena: {CURRENCY_LONG}
@@ -3929,6 +3944,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Preveli
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Samo rezerven zvočni komplet je bil najden. Če želiš zvok, namesti zvočni komplet preko sistema prenosov
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Ogromna slika zaslona
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Slika zaslona bo imela ločljivost {COMMA} x {COMMA} slikovnih točk. Ustvarjanje slike zaslona lahko traja nekaj časa. Ali želite nadaljevati?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Slika je uspešno zajeta kot {} '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Zajemanje slike ni uspelo!!!

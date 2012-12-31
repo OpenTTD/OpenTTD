@@ -4729,14 +4729,14 @@ STR_SV_STNAME_EAST                                              :{STRING} Wschó
 STR_SV_STNAME_WEST                                              :{STRING} Zachód
 STR_SV_STNAME_CENTRAL                                           :{STRING} Główny
 STR_SV_STNAME_TRANSFER                                          :{STRING} Transfer
-STR_SV_STNAME_HALT                                              :{STRING} Przedmieście
+STR_SV_STNAME_HALT                                              :Przedmieścia {STRING}
 STR_SV_STNAME_VALLEY                                            :{STRING} Dolina
 STR_SV_STNAME_HEIGHTS                                           :{STRING} Wzgórza
 STR_SV_STNAME_WOODS                                             :{STRING} Las
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Jezioro
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Wymiana
 STR_SV_STNAME_AIRPORT                                           :Lotnisko {STRING}
-STR_SV_STNAME_OILFIELD                                          :{STRING} Platforma Wiertnicza
+STR_SV_STNAME_OILFIELD                                          :Platforma Wiertnicza {STRING}
 STR_SV_STNAME_MINES                                             :{STRING} Kopalnia
 STR_SV_STNAME_DOCKS                                             :{STRING} Port
 STR_SV_STNAME_BUOY                                              :{STRING}
@@ -4749,7 +4749,7 @@ STR_SV_STNAME_UPPER                                             :{STRING} Górny
 STR_SV_STNAME_LOWER                                             :{STRING} Dolny
 STR_SV_STNAME_HELIPORT                                          :{STRING} Lądowisko
 STR_SV_STNAME_FOREST                                            :{STRING} Las
-STR_SV_STNAME_FALLBACK                                          :{STRING} Stacja #{NUM}
+STR_SV_STNAME_FALLBACK                                          :{STRING} Stacja nr {NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
