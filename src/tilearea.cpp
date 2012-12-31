@@ -76,9 +76,8 @@ void OrthogonalTileArea::Add(TileIndex to_add)
  */
 bool OrthogonalTileArea::Intersects(const OrthogonalTileArea &ta) const
 {
-	if (ta.w == 0 || this->w == 0) return false;
-
-	assert(ta.w != 0 && ta.h != 0 && this->w != 0 && this->h != 0);
+	/* If a TileArea is empty, intersection is also empty: TileAreas do not intersect */
+	if (ta.w == 0 || ta.h == 0 || this->w == 0 || this->h == 0) return false;
 
 	uint left1   = TileX(this->tile);
 	uint top1    = TileY(this->tile);
