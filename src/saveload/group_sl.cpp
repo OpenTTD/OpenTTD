@@ -15,13 +15,13 @@
 #include "saveload.h"
 
 static const SaveLoad _group_desc[] = {
-  SLE_CONDVAR(Group, name,           SLE_NAME,    0, 83),
-  SLE_CONDSTR(Group, name,           SLE_STR | SLF_ALLOW_CONTROL, 0, 84, SL_MAX_VERSION),
-  SLE_CONDNULL(2,                                 0, 163), // num_vehicle
-  SLE_VAR(Group, owner,              SLE_UINT8),
-  SLE_VAR(Group, vehicle_type,       SLE_UINT8),
-  SLE_VAR(Group, replace_protection, SLE_BOOL),
-  SLE_END()
+	 SLE_CONDVAR(Group, name,           SLE_NAME,    0, 83),
+	 SLE_CONDSTR(Group, name,           SLE_STR | SLF_ALLOW_CONTROL, 0, 84, SL_MAX_VERSION),
+	SLE_CONDNULL(2,                                 0, 163), // num_vehicle
+	     SLE_VAR(Group, owner,              SLE_UINT8),
+	     SLE_VAR(Group, vehicle_type,       SLE_UINT8),
+	     SLE_VAR(Group, replace_protection, SLE_BOOL),
+	     SLE_END()
 };
 
 static void Save_GRPS()

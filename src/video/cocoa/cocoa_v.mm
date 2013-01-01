@@ -548,8 +548,8 @@ void cocoaReleaseAutoreleasePool()
 	driver = drv;
 }
 /**
-  * Minimize the window
-  */
+ * Minimize the window
+ */
 - (void)miniaturize:(id)sender
 {
 	/* make the alpha channel opaque so anim won't have holes in it */

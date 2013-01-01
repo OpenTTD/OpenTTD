@@ -238,7 +238,7 @@ static void FioFreeHandle()
  * @param slot Index to assign.
  * @param filename Name of the file at the disk.
  * @param subdir The sub directory to search this file in.
-  */
+ */
 void FioOpenFile(int slot, const char *filename, Subdirectory subdir)
 {
 	FILE *f;
