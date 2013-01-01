@@ -1551,7 +1551,7 @@ bool AfterLoadGame()
 	 * be OWNER_NONE. So replace OWNER_NONE with OWNER_WATER. */
 	if (IsSavegameVersionBefore(SLV_46)) {
 		for (Waypoint *wp : Waypoint::Iterate()) {
-			if ((wp->facilities & FACIL_DOCK) != 0 && IsTileOwner(wp->xy, OWNER_NONE) && TileHeight(wp->xy) == 0) SetTileOwner(wp->xy, OWNER_WATER);
+			if (wp->HasFacilities(FACIL_DOCK) && IsTileOwner(wp->xy, OWNER_NONE) && TileHeight(wp->xy) == 0) SetTileOwner(wp->xy, OWNER_WATER);
 		}
 	}
 
@@ -2211,7 +2211,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_124) && !IsSavegameVersionBefore(SLV_1)) {
 		/* The train station tile area was added, but for really old (TTDPatch) it's already valid. */
 		for (Waypoint *wp : Waypoint::Iterate()) {
-			if (wp->facilities & FACIL_TRAIN) {
+			if (wp->HasFacilities(FACIL_TRAIN)) {
 				wp->train_station.tile = wp->xy;
 				wp->train_station.w = 1;
 				wp->train_station.h = 1;
@@ -2747,7 +2747,7 @@ bool AfterLoadGame()
 
 		if (!IsSavegameVersionBefore(SLV_145)) {
 			for (Station *st : Station::Iterate()) {
-				if (!(st->facilities & FACIL_AIRPORT)) continue;
+				if (!st->HasFacilities(FACIL_AIRPORT)) continue;
 				assert(st->airport.psa != nullptr);
 
 				/* Check if the old storage was empty. */

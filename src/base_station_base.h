@@ -158,6 +158,16 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	}
 
 	/**
+	 * Check whether the base station has at least one of the given facilities.
+	 * @param f The facilities to check.
+	 * @return true iff the base station has at least one of the given \a f.
+	 */
+	inline bool HasFacilities(const StationFacility f) const
+	{
+		return (this->facilities & f) != 0;
+	}
+
+	/**
 	 * Check whether the base station currently is in use; in use means
 	 * that it is not scheduled for deletion and that it still has some
 	 * facilities left.
@@ -165,7 +175,7 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	 */
 	inline bool IsInUse() const
 	{
-		return (this->facilities & ~FACIL_WAYPOINT) != 0;
+		return this->HasFacilities(~FACIL_WAYPOINT);
 	}
 
 	static void PostDestructor(size_t index);

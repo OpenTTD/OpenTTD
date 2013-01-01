@@ -2842,19 +2842,19 @@ bool CanVehicleUseStation(EngineID engine_type, const Station *st)
 
 	switch (e->type) {
 		case VEH_TRAIN:
-			return (st->facilities & FACIL_TRAIN) != 0;
+			return st->HasFacilities(FACIL_TRAIN);
 
 		case VEH_ROAD:
 			/* For road vehicles we need the vehicle to know whether it can actually
 			 * use the station, but if it doesn't have facilities for RVs it is
 			 * certainly not possible that the station can be used. */
-			return (st->facilities & (FACIL_BUS_STOP | FACIL_TRUCK_STOP)) != 0;
+			return st->HasFacilities(FACIL_BUS_STOP | FACIL_TRUCK_STOP);
 
 		case VEH_SHIP:
-			return (st->facilities & FACIL_DOCK) != 0;
+			return st->HasFacilities(FACIL_DOCK);
 
 		case VEH_AIRCRAFT:
-			return (st->facilities & FACIL_AIRPORT) != 0 &&
+			return st->HasFacilities(FACIL_AIRPORT) &&
 					(st->airport.GetFTA()->flags & (e->u.air.subtype & AIR_CTOL ? AirportFTAClass::AIRPLANES : AirportFTAClass::HELICOPTERS)) != 0;
 
 		default:

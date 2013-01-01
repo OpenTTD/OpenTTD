@@ -700,7 +700,7 @@ static void ShipController(Ship *v)
 						Station *st = Station::Get(v->current_order.GetDestination());
 						if (st->docking_station.Contains(gp.new_tile) && IsShipDestinationTile(gp.new_tile, st->index)) {
 							v->last_station_visited = st->index;
-							if (st->facilities & FACIL_DOCK) { // ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations
+							if (st->HasFacilities(FACIL_DOCK)) { // ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations
 								ShipArrivesAt(v, st);
 								v->BeginLoading();
 							} else { // leave stations without docks right away

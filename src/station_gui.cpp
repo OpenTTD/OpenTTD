@@ -203,7 +203,7 @@ class CompanyStationsWindow : public Window
 protected:
 	/* Runtime saved values */
 	static Listing last_sorting;
-	static byte facilities;               // types of stations of interest
+	static StationFacility facilities;    // types of stations of interest
 	static bool include_empty;            // whether we should include stations without waiting cargo
 	static const CargoTypes cargo_filter_max;
 	static CargoTypes cargo_filter;           // bitmap of cargo types to include
@@ -230,7 +230,7 @@ protected:
 
 		for (const Station *st : Station::Iterate()) {
 			if (st->owner == owner || (st->owner == OWNER_NONE && HasStationInUse(st->index, true, owner))) {
-				if (this->facilities & st->facilities) { // only stations with selected facilities
+				if (st->HasFacilities(this->facilities)) { // only stations with selected facilities
 					int num_waiting_cargo = 0;
 					for (CargoID j = 0; j < NUM_CARGO; j++) {
 						if (st->goods[j].HasRating()) {
@@ -557,7 +557,7 @@ public:
 					FOR_EACH_SET_BIT(i, this->facilities) {
 						this->RaiseWidget(i + WID_STL_TRAIN);
 					}
-					this->facilities = 1 << (widget - WID_STL_TRAIN);
+					this->facilities = (StationFacility)(1 << (widget - WID_STL_TRAIN));
 					this->LowerWidget(widget);
 				}
 				this->stations.ForceRebuild();
@@ -683,7 +683,7 @@ public:
 };
 
 Listing CompanyStationsWindow::last_sorting = {false, 0};
-byte CompanyStationsWindow::facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
+StationFacility CompanyStationsWindow::facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
 bool CompanyStationsWindow::include_empty = true;
 const CargoTypes CompanyStationsWindow::cargo_filter_max = ALL_CARGOTYPES;
 CargoTypes CompanyStationsWindow::cargo_filter = ALL_CARGOTYPES;
@@ -1397,7 +1397,7 @@ struct StationViewWindow : public Window {
 				break;
 
 			case WID_SV_CLOSE_AIRPORT:
-				if (!(Station::Get(this->window_number)->facilities & FACIL_AIRPORT)) {
+				if (!Station::Get(this->window_number)->HasFacilities(FACIL_AIRPORT)) {
 					/* Hide 'Close Airport' button if no airport present. */
 					size->width = 0;
 					resize->width = 0;
@@ -1417,12 +1417,12 @@ struct StationViewWindow : public Window {
 
 		/* disable some buttons */
 		this->SetWidgetDisabledState(WID_SV_RENAME,   st->owner != _local_company);
-		this->SetWidgetDisabledState(WID_SV_TRAINS,   !(st->facilities & FACIL_TRAIN));
-		this->SetWidgetDisabledState(WID_SV_ROADVEHS, !(st->facilities & FACIL_TRUCK_STOP) && !(st->facilities & FACIL_BUS_STOP));
-		this->SetWidgetDisabledState(WID_SV_SHIPS,    !(st->facilities & FACIL_DOCK));
-		this->SetWidgetDisabledState(WID_SV_PLANES,   !(st->facilities & FACIL_AIRPORT));
-		this->SetWidgetDisabledState(WID_SV_CLOSE_AIRPORT, !(st->facilities & FACIL_AIRPORT) || st->owner != _local_company || st->owner == OWNER_NONE); // Also consider SE, where _local_company == OWNER_NONE
-		this->SetWidgetLoweredState(WID_SV_CLOSE_AIRPORT, (st->facilities & FACIL_AIRPORT) && (st->airport.flags & AIRPORT_CLOSED_block) != 0);
+		this->SetWidgetDisabledState(WID_SV_TRAINS,   !st->HasFacilities(FACIL_TRAIN));
+		this->SetWidgetDisabledState(WID_SV_ROADVEHS, !st->HasFacilities(FACIL_TRUCK_STOP | FACIL_BUS_STOP));
+		this->SetWidgetDisabledState(WID_SV_SHIPS,    !st->HasFacilities(FACIL_DOCK));
+		this->SetWidgetDisabledState(WID_SV_PLANES,   !st->HasFacilities(FACIL_AIRPORT));
+		this->SetWidgetDisabledState(WID_SV_CLOSE_AIRPORT, !st->HasFacilities(FACIL_AIRPORT) || st->owner != _local_company || st->owner == OWNER_NONE); // Also consider SE, where _local_company == OWNER_NONE
+		this->SetWidgetLoweredState(WID_SV_CLOSE_AIRPORT, st->HasFacilities(FACIL_AIRPORT) && (st->airport.flags & AIRPORT_CLOSED_block) != 0);
 
 		extern const Station *_viewport_highlight_station;
 		this->SetWidgetDisabledState(WID_SV_CATCHMENT, st->facilities == FACIL_NONE);

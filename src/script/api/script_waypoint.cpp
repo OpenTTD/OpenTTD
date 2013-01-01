@@ -33,5 +33,5 @@
 	if (!IsValidWaypoint(waypoint_id)) return false;
 	if (!HasExactlyOneBit(waypoint_type)) return false;
 
-	return (::Waypoint::Get(waypoint_id)->facilities & waypoint_type) != 0;
+	return ::Waypoint::Get(waypoint_id)->HasFacilities((StationFacility)waypoint_type);
 }

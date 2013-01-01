@@ -415,7 +415,7 @@ void Station::UpdateVirtCoord()
 	Point pt = RemapCoords2(TileX(this->xy) * TILE_SIZE, TileY(this->xy) * TILE_SIZE);
 
 	pt.y -= 32 * ZOOM_LVL_BASE;
-	if ((this->facilities & FACIL_AIRPORT) && this->airport.type == AT_OILRIG) pt.y -= 16 * ZOOM_LVL_BASE;
+	if (this->HasFacilities(FACIL_AIRPORT) && this->airport.type == AT_OILRIG) pt.y -= 16 * ZOOM_LVL_BASE;
 
 	if (this->sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeStation(this->index));
 
@@ -599,8 +599,8 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 
 		/* Make sure the station can accept the goods type. */
 		bool is_passengers = IsCargoInClass(i, CC_PASSENGERS);
-		if ((!is_passengers && !(st->facilities & ~FACIL_BUS_STOP)) ||
-				(is_passengers && !(st->facilities & ~FACIL_TRUCK_STOP))) {
+		if ((!is_passengers && !st->HasFacilities(~FACIL_BUS_STOP)) ||
+				(is_passengers && !st->HasFacilities(~FACIL_TRUCK_STOP))) {
 			amt = 0;
 		}
 
@@ -2295,7 +2295,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		Town *t = ClosestTownFromTile(tile, UINT_MAX);
 		uint num = 0;
 		for (const Station *st : Station::Iterate()) {
-			if (st->town == t && (st->facilities & FACIL_AIRPORT) && st->airport.type != AT_OILRIG) num++;
+			if (st->town == t && st->HasFacilities(FACIL_AIRPORT) && st->airport.type != AT_OILRIG) num++;
 		}
 		if (num >= 2) {
 			authority_refuse_message = STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT;
@@ -2464,7 +2464,7 @@ CommandCost CmdOpenCloseAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	if (!Station::IsValidID(p1)) return CMD_ERROR;
 	Station *st = Station::Get(p1);
 
-	if (!(st->facilities & FACIL_AIRPORT) || st->owner == OWNER_NONE) return CMD_ERROR;
+	if (!st->HasFacilities(FACIL_AIRPORT) || st->owner == OWNER_NONE) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(st->owner);
 	if (ret.Failed()) return ret;
@@ -2725,7 +2725,7 @@ static CommandCost RemoveDock(TileIndex tile, DoCommandFlag flags)
 		 * Just clear the order, then automatically the next appropriate order
 		 * will be selected and in case of no appropriate order it will just
 		 * wander around the world. */
-		if (!(st->facilities & FACIL_DOCK)) {
+		if (!st->HasFacilities(FACIL_DOCK)) {
 			for (Ship *s : Ship::Iterate()) {
 				if (s->current_order.IsType(OT_LOADING) && s->current_order.GetDestination() == st->index) {
 					s->LeaveStation();
@@ -3322,7 +3322,7 @@ static bool ClickTile_Station(TileIndex tile)
 {
 	const BaseStation *bst = BaseStation::GetByTile(tile);
 
-	if (bst->facilities & FACIL_WAYPOINT) {
+	if (bst->HasFacilities(FACIL_WAYPOINT)) {
 		ShowWaypointWindow(Waypoint::From(bst));
 	} else if (IsHangar(tile)) {
 		const Station *st = Station::From(bst);
@@ -3427,7 +3427,7 @@ static bool StationHandleBigTick(BaseStation *st)
 	}
 
 
-	if ((st->facilities & FACIL_WAYPOINT) == 0) UpdateStationAcceptance(Station::From(st), true);
+	if (!st->HasFacilities(FACIL_WAYPOINT)) UpdateStationAcceptance(Station::From(st), true);
 
 	return true;
 }
@@ -3811,7 +3811,7 @@ void IncreaseStats(Station *st, const Vehicle *front, StationID next_station_id)
 /* called for every station each tick */
 static void StationHandleSmallTick(BaseStation *st)
 {
-	if ((st->facilities & FACIL_WAYPOINT) != 0 || !st->IsInUse()) return;
+	if (st->HasFacilities(FACIL_WAYPOINT) || !st->IsInUse()) return;
 
 	byte b = st->delete_ctr + 1;
 	if (b >= STATION_RATING_TICKS) b = 0;

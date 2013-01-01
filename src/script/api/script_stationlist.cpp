@@ -19,7 +19,7 @@
 ScriptStationList::ScriptStationList(ScriptStation::StationType station_type)
 {
 	for (Station *st : Station::Iterate()) {
-		if ((st->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && (st->facilities & station_type) != 0) this->AddItem(st->index);
+		if ((st->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && st->HasFacilities((StationFacility)station_type)) this->AddItem(st->index);
 	}
 }
 

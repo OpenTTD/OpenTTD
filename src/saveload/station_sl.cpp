@@ -468,7 +468,7 @@ const SaveLoad *GetBaseStationDescription()
 
 static void RealSave_STNN(BaseStation *bst)
 {
-	bool waypoint = (bst->facilities & FACIL_WAYPOINT) != 0;
+	bool waypoint = bst->HasFacilities(FACIL_WAYPOINT);
 	SlObject(bst, waypoint ? _waypoint_desc : _station_desc);
 
 	if (!waypoint) {
@@ -530,7 +530,7 @@ static void Load_STNN()
 			Station *st = Station::From(bst);
 
 			/* Before savegame version 161, persistent storages were not stored in a pool. */
-			if (IsSavegameVersionBefore(SLV_161) && !IsSavegameVersionBefore(SLV_145) && st->facilities & FACIL_AIRPORT) {
+			if (IsSavegameVersionBefore(SLV_161) && !IsSavegameVersionBefore(SLV_145) && st->HasFacilities(FACIL_AIRPORT)) {
 				/* Store the old persistent storage. The GRFID will be added later. */
 				assert(PersistentStorage::CanAllocateItem());
 				st->airport.psa = new PersistentStorage(0, 0, 0);

@@ -653,7 +653,7 @@ Money AirportMaintenanceCost(Owner owner)
 	Money total_cost = 0;
 
 	for (const Station *st : Station::Iterate()) {
-		if (st->owner == owner && (st->facilities & FACIL_AIRPORT)) {
+		if (st->owner == owner && st->HasFacilities(FACIL_AIRPORT)) {
 			total_cost += _price[PR_INFRASTRUCTURE_AIRPORT] * st->airport.GetSpec()->maintenance_cost;
 		}
 	}
