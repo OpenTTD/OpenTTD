@@ -21,7 +21,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
-STR_UNDEFINED                                                   :(belum terdefinisi)
+STR_UNDEFINED                                                   :(tidak terdefinisi)
 STR_JUST_NOTHING                                                :Tidak ada
 
 # Cargo related strings
@@ -29,7 +29,7 @@ STR_JUST_NOTHING                                                :Tidak ada
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Penumpang
 STR_CARGO_PLURAL_COAL                                           :Batubara
-STR_CARGO_PLURAL_MAIL                                           :Dokumen
+STR_CARGO_PLURAL_MAIL                                           :Barang Pos
 STR_CARGO_PLURAL_OIL                                            :Minyak
 STR_CARGO_PLURAL_LIVESTOCK                                      :Ternak
 STR_CARGO_PLURAL_GOODS                                          :Barang jadi
@@ -37,8 +37,8 @@ STR_CARGO_PLURAL_GRAIN                                          :Gandum
 STR_CARGO_PLURAL_WOOD                                           :Kayu
 STR_CARGO_PLURAL_IRON_ORE                                       :Bijih besi
 STR_CARGO_PLURAL_STEEL                                          :Baja
-STR_CARGO_PLURAL_VALUABLES                                      :Barang berharga
-STR_CARGO_PLURAL_COPPER_ORE                                     :Biji Tembaga
+STR_CARGO_PLURAL_VALUABLES                                      :Barang Berharga
+STR_CARGO_PLURAL_COPPER_ORE                                     :Bijih Tembaga
 STR_CARGO_PLURAL_MAIZE                                          :Jagung
 STR_CARGO_PLURAL_FRUIT                                          :Buah
 STR_CARGO_PLURAL_DIAMONDS                                       :Intan
@@ -51,28 +51,28 @@ STR_CARGO_PLURAL_RUBBER                                         :Karet
 STR_CARGO_PLURAL_SUGAR                                          :Gula
 STR_CARGO_PLURAL_TOYS                                           :Mainan
 STR_CARGO_PLURAL_CANDY                                          :Manisan
-STR_CARGO_PLURAL_COLA                                           :Cola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Harum manis
+STR_CARGO_PLURAL_COLA                                           :Kola
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Arum Manis
 STR_CARGO_PLURAL_BUBBLES                                        :Gelembung
 STR_CARGO_PLURAL_TOFFEE                                         :Gula-gula
 STR_CARGO_PLURAL_BATTERIES                                      :Baterai
 STR_CARGO_PLURAL_PLASTIC                                        :Plastik
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Minuman berdesis
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Minuman Berdesis
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Penumpang
 STR_CARGO_SINGULAR_COAL                                         :Batubara
-STR_CARGO_SINGULAR_MAIL                                         :Dokumen
+STR_CARGO_SINGULAR_MAIL                                         :Barang Pos
 STR_CARGO_SINGULAR_OIL                                          :Minyak
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Ternak
-STR_CARGO_SINGULAR_GOODS                                        :Barang jadi
+STR_CARGO_SINGULAR_GOODS                                        :Barang Jadi
 STR_CARGO_SINGULAR_GRAIN                                        :Gandum
 STR_CARGO_SINGULAR_WOOD                                         :Kayu
-STR_CARGO_SINGULAR_IRON_ORE                                     :Biji besi
+STR_CARGO_SINGULAR_IRON_ORE                                     :Bijih Besi
 STR_CARGO_SINGULAR_STEEL                                        :Baja
-STR_CARGO_SINGULAR_VALUABLES                                    :Barang berharga
-STR_CARGO_SINGULAR_COPPER_ORE                                   :Biji Tembaga
+STR_CARGO_SINGULAR_VALUABLES                                    :Barang Berharga
+STR_CARGO_SINGULAR_COPPER_ORE                                   :Bijih Tembaga
 STR_CARGO_SINGULAR_MAIZE                                        :Jagung
 STR_CARGO_SINGULAR_FRUIT                                        :Buah
 STR_CARGO_SINGULAR_DIAMOND                                      :Intan
@@ -85,19 +85,19 @@ STR_CARGO_SINGULAR_RUBBER                                       :Karet
 STR_CARGO_SINGULAR_SUGAR                                        :Gula
 STR_CARGO_SINGULAR_TOY                                          :Mainan
 STR_CARGO_SINGULAR_CANDY                                        :Manisan
-STR_CARGO_SINGULAR_COLA                                         :Cola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Harum manis
+STR_CARGO_SINGULAR_COLA                                         :Kola
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Arum Manis
 STR_CARGO_SINGULAR_BUBBLE                                       :Gelembung
 STR_CARGO_SINGULAR_TOFFEE                                       :Gula-gula
 STR_CARGO_SINGULAR_BATTERY                                      :Baterai
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastik
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Minuman berdesis
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Minuman Berdesis
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} penumpang
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} batubara
-STR_QUANTITY_MAIL                                               :{COMMA} kantong dokumen
+STR_QUANTITY_MAIL                                               :{COMMA} kantong barang pos
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} minyak
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} ekor ternak
 STR_QUANTITY_GOODS                                              :{COMMA} peti barang jadi
@@ -107,7 +107,7 @@ STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} b
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} baja
 STR_QUANTITY_VALUABLES                                          :{COMMA} kantong barang berharga
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} bijih tembaga
-STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} tepung jagung
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} jagung
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} buah-buahan
 STR_QUANTITY_DIAMONDS                                           :{COMMA} kantong intan
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} makanan
@@ -119,8 +119,8 @@ STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} k
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} gula
 STR_QUANTITY_TOYS                                               :{COMMA} mainan
 STR_QUANTITY_SWEETS                                             :{COMMA} kantong manisan
-STR_QUANTITY_COLA                                               :{VOLUME_LONG} cola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} Harum manis
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} kola
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} arum manis
 STR_QUANTITY_BUBBLES                                            :{COMMA} gelembung
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} kopi toffee
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterai
@@ -454,6 +454,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ambil gambar ke
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tentang 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Penjajar Sprite
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Hidup/Matikan kotak batas
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Menampilkan pewarnaan dari area kotor
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1045,6 +1046,13 @@ STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Penyarin
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Perluas semua
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Persempit semua
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(penjelasan belum tersedia)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Nilai dasar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipe setting: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Setting klien (tidak disimpan di penyimpanan; mempengaruhi semua permainan)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Setting permainan (disimpan dalam penyimpanan; hanya mempengaruhi permainan baru)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Setting permainan (disimpan dalam penyimpanan; hanya mempengaruhi permainan saat ini))
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Setting perusahaan (disimpan dalam penyimpanan; hanya mempengaruhi permainan baru)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Setting perusahaan (disimpan dalam penyimpanan; hanya mempengaruhi permainan saat ini)
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Perlihatkan:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Hambat daftar dibawah, hanya tampilkan aturan yang diubah
@@ -1054,6 +1062,9 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Pengaturan mahi
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Pengaturan dengan nilai berbeda dari nilai asli
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Pengaturan dengan nilai berbeda dari pengaturan permainan baru
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Membatasi urutan / tabel di bawah ke setting tertentu
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Semua setting
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Setting klien (tidak disimpan di penyimpanan; mempengaruhi semua permainan)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Pengaturan permainan (ikut tersimpan; hanya memiliki efek pada permainan baru)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Pengaturan permainan (ikut tersimpan; hanya memiliki efek pada permainan aktif)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Pengaturan perusahaan (ikut tersimpan; hanya memiliki efek pada permainan baru)
@@ -1075,6 +1086,21 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kiri
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Tengah
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Kanan
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimum pinjaman awal: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Jumlah maksimum yang dapat dipinjam (tanpa menghitung inflasi)
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Biaya pemeliharaan: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Menetapkan tingkat biaya pemeliharaan dan biaya untuk menjalankan kendaraan dan infrastruktur
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Kecepatan konstruksi: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Membatasi jumlah kegiatan konstruksi untuk AI
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Mengontrol seberapa sering kendaraan yang tidak diservis dapat rusak
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Pengalian jumlah subsidi: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Menetapkan banyaknya pembayaran untuk koneksi yang disubsidi
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Biaya konstruksi: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Menetapkan tingkat biaya konstruksi dan pembelian
+STR_CONFIG_SETTING_RECESSIONS                                   :Resesi : {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Melarang pemutaran kereta di stasiun: {STRING}
+STR_CONFIG_SETTING_DISASTERS                                    :Bencana: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :mengaktifkan bencana yang mungkin memblok atau menghancurkan kendaraan atau infrastruktur
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Ijinkan pembangunan di lereng dan pantai: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Ijinkan pembentukan slop dibawah bangunan, rel, dsb. (otomatiskan): {STRING}
@@ -1104,12 +1130,23 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Ijinkan penamba
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Gunakan algoritma pengangkutan terbaru : {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Angkut secara bertahap: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflasi: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Perbolehkan inflasi dalam ekonomi, dimana biaya naik sedikit lebih cepat daripada pembayaran
 STR_CONFIG_SETTING_SELECTGOODS                                  :Menerima kargo di suatu stasiun hanya jika dibutuhkan: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Panjang maksimum jembatan: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Panjang maksimum untuk membuat jembatan
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Panjang maksimum terowongan: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Panjang maksimum untuk membangun terowongan
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Metode pembangunan Industri primer : {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Tidak ada
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Seperti industri lainnya
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospektif
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Luas area datar disekitar industri: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Ijinkan lebih dari satu industri sejenis dalam satu kota: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Tunjukan sinyal: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Pilih sisi rel yang akan diletakkan sinyal
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Di kiri
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Di sisi pengemudi
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Di kanan
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Tampilkan laporan keuangan pada akhir tahun: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Tujuan baru standarnya adalah 'non-stop': {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :Order kereta yang baru aslinya berhenti {STRING} dari stasiun
@@ -1117,12 +1154,18 @@ STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :hampir selesai
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :tengah
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :jauh di belakang
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Kendaraan jalan raya mengantri (dengan efek kuantum): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Buat kendaraan menunggu didepan pemberhentian yang penuh sampai kosong
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Geser tampilan saat mouse ada di tepi: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Dimatikan
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Viewport utama
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Semua viewport
 STR_CONFIG_SETTING_BRIBE                                        :Ijinkan kolusi pada penguasa setempat: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Ijinkan pembelian hak ekslusif pengelolaan transportasi: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Ijinkan mendanai bangunan: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Perbolehkan perusahaan untuk memberi dana kepada kota untuk membangun bangunan baru
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Ijinkan pendanaan rekonstruksi jalan lokal: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Ijinkan pengiriman uang ke perusahaan lain: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Perbolehkan pemindahan uang antar perusahaan di mode multiplayer
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Faktor kali muatan untuk simulasi kereta yang berat: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Frekuensi kecelakaan pesawat: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Nihil
@@ -1860,11 +1903,11 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Ukuran:
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Terpilih karena: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Memerlukan : {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Kata kunci: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD tidak mendukung "zlib"...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD tidak dapat mendukung "zlib"...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... pengunduhan konten tidak dimungkinkan!
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grafis dasar
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grafik dasar
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Perpustakaan AI
@@ -4099,7 +4142,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Listri
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Listrik)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Listrik)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Gerbong Penumpang
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Gerbong Dokumen
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Gerbong Barang Pos
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Gerbong Batubara
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Gerbong Tangki Minyak
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Gerbong Ternak

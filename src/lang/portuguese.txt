@@ -1104,7 +1104,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Configurar o n�
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessões: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se activo, podem ocorrer recessões em intervalos de poucos anos. Durante uma recessão a produção em geral é mais baixa (volta aos níveis anteriores quando termina)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Desabilitar inversão de combóios nas estações: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se activo, combóios não podem inverter marcha em estações não-terminais, se existir um caminho mais curto para o destino seguinte com inversão
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Quando activo, os combóios não podem inverter marcha em estações não-terminais, se existir um caminho mais curto para o destino seguinte com inversão
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activa desastres que podem ocasionalmente bloquear ou destruir veículos ou infraestruturas
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitude da do Concelho Municipal em relação a reestruturação de áreas: {STRING}
@@ -1133,18 +1133,23 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Ângulo de inclínação para veículos rodoviários: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Declive de um quadrado inclinado para um veiculo de estrada. Valores mais altos tornam mais difícil de subir.
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Proibir comboios e barcos fazer curvas de 90º: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Curvas de 90 graus ocorrem quando uma pista horizontal é directamente seguida por outra vertical num quadrado adjacente, fazendo com que o combóio vire 90 graus quando atravessa a fronteira dos quadrados, ao invés dos habituais 45 graus para outras combinações de pistas. Também se aplica ao raio de curvatura dos navios
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permitir juntar estações não adjacentes: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permitir adicionar novas partes a uma estação sem tocar nas partes já existentes. Requer pressionar CTRL+click para adicionar as novas partes
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Usar algoritmo de carregamento melhorado: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Se activo, veículos múltiplos à espera em estações são carregados sequencialmente. O carregamento do veículo seguinte só começa quando existe mercadoria suficiente para encher o primeiro veículo
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Carregar veículos gradualmente: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Carrega os veículos gradualmente utilizando durações específicas por veículo, em vez de carregar tudo de uma só vez com um tempo fixo que depende apenas da quantidade de mercadoria a carregar
 STR_CONFIG_SETTING_INFLATION                                    :Inflação: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Ativar inflação na economia, para que os preços subam ligeiramente mais rápido do que os pagamentos
 STR_CONFIG_SETTING_SELECTGOODS                                  :Entregar carga a uma estação só quando houver procura: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Apenas entrega mercadoria a uma estação que foi pedida a um veículo em carga. Previne ratings negativos para mercadorias que não são entregues numa estação
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Tamanho máximo de ponte: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Tamanho máximo para construção de pontes
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Tamanho máximo de túneis: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Tamanho máximo para construção de túneis
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Método de financiamento de indústrias primárias: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Método de financiar uma indústria pirmária. 'nenhum' significa que não é possível financiar nenhuma, 'prospecção' significa que é possível financiar, mas a construção é feita num local arbitrário no mapa e até pode falhar, 'como outras indústrias' significa que as indústrias de matérias primas podem ser construídas por companhias como indústrias de processamento em qualquer sítio que elas escolham
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Nenhum
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Mesmo método
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospecção
@@ -1162,12 +1167,15 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Se ativado, os 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novas ordens são 'sem parar' por predefinição: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalmente, um veículo parará em cada estação por que passe. Ao ligar esta configuração, passará sem parar por todas as estações parando apenas no destino final. Nota que isto só tem efeito para novas rotas. No entanto rotas existentes podem ser alteradas explicitamente para funcionarem assim também.
 STR_CONFIG_SETTING_STOP_LOCATION                                :Ordens novas do comboio param {STRING} da plataforma
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Local onde um combóio parará na plataforma por omissão. A opção 'extremo mais próximo' significa perto do ponto de entrada, 'meio' significa no meio da plataforma e 'extremo mais distante' significa o mais distante possível do ponto de entrada. Esta opção apenas afecta o valor por omissão para novas encomendas. Encomendas individuais podem utilizar qualquer uma das opções independentemente desta
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :no extremo perto
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :no meio
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :no extremo longe
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Fila de veículos rodoviários (com efeitos de quantidade): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Fazer com que os veículos rodoviários esperem até que as estradas bloqueadas sejam desocupadas
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Deslocar janela quando o rato está na borda do mapa: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Quando activo, os visualizadores começam a deslocar-se logo que o rato esteja no extremo da janela
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desligado
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Visualizador principal, só ecrã cheio
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Visualizador principal
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Todos os visualizadores
@@ -1182,7 +1190,9 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permitir que as
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permitir enviar dinheiro para outras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permitir transferencias de dinheiro entre empresas em modo multi-jogador
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de peso para simular comboios pesados: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Define o impacto de carregar mercadoria nos combóios. Um valor superior torna o carregamento de meradoria mais exigente para os combóios, especialmente em terreno inclinado
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Fator de velocidade de avião: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Set the relative speed of planes compared to other vehicle types, to reduce the amount of income of transport by aircraft
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Número de acidentes de aeronaves: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Indicar a hipótese da ocorrência de um acidente aéreo
@@ -1190,31 +1200,48 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Nenhum
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduzido
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir estações de passagem em estradas das cidades: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite construção de paragens drive-through em ruas que são prorpiedade das povoações
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir estações de passagem em estradas do adversário: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permite construção de paragens drive-through em ruas que são prorpiedade de outras companhias
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Permitir construção de estações adjacentes: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Permitir que estações diferentes se toquem
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Utilizar múltiplos conjuntos NewGRF de veículos: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Opção de compatibilidade com NewGRFs antigos. Não desactive se não sabe exactamente o que está a fazer.
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Não é possível mudar quando já existem veículos.
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manutenção de infraestruturas: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Quando activo, as infraestruturas têm custos de manutenção. O custo cresce mais do que proporcionalmente com o tamanho da rede e com isso afecta mais as companhias maiores comparado com as mais pequeneas
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportos nunca expiram: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Activar esta preferência torna cada tipo de aeroporto disponível para sempre após a sua introdução
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avisar se o veículo está perdido: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Mostrar mensagens sobre veículos que não conseguem encontrar o caminho para o seu próximo destino.
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Analisar ordens dos veículos: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Quando activo, as encomendas dos veículos são periodicamente revistas e algumas falhas óbvias são anunciadas através de notícias, quando detectadas
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Não
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Sim, mas excluir veículos parados
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :De todos os veículos
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar se o lucro de um veiculo for negativo: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quando activo, uma notícia é enviada quando um veículo não deu lucro durante um ano
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veículos nunca expiram: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quando activo, todos os modelos de veículos permanecerão disponíveis para sempre após a sua introdução
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Auto-renovação de veículos quando ficam velhos: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quando activo, um veículo a chegar ao fim de vida é automaticamente substituído quando as condições de renovação estão reunidas
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Renovar automaticamente quando um veículo chega a {STRING} de idade
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Idade relativa a partir da qual um veículo deva ser indicado para auto-renovação
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mês{P 0 "" es} antes
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mês{P 0 "" es} após
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Dinheiro mínimo para fazer auto-renovação: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Quantidade mínima de dinheiro que tem que estar no banco para auto-renovação de veículos ser considerada
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duração da mensagem de erro: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duração da visualização de mensagens de erro em janela vermelha. Note que algumas mensagens de erro (críticas) não são fechadas após este tempo e têm que ser fechadas manualmente
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segundo{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostrar textos de ajuda: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Atraso após o qual os textos de ajuda são mostrados após parar o cursor sobre algum elemento da interface. Alternativamente, os textos de ajuda podem ser mostrados com o botão direito do rato
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Parar o rato por {COMMA} segundo{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Click com botão direito
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostra população da cidade na janela da cidade: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Mostrar a população das povoações na sua etiqueta no mapa
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grossura das linhas nos gráficos: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Gerador de terra: {STRING}
@@ -1241,6 +1268,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Se desligado, a
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Um ou mais quadrados no canto norte não estão vazios
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Um ou mais quadrados num dos cantos não é água
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Espalhamento das estações máximo: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Manutenção automática de helicópteros em heliportos: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Ligar ferramentas de paisagem com as de construção: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Cor do solo usada no mapa pequeno: {STRING}

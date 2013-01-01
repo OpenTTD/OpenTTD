@@ -238,7 +238,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Ýttu og
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Stækka/smækka gluggastærð
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skrunslá - færir lista upp/niður
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rennislá - rennir lista til vinstri/hægri
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Eyða byggingum o.s.frv. á lóðarreiti
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Eyða byggingum o.s.frv. á lóðarreiti. Ctrl velur svæðið skáhalt. Haldið Shift inni til að sýna áætlaðan kostnað
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Sjálfgildi
@@ -295,7 +295,7 @@ STR_SORT_BY_RANGE                                               :Drægni
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Stöðva leik
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Spóla leikinn áfram
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Stillingar
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Vista leik, hætta í leik, hætta
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Vista leik, hætta í leik, hætta í OpenTTD
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Sýna kort
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Sýna bæjarmöppu
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Sýna samstarfssamninga
@@ -305,10 +305,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Sýna al
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Sýna línurit
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Sýna stigatöflu fyrirtækja
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Fjármagna byggingu nýs iðnaðars
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Sýna lista yfir lestar fyrirtækis. Ctrl+Click skiptir milli hópa/farartækja lista
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Sýna lista yfir götufarartæki fyrirtækis. Ctrl+Click velur opnun á hóp/farartækja lista
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Sýna lista yfir skip fyrirtækis. Ctrl+Click velur opnun á hóp/farartækja lista
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Sýna lista yfir flugvélar fyrirtækis. Ctrl+Click velur opnun á hóp/farartækja lista
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Sýna lista yfir lestar fyrirtækis. Ctrl+smella skiptir milli hópa/farartækja lista
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Sýna lista yfir götufarartæki fyrirtækis. Ctrl+smella velur opnun á hóp/farartækja lista
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Sýna lista yfir skip fyrirtækis. Ctrl+smella velur opnun á hóp/farartækja lista
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Sýna lista yfir flugvélar fyrirtækis. Ctrl+smella velur opnun á hóp/farartækja lista
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Þrengja sýnishorn
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Víkka sýnishorn
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Leggja lestartein
@@ -318,7 +318,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Byggja f
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Opna landslags verkfæraslána til að hækka/lækka land, gróðursetja tré o.s.frv.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Sýna hljóð/tónlistar glugga
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Sýna síðustu skilaboð/fréttatilkynningu, sýna skilaboðastillingar
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landsvæðisupplýsingar
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landsvæðisupplýsingar, stjórnborð, aflúsunu forskrifta, skjáskot, um OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skipta á tækjaslá
 
 # Extra tooltips for the scenario editor toolbar
@@ -333,9 +333,9 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landslag
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Bæjargerð
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Iðnaðargerð
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Vegagerð
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Gróðursetja tré
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Gróðursetja tré. Shift sýnir áætlaðan kostnað
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Setja skilti
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Setja hlut
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Setja hlut. Shift sýnir áætlaðan kostnað
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Vista kort
@@ -361,7 +361,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Skilti og nöfn
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Fullar myndhreyfingar
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Full nákvæmni
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Gegnsæjar byggingar
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gegnsæ stöðvanöfn
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gegnsæ skilti
 ############ range ends here
 
 ############ range for file menu starts
@@ -447,9 +447,9 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Saga skilaboða
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landssvæðisupplýsingar
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Kveikja á stýriskjá
-STR_ABOUT_MENU_AI_DEBUG                                         :Aflúsun gervigreindar
+STR_ABOUT_MENU_AI_DEBUG                                         :Aflúsun gervigreindar/forskrifta
 STR_ABOUT_MENU_SCREENSHOT                                       :Skjámynd
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Þysjuð inn skjámynd
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Súmuð inn skjáskot
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Taka skjáskot af súmi
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Risa skjámynd
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Um 'OpenTTD'
@@ -539,8 +539,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Laun fyrir flutning á 10 einingum (eða 10,000 lítra) af farmi um 20 reiti
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Sýna allt
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Fela allt
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Sýna alla farma á farmgreiðslulínuritinu
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Sýna enga farma á farmgreiðsluyfirlitinu
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Sýna alla farma á farmgjalda línuritinu
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Sýna enga farma á farmgjalda línuritinu
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Taka út/setja inn graf fyrir farmgerðir
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -583,7 +583,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lán:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Alls:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Fjöldi farartækja sem skiluðu hagnaði síðasta ár. Inniheldur bifreiðar, lestir, skip og flugvélar
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Fjöldi stöðvarhluta sem hafa nýlega verið þjónustaðir. Hver hluti stöðvar (t.d. lestarstöð, strætóstöð, flugvöllur) er talinn, jafnvel þótt þeir séu tengdir sem ein stöð.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Fjöldi stöðvarhluta sem hafa nýlega verið þjónustaðir. Hver hluti stöðvar (t.d. lestarstöð, strætóstöð, flugvöllur) er talinn sérstaklega, jafnvel þótt þeir séu tengdir einni stöð
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Hagnaður tekjulægsta farartækisins (sem þó er eldra en 2 ára)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Heildar afkoma í ársfjórðungi með lægsta gróða yfir síðastliðna 12 ársfjórðunga
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Heildar afkoma í ársfjórðungi með hæðsta gróða yfir síðastliðnu 12 ársfjórðunga
@@ -794,17 +794,17 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} hefur of fáar stöðvar á áætlun
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} hefur ógilda færslu á áætlun
-STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} hefur endurteknar færslur á áætlun
-STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} hefur ógilda stöð á áætlun
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} hefur of fáar skipanir á áætlun
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} hefur ógilda skipun
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} hefur endurteknar skipanir
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} hefur ógilda stöð í skipunum sínum
 # end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} er tekinn að eldast
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} er tekinn að eldast mikið
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} er tekinn að eldast mikið og nauðsynlegt er að skipta honum út
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ratar ekki á áfangastað
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} er týnd.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} hefur villst
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Hagnaður síðasta árs af {VEHICLE} nam {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kemst ekki á næsta áfangastað vegna þess að hann er of langt í burtu
 
@@ -835,7 +835,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Sjónarhorn {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Afrita í sjónarhorn
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Afrita aðalsjónarhornið í sjónarhornsrammann
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Afrita aðalsjónarhornið í þetta sjónarhorn
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Afrita frá sjónarhorni
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Afrita sjónarhornið í rammanum í aðalsjónarhornið
 
@@ -845,26 +845,26 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Gjaldmi�
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Val á gjaldmiðli
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pund (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Bandaríkjadalur ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Evra (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jen (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Sterlingspund (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Bandaríkjadalur (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Evra (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japanskt jen (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austurrískur skildingur (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgískur franki (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Svissneskur franki (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tékknesk kóróna (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Þýskt mark (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Dönsk króna (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pesetar (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Spænskir pesetar (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finnskt mark (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franki (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franskur franki (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grísk drakma (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungversk forinta (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Íslensk króna (ISK)
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Ítölsk líra (ITL)
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollensk gyllini (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norsk króna (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Pólsk zloty (PLN)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Pólskt slot (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Rúmensk leu (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rússnesk rúbla (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slóvensk tolar (SIT)
@@ -1164,7 +1164,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Akstursstefnu m
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Hægra megin
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Sýna fjármálaglugga í lok árs: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Ef þetta er virkt þá koma fjárhagsupplýsingar fyrirtækisins við enda hvers árs til að auðvelda yfirlit yfir fjárhag fyrirtækisins
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nýjar skipanir eru "hraðleiðar" sem sjálfgildi {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nýjar skipanir eru sjálfgefnar sem 'hraðleiðar': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Venjulega stoppa farartæki á öllum stöðvum sem þau fara í gegnum. Með því að virkja þessa stillingu mun faratækið fara í gegnum allar þær stöðvar á leið sinni án þess að stoppa. Athugið, þessi stilling skilgreinir aðeins hver sjálfgefin stilling er fyrir nýjar skipanir. Hægt er að breyta þessum stillingum fyrir hvert og eitt farartæki
 STR_CONFIG_SETTING_STOP_LOCATION                                :Við nýja áfangastaði stöðva lestir sjálfgefið við {STRING} brautarpallsins
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Sjálfgefin stilling hvar lestin stoppar á brautarpallinum. 'upphaf' þýðir nálægt þeim hluta sem lestin kemur inn í lestarstöðina, 'miðju' þýðir fyrir miðju lestarstöðvarinnar og 'enda' þýðir fjærst þeim hluta sem lestin kom inn í lestarstöðina. Athugið, þessi stilling skilgreinir aðeins hver sjálfgefin stilling er fyrir nýjar skipanir. Hægt er að breyta þessum stillingum fyrir hvert og eitt farartæki
@@ -1196,7 +1196,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Leyfa strætós
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Leyfa stöðvar á gangstéttum vega í eigu keppinauta: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Heimila sambyggingu stöðva: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Virkja mörg NewGRF vélasöfn: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ekki er hægt að breyta þessari stillingu þegar til eru farartæki.
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ekki er hægt að breyta þessari stillingu þegar til eru farartæki
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Alltaf hægt að byggja allar gerðir flugvalla: {STRING}
 
@@ -1261,7 +1261,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Ýta einusinni 
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Hægrismellshermun: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-smella
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-smella
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+smella
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Af
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Skrun með hægri músarhnappi: {STRING}
@@ -1277,8 +1277,8 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Ítarlegur list
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Virkja möguleika á ítarlegum lista yfir farartæki sem notaður er til að flokka farartæki
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Sýna stöðu lestunar: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Birta áætlanir í slögum frekar en dögum: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Sýna komu og brottfaratíma í áætlunum: {STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :Fljótleg gerð áætlunar: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Sýna komu- og brottfaratíma í áætlunum: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :Fljótleg gerð skipana: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Valin lestartegund (eftir nýjan leik/opnaðan leik): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Fyrsta mögulega
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Síðasta mögulega
@@ -1458,7 +1458,7 @@ STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF S
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Ná í viðbætur af netinu
 STR_INTRO_QUIT                                                  :{BLACK}Hætta
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Hefja nýjan leik. Ctrl+Click sleppir kortastillingum
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Hefja nýjan leik. Ctrl+smella sleppir kortastillingum
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Opna vistaðan leik
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Hefja nýjan leik byggðan á hæðakorti
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Hefja nýjan leik í sérvöldu korti
@@ -1504,7 +1504,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ertu vi
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Svindl
 STR_CHEATS_TOOLTIP                                              :{BLACK}Valreitur segir til um ef þú hefur notað þetta svindl áður
-STR_CHEATS_WARNING                                              :{BLACK}Aðvörun! Þú ert í þann mund að svíkja keppinauta þína. Hafðu í huga að þess lags svívirðing mun ætíð höfð í minnum.
+STR_CHEATS_WARNING                                              :{BLACK}Aðvörun! Þú ert í þann mund að svíkja keppinauta þína. Hafðu í huga að þess lags svívirðing mun ætíð höfð í minnum
 STR_CHEAT_MONEY                                                 :{LTBLUE}Auka pening um {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spila sem fyrirtæki: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Töfrajarðýta (eyðir iðnaði, óeyðanlegum hlutum): {ORANGE}{STRING}
@@ -1525,8 +1525,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Litaskem
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Litaskema bifreiða
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Litaskema skipa
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Litaskema flugvéla
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Veldu lit fyrir valda hluti á listanum
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Veldu seinni lit fyrir valda hluti á listanum
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Veldu aðallitinn fyrir valda hluti á listanum. Ctrl+Smella setur þennan lit fyrir alla hluti
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Veldu seinni lit fyrir valda hluti á listanum. Ctrl+Smella setur þennan lit á alla hluti á listanum
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Veldu hluti til að breyta lit á, CTRL-smelltu til að velja marga saman. Smelltu í reitinn til að virkja valinn lit.
 
 STR_LIVERY_DEFAULT                                              :Aðal litaskema
@@ -1565,17 +1565,17 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Velja kv
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nýtt Andlit
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Mynda andlit af handahófi
 STR_FACE_ADVANCED                                               :{BLACK}Ítarlegt
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Ítarleg breyting andlits
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Ítarleg breyting á andlitinu
 STR_FACE_SIMPLE                                                 :{BLACK}Einfalt
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Einföld breyting andlits
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Einföld breyting á andlitinu
 STR_FACE_LOAD                                                   :{BLACK}Hlaða
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Hlaða uppáhalds andliti
 STR_FACE_LOAD_DONE                                              :{WHITE}Þitt uppáhalds andlit hefur verið sótt úr OpenTTD stilliskrá
 STR_FACE_FACECODE                                               :{BLACK}Andlit nr.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Skoða og/eða stilla andlitsnúmer
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Skoða og/eða stilla andlitsnúmer
-STR_FACE_FACECODE_SET                                           :{WHITE}Nýtt andlitsnúmer hefur verið stillt.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Gat ekki stillt andlitsnúmer - verður að vera tala á bilinu 0 og upp í 4.294.967.295!
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Skoða og/eða stilla andlitsnúmer á framkvæmdarstjóra fyrirtækisins
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Skoða og/eða stilla andlitsnúmer framkvæmdarstjóra
+STR_FACE_FACECODE_SET                                           :{WHITE}Nýtt andlitsnúmer hefur verið stillt
+STR_FACE_FACECODE_ERR                                           :{WHITE}Gat ekki stillt andlitsnúmer framkvæmdarstjóra - verður að vera tala á bilinu 0 og upp í 4.294.967.295!
 STR_FACE_SAVE                                                   :{BLACK}Vista
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Vista uppáhalds andlit
 STR_FACE_SAVE_DONE                                              :{WHITE}Þetta andlit mun verða vistað sem þitt uppahald í OpenTTD stilliskrá
@@ -1659,7 +1659,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Endurný
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Finna þjón
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Leita að þjónum á neti
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Bæta við þjóni
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Bætir þjóni við listann sem mun alltaf sýna leiki í spilun
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Bætir þjóni við listann, hann mun alltaf vera athugaður þegar leitað er eftir leikjum í gangi
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Hefja þjón
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Hefja eigin þjón
 
@@ -1759,15 +1759,15 @@ STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Hjálpa 
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Tengist...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Tengist..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Staðfesti..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Bíð..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Hala niður korti..
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Vinn úr gögnum..
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Skrái..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Tengist...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Staðfesti...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Bíð...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Hala niður korti...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Vinn úr gögnum...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Skrái...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Næ í upplýsingar um leik..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Næ í upplýsingar um fyrirtæki..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Næ í upplýsingar um leik...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Næ í upplýsingar um fyrirtæki...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} þjón{P n ar} fyrir framan þig
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} niðurhöluð hingaðtil
@@ -1951,15 +1951,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Gat ekki
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Stilling gegnsæjis
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Virkja/afvirkja gegnsæji stöðvaskiltia. CTRL+smella til að læsa.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Virkja/afvirkja gegnsæji trjáa. CTRL+smella til að læsa.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Virkja/afvirkja gegnsæji skilta. CTRL+smella til að læsa.
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Virkja/afvirkja gegnsæji trjáa. Ctrl+smella til að læsa.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Virkja/afvirkja gegnsæji húsa. CTRL+smella til að læsa.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Virkja/afvirkja gegnsæji iðnaða. CTRL+smella til að læsa.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Virkja/afvirkja gegnsæji bygginga á borð við stöðvar, skýli og veghlið. CTRL+smella til að læsa.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Virkja/afvirkja gegnsæji brúa. CTRL+smella til að læsa.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Virkja/afvirkja gegnsæji bygginga á borð við vita og möstur. CTRL+smella til að læsa.
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Virkja/afvirkja gegnsæji iðnaða. Ctrl+smella til að læsa
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Virkja/afvirkja gegnsæji bygginga á borð við stöðvar, skýli og veghlið. CTRL+smella til að læsa
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Virkja/afvirkja gegnsæji brúa. Ctrl+smella til að læsa
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Virkja/afvirkja gegnsæji bygginga á borð við vita og möstur. Ctrl+smella til að læsa
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Virkja/afvirkja gegnsæji raflína. CTRL+smella til að læsa.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Virkja/afvirkja gegnsæji hleðslumæla. CTRL+smella til að læsa.
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Virkja/afvirkja gegnsæji hleðslumæla. Ctrl+smella til að læsa
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gera hluti ósýnilega en ekki gagnsæja
 
 # Base for station construction window(s)
@@ -1984,16 +1984,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Raflestaframkv�
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Einteinungsframkvæmdir
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Maglev framkvæmdir
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Leggja lestarteina. Ctrl velur byggja/fjarlægja fyrir lestarframkvæmdir
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Leggja lestarteina í Sjálvirkiteina ham. Ctrl velur byggja/farjlæga fyrir lestarframkvæmdir
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Byggja lestarskýli (til að byggja og þjónusta lestar)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Breyta teini í lestarhlið. Ctrl leyfir samteningu lestarhliða.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Byggja lestarstöð. Ctrl leyfir samtengingu stöðva.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Byggja lestarljós. Ctrl velur hreyfiskilti/ljósamerki{} Dragðu til að bygga ljós eftir beinni lestarlínu{}Ctrl+Smella opnar/lokar lestarljósa glugganum
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Byggja lestarbrú
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Byggja lestargöng
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Leggja lestarteina. Ctrl velur byggja/fjarlægja fyrir lestarframkvæmdir. Shift sýnir áætlaðan kostnað
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Leggja lestarteina, stefna teinanna er sjálfvirk. Halda ctrl inni til að eyða teinum. Shift sýnir áætlaðan kostnað
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Byggja lestarskýli (til að byggja og þjónusta lestar). Shift sýnir áætlaðan kostnað
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Breyta teini í vegvísi. Ctrl leyfir samteningu vegvísa. Shift sýnir áætlaðan kostnað
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Byggja lestarstöð. Ctrl leyfir samtengingu stöðva. Shift sýnir áætlaðan kostnað
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Byggja lestarljós. Ctrl velur hreyfiskilti/ljósamerki{}Dragðu til að bygga ljós eftir beinni lestarlínu{}Ctrl+smella opnar/lokar lestarljósa glugganum. Shift sýnir áætlaðan kostnað
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Byggja lestarbrú. Shift sýnir áætlaðan kostnað
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Byggja lestargöng. Shift sýnir áætlaðan kostnað
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skipta á milli byggja/fjarlægja lestarteina, lestarljós, leiðarsteina og lestarstöðvar. Haltu Ctrl inni til að líka fjarlægja lestarteina úr leiðarsteinum og lestarstöðvum
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Breyta/uppfæra gerð lestarteins
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Breyta/uppfæra gerð lestarteins. Shift sýnir áætlaðan kostnað
 
 
 # Rail depot construction window
@@ -2023,19 +2023,19 @@ STR_STATION_CLASS_WAYP                                          :Millistöð
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Lestaljós
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Hefðbundin merki{}Merki eru nauðsynleg til að koma í veg fyrir að lestir lendi í árekstri.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Komumerki{}Hleypir í gegn uns ekkert frámerki er eftir opið.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Frámerki{}Virkar eins og hefðbundið merki en er nauðsynlegt til að fá rétta virkni fyrir komu- og fjölmerki.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Tvívirk-ljós (hangandi){}Tvívirku ljósin einfaldlega virka bæði sem inn og út ljós. Þetta leyfir þér að byggja stór "tré" af for-ljósum.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Leiðarmerki (skilti){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á svæði án umferðarmerkja ef þær finna örugga leið út af því aftur. Lestir geta farið framhjá venjulegum skiltum aftanfrá.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Einstefnuleiðarmerki (skilti){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á svæði án umferðarmerkja ef þær finna örugga leið út af því aftur. Lestir geta ekki farið framhjá einstefnuskiltum aftanfrá.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Hefðbundin ljós{}Ljós eru nauðsynleg til að koma í veg fyrir að lestir lendi í árekstri.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Komuljós{}Hleypir í gegn uns ekkert fráljós er lengur grænt.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Fráljós{}Virkar eins og hefðbundið ljós en er naðusynlegt til að fá rétta virkni fyrir komu- og fjölljós.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Tvívirk-ljós (electric){}Tvívirku ljósin einfaldlega virka bæði sem inn og út ljós. Þetta leyfir þér að byggja stór "tré" af for-ljósum.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Leiðarmerki (ljós){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á svæði án umferðarmerkja ef þær finna örugga leið út af því aftur. Lestir geta farið framhjá venjulegum skiltum aftanfrá.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einstefnuleiðarmerki (ljós){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á svæði án umferðarmerkja ef þær finna örugga leið út af því aftur. Lestir geta ekki farið framhjá einstefnuskiltum aftanfrá.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Breyting ljósa{}Þegar valið þá breytist merki sem til er fyrir í valda gerð og tegund. CTRL-smellur mun rúlla í gegnum núverandi tegund.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Hefðbundin merki (skilti){}Þetta er einfaldasta tegund lestaskilta, bara ein lest getur verið á milli skilta hverju sinni
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Komumerki(lestaskilti){}Hleypir í gegn meðan ekkert frámerki sem á eftir kemur er grænt. Annars sýnir það rautt
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Frámerki (lestaskilti){}Virkar eins og hefðbundið merki en er nauðsynlegt til að fá rétta virkni fyrir komu- og tvívirk merki
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Tvívirk-merki (lestaskilti){}Tvívirku skiltin einfaldlega virka bæði sem inn og út merki. Þetta leyfir þér að byggja stór "tré" af for-merkjum
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Leiðarskilti (lestaskilti){}Leiðarskilt gera fleiri en einni lest í einu kleift að keyra inn á svæði án umferðamerkja ef þær finna örugga leið út af því aftur. Lestir geta farið framhjá venjulegum skiltum aftanfrá
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Einstefnuskilti (lestaskilti){}Leiðarskilti gera fleiri en einni lest í einu kleift að keyra inn á svæði án umferðarmerkja ef þær finna örugga leið út af því aftur. Lestir geta ekki farið framhjá einstefnuskiltum aftanfrá
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Hefðbundin ljós (lestaljós){}Þetta er einfaldasta tegund lestaljósa, bara ein lest getur verið á milli ljósa hverju sinni
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Komuljós (lestaljós){}Hleypir í gegn meðan eitt eða fleiri fráljós sem á eftir koma eru græn. Annars sýnir það rautt
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Fráljós (lestaljós){}Virkar eins og hefðbundið ljós en er nauðsynlegt til að fá rétta virkni fyrir komu- og fjölljós
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Tvívirk-ljós (lestaljós){}Tvívirku ljósin einfaldlega virka bæði sem inn og út ljós. Þetta leyfir þér að byggja stór "tré" af for-ljósum
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Leiðarljós (lestaljós){}Leiðarljós gera fleiri en einni lest í einu kleift að keyra inn á svæði án umferðarljósa ef þær finna örugga leið út af því aftur. Lestir geta farið framhjá venjulegum skiltum aftanfrá
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einstefnuljós (lestaljós){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á svæði án umferðarmerkja ef þær finna örugga leið út af því aftur. Lestir geta ekki farið framhjá einstefnuljósum aftanfrá
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Breyting ljósa{}Þegar valið þá breytist skiltið/ljósið sem fyrir er í valda gerð og tegund. Ctrl-smella mun rúlla í gegnum skiltin. Shift+smella sýnir áætlaðan kostnað
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Þéttleiki dreginna ljósa
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Minnka þéttleika dreginna ljósa
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Auka þéttleika dreginna ljósa
@@ -2058,21 +2058,21 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Rörabrú, kís
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Vegagerð
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Sporvagnaframkvæmdir
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Leggja veg. Ctrl velur byggja/fjarlægja fyrir vegavinnu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Leggja sporvagnaspor. Ctrl velur byggja/fjarlæga fyrir sporvagnabyggingu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Leggja veghluta í sjálfvirkum vegaham. Ctrl velur byggja/fjarlægja fyrir vegavinnu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Leggja sporvagnaspor í sjálfvirkum sporvagnsham. Ctrl velur byggja/fjarlægja fyrir sporvagnavinnu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Byggja bifreiðaskýli (til að kaupa og gera við bifreiðar)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Reisa sporvagnaskýli (til að kaupa og þjónusta vagna)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Byggja strætóstoppistöð. Ctrl leyfir samtengingu stöðva.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Reisa sporvagnastöð fyrir farþega. Ctrl leyfir samtengingu stöðva
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Byggja flutningabílastöð. Ctrl leyfir samtengingu stöðva
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Reisa sporvagnastöð fyrir farm. Ctrl leyfir samtengingu stöðva
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Leggja veg. Ctrl velur byggja/fjarlægja vegi. Shift sýnir áætlaðan kosntað
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Leggja sporvagnaspor. Ctrl velur byggja/fjarlæga fyrir sporin. Shift sýnir áætlaðan kostnað
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Leggja veghluta í sjálfvirkum vegaham. Ctrl velur byggja/fjarlægja vegi. Shift sýnir áætlaðan kostnað
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Leggja sporvagnaspor í sjálfvirkum sporvagnsham. Ctrl velur byggja/fjarlægja spor. Shift sýnir áætlaðan kostnað
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Byggja bifreiðaskýli (til að kaupa og gera við bifreiðar). Shift sýnir áætlaðan kostnað
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Reisa sporvagnaskýli (til að kaupa og þjónusta vagna). Shift sýnir áætlaðan kostnað
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Byggja strætóstoppistöð. Ctrl leyfir samtengingu stöðva.Shift sýnir áætlaðan kostnað
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Reisa sporvagnastöð fyrir farþega. Ctrl leyfir samtengingu stöðva. Shift sýnir áætlaðan kostnað
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Byggja flutningabílastöð. Ctrl leyfir samtengingu stöðva. Shift sýnir áætlaðan kostnað
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Reisa sporvagnastöð fyrir farm. Ctrl leyfir samtengingu stöðva. Shift sýnir áætlaðan kostnað
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Virkja/afvirkja einstefnugötur
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Byggja vegabrú
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Byggja sporvagnabrú
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Byggja göng
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Grafa sporvagnagöng
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Byggja vegabrú. Shift sýnir áætlaðan kostnað
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Byggja sporvagnabrú. Shift sýnir áætlaðan kostnað
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Byggja göng. Shift sýnir áætlaðan kostnað
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Grafa sporvagnagöng. Shift sýnir áætlaðan kostnað
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Skipta á milli byggja/fjarlægja fyrir vegagerð
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Skipta á milli þess að leggja leggja og fjarlægja sporvagnaspor
 
@@ -2087,22 +2087,22 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Staða s
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Veldu stöðu strætisvagnastöðvar
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Staða póstvagnsstöðvar
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Veldu stöðu póstvagnsstöðvar
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Staða sporvagnafarþegastöðvar
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Staða farþegastöðvar fyrir sporvagna
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Velja stöðu farþegasporvagnastöðvar
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Staða farmsporvagnastöðvar
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Staða farmstöðvar fyrir sporvagna
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Velja stöðu farmsporvagnastöðvar
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Vatnaframkvæmdir
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Skipaskurður
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Grafa skipaskurði.
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Grafa skruðgátt
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Reisa slipp (til að kaupa og þjónasta skip)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Byggja bryggju. Ctrl leyfir samtengingu stöðva
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Setja niður bauju sem hægt er að nota sem leiðarvísi fyrir skip
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Byggja vatnsleyðslu
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Grafa skipaskurði. Shift sýnir áætlaðan kostnað
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Grafa skipastiga. Shift sýnir áætlaðan kostnað
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Reisa slipp (til að kaupa og þjónasta skip). Shift sýnir áætlaðan kostnað
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Byggja bryggju. Ctrl leyfir samtengingu stöðva. Shift sýnir áætlaðan kostnað
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Setja niður bauju sem hægt er að nota sem leiðarvísi. Shift sýnir áætlaðan kostnað
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Byggja vatnsveitubrú. Shift sýnir áætlaðan kostnað
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Skilgreina vantssvæði.{}Grafa skipaskurð, nema CTRL sé haldið niðri við sjávarmál, þá flæðir yfir umhverfið í staðin.
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Búa til fljót.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Búa til fljót
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Staða slipps
@@ -2113,7 +2113,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Höfn
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Flugvellir
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Byggja flugvöll. Ctrl leyfir samtengingu stöðva
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Byggja flugvöll. Ctrl leyfir samtengingu stöðva. Shift sýnir áætlaðan kostnað
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Flugvallastillingar
@@ -2140,14 +2140,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Hávaði
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Mótun lands
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Lækka horn af landssvæði
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Lyfta horni af landssvæði
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Jafna land
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kaupa landssvæði til notkunar síðar
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Lækka horn af landssvæði. Dragðu til að lækka fyrsta hornið og svo valið landsvæði útfrá því. Ctrl velur svæðið skáhalt. Shift sýnir áætlaðan kostnað
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Lyfta horni af landssvæði. Dragðu til að lyfta fyrsta horninu og svo valið landsvæði útfrá því. Ctrl velur svæðið skáhalt. Shift sýnir áætlaðan kostnað
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Jafna land miðað við fyrsta valda hornið. Ctrl velur svæðið skáhalt. Shift sýnir áætlaðan kostnað
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kaupa landssvæði til notkunar síðar. Shift sýnir áætlaðan kostnað
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Hlutaval
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Veldu hlut til að byggja
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Veldu hlut til að byggja. Shift sýnir áætlaðan kostnað
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Sýnishorn af hlutnum
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Stærð: {GOLD}{NUM} x {NUM} reitir
 
@@ -2158,7 +2158,7 @@ STR_OBJECT_CLASS_TRNS                                           :Sendar
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Tré
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Veldu trjátegund sem á að gróðursetja. Ef það er fyrir tré á reitnum, verðu fleiri trjám mismunandi trjám plantað óhað hvaða tegund hefur verið valin
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tré af handahófskenndri gerð
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Gróðursetja tré af handahófskenndri gerð
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Gróðursetja tré af handahófskenndri gerð. Shift sýnir áætlaðan kostnað
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Tré af handahófi
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Gróðursetja tré af handahófi á landið
 
@@ -2171,15 +2171,15 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Minnka s
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Mynda til land af handahófi
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Búa til nýtt kort
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Eyða landi
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Fjarlægja allar eignir leikmanna af landinu
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Fjarlægja allar eignir fyrirtækja af kortinu
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Eyða landi
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Ertu viss um að þú viljir fjarlægja allar eignir leikmanna?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Ertu viss um að þú viljir fjarlægja allar eignir fyrirtækja?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Bæjargerð
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nýr bær
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Stofna nýjan bæ
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Stofna nýjan bæ. Shift sýnir áætlaðan kostnað
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Handahófskenndur bær
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Stofna bæ á handahófskenndum stað
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Búa til marga bæi
@@ -2448,7 +2448,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Færa of
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Færa valda NewGRF skrá ofar á listann
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Færa neðar
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Færa valda NewGRF skrá neðar á listann
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Listi yfir NewGRF skrár sem eru til staðar. Smelltu á skrá til að eiga við eiginleika hennar.
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Listi yfir NewGRF skrár sem eru uppsettar.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Stilla breytur
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Skipta milli litaskema
@@ -2509,7 +2509,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Aðvörun: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Villa: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Banvænt: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Alvarle NewGRF villa átti sér stað: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Alvarleg NewGRF villa átti sér stað: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} Mun ekki virka með útgáfu TTDPatch sem OpenTTD gefur til kynna.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} er fyrir {STRING} útgáfu af TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} er hannað til að notast með {STRING}
@@ -2518,15 +2518,15 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} ver�
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} verður að hlaðast eftir {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} þarf OpenTTD útgáfu {STRING} eða nýrri.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF skránni sem það var hannað til að þýða
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Of mörg NewGRF eru hlaðin.
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Of mörg NewGRF eru hlaðin
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ef {1:STRING} er hlaðið sem kyrrstæðu NewGRF ásamt {STRING} gætu orðið hnökrar á keyrslu leiksins.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inniheldur gallaða mynd. Allar gallaðar myndir munu birtast sem rauð spurningamerki (?).
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Grunnteiknisafnið sem er í notkun vantar hluta af hreyfimyndunum.{}Vinsamlegast uppfærðu grunnteiknisafnið.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inniheldur gallaða mynd. Allar gallaðar myndir munu birtast sem rauð spurningamerki (?)
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Grunnteiknisafnið sem er í notkun vantar hluta af hreyfimyndunum.{}Vinsamlegast uppfærðu grunnteiknisafnið
 STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Í Grafíska safnið sem nú er í notkun vantar nokkrar myndir.{}Vinsamlegast uppfærið grafíska safnið.{}Þar sem þú ert að spila {YELLOW}þróunar útgáfu af OpenTTD{WHITE}, gæti verið að þú þyrftir líka {YELLOW} þróunar útgáfu af grafíska safninu{WHITE}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varúð!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Þú ert í þann mund að eiga við leik í gangi, við það gæti OpenTTD hrunið.{}Ertu viss um að þú viljir halda áfram?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Þú ert í þann mund að eiga við leik í gangi, við það gæti OpenTTD hrunið. Vinsamlegast ekki senda inn upplýsingar um villu vegna þess.{}Ertu viss um að þú viljir halda áfram?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Get ekki bætt skrá við: tvö eins GRF einkenni
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Viðeigandi skrá finnst ekki (samsvarandi GRF hlaðið)
@@ -2543,14 +2543,14 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Fann sa
 STR_NEWGRF_LIST_MISSING                                         :{RED}Vantar skrár
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Hegðun NewGRF '{0:STRING}' er líkleg til að valda hnökrum og/eða hruni á kreyslu leiksins.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Breytir stöðu á togvagni '{1:ENGINE}' þegar hann er ekki í skýli
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Breytir lengd á farartæki '{1:ENGINE}' þegar það er ekki í skýli.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Lest '{VEHICLE}' sem tilheyrir '{COMPANY}' er ekki af réttri lengd. Þessu valda sennilega NewGRF vandamál. Leikurinn kann að missa samband eða hrynja.
+STR_NEWGRF_BROKEN                                               :{WHITE}Hegðun NewGRF '{0:STRING}' er líkleg til að valda hnökrum og/eða hruni á keyrslu leiksins
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Breytir stöðu á knúnum togvagni '{1:ENGINE}' þegar hann er ekki í skýli
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Breytir lengd á farartæki '{1:ENGINE}' þegar það er ekki í skýli
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Lest '{VEHICLE}' sem tilheyrir '{COMPANY}' er ekki af réttri lengd. Þessu valda sennilega NewGRF vandamál. Leikurinn kann að missa samband eða hrynja
 
-STR_NEWGRF_BUGGY                                                :{WHITE}Rangar upplýsingar fylgja '{0:STRING}' NewGRF.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Farm/breytingaupplýsingar fyrir '{1:ENGINE}' stangast á við innkaupalista eftir kaup. Þetta kann að valda því að sjálfvirk uppfærsla/útskipting mistakist.
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' olli endalausri lykkju í framleiðsluferlinu.
+STR_NEWGRF_BUGGY                                                :{WHITE}Rangar upplýsingar fylgja '{0:STRING}' NewGRF
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Farm/breytingaupplýsingar fyrir '{1:ENGINE}' stangast á við innkaupalista eftir kaup. Þetta kann að valda því að sjálfvirk uppfærsla/útskipting mistakist
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' olli endalausri lykkju í framleiðsluferlinu
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
@@ -2577,7 +2577,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Sláðu 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Bæir
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Enginn -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Bæjanöfn - smelltu á nafn til að færa sjónarhorn að viðkomandi bæ. Ctrl+Smelltu til að opna sýnisglugga yfir þessum bæ
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Bæjanöfn - smelltu á nafn til að færa sjónarhorn að viðkomandi bæ. Ctrl+smelltu til að opna nýtt sjónarhorn yfir þessum bæ
 STR_TOWN_POPULATION                                             :{BLACK}Heildaríbúafjöldi: {COMMA}
 
 # Town view window
@@ -2590,7 +2590,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Nauðsyn
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} nauðsynlegt
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} nauðsynlegt á veturnar
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Hávaðamörk í bænum: {ORANGE}{COMMA}{BLACK}  mest: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Færa sjónarhorn á staðsetningu bæjar. Ctrl+Smelltu til að opna sýnisglugga yfir þessum bæ
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Færa aðalsjónarhorn á staðsetningu þessa bæjar. Ctrl+smelltu til að opna nýtt sjónarhorn yfir þessum bæ
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Bæjaryfirvöld
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Sýna upplýsingar um bæjaryfirvöld
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Breyta nafni bæjar
@@ -2643,10 +2643,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Enginn -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Samningar þegar í gildi:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} frá {STRING} til {STRING}{YELLOW} ({COMPANY}{YELLOW}, þangað til {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Ýttu á þjónustu til að færa sýnishorn á tiltekinn iðnað/bæ. Ctrl+Smelltu til að opna sýnisglugga yfir þessum iðnaði/bæ
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Ýttu á þjónustu til að færa sjónarhorn á tiltekinn iðnað/bæ. Ctrl+smelltu til að opna sjónarhorn yfir þessum iðnaði/bæ
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nöfn stöðva - ýttu á nafn til að færa miðju sjónarhorns á stöð. Ctrl+Smelltu til að opna sýnisglugga yfir þessari stöð
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nöfn stöðva - ýttu á nafn til að færa miðju sjónarhorns á stöð. Ctrl+smelltu til að opna nýtt sjónarhorn yfir þessari stöð
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Haltu CTRL inni til að velja fleiri en einn hlut
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stöð{P "" var}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
@@ -2683,13 +2683,13 @@ STR_CARGO_RATING_EXCELLENT                                      :Frábær
 STR_CARGO_RATING_OUTSTANDING                                    :Framúrskarandi
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Færa miðju sýnishorns á staðsetningu stöðvarCtrl+Smelltu til að opna sýnisglugga yfir þessari stöð
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Færa miðju aðal sjónarhorns á staðsetningu stöðvar. Ctrl+smelltu til að opna sýnisglugga yfir þessari stöð
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Breyta nafni stöðvar
 
-STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Sýna allar lestir sem hafa þessa stöð á áætlun
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Sýna allar bifreiðir sem hafa þessa stöð á áætlun
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Sýna allar flugvélar sem hafa þessa stöð á áætlun
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Sýna öll skip sem hafa þessa stöð á áætlun
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Sýna allar lestir sem hafa þessa stöð á sinni áætlun
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Sýna allar bifreiðir sem hafa þessa stöð á sinni áætlun
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Sýna allar flugvélar sem hafa þessa stöð á sinni áætlun
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Sýna öll skip sem hafa þessa stöð á sinni áætlun
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Endurnefna stöð/lestunarsvæði
 
@@ -2728,9 +2728,9 @@ STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lán
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Hámarkslán: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Taka lán {CURRENCY_LONG}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Auka lán. Ctrl smelltu til að lána eins mikið og hægt er
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Auka lán. Ctrl+smella til að lána eins mikið og hægt er
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Borga lán {CURRENCY_LONG}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Borga til baka af láni. Ctrl smelltu til að borga eins mikið og hægt er
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Borga til baka af láni. Ctrl+smella til að borga eins mikið og hægt er
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
@@ -2754,7 +2754,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Byggja h
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Skoða HS
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Sjá höfuðstöðvar fyrirtækisins
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flytja HS
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Endurreisa höfuðstöðvarnar annarsstaðar fyrir 1% af verðmæti fyrirtækis
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Endurreisa höfuðstöðvarnar annarsstaðar fyrir 1% af verðmæti fyrirtækis. Shift sýnir áætlaðan kostnað við flutning á höfuðstöðvum
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nýtt Andlit
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Velja nýtt andlit á forstöðumanninn
@@ -2767,8 +2767,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Breyta n
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kaupa 25% hlut í fyrirtæki
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Selja 25% hlut í fyrirtæki
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kaupa 25% hlut í þessu fyrirtæki
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Selja 25% hlut í þessu fyrirtæki
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kaupa 25% hlut í þessu fyrirtæki. Shift+smella sýnir áætlaðan kostnað
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Selja 25% hlut í þessu fyrirtæki. Shift+smella sýnir áætlaðan kostnað
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nafn Fyrirtækis
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nafn forstöðumanns
@@ -2783,13 +2783,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Engin
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% flutt)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% flutt)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Iðnaðar nafn - smella á nafn til að færa miðju sjónarhorns á iðnað. Ctrl+Smelltu til að opna sýnisglugga yfir þessum iðnaði
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Iðnaðar nöfn - smella á nafn til að færa miðju sjónarhorns á iðnað. Ctrl+smella til að opna nýtt sjónarhorn yfir þessum iðnaði
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Framleiðsla síðasta mánaðar:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% flutt)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Miðja aðalsjónarhorn á iðnað. Ctrl+Smelltu til að opna sýnisglugga yfir þessum iðnaði
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Miðja aðalsjónarhorn á iðnað. Ctrl+smelltu til að opna sýnisglugga yfir þessum iðnaði
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Tekur við: {YELLOW}{STRING}{STRING}
@@ -2823,7 +2823,7 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Lestaúrval
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Bifreiðaúrval
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Skipaúrval
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Flugvélaúrval
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Skoða úrval
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Skoða lista yfir fáanleg farartæki af þessari gerð
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Stýra lista
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Senda boð til allra farartækja á listanum
@@ -2901,10 +2901,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Kaupa bi
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Kaupa skip
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Kaupa flugvél
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kaupa valinn lestarvagn
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kaupa valda bifreið
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kaupa valið skip
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kaupa valda flugvél
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kaupa valinn lestarvagn. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kaupa valda bifreið. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kaupa valið skip. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kaupa valda flugvél. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Endurnefna
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Endurnefna
@@ -2969,20 +2969,20 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Afrita b
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Afrita skip
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Afrita flugvél
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Þetta býr til aðra lest að tengivögnunum meðtöldum sem er eins og sú sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á lestina. Ctrl smelltu til að deila áætlun
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Þetta býr til aðra bifreið sem er eins og sú sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á bifreiðina. Control smelltu til að deila áætlun
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Þetta býr til annað skip sem er eins og það sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á skipið. Control smelltu til að deila áætlun
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Þetta býr til aðra flugvél sem er eins og sú sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á flugvélina. Control smelltu til að deila áætlun
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Þetta býr til aðra alveg eins lest að tengivögnunum meðtöldum. Smelltu á takkann og svo á lestina, hvort heldur sem er innan eða utan skýlisins. Ctrl+smella til að deila skipunum. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Þetta býr til aðra alveg eins bifreið. Smelltu á takkann og svo á bifreiðina, hvort heldur sem er innan eða utan skýlisins. Ctrl+smella til að deila skipunum. Shift+smella til að sýna áætlaðan kostnað án þess að kaupa
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Þetta býr til annað alveg eins skip. Smelltu á takkann og svo á skipið, hvort heldur sem er innan eða utan skýlisins. Ctrl+smella til að deila skipunum. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Þetta býr til aðra alveg eins flugvél. Smelltu á takkann og svo á flugvélina, hvort heldur sem er innan eða utan skýlisins. Ctrl+smella til að deila skipunum. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Miðstilla sjónarhorn á staðsetningu lestarskýlis. Ctrl smelltu til að opna sýnisglugga á staðsetningu lestarskýlis
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Miðstilla sjónarhorn á staðsetningu lestarskýlis. Ctrl+smella til að opna sýnisglugga á staðsetningu lestarskýlis
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Miðja aðalsjónarhorn á bifreiðaskýli. Ctrl smelltu til að opna sýnisglugga yfir staðsetningu bifreiðaskýlis
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Miðja aðalsjónarhorn á slipp Ctrl smelltu til að opna sýnisglugga yfir staðsetningu slipps
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Miðja aðalsjónarhorn á flugskýli. Ctrl smelltu til að opna sýnisglugga yfir staðsetningu flugskýlis
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Fá lista yfir allar lestir sem hafa þetta skýli á áætlun
-STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Fá lista yfir allar bifreiðir sem hafa þetta skýli á áætlun
-STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Fá lista yfir öll skip sem hafa þennan slipp á áætlun
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Fá lista yfir allar flugvélar sem hafa flugskýli á þessum velli á áætlun
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Fá lista yfir allar lestir sem hafa þetta skýli í sinni skipun
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Fá lista yfir allar bifreiðir sem hafa þetta skýli í sinni skipun
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Fá lista yfir öll skip sem hafa þennan slipp í sinni skipun
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Fá lista yfir allar flugvélar sem hafa flugskýli á þessum velli í sinni skipun
 
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Smelltu til að stöðva allar lestir í skýlinu
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Smelltu til að stöðva allar bifreiðar í skýlinu
@@ -3033,7 +3033,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skipta �
 STR_REPLACE_ENGINES                                             :Dráttarvagnar
 STR_REPLACE_WAGONS                                              :Vagnar
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Veldu hvernig lestir þú skipta út
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Veldu hvaða tegund lesta það er sem þú vilt skipta út
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Sýnir hvaða vagn kemur í stað þess sem valinn er vinstra megin
 STR_REPLACE_RAIL_VEHICLES                                       :Járnbrautavagnar
 STR_REPLACE_ELRAIL_VEHICLES                                     :Rafdrifnir lestarvagnar
@@ -3041,25 +3041,25 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Einteinungsvagn
 STR_REPLACE_MAGLEV_VEHICLES                                     :Segulsvifvagnar
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Selja lestarvagna: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Heldur lengd lestar með því að fjarlægja vagna (framan frá) ef útskipting dráttarvagna myndi lengja hana.
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Heldur lengd lestar með því að fjarlægja vagna (framan frá), ef útskipting dráttarvagna myndi lengja hana
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Miðstilla sjónarhorn á staðsetningu lestar. Ctrl smelltu til að fylgja lestina í aðalglugga
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Miðstilla sjónarhorn á staðsetningu lestar. Ctrl+smella til að fylgja lestina í aðal sjónarhorni
 STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Miðja aðalsjónarhornið á bifreið. Ctrl smelltu til að fylgja bifreiðina í aðalglugga
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Miðja aðalsjónarhorn á staðsetningu skips. Ctrl smelltu til að fylgja skipi í aðalglugga
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Miðja aðalsjónarhorn á flugvélina. Ctrl smelltu til að fylgja flugvél í aðalglugga
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Senda lest í skýli
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Senda lest í skýli. Ctrl+smella til þjóna lestinni einungis
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Senda bifreið í skýli
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Senda skipið í slipp
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Senda flugvélina i flugskýli
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Þetta býr til aðra eins lest að tengivögnunum meðtöldum. Control smelltu til að deila áætlun
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Þetta býr til aðra eins bifreið. Ctrl smelltu til að deila áætlun
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Þetta býr til annað eins skip. Ctrl smelltu til að deila áætlun
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Þetta býr til aðra eins flugvél. Ctrl smelltu til að deila áætlun
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Þetta býr til aðra alveg eins lest að tengivögnunum meðtöldum. Ctrl+smella til að deila skipunum. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Þetta býr til aðra alveg eins bifreið. Ctrl+smella til að deila skipunum. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Þetta býr til annað alveg eins skip. Ctrl+smella til að deila skipunum. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Þetta býr til aðra alveg eins flugvél. Ctrl+smella til að deila skipunum. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Neyða lest til að halda áfram án þess að bíða eftir réttu ljósi
 
@@ -3071,7 +3071,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Breyta f
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Breyta stefnu lestar
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Þvinga bifreið til að snúa við
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Sýna lestarskipanir. Ctrl smelltu til að sjá lestaráætlun
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Sýna lestaskipanir. Ctrl+smella til að sjá lestaráætlun
 STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Sýna skipanir bifreiðar. Ctrl smelltu til að sjá áæltun bifreiðar
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Sýna skipanir skips. Ctrl smelltu til að sjá áæltun skips
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Sýna skipanir flugvélar. Ctrl smelltu til að sjá áæltun flugvélar
@@ -3081,7 +3081,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Sýna up
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Sýna nánari upplýsingar um skip
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Sýna nánari upplýsingar um skip
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Núverandi aðgerð lestar - smelltu hér til að stöðva/ræsa lestina. Ctrl+Smella til að fara á áfangastað
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Núverandi aðgerð lestar - smelltu hér til að stöðva/ræsa lestina. Ctrl+smella til að fara á áfangastað
 STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Núverandi aðgerð bifreiðar - smelltu hér til að stöðva/ræsa bifreið. Ctrl+Smella til að fara á áfangastað
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Núverandi aðgerð skips - smelltu hér til að stöðva/ræsa skipið. Ctrl+Smella til at fara á áfangastað
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Núverandi aðgerð - smelltu hér til að stöðva/ræsa flugvél. Ctrl+Smella til at fara á áfangastað
@@ -3197,7 +3197,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Áætlun
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Skipta yfir í áætlanasýn
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Áætlun - smelltu til að velja stöð. CTRL + músartakki færir sjónarhorn að stöðinni
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Listi yfir skipanir - smelltu á skipun til að velja hana. Ctrl+smella færir sjónarhorn að áfangastað skipunar
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
@@ -3215,12 +3215,12 @@ STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Breyta s
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Fullfermi af hvaða farmi sem er
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Hlaða ef það er hægt
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Fullhlaða öllum farmi
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Fullhlaða hvaða farmi sem er
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Fullhlaða einhverjum farmi
 STR_ORDER_DROP_NO_LOADING                                       :Ekki hlaða
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Breyta fermishegðun valinna skipana
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Afferma allt
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Afhlaða ef tekið er við farmi
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Afhlaða ef tekið er við
 STR_ORDER_DROP_UNLOAD                                           :Afhlaða allt
 STR_ORDER_DROP_TRANSFER                                         :Flytja
 STR_ORDER_DROP_NO_UNLOADING                                     :Ekki afhlaða
@@ -3268,7 +3268,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Fara að
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Fara í næsta skýli
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Fara í næsta flugskýli
 STR_ORDER_CONDITIONAL                                           :Skilyrðisbundin hunsun skipana
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Skeyta inn nýrri skipun á undan valdri skipun, eða bæta við á enda listans. Ctrl bætir við stöðvar sjálfkrafa 'fullhlaða hvaða farmi sem er', við millistöðvar 'Ekki stöðva' og við skýli 'þjónusta'
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Skeyta inn nýrri skipun á undan valdri skipun, eða bæta við aftast á listann. Ctrl lætur skipanir 'fullhlaða einhverjum farmi', vegvísa skipanir 'ekki stöðva' og skýlis skipanir 'þjónusta'. 'Deila skipun' eða Ctrl lætur þetta farartæki deila skipunum með völdu farartæki. Smella á farartæki deilir skipunum með því farartæki. Ef skýli er í skipunum óvirkjar það sjálfvirka þjónustu á farartækinu
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Sýna öll farartæki sem deila þessari áætlun
 
@@ -3295,7 +3295,7 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 
 STR_ORDER_FULL_LOAD                                             :(Fullhlaða)
-STR_ORDER_FULL_LOAD_ANY                                         :(Fullhlaða hvaða farmi sem er)
+STR_ORDER_FULL_LOAD_ANY                                         :(Fullhlaða einhverjum farmi)
 STR_ORDER_NO_LOAD                                               :(Ekki hlaða)
 STR_ORDER_UNLOAD                                                :(Afhlaða og taka farm)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Afhlaða og bíða fullhleðslu)
@@ -3308,7 +3308,9 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Flytja og yfir
 STR_ORDER_NO_UNLOAD                                             :(Ekki afhlaða en taka farm)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ekki afhlaða en býða fullfermis)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ekki afhlaða og bíða hvaða fullfermis sem er)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Hvorki afferma né ferma)
 
+STR_ORDER_UNLOAD_REFIT                                          :(Afferma og taka farm með sjálfvirkni breyttni til {STRING})
 
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[upphaf]
@@ -3381,29 +3383,29 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Veldu á
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Aflúsun gervigreindar
+STR_AI_DEBUG                                                    :{WHITE}Aflúsun gervigreindar/forskrifta
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nafn gervigreindar
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Stillingar gerfigreindar
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Breyta stillingunum fyrir þessa gerfigreind
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nafn forskriftar
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Stillingar
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Breyta stillingunum fyrir forskrift
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Endurhlaða gervigreind
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Stöðva gervigreindina, endurhlaða skriftunni og ræsa gervigreindina á ný
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Virkja/óvirkja pásu þegar AI skilaboð stemma við pásu texta
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Pása á:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Pása í gangi
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Þegar gerfigreindarskilboð stemmi við textan fer leikurinn í pásu.
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Þegar gerfigreindarskilboð stemma við textan fer leikurinn í pásu
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Stemma há-/lágstafi
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Skifta á milli stemmingu á há-/lágstöfum þegar gerfigreindarskilaboð eru borin saman við pásu texta
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Áfram
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Láta gerfigreind halda áfram.
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Skoða ferlisupplýsingar frá þessari gerfigreind
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Engin nothæf gerfigreind fundin.{}Þetta er platgerfigreind sem gerir ekkert.{}Hægt er að ná í gerfigreindir með 'Ná í viðbætur af netinu' valmöguleikanum.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ein af gervigreindunum hrundi. Vinsamlega gerðu höfundi gervigreindarinnar viðvart og sendu inn mynd af aflúsunarglugga gervigreindarinnar.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Aflúsunargluggi gervigreindar er aðeins aðgengilegur á þjóni
+STR_ERROR_AI_NO_AI_FOUND                                        :Engin nothæf gerfigreind fundin.{}Þetta er platgerfigreind sem gerir ekkert.{}Hægt er að ná í gerfigreindir með 'Ná í viðbætur af netinu' valmöguleikanum
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ein af forskriftunum hrundi. Vinsamlega gerðu höfundi forskriftarinnar viðvart og sendu inn mynd af aflúsunarglugga gervigreindarinnar/forskriftarinnar
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Aflúsunargluggi gervigreindar/forskriftar er aðeins aðgengilegur á þjóni
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Stilling gervigreindar
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Stilling gervigreindar/forskriftar
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mennskur leikmaður
 STR_AI_CONFIG_RANDOM_AI                                         :Gervigreind af handahófi
 
@@ -3415,19 +3417,19 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Færa va
 
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Stilla
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Stilltu eiginleika gervigreindarinnar
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Stilltu eiginleika forskriftar
 
 # Available AIs window
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Smelltu til að merkja gervigreind
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Smelltu til að velja forskrift
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Höfundur: {ORANGE}{STRING}
 STR_AI_LIST_VERSION                                             :{LTBLUE}Útgáfa: {ORANGE}{NUM}
 STR_AI_LIST_URL                                                 :{LTBLUE}Vefslóð: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Í lagi
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Velja merkta gervigreind
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Velja merkta forskrift
 STR_AI_LIST_CANCEL                                              :{BLACK}Hætta við
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Hætta við breytingar
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Hætta við breytingar forskriftar
 
 # AI Parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Loka
@@ -3472,26 +3474,26 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Skrá er ekki l
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Skrá er ekki skrifanleg
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Könnun gagnaheilinda mistókst
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Leikurinn var vistaður í útgáfu án sporvagna. Allir sporvagnar hafa verið fjarlægðir.
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Leikurinn var vistaður í útgáfu án sporvagna. Allir sporvagnar hafa verið fjarlægðir
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Sköpun korts hætt...{}... ekkert hentugt bæjarstæði
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... það er enginn bær í þessu landi
 
 STR_ERROR_PNGMAP                                                :{WHITE}Get ekki hlaðið landslagi úr PNG skrá...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... skrá ekki til staðar.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... gat ekki meðhöndlað myndsniðið. 8 eða 24 bita PNG myndir nauðsynlegar.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... eitthvað fór úrskeiðis (mögulega gölluð skrá).
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... skrá ekki til staðar
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... gat ekki meðhöndlað myndsniðið. 8 eða 24 bita PNG myndir nauðsynlegar
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... eitthvað fór úrskeiðis (mögulega gölluð skrá)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Get ekki hlaðið landslagi úr BMP skrá...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... gat ekki breytt myndsniði.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... gat ekki breytt myndsniði
 
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Stærð hæðarlínukorts
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ekki er mælt með því að breyta stærð grunnkorts of mikið. Viltu halda áfram?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Fann aðeins varahljóðsafn. Ef þú vilt hljóð geturðu sett þau upp með innbyggðu efnisveitunni.
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Fann aðeins varahljóðsafn. Ef þú vilt hljóð geturðu sett þau upp með innbyggðu efnisveitunni
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Stórt skjáskot
@@ -3563,7 +3565,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... þa�
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Bærinn getur ekki lagt vegi. Því er hægt að breyta í Ítarlegar stillingar->Efnahagur->Bæir.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vegaframkvæmdir standa yfir
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Ekki hægt að eyða bæ...{}Stöð eða skýli vísar í þennan bæ eða ekki hægt að fjarlægja reit í eigu bæjarins.
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... það er enginn ákjósanlegur staður fyrir styttu í miðbæ þessa bæjar
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... það er enginn ákjósanlegur staður fyrir styttu í miðju þessa bæjar
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... of margir iðnaðir
@@ -3576,7 +3578,7 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... aðe
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... aðeins hægt að byggja í bæjum með fleiri en 1200 íbúum
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... aðeins hægt að byggja á regnskógasvæðum
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... aðeins hægt að byggja í eyðimörk
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... aðeins hægt að byggja í bæjum
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... aðeins hægt að byggja í bæjum (skiptir út húsum)
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... aðeins hægt að byggja á láglendi
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... getur aðeins verið staðsett nálægt brún kortsins
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skógur getur aðeins verið gróðursettur yfir snjólínu
@@ -3652,7 +3654,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... ver�
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Aðeins er hægt að eiga við lestir þegar þær bíða í skýli
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Lestin er of löng
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Get ekki snúið lestinni við...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Get ekki snúið vögnum sem tilheyra vagnapari
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... samanstendur af mörgum einingum
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Ósamstæðir lestarteinar
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Get ekki fært farartæki...
@@ -3814,14 +3816,14 @@ STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... fara
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... farartæki getur ekki farið á þessa stöð
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... farartæki sem deilir þessum skipunum getur ekki farið á þessa stöð
 
-STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Get ekki deilt áætlun...
-STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Get ekki afritað áætlun...
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Get ekki deilt skipana lista...
+STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Get ekki afritað skipana lista...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... of langt frá fyrri stað
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Get ekki stillt áætlun farartækis...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Farartæki getur aðeins beðið við stöð.
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Þetta farartæki mun ekki stoppa við þessa stöð.
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Get ekki gert áætlun farartækis...
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Farartæki getur aðeins beðið við stöð
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Þetta farartæki mun ekki stoppa við þessa stöð
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... of mörg skilti

@@ -1566,7 +1566,7 @@ STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Manejo 
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Jugadores de la CPU (IAs)
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Renovación automática
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servicio
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Rutas
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Encaminamiento
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenes
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Pueblos
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrias

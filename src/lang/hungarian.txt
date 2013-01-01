@@ -1355,8 +1355,8 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Bekapcsolva a j
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Szünetben engedélyezett: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :A szünet közben történő cselekvések kiválasztása
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :semmilyen cselekvés
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :minden ami nem építés
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :minden ami nem tájrendezés
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :minden, ami nem építés
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :minden, ami nem tájrendezés
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :minden cselekvés
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Továbbfejlesztett járműlista használata: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Továbbfejlesztett járműlista használatának engedélyezése a járművek csoportosításához

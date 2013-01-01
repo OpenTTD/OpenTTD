@@ -1626,6 +1626,7 @@ STR_RAIL_NAME_MAGLEV                                            :மேக்ல
 STR_WAYPOINT_CAPTION                                            :{WHITE}பாதைப்புள்ளி
 
 # Rail station construction window
+STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}இரயில் நிலையம் தேர்ந்தெடுத்தல்
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}திசையமைவு
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}இரயில்வே நிலையத்தின் திசையமைவினை தேர்ந்தெடுக்கவும்
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}தடங்களின் எண்ணிக்கை
@@ -1673,6 +1674,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}ஒர�
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}கடல்வழி போக்குவரத்து கட்டுமானம்
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}கடல்வழி போக்குவரத்து
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}ஆறுகளை அமைக்கவும்
 
 # Ship depot construction window
 
@@ -1683,6 +1685,8 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}து�
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}விமான நிலையங்கள்
 
 # Airport construction window
+STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}விமான நிலையத்தை தேர்ந்தெடுத்தல்
+STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}விமானநிலையத்தின் அளவு/வகையினை தேர்ந்தெடு
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}விமான நிலைய வகை
 STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}அமைப்பு {NUM}
 
@@ -1702,8 +1706,10 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :ஹெலிக
 STR_STATION_BUILD_NOISE                                         :{BLACK}ஒலி இரைச்சல்: {GOLD}{COMMA}
 
 # Landscaping toolbar
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}நிலத்தோற்றம்
 
 # Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}பொருள் தேர்ந்தெடுத்தல்
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}அளவு: {GOLD}{NUM} x {NUM} கட்டங்கள்
 
 STR_OBJECT_CLASS_LTHS                                           :கலங்கரைவிளக்கு
@@ -1712,6 +1718,7 @@ STR_OBJECT_CLASS_LTHS                                           :கலங்க
 STR_PLANT_TREE_CAPTION                                          :{WHITE}மரங்கள்
 
 # Land generation window (SE)
+STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}புதிய சித்திரக்காட்சியினை உருவாக்கவும்
 
 
 # Town generation window (SE)
@@ -1894,6 +1901,7 @@ STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}பன�
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}தொடங்கும் வருடத்தினை மாற்று
 
 # SE Map generation
+STR_SE_MAPGEN_CAPTION                                           :{WHITE}சித்திரக்காட்சி வகை
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}சம் நிலம்
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}சமமமான நிலத்தை உருவாக்கு
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}ஏதோவொரு நிலம்
@@ -1913,6 +1921,7 @@ STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / 
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}உலகம் உருவாக்குதல்
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}ஆறு உருவாக்குதல்
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}மரங்கள் உருவாக்குதல்
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}பொருள் உருவாக்குதல்
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}ஆட்டம் அமைக்கப்படுகின்றது
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}வரிவடிவம் செயல்படுத்தப்படுகின்றது
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}ஆட்டம் தயாராகிறது
@@ -1981,6 +1990,10 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}கி�
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}இல்லாத GRF கோப்பு(கள்)
 
 # NewGRF status
+STR_NEWGRF_LIST_NONE                                            :ஒன்றுமில்லை
+STR_NEWGRF_LIST_ALL_FOUND                                       :அனைத்து கோப்புகளும் உள்ளன
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}பயன்படுத்தக்க கோப்புகள் கண்டுபிடிக்கப்பட்டன
+STR_NEWGRF_LIST_MISSING                                         :{RED}கோப்புகள் இல்லை
 
 # NewGRF 'it's broken' warnings
 
@@ -1994,15 +2007,24 @@ STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF �
 STR_NEWGRF_SCAN_ARCHIVES                                        :சுவடிகள் தேடப்படுகின்றன
 
 # Sign list window
+STR_SIGN_LIST_CAPTION                                           :{WHITE}குறிகளின் பட்டியல் - {COMMA} குறி{P "" கள்}
 
 # Sign window
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}குறியீட்டினை திருத்தவும்
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}அடுத்த குறியிற்கு செல்லவும்
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}முந்தைய குறியிற்கு செல்லவும்
 
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}குறியிற்கு பெயரிடவும்
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}நகரங்கள்
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- ஒன்றுமில்லை -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_POPULATION                                             :{BLACK}உலக மக்கள்தொகை: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
+STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (மாநகரம்)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}மக்கள்தொகை: {ORANGE}{COMMA}{BLACK}  வீடுகள்: {ORANGE}{COMMA}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}சென்ற மாத பயணிகள்: {ORANGE}{COMMA}{BLACK}  அதிகம்: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}சென்ற மாத அஞ்சல்கள்: {ORANGE}{COMMA}{BLACK}  அதிகம்: {ORANGE}{COMMA}
@@ -2372,12 +2394,15 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :விமான
 
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}வாகனங்களை மாற்றுவதை ஆரம்பி
+STR_REPLACE_VEHICLES_NOW                                        :அனைத்து வாகனங்களையும் மாற்று
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :பழைய வாகனங்களை மட்டும் மாற்று
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}மாற்றல் நடைபெறவில்லை
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}எந்த வாகனமும் தேர்ந்தெடுக்கப்படவில்லை
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} காலாவதியான பிறகு
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}வாகனங்களை மாற்றுவதை நிறுத்தவும்
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}மாற்றல்: {ORANGE}{STRING}
+STR_REPLACE_ENGINES                                             :பொறிகள்
 STR_REPLACE_WAGONS                                              :வாகனங்கள்
 
 STR_REPLACE_RAIL_VEHICLES                                       :இரயில் வாகனங்கள்

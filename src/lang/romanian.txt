@@ -217,6 +217,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtru:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filtru
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduceți un cuvânt-cheie pentru filtrarea listei
 
@@ -397,10 +398,12 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Valorile plăţ
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Clasamentul companiilor
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Rating de performanţă detaliat
+STR_GRAPH_MENU_HIGHSCORE                                        :Tabela cu scoruri maxime
 ############ range ends here
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Lista industriilor
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Lanțuri industriale
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Obiectiv industrial nou
 ############ range ends here
 
@@ -1083,6 +1086,12 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :stânga
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centru
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :dreapta
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Valoarea maximă a împrumutului initial: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Valoarea maximă pe care o companie o poate împrumuta (fără a ține cont de inflație)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Rata dobânzii: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Rata dobânzii; de asemenea controlează inflația dacă este activată
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Costuri de funcționare: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Alege nivelul de întreținere și costul de rulare al vehiculelor sau al infrastructurii
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Viteza de construcție: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limitează numărul de acțiuni de construcție pentru AI
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Defecțiuni ale vehiculelor: {STRING}
@@ -1264,11 +1273,14 @@ STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Zona maximă î
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Service automat pentru elicoptere la helipaduri: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Efectueaza service pentru elicoptere la fiecare aterizare, chiar dacă nu există hangar acolo
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Conectează bara de instrumente pentru peisaj cu cea de construcţii feroviare/auto/navale/aeriene: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :La deschiderea unei bare de instrumente pentru construcția unor căi de transport, deschide și bara de instrumente pentru modificarea terenului
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Culoarea terenului folosită pentru harta mică: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Culoarea terenului pe harta mică
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde închis
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Mov
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Inversează direcţia de scroll: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Modul de funcționare in momentul folosirii butonului drept al mouse-ului pentru deplasare pe hartă. Când opțiunea este dezactivată, mouse-ul schimbă poziția camerei. La activare, mouse-ul desplasează harta.
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Derulare uşoară ecran: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Arată o indicaţie de distanţă la folosirea uneltelor de construcţie: {STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :Arată culorile companiilor: {STRING}
@@ -1281,6 +1293,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom hartă
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Derulează harta
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Inactivă
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Viteza de derulare a hărtii pt rotiţa mouse-ului: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Tastatură virtuală: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Alege metoda de deschidere a tastaturii virtuale, pentru a introduce text in câmpul de text folosind doar un mouse sau echipament hardware similar. Această opțiune este menită pentru aparate mici, care nu dețin o tastatură adevarată.
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Dezactivat
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Click dublu
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Un singur click (când este în focus)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Un singur click (instant)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulare click-dreapta: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Comandă+Click
@@ -1336,7 +1354,9 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Redă sunetele 
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Dezactivează construcția de infrastructuri pentru care nu există vehicule disponibile: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Nr. max. de trenuri per companie: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Numărul maxim de trenuri pe care o companie le poate deține
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Nr. max. de autovehicule per companie: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Numărul maxim de vehicule rutiere pe care o companie le poate deține
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Nr. max. de aeronave per companie: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Numărul maxim de aeronave pe care o companie le poate deține
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Nr. max. de nave per companie: {STRING}
@@ -1347,14 +1367,31 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Dezactivează a
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Dezactivează aeronavele pentru jucătorii controlaţi de calculator: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Dezactivează navele pentru jucătorii controlaţi de calculator: {STRING}
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Configurația implicită: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Alege o configurație care va fi folosită pentru AI aleator, sau care va fi furniza valori implicite când se adaugă un nou AI sau script
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Ușor
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mediu
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Dificil
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permite Inteligenţă Artificială în multiplayer: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Număr opcodes înainte de suspendarea scripturilor: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervaluri de service în procente: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalul de întreținere implicit al trenurilor: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Alege perioada de întreținere implicită pentru noi vehicule feroviare, dacă nu există un interval de întreținere stabilit pentru vehicul
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Dezactivat
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalul de întreținere implicit al vehiculelor rutiere: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Alege perioada de întreținere implicită pentru noi vehicule rutiere, dacă nu există un interval de întreținere stabilit pentru vehicul
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalul de întreținere implicit al aeronavelor: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Alege perioada de întreținere implicită pentru noi aeronave, dacă nu există un interval de întreținere stabilit pentru aeronave
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalul de întreținere implicit al navelor: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Alege perioada de întreținere implicită pentru noi nave, dacă nu există un interval de întreținere stabilit pentru nave
 STR_CONFIG_SETTING_NOSERVICE                                    :Deactivare service când defecţiunile nu sunt active: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Dacă este activată, vehiculele nu vor întreținute dacă nu se pot defecta
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activează limite de viteză pentru vagoane: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Dacă este activată, folosește și limita de viteză a vagoanelor pentru a stabili viteza maximă a trenului
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Dezactivează şinele electrice: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Prin activarea acestei opțiuni, se dezactivează cerința de a avea cale feroviară electrificată pentru a putea folosi locomotive electrice pe această cale feroviară
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Sosirea primului vehicul la una din staţiile tale: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Afișează un ziar când o stație nouă a companiei primește primul vehicul
@@ -1392,13 +1429,18 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Pe scurt
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pe larg
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Ştirile color apar în: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Anul începând cu care anunțurile din ziar sunt tipărite color. Înainte de acest an, anunturile sunt monocrome (alb/negru)
 STR_CONFIG_SETTING_STARTING_YEAR                                :Anul de început al jocului: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Economie cu schimbări mai reduse, dar mai frecvente: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Dacă este activată, nivelul de producție al industriilor se schimbă mai des și în pași mai mici. Această opțiune de regulă nu are efect dacă tipul industriei este furnizat printr-un NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permite cumpărarea de acţiuni de la alte companii: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Dacă este activată, se permite cumpărarea și vânzarea de acțiuni ale companiilor. Acțiunile devin disponibile doar când compania depășește o anumită vârstă
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :La plasarea mai multor semale, păstrează distanţa fixă între acestea: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construieşte automat semafoare înainte de: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Alege anul din care se vor folosi semnale electrice pe calea feroviară. Înainte de acest an, se vor folosi semnale non-electrice care au aceeasi funcționalitate dar arată diferit
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activare GUI pentru semnale: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tip semnal implicit: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipul de semnal implicit
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Semnal de bloc
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Semnale pentru linii
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Sens unic avansat
@@ -1414,20 +1456,26 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grilă 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grilă 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleator
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Oraşele pot construi drumuri: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permite ca orașele să construiască șosele pentru a se dezvolta. Dezactivează pentru a nu permite orașelor să construiască independent șosele
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Oraşele au voie să construiască treceri la nivel cu calea ferată: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Dacă este activată, orașele vor putea să construiască treceri la nivel cu calea ferată
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permite controlarea nivelului de zgomot al aeroportului de către oras: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Dacă această opțiune este dezactivată, pot exista două aeroporturi în fiecare oraș. Când opțiunea este activată, numărul de aeroporturi este limitat de nivelul de zgomot acceptat de oraș, care depinde de populație, mărimea aeroportului și distanța față de oraș
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Crearea oraşelor în joc: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Dacă este activată, jucătorii pot fonda noi orașe în joc
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :nepermis
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permis
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permis, aspect particularizat al oraşului
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Poziţionarea copacilor în joc: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controlează apariția aleatoare a copacilor în joc. Este posibil ca această opțiune să afecteze industrii care depind de creșterea copacilor, cum ar fi fabricile de cherestea
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :niciunul {RED}(afectează producţia fabricii de cherestea)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :doar în pădurile tropicale
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :peste tot
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Poziţia barei principale de instrumente: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Poziţia barei de stare: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Dezactivat
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Numărul maxim de ferestre nefixate: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :dezactivat
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Nivelul maxim de apropiere imagine: {STRING}
@@ -1518,6 +1566,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor h
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multiplayer
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opţiuni
+STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela cu scoruri maxime
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Setări avansate
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Setări NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Resurse online
@@ -1537,6 +1586,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Alege pe
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Alege peisajul 'ţara jucăriilor'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Afişează opţiunile jocului
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Afișează tabela cu scoruri maxime
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Afişează setările avansate
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afişează setările NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verifică dacă există resurse noi sau actualizate pentru descărcare
@@ -2325,6 +2375,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Afişeaz
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Afişează industriile care furnizează şi acceptă cargo
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link către harta mică
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Selectează industriile afişate şi pe harta mică
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Alege tipul de marfă
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Alege tipul de marfă pe care dorești să îl afișezi
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Alege industria
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Alege industria pe care dorești să o afișezi:
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informaţii teren

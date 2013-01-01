@@ -2102,7 +2102,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Latauks
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Valittu seuraavan takia: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Vaatimukset: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Avainsanat: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD on käännetty ilman "zlib" tukea...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD on käännetty ilman "zlib"-tukea...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... sisällön lataus ei ole mahdollista!
 
 # Order of these is important!

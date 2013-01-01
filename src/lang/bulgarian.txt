@@ -1022,7 +1022,13 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Няма
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Настройки за напреднали
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Долният списък се ограничава до конкретни типове настройки
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Всички настройки
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Настройки на клиента (не се съхраняват в записаните игри; важат за всички игри)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Игрови настройки (съхраняват се в записаната игра; важат само за нови игри)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Игрови настройки (съхраняват се в записаната игра; важат само за текущата игра)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Настройки за компанията (съхраняват се в записаната игра; важат само за нови игри)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Настройки за компанията (съхраняват се в записаната игра; важат само за текущата компания)
 
 STR_CONFIG_SETTING_OFF                                          :изключено
 STR_CONFIG_SETTING_ON                                           :включено
@@ -1176,6 +1182,14 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Покажи з
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Запази инстументите активни след употреба: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Групирай разходите във финансовия прозорец на компанията: {STRING}
 
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Конструкция: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Изпълнявай звуков ефект при успешно конструиране или други действия
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Бедствия/катастрофи: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Изпълнявай звуковите ефекти на катастрофи и бедствия
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Превозни средства: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Изпълнявай звуковите ефекти на превозните средства
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Фон: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Изпълнявай фоновите звукови ефекти на ландшафта, индустриите и градовете
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Изключване строеж на инфраструктура, когато съответващите превозни средства са недостъпни:{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Макс. брой влакове за компания: {STRING}
