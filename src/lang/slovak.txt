@@ -1463,9 +1463,9 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Povolením nast
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Štandardné nastavenia profilu: {STRING}
 STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Vyberte, ktorý profil nastavení sa má použiť pre náhodných počítačových hráčov alebo pre počiatočné hodnoty pri pridávaní nových počítačových hráčov alebo Herného skriptu
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :{G "Ľahký" "Ľahká" "Ľahké"}
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :{G "Stredný" "Stredná" "Stredné"}
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :{G=m}{G "Ťažký" "Ťažká" "Ťažké"}
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Ľahký
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Stredný
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :{G=m}Ťažký
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Povoliť AI-ov v hre viacerých hráčov: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Povoliť AI počítačovým hráčom hrať "Hru viacerých hráčov".
