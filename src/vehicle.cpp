@@ -836,7 +836,11 @@ static void RunVehicleDayProc()
 		if ((v->day_counter & 0x1F) == 0 && v->HasEngineType()) {
 			uint16 callback = GetVehicleCallback(CBID_VEHICLE_32DAY_CALLBACK, 0, 0, v->engine_type, v);
 			if (callback != CALLBACK_FAILED) {
-				if (HasBit(callback, 0)) TriggerVehicle(v, VEHICLE_TRIGGER_CALLBACK_32); // Trigger vehicle trigger 10
+				if (HasBit(callback, 0)) {
+					/* After a vehicle trigger, the graphics and properties of the vehicle could change. */
+					TriggerVehicle(v, VEHICLE_TRIGGER_CALLBACK_32); // Trigger vehicle trigger 10
+					v->MarkDirty();
+				}
 				if (HasBit(callback, 1)) v->colourmap = PAL_NONE;
 
 				if (callback & ~3) ErrorUnknownCallbackResult(v->GetGRFID(), CBID_VEHICLE_32DAY_CALLBACK, callback);
@@ -1340,7 +1344,9 @@ void VehicleEnterDepot(Vehicle *v)
 
 	VehicleServiceInDepot(v);
 
+	/* After a vehicle trigger, the graphics and properties of the vehicle could change. */
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
+	v->MarkDirty();
 
 	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
