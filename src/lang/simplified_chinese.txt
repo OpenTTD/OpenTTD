@@ -1393,6 +1393,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :联机游戏时
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :“打开”时联机游戏允许电脑玩家
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :保养周期(百分数)： {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :选择触发车辆保养的条件，距离上一次保养的时间或者与最高可靠性的百分比
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :火车默认保养周期：{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :如果没有为火车直接指定保养周期，设定默认火车保养周期
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}天(%)
@@ -1452,40 +1453,64 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :启用平滑经
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :“打开”时，工业产量变化频繁而幅度小，如果工业是由NewGRF控制的，本选项不起作用
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :允许购买其他公司的股份：{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :“打开”时，允许买卖其它公司股份，但必须持有达到一定年限
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :当拖动时，放置信号灯每隔：{STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :设置以拖动的方式建设时，自动放置信号灯时的间距，将以该间距放置信号灯，直到碰到障碍（信号灯，分支）
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA}格
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :拖动方式建设时，保持固定的间距放置信号灯：{STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :选择以Ctrl+拖动方法建设信号灯时是否保持固定的间距，如果“关闭”，不考虑隧道和桥梁长度（在隧道和桥梁进出口第一个各放置一个），避免很长一段没有信号灯，如果“打开”，每隔设定的距离就放置一个信号灯，桥梁和隧道长度也计算在内。
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :在 {STRING} 年前自动设置悬臂信号
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :设置电子信号灯出现的时间，在此之前，使用悬臂信号灯（功能相同，外观不同）
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :使用信号GUI： {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :显示一个供选择信号灯的窗口，取代用Ctrl加点击的方式在各种形式信号灯之间切换的方法
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :默认建造的信号灯类型： {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :默认信号灯类型
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :普通
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :高级
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :高级单向
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :在以下信号类型中循环： {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :选择用Ctrl+点击的方式切换信号灯时的切换类型
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :仅有普通
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :仅有高级
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :全部
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :新建城镇道路自动延伸： {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :选择城市道路网络的建设方式
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :默认
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :改良道路
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2格
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3格
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :随机
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :允许城镇建设道路： {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :“打开”时允许成长时建设道路，“关闭”时禁止城镇自行建设道路
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :允许城镇建设平交道: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :“打开”时允许城镇建设平交路口
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :允许城镇控制机场噪音： {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :“关闭”本选项时，每个城镇可以建设两个机场，“打开”时，可以建设的机场数目取决于城市对噪音的忍耐度，而这与城市人口、机场规模和距离有关
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :在游戏中建立城镇： {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :“打开”本选项时，允许玩家在游戏中创建新城镇
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :禁止
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :允许
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :允许，自定义城镇布局
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :树木自动生长： {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :控制游戏中数目的随机生长，这将影响依赖树木的工业，比如木材厂
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :无 {RED}(损坏伐木场)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :仅在雨林中
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :任意地点
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :主工具栏位置：{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :主工具栏在屏幕上方的位置
 STR_CONFIG_SETTING_STATUSBAR_POS                                :状态栏位置: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :状态栏在屏幕下方的位置
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :窗口吸附范围：{STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :移动一个窗口靠近临近的窗口触发自动吸附的距离
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} 像素
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :关闭
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :窗口软性限制（非粘滞）： {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :关闭
 STR_CONFIG_SETTING_ZOOM_MIN                                     :最大放大倍数: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :画面的最大放大倍数，注意：提高放大倍数增加内存需求
 STR_CONFIG_SETTING_ZOOM_MAX                                     :最大视角缩小倍数: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4倍
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2倍

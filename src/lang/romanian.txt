@@ -3448,15 +3448,15 @@ STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Adaptare
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Schimbă marfa transportată de navă
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Schimbă marfa transportată de aeronavă
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Modificã trenul pentru a transporta marfa aleasã
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Adapteaza autovehiculul pentru transportul incarcaturii evidentiate
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Modifică trenul pentru a transporta marfa aleasă
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Adaptează vehiculul rutier pentru transportul încărcăturii alese
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Schimbă tipul de încărcătură al navei cu cel selectat
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Schimbă tipul de încărcătură al aeronavei cu cel selectat
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Modifică aeronava pentru a transporta tipul de încărcătură ales
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Comenzi)
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Orar
-STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Comuta in modul de vizualizare orar
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Comută în modul de vizualizare orar
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de comenzi - clic pe o comandă pentru a o selecta. Ctrl+Click poziţionează ecranul pe staţia destinație
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}

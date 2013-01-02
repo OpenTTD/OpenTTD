@@ -1154,7 +1154,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Nastavení spol
 
 STR_CONFIG_SETTING_OFF                                          :vypnuto
 STR_CONFIG_SETTING_ON                                           :Zapnuto
-STR_CONFIG_SETTING_DISABLED                                     :vypnuto
+STR_CONFIG_SETTING_DISABLED                                     :Vypnuto
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :ne
 STR_CONFIG_SETTING_COMPANIES_OWN                                :u vlastní společnosti
@@ -1385,6 +1385,8 @@ STR_CONFIG_SETTING_OSK_ACTIVATION                               :Klávesnice na 
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Vyber způsob pro zobrazení klávesnice na obrazovce pro zadání textu do textových polí pouze za pomoci ukazovacího zařízení. To znamená pro malá zařízení bez HW klavesnice
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Vypnuto
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dvojklik
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Jedno kliknutí (je-li zaměřen)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Jedno kliknutí (okamžitě)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulace pravého tlačítka: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Vybrat metodu emulování stisknutí pravého tlačítka myši

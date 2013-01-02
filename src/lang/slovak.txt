@@ -281,6 +281,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} st{P op
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrovací reťazec:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vložiť filtrovací reťazec
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vložiť kľúčové slovo pre filtrovanie zoznamu
 
@@ -461,10 +462,12 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Ceny prepravy
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Hodnotenie spoločností
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detailné hodnotenie výkonu
+STR_GRAPH_MENU_HIGHSCORE                                        :Hodnotenie
 ############ range ends here
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Zoznam priemyslu
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Priemyselné reťaze
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financovať nový priemysel
 ############ range ends here
 
@@ -1107,6 +1110,9 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nieje do
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Rozšírené nastavenia
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrovací reťazec:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Rozšíriť všetko
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Zbaliť všetky
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(nie je potrebné vysvetlenie)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Pôvodná hodnota: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Nastavenie typu: {ORANGE}{STRING}
@@ -1116,7 +1122,20 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Nastavenia hry 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavenia spoločnosti (uložia sa; ovplyvní iba nové hry)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavenia spoločnosti (uložia sa; ovplyvní iba aktuálnu firmu)
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Ukáž:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Obmedzuje zoznam nižšie len na nastavenia, ktoré boli zmenené
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Základné nastavenia
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Pokročilé nastavenia
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Odborné nastavenia / všetky nastavenia
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Nastavenia s odlišnou hodnotou ako je štandard
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Nastavenia s odlišnou hodnotou než aké má tvoja nová hra
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Obmedzuje zoznam nižšie na niektoré typy nastavení
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Všetky nastavenia
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Nastavenia klienta (nieje uložené v uložených hrách; ovplyvní všetky hry)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Nastavenia hry (uložené v uložených hrách; ovplyvní iba nové hry)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Nastavenia hry (uložené v uložených hrách; ovplyvní iba aktuálnu hru)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Nastavenia spoločnosti (uložené v uložených hrách; ovplyvní iba nové hry)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Nastavenia spoločnosti (uchované v uloženej hre; ovplyvnia iba aktuálnu spoločnosť)
 
 STR_CONFIG_SETTING_OFF                                          :nie
@@ -1135,6 +1154,28 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :vlavo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :v strede
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximálny počiatočný úver: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximálna množstvo peňazí ktoré si môže spoločnosť požičať (bez inflácie)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Úroková sadzba: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Úroková sadzba úveru; kontroluje infláciu ak je povolená
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Prevádzkové náklady: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Zvoľte úroveň cien údržby a prevádzky vozidiel a infraštruktúry
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Rýchlosť výstavby: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Obmezdenie počtu stavebných akcí pre počítačových hráčov
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Poruchy vozidla: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Zvoľte ako často budú mať zle udržiavané vozidlá poruchy
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Násobiteľ dotácii: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Zvoľte ako veľa sa platí za dotované spojenia
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Cena stavby: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Zvoľte úroveň cien výstavby a nákupov
+STR_CONFIG_SETTING_RECESSIONS                                   :Recesie: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ak je povolené každých pár rokov sa môže vyskytnúť recesia. Počas recesie je všetká produkcia znatelne nižšia (po skončení recesie sa produkcia vráti na normálnu úroveň)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Zakázať otáčanie vlakov v staniciach: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ak je povolené vlaky sa nebudú otáčať v staniciach, ktoré niesu na konci trate, ak by sa im tým skrátila cesta do ďalšieho cieľa
+STR_CONFIG_SETTING_DISASTERS                                    :Havárie: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Vypne alebo zapne katastrofy, ktoré môžu občas zablokovať alebo zničiť vozidlá alebo infraštruktúru
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Postoj mestskej správy k zmenám v ich oblasti: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Zvoľte ako veľmi ovplyvňuje hluk a poškodzovanie prostredia spoločnosťami ich hodnotenie v meste a ich budúce možnosti výstavby v oblasti vlastnenej mestom
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Umožniť výstavbu na svahoch a na pobreží: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ak je zapnuté, trate a stanice môžu byť stavané na svahoch. Ak je vypnuté, stavanie je možné len na svahoch ktoré su rovnakého smeru ako trate čiže nepotrebujú podporu
@@ -1200,6 +1241,11 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :na konci
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Cestné vozidlá stoja v rade (podľa množstva nákladu): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Prikáže cestnému vozidlu čakať pred obsadeným nákladiskom dokiaľ nie je voľné miesto na nakládku.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Posúvať pohľad, keď je kurzor myši na okraji okna: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Ak je povolené, zobrazenia sa budú meniť keď je myš pri okraji okna
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Vypnuté
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Hlavný pohľad, iba na celú obrazovku
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Hlavný podľad
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Každý pohľad
 STR_CONFIG_SETTING_BRIBE                                        :Umožniť podplácanie miestnej správy: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Povolí podplácanie miestnej samosprávy. Ak podplácanie zistí inšpektor, spoločnosť nebude môcť podplácať v danom meste počas nasledujúcich 6 mesiacov.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Povoliť zakúpenie exkluzívnych dopravných práv: {STRING}
@@ -1321,6 +1367,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Posúvať pohľ
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Vypnuté
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Rýchlosť posúvania pohľadu: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Nastav citlivosť posúvania kolečkom myši.
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Klávesnica na obrazovke: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Vyberte spôsob, ktorým chcete otvárať klávesnicu na obrazovke, ktorou môžte vpisovaťhodnoty do textových polí ukazovacím zariadením. Mienené pre malé zariadenia bez klávesnice
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Vypnuté
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dvojklik
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Jedno kliknutie (keď je textové pole zvolené)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Jendo kliknutie (hneď)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Funkcia pravého tlacidla myši: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Zvolte možnosť ako bude emulované PRAVÉ tlačítko myši.
@@ -1372,6 +1424,22 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Zachovaj okno s
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Zoskupiť výdavky v okne financií spoločnosti: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definujte rozloženie okna s financiami.
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Oznamovač správ: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Prehrať zvuk pre zhrnuté novinové správy
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Noviny: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Prehrať zvuk pri zobrazení novín
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Koniec roka: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Prehrávať zvukové efekty na konci roku zhŕňajúce výkon spoločnosti počas roku v porovnaní s minulým rokom
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Stavba: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Hrať zvukovú správu pri úspešnej stavbe alebo pri iných akciach
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Kliknutia na tlačidlá: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Pípať pri kliknutí na tlačidlá
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Havárie/zrážky: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Prehrávať zvukové efekty nehôd a katastrôf
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vozidlá: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Prehrávať zvukové efekty vozidiel
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Prostredie: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Prehrávať zukové efekty prostredia krajiny, priemyslu a miest
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Zakázať výstavbu infraštruktúry ak nieje dostupné žiadne vhodné vozidlo: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ak je zapnuté, infraštruktúra je k dispozícii len ak su k nej pripojené vozidlá. Toto predchádza plýtvaniu peniazmi a časom pri nepoužiteľnej infraštruktúre.
@@ -1393,6 +1461,11 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Povolením nast
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Zakázať lode pre počítač: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Povolením nastavenia znemožní počítačovým hráčom budovať lode.
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Štandardné nastavenia profilu: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Vyberte, ktorý profil nastavení sa má použiť pre náhodných počítačových hráčov alebo pre počiatočné hodnoty pri pridávaní nových počítačových hráčov alebo Herného skriptu
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :{G "Ľahký" "Ľahká" "Ľahké"}
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :{G "Stredný" "Stredná" "Stredné"}
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :{G=m}{G "Ťažký" "Ťažká" "Ťažké"}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Povoliť AI-ov v hre viacerých hráčov: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Povoliť AI počítačovým hráčom hrať "Hru viacerých hráčov".
@@ -1419,20 +1492,35 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Zakázať elekt
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Povolením nastavenia vypne nutnosť elektrifikovať železnice aby na nich mohli jazdiť elektrické vlaky.
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Príchod prvého vozidla do stanice hráča: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Zobrazovať správu keď prvé vozidlo príde na novú stanicu patriacu hráčovi
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Príchod prvého vozidla do stanice konkurencie: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Zobrazovať správu keď prvý voz príde na novú stanicu patriacu konkurencii
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Havárie / Katastrofy: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Zobrazovať správu keď sa vyskytne dopravná nehoda
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informácie o spoločnosti: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Zobrazovať správu keď vznikla nová spoločnosť alebo keď je spoločnosť v riziku bankrotu
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Vznik priemyslu: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Zobrazovať novinky ak bol otvorený nový priemyseľ
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zánik priemyslu: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Zobrazovať novinku keď sa zrušil nejaký priemyseľ
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Zmeny v ekonomike: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Zobrazovať noviny o globálnych zmenách ekonomiky
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Zmeny produkcie priemyslu obsluhovaného spoločnosťou: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Zobraziť správy pri zmene produkcie priemyslu, ktorý je vami obsluhovaný
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Zmeny produkcie priemyslu obsluhovaného konkurenciou: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Zobraziť správy pri zmene produkcie priemyslu, ktorý je obsluhovaný konkurenciou
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Ostatné zmeny produkcie priemyslu: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Zobraziť správy keď sa zmení úroveň produkcie priemyslu, ktorý nieje nikým obsluhovaný
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Rady / informácie o vozidlách spoločnosti: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Zobrazovať správy o vozidlách, ktoré si vyžadujú pozornosť
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nové vozidlá: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Zobraziť správu, keď je dostupný nový typ vozidla
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Zmeny príjmu nákladu: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Zobrazovať správy o zmenách v príjme tovarov na staniciach
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Dotácie: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Zobrazovať správy o udalostiach, ktoré súvisia s dotáciami
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Hlavné informácie: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Zobrazovať správy o všeobecných udalostiach, ako sú napríklad kúpa exkluzívnych práv alebo zafinacovanie rekonštrukcie ciest
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Vypnuté
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Obsah
@@ -1489,7 +1577,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :povolené, vlas
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Umiestnenie stromov počas hry: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Riadi náhodný výskyt stromov počas hry. Toto môže ovplyvniť priemysel úzko spojený s rastom stromov ako napríklad Píla.
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :žiadne {RED}(znefunkční pílu)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :len v dažďových pralesoch
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Len v dažďových pralesoch
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :všade
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Pozícia hlavného menu: {STRING}
@@ -1538,6 +1626,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurenti
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Možnosti zobrazenia
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Chovanie
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvukové efekty
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Novinky a správy
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signály
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Manipulácia s tovarom
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Počítačový hráči
@@ -1592,6 +1682,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor s
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Viacero hráčov
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Nastavenia hry
+STR_INTRO_HIGHSCORE                                             :{BLACK}Najlepší hráči
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Rozšírené nastavenia
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Nastavenia NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Skontrolovať online obsah
@@ -1611,6 +1702,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Vybrať 
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vybrať krajinu hračiek
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Zobraziť nastavenia hry
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Zobraziť tabuľku hráčov s najvyšším skóre
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Zobraziť rozšírené nastavenia
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Zobraziť NewGRF nastavenia
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skontrolovať nový a aktualizovaný obsah pre stiahnutie
@@ -2399,6 +2491,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Zobrazi�
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Zobraziť náklad dodávaného a prijímaného priemyslu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Odkaz na malú mapu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Vybrať zobrazený priemysel taktiež v malej mape
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Vyberte tovar
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Vyberte tovar, ktorý chcete zobraziť
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK} Vyber priemysel
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Vyber priemysel ktorý chceš zobraziť
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informácie o pozemku
@@ -2723,6 +2819,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje viacnásobné záznamy Action 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čítanie za koncom pseudo-sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}V používanej základnej grafickej sade chýbajú niektoré grafické objekty.{}Aktualizujte prosím základnú grafickú sadu.
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Aktuálne používanej základnej sade grafiky chýba niekoľko spritov.{}Prosím zaktualizujte základnú sadu grafiky.{}Keďže hráte {YELLOW}vývojovú verziu OpenTTD{WHITE}, môžete tiež potrebovať{YELLOW}vývojovú verziu základnej sady grafiky{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Požadované GRF prostriedky nie sú dosupné (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} bol vypnutý {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Nesprávny/neznámy formát rozloženia sprite(ov) (sprite {3:NUM})
@@ -3452,7 +3549,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacita
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Prestavat)
 STR_REFIT_TITLE                                                 :{GOLD}Vyber typ nákladu:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nová kapacita: {GOLD}{CARGO_LONG}{}{BLACK}Cena prestavby: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nová kapacita: {GOLD}{CARGO_LONG}{}{BLACK}Príjem z prestavby: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nová kapacita: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cena prestavby: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nová kapacita: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Príjem z prestavby: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Vyber vozidlo k prestavbe. Ťah myšou umožní vybrať viacej vozidiel. Kliknutie do voľného mista vybere celé vozidlo. Ctrl+Klik vyberie vozidlo a následujúci reťaz
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vybrat typ prepravovaneho nakladu
@@ -3779,6 +3878,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Cena: {CURRENCY_LONG}
@@ -3827,6 +3928,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Príli�
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Bola nájdená len núdzová sada zvukov. Pre viac zvukových efektov je potrebné stiahnuť zvukovú sadu cez online.
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Obrovská snímka
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Screenshot bude mať rozlíšenie {COMMA} x {COMMA} pixelov. Jeho vytvorenie ale môže chvíľu trvať. Naozaj chcete pokračovať
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Snímka bola uložená na disk ako '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Uloženie snímky zlyhalo!

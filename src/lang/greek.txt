@@ -2593,20 +2593,20 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Δεν �
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
-STR_SAVELOAD_OSKTITLE                                           :{BLACK}Δώστε το όνομα του σωσμένου παιχνιδιού
+STR_SAVELOAD_OSKTITLE                                           :{BLACK}Δώστε το όνομα του αποθηκευμένου παιχνιδιού
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Δημιουργία Κόσμου
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Διάσταση χάρτη:
 STR_MAPGEN_BY                                                   :{BLACK}*
-STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Αριθ. πόλεων:
-STR_MAPGEN_DATE                                                 :{BLACK}Ημερομήνια:
-STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Αριθ. βιομηχανιών:
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Αρ. πόλεων:
+STR_MAPGEN_DATE                                                 :{BLACK}Ημερομηνία:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Αρ. βιομηχανιών:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Ύψος γραμμής χιονιού:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού μια πάνω
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού μια κάτω
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Σπορος τυχαίας παραγωγής:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Κλικ για να δώσετε ένα σπόρο τυχαίας παραγωγής
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού ένα πάνω
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού ένα κάτω
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Σπόρος τυχαίας παραγωγής:
+STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Κάνετε κλικ για να δώσετε ένα σπόρο τυχαίας παραγωγής
 STR_MAPGEN_RANDOM                                               :{BLACK}Τυχαία δημιουργία
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Αλλαγή του σπόρου τυχαίας παραγωγής για την Δημιουργία Εδάφους
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Δημιουργός εδάφους:
@@ -2628,25 +2628,25 @@ STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Ελεύ
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Νερό
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Τυχαία
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Τυχαία
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Χειροκινήτος
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Χειροκίνητος
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Περιστροφή χάρτη υψομετρίας:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Όνομα χάρτη υψομετρίας:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Μέγεθος:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Δώστε ένα σπόρο τυχαίας παραγωγής
+STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Δώστε έναν σπόρο τυχαίας παραγωγής
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Άλλαγη του ύψους της γράμμης χιονιού
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Αλλαγή έτους έναρξης
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Τύπος Σεναρίου
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Επίπεδο έδαφος
-STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Δημιουρία επίπεδου εδάφους
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Δημιουργία επίπεδου εδάφους
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Τυχαίο έδαφος
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Ύψος επίπεδης γης:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Μετακίνηση του ύψους του επίπεδου εδάφους μια κάτω
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Μετακίνηση του ύψους του επίπεδου εδάφους μια πάνω
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Μετακίνηση του ύψους του επίπεδου εδάφους ένα κάτω
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Μετακίνηση του ύψους του επίπεδου εδάφους ένα πάνω
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Αλλαγή του ύψους του επίπεδου εδαφους
 
@@ -2654,52 +2654,52 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Αλλα
 STR_GENERATION_WORLD                                            :{WHITE}Δημιουργία Κόσμου...
 STR_GENERATION_ABORT                                            :{BLACK}Ματαίωση
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Ακύρωση της Δημιουργίας Κόσμου
-STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Θέλετε σίγουρα να ακυρώσετε την δημιουργία;
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Σίγουρα θέλετε να ακυρώσετε τη δημιουργία;
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% ολοκληρώθηκε
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
-STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Δημιουργία Κόσμου
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Δημιουργία κόσμου
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Δημιουργία ποταμού
-STR_GENERATION_TREE_GENERATION                                  :{BLACK}Δημιουργία Δέντρων
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Δημιουργία δέντρων
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Δημιουργία μη μετακινούμενων
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Δημιουργία άγριας και πετρώδης περιοχής
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ρύθμιση παιχνιδιού
-STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Εκτέλεση βρόχου τετραγωνιδίων
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Εκτέλεση βρόχου τετραγωνίδιων
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Τρέχουσα δέσμη ενεργειών
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Προετοιμασία παιχνιδιού
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Ρυθμίσεις NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Λεπτομερείς πληροφορίες για το NewGRF
-STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Ενεργά NewGRF αρχεία
-STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Ανενεργά NewGRF αρχεία
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Επιλογή προκαθορισμένου σετ:
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Ενεργά αρχεία NewGRF
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Ανενεργά αρχεία NewGRF
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Επιλογή προκαθορισμένου:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Φίλτρο:
-STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Φορτώση του προκαθορισμένου σετ ρυθμίσεων
-STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Αποθήκευση προκαθορισμένου σετ ρυθμίσεων
-STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Αποθήκευση της τρέχουσας λίστας ως προκαθορισμένο σετ ρυθμίσεων
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Φόρτωση του προκαθορισμένου σετ ρυθμίσεων
+STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Αποθήκευση προκαθορισμένου
+STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Αποθήκευση της τρέχουσας λίστας ως προκαθορισμένη
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Δώστε ένα όνομα για το προκαθορισμένο σετ ρυθμίσεων
-STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Διαγράψτε το προκαθορισμένο σετ ρυθμίσεων
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Διαγραφή προκαθορισμένου
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Διαγράψτε το επιλεγμένο προκαθορισμένο σετ ρυθμίσεων
-STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Πρόσθεσε
-STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Προσθέστε το επιλεγμένο αρχείο NewGRF στη διαμόρφωση σας
-STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Ανιχνεύση ξανά για αρχεία
+STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Προσθήκη
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Προσθέστε το επιλεγμένο αρχείο NewGRF στη διαμόρφωσή σας
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Ανίχνευση ξανά για αρχεία
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Ανανέωση της λίστας με τα διαθέσιμα αρχεία NewGRF
-STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Αφαίρεσε
-STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Αφαίρεσε ένα αρχείο NewGRF από τη λίστα
-STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Μετακίνηση πάνω
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Μετακίνηστε το επιλεγμένο αρχείο NewGRF πάνω στη λίστα
-STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Μετακίνηση κάτω
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Μετακίνηστε το επιλεγμένο αρχείο NewGRF κάτω στη λίστα
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Μια λίστα με τα αρχεία NewGRF που είναι εγκατεστημένα.
+STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Αφαίρεση
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Αφαιρέστε το επιλεγμένο αρχείο NewGRF από τη λίστα
+STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Μετακίνηση Πάνω
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Μετακινήστε το επιλεγμένο αρχείο NewGRF πάνω στη λίστα
+STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Μετακίνηση Κάτω
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Μετακινήστε το επιλεγμένο αρχείο NewGRF κάτω στη λίστα
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Μία λίστα που περιέχει τα εγκατεστημένα αρχεία NewGRF
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Ρύθμιση παραμέτρων
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Εμφάνιση παραμέτρων
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Εναλλαγή παλέτας
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Εναλλάσει την παλέττα του επιλεγμένου NewGRF.{}Κάντε αυτό όταν τα γραφίκα από αυτό το NewGRF δείχνουν ροζ μέσα στο παιχνίδι
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Εναλλάσσει την παλέτα του επιλεγμένου NewGRF.{}Κάντε αυτό όταν τα γραφικά από αυτό το NewGRF δείχνουν ροζ μέσα στο παιχνίδι
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Εφαρμογή αλλαγών
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Αναζήτηση μη εγκατεστήμενου περιεχομένου online
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Έλεγχος πότε μη εγκατεστημένο περιεχόμενο μπορεί να βρεθεί online
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Αναζήτηση για λείπων περιεχόμενο στο διαδίκτυο
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Έλεγχος για αν μπορεί να βρεθεί λείπων περιεχόμενο στο διαδίκτυο
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Όνομα αρχείου: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
@@ -2712,7 +2712,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Παρά
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Δεν υπάρχουν διαθέσιμες πληροφορίες
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Δεν βρέθηκε το ταυτοποιημένο αρχείο
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Απενεργοποιημένο
-STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Μη συμβατό με αυτή την έκδοση του OpenTTD
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Μη συμβατό με αυτήν την έκδοση του OpenTTD
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Αλλαγή παραμέτρων NewGRF
@@ -2735,16 +2735,16 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Τύπος σι
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Μεταβλητή NewGRF 60+x παράμετρος (δεκαεξαδικό)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Ευθυγραμμιση sprite {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Ευθυγράμμιση sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Επόμενο στοιχείο
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Συνέχισε στο επόμενο κανονικό sprite, προσπερνώντας οποιοδήποτε ψευδο/επαναναχρωματιζόμενο/γραμματοσειράς sprite και κάνε τις τελικές διαδικασίες στο τέλος
-STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Μετακινήση στο στοιχείο
-STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Μετακίνηση στο sprite. Εαν το sprite δεν είναι ένα κανονικό sprite, συνεχίζει στο επόμενο κανονικό sprite
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Συνέχισε στο επόμενο κανονικό sprite, προσπερνώντας οποιοδήποτε ψευδό/επαναναχρωματιζόμενο/γραμματοσειράς sprite και κάνε τις τελικές διαδικασίες στο τέλος
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Μετακίνηση στο στοιχείο
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Μετακίνηση στο sprite. Εάν το sprite δεν είναι κανονικό sprite, συνεχίζει στο επόμενο κανονικό sprite
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Προηγούμενο στοιχείο
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Συνέχισε στο επόμενο κανονικό sprite, προσπερνώντας οποιοδήποτε ψευδο/επαναναχρωματιζόμενο/γραμματοσειράς sprite και κάνε τις τελικές διαδικασίες στη αρχή
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Συνέχισε στο επόμενο κανονικό sprite, προσπερνώντας οποιοδήποτε ψευδό/επαναναχρωματιζόμενο/γραμματοσειράς sprite και κάνε τις τελικές διαδικασίες στην αρχή
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Επανεμφάνιση του επιλεγμένου sprite. Η ευθυγράμμιση αγνοείται όταν γίνεται η σχεδίαση του sprite
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Μετακίνηση του sprite τριγύρω, αλλάζοντας τα στίγματα X και Y
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X στίγμα: {NUM}, Y στίγμα: {NUM}
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Μετακίνηση του sprite τριγύρω, αλλάζοντας τα στίγματα Χ και Υ
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Στίγμα Χ: {NUM}, Στίγμα Υ: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Επιλογή sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Επιλογή ενός sprite από οπουδήποτε στη οθόνη
 
@@ -2756,30 +2756,39 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Προει
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Λάθος: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Καταστροφικό: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ένα καταστροφικό λάθος για τα NewGRF έχει συμβεί: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :Το {1:STRING} δεν θα δουλέψει με την έκδοση του TTDPatch οπώς αναφέρεται από το OpenTTD
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :Το {1:STRING} είναι για την έκδοση {STRING} του TTD.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :Το {1:STRING} δεν θα δουλέψει με την έκδοση του TTDPatch όπως αναφέρεται από το OpenTTD
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :Το {1:STRING} είναι για την έκδοση {STRING} του TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} είναι σχεδιασμένο να δουλέψει με το {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Λάθος παράμετρος για το {1:STRING}: Παράμετρος {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :Το {1:STRING} πρέπει να φόρτωθει πριν από το {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :Το {1:STRING} πρέπει να φόρτωθει μετά από το {STRING}.
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Λάθος παράμετρος για το {1:STRING}: παράμετρος {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :Το {1:STRING} πρέπει να φορτωθεί πριν από το {STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :Το {1:STRING} πρέπει να φορτωθεί μετά από το {STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :Το {1:STRING} απαιτεί έκδοση OpenTTD {STRING} ή καλύτερη
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :Το αρχείο GRF είναι σχεδιασμένο για να μεταφράζει
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Έχουν φορτωθεί πολλά NewGRF.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Η φόρτωση του {1:STRING} ως στατικό NewGRF με {STRING} μπόρει να προκαλέσει αποσυγχρονισμούς
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} περιέχει ένα κατεστραμμένο sprite. Όλα τα κατεστραμμένα sprites θα εμφανίζονται ως ένα κόκκινο ερωματικό (?)
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Το {1:STRING} απενεργοποιήθηκε από το {STRING}
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :το αρχείο GRF είναι σχεδιασμένο για να μεταφράζει
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Έχουν φορτωθεί πολλά NewGRF
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Η φόρτωση του {1:STRING} ως στατικό NewGRF με {STRING} μπορεί να προκαλέσει αποσυγχρονισμούς
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Απρόοπτο sprite (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Άγνωστη ιδιότητα Action 0 {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Προσπάθεια να χρησιμοποιήσει άκυρο ID (sprite {3:NUM})
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} περιέχει ένα κατεστραμμένο sprite. Όλα τα κατεστραμμένα sprites θα εμφανίζονται ως κόκκινα ερωματικό (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Περιέχει πολλαπλές καταχωρήσεις Action 8 (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Διάβασε πέρα από το τέλος του ψευδό-sprite (sprite {3:NUM})
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Λείπουν μερικά sprites από το τρέχον βασικό σετ γραφικών.{}Παρακαλώ ενημερώστε το βασικό σετ γραφικών
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Λείπουν μερικά sprites από το τρέχον βασικό σετ γραφικών.{}Παρακαλώ ενημερώστε το βασικό σετ γραφικών{}Επειδή παίζετε {YELLOW}μη σταθερή έκδοση του OpenTTD{WHITE}, μπορεί να χρειαστείτε {YELLOW}ασταθή έκδοση των βασικών γραφικών{WHITE}
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Οι ζητημένοι πόροι GRF δεν είναι διαθέσιμοι (sprite {3:NUM})
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Το {1:STRING} απενεργοποιήθηκε από το {2:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Άγνωστη/άκυρη μορφή σχεδίου sprite (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Προσοχή!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Πρόκειται να κάνετε αλλαγές σε ένα παιχνίδι σε εξέλιξη. Αυτό μπορεί να κρασάρει το OpenTTD ή να διαλύσει την κατάσταση του παιχνιδιού. Μην καταχωρείτε αναφορές σφάλματος για τέτοια προβλήματα.{}Είστε απόλυτα σίγουρος/η για αυτή την ενέργεια;
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Πρόκειται να κάνετε αλλαγές σε παιχνίδι που είναι ήδη σε εξέλιξη. Αυτό μπορεί να κλείσει απρόοπτα το OpenTTD ή να διαλύσει την κατάσταση του παιχνιδιού. Μην καταχωρείτε αναφορές σφάλματος για τέτοια προβλήματα.{}Είστε απόλυτα σίγουροι για αυτή την ενέργεια;
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Δεν μπορεί να γίνει η προσθηκη του αρχείου: διπλότυπο GRF ID
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Δεν βρέθηκε αρχείο ταυτοποιημένο (φορτώθηκε συμβατό GRF)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Δεν μπορεί να γίνει η προσθήκη του αρχείου: διπλότυπο GRF ID
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Δεν βρέθηκε ταυτοποιημένο αρχείο (φορτώθηκε συμβατό GRF)
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Φόρτωση συμβατών GRF(s) για χαμένα αρχεία.
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ανύπαρκτο/α αρχείο/α GRF έχουν απενεργοποιηθεί
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Φόρτωση συμβατού/ών GRF για χαμένα αρχεία
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Απενεργοποιήθηκε/αν ανύπαρκτο/α αρχείο/α GRF
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ανύπαρκτο/α αρχείο/α GRF
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Συνέχιση λειτουργίας μπόρει να κρασάρει το OpenTTD. Μην δώσετε αναφορές σφαλμάτων για συνεχόμενα κρασαρίσματα.{}Θέλετε πραγματικά να συνεχίσετε την λειτουργία;
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Η συνέχιση μπορεί να κλείσει απρόοπτα το OpenTTD. Μη δώσετε αναφορές σφαλμάτων για κλεισίματα.{}Θέλετε πραγματικά να συνεχίσετε την λειτουργία;
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Κανένα
@@ -2788,36 +2797,38 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Βρέ�
 STR_NEWGRF_LIST_MISSING                                         :{RED}Λείπουν αρχεία
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Η συμπεριφορά του NewGRF '{0:STRING}' είναι πιθάνο να προκαλέσει αποσυγχρονισμούς και/ή κρασαρίσματα.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Άλλαξε το μήκος του οχήματος '{1:ENGINE}' ενώ δεν βρισκόταν μέσα σε αμαξοστάσιο
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Το τρενο'{VEHICLE}' που ανήκει στην εταιρία '{COMPANY}' έχει μη έγκυρο μήκος. Πιθανόν να προέρχεται από πρόβλημα του NewGRFs. Το παιχνίδι μπορεί να αποσυγχρονιστεί ή να κρασάρει.
+STR_NEWGRF_BROKEN                                               :{WHITE}Η συμπεριφορά του NewGRF «{0:STRING}» είναι πιθανό να προκαλέσει αποσυγχρονισμούς ή/και απρόοπτα κλεισίματα
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Άλλαξε την κατάσταση *** για «{1:ENGINE}» όταν δεν είναι μέσα σε αμαξοστάσιο
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Άλλαξε το μήκος του οχήματος «{1:ENGINE}» ενώ δεν βρισκόταν μέσα σε αμαξοστάσιο
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Το τρένο «{VEHICLE}» που ανήκει στην εταιρία «{COMPANY}» έχει μη έγκυρο μήκος. Πιθανόν να προέρχεται από προβλήματα με NewGRF. Το παιχνίδι μπορεί να αποσυγχρονιστεί ή να κλείσει απρόοπτα.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}Το NewGRF '{0:STRING}' δίνει λάθος πληροφορίες
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Η πληροφορία εμπορεύματος/μετατροπής για το '{1:ENGINE}' διαφέρει από την λίστα αγοράς μετά την κατασκευή. Αυτό μπορεί να προκαλέσει την αποτυχία της αυτόματης ανανέωσης/αντικατάστασης για σωστή μετατροπή
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' προκάλεσε ένα ατέρμονο βρόχο στην ανακοίνωση παραγωγής.
+STR_NEWGRF_BUGGY                                                :{WHITE}Το NewGRF «{0:STRING}» δίνει λάθος πληροφορίες
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Η πληροφορία εμπορεύματος/μετατροπής για το «{1:ENGINE}» διαφέρει από τη λίστα αγοράς μετά την κατασκευή. Αυτό μπορεί να προκαλέσει την αποτυχία της αυτόματης ανανέωσης/αντικατάστασης για σωστή μετατροπή
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}Το «{1:STRING}» προκάλεσε ένα ατέρμονο βρόχο στην κλήση παραγωγής
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Η κλήση {1:HEX} επέστρεψε άγνωστο/άκυρο αποτέλεσμα {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<μη έγκυρο φορτίο>
-STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :;;
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <μη έγκυρου φορτίου>
 STR_NEWGRF_INVALID_ENGINE                                       :<μη έγκυρο μοντέλο μηχανής>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<μη έγκυρη βιομηχανία>
 
 # NewGRF scanning window
-STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Σαρώνονται Νέα GRF
-STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Σαρώνεται το NewGRFs. Ανάλογα με το μέγεθος, αυτό μπορεί να απαιτήσει κάποιο χρόνο...
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Σαρώνονται ΝewGRF
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Σαρώνονται τα NewGRF. Ανάλογα με το μέγεθος, αυτό μπορεί να απαιτήσει κάποιο χρόνο...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF σαρώθηκαν από {NUM} υπολογισμένα NewGRF
 STR_NEWGRF_SCAN_ARCHIVES                                        :Σάρωση για αρχεία
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Λίστα πινακίδων - {COMMA} Πινακίδ{P α ες}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Λίστα Πινακίδων - {COMMA} Πινακίδ{P α ες}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Αντιστοίχιση πεζών/κεφαλαίων
-STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Εναλλαγή ταύτισης μεγέθους κατά τη σύγκρισης ονομάτων πινακίδων με τη συμβολοσειρά αναζήτησης
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Εναλλαγή ταύτισης μεγέθους κατά τη σύγκρισης ονομάτων πινακίδων με τον όρο φιλτραρισμού
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Αλλαγή κειμένου πινακίδας
-STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Πηγαίνετε στην επόμενη πινακίδα
-STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Πηγαίνετε στη προηγούμενη πινακίδα
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Επεξεργασία κειμένου πινακίδας
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Μετάβαση στην επόμενη πινακίδα
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Μετάβαση στη προηγούμενη πινακίδα
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Δώστε ένα όνομα για την πινακίδα
 
@@ -2825,7 +2836,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Δώστ
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Πόλεις
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Τίποτα -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Ονόματα πόλεων - πατήστε στο όνομα για να κεντράρετε την εικόνα στην πόλη. Με Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία της πόλης
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Ονόματα πόλεων - κάνετε κλικ στο όνομα για να κεντράρετε την εικόνα στην πόλη. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία της πόλης
 STR_TOWN_POPULATION                                             :{BLACK}Παγκόσμιος πληθυσμός: {COMMA}
 
 # Town view window
@@ -2844,15 +2855,15 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Η πό�
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Η πόλη επεκτείνεται κάθε {ORANGE}{COMMA}{BLACK} ημέρ{P α ες} (χρηματοδοτούμενη)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Η πόλη {RED}δεν{BLACK} επεκτείνεται
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Επίπεδο θορύβου στη πόλη: {ORANGE}{COMMA}{BLACK}  μέγιστο: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία της πόλης. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία της πόλης
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία της πόλης. Το Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία της πόλης
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Τοπική αρχή
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Εμφάνιση πληροφοριών για την τοπική αρχή
-STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Αλλαγή ονόματος πόλης
+STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Αλλαγή του ονόματος της πόλης
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Επέκταση
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Αύξηση μεγέθους της πόλης
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Διαγραφή
-STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Διαγράφη της πόλης ολοκληρωτικά
+STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Διαγραφή της πόλης ολοκληρωτικά
 
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Μετονομασία Πόλης
 
@@ -2861,8 +2872,8 @@ STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Τοπι
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Ποσοστά εταιρίας μεταφορών:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Διαθέσιμες πράξεις:
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Λίστα πραγμάτων που πρέπει να γίνουν σε αυτή την πόλη - κάντε κλικ στο αντικείμενο για πληροφορίες
-STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Κάνε το
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Λίστα πραγμάτων που πρέπει να γίνουν σε αυτήν την πόλη - κάντε κλικ στο αντικείμενο για πληροφορίες
+STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Κάντε το
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Διενέργεια της επιλεγμένης πράξης στην παραπάνω λίστα
 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Μικρή διαφημιστική καμπάνια
@@ -2872,7 +2883,7 @@ STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Επιχορή�
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Χτίσιμο αγάλματος ιδιοκτήτη εταιρίας
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Επιχορήγηση νέων κτιρίων
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Αγορά αποκλειστικών δικαιωμάτων μεταφοράς
-STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Δωροδοκίστε την τοπική αρχή
+STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Δωροδοκήστε την τοπική αρχή
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}'Eναρξη μικρής τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Έναρξη μεσαίας τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY_LONG}

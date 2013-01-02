@@ -311,7 +311,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Sýna li
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Sýna lista yfir flugvélar fyrirtækis. Ctrl+smella velur opnun á hóp/farartækja lista
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Þrengja sýnishorn
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Víkka sýnishorn
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Leggja lestartein
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Leggja járnbrautarspor
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Leggja veg
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Byggja bryggju
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Byggja flugvöll
@@ -409,8 +409,8 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fjármagna nýj
 ############ range ends here
 
 ############ range for railway construction menu starts
-STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Járnbrautarlestarframkvæmdir
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Rafmagnsteina framkvæmdir
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Járnbrautarspors framkvæmdir
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Rafmagnsspora framkvæmdir
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Einteinungsframkvæmdir
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Maglev framkvæmdir
 ############ range ends here
@@ -560,7 +560,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Leiðarumsjóna
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Stjórnandi
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Framkvæmdarstjóri
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Stjórnarformaður
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Forseti
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Forstjóri
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Auðkýfingur
 
 # Performance detail window
@@ -763,7 +763,7 @@ STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nýtt flutningsfyrirtæki stofnað!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} hefur byggingu nálægt {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} hefur verið yfirtekið af {STRING}!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Framkvæmdastjóri)
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Forstjóri)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} fjármagnaði nýjan bæ: {TOWN}!
 
@@ -1076,7 +1076,7 @@ STR_CONFIG_SETTING_ON                                           :Já
 STR_CONFIG_SETTING_DISABLED                                     :Óvirkt
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Af
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Eigin fyrirtækis
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Eigin fyrirtæki
 STR_CONFIG_SETTING_COMPANIES_ALL                                :Allra fyrirtækja
 
 STR_CONFIG_SETTING_NONE                                         :Enginn
@@ -1111,9 +1111,9 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :Viðhörf bæja
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Veldu hversu mikil áhrif hávaði og umhverfisspjöll frá fyrirtækjum hafa áhrif á mat bæja á fyrirtækinu og frekari framkvæmdir innan bæjarmarkanna
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Leyfilegt að byggja í halla og á strönd: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ef þessi stilling er virk er hægt að byggja lestarteina og stöðvar í flestum brekkum. Ef hún er óvirk er það bara hægt í brekkum sem snúa í sömu átt og teinarnir og því þurfa þeir engar undirstöður
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Leyfa landslagsbreytingar undir byggingum, teinum o.fl. (landfylling): {STRING}
-STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Leyfa mótun á landslagi undir byggingum og teinum án þess að þurfa að fjarlægja
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ef þessi stilling er virk er hægt að byggja spor og stöðvar í flestum brekkum. Ef hún er óvirk er það bara hægt í brekkum sem snúa í sömu átt og sporin og því þurfa þau engar undirstöður
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Leyfa landslagsbreytingar undir byggingum, sporum o.fl. (landfylling): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Leyfa mótun á landslagi undir byggingum og sporum án þess að þurfa að fjarlægja
 STR_CONFIG_SETTING_CATCHMENT                                    :Raunverulegri stærð svæðis sem stöðvar ná yfir: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Mismunandi stærð á söfnunarsvæðum fyrir mismunandi stöðvar og flugvelli
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Leyfa meiri eyðingu vega, brúa, gangna o.s.frv. í eigu bæjar: {STRING}
@@ -1133,7 +1133,7 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Halli á brekkum fyrir bíla: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Halli á brekkum fyrir bíla. Hærri gildi gera það erfiðara fyrir bíla að fara upp brekkunar
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Banna lestum og skipum að taka 90° beygjur: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 gráðu beygjur verða þegar láréttir lestarteinar liggja saman við lóðrétta lestarteina, þannig að lestin beygir 90 gráður þegar hún fer milli reita í staðinn fyrir 45 gráður fyrir aðrar samsetningar lestarteina. Þetta á einnig við um beygjuradíus skipa
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 gráðu beygjur verða þegar lárétt spor liggja saman við lóðrétt spor, þannig að lestin beygir 90 gráður þegar hún fer milli reita í staðinn fyrir 45 gráður fyrir aðrar samsetningar spora. Þetta á einnig við um beygjuradíus skipa
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Leyfa sameiningu stöðva sem ekki tengjast á korti: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Gerir mögulegt að bæta við stöð án þess að reitirnir liggi saman. Það þarf að halda Ctrl+Smella þegar bætt er við stöðina
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Nota endurbættan algóriþma við hleðslu: {STRING}
@@ -1154,11 +1154,11 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Engin
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Eins og annar iðnaður
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Með jarðefnisleit
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Slétt svæði í kringum iðnað: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Stærð slétts svæðis í kringum iðnað. Þetta tryggir að nóg sé að auðu svæði í kringum iðnað til að byggja lestarteina og fleira
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Stærð slétts svæðis í kringum iðnað. Þetta tryggir að nóg sé að auðu svæði í kringum iðnað til að byggja spor og fleira
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Leyfa marga svipaða iðnaði í sama bæ: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Venjulega vilja bæir ekki fleiri en einn iðnað af hverri tegund. Með þessari stillingu á munu bæjir leyfa nokkra iðnaði af sömu gerð í kringum sama bæinn
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Sýna lestarljós: {STRING}
-STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Veldu hvoru megin við lestarteinana á að setja lestarljósin
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Veldu hvoru megin við sporið á að setja járnbrautarljósin
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Vinstra megin
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Akstursstefnu megin
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Hægra megin
@@ -1186,33 +1186,69 @@ STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ef fyrirtæki k
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Leyfa byggingastyrki: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Leyfa fyrirtækjum að gefa bæjum peninga til að styrkja byggingu nýrra húsa
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Leyfa styrki til að endurnýja vegi bæjarins: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Leyfa fyrirtækjum að gefa bæjum peninga til að þeir geti endurbyggt vegi og þar með eyðileggja þjónustu bíla í bænum
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Heimila peningagreiðslur til annarra fyrirtækja: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Leyfa flutning á peningum milli fyrirtækja í fjölspilun
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Margfalda þyngd farms til að líkja eftir þyngri lestum: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Stilltu hversu margfalt þyngri farmur er í lestum, hærri sem talan er því meiri kröfur eru gerðar á lestina, sérstaklega upp brekkur
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Hraðastuðull flugvéla: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Stilltu hlutfallslegan hraða flugvéla miðað við önnur farartæki til að minnka tekjur vegna flutninga með flugvél
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Fjöldi flugvélaslysa: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Stilltu hvaða líkur séu á því að flugvel hrapi
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Engin
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :fækkuð
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :miðlungs
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Leyfa strætóstöðvar á gangstéttum bæja: {STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Leyfa stöðvar á gangstéttum vega í eigu keppinauta: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Leyfa stoppistöðvar sem keyrt er í gegnum, á vegum í eigu bæja: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Leyfa byggingu stoppistöðvar sem keyrt er í gegnum, á vegum í eigu bæja
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Leyfa stoppistöðvar sem keyrt er í gegnum, á vegum í eigu samkeppnisaðila: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Leyfa byggingu stoppistöðva sem keyrt er í gegnum, á vegum í eigu samkeppnisaðila
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Heimila sambyggingu stöðva: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Leyfa ólíkum stöðvum að snerta hvor aðra
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Virkja mörg NewGRF vélasöfn: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Samhæfni kostur fyrir gamla NewGRF. Ekki slökkva á þessu, nema þú vitir nákvæmlega hvað þú ert að gera!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ekki er hægt að breyta þessari stillingu þegar til eru farartæki
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Viðhald á innviðum: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Ef þessi stilling er virk kostar að reka innviði fyrirtækisins. Kostnaður eykst í auknu hlutfalli við stærð fyrirtækisins, því eru áhrifin meiri á stór fyrirtæki en lítil
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Alltaf hægt að byggja allar gerðir flugvalla: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ef þessi stilling er virk þá er hver tegund flugvallar alltaf aðgengileg eftir að hann verður fyrst aðgengilegur
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Vara við ef farartæki villast: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Byrtir skilaboð um að farartæki finni ekki leiðina sem liggur að næsta áfangastað
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Fara yfir áætlanir farartækja: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Þegar þessi stilling er virk, eru skipanir ökutækja reglulega kannaðar og sum augljós atriði eru tilkynnt með frétta boðum þegar þau uppgötvast
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nei
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Allra nema kyrrstæðra farartækja
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Allra farartækja
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Birta viðvörun ef tap er af rekstri farartækis: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Þegar þessi stilling er virk, eru frétta boð send ef farartæki hafa ekki skilað hagnaði síðasta dagatals ár
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Farartæki úreldast aldrei: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ef þessi stilling er virk, eru öll farartæki alltaf í boði eftir að þau voru fyrst kynnt til sögunnar
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Uppfæra faratæki sjálfvirkt þegar þau eldast: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ef þessi stilling er virk, eru farartæki endurnýjuð sjálfvirkt þegar endingartími þeirra er komin
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Endurnýja farartæki sjálfvirkt {STRING} hámarks aldur
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Hvenær íhuga ætti sjálfvirka útskipting á farartæki
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mánuð{P 0 i um} fyrir
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mánuð{P 0 i um} eftir
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Lágmarks bankainnistæða fyrir sjálfvirka uppfæringu: {STRING}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Sýna íbúafjölda í bæjarmerki: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Lágmarks upphæð peninga sem verður að vera til í bankanum áður en hægt er að skipta farartækjum sjálfvirkt út
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Tími sem villuskilaboð eru sýnileg: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tími sem villuboð í rauðu gluggunum eru sýnd. Athugið að sumum (alvarlegum) villuboðum er ekki lokað sjálfvirkt eftir þennan tíma, þeim verður að loka handvirkt
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekúnd{P 0 a ur}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Sýna vísbendingar: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Töf áður en vísbendingar eru birtar þegar músinni er haldið yfir einhverju af viðmóts atriðunum. Eins er stundum að finna vísbendingar með því að hægri smella
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Halda músinni yfir í {COMMA} sekúndu {P 0 "" r}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Hægri smella
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Sýna íbúafjölda með nafni bæjarins: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Sýna íbúafjölda bæjarins með nafni bæjarins á kortinu
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Þykkt lína í línuritum: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Breidd lína í línuritinu. Þunn lína gefur nákvæmari lestur, meðan breiðari lína sést betur og gerir auðveldara að þekkja litina í sundu
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landslagsmótun: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Upphafleg
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Hámarks fjarlægð frá brún að olíuhreinsistöð: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olíuhreinsistöðvar eru aðeins byggðar nálægt jöðrum á kortinu, það er að segja á ströndum á kortum sem eru af eyjum
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Hæð snjólínu: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Hrjúfleiki landslags (TerraGenesis stilling) : {STRING}
@@ -1233,25 +1269,37 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Ef þessi still
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Einn eða fleiri reitir við norðurjaðarinn eru ekki tómir
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Einn eða fleiri reitir við eina hlið kortsins hafa ekki vatn
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Hámarks stærð stöðva: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Hámarks svæði sem ein stöð má dreifast yfir. Athugið að því há gildi hægja á leiknum
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Skoða þyrlur sjálfvirkt á þyrlupalli: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Þjónusta þyrlur í hvert skipti sem þær hafa lent, jafnvel þó það sé ekkert skýli á flugvellinum
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Opna landmótunarglugga samhliða öðrum framkvæmdum: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Þegar framkvæmdagluggar fyrir farartæki eru opnaðir þá verður líka gluggi fyrir mótun lands opnaður
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Litur á landinu sem birtist á kortinu: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Litur á landslagi á litla kortinu
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grænn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Dökkgrænn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fjólublátt
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Færa sjónarhorn í öfuga átt miðað við mús: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Hegðun þegar sjónarhornið er fært með hægri músartakkanum. Þegar stillingin er óvirk færir músin myndavélina. Þegar stillingin er virk færir músin sjónarhornið
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Mjúkt skrun í skjágluggum: {STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Sýna mælstiku við byggingu: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Stýrir hvernig aðalsjónarhornið færist á ákveðna staði þegar smellt er á þá á litla kortinu eða þegar ákveðinn hlutur er valin á kortinu. Ef stillingin er virk færist aðalsjónarhornið rólega, ef stillingin er óvirk fer aðalsjónarhornið beint á ákveðna staðinn
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Sýna mælingar þegar verið er að byggja og breyta landslagi: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Sýna fjölda reita og hæðarmismun þegar músin er dregin meðan verið er að byggja
 STR_CONFIG_SETTING_LIVERIES                                     :Sýna auka litastillingar: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Stýra notkun auka litastillinga á farartækjum (öfuggt við sérstöðu fyrirtækja)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Aldrei
-STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eigin fyrirtækis
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eigin fyrirtæki
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Allra fyrirtækja
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Nota liðsspjall með <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Í staðinn fyrir að spjall við alla í fjölspili sé virkjað með <ENTER> virkjar það spjall við þá sem eru með í fyrirtækinu þínu. <Ctrl+ENTER> virkar ávalt á hinn veginn miðað við það sem <ENTER> gerir
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Virkni skrunhjóls: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Til að nýta skrunhjól á músum sem virka bæði upp/niður og til hliðanna
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Víkka/þrengja sjónarhorn
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Skruna á korti
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Engin
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Hraði skrunhjóls á korti: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Stjórnaðu næmni skrunhjólsins á músinni
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Lyklaborð á skjá: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Veldu hvernig á að fá fram lyklaborð á skjáinn þar sem hægt er að skrifa texta með að ýta á takana. Þetta er hugsað fyrir lítil tæki sem eru án lyklaborðs
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Óvirkt
@@ -1260,30 +1308,50 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Ýta einusinni 
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Ýta einusinni (birtist strax)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Hægrismellshermun: {STRING}
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-smella
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Veldu hvernig herma á eftir hægri smelli á músinni
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+smella
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+smella
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Af
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Skrun með hægri músarhnappi: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Virkja að hægt sé að færa sjónarhornið með því að færa það með vinstri músar takkanum. Þetta er sérstaklega gott þegar notast er við snerti-skjá til að færa sjónarhornið
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Nota dagsetningar á {STRING} formi fyrir vistaða leiki.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Snið á dagsetningu í nöfnum á vistuðum leikjum
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :löngu (31. Des 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :stuttu (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Sjálfgefið litaspjald fyrir NewGRF sem tilgreina ekki litaspjald: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Sjálfgefið litaspjald til að nota með NewGRF sem skilgreina ekki hvaða litaspjald það notar
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS litaspjald
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows litaspjald
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Setja leik á bið þegar nýr leikur er hafinn: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Ef þessi stilling er virk mun leikurinn fara sjálfvirkt á bið þegar nýr leikur hefst. Það gefur færi á að skoða kortið betur
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Þegar leikurinn er á bið skal leyfa: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Veldu hvað það er sem má gera þegar leikurinn er á bið
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Ekkert
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Allt nema byggja
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Allt nema að breyta landslaginu
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Allt
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Ítarlegur listi yfir farartæki: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Virkja möguleika á ítarlegum lista yfir farartæki sem notaður er til að flokka farartæki
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Sýna stöðu lestunar: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Sýna fyrir ofan farartækin stöðu lestunar þegar þau eru að ferma eða afferma
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Birta áætlanir í slögum frekar en dögum: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Sýna ferðatíma í áætlun í slögum frekar en dögum
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Sýna komu- og brottfaratíma í áætlunum: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Sýna áætlaðan komu- og brottfarar tíma í áætlun
 STR_CONFIG_SETTING_QUICKGOTO                                    :Fljótleg gerð skipana: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Forvelja 'fara að' þegar skipana glugginn fyrir farartæki er opnaður
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Valin lestartegund (eftir nýjan leik/opnaðan leik): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tegund spors sem valið er fyrst eftir að leikur byrjar. 'Fyrsta mögulega' velur elstu gerð spors, 'Síðasta mögulega' velur nýjustu gerð spors og 'Mest notuð' velur það spor sem mest er af á kortinu
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Fyrsta mögulega
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Síðasta mögulega
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest notuð
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Sýna frátekin spor: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Frátekin spor fá annan lit til að auðvelda að finna vandamál þegar lestar fara ekki inn á svæði
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Halda byggingartólum virkum eftir notkun: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Hópa saman útgjöld í fjármálaglugga: {STRING}
 
@@ -1384,7 +1452,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 net
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 net
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :slembið
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Bæir geta lagt vegi: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Heimila bæjum að byggja götu yfir lestarteina: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Heimila bæjum að byggja göng og brýr: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Leyfa stjórn á hljóðstyrk frá flugvöllum af bæjum: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Stofna bæi í leik: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :bannað
@@ -1533,7 +1601,7 @@ STR_LIVERY_DEFAULT                                              :Aðal litaskema
 STR_LIVERY_STEAM                                                :Gufuvagnar
 STR_LIVERY_DIESEL                                               :Díselvagnar
 STR_LIVERY_ELECTRIC                                             :Rafmagnsvagnar
-STR_LIVERY_MONORAIL                                             :Einteingungsvagnar
+STR_LIVERY_MONORAIL                                             :Einteinungar
 STR_LIVERY_MAGLEV                                               :Segulsvifvagnar
 STR_LIVERY_DMU                                                  :Fjölvagna dísellest
 STR_LIVERY_EMU                                                  :Fjölvagna rafmagnslest
@@ -1572,10 +1640,10 @@ STR_FACE_LOAD                                                   :{BLACK}Hlaða
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Hlaða uppáhalds andliti
 STR_FACE_LOAD_DONE                                              :{WHITE}Þitt uppáhalds andlit hefur verið sótt úr OpenTTD stilliskrá
 STR_FACE_FACECODE                                               :{BLACK}Andlit nr.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Skoða og/eða stilla andlitsnúmer á framkvæmdarstjóra fyrirtækisins
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Skoða og/eða stilla andlitsnúmer framkvæmdarstjóra
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Skoða og/eða stilla andlitsnúmer á forstjóra fyrirtækisins
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Skoða og/eða stilla andlitsnúmer forstjóra
 STR_FACE_FACECODE_SET                                           :{WHITE}Nýtt andlitsnúmer hefur verið stillt
-STR_FACE_FACECODE_ERR                                           :{WHITE}Gat ekki stillt andlitsnúmer framkvæmdarstjóra - verður að vera tala á bilinu 0 og upp í 4.294.967.295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Gat ekki stillt andlitsnúmer forstjóra - verður að vera tala á bilinu 0 og upp í 4.294.967.295!
 STR_FACE_SAVE                                                   :{BLACK}Vista
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Vista uppáhalds andlit
 STR_FACE_SAVE_DONE                                              :{WHITE}Þetta andlit mun verða vistað sem þitt uppahald í OpenTTD stilliskrá
@@ -1979,21 +2047,21 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Tengja m
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Reisa aðra millistöð
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Járnbrautarlestarframkvæmdir
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Járnbrautarspors framkvæmdir
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Raflestaframkvæmdir
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Einteinungsframkvæmdir
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Maglev framkvæmdir
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Leggja lestarteina. Ctrl velur byggja/fjarlægja fyrir lestarframkvæmdir. Shift sýnir áætlaðan kostnað
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Leggja lestarteina, stefna teinanna er sjálfvirk. Halda ctrl inni til að eyða teinum. Shift sýnir áætlaðan kostnað
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Leggja járnbrautarspor. Ctrl velur byggja/fjarlægja fyrir járnbrautar framkvæmdir. Shift sýnir áætlaðan kostnað
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Leggja járnbrautarspor, stefna sporsins er sjálfvirk. Ctrl til að eyða járnbrautarspori. Shift sýnir áætlaðan kostnað
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Byggja lestarskýli (til að byggja og þjónusta lestar). Shift sýnir áætlaðan kostnað
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Breyta teini í vegvísi. Ctrl leyfir samteningu vegvísa. Shift sýnir áætlaðan kostnað
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Breyta spori í vegvísi. Ctrl leyfir samteingingu vegvísa. Shift sýnir áætlaðan kostnað
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Byggja lestarstöð. Ctrl leyfir samtengingu stöðva. Shift sýnir áætlaðan kostnað
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Byggja lestarljós. Ctrl velur hreyfiskilti/ljósamerki{}Dragðu til að bygga ljós eftir beinni lestarlínu{}Ctrl+smella opnar/lokar lestarljósa glugganum. Shift sýnir áætlaðan kostnað
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Byggja lestarbrú. Shift sýnir áætlaðan kostnað
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Byggja lestargöng. Shift sýnir áætlaðan kostnað
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skipta á milli byggja/fjarlægja lestarteina, lestarljós, leiðarsteina og lestarstöðvar. Haltu Ctrl inni til að líka fjarlægja lestarteina úr leiðarsteinum og lestarstöðvum
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Breyta/uppfæra gerð lestarteins. Shift sýnir áætlaðan kostnað
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skipta á milli byggja/fjarlægja járnbrautarspor, lestarljós, vegvísi og járnbrautarstöðva. Haltu Ctrl inni til að fjarlægja spor af vegvísum og stöðvum
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Breyta/uppfæra gerð spors. Shift sýnir áætlaðan kostnað
 
 
 # Rail depot construction window
@@ -2244,7 +2312,7 @@ STR_LAND_AREA_INFORMATION_OWNER_N_A                             :Enginn
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Eigandi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Eigandi vegs: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Eigandi spors: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Eigandi lestarteina: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Eigandi járnbrautarspors: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Bæjaryfirvöld: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Enginn
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Hnit: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -2257,7 +2325,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nafn flu
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Tekið á móti: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
-STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Hámarkshraði járnbrautar: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Hámarkshraði járnbrautarlestar: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Klettar
@@ -2484,7 +2552,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Skoða h
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} hjá {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Hlutur
-STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tegund teina
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tegund spora
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF breyta 60+x stilling (hexadecimal)
 
@@ -2734,7 +2802,7 @@ STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Borga ti
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Framkvæmdastjóri)
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Forstjóri)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Hafið: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Litaskema:
@@ -2762,8 +2830,8 @@ STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Litaskem
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Breyta útliti á farartækjum fyrirtækisins
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nafn fyrirtækis
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Breyta nafni fyrirtækisins
-STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nafn forstöðumanns
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Breyta nafni forstöðumanns
+STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nafn forstjóra
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Breyta nafni forstjóra
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kaupa 25% hlut í fyrirtæki
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Selja 25% hlut í fyrirtæki
@@ -2771,7 +2839,7 @@ STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kaupa 25
 STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Selja 25% hlut í þessu fyrirtæki. Shift+smella sýnir áætlaðan kostnað
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nafn Fyrirtækis
-STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nafn forstöðumanns
+STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nafn forstjóra
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Við erum að leita að flutningsfyrirtæki til að taka yfir okkar rekstri.{}{}Viltu kaupa {COMPANY} fyrir {CURRENCY_LONG}?
 
@@ -2865,10 +2933,10 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}Endurnef
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Lestaúrval
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nýjir rafdrifnir lestarvagnar
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nýir einteingungsvagnar
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nýir einteinungsvagnar
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nýir segullestarvagnar
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Járnbrautarlestir
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Ný járnbrautarlest
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Bifreiðaúrval
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Skipaúrval
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Flugvélaúrval
@@ -3003,7 +3071,7 @@ STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lest
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :bifreið
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :flugvél
 STR_ENGINE_PREVIEW_SHIP                                         :sjóferju
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :einteinungslest
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :einteinungs eimreið
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :segul lest
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Verð: {CURRENCY_LONG} Þyngd: {WEIGHT_SHORT}{}Hraði: {VELOCITY}  Afl: {POWER}{}Rekstrarkostnaður: {CURRENCY_LONG} á ári{}Burðargeta: {CARGO_LONG}
@@ -3087,7 +3155,7 @@ STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Núveran
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Núverandi aðgerð - smelltu hér til að stöðva/ræsa flugvél. Ctrl+Smella til at fara á áfangastað
 
 # Messages in the start stop button in the vehicle view
-STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Fermandi / Affermandi
+STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Ferma / Afferma
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Yfirgefur
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Árekstur!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Vélarbilun
@@ -3539,7 +3607,7 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... nú 
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Ekki hægt að breyta nafni fyrirtækis...
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Ekki hægt að breyta nafni forstöðumanns...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Get ekki breytt nafni forstjóra...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... hámarksleyfi á láni er {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Ekki hægt að fá meiri pening lánaðan...
@@ -3655,7 +3723,7 @@ STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Aðeins 
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Lestin er of löng
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Get ekki snúið lestinni við...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... samanstendur af mörgum einingum
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Ósamstæðir lestarteinar
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Ósamstæð spor
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Get ekki fært farartæki...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Aftari dráttarvagn fylgir alltaf fremri hluta
@@ -3670,21 +3738,21 @@ STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Engar re
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(takmarkað fjármagn)
 
 # Rail construction errors
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Ómöguleg lestarteinasamstæða
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Ómöguleg spor samsetning
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Verður að fjarlægja ljós fyrst
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Enginn hentugur lestarteinn
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Verður að fjarlægja lestartein fyrst
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ekkert hentugt járnbrautarspor
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Verður að fjarlægja járnbrautarspor fyrst
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Vegurinn er einstefnuvegur eða stíflaður
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Gatnamót ekki leyfð fyrir þessa tegund teina
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Gatnamót ekki leyfð fyrir þessa tegund járnbrautarspora
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Get ekki byggt umferðarljós hér...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Get ekki byggt lestartein hér...
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Get ekki fjarlægt lestartein héðan...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Get ekki byggt járnbrautarspor hér...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Get ekki fjarlægt járnbrautarspor héðan...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Get ekki fjarlægt umferðarljós héðan...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Get ekki breytt ljósum hér...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... það eru enginn lestarteinn
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... það er ekkert járnbrautarspor
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... það eru engin ljós
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Get ekki breytt lestarteini...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Get ekki breytt spori...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Verður að fjarlægja veg fyrst

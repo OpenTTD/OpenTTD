@@ -274,6 +274,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} meeter
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtri tekst:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sisesta filterkirjend
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sisesta märksõna mida loendist otsida
 
@@ -454,10 +455,12 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Veotasude mää
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Ettevõtete edetabel
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Täpsustatud tulemushinnang
+STR_GRAPH_MENU_HIGHSCORE                                        :Punktide edetabel
 ############ range ends here
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Tööstuste nimistu
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Tööstuste ahel
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Uue tööstuse rahastamine
 ############ range ends here
 
@@ -1096,11 +1099,29 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Sobiv te
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Täpsemad seaded
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtri tekst:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Laienda kõik harud
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Ahenda kõik harud
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(seletus puudub)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Vaikeväärtus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Seadete tüüp: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Kliendi seaded (ei hoita salvestustes; mõjutab ainult uusi mänge)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Mängu sätted (hoitakse salvestuses; mõjutab ainult uusi mänge)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Mängu seaded (hoitakse salvestuses; mõjutab ainult praegust mängu)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Ettevõtte seaded (hoitakse salvestuses; mõjutab ainult uusi mänge)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ettevõtte seaded (hoitakse salvestuses; mõjutab ainult praegust ettevõtet)
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Kuva:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Piirab alljärgnevat nimekirja muudetud seadete kuvamiseks
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Põhilised seaded
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Täpsemad seaded
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspert seaded / kõik seaded
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Seaded mis erinevad vaikeväärtustest
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Seaded mis erinevad sinu valitud uue mängu seadetest
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Piirab allolevat nimekirja valitud sätte tüübi järgi
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Kõik seadistused
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Kliendi sätted (ei hoita salvestuses; mõjutab kõiki mänge)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Mängu seaded (hoitakse salvestuses; mõjutab ainult uusi mänge)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Mängu seaded (hoitakse salvestuses; mõjutab ainult praegust mängu)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Firma seaded (hoitakse salvestuses; mõjutab ainult uusi mänge)
@@ -1122,6 +1143,28 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vasakul
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Keskel
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Paremal
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimaalne esialgne laenusumma: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimaalne summa mida ettevõte saab laenata (inflatsiooni arvesse võtmata)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Intressimäär: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Laenu intressimäär; ühtlasi juhib inflatsiooni, kui inflatsioon on aktiveeritud
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Käituskulud: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Määra sõidukite ja taristu hoolduse ja töös hoidmise maksumuse tase
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ehitamise kiirus: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Piira tehisintellekti ehitustoimingute arvu
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Sõidukite tõrked: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Juhib kui tihti puudulikult hooldatud sõidukid võivad tõrkuda
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Toetuse kordaja: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Määra ära kui palju makstakse toetatud liinide eest
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Ehitamise hind: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Määra ehituse ja maa ostu hinna tase
+STR_CONFIG_SETTING_RECESSIONS                                   :Majanduslangused: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Kui on aktiveeritud siis võib majanduslangus toimuda iga paari aasta tagant. Majanduslanguse ajal on kõik tootmismahud tunduvalt madalamad (majanduslanguse lõppedes taastuvad endised tootmismahud)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Keela rongide ümberpöörd jaamades: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Kui on aktiveeritud, siis ei pööra rongid vahejaamades ringi isegi siis kui ringi pööramisel oleks teekond järgmisse sihtpunkti lühem
+STR_CONFIG_SETTING_DISASTERS                                    :Katastroofid: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Lülita sisse/välja katastroofid mis võivad aeg-ajalt hävitada sõidukeid või taristut
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Linnavalitusese suhtumine pinnase restruktureerimisse: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vali kui suurt mõju tekitavad müra ning keskkonna muudatused ettevõtte mainele ja edasistele ehitustoimingutele antud piirkonnas
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Nõlvadele ja kallastele ehitamine: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Kui lubatud, saab teid ja jaamu ehitada enamikle nõlvadele. Kui keelatud, siis on need lubatud ainult nõlvadel, mis vastavad rööbastee suunale ja mis eeldavad seega vundamenti.
@@ -1163,9 +1206,9 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimaalne tun
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimaalne pikkus ehitatud tunnelitele
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Põhitööstuse rajamismeetod: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Peamise tootmisharu rahastamise meetod. 'ei ole' tähendab ei ole võimalik rahastada, 'geoloogiliste' tähendab rahastamine on võimalik, kuid ehitis kaardil tekib suvalise kohapeal või võib üldse ebaõnnestuda. 'nagu muid tööstusharud,' tähendab toorest tööstusharu saab ehitada nagu töötleva tööstuse harusid
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :pole
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :nagu muud tööstused
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :eeluuringutega
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Pole
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Nagu muud tööstused
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Eeluuringutega
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Tasane ala ümber tehaste: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Summa kui palju tasast maad on ümber tehase. See tagab et ruumi jääb saadavale ehitiste jaoks
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Samalaadsed tööstused ühes linnas: {STRING}
@@ -1187,6 +1230,11 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :täiesti lõpus
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Mootorsõidukite järjekorrad (koos mahuefektidega): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Pane sõiduk ootama hõivatud peatuse ees kuni need on vabastatud
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Vaate kerimine osutiga ekraaniserva puudutamisel: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Kui on aktiveeritud, siis vaateaknad hakkavad kerima kui hiire kursor on serve lähedal
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Väljas
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Peamine vaateaken, ainult täisekraan
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Peamine vaateaken
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Kõik vaateaknad
 STR_CONFIG_SETTING_BRIBE                                        :Altkäemaksud kohalikele omavalitsustele: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Luba anda altkäemaksu kohalikule linnavõimule. Kui altkäemaks on inspektori poolt avastatud, siis ei saa ettevõte 6 kuu jooksul linnas mitte midagi ette võtta
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Ainuveoõiguste ostmine: {STRING}
@@ -1204,9 +1252,9 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Määra suhteli
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Lennuõnnetuste hulk: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Võimalus kui tihti lennuõnnetus võib juhtuda
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :puuduvad
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :vähendatud
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :tavaline
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Puuduvad
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Vähendatud
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Tavaline
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Läbisõidupeatused linnateedel: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Luba ehitada läbi sõidu peatused linna omandis teedele
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Läbisõidupeatused konkurentide teedel: {STRING}
@@ -1217,24 +1265,46 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Mitme NewGRF s�
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Ühilduvuse suvand vanadele NewGRF'le. Ärge keelake seda, juhul kui Sa tead täpselt mida sa teed!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sõidukite olemasolul ei saa seda seadet muuta
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktuuri korrashoid: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Kui on aktiveeritud, siis taristu tekitab halduskulusid. Maksumus kasvab ebaproportsionaalselt taristu kasvuga, seega mõjutab suuri ettevõtteid rohkem kui väikeseid
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aegumatud lennuväljad: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Selle seade sisse lülitamine jätab kõik lennujaamade tüübid avatuks lõpmata ajaks peale nende avanemist
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Hoiata kui sõiduk on eksinud: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Tekita teateid kui sõidukid ei suuda leida teekonda nendele määratud sihtkohani
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Sõidukite sihtpunktide ülevaade: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ei
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jah, kuid jäta välja seisatud veovahendid
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :kõikidest veovahenditest
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Kui on aktiveeritud, siis kontrollitakse perioodiliselt sõidukitele antud käsklusi ja leitud vead raporteeritakse uudistena
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Ei
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Jah, kuid jäta välja seisatud veovahendid
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Kõikidest veovahenditest
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Hoiata kui rongi sissetulek on negatiivne: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Kui on aktiveeritud, siis teavitatakse mängijat sõidukitest mis ei ole viimase aasta jooksul suutnud kasumit teenida
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Sõidukid ei aegu: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kui on aktiveeritud, siis jäävad kõik sõidukite tüübid igavesti avatuks
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Vananenud sõidukite uuendamine: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kui on sisse lülitatud, siis uuendatalse kõik kasutusaja lõpu lähedal olevad sõidukid automaatselt, järgides uuendamise tingimusi
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automaatne sõiduki uuendamine kui sõduk on {STRING} maksimaalse vanuse
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relatiivne sõiduki iga mille järel on peaks sõiduk saama automaatselt uuendatud
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} kuu{P 0 "" d} enne
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} kuu{P 0 "" d} pärast
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Nõutud rahasumma uuendamiseks: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimaalne kogus raha mis peab jääma kontole ennem kui sõidukite automaatset uuendamist planeeritakse
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Veateadete kestvus: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Kestvus veateadete kuvamiseks punases aknas. Mõned (kriitilised) veateated ei sulgu automaatselt peale seda aega ja peavad käsitsi suletud saama
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" it}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Kuva spikkreid: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Viide ennem spikkri kuvamist kui hiire kursor on kasutajaliidese elemendi peal hõljunud. Teine võimalus spikri kuvamiseks on hiire paremklõps
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hõlju {COMMA} sekund{P 0 "" it}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Paremklõps
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Rahvaarv alevike nimesiltidel: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Kuva linna elanike arvu kaardi peal linna nimesildil
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Graafiku joonte paksus: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Graafiku joonte paksus. Peenem joon on täpsemalt loetav, laiem joon on lihtsamini näha ja värvid on selgemini eristatavad
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Maaala Generaator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Algupärane
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimaalne kaugus kaardi servast naftatöötlustehase jaoks: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Naftatöötlemistehased ehitatakse ainult kaardi piirile, see on rannikul saartega mängitaval kaardil.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Lumepiiri kõrgus: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Maa mägisus (TerraGenesis ainult) : {STRING}
@@ -1255,149 +1325,266 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Kui välja lül
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Üks või enam ruutu põhjaäärel pole tühjad
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Üks või enam ääreruutu pole vesi
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Maksimaalne jaama laotus: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maksimaalne ala mida üks jaam võib katta. Pane tähele, et suuremad väärtused aeglustavad mängu
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Automaatne helikopterihooldus maandumisplatsidel: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Hoolda helikoptereid peale igat maandumist, isegi kui lennujaamas pole depood
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Maastiku-, ning raudtee/tee/vee/lennujaamade tööriistaribade seostamine: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Kui avatakse mingi transpordiliigi ehitamise menüü, siis ava ka maastiku muutmise menüü
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Väikekaardi maa värv: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Kuva maastiku kõrguse värvid väikesel kaardil
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Roheline
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tumeroheline
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violetne
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Vaate kerimine vastassuunas: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Meetod kaardi kerimiseks parema hiire nupuga. Kui on välja lülitatud siis liigutab hiir kaamerat. Kui on sisse lülitataud siis liigutab hiir kaarti
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Vaatevälja liigutatakse sujuvalt: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Juhib peamise vaateakna kerimiste määratud kohta kui väikesel kaardil vajutatakse mõnele punktile või kui sisestatakse käsklis kerimiseks määratud elemendi asukohale. Kui on aktiveeritud toimub kerimine sujuvalt, kui ei ole aktiveeritud siis hüpatakse kohe määratud asukohta
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mõõtspikker teatud ehitusvahendite kasutamisel: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Kuvab ruudu-kaugused ja kõrguste erinevused kui teostatakse vedamisega ehitamise toiminguid
 STR_CONFIG_SETTING_LIVERIES                                     :Ettevõtte värve näidatakse: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Lülitab sisse sõidukite värvimise sõiduki tüübi mitte ettevõtte järgi.
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Mitte ühelgi
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Oma ettevõtel
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Igal ettevõttel
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :<ENTER> vajutades meeskonnavestluse eelistamine: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Vaheta ettevõtte sisese ja avaliku suhtluse nuppud vastavalt <ENTER> ja <Ctrl+ENTER> vahel
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Kerimisrulliku otstarve: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Lülitab sisse kerimise kahesuunaliste (hiire) kerimisratastega
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Kaardi suurendamine
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Kaardi kerimine
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Väljas
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Kaardi kerimisrulliku kiirus: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Juhib hiire kettaga kerimise tundlikkust
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Ekraani klaviatuur: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Vali meetod mille järgi kuvatakse ekraanile klaviatuur teksti sisestamiseks osutamise seadmega. See on mõeldud väiksemate seadmete jaoks, millel puudub füüsiline klaviatuur.
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Väljas
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Topeltklõps
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Üks klõps (kui on fookuses)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Üks klõps (koheselt)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Paremklõpsu matkimine: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Vali meetod mille järgi emuleeritakse hiite paremklõpse
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+klõps
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+klõps
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Väljas
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Kerimine vasakklõpsul: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Lülita sisse kaardi kerimine lohistades hiire parema nupuga. See on eriti abiks puutetundliku ekraaniga mängimisel
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Kuupäevaformaat salvestatud mängunimedes on {STRING}.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Kuupäeva formaat salvestatud mängude nimedes
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :pikk (31. dets 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :lühike (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Vaikimisi palett NewGRF-le millel kindlat paletti määranud pole: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Vaikimisi palet nende NewGRF-ide jaoks, mis ise nõutud paletti ei määra
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS-i palett
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows-i palett
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Mängu seiskamine alguses: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Kui on aktiveeritud siis on mängu alguses aeg peatatud, et lubada mängu alguses lähemlt tutvuda kaardiga
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Lubatud seisaku ajal: {STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :mitte ükski toiming
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :kõik mitte-ehituslikud toimingud
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :kõik peale maastikku muutvate toimingute
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :kõik tõimingud
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Vali tegevuseg millede teostamine on lubatud mängu pausi ajal
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Mitte ükski toiming
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Kõik mitte-ehituslikud toimingud
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Kõik peale maastikku muutvate toimingute
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Kõik tõimingud
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Laiendatud sõidukinimekiri: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Luba kasutada täpsemaid sõidukite nimekirju et grupeerida sõidukeid
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Laadimisnäidikud: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Vali kas laadimise või maha laadimise ajal kuvatakse vastav indikaator sõiduki kohal
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Sõiduplaanis kasutatakse päevade asemel tiksumist: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Kuva sõidu aegu ajatabelis mängu sammudes mitte päevades
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Saabumiste ja väljumiste näitamine sõiduplaanis: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Kuva ennustatavaid saabumise ja väljumise aegu ajatabelites
 STR_CONFIG_SETTING_QUICKGOTO                                    :Sõidukikäskude kiirloomine: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Tee "Mine" valik automaatselt aktiivseks kui avatakse sõiduki käskluste aken
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Algne rööbastee liik (mängu alustamisel/laadimisel): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Milline rööpa tüüp on automaatselt valitud mängu laadimise järel. 'Esimene avatud' valib vaniam rööpatüübi. 'Viimane avatud' valib uusima rööpatüübi. 'Enim kasutatud' valib enim kasutatud rööpatüübi.
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Esimene saadaval
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Viimane saadaval
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Enim kasutatud
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Varundatud radade näitamine: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Värvi reserveeritud rööpad teist värvi, et lihtsustada probleemide lahendamist rongide juures mis keelduvad suunatud ruutudele liikumast
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Ehitustööriistad pärast kasutamist tegusad: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Hoia sildade, tunnelite jne ehitamise tööriistad avatuna peale nende kasutamist
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Kulutuste rühmitamine ettevõtte finantsaknas: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Täpsusta ettevõtte kulutuste akna sisu paigutus
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Uudise kokkuvõte: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Mängi heliefekte uudiste kokkuvõtete jaoks
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Ajaleht: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Mängi häält ajalehe vaatamisel
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Aasta lõpp: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Mängi heliefekte aasta lõppus, ettevõtte aasta aruande võrdlemisel eelneva aasta aruandega
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Ehitis: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Mängi heliefekti edukatel rajamistel või muudel tegevustel
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Nupu vajutused: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Piiksu nuppe klõpsates
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastroofid/õnnetused: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Mängi õnnetuste ja katastroofide heliefekte
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Sõidukid: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Mängi sõidukite helieffekte
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Keskkond: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Mängi ümbritseva keskkonna, ettevõtete ja linnade heliefekte
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Blokeeri infrastruktuuri ehitamine kui sobivad sõidukid puuduvad: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Kui on aktiveeritud, siis on taristu ehitamine avatud ainult juhul kui antud taristule vastavad sõidukid on saadaval. Väldib mõttetut ehitamist kui taristu kasutamiseks vajalikke sõidukeid pole saadaval.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Enim ronge ettevõtte kohta: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimaalne arv ronge mida ettevõte võib omada
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Enim mootorsõidukeid ettevõtte kohta: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maksimaalne arv veokeid mida ettevõte võib omada
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Enim õhusõidukeid ettevõtte kohta: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maksimaalne arv lennukeid mida ettevõte võib omada
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Enim laevu ettevõtte kohta: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maksimaalne arv laevu mida ettevõte võib omada
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Rongikeeld arvutile: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Selle seade sisse lülitamise korral ei ole arvuti juhitud mängijal lubatud rongide ehitamine
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Sõidukikeeld arvutile: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Selle seade sisse lülitamise korral ei ole arvuti juhitud mängijal lubatud veokite ehitamine
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Õhusõidukikeeld arvutile: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Selle seade sisse lülitamise korral ei ole arvuti juhitud mängijal lubatud lennukite ehitamine
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Laevakeeld arvutile: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Selle seade sisse lülitamise korral ei ole arvuti juhitud mängijal lubatud laevade ehitamine
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Vaikimisi sätete profiil: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Vali millist sätete profiili kasutatakse ruvalise TI jaoks või esialgsete väärtuste jaoks kui lisatakse uus TI või Game Script
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lihtne
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Keskmine
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Keeruline
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tehismõistus võrgumängudes: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Luba kõikidel TI mängijatel ühineda võrgumängudesse
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcode-d ennem skripte on peatatud: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maksimaalne arv arvutamise käike mida skript võib teha ühel sammul
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Protsentides hooldusvahemikud: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Vali kas sõiduki hooldus käivitub vastavalt ajale mis on möödunud viimasest hooldusest või kui sõiduki usaldusväärsus langeb allapoole lubatud piiri sõiduki maksimaalsest usaldusväärsuse protsendist
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Vaikimisei hoolduse periood rongidele: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Määra vaikimisi hoolusperiood uutele rööbassõidukitele, kui antud sõidukile ei ole kindlat hooldusperioodi juba määratud
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} päev{P 0 "" a}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Väljas
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Vaikimisi hooldusperiood veokitele: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Määra vaikimisi hoolusperiood uutele veokitele, kui antud sõidukile ei ole kindlat hooldusperioodi juba määratud
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Vaikimisi hooldusperiood lennukitele: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Määra vaikimisi hoolusperiood uutele õhusõidukitele, kui antud sõidukile ei ole kindlat hooldusperioodi juba määratud
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Vaikimisi hooldusperiood laevadele: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Määra vaikimisi hoolusperiood uutele veesõidukitele, kui antud sõidukile ei ole kindlat hooldusperioodi juba määratud
 STR_CONFIG_SETTING_NOSERVICE                                    :Hoolduse keelamine rikete väljalülitamisel: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Kui on aktiveeritud, siis ei teostata hooldust sõidukitele mille tõrkumine ei ole võimalik
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Vagunite kiiruspiirangud: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kui on aktiveeritud siis kasutatakse rongi maksimaalse kiiruse arvutamiseks ka vagunite kiiruse piirangut
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Elektrirongide keeld: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Selle seade sisse lülitamise korral ei ole tarvis rööpaid elektrifitseerida, et lubada elektrisõidukitel nendel rööbastel liikuda
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Esimese sõiduki saabumine mängija jaama: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Kuva ajaleht kui ettevõtte uude jaama saabub esimene sõiduk
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Esimese sõiduki saabumine vastase jaama: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Kuva ajaleht kui konkureeriva ettevõtte uude jaama saabub esimene sõiduk
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Õnnetused / katastroofid: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Kuva ajaleht õnnetuste või katastroofide korral
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Ettevõtte teave: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Kuva ajaleht kui uus ettevõte alustab või kui ettevõte riskib pankrotiga
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Tööstuste avamine: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Kuva ajaleht uute tööstuste avamise korral
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Tööstuste sulgemine: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Kuva ajaleht tööstuste sulgemise korral
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Muutused majanduses: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Kuva ajaleht globaalse majanduse muutuste korral
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Ettevõtte poolt teenindavate tööstuste toodangumuutused: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Kuva ajaleht toodangu mahtude muutuste korral tööstuste kohta mis on teenindatud mängija ettevõtte poolt
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Konkurentide poolt teenindavate tööstuste toodangumuutused: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Kuva ajaleht toodangu mahtude muutuste korral tööstuste kohta mida teenindavad konkurendid
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Ülejäänud tööstuste toodangumuutused: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Kuva ajaleht toodangu mahtude muutuste korral tööstuste kohta mis ei ole teenindatud mängija ettevõtte ega konkurentide poolt
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Teave ja nõuanded ettevõtte sõidukite kohta: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Kuva teateid sõidukite kohta mis vajavad tähelepanu
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Uued sõidukid: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Kuva ajaleht kui uus sõiduki tüüp muutub kättesaadavaks
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Veoste vastuvõtutingimuste muutumine: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Kuva teateid jaamades kaupade vastuvõtu muutuste korral
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Toetused: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Kuva ajaleht toetustega seotud sündmuste korral
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Üldine teave: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Kuva ajalehe teated üldiste sündmuste kohta nagu eksklusiivsete õiguste ostmine ja kohalike teede rekonstrueerimine
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Väljas
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Lühike
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Täielik
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Värvilised uudised ilmuvad aastast {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Aasta millest alates hakkavad ilmuma värvilised ajalehed. Ennem seda aastat kasutatakse must-valget trükki
 STR_CONFIG_SETTING_STARTING_YEAR                                :Alustamise aeg: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Sujuv majandus (rohkem, väiksemad muutused): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Kui on aktiveeritud siis muutuvad tööstuste toodangute mahud tihemini ja väiksemate sammudega. Sellel seadel ei ole tavaliselt mingit effekti kui tööstuse tüübid on määratud NewGRF-is
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Aktsiatehingud teiste ettevõtetega: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Kui on aktiveeritud siis on ettevõtte aktsiate ostmine ja müümine lubatud. Aktsiad on saadaval ainult ettevõtetel mille vanus on üle teatud piiri
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Protsent tuludest mis läheb 'kanna edasi' süsteemis alumistesse lülidesse: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Protsent tuludest mis antakse edasi 'kanna edasi' süsteemidele. Lubab täpsemalt jaotada kasumit erinevate harude vahel.
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Kui lohistatakse siis paigutatakse foorid iga: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Määra vahemaa mille tagant paigutatakse rööbastele foorid kuni järgmise takistuseni (foor, ristmik), kui foore lohistatkse
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} ruut{P 0 "" u}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Lohistades hoia kindlat vahemaad fooride vahel: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Vali fooride paigutamise loogika kui kasutatakse Ctrl+lohistamist. Kui on välja lülitataud, siis paigutatakse foorid tunnelite ja sildade otstesse, et vältida pikki, ilma foorideta vahemaid. Kui on sisse lülitatud, siis paigutatakse foorid iga N ruudu taha, et hoida ühtlast sammu paraleelsetel rööbastel
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Semafore ehitatakse enne: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Määra aasta alates millest hakatakse kasutama elektriga foore. Ennem seda aastat kasutatakse semafoore (mis täidavad sama eesmärki, aga näevad teist moodi välja)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Signaalide paigutamise graafiline kasutajaliides: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Kuva aken erinevate fooride tüüpidega mida saab ehitada, selle asemel et kuvada üks fooride nupp ja kasutada Ctrl+klõpsu fooride ehitamiseks
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Vaikimisi ehitatav signaalide liik: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Vaikimisi foori tüüp mida kasutada
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Tavaline
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Täiustatud
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Ühesuunaline täiustatud
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Vaheta signaalide liike: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Vali milliseid fooride tüüpe läbi keritakse kui Ctrl+klõpsutada fooride ehitamise tööriistaga
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Ainult tavaline
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Ainult täiustatud
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Kõik
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Uute linnade tänavaplaneering: {STRING}
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :vaikimisi
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :paremad teed
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Teedevõrgu paigutus linnades
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Vaikimisi
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Paremad teed
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 võrgustik
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 võrgustik
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :suvaline
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Suvaline
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Linnapoolne teedeehitus: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Luba linnadel ehitada teid, et soodustada kasvu. Lülita välja, et keelata linnadel rajada teid
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Linnadel on lubatud ehitada ülesõidukohti: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Selle seade sisse lülitamine lubab linnadel ehitada ülesõidukohti
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Lennujaamade mürapiirangud linnades: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kui ei ole aktiveeritud, siis on igas linnas lubatud kuni kaks lennujaama. Kui see seade on aktiveeritud, siis on lubatud igas linnas lennujaamu ehitada vastavalt linna müra vastuvõrlikkuse tasemele, mis sõltub otseselt linna elanike arvust ja lennujaama suurusest ja kaugusest kesklinnast
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Linnade rajamine keset mängu: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :keelatud
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :lubatud
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :lubatud, koos linnaskeemi valimisega
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Selle seade aktiveerimisel on lubatud mängijalt rahastada uute linnade rajamist mängus
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Keelatud
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Lubatud
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Lubatud, koos linnaskeemi valimisega
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Puude lisamine keset mängu: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :mitte kuhugi {RED}(saeveski ei saa töötada)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Juhib suvalist puude kasvu mängu jooksul. See seade võib mõjutada osade tööstuste tööd, mis sõltuvad puude kasvust (näiteks saekaater)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Mitte kuhugi {RED}(saeveski ei saa töötada)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Ainult vihmametsadesse
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Igale poole
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Tööriistariba asukoht: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horisontaalne asukoht tööriistariba jaoks mängu ekraani ülaservas
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Seisundiriba asukoht: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Horisontaalne asukoht staatuseriba jaoks mängu ekraani allservas
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Akna ligitõmbe raadius: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Vahemaa mille pealt vaateaken tõmbub teise akna serva vastu
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piksel{P 0 "" it}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Väljas
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksimaalne kinnistamata akende arv: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Mittekinnitatud akende arv mille saavutamise järel hakatakse vanu aknaid sulgema, et teha ruumi uutele akendele
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :väljas
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maksimaalne suurenduse tase: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maksimalne suurenduse aste vaateakendele. Mida kõrgem on suurendusaste, seda rohkem mälu on rakenduse tööks tarvis varuda
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maksimaalne väljasuurenduse tase: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maksimaalne vähendusaste vaateakendele. Mida kõrgem on vähendusaste, seda rohkem mälu on rakenduse tööks tarvis varuda
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Tavaline
@@ -1405,13 +1592,20 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Linna kasvutempo: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Linna kasvamise kiirus
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Pole
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Aeglane
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normaalne
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Kiire
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Väga Kiire
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proportsioon asulatest millest kasvavad linnad: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Asulate arv mis kasvavad tulevikus linnadeks, elik asulate arv mis on alguses suuremad ja kasvavad kiiremini kui ülejäänud asulad
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 iga {COMMA} kohta
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Mitte ühtegi
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Algne linnade suurustegur: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Keskmine linna suurus võrreldes tavalise asulaga mängu alguses
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Mittevajaliku eemaldamine teedeehitusel: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Eemalda tupikteed kui rahastatakse kohalikku teedeehitust
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Kasutajaliides
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Ehitamine
@@ -1438,9 +1632,13 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(soovitatud)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Rongide marsruudileidja: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Marsruudileidja rongide jaoks
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Maanteesõidukite marsruudileidja: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Marsruudileidja maanteesõidukite jaoks
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Laevade marsruudileidja: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Marsruudileidja veesõidukite jaoks
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automaatne tagasipööre signaalide juures: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Luba rongidel ümber pöörata kui nad on pikka aega foori taga oodanud
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Muuda seadete väärtusi
 
@@ -1458,6 +1656,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :Mitteühilduv s
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :tundmatu
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... pakkimise tihedus '{STRING}' ei ole lubatud
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... salvestatud mängu formaat '{STRING}' ei ole saadaval. Taastatakse formaat '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoreerin Base Graphics paketti '{STRING}': ei leitud
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoreerin Base Sounds paketti '{STRING}': ei leitud
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ingoreerin Base Music paketti '{STRING}': ei leitud
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1470,6 +1671,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Stsenaar
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Võrgumäng
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Mängu valikud
+STR_INTRO_HIGHSCORE                                             :{BLACK}Punktide edetabel
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Täpsemad seaded
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF seadistused
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Internetisisu kontrollimine
@@ -1489,6 +1691,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Vali 'l�
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vali 'mänguasjamaa' maastik
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Kuva mängu valikuid
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Kuva punktide edetabel
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Näidata täpsemaid seadeid
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näita NewGRF-seadeid
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Otsi allalaadimiseks uut ja uuendatud sisu
@@ -2277,6 +2480,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Näita a
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Näita kaupa pakkuvaid ja vastuvõtvaid tööstuseid
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Seo pisikaardiga
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Vali näidatud tööstuseid ka pisikaardil
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Vali kaup
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Vali kaup, mida sa soovid kuvada
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Vali tööstus
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Vali tööstus mida sa soovid kuvada
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Maa-ala andmed
@@ -2601,6 +2808,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sisaldab mitut Action 8 kirjet (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Loe pseudo-sprite lõpust edasi (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Hetkel kasutatavast alus graafikapaketist puuduvad mõned spraidid.{}Palun uuenda alus graafikapaketti
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Hetkel kasutusel olevast graafikapaketist puuduvad mõned spriidid.{}Palun uuenda graafika paketti.{}Kuna sa mängid {YELLOW}hetkel arenduses oleva OpenTTD versiooniga{WHITE} siis ilmselt pead sa kasutama {YELLOW}hetkel arenduses olevat graafikapaketi versiooni{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Soovitud GRFi ressursid ei ole saadaval (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} blokeeriti {STRING} poolt
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Kehtetu/tundmatu sprite'i asetuse formaat (sprite {3:NUM})
@@ -2785,6 +2993,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Võtab v
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Näita vastuvõetavate veoste nimistut
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Võtab vastu: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Antud jaamal on eksklusiivsed transpordiõigused selles linnas.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} ostis eksklusiivsed transpordiõigused antud linnas.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Hinnangud
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näita jaamahinnangut
@@ -2812,6 +3022,8 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Näita k
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Jaama nime vahetamine
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Sulge lennujaam
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Keela lennukite maandumine selles lennujaamas
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -3169,6 +3381,7 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vali ase
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vali uus vedur, millega sa soovid vasakult valitud vedurit asendada.
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Alusta Sõidukite Vahetamist
+STR_REPLACE_VEHICLES_NOW                                        :Asenda kohe kõik sõidukid
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Asenda ainult vanu sõidukeid
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Vajuta vasakul asuva veduri asendamiseks paremal valitud veduriga
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ei asenda praegu
@@ -3325,7 +3538,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kandevõ
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Seadista ümber)
 STR_REFIT_TITLE                                                 :{GOLD}Vali veetav veoseliik:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Uus kandevõime: {GOLD}{CARGO_LONG}{}{BLACK}Laeva ümberseadistamise hind: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Uus mahtuvus: {GOLD}{CARGO_LONG}{}{BLACK}Sissetulek veoseliigi muutusest: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Uus kandevõime: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Ümberseadistamise maksumus: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Uus mahtuvus: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Sissetulek veoseliigi muutusest: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Vali ümberseadistatavad sõidukid. Hiirega lohistades saab valida mitu sõidukit. Klõpsates tühjal kohal valitakse terve sõiduk. Ctrl+klõps valib sõiduki ja temale järgneva keti
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vali rongi veetav veoseliik
@@ -3652,6 +3867,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Hind: {CURRENCY_LONG}
@@ -3701,6 +3918,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Mäng ei
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Hiiglaslik pilt
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Ekraanitõmmise mõõtmed saavad olema {COMMA} x {COMMA} pikslit. Ekraanitõmmise tegemine võib võtta mõne aja. Kas sa oled kindel, et sa soovid jätkata
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Ekraanitõmmis edukalt salvestatud nimega '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekraanitõmmise võtmine nurjus!

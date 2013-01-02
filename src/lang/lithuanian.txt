@@ -1256,6 +1256,8 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :visas nuostatas
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :nuostatas, kurių reikšmės skiriasi nuo numatytųjų
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :nuostatas, kurių reikšmės skiriasi nuo naujai pradedamo žaidimo nuostatų
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Rodyti tik tam tikro tipo nuostatas
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Visas nuostatas
 
 STR_CONFIG_SETTING_OFF                                          :Ne
 STR_CONFIG_SETTING_ON                                           :Taip
@@ -1515,6 +1517,20 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Laikyti statyb�
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupuoti išlaidas finansinės ataskaitos lange: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Nustatyti kompanijos išlaidų lango planą
 
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Laikraščio: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Skleisti garsus, kai parodomas laikraštis
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Metų pabaigos: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Skelisti garsą žymintį metų pabaigą
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Statybos: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Skeisti statybų garsus
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Mygtukai: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Pyptelti paspaudus mygtuką
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Nelaimės ir incidentai: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Skleisti nelaimių ir incidentų garsus
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Transporto priemonės: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Skleisti transporto priemonių garsus
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Aplinkos: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Skleisti aplinkos — kraštovaizdžio, pramonės bei miestų — garsus
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Drausti infrastruktūros plėtimą kai nėra tam tinkamų transporto priemonių: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Kai įjungta, infrastruktūra yra galima, jeigu ten taip pat yra galimų automobilių. Tam kad užkirstų kelią, laiko ir pinigų švaistimo nereikalingai infrastruktūrai
@@ -1681,6 +1697,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Priešininkai
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Vaizdo nustatymai
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Sąveika
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Garsai
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Naujienos ir žinutės
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signalai
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Krovinų valdymas
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Kompiuterio žaidėjai
@@ -2221,7 +2239,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Siuntin
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Pasirinktas nes: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Priklausomybės: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Žymės: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD pagaminta be "zlib" pagalbos...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD pagaminta be „zlib“ pagalbos...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... atsiųsti turinio neįmanoma!
 
 # Order of these is important!
