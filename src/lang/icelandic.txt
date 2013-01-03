@@ -1353,7 +1353,9 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest notuð
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Sýna frátekin spor: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Frátekin spor fá annan lit til að auðvelda að finna vandamál þegar lestar fara ekki inn á svæði
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Halda byggingartólum virkum eftir notkun: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Halda byggingartólum fyrir brýr, gögn og fleira opnum eftir notkun
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Hópa saman útgjöld í fjármálaglugga: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Skilgreinir útlit fjármálaglugga
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Frétta borði: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Spila hljóð fyrir samantekt á fréttatilkynningum
@@ -1372,15 +1374,25 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Spila hljóð f
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Umlykjandi: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spila umlykjandi hljóð frá landslagi, iðnaði og bæjum
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Gera óvirkar byggingar tengd farartækjum sem eru ófáanleg: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ef þessi stilling er virk eru byggingartól fyrir farartæki aðeins virk ef þau farartæki eru í boði, þetta kemur í veg fyrir eyðslu á tíma og peningum og ónothæfar framkvæmdir
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Lestir á leikmann mest: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Hámarks fjöldi járnbrautarlesta sem fyrirtæki getur átt
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Bifreiðir á leikmann mest: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Hámarks fjöldi bifreiða, þar með talið sporvagna, sem fyrirtæki getur átt
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Flugvélar á leikmann mest: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Hámarks fjöldi flugvéla sem fyrirtæki getur átt
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Skip á leikmann mest: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Hámarks fjöldi skipa sem fyrirtæki getur átt
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Útiloka lestir frá tölvu: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Ef þessi stilling er virk er ómögulegt fyrir gervigreindar leikmenn að vera með járnbrautalestar
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Útiloka bifreiðir frá tölvu: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Ef þessi stilling er virk er ómögulegt fyrir gervigreindar leikmenn að vera með bíla og sporvagna
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Útiloka flugvélar frá tölvu: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Ef þessi stilling er virk er ómögulegt fyrir gervigreindar leikmenn að vera með flugvélar
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Útiloka skip frá tölvu: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ef þessi stilling er virk er ómögulegt fyrir gervigreindar leikmenn að vera með skip
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Erfiðleikastig: {STRING}
 STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Veldu hvaða erfiðleikastig á að nota fyrir gervigreind eða leikja breytingar (Game Script)
@@ -1389,11 +1401,28 @@ STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Miðlungs
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Erfitt
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Leyfa gervigreind í fjölspilun: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Leyfir gervigreindar leikmönnum að taka þátt í fjölspilunar leikjum
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes áður en forskriftir eru stöðvaðar: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Hámarks fjöldi útreikninga sem forskrift getur gert í hvert skipti
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Tími milli viðhalds farartækja sýndur í hundraðshlutum: {STRING}
-STR_CONFIG_SETTING_NOSERVICE                                    :Leggja niður viðhald þegar bilanir eru stilltar af: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Veldu hvort þjónusta við farartæki ákvarðast af því hve langur tími er liðinn síðan það var síðast þjónustað eða þá að áreiðanleik farartækisins er orðinn ákveðin prósentutala af hámarks áreiðanleika
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Sjálfgefið millibil fyrir þjónustu hjá járnbrautarlestum: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Stilltu sjálfgefið millibil fyrir þjónustu hjá nýjum járnbrautarlestum, á við ef ekkert tiltekið millibil er stillt fyrir farartækið
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 ur ar}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Óvirkt
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Sjálfgefið millibil fyrir þjónustu hjá bílum og sporvögnum: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Stilltu sjálfgefið millibil fyrir þjónustu hjá nýjum bílum og sporvögnum, á við ef ekkert tiltekið millibil er stillt fyrir farartækið
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Sjálfgefið millibil fyrir þjónustu hjá flugvélum: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Stilltu sjálfgefið millibil fyrir þjónustu hjá nýjum flugvélum, á við ef ekkert tiltekið millibil er stillt fyrir farartækið
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Sjálfgefið millibil fyrir þjónustu hjá skipum: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Stilltu sjálfgefið millibil fyrir þjónustu hjá nýjum skipum, á við ef ekkert tiltekið millibil er stillt fyrir farartækið
+STR_CONFIG_SETTING_NOSERVICE                                    :Sleppa viðhaldi þegar bilanir eru óvirkar: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ef þessi stilling er virk eru farartæki ekki þjónustuð ef þau geta ekki bilað
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Leyfa hraðatakmarkanir vagna: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ef þessi stilling er virk er hámarkshraði á vögnum einnig notaður til að ákvarða hámarks hraða á járnbrautalestum
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Ekki nota rafknúnar lestir: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ef þessi stilling er virk er ekki boðið upp á að nota rafmagns knúnar járnbrautalestar né spor fyrir þá
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Aðkoma fyrsta farartækis á stöð leikmanns: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Birta dagblöð þegar fyrsta farartækið kemur á stöð í eigu nýs spilara
@@ -1431,17 +1460,30 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Úrtak
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Allt
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Fréttir byrja að birtast í lit árið: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Árið sem tilkynningar í dagblöðuðum byrja að vera í lit. Fram að þessum tíma eru blöð í svart/hvítu
 STR_CONFIG_SETTING_STARTING_YEAR                                :Upphafsár: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Virkja jafnan efnahag (fleiri og minni breytingar): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Ef þessi stilling er virk breytist framleiðsla í iðnaði oftar og í smærri skrefum. Þessi stilling hefur yfirleitt engin áhrif ef tegund iðnaðar er ákveðinn með NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Leyfa hlutabréfakaup í öðrum fyrirtækjum: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ef þessi stilling er virk er hægt að kaupa og selja hlutabréf í fyrirtækjum. Hlutabréf eru aðeins aðgengileg fyrir fyrirtæki sem hafa náð ákveðnum aldri
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Hlutfall hagnaðar sem greiðist til tengiþjónustu: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Hlutfall hagnaðar sem greiðist til tengiþjónustu, farartækja sem eru milliliðir. Gefur meiri stjórn á tekjunum
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Bil milli skilta þegar þau eru dregin: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Stillir fjarlægð á milli merkja, ef þau eru dregin, fram að næstu hindrun (merki, vegamót)
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} reit{P 0 ur ir}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Halda stöðugu bili milli merkja, þegar þau eru dregin: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Veldu hvernig merki dreifast þegar þau eru Ctrl+dregin. Ef stillingin er óvirk eru merki sett sitthvoru megin við göng og brýr. Ef hún er virk, eru merki sett á X reita fresti sem gerir það að verkum að auðveldara er að halda merkjum hlið við hlið á samsíða sporum
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Nota skilti í stað ljósa fyrir: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Stilltu árið sem lestaljós eru notuð í staðinn fyrir lestaskilti. Fram að þessu ári eru notuð lestaskilti (þau hafa nákvæmlega sömu virkni, en líta öðruvísi út)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Virkja valmynd lestarljósa: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Sýna glugga þar sem er hægt að velja á milli tegundar lestaskilta, í staðinn fyrir engan glugga og að þurfa að skipta á milli skilta með því að Ctrl+smella
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Ljósagerð sem skal byggja sem sjálfgildi: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Sjálfgefin umferðarmerki
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :venjuleg
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Brautar ljós
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Ein-stefnu ljós
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Skruna milli tegundir merkja: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Aðeins stöðvunar-merki
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Aðeins hefðbundin skilti og ljós
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Aðeins Leiðar-merki
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Allt
 
@@ -1485,7 +1527,7 @@ STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Skjá-v
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Viðmót
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hljóð
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Fréttir og skilaboð
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Lestaljós og -merki
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Lestaljós og lestaskilti
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Meðhöndlun farms
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Gervigreind
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Sjálfvirk endurnýjun

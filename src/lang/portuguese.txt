@@ -1310,7 +1310,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Clique (imediat
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulação de clique de botão direito: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Selecione o método de emulação dos cliques do botão direito do rato
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :<Command> + Clique
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Clique para controlo
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :<CTRL> + clique
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Deslocar com botão esquerdo: {STRING}
@@ -1351,6 +1351,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro dispon
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último disponível
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mais utilizado
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostrar caminho de ferro reservado: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Dar cores diferentes aos carris reservados para ajudar a detectar problemas com combóios que recusam entrar em bloqueios baseados em caminhos
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Deixar ferramentas de construção activas depois de usadas: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Manter as ferramentas de construção de pontes, túneis, etc. abertas após uso
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupar despesas na janela de finanças da empresa: {STRING}
@@ -1394,6 +1395,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactivar barc
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Activar esta preferência impossibilita a construção de navios por um jogador controlado pelo computador
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Perfil de preferências por omissão: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Escolher o perfil de preferências a usar para AIs aleatórias ou para valores iniciais ao adicionar uma nova AI ou Game Script
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Fácil
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Média
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Difícil
@@ -1464,7 +1466,10 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activar economi
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Quando activa, a produção de indústrias muda frequentemente, em pequenos incrementos. Esta preferência não costuma ter efeito, se os tipos de indústria forem provenientes de um NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permite comprar acções de outras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Quando activo, permite a compra e venda de acções de companhias. As acções apenas estarão disponíveis quando a companhia atinge uma determinada idade.
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentagem do lucro do serviço a pagar em trajectos de um transporte que alimenta outro transporte: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percentagem da receita dada a trajectos intermédios em sistemas em que um transporte alimenta outro, dando maior controlo sobre a receita
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Ao arrastar, colocar sinais a cada: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Define a distância a que os sinais serão construídos num carril até ao próximo obstáculo (sinal, junção), se os sinais são arrastados
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} quadrado{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Ao arrastar, manter distância fixa entre sinais: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Seleccionar o comportamento da colocação de sinais ao usar Ctrl+arrasto. Se desactivado, sinais são colocados à volta de túneis ou pontes para evitar longos trajectos sem sinais. Se activo, sinais são colocados a cada N mosaicos, facilitando o alinhamento de sinais em linhas paralelas

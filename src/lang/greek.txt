@@ -2885,14 +2885,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Επιχορή�
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Αγορά αποκλειστικών δικαιωμάτων μεταφοράς
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Δωροδοκήστε την τοπική αρχή
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}'Eναρξη μικρής τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Έναρξη μεσαίας τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Έναρξη μεγάλης τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Επιχορηγήστε την ανακατασκευή του τοπικού οδικού δικτύου. Προκαλεί σοβαρή ενόχληση στην τοπικό οδικό δίκτυο για έως 6 μήνες.{} Κόστος: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Έναρξη μικρής τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Έναρξη μεσαίας τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Έναρξη μεγάλης τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Επιχορηγήστε την ανακατασκευή του τοπικού οδικού δικτύου. Προκαλεί σοβαρή ενόχληση στην τοπικό οδικό δίκτυο για έως 6 μήνες.{} Κόστος: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Χτίστε ένα άγαλμα προς τιμήν της εταιρίας σας.{} Κόστος: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Χρηματοδοτήστε την κατασκευή νέων εμπορικών κτιρίων στην πόλη.{} Κόστος: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Αγορά αποκλειστικών δικαιωμάτων διάρκειας 1 χρόνου για την πόλη. Η τοπική αρχή θα επιτρέπει στους επιβάτες και τα φορτία να χρησιμοποιούν μόνο τους σταθμούς της εταιρίας σας.{} Κόστος: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Δωροδοκίστε τις τοπικές αρχές για να αυξησετε τα ποσοστά σας, με ρίσκο ένα μεγάλο πρόστιμο εαν συλληφθείτε.{}Κόστος: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Αγορά αποκλειστικών δικαιωμάτων διάρκειας ενός χρόνου για αυτήν την πόλη. Η τοπική αρχή θα επιτρέπει στους επιβάτες και τα φορτία να χρησιμοποιούν μόνο τους σταθμούς της εταιρίας σας.{} Κόστος: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Δωροδοκήστε τις τοπικές αρχές για να αυξήσετε τα ποσοστά σας, με ρίσκο ένα μεγάλο πρόστιμο εάν συλληφθείτε.{}Κόστος: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Στόχοι
@@ -2900,7 +2900,7 @@ STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Καθο
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Κανένας -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Εταιρικοί στόχοι:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Κλικ στον στόχο για να επικεντρωθεί η οθόνη στη βιομηχανία/πόλη/τετραγωνίδιο. Με Ctrl+Κλικ ανοίγει το παράθυρο θέασης στην τοποθεσία της βιομηχανίας/πόλης/τετραγωνίδιο
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Κάνετε κλικ στον στόχο για να επικεντρωθεί η οθόνη στη βιομηχανία/πόλη/τετραγωνίδιο. Με Ctrl+Κλικ ανοίγει το παράθυρο θέασης στην τοποθεσία της βιομηχανίας/πόλης/τετραγωνίδιο
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Ερώτηση
@@ -2931,19 +2931,19 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Κλείσιμ�
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Χρηματοδοτήσεις
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Τρέχουσες χρηματοδοτήσεις για ανάληψη υπηρεσιών:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} από {STRING} πρός {STRING}{YELLOW} (έως {DATE_SHORT})
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} από {STRING} προς {STRING}{YELLOW} (έως τις {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Καμία -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Υπηρεσίες που έχουν χρηματοδοτηθεί:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} από το σταθμό {STRING} προς το σταθμό {STRING}{YELLOW} ({COMPANY}{YELLOW}, έως {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Πατήστε στην υπηρεσία για κεντράρισμα στην βιομηχανία/πόλη. Με Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία της βιομηχανίας/πόλης
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} από τον σταθμό {STRING} προς τον σταθμό {STRING}{YELLOW} ({COMPANY}{YELLOW}, έως τις {DATE_SHORT})
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Κάνετε κλικ στην υπηρεσία για κεντράρισμα στην βιομηχανία/πόλη. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία της βιομηχανίας/πόλης
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ονόματα σταθμών - Κλικ στο όνομα για κεντράρισμα στο σταθμό. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία του σταθμού
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Κρατήστε πατημένο το Ctrl για να επιλέξετε περισσοτέρα από ένα αντικείμενα
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ονόματα σταθμών - κάνετε κλικ στο όνομα για κεντράρισμα στο σταθμό. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία του σταθμού
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Κρατήστε πατημένο το Ctrl για να επιλέξετε περισσότερα από ένα αντικείμενα
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Σταθμ{P ός οί}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
-STR_STATION_LIST_NONE                                           :{YELLOW}- Κανένα -
+STR_STATION_LIST_NONE                                           :{YELLOW}- Κανένας -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Επιλογή όλων των εγκαταστάσεων
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Επιλογή όλων των τύπων φορτίου (συμπεριλαμβανομένου φορτίου μη-αναμονής)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Κανένα εμπόρευμα κανενός τύπου δεν περιμένει
@@ -2952,14 +2952,14 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Κανέ
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Αναμονή: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} από μεταφορά απ' το σταθμό {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} από μεταφορά από τον σταθμό {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Δέχεται
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Εμφάνιση λίστας αποδεκτών φορτίων
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Δέχεται: {WHITE}{CARGO_LIST}
 
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Αυτός ο σταθμός έχει αποκλειστικά δικαιώματα μεταφοράς σε αυτήν την πόλη.
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} αγοράστηκαν αποκλειστικά δικαιώματα γι' αυτήν την πόλη.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} αγόρασε αποκλειστικά δικαιώματα για αυτήν την πόλη.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Βαθμολογίες
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Εμφάνιση στατιστικών σταθμού
@@ -2977,24 +2977,24 @@ STR_CARGO_RATING_EXCELLENT                                      :Εξαιρετ�
 STR_CARGO_RATING_OUTSTANDING                                    :Καταπληκτική
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Κεντράρισμα εικόνας στην τοποθεσία του σταθμού. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία του σταθμού
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Κεντράρισμα εικόνας στην τοποθεσία του σταθμού. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία του σταθμού
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Αλλαγή ονόματος του σταθμού
 
-STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Εμφάνιση όλων των τρένων που έχουν αυτό το σταθμό στο δρομολόγιο τους
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Εμφάνιση όλων των οχημάτων που έχουν αυτό το σταθμό στο δρομολόγιο τους
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Εμφάνιση όλων των αεροσκαφών που έχουν αυτό το σταθμό στο δρομολόγιο τους
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Εμφάνιση όλων των πλοίων που έχουν αυτό το σταθμό στο δρομολόγιο τους
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Εμφάνιση όλων των τρένων που έχουν αυτό τον σταθμό στο δρομολόγιό τους
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Εμφάνιση όλων των οχημάτων που έχουν αυτόν τον σταθμό στο δρομολόγιό τους
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Εμφάνιση όλων των αεροσκαφών που έχουν αυτόν τον σταθμό στο δρομολόγιό τους
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Εμφάνιση όλων των πλοίων που έχουν αυτόν τον σταθμό στο δρομολόγιό τους
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Μετονομασία περιοχής σταθμού/φόρτωσης
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Κλείσιμο αεροδρομίου
-STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Αποτροπή προσγείωσης αεροσκάφους σε αυτό το αεροδρόμιο
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Αποτροπή προσγείωσης αεροσκαφών σε αυτό το αεροδρόμιο
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Κεντράρισμα της είκονας στη τοποθεσία του σημείου καθοδήγησης. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία του σημείου καθοδήγησης
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του σημείου καθοδήγησης. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία του σημείου καθοδήγησης
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Αλλαγή του ονόματος του σημείου καθοδήγησης
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της κύριας προβολής στη τοποθεσία της σημαδούρας. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία της σημαδούρας
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της κύριας προβολής στη τοποθεσία της σημαδούρας. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία της σημαδούρας
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Αλλαγή ονόματος σημαδούρας
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Διαμόρφωση ονόματος σημείου καθοδήγησης
@@ -3019,14 +3019,14 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}Άλλα
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Σύνολο:
-STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Υπόλοιπο τραπέζης
+STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Υπόλοιπο Τραπέζης
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Δάνειο
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Μέγιστο Δάνειο: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Δανεισμός {CURRENCY_LONG}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Αύξηση του ποσού του δανείου. Ctrl+κλικ για να δανειστείτε όσο περισσότερο γίνεται
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Αύξηση του ποσού του δανείου. Πατήστε Ctrl+Κλικ για να δανειστείτε όσο περισσότερο γίνεται
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Αποπληρωμή {CURRENCY_LONG}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Αποπληρωμή μέρους του δανείου. Ctrl+κλικ αποπληρώνετε όσο περισσότερο γίνεται
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Αποπληρωμή μέρους του δανείου. Με Ctrl+Κλικ αποπληρώνετε όσο περισσότερο γίνεται
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Υποδομή
 
 # Company view
@@ -3038,7 +3038,7 @@ STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Χρωμ�
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Οχήματα:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} τρέν{P ο α}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} {P όχημα οχήματα} δρόμου
-STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} αεροσκάφος
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} αεροσκάφ{P "ος" "η"}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} πλοί{P ο α}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Κανένα
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Αξία εταιρίας: {WHITE}{CURRENCY_LONG}
@@ -3051,12 +3051,12 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} αεροδρόμι{P ο α}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Τίποτα
 
-STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Χτίσιμο Αρχηγείου
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Χτίσιμο αρχηγείου εταιρίας
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Κτίσιμο Αρχηγείου
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Κτίσιμο αρχηγείου εταιρίας
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Προβολή Αρχηγείου
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Προβολή αρχηγείου εταιρίας
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Ανοικοδόμηση Αρχηγείου
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Επανοικοδόμηση της έδρας της εταιρίας σε άλλο μέρος, με κόστος το 1% της αξίας της εταιρίας. Με Shift+κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς επανατοποθέτηση της έδρας.
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Εποικοδόμηση της έδρας της εταιρίας σε άλλο μέρος, με κόστος το 1% της αξίας της εταιρίας. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς επανατοποθέτηση της έδρας
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Λεπτομέρειες
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Προβολή λεπτομερούς μέτρησης υποδομών
 
@@ -3069,15 +3069,15 @@ STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Αλλα
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Όνομα Διευθυντή
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Αλλαγή του ονόματος του διευθυντή
 
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Αγορά μεριδίου 25% στην εταιρία
+STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Αγορά μεριδίου 25% της εταιρία
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Πώληση μεριδίου 25% της εταιρίας
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Αγορά μεριδίου 25% σε αυτή την εταιρεία. Με Shift+κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς την αγορά μετοχών
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Πώληση μεριδίου 25% της εταιρίας. Με Shift+κλικ εμφανίζεται το εκτιμώμενο κέρδος χωρίς την πώληση μετοχών
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Αγορά μεριδίου 25% σε αυτήν την εταιρεία. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς την αγορά μετοχών
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Πώληση μεριδίου 25% της εταιρίας. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κέρδος χωρίς την πώληση μετοχών
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Όνομα Εταιρίας
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Όνομα Διευθυντή
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ψάχνουμε μία εταιρία μεταφορών για να εξαγοράσει την εταιρία μας.{}{}Θέλετε να εξαγοράσετε την {COMPANY} για {CURRENCY_LONG}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ψάχνουμε μία εταιρία μεταφορών για να εξαγοράσει την εταιρία μας.{}{}Θέλετε να εξαγοράσετε την {COMPANY} για {CURRENCY_LONG};
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Υποδομή της {COMPANY}
@@ -3085,7 +3085,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Κομμ�
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Σήματα
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Κομμάτια δρόμου:
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Δρόμος
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Τροχιόδρομος(τραμ)
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Τροχιόδρομος
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Πεδία νερού:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Κανάλια
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Σταθμοί:

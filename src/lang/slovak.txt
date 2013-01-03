@@ -1218,7 +1218,7 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximálna dĺ�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Spôsob výstavby priemyslu produkujúceho suroviny: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Spôsob financovania primárneho priemyslu. "Žiadna" znamená, že nie je možné financovať vôbec, "prieskumu" znamená že je možné financovať, ale stavba bude postavená na náhodnom mieste a môže tiež zlyhať, "ako ostatné odvetvia priemyslu" sa rozumie že nový závod môže byť financovaný spoločnosťou, a postavený vedľa spracovateľského priemyslu na mieste kde sa mi páči
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :žiadny
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :normálny
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Ako ostatný priemysel
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vyhladávací
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Rovné územie v okolí priemyslu: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Cena voľného priestoru vedľa priemyslu. Týmto sa zabezpečí voľné miesto pre výstavbu ciest atď.
@@ -1263,9 +1263,9 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Nastav relatív
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Počet havárií lietadiel: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Nastav pravdepodobnosť pádu lietadiel
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :žiadne
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :obmedzené
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normálny
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Žiadne
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Obmedzené
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normálny
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Povoliť prejazdné zastávky na mestských cestách: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Povoliť budovanie "prejazdných" nakládok a zastávok na cestách vlastnených mestom.
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Výstavba zastávok na cestách vlastnených konkurenciou: {STRING}
@@ -1285,9 +1285,9 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Varovať ak je 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Prepne správy o "stratení vozidla" ktoré nevie nájsť cestu do cieľovej zastávky.
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Obnovenie príkazov vozidla: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Ak je zapnuté, príkazy vozidiel sú pravidelne kontrolované a ak sa vyskytne nejaká zmena, zobrazí to správu.
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nie
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :áno, okrem zastavených vozidiel
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :áno, u všetkých vozidiel
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nie
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Áno, okrem zastavených vozidiel
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :U všetkých vozidiel
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varovať, ak je vozidlo stratové: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Ak je zapnuté, zobrazí sa správa ak vozidlo nevykázalo žiaden zisk za predošlý rok.
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Nikdy neprestať s výrobou starých vozidiel: {STRING}

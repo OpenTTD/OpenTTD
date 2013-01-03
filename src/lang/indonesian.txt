@@ -1296,7 +1296,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Mengatur sensit
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Keyboard di layar: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Non-aktifkan
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Klik ganda
-STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Klik sekali (saat tersorot
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Klik sekali (saat tersorot)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Klik sekali (langsung)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulasikan klik kanan: {STRING}
@@ -1335,6 +1335,11 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Sorot rel yang 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Toolbar tetap aktif setelah dipakai: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Kelompokkan pengeluaran perusahaan dalam neraca: {STRING}
 
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Koran: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Mainkan suara saat penampilan koran
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Akhir tahun: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Pembangunan: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Klik tombol: {STRING}
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Matikan infrastruktur bangunan saat tak ada kendaraan yang tersedia: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks. kereta tiap pemain: {STRING}
@@ -1370,6 +1375,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE                                  :Saran / informa
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Kendaraan baru: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Perubahan penerimaan kargo: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidi: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Tampilkan koran tentang kejadian yg berhubungan dengan subsidi
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informasi umum: {STRING}
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Mati
@@ -1380,6 +1386,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Berita berwarna
 STR_CONFIG_SETTING_STARTING_YEAR                                :Tahun mulai: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Aktifkan pertumbuhan ekonomi yang stabil (jarang berubah): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ijinkan pembelian saham perusahaan lain: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} kotak
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Gunakan sinyal semaphore sebelum: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Aktifkan antarmuka sinyal: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipe sinyal standar: {STRING}

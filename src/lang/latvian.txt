@@ -1095,6 +1095,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Būvēšanas ā
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Transportlīdzekļu bojāšanās: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsīdiju reizinātājs: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Būvēšanas izmaksas: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Iestatīt būvēšanas un pirkumu izmaksas
 STR_CONFIG_SETTING_RECESSIONS                                   :Lejupslīde: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Neatļaut vilcienu apgriešanos stacijās: {STRING}
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofas: {STRING}
@@ -1406,20 +1407,35 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Atspējot elekt
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Šī iestatījuma ieslēgšana atcels ceļu elektrifikācijas prasību, lai pa tiem varētu pārvietoties elektrolokomotīves
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Spēlētaja stacijā ierodas pirmais transportlīdzeklis: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Rādīt avīzi kad spēlētāja jaunajā stacijā ierodas pirmais transportlīdzeklis
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Sāncenša stacijā ierodas pirmais transportlīdzeklis: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Rādīt avīzi kad sāncenša jaunajā stacijā ierodas pirmais transportlīdzeklis
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Negadījumi / katastrofas: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Rādīt avīzi kad notiek nelaimes gadījumi vai katastrofas
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Uzņēmuma informācija: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Rādīt avīzi kad darbību sāk jauns uzņēmums, vai kad uzņēmumi riskē bankrotēt
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Ražotņu atklāšana: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Rādīt avīzi kad tiek atklāti jauni uzņēmumi
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Ražotņu slēgšana: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Rādīt avīzi kad uzņēmumi tiek slēgti
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomikas izmaiņas: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Rādīt avīzi par globālām izmaiņām ekonomikā
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Ražošanas izmaiņas uzņēmuma apkalpotajās ražotnēs: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Rādīt avīzi kad mainās uzņēmuma darbināto ražotņu ražošanas līmenis
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Ražošanas izmaiņas sāncenšu apkalpotajās ražotnēs: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Rādīt avīzi kad mainās sāncenšu darbināto ražotņu ražošanas līmenis
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Citas ražošanas apjomu izmaiņas: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Rādīt avīzi kad mainās uzņēmuma vai sāncenšu nedarbināto ražotņu ražošanas līmenis
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Padomi / informācija par uzņēmuma transportlīdzekļiem: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Rādīt ziņojumus par transportlīdzekļiem, kuriem ir jāpievērš uzmanību
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Jauni transportlīdzekļi: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Rādīt avīzi kad transportlīdzekļa veids ir kļuvis pieejams
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Izmaiņas kravu pieņemšanā: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Rādīt ziņojumus par izmaiņām dažu kravu pieņemšanā stacijās
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsīdijas: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Rādīt avīzi par notikumiem, saistītiem ar subsīdijām
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Vispārējā informācija: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Rādīt avīzi par vispārējiem pasākumiem, tādiem kā izņēmuma tiesību pirkšana vai ceļu rekonstrukcijas finansēšana
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :izslēgts
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :kopsavilkums
@@ -3712,7 +3728,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Attēlot
 STR_AI_GAME_SCRIPT                                              :{BLACK}Spēles skripts
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Pārbaudīt spēles skriptu žurnālu
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Nav atrasts piemērots MI.{}Šis ir MI makets un spēlē tas neko nedarīs.{}Jūs varat lejupielādēt vairākus MI no globālās satura sistēmas
+STR_ERROR_AI_NO_AI_FOUND                                        :Nav atrasts ielādei piemērots MI.{}Šis ir MI makets un spēlē tas neko nedarīs.{}Jūs varat lejupielādēt dažus MI no 'Tiešsaistes satura' sistēmas
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Viens no strādājošiem skriptiem nobruka. Lūdzu, paziņojiet par šo gadījumu skripta autoram, pievienojot ekrānuzņēmumu ar MI/spēles skriptu atkļūdošanas logu
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}MI/spēles skriptu atkļūdošanas logs ir pieejams tikai serverim
 
