@@ -1639,7 +1639,7 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 	if (completely_emptied) {
 		/* Make sure the vehicle is marked dirty, since we need to update the NewGRF
 		 * properties such as weight, power and TE whenever the trigger runs. */
-		assert(dirty_vehicle);
+		dirty_vehicle = true;
 		TriggerVehicle(front, VEHICLE_TRIGGER_EMPTY);
 	}
 
