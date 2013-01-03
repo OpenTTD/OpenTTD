@@ -297,11 +297,11 @@ static void SetColourRemap(TextColour colour)
 }
 
 #if !defined(WITH_ICU)
-typedef WChar UChar;
-static UChar *HandleBiDiAndArabicShapes(UChar *text) { return text; }
+static WChar *HandleBiDiAndArabicShapes(WChar *text) { return text; }
 #else
 #include <unicode/ubidi.h>
 #include <unicode/ushape.h>
+#include <unicode/ustring.h>
 
 /**
  * Function to be able to handle right-to-left text and Arabic chars properly.
@@ -332,31 +332,34 @@ static UChar *HandleBiDiAndArabicShapes(UChar *text) { return text; }
  * @param lastof the end of the buffer
  * @return the buffer to draw from
  */
-static UChar *HandleBiDiAndArabicShapes(UChar *buffer)
+static WChar *HandleBiDiAndArabicShapes(WChar *buffer)
 {
-	static UChar input_output[DRAW_STRING_BUFFER];
+	UChar input[DRAW_STRING_BUFFER];
 	UChar intermediate[DRAW_STRING_BUFFER];
+	static WChar output[DRAW_STRING_BUFFER];
 
-	UChar *t = buffer;
-	size_t length = 0;
-	while (*t != '\0' && length < lengthof(input_output) - 1) {
-		input_output[length++] = *t++;
-	}
-	input_output[length] = 0;
-
+	/* Transform from UTF-32 to internal ICU format of UTF-16. */
 	UErrorCode err = U_ZERO_ERROR;
-	UBiDi *para = ubidi_openSized((int32_t)length, 0, &err);
-	if (para == NULL) return buffer;
-
-	ubidi_setPara(para, input_output, (int32_t)length, _current_text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, NULL, &err);
-	ubidi_writeReordered(para, intermediate, (int32_t)length, UBIDI_REMOVE_BIDI_CONTROLS, &err);
-	length = u_shapeArabic(intermediate, (int32_t)length, input_output, lengthof(input_output), U_SHAPE_TEXT_DIRECTION_VISUAL_LTR | U_SHAPE_LETTERS_SHAPE, &err);
-	ubidi_close(para);
-
+	int32_t length = 0;
+	u_strFromUTF32(input, lengthof(input), &length, (UChar32 *)buffer, -1, &err);
 	if (U_FAILURE(err)) return buffer;
 
-	input_output[length] = '\0';
-	return input_output;
+	UBiDi *para = ubidi_openSized(length, 0, &err);
+	if (para == NULL) return buffer;
+
+	ubidi_setPara(para, input, length, _current_text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, NULL, &err);
+	length = ubidi_writeReordered(para, intermediate, lengthof(intermediate), UBIDI_REMOVE_BIDI_CONTROLS, &err);
+	length = u_shapeArabic(intermediate, length, input, lengthof(input), U_SHAPE_TEXT_DIRECTION_VISUAL_LTR | U_SHAPE_LETTERS_SHAPE, &err);
+	ubidi_close(para);
+	if (U_FAILURE(err)) return buffer;
+
+	/* Transform back to UTF-32. */
+	u_strToUTF32((UChar32 *)output, lengthof(output), NULL, input, length, &err);
+	if (U_FAILURE(err)) return buffer;
+
+	/* u_strToUTF32 doesn't add a NUL charcter if the buffer is too small, be safe. */
+	output[lengthof(output) - 1] = '\0';
+	return output;
 }
 #endif /* WITH_ICU */
 
@@ -420,7 +423,7 @@ static int TruncateString(char *str, int maxw, bool ignore_setxy, FontSize start
 	return w;
 }
 
-static int ReallyDoDrawString(const UChar *string, int x, int y, DrawStringParams &params, bool parse_string_also_when_clipped = false);
+static int ReallyDoDrawString(const WChar *string, int x, int y, DrawStringParams &params, bool parse_string_also_when_clipped = false);
 
 /**
  * Get the real width of the string.
@@ -428,7 +431,7 @@ static int ReallyDoDrawString(const UChar *string, int x, int y, DrawStringParam
  * @param start_fontsize Fontsize to start the text with
  * @return the width.
  */
-static int GetStringWidth(const UChar *str, FontSize start_fontsize)
+static int GetStringWidth(const WChar *str, FontSize start_fontsize)
 {
 	FontSize size = start_fontsize;
 	int max_width;
@@ -496,11 +499,11 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 	 * the string and draw the parts separated by SETX(Y).
 	 * So here we split
 	 */
-	static SmallVector<UChar *, 4> setx_offsets;
+	static SmallVector<WChar *, 4> setx_offsets;
 	setx_offsets.Clear();
 
-	UChar draw_buffer[DRAW_STRING_BUFFER];
-	UChar *p = draw_buffer;
+	WChar draw_buffer[DRAW_STRING_BUFFER];
+	WChar *p = draw_buffer;
 
 	*setx_offsets.Append() = p;
 
@@ -559,8 +562,8 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 	/* In case we have a RTL language we swap the alignment. */
 	if (!(align & SA_FORCE) && _current_text_dir == TD_RTL && !(align & SA_STRIP) && (align & SA_HOR_MASK) != SA_HOR_CENTER) align ^= SA_RIGHT;
 
-	for (UChar **iter = setx_offsets.Begin(); iter != setx_offsets.End(); iter++) {
-		UChar *to_draw = *iter;
+	for (WChar **iter = setx_offsets.Begin(); iter != setx_offsets.End(); iter++) {
+		WChar *to_draw = *iter;
 		int offset = 0;
 
 		/* Skip the SETX(Y) and set the appropriate offsets. */
@@ -1088,11 +1091,11 @@ void DrawCharCentered(WChar c, int x, int y, TextColour colour)
  * @return                    the x-coordinates where the drawing has finished.
  *                            If nothing is drawn, the originally passed x-coordinate is returned
  */
-static int ReallyDoDrawString(const UChar *string, int x, int y, DrawStringParams &params, bool parse_string_also_when_clipped)
+static int ReallyDoDrawString(const WChar *string, int x, int y, DrawStringParams &params, bool parse_string_also_when_clipped)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
 	bool draw_shadow = GetDrawGlyphShadow();
-	UChar c;
+	WChar c;
 	int xo = x;
 
 	if (!parse_string_also_when_clipped) {
