@@ -2103,7 +2103,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}파일 
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}다음에 종속됨: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}종속: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}태그: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD는 "zlib" 지원을 포함하지 않고 빌드되었습니다.
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD가 "zlib" 지원 기능을 포함하지 않고 만들어졌습니다...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... 콘텐츠 다운로드가 불가능합니다!
 
 # Order of these is important!

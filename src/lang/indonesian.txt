@@ -1386,14 +1386,25 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Berita berwarna
 STR_CONFIG_SETTING_STARTING_YEAR                                :Tahun mulai: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Aktifkan pertumbuhan ekonomi yang stabil (jarang berubah): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ijinkan pembelian saham perusahaan lain: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Jika diaktifkan, pemain dibolehkan membeli saham suatu perusahaan. Saham hanya bisa dibeli saat perusahaan memasuki umur tertentu
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Persentase keuntungan akhir dari sistem pengisi: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Persentase pendapatan yang diberikan dari sistem pengisi, memberikan lebih banyak kendali pendapatan
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Saat menyeret, tempatkan sinyal setiap: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Setel jarak sinyal yang akan dibuat di rel sampai obyek lain (sinyal, belokan,dll), jika sinyal di seret
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} kotak
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Saat menyeret, buat jarak antara sinyal: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Pilih letak penempatan sinyal saat membangun sinyal dengan Ctrl+klik. Jika dimatikan, sinyal ditempatkan di sekitar jembatan dan terowongan. Jika diaktifkan, sinyal akan ditempatkan disetiap rel ''N'', membuat penempatan sinyal di rel paralel lebih mudah
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Gunakan sinyal semaphore sebelum: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Setel tahun saat sinyal elektris digunakan untuk kereta. Sebelum tahun ini, sinyal non-elektris akan digunakan (fungsinya sama, tapi dengan penampilan berbeda)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Aktifkan antarmuka sinyal: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Tampilkan jendela untuk memilih jenis sinyal to untuk dibangun, daripada hanya menggunakan perputaran sinyal secara Ctrl+klik untuk membangun sinyal
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipe sinyal standar: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipe sinyal default untuk dipakai
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Sinyal Blok
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Sinyal Jalur
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Sinyal jalur satu arah
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Pergantian jenis sinyal: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Pilih tipe sinyal untuk berganti secara memutar, Ctrl+klik saat membangun sinyal
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Hanya sinyal blok
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Hanya sinyal jalur
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Semua

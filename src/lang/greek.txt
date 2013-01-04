@@ -3100,14 +3100,14 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Τί�
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% μεταφέρθηκαν)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% μεταφέρθηκαν)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Ονόματα βιομηχανιών - κλικ στο όνομα για κεντράρισμα στην βιομηχανία. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία της βιομηχανίας
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Ονόματα βιομηχανιών - κάνετε κλικ στο όνομα για κεντράρισμα στην βιομηχανία. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία της βιομηχανίας
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Παραγωγή προηγούμενου μήνα:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% μεταφέρθηκαν)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Κεντράρισμα εικόνας στην περιοχή της βιομηχανίας. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην περιοχή της βιομηχανίας
-STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Έπιπεδο παραγωγής: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Κεντράρισμα εικόνας στην περιοχή της βιομηχανίας. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην περιοχή της βιομηχανίας
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Επίπεδο παραγωγής: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Απαιτεί: {YELLOW}{STRING}{STRING}
@@ -3123,18 +3123,18 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Παρά
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Αλλαγή παραγωγής (πολλαπλάσιο του 8, μέχρι το 2040)
-STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Αλλαγή του έπιπεδου παραγωγής (ποσοστιαία, μέχρι το 800%)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Αλλαγή του επιπέδου παραγωγής (ποσοστιαία, μέχρι το 800%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Τρέν{P ο α}
 STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} {P Όχημα Οχήματα} δρόμου
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Πλοί{P ο α}
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Αεροσκάφος
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Αεροσκάφ{P ος η}
 
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Τρένα- Κάντε κλικ στο τρένο για πληροφορίες
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Όχηματα δρόμου - κάντε κλικ στο όχημα για πληροφορίες
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Τρένα - κάντε κλικ στο τρένο για πληροφορίες
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Οχήματα δρόμου - κάντε κλικ στο όχημα για πληροφορίες
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Πλοία - κάντε κλικ στο πλοίο για πληροφορίες
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Αεροσκάφη - πατήστε στο αεροσκάφος για πληροφορίες
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Αεροσκάφη - κάντε κλικ στο αεροσκάφος για πληροφορίες
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Κέρδος αυτό το έτος: {CURRENCY_LONG} (προηγούμενο έτος: {CURRENCY_LONG})
 
@@ -3142,22 +3142,22 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Διαθέσι�
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Διαθέσιμα Οχήματα
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Διαθέσιμα Πλοία
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Διαθέσιμα Αεροσκάφη
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Προβολή λίστας διαθέσιμων σχεδίων μηχανών για αυτον τύπο οχήματος
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Προβολή λίστας διαθέσιμων σχεδίων μηχανών για αυτόν τον τύπο οχήματος
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Διαχείριση λίστας
-STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Στείλε οδηγίες σε όλα τα οχήματα σε αυτή λίστα
-STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Αντικατέστησε τα οχήματα
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Στείλε για επισκευή
+STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Στείλτε οδηγίες σε όλα τα οχήματα σε αυτήν τη λίστα
+STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Αντικατάσταση οχημάτων
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Στείλτε για Επισκευή
 
-STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Στείλε στο υπόστεγο
-STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Στείλε στο αμαξοστασίο
-STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Στείλε στο ναυπηγείο
-STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Στείλε στο υπόστεγο
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Στείλτε στο Υπόστεγο
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Στείλτε στο Αμαξοστάσιο
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Στείλε στο Ναυπηγείο
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Στείλε στο Υπόστεγο
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Κάντε κλικ για να σταματήσουν όλα τα οχήματα στη λίστα
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Κάντε κλικ για να ξεκινήσουν όλα τα οχήματα στη λίστα
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Κοίνες εντόλες του {COMMA} {P οχήματος οχημάτων}
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Κοινές εντολές {P του των} {COMMA} {P Οχήματος Οχημάτων}
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Όλα τα τρένα
@@ -3165,27 +3165,27 @@ STR_GROUP_ALL_ROAD_VEHICLES                                     :Όλα τα ο�
 STR_GROUP_ALL_SHIPS                                             :Όλα τα πλοία
 STR_GROUP_ALL_AIRCRAFTS                                         :Όλα τα αεροσκάφη
 
-STR_GROUP_DEFAULT_TRAINS                                        :Αγκρουπάριστα τρένα
-STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Αγκρουπάριστα όχηματα δρόμου
-STR_GROUP_DEFAULT_SHIPS                                         :Αγκρουπάριστα πλοία
-STR_GROUP_DEFAULT_AIRCRAFTS                                     :Μη-ομαδοποιημένα αεροσκάφη
+STR_GROUP_DEFAULT_TRAINS                                        :Μη ομαδοποιημένα τρένα
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Μη ομαδοποιημένα οχήματα δρόμου
+STR_GROUP_DEFAULT_SHIPS                                         :Μη ομαδοποιημένα πλοία
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Μη ομαδοποιημένα αεροσκάφη
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Γκρουπς - Κάντε κλικ σε ένα γκρουπ για δείτε όλα τα οχήματα που ανήκουν στο γκρουπ
-STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Κάντε κλικ για δημιουργήσετε ένα γκρουπ
-STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Διαγράψτε το επιλεγμένο γκρουπ
-STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Μετονομάστε το επιλεγμένο γκρουπ
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Κάντε κλικ για προστατέψετε αυτό το γκρουπ από την γενική αυτόματη αντικατάσταση
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Ομάδες - κάντε κλικ σε μία ομάδα για δείτε όλα τα οχήματα που της ανήκουν
+STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Κάντε κλικ για δημιουργήσετε ομάδα
+STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Διαγραφή της επιλεγμένης ομάδας
+STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Μετονομασία της επιλεγμένης ομάδας
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Κάντε κλικ για προστατέψετε αυτήν την ομάδα από την γενική αυτόματη αντικατάσταση
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Προσθήκη κοινόχρηστων οχημάτων
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Αφαίρεση όλων των οχημάτων
 
-STR_GROUP_RENAME_CAPTION                                        :{BLACK}Μετονομασία ενός γκρουπ
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Μετονομασία μίας ομάδας
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Νέα Οχήματα Σιδηρόδρομου
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Νέα Οχήματα Ηλεκτροδοτούμενου Σιδηρόδρομου
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Νέα Οχήματα Ηλεκτροδοτουμένου Σιδηρόδρομου
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Νέα Οχήματα Monorail
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Νέα Οχήματα Μαγνητικής Αιώρησης
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Νέα Οχήματα Maglev
 
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Νέα Οχήματα Σιδηρόδρομου
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Νέα Οχήματα Δρόμου
@@ -3193,60 +3193,60 @@ STR_BUY_VEHICLE_SHIP_CAPTION                                    :Νέα Πλοί
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Νέα Αεροσκάφη
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Κόστος: {GOLD}{CURRENCY_LONG}{BLACK} Βάρος: {GOLD}{WEIGHT_SHORT}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ταχύτητα: {GOLD}{VELOCITY}{BLACK} Ιπποδύναμη: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ταχύτητα: {GOLD}{VELOCITY}{BLACK} Δύναμη κινητήρα: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Ταχύτητα: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Ταχύτητα στον ωκεανό: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Ταχύτητα σε κανάλι/ποταμό: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Λειτουργικό Κόστος: {GOLD}{CURRENCY_LONG}/χρ
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Χωρητικότητα: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(μετατρέψιμο)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Έτος σχεδίασης: {GOLD}{NUM}{BLACK} Χρόνος ζώης: {GOLD}{COMMA} χρόν{P ο ια}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Έτος σχεδίασης: {GOLD}{NUM}{BLACK} Χρόνος ζωής: {GOLD}{COMMA} χρόν{P ο ια}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Μεγ. Αξιοπιστία: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Κόστος: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Βάρος: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Κόστος: {GOLD}{CURRENCY_LONG}{BLACK} Ταχύτητα: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Χωρητικότητα: {GOLD}{CARGO_LONG}, {CARGO_LONG}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ενισχυμένα βαγόνια: {GOLD}+{POWER}{BLACK} Βάρος: {GOLD}+{WEIGHT_SHORT}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ενισχυμένα Βαγόνια: {GOLD}+{POWER}{BLACK} Βάρος: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Μετατρέψιμο σε: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Όλοι οι τύποι εμπορεύματος
-STR_PURCHASE_INFO_ALL_BUT                                       :Όλα εκτός {CARGO_LIST}
+STR_PURCHASE_INFO_ALL_BUT                                       :Όλα εκτός από {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Μεγ. Δύναμη Έλξης: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Εύρος: {GOLD}{COMMA} πεδία
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Λίστα επιλεγμένων βαγονιών τρένων - κάντε κλικ σε ένα βαγόνι για πληροφορίες
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Λίστα επιλεγμένων οχήματα δρόμου - κάντε κλικ σε ένα όχημα για πληροφορίες
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Λίστα επιλεγμένων πλοίων - κάντε κλικ σε ένα πλοίων για πληροφορίες
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Λίστα επιλεγμένων αεροσκαφών - πατήστε σε ένα αεροσκάφος για πληροφορίες
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Λίστα επιλεγμένων πλοίων - κάντε κλικ σε ένα πλοίο για πληροφορίες
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Λίστα επιλεγμένων αεροσκαφών - κάντε κλικ σε ένα αεροσκάφος για πληροφορίες
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Αγορά Οχήματος
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Αγορά Οχήματος
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Αγορά Πλοίου
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Αγορά Αεροσκάφους
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Αγοράστε το επιλεγμένο οχήμα τρένου. Με Shift+κλικ εμφναίζεται το εκτιμώμενο κόστος χωρίς την αγορά
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Αγοράστε το επιλεγμένο οχήμα δρόμου. Με Shift+κλικ εμφναίζεται το εκτιμώμενο κόστος χωρίς την αγορά
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Αγοράστε το επιλεγμένο πλοίο. Με Shift+κλικ εμφναίζεται το εκτιμώμενο κόστος χωρίς την αγορά
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Αγοράστε το επιλεγμένο αεροσκάφος. Με Shift+κλικ εμφναίζεται το εκτιμώμενο κόστος χωρίς την αγορά
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Αγοράστε το επιλεγμένο όχημα τρένου. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς αγορά
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Αγοράστε το επιλεγμένο όχημα δρόμου. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς αγορά
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Αγοράστε το επιλεγμένο πλοίο. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς αγορά
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Αγοράστε το επιλεγμένο αεροσκάφος. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς αγορά
 
-STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Μετανομασία
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Μετανομασία
-STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Μετανομασία
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Μετανομασία
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Μετονομασία
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Μετονομασία
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Μετονομασία
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Μετονομασία
 
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Μετονομάζει τον τύπο οχήματος τρένου
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Μετονομάζει τον τύπο οχήματος δρόμου
-STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Μετανομάζει τον τύπο πλοίο
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Μετανομάζει τον τύπο αεροσκάφους
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Μετονομάζει τον τύπο πλοίου
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Μετονομάζει τον τύπο αεροσκάφους
 
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Μετονομασία του τύπου τρένου
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Μετονομασία του τύπου οχήματος δρόμου
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Μετονομασία του τύπου πλοίου
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Μετονομασία τύπου τρένου
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Μετονομασία τύπου οχήματος δρόμου
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Μετονομασία τύπου πλοίου
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Μετονομασία τύπου αεροσκάφους
 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
-STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Αλλαγή του ονοματός του αμαξοστάσιου/ναυπηγείου
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Αλλαγή του ονόματός του αμαξοστάσιου/ναυπηγείου
 STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Μετονομασία αμαξοστασίου/ναυπηγείου
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-

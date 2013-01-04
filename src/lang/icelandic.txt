@@ -1156,9 +1156,9 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Með jarðefnis
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Slétt svæði í kringum iðnað: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Stærð slétts svæðis í kringum iðnað. Þetta tryggir að nóg sé að auðu svæði í kringum iðnað til að byggja spor og fleira
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Leyfa marga svipaða iðnaði í sama bæ: {STRING}
-STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Venjulega vilja bæir ekki fleiri en einn iðnað af hverri tegund. Með þessari stillingu á munu bæjir leyfa nokkra iðnaði af sömu gerð í kringum sama bæinn
-STR_CONFIG_SETTING_SIGNALSIDE                                   :Sýna lestarljós: {STRING}
-STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Veldu hvoru megin við sporið á að setja járnbrautarljósin
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Venjulega vilja bæir ekki fleiri en einn iðnað af hverri tegund. Með þessari stillingu á munu bæir leyfa nokkra iðnaði af sömu gerð í kringum sama bæinn
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Sýna umferðarmerki: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Veldu hvoru megin við sporið á að setja umferðarmerkin
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Vinstra megin
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Akstursstefnu megin
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Hægra megin
@@ -1468,54 +1468,88 @@ STR_CONFIG_SETTING_ALLOW_SHARES                                 :Leyfa hlutabré
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ef þessi stilling er virk er hægt að kaupa og selja hlutabréf í fyrirtækjum. Hlutabréf eru aðeins aðgengileg fyrir fyrirtæki sem hafa náð ákveðnum aldri
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Hlutfall hagnaðar sem greiðist til tengiþjónustu: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Hlutfall hagnaðar sem greiðist til tengiþjónustu, farartækja sem eru milliliðir. Gefur meiri stjórn á tekjunum
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Bil milli skilta þegar þau eru dregin: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Stillir fjarlægð á milli merkja, ef þau eru dregin, fram að næstu hindrun (merki, vegamót)
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Bil milli umferðarmerkja þegar þau eru dregin: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Stillir fjarlægð á milli umferðarmerkja, ef þau eru dregin, fram að næstu hindrun (merki, vegamót)
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} reit{P 0 ur ir}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Halda stöðugu bili milli merkja, þegar þau eru dregin: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Veldu hvernig merki dreifast þegar þau eru Ctrl+dregin. Ef stillingin er óvirk eru merki sett sitthvoru megin við göng og brýr. Ef hún er virk, eru merki sett á X reita fresti sem gerir það að verkum að auðveldara er að halda merkjum hlið við hlið á samsíða sporum
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Halda stöðugu bili milli umferðarmerkja, þegar þau eru dregin: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Veldu hvernig umferðarmerki dreifast þegar þau eru Ctrl+dregin. Ef stillingin er óvirk eru merki sett sitthvoru megin við göng og brýr. Ef hún er virk, eru merki sett á X reita fresti sem gerir það að verkum að auðveldara er að halda merkjum hlið við hlið á samsíða sporum
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Nota skilti í stað ljósa fyrir: {STRING}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Stilltu árið sem lestaljós eru notuð í staðinn fyrir lestaskilti. Fram að þessu ári eru notuð lestaskilti (þau hafa nákvæmlega sömu virkni, en líta öðruvísi út)
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Virkja valmynd lestarljósa: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Sýna glugga þar sem er hægt að velja á milli tegundar lestaskilta, í staðinn fyrir engan glugga og að þurfa að skipta á milli skilta með því að Ctrl+smella
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Ljósagerð sem skal byggja sem sjálfgildi: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Stilltu árið sem ljósamerki eru notuð í staðinn fyrir hreyfimerki. Fram að þessu ári eru notuð hreyfimerki (þau hafa nákvæmlega sömu virkni, en líta öðruvísi út)
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Virkja valmynd umferðarmerkja: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Sýna glugga þar sem er hægt að velja á milli tegundar umferðarmerkja, í staðinn fyrir engan glugga og að þurfa að skipta á milli merkja með því að Ctrl+smella
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Umferðarmerki sem eru sjálfgefin: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Sjálfgefin umferðarmerki
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :venjuleg
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Brautar ljós
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Ein-stefnu ljós
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Skruna milli tegundir merkja: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Aðeins hefðbundin skilti og ljós
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Aðeins Leiðar-merki
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Hefðbundin merki
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Leiðarmerki
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Einstefnu leiðarmerki
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Skipta milli tegunda umferðarmerkja: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Veldu tegund umferðarljósa sem á að skipta á milli með því að Ctrl+smella
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Aðeins hefðbundin merki
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Aðeins Leiðarmerki
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Allt
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Vegskipulag fyrir nýja bæji: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Vegskipulag fyrir nýja bæi: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Skipulag á vegakerfi í bæjum
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :sjálfgefið
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :betri vegi
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 net
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 net
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :slembið
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Bæir geta lagt vegi: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Leyfa bæjum að byggja vegi til að stækka. Slökkva á þessari stillingu til að koma í veg fyrir að bæjar yfirvöld geti byggt vegi sjálf
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Heimila bæjum að byggja göng og brýr: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :Leyfa stjórn á hljóðstyrk frá flugvöllum af bæjum: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Ef þessi stilling er virk geta bæir gert vegi yfir járnbrautarspor
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Láta hávaða frá flugvöllum stjórna hvort bæjir leyfi þá innan bæjarmarka: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Ef þessi stilling er óvirk þá geta verið tveir flugvellir í hverjum bæ. Ef hún er virk er fjöldi flugvalla í bæjum takmarkaður við hvað bæir þola mikinn hávaða, sem stýrist af fólksfjölda, stærð flugvallar og fjarlægð
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Stofna bæi í leik: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Ef þessi stilling er virk geta leikmenn byggt nýja bæi í leiknum
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :bannað
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :leyft
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Leyft, sérsniðið bæjarskipulag
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Staðsetning trjáa í leik: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Stjórnar hvernig tré birtast meðan á leiknum stendur. Þessi stilling getur haft áhrif á iðnað sem byggir á trjám, til dæmis timburverksmiðjur
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Engin {RED}(skemmir timburverksmiðjur)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :aðeins í regnskógum
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :allstaðar
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Staðsetning tækjasláar: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Lárétt staða aðal tækjasláar efst á skjánum
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Staðsetning stöðulínu: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Lárétt staða stöðulínu neðst á skjánum
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Smella radíus fyrir Windows: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Bil á milli glugga áður en gluggin sem verið er að færa smellur sjálfvirkt að næsta glugga
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} díl{P 0 l ar}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Óvirkt
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Hámarksfjöldi glugga (ófestra): {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Fjöldi glugga, sem ekki eru fastir saman, sem geta verið opnir áður en gluggar fara að loka sjálfkrafa til að gera pláss fyrir nýja glugga
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :óvirkt
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Hámarks aðdráttur: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Hámarks aðdráttur í sjónarhornum. Athugið að með meiri aðdrátti aukast minnis kröfur á tölvuna
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Hámark hvað er hægt að súma út: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Hversu langt er hægt að súma frá sjónarhornum. Því hærri sem talan er því meiri líkur eru á töf í tölvunni
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Venjulegt
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Vaxtarhraði bæja: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Hversu hratt bæir stækka
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Enginn
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Hægur
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Venjulegur
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Hraður
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Mjög hraður
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Hlutfall af bæjum sem verða borgir: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Bæir sem munu verða borgir, bæir sem eru stærri í byrjun og vaxa hraðar
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 af {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Enginn
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Upphaflegur margfaldari bogarstærðar: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Meðalstærð borga miðað við bæi, við upphaf leiks
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Fjarlægja fráleita vegahluti þegar vegagerð stendur yfir: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Þegar bæir hafa verið styrktir til að endurnýja vegina sýna á þá að fjarlægja ónotaða vegenda
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Viðmót
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Bygging
@@ -1527,7 +1561,7 @@ STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Skjá-v
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Viðmót
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hljóð
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Fréttir og skilaboð
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Lestaljós og lestaskilti
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Umferðarmerki
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Meðhöndlun farms
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Gervigreind
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Sjálfvirk endurnýjun
@@ -1537,16 +1571,34 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Lestir
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Bæir
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Iðnaðuð
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Upprunalegt
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Ráðlegt)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Leiðsagnarkerfi lesta: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Leiðsögukerfi lesta: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Leiðsögukerfi sem nota á fyrir lestir
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Leiðsögukerfi bifreiða: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Leiðsögukerfi sem nota á fyrir bíla og sporvagna
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Leiðsögukerfi skipa: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Leiðsögukerfi sem nota á fyrir skip
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Snúa járnbrautarlestum sjálfkrafa við á umferðarmerkjum: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Leyfa járnbrautarlestum að snúa við á umferðarmerkjum ef þau hafa beðið þar í langan tíma
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Breyta gildi stillingar
 
 # Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Villa kom upp við stillingar skrána...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... villa í fylki '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... rangt gildi '{STRING}' fyrir '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... sleppi NewGRF '{STRING}': eins GRF ID með '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... sleppi biluðu NewGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :finnst ekki
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :óöruggt vegna fasta notkunnar
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :kerfis NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :ósamhæft þessari útgáfu af OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :óþekkt
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... þjöppunarstyrkur '{STRING}' er ekki leyfður
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... vistunarsnið '{STRING}' er ekki aðgengilegt. Breyti í '{STRING}'
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... sleppi grunngrafík, '{STRING}' finnst ekki
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... sleppi grunn hljóðsafni, '{STRING}' finnst ekki
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... sleppi grunn tónlistarsafni, '{STRING}' finnst ekki
@@ -1566,6 +1618,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Stigataf
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ítarlegar stillingar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Stillingar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Ná í viðbætur af netinu
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}GG/forskriftar stillingar
 STR_INTRO_QUIT                                                  :{BLACK}Hætta
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Hefja nýjan leik. Ctrl+smella sleppir kortastillingum
@@ -1585,8 +1638,10 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Birta st
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Birta ítarlegar stillingar
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Sýna NewGRF stillingar
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skoða viðbætur sem hægt er að ná í af netinu
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Birta stillingar fyrir gervigreind/forskrift
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Hætta í OpenTTD
 
+STR_INTRO_TRANSLATION                                           :{BLACK}Það vantar {NUM} þýðing{P u ar} í þetta tungumál. Vinsamlegast hjálpaðu við að gera OpenTTD betra með því að skrá þig sem þýðanda. Nánari upplýsingar í readme.txt.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Hætta
@@ -1625,6 +1680,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Heimskautalands
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Miðjarðarlandslag
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Leikfangalandslag
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Breyta dagsetningu: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Breyta um ár
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Leyfa breytingar á verðmæti framleiðslu: {ORANGE}{STRING}
 
 # Livery window
@@ -1880,6 +1936,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Næ í u
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Næ í upplýsingar um fyrirtæki...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} þjón{P n ar} fyrir framan þig
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} hefur verið niðurhalað
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} niðurhöluð hingaðtil
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Aftengjast
@@ -1952,6 +2009,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Þú ert
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Þér var hent út úr leiknum
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Svindl er ekki leyft á þessum þjóni
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Þú ert að senda of margar skipanir á vefþjóninn
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Þú varst oft lengi að setja inn lykilorð
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Tölvan þín er of hæg til að halda í við netþjóninn
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Tölvan þín var of lengi að sækja kortið
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Tölvan þín var of lengi að tengjast netþjóninum
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :almenn villa
@@ -1970,6 +2031,8 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :hent út af þj
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :reyndi að svindla
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :vefþjónn fullur
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :var að senda of margar skipanir
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :fékk ekkert lykilorð
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :almenn tímamörk
 ############ End of leave-in-this-order
 
 
@@ -2099,10 +2162,10 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Leggja j
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Byggja lestarskýli (til að byggja og þjónusta lestar). Shift sýnir áætlaðan kostnað
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Breyta spori í vegvísi. Ctrl leyfir samteingingu vegvísa. Shift sýnir áætlaðan kostnað
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Byggja lestarstöð. Ctrl leyfir samtengingu stöðva. Shift sýnir áætlaðan kostnað
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Byggja lestarljós. Ctrl velur hreyfiskilti/ljósamerki{}Dragðu til að bygga ljós eftir beinni lestarlínu{}Ctrl+smella opnar/lokar lestarljósa glugganum. Shift sýnir áætlaðan kostnað
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Byggja járnbrautar umferðarmerki. Ctrl velur hreyfimerki/ljósamerki{}Dragðu til að bygga umferðarmerki eftir beinni lestarlínu{}Ctrl+smella opnar/lokar umferðarmerkja glugganum. Shift sýnir áætlaðan kostnað
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Byggja lestarbrú. Shift sýnir áætlaðan kostnað
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Byggja lestargöng. Shift sýnir áætlaðan kostnað
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skipta á milli byggja/fjarlægja járnbrautarspor, lestarljós, vegvísi og járnbrautarstöðva. Haltu Ctrl inni til að fjarlægja spor af vegvísum og stöðvum
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skipta á milli byggja/fjarlægja járnbrautarspor, umferðarmerki, vegvísi og járnbrautarstöðva. Haltu Ctrl inni til að fjarlægja spor af vegvísum og stöðvum
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Breyta/uppfæra gerð spors. Shift sýnir áætlaðan kostnað
 
 
@@ -2132,23 +2195,23 @@ STR_STATION_CLASS_DFLT                                          :Sjálfgefin st�
 STR_STATION_CLASS_WAYP                                          :Millistöð
 
 # Signal window
-STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Lestaljós
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Hefðbundin merki (skilti){}Þetta er einfaldasta tegund lestaskilta, bara ein lest getur verið á milli skilta hverju sinni
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Komumerki(lestaskilti){}Hleypir í gegn meðan ekkert frámerki sem á eftir kemur er grænt. Annars sýnir það rautt
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Frámerki (lestaskilti){}Virkar eins og hefðbundið merki en er nauðsynlegt til að fá rétta virkni fyrir komu- og tvívirk merki
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Tvívirk-merki (lestaskilti){}Tvívirku skiltin einfaldlega virka bæði sem inn og út merki. Þetta leyfir þér að byggja stór "tré" af for-merkjum
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Leiðarskilti (lestaskilti){}Leiðarskilt gera fleiri en einni lest í einu kleift að keyra inn á svæði án umferðamerkja ef þær finna örugga leið út af því aftur. Lestir geta farið framhjá venjulegum skiltum aftanfrá
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Einstefnuskilti (lestaskilti){}Leiðarskilti gera fleiri en einni lest í einu kleift að keyra inn á svæði án umferðarmerkja ef þær finna örugga leið út af því aftur. Lestir geta ekki farið framhjá einstefnuskiltum aftanfrá
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Hefðbundin ljós (lestaljós){}Þetta er einfaldasta tegund lestaljósa, bara ein lest getur verið á milli ljósa hverju sinni
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Komuljós (lestaljós){}Hleypir í gegn meðan eitt eða fleiri fráljós sem á eftir koma eru græn. Annars sýnir það rautt
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Fráljós (lestaljós){}Virkar eins og hefðbundið ljós en er nauðsynlegt til að fá rétta virkni fyrir komu- og fjölljós
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Tvívirk-ljós (lestaljós){}Tvívirku ljósin einfaldlega virka bæði sem inn og út ljós. Þetta leyfir þér að byggja stór "tré" af for-ljósum
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Leiðarljós (lestaljós){}Leiðarljós gera fleiri en einni lest í einu kleift að keyra inn á svæði án umferðarljósa ef þær finna örugga leið út af því aftur. Lestir geta farið framhjá venjulegum skiltum aftanfrá
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einstefnuljós (lestaljós){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á svæði án umferðarmerkja ef þær finna örugga leið út af því aftur. Lestir geta ekki farið framhjá einstefnuljósum aftanfrá
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Breyting ljósa{}Þegar valið þá breytist skiltið/ljósið sem fyrir er í valda gerð og tegund. Ctrl-smella mun rúlla í gegnum skiltin. Shift+smella sýnir áætlaðan kostnað
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Þéttleiki dreginna ljósa
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Minnka þéttleika dreginna ljósa
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Auka þéttleika dreginna ljósa
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Umferðarmerki
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Hefðbundin merki (hreyfimerki){}Þetta er einfaldasta tegund merkja, bara ein lest getur verið á sama svæði hverju sinni
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Komumerki(hreyfimerki){}Hleypir í gegn meðan ekkert frámerki sem á eftir kemur er grænt. Annars sýnir það rautt
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Frámerki (hreyfimerki){}Virkar eins og hefðbundið merki en er nauðsynlegt til að fá rétta virkni fyrir komu- og tvívirk for-merki
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Tvívirk merki (hreyfimerki){}Tvívirku merkin einfaldlega virka bæði sem inn og út merki. Þetta leyfir þér að byggja stór "tré" af for-merkjum
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Leiðarmerki (hreyfimerki){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á sama umferðarsvæðið á sama tíma ef þær finna örugga leið út úr því aftur. Lestir geta farið framhjá venjulegum merkjum aftanfrá
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Einstefnumerki (hreyfimerki){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á sama umferðarsvæðið á sama tíma ef þær finna örugga leið út úr því aftur. Lestir geta ekki farið framhjá venjulegum merkjum aftanfrá
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Hefðbundin merki (ljósamerki){}Þetta er einfaldasta tegund merkja, bara ein lest getur verið á sama svæði hverju sinni
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Komumerki (ljósamerki){}Hleypir í gegn meðan eitt eða fleiri frámerki sem á eftir koma eru græn. Annars sýnir það rautt
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Frámerki (ljósamerki){}Virkar eins og hefðbundið merki en er nauðsynlegt til að fá rétta virkni fyrir komu- og tvívirk for-merki
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Tvívirk merki (ljósamerki){}Tvívirku merkin einfaldlega virka bæði sem inn og út merki. Þetta leyfir þér að byggja stór "tré" af for-ljósum
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Leiðarljós (lestaljós){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á sama umferðarsvæðið á sama tíma ef þær finna örugga leið út úr því aftur. Lestir geta farið framhjá venjulegum merkjum aftanfrá
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einstefnumerki (ljósamerki){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á sama umferðarsvæðið á sama tíma ef þær finna örugga leið út úr því aftur. Lestir geta ekki farið framhjá venjulegum merkjum aftanfrá
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Breyta merkjum{}Þegar þetta er valið þá breytist umferðarmerkið sem fyrir er í valda gerð og tegund. Ctrl-smella mun rúlla í gegnum merkin. Shift+smella sýnir áætlaðan kostnað
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Þéttleiki dreginna umferðarmerkja
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Minnka þéttleika dreginna umferðarmerkja
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Auka þéttleika dreginna umferðarmerkja
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Veldu tegund brúar
@@ -2378,6 +2441,27 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Akur
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snjóþekið land
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Eyðimörk
 
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} spor með hefðbundnum umferðarmerkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} spor með for-merkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} spor með frámerkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} spor með tvívirkum merkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} spor með leiðarmerkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} spor með einstefnu leiðarmerkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} spor með hefðbundnum- og formerkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} spor með hefðbundnum- og frámerkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} spor með hefðbundnum- tvívirkum merkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} spor með hefðbundnum- og leiðarmerkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} spor með hefðbundnum- og einstefnu leiðarmerkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} spor með for- og frámerkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} spor með for- og tvívirkum merkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} spor með for- og leiðarmerkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} spor með for- og einstefnu leiðarmerkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} spor með frá- og tvívirkum merkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} spor með frá- og leiðarmerkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} spor með frá- og einstefnu leiðarmerkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} spor með tvívirkum- og leiðarmerkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} spor með tvívirkum- og einstefnu leiðarmerkjum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} spor með leiðarmerkjum og einstefnu leiðarmerkjum
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Vegur
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Vegur með götuljósum
@@ -2886,6 +2970,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nafn forstjóra
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Við erum að leita að flutningsfyrirtæki til að taka yfir okkar rekstri.{}{}Viltu kaupa {COMPANY} fyrir {CURRENCY_LONG}?
 
 # Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Umferðarmerki
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Iðnaðir
@@ -3171,7 +3256,7 @@ STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Þetta b
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Þetta býr til annað alveg eins skip. Ctrl+smella til að deila skipunum. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Þetta býr til aðra alveg eins flugvél. Ctrl+smella til að deila skipunum. Shift+smella sýnir áætlaðan kostnað án þess að kaupa
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Neyða lest til að halda áfram án þess að bíða eftir réttu ljósi
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Neyða lest til að halda áfram án þess að bíða eftir réttu umferðarmerki
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Breyta lest svo hún flytji annan farm
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Breyta bifreið svo hún flytji annan farm
@@ -3781,18 +3866,18 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(takmarkað fj�
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Ómöguleg spor samsetning
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Verður að fjarlægja ljós fyrst
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Verður að fjarlægja umferðarmerki fyrst
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ekkert hentugt járnbrautarspor
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Verður að fjarlægja járnbrautarspor fyrst
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Vegurinn er einstefnuvegur eða stíflaður
 STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Gatnamót ekki leyfð fyrir þessa tegund járnbrautarspora
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Get ekki byggt umferðarljós hér...
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Get ekki byggt umferðarmerki hér...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Get ekki byggt járnbrautarspor hér...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Get ekki fjarlægt járnbrautarspor héðan...
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Get ekki fjarlægt umferðarljós héðan...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Get ekki breytt ljósum hér...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Get ekki fjarlægt umferðarmerki héðan...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Get ekki breytt umferðarmerkjum hér...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... það er ekkert járnbrautarspor
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... það eru engin ljós
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... það eru engin umferðarmerki
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Get ekki breytt spori...
 

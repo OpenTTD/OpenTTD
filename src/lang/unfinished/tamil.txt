@@ -1614,6 +1614,10 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :மின்ச
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :மோனோ-இரயில் கட்டுமானம்
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :மேக்லெவ் கட்டுமானம்
 
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}இரயில் நிலையத்தினை கட்டவும். Ctrl அழுத்தினால் நிலையங்களினை இணைக்கலாம். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}இரயில்வே சிக்னல்களைக் கட்டவும். Ctrl அழுத்தினால் சிக்னல் வகைகளை மாற்றலாம்{}இரயில் தடத்தின்மேல் இழுத்தினால் சிக்னல்களை அமைக்கலாம். Ctrl அழுத்தினால் அடுத்த எணைப்பு வரை சிக்னல்கள் அமைக்கப்படும்{}Ctrl+Click அழுத்தினால் சிக்னல் தேர்ந்தெடுக்கும் திரை தெரியும்/மரையும். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு காட்டப்படும்
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}இரயில்வே பாலத்தினை கட்டவும். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு காட்டப்படும்
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}இரயில்வே சுரங்கப் பாதையினை கட்டவும். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு காட்டவும்
 
 STR_RAIL_NAME_RAILROAD                                          :இரயில்வே
 STR_RAIL_NAME_ELRAIL                                            :மின்மயமாக்கப்பட்ட இரயில்வே
