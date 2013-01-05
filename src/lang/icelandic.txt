@@ -2827,7 +2827,7 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Póstur 
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Nauðsynlegur farmur fyrir stækkun bæjarins:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} nauðsynlegt
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} nauðsynlegt á veturnar
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} {G kominn komin komið}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} kominn
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (vantar enn)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Bærinn stækkar á {ORANGE}{COMMA}{BLACK} dag{P s a} fresti
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Bærinn stækkar á {ORANGE}{COMMA}{BLACK} dag{P s a} (stofnaður)
