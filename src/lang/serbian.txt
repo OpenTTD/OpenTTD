@@ -1231,6 +1231,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nisu dos
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredna Podešavanja
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Podešavanja kompanije (uskladištena u sačuvanoj igri; utiču samo na trenutnu kompaniju)
 
 STR_CONFIG_SETTING_OFF                                          :Ne
 STR_CONFIG_SETTING_ON                                           :Da
@@ -3247,9 +3248,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izaberit
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Izaberite novu vrstu lokomotive koju biste želeli da koristite umesto obeležene s leve strane
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Počni Zamenu Vozila
+STR_REPLACE_VEHICLES_NOW                                        :Zameni sva vozila sada
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Zameni samo stara vozila
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Pritisnite kako bi počela zamena vrste lokomotive označena sa leve strane sa vrstom označenom sa desne
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Nezamenjuje se
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nijedno vozilo nije označeno
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} kada prethodni
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Zaustavi Zamenu Vozila
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Pritisnite kako bi se zaustavila zamena vrsta lokomotive označene sa leve strane
 
@@ -3799,6 +3803,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... je u
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... zemljište je u vlasništvu drugog preduzeća
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... dostignuto ograničenje u izmeni reljefa
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... dostignuto ograničenje u čišćenju pločica
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... dosegnut limit u sadnji stabala
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Naziv mora biti jedinstven
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} je na putu
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nije dozvoljeno tokom pauze

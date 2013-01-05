@@ -3157,7 +3157,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Στείλε σ
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Κάντε κλικ για να σταματήσουν όλα τα οχήματα στη λίστα
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Κάντε κλικ για να ξεκινήσουν όλα τα οχήματα στη λίστα
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Κοινές εντολές {P του των} {COMMA} {P Οχήματος Οχημάτων}
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Κοινές εντολές {P 0 του των} {COMMA} {P Οχήματος Οχημάτων}
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Όλα τα τρένα

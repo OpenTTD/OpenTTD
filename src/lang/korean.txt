@@ -1669,13 +1669,13 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}정말 
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}치트
-STR_CHEATS_TOOLTIP                                              :{BLACK}체크박스는 이전에 사용한 치트를 나타냅니다.
-STR_CHEATS_WARNING                                              :{BLACK}경고! 치트는 경쟁자를 속이는 행위입니다. 치트 기록은 절대로 지워지지 않음을 명심하십시오.
+STR_CHEATS_TOOLTIP                                              :{BLACK}체크박스의 체크 표시는 이전에 이 치트를 사용했는지 여부를 나타냅니다.
+STR_CHEATS_WARNING                                              :{BLACK}경고! 치트는 경쟁자를 속이는 행위입니다. 치트를 사용한 기록은 절대 지워지지 않음을 명심하십시오.
 STR_CHEAT_MONEY                                                 :{LTBLUE}재정을 {CURRENCY_LONG} 만큼 증가
-STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}다음 회사로 플레이중: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설, 움직이지 못하는 것들 제거): {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}터널 교차를 허용: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}대형항공기가 소형 공항에서 (자주) 폭발하지 않게 함: {ORANGE}{STRING}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}다음 회사로 플레이: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설, 움직이지 못하는 건물 제거): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}터널 교차 허용: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}대형 항공기의 소형 공항에 충돌 빈도수 감소: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :온대 기후
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :냉대 기후
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :아열대 기후

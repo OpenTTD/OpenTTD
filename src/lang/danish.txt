@@ -1321,10 +1321,12 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Hold bygnings-v
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupper udgifter i firmaets finansvindue: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definer layout for firmaets udgifter-vindue
 
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Afspil lyd for opsummerede nyheds beskeder
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Nyhedsavis: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Afspil lyd ved visning af aviser
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Årets slutning: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Konstruktion: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Afspil lydeffekt efter vellykkede konstruktioner eller andre handlinger
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Knap tryk: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Bip ved klik på knapperne
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastrofer/Ulykker: {STRING}
@@ -1361,10 +1363,13 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktiver hastigh
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Slå elektriske jernbaner fra: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Ankomst af første køretøj til spillerens station: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Vis en avis når det første køretøj ankommer til en ny spillers station
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Ankomst af første køretøj til modstanderens station: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Vis en avis når det første køretøj ankommer til en konkurrents station
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Uheld / katastrofer: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Vis en avis når ulykker eller katastrofer opstår
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Selskabsinformation: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Vis en avis når nye selskaber starter, eller når selskaber er i risiko for at gå konkurs
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Åbning af industrier: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Vis en avis når nye industrier åbner
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Lukning af industrier: {STRING}
@@ -1372,15 +1377,21 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Vis en avis nå
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Økonomiændringer: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Vis en avis om globale ændringer i økonomi
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produktionsændringer i industrier betjent af firmaet: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Vis en avis, når produktions niveauet stiger for en industri som benyttes af selskabet
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produktionsændringer for industrier forsynet af deltager(e): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Vis en avis, når produktions niveauet for industrier som benyttes af konkurenter ændres
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Andre produktionsændringer for industri: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Vis en avis, når produktions niveauet for industrier som ikke benyttes af selskabet eller konkurenter ændres
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Råd / information om firmaets køretøjer: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Vis meddelelser om køretøjer der kræver opmærksomhed
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nye køretøjer: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Vis en avis, når en ny køretøjstype bliver tilgængelig
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Ændring i accepteret fragt: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Vis meddelelser om stationer som ændrer accept af godstyper
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Tilskudsordninger: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Vis en avis om tilskuds relaterede begivenheder
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Generel information: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Vis en avis om almindelige begivenhedder, som køb af eksklusive rettighedder, eller finansiering af vejkonstruktion
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Fra
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Kortfattet
@@ -1435,6 +1446,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :deaktiveret
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maksimalt zoom-in niveau: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maksimalt zoom-ud niveau: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Det maksimale udzoomnings niveau for visningsområder. Højere udzoomnings niveauer kan forsage forsinkelser i programmet ved brug
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
@@ -2656,6 +2668,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Indeholder adskillige handling 8 indgange (grafikelement {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Læs forbi slutningen af pseudo-grafikelement (grafikelement {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det brugte basis grafiksæt mangler en række elementer.{}Opdater venligst grafiksættet.
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Den grafikpakke som bruges er ufuldstændig.{}Opdater venligst grafikpakken.{}eftersom du spiller et{YELLOW} development snapshot of OpenTTD{WHITE},får du måske også brug for er{YELLOW}development snapshot of the base graphics{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :De ønskede GRF ressourcer er ikke tilgængelige (grafikelement {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} blev deaktiveret af {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ugyldigt / ukendt grafikelement layoutformat (grafikelement {3:NUM})

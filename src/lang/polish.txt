@@ -1816,7 +1816,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Wyświetl wiado
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zamknięcie przedsiębiorstw: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Wyświetl wiadomość w gazecie kiedy przedsiębiorstwa są likwidowane
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Zmiany ekonomiczne: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Wyświetl wiadomość w gazecie o globalbych zmianach ekonomicznych
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Wyświetl wiadomość w gazecie o globalnych zmianach w ekonomii
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Zmiany w produkcji przedsiębiorstw obsługiwanych przez firmę: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Wyświetl wiadomość w gazecie kiedy zmieniają się poziomy produkcji przedsiębiorstw, które są obsługiwane przez firmę
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Zmiany w produkcji przedsiębiorstw obsługiwanych przez przeciwników: {STRING}
@@ -2482,7 +2482,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Rozmiar
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Zaznaczono z powodu: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Zależności: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tagi: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}Open TTD nie obsługuje "zlib"...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD jest zbudowany bez wsparcia dla "zlib"...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... pobieranie zawartości nie jest możliwe!
 
 # Order of these is important!

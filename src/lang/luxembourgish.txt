@@ -1119,8 +1119,8 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximal Tunnell
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximal Längt déi en Tunnel dierf hunn
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manuel Primär Industriebau Method: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Method fir eng primär Industrie ze finanzéiren. 'keng' heescht, dass een guer keng kann finanzéiren. 'fördern' bedeit, dass eng nei Industrie gebaut gëtt, op enger zoufällëger Plaz op der Kaart, mee kann och schief goën. 'wéi aner Industrien' bedeit, dass Quellenindustrien kënnen vun Firmen op enger gewënschter Plaz gebaut ginn wéi verschaffend Industrien
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :keng
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :wei aaner Industrien
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Keng
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Wéi aaner Industrien
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Förderung
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Flaacht Land ronderëm Industrien: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Unzuel vun flaachen Felder ronderëm eng Industrie. Dëst garantéiert, dass eidel Felder ronderëm eng Industrie frai bleiwen fir Schinnen etc. ze bauen
@@ -1144,10 +1144,10 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Stroossengefier
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Looss Stroossgefierer am Ufank vun engem besaten Stroossestopp waarden, bis se eidel sinn.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :D'Fënster schwenken wann d'Maus um Rand ass: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Wann ugeschalt, scrollt d'Usiicht wann d'Maus no um Rand vun der Fënster ass
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :ausgeschalt
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Ausgeschalt
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Haptusiicht, nëmmen Vollbild
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Haptusiicht
-STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :all Usiicht
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :All Usiicht
 STR_CONFIG_SETTING_BRIBE                                        :Erlaabt Bestiechung vun den Gemengen: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Erlaabt Firmen d'Stad ze bestiechen. Wann et opflitt, kann d'Firma während 6 Méint net mat der Stad agéiren
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Erlaabt exklusiv Transportrechter ze kafen: {STRING}
@@ -1165,9 +1165,9 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Leet d'relativ 
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Unzuel Fligeraccidenter: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Leet d'Chance fir en Fligeraccident fest
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :keng
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduzéiert
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Keng
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduzéiert
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Erlaabt d'Iwwerfueren vun Stopschëlder op Stroossen vun der Stad: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Erlaabt d'Bauen vun säitlechen Busarrêten op Stroossen déi der Stad gehéieren
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Erlaabt d'Iwwerfueren vun Stopschëlder op Stroossen vun der Konkurrenz: {STRING}
@@ -1187,9 +1187,9 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Warnen wann en 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Messagen uweisen wann Gefierer keen Wee op hiert Ziel fannen
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Opträg vun den Gefierer nopréifen: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Wann ugeschalt, ginn d'Opträg vun Gefierer periodesch kontrolléiert, an e puer evident Fehler ginn mat enger Noriichtenmessage gemellt wann se fonnt ginn
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nee
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jo, mee net déi gestoppten Gefierer
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :vun allen Gefierer
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nee
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Jo, mee net déi gestoppten Gefierer
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Vun allen Gefierer
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warnen wann en Gefiert en negativen Akommes huet: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Wann ugeschalt, gëtt eng Noorichtenmessage gesent , wann en Gefier een Joer laang keen Profit gemeet huet
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Gefierer lafen nie of: {STRING}
@@ -1294,10 +1294,10 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatesch Pau
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Wann ugeschalt, pauséiert d'Spill automatesch wann en neit Spill gestart gëtt, wat erlaabt d'Kaart besser ze studéieren
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Wann Paus ass, erlab: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Wielt aus, wat kann gemeet wann d'Spill pauséiert gouf
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :keng Aktiounen
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :all Net-Bauaktiounen
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :all ausser Landëmformungen
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :all Aktiounen
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Keng Aktiounen
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :All Net-Bauaktiounen
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :All ausser Landëmformungen
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :All Aktiounen
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Benotzt d'erweidert Gefiererlëscht: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Schalt d'erweidert Gefiererlëscht un fir Gefierer ze gruppéieren
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Weist den Luedstatus un: {STRING}
@@ -1352,7 +1352,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Wiel op eng Rev
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standard Revisiounsintervall fir Zich: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Definéiert den Standardrevisiounsintervall fir nei Zich, wann keen expliziten Revisiounsintervall uginn ass
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} D{P 0 ag eeg}/%
-STR_CONFIG_SETTING_SERVINT_DISABLED                             :ausgeschalt
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Ausgeschalt
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Standard Revisiounsintervall fir Gefierer: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Definéiert den Standardrevisiounsintervall fir nei Gefierer, wann keen spezifëschen Revisiounsintervall uginn ass
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standard Revisiounsintervall fir Fligeren: {STRING}
@@ -1418,7 +1418,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alleguerten
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Stroossenlayout an neien Stied: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Layout fir d'Stroossennetz vun enger Stad
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Original
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :besser Stroossen
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Besser Stroossen
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 Gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 Gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Zoufälleg
@@ -1430,15 +1430,15 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Erlaab stadkont
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Wann dës Astellung ausgeschalt ass, kënnen zwee Fluchhäfen an all Stad gebaut ginn. Wann dës Astellung ugeschalt ass, henkt et vun der Fluchhafengréisst, Distanz, Kaméidisniveau of wéivill Fluchhäfen kënnen gebaut ginn
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Stiedgrënnung am Spill: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Wann dës Astellung ugeschalt ass, kënnen Spiller nei Stied am Spill grënnen
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :verbueden
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :erlaabt
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :erlaabt, custom Stad-Layout
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Verbueden
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Erlaabt
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Erlaabt, custom Stad-Layout
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Bamplazéirung: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Kontrolléiert zoufälleg Optauchen vun Beem während dem Spill. Dëst kann Industrien beaflossen, déi op d'Wuessen vun Beem ugewisen sinn
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :keng{RED}(zerstéiert Bauholzfabrik)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :nëmmen am Reebësch
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :iwwerall
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Keng{RED}(zerstéiert Bauholzfabrik)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Nëmmen am Reebësch
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Iwwerall
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Positioun vun der Haapt-Toolbar: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontal Positioun vun der Hapt-Toolbar uewen um Schierm
@@ -1447,7 +1447,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Horizontal Posi
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Radius wou d'Fënsteren uschnapen: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Distanz tëscht Fënsteren befier d'Fënsteren automatesch alignéiert ginn
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} Pixel
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :ausgeschalt
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Ausgeschalt
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximal Unzuel vun net-gepinnten Fënster: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Unzuel un net-gepinnten openen Fënster befier al Fënsteren automatesch zougemaach ginn fir nei Plaz ze man fir nei Fënsteren
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
@@ -1472,7 +1472,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Ganz schnell
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proportioun vun Dierfer déi kënnen Stied ginn: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Unzuel un Dierfer déi eng Stad kënnen ginn, folglesch start en Duerf méi grouss an wiisst méi séier
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 zu {COMMA}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :keen
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Keng
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Ufangs-Gréisst vun Stied mulitiplizéiren mat: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Duerchschnëttsgréisst vun Stied an Proportioun zu normalen Dierfer um Spillstart
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Beim Stroossebau absurd Stroossenelementer ofrappen: {STRING}
@@ -2026,7 +2026,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Downloa
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Ausgewielt wéinst: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Ofhängegkeeten: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD ass ouni "zlib" support gebuild...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD ass ouni "zlib" support compiléiert...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... Inhaltdownload ass net méiglech!
 
 # Order of these is important!

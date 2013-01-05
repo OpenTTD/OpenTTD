@@ -1027,10 +1027,17 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}אין �
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}הגדרות מתקדמות
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}מגביל את הרשימה הבאה להגדרות מסוימות
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :כל ההגדרות
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :הגדרות משתמש(לא נמצא בשמורים; משפיע על כל המשחקים)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :הגדרות משחק (נמצא בשמורים; משפיע רק על משחקים חדשים)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :הגדרות משחק (נמצא בשמורים; משפיע רק על משחק נוכחי)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :הגדרות חברה (נמצא בשמורים; משפיע רק על משחקים חדשים)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :הגדרות חברה (נמצא בשמורים; משפיע רק על חברה נוכחית)
 
 STR_CONFIG_SETTING_OFF                                          :כבוי
 STR_CONFIG_SETTING_ON                                           :דלוק
-STR_CONFIG_SETTING_DISABLED                                     :מבוטל
+STR_CONFIG_SETTING_DISABLED                                     :מנוטרל
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :כבוי
 STR_CONFIG_SETTING_COMPANIES_OWN                                :עבור החברה שלי
@@ -1055,7 +1062,7 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :טען כלי �
 STR_CONFIG_SETTING_INFLATION                                    :אנפלציה: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :מסור סחורה לתחנה רק כאשר יש ביקוש: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{STRING} :שיטת היצירה של משאבי טבע חדשים
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :בכלל לא
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ללא
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :כמו שאר התעשיות
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :חיפוש אחר התעשיות
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{STRING} :אפשר יצירת מספר תעשיות זהות בשטחה של עיר אחת
@@ -1074,7 +1081,7 @@ STR_CONFIG_SETTING_FREIGHT_TRAINS                               :הכפלת מש
 STR_CONFIG_SETTING_PLANE_CRASHES                                :מספר התרסקויות מטוסים: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ללא
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :מופחת
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :רגיל
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :נורמלי
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{STRING} :אפשר מעבר דרך תחנות על כבישים בבעלות עירונית
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :אפשר נסיעה דרך תמרורי-עצירה על דרכים בבעלות מתחרים: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{STRING} :אפשר בניית תחנות בשכנות
@@ -1085,8 +1092,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :בטל התיי
 
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{STRING} :בדוק מסלולי נסיעה
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :לא
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :כן,למעט עבור רכבים שבעצירה
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :עבור כל הרכבים
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :כן,למעט רכבים דוממים
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :עבור כל כלי רכב
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{STRING} :התרע על רכבים בעלי הכנסה שלילית
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{STRING} :בטל התיישנות כלי רכב
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :חידוש עצמי של רכב כשהוא נהיה ישן: {STRING}
@@ -1161,6 +1168,11 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{STRING} :הד�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{STRING}: שמור על כלי הבנייה פעילים לאחר השימוש
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{STRING} : קבץ הוצאות בחלון הכספים של החברה
 
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :השמע צפצוף בהקשת כפתורים
+STR_CONFIG_SETTING_SOUND_DISASTER                               :אסונות/תאונות: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :השמע קולות של תאונות ואסונות
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :כלי רכב: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :השמע קולות כלי רכב
 
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{STRING} :מספר רכבות מירבי לשחקן
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{STRING} :מספר משאיות/אוטובוסים מירבי לשחקן
@@ -1216,11 +1228,11 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :רמזורי נ
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :הכל
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :מתווה דרך לערים חדשות: {STRING}
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :רגילה
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :מקורי
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :כבישים משופרים
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 רשת
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 רשת
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :אקראית
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :אקראי
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :ערים יכולות לבנות דרכים: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{STRING} :אפשר שליטה של הערים ברמת הרעש בשדות תעופה
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :ייסוד ערים במשחק: {STRING}

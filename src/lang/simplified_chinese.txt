@@ -3958,7 +3958,7 @@ STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}不能�
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}这是一条城镇所属的道路
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}道路方向不对
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... 途中型车站不能建在转角处
-STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... 途中型车站不册建在路口处
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... 不能在岔路口修建过路型站台
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}不能拆除站台的一部分……

@@ -1136,7 +1136,9 @@ STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Belokan 90 dera
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Ijinkan menggabung stasiun meski tdk menempel: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Ijinkan penambahan bagian dari stasiun tanpa menyentuh bagian yang sudah ada. Perlu Ctrl+Klik ketika menambahkan bagian baru.
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Gunakan algoritma pengangkutan terbaru : {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Jika diaktifkan, beberapa kendaraan di stasiun dimuat secara berurutan. Pemuatan kendaraan berikutnya hanya dimulai ketika ada kargo cukup menunggu untuk benar-benar mengisi kendaraan pertama
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Angkut secara bertahap: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Secara bertahap kendaraan menggunakan jangka waktu untuk memuat, bukannya memuat semuanya sekaligus dengan waktu sama
 STR_CONFIG_SETTING_INFLATION                                    :Inflasi: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Perbolehkan inflasi dalam ekonomi, dimana biaya naik sedikit lebih cepat daripada pembayaran
 STR_CONFIG_SETTING_SELECTGOODS                                  :Menerima kargo di suatu stasiun hanya jika dibutuhkan: {STRING}
@@ -1162,7 +1164,9 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Di kanan
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Tampilkan laporan keuangan pada akhir tahun: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Jika diaktifkan, jendela keuangan akan ditampilkan setiap akhir tahun untuk lebih mudah memeriksa keadaan keuangan
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Tujuan baru standarnya adalah 'non-stop': {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Biasanya, kendaraan akan berhenti di setiap stasiun yang di lewati. Dengan mengaktifkan pengaturan ini, maka kendaraan akan melewati semua stasiun dalam perjalanan ke tujuan akhir. Perhatikan, bahwa pengaturan ini hanya mendefinisikan nilai default. Perintah individu dapat diatur
 STR_CONFIG_SETTING_STOP_LOCATION                                :Order kereta yang baru aslinya berhenti {STRING} dari stasiun
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Tempat kereta akan berhenti di peron stasiun. 'Dekat akhir' berarti dekat dengan titik masuk, 'tengah' berarti di tengah-tengah peron, dan 'jauh dari akhir' berarti jauh dari titik masuk
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :hampir selesai
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :tengah
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :jauh di belakang
@@ -1200,7 +1204,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Membolehkan kon
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Ijinkan membangun stasiun berdampingan: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Membolehkan stasiun berbeda untuk berhubungan satu sama lain
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Aktifkan beberapa pengaturan mesin NewGRF : {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Pilihan kompatibilitas untuk NewGRF lama. Jangan mematikan ini, sampai kau tahu apa yang kau lakukan!
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Pilihan kompatibilitas untuk NewGRF lama. Jangan mematikan ini, sampai anda tahu apa yang anda lakukan!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Tidak diijinkan mengubah setting ini karena kendaraan sudah ada
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Perawaran Infrastruktur: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Jika dinyalakan, infrastruktur membutuhkan biaya perawatan. Biaya tumbuh secara proporsional dengan ukuran jaringan, lebih berefek pada perusahaan besar dari pada perusahaan kecil
@@ -1360,31 +1364,48 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Jangka waktu pe
 STR_CONFIG_SETTING_NOSERVICE                                    :Tidak perlu perbaikan jika tidak pernah mogok: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktifkan batas kecepatan gerbong: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Non-aktifkan rel listrik: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Mengaktifkan setelan ini mematikan kebutuhan kereta listrik untuk berjalan di rel elektris
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Kedatangan kendaraan pertama pada stasiun pemain: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Tampilkan koran saat kendaraan pertama datang di stasiun pemain
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Kedatangan kendaraan pertama pada stasiun lawan: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Tampilkan koran saat kendaraan pertama datang di stasiun kompetitor
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Kecelakaan / bencana: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Tampilkan koran saat ada kecelakaan atau bencana
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informasi Perusahaan: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Tampilkan koran saat ada perusahaan yang baru berdiri, atau jika ada perusahaan yang akan bangkrut
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Pembukaan Industri Baru: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Tampilkan koran jika ada industri baru
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Penutupan Industri: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Tampilkan surat kabar jika industri ditutup
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Perubahan ekonomi: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Tampilkan koran/surat kabar tentang pergantian ekonomi dunia
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Perubahan produksi pada industri yang ditangani oleh pemain: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Tampilkan perubahan produksi industri yang dilayani pemain
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Perubahan produksi pada industri yang ditangani oleh para pesaing: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Tampilkan koran ketika produksi industri yang di layani kompetitor naik/turun
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Perubahan pada produksi industri lainnya: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Tampilkan koran ketika produksi industri yang tidak di layani oleh sebuah perusahaan berubak
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Saran / informasi pada kendaraan pemain.: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Tampilkan pesan kendaraan yang membutuhkan perawatan
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Kendaraan baru: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Tampilkan koran/surat kabar saat kendaraan baru menjadi ada
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Perubahan penerimaan kargo: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Tampilkan pesan tentang stasiun yang mengganti kargo yang diterima
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidi: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Tampilkan koran tentang kejadian yg berhubungan dengan subsidi
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informasi umum: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Tampilkan koran/surat kabar untuk berita umum, seperti pembelian perusahaan,dll
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Mati
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Ringkasan
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Penuh
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Berita berwarna tampil pada: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Tahun saat surat kabar/koran menjadi berwarna. Sebelum tahun ini, koran menggunakan warna hitam-putih
 STR_CONFIG_SETTING_STARTING_YEAR                                :Tahun mulai: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Aktifkan pertumbuhan ekonomi yang stabil (jarang berubah): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Ketika diaktifkan, produksi industri mengalami perubahan lebih sering, dalam gerakan kecil. Pengaturan tidak berpengaruh jika jenis industri disediakan oleh NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ijinkan pembelian saham perusahaan lain: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Jika diaktifkan, pemain dibolehkan membeli saham suatu perusahaan. Saham hanya bisa dibeli saat perusahaan memasuki umur tertentu
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Persentase keuntungan akhir dari sistem pengisi: {STRING}
@@ -1419,7 +1440,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Acak
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Kota mengijinkan untuk membuat jalan: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Perbolehkan kota untuk membangun jalan. Matikan untuk mencegah kota membangun jalan
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Kota yang diperbolehkan untuk membangun perlintasan tingkat: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Mengaktifkan seting ini akan memperbolehkan kota membuat perlintasan rel kereta
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Mengaktifkan setelan ini akan memperbolehkan kota membuat perlintasan tingkat antara jalan dan rel kereta
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Ijinkan kota mengatur tingkat kebisingan bandara : {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Jika diaktifkan, pembuatan bandara di kota tergantung dari jarak,kebisingan bandara dan populasi kota. Jika dimatikan, di kota hanya boleh ada dua bandara
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Mendirikan kota pada permainan: {STRING}
@@ -1511,7 +1532,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ganti ni
 STR_CONFIG_ERROR                                                :{WHITE}Kesalahan pada file konfigurasi...
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... kesalahan pada array '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... nilai '{STRING}' tdk sah untuk '{STRING}'
-STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... huruf pengisi diujung setting '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... pengisi huruf di akhir setelan '{STRING}'
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... mengabaikan NewGRF '{STRING}': GRF ID kembar sama '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... mengabaikan NewGRF tidak valid '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :tdk ditemukan
@@ -1558,7 +1579,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Pilih ga
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Tampilkan opsi permainan
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Tampilkan tabel nilai tertinggi
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Tampilkan Pengaturan lanjutan
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Tampilkan setting NewGRF
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Tampilkan setelan NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Cari konten baru dan pembaruan untuk diunduh
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Tampilkan pengaturan permainan dan AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Keluar OpenTTD
@@ -1597,7 +1618,7 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer ajaib (hancurkan industri, objek tidak bergerak): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Terowongan boleh menerobos terowongan lain: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Pesawat tak akan (sering) celaka di bandara kecil: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Lansekap 'Temperate'
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Lansekap 'Temperata'
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Lansekap 'Sub Arktik'
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Lansekap 'Sub Tropis'
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Lansekap 'Taman Bermain'

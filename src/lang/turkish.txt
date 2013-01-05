@@ -1060,6 +1060,13 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Temel ayarlar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gelişmiş ayarlar
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Uzman ayarları / tüm ayarlar
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Aşağıdaki liste belirli bir ayar türüne göre kısıtlanır
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tüm Ayarlar
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Kullanıcı Ayarları (kayıtlı dosyada saklanmadı; tüm oyunları etkilemektedir)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Oyun ayarları (kayıtlı dosyada saklandı; sadece yeni oyunu etkilemektedir)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Oyun ayarları (kayıtlı dosyada saklandı; sadece yeni oyunu etkilemektedir)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Şirket ayarları (kayıtlı dosyada saklandı; sadece yeni oyunu etkilemektedir)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Şirket ayarları (kayıtlı dosyada saklandı; sadece yeni oyunu etkilemektedir)
 
 STR_CONFIG_SETTING_OFF                                          :Kapalı
 STR_CONFIG_SETTING_ON                                           :Açık
@@ -2715,6 +2722,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}İstenen
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}İstenen kargoların listesini göster
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}İstenen: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Bu istasyon şehrin ulaşım haklarına sahip.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} bu şehirdeki ulaşım haklarını satın aldı.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Reyting
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}İstasyonun reytinglerini göster
@@ -2742,6 +2751,8 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Talimat 
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :İstasyonu yeniden adlandır
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Havalimanını kapat
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Uçağın bu havalimanına iniş yapmasını engelle
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -3089,6 +3100,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Maliyet
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Maliyet: {CURRENCY_LONG} Azami Hız: {VELOCITY} Menzil: {COMMA} kare{}Kapasite: {CARGO_LONG}{}Çalışma gideri: {CURRENCY_LONG}/yıl
 
 # Autoreplace window
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Değiştir {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Tren
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Karayolu taşıtı
 STR_REPLACE_VEHICLE_SHIP                                        :Gemi
@@ -3098,9 +3110,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Değişt
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Değiştirilecek türün yerine geçecek türü seçin
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Araçları Değiştirmeye Başla
+STR_REPLACE_VEHICLES_NOW                                        :Tüm araçları hemen değiştir
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Yalnız eski araçları değiştir
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Değiştirme işlemini başlatmak için basın
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Değiştirilmiyor
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Hiç Araç Seçilmedi
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} eskidiğinde
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Araçları değiştirmeyi durdur
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Değiştirme işlemini durdurmak için basın
 
@@ -3654,6 +3669,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... sahi
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... alan başka bir şirkete ait
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... yeryüzü şekillendirme sınırına ulaştınız
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... kare temizleme sınırına ulaştınız
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... ağaç dikme sınırına ulaştınız
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}İsim daha önce kullanılmamış olmalı
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}yolda {1:STRING} var
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Oyun duraklatılmışken izin verilmiyor
@@ -3715,6 +3731,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... yaln
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... yalnızca yağmur ormanlarında yapılabilir
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... yalnızca çöllerde yapılabilir
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... yalnızca şehirlerde yapılabilir
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... yalnızca şehir merkezlerinin yakınına yapılabilir
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... yalnız alçak bölgelere yapılabilir
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... sadece haritanın kenarlarına yerleştirilebilir
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... orman sadece kar sınırı üzerinde olabilir
