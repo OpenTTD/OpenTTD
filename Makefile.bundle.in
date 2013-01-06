@@ -47,6 +47,7 @@ bundle: all
 	$(Q)mkdir -p "$(BUNDLE_DIR)/scripts"
 	$(Q)mkdir -p "$(TTD_DIR)"
 	$(Q)mkdir -p "$(AI_DIR)"
+	$(Q)mkdir -p "$(GAME_DIR)"
 	$(Q)mkdir -p "$(BASESET_DIR)"
 	$(Q)mkdir -p "$(LANG_DIR)"
 ifdef OSXAPP
