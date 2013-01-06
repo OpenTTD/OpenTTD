@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :Enkonduka dato
 STR_SORT_BY_RUNNING_COST                                        :Irkosto
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potenco/Irkosto
 STR_SORT_BY_CARGO_CAPACITY                                      :Ŝarĝkapablo
+STR_SORT_BY_RANGE                                               :Atingopovo
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Paŭzigu la ludon
@@ -380,6 +381,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Urbo troviĝas.
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencioj
+STR_SUBSIDIES_MENU_GOAL                                         :Aktualaj celoj
 ############ range ends here
 
 ############ range for graph menu starts
@@ -394,6 +396,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Ŝarĝpaga graf
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Kompaniara tabelo
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detala rendimento
+STR_GRAPH_MENU_HIGHSCORE                                        :Altpoentara tabelo
 ############ range ends here
 
 ############ range for industry menu starts
@@ -444,6 +447,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Baskuligi Konzo
 STR_ABOUT_MENU_AI_DEBUG                                         :Sencimigo de AI
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekranfoto
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Pligrandiga ekranfoto
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Ekranfoto defaŭlte zoma
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tuta karto ekranfoto
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Pri 'OpenTTD'
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Montri/ne montri limigujo
@@ -720,6 +724,7 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Listo da
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mesaĝo
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua trajno alvenas ĉe {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua buso alvenas en {STATION}!
@@ -817,6 +822,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvencio doniĝis al {STRING}!{}{}Servo de {STRING} de {STRING} al {STRING} ricevis kvaroblajn pagojn por la sekva jaro!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Trafika ĥaoso en {TOWN}!{}{}Vojrekonstruada programo komencita de {STRING} alportas 6-monatan mizeron al vojuzantoj!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transporta monopolo!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vidujo {COMMA}
@@ -1023,7 +1029,12 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Neniu ta
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancitaj agordoj
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Etendu ĉio
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(neniu ekspliko disponeble)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Defaŭlta valoro: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo de agordo: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Montru:
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Bazniveloj agordoj
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Altnivelaj agordoj
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Altnivelaj agordoj / ĉiu agordoj
@@ -1048,9 +1059,14 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Maldekstre
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dekstre
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimuma komenca prunto: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE                                :Rentumtarifoj: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Irkostoj: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Konstrurapido: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Veturilpaneoj: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Ŝanĝu kio oni pagas por subvenciataj rilatoj
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Kostoj de konstruado: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Ŝanĝu nivelon de konstruaj kaj aĉetaj kostoj
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesioj: {STRING}
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofoj: {STRING}
 
@@ -1058,9 +1074,11 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Permesu konstru
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permesu terecigon sub konstruaĵoj, trakoj, ktp. (aŭtodeklivo): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Permesu pli realgrandaj kaptoregionoj: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permesu forigon de pli da urbaj stratoj, pontoj ktp: {STRING}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} kvadrato{P 0 "" j}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Kvanto da lokomotivo fumo/fajreroj: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelo de trajnakcelado: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modelo de stratveturilakcelado: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Vagonaroj kaj ŝipoj ne ort-turniĝu: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permesu ligi staciojn ne rekte najbarajn: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Uzu plibonigitan ŝarĝalgoritmon: {STRING}
@@ -1072,6 +1090,9 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :neniu
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kiel aliaj industrioj
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospektori
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permesu pliajn similajn industriojn en la sama urbo: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Montru signaloj: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Maldekstre
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Dekstre
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Montru financan fenestron fine de la jaro: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novaj ordonoj estas 'sen-halte' per defaŭlto: {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :Novaj trajnordonoj ĉesas defaŭlte ĉe la {STRING} of the platform
@@ -1080,11 +1101,13 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :meza
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :fora fino
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Stratveturila vicigo (kun kvantum-efektoj): {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Ŝovu fenestron se la muso estas ĉe la rando: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Malaktiva
 STR_CONFIG_SETTING_BRIBE                                        :Permesu subaĉeti la lokajn estrojn: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permesu aĉeti ekskluzivajn transportrajtojn: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permesi fondusante lokan stratan rekonstruo: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permesu sendi monon al aliaj kompanioj: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Pezpliigo pro ŝarĝo por imiti pezajn trajnojn: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Nombro da aviadilokraŝoj: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :neniom
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduktita
@@ -1147,6 +1170,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zomi mapon
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Skroli mapon
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Malaktiva
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Mapskrolrada rapido: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Enekrana klavaro: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Malaktiva
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Duobla klako
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Unuobla klako (kiam enfokusigita)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Unuobla klako (tuj)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Imitado de dekstra klako: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komando+Klako
@@ -1204,6 +1232,10 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Malebligu strat
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Malebligu aviadilojn por la komputilo: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Malebligu ŝipojn por la komputilo: {STRING}
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Defaŭlta agorda profilo: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Facila
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mezfacila
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Malfacila
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permesu ArtefaritajnIntelektojn en pluropaj ludoj: {STRING}
 
@@ -1322,6 +1354,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenarkr
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Pluraj Ludantoj
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Ludaj Opcioj
+STR_INTRO_HIGHSCORE                                             :{BLACK}Altpoentara tabelo
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avancitaj agordoj
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Agordoj de NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Provu Enretan Enhavon
@@ -1340,6 +1373,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Elektu '
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elektu 'ludlandan' landstilon
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Montru ludajn opciojn
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Montru altpoentara tabelo
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Montru avancitajn agordojn
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Montri NewGRF-agordojn
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Serĉi pri nova kaj ĝisdatigita enhavo por elŝuti
@@ -3295,6 +3329,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Nuligi
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne ŝanĝu AI-on
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametroj
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fermi
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reŝargo
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -3316,6 +3351,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Kosto: {CURRENCY_LONG}

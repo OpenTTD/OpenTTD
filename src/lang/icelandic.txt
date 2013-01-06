@@ -1087,7 +1087,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vinstri
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Miðja
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Hægri
 
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Hámarks lán: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Hámarkslán: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Hámarks upphæð sem fyrirtæki getur fengið lánað (ekki er gert ráð fyrir verðbólgu)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Vextir: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Vexti á lánum; stjórnar einnig verðbólgi ef hún ef kveikt er á henni
@@ -1118,8 +1118,8 @@ STR_CONFIG_SETTING_CATCHMENT                                    :Raunverulegri s
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Mismunandi stærð á söfnunarsvæðum fyrir mismunandi stöðvar og flugvelli
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Leyfa meiri eyðingu vega, brúa, gangna o.s.frv. í eigu bæjar: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Að það sé auðveldara að fjarlægja byggingar og mannvirki í eigu bæjarins
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Hámarks lengd lestar: {STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Hver er hámarks lengd lestanna
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Hámarkslengd lestar: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Hver er hámarkslengd lestanna
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} reit{P 0 ur ir}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Magn reyks/neista frá lestum: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Hversu mikill reikur eða neistar koma frá farartækjum
@@ -1144,10 +1144,10 @@ STR_CONFIG_SETTING_INFLATION                                    :Verðbólga: {S
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Hafa verðbólgu, þá eykst kostnaður aðeins hraðar en greiðslur
 STR_CONFIG_SETTING_SELECTGOODS                                  :Aðeins afhlaða farmi á stöðvum þar sem er eftirspurn: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Aðeins afhlaða farm á stöðvar sem taka á móti fluttum farmi. Það kemur í veg fyrir að farmur fái slæma einkunn á stöð sem ekki tekur við viðkomandi farmi
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Hámarks lengd á brúm: {STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Hámarks lengd á brúm sem á að byggja
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Hámarks lengd á göngum: {STRING}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Hámarks lengd á göngum sem á að byggja
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Hámarkslengd á brúm: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Hámarkslengd á brúm sem á að byggja
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Hámarkslengd á göngum: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Hámarkslengd á göngum sem á að byggja
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Fjármögnun nýrra hráefnisiðnaða: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Aðferðir við að fjármagna hráefnisiðnað. 'Enginn' þýðir að það er ekki hægt að fjármagna iðnaðinn, 'Með jarðefnisleit' þýðir að fjármögnun er möguleg, en iðnaðurinn er byggður á tilviljunnarkenndum stað á kortinu og gæti þess vegna mistekist, 'Eins og annar iðnaður' þýðir að hráefnisiðnaður getur verið fjármagnaður eins og annar iðnaður og á þeim stað sem fyrirtækið kýs
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Engin
@@ -1227,12 +1227,12 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Farartæki úre
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ef þessi stilling er virk, eru öll farartæki alltaf í boði eftir að þau voru fyrst kynnt til sögunnar
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Uppfæra faratæki sjálfvirkt þegar þau eldast: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ef þessi stilling er virk, eru farartæki endurnýjuð sjálfvirkt þegar endingartími þeirra er komin
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Endurnýja farartæki sjálfvirkt {STRING} hámarks aldur
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Endurnýja farartæki sjálfvirkt {STRING} hámarksaldur
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Hvenær íhuga ætti sjálfvirka útskipting á farartæki
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mánuð{P 0 i um} fyrir
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mánuð{P 0 i um} eftir
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Lágmarks bankainnistæða fyrir sjálfvirka uppfæringu: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Lágmarks upphæð peninga sem verður að vera til í bankanum áður en hægt er að skipta farartækjum sjálfvirkt út
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Lágmarksupphæð peninga sem verður að vera til í bankanum áður en hægt er að skipta farartækjum sjálfvirkt út
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Tími sem villuskilaboð eru sýnileg: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tími sem villuboð í rauðu gluggunum eru sýnd. Athugið að sumum (alvarlegum) villuboðum er ekki lokað sjálfvirkt eftir þennan tíma, þeim verður að loka handvirkt
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekúnd{P 0 a ur}
@@ -1248,7 +1248,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Breidd lína í
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landslagsmótun: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Upphafleg
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Hámarks fjarlægð frá brún að olíuhreinsistöð: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Hámarksfjarlægð frá brún að olíuhreinsistöð: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olíuhreinsistöðvar eru aðeins byggðar nálægt jöðrum á kortinu, það er að segja á ströndum á kortum sem eru af eyjum
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Hæð snjólínu: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Hrjúfleiki landslags (TerraGenesis stilling) : {STRING}
@@ -1269,8 +1269,8 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Ef þessi still
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Einn eða fleiri reitir við norðurjaðarinn eru ekki tómir
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Einn eða fleiri reitir við eina hlið kortsins hafa ekki vatn
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Hámarks stærð stöðva: {STRING}
-STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Hámarks svæði sem ein stöð má dreifast yfir. Athugið að því há gildi hægja á leiknum
+STR_CONFIG_SETTING_STATION_SPREAD                               :Hámarksstærð stöðva: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Hámarkssvæði sem ein stöð má dreifast yfir. Athugið að há gildi hægja á leiknum
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Skoða þyrlur sjálfvirkt á þyrlupalli: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Þjónusta þyrlur í hvert skipti sem þær hafa lent, jafnvel þó það sé ekkert skýli á flugvellinum
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Opna landmótunarglugga samhliða öðrum framkvæmdum: {STRING}
@@ -1377,13 +1377,13 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spila umlykjand
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Gera óvirkar byggingar tengd farartækjum sem eru ófáanleg: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ef þessi stilling er virk eru byggingartól fyrir farartæki aðeins virk ef þau farartæki eru í boði, þetta kemur í veg fyrir eyðslu á tíma og peningum og ónothæfar framkvæmdir
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Lestir á leikmann mest: {STRING}
-STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Hámarks fjöldi járnbrautarlesta sem fyrirtæki getur átt
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Hámarksfjöldi járnbrautarlesta sem fyrirtæki getur átt
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Bifreiðir á leikmann mest: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Hámarks fjöldi bifreiða, þar með talið sporvagna, sem fyrirtæki getur átt
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Hámarksfjöldi bifreiða, þar með talið sporvagna, sem fyrirtæki getur átt
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Flugvélar á leikmann mest: {STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Hámarks fjöldi flugvéla sem fyrirtæki getur átt
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Hámarksfjöldi flugvéla sem fyrirtæki getur átt
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Skip á leikmann mest: {STRING}
-STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Hámarks fjöldi skipa sem fyrirtæki getur átt
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Hámarksfjöldi skipa sem fyrirtæki getur átt
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Útiloka lestir frá tölvu: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Ef þessi stilling er virk er ómögulegt fyrir gervigreindar leikmenn að vera með járnbrautalestar
@@ -1403,10 +1403,10 @@ STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Erfitt
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Leyfa gervigreind í fjölspilun: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Leyfir gervigreindar leikmönnum að taka þátt í fjölspilunar leikjum
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes áður en forskriftir eru stöðvaðar: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Hámarks fjöldi útreikninga sem forskrift getur gert í hvert skipti
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Hámarksfjöldi útreikninga sem forskrift getur gert í hvert skipti
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Tími milli viðhalds farartækja sýndur í hundraðshlutum: {STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Veldu hvort þjónusta við farartæki ákvarðast af því hve langur tími er liðinn síðan það var síðast þjónustað eða þá að áreiðanleik farartækisins er orðinn ákveðin prósentutala af hámarks áreiðanleika
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Veldu hvort þjónusta við farartæki ákvarðast af því hve langur tími er liðinn síðan það var síðast þjónustað eða þá að áreiðanleik farartækisins er orðinn ákveðin prósentutala af hámarksáreiðanleika
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Sjálfgefið millibil fyrir þjónustu hjá járnbrautarlestum: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Stilltu sjálfgefið millibil fyrir þjónustu hjá nýjum járnbrautarlestum, á við ef ekkert tiltekið millibil er stillt fyrir farartækið
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 ur ar}/%
@@ -1497,7 +1497,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 net
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :slembið
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Bæir geta lagt vegi: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Leyfa bæjum að byggja vegi til að stækka. Slökkva á þessari stillingu til að koma í veg fyrir að bæjar yfirvöld geti byggt vegi sjálf
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Heimila bæjum að byggja göng og brýr: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Heimila bæjum að byggja vega/lestar gatnamót: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Ef þessi stilling er virk geta bæir gert vegi yfir járnbrautarspor
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Láta hávaða frá flugvöllum stjórna hvort bæjir leyfi þá innan bæjarmarka: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Ef þessi stilling er óvirk þá geta verið tveir flugvellir í hverjum bæ. Ef hún er virk er fjöldi flugvalla í bæjum takmarkaður við hvað bæir þola mikinn hávaða, sem stýrist af fólksfjölda, stærð flugvallar og fjarlægð
@@ -1525,8 +1525,8 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Hámarksfjöldi
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Fjöldi glugga, sem ekki eru fastir saman, sem geta verið opnir áður en gluggar fara að loka sjálfkrafa til að gera pláss fyrir nýja glugga
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :óvirkt
-STR_CONFIG_SETTING_ZOOM_MIN                                     :Hámarks aðdráttur: {STRING}
-STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Hámarks aðdráttur í sjónarhornum. Athugið að með meiri aðdrátti aukast minnis kröfur á tölvuna
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Hámarksaðdráttur: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Hámarksaðdráttur í sjónarhornum. Athugið að með meiri aðdrátti aukast minnis kröfur á tölvuna
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Hámark hvað er hægt að súma út: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Hversu langt er hægt að súma frá sjónarhornum. Því hærri sem talan er því meiri líkur eru á töf í tölvunni
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -2827,8 +2827,9 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Póstur 
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Nauðsynlegur farmur fyrir stækkun bæjarins:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} nauðsynlegt
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} nauðsynlegt á veturnar
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} kominn
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} afhent
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (vantar enn)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (afhent)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Bærinn stækkar á {ORANGE}{COMMA}{BLACK} dag{P s a} fresti
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Bærinn stækkar á {ORANGE}{COMMA}{BLACK} dag{P s a} (stofnaður)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Bærinn er {RED}ekki{BLACK} að stækka
@@ -2899,6 +2900,7 @@ STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Fyrri
 STR_GOAL_QUESTION_BUTTON_NEXT                                   :Næsta
 STR_GOAL_QUESTION_BUTTON_STOP                                   :Stoppa
 STR_GOAL_QUESTION_BUTTON_START                                  :Byrja
+STR_GOAL_QUESTION_BUTTON_GO                                     :Af stað
 STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Halda áfram
 STR_GOAL_QUESTION_BUTTON_RESTART                                :Byrja aftur
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Fresta
@@ -3087,9 +3089,9 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Miðja a
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Framleiðsla: {YELLOW}{COMMA}%
 
 ############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Tekur við: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Tekur við: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Tekur við: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Þarf: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Þarf: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Þarf: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
 ############ range for produces starts
@@ -3187,7 +3189,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Drifvagn
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Hægt að breyta farmi í: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Allar tegundir farms
 STR_PURCHASE_INFO_ALL_BUT                                       :Allt nema {CARGO_LIST}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Hámarks : {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Hámarks togkrafur: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Drægni: {GOLD}{COMMA} reitir
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lestarlisti - smelltu á farartæki fyrir meiri upplýsingar
@@ -3309,6 +3311,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Verð: {
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Verð: {CURRENCY_LONG} Þyngd: {WEIGHT_SHORT}{}Hámarskhraði: {VELOCITY}  Afl: {POWER}  Hámarks kraftur: {6:FORCE}{}Running Cost: {4:CURRENCY_LONG}/ári{}Burðargeta: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Verð: {CURRENCY_LONG} Hámarkshraði: {VELOCITY}{}Burðargeta: {CARGO_LONG}, {CARGO_LONG}{}Rekstrarkostnaður: {CURRENCY_LONG} á ári
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Verð: {CURRENCY_LONG} Hámarkshraði: {VELOCITY}{}Burðargeta: {CARGO_LONG}{}Rekstrarkostnaður: {CURRENCY_LONG} á ári
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Verð: {CURRENCY_LONG} Hámarkshraði: {VELOCITY} Drægni: {COMMA} reitir{}Capacity: {CARGO_LONG}, {CARGO_LONG}{}Rekstrarkosnaður: {CURRENCY_LONG} á ári
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Verð: {CURRENCY_LONG} Hámarkshraði: {VELOCITY} Drægni: {COMMA} reitir{}Burðargeta: {CARGO_LONG}{}Rekstrarkostnaður: {CURRENCY_LONG} á ári
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Endurnýja {STRING} - {STRING}
@@ -3321,9 +3325,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Veldu va
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Velja vagntegund sem þú myndir vilja nota í staðin fyrir vagntegundina sem valinn er vinstra megin
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Hefja skipti
+STR_REPLACE_VEHICLES_NOW                                        :Skipta út öllum farartækjum
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Skipta út gömlum farartækjum
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Smelltu til að hefja skipti á vagntegundinni sem valin er til vinstri með vagntegundinni sem valin er til hægri
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Skipti ekki
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Enginn vagn valinn
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} ef gömul
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stöðva skipti
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Smelltu til að stöðva skipti á vagntegundinni sem valin er vinstra megin
 
@@ -3394,6 +3401,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stöðvað
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Stöðva, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Ekkert afl
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Bíð eftir lausri leið
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Of langt á næst áfangastað
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Á leið til {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Engar skipanir, {VELOCITY}
@@ -3422,6 +3430,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} ár ({C
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ár ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Hámarkshraði: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Hámarkshraði: {LTBLUE}{VELOCITY} {BLACK}Drægni: {LTBLUE}{COMMA} reitir
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Þyngd: {LTBLUE}{WEIGHT_SHORT} {BLACK}Afl: {LTBLUE}{POWER}{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Þyngd: {LTBLUE}{WEIGHT_SHORT} {BLACK}Afl: {LTBLUE}{POWER}{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY} {BLACK}Hámarks dráttarafl.: {LTBLUE}{FORCE}
 
@@ -3474,7 +3483,9 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Veldu farm sem á að flytja:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ný burðargeta: {GOLD}{CARGO_LONG}{}{BLACK}Breytingarkostnaður: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nýtt rými: {GOLD}{CARGO_LONG}{}{BLACK}Tekjur vegna endurnýjunar: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nýtt rými: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Breytingakostnaður: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nýtt rými: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Tekjur vegna endurnýjunar: {GREEN}{CURRENCY_LONG}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Veldu farartækið sem á að breyta. Ef dregið er með músinni er hægt að velja mörg farartæki. Smella á autt svæði velur allt farartækið. Ctrl+smella velur farartækið og röðina fyrir aftan
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Veldu hvernig farm lestin á að flytja
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veldu tegund farms sem bifreið mun flytja
@@ -3527,6 +3538,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Breyta h
 
 STR_ORDER_REFIT                                                 :{BLACK}Breyta
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Veldu farm til að breyta í. CTRL smelltu til að fjarlægja breytiskipun
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Sjálfvirk breyting
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Veldu í hvaða tegund farmurinn breytist í þessari skipun. Ctrl+smella til að sleppa breytingar skipun. Sjálfvirk breyting verður bara gerð ef farartækið leyfir það
+STR_ORDER_DROP_REFIT_AUTO                                       :Ákveðinn farmur
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Tiltækur farmur
 
 STR_ORDER_SERVICE                                               :{BLACK}Skoðun
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Fara alltaf
@@ -3543,6 +3558,7 @@ STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Hámarkshraði
 STR_ORDER_CONDITIONAL_AGE                                       :Aldur (ár)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Þarfnast þjónustu
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Alltaf
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Eftir af líftíma (ár)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Samanburður gagna farartækis við gefið gildi
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :er jafnt og
@@ -3562,11 +3578,15 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Sleppa n
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Eyða
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Eyða valdri skipun
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Eyða öllum skipunum
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Hætta að deila
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Hætta að deila skipunum. Ctrl+smella eyðir auk þess öllum skipunum hjá þessu farartæki
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Fara að
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Fara í næsta skýli
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Fara í næsta flugskýli
 STR_ORDER_CONDITIONAL                                           :Skilyrðisbundin hunsun skipana
+STR_ORDER_SHARE                                                 :Deila skipunum
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Skeyta inn nýrri skipun á undan valdri skipun, eða bæta við aftast á listann. Ctrl lætur skipanir 'fullhlaða einhverjum farmi', vegvísa skipanir 'ekki stöðva' og skýlis skipanir 'þjónusta'. 'Deila skipun' eða Ctrl lætur þetta farartæki deila skipunum með völdu farartæki. Smella á farartæki deilir skipunum með því farartæki. Ef skýli er í skipunum óvirkjar það sjálfvirka þjónustu á farartækinu
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Sýna öll farartæki sem deila þessari áætlun
@@ -3592,6 +3612,7 @@ STR_ORDER_STOP_ORDER                                            :(Stopp)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_IMPLICIT                                              :(Undanskilin)
 
 STR_ORDER_FULL_LOAD                                             :(Fullhlaða)
 STR_ORDER_FULL_LOAD_ANY                                         :(Fullhlaða einhverjum farmi)
@@ -3609,13 +3630,26 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ekki afhlaða 
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ekki afhlaða og bíða hvaða fullfermis sem er)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Hvorki afferma né ferma)
 
+STR_ORDER_AUTO_REFIT                                            :(Breya sjálfvirkt í {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Fullhlaða og breyta sjálfvirkt í {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Fullhlaða einum farmi og breyta sjálfvirkt í {STRING})
 STR_ORDER_UNLOAD_REFIT                                          :(Afferma og taka farm með sjálfvirkni breyttni til {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Afhlaða og breyta í {STRING}, bíða svo fullfermis)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Afhlaða og breyta í {STRING}, bíða svo einhvers fullfermis)
+STR_ORDER_TRANSFER_REFIT                                        :(Flytja, breyta í {STRING} og taka farm)
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Flytja, breyta í {STRING} og bíða fullfermis)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Flytja, breyta í {STRING} og bíða einhvers fullfermis)
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Ekki afhlaða, breyta í {STRING} og taka farm)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Ekki afhlaða, breyta í {STRING} og bíða fullfermis)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ekki afhlaða, breyta í {STRING} og bíða einhvers fullfermis)
 
+STR_ORDER_AUTO_REFIT_ANY                                        :tiltækur farmur
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[upphaf]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[miðja]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[endir]
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Of langt í næsta áfangastað)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Hoppa í skipun {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Hoppa í skipun {COMMA} þegar {STRING} {STRING} {COMMA}
@@ -3631,8 +3665,11 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Skipta y
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Áætlun - smelltu á skipun til að velja hana.
 
 STR_TIMETABLE_NO_TRAVEL                                         :Engin ferðalög
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ferðalag (sjálfvirkt; áætlað eftir næstu handvirku skipun)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ferðalag (ekki sett í áætlun)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Ferðast með hámarkshraða {2:VELOCITY} (ekki áætlað)
 STR_TIMETABLE_TRAVEL_FOR                                        :Ferðast í {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Ferðast í {STRING} með hámarkshraða {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :og bíða í {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :og ferðast í {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" a}
@@ -3656,7 +3693,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Breyta t
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Hreinsa tíma
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Hreinsa tímann fyrir valda skipun
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Breyttu hámarkshraða
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Breyttu hámarkshraða á valdri skipun
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Hreinsa hámarkshraða
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Hreinsa hámarkshraða á valdri skipun
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Endurstilla seinkunnarteljara
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Endurstilla seinkunarteljara, svo farartækið verði á réttum tíma
@@ -3698,6 +3739,8 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Skifta �
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Áfram
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Láta gerfigreind halda áfram.
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Skoða ferlisupplýsingar frá þessari gerfigreind
+STR_AI_GAME_SCRIPT                                              :{BLACK}Forskrift
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Skoða forskriftar kladdann
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Engin nothæf gerfigreind fundin.{}Þetta er platgerfigreind sem gerir ekkert.{}Hægt er að ná í gerfigreindir með 'Ná í viðbætur af netinu' valmöguleikanum
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ein af forskriftunum hrundi. Vinsamlega gerðu höfundi forskriftarinnar viðvart og sendu inn mynd af aflúsunarglugga gervigreindarinnar/forskriftarinnar
@@ -3705,20 +3748,32 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Aflúsu
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Stilling gervigreindar/forskriftar
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Forskriftin sem verður hlaðin í næsta leik
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Gervigreindin sem verður hlaðin í næsta leik
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mennskur leikmaður
 STR_AI_CONFIG_RANDOM_AI                                         :Gervigreind af handahófi
+STR_AI_CONFIG_NONE                                              :(engin)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Færa upp
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Færa valda gerfigreind upp listann
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Færa niður
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Færa valda gerfigreind niður listann
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Forskrift
+STR_AI_CONFIG_AI                                                :{SILVER}Gervigreindir
 
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Veldu {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :gervigreind
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Forskrift
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Hlaða annarri forskrift
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Stilla
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Stilltu eiginleika forskriftar
 
 # Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}Mögulegar {STRING}
+STR_AI_LIST_CAPTION_AI                                          :gervigreindir
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :leikja forskriftir
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Smelltu til að velja forskrift
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Höfundur: {ORANGE}{STRING}
@@ -3731,12 +3786,22 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Hætta v
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Hætta við breytingar forskriftar
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} breytur
+STR_AI_SETTINGS_CAPTION_AI                                      :Gervigreindar
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Leikja forskriftar
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Loka
 STR_AI_SETTINGS_RESET                                           :{BLACK}Frumstilla
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Hversu mörgum dögum eftir síðustu gervigreind á að hlaða þessari (sirka): {ORANGE}{STRING}
 
 
 # Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} lesskrá (readme) fyrir {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} breytiskrá (changelog) fyrir {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} leyfi fyrir {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Skoða lesskrá
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Breytiskrá
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Leyfi
 
 
 # Vehicle loading indicators
@@ -3787,6 +3852,7 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... eitt
 STR_ERROR_BMPMAP                                                :{WHITE}Get ekki hlaðið landslagi úr BMP skrá...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... gat ekki breytt myndsniði
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... myndin er of stór
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Stærð hæðarlínukorts
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ekki er mælt með því að breyta stærð grunnkorts of mikið. Viltu halda áfram?
@@ -3818,14 +3884,18 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... óhe
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... nú þegar byggt
 STR_ERROR_OWNED_BY                                              :{WHITE}... í eigu {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... svæðið er í eigu annars fyrirtækis
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... takmörkun fyrir landlagsgerð náð
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... ekki hægt að hreinsa fleiri reiti
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... ekki hægt að planta fleiri trjám
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nafnið verður að vera sérstætt
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} er fyrir
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ekki leyft á meðan leikurinn er á bið
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} bæjaryfirvöld leyfa þetta ekki
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Bæjaryfirvöld {TOWN} leyfa ekki byggingu annars flugvallar nærliggjandi bænum
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} Stjórn bæjarins hafnar leyfir fyrir flugvelli vegna hljóðmengunar
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Mútunartilraun þín hefur verið uppgötvuð af héraðsrannsakanda
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Get ekki lyft landssvæði hér...
@@ -3878,9 +3948,12 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... aðe
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... aðeins hægt að byggja á regnskógasvæðum
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... aðeins hægt að byggja í eyðimörk
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... aðeins hægt að byggja í bæjum (skiptir út húsum)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... er aðeins hægt að byggja nálægt miðju bæja
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... aðeins hægt að byggja á láglendi
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... getur aðeins verið staðsett nálægt brún kortsins
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skógur getur aðeins verið gróðursettur yfir snjólínu
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... er aðeins hægt að byggja fyrir ofan snælínu
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... er aðeins hægt að byggja fyrir neðan snælínu
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Get ekki byggt lestarstöð hér...
@@ -4001,6 +4074,9 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Ekki hæ
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Ekki hægt að setja ár hér...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... verður að byggjast á vatni
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Get ekki byggt á vatni
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... ekki hægt að byggja á opnu hafi
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... ekki hægt að byggja á skipaskurðum
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... ekki hægt að byggja á ám
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Verður að fylla upp í skipaskurð fyrst
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Ekki hægt að byggja vatnsleyðslu hér...
 
@@ -4018,6 +4094,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Brú er 
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Verður að byrja og enda í sömu línu
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... báðir endar brúarinnar verða að vera á landi
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... of löng brú
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Brúin myndi enda fyrir utan kortið
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Get ekki grafið göng hér...
@@ -4026,6 +4103,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Verður 
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Önnur göng fyrir
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Göng myndu enda utan korts
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Get ekki breytt landi fyrir hinn enda gangnanna
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... göngin of long
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... of margir hlutir
@@ -4097,6 +4175,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... öku
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Get ekki látið lest fara framhjá hættumerki...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Get ekki snúið lest við...
+STR_ERROR_TRAIN_START_NO_POWER                                  :Lestin hefur ekkert afl
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Get ekki snúið bifreiðinni við...
 
@@ -4116,8 +4195,10 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... fara
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... farartæki sem deilir þessum skipunum getur ekki farið á þessa stöð
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Get ekki deilt skipana lista...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Get ekki hætt að deila skipun...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Get ekki afritað skipana lista...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... of langt frá fyrri stað
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... flugvél hefur ekki næga drægni
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Get ekki gert áætlun farartækis...

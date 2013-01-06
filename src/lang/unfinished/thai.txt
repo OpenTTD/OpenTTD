@@ -1036,6 +1036,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}ไม�
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}ปรับแต่งเพิ่มเติม
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :การตั้งค่าทั้งหมด
 
 STR_CONFIG_SETTING_OFF                                          :ปิด
 STR_CONFIG_SETTING_ON                                           :เปิด
@@ -1186,6 +1187,12 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :แสดงร
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :ให้คงการแสดงเครื่องมือการสร้างหลังการใช้: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :จัดกลุ่มรายจ่ายในหน้าต่างการเงินของบริษัท: {STRING}
 
+STR_CONFIG_SETTING_SOUND_CLICK                                  :ปุ่มคลิก: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :เสียงเตือนเมื่อคลิกปุ่ม
+STR_CONFIG_SETTING_SOUND_DISASTER                               :ภัยพิบัติ/อุบัติเหตุ: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :เล่นเสียงประกอบของอุบัติเหตุและภัยพิบัติ
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :ยานพาหนะ: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :เล่นเสียงประกอบของยานพาหนะ
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :ปิดการใช้งานในส่วนของสิ่งปลูกสร้างสาธารณูปโภคเมื่อไม่มียานพาหนะที่เหมาะสม: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :ขบวนรถไฟมากที่สุดต่อผู้เล่น: {STRING}

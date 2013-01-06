@@ -1061,6 +1061,13 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expertenastellu
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Astellungen mat engem aneren Wäert wéi den Standardwäert
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Astellungen mat engem aneren Wäert wéi d'Neit-Spill-Astellungen
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Beschränkt déi folgend Lëscht op bestëmmten Astellungstypen
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :All Astellungen
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Clientastellung (net am Save gespäichert; betrëfft all Spiller)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spillastellungen (am Save gespäichert; betrëfft just nei Spiller)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spillastellungen (am Save gespäichert; betrëfft just nei Spiller)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Firmenastellungen (am Save gespäichert; betrëfft just nei Spiller)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firmenastellung (am Save gespäichert; betrëfft just déi aktuell Firma)
 
 STR_CONFIG_SETTING_OFF                                          :Aus
 STR_CONFIG_SETTING_ON                                           :Un
@@ -1320,6 +1327,22 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Looss d'Bauopti
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Ausgaben vun der Firma an der Finanzfënster gruppéiren: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definéiert den Layout fir d'Firmenausgabenfënster
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Newsticker: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Spill Sound of fir resuméiert Neiegkeeten
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Zeitung: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Spill Soundeffekt of wann eng Zeitung rauskënnt
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Enn vum Joer: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Spill Soundeffekt of um Enn vum Joer, wann d'Performance vund er Firma resuméiert am Verglach mam Viirjoer
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Konstruktioun: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Spill Soundeffekter of wann Konstruktiounen an aner Aktiounen ausgefouert goufen
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Kneppercherklicks: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Beep beim Klicken vun Kneppercher
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastrophen/Accidenter: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Spill Soundeffekter vun Accidenter an Katastrophen of
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Gefierer: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Spill Soundeffekter vun Gefierer of
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiance: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spillt Ambience Soundeffekter vun der Landschaft, Industrien an Stied of
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Gebai ausschalten wann keng passend Gefierer verfügbar sinn: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Wann ugeschalt, ass d'Infrastruktur just verfügbar, wann och Gefierer verfügbar sinn, fir dass keen Geld an keng Zäit verschwend gëtt, sënnlos Infrastrukturen ze bauen
@@ -1367,20 +1390,35 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Elecktreschschi
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Wann dës Astellung ugeschalt ass, ginn keng elektresch Schinnen gebrauch fir mat elektreschen Zich ze fueren
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Ukonft vum éischten Gefiert op enger Spillerstatioun: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Weis d'Zeitung wann dat éischt Gefier op enger eegener Statioun ukënnt
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Ukonft vum éischten Gefiert op enger Géigenspillerstatioun: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Weis d'Zeitung wann dat éischt Gefier op enger géignerescher Statioun ukënnt
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidenter / Katastrophen: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Weis d'Zeitung wann Accidenter oder Katastrophen passéiren
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Firmeninformatiounen: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Weis d'Zeitung wann eng nei Firma opgeht, oder wann eng riskéiert Bankrott ze goen
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Industrieeröffnung: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Weis d'Zeitung wann eng nei Industrie opmécht
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Industrie gëtt zougemaach: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Weis d'Zeitung wann eng Industrie zou mécht
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Wirtschaftsännerungen: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Weis d'Zeitung iwwert d'global Economie
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produktiounswiessel vun der Industrie dei vun der Firma betreit gëtt: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Weis d'Zeitung wann d'Produktioun vun enger Industrie ännert, déi vun der Firma servéiert gëtt
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produktiounswiessel vun der Industrie dei vun der Konkurenz betreit gëtt: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Weis d'Zeitung wann d'Produktioun vun enger Industrie ännert, déi vun engem Spiller servéiert gëtt
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Aanern Industriellen Produktiounswiessel: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Weis d'Zeitung wann d'Produktioun vun enger Industrie ännert, déi vun kengem Spiller servéiert gëtt
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Hinweis / Informatioun iwwert Firmengefierer: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Weis Messagen wann Gefierer Opmierksamkeet brauchen
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nei Gefierer: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Weis d'Zeitung wann en neit Gefier rauskënnt
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Ännerungen vun acceptéiert Luedungen: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Weis d'zeitung wann Statiounen Güter acceptéiren / net méi akzeptéiren
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventiounen: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Weis d'Zeitung an Relatioun mat Subsiden
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Generel Informatiounen: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Weis Zeitung iwwert generell Evenementer, wéi z.b de Kaf vun exklusiven Transportrechter oder Stroosserenovéierungen
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Aus
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resumé
@@ -1486,6 +1524,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Géigner
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Displayoptiounen
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaktioun
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Soundeffekter
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}News an Messagen
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Luedungshandhabung
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerspiller
@@ -2675,6 +2715,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Huet eng Rei Action 8 Einträg (Sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lanscht d'Enn vum Pseudo-Sprite gelies (Sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}D'momentan benotzten Grafikset huet e puer Sprites ze mann. {}W.e.g d'Basisgrafikset updaten
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Am grad benotzten Basis-Grafikset fehlen e puer Sprites.{}W.e.g Basis-Grafikset updaten.{}Wellsde en {YELLOW}Development Snapshot vun OpenTTD spills{WHITE}, brauchsde och en {YELLOW}Development Snapshot vum Basis-Grafikset{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Ugefroten GRF Ressource net verfügbar (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} gouf ausgeschalt vun {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Invalid/onbekannten Sprite Layout Format (Sprite {3:NUM})

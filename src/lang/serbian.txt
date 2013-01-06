@@ -724,7 +724,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Prikaži sve
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Sakri sve
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Prikazuje sve vrste tovara na grafikonu prihoda
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Sakriva sve vrste tovara na grafikonu prihoda
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Sakrij sve vrste tovara na grafikonu prihoda
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Uključi/Isključi grafikone po vrsti tovara
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -767,7 +767,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Zajam:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Ukupno:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Broj vozila koja su imala dobit prošle godine. Ovo uključuje drumska, železnička vozila, brodove i letilice
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Broj nedavno servisiranih delova stanica. Posebno se broji svaki deo (npr. železničko, autobusko stajalište ili aerodrom) stanice
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Broj nedavno opsluženih stanica. Posebno se broji svaki deo stanice (npr. železničko, autobusko stajalište ili aerodrom)
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Dobit vozila sa najmanjim prihodom (samo vozila starijih od 2 godine)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Zarađen novac u tromesečju sa najmanjom dobiti u proteklih 12 tromesečja
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Zarađen novac u tromesečju sa najvećom dobiti u proteklih 12 tromesečja
@@ -1231,6 +1231,12 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nisu dos
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredna Podešavanja
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Ograničava donju listu na određen tip podešavanja
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Sva podešavanja
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Podešavanja klijenta (nisu uskladištena u sačuvanoj igri; utiču na sve partije)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Podešavanja igre (biće uskladištena u sačuvanoj igri; ima efekta samo na nove partije)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Podešavanja igre (biće uskladištena u sačuvanoj igri; ima efekta samo na nove partije)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Kompanijska podešavanja (biće uskladištena u sačuvanoj igri; ima efekta samo na nove partije)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Podešavanja kompanije (uskladištena u sačuvanoj igri; utiču samo na trenutnu kompaniju)
 
 STR_CONFIG_SETTING_OFF                                          :Ne
@@ -1249,6 +1255,11 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Levo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sredina
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Desno
 
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ako je uključeno i ako postoji kraća putanja do sledećeg odredišta, vozovi se neće okretati u neterminalnim stanicama
+STR_CONFIG_SETTING_DISASTERS                                    :Katastrofe: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Uključuje i isključuje katastrofe koje s vremena na vreme mogu blokirati ili uništiti vozila i infrastrukturu
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Stav gradskog odbora u pogledu restrukturiranja zone: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Izbor koliko će buka i zagađenje koje proizvode kompanije uticati na njihov gradski rejting i dalje građevinske akcije u toj zoni
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Dozvoljena gradnja na kosinama i obalama: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Dozvoljena izmena nagiba ispod zgrada, koloseka, itd. (autoslope): {STRING}
@@ -1298,8 +1309,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Nezastarevanje 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Upozorenje ukoliko se vozilo izgubi: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Provera naredbi vozila: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nijedno
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :samo aktivna
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :sva
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :da, osim zaustavljenih vozila
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :svih vozila
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Upozorenje ukoliko vozilo pravi gubitke: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila su uvek dostupna: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatksa zamena kada vozilo ostari: {STRING}
@@ -1383,6 +1394,22 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Prikazati rezer
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Zadržati aktivne alate za gradnju posle upotrebe: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupisati troškove u finansijskom prozoru preduzeća: {STRING}
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Telegrafski zvuk: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reprodukuj zvučne efekte pri prikazu sažetih novinskih poruka
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Novinski naslovi: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Reprodukuj zvučne efekte prilikom prikazivanja novinskih naslova
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Kraj godine: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reprodukuj zvučne efekte prilikom ispisa rezultata poslovanja kompanije na kraju svake godine
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Izgradnja: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reprodukuj zvučne efekte pri uspešnoj izgradnji i sličnim akcijama
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Klik na tastere: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Reprodukuj zvuk prilikom klika na tastere
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Nezgode/katastrofe: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Reprodukuj zvučne efekte nezgoda i katastrofa
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vozila: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Reprodukuj zvučne efekte vozila
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Okruženje: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reprodukuj ambijentalne zvučne efekte za teren, industriju i gradove
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Onemogućena izgradnja infrastrukture kada nema odgovarajućih vozila: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Najviše vozova po preduzeću: {STRING}
@@ -1405,20 +1432,35 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Uključeno ogra
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Nepostoji posebna električna pruga: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Dolazak prvog vozila na igračevu stanicu: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Prikazuje novinske naslove kada prvo vozilo pristigne u novu stanicu igrača
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Dolazak prvog vozila na suparničku stanicu: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Prikazuje novinske naslove kada prvo vozilo pristigne u konkurentsku novu stanicu
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Udesi/nepogode: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Prikazuje novinske naslove kada se desi nezgoda ili katastrofa
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Podaci o preduzeću: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Prikazuje novinske naslove kada se otvori nova kompanija, ili kada postojeća rizikuje bankrot
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Otvaranje nove fabrike: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Prikazuje novinske naslove kada se otvori nova fabrika
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zatvaranje fabrike: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Prikaži novinske naslove o zatvaranju fabrika
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Promene u ekonomiji: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Prikaži novinske naslove o globalnim ekonomskim promenama
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Promene u proizvodnji usluženih industrija: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Prikaži novinske naslove kada se promeni nivo proizvodnje u industriji koja je pokrivena od strane naše kompanije
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Promene u proizvodnji industrija usluženih konkurencijom: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Prikaži novinske naslove kada se promeni nivo proizvodnje u industriji koja jeste pokrivena od strane konkurencije
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Promene u proizvodnji ostalih industrija: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Prikaži novinske naslove kada se promeni nivo proizvodnje u industriji koja nije pokrivena ni od strane kompanije, ni od strane konkurencije
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Savet / Izveštaji o vozilima preduzeća: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Prikaži poruke o događajima na vozilima koji zahtevaju intervenciju
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nova vozila: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Prikaži novinske naslove kada postane dostupan novi tip vozila
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Promene u prihvatanju tovara: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Prikaži poruke kada stanice promene tip prijema robe i putnika
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencije: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Prikaži novinske naslove o događajima u vezi sa subvencijama
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Opšta obaveštenja: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Prikaži novinske naslove o opštim događajima, kao što kupovina ekskluzivnih prava ili finansiranje rekonstrukcije puteva
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Isključeno
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sažeto
@@ -1441,7 +1483,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Sva
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Plan gradnje novih puteva u naseljima: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :originalno
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :napredno
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :unapređeni putevi
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 mreže
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 mreže
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :proizvoljan plan
@@ -1449,17 +1491,17 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Naseljima je do
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Naseljima je dozvoljeno da grade putne prelaze: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Naseljima je dozvoljeno da kontrolišu nivo buke aerodroma: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Osnivanje naselja u toku partije: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zabranjeno
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :{G=muški}zabranjen
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :dozvoljeno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :dozvoljeno, zaseban plan gradnje
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Rasejavanje drveća tokom partije: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nikakvo {RED}(onesposobljava rad drvnih kombinata)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :{G=srednji}nikakvo {RED}(onesposobljava rad drvnih kombinata)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :samo u tropskim šumama
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :svuda
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Lokacija glavne trake sa alatima: {STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :Položaj statusne trake: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Položaj statusne linije: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Najviše nepridenutih prozora: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Najbliži nivo: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Najudaljeniji nivo: {STRING}
@@ -1486,6 +1528,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Suparnici
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Prikazivanje
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakcija
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Zvučni efekti
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Vesti i poruke
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signali
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Baratanje teretom
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računar
@@ -1608,8 +1652,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Prikaži
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Prikaži mustre boja drumskih vozila
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Prikaži mustre boja brodova
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Prikaži mustre boja letilica
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Izaberite osnovnu boju za označenu kategoriju
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Izaberite dodatnu boju za označenu kategoriju
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Izaberite osnovnu boju za označenu kategoriju. Ctrl+klik će izabrati ovu boju za sve kategorije
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Izaberite dodatnu boju za označenu kategoriju. Ctrl+klik će izabrati ovu boju za sve kategorije
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Označite kategoriju za izmenu boje, ili više njih koristeći Ctrl+Klik. Kliknite na kvadratić kako biste aktivirali korišćenje boje
 
 STR_LIVERY_DEFAULT                                              :Uobičajne Boje
@@ -2019,7 +2063,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Veliči
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Označeno zbog: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Zavisnosti: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Oznake: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD je napravljen bez podrške za "zlib"...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD je kompajliran bez podrške za "zlib"...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... preuzimanje dodataka nije moguće!
 
 # Order of these is important!
@@ -2664,6 +2708,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sadrži više Akcija 8 ulaza (sprajt {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čitanje iza završetka pseudo-sprajta (sprajt {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Odabranom skupu osnovnih grafika nedostaje neki broj sprajtova.{}Molimo Vas da ga ažurirate
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Grafičkom setu koji je trenutno u upotrebi nedostaje određen broj sprajtova.{}Osvežite grafički set.{}S obzirom da igrate {YELLOW}razvojnu verziju OpenTTD-a{WHITE}, treba vam i {YELLOW}razvojna verzija grafičkog seta{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Traženi GRF resursi nisu dostupni (sprajt {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} je isključen od strane {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neispravan/nepoznat format prikazivanja sprajta (sprajt {3:NUM})
@@ -3262,7 +3307,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Prebacuj
 STR_REPLACE_ENGINES                                             :Lokomotive
 STR_REPLACE_WAGONS                                              :Vagoni
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Izaberite vrstu pruge za koju želite da zamenite kompozicije
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Izaberite vrstu pruge za koju želite zamenu kompozicije
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Prikazuje koja lokomotiva će se zameniti označenom sa leve strane, ako ih ima
 STR_REPLACE_RAIL_VEHICLES                                       :Šinska Vozila
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrošinska Vozila
@@ -3780,6 +3825,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Pretera
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Pronađen je samo rezervni skup zvukova. Ukoliko želite zvukove, preuzmite skup zvukova preko sistema za dodatke
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Ogromna slika ekrana
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Slika ekrana će imati rezoluciju {COMMA} x {COMMA} tačaka. Snimanje slike će možda malo potrajati. Da li hoćete da nastavite?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Slika je snimljena pod imenom '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Slika nije snimljena!

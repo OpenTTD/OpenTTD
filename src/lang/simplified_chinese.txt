@@ -1332,6 +1332,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :允许使用高
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :使用装货进度指示： {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :选择是否在车辆上方显示装卸货物进度
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :使用时间标记而不是天为单位： {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :时间表以ticks而不是天显示。
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :在时刻表中显示到达时间和出发时间： {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :在时刻表中显示预期的到达和出发时间
 STR_CONFIG_SETTING_QUICKGOTO                                    :快速创建车辆调度计划：{STRING}
@@ -1529,6 +1530,8 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :慢
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :正常
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :快
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :非常快
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :随机生成城镇时，生成大都市的比例为: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :随机生成城镇时，有可能生成大都市的数量，这些大都市起始人口较多、发展也较快。
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 / {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :没有
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初始城市规模因子：{STRING}
