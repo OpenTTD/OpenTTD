@@ -124,6 +124,10 @@ Section "!OpenTTD" Section1
 	SetOutPath "$INSTDIR\ai\"
 	File ${PATH_ROOT}bin\ai\compat_*.nut
 
+	; Copy Game Script files
+	SetOutPath "$INSTDIR\game\"
+	File ${PATH_ROOT}bin\game\compat_*.nut
+
 	; Copy data files
 	SetOutPath "$INSTDIR\baseset\"
 	File ${PATH_ROOT}bin\baseset\*.grf
@@ -398,6 +402,9 @@ Section "Uninstall"
 	; AI files
 	Delete "$INSTDIR\ai\compat_*.nut"
 
+	; Game Script files
+	Delete "$INSTDIR\game\compat_*.nut"
+
 	; Baseset files
 	Delete "$INSTDIR\baseset\opntitle.dat"
 	Delete "$INSTDIR\baseset\openttd.grf"
@@ -469,6 +476,7 @@ Section "Uninstall"
 	RMDir "$SMPROGRAMS\$SHORTCUTS\Docs\"
 	RMDir "$SMPROGRAMS\$SHORTCUTS"
 	RMDir "$INSTDIR\ai"
+	RMDir "$INSTDIR\game"
 	RMDir "$INSTDIR\data"
 	RMDir "$INSTDIR\baseset"
 	RMDir "$INSTDIR\gm"

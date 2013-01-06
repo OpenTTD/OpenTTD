@@ -227,11 +227,13 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %dir %{_datadir}/%{name}/baseset
 %dir %{_datadir}/%{name}/scripts
 %dir %{_datadir}/%{name}/ai
+%dir %{_datadir}/%{name}/game
 %{_datadir}/doc/%{name}/*
 %{_datadir}/%{name}/lang/*
 %{_datadir}/%{name}/baseset/*
 %{_datadir}/%{name}/scripts/*
 %{_datadir}/%{name}/ai/*
+%{_datadir}/%{name}/game/*
 %doc %{_mandir}/man6/%{name}.6.*
 
 %files gui
