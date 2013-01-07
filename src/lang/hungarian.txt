@@ -280,6 +280,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} láb
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Szűrő kifejezés:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Kulcsszó megadása a szűréshez
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Írj ide egy kulcsszót ami alapján szűrni szeretnéd a listát
 
@@ -460,6 +461,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Rakományok sz�
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Vállalatok helyezései
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Teljesítményértékelések részletezése
+STR_GRAPH_MENU_HIGHSCORE                                        :Rekord Tábla
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1103,6 +1105,9 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nincsen 
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Haladó beállítások
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Szűrő kifejezés:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Összes szétnyitása
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Összes összezárása
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(leírás nem elérhető)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Alapértelmezett érték: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Beállítás típusa: {ORANGE}{STRING}
@@ -1112,8 +1117,12 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Játék beáll�
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Vállalat beállítás (mentésben tárolva; csak az új játékokat befolyásolja)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Vállalat beállítás (mentésben tárolva; csak a jelenlegi vállalatot befolyásolja)
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Mutat:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Leszűkíti a listát a módosított értékekkel rendelkező opciókra
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Alapbeállítások
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Haladó beállítások
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Szakértő beállítások / minden beállítás
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Beállítások az eredetitől eltérő értékekkel
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Minden beállítás
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Kliens beállítások (nincs mentésben tárolva; minden játékot érintenek)
@@ -1138,6 +1147,19 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Balra
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Középen
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Jobbra
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximális kezdeti hitelkeret: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximálisan kölcsönözhető összeg (az inflációtól eltekintve)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Kamatláb: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Banki hitel kamat; valamint szabályozza az inflációt is
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Üzemeltetési költségek: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Építkezési sebesség: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Jármű lerobbanások: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Támogatási szorzó érték: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Építkezési költségek: {STRING}
+STR_CONFIG_SETTING_RECESSIONS                                   :Gazdasági válságok: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ha bekapcsolod, gazdasági válság fog kitörni néhány évente. A válság alatt az összes ipar jelentősen kevesebbet termel. (A válság végével a termelés vissza áll az eredeti szintre.)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Vonatok állomáson történő megfordulásának tiltása: {STRING}
+STR_CONFIG_SETTING_DISASTERS                                    :Katasztrófák: {STRING}
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Lejtőre és partokra építés: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Bekapcsolva utak, vasutak és állomások lejtőre is építhetőek. Kikapcsolva csak olyan lejtőre építhetőek, melyek megegyeznek a lejtő irányával és nem igényelnek egyéb létesítményeket
@@ -1329,6 +1351,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Térkép mozgat
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Ki
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Egérgörgő sebessége a térképen: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Egérgörgős mozgatás érzékenységének beállítása
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Képernyőbillentyűzet: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Kikapcsolva
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dupla kattintás
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Egyszeres kattintás (amikor előtérben van)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Egyszeres kattintás (azonnal)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Jobb egérgomb emuláció: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Jobb egérgomb emulálási módszerének kiválasztása
@@ -1355,8 +1382,8 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Bekapcsolva a j
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Szünetben engedélyezett: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :A szünet közben történő cselekvések kiválasztása
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :semmilyen cselekvés
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :minden, ami nem építés
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :minden, ami nem tájrendezés
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Minden, ami nem építés
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Minden, ami nem tájrendezés
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :minden cselekvés
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Továbbfejlesztett járműlista használata: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Továbbfejlesztett járműlista használatának engedélyezése a járművek csoportosításához
@@ -1380,6 +1407,18 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Az építő esz
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Kiadási/bevételi adatok csoportosítása a pénzügyi ablakban: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :A pénzügyi adatok ablak elrendezésének beállítása
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Hírsáv: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Újság: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Hanglejátszás az újság megjelenésekor
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Év vége: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Építkezés: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Hanglejátszás sikeres építkezések vagy más tevékenységek után
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Gombra kattintás: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Sípolás gombra kattintáskor
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Katasztrófák/balesetek: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Balesetek és katasztrófák hangjainak lejátszása
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Járművek: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Járműhangok lejátszása
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Infrastruktúra építésének tiltása amíg nem elérhető megfelelő jármű: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Bekapcsolva az infrastruktúra csak akkor elérhető, ha van megfelelő jármű, megakadályozva a felesleges pénzköltést a kihasználhatatlan infrastruktúrára
@@ -1401,6 +1440,9 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Bekapcsolva a s
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Hajók tiltása a gépi ellenfeleknek: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Bekapcsolva a számítógép által irányított ellenfelek nem építhetnek hajókat
 
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Könnyű
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Közepes
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Nehéz
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Számítógépes ellenfelek a hálózati játékokban: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Számítógép által irányított játékosok részvételének engedélyezése többjátékos játékokban
@@ -1427,20 +1469,33 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Villamosított 
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Bekapcsolva nem szükséges villamosítani egy vágányt ahhoz, hogy azon villanymozdonyok közlekedhessenek
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Első jármű megérkezése a játékos megállójába: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Újság megjelenítése amikor a cég új állomásához megérkezik az első jármű
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Első jármű megérkezése az ellenfél megállójába: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Újság megjelenítése amikor egy konkurens vállalat új állomásához megérkezik az első jármű
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Balesetek / természeti csapások: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Újság megjelenítése balesetek vagy katasztrófák bekövetkezésekor
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Vállalati információk: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Újság megjelenítése amikor egy új cég alapul vagy csődközelbe kerül
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Új gazdasági épületek megjelenése: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Újság megjelenítése amikor új ipartelep nyílik
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Gazdasági épületek bezárása: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Újság megjelenítése, amikor egy ipartelep bezár
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Gazdasági változások: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Újság megjelenítése a globális gazdasági változásokkal kapcsolatban
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Termelésváltozások a vállalatod által kiszolgált gazdasági létesítményeknél: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Termelésváltozások a konkurenseid által kiszolgált gazdasági létesítményeknél: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Más gazdasági termelési változások: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Üzenet megjelenítése, amikor egy olyan ipartelep teljesítménye változik, amely nem kötődik semelyik cég tevékenységéhez
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :A vállalat járműveire vonatkozó ötletek / információk: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Üzenet megjelenítése beavatkozást igénylő járművekkel kapcsolatban
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Új járművek: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Újság megjelenítése, amikor egy új jármű elérhetővé válik
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Rakományok elfogadásainak változásai: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Üzenet megjelenítése az állomások fogadóképességéről
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Támogatások: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Újság megjelenítése szállítási támogatásokkal kapcsolatban
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Általános információk: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Újság megjelenítése mely információkat tartalmaz általános eseményekről, mint például exkluzív szállítási jogok vásárlása vagy új útfelújítási hozzájárulás
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Ki
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Kivonat
@@ -1546,6 +1601,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Gazdas�
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Ellenfelek
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Megjelenítési beállítások
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Irányítás
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Hang effektek
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Hírek és üzenetek
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Jelzők
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Rakomány kezelés
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Számítógép által vezérelt ellenfelek
@@ -1600,6 +1657,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Pályasz
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Hálózati játék
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Beállítások
+STR_INTRO_HIGHSCORE                                             :{BLACK}Rekord tábla
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Haladó beállítások
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF beállítások
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Letölthető tartalmak
@@ -1619,6 +1677,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Szubtró
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Játékvilág táj kiválasztása
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}A játék beállításainak megjelenítése
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Rekord tábla megjelenítése
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Haladó beállítások megjelenítése
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF beállítások megjelenítése
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Új és frissített tartalmak megtekintése és letöltése
@@ -2407,6 +2466,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Láncola
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Rakományellátó és fogyasztó gazdasági épületek megjelenítése
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Térképre kapcsolás
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}A térképen megjelenített gazdasági épületek kiválasztása
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Szállítmánytípus kiválasztása
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Válaszd ki a szállítmány típust amit meg akarsz jeleníteni
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Iparág választás
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Válaszd ki az iparágat amit meg akarsz jeleníteni
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Terület-információ
@@ -3839,6 +3902,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}A forr�
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Csak egy elavult hang alapcsomagot találtam. Ha szeretnél hangokat, telepíts egy hang alapcsomagot a tartalomletöltő rendszeren keresztül
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Hatalmas képernyőkép
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}A képernyőkép felbontása {COMMA} x {COMMA} pixel lesz. A méret miatt ez eltarthat egy ideig. Szeretnéd folytatni?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}A képernyő elmentve '{STRING}' néven
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}A képmentés nem sikerült!

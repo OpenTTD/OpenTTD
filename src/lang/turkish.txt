@@ -1134,6 +1134,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :uzak uç
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Karayolu taşıtları kuyruğa girsin (içiçe geçerek): {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Fare kenardayken pencere etkin: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Kapalı
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Tüm görünümler
 STR_CONFIG_SETTING_BRIBE                                        :Belediye rüşveti izinli: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Şehrin ulaşım haklarını satın alma izinli: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Binaları finanse etmeye izin ver: {STRING}
@@ -1246,6 +1247,20 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Ayrılan raylar
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Yapı araçlarını kullanımdan sonra aktif tut: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Şirket mali tablosunda grup harcamaları: {STRING}
 
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Özet haber mesajları için ses çal
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Gazete: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Gazete gösterimlerinde ses oynat
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Yıl sonu: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :İnşaat: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Başarılı inşaat ya da diğer eylemlerde ses oynat
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Düğme klikleri: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Düğmelere basıldığında bip'le
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Kaza/felaketler: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Kaza ve felaketlerin ses efektlerini oynat
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Araçlar: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Araçların seslerini oynat
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ortam: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Yeryüzü, fabrikalar ve kasabaların ortam seslerini oynat
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Uygun araç bulunmadığında ilgili altyapıların yapılmasını engelle: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Şirket başına azami tren sayısı: {STRING}
@@ -1285,6 +1300,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE                                  :Şirketin araç
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Yeni araçlar: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Kargo isteğindeki değişiklikler: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Teşvikler: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Teşvikle ilgili olaylarda gazete göster
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Genel bilgi: {STRING}
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Kapalı
@@ -1353,6 +1369,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Rakipler
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Görüntü seçenekleri
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Etkileşim
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ses efektleri
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Haberler ve mesajlar
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinyaller
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Kargo idaresi
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Bilgisayar oyuncuları

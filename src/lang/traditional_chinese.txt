@@ -1033,6 +1033,12 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}無適�
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}進階設定
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :所有設定
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :客戶端設定 (儲存時不保存；影響所有遊戲)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :遊戲設定 (儲存時保存；只影響新遊戲)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :遊戲設定 (儲存時保存；只影響目前遊戲)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :公司設定 (儲存時保存；只影響新遊戲)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :公司設定 (儲存時保存；只影響目前的公司)
 
 STR_CONFIG_SETTING_OFF                                          :關
 STR_CONFIG_SETTING_ON                                           :開
@@ -1180,6 +1186,18 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :顯示列車佔
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :使建設工具在建造後仍保持啟用狀態：{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :將公司財務視窗的收支分組顯示：{STRING}
 
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :總結新訊息時播放音效
+STR_CONFIG_SETTING_SOUND_NEWS                                   :報紙: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :在顯示報紙時播放音效
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :年度結束: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :建造: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :在完成構建或其他動作時播放音效
+STR_CONFIG_SETTING_SOUND_CLICK                                  :按鈕點擊: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :按下按鈕時發出嗶聲
+STR_CONFIG_SETTING_SOUND_DISASTER                               :災難/事件: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :播放事件與災難的音效
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :車輛: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :播放車輛音效
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :當沒有適合的可用交通工具時，禁止建造基礎建設: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :公司可擁有最大列車數量：{STRING}
@@ -1202,19 +1220,29 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :停用電氣化
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :首輛交通工具抵達玩家的車站: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :首輛交通工具抵達競爭對手的車站: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :當競爭者的首台交通工具到站時顯示報紙
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :意外／災難: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :當事件或災難發生時顯示報紙
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :公司資訊: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :當新公司開始營業或倒閉破產時顯示報紙
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :開放工業: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :當新工業開張時顯示報紙
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :關閉工業: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :當工廠關閉時顯示報紙
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :經濟景氣的變動: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :顯示關於經濟總體變動的報紙
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :由自家公司提供服務的工業產量變動: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :由競爭對手提供服務的工業產量變動: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :其他工業產量變更: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :自家公司交通工具的建議或資訊: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :顯示需要注意的交通工具的訊息
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :新交通工具: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :當新交通工具形態可用時顯示報紙。
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :可接收貨物的變動: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :補助資訊: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :顯示關於補助金相關事件的報紙
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :一般資訊: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :顯示關於一般事件的報紙，像是專有權的收購或是道路興建投資。
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :關閉
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :摘要
@@ -1280,6 +1308,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}經濟
 STR_CONFIG_SETTING_AI                                           :{ORANGE}競爭對手
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}顯示選項
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}互動
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}音效
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}新聞與訊息
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}號誌
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}貨物裝載
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}電腦玩家

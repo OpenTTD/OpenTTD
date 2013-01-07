@@ -398,6 +398,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Luedungs Bezuel
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Betriebsranglëscht
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detailéiert Performancebewertung
+STR_GRAPH_MENU_HIGHSCORE                                        :Beschtenlëscht
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1085,6 +1086,28 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Lénks
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Zentréiert
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Riets
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximalen Ufanksloun: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalwert den eng Firma kann léinen (ouni Inflatioun matzerechnen)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Zënssaz: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Zënssaz; kontrolléiert och d'Inflatioun wann ugeschalt
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Betriebskäschten: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Fixéier den Niveau vun den Betriebskäschten vun Gefierer an Infrastruktur
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Baugeschwindegkeet: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limitéier d'Unzuel vun Bauaktiounen fir d'KI
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Gefierpannen: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Kontrolléirt wéi oft Gefierer eng Pann hunn déi net ordentlech an der Revisioun waren
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidemultiplikator: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Fixéiert wéivill fir subsidéiert Verbindungen bezuelet gëtt
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruktiounskäschten: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Bestëmm den Niveau vun Bau- an Kafkäschten
+STR_CONFIG_SETTING_RECESSIONS                                   :Rezessiounen: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wann ugeschalt kann all puer Joer eng Rezessioun kommen. Während enger Rezessioun ass d'Produktioun däitlech méi niddreg (an klëmmt erëm op den alen Niveau no der Rezessioun)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Verbidden dass Zich an enger Statioun emdréinen: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Wann ugeschalt kënnen Zich net an Nët-Endstatiounen emdréinen, wann en méi kuerzen Wee op d'Destinatioun ass wann en emdréint
+STR_CONFIG_SETTING_DISASTERS                                    :Katastrophen: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Stelle Katastrophen un oder aus déi eventuell Gefierer an Industrien blockéiren oder zerstéiren
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Dem Stadrot seng Astellung zum Embauen vun der Landschaft: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Wielt aus, wéivill vun der Firma verursachten Kaméidi an Emweltschiedegung sech op d'Stadbewertung auswierkt an op weider Bauaktiounen
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Erlaabt d'Bauen op Küsten an op Ofhäng: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Wann ugeschalt, kënnen Schinnen an Statiounen op den meeschten Häng gebaut ginn. Wann ausgeschalt, kënnen se just an der Richtung vum Hang gebaut ginn an brauchen dann keen Fundament
@@ -1276,6 +1299,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Kaart Scrollen
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Aus
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Map Scrollrad Geschw. : {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontrolléier d'Sensitivitéit vum Mausrad-scrollen
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Onscreen-Tastatur: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Wiel d'Method fir d'Onscreentastatur unzeman fir Text an eng Textbox ze schreiwen andems just eng Maus benotzt gëtt. Dëst as geduet fir kleng Geräter ouni richteg Tastatur
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Ausgeschalt
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Duebelklick
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Een Klick (wann fokusséiert)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Een Klick (direkt)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Rietsklickemulatioun: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Wiel d'Method aus fir déi riets Maustast ze emuléiren
@@ -1364,6 +1393,11 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Wann dës Astel
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Schëffer fir den Computer ausschalten: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Wann dës Astellung ugeschalt ass, kann en Computergéigner keng Schëffer bauen
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Standard Astellungsprofil: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Wielt aus wellechen Astellungsprofil benotzt gëtt fir d'zoufälleg KI oder fir Ufankswerter wann eng nei KI oder Spillscript ugeschalt gëtt
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Einfach
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Normal
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Schwéier
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Erlaabt KI am Multiplayer: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Erlaabt Computergéigner an Multiplayer Spiller matzeman
@@ -1580,6 +1614,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Szenarie
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multiplayer
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spilloptiounen
+STR_INTRO_HIGHSCORE                                             :{BLACK}Beschtenlëscht
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Erweidert Astellungen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Astellungen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Check Online Inhalt
@@ -1599,6 +1634,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Wielt de
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Wielt den Landschaftsstil 'Spillsaachenland'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Spilloptiounen
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Beschtenlëscht uweisen
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Weist erweidert Astellungen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF Astellungen uweisen
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check op neien Inhalt kann downgeload gin
@@ -3824,6 +3860,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Quellen
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Et gouf nëmmen en Ersatzsoundset fonnt. Wann Sounds erwënscht sin, kënnen se iwwer den Downloadsystem installéiert ginn.
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Riesenscreenshot
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Den Screenshot wäert eng Opléisung vun{COMMA} x {COMMA} Pixel hunn. Et kann e bëssen dauern bis en gemet ass. Wëllsde weiderman?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot gespäichert als '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screenshotfehler!
