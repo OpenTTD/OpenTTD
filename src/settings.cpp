@@ -811,7 +811,7 @@ static bool InvalidateDetailsWindow(int32 p1)
 
 static bool InvalidateStationBuildWindow(int32 p1)
 {
-	SetWindowDirty(WC_BUILD_STATION, 0);
+	InvalidateWindowData(WC_SELECT_STATION, 0);
 	return true;
 }
 
