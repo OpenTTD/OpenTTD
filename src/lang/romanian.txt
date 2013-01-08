@@ -1282,17 +1282,21 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Mov
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Inversează direcţia de scroll: {STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Modul de funcționare in momentul folosirii butonului drept al mouse-ului pentru deplasare pe hartă. Când opțiunea este dezactivată, mouse-ul schimbă poziția camerei. La activare, mouse-ul desplasează harta.
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Derulare uşoară ecran: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controlează modul de deplasare a imaginii din ecranul principal când se face click pe harta mică sau când se execută o comandă de deplasare către un obiect anume de pe hartă. Dacă este activată, imaginea se deplasează în mod fluid, altfel imaginea sare direct la zona dorită
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Arată o indicaţie de distanţă la folosirea uneltelor de construcţie: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Afișează distanțele în pătrățele și diferențele de înălțime la mișcarea mouse-ului în timpul operațiilor de construcție
 STR_CONFIG_SETTING_LIVERIES                                     :Arată culorile companiilor: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Niciunul
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Propria companie
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Toate companiile
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Chat între membrii echipei folosind tasta <ENTER>: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funcţia roţii mouse-ului: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Activează deplasarea imaginii folosind mouse cu roată de scroll bi-dimensională
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom hartă
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Derulează harta
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Inactivă
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Viteza de derulare a hărtii pt rotiţa mouse-ului: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controlează senzitivitatea roatei de scroll a mouse-ului
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Tastatură virtuală: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Alege metoda de deschidere a tastaturii virtuale, pentru a introduce text in câmpul de text folosind doar un mouse sau echipament hardware similar. Această opțiune este menită pentru aparate mici, care nu dețin o tastatură adevarată.
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Dezactivat
@@ -1301,28 +1305,35 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Un singur click
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Un singur click (instant)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulare click-dreapta: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Alege metoda de emulare a click-urilor provenite de la butonul din dreapta al mouse-ului
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Comandă+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Oprit
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Derulare ecran cu click-stânga: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Activează derularea hărții prin tragerea acesteia cu butonul stâng al mouse-ului. Această opțiune este în special utilă când se folosește un ecran tactil pentru deplasare
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Foloseşte formatul datei {STRING} pentru numele salvărilor
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formatul datei in numele salvărilor
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :lung (31 Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :scurt (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Paleta implicită pentru NewGRF-uri care nu specifică o paletă: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Paleta implicită care va fi folosită cu un NewGRF, dacă acesta nu specifică o anume paletă
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Paletă DOS
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Paletă Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :La pornirea unui joc nou, pune-l pe pauză: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Când este activată, jocul se va comuta automat in mod pauză la pornirea unui nou joc, permițând astfel un studiu mai atent al hărții
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Când jocul este în pauză permite: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Alege ce acțiuni se pot efectua cât timp jocul este în pauză
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :nicio acţiune
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :toate acţiunile non-construcție
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :toate exceptând modificarea peisajului
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :toate acțiunile
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Foloseşte lista avansată de vehicule: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Activează folosirea listelor avansate de vehicule pentru a gruparea acestor vehicule
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Foloseşte indicatorii de încărcare: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Arată orarul pe programări, nu pe zile: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Afişează plecările şi sosirile în orare: {STRING}
@@ -3436,7 +3447,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Capacita
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}{}{BLACK}Venituri din schimbare: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Costul schimbării: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Venituri din schimbare: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Seletează vehiculele pentru modificare. Trage cu mouse-ul pentru a selecta mai multe vehicule. Click pe spațiu gol pentru a selecta intregul vehicul. Ctrl+Click va selecta un vehicul si lanțul atașat
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selectează vehiculele pentru modificare. Trage cu mouse-ul pentru a selecta mai multe vehicule. Click pe spațiu gol pentru a selecta intregul vehicul. Ctrl+Click va selecta un vehicul si lanțul atașat
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Alege tipul de marfă transportat de tren
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Alege tipul de marfă pe care o transportă autovehiculul

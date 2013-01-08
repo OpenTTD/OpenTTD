@@ -1258,6 +1258,11 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :nuostatas, kuri
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Rodyti tik tam tikro tipo nuostatas
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Visas nuostatas
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Programos (galioja visiems žaidimams)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Žaidimo (įrašoma pradedant naują žaidimą)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Žaidimo (įrašoma kiekvieną kartą išsaugant žaidimą. Galioja tik aktyviam žaidimui)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Kompanijos (įrašoma pradedant naują žaidimą)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Kompanijos (įrašoma kiekvieną kartą išsaugant žaidimą. Galioja tik šiuo metu aktyviai kompanijai)
 
 STR_CONFIG_SETTING_OFF                                          :Ne
 STR_CONFIG_SETTING_ON                                           :Taip
@@ -1275,6 +1280,26 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kairėje
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centruoti
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dešinėje
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Didžiausia pradinė paskola: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Didžiausia paskola, kokią kompanija gali gauti iš banko (neatsižvelgiant į infliaciją)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Palūkanų norma: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Paskolos palūkanų norma. Taip pat įtakoja infliaciją (jei ji įgalinta)
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Eksploatacijos išlaidų lygmuo: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Nustatyti infrastruktūros bei transporto priemonių ekploatacijos išlaidų lygmenį
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Statymo greitis: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Kompiuterio priešininko statymo sparta
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Transporto priemonių gedimo dažnumas: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Nurodo, kaip dažnai ges netinkamai prižiūrimos transporto priemonės
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidijų daugiklis: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Nustato, kiek kartų maršruto įplaukos bus padidintos, gavus subsidiją
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Statybos kaštų lygis: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nustatykite statybos kaštų lygmenį
+STR_CONFIG_SETTING_RECESSIONS                                   :Nuosmukiai: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Įgalinus šią nusotatą, kas keletą metų gali užklupti ekonomikos nuosmukis. Nuosmukio metų smarkiai smunka gamyba (kuri atsistato nuosmukiai pasibaigus)
+STR_CONFIG_SETTING_DISASTERS                                    :Katastrofos: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Įgalinti atsitiktines katastrofas, kurių metų gali būti apgadintos ar sunaikintos transporto priemonės bei infrastruktūra
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Miestų gyventojų požiūris į triukšmą ir aplinkos darkymą: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Nustatyti miestų požiūrį į statybas, triukšmą ir kraštovaizdžio keitimą. Nuo to priklauso kompanijos reitingas bei leidimasstatyti įvairius objektus
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Leisti statybas pakrantėse ir ant šlaitų: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Leisti statyti bėgius, stoteles bei kitus objektus ant šlaitų. Priešingu atveju ant šlaito bus galima tiesti tik bėgius ir tik šlaito kryptimi
@@ -1588,8 +1613,10 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Gamyklų aptarn
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Gamyklų aptarnaujamų kitų kompanijų gamybos pasikeitimas: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Kitų gamyklų gamybos pasikeitimas: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Patarimai / informacija apie kompanijos transporto priemones: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Rodyti pranešimus apie transporto priemones, kurioms reikia priežiūros
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Naujos transporto priemonės: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Prekių supirkimo pokyčiai: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Rodyti pranešimus apie stotelėse priimamų krovinių pokyčius
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidijos: {STRING}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Bendroji informacija: {STRING}
 
@@ -1778,7 +1805,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Patikrin
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Rodyti DI ir žaidimo nustatymus
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Išeiti iš 'OpenTTD'
 
-STR_INTRO_TRANSLATION                                           :{BLACK}Šiam vertimui trūksta {NUM} eilu{P ė tės čių}. Padėkite OpenTTD užsiregistruodami kaip vertėjas. Daugiau informacijos rasite readme.txt
+STR_INTRO_TRANSLATION                                           :{BLACK}Šiam vertimui trūksta {NUM} eilu{P tė ės čių}. Padėkite išversti OpenTTD užsiregistruodami vertėju. Daugiau informacijos rasite faile readme.txt
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Baigti
@@ -4052,6 +4079,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Perdary
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Rasta tik fiktyvi garsų biblioteka. Jeigu norite garsų žaidime, įdiekite garsų rinkinį naudojant parsisiuntimų sistemą.
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Didelės apimties ekrano nuotrauka
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Ekrano nuotraukos raiška bus {COMMA} x {COMMA} pikselių. Įrašymas gali užtrukti. Ar norite tęsti?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Ekrano vaizdas išsaugotas kaip „{STRING}“
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekrano vaizdas neišsaugotas!

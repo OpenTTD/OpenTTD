@@ -395,10 +395,12 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Тарифи з
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Класиране на компаниите
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Рейтинг на представянето в детайли
+STR_GRAPH_MENU_HIGHSCORE                                        :Таблица с най-добрите резултати
 ############ range ends here
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Списък на индустриите
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Индустриални вериги
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Инвестирай в нова индустрия
 ############ range ends here
 
@@ -1020,7 +1022,13 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Няма
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Настройки за напреднали
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Разгъни всички
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Сгъни всички
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Покажи:
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Прости настройки
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Разширени настройки
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Експертни настройки / всички настройки
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Долният списък се ограничава до конкретни типове настройки
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Всички настройки
@@ -1054,6 +1062,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :ляво
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :център
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :дясно
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максимален начален заем: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максимално количество заем за компания (без отчитане на инфлацията)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Лихвен процент: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Лихвен процент на заемите; също така контролира инфлацията ако е разрешена
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Цени за опериране на превозните средства: {STRING}
@@ -1101,6 +1111,10 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :по среда
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :в далечния край
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Опашка на автомобилите (със сумарен ефект): {STRING.f}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Местене на екрана когато мишката е в края: {STRING.n}
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Изключен
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Главна камера, само в режим на цял екран
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Главна камера
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Всяка камера
 STR_CONFIG_SETTING_BRIBE                                        :Подкупване на местната власт: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Позволи купуване на изклучителни транспортни права: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Позволи изпращане на пари до други компаний: {STRING}
@@ -1167,6 +1181,8 @@ STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :променя 
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :превърта картата
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :не прави нищо
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Превъртане на картата: {STRING} клетк{P 0:2 а и}
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Виртуална клавиатура: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Забранено
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Дясно-щракане емулациа: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команда-щракане
@@ -1223,6 +1239,7 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Премахв�
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Премахване на летателните машини за компютърния играч: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Премахване на корабите за компютърния играч: {STRING}
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Профил на настройки по подразбиране: {STRING}
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Лесно
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Средно
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Трудно
@@ -1357,6 +1374,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Реда
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Онлайн играчи
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Настройки
+STR_INTRO_HIGHSCORE                                             :{BLACK}Таблица с най-добрите резултати
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Настройки за напреднали
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF настройки
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Провери онлайн съдържанието
@@ -1375,6 +1393,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Избе
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Избери "играчков" тип на картата
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Покажи параметрите на играта
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Показване на таблицата с най-добри резултати
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Покажи настройките за напреднали
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Покажи NewGRF настройки
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Провери за ново съдържание за сваляне
@@ -2147,6 +2166,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Пока
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Покажи индистриите, които приемат и доставят товар
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Път към малката карта
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Избери показаната индустрия и на малката карта
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Изберете товар
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Изберете товар за показване
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Изберете индустрия
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Изберете индустрия за показване
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Информация за земята
@@ -3113,7 +3136,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Капа
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Преустройване)
 STR_REFIT_TITLE                                                 :{GOLD}Изберете вид товар за превозване:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Нов капацитет: {GOLD}{CARGO_LONG}{}{BLACK}Цена за преустройство: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Нов капцитет: {GOLD}{CARGO_LONG}{}{BLACK}Приход от преустройване: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Нова вместимост: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Цена за преоборудване: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Нов капацитет: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Проход от преустройване: {GREEN}{CURRENCY_LONG}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Избор тип на товар за влак
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Избор тип това за автомобила да превозва
@@ -3392,6 +3417,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Цена: {CURRENCY_LONG}

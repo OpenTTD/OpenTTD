@@ -1198,6 +1198,8 @@ STR_CONFIG_SETTING_SOUND_DISASTER                               :災難/事件: 
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :播放事件與災難的音效
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :車輛: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :播放車輛音效
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :環境: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放夷平地面、工廠和城鎮的環境音效
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :當沒有適合的可用交通工具時，禁止建造基礎建設: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :公司可擁有最大列車數量：{STRING}
@@ -1234,6 +1236,7 @@ STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :顯示關於經
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :由自家公司提供服務的工業產量變動: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :由競爭對手提供服務的工業產量變動: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :其他工業產量變更: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :當自家工廠生產等級改變時顯示報紙
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :自家公司交通工具的建議或資訊: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :顯示需要注意的交通工具的訊息
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :新交通工具: {STRING}
