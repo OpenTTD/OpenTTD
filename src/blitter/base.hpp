@@ -123,7 +123,7 @@ public:
 
 	/**
 	 * Copy from a buffer to the screen.
-	 * @param video The destionation pointer (video-buffer).
+	 * @param video The destination pointer (video-buffer).
 	 * @param src The buffer from which the data will be read.
 	 * @param width The width of the buffer.
 	 * @param height The height of the buffer.

@@ -633,7 +633,7 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
  * <ul>
  * <li> #NWidgetHorizontal for organizing child widgets in a (horizontal) row. The row switches order depending on the language setting (thus supporting
  *      right-to-left languages),
- * <li> #NWidgetHorizontalLTR for organizing child widgets in a (horizontal) row, always in the same order. All childs below this container will also
+ * <li> #NWidgetHorizontalLTR for organizing child widgets in a (horizontal) row, always in the same order. All children below this container will also
  *      never swap order.
  * <li> #NWidgetVertical for organizing child widgets underneath each other.
  * <li> #NWidgetMatrix for organizing child widgets in a matrix form.
@@ -820,7 +820,7 @@ void NWidgetResizeBase::AssignSizePosition(SizingType sizing, uint x, uint y, ui
  * @param fill_x      Default horizontal filling.
  * @param fill_y      Default vertical filling.
  * @param widget_data Data component of the widget. @see Widget::data
- * @param tool_tip    Tool tip of the widget. @see Widget::tootips
+ * @param tool_tip    Tool tip of the widget. @see Widget::tooltips
  */
 NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint32 widget_data, StringID tool_tip) : NWidgetResizeBase(tp, fill_x, fill_y)
 {
@@ -1087,7 +1087,7 @@ NWidgetHorizontal::NWidgetHorizontal(NWidContainerFlags flags) : NWidgetPIPConta
 
 void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 {
-	this->smallest_x = 0; // Sum of minimal size of all childs.
+	this->smallest_x = 0; // Sum of minimal size of all children.
 	this->smallest_y = 0; // Biggest child.
 	this->fill_x = 0;     // smallest non-zero child widget fill step.
 	this->fill_y = 1;     // smallest common child fill step.
@@ -1103,19 +1103,19 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 		max_vert_fill = max(max_vert_fill, child_wid->GetVerticalStepSize(ST_SMALLEST));
 		this->smallest_y = max(this->smallest_y, child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
 	}
-	/* 1b. Make the container higher if needed to accomadate all childs nicely. */
+	/* 1b. Make the container higher if needed to accommodate all children nicely. */
 	uint max_smallest = this->smallest_y + 3 * max_vert_fill; // Upper limit to computing smallest height.
 	uint cur_height = this->smallest_y;
 	for (;;) {
 		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 			uint step_size = child_wid->GetVerticalStepSize(ST_SMALLEST);
 			uint child_height = child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom;
-			if (step_size > 1 && child_height < cur_height) { // Small step sizes or already fitting childs are not interesting.
+			if (step_size > 1 && child_height < cur_height) { // Small step sizes or already fitting children are not interesting.
 				uint remainder = (cur_height - child_height) % step_size;
 				if (remainder > 0) { // Child did not fit entirely, widen the container.
 					cur_height += step_size - remainder;
 					assert(cur_height < max_smallest); // Safeguard against infinite height expansion.
-					/* Remaining childs will adapt to the new cur_height, thus speeding up the computation. */
+					/* Remaining children will adapt to the new cur_height, thus speeding up the computation. */
 				}
 			}
 		}
@@ -1128,7 +1128,7 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w, bool init_array)
 			if (child_wid->fill_x == 1) child_wid->smallest_x = longest;
 		}
 	}
-	/* 3. Move PIP space to the childs, compute smallest, fill, and resize values of the container. */
+	/* 3. Move PIP space to the children, compute smallest, fill, and resize values of the container. */
 	if (this->head != NULL) this->head->padding_left += this->pip_pre;
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 		if (child_wid->next != NULL) {
@@ -1169,9 +1169,9 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 
 	this->StoreSizePosition(sizing, x, y, given_width, given_height);
 
-	/* In principle, the additional horizontal space is distributed evenly over the available resizable childs. Due to step sizes, this may not always be feasible.
-	 * To make resizing work as good as possible, first childs with biggest step sizes are done. These may get less due to rounding down.
-	 * This additional space is then given to childs with smaller step sizes. This will give a good result when resize steps of each child is a multiple
+	/* In principle, the additional horizontal space is distributed evenly over the available resizable children. Due to step sizes, this may not always be feasible.
+	 * To make resizing work as good as possible, first children with biggest step sizes are done. These may get less due to rounding down.
+	 * This additional space is then given to children with smaller step sizes. This will give a good result when resize steps of each child is a multiple
 	 * of the child with the smallest non-zero stepsize.
 	 *
 	 * Since child sizes are computed out of order, positions cannot be calculated until all sizes are known. That means it is not possible to compute the child
@@ -1180,8 +1180,10 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 	 * then we call the child.
 	 */
 
-	/* First loop: Find biggest stepsize, find number of childs that want a piece of the pie, handle vertical size for all childs, handle horizontal size for non-resizing childs. */
-	int num_changing_childs = 0; // Number of childs that can change size.
+	/* First loop: Find biggest stepsize, find number of children that want a piece of the pie, handle vertical size for all children,
+	 * handle horizontal size for non-resizing children.
+	 */
+	int num_changing_childs = 0; // Number of children that can change size.
 	uint biggest_stepsize = 0;
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 		uint hor_step = child_wid->GetHorizontalStepSize(sizing);
@@ -1196,7 +1198,7 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 		child_wid->current_y = ComputeMaxSize(child_wid->smallest_y, given_height - child_wid->padding_top - child_wid->padding_bottom, vert_step);
 	}
 
-	/* Second loop: Allocate the additional horizontal space over the resizing childs, starting with the biggest resize steps. */
+	/* Second loop: Allocate the additional horizontal space over the resizing children, starting with the biggest resize steps. */
 	while (biggest_stepsize > 0) {
 		uint next_biggest_stepsize = 0;
 		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
@@ -1250,7 +1252,7 @@ NWidgetVertical::NWidgetVertical(NWidContainerFlags flags) : NWidgetPIPContainer
 void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 {
 	this->smallest_x = 0; // Biggest child.
-	this->smallest_y = 0; // Sum of minimal size of all childs.
+	this->smallest_y = 0; // Sum of minimal size of all children.
 	this->fill_x = 1;     // smallest common child fill step.
 	this->fill_y = 0;     // smallest non-zero child widget fill step.
 	this->resize_x = 1;   // smallest common child resize step.
@@ -1265,32 +1267,32 @@ void NWidgetVertical::SetupSmallestSize(Window *w, bool init_array)
 		max_hor_fill = max(max_hor_fill, child_wid->GetHorizontalStepSize(ST_SMALLEST));
 		this->smallest_x = max(this->smallest_x, child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
 	}
-	/* 1b. Make the container wider if needed to accomadate all childs nicely. */
+	/* 1b. Make the container wider if needed to accommodate all children nicely. */
 	uint max_smallest = this->smallest_x + 3 * max_hor_fill; // Upper limit to computing smallest height.
 	uint cur_width = this->smallest_x;
 	for (;;) {
 		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 			uint step_size = child_wid->GetHorizontalStepSize(ST_SMALLEST);
 			uint child_width = child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right;
-			if (step_size > 1 && child_width < cur_width) { // Small step sizes or already fitting childs are not interesting.
+			if (step_size > 1 && child_width < cur_width) { // Small step sizes or already fitting children are not interesting.
 				uint remainder = (cur_width - child_width) % step_size;
 				if (remainder > 0) { // Child did not fit entirely, widen the container.
 					cur_width += step_size - remainder;
 					assert(cur_width < max_smallest); // Safeguard against infinite width expansion.
-					/* Remaining childs will adapt to the new cur_width, thus speeding up the computation. */
+					/* Remaining children will adapt to the new cur_width, thus speeding up the computation. */
 				}
 			}
 		}
 		if (this->smallest_x == cur_width) break;
 		this->smallest_x = cur_width; // Smallest width got changed, try again.
 	}
-	/* 2. For containers that must maintain equal width, extend child minimal size. */
+	/* 2. For containers that must maintain equal width, extend children minimal size. */
 	if (this->flags & NC_EQUALSIZE) {
 		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 			if (child_wid->fill_y == 1) child_wid->smallest_y = highest;
 		}
 	}
-	/* 3. Move PIP space to the childs, compute smallest, fill, and resize values of the container. */
+	/* 3. Move PIP space to the child, compute smallest, fill, and resize values of the container. */
 	if (this->head != NULL) this->head->padding_top += this->pip_pre;
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 		if (child_wid->next != NULL) {
@@ -1331,12 +1333,12 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 
 	this->StoreSizePosition(sizing, x, y, given_width, given_height);
 
-	/* Like the horizontal container, the vertical container also distributes additional height evenly, starting with the childs with the biggest resize steps.
+	/* Like the horizontal container, the vertical container also distributes additional height evenly, starting with the children with the biggest resize steps.
 	 * It also stores computed widths and heights into current_x and current_y values of the child.
 	 */
 
-	/* First loop: Find biggest stepsize, find number of childs that want a piece of the pie, handle horizontal size for all childs, handle vertical size for non-resizing childs. */
-	int num_changing_childs = 0; // Number of childs that can change size.
+	/* First loop: Find biggest stepsize, find number of children that want a piece of the pie, handle horizontal size for all children, handle vertical size for non-resizing child. */
+	int num_changing_childs = 0; // Number of children that can change size.
 	uint biggest_stepsize = 0;
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 		uint vert_step = child_wid->GetVerticalStepSize(sizing);
@@ -1351,7 +1353,7 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 		child_wid->current_x = ComputeMaxSize(child_wid->smallest_x, given_width - child_wid->padding_left - child_wid->padding_right, hor_step);
 	}
 
-	/* Second loop: Allocate the additional vertical space over the resizing childs, starting with the biggest resize steps. */
+	/* Second loop: Allocate the additional vertical space over the resizing children, starting with the biggest resize steps. */
 	while (biggest_stepsize > 0) {
 		uint next_biggest_stepsize = 0;
 		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
@@ -1672,7 +1674,7 @@ NWidgetBackground::~NWidgetBackground()
  * @param nwid Nested widget to add to the background widget.
  *
  * Unless a child container has been given in the constructor, a parent behaves as a vertical container.
- * You can add several childs to it, and they are put underneath each other.
+ * You can add several children to it, and they are put underneath each other.
  */
 void NWidgetBackground::Add(NWidgetBase *nwid)
 {

@@ -28,7 +28,7 @@ enum ConsoleHookResult {
  * --Commands--
  * Commands are commands, or functions. They get executed once and any
  * effect they produce are carried out. The arguments to the commands
- * are given to them, each input word seperated by a double-quote (") is an argument
+ * are given to them, each input word separated by a double-quote (") is an argument
  * If you want to handle multiple words as one, enclose them in double-quotes
  * eg. 'say "hello sexy boy"'
  */
@@ -50,7 +50,7 @@ struct IConsoleCmd {
  * (eg. 'ng' for 'load %A; unpause; debug_level 5'). Aliases can parse the arguments
  * given to them in the command line.
  * - "%A - %Z" substitute arguments 1 t/m 26
- * - "%+" lists all parameters keeping them seperated
+ * - "%+" lists all parameters keeping them separated
  * - "%!" also lists all parameters but presenting them to the aliased command as one argument
  * - ";" allows for combining commands (see example 'ng')
  */

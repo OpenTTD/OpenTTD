@@ -20,7 +20,7 @@ enum ReplaceVehicleWidgets {
 	WID_RV_LEFT_MATRIX,              ///< The matrix on the left.
 	WID_RV_LEFT_SCROLLBAR,           ///< The scrollbar for the matrix on the left.
 	WID_RV_RIGHT_MATRIX,             ///< The matrix on the right.
-	WID_RV_RIGHT_SCROLLBAR,          ///< The scrollbar for the matrxi on the right.
+	WID_RV_RIGHT_SCROLLBAR,          ///< The scrollbar for the matrix on the right.
 	WID_RV_LEFT_DETAILS,             ///< Details of the entry on the left.
 	WID_RV_RIGHT_DETAILS,            ///< Details of the entry on the right.
 

@@ -58,7 +58,7 @@ void squirrel_register_std(Squirrel *engine);
 
 /**
  * Register all standard functions that are available on first startup.
- * @note this set is very limited, and is only ment to load other scripts and things like that.
+ * @note this set is very limited, and is only meant to load other scripts and things like that.
  */
 void squirrel_register_global_std(Squirrel *engine);
 

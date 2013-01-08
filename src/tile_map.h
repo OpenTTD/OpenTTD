@@ -105,8 +105,8 @@ static inline void SetTileType(TileIndex tile, TileType type)
  * This function checks if a tile got the given tiletype.
  *
  * @param tile The tile to check
- * @param type The type to check agains
- * @return true If the type matches agains the type of the tile
+ * @param type The type to check against
+ * @return true If the type matches against the type of the tile
  */
 static inline bool IsTileType(TileIndex tile, TileType type)
 {
@@ -169,7 +169,7 @@ static inline void SetTileOwner(TileIndex tile, Owner owner)
  * Checks if a tile belongs to the given owner
  *
  * @param tile The tile to check
- * @param owner The owner to check agains
+ * @param owner The owner to check against
  * @return True if a tile belongs the the given owner
  */
 static inline bool IsTileOwner(TileIndex tile, Owner owner)

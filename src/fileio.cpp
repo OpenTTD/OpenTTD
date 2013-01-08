@@ -643,7 +643,7 @@ static void SimplifyFileName(char *name)
 	/* Force lowercase */
 	strtolower(name);
 
-	/* Tar-files always have '/' path-seperator, but we want our PATHSEPCHAR */
+	/* Tar-files always have '/' path-separator, but we want our PATHSEPCHAR */
 #if (PATHSEPCHAR != '/')
 	for (char *n = name; *n != '\0'; n++) if (*n == '/') *n = PATHSEPCHAR;
 #endif
@@ -1364,7 +1364,7 @@ static uint ScanTar(FileScanner *fs, const char *extension, TarFileList::iterato
 }
 
 /**
- * Scan for files with the given extention in the given search path.
+ * Scan for files with the given extension in the given search path.
  * @param extension the extension of files to search for.
  * @param sd        the sub directory to search in.
  * @param tars      whether to search in the tars too.
@@ -1410,7 +1410,7 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool r
 }
 
 /**
- * Scan for files with the given extention in the given search path.
+ * Scan for files with the given extension in the given search path.
  * @param extension the extension of files to search for.
  * @param directory the sub directory to search in.
  * @param recursive whether to search recursively

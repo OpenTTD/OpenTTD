@@ -76,7 +76,7 @@ enum RailTrackOffset {
 };
 
 /**
- * Offsets for spries within a bridge surface overlay set.
+ * Offsets for sprites within a bridge surface overlay set.
  */
 enum RailTrackBridgeOffset {
 	RTBO_X,     ///< Piece of rail in X direction
@@ -120,7 +120,7 @@ struct RailtypeInfo {
 		SpriteID single_s;     ///< single piece of rail in the southern corner
 		SpriteID single_e;     ///< single piece of rail in the eastern corner
 		SpriteID single_w;     ///< single piece of rail in the western corner
-		SpriteID single_sloped;///< single piecs of rail for slopes
+		SpriteID single_sloped;///< single piece of rail for slopes
 		SpriteID crossing;     ///< level crossing, rail in X direction
 		SpriteID tunnel;       ///< tunnel sprites base
 	} base_sprites;

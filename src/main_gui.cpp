@@ -76,7 +76,7 @@ void HandleOnEditText(const char *str)
 
 		uint32 money_c = Clamp(ClampToI32(money), 0, 20000000); // Clamp between 20 million and 0
 
-		/* Give 'id' the money, and substract it from ourself */
+		/* Give 'id' the money, and subtract it from ourself */
 		DoCommandP(0, money_c, _rename_id, CMD_GIVE_MONEY | CMD_MSG(STR_ERROR_INSUFFICIENT_FUNDS), CcGiveMoney, str);
 		break;
 	}

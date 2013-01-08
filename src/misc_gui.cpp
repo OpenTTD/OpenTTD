@@ -35,7 +35,7 @@ enum OskActivation {
 	OSKA_DISABLED,           ///< The OSK shall not be activated at all.
 	OSKA_DOUBLE_CLICK,       ///< Double click on the edit box opens OSK.
 	OSKA_SINGLE_CLICK,       ///< Single click after focus click opens OSK.
-	OSKA_IMMEDIATELY,        ///< Focussing click already opens OSK.
+	OSKA_IMMEDIATELY,        ///< Focusing click already opens OSK.
 };
 
 
@@ -704,7 +704,7 @@ struct TooltipsWindow : public Window
  * @param str String to be displayed
  * @param paramcount number of params to deal with
  * @param params (optional) up to 5 pieces of additional information that may be added to a tooltip
- * @param use_left_mouse_button close the tooltip when the left (true) or right (false) mousebutton is released
+ * @param use_left_mouse_button close the tooltip when the left (true) or right (false) mouse button is released
  */
 void GuiShowTooltips(Window *parent, StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_tooltip)
 {

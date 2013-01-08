@@ -197,7 +197,7 @@ static const char * const _pragmas[][4] = {
 	{ "plural",      "tp",  "0",      "Plural form to use" },
 	{ "textdir",     "tl",  "ltr",    "Text direction. Either ltr (left-to-right) or rtl (right-to-left)" },
 	{ "digitsep",    "td",  ",",      "Digit grouping separator for non-currency numbers" },
-	{ "digitsepcur", "td",  ",",      "Digit grouping seprarator for currency numbers" },
+	{ "digitsepcur", "td",  ",",      "Digit grouping separator for currency numbers" },
 	{ "decimalsep",  "td",  ".",      "Decimal separator" },
 	{ "winlangid",   "x2",  "0x0000", "Language ID for Windows" },
 	{ "grflangid",   "x1",  "0x00",   "Language ID for NewGRFs" },

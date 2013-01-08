@@ -352,7 +352,7 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 	BlitterFactoryBase::GetCurrentBlitter()->PostResize();
 
 	GameSizeChanged(); // invalidate all windows, force redraw
-	return true; // the request succedded
+	return true; // the request succeeded
 }
 
 /** Do palette animation and blit to the window. */

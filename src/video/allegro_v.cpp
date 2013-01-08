@@ -29,7 +29,7 @@
 
 #ifdef _DEBUG
 /* Allegro replaces SEGV/ABRT signals meaning that the debugger will never
- * be triggered, so rereplace the signals and make the debugger userful. */
+ * be triggered, so rereplace the signals and make the debugger useful. */
 #include <signal.h>
 #endif
 
@@ -438,7 +438,7 @@ const char *VideoDriver_Allegro::Start(const char * const *parm)
 
 #if defined _DEBUG
 /* Allegro replaces SEGV/ABRT signals meaning that the debugger will never
- * be triggered, so rereplace the signals and make the debugger userful. */
+ * be triggered, so rereplace the signals and make the debugger useful. */
 	signal(SIGABRT, NULL);
 	signal(SIGSEGV, NULL);
 #endif

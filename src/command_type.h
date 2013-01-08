@@ -277,7 +277,7 @@ enum Commands {
 
 	CMD_GIVE_MONEY,                   ///< give money to another company
 	CMD_CHANGE_SETTING,               ///< change a setting
-	CMD_CHANGE_COMPANY_SETTING,       ///< change a company etting
+	CMD_CHANGE_COMPANY_SETTING,       ///< change a company setting
 
 	CMD_SET_AUTOREPLACE,              ///< set an autoreplace entry
 

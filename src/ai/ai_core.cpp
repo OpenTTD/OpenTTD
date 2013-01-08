@@ -197,7 +197,7 @@
 
 /* static */ void AI::ResetConfig()
 {
-	/* Check for both newgame as current game if we can reload the AIInfo insde
+	/* Check for both newgame as current game if we can reload the AIInfo inside
 	 *  the AIConfig. If not, remove the AI from the list (which will assign
 	 *  a random new AI on reload). */
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {

@@ -158,7 +158,7 @@ bool WindowQuickdrawSubdriver::SetVideoMode(int width, int height, int bpp)
 	this->GetDeviceInfo();
 
 	if (bpp > this->device_depth) {
-		DEBUG(driver, 0, "Cannot use a blitter with a higer screen depth than the display when running in windowed mode.");
+		DEBUG(driver, 0, "Cannot use a blitter with a higher screen depth than the display when running in windowed mode.");
 		this->setup = false;
 		return false;
 	}

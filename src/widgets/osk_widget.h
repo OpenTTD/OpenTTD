@@ -19,7 +19,7 @@ enum OnScreenKeyboardWidgets {
 	WID_OSK_CANCEL,    ///< Cancel key.
 	WID_OSK_OK,        ///< Ok key.
 	WID_OSK_BACKSPACE, ///< Backspace key.
-	WID_OSK_SPECIAL,   ///< Special key (at keyborads often used for tab key).
+	WID_OSK_SPECIAL,   ///< Special key (at keyboards often used for tab key).
 	WID_OSK_CAPS,      ///< Capslock key.
 	WID_OSK_SHIFT,     ///< Shift(lock) key.
 	WID_OSK_SPACE,     ///< Space bar.

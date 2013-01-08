@@ -329,7 +329,7 @@ static void DrawTile_Industry(TileInfo *ti)
 
 	SpriteID image = dits->ground.sprite;
 
-	/* DrawFoundation() modifes ti->z and ti->tileh */
+	/* DrawFoundation() modifies ti->z and ti->tileh */
 	if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
 	/* If the ground sprite is the default flat water sprite, draw also canal/river borders.
@@ -2655,7 +2655,7 @@ void IndustryDailyLoop()
 	 * is sufficient for an industry. */
 	uint16 change_loop = _economy.industry_daily_change_counter >> 16;
 
-	/* Reset the active part of the counter, just keeping the "factional part" */
+	/* Reset the active part of the counter, just keeping the "fractional part" */
 	_economy.industry_daily_change_counter &= 0xFFFF;
 
 	if (change_loop == 0) {

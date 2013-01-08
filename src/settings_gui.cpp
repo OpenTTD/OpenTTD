@@ -918,7 +918,7 @@ void SettingEntry::GetFoldingState(bool &all_folded, bool &all_unfolded) const
 
 /**
  * Check whether an entry is visible and not folded or filtered away.
- * Note: This does not consider the scrolling range; it might still require scrolling ot make the setting really visible.
+ * Note: This does not consider the scrolling range; it might still require scrolling to make the setting really visible.
  * @param item Entry to search for.
  * @return true if entry is visible.
  */
@@ -1390,7 +1390,7 @@ uint SettingsPage::GetMaxHelpHeight(int maxw)
 /**
  * Draw a selected part of the settings page.
  *
- * The scrollbar uses rows of the page, while the page data strucure is a tree of #SettingsPage and #SettingEntry objects.
+ * The scrollbar uses rows of the page, while the page data structure is a tree of #SettingsPage and #SettingEntry objects.
  * As a result, the drawing routing traverses the tree from top to bottom, counting rows in \a cur_row until it reaches \a first_row.
  * Then it enables drawing rows while traversing until \a max_row is reached, at which point drawing is terminated.
  *
@@ -2491,7 +2491,7 @@ struct CustomCurrencyWindow : Window {
 				_custom_currency.rate = Clamp(atoi(str), 1, UINT16_MAX);
 				break;
 
-			case WID_CC_SEPARATOR: // Thousands seperator
+			case WID_CC_SEPARATOR: // Thousands separator
 				strecpy(_custom_currency.separator, str, lastof(_custom_currency.separator));
 				break;
 

@@ -65,7 +65,7 @@ void RoadStop::MakeDriveThrough()
 
 	RoadStopType rst = GetRoadStopType(this->xy);
 	DiagDirection dir = GetRoadStopDir(this->xy);
-	/* Use absolute so we always go towards the nortern tile */
+	/* Use absolute so we always go towards the northern tile */
 	TileIndexDiff offset = abs(TileOffsByDiagDir(dir));
 
 	/* Information about the tile north of us */
@@ -81,7 +81,7 @@ void RoadStop::MakeDriveThrough()
 	/* Amount of road stops that will be added to the 'northern' head */
 	int added = 1;
 	if (north && rs_north->east != NULL) { // (east != NULL) == (west != NULL)
-		/* There is a more nothern one, so this can join them */
+		/* There is a more northern one, so this can join them */
 		this->east = rs_north->east;
 		this->west = rs_north->west;
 
@@ -133,7 +133,7 @@ void RoadStop::ClearDriveThrough()
 
 	RoadStopType rst = GetRoadStopType(this->xy);
 	DiagDirection dir = GetRoadStopDir(this->xy);
-	/* Use absolute so we always go towards the nortern tile */
+	/* Use absolute so we always go towards the northern tile */
 	TileIndexDiff offset = abs(TileOffsByDiagDir(dir));
 
 	/* Information about the tile north of us */
@@ -178,7 +178,7 @@ void RoadStop::ClearDriveThrough()
 			/* We have to rebuild the entries because we cannot easily determine
 			 * how full each part is. So instead of keeping and maintaining a list
 			 * of vehicles and using that to 'rebuild' the occupied state we just
-			 * rebuild it from scratch as that removes lots of maintainance code
+			 * rebuild it from scratch as that removes lots of maintenance code
 			 * for the vehicle list and it's faster in real games as long as you
 			 * do not keep split and merge road stop every tick by the millions. */
 			rs_south_base->east->Rebuild(rs_south_base);
@@ -243,7 +243,7 @@ bool RoadStop::Enter(RoadVehicle *rv)
 		uint bay_nr = this->AllocateBay();
 		SB(rv->state, RVS_USING_SECOND_BAY, 1, bay_nr);
 
-		/* Mark the station entrace as busy */
+		/* Mark the station entrance as busy */
 		this->SetEntranceBusy(true);
 		return true;
 	}
@@ -290,7 +290,7 @@ void RoadStop::Entry::Leave(const RoadVehicle *rv)
 void RoadStop::Entry::Enter(const RoadVehicle *rv)
 {
 	/* we cannot assert on this->occupied < this->length because of the
-	 * remote possibility that RVs are running through eachother when
+	 * remote possibility that RVs are running through each other when
 	 * trying to prevention an infinite jam. */
 	this->occupied += rv->gcache.cached_total_length;
 }

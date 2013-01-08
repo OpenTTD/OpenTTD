@@ -451,7 +451,7 @@ struct NetworkChatWindow : public Window {
 		}
 
 		if (second_scan) {
-			/* We walked all posibilities, and the user presses tab again.. revert to original text */
+			/* We walked all possibilities, and the user presses tab again.. revert to original text */
 			this->message_editbox.text.Assign(_chat_tab_completion_buf);
 			_chat_tab_completion_active = false;
 

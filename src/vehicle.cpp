@@ -167,9 +167,9 @@ bool Vehicle::NeedsServicing() const
 }
 
 /**
- * Checks if the current order should be interupted for a service-in-depot-order.
+ * Checks if the current order should be interrupted for a service-in-depot order.
  * @see NeedsServicing()
- * @return true if the current order should be interupted.
+ * @return true if the current order should be interrupted.
  */
 bool Vehicle::NeedsAutomaticServicing() const
 {
@@ -894,7 +894,7 @@ void CallVehicleTicks()
 				/* Play a running sound if the motion counter passes 256 (Do we not skip sounds?) */
 				if (GB(v->motion_counter, 0, 8) < v->cur_speed) PlayVehicleSound(v, VSE_RUNNING);
 
-				/* Play an alterate running sound every 16 ticks */
+				/* Play an alternating running sound every 16 ticks */
 				if (GB(v->tick_counter, 0, 4) == 0) PlayVehicleSound(v, v->cur_speed > 0 ? VSE_RUNNING_16 : VSE_STOPPED_16);
 		}
 	}
@@ -1775,7 +1775,7 @@ static PaletteID GetEngineColourMap(EngineID engine_type, CompanyID company, Eng
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_COLOUR_MAPPING, 0, 0, engine_type, v);
 		/* Failure means "use the default two-colour" */
 		if (callback != CALLBACK_FAILED) {
-			assert_compile(PAL_NONE == 0); // Returning 0x4000 (resp. 0xC000) conincidences with default value (PAL_NONE)
+			assert_compile(PAL_NONE == 0); // Returning 0x4000 (resp. 0xC000) coincidences with default value (PAL_NONE)
 			map = GB(callback, 0, 14);
 			/* If bit 14 is set, then the company colours are applied to the
 			 * map else it's returned as-is. */
@@ -2309,7 +2309,7 @@ void Vehicle::ShowVisualEffect() const
 				/* Electric train's spark - more often occurs when train is departing (more load)
 				 * Details: Electric locomotives are usually at least twice as powerful as their diesel counterparts, so spark
 				 * emissions are kept simple. Only when starting, creating huge force are sparks more likely to happen, but when
-				 * reaching its max. speed, quarter by quarter of it, chance decreases untill the usuall 2,22% at train's top speed.
+				 * reaching its max. speed, quarter by quarter of it, chance decreases until the usual 2,22% at train's top speed.
 				 * REGULATION:
 				 * - in Chance16 the last value is 360 / 2^smoke_amount (max. sparks when 90 = smoke_amount of 2). */
 				if (GB(v->tick_counter, 0, 2) == 0 &&

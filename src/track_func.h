@@ -113,7 +113,7 @@ static inline Track RemoveFirstTrack(TrackBits *tracks)
 /**
  * Removes first Trackdir from TrackdirBits and returns it
  *
- * This function searchs for the first bit in the TrackdirBits parameter,
+ * This function searches for the first bit in the TrackdirBits parameter,
  * remove this bit from the parameter and returns the fnound bit as
  * Trackdir value. It returns INVALID_TRACKDIR if the trackdirs is
  * TRACKDIR_BIT_NONE or INVALID_TRACKDIR_BIT. This is basically used in a
@@ -200,7 +200,7 @@ static inline bool IsValidTrack(Track track)
  * Checks if a Trackdir is valid.
  *
  * @param trackdir The value to check
- * @return true if the given valie is a valid Trackdir
+ * @return true if the given value is a valid Trackdir
  * @note Use this in an assert()
  */
 static inline bool IsValidTrackdir(Trackdir trackdir)
@@ -422,8 +422,8 @@ static inline DiagDirection TrackdirToExitdir(Trackdir trackdir)
  * direction which the DiagDirection is pointing. But this will be INVALID_TRACKDIR
  * if the DiagDirection is pointing 'away' the track.
  *
- * @param track The track to applie an direction on
- * @param diagdir The DiagDirection to applie on
+ * @param track The track to apply an direction on
+ * @param diagdir The DiagDirection to apply on
  * @return The resulting track direction or INVALID_TRACKDIR if not possible.
  */
 static inline Trackdir TrackExitdirToTrackdir(Track track, DiagDirection diagdir)
@@ -442,7 +442,7 @@ static inline Trackdir TrackExitdirToTrackdir(Track track, DiagDirection diagdir
  * you follow the DiagDirection and then turn by 45 deg left or right on the
  * next tile. The new direction on the new track will be the returning Trackdir
  * value. If the parameters makes no sense like the track TRACK_UPPER and the
- * diraction DIAGDIR_NE (target track cannot be reached) this function returns
+ * direction DIAGDIR_NE (target track cannot be reached) this function returns
  * INVALID_TRACKDIR.
  *
  * @param track The target track
@@ -524,7 +524,7 @@ static inline TrackdirBits DiagdirReachesTrackdirs(DiagDirection diagdir)
  * This will obviously include 90 degree turns, since no
  * information is available about the exact angle of entering
  *
- * @param diagdir The joining irection
+ * @param diagdir The joining direction
  * @return The tracks which can be used
  * @see DiagdirReachesTrackdirs
  */
@@ -545,7 +545,7 @@ static inline TrackdirBits TrackdirReachesTrackdirs(Trackdir trackdir)
 	return _exitdir_reaches_trackdirs[TrackdirToExitdir(trackdir)];
 }
 /* Note that there is no direct table for this function (there used to be),
- * but it uses two simpeler tables to achieve the result */
+ * but it uses two simpler tables to achieve the result */
 
 /**
  * Maps a trackdir to all trackdirs that make 90 deg turns with it.
@@ -609,7 +609,7 @@ static inline bool TracksOverlap(TrackBits bits)
 /**
  * Check if a given track is contained within or overlaps some other tracks.
  *
- * @param tracks Tracks to be testet against
+ * @param tracks Tracks to be tested against
  * @param track The track to test
  * @return true if the track is already in the tracks or overlaps the tracks.
  */

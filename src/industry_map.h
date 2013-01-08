@@ -157,7 +157,7 @@ static inline void SetIndustryGfx(TileIndex t, IndustryGfx gfx)
 }
 
 /**
- * Returns this indutry tile's construction counter value
+ * Returns this industry tile's construction counter value
  * @param tile the tile to query
  * @pre IsTileType(tile, MP_INDUSTRY)
  * @return the construction counter
@@ -169,7 +169,7 @@ static inline byte GetIndustryConstructionCounter(TileIndex tile)
 }
 
 /**
- * Sets this indutry tile's construction counter value
+ * Sets this industry tile's construction counter value
  * @param tile the tile to query
  * @param value the new value for the construction counter
  * @pre IsTileType(tile, MP_INDUSTRY)

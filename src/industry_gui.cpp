@@ -247,7 +247,7 @@ class BuildIndustryWindow : public Window {
 			}
 		}
 
-		/* first indutry type is selected if the current selection is invalid.
+		/* first industry type is selected if the current selection is invalid.
 		 * I'll be damned if there are none available ;) */
 		if (this->selected_index == -1) {
 			this->selected_index = 0;

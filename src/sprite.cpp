@@ -21,7 +21,7 @@
  * Draws a tile sprite sequence.
  * @param ti The tile to draw on
  * @param dts Sprite and subsprites to draw
- * @param to The transparancy bit that toggles drawing of these sprites
+ * @param to The transparency bit that toggles drawing of these sprites
  * @param orig_offset Sprite-Offset for original sprites
  * @param newgrf_offset Sprite-Offset for NewGRF defined sprites
  * @param default_palette The default recolour sprite to use (typically company colour)

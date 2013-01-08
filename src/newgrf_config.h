@@ -51,7 +51,7 @@ enum GRFBugs {
 /** Status of post-gameload GRF compatibility check */
 enum GRFListCompatibility {
 	GLC_ALL_GOOD,   ///< All GRF needed by game are present
-	GLC_COMPATIBLE, ///< Compatible (eg. the same ID, but different chacksum) GRF found in at least one case
+	GLC_COMPATIBLE, ///< Compatible (eg. the same ID, but different checksum) GRF found in at least one case
 	GLC_NOT_FOUND,  ///< At least one GRF couldn't be found (higher priority than GLC_COMPATIBLE)
 };
 

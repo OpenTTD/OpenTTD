@@ -352,7 +352,7 @@ template <class Tbase_set>
 
 	const Tbase_set *best = NULL;
 	for (const Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != NULL; c = c->next) {
-		/* Skip unuseable sets */
+		/* Skip unusable sets */
 		if (c->GetNumMissing() != 0) continue;
 
 		if (best == NULL ||

@@ -78,7 +78,7 @@ byte ReadByte(LoadgameState *ls)
 	which means that we have a chunk, which starts with a length
 	byte. If that byte is negative, we have to repeat the next byte
 	that many times ( + 1). Else, we need to read that amount of bytes.
-	Works pretty good if you have many zero's behind eachother */
+	Works pretty well if you have many zeros behind each other */
 
 	if (ls->chunk_size == 0) {
 		/* Read new chunk */
@@ -235,7 +235,7 @@ static inline bool CheckOldSavegameType(FILE *f, char *temp, const char *last, u
 	}
 
 	bool ret = VerifyOldNameChecksum(temp, len);
-	temp[len - 2] = '\0'; // name is nul-terminated in savegame, but it's better to be sure
+	temp[len - 2] = '\0'; // name is null-terminated in savegame, but it's better to be sure
 	str_validate(temp, last);
 
 	return ret;

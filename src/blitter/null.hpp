@@ -37,7 +37,7 @@ public:
 	/* virtual */ int GetBytesPerPixel() { return 0; }
 };
 
-/** Factory for the blitter that doesn nothing. */
+/** Factory for the blitter that does nothing. */
 class FBlitter_Null: public BlitterFactory<FBlitter_Null> {
 public:
 	/* virtual */ const char *GetName() { return "null"; }

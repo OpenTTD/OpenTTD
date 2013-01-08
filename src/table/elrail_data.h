@@ -117,7 +117,7 @@ static const byte PreferredPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
 #define NUM_IGNORE_GROUPS 3
 #define IGNORE_NONE 0xFF
 /**
- * In case we have a staight line, we place pylon only every two tiles,
+ * In case we have a straight line, we place pylon only every two tiles,
  * so there are certain tiles which we ignore. A straight line is found if
  * we have exactly two PPPs.
  */
@@ -195,7 +195,7 @@ static const byte IgnoredPCP[NUM_IGNORE_GROUPS][TLG_END][DIAGDIR_END] = {
 
 #undef NO_IGNORE
 
-/** Which pylons can definately NOT be built */
+/** Which pylons can definitely NOT be built */
 static const byte DisallowedPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
 	{1 << DIR_SW | 1 << DIR_NE, 0,           1 << DIR_SW | 1 << DIR_NE, 0          }, // X
 	{0,           1 << DIR_NW | 1 << DIR_SE, 0,           1 << DIR_NW | 1 << DIR_SE}, // Y

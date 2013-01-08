@@ -62,7 +62,7 @@ static const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
 CurrencySpec _currency_specs[NUM_CURRENCY];
 
 /**
- * These enums are only declared in order to make sens
+ * These enums are only declared in order to make sense
  * out of the TTDPatch_To_OTTDIndex array that will follow
  * Every currency used by Ottd is there, just in case TTDPatch will
  * add those missing in its code
@@ -129,7 +129,7 @@ const byte TTDPatch_To_OTTDIndex[] =
 };
 
 /**
- * Will return the ottd's index correspondance to
+ * Will return the ottd's index correspondence to
  * the ttdpatch's id.  If the id is bigger than the array,
  * it is a grf written for ottd, thus returning the same id.
  * Only called from newgrf.cpp
@@ -180,7 +180,7 @@ void CheckSwitchToEuro()
  * Called only from newgrf.cpp and settings.cpp.
  * @param preserve_custom will not reset custom currency (the latest one on the list)
  *        if ever it is flagged to true. In which case, the total size of the memory to move
- *        will be one currency spec less, thus preserving the custom curreny from been
+ *        will be one currency spec less, thus preserving the custom currency from been
  *        overwritten.
  */
 void ResetCurrencies(bool preserve_custom)

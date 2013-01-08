@@ -83,7 +83,7 @@ uint64 ottd_rdtsc();
  *
  * for (int i = 0; i < 5; i++) {
  *   TIC();
- *     --Do yuor code--
+ *     --Do your code--
  *   TOC("A name", 5);
  * }
  *

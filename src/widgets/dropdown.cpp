@@ -452,7 +452,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
  * @param strings       Menu list, end with #INVALID_STRING_ID
  * @param selected      Index of initial selected item.
  * @param button        Button widget number of the parent window \a w that wants the dropdown menu.
- * @param disabled_mask Bitmask for diabled items (items with their bit set are not copied to the dropdown list).
+ * @param disabled_mask Bitmask for disabled items (items with their bit set are not copied to the dropdown list).
  * @param hidden_mask   Bitmask for hidden items (items with their bit set are displayed, but not selectable in the dropdown list).
  * @param width         Width of the dropdown menu. If \c 0, use the width of parent widget \a button.
  */

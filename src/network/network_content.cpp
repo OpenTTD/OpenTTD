@@ -509,7 +509,7 @@ bool ClientNetworkContentSocketHandler::BeforeDownload()
 		/* The filesize is > 0, so we are going to download it */
 		const char *filename = GetFullFilename(this->curInfo, true);
 		if (filename == NULL || (this->curFile = fopen(filename, "wb")) == NULL) {
-			/* Unless that fails ofcourse... */
+			/* Unless that fails of course... */
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, WL_ERROR);
 			return false;

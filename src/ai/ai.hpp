@@ -26,7 +26,7 @@ typedef std::map<const char *, class ScriptInfo *, StringCompare> ScriptInfoList
 class AI {
 public:
 	/**
-	 * The default months AIs start after eachother.
+	 * The default months AIs start after each other.
 	 */
 	enum StartNext {
 		START_NEXT_EASY   = DAYS_IN_YEAR * 2,

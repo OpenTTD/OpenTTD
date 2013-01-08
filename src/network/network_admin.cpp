@@ -974,7 +974,7 @@ void ServerNetworkAdminSocketHandler::WelcomeAll()
 
 /**
  * Send (push) updates to the admin network as they have registered for these updates.
- * @param freq the frequency to be processd.
+ * @param freq the frequency to be processed.
  */
 void NetworkAdminUpdate(AdminUpdateFrequency freq)
 {

@@ -291,7 +291,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 #endif /* ENABLE_NETWORK */
 	if (old_owner == _local_company) {
 		/* Single player cheated to AI company.
-		 * There are no specatators in single player, so we must pick some other company. */
+		 * There are no spectators in single player, so we must pick some other company. */
 		assert(!_networking);
 		Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
 		Company *c;
@@ -461,7 +461,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		if (new_owner != INVALID_OWNER) {
 			/* Update all signals because there can be new segment that was owned by two companies
 			 * and signals were not propagated
-			 * Similiar with crossings - it is needed to bar crossings that weren't before
+			 * Similar with crossings - it is needed to bar crossings that weren't before
 			 * because of different owner of crossing and approaching train */
 			tile = 0;
 
@@ -545,7 +545,7 @@ static void CompanyCheckBankrupt(Company *c)
 		case 9:
 			break;
 
-		/* Warn about bancruptcy after 3 months */
+		/* Warn about bankruptcy after 3 months */
 		case 4: {
 			CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
 			cni->FillData(c);
@@ -572,7 +572,7 @@ static void CompanyCheckBankrupt(Company *c)
 			/* FALL THROUGH  to case 10 */
 		}
 
-		/* Bancrupt company after 6 months (if the company has no value) or latest
+		/* Bankrupt company after 6 months (if the company has no value) or latest
 		 * after 9 months (if it still had value after 6 months) */
 		default:
 		case 10: {
@@ -696,7 +696,7 @@ bool AddInflation(bool check_year)
 	/* Approximation for (100 + infl_amount)% ** (1 / 12) - 100%
 	 * scaled by 65536
 	 * 12 -> months per year
-	 * This is only a good approxiamtion for small values
+	 * This is only a good approximation for small values
 	 */
 	_economy.inflation_prices  += (_economy.inflation_prices  * _economy.infl_amount    * 54) >> 16;
 	_economy.inflation_payment += (_economy.inflation_payment * _economy.infl_amount_pr * 54) >> 16;
@@ -866,7 +866,7 @@ void StartupIndustryDailyChanges(bool init_counter)
 	 * which stands for the days in a month.
 	 * Using just 31 will make it so that a monthly reset (based on the real number of days of that month)
 	 * would not be needed.
-	 * Since it is based on "fractionnal parts", the leftover days will not make much of a difference
+	 * Since it is based on "fractional parts", the leftover days will not make much of a difference
 	 * on the overall total number of changes performed */
 	_economy.industry_daily_increment = (1 << map_size) / 31;
 

@@ -198,7 +198,7 @@ bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event)
 }
 
 /**
- * Play a NewGRF sound effect at the location of a specfic tile.
+ * Play a NewGRF sound effect at the location of a specific tile.
  * @param file NewGRF triggering the sound effect.
  * @param sound_id Sound effect the NewGRF wants to play.
  * @param tile Location of the effect.

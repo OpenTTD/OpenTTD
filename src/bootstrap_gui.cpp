@@ -205,7 +205,7 @@ public:
 #endif /* defined(ENABLE_NETWORK) && defined(WITH_FREETYPE) */
 
 /**
- * Handle all procedures for bootstrapping OpenTTD without a base grapics set.
+ * Handle all procedures for bootstrapping OpenTTD without a base graphics set.
  * This requires all kinds of trickery that is needed to avoid the use of
  * sprites from the base graphics set which are pretty interwoven.
  * @return True if a base set exists, otherwise false.

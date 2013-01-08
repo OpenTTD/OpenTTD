@@ -163,7 +163,7 @@ struct CargoSummaryItem {
 	uint amount;      ///< Amount that is carried
 	StationID source; ///< One of the source stations
 
-	/** Used by CargoSummary::Find() and similiar functions */
+	/** Used by CargoSummary::Find() and similar functions */
 	inline bool operator != (const CargoSummaryItem &other) const
 	{
 		return this->cargo != other.cargo || this->subtype != other.subtype;
@@ -251,7 +251,7 @@ static void TrainDetailsCapacityTab(const CargoSummaryItem *item, int left, int 
 }
 
 /**
- * Collects the cargo transportet
+ * Collects the cargo transported
  * @param v Vehicle to process
  * @param summary Space for the result
  */
@@ -316,7 +316,7 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
 			max_cargo[v->cargo_type] += v->cargo_cap;
 		}
 
-		/* Set scroll-amount seperately from counting, as to not compute num double
+		/* Set scroll-amount separately from counting, as to not compute num double
 		 * for more carriages of the same type
 		 */
 		for (CargoID i = 0; i < NUM_CARGO; i++) {

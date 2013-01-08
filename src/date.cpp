@@ -138,7 +138,7 @@ void ConvertDateToYMD(Date date, YearMonthDay *ymd)
 }
 
 /**
- * Converts a tupe of Year, Month and Day to a Date.
+ * Converts a tuple of Year, Month and Day to a Date.
  * @param year  is a number between 0..MAX_YEAR
  * @param month is a number between 0..11
  * @param day   is a number between 1..31

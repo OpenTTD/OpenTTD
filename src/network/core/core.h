@@ -28,12 +28,12 @@ enum NetworkRecvStatus {
 	NETWORK_RECV_STATUS_DESYNC,           ///< A desync did occur
 	NETWORK_RECV_STATUS_NEWGRF_MISMATCH,  ///< We did not have the required NewGRFs
 	NETWORK_RECV_STATUS_SAVEGAME,         ///< Something went wrong (down)loading the savegame
-	NETWORK_RECV_STATUS_CONN_LOST,        ///< The conection is 'just' lost
+	NETWORK_RECV_STATUS_CONN_LOST,        ///< The connection is 'just' lost
 	NETWORK_RECV_STATUS_MALFORMED_PACKET, ///< We apparently send a malformed packet
 	NETWORK_RECV_STATUS_SERVER_ERROR,     ///< The server told us we made an error
 	NETWORK_RECV_STATUS_SERVER_FULL,      ///< The server is full
 	NETWORK_RECV_STATUS_SERVER_BANNED,    ///< The server has banned us
-	NETWORK_RECV_STATUS_CLOSE_QUERY,      ///< Done quering the server
+	NETWORK_RECV_STATUS_CLOSE_QUERY,      ///< Done querying the server
 };
 
 /** Forward declaration due to circular dependencies */
@@ -48,7 +48,7 @@ public:
 	/** Create a new unbound socket */
 	NetworkSocketHandler() { this->has_quit = false; }
 
-	/** Close the socket when distructing the socket handler */
+	/** Close the socket when destructing the socket handler */
 	virtual ~NetworkSocketHandler() { this->Close(); }
 
 	/** Really close the socket */

@@ -9,7 +9,7 @@
 
 /**
  * @file sprites.h
- * This file contails all sprite-related enums and defines. These consist mainly of
+ * This file contains all sprite-related enums and defines. These consist mainly of
  * the sprite numbers and a bunch of masks and macros to handle sprites and to get
  * rid of all the magic numbers in the code.
  *
@@ -26,7 +26,7 @@
  *
  * All sprites which are described here are referenced only one to a handful of times
  * throughout the code. When introducing new sprite enums, use meaningful names.
- * Don't be lazy and typing, and only use abbrevations when their meaning is clear or
+ * Don't be lazy and typing, and only use abbreviations when their meaning is clear or
  * the length of the enum would get out of hand. In that case EXPLAIN THE ABBREVATION
  * IN THIS FILE, and perhaps add some comments in the code where it is used.
  * Now, don't whine about this being too much typing work if the enums are like
@@ -709,14 +709,14 @@ static const SpriteID SPR_BTSGA_MGLV_Y_REAR       = 4365;
  * TILE_* denotes the different tiles a suspension bridge
  * can have
  * TILE_A and TILE_B are the "beginnings" and "ends" of the
- *   suspension system. they have small rectangluar endcaps
+ *   suspension system. They have small rectangular endcaps
  * TILE_C and TILE_D look almost identical to TILE_A and
  *   TILE_B, but they do not have the "endcaps". They form the
  *   middle part
  * TILE_E is a condensed configuration of two pillars. while they
  *   are usually 2 pillars apart, they only have 1 pillar separation
  *   here
- * TILE_F is an extended configuration of pillars. they are
+ * TILE_F is an extended configuration of pillars. They are
  *   plugged in when pillars should be 3 tiles apart
  */
 static const SpriteID SPR_BTSUS_ROAD_Y_REAR_TILE_A  = 2453;
@@ -860,7 +860,7 @@ static const SpriteID SPR_BTGIR_MGLV_Y        = 4403;
  * tubular bridges have 3 kinds of tiles:
  *  a start tile (with only half a tube on the far side, marked _BEG
  *  a middle tile (full tunnel), marked _MID
- *  and an end tile (half a tube on the near side, maked _END
+ *  and an end tile (half a tube on the near side, marked _END
  */
 static const SpriteID SPR_BTTUB_X_FRONT_BEG       = 2559;
 static const SpriteID SPR_BTTUB_X_FRONT_MID       = 2560;

@@ -27,7 +27,7 @@ enum SettingDescTypeLong {
 	SDT_BOOLX       = 1, ///< a boolean number
 	SDT_ONEOFMANY   = 2, ///< bitmasked number where only ONE bit may be set
 	SDT_MANYOFMANY  = 3, ///< bitmasked number where MULTIPLE bits may be set
-	SDT_INTLIST     = 4, ///< list of integers seperated by a comma ','
+	SDT_INTLIST     = 4, ///< list of integers separated by a comma ','
 	SDT_STRING      = 5, ///< string with a pre-allocated buffer
 	SDT_END,
 	/* 10 more possible primitives */
@@ -88,7 +88,7 @@ enum SettingType {
 };
 
 typedef bool OnChange(int32 var);           ///< callback prototype on data modification
-typedef size_t OnConvert(const char *value); ///< callback prototype for convertion error
+typedef size_t OnConvert(const char *value); ///< callback prototype for conversion error
 
 /** Properties of config file settings. */
 struct SettingDescBase {

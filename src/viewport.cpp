@@ -1431,7 +1431,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 			/* Do not draw signs nor station names if they are set invisible */
 			if (IsInvisibilitySet(TO_SIGNS) && ss->string != STR_WHITE_SIGN) continue;
 
-			/* if we didn't draw a rectangle, or if transparant building is on,
+			/* if we didn't draw a rectangle, or if transperant building is on,
 			 * draw the text in the colour the rectangle would have */
 			if (IsTransparencySet(TO_SIGNS) && ss->string != STR_WHITE_SIGN) {
 				/* Real colours need the TC_IS_PALETTE_COLOUR flag
@@ -1439,7 +1439,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 				colour = (TextColour)_colour_gradient[ss->colour][6] | TC_IS_PALETTE_COLOUR;
 			}
 
-			/* Draw the rectangle if 'tranparent station signs' is off,
+			/* Draw the rectangle if 'transparent station signs' is off,
 			 * or if we are drawing a general text sign (STR_WHITE_SIGN) */
 			if (!IsTransparencySet(TO_SIGNS) || ss->string == STR_WHITE_SIGN) {
 				DrawFrameRect(
@@ -1726,7 +1726,7 @@ static void SetSelectionTilesDirty()
 	int x_size = _thd.size.x;
 	int y_size = _thd.size.y;
 
-	if (!_thd.diagonal) { // Selecting in a straigth rectangle (or a single square)
+	if (!_thd.diagonal) { // Selecting in a straight rectangle (or a single square)
 		int x_start = _thd.pos.x;
 		int y_start = _thd.pos.y;
 

@@ -331,7 +331,7 @@ static const Command _command_proc_table[] = {
 /*!
  * This function range-checks a cmd, and checks if the cmd is not NULL
  *
- * @param cmd The integervalue of a command
+ * @param cmd The integer value of a command
  * @return true if the command is valid (and got a CommandProc function)
  */
 bool IsValidCommand(uint32 cmd)

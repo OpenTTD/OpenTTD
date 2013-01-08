@@ -60,7 +60,7 @@ enum AIDebugWidgets {
 	WID_AID_SCRIPT_GAME,          ///< Game Script button.
 	WID_AID_RELOAD_TOGGLE,        ///< Reload button.
 	WID_AID_LOG_PANEL,            ///< Panel where the log is in.
-	WID_AID_SCROLLBAR,            ///< Scrollbar of the log pannel.
+	WID_AID_SCROLLBAR,            ///< Scrollbar of the log panel.
 	WID_AID_COMPANY_BUTTON_START, ///< Buttons in the VIEW.
 	WID_AID_COMPANY_BUTTON_END = WID_AID_COMPANY_BUTTON_START + MAX_COMPANIES - 1, ///< Last possible button in the VIEW.
 	WID_AID_BREAK_STRING_WIDGETS, ///< The panel to handle the breaking on string.

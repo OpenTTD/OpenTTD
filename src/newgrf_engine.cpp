@@ -628,7 +628,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 			return v->GetCurrentMaxSpeed();
 
 		/* Variables which use the parameter */
-		case 0x60: // Count consist's engine ID occurance
+		case 0x60: // Count consist's engine ID occurrence
 			if (v->type != VEH_TRAIN) return v->GetEngine()->grf_prop.local_id == parameter ? 1 : 0;
 
 			{
@@ -1059,7 +1059,7 @@ bool UsesWagonOverride(const Vehicle *v)
 
 /**
  * Evaluate a newgrf callback for vehicles
- * @param callback The callback to evalute
+ * @param callback The callback to evaluate
  * @param param1   First parameter of the callback
  * @param param2   Second parameter of the callback
  * @param engine   Engine type of the vehicle to evaluate the callback for
@@ -1077,11 +1077,11 @@ uint16 GetVehicleCallback(CallbackID callback, uint32 param1, uint32 param2, Eng
 
 /**
  * Evaluate a newgrf callback for vehicles with a different vehicle for parent scope.
- * @param callback The callback to evalute
+ * @param callback The callback to evaluate
  * @param param1   First parameter of the callback
  * @param param2   Second parameter of the callback
  * @param engine   Engine type of the vehicle to evaluate the callback for
- * @param v        The vehicle to evaluate the callback for, or NULL if it doesnt exist yet
+ * @param v        The vehicle to evaluate the callback for, or NULL if it doesn't exist yet
  * @param parent   The vehicle to use for parent scope
  * @return The value the callback returned, or CALLBACK_FAILED if it failed
  */
@@ -1239,7 +1239,7 @@ void CommitVehicleListOrderChanges()
 	}
 	QSortT(ordering.Begin(), ordering.Length(), EnginePreSort);
 
-	/* Apply Insertion-Sort opeations */
+	/* Apply Insertion-Sort operations */
 	const ListOrderChange *end = _list_order_changes.End();
 	for (const ListOrderChange *it = _list_order_changes.Begin(); it != end; ++it) {
 		EngineID source = it->engine;

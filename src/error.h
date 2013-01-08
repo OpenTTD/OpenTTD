@@ -18,7 +18,7 @@
 
 /** Message severity/type */
 enum WarningLevel {
-	WL_INFO,     ///< Used for DoCommand-like (and some nonfatal AI GUI) errors/information
+	WL_INFO,     ///< Used for DoCommand-like (and some non-fatal AI GUI) errors/information
 	WL_WARNING,  ///< Other information
 	WL_ERROR,    ///< Errors (eg. saving/loading failed)
 	WL_CRITICAL, ///< Critical errors, the MessageBox is shown in all cases

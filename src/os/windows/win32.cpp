@@ -238,7 +238,7 @@ bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb
 	 * we just have to subtract POSIX epoch and scale down to units of seconds.
 	 * http://www.gamedev.net/community/forums/topic.asp?topic_id=294070&whichpage=1&#1860504
 	 * XXX - not entirely correct, since filetimes on FAT aren't UTC but local,
-	 * this won't entirely be correct, but we use the time only for comparsion. */
+	 * this won't entirely be correct, but we use the time only for comparison. */
 	sb->st_mtime = (time_t)((*(const uint64*)&fd->ftLastWriteTime - posix_epoch_hns) / 1E7);
 	sb->st_mode  = (fd->dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)? S_IFDIR : S_IFREG;
 
@@ -371,7 +371,7 @@ static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM
 			}
 			*q = '\0';
 #if defined(UNICODE)
-			/* We need to put the text in a seperate buffer because the default
+			/* We need to put the text in a separate buffer because the default
 			 * buffer in MB_TO_WIDE might not be large enough (512 chars) */
 			wchar_t help_msgW[8192];
 #endif
@@ -407,7 +407,7 @@ void ShowInfo(const char *str)
 			DialogBox(GetModuleHandle(NULL), MAKEINTRESOURCE(101), NULL, HelpDialogFunc);
 		} else {
 #if defined(UNICODE)
-			/* We need to put the text in a seperate buffer because the default
+			/* We need to put the text in a separate buffer because the default
 			 * buffer in MB_TO_WIDE might not be large enough (512 chars) */
 			wchar_t help_msgW[8192];
 #endif

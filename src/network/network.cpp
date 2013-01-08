@@ -455,7 +455,7 @@ static void CheckPauseOnJoin()
  * Converts a string to ip/port/company
  *  Format: IP:port#company
  *
- * connection_string will be re-terminated to seperate out the hostname, and company and port will
+ * connection_string will be re-terminated to separate out the hostname, and company and port will
  * be set to the company and port strings given by the user, inside the memory area originally
  * occupied by connection_string.
  */
@@ -488,7 +488,7 @@ void ParseConnectionString(const char **company, const char **port, char *connec
 }
 
 /**
- * Handle the acception of a connection to the server.
+ * Handle the accepting of a connection to the server.
  * @param s The socket of the new connection.
  * @param address The address of the peer.
  */
@@ -549,7 +549,7 @@ void NetworkClose(bool close_admins)
 	InitializeNetworkPools(close_admins);
 }
 
-/* Inits the network (cleans sockets and stuff) */
+/* Initializes the network (cleans sockets and stuff) */
 static void NetworkInitialize(bool close_admins = true)
 {
 	InitializeNetworkPools(close_admins);
@@ -809,7 +809,7 @@ void NetworkDisconnect(bool blocking, bool close_admins)
 
 /**
  * Receives something from the network.
- * @return true if everthing went fine, false when the connection got closed.
+ * @return true if everything went fine, false when the connection got closed.
  */
 static bool NetworkReceive()
 {

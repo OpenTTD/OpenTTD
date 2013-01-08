@@ -370,7 +370,7 @@ public:
 	static bool MoveWagonChain(VehicleID source_vehicle_id, int source_wagon, int dest_vehicle_id, int dest_wagon);
 
 	/**
-	 * Gets the capacity of the given vehicle when refited to the given cargo type.
+	 * Gets the capacity of the given vehicle when refitted to the given cargo type.
 	 * @param vehicle_id The vehicle to refit.
 	 * @param cargo The cargo to refit to.
 	 * @pre IsValidVehicle(vehicle_id).
@@ -549,7 +549,7 @@ public:
 
 	/**
 	 * Get the maximum allowed distance between two orders for a vehicle.
-	 * The distance returned is a vehicle-type specific distance indepenent from other
+	 * The distance returned is a vehicle-type specific distance independent from other
 	 * map distances, you may use the result of this function to compare it
 	 * with the result of ScriptOrder::GetOrderDistance.
 	 * @param vehicle_id The vehicle to get the distance for.

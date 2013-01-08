@@ -120,7 +120,7 @@ static inline void SetCompanyManagerFaceBits(CompanyManagerFace &cmf, CompanyMan
 /**
  * Increase/Decrease the company manager's face variable by the given amount.
  * If the new value greater than the max value for this variable it will be set to 0.
- * Or is it negativ (< 0) it will be set to max value.
+ * Or is it negative (< 0) it will be set to max value.
  *
  * @param cmf    the company manager face to write the bits to
  * @param cmfv   the company manager face variable to write the data of

@@ -146,7 +146,7 @@ static inline uint ScaleByMapSize1D(uint n)
 /**
  * An offset value between to tiles.
  *
- * This value is used fro the difference between
+ * This value is used for the difference between
  * to tiles. It can be added to a tileindex to get
  * the resulting tileindex of the start tile applied
  * with this saved difference.

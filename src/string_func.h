@@ -49,7 +49,7 @@ bool StrValid(const char *str, const char *last);
 /**
  * Check if a string buffer is empty.
  *
- * @param s The pointer to the firste element of the buffer
+ * @param s The pointer to the first element of the buffer
  * @return true if the buffer starts with the terminating null-character or
  *         if the given pointer points to NULL else return false
  */
@@ -61,7 +61,7 @@ static inline bool StrEmpty(const char *s)
 /**
  * Get the length of a string, within a limited buffer.
  *
- * @param str The pointer to the firste element of the buffer
+ * @param str The pointer to the first element of the buffer
  * @param maxlen The maximum size of the buffer
  * @return The length of the string
  */

@@ -620,7 +620,7 @@ void VideoDriver_SDL::MainLoop()
 #endif
 			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 
-			/* The gameloop is the part that can run asynchroniously. The rest
+			/* The gameloop is the part that can run asynchronously. The rest
 			 * except sleeping can't. */
 			if (_draw_threaded) _draw_mutex->EndCritical();
 

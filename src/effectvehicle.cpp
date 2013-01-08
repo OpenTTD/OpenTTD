@@ -547,7 +547,7 @@ static EffectInitProc * const _effect_init_procs[] = {
 };
 assert_compile(lengthof(_effect_init_procs) == EV_END);
 
-/** Functions for controling effect vehicles at each tick. */
+/** Functions for controlling effect vehicles at each tick. */
 static EffectTickProc * const _effect_tick_procs[] = {
 	ChimneySmokeTick,   // EV_CHIMNEY_SMOKE
 	SteamSmokeTick,     // EV_STEAM_SMOKE

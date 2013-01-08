@@ -87,7 +87,7 @@ static TileIndex GetOtherAqueductEnd(TileIndex tile_from, TileIndex *tile_to = N
 	return endtile;
 }
 
-/** Toolbar window for constructing water infra structure. */
+/** Toolbar window for constructing water infrastructure. */
 struct BuildDocksToolbarWindow : Window {
 	DockToolbarWidgets last_clicked_widget; ///< Contains the last widget that has been clicked on this toolbar.
 

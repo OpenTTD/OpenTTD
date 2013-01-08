@@ -522,7 +522,7 @@ private:
 
 	/**
 	 * Return the memorised selected order.
-	 * @return the memorised order if it is a vaild one
+	 * @return the memorised order if it is a valid one
 	 *  else return the number of orders
 	 */
 	VehicleOrderID OrderGetSel() const

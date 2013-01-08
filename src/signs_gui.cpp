@@ -429,7 +429,7 @@ struct SignWindow : Window, SignList {
 
 	void UpdateSignEditWindow(const Sign *si)
 	{
-		/* Display an empty string when the sign hasnt been edited yet */
+		/* Display an empty string when the sign hasn't been edited yet */
 		if (si->name != NULL) {
 			SetDParam(0, si->index);
 			this->name_editbox.text.Assign(STR_SIGN_NAME);

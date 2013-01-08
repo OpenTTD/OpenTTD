@@ -37,7 +37,7 @@ enum VehicleRailFlags {
 enum TrainForceProceeding {
 	TFP_NONE   = 0,    ///< Normal operation.
 	TFP_STUCK  = 1,    ///< Proceed till next signal, but ignore being stuck till then. This includes force leaving depots.
-	TFP_SIGNAL = 2,    ///< Ignore next signal, after the signal ignore being stucked.
+	TFP_SIGNAL = 2,    ///< Ignore next signal, after the signal ignore being stuck.
 };
 typedef SimpleTinyEnumT<TrainForceProceeding, byte> TrainForceProceedingByte;
 

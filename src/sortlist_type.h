@@ -30,7 +30,7 @@ enum SortListFlags {
 };
 DECLARE_ENUM_AS_BIT_SET(SortListFlags)
 
-/** Data structure describing how to show the list (what sort direction and criterium). */
+/** Data structure describing how to show the list (what sort direction and criteria). */
 struct Listing {
 	bool order;    ///< Ascending/descending
 	byte criteria; ///< Sorting criteria
@@ -232,7 +232,7 @@ public:
 	}
 
 	/**
-	 * Toogle the sort order
+	 * Toggle the sort order
 	 *  Since that is the worst condition for the sort function
 	 *  reverse the list here.
 	 */

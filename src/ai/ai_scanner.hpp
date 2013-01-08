@@ -30,7 +30,7 @@ public:
 	/**
 	 * Check if we have an AI by name and version available in our list.
 	 * @param nameParam The name of the AI.
-	 * @param versionParam The versionof the AI, or -1 if you want the latest.
+	 * @param versionParam The version of the AI, or -1 if you want the latest.
 	 * @param force_exact_match Only match name+version, never latest.
 	 * @return NULL if no match found, otherwise the AI that matched.
 	 */

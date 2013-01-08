@@ -272,7 +272,7 @@ static int CDECL EnginePowerVsRunningCostSorter(const EngineID *a, const EngineI
 	 * we will actually calculate cunning cost/power (to make it more than 1).
 	 * Because of this, the return value have to be reversed as well and we return b - a instead of a - b.
 	 * Another thing is that both power and running costs should be doubled for multiheaded engines.
-	 * Since it would be multipling with 2 in both numerator and denumerator, it will even themselves out and we skip checking for multiheaded. */
+	 * Since it would be multiplying with 2 in both numerator and denominator, it will even themselves out and we skip checking for multiheaded. */
 	Money va = (e_a->GetRunningCost()) / max(1U, (uint)e_a->GetPower());
 	Money vb = (e_b->GetRunningCost()) / max(1U, (uint)e_b->GetPower());
 	int r = ClampToI32(vb - va);
@@ -967,7 +967,7 @@ struct BuildVehicleWindow : Window {
 		this->vscroll = this->GetScrollbar(WID_BV_SCROLLBAR);
 
 		/* If we are just viewing the list of vehicles, we do not need the Build button.
-		 * So we just hide it, and enlarge the Rename buton by the now vacant place. */
+		 * So we just hide it, and enlarge the Rename button by the now vacant place. */
 		if (this->listview_mode) this->GetWidget<NWidgetStacked>(WID_BV_BUILD_SEL)->SetDisplayedPlane(SZSP_NONE);
 
 		NWidgetCore *widget = this->GetWidget<NWidgetCore>(WID_BV_LIST);

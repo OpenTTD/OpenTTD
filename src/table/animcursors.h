@@ -30,7 +30,7 @@
 #define ANIM_CURSOR_END() ANIM_CURSOR_LINE(AnimCursor::LAST, 0)
 
 /**
- * Animated cursor elements for demolishion
+ * Animated cursor elements for demolition
  */
 static const AnimCursor _demolish_animcursor[] = {
 	ANIM_CURSOR_LINE(SPR_CURSOR_DEMOLISH_FIRST, 8)

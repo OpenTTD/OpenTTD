@@ -844,7 +844,7 @@ bool MakeHeightmapScreenshot(const char *filename)
  * Make an actual screenshot.
  * @param t    the type of screenshot to make.
  * @param name the name to give to the screenshot.
- * @return true iff the screenshow was made successfully
+ * @return true iff the screenshot was made successfully
  */
 bool MakeScreenshot(ScreenshotType t, const char *name)
 {

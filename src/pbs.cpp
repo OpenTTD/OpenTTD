@@ -219,7 +219,7 @@ static PBSTileInfo FollowReservation(Owner o, RailTypes rts, TileIndex tile, Tra
 
 		if (first_loop) {
 			/* Update the start tile after we followed the track the first
-			 * time. This is neccessary because the track follower can skip
+			 * time. This is necessary because the track follower can skip
 			 * tiles (in stations for example) which means that we might
 			 * never visit our original starting tile again. */
 			start_tile = tile;
@@ -376,7 +376,7 @@ bool IsSafeWaitingPosition(const Train *v, TileIndex tile, Trackdir trackdir, bo
 		if (HasSignalOnTrackdir(tile, trackdir) && !IsPbsSignal(GetSignalType(tile, TrackdirToTrack(trackdir)))) return true;
 	}
 
-	/* Check next tile. For perfomance reasons, we check for 90 degree turns ourself. */
+	/* Check next tile. For performance reasons, we check for 90 degree turns ourself. */
 	CFollowTrackRail ft(v, GetRailTypeInfo(v->railtype)->compatible_railtypes);
 
 	/* End of track? */

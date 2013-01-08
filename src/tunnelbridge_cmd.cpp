@@ -10,7 +10,7 @@
 /**
  * @file tunnelbridge_cmd.cpp
  * This file deals with tunnels and bridges (non-gui stuff)
- * @todo seperate this file into two
+ * @todo separate this file into two
  */
 
 #include "stdafx.h"
@@ -61,7 +61,7 @@ void ResetBridges()
 		}
 	}
 
-	/* Then, wipe out current bidges */
+	/* Then, wipe out current bridges */
 	memset(&_bridge, 0, sizeof(_bridge));
 	/* And finally, reinstall default data */
 	memcpy(&_bridge, &_orig_bridge, sizeof(_orig_bridge));
@@ -91,8 +91,8 @@ int CalcBridgeLenCostFactor(int length)
 /**
  * Get the foundation for a bridge.
  * @param tileh The slope to build the bridge on.
- * @param axis The axis of the bridge entrace.
- * @return The foundatiton required.
+ * @param axis The axis of the bridge entrance.
+ * @return The foundation required.
  */
 Foundation GetBridgeFoundation(Slope tileh, Axis axis)
 {
@@ -432,7 +432,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 			if (flags & DC_EXEC) {
 				/* We do this here because when replacing a bridge with another
 				 * type calling SetBridgeMiddle isn't needed. After all, the
-				 * tile alread has the has_bridge_above bits set. */
+				 * tile already has the has_bridge_above bits set. */
 				SetBridgeMiddle(tile, direction);
 			}
 		}
@@ -592,7 +592,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 
 	TileIndex end_tile = start_tile;
 
-	/* Tile shift coeficient. Will decrease for very long tunnels to avoid exponential growth of price*/
+	/* Tile shift coefficient. Will decrease for very long tunnels to avoid exponential growth of price*/
 	int tiles_coef = 3;
 	/* Number of tiles from start of tunnel */
 	int tiles = 0;
@@ -1077,7 +1077,7 @@ static void DrawBridgeTramBits(int x, int y, int z, int offset, bool overlay, bo
 
 /**
  * Draws a tunnel of bridge tile.
- * For tunnels, this is rather simple, as you only needa draw the entrance.
+ * For tunnels, this is rather simple, as you only need to draw the entrance.
  * Bridges are a bit more complex. base_offset is where the sprite selection comes into play
  * and it works a bit like a bitmask.<p> For bridge heads:
  * @param ti TileInfo of the structure to draw
@@ -1556,7 +1556,7 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 	switch (_settings_game.game_creation.landscape) {
 		case LT_ARCTIC: {
 			/* As long as we do not have a snow density, we want to use the density
-			 * from the entry endge. For tunnels this is the lowest point for bridges the highest point.
+			 * from the entry edge. For tunnels this is the lowest point for bridges the highest point.
 			 * (Independent of foundations) */
 			int z = IsBridge(tile) ? GetTileMaxZ(tile) : GetTileZ(tile);
 			if (snow_or_desert != (z > GetSnowLine())) {

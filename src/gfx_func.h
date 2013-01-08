@@ -26,10 +26,10 @@
  * This whole mechanism is controlled by an rectangle defined in #_invalid_rect. This
  * rectangle defines the area on the screen which must be repaint. If a new object
  * needs to be repainted this rectangle is extended to 'catch' the object on the
- * screen. At some point (which is normaly uninteressted for patch writers) this
+ * screen. At some point (which is normally uninteresting for patch writers) this
  * rectangle is send to the video drivers method
  * VideoDriver::MakeDirty and it is truncated back to an empty rectangle. At some
- * later point (which is uninteressted, too) the video driver
+ * later point (which is uninteresting, too) the video driver
  * repaints all these saved rectangle instead of the whole screen and drop the
  * rectangle informations. Then a new round begins by marking objects "dirty".
  *

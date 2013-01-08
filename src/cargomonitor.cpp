@@ -31,7 +31,7 @@ void ClearCargoDeliveryMonitoring()
 /**
  * Get and reset the amount associated with a cargo monitor.
  * @param[in,out] monitor_map Monitoring map to search (and reset for the queried entry).
- * @oaram monitor Cargo monitor to query/reset.
+ * @param monitor Cargo monitor to query/reset.
  * @param keep_monitoring After returning from this call, continue monitoring.
  * @return Amount collected since last query/activation for the monitored combination.
  */

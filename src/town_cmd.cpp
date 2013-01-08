@@ -283,7 +283,7 @@ static Foundation GetFoundation_Town(TileIndex tile, Slope tileh)
 /**
  * Animate a tile for a town
  * Only certain houses can be animated
- * The newhouses animation superseeds regular ones
+ * The newhouses animation supersedes regular ones
  * @param tile TileIndex of the house to animate
  */
 static void AnimateTile_Town(TileIndex tile)
@@ -374,8 +374,8 @@ void UpdateAllTownVirtCoords()
 
 /**
  * Change the towns population
- * @param t Town which polulation has changed
- * @param mod polulation change (can be positive or negative)
+ * @param t Town which population has changed
+ * @param mod population change (can be positive or negative)
  */
 static void ChangePopulation(Town *t, int mod)
 {
@@ -804,9 +804,9 @@ static RoadBits GetTownRoadBits(TileIndex tile)
  *   Assuming a road from (tile - TileOffsByDiagDir(dir)) to tile,
  *   is there a parallel road left or right of it within distance dist_multi?
  *
- * @param tile curent tile
+ * @param tile current tile
  * @param dir target direction
- * @param dist_multi distance multiplyer
+ * @param dist_multi distance multiplayer
  * @return true if there is a parallel road
  */
 static bool IsNeighborRoadTile(TileIndex tile, const DiagDirection dir, uint dist_multi)
@@ -1173,7 +1173,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 	} else if (target_dir < DIAGDIR_END && !(cur_rb & DiagDirToRoadBits(ReverseDiagDir(target_dir)))) {
 		/* Continue building on a partial road.
-		 * Should be allways OK, so we only generate
+		 * Should be always OK, so we only generate
 		 * the fitting RoadBits */
 		_grow_town_result = GROWTH_SEARCH_STOPPED;
 
@@ -2221,7 +2221,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 	while (probability_max > 0) {
 		/* Building a multitile building can change the location of tile.
 		 * The building would still be built partially on that tile, but
-		 * its nothern tile would be elsewere. However, if the callback
+		 * its northern tile would be elsewhere. However, if the callback
 		 * fails we would be basing further work from the changed tile.
 		 * So a next 1x1 tile building could be built on the wrong tile. */
 		tile = baseTile;
@@ -2859,7 +2859,7 @@ static CommandCost TownActionBribe(Town *t, DoCommandFlag flags)
 				}
 			}
 
-			/* only show errormessage to the executing player. All errors are handled command.c
+			/* only show error message to the executing player. All errors are handled command.c
 			 * but this is special, because it can only 'fail' on a DC_EXEC */
 			if (IsLocalCompany()) ShowErrorMessage(STR_ERROR_BRIBE_FAILED, INVALID_STRING_ID, WL_INFO);
 

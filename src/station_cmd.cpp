@@ -594,7 +594,7 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 		uint num_acc = 0;
 		uint num_rej = 0;
 
-		/* Test each cargo type to see if its acceptange has changed */
+		/* Test each cargo type to see if its acceptance has changed */
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (HasBit(new_acc, i)) {
 				if (!HasBit(old_acc, i) && num_acc < lengthof(accepts)) {
@@ -692,7 +692,7 @@ CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags);
  * @param invalid_dirs Prohibited directions for slopes (set of #DiagDirection).
  * @param allowed_z Height allowed for the tile. If allowed_z is negative, it will be set to the height of this tile.
  * @param allow_steep Whether steep slopes are allowed.
- * @param check_bridge Check for the existance of a bridge.
+ * @param check_bridge Check for the existence of a bridge.
  * @return The cost in case of success, or an error code if it failed.
  */
 CommandCost CheckBuildableTile(TileIndex tile, uint invalid_dirs, int &allowed_z, bool allow_steep, bool check_bridge = true)
@@ -3075,7 +3075,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 		/* Stop whenever that amount of station ahead + the distance from the
 		 * begin of the platform to the stop location is longer than the length
 		 * of the platform. Station ahead 'includes' the current tile where the
-		 * vehicle is on, so we need to substract that. */
+		 * vehicle is on, so we need to subtract that. */
 		if (!IsInsideBS(stop + station_ahead, station_length, TILE_SIZE)) return VETSB_CONTINUE;
 
 		DiagDirection dir = DirToDiagDir(v->direction);
@@ -3268,7 +3268,7 @@ static void UpdateStationRating(Station *st)
 
 				/* At some point we really must cap the cargo. Previously this
 				 * was a strict 4095, but now we'll have a less strict, but
-				 * increasingly agressive truncation of the amount of cargo. */
+				 * increasingly aggressive truncation of the amount of cargo. */
 				static const uint WAITING_CARGO_THRESHOLD  = 1 << 12;
 				static const uint WAITING_CARGO_CUT_FACTOR = 1 <<  6;
 				static const uint MAX_WAITING_CARGO        = 1 << 15;

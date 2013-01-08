@@ -72,7 +72,7 @@ protected:
 	virtual char *LogRegisters(char *buffer, const char *last) const;
 
 	/**
-	 * Writes the dynamically linked libaries/modules to the buffer, if there
+	 * Writes the dynamically linked libraries/modules to the buffer, if there
 	 * is information about it available.
 	 * @param buffer The begin where to write at.
 	 * @param last   The last position in the buffer to write to.

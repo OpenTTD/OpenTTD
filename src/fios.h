@@ -88,9 +88,9 @@ enum FileSlots {
 	CONFIG_SLOT    =  0,
 	/** Slot for the sound. */
 	SOUND_SLOT     =  1,
-	/** First slot useable for (New)GRFs used during the game. */
+	/** First slot usable for (New)GRFs used during the game. */
 	FIRST_GRF_SLOT =  2,
-	/** Last slot useable for (New)GRFs used during the game. */
+	/** Last slot usable for (New)GRFs used during the game. */
 	LAST_GRF_SLOT  = 63,
 	/** Maximum number of slots. */
 	MAX_FILE_SLOTS = 64

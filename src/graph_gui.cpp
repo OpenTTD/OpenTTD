@@ -285,7 +285,7 @@ protected:
 		ValuesInterval interval; ///< Interval that contains all of the graph data.
 		int x_axis_offset;       ///< Distance from the top of the graph to the x axis.
 
-		/* the colours and cost array of GraphDrawer must accomodate
+		/* the colours and cost array of GraphDrawer must accommodate
 		 * both values for cargo and companies. So if any are higher, quit */
 		assert_compile(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_COMPANIES);
 		assert(this->num_vert_lines > 0);
@@ -423,7 +423,7 @@ protected:
 					if (datapoint != INVALID_DATAPOINT) {
 						/*
 						 * Check whether we need to reduce the 'accuracy' of the
-						 * datapoint value and the highest value to splut overflows.
+						 * datapoint value and the highest value to split overflows.
 						 * And when 'drawing' 'one million' or 'one million and one'
 						 * there is no significant difference, so the least
 						 * significant bits can just be removed.

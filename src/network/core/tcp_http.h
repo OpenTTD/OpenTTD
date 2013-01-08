@@ -117,7 +117,7 @@ public:
 	virtual void OnConnect(SOCKET s)
 	{
 		new NetworkHTTPSocketHandler(s, this->callback, this->address.GetHostname(), this->url, this->data, this->depth);
-		/* We've relinguished control of data now. */
+		/* We've relinquished control of data now. */
 		this->data = NULL;
 	}
 };

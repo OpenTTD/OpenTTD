@@ -18,7 +18,7 @@
 #include "strings_type.h"
 
 struct NamePart {
-	byte prob;     ///< The relative probablity of the following name to appear in the bottom 7 bits.
+	byte prob;     ///< The relative probability of the following name to appear in the bottom 7 bits.
 	union {
 		char *text;    ///< If probability bit 7 is clear
 		byte id;       ///< If probability bit 7 is set

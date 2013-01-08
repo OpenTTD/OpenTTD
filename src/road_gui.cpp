@@ -273,7 +273,7 @@ static void PlaceRoad_TruckStation(TileIndex tile)
 typedef void OnButtonClick(Window *w);
 
 /**
- * Toogles state of the Remove button of Build road toolbar
+ * Toggles state of the Remove button of Build road toolbar
  * @param w window the button belongs to
  */
 static void ToggleRoadButton_Remove(Window *w)
@@ -287,7 +287,7 @@ static void ToggleRoadButton_Remove(Window *w)
 /**
  * Updates the Remove button because of Ctrl state change
  * @param w window the button belongs to
- * @return true iff the remove buton was changed
+ * @return true iff the remove button was changed
  */
 static bool RoadToolbar_CtrlChanged(Window *w)
 {
@@ -350,7 +350,7 @@ struct BuildRoadToolbarWindow : Window {
 	void UpdateOptionWidgetStatus(RoadToolbarWidgets clicked_widget)
 	{
 		/* The remove and the one way button state is driven
-		 * by the other buttons so they don't act on themselfs.
+		 * by the other buttons so they don't act on themselves.
 		 * Both are only valid if they are able to apply as options. */
 		switch (clicked_widget) {
 			case WID_ROT_REMOVE:

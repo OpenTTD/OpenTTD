@@ -308,7 +308,7 @@ public:
 
 /**
  * Highlight the widget or not.
- * @param higlighted Widget must be highlighted (blink).
+ * @param highlight_colour Widget must be highlighted (blink).
  */
 inline void NWidgetCore::SetHighlighted(TextColour highlight_colour)
 {
@@ -830,7 +830,7 @@ static inline uint ComputeMaxSize(uint base, uint max_space, uint step)
  *   the child widgets (it has no meaning for the compiler but it makes the widget parts easier to read).
  *   Below the last child widget, use an #EndContainer part. This part should be aligned with the #NWidget part that started the container.
  *
- * - Stacked widgets #NWidgetStacked map each of their childs onto the same space. It behaves like a container, except there is no pre/inter/post space,
+ * - Stacked widgets #NWidgetStacked map each of their children onto the same space. It behaves like a container, except there is no pre/inter/post space,
  *   so the widget does not support #SetPIP. #SetPadding is allowed though.
  *   Like the other container widgets, below the last child widgets, a #EndContainer part should be used to denote the end of the stacked widget.
  *
@@ -1071,7 +1071,7 @@ static inline NWidgetPart SetPIP(uint8 pre, uint8 inter, uint8 post)
 /**
  * Attach a scrollbar to a widget.
  * The scrollbar is controlled when using the mousewheel on the widget.
- * Multipe widgets can refer to the same scrollbar to make the mousewheel work in all of them.
+ * Multiple widgets can refer to the same scrollbar to make the mousewheel work in all of them.
  * @param index Widget index of the scrollbar.
  * @ingroup NestedWidgetParts
  */

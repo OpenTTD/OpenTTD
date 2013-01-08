@@ -215,7 +215,7 @@
  *     AIBaseStation, but can still be used as AIStation.GetConstructionDate
  * \li WaypointID was replaced by StationID. All WaypointIDs from previous
  *     savegames are invalid. Use STATION_INVALID instead of WAYPOINT_INVALID
- * \li AIWaypointList constructor now needs a WaypointType similiar to AIStationList,
+ * \li AIWaypointList constructor now needs a WaypointType similar to AIStationList,
  *     it can also handle buoys.
  * \li AIVehicleList_Station now also works for waypoints
  * \li Stations can be build over rail without signals that is in the right

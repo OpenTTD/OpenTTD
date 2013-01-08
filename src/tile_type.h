@@ -52,7 +52,7 @@ enum TileType {
  *
  * In randomly generated maps:
  *  TROPICZONE_DESERT: Generated everywhere, if there is neither water nor mountains (TileHeight >= 4) in a certain distance from the tile.
- *  TROPICZONE_RAINFOREST: Genereated everywhere, if there is no desert in a certain distance from the tile.
+ *  TROPICZONE_RAINFOREST: Generated everywhere, if there is no desert in a certain distance from the tile.
  *  TROPICZONE_NORMAL: Everywhere else, i.e. between desert and rainforest and on sea (if you clear the water).
  *
  * In scenarios:

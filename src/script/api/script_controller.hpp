@@ -129,7 +129,7 @@ public:
 	 * Import a library.
 	 * @param library The name of the library to import.
 	 * @param class_name Under which name you want it to be available (or "" if you just want the returning object).
-	 * @param version Which version you want specificly.
+	 * @param version Which version you want specifically.
 	 * @return The loaded library object. If class_name is set, it is also available (under the scope of the import) under that name.
 	 * @note This command can be called from the global space, and does not need an instance.
 	 */

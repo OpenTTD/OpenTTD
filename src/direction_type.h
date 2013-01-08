@@ -66,7 +66,7 @@ enum DirDiff {
 	DIRDIFF_SAME    = 0,    ///< Both directions faces to the same direction
 	DIRDIFF_45RIGHT = 1,    ///< Angle of 45 degrees right
 	DIRDIFF_90RIGHT = 2,    ///< Angle of 90 degrees right
-	DIRDIFF_REVERSE = 4,    ///< One direction is the opposit of the other one
+	DIRDIFF_REVERSE = 4,    ///< One direction is the opposite of the other one
 	DIRDIFF_90LEFT  = 6,    ///< Angle of 90 degrees left
 	DIRDIFF_45LEFT  = 7,    ///< Angle of 45 degrees left
 };
@@ -119,7 +119,7 @@ DECLARE_POSTFIX_INCREMENT(DiagDirDiff)
 /**
  * Enumeration for the two axis X and Y
  *
- * This enumeration represente the two axis X and Y in the game.
+ * This enumeration represents the two axis X and Y in the game.
  * The X axis is the one which goes align the north-west edge
  * (and south-east edge). The Y axis must be so the one which goes
  * align the north-east edge (and south-west) edge.

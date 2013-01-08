@@ -314,7 +314,7 @@ public:
 	/**
 	 * Remove all rail waypoint pieces within a rectangle on the map.
 	 * @param tile One corner of the rectangle to clear.
-	 * @param tile2 The oppposite corner.
+	 * @param tile2 The opposite corner.
 	 * @param keep_rail Whether to keep the rail after removal.
 	 * @pre IsValidTile(tile).
 	 * @pre IsValidTile(tile2).
@@ -326,7 +326,7 @@ public:
 	/**
 	 * Remove all rail station platform pieces within a rectangle on the map.
 	 * @param tile One corner of the rectangle to clear.
-	 * @param tile2 The oppposite corner.
+	 * @param tile2 The opposite corner.
 	 * @param keep_rail Whether to keep the rail after removal.
 	 * @pre IsValidTile(tile).
 	 * @pre IsValidTile(tile2).

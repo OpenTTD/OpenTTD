@@ -161,7 +161,7 @@ public:
 
 /**
  * Simple collection class for a list of cargo packets.
- * @tparam Tinst Actual instantation of this cargo list.
+ * @tparam Tinst Actual instantiation of this cargo list.
  */
 template <class Tinst>
 class CargoList {

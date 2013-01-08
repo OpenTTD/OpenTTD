@@ -1066,7 +1066,7 @@ DEF_CONSOLE_CMD(ConRestart)
 }
 
 /**
- * Print a text buffer line by line to the console. Lines are seperated by '\n'.
+ * Print a text buffer line by line to the console. Lines are separated by '\n'.
  * @param buf The buffer to print.
  * @note All newlines are replace by '\0' characters.
  */

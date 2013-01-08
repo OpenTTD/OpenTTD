@@ -154,7 +154,7 @@ struct SubsidyListWindow : Window {
 		int pos = -this->vscroll->GetPosition();
 		const int cap = this->vscroll->GetCapacity();
 
-		/* Section for drawing the offered subisidies */
+		/* Section for drawing the offered subsidies */
 		if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_OFFERED_TITLE);
 		pos++;
 
@@ -178,7 +178,7 @@ struct SubsidyListWindow : Window {
 			pos++;
 		}
 
-		/* Section for drawing the already granted subisidies */
+		/* Section for drawing the already granted subsidies */
 		pos++;
 		if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_SUBSIDISED_TITLE);
 		pos++;

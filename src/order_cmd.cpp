@@ -79,7 +79,7 @@ void Order::MakeGoToStation(StationID destination)
 /**
  * Makes this order a Go To Depot order.
  * @param destination   the depot to go to.
- * @param order         is this order a 'default' order, or an overriden vehicle order?
+ * @param order         is this order a 'default' order, or an overridden vehicle order?
  * @param non_stop_type how to get to the depot?
  * @param action        what to do in the depot?
  * @param cargo         the cargo type to change to.
@@ -1118,7 +1118,7 @@ CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			 * predictable and transparent behaviour.
 			 *
 			 * With that decision it basically does not matter what we do to cur_implicit_order_index.
-			 * If we change orders between the implict- and real-index, the implicit orders are mostly likely
+			 * If we change orders between the implicit- and real-index, the implicit orders are mostly likely
 			 * completely out-dated anyway. So, keep it simple and just keep cur_implicit_order_index as well.
 			 * The worst which can happen is that a lot of implicit orders are removed when reaching current_order.
 			 */
@@ -1521,7 +1521,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			if (ret.Failed()) return ret;
 
 			/* Trucks can't copy all the orders from busses (and visa versa),
-			 * and neither can helicopters and aircarft. */
+			 * and neither can helicopters and aircraft. */
 			const Order *order;
 			FOR_VEHICLE_ORDERS(src, order) {
 				if (OrderGoesToStation(dst, order) &&

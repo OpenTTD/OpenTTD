@@ -1171,7 +1171,7 @@ enum IndustryTypes {
  * @param a3   accepted cargo 3
  * @param im3  input multiplier for cargo 3
  * @param pr   industry life (actually, the same as extractive, organic, processing in ttdpatch's specs)
- * @param clim climate availaility
+ * @param clim climate availability
  * @param bev  industry behaviour
  * @param in   name
  * @param intx text while building

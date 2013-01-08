@@ -67,7 +67,7 @@ static const WindowDesc _errmsg_face_desc(
 );
 
 /**
- * Copy the given data into our instace.
+ * Copy the given data into our instance.
  * @param data The data to copy.
  */
 ErrorMessageData::ErrorMessageData(const ErrorMessageData &data)

@@ -167,7 +167,7 @@ struct GRFLoadedFeatures {
 };
 
 /**
- * Check for grf miscelaneous bits
+ * Check for grf miscellaneous bits
  * @param bit The bit to check.
  * @return Whether the bit is set.
  */

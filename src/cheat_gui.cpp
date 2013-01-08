@@ -75,7 +75,7 @@ static int32 ClickChangeCompanyCheat(int32 p1, int32 p2)
  * Allow (or disallow) changing production of all industries.
  * @param p1 new value
  * @param p2 unused
- * @return New value allwing change of industry production.
+ * @return New value allowing change of industry production.
  */
 static int32 ClickSetProdCheat(int32 p1, int32 p2)
 {

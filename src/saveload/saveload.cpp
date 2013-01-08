@@ -1204,7 +1204,7 @@ static size_t ReferenceToInt(const void *obj, SLRefType rt)
 	if (obj == NULL) return 0;
 
 	switch (rt) {
-		case REF_VEHICLE_OLD: // Old vehicles we save as new onces
+		case REF_VEHICLE_OLD: // Old vehicles we save as new ones
 		case REF_VEHICLE:   return ((const  Vehicle*)obj)->index + 1;
 		case REF_STATION:   return ((const  Station*)obj)->index + 1;
 		case REF_TOWN:      return ((const     Town*)obj)->index + 1;
@@ -1392,7 +1392,7 @@ static inline bool SlSkipVariableOnLoad(const SaveLoad *sld)
  * Calculate the size of an object.
  * @param object to be measured
  * @param sld The SaveLoad description of the object so we know how to manipulate it
- * @return size of given objetc
+ * @return size of given object
  */
 size_t SlCalcObjLength(const void *object, const SaveLoad *sld)
 {
@@ -2087,7 +2087,7 @@ struct ZlibSaveFilter : SaveFilter {
 			 * "Conditional jump or move depends on uninitialised value(s)" kind:
 			 * According to the author of zlib it is not a bug and it won't be fixed.
 			 * http://groups.google.com/group/comp.compression/browse_thread/thread/b154b8def8c2a3ef/cdf9b8729ce17ee2
-			 * [Mark Adler, Feb 24 2004, 'zlib-1.2.1 valgrind warnings' in the newgroup comp.compression]
+			 * [Mark Adler, Feb 24 2004, 'zlib-1.2.1 valgrind warnings' in the newsgroup comp.compression]
 			 */
 			int r = deflate(&this->z, mode);
 
@@ -2274,7 +2274,7 @@ static const SaveLoadFormat _saveload_formats[] = {
 	 * Higher compression levels are possible, and might improve savegame size by up to 25%, but are also up to 10 times slower.
 	 * The next significant reduction in file size is at level 4, but that is already 4 times slower. Level 3 is primarily 50%
 	 * slower while not improving the filesize, while level 0 and 1 are faster, but don't reduce savegame size much.
-	 * It's OTTX and not e.g. OTTL because liblzma is part of xz-utils and .tar.xz is prefered over .tar.lzma. */
+	 * It's OTTX and not e.g. OTTL because liblzma is part of xz-utils and .tar.xz is preferred over .tar.lzma. */
 	{"lzma",   TO_BE32X('OTTX'), CreateLoadFilter<LZMALoadFilter>,   CreateSaveFilter<LZMASaveFilter>,   0, 2, 9},
 #else
 	{"lzma",   TO_BE32X('OTTX'), NULL,                               NULL,                               0, 0, 0},
@@ -2472,10 +2472,10 @@ void WaitTillSaved()
 
 /**
  * Actually perform the saving of the savegame.
- * General tactic is to first save the game to memory, then write it to file
+ * General tactics is to first save the game to memory, then write it to file
  * using the writer, either in threaded mode if possible, or single-threaded.
  * @param writer   The filter to write the savegame to.
- * @param threaded Whether to try to perform the saving asynchroniously.
+ * @param threaded Whether to try to perform the saving asynchronously.
  * @return Return the result of the action. #SL_OK or #SL_ERROR
  */
 static SaveOrLoadResult DoSave(SaveFilter *writer, bool threaded)
@@ -2506,7 +2506,7 @@ static SaveOrLoadResult DoSave(SaveFilter *writer, bool threaded)
 /**
  * Save the game using a (writer) filter.
  * @param writer   The filter to write the savegame to.
- * @param threaded Whether to try to perform the saving asynchroniously.
+ * @param threaded Whether to try to perform the saving asynchronously.
  * @return Return the result of the action. #SL_OK or #SL_ERROR
  */
 SaveOrLoadResult SaveWithFilter(SaveFilter *writer, bool threaded)
@@ -2568,7 +2568,7 @@ static SaveOrLoadResult DoLoad(LoadFilter *reader, bool load_check)
 			_sl_version = TO_BE32(hdr[1]) >> 16;
 			/* Minor is not used anymore from version 18.0, but it is still needed
 			 * in versions before that (4 cases) which can't be removed easy.
-			 * Therefor it is loaded, but never saved (or, it saves a 0 in any scenario). */
+			 * Therefore it is loaded, but never saved (or, it saves a 0 in any scenario). */
 			_sl_minor_version = (TO_BE32(hdr[1]) >> 8) & 0xFF;
 
 			DEBUG(sl, 1, "Loading savegame version %d", _sl_version);

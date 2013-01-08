@@ -355,7 +355,7 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 				aliasstream[astream_i++] = '"';
 				break;
 
-			case ';': // Cmd seperator, start new command
+			case ';': // Cmd separator, start new command
 				aliasstream[astream_i] = '\0';
 				aliases[++a_index] = &aliasstream[++astream_i];
 				cmdptr++;
@@ -364,7 +364,7 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 			case '%': // Some or all parameters
 				cmdptr++;
 				switch (*cmdptr) {
-					case '+': { // All parameters seperated: "[param 1]" "[param 2]"
+					case '+': { // All parameters separated: "[param 1]" "[param 2]"
 						for (i = 0; i != tokencount; i++) {
 							aliasstream[astream_i++] = '"';
 							astream_i += IConsoleCopyInParams(&aliasstream[astream_i], tokens[i], astream_i);
@@ -412,7 +412,7 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 
 /**
  * Execute a given command passed to us. First chop it up into
- * individual tokens (seperated by spaces), then execute it if possible
+ * individual tokens (separated by spaces), then execute it if possible
  * @param cmdstr string to be parsed and executed
  */
 void IConsoleCmdExec(const char *cmdstr)
@@ -439,14 +439,14 @@ void IConsoleCmdExec(const char *cmdstr)
 	memset(&tokens, 0, sizeof(tokens));
 	memset(&tokenstream, 0, sizeof(tokenstream));
 
-	/* 1. Split up commandline into tokens, seperated by spaces, commands
+	/* 1. Split up commandline into tokens, separated by spaces, commands
 	 * enclosed in "" are taken as one token. We can only go as far as the amount
 	 * of characters in our stream or the max amount of tokens we can handle */
 	for (cmdptr = cmdstr, t_index = 0, tstream_i = 0; *cmdptr != '\0'; cmdptr++) {
 		if (t_index >= lengthof(tokens) || tstream_i >= lengthof(tokenstream)) break;
 
 		switch (*cmdptr) {
-		case ' ': // Token seperator
+		case ' ': // Token separator
 			if (!foundtoken) break;
 
 			if (longtoken) {

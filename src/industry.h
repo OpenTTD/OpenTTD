@@ -79,7 +79,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	/**
 	 * Check if a given tile belongs to this industry.
 	 * @param tile The tile to check.
-	 * @return True if the tils is part of this industry.
+	 * @return True if the tile is part of this industry.
 	 */
 	inline bool TileBelongsToIndustry(TileIndex tile) const
 	{

@@ -66,18 +66,18 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 			/* make sure the railtypes are compatible */
 			if ((GetRailTypeInfo(e_from->u.rail.railtype)->compatible_railtypes & GetRailTypeInfo(e_to->u.rail.railtype)->compatible_railtypes) == 0) return false;
 
-			/* make sure we do not replace wagons with engines or vise versa */
+			/* make sure we do not replace wagons with engines or vice versa */
 			if ((e_from->u.rail.railveh_type == RAILVEH_WAGON) != (e_to->u.rail.railveh_type == RAILVEH_WAGON)) return false;
 			break;
 		}
 
 		case VEH_ROAD:
-			/* make sure that we do not replace a tram with a normal road vehicles or vise versa */
+			/* make sure that we do not replace a tram with a normal road vehicles or vice versa */
 			if (HasBit(e_from->info.misc_flags, EF_ROAD_TRAM) != HasBit(e_to->info.misc_flags, EF_ROAD_TRAM)) return false;
 			break;
 
 		case VEH_AIRCRAFT:
-			/* make sure that we do not replace a plane with a helicopter or vise versa */
+			/* make sure that we do not replace a plane with a helicopter or vice versa */
 			if ((e_from->u.air.subtype & AIR_CTOL) != (e_to->u.air.subtype & AIR_CTOL)) return false;
 			break;
 
@@ -263,7 +263,7 @@ static CommandCost GetNewEngineType(const Vehicle *v, const Company *c, bool alw
  * Builds and refits a replacement vehicle
  * Important: The old vehicle is still in the original vehicle chain (used for determining the cargo when the old vehicle did not carry anything, but the new one does)
  * @param old_veh A single (articulated/multiheaded) vehicle that shall be replaced.
- * @param new_vehicle Returns the newly build and refittet vehicle
+ * @param new_vehicle Returns the newly build and refitted vehicle
  * @param part_of_chain The vehicle is part of a train
  * @return cost or error
  */

@@ -108,7 +108,7 @@ DEFINE_POOL_METHOD(inline void *)::AllocateItem(size_t size, size_t index)
 		item = (Titem *)this->alloc_cache;
 		this->alloc_cache = this->alloc_cache->next;
 		if (Tzero) {
-			/* Explicitly casting to (void *) prevets a clang warning -
+			/* Explicitly casting to (void *) prevents a clang warning -
 			 * we are actually memsetting a (not-yet-constructed) object */
 			memset((void *)item, 0, sizeof(Titem));
 		}

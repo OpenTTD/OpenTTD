@@ -95,7 +95,7 @@ void OverrideManagerBase::ResetOverride()
 
 /**
  * Return the ID (if ever available) of a previously inserted entity.
- * @param grf_local_id ID of this enity withing the grfID
+ * @param grf_local_id ID of this entity within the grfID
  * @param grfid ID of the grf file
  * @return the ID of the candidate, of the Invalid flag item ID
  */
@@ -170,7 +170,7 @@ uint16 OverrideManagerBase::GetSubstituteID(uint16 entity_id) const
 
 /**
  * Install the specs into the HouseSpecs array
- * It will find itself the proper slot onwhich it will go
+ * It will find itself the proper slot on which it will go
  * @param hs HouseSpec read from the grf file, ready for inclusion
  */
 void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
@@ -198,7 +198,7 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 
 /**
  * Return the ID (if ever available) of a previously inserted entity.
- * @param grf_local_id ID of this enity withing the grfID
+ * @param grf_local_id ID of this entity within the grfID
  * @param grfid ID of the grf file
  * @return the ID of the candidate, of the Invalid flag item ID
  */
@@ -226,7 +226,7 @@ uint16 IndustryOverrideManager::AddEntityID(byte grf_local_id, uint32 grfid, byt
 {
 	/* This entity hasn't been defined before, so give it an ID now. */
 	for (uint16 id = 0; id < max_new_entities; id++) {
-		/* Skip overriden industries */
+		/* Skip overridden industries */
 		if (id < max_offset && entity_overrides[id] != invalid_ID) continue;
 
 		/* Get the real live industry */
@@ -234,7 +234,7 @@ uint16 IndustryOverrideManager::AddEntityID(byte grf_local_id, uint32 grfid, byt
 
 		/* This industry must be one that is not available(enabled), mostly because of climate.
 		 * And it must not already be used by a grf (grffile == NULL).
-		 * So reseve this slot here, as it is the chosen one */
+		 * So reserve this slot here, as it is the chosen one */
 		if (!inds->enabled && inds->grf_prop.grffile == NULL) {
 			EntityIDMapping *map = &mapping_ID[id];
 
@@ -252,8 +252,8 @@ uint16 IndustryOverrideManager::AddEntityID(byte grf_local_id, uint32 grfid, byt
 }
 
 /**
- * Method to install the new indistry data in its proper slot
- * The slot assigment is internal of this method, since it requires
+ * Method to install the new industry data in its proper slot
+ * The slot assignment is internal of this method, since it requires
  * checking what is available
  * @param inds Industryspec that comes from the grf decoding process
  */
@@ -264,11 +264,11 @@ void IndustryOverrideManager::SetEntitySpec(IndustrySpec *inds)
 
 	if (ind_id == invalid_ID) {
 		/* Not found.
-		 * Or it has already been overriden, so you've lost your place old boy.
+		 * Or it has already been overridden, so you've lost your place old boy.
 		 * Or it is a simple substitute.
 		 * We need to find a free available slot */
 		ind_id = this->AddEntityID(inds->grf_prop.local_id, inds->grf_prop.grffile->grfid, inds->grf_prop.subst_id);
-		inds->grf_prop.override = invalid_ID;  // make sure it will not be detected as overriden
+		inds->grf_prop.override = invalid_ID;  // make sure it will not be detected as overridden
 	}
 
 	if (ind_id == invalid_ID) {
@@ -308,7 +308,7 @@ void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
 
 /**
  * Method to install the new object data in its proper slot
- * The slot assigment is internal of this method, since it requires
+ * The slot assignment is internal of this method, since it requires
  * checking what is available
  * @param spec ObjectSpec that comes from the grf decoding process
  */
@@ -319,7 +319,7 @@ void ObjectOverrideManager::SetEntitySpec(ObjectSpec *spec)
 
 	if (type == invalid_ID) {
 		/* Not found.
-		 * Or it has already been overriden, so you've lost your place old boy.
+		 * Or it has already been overridden, so you've lost your place old boy.
 		 * Or it is a simple substitute.
 		 * We need to find a free available slot */
 		type = this->AddEntityID(spec->grf_prop.local_id, spec->grf_prop.grffile->grfid, OBJECT_TRANSMITTER);

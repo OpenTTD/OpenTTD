@@ -91,7 +91,7 @@ public:
 	}
 
 	/**
-	 * Move ourselves to the next tile in the rectange on the map.
+	 * Move ourselves to the next tile in the rectangle on the map.
 	 */
 	virtual TileIterator& operator ++() = 0;
 
@@ -118,7 +118,7 @@ public:
 	}
 
 	/**
-	 * Move ourselves to the next tile in the rectange on the map.
+	 * Move ourselves to the next tile in the rectangle on the map.
 	 */
 	inline TileIterator& operator ++()
 	{
@@ -148,7 +148,7 @@ private:
 	uint base_y; ///< The base tile y coordinate from where the iterating happens.
 	int a_cur;   ///< The current (rotated) x coordinate of the iteration.
 	int b_cur;   ///< The current (rotated) y coordinate of the iteration.
-	int a_max;   ///< The (rotated) x coordinats of the end of the iteration.
+	int a_max;   ///< The (rotated) x coordinate of the end of the iteration.
 	int b_max;   ///< The (rotated) y coordinate of the end of the iteration.
 
 public:

@@ -339,7 +339,7 @@ protected:
 	virtual NetworkRecvStatus Receive_SERVER_COMPANY_UPDATE(Packet *p);
 
 	/**
-	 * Notification about a removed company (e.g. due to banrkuptcy).
+	 * Notification about a removed company (e.g. due to bankruptcy).
 	 * uint8   ID of the company.
 	 * uint8   Reason for being removed (see #AdminCompanyRemoveReason).
 	 * @param p The packet that was just received.

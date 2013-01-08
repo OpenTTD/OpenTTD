@@ -139,7 +139,7 @@ protected:
 	/**
 	 * Client requesting a list of content info based on an external
 	 * 'unique' id; GRF ID + MD5 checksum for NewGRFS, shortname and
-	 * xor-ed MD5 checsums for base graphics and AIs.
+	 * xor-ed MD5 checksums for base graphics and AIs.
 	 * Scenarios and AI libraries are not supported
 	 *  uint8   count of requests
 	 *  for each request:

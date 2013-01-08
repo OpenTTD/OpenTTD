@@ -242,7 +242,7 @@ void CreateSubsidy(CargoID cid, SourceType src_type, SourceID src, SourceType ds
  * - p1 = (bit 24 - 31) - CargoID of subsidy.
  * @param p2 various bitstuffed elements
  * - p2 = (bit  0 -  7) - SourceType of destination.
- * - p2 = (bit  8 - 23) - SourceID of destionation.
+ * - p2 = (bit  8 - 23) - SourceID of destination.
  * @param text unused.
  * @return the cost of this operation or an error
  */

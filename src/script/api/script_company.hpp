@@ -172,13 +172,13 @@ public:
 	 * @param quarter The quarter to get the income of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @pre quarter <= EARLIEST_QUARTER.
-	 * @return The bruto income of the company in the given quarter.
+	 * @return The gross income of the company in the given quarter.
 	 */
 	static Money GetQuarterlyIncome(CompanyID company, uint32 quarter);
 
 	/**
 	 * Get the expenses of the company in the given quarter.
-	 * Note that this function only considers recurring expensens from vehicle
+	 * Note that this function only considers recurring expenses from vehicle
 	 * running cost, maintenance and interests; it does not include one-time
 	 * expenses from construction and buying stuff.
 	 * @param company The company to get the quarterly expenses of.
@@ -223,7 +223,7 @@ public:
 
 	/**
 	 * Build your company's HQ on the given tile.
-	 * @param tile The tile to build your HQ on, this tile is the most nothern tile of your HQ.
+	 * @param tile The tile to build your HQ on, this tile is the most northern tile of your HQ.
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
@@ -238,7 +238,7 @@ public:
 	 * Return the location of a company's HQ.
 	 * @param company The company the get the HQ of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
-	 * @return The tile of the company's HQ, this tile is the most nothern tile
+	 * @return The tile of the company's HQ, this tile is the most northern tile
 	 *  of that HQ, or ScriptMap::TILE_INVALID if there is no HQ yet.
 	 */
 	static TileIndex GetCompanyHQ(CompanyID company);

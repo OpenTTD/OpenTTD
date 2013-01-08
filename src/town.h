@@ -209,7 +209,7 @@ enum TownActions {
 	TACT_BUILD_STATUE     = 0x10, ///< Build a statue.
 	TACT_FUND_BUILDINGS   = 0x20, ///< Fund new buildings.
 	TACT_BUY_RIGHTS       = 0x40, ///< Buy exclusive transport rights.
-	TACT_BRIBE            = 0x80, ///< Try to bribe the counsil.
+	TACT_BRIBE            = 0x80, ///< Try to bribe the council.
 
 	TACT_COUNT            = 8,    ///< Number of available town actions.
 

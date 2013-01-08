@@ -47,7 +47,7 @@ public:
 
 		/** Do not stop at the stations that are passed when going to the destination. Only for trains and road vehicles. */
 		OF_NON_STOP_INTERMEDIATE = 1 << 0,
-		/** Do not stop at the destionation station. Only for trains and road vehicles. */
+		/** Do not stop at the destination station. Only for trains and road vehicles. */
 		OF_NON_STOP_DESTINATION  = 1 << 1,
 
 		/** Always unload the vehicle; only for stations. Cannot be set when OF_TRANSFER or OF_NO_UNLOAD is set. */
@@ -586,7 +586,7 @@ public:
 	/**
 	 * Get the distance between two points for a vehicle type.
 	 * Use this function to compute the distance between two tiles wrt. a vehicle type.
-	 * These vehicle-type specific distances are indepenent from other map distances, you may
+	 * These vehicle-type specific distances are independent from other map distances, you may
 	 * use the result of this function to compare it with the result of
 	 * ScriptEngine::GetMaximumOrderDistance or ScriptVehicle::GetMaximumOrderDistance.
 	 * @param vehicle_type The vehicle type to get the distance for.

@@ -32,7 +32,7 @@ HouseOverrideManager _house_mngr(NEW_HOUSE_OFFSET, HOUSE_MAX, INVALID_HOUSE_ID);
 /**
  * Constructor of a house scope resolver.
  * @param ro Surrounding resolver.
- * @param house_id Houe type being queried.
+ * @param house_id House type being queried.
  * @param tile %Tile containing the house.
  * @param town %Town containing the house.
  * @param not_yet_constructed House is still under construction.

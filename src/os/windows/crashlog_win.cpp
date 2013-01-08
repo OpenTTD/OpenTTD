@@ -622,7 +622,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 	switch (msg) {
 		case WM_INITDIALOG: {
 #if defined(UNICODE)
-			/* We need to put the crash-log in a seperate buffer because the default
+			/* We need to put the crash-log in a separate buffer because the default
 			 * buffer in MB_TO_WIDE is not large enough (512 chars) */
 			wchar_t crash_msgW[lengthof(CrashLogWindows::current->crashlog)];
 #endif

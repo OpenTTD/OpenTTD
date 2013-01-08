@@ -89,7 +89,7 @@ template <typename Tenum_t> struct TinyEnumT;
 template <typename Tenum_t>
 struct TinyEnumT {
 	typedef Tenum_t enum_type;                      ///< expose our enumeration type (i.e. Trackdir) to outside
-	typedef EnumPropsT<Tenum_t> Props;              ///< make easier access to our enumeration propeties
+	typedef EnumPropsT<Tenum_t> Props;              ///< make easier access to our enumeration properties
 	typedef typename Props::storage storage_type;   ///< small storage type
 	static const enum_type begin = Props::begin;    ///< enum beginning (i.e. TRACKDIR_BEGIN)
 	static const enum_type end = Props::end;        ///< enum end (i.e. TRACKDIR_END)

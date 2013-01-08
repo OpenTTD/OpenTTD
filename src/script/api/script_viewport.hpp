@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_viewport.hpp Everything to manipulate the users viewport. */
+/** @file script_viewport.hpp Everything to manipulate the user's viewport. */
 
 #ifndef SCRIPT_VIEWPORT_HPP
 #define SCRIPT_VIEWPORT_HPP
@@ -15,7 +15,7 @@
 #include "script_object.hpp"
 
 /**
- * Class that manipultes the users viewport.
+ * Class that manipulates the user's viewport.
  * @api game
  */
 class ScriptViewport : public ScriptObject {

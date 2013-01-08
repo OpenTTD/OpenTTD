@@ -147,7 +147,7 @@ public:
 	/**
 	 * Checks whether the given tiles are directly connected, i.e. whether
 	 *  a road vehicle can travel from the center of the first tile to the
-	  * center of the second tile.
+	 * center of the second tile.
 	 * @param tile_from The source tile.
 	 * @param tile_to The destination tile.
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).

@@ -95,7 +95,7 @@ void StringParameters::ShiftParameters(uint amount)
  * @param n Index of the string parameter.
  * @param max_value The biggest value which shall be displayed.
  *                  For the result only the number of digits of \a max_value matter.
- * @param min_count Minimum number of digits indepentent of \a max.
+ * @param min_count Minimum number of digits independent of \a max.
  */
 void SetDParamMaxValue(uint n, uint64 max_value, uint min_count)
 {
@@ -203,7 +203,7 @@ const char *GetStringPtr(StringID string)
  * @param buffr  Pointer to a string buffer where the formatted string should be written to.
  * @param string
  * @param args   Arguments for the string.
- * @param last   Pointer just past the end of buffr.
+ * @param last   Pointer just past the end of \a buffr.
  * @param case_index  The "case index". This will only be set when FormatString wants to print the string in a different case.
  * @param game_script The string is coming directly from a game script.
  * @return       Pointer to the final zero byte of the formatted string.
@@ -556,7 +556,7 @@ static int DeterminePluralForm(int64 count, int plural_form)
 		case 5:
 			return n % 10 == 1 && n % 100 != 11 ? 0 : n % 10 >= 2 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2;
 
-		/* Three forms: special cases for numbers ending in 1 except wehn ending in 11, and 2 to 4 except when ending in 12 to 14.
+		/* Three forms: special cases for numbers ending in 1 except when ending in 11, and 2 to 4 except when ending in 12 to 14.
 		 * Used in:
 		 *   Croatian, Russian, Ukrainian */
 		case 6:
@@ -2129,7 +2129,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 	if (bad_font) {
 		/* All attempts have failed. Display an error. As we do not want the string to be translated by
 		 * the translators, we 'force' it into the binary and 'load' it via a BindCString. To do this
-		 * properly we have to set the colour of the string, otherwise we end up with a lot of artefacts.
+		 * properly we have to set the colour of the string, otherwise we end up with a lot of artifacts.
 		 * The colour 'character' might change in the future, so for safety we just Utf8 Encode it into
 		 * the string, which takes exactly three characters, so it replaces the "XXX" with the colour marker. */
 		static char *err_str = strdup("XXXThe current font is missing some of the characters used in the texts for this language. Read the readme to see how to solve this.");
@@ -2153,7 +2153,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 	 * be translated by the translators, we 'force' it into the
 	 * binary and 'load' it via a BindCString. To do this
 	 * properly we have to set the colour of the string,
-	 * otherwise we end up with a lot of artefacts. The colour
+	 * otherwise we end up with a lot of artifacts. The colour
 	 * 'character' might change in the future, so for safety
 	 * we just Utf8 Encode it into the string, which takes
 	 * exactly three characters, so it replaces the "XXX" with

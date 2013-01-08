@@ -47,7 +47,7 @@ struct AirportTileResolverObject : public ResolverObject {
 };
 
 /**
- * Defines the data structure of each indivudual tile of an airport.
+ * Defines the data structure of each individual tile of an airport.
  */
 struct AirportTileSpec {
 	AnimationInfo animation;              ///< Information about the animation.

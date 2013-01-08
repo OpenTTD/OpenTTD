@@ -125,7 +125,7 @@ static inline byte GetObjectRandomBits(TileIndex t)
  * @param u      The object type of the tile.
  * @param o      The new owner of the tile.
  * @param index  Index to the object.
- * @param wc     Water class for this obect.
+ * @param wc     Water class for this object.
  * @param random Random data to store on the tile
  */
 static inline void MakeObject(TileIndex t, ObjectType u, Owner o, ObjectID index, WaterClass wc, byte random)

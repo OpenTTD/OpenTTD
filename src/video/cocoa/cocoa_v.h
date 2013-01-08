@@ -134,7 +134,7 @@ public:
 	virtual bool IsFullscreen() = 0;
 
 	/** Toggle between fullscreen and windowed mode
-	 * @return whether switch was successfull
+	 * @return whether switch was successful
 	 */
 	virtual bool ToggleFullscreen() { return false; };
 
@@ -180,7 +180,7 @@ public:
 	virtual void SetPortAlphaOpaque() { return; };
 
 	/** Whether the window was successfully resized
-	 * @return whether the window was succesfully resized
+	 * @return whether the window was successfully resized
 	 */
 	virtual bool WindowResized() { return false; };
 };

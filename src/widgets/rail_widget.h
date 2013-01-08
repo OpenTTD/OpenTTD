@@ -12,7 +12,7 @@
 #ifndef WIDGETS_RAIL_WIDGET_H
 #define WIDGETS_RAIL_WIDGET_H
 
-/** Widgets of the #BuildRailToolbarWindow ckass. */
+/** Widgets of the #BuildRailToolbarWindow class. */
 enum RailToolbarWidgets {
 	/* Name starts with RA instead of R, because of collision with RoadToolbarWidgets */
 	WID_RAT_CAPTION,        ///< Caption of the window.
@@ -98,10 +98,10 @@ enum BuildSignalWidgets {
 /** Widgets of the #BuildRailDepotWindow class. */
 enum BuildRailDepotWidgets {
 	/* Name starts with BRA instead of BR, because of collision with BuildRoadDepotWidgets */
-	WID_BRAD_DEPOT_NE, ///< Build a depot with the entrace in the north east.
-	WID_BRAD_DEPOT_SE, ///< Build a depot with the entrace in the south east.
-	WID_BRAD_DEPOT_SW, ///< Build a depot with the entrace in the south west.
-	WID_BRAD_DEPOT_NW, ///< Build a depot with the entrace in the north west.
+	WID_BRAD_DEPOT_NE, ///< Build a depot with the entrance in the north east.
+	WID_BRAD_DEPOT_SE, ///< Build a depot with the entrance in the south east.
+	WID_BRAD_DEPOT_SW, ///< Build a depot with the entrance in the south west.
+	WID_BRAD_DEPOT_NW, ///< Build a depot with the entrance in the north west.
 };
 
 /** Widgets of the #BuildRailWaypointWindow class. */

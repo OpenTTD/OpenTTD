@@ -345,7 +345,7 @@ Squirrel::Squirrel(const char *APIName) :
 	sq_newclosure(this->vm, &Squirrel::_RunError, 0);
 	sq_seterrorhandler(this->vm);
 
-	/* Set the foreigh pointer, so we can always find this instance from within the VM */
+	/* Set the foreign pointer, so we can always find this instance from within the VM */
 	sq_setforeignptr(this->vm, this);
 
 	sq_pushroottable(this->vm);

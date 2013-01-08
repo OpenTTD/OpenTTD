@@ -182,7 +182,7 @@ private:
 	GRFText(byte langid_, const char *text_, size_t len_) : next(NULL), len(len_), langid(langid_)
 	{
 		/* We need to use memcpy instead of strcpy due to
-		 * the possibility of "choice lists" and therefor
+		 * the possibility of "choice lists" and therefore
 		 * intermediate string terminators. */
 		memcpy(this->text, text_, len);
 	}

@@ -908,7 +908,7 @@ public:
 		WID_RV_LEFT_MATRIX                           = ::WID_RV_LEFT_MATRIX,                           ///< The matrix on the left.
 		WID_RV_LEFT_SCROLLBAR                        = ::WID_RV_LEFT_SCROLLBAR,                        ///< The scrollbar for the matrix on the left.
 		WID_RV_RIGHT_MATRIX                          = ::WID_RV_RIGHT_MATRIX,                          ///< The matrix on the right.
-		WID_RV_RIGHT_SCROLLBAR                       = ::WID_RV_RIGHT_SCROLLBAR,                       ///< The scrollbar for the matrxi on the right.
+		WID_RV_RIGHT_SCROLLBAR                       = ::WID_RV_RIGHT_SCROLLBAR,                       ///< The scrollbar for the matrix on the right.
 		WID_RV_LEFT_DETAILS                          = ::WID_RV_LEFT_DETAILS,                          ///< Details of the entry on the left.
 		WID_RV_RIGHT_DETAILS                         = ::WID_RV_RIGHT_DETAILS,                         ///< Details of the entry on the right.
 
@@ -1997,10 +1997,10 @@ public:
 	/** Widgets of the #BuildRailDepotWindow class. */
 	enum BuildRailDepotWidgets {
 		/* Name starts with BRA instead of BR, because of collision with BuildRoadDepotWidgets */
-		WID_BRAD_DEPOT_NE                            = ::WID_BRAD_DEPOT_NE,                            ///< Build a depot with the entrace in the north east.
-		WID_BRAD_DEPOT_SE                            = ::WID_BRAD_DEPOT_SE,                            ///< Build a depot with the entrace in the south east.
-		WID_BRAD_DEPOT_SW                            = ::WID_BRAD_DEPOT_SW,                            ///< Build a depot with the entrace in the south west.
-		WID_BRAD_DEPOT_NW                            = ::WID_BRAD_DEPOT_NW,                            ///< Build a depot with the entrace in the north west.
+		WID_BRAD_DEPOT_NE                            = ::WID_BRAD_DEPOT_NE,                            ///< Build a depot with the entrance in the north east.
+		WID_BRAD_DEPOT_SE                            = ::WID_BRAD_DEPOT_SE,                            ///< Build a depot with the entrance in the south east.
+		WID_BRAD_DEPOT_SW                            = ::WID_BRAD_DEPOT_SW,                            ///< Build a depot with the entrance in the south west.
+		WID_BRAD_DEPOT_NW                            = ::WID_BRAD_DEPOT_NW,                            ///< Build a depot with the entrance in the north west.
 	};
 
 	/** Widgets of the #BuildRailWaypointWindow class. */
@@ -2097,8 +2097,8 @@ public:
 		WID_CC_RATE_DOWN                             = ::WID_CC_RATE_DOWN,                             ///< Down button.
 		WID_CC_RATE_UP                               = ::WID_CC_RATE_UP,                               ///< Up button.
 		WID_CC_RATE                                  = ::WID_CC_RATE,                                  ///< Rate of currency.
-		WID_CC_SEPARATOR_EDIT                        = ::WID_CC_SEPARATOR_EDIT,                        ///< Seperator edit button.
-		WID_CC_SEPARATOR                             = ::WID_CC_SEPARATOR,                             ///< Current seperator.
+		WID_CC_SEPARATOR_EDIT                        = ::WID_CC_SEPARATOR_EDIT,                        ///< Separator edit button.
+		WID_CC_SEPARATOR                             = ::WID_CC_SEPARATOR,                             ///< Current separator.
 		WID_CC_PREFIX_EDIT                           = ::WID_CC_PREFIX_EDIT,                           ///< Prefix edit button.
 		WID_CC_PREFIX                                = ::WID_CC_PREFIX,                                ///< Current prefix.
 		WID_CC_SUFFIX_EDIT                           = ::WID_CC_SUFFIX_EDIT,                           ///< Suffix edit button.
@@ -2229,7 +2229,7 @@ public:
 		WID_TT_LEVEL_LAND                            = ::WID_TT_LEVEL_LAND,                            ///< Level land button.
 		WID_TT_DEMOLISH                              = ::WID_TT_DEMOLISH,                              ///< Demolish aka dynamite button.
 		WID_TT_BUY_LAND                              = ::WID_TT_BUY_LAND,                              ///< Buy land button.
-		WID_TT_PLANT_TREES                           = ::WID_TT_PLANT_TREES,                           ///< Plant trees button (note: opens seperate window, no place-push-button).
+		WID_TT_PLANT_TREES                           = ::WID_TT_PLANT_TREES,                           ///< Plant trees button (note: opens separate window, no place-push-button).
 		WID_TT_PLACE_SIGN                            = ::WID_TT_PLACE_SIGN,                            ///< Place sign button.
 		WID_TT_PLACE_OBJECT                          = ::WID_TT_PLACE_OBJECT,                          ///< Place object button.
 	};
@@ -2473,7 +2473,7 @@ public:
 		WID_VD_DETAILS_CARGO_CARRIED                 = ::WID_VD_DETAILS_CARGO_CARRIED,                 ///< Show carried cargo per part of the train.
 		WID_VD_DETAILS_TRAIN_VEHICLES                = ::WID_VD_DETAILS_TRAIN_VEHICLES,                ///< Show all parts of the train with their description.
 		WID_VD_DETAILS_CAPACITY_OF_EACH              = ::WID_VD_DETAILS_CAPACITY_OF_EACH,              ///< Show the capacity of all train parts.
-		WID_VD_DETAILS_TOTAL_CARGO                   = ::WID_VD_DETAILS_TOTAL_CARGO,                   ///< Show the capacity and carried cargo amounts aggregrated per cargo of the train.
+		WID_VD_DETAILS_TOTAL_CARGO                   = ::WID_VD_DETAILS_TOTAL_CARGO,                   ///< Show the capacity and carried cargo amounts aggregated per cargo of the train.
 	};
 
 	/** Widgets of the #VehicleListWindow class. */

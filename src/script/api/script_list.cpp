@@ -835,7 +835,7 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 			return SQ_ERROR;
 		}
 
-		/* Retreive the return value */
+		/* Retrieve the return value */
 		SQInteger value;
 		switch (sq_gettype(vm, -1)) {
 			case OT_INTEGER: {

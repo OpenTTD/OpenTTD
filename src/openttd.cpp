@@ -1027,7 +1027,7 @@ void SwitchToMode(SwitchMode new_mode)
 		}
 	}
 #endif /* ENABLE_NETWORK */
-	/* Make sure all AI controllers are gone at quiting game */
+	/* Make sure all AI controllers are gone at quitting game */
 	if (new_mode != SM_SAVE_GAME) AI::KillAll();
 
 	switch (new_mode) {
@@ -1295,7 +1295,7 @@ static void CheckCaches()
  */
 void StateGameLoop()
 {
-	/* dont execute the state loop during pause */
+	/* don't execute the state loop during pause */
 	if (_pause_mode != PM_UNPAUSED) {
 		UpdateLandscapingLimits();
 		Game::GameLoop();

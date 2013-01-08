@@ -68,7 +68,7 @@ static inline uint GetInspectWindowNumber(GrfSpecFeature feature, uint index)
 
 /**
  * The type of a property to show. This is used to
- * provide an appropriate represenation in the GUI.
+ * provide an appropriate representation in the GUI.
  */
 enum NIType {
 	NIT_INT,   ///< The property is a simple integer
@@ -278,7 +278,7 @@ struct NewGRFInspectWindow : Window {
 	/** GRFID of the caller of this window, 0 if it has no caller. */
 	uint32 caller_grfid;
 
-	/** The currently editted parameter, to update the right one. */
+	/** The currently edited parameter, to update the right one. */
 	byte current_edit_param;
 
 	Scrollbar *vscroll;
@@ -776,7 +776,7 @@ struct SpriteAlignerWindow : Window {
 					case WID_SA_LEFT:  spr->x_offs -= ZOOM_LVL_BASE; break;
 					case WID_SA_RIGHT: spr->x_offs += ZOOM_LVL_BASE; break;
 				}
-				/* Ofcourse, we need to redraw the sprite, but where is it used?
+				/* Of course, we need to redraw the sprite, but where is it used?
 				 * Everywhere is a safe bet. */
 				MarkWholeScreenDirty();
 				break;

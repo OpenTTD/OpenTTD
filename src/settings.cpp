@@ -98,7 +98,7 @@ static const char * const _list_group_names[] = {
 };
 
 /**
- * Find the index value of a ONEofMANY type in a string seperated by |
+ * Find the index value of a ONEofMANY type in a string separated by |
  * @param many full domain of values the ONEofMANY setting can have
  * @param one the current value of the setting for which a value needs found
  * @param onelen force calculation of the *one parameter
@@ -130,7 +130,7 @@ static size_t LookupOneOfMany(const char *many, const char *one, size_t onelen =
  * Find the set-integer value MANYofMANY type in a string
  * @param many full domain of values the MANYofMANY setting can have
  * @param str the current string value of the setting, each individual
- * of seperated by a whitespace,tab or | character
+ * of separated by a whitespace,tab or | character
  * @return the 'fully' set integer, or -1 if a set is not found
  */
 static size_t LookupManyOfMany(const char *many, const char *str)
@@ -159,7 +159,7 @@ static size_t LookupManyOfMany(const char *many, const char *str)
 
 /**
  * Parse an integerlist string and set each found value
- * @param p the string to be parsed. Each element in the list is seperated by a
+ * @param p the string to be parsed. Each element in the list is separated by a
  * comma or a space character
  * @param items pointer to the integerlist-array that will be filled with values
  * @param maxitems the maximum number of elements the integerlist-array has
@@ -248,7 +248,7 @@ static bool LoadIntList(const char *str, void *array, int nelems, VarType type)
 
 /**
  * Convert an integer-array (intlist) to a string representation. Each value
- * is seperated by a comma or a space character
+ * is separated by a comma or a space character
  * @param buf output buffer where the string-representation will be stored
  * @param last last item to write to in the output buffer
  * @param array pointer to the integer-arrays that is read from
@@ -1502,7 +1502,7 @@ static IniFile *IniLoadConfig()
 void LoadFromConfig(bool minimal)
 {
 	IniFile *ini = IniLoadConfig();
-	if (!minimal) ResetCurrencies(false); // Initialize the array of curencies, without preserving the custom one
+	if (!minimal) ResetCurrencies(false); // Initialize the array of currencies, without preserving the custom one
 
 	/* Load basic settings only during bootstrap, load other settings not during bootstrap */
 	HandleSettingDescs(ini, IniLoadSettings, IniLoadSettingList, minimal, !minimal);

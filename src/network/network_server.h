@@ -19,7 +19,7 @@
 #include "../thread/thread.h"
 
 class ServerNetworkGameSocketHandler;
-/** Make the code look slightliy nicer/simpler. */
+/** Make the code look slightly nicer/simpler. */
 typedef ServerNetworkGameSocketHandler NetworkClientSocket;
 /** Pool with all client sockets. */
 typedef Pool<NetworkClientSocket, ClientIndex, 8, MAX_CLIENT_SLOTS, PT_NCLIENT> NetworkClientSocketPool;

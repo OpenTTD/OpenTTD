@@ -2475,7 +2475,7 @@ static void HandleKeyScrolling()
 {
 	/*
 	 * Check that any of the dirkeys is pressed and that the focused window
-	 * dont has an edit-box as focused widget.
+	 * doesn't have an edit-box as focused widget.
 	 */
 	if (_dirkeys && !EditBoxInGlobalFocus()) {
 		int factor = _shift_pressed ? 50 : 10;
@@ -2806,7 +2806,7 @@ void SetWindowClassesDirty(WindowClass cls)
 /**
  * Mark this window's data as invalid (in need of re-computing)
  * @param data The data to invalidate with
- * @param gui_scope Whether the funtion is called from GUI scope.
+ * @param gui_scope Whether the function is called from GUI scope.
  */
 void Window::InvalidateData(int data, bool gui_scope)
 {
@@ -3071,7 +3071,7 @@ int PositionNewsMessage(Window *w)
 /**
  * (Re)position network chat window at the screen.
  * @param w Window structure of the network chat window, may also be \c NULL.
- * @return X coordinate of left edge of the repositioned network chat winodw.
+ * @return X coordinate of left edge of the repositioned network chat window.
  */
 int PositionNetworkChatWindow(Window *w)
 {

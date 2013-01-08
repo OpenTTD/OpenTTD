@@ -41,7 +41,7 @@ static inline bool IsBridgeTile(TileIndex t)
  * checks for the possibility that a bridge may be on this tile
  * These are in fact all the tile types on which a bridge can be found
  * @param t The tile to analyze
- * @return true if a bridge migh be present
+ * @return true if a bridge might be present
  */
 static inline bool MayHaveBridgeAbove(TileIndex t)
 {

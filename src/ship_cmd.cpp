@@ -375,7 +375,7 @@ static bool ShipAccelerate(Vehicle *v)
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 	}
 
-	/* Convert direction-indepenent speed into direction-dependent speed. (old movement method) */
+	/* Convert direction-independent speed into direction-dependent speed. (old movement method) */
 	spd = v->GetOldAdvanceSpeed(spd);
 
 	if (spd == 0) return false;

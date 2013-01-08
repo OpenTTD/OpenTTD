@@ -263,7 +263,7 @@ struct FileWriter {
 	/** Make sure the file is closed. */
 	virtual ~FileWriter()
 	{
-		/* If we weren't closed an exception was thrown, so remove the termporary file. */
+		/* If we weren't closed an exception was thrown, so remove the temporary file. */
 		if (fh != NULL) {
 			fclose(this->fh);
 			unlink(this->filename);
@@ -371,16 +371,16 @@ static inline void ottd_mkdir(const char *directory)
 
 /**
  * Create a path consisting of an already existing path, a possible
- * path seperator and the filename. The seperator is only appended if the path
- * does not already end with a seperator
+ * path separator and the filename. The separator is only appended if the path
+ * does not already end with a separator
  */
 static inline char *mkpath(char *buf, size_t buflen, const char *path, const char *file)
 {
 	ttd_strlcpy(buf, path, buflen); // copy directory into buffer
 
-	char *p = strchr(buf, '\0'); // add path seperator if necessary
+	char *p = strchr(buf, '\0'); // add path separator if necessary
 	if (p[-1] != PATHSEPCHAR && (size_t)(p - buf) + 1 < buflen) *p++ = PATHSEPCHAR;
-	ttd_strlcpy(p, file, buflen - (size_t)(p - buf)); // catenate filename at end of buffer
+	ttd_strlcpy(p, file, buflen - (size_t)(p - buf)); // concatenate filename at end of buffer
 	return buf;
 }
 

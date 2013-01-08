@@ -854,7 +854,7 @@ void EnginesDailyLoop()
  * Accept an engine prototype. XXX - it is possible that the top-company
  * changes while you are waiting to accept the offer? Then it becomes invalid
  * @param tile unused
- * @param flags operation to perfom
+ * @param flags operation to perform
  * @param p1 engine-prototype offered
  * @param p2 unused
  * @param text unused
@@ -1000,7 +1000,7 @@ static bool IsUniqueEngineName(const char *name)
 /**
  * Rename an engine.
  * @param tile unused
- * @param flags operation to perfom
+ * @param flags operation to perform
  * @param p1 engine ID to rename
  * @param p2 unused
  * @param text the new name or an empty string when resetting to the default

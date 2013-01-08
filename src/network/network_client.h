@@ -29,7 +29,7 @@ private:
 		STATUS_JOIN,          ///< We are trying to join a server.
 		STATUS_NEWGRFS_CHECK, ///< Last action was checking NewGRFs.
 		STATUS_AUTH_GAME,     ///< Last action was requesting game (server) password.
-		STATUS_AUTH_COMPANY,  ///< Last action was requestion company password.
+		STATUS_AUTH_COMPANY,  ///< Last action was requesting company password.
 		STATUS_AUTHORIZED,    ///< The client is authorized at the server.
 		STATUS_MAP_WAIT,      ///< The client is waiting as someone else is downloading the map.
 		STATUS_MAP,           ///< The client is downloading the map.

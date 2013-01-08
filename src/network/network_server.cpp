@@ -528,7 +528,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendWait()
 /** This sends the map to the client */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 {
-	static uint sent_packets; // How many packets we did send succecfully last time
+	static uint sent_packets; // How many packets we did send successfully last time
 
 	if (this->status < STATUS_AUTHORIZED) {
 		/* Illegal call, return error and ignore the packet */
@@ -1500,7 +1500,7 @@ void NetworkSocketHandler::SendCompanyInformation(Packet *p, const Company *c, c
 	p->Send_uint64(income);
 	p->Send_uint16(c->old_economy[0].performance_history);
 
-	/* Send 1 if there is a passord for the company else send 0 */
+	/* Send 1 if there is a password for the company else send 0 */
 	p->Send_bool  (!StrEmpty(_network_company_states[c->index].password));
 
 	for (uint i = 0; i < NETWORK_VEH_END; i++) {
@@ -1620,7 +1620,7 @@ static void NetworkAutoCleanCompanies()
 		}
 	}
 
-	/* Go through all the comapnies */
+	/* Go through all the companies */
 	FOR_ALL_COMPANIES(c) {
 		/* Skip the non-active once */
 		if (c->is_ai) continue;
@@ -1786,7 +1786,7 @@ void NetworkServer_Tick(bool send_frame)
 		switch (cs->status) {
 			case NetworkClientSocket::STATUS_ACTIVE:
 				if (lag > _settings_client.network.max_lag_time) {
-					/* Client did still not report in within the specififed limit. */
+					/* Client did still not report in within the specified limit. */
 					IConsolePrintF(CC_ERROR, cs->last_packet + lag * MILLISECONDS_PER_TICK > _realtime_tick ?
 							/* A packet was received in the last three game days, so the client is likely lagging behind. */
 								"Client #%d is dropped because the client's game state is more than %d ticks behind" :

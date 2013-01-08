@@ -151,7 +151,7 @@ static LegendAndColour _legend_land_owners[NUM_NO_COMPANY_ENTRIES + MAX_COMPANIE
 
 /**
  * Allow room for all industries, plus a terminator entry
- * This is required in order to have the indutry slots all filled up
+ * This is required in order to have the industry slots all filled up
  */
 static LegendAndColour _legend_from_industries[NUM_INDUSTRYTYPES + 1];
 /** For connecting industry type to position in industries list(small map legend) */
@@ -1593,8 +1593,8 @@ bool SmallMapWindow::show_towns = true;
  * Custom container class for displaying smallmap with a vertically resizing legend panel.
  * The legend panel has a smallest height that depends on its width. Standard containers cannot handle this case.
  *
- * @note The container assumes it has two childs, the first is the display, the second is the bar with legends and selection image buttons.
- *       Both childs should be both horizontally and vertically resizable and horizontally fillable.
+ * @note The container assumes it has two children, the first is the display, the second is the bar with legends and selection image buttons.
+ *       Both children should be both horizontally and vertically resizable and horizontally fillable.
  *       The bar should have a minimal size with a zero-size legends display. Child padding is not supported.
  */
 class NWidgetSmallmapDisplay : public NWidgetContainer {

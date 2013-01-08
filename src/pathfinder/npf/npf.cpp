@@ -100,7 +100,7 @@ static inline void NPFSetFlag(AyStarNode *node, NPFNodeFlag flag, bool value)
 }
 
 /**
- * Calculates the minimum distance traveled to get from t0 to t1 when only
+ * Calculates the minimum distance travelled to get from t0 to t1 when only
  * using tracks (ie, only making 45 degree turns). Returns the distance in the
  * NPF scale, ie the number of full tiles multiplied by NPF_TILE_LENGTH to
  * prevent rounding.
@@ -145,7 +145,7 @@ static int32 NPFCalcZero(AyStar *as, AyStarNode *current, OpenListNode *parent)
 	return 0;
 }
 
-/* Calcs the heuristic to the target station or tile. For train stations, it
+/* Calculates the heuristic to the target station or tile. For train stations, it
  * takes into account the direction of approach.
  */
 static int32 NPFCalcStationOrTileHeuristic(AyStar *as, AyStarNode *current, OpenListNode *parent)
@@ -245,7 +245,7 @@ static uint NPFSlopeCost(AyStarNode *current)
 	}
 	return 0;
 	/* Should we give a bonus for slope down? Probably not, we
-	 * could just substract that bonus from the penalty, because
+	 * could just subtract that bonus from the penalty, because
 	 * there is only one level of steepness... */
 }
 
@@ -569,7 +569,7 @@ static int32 NPFFindStationOrTile(AyStar *as, OpenListNode *current)
  * Find the node containing the first signal on the path.
  *
  * If the first signal is on the very first two tiles of the path,
- * the second signal is returnd. If no suitable signal is present, the
+ * the second signal is returned. If no suitable signal is present, the
  * last node of the path is returned.
  */
 static const PathNode *FindSafePosition(PathNode *path, const Train *v)
@@ -1052,7 +1052,7 @@ static NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir track
 /* Search using breadth first. Good for little track choice and inaccurate
  * heuristic, such as railway/road with two start nodes, the second being the reverse. Call
  * NPFGetFlag(result.node, NPF_FLAG_REVERSE) to see from which node the path
- * orginated. All pathfs from the second node will have the given
+ * originated. All paths from the second node will have the given
  * reverse_penalty applied (NPF_TILE_LENGTH is the equivalent of one full
  * tile).
  */

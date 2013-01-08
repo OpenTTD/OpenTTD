@@ -141,7 +141,7 @@ private:
 };
 
 /**
- * Event Subidy Awarded, indicating a subsidy is awarded to some company.
+ * Event Subsidy Awarded, indicating a subsidy is awarded to some company.
  * @api ai game
  */
 class ScriptEventSubsidyAwarded : public ScriptEvent {
@@ -168,7 +168,7 @@ public:
 	SubsidyID GetSubsidyID() { return this->subsidy_id; }
 
 private:
-	SubsidyID subsidy_id; ///< The subsidy that was awared.
+	SubsidyID subsidy_id; ///< The subsidy that was awarded.
 };
 
 /**
@@ -412,7 +412,7 @@ class ScriptEventCompanyMerger : public ScriptEvent {
 public:
 	/**
 	 * @param old_owner The company bought off.
-	 * @param new_owner The company that bougth owner.
+	 * @param new_owner The company that bought owner.
 	 */
 	ScriptEventCompanyMerger(Owner old_owner, Owner new_owner) :
 		ScriptEvent(ET_COMPANY_MERGER),
@@ -432,7 +432,7 @@ public:
 	 * @return The CompanyID of the company that has been bought.
 	 * @note: The value below is not valid anymore as CompanyID, and
 	 *  ScriptCompany::ResolveCompanyID will return COMPANY_COMPANY. It's
-	 *  only usefull if you're keeping track of company's yourself.
+	 *  only useful if you're keeping track of company's yourself.
 	 */
 	ScriptCompany::CompanyID GetOldCompanyID() { return this->old_owner; }
 
@@ -700,7 +700,7 @@ public:
 	VehicleID GetVehicleID() { return this->vehicle; }
 
 private:
-	StationID station; ///< The station the vehicle arived at.
+	StationID station; ///< The station the vehicle arrived at.
 	VehicleID vehicle; ///< The vehicle that arrived at the station.
 };
 

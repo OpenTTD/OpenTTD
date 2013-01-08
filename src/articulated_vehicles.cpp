@@ -68,7 +68,7 @@ bool IsArticulatedEngine(EngineID engine_type)
  * Count the number of articulated parts of an engine.
  * @param engine_type The engine to get the number of parts of.
  * @param purchase_window Whether we are in the scope of the purchase window or not, i.e. whether we cannot allocate vehicles.
- * @return The nmumber of parts.
+ * @return The number of parts.
  */
 uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 {
@@ -98,7 +98,7 @@ uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 
 /**
  * Returns the default (non-refitted) capacity of a specific EngineID.
- * @param engine the EngineID of iterest
+ * @param engine the EngineID of interest
  * @param cargo_type returns the default cargo type, if needed
  * @return capacity
  */
@@ -113,7 +113,7 @@ static inline uint16 GetVehicleDefaultCapacity(EngineID engine, CargoID *cargo_t
 
 /**
  * Returns all cargoes a vehicle can carry.
- * @param engine the EngineID of iterest
+ * @param engine the EngineID of interest
  * @param include_initial_cargo_type if true the default cargo type of the vehicle is included; if false only the refit_mask
  * @return bit set of CargoIDs
  */

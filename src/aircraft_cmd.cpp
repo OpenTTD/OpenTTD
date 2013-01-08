@@ -635,7 +635,7 @@ static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE,
 	/* Adjust distance moved by plane speed setting */
 	if (_settings_game.vehicle.plane_speed > 1) spd /= _settings_game.vehicle.plane_speed;
 
-	/* Convert direction-indepenent speed into direction-dependent speed. (old movement method) */
+	/* Convert direction-independent speed into direction-dependent speed. (old movement method) */
 	spd = v->GetOldAdvanceSpeed(spd);
 
 	spd += v->progress;
@@ -660,7 +660,7 @@ int GetAircraftFlyingAltitude(const Aircraft *v)
 	int base_altitude = PLANE_HOLDING_ALTITUDE;
 
 	/* Make sure eastbound and westbound planes do not "crash" into each
-	 * other by providing them with vertical seperation
+	 * other by providing them with vertical separation
 	 */
 	switch (v->direction) {
 		case DIR_N:
@@ -1380,7 +1380,7 @@ static void AircraftEventHandler_AtTerminal(Aircraft *v, const AirportFTAClass *
 		 * and get serviced at the same time - setting */
 		if (_settings_game.order.serviceathelipad) {
 			if (v->subtype == AIR_HELICOPTER && apc->num_helipads > 0) {
-				/* an exerpt of ServiceAircraft, without the invisibility stuff */
+				/* an excerpt of ServiceAircraft, without the invisibility stuff */
 				v->date_of_last_service = _date;
 				v->breakdowns_since_last_service = 0;
 				v->reliability = v->GetEngine()->reliability;
@@ -1402,7 +1402,7 @@ static void AircraftEventHandler_AtTerminal(Aircraft *v, const AirportFTAClass *
 	switch (v->current_order.GetType()) {
 		case OT_GOTO_STATION: // ready to fly to another airport
 			break;
-		case OT_GOTO_DEPOT:   // visit hangar for serivicing, sale, etc.
+		case OT_GOTO_DEPOT:   // visit hangar for servicing, sale, etc.
 			go_to_hangar = v->current_order.GetDestination() == v->targetairport;
 			break;
 		case OT_CONDITIONAL:

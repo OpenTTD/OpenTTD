@@ -23,7 +23,7 @@
  * Bridge: Get the direction pointing onto the bridge
  * @param t The tile to analyze
  * @pre IsTileType(t, MP_TUNNELBRIDGE)
- * @return the above mentionned direction
+ * @return the above mentioned direction
  */
 static inline DiagDirection GetTunnelBridgeDirection(TileIndex t)
 {

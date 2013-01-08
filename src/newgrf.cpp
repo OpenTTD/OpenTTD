@@ -8821,7 +8821,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage, S
 static void ActivateOldShore()
 {
 	/* Use default graphics, if no shore sprites were loaded.
-	 * Should not happen, as openttd(w/d).grf includes some. */
+	 * Should not happen, as the base set's extra grf should include some. */
 	if (_loaded_newgrf_features.shore == SHORE_REPLACE_NONE) _loaded_newgrf_features.shore = SHORE_REPLACE_ACTION_A;
 
 	if (_loaded_newgrf_features.shore != SHORE_REPLACE_ACTION_5) {

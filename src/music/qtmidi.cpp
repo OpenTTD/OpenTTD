@@ -78,7 +78,7 @@ static void SetMIDITypeIfNeeded(const FSRef *ref)
  *
  * @param *path String with the path of an existing MIDI file.
  * @param *moov Pointer to a @c Movie where the result will be stored.
- * @return Wether the file was loaded and the @c Movie successfully created.
+ * @return Whether the file was loaded and the @c Movie successfully created.
  */
 static bool LoadMovieForMIDIFile(const char *path, Movie *moov)
 {
@@ -99,7 +99,7 @@ static bool LoadMovieForMIDIFile(const char *path, Movie *moov)
 	 * XXX Manual check for MIDI header ('MThd'), as I don't know how to make
 	 * QuickTime load MIDI files without a .mid suffix without knowing it's
 	 * a MIDI file and setting the OSType of the file to the 'Midi' value.
-	 * Perhahaps ugly, but it seems that it does the Right Thing(tm).
+	 * Perhaps ugly, but it seems that it does the Right Thing(tm).
 	 */
 	fd = open(path, O_RDONLY, 0);
 	if (fd == -1) return false;
@@ -192,7 +192,7 @@ const char *MusicDriver_QtMidi::Start(const char * const *parm)
 
 
 /**
- * Checks wether the player is active.
+ * Checks whether the player is active.
  *
  * This function is called at regular intervals from OpenTTD's main loop, so
  * we call @c MoviesTask() from here to let QuickTime do its work.

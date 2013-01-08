@@ -27,7 +27,7 @@ enum PacketUDPType {
 	PACKET_UDP_CLIENT_DETAIL_INFO,   ///< Queries a game server about details of the game, such as companies
 	PACKET_UDP_SERVER_DETAIL_INFO,   ///< Reply of the game server about details of the game, such as companies
 	PACKET_UDP_SERVER_REGISTER,      ///< Packet to register itself to the master server
-	PACKET_UDP_MASTER_ACK_REGISTER,  ///< Packet indicating registration has succedeed
+	PACKET_UDP_MASTER_ACK_REGISTER,  ///< Packet indicating registration has succeeded
 	PACKET_UDP_CLIENT_GET_LIST,      ///< Request for serverlist from master server
 	PACKET_UDP_MASTER_RESPONSE_LIST, ///< Response from master server with server ip's + port's
 	PACKET_UDP_SERVER_UNREGISTER,    ///< Request to be removed from the server-list
@@ -73,7 +73,7 @@ protected:
 	 *   all      1       the version of this packet's structure
 	 *
 	 *   4+       1       number of GRFs attached (n)
-	 *   4+       n * 20  unique identifier for GRF files. Constists of:
+	 *   4+       n * 20  unique identifier for GRF files. Consists of:
 	 *                     - one 4 byte variable with the GRF ID
 	 *                     - 16 bytes (sent sequentially) for the MD5 checksum
 	 *                       of the GRF

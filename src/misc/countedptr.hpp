@@ -140,7 +140,7 @@ template <class T> struct AdaptT {
 /**
  * Simple counted object. Use it as base of your struct/class if you want to use
  *  basic reference counting. Your struct/class will destroy and free itself when
- *  last reference to it is released (using Relese() method). The initial reference
+ *  last reference to it is released (using Release() method). The initial reference
  *  count (when it is created) is zero (don't forget AddRef() at least one time if
  *  not using CCountedPtr<T>.
  *

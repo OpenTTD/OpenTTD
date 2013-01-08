@@ -45,7 +45,7 @@ struct PoolBase {
 	static void Clean(PoolType);
 
 	/**
-	 * Contructor registers this object in the pool vector.
+	 * Constructor registers this object in the pool vector.
 	 * @param pt type of this pool.
 	 */
 	PoolBase(PoolType pt) : type(pt)
@@ -278,7 +278,7 @@ struct Pool : PoolBase {
 	};
 
 private:
-	static const size_t NO_FREE_ITEM = MAX_UVALUE(size_t); ///< Contant to indicate we can't allocate any more items
+	static const size_t NO_FREE_ITEM = MAX_UVALUE(size_t); ///< Constant to indicate we can't allocate any more items
 
 	/**
 	 * Helper struct to cache 'freed' PoolItems so we

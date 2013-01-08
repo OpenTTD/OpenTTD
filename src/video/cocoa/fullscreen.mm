@@ -357,7 +357,7 @@ class FullscreenSubdriver: public CocoaSubdriver {
 
 		this->UpdatePalette(0, 256);
 
-		/* Move the mouse cursor to approx the same location */
+		/* Move the mouse cursor to approx. the same location */
 		CGPoint display_mouseLocation;
 		display_mouseLocation.x = mouseLocation.x * this->device_width;
 		display_mouseLocation.y = this->device_height - (mouseLocation.y * this->device_height);

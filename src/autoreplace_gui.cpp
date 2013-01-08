@@ -45,7 +45,7 @@ static int CDECL EngineNumberSorter(const EngineID *a, const EngineID *b)
  * @param id_g The group the engine belongs to
  *  Note: this function only works if it is called either
  *   - when a new vehicle is build, but before it's counted in num_engines
- *   - when a vehicle is deleted and after it's substracted from num_engines
+ *   - when a vehicle is deleted and after it's subtracted from num_engines
  *   - when not changing the count (used when changing replace orders)
  */
 void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g)

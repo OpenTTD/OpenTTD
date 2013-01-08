@@ -617,8 +617,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Pac
 	}
 
 	/* There are at most as many ClientInfo as ClientSocket objects in a
-	 * server. Having more Infos than a server can have means something
-	 * has gone wrong somewhere, i.e. the server has more Infos than it
+	 * server. Having more info than a server can have means something
+	 * has gone wrong somewhere, i.e. the server has more info than it
 	 * has actual clients. That means the server is feeding us an invalid
 	 * state. So, bail out! This server is broken. */
 	if (!NetworkClientInfo::CanAllocateItem()) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
@@ -1056,7 +1056,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEWGAME(Packet 
 	/* Only when we're trying to join we really
 	 * care about the server shutting down. */
 	if (this->status >= STATUS_JOIN) {
-		/* To trottle the reconnects a bit, every clients waits its
+		/* To throttle the reconnects a bit, every clients waits its
 		 * Client ID modulo 16. This way reconnects should be spread
 		 * out a bit. */
 		_network_reconnect = _network_own_client_id % 16;

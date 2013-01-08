@@ -52,7 +52,7 @@ public:
 
 	/**
 	 * Whether there is something pending in the send queue.
-	 * @return true when someting is pending in the send queue.
+	 * @return true when something is pending in the send queue.
 	 */
 	bool HasSendQueue() { return this->packet_queue != NULL; }
 

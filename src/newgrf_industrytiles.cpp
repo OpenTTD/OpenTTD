@@ -236,7 +236,7 @@ extern bool IsSlopeRefused(Slope current, Slope refused);
  * @param initial_random_bits Random bits of industry after construction
  * @param founder       Industry founder
  * @param creation_type The circumstances the industry is created under.
- * @return Suceeded or failed command.
+ * @return Succeeded or failed command.
  */
 CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind_tile, const IndustryTileSpec *its, IndustryType type, IndustryGfx gfx, uint itspec_index, uint16 initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type)
 {

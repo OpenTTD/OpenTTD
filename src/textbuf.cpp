@@ -21,10 +21,10 @@
 #include "core/alloc_func.hpp"
 
 /**
- * Try to retrive the current clipboard contents.
+ * Try to retrieve the current clipboard contents.
  *
- * @note OS-specific funtion.
- * @return True if some text could be retrived.
+ * @note OS-specific function.
+ * @return True if some text could be retrieved.
  */
 bool GetClipboardContents(char *buffer, size_t buff_len);
 
@@ -221,7 +221,7 @@ bool Textbuf::InsertClipboard()
 }
 
 /**
- * Checks if it is possible to move carret to the left
+ * Checks if it is possible to move caret to the left
  * @return true if the caret can be moved to the left, otherwise false.
  */
 bool Textbuf::CanMoveCaretLeft()
@@ -248,7 +248,7 @@ WChar Textbuf::MoveCaretLeft()
 }
 
 /**
- * Checks if it is possible to move carret to the right
+ * Checks if it is possible to move caret to the right
  * @return true if the caret can be moved to the right, otherwise false.
  */
 bool Textbuf::CanMoveCaretRight()
@@ -275,7 +275,7 @@ WChar Textbuf::MoveCaretRight()
 
 /**
  * Handle text navigation with arrow keys left/right.
- * This defines where the caret will blink and the next characer interaction will occur
+ * This defines where the caret will blink and the next character interaction will occur
  * @param navmode Direction in which navigation occurs (WKC_CTRL |) WKC_LEFT, (WKC_CTRL |) WKC_RIGHT, WKC_END, WKC_HOME
  * @return Return true on successful change of Textbuf, or false otherwise
  */
@@ -304,7 +304,7 @@ bool Textbuf::MovePos(int navmode)
 				if (!this->CanMoveCaretLeft()) return true;
 				c = this->MoveCaretLeft();
 			}
-			/* Place caret at the begining of the left word. */
+			/* Place caret at the beginning of the left word. */
 			this->MoveCaretRight();
 			return true;
 		}

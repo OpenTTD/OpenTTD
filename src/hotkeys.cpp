@@ -131,7 +131,7 @@ static void ParseHotkeys(Hotkey<T> *hotkey, const char *value)
 
 /**
  * Convert a hotkey to it's string representation so it can be written to the
- * config file. Seperate parts of the keycode (like "CTRL" and "F1" are split
+ * config file. Separate parts of the keycode (like "CTRL" and "F1" are split
  * by a '+'.
  * @param keycode The keycode to convert to a string.
  * @return A string representation of this keycode.

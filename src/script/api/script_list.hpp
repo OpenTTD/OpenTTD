@@ -164,7 +164,7 @@ public:
 	/**
 	 * Removes all items with a value above start and below end.
 	 * @param start the lower bound of the to be removed values (exclusive).
-	 * @param end   the upper bound of the to be removed valuens (exclusive).
+	 * @param end   the upper bound of the to be removed values (exclusive).
 	 */
 	void RemoveBetweenValue(int32 start, int32 end);
 

@@ -228,7 +228,7 @@ public:
 	/**
 	 * Set the amount of days between town growth.
 	 * @param town_id The index of the town.
-	 * @param days_between_town_growth The amont of days between town growth.
+	 * @param days_between_town_growth The amount of days between town growth.
 	 * @pre IsValidTown(town_id).
 	 * @return True if the action succeeded.
 	 * @note If 'Fund Building' and 'economy.town_growth_rate' is active, the game will often set a new GrowthRate.

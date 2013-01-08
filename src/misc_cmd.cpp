@@ -207,7 +207,7 @@ CommandCost CmdMoneyCheat(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 /**
  * Transfer funds (money) from one company to another.
  * To prevent abuse in multiplayer games you can only send money to other
- * companies if you have paid off your loan (either explicitely, or implicitely
+ * companies if you have paid off your loan (either explicitly, or implicitly
  * given the fact that you have more money than loan).
  * @param tile unused
  * @param flags operation to perform

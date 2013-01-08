@@ -381,7 +381,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 	/* The bridge length without ramps. */
 	const uint bridge_len = GetTunnelBridgeLength(start, end);
 
-	/* If Ctrl is being pressed, check wether the last bridge built is available
+	/* If Ctrl is being pressed, check whether the last bridge built is available
 	 * If so, return this bridge type. Otherwise continue normally.
 	 * We store bridge types for each transport type, so we have to check for
 	 * the transport type beforehand.

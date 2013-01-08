@@ -129,7 +129,7 @@ public:
 	/**
 	 * Check the membership of the last thrown error.
 	 * @return The category the error belongs to.
-	 * @note The last throw error can be aquired by calling GetLastError().
+	 * @note The last throw error can be acquired by calling GetLastError().
 	 */
 	static ErrorCategories GetErrorCategory();
 

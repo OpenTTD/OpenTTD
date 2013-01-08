@@ -269,7 +269,7 @@ template <class Tbase_set>
 			if (missing == 0) {
 				p += seprintf(p, last, " (%i corrupt file%s)\n", invalid, invalid == 1 ? "" : "s");
 			} else {
-				p += seprintf(p, last, " (unuseable: %i missing file%s)\n", missing, missing == 1 ? "" : "s");
+				p += seprintf(p, last, " (unusable: %i missing file%s)\n", missing, missing == 1 ? "" : "s");
 			}
 		} else {
 			p += seprintf(p, last, "\n");

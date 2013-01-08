@@ -190,12 +190,12 @@ static void TileLoopClearAlps(TileIndex tile)
 		}
 	}
 	/* Update snow density. */
-	uint curent_density = GetClearDensity(tile);
+	uint current_density = GetClearDensity(tile);
 	uint req_density = (k < 0) ? 0u : min((uint)k, 3);
 
-	if (curent_density < req_density) {
+	if (current_density < req_density) {
 		AddClearDensity(tile, 1);
-	} else if (curent_density > req_density) {
+	} else if (current_density > req_density) {
 		AddClearDensity(tile, -1);
 	} else {
 		/* Density at the required level. */

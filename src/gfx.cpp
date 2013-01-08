@@ -365,7 +365,7 @@ static WChar *HandleBiDiAndArabicShapes(WChar *buffer)
 
 
 /**
- * Truncate a given string to a maximum width if neccessary.
+ * Truncate a given string to a maximum width if necessary.
  * If the string is truncated, add three dots ('...') to show this.
  * @param *str string that is checked and possibly truncated
  * @param maxw maximum width in pixels of the string
@@ -754,7 +754,7 @@ uint32 FormatStringLinebreaks(char *str, const char *last, int maxw, FontSize si
 end_of_inner_loop:
 		/* String didn't fit on line (or a '\n' was encountered), so 'dummy' terminate
 		 * and increase linecount. We use Utf8PrevChar() as also non 1 char long
-		 * whitespace seperators are supported */
+		 * whitespace separators are supported */
 		num++;
 		char *s = Utf8PrevChar(str);
 		*s++ = '\0';
@@ -1077,14 +1077,14 @@ void DrawCharCentered(WChar c, int x, int y, TextColour colour)
 /**
  * Draw a string at the given coordinates with the given colour.
  *  While drawing the string, parse it in case some formatting is specified,
- *  like new colour, new size or even positionning.
+ *  like new colour, new size or even positioning.
  * @param string              The string to draw. This is already bidi reordered.
  * @param x                   Offset from left side of the screen
  * @param y                   Offset from top side of the screen
  * @param params              Text drawing parameters
  * @param parse_string_also_when_clipped
  *                            By default, always test the available space where to draw the string.
- *                            When in multipline drawing, it would already be done,
+ *                            When in multiline drawing, it would already be done,
  *                            so no need to re-perform the same kind (more or less) of verifications.
  *                            It's not only an optimisation, it's also a way to ensures the string will be parsed
  *                            (as there are certain side effects on global variables, which are important for the next line)
@@ -1458,7 +1458,7 @@ void DoPaletteAnimations()
 	}
 
 	Colour *palette_pos = &_cur_palette.palette[PALETTE_ANIM_START];  // Points to where animations are taking place on the palette
-	/* Makes a copy of the current anmation palette in old_val,
+	/* Makes a copy of the current animation palette in old_val,
 	 * so the work on the current palette could be compared, see if there has been any changes */
 	memcpy(old_val, palette_pos, sizeof(old_val));
 
@@ -1840,7 +1840,7 @@ void DrawDirtyBlocks()
  * @param left The left edge of the rectangle
  * @param top The top edge of the rectangle
  * @param right The right edge of the rectangle
- * @param bottom The bottm edge of the rectangle
+ * @param bottom The bottom edge of the rectangle
  * @see DrawDirtyBlocks
  *
  * @todo The name of the function should be called like @c AddDirtyBlock as

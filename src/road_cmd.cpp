@@ -993,7 +993,7 @@ CommandCost CmdRemoveLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 
  * @return the cost of this operation or an error
  *
  * @todo When checking for the tile slope,
- * distingush between "Flat land required" and "land sloped in wrong direction"
+ * distinguish between "Flat land required" and "land sloped in wrong direction"
  */
 CommandCost CmdBuildRoadDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {

@@ -344,7 +344,7 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 					(col < col_pad) || (col >= (width  - col_pad - (_settings_game.construction.freeform_edges ? 0 : 1)))) {
 				SetTileHeight(tile, 0);
 			} else {
-				/* Use nearest neighbor resizing to scale map data.
+				/* Use nearest neighbour resizing to scale map data.
 				 *  We rotate the map 45 degrees (counter)clockwise */
 				img_row = (((row - row_pad) * num_div) / img_scale);
 				switch (_settings_game.game_creation.heightmap_rotation) {
@@ -464,7 +464,7 @@ bool GetHeightmapDimensions(char *filename, uint *x, uint *y)
  * Load a heightmap from file and change the map in his current dimensions
  *  to a landscape representing the heightmap.
  * It converts pixels to height. The brighter, the higher.
- * @param filename of the heighmap file to be imported
+ * @param filename of the heightmap file to be imported
  */
 void LoadHeightmap(char *filename)
 {

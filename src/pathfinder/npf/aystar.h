@@ -64,7 +64,7 @@ struct AyStar;
 /**
  * Check whether the end-tile is found.
  * @param aystar %AyStar search algorithm data.
- * @param current Node to examone.
+ * @param current Node to exam one.
  * @note The 2nd parameter should be #OpenListNode, and \em not #AyStarNode. #AyStarNode is
  * part of #OpenListNode and so it could be accessed without any problems.
  * The good part about #OpenListNode is, and how AIs use it, that you can

@@ -115,7 +115,7 @@ public:
 			}
 
 			case WID_BO_OBJECT_SPRITE: {
-				bool two_wide = false;  // Whether there will be two widgets next to eachother in the matrix or not.
+				bool two_wide = false;  // Whether there will be two widgets next to each other in the matrix or not.
 				int height[2] = {0, 0}; // The height for the different views; in this case views 1/2 and 4.
 
 				/* Get the height and view information. */
@@ -190,7 +190,7 @@ public:
 				/* Height of the selection matrix.
 				 * Depending on the number of views, the matrix has a 1x1, 1x2, 2x1 or 2x2 layout. To make the previews
 				 * look nice in all layouts, we use the 4x4 layout (smallest previews) as starting point. For the bigger
-				 * previews in the layouts with less views we add space homogenously on all sides, so the 4x4 preview-rectangle
+				 * previews in the layouts with less views we add space homogeneously on all sides, so the 4x4 preview-rectangle
 				 * is centered in the 2x1, 1x2 resp. 1x1 buttons. */
 				uint matrix_height = this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX)->current_y;
 

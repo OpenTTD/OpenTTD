@@ -49,7 +49,7 @@ const char _openttd_build_date[] = __DATE__ " " __TIME__;
 
 /**
  * Let us know if current build was modified. This detection
- * works even in the case when revision string is overriden by
+ * works even in the case when revision string is overridden by
  * --revision argument.
  * Value 0 means no modification, 1 is for unknown state
  * (compiling from sources without any version control software)
@@ -68,7 +68,7 @@ const byte _openttd_revision_modified = !!MODIFIED!!;
  *
  * The 19th bit is there so the development/betas/alpha, etc. leading to a
  * final release will always have a lower version number than the released
- * version, thus making comparisions on specific revisions easy.
+ * version, thus making comparisons on specific revisions easy.
  */
 const uint32 _openttd_newgrf_version = 1 << 28 | 3 << 24 | 0 << 20 | 0 << 19 | (!!REVISION!! & ((1 << 19) - 1));
 

@@ -13,7 +13,7 @@
  * <ul><li>_bridge_sprite_table_n_m. Defines all the sprites of a bridge besides the pylons.
  * n defines the number of the bridge type, m the number of the section. the highest m for
  * each bridge set defines the heads.<br>
- * Sprites for middle secionts are arranged in groups of four, the elements are:
+ * Sprites for middle sections are arranged in groups of four, the elements are:
  * <ol><li>Element containing the track. This element is logically behind the vehicle.</li>
  * <li>Element containing the structure that is logically between the vehicle and the camera</li>
  * <li>Element containing the pylons.</li></ol>
@@ -729,7 +729,7 @@ static const PalSpriteID * const * const _bridge_sprite_table[MAX_BRIDGES] = {
 
 /**
  * Describes the data that defines each bridge in the game
- * @param y   year of availablity
+ * @param y   year of availability
  * @param mnl minimum length (not counting bridge heads)
  * @param mxl maximum length (not counting bridge heads)
  * @param p   price multiplier
@@ -745,7 +745,7 @@ static const PalSpriteID * const * const _bridge_sprite_table[MAX_BRIDGES] = {
 
 const BridgeSpec _orig_bridge[] = {
 /*
-	       year of availablity
+	       year of availability
 	       |  minimum length
 	       |  |   maximum length
 	       |  |   |        price multiplier

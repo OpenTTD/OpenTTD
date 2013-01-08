@@ -27,7 +27,7 @@ const uint8 _ffb_64[64] = {
  * Search the first set bit in a 32 bit variable.
  *
  * This algorithm is a static implementation of a log
- * conguence search algorithm. It checks the first half
+ * congruence search algorithm. It checks the first half
  * if there is a bit set search there further. And this
  * way further. If no bit is set return 0.
  *
@@ -55,7 +55,7 @@ uint8 FindFirstBit(uint32 x)
  * Search the last set bit in a 64 bit variable.
  *
  * This algorithm is a static implementation of a log
- * conguence search algorithm. It checks the second half
+ * congruence search algorithm. It checks the second half
  * if there is a bit set search there further. And this
  * way further. If no bit is set return 0.
  *

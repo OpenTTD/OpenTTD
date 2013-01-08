@@ -613,7 +613,7 @@ static const SpriteGroup *ResolveStation(StationResolverObject *object)
  * @param st Station (NULL in GUI)
  * @param tile Station tile being drawn (INVALID_TILE in GUI)
  * @param var10 Value to put in variable 10; normally 0; 1 when resolving the groundsprite and SSF_SEPARATE_GROUND is set.
- * @return First sprite of the Action 1 spriteset ot use, minus an offset of 0x42D to accommodate for weird NewGRF specs.
+ * @return First sprite of the Action 1 spriteset to use, minus an offset of 0x42D to accommodate for weird NewGRF specs.
  */
 SpriteID GetCustomStationRelocation(const StationSpec *statspec, BaseStation *st, TileIndex tile, uint32 var10)
 {
@@ -704,7 +704,7 @@ int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exe
 	if (i == MAX_SPECLIST) {
 		/* As final effort when the spec list is already full...
 		 * try to find the same spec and return that one. This might
-		 * result in slighty "wrong" (as per specs) looking stations,
+		 * result in slightly "wrong" (as per specs) looking stations,
 		 * but it's fairly unlikely that one reaches the limit anyways.
 		 */
 		for (i = 1; i < st->num_specs && i < MAX_SPECLIST; i++) {

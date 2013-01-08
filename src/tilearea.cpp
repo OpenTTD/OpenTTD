@@ -159,7 +159,7 @@ DiagonalTileIterator::DiagonalTileIterator(TileIndex corner1, TileIndex corner2)
 }
 
 /**
- * Move ourselves to the next tile in the rectange on the map.
+ * Move ourselves to the next tile in the rectangle on the map.
  */
 TileIterator &DiagonalTileIterator::operator++()
 {

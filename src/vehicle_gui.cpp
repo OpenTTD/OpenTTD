@@ -1034,7 +1034,7 @@ static int CDECL VehicleCargoSorter(const Vehicle * const *a, const Vehicle * co
 	const Vehicle *v;
 	CargoArray diff;
 
-	/* Append the cargo of the connected weagons */
+	/* Append the cargo of the connected waggons */
 	for (v = *a; v != NULL; v = v->Next()) diff[v->cargo_type] += v->cargo_cap;
 	for (v = *b; v != NULL; v = v->Next()) diff[v->cargo_type] -= v->cargo_cap;
 
@@ -1068,7 +1068,7 @@ static int CDECL VehicleModelSorter(const Vehicle * const *a, const Vehicle * co
 	return (r != 0) ? r : VehicleNumberSorter(a, b);
 }
 
-/** Sort vehciles by their value */
+/** Sort vehicles by their value */
 static int CDECL VehicleValueSorter(const Vehicle * const *a, const Vehicle * const *b)
 {
 	const Vehicle *u;
@@ -2433,7 +2433,7 @@ public:
 					SetDParam(2, v->GetDisplaySpeed());
 					if (v->current_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
 						/* This case *only* happens when multiple nearest depot orders
-						 * follow eachother (including an order list only one order: a
+						 * follow each other (including an order list only one order: a
 						 * nearest depot order) and there are no reachable depots.
 						 * It is primarily to guard for the case that there is no
 						 * depot with index 0, which would be used as fallback for

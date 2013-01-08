@@ -93,7 +93,7 @@ static inline DiagDirection ReverseDiagDir(DiagDirection d)
  * the new DiagDirection.
  *
  * @param d The DiagDirection
- * @param delta The difference to applie on
+ * @param delta The difference to apply on
  * @return The new direction which was calculated
  */
 static inline DiagDirection ChangeDiagDir(DiagDirection d, DiagDirDiff delta)
@@ -207,7 +207,7 @@ static inline DiagDirection XYNSToDiagDir(Axis xy, uint ns)
 }
 
 /**
- * Checks if an interger value is a valid DiagDirection
+ * Checks if an integer value is a valid DiagDirection
  *
  * @param d The value to check
  * @return True if the value belongs to a DiagDirection, else false

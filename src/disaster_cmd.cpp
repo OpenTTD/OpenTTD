@@ -382,7 +382,7 @@ static void DestructIndustry(Industry *i)
 
 /**
  * Aircraft handling, v->current_order.dest states:
- * 0: Fly towards the targetted industry
+ * 0: Fly towards the targeted industry
  * 1: If within 15 tiles, fire away rockets and destroy industry
  * 2: Industry explosions
  * 3: Fly out of the map

@@ -159,7 +159,7 @@
 
 /* static */ void Game::ResetConfig()
 {
-	/* Check for both newgame as current game if we can reload the GameInfo insde
+	/* Check for both newgame as current game if we can reload the GameInfo inside
 	 *  the GameConfig. If not, remove the Game from the list. */
 	if (_settings_game.game_config != NULL && _settings_game.game_config->HasScript()) {
 		if (!_settings_game.game_config->ResetInfo(true)) {

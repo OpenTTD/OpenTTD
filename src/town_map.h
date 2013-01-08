@@ -175,7 +175,7 @@ static inline void SetHouseCompleted(TileIndex t, bool status)
 /**
  * Gets the building stage of a house
  * Since the stage is used for determining what sprite to use,
- * if the house is complete (and that stage no longuer is available),
+ * if the house is complete (and that stage no longer is available),
  * fool the system by returning the TOWN_HOUSE_COMPLETE (3),
  * thus showing a beautiful complete house.
  * @param t the tile of the house to get the building stage of

@@ -744,7 +744,7 @@ struct DepotWindow : Window {
 			}
 
 			case WID_D_SELL_ALL:
-				/* Only open the confimation window if there are anything to sell */
+				/* Only open the confirmation window if there are anything to sell */
 				if (this->vehicle_list.Length() != 0 || this->wagon_list.Length() != 0) {
 					TileIndex tile = this->window_number;
 					byte vehtype = this->type;

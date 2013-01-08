@@ -23,14 +23,14 @@
 
 /*
  * In one terraforming command all four corners of a initial tile can be raised/lowered (though this is not available to the player).
- * The maximal amount of height modifications is archieved when raising a complete flat land from sea level to MAX_TILE_HEIGHT or vice versa.
+ * The maximal amount of height modifications is achieved when raising a complete flat land from sea level to MAX_TILE_HEIGHT or vice versa.
  * This affects all corners with a manhatten distance smaller than MAX_TILE_HEIGHT to one of the initial 4 corners.
  * Their maximal amount is computed to 4 * \sum_{i=1}^{h_max} i  =  2 * h_max * (h_max + 1).
  */
 static const int TERRAFORMER_MODHEIGHT_SIZE = 2 * MAX_TILE_HEIGHT * (MAX_TILE_HEIGHT + 1);
 
 /*
- * The maximal amount of affected tiles (i.e. the tiles that incident with one of the corners above, is computed similiar to
+ * The maximal amount of affected tiles (i.e. the tiles that incident with one of the corners above, is computed similar to
  * 1 + 4 * \sum_{i=1}^{h_max} (i+1)  =  1 + 2 * h_max + (h_max + 3).
  */
 static const int TERRAFORMER_TILE_TABLE_SIZE = 1 + 2 * MAX_TILE_HEIGHT * (MAX_TILE_HEIGHT + 3);

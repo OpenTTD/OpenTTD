@@ -92,7 +92,7 @@ static inline RoadBits MirrorRoadBits(RoadBits r)
 /**
  * Calculate rotated RoadBits
  *
- * Move the Roadbits clockwise til they are in their final position.
+ * Move the Roadbits clockwise until they are in their final position.
  *
  * @param r The given RoadBits value
  * @param rot The given Rotation angle

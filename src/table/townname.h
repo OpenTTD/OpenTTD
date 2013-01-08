@@ -1729,7 +1729,7 @@ static const char * const _name_czech_patmod[][3] = {
 	/* CZG_PNEUT */ { "\xC3\xAD", "\xC3\xA1", "a" }
 };
 
-/* This way the substantives can choose only some adjectives/endings:
+/* This way the substantive can choose only some adjectives/endings:
  * At least one of these flags must be satisfied: */
 enum CzechAllow {
 	CZA_SHORT = 1,

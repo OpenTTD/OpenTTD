@@ -44,7 +44,7 @@
  * implementation.
  *
  * @par
- * For further information about the Binary Heap algotithm, see
+ * For further information about the Binary Heap algorithm, see
  * http://www.policyalmanac.org/games/binaryHeaps.htm
  *
  * @tparam T Type of the items stored in the binary heap
@@ -187,7 +187,7 @@ public:
 	/**
 	 * Get the LAST item in the binary tree.
 	 *
-	 * @note The last item is not neccesary the biggest!
+	 * @note The last item is not necessary the biggest!
 	 *
 	 * @return The last item
 	 */
@@ -266,7 +266,7 @@ public:
 
 	/**
 	 * Search for an item in the priority queue.
-	 *  Matching is done by comparing adress of the
+	 *  Matching is done by comparing address of the
 	 *  item.
 	 *
 	 * @param item The reference to the item

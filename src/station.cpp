@@ -376,7 +376,7 @@ void StationRect::MakeEmpty()
  * @note x and y are in Tile coordinates
  * @param x X coordinate
  * @param y Y coordinate
- * @param distance The maxmium distance a point may have (L1 norm)
+ * @param distance The maximum distance a point may have (L1 norm)
  * @return true if the point is within distance tiles of the station rectangle
  */
 bool StationRect::PtInExtendedRect(int x, int y, int distance) const

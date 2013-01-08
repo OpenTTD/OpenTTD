@@ -44,7 +44,7 @@ void RebuildTownCaches()
 		if (GetHouseNorthPart(house_id) == 0) town->cache.num_houses++;
 	}
 
-	/* Update the population and num_house dependant values */
+	/* Update the population and num_house dependent values */
 	FOR_ALL_TOWNS(town) {
 		UpdateTownRadius(town);
 		UpdateTownCargoes(town);

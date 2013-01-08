@@ -160,8 +160,8 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 		 * - Batang & BatangChe & Gungsuh & GungsuhChe (TrueType)
 		 * We will strip the font-type '()' if any and work with the font name
 		 * itself, which must match exactly; if...
-		 * TTC files, font files which contain more than one font are seperated
-		 * byt '&'. Our best bet will be to do substr match for the fontname
+		 * TTC files, font files which contain more than one font are separated
+		 * by '&'. Our best bet will be to do substr match for the fontname
 		 * and then let FreeType figure out which index to load */
 		s = _tcschr(vbuffer, _T('('));
 		if (s != NULL) s[-1] = '\0';
@@ -182,7 +182,7 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	 * contain multiple fonts inside this single file. GetFontData however
 	 * returns the whole file, so we need to check each font inside to get the
 	 * proper font.
-	 * Also note that FreeType does not support UNICODE filesnames! */
+	 * Also note that FreeType does not support UNICODE filenames! */
 #if defined(UNICODE)
 	/* We need a cast here back from wide because FreeType doesn't support
 	 * widechar filenames. Just use the buffer we allocated before for the
@@ -570,7 +570,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 		strecpy(buff, str, lastof(buff));
 		str_validate(buff, lastof(buff), SVS_ALLOW_NEWLINE);
 
-		/* Extract a UniChar represenation of the sample string. */
+		/* Extract a UniChar representation of the sample string. */
 		CFStringRef cf_str = CFStringCreateWithCString(kCFAllocatorDefault, buff, kCFStringEncodingUTF8);
 		if (cf_str == NULL) {
 			/* Something went wrong. Corrupt/invalid sample string? */
@@ -590,7 +590,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 		ATSUCreateTextLayoutWithTextPtr(string, kATSUFromTextBeginning, kATSUToTextEnd, str_len, 1, &run_len, &style, &text_layout);
 
 		/* Try to match a font for the sample text. ATSUMatchFontsToText stops after
-		 * it finds the first continous character run not renderable with the currently
+		 * it finds the first continuous character run not renderable with the currently
 		 * selected font starting at offset. The matching needs to be repeated until
 		 * the end of the string is reached to make sure the fallback font matches for
 		 * all characters in the string and not only the first run. */

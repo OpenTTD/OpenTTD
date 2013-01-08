@@ -668,7 +668,7 @@ private:
 
 		/* If 'b' is the same town as in the last round, use the cached value
 		 * We do this to speed stuff up ('b' is called with the same value a lot of
-		 * times after eachother) */
+		 * times after each other) */
 		if (tb != last_town) {
 			last_town = tb;
 			SetDParam(0, tb->index);

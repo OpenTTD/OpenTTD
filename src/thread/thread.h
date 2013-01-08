@@ -40,7 +40,7 @@ public:
 
 	/**
 	 * Create a thread; proc will be called as first function inside the thread,
-	 *  with optinal params.
+	 *  with optional params.
 	 * @param proc The procedure to call inside the thread.
 	 * @param param The params to give with 'proc'.
 	 * @param thread Place to store a pointer to the thread in. May be NULL.

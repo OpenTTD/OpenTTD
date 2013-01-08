@@ -1466,7 +1466,7 @@ private:
 #if defined(ENABLE_NETWORK)
 /**
  * Show the content list window with all missing grfs from the given list.
- * @param list The list of grfs to check for missings / not exactly matching ones.
+ * @param list The list of grfs to check for missing / not exactly matching ones.
  */
 void ShowMissingContentWindow(const GRFConfig *list)
 {
@@ -1584,12 +1584,12 @@ public:
 		uint avs_extra_width = min_list_width - min_avs_width;   // Additional width needed for avs to reach min_list_width.
 		uint acs_extra_width = min_list_width - min_acs_width;   // Additional width needed for acs to reach min_list_width.
 
-		/* Use 2 or 3 colmuns? */
+		/* Use 2 or 3 columns? */
 		uint min_three_columns = min_avs_width + min_acs_width + min_inf_width + 2 * INTER_COLUMN_SPACING;
 		uint min_two_columns   = min_list_width + min_inf_width + INTER_COLUMN_SPACING;
 		bool use_three_columns = this->editable && (min_three_columns + MIN_EXTRA_FOR_3_COLUMNS <= given_width);
 
-		/* Info panel is a seperate column in both modes. Compute its width first. */
+		/* Info panel is a separate column in both modes. Compute its width first. */
 		uint extra_width, inf_width;
 		if (use_three_columns) {
 			extra_width = given_width - min_three_columns;
@@ -1619,11 +1619,11 @@ public:
 			acs_width = ComputeMaxSize(min_acs_width, acs_width, this->acs->GetHorizontalStepSize(sizing)) -
 					this->acs->padding_left - this->acs->padding_right;
 
-			/* Never use fill_y on these; the minimal size is choosen, so that the 3 column view looks nice */
+			/* Never use fill_y on these; the minimal size is chosen, so that the 3 column view looks nice */
 			uint avs_height = ComputeMaxSize(this->avs->smallest_y, given_height, this->avs->resize_y);
 			uint acs_height = ComputeMaxSize(this->acs->smallest_y, given_height, this->acs->resize_y);
 
-			/* Assign size and position to the childs. */
+			/* Assign size and position to the children. */
 			if (rtl) {
 				x += this->inf->padding_left;
 				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding_top, inf_width, inf_height, rtl);
@@ -1662,7 +1662,7 @@ public:
 			if (this->editable) extra_height -= avs_height - this->avs->smallest_y;
 			uint acs_height = ComputeMaxSize(this->acs->smallest_y, this->acs->smallest_y + extra_height, this->acs->resize_y);
 
-			/* Assign size and position to the childs. */
+			/* Assign size and position to the children. */
 			if (rtl) {
 				x += this->inf->padding_left;
 				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding_top, inf_width, inf_height, rtl);

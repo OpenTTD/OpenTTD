@@ -237,7 +237,7 @@ static void DedicatedHandleKeyInput()
 #if defined(UNIX) || defined(__OS2__) || defined(PSP)
 	if (fgets(input_line, lengthof(input_line), stdin) == NULL) return;
 #else
-	/* Handle console input, and singal console thread, it can accept input again */
+	/* Handle console input, and signal console thread, it can accept input again */
 	assert_compile(lengthof(_win_console_thread_buffer) <= lengthof(input_line));
 	strecpy(input_line, _win_console_thread_buffer, lastof(input_line));
 	SetEvent(_hWaitForInputHandling);

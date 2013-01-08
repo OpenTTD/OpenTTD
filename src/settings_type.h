@@ -424,7 +424,7 @@ struct OrderSettings {
 	bool   improved_load;                    ///< improved loading algorithm
 	bool   gradual_loading;                  ///< load vehicles gradually
 	bool   selectgoods;                      ///< only send the goods to station if a train has been there
-	bool   no_servicing_if_no_breakdowns;    ///< dont send vehicles to depot when breakdowns are disabled
+	bool   no_servicing_if_no_breakdowns;    ///< don't send vehicles to depot when breakdowns are disabled
 	bool   serviceathelipad;                 ///< service helicopters at helipads automatically (no need to send to depot)
 };
 
@@ -463,7 +463,7 @@ struct EconomySettings {
 	bool   fund_buildings;                   ///< allow funding new buildings
 	bool   fund_roads;                       ///< allow funding local road reconstruction
 	bool   give_money;                       ///< allow giving other companies money
-	bool   mod_road_rebuild;                 ///< roadworks remove unneccesary RoadBits
+	bool   mod_road_rebuild;                 ///< roadworks remove unnecessary RoadBits
 	bool   multiple_industry_per_town;       ///< allow many industries of the same type per town
 	uint8  town_growth_rate;                 ///< town growth rate
 	uint8  larger_towns;                     ///< the number of cities to build. These start off larger and grow twice as fast

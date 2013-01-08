@@ -108,12 +108,12 @@ struct StationSpec {
 
 	/**
 	 * Bitmask of number of platforms available for the station.
-	 * 0..6 correpsond to 1..7, while bit 7 corresponds to >7 platforms.
+	 * 0..6 correspond to 1..7, while bit 7 corresponds to >7 platforms.
 	 */
 	byte disallowed_platforms;
 	/**
 	 * Bitmask of platform lengths available for the station.
-	 * 0..6 correpsond to 1..7, while bit 7 corresponds to >7 tiles long.
+	 * 0..6 correspond to 1..7, while bit 7 corresponds to >7 tiles long.
 	 */
 	byte disallowed_lengths;
 

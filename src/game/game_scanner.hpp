@@ -21,7 +21,7 @@ public:
 	/**
 	 * Check if we have a game by name and version available in our list.
 	 * @param nameParam The name of the game script.
-	 * @param versionParam The versionof the game script, or -1 if you want the latest.
+	 * @param versionParam The version of the game script, or -1 if you want the latest.
 	 * @param force_exact_match Only match name+version, never latest.
 	 * @return NULL if no match found, otherwise the game script that matched.
 	 */

@@ -3893,7 +3893,7 @@ bool Train::Tick()
 }
 
 /**
- * Check whether a train needs serivce, and if so, find a depot or service it.
+ * Check whether a train needs service, and if so, find a depot or service it.
  * @return v %Train to check.
  */
 static void CheckIfTrainNeedsService(Train *v)

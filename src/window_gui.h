@@ -171,9 +171,9 @@ struct WindowDesc : ZeroedMemoryAllocator {
 
 	~WindowDesc();
 
-	WindowPosition default_pos;    ///< Prefered position of the window. @see WindowPosition()
-	int16 default_width;           ///< Prefered initial width of the window.
-	int16 default_height;          ///< Prefered initial height of the window.
+	WindowPosition default_pos;    ///< Preferred position of the window. @see WindowPosition()
+	int16 default_width;           ///< Preferred initial width of the window.
+	int16 default_height;          ///< Preferred initial height of the window.
 	WindowClass cls;               ///< Class of the window, @see WindowClass.
 	WindowClass parent_cls;        ///< Class of the parent window. @see WindowClass
 	uint32 flags;                  ///< Flags. @see WindowDefaultFlag
@@ -284,7 +284,7 @@ public:
 	WindowNumber window_number; ///< Window number within the window class
 
 	uint8 timeout_timer;      ///< Timer value of the WF_TIMEOUT for flags.
-	uint8 white_border_timer; ///< Timervalue of the WF_WHITE_BORDER for flags.
+	uint8 white_border_timer; ///< Timer value of the WF_WHITE_BORDER for flags.
 
 	int left;   ///< x position of left edge of the window
 	int top;    ///< y position of top edge of the window

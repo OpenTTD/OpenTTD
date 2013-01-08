@@ -58,7 +58,7 @@ static inline uint32 GetVariable(const ResolverObject *object, ScopeResolver *sc
 			if (object == NULL || object->grffile == NULL) return 0;
 			return object->grffile->GetParam(parameter);
 
-		/* Not a common variable, so evalute the feature specific variables */
+		/* Not a common variable, so evaluate the feature specific variables */
 		default: return scope->GetVariable(variable, parameter, available);
 	}
 }
@@ -117,7 +117,7 @@ ScopeResolver::~ScopeResolver() {}
 
 /**
  * Resolver constructor.
- * @param grffile NewGRF file asscoiated with the object (or \c NULL if none).
+ * @param grffile NewGRF file associated with the object (or \c NULL if none).
  * @param callback Callback code being resolved (default value is #CBID_NO_CALLBACK).
  * @param callback_param1 First parameter (var 10) of the callback (only used when \a callback is also set).
  * @param callback_param2 Second parameter (var 18) of the callback (only used when \a callback is also set).

@@ -294,7 +294,7 @@ static void ToggleRailButton_Remove(Window *w)
 /**
  * Updates the Remove button because of Ctrl state change
  * @param w window the button belongs to
- * @return true iff the remove buton was changed
+ * @return true iff the remove button was changed
  */
 static bool RailToolbar_CtrlChanged(Window *w)
 {

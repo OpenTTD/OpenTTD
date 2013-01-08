@@ -133,11 +133,11 @@ static uint32 GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint32
 	const AirportTileSpec *ats = AirportTileSpec::Get(gfx);
 
 	if (gfx < NEW_AIRPORTTILE_OFFSET) { // Does it belongs to an old type?
-		/* It is an old tile.  We have to see if it's been overriden */
+		/* It is an old tile.  We have to see if it's been overridden */
 		if (ats->grf_prop.override == INVALID_AIRPORTTILE) { // has it been overridden?
 			return 0xFF << 8 | gfx; // no. Tag FF + the gfx id of that tile
 		}
-		/* Overriden */
+		/* Overridden */
 		const AirportTileSpec *tile_ovr = AirportTileSpec::Get(ats->grf_prop.override);
 
 		if (tile_ovr->grf_prop.grffile->grfid == cur_grfid) {

@@ -414,7 +414,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		 *  extract the data directly and store that as sprite.
 		 * Ugly: yes. Other solution: no. Blame the original author or
 		 *  something ;) The image should really have been a data-stream
-		 *  (so type = 0xFF basicly). */
+		 *  (so type = 0xFF basically). */
 		uint num = sprite[ZOOM_LVL_NORMAL].width * sprite[ZOOM_LVL_NORMAL].height;
 
 		Sprite *s = (Sprite *)allocator(sizeof(*s) + num);

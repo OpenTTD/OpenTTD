@@ -923,7 +923,7 @@ CommandCost CmdRemoveRailroadTrack(TileIndex tile, DoCommandFlag flags, uint32 p
  * @return the cost of this operation or an error
  *
  * @todo When checking for the tile slope,
- * distingush between "Flat land required" and "land sloped in wrong direction"
+ * distinguish between "Flat land required" and "land sloped in wrong direction"
  */
 CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1096,7 +1096,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 				if (convert_signal) {
 					/* convert signal button pressed */
 					if (ctrl_pressed) {
-						/* toggle the pressent signal variant: SIG_ELECTRIC <-> SIG_SEMAPHORE */
+						/* toggle the present signal variant: SIG_ELECTRIC <-> SIG_SEMAPHORE */
 						SetSignalVariant(tile, track, (GetSignalVariant(tile, track) == SIG_ELECTRIC) ? SIG_SEMAPHORE : SIG_ELECTRIC);
 						/* Query current signal type so the check for PBS signals below works. */
 						sigtype = GetSignalType(tile, track);
@@ -1650,7 +1650,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				if (endtile < tile && TileX(endtile) >= TileX(ta.tile) && TileX(endtile) < TileX(ta.tile) + ta.w &&
 						TileY(endtile) >= TileY(ta.tile) && TileY(endtile) < TileY(ta.tile) + ta.h) continue;
 
-				/* When not coverting rail <-> el. rail, any vehicle cannot be in tunnel/bridge */
+				/* When not converting rail <-> el. rail, any vehicle cannot be in tunnel/bridge */
 				if (!IsCompatibleRail(GetRailType(tile), totype)) {
 					CommandCost ret = TunnelBridgeIsFree(tile, endtile);
 					if (ret.Failed()) {
@@ -2643,8 +2643,8 @@ static TrackStatus GetTileTrackStatus_Track(TileIndex tile, TransportType mode, 
 			/* When signals are not present (in neither direction),
 			 * we pretend them to be green. Otherwise, it depends on
 			 * the signal type. For signals that are only active from
-			 * one side, we set the missing signals explicitely to
-			 * `green'. Otherwise, they implicitely become `red'. */
+			 * one side, we set the missing signals explicitly to
+			 * `green'. Otherwise, they implicitly become `red'. */
 			if (!IsOnewaySignal(tile, TRACK_UPPER) || (a & SignalOnTrack(TRACK_UPPER)) == 0) b |= ~a & SignalOnTrack(TRACK_UPPER);
 			if (!IsOnewaySignal(tile, TRACK_LOWER) || (a & SignalOnTrack(TRACK_LOWER)) == 0) b |= ~a & SignalOnTrack(TRACK_LOWER);
 

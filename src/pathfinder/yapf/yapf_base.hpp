@@ -34,8 +34,8 @@ extern int _total_pf_time_us;
  *  you need to declare only your node type. Look at test_yapf.h for an example.
  *
  *
- *  Requrements to your pathfinder class derived from CYapfBaseT:
- *  -------------------------------------------------------------
+ *  Requirements to your pathfinder class derived from CYapfBaseT:
+ *  --------------------------------------------------------------
  *  Your pathfinder derived class needs to implement following methods:
  *    inline void PfSetStartupNodes()
  *    inline void PfFollowNode(Node& org)

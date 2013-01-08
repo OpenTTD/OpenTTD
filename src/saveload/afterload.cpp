@@ -713,8 +713,8 @@ bool AfterLoadGame()
 
 	/* If Load Scenario / New (Scenario) Game is used,
 	 *  a company does not exist yet. So create one here.
-	 * 1 exeption: network-games. Those can have 0 companies
-	 *   But this exeption is not true for non dedicated network_servers! */
+	 * 1 exception: network-games. Those can have 0 companies
+	 *   But this exception is not true for non-dedicated network servers! */
 	if (!Company::IsValidID(COMPANY_FIRST) && (!_networking || (_networking && _network_server && !_network_dedicated))) {
 		DoStartupNewCompany(false);
 		Company *c = Company::Get(COMPANY_FIRST);
@@ -821,7 +821,7 @@ bool AfterLoadGame()
 
 					case STATION_OILRIG: {
 						/* Very old savegames sometimes have phantom oil rigs, i.e.
-						 * an oil rig which got shut down, but not completly removed from
+						 * an oil rig which got shut down, but not completely removed from
 						 * the map
 						 */
 						TileIndex t1 = TILE_ADDXY(t, 0, 1);
@@ -1275,7 +1275,7 @@ bool AfterLoadGame()
 	}
 
 	/* From 32 on we save the industry who made the farmland.
-	 *  To give this prettyness to old savegames, we remove all farmfields and
+	 *  To give this prettiness to old savegames, we remove all farmfields and
 	 *  plant new ones. */
 	if (IsSavegameVersionBefore(32)) {
 		Industry *i;
@@ -1831,7 +1831,7 @@ bool AfterLoadGame()
 					if (HasStationRail(t)) SetRailStationReservation(t, false);
 					break;
 
-				case MP_TUNNELBRIDGE: // Clear PBS reservation on tunnels/birdges
+				case MP_TUNNELBRIDGE: // Clear PBS reservation on tunnels/bridges
 					if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) SetTunnelBridgeReservation(t, false);
 					break;
 

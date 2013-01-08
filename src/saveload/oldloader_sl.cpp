@@ -626,7 +626,7 @@ static bool LoadOldOrder(LoadgameState *ls, int num)
 	if (o->IsType(OT_NOTHING)) {
 		delete o;
 	} else {
-		/* Relink the orders to eachother (in the orders for one vehicle are behind eachother,
+		/* Relink the orders to each other (in the orders for one vehicle are behind each other,
 		 * with an invalid order (OT_NOTHING) as indication that it is the last order */
 		Order *prev = Order::GetIfValid(num - 1);
 		if (prev != NULL) prev->next = o;
@@ -637,7 +637,7 @@ static bool LoadOldOrder(LoadgameState *ls, int num)
 
 static bool LoadOldAnimTileList(LoadgameState *ls, int num)
 {
-	/* This is sligthly hackish - we must load a chunk into an array whose
+	/* This is slightly hackish - we must load a chunk into an array whose
 	 * address isn't static, but instead pointed to by _animated_tile_list.
 	 * To achieve that, create an OldChunks list on the stack on the fly.
 	 * The list cannot be static because the value of _animated_tile_list

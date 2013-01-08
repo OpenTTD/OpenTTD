@@ -51,7 +51,7 @@ bool NetworkCoreInitialize()
 			if (OpenDevice("timer.device", UNIT_MICROHZ, (struct IORequest*)TimerRequest, 0) == 0) {
 				TimerBase = TimerRequest->tr_node.io_Device;
 				if (TimerBase == NULL) {
-					/* free ressources... */
+					/* free resources... */
 					DEBUG(net, 0, "[core] can't initialize timer, network unavailable");
 					return false;
 				}
