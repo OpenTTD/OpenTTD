@@ -148,10 +148,13 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 };
 
 struct HighScoreWindow : EndGameHighScoreBaseWindow {
+	bool game_paused_by_player; ///< True if the game was paused by the player when the highscore window was opened.
+
 	HighScoreWindow(const WindowDesc *desc, int difficulty, int8 ranking) : EndGameHighScoreBaseWindow(desc)
 	{
 		/* pause game to show the chart */
-		if (!_networking) DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
+		this->game_paused_by_player = _pause_mode == PM_PAUSED_NORMAL;
+		if (!_networking && !this->game_paused_by_player) DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
 
 		/* Close all always on-top windows to get a clean screen */
 		if (_game_mode != GM_MENU) HideVitalWindows();
@@ -166,7 +169,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 	{
 		if (_game_mode != GM_MENU) ShowVitalWindows();
 
-		if (!_networking) DoCommandP(0, PM_PAUSED_NORMAL, 0, CMD_PAUSE); // unpause
+		if (!_networking && !this->game_paused_by_player) DoCommandP(0, PM_PAUSED_NORMAL, 0, CMD_PAUSE); // unpause
 	}
 
 	virtual void OnPaint()
