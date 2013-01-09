@@ -295,7 +295,7 @@ STR_SORT_BY_RANGE                                               :Menzil
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Oyunu durdur
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Oyunu hızlandır
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Seçenekler
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Kaydet, ana menüye dön, çık
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Kaydet, oyunu terk et, çık
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Haritayı göster
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Şehir listesini göster
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Teşvikleri göster
@@ -318,7 +318,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Havalima
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Arazi düzenleme araç çubuğunu aç (ağaç dikme, alçaltma/yükseltme vb. için).
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Ses/müzik penceresini göster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Son mesajı/haberi göster, mesaj ayarlarını göster
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Arazi bilgisi, konsol, YZ hata ayıklama, ekran görüntüsü yakalama, OpenTTD hakkında
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Arazi bilgisi, konsol, betik hata ayıklama, ekran görüntüleri, OpenTTD hakkında
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Araç çubuklarını değiştir
 
 # Extra tooltips for the scenario editor toolbar
@@ -350,7 +350,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Oyundan Çık
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Seçenekler
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Gelişmiş ayarlar
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :YZ / Oyun ayarları
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :YZ/Oyun betik ayarları
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ayarları
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Şeffaflık seçenekleri
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Şehir isimlerini göster
@@ -447,9 +447,9 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Mesaj Geçmişi
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Arazi bilgisi
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsolü aç/kapa
-STR_ABOUT_MENU_AI_DEBUG                                         :YZ hata ayıklama
+STR_ABOUT_MENU_AI_DEBUG                                         :YZ/Oyun betik hata ayıklama
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekran Görüntüsü
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ekran fotoğrafında yaklaşıldı
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ekran görüntüsüne tamamen yaklaşıldı
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Varsayılan yakınlıkta ekran görüntüsü
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tüm harita ekran görüntüsü
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' Hakkında
@@ -846,9 +846,9 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Para bir
 
 ############ start of currency region
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Sterlin (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar ($)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikan Doları ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Avro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japon Yeni (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Avusturya Şilini (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belcika Frangı (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :İsviçre Frangı (CHF)
@@ -1070,7 +1070,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Şirket ayarlar
 
 STR_CONFIG_SETTING_OFF                                          :Kapalı
 STR_CONFIG_SETTING_ON                                           :Açık
-STR_CONFIG_SETTING_DISABLED                                     :engellenmiş
+STR_CONFIG_SETTING_DISABLED                                     :Engellenmiş
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Kapalı
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Kendi şirketim
@@ -1121,9 +1121,9 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :Araçlar yavaş
 STR_CONFIG_SETTING_INFLATION                                    :Enflasyon: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Sadece istek varsa kargo kabul edilsin: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Üretim fabrikalarının yapım yöntemi: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :hiçbiri
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :diğer fabrikalar gibi
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :tetkik aramayla
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Hiçbiri
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Diğer endüstriler gibi
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Maden arama
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Bir şehirde birden fazla aynı fabrika olması izinli: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Sene sonunda ekonomik durumu göster: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Yeni emirler için 'durmaksızın' varsayılır: {STRING}
@@ -1142,9 +1142,9 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Yerel yol tamir
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Diğer şirketlere para gönderme izinli: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Ağır yük trenleri için ağırlık çarpanı: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Uçak kazası sayısı: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :hiç
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :azaltılmış
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Hiç
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Azaltılmış
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Şehiriçi yollara durak yapmak izinli: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Rakiplerin yolu üzerinde durak yapmaya izin ver: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Bitişik istasyonlar izinli: {STRING}
@@ -1156,9 +1156,9 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Havalimanların
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Araç yolunu kaybederse uyar: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Arac talimatlarını önizle: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :hayır
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :evet, ama durmuş araçlar hariç
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :tüm araçlar için
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Hayır
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Evet, ama durmuş araçlar hariç
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Bütün araçlardan
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Bir aracın geliri eksi olunca uyar: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Eski araçlar sürekli üretilsin: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Araç eskiyince otomatik olarak yenile: {STRING}
@@ -1230,10 +1230,10 @@ STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows paleti
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Yeni bir oyun başlatırken zamanı duraklat: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Oyun durakladığında izin verilenler: {STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :hiçbir hareket
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :inşa içermeyen tüm hareketler
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :yer şekillendirme hareketleri dışında tüm hareketler
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :tüm hareketler
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Hiçbir hareket
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :İnşa içermeyen tüm hareketler
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Yer şekillendirme hareketleri dışında tüm hareketler
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Tüm hareketler
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Gelişmiş araç listesini kullan: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Araç yükleme bilgisini göster: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Zaman tablosunda gün yerine işlemci zamanı kullan: {STRING}
@@ -1323,23 +1323,23 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Yalnızca yol s
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Hepsi
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Yeni kasabalar için yol yerleşimi: {STRING}
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :varsayılan
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :daha iyi yollar
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Orjinal
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Daha iyi yollar
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :rastgele
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Rastgele
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Kasabalara yol yapma izni verilsin: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Şehirlerde hemzemin geçit yapmaya izin ver: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Kasabalar tarafından kontrol edilen havaalanı gürültü seviyesine izin ver: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Oyunda yeni şehirler kurma: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :yasak
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :izin verildi
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :izin verildi, özel kasaba yerleşimi
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Yasak
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :İzin verildi
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :İzin verildi, özel kasaba yerleşimi
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Oyunda ağaç dikme: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :hiçbiri {RED}(kauçuk fabrikasını yok eder)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :yalnız yağmur ormanlarında
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :her yerde
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Hiçbiri {RED}(kauçuk fabrikasını yok eder)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Yalnız yağmur ormanlarında
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Her yerde
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Ana araç çubuğu pozisyonu: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Durum çubuğunun konumu: {STRING}
@@ -1422,7 +1422,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Puan Tab
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Gelişmiş Ayarlar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Ayarları
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Çevrimiçi İçeriği Kontrol Et
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}YZ / Oyun Ayarları
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}YZ/Oyun Betik Ayarları
 STR_INTRO_QUIT                                                  :{BLACK}Çıkış
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Yeni oyuna başla. Ctrl+Click harita ayarlamasını atlar.
@@ -1442,7 +1442,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Puan tab
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Gelişmiş ayarları görüntüle
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF ayarlarını göster
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}İndirilecek yeni ve güncellenmiş içeriği kontrol et
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}YZ ve Oyun ayarlarını göster
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}YZ ve Oyun betik ayarlarını göster
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' den çık
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Bu çeviride {NUM} eksik metin var. Çevirmen olarak kaydolarak OpenTTD'nin iyileştirilmesine yardım edin. Ayrıntılar için readme.txt'ye bakın.
@@ -1495,8 +1495,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Tren ren
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Araba renk düzenlerini göster
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Gemi renk düzenlerini göster
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Uçakların renk şemalarını göster
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Seçili düzen için birincil rengi seç
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Seçili düzen için ikincil rengi seç
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Seçili düzen için birincil rengi seç. Ctrl ile tıklama bu rengi bütün düzenler için kaydedecek
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Seçili düzen için ikincil rengi seç. Ctrl ile tıklama bu rengi bütün düzenler için kaydedecek
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Değiştirilecek bir renk düzeni seçin ya da CTRL+tıklama ile birden düzen seçin. Düzenin kullanımını açıp kapatmak için kutuya tıklayın.
 
 STR_LIVERY_DEFAULT                                              :Şirket Rengi
@@ -1814,7 +1814,7 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Oyundan 
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Bu sunucuda hileler kapalı
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Sunucuya çok fazla komut gönderiyordunuz
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Şifre girmeniz çok uzun sürdü
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Bilgisayarınızın katılması çok uzun sürdü
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Bilgisayarınız sunucuyla haberleşmeyi sürdürmek için çok yavaş.
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Bilgisayarınızın haritayı indirmesi çok uzun sürdü
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Bilgisayarınızın sunucuya katılması çok uzun sürdü
 
@@ -1942,7 +1942,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Hayır, 
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Şeffaflık Seçenekleri
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Durak tabelaları için şeffaflık. Kilitlemek için Ctrl ile tıklayın
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Durak tabelaları için şeffaflığı aç. Kilitlemek için Ctrl ile tıklayın
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Ağaçlar için şeffaflık. Kilitlemek için Ctrl ile tıklayın
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Evler için şeffaflık. Kilitlemek için Ctrl ile tıklayın
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Fabrikalar için şeffaflık. Kilitlemek için Ctrl ile tıklayın
@@ -2057,7 +2057,7 @@ STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tramvay 
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Yol bölmesi yap. Ctrl yol için yap/kaldır geçişi sağlar. Shift ile tıklama maliyet tahminini gösterir
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tramvay yolu yap. Ctrl tramvay yolu için yap/kaldır geçişi sağlar. Shift ile tıklama maliyet tahminini gösterir
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Otoyol modunu kullanarak yol yap. Ctrl yol yapımı için yap/kaldır geçişi sağlar. Shift ile tıklama maliyet tahminini gösterir
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Otoray modunu kullanarak tramvay yolu yap
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Otoray modunu kullanarak tramvay yolu yap. Ctrl ile tıklamak ray inşası için ekle/çıkar modunu değiştirir. Shift ile tıklamak inşa etmek/tahmini maliyeti göstermek modunu değiştirir
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Garaj yap (araç alımı ve bakımı için)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tramvay garı yap (araç alımı ve tamiri için)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Otobüs durağı yap

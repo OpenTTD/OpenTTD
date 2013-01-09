@@ -2595,18 +2595,18 @@ STR_STATION_CLASS_WAYP                                          :Pkt. orientacyj
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Wybór sygnałów
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sygnalizator bloku (semafor){}Najprostszy typ sygnału umożliwiający na przebywanie w jednym bloku wyłącznie jednemu pociągowi na raz
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sygnalizator wejściowy (semafor){}Zielony, póki choć jeden sygnalizator wyjściowy dla kolejnego odcinka trasy jest zielony. W przeciwnym przypadku czerwony
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sygnalizator wyjściowy (semafor){}Zachowuje się jak sygnalizator bloku, lecz jest niezbędny do zmiany na poprawny kolor w presygnalizatorach wejściowych i złożonych
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sygnalizator złożony (semafor){}Sygnalizator złożony jest kombinacją sygnalizatorów wejściowych oraz wyjściowych. Umożliwia to budowę wielkich "drzew" presygnalizatorów
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sygnalizator wejściowy (semafor){}Zielony, póki choć jeden sygnalizator wyjściowy dla kolejnego odcinka trasy jest zielony. W przeciwnym wypadku czerwony.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sygnalizator wyjściowy (semafor){}Zachowuje się jak sygnalizator blokowy, lecz jest niezbędny do zmiany na poprawny kolor w presygnalizatorach wejściowych i złożonych
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sygnalizator złożony (semafor){}Sygnalizator złożony zachowuje się jak kombinacja sygnalizatorów wejściowych oraz wyjściowych. Umożliwia to budowę wielkich "drzew" presygnalizatorów
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sygnalizator trasy (semafor){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Zwykłe sygnalizatory trasy mogą być mijane w przeciwnym kierunku
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Jednokierunkowy sygnalizator trasy (semafor){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sygnalizator bloku (elektryczny){}Najprostszy typ sygnału umożliwiający na przebywanie w jednym bloku wyłącznie jednemu pociągowi na raz
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sygnalizator wejściowy (elektryczny){}Zielony, póki choć jeden sygnalizator wyjściowy dla kolejnego odcinka trasy jest zielony. W przeciwnym przypadku czerwony
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sygnalizator wyjściowy (elektryczny){}Zachowuje się jak sygnalizator bloku, lecz jest niezbędny do zmiany na poprawny kolor w presygnalizatorach wejściowych i złożonych
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sygnalizator złożony (elektryczny){}Sygnalizator złożony jest kombinacją sygnalizatorów wejściowych oraz wyjściowych. Umożliwia to budowę wielkich "drzew" presygnalizatorów
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sygnalizator wyjściowy (elektryczny){}Zachowuje się jak sygnalizator blokowy, lecz jest niezbędny do zmiany na poprawny kolor w presygnalizatorach wejściowych i złożonych
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sygnalizator złożony (elektryczny){}Sygnalizator złożony działa jako sygnał wejściowy i wyjściowy. Umożliwia to budowę wielkich "drzew" presygnalizatorów
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Zwykłe sygnalizatory trasy mogą być mijane w przeciwnym kierunku
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednokierunkowy sygnalizator trasy (elektryczny){}Sygnalizator trasy umożliwiający wejście więcej niż jednemu pociagowi do bloku sygnalizatów, o ile pociąg może zarezerwować trasę do bezpiecznego punktu zatrzymania. Sygnalizatory jednokierunkowe nie mogą być mijane w przeciwnym kierunku
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zamiana sygnałów{}Jeżeli włączone, kliknięcie na istniejący sygnał spowoduje zamianę jego typu na wybrany obok. CTRL-klik przełącza wygląd semafor/świetlny. Shift przełącza pomiędzy trybem budowania a szacowaniem jego kosztów
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zamiana sygnałów{}Jeżeli włączone, kliknięcie na istniejący sygnał spowoduje zamianę go na wybrany typ i wariant. CTRL+klik przełącza istniejący wariant. Shift+klik pokazuje szacowany koszt zamiany
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Gęstość sygnałów przy przeciąganiu
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Zmniejsz gęstość sygnałów przy przeciąganiu
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Zwiększ gęstość sygnałów przy przeciąganiu
@@ -2733,7 +2733,7 @@ STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Wybierz 
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Drzewa różnych rodzajów
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Sadzenie drzew różnych rodzajów. Shift przełącza pomiędzy trybem sadzenia a szacowaniem jego kosztów
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Losowe drzewa
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Pokryj krajobraz losowymi drzewami
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Pokryj losowo krajobraz drzewami
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Tworzenie terenu
@@ -3048,7 +3048,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Do góry
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Przesuń zaznaczony plik NewGRF w górę listy
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Na dół
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Przesuń zaznaczony plik NewGRF na dół listy
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista zainstalowanych plików NewGRF.
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista zainstalowanych plików NewGRF
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Ustaw parametry
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Pokaż parametry

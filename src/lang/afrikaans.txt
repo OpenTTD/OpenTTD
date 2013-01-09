@@ -1051,6 +1051,13 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Maatskappy inst
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Vertoon:
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Beperk die lys hieronder tot net sekere instelling tiepes
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alle instellings
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Kliënt instelling (word nie in spaarspeletjies gestoor nie; raak alle speletjies)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spel instelling (word gestoor in spaarspeletjies; raak net nuwe speletjies)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spel instelling (word gestoor in spaarspeletjie; raak net die huidige speletjie)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Maatskappy instelling (word gestoor in spaarspeletjies; raak slegs nuwe speletjies)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Maatskappy instelling (word gestoor in spaarspeletjie; raak net die huidige maatskappy)
 
 STR_CONFIG_SETTING_OFF                                          :Af
 STR_CONFIG_SETTING_ON                                           :Aan
@@ -1287,6 +1294,15 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Wys gereserveer
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Hou bou gereedskap aktief na gebruik: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Groep uitgawes in maatskappy finansies venster: {STRING}
 
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Konstruksie: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Speel 'n klank wanneer 'n konstruksie of ander aksie suksesvol voltooi is
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Kliek van knoppie: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Biep wanneer 'n knoppie gekliek word
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Rampe/ongelukke: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Speel klanke vir ongelukke en rampe
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Voertuie: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Speel klanke vir voertuie
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omgewing: {STRING}
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Deaktiveer infrastruktuur bouery as geen geskikte voertuie beskikbaar is nie: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Max treine per speler: {STRING}

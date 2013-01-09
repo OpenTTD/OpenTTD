@@ -403,7 +403,7 @@ STR_GRAPH_MENU_HIGHSCORE                                        :Score tabel
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industrielijst
-STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Bedrijfsketting
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Bedrijfsketen
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Betaal nieuwe industrie
 ############ range ends here
 
@@ -1055,7 +1055,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Bedrijfsinstell
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Bedrijfsinstellingen (Opgeslagen in bestand; hebben alleen invloed op huidig bedrijf)
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Toon:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Filters de onstaande lijst op alleen gewijzigde instellingen
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Filtert de onstaande lijst op alleen gewijzigde instellingen
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Gewone instellingen
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Geavanceerde instellingen
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Geavanceerde instellingen / Alle instellingen
@@ -1064,7 +1064,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Instellingen me
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Filter de lijst hieronder op bepaalde instellingstypen
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alle instellingen
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Gebruikersinstellingen (niet opgeslagen in bestand; heeft betrekking op alle spellen)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Gebruikersinstellingen (Niet opgeslagen in bestand; heeft betrekking op alle spellen)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spelinstellingen (Opgeslagen in bestand; hebben alleen betrekking op nieuw spel)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Bedrijfsinstellingen (Opgeslagen in bestand; hebben alleen betrekking op huidig spel)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Bedrijfsinstellingen (Opgeslagen in bestand; heeft alleen betrekking op nieuwe spellen)
@@ -1094,20 +1094,20 @@ STR_CONFIG_SETTING_RUNNING_COSTS                                :Brandstofkosten
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Het niveau van onderhoud en bedrijfskosten van voertuigen en infrastuctuur
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Bouwsnelheid: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Beperk de hoeveelheid bouwactiviteiten voor computerspeler
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :voertuig storingen: {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controle hoe vaak onvoldoende onderhouden voertuigen kaport kunnen gaan
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Voertuig storingen: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controle hoe vaak onvoldoende onderhouden voertuigen kapot kunnen gaan
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidie indicator: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Instellen hoeveel wordt betaald voor gesubsidieerde verbindingen
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Bouwkosten: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Het niveau van bouw- en aankoopkosten
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessies: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Als ingeschakeld recessies kunnen optreden om de paar jaar. Tijdens een recessie alle productie is aanzienlijk lager (Deze keert terug naar het vorige niveau als de recessie voorbij is)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wanneer ingeschakeld kunnen recessies om de paar jaar optreden. Tijdens een recessie is alle productie aanzienlijk lager (Deze keert terug naar het vorige niveau als de recessie voorbij is)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Niet toestaan dat treinen keren in stations: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Indien ingeschakeld treinen zullen niet omkeren in niet-eind stations, als er een kortere weg naar hun volgende bestemming is bij omkeren
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Indien ingeschakeld zullen treinen niet omkeren in niet-eind stations, als er een kortere weg naar hun volgende bestemming is bij omkeren
 STR_CONFIG_SETTING_DISASTERS                                    :Rampen: {STRING}
-STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Schakel rampen die af en toe voertuigen kunnen blokkeren of vernietigen of infrastructuur
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Schakel rampen die af en toe voertuigen of infrastructuur kunnen blokkeren of vernietigen
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Gemeenteraad's houding ten opzichte van herstructurering gebied: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Kies hoeveel lawaai en schade aan het milieu door bedrijven beïnvloeden de stad waardering en hun acties in hun bouwgebied
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Kies hoeveel lawaai en schade aan het milieu door bedrijven de stadswaardering en hun acties beïnvloeden in hun bouwgebied
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Bouwen op hellingen en kusten toestaan: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Indien ingeschakeld kunnen sporen en stations gebouwd worden op hellingen. Indien uitgeschakeld kunnen stations en sporen alleen gebouwd worden op hellingen waar geen fundering nodig is en alleen in de richting van het spoor.
@@ -1162,7 +1162,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Aan de linker k
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Aan de rij zijde
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Aan de linker kant
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Financieel overzicht aan het einde van het jaar weergeven: {STRING}
-STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Indien ingeschakeld, de financiën venster verschijnt aan het eind van elk jaar voor een gemakkelijke controle van de financiële status van het bedrijf
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Indien ingeschakeld verschijnt het financiën venster aan het eind van elk jaar voor een gemakkelijke controle van de financiële status van het bedrijf
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nieuwe orders zijn standaard 'non-stop': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normaal gesproken zal een voertuig stoppen op elk station dit wordt gepasseerd. Door het inschakelen van deze instelling, zal het rijden door alle station op weg naar de eindbestemming zonder te stoppen. Merk op dat deze instelling alleen een standaardwaarde voor nieuwe orders bepaalt. Individuele opdrachten kan expliciet worden ingesteld op het gedrag
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nieuwe treinorders stoppen de trein standaard {STRING} van het perron
@@ -1173,7 +1173,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :aan het einde
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Wachtrijvorming bij wegvoertuigen (met bijwerkingen): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Wegvoertuigen laten stoppen voor een bezet wegstation tot ze toestemming krijgen om door te gaan.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Verschuif scherm als muis aan de rand is: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Wanneer aan, subvenster start met scrollen wanneer de muis vlak bij de rand van de window komt
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Wanneer aan, start een subvenster met scrollen wanneer de muis vlak bij de rand van het venster komt
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Uitgeschakeld
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Hoofd kijkvenster, alleen volledigscherm
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Hoofd kijkvenster
@@ -1304,7 +1304,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Selecteer de me
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Uitgeschakeld
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dubbel klik
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Enkel klik (met focus)
-STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enkel klik (immediately)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enkel klik (onmiddelijk)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Rechtsklikemulatie: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Selecteer de methode die rechter muisknop klikken nabootst
@@ -1365,13 +1365,13 @@ STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Speel geluidsef
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Bouw: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Speel geluidseffecten van succesvolle constructies of andere acties
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Knop kliks: {STRING}
-STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Piep bij het likken op knoppen
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Piep bij het klikken op knoppen
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Rampen/ongelukken: {STRING}
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Speel geluidseffecten van ongelukken en rampen
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Voertuigen: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Speel geluidseffecten van voertuigen
-STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambient: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Speel ambient geluidseffecten van landschap, industrieën en steden
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omgeving: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Speel omgevingsgeluidseffecten van landschap, industrieën en steden
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Bouwen van infrastructuur uitschakelen wanneer geen geschikt voertuig beschikbaar is: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Wanneer ingeschakeld, de infrastructuur is alleen beschikbaar als er ook voertuigen beschikbaar zijn, het voorkomen van verspilling van tijd en geld aan onbruikbare infrastructuur
@@ -1394,7 +1394,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Schepen voor de
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Het inschakelen van deze instelling maakt het het bouwen van schepen onmogelijk voor een computer-speler
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Standaard instellingenprofiel: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Kies welke instellingsprofiel moet worden gebruikt bij willekeurige AI's of als start waardes, wanneer een nieuwe AI of Game Script wordt toegevoegd
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Kies welk instellingsprofiel moet worden gebruikt bij willekeurige AI's of als startwaardes, wanneer een nieuwe AI of Game Script wordt toegevoegd
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Makkelijk
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Gemiddeld
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Moeilijk
@@ -1427,7 +1427,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Eerste voertuig
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Toon een krant als het eerste voertuig arriveert op een station van de speler
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Eerste voertuig bij station van een concurrent: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Toon een krant als het eerste voertuig arriveert op een nieuw station van een concurrent
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ongelukken/rampen: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ongelukken / rampen: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Toon een krant bij ongevallen of rampen
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Bedrijfsinformatie: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Toon een krant als een nieuw bedrijf start, of wanneer een bedrijf het risico loopt om falliet te gaan
@@ -2221,9 +2221,9 @@ STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Combinat
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Routesein (armsein){}Een routesein laat meer dan één trein tegelijk in een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Routeseinen kunnen van achteren worden gepasseerd
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Eenrichtingsrouteseinen (armsein){}Een routesein laat meer dan één trein tegelijk in een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtingsrouteseinen kunnen niet van achteren worden gepasseerd
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Standaard sein (elektrisch){}Seinen zijn nodig om te voorkomen dat treinen botsen bij netwerken met meer dan één trein
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Ingangssein (electrisch){}Groen als er meer dan één groen uitgangssein is in het volgende traject. Anders is deze rood
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Ingangssein (electrisch){}Groen als er meer dan één groen uitgangssein is in de volgende sectie. Anders is deze rood
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Uitgangssein (elektrisch){}Gedraagt zich hetzelfde als een standaard sein, maar is nodig om ingangs- & combinatie-seinen aan te sturen
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Combinatiesein (electric){}Het combinatiesein gedraagt zicht als zowel ingangs- als uitgangs-sein. Zo kun je grote netwerken van beginseinen maken
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Combinatiesein (electric){}Het combinatiesein gedraagt zich als zowel ingangs- als uitgangs-sein. Zo kun je grote netwerken van beginseinen maken
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Routeseinen (elektrisch){}Een routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Routeseinen kunnen van achteren worden gepasseerd
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Eenrichtingsrouteseinen (elektrisch){}Een routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtingsrouteseinen kunnen niet van achteren worden gepasseerd
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Sein ombouwen{}Indien geselecteerd, zal door te klikken op een bestaand sein deze worden omgebouwd naar het geselecteerde seintype en variant, Ctrl+klik verandert de bestaande variant (armsein/elektrisch). Shift+klik toont de geschatte ombouwkosten
@@ -2353,7 +2353,7 @@ STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Kies een
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Willekeurige soorten bomen
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plant bomen van willekeurige soort. Shift+klik wisselt tussen bouwen/toont verwachte kosten
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Willekeurige bomen
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Verspreid bomen willekeurig over de kaart
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plant bomen willekeurig over de kaart
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landontwikkeling
@@ -3860,7 +3860,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Het aan
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Alleen backup geluid is gevonden. Als je geluid wilt, installeer dan een geluiddsset via het downloadsysteem
 
 # Screenshot related messages
-STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Groot schermafdruk
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Grote schermafdruk
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}De schermafdruk heeft een resolutie van {COMMA} x {COMMA} pixels. De schermafdruk maken kan even duren. Verder gaan?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Schermprint succesvol opgeslagen als '{STRING}'
