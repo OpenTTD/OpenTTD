@@ -1552,7 +1552,7 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 	}
 
 	if (anything_loaded || anything_unloaded) {
-		if (front->type == VEH_TRAIN) TriggerStationAnimation(st, st->xy, SAT_TRAIN_LOADS);
+		if (front->type == VEH_TRAIN) TriggerStationAnimation(st, front->tile, SAT_TRAIN_LOADS);
 	}
 
 	/* Only set completely_emptied, if we just unloaded all remaining cargo */
