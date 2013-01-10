@@ -730,6 +730,8 @@ int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exe
 		st->speclist[i].spec     = statspec;
 		st->speclist[i].grfid    = statspec->grf_prop.grffile->grfid;
 		st->speclist[i].localidx = statspec->grf_prop.local_id;
+
+		StationUpdateAnimTriggers(st);
 	}
 
 	return i;
