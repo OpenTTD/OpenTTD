@@ -219,6 +219,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} фут
 STR_UNITS_HEIGHT_SI                                             :{COMMA} м
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Филтриращ низ:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Въведете филтър
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Въведете ключова дума за филтър на списъка
 
@@ -289,12 +290,13 @@ STR_SORT_BY_INTRO_DATE                                          :Дата на �
 STR_SORT_BY_RUNNING_COST                                        :Оперативни разходи
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Мощност/оперативни разходи
 STR_SORT_BY_CARGO_CAPACITY                                      :Товарен капацитет
+STR_SORT_BY_RANGE                                               :Обхват
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауза
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Бързо превъртане на играта
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Настройки
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Запазване, прекъсване или изход от играта
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Запазване, прекъсване на играта, изход
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Покажи картата
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Покажи списъка с градове
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Покажи субсидиите
@@ -334,11 +336,12 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Създ
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Строене на път
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Посаждане дърва. Shift показва евентуалната цена на засаждането.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Поставяне табела
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Постави обект
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Постави обект. Shift превключва строеж/цена за построяване
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Запис на сценарий
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Зареждане на сценарий
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Запис на височинна карта
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Отвори височинна карта
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Изход от редактора
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -348,16 +351,18 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Изход
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Игрови опции
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Настройки за напреднали
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Настройка на ИИ програмите
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Newgrf настройки
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Настройки на прозрачност
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показване имената на градовете
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Показване имената на станциите
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Пътни точки са показани
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Показване на табелите
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Показвай знаците и имената на конкурентите
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Пълна анимация
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Пълни подробности
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Прозрачни сгради
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Прозрачни табели на станциите
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Прозрачни табели
 ############ range ends here
 
 ############ range for file menu starts
@@ -576,7 +581,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Заем
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Общо:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Брой превозни средства с печалба за миналата година.Това включва автомобили, влакове, кораби и самолети
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Брой станции. Всяка част на станция (напр. ЖП гара, автогара, летище) се брои отделно, даже ако са свързани като една станция
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Брой последно обслужени станции. Всяка част на станция (напр. ЖП гара, автогара, летище) се брои отделно, даже ако са свързани като една станция
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Печалбата на превозното средство с най-нисък доход (от всички на поне 2 години)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Сумата пари спечелена през месеца с най-ниска печалба от последните 12 четвъртини
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Сумата пари спечелена през месеца с най-висока печалба от последните 12 четвъртини
@@ -819,6 +824,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} спечели субсидия!!{}{}Превозът на {STRING} от {STRING} до {STRING} ще се заплаща четворно през следващата година!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Хаос на трафика в {TOWN}!{}{}Програмата за пътна реконструкция, финансирана от {STRING}, доведе до 6 месеца мизерия за мотористите!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Монополист на транспорта!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Камера {COMMA}
@@ -972,6 +978,7 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Пром
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Максимален брой конкуренти: {ORANGE}{COMMA}
 
 STR_NONE                                                        :николко
+STR_MINIMAL                                                     :Минимален
 STR_NUM_VERY_LOW                                                :Mн. малко
 STR_NUM_LOW                                                     :малко
 STR_NUM_NORMAL                                                  :нормално
@@ -999,6 +1006,10 @@ STR_SEA_LEVEL_HIGH                                              :високо
 STR_SEA_LEVEL_CUSTOM                                            :Друго
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Друго ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Николко
+STR_RIVERS_FEW                                                  :Няколко
+STR_RIVERS_MODERATE                                             :Средно
+STR_RIVERS_LOT                                                  :Много
 
 STR_DISASTER_NONE                                               :без
 STR_DISASTER_REDUCED                                            :намалени
@@ -1022,8 +1033,17 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Няма
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Настройки за напреднали
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Филтриращ низ:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Разгъни всички
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Сгъни всички
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(липсва пояснение)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Подразбираща стойност: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Тип настройка: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Клиентски настройки (не се запомнят в записите; влияе на всички игри)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Настройки на играта (запаметени в записа; влияят само на нови игри)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Настройки на играта (запаметени в записа; влияят само на текущата игра)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Настройки на компанията (запаметени в записа; влияят само на нови игри)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Настройки на компанията (запаметени в записа; влияят само на текущата компания)
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Покажи:
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Прости настройки
@@ -1040,7 +1060,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Настрой�
 
 STR_CONFIG_SETTING_OFF                                          :изключено
 STR_CONFIG_SETTING_ON                                           :включено
-STR_CONFIG_SETTING_DISABLED                                     :изключено
+STR_CONFIG_SETTING_DISABLED                                     :Изключено
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :изключен
 STR_CONFIG_SETTING_COMPANIES_OWN                                :само за собствената компания
@@ -1087,22 +1107,44 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Изберет�
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Строене на склонове и брегове: {STRING.n}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Тераформиране под постройки (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Разреши промяна на наклона на терена под постройки и пътища без необходимост от премахване
 STR_CONFIG_SETTING_CATCHMENT                                    :По-реалистична зона за обслужване: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Разрушаване на повече градска собственост: {STRING.n}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :По-лесно премахване на градски структури и сгради
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Максимална дължина на влаковете: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Задава максимална дължина на влаковете
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} поле{P 0 "" та}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Количество на дим/искри от превозното средство: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Задава колко пушек или искри правят превозните средства
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Модел на ускорение на влаковете: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Модел на ускорение на пътни превозни срества: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Забавяне от наклона за влакове: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Забавяне от наклона за влак. По-големите стойности правят по-трудно изкачването на наклони
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Забавяне от наклона за автомобили: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Забавяне от наклона за автомобил. По-големите стойности правят по-трудно изкачването на наклони
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Забрани 90 градусовите завои: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Позволено е присъединяването на станции, които не се допират: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Подобрен алгоритъм за зареждане: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Постепенно зареждане на автомобилите: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Инфлация: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Доставяне на стока до станция само ако има търсене: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Максимална дължина на мост: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Максимална дължина за построяване на мост
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Максимална дължина на тунел: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Максимална дължина за построяване на тунел
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Ръчен строеж на първични индустрии: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :нищо
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :като други промишлености
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :предстоящ
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Нищо
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Като други промишлености
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Предстоящ
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Равен терен около индустриите: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Равен терен около индустрия. Определя пространството около индустрията което може да се използва са строене на гари, пътища и др.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Няколко еднакви индустрии на град: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Покажи сигнали: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Избира от коя страна на релсовия път да се поставят сигнали
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :От ляво
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :От страната на движението
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :От дясно
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Финансов отчет в края на годината: {STRING.m}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :По подразбиране новите зповеди са 'без спиране': {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :Влковете спират по подрабиране {STRING} на платформата
@@ -1117,28 +1159,45 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Главна к
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Всяка камера
 STR_CONFIG_SETTING_BRIBE                                        :Подкупване на местната власт: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Позволи купуване на изклучителни транспортни права: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Позволи финансирането на строежи: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Позволи компаниите да финансират градовете за строеж на нови къщи
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Позволи финансирането на ремонт на локални пътища: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Позволява на компаниите да финансират градовете за поправка на пътищата, като така възпрепятстват движението в града
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Позволи изпращане на пари до други компаний: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Позволи обмена на пари между компаниите в онлайн игра
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Теглови множител за симулация на тежки влакове: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Фактор на скоростта за самолетите: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Задава относителната скорост на самолетите в сравнение с другите транспортни средства. Служи за намалявана на печалбите от летателни средства
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Разбивания на самолети: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :никакви
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :намалени
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :нормални
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Задава вероятността за катастрофа на летателно средство
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Никакви
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Намалени
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Нормални
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Преминаване през спирки на градски пътища: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Преминаване през спирки на пътища, собственост на конкуренти: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Позвалявай допрени гари: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Разреши различни станции взаимно да се допират
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Няколко NewGRF алгоритъма едновременно: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Промяната не е възможна, когато има превозни средства.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Летишата не губят валидност: {STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Предупреди за загубено превозно средство: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Съобщава за превозни средства, които не могат да намерят пък към назначената цел
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Преглед на заповеди: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :изключен
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :включен, но без спрените ПС
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :включен
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Изключен
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Включен, но без спрените ПС
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :На всички превозни средства
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Предупреждение ако превозното средство е на загуба: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :ПС не губят валидност: {STRING.n}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автоматично поднови превозното средство, когато остарее: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Автоматично обнови превозното средство когато е на {STRING} години
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Относителна възраст на превозното средство за да се предприеме автоматично обновяване
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} месец{P 0 "" а} преди
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} месец{P 0 "" а} след
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Минимална сума за начало на подновяване: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Продължителност на съобщението за грешка: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Население в табелата на града: {STRING.n}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Генератор на земя: {STRING}
@@ -1159,6 +1218,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Обратрн�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :По часовниковата стрелка
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Височина на картата за плосък сценарий: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Разреши тераформирането на терена в краищата на картата: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Ако се забрани, границите на картата е винаги океан
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Една или повече плочи в северния край не са празни
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Един или повече от плочките в един от краищата не е вода
 
@@ -1183,6 +1243,9 @@ STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :не прави
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Превъртане на картата: {STRING} клетк{P 0:2 а и}
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Виртуална клавиатура: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Забранено
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Двойно натискане
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Еднократно натискане (когато е на фокус)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Еднократно натискане (незабавно)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Дясно-щракане емулациа: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команда-щракане
@@ -1199,10 +1262,10 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Игрите започват в пауза: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :По време на пауза разреши: {STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :без действия
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :всички нестроителни действия
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :всичко без действия за промяна на терена
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :всички действия
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Без действия
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Всички нестроителни действия
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Всичко без действия за промяна на терена
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Всички действия
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Разширен списък на ПС: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Товарни индикатори: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Разписанието в цикли вместо дни: {STRING.n}
@@ -1217,10 +1280,15 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Запази и
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Групирай разходите във финансовия прозорец на компанията: {STRING}
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Новинарски тикер: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Звуков сигнал при обобщените новини
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Вестник: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Звуков сигнал при показването на новини
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Край на година: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Звуков сигнал при проказване на баланса в края на годината
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Конструкция: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Изпълнявай звуков ефект при успешно конструиране или други действия
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Вутона натиска: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Звуков сигнал при натискане на бутони
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Бедствия/катастрофи: {STRING}
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Изпълнявай звуковите ефекти на катастрофи и бедствия
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Превозни средства: {STRING}
@@ -1302,23 +1370,23 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Само нап
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Всички
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Пътно оформление за нови градове: {STRING}
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :default
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :по-добри пътища
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Оригинален
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :По-добри пътища
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2х2 мрежа
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3х3 мрежа
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :случаен
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Случаен
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Градове са разрешени да изграждат пътища: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :На градовете е позолено да строят кръстовища: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Градовете контролират нивото на шум от летищата: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Построяване на градове в играта: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :забранено
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :разрешено
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :разрешено с избираем план на града
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Забранено
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Разрешено
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Разрешено с избираем план на града
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Разпределяне на дърветата в гората: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :без {RED}(разваля дъскорезницата)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :само в дъждовни гори
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :навсякъде
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Без {RED}(разваля дъскорезницата)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Само в дъждовни гори
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Навсякъде
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Позиция на лентата за инструменти: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Разположение на лентата за състоянието: {STRING}
@@ -1362,6 +1430,9 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Пътенам�
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Промяна стойноста на настройка
 
 # Config errors
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... пропуска набора от основната графика '{STRING}': не е открит
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... пропуска набора от основни звуци '{STRING}': не е открит
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... пропруска набора от основни песни '{STRING}': не е открит
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1378,7 +1449,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Табл
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Настройки за напреднали
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF настройки
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Провери онлайн съдържанието
-STR_INTRO_QUIT                                                  :{BLACK}Излез
+STR_INTRO_QUIT                                                  :{BLACK}Изход
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Започни нова игра. Ctrl+Click пропуска конфигурацията на картата
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Отвори запасена игра
@@ -1397,7 +1468,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Пока
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Покажи настройките за напреднали
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Покажи NewGRF настройки
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Провери за ново съдържание за сваляне
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Излез от играта 'OpenTTD'
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Изход от 'OpenTTD'
 
 
 # Quit window
@@ -1448,8 +1519,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Пока
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Показване на цветови схеми за автомобилите
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Показване цветови схеми на корабите
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Показване цветовата схема на самолетите
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Изберете основния цвят за избранта схема
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Изберете допълнителен жвят за избраната схема
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Изберете основния цвят за избраната схема. Ctrl присвоява цвета за всички схеми
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Изберете допълнителен цвят за избраната схема. Ctrl присвоява цвета за всички схеми
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Изберете цветова схема за промяна или няколко - CTRL+щрак. Натиснете в кутията за да превключите използването на схемата
 
 STR_LIVERY_DEFAULT                                              :Стандартен Ливъри
@@ -1767,7 +1838,7 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Бяхт
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Маменето не е разрешено на този сървър
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Ти изпращаше прекалено много команди към сървъра
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Отнети твърде дълго време да въведеш паролата
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Отнети твърде дълго време да се свържеш
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Твоя компютър е твърде бавен за да поддържа актуална връзка със сървъра
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :обща грешка
@@ -1885,7 +1956,7 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не м�
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Настройки на прозрачност
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Използвай прозрачност за знаци на гара. Ctrl+Click за заключване
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Превключва прозрачност за знаци. Ctrl за заключване
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Използвай прозрачност за дървета. Ctrl+Click за заключване
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Използвай прозрачност за къщи. Ctrl+Click за заключване
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Използвай прозрачност за промишленост. Ctrl+Click за заключване
@@ -1918,16 +1989,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Строене 
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Конструкции за Еднорелсов път
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Конструкции за Магниторелсов път
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Построй релсовия път. Ctrl показва възможните конструкции.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK} Строеж на жп линия в режим Автоматичен. Ctrl показва възможните конфигурации.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Построй влаково депо (за купуване и обслужване на влакове)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Промяна ЖП линия на ЖП пункт. Ctrl позволява обединяване на ЖП пунктовете.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Построй ЖП гара. Ctrl позволява съединяването на гари
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Построй ЖП сигнализация. Ctrl показва семафорната/светлинната сигнализация.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Построй ЖП мост
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Строене на жп тунел
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Построи релсов път. Ctrl строеж/премахване на релсов път. Shift строеж/цена за построяване
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK} Строеж на релсов път в режим Автоматичен. Ctrl строеж/цена за построяване
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Построй влаково депо (за купуване и обслужване на влакове). Shift строеж/цена за построяване
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Промяна ЖП линия на ЖП пункт. Ctrl позволява обединяване на ЖП пунктовете. Shift строеж/цена за построяване
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Построй ЖП гара. Ctrl позволява съединяването на гари. Shift строеж/цена за построяване
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Построй ЖП сигнализация. Ctrl семафор/светлинна сигнализация.{}Влаченето поставя сигнали по прав участък от пътя. Ctrl поставя сигнали до следващото разклонение{}Ctrl показва прозореца за избор на сигнал. Shift строеж/цена за построяване
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Построй ЖП мост. Shift строеж/цена за построяване
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Постой ЖП тунел. Shift строеж/цена за построяване
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Показва строене/премахване на жп линия, сигнализация, пунктове и гари. Задържането на Ctrl премахва и пунктовете и гарите
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Промяна/обновяване на ЖП линия
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Промяна/обновяване на ЖП линия. Shift строеж/цена за построяване
 
 
 # Rail depot construction window
@@ -1958,18 +2029,18 @@ STR_STATION_CLASS_WAYP                                          :Пътни то
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Сигнал селекция
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Нормален сигнал (семафор){}Сигналите са необходими за да предпазват влаковете от катастрофи по ЖП мрежата.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Входен сигнал (семафор){}Свети зелено докато има поне един зелен изходен сигнал от следващия сегмент от пътя. В противен случай свети червено.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Изходен сигнал (семафор){}Действа като нормален сигнал, но е необходим за да работят входните и комбинираните сигнали.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Комбиниран сигнал (семафор){}Комбинирания сигнал действа едновременно като входен и изходен сигнал. Това позволява изграждането на големи разклонения от сигнали.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Входен сигнал (семафор){}Свети зелено докато има поне един зелен изходен сигнал от следващия сегмент от пътя. В противен случай свети червено
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Изходен сигнал (семафор){}Действа като нормален сигнал, но е необходим за да работят входните и комбинираните сигнали
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Комбиниран сигнал (семафор){}Комбинирания сигнал действа едновременно като входен и изходен сигнал. Това позволява изграждането на големи разклонения от пред-сигнали
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Маршрутизиращ знак(семафор){}Маршрутизиращите знаци позволяват на повече от един влак да навлязат в сигнален блок едновременно ако влаковете могат да резервират маршрут до безопасно място. През стандартните сигнали може да се преминава и в двете посоки.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Еднопосочен маршрутизиращ знак(семафор){}Маршрутизиращите знаци позволяват на повече от един влак да навлязат в сигнален блок едновременно ако влаковете могат да резервират маршрут до безопасно място. рез еднопосочните сигнали може да се премине само в едната посока.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Нормален сигнал (електрически){}Сигналите са необходими за да предпазват влаковете от катастрофи по ЖП мрежата.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Входен сигнал (електрически){}Свети зелено докато има поне един зелен изходен сигнал от следващия сегмент от пътя. В противен случай свети червено.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Изходен сигнал (електрически){}Действа като нормален сигнал, но е необходим за да работят входните и комбинираните сигнали.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Комбиниран сигнал (електрически){}Комбинирания сигнал действа едновременно като входен и изходен сигнал. Това позволява изграждането на големи разклонения от сигнали.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Входен сигнал (електрически){}Свети зелено докато има поне един зелен изходен сигнал от следващия сегмент от пътя. В противен случай свети червено
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Изходен сигнал (електрически){}Действа като нормален сигнал, но е необходим за да работят входните и комбинираните пред-сигнали.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Комбиниран сигнал (електрически){}Комбинирания сигнал действа едновременно като входен и изходен сигнал. Това позволява изграждането на големи разклонения от пред-сигнали.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Маршрутизиращ знак(електрически){}Маршрутизиращите знаци позволяват на повече от един влак да навлязат в сигнален блок едновременно ако влаковете могат да резервират маршрут до безопасно място. През стандартните сигнали може да се преминава и в двете посоки.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Еднопосочен маршрутизиращ знак(електрически){}Маршрутизиращите знаци позволяват на повече от един влак да навлязат в сигнален блок едновременно ако влаковете могат да резервират маршрут до безопасно място. рез еднопосочните сигнали може да се премине само в едната посока.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Конвертиране на сигнал{}Когато е избран, натискането на съществуващ сигнал ще го конвертира в избрания тип и вариант, CTRL-click ще смени съществуващия вариант.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Преобразуване на сигнал{}Когато е избран, натискането на съществуващ сигнал ще го преобразува в избрания тип и вариант, Ctrl ще смени съществуващия вариант. Shift преобразуване/цена за преобразуване
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Плътност на сигналите при влачене
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Намалява плътноста на сигналите при влачене
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Увеличава плътноста на сигналите при влачене
@@ -1993,21 +2064,21 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Тръбен, �
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Пътно строителство
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Трамвайно строителство
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Строене на път. Ctrl превключва между строене/премахване на път
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Строене на трамвайна линия. Ctrl превключва между строене/премахване на линия.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Построи отсечка от шосе използвайки Афто-шосе методът. Ctrl превключва между строене/премахване на път
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Автоматично строене на трамвайна линия. Ctrl превключва между строене/разрушаване на линия
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Строене на гараж (за строене и сервиз на МПС-та)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Строене на трамвайно депо (за покупка и обслужване на трамваи)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Строене на автогара. Ctrl позволява съединяването на автогари
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Строене на пътническа трамвайна спирка. Ctrl позволява съединяването на спирки
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Строене на товарна гара. Ctrl позволява съединяването на гари
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Строене на товарна трамвайна спирка. Ctrl позволява съединяването на спирки
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Строене на път. Ctrl превключва между строене/премахване на път. Shift строеж/цена за построяване
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Строене на трамвайна линия. Ctrl превключва между строене/премахване на линия. Shift строеж/цена за построяване
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Построи отсечка от шосе използвайки Автоматичен режим. Ctrl превключва между строене/премахване на път. Shift строеж/цена за построяване
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Строене на трамвайна линия в Автоматичен режим. Ctrl превключва между строене/разрушаване на линия. Shift строеж/цена за построяване
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Строене на гараж (за строене и сервиз на МПС-та). Shift строеж/цена за построяване
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Строене на трамвайно депо (за покупка и обслужване на трамваи). Shift строеж/цена за построяване
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Строене на автогара. Ctrl позволява съединяването на автогари. Shift строеж/цена за построяване
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Строене на пътническа трамвайна спирка. Ctrl позволява съединяването на спирки. Shift строеж/цена за построяване
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Строене на товарна гара. Ctrl позволява съединяването на гари. Shift строеж/цена за построяване
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Строене на товарна трамвайна спирка. Ctrl позволява съединяването на спирки. Shift строеж/цена за построяване
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Активирай/Деактивирай еднопосочни пътища
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Построй мост
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Строене на мост за трамваи
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Построй тунел
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Прокопаване на тунел за трамваи
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Построй пътен мост. Shift строеж/цена за построяване
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Строене на мост за трамваи. Shift строеж/цена за построяване
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Построй пътен тунел. Shift строеж/цена за построяване
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Построй тунел за трамваи. Shift строеж/цена за построяване
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Премахване на асфалтов път
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Превключване строене/разрушаване на трамвайни консктрукции
 
@@ -2022,20 +2093,20 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Орие
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Ориентация на автогарата
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Ориент. товарна гара
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Ориентация на товарната гара
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Посока на пътническа спирка
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Посока на пътническата спирка за трамваи
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Избор посоката на пътническа трамвайна спирка
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Посока на товарна спирка
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Посока на товарната спирка за трамваи
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Избор посоката на товарна трамвайна спирка
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Воднопътен строеж
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Воден път
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Построи канал.
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Строеж на шлюзове
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Създай Корабно Депо (за закупуване и обслужване на кораби)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Създай Пристанище. Ctrl позволява съединяването на пристанища
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Поставете шамандура, използва се като отправна точка
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Построй акведукт
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Построи канал. Shift строеж/цена за построяване
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Строеж на шлюзове. Shift строеж/цена за построяване
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Построй корабно депо (за закупуване и обслужване на кораби). Shift строеж/цена за построяване
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Построй пристанище. Ctrl позволява съединяването на пристанища. Shift строеж/цена за построяване
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Поставете шамандура, използва се като отправна точка. Shift строеж/цена за построяване
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Построй акведукт. Shift строеж/цена за построяване
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Определи водна площ.{}Построи канал, освем когато CTRL е натиснат на морско ниво, когато ще наводни околната среда в замяна
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Направи реки.
 
@@ -2048,7 +2119,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Док
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Летища
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Строене на летище. Ctrl позволява съединяването на летища
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Построй летище. Ctrl позволява съединяването на летища. Shift строеж/цена за построяване
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Избор на летище
@@ -2075,14 +2146,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Прои
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Тераформиране
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Понижи ъгъл от земята. Влаченето понижава първия маркиран ъгъл и изравнява останалия терен към вече понижения терен. Ctrl за маркиране по диагонал
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Повиши ъгъл от земята
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Подравняване на земя
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Купи земя за бъдещо ползване
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Понижи ъгъл от земята. Влаченето понижава първия маркиран ъгъл и изравнява останалия терен към вече понижения терен. Ctrl за маркиране по диагонал. Shift строеж/цена за построяване
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Повиши ъгъл от земята. Влаченето повишава първия маркиран ъгъл и изравнява останалия терен към вече повишения терен. Ctrl за маркиране по диагонал. Shift строеж/цена за построяване
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Подравняване на земя къв първия избран ъгъл. Ctrl за маркиране по диагонал. Shift строеж/цена за построяване
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Купи земя за бъдещо ползване. Shift строеж/цена за построяване
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Избор на обект
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Избери обект за построяване
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Избери обект за построяване. Shift строеж/цена за построяване
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Избор на клас на обекта за строене
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Изглед на обекта
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Размер: {GOLD}{NUM} x {NUM} плочки
@@ -2092,9 +2163,9 @@ STR_OBJECT_CLASS_TRNS                                           :Предава�
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Дървета
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Избор тип на дърво за засаждане
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Избор на вид дърво за засаждане. Ако на полето вече съществува дърво, ще бъдат добавени повече дървета от различни видове, независимо от избора на вид
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Дървета от произволен тип
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Постави дървета от произволен тип
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Постави дървета от произволен вид. Shift строеж/цена за построяване
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Произволни дървета
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Засаждане дървета на произволни места
 
@@ -2115,7 +2186,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Сигу
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Създаване на град
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Нов град
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Построй нов град
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Създай нов град. Shift строеж/цена за построяване
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Случаен град
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Построяване град на произволно място
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Много случайни градове
@@ -2385,7 +2456,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Наго
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Премества избрания NewGRF файл нагоре в списъка
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Надолу
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Премества избрания NewGRF файл надолу в списъка
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Списък на инсталираните NewGRF файлове. Изберете файл за да промените параметрите му
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Списък на инсталираните NewGRF файлове
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Настройване на параметрите
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Покажи параметрите
@@ -2449,7 +2520,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Внимание: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Грешка: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Критично: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Фатална грешка в NewGRF е открита : {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Настъпи фатална грешка в NewGRF: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} няма да работи с версията на TTDPatch указана от OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} е за {STRING} версията на TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} е проектиран да работи с {STRING}
@@ -2515,7 +2586,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Въве
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Градове
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Отсъства -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Имена на градовете - натисни на името, за да фокусираш този град. Ctrl+Click отваря нова гледна точка от позицията на града.
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Имена на градовете - натисни на името за да фокусираш този град. Ctrl отваря нов изглед към града.
 STR_TOWN_POPULATION                                             :{BLACK}Обща популация на картата: {COMMA}
 
 # Town view window
@@ -2604,7 +2675,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Николко -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Субсидирани превози на:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} от {STRING} до {STRING}{YELLOW} ({COMPANY}{YELLOW}, до {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Кликни върху услугата, за да се фокусира върху индустрията/града
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Натисни върху услугата за да се фокусира върху индустрията/града. Ctrl отваря нов изглед към индустрията/града
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Имена на станции - натиснете върху името, за да фиксирате главния прозорец върху станцията
@@ -2713,7 +2784,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Пост
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Покажи Централния Офис
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Виж щабкравтирата на компанията
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Преместване ЦК
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Преместване централата на компанията другаде за 1% от стойноста на компанията
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Преместване централата на компанията другаде за 1% от стойноста на компанията. Shift показва цена за преместване
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Ново лице
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Избери друго лице за управителя
@@ -2726,8 +2797,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Смен
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Купи 25% от акциите на компанията
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Продай 25% от акциите на компанията
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Купи 25% от акциите на тази компания
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Продай 25% от акциите на тази компания
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Купи 25% от акциите на тази компания. Shift показва цената на 25% от акциите
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Продай 25% от акциите на тази компания. Shift показва цената на 25% от акциите
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Име на компанията
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Име на управителя
@@ -2862,10 +2933,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Купи
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Купи Кораб
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Купи самолет
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Купи маркираният влак
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Купи посоченото МПС
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Купи посоченият кораб
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Купи посоченият самолет
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Купи маркираният влак. Shift строеж/цена за построяване
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Купи посоченото МПС. Shift строеж/цена за построяване
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Купи посоченият кораб. Shift строеж/цена за построяване
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Купи посоченият самолет. Shift строеж/цена за построяване
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Преименувай
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Преименувай
@@ -2930,10 +3001,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Копи
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Клониране на кораб
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Клониране на летателната машина
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Така ще бъде закупено копие на влака, заедно с всички негови вагони. Натисни този бутон и след това върху влак вътре или вън от депото. Натисни CTRL, за да споделиш задачите
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Така ще бъде закупено копие на МПС-то. Натисни този бутон и след това върху МПС-то вътре или вън от депото. Натисни CTRL, за да споделиш задачите
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Така ще бъде закупено копие на кораб. Натисни този бутон и след това върху кораб вътре или вън от депото. Натисни CTRL, за да споделиш задачите
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Така ще бъде закупено копие на летателната машина. Натисни този бутон и след това върху летателната машина вътре или вън от хангара. Натисни CTRL, за да споделиш задачите
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Така ще бъде закупено копие на влака, заедно с всички негови вагони. Натисни този бутон и след това върху влак вътре или вън от депото. Натисни Ctrl, за да споделиш задачите. Shift строеж/цена за построяване
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Така ще бъде закупено копие на МПС-то. Натисни този бутон и след това върху МПС-то вътре или вън от депото. Натисни Ctrl, за да споделиш задачите. Shift строеж/цена за построяване
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Така ще бъде закупено копие на кораб. Натисни този бутон и след това върху кораб вътре или вън от депото. Натисни Ctrl, за да споделиш задачите. Shift строеж/цена за построяване
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Така ще бъде закупено копие на летателната машина. Натисни този бутон и след това върху летателната машина вътре или вън от хангара. Натисни Ctrl, за да споделиш задачите. Shift строеж/цена за построяване
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Фокусирай върху мястото на влаковото депо
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Фокусирай общия план върху местонахождението на МПС-депото
@@ -3017,10 +3088,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Изпр
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Прати кораба в депото
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Изпращане на самолета в хангар
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Така ще бъде закупено копие на влака заедно с всички негови вагони. Натисни Ctrl за да споделиш задачите
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Така ще бъде закупено копие на МПС-то. Натисни Ctrl за да споделиш задачите
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Така ще бъде закупено копие на кораба. Натисни Ctrl за да споделиш задачите
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Така ще бъде закупено копие на летателната машина. Натисни Ctrl за да споделиш задачите
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Така ще бъде закупено копие на влака заедно с всички негови вагони. Натисни Ctrl за да споделиш задачите. Shift строеж/цена за построяване
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Така ще бъде закупено копие на МПС-то. Натисни Ctrl за да споделиш задачите. Shift строеж/цена за построяване
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Така ще бъде закупено копие на кораба. Натисни Ctrl за да споделиш задачите. Shift строеж/цена за построяване
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Така ще бъде закупено копие на летателната машина. Натисни Ctrl за да споделиш задачите. Shift строеж/цена за построяване
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Игнориране на семафор
 
@@ -3204,7 +3275,7 @@ STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Данн
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Процент товарене
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Надеждност
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Максимална скорост
-STR_ORDER_CONDITIONAL_AGE                                       :Възраст на превозното средство (години)
+STR_ORDER_CONDITIONAL_AGE                                       :Възраст (години)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Нужен сервиз
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Винаги
 
@@ -3235,7 +3306,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Отиди до
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Отиди до най-близкия хангар
 STR_ORDER_CONDITIONAL                                           :Условна променяща се заповед
 STR_ORDER_SHARE                                                 :Сподели назначенията
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Добавяне на назначение преди избраната или в края на списъка. Като натиснете Ctrl добавяте назначение за 'Напълно натовари какъвто и да е товар', назначение за пътна точка 'без спиране' и назначение за депо 'обслужване'. 'Споделяне на назначенията' или Ctrl позволява на това превозно средство да сподели назначенията с друго избрано такова, когато се кликне върху него.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Добавяне на назначение преди избраната или в края на списъка. Ctrl добавя назначение за 'Напълно натовари какъвто и да е товар', назначение за пътна точка 'без спиране' и назначение за депо 'обслужване'. 'Споделяне на назначенията' или Ctrl позволява на това превозно средство да сподели назначенията с друго избрано такова, когато се кликне върху него. Назначението за депо спира автоматичното обслужване на превозното средство
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Показване на всички превозни средства които споделят разписанието
 
@@ -3273,9 +3344,9 @@ STR_ORDER_TRANSFER                                              :(Смени и 
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Смени и чакай за пълен товар)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Смени и чакай за какъвто и да е пълен товар)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Смени и потегли празен)
-STR_ORDER_NO_UNLOAD                                             :(Неразтоваряй и вземи товар)
+STR_ORDER_NO_UNLOAD                                             :(Не разтоваряй и вземи товар)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Неразтоварвай и изчакай за пълен товар)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Неразтоваряй и чакай за какъвто и да е пълен товар)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Не разтоваряй и чакай за какъвто и да е пълен товар)
 
 
 
@@ -3349,7 +3420,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Избе
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}AI Debug
+STR_AI_DEBUG                                                    :{WHITE}ИИ Дебъг
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Име на AI
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Настройки
@@ -3361,11 +3432,11 @@ STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Спри
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Когато съобщението от AI съвпадне с този ред, играта се спира.
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Покажи прозорец за debug на AI
 
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Един от работещите AI се е счупил . Моля съобщете това на автора на AI със скрииншот на AI Debug Прозореца.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI Debug прозореца е на разположение само на сървъра
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Един от работещите ИИ се е сринал . Моля съобщете това на автора на ИИ със скрииншот на ИИ Дебъг прозореца
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}ИИ Дебъг прозореца е на разположение само на сървъра
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI Конфигурация
+STR_AI_CONFIG_CAPTION                                           :{WHITE}ИИ Настройки
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Човешки играч
 STR_AI_CONFIG_RANDOM_AI                                         :Случаен AI
 
@@ -3549,7 +3620,7 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... са
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... може да бъде построен само в градове с население повече от 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... може да бъде построено само около и в джунглите
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... може да бъде построено само около и в пустините
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... може да бъде построено само в градове
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... може да бъде построено само в градове (заменяйки къщи)
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... може да бъде построено само в ниски пространства
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... може да бъде поставено само до краищата на картата
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... гора може да се засажда само над линията на снега
@@ -3623,7 +3694,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... тр
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Влаковете могат да бъдат променяни само когато са спрени в депото
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Влакът е прекалено дълъг
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Не може да обърне посоката на превозното средство...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Не може да обърне превозно средство състоящо се от няколко елемента
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... състои се от няколко елемента
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Несъвместими ЖП линии
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Не може да преместиш машината...

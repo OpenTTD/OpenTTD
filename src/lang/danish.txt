@@ -1084,8 +1084,18 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Venstre
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Center
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Højre
 
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Konstruktionshastighed: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Begræns antallet af igangværende konstruktioner for AI'er
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Køretøjs nedbrud: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Tilskudmultiplikator: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruktionspriser: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Indstil prisniveau for køb og konstruktion
+STR_CONFIG_SETTING_RECESSIONS                                   :Kriser: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Kriser kan forekomme hvis denne instilling er slået til. Under en krise falder produktionsniveauet markant (produktionsniveauet returnerer til tidligere produktionsniveau når krisen er ovre)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Forbyd toge at køre baglængs i stationer: {STRING}
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofer: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Slå katastrofer, som lejlighedsvis kan blokere eller ødelægge køretøjer eller infrastruktur, til og fra
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Byrådets holdning til omstrukturering: {STRING}
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillad bygning på skråninger og kyster: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Hvis den er aktiveret, kan spor og stationer bygges på de fleste skråninger. Hvis den er deaktiveret, er de kun tilladt på skråninger, som svarer til retningen af sporet og kræver derfor ikke fundament
@@ -3778,6 +3788,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Kun nød
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Kæmpe skærmbillede
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Skærmbilledet vil få en opløsning på {COMMA} x {COMMA} pixels. Det kan tage et stykke tid at tage skærmbilledet, ønsker du at forstætte?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skærmbilledet blev gemt som '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Fejl under tagning af skærmbillede!

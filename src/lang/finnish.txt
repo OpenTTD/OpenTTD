@@ -2353,7 +2353,7 @@ STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Valitse 
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Sattumanvaraisia puita
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Aseta sattumanvaraisia puita. Shift vaihtaa istutustilan ja kustannearvion välillä
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Satunnaisia puita.
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Istuta puita satunnaisesti maastoon.
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Istuta puita satunnaisesti maastoon
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Maanrakennus
@@ -2668,7 +2668,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Siirrä 
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Siirrä valittua NewGRF-tiedostoa listassa ylöspäin
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Siirrä alas
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Siirrä valittua NewGRF-tiedostoa listassa alaspäin
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista asennetuista NewGRF-tiedostoista.
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista asennetuista NewGRF-tiedostoista
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Aseta parametrit
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Näytä parametrit
