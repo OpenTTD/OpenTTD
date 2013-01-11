@@ -626,13 +626,22 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTB
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}இசைத்தடம் வரிசை
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}பிரோகிராம் - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}அழி
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}தற்போதைய பிரோகிராமிலிருந்து இசைத்தடத்தினை நீக்க சொடுக்கவும் (பயனரால் மாற்றப்பட்ட1 அல்லது 2 மட்டும்)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}{NUM} அடைந்த சிறந்த நிறுவனங்கள்
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}நிறுவனங்களின் பட்டியல் {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :வியாபாரி
+STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :தொழில்முனைவோர்
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :தொழிலதிபர்
+STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :முதலாளி
+STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :மேன்மையர்
+STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :நூற்றாண்டின் டைக்கூன்
 STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} '{STRING}' நிலையை அடைந்தது!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} {COMPANY} '{STRING}' நிலையை அடைந்தார்!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}வரைபடம் - {STRING}
@@ -679,6 +688,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}பாலைவனம்
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}பனி
 
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}வரைபடத்தில் நகரத்தின் பெயர்களை மறை/காட்டு
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
@@ -726,9 +736,11 @@ STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}வெள்ளம்!{}குறைந்தபட்சம் {COMMA} பேர் காணவில்லை, வெள்ளத்தால் இறந்திருப்பார்கள் என்று அஞ்சப்படுகின்றது!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}போக்குவரத்து நிறுவனம் பிரச்சனையில் உள்ளது!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} விரைவில் விற்கப்படும் அல்லது கடனில் மூழ்கியது என்று அறிவிக்கப்படும் இயக்கம் சிறப்படையவில்லை எனில்!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}போக்குவரத்து நிறுவனம் இணைக்கப்படுகின்றது !
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK} {STRING} இற்கு {STRING} {CURRENCY_LONG} இற்கு விற்கப்பட்டது!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}கடனில் மூழ்கியது!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} கடன் கொடுத்தவர்களால் மூடப்பட்டது. மேலும் உடமைகள் விற்கப்பட்டது!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}புதிய நிறுவனம் தொடங்கப்பட்டது!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} கட்டுமானங்களை தொடங்கியது {TOWN} அருகில்!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(மேலாளர்)

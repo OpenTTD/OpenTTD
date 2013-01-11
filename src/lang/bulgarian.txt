@@ -454,6 +454,8 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Напълно 
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Увеличение по подразбиране
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Огромен Screenshot
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :За 'OpenTTD'
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Превключва слепване на прозците
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Превключва оцветяване на замърсените блокове
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -669,6 +671,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Пока
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Покажи транспортните маршрути на картата
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Покажи растителността на картата
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Покажи собствениците на земя на картата
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Натисни върху вид индустрия за превключване на показването.Click on an industry type to toggle displaying it. Ctrl деактивира всички освен избраната. Ctrl отново за активиране на всички
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Натисни върху компания за показване/скриване на нейната собственост. Ctrl деактивира всички компании освен избраната. Ctrl отново за активиране на всички компании
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Пътища
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}ЖП
@@ -802,6 +806,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} не може да намери път за да продължи.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} се е загубил.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} миналата година е направил печалба от {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} не може да достигне до следващата цел, защото е извън обхват
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} спря поради провалена задача за преоборудване
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Неуспешна автоматична замяна на {VEHICLE}{}{STRING}
@@ -867,6 +872,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :турска л
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :словашка крона (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :бразилски реал (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Естонски крони (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Литовски Литас (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Южнокорейски Вон (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Южноафрикански Ранд (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :друга...
 ############ end of currency region
 
@@ -1046,9 +1054,12 @@ STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Настрой�
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Настройки на компанията (запаметени в записа; влияят само на текущата компания)
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Покажи:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Ограничи долният списък да показва само променените настройки
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Прости настройки
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Разширени настройки
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Експертни настройки / всички настройки
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Настройка със стойност различна от подразбиращата
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Настройка със стойност различна от тази за нова игра
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Долният списък се ограничава до конкретни типове настройки
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Всички настройки
@@ -1180,8 +1191,11 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Позваля�
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Разреши различни станции взаимно да се допират
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Няколко NewGRF алгоритъма едновременно: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Промяната не е възможна, когато има превозни средства.
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Поддръжка на инфраструктурата: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Когато е разрешено, съществуват разходи за поддръжка на инфраструктурата. Разходите се увеличават пропорционално на размера на пътната мрежа, влияейки повече на големите компании отколкото на по-малките
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Летишата не губят валидност: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Разрешавайки тази настройка, всеки вид летище остава завинаги достъпно след неговото представяне
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Предупреди за загубено превозно средство: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Съобщава за превозни средства, които не могат да намерят пък към назначената цел
@@ -1198,11 +1212,21 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} мес�
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} месец{P 0 "" а} след
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Минимална сума за начало на подновяване: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Продължителност на съобщението за грешка: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} секунд{P 0 а и}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Покажи съвети: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Изкачване преди съветът да се покаже, когато мишката е върху елемент от интерфейса. Алтернативно съветите могат да бъдат активирани с десния бутон на мишката
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Изчакай за {COMMA} секунд{P 0 а и}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Десен бутон
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Население в табелата на града: {STRING.n}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Показва на картата броя та населението до имената на градовете
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Дебелина на линиите в графиките: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Дебелина на линиите в графиките. Тънките линии са по-лесни за разчитане, но по-дебелите се забелязват и разграничават по-лесно.
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Генератор на земя: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :оригинален
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :тера-генезис
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Максимално разстояние от ръба за нефтените рафинерии: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Нефтените рафинерии се изграждат само близо до края на картата
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Снежната ивица: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Стръмност на терен (само за TerraGenesis): {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :много полегат
@@ -1225,6 +1249,7 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Един
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Автоматичен сервиз на хеликоптерите при кацане на хелипад: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Инструменти за терен при другите инструменти: {STRING.p}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Цвят на земята на малката карта: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Цвят на земята на малката карта
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Зелен
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Тъмно зелен
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Виолетов
@@ -1237,10 +1262,12 @@ STR_CONFIG_SETTING_LIVERIES_OWN                                 :собстве�
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :всички компании
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Разговор с отбора при натискане на <ENTER>: {STRING.n}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Колелото на мишката: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Разрешава придвижването с колелцата на мишката за двете направления
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :променя увеличението
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :превърта картата
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :не прави нищо
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Превъртане на картата: {STRING} клетк{P 0:2 а и}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Задава чувствителността на придвижване с колелцето на мишката
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Виртуална клавиатура: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Забранено
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Двойно натискане
@@ -1248,6 +1275,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Еднокра�
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Еднократно натискане (незабавно)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Дясно-щракане емулациа: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Избира метода за симулация на десния бутон на мишката
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команда-щракане
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Контрол-щракане
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Изключен
@@ -1255,28 +1283,37 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Изключе�
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Скролиране с ляв бутон: {STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Използвай {STRING} формат на датата за имена на записаните игри.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Формат на датата във файловете за запис на играта
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :дълъг (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :къс (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS палитра
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows палитра
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Игрите започват в пауза: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :По време на пауза разреши: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Избира кои действия са достъпни при пауза на играта
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Без действия
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Всички нестроителни действия
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Всичко без действия за промяна на терена
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Всички действия
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Разширен списък на ПС: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Разрешава използването на разширени пътни листи при групиране на ПС
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Товарни индикатори: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Разписанието в цикли вместо дни: {STRING.n}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Показва времената за придвижване в таблиците в игрови единици, вместо в дни
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Покажи пристигането и заминаването в расписанията: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Показвай очакваните времена за пристигане и заминаване в таблиците
 STR_CONFIG_SETTING_QUICKGOTO                                    :Бързо създаване на задачите на превозните средства: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Автоматичен избор на 'отиди на', когато се отвори списъка с направления
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Стандартни релси: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :първите налични
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :последните налични
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :най-използваните
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Покажи запазените линии/пътища: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Запази инстументите активни след употреба: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Остави отворени инструментите за строеж на мостове, тунели и др. след като са използвани
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Групирай разходите във финансовия прозорец на компанията: {STRING}
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Новинарски тикер: {STRING}
@@ -1298,9 +1335,13 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Изпълня�
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Изключване строеж на инфраструктура, когато съответващите превозни средства са недостъпни:{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Макс. брой влакове за компания: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Максимално количество влакове на компанията
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Макс. брой коли за компания: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Максимално количество пътни превозни средства на компанията
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Макс. брой самолети за компания: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Максимално количество самолети на компанията
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Макс. брой кораби за компания: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Максимално количество кораби на компанията
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Премахване на влаковете за компютърния играч: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Премахване на пътните превозни средства за компютърния играч: {STRING}
@@ -1313,8 +1354,15 @@ STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Средно
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Трудно
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Позволи AI в мрежова игра: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Разреши ИИ играчите да участват в мрежови игри
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Интервал на сервиз е в проценти: {STRING.n}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Интервал на обслужване за влакове: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} д{P 0 ен ни}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Изключен
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Интервал на обслужване за автомобили: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Интервал на обслужване за самолети: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Интервал на обслужване за кораби: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Без сервиз когато повредите са изключени: {STRING.n}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Вагоните имат ограничение на скоростта: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Без електрически влакове: {STRING}
@@ -1358,9 +1406,13 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Цветни н
 STR_CONFIG_SETTING_STARTING_YEAR                                :Начална година: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Разреши плавна икономика (повече по-малки промени): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Разреши купуване на акции от други компании: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Когато се влачи, поставя сигнали на всеки: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} поле{P 0 "" та}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Когато се влачи, поддържа точно разстояние между сигналите: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Поставяне на семафори преди: {STRING} година
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Инструменти за сигналите: {STRING.p}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Подразбиращ се вид на сигнала при строене : {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Подразбиращ тип сигнал
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Нормален
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Напреднат
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Еднопосочен напреднат
@@ -1370,6 +1422,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Само нап
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Всички
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Пътно оформление за нови градове: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Тип на пътната мрежа в градовете
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Оригинален
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :По-добри пътища
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2х2 мрежа
@@ -1390,15 +1443,35 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Навсякъ�
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Позиция на лентата за инструменти: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Разположение на лентата за състоянието: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Изключен
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Максимално количество на прозореците без залепване: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Забранено
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Максимално ниво на приближаване: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Максимално ниво на приближаване в брой полета. Внимание, по-големите стойности изискват повече памет
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Максимално ниво на отдалечаване: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Максимално ниво на отдалечаване. По-големите стойности могат да забавят реакциите в играта
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Нормално
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Скорост на разтеж на града: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Скорост на растеж на града
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Никаква
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Бавна
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Нормална
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Бърза
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Много бърза
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Количество на градовете които ще станат мегаполиси: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Количество на градовете които ще станат мегаполиси, които са по-големи и нарастват по-бързо
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 на {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Без
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Множител за големината на града: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Относителен размер на мегаполисите в сравнение с градовете в началото на играта
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Премахване на абсурдни разклонения при строене на пътища: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Премахва краищата на пътища при финансиране на ремонт на пътя
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Интерфейс
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Строене
@@ -1420,16 +1493,34 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Вла�
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Градове
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Индустрии
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Оригинален
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(препоръчва се)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Пътенамирач за влакове: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Маршрутизатор използван за влакове
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Пътенамирач за автомобили: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Маршрутизатор използван за автомобили
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Пътенамирач за кораби: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Маршрутизатор използван за кораби
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Автоматично обръщане при сигнали: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Позволява на влаковете да обръщат ако са чакали твърде дълго
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Промяна стойноста на настройка
 
 # Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Грешка във файла с настройки...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... грешка в масива '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... грешна стойност '{STRING}' за '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... крайни символи в низа '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... игнорира NewGRF '{STRING}': дублиран GRF ID с '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... игнорира невалидиня NewGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :не е открит
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :не е безопасно за статична употреба
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :системен NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :несъвместимо с тази версия на OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :неизвестна
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... степен на компресия '{STRING}' е невалидна
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... пропуска набора от основната графика '{STRING}': не е открит
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... пропуска набора от основни звуци '{STRING}': не е открит
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... пропруска набора от основни песни '{STRING}': не е открит
@@ -1449,6 +1540,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Табл
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Настройки за напреднали
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF настройки
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Провери онлайн съдържанието
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}ИИ/Игрови настройки
 STR_INTRO_QUIT                                                  :{BLACK}Изход
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Започни нова игра. Ctrl+Click пропуска конфигурацията на картата
@@ -1468,6 +1560,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Пока
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Покажи настройките за напреднали
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Покажи NewGRF настройки
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Провери за ново съдържание за сваляне
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Показва настройките на ИИ
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Изход от 'OpenTTD'
 
 
@@ -1839,6 +1932,8 @@ STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Маме
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Ти изпращаше прекалено много команди към сървъра
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Отнети твърде дълго време да въведеш паролата
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Твоя компютър е твърде бавен за да поддържа актуална връзка със сървъра
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Отне твърде много време за изтегляне на картата
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Отне твърде много време за свързване със сървъра
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :обща грешка
@@ -1857,6 +1952,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :изхрърл�
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :се опита да използва измама
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :сървърът е пълен
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :изпращаше прекалено много команди
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :Изтече времето за получаване на парола
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :Изтече времето за връзка
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :изтеглянето на картата отне много време
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :обработката на картата отне много време
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Възможна загуба на връзката
@@ -1953,6 +2052,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... вр
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... файла е незаписваем
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не може да се декомпресира изтегления файл
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Липсват графики
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Настройки на прозрачност

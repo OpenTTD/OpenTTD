@@ -1240,11 +1240,17 @@ STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :التغيرا�
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :تغير في انتاج مصنع مشمول بخدمات الشركة: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :تغير في انتاج مصنع مشمول بخدمات الشركات الأخرى: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :تغير انتاج المصانع الأخرى: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :عرض صحيفة عندما يكون مستوى انتاج الصناعات التغيير، والتي لا تخدمها الشركة أو المنافسين
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :نصائح/ معلومات حول مركبات الشركة: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :عرض رسائل عن المركبات التي تحتاج الى اهتمام
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :المركبات الجديدة: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :عرض صحيفة عندما نوع السيارة الجديدة تصبح متوفرة
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :تغييرات قبول الشحن: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :عرض رسائل عن محطات تغيير قبول بعض الشحنات
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :العروض: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :عرض إحدي الصحف عن الأحداث ذات صلة الدعم المالي
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :معلومات عامة: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :عرض الصحف عن الأحداث العامة، مثل شراء حقوق حصرية أو تمويل إعادة الإعمار الطريق
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :اغلاق
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :ملخص

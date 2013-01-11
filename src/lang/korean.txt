@@ -2133,7 +2133,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 파�
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}다운로드한 파일의 압축을 풀 수 없습니다
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}그래픽 없음
-STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD가 작동되기 위한 그래픽이 필요합니다. 그러나 당신의 컴퓨터에서 어떤 그래픽도 찾을수 없습니다. OpenTTD의 구동을 위한 그래픽을 다운로드 받아서 설치합니까?
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD를 실행시키기 위해서는 그래픽 파일이 필요하지만 컴퓨터에서 그래픽 파일을 찾을 수 없습니다. OpenTTD를 실행시키기 위해 그래픽을 다운로드 받아서 설치하시겠습니까?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}예, 그래픽을 다운로드 받습니다.
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}아니요, OpenTTD를 종료합니다.
 
@@ -2216,18 +2216,18 @@ STR_STATION_CLASS_WAYP                                          :{G=f}경유지
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}신호기 선택
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}폐색 신호기 (구식){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}입구 신호기 (구식){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}출구-신호기 (구식){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}콤보-신호기 (구식){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 전면신호기의 거대한 "나뭇가지 구조"를 건설할 수 있게 도와줍니다.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}입구 신호기 (구식){}다음 폐색 구간에 있는 출구 신호기가 하나라도 파란불이면 파란불이 되며, 그렇지 않은 경우에는 빨간불이 됩니다.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}출구 신호기 (구식){}일반 신호기와 기능이 똑같지만, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}콤보 신호기 (구식){}콤보 신호기는 입구 신호기와 출구 신호기의 역할을 동시에 합니다. 이 신호기는 사전 신호기의 거대한 "나뭇가지 구조"를 건설할 수 있도록 도와줍니다.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}경로 신호기 (구식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}단방향 경로 신호기 (구식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 단방향 경로 신호기는 반대편에서 통과가 불가능합니다.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}폐색 신호기 (전자식){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}입구-신호기 (전자식){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}출구-신호기 (전자식){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}콤보-신호기 (전자식){}콤보-신호기는 입구,출구 신호기의 역할을 동시에 합니다. 이 신호기는 전면신호기의 거대한 "나뭇가지식 구조"를 건설할 수 있게 도와줍니다.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}입구 신호기 (전자식){}다음 폐색 구간에 있는 출구 신호기가 하나라도 파란불이면 파란불이 되며, 그렇지 않은 경우에는 빨간불이 됩니다.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}출구 신호기 (전자식){}일반 신호기와 기능이 똑같지만, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}콤보 신호기 (전자식){}콤보 신호기는 입구 신호기와 출구 신호기의 역할을 동시에 합니다. 이 신호기는 사전 신호기의 거대한 "나뭇가지식 구조"를 건설할 수 있도록 도와줍니다.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}단방향 경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 단방향 경로 신호기는 반대편에서 통과가 불가능합니다.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}신호기 변환{}선택했을 때, 이미 설치한 신호기를 클릭하면 선택한 신호기의 타입과 종류를 변경하게 되고, CTRL+클릭은 존재하는 종류를 토글할 것입니다. SHIFT+클릭을 사용하면 예상 가격을 볼 수 있습니다.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}신호기 변환{}이 버튼을 선택한 뒤 이미 설치된 신호기를 클릭하면, 신호기의 종류(일반/입구/출구/콤보/경로)와 형식(구식↔전자식)을 변경하고, CTRL+클릭하면 신호기의 형식을 변경합니다. SHIFT+클릭을 사용하면 예상 가격을 볼 수 있습니다.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}드래그시 신호기 간격
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}드래그시 신호기 간격 감소
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}드래그시 신호기 증가
@@ -2464,25 +2464,25 @@ STR_LAI_CLEAR_DESCRIPTION_DESERT                                :사막
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} 선로
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :일반 신호기가 설치된 {STRING} 선로
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :입구-신호기가 설치된 {STRING} 선로
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :출구-신호기가 설치된 {STRING} 선로
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :콤보-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :입구 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :출구 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :콤보 신호기가 설치된 {STRING} 선로
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :경로 신호기가 설치된 {STRING} 선로
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :단방향 경로 신호기가 설치된 {STRING} 선로
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :일반 신호기와 입구-신호기가 설치된 {STRING} 선로
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :일반 신호기와 출구-신호기가 설치된 {STRING} 선로
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :일반 신호기와 콤보-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :일반 신호기와 입구 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :일반 신호기와 출구 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :일반 신호기와 콤보 신호기가 설치된 {STRING} 선로
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :일반 신호기와 경로 신호기가 설치된 {STRING} 선로
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :일반 신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :입구-신호기와 출구-신호기가 설치된 {STRING} 선로
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :입구-신호기와 콤보-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :입구 신호기와 출구 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :입구 신호기와 콤보 신호기가 설치된 {STRING} 선로
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :입구 신호기와 경로 신호기가 설치된 {STRING} 선로
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :입구-신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :출구-신호기와 콤보-신호기가 설치된 {STRING} 선로
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :출구-신호기와 경로 신호기가 설치된 {STRING} 선로
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :출구-신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :콤보-신호기와 경로 신호기가 설치된 {STRING} 선로
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :콤보-신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :입구 신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :출구 신호기와 콤보 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :출구 신호기와 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :출구 신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :콤보 신호기와 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :콤보 신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :경로 신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} 차량기지
 
@@ -2559,7 +2559,7 @@ STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}높이�
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}높이맵 저장
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}기본 저장/불러오기 폴더로 이동하려면 여기를 클릭하세요
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} 남음
-STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}드라이프, 폴더, 저장된 게임 파일의 목록입니다
+STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}드라이브, 폴더, 저장된 게임 파일의 목록입니다
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}현재 입력된 게임 저장 파일의 이름입니다.
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}파일 삭제
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}현재 선택한 게임 저장 파일을 삭제합니다.

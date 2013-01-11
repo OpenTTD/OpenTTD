@@ -315,7 +315,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}興建�
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}打開地形工具列、提升／降低地面、 植樹等
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}顯示音效／背景音樂視窗
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}顯示上次訊息／新聞報告、顯示訊息選項
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}土地資訊、主控台、AI 除錯、擷取畫面、關於 OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}土地資訊、主控台、腳本調試、截圖、關於 OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}切換工具列
 
 # Extra tooltips for the scenario editor toolbar
@@ -356,7 +356,7 @@ STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :顯示標誌
 STR_SETTINGS_MENU_FULL_ANIMATION                                :完整動畫
 STR_SETTINGS_MENU_FULL_DETAIL                                   :完整細節
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :視野穿透建築物
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :半透明車站標籤
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :半透明標籤
 ############ range ends here
 
 ############ range for file menu starts
@@ -1033,6 +1033,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}無適�
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}進階設定
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}用某些設定限制下方的目錄
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :所有設定
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :客戶端設定 (儲存時不保存；影響所有遊戲)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :遊戲設定 (儲存時保存；只影響新遊戲)
@@ -1073,7 +1074,7 @@ STR_CONFIG_SETTING_SELECTGOODS                                  :有需求才向
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :修改基礎工業的建造方式：{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :無法建造
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :與其他工業相同
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :需探勘
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :需勘探
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :每個市鎮可擁有多個同類工業：{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :於年末顯示財政視窗：{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :設定指令時預設選擇「直達」指令：{STRING}
@@ -1103,7 +1104,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :機場永不過
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :當交通工具消失時發出警告：{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :檢查交通工具指令：{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :否
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :是，不過停止的交通工具除外
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :是，不過被停止的交通工具除外
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :所有交通工具
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :當交通工具收入為負時警告：{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :運輸工具永不過期：{STRING}
@@ -1186,10 +1187,12 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :顯示列車佔
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :使建設工具在建造後仍保持啟用狀態：{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :將公司財務視窗的收支分組顯示：{STRING}
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :新聞提示: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :總結新訊息時播放音效
 STR_CONFIG_SETTING_SOUND_NEWS                                   :報紙: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :在顯示報紙時播放音效
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :年度結束: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :在年終報告上播放聲音
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :建造: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :在完成構建或其他動作時播放音效
 STR_CONFIG_SETTING_SOUND_CLICK                                  :按鈕點擊: {STRING}
@@ -1221,6 +1224,7 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :開啟列車車
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :停用電氣化鐵路：{STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :首輛交通工具抵達玩家的車站: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :當首輛交通工具抵達玩家站牌時顯示報紙
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :首輛交通工具抵達競爭對手的車站: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :當競爭者的首台交通工具到站時顯示報紙
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :意外／災難: {STRING}
@@ -1234,7 +1238,9 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :當工廠關閉
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :經濟景氣的變動: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :顯示關於經濟總體變動的報紙
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :由自家公司提供服務的工業產量變動: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :當公司工廠的生產等級改變時顯示報紙
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :由競爭對手提供服務的工業產量變動: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :當被對方服務的產業的生產水平改變時顯示報紙
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :其他工業產量變更: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :當自家工廠生產等級改變時顯示報紙
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :自家公司交通工具的建議或資訊: {STRING}
@@ -1242,6 +1248,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :顯示需要注
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :新交通工具: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :當新交通工具形態可用時顯示報紙。
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :可接收貨物的變動: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :當某些站改變它們所接受的貨物時顯示訊息
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :補助資訊: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :顯示關於補助金相關事件的報紙
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :一般資訊: {STRING}
@@ -1267,8 +1274,8 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :僅限路徑號
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :所有號誌
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :新市鎮的道路配置：{STRING}
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :預設
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :較佳規劃
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :原版
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :較佳道路
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :２x２網格
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :３x３網格
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :隨機
@@ -2442,6 +2449,7 @@ STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :已載入太多
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :與{2:STRING} 將 {1:STRING} 載入為靜態 NewGRF 可能會讓遊戲失去同步
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 包含了毀損的 sprite。所有毀損的 sprite 會以紅色問號 (？) 顯示。
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}目前使用的基本圖形集少了某些 sprite。{}請更新基本圖形集。
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}你正在使用的圖形集缺少了一些圖形.{}請更新圖形集. {}因為你正在使用一個{YELLOW}開發中的OpenTTD{WHITE},你可能需要一個{YELLOW}開發中的圖形集{WHITE}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！
@@ -3463,6 +3471,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}不建�
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}只找到一個後備音效集；如果您需要音效，請透過內容下載系統安裝音效集。
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}巨大截圖
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}畫面擷取成功並存為「{STRING}」
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}畫面擷取失敗！
@@ -3654,7 +3663,7 @@ STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}無法�
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... 這裡沒有鐵軌
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... 這裡沒有號誌
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}無法轉換軌道種類...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}無法在此轉換軌道種類...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}必須先移除道路
