@@ -1908,6 +1908,9 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 
 			case 0x12: // Cargo types for random triggers
 				statspec->cargo_triggers = buf->ReadDWord();
+				if (_cur.grffile->grf_version >= 7) {
+					statspec->cargo_triggers = TranslateRefitMask(statspec->cargo_triggers);
+				}
 				break;
 
 			case 0x13: // General flags

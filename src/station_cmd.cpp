@@ -3380,6 +3380,7 @@ static uint UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceT
 		SetBit(ge.acceptance_pickup, GoodsEntry::GES_PICKUP);
 	}
 
+	TriggerStationRandomisation(st, st->xy, SRT_NEW_CARGO, type);
 	TriggerStationAnimation(st, st->xy, SAT_NEW_CARGO, type);
 	AirportAnimationTrigger(st, AAT_STATION_NEW_CARGO, type);
 

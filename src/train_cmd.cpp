@@ -2810,6 +2810,7 @@ static void TrainEnterStation(Train *v, StationID station)
 
 	v->BeginLoading();
 
+	TriggerStationRandomisation(st, v->tile, SRT_TRAIN_ARRIVES);
 	TriggerStationAnimation(st, v->tile, SAT_TRAIN_ARRIVES);
 }
 
@@ -3184,7 +3185,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 						}
 						goto reverse_train_direction;
 					} else {
-						TryReserveRailTrack(gp.new_tile, TrackBitsToTrack(chosen_track));
+						TryReserveRailTrack(gp.new_tile, TrackBitsToTrack(chosen_track), false);
 					}
 				} else {
 					/* The wagon is active, simply follow the prev vehicle. */

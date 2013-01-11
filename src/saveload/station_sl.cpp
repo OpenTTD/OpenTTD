@@ -123,7 +123,7 @@ void AfterLoadStations()
 			for (const RoadStop *rs = sta->truck_stops; rs != NULL; rs = rs->next) sta->truck_station.Add(rs->xy);
 		}
 
-		StationUpdateAnimTriggers(st);
+		StationUpdateCachedTriggers(st);
 	}
 }
 

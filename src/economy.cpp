@@ -1535,6 +1535,7 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 			st->last_vehicle_type = v->type;
 
 			if (ge->cargo.Empty()) {
+				TriggerStationRandomisation(st, st->xy, SRT_CARGO_TAKEN, v->cargo_type);
 				TriggerStationAnimation(st, st->xy, SAT_CARGO_TAKEN, v->cargo_type);
 				AirportAnimationTrigger(st, AAT_STATION_CARGO_TAKEN, v->cargo_type);
 			}
@@ -1552,7 +1553,10 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 	}
 
 	if (anything_loaded || anything_unloaded) {
-		if (front->type == VEH_TRAIN) TriggerStationAnimation(st, front->tile, SAT_TRAIN_LOADS);
+		if (front->type == VEH_TRAIN) {
+			TriggerStationRandomisation(st, front->tile, SRT_TRAIN_LOADS);
+			TriggerStationAnimation(st, front->tile, SAT_TRAIN_LOADS);
+		}
 	}
 
 	/* Only set completely_emptied, if we just unloaded all remaining cargo */

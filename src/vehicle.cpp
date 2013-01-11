@@ -2001,7 +2001,10 @@ void Vehicle::LeaveStation()
 
 	if (this->type == VEH_TRAIN && !(this->vehstatus & VS_CRASHED)) {
 		/* Trigger station animation (trains only) */
-		if (IsTileType(this->tile, MP_STATION)) TriggerStationAnimation(st, this->tile, SAT_TRAIN_DEPARTS);
+		if (IsTileType(this->tile, MP_STATION)) {
+			TriggerStationRandomisation(st, this->tile, SRT_TRAIN_DEPARTS);
+			TriggerStationAnimation(st, this->tile, SAT_TRAIN_DEPARTS);
+		}
 
 		SetBit(Train::From(this)->flags, VRF_LEAVING_STATION);
 	}

@@ -731,7 +731,7 @@ int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exe
 		st->speclist[i].grfid    = statspec->grf_prop.grffile->grfid;
 		st->speclist[i].localidx = statspec->grf_prop.local_id;
 
-		StationUpdateAnimTriggers(st);
+		StationUpdateCachedTriggers(st);
 	}
 
 	return i;
@@ -773,11 +773,12 @@ void DeallocateSpecFromStation(BaseStation *st, byte specindex)
 			st->num_specs = 0;
 			st->speclist  = NULL;
 			st->cached_anim_triggers = 0;
+			st->cached_cargo_triggers = 0;
 			return;
 		}
 	}
 
-	StationUpdateAnimTriggers(st);
+	StationUpdateCachedTriggers(st);
 }
 
 /**
@@ -969,18 +970,103 @@ void TriggerStationAnimation(BaseStation *st, TileIndex tile, StationAnimationTr
 }
 
 /**
+ * Trigger station randomisation
+ * @param st station being triggered
+ * @param tile specific tile of platform to trigger
+ * @param trigger trigger type
+ * @param cargo_type cargo type causing trigger
+ */
+void TriggerStationRandomisation(Station *st, TileIndex tile, StationRandomTrigger trigger, CargoID cargo_type)
+{
+	/* List of coverage areas for each animation trigger */
+	static const TriggerArea tas[] = {
+		TA_WHOLE, TA_WHOLE, TA_PLATFORM, TA_PLATFORM, TA_PLATFORM, TA_PLATFORM
+	};
+
+	/* Get Station if it wasn't supplied */
+	if (st == NULL) st = Station::GetByTile(tile);
+
+	/* Check the cached cargo trigger bitmask to see if we need
+	 * to bother with any further processing. */
+	if (st->cached_cargo_triggers == 0) return;
+	if (cargo_type != CT_INVALID && !HasBit(st->cached_cargo_triggers, cargo_type)) return;
+
+	uint32 whole_reseed = 0;
+	ETileArea area = ETileArea(st, tile, tas[trigger]);
+
+	uint32 empty_mask = 0;
+	if (trigger == SRT_CARGO_TAKEN) {
+		/* Create a bitmask of completely empty cargo types to be matched */
+		for (CargoID i = 0; i < NUM_CARGO; i++) {
+			if (st->goods[i].cargo.Empty()) {
+				SetBit(empty_mask, i);
+			}
+		}
+	}
+
+	/* Convert trigger to bit */
+	uint8 trigger_bit = 1 << trigger;
+
+	/* Check all tiles over the station to check if the specindex is still in use */
+	TILE_AREA_LOOP(tile, area) {
+		if (st->TileBelongsToRailStation(tile)) {
+			const StationSpec *ss = GetStationSpec(tile);
+			if (ss == NULL) continue;
+
+			/* Cargo taken "will only be triggered if all of those
+			 * cargo types have no more cargo waiting." */
+			if (trigger == SRT_CARGO_TAKEN) {
+				if ((ss->cargo_triggers & ~empty_mask) != 0) continue;
+			}
+
+			if (cargo_type == CT_INVALID || HasBit(ss->cargo_triggers, cargo_type)) {
+				StationResolverObject object(ss, st, tile, CBID_RANDOM_TRIGGER, 0);
+				object.trigger = trigger_bit;
+
+				const SpriteGroup *group = ResolveStation(&object);
+				if (group == NULL) continue;
+
+				uint32 reseed = object.GetReseedSum();
+				if (reseed != 0) {
+					whole_reseed |= reseed;
+					reseed >>= 16;
+
+					/* Set individual tile random bits */
+					uint8 random_bits = GetStationTileRandomBits(tile);
+					random_bits &= ~reseed;
+					random_bits |= Random() & reseed;
+					SetStationTileRandomBits(tile, random_bits);
+
+					MarkTileDirtyByTile(tile);
+				}
+			}
+		}
+	}
+
+	/* Update whole station random bits */
+	if ((whole_reseed & 0xFFFF) != 0) {
+		st->random_bits &= ~whole_reseed;
+		st->random_bits |= Random() & whole_reseed;
+	}
+}
+
+/**
  * Update the cached animation trigger bitmask for a station.
  * @param st Station to update.
  */
-void StationUpdateAnimTriggers(BaseStation *st)
+void StationUpdateCachedTriggers(BaseStation *st)
 {
 	st->cached_anim_triggers = 0;
+	st->cached_cargo_triggers = 0;
 
 	/* Combine animation trigger bitmask for all station specs
 	 * of this station. */
 	for (uint i = 0; i < st->num_specs; i++) {
 		const StationSpec *ss = st->speclist[i].spec;
-		if (ss != NULL) st->cached_anim_triggers |= ss->animation.triggers;
+		if (ss != NULL) {
+			st->cached_anim_triggers |= ss->animation.triggers;
+			st->cached_cargo_triggers |= ss->cargo_triggers;
+		}
 	}
 }
 

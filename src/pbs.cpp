@@ -12,6 +12,7 @@
 #include "stdafx.h"
 #include "viewport_func.h"
 #include "vehicle_func.h"
+#include "newgrf_station.h"
 #include "pathfinder/follow_track.hpp"
 
 /**
@@ -72,10 +73,11 @@ void SetRailStationPlatformReservation(TileIndex start, DiagDirection dir, bool 
  * Try to reserve a specific track on a tile
  * @param tile the tile
  * @param t the track
+ * @param trigger_stations whether to call station randomisation trigger
  * @return \c true if reservation was successful, i.e. the track was
  *     free and didn't cross any other reserved tracks.
  */
-bool TryReserveRailTrack(TileIndex tile, Track t)
+bool TryReserveRailTrack(TileIndex tile, Track t, bool trigger_stations)
 {
 	assert((GetTileTrackStatus(tile, TRANSPORT_RAIL, 0) & TrackToTrackBits(t)) != 0);
 
@@ -108,6 +110,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 		case MP_STATION:
 			if (HasStationRail(tile) && !HasStationReservation(tile)) {
 				SetRailStationReservation(tile, true);
+				if (trigger_stations) TriggerStationRandomisation(NULL, tile, SRT_PATH_RESERVATION);
 				MarkTileDirtyByTile(tile); // some GRFs need redraw after reserving track
 				return true;
 			}

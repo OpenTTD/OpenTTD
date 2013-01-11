@@ -90,6 +90,16 @@ enum StationSpecFlags {
 	SSF_EXTENDED_FOUNDATIONS, ///< Extended foundation block instead of simple.
 };
 
+/** Randomisation triggers for stations */
+enum StationRandomTrigger {
+	SRT_NEW_CARGO,        ///< Trigger station on new cargo arrival.
+	SRT_CARGO_TAKEN,      ///< Trigger station when cargo is completely taken.
+	SRT_TRAIN_ARRIVES,    ///< Trigger platform when train arrives.
+	SRT_TRAIN_DEPARTS,    ///< Trigger platform when train leaves.
+	SRT_TRAIN_LOADS,      ///< Trigger platform when train loads/unloads.
+	SRT_PATH_RESERVATION, ///< Trigger platform when train reserves path.
+};
+
 /* Station layout for given dimensions - it is a two-dimensional array
  * where index is computed as (x * platforms) + platform. */
 typedef byte *StationLayout;
@@ -176,6 +186,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 
 void AnimateStationTile(TileIndex tile);
 void TriggerStationAnimation(BaseStation *st, TileIndex tile, StationAnimationTrigger trigger, CargoID cargo_type = CT_INVALID);
-void StationUpdateAnimTriggers(BaseStation *st);
+void TriggerStationRandomisation(Station *st, TileIndex tile, StationRandomTrigger trigger, CargoID cargo_type = CT_INVALID);
+void StationUpdateCachedTriggers(BaseStation *st);
 
 #endif /* NEWGRF_STATION_H */
