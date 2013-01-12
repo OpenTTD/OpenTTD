@@ -867,7 +867,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 						bool lookup = (l == SCC_ENCODED);
 						if (lookup) s += len;
 
-						param = strtol(s, &p, 16);
+						param = (int32)strtoul(s, &p, 16);
 
 						if (lookup) {
 							if (param >= TAB_SIZE) {

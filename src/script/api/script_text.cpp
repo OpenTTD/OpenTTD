@@ -183,7 +183,7 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp)
 			p = this->paramt[i]->_GetEncodedText(p, lastofp);
 			continue;
 		}
-		p += seprintf(p, lastofp,":%X", this->parami[i]);
+		p += seprintf(p, lastofp,":%X", (uint32)this->parami[i]);
 	}
 
 	return p;
