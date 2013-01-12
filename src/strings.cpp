@@ -524,7 +524,7 @@ static int DeterminePluralForm(int64 count, int plural_form)
 		 *   Danish, Dutch, English, German, Norwegian, Swedish, Estonian, Finnish,
 		 *   Greek, Hebrew, Italian, Portuguese, Spanish, Esperanto */
 		case 0:
-			return n != 1;
+			return n != 1 ? 1 : 0;
 
 		/* Only one form.
 		 * Used in:
@@ -536,7 +536,7 @@ static int DeterminePluralForm(int64 count, int plural_form)
 		 * Used in:
 		 *   French, Brazilian Portuguese */
 		case 2:
-			return n > 1;
+			return n > 1 ? 1 : 0;
 
 		/* Three forms: special cases for 0, and numbers ending in 1 except when ending in 11.
 		 * Used in:
