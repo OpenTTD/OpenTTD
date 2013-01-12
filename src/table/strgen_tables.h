@@ -164,7 +164,7 @@ static const PluralForm _plural_forms[] = {
 	{ 2, "Two forms: special case for 1.", "\"1\" \"other\"" },
 	{ 1, "Only one form.", "\"other\"" },
 	{ 2, "Two forms: special case for 0 to 1.", "\"0..1\" \"other\"" },
-	{ 3, "Three forms: special cases for 0, and numbers ending in 1 except when ending in 11.", "\"0\" \"1,21,31,...\" \"other\"" },
+	{ 3, "Three forms: special cases for 0, and numbers ending in 1 except when ending in 11.", "\"1,21,31,...\" \"other\" \"0\"" },
 	{ 5, "Five forms: special cases for 1, 2, 3 to 6, and 7 to 10.", "\"1\" \"2\" \"3..6\" \"7..10\" \"other\"" },
 	{ 3, "Three forms: special cases for numbers ending in 1 except when ending in 11, and 2 to 9 except when ending in 12 to 19.", "\"1,21,31,...\" \"2..9,22..29,32..39,...\" \"other\"" },
 	{ 3, "Three forms: special cases for numbers ending in 1 except when ending in 11, and 2 to 4 except when ending in 12 to 14.", "\"1,21,31,...\" \"2..4,22..24,32..34,...\" \"other\"" },

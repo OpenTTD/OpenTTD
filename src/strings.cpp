@@ -539,6 +539,7 @@ static int DeterminePluralForm(int64 count, int plural_form)
 			return n > 1 ? 1 : 0;
 
 		/* Three forms: special cases for 0, and numbers ending in 1 except when ending in 11.
+		 * Note: Cases are out of order for hysterical reasons. '0' is last.
 		 * Used in:
 		 *   Latvian */
 		case 3:
