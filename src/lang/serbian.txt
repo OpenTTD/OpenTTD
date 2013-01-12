@@ -1255,6 +1255,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Levo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sredina
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Desno
 
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Onemogući okretanje voza u stanicama: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ako je uključeno i ako postoji kraća putanja do sledećeg odredišta, vozovi se neće okretati u neterminalnim stanicama
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofe: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Uključuje i isključuje katastrofe koje s vremena na vreme mogu blokirati ili uništiti vozila i infrastrukturu
@@ -1262,6 +1263,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :Stav gradskog o
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Izbor koliko će buka i zagađenje koje proizvode kompanije uticati na njihov gradski rejting i dalje građevinske akcije u toj zoni
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Dozvoljena gradnja na kosinama i obalama: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ako je uključeno, rute i stanice mogu se graditi na većini strmina. Ako je isključeno, mogu se graditi samo na strminama koje odgovaraju smeru rute i ne traže posebnu osnovu
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Dozvoljena izmena nagiba ispod zgrada, koloseka, itd. (autoslope): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Realističnije veličine prihvatnih površina: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Dozvoljeno uklanjanje više gradskih kolovoza, mostova i tunela: {STRING}

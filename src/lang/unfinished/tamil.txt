@@ -743,6 +743,7 @@ STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} கடன் கொடுத்தவர்களால் மூடப்பட்டது. மேலும் உடமைகள் விற்கப்பட்டது!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}புதிய நிறுவனம் தொடங்கப்பட்டது!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} கட்டுமானங்களை தொடங்கியது {TOWN} அருகில்!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} {STRING} இனால் வாங்கப்பட்டது!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(மேலாளர்)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} நிதியுதவி செய்தது புதிய நகரம் {TOWN} கட்டுவதற்கு!
@@ -751,7 +752,11 @@ STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}ப்திய {STRING} தொடங்கப்படுகிறது {TOWN}அருகில்!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} மூடப்படுவதாக அறிவித்துள்ளது!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}கொள்முதல் பிரச்சனைகளால் {STRING} உடனடியாக மூடப்படுகின்றது!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}அருகாமையில் மரங்கள் இல்லாதமையால் {STRING} உடனடியாக மூடப்படுகின்றது!
 
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}பொருளாதார மந்த நிலை!{}{}பொருளாதார நிபுணர்கள் மந்த நிலையை பார்த்து அஞ்சுகின்றனர்!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}பொருளாதார மந்த நிலை முடிந்தது!{}{}பொருளாதாரம் வளர்ச்சியினைப் பார்த்து தொழிற்சாலைகள் மகிழ்ச்சியடைகின்றன!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} உற்பத்தியை அதிகரித்தது!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} உற்பத்தி 50 சதவீதமாக குறைத்தது

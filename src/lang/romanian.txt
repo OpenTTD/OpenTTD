@@ -1286,10 +1286,12 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controlează mo
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Arată o indicaţie de distanţă la folosirea uneltelor de construcţie: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Afișează distanțele în pătrățele și diferențele de înălțime la mișcarea mouse-ului în timpul operațiilor de construcție
 STR_CONFIG_SETTING_LIVERIES                                     :Arată culorile companiilor: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controlează modul de folosire al mărfurilor specifice anumitor vehicule (spre deosebire de cele specifice unor companii)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Niciunul
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Propria companie
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Toate companiile
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Chat între membrii echipei folosind tasta <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Schimbă modul de afisare a conversatiei publice și a conversației interne a companiei, folosind tasta <ENTER> sau <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funcţia roţii mouse-ului: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Activează deplasarea imaginii folosind mouse cu roată de scroll bi-dimensională
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom hartă
@@ -1335,15 +1337,21 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :toate acțiunil
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Foloseşte lista avansată de vehicule: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Activează folosirea listelor avansate de vehicule pentru a gruparea acestor vehicule
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Foloseşte indicatorii de încărcare: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Arată orarul pe programări, nu pe zile: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Alege dacă indicatori de încărcare sunt afișați deasupra unor vehicule care sunt în proces de încărcare sau descărcare
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Arată orarul pe programări în unități de timp interne în loc de zile: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Arată timpii de călatorie în tabela cu timpi a jocului folosind unități de timp interne în loc de zile
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Afişează plecările şi sosirile în orare: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Arată timpii estimați de plecare și sosire în orar
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creare rapidă a ordinelor pentru vehicule: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipul implicit de şină (după joc nou/încarcare joc): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipul de cale feroviară care va fi ales la pornirea sau îmcărcarea jocului. 'Prima disponibilă' alege cel mai nou tip de cale feroviară și 'Cea mai folosită' alege tipul cel mai des folosit în acel moment.
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Prima disponibilă
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Ultima disponibilă
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Cea mai folosită
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Arată liniile rezervate: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Acordă căilor feroviare rezervate o culoare diferită pentru a depista mai ușor probleme cum ar fi trenuri refuzând intrarea în secțiuni bazate pe căi stabilite anterior
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Pastrează active instrumentele de construcţie după utilizare: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Menține barele de construcție pentru tunele, poduri șamd deschise după folosire
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupează cheltuielile în raportul financiar al companiei: {STRING}
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Afișaj știri: {STRING}

@@ -2053,6 +2053,8 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... фа
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не може да се декомпресира изтегления файл
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Липсват графики
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Да, изтегли графиките
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Не, изход от OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Настройки на прозрачност
@@ -2100,6 +2102,10 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Пост
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Показва строене/премахване на жп линия, сигнализация, пунктове и гари. Задържането на Ctrl премахва и пунктовете и гарите
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Промяна/обновяване на ЖП линия. Shift строеж/цена за построяване
 
+STR_RAIL_NAME_RAILROAD                                          :ЖП път
+STR_RAIL_NAME_ELRAIL                                            :Електрифициран ЖП път
+STR_RAIL_NAME_MONORAIL                                          :Монорелсов
+STR_RAIL_NAME_MAGLEV                                            :Маглев
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Посока на входа на влаковото депо
@@ -2375,6 +2381,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Поля
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Заснежена земя
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Пустиня
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} линия
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} линия с блокиращи сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} линия с пре-сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} линия с изходни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} линия с комбо сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} линия с насочващи сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} линия с еднопосочни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} линия с блокиращи и пре-сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} линия с блокиращи и изходни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} линия с блокиращи и комбо сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} линия с блокиращи и насочващи сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} линия с блокиращи и еднопосочни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} линия с пред и изходни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} линя с пред и комбо сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} линия с пред и насочващи сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} линия с пред и еднопосочни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} линия с изходни и комбо сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} линия с изходни и насочващи сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} линия с изходни и еднопосочни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} линия с комбо и насочващи сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} линия с комбо и еднопосочни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} линия с насочващи и еднопосочни сигнали
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} влаково депо
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :път
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Асфалтов път с улично осветление
@@ -2446,6 +2475,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Отва
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Запис на сценарии
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Зареждане на сценарии
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Отваряне на височинна карта
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Запис на височинна карта
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Прескачане към директорията за запис/зарездане по подразбиране
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} свободно
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Списък с хард-дисковете, директориите и запазените игри
@@ -2481,6 +2511,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Земе
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Дърворазсад:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип на терен:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Морско ниво:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Реки:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Полегатост:
 STR_MAPGEN_VARIETY                                              :{BLACK}Разнообразност:
 STR_MAPGEN_GENERATE                                             :{WHITE}Генериране
@@ -2525,6 +2556,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Иск�
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% готово
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Генерация на свят
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Създаване на река
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Генерация на дърва
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Генерация на статични
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Създаване на твърда и скална повърност
@@ -2634,6 +2666,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Зарежда�
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} съдържа повреден обект. Вскички повредени обекти ще бъдат показани като червена въпросителна (?).
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Текущите основни графики имат празни картинки.{}Моля обновете си основните графики.
 STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Текущо използвания графичен сет има липсващи спрайтове.{}Моля обновете графичния сет.{}Тъй като играете {YELLOW}версия на OpenTTD в процес на разработка{WHITE}, може да се нуждаете и от {YELLOW}версията на графичния сет, която е в разработка{WHITE}
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} беше изключено от {2:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Внимание!
@@ -2662,6 +2695,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Влак
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' дава невярна информация.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Информация за товар/преобразувания на '{1:ENGINE}' се различава от листа с покупките. Това може да доведе до грешка при подновяване/преустройване
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' предизвика вечен цикъл в callback на производството
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Подизпълнение {1:HEX} върна неизвестен/невалиден резултат {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<невалиден товар>
@@ -2671,9 +2705,14 @@ STR_NEWGRF_INVALID_ENGINE                                       :<невалид
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невалдна индустрия>
 
 # NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Търси NewGRF-и
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Търси NewGRF-и. Може да отнеме време, в зависимост от количеството...
+STR_NEWGRF_SCAN_ARCHIVES                                        :Търси за архиви
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Списък с табели - {COMMA} Табел{P а и}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Съвпадане на регистъра
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Превключва съвпадение на регистъра (малки/големи букви) когато сравнява имената с филтъра
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Промяна текста на знака
@@ -2698,6 +2737,12 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Поща
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Товар нужен за растеж на града:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} необходим
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} необходим през зимата
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} доставено
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (все още трява)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (доставено)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Града нараства всеги {ORANGE}{COMMA}{BLACK} д{P ен ни}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Града нараства всеки {ORANGE}{COMMA}{BLACK} д{P ен ни} (субсидиран)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Града {RED}не{BLACK} расте
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Лимит на шумът в градът: {ORANGE}{COMMA}{BLACK}  най-много: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Фиксиране на главния изглед върху града. Ctrl+Click отваря прозорец на нов изглед върху града.
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Местни власти
@@ -2747,6 +2792,9 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Цели
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Въпрос
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Информация
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Внимание
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Грешка
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Недобре
@@ -2798,6 +2846,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Прие
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Покажи списък с приетите товари
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Приема: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Тази станция има специални транспортни привилегии за града
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} закупи специални транспортни привилегии за града.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейтинги
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Покажи нивото на обслужване
@@ -2825,6 +2875,8 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Пока
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Преименуване на станция
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Затвори летище
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Забранява кацането на самолети в летището
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -2863,6 +2915,7 @@ STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Изте
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Увеличи размера на заема. Ctrl+Click заема възможно най много
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Изплати {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Изплати част от заема. Ctrl+Click изплаща възможно най-много
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Инфраструктура
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
@@ -2878,6 +2931,13 @@ STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Николко
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Стойност на Компанията: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% е притежание на {COMPANY})
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Инфраструктура:
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} релсов{P а и} част{P "" и}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} пътн{P а и} част{P "" и}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} водн{P а и} част{P "" и}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} част{P "" и} на станци
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} летищ{P е а}
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Нищо
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Построй Централен Офис
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Построяване на щабквартира на компанията
@@ -2885,6 +2945,8 @@ STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Пока
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Виж щабкравтирата на компанията
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Преместване ЦК
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Преместване централата на компанията другаде за 1% от стойноста на компанията. Shift показва цена за преместване
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Детайли
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Детайлна бройка на инфраструктурите
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Ново лице
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Избери друго лице за управителя
@@ -2906,6 +2968,19 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Име на у�
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ние търсим транспортна компания, която да поеме нашата компания.{}{}Do you want to purchase {COMPANY} for {CURRENCY_LONG}?
 
 # Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Инфраструктура на {COMPANY}
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Релсови части:
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Сигнали
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Пътни части:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Път
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Трамвай
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Водни части:
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Канали
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Станции:
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Части на станции
+STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Летища
+STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/година({0:COMMA})
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/година
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Индустрии
@@ -3008,6 +3083,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Нова лет
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY_LONG}{BLACK} Тегло: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скорост: {GOLD}{VELOCITY}{BLACK} Мощност: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Скорост: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Скорост в океана: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Скорост в канал/река: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Разход: {GOLD}{CURRENCY_LONG}/год.
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Капацитет: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(преустроим)
@@ -3022,6 +3099,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Прео
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всички видове товар
 STR_PURCHASE_INFO_ALL_BUT                                       :Всичко освен {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. теглеща сила: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Обхват: {GOLD}{COMMA} полета
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Списък с влакове - натисни върху влак за информация
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Списък с избор на МПС-та - натисни върху МПС за информация
@@ -3142,6 +3220,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Цена
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Цена: {CURRENCY_LONG} Тегло: {WEIGHT_SHORT}{}Скорост: {VELOCITY}  Мощност: {POWER}  Макс. Т.С.: {6:FORCE}{}Експлоатационни разходи: {4:CURRENCY_LONG}/год.{}Вместимост: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Цена: {CURRENCY_LONG} Макс. Скорост: {VELOCITY}{}Вместимост: {CARGO_LONG}, {CARGO_LONG}{}Експлоатационни разходи: {CURRENCY_LONG}/год.
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Цена: {CURRENCY_LONG} Макс. Скорост: {VELOCITY}{}Вместимост: {CARGO_LONG}{}Експлоатационни разходи: {CURRENCY_LONG}/год.
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Цена: {CURRENCY_LONG} Макс. Скорост: {VELOCITY} Обхват: {COMMA} полета{}Капацитет: {CARGO_LONG}, {CARGO_LONG}{}Транспортни разходи: {CURRENCY_LONG}/година
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Цена: {CURRENCY_LONG} Макс. Скорост: {VELOCITY} Обхват: {COMMA} полета{}Капацитет: {CARGO_LONG}{}Транспортни разходи: {CURRENCY_LONG}/година
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замяна {STRING} - {STRING}
@@ -3154,9 +3234,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Избо
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Изберете нов двигател, който бихте желали да поставите на мястото на избрания в ляво двигател
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Започване замяната
+STR_REPLACE_VEHICLES_NOW                                        :Замени всички превозни средства сега
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Замени само старите превозни средства
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Натиснете за започване подмяната на ляво избрания двигател с избрания в дясно
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Незаменя
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Няма избрани превозни средства
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} когато е стар
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Спиране на замяната
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Натиснете за спиране подновяването на избрания в ляво двигател
 
@@ -3256,6 +3339,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} год�
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} годин{P а и} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. скорост: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Макс. скорост: {LTBLUE}{VELOCITY} {BLACK}Обхват: {LTBLUE}{COMMA} полета
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Тегло: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощност: {LTBLUE}{POWER}{BLACK} Макс. Скорост: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Тегло: {LTBLUE}{WEIGHT_SHORT} {BLACK}Мощност: {LTBLUE}{POWER}{BLACK} Макс. Скорост: {LTBLUE}{VELOCITY} {BLACK}Макс. Т.С.: {LTBLUE}{FORCE}
 
@@ -3378,6 +3462,7 @@ STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Максима�
 STR_ORDER_CONDITIONAL_AGE                                       :Възраст (години)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Нужен сервиз
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Винаги
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Оставащ живот (години)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Как да сравня данните за превозното средсвто с дадената стойност
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :е равно на
@@ -3447,13 +3532,16 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Смени и 
 STR_ORDER_NO_UNLOAD                                             :(Не разтоваряй и вземи товар)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Неразтоварвай и изчакай за пълен товар)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Не разтоваряй и чакай за какъвто и да е пълен товар)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Без разтоварване и без натоварване)
 
 
+STR_ORDER_AUTO_REFIT_ANY                                        :наличен товар
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[в близкия край]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[по средата]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[в далечния край]
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Следващата цел е извън обхват)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Премини на заповед {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Премини на заповед {COMMA} когато {STRING} {STRING} {COMMA}
@@ -3494,7 +3582,9 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Пром
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Изчисти времето
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Изчисти времетраенето на маркираната заповед
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Промяна на ограничението на скоростта
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Изчиства ограничението на скоростта
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Преправи закъснялата бройка
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset the lateness counter, so the vehicle will be on time
@@ -3530,27 +3620,38 @@ STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Прек
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Спри на:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Спри на
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Когато съобщението от AI съвпадне с този ред, играта се спира.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Съвпадане на регистъра
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Променя съвпадането на регистъра (малки/ големи букви) при сравнението на ИИ логовете с низа
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Продължи
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Възстанови от пауза и продължи ИИ
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Покажи прозорец за debug на AI
+STR_AI_GAME_SCRIPT                                              :{BLACK}Игрови скрипт
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Провери лога на Игровия скрипт
 
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Един от работещите ИИ се е сринал . Моля съобщете това на автора на ИИ със скрииншот на ИИ Дебъг прозореца
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}ИИ Дебъг прозореца е на разположение само на сървъра
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}ИИ Настройки
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Иговия скрипт ще бъде зареден в следващата игра
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}ИИ-тата ще бъдат заредени в следващата игра
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Човешки играч
 STR_AI_CONFIG_RANDOM_AI                                         :Случаен AI
+STR_AI_CONFIG_NONE                                              :(нищо)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Премести нагоре
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Премести маркирания AI нагоре в списъка
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Премести надолу
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Премести маркирания AI надолу в списъка
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Игрови скрипт
 STR_AI_CONFIG_AI                                                :{SILVER}AI-та
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Избери {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Програмен език на играта
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Зареди друг скрипт
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Конфигуриране
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Конфигурирайте параметрите на AI
 
@@ -3579,6 +3680,8 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Дневник на промените
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лиценз
 
 
 # Vehicle loading indicators
@@ -3629,6 +3732,7 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... не
 STR_ERROR_BMPMAP                                                :{WHITE}Не може да отвориш пейзаж от BMP..
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... не може да се промени вида на снимката.
 
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... изображението е твърде голямо
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Мащаб предупреждение
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Прекаленото оразмеряване не е препорачително. Продължаване с генерацията?
@@ -3661,6 +3765,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... со
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... земята е притежание на друга компания
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... достигнат е максималният допустим брой плочки за промяна на терена
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... достигнат е максималният допустим брой плочки за изчистване
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... достигнато е ограничението за насаждения
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Името трябва да е уникално
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} пречи
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Не е позволено по време на пауза
@@ -3721,9 +3826,12 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... мо
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... може да бъде построено само около и в джунглите
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... може да бъде построено само около и в пустините
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... може да бъде построено само в градове (заменяйки къщи)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... може да бъде построено само близо до центъра на града
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... може да бъде построено само в ниски пространства
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... може да бъде поставено само до краищата на картата
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... гора може да се засажда само над линията на снега
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... може да бъде построено само над снежната линия
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... може да бъде построено само под снежната линия
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Тук не може да бъде построена ЖП гара...
@@ -3757,6 +3865,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Не м�
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Не може да се разруши пътническата трамвайната спирка...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Не може да се разруши товарната трамвайна спирка...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Първо трябва да бъде разрушена спирката
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... няма станция тук
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Първо трябва да бъде разрушена ЖП гарата
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Първо трябва да бъде разрушена автогарата
@@ -3821,6 +3930,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Тук �
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Не може да премахнеш тези ЖП релси...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Не може да премахнеш тази сигнализация...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Тук не може да се конвертират сигналите...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... тук няма релса
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... тук няма сигнали
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Тук не може да се променя типа на жп линията...
 
@@ -3831,6 +3942,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Тук �
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Тук не може да бъде построена трамвайна линия...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Пътя не може да се махне...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не може да се разруши трамвайната линия...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... тук няма път
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... няма трамвайни линии
 
 # Waterway construction errors
@@ -3839,12 +3951,15 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Тук �
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Не можеш да сложиш реката тук...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... трябва да се построи във вода
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... това не може да бъде построено във водата
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... не може да се построи в открито море
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... не може да се построи в канал
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... не може да се строи на река
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Първо трябва да бъде разрушен каналът
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Тук не може да бъде построен акведукт...
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... вече има дърво
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... неподходящ терен за този вид дърво
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Тук не може да бъде засадено дърво...
 
 # Bridge related errors
@@ -3937,6 +4052,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... ма
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Влака не може да пропусне сигнала при опасност...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Не може да обърне посоката на влак...
+STR_ERROR_TRAIN_START_NO_POWER                                  :Влака няма мощност
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Не може да обърне пътното превозно средство...
 
@@ -3953,11 +4069,13 @@ STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Не м�
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Не може да прескочиш до избраната заповед...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... превозното средство не може да отиде до всички спирки
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... превозносто средство не може да отиде до тази спирка
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... превозното средство споделящо заявката не може да достигне тази станция
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Не може да се споделя списъка със задачи...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Не може да се спре споделянето на назначенията
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Не може да се копира списъка от задачи...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... прекалено далече от предходната цел
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... самолета няма достатъчен обхват
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Не може да добави разписание на превозно средство...
