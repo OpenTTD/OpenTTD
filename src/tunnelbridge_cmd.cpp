@@ -455,18 +455,24 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 				SetTunnelBridgeReservation(tile_end,   pbs_reservation);
 				break;
 
-			case TRANSPORT_ROAD:
+			case TRANSPORT_ROAD: {
+				RoadTypes prev_roadtypes = IsBridgeTile(tile_start) ? GetRoadTypes(tile_start) : ROADTYPES_NONE;
 				if (c != NULL) {
 					/* Add all new road types to the company infrastructure counter. */
 					RoadType new_rt;
-					FOR_EACH_SET_ROADTYPE(new_rt, roadtypes ^ (IsBridgeTile(tile_start) ? GetRoadTypes(tile_start) : ROADTYPES_NONE)) {
+					FOR_EACH_SET_ROADTYPE(new_rt, roadtypes ^ prev_roadtypes) {
 						/* A full diagonal road tile has two road bits. */
 						Company::Get(owner)->infrastructure.road[new_rt] += (bridge_len + 2) * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR;
 					}
 				}
-				MakeRoadBridgeRamp(tile_start, owner, bridge_type, dir,                 roadtypes);
-				MakeRoadBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir), roadtypes);
+				Owner owner_road = owner;
+				Owner owner_tram = owner;
+				if (HasBit(prev_roadtypes, ROADTYPE_ROAD)) owner_road = GetRoadOwner(tile_start, ROADTYPE_ROAD);
+				if (HasBit(prev_roadtypes, ROADTYPE_TRAM)) owner_tram = GetRoadOwner(tile_start, ROADTYPE_TRAM);
+				MakeRoadBridgeRamp(tile_start, owner, owner_road, owner_tram, bridge_type, dir,                 roadtypes);
+				MakeRoadBridgeRamp(tile_end,   owner, owner_road, owner_tram, bridge_type, ReverseDiagDir(dir), roadtypes);
 				break;
+			}
 
 			case TRANSPORT_WATER:
 				if (!IsBridgeTile(tile_start) && c != NULL) c->infrastructure.water += (bridge_len + 2) * TUNNELBRIDGE_TRACKBIT_FACTOR;
