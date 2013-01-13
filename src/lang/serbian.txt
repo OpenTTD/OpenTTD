@@ -1266,8 +1266,13 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Dozvoljena grad
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ako je uključeno, rute i stanice mogu se graditi na većini strmina. Ako je isključeno, mogu se graditi samo na strminama koje odgovaraju smeru rute i ne traže posebnu osnovu
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Dozvoljena izmena nagiba ispod zgrada, koloseka, itd. (autoslope): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Realističnije veličine prihvatnih površina: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Drugačije veličine podnožja za različite vrste stanica i aerodroma
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Dozvoljeno uklanjanje više gradskih kolovoza, mostova i tunela: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Olakšava uklanjanje infrastrukture i zgrada u gradskom vlasništvu
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Najveća dužina vozova: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Podešava najveću dužinu vozova
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Količina dima/varnica vozila: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Podešava količinu dima ili varnica koje emituju vozila
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model ubrzavanja vozova: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model ubrzavanja drumskih vozila: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Zabranjeno okretanje brodova i vozova za 90 stepeni: {STRING}

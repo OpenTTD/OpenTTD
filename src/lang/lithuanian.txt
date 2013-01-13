@@ -593,6 +593,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Krovinių apmok
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Kompanijos užimama vieta
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Išsamus veiklos įvertinimas
+STR_GRAPH_MENU_HIGHSCORE                                        :Nugalėtojų lentelė
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1296,6 +1297,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Statybos kašt�
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nustatykite statybos kaštų lygmenį
 STR_CONFIG_SETTING_RECESSIONS                                   :Nuosmukiai: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Įgalinus šią nusotatą, kas keletą metų gali užklupti ekonomikos nuosmukis. Nuosmukio metų smarkiai smunka gamyba (kuri atsistato nuosmukiai pasibaigus)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Drausti apsisukimus stotelėse: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Įgalinus šią nusotatą, traukiniai galės apsisukti tik galinėse stotelėse su bendru įvažiavimu ir išvažiavimu.
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofos: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Įgalinti atsitiktines katastrofas, kurių metų gali būti apgadintos ar sunaikintos transporto priemonės bei infrastruktūra
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Miestų gyventojų požiūris į triukšmą ir aplinkos darkymą: {STRING}
@@ -1491,6 +1494,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Žemėlapio sli
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :išjungta
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Žemėlapio slinties greitis: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Valdyti pelės ratuko judėjimo jautrumą
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Ekraninė klaviatūra: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Pasirinkti ekraninės klaviatūros atvėrimo metodą. Ekraninė klaviatūra yra naudinga mažuose, neturinčiuose fizinės klaviatūros, įrenginiuose su lietimui jautriu ekranu.
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Išjungta
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dvikartis spustelėjimas
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Vienkartis spustelėjimas (jei židinyje)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Vienkartis spustelėjimas (iškart)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Dešiniojo pelės mygtuko emuliacija: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Pasirinkite būdą, kurį atliks dešinio pelės klavišo paspaudimas
@@ -1542,6 +1551,8 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Laikyti statyb�
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupuoti išlaidas finansinės ataskaitos lange: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Nustatyti kompanijos išlaidų lango planą
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Trumpoji žinutė: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Skleisti garsus gavus trumpają žinutę
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Laikraščio: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Skleisti garsus, kai parodomas laikraštis
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Metų pabaigos: {STRING}
@@ -1577,6 +1588,11 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Įjungus šį n
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Uždrausti kompiuteriui laivus: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Įjungus šį nustatymą, statyti laivų kompiuterio žaidėjui bus neįmanoma
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Numatytasis nuostatų rinkinys: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Pasirinkti pradinį nuostatų profilį naujai pradedančiam veikti DI
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lengvas
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Vidutinis
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Sunkus
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Leisti DI Interneto režime: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Leisti DI kompiuterio žaidėjus dalyvauti Interneto režime
@@ -1603,22 +1619,35 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Uždrausti elek
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Įjungiant šį nustatymą išjungia elektrifikuotų bėgių reikalavimą padaryti elektrinius variklius veikti ant jų
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Pirmosios transporto priemonės atvykimas į žaidėjo stotelę: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Rodyti naujienraštį, kai pirma transporto priemonė atvyksta į naują žaidėjo stotelę
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Pirmosios transporto priemonės atvykimas į konkurento stotelę: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Rodyti naujienraštį, kai pirma transporto priemonė atvyksta į naują konkurento stotelę
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Avarijos / nelaimės: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Rodyti naujienraštį atsitikus incidentui ar katastrofai
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Kompanijos informacija: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Rodyti naujienraštį įsikūrus naujai kompanijai (arba esamai susidūrus su sunkumais)
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Gamyklų atidarymas: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Rodyti naujienraštį įsikūrus naujai pramonės įmonei
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Gamyklų uždarymas: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Rodyti naujienraštį, jei uždaroma pramonės įmonė
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomikos pokyčiai: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Rodyti naujienraštį įvykus globaliniam ekonomikos pokyčiui
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Gamyklų aptarnaujamų kompanijos gamybos pasikeitimas: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Rodyti naujienraštį, kai pramonės įmonių, aptarnaujamų žaidėjo kompanijos, produkcija pasikeičia
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Gamyklų aptarnaujamų kitų kompanijų gamybos pasikeitimas: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Rodyti naujienraštį, kai pramonės įmonių, aptarnaujamų konkurentų, produkcija pasikeičia
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Kitų gamyklų gamybos pasikeitimas: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Rodyti naujienraštį, kai pramonės įmonių, neaptarnaujamų jokios kompanijos, produkcija pasikeičia
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Patarimai / informacija apie kompanijos transporto priemones: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Rodyti pranešimus apie transporto priemones, kurioms reikia priežiūros
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Naujos transporto priemonės: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Rodyti naujienraštį atsiradus naujo tipo transporto priemonei
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Prekių supirkimo pokyčiai: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Rodyti pranešimus apie stotelėse priimamų krovinių pokyčius
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidijos: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Rodyti naujienraštį, susijusį su subsidijomis
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Bendroji informacija: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Rodyti naujienraštį apie bendro pobūdžio įvykius (pvz., apie išskirtinių teisių nusipirkimą arba kelių rekonstrukcijos finansavimą)
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Išjungta
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Santrauka
@@ -1780,6 +1809,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenarij
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Žaidimas tinkle
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Žaidimo nustatymai
+STR_INTRO_HIGHSCORE                                             :{BLACK}Nugalėtojų lentelė
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Sudėtingesni nustatymai
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Papild. grafikos nustatymai
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Patikrinti interneto turinį
@@ -1799,13 +1829,14 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Pasirink
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Pasirink žemėlapio tipą 'žaislų šalis'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Rodyti žaidimo nustatymus
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Rodyti nugalėtojų lentelę
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Rodyti sudėtingesnius nustatymus
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Atvaizduoti NewGRF nustatymus
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Patikrinti dėl naujų ir atnaujintą turinį atsisiuntimui
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Rodyti DI ir žaidimo nustatymus
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Išeiti iš 'OpenTTD'
 
-STR_INTRO_TRANSLATION                                           :{BLACK}Šiam vertimui trūksta {NUM} eilu{P tė ės čių}. Padėkite išversti OpenTTD užsiregistruodami vertėju. Daugiau informacijos rasite faile readme.txt
+STR_INTRO_TRANSLATION                                           :{BLACK}Šiam vertimui trūksta {NUM} eilu{P tės čių čių}. Padėkite išversti OpenTTD užsiregistruodami vertėju. Daugiau informacijos rasite faile readme.txt
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Baigti
@@ -2915,6 +2946,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Susideda iš keleto veiksmo 8 įrašų (spruklys {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Skaitymas už pseudospruklio pabaigos (spruklys {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Šiuo metu naudojamam grafikos rinkiniui trūksta keleto spruklių.{}Atnaujinkite pagrindinį grafikos rinkinį
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Šiuo metu naudojamam pagrindinės grafikos rinkiniui trūsta keleto spruklių. {}Atnaujinkite pagrindinės grafikos rinkinį. {} Kadangi žaidžiate {YELLOW} negalutinę, vis dar kuriamą OpenTTD versiją, {WHITE}, jums, ko gero, reikėtų įdiegti atitinkamą{YELLOW}naujausią, negalutinį pagrindinės grafikos rinkinį.{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Pageidautas GRF resursas yra neprieinamas (spruklys {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} buvo išjungta: {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neteisingas/nežinomas spruklio išdėstymo formatas (spruklys {3:NUM})

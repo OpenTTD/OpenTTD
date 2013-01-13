@@ -1038,6 +1038,13 @@ STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :（説明があ
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}デフォルト設定：{ORANGE}{STRING}
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}以下の項目は特定の設定に制限されます。
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :すべての設定
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :クライアントの設定（変更はセーブされません）
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :ゲームの設定（変更はニューゲーム時に影響します）
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :ゲームの設定（変更は今のゲームにだけ影響します）
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :会社の設定（変更はニューゲーム時に影響します）
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :会社の設定（変更は今の会社だけに影響します）
 
 STR_CONFIG_SETTING_OFF                                          :切
 STR_CONFIG_SETTING_ON                                           :入
@@ -1207,6 +1214,22 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :予約済みの
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :ビルドのツールバーは使用後に表示したままにする：{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :財政ウィンドウ内でグループ分けされた費用表示をする: {STRING}
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :ニュース表示: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :ニュース要約の効果音再生
+STR_CONFIG_SETTING_SOUND_NEWS                                   :新聞: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :新聞の観覧時の効果音
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :年末: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :年始の企業パフォーマンス中の効果音
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :建設: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :建設成功時と色々な動作の効果音
+STR_CONFIG_SETTING_SOUND_CLICK                                  :ボタンのクリック: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :ボタンのクリック音
+STR_CONFIG_SETTING_SOUND_DISASTER                               :災害/事故: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :事故と災害の効果音の再生
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :乗り物: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :乗り物の効果音
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :周辺: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :町と産業の環境音
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :列車に合った施設を建設してください。{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :会社1つあたりの列車数上限：{STRING}
@@ -1263,7 +1286,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :パス信号の
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :全て
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :新規町用の道路配置： {STRING}
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :デフォルト
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :オリジナル
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :改善の道路網
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :格子状（2x2）
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :格子状（3x3）
@@ -1274,12 +1297,12 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :空港建設に
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :インゲームで街の新設に出資: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :不可能
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :可能
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :可能、町を設定もできます
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :自由に配置できる
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :インゲームでの植樹: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :なし {RED}(製剤所は使えなくなります)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :雨林の中だけ
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :各地
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :なし {RED}(製材所は使えなくなります)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :雨林のみ
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :あらゆる場所
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :メインツールバーの位置：{STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :お知らせバ−の置き場: {STRING}
@@ -1301,6 +1324,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}経済
 STR_CONFIG_SETTING_AI                                           :{ORANGE}競争者
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}表示の設定
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}インターフェース
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}効果音
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}ニュースとメッセージ
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}信号
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}貨物の取り扱い
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}コンピュータのプレヤー
@@ -1910,18 +1935,18 @@ STR_STATION_CLASS_WAYP                                          :通過点
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}信号の選択
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}通常の信号（腕木式）{}線路上に複数の電車を走らせる場合は、事故を避ける為に信号が必要となります。
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口信号（腕木式）{}信号の先の区間にある出口信号のうち最低1個が青であれば青になります。
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口信号（腕木式）{}信号の先の区間にある出口信号のうち最低1個が青であれば青になります。そうでなければ赤になります。
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口信号（腕木式）{}動作は通常の信号と同様ですが、入口／コンボ信号を使用する場合に必要になります。
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}コンボ信号（腕木式）{}コンボ信号は入口信号と出口信号の機能を併せたものです。
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}コンボ信号（腕木式）{}コンボ信号は入口信号と出口信号の機能を併せたものです。よければプレシグナルの建設も検討してみて下さい。
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}パス信号 (腕木式) {}パス信号は、1編成以上の列車に対し、列車が安全な停止位置までの経路を予約できる場合同時に信号区間に進入する事を許可します。標準パス信号は信号の背面から通過することができます。
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}一方通行パス信号 (腕木式) {}パス信号は、1編成以上の列車に対し、列車が安全な停止位置までの経路を予約できる場合同時に信号区間に進入する事を許可します。一方通行パス信号は信号の背面から通過することはできません。
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}通常の信号（電子式）{}線路上に複数の電車を走行させる場合は、事故を避ける為に信号が必要になります。
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}入口信号（電子式）{}信号の先の区間にある出口信号のうち最低1個が青であれば青になります。
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}入口信号（電子式）{}信号の先の区間にある出口信号のうち最低1個が青であれば青になります。そうでなければ赤になります。
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口信号（電子式）{}動作は通常の信号と同様ですが、入口／コンボ信号を使用する場合に必要になります。
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}コンボ信号（電子式）{}コンボ信号は入口信号と出口信号の機能を併せたものです。
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}コンボ信号（電子式）{}コンボ信号は入口信号と出口信号の機能を併せたものです。よければプレシグナルの建設も検討してみて下さい。
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}パス信号 (電子式) {} パス信号は、1編成以上の列車に対し、列車が安全な停止位置までの経路を予約できる場合同時に信号区間に進入する事を許可します。標準パス信号は信号の背面から通過することができます。
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}一方通行パス信号 (電子式) {} パス信号は、1編成以上の列車に対し、列車が安全な停止位置までの経路を予約できる場合同時に信号区間に進入する事を許可します。一方通行パス信号は信号の背面から通過することはできません。
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}信号を交換{}すでに設置した信号をクリックしたときに選択した信号の種類に交換します。
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}信号を交換{}既存の信号を別の種類の信号に交換します。Ctrl+クリックで似た信号に変換します。Shift+クリックで必要になるコストを表示します。
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}ドラッグ時の信号設置密度
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}ドラッグ時の信号設置密度を減らす
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}ドラッグ時の信号設置密度を増やす
@@ -2048,7 +2073,7 @@ STR_PLANT_TREE_TOOLTIP                                          :{BLACK}植林�
 STR_TREES_RANDOM_TYPE                                           :{BLACK}ランドムな木
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}ランダムな木で植林します
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}ランドムな木
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}ランダムに植林します
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}地表全体にランダムに植林します
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}地形の作成
