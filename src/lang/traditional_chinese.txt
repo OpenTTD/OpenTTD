@@ -1148,54 +1148,106 @@ STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :建造橋樑長
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :隧道長度上限： {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :設定建造隧道長度的上限
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :修改基礎工業的建造方式：{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :設定基礎工業的建造方式。「無法建造」指玩家不能手動建造基礎工業；「需勘探」指玩家可以付款讓系統在地圖上隨意尋找建造地點，但系統可能因「勘探失敗」而沒有建造基礎工業；「與其他工業相同」指玩家可以跟建造其他工業一樣地建造基礎工業
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :無法建造
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :與其他工業相同
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :需勘探
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :工業周圍的平地面積： {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :設定在工業旁邊平坦土地的方格數目。當有新工業建造時，其周圍的若干方格 (數量與該設定值相等) 會被平整，以確保玩家可以在旁邊建造路軌或其他基礎建設
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :每個市鎮可擁有多個同類工業：{STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :在正常情況下，一座市鎮只會有一座同類型的工業。如啟用此選項，一座市鎮可建造多座同類型的工業
+STR_CONFIG_SETTING_SIGNALSIDE                                   :顯示號誌： {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :選擇在路軌的哪一邊顯示號誌
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :路軌左方
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :與行車方向相同
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :路軌右方
 STR_CONFIG_SETTING_SHOWFINANCES                                 :於年末顯示財政視窗：{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :如啟用此選項，財務視窗會在每年年終出現，讓玩家可輕易查察公司的財務狀況
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :設定指令時預設選擇「直達」指令：{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :在正常情況下，交通工具會停靠所有沿途進入的車站。如啟用此選項，交通工具只會停靠指令上的目的地而跳過沿途的其他車站。請注意：本設定僅改變新指令的產生方式，而且玩家仍可手動更改指令，使交通工具停靠沿途其他車站
 STR_CONFIG_SETTING_STOP_LOCATION                                :新列車調度計劃中預設命令為停靠車站月台 {STRING} 位置
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :預設列車在車站內停靠的位置。「近端」指列車會在接近其進入車站的一端停靠；「中間」指列車會在車站中央位置停靠；「遠端」指列車會在遠離其進入車站的一端停靠。請注意：本設定僅改變新指令的產生方式，而且玩家仍可手動更改指令，設定列車在個別車站停靠的位置
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :近端
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :中間
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :遠端
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :車輛排隊 (量子效應)：{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :強制進入車站的路面車輛在車站未有空位時停在站前排隊等候，而非調頭離開。請注意：過多車輛等候會造成交通擠塞 (此即設定標籤中所指的「量子效應」)
 STR_CONFIG_SETTING_AUTOSCROLL                                   :滑鼠在視窗邊緣時移動視窗：{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :如啟用此選項，額外視野的畫面會在游標接近其視窗邊緣時捲動
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :停用
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :主視野，僅限全螢幕模式
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :主視野
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :所有視野
 STR_CONFIG_SETTING_BRIBE                                        :可向地方政府行賄：{STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :容許公司嘗試賄賂地方政府。如果賄賂行為被調查員揭發，公司在往後六個月內無法接觸有關地方政府
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :允許購買市鎮的專屬運輸權：{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :如果一所公司購買了一個市鎮的一年專屬運輸權，其他公司在該市鎮建造的車站在這一年之內將不會收到任何貨物 (包括乘客)
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :容許資助市鎮建設： {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :容許公司出資供市鎮建造新樓房
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :允許挹注資金到地方道路重建: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :容許公司出資供市鎮重建市內道路，以干擾市內的路面交通服務
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :允許流通資金給其他公司：{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :在多人遊戲中容許公司之間匯款
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :貨物重量倍率，以模擬較重列車：{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :設定運載貨物對列車構成的負荷影響。設定的數值越高，貨物對列車而言越重，並影響其加速、轉彎或上落坡道的表現
+STR_CONFIG_SETTING_PLANE_SPEED                                  :飛機速度系數： {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :設定飛機速度相對其他交通工具速度的比率。此設定作用為減少因飛機速度過高而出現的過量收入
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :飛機墜機機率：{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :設定發生空難的機率
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :無
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :減少
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :正常
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :可在市鎮所屬道路上建設路邊車站：{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :容許在市鎮擁有的道路上建造直通型車站
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :可在競爭對手所有的道路上建設路邊車站：{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :容許在其他公司擁有的道路上建造直通型車站
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :允許按 Ctrl 鍵興建相鄰車站： {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :容許不同車站相互鄰接
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :允許載入多個 NewGRF 車輛組：{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :此為對舊版 NewGRF 包的相容設定。如果您並非完全清楚其功用，請勿停用。
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}當此項目為交通工具時不能修改此設定
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :基礎建設維護： {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :如啟用此選項，基礎建設會產生維護成本。該成本的增長會根據公司基礎建設的規模而加倍增大，因此該設定對大公司的影響比對小公司更大
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :機場永不過期：{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :如啟用此選項，所有機場一經面世，就永遠可以選擇建設
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :當交通工具消失時發出警告：{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :當交通工具走失時發出警告：{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :切換是否顯示「交通工具無法到達指定目的地」的訊息
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :檢查交通工具指令：{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :如啟用此選項，系統會定時檢查交通工具獲指派的指令，並在檢測到明顯異常的時候顯示訊息
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :否
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :是，不過被停止的交通工具除外
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :所有交通工具
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :當交通工具收入為負時警告：{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :如啟用此選項，系統會為上一年度賺不到錢的交通工具顯示訊息
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :運輸工具永不過期：{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :如啟用此選項，所有交通工具一經面世，就永遠可以選擇建造
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :交通工具自動翻新: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :如啟用此選項，所有交通工具如在符合更換條件時進入維修設施，會被更換
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :自動更換年齡到達使用期限{STRING}的交通工具
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :如交通工具距離使用期限的時間符合指定的值，當它進入維修設施後便會被自動更換
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :前 {COMMA} 個月
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :後 {COMMA} 個月
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :自動翻新所需最低餘額：{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :如果公司銀行賬戶內的存款低於該設定的值，系統不會自動更換交通工具
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :錯誤訊息持續時間： {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :設定所有以紅色對話窗顯示的錯誤訊息之持續時間。請注意有些較嚴重的錯誤訊息必須手動關閉
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} 秒
+STR_CONFIG_SETTING_HOVER_DELAY                                  :顯示工具提示： {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :設定是否在游標處於工具按鈕之上時顯示工具使用提示。如停用此選項，玩家仍可在工具按鈕上右撳鼠键以顯示工具使用提示
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :游標在按鈕之上停留 {COMMA} 秒
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :右撳
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :於標籤顯示市鎮人口：{STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :在地圖的市鎮標籤上顯示市鎮人口
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :圖像上的線條之粗細值： {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :設定圖像上的線條之粗細值。較幼細的線條能較準確地顯示數值，而較粗大的線較容易看到和分辨
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :地形產生器：{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :原版
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :煉油廠與地圖邊緣之最遠距離： {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :僅於地圖邊緣建造煉油廠，在島嶼型地圖中它們將處於海邊
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪線高度：{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地形起伏度 (只適用於 TerraGenesis)：{STRING}
@@ -1216,21 +1268,32 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :如果停用此
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}北邊的地圖邊緣有一格以上的區塊非空地
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}邊緣有一格以上的區塊非水域
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :車站最大直徑： {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :車站單一方向可伸展的最大長度 (單位為方格)。請注意設定值過高會令遊戲變慢
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :直升機於直升機坪自動維修：{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :使直升機在著地時自動維修，即使該直升機場或機場沒有維修設施亦然
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :地形工具列與鐵軌／道路／水道／機場建設合併：{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :設定是否在開啟建設交通設施的工具列時，同時開啟地形工具列
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :小地圖要顯示的地形顏色：{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :設定在小地圖上顯示不同地形所用的顏色
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :綠
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :暗綠
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :紫
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :反轉捲軸方向：{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :設定在右撳拖曳滑鼠時的系統反應。如停用此選項，移動滑鼠時會移動顯示範圍 (即影像的移動方向與滑鼠的移動方向相反)。如啟用此選項，移動滑鼠時會移動顯示地圖 (即影像的移動方向與滑鼠的移動方向相同)
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :視野平滑移動：{STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :設定在小地圖中點選一個位置時，主視野的顯示反應。如啟用此選項，影像會移動直至到達點選的位置；否則影像會直接跳到點選的位置
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :使用某些建設工具時顯示度量提示：{STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :當點選建造工具後拖曳滑鼠時，是否顯示兩端的方格距離及高度差異
 STR_CONFIG_SETTING_LIVERIES                                     :顯示運輸公司的自訂配色：{STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :設定是否准許為個別交通工具種類指定配色 (而非為全公司的所有交通工具指定同一種配色)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :不顯示
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :自家公司
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :所有公司
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :按 <ENTER> 鍵與小隊交談：{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :傾向以 <ENTER> 鍵開啟小隊交談功能： {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :選擇是否以 <ENTER> 鍵取代 <Ctrl+ENTER> 鍵作切換公眾交談窗與公司內部交談窗之用
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :滑鼠滾輪作用： {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :啟用以二維滑鼠滾輪捲動的支援功能
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :放大地圖
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :捲動地圖
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :關閉
@@ -1244,38 +1307,54 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :單撳 (選定�
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :單撳 (立刻)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :右鍵模擬：{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :選擇模擬右撳鼠鍵的方法
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command 鍵
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control 鍵
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :無
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :滑鼠左鍵捲動：{STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :容許以左撳並拖曳滑鼠捲動地圖。此選項對使用觸控螢幕進行捲動動作很有幫助
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :使用 {STRING} 時間格式作為存檔檔名
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :在存檔的檔名中使用的日期格式
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :長格式 (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :短格式 (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :國際格式 (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :當 NewGRF 套包沒有指定配色時，使用的預設配色： {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :為沒有指定配色的 NewGRF 套包設定預設配色
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS色盤
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows色盤
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :自動在開始新遊戲時暫停：{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :如啟用此選項，遊戲在開始時會自動暫停，方便玩家詳細觀察地圖
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :當暫停時允許: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :選擇遊戲暫停時可以進行的動作
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :無動作
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :所有非建設指令
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :所有，除了場景變更動作外
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :所有動作
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :使用進階交通工具清單： {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :啟用可以為交通工具分組的進階交通工具清單
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :使用裝載進度指示：{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :顯示時刻表時以 Tick 取代日為單位：{STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :選擇是否在交通工具裝卸的時候顯示裝載狀況
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :顯示時刻表時以刻度數目取代日為單位：{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :在時刻表上以刻度數目取代日數顯示運行時間
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :顯示時刻表排定的到離時間：{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :在時刻表上顯示預料的到站、出發時間
 STR_CONFIG_SETTING_QUICKGOTO                                    :快速建立交通工具調度命令：{STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :設定是否在打開指令視窗時自動選取「前往」按鈕
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :預設的鐵軌種類 (將在新遊戲／載入遊戲時生效)：{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :設定開始新遊戲或載入遊戲後預設選擇的軌道種類。「最先可用的軌道」指最早出現而可用的軌道種類；「最新可用的軌道」指最後出現而可用的軌道種類；「最常用的軌道」指遊戲中使用最多的軌道種類
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :最先可用的軌道
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :最新可用的軌道
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :最常用的軌道
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :顯示列車佔用的路徑：{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :設定是否在有列車預留的軌道著色，使玩家更清楚觀察到列車經過路徑號誌時預留的路徑
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :使建設工具在建造後仍保持啟用狀態：{STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :設定是否在完成建造橋樑、隧道或其他基礎建設後保持點選有關的工具按鈕
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :將公司財務視窗的收支分組顯示：{STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :決定是否將公司財務視窗內的收支項目分組顯示
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :新聞提示: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :總結新訊息時播放音效
@@ -1295,15 +1374,24 @@ STR_CONFIG_SETTING_SOUND_AMBIENT                                :環境: {STRING
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放夷平地面、工廠和城鎮的環境音效
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :當沒有適合的可用交通工具時，禁止建造基礎建設: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :如啟用此選項，基礎建設只會在有使用它的交通工具可供選擇時出現，避免玩家浪費時間和金錢去建造無法使用的基礎建設
 STR_CONFIG_SETTING_MAX_TRAINS                                   :公司可擁有最大列車數量：{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :每所公司擁有的列車數量上限
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :公司可擁有最大車輛數量：{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :每所公司擁有的面車輛 (包括電車) 數量上限
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :公司可擁有最大飛機數量：{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :每所公司擁有的飛機數量上限
 STR_CONFIG_SETTING_MAX_SHIPS                                    :公司可擁有最大船舶數量：{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :每所公司擁有的船舶數量上限
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :不允許電腦使用鐵路：{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :如啟用此選項，電腦玩家將無法建造列車
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :不允許電腦使用車輛：{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :如啟用此選項，電腦玩家將無法建造路面車輛 (包括電車)
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :不允許電腦使用飛機：{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :如啟用此選項，電腦玩家將無法建造飛機
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :不允許電腦使用船舶：{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :如啟用此選項，電腦玩家將無法建造船舶
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :預設設定檔： {STRING}
 STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :選擇隨機 AI 與新 AI 或遊戲腳本使用的預設設定檔
@@ -1312,11 +1400,28 @@ STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :中等
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :困難
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :多人遊戲中允許電腦 AI 加入：{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :容許 AI 電腦玩家參與多人遊戲
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :不令腳本代碼停運的最大代碼數量： {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :設定每個計算循環之中，每一句代碼最多可進行多少個計算步驟
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :維護間隔以百分比 (%) 計算：{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :選擇啟動交通工具自動前往維修設施進行維護的條件：要麼以上次進行維修的時距決定，要麼以交通工具可靠度的下降百分比 (相對於其最大可靠度而言) 決定
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :預設的列車維護作業時距： {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :設定預設的列車維護作業時距。所有沒有指定維護作業時距的列車都會使用這個預設值
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} 日/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :停用
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :預設的路面車輛維護作業時距： {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :設定預設的路面車輛維護作業時距。所有沒有指定維護作業時距的路面車輛都會使用這個預設值
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :預設的飛機維護作業時距： {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :設定預設的飛機維護作業時距。所有沒有指定維護作業時距的飛機都會使用這個預設值
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :預設的船舶維護作業時距： {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :設定預設的船舶維護作業時距。所有沒有指定維護作業時距的船舶都會使用這個預設值
 STR_CONFIG_SETTING_NOSERVICE                                    :如果停用故障，交通工具不自動維護：{STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :如果啟用此選項，而且交通工具不會故障，它們將不會獲得維護
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :開啟列車車廂速限：{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :如啟用此選項，無動力車廂的限速會影響列車的極速
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :停用電氣化鐵路：{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :如啟用此選項，電動列車可於普通軌道上行走，毋需鋪設電氣化軌道
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :首輛交通工具抵達玩家的車站: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :當首輛交通工具抵達玩家站牌時顯示報紙
@@ -1354,42 +1459,75 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :摘要
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :詳細
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :彩色報紙登場年份：{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :設定報紙轉用彩色印刷的年份。在此之前，所有在報紙上的圖像皆為黑白
 STR_CONFIG_SETTING_STARTING_YEAR                                :開始年份：{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :開啟平滑經濟模式 (更多、更小的變動)：{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :如啟用此選項，工業會較頻繁地更改其產量，但幅度則較輕微。此選項不會影響由 NewGRF 提供的工業種類
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :允許購買其它公司的股票：{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :啟用此選項以容許公司買賣股票。一所公司必須達到一定的年齡方能買賣股票
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :轉運服務所得的收入百分比： {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :設定進行轉運的交通工具在卸載被轉運的貨物時獲得的收入佔貨物總收入的百分比。此選項讓玩家更有效地控制收入分配方式
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :拖曳滑鼠時，每隔 {STRING}設置一個號誌
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :設定拖曳滑鼠時，每隔多遠建造一個號誌。如果拖曳的路徑上遇到別的號誌、彎位或道岔，系統只會在直至該障礙物之前的軌道上建造號誌
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} 格
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :拖曳滑鼠時設置號誌時，各號誌之間保持相同的距離： {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :選擇當進行 Ctrl+拖曳 的動作建造號誌時，系統產生的反應。如停用此選項，系統會在橋樑或隧道的出入口設置號誌，避免出現過長的無號誌路段；如啟用此選項，系統會每隔若干格 (可在「號誌工具列」中設定有關數量) 設置一個號誌，方便玩家對齊平行軌道上的號誌位置。
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :自動在指定年份前建造懸臂號誌：{STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :設定使用燈號號誌的年份。在遊戲進行到那一年之前，系統會預設豎立懸臂號誌
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :啟用號誌介面：{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :設定是否顯示「號誌工具列」。如否，玩家須按下 Ctrl 鍵並同時單撳已建置的號誌以更換號誌類型
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :預設的號誌種類：{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :預設建造的號誌種類
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :閉塞號誌
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :路徑號誌
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :單向路徑號誌
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :按住 Ctrl 點選號誌時要切換的號誌種類：{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :選擇可透過 Ctrl+單撳 更換的號誌類型
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :僅限閉塞號誌
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :僅限路徑號誌
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :所有號誌
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :新市鎮的道路配置：{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :設定市鎮的道路規劃配置
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :原版
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :較佳道路
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :２x２網格
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :３x３網格
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :隨機
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :市鎮可以興建道路：{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :此選項決定是否容許市鎮自行興建道路
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :允許市鎮建設平交道：{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :啟用此選項以容許市鎮自行興建平交道
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :允許市鎮限制機場噪音：{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :如停用此選項，只可在每座市鎮興建最多兩座機場。如啟用此選項，在某市鎮興建機場的數目上限由一個綜合的「噪音係數」決定，該係數本身取決於市鎮的大小、機場大小及與市鎮本身的距離等
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :於遊戲中興建新市鎮：{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :如啟用此選項，玩家可自行興建新市鎮
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :禁止
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :允許
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :允許，可自訂市鎮道路配置
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :遊戲中產生樹木的地點：{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :控制遊戲內是否隨意種植樹木。此選項可能會影響一些依賴樹木的工業 (例如熱帶氣候的伐木場)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :不產生 {RED}(伐木場會停止運作)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :只在雨林區產生
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :到處產生
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :主工具列位置：{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :設定主工具列在螢幕頂部的位置
 STR_CONFIG_SETTING_STATUSBAR_POS                                :狀態列顯示位置：{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :不貼齊視窗的最大數量：{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :設定狀態列在螢幕底部的位置
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :視窗自動對齊半徑： {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :當一個被移動或縮放的視窗與任何視窗的距離低於此選項的值，被移動或縮放的視窗會自動對齊鄰近的視窗
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} 像素
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :停用
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :一般視窗的數量上限：{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :此選項設定在螢幕上同時存在的一般視窗數目上限。如螢幕上的視窗數目達到此選項的設定值，玩家再開啟新視窗時，系統會自動關閉最早開啟的視窗
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :停用
+STR_CONFIG_SETTING_ZOOM_MIN                                     :最高放大倍數： {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :定義視野可達到的最高放大倍數。請注意：較高的值需要較多記憶體以保持遊戲運行暢順
+STR_CONFIG_SETTING_ZOOM_MAX                                     :最遠縮小倍數： {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :定義視野可達到的最高縮小倍數。請注意：較高的值可能會令遊戲速度變慢
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :正常
@@ -1397,11 +1535,13 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :市鎮成長速度：{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :市鎮成長速度
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :停滯
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :慢
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :正常
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :快
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :非常快
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :城市佔全部市鎮之比例： {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初始城市規模倍率：{STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :鋪設道路時移除不合理的路面：{STRING}
 
@@ -2651,7 +2791,7 @@ STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :中型廣告活
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :大型廣告活動
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :出資重建當地道路
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :建造公司所有人的雕像
-STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :出資建造新建築物
+STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :資助市鎮建設
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :購買專屬運輸權
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :向地方政府行賄
 
@@ -2660,7 +2800,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}開始�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}開始進行大型地方廣告活動，為您的運輸服務吸引更多乘客與貨物。{}費用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}出資重建市鎮內道路網。將對往後六個月的道路運輸造成可觀的衝擊。{}費用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}建造雕像紀念您的公司。{}費用：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}在此市鎮內建造新的商業建築。{}費用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}出資協助市鎮建造新的商業建築。{}費用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}購買此市鎮一年的專屬運輸權。地方政府將只讓乘客與貨物使用您的運輸服務。{}費用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}冒著被抓到嚴懲的風險，向地方政府行賄以提高評價{}費用：{CURRENCY_LONG}
 

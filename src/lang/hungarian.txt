@@ -466,6 +466,7 @@ STR_GRAPH_MENU_HIGHSCORE                                        :Rekord Tábla
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Gazdasági épületek listája
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Ipari lánc
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Új gazdasági épület építése
 ############ range ends here
 
@@ -1123,6 +1124,7 @@ STR_CONFIG_SETTING_RESTRICT_BASIC                               :Alapbeállítá
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Haladó beállítások
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Szakértő beállítások / minden beállítás
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Beállítások az eredetitől eltérő értékekkel
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Beállítosok amelyeknek a jelenlegi értéke eltér az eredetitől
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Minden beállítás
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Kliens beállítások (nincs mentésben tárolva; minden játékot érintenek)
