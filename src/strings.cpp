@@ -2063,12 +2063,12 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 	{
 		if (this->i >= TAB_COUNT) return NULL;
 
-		const char *ret = _langpack_offs[_langtab_start[i] + j];
+		const char *ret = _langpack_offs[_langtab_start[this->i] + this->j];
 
 		this->j++;
-		while (this->j >= _langtab_num[this->i] && this->i < TAB_COUNT) {
-			i++;
-			j = 0;
+		while (this->i < TAB_COUNT && this->j >= _langtab_num[this->i]) {
+			this->i++;
+			this->j = 0;
 		}
 
 		return ret;

@@ -175,6 +175,8 @@ int GetWidgetFromPos(const Window *w, int x, int y)
  */
 void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, FrameFlags flags)
 {
+	assert(colour < COLOUR_END);
+
 	uint dark         = _colour_gradient[colour][3];
 	uint medium_dark  = _colour_gradient[colour][5];
 	uint medium_light = _colour_gradient[colour][6];

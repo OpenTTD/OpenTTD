@@ -163,13 +163,13 @@ static inline bool IsCargoInClass(CargoID c, CargoClass cc)
  * @param var Reference getting the cargospec.
  * @see CargoSpec
  */
-#define FOR_ALL_SORTED_CARGOSPECS(var) for (uint8 index = 0; var = _sorted_cargo_specs[index], index < _sorted_cargo_specs_size; index++)
+#define FOR_ALL_SORTED_CARGOSPECS(var) for (uint8 index = 0; index < _sorted_cargo_specs_size && (var = _sorted_cargo_specs[index], true) ; index++)
 
 /**
  * Loop header for iterating over 'real' cargoes, sorted by name. Phony cargoes like regearing cargoes are skipped.
  * @param var Reference getting the cargospec.
  * @see CargoSpec
  */
-#define FOR_ALL_SORTED_STANDARD_CARGOSPECS(var) for (uint8 index = 0; var = _sorted_cargo_specs[index], index < _sorted_standard_cargo_specs_size; index++)
+#define FOR_ALL_SORTED_STANDARD_CARGOSPECS(var) for (uint8 index = 0; index < _sorted_standard_cargo_specs_size && (var = _sorted_cargo_specs[index], true); index++)
 
 #endif /* CARGOTYPE_H */
