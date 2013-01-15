@@ -286,8 +286,8 @@ STR_SORT_BY_COST                                                :가격
 STR_SORT_BY_POWER                                               :힘
 STR_SORT_BY_TRACTIVE_EFFORT                                     :견인 효과
 STR_SORT_BY_INTRO_DATE                                          :도입 날짜
-STR_SORT_BY_RUNNING_COST                                        :운행비용
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :운행비용 분의 힘
+STR_SORT_BY_RUNNING_COST                                        :{G=f}유지비
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :유지비 분의 힘
 STR_SORT_BY_CARGO_CAPACITY                                      :화물 수송량
 STR_SORT_BY_RANGE                                               :항속거리
 
@@ -1091,8 +1091,8 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :최대 초기 �
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :한 회사가 최대한 빌릴 수 있는 (계좌에 인플레이션을 고려하지 않고 들어오는) 대출금의 양을 조절할 수 있습니다.
 STR_CONFIG_SETTING_INTEREST_RATE                                :대출 금리: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :대출 금리입니다. 인플레이션 옵션에 영향을 받습니다.
-STR_CONFIG_SETTING_RUNNING_COSTS                                :운행 비용: {STRING}
-STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :차량의 운행 비용과 기반시설 유지비의 수준을 설정하십시오.
+STR_CONFIG_SETTING_RUNNING_COSTS                                :유지비: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :차량과 기반시설의 유지비 수준을 설정하십시오.
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :건설 속도: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :AI의 건설 행동량을 제한하여 건설 속도를 조절할 수 있습니다.
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :차량 고장 빈도수: {STRING}
@@ -1466,7 +1466,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :부드러운 �
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :이 옵션을 켜면, 산업 시설의 생산량이 적은 양으로, 자주 바뀌게 됩니다. NewGRF로 추가한 산업시설을 이용할 경우 이 옵션은 효과가 없습니다.
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :다른 회사의 지분을 사는 것을 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :이 옵션을 켜면, 회사의 지분을 거래할 수 있게 됩니다. 회사의 지분을 거래하려면 해당 회사가 어느 정도 오래되어야 합니다.
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :수송 관계상 지불해야 할 구간 수익의 비율: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :환승시 벌어들이는 중간 수익의 비율: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :더 많은 수익을 내기 위해, 수송 관계상 중간 구간에게 주어진 수익의 비율을 설정합니다.
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :신호기를 드래그로 설치하는 경우: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :신호기를 드래그할 때, 다음 장애물(신호기, 분기점 등)을 만날 때까지 신호기가 설치될 간격을 설정합니다.
@@ -2984,10 +2984,10 @@ STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}지출/�
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}건설
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}신규 차량 구입
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}열차 운행비용
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}자동차 운영비용
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}항공기 운행비용
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}선박 운행비용
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}열차 유지비
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}자동차 유지비
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}항공기 유지비
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}선박 유지비
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}유지보수비
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}열차 수익
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}자동차 수익
@@ -3176,7 +3176,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}속력: 
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}속력: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}바다에서의 속도: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}운하/강에서의 속도: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}운행비용: {GOLD}{CURRENCY_LONG}/년
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}유지비: {GOLD}{CURRENCY_LONG}/년
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}수송량: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(개조 가능)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}개발: {GOLD}{NUM}{BLACK} 수명: {GOLD}{COMMA}년
@@ -3307,12 +3307,12 @@ STR_ENGINE_PREVIEW_SHIP                                         :{G=m}선박
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}모노레일 기관차
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}자기부상열차
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}가격: {CURRENCY_LONG} 무게: {WEIGHT_SHORT}{}속도: {VELOCITY}  힘: {POWER}{}운행비용: {CURRENCY_LONG}/년{}수송량: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}가격: {CURRENCY_LONG} 무게: {WEIGHT_SHORT}{}속도: {VELOCITY}  힘: {POWER}{}유지비: {CURRENCY_LONG}/년{}수송량: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}비용: {CURRENCY_LONG} 무게: {WEIGHT_SHORT}{}속력: {VELOCITY}  힘: {POWER}  최대 T.E.: {6:FORCE}{}유지비: {4:CURRENCY_LONG}/년{}용량: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}가격: {CURRENCY_LONG} 최고속력: {VELOCITY}{}수송량: {CARGO_LONG}, {CARGO_LONG}{}운행비용: {CURRENCY_LONG}/년
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}가격: {CURRENCY_LONG} 최고속력: {VELOCITY}{}수송량: {CARGO_LONG}{}운행비용: {CURRENCY_LONG}/년
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY} 항속거리: {COMMA} 칸{}수용량: {CARGO_LONG}, {CARGO_LONG}{}운행비용: {CURRENCY_LONG}/년
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY} 항속거리: {COMMA} 칸{}수용량: {CARGO_LONG}{}운행비용: {CURRENCY_LONG}/년
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}가격: {CURRENCY_LONG} 최고속력: {VELOCITY}{}수송량: {CARGO_LONG}, {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}가격: {CURRENCY_LONG} 최고속력: {VELOCITY}{}수송량: {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY} 항속거리: {COMMA} 칸{}수용량: {CARGO_LONG}, {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY} 항속거리: {COMMA} 칸{}수용량: {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING}{G 0 "을" "를"} {STRING}{G 1 "으" ""}로 교체
@@ -3424,7 +3424,7 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}자동�
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}선박 이름 지정
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}항공기 이름 지정
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}연령: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY_LONG}/년
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}연령: {LTBLUE}{STRING}{BLACK}   유지비: {LTBLUE}{CURRENCY_LONG}/년
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA}년 ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}년 ({COMMA})

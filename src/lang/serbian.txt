@@ -585,10 +585,12 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Stope naplate t
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabela lige preduzeća
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaljan pregled poslovanja
+STR_GRAPH_MENU_HIGHSCORE                                        :Tabela najboljih rezultata
 ############ range ends here
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Spisak fabrika
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Lanci fabrika
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finansiranje nove fabrike
 ############ range ends here
 
@@ -1020,6 +1022,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za prevoz {STRING.gen} između stanica {STRING} i {STRING} zarada će vredeti četvorostruko više u narednih godinu dana!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN} - haos na ulicama!{}{}Program rekonstrukcije puteva sponzorisan od strane preduzeća {STRING} donosi vozačima 6 meseci agonije!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Prevoznički monopol!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Vlasti grada {TOWN} su potpisale ugovor sa preduzećem {STRING} o ekskluzivnom pravu prevoza na godinu dana!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pogled{COMMA}
@@ -1062,6 +1066,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turska Lira (TR
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovačka Kruna (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilski Real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estonska Kruna (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litvanski Litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Južnokorejski Von (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Južnoafrički Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sopstvena...
 ############ end of currency region
 
@@ -1229,7 +1236,17 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nisu dos
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredna Podešavanja
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Proširi sve
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skupi sve
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(nema objašnjenja)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Podrazumevana vrednost: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Vrsta podešavanja: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Prikaži:
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Osnovna podešavanja
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Napredna podešavanja
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspertska / sva podešavanja
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Podešavanja sa vrednošću različitom od podrazumevane
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Ograničava donju listu na određen tip podešavanja
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Sva podešavanja
@@ -1255,6 +1272,18 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Levo
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sredina
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Desno
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Najveći zajam na početku: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Najveći iznos koji preduzeće može da pozajmi (ne uzimajući u obzir inflaciju)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Kamatna stopa: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Kamatna stopa na zajam; ako je omogućena, kontroliše inflaciju
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Rashod: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Brzina gradnje: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Kvarovi vozila: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Množilac subvencije: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Podešava koliko se plaća za subvencionisane konekcije
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Troškovi gradnje: {STRING}
+STR_CONFIG_SETTING_RECESSIONS                                   :Recesije: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ako je omogućeno, recesije mogu da se jave svakih nekoliko godina. Proizvodnja je značajno smanjena tokom recesije (vraća se na prethodni nivo kada se recesija završi)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Onemogući okretanje voza u stanicama: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ako je uključeno i ako postoji kraća putanja do sledećeg odredišta, vozovi se neće okretati u neterminalnim stanicama
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofe: {STRING}
@@ -1275,17 +1304,26 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Količina dima/
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Podešava količinu dima ili varnica koje emituju vozila
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model ubrzavanja vozova: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model ubrzavanja drumskih vozila: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Zabranjeno okretanje brodova i vozova za 90 stepeni: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Dozvoljeno sjedninjavanje udaljenih stanica: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Koristiti poboljšan algoritam utovara: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Postepeno utovarivanje u vozilo: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflacija: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Dostavljanje tovara na stanicu samo ako ima potražnje: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Najveća dužina mosta: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Najveća dužina tunela: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Metod izgradnje finansiranih primarnih industrija: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nikakav
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :uobičajan
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :istraživački
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Ravna površina oko industrija: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Dozvoljeno više industrija iste vrste na teritoriji jednog naselja: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Prikaži signale: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Odaberi na kojoj strani koloseka se postavlja signalizacija
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Na levoj
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Na strani na kojoj se vozi
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Na desnoj
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Prikazivanje finansijskog stanja na kraju godine: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nove naredbe su postavljene sa 'direktno': {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nove naredbe zaustavljaju voz na {STRING} stanice
@@ -1300,6 +1338,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Dozvoljeno fina
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Dozvoljeno finansiranje rekonstrukcije lokalnih puteva: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Dozvoljeno slanje novca drugim preduzećima: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Množilac težine tovara za simulaciju opterećenja vozova: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Broj avionskih nesreća: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nikakav
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :umanjen
@@ -1320,7 +1359,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :da, osim zausta
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :svih vozila
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Upozorenje ukoliko vozilo pravi gubitke: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila su uvek dostupna: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatksa zamena kada vozilo ostari: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatska zamena kada vozilo ostari: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Najmanja potrebna količina novca za zamenu: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Prikazivanje broja populacije pored naziva naselja: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Debljina linija u grafikonima: {STRING}
@@ -1584,6 +1623,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor S
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Partija preko Mreže
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcije
+STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela najboljih rezultata
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Napredna Podešavanja
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Podešavanja
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Spisak Dodataka na Mreži
@@ -1603,6 +1643,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Izbor su
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Izbor 'zemlje igračaka'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Prikazuje opcije igre
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Prikaži tabelu najboljih rezultata
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Prikazuje prozor sa detaljnim podešavanjima
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikazuje NewGRF podešavanja
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pregled novih i ažureiranih dodatka za preuzimanje
@@ -2183,13 +2224,13 @@ STR_STATION_CLASS_WAYP                                          :Putanje
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Izbor Signalizacije
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blok Signalizacija (semafor){}Ovo je najosnovnija vrsta signalizacije, dozvoljava samo jedan voz da bude u istoj deonici
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ulazna Signalizacija (semafor){}Otvoren prolaz ukoliko postoji jedan ili više otvorenih izlaznih signalizacija sa nastupajuće deonica. U suprotnom je zatvoren
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ulazna Signalizacija (semafor){}Otvoren prolaz ukoliko postoji jedna ili više otvorenih izlaznih signalizacija sa nastupajuće deonice. U suprotnom je zatvoren
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Izlazna Signalizacija (semafor){}Ponaša se isto kao i blok signalizacija ali je neophodan za uparivanje sa ulaznom i/ili kombinovanom signalizacijom
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinovana Signalizacija (semafor){}Kombinovana signalizacija se ponaša kao ulazna i izlazna signalizacija. Ovim se omogućava gradnja velikih "stabala" predsignalizacije
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Putna Signalizacija (semafor){}Putna signalizacija omogućava da više vozova istovremeno uđe u istu deonicu, ukoliko mogu da obezbede put do zasebnog zaustavnog koloseka. Standardnu putnu signalizaciju moguće je proći i sa suprotnog smera
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Jednosmerna Putna Signalizacija (semafor){}Putna signalizacija omogućava da više vozova istovremeno uđe u istu deonicu, ukoliko mogu da obezbede put do zasebnog zaustavnog koloseka. Jednosmerna putna signalizacija zabranjuje prolaz sa suprotnog smera
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blok Signalizacija (svetlosni semafor){}Ovo je najosnovnija vrsta signalizacije, dozvoljava samo jedan voz da bude u istoj deonici
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Ulazna Signalizacija (svetlosni semafor){}Otvoren prolaz ukoliko postoji jedan ili više otvorenih izlaznih signalizacija sa nastupajuće deonica. U suprotnom je zatvoren
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Ulazna Signalizacija (svetlosni semafor){}Otvoren prolaz ukoliko postoji jedna ili više otvorenih izlaznih signalizacija sa nastupajuće deonice. U suprotnom je zatvoren
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Izlazna Signalizacija (svetlosni semafor){}Ponaša se isto kao i blok signalizacija ali je neophodan za uparivanje sa ulaznom i/ili kombinovanom signalizacijom
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinovana Signalizacija (svetlosni semafor){}Kombinovana signalizacija se ponaša kao ulazna i izlazna signalizacija. Ovim se omogućava gradnja velikih "stabala" predsignalizacije
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Putna Signalizacija (svetlosni semafor){}Putna signalizacija omogućava da više vozova istovremeno uđe u istu deonicu, ukoliko mogu da obezbede put do zasebnog zaustavnog koloseka. Standardnu putnu signalizaciju moguće je proći i sa suprotnog smera
@@ -2344,7 +2385,7 @@ STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Osnivanj
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Nasumično naselje
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Osnuj naselje na nasumičnoj lokaciji
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mnogo nasumičnih naselja
-STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Popunjava teren sa nasumično rasporđenim naseljima
+STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Popunjava teren sa nasumično raspoređenim naseljima
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Ime grada:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Unos imena grada
@@ -2391,6 +2432,9 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Lanac
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Prikazuje lanac snabdevanja industrija
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Obeleži na karti
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Obeležava prikazane industrije i na karti
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Odaberite tovar
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Odaberite fabriku
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Odaberite fabriku koju želite da prikažete
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Prikaži podatke o zemljištu
@@ -2900,6 +2944,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Prihvata
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Prikaži spisak tovara koje stanica prihvata
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Prihvata: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} je kupio ekskluzivna prava prevoza u ovom gradu.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ocene
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Prikaži ocene stanice
