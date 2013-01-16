@@ -454,6 +454,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :全地图截图
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :关于 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite 对齐
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :切换边界框
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :切换脏方块的颜色
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1137,6 +1138,7 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :“打开”时
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :使用进阶的装货算法：{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :“打开”时，多辆车在一个车站依次排队装货，只有当货物足够装满第一列车时才同时为下一列车装货
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :装货时循序渐进：{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :根据车辆的特定装货时间来逐渐装货, 而不要根据货物量在一定时间内一次装满全部货物
 STR_CONFIG_SETTING_INFLATION                                    :通货膨胀：{STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :“打开”通货膨胀时，支出比收入增长得稍快
 STR_CONFIG_SETTING_SELECTGOODS                                  :仅在车站接受此货物时卸货：{STRING}
@@ -1146,6 +1148,7 @@ STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :建设桥梁时
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :隧道最大长度: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :建设隧道时允许的最大长度
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :原料工业建设方式： {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :建立重工业企业的的设定. '禁止'表示不能建立; '勘探'表示可以建立但是只能在地图上一随机处, 并可能会失败; '像别的工业一样'表示采矿业也能像其它加工业那样可以随意在任何地方建立.
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :不允许
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :同其他工业
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :探矿式
@@ -1288,7 +1291,9 @@ STR_CONFIG_SETTING_LIVERIES_NONE                                :不显示
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :本公司
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :所有公司
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :使用<ENTER>与团队交谈：{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :切换公司内部谈话和公开谈话为<ENTER> 或<Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :鼠标滚轮的作用：{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :可用二维鼠标滚轮进行屏幕滚动
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :缩放地图
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :滚动地图
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :关闭
@@ -1302,11 +1307,13 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :单击(当前�
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :单击 (立即)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :右键模拟： {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :选择模拟鼠标右键的方式
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :按住Command键 点击
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :按住Ctrl键 点击
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :关闭
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :左击滚动： {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :可用按住鼠标左键再拖拉的方法来进行屏幕滚动. 这对于触摸屏设备特别有用
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :使用 {STRING} 形式的文件名存档
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :游戏存档文件名中日期的格式
@@ -1394,6 +1401,8 @@ STR_CONFIG_SETTING_AI_PROFILE_HARD                              :困难
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :联机游戏时允许电脑玩家(AI)： {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :“打开”时联机游戏允许电脑玩家
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :可允许的最大的代码量(如超过则会令脚本被禁用):{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :脚本在一个回合中可进行计算步数的最大值
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :保养周期(百分数)： {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :选择触发车辆保养的条件，距离上一次保养的时间或者与最高可靠性的百分比
@@ -1456,6 +1465,8 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :启用平滑经
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :“打开”时，工业产量变化频繁而幅度小，如果工业是由NewGRF控制的，本选项不起作用
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :允许购买其他公司的股份：{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :“打开”时，允许买卖其它公司股份，但必须持有达到一定年限
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :转运系统中支付的利润百分比 {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :设定在转运系统中支付给前一环节的收入百分比, 从而对收入有更多的控制权
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :当拖动时，放置信号灯每隔：{STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :设置以拖动的方式建设时，自动放置信号灯时的间距，将以该间距放置信号灯，直到碰到障碍（信号灯，分支）
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA}格
@@ -1578,6 +1589,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}改变�
 STR_CONFIG_ERROR                                                :{WHITE}配置文件错误...
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... 函数错误 '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}...对 '{STRING}'设置了错误值'{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... 有多余字符在设定的结尾处'{STRING}'
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... 忽略 NewGRF '{STRING}': 重复的 GRF ID '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... 忽略了无效的 NewGRF '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :未找到
@@ -2737,6 +2749,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :未知的Action
 STR_NEWGRF_ERROR_INVALID_ID                                     :尝试使用非法ID (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 含有损坏的图形元素{}所有损坏的图形元素{}将显示为红色的问号（？）
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :具有多个Action 8 (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :图像读取时发生越界错误 (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}当前基础图组缺失参数.{}请进行修正
 STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}当前使用的基础图形包参数有误。{}请更新基础图形包。{}如果你正在使用 {YELLOW}OPENTTD的开发测试版{WHITE}，你需要 {YELLOW}相应配套的基础图形包。{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :GRF源文件不可访问 (sprite {3:NUM})
@@ -2923,6 +2936,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}接受
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}显示接受的货物列表
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}接受：{WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}这个车站在这个镇里享有独家经营权
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} 购买了本城镇专属经营权
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}评价
@@ -3315,6 +3329,7 @@ STR_REPLACE_VEHICLES_WHEN_OLD                                   :只替换旧的
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}点击这里开始根据选定的车辆进行更新
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}没有更新
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}请选择要更新的对象
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} 变老旧时
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}停止更新
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}点击这里可以停止继续更新车辆
 

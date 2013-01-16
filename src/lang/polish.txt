@@ -85,7 +85,7 @@ STR_CARGO_PLURAL_WOOD.b                                         :drewno
 STR_CARGO_PLURAL_WOOD.n                                         :drewnem
 STR_CARGO_PLURAL_WOOD.m                                         :drewnie
 STR_CARGO_PLURAL_WOOD.w                                         :drewno
-STR_CARGO_PLURAL_IRON_ORE                                       :Ruda żelaza
+STR_CARGO_PLURAL_IRON_ORE                                       :Ruda Żelaza
 STR_CARGO_PLURAL_IRON_ORE.d                                     :rudy żelaza
 STR_CARGO_PLURAL_IRON_ORE.c                                     :rudzie żelaza
 STR_CARGO_PLURAL_IRON_ORE.b                                     :rudę żelaza
@@ -204,7 +204,7 @@ STR_CARGO_PLURAL_COLA.b                                         :colę
 STR_CARGO_PLURAL_COLA.n                                         :colą
 STR_CARGO_PLURAL_COLA.m                                         :coli
 STR_CARGO_PLURAL_COLA.w                                         :colo
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Wata cukrowa
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Wata Cukrowa
 STR_CARGO_PLURAL_COTTON_CANDY.d                                 :waty cukrowej
 STR_CARGO_PLURAL_COTTON_CANDY.c                                 :wacie cukrowej
 STR_CARGO_PLURAL_COTTON_CANDY.b                                 :watę cukrową
@@ -239,7 +239,7 @@ STR_CARGO_PLURAL_PLASTIC.b                                      :plastik
 STR_CARGO_PLURAL_PLASTIC.n                                      :plastikiem
 STR_CARGO_PLURAL_PLASTIC.m                                      :plastiku
 STR_CARGO_PLURAL_PLASTIC.w                                      :plastiku
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Napoje gazowane
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Napoje Gazowane
 STR_CARGO_PLURAL_FIZZY_DRINKS.d                                 :napoi gazowanych
 STR_CARGO_PLURAL_FIZZY_DRINKS.c                                 :napojom gazowanym
 STR_CARGO_PLURAL_FIZZY_DRINKS.b                                 :napoje gazowane
@@ -305,7 +305,7 @@ STR_CARGO_SINGULAR_WOOD.b                                       :drewno
 STR_CARGO_SINGULAR_WOOD.n                                       :drewnem
 STR_CARGO_SINGULAR_WOOD.m                                       :drewnie
 STR_CARGO_SINGULAR_WOOD.w                                       :drewno
-STR_CARGO_SINGULAR_IRON_ORE                                     :Ruda żelaza
+STR_CARGO_SINGULAR_IRON_ORE                                     :Ruda Żelaza
 STR_CARGO_SINGULAR_IRON_ORE.d                                   :rudy żelaza
 STR_CARGO_SINGULAR_IRON_ORE.c                                   :rudzie żelaza
 STR_CARGO_SINGULAR_IRON_ORE.b                                   :rudę żelaza
@@ -423,7 +423,7 @@ STR_CARGO_SINGULAR_COLA.b                                       :colę
 STR_CARGO_SINGULAR_COLA.n                                       :colą
 STR_CARGO_SINGULAR_COLA.m                                       :coli
 STR_CARGO_SINGULAR_COLA.w                                       :colo
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Wata cukrowa
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Wata Cukrowa
 STR_CARGO_SINGULAR_COTTON_CANDY.d                               :waty cukrowej
 STR_CARGO_SINGULAR_COTTON_CANDY.c                               :wacie cukrowej
 STR_CARGO_SINGULAR_COTTON_CANDY.b                               :watę cukrową
@@ -458,7 +458,7 @@ STR_CARGO_SINGULAR_PLASTIC.b                                    :plastik
 STR_CARGO_SINGULAR_PLASTIC.n                                    :plastikiem
 STR_CARGO_SINGULAR_PLASTIC.m                                    :plastiku
 STR_CARGO_SINGULAR_PLASTIC.w                                    :plastiku
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Napój gazowany
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Napój Gazowany
 STR_CARGO_SINGULAR_FIZZY_DRINK.d                                :napoju gazowanego
 STR_CARGO_SINGULAR_FIZZY_DRINK.c                                :napojowi gazowanemu
 STR_CARGO_SINGULAR_FIZZY_DRINK.b                                :napój gazowany
@@ -498,7 +498,7 @@ STR_QUANTITY_BUBBLES                                            :{COMMA} bąbel{
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} toffi
 STR_QUANTITY_BATTERIES                                          :{COMMA} bateri{P a e i}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} plastiku
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} napo{P j je i} gazowan{P y e ych}
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} nap{P ój oje ojów} gazowan{P y e ych}
 STR_QUANTITY_N_A                                                :N/D
 
 # Two letter abbreviation of cargo name
@@ -547,7 +547,7 @@ STR_BAGS.n                                                      :{COMMA} workami
 STR_BAGS.m                                                      :{COMMA} workach
 STR_BAGS.w                                                      :{COMMA} worki
 STR_TONS                                                        :{COMMA} ton{P a "" ""}
-STR_LITERS                                                      :{COMMA} litr{P "" ów ów}
+STR_LITERS                                                      :{COMMA} litr{P "" y ów}
 STR_ITEMS                                                       :{COMMA} sztuk{P a i ""}
 STR_CRATES                                                      :{COMMA} skrzy{P nia nie ń}
 
@@ -598,9 +598,9 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtr:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Wpisz słowo filtru
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Wpisz słowo kluczowe dla listy filtru
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Wpisz słowo, wg którego filtrować listę
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Wybierz porządek sortowania (malejąco/rosnąco)
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Wybierz kolejność sortowania (malejąco/rosnąco)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Wybierz kryterium sortowania
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Wybierz kryteria filtrowania
 STR_BUTTON_SORT_BY                                              :{BLACK}Sortuj wg
@@ -608,12 +608,12 @@ STR_BUTTON_LOCATION                                             :{BLACK}Położe
 STR_BUTTON_RENAME                                               :{BLACK}Zmień nazwę
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zamknij okno
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tytuł okna - przeciągnij aby przesunąć okno
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tytuł okna - przeciągnij, aby przesunąć okno
 STR_TOOLTIP_SHADE                                               :{BLACK}Zwiń okno - pokaż tylko nagłówek
-STR_TOOLTIP_DEBUG                                               :{BLACK}Pokaż informacje debugerra z NewGRF
-STR_TOOLTIP_STICKY                                              :{BLACK}Zaznacza to okno jako niezamykane dla funkcji 'Zamknij wszystkie okna'
-STR_TOOLTIP_RESIZE                                              :{BLACK}Kliknij i przeciągnij by zmienić rozmiar okna
-STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Przełącz duży/mały rozmiar okna
+STR_TOOLTIP_DEBUG                                               :{BLACK}Pokaż informacje debugerra NewGRF
+STR_TOOLTIP_STICKY                                              :{BLACK}Zaznacz to okno jako niezamykalne przyciskiem 'Zamknij Wszystkie Okna'
+STR_TOOLTIP_RESIZE                                              :{BLACK}Kliknij i przeciągnij, by zmienić rozmiar okna
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Przełącz na duży/mały rozmiar okna
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Suwak - przesuwa listę w górę/w dół
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Pasek przewijania - przewija listę w prawo/w lewo
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Niszczenie budynków itp. w danym kwadracie terenu. Ctrl zaznacza obszar po przekątnej. Shift przełącza pomiędzy trybem burzenia a szacowaniem jego kosztów
@@ -635,7 +635,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Obszar: 
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populacja
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Liczba mieszkańców
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nazwa
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 # These are used in dropdowns
@@ -648,7 +648,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zysk w ostatnim
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Zysk w tym roku
 STR_SORT_BY_AGE                                                 :Wiek
 STR_SORT_BY_RELIABILITY                                         :Niezawodność
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Całkowita ładowność typu ładunku
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Całkowita ładowność po typie ładunku
 STR_SORT_BY_MAX_SPEED                                           :Prędkość maksymalna
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Wartość
@@ -656,10 +656,10 @@ STR_SORT_BY_LENGTH                                              :Długość
 STR_SORT_BY_LIFE_TIME                                           :Pozostały czas życia
 STR_SORT_BY_TIMETABLE_DELAY                                     :Opóźnienie rozkładu jazdy
 STR_SORT_BY_FACILITY                                            :Typ stacji
-STR_SORT_BY_WAITING                                             :Wartość czekającego ładunku
+STR_SORT_BY_WAITING                                             :Wartość oczekującego ładunku
 STR_SORT_BY_RATING_MAX                                          :Towar najwyższej wartości
 STR_SORT_BY_RATING_MIN                                          :Towar najniższej wartości
-STR_SORT_BY_ENGINE_ID                                           :ID pojazdu
+STR_SORT_BY_ENGINE_ID                                           :ID pojazdu (klasyczne sortowanie)
 STR_SORT_BY_COST                                                :Cena
 STR_SORT_BY_POWER                                               :Moc
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Siła pociągowa
