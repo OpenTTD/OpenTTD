@@ -814,7 +814,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}מתיי
 STR_NEWS_TRAIN_IS_STUCK                                         :איננה יכולה למצוא נתיב המשכה {WHITE}{VEHICLE}
 STR_NEWS_VEHICLE_IS_LOST                                        :הלכה לאיבוד {WHITE}{VEHICLE}
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :ריווחי {WHITE}{VEHICLE} שנה שעברה הם {CURRENCY_LONG}
-STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE}אינ{G "ו" "ה"} יכול{G "" "ה"} להגיע אל היעד הבא כי הוא מחוץ לטווח
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE}אינ{G 0 "ו" "ה"} יכול{G 0 "" "ה"} להגיע אל היעד הבא כי הוא מחוץ לטווח
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :כשלון בהתאמה מחדש הביא לעצירה של {WHITE}{VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{1:STRING}{}נכשל {NBSP}{0:VEHICLE} חידוש אוטומטי עבור
