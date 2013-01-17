@@ -3220,8 +3220,6 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 		return CIR_INVALID_ID;
 	}
 
-	grfmsg(1, "IndustriesChangeInfo: newid %u", indid);
-
 	/* Allocate industry specs if they haven't been allocated already. */
 	if (_cur.grffile->industryspec == NULL) {
 		_cur.grffile->industryspec = CallocT<IndustrySpec*>(NUM_INDUSTRYTYPES);
@@ -3560,8 +3558,6 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 		grfmsg(1, "AirportChangeInfo: Too many airports, trying id (%u), max (%u). Ignoring.", airport + numinfo, NUM_AIRPORTS);
 		return CIR_INVALID_ID;
 	}
-
-	grfmsg(1, "AirportChangeInfo: newid %u", airport);
 
 	/* Allocate industry specs if they haven't been allocated already. */
 	if (_cur.grffile->airportspec == NULL) {
