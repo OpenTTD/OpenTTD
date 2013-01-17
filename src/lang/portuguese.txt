@@ -2216,7 +2216,7 @@ STR_STATION_CLASS_WAYP                                          :Pontos de passa
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selecção de Sinal
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinal Normal (semáforo){}Este é o tipo mais básico de sinal, que só permite um comboio dentro da mesma linha ferroviária ao mesmo tempo.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de Entrada (semáforo){}Verde enquanto existir um ou mais sinais de saída verdes no seguimento da linha. De outro modo ficará vermelho.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de Entrada (semáforo){}Verde enquanto existir um ou mais sinais de saída verdes no seguimento da linha. Caso contrário, ficará vermelho
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de Saída (semáforo){}Funciona da mesma forma que o sinal normal mas é necessário para conseguir a cor correcta nos pré-sinais de entrada e combinado.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinal Combinado (semáforo){}O sinal combinado funciona como um sinal de entrada e de saída. Este permite construir grandes "árvores" de pré-sinais.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinal (semáforo){}Os sinais permitem que vários comboios utilizem a mesma linha desde que consigam chegar aos seus destinos em segurança. Sinais normais podem ser passados no sentido contrário.
@@ -2224,10 +2224,10 @@ STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinal de
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinal Normal(eléctrico){}Este é o tipo mais básico de sinal, que só permite um comboio dentro da mesma linha ferroviária ao mesmo tempo.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinal de Entrada (eléctrico){}Verde enquanto existir um ou mais sinais de saída verdes no seguimento da linha. De outro modo ficará vermelho.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de Saída (eléctrico){}Funciona da mesma forma que o sinal normal mas é necessário para conseguir a cor correcta nos pré-sinais de entrada e combinado.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal Combinado (eléctrico){}O sinal combinado funciona como um sinal de entrada e de saída. Este permite construir grandes "árvores" de pré-sinais.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal Combinado (eléctrico){}O sinal combinado funciona simplesmente como um sinal de entrada e de saída. Este permite construir grandes "árvores" de pré-sinais
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal (eléctrico){}Os sinais permitem que vários comboios entrem na mesma linha ao mesmo tempo, desde que consigam chegar ao seu destino em segurança. Sinais padrão podem ser passados no sentido contrário.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal de sentido único (eléctrico){}Um sinal de trajecto permite que mais de um comboio passe ao mesmo tempo um sinal se, o comboio conseguir reservar um caminho para onde posteriormente possa parar sem prejudicar o seguinte. Sinais de um único sentido não podem ser passados no sentido contrário.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter Sinal{}Quando seleccionado, ao fazer clique num sinal existente este será convertido no tipo e variante de sinal seleccionado, Ctrl+clique irá comutar a variante existente. Shift+Clique mostra estimativa do custo de conversão
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversão de Sinal{}Quando seleccionado, ao fazer clique num sinal existente este será convertido no tipo e variante de sinal seleccionado, Ctrl+clique irá comutar a variante existente. Shift+Clique mostra estimativa do custo de conversão
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densidade de sinais
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Diminuir densidade de sinais
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar densidade de sinais
@@ -2669,7 +2669,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Para Cim
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Move o ficheiro NewGRF seleccionado para cima na lista
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Para Baixo
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Move o ficheiro NewGRF seleccionado para baixo na lista
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Uma lista dos ficheiros NewGRF que estão instalados.
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Uma lista dos ficheiros NewGRF que estão instalados
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Definir parâmetros
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Mostrar parametros

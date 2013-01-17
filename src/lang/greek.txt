@@ -3254,52 +3254,52 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} {P όχημα οχήματα}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Τρένα - τραβήξτε ένα όχημα με αριστερό κλικ για να το προσθέστε/αφαιρέσετε από ένα τρένο, δεξί κλικ για πληροφορίες. Κρατήστε το Ctrl για να κάνετε και τις δυο λειτουργίες να ισχύσουν για τις ακόλουθες αλυσίδες
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Οχήματα δρόμου - δέξι κλικ σε ένα όχημα για πληροφορίες
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Πλοία - δέξι κλικ σε ένα πλοίο για πληροφορίες
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Αεροσκάφη - δέξι κλικ σε ένα αεροσκάφος για πληροφορίες
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Τρένα - τραβήξτε ένα όχημα με αριστερό κλικ για να το προσθέστε/αφαιρέστε από ένα τρένο, δεξί κλικ για πληροφορίες. Κρατήστε πατημένο το Ctrl για να κάνετε και τις δυο λειτουργίες να ισχύσουν για τις ακόλουθες αλυσίδες
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Οχήματα δρόμου - δεξί κλικ σε ένα όχημα για πληροφορίες
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Πλοία - δεξί κλικ σε ένα πλοίο για πληροφορίες
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Αεροσκάφη - δεξί κλικ σε ένα αεροσκάφος για πληροφορίες
 
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Μεταφέρετε το όχημα τρένου εδώ για το πουλήσετε
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Μεταφέρετε το όχημα δρόμου εδώ για το πουλήσετε
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Μεταφέρετε το πλοίο εδώ για το πουλήσετε
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Μεταφέρετε το αεροσκάφος εδώ για το πουλήσετε
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Τραβήξτε το όχημα τρένου εδώ για να το πουλήσετε
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Τραβήξτε το όχημα δρόμου εδώ για να το πουλήσετε
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Τραβήξτε το πλοίο εδώ για να το πουλήσετε
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Τραβήξτε το αεροσκάφος εδώ για να το πουλήσετε
 
-STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Σύρε την μηχανή του τρένου για να διαγραφεί ολόκληρο το τρένο
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Τραβήξτε τη μηχανή του τρένου εδώ για να πουληθεί ολόκληρο το τρένο
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Πουλήστε όλα τα τρένα στο αμαξοστάσιο
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Πουλήστε όλα τα οχήματα δρόμου στο αμαξοστάσιο
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Πουλήστε όλα τα πλοία στο ναυπηγείο
-STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Πουλήστε όλα τα αεροσκάφη του υποστέγου
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Πουλήστε όλα τα αεροσκάφη στο υπόστεγο
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Αυτόματη αντικατάσταση όλων των τρένων στο αμαξοστάσιο
-STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Αυτόματη αντικατάσταση όλων των οχήματων στο αμαξοστάσιο
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Αυτόματη αντικατάσταση όλων των οχημάτων στο αμαξοστάσιο
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Αυτόματη αντικατάσταση όλων των πλοίων στο ναυπηγείο
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Αυτόματη αντικατάσταση όλων των αεροσκαφών του υποστέγου
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Νεα τρένα-βαγόνια
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Νεα οχήματα
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Νεα Πλοία
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Νεο Αεροσκάφος
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Νέα τρένα-βαγόνια
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Νέα Οχήματα
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Νέα Πλοία
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Νέα Αεροσκάφη
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Αγοράστε ένα νέο όχημα τρένου
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Αγοράστε ένα νεο όχημα δρόμου
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Αγοράστε ένα νεο πλοίο
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Αγορά νέου οχήματος τρένου
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Αγορά νέου οχήματος δρόμου
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Αγορά νέου πλοίου
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Αγορά νέου αεροσκάφους
 
-STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Κλωνοποίηση τρένου
-STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Κλωνοποίηση όχηματος δρόμου
-STR_DEPOT_CLONE_SHIP                                            :{BLACK}Κλωνοποίηση πλοίου
-STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Κλωνοποίηση αεροσκάφους
+STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Κλωνοποίηση Τρένου
+STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Κλωνοποίηση Οχήματος
+STR_DEPOT_CLONE_SHIP                                            :{BLACK}Κλωνοποίηση Πλοίου
+STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Κλωνοποίηση Αεροσκάφους
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του τραίνου μαζί με τα όλα τα βαγόνια. Πατήστε αυτό το κουμπί και μετά σε κάποιο τραίνο μέσα ή έξω από το αμαξοστάσιο. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του οχήματος. Πατήστε αυτό το κουμπί και μετά σε κάποιο όχημα μέσα ή έξω από το αμαξοστάσιο. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του πλοίου. Πατήστε αυτό το κουμπί και μετά σε κάποιο πλοίο μέσα ή έξω από το ναυπηγείο. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του αεροσκάφους. Πατήστε αυτό το κουμπί και μετά σε κάποιο αεροσκάφος μέσα στο ή έξω από το υπόστεγο. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του τρένου μαζί με τα όλα τα βαγόνια. Πατήστε αυτό το κουμπί και μετά σε κάποιο τραίνο μέσα ή έξω από το αμαξοστάσιο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift +Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του οχήματος. Πατήστε αυτό το κουμπί και μετά σε κάποιο όχημα μέσα ή έξω από το αμαξοστάσιο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του πλοίου. Πατήστε αυτό το κουμπί και μετά σε κάποιο πλοίο μέσα ή έξω από το ναυπηγείο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του αεροσκάφους. Πατήστε αυτό το κουμπί και μετά σε κάποιο αεροσκάφος μέσα στο ή έξω από το υπόστεγο. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του αμαξοστάσιου. Ctrl+κλικ ανοίγει ένα νεο παράθυρο εμφάνισης στην τοποθεσία του αμαξοστάσιου
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του αμαξοστάσιου. Ctrl+κλικ ανοίγει ένα νεο παράθυρο εμφάνισης στην τοποθεσία του αμαξοστάσιου
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του ναυπηγείου. Ctrl+κλικ ανοίγει ένα νεο παράθυρο εμφάνισης στην τοποθεσία του ναυπηγείου
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του υπόστεγου. Ctrl+κλικ ανοίγει ένα νεο παράθυρο εμφάνισης στην τοποθεσία του υπόστεγου
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του αμαξοστάσιου. Με Ctrl+Κλικ ανοίγει νέο παράθυρο εμφάνισης στην τοποθεσία του αμαξοστασίου
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του αμαξοστάσιου. Με Ctrl+Κλικ ανοίγει νέο παράθυρο εμφάνισης στην τοποθεσία του αμαξοστασίου
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του ναυπηγείου. Με Ctrl+Κλικ ανοίγει νέο παράθυρο εμφάνισης στην τοποθεσία του ναυπηγείου
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του υπόστεγου. Με Ctrl+Κλικ ανοίγει νέο παράθυρο εμφάνισης στην τοποθεσία του υπόστεγου
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Παίρνετε μια λίστα με όλα τα τρένα με το επιλεγμένο αμαξοστάσιο στις εντολές τους
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Παίρνετε μια λίστα με όλα τα οχήματα δρόμου με το επιλεγμένο αμαξοστάσιο στις εντολές τους
@@ -3313,73 +3313,73 @@ STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Κάντ
 
 STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Κάντε κλικ για να ξεκινήσουν όλα τα τρένα μέσα στο αμαξοστάσιο
 STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Κάντε κλικ για να ξεκινήσουν όλα τα οχήματα μέσα στο αμαξοστάσιο
-STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Κάντε κλικ για να ξεκινήσουν όλα τα πλοία μέσα στο ναυπήγειο
+STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Κάντε κλικ για να ξεκινήσουν όλα τα πλοία μέσα στο ναυπηγείο
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Κάντε κλικ για να ξεκινήσουν όλα τα αεροσκάφη μέσα στο υπόστεγο
 
-STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Πρόκεται να πουλήσετε όλα τα οχήματα στο αμαξοστάσιο. Είστε σίγουρος/η;
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Πρόκειται να πουλήσετε όλα τα οχήματα στο αμαξοστάσιο. Είσαστε σίγουροι;
 
 # Engine preview window
-STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Μύνημα από τον κατασκευαστή οχήματων
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Μόλις ολοκληρώσαμε την σχεδιάση {G ενός μιας ενός} {G νέου νέας νέου} {STRING.geniki} - θα ενδιαφερόσασταν για ενός έτους αποκλειστικής χρήσης αυτού του οχήματος, για να δούμε την απόδοση του πριν το κάνουμε ευρέως διαθέσιμο;
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Μήνυμα από τον κατασκευαστή οχημάτων
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Μόλις ολοκληρώσαμε την σχεδίαση {G ενός μιας ενός} {G νέου νέας νέου} {STRING.geniki} - θα ενδιαφερόσασταν για ενός έτους αποκλειστικής χρήσης αυτού του οχήματος, για να δούμε την απόδοση του πριν το κάνουμε ευρέως διαθέσιμο;
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}ατμομηχανή
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.geniki                   :{G=f}ατμομηχανής
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}Όχημα δρόμου
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}οχήματος δρόμου
 STR_ENGINE_PREVIEW_ROAD_VEHICLE.geniki                          :{G=n}Οχήματος δρόμου
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}αεροσκάφος
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}αεροσκάφους
 STR_ENGINE_PREVIEW_AIRCRAFT.geniki                              :{G=n}αεροπλάνου
-STR_ENGINE_PREVIEW_SHIP                                         :{G=n}πλοιο
+STR_ENGINE_PREVIEW_SHIP                                         :{G=n}πλοίου
 STR_ENGINE_PREVIEW_SHIP.geniki                                  :{G=n}πλοιού
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}μηχανή monorail
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}μηχανής monorail
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.geniki                   :{G=f}μηχανής monorail
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}μηχανή maglev
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}μηχανής maglev
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.geniki                     :{G=f}μηχανής maglev
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Κόστος: {CURRENCY_LONG} Βάρος: {WEIGHT_SHORT}{}Ταχύτητα: {VELOCITY}  Ιπποδύναμη: {POWER}{}Κόστος Λειτουργίας: {CURRENCY_LONG}/χρ{}Χωρητικότητα: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Κόστος: {CURRENCY_LONG} Βάρος: {WEIGHT_SHORT}{}Ταχύτητα: {VELOCITY}  Ιπποδύναμη: {POWER}  Μεγ. Ε.Δ: {6:FORCE}{}Λειτουργικό Κόστος: {4:CURRENCY_LONG}/yr{}Χωρητικότητα: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Κόστος: {CURRENCY_LONG} Μεγ. Ταχύτητα: {VELOCITY}{}Χωρητικότητα: {CARGO_LONG}, {CARGO_LONG}{}Κόστος Λειτουργίας: {CURRENCY_LONG}/χρ
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Κόστος: {CURRENCY_LONG} Μεγ. Ταχύτητα: {VELOCITY}{}Χωρητικότητα: {CARGO_LONG}{}Κόστος Λειτουργίας: {CURRENCY_LONG}/χρ
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Κόστος: {CURRENCY_LONG} Μέγ. ταχύτητα: {VELOCITY} Εμβέλεια: {COMMA} τετραγωνίδια{}Χωρητικότητα: {CARGO_LONG}, {CARGO_LONG}{}Κόστος λειτουργίας: {CURRENCY_LONG}/έτος
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Κόστος: {CURRENCY_LONG} Μέγ. ταχύτητα: {VELOCITY} Εμβέλεια: {COMMA} τετραγωνίδια{}Χωρητικότητα: {CARGO_LONG}{}Κόστος λειτουργίας: {CURRENCY_LONG}/έτος
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Κόστος: {CURRENCY_LONG} Βάρος: {WEIGHT_SHORT}{}Ταχύτητα: {VELOCITY}  Ιπποδύναμη: {POWER}{}Κόστος Λειτουργίας: {CURRENCY_LONG}/έτος{}Χωρητικότητα: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Κόστος: {CURRENCY_LONG} Βάρος: {WEIGHT_SHORT}{}Ταχύτητα: {VELOCITY}  Ιπποδύναμη: {POWER}  Μεγ. Ε.Δ: {6:FORCE}{}Λειτουργικό Κόστος: {4:CURRENCY_LONG}/έτος{}Χωρητικότητα: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Κόστος: {CURRENCY_LONG} Μέγ. Ταχύτητα: {VELOCITY}{}Χωρητικότητα: {CARGO_LONG}, {CARGO_LONG}{}Κόστος Λειτουργίας: {CURRENCY_LONG}/έτος
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Κόστος: {CURRENCY_LONG} Μέγ. Ταχύτητα: {VELOCITY}{}Χωρητικότητα: {CARGO_LONG}{}Κόστος Λειτουργίας: {CURRENCY_LONG}/έτος
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Κόστος: {CURRENCY_LONG} Μέγ. Ταχύτητα: {VELOCITY} Εμβέλεια: {COMMA} τετραγωνίδια{}Χωρητικότητα: {CARGO_LONG}, {CARGO_LONG}{}Κόστος λειτουργίας: {CURRENCY_LONG}/έτος
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Κόστος: {CURRENCY_LONG} Μέγ. Ταχύτητα: {VELOCITY} Εμβέλεια: {COMMA} τετραγωνίδια{}Χωρητικότητα: {CARGO_LONG}{}Κόστος λειτουργίας: {CURRENCY_LONG}/έτος
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Αντικατάσταση {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Τρένο
-STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Όχημα
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Όχημα Δρόμου
 STR_REPLACE_VEHICLE_SHIP                                        :Πλοίο
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Αεροσκάφος
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Επιλέξτε το τύπο μηχανής για αντικατάσταση
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Επιλέξτε το νέο τύπο μηχανής που θέλετε να χρησιμοποιηθεί στην θέση του επιλεγμένου στα αριστερα τύπου μηχανής
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Επιλέξτε τον νέο τύπο μηχανής που θέλετε να χρησιμοποιηθεί στην θέση του επιλεγμένου τύπου μηχανής στα αριστερά
 
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Εκκίνηση της Αντικατάστασης Οχημάτων
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Εκκίνηση Αντικατάστασης Οχημάτων
 STR_REPLACE_VEHICLES_NOW                                        :Αντικατάσταση όλων των οχημάτων τώρα
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Αντικατάσταση μόνο παλιών οχημάτων
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Πατήστε για να ξεκινήσει η αντικατάσταση του αριστερά επιλεγμένου τύπου μηχανής με το δεξιά επιλεγμένο τύπο μηχανής
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Πατήστε για να ξεκινήσει η αντικατάσταση του αριστερά επιλεγμένου τύπου μηχανής με τον δεξιά επιλεγμένο τύπο μηχανής
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Δεν γίνεται αντικατάσταση
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Δεν έχει επιλεχτεί όχημα
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} όταν είναι παλιό
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Σταμάτημα της Αντικατάστασης Οχημάτων
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Πατήστε για να σταματήσει η αντικατάσταση του επιλεγμένου στα αριστερά τυπου μηχανής
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Διακοπή Αντικατάστασης Οχημάτων
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Πατήστε για να σταματήσει η αντικατάσταση του επιλεγμένου τύπου μηχανής στα αριστερά
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Αντικατάσταση: {ORANGE}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Εναλλάγη μεταξύ των παραθύρων αντικαταστάσης μηχανών και βαγονιών
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Εναλλαγή μεταξύ των παραθύρων αντικατάστασης μηχανών και βαγονιών
 STR_REPLACE_ENGINES                                             :Μηχανές
 STR_REPLACE_WAGONS                                              :Βαγόνια
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Επιλέξτε τον τύπο σιδηροδρόμου για τον οποίο θέλετε να γίνει η αντικατάσταση των μηχανών
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Εμφάνιζει ποια μηχανή στα αριστερά θα αντικατασταθεί, εαν υπάρχει
-STR_REPLACE_RAIL_VEHICLES                                       :Οχήματα σιδηροδρόμου
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Εμφανίζει ποια μηχανή στα αριστερά θα αντικατασταθεί, εάν υπάρχει
+STR_REPLACE_RAIL_VEHICLES                                       :Οχήματα Σιδηροδρόμου
 STR_REPLACE_ELRAIL_VEHICLES                                     :Οχήματα Ηλεκτρικού Σιδηροδρόμου
 STR_REPLACE_MONORAIL_VEHICLES                                   :Οχήματα Monorail
 STR_REPLACE_MAGLEV_VEHICLES                                     :Βαγόνια Maglev
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Αφαίρεση βαγονιού: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Υποχρεώνει την αυτομάτη αντικατάσταση να διατηρεί σταθερό το μήκος του τραίνου αφαιρώντας βαγόνια (ξεκινωντας από μπροστά), όταν η αντικατάσταση της μηχανής κάνει το τραίνο μεγαλύτερο.
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Υποχρεώνει την αυτόματη αντικατάσταση να διατηρεί σταθερό το μήκος του τραίνου αφαιρώντας βαγόνια (ξεκινώντας από μπροστά), όταν η αντικατάσταση της μηχανής κάνει το τρένο μεγαλύτερο.
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Κεντράρισμα της κυριας προβολης στη τοποθεσία του τρένου. Ctrl+κλικ για να ακολουθήσει το τρένου στη κύρια προβολή
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Κεντράρισμα της κυρίας προβολής στη τοποθεσία του τρένου. Με Ctrl+Κλικ ακολουθεί το τρένο στην κύρια προβολή
 STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Κεντράρισμα της κυριας προβολης στη τοποθεσία του οχήματος δρόμου. Ctrl+κλικ για να ακολουθήσει το όχημα στη κύρια προβολή
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Κεντράρισμα της κυριας προβολης στη τοποθεσία του πλοίου. Ctrl+κλικ για να ακολουθήσει το πλοίο στη κύρια προβολή
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Κεντράρισμα της κυριας προβολης στη τοποθεσία του αεροσκάφους. Ctrl+κλικ για να ακολουθήσει το αεροσκάφος στη κύρια προβολή
