@@ -898,7 +898,7 @@ STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :מטרית
 STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :השיטה הבינלאומית
 ############ end of measuring units region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}כלי רכב
+STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}רכבי כביש
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}בחר את צד הכביש בו יסעו כלי הרכב
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :סע בצד שמאל
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :סע בצד ימין
@@ -949,7 +949,7 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}רזלו
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}בחר את רזולוציית המסך
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :אחר
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}פורמט צילום המסך
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}פורמט עבור צילומי מסך
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}בחר את הפורמט של צילום המסך
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ערכת גרפיקה בסיסי

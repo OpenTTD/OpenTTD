@@ -398,6 +398,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Graf over lastu
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Selskabsoversigt
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaljeret præstationsoversigt
+STR_GRAPH_MENU_HIGHSCORE                                        :Topresultater
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1061,6 +1062,7 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspert indstil
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Indstillinger med en anden værdi end standard
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Indstillinger med en anden værdi end dine nyt-spil indstillinger
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Begrænser listen nedenfor til at visse indstillingstyper
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alle indstillinger
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Klient indstilling (ikke lagret i gemt spil, påvirker alle spil)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spil indstilling (lagret i gemt spil, påvirker kun nye spil)
@@ -1084,18 +1086,28 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Venstre
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Center
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Højre
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimum startlån: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimumbeløb et selskab kan låne (uden at tage inflation i betragtning)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Lånerente: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lånerente; kontrollerer også inflationen hvis aktiveret
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Driftsomkostninger: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Indstil niveauet for vedligeholdelse og driftsomkostninger af kørertøjer og infrastruktur
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Konstruktionshastighed: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Begræns antallet af igangværende konstruktioner for AI'er
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Køretøjs nedbrud: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Indstil hvor tit uservicerede kørertøjer må bryde ned
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Tilskudmultiplikator: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Indstil, hvor meget der bliver betalt for tilskudsordninger
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruktionspriser: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Indstil prisniveau for køb og konstruktion
 STR_CONFIG_SETTING_RECESSIONS                                   :Kriser: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Kriser kan forekomme hvis denne instilling er slået til. Under en krise falder produktionsniveauet markant (produktionsniveauet returnerer til tidligere produktionsniveau når krisen er ovre)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Forbyd toge at køre baglængs i stationer: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Hvis aktiverede tog ikke vil kører baglæns i ikke-terminale stationer, hvis der er en kortere vej til deres næste destination, når der bakkes
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofer: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Slå katastrofer, som lejlighedsvis kan blokere eller ødelægge køretøjer eller infrastruktur, til og fra
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Byrådets holdning til omstrukturering: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vælg hvor meget selskaber støj og miljømæssige skader påvirker byvurdering og fremtidige byggeretigheder i området
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillad bygning på skråninger og kyster: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Hvis den er aktiveret, kan spor og stationer bygges på de fleste skråninger. Hvis den er deaktiveret, er de kun tilladt på skråninger, som svarer til retningen af sporet og kræver derfor ikke fundament
@@ -1268,14 +1280,18 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grøn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mørkegrøn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Flyt i modsat retning ved scroll med musen: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Adfærd når kortet rulles med højre museknap. Hvis deaktiveret, bevæger musen kameraet. Når funktionen er aktiveret, flytter musen kortet
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Jævn scrolling af udsnit: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontroller hvordan de vigtigste visning ruller til en bestemt position, når du klikker på det lille kort eller når de udsteder en kommando til at rulle til en bestemt genstand på kortet. Hvis aktiveret, ruller udsigtspunktet jævnt, hvis deaktiveret springer den direkte til det valgte punkt
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Vis måleværktøjstip ved brug af div. bygge-værktøjer: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Vis afstande og højdeforskelle, når der trækkes under konstruktioner
 STR_CONFIG_SETTING_LIVERIES                                     :Vis selskabsfarver: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Kontroler anvendelse af køretøjet-typespecifikke leveringer for køretøjer (i modsætning til virksomhedsspecifikke)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ingen
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eget selskab
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Alle selskaber
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Foretræk hold-chat med <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Skift bindingen af ​​virksomheds-intern og offentlig chat til <ENTER> hhv. <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Rulleknappens funktion: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Aktiver rulning med to-dimensionelle muse-hjul
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom kort
@@ -1283,6 +1299,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Rul kort
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Slået fra
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Rulleknap-hastighed på kort: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Styr følsomheden af muse-hjul rulning
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Tillad skærmtastatur: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Vælg hvordan skærmtastature åbnes ved indtasting i redigeringfelter kun med markør. Dette er beregnet til små enheder uden egentlig tastatur
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Deaktiveret
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dobbelt click
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Enkelt click (når fokuseret)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enkelt click (umiddelbart)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Højreklik-emulering: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Vælg metode til at emulere højre muse-knap klik
@@ -1291,6 +1313,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontrolklik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Fra
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Venstreklik-scrolling: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Aktiver rulle kortet ved at trække den med venstre museknap. Dette er især nyttigt, når du bruger en touch-screen til at rulle
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Brug {STRING} datoformat til navne på gemte spil.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formatet af datoen i gemte spil filnavne
@@ -1322,19 +1345,23 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Vis forventede 
 STR_CONFIG_SETTING_QUICKGOTO                                    :Hurtig oprettelse af køretøjsordrer: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Forvælg 'gå-til' når du åbner ordrer vinduet
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Standard skinnetype (efter nyt spil/hentet spil): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Hvilken sportype der skal vælges efter start eller hentning af et spil. 'første tilgængelige' vælger den ældste type spor, 'sidste tilgængelige' vælger den nyeste form for spor, og 'mest anvendte' vælger den type, der i øjeblikket er mest i brug
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Første tilgængelige
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Sidste tilgængelige
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest anvendte
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Vis reserverede spor: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Giv reserverede spor en anden farve for at hjælpe med problemer med tog der nægter at indgå i sti-baserede blokke
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Hold byggeværktøjer aktive efter brug: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Hold bygnings-værktøjer til broer, tunneler, mv. åben efter brug
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupper udgifter i firmaets finansvindue: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definer layout for firmaets udgifter-vindue
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Nyhedssymbol: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Afspil lyd for opsummerede nyheds beskeder
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Nyhedsavis: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Afspil lyd ved visning af aviser
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Årets slutning: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Afspil lyd ved årsregnskabet, ved årets afslutning
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Konstruktion: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Afspil lydeffekt efter vellykkede konstruktioner eller andre handlinger
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Knap tryk: {STRING}
@@ -1343,6 +1370,8 @@ STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastrofer/Uly
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Afspil uheld og katastrofers lydeffekter
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Køretøjer: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Afspil køretøjers lydeffekter
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omgivelse: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Afspil omgivelseslyde for landskaber, industrier og byer
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Deaktiver bygning af infrastruktur når ingen passende køretøjer er tilgængelige: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks. antal tog per spiller: {STRING}
@@ -1361,6 +1390,11 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Aktivering af d
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Deaktiver fly for computeren: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Deaktiver skibe for computeren: {STRING}
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Standart indstillingsprofil: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Vælg hvilke indstillinger der skal bruges for tilfældig AIs eller for oprindelige værdier, når du tilføjer en ny AI eller spil Script
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Let
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mellem
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Svær
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tillad computerspillere i netværksspil: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes før scriptet bliver stoppet: {STRING}
@@ -1543,6 +1577,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenarie
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Netværksspil
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spilvalg
+STR_INTRO_HIGHSCORE                                             :{BLACK} Topresultater
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avancerede indstillinger
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF indstillinger
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tjek Online Indhold
@@ -1562,6 +1597,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Vælg 's
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vælg 'legetøjsland' landskab
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Vis spilvalg
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Hvis topscoreliste
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Vis avancerede indstillinger
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Vis NewGRF-indstillinger
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tjek for nyt og opdateret indhold til download

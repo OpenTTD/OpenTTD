@@ -1608,8 +1608,8 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 
 STR_INTRO_NEW_GAME                                              :{BLACK}開新遊戲
 STR_INTRO_LOAD_GAME                                             :{BLACK}載入遊戲
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}以此場景開始
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}載入高度圖
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}載入場景並開始遊戲
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}載入高度圖並開始遊戲
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}場景編輯器
 STR_INTRO_MULTIPLAYER                                           :{BLACK}多人遊戲
 

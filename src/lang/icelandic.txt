@@ -1569,7 +1569,7 @@ STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Viðhal
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Leiðarvísun farartækja
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Lestir
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Bæir
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Iðnaðuð
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Iðnaður
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Upprunalegt
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
