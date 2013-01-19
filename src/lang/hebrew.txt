@@ -855,26 +855,26 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}מטבע
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}בחירת מטבע
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :לירה שטרלינג (GBP)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :דולר אמריקאי (USD)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :יורו (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :ין יפני (JPY)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :(GBP) לירה שטרלינג
+STR_GAME_OPTIONS_CURRENCY_USD                                   :(USD) דולר אמריקאי
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :(EUR) יורו
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :(JPY) ין יפני
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :(ATS) שילינג אוסטרלי
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :(BEF) פרנק בולגרי
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :(CHF) פרנק שוודי
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :(CZK) קרונה צ'כית
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :מרק גרמני
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :(DEM) מרק גרמני
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :(DKK) קרונה דנית
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :פזטה ספרדית (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :(ESP) פזטה ספרדית
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :(FIM) מרק פיני
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :פרנק צרפתי (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :(FRF) פרנק צרפתי
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :(GRD) דרכמה יוונית
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :(HUF) פורינט הונגרי
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :(ISK) קרונה איסלנדית
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :(ITL) לירה איטלקית
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :(NLG) גילדן הולנדי
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :(NOK) קרונה נורווגית
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :זלוטי פולני (PLN)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :(PLN) זלוטי פולני
 STR_GAME_OPTIONS_CURRENCY_RON                                   :(RON) ליו רומני
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :(RUR) רובל רוסי
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :(SIT) טולר סלובני
@@ -883,13 +883,13 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :(TRY) לירה 
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :(SKK) קורונה סלובקית
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :(BRL) ריל ברזילאי
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :(EEK) קרוני אסטוני
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :ליטאס ליטאי (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :וון דרום קוריאני (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :ראנד דרום אפריקאי (ZAR)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :(LTL) ליטאס ליטאי
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :(KRW) וון דרום קוריאני
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :(ZAR) ראנד דרום אפריקאי
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :אחר...
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}יחידות מדידה
+STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}יחידות מידה
 STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}בחירת יחידות מדידה
 
 ############ start of measuring units region
@@ -952,7 +952,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :אחר
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}פורמט עבור צילומי מסך
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}בחר את הפורמט של צילום המסך
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ערכת גרפיקה בסיסי
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ערכת גרפיקה בסיסית
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}בחר בערכת גרפיקה בסיסית לשימוש
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{P 0 "קובץ " ""}{NUM}{P "" " קבצים"} חסר{P 0 "" ים}/הושחט{P 0 "" ו}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}מידע נוסף אודות ערכת הגרפיקה הבסיסית
@@ -990,7 +990,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}קבע �
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}עבור ליורו מוקדם יותר
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}עבור ליורו מאוחר יותר
 
-STR_CURRENCY_PREVIEW                                            :{ORANGE}{CURRENCY_LONG}{LTBLUE} :צפיה מקדימה
+STR_CURRENCY_PREVIEW                                            :{ORANGE}{CURRENCY_LONG}{LTBLUE} :תצוגה מקדימה
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 ליש"ט (£) במטבע שלך
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}שנה פרמטר עבור מטבע מותאם אישית
 

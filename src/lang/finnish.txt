@@ -283,7 +283,7 @@ STR_SORT_BY_RATING_MIN                                          :Matalin rahtilu
 STR_SORT_BY_ENGINE_ID                                           :EngineID (perinteinen lajittelu)
 STR_SORT_BY_COST                                                :Hinta
 STR_SORT_BY_POWER                                               :Teho
-STR_SORT_BY_TRACTIVE_EFFORT                                     :Vääntömomentti
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Vetovoima
 STR_SORT_BY_INTRO_DATE                                          :Julkaisupäivä
 STR_SORT_BY_RUNNING_COST                                        :Käyttökustannukset
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Teho-hyötysuhde
@@ -3188,7 +3188,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moottoro
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Sovitettavissa: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Kaikki rahtityypit
 STR_PURCHASE_INFO_ALL_BUT                                       :Kaikki paitsi {CARGO_LIST}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Suurin vääntömomentti: {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Suurin vetovoima: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Toimintasäde: {GOLD}{COMMA} ruutua
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Yksikön valintalista - napsauta kohteita saadaksesi tietoja.

@@ -1277,6 +1277,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Najveći iznos 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Kamatna stopa: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Kamatna stopa na zajam; ako je omogućena, kontroliše inflaciju
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Rashod: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Podesi cene za održavanje i radni proces vozila i infrastrukture
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Brzina gradnje: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Kvarovi vozila: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Množilac subvencije: {STRING}
@@ -1294,6 +1295,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Izbor koliko ć
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Dozvoljena gradnja na kosinama i obalama: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ako je uključeno, rute i stanice mogu se graditi na većini strmina. Ako je isključeno, mogu se graditi samo na strminama koje odgovaraju smeru rute i ne traže posebnu osnovu
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Dozvoljena izmena nagiba ispod zgrada, koloseka, itd. (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Dozvoli iskopavanja ispod građevina i pruge bez da se uklone
 STR_CONFIG_SETTING_CATCHMENT                                    :Realističnije veličine prihvatnih površina: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Drugačije veličine podnožja za različite vrste stanica i aerodroma
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Dozvoljeno uklanjanje više gradskih kolovoza, mostova i tunela: {STRING}
@@ -1312,12 +1314,15 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :Postepeno utova
 STR_CONFIG_SETTING_INFLATION                                    :Inflacija: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Dostavljanje tovara na stanicu samo ako ima potražnje: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Najveća dužina mosta: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimalna dužina za podizanje mostova
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Najveća dužina tunela: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimalna dužina za iskopavanje tunela
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Metod izgradnje finansiranih primarnih industrija: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nikakav
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :uobičajan
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :istraživački
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Ravna površina oko industrija: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Količina ravne površine u okružini jedne industrije. Ovo osigurava da će u okolini industrije biti dovoljno slobodnog mesta za konstrukciju pruga, i tako dalje.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Dozvoljeno više industrija iste vrste na teritoriji jednog naselja: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Prikaži signale: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Odaberi na kojoj strani koloseka se postavlja signalizacija
