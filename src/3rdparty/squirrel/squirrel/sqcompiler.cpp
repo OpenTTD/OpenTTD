@@ -917,6 +917,7 @@ public:
 		_last_stacksize = _fs->GetStackSize();
 		Statement();
 		CleanStack(stacksize);
+		_fs->AddLineInfos(_lex._currentline, _lineinfo, true);
 		Expect(TK_WHILE);
 		SQInteger continuetrg = _fs->GetCurrentPos();
 		Expect(_SC('(')); CommaExpr(); Expect(_SC(')'));
