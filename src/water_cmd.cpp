@@ -161,7 +161,9 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 
 	/* Autoslope might turn an originally canal or river tile into land */
 	int z;
-	if (GetTileSlope(tile, &z) != SLOPE_FLAT) {
+	Slope slope = GetTileSlope(tile, &z);
+
+	if (slope != SLOPE_FLAT) {
 		if (wc == WATER_CLASS_CANAL) {
 			/* If we clear the canal, we have to remove it from the infrastructure count as well. */
 			Company *c = Company::GetIfValid(o);
@@ -169,8 +171,14 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 				c->infrastructure.water--;
 				DirtyCompanyInfrastructureWindows(c->index);
 			}
+			/* Sloped canals are locks and no natural water remains whatever the slope direction */
+			wc = WATER_CLASS_INVALID;
 		}
-		wc = WATER_CLASS_INVALID;
+
+		/* There must not be water sloped invalidly, whatever class it may be */
+		if (GetInclinedSlopeDirection(slope) == INVALID_DIAGDIR) {
+			wc = WATER_CLASS_INVALID;
+		}
 	}
 
 	if (wc == WATER_CLASS_SEA && z > 0) {
