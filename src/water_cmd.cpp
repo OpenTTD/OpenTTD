@@ -175,8 +175,8 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 			wc = WATER_CLASS_INVALID;
 		}
 
-		/* There must not be water sloped invalidly, whatever class it may be */
-		if (GetInclinedSlopeDirection(slope) == INVALID_DIAGDIR) {
+		/* Only river water should be restored on appropriate slopes. Other water would be invalid on slopes */
+		if (wc != WATER_CLASS_RIVER || GetInclinedSlopeDirection(slope) == INVALID_DIAGDIR) {
 			wc = WATER_CLASS_INVALID;
 		}
 	}
