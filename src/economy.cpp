@@ -560,16 +560,16 @@ static void CompanyCheckBankrupt(Company *c)
 
 		/* Offer company for sale after 6 months */
 		case 7: {
-			/* Check if the company has any value. If not, declare it bankrupt
-			 *  right now */
+			/* Don't consider the loan */
 			Money val = CalculateCompanyValue(c, false);
-			if (val > 0) {
-				c->bankrupt_value = val;
-				c->bankrupt_asked = 1 << c->index; // Don't ask the owner
-				c->bankrupt_timeout = 0;
-				break;
-			}
-			/* FALL THROUGH  to case 10 */
+
+			c->bankrupt_value = val;
+			c->bankrupt_asked = 1 << c->index; // Don't ask the owner
+			c->bankrupt_timeout = 0;
+
+			/* The company assets should always have some value */
+			assert(c->bankrupt_value > 0);
+			break;
 		}
 
 		/* Bankrupt company after 6 months (if the company has no value) or latest
