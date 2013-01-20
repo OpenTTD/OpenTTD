@@ -988,6 +988,19 @@ struct AIDebugWindow : public Window {
 	}
 
 	/**
+	 * Check whether the currently selected AI/GS is dead.
+	 * @return true if dead.
+	 */
+	bool IsDead() const
+	{
+		if (ai_debug_company == OWNER_DEITY) {
+			GameInstance *game = Game::GetInstance();
+			return game == NULL || game->IsDead();
+		}
+		return !Company::IsValidAiID(ai_debug_company) || Company::Get(ai_debug_company)->ai_instance->IsDead();
+	}
+
+	/**
 	 * Constructor for the window.
 	 * @param desc The description of the window.
 	 * @param number The window number (actually unused).
@@ -1286,12 +1299,14 @@ struct AIDebugWindow : public Window {
 
 			case WID_AID_CONTINUE_BTN:
 				/* Unpause current AI / game script and mark the corresponding script button dirty. */
-				if (ai_debug_company == OWNER_DEITY) {
-					Game::Unpause();
-					this->SetWidgetDirty(WID_AID_SCRIPT_GAME);
-				} else {
-					AI::Unpause(ai_debug_company);
-					this->SetWidgetDirty(WID_AID_COMPANY_BUTTON_START + ai_debug_company);
+				if (!IsDead()) {
+					if (ai_debug_company == OWNER_DEITY) {
+						Game::Unpause();
+						this->SetWidgetDirty(WID_AID_SCRIPT_GAME);
+					} else {
+						AI::Unpause(ai_debug_company);
+						this->SetWidgetDirty(WID_AID_COMPANY_BUTTON_START + ai_debug_company);
+					}
 				}
 
 				/* If the last AI/Game Script is unpaused, unpause the game too. */
@@ -1365,10 +1380,12 @@ struct AIDebugWindow : public Window {
 				this->break_string_filter.AddLine(log->lines[log->pos]);
 				if (this->break_string_filter.GetState()) {
 					/* Pause execution of script. */
-					if (ai_debug_company == OWNER_DEITY) {
-						Game::Pause();
-					} else {
-						AI::Pause(ai_debug_company);
+					if (!IsDead()) {
+						if (ai_debug_company == OWNER_DEITY) {
+							Game::Pause();
+						} else {
+							AI::Pause(ai_debug_company);
+						}
 					}
 
 					/* Pause the game. */
