@@ -1033,6 +1033,12 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Níl aon
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ardsocruithe
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Ulig na Suímh
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Suímh Cliant(nil stóráil i Sábhálann; tionchar gach cliche)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Suímh Cliche(stóráil i Sábhálann; ni tionchar ach cliche nua)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Suímh Cliche(stóráil i Sábhálann; ni tionchar ach an cliche faoi láthair)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Suímh Cuideachta (stóráil i Sábhálann; ni tionchar ach an cuideachta faoi láthair)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Suímh Cuideachta (stóráil i saibhail; ni tionchar ach chuideachta reatha)
 
 STR_CONFIG_SETTING_OFF                                          :As
 STR_CONFIG_SETTING_ON                                           :Air
@@ -1182,6 +1188,9 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Taispeáin iarn
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Fág uirlisí tógála gníomhach i ndiaidh úsáide: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Speansais an ghrúpa i bhfuinneog airgeadais cuideachta: {STRING}
 
+STR_CONFIG_SETTING_SOUND_CLICK                                  :cnaipe brúite: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :bíp nuair ata cnaipe brúite
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Feithiclí: {STRING}
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Díchumasaigh tógáil bonneagair nuair nach bhfuil aon fheithicil oiriúnach ar fáil: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Uaslíon na dtraenacha in aghaidh na cuideachta: {STRING}
@@ -2888,7 +2897,7 @@ STR_REPLACE_VEHICLES_START                                      :{BLACK}Tosaigh 
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Brúigh le tús a chur leis an gcineál innill atá roghnaithe ar chlé a athsholáthar leis an gcineál innill atá roghnaithe ar dheis
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Níl athsholáthar ar bun
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Níl aon fheithicil roghnaithe
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop ag athsholáthar Feithiclí
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stad ag athsholáthar Feithiclí
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Brúigh chun deireadh a chur le hathsholáthar den chineál innill atá roghnaithe ar chlé
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ag athsholáthar: {ORANGE}{STRING}
@@ -3581,6 +3590,7 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Ní féi
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Ní féidir aibhneacha a chur anseo...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... ní mór é a thógáil ar uisce
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... ní féidir tógáil ar uisce
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... Nil tu abalta togadh ar an uise
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Ní mór canáil a scriosadh ar dtús
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Ní féidir uiscerian a thógáil anseo...
 

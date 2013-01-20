@@ -2577,6 +2577,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Introduc
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Generación de mundo
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Tamaño del mapa:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Permite seleccionar el tamaño del mapa en casillas. El numero de casillas disponible en el mapa será ligeramente inferior
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. de pueblos:
 STR_MAPGEN_DATE                                                 :{BLACK}Fecha:

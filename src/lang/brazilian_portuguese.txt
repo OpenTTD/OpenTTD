@@ -398,6 +398,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Taxa de pagamen
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabela da liga de empresa
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Avaliação detalhada de performance
+STR_GRAPH_MENU_HIGHSCORE                                        :Tabela de Pontuações
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1060,10 +1061,17 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Configs. expert
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Configs. com valor diferente do padrão
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Configs. com um valor diferente das configs. para novos jogos
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restringe a lista abaixo a determinados tipos
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Todas as configs.
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Config. do cliente (não é guardado no savegame; afeta todos os jogos)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Config. do jogo (guardado no savegame; afeta apenas novos jogos)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Config. do jogo (guardado no savegame; afeta apenas o jogo atual)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Config. da companhia (guardado no savegame; afeta apenas novos jogos)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Config. de companhia (guardado no savegame; afeta apenas a companhia atual)
 
 STR_CONFIG_SETTING_OFF                                          :Desl.
 STR_CONFIG_SETTING_ON                                           :Lig.
-STR_CONFIG_SETTING_DISABLED                                     :desativado
+STR_CONFIG_SETTING_DISABLED                                     :Desativad{G "o" "a"}
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Desligado
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Própria empresa
@@ -1077,6 +1085,28 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerda
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Direita
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Empréstimo Inicial Máximo: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantia máxima a ser emprestada para uma companhia (sem levar em conta a inflação)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa de Juros: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Juros de empréstimo; também controla inflação se ativado
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Custos de Operação: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Define o nível e custos de manutenção de veículos e infraestrutura
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidade de construção: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limita ações de construção para IA's
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Quebra de veículos: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controla o quanto veículos mal conservados podem quebrar
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicador de subsídios: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Define quando é pago por conexões subsidiadas
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Custos de construção: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Define o nível de construção e custos de compra
+STR_CONFIG_SETTING_RECESSIONS                                   :Recessões: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se ativado, recessões podem ocorrer a alguns anos. Durante as recessões, toda produção é significativamente menor (retorna ao nível normal após a recessão)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Desabilitar reversão de trens nas estações: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se ativado, trens não irão mudar de direção em estações não terminais, se houver um caminho mais curto ao próximo destino ao trocar de direção
+STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Alterna desastres que podem ocasionalmente bloquear ou destruir veículos ou infraestrutura
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitude da prefeitura em relação à restruturação de área: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escolhe como a poluição sonoroa e ambiental afeta a classificação na cidade e as ações futuras naquela área
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permitir a construção em declives e encostas: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Se ativado, trilhos e estações podem ser construídas na maioria das inclinações. Se desativado, são permitidas apenas em inclinações correspondentes à direção da via, sem precisar de fundações
@@ -1118,9 +1148,9 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Tamanho máximo
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Tamanho máximo para construção de túneis
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Método manual de constução de indústria primária: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Método de fundação de indústrias primárias. 'nenhum' significa que não é possível fundar novas indústrias. 'prospecção' permite a fundação, mas o local de construção é aleatório, e pode falhar, 'como as outras' permite que você escolha onde construir
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nenhum
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :como as outras indústrias
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :em prospecção
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Nenhum
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Como as outras indústrias
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Em prospecção
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Área plana ao redor de indústrias: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Área plana ao redor de uma indústria. Isso garante uma área disponível para se construir estações, vias, etc
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permitir várias indústrias semelhantes por cidade: {STRING}
@@ -1143,10 +1173,10 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Fila de automó
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Faz com que automóveis aguardem na frente de paradas de rua até que sejam liberados
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Deslocar janela quando o cursor está na borda do mapa: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Quando ativado, janelas de visualização irão rolar quando o mouse se aproximar das bordas
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :desativado
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :visualização principal apenas em modo tela-cheia
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :visualização principal
-STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :todas as janelas
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desativado
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Visualização principal apenas em modo tela-cheia
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Visualização principal
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Todas as janelas
 STR_CONFIG_SETTING_BRIBE                                        :Permitir o suborno da prefeitura: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite companhias subornar prefeituras. Se o suborno for notado por um inspetor, a companhia não poderá subornar a prefeitura por seis meses
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permtir compra de direitos exclusivos de transporte: {STRING}
@@ -1164,9 +1194,9 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Define a vel. r
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Número de acidentes de avião: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Define a chance de um acidente aéreo
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nenhum
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduzido
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Nenhum
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reduzido
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir estações drive-through em ruas locais: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite a construção de paradas nas laterais das ruas em vias locais
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir estações drive-through nas ruas de outros competidores: {STRING}
@@ -1188,7 +1218,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW                                 :Analisar ordens
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Quando ativado, as ordens dos veículos são periodicamente checadas, e problemas óbvios são relatados com mensagens quando detectados
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Não
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Sim, mas excluir veículos parados
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de todos os veículos
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :De todos os veículos
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar se o lucro de um veículo se torna negativo: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quando ativado, uma mensagem é enviada quando um veículo não gerou lucro durante um ano-calendário
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veículos nunca saem de linha: {STRING}
@@ -1268,6 +1298,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scroll map
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Desligado
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Velocidade do scrollwheel do mapa: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controla a sensitividade do rolamento com a roda do mouser
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Clique simples (imediatamente)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulação do clique direito: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Seleciona o método para emular cliques com o botão direito
@@ -1293,10 +1324,10 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pausar automati
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Ativado, pausa o jogo ao iniciar um jogo novo, permitindo um estudo do mapa antes do jogo
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Permite enquanto pausado: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Selecione quais ações podem ser feitas com o jogo pausado
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :nenhuma ação
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :todas ações não-construentes
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :todas ações além de modificações de terreno
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :todas ações
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Nenhuma ação
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Todas ações "não-construentes"
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Todas ações exceto modificações de terreno
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Todas ações
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Usar a lista avançada de veículos: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ativa o uso da listagem avançada para agrupamento de veículos
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Usar indicadores de carga: {STRING}
@@ -1319,6 +1350,22 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantém as ferr
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupar despesas na janela de financas da companhia: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Define o layout para os gastos da companhia
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Notícias: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Toca um som para mensagens resumidas
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Jornal: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Toca efeito sonoro ao exibir jornais
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Fim de ano: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Toca um efeito sonoro ao final de cada ano, resumindo a performance da companhia nesse ano comparado ao ano passado
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construção: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Toca efeito sonoro ao construir com sucesso ou em outras ações
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Cliques: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Bipe ao clicar botões
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Desastres/acidentes: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Toca efeitos sonoros de acidentes e desastres
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Veículos: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Toca efeitos sonoros dos veículos
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiente: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Toca sons de ambiente, sons de indústrias e cidades
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desativar construção de infraestrutura quando nenhum veículo adequado estiver disponível: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Quando ativado, a infraestrutura só é disponível se há veículos disponíveis para usá-la, prevenindo gasto de tempo e dinheiro com infraestrutura inútil.
@@ -1340,6 +1387,11 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Ativado, impede
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desativar embarcação para o computador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ativado, impede que jogadores controlados pelo computador construam embarcações
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Perfil de configs. padrão: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Escolhe qual perfil de configurações a ser usado em IAs aleatórias ou em valores iniciais ao se adicionar uma nova IA ou GameScript
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Fácil
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Médio
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Difícil
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permitir IA em multiplayer: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permite jogadores controlados pelo computador participar em jogos multijogador
@@ -1351,7 +1403,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Define se a man
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo padrão de manutenção para trens: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Define o intervalo padrão de manutenção para novos trens, se não for definido individualmente
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dia{P "" s}/%
-STR_CONFIG_SETTING_SERVINT_DISABLED                             :desativado
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desativado
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalo padrão de manutenção para automóveis: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Define o intervalo padrão de manutenção para novos automóveis, se não for definido individualmente
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalo padrão de manutenção para aeronaves: {STRING}
@@ -1366,20 +1418,35 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desativar ferro
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ativado, remove a necessidade de trilhos elétricos para locomotivas elétricas, permitindo-nas usar trilhos normais
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Chegada do primeiro veículo à estação do jogador: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Exibe um jornal quando o primeiro veículo chega numa estação do jogador
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Chegada do primeiro veículo na estação concorrente: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Exibe um jornal quando o primeiro veículo chega numa estação de um competidor
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Acidentes / desastres: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Exibe um jornal quando acidentes ou desastres acontecem
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informações da empresa: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Exibe um jornal quando uma companhia é aberta, ou quando estão próximas da bancarrota
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Abertura de indústrias: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Exibe um jornal quando indústrias abrem
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Fechamento de indústrias: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Exibe um jornal quando indústrias fecham
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Mudanças econômicas: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Exibe um jornal referente a mudanças globais na economia
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Mudanças na produção das indústrias servidas pela empresa: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Exibe um jornal quando a produção de indústrias muda, que são atendidas pela companhia
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Mudanças na produção de indústrias servida pelo(s) concorrente(es): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Exibe um jornal quando a produção de indústrias muda, que são atendidas pelos competidores
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Outras mudanças de produção das indústrias: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :{G=f}Exibe um jornal quando a produção de indústrias muda, que não não atendidas pela companhia ou competidores
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Conselhos / informações sobre os veículos da empresa: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Exibe mensagens sobre veículos precisando de atenção
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Novos veículos: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Exibe um jornal quando um novo tipo de veículo se torna disponível
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Mudanças à aceitação de carga: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Exibe mensagens sobre estações alterando aceitação de cargas
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsídios: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Exibe um jornal sobre eventos relacionados a subsídios
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informações gerais: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Exibe um jornal sobre eventos gerais, como a compra de direitos exclusivos ou fundação de reconstrução viária
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Desligado
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resumo
@@ -1416,11 +1483,11 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todos
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Disposição de ruas para novas cidades: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Define como as estradas construídas por cidades serão planejadas
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :padrão
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :melhores estradas
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Padrão
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Melhores estradas
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grade 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grade 3x3
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleatório
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Aleatório
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Permitir cidades construir novas ruas?: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permite cidades construírem ruas para o crescimento. Desative para prevenir as prefeituras construírem as ruas por si sós
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Permitir cidades construirem cruzamentos de nível: {STRING}
@@ -1429,15 +1496,15 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permitir contro
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Se desativado, podem haver 2 aeroportos por cidade. Se ativado, o número de aeroportos depende do controle de ruído da cidade, que depende da população, tamanho e distância do aeroporto
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundação de cidades no jogo: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Se ativado, permite jogadores construírem novas cidades
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :proibido
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permitido
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permitido, layout de cidades customizável
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Proibido
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Aermitido, layout de cidades customizável
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Posicionamento de árvores: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controla o nascimento aleatório de árvores durante o jogo. Isso pode afetar indústrias que dependem do crescimento de árvores, como serrarias
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nenhum {RED}(extingue a serraria)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :apenas nas florestas tropicais
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :em todo o lugar
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Nenhum {RED}(extingue a serraria)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Apenas nas florestas tropicais
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Em todo o lugar
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posição da barra de ferramentas principal: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Posição horizontal da barra de ferramentas principal no topo da tela
@@ -1446,7 +1513,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Posição horiz
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Dist. mín para autoalinhamento das janelas: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Distância mínima entre janelas arrastadas para que sejam automaticamente alinhadas e juntas para organização
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P "" s}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :desativ.
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Desativado
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Limite de janelas não presas: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Número de janelas não presas antes que janelas antigas sejam fechadas para darem lugar a janelas mais novas
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
@@ -1471,7 +1538,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Muito rápido
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporção de cidades que virarão cidades grandes: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Quantidade de cidades que se tornação uma cidade grande, ou seja, uma cidade que começa maior e cresce mais rápido
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 a cada {COMMA}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :nenhuma
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nenhum {G "" "a"}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador do tamanho inicial da cidade: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamanho médio das cidades grandes em relação às cidades no início do jogo
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Remover elementos de estrada absurdos ao construir ruas: {STRING}
@@ -1485,6 +1552,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Oponentes
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Opções de visualização
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interação
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efeitos sonoros
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Notícias e mensagens
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinais
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Manejo de carga
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computadores
@@ -1539,6 +1608,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor d
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multi-jogador
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opções do Jogo
+STR_INTRO_HIGHSCORE                                             :{BLACK}Pontuações
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Configurações avançadas
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configurar NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Checar conteúdo on-line
@@ -1558,6 +1628,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Selecion
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selecionar cenário do estilo 'toyland'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Exibir opções de jogo
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Exibe as pontuações
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Exibe as configurações avançadas
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Exibir configs. dos NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Checar por conteúdo novo e atualizado para baixar
@@ -2025,7 +2096,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Tamanho
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Selecionado pois: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependentes: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD não suporta "zlib"...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD foi feito sem suporte a "zlib"...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... impossível baixar conteúdo!
 
 # Order of these is important!
@@ -2139,14 +2210,14 @@ STR_STATION_CLASS_WAYP                                          :Pontos de contr
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Seleção de Sinais
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinais padrão (semáforos){}Sinais são necessários para impedir trens de colidirem nas malhas ferroviárias com mais de um trem
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de Entrada (semáforo){}Verde enquanto haja um ou mais sinais de saída verdes na atual seção dos trilhos. Do contrário, mostra vermelho
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de saída (semáforo){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de sinais combo ou de entrada
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de saída (semáforo){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de pré-sinais combo ou de entrada
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinal combo (semáforo){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinal avançado(Semáforo){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinal avançado de mão única(Semáforo){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo, porém não permite a passagem na via contrária
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinal Padrão (elétrico){}Sinais são necessários para impedir que trens batam em redes de ferrovias com mais de uma máquina
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinal de entrada (elétrico){}Verde enquanto haja um ou mais sinais de saída verdes na atual seção dos trilhos. Do contrário, mostra vermelho
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de saída(elétrico){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de sinais combo ou de entrada
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal combo (elétrico){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinal de Entrada (elétrico){}Verde enquanto haja um ou mais sinais de saída verdes na atual seção dos trilhos. Do contrário, mostra vermelho
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de saída(elétrico){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de pré-sinais combo ou de entrada
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal Combo (elétrico){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações de pré-sinais
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal de trajeto(Elétrico){}Um sinal de trajeto permite mais de um trem entrar em um bloco de sinal ao mesmo tempo, se o trem puder reservar um trajeto para um ponto seguro de parada. Sinais de trajeto padrões podem ser passados pelo lado de trás
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal avançado de mão única(Elétrico){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo, porém não permite a passagem na via contrária
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter sinal{}Quando selecionado, clicar num sinal existente converte-o para o tipo selecionado e suas variantes. Ctrl+Clique muda a variante atual. Shift+Clique mostra o preço estimado da conversão
@@ -2276,7 +2347,7 @@ STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecion
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores de tipo aleatório
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantar árvores de tipo aleatório, Shift alterna entre construção/preço estimado
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Plantar Aleatoriamente
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta árvores aleatoriamente no terreno
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta árvores aleatoriamente pelo terreno
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Gerar Terreno
@@ -2495,6 +2566,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Coloque 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Geração de mundo
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Dimensões do mapa:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Seleciona o tamanho do mapa em quadrados. O número de quadrados disponíveis será um pouco menor
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. de cidades:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
@@ -2587,7 +2659,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Mover ci
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Move o NewGRF selecionado para cima
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Mover baixo
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Move o NewGRF selecionado para baixo
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista dos NewGRF instalados.
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Uma lista dos NewGRF instalados.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Definir parâmetros
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Exibir parâmetros
@@ -2670,6 +2742,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém multiplas entradas de Ação 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leitura após o final do pseudo-sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Estão faltando alguns sprites na base de gráficos em uso.{}Por favor atualize a base de gráficos
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}O pacote de gráficos base atuais está faltando alguns sprites.{}Favor atualizar o pacote de gráficos base.{}Já que você está usando um {YELLOW}snapshot em desenvolvimento do OpenTTD{WHITE}, você também precisa do {YELLOW}Snapshot do pacote de gráficos base em desenvolvimento{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Recursos GRF requeridos indisponíveis (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} foi desativado por {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato de layout de sprite inválido/desconhecido (sprite {3:NUM})
@@ -3778,6 +3851,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Alterar
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Apenas um conjunto de som vazio foi encontrado. Se quiser sons, instale um conjunto através do sistema de download de conteúdo
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Captura de tela gigante
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}A captura de tela terá uma resolução de {COMMA}x{COMMA} pixels. Pode levar algum tempo. Deseja continuar?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Foto salvado com sucesso como '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Falha ao tirar foto!

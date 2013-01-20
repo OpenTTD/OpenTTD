@@ -2576,6 +2576,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Enter a 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}World generation
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Map size:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Select the size of the map in tiles. The number of available tiles will be slightly smaller
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. of towns:
 STR_MAPGEN_DATE                                                 :{BLACK}Date:
