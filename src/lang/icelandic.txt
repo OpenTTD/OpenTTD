@@ -2577,6 +2577,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Sláðu 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Sköpun heims
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kortastærð:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Veldu stærð kortsins í reitum. Fjöldi reita verða aðeins færri
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Fjöldi bæja:
 STR_MAPGEN_DATE                                                 :{BLACK}Dags.:

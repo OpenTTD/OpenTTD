@@ -2672,6 +2672,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Upiši i
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Izrada svijeta
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Veličina karte:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Odaberi veličinu mape u poljima. Broj dostupnih polja biti će malo manji
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Broj gradova:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:

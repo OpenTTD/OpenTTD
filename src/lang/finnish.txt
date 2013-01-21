@@ -2576,6 +2576,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Syötä 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Maailman luominen
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kartan koko:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Valitse kartan koko ruutuina. Saatavilla olevien ruutujen määrä on hieman alhaisempi
 STR_MAPGEN_BY                                                   :{BLACK}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Kaupungit:
 STR_MAPGEN_DATE                                                 :{BLACK}Päivämäärä:

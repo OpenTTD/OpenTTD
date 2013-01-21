@@ -218,6 +218,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pés
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtro:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Digite o filtro de série
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Digite uma palavra-chave para filtrar a lista
 
@@ -403,6 +404,7 @@ STR_GRAPH_MENU_HIGHSCORE                                        :Tabela de Pontu
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Catálogo de indústrias
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Cadeias de indústrias
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financiar nova indústria
 ############ range ends here
 
@@ -1298,6 +1300,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scroll map
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Desligado
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Velocidade do scrollwheel do mapa: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controla a sensitividade do rolamento com a roda do mouser
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Teclado na tela: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Selecione o método para se abrir o teclado na tela para digitar usando se o mouse ou touchscreen. É útil para dispositivos pequenos que não possuem teclados
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Desativado
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Clique duplo
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Clique simples (quando em foco)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Clique simples (imediatamente)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulação do clique direito: {STRING}
@@ -2417,6 +2424,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Exibir c
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Exibe indústrias que suprem e aceitam carga
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Exiba também no minimapa
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Selecione as indústrias exibidas no minimapa também
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Seleciona carga
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Seleciona a carga que você deseja exibir
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Seleciona indústria
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Seleciona a indústria que você deseja exibir
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informações do Terreno

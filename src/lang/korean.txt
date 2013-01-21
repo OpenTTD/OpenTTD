@@ -350,7 +350,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :게임 종료
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :게임 옵션
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :고급 설정
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / 게임 스크립트 설정
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :인공지능/게임 스크립트 설정
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 설정
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :투명 설정
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :도시 이름을 표시함
@@ -447,7 +447,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :과거 메시�
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :지형 정보
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :콘솔 켜기/끄기
-STR_ABOUT_MENU_AI_DEBUG                                         :AI / 게임 스크립트 디버그
+STR_ABOUT_MENU_AI_DEBUG                                         :인공지능/게임 스크립트 디버그
 STR_ABOUT_MENU_SCREENSHOT                                       :스크린샷 찍기
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :스크린샷 찍기 (지금 보고 있는 영역)
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :스크린샷 찍기 (창을 제외한 게임 화면만)
@@ -757,7 +757,7 @@ STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}운송회사에 문제가 생김!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}성취도를 바로 올리지 못하면 {STRING}{G 0 "은" "는"} 팔리거나 파산할 것입니다!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}운송 회사 합병!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING}{G 0 "이" "가"} {STRING}에게 {CURRENCY_LONG}의 가격으로 인수합병되었습니다!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} 회사가 {STRING} 회사에게 {CURRENCY_LONG}의 가격으로 인수합병되었습니다!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}파산!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING}가 채권자에 의해 파산되고 모든 자산이 팔렸습니다!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}새로운 운송회사 등장!
@@ -787,10 +787,10 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY}{G 0 "이" "가"} 곤충떼의 습격으로 황폐화되었습니다!{}생산량이 50%로 떨어졌습니다.
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{1:INDUSTRY}의 {0:STRING} 생산량이 {2:COMMA}% 감소하였습니다!
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE}{P "가" "이"} 차량기지 안에서 대기 중입니다
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE}{P "가" "이"} 차고에서 대기 중입니다
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE}{P "가" "이"} 정박소 안에서 대기 중입니다
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE}{P "가" "이"} 격납고 안에서 대기 중입니다
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} : 차량기지 안에서 대기 중입니다.
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} : 차고에서 대기 중입니다.
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} : 정박소 안에서 대기 중입니다.
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} : 격납고 안에서 대기 중입니다.
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
@@ -800,9 +800,9 @@ STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE}에 잘못된 경로가 지정되어 있습니다
 # end of order system
 
-STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE}{P "가" "이"} 오래되었습니다
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE}{P "가" "이"} 매우 오래되었습니다
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE}{P "가" "이"} 너무 오래되어 교체가 시급합니다
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} : 열차가 낡았습니다.
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} : 열차가 매우 낡았습니다.
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} : 열차가 매우 낡아 교체가 시급합니다
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} : 다음 목적지로의 경로를 찾을 수 없습니다.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} : 아직 다음 목적지에 도착하지 못했습니다.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}의 작년 수익이 {CURRENCY_LONG} 입니다.
@@ -1039,7 +1039,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :신경 안씀
 STR_CITY_APPROVAL_TOLERANT                                      :신경 씀
 STR_CITY_APPROVAL_HOSTILE                                       :싫어함
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}사용하기 적합한 AI가 없습니다...{}'온라인 콘텐츠' 시스템을 통해 AI를 다운받을 수 있습니다.
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}사용할 수 있는 인공지능이 없습니다...{}'온라인 콘텐츠' 시스템을 통해 인공지능을 다운로드받을 수 있습니다.
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}고급 설정
@@ -1094,7 +1094,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :대출 금리�
 STR_CONFIG_SETTING_RUNNING_COSTS                                :유지비: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :차량과 기반시설의 유지비 수준을 설정하십시오.
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :건설 속도: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :AI의 건설 행동량을 제한하여 건설 속도를 조절할 수 있습니다.
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :인공지능의 건설 행동량을 제한하여 건설 속도를 조절할 수 있습니다.
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :차량 고장 빈도수: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :점검을 제대로 받지 않은 차량이 얼마나 자주 고장나도록 할 지를 조절하십시오.
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :보조금 배수: {STRING}
@@ -1225,7 +1225,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :차량의 수�
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :이 옵션을 켜면 지난 해에 수익이 없는 차량이 있으면 뉴스 메시지로 알려줍니다.
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :옛날 차량을 사라지지 않고 계속 만들 수 있게 함: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :이 옵션을 켜면 오래된 차량 모델을 포함하여 모든 차량 모델을 도입 이후 계속 사용할 수 있게 됩니다.
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :차량이 오래되면 자동 교체: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :차량이 낡으면 열차를 자동으로 교체: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :이 옵션을 켜면 제한 수명에 다다른 차량이 교체 조건을 만족할 경우 자동으로 차량을 교체할 수 있게 됩니다.
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :차량이 최대 수명의 {STRING}이면 자동 교체
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :자동 교체가 필요한 차량의 상대적인 연령을 설정합니다.
@@ -1395,7 +1395,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :컴퓨터의 �
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :이 옵션을 켜면 컴퓨터 플레이어가 선박을 사용할 수 없게 됩니다.
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :기본 설정 난이도: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :무작위 인공지능이 사용할 난이도 설정이나 AI나 게임 스크립트를 추가할 때의 난이도 초기값을 고르십시오.
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :무작위 인공지능이 사용할 난이도 설정이나, 인공지능 또는 게임 스크립트를 추가할 때의 난이도 초기값을 고르십시오.
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :쉬움
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :중간
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :어려움
@@ -1619,7 +1619,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}고득�
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}고급 설정
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 설정
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라인 콘텐츠 다운로드
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / 게임 스크립트 설정
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}인공지능/게임 스크립트 설정
 STR_INTRO_QUIT                                                  :{BLACK}종료
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}새 게임을 시작합니다.{}Ctrl+클릭하시면 지도 설정을 건너뛰고 바로 시작합니다.
@@ -1639,7 +1639,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}고득�
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}고급 설정 창을 엽니다.
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF 설정 창을 엽니다.
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다.
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}AI와 게임 스크립트 설정 표시
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}인공지능/게임 스크립트 설정창을 엽니다.
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD'를 종료합니다
 
 STR_INTRO_TRANSLATION                                           :{BLACK}이 버전의 OpenTTD는 {NUM}개의 문장이 한국어로 번역되지 않았습니다. 한국어 번역자에게 번역을 의뢰하십시오.{}텔크 (telk5093@gmail.com)
@@ -2093,7 +2093,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}이 콘
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}이것은 다른 콘텐츠에 종속되어 자동선택되었습니다
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}이미 가지고 있는 콘텐츠입니다.
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}이 콘텐츠는 알려지지 않은 콘텐츠이고 OpenTTD 게임 상에서 받을 수 없는 것입니다
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}이것은 이미 존재하는 {STRING}를 대체합니다.
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}이 콘텐츠는 기존에 존재하던 {STRING}{G "을" "를"} 업데이트합니다.
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}이름: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}버전: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}설명: {WHITE}{STRING}
@@ -2107,16 +2107,16 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD�
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... 콘텐츠 다운로드가 불가능합니다!
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :기본 그래픽
-STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
-STR_CONTENT_TYPE_AI                                             :인공지능
-STR_CONTENT_TYPE_AI_LIBRARY                                     :인공지능 라이브러리
-STR_CONTENT_TYPE_SCENARIO                                       :시나리오
-STR_CONTENT_TYPE_HEIGHTMAP                                      :높이맵
-STR_CONTENT_TYPE_BASE_SOUNDS                                    :기본 효과음
-STR_CONTENT_TYPE_BASE_MUSIC                                     :기본 배경 음악
-STR_CONTENT_TYPE_GAME_SCRIPT                                    :게임 스크립트
-STR_CONTENT_TYPE_GS_LIBRARY                                     :GS 라이브러리
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=m}기본 그래픽
+STR_CONTENT_TYPE_NEWGRF                                         :{G=m}NewGRF
+STR_CONTENT_TYPE_AI                                             :{G=m}인공지능
+STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=f}인공지능 라이브러리
+STR_CONTENT_TYPE_SCENARIO                                       :{G=f}시나리오
+STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=m}높이맵
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :{G=m}기본 효과음
+STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=m}기본 배경 음악
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :{G=f}게임 스크립트
+STR_CONTENT_TYPE_GS_LIBRARY                                     :{G=f}GS 라이브러리
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}콘텐츠 다운로드...
@@ -2577,6 +2577,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}게임�
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}세계 창조
 STR_MAPGEN_MAPSIZE                                              :{BLACK}지도 크기:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}지도의 크기를 칸 수 기준으로 선택하십시오. 사용 가능한 지도의 칸 수는 선택한 값보다 조금 적습니다.
 STR_MAPGEN_BY                                                   :{BLACK}x
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}도시의 수:
 STR_MAPGEN_DATE                                                 :{BLACK}날짜:
@@ -2779,7 +2780,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}파일 없
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}'의 행동은 비동기화 혹은 충돌을 일으킬 수 있습니다.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고 안에 있지 않으면 동력차량의 상태가 바뀝니다.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고 안에 있지 않으면 차량 길이가 바뀝니다.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'의 열차 '{0:VEHICLE}'{P "은" "는"} 잘못된 길이값을 가지고 있습니다. NewGRF에 의한 문제일 것입니다. 게임이 비동기화/충돌을 일으킬 수 있습니다.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'에 속한 열차 '{0:VEHICLE}'의 길이가 잘못된 값을 가지고 있습니다. NewGRF에 의한 문제로 추축됩니다. 게임이 비동기화 또는 충돌을 일으킬 수 있습니다.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' (이)가 잘못된 정보를 제공하고 있습니다.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGINE}(을)를 만들기 이전과 이후의 화물/개조 정보가 현재의 구매 목록과 다릅니다. 이 경우 자동 교체시 열차 개조에 실패할 수도 있습니다.
@@ -2830,8 +2831,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :겨울에는 {O
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} 수송됨
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (화물이 더 필요함)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (수송됨)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}도시는 {ORANGE}{COMMA}{BLACK}일마다 1번씩 성장중입니다.
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}도시는 {ORANGE}{COMMA}{BLACK}일마다 1번씩 성장중입니다.(도시에 투자중)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}도시가 {ORANGE}{COMMA}{BLACK}일마다 성장합니다.
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}도시가 {ORANGE}{COMMA}{BLACK}일마다 성장합니다. (투자 중)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}도시는 {RED}성장하지 않고{BLACK} 있습니다.
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}도시 소음 제한: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}이 도시의 위치로 시점을 변경합니다. Ctrl+클릭하면 이 도시 위치를 기준으로 새로운 외부 화면을 엽니다.
@@ -3056,7 +3057,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}이 회�
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :회사 이름
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :사장 이름
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}저희 회사를 거두어주실 운송회사를 찾고있습니다.{}{}저희 {COMPANY} 회사를 {CURRENCY_LONG}의 가격으로 인수합병하시겠습니까?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}저희 회사를 거두어주실 운송 회사를 찾고있습니다.{}{}저희 {COMPANY} 회사를 {CURRENCY_LONG}의 가격으로 인수합병하시겠습니까?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY}의 기반시설
@@ -3330,12 +3331,12 @@ STR_REPLACE_VEHICLES_WHEN_OLD                                   :오래된 차�
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}왼쪽에서 선택한 기관차를 오른쪽의 새 기관차로 교체하려면 누르세요
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}교체 안됨
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}차량이 선택되지 않았음
-STR_REPLACE_REPLACING_WHEN_OLD                                  :오래되면 {ENGINE}(으)로 교체
+STR_REPLACE_REPLACING_WHEN_OLD                                  :낡으면 {ENGINE}(으)로 교체
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}차량 교체 중지
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}왼쪽에서 선택한 기관차 종류의 차량교체를 중지하려면 이 버튼을 누르세요.
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}교체중: {ORANGE}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}기관차/화물차 교체 창을 번갈아 띄웁니다
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}기관차/화물차 교체 창으로 전환합니다.
 STR_REPLACE_ENGINES                                             :기관차
 STR_REPLACE_WAGONS                                              :화물차
 
@@ -3723,48 +3724,48 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}년(年)
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}AI / 게임 스크립트 디버그
+STR_AI_DEBUG                                                    :{WHITE}인공지능/게임 스크립트 디버그
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}AI의 이름
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI 설정
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}AI의 설정 변경
-STR_AI_DEBUG_RELOAD                                             :{BLACK}AI 재시작
-STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}AI를 종료시키고, 스크립트를 다시 불러와, AI를 재시작합니다
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}AI 로그 메세지가 break 문자열을 만날 때 AI를 중단할지 여부를 켜거나 끕니다.
-STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}중단:
-STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}중단
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}이 인공지능의 이름입니다.
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}설정
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}인공지능과 관련된 설정을 변경합니다.
+STR_AI_DEBUG_RELOAD                                             :{BLACK}인공지능 재시작
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}인공지능을 종료시키고 스크립트를 다시 불러온 다음, 인공지능을 재시작합니다.
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}인공지능 기록 메시지에서 중단 문구가 나타났을 때 인공지능을 중단할지 여부를 설정합니다.
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}중단 문구:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}중단 문구
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}인공지능 로그 메시지가 이 문자열과 일치하면 게임을 일시 정지시킵니다.
-STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}일치 케이스
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}AI 로그 메세지를 중단 문자열과 비교할때 일치 케이스 검색으로 전환.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}대소문자 구분
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}인공지능 기록 메시지에서 중단 문구를 검색할 때 대소문자를 구분할 지 여부를 선택합니다.
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}계속
-STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}AI 재개 및 계속됨
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}이 AI의 디버그된 출력물을 봅니다.
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}중단된 인공지능의 연산을 재개합니다.
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}이 인공지능에서 출력된 기록 메시지를 보여줍니다.
 STR_AI_GAME_SCRIPT                                              :{G=f}{BLACK}게임 스크립트
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}게임 스크립트 기록 체크
 
 STR_ERROR_AI_NO_AI_FOUND                                        :불러올 인공지능이 없습니다.{}이 인공지능은 불용품이며 아무 기능도 하지 않을 것입니다.{}'온라인 컨텐츠 체크' 기능으로 다른 인공지능을 다운받으세요.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}작동중인 스크립트 중 하나가 충돌했습니다. 인공지능 / 게임 스크립트 디버그 창에서 스크린샷을 찍어 스크립트 제작자에게 보고하십시오.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI / 게임 스크립트 디버그창은 오직 서버만 사용 가능합니다
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}인공지능/게임 스크립트 디버그창은 오직 서버만 사용 가능합니다
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}인공지능 / 게임 스크립트 설정
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}다음에 게임을 시작할 때 이 게임 스크립트를 불러올 것입니다.
-STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}다음에 게임을 시작할 때 이 AI를 불러올 것입니다
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}다음에 게임을 시작할 때 이 인공지능을 불러올 것입니다
 STR_AI_CONFIG_HUMAN_PLAYER                                      :사용자 플레이어
 STR_AI_CONFIG_RANDOM_AI                                         :무작위 인공지능
 STR_AI_CONFIG_NONE                                              :{G=m}(없음)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}위로 이동
-STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}선택된 AI를 항목의 위로 이동시킴.
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}목록에서 선택한 인공지능의 순서를 한 칸 위로 옮깁니다.
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}아래로 이동
-STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}선택된 AI를 항목의 아래로 이동시킴.
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}목록에서 선택한 인공지능의 순서를 한 칸 아래로 옮깁니다.
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{G=f}{SILVER}게임 스크립트
-STR_AI_CONFIG_AI                                                :{G=f}{SILVER}AI
+STR_AI_CONFIG_AI                                                :{G=m}{SILVER}인공지능
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}{STRING} 선택하기
 STR_AI_CONFIG_CHANGE_NONE                                       :
-STR_AI_CONFIG_CHANGE_AI                                         :{G=f}AI
+STR_AI_CONFIG_CHANGE_AI                                         :{G=m}인공지능
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{G=f}게임 스크립트
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}다른 스크립트 불러오기
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}설정
@@ -3772,27 +3773,27 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}인공�
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}사용 가능한 {STRING}
-STR_AI_LIST_CAPTION_AI                                          :{G=f}AI
+STR_AI_LIST_CAPTION_AI                                          :{G=m}인공지능
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :{G=f}게임 스크립트
-STR_AI_LIST_TOOLTIP                                             :{BLACK}클릭하여 AI를 선택하세요
+STR_AI_LIST_TOOLTIP                                             :{BLACK}스크립트를 선택하려면 클릭하세요.
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}저자: {ORANGE}{STRING}
 STR_AI_LIST_VERSION                                             :{LTBLUE}버전: {ORANGE}{NUM}
 STR_AI_LIST_URL                                                 :{LTBLUE}주소: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}적용
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}선택한 AI 선택
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}선택한 스크립트를 적용합니다.
 STR_AI_LIST_CANCEL                                              :{BLACK}취소
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}인공지능 스크립트를 바꾸지 않습니다
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} 매개 변수
-STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_AI                                      :{G=m}인공지능
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :게임 스크립트
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}닫기
 STR_AI_SETTINGS_RESET                                           :{BLACK}초기화
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :마지막 AI 이후에 새로운 AI를 시작하기 위해 필요한 날짜 수: {ORANGE}{STRING}일
+STR_AI_SETTINGS_START_DELAY                                     :새로운 인공지능이 나타나기 위해 기다려야 하는 날짜 수 (오차는 있을 수 있음): {ORANGE}{STRING}일
 
 
 # Textfile window
@@ -4037,7 +4038,7 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}인접�
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :잘못된 차량기지 종류
 
 # Autoreplace related errors
-STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE}{P "가" "이"} 교체된지 너무 오래되었습니다
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} : 교체된지 너무 오래되었습니다.
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}자동 교체/갱신 규칙이 적용되지 않았습니다.
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(자금 제한)
 
@@ -4142,7 +4143,7 @@ STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}자동�
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}선박을 운행/중지시킬 수 없습니다...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}항공기를 운행/중지시킬 수 없습니다...
 
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}열차를 기지로 보낼 수 없습니다...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}열차를 차량기지로 보낼 수 없습니다...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}차량을 차고로 보낼 수 없습니다...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}선박을 정박소로 보낼 수 없습니다...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}항공기를 격납고로 보낼 수 없습니다...
@@ -4294,7 +4295,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :설탕 광산
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
-STR_SV_UNNAMED                                                  :이름 없음
+STR_SV_UNNAMED                                                  :{G=m}이름 없음
 STR_SV_TRAIN_NAME                                               :열차 {COMMA}
 STR_SV_ROAD_VEHICLE_NAME                                        :자동차 {COMMA}
 STR_SV_SHIP_NAME                                                :선박 {COMMA}

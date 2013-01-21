@@ -2604,6 +2604,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Inserire
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Generazione mondo
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Area mappa:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Seleziona l'area della mappa espressa in riquadri. Il numero effettivo di riquadri disponibili sarà leggermente inferiore
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Numero città:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:

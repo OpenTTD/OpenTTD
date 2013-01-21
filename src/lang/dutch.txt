@@ -2576,6 +2576,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Voer een
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Wereldontwikkeling
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kaartgrootte:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Selecteer het formaat van de kaart in tegels. Het aantal beschikbare tegels zal iets kleiner zijn
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Aantal steden:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:

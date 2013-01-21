@@ -1056,9 +1056,12 @@ STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Şirket ayarlar
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Şirket ayarları (kayıtlı dosyada saklandı; sadece mevcut şirketi etkilemektedir)
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Göster:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Aşağıdaki listeyi yalnızca değişen ayarları göstererek sınırlandırır
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Temel ayarlar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gelişmiş ayarlar
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Uzman ayarları / tüm ayarlar
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Geçerli değerden farklı bir değere sahip ayarlama
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Yeni oyun ayarlarınızdan farklı bir değere sahip ayarlar
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Aşağıdaki liste belirli bir ayar türüne göre kısıtlanır
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tüm Ayarlar
@@ -1099,22 +1102,36 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Sübvanse edile
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :İnşaat maliyetleri: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :İnşaat ve satın alma maliyet seviyesini belirleyin
 STR_CONFIG_SETTING_RECESSIONS                                   :Ekonomik krizler: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Etkinleştirilirse her birkaç yılda ekonomik durgunluk yaşanır. Durgunluk sırasında tüm üretim seviyeleri düşer (durgunluk sona erdiğinde önceki seviyesine tekrar yükselir)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Trenlerin istasyonda yön değiştirmesini yasakla: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Etkinleştirilirse trenler bir sonraki varış yerlerine giden daha kısa bir yol olması halinde son durak olmayan istasyonlarda geri dönüş yapmayacak
 STR_CONFIG_SETTING_DISASTERS                                    :Felaketler: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Araçları ya da altyapıyı yok edebilecek felaketleri açın ya da kapatın
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Arazi şekillendirmeye karşı belediye meclisinin tavrı: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Şirketlerin sebep olduğu gürültü ve çevreye zararın kasaba reytinlerini ve ilerideki inşaatlarını nasıl etkileyeceğini seçin
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Kıyılara ve eğimli araziye inşaat izni: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Etkinleştirilirse raylar ve istasyonlar çoğu zaman eğimlerin üzerine inşa edilebilir. Etkinliği kaldırılırsa raylar ve istasyonlar sadece raylarla aynı doğrultuda olan eğimlerin üzerine inşa edilebilir, böylelikle altyapı gerektirmez
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Binaların, yolların, rayların v.b. altındaki araziyi değiştirmeye izin ver (otomatik eğim): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Binaları ve yolları kaldırmaksızın altlarında yeryüzü şekillendirmesi yapılmasına izin ver
 STR_CONFIG_SETTING_CATCHMENT                                    :İstasyon kapsama alanlarının daha gerçeğe yakın ölçülerde olmasına izin ver: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Farklı istasyon ve hava limanları için farklı büyüklükte alanlar gerekir
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Şehirlere ait köprülerin, yolların ve tünellerin yıkılmasına izin vermeleri için, şehir yetkililerinin toleransını artır: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Belediyelerin sahip olduğu altyapı ve binaların yıkımını kolaylaştır
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :En yüksek tren uzunluğu: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :En yüksek tren uzunluğunu belirleyin
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Araçlardan çıkan duman veya kıvılcım miktarı: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Araçlardan ne kadar duman ya da kıvılcım çakacağını ayarla
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Tren ivme modeli: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Tren hızlanmaları için fizik modelini belirle. "Orijinal" model eğimlerde tüm araçlar için eşit şekilde güçlük yaratır. “Gerçekçi” model eğimlerde ve kıvrımlarda, uzunluk ve çekiş gücü gibi çeşitli ölçütlere dayalı olarak güçlük yaratır.
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Kara taşıtı ivme modeli: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Kara yolu araçlarının hızlanmaları için fizik modelini belirle. "Orijinal" model eğimlerde tüm araçlar için eşit şekilde güçlük yaratır. “Gerçekçi” model eğimlerde, motorun çeşitli özelliklerine, örneğin “çekiş gücüne” göre güçlük yaratır
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Trenler için eğim dikliği: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Bir tren için eğimli bir karenin dikliği. Yüksek değerler tepeye tırmanmayı güçleştirir
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Kara taşıtları için eğim dikliği: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Bir kara taşıtı için eğimli bir karenin dikliği. Yüksek değerler tepeye tırmanmayı güçleştirir
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Tren ve gemilerin 90 derece dönmesini yasakla: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 derece dönüşler yatay bir rayı bitişik karede dikey bir ray parçası takip ettiği zaman gerçekleşir, böylelikle trenin diğer ray kombinasyonlarındaki alışılagelmiş 45 derecelik dönüşü yerine karenin kenarından geçerken 90 derecelik dönüş yapmasını sağlar. Bu aynı zamanda gemilerin dönme açısına da uygulanır
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Doğrudan bitişik olmayan istasyonları birleştirme izni: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Geliştirilmiş yükleme algoritması kullan: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Araçlar yavaş yavaş dolsun: {STRING}
@@ -2380,6 +2397,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Kayıtl�
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Harita üretimi
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Harita boyutu:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Haritanın büyüklüğünü kare sayısına göre seçin. Kullanılabilir karelerin sayısı bir miktar az olacaktır.
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Şehir sayısı:
 STR_MAPGEN_DATE                                                 :{BLACK}Tarih:
