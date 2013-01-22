@@ -2763,6 +2763,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Je staa
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan bestand niet toevoegen: identieke GRF-ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Bijbehorend bestand niet gevonden (compatibele GRF geladen)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Kan bestand niet toevoegen: NewGRF bestandslimiet bereikt
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Compatibele GRF(s) geladen voor ontbrekende bestanden
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missend(e) GRF-bestand(en) zijn uitgeschakeld

@@ -1189,6 +1189,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Membolehkan per
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Ijinkan pengiriman uang ke perusahaan lain: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Perbolehkan pemindahan uang antar perusahaan di mode multiplayer
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Faktor kali muatan untuk simulasi kereta yang berat: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Tetapkan dampak dari barang bawaan terhadap kereta. Nilai lebih tinggi membuat kereta barang membutuhkan lebih banyak tenaga, terutama di perbukitan
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Faktor kecepatan pesawat: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Menyesuaikan kecepatan relatif pesawat dengan kendaraan lain,untuk mereduksi pendapatan melalui pesawat
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
@@ -2519,6 +2520,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Masukkan
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Pembuatan peta
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Ukuran Peta:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Pilih ukuran peta dalam petak. Jumlah dari petak yang tersedia akan sedikit lebih kecil
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Jumlah Kota:
 STR_MAPGEN_DATE                                                 :{BLACK}Tgl:
@@ -2705,6 +2707,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Anda ak
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Tidak dapat menambahkan: GRF ID sudah ada
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Berkas yang cocok tidak diketemukan (GRF kompatibel telah dimuat)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Tidak dapat menambahkan NewGRF : Batas maksimal NewGRF tercapai
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF kompatibel telah dimuat untuk berkas yang hilang
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Berkas GRF telah di non-aktifkan

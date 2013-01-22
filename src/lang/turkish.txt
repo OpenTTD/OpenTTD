@@ -1120,6 +1120,7 @@ STR_CONFIG_SETTING_EXTRADYNAMITE                                :Şehirlere ait 
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Belediyelerin sahip olduğu altyapı ve binaların yıkımını kolaylaştır
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :En yüksek tren uzunluğu: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :En yüksek tren uzunluğunu belirleyin
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} kare
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Araçlardan çıkan duman veya kıvılcım miktarı: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Araçlardan ne kadar duman ya da kıvılcım çakacağını ayarla
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Tren ivme modeli: {STRING}
@@ -1128,6 +1129,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Kara taşıtı 
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Kara yolu araçlarının hızlanmaları için fizik modelini belirle. "Orijinal" model eğimlerde tüm araçlar için eşit şekilde güçlük yaratır. “Gerçekçi” model eğimlerde, motorun çeşitli özelliklerine, örneğin “çekiş gücüne” göre güçlük yaratır
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Trenler için eğim dikliği: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Bir tren için eğimli bir karenin dikliği. Yüksek değerler tepeye tırmanmayı güçleştirir
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Kara taşıtları için eğim dikliği: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Bir kara taşıtı için eğimli bir karenin dikliği. Yüksek değerler tepeye tırmanmayı güçleştirir
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Tren ve gemilerin 90 derece dönmesini yasakla: {STRING}

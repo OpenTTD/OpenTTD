@@ -1374,6 +1374,7 @@ STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omgivelse: {STR
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Afspil omgivelseslyde for landskaber, industrier og byer
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Deaktiver bygning af infrastruktur når ingen passende køretøjer er tilgængelige: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Når slået til, er infrastruktur kun tilgængelig hvis der også er køretøjer tilgængelige. Dette forebygger spild af tid og penge grundet ubrugbar infrastruktur.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks. antal tog per spiller: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimum antal toge et firma kan have
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks. antal køretøjer per spiller: {STRING}
@@ -1390,6 +1391,7 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Aktivering af d
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Deaktiver fly for computeren: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Denne indstilling vil gøre det umuligt for en computerstyret spiller at bygge fly
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Deaktiver skibe for computeren: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Denne indstilling gør det umuligt for en computerspiller at bygge skibe, når den er slået til.
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Standart indstillingsprofil: {STRING}
 STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Vælg hvilke indstillinger der skal bruges for tilfældig AIs eller for oprindelige værdier, når du tilføjer en ny AI eller spil Script
@@ -1405,9 +1407,15 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximale nummer
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Service intervaller er i procent: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Vælg om vedligeholdelse bliver udløst af forløbet tid, eller pålideligheden som falder en givet procenttal i forhold til maximum pålideligheden
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standard vedligeholdelses interval for tog: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Sæt serviceintervallets standardværdi for nye skinnekøretøjer.
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 "" e}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Deaktiveret
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Standard vedligeholdelses interval for vejkøretøjer: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Sæt serviceintervallets standardværdi for nye vejkøretøjer.
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standard serviceinterval for fly: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Sæt serviceintervallets standardværdi for nye fly.
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standard serviceinterval for skibe: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Sæt serviceintervallets standardværdi for nye skibe.
 STR_CONFIG_SETTING_NOSERVICE                                    :Slå service fra, når nedbrud er sat til ingen: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktiver hastighedsbegrænsning for vogne: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Slå elektriske jernbaner fra: {STRING}
@@ -2732,6 +2740,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er v
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikke tilføje sæt: dobbelt GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Tilsvarende fil ikke fundet (kompatibel GRF indlæst)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Kan ikke tilføje fil: Grænsen for antal NewGRF filer er nået
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatible GRF fil(er) indlæst i stedet for manglende fil(er)
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manglende GRF fil(er) er blevet slået fra

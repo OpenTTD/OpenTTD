@@ -568,7 +568,7 @@ STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}{NBSP}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Vis detaljar om dette firmaet
 ############ Those following lines need to be in this order!!
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Køyretøy:
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Køyrety:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasjonar:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. gevinst:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. inntekt:
@@ -1037,6 +1037,11 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Inga pas
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avanserte innstillingar
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Begrenstar lista til spesifikke instillingstypar
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alle innstillingar
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Klient instillingar (alle spel)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spel instillingar (gjeldande spel)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Firma instillingar (gjeldande firma)
 
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
@@ -2480,6 +2485,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er i
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikkje leggje til fil: GRF ID finns allereie
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchande fil blei ikkje funne (kompatibel GRF-fil lasta inn)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Kan ikkje leggje til fil: NyGRF fil grense nådd
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibel GRF-fil(ar) lasta inn i plassen for manglande filar
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manglande GRF-fil(ar) har vorte deaktiverte

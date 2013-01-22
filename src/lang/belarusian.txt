@@ -2909,6 +2909,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Увяд
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Стварэньне сусьвету
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Памер мапы:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Выберыце памер памы ў клетках. Колькасьць даступных клетак будзе трохі меншай
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Колькасьць гарадоў:
 STR_MAPGEN_DATE                                                 :{BLACK}Дата:

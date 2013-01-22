@@ -2791,6 +2791,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Si stan
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Impossibile aggiungere il file: GRF ID duplicato
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}File corrispondente non trovato (caricato file GRF compatibile)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Impossibile aggiungere il file: si è raggiunto il limite per i file NewGRF
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}File GRF compatibili caricati al posto dei file mancanti
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}I file GRF mancanti sono stati disabilitati

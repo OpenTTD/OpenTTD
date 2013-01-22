@@ -2763,6 +2763,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}You are
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Can't add file: duplicate GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matching file not found (compatible GRF loaded)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Can't add file: NewGRF file limit reached
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Compatible GRF(s) loaded for missing files
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missing GRF file(s) have been disabled

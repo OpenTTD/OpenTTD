@@ -2764,6 +2764,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Þú er
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Get ekki bætt skrá við: tvö eins GRF einkenni
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Viðeigandi skrá finnst ekki (samsvarandi GRF hlaðið)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Get ekki bætt við skrá: Fjöldi skráa í NewGRF hefur náð hámarki
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Samsvarandi GRF hlaðið í staðin týndrar skrár
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Týndar GRF skrár hafa verið gerðar óvirkar

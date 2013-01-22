@@ -1088,7 +1088,7 @@ STR_CONFIG_SETTING_SELECTGOODS                                  :Nur liveru ŝar
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Permana ĉefa industri-konstrumaniero: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :neniu
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kiel aliaj industrioj
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospektori
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :esploradon
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permesu pliajn similajn industriojn en la sama urbo: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Montru signaloj: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Maldekstre
@@ -1109,7 +1109,7 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permesu sendi m
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Pezpliigo pro ŝarĝo por imiti pezajn trajnojn: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Nombro da aviadilokraŝoj: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :neniom
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :neniu
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduktita
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permesu trairajn bushaltejojn sur urboposedataj stratoj: {STRING}
@@ -1194,9 +1194,9 @@ STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Vindoza paletro
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Aŭtomate paŭzu startante novan ludon: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Permesu dum paŭza: {STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :senagoj
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :ĉiuj senkonstruaj agoj
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :ĉiuj krom landaspekto ŝanĝanta agoj
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :neniu agoj
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :ĉiuj ne-konstruado agoj
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :ĉiuj sed pejzaĝo ŝanĝanta agoj
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :ĉiuj agoj
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Uzu la avancitan veturilaron: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Uzu ŝarg-indikilojn: {STRING}
@@ -1289,13 +1289,13 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Permesu ke urbo
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Urboj estas permesa konstrui traknivelajn pasejojn: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permesu urbe kontrolatan laŭtecon por flughavenoj: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Konstruanta urbojn en ludo: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prohibita
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permesita
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permesite, propra urbomapo
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :malpermesita
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permesate
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permesate, kutimo urbomapo
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :En ludo metanta de arbojn: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :neniu {RED}(rompas lignejo)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :nur en pluvarbaroj
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :neniu {RED}(rompas ligno muelilo)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :nur en tropika praarbaroj
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Ĉie
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Loko de ĉefa ilbreto: {STRING}

@@ -2763,6 +2763,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Olet te
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ei voi lisätä tiedostoa: duplicate GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Sopivaa tiedostoa ei löytynyt (korvaava GRF ladattu)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Tiedostoa ei voida lisätä: NewGRF-tiedostojen raja saavutettu
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Yhteensopivat GRF:t ladattu puuttuvien tiedostojen korvaamiseksi
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Puuttuvat GRF tiedostot ovat poistettu käytöstä

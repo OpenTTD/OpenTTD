@@ -2764,6 +2764,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vous ê
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ajout impossible{NBSP}: GRF ID en double
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Module exact non trouvé (GRF compatible chargé)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Impossible d'ajouter le module: la limite des modules NewGRF a été atteinte
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatible(s) chargé(s) pour les modules absents
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Module(s) GRF absent(s) désactivés

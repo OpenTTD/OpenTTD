@@ -2859,6 +2859,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Spremat
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ne mogu dodati datoteku: dupli GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odgovarajuća datoteka nije pronađena (kompatibilni GRF podignut)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Nemoguće dodati datoteku: dosegnut limit broja NewGRF datoteka
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilni GRF(ovi) učitani umjesto nepronađenih datoteka
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Nepronađene GRF datoteke su isključene
