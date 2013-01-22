@@ -1073,7 +1073,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Config. de comp
 
 STR_CONFIG_SETTING_OFF                                          :Desl.
 STR_CONFIG_SETTING_ON                                           :Lig.
-STR_CONFIG_SETTING_DISABLED                                     :Desativad{G "o" "a"}
+STR_CONFIG_SETTING_DISABLED                                     :Desativado
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Desligado
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Própria empresa
@@ -1545,7 +1545,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Muito rápido
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporção de cidades que virarão cidades grandes: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Quantidade de cidades que se tornação uma cidade grande, ou seja, uma cidade que começa maior e cresce mais rápido
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 a cada {COMMA}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nenhum {G "" "a"}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nenhum
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador do tamanho inicial da cidade: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamanho médio das cidades grandes em relação às cidades no início do jogo
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Remover elementos de estrada absurdos ao construir ruas: {STRING}

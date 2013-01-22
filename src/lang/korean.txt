@@ -2093,7 +2093,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}이 콘
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}이것은 다른 콘텐츠에 종속되어 자동선택되었습니다
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}이미 가지고 있는 콘텐츠입니다.
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}이 콘텐츠는 알려지지 않은 콘텐츠이고 OpenTTD 게임 상에서 받을 수 없는 것입니다
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}이 콘텐츠는 기존에 존재하던 {STRING}{G "을" "를"} 업데이트합니다.
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}이 콘텐츠는 기존에 존재하던 {STRING}{G 0 "을" "를"} 업데이트합니다.
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}이름: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}버전: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}설명: {WHITE}{STRING}
