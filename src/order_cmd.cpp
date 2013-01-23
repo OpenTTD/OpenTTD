@@ -1613,6 +1613,8 @@ CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	/* Automatic refit cargo is only supported for goto station orders. */
 	if (cargo == CT_AUTO_REFIT && !order->IsType(OT_GOTO_STATION)) return CMD_ERROR;
 
+	if (order->GetLoadType() & OLFB_NO_LOAD) return CMD_ERROR;
+
 	if (flags & DC_EXEC) {
 		order->SetRefit(cargo, subtype);
 
