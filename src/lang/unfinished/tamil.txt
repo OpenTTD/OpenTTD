@@ -2019,6 +2019,7 @@ STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING}, {ST
 
 # NewGRF related 'general' warnings
 
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}கோப்பினை சேர்க்க இயலவில்லை: NewGRF கோப்பு எண்ணிக்கை அளவு அதிகமாக உள்ளது
 
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}கிடைக்காத GRF கோப்பு(கள்) செயலிழக்க செய்யப்பட்டன
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}இல்லாத GRF கோப்பு(கள்)

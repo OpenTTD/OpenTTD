@@ -1135,10 +1135,19 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Bir kara taşı
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Tren ve gemilerin 90 derece dönmesini yasakla: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 derece dönüşler yatay bir rayı bitişik karede dikey bir ray parçası takip ettiği zaman gerçekleşir, böylelikle trenin diğer ray kombinasyonlarındaki alışılagelmiş 45 derecelik dönüşü yerine karenin kenarından geçerken 90 derecelik dönüş yapmasını sağlar. Bu aynı zamanda gemilerin dönme açısına da uygulanır
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Doğrudan bitişik olmayan istasyonları birleştirme izni: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Mevcut parçalarına doğrudan temas etmeksizin bir istasyona parçalar eklenmesine müsaade et. Yeni parçalar eklenirken Ctrl+Click basılması gerekir
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Geliştirilmiş yükleme algoritması kullan: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Etkinleştirilirse istasyonda bekleyen araçlar sırayla yüklenecektir. Bir sonraki aracın yüklenmesi ancak istasyonda bekleyen ilk aracı tamamen doldurmaya yetecek kadar kargo olduğunda başlar
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Araçlar yavaş yavaş dolsun: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Sadece yüklenen kargo miktarına bağlı olarak belirli bir zaman içerisinde her şeyin tek seferde yüklenmesi yerine, araçları kendilerine özel yükleme sürelerini kullanarak teker teker yükle
 STR_CONFIG_SETTING_INFLATION                                    :Enflasyon: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Maliyetlerin ödemelerden biraz daha hızlı arttığı ekonomide enflasyonu etkinleştir
 STR_CONFIG_SETTING_SELECTGOODS                                  :Sadece istek varsa kargo kabul edilsin: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Bir istasyona sadece bir yükleme aracından talep edilen kargoyu ulaştır. Bu ayarlama bir istasyona getirilmeyen kargolar yüzünden kötü derecelendirmeyi önler
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimum köprü uzunluğu: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Köprü inşası için maksimum uzunluk
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimum tünel uzunluğu: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Tünel inşa etmek için maksimum uzunluk
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Üretim fabrikalarının yapım yöntemi: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Hiçbiri
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Diğer endüstriler gibi
@@ -2586,6 +2595,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Çalı�
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Dosya eklenemiyor: GRF ID çakışması
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Eşleşen dosya bulunamadı (uyumlu GRF yüklendi)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Dosya eklenemiyor: NewGRF dosya limitine ulaşıldı
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Eksik dosyalar için uyumlu GRF(ler) yüklendi
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Eksik GRF dosyaları etkisizleştirildi

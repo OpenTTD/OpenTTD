@@ -2726,6 +2726,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Bạn �
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Không thể thêm file: trùng lặp GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}File hợp lệ không tìm thấy (GRF tương thích được nạp thay)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Không thể thêm: đã chạm số lượng NewGRF giới hạn
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF tương thích được nạp thay cho các file thiếu.
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Các GRF file thiếu bị bỏ qua

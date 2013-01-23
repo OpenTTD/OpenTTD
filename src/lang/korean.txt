@@ -2764,6 +2764,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}게임 
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}파일 추가 불가: 중복된 GRF 아이디
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}일치하는 파일을 찾을 수 없음 (호환되는 GRF 불러옴)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}파일을 추가할 수 없습니다: NewGRF 파일이 너무 많습니다.
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}없는 파일 대신에 호환되는 GRF를 불러왔습니다.
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}나에게 없는 GRF 파일은 비활성화되었습니다.

@@ -3379,45 +3379,45 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Υποχ
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Κεντράρισμα της κυρίας προβολής στη τοποθεσία του τρένου. Με Ctrl+Κλικ ακολουθεί το τρένο στην κύρια προβολή
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Κεντράρισμα της κυριας προβολης στη τοποθεσία του οχήματος δρόμου. Ctrl+κλικ για να ακολουθήσει το όχημα στη κύρια προβολή
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Κεντράρισμα της κυριας προβολης στη τοποθεσία του πλοίου. Ctrl+κλικ για να ακολουθήσει το πλοίο στη κύρια προβολή
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Κεντράρισμα της κυριας προβολης στη τοποθεσία του αεροσκάφους. Ctrl+κλικ για να ακολουθήσει το αεροσκάφος στη κύρια προβολή
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Κεντράρισμα της κύριας προβολής στην τοποθεσία του τρένου. Με Ctrl+Κλικ ακολουθεί το τρένο στην κύρια προβολή
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Κεντράρισμα της κύριας προβολής στην τοποθεσία του οχήματος δρόμου. Με Ctrl+Κλικ για να ακολουθήσει το όχημα στην κύρια προβολή
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Κεντράρισμα της κύριας προβολής στη τοποθεσία του πλοίου. Με Ctrl+Κλικ ακολουθεί το πλοίο στην κύρια προβολή
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Κεντράρισμα της κύριας προβολής στην τοποθεσία του αεροσκάφους. Με Ctrl+Κλικ ακολουθεί το αεροσκάφος στην κύρια προβολή
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Στέλνει το τρένο στο αμαξοστάσιο. Ctrl+κλικ για να κάνει μόνο επισκευή
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Στέλνει το όχημα δρόμου στο αμαξοστάσιο. Ctrl+κλικ για να κάνει μόνο επισκευή
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Στέλνει το πλοίο στο ναυπηγείο. Ctrl+κλικ για να κάνει μόνο επισκευή
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Στέλνει το αεροσκάφος στο υπόστεγο. Ctrl+κλικ για να κάνει μόνο επισκευή
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Στέλνει το τρένο στο αμαξοστάσιο. Με Ctrl+Κλικ κάνει μόνο επισκευή
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Στέλνει το όχημα στο αμαξοστάσιο. Με Ctrl+Κλικ κάνει μόνο επισκευή
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Στέλνει το πλοίο στο ναυπηγείο. Με Ctrl+Κλικ κάνει μόνο επισκευή
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Στέλνει το αεροσκάφος στο υπόστεγο. Με Ctrl+Κλικ κάνει μόνο επισκευή
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του τρένου μαζί με όλα τα βαγόνια. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift+κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να αγοράζεται.
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του οχήματος. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του πλοίου. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του αεροσκάφους. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Αυτό θα αγοράσει αντίγραφο του τρένου μαζί με όλα τα βαγόνια. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς αγορά
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Αυτό θα αγοράσει αντίγραφο του οχήματος. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει αγορά
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Αυτό θα αγοράσει αντίγραφο του πλοίου. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει αγορά
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Αυτό θα αγοράσει αντίγραφο του αεροσκάφους. Με Ctrl+Κλικ θα έχει τις ίδιες εντολές. Με Shift+Κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει αγορά
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Αναγκάστε το τρένο να προχωρήσει χώρις να περιμένει το σηματοδότη να το επιτρέψει
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Αναγκάστε το τρένο να προχωρήσει χωρίς να περιμένει το σηματοδότη να το επιτρέψει
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Μετατροπή του τρένου για μεταφορά διαφορετικού φορτίου
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Μετατροπή οχήματος δρόμου για να γίνει μεταφορά ενός διαφορετικού τύπου εμπορεύματος
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Μετατροπή οχήματος για να γίνει μεταφορά ενός διαφορετικού τύπου εμπορεύματος
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Μετατροπή του πλοίου για να γίνει μεταφορά ενός διαφορετικού τύπου εμπορεύματος
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Μετατροπή του αεροσκάφους για να γίνει μεταφορά ενός διαφορετικού τύπου εμπορεύματος
 
-STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Αναστροφή
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Αναστροφή κατεύθυνσης τρένου
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Εξανάγκαση του οχήματος να γυρίσει ανάποδα
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Εμφάνιση των εντολών του τρένου. Ctrl+κλικ για την εμφάνιση του δρομολογίου
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Εμφάνιση των εντολών του οχήματος δρόμου. Ctrl+κλικ για την εμφάνιση του δρομολογίου
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Εμφάνιση των εντολών του πλοίου. Ctrl+κλικ για την εμφάνιση του χρονοδιαγράμματος
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Εμφάνιση των εντολών του αεροσκάφους. Ctrl+κλικ για την εμφάνιση του χρονοδιαγράμματος
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Εμφάνιση των εντολών του τρένου. Με Ctrl+Κλικ εμφανίζεται το δρομολόγιο
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Εμφάνιση των εντολών του οχήματος δρόμου. Με Ctrl+Κλικ εμφανίζεται το δρομολόγιο
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Εμφάνιση των εντολών του πλοίου. Με Ctrl+Κλικ εμφανίζεται το χρονοδιάγραμμα
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Εμφάνιση των εντολών του αεροσκάφους. Με Ctrl+Κλικ εμφανίζεται το χρονοδιάγραμμα
 
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Εμφάνιση λεπτομεριών τρένου
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Εμφάνιση λεπτομερειών τρένου
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Εμφάνιση λεπτομερειών οχήματος δρόμου
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Εμφάνιση λεπτομερειών πλοίου
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Εμφάνιση λεπτομερειών αεροσκάφους
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Τρέχουσα ενέργεια τρένου - κάντε κλικ εδώ για ξεκινήσετε/σταματήσετε το τρένο. Ctrl+Click για να πάτε στο προορισμό
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Τρέχουσα ενέργεια οχήματος - κάντε κλικ εδώ για ξεκινήσετε/σταματήσετε το όχημα. Ctrl+Click για να πάτε στο προορισμό
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Τρέχουσα ενέργεια πλοίου - κάντε κλικ εδώ για ξεκινήσετε/σταματήσετε το πλοίο. Ctrl+Click για να πάτε στο προορισμό
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Τρέχουσα ενέργεια αεροσκάφους - πατήστε για ξεκινήσετε/σταματήσετε το αεροσκάφος. Ctrl + Κλικ για να κυλήσετε στον προορισμό
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Τρέχουσα ενέργεια τρένου - κάντε κλικ εδώ για ξεκινήσετε/σταματήσετε το τρένο. Με Ctrl+Κλικ πηγαίνετε στον προορισμό
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Τρέχουσα ενέργεια οχήματος - κάντε κλικ εδώ για ξεκινήσετε/σταματήσετε το όχημα. Με Ctrl+Κλικ πηγαίνετε στον προορισμό
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Τρέχουσα ενέργεια πλοίου - κάντε κλικ εδώ για ξεκινήσετε/σταματήσετε το πλοίο. Με Ctrl+Κλικ πηγαίνετε στον προορισμό
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Τρέχουσα ενέργεια αεροσκάφους - κάντε κλικ εδώ για ξεκινήσετε/σταματήσετε το πλοίο. Με Ctrl+Κλικ πηγαίνετε στον προορισμό
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Φόρτωση / Ξεφόρτωση
@@ -3426,12 +3426,12 @@ STR_VEHICLE_STATUS_CRASHED                                      :{RED}Κατεσ
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Χαλασμένο
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Σταματημένο
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Σταματάει, {VELOCITY}
-STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Χώρις ενέργεια κίνησης
+STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Χωρίς ενέργεια κίνησης
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Αναμονή για ελεύθερη τροχιά
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Υπερβολικά μακριά από τον επόμενο προορισμό
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Πάει προς {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Δεν έχει οδηγίες, {VELOCITY}
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Δεν έχει εντολές, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Πορεία προς {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Κατεύθυνση για το {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Επισκευή στο {DEPOT}, {VELOCITY}
@@ -3443,26 +3443,26 @@ STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GRE
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Ξεκίνησε
 
 # Vehicle details
-STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Λεπτομέριες)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Όνομα
+STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Λεπτομέρειες)
+STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Ονομασία
 
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Όνομα τρένου
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Όνομα οχήματος δρόμου
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Όνομα πλοίου
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Όνομα αεροσκάφους
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Ονομασία τρένου
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Ονομασία οχήματος δρόμου
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Ονομασία πλοίου
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Ονομασία αεροσκάφους
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ηλικία: {LTBLUE}{STRING}{BLACK}   Λειτουργικό Κόστος: {LTBLUE}{CURRENCY_LONG}/χρ
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ηλικία: {LTBLUE}{STRING}{BLACK}   Λειτουργικό Κόστος: {LTBLUE}{CURRENCY_LONG}/έτος
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} χρόν{P ος ια} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} χρόν{P ος ια} ({COMMA})
 
-STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Μεγ. ταχύτητα: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Μέγ. ταχύτητα: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Μέγ. ταχύτητα: {LTBLUE}{VELOCITY} {BLACK}Εμβέλεια: {LTBLUE}{COMMA} τετραγωνίδια
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Βάρος: {LTBLUE}{WEIGHT_SHORT} {BLACK}Ιπποδύναμη: {LTBLUE}{POWER}{BLACK} Μεγ. Ταχύτητα: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Βάρος: {LTBLUE}{WEIGHT_SHORT} {BLACK}Ιπποδύναμη: {LTBLUE}{POWER}{BLACK} Μεγ. Ταχύτητα: {LTBLUE}{VELOCITY} {BLACK}Μεγ. Ε.Δ: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Βάρος: {LTBLUE}{WEIGHT_SHORT} {BLACK}Ιπποδύναμη: {LTBLUE}{POWER}{BLACK} Μέγ. Ταχύτητα: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Βάρος: {LTBLUE}{WEIGHT_SHORT} {BLACK}Ιπποδύναμη: {LTBLUE}{POWER}{BLACK} Μέγ. Ταχύτητα: {LTBLUE}{VELOCITY} {BLACK}Μέγ. Ε.Δ: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Κέρδη έτους: {LTBLUE}{CURRENCY_LONG} (προηγούμενου έτους: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Αξιοπιστία: {LTBLUE}{COMMA}%  {BLACK}Βλάβες μετά την τελευταία επισκευή: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Κέρδη αυτό το έτος: {LTBLUE}{CURRENCY_LONG} (προηγούμενου έτους: {CURRENCY_LONG})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Αξιοπιστία: {LTBLUE}{COMMA}%  {BLACK}Βλάβες μετά από την τελευταία επισκευή: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Κατασκευή: {LTBLUE}{NUM}{BLACK} Αξία: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Χωρητικότητα: {LTBLUE}Τίποτα{STRING}
