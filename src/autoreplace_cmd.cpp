@@ -766,7 +766,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	if (flags & DC_EXEC) {
 		GroupStatistics::UpdateAutoreplace(_current_company);
-		SetWindowClassesDirty(GetWindowClassForVehicleType(Engine::Get(old_engine_type)->type));
+		if (IsLocalCompany()) SetWindowDirty(WC_REPLACE_VEHICLE, Engine::Get(old_engine_type)->type);
 	}
 	if ((flags & DC_EXEC) && IsLocalCompany()) InvalidateAutoreplaceWindow(old_engine_type, id_g);
 

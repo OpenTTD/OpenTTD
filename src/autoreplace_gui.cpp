@@ -186,7 +186,6 @@ class ReplaceVehicleWindow : public Window {
 		EngineID veh_from = this->sel_engine[0];
 		EngineID veh_to = this->sel_engine[1];
 		DoCommandP(0, (replace_when_old ? 1 : 0) | (this->sel_group << 16), veh_from + (veh_to << 16), CMD_SET_AUTOREPLACE);
-		this->SetDirty();
 	}
 
 public:
@@ -455,7 +454,6 @@ public:
 			case WID_RV_STOP_REPLACE: { // Stop replacing
 				EngineID veh_from = this->sel_engine[0];
 				DoCommandP(0, this->sel_group << 16, veh_from + (INVALID_ENGINE << 16), CMD_SET_AUTOREPLACE);
-				this->SetDirty();
 				break;
 			}
 
