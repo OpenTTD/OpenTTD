@@ -342,7 +342,7 @@ static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], int sel, u
 			/* If the callback succeeded, draw the cargo suffix. */
 			if (refit.value != CALLBACK_FAILED && refit.value < 0x400) {
 				SetDParam(1, GetGRFStringID(refit.engine->GetGRFID(), 0xD000 + refit.value));
-				DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, STR_JUST_STRING_SPACE_STRING, colour);
+				DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, STR_JUST_STRING_STRING, colour);
 			} else {
 				DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, STR_JUST_STRING, colour);
 			}
