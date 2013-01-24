@@ -1362,8 +1362,20 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Ijinkan kecerda
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes sebelum scripts di-tahan: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Jangka waktu perbaikan dalam persen: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Interval default untuk kereta: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Setel interval default untuk kereta, jika tidak ada interval tetap
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} hari/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Di non-aktifkan
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Interval default untuk kendaraan jalan raya: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Setel Interval perbaikan untuk kendaraan jalan raya baru, jika tidak ada interval tetap
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Interval perbaikan untuk pesawat: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Setel interval perbaikan untuk pesawat baru, jika tidak ada interval asli yang disetel
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Interval asli untuk kapal: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Mengatur interval perbaikan untuk kapal baru, jika tidak ada interval perbaikan, setelan asli akan diatur untuk kendaraan
 STR_CONFIG_SETTING_NOSERVICE                                    :Tidak perlu perbaikan jika tidak pernah mogok: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Jika diaktifkan, kendaraan tidak akan diperbaiki jika tidak pernah mogok
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktifkan batas kecepatan gerbong: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Jika diaktifkan, juga menggunakan batas kecepatan gerbong untuk menentukan kecepatan maksimum kereta
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Non-aktifkan rel listrik: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Mengaktifkan setelan ini mematikan kebutuhan kereta listrik untuk berjalan di rel elektris
 

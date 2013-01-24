@@ -1126,6 +1126,7 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Szakértő beá
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Beállítások az eredetitől eltérő értékekkel
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Beállítosok amelyeknek a jelenlegi értéke eltér az eredetitől
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Lista szűkítése a beállítások szerint
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Minden beállítás
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Kliens beállítások (nincs mentésben tárolva; minden játékot érintenek)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Játék beállítások (mentésben tárolva; csak az új játékokat érintik)
@@ -1154,14 +1155,23 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximálisan k�
 STR_CONFIG_SETTING_INTEREST_RATE                                :Kamatláb: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Banki hitel kamat; valamint szabályozza az inflációt is
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Üzemeltetési költségek: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Járművek karbantartási és üzemeltetési költségeinek a szintje
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Építkezési sebesség: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Korlátozza az építkezési sebességét számítógépes ellenfeleknek
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Jármű lerobbanások: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Megfelelően karbantartott járművek lerobbanásának gyakorisága
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Támogatási szorzó érték: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Támogatott kapcsolatok kifizetéseinek szorzója
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Építkezési költségek: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Építkezések és beszerzésk költségeinek szintje
 STR_CONFIG_SETTING_RECESSIONS                                   :Gazdasági válságok: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ha bekapcsolod, gazdasági válság fog kitörni néhány évente. A válság alatt az összes ipar jelentősen kevesebbet termel. (A válság végével a termelés vissza áll az eredeti szintre.)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Vonatok állomáson történő megfordulásának tiltása: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ha engedélyezve van, a vonatok nem fordulnak vissza egy (nem vég-) állomáson, még ha lenne egy rövidebb út is visszafordulva
 STR_CONFIG_SETTING_DISASTERS                                    :Katasztrófák: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ha engedélyezve van, néha katasztrófa történhet, ami megállíthatja vagy megsemmisítheti a járműveket és az infrastruktúrát
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Városi tanács hozzáállása a területének az átépítéséhez: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Válaszd ki, hogy mennyi zaj és környezeti kár okozása befolyásolja a cég megítélését egy városban, mely hatással van a cég további építési lehetőségeire a város területén belül
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Lejtőre és partokra építés: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Bekapcsolva utak, vasutak és állomások lejtőre is építhetőek. Kikapcsolva csak olyan lejtőre építhetőek, melyek megegyeznek a lejtő irányával és nem igényelnek egyéb létesítményeket
@@ -1354,6 +1364,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Ki
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Egérgörgő sebessége a térképen: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Egérgörgős mozgatás érzékenységének beállítása
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Képernyőbillentyűzet: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Válaszd ki a képernyűbillentyűzet ablak megnyitásának módját, hogy csak mutatóeszközzel is be tudj íni szöveget vagy számot. Ez a billentyűzet nélküli játéknál hasznos.
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Kikapcsolva
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dupla kattintás
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Egyszeres kattintás (amikor előtérben van)
@@ -1410,9 +1421,11 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Kiadási/bevét
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :A pénzügyi adatok ablak elrendezésének beállítása
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Hírsáv: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Hang lejátszása új hír érkezésekor
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Újság: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Hanglejátszás az újság megjelenésekor
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Év vége: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Hang lejátszása év végén, összesítve a cég teljesítményét
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Építkezés: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Hanglejátszás sikeres építkezések vagy más tevékenységek után
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Gombra kattintás: {STRING}
@@ -1421,6 +1434,8 @@ STR_CONFIG_SETTING_SOUND_DISASTER                               :Katasztrófák/
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Balesetek és katasztrófák hangjainak lejátszása
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Járművek: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Járműhangok lejátszása
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Terület: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Hang lejátszása, amikor valamilyen tereptárgy közelében járunk (város, ipar, terep, stb)
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Infrastruktúra építésének tiltása amíg nem elérhető megfelelő jármű: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Bekapcsolva az infrastruktúra csak akkor elérhető, ha van megfelelő jármű, megakadályozva a felesleges pénzköltést a kihasználhatatlan infrastruktúrára
@@ -1442,6 +1457,8 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Bekapcsolva a s
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Hajók tiltása a gépi ellenfeleknek: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Bekapcsolva a számítógép által irányított ellenfelek nem építhetnek hajókat
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Alapértelmezett beállítás: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Válaszd ki, hogy melyik beállítási mintát használja a 'véletlen' MI a belső beállításainak, amikor új MI-t vagy szkriptet adsz hozzá
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Könnyű
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Közepes
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Nehéz
@@ -1485,7 +1502,9 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Újság megjele
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Gazdasági változások: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Újság megjelenítése a globális gazdasági változásokkal kapcsolatban
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Termelésváltozások a vállalatod által kiszolgált gazdasági létesítményeknél: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Újsághír megjelenítése, amikor a cág által kiszolgált gazdasági épületben termelési változás áll be
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Termelésváltozások a konkurenseid által kiszolgált gazdasági létesítményeknél: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Újsághír megjelenítése, amikor a versenytársak által kiszolgált gazdasági épületben termelési változás áll be
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Más gazdasági termelési változások: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Üzenet megjelenítése, amikor egy olyan ipartelep teljesítménye változik, amely nem kötődik semelyik cég tevékenységéhez
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :A vállalat járműveire vonatkozó ötletek / információk: {STRING}
@@ -2266,7 +2285,7 @@ STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombiná
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Irányjelző (alak){}Egy irányjelző lehetővé teszi, hogy amennyiben a vonatok le tudnak foglalni maguknak egy biztonságos vágányutat a következő jelzőig, több vonat is beléphessen ugyanabba a jelzőblokkba. Az irányjelzők mellett hátulról is el lehet haladni
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Egyirányú irányjelző (alak){}Egy irányjelző lehetővé teszi, hogy amennyiben a vonatok le tudnak foglalni maguknak egy biztonságos vágányutat a következő jelzőig, több vonat is beléphessen ugyanabba a jelzőblokkba. Az egyirányú jelzők mellett nem lehet hátulról elhaladni
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Normál jelző (fény){}A legegyszerűbb jelzőtípus, az előtte lévő jelzőblokkba egyszerre csak egy vonatot enged tartózkodni
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Bejárati jelző (fény){}Mindaddig szabad, amíg van legalább egy szabad kijárati jelző az utána következő szakaszon. Egyébként Megálljt jelez
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Bejárati jelző (fény){}Mindaddig szabad (zöld), amíg van legalább egy szabad kijárati jelző az utána következő szakaszon. Egyébként Megálljt (piros) jelez
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Kijárati jelző (fény){}Ugyanúgy viselkedik mint a normál jelző, de megléte elengedhetetlenül szükséges a bejárati- és a kombinált jelzők működéséhez
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinált jelző (fény){}A kombinált jelző voltaképpen egy kijárati- és egy bejárati jelző egybeépítve. Segítségével komoly váltókörzetek építhetőek bejárati jelzőkből
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Irányjelző (fény){}Egy irányjelző lehetővé teszi, hogy amennyiben a vonatok le tudnak foglalni maguknak egy biztonságos vágányutat a következő jelzőig, több vonat is beléphessen ugyanabba a jelzőblokkba. Az irányjelzők mellett hátulról is el lehet haladni
@@ -2621,6 +2640,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Add meg 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Világ létrehozása
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Térkép méret:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Válaszd ki a térkép méretét. Az elérhető mezők száma egy kicsit kevesebb lesz
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Várossűrűség:
 STR_MAPGEN_DATE                                                 :{BLACK}Dátum:
@@ -2713,7 +2733,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Fel
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}A kiválasztott NewGRF-et felfelé mozgatja a listán
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Le
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}A kiválasztott NewGRF-et lefelé mozgatja a listán
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}A feltelepített NewGRF-ek listája.
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}A feltelepített NewGRF fájlok listája.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Paraméterek beállítása
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Paraméterek megjelenítése
@@ -2796,6 +2816,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Több Action 8 bejegyzést tartalmaz (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Ál-sprite távoli végének olvasása (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}A jelenleg használt grafikus alapcsomagból hiányzik számos sprite.{}Kérlek frissítsd a grafikus alapcsomagot
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}A használt alap grafikus csomagból néhány egység hiányzik.{}Kérjük frissítsd az alap grafikus csomagot.{}Ha az {YELLOW}OpenTTD fejlesztői változatát{WHITE} használod, lehet hogy a {YELLOW}fejlesztői alap grafikus csomagot{WHITE} kellene használnod
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Kért GRF források nem elérhetőek (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} kikapcsolva {STRING} által
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Érvénytelen/ismeretlen sprite szerkezet formátum (sprite {3:NUM})
@@ -2806,6 +2827,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Te épp
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nem lehetséges a fájl hozzáadása: duplikált GRF azonosító
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Pontosan megegyező fájlt nem találtam (kompatibilis GRF-fel helyettesítve)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Nem adhatod hozzá: Elérted a NewGRF fájlok maximális számát
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilis GRFek betöltve a hiányzó fájlok helyett
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Hiányzó GRF fájlokat kikapcsoltam

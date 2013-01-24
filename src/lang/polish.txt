@@ -592,7 +592,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} stopy
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} st{P opa, opy, óp}
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -657,8 +657,8 @@ STR_SORT_BY_LIFE_TIME                                           :Pozostały czas
 STR_SORT_BY_TIMETABLE_DELAY                                     :Opóźnienie rozkładu jazdy
 STR_SORT_BY_FACILITY                                            :Typ stacji
 STR_SORT_BY_WAITING                                             :Wartość oczekującego ładunku
-STR_SORT_BY_RATING_MAX                                          :Towar najwyższej wartości
-STR_SORT_BY_RATING_MIN                                          :Towar najniższej wartości
+STR_SORT_BY_RATING_MAX                                          :Towar najwyżej oceniany
+STR_SORT_BY_RATING_MIN                                          :Towar najniżej oceniany
 STR_SORT_BY_ENGINE_ID                                           :ID pojazdu (klasyczne sortowanie)
 STR_SORT_BY_COST                                                :Cena
 STR_SORT_BY_POWER                                               :Moc
@@ -2956,6 +2956,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Wprowad�
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Tworzenie świata
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Rozmiar Mapy:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Wybierz rozmiar mapy w kwadratach. Liczba dostępnych kwadratów będzie nieco mniejsza
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Ilość miast:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
@@ -3142,6 +3143,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Zamierz
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nie można dodać pliku: taki sam GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Nie znaleziono pasującego pliku (wczytano kompatybilny GRF)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Nie można dodać pliku: osiągnięto limit plików NewGRF
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Wczytano kompatybilne GRF dla brakujących plików
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Brakujące pliki GRF zostały wyłączone
