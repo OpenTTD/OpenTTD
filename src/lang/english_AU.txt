@@ -2102,7 +2102,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Downloa
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Selected because of: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependencies: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD is build without "zlib" support...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD is built without "zlib" support...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... downloading content is not possible!
 
 # Order of these is important!
@@ -2576,6 +2576,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Enter a 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}World Generation
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Map size:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Select the size of the map in tiles. The number of available tiles will be slightly smaller
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. of towns:
 STR_MAPGEN_DATE                                                 :{BLACK}Date:
@@ -2668,7 +2669,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Move Up
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Move the selected NewGRF file up the list
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Move Down
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Move the selected NewGRF file down the list
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}A list of the NewGRF files that are installed.
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}A list of the NewGRF files that are installed
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Set parameters
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Show parameters
@@ -2762,6 +2763,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}You are
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Can't add file: duplicate GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matching file not found (compatible GRF loaded)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Can't add file: NewGRF file limit reached
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Compatible GRF(s) loaded for missing files
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missing GRF file(s) have been disabled
