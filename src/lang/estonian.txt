@@ -2410,7 +2410,7 @@ STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vali ist
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Suvalised puutüübid
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Istutab suvalisi puid. Shift valib ehitamise/hinna kuvamise režiimi
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Suvalised puud
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Istutab puid suvaliselt üle kogu maa
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Istutab puid suvaliselt üle kogu maaala
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Maastiku loomine
@@ -2633,6 +2633,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Sisesta 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Maailma genereerimine
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kaardi suurus:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Määra maakaardi suurus ruutudes. Tegelik kasutatavate ruutude arv saab olema pisut väiksem
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Linnade sagedus:
 STR_MAPGEN_DATE                                                 :{BLACK}Algus:
@@ -2725,7 +2726,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Liiguta 
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}NewGRF-faili liigutamine loendis üles.
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Liiguta alla
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}NewGRF-faili liigutamine loendis alla
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}NewGRF failidest nimekiri installeerimata. Parameetrite muutmiseks klõpsa failil.
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Nimekiri installitud NewGRF failidest
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Vali parameetrid
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Näita parameetreid
@@ -2819,6 +2820,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Sa soov
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ei saa faili lisada: korduv GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Sobivat faili ei leitud (ühilduv GRF fail on laaditud)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Ei saa faili lisada: NewGRF failide limiit on saavutatud
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Puuduvatele failidele on laaditud ühilduvad GRF failid
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Puuduvad GRF failid on välja lülitatud
