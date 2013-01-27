@@ -46,6 +46,17 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 					}
 					break;
 
+				case BM_COLOUR_REMAP_RGB:
+					if (src->m == 0) {
+						if (src->a != 0) *dst = ComposeColourRGBANoCheck(src->r, src->g, src->b, src->a, *dst);
+					} else {
+						const RgbaColour c = bp->remap->remap_rgba[src->m];
+						if (c.a != 0) {
+							*dst = ComposeColourPA(this->AdjustBrightness(c, src->v), src->a, *dst);
+						}
+					}
+					break;
+
 				case BM_CRASH_REMAP:
 					if (src->m == 0) {
 						if (src->a != 0) {

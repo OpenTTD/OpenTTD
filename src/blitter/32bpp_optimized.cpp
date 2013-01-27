@@ -49,6 +49,7 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 
 	/* store so we don't have to access it via bp every time (compiler assumes pointer aliasing) */
 	const byte *remap = bp->remap->remap_index.data();
+	const RgbaColour *remap_rgba = bp->remap->remap_rgba.data();
 
 	for (int y = 0; y < bp->height; y++) {
 		/* next dst line begins here */
@@ -134,6 +135,37 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 							} else {
 								uint r = remap[GB(m, 0, 8)];
 								if (r != 0) *dst = ComposeColourPANoCheck(this->AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8)), src_px->a, *dst);
+							}
+							dst++;
+							src_px++;
+							src_n++;
+						} while (--n != 0);
+					}
+					break;
+
+				case BM_COLOUR_REMAP_RGB:
+					if (src_px->a == 255) {
+						do {
+							uint m = *src_n;
+							/* In case the m-channel is zero, do not remap this pixel in any way */
+							if (m == 0) {
+								*dst = src_px->data;
+							} else {
+								const RgbaColour c = remap_rgba[GB(m, 0, 8)];
+								*dst = this->AdjustBrightness(c, GB(m, 8, 8));
+							}
+							dst++;
+							src_px++;
+							src_n++;
+						} while (--n != 0);
+					} else {
+						do {
+							uint m = *src_n;
+							if (m == 0) {
+								*dst = ComposeColourRGBANoCheck(src_px->r, src_px->g, src_px->b, src_px->a, *dst);
+							} else {
+								const RgbaColour c = remap_rgba[GB(m, 0, 8)];
+								*dst = ComposeColourPANoCheck(this->AdjustBrightness(c, GB(m, 8, 8)), src_px->a, *dst);
 							}
 							dst++;
 							src_px++;
@@ -261,12 +293,13 @@ void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, 
 {
 	switch (mode) {
 		default: NOT_REACHED();
-		case BM_NORMAL:       Draw<BM_NORMAL, Tpal_to_rgb>(bp, zoom); return;
-		case BM_COLOUR_REMAP: Draw<BM_COLOUR_REMAP, Tpal_to_rgb>(bp, zoom); return;
-		case BM_TRANSPARENT:  Draw<BM_TRANSPARENT, Tpal_to_rgb>(bp, zoom); return;
+		case BM_NORMAL:            Draw<BM_NORMAL, Tpal_to_rgb>(bp, zoom); return;
+		case BM_COLOUR_REMAP:      Draw<BM_COLOUR_REMAP, Tpal_to_rgb>(bp, zoom); return;
+		case BM_COLOUR_REMAP_RGB:  Draw<BM_COLOUR_REMAP_RGB, Tpal_to_rgb>(bp, zoom); return;
+		case BM_TRANSPARENT:       Draw<BM_TRANSPARENT, Tpal_to_rgb>(bp, zoom); return;
 		case BM_TRANSPARENT_REMAP: Draw<BM_TRANSPARENT_REMAP, Tpal_to_rgb>(bp, zoom); return;
-		case BM_CRASH_REMAP:  Draw<BM_CRASH_REMAP, Tpal_to_rgb>(bp, zoom); return;
-		case BM_BLACK_REMAP:  Draw<BM_BLACK_REMAP, Tpal_to_rgb>(bp, zoom); return;
+		case BM_CRASH_REMAP:       Draw<BM_CRASH_REMAP, Tpal_to_rgb>(bp, zoom); return;
+		case BM_BLACK_REMAP:       Draw<BM_BLACK_REMAP, Tpal_to_rgb>(bp, zoom); return;
 	}
 }
 
