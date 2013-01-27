@@ -280,8 +280,6 @@ WidgetID GetWidgetFromPos(const Window *w, int x, int y)
  */
 void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, FrameFlags flags)
 {
-	assert(colour < COLOUR_END);
-
 	const RgbMColour dark         = GetColourGradient(colour, 3);
 	const RgbMColour medium_dark  = GetColourGradient(colour, 5);
 	const RgbMColour medium_light = GetColourGradient(colour, 6);

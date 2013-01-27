@@ -466,19 +466,33 @@ void DrawRectOutline(const Rect &r, RgbMColour colour, int width, int dash)
 /**
  * Set the colour remap to be for the given colour.
  * @param colour the new colour of the remap.
+ * @return blitter mode to draw characters with.
  */
-static void SetColourRemap(TextColour colour)
+static BlitterMode SetColourRemap(TextColour colour)
 {
-	if (colour == TC_INVALID) return;
+	if (colour == TC_INVALID) return BM_COLOUR_REMAP;
 
 	/* Black strings have no shading ever; the shading is black, so it
 	 * would be invisible at best, but it actually makes it illegible. */
-	bool no_shade   = (colour & TC_NO_SHADE) != 0 || colour == TC_BLACK;
+	bool no_shade = (colour & TC_NO_SHADE) != 0 || colour == TC_BLACK;
+
+	if ((colour & TC_IS_RGB_COLOUR) && BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 32) {
+		/* Unpack RGB TextColour */
+		TextColourPacker tcp(colour);
+		_string_colourremap.remap_rgba[1] = tcp.Rgba();
+		_string_colourremap.remap_rgba[2].a = no_shade ? 0 : 255;
+		_colour_remap_ptr = &_string_colourremap;
+
+		return BM_COLOUR_REMAP_RGB;
+	}
+
 	bool raw_colour = (colour & TC_IS_PALETTE_COLOUR) != 0;
 
 	_string_colourremap.remap_index[1] = raw_colour ? (byte)colour : _string_colourmap[(byte)colour];
 	_string_colourremap.remap_index[2] = no_shade ? 0 : 1;
 	_colour_remap_ptr = &_string_colourremap;
+
+	return BM_COLOUR_REMAP;
 }
 
 /**
@@ -582,6 +596,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 	/* Draw shadow, then foreground */
 	for (bool do_shadow : { true, false }) {
 		bool colour_has_shadow = false;
+		BlitterMode bm = BM_COLOUR_REMAP;
 		for (int run_index = 0; run_index < line.CountRuns(); run_index++) {
 			const ParagraphLayouter::VisualRun &run = line.GetVisualRun(run_index);
 			const auto &glyphs = run.GetGlyphs();
@@ -591,7 +606,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 			FontCache *fc = f->fc;
 			TextColour colour = f->colour;
 			colour_has_shadow = (colour & TC_NO_SHADE) == 0 && colour != TC_BLACK;
-			SetColourRemap(do_shadow ? TC_BLACK : colour); // the last run also sets the colour for the truncation dots
+			bm = SetColourRemap(do_shadow ? TC_BLACK : colour); // the last run also sets the colour for the truncation dots
 			if (do_shadow && (!fc->GetDrawGlyphShadow() || !colour_has_shadow)) continue;
 
 			DrawPixelInfo *dpi = _cur_dpi;
@@ -617,14 +632,14 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 
 				if (do_shadow && (glyph & SPRITE_GLYPH) != 0) continue;
 
-				GfxMainBlitter(sprite, begin_x + (do_shadow ? shadow_offset : 0), top + (do_shadow ? shadow_offset : 0), BM_COLOUR_REMAP);
+				GfxMainBlitter(sprite, begin_x + (do_shadow ? shadow_offset : 0), top + (do_shadow ? shadow_offset : 0), bm);
 			}
 		}
 
 		if (truncation && (!do_shadow || (dot_has_shadow && colour_has_shadow))) {
 			int x = (_current_text_dir == TD_RTL) ? left : (right - 3 * dot_width);
 			for (int i = 0; i < 3; i++, x += dot_width) {
-				GfxMainBlitter(dot_sprite, x + (do_shadow ? shadow_offset : 0), y + (do_shadow ? shadow_offset : 0), BM_COLOUR_REMAP);
+				GfxMainBlitter(dot_sprite, x + (do_shadow ? shadow_offset : 0), y + (do_shadow ? shadow_offset : 0), bm);
 			}
 		}
 	}
@@ -921,11 +936,11 @@ ptrdiff_t GetCharAtPosition(std::string_view str, int x, FontSize start_fontsize
  */
 void DrawCharCentered(char32_t c, const Rect &r, TextColour colour)
 {
-	SetColourRemap(colour);
+	BlitterMode bm = SetColourRemap(colour);
 	GfxMainBlitter(GetGlyph(FS_NORMAL, c),
 		CenterBounds(r.left, r.right, GetCharacterWidth(FS_NORMAL, c)),
 		CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)),
-		BM_COLOUR_REMAP);
+		bm);
 }
 
 /**

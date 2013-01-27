@@ -85,6 +85,7 @@ const uint8_t PALETTE_INDEX_CC_START = 198; ///< Palette index of start of compa
 const uint8_t PALETTE_INDEX_CC_END = PALETTE_INDEX_CC_START + 8; ///< Palette index of end of company colour remap area.
 const uint8_t PALETTE_INDEX_START = 1; ///< Palette index of start of defined palette.
 const uint8_t PALETTE_INDEX_END = 215; ///< Palette index of end of defined palette.
+const uint8_t PALETTE_INDEX_CC_OFFSET = 3; ///< Offset from PALETTE_INDEX_CC_START of 'main' company colour.
 
 /**
  * Find nearest colour palette index for a 32bpp pixel.
@@ -382,7 +383,43 @@ static_assert(lengthof(_colour_gradient[0]) == BRIGHTNESS_MASK + 1);
  */
 RgbMColour GetColourGradient(Colours colour, uint8_t brightness)
 {
-	return _colour_gradient[colour & COLOUR_MASK][brightness & BRIGHTNESS_MASK];
+	ColoursPacker colourp(colour);
+	RgbMColour c = _colour_gradient[colour & COLOUR_MASK][brightness & BRIGHTNESS_MASK];
+	if (colourp.IsCustom()) {
+		/* Adjust brightness to approximately the same levels as those of paletted Colours. */
+		RgbaColour rgb = ConvertHsvToRgb(AdjustHsvColourBrightness(colourp.Hsv(), (brightness - PALETTE_INDEX_CC_OFFSET) * colourp.C() / 4));
+		if ((rgb.r | rgb.g | rgb.b) == 0) {
+			/* All values 0 means no custom colour, so use very dark grey instead.*/
+			c.r = 1;
+			c.g = 1;
+			c.b = 1;
+		} else {
+			c.r = rgb.r;
+			c.g = rgb.g;
+			c.b = rgb.b;
+		}
+	}
+	return c;
+}
+
+/**
+ * Convert a colour to a TextColour.
+ * @param colour Colour of text.
+ * @param brightness Brightness level from 1 to 7.
+ * @returns TextColour set to palette index of colour
+ */
+TextColour TextColourGradient(Colours colour, uint8_t brightness)
+{
+	RgbMColour rgbm = GetColourGradient(colour, brightness);
+	TextColour tc = TextColour(rgbm.m | TC_IS_PALETTE_COLOUR);
+	if (rgbm.HasRgb()) {
+		TextColourPacker tcp(tc);
+		tc |= TC_IS_RGB_COLOUR;
+		tcp.SetR(rgbm.r);
+		tcp.SetG(rgbm.g);
+		tcp.SetB(rgbm.b);
+	}
+	return tc;
 }
 
 /**

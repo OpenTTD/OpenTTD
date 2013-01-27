@@ -10,6 +10,7 @@
 #ifndef PALETTE_FUNC_H
 #define PALETTE_FUNC_H
 
+#include "core/bitmath_func.hpp"
 #include "gfx_type.h"
 #include "strings_type.h"
 #include "string_type.h"
@@ -41,13 +42,97 @@ HsvColour ConvertRgbToHsv(RgbaColour rgb);
 RgbaColour ConvertHsvToRgb(HsvColour hsv);
 HsvColour AdjustHsvColourBrightness(HsvColour hsv, int amt);
 
+/**
+ * Stretch TNumBits to fill 8 bits.
+ * The most-significant digits are repeated as least-significant digits so that the full 8 bit range is used, e.g.:
+ * 000000 -> 00000000
+ * 111100 -> 11110011
+ * 111111 -> 11111111
+ * @param v Value of TNumBits to stretch.
+ * @returns 8 bit stretched value.
+ */
+template <uint TNumBits>
+static inline uint8_t StretchBits(uint8_t v)
+{
+	return (v << (8 - TNumBits)) | (v >> (8 - (8 - TNumBits) * 2));
+}
+
+struct ColoursPacker
+{
+	Colours &c;
+
+	constexpr ColoursPacker(Colours &c) : c(c) { }
+
+	/*
+	 * Constants for the bit packing used by Colours.
+	 */
+	static constexpr const uint I_START =  0; ///< Packed start of index component
+	static constexpr const uint I_SIZE  =  4; ///< Packed size of index component
+
+	static constexpr const uint IS_CUSTOM = 4;
+
+	static constexpr const uint H_START =  7; ///< Packed start of red component
+	static constexpr const uint H_SIZE  =  9; ///< Packed size of red component
+
+	static constexpr const uint S_START = 16; ///< Packed start of green component
+	static constexpr const uint S_SIZE  =  6; ///< Packed size of green component
+
+	static constexpr const uint V_START = 22; ///< Packed start of blue component
+	static constexpr const uint V_SIZE  =  6; ///< Packed size of blue component
+
+	static constexpr const uint C_START = 28; ///< Packed start of contrast component
+	static constexpr const uint C_SIZE  =  4; ///< Packed size of contrast component
+
+	/* Colours is considered unused and blank if only the I component is set. */
+	inline constexpr bool IsCustom() const { return HasBit(this->c, IS_CUSTOM); }
+
+	inline constexpr uint8_t I() const { return GB(this->c, I_START, I_SIZE); }
+	inline constexpr uint16_t H() const { return GB(this->c, H_START, H_SIZE) * HsvColour::HUE_MAX / (1U << 9); }
+	inline constexpr uint8_t S() const { return StretchBits<S_SIZE>(GB(this->c, S_START, S_SIZE)); }
+	inline constexpr uint8_t V() const { return StretchBits<V_SIZE>(GB(this->c, V_START, V_SIZE)); }
+	inline constexpr uint8_t C() const { return StretchBits<C_SIZE>(GB(this->c, C_START, C_SIZE)); }
+
+	inline void SetCustom(bool v) { SB(this->c, IS_CUSTOM, 1, v); }
+
+	inline void SetI(uint8_t v) { SB(this->c, I_START, I_SIZE, v); }
+	inline void SetH(uint16_t v) { SB(this->c, H_START, H_SIZE, v * (1U << H_SIZE) / HsvColour::HUE_MAX); }
+	inline void SetS(uint8_t v) { SB(this->c, S_START, S_SIZE, v >> (8 - S_SIZE)); }
+	inline void SetV(uint8_t v) { SB(this->c, V_START, V_SIZE, v >> (8 - V_SIZE)); }
+	inline void SetC(uint8_t v) { SB(this->c, C_START, C_SIZE, v >> (8 - C_SIZE)); }
+
+	inline constexpr HsvColour Hsv() const { return {this->H(), this->S(), this->V()}; }
+};
+
+struct TextColourPacker
+{
+	TextColour &tc;
+
+	constexpr TextColourPacker(TextColour &tc) : tc(tc) { }
+
+	static constexpr const uint R_START = 12; ///< Packed start of red component
+	static constexpr const uint R_SIZE  =  6; ///< Packed size of red component
+
+	static constexpr const uint G_START = 18; ///< Packed start of green component
+	static constexpr const uint G_SIZE  =  6; ///< Packed size of green component
+
+	static constexpr const uint B_START = 24; ///< Packed start of blue component
+	static constexpr const uint B_SIZE  =  6; ///< Packed size of blue component
+
+	inline constexpr uint8_t R() const { return StretchBits<R_SIZE>(GB(this->tc, R_START, R_SIZE)); }
+	inline constexpr uint8_t G() const { return StretchBits<G_SIZE>(GB(this->tc, G_START, G_SIZE)); }
+	inline constexpr uint8_t B() const { return StretchBits<B_SIZE>(GB(this->tc, B_START, B_SIZE)); }
+
+	inline constexpr void SetR(uint8_t v) { SB(this->tc, R_START, R_SIZE, v >> (8 - R_SIZE)); }
+	inline constexpr void SetG(uint8_t v) { SB(this->tc, G_START, G_SIZE, v >> (8 - G_SIZE)); }
+	inline constexpr void SetB(uint8_t v) { SB(this->tc, B_START, B_SIZE, v >> (8 - B_SIZE)); }
+
+	inline constexpr RgbaColour Rgba() const { return RgbaColour(this->R(), this->G(), this->B(), UINT8_MAX); }
+};
+
 TextColour GetContrastColour(RgbMColour background, uint8_t threshold = 128);
 
-/**
- * All 16 colour gradients
- * 8 colours per gradient from darkest (0) to lightest (7)
- */
 RgbMColour GetColourGradient(Colours colour, uint8_t brightness);
+TextColour TextColourGradient(Colours colour, uint8_t brightness);
 void SetColourGradient(Colours colour, uint8_t brightness, RgbMColour palette_colour);
 
 /**
