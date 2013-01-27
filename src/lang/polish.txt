@@ -1412,7 +1412,7 @@ STR_SUBSIDY_X4                                                  :x4
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Bardzo płaski
 STR_TERRAIN_TYPE_FLAT                                           :Płaski
 STR_TERRAIN_TYPE_HILLY                                          :Pagórkowaty
-STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Górski
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Górzysty
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Przyjazne
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerancyjne
@@ -2961,7 +2961,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Ilość miast:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Ilość przedsiębiorstw
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Wysokość śniegu:
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Śnieg od wysokości:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Podnieś wysokość śniegu o jeden w górę
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Obniż wysokość śniegu o jeden w dół
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Losowy numer:
@@ -2983,11 +2983,11 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Płn.-za
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Płn.-wsch.
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Płd.-wsch.
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Płd.-zach.
-STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Dowolne
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Ląd
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Woda
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Losowe
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Losowo
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}"Ręcznie"
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Użytkownika
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Obrót mapy wysokości:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nazwa mapy wysokosci:
@@ -2995,7 +2995,7 @@ STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Rozmiar:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Wprowadź losowe ziarno
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Zmień wysokość śniegu
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Zmień wysokość linii śniegowej
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Zmień datę rozpoczęcia
 
 # SE Map generation

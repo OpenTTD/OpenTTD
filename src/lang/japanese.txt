@@ -316,7 +316,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}空港�
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}地形のツールバーを開きます。整地や植林などを行うことができます。
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}音楽／効果音のウィンドウを表示します。
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}最後のメッセージとニュースの表示と、メッセージオプションの設定ができます。
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}地域の情報、コンソール、AIのデバッグ、スクリーンショット、OpenTTDについて、などのツール群です。
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}地域の情報、コンソール、スクリプトのデバッグ、スクリーンショット、OpenTTDについて、などのツール群です。
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}ツールバーの切り替えをします。
 
 # Extra tooltips for the scenario editor toolbar
@@ -443,7 +443,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :メッセージ
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :地域の情報
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :コンソールの表示／非表示
-STR_ABOUT_MENU_AI_DEBUG                                         :AI のデバッグ
+STR_ABOUT_MENU_AI_DEBUG                                         :AI/ゲームスクリプト のデバッグ
 STR_ABOUT_MENU_SCREENSHOT                                       :スクリーンショットを取る
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :高解像度のスクリーンショットを取る
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :全体のスクリーンショットを取る
@@ -799,6 +799,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE}は目的地への経路を見つけられません。
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE}が迷っています。
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}昨年の{VEHICLE}の利益は{CURRENCY_LONG}でした。
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} 範囲外になるため次の目的地に到達できません
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE}の修復に失敗したため、命令を停止しました。
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE}の自動交換が失敗しました。{}{STRING}
@@ -822,6 +823,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLAC
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}で渋滞！{}{}{STRING}が出資した道路工事は６ヶ月間続く！
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}輸送の独占になりました！
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK} {TOWN}が{STRING}と1年間の排他輸送権契約を署名！
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}ビューア {COMMA}
@@ -1034,9 +1036,22 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}適切�
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}拡張設定･パッチ設定
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}フィルター設定:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}全てを開く
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}全てを折りたたむ
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :（説明がありません）
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}デフォルト設定：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}設定の種類: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :クライアント設定（セーブされませんが全てのゲームに影響）
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :ゲーム設定（新規ゲームに影響）
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :ゲーム設定（現在のゲームのみに影響）
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :会社の設定（新規ゲームから影響）
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :会社の設定（現在の会社のみに影響）
 
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :基本設定
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :拡張設定/全ての設定
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :既定とは異なる設定
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :新規ゲーム開始時の設定
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}以下の項目は特定の設定に制限されます。
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :すべての設定
@@ -1064,6 +1079,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右
 
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :傾斜地／海岸上の建設を許容：{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :設定が有効であれば斜面に建設を行うことができます。無効であれば建設には方向に一致した斜面か平面が必要になります。
 STR_CONFIG_SETTING_AUTOSLOPE                                    :建物、道路、鉄道などの下の地形変更を許容：{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :より現実的な受入れ地域を許容：{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :より多くの町有の道路／橋などの破壊を許容：{STRING}
@@ -1099,6 +1115,10 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :中点
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :終点
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :車両の待ち行列を使用：{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :マウスが端にあるとき画面を移動：{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :無効
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :メインウィンドウのみ（フルスクリーンの時）
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :メインウィンドウのみ
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :全てのウィンドウ
 STR_CONFIG_SETTING_BRIBE                                        :町議会の買収を許容：{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :独占的運送権の購入を許容：{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :地方の道路の再建に出資するのを許容: {STRING}
@@ -1122,7 +1142,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :空港の購入
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :車両の行き先が無いなら注意する: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :列車の指令をレビュー：{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :切
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :入（停止中の車両を取り除く）
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :入（停止中の車両を除く）
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :入（すべての車両）
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :車両の利益が損失になってから警告を表示：{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :車両の購入可能期限がない：{STRING}
@@ -1348,6 +1368,9 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :信号待ちで
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}設定を変更します
 
 # Config errors
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... 無効です Base Graphics set '{STRING}': がありません
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... 無効です Base Sounds set '{STRING}': がありません
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... 無効です Base Music set '{STRING}':がありません
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1433,8 +1456,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}列車�
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}道路車両のカラースキームを表示します
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}船舶のカラースキームを表示します
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}飛行機のカラースキームを表示します
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}選択したカラースキームの主の色を選択します
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}選択したカラースキームの二次色を選択します
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}選択したカラースキームの主の色を選択します。Ctrl +クリックは、すべての方式のため、この色を設定します
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}選択したカラースキームの二次色を選択します。Ctrl +クリックは、すべての方式のため、この色を設定します
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}変更するにはカラースキームを選択します。Control+クリックすると多数のカラースキームが選択できます。カラースキームの使用を切り替えるにはチックボックスをクリックします。
 
 STR_LIVERY_DEFAULT                                              :通常のカラースキーム
@@ -2143,6 +2166,8 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}続き�
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}貨物の配給と受け入れをしている産業を表示。
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}小マップに結ぶ。
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}小マップでも、産業を選べます。
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}貨物を選択
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}表示したい産業を選択します
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地域の情報
@@ -2424,7 +2449,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}エラー：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}エラー：{SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}致命的な NewGRF エラーが発生しました: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRFで致命的なエラーが発生しました: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING}はOpenTTDのTTDPatchバージョンに対応していません。
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}はTTDの{STRING}バージョンのみに対応しています。
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}を使用時に、{STRING}を入にしなければなりません
@@ -2444,6 +2469,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}実行�
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}ファイルが追加できません：重複のGRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}一致しているファイルが見つかりません（代替 GRF を使用中）
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}NewGRFの限度に達したためファイルを追加できません
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}見つからないファイルの代わりに対応している代替 GRF ファイルを使用しています
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}見つからない GRF ファイルを切にしています
@@ -2564,7 +2590,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}町／�
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}駅名 - メイン画面を駅の場所に移動するには駅名をクリックします
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}複数の項目を選択するにはcontrolを押します
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}複数の項目を選択するにはコントロールキーを押しながら選択します
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA}軒の駅
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2647,7 +2673,7 @@ STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENC
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{CURRENCY_LONG}を借りる
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}借入
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}{CURRENCY_LONG}を返済
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}返済
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}返済します。コントロールキーを押しながらクリックすることでできるだけ返済します。
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
@@ -2669,7 +2695,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}本社�
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}本部ビルを見る
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}本社を見ます
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}本部ビルを移動
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}会社の本部ビルを移動します（価格：会社の価値の１％）
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}本社ビルを移動します（価格：会社の価値の１％）
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}新規顔
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}社長の新しい顔を選択します
@@ -2701,13 +2727,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- な�
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK}（{CARGO_LONG}{STRING}）{YELLOW}（{COMMA}％が運送済み）
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK}（{CARGO_LONG}{STRING}／{CARGO_LONG}{STRING}）{YELLOW}（{COMMA}％／{COMMA}％が運送済み）
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}産業の名前- 名前をクリックで産業を画面の中央に表示
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}産業の名前- 名前をクリックで産業を画面の中央に表示。コントロールキーを押しながらクリックすると子ウィンドウで表示
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}先月の生産量：
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK}（{COMMA}％運送済み）
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}主の画面を産業の場所に移動します
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}画面の中心を産業の場所に移動します。コントロールキーを押しながらクリックすると子ウィンドウで表示
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}生産量: {YELLOW}{COMMA}%
 
 ############ range for requires starts
@@ -3095,7 +3121,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}容量�
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE}(改装)
 STR_REFIT_TITLE                                                 :{GOLD}運送する貨物の種類を選択：
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}改装後の積載量：{GOLD}{CARGO_LONG}{}{BLACK}改装費用：{RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}新しい容量: {GOLD}{CARGO_LONG}{}{BLACK}改装前: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}新しいキャパシティ: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}レフィットの価格: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}新しい容量: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}改装前: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}レフィットが行う車両を選択して下さい。マウスでドラーグをすると、複数の車両を選択できます。空スペースにクリックすると車両内すべての物を選択します。（コントロール＋クリック）をすると車両内の物とその後のチェーンを選択します。
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車が運送する貨物を選択
@@ -3375,6 +3403,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}価値：{CURRENCY_LONG}
@@ -3448,7 +3478,7 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}風景�
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}タイルの境界を除去します。
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名前は唯一でなければなりません
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING}があります
-STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}一時停止（ポース）の時この行動をいけません
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}一時停止（ポース）中にはできない行動です
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}の町議会が拒否しました。
