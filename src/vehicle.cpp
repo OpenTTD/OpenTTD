@@ -1850,9 +1850,9 @@ void Vehicle::DeleteUnreachedImplicitOrders()
 		if (this->cur_implicit_order_index == this->cur_real_order_index) break;
 
 		if (order->IsType(OT_IMPLICIT)) {
-			/* Delete order effectively deletes order, so get the next before deleting it. */
-			order = order->next;
 			DeleteOrder(this, this->cur_implicit_order_index);
+			/* DeleteOrder does various magic with order_indices, so resync 'order' with 'cur_implicit_order_index' */
+			order = this->GetOrder(this->cur_implicit_order_index);
 		} else {
 			/* Skip non-implicit orders, e.g. service-orders */
 			order = order->next;
@@ -1932,9 +1932,9 @@ void Vehicle::BeginLoading()
 						const Order *order = this->GetOrder(this->cur_implicit_order_index);
 						while (!order->IsType(OT_IMPLICIT) || order->GetDestination() != this->last_station_visited) {
 							if (order->IsType(OT_IMPLICIT)) {
-								/* Delete order effectively deletes order, so get the next before deleting it. */
-								order = order->next;
 								DeleteOrder(this, this->cur_implicit_order_index);
+								/* DeleteOrder does various magic with order_indices, so resync 'order' with 'cur_implicit_order_index' */
+								order = this->GetOrder(this->cur_implicit_order_index);
 							} else {
 								/* Skip non-implicit orders, e.g. service-orders */
 								order = order->next;
