@@ -1061,7 +1061,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Maatskappy inst
 
 STR_CONFIG_SETTING_OFF                                          :Af
 STR_CONFIG_SETTING_ON                                           :Aan
-STR_CONFIG_SETTING_DISABLED                                     :gedeaktiveer
+STR_CONFIG_SETTING_DISABLED                                     :Gedeaktiveer
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Af
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Eie maatskappy
@@ -2236,7 +2236,7 @@ STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Kies tip
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Bome van lukraake tipe
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plant bome van enige soort. Shift kies tussen bou.kwotasie
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Lukraak Boome
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Beplant bome wildweg oor landskap
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Beplant bome lukraak oor die landskap
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Land Generasie
@@ -2547,7 +2547,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Beweeg O
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Beweeg die gekose NewGRF op in die lys
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Beweeg Af
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Beweeg die gekose NewGRF af in die lys
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}'n Lys van die NewGRF lêers wat geïnstaleer is.
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}'n Lys van die NewGRF lêers wat geïnstaleer is
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Stel parameters
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Vertoon parameters
