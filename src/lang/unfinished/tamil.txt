@@ -540,11 +540,13 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}அனைத்தையும் செயலிளக்கவை
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}அனைத்து சரக்குகளையும் சரக்கு விலை வரைபடத்தில் காண்பி
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}எந்த சரக்கையும் சரக்கு விலை வரைபடத்தில் காட்டாதே
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}சரக்கு வகையினை graph இல் காட்டவும்/மறைக்கவும்
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}விவரமான செயல்திறன் விவரங்களை காண்பி
 
 # Graph key window
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}நிறுவன graph-களுக்கு பட்டியல்
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}நிருவனங்களின் பட்டியல்
@@ -611,6 +613,8 @@ STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}தே�
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}தேர்ந்தெடுக்கப்பட்ட அடுத்த பாட்டிற்கு தாவவும்
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}இசையை நிறுத்து
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}இசையினை ஆரம்பி
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}slider களை இழுத்தால் இசை மற்றும் ஒலி அளவுகளை அமைக்கலாம்
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}'அனைத்து தடங்கள்' பிரோகிராமினைத் தேர்ந்தெடுக்கவும்
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}'பழைய பாணி இசை' பிரோகிராமினைத் தேர்ந்தெடுக்கவும்
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}'புதிய பாணி இசை' பிரோகிராமினைத் தேர்ந்தெடுக்கவும்
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'எசி தெரு பாணி இசை' பிரோகிராமினைத் தேர்ந்தெடுக்கவும்
@@ -637,6 +641,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :தொழில
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :தொழிலதிபர்
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :முதலாளி
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :மேன்மையர்
+STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :மொகல்
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :நூற்றாண்டின் டைக்கூன்
 STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
@@ -689,6 +694,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}பனி
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}வரைபடத்தில் நகரத்தின் பெயர்களை மறை/காட்டு
+STR_SMALLMAP_CENTER                                             :{BLACK}தற்போதைய இடத்தினை சிறுவரைபடத்தின் நடுவில் காட்டவும்
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
@@ -697,6 +703,7 @@ STR_SMALLMAP_ENABLE_ALL                                         :{BLACK} அன�
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}உயரத்தை காட்டு
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}எந்த ஆலைகளையும் வரைபடத்தில் காட்டாதே
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}அனைத்து ஆலைகளையும் வரைபடத்தில் காட்டு
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}உயர்படத்தின் காட்சியினை மாற்றவும்
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}எந்த கம்பெனி சொத்துக்களையும் வரைபடத்தில் காட்டாதே
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}அனைத்து கம்பெனி சொத்துக்களையும் வரைபடத்தில் காட்டு
 
@@ -732,6 +739,7 @@ STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK} {STATION} இல் விமான விபத்து!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}'UFO' உடன் மோதியதில் சாலை வாகனம் நொறுங்கியது!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK} {TOWN} அருகில் எண்ணெய் சுத்திகரிப்பு நிலையம் வெடித்தது!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}தொழிற்சாலை தெரியாத காரணங்களால் அழிக்கப்பட்டது {TOWN} அருகில்!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}{TOWN} அருகில் 'UFO' தரையிறங்கியது!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}வெள்ளம்!{}குறைந்தபட்சம் {COMMA} பேர் காணவில்லை, வெள்ளத்தால் இறந்திருப்பார்கள் என்று அஞ்சப்படுகின்றது!
 
@@ -759,7 +767,9 @@ STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLAC
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}பொருளாதார மந்த நிலை முடிந்தது!{}{}பொருளாதாரம் வளர்ச்சியினைப் பார்த்து தொழிற்சாலைகள் மகிழ்ச்சியடைகின்றன!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} உற்பத்தியை அதிகரித்தது!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} தயாரிப்பு {INDUSTRY} இல் அதிகரித்தது {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} உற்பத்தி 50 சதவீதமாக குறைத்தது
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} தயாரிப்பு {INDUSTRY} இல் குறைந்தது {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} பணிமனையில் காத்துக்கொண்டிருக்கிறது
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} பணிமனையில் காத்துக்கொண்டிருக்கிறது
@@ -770,6 +780,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} அட்டவனையில் மிக குறைவாக கட்டளைகளைக் கொண்டுள்ளது
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} பிழையான கட்டளையைக் கொண்டுள்ளது
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} இரட்டடிப்பு கட்டளைகளைக் கொண்டுள்ளது
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} பிழையான நிலையத்தினை கட்டளைகளில் கொண்டுள்ளது
 # end of order system
 
@@ -779,7 +790,9 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} தன் பயணத்தை தொடர வழியை கண்டுபிடிக்க முடியவில்லை
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} தொலைந்துவிட்டது
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}இன் சென்ற வருட நிகர லாபம் {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} அடுத்த இடத்திற்கு செல்ல இயல்வில்லை எல்லைக்கு வெளியே இருப்பதினால்
 
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}தானியங்கி புதுப்பித்தல் தோல்வியடைந்தது {VEHICLE} இன்{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}புதிய {STRING} இப்போது கிடைக்கும்!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
@@ -796,6 +809,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}பார்வைப் படம் {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}பார்படத்திற்கு மாற்றவும்
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}ஆட்டத்தின் அமைப்புகள்
@@ -811,6 +825,7 @@ STR_GAME_OPTIONS_CURRENCY_ATS                                   :ஆஸ்தி
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :பெல்கிய ப்ரேங்க் (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :சுவிஸ் ப்ரேங்க் (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :செக் கொருணா (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :டச்மார்க் (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :டேனிஷ் க்ரோன் (DKK)
 STR_GAME_OPTIONS_CURRENCY_ESP                                   :ஸ்பானிஷ் பெசெடா (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :பின்னிஷ் மார்க்கா (FIM)
@@ -833,6 +848,7 @@ STR_GAME_OPTIONS_CURRENCY_EEK                                   :எஸ்டோ
 STR_GAME_OPTIONS_CURRENCY_LTL                                   :லிதுவேனிய லிடாஸ் (LTL)
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :தென்கொரிய வொன் (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :தென் ஆப்பிரிக்க ரான்ட் (ZAR)
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :புதிதாக...
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}அளவிடும் பிரிவுகள்
@@ -849,6 +865,7 @@ STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :இடப்ப
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :வலப்பக்கம் ஒட்டு
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}நகரங்களின் பெயர்கள்
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}நகர பெயர்கள் பாணியினைத் தேர்ந்தெடுக்கவும்
 
 ############ start of townname region
 STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :ஆங்கிலம் (இயற்கையான)
@@ -888,6 +905,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}பய�
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}முழு படம்
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}திரையின் அளவு
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}திரை அளவினைத் தேர்ந்தெடுக்கவும்
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :மற்றவை
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}திரைப்பிடிப்பு ஃபார்மேட்
@@ -1167,12 +1185,16 @@ STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :இயல்ப
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :நகர வளர்ச்சி வேகம்: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :நகர வளர்ச்சி வேகம்
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :ஒன்றுமில்லை
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :மெதுவாக
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :சாதாரணமாக
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :வேகமாக
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :அதிவேகமாக
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 in {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ஒன்றுமில்லை
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :தொடக்க நகர அளவு பெருக்கம்: {STRING}
 
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}கட்டுமானம்
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}வாகனங்கள்
@@ -1185,6 +1207,7 @@ STR_CONFIG_SETTING_NEWS                                         :{ORANGE}செ�
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}சிக்னல்கள்
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}சரக்கு பரிமாற்றம்
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}கணினி வீரர்கள்
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}தானியங்கி புதுப்பித்தல்
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}பராமரிப்பு
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}இரயில் வண்டிகள்
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}நகரங்கள்
@@ -1199,8 +1222,11 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :சிக்ன
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}அமைப்பின் மதிப்பினை மாற்று
 
 # Config errors
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... செல்லாத மதிப்பு '{STRING}' '{STRING}' இற்கு
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... பயன்படுத்த இயலாத NewGRF இனை பயன்படுத்தவில்லை '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :கிடைக்கவில்லை
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :கணினி NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :இந்த OpenTTD பதிப்புடன் பயன்படுத்த இயலாது
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :தெரியவில்லை
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... அடிப்படை அசைவூட்டத் தொகுப்பு '{STRING}' தவிர்கப்பட்டது: கிடைக்கவில்லை
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... அடிப்படை ஒளித் தொகுப்பு '{STRING}' தவிர்கப்பட்டது: கிடைக்கவில்லை
@@ -1249,6 +1275,8 @@ STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}ஆட்டத்தை கைவிடு
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}நீங்கள் இந்த ஆட்டத்தினை விட்டு வெளியேறுவதில் உறுதியா?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}நீங்கள் இந்த சித்திரக்காட்சியினை விட்டு வெளியேறுவதில் உறுதியா?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}ஏமாற்றுகள்
@@ -1259,6 +1287,7 @@ STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}சு�
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}சிறிய விமான நிலையங்களில் ஜெட்விமானங்கள் நொறுங்காது: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :மிதமான நிலவெளி
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :வட துருவ நிலவெளி
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :பொம்மை நிலவெளி
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}தேதியை மாற்று: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}நடப்பு வருடத்தை மாற்று
 
@@ -1305,8 +1334,14 @@ STR_FACE_SIMPLE                                                 :{BLACK}எள�
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}எளிதான முகம் தேர்ந்தெடுத்தல்
 STR_FACE_LOAD                                                   :{BLACK}ஏற்று
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}பிடித்த முகத்தினை பதிவேற்று
+STR_FACE_FACECODE                                               :{BLACK}விளையாடுபவர் முக எண்
+STR_FACE_FACECODE_SET                                           :{WHITE}புதிய முக எண் குறி அமைக்கப்பட்டது
 STR_FACE_SAVE                                                   :{BLACK}சேமி\
+STR_FACE_SAVE_TOOLTIP                                           :{BLACK}பிடித்த முகத்தினைப் பதிவுசெய்
+STR_FACE_EUROPEAN                                               :{BLACK}ஐரோப்பிய
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}ஐரோப்பிய முகங்களினைத் தேர்ந்தெடுக்கவும்
 STR_FACE_AFRICAN                                                :{BLACK}ஆப்ரிக்கன்
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}ஆப்பிரிக்க முகங்களினைத் தேர்ந்தெடுக்கவும்
 STR_FACE_YES                                                    :ஆம்
 STR_FACE_NO                                                     :இல்லை
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}மீசை அல்லது கம்மலை செயலாக்கு
@@ -1342,17 +1377,20 @@ STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}இந�
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}பெயர்
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}ஆட்டத்தின் பெயர்
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}விளையாடுபவர்கள்
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}வரைபடத்தின் அளவு
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}தேதி
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}இன்றைய தேதி
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}ஆண்டுகள்
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}ஆண்டுகளாக{}ஆட்டம் ஆடப்படுகின்றது
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}மொழி, சர்வர் பதிப்பு, மற்றவை.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}பட்டியலிலிருந்து ஒரு ஆட்டத்தினை தேர்ந்தெடுக்க சொடுக்கவும்
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}கடைசியாக நீங்கள் விளையாடிய சர்வர்:
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ஆட்டத்தின் தகவல்கள்
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}விளையாடுவோர்: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}மொழி: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}நிலபரப்பு: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}வரைபடத்தின் அளவு: {WHITE}{COMMA}x{COMMA}
@@ -1361,11 +1399,14 @@ STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}சர�
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}தொடக்கத் தேதி: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}இன்றையத் தேதி: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}கடவுச்சொலினால் தடுக்கப்பட்டுள்ளது!
+STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}சர்வர் இணைப்பில் இல்லை
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}சர்வர் நிரம்பி விட்டது
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}பதிப்பு ஒத்துவரவில்லை
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF ஒத்துவரவில்லை
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}ஆட்டத்தில் சேர்
+STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}சர்வரினை புதுப்பிக்கவும்
+STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}சர்வரின் விவரத்தினை புதுப்பிக்கவும்
 
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}சர்வரினைத் தேடு
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}சர்வரினை இணையத்தில் தேடு
@@ -1376,16 +1417,21 @@ STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}தங�
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}தங்களின் பெயரினை இடவும்
 
 # Start new multiplayer server
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}புதிய இணைய ஆட்டத்தினைத் தொடங்கவும்
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}விளையாட்டு பெயர்:
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}கடவுச்சொல்லினை அமைக்கவும்
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / இணையம்
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :இணையம் (விளம்பரம் செய்)
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} விளையாடுபவர்{P "" கள்}
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}அதிகபட்ச வீரர்கள்:
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} நிறுவன{P ம் ங்கள்}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}அதிகபட்ச நிறுவனங்கள்:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}சர்வர்கு குறிப்பிட்ட அளவு நிறுவனங்களை மட்டுமே அனுமதி
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} பார்வையாளர்{P "" கள்}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}அதிகபட்ச பார்வையாளர்கள்:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}சர்வரிற்கு குறிப்பிட்ட அளவு பார்வையாளர்களை மட்டுமே அனுமதி
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}பேசப்படும் மொழிகள்:
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}இணைய ஆட்டத்திற்கு ஒரு பெயரினை இடு
@@ -1432,9 +1478,11 @@ STR_NETWORK_LANG_LATVIAN                                        :லாத்வ
 
 # Network game lobby
 
+STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}சேர தொடங்கப்படுகிறது: {ORANGE}{STRING}
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}நிறுவனங்களின் விவரம்
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}நிறுவனத்தின் பெயர்: {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}தொடக்கம்: {WHITE}{NUM}
 STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}நிறுவனத்தின் மதிப்பு: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}தற்போதைய கையிருப்பு: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}சென்ற வருட வருமானம்: {WHITE}{CURRENCY_LONG}
@@ -1456,6 +1504,7 @@ STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}இண�
 
 ############ Leave those lines in this order!!
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) இணைக்கப்படுகிறது...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) அனுமதிக்கப்படுகிறது...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) காத்திருக்கிறது...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) வரைபடம் பதிவிறக்கமாகிறது...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) தகவல் பரிசீலிக்கப்படுகின்றது...
@@ -1473,6 +1522,7 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}சர�
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}நிற்வனம் காக்கப்பட்டுள்ளது. கடவுச்சொல்லினை இடவும்
 
 # Network company list added strings
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}விளையாடுவோர் பட்டியல்
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}கவனி
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}புதிய நிறுவனம்
 
@@ -1482,8 +1532,10 @@ STR_NETWORK_CLIENTLIST_BAN                                      :அனுமத
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :பணம் தா
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :அனைவருடனும் பேசு
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :நிறுவனத்திடம் பேசு
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :இரகசிய தகவல்
 
 STR_NETWORK_SERVER                                              :சர்வர்
+STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :கவனிப்பவர்கள்
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}கொடுக்கப்படும் பணத்தின் அளவினை இடவும்
@@ -1511,32 +1563,51 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] பெ�
 STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] பெறுநர் {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}இணைய அரட்டையிற்கு வார்தைகளை இடவும்
 
 # Network messages
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}இணைய ஆட்டங்கள் எதுவும் கிடைக்கவில்லை
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}அழைப்பிற்கு சர்வர் பதிலளிக்கவில்லை
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRF கோப்பு பிழையினால் ணைக்க இயலவில்லை
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}இணயம்-ஆட்டம் சமமாதல் தோல்வியடைந்தது
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}இணைய ஆட்டத்தின் தொடர்பு துண்டிக்கப்பட்டது
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}சேமிக்கப்பட்ட விளையாட்டை ஏற்ற முடியவில்லை
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}சர்வரினை தொடங்க முடியவில்லை
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}இணைக்கப்படவில்லை
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}இணைப்பு #{NUM} காலமாகியது
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}இந்த பதிப்பு சர்வரின் பதிப்புடன் ஒத்துவரவில்லை
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}தவறான கடவுச்சொல்
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}சர்வர் முழு பயன்பாட்டில் உள்ளது
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}இந்த சர்வரில் இருந்து நீங்கள் தடை செய்யப்பட்டுள்ளீர்கள்
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}இந்த விளையாட்டிலிருந்து நீங்கள் வெளியேற்றப்பட்டீர்கள்
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}இந்த சர்வரில் ஏமாற்ற இயலாது
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}சர்வரிற்கு அளவிற்கு அதிகமான கட்டளைகளினை அனுப்பிக்கொண்டிருந்தீர்கள்
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}கடவுச்சொல்லினை இட அதிக நேரம் எடுத்துக்கொண்டீர்கள்
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}தங்கள் கணினியால் சர்வருடன் சமமாக பணியாற்ற இயலவில்லை
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}வரைபடத்தினைப் பதிவிறக்கத் தங்கள் கணினி அதிக நேரம் எடுத்ததுக் கொண்டது
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}சர்வருடன் இணைய உங்கள் கணினி அதிக நேரம் எடுத்துக்கொண்டது
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :பொதுவான பிழை
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :இணைப்பு பிழை
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :வரைபடத்தை ஏற்ற முடியவில்லை
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :தொடர்பு துண்டிக்கப்பட்டது
+STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :இணைப்புமுறைப் பிழை
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NEWGRF ஒத்துவரவில்லை
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :உங்களுக்கு அனுமதி இல்லை
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :தவறான அல்லது எதிர்பார்க்காத தகவல் கிடைத்தது
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :தவறான பதிப்பு
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :பெயர் பயன்பாட்டில் உள்ளது
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :தவறான கடவுச்சொல்
+STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand இல் தவறான கட்டளை
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :செர்வெரால் வெளியேற்றப்பட்டீர்கள்
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :ஏமாற்ற முயன்றார்
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :சர்வர் முழு பயன்பாட்டில் உள்ளது
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :அளவிற்கு அதிகமான கட்டளைகளைக் கொடுத்துக்கொண்டிருந்தார்
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :சரியான நேரத்தில் எந்தக் கடவுச்சொல்லும் கிடைக்கவில்லை
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :பொதுவான காலப்பிழை
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :வரைபடம் பதிவிறக்கமாக அதிக நேரம் ஆகியது
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :படத்தினைத் திறக்க அதிக நேரம் ஆகியது
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}தொடர்பு துண்டிக்கப்பட வாய்ப்பு உள்ளது
@@ -1552,6 +1623,8 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :ஆட்டம
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :ஆட்டம் இடை நிறுத்தப்பட்டுள்ளது ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :ஆட்டம் மீண்டும் தொடங்கப்பட்டுள்ளது ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :விளையாடுபவர்களின் எண்ணிக்கை
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :வீரர்கள் இணைக்கப்படுகின்றனர்
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :எனது
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :விளையாட்டின் ஸ்கிரிப்ட்
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :விட்டுச்செல்கிறார்
@@ -1561,8 +1634,11 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} �
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} பார்வையாளராக சேர்ந்துள்ளார்
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} புதிய நிறுவனம் (#{2:NUM})வை துவக்கி உள்ளார்
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ஆட்டத்தை விட்டு வெளியேரினார் ({2:STRING})
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} அவரது/அவளது பெயரினை {STRING} என்று மாற்றினார்
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} தங்கள் நிறுவனத்திற்கு {2:CURRENCY_LONG} கொடுத்தார்
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** நீங்கள் கொடுத்தீற்கள் {1:STRING} {2:CURRENCY_LONG}
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}சர்வர் ஆட்டத்தினை முடித்தது
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}சர்வர் மீண்டும் தொடங்குகிறது...{}சற்று பொறுக்கவும்...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}கோப்புகள் பதிவிறக்கம் செய்யப்படுகின்றன
@@ -1571,7 +1647,13 @@ STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}உள�
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}பெயர்
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}உள்ளடக்கத்தின் பெயர்
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}அனைத்தையும் தேர்ந்தெடு
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}அனைத்தையும் பதிவிறக்கக் குறிக்கவும்
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}தரவேற்றங்களினைத் தேர்ந்தெடு
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}தேர்ந்தெடுத்தவற்றின் குறியினை நீக்கு
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}அனைத்தையும் பதிவிறக்க வேண்டாம் என்று குறிக்கவும்
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}குறியீடு/பெயர் வடிகட்டி:
 STR_CONTENT_OPEN_URL                                            :{BLACK}இணையதளத்தினை பார்வையிடு
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}இந்த கோப்பின் விவரங்களினை அதன் இணையதளத்தில் பார்க்க
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}பதிவிறக்கு
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}தேர்ந்தெடுக்கப்பட்டனவை பதிவிறக்க ஆரம்பி
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}மொத்த பதிவிறக்க அளவு: {WHITE}{BYTES}
@@ -1589,6 +1671,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}பத�
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}தேர்ந்தெடுக்கப்பட்டது இதனால்: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}சார்ந்தவை: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}சுட்டிகள்: {WHITE}{STRING}
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD "zlib" தேவை இல்லாமலேயே கட்டப்பட்டது...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... கோப்புகளை பதிவிறக்கம் செய்ய முடியாது!
 
 # Order of these is important!
@@ -1597,6 +1680,7 @@ STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI நூலகம்
 STR_CONTENT_TYPE_SCENARIO                                       :திரைக்காட்சி
+STR_CONTENT_TYPE_HEIGHTMAP                                      :உயர்படம்
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :அடிப்படை ஒலிகள்
 STR_CONTENT_TYPE_BASE_MUSIC                                     :அடிப்படை இசை
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :விளையாட்டின் ஸ்கிரிப்ட்
@@ -1647,6 +1731,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}இர�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}இரயில்வே சிக்னல்களைக் கட்டவும். Ctrl அழுத்தினால் சிக்னல் வகைகளை மாற்றலாம்{}இரயில் தடத்தின்மேல் இழுத்தினால் சிக்னல்களை அமைக்கலாம். Ctrl அழுத்தினால் அடுத்த எணைப்பு வரை சிக்னல்கள் அமைக்கப்படும்{}Ctrl+Click அழுத்தினால் சிக்னல் தேர்ந்தெடுக்கும் திரை தெரியும்/மரையும். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு காட்டப்படும்
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}இரயில்வே பாலத்தினை கட்டவும். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு காட்டப்படும்
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}இரயில்வே சுரங்கப் பாதையினை கட்டவும். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு காட்டவும்
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}இரயில் வகையினை தரவேற்றவும்/மாற்றவும். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு காட்டப்படும்
 
 STR_RAIL_NAME_RAILROAD                                          :இரயில்வே
 STR_RAIL_NAME_ELRAIL                                            :மின்மயமாக்கப்பட்ட இரயில்வே
@@ -1654,9 +1739,12 @@ STR_RAIL_NAME_MONORAIL                                          :மோனோ �
 STR_RAIL_NAME_MAGLEV                                            :மேக்லெவ்
 
 # Rail depot construction window
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}இரயில்வே பணிமனையின் திசையமைப்பு
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}இரயில்வே பணிமனையின் திசையமைப்பினைத் தேர்ந்தெடுக்கவும்
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}பாதைப்புள்ளி
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}பாதைப்புள்ளி வகையினைத் தேர்ந்தெடுக்கவும்
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}இரயில் நிலையம் தேர்ந்தெடுத்தல்
@@ -1667,6 +1755,7 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}இர�
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}நிலையத்தின் நீளம்
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}இரயில் நிலையத்தின் நீளத்தினை தேர்ந்தெடு
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}இழுத்து விடவும்
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}இழுத்து விடுவதன் மூலம் நிலையத்தினைக் கட்டவும்
 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}காட்டுவதற்கு ஒரு நிலைய வகையினைத் தேர்ந்தெடுக்கவும்
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}கட்டப்போகும் நிலையத்தின் வகையினைத் தேர்ந்தெடுக்கவும்
@@ -1680,6 +1769,7 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}சி�
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}இரயில்வே பாலத்தினை தேர்ந்தெடு
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}சாலைப் பாலத்தினை தேர்ந்தெடு
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}பாலம் தேர்ந்தெடுத்தல் - தேவையான பாலத்தினைக் கட்ட அதனினை சொடுக்கவும்
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :தொங்குபாலம், எஃகு
@@ -1695,10 +1785,14 @@ STR_BRIDGE_TUBULAR_SILICON                                      :குழாய
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}சாலை கட்டுமானம்
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}ட்ரேம்வே கட்டுமானம்
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}சாலையினை இடவும். Ctrl அழுத்தினால் சாலையினை நீக்கலாம்/கட்டலாம். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு காட்டப்படும்
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}ட்ராம்வே தடத்தினைக் கட்டவும். Ctrl அழுத்தினால் தடத்தினை நீக்கலாம்/கட்டலாம். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு காட்டப்படும்
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}சாலை வாகன பணிமனையினை கட்டவும் (வாகங்களை வாங்க மற்றும் பழுதுபார்க்க). Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}ட்ராம் வாகன பணிமனையினை கட்டவும் (வாகங்களை வாங்க மற்றும் பழுதுபார்க்க). Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}பேருந்து நிலையத்தினை கட்டவும். Ctrl அழுத்தினால் நிலையங்களினை இணைக்கலாம். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு காட்டப்படும்
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}ட்ராம் பயணிகள் நிலையத்தினை கட்டவும். Ctrl அழுத்தினால் நிலையங்களினை இணைக்கலாம். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}லாரி சரக்கு ஏற்றும் நிலையத்தினை கட்டவும். Ctrl அழுத்தினால் நிலையங்களினை இணைக்கலாம். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு காட்டப்படும்
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}ட்ராம் சரக்கு நிலையத்தினைக் கட்டவும். Ctrl அழுத்தினால் நிலையங்களினை இணைக்கலாம். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு காட்டப்படும்
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}ஒருவழிப்பாதைகளை செயல்படுத்து/முடக்கு
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}சாலை மேம்பாலத்தினைக் கட்டவும். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு காட்டப்படும்
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}ட்ராம்வே மேம்பாலத்தினைக் கட்டவும். Shift அழுத்தினால் கட்டுமான/செலவு மதிப்பீடு காட்டப்படும்
