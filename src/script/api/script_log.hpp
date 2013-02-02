@@ -53,18 +53,21 @@ public:
 	/**
 	 * Print an Info message to the logs.
 	 * @param message The message to log.
+	 * @note Special characters such as U+0000-U+0019 and U+E000-U+E1FF are not supported and removed or replaced by a question mark. This includes newlines and tabs.
 	 */
 	static void Info(const char *message);
 
 	/**
 	 * Print a Warning message to the logs.
 	 * @param message The message to log.
+	 * @note Special characters such as U+0000-U+0019 and U+E000-U+E1FF are not supported and removed or replaced by a question mark. This includes newlines and tabs.
 	 */
 	static void Warning(const char *message);
 
 	/**
 	 * Print an Error message to the logs.
 	 * @param message The message to log.
+	 * @note Special characters such as U+0000-U+0019 and U+E000-U+E1FF are not supported and removed or replaced by a question mark. This includes newlines and tabs.
 	 */
 	static void Error(const char *message);
 
