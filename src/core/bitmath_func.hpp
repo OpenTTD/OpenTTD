@@ -26,6 +26,8 @@
  * @param x The value to read some bits.
  * @param s The start position to read some bits.
  * @param n The number of bits to read.
+ * @pre n < sizeof(T) * 8
+ * @pre s + n <= sizeof(T) * 8
  * @return The selected bits, aligned to a LSB.
  */
 template <typename T>
@@ -50,6 +52,8 @@ static inline uint GB(const T x, const uint8 s, const uint8 n)
  * @param s The start position for the new bits
  * @param n The size/window for the new bits
  * @param d The actually new bits to save in the defined position.
+ * @pre n < sizeof(T) * 8
+ * @pre s + n <= sizeof(T) * 8
  * @return The new value of \a x
  */
 template <typename T, typename U>
@@ -72,6 +76,8 @@ static inline T SB(T &x, const uint8 s, const uint8 n, const U d)
  * @param x The variable to add some bits at some position
  * @param s The start position of the addition
  * @param n The size/window for the addition
+ * @pre n < sizeof(T) * 8
+ * @pre s + n <= sizeof(T) * 8
  * @param i The value to add at the given start position in the given window.
  * @return The new value of \a x
  */
@@ -92,6 +98,7 @@ static inline T AB(T &x, const uint8 s, const uint8 n, const U i)
  *
  * @param x The value to check
  * @param y The position of the bit to check, started from the LSB
+ * @pre y < sizeof(T) * 8
  * @return True if the bit is set, false else.
  */
 template <typename T>
@@ -109,6 +116,7 @@ static inline bool HasBit(const T x, const uint8 y)
  *
  * @param x The variable to set a bit
  * @param y The bit position to set
+ * @pre y < sizeof(T) * 8
  * @return The new value of the old value with the bit set
  */
 template <typename T>
@@ -138,6 +146,7 @@ static inline T SetBit(T &x, const uint8 y)
  *
  * @param x The variable to clear the bit
  * @param y The bit position to clear
+ * @pre y < sizeof(T) * 8
  * @return The new value of the old value with the bit cleared
  */
 template <typename T>
@@ -167,6 +176,7 @@ static inline T ClrBit(T &x, const uint8 y)
  *
  * @param x The variable to toggle the bit
  * @param y The bit position to toggle
+ * @pre y < sizeof(T) * 8
  * @return The new value of the old value with the bit toggled
  */
 template <typename T>
@@ -286,6 +296,7 @@ static inline bool HasAtMostOneBit(T value)
  * @note Assumes a byte has 8 bits
  * @param x The value which we want to rotate
  * @param n The number how many we want to rotate
+ * @pre n < sizeof(T) * 8
  * @return A bit rotated number
  */
 template <typename T>
@@ -300,6 +311,7 @@ static inline T ROL(const T x, const uint8 n)
  * @note Assumes a byte has 8 bits
  * @param x The value which we want to rotate
  * @param n The number how many we want to rotate
+ * @pre n < sizeof(T) * 8
  * @return A bit rotated number
  */
 template <typename T>
