@@ -930,7 +930,11 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}மு�
 
 STR_CURRENCY_WINDOW                                             :{WHITE}புது நாணயம்
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}நாணயமாற்று விகிதம்: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}உங்கள் நாணய மதிப்பினை ஒரு பவுண்டு (£) அளவு குறைக்கவும்
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}உங்கள் நாணய மதிப்பினை ஒரு பவுண்டு (£) அளவு அதிகரிக்கவும்
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}உங்களது நாணயத்தின் நாணயமாற்று விகிதத்தை ஒரு பவுண்டாக (£) அமைக்கவும்
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}பிரிப்பான்: {ORANGE}{STRING}
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}முன் ஒட்டு: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}உங்கள் நாணயத்தின் முன் ஒட்டத்தினை அமையுங்கள்
@@ -944,6 +948,7 @@ STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}யூ�
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}யூரோவிற்கு தாமதமாக மாறுங்கள்
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}முன்னோட்டம்: {ORANGE}{CURRENCY_LONG}
+STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 பவுண்டு (£) உங்க்ள் நாணயத்தில்
 
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}அதிகபட்ச போட்டியாளர்கள்: {ORANGE}{COMMA}
 
@@ -955,6 +960,7 @@ STR_NUM_LOW                                                     :குறைவ
 STR_NUM_NORMAL                                                  :இயல்பான
 STR_NUM_HIGH                                                    :அதிகம்
 STR_NUM_CUSTOM                                                  :மாற்றியமைத்த
+STR_NUM_CUSTOM_NUMBER                                           :மாற்றியமைத்த ({NUM})
 
 STR_VARIETY_NONE                                                :ஒன்றுமில்லை
 STR_VARIETY_VERY_LOW                                            :மிகவும் குறைவு
@@ -973,6 +979,7 @@ STR_SEA_LEVEL_VERY_LOW                                          :மிகவு
 STR_SEA_LEVEL_LOW                                               :குறைந்த
 STR_SEA_LEVEL_MEDIUM                                            :நடுத்தரம்
 STR_SEA_LEVEL_HIGH                                              :உயர்ந்த
+STR_SEA_LEVEL_CUSTOM                                            :மாற்றியமைத்த
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
 STR_RIVERS_NONE                                                 :ஒன்றுமில்லை
@@ -994,6 +1001,9 @@ STR_TERRAIN_TYPE_FLAT                                           :சமமான
 STR_TERRAIN_TYPE_HILLY                                          :உயர்ந்து
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :மலைகளாக
 
+STR_CITY_APPROVAL_PERMISSIVE                                    :அனுமதிதரும்
+STR_CITY_APPROVAL_TOLERANT                                      :பொறுத்துக்கொள்ளும்
+STR_CITY_APPROVAL_HOSTILE                                       :அனுமதிக்காது
 
 
 # Advanced settings window
@@ -1040,40 +1050,61 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :அதிகப
 STR_CONFIG_SETTING_INTEREST_RATE                                :வட்டி: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS                                :இயங்குவதற்கான செலவுகள்: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :கட்டுமானங்களின் வேகம்: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :AI களின் கட்டுமானங்களின் எண்ணிக்கையினை கட்டுப்படுத்தவும்
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :வாகங்களின் பழுதுகள்: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :மானியம் பெருக்கு: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :கட்டுமானச் செலவுகள்: {STRING}
 STR_CONFIG_SETTING_RECESSIONS                                   :பொருளதாரத் தேக்கங்கள்: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :நிலையங்களில் இரயில்களை திருப்புவதை அனுமதிக்காதே: {STRING}
 STR_CONFIG_SETTING_DISASTERS                                    :பேரழிவுகள்: {STRING}
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :கரைகளிலும் சரிவுகளிலும் கட்ட அனுமதி: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :நகரத்தின் சாலைகள், பாலங்கள் மற்றும் சுரங்கங்களை நீக்க அனுமதிக்கவும்: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :இரயில்களின் அதிகபட்ச நீளம்: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :இரயில்களின் அதிகபட்ச நீளத்தினை அமை
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} கட்டம்{P 0 "கட்டம்" "கட்டங்கள்"}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :வாகனங்களின் புகை/பொறிகள் எண்ணிக்கை: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :இரயில் மற்றும் கப்பல்களை 90° வளைவுகள் எடுப்பதை அனுமதிக்காதே: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :நேரடியாக இணைக்கப்படாத நிலையங்களை இணைக்க அனுமதி: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :பொறுமையாக வாகனங்களை ஏற்று: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :விலைவாசி ஏற்றம்: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :பண வீக்கத்தினை செயல்படுத்து, இதனால் செலவுகள் வளர்ச்சி வரவுகளின் வளர்ச்சியைவிட அதிகமாகும்
 STR_CONFIG_SETTING_SELECTGOODS                                  :தேவை இருந்தால் மட்டுமே அச்சரக்குகளை நிலையத்தில் இறக்கு: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :அதிகபட்ச பால நீளம்: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :கட்டப்படும் பாலங்களின் அதிகபட்ச நீளம்
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :அதிகபட்ச சுரங்க நீளம்: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :கட்டப்படும் சுரங்கங்களின் அதிகபட்ச நீளம்
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ஒன்றுமில்லை
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :மற்ற தொழிற்சாலைகளைப் போல
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :தொழிற்சாலைகள் அருகே உள்ள சம நிலங்கள்: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :ஒரே மாதிரியான தொழிற்சாலைகளை அதே நகரத்தில் நிறுவ அனுமதி: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :சிக்னல்களைக் காட்டவும்: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :இடப்பக்கத்தில்
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :ஓட்டும் பக்கத்தில்
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :வலப்பக்கத்தில்
 STR_CONFIG_SETTING_SHOWFINANCES                                 :நிதிநிலைமை அறிக்கையை ஒவ்வொரு ஆண்டின் இறுதியிலும் காட்டு: {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :அருகே உள்ள முடிவில்
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :நடு
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :தொலைவில் உள்ள முடிவில்
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :செயலிழக்க செய்யப்பட்டது
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :முக்கிய திரைபார்வை, முழுத்திரையில் மட்டும்
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :முக்கிய திரைபார்வை
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :ஒவ்வொரு திரைபார்வையும்
 STR_CONFIG_SETTING_BRIBE                                        :நகராட்சிக்கு கையூட்டுத் தர அனுமதி: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :போக்குவரத்து உரிமைகளை விற்க அனுமதிக்கவும்: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :கட்டடங்களை கட்ட அனுமதி: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :நிறுவனங்கள் நகரங்களுக்கு பணம் வழங்க அனுமதிக்கவும், புதிய வீடுகள் கட்ட
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :உள்ளூர் சாலை மறுசீரமைக்க நிதியளி: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :மற்ற நிறுவனங்களுக்கு பணம் அனுப்ப அனுமதி: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :விமான வேக பெருக்கி: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :விமான விபத்துகளின் எண்ணிக்கை: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ஒன்றுமில்லை
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :குறைக்கப்பட்ட
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :இயல்பான
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :நிலையங்களை ஒட்டி கட்ட அனுமதி: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :வெவ்வேறு நிலையங்கள் ஒட்டி கட்டுவதற்கு அனுமதிக்கவும்
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}வாகனங்கள் இருக்கும் பொது இந்த அமைப்பினை மாற்ற இயலாது
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :கட்டட பராமரிப்பு: {STRING}
 
@@ -1088,32 +1119,64 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :வாகனம
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :வாகனங்கள் என்றும் காலாவதியாகாது: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :வாகனங்கள் காலாவதியானால் தானாக மாற்றியமை: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :செயலாக்க செய்யப்பட்டால், வாகனங்கள் காலாவதியாவதற்கு முன்னால் தானாக மாற்றியமைக்கப்படும்
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} மாத{P 0 "ம்" ங்கள்} முன்னர்
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} மாத{P 0 "ம்" ங்கள்} பின்னர்
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :காலாவதியான வாகனங்களை மாற்றியமைக்கத் தேவையான பணம்: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :பிழை செய்திக்கான கால அளவு: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} விநாடி{P 0 "" கள்}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :காட்டவும் {COMMA} விநாடி{P 0 "" கள்}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :வலது சொடுக்கு
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :நகரத்தின் மக்கள்த் தொகையினை அதன் பெயருடன் காட்டு: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :வரைபடத்தில் கோடுகளின் எண்ணிக்கை: {STRING}
 
+STR_CONFIG_SETTING_LAND_GENERATOR                               :நில உருவாக்கி: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :உண்மையான
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :எண்ணெய் சுத்திகரிப்பு நிலையங்கள் வரைபடத்தின் எல்லைகளில் மட்டுமே கட்ட இயலும், அதாவது தீவு வரைபடங்களில் கடற்கரைகளில் கட்ட இயலும்
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :பனி-கோடின் உயரம்: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :மிகவும் சமமான
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :சமமான
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :கரடுமுரடான
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :மிகவும் கரடுமுரடான
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :ஒன்றுமில்லை
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :உண்மையான
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :உயர்பட சுழற்ச்சி: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :முடக்கப்பட்டால், வரைபடத்தின் எல்லைகள் கடலாகவே இருக்கும்
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :அதிக. நிலைய விரிப்பு: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :ஹெலிகாப்ப்டர்களை தானாக சரிபார்ர்க்கவும்: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :பச்சை
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :கரும் பச்சை
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :ஊதா
 STR_CONFIG_SETTING_LIVERIES_NONE                                :ஒன்றுமில்லை
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :சொந்த நிறுவனம்
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :அனைத்து நிறுவனங்களும்
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :அணை
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :செயலிழக்க செய்யப்பட்டது
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :இரு அழுத்தங்கள்
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :ஒரு அழுத்தம் (ஒரே இடத்தில் இருந்தால்)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :ஒரு அழுத்தம் (உடனடியாக)
 
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :அணை
 
 
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :நீளமான (31 திசம்பர் 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :சுருக்கமான (31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :டாஸ் வண்ணத்தட்டு
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :விண்டோஸ் வண்ணத்தட்டு
 
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :ஆட்டம் நிருத்தபட்டிருக்கம்போது அனுமதிக்கவும்: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :எதையும் அனுமதிக்காதே
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :அனைத்து கட்டுமானம்-அல்லாத செயல்கள்
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :அனைத்து செயல்கள் நிலமாற்றங்கள் தவிர்த்து
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :அனைத்து செயல்கள்
+STR_CONFIG_SETTING_QUICKGOTO                                    :வாகன கட்டளைகளை விரிவாக உருவாக்கவும்: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :முதலில் கிடைக்கும்
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :கடைசியில் கிடைக்கும்
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :அதிகமாக பயன்படுத்தியவை
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :செய்தி கடிகாரம்: {STRING}
@@ -1127,17 +1190,37 @@ STR_CONFIG_SETTING_SOUND_DISASTER                               :பேரழி
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :விபத்துகள் மற்றும் பேரழிவுகளின் ஒலிகளைச் செயலாக்கு
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :வாகனங்கள்: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :வாகனங்களின் இசைகளை செயலாக்கு
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambient: {STRING}
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :தகுந்த வாகனம் இல்லாதபோது Disable infrastructure building: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :அதிகபட்ச இரயில்கள் நிறுவனங்களுக்கு: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :ஒரு நிறுவனத்தால் வைத்திருக்கக்கூடிய இரயில்கள் எண்ணிக்கை
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :அதிகபட்ச வாகனங்கள் நிறுவனங்களுக்கு: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :ஒரு நிறுவனத்தால் வைத்திருக்கக்கூடிய அதிகபட்ச வாகனங்கள் எண்ணிக்கை
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :அதிகபட்ச விமானங்கள் நிறுவனங்களுக்கு: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :ஒரு நிறுவனத்தால் வைத்திருக்கக்கூடிய அதிகபட்ச விமானங்கள் எண்ணிக்கை
+STR_CONFIG_SETTING_MAX_SHIPS                                    :அதிகபட்ச கப்பல்கள் நிறுவனங்களுக்கு: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :ஒரு நிறுவனத்தால் வைத்திருக்கக்கூடிய அதிகபட்ச கப்பல்கள் எண்ணிக்கை
 
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :கணினிகளுக்கு இரயில்களை அனுமதிக்காதே: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :கணினியால் இரயில்களை பயன்படுத்த இயலாது
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :கணினியிற்கு சாலை வாகனங்களை அனுமதிக்காதே: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :கணினியால் சாலை வாகனங்களை பயன்படுத்த இயலாது
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :கணினியிற்கு விமானங்களை அனுமதிக்காதே: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :கணினியால் விமானங்களை பயன்படுத்த இயலாது
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :கணினியிற்கு கப்பல்களை அனுமதிக்காதே: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :கணினியால் கப்பல்களை பயன்படுத்த இயலாது
 
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :எளிதான
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :நடுத்தரமான
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :கடுமையான
 
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :பழுதுபார்த்தல்கள் இடையே உள்ள காலத்தினை சதவிகிதத்தில் காட்டவும்: {STRING}
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} நாள்{P "நாள்" நாட்கள்}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :செயலிழக்க செய்யப்பட்டது
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :பெட்டி வேக கட்டுப்பாட்டினை செயல்படுத்தவும்: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :மின்சார இரயில்களை அனுமதிக்காதே: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :விளையாடுபவரின் நிலையத்திற்கு முதல் வாகனம் வருகை புரிந்தது: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :போட்டியாளரின் நிலையத்திற்கு முதல் வாகனம் வருகை புரிந்தது: {STRING}
@@ -1160,12 +1243,25 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :நிறுத
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :தொகுப்பு
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :முழு
 
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :நிற செய்தித்தாள்கள் வெளிவரும் ஆண்டு: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :தொடங்கும் வருடம்: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :மற்ற நிறுவனங்களின் பங்குகளை வாங்குவதை அனுமதிக்கவும்: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} கட்ட{P 0 "ம்" ங்கள்}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :சிக்னள் GUI இனை செயல்படுத்தவும்: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :கட்ட சிக்னல்கள்
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :பாதை சிக்னல்கள்
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :ஒருவழிப் பாதை சிக்னல்கள்
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :வெவேறு சிக்னல் வகைகளுள் மாற்றவும்: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :கட்ட சிக்னல்கள் மட்டும்
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :பாதை சிக்னல்கள் மட்டும்
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :அனைத்தும்
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :புதிய நகரங்களுக்கான சாலை கட்டங்கள்: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :அசலான
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :நல்ல சாலைகள்
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 கட்டங்கள்
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 கட்டங்கள்
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ஏதொவொரு
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :நகரங்கள் சாலைகளை கட்ட அனுமதி: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :நகரங்கள் சாலைச் சந்திப்புகளை கட்ட அனுமதி: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :ஆட்டத்தில் நகரங்களை நிறுவ அனுமதி: {STRING}
@@ -1173,6 +1269,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :இயலாத
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :அனுமதிக்கப்படுகிறது
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :அனுமதிக்கப்படுகிறது, ஆனால் மாற்றியமைக்கப்பட்ட நகர அமைப்பு
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ஒன்றுமில்லை {RED}(மர மில்லை உடைக்கும்)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :மழைக் காடுகளில் மட்டும்
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :எங்கும்
 
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} பிக்சல்{P 0 "" கள்}
@@ -2718,6 +2816,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}பெ�
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}இரயிலினை பணிமனைக்கு அனுப்பவும். Ctrl+Click அழுத்தினால் பழுதுபார்த்தல் மட்டுமே நடக்கும்
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}வாகனத்தினை பணிமனைக்கு அனுப்பவும். Ctrl+Click அழுத்தினால் பழுதுபார்த்தல் மட்டுமே நடக்கும்
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}கப்பலினை பணிமனைக்கு அனுப்பவும். Ctrl+Click அழுத்தினால் பழுதுபார்த்தல் மட்டுமே நடக்கும்
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}விமானத்தினை பணிமனைக்கு அனுப்பவும். Ctrl+Click அழுத்தினால் பழுதுபார்த்தல் மட்டுமே நடக்கவும்
 
 
 
@@ -2917,6 +3019,7 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}நீ�
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}குறிப்பிட்ட கட்டளையை நீக்கு
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}அனைத்து ஆர்டர்களையும் ரத்து செய்
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}பகிர்வதை நிறுத்து
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}கட்டளைப் பட்டியலினை பகிர்வதை நிறுத்தவும். Ctrl+Click அழுத்தினால் வாகனத்தினது கட்டளைகள் அனைத்தும் நீக்கப்படும்
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}இங்கே செல்
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :அருகாமையில் உள்ள பணிமனைக்கு செல்
@@ -3063,6 +3166,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}ஸ்�
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}அமைப்புகள்
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}வரிவடிவத்தின் அமைப்புகளை மாற்று
 STR_AI_DEBUG_RELOAD                                             :{BLACK}AI-ஐ மறுபடியும் ஏற்று
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}AI இனை நிறுத்தவும், வரிவடிவத்தினை திருப்பி ஏற்றவும், மேலும் AI இனை மீண்டும் தொடங்கவும்
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}உடைத்து ஆம்:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}உடைத்து ஆம்
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}case இனை சரிபடுத்தவும்

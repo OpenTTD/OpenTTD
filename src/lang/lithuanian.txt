@@ -2957,6 +2957,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Jūs no
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Negalima pridėti failo: pasikartojantis GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Atitinkamas failas nerastas (panaudotas suderinamas grafikos failas)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Neįmanoma pridėti failo: pasiektas NewGRF failų limitas
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Suderinami grafikos failai panaudoti vietoj trūkstamų
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Trūkstami grafikos failai nenaudojami

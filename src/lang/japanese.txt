@@ -2810,6 +2810,7 @@ STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{CURRENC
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}借入
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}{CURRENCY_LONG}を返済
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}返済します。コントロールキーを押しながらクリックすることでできるだけ返済します。
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}所有設備
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
@@ -2825,6 +2826,13 @@ STR_COMPANY_VIEW_SHIPS                                          :{WHITE}船舶{C
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}なし
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}会社の価値：{WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}（{1:COMPANY}が{0:COMMA}％株式保有）
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}所有設備
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}線路長 {COMMA}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}道路長 {COMMA}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}水路長 {COMMA}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}駅(タイル数) {COMMA}
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}空港 {COMMA}
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}なし
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}本部ビルを建設
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}本社を建てます
@@ -2832,6 +2840,7 @@ STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}本部�
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}本社を見ます
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}本社ビルを移動
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}本社ビルを移動します（価格：会社の価値の１％）
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}詳細
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}新規顔
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}社長の新しい顔を選択します
@@ -2853,6 +2862,10 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :社長の名前
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}経済の現状によって当社を他の交通会社へご売却いたします。{}{}{COMPANY}を{CURRENCY_LONG}で買収しますか？
 
 # Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}信号
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}軌道
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}運河
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}駅のタイル数
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}空港
 STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/年 ({0:COMMA})
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/年

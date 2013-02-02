@@ -3057,7 +3057,7 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Zmień p
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Zmień paletę kolorów wybranego NewGRF.{}Zrób to gdy grafika tego NewGRF jest różowa
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Zastosuj zmiany
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Znajdź zgubiony dodatek online
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Znajdź brakujące dodatki online
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Sprawdź czy zagubiony dodatek może być znaleziony online
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nazwa pliku: {SILVER}{STRING}
