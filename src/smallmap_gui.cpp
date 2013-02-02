@@ -799,7 +799,6 @@ class SmallMapWindow : public Window {
 	 * @param end_pos Position of last pixel to draw (exclusive).
 	 * @param blitter current blitter
 	 * @note If pixel position is below \c 0, skip drawing.
-	 * @see GetSmallMapPixels(TileIndex)
 	 */
 	void DrawSmallMapColumn(void *dst, uint xc, uint yc, int pitch, int reps, int start_pos, int end_pos, Blitter *blitter) const
 	{
