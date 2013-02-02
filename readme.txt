@@ -670,7 +670,7 @@ Retired Developers:
 
 Thanks to:
   Josef Drexler                   - For his great work on TTDPatch.
-  Marcin Grzegorczyk              - For his TTDPatch work and documentation of Transport Tycoon Deluxe internals and graphics (signals and track foundations)
+  Marcin Grzegorczyk              - For his TTDPatch work and documentation of Transport Tycoon Deluxe internals and track foundations
   Petr Baudiš (pasky)             - Many patches, newgrf support, etc.
   Simon Sasburg (HackyKid)        - For the many bugfixes he has blessed us with
   Stefan Meißner (sign_de)        - For his work on the console
@@ -684,7 +684,6 @@ Thanks to:
   George                          - Canal graphics
   Andrew Parkhouse (andythenorth) - River graphics
   David Dallaston (Pikka)         - Tram tracks
-  Marcin Grzegorczyk              - Foundations for tracks on slopes,
   All Translators                 - For their support to make OpenTTD a truly international game
   Bug Reporters                   - Thanks for all bug reports
   Chris Sawyer                    - For an amazing game!
