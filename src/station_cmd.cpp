@@ -1236,8 +1236,9 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 		numtracks_orig = numtracks;
 
 		Company *c = Company::Get(st->owner);
+		TileIndex tile_track = tile_org;
 		do {
-			TileIndex tile = tile_org;
+			TileIndex tile = tile_track;
 			int w = plat_len;
 			do {
 				byte layout = *layout_ptr++;
@@ -1293,9 +1294,9 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 
 				tile += tile_delta;
 			} while (--w);
-			AddTrackToSignalBuffer(tile_org, track, _current_company);
-			YapfNotifyTrackLayoutChange(tile_org, track);
-			tile_org += tile_delta ^ TileDiffXY(1, 1); // perpendicular to tile_delta
+			AddTrackToSignalBuffer(tile_track, track, _current_company);
+			YapfNotifyTrackLayoutChange(tile_track, track);
+			tile_track += tile_delta ^ TileDiffXY(1, 1); // perpendicular to tile_delta
 		} while (--numtracks);
 
 		for (uint i = 0; i < affected_vehicles.Length(); ++i) {
@@ -1305,6 +1306,31 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 			TryPathReserve(v, true, true);
 			for (; v->Next() != NULL; v = v->Next()) { }
 			if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), true);
+		}
+
+		/* Check whether we need to expand the reservation of trains already on the station. */
+		TileArea update_reservation_area;
+		if (axis == AXIS_X) {
+			update_reservation_area = TileArea(tile_org, 1, numtracks_orig);
+		} else {
+			update_reservation_area = TileArea(tile_org, numtracks_orig, 1);
+		}
+
+		TILE_AREA_LOOP(tile, update_reservation_area) {
+			DiagDirection dir = AxisToDiagDir(axis);
+			TileIndexDiff tile_offset = TileOffsByDiagDir(dir);
+			TileIndex platform_begin = tile - tile_offset * (st->GetPlatformLength(tile, ReverseDiagDir(dir)) - 1);
+			TileIndex platform_end   = tile + tile_offset * (st->GetPlatformLength(tile, dir) - 1);
+
+			/* If there is at least on reservation on the platform, we reserve the whole platform. */
+			bool reservation = false;
+			for (TileIndex t = platform_begin; !reservation && t <= platform_end; t += tile_offset) {
+				reservation = HasStationReservation(t);
+			}
+
+			if (reservation) {
+				SetRailStationPlatformReservation(platform_begin, dir, true);
+			}
 		}
 
 		st->MarkTilesDirty(false);
