@@ -2576,6 +2576,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Gëff en
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Welt Generatioun
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kaartgréisst:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Wiel d'Gréisst vun der Kaart an Felder. D'Unzuel vun benotzbaren Felder wäert e bëssen méi kleng sinn
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Unz. Dierfer:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
@@ -2762,6 +2763,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du mës
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kann Datei net bäisetzen: Duplikat GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Passend Datei net fonnt (kompatibel GRF gelued)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Kann Fichier net dobäisetzen : NewGRF Limite errecht
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibel GRF(s) gelueden fir fehlend Dateien
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fehlend GRF Datei(en) sinn ausgeschalt

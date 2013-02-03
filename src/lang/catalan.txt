@@ -1437,7 +1437,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Mostra les not�
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Tancament d'indústries: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Mostra les notícies d'indústries que tanquen
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Canvis de l'Economia: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Mostra les notícies de canvis globals a l'economia
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Mostra un diari sobre els canvis globals en l'economia
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Canvis de producció de les indústries aprovisionades per la companyia: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Mostra les notícies de canvis als nivells de producció de les indústries proveïdes per la companyia pròpia
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Canvis de producció en indústries proveïdes pels competidors: {STRING}
@@ -2577,6 +2577,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Posa el 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Generació del món
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Mida del mapa:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Selecciona la mida del mapa en cel·les. El nombre de cel·les disponibles serà lleugerament més petit
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. de pobles:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
@@ -2763,6 +2764,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Estàs 
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No es pot afegir l'arxiu: ID GRF duplicada
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}No s'ha trobat un arxiu coincident (els GRF compatibles s'han carregat)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}No es pot afegir l'arxiu: Límit d'arxius NewGRF assolit
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}S'han carregat els GRF compatibles pels arxius faltants
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Els fitxers GRF faltants han estat desactivats
