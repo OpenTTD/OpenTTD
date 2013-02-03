@@ -1251,7 +1251,8 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 		if (_settings_game.order.improved_load && (front->current_order.GetLoadType() & OLFB_FULL_LOAD)) {
 			/* 'Reserve' this cargo for this vehicle, because we were first. */
 			for (Vehicle *v = front; v != NULL; v = v->Next()) {
-				int cap_left = v->cargo_cap - v->cargo.Count();
+				int cap_left = v->cargo_cap;
+				if (!HasBit(v->vehicle_flags, VF_CARGO_UNLOADING)) cap_left -= v->cargo.Count();
 				if (cap_left > 0) cargo_left[v->cargo_type] -= cap_left;
 			}
 		}
@@ -1568,10 +1569,17 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 	 * If we use autorefit otoh, we only want to load/refit a vehicle if the other wagons cannot already hold the cargo,
 	 * to keep the option to still refit the vehicle when new cargo of different type shows up.
 	 */
-	if (_settings_game.order.improved_load && (front->current_order.GetLoadType() & OLFB_FULL_LOAD) && !use_autorefit) {
+	if (_settings_game.order.improved_load && (front->current_order.GetLoadType() & OLFB_FULL_LOAD)) {
 		/* Update left cargo */
 		for (Vehicle *v = front; v != NULL; v = v->Next()) {
-			int cap_left = v->cargo_cap - v->cargo.Count();
+			int cap_left = v->cargo_cap;
+			if (!HasBit(v->vehicle_flags, VF_CARGO_UNLOADING)) {
+				if (use_autorefit) {
+					continue;
+				} else {
+					cap_left -= v->cargo.Count();
+				}
+			}
 			if (cap_left > 0) cargo_left[v->cargo_type] -= cap_left;
 		}
 	}
