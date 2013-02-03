@@ -1285,11 +1285,12 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 	bool dirty_station = false;
 
 	bool completely_emptied = true;
-	bool anything_unloaded = false;
-	bool anything_loaded   = false;
+	bool anything_unloaded  = false;
+	bool anything_loaded    = false;
 	uint32 full_load_amount = 0;
-	uint32 cargo_not_full  = 0;
-	uint32 cargo_full      = 0;
+	uint32 cargo_not_full   = 0;
+	uint32 cargo_full       = 0;
+	uint32 reservation_left = 0;
 
 	front->cur_speed = 0;
 
@@ -1501,9 +1502,14 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 				if (use_autorefit) {
 					/* When using autorefit, reserve all cargo for this wagon to prevent other wagons
 					 * from feeling the need to refit. */
-					int total_cap_left = v->cargo_cap - v->cargo.Count();
+					uint total_cap_left = v->cargo_cap - v->cargo.Count();
 					cargo_left[v->cargo_type] -= total_cap_left;
 					consist_capleft[v->cargo_type] -= total_cap_left;
+					if (total_cap_left > cap && count > cap) {
+						/* Remember if there are reservations left so that we don't stop
+						 * loading before they're loaded. */
+						SetBit(reservation_left, v->cargo_type);
+					}
 				} else {
 					/* Update cargo left; but don't reserve everything yet, so other wagons
 					 * of the same consist load in parallel. */
@@ -1597,7 +1603,7 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 		}
 		/* We loaded less cargo than possible for all cargo types and it's not full
 		 * load and we're not supposed to wait any longer: stop loading. */
-		if (!anything_unloaded && full_load_amount == 0 && !(front->current_order.GetLoadType() & OLFB_FULL_LOAD) &&
+		if (!anything_unloaded && full_load_amount == 0 && reservation_left == 0 && !(front->current_order.GetLoadType() & OLFB_FULL_LOAD) &&
 				front->current_order_time >= (uint)max(front->current_order.wait_time - front->lateness_counter, 0)) {
 			SetBit(front->vehicle_flags, VF_STOP_LOADING);
 		}
