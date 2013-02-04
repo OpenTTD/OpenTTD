@@ -1417,8 +1417,11 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Sæt serviceint
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standard serviceinterval for skibe: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Sæt serviceintervallets standardværdi for nye skibe.
 STR_CONFIG_SETTING_NOSERVICE                                    :Slå service fra, når nedbrud er sat til ingen: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Når tilladt, bliver køretøjer ikke serviceret, hvis de ikke kan bryde ned
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktiver hastighedsbegrænsning for vogne: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Når tilladt, brug også fartgrænse på vogne, for at bestemme makshastigheden på tog
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Slå elektriske jernbaner fra: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Tilladelse af denne indstilling slår nødvendigheden af elektrisk jernbaner fra, for at få elektriske tog til at kører
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Ankomst af første køretøj til spillerens station: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Vis en avis når det første køretøj ankommer til en ny spillers station
