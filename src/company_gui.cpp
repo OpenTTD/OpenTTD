@@ -1987,6 +1987,7 @@ struct CompanyWindow : Window
 	{
 		this->InitNested(desc, window_number);
 		this->owner = (Owner)this->window_number;
+		this->OnInvalidateData();
 	}
 
 	virtual void OnPaint()
@@ -2052,25 +2053,6 @@ struct CompanyWindow : Window
 			if (reinit) {
 				this->ReInit();
 				return;
-			}
-		}
-
-		if (!local) {
-			if (_settings_game.economy.allow_shares) { // Shares are allowed
-				/* If all shares are owned by someone (none by nobody), disable buy button */
-				this->SetWidgetDisabledState(WID_C_BUY_SHARE, GetAmountOwnedBy(c, INVALID_OWNER) == 0 ||
-						/* Only 25% left to buy. If the company is human, disable buying it up.. TODO issues! */
-						(GetAmountOwnedBy(c, INVALID_OWNER) == 1 && !c->is_ai) ||
-						/* Spectators cannot do anything of course */
-						_local_company == COMPANY_SPECTATOR);
-
-				/* If the company doesn't own any shares, disable sell button */
-				this->SetWidgetDisabledState(WID_C_SELL_SHARE, (GetAmountOwnedBy(c, _local_company) == 0) ||
-						/* Spectators cannot do anything of course */
-						_local_company == COMPANY_SPECTATOR);
-			} else { // Shares are not allowed, disable buy/sell buttons
-				this->DisableWidget(WID_C_BUY_SHARE);
-				this->DisableWidget(WID_C_SELL_SHARE);
 			}
 		}
 
@@ -2394,6 +2376,36 @@ struct CompanyWindow : Window
 				NetworkClientRequestMove((CompanyID)this->window_number, str);
 				break;
 #endif /* ENABLE_NETWORK */
+		}
+	}
+
+
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	{
+		if (this->window_number == _local_company) return;
+
+		if (_settings_game.economy.allow_shares) { // Shares are allowed
+			const Company *c = Company::Get(this->window_number);
+
+			/* If all shares are owned by someone (none by nobody), disable buy button */
+			this->SetWidgetDisabledState(WID_C_BUY_SHARE, GetAmountOwnedBy(c, INVALID_OWNER) == 0 ||
+					/* Only 25% left to buy. If the company is human, disable buying it up.. TODO issues! */
+					(GetAmountOwnedBy(c, INVALID_OWNER) == 1 && !c->is_ai) ||
+					/* Spectators cannot do anything of course */
+					_local_company == COMPANY_SPECTATOR);
+
+			/* If the company doesn't own any shares, disable sell button */
+			this->SetWidgetDisabledState(WID_C_SELL_SHARE, (GetAmountOwnedBy(c, _local_company) == 0) ||
+					/* Spectators cannot do anything of course */
+					_local_company == COMPANY_SPECTATOR);
+		} else { // Shares are not allowed, disable buy/sell buttons
+			this->DisableWidget(WID_C_BUY_SHARE);
+			this->DisableWidget(WID_C_SELL_SHARE);
 		}
 	}
 };

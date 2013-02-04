@@ -1038,6 +1038,17 @@ static bool InvalidateCompanyInfrastructureWindow(int32 p1)
 	return true;
 }
 
+/**
+ * Invalidate the company details window after the shares setting changed.
+ * @param p1 Unused.
+ * @return Always true.
+ */
+static bool InvalidateCompanyWindow(int32 p1)
+{
+	InvalidateWindowClassesData(WC_COMPANY);
+	return true;
+}
+
 /** Checks if any settings are set to incorrect values, and sets them to correct values in that case. */
 static void ValidateSettings()
 {

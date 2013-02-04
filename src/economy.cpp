@@ -1818,7 +1818,7 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1,
 				break;
 			}
 		}
-		SetWindowDirty(WC_COMPANY, target_company);
+		InvalidateWindowData(WC_COMPANY, target_company);
 		CompanyAdminUpdate(c);
 	}
 	return cost;
@@ -1856,7 +1856,7 @@ CommandCost CmdSellShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1
 		OwnerByte *b = c->share_owners;
 		while (*b != _current_company) b++; // share owners is guaranteed to contain company
 		*b = COMPANY_SPECTATOR;
-		SetWindowDirty(WC_COMPANY, target_company);
+		InvalidateWindowData(WC_COMPANY, target_company);
 		CompanyAdminUpdate(c);
 	}
 	return CommandCost(EXPENSES_OTHER, cost);
