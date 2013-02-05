@@ -889,6 +889,7 @@ static void MakeNewGameDone()
 	/* In a dedicated server, the server does not play */
 	if (!_video_driver->HasGUI()) {
 		SetLocalCompany(COMPANY_SPECTATOR);
+		if (_settings_client.gui.pause_on_newgame) DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
 		IConsoleCmdExec("exec scripts/game_start.scr 0");
 		return;
 	}
