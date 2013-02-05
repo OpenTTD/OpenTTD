@@ -1462,18 +1462,27 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Farvede nyheder
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Året hvor nyheds-annonceringer bliver udskrevet i farver. Før dette år, bruger det sort / hvid
 STR_CONFIG_SETTING_STARTING_YEAR                                :Start dato: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Aktiver rolig økonomi (flere små ændringer): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Når slået til, ændre industriproduktion oftere, og i små trin. Denne indstilling har normalt ingen effekt, hvis industrityper er fastsat af NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillad at købe aktier i andre selskaber: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Hvis aktiveret, tillades køb og salg af selskabsaktier. Aktier vil kun være tilgængelige for selskaber der er nået en hvis alder
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procentdel af deloverskud som skal betales i hovedsystemer: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Procentdel af indkomst givet til de mellemliggende dele i hovedsystemer, giver mere kontrol over indkomst
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Når der trækkes, placer signaler hvert: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Indstil afstanden på hvilke signaler vil blive bygget på et spor op til den næste forhindring (signal, kryds), hvis signalerne trækkes
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} felt{P 0 "" er}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Når der trækkes, hold fastlagt afstand mellem signaler: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Vælg opførslen på signalplassering ved Ctrl + dragning af signaler. Hvis deaktivert, bliver signaler placeret ved tunneler eller broer for at undgå lange strækninger uden signaler. Hvis aktivert, bliver signalerne placeret for hver N rute, noget som gør justering af signaler på parallelle spor enklere
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Byg automatisk semaforer før: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Sæt året hvor elektriske signaler vil blive brugt på spor. Før dette år vil ikke-elektriske signaler blive brugt (hvilket har den fuldstændig same funktion, men anderledes udseende)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Vis signalvælgeren som standard: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Vis et vindue til at vælge signal typer at bygge, i stedet for kun vindue-løs signal-type skift med Ctrl+klik på byg-signal
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Signaltype der bygges som standard: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Standard signaltype
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Normal
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Avanceret
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Ensrettet avanceret
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Bladr gennem signaltyper: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Vælg hvilke signaltyper et vælge imellem, når der Ctrl+klikkes på byg signal med signalværktøjet
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Kun normal
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Kun avanceret
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle
@@ -1486,20 +1495,28 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Tilfældig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Byer kan bygge veje: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Tillad byer at bygge veje når de vokser. Afvis for at forbygge at byer ikke selv bygger veje
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Byer kan bygge niveaukryds: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Slå denne indstilling til for at tillade byer, at bygge niveaukryds
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Tillad byer at fastsætte støjgrænser for lufthavne: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Hvis denne indstilling er slået fra, kan der bygges to lufthavne i hver by. Hvis denne indstilling er slået til, er grænsen fastsat af støjgrænsen for den enkelte byen, hvilket afhænger af population, lufthavnstørrelse og afstand
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :At stifte byer i selve spillet: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Hvis denne indstilling er slået til er det tilladt for spillere at stifte nye byer i spillet
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Ikke tilladt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Tilladt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Tilladt, tilpasset by-layout
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Placering af træer i spillet: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Kontroler den tilfældige fremkomst af træer i løbet af spillet. Dette vil påvirke industrier der afhænger træers vækst, f.eks. savværker
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ingen {RED}(ødelægger træfabrik)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Kun i regnskove
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Alle steder
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Placering af værktøjslinje: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horisontal placering af hovedværktøjlinjen i toppen af skærmen
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Position af statusbar: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Horisontal placering af statuslinjen i bunden af skærmen
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Afstanden mellem vinduer før vinduet automatisk flyttes på linje med det nærliggende vindue
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Deaktiveret
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Vinduesbegræsning (ikke-sticky): {STRING}

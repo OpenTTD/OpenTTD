@@ -583,7 +583,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}대출:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}종합:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}작년에 수익을 낸 차량의 수를 나타냅니다. 자동차, 열차, 선박, 항공기를 포함합니다.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}현재 영업 중인 역사의 수를 나타냅니다. 기차 역, 버스 정류장, 공항 등은 같은 역으로 묶여있어도 따로 집계됩니다.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}현재 영업 중인 역사의 수를 나타냅니다. 기차역, 버스 정류장, 공항 등은 같은 역으로 묶여있어도 따로 집계됩니다.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}가장 낮은 수입을 가진 차량의 이익입니다. (2년 이상된 차량만 계산)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}지난 12분기동안 최소 이익을 달성한 차량이 번 돈의 양입니다.
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}지난 12분기동안 최대 이익을 달성한 차량이 번 돈의 양입니다.
@@ -1071,7 +1071,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :게임 설정 (
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :회사 설정 (게임 저장 파일에 저장됨; 새 게임에만 적용됨)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :회사 설정 (게임 저장 파일에 저장됨; 현재 회사에만 적용됨)
 
-STR_CONFIG_SETTING_OFF                                          :아니오
+STR_CONFIG_SETTING_OFF                                          :아니요
 STR_CONFIG_SETTING_ON                                           :예
 STR_CONFIG_SETTING_DISABLED                                     :사용 안 함
 
@@ -1090,7 +1090,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :오른쪽
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :최대 초기 대출금: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :한 회사가 최대한 빌릴 수 있는 (계좌에 인플레이션을 고려하지 않고 들어오는) 대출금의 양을 조절할 수 있습니다.
 STR_CONFIG_SETTING_INTEREST_RATE                                :대출 금리: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :대출 금리입니다. 인플레이션 옵션에 영향을 받습니다.
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :대출 금리입니다. 인플레이션 설정의 영향을 받습니다.
 STR_CONFIG_SETTING_RUNNING_COSTS                                :유지비: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :차량과 기반시설의 유지비 수준을 설정하십시오.
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :건설 속도: {STRING}
@@ -1116,21 +1116,21 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :건물, 트랙 
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :건물이나 도로/선로 등을 제거하지 않고도 하부의 지형을 편집할 수 있게 허용합니다.
 STR_CONFIG_SETTING_CATCHMENT                                    :더욱 현실적인 역세권 지정 허용: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :역과 공항의 종류에 따라 서로 다른 크기의 역세권을 지정하도록 합니다.
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :도시 소유의 도로, 다리 등의 제거를 허용: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :도시 소유의 도로, 다리 등의 제거 허용: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :도시 소유의 기반시설이나 건물을 제거할 수 있게 합니다.
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :열차의 최대 길이: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :열차의 최대 길이를 제한할 수 있습니다.
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA}칸
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :기관차 매연/전기 스파크의 양: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :차량의 매연 또는 전기 스파크의 양: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :차량에서 연기나 전기 스파크가 얼마나 많이 일어나는지 설정합니다.
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :열차 가속 모델: {STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :열차 가속 물리 모델을 선택하십시오. "오리지널" 모델은 언덕을 오를 때 무조건 속도가 감소합니다. "현실적" 모델은 열차의 길이나 기관차의 견인력 등의 구성 속성에 따라 언덕과 커브에서 속도가 감소합니다.
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :열차 가속 물리 모델을 선택하십시오. "오리지널" 모델은 언덕을 오를 때 무조건 속력이 감소합니다. "현실적" 모델은 열차의 길이나 기관차의 견인력 등의 구성 속성에 따라 언덕과 커브에서 속력이 감소합니다.
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :자동차 가속 모델: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :자동차 가속 물리 모델을 선택하십시오. "오리지널" 모델은 언덕을 오를 때 무조건 속도가 감소합니다. "현실적" 모델은 차량의 견인력 등 차량의 다양한 속성에 따라 언덕을 오를 때 속도가 감소합니다.
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :자동차 가속 물리 모델을 선택하십시오. "오리지널" 모델은 언덕을 오를 때 무조건 속력이 감소합니다. "현실적" 모델은 차량의 견인력 등 차량의 다양한 속성에 따라 언덕을 오를 때 속력이 감소합니다.
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :경사도 설정 (열차용): {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :열차에 적용시킬 경사도를 설정합니다. 값이 높을수록 열차가 언덕을 올라가는데 더 힘이 듭니다.
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :경사도 (자동차용): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :경사도 설정 (자동차용): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :자동차에 적용시킬 경사도를 설정합니다. 값이 높을수록 자동차가 언덕을 오를 때 더 힘이 듭니다.
 STR_CONFIG_SETTING_FORBID_90_DEG                                :열차/선박의 90도 회전을 금지함: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :─ 모양의 수평 선로와 │ 모양의 수직 선로가 바로 이어져 만날 때 90도 회전이 발생합니다. 이 옵션을 켜면 열차가 칸 가장자리를 통과할 때 90도로 회전할 수 있도록 허용합니다. 이 옵션은 선박의 회전 반경에도 적용됩니다.
@@ -1140,7 +1140,7 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :향상된 수�
 STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :이 옵션을 켜면 역에서 대기하는 여러 대의 차량이 순서대로 화물을 싣게 됩니다. 다음에 도착하는 차량의 화물 적재는 기존에 정차한 차량에 완벽히 적재할 수 있을 정도의 충분한 화물이 있어야 시작될 것입니다.
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :화물을 차량에 단계적으로 싣기: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :적재된 화물의 양에 따라 고정된 시간이 지나면 한 번에 모두 적재하는 대신, 차량의 적재 상황을 시간이 지남에 따라 단계별로 표시합니다.
-STR_CONFIG_SETTING_INFLATION                                    :인플레이션(화폐가치하락) 켜기: {STRING}
+STR_CONFIG_SETTING_INFLATION                                    :인플레이션(화폐 가치 하락) 사용: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :비용이 지불하는 것보다 약간 더 빠르게 성장하고 있는 경제가 되면 인플레이션을 활성화합니다.
 STR_CONFIG_SETTING_SELECTGOODS                                  :수요가 있을 때만 화물을 역에 옮겨놓음: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :역으로 수송되는 화물만 차량에 적재가 가능해집니다. 이 옵션을 켜면 역에서 수송되지 않는 화물이 낮은 수송등급을 받는 것을 막아줍니다.
@@ -1164,15 +1164,15 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :진행 방향�
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :오른쪽에
 STR_CONFIG_SETTING_SHOWFINANCES                                 :연말에 자동으로 재정 창을 띄움: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :이 옵션을 켜면 회사의 재정 상태를 확인하기 쉽도록 매년 말에 재정 창이 자동으로 뜹니다.
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :새 경로는 기본으로 직통 처리: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :새로 지정하는 경로는 기본적으로 '직통'으로 처리: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :일반적으로 차량은 경로 상에 있는 모든 역에 정차하게 되어있습니다. 이 옵션을 켜면 차량이 마지막 목적지까지 정차없이 모든 역을 통과할 것입니다. 이 옵션은 새로 경로를 지정하는 차량에만 적용되는 점을 알아두십시오. 하지만 각 차량의 경로는 두 가지 방법 중에 원하는 대로 다시 설정할 수 있습니다.
-STR_CONFIG_SETTING_STOP_LOCATION                                :새로운 열차 정지 경로는 기본적으로 플랫폼의 {STRING}에서 정지하도록 함
+STR_CONFIG_SETTING_STOP_LOCATION                                :새로 지정하는 역 정차 경로는 기본적으로 역의 {STRING}에 정지하도록 설정
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :열차가 기본적으로 정거장의 어느 위치에 정차할 것인지를 설정합니다. '가까운 쪽'은 역에 진입하는 곳과 가까운 곳에, '중간'은 역 중앙에, '먼쪽'은 진입하는 곳과 먼 곳에 정차합니다. 이 옵션은 새로 경로를 지정하는 차량에만 적용되는 점을 알아두십시오. 하지만 각 차량의 경로는 두 가지 방법 중에 원하는 대로 다시 설정할 수 있습니다.
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :가까운쪽
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :중간
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :먼쪽
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :획기적인 방법으로 자동차를 대기: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :자동차가 사용중인 차량 정거장이 빌 때까지 그 앞쪽에서 기다리도록 합니다.
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :정거장이 빌 때까지 그 앞에서 자동차를 대기시킴: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :자동차가 차량 정거장이 빌 때까지 그 앞쪽에서 기다리도록 합니다.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :가장자리에 마우스를 가져가면 화면 움직이기: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :이 옵션을 켜면, 마우스를 게임 및 외부 화면 창의 가장자리에 가까이 가져가면 화면을 이동시킵니다.
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :사용 안 함
@@ -1183,17 +1183,17 @@ STR_CONFIG_SETTING_BRIBE                                        :지역 당국�
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :회사가 지역 도시 당국에 뇌물을 주는 것을 허용합니다. 뇌물 행위가 적발되는 경우, 회사는 해당 도시에서 6개월간 아무 행동도 할 수 없습니다.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :독점 운송권 구입 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :한 회사가 어떤 도시의 독점수송권을 구매하면, 그 도시에 있는 상대편의 역에서는 그 해동안 (승객을 포함한) 그 어떠한 화물도 받을 수 없습니다.
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :도시의 건물에 투자하는 기능: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :도시 상업 건물 건설에 투자하는 행위 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :회사가 도시가 새로운 건물에 투자할 수 있도록 자금을 주는 것을 허용합니다.
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :지역 도로 재공사 투자 행위를 허용: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :지역 도로 재공사에 투자하는 행위 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :도로 기반의 수송 체계를 갖추고 있는 다른 회사를 방해하기 위해 해당 도시가 도로 재건축을 시작하도록 회사가 도시에 돈을 지불하는 행위를 허용합니다.
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :다른 회사에게 돈을 송금하는 것을 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :멀티 플레이 모드에서 회사 사이에 돈을 보내는 것을 허용합니다.
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :화물 무게가중치 (무거운 열차를 구현할 때 사용): {STRING}배
-STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :열차가 싣고 있는 화물이 열차 속도에 미치는 영향에 대해 설정합니다. 값을 높게 설정하면 화물을 수송하는데 더 큰 힘이 필요합니다. (특히 언덕을 오를 때 심해집니다)
-STR_CONFIG_SETTING_PLANE_SPEED                                  :항공기 속도 조절: {STRING}
-STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :항공 수송에 대한 수익을 제한하기 위해, 자동차/철도/선박에 대한 항공기의 속도 비율을 설정합니다.
-STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :(실제 속도) x {COMMA}분의 1
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :열차가 싣고 있는 화물이 열차 속력에 미치는 영향에 대해 설정합니다. 값을 높게 설정하면 화물을 수송하는데 더 큰 힘이 필요합니다. (특히 언덕을 오를 때 심해집니다)
+STR_CONFIG_SETTING_PLANE_SPEED                                  :항공기 속력 조절: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :항공 수송에 대한 수익을 제한하기 위해, 자동차/철도/선박의 속력에 대한 항공기의 속력 비율을 설정합니다.
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :(실제 속력) x {COMMA}분의 1
 STR_CONFIG_SETTING_PLANE_CRASHES                                :항공기 추락 빈도수: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :항공기 충돌 사고가 일어날 수 있는지 여부를 설정합니다.
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :없음
@@ -1203,9 +1203,9 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :도시 소유�
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :도시 소유의 도로 위에 버스 정류장 건설을 허용합니다.
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :경쟁자 소유의 도로 위에 버스 정류장 건설 허용: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :다른 회사 소유의 도로 위에 버스 정류장을 건설하는 것을 허용합니다.
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :역 바로 옆에 역의 건설을 허용: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :역 바로 옆에 다른 이름의 역 건설 허용: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :기존에 존재하는 역 바로 옆에 새로운 역을 붙여서 건설할 수 있도록 허용합니다.
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :여러 개의 NewGRF 엔진 세트를 허용: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :여러 개의 NewGRF 엔진 세트 허용: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :오래된 NewGRF에 대한 적합 옵션입니다. 정확히 어떤 기능을 하는지 알지 못한다면 절대 이 옵션을 끄지 마십시오!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}이미 차량이 존재하면 이 설정을 변경하실 수 없습니다.
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :기반시설 유지비: {STRING}
@@ -1240,8 +1240,8 @@ STR_CONFIG_SETTING_HOVER_DELAY                                  :도움말 보�
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :마우스를 올려놓았을 때 도움말이 뜨는데 걸리는 시간을 설정합니다. 마우스 오른쪽 클릭으로 바로 뜨도록 할 수도 있습니다.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :마우스를 {COMMA}초간 올려놓기
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :마우스 오른쪽 클릭
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :도시명 옆에 인구를 표시함: {STRING}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :도시명 옆에 도시의 인구를 표시합니다.
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :도시명 옆에 도시의 인구수를 표시함: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :도시명 옆에 도시의 인구수를 표시합니다.
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :그래프 선의 두께: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :그래프의 선 두께를 설정합니다. 얇으면 자세히 볼 수 있고, 두꺼우면 눈에 확 들어오며 색상을 분간하기가 편해집니다.
 
@@ -1270,7 +1270,7 @@ STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}지도 �
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}지도 맨 가장자리에 있는 칸 한 개 이상이 물이 아닙니다.
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :역의 최대 크기: {STRING}
-STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :역의 최대 크기를 설정합니다. 값이 높으면 게임이 느려짐을 알아두십시오.
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :역의 최대 크기를 설정합니다. 값이 높으면 게임이 느려질 수도 있습니다.
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :헬리콥터를 발착장에서 자동으로 점검: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :공항에 격납고가 없어도 헬리콥터가 공항에 착륙할 때마다 점검을 하도록 합니다.
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :철도/도로/항만/공항 건설창을 띄울 때 지형 편집창도 같이 띄움: {STRING}
@@ -1354,7 +1354,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :차량의 다�
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :열차가 경로기반 폐색으로 진입할 수 없는 문제를 해결하기 위해 열차가 진행할 경로를 별도의 색으로 표시합니다.
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :건설 도구를 사용 후 계속 유지: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :다리, 터널 등의 건설 도구를 사용 후에도 계속 열어둔 채로 놔둡니다.
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :재정 창에서 비용 그룹화: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :재정 창에서 비용을 종류별로 묶어서 표시: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :재정 창에 나타나는 회사 비용을 어떻게 표시할 지 설정합니다.
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :뉴스 자막: {STRING}
@@ -1400,9 +1400,9 @@ STR_CONFIG_SETTING_AI_PROFILE_EASY                              :쉬움
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :중간
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :어려움
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :멀티플레이에서 컴퓨터 플레이어의 참여를 허용: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :멀티플레이에서 컴퓨터 플레이어의 참여 허용: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :멀티 플레이 게임에서 인공지능 컴퓨터 플레이어가 참여하는 것을 허용합니다.
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :스크립트가 일시 중지되기 전의 #opcodes: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :게임 스크립트가 중지되기 직전에 계산할 수 있는 최대 횟수: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :게임 스크립트가 한 단계에서 계산할 수 있는 최대 계산 횟수를 설정합니다.
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :백분율에 의한 점검 주기: {STRING}
@@ -1419,8 +1419,8 @@ STR_CONFIG_SETTING_SERVINT_SHIPS                                :선박에 대�
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :선박에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
 STR_CONFIG_SETTING_NOSERVICE                                    :고장이 나지 않도록 설정되어 있으면 점검을 비활성화: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :이 옵션을 켜면 차량이 고장이 나지 않도록 설정되어 있는 경우에는 점검을 하지 않게 됩니다.
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :화물차 속도 제한 사용: {STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :이 옵션을 켜면 열차의 최대 속도를 낮추기 위해 화물칸의 속도 제한을 사용합니다.
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :화물차 속력 제한 적용: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :이 옵션을 켜면 화물차의 속력 제한값을 적용하여 열차의 최대 속력을 감소시킵니다.
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :전기 철도를 사용하지 않음: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :이 옵션을 켜면 전기 기관차가 일반 철도에서도 달릴 수 있도록 요구사항을 제거합니다.
 
@@ -1459,7 +1459,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :끄기
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :요약
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :전체
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{STRING}년부터 컬러로 된 뉴스가 나옴
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :컬러로 된 뉴스가 시작되는 해: {STRING}년
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :신문이 컬러로 나오게 되는 연도를 설정합니다. 이 연도 이전까지는 신문이 흑백으로 나옵니다.
 STR_CONFIG_SETTING_STARTING_YEAR                                :시작 연도: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :부드러운 경제(더욱 작은 변화) 옵션 사용: {STRING}
@@ -1497,7 +1497,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 칸
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :무작위
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :도시 스스로의 도로 건설 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :도시가 성장하기 위해 도로를 건설할 수 있도록 허용합니다. 도시 당국이 스스로 성장하지 못하도록 하려면 이 옵션을 끄십시오.
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :도시가 회사소유의 철도에 건널목을 만드는 것을 허용: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :도시가 회사 소유의 선로에 건널목을 만드는 것을 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :도시가 회사 소유의 철로에 건널목을 건설할 수 있도록 허용합니다.
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :도시가 공항에서 나오는 소음을 제한하도록 함: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :이 옵션을 끄면, 한 도시에는 공항을 2개까지 지을 수 있습니다. 이 옵션을 켜면, 한 도시에 지을 수 있는 공항의 수는 도시가 허용 가능한 소음 기준에 따라 달라집니다. 소음 기준은 도시 인구, 공항의 크기와 거리에 따라 다릅니다.
@@ -1507,7 +1507,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :금지
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :허용
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :허용, 도시 구조 선택 가능
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :게임도중 나무가 자동적으로 번식: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :게임 진행 중에 나무가 자동적으로 번식: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :게임 중에 나무가 자동적으로 번식하는지 여부를 조절합니다. 이 옵션은 열대 우림의 벌목소처럼 나무의 성장에 의존하는 산업 시설에 영향을 끼칠 수 있습니다.
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :자라지 않음 {RED}(제재소에 의해 벌목될 수 있음)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :열대 우림 지역에서만
@@ -1563,10 +1563,10 @@ STR_CONFIG_SETTING_SOUND                                        :{ORANGE}효과�
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}뉴스와 메시지
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}신호기
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}화물
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}컴퓨터 옵션
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}컴퓨터 플레이어
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}자동 교체
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}점검
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}경로탐색
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}경로
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}열차
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}도시
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}산업시설
@@ -1575,11 +1575,11 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :오리지널
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(추천)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :열차에 사용할 경로탐색: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :열차에 사용할 경로 탐색법: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :열차에 사용할 경로 탐색 방법을 선택합니다.
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :차량을 위한 경로탐색: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :자동차에 사용할 경로 탐색법: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :자동차에 사용할 경로 탐색 방법을 선택합니다.
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :선박에 사용할 경로탐색: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :선박에 사용할 경로 탐색법: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :선박에 사용할 경로 탐색 방법을 선택합니다.
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :신호기 앞에서 회차: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :열차가 신호기 앞에서 너무 오래 기다리면 뒤로 되돌아갈 수 있도록 허용합니다.
@@ -2451,7 +2451,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}공항 �
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}화물 인수: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
-STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}철도 속도 제한: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}선로의 제한 속력: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :암석
@@ -2892,7 +2892,7 @@ STR_GOAL_QUESTION_CAPTION_ERROR                                 :오류
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :취소
 STR_GOAL_QUESTION_BUTTON_OK                                     :{G=m}확인
-STR_GOAL_QUESTION_BUTTON_NO                                     :아니오
+STR_GOAL_QUESTION_BUTTON_NO                                     :아니요
 STR_GOAL_QUESTION_BUTTON_YES                                    :{G=f}예
 STR_GOAL_QUESTION_BUTTON_DECLINE                                :거절
 STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :수락
@@ -3176,8 +3176,8 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :새 항공기
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}가격: {GOLD}{CURRENCY_LONG}{BLACK} 중량: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}속력: {GOLD}{VELOCITY}{BLACK} 힘: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}속력: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}바다에서의 속도: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}운하/강에서의 속도: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}바다에서의 속력: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}운하/강에서의 속력: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}유지비: {GOLD}{CURRENCY_LONG}/년
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}수송량: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(개조 가능)
@@ -3309,7 +3309,7 @@ STR_ENGINE_PREVIEW_SHIP                                         :{G=m}선박
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}모노레일 기관차
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}자기부상열차
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}가격: {CURRENCY_LONG} 무게: {WEIGHT_SHORT}{}속도: {VELOCITY}  힘: {POWER}{}유지비: {CURRENCY_LONG}/년{}수송량: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}가격: {CURRENCY_LONG} 무게: {WEIGHT_SHORT}{}속력: {VELOCITY}  힘: {POWER}{}유지비: {CURRENCY_LONG}/년{}수송량: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}비용: {CURRENCY_LONG} 무게: {WEIGHT_SHORT}{}속력: {VELOCITY}  힘: {POWER}  최대 T.E.: {6:FORCE}{}유지비: {4:CURRENCY_LONG}/년{}용량: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}가격: {CURRENCY_LONG} 최고속력: {VELOCITY}{}수송량: {CARGO_LONG}, {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}가격: {CURRENCY_LONG} 최고속력: {VELOCITY}{}수송량: {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
@@ -3400,7 +3400,7 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}떠남
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}충돌!!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}고장
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}정지함
-STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY}의 속도로 정지중
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}멈추는 중, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}기관차 없음
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}빈 경로 탐색중
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}다음 목적지가 너무 멀리 있습니다.
@@ -3669,9 +3669,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}시간�
 STR_TIMETABLE_NO_TRAVEL                                         :운행정보 없음
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :이동 (자동; 다음 경로에 의해 시간표 작성)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :운행 (시간표가 작성되지 않음)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :최대 {2:VELOCITY}의 속도로 운행 (시간표 작성 안됨)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :최대 {2:VELOCITY}의 속력으로 운행 (시간표 작성 안됨)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}에 걸쳐 운행
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{0:STRING}동안 최대 {1:VELOCITY}의 속도로 운행
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{0:STRING}동안 최대 {1:VELOCITY}의 속력으로 운행
 STR_TIMETABLE_STAY_FOR                                          :& {STRING} 동안 정차
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :& 다음 목적지({STRING})로 이동
 STR_TIMETABLE_DAYS                                              :{COMMA}일
@@ -3695,10 +3695,10 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택�
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}시간값 초기화
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택한 경로의 시간 값을 초기화합니다.
 
-STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}속도 제한
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}속력 제한
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}선택한 경로의 최대 여행 속력을 제한합니다.
 
-STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}속도 제한값 초기화
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}속력 제한값 초기화
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}선택한 경로의 최대 여행 속력 제한값을 초기화합니다.
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}지연 시간 초기화
@@ -4165,7 +4165,7 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}선박�
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}항공기를 팔 수 없습니다...
 
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}이 열차는 사용 불가능합니다
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}차량은 불가능합니다
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}해당 차량을 사용할 수 없는 상태입니다.
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}선박은 불가능합니다
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}항공기는 불가능합니다
 
