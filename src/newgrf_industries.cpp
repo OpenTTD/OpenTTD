@@ -225,7 +225,9 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 		}
 
 		/* Manhattan distance of closes dry/water tile */
-		case 0x43: return GetClosestWaterDistance(this->tile, (indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) == 0);
+		case 0x43:
+			if (this->tile == INVALID_TILE) break;
+			return GetClosestWaterDistance(this->tile, (indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) == 0);
 
 		/* Layout number */
 		case 0x44: return this->industry->selected_layout;
@@ -253,15 +255,19 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 
 		/* Get random tile bits at offset param */
 		case 0x61: {
+			if (this->tile == INVALID_TILE) break;
 			TileIndex tile = GetNearbyTile(parameter, this->tile, false);
 			return this->industry->TileBelongsToIndustry(tile) ? GetIndustryRandomBits(tile) : 0;
 		}
 
 		/* Land info of nearby tiles */
-		case 0x62: return GetNearbyIndustryTileInformation(parameter, this->tile, INVALID_INDUSTRY, false, this->ro->grffile->grf_version >= 8);
+		case 0x62:
+			if (this->tile == INVALID_TILE) break;
+			return GetNearbyIndustryTileInformation(parameter, this->tile, INVALID_INDUSTRY, false, this->ro->grffile->grf_version >= 8);
 
 		/* Animation stage of nearby tiles */
 		case 0x63: {
+			if (this->tile == INVALID_TILE) break;
 			TileIndex tile = GetNearbyTile(parameter, this->tile, false);
 			if (this->industry->TileBelongsToIndustry(tile)) {
 				return GetAnimationFrame(tile);
@@ -270,11 +276,17 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 		}
 
 		/* Distance of nearest industry of given type */
-		case 0x64: return GetClosestIndustry(this->tile, MapNewGRFIndustryType(parameter, indspec->grf_prop.grffile->grfid), this->industry);
+		case 0x64:
+			if (this->tile == INVALID_TILE) break;
+			return GetClosestIndustry(this->tile, MapNewGRFIndustryType(parameter, indspec->grf_prop.grffile->grfid), this->industry);
 		/* Get town zone and Manhattan distance of closest town */
-		case 0x65: return GetTownRadiusGroup(this->industry->town, this->tile) << 16 | min(DistanceManhattan(this->tile, this->industry->town->xy), 0xFFFF);
+		case 0x65:
+			if (this->tile == INVALID_TILE) break;
+			return GetTownRadiusGroup(this->industry->town, this->tile) << 16 | min(DistanceManhattan(this->tile, this->industry->town->xy), 0xFFFF);
 		/* Get square of Euclidian distance of closes town */
-		case 0x66: return GetTownRadiusGroup(this->industry->town, this->tile) << 16 | min(DistanceSquare(this->tile, this->industry->town->xy), 0xFFFF);
+		case 0x66:
+			if (this->tile == INVALID_TILE) break;
+			return GetTownRadiusGroup(this->industry->town, this->tile) << 16 | min(DistanceSquare(this->tile, this->industry->town->xy), 0xFFFF);
 
 		/* Count of industry, distance of closest instance
 		 * 68 is the same as 67, but with a filtering on selected layout */
