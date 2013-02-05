@@ -1190,7 +1190,7 @@ bool SQVM::CallNative(SQNativeClosure *nclosure,SQInteger nargs,SQInteger stackb
 		throw;
 	}
 
-	assert(cstksize == _callsstacksize);
+	_callsstacksize = cstksize;
 
 	_nnativecalls--;
 	suspend = false;
