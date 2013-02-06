@@ -1051,7 +1051,7 @@ static void ViewportAddLandscape()
 	/* determine size of area */
 	{
 		Point pt = RemapCoords(x, y, 241);
-		width = (_vd.dpi.left + _vd.dpi.width - pt.x + 95 * ZOOM_LVL_BASE) >> (6 + ZOOM_LVL_SHIFT);
+		width = (_vd.dpi.left + _vd.dpi.width - pt.x + 96 * ZOOM_LVL_BASE - 1) >> (6 + ZOOM_LVL_SHIFT);
 		height = (_vd.dpi.top + _vd.dpi.height - pt.y) >> (5 + ZOOM_LVL_SHIFT) << 1;
 	}
 
