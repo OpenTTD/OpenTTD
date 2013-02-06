@@ -2771,6 +2771,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Įveskit
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Pasaulio kūrimas
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Žemėlapio dydis:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Pasirinkite žemėlapio dydį langeliais. Prieinamų langelių skaičius bus šiek tiek mažesnis.
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Miestų kiekis:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:

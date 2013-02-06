@@ -2412,6 +2412,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Masukkan
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Penjanaan Dunia
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Saiz peta:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Pilih saiz peta dalam petak. Nombor petak bersesuaian akan lebih kecil sedikit
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Jumlah bandar:
 STR_MAPGEN_DATE                                                 :{BLACK}Tarikh:
@@ -2597,6 +2598,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Anda ak
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Tidak boleh menambah fail: GRF ID berduplikat
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Fail berpadanan tidak dijumpai (GRF yang secocok telah dimuat)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Tidak menambah fail: File GRF baru telah mencapai had
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF secocok telah dimuat untuk menggantikan fail yang tidak dijumpai
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fail GRF yang tidak dijumpai telah dinyahaktifkan
