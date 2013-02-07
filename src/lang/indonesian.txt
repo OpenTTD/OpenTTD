@@ -32,10 +32,10 @@ STR_CARGO_PLURAL_COAL                                           :Batubara
 STR_CARGO_PLURAL_MAIL                                           :Barang Pos
 STR_CARGO_PLURAL_OIL                                            :Minyak
 STR_CARGO_PLURAL_LIVESTOCK                                      :Ternak
-STR_CARGO_PLURAL_GOODS                                          :Barang jadi
+STR_CARGO_PLURAL_GOODS                                          :Barang Jadi
 STR_CARGO_PLURAL_GRAIN                                          :Gandum
 STR_CARGO_PLURAL_WOOD                                           :Kayu
-STR_CARGO_PLURAL_IRON_ORE                                       :Bijih besi
+STR_CARGO_PLURAL_IRON_ORE                                       :Bijih Besi
 STR_CARGO_PLURAL_STEEL                                          :Baja
 STR_CARGO_PLURAL_VALUABLES                                      :Barang Berharga
 STR_CARGO_PLURAL_COPPER_ORE                                     :Bijih Tembaga
@@ -122,7 +122,7 @@ STR_QUANTITY_SWEETS                                             :{COMMA} kantong
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} kola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} arum manis
 STR_QUANTITY_BUBBLES                                            :{COMMA} gelembung
-STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} kopi toffee
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} gula-gula
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterai
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} plastik
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} minuman berdesis
@@ -132,7 +132,7 @@ STR_QUANTITY_N_A                                                :N/A
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PN
 STR_ABBREV_COAL                                                 :{TINY_FONT}BB
-STR_ABBREV_MAIL                                                 :{TINY_FONT}SR
+STR_ABBREV_MAIL                                                 :{TINY_FONT}BP
 STR_ABBREV_OIL                                                  :{TINY_FONT}MY
 STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}TR
 STR_ABBREV_GOODS                                                :{TINY_FONT}BR
@@ -155,9 +155,9 @@ STR_ABBREV_SUGAR                                                :{TINY_FONT}GL
 STR_ABBREV_TOYS                                                 :{TINY_FONT}MA
 STR_ABBREV_SWEETS                                               :{TINY_FONT}MN
 STR_ABBREV_COLA                                                 :{TINY_FONT}KL
-STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}HM
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}AM
 STR_ABBREV_BUBBLES                                              :{TINY_FONT}GL
-STR_ABBREV_TOFFEE                                               :{TINY_FONT}KT
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}GG
 STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}MB
