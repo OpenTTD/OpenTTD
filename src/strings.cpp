@@ -889,11 +889,11 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 						sub_args.SetParam(i++, (uint64)(size_t)g);
 					}
 				}
-				/* We error'd out in the while, to error out in themain too */
-				if (*str == '\0') break;
-
-				str = p;
-				buff = GetStringWithArgs(buff, (GAME_TEXT_TAB << TAB_COUNT_OFFSET) + stringid, &sub_args, last, true);
+				/* If we didn't error out, we can actually print the string. */
+				if (*str != '\0') {
+					str = p;
+					buff = GetStringWithArgs(buff, (GAME_TEXT_TAB << TAB_COUNT_OFFSET) + stringid, &sub_args, last, true);
+				}
 
 				for (int i = 0; i < 20; i++) {
 					if (sub_args_need_free[i]) free((void *)sub_args.GetParam(i));
