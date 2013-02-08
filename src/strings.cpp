@@ -1048,8 +1048,13 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				/* Strings that consume arguments */
 				StringID str = args->GetInt32(b);
 				if (game_script && GB(str, TAB_COUNT_OFFSET, TAB_COUNT_BITS) != GAME_TEXT_TAB) break;
-				StringParameters sub_args(*args, b - SCC_STRING1 + 1);
-				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index, game_script);
+				uint size = b - SCC_STRING1 + 1;
+				if (game_script && size > args->num_param - args->offset) {
+					buff = strecat(buff, "(too many parameters)", last);
+				} else {
+					StringParameters sub_args(*args, size);
+					buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index, game_script);
+				}
 				next_substr_case_index = 0;
 				break;
 			}
