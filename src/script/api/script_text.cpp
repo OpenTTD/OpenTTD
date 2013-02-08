@@ -165,25 +165,28 @@ SQInteger ScriptText::_set(HSQUIRRELVM vm)
 const char *ScriptText::GetEncodedText()
 {
 	static char buf[1024];
-	this->_GetEncodedText(buf, lastof(buf));
-	return buf;
+	int param_count = 0;
+	this->_GetEncodedText(buf, lastof(buf), param_count);
+	return (param_count > SCRIPT_TEXT_MAX_PARAMETERS) ? NULL : buf;
 }
 
-char *ScriptText::_GetEncodedText(char *p, char *lastofp)
+char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count)
 {
 	p += Utf8Encode(p, SCC_ENCODED);
 	p += seprintf(p, lastofp, "%X", this->string);
 	for (int i = 0; i < this->paramc; i++) {
 		if (this->params[i] != NULL) {
 			p += seprintf(p, lastofp, ":\"%s\"", this->params[i]);
+			param_count++;
 			continue;
 		}
 		if (this->paramt[i] != NULL) {
 			p += seprintf(p, lastofp, ":");
-			p = this->paramt[i]->_GetEncodedText(p, lastofp);
+			p = this->paramt[i]->_GetEncodedText(p, lastofp, param_count);
 			continue;
 		}
 		p += seprintf(p, lastofp,":%X", (uint32)this->parami[i]);
+		param_count++;
 	}
 
 	return p;

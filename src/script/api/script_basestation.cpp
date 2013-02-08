@@ -39,7 +39,7 @@
 	EnforcePrecondition(false, IsValidBaseStation(station_id));
 	EnforcePrecondition(false, name != NULL);
 	const char *text = name->GetEncodedText();
-	EnforcePrecondition(false, !::StrEmpty(text));
+	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_STATION_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
 	return ScriptObject::DoCommand(0, station_id, 0, ::Station::IsValidID(station_id) ? CMD_RENAME_STATION : CMD_RENAME_WAYPOINT, text);

@@ -220,7 +220,7 @@
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
 	EnforcePrecondition(false, name != NULL);
 	const char *text = name->GetEncodedText();
-	EnforcePrecondition(false, !::StrEmpty(text));
+	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_VEHICLE_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
 	return ScriptObject::DoCommand(0, vehicle_id, 0, CMD_RENAME_VEHICLE, text);

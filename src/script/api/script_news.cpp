@@ -20,12 +20,13 @@
 	CCountedPtr<Text> counter(text);
 
 	EnforcePrecondition(false, text != NULL);
-	EnforcePrecondition(false, !StrEmpty(text->GetEncodedText()));
+	const char *encoded = text->GetEncodedText();
+	EnforcePreconditionEncodedText(false, encoded);
 	EnforcePrecondition(false, type == NT_ECONOMY || type == NT_SUBSIDIES || type == NT_GENERAL);
 	EnforcePrecondition(false, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
 
 	uint8 c = company;
 	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
 
-	return ScriptObject::DoCommand(0, type | (NR_NONE << 8) | (c << 16), 0, CMD_CUSTOM_NEWS_ITEM, text->GetEncodedText());
+	return ScriptObject::DoCommand(0, type | (NR_NONE << 8) | (c << 16), 0, CMD_CUSTOM_NEWS_ITEM, encoded);
 }

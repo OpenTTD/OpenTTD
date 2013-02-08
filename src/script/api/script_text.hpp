@@ -132,9 +132,10 @@ private:
 	 *  instances, while writing in the same buffer.
 	 * @param p The current position in the buffer.
 	 * @param lastofp The last position valid in the buffer.
+	 * @param param_count The number of parameters that are in the string.
 	 * @return The new current position in the buffer.
 	 */
-	char *_GetEncodedText(char *p, char *lastofp);
+	char *_GetEncodedText(char *p, char *lastofp, int &param_count);
 
 	/**
 	 * Set a parameter, where the value is the first item on the stack.

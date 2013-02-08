@@ -30,14 +30,15 @@
 
 	EnforcePrecondition(GOAL_INVALID, ScriptObject::GetCompany() == OWNER_DEITY);
 	EnforcePrecondition(GOAL_INVALID, goal != NULL);
-	EnforcePrecondition(GOAL_INVALID, !StrEmpty(goal->GetEncodedText()));
+	const char *text = goal->GetEncodedText();
+	EnforcePreconditionEncodedText(GOAL_INVALID, text);
 	EnforcePrecondition(GOAL_INVALID, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
 	EnforcePrecondition(GOAL_INVALID, (type == GT_NONE && destination == 0) || (type == GT_TILE && ScriptMap::IsValidTile(destination)) || (type == GT_INDUSTRY && ScriptIndustry::IsValidIndustry(destination)) || (type == GT_TOWN && ScriptTown::IsValidTown(destination)) || (type == GT_COMPANY && ScriptCompany::ResolveCompanyID((ScriptCompany::CompanyID)destination) != ScriptCompany::COMPANY_INVALID));
 
 	uint8 c = company;
 	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
 
-	if (!ScriptObject::DoCommand(0, type | (c << 8), destination, CMD_CREATE_GOAL, goal->GetEncodedText(), &ScriptInstance::DoCommandReturnGoalID)) return GOAL_INVALID;
+	if (!ScriptObject::DoCommand(0, type | (c << 8), destination, CMD_CREATE_GOAL, text, &ScriptInstance::DoCommandReturnGoalID)) return GOAL_INVALID;
 
 	/* In case of test-mode, we return GoalID 0 */
 	return (ScriptGoal::GoalID)0;
@@ -57,7 +58,8 @@
 
 	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
 	EnforcePrecondition(false, question != NULL);
-	EnforcePrecondition(false, !StrEmpty(question->GetEncodedText()));
+	const char *text = question->GetEncodedText();
+	EnforcePreconditionEncodedText(false, text);
 	EnforcePrecondition(false, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
 	EnforcePrecondition(false, CountBits(buttons) >= 1 && CountBits(buttons) <= 3);
 	EnforcePrecondition(false, buttons < (1 << ::GOAL_QUESTION_BUTTON_COUNT));
@@ -66,7 +68,7 @@
 	uint8 c = company;
 	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
 
-	return ScriptObject::DoCommand(0, uniqueid | (c << 16) | (type << 24), buttons, CMD_GOAL_QUESTION, question->GetEncodedText());
+	return ScriptObject::DoCommand(0, uniqueid | (c << 16) | (type << 24), buttons, CMD_GOAL_QUESTION, text);
 }
 
 /* static */ bool ScriptGoal::CloseQuestion(uint16 uniqueid)

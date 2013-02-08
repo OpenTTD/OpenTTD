@@ -43,9 +43,11 @@
 	CCountedPtr<Text> counter(text);
 
 	EnforcePrecondition(false, text != NULL);
+	const char *encoded_text = text->GetEncodedText();
+	EnforcePreconditionEncodedText(false, encoded_text);
 	EnforcePrecondition(false, IsValidTown(town_id));
 
-	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id, 0, CMD_TOWN_SET_TEXT, text->GetEncodedText());
+	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id, 0, CMD_TOWN_SET_TEXT, encoded_text);
 }
 
 /* static */ int32 ScriptTown::GetPopulation(TownID town_id)

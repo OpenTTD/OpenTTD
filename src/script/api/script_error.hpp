@@ -39,6 +39,21 @@
 	}
 
 /**
+ * Helper to write precondition enforcers for the script API in an abbreviated manner for encoded texts.
+ * @param returnval The value to return on failure.
+ * @param string The string that is checked.
+ */
+#define EnforcePreconditionEncodedText(returnval, string)   \
+	if ((string) == NULL) { \
+		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_TOO_MANY_PARAMETERS); \
+		return returnval; \
+	} \
+	if (StrEmpty(string)) { \
+		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_FAILED); \
+		return returnval; \
+	}
+
+/**
  * Class that handles all error related functions.
  * @api ai game
  */
@@ -81,6 +96,8 @@ public:
 		ERR_PRECONDITION_FAILED,                      // []
 		/** A string supplied was too long */
 		ERR_PRECONDITION_STRING_TOO_LONG,             // []
+		/** A string had too many parameters */
+		ERR_PRECONDITION_TOO_MANY_PARAMETERS,         // []
 		/** The company you use is invalid */
 		ERR_PRECONDITION_INVALID_COMPANY,             // []
 		/** An error returned by a NewGRF. No possibility to get the exact error in an script readable format */
