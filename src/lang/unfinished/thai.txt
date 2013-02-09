@@ -1036,7 +1036,13 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}ไม�
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}ปรับแต่งเพิ่มเติม
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}เลือกรูปแบบการตั้งค่า
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :การตั้งค่าทั้งหมด
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :ตั้งค่าผู้ใช้งาน (ไม่เก็บในเซฟ มีผลกับทุกเกม)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :ตั้งค่าเกี่ยวกับเกม(เก็บในเซฟ มีผลเมื่อเริ่มเกมใหม่)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :ตั้งค่าเกี่ยวกับเกม(เก็บในเซฟ มีผลเฉพาะเกมปัจจุบัน)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :ตั้งค่าบริษัท (เก็บในเซฟ มีผลเมื่อเริ่มเกมใหม่)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :ตั้งค่าเกี่ยวกับบริษัท(เก็บในเซฟ มีผลแค่บริษัทปัจจุบัน)
 
 STR_CONFIG_SETTING_OFF                                          :ปิด
 STR_CONFIG_SETTING_ON                                           :เปิด
@@ -1187,12 +1193,22 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :แสดงร
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :ให้คงการแสดงเครื่องมือการสร้างหลังการใช้: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :จัดกลุ่มรายจ่ายในหน้าต่างการเงินของบริษัท: {STRING}
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :ข่าวสาร : {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :เล่นเสียงเมื่อมีข่าวย่อ
+STR_CONFIG_SETTING_SOUND_NEWS                                   :หนังสือพิมพ์ : {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :เล่นเสียงเมื่อแสดงหน้าหนังสือพิมพ์
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :สิ้นปี : {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :เล่นเสียงเมื่อแสดงรายงานผลประกอบการสิ้นปี
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :การก่อสร้าง : {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :เล่นเสียงเมื่อการก่อสร้างเสร็จหรือการกระทำอื่นๆ
 STR_CONFIG_SETTING_SOUND_CLICK                                  :ปุ่มคลิก: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :เสียงเตือนเมื่อคลิกปุ่ม
 STR_CONFIG_SETTING_SOUND_DISASTER                               :ภัยพิบัติ/อุบัติเหตุ: {STRING}
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :เล่นเสียงประกอบของอุบัติเหตุและภัยพิบัติ
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :ยานพาหนะ: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :เล่นเสียงประกอบของยานพาหนะ
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :สิ่งแวดล้อม :{STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :เปิดเสียงของสิ่งแวดล้อมต่างๆ เช่น เมือง โรงงาน
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :ปิดการใช้งานในส่วนของสิ่งปลูกสร้างสาธารณูปโภคเมื่อไม่มียานพาหนะที่เหมาะสม: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :ขบวนรถไฟมากที่สุดต่อผู้เล่น: {STRING}
@@ -1215,20 +1231,35 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :เปิดใ
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :ไม่ยอมให้มีรางไฟฟ้า: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :เมื่อมียานยนต์แรกมาถึงสถานีของผู้เล่น: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :แสดงข่าวเมื่อมีพาหนะมาถึงสถานีของบริษัทเรา
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :เมื่อมียานยนต์แรกมาถึงสถานีของคู่แข่ง: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :แสดงข่าวเมื่อมีพาหนะถึงที่สถานีของศัตรู
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :อุบัติเหตุ / อุบัติภัย: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :แสดงข่าวเกี่ยวกับภัยพิบัติและอุบัติเหตุ
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :ข้อมูลข่าวสารของบริษัท: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :แสดงข่าวเมื่อมีบริษัทเปิดใหม่หรือบริษัทใกล้ล้มละลาย
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :การเปิดตัวของอุตสาหกรรม: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :แสดงข่าวเกี่ยวกับโรงงานเปิดใหม่
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :การปิดตัวของอุตสาหกรรม: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :แสดงข่าวเกี่ยวกับโรงงานที่ปิดตัว
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :การเปลี่ยนแปลงทางเศรษฐกิจ: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :แสดงข่าวเกี่ยวกับการเปลี่ยนแปลงทางเศรษฐศาสตร์ของโลก
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :ผลผลิตที่ส่งออกให้บริษัทของเรา: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :แสดงข่าวเกี่ยวกับผลผลิตที่เปลี่ยนไปของโรงงานต่างๆที่บริษัทเราขนส่งสินค้าอยู่
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :ผลผลิตที่ส่งออกให้บริษัทคู่แข่ง: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :แสดงข่าวเกี่ยวกับผลผลิตที่เปลี่ยนไปของโรงงานต่างๆที่คู่แข่งขนส่งสินค้าอยู่
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :อุตสาหกรรมอื่นๆต้องการแลกเปลี่ยนสินค้า: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :แสดงข่าวเกี่ยวกับการผลิตที่เปลี่ยนไปของโรงงานต่างๆที่ยังไม่มีผู้ขนส่งสินค้า
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :คำแนะนำ / ข้อมูลเกี่ยวกับยานยนต์ของบริษัท: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :แสดงข้อความเมื่อยานพาหนะเกิดเหตุฉุกเฉิน
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :ยานยนต์ใหม่ๆ: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :แสดงหนังสือพิมพ์เมื่อมียานพาหนะรุ่นใหม่
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :การเปลี่ยนแปลงการรับสินค้า: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :แสดงข้อความเกี่ยวกับการรับสินค้าของสถานี
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :โครงการที่มีงบประมาณสนับสนุน: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :แสดงข่าวเกี่ยวกับเงินสมทบ
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :ข้อมูลทั่วไป: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :แสดงหนังสือพิมพ์เกี่ยวกับเหตุการณ์ทั่วไป เช่นการซื้อสิทธิพิเศษหรือการปรับปรุงถนน
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :ปิด
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :แสดงข้อความในแถบเลื่อน
@@ -1296,6 +1327,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}เศ�
 STR_CONFIG_SETTING_AI                                           :{ORANGE}คู่แข่ง
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}ตัวเลือกการแสดงผล
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}การโต้ตอบ
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}เสียงเอฟเฟกต์
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE} ข่าวสารและข้อความ
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}อานัติสัญญาณ
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}การจัดการบรรทุก
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}ผู้เล่นคอมพิวเตอร์
@@ -2262,6 +2295,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}ป้�
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}สร้างโลก
 STR_MAPGEN_MAPSIZE                                              :{BLACK}ขนาดแผนที่:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}เลือกขนาดของแผนที่(ตาราง) จำนวนของตารางที่สามารถมองเห็นจะมีจำนวนน้อยกว่าเล็กน้อย
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}จำนวนเมือง
 STR_MAPGEN_DATE                                                 :{BLACK}วันที่:
@@ -2326,6 +2360,7 @@ STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ถ�
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}คำเตือน!
 
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}ไม่สามารถเพิ่ม NewGRF เนื่องจากมี NewGRF มากเกินไป
 
 
 # NewGRF status
@@ -2935,6 +2970,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :รถบรร
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :รถบรรทุกเหล็กกล้ารุ่นเคลลิ่ง
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :รถหุ้มเกราะรุ่นบัลล๊อก
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :รถหุ้มเกราะรุ่นยูเอชแอล
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover Toy Van
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught Toy Van
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow Toy Van
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover Sweet Truck
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught Sweet Truck
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow Sweet Truck

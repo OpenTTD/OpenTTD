@@ -2419,6 +2419,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vi ŝan
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Dosiero ne aldoneblas: duobla GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ne troviĝis apartena dosiero (ŝarĝis taŭgan GRF)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Ne eblas aldoni dosieron: NewGRF-a dosierlimo atingita
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Taŭga(j) GRF(oj) ŝarĝiĝis por mankaj dosieroj
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manka(j) GRF-dosiero(j) malŝaltiĝis

@@ -3116,7 +3116,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Απαι
 ############ range for requires ends
 
 ############ range for produces starts
-STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Εμπόρευμα σε αναμονή:
+STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Εμπόρευματα σε αναμονή:
 STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO_LONG}{STRING}{BLACK}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Παράγει: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Παράγει: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
@@ -3201,7 +3201,7 @@ STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Λειτ
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Χωρητικότητα: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(μετατρέψιμο)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Έτος σχεδίασης: {GOLD}{NUM}{BLACK} Χρόνος ζωής: {GOLD}{COMMA} χρόν{P ο ια}
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Μεγ. Αξιοπιστία: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Μέγ. Αξιοπιστία: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Κόστος: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Βάρος: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Κόστος: {GOLD}{CURRENCY_LONG}{BLACK} Ταχύτητα: {GOLD}{VELOCITY}
@@ -3209,8 +3209,8 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Χωρη
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ενισχυμένα Βαγόνια: {GOLD}+{POWER}{BLACK} Βάρος: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Μετατρέψιμο σε: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Όλοι οι τύποι εμπορεύματος
-STR_PURCHASE_INFO_ALL_BUT                                       :Όλα εκτός από {CARGO_LIST}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Μεγ. Δύναμη Έλξης: {GOLD}{FORCE}
+STR_PURCHASE_INFO_ALL_BUT                                       :Όλοι εκτός από {CARGO_LIST}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Μέγ. Δύναμη Έλξης: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Εύρος: {GOLD}{COMMA} πεδία
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Λίστα επιλεγμένων βαγονιών τρένων - κάντε κλικ σε ένα βαγόνι για πληροφορίες
@@ -3276,7 +3276,7 @@ STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Αυτό
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Αυτόματη αντικατάσταση όλων των πλοίων στο ναυπηγείο
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Αυτόματη αντικατάσταση όλων των αεροσκαφών του υποστέγου
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Νέα τρένα-βαγόνια
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Νέα Τρένα/Βαγόνια
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Νέα Οχήματα
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Νέα Πλοία
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Νέα Αεροσκάφη
