@@ -323,7 +323,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	/** Sort content by name. */
 	static int CDECL NameSorter(const ContentInfo * const *a, const ContentInfo * const *b)
 	{
-		return strnatcmp((*a)->name, (*b)->name); // Sort by name (natural sorting).
+		return strnatcmp((*a)->name, (*b)->name, true); // Sort by name (natural sorting).
 	}
 
 	/** Sort content by type. */

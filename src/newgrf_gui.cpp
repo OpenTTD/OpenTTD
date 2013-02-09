@@ -1368,7 +1368,7 @@ private:
 	/** Sort grfs by name. */
 	static int CDECL NameSorter(const GRFConfig * const *a, const GRFConfig * const *b)
 	{
-		int i = strnatcmp((*a)->GetName(), (*b)->GetName()); // Sort by name (natural sorting).
+		int i = strnatcmp((*a)->GetName(), (*b)->GetName(), true); // Sort by name (natural sorting).
 		if (i != 0) return i;
 
 		i = (*a)->version - (*b)->version;

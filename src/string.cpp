@@ -597,14 +597,33 @@ char *strcasestr(const char *haystack, const char *needle)
 #endif /* DEFINE_STRCASESTR */
 
 /**
+ * Skip some of the 'garbage' in the string that we don't want to use
+ * to sort on. This way the alphabetical sorting will work better as
+ * we would be actually using those characters instead of some other
+ * characters such as spaces and tildes at the begin of the name.
+ * @param str The string to skip the initial garbage of.
+ * @return The string with the garbage skipped.
+ */
+static const char *SkipGarbage(const char *str)
+{
+	while (*str != '\0' && (*str < 'A' || IsInsideMM(*str, '[', '`' + 1) || IsInsideMM(*str, '{', '~' + 1))) str++;
+	return str;
+}
+
+/**
  * Compares two strings using case insensitive natural sort.
  *
  * @param s1 First string to compare.
  * @param s2 Second string to compare.
+ * @param ignore_garbage_at_front Skip punctuation characters in the front
  * @return Less than zero if s1 < s2, zero if s1 == s2, greater than zero if s1 > s2.
  */
-int strnatcmp(const char *s1, const char *s2)
+int strnatcmp(const char *s1, const char *s2, bool ignore_garbage_at_front)
 {
+	if (ignore_garbage_at_front) {
+		s1 = SkipGarbage(s1);
+		s2 = SkipGarbage(s2);
+	}
 #ifdef WITH_ICU
 	if (_current_collator != NULL) {
 		UErrorCode status = U_ZERO_ERROR;
