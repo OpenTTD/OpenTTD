@@ -17,6 +17,11 @@
 
 /**
  * Class that handles some goal related functions.
+ *
+ * Goals are saved and loaded. Upon bankruptcy or company takeover, all company
+ * specific goals are removed for that company. You can also remove individual
+ * goals using #Remove.
+ *
  * @api game
  */
 class ScriptGoal : public ScriptObject {

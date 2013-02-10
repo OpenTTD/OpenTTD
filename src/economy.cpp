@@ -45,6 +45,7 @@
 #include "water.h"
 #include "game/game.hpp"
 #include "cargomonitor.h"
+#include "goal_base.h"
 
 #include "table/strings.h"
 #include "table/pricebase.h"
@@ -507,6 +508,15 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	FOR_ALL_SIGNS(si) {
 		if (si->owner == old_owner) si->owner = new_owner == INVALID_OWNER ? OWNER_NONE : new_owner;
 	}
+
+	/* Remove Game Script created Goals and CargoMonitors. */
+	Goal *g;
+	FOR_ALL_GOALS(g) {
+		if (g->company == old_owner) delete g;
+	}
+
+	ClearCargoPickupMonitoring(old_owner);
+	ClearCargoDeliveryMonitoring(old_owner);
 
 	/* Change colour of existing windows */
 	if (new_owner != INVALID_OWNER) ChangeWindowOwner(old_owner, new_owner);

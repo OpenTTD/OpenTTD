@@ -37,7 +37,8 @@
  * The latter get added at the moment the cargo is delivered. This prevents users from getting credit for
  * picking up cargo without delivering it.
  *
- * The active monitors are saved and loaded. You can reset to the empty state with #StopAllMonitoring.
+ * The active monitors are saved and loaded. Upon bankruptcy or company takeover, the cargo monitors are
+ * automatically stopped for that company. You can reset to the empty state with #StopAllMonitoring.
  *
  * @api game
  */

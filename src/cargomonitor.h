@@ -139,8 +139,8 @@ static inline TownID DecodeMonitorTown(CargoMonitorID num)
 	return GB(num, CCB_TOWN_IND_NUMBER_START, CCB_TOWN_IND_NUMBER_LENGTH);
 }
 
-void ClearCargoPickupMonitoring();
-void ClearCargoDeliveryMonitoring();
+void ClearCargoPickupMonitoring(CompanyID company = INVALID_OWNER);
+void ClearCargoDeliveryMonitoring(CompanyID company = INVALID_OWNER);
 uint32 GetDeliveryAmount(CargoMonitorID monitor, bool keep_monitoring);
 uint32 GetPickupAmount(CargoMonitorID monitor, bool keep_monitoring);
 void AddCargoDelivery(CargoID cargo_type, CompanyID company, uint32 amount, SourceType src_type, SourceID src, const Station *st);

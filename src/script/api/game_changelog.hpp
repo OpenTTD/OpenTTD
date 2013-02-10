@@ -31,6 +31,9 @@
  * \li GSController::Break
  * \li GSIndustryType::BuildIndustry, GSIndustryType::CanBuildIndustry, GSIndustryType::ProspectIndustry and GSIndustryType::CanProspectIndustry when outside GSCompanyMode scope
  *
+ * Other changes:
+ * \li Company specific goals are now removed when a company goes bankrupt or is taken over.
+ *
  * \b 1.2.3
  *
  * No changes

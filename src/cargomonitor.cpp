@@ -16,16 +16,48 @@
 CargoMonitorMap _cargo_pickups;    ///< Map of monitored pick-ups   to the amount since last query/activation.
 CargoMonitorMap _cargo_deliveries; ///< Map of monitored deliveries to the amount since last query/activation.
 
-/** Clear all pick-up cargo monitors. */
-void ClearCargoPickupMonitoring()
+/**
+ * Helper method for ClearCargoPickupMonitoring and ClearCargoDeliveryMonitoring.
+ * Clears all monitors that belong to the specified company or all if INVALID_OWNER
+ * is specified as company.
+ * @param cargo_monitor_map reference to the cargo monitor map to operate on.
+ * @param company company to clear cargo monitors for or INVALID_OWNER if all cargo monitors should be cleared.
+ */
+static void ClearCargoMonitoring(CargoMonitorMap &cargo_monitor_map, CompanyID company = INVALID_OWNER)
 {
-	_cargo_pickups.clear();
+	if (company == INVALID_OWNER) {
+		cargo_monitor_map.clear();
+		return;
+	}
+
+	CargoMonitorMap::iterator next;
+	for (CargoMonitorMap::iterator it = cargo_monitor_map.begin(); it != cargo_monitor_map.end(); it = next) {
+		next = it;
+		next++;
+		if (DecodeMonitorCompany(it->first) == company) {
+			cargo_monitor_map.erase(it);
+		}
+	}
 }
 
-/** Clear all delivery cargo monitors. */
-void ClearCargoDeliveryMonitoring()
+/**
+ * Clear all pick-up cargo monitors.
+ * @param company clear all pick-up monitors for this company or if INVALID_OWNER
+ * is passed, all pick-up monitors are cleared regardless of company.
+ */
+void ClearCargoPickupMonitoring(CompanyID company)
 {
-	_cargo_deliveries.clear();
+	ClearCargoMonitoring(_cargo_pickups, company);
+}
+
+/**
+ * Clear all delivery cargo monitors.
+ * @param company clear all delivery monitors for this company or if INVALID_OWNER
+ * is passed, all delivery monitors are cleared regardless of company.
+ */
+void ClearCargoDeliveryMonitoring(CompanyID company)
+{
+	ClearCargoMonitoring(_cargo_deliveries, company);
 }
 
 /**
