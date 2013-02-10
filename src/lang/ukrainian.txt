@@ -535,7 +535,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Заснува�
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Будівництво залізниці
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Будівництво електрифікованої залізниці
-STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Будівництво монорельсової залізниці
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Будівництво монорейкової залізниці
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Будівництво магнітної залізниці
 ############ range ends here
 
@@ -978,7 +978,7 @@ STR_GAME_OPTIONS_CURRENCY_BEF                                   :Бельгій�
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Швейцарський франк (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Чеська крона (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Німецька марка (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Датська крона (DKK)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Данська крона (DKK)
 STR_GAME_OPTIONS_CURRENCY_ESP                                   :Іспанська песета (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Фінська марка (FIM)
 STR_GAME_OPTIONS_CURRENCY_FRF                                   :Французький франк (FRF)
@@ -986,7 +986,7 @@ STR_GAME_OPTIONS_CURRENCY_GRD                                   :Грецька 
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Угорський форинт (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Ісландська крона (ISK)
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Італійська ліра (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Голландський гульден (NLG)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Нідерландський гульден (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Норвезька крона (NOK)
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Польський злотий (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Румунський лей (RON)
@@ -1028,7 +1028,7 @@ STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Англійс�
 STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Латиноамериканські
 STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Кумедні
 STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Шведські
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Голландські
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Нідерландські
 STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Фінські
 STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Польські
 STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Словацькі
@@ -1038,7 +1038,7 @@ STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Австрій�
 STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Румунські
 STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Чеські
 STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Швейцарські
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Датські
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Данські
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Турецькі
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Італійські
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Каталонські
@@ -1824,15 +1824,15 @@ STR_LIVERY_DEFAULT                                              :Стандар�
 STR_LIVERY_STEAM                                                :Паровоз
 STR_LIVERY_DIESEL                                               :Тепловоз
 STR_LIVERY_ELECTRIC                                             :Електровоз
-STR_LIVERY_MONORAIL                                             :Монорельсовий локомотив
+STR_LIVERY_MONORAIL                                             :Монорейковий локомотив
 STR_LIVERY_MAGLEV                                               :Магнітний локомотив
 STR_LIVERY_DMU                                                  :Багатосекційний тепловоз
 STR_LIVERY_EMU                                                  :Багатосекційний електровоз
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Пасажирський вагон (паровоз)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пасажирський вагон (тепловоз)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Пасажирський вагон (електровоз)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Пасажирський вагон (монорельс)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Пасажирський вагон (магніторельс)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Пасажирський вагон (монорейка)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Пасажирський вагон (маглев)
 STR_LIVERY_FREIGHT_WAGON                                        :Вантажний вагон
 STR_LIVERY_BUS                                                  :Автобус
 STR_LIVERY_TRUCK                                                :Вантажівка
@@ -1991,8 +1991,8 @@ STR_NETWORK_LANG_BRAZILIAN                                      :Бразиль�
 STR_NETWORK_LANG_BULGARIAN                                      :Болгарська
 STR_NETWORK_LANG_CHINESE                                        :Китайська
 STR_NETWORK_LANG_CZECH                                          :Чеська
-STR_NETWORK_LANG_DANISH                                         :Датська
-STR_NETWORK_LANG_DUTCH                                          :Голландська
+STR_NETWORK_LANG_DANISH                                         :Данська
+STR_NETWORK_LANG_DUTCH                                          :Нідерландська
 STR_NETWORK_LANG_ESPERANTO                                      :Есперанто
 STR_NETWORK_LANG_FINNISH                                        :Фінська
 STR_NETWORK_LANG_HUNGARIAN                                      :Угорська
@@ -3430,7 +3430,7 @@ STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :локомот�
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автомобіль
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :літак
 STR_ENGINE_PREVIEW_SHIP                                         :корабель
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :монорельсовий локомотив
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :монорейковий локомотив
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :магнітний локомотив
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Ціна: {CURRENCY_LONG} Вага: {WEIGHT_SHORT}{}Швидкість: {VELOCITY}{}Потужність: {POWER}{}Вартість експлуатації: {CURRENCY_LONG}/рік{}Місткість: {CARGO_LONG}
@@ -3469,7 +3469,7 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Вибе
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Показує, яким потягом буде замінено потяг, вибраний ліворуч
 STR_REPLACE_RAIL_VEHICLES                                       :Неелектрифіковані поїзди
 STR_REPLACE_ELRAIL_VEHICLES                                     :Електрифіковані поїзди
-STR_REPLACE_MONORAIL_VEHICLES                                   :Монорельсові поїзди
+STR_REPLACE_MONORAIL_VEHICLES                                   :Монорейкові поїзди
 STR_REPLACE_MAGLEV_VEHICLES                                     :Магнітні поїзди
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Ліквідація зайвих вагонів: {ORANGE}{STRING}
@@ -4220,7 +4220,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Міст
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Початок та кінець мають бути на одній лінії
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... обидва кінці мосту мають бути на землі
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... міст надто довгий
-STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Мост закінчиться поза картою
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Міст закінчиться поза картою
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Неможливо збудувати тунель...
@@ -4495,33 +4495,33 @@ STR_SV_STNAME_FALLBACK                                          :{STRING}, ст�
 
 ##id 0x8000
 # Vehicle names
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (паровий)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (дизельний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (паровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (тепловоз)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut (дизельний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut (дизельний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (паровий)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (паровий)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (паровий)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (паровий)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (дизельний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (дизельний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (дизельний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (дизельний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (дизельний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (дизельний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (дизельний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (дизельний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (дизельний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (дизельний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (дизельний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (дизельний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (електричний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (електричний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (електричний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (електричний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut (тепловоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut (тепловоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (паровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (паровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (паровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (паровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (тепловоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (тепловоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (тепловоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (тепловоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (тепловоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (тепловоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (тепловоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (тепловоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (тепловоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (тепловоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (тепловоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (тепловоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (електровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (електровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (електровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (електровоз)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Пасажирський вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Поштовий вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Вагон для вугілля
@@ -4549,8 +4549,8 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Вагон для батарейок
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Вагон для газованої води
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Вагон для пластиліну
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (електричний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (електричний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (електровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (електровоз)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Пасажирський вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Поштовий вагон
@@ -4579,10 +4579,10 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Вагон для батарейок
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Вагон для газованої води
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Вагон для пластиліну
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (електричний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (електричний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (електричний)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (електричний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (електровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (електровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (електровоз)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (електровоз)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Пасажирський вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Поштовий вагон

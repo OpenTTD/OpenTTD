@@ -1149,25 +1149,46 @@ STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Köprü inşas�
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimum tünel uzunluğu: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Tünel inşa etmek için maksimum uzunluk
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Üretim fabrikalarının yapım yöntemi: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Birincil bir endüstriye fon sağlamanın yolu. ‘yok’un anlamı herhangi bir endüstriye fon sağlama imkanı yok demektir. ‘araştırma’nın anlamı fon sağlama mümkün, ancak inşası harita üzerinde herhangi bir yerde olacak ve başarısız olma ihtimali de var. ‘diğer endüstriler gibi’nin anlamı birincil endüstriler işleyen diğer endüstriler gibi şirketler tarafından istenilen yerde kurulabilir
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Hiçbiri
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Diğer endüstriler gibi
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Maden arama
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Endüstriler etrafında düz arazi: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Bir endüstrinin etrafındaki diz arazi miktarı. Bu endüstri etrafında yol v.b. şeylerin yapılmasını sağlar
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Bir şehirde birden fazla aynı fabrika olması izinli: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalde bir şehir her türde birden fazla endüstri istemez. Bu ayarlama ile aynı kasabada aynı türden birçok endüstriye izin verilir
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Sinyalleri göster: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Yolun hangi tarafına sinyallerin yerleştirileceğini seçin
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Solda
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Sürücü tarafında
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Sağda
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Sene sonunda ekonomik durumu göster: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Etkinleştirilirse her yılın sonunda şirketin mali durumunu gözlemlemek için mali tablo kendiliğinden belirir
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Yeni emirler için 'durmaksızın' varsayılır: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalde bir araç geçtiği tüm istasyonlarda durur. Bu ayarın etkinleştirilmesi ile araçlar son duraklarına kadarki istasyonlardan durmaksızın geçerler. Not: bu ayarlama yalnızca yeni emirler için önceden belirlenmiş bir değeri tarif eder. Tek başına verilen emirler yine ayrıca belirlenebilir
 STR_CONFIG_SETTING_STOP_LOCATION                                :Yeni tren emirleri için varsayılan durma yeri platformun {STRING} kısmıdır
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Bir trenin platformun neresinde duracağını ayarlayın. ‘Yakın uç’ giriş noktasına yakın demektir, ‘orta’ platformun ortasını ifade eder, ‘uzak uç’ giriş noktasından uzak olan ucu ifade eder. Not: bu ayarlama yalnızca yeni emirler için önceden belirlenmiş bir değeri tarif eder. Tek başına verilen emirler yine ayrıca belirlenebilir
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :yakın uç
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :orta
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :uzak uç
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Karayolu taşıtları kuyruğa girsin (içiçe geçerek): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Kara taşıtlarını meşgul olan duraklar boşalana kadar önlerinde bekleyecek şekilde ayarlayın
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Fare kenardayken pencere etkin: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Etkinleştirilirse mouse pencerenin kenarına yaklaştığında görüş alanı kaymaya başlayacaktır
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Kapalı
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Asıl görüş alanı, sadece tam ekran
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Ana görüş alanı
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Tüm görünümler
 STR_CONFIG_SETTING_BRIBE                                        :Belediye rüşveti izinli: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Şirketlerin yerel yönetime rüşvet vermeyi denemelerine izin ver. Şayet rüşvet girişimi bir gözlemci tarafından fark edilirse şirket o bölgede altı ay eylemde bulunamaz
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Şehrin ulaşım haklarını satın alma izinli: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Şayet bir şirket bir kasaba için ayrıcalıklı ulaştırma haklarını satın alırsa rakiplerinin istasyonları bir yıl boyunca kargo (yolcu ve yük) almayacaktır
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Binaları finanse etmeye izin ver: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Şirketlerin yeni binalar yapılması için kasabalara para aktarmalarına izin ver
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Yerel yol tamiratlarına izin ver: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Şirketlerin kara yolu hizmetlerini sabote etmek için kasabaya yol tamiri yardımı yapmasına izin ver
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Diğer şirketlere para gönderme izinli: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Çok oyunculu oyunlarda şirketler arası para transferine izin ver
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Ağır yük trenleri için ağırlık çarpanı: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Uçak kazası sayısı: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Hiç

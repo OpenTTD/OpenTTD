@@ -1805,7 +1805,7 @@ STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}최근�
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}최근에 플레이한 서버를 선택하려면 클릭하세요
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}게임 정보
-STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}접속현황: 접속자 {WHITE}{COMMA} / {COMMA}명 - 회사 {COMMA} / {COMMA}개
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}접속현황: {WHITE}{COMMA} / {COMMA}명 - 회사 {COMMA} / {COMMA}개
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}언어: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}기후: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}지도 크기: {WHITE}{COMMA}x{COMMA}
