@@ -26,6 +26,8 @@ enum class VehicleFlag : uint8_t {
 	PathfinderLost = 7, ///< Vehicle's pathfinder is lost.
 	ServiceIntervalIsCustom = 8, ///< Service interval is custom.
 	ServiceIntervalIsPercent = 9, ///< Service interval is percent.
+	DrivingBackwards = 10, ///< Vehicle is driving backwards.
+
 };
 using VehicleFlags = EnumBitSet<VehicleFlag, uint16_t>;
 
