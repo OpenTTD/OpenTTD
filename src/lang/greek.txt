@@ -3319,8 +3319,8 @@ STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Κάντ
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Πρόκειται να πουλήσετε όλα τα οχήματα στο αμαξοστάσιο. Είσαστε σίγουροι;
 
 # Engine preview window
-STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Μήνυμα από τον κατασκευαστή οχημάτων
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Μόλις ολοκληρώσαμε την σχεδίαση {G ενός μιας ενός} {G νέου νέας νέου} {STRING.geniki} - θα ενδιαφερόσασταν για ενός έτους αποκλειστικής χρήσης αυτού του οχήματος, για να δούμε την απόδοση του πριν το κάνουμε ευρέως διαθέσιμο;
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Μήνυμα από κατασκευαστή οχημάτων
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Μόλις ολοκληρώσαμε την σχεδίαση {G ενός μίας ενός} {G νέου νέας νέου} {STRING.geniki} - θα ενδιαφερόσασταν για ενός έτους αποκλειστικής χρήσης αυτού του οχήματος, για να δούμε την απόδοση του πριν το κάνουμε ευρέως διαθέσιμο;
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}ατμομηχανή
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.geniki                   :{G=f}ατμομηχανής
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}οχήματος δρόμου
@@ -3334,12 +3334,12 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.geniki                   :{G=f}μηχαν
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}μηχανής maglev
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.geniki                     :{G=f}μηχανής maglev
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Κόστος: {CURRENCY_LONG} Βάρος: {WEIGHT_SHORT}{}Ταχύτητα: {VELOCITY}  Ιπποδύναμη: {POWER}{}Κόστος Λειτουργίας: {CURRENCY_LONG}/έτος{}Χωρητικότητα: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Κόστος: {CURRENCY_LONG} Βάρος: {WEIGHT_SHORT}{}Ταχύτητα: {VELOCITY}  Ιπποδύναμη: {POWER}  Μεγ. Ε.Δ: {6:FORCE}{}Λειτουργικό Κόστος: {4:CURRENCY_LONG}/έτος{}Χωρητικότητα: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Κόστος: {CURRENCY_LONG} Βάρος: {WEIGHT_SHORT}{}Ταχύτητα: {VELOCITY}  Δύναμη Κινητήρα: {POWER}{}Κόστος Λειτουργίας: {CURRENCY_LONG}/έτος{}Χωρητικότητα: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Κόστος: {CURRENCY_LONG} Βάρος: {WEIGHT_SHORT}{}Ταχύτητα: {VELOCITY}  Δύναμη Κινητήρα: {POWER}  Μεγ. Ε.Δ: {6:FORCE}{}Λειτουργικό Κόστος: {4:CURRENCY_LONG}/έτος{}Χωρητικότητα: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Κόστος: {CURRENCY_LONG} Μέγ. Ταχύτητα: {VELOCITY}{}Χωρητικότητα: {CARGO_LONG}, {CARGO_LONG}{}Κόστος Λειτουργίας: {CURRENCY_LONG}/έτος
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Κόστος: {CURRENCY_LONG} Μέγ. Ταχύτητα: {VELOCITY}{}Χωρητικότητα: {CARGO_LONG}{}Κόστος Λειτουργίας: {CURRENCY_LONG}/έτος
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Κόστος: {CURRENCY_LONG} Μέγ. Ταχύτητα: {VELOCITY} Εμβέλεια: {COMMA} τετραγωνίδια{}Χωρητικότητα: {CARGO_LONG}, {CARGO_LONG}{}Κόστος λειτουργίας: {CURRENCY_LONG}/έτος
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Κόστος: {CURRENCY_LONG} Μέγ. Ταχύτητα: {VELOCITY} Εμβέλεια: {COMMA} τετραγωνίδια{}Χωρητικότητα: {CARGO_LONG}{}Κόστος λειτουργίας: {CURRENCY_LONG}/έτος
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Κόστος: {CURRENCY_LONG} Μέγ. Ταχύτητα: {VELOCITY} Εμβέλεια: {COMMA} τετραγωνίδια{}Χωρητικότητα: {CARGO_LONG}, {CARGO_LONG}{}Κόστος Λειτουργίας: {CURRENCY_LONG}/έτος
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Κόστος: {CURRENCY_LONG} Μέγ. Ταχύτητα: {VELOCITY} Εμβέλεια: {COMMA} τετραγωνίδια{}Χωρητικότητα: {CARGO_LONG}{}Κόστος Λειτουργίας: {CURRENCY_LONG}/έτος
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Αντικατάσταση {STRING} - {STRING}
@@ -3348,18 +3348,18 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Όχημα Δρ
 STR_REPLACE_VEHICLE_SHIP                                        :Πλοίο
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Αεροσκάφος
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Επιλέξτε το τύπο μηχανής για αντικατάσταση
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Επιλέξτε τον τύπο μηχανής για αντικατάσταση
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Επιλέξτε τον νέο τύπο μηχανής που θέλετε να χρησιμοποιηθεί στην θέση του επιλεγμένου τύπου μηχανής στα αριστερά
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Εκκίνηση Αντικατάστασης Οχημάτων
 STR_REPLACE_VEHICLES_NOW                                        :Αντικατάσταση όλων των οχημάτων τώρα
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Αντικατάσταση μόνο παλιών οχημάτων
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Πατήστε για να ξεκινήσει η αντικατάσταση του αριστερά επιλεγμένου τύπου μηχανής με τον δεξιά επιλεγμένο τύπο μηχανής
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Πατήστε για να ξεκινήσει η αντικατάσταση του αριστερά επιλεγμένου τύπου μηχανής με τον τύπο μηχανής επιλεγμένο δεξιά
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Δεν γίνεται αντικατάσταση
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Δεν έχει επιλεχτεί όχημα
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} όταν είναι παλιό
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Διακοπή Αντικατάστασης Οχημάτων
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Πατήστε για να σταματήσει η αντικατάσταση του επιλεγμένου τύπου μηχανής στα αριστερά
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Πατήστε για να σταματήσει η αντικατάσταση του τύπου μηχανής επιλεγμένος στα αριστερά
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Αντικατάσταση: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Εναλλαγή μεταξύ των παραθύρων αντικατάστασης μηχανών και βαγονιών
@@ -3374,13 +3374,13 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Οχήματα 
 STR_REPLACE_MAGLEV_VEHICLES                                     :Βαγόνια Maglev
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Αφαίρεση βαγονιού: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Υποχρεώνει την αυτόματη αντικατάσταση να διατηρεί σταθερό το μήκος του τραίνου αφαιρώντας βαγόνια (ξεκινώντας από μπροστά), όταν η αντικατάσταση της μηχανής κάνει το τρένο μεγαλύτερο.
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Υποχρεώνει την αυτόματη αντικατάσταση να διατηρεί σταθερό το μήκος του τρένου αφαιρώντας βαγόνια (ξεκινώντας από μπροστά), όταν η αντικατάσταση της μηχανής κάνει το τρένο μεγαλύτερο
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Κεντράρισμα της κύριας προβολής στην τοποθεσία του τρένου. Με Ctrl+Κλικ ακολουθεί το τρένο στην κύρια προβολή
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Κεντράρισμα της κύριας προβολής στην τοποθεσία του οχήματος δρόμου. Με Ctrl+Κλικ για να ακολουθήσει το όχημα στην κύρια προβολή
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Κεντράρισμα της κύριας προβολής στην τοποθεσία του οχήματος δρόμου. Με Ctrl+Κλικ ακολουθεί το όχημα στην κύρια προβολή
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Κεντράρισμα της κύριας προβολής στη τοποθεσία του πλοίου. Με Ctrl+Κλικ ακολουθεί το πλοίο στην κύρια προβολή
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Κεντράρισμα της κύριας προβολής στην τοποθεσία του αεροσκάφους. Με Ctrl+Κλικ ακολουθεί το αεροσκάφος στην κύρια προβολή
 
@@ -3397,15 +3397,15 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Αυτό
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Αναγκάστε το τρένο να προχωρήσει χωρίς να περιμένει το σηματοδότη να το επιτρέψει
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Μετατροπή του τρένου για μεταφορά διαφορετικού φορτίου
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Μετατροπή οχήματος για να γίνει μεταφορά ενός διαφορετικού τύπου εμπορεύματος
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Μετατροπή του πλοίου για να γίνει μεταφορά ενός διαφορετικού τύπου εμπορεύματος
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Μετατροπή του αεροσκάφους για να γίνει μεταφορά ενός διαφορετικού τύπου εμπορεύματος
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Μετατροπή οχήματος για να μεταφέρει διαφορετικό τύπο εμπορεύματος
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Μετατροπή του πλοίου για να μεταφέρει διαφορετικό τύπο εμπορεύματος
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Μετατροπή του αεροσκάφους για μεταφέρει διαφορετικό τύπο εμπορεύματος
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Αναστροφή κατεύθυνσης τρένου
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Εξανάγκαση του οχήματος να γυρίσει ανάποδα
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Εμφάνιση των εντολών του τρένου. Με Ctrl+Κλικ εμφανίζεται το δρομολόγιο
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Εμφάνιση των εντολών του οχήματος δρόμου. Με Ctrl+Κλικ εμφανίζεται το δρομολόγιο
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Εμφάνιση των εντολών του τρένου. Με Ctrl+Κλικ εμφανίζεται το δρομολόγιο του τρένου
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Εμφάνιση των εντολών του οχήματος. Με Ctrl+Κλικ εμφανίζεται το δρομολόγιο
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Εμφάνιση των εντολών του πλοίου. Με Ctrl+Κλικ εμφανίζεται το χρονοδιάγραμμα
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Εμφάνιση των εντολών του αεροσκάφους. Με Ctrl+Κλικ εμφανίζεται το χρονοδιάγραμμα
 
@@ -3421,7 +3421,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Τρέχ
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Φόρτωση / Ξεφόρτωση
-STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Αναχώρηση
+STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Αναχωρεί
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Κατεστραμμένο!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Χαλασμένο
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Σταματημένο
@@ -3458,8 +3458,8 @@ STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} χ
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Μέγ. ταχύτητα: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Μέγ. ταχύτητα: {LTBLUE}{VELOCITY} {BLACK}Εμβέλεια: {LTBLUE}{COMMA} τετραγωνίδια
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Βάρος: {LTBLUE}{WEIGHT_SHORT} {BLACK}Ιπποδύναμη: {LTBLUE}{POWER}{BLACK} Μέγ. Ταχύτητα: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Βάρος: {LTBLUE}{WEIGHT_SHORT} {BLACK}Ιπποδύναμη: {LTBLUE}{POWER}{BLACK} Μέγ. Ταχύτητα: {LTBLUE}{VELOCITY} {BLACK}Μέγ. Ε.Δ: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Βάρος: {LTBLUE}{WEIGHT_SHORT} {BLACK}Δύναμη Κινητήρα: {LTBLUE}{POWER}{BLACK} Μέγ. Ταχύτητα: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Βάρος: {LTBLUE}{WEIGHT_SHORT} {BLACK}Δύναμη Κινητήρα: {LTBLUE}{POWER}{BLACK} Μέγ. Ταχύτητα: {LTBLUE}{VELOCITY} {BLACK}Μέγ. Ε.Δ: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Κέρδη αυτό το έτος: {LTBLUE}{CURRENCY_LONG} (προηγούμενου έτους: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Αξιοπιστία: {LTBLUE}{COMMA}%  {BLACK}Βλάβες μετά από την τελευταία επισκευή: {LTBLUE}{COMMA}
@@ -3474,8 +3474,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Έσοδ
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Διάστημα επισκευών: {LTBLUE}{COMMA}μέρες{BLACK}   Τελευταία επισκευή: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Διάστημα επισκευών: {LTBLUE}{COMMA}%{BLACK}   Τελευταία επισκευή: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Αύξηση διαστημάτων επισκευών κατά 10. Ctrl+κλικ αυξάνει τα διαστήματα επισκευών κατα 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Μείωση διαστημάτων επισκευών κατά 10. Ctrl+κλικ μειώνει τα διαστήματα επισκευών κατά 5
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Αύξηση διαστημάτων επισκευών κατά 10. Με Ctrl+Κλικ αυξάνονται τα διαστήματα επισκευών κατά 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Μείωση διαστημάτων επισκευών κατά 10. Με Ctrl+Κλικ μειώνεται τα διαστήματα επισκευών κατά 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Όνομα τρένου
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Όνομα οχήματος δρόμου
@@ -3491,13 +3491,13 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARG
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Άδειο
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} από σταθμό {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} από σταθμό {STATION} (x{NUM})
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} από τον σταθμό {STATION}
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} από τον σταθμό {STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Φορτίο
-STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Παρουσίαση λεπτομερίων μεταφερώμενων εμπορευμάτων
+STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Παρουσίαση λεπτομερειών μεταφερόμενων εμπορευμάτων
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Πληροφορίες
-STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Εμφάνιση των λεπτομερίων των βαγονιών
+STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Εμφάνιση των λεπτομερειών των βαγονιών
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Χωρητικότητες
 STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Εμφάνιση της χωρητικότητας κάθε βαγονιού
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Συνολικό Φορτίο
@@ -3508,31 +3508,33 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Χωρη
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Μετατροπή)
 STR_REFIT_TITLE                                                 :{GOLD}Επιλέξτε τύπο εμπορεύματος για μεταφορά:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Νεα χωρητικότητα: {GOLD}{CARGO_LONG}{}{BLACK}Κόστος μετατροπής: {RED}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Νεα χωρητικότητα: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Κόστος μετατροπής: {RED}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Επιλέγει το όχημα για μετατροπή. Σύροντας με το ποντίκι επιτρέπει επιλογή πολλαπλών οχημάτων. Κάνοντας κλικ σε άδειο χώρο θα επιλέξει όλο το όχημα. Ctrl+κλικ θα γίνει επιλογή του οχήματος και την επόμενης αλυσίδας
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Νέα χωρητικότητα: {GOLD}{CARGO_LONG}{}{BLACK}Κόστος μετατροπής: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Νέα χωρητικότητα: {GOLD}{CARGO_LONG}{}{BLACK}Κέρδος από τη μετατροπή: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Νέα χωρητικότητα: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Κόστος μετατροπής: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Νέα χωρητικότητα: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Κέρδος από τη μετατροπή: {GREEN}{CURRENCY_LONG}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Επιλέξτε τα οχήματα για μετατροπή. Σύροντας με το ποντίκι επιτρέπει επιλογή πολλαπλών οχημάτων. Κάνοντας κλικ σε άδειο χώρο θα επιλέξει ολόκληρο το όχημα. Με Ctrl+Κλικ θα γίνει επιλογή του οχήματος και της επόμενης αλυσίδας
 
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Επιλογή τύπου φορτίου για να μεταφέρει το τρένο
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Επιλέξτε το τύπο εμπορεύματος που το όχημα δρόμου θα μεταφέρει
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Επιλέξτε το τύπο εμπορεύματος που το πλοίο θα μεταφέρει
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Επιλέξτε το τύπο εμπορεύματος που θα μεταφέρει το αεροσκάφος
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Επιλέξτε τον τύπο εμπορεύματος που θα μεταφέρει το τρένο
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Επιλέξτε τον τύπο εμπορεύματος που θα μεταφέρει το όχημα
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Επιλέξτε τον τύπο εμπορεύματος που θα μεταφέρει το πλοίο
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Επιλέξτε τον τύπο εμπορεύματος που θα μεταφέρει το αεροσκάφος
 
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Μετατροπή τρένου
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Μετατροπή οχήματος δρόμου
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Μετατροπή οχήματος
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Μετατροπή πλοίου
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Μετατροπή αεροσκάφους
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Μετατροπή του τρένου ώστε να μεταφέρει το επιλεγμένο φορτίο
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Μετατροπή οχήματος δρόμου για να γίνει μεταφορά του επιλεγμένου τύπου εμπορεύματος
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Μετατροπή του πλοίου για να γίνει μεταφορά του επιλεγμένου τύπου εμπορεύματος
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Μετατροπή του αεροσκάφους για να μεταφέρει τον επιλεγμένο τύπο εμπορεύματος
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Μετατροπή του τρένου ώστε να μεταφέρει τον επιλεγμένο τύπο εμπορεύματος
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Μετατροπή του οχήματος ώστε να μεταφέρει τον επιλεγμένο τύπο εμπορεύματος
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Μετατροπή του πλοίου ώστε να μεταφέρει τον επιλεγμένο τύπο εμπορεύματος
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Μετατροπή του αεροσκάφους ώστε να μεταφέρει τον επιλεγμένο τύπο εμπορεύματος
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Εντολές)
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Δρομολόγια
-STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Αλλαγή στην προβολή δρομολογίων
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Αλλαγή σε προβολή δρομολογίων
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Λίστα εντολών - κλικ σε μια εντολή για να την επιλέξετε. Το Ctrl+Κλικ μετακινεί στον προορισμό της οδηγίας
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Λίστα εντολών - κάντε κλικ σε μια εντολή για να την επιλέξετε. Με Ctrl+Κλικ γίνεται μετακίνηση στον προορισμό της οδηγίας
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
@@ -3542,35 +3544,35 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Τέλος 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Χωρίς στάση
 STR_ORDER_GO_TO                                                 :Πήγαινε στο
-STR_ORDER_GO_NON_STOP_TO                                        :Πήγαινε χωρίς στάση στο
+STR_ORDER_GO_NON_STOP_TO                                        :Πήγαινε χωρίς στάσεις στο
 STR_ORDER_GO_VIA                                                :Πήγαινε μέσω
-STR_ORDER_GO_NON_STOP_VIA                                       :Πήγαινε χωρίς στάση μέσω
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Αλλάξε τη συμπεριφορά στάσης για την τονισμένη εντολή
+STR_ORDER_GO_NON_STOP_VIA                                       :Πήγαινε χωρίς στάσεις μέσω
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Αλλάξτε τη συμπεριφορά στάσης για την επιλεγμένη εντολή
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Πλήρης φορτωση οποιουδήποτε εμπορεύματος
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Φορτώση εαν υπάρχει διαθεσίμο
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Πλήρης φόρτωση οποιουδήποτε εμπορεύματος
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Φόρτωση εάν υπάρχουν διαθέσιμα
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Πλήρης φόρτωση όλων των εμπορευμάτων
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Πλήρης φόρτωση οποιουδήποτε εμπορεύματος
 STR_ORDER_DROP_NO_LOADING                                       :Δίχως φόρτωση
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Αλλάξε τη συμπεριφορά φόρτωσης για την τονισμένη εντολή
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Αλλάξτε τη συμπεριφορά φόρτωσης για την επιλεγμένη εντολή
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Ξεφόρτωμα όλων
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Ξεφόρτωμα έαν είναι αποδεκτό
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Ξεφόρτωμα εάν είναι αποδεκτά
 STR_ORDER_DROP_UNLOAD                                           :Ξεφόρτωμα όλων
 STR_ORDER_DROP_TRANSFER                                         :Μεταφορά
 STR_ORDER_DROP_NO_UNLOADING                                     :Δίχως ξεφόρτωση
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Αλλάξε τη συμπεριφορά ξεφόρτωσης για την τονισμένη εντολή
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Αλλάξτε τη συμπεριφορά ξεφόρτωσης για την επιλεγμένη εντολή
 
 STR_ORDER_REFIT                                                 :{BLACK}Μετατροπή
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Επιλέξτε τι τύπο εμπορεύματος για τη μετατροπή σε αυτή την εντολή. Ctrl+κλικ για να αφαιρέσετε την εντολή μετατροπής
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Αυτόματη-ανακατασκευή
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Επιλογή του τύπου φορτίου για αυτόματη μετατροπή σε αυτήν την εντολή. Πατήστε Ctrl+κλικ για να αφαιρέσετε την οδηγία μετατροπής. Η αυτόματη μετατροπή θα γίνεται μόνο όταν το επιτρέπει το όχημα
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Επιλέξτε τον τύπο εμπορεύματος για μετατροπή σε αυτήν την εντολή. Με Ctrl+Κλικ αφαιρείται η εντολή μετατροπής
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Αυτόματη μετατροπή
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Επιλογή του τύπου φορτίου για αυτόματη μετατροπή σε αυτήν την εντολή. Με Ctrl+Κλικ αφαιρείται η εντολή μετατροπής. Η αυτόματη μετατροπή θα γίνεται μόνο όταν το επιτρέπει το όχημα
 STR_ORDER_DROP_REFIT_AUTO                                       :Προκαθορισμένο φορτίο
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Διαθέσιμο φορτίο
 
 STR_ORDER_SERVICE                                               :{BLACK}Επισκευή
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Πάντα πήγαινε
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Επισκευή έαν χρειάζεται
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Επισκευή εάν χρειάζεται
 STR_ORDER_DROP_HALT_DEPOT                                       :Στάση
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Παράλειψη αυτής της εντολής εκτός αν χρειάζεται επισκευή
 

@@ -2283,18 +2283,18 @@ STR_STATION_CLASS_WAYP                                          :Smerove body
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Výber návestidla
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Štandardný signál (návestidlo){}Signály sú nutné preto aby nedochádzalo ku zrážke vlakov na trati kde jazdí viac ako 1 vlak
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Vstupný signál (návestidlo){}Svieti nazeleno dovtedy, kým v nasledujúcom úseku trate je aspoň 1 zelený výstupný signál. Inak je červený.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Výstupný signál (návestidlo){}Chová sa rovnako ako smerový signál, ale je nevyhnutný pre správne fungovanie vstupných a kombinovaných pre-signálov
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinovaný signál (návestidlo){}Slúži súčasne ako vstupný a výstupný signál zároveň, čím je možné postaviť "reťazové" pre-signály.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Vstupný signál (semafór){}Zelená svieti dovtedy, kým v nasledujúcom úseku trate je aspoň 1 zelený výstupný signál. Inak ukazuje červenú.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Výstupný signál (semafór){}Chová sa rovnako ako štandardný signál, ale je nevyhnutné nastaviť správnu farbu pre vstupné a kombinované pre-signály
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinovaný signál (semafór){}Slúži zároveň ako vstupný aj výstupný signál, Tým umožnuje postaviť "stromovú" hierarchiu signálov.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Smerový signál (návestidlo){}Smerový signál umožní vstúpiť viacerým vlakom na trať z oboch strán, iba ak vlak dokáže bezpečne zastaviť pred návestidlom. Smerový signál môže byť na jednej koľaji proti sebe.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Jednosmerný signál (návestidlo){}Jednosmerný signál umožňuje vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže bezpečne zastaviť pred návestidlom. Jednosmerné signály nemôžu byť na jednej koľaji proti sebe
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Štandardný signál (elektrický){}Základný typ signálu, dovolí len 1 vlak v jednom bloku v rovnakom čase
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Vstupný signál (elektrický){}Zelený, ak je 1 alebo viac zelených výstupných signálov na nasledujúcom úseku, inak svieti červený
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Výstupný signál (elektrický){}Funguje rovnako ako štandardný signál, avšak je nevyhnutný pre určenie správnej farby na vstupných a kombinovaných signáloch
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinovaný signál (elektrický){}Funguje jednoducho ako vstupný a výstupný signál zároveň, čo umožňuje budovať "stromové" štruktúry.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Vstupný signál (elektrický){}Zelená tak dlho, kým je aspoň 1 zelený výstupný signál na nasledujúcom úseku trate. Inak ukazuje červenú
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Výstupný signál (elektrický){}Funguje rovnako ako štandardný signál, je však nevyhnutné určenie správnej farby na vstupných a kombinovaných signáloch
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinovaný signál (elektrický){}Funguje zároveň ako vstupný aj výstupný signál, Tým umožňuje budovať veľké "stromové" hierarchie signálov
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Obojstranné signály (elektrické){}Obojstranné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Obojstranné signály môžu byť postavené vedľa seba zadnou stranou
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednosmerné signály (elektrické){}Jednosmerné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Jednosmerné signály nemôžu byť postavené vedľa zadnou stranou
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konverzia signálu{}Po vybratí, kliknutie na existujúci signál zmení na vybraný typ a variant, CTRL+klik prepne existujúci variant. Shift+klik zobrazí odhad nákladov
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zmena signálu{}Po vybratí, kliknutím na existujúci signál dochádza k zmene na vybraný typ signálu a varianty, Ctrl+klik prepne existujúcu variantu. Shift+klik zobrazí odhad nákladov na zmenu
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Hustota signálov pri stavbe ťahaním
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Znižit hustotu signálov
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Zvýšit hustotu signálov
@@ -2421,7 +2421,7 @@ STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vybrať 
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Nahodne stromy
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Umiestniť náhodné stromy. Shift prepína nakúp a zobrazenie ceny bez nákupu
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Nahodné stromy
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Zasadit nahodne stromy
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Zasadiť stromy náhodne po celej krajine
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generovanie uzemia
@@ -2644,6 +2644,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Zadajte 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Vytvorenie krajiny
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Veľkosť mapy:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Vybranie veľkosti mapy v štvorcoch. Počet dostupných štvorcov bude o trochu nižší.
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Počet miest:
 STR_MAPGEN_DATE                                                 :{BLACK}Rok:
@@ -2830,6 +2831,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Chystá
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nie je možné pridať súbor: duplicitné GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Príslušný súbor nenájdený (použitý kompatibilný GRF)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Nie je možné pridať súbor. Bol dosiahnutý limit pre NewGRF súbory.
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilné súbory GRF použité namiesto chýbajúcich
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chýbajúce súbory GRF boli vypnuté

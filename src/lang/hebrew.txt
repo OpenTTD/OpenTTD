@@ -466,6 +466,9 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :צילום מס
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :ברירת מחדל של תקריב צילום מסך
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :צילום מסך ענק
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'{NBSP}אודות
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :מיישר ספרייטים
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :הדלק/כבה הצגת תיבות גבול של ספרייטים
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :הפעל/כבה צביעת בלוקים לא מעודכנים
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1412,6 +1415,7 @@ STR_CONFIG_SETTING_AI_PROFILE_HARD                              :קשה
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{STRING} :אפשר שחקני מחשב במשחק רשת
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :אפשר לשחקני מחשב להשתתף במשחקים מרובי משתתפים
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#אופקודים המופעלים לפני סקריפטים מושהים: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :מספר מירבי של צעדי חישוב אשר סקריפט יכול לבצע במהלך תור אחד
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{STRING} :הצג מרווחי טיפול באחוזים
@@ -2586,6 +2590,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}הכנס
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}יצור עולם
 STR_MAPGEN_MAPSIZE                                              :{BLACK}:גודל המפה
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}בחר את גודל המפה במשבצות. מספר המשבצות הזמינות תהיה קצת קטנה יותר.
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK} :מספר העיירות
 STR_MAPGEN_DATE                                                 :{BLACK} :תאריך
@@ -2723,8 +2728,20 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :סוג מסיל
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}משתנה NewGRF פרמטר 60+x (הקסה-דצימלי)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}מיישר ספרייט {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}הספרייט הבא
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}עבור לספרייט הבא, כאשר נדלג על כל הספרייטים המיוחדים ולבסוף נחזור לתחילת הרשימה
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}דלג לספרייט
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}עבור לספרייט הנתון. אם הוא אינו ספרייט רגיל, עבור לספרייט הרגיל הראשון שבא אחריו
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}הספרייט הקודם
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}עבור לספרייט הקודם, כאשר נדלג על כל הספרייטים המיוחדים ונחזור בסוף לתחילת הרשימה
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}הייצוג של הספרייט הנבחר. בעת ציור הספרייט, נתעלם מהיישור שלו
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}הזז את הספרייט, תוך שינוי מיקום על צירי ה-X וה-Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X היסט: {NUM}, Y היסט: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}בחר ספרייט
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}בחר ספרייט מנקודה כלשהיא במסך
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}עבור לספרייט
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2742,7 +2759,13 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} דו
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :קובץ השדרוג הגראפי אותו יועד לתרגם
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :יותר מידי קבצי שדרוג גראפי פתוחים בן זמנית
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Loading {1:STRING} as static NewGRF with {STRING} could cause desyncs.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :ספרייט לא מצופה (ספרייט {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :מאפיין Action 0 לא ידוע {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :ניסיון שימוש ב-ID לא תקין (ספרייט {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contains a corrupt sprite. All corrupt sprites will be shown as a red question mark (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :מכיל מספר רשומות Action 8 (ספרייט {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :קראת אחר סוף הפסאודו-ספרייט (ספרייט {3:NUM})
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}בערכת גרפיקה הבסיסית חסרים מספר ספרייטים.{}אנא עדכן את הערכה הגרפית הבסיסית
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} נהפך ללא זמין ע"י {2:STRING}
 
 # NewGRF related 'general' warnings
@@ -2751,6 +2774,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}הנך 
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Can't add file: duplicate GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}הקובץ לא נמצא, הוטען קובץ תואם
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}לא ניתן להוסיף את הקובץ: מספר קבצי שדרוג גראפי מקסימאלי
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}קבצים תואמים נטענו במקום קבצים חסרים
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}שדרוגים גראפים אחדים לא נמצאו ולפיכך נוטרלו
