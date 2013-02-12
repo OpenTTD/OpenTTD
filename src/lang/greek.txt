@@ -3593,7 +3593,7 @@ STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :δεν είνα
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :είναι μικρότερο από
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :είναι μικρότερο ή ίσο από
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :είναι περισσότερο από
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :είναι περισσότερο ή ισο από
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :είναι περισσότερο από ή ισο με
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :είναι αληθές
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :είναι ψευδές
 
@@ -3601,34 +3601,34 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Η τι�
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Δώστε τίμη για να συγκριθεί
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Παράκαμψη
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Παρακάμπτει την τρέχουσα εντολή και ξεκινά την επόμενη. Ctrl+ κλικ παρακάπτει την επιλέγμενη εντολή
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Παρακάμπτει την τρέχουσα εντολή και ξεκινά την επόμενη. Με Ctrl+Κλικ παρακάμπτεται η επιλεγμένη εντολή
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Διαγραφή
-STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Διαγράφη της επιλεγμένης εντολής
+STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Διαγραφή της επιλεγμένης εντολής
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Διαγραφή όλων των εντολών
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Διακοπή μοιράσματος
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Διακοπή μοιράσματος της λίστας εντολών. Ctrl+κλικ διαγράφει επιπλέον όλες τις εντολές από αυτό το όχημα
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Διακοπή μοιράσματος της λίστας εντολών. Με Ctrl+Κλικ διαγράφει επιπλέον όλες τις εντολές από αυτό το όχημα
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Πήγαινε Στο
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Πήγαινε στο κοντινότερο αμαξοστάσιο
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Πήγαινε στο κοντινότερο υπόστεγο
 STR_ORDER_CONDITIONAL                                           :Εκτέλεση εντόλης υπο προυπόθεση
 STR_ORDER_SHARE                                                 :Μοίρασμα εντολών
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Εισάγετε μια νέα εντολή πριν την επιλεγμένη ή προσθέστε στο τέλος της λίστας. Με Ctrl οι εντολές σταθμού γίνονται 'πληρής φόρτωση οποιουδήποτε εμπορεύματος', οι εντολές καθοδήγησης 'χωρίς στάση' και οι εντολές αμαξοστασίου 'επισκευή'. Με 'Ίδιες εντολές' ή με Ctrl το όχημα θα έχει τις ίδιες εντολές με το επιλεγμένο. Πατώντας πάνω σε κάποιο όχημα αντιγράφονται οι εντολές από αυτό. Μια εντολή για αμαξοστάσιο απενεργοποιεί την αυτόματη επισκευή του οχήματος
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Εισάγετε μια νέα εντολή πριν την επιλεγμένη ή προσθέστε στο τέλος της λίστας. Με Ctrl οι εντολές σταθμού γίνονται «πλήρης φόρτωση οποιουδήποτε εμπορεύματος», οι εντολές καθοδήγησης «χωρίς στάση» και οι εντολές αμαξοστασίου «επισκευή». Με «ίδιες εντολές» ή με Ctrl το όχημα θα έχει τις ίδιες εντολές με το επιλεγμένο. Πατώντας πάνω σε κάποιο όχημα αντιγράφονται οι εντολές από αυτό. Μια εντολή για αμαξοστάσιο απενεργοποιεί την αυτόματη επισκευή του οχήματος
 
-STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Εμφάνιση όλων των οχήματων που μοιράζονται αυτό το δρομολόγιο
+STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Εμφάνιση όλων των οχημάτων που μοιράζονται αυτό το δρομολόγιο
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Πήγαινε μέσω {WAYPOINT}
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Πήγαινε χωρίς στάση μέσω {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Επισκευή στο
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Επισκευή χωρις στάση στο
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Επισκευή χωρίς στάση στο
 
 STR_ORDER_NEAREST_DEPOT                                         :το κοντινότερο
 STR_ORDER_NEAREST_HANGAR                                        :το κοντινότερο Υπόστεγο
-STR_ORDER_TRAIN_DEPOT                                           :Αμαξοστάσιο τρένων
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Αμαξοστάσιο οχημάτων
+STR_ORDER_TRAIN_DEPOT                                           :Αμαξοστάσιο Τρένων
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Αμαξοστάσιο Οχημάτων
 STR_ORDER_SHIP_DEPOT                                            :Ναυπηγείο Πλοίων
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}

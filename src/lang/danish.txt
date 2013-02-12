@@ -1516,15 +1516,18 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :Placering af v�
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horisontal placering af hovedværktøjlinjen i toppen af skærmen
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Position af statusbar: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Horisontal placering af statuslinjen i bunden af skærmen
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :vinduers fastgørelses radius: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Afstanden mellem vinduer før vinduet automatisk flyttes på linje med det nærliggende vindue
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Deaktiveret
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Vinduesbegræsning (ikke-sticky): {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Antal ikke klæbende vinduer åbnet før gamle vinduer automatisk bliver lukket for at gøre plads til nye vinduer
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :deaktiveret
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maksimalt zoom-in niveau: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximalt zoom-in niveau for skærmbilledet. Højere zoom niveau vil øge hukommelseskravet
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maksimalt zoom-ud niveau: {STRING}
-STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Det maksimale udzoomnings niveau for visningsområder. Højere udzoomnings niveauer kan forsage forsinkelser i programmet ved brug
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Det maksimale udzoomnings niveau for skærmbilledet. Højere udzoomnings niveauer kan forsage forsinkelser i programmet ved brug
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal

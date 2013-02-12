@@ -1116,9 +1116,9 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tonnel 
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximum lengte vir die bou van tonnels
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manual primêre nywerheid konstruksie metode: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metode van befondsing van 'n primêre bedryf."Niks" beteken dit nie moontlik is om enige bedryf te finansier, "prospekteer" beteken befondsing is moontlik, maar konstruksie vind plaas in 'n toevallige plek op die kaart en dit kan ook misluk, "ander nywerhede" beteken rou bedrywe kan opgerig word deur ander maatskappye soos verwerking nywerhede.
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :geen
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :as ander nywerhede
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vooruitsigting
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Geen
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :As ander nywerhede
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Vooruitsigting
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Plat area rondom nywerhede: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Hoeveelheid van plat ruimte om 'n bedryf. Dit verseker dat leë ruimte beskikbaar sal bly, om 'n bedryf, vir die bou van spore, ensovoorts
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Laat meer as een soortgelyke nywerhede per dorp toe: {STRING}
@@ -1140,7 +1140,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ver einde
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Pad voertuig toustaan (met kwantum effekte): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Maak 'n pad voertuig wag by besette padstoppe totdat hulle leeg is
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Rol skerm as muis by die kant is: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :gedeaktiveer
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Gedeaktiveer
 STR_CONFIG_SETTING_BRIBE                                        :Laat omkooping van die plaaslike raad toe: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Laat maatskappye die plaaslike dorpsraad probeer omkoop. Indien 'n inspekteur die omkoopgeld opgemerk, sal die maatskappy nie in staat wees om in die dorp te werk vir ses maande.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Laat die koop van eksklusief vervoer regte toe: {STRING}
@@ -1158,9 +1158,9 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Stel die relati
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Aantal vliegtuig botsings: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Stel die kans van 'n vliegtuig ongeluk om te gebeur
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :geen
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :verminderd
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normaal
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Geen
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Verminderd
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normaal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Laat deur-ry padhalte op dorp besite paaie toe: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Laat Bouery van deur-ry pad stasies op dorp beheerde paaie
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Laat deur-ry padhalte toe op paaie wat deur ander deelnemers besit word: {STRING}
@@ -1180,9 +1180,9 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Waarsku indien 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :veroorsaak boodskappe oor voertuie wat nie in staat is om 'n pad na hul bestel bestemming te vind nie
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Hersien voertuig se opdrae: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :As dit geaktiveer is, word die voertuie se bevel van tyd tot tyd nagegaan, en 'n paar ooglopende kwessies sal berig word, met 'n nuus boodskap, as dit opgespoor word
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nee
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, maar sluit stil staande voertuie uit
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :van alle voertuie
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nee
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ja, maar sluit stilstaande voertuie uit
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Van alle voertuie
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Waarsku as 'n voertuig se inkomste negatief is: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :As dit geaktiveer is, word daar 'n nuus boodskap gestuur wanneer, in 'n kalenderjaar, 'n voertuig nie wins gemaak het nie.
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Voertuie verval nooit nie: {STRING}
@@ -1273,10 +1273,10 @@ STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palet
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Outomaties pouse wanneer om te begin 'n nuwe speletjie: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Wanneer gepouseer laat toe: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Selekteer watter aksies mag gedoen word terwyl die speletjie onderbreek word
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :geen aksies
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :alle nie-konstruksie aksies
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :alles behalwe landskap veranderings aksies
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :alle aksies
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Geen aksies
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Alle nie-konstruksie aksies
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Alles behalwe landskap-veranderende aksies
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Alle aksies
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Gebruik die voorloopende voertuiglys: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Aktiveer die gebruik van die gevorderde voertuig lys vir groepering van voertuie
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Gebruik laai aanwysers: {STRING}
@@ -1294,6 +1294,12 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Wys gereserveer
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Hou bou gereedskap aktief na gebruik: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Groep uitgawes in maatskappy finansies venster: {STRING}
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Nuustikker: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Speel klank vir opgesomde nuus boodskappe
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Koerant: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Speel klank wanneer koerante vertoon word
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Einde van jaar: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Speel klankeffek aan die einde van 'n jaar, wanneer die maatskappy se jaarresultate vertoon word
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Konstruksie: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Speel 'n klank wanneer 'n konstruksie of ander aksie suksesvol voltooi is
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Kliek van knoppie: {STRING}
@@ -1303,6 +1309,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Speel klanke vi
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Voertuie: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Speel klanke vir voertuie
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omgewing: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Speel ambiente klank effekte van die landskap, industriëe en dorpe
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Deaktiveer infrastruktuur bouery as geen geskikte voertuie beskikbaar is nie: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Max treine per speler: {STRING}
@@ -1327,7 +1334,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes voor d
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Diens pouse is in persente: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standaard diens interval vir treine: {STRING}
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} da{P g e}/%
-STR_CONFIG_SETTING_SERVINT_DISABLED                             :gedeaktiveer
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Gedeaktiveer
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Standaard diens interval vir pad voertuie: {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standaard diens interval vir vliegtuie: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standaard diens interval vir bote: {STRING}
@@ -1345,11 +1352,17 @@ STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomie verand
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Verandering in produksie van industrieë voorsien deur die maatskapy: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produksie veranderings van nywerhede wat deur mededingers bedien word: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Ander nywerheid produksie veranderings: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Vertoon 'n koerant wanner die produksievlak van industriëe verander, wat nie tans bedien word deur die maatskappy of kompeteerders nie
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Advies / informasie van maatskappy se voertuie: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Vertoon boodskappe aangaande voertuie wat aandag nodig het
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nuwe voertuie: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Vertoon 'n koerant wanneer 'n nuwe tipe voertuig beskikbaar raak
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Veranderings van vrag aanvaarding: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Vertoon boodskappe aangaande stasies wat hul aanvaarde vrag verander
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidies: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Vertoon 'n koerant aangaande subsidie-verwante gebeurtenisse
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Algemene informasie: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Vertoon koerant aangaande algemene gebeurtenisse, soos die aankoop van eksklusiewe regte of fondsing van padrekonstruksies
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Af
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Opsomming
@@ -1370,17 +1383,18 @@ STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blok seine
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Pad seine
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Een-rigting seine
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Wissel deur tiepe seine: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selekteer watter sinjaaltipes om deur te roteer, wanneer Ctrl+kliek gebruik word om 'n sinjaal te bou met die sinjaal gereedskap
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Blok seine aleenlik
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Pad seinligte alleenlik
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Pad uitleg vir nuwe dorpe: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Pad netwerk uitleg van paaie vir dorpe
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :oorspronkilik
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :beter paaie
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Oorspronkilik
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Beter paaie
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 grid
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 grid
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ewekansige
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Willekeurig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Dorpe word toegelaat om paaie te bou: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Laat dorpe toe om paaie te bou vir groei. Deaktiveer om stad owerhede te verhoed om paaie hulself te bou
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Dorpe word toegelaat om vlak kruising te bou: {STRING}
@@ -1389,15 +1403,15 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Laat dorp-behee
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Met deaktivering van hierdie stelling, kan daar twee lughawens in elke dorp wees. Met hierdie stelling word die getal van lughawens in 'n stad beperk deur die geluid aanvaarding van die dorp, wat afhanklik is van die bevolking en die lughawe grootte en afstand tussen van mekaar
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Stigting van dorpe binne speletjie: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Aktiveering van die stelling laat spelers toe om dorpe te stig in die speletjie
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :verbode
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :toegelaat
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :toegelaat, eie dorp uitleg
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Verbode
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Toegelaat
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Toegelaat, eie dorp uitleg
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Binne speletjie plasing van bome: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Beheer die ewekansige voorkoms van bome tydens die spel. Dit kan 'n invloed op nywerhede hê wat staatmaak op die groei van bome, byvoorbeeld hout meulens
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :geen {RED}(breek timmerhout meul)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Geen {RED}(breek timmerhout meul)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Slegs in reënwoude
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :orals
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Orals
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posisie van hoof werktuigbaan: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horisontale posisie van die hoof nutsbalk aan die bokant van die skerm
@@ -1406,7 +1420,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Horisontale pos
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Window klamp radius: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Afstand tussen vensters voor dat die venster outomaties in lyn met die nabygeleë vensters geskuif word
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :gedeaktiveer
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Gedeaktiveer
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksimum nommer nie-taaierige vensters: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Aantal non-sticky oop vensters voordat ou vensters outomaties toe gemaak word om die ruimte te maak vir nuwe vensters
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
@@ -1431,7 +1445,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Baie vinnig
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Verhouding van dorpe wat stede sal word: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Hoeveelheid van dorpe wat 'n stad sal word, dus 'n dorp wat groot begin en vinniger groei
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 in {COMMA}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :geen
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Geen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Aanvanklike stad grootte multiplier: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Normale stede groote relatief na normale dorpe aan die begin van speletjie
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Verwyder absurde pad-elemente gedurende die pad konstruksie: {STRING}
@@ -1445,6 +1459,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Mededingers
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Skerm opsies
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaksie
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Klankeffekte
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Nuus en booskappe
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seine
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Goedere hantering
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Rekenaar spelers
@@ -1985,7 +2001,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Aflaai 
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Geselekteer weens: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Afhanklikes: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Merkers: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD is gebou sonder "zlib" hulp...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD word gebou sonder "zlib" ondersteuning...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... aflaai van inhoud is nie moentlik nie!
 
 # Order of these is important!
@@ -2098,18 +2114,18 @@ STR_STATION_CLASS_WAYP                                          :Wegpunte
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Sein seleksie
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blok aanwyser (seinpaal){}Die eenvoudigste tipe aanwyser, laat slegs een trein in 'n blok toe
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ingang-aanwyser (seinpaal){}Wys groen so lank die volgende gedeelte treinspoor 'n groen uitgang-aanwyser het, anders wys dit rooi
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Uitgang aanwyser (seinpaal){}Werk soos 'n blok aanwyser maar word benodig om die regte kleur te aktiveer op kombinasie & ingang aanwysers
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinasie aanwyser(seinpaal){}Dien as 'n ingang aanwyser sowel as 'n uitgang aanwyser. Groot uitbreidings van pre-aanwysers kan hiermee gebou word
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ingang Sinjaal (semafoor){}Wys groen so lank die volgende gedeelte treinspoor 'n groen uitgang sinjaal het, anders wys dit rooi.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Uitgang Sinjaal (semafoor){}Werk soos 'n blok sinjaal maar word benodig om die regte kleur te aktiveer op kombinasie en ingang sinjale.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinasie Sinjaal (semafoor){}Dien as 'n ingang sinjaal sowel as 'n uitgang sinjaal. Groot uitbreidings van pre-sinjale kan hiermee gebou word.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Pad aanwyser (seinpaal){}Laat meer as een trein per blok toe solank die trein 'n bestemming veilig kan bereik. Gewone pad aanwysers word geïgnoreer as 'n trein in die teenoorgestelde rigting ry
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Een-rigting pad aanwyser (seinpaal){}Laat meer as een trein per blok toe solank die trein 'n bestemming veilig kan bereik. 'n Een-rigting pad aanwysers laat verkeer slegs in een rigting toe
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blok aanwyser (robot){}Die eenvoudigste tipe aanwyser, laat slegs een trein per blok toe
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Ingang aanwyser (robot){}Wys groen solank die volgende gedeelte treinspoor 'n groen uitgang aanwyser het, anders wys dit rooi
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Uitgang aanwyser(robot){}Werk soos 'n blok aanwyser maar word benodig om die regte kleur te aktiveer op kombinasie & ingang aanwysers
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinasie aanwyser(robot){}Dien as 'n ingang aanwyser sowel as 'n uitgang aanwyser. Groot uitbreidings van pre-aanwysers kan hiermee gebou word
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Ingang Sinjaal (elektries){}Vertoon groen solank die volgende gedeelte treinspoor 'n groen uitgang sinjaal het, anders wys dit rooi.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Uitgang Sinjaal(robot){}Werk soos 'n blok sinjaal maar word benodig om die regte kleur te aktiveer op kombinasie en ingang sinjale.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinasie Sinjaal (elektries){}Dien as 'n ingang sinjaal sowel as 'n uitgang sinjaal. Groot uitbreidings van pre-sinjale kan hiermee gebou word.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Pad aanwyser (robot){}Laat meer as een trein per blok toe solank die trein 'n bestemming veilig kan bereik. Gewone pad aanwysers word geïgnoreer as 'n trein in die teenoorgestelde rigting ry
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Een-rigting pad aanwyser (robot){}Laat meer as een trein per blok toe solank die trein 'n bestemming veilig kan bereik. 'n Een-rigting pad aanwysers laat verkeer slegs in een rigting toe
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Verander aanwyser{}Kliek op 'n bestaande aanwyser om dit na die verkose tipe te verander, Ctrl+Kliek om na die bestaande tipe te verander. Shift+Kliek vir kwotasie
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Verander Sinjaal{}Kliek op 'n bestaande sinjaal om dit na die verkose tipe te verander, Ctrl+Kliek om na die bestaande tipe te verander. Shift+Kliek vir kwotasie
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Sein sleep digtheid
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Verminder sein sleep digtheid
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Verhoog sein sleep digtheid
@@ -2455,6 +2471,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Tik 'n n
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Wêreld generasie
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kaart groote:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Selekteer die grootte van die kaart in teels. Die nommer werklike beskikbare teels sal ietwat minder wees.
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Hoev. dorpe:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
@@ -2640,6 +2657,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Jy wil 
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan nie lêer byvoeg nie: gedupliseerde GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Gelyke lêer nie gevind nie (versoenbaar GRF gelaai)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Kan nie lêer byvoeg nie: NewGRF lêer limiet bereik
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Versoenbare GRF(s) gelaai vir vermiste lêers
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Vermiste GRF lêers is gedeaktiveer
@@ -3359,7 +3377,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasite
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Herbou)
 STR_REFIT_TITLE                                                 :{GOLD}Kies vrag tipe vir skip te ontvoer:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nuwe kapasiteit: {GOLD}{CARGO_LONG}{}{BLACK}Herboukoste: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nuwe kapasiteit: {GOLD}{CARGO_LONG}{}{BLACK}Inkomste vanaf herinrig: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nuwe Kapasiteit: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Koste om te herbou: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nuwe kapasiteit: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Inkomste van herinrig: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selekteer die voertuig vir herbou. Trek met die muis om meer as een voertuig te selekteer. Kliek op 'n leë spasie sal die hele voertuig selekteer. Ctrl+Kliek sal 'n voertuig en daarop volgende ketting selekteer
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kies vrag tipe vir trein te ontvoer
