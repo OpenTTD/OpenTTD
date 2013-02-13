@@ -586,7 +586,7 @@ STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}車両�
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}過去3年間の、最小収益を記録した、四半期間を表します。
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}過去3年間の、最大収益を記録した、四半期間を表します。
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}過去1年間に運送した貨物の量を表します。
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}最後の四半期間に運送した貨物の種類の数を表します。
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}最後の四半期に運送した貨物の種類の数を表します。
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}この会社の資本金を表します。
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}この会社の借入の量を表します。
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}格付けの点数の合計を表します。
@@ -835,7 +835,7 @@ STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}ビュ�
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}ビューアへコピー
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}　主画面の場所をビューアにコピーする
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}ビューアからペースト
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}現在の画面をマインスクリーンにペーストする
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}現在の画面をメインスクリーンにペーストする
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}ゲームの設定
@@ -1092,13 +1092,13 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :車両故障: {
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :助成金の乗数: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建設費: {STRING}
 STR_CONFIG_SETTING_RECESSIONS                                   :景気の後退: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :駅では運転方向の変更はできません: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :駅で運転方向の変更(折り返し)をしない: {STRING}
 STR_CONFIG_SETTING_DISASTERS                                    :災害: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL                                :地域の再編に対する町の姿勢: {STRING}
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :傾斜地／海岸上の建設を許容：{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :設定が有効であれば斜面に建設を行うことができます。無効であれば建設には方向に一致した斜面か平面が必要になります。
-STR_CONFIG_SETTING_AUTOSLOPE                                    :建物、道路、鉄道などの下の地形変更を許容：{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :建物、道路、鉄道などの下の地形変更を行う(傾斜を合わせる)：{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :より現実的な受入れ地域を許容：{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :より多くの町有の道路／橋などの破壊を許容：{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :列車の最大長:{STRING}
@@ -1107,9 +1107,13 @@ STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA}タイ�
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :車両の 煙/スパーク の量{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :電車の加速モデル：{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :道路車両の加速モデル: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :線路の勾配率: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :１タイルあたりの勾配率。数値を上げると列車が坂を上りにくくなります。(急勾配になる)
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :道路の勾配率: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :道路１タイルあたりの勾配率。数値を上げると道路車両が坂を上りにくくなります。(急勾配になる)
 STR_CONFIG_SETTING_FORBID_90_DEG                                :列車／船舶が直角に曲がらないようにする：{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :互いに隣接していない駅の統合を許容する：{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :隣接していない駅の統合を許容する：{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :改良された積載アルゴリズムを使用：{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :車両に段階的に積載: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :インフレ：{STRING}
@@ -1122,12 +1126,13 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :第一次産業
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :なし
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :他の産業と同様
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :探鉱
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :産業の周囲にある平坦な地域: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :町内に重複している産業の建設を許容：{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :信号の表示方向: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :信号の表示方向を設定します。
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :左
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :通行方向に表示
-STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :右へ
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :右
 STR_CONFIG_SETTING_SHOWFINANCES                                 :年末に財政ウインドウを表示：{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :新規指令にデフォルトで 'non-stop'をつける: {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :新規鉄道車両は初期設定によりプラットホームの{STRING}に停車します
@@ -1135,14 +1140,15 @@ STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :始点
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :中点
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :終点
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :車両の待ち行列を使用：{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :マウスが端にあるとき画面を移動：{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :無効
+STR_CONFIG_SETTING_AUTOSCROLL                                   :マウスが端にあるとき画面をスクロール：{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :自動スクロールしない
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :メインウィンドウのみ（フルスクリーンの時）
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :メインウィンドウのみ
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :全てのウィンドウ
 STR_CONFIG_SETTING_BRIBE                                        :町議会の買収を許容：{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :独占的運送権の購入を許容：{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :地方の道路の再建に出資するのを許容: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :街の開発に出資: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :地方の道路の再建に出資: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :他社への送金を許容：{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :重い列車のシミュレーションのための重量乗数の設定：{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :飛行機の速さの約数：{STRING}
@@ -1165,15 +1171,17 @@ STR_CONFIG_SETTING_ORDER_REVIEW                                 :列車の指令
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :切
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :入（停止中の車両を除く）
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :入（すべての車両）
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :車両の利益が損失になってから警告を表示：{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :車両が利益を出していないなら警告を表示：{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :車両の購入可能期限がない：{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :車両が古くなるとき自動交換：{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :車両が古くなったら自動交換：{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{STRING} に寿命を迎える車両を自動交換
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA}ヶ月前
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA}ヶ月後
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :自動交換するための最小資金：{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :エラーメッセージの表示時間: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA}秒
 STR_CONFIG_SETTING_HOVER_DELAY                                  :ツールチップを見せる：{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :マウスオーバー {COMMA}秒後
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :右クリック
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :町名に人口を含む：{STRING}
 
@@ -1198,7 +1206,8 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :マップの端
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}北端の1箇所以上のタイルが空白ではありません。
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}マップ端の1箇所以上のタイルが水域ではありません
 
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :ヘリコプターを自動的ヘリパッドで修理：{STRING}
+STR_CONFIG_SETTING_STATION_SPREAD                               :プラットホームの最大長: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :ヘリコプターをヘリパッドで自動的に修理：{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :地形のツールバーを鉄道／道路／船舶／空港のツールバーに付ける：{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :ミニマップに表示する土地の色： {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :ミニマップの地形の色
@@ -1279,7 +1288,8 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :乗り物の効
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :周辺: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :町と産業の環境音
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :列車に合った施設を建設してください。{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :その時点で導入できるインフラのみが建設可能 {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :有効にするとその時点で使用可能な設備のみが建設できます。(例：電気機関車が購入できないときに電気鉄道は建設不可）
 STR_CONFIG_SETTING_MAX_TRAINS                                   :会社1つあたりの列車数上限：{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :会社1つあたりの道路車両数上限：{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :会社一つあたりの飛行機数上限：{STRING}
@@ -1326,6 +1336,8 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :色刷ニュー
 STR_CONFIG_SETTING_STARTING_YEAR                                :開始年：{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :スムーズな経済を使用：{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :他社所有株式の購入を許容する：{STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :ドラッグで信号を設置する間隔: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} タイル
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :次の年まで腕木式信号を建設：{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :信号のGUIを使用: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :信号建設コマンドのデフォルト信号形式 : {STRING}
@@ -1339,7 +1351,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :全て
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :新規町用の道路配置： {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :オリジナル
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :改善の道路網
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :改善された道路配置
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :格子状（2x2）
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :格子状（3x3）
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ランダム
@@ -1357,8 +1369,14 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :雨林のみ
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :あらゆる場所
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :メインツールバーの位置：{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :お知らせバ−の置き場: {STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :スティッキーではないウィンドウ数のソフトウェア制限 : {STRING}個
+STR_CONFIG_SETTING_STATUSBAR_POS                                :ステータスバーの位置: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :ウィンドウをスナップする範囲: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :隣接するウィンドウが設定した範囲に近づくとスナップ(引き寄せ)します。
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} ピクセル
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :スナップしない
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :スティッキーではないウィンドウの制限 : {STRING}個
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :無制限
 STR_CONFIG_SETTING_ZOOM_MIN                                     :最大ズームインレベル: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :最大ズームインレベルを設定します。この設定を有効にするとメモリー使用量が増えます。
 STR_CONFIG_SETTING_ZOOM_MAX                                     :最大ズームアウトレベル:{STRING}
@@ -2862,9 +2880,13 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :社長の名前
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}経済の現状によって当社を他の交通会社へご売却いたします。{}{}{COMPANY}を{CURRENCY_LONG}で買収しますか？
 
 # Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}路線長:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}信号
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}道路長:
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}軌道
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}水路長:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}運河
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}駅数:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}駅のタイル数
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}空港
 STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/年 ({0:COMMA})
@@ -3147,7 +3169,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}主の�
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}主の画面を船舶の場所に移動します
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}メイン画面を飛行機の場所に移動します
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}列車を電車庫へ回送します。Control+クリックすすると、補修のみします。
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}列車を電車庫へ回送します。Control+クリックすると、補修のみします。
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}車両を車庫へ改装します。Control+クリックすると修理しか行いません。
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}船舶を造船所へ回送します。Contorl+クリックすると修理のみをします
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}飛行機を格納庫へ回送します。Control+クリックすると修理のみします
@@ -3157,14 +3179,14 @@ STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}道路�
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}船を購入します。（コントロール+クリック）すると、プランを共有します。（シフト＋クイック）をすると、）船の価格を表せます。
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}飛行機を購入します。（コントロール+クリック）をすると、このリストを共有します。（シフト＋クリック）をすると、飛行機の価格を表示します。
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}列車の続行を強制します(信号を無視します)
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}信号が緑でなくても列車を進行させます。
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}他の貨物種類を運送するに列車を再装備
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}他の貨物の種類を運送するに道路車両を再装備します
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}他の種類の貨物を運送する為に貨物船を改装します
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}他の種類の貨物を運送する為に飛行機を改装
 
-STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}列車を逆転させます
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}運転方向を逆転させます
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}車両を逆転します
 
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}列車の指令を表示します
@@ -3235,8 +3257,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}振り�
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}補修間隔：{LTBLUE}{COMMA}日間{BLACK}  最新の補修：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}修理の間隔：{LTBLUE}{COMMA}％{BLACK}　最終の修理：{LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}補修間隔を増やす
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}補修間隔を減らす
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}補修間隔を10日延ばす。CTRL+クリックで5日延ばせます。
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}補修間隔を10日縮める。CTRL+クリックで5日縮めます。
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}列車に名前を付ける
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}道路車両を名付ける
@@ -3911,7 +3933,7 @@ STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}使用�
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}使用できない飛行機です
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}ゲームの車両数の制限を超えています
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}整備間隔を変更できません
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}補修間隔を変更できません
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 乗り物が破壊されます
 
@@ -4345,7 +4367,7 @@ STR_FORMAT_COMPANY_NUM                                          :（会社{COMMA
 STR_FORMAT_GROUP_NAME                                           :グループ {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}{STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN}の通過点
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN}の通過点 #{COMMA}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} 通過点 {COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} 列車庫
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} 第{COMMA}列車庫

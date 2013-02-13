@@ -1231,9 +1231,9 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximální dé
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Určuje maximální délku tunelů
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Způsob manuálního budování primárního průmyslu: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Způsob budování primárního průmyslu. "žádný" znamená, že není možné primární průmysl zbudovat. "průzkum" znamená, že budování je možné, ale stavba začne v náhodném místě na mapě a někdy vůbec. "jako ostatní průmysl" znamená, že primární průmysl lze zbudovat stejně jako zpracovatelský průmysl.
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :žádný
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jako u ostatniho průmyslu
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :průzkum
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Žádný
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Jako u ostatniho průmyslu
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Průzkum
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Plochá oblast okolo průmyslu: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Velikost roviny okolo průmyslu. Zajistí prostor například pro zbudování tratě.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Povolit více stejného průmyslu kolem jednoho města: {STRING}
@@ -1257,9 +1257,9 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Vozidlo bude st
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Posouvat okno, když je kurzor na okraji: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Pokud je zapnuto, pohledy se začnou posouvat pokud bude kurzor v blízkosti okraje okna
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Vypnuto
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :hlavní pohled, pouze full-screen
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :hlavní pohled
-STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :všechny pohledy
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Hlavní pohled, pouze full-screen
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Hlavní pohled
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Všechny pohledy
 STR_CONFIG_SETTING_BRIBE                                        :Povolit úplatek místní správě: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Umožňuje společnostem pokusit se podplatit místní správu. Pokud na to přijde inspekce, nebude možno ve městě 6 měsíců nic dělat
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Umožnit kupování výhradních přepravních práv: {STRING}
@@ -1277,9 +1277,9 @@ STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Nastavit poměr
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Počet leteckých havárií: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Určuje šanci na havárii letadel
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nulový
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :nižší
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :obvyklý
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Žádný
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Redukovaný
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Obvyklý
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Stavba průjezdných zastávek na obecních silnicích: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Povoluje stavbu průjezdných stanic na městem vlastněných silnicích
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Stavba průjezdných zastávek na silnicích vlastněných konkurencí: {STRING}
@@ -1299,9 +1299,9 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Varovat pokud s
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Zapne zobrazování zpráv o vozidlech, která nemohou najít cestu do cíle.
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Kontrolovat příkazy vozidel: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Pokud je zapnuto, příkazy vozidel jsou pravidelně kontrolovány a určité problémy jsou hlášeny pomocí informačních zpráv.
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ne
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ano, kromě zastavených vozidel
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ano, u všech vozidel
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Ne
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ano, pouze kromě zastavených vozidel
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :U všech vozidel
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varovat, pokud vozidlo prodělává: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Pokud je zapnuto, budou zobrazovány zprávy o vozidlech, která v posledním kalendářním roce neměla žádný zisk.
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozidlům se nikdy nezastaví výroba ('nezastarají'): {STRING}
@@ -1412,10 +1412,10 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Zastavit automa
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Pokud je zapnuto, hra se na začátku nové hry automaticky pozastaví a umožní tak bližší prozkoumání mapy
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :V pozastavené hře povolit: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Vyberte které akce mohou být prováděny při pozastavené hře
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :žádné akce
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :všechny akce kromě stavebních
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :všechny akce kromě úprav terénu
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :všechny akce
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Žádné akce
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Všechny akce kromě stavebních
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Všechny akce kromě úprav terénu
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Všechny akce
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Používat pokročilý seznam vozidel: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Umožňuje použití vylepšeného seznamu vozidel ve skupinách
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Používat ukazatele naložení: {STRING}
@@ -1491,7 +1491,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Vyber, jestli p
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Základní servisní interval pro vlaky: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Nastaví defaultní servisní interval pro vlaky.
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dní/%
-STR_CONFIG_SETTING_SERVINT_DISABLED                             :vypnuto
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Vypnuto
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Základní servisní interval pro silniční vozidla: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Nastaví defaultní servisní interval pro silniční vozidla pokud vozidlo nemá nastaveno jiný servisní interval
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Základní servisní interval pro letadla: {STRING}
@@ -1571,11 +1571,11 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :všechna
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Rozvržení silnic pro nová města: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Rozložení silniční sítě ve městech
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :původní
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :lepší silnice
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Originální
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Lepší silnice
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :mřížka 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :mřížka 3x3
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :náhodně
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Náhodně
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Města smějí stavět silnice: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Povolí městům stavět silnice pro růst. Zakaž k zabránění výstavby silnic městy.
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Města mohou stavět přejezdy: {STRING}
@@ -1584,15 +1584,15 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Umožnit měst�
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Pokud je vypnuto, ve každém městě mohou být dvě letiště. Pokud je zapnuto, počet letišť bude omezen hlukovými limity města, což závisí na jeho populaci, velikosti letiště a jeho vzdálenosti od centra města
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Zakládání měst během hry: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Povoluje hráčům zakládat nové města během hry
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zakázáno
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :povoleno
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :povoleno s výběrem rozložení a velikosti města
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Zakázáno
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Povoleno
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Povoleno s výběrem rozložení a velikosti města
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Umístění stromů ve hře: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Náhodné umisťování stromů během hry. Může ovlivnit průmysl závisející na růstu stromů, například pily.
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nikde {RED}(nefunguje pila)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :jen v deštných pralesech
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :všude
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Žádné {RED}(nefunguje pila)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Jen v deštných pralesech
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Všude
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Umístění hlavní lišty: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontální pozice hlavního panelu v horní části obrazovky
@@ -1601,7 +1601,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Horizontální 
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Okno se přichytí k druhému, když je blíž než: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Vzdálenost mezi okny, při které se okno automaticky zarovná k jinému blízkému oknu
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixelů
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :vypnuto
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Vypnuto
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Omezit počet zavíratelných oken na: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Počet otevřených nelepivých oken, po jehož dosažení budou automaticky zavírána stará okna aby se uvolnil prostor pro nová
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
@@ -1626,7 +1626,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :velmi rychlá
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Podíl měst, ze kterých se stanou velkoměsta: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Počet měst které se stanou velkoměsty, tedy počet měst které se rozvíjí a rostou rychleji
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 z {COMMA}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :žádné
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Žádné
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Činitel základní velikosti města: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Průměrná velikost větších měst v porovnání s ostatními městy na začátku hry
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Odstraňovat nesmyslné prvky vozovky při výstavbě silnic: {STRING}
@@ -2298,14 +2298,14 @@ STR_STATION_CLASS_WAYP                                          :Směrování
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Výběr návěstidel
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Obyčejné návěstidlo (semafor){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Vjezdové návěstidlo (semafor){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Výjezdové návěstidlo (semafor){}Chová se stejně jako obyčejné, ale musí se aktivovat vjezdové a cestové návěstidlo
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Cestové návěstidlo (semafor){}Cestové (kombinované) slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" presignálů
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Výjezdové návěstidlo (semafor){}Chová se stejně jako obyčejné, ale je nezbytné nastavit správnou barvu vjezdových a kombinovaných pre-signálů
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinované návěstidlo (semafor){}Kombinované návěstidlo slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" pre-signálů
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Dokonalejší (PBS) návěstidlo (semafor){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Dokonalejší návěstidla se dají projet zezadu
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Dokonalejší (PBS) jednosměrné návěstidlo (semafor){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Jednosměrná návěstidla se nedají projet zezadu
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Obyčejné návěstidlo (elektrické){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Vjezdové návěstidlo (elektrické){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Výjezdové návěstidlo (elektrické){}Chová se stejně jako obyčejné, ale musí se aktivovat vjezdové a cestové návěstidlo
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Cestové návěstidlo (elektrické){}Cestové (kombinované) návěstidlo slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" návěstidel
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Výjezdové návěstidlo (elektrické){}Chová se stejně jako obyčejné, ale je nezbytné nastavit správnou barvu vjezdových a kombinovaných pre-signálů
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinované návěstidlo (elektrické){}Kombinované návěstidlo slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" návěstidel
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Dokonalejší (PBS) návěstidlo (elektrické){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Dokonalejší návěstidla se dají projet zezadu
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Dokonalejší (PBS) jednosměrné návěstidlo (elektrické){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Jednosměrná návěstidla se nedají projet zezadu
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Přeměna návěstidel{}Když je přeměna zapnuta, návěstidlo se změní kliknutím. Kliknutím s Ctrl se přepne mezi variantami návěstidla
@@ -2664,6 +2664,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Zadej jm
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Tvorba krajiny
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Velikost mapy:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Vybrat velikost mapy ve čtvercích. Počet dostupných čtverců bude o neco nižší
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Množství měst:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
@@ -2749,14 +2750,14 @@ STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Odstrani
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Přidat
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Přidat vybranou grafiku do tvého seznamu
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Načíst soubory
-STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Znovu vytvořit seznam dostupných grafik
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Aktualizovat seznam dostupných NewGRF souborů
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Odebrat
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Odstranit označenou grafiku ze seznamu
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Nahoru
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Posunout označenou grafiku nahoru
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Dolů
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Posunout označenou grafiku dolů
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Seznam grafických souborů, které jsou nainstalovány.
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Seznam NewGRF souborů, které jsou nainstalovány.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nastavit parametry
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Zobrazit parametry
@@ -2850,6 +2851,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Právě
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nelze přidat soubor: duplicitní GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odpovídající soubor nebyl nalezen (načetl se kompatibilní GRF)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Nemůžu přidat soubor. Dosažen limit NewGRF souborů
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilní GRF se načetly místo chybějících
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chybějící grafiky byly vypnuty

@@ -1062,6 +1062,13 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Thiết lập c
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Thiết lập khác với giá trị mặc định
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :THiết lập giá trị mới khác với giá trị cho ván chơi mới
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Hạn chế danh mục sau đối với mỗi kiểu thiết lập
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tất cả thiết lập
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Thiết lập máy trạm (không lưu trong save; tác động tới mọi ván chơi)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Thiết lập trò chơi (chứa trong save; chỉ có tác dụng với ván chơi mới)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Thiết lập trò chơi (chứa trong save; chỉ có tác dụng với ván chơi hiện tại)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Thiết lập công ty (chứa trong save; chỉ tác động với ván chơi mới)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Thiết lập công ty (lưu trong save; chỉ tác động tới công ty hiện tại)
 
 STR_CONFIG_SETTING_OFF                                          :Tắt
 STR_CONFIG_SETTING_ON                                           :Bật
@@ -1093,10 +1100,13 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Tỉ lệ chi t
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Thiết lập mức chi trả cho tuyến vận chuyển phụ trợ
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Chi phí xây dựng: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Thiết lập mức độ xây dựng và chi phí mua sắm
+STR_CONFIG_SETTING_RECESSIONS                                   :Suy thoái: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Nếu bật, thì các đợt suy thoái sẽ xảy ra vài năm một lần. Trong suy thoái tất cả sản xuất sẽ giảm mạnh (và sẽ trở lại như cũ sau khi suy thoái kết thúc)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Không cho phép tàu hỏa quay đầu ở ga: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Nếu bật thì tàu hỏa sẽ không quay đẩu đối với ga không phải đầu cuối, quay đầu nếu có một đường ngắn hơn tới đích
 STR_CONFIG_SETTING_DISASTERS                                    :Thảm họa: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Thay đổi tùy chọn để thảm họa đôi lúc ngăn chặn hoặc phá hủy phương tiện và công trình hạ tầng
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Thái độ của hội đồng thành phố với việc xây dựng lại địa phương: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Lựa chọn mức độ ảnh hưởng môi trường và tiếng ồn gây ra bởi các công ty sẽ ảnh hưởng uy tín của công ty đối với chính quyền địa phương và các hoạt động xây dựng của họ trong địa bàn
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Cho phép xây dựng trên dốc và bờ biển: {STRING}
@@ -1335,12 +1345,16 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Hiển thị th
 STR_CONFIG_SETTING_QUICKGOTO                                    :Tạo nhanh lộ trình cho phương tiện: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Lựa chọn trước 'đi tới con trỏ' khi mở cửa số lập lộ trình
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Loại đường ray mặc định (sau game mới/nạp game): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Kiểu đường ray được chọn khi bắt đầu hoặc tải một ván chơi. 'sẵn có đầu tiên' chọn loại ray cũ nhất, 'sẵn có cuối cùng' chọn loại ray mới nhất, và 'dùng nhiều nhất' chọn loại ray đang được sử dụng nhiều nhất trong ván chơi
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Có trước tiên
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Có sau cùng
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Dùng nhiều
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Hiện đường ray dành trước: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Lựa chọn đường dành riêng với màu khác để thấy rõ vấn đề với việc tài không vào khu vực tìm đường path-based
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Vẫn giữ công cụ xây dựng sau khi dùng: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Giữ cho công cụ xây dựng đối với cầu, hầm... vẫn mở sau khi dùng.
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Phân nhóm thu nhập/chi phí trong bảng tài chính: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Lựa chọn cách sắp xếp trong cửa sổ chi phí của công ty
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Tin tức tóm tắt: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Phát âm thanh khi hiển thị các tin tức tóm tắt.
@@ -1360,7 +1374,9 @@ STR_CONFIG_SETTING_SOUND_AMBIENT                                :Âm thanh nền
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Phát các âm thanh hiệu ứng nền đối với đất, khu công nghiệp và đô thị
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Tắt việc xây dựng hạ tầng nếu không có phương tiện thích hợp nào sẵn có: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Khi bật, thì cơ sở hạ tầng chỉ sẵn có nếu loại phương tiện tương ứng cũng sẵn có, giúp cho việc tránh xây nhầm hạ tầng không thích hợp
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Số tàu hỏa tối đa mỗi người chơi: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Số lượng tối đa tàu hỏa mà mỗi công ty có thể có
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Số xe ôtô tối đa mỗi người chơi: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Số lượng ôtô tối đa mà một công ty có thể có
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Số máy bay tối đa mỗi người chơi: {STRING}
@@ -1371,8 +1387,11 @@ STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Số lượng t
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Nhân vật máy không được mua tàu hoả: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Bật thiết lập này làm máy không thể xây dựng tàu hỏa
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Nhân vật máy không được mua xe ôtô: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Bật tùy chọn này thì người chơi là AI sẽ không xây đường ôtô
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Nhân vật máy không được mua máy bay: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Bật tùy chọn này thì người chơi là AI sẽ không xây đường hàng không
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Nhân vật máy không được mua tàu thủy: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Bật tùy chọn này thì người chơi là AI sẽ không xây đường thủy
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Giá trị thiết lập mặc định: {STRING}
 STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Lực chọn mức độ khó đối với AI ngẫu nhiên hoặc giá trị mặc định khi thêm AI mới hay kịch bản trò trơi
@@ -1381,18 +1400,28 @@ STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Trung bình
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Khó
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Cho phép AI ở chế độ nhiều người chơi: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Cho phép người chơi AI (máy tính) được tham gia trong ván chơi nhiều người
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#mã lệnh trước kịch bản tạm ngưng: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Số lượng tối đa các tính toán mà một kịch bản AI được phép chạy mỗi lần
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Tần suất bảo trì theo đơn vị phần trăm: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Lựa chọn liệu rằng việc bảo trì phương tiện sẽ được tiến hành sau một khoảng thời gian nhất định hay là độ tin cậy bị giảm xuống bao nhiều phần trăm so với mức tối đa
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Tần suất bảo trì mặc định đối với tàu hỏa: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Thiết lập khoảng thời gian bảo trì tùy chọn đối với các tàu hỏa, nếu phương tiện không có riêng thời gian bảo trì này
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} ngày/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :tắt
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Tần suất bảo trì mặc định đối với ôtô: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Thiết lập khoảng thời gian bảo trì tùy chọn đối với các ôtô, nếu phương tiện không có riêng thời gian bảo trì này
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Tần suất bảo trì mặc định đối với máy bay: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Thiết lập khoảng thời gian bảo trì tùy chọn đối với các máy bay, nếu phương tiện không có riêng thời gian bảo trì này
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Tần suất bảo trì mặc định đối với tàu thủy: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Thiết lập khoảng thời gian bảo trì tùy chọn đối với các tàu thủy, nếu phương tiện không có riêng thời gian bảo trì này
 STR_CONFIG_SETTING_NOSERVICE                                    :Tắt bảo trì khi đặt tắt tuỳ chọn hỏng hóc: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Nếu bật, phương tiện sẽ không cần bảo trì nếu chúng không thể bị hỏng
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Bật giới hạn tốc độ toa tàu: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Nếu bật, sử dụng giới hạn tốc độ của toa xe để hạn chế tốc độ của cả đoàn tàu
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Không dùng tàu điện: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Bật tùy chọn này sẽ ngăn việc bắt buộc có ray tàu điện mới tạo được đầu máy chạy điện
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Phương tiện đầu tiên đỗ trạm chúng ta: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Hiển thị tin tức khi phương tiện khai trương ga/bến của bạn
@@ -1430,16 +1459,23 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Giản Lược
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Đủ
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Tin tức có màu xuất hiện vào năm: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Năm mà các báo chí sẽ được in màu. Trước năm này, tất cả chúng là in đen/trắng
 STR_CONFIG_SETTING_STARTING_YEAR                                :Năm bắt đầu: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Nền kinh tế ít biến động: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Nếu bật, sản lượng của nhà máy sẽ thay đổi thường xuyên hơn, và thay đổi với mức độ nhỏ hơn. Thiết lập này sẽ không có tác dụng nếu kiểu nhà máy định nghĩa bởi NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Cho phép mua cổ phần của các công ty khác: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Nếu bật, cho phép mua và bán cổ phần công ty. Cổ phần chỉ có thể mua bán nếu công ty đã tồn tại một thời gian nhất định nào đó
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Tỉ lệ lợi tức cổ phiếu chi trả cho môi giới: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Tỉ lệ phân trăm thu nhập cho mỗi trung gian trên hệ thống vận tải, cho phép điều chỉnh thu nhập
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Khi kéo, đặt đèn tín hiệu mỗi: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Đặt khoảng cách để xây liên tiếp các đèn tín hiệu khi được kéo
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} ô
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Khi kéo-thả, giữ khoảng cách cố định giữa các đèn tín hiệu: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Lựa chọn cách đặt đèn hiệu khi bấm Ctrl+kéo thả đèn hiệu, nếu tắt, đèn hiệu đặt ngay trước và sau cầu, hầm để tránh bị quãng kéo dài không có đèn. Nếu bật, đèn hiệu sẽ được đặt sau mỗi N ô, tạo ra việc căn đèn đối với các ray song song dễ dàng hơn
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Xây cờ hiệu thay vì đèn trước năm: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Thiết lập năm mà đèn hiệu điện sẽ được sử dụng. Trước năm này chỉ có cờ hiệu được sử dụng (chúng cùng chức năng, chỉ khác hình thức)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Bật GUI đèn tín hiệu : {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Hiện một cửa sổ chọn kiểu đèn hiệu khi xây dựng, thay vì phải đổi kiểu bằng cách bấm Ctrl+click trên công cụ xây dựng đèn hiệu
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Kiểu đèn tín hiệu đc xây mặc định: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Kiểu đèn tín hiệu mặc định để sử dụng
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Đèn hiệu khóa
@@ -2540,6 +2576,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Nhập t
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Khởi Tạo Bản Đồ
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kích thước bản đồ:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Lựa chọn kích thước bản đồ theo đơn vị ô. Số lượng ô thực sự có thể nhỏ hơn 1 chút.
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Số lượng đô thị:
 STR_MAPGEN_DATE                                                 :{BLACK}Thời điểm:

@@ -3644,28 +3644,28 @@ STR_ORDER_IMPLICIT                                              :(Σιωπηρή
 STR_ORDER_FULL_LOAD                                             :(Πλήρης φόρτωση)
 STR_ORDER_FULL_LOAD_ANY                                         :(Πλήρης φόρτωση οποιουδήποτε εμπορεύματος)
 STR_ORDER_NO_LOAD                                               :(Χωρίς φόρτωση)
-STR_ORDER_UNLOAD                                                :(Ξεφόρτωμα και πάρε φόρτιο)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Ξεφόρτωμα και αναμόνη για πλήρης φόρτωση)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Ξεφόρτωμα και αναμόνη για πλήρης φόρτωση οποιουδήποτε)
+STR_ORDER_UNLOAD                                                :(Ξεφόρτωσε και πάρε φορτίο)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Ξεφόρτωμα και αναμονή για πλήρης φόρτωση)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Ξεφόρτωμα και αναμονή για πλήρης φόρτωση οποιουδήποτε)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Ξεφόρτωμα και φύγε άδειο)
 STR_ORDER_TRANSFER                                              :(Μεταφορά και πάρε φορτίο)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Μεταφορά και αναμονή για πλήρη φόρτωση)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Μετάφορα και αναμονή για πλήρης φόρτωση οποιοδήποτε φορτίου)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Μεταφορά και αναμονή για πλήρης φόρτωση)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Μεταφορά και αναμονή για πλήρης φόρτωση οποιοδήποτε φορτίου)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Μεταφορά και φύγε άδειο)
-STR_ORDER_NO_UNLOAD                                             :(Χωρίς ξεφόρτωση και πάρε φορτίο)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Χωρίς ξεφόρτωση και αναμονή για πλήρης φόρτωση)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Χωρίς ξεφόρτωση και αναμονή για πλήρης φόρτωση οποιοδήποτε φορτίου)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Χώρις ξεφόρτωση και χώρις φόρτωση)
+STR_ORDER_NO_UNLOAD                                             :(Χωρίς ξεφόρτωμα και πάρε φορτίο)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Χωρίς ξεφόρτωμα και αναμονή για πλήρης φόρτωση)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Χωρίς ξεφόρτωμα και αναμονή για πλήρης φόρτωση οποιοδήποτε φορτίου)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Χωρίς ξεφόρτωμα και χωρίς φόρτωση)
 
 STR_ORDER_AUTO_REFIT                                            :(Αυτόματη μετατροπή σε {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :(Πλήρης φόρτωση με αυτόματη μετατροπή σε {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Πλήρης φόρτωση οποιουδήποτε φορτίου με αυτόματη μετατροπή σε {STRING})
 STR_ORDER_UNLOAD_REFIT                                          :(Εκφόρτωση και λήψη φορτίου με αυτόματη μετατροπή σε {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Εκφόρτωση και αναμομή πλήρους φόρτωσης με αυτόματη μετατροπή σε {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Εκφόρτωση και αναμομή οποιασδήποτε πλήρους φόρτωσης με αυτόματη μετατροπή σε {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Εκφόρτωση και αναμονή πλήρους φόρτωσης με αυτόματη μετατροπή σε {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Εκφόρτωση και αναμονή οποιασδήποτε πλήρους φόρτωσης με αυτόματη μετατροπή σε {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :(Μεταφορά και λήψη φορτίου με αυτόματη μετατροπή σε {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Μεταφορά και αναμομή πλήρους φόρτωσης με αυτόματη μετατροπή σε {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Μεταφορά και αναμομή οποιασδήποτε πλήρους φόρτωσης με αυτόματη μετατροπή σε {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Μεταφορά και αναμονή πλήρους φόρτωσης με αυτόματη μετατροπή σε {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Μεταφορά και αναμονή οποιασδήποτε πλήρους φόρτωσης με αυτόματη μετατροπή σε {STRING})
 STR_ORDER_NO_UNLOAD_REFIT                                       :(Δεν γίνεται εκφόρτωση και λαμβάνεται φορτίο με αυτόματη μετατροπή σε {STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Δεν γίνεται εκφόρτωση και αναμένεται πλήρης φόρτωση με αυτόματη μετατροπή σε {STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Δεν γίνεται εκφόρτωση και αναμένεται οποιοδήποτε φορτίο με αυτόματη μετατροπή σε {STRING})
@@ -3689,27 +3689,27 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Εντολές
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Αλλαγή στην προβολή εντολών
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Δρομολόγια - κλικ σε μια εντολή για την τονίσετε
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Δρομολόγια - κάντε κλικ σε μια εντολή για την επιλέξετε
 
-STR_TIMETABLE_NO_TRAVEL                                         :Μη ταξιδέψεις
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ταξίδι (αυτόματα; με δρομολόγιο στην επόμενη μη αυτόματη εντολή)
+STR_TIMETABLE_NO_TRAVEL                                         :Μην ταξιδέψεις
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ταξίδι (αυτόματα· με δρομολόγιο στην επόμενη μη αυτόματη εντολή)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ταξίδεψε (όχι μεσώ δρομολογίου)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Ταξίψετε με μέγιστη ταχύτητα {2:VELOCITY}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Ταξίδεψε με μέγιστη ταχύτητα {2:VELOCITY} (όχι στο δρομολόγιο)
 STR_TIMETABLE_TRAVEL_FOR                                        :Ταξίδεψε για {STRING}
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Ταξίδεψε για {STRING} με την περισσότερη {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Ταξίδεψε για {STRING} με κατά περισσότερο {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :και μείνε για {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :και ταξίδεψε για {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} μέρ{P α ες}
 STR_TIMETABLE_TICKS                                             :{COMMA} στιγμ{P ή ές}
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Το δρομολόγιο αυτό θα χρειαστεί τουλάχιστον {STRING} για να ολοκληρωθεί.
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Το δρομολόγιο αυτό θα χρειαστεί τουλάχιστον {STRING} για να ολοκληρωθεί
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Το δρομολόγιο αυτό θα χρειαστεί τουλάχιστον {STRING} για να ολοκληρωθεί (δεν είναι όλα τα χρονοδιαγράμματα)
 
-STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Αυτό το όχημα πηγαίνει σύμφωνα με το δρομολόγιο του
-STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Αυτό το όχημα εχει καθυστερήσει κατά {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Το όχημα εκτελεί το δρομολόγιο του κατα {STRING} νωρίτερα
-STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Αυτό το δρομολόγιο ακόμα δεν έχει ξεκίνησει
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Αυτό το δρομολόγιο θα ξεκίνησει στις {STRING}
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Αυτό το όχημα πηγαίνει σύμφωνα με το δρομολόγιό του
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Αυτό το όχημα έχει καθυστερήσει κατά {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Το όχημα εκτελεί το δρομολόγιο του κατά {STRING} νωρίτερα
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Αυτό το δρομολόγιο ακόμα δεν έχει ξεκινήσει
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Αυτό το δρομολόγιο θα ξεκινήσει στις {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Εναρκτήρια ημερομηνία
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Επιλέξτε μια ημερομηνία ως αρχή για αυτό το δρομολόγιο
