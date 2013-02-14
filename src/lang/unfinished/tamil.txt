@@ -2899,6 +2899,7 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}இட�
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}பராமரிப்புகளுக்கிடையேயான காலம்: {LTBLUE}{COMMA}நாட்கள்{BLACK}   கடைசி பராமரிப்பு: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}பராமரிப்புகளுக்கிடையேயான காலம்: {LTBLUE}{COMMA}%{BLACK}   கடைசி பராமரிப்பு: {LTBLUE}{DATE_LONG}
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}இரயிலிற்கு பெயரிடு
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}சாலை வாகனத்திற்கு பெயரிடு
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}கப்பலுக்கு பெயரிடு

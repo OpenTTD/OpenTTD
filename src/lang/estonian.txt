@@ -3508,6 +3508,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Hooldusv
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Suurenda hooldusvahemiku 10 võrra. Ctrl-klahviga suurendatakse hooldusvahemiku 5 võrra.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Vähenda hooldusvahemiku 10 võrra. Ctrl+Klõps vähendab hooldusvahemikku 5 võrra.
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Anna rongile nimi
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nimeta mootorsõiduk ümber
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Anna laevale nimi

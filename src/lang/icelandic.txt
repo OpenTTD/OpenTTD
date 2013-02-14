@@ -3452,6 +3452,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Skoðana
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Lengja skoðanamillibil með 10. Ctrl smelltu til að lengja skoðanamillibilið með 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Stytta skoðanamillibil með 10. Ctrl smelltu til að sytta skoðanamillibilið með 5
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Skírðu lestina
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nefna bifreið
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nefna skip

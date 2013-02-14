@@ -3452,6 +3452,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Wartungs
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Wartungsintervall um 10 erhöhen. Strg+Klick erhöht um 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Wartungsintervall um 10 verringern. Strg+Klick verringert um 5
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Name des Zuges
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Name des Fahrzeuges
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Schiffsname

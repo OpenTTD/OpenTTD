@@ -3111,6 +3111,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}فترا
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}زيادة فترات الصيانة بقدر 10. ومع مفتاح كنترول بمقدار 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK} انقاص فترات الصيانة بمعدل 10. Ctrl+ الضغط الانقاص بمعدل 5.
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}اسم القطار
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}تسمية العربة
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}تسمية السفينة

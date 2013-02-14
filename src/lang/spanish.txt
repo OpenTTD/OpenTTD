@@ -2764,6 +2764,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Se van 
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No se puede añadir: GRF ID duplicado
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Fichero no encontrado (GRF compatible cargado)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}No se puede añadir fichero: Límite de ficheros NewGRF alcanzado
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatibles cargados para ficheros que faltan
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fichero(s) GRF no encontrados han sido desactivados
@@ -3450,6 +3451,11 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Interval
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalo de mantenimiento: {LTBLUE}{COMMA}%{BLACK}   Último mantenimiento: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Incrementar intervalo de mantenimiento en 10. Ctrl+Click incrementa el intervalo de mantenimiento en 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Reducir intervalo de mantenimiento en 10. Ctrl+Click reduce el intervalo de mantenimiento en 5
+
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Cambiar tipo de intervalo de mantenimiento
+STR_VEHICLE_DETAILS_DEFAULT                                     :Por defecto
+STR_VEHICLE_DETAILS_DAYS                                        :Dias
+STR_VEHICLE_DETAILS_PERCENT                                     :Porcentaje
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nombrar tren
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nombrar vehículo

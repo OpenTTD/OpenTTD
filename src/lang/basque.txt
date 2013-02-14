@@ -3408,6 +3408,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Mantenim
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Mantenimendu tartea 10 puntutan igo. Ktrl+klik mantenimendu tartea 5 puntutan igo
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Mantenimendu tartea 10 puntutan gutxitu. Ktrl+klik mantenimendu tartea 5 puntutan gutxitu
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Trena izendatu
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Errepide ibilgailua izendatu
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Itsasontzia izendatu

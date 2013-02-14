@@ -3533,6 +3533,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Obdobje 
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Podaljšaj čas med servisi za 10. Ctrl+Klik podaljša za 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Skrajšaj čas med servisi za 10. Ctrl+Klik skrajša za 5
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Poimenuj vlak
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Poimenuj cestno vozilo
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Poimenuj ladjo

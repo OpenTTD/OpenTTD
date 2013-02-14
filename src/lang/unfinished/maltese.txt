@@ -888,6 +888,7 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 
 
 
+
 # Extra buttons for train details windows
 
 

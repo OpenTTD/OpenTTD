@@ -3451,6 +3451,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Servicei
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Forøg serviceintervallet med 10. Ctrl+Klik forøger serviceintervallet med 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Sænk serviceintervallet med 10. Ctrl+Klik nedsætter serviceintervallet med 5
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Giv toget et navn
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Giv køretøjet et navn
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Giv skibet et navn

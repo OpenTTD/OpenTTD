@@ -3465,6 +3465,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{LTBLUE}{1:DATE
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}הגדל את מרווח הזמן עד קבלת שירות ב-10. Ctrl+לחיצה מגדיל את המרווח ב-5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}הקטן את מרווח הזמן עד קבלת שירות ב-10. Ctrl+לחיצה מקטינה את המרווח ב-5
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}תן שם לרכבת
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}תן שם לכלי הרכב
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}תן שם לכלי השייט

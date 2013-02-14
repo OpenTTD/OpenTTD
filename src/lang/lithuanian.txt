@@ -3684,6 +3684,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Siųsti 
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Padidinti techninės apžiūros intervalą 10 dienų (arba procentų). Spragtelėjus laikant nuspaustą Ctrl klavišą, intervalas bus padidintas 5 dienomis (arba procentais)
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Sumažinti techninės apžiūros intervalą 10 dienų (arba procentų). Spragtelėjus laikant nuspaustą Ctrl klavišą, intervalas bus sumažintas 5 dienomis (arba procentais)
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Pervadinti traukinį
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Pervadinti automobilį
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Pervadinti laivą

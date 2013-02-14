@@ -3345,6 +3345,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Diens tu
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Maak diens interval met 10 dae meer. Ctrl+Kliek om interval met 5 dae meer te maak
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Maak diens interval met 10 dae minder. Ctrl+Kliek om interval met 5 dae minder te maak
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Benoem trein
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Benoem pad voertuig
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Benoem skip

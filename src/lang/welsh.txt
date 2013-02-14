@@ -3193,6 +3193,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Bwlch rh
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Cynyddu'r bwlch rhwng gwasanaethau fesul 10. Mae Ctrl+Clic yn gostwng y bwlch rhwng gwasanaethau fesul 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Gostwng y bwlch rhwng gwasanaethau fesul 10. Mae Ctrl+Clic yn gostwng y bwlch rhwng gwasanaethau fesul 5.
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Enwi trên
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Enwi cerbyd ffordd
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Enwi llong

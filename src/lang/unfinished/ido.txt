@@ -1025,6 +1025,7 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Komencin
 
 
 
+
 # Extra buttons for train details windows
 
 

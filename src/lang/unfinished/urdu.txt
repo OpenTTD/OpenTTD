@@ -2413,6 +2413,7 @@ STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}حد ر�
 
 
 
+
 # Extra buttons for train details windows
 
 

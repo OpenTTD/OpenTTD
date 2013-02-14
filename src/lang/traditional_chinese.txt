@@ -3449,6 +3449,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}維護�
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}以 10 為單位延長維護間隔。 按住 Ctrl 點選可以 5 為單位
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}以 10 為單位縮短維護間隔。 按住 Ctrl 點選可以 5 為單位
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}命名列車
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}命名車輛
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}命名船舶

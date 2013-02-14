@@ -3804,6 +3804,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Агля
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Павялiчыць інтэрвал абслугоўваньня на 10. Ctrl+клік — павялічыць інтэрвал абслугоўваньня на 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Зьменшыць інтэрвал абслугоўваньня на 10. Ctrl+клік — паменшыць інтэрвал абслугоўваньня на 5.
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Назва цягнiка
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Назва аўтамабiля
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Назва карабля

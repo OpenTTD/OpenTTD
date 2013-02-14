@@ -3484,6 +3484,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Period s
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Povećava period servisiranja za 10. Ctrl+Klik povećava period servisiranja za 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Smanjuje period servisiranja za 10. Ctrl+Klik smanjuje period servisiranja za 5
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Naziv voza
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Naziv drumskog vozila
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Naziv broda

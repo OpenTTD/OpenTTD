@@ -3449,6 +3449,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}保养�
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}增大检修时间间隔,以10为单位进行调整. 按住Ctrl同时点击则以5为单位进行调整
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}减少检修时间间隔,以10为单位进行调整. 按住Ctrl同时点击则以5为单位进行调整
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}给列车命名
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}命名汽车
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}命名船只

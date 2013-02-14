@@ -3477,6 +3477,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Διάσ
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Αύξηση διαστημάτων επισκευών κατά 10. Με Ctrl+Κλικ αυξάνονται τα διαστήματα επισκευών κατά 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Μείωση διαστημάτων επισκευών κατά 10. Με Ctrl+Κλικ μειώνεται τα διαστήματα επισκευών κατά 5
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Όνομα τρένου
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Όνομα οχήματος δρόμου
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Όνομα πλοίου
@@ -3717,24 +3718,24 @@ STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Επιλ
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Αλλαγή Χρόνων
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Αλλάζει ο χρόνος που παίρνει η επιλεγμένη επιλογή για να εκτελεστεί
 
-STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Καθαρισμός χρόνων
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Καθαρίζει το χρόνο της επιλεγμένης επιλογής
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Εκκαθάριση Χρόνων
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Εκκαθαρίζει το ποσοστό χρόνου για την επιλεγμένη εντολή
 
-STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Αλλαγή ορίου ταχύτητας
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Αλλαγή της μέγιστης ταχύτητα ταξιδίου της επιλεγμένης σειράς
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Αλλαγή Ορίου Ταχύτητας
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Αλλαγή της μέγιστης ταχύτητας ταξιδιού της επιλεγμένης εντολής
 
-STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Καθαρισμός ορίου ταχύτητας
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Καθαρίζει την μέγιστη ταχύτητα ταξιδιού της επιλεγμένης σειράς
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Εκκαθάριση Ορίου Ταχύτητας
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Καθαρίζει τη μέγιστη ταχύτητα ταξιδιού της επιλεγμένης εντολής
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Επαναφορά Μετρητή Καθυστέρησης
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Επαναφορά του μετρητή καθυστέρησης, ώστε το όχημα να είναι στην ώρα του
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Αυτόματη πλήρωση
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Συμπληρώστε το δρομολόγιο αυτόματα με τιμές από το επόμενο ταξίδι (Ctrl+κλικ για να προσπαθήσει να κρατήσει τους χρόνους αναμονής)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Αυτόματη Γέμιση
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Συμπληρώστε το δρομολόγιο αυτόματα με τιμές από το επόμενο ταξίδι (Ctrl+Κλικ για να προσπαθήσει να κρατήσει τους χρόνους αναμονής)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Αναμενόμενη
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Προγραμματισμένη
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Εναλλάγη μεταξύ αναμένομενης και προγραμματισμένης
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Εναλλαγή μεταξύ αναμενόμενης και προγραμματισμένης
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :ΑΦ:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :ΑΝ:
@@ -3751,75 +3752,75 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Επιλ
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Αποσφαλμάτωση AI και δέσμης ενεργειών παιχνιδιού
-STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (έκδοση {NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Όνομα δέσμης ενεργειών
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Ρυθμίσεις
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Αλλαγή των ρυθμίσεων της δέσμης ενεργειών
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Επαναφόρτωση AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Τερματίστε την AI, ξαναφορτώστε τη δέσμη ενεργειών και επανεκκινήστε την AI
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ενεργοποίηση/Απενεργοποίηση παύσης όταν μια καταχώρηση ιστορικού της ΑΙ ταυτίζεται με τη συμβολοσειρά παύσης
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ενεργοποίηση/απενεργοποίηση παύσης όταν μια καταχώρηση ιστορικού της ΑΙ ταυτίζεται με το αλφαριθμητικό παύσης
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Παύση στο:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Παύση στο
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Εάν υπάρξει ταύτιση του παρόντος string με μια καταχώρηση από τα μηνύματα του ΑΙ, τότε γίνεται παύση του παιγνιδιού
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Εάν υπάρξει ταύτιση του παρόντος αλφαριθμητικού με μια καταχώρηση από τα μηνύματα του ΑΙ, τότε γίνεται παύση του παιχνιδιού
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Ταύτιση μεγέθους
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Μεταβολή της ταύτισης μεγέθους όταν η γίνεται σύγκριση μιας καταχώρησης της ΑΙ με τη συμβολοσειρά παύσης
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Μεταβολή της ταύτισης μεγέθους όταν η γίνεται σύγκριση μιας καταχώρησης της ΑΙ με το αλφαριθμητικό παύσης
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Συνέχεια
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Συνέχιση του παιχνιδιού και της λειτουργίας της AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Εμφάνιση της εξόδου αποσφαλμάτωσης αυτής της AI
-STR_AI_GAME_SCRIPT                                              :{BLACK}Δέσμη ενεργειών παιχνιδιού
+STR_AI_GAME_SCRIPT                                              :{BLACK}Δέσμη Ενεργειών Παιχνιδιού
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Έλεγχος ιστορικού δέσμης ενεργειών παιχνιδιού
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Δεν βρέθηκε κατάλληλη AI για φόρτωση.{}Αυτή η AI είναι μια ψεύτικη AI και δεν θα κάνει τίποτα.{}Μπορείτε να κατεβάσετε διάφορες AΙ από το σύστημα 'Online περιεχομένου'
+STR_ERROR_AI_NO_AI_FOUND                                        :Δεν βρέθηκε κατάλληλη AI για φόρτωση.{}Αυτή η AI είναι ψεύτικη και δεν θα κάνει τίποτα.{}Μπορείτε να κατεβάσετε διάφορες AΙ από το σύστημα Διαδικτυακού Περιεχομένου.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Μια τρέχουσα δέσμη ενεργειών τερμάτισε απότομα. Παρακαλώ ενημερώστε τον συγγραφέα της δέσμης ενεργειών με ένα στιγμιότυπο οθόνης από το παράθυρο αποσφαλμάτωσης AI/Παιχνιδιού
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Το παράθυρο αποσφαλμάτωσης ΑΙ και δέσμης ενεργειών παιχνιδιού είναι διαθέσιμο μόνο για το διακομιστή
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Το παράθυρο αποσφαλμάτωσης ΑΙ και δέσμης ενεργειών είναι διαθέσιμο μόνο για τον διακομιστή
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Ρύθμιση ΑΙ και δέσμης ενεργειών παιχνιδιού
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Η δέσμη ενεργειών παιχνιδιού που θα φορτωθεί στο επόμενο παιχνίδι
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Ρύθμιση ΑΙ και Δέσμης Ενεργειών
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Η Δέσμη Ενεργειών παιχνιδιού που θα φορτωθεί στο επόμενο παιχνίδι
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Οι AIs που θα φορτωθούν στο επόμενο παιχνίδι
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ανθρώπινος παίκτης
 STR_AI_CONFIG_RANDOM_AI                                         :Τυχαία AI
 STR_AI_CONFIG_NONE                                              :{G=f}(καμία)
 
-STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Μετακίνηση πάνω
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Μετακίνηση Πάνω
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Μετακίνηση της επιλεγμένης AI πάνω στη λίστα
-STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Μετακίνηση κάτω
-STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Μεταφορά της επιλεγμένης AI κάτω στη λίστα
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Μετακίνηση Κάτω
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Μετακίνηση της επιλεγμένης AI κάτω στη λίστα
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Δέσμη ενεργειών παιχνιδιού
-STR_AI_CONFIG_AI                                                :{SILVER}AIs
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Δέσμη Ενεργειών
+STR_AI_CONFIG_AI                                                :{SILVER}AI
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Επιλογή {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :ΑΙ
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Δέσμη ενεργειών Παιχνιδιού
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Δέσμη Ενεργειών
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Φόρτωση άλλης δέσμης ενεργειών
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Ρυθμίσεις
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Ρύθμιση των παραμέτρων ενός script
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Ρύθμιση των παραμέτρων της Δέσμης Ενεργειών
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Διαθέσιμο {STRING}
-STR_AI_LIST_CAPTION_AI                                          :AIs
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Δέσμες ενεργειών Παιχνιδιού
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Πατήστε για επιλέξετε ένα script
+STR_AI_LIST_CAPTION                                             :{WHITE}Διαθέσιμη {STRING}
+STR_AI_LIST_CAPTION_AI                                          :AI
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Δέσμες Ενεργειών
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Κάντε κλικ για επιλέξετε μία δέσμη ενεργειών
 
-STR_AI_LIST_AUTHOR                                              :{LTBLUE}Συγγραφέας: {ORANGE}{STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Δημιουργός: {ORANGE}{STRING}
 STR_AI_LIST_VERSION                                             :{LTBLUE}Έκδοση: {ORANGE}{NUM}
-STR_AI_LIST_URL                                                 :{LTBLUE}Ιστιοσελίδα: {ORANGE}{STRING}
+STR_AI_LIST_URL                                                 :{LTBLUE}Ιστοσελίδα: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Αποδοχή
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Αποδοχή του επιλεγμένου script
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Αποδοχή της επιλεγμένης δέσμης ενεργειών
 STR_AI_LIST_CANCEL                                              :{BLACK}Άκυρο
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Να μην γίνει αλλάγη script
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Να μην γίνει αλλαγή δέσμης ενεργειών
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Παράμετροι
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Σενάριο παιχνιδιού
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Δέσμη Ενεργειών
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Κλείσιμο
 STR_AI_SETTINGS_RESET                                           :{BLACK}Επαναφορά
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Αριθμός ημερών για την εκκίνηση του επόμενου AI μετά από το προηγούμενο (περίπου): {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Αριθμός ημερών για την εκκίνηση της επόμενης AI μετά από τη προηγούμενη (περίπου): {ORANGE}{STRING}
 
 
 # Textfile window
@@ -3838,154 +3839,158 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Κόστος: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}Κόστος: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Έσοδα: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Έσοδα: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Από μεταφορά: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Από Μεταφορά: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Από Μεταφορά: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Εκτιμώμενο Κόστος: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Υπολογιζόμενα Έσοδα: {CURRENCY_LONG}
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Η αποθήκευση είναι σε εξέλιξη,{}παρακαλώ περιμένετε να τελειώσει!
-STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Το αυτόματο σώσιμο απέτυχε
+STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Η αυτόματη αποθήκευση απέτυχε
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Αδύνατη η ανάγνωση του δίσκου
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Αποθήκευση Παιχνιδιού Απέτυχε{}{STRING}
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Η Αποθήκευση Παιχνιδιού Απέτυχε{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Αδύνατη η διαγραφή του αρχείου
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Φόρτωση Παιχνιδιού Απέτυχε{}{STRING}
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Η Φόρτωση Παιχνιδιού Απέτυχε{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Εσωτερικό λάθος: {STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Χαλάσμενο αποθηκευμένο παιχνίδι - {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Χαλασμένο αποθηκευμένο παιχνίδι - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Το αποθηκευμένο παιχνίδι είναι φτιαγμένο με νεότερη έκδοση
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Το αρχείο δεν είναι για διάβασμα
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Το αρχείο δεν είναι για γράψιμο
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Το αρχείο δεν μπορούσε να διαβαστεί
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Το αρχείο δεν είναι εγγράψιμο
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Έλεγχος ακεραιότητας δεδομένων απέτυχε
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<μη διαθέσιμο>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Το παιχνίδι έχει σωθεί σε έκδοση χώρις υποστήριξη τροχιόδρομου. Όλα τα τραμ έχουν αφαιρεθεί
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Το παιχνίδι έχει σωθεί σε έκδοση χωρίς υποστήριξη τροχιόδρομου. Όλα τα τραμ έχουν αφαιρεθεί
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Η δημιουργία του χάρτη εγκαταλήφτηκε...{}... Δεν υπάρχουν κατάλληλες τοποθεσίες για πόλεις
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Η δημιουργία του χάρτη εγκαταλείφτηκε...{}... δεν υπάρχουν κατάλληλες τοποθεσίες για πόλεις
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... δεν υπάρχει καμία πόλη σε αυτό το σενάριο
 
-STR_ERROR_PNGMAP                                                :{WHITE}Δεν είναι δυνατή η φόρτωση από PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... το αρχείο δεν βρέθηκε
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... δεν είναι δυνατή η μετατροπή του τύπου εικόνας. 8 ή 24-bit PNG εικόνα χρείαζεται.
+STR_ERROR_PNGMAP                                                :{WHITE}Δεν ήταν δυνατή η φόρτωση τοπίου από PNG...
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... το αρχείο δε βρέθηκε
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... δεν ήταν δυνατή η μετατροπή του τύπου εικόνας. Χρειάζεται εικόνα PNG 8 ή 24 bit
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... κάτι πήγε στραβά (πιθανώς κατεστραμμένο αρχείο)
 
-STR_ERROR_BMPMAP                                                :{WHITE}Αδυναμία φόρτωσης τοπίου από το ΒΜΡ...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... αδύνατη η μετατροπή του τύπου εικόνας
+STR_ERROR_BMPMAP                                                :{WHITE}Δεν ήταν δυνατή η φόρτωση τοπίου από ΒΜΡ...
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... δεν ήταν δυνατή η μετατροπή του τύπου εικόνας
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... η εικόνα είναι πολύ μεγάλη
 
-STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Προειδοποιήση κλίμακας
-STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Αλλάγη μεγέθους του πηγαίου χάρτη δεν συνίσταται. Να προχωρήσω με την δημιουργία;
+STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Προειδοποίηση κλίμακας
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Αλλαγή μεγέθους του πηγαίου χάρτη δεν συνίσταται. Να προχωρήσει η δημιουργία;
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Μόνο το σετ ανάγκης ήχου βρέθηκε.Αν θέλετε ήχους, εγκαταστήστε ένα πακέτο ήχων μέσω του συστήματος μεταφόρτωσης υλικού.
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Βρέθηκε μόνο εφεδρικό σετ ήχου. Αν θέλετε ήχους, εγκαταστήστε ένα πακέτο ήχων μέσω του συστήματος μεταφόρτωσης υλικού
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Τεράστιο στιγμιότυπο οθόνης
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Το στιγμιότυπο θα έχει ανάλυση {COMMA} × {COMMA} πίξελ. Η λήψη αυτού του στιγμιότυπου μπορεί να πάρει πολύ ώρα. Θέλετε σίγουρα να συνεχίσετε;
 
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Το στιγμιότυπο οθόνης αποθηκεύθηκε επιτυχώς ώς '{STRING}'
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Το στιγμιότυπο οθόνης απέτυχε!
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Το στιγμιότυπο οθόνης αποθηκεύτηκε επιτυχώς ως «{STRING}»
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Η λήψη στιγμιότυπου οθόνης απέτυχε!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Μήνυμα
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Μήνυμα από {STRING}
 
 # Generic construction errors
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Απο την άκρη του χάρτη
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Από την άκρη του χάρτη
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Πολύ κοντά στην άκρη του χάρτη
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Δεν υπάρχουν αρκετά χρήματα - απαιτούνται {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Απαιτείται επίπεδο έδαφος
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Το έδαφος έχει λάθος κλίση
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Αυτό δεν γίνεται...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Το κτίριο πρέπει πρώτα να κατεδαφιστεί
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Αυτή η περιοχή είναι αδύνατο να καθαριστεί...
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Είναι αδύνατο να καθαριστεί αυτή η περιοχή...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... ακατάλληλη περιοχή
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ήδη χτισμένο
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ήδη κτισμένο
 STR_ERROR_OWNED_BY                                              :{WHITE}... ιδιοκτησία του {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... αυτή η περιοχή είναι ιδιοκτησία άλλης εταιρίας
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... η περιοχή είναι ιδιοκτησία άλλης εταιρίας
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... υπερβαίνει το όριο διαμόρφωσης του εδάφους
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... υπερβαίνει το όριο καθαρισμού τετραγωνιδίων
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... υπερβαίνει το όριο φύτευσης δέντρων
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Το όνομα πρέπει να είναι μοναδικό
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} στη μέση
-STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Δεν επιτρέπεται όσο είναι το παιχνίδι σε παύση
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Δεν επιτρέπεται όσο το παιχνίδι είναι σε παύση
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Οι τοπικές αρχές της πόλης {TOWN} δεν το επιτρέπουν
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Η τοπική αρχή της πόλης {TOWN} αρνείται να επιτρέψει τη δημιουργία νέου αεροδρομίου
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} Οι τοπικές αρχές αρνούνται να δώσουν την άδεια για αεροδρόμιο λογω ανησυχιών για τον θόρυβο
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Η δωροδοκία που προσπαθήσατε έγινε αντιλυπτή από ένα τοπικό ερευνητή
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Οι τοπικές αρχές της πόλης {TOWN} αρνούνται να δώσουν την άδεια για αεροδρόμιο λόγω ανησυχιών για τον θόρυβο
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Η δωροδοκία που προσπαθήσατε να δώσετε έγινε αντιληπτή από τοπικό ερευνητή
 
 # Levelling errors
-STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Αδύνατο να υψωθεί η γη εδώ...
-STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Αδύνατο να χαμηλώσει η γη εδώ...
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Αδύνατο να έρθει στο ίδιο επίπεδο η γη εδώ...
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Δεν είναι δυνατό να υψωθεί η γη εδώ...
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Δεν είναι δυνατό να χαμηλώσει η γη εδώ...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Δεν είναι δυνατό να έρθει στο ίδιο επίπεδο η γη εδώ...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Η εκσκαφή θα κατέστρεφε το τούνελ
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Ήδη στο επίπεδο της θάλασσας
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... ήδη στο επίπεδο της θάλασσας
 STR_ERROR_TOO_HIGH                                              :{WHITE}... πολύ ψηλά
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ήδη επίπεδο
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Αδύνατο να αλλάξει το όνομα της εταιρίας...
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Αδύνατο να αλλάξει το όνομα του διευθυντή...
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Δεν ήταν δυνατό να αλλάξει το όνομα της εταιρίας...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Δεν ήταν δυνατό να αλλάξει το όνομα του διευθυντή...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... το μέγιστο επιτρεπόμενο δάνειο είναι {CURRENCY_LONG}
-STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Αδύνατος ο δανεισμός περισσοτέρων χρημάτων...
+STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Δεν μπορείτε να δανειστείτε περισσότερα χρήματα...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... δεν υπάρχει δάνειο προς αποπληρωμή
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... Απαιτούνται {CURRENCY_LONG}
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... απαιτούνται {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Αδύνατη η αποπληρωμή του δανείου...
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Δεν είναι δυνατόν να δοθούν χρήματα που είναι δανεισμένα από την τράπεζα...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Δεν είναι δυνατό να δοθούν χρήματα που είναι δανεισμένα από τη τράπεζα...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Αδύνατη η εξαγορά της εταιρίας...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Αδύνατο να χτιστεί αρχηγείο εταιρίας...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Αδύνατο να κτιστεί αρχηγείο εταιρίας...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Αδύνατη η αγορά μεριδίου 25% της εταιρίας...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Αδύνατη η πώληση μεριδίου 25% της εταιρίας...
-STR_ERROR_PROTECTED                                             :{WHITE}Αυτή η εταιρία δεν είναι αρκετά παλιά για συναλλαγή μετοχών ακόμα...
+STR_ERROR_PROTECTED                                             :{WHITE}Αυτή η εταιρία δεν είναι αρκετά παλιά για συναλλαγή μετοχών...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Αδύνατο να χτιστούν πόλεις
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Αδύνατο να κτιστούν πόλεις
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Δεν μπορεί να μετονομαστεί η πόλη...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Αδύνατο να χτιστεί πόλη εδώ...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Αδύνατο να κτιστεί πόλη εδώ...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Δεν μπορεί να γίνει επέκταση της πόλης...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... πολύ κοντά στην άκρη του χάρτη
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... πολύ κοντά σε άλλη πόλη
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... πάρα πολλές πόλεις
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... δεν υπάρχει αλλος χώρος στον χάρτη
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Η πόλη δεν θα οικοδομεί δρόμους. Μπορείτε να ενεργοποιήσετε την κατασκευή οδών μέσω των Προχωρημένων Επιλογών->Οικονομία->Πόλεις
-STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Έργα οδοποιϊας σε εξέλιξη
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Δεν γίνεται να διαγραφεί η πόλη...{}Ένας σταθμός ή ένα αμαξοστάσιο αναφέρεται στην πόλη ή ένα τετραγωνίδιο της πόλης δεν μπορεί να αφαιρεθεί
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... δεν υπάρχει άλλος χώρος στον χάρτη
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Η πόλη δεν θα οικοδομεί δρόμους. Μπορείτε να ενεργοποιήσετε την κατασκευή οδών μέσω τις Προχωρημένες Επιλογές->Οικονομία->Πόλεις
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Έργα οδοποιίας σε εξέλιξη
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Δεν γίνεται να διαγραφεί η πόλη...{}Ένας σταθμός ή ένα αμαξοστάσιο που αναφέρεται στην πόλη ή ένα τετραγωνίδιο της πόλης δεν μπορεί να αφαιρεθεί
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... δεν υπάρχει κατάλληλο μέρος για άγαλμα στο κέντρο αυτής της πόλης
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... πάρα πολλές βιομηχανίες
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Δεν γίνεται να δημιουργηθούν βιομηχανίες...
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Αδύνατο να χτιστεί {G ο η το} {STRING} εδώ...
-STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Αδύνατο να χτιστεί αυτός ο τύπος βιομηχανίας εδώ...
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Δε γίνεται να δημιουργηθούν βιομηχανίες...
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Δεν είναι δυνατό να κτιστεί {G ο η το} {STRING} εδώ...
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Δεν είναι δυνατό να κτιστεί αυτός ο τύπος βιομηχανίας εδώ...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... πολύ κοντά σε άλλη βιομηχανία
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... πρέπει να χτιστεί πόλη πρώτα
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... πρέπει να κτιστεί πόλη πρώτα
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... επιτρέπεται μόνο μία ανά πόλη
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... μπορεί να χτιστεί μόνο σε πόλεις με πληθυσμό άνω των 1200
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... μπορεί να χτιστεί μόνο σε δασώδεις περιοχές
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... μπορεί να χτιστεί μόνο σε ερημικές περιοχές
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... μπορεί να χτιστεί μόνο σε πόλεις (αντικαθιστώντας σπίτια)
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... μπορεί να χτιστεί μόνο κοντά σε κέντρα πόλεων
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... μπορεί να χτιστεί μόνο σε χαμηλές περιοχές
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... μπορεί να κτιστεί μόνο σε πόλεις με πληθυσμό άνω των 1200
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... μπορεί να κτιστεί μόνο σε δασώδεις περιοχές
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... μπορεί να κτιστεί μόνο σε ερημικές περιοχές
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... μπορεί να κτιστεί μόνο σε πόλεις (αντικαθιστώντας σπίτια)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... μπορεί να κτιστεί μόνο κοντά σε κέντρα πόλεων
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... μπορεί να κτιστεί μόνο σε χαμηλές περιοχές
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... μπορούν να τοποθετηθούν μόνο στις άκρες του χάρτη
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... το δάσος μπορεί να φυτευτεί μόνο πάνω από την γραμμή χιονιού
-STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... μπορεί να χτιστεί μόνο πάνω από τη γραμμή του χιονιού
-STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... μπορεί να χτιστεί μόνο κάτω από τη γραμμή του χιονιού
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... δάση μπορούν να φυτευτούν μόνο πάνω από τη γραμμή του χιονιού
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... μπορεί να κτιστεί μόνο πάνω από τη γραμμή του χιονιού
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... μπορεί να κτιστεί μόνο κάτω από τη γραμμή του χιονιού
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Δεν μπορεί να χτιστεί σταθμός τρένων εδώ...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Αδύνατο να χτιστεί στάση λεωφορείων...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Αδύνατο να χτιστεί στάση φορτηγών...
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Δεν μπορεί να χτιστεί επιβατικός σταθμός τραμ...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Δεν μπορεί να χτιστεί σταθμός τραμ...
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Δεν μπορεί να χτιστεί λιμένας εδώ...
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Δεν μπορεί να χτιστεί αεροδρόμιο εδώ...
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Δεν μπορεί να κτιστεί σταθμός τρένων εδώ...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Αδύνατο να κτιστεί στάση λεωφορείων...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Αδύνατο να κτιστεί στάση φορτηγών...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Δεν μπορεί να κτιστεί επιβατικός σταθμός τραμ...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Δεν μπορεί να κτιστεί σταθμός τραμ...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Δεν μπορεί να κτιστεί λιμένας εδώ...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Δεν μπορεί να κτιστεί αεροδρόμιο εδώ...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Γειτονεύει με περισσότερες από μια υπάρχουσες περιοχές σταθμών/φόρτωσης
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... ο σταθμός είναι υπερβολικά απλωμένος
@@ -3993,7 +3998,7 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Πάρα
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Πάρα πολλά κομμάτια σιδηροδρομικού σταθμού
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Πάρα πολλές στάσεις λεωφορείου
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Πάρα πολλοί σταθμοί φορτηγών
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Πολύ κοντά σε μιά άλλη περιοχή σταθμού/φόρτωσης
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Πολύ κοντά σε άλλη περιοχή σταθμού/φόρτωσης
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Πολύ κοντά σε άλλη αποβάθρα
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Πολύ κοντά σε άλλο αεροδρόμιο
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Δεν μπορεί να μετονομαστεί ο σταθμός...
@@ -4004,11 +4009,11 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... οι
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Δεν μπορεί να αφαιρεθεί μέρος του σταθμού...
-STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Πρέπει πρώτα να αφαίρεσετε τον σταθμό σιδηροδρομου
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Πρέπει πρώτα να αφαιρέσετε τον σταθμό σιδηροδρόμου
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Αδύνατο να αφαιρεθεί η στάση λεωφορείων...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Δεν μπορεί να αφαιρεθεί ο στάθμος φορτηγών...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Δεν μπορεί να αφαιρεθεί ο σταθμός φορτηγών...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Δεν μπορεί να αφαιρεθεί η στάση επιβατών τραμ...
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Δεν μπορεί να αφαιρεθεί ο στάθμος εμπορευμάτων τραμ...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Δεν μπορεί να αφαιρεθεί ο σταθμός εμπορευμάτων τραμ...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Πρέπει να γίνει αφαίρεση της στάσης οχημάτων πρώτα
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... δεν υπάρχει σταθμός εδώ
 
@@ -4016,12 +4021,12 @@ STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Πρέπ
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Πρέπει να κατεδαφιστεί η στάσης λεωφορείου πρώτα
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Πρέπει να κατεδαφιστεί ο σταθμός φορτηγών πρώτα
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Πρέπει να κατεδαφιστεί ο επιβατικός σταθμός τραμ πρώτα
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Πρέπει να κατεδαφιστεί ο εμπορευτικός σταθμός τραμ πρώτα
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Πρέπει να κατεδαφιστεί ο εμπορευματικός σταθμός τραμ πρώτα
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Πρέπει να κατεδαφιστεί η αποβάθρα πρώτα
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Πρέπει να κατεδαφιστεί το αεροδρόμιο πρώτα
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}προστίθεται σε περισσότερο από ένα υπάρχον σημείο καθοδήγησης
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Προστίθεται σε περισσότερο από ένα υπάρχον σημείο καθοδήγησης
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Πολύ κοντά σε άλλο σημείο καθοδήγησης
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Αδύνατο να χτιστεί σημείο καθοδήγησης τρένου εδώ...
@@ -4034,34 +4039,34 @@ STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... ση
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... σημαδούρα σε χρήση από άλλη εταιρία!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Αδύνατο να χτιστεί αμαξοστάσιο εδώ...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Αδύνατο να χτιστεί σταθμός οχημάτων εδώ...
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Δεν μπορεί να χτιστεί σταθμαρχείο τραμ εδώ...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Δεν μπορεί να χτιστεί ναυπηγείο πλοίων εδώ...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Αδύνατο να κτιστεί αμαξοστάσιο εδώ...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Αδύνατο να κτιστεί σταθμός οχημάτων εδώ...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Δεν μπορεί να κτιστεί σταθμαρχείο τραμ εδώ...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Δεν μπορεί να κτιστεί ναυπηγείο πλοίων εδώ...
 
-STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Δεν μπορεί να μετανομαστεί το αμαξοστάσιο/ναυπηγείο
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Δεν μπορεί να μετονομαστεί το αμαξοστάσιο/ναυπηγείο...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... πρέπει να σταματήσει μέσα σε αμαξοστάσιο
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... πρέπει να σταματήσει μέσα σε αμαξοστάσιο οχημάτων
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... πρέπει να σταματήσει μέσα σε ναυπηγείο
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... πρέπει να σταματήσει μέσα σε υπόστεγο
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... πρέπει να είναι σταματημένο μέσα σε αμαξοστάσιο
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... πρέπει να είναι σταματημένο μέσα σε αμαξοστάσιο
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... πρέπει να είναι σταματημένο μέσα σε ναυπηγείο
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... πρέπει να είναι σταματημένο μέσα σε υπόστεγο
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Τα τρένα μπόρουν να τροποιηθούν μόνο όταν σταματήσουν μέσα σε αμαξοστάσιο
-STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Τρένο πολύ μεγάλο
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Τα τρένα μπορούν να τροποποιηθούν μόνο όταν είναι σταματημένα μέσα σε αμαξοστάσιο
+STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Το τρένο είναι πολύ μακρύ
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Δεν αντιστρέφεται η κατεύθυνση του οχήματος...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... αποτελείται από πολλαπλές μονάδες
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Μη σύμβατος τύπος σιδηροτροχιάς
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Μη συμβατός τύπος σιδηροτροχιάς
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Δεν μπορεί να μετακινηθεί το όχημα...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Η πίσω μηχανή πάντα θα ακολουθεί την αντίστοιχη μπροστινή
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Αδύνατο να βρέθει δρόμος για το τοπικό αμαξοστάσιο
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Αδύνατο να βρέθει τοπικό αμαξοστάσιο
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Αδύνατο να βρεθεί δρόμος για το τοπικό αμαξοστάσιο
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Αδύνατο να βρεθεί τοπικό αμαξοστάσιο
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Λάθος τύπος αμαξοστάσιου
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}Το {VEHICLE} είναι πολύ μεγάλο μετά την ανανέωση
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Χωρίς εφαρμογή κανόνων αυτόματης αντικατάστασης/ανανέωσης
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Χωρίς εφαρμογή κανόνων αυτόματης ανανέωσης/αντικατάστασης
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(χρηματικό όριο)
 
 # Rail construction errors
@@ -4070,63 +4075,63 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Πρέπ
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Μη συμβατή σιδηροτροχιά
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Πρέπει να αφαιρεθεί ο σιδηρόδρομος πρώτα
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Η δρόμος είναι μονόδρομος ή μπλοκαρισμένος
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Δεν επιτρέπονται ισόπεδες διασταυρώσεις για αυτόν το τύπο σιδηροδρόμου
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Δεν μπορούν να χτιστούν σηματοδότες εδώ...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Δεν μπορεί να χτιστεί σιδηρόδρομος εδώ...
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Δεν επιτρέπονται ισόπεδες διασταυρώσεις για αυτόν τον τύπο σιδηροδρόμου
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Δεν μπορούν να κτιστούν σηματοδότες εδώ...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Δεν μπορεί να κτιστεί σιδηρόδρομος εδώ...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Δεν μπορεί να αφαιρεθεί σιδηρόδρομος από εδώ...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Αδύνατο να αφαιρεθούν σηματοδότες από εδώ...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Δεν μπορούν να μετατραπούν οι σηματοδότες εδώ...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... δεν υπάρχει σιδηροτροχιά
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... δεν υπάρχουν σηματοδότες
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Δεν γίνεται να μετατραπεί ο τύπος της σιδηροτροχιάς εδώ...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Δε γίνεται να μετατραπεί ο τύπος της σιδηροτροχιάς εδώ...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Πρέπει πρώτα να αφαιρεθεί ο δρόμος
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... οι μονοδρομοι δεν μπορούν να έχουν διασταυρωσείς
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Αδύνατο να χτιστεί δρόμος εδώ...
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Δεν μπορεί να χτιστεί γραμμή τραμ εδώ...
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... οι μονόδρομοι δεν μπορούν να έχουν διασταυρώσεις
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Αδύνατο να κτιστεί δρόμος εδώ...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Δεν μπορεί να κτιστεί γραμμή τραμ εδώ...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Αδύνατο να αφαιρεθεί δρόμος από εδώ...
-STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Δεν μπορω να αφαιρέσω τροχιόδρομο(τραμ) από εδώ
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Δεν μπορεί να αφαιρεθεί τροχιόδρομος από εδώ...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... δεν υπάρχει δρόμος
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... δεν υπάρχει τροχιόδρομος(τραμ)
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... δεν υπάρχει τροχιόδρομος
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Δεν μπορεί να χτιστεί κανάλι εδώ
-STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Δεν μπορεί να χτιστεί υδατοφράκτης εδώ...
+STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Δεν μπορεί να κτιστεί κανάλι εδώ
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Δεν μπορεί να κτιστεί υδατοφράκτης εδώ...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Δεν μπορούν να τοποθετηθούν ποτάμια εδώ...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... πρέπει να χτιστεί στο νερό
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Αδύνατο να χτιστεί στο νερό
-STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... δε μπορεί να χτιστεί στην ανοικτή θάλασσα
-STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... αδύνατο να χτιστεί σε κανάλι
-STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... αδύνατο να χτιστεί σε ποτάμι
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... πρέπει να κτιστεί στο νερό
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... αδύνατο να κτιστεί στο νερό
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... δε μπορεί να κτιστεί στην ανοικτή θάλασσα
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... αδύνατο να κτιστεί σε κανάλι
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... αδύνατο να κτιστεί σε ποτάμι
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Πρέπει να κατεδαφιστεί το κανάλι πρώτα
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Δεν μπορεί να χτιστεί κανάλι εδώ...
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Δεν μπορεί να κτιστεί κανάλι εδώ...
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... υπάρχει ήδη δέντρο εδώ
-STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... λάθος έδαφος για αυτό το τύπο δέντρου
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Δεν γίνεται να φυτευθεί δέντρο εδώ...
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... λάθος έδαφος για αυτόν τον τύπο δέντρου
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Δεν γίνεται να φυτευτεί δέντρο εδώ...
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Δεν μπορεί να χτιστεί γέφυρα εδώ...
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Δεν μπορεί να κτιστεί γέφυρα εδώ...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Πρέπει πρώτα να καταστραφεί η γέφυρα
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Δεν γίνεται να ξεκινάει και να τελειώνει στο ίδιο σημείο
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Η γέφυρα δεν καταλήγει στο ίδιο επίπεδο
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Η γέφυρα είναι πολύ χαμηλή για το έδαφος
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Η αρχή και το τέλος πρέπει να είναι σε ευθεία
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... και τα δύο άκρα της γέφυρας πρέπει να είναι σε έδαφος
-STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... γέφυρα πολλή μεγάλη
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... η γέφυρα είναι πολλή μακρυά
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Η γέφυρα θα καταλήξει εκτός χάρτη
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Δεν μπορεί να χτιστεί τούνελ εδώ...
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Δεν μπορεί να κτιστεί τούνελ εδώ...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Ακατάλληλη τοποθεσία για είσοδο τούνελ
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Πρέπει πρώτα να καταστραφεί το τούνελ
-STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Άλλο τουνελ στη μέση
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Υπάρχει άλλο τούνελ στη μέση
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Το τούνελ θα καταλήξει εκτός του χάρτη
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Αδύνατο να γίνει εκσκαφή γης στην άλλη άκρη του τούνελ
-STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... τούνελ πολύ μακρύ
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... το τούνελ είναι πολύ μακρύ
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... πάρα πολλά αντικείμενα
@@ -4137,12 +4142,12 @@ STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Αδύν
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... είστε ήδη ιδιοκτήτης!
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Δεν μπορεί να δημιουργηθεί γκρουπ...
-STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Δεν μπορεί να διαγραφεί αυτό το γκρουπ...
-STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Δεν μπορεί να μετονομαστεί το γκρουπ...
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Δεν μπορεί να αφερεθούν όλα τα οχήματα από το γκρουπ...
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Δεν μπορεί να προσθεθεί το όχημα στο γκρουπ...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Δεν μπορεί να προσθεθούν κοινά οχήματα στο γκρουπ...
+STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Δεν μπορεί να δημιουργηθεί ομάδα...
+STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Δεν μπορεί να διαγραφεί αυτή η ομάδα...
+STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Δεν μπορεί να μετονομαστεί η ομάδα...
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Δεν μπορεί να αφαιρεθούν όλα τα οχήματα από την ομάδα...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Δεν μπορεί να προστεθεί το όχημα στην ομάδα...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Δεν μπορεί να προστεθούν κοινά οχήματα στην ομάδα...
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Τρένο καθ'οδόν
@@ -4151,17 +4156,17 @@ STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Πλοί
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Αεροσκάφος καθ'οδόν
 
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Δεν μπορεί να μετατραπεί το τρένο...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Δεν μπορεί να υποστεί μετατροπή το όχημα δρόμου...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Δεν μπορεί να υποστεί μετατροπή το όχημα...
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Δεν μπορεί να υποστεί μετατροπή το πλοίο...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Δεν μπορεί να μετατραπεί το αεροσκάφος...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Δεν μπορεί να ονομαστεί το τρένο...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Δεν μπορεί να ονομαστεί το όχημα δρόμου...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Δεν μπορεί να ονομαστεί το όχημα...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Δεν μπορεί να ονομαστεί το πλοίο...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Δεν μπορεί να ονομαστεί το αεροσκάφος...
 
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το τρένο...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το όχημα δρόμου...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το όχημα...
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το πλοίο...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το αεροσκάφος...
 

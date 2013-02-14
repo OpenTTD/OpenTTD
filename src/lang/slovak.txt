@@ -3519,6 +3519,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Servisn�
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Predĺžiť servisný interval o 10. Ctrl+klik predĺži servisný interval o 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Skrátiť servisný interval o 10. Ctrl+klik pre skrátenie servisného intervalu o 5
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Premenovať vlak
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Pomenovať automobil
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Pomenovať loď

@@ -3547,6 +3547,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Servisni
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Povećaj servisni interval za 10. Ctrl+klik povećava servisni interval za 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Smanji servisni interval za 10. Ctrl+klik smanjuje servisni interval za 5.
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Imenuj vlak
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Imenuj cestovno vozilo
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Imenuj brod

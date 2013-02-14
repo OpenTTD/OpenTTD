@@ -3279,6 +3279,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Tempoh P
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Tambah 10 tempoh penyenggelaraan. Ctrl+Klik untuk tambah 5 tempoh penyenggelaraan
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Kurangkan 10 tempoh penyenggelaraan. Ctrl+Klik untuk kurangkan 5 tempoh penyenggelaraan
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nama keretapi
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nama kenderaan jalanraya
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nama kapal

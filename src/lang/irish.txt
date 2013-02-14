@@ -3014,6 +3014,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Eatramh 
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Méadaigh an t-eatramh seirbhísithe de 10. Méadaítear an t-eatramh seirbhísithe de 5 le Ctrl+Cliceáil
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Laghdaigh an t-eatramh seirbhísithe d 10. Laghdaítear an t-eatramh seirbhísithe de 5 le Ctrl+Cliceáil
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Ainmnigh traein
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Ainmnigh feithicil bóthair
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Ainmnigh long

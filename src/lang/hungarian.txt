@@ -3515,6 +3515,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Javítá
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Javítási időköz növelése 10-zel. Ctrl+kattintás 5-tel növeli
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Javítási időköz csökkentése 10-zel. Ctrl+Kattintás 5-tel csökkenti
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Vonat átnevezése
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Közúti jármű átnevezése
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Hajó átnevezése

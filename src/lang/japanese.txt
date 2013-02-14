@@ -3260,6 +3260,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}修理�
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}補修間隔を10日延ばす。CTRL+クリックで5日延ばせます。
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}補修間隔を10日縮める。CTRL+クリックで5日縮めます。
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}列車に名前を付ける
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}道路車両を名付ける
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}船舶を名付ける

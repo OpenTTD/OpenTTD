@@ -3031,6 +3031,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Prizorga
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Pliigu prizorgintervalon
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Malpliigu prizorgintervalon
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nomu trajnon
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nomi stratveturilon
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nomu ŝipon

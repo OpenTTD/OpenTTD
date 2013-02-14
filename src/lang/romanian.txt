@@ -3420,6 +3420,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Măreşte intervalul de service cu 10. Ctrl+click măreşte intervalul de service cu 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Micşorează intervalul de service cu 10. Ctrl+Click micşorează intervalul de service cu 5
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Numele trenului
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Numele autovehiculului
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Denumeşte această navă

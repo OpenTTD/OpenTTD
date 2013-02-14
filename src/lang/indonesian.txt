@@ -3407,6 +3407,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Jangka w
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Tambah jarak waktu perbaikan dengan 10. Ctrl+Click menambah jarak waktu perbaikan dengan 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Kurangi jarak waktu perbaikan dengan 10. Ctrl+Click mengurangi jarak waktu perbaikan dengan 5
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nama kereta
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nama kendaraan
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nama kapal

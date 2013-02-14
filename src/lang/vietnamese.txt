@@ -3451,6 +3451,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Tần su
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Tăng tần suất bảo trì lên 10. Ctrl+Click để tăng 5 thôi
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Giảm tần suất bảo trì lên 10. Ctrl+Click để giảm 5 thôi
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Đổi tên tàu hoả
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Đổi tên ôtô
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Đổi tên tàu thuỷ

@@ -2664,6 +2664,7 @@ STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} �
 
 
 
+
 # Extra buttons for train details windows
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}ความจุสินค้าทั้งหมดของรถไฟขบวนนี้:

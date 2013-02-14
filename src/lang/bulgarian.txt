@@ -3461,6 +3461,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Инте
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Удължава периода за сервиз с 10. Ctrl-click удължава периода за сервиз с 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Намалява периода за сервиз с 10. Ctrl-click намалява периода за сервиз с 5
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Име на влак
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Преименувай МПС-то
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Наименувай кораба

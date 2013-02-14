@@ -3452,6 +3452,11 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Augmenter l'intervalle d'entretien de 10.{}Ctrl-clic pour l'augmenter de 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Diminuer l'intervalle d'entretien de 10.{}Ctrl-clic pour le diminuer de 5.
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Modifier le type d’intervalle d'entretien
+STR_VEHICLE_DETAILS_DEFAULT                                     :Défaut
+STR_VEHICLE_DETAILS_DAYS                                        :Jours
+STR_VEHICLE_DETAILS_PERCENT                                     :Pourcentage
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Renommer le train
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Renommer le véhicule
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Rebaptiser le navire

@@ -2857,6 +2857,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Incrementa-lo intervalo dos servizos
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Disminuí-lo intervalo dos servizos
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Renomear tren
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Renomear vehículo de estrada
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Renomear barco

@@ -3641,6 +3641,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Осмо
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Увеличить интервал обслуживания на 10. Ctrl+щелчок увеличивает интервал обслуживания на 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Уменьшить интервал обслуживания на 10. Ctrl+щелчок уменьшает интервал обслуживания на 5.
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Название поезда
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Название автомобиля
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Название корабля

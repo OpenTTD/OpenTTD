@@ -1509,6 +1509,7 @@ STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Макс
 
 
 
+
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Име на авионот
 
 # Extra buttons for train details windows

@@ -2960,6 +2960,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}فاصل
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}افزایش مدت سرویس
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}کاهش مدت سرویس
 
+
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}نام گذاری قطار
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}نام گذاری کشتی
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}نامگذاری هواپیما
