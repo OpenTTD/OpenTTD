@@ -216,7 +216,7 @@ static void GetAvailableVideoMode(uint *w, uint *h)
 #define SDL_LoadBMP(file)	SDL_LoadBMP_RW(SDL_CALL SDL_RWFromFile(file, "rb"), 1)
 #endif
 
-static bool CreateMainSurface(uint w, uint h)
+bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 {
 	SDL_Surface *newscreen, *icon;
 	char caption[50];
@@ -394,7 +394,7 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 	return (key << 16) + sym->unicode;
 }
 
-static int PollEvent()
+int VideoDriver_SDL::PollEvent()
 {
 	SDL_Event ev;
 

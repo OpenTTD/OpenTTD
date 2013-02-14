@@ -34,6 +34,9 @@ public:
 	/* virtual */ bool ClaimMousePointer();
 
 	/* virtual */ const char *GetName() const { return "sdl"; }
+private:
+	int PollEvent();
+	bool CreateMainSurface(uint w, uint h);
 };
 
 /** Factory for the SDL video driver. */
