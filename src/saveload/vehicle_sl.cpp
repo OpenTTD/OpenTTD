@@ -17,6 +17,8 @@
 #include "../aircraft.h"
 #include "../station_base.h"
 #include "../effectvehicle_base.h"
+#include "../company_base.h"
+#include "../company_func.h"
 
 #include "saveload.h"
 
@@ -347,6 +349,19 @@ void AfterLoadVehicles(bool part_of_load)
 			/* Set the vehicle-local cargo age counter from the old global counter. */
 			FOR_ALL_VEHICLES(v) {
 				v->cargo_age_counter = _age_cargo_skip_counter;
+			}
+		}
+
+		if (IsSavegameVersionBefore(180)) {
+			/* Set service interval flags */
+			FOR_ALL_VEHICLES(v) {
+				if (!v->IsPrimaryVehicle()) continue;
+
+				const Company *c = Company::Get(v->owner);
+				int interval = CompanyServiceInterval(c, v->type);
+
+				v->SetServiceIntervalIsCustom(v->GetServiceInterval() != interval);
+				v->SetServiceIntervalIsPercent(c->settings.vehicle.servint_ispercent);
 			}
 		}
 	}

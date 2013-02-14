@@ -30,6 +30,7 @@
 #include "order_backup.h"
 #include "ship.h"
 #include "newgrf.h"
+#include "company_base.h"
 
 #include "table/strings.h"
 
@@ -1030,7 +1031,10 @@ CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  * @param tile unused
  * @param flags type of operation
  * @param p1 vehicle ID that is being service-interval-changed
- * @param p2 new service interval
+ * @param p2 bitmask
+ * - p2 = (bit  0-15) - new service interval
+ * - p2 = (bit 16)    - service interval is custom flag
+ * - p2 = (bit 17)    - service interval is percentage flag
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -1042,11 +1046,22 @@ CommandCost CmdChangeServiceInt(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
 
-	uint16 serv_int = GetServiceIntervalClamped(p2, v->owner); // Double check the service interval from the user-input
-	if (serv_int != p2) return CMD_ERROR;
+	const Company *company = Company::Get(v->owner);
+	bool iscustom  = HasBit(p2, 16);
+	bool ispercent = iscustom ? HasBit(p2, 17) : company->settings.vehicle.servint_ispercent;
+
+	uint16 serv_int;
+	if (iscustom) {
+		serv_int = GB(p2, 0, 16);
+		if (serv_int != GetServiceIntervalClamped(serv_int, ispercent)) return CMD_ERROR;
+	} else {
+		serv_int = CompanyServiceInterval(company, v->type);
+	}
 
 	if (flags & DC_EXEC) {
 		v->SetServiceInterval(serv_int);
+		v->SetServiceIntervalIsCustom(iscustom);
+		v->SetServiceIntervalIsPercent(ispercent);
 		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 	}
 

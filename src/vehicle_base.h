@@ -648,6 +648,14 @@ public:
 	inline uint16 GetServiceInterval() const { return GB(this->service_interval, 0, 16); }
 	inline void SetServiceInterval(uint16 interval) { SB(this->service_interval, 0, 16, interval); }
 
+	inline bool ServiceIntervalIsCustom() const { return HasBit(this->service_interval, 31); }
+
+	inline bool ServiceIntervalIsPercent() const { return HasBit(this->service_interval, 30); }
+
+	inline void SetServiceIntervalIsCustom(bool on) { SB(this->service_interval, 31, 1, on); }
+
+	inline void SetServiceIntervalIsPercent(bool on) { SB(this->service_interval, 30, 1, on); }
+
 private:
 	/**
 	 * Advance cur_real_order_index to the next real order.

@@ -1170,3 +1170,21 @@ CommandCost CmdRenamePresident(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	return CommandCost();
 }
+
+/**
+ * Get the service interval for the given company and vehicle type.
+ * @param c The company, or NULL for client-default settings.
+ * @param type The vehicle type to get the interval for.
+ * @return The service interval.
+ */
+int CompanyServiceInterval(const Company *c, VehicleType type)
+{
+	const VehicleDefaultSettings *vds = (c == NULL) ? &_settings_client.company.vehicle : &c->settings.vehicle;
+	switch (type) {
+		default: NOT_REACHED();
+		case VEH_TRAIN:    return vds->servint_trains;
+		case VEH_ROAD:     return vds->servint_roadveh;
+		case VEH_AIRCRAFT: return vds->servint_aircraft;
+		case VEH_SHIP:     return vds->servint_ships;
+	}
+}

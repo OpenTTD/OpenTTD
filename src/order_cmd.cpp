@@ -1819,9 +1819,9 @@ void DeleteVehicleOrders(Vehicle *v, bool keep_orderlist, bool reset_order_indic
  * @param company_id the owner of the vehicle
  * @return Clamped service interval
  */
-uint16 GetServiceIntervalClamped(uint interval, CompanyID company_id)
+uint16 GetServiceIntervalClamped(uint interval, bool ispercent)
 {
-	return (Company::Get(company_id)->settings.vehicle.servint_ispercent) ? Clamp(interval, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : Clamp(interval, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS);
+	return ispercent ? Clamp(interval, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : Clamp(interval, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS);
 }
 
 /**
