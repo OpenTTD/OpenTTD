@@ -49,7 +49,7 @@ enum VehicleDetailsWidgets {
 	WID_VD_TOP_DETAILS,                 ///< Panel with generic details.
 	WID_VD_INCREASE_SERVICING_INTERVAL, ///< Increase the servicing interval.
 	WID_VD_DECREASE_SERVICING_INTERVAL, ///< Decrease the servicing interval.
-	WID_VD_DEFAULT_SERVICING_INTERVAL,  ///< Toggle default servicing interval.
+	WID_VD_SERVICE_INTERVAL_DROPDOWN,   ///< Dropdown to select default/days/percent service interval.
 	WID_VD_SERVICING_INTERVAL,          ///< Information about the servicing interval.
 	WID_VD_MIDDLE_DETAILS,              ///< Details for non-trains.
 	WID_VD_MATRIX,                      ///< List of details for trains.

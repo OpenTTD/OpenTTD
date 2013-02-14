@@ -1687,8 +1687,8 @@ static const NWidgetPart _nested_nontrain_vehicle_details_widgets[] = {
 				SetDataTip(AWV_DECREASE, STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP),
 		NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_VD_INCREASE_SERVICING_INTERVAL), SetFill(0, 1),
 				SetDataTip(AWV_INCREASE, STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_VD_DEFAULT_SERVICING_INTERVAL), SetFill(0, 1),
-				SetDataTip(STR_BUTTON_DEFAULT, 0),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_VD_SERVICE_INTERVAL_DROPDOWN), SetFill(0, 1),
+				SetDataTip(STR_EMPTY, STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP),
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_VD_SERVICING_INTERVAL), SetFill(1, 1), SetResize(1, 0), EndContainer(),
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
@@ -1713,8 +1713,8 @@ static const NWidgetPart _nested_train_vehicle_details_widgets[] = {
 				SetDataTip(AWV_DECREASE, STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP),
 		NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_VD_INCREASE_SERVICING_INTERVAL), SetFill(0, 1),
 				SetDataTip(AWV_INCREASE, STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_VD_DEFAULT_SERVICING_INTERVAL), SetFill(0, 1),
-				SetDataTip(STR_BUTTON_DEFAULT, 0),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_VD_SERVICE_INTERVAL_DROPDOWN), SetFill(0, 1),
+				SetDataTip(STR_EMPTY, STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP),
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_VD_SERVICING_INTERVAL), SetFill(1, 1), SetResize(1, 0), EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -1736,6 +1736,13 @@ extern void DrawTrainDetails(const Train *v, int left, int right, int y, int vsc
 extern void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y);
 extern void DrawShipDetails(const Vehicle *v, int left, int right, int y);
 extern void DrawAircraftDetails(const Aircraft *v, int left, int right, int y);
+
+static StringID _service_interval_dropdown[] = {
+	STR_VEHICLE_DETAILS_DEFAULT,
+	STR_VEHICLE_DETAILS_DAYS,
+	STR_VEHICLE_DETAILS_PERCENT,
+	INVALID_STRING_ID,
+};
 
 /** Class for managing the vehicle details window. */
 struct VehicleDetailsWindow : Window {
@@ -1851,6 +1858,16 @@ struct VehicleDetailsWindow : Window {
 				resize->height = WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM;
 				size->height = 4 * resize->height;
 				break;
+
+			case WID_VD_SERVICE_INTERVAL_DROPDOWN: {
+				StringID *strs = _service_interval_dropdown;
+				while (*strs != INVALID_STRING_ID) {
+					*size = maxdim(*size, GetStringBoundingBox(*strs++));
+				}
+				size->width += padding.width;
+				size->height = FONT_HEIGHT_NORMAL + WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM;
+				break;
+			}
 
 			case WID_VD_SERVICING_INTERVAL:
 				SetDParamMaxValue(0, MAX_SERVINT_DAYS); // Roughly the maximum interval
@@ -2011,7 +2028,10 @@ struct VehicleDetailsWindow : Window {
 			WID_VD_DECREASE_SERVICING_INTERVAL,
 			WIDGET_LIST_END);
 
-		this->SetWidgetLoweredState(WID_VD_DEFAULT_SERVICING_INTERVAL, !v->ServiceIntervalIsCustom());
+		StringID str = v->ServiceIntervalIsCustom() ?
+			(v->ServiceIntervalIsPercent() ? STR_VEHICLE_DETAILS_PERCENT : STR_VEHICLE_DETAILS_DAYS) :
+			STR_VEHICLE_DETAILS_DEFAULT;
+		this->GetWidget<NWidgetCore>(WID_VD_SERVICE_INTERVAL_DROPDOWN)->widget_data = str;
 
 		this->DrawWidgets();
 	}
@@ -2040,13 +2060,9 @@ struct VehicleDetailsWindow : Window {
 				break;
 			}
 
-			case WID_VD_DEFAULT_SERVICING_INTERVAL: {
+			case WID_VD_SERVICE_INTERVAL_DROPDOWN: {
 				const Vehicle *v = Vehicle::Get(this->window_number);
-				if (_ctrl_pressed) {
-					DoCommandP(v->tile, v->index, v->service_interval | (1 << 16) | (!v->ServiceIntervalIsPercent() << 17), CMD_CHANGE_SERVICE_INT | CMD_MSG(STR_ERROR_CAN_T_CHANGE_SERVICING));
-				} else {
-					DoCommandP(v->tile, v->index, v->service_interval | (!v->ServiceIntervalIsCustom() << 16) | (v->ServiceIntervalIsPercent() << 17), CMD_CHANGE_SERVICE_INT | CMD_MSG(STR_ERROR_CAN_T_CHANGE_SERVICING));
-				}
+				ShowDropDownMenu(this, _service_interval_dropdown, v->ServiceIntervalIsCustom() ? (v->ServiceIntervalIsPercent() ? 2 : 1) : 0, widget, 0, 0);
 				break;
 			}
 
@@ -2065,6 +2081,20 @@ struct VehicleDetailsWindow : Window {
 				this->tab = (TrainDetailsWindowTabs)(widget - WID_VD_DETAILS_CARGO_CARRIED);
 				this->SetDirty();
 				break;
+		}
+	}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		switch (widget) {
+			case WID_VD_SERVICE_INTERVAL_DROPDOWN: {
+				const Vehicle *v = Vehicle::Get(this->window_number);
+				bool iscustom = index != 0;
+				bool ispercent = iscustom ? (index == 2) : Company::Get(v->owner)->settings.vehicle.servint_ispercent;
+				uint16 interval = GetServiceIntervalClamped(v->GetServiceInterval(), ispercent);
+				DoCommandP(v->tile, v->index, interval | (iscustom << 16) | (ispercent << 17), CMD_CHANGE_SERVICE_INT | CMD_MSG(STR_ERROR_CAN_T_CHANGE_SERVICING));
+				break;
+			}
 		}
 	}
 
