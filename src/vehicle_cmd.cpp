@@ -843,6 +843,8 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 				/* this is a front engine or not a train. */
 				w_front = w;
 				w->service_interval = v->service_interval;
+				w->SetServiceIntervalIsCustom(v->ServiceIntervalIsCustom());
+				w->SetServiceIntervalIsPercent(v->ServiceIntervalIsPercent());
 			}
 			w_rear = w; // trains needs to know the last car in the train, so they can add more in next loop
 		}

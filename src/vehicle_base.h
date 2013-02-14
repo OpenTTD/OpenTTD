@@ -45,6 +45,8 @@ enum VehicleFlags {
 	VF_AUTOFILL_PRES_WAIT_TIME, ///< Whether non-destructive auto-fill should preserve waiting times
 	VF_STOP_LOADING,            ///< Don't load anymore during the next load cycle.
 	VF_PATHFINDER_LOST,         ///< Vehicle's pathfinder is lost.
+	VF_SERVINT_IS_CUSTOM,       ///< Service interval is custom.
+	VF_SERVINT_IS_PERCENT,      ///< Service interval is percent.
 };
 
 /** Bit numbers used to indicate which of the #NewGRFCache values are valid. */
@@ -645,16 +647,17 @@ public:
 	void UpdateVisualEffect(bool allow_power_change = true);
 	void ShowVisualEffect() const;
 
-	inline uint16 GetServiceInterval() const { return GB(this->service_interval, 0, 16); }
-	inline void SetServiceInterval(uint16 interval) { SB(this->service_interval, 0, 16, interval); }
+	inline uint16 GetServiceInterval() const { return this->service_interval; }
 
-	inline bool ServiceIntervalIsCustom() const { return HasBit(this->service_interval, 31); }
+	inline void SetServiceInterval(uint16 interval) { this->service_interval = interval; }
 
-	inline bool ServiceIntervalIsPercent() const { return HasBit(this->service_interval, 30); }
+	inline bool ServiceIntervalIsCustom() const { return HasBit(this->vehicle_flags, VF_SERVINT_IS_CUSTOM); }
 
-	inline void SetServiceIntervalIsCustom(bool on) { SB(this->service_interval, 31, 1, on); }
+	inline bool ServiceIntervalIsPercent() const { return HasBit(this->vehicle_flags, VF_SERVINT_IS_PERCENT); }
 
-	inline void SetServiceIntervalIsPercent(bool on) { SB(this->service_interval, 30, 1, on); }
+	inline void SetServiceIntervalIsCustom(bool on) { SB(this->vehicle_flags, VF_SERVINT_IS_CUSTOM, 1, on); }
+
+	inline void SetServiceIntervalIsPercent(bool on) { SB(this->vehicle_flags, VF_SERVINT_IS_PERCENT, 1, on); }
 
 private:
 	/**

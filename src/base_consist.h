@@ -24,12 +24,12 @@ struct BaseConsist {
 	int32 lateness_counter;             ///< How many ticks late (or early if negative) this vehicle is.
 	Date timetable_start;               ///< When the vehicle is supposed to start the timetable.
 
-	uint32 service_interval;            ///< The interval for (automatic) servicing; either in days or %.
+	uint16 service_interval;            ///< The interval for (automatic) servicing; either in days or %.
 
 	VehicleOrderID cur_real_order_index;///< The index to the current real (non-implicit) order
 	VehicleOrderID cur_implicit_order_index;///< The index to the current implicit order
 
-	byte vehicle_flags;                 ///< Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
+	uint16 vehicle_flags;               ///< Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
 
 	BaseConsist() : name(NULL) {}
 	virtual ~BaseConsist();

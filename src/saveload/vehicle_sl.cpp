@@ -655,8 +655,9 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		 SLE_CONDVAR(Vehicle, max_age,               SLE_INT32,                   31, SL_MAX_VERSION),
 		 SLE_CONDVAR(Vehicle, date_of_last_service,  SLE_FILE_U16 | SLE_VAR_I32,   0,  30),
 		 SLE_CONDVAR(Vehicle, date_of_last_service,  SLE_INT32,                   31, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, service_interval,      SLE_FILE_U16 | SLE_VAR_U32,   0,  30),
-		 SLE_CONDVAR(Vehicle, service_interval,      SLE_UINT32,                  31, SL_MAX_VERSION),
+		 SLE_CONDVAR(Vehicle, service_interval,      SLE_UINT16,                   0,  30),
+		 SLE_CONDVAR(Vehicle, service_interval,      SLE_FILE_U32 | SLE_VAR_U16,  31, 179),
+		 SLE_CONDVAR(Vehicle, service_interval,      SLE_UINT16,                 180, SL_MAX_VERSION),
 		     SLE_VAR(Vehicle, reliability,           SLE_UINT16),
 		     SLE_VAR(Vehicle, reliability_spd_dec,   SLE_UINT16),
 		     SLE_VAR(Vehicle, breakdown_ctr,         SLE_UINT8),
@@ -668,7 +669,8 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 
 		     SLE_VAR(Vehicle, load_unload_ticks,     SLE_UINT16),
 		SLEG_CONDVAR(         _cargo_paid_for,       SLE_UINT16,                  45, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, vehicle_flags,         SLE_UINT8,                   40, SL_MAX_VERSION),
+		 SLE_CONDVAR(Vehicle, vehicle_flags,         SLE_FILE_U8 | SLE_VAR_U16,   40, 179),
+		 SLE_CONDVAR(Vehicle, vehicle_flags,         SLE_UINT16,                 180, SL_MAX_VERSION),
 
 		 SLE_CONDVAR(Vehicle, profit_this_year,      SLE_FILE_I32 | SLE_VAR_I64,   0,  64),
 		 SLE_CONDVAR(Vehicle, profit_this_year,      SLE_INT64,                   65, SL_MAX_VERSION),
