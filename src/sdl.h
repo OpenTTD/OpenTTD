@@ -57,6 +57,8 @@ void SdlClose(uint32 x);
 		Uint32 (SDLCALL *SDL_MapRGB)(SDL_PixelFormat *, Uint8, Uint8, Uint8);
 		int (SDLCALL *SDL_VideoModeOK)(int, int, int, Uint32);
 		SDL_version *(SDLCALL *SDL_Linked_Version)();
+		int (SDLCALL *SDL_BlitSurface)(SDL_Surface *, SDL_Rect *, SDL_Surface *, SDL_Rect *);
+		SDL_Surface *(SDLCALL *SDL_CreateRGBSurface)(Uint32, int, int, int, Uint32, Uint32, Uint32, Uint32);
 	};
 
 	extern SDLProcs sdl_proc;
