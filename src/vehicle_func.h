@@ -176,6 +176,4 @@ void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8 num_vehicles);
 
 void CheckCargoCapacity(Vehicle *v);
 
-int CompanyServiceInterval(const Company *c, VehicleType type);
-
 #endif /* VEHICLE_FUNC_H */

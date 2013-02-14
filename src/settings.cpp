@@ -856,11 +856,14 @@ static bool UpdateConsists(int32 p1)
 /* Check service intervals of vehicles, p1 is value of % or day based servicing */
 static bool CheckInterval(int32 p1)
 {
+	bool update_vehicles;
 	VehicleDefaultSettings *vds;
 	if (_game_mode == GM_MENU || !Company::IsValidID(_current_company)) {
 		vds = &_settings_client.company.vehicle;
+		update_vehicles = false;
 	} else {
 		vds = &Company::Get(_current_company)->settings.vehicle;
+		update_vehicles = true;
 	}
 
 	if (p1 != 0) {
@@ -875,9 +878,70 @@ static bool CheckInterval(int32 p1)
 		vds->servint_ships    = 360;
 	}
 
+	if (update_vehicles) {
+		const Company *c = Company::Get(_current_company);
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->owner == _current_company && v->IsPrimaryVehicle() && !v->ServiceIntervalIsCustom()) {
+				v->SetServiceInterval(CompanyServiceInterval(c, v->type));
+				v->SetServiceIntervalIsPercent(p1 != 0);
+			}
+		}
+	}
+
 	InvalidateDetailsWindow(0);
 
 	return true;
+}
+
+static bool UpdateInterval(VehicleType type, int32 p1)
+{
+	bool update_vehicles;
+	VehicleDefaultSettings *vds;
+	if (_game_mode == GM_MENU || !Company::IsValidID(_current_company)) {
+		vds = &_settings_client.company.vehicle;
+		update_vehicles = false;
+	} else {
+		vds = &Company::Get(_current_company)->settings.vehicle;
+		update_vehicles = true;
+	}
+
+	/* Test if the interval is valid */
+	uint16 interval = GetServiceIntervalClamped(p1, vds->servint_ispercent);
+	if (interval != p1) return false;
+
+	if (update_vehicles) {
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->owner == _current_company && v->type == type && v->IsPrimaryVehicle() && !v->ServiceIntervalIsCustom()) {
+				v->SetServiceInterval(p1);
+			}
+		}
+	}
+
+	InvalidateDetailsWindow(0);
+
+	return true;
+}
+
+static bool UpdateIntervalTrains(int32 p1)
+{
+	return UpdateInterval(VEH_TRAIN, p1);
+}
+
+static bool UpdateIntervalRoadVeh(int32 p1)
+{
+	return UpdateInterval(VEH_ROAD, p1);
+}
+
+static bool UpdateIntervalShips(int32 p1)
+{
+	return UpdateInterval(VEH_SHIP, p1);
+}
+
+static bool UpdateIntervalAircraft(int32 p1)
+{
+	return UpdateInterval(VEH_AIRCRAFT, p1);
 }
 
 static bool TrainAccelerationModelChanged(int32 p1)
