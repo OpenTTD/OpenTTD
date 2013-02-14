@@ -1981,7 +1981,7 @@ struct VehicleDetailsWindow : Window {
 
 			case WID_VD_SERVICING_INTERVAL:
 				/* Draw service interval text */
-				SetDParam(0, v->service_interval);
+				SetDParam(0, v->GetServiceInterval());
 				SetDParam(1, v->date_of_last_service);
 				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + (r.bottom - r.top + 1 - FONT_HEIGHT_NORMAL) / 2,
 						Company::Get(v->owner)->settings.vehicle.servint_ispercent ? STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT : STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS);
@@ -2027,8 +2027,8 @@ struct VehicleDetailsWindow : Window {
 				const Vehicle *v = Vehicle::Get(this->window_number);
 
 				mod = (widget == WID_VD_DECREASE_SERVICING_INTERVAL) ? -mod : mod;
-				mod = GetServiceIntervalClamped(mod + v->service_interval, v->owner);
-				if (mod == v->service_interval) return;
+				mod = GetServiceIntervalClamped(mod + v->GetServiceInterval(), v->owner);
+				if (mod == v->GetServiceInterval()) return;
 
 				DoCommandP(v->tile, v->index, mod, CMD_CHANGE_SERVICE_INT | CMD_MSG(STR_ERROR_CAN_T_CHANGE_SERVICING));
 				break;

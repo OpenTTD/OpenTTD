@@ -289,7 +289,7 @@ CommandCost CmdBuildRoadVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 		v->max_age = e->GetLifeLengthInDays();
 		_new_vehicle_id = v->index;
 
-		v->service_interval = Company::Get(v->owner)->settings.vehicle.servint_roadveh;
+		v->SetServiceInterval(Company::Get(v->owner)->settings.vehicle.servint_roadveh);
 
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;

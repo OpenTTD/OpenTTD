@@ -645,6 +645,9 @@ public:
 	void UpdateVisualEffect(bool allow_power_change = true);
 	void ShowVisualEffect() const;
 
+	inline uint16 GetServiceInterval() const { return GB(this->service_interval, 0, 16); }
+	inline void SetServiceInterval(uint16 interval) { SB(this->service_interval, 0, 16, interval); }
+
 private:
 	/**
 	 * Advance cur_real_order_index to the next real order.

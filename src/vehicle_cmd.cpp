@@ -1046,7 +1046,7 @@ CommandCost CmdChangeServiceInt(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	if (serv_int != p2) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		v->service_interval = serv_int;
+		v->SetServiceInterval(serv_int);
 		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 	}
 

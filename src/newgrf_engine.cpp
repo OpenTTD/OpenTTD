@@ -733,8 +733,8 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 		}
 		case 0x12: return Clamp(v->date_of_last_service - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 0xFFFF);
 		case 0x13: return GB(Clamp(v->date_of_last_service - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 0xFFFF), 8, 8);
-		case 0x14: return v->service_interval;
-		case 0x15: return GB(v->service_interval, 8, 8);
+		case 0x14: return v->GetServiceInterval();
+		case 0x15: return GB(v->GetServiceInterval(), 8, 8);
 		case 0x16: return v->last_station_visited;
 		case 0x17: return v->tick_counter;
 		case 0x18:

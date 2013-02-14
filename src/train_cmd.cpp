@@ -736,7 +736,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 		v->railtype = rvi->railtype;
 		_new_vehicle_id = v->index;
 
-		v->service_interval = Company::Get(_current_company)->settings.vehicle.servint_trains;
+		v->SetServiceInterval(Company::Get(_current_company)->settings.vehicle.servint_trains);
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
 		v->cur_image = SPR_IMG_QUERY;

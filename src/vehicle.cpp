@@ -112,8 +112,8 @@ bool Vehicle::NeedsServicing() const
 	/* Are we ready for the next service cycle? */
 	const Company *c = Company::Get(this->owner);
 	if (c->settings.vehicle.servint_ispercent ?
-			(this->reliability >= this->GetEngine()->reliability * (100 - this->service_interval) / 100) :
-			(this->date_of_last_service + this->service_interval >= _date)) {
+			(this->reliability >= this->GetEngine()->reliability * (100 - this->GetServiceInterval()) / 100) :
+			(this->date_of_last_service + this->GetServiceInterval() >= _date)) {
 		return false;
 	}
 

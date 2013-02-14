@@ -24,7 +24,7 @@ struct BaseConsist {
 	int32 lateness_counter;             ///< How many ticks late (or early if negative) this vehicle is.
 	Date timetable_start;               ///< When the vehicle is supposed to start the timetable.
 
-	Date service_interval;              ///< The interval for (automatic) servicing; either in days or %.
+	uint32 service_interval;            ///< The interval for (automatic) servicing; either in days or %.
 
 	VehicleOrderID cur_real_order_index;///< The index to the current real (non-implicit) order
 	VehicleOrderID cur_implicit_order_index;///< The index to the current implicit order

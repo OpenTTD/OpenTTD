@@ -302,7 +302,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *
 		v->targetairport = GetStationIndex(tile);
 		v->SetNext(u);
 
-		v->service_interval = Company::Get(_current_company)->settings.vehicle.servint_aircraft;
+		v->SetServiceInterval(Company::Get(_current_company)->settings.vehicle.servint_aircraft);
 
 		v->date_of_last_service = _date;
 		v->build_year = u->build_year = _cur_year;
