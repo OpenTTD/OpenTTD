@@ -3451,6 +3451,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Huoltov�
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Kasvata huoltoväliä kymmenellä. Ctrl+Klik kasvattaa huoltoväliä viidellä
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Pienennä huoltoväliä kymmenellä. Ctrl+Klik vähentää huoltoväliä viidellä
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Muuta huoltovälien tyyppiä
+STR_VEHICLE_DETAILS_DEFAULT                                     :Oletus
+STR_VEHICLE_DETAILS_DAYS                                        :Päiviä
+STR_VEHICLE_DETAILS_PERCENT                                     :Prosentteja
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nimeä juna
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nimeä ajoneuvo

@@ -3452,6 +3452,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}점검 �
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 주기를 10씩 증가시킵니다. Ctrl+Click시 점검 주기를 5씩 증가시킵니다.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 주기를 10씩 감소시킵니다. Ctrl+Click 시 점검 주기를 5씩 감소시킵니다.
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}점검 주기의 기준을 변경합니다.
+STR_VEHICLE_DETAILS_DEFAULT                                     :기본
+STR_VEHICLE_DETAILS_DAYS                                        :날짜
+STR_VEHICLE_DETAILS_PERCENT                                     :신뢰도
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}열차 이름 지정
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}자동차 이름 지정

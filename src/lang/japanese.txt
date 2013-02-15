@@ -348,7 +348,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :OpenTTDを終�
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ゲームオプションの設定
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :追加機能の設定
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :拡張設定
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AIとかスクリプトの設定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRFの設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明度の設定
@@ -1188,6 +1188,7 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :町名に人口
 STR_CONFIG_SETTING_LAND_GENERATOR                               :地形作成：{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :旧式
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :石油採掘施設のマップ端からの距離: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪線の位置：{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地形のでこぼこ（TerraGenesis のみ）：{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :特にスムーズ
@@ -3131,6 +3132,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}値段�
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}値段：{CURRENCY_LONG}　最高速度：{VELOCITY}{}収容能力：{CARGO_LONG}{}維持費：一年間{CURRENCY_LONG}
 
 # Autoreplace window
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING}の交換 - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :列車
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :道路車両
 STR_REPLACE_VEHICLE_SHIP                                        :船舶

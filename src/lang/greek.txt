@@ -4170,15 +4170,15 @@ STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Δεν �
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το πλοίο...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το αεροσκάφος...
 
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Δεν μπορεί να στάλθει το τρένο στο αμαξοστάσιο...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Δεν μπορεί να στάλει το όχημα δρόμου στο αμαξοστάσιο...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Δεν μπορεί να στάλει το πλοίο στο ναυπηγείο...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Δεν μπορεί να στάλει το αεροσκάφος στο υπόστεγο...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Δεν μπορεί να σταλθεί το τρένο στο αμαξοστάσιο...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Δεν μπορεί να σταλθεί το όχημα στο αμαξοστάσιο...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Δεν μπορεί να σταλθεί το πλοίο στο ναυπηγείο...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Δεν μπορεί να σταλθεί το αεροσκάφος στο υπόστεγο...
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Δεν μπορεί να αγοραστεί όχημα σιδηρόδρομου...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Δεν μπορεί να αγοραστεί όχημα δρόμου...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Δεν μπορεί να αγοραστεί πλοίο...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Δεν μπόρει να αγοραστεί αεροσκάφος...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Δεν μπορεί να αγοραστεί αεροσκάφος...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Δεν μπορεί να μετονομαστεί ο τύπος τρένου...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Δεν μπορεί να μετονομαστεί ο τύπος οχήματος δρόμου...
@@ -4205,21 +4205,21 @@ STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Δεν �
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Δεν αντιστρέφεται η κατεύθυνση του τρένου...
 STR_ERROR_TRAIN_START_NO_POWER                                  :Το τραίνο δεν έχει ενέργεια
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Δεν γίνεται το όχημα να αλάξει πορεία...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Δεν γίνεται να αλλάξει πορεία το όχημα...
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Το αεροσκάφος είναι σε πτήση
 
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Δεν υπάρχει άλλος χώρος για εντολές
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Πάρα πολλές εντολές
-STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Δεν μπορεί να γίνει εισαγώγη νέας εντολής...
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Δεν μπόρει να διαγραφεί η εντολή...
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Δεν μπορεί να γίνει εισαγωγή νέας εντολής...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Δεν μπορεί να διαγραφεί η εντολή...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Δεν μπορεί να τροποποιηθεί η εντολή...
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Δεν μπορεί να μετακινηθεί η εντολή...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Δεν μπορεί να παραληφθεί η τρέχουσα εντολή...
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Δεν μπορεί να παραληφθεί για τη επιλεγμένη εντολή...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Δεν μπορεί να παραληφθεί για την επιλεγμένη εντολή...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... το όχημα δεν μπορεί να πάει σε όλους τους σταθμούς
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... το όχημα δεν μπορεί να πάει σε αυτό τον σταθμό
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... το όχημα δεν μπορεί να πάει σε αυτόν τον σταθμό
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ένα όχημα που μοιράζεται αυτή την εντολή δεν μπορεί να πάει σε εκείνο τον σταθμό
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Αδύνατο να μοιραστεί η λίστα εντολών...
@@ -4231,7 +4231,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... δε
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Δεν μπορεί να δρομολογηθεί το όχημα...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Τα οχήματα μπορούν να περιμένουν μόνο στους σταθμούς
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Αυτό το όχημα δεν σταματάει σε αυτό το σταθμό
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Αυτό το όχημα δεν σταματάει σε αυτόν τον σταθμό
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... πάρα πολλά σήματα
@@ -4254,14 +4254,14 @@ STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Ξενοδοχ�
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :Άγαλμα
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Συντριβάνι
 STR_TOWN_BUILDING_NAME_PARK_1                                   :Πάρκο
-STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Συγκρότημα Γραφείων
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Συγκρότημα γραφείων
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Καταστήματα και γραφεία
 STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Μοντέρνο κτίριο γραφείων
 STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Αποθήκη
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Συγκρότημα γραφείων
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :Γήπεδο
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Παλιά σπίτια
-STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Χωράφια
+STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Αγροικίες
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Σπίτια
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Διαμερίσματα
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Ψηλό συγκρότημα γραφείων
@@ -4274,9 +4274,9 @@ STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Σπίτια
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Κινηματογράφος
 STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Εμπορικό κέντρο
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Ιγκλού
-STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Σκηνές ινδιάνων
+STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Σκηνές Ινδιάνων
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Σπίτι-Καφετιέρα
-STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Τράπεζα-κουμπαράς
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Τράπεζα-Κουμπαράς
 
 ##id 0x4800
 # industry names
@@ -4338,7 +4338,7 @@ STR_SV_STNAME_SOUTH                                             :Νότιο {STR
 STR_SV_STNAME_EAST                                              :Ανατολικό {STRING}
 STR_SV_STNAME_WEST                                              :Δυτικό {STRING}
 STR_SV_STNAME_CENTRAL                                           :Κεντρικό {STRING}
-STR_SV_STNAME_TRANSFER                                          :Μετεπιβίβασης {STRING}
+STR_SV_STNAME_TRANSFER                                          :Μετεπιβίβαση {STRING}
 STR_SV_STNAME_HALT                                              :Όρια {STRING}
 STR_SV_STNAME_VALLEY                                            :Κοιλάδα {STRING}
 STR_SV_STNAME_HEIGHTS                                           :Λόφοι {STRING}
@@ -4346,11 +4346,11 @@ STR_SV_STNAME_WOODS                                             :Δάσος {STR
 STR_SV_STNAME_LAKESIDE                                          :Λίμνη {STRING}
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Ανταλλαγής
 STR_SV_STNAME_AIRPORT                                           :Αεροδρόμιο {STRING}
-STR_SV_STNAME_OILFIELD                                          :{G=m}Πετρελαιοπηγές {STRING}
-STR_SV_STNAME_MINES                                             :{G=n}Ορυχεία {STRING}
-STR_SV_STNAME_DOCKS                                             :{G=n}Λιμάνι {STRING}
-STR_SV_STNAME_BUOY                                              :{G=f}{STRING}
-STR_SV_STNAME_WAYPOINT                                          :{G=n}{STRING}
+STR_SV_STNAME_OILFIELD                                          :Πετρελαιοπηγές {STRING}
+STR_SV_STNAME_MINES                                             :Ορυχεία {STRING}
+STR_SV_STNAME_DOCKS                                             :Λιμάνι {STRING}
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :Παράρτημα {STRING}
 STR_SV_STNAME_SIDINGS                                           :Παράκαμψη {STRING}
@@ -4372,26 +4372,26 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Cho
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Πετρελαίου
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Πετρελαίου
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Ατμοκίνητο)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (Ατμοκίνητο)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (Ατμοκίνητο)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (Ατμοκίνητο)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney «Jubilee» (Ατμοκίνητο)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu «A4» (Ατμοκίνητο)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH «8P» (Ατμοκίνητο)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (Πετρελαίου)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (Πετρελαίου)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (Πετρελαίου)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (Πετρελαίου)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (Πετρελαίου)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :«Dash» (Πετρελαίου)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry «25» (Πετρελαίου)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU «37» (Πετρελαίου)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss «47» (Πετρελαίου)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (Πετρελαίου)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (Πετρελαίου)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (Πετρελαίου)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (Πετρελαίου)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (Πετρελαίου)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (Πετρελαίου)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (Πετρελαίου)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Ηλεκτρικό)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Ηλεκτρικό)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Ηλεκτρικό)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Ηλεκτρικό)
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Βαγόνι επιβατών
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH «125» (Πετρελαίου)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH «30» (Ηλεκτρικό)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH «40» (Ηλεκτρικό)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :«T.I.M.» (Ηλεκτρικό)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :«AsiaStar» (Ηλεκτρικό)
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Βαγόνι Επιβατών
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Βαγόνι Αλληλογραφίας
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Βαγόνι Άνθρακα
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Βαγόνι Πετρελαίου
@@ -4418,8 +4418,8 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Βαγόνι Π
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Βαγόνι Μπαταριών
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Νταλίκα Αναψυκτικών
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Βαγόνι Πλαστικού
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Ηλεκτρικό)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Ηλεκτρικό)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :«X2001» (Ηλεκτρικό)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :«Millennium Z1» (Ηλεκτρικό)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Επιβατικό Βαγόνι
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Βαγόνι Αλληλογραφίας
@@ -4448,10 +4448,10 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Βαγόνι Π
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Βαγόνι Μπαταριών
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Βαγόνι Αναψυκτικών
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Βαγόνι Πλαστικού
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Ηλεκτρικό)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Ηλεκτρικό)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (Ηλεκτρικό)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (Ηλεκτρικό)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 «Leviathan» (Ηλεκτρικό)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 «Cyclops» (Ηλεκτρικό)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 «Pegasus» (Ηλεκτρικό)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 «Chimaera» (Ηλεκτρικό)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Επιβατικό Βαγόνι
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Βαγόνι Αλληλογραφίας
@@ -4499,9 +4499,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Φορτηγό 
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Βυτίο Πετρελαίου Witcombe
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Βυτίο Πετρελαίου Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Βυτίο Πετρελαίου Perry
-STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Ημιφορτηγό μεταφοράς ζώων Talbott
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Ημιφορτηγό μεταφοράς ζώων Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Ημιφορτηγό μεταφοράς ζώων Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Ημιφορτηγό Μεταφοράς Ζώων Talbott
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Ημιφορτηγό Μεταφοράς Ζώων Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Ημιφορτηγό Μεταφοράς Ζώων Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Φορτηγό Αγαθών Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Φορτηγό Αγαθών Craighead
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Φορτηγό Αγαθών Goss
@@ -4511,15 +4511,15 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Φορτηγό 
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Φορτηγό Ξυλείας Witcombe
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Φορτηγό Ξυλείας Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Φορτηγό Ξυλείας Moreland
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :Φορτηγό μεταλλεύματος σιδήρου MPS
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Φορτηγό μεταλλεύματος σιδήρου Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Φορτηγό μεταλλεύματος σιδήρου Chippy
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Φορτηγό χάλυβα Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Φορτηγο χάλυβα Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Φορτηγό χάλυβα Kelling
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Θωρακισμένο φορτηγό Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Θωρακισμένο φορτηγό Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Θωρακισμένο φορτηγό Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :Φορτηγό Μεταλλεύματος Σιδήρου MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Φορτηγό Μεταλλεύματος Σιδήρου Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Φορτηγό Μεταλλεύματος Σιδήρου Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Φορτηγό Χάλυβα Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Φορτηγό Χάλυβα Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Φορτηγό Χάλυβα Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Θωρακισμένο Φορτηγό Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Θωρακισμένο Φορτηγό Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Θωρακισμένο Φορτηγό Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Ημιφορτηγό Τροφίμων Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Ημιφορτηγό Τροφίμων Perry
 STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Ημιφορτηγό Τροφίμων Chippy
@@ -4529,56 +4529,56 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :Φορτηγό 
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :Φορτηγό Χαλκού MPS
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Φορτηγό Χαλκού Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Φορτηγό Χαλκού Goss
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Βυτίο νερού Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Βυτίο νερού Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :Βυτίο νερού MPS
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Φορτηγό φρούτων Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Φορτηγό φρούτων Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Φορτηγό φρούτων Kelling
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Φορτηγό λάστιχου Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Φορτηγό λάστιχου Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :Φορτηγό λάστιχου RMT
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :Φορτηγό ζάχαρης MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Φορτηγό ζάχαρης Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Φορτηγό ζάχαρης Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :Φορτηγό κόλας MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Φορτηγό κόλας Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Φορτηγό κόλας Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Φορτηγό μαλλιού της γριάς MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Φορτηγό μαλλιού της γριάς Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Φορτηγό μαλλιού της γριάς Wizzowow Candyfloss
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Φορτηγό ζαχαρωτών MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Φορτηγό ζαχαρωτών Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Φορτηγό ζαχαρωτών Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :Ημιφορτηγό παιχνιδιών MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Ημιφορτηγό παιχνιδιών Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Ημιφορτηγό παιχνιδιών Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :Φορτηγό γλυκών MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Φορτηγό γλυκών Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Φορτηγό γλυκών Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Φορτηγό μπαταρίων MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Φορτηγό μπαταρίων Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Φορτηγό μπαταρίων Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Φορτηγό αναψυκτικου MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Φορτηγό αναψυκτικου Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Φορτηγό αναψυκτικου Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Φορτηγό πλαστικού MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Φορτηγό πλαστικού Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Φορτηγό πλαστικού Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :Φορτηγό φυσσαλίδων MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Φορτηγό φυσσαλίδων Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Φορτηγό φυσσαλίδων Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Βυτίο Νερού Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Βυτίο Νερού Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :Βυτίο Νερού MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Φορτηγό Φρούτων Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Φορτηγό Φρούτων Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Φορτηγό Φρούτων Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Φορτηγό Λάστιχου Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Φορτηγό Λάστιχου Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :Φορτηγό Λάστιχου RMT
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :Φορτηγό Ζάχαρης MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Φορτηγό Ζάχαρης Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Φορτηγό Ζάχαρης Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :Φορτηγό Κόλας MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Φορτηγό Κόλας Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Φορτηγό Κόλας Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Φορτηγό Μαλλιού της Γριάς MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Φορτηγό Μαλλιού της Γριάς Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Φορτηγό Μαλλιού της Γριάς Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Φορτηγό Ζαχαρωτών MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Φορτηγό Ζαχαρωτών Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Φορτηγό Ζαχαρωτών Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :Ημιφορτηγό Παιχνιδιών MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Ημιφορτηγό Παιχνιδιών Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Ημιφορτηγό Παιχνιδιών Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :Φορτηγό Γλυκών MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Φορτηγό Γλυκών Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Φορτηγό Γλυκών Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Φορτηγό Μπαταριών MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Φορτηγό Μπαταριών Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Φορτηγό Μπαταριών Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Φορτηγό Αναψυκτικού MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Φορτηγό Αναψυκτικού Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Φορτηγό Αναψυκτικού Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Φορτηγό Πλαστικού MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Φορτηγό Πλαστικού Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Φορτηγό Πλαστικού Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :Φορτηγό Φυσαλίδων MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Φορτηγό Φυσαλίδων Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Φορτηγό Φυσαλίδων Wizzowow
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Δεξαμενόπλοιο MPS
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Δεξαμενόπλοιο CS-Inc.
-STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Επιβατηγό πλοίο MPS
-STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Επιβατηγό πλοίο FFP Passenger
+STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Επιβατηγό Πλοίο MPS
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Επιβατηγό Πλοίο FFP
 STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Hovercraft Bakewell 300
-STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Επιβατηγό πλοίο Chugger-Chug
-STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Επιβατηγό πλοίο Shivershake
-STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Πλοίο εμπορευμάτων Yate
-STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Πλοίο εμπορευμάτων Bakewell
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Πλοίο εμπορευμάτων Mightymover
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Πλοίο εμπορευμάτων Powernaut
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Επιβατηγό Πλοίο Chugger-Chug
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Επιβατηγό Πλοίο Shivershake
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Πλοίο Εμπορευμάτων Yate
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Πλοίο Εμπορευμάτων Bakewell
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Πλοίο Εμπορευμάτων Mightymover
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Πλοίο Εμπορευμάτων Powernaut
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
@@ -4633,16 +4633,16 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :Σημαδού�
 STR_FORMAT_COMPANY_NUM                                          :(Εταιρία {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Ομάδα {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
-STR_FORMAT_WAYPOINT_NAME                                        :Σημείο καθοδηγήσης {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Σημείο καθοδηγήσης {TOWN} #{COMMA}
+STR_FORMAT_WAYPOINT_NAME                                        :Σημείο Καθοδήγησης {TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Σημείο Καθοδήγησης {TOWN} #{COMMA}
 
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Αμαξοστάσιο Τρένων
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Αμαξοστάσιο Τρένων #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Αμαξοστάσιο Οχημάτων δρόμου
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Αμαξοστάσιο Οχημάτων δρόμου #{COMMA}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Ναυπηγείο Πλοιών
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Ναυπηγείο Πλοιών #{COMMA}
-STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Υπόστεγο
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :Αμαξοστάσιο Τρένων {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Αμαξοστάσιο Τρένων {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Αμαξοστάσιο Οχημάτων Δρόμου {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Αμαξοστάσιο Οχημάτων Δρόμου {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :Ναυπηγείο Πλοίων {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Ναυπηγείο Πλοίων {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Υπόστεγο {STATION}
 
 STR_UNKNOWN_STATION                                             :άγνωστος σταθμός
 STR_DEFAULT_SIGN_NAME                                           :Πινακίδα

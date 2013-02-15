@@ -3479,6 +3479,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Aumenta l'intervallo di manutenzione di 10. CTRL+clic lo aumenta di 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Riduce l'intervallo di manutenzione di 10. CTRL+clic lo riduce di 5.
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Cambia il tipo di intervallo di manutenzione
+STR_VEHICLE_DETAILS_DEFAULT                                     :Predefinito
+STR_VEHICLE_DETAILS_DAYS                                        :Giorni
+STR_VEHICLE_DETAILS_PERCENT                                     :Percentuale
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nome del treno
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Rinomina l'automezzo
