@@ -332,7 +332,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 			 * same window and palette settings when the bpp
 			 * (and a few flags) are the same. Since we need
 			 * to hwpalette value to change (in particular
-			 * when switching betwen fullscreen and
+			 * when switching between fullscreen and
 			 * windowed), we restart the entire video
 			 * subsystem to force creating a new window.
 			 *
