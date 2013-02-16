@@ -1249,6 +1249,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_VD_TOP_DETAILS,                        "WID_VD_TOP_DETAILS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_VD_INCREASE_SERVICING_INTERVAL,        "WID_VD_INCREASE_SERVICING_INTERVAL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_VD_DECREASE_SERVICING_INTERVAL,        "WID_VD_DECREASE_SERVICING_INTERVAL");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_VD_SERVICE_INTERVAL_DROPDOWN,          "WID_VD_SERVICE_INTERVAL_DROPDOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_VD_SERVICING_INTERVAL,                 "WID_VD_SERVICING_INTERVAL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_VD_MIDDLE_DETAILS,                     "WID_VD_MIDDLE_DETAILS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_VD_MATRIX,                             "WID_VD_MATRIX");

@@ -866,7 +866,7 @@ public:
 		WID_AID_SCRIPT_GAME                          = ::WID_AID_SCRIPT_GAME,                          ///< Game Script button.
 		WID_AID_RELOAD_TOGGLE                        = ::WID_AID_RELOAD_TOGGLE,                        ///< Reload button.
 		WID_AID_LOG_PANEL                            = ::WID_AID_LOG_PANEL,                            ///< Panel where the log is in.
-		WID_AID_SCROLLBAR                            = ::WID_AID_SCROLLBAR,                            ///< Scrollbar of the log pannel.
+		WID_AID_SCROLLBAR                            = ::WID_AID_SCROLLBAR,                            ///< Scrollbar of the log panel.
 		WID_AID_COMPANY_BUTTON_START                 = ::WID_AID_COMPANY_BUTTON_START,                 ///< Buttons in the VIEW.
 		WID_AID_COMPANY_BUTTON_END                   = ::WID_AID_COMPANY_BUTTON_END,                   ///< Last possible button in the VIEW.
 		WID_AID_BREAK_STRING_WIDGETS                 = ::WID_AID_BREAK_STRING_WIDGETS,                 ///< The panel to handle the breaking on string.
@@ -1889,7 +1889,7 @@ public:
 		WID_OSK_CANCEL                               = ::WID_OSK_CANCEL,                               ///< Cancel key.
 		WID_OSK_OK                                   = ::WID_OSK_OK,                                   ///< Ok key.
 		WID_OSK_BACKSPACE                            = ::WID_OSK_BACKSPACE,                            ///< Backspace key.
-		WID_OSK_SPECIAL                              = ::WID_OSK_SPECIAL,                              ///< Special key (at keyborads often used for tab key).
+		WID_OSK_SPECIAL                              = ::WID_OSK_SPECIAL,                              ///< Special key (at keyboards often used for tab key).
 		WID_OSK_CAPS                                 = ::WID_OSK_CAPS,                                 ///< Capslock key.
 		WID_OSK_SHIFT                                = ::WID_OSK_SHIFT,                                ///< Shift(lock) key.
 		WID_OSK_SPACE                                = ::WID_OSK_SPACE,                                ///< Space bar.
@@ -1911,7 +1911,7 @@ public:
 	};
 
 	/* automatically generated from ../../widgets/rail_widget.h */
-	/** Widgets of the #BuildRailToolbarWindow ckass. */
+	/** Widgets of the #BuildRailToolbarWindow class. */
 	enum RailToolbarWidgets {
 		/* Name starts with RA instead of R, because of collision with RoadToolbarWidgets */
 		WID_RAT_CAPTION                              = ::WID_RAT_CAPTION,                              ///< Caption of the window.
@@ -2466,6 +2466,7 @@ public:
 		WID_VD_TOP_DETAILS                           = ::WID_VD_TOP_DETAILS,                           ///< Panel with generic details.
 		WID_VD_INCREASE_SERVICING_INTERVAL           = ::WID_VD_INCREASE_SERVICING_INTERVAL,           ///< Increase the servicing interval.
 		WID_VD_DECREASE_SERVICING_INTERVAL           = ::WID_VD_DECREASE_SERVICING_INTERVAL,           ///< Decrease the servicing interval.
+		WID_VD_SERVICE_INTERVAL_DROPDOWN             = ::WID_VD_SERVICE_INTERVAL_DROPDOWN,             ///< Dropdown to select default/days/percent service interval.
 		WID_VD_SERVICING_INTERVAL                    = ::WID_VD_SERVICING_INTERVAL,                    ///< Information about the servicing interval.
 		WID_VD_MIDDLE_DETAILS                        = ::WID_VD_MIDDLE_DETAILS,                        ///< Details for non-trains.
 		WID_VD_MATRIX                                = ::WID_VD_MATRIX,                                ///< List of details for trains.
