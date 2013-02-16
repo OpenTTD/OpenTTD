@@ -850,7 +850,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Egy rovaráradat {INDUSTRY} pusztulását okozta!{}A termelés a felére csökkent
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING}termelés csökkent! {INDUSTRY} mostantól {COMMA}%-kal kevesebbet termel!
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} a fűtőházban vár
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} a járműtelepen vár
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} a garázsban vár
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} a dokkban vár
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} a hangárban vár
@@ -2237,7 +2237,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Maglev vasút �
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Pályafektetés. A Ctrl billentyűvel válthatsz építés és rombolás között. Shift lenyomásával megmutatja a becsült építési/bontási költséget
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Vasúti pálya építése egyszerűsített módon. A Ctrl billentyű segítségével lehet váltani az építés/rombolás között. Shift lenyomásával megmutatja a becsült építési/eltávolítási költséget
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Vasúti fűtőház építése (vonatok vételére és karbantartására). Shift lenyomásával építés/költség átkapcsolása
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Vasúti járműtelep építése (vonatok vételére és karbantartására). Shift lenyomásával becsült építési költséget mutat
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ellenőrző pont építése vágányra. A Ctrl lenyomásával az ellenőrző pontok egyesíthetőek. Shift lenyomásával megmutatja a becsült építési költséget
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Vasútállomás építése. A Ctrl lenyomásával egyesítheted más állomásokkal. Shift lenyomásával megmutatja a becsült építési költséget
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Vasúti jelzők építése. Ctrl gombbal váltás az alak- és fényjelzők között{}Húzással a sínek mentén végig jelzők épülnek. Húzva Ctrl gombbal a következő pályakiágazásig épít jelzőket{}Ctrl+kattintással válthatod a megnyitandó jelzőépítés-kezelő ablakot. Shift lenyomásával megmutatja a becsült építési költséget
@@ -2252,8 +2252,8 @@ STR_RAIL_NAME_MONORAIL                                          :Egysínű
 STR_RAIL_NAME_MAGLEV                                            :Maglev
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Fűtőház helyzete
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Fűtőház helyzetének kiválasztása
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Járműtelep helyzete
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Járműtelep helyzetének kiválasztása
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Ellenőrző pont
@@ -2547,7 +2547,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} vasút
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} vasúti pálya kombinált- és irányjelzőkkel
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} vasúti pálya kombinált- és egyirányú irányjelzőkkel
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} vasúti pálya irány- és egyirányú irányjelzőkkel
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} fűtőház
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} járműtelep
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Út
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Út közvilágítással
@@ -2842,8 +2842,8 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Hiányzó 
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}A '{0:STRING}' viselkedése valószínűleg ütközést vagy összeomlást okoz
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Megváltoztatta '{1:ENGINE}' meghajtott vagon-állapotát mikor nem volt bent a fűtőházban
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Megváltoztatta '{1:ENGINE}' jármű hosszát mikor nem volt bent a fűtőházban
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Megváltoztatta '{1:ENGINE}' meghajtott vagon állapotát mikor nem volt bent a járműtelepen
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Megváltoztatta '{1:ENGINE}' jármű hosszát mikor nem volt a járműtelepen
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}A '{1:COMPANY}' vállalat '{0:VEHICLE}' jelű vonatának érvénytelen a hossza. Ezt a NewGRF-ek okozhatják. A játék elszállhat vagy lefagyhat
 
 STR_NEWGRF_BUGGY                                                :{WHITE}A(z) '{0:STRING}' NewGRF helytelen információt tartalmaz
@@ -3193,7 +3193,7 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}A listá
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Járművek lecserélése
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Javításra küld
 
-STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Elküldi fűtőházba
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Elküldi járműtelepre
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Elküldi garázsba
 STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Elküldi dokkba
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Elküldi hangárba
@@ -3310,12 +3310,12 @@ STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Húzz id
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Húzd ide a mozdonyt a teljes vonat eladásához
 
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Összes fűtőházban tartózkodó vonat eladása
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}A járműtelepen tartózkodó összes vonat eladása
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Összes garázsban tartózkodó jármű eladása
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Összes dokkban tartózkodó hajó eladása
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Összes hangárban tartózkodó repülő eladása
 
-STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}A fűtőházban tartózkodó összes vonat automatikus cseréje
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}A járműtelepen tartózkodó összes vonat automatikus cseréje
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}A garázsban tartózkodó összes jármű automatikus cseréje
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}A dokkban tartózkodó összes hajó automatikus cseréje
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}A hangárban tartózkodó összes repülő automatikus cseréje
@@ -3340,17 +3340,17 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ide katt
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ide kattintva elkészítheted egy hajó másolatát. Kattints ide, majd a másolandó hajóra. Ctrl+Kattintással a menetrendet is megosztod. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ide kattintva elkészítheted egy repülőgép másolatát. Kattints ide, majd a másolandó repülőgépre. Ctrl+kattintással a menetrendet is megosztod. Shift+kattintással megmutatja a becsült költséget vásárlás nélkül
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}A fő nézetet a fűtőházra állítja. Ctrl+kattintás esetén új látképet nyit a fűtőház pozíciójára
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}A fő nézetet a járműtelepre állítja. Ctrl+kattintás esetén új látképet nyit a járműtelep pozíciójára
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}A fő nézetet a garázsra állítja. Ctrl+kattintás esetén új látképet nyit a garázs pozíciójára
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}A fő nézetet a dokkra állítja. Ctrl+kattintás esetén új látképet nyit a dokk pozíciójára
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}A fő nézetet a hangárra állítja. Ctrl+kattintás esetén új látképet nyit a hangár pozíciójára
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Az összes, a fűtőházat menetrendszerűen látogató vonat listájának összeállítása
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Vonatok listája, amelyek menetrendjében a járműtelep szerepel
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Az összes, a hangárt menetrendszerüen látogató jármű listájának összeállítása
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Az összes, a dokkot menetrendszerüen látogató hajó listájának összeállítása
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Az összes, a hangárt menetrendszerüen látogató repülőgép listájának összeállítása
 
-STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Kattints ide az összes vonat megállításához a fűtőházban
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Kattints ide a járműtelepen lévő összes vonat megállításához
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Kattints ide az összes közúti jármű megállításához a garázsban
 STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Kattints ide az összes hajó leállításához a dokkban
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Kattints ide az összes repülőgép leállításához a hangárban
@@ -3422,7 +3422,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Közelí
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Közelítés a hajó jelenlegi helyzetére. Ctrl+kattintással a hajó követése a fő nézetben
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Közelítés a repülőgép jelenlegi helyzetére. Ctrl+kattintással a repülőgép követése a fő nézetben
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}A fűtőházba küldi a vonatot. Ctrl+kattintással csak javításra
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}A járműtelepre küldi a vonatot. Ctrl+kattintással csak javításra
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Garázsba küldi a járművet. Ctrl+kattintással csak javításra
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Dokkba küldi a hajót. Ctrl+kattintással csak javításra
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Hangárba küldi a repülőgépet. Ctrl+kattintással csak javításra
@@ -3515,6 +3515,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Javítá
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Javítási időköz növelése 10-zel. Ctrl+kattintás 5-tel növeli
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Javítási időköz csökkentése 10-zel. Ctrl+Kattintás 5-tel csökkenti
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Javítási időköz módjának megváltoztatása
+STR_VEHICLE_DETAILS_DEFAULT                                     :Alapértelmezett
+STR_VEHICLE_DETAILS_DAYS                                        :Napok
+STR_VEHICLE_DETAILS_PERCENT                                     :Százalék
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Vonat átnevezése
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Közúti jármű átnevezése
@@ -3666,7 +3670,7 @@ STR_ORDER_SERVICE_NON_STOP_AT                                   :Javításra meg
 
 STR_ORDER_NEAREST_DEPOT                                         :a legközelebbi
 STR_ORDER_NEAREST_HANGAR                                        :a legközelebbi hangárba
-STR_ORDER_TRAIN_DEPOT                                           :fűtőházba
+STR_ORDER_TRAIN_DEPOT                                           :járműtelepre
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :garázsba
 STR_ORDER_SHIP_DEPOT                                            :dokkba
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
@@ -4077,7 +4081,7 @@ STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bój
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... a bóját más vállalat használja!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Nem építhetsz ide fűtőházat...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Nem építhetsz ide járműtelepet...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Nem építhetsz ide garázst...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ide nem lehet remízt építeni...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nem építhetsz ide dokkot...
@@ -4089,7 +4093,7 @@ STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... gar�
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... dokkban kellene állnia ehhez
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... hangárban kellene állnia ehhez
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Csak a fűtőházban álló vonatokat lehet megváltoztatni
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Csak a járműtelepen álló vonatokat lehet megváltoztatni
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Túl hosszú a vonat
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}A járművet nem lehet megfordítani...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... több részből álló járművet tartalmaz
@@ -4208,7 +4212,7 @@ STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Nem ind�
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Nem indíthatod el vagy állíthatod meg a hajót...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Nem indíthatod el vagy állíthatod meg a repülőgépet...
 
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Nem küldheted a vonatot a fűtőházba...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Nem küldheted a vonatot a járműtelepre...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nem küldheted a járművet a garázsba...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Nem küldheted a hajót a dokkba...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nem küldheted a repülőgépet a hangárba...
@@ -4711,8 +4715,8 @@ STR_FORMAT_WAYPOINT_NAME.ba                                     :{TOWN} Ellenőr
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} {COMMA}. sz. Ellenőrző pont
 STR_FORMAT_WAYPOINT_NAME_SERIAL.ba                              :{TOWN} {COMMA}. sz. Ellenőrző ponton
 
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Fűtőház
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} {COMMA}. sz. Fűtőház
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Járműtelep
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} {COMMA}. sz. Vasúti járműtelep
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Garázs
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} {COMMA}. sz. Garázs
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Dokk

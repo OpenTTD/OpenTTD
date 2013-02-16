@@ -1045,7 +1045,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Ĉiuj agordoj
 
 STR_CONFIG_SETTING_OFF                                          :Malaktiva
 STR_CONFIG_SETTING_ON                                           :Aktiva
-STR_CONFIG_SETTING_DISABLED                                     :malaktiva
+STR_CONFIG_SETTING_DISABLED                                     :Malaktiva
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Ne
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Propra kompanio

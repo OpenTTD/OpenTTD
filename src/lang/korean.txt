@@ -653,8 +653,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :{G=m}거물
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :{G=m}금세기의 타이쿤!
 STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY}가 '{STRING}'{G 0 "을" "를"} 달성했습니다!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME}의 {COMPANY}이(가) 드디어 {STRING}을(를) 달성했습니다!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} 회사가 '{STRING}' 등급을 달성했습니다!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{1:COMPANY}의 {0:PRESIDENT_NAME}이(가) 드디어 '{2:STRING}' 등급을 달성했습니다!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}지도 - {STRING}

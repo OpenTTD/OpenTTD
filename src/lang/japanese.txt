@@ -454,6 +454,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :マップ全体
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :OpenTTDについて
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :スプライトを整列
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :バウンディングボックスの切り替え
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :ダーティーブロックの色を切り替えます
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1054,6 +1055,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :会社の設定
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :会社の設定（現在の会社のみに影響）
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}表示:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}ドロップダウンの表示を制限します
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :基本設定
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :詳細設定
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :拡張設定/全ての設定
@@ -1085,11 +1087,17 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :中央
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :初期借入の最大額: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :初期の借入限度額(インフレは考慮されません)
 STR_CONFIG_SETTING_INTEREST_RATE                                :金利: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :インフレを有効にしたときの借入利率
 STR_CONFIG_SETTING_RUNNING_COSTS                                :維持費用: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :車両や施設のメンテナンスコストを設定します
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :建設速度: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :AIの建設速度を設定します
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :車両故障: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :補修が不十分な車両が破壊される頻度を設定します
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :助成金の乗数: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :助成金の設定
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建設費: {STRING}
 STR_CONFIG_SETTING_RECESSIONS                                   :景気の後退: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :駅で運転方向の変更(折り返し)をしない: {STRING}
@@ -1184,6 +1192,8 @@ STR_CONFIG_SETTING_HOVER_DELAY                                  :ツールチッ
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :マウスオーバー {COMMA}秒後
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :右クリック
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :町名に人口を含む：{STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :街の名前ラベルに人口を表示します
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :グラフ線の太さ: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :地形作成：{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :旧式
@@ -1260,8 +1270,11 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :土地を変更
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :すべての行動
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :詳細の車両リストを使用：{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :積み降ろしを表示：{STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :貨物の積み卸しインジケーターの表示範囲を設定します
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :日の代わりに時刻表をティックで表示：{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :ゲーム内チップの代わりに時刻表に旅行時間を表示
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :時刻表に発着情報を表示する: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :時刻表に出発・到着の予定時刻を表示します
 STR_CONFIG_SETTING_QUICKGOTO                                    :【駅を選択】をデフォルトでONにする： {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :デフォルトの鉄道の種類（新規ゲーム後／ゲームの読み込み後）：{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :最初の鉄道種類
@@ -1309,36 +1322,67 @@ STR_CONFIG_SETTING_AI_PROFILE_HARD                              :ハード
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :マルチプレイヤーゲームで AI を使用：{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :修理間隔をパーセントで表示：{STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :鉄道車両の補修間隔: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :鉄道車両の補修間隔を設定します。(明示的に指定されていない車両)
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} 日/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :補修しない
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :道路車両の補修間隔: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :道路車両の補修間隔を設定します。(明示的に指定されていない車両)
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :航空機の補修間隔: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :航空機の補修間隔を設定します。(明示的に指定されていない航空機)
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :船舶の補修間隔: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :船舶の補修間隔を設定します。(明示的に指定されていない船舶)
 STR_CONFIG_SETTING_NOSERVICE                                    :故障を切にすると修理も切にする：{STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :故障が起こらない設定の時は補修も行われないようになります。
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :貨車の速度制限を使用：{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :貨車の速度制限を適用します
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :電気鉄道を使用しない:{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :この設定を有効にすると、電気鉄道車両でも電化線路を必要としません。
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :自分の新しい駅に初めて車両が到着: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :最初の列車が駅に到着したときにニュースを表示します。
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :競争相手の新しい駅に初めて車両が到着: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :競争相手の駅に最初の車両が到着したときにニュースを表示します
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :事故／災害: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :事故や災害が発生したときにニュースを表示します
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :会社情報: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :新しい会社の設立時、会社の経営危機時などにニュースを表示します
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :産業の開業: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :新しい産業が開設されたときにニュースを表示します
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :産業の閉業: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :産業が閉鎖されるときにニュースを表示します。
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :経済の変化: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :経済状況が変化したときにニュースを表示します
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :自分が運送している産業の生産量の変化: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :輸送中の産業で生産量の変化があったときにニュースを表示します
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :競争相手が運送している産業の生産量の変化: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :他プレイヤーが輸送中な産業の生産量が変化したときにニュースを表示します
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :その他の産業の生産量の変化: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :輸送などの関わりが無い産業の生産量が変化したときにニュースを表示します
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :会社の車両の勧告／情報: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :車両に対する注意情報を表示します
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :新しい乗り物の登場: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :新しい車両が登場したときにニュースを表示します
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :受入れする貨物の変化: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :駅の受入対象が変化したときにニュースを表示します
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :助成金: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :補助金に関する情報を表示します
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :一般情報: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :排他的輸送権や道路再建の資金調達などの一般情報を表示します
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :切
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :簡易
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :完全
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :色刷ニュースの開始年：{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :ニュースがカラー版になる境目の年を設定します
 STR_CONFIG_SETTING_STARTING_YEAR                                :開始年：{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :スムーズな経済を使用：{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :他社所有株式の購入を許容する：{STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :ドラッグで信号を設置する間隔: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :信号がドラッグされたときに次の信号を(信号やジャンクションが出現するまで)設置する間隔。
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} タイル
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :信号がドラッグされたとき間隔を一定に保つ: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :次の年まで腕木式信号を建設：{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :信号のGUIを使用: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :信号建設コマンドのデフォルト信号形式 : {STRING}
@@ -2180,7 +2224,7 @@ STR_OBJECT_CLASS_TRNS                                           :ラジオツラ
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}木
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}植林する木の種類を選択
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}植林する木の種類を選択。すでに木がある場合は追加で植林されます。
 STR_TREES_RANDOM_TYPE                                           :{BLACK}ランダムな木
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}ランダムな木で植林します
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}ランダムな木
@@ -2500,7 +2544,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}上へ
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}選択したNewGRFファイルを上へ移動します
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}下へ
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}選択したNewGRFファイルを下へ移動します
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}インストールしたNewGRFファイルのリストです。設定を変更するにはファイルをクリックします。
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}インストールされたNewGRFファイルのリストです
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}パラメータの設定
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}パラメーターの表示
@@ -3262,6 +3306,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}修理�
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}補修間隔を10日延ばす。CTRL+クリックで5日延ばせます。
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}補修間隔を10日縮める。CTRL+クリックで5日縮めます。
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}補修間隔の変更
+STR_VEHICLE_DETAILS_DEFAULT                                     :既定
+STR_VEHICLE_DETAILS_DAYS                                        :日
+STR_VEHICLE_DETAILS_PERCENT                                     :パーセント
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}列車に名前を付ける
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}道路車両を名付ける

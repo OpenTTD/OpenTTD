@@ -280,8 +280,9 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} πόδ�
 STR_UNITS_HEIGHT_SI                                             :{COMMA} μ
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Φιλτράρισμα λίστας:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Εισαγώγη κειμένου για φιλτράρισμα
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Εισάγετε μια λέξη για να φιλτραριστεί η λίστα για
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Εισάγετε μια λέξη για φιλτράρισμα της λίστας
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Επιλογή σειράς ταξινόμησης (καθοδικά/ανοδικά)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Επιλογή κριτηρίου ταξινόμησης
@@ -411,7 +412,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Έξοδος
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Επιλογές παιχνιδιού
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Προχωρημένες ρυθμίσεις
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Ρυθμίσεις ΑΙ και δέσμης ενεργειών παιχνιδιού
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Ρυθμίσεις ΑΙ και Δέσμης Ενεργειών
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ρυθμίσεις NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Επιλογές διαφάνειας
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Εμφάνιση ονομάτων πόλεων
@@ -460,6 +461,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Ποσοστά 
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Πίνακας κατάταξης επιχειρήσεων
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Λεπτομερής εκτίμηση απόδοσης
+STR_GRAPH_MENU_HIGHSCORE                                        :Πίνακας βαθμολογίας
 ############ range ends here
 
 ############ range for industry menu starts
@@ -743,7 +745,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Μεγιστά�
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Τυχοδιώκτης
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Μεγιστάνας του Αιώνα
 STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}«{STRING}»   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} έφτασε στο επίπεδο «{STRING}»
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{G "Ο" "Η" ""} {PRESIDENT_NAME} της εταιρίας {COMPANY} έφτασε στο επίπεδο «{STRING}»!
 
@@ -974,15 +976,15 @@ STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Μονά
 STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Επιλογή μονάδων μέτρησης
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Αγγλοσαξωνικό
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Μετρικό
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Αγγλοσαξονικές
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Μετρικές
 STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Οχήματα δρόμου
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Επιλογή πλευράς δρόμου όπου τα οχήματα οδηγούν
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Οδήγηση στα αριστερά
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Οδήγηση στα δεξιά
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Οδηγούν από αριστερά
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Οδηγούν από δεξιά
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Ονόματα πόλεων
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Επιλογή στυλ ονομάτων πόλεων
@@ -1023,7 +1025,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Κάθε 12 μ�
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Γλώσσα
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Επιλογή της γλώσσας του παιχνιδιού
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Σε όλη την οθόνη
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Πλήρης οθόνη
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Τσεκάρεται αυτό το κουτάκι ωστε να παίξετε το OpenTTD σε όλη την οθόνη
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ανάλυση οθόνης
@@ -1130,7 +1132,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Ανεκτικ�
 STR_CITY_APPROVAL_TOLERANT                                      :Υπομονετική
 STR_CITY_APPROVAL_HOSTILE                                       :Εχθρική
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Δεν είναι διαθέσιμο κανένα κατάλληλο Al...{}Μπορείτε να κατεβάσετε AIs μέσω του συστήματος «Online περιεχομένου»
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Δεν είναι διαθέσιμο κανένα κατάλληλο Al...{}Μπορείτε να κατεβάσετε AIs μέσω του συστήματος «Διαδικτυακού Περιεχομένου»
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Προηγμένες Ρυθμίσεις
@@ -1154,6 +1156,8 @@ STR_CONFIG_SETTING_RESTRICT_ALL                                 :Προχωρη�
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ρυθμίσεις με διαφορετική τιμή από την προκαθωρισμένη
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ρυθμίσεις με διαφορετική τιμή από τις ρυθμίσεις νέου παιχνιδιού σας
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Μειώνει την παρακάτω λίστα σε συγκεκριμένους τύπους ρυθμίσεων
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Όλες οι ρυθμίσεις
 
 STR_CONFIG_SETTING_OFF                                          :Ανενεργό
 STR_CONFIG_SETTING_ON                                           :Ενεργή
@@ -1172,8 +1176,19 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Κέντρο
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Δεξιά
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Μέγιστο αρχικό δάνειο: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Μέγιστο ποσό που μπορεί να δανειστεί μία εταιρία (χωρίς να λαμβάνεται υπόψη ο πληθωρισμός)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Επιτόκιο: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Επιτόκιο δανείων· επίσης ελέγχει τον πληθωρισμό αν είναι ενεργοποιημένος
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Λειτουργικά έξοδα: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ταχύτητα οικοδομής: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Περιορίστε το ποσοστό των οικοδομών από τα ΑΙ
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Πολλαπλασιαστής επιδότησης: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Θέστε πόσο ξεπληρώνεται για επιδοτημένες συνδέσεις
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Κόστη οικοδομής: {STRING}
+STR_CONFIG_SETTING_RECESSIONS                                   :Υφέσεις: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Όταν είναι ενεργοποιημένο, υφέσεις συμβαίνουν κάθε λίγα χρόνια. Κατά τη διάρκεια μιας ύφεσης όλη η παραγωγή είναι πολύ χαμηλότερη (επιστρέφει στο προηγούμενο επίπεδο όταν τελειώσει η ύφεση)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Απαγορεύεται η αντιστροφή τρένων στους σταθμούς: {STRING}
+STR_CONFIG_SETTING_DISASTERS                                    :Καταστροφές: {STRING}
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Επιτρέπεται το χτίσιμο σε πλαγιές και ακτές: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Όταν είναι ενεργοποιημένο, οι σιδηροτροχιές και σταθμοί μπορούν να κτισθούν στις περισσότερες κλίσεις. Όταν είναι απενεργοποιημένο, επιτρέπονται μόνο όπου αντιστοιχούν στην κατεύθυνση της σιδηροτροχιάς και γι' αυτό δεν χρειάζονται θεμέλια
@@ -1312,11 +1327,11 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Πάχος γρ
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Γεννήτρια γης: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Αυθεντική
-STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :ΓέννησηΓης
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Μέγιστη απόσταση από την άκρη του χάρτη για τα Διυλιστήρια: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Τα Διυλιστήρια κατασκευάζονται κοντά στην άκρη του χάρτη, η οποία είναι ακτή σε νησιωτικούς χάρτες
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Κορυφογραμμή χιονιού: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ανωμαλία επιφάνειας (μόνο με ΓέννησηΓης) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ανωμαλία επιφάνειας (μόνο με TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Πολύ Απαλή
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Απαλή
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ανώμαλη
@@ -1365,6 +1380,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Μετακίν�
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Απενεργοποιημένος
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Ταχύτητα ροδέλας μετακίνησης χάρτη: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Έλεγχος της ευαισθησίας του τροχού του ποντικιού κατά την κύλιση
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Πληκτρολόγιο στην οθόνη: {STRING}
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Εξομοίωση δεξιού κλικ {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Επιλέξτε τον τρόπο μίμησης των πατημάτων του δεξιού κουμπιού του ποντικιού
@@ -1416,6 +1432,8 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Διατήρη�
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Ομαδοποίηση εξόδων στο παράθυρο οικονομικών της εταιρίας: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Ορίστε τη μορφή για το παράθυρο των εξόδων της εταιρείας
 
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Οικοδομή: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Παίξε ηχητικό εφέ σε επιτυχής οικοδομές ή άλλες δράσεις
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Απενεργοποίηση των υποδομών για τα οχήματα που δεν είναι διαθέσιμα: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Όταν είναι ενεργοποιημένο, οι υποδομές είναι διαθέσιμες μόνο όταν υπάρχουν διαθέσιμα οχήματα, αποτρέποντας σπατάλη χρόνου και χρημάτων σε μη χρησιμοποιήσιμες υποδομές
@@ -1440,7 +1458,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ενεργοπ�
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Επιτρέπονται AI σε παιχνίδια πολλών παικτών: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Επιτρέπεται η συμμετοχή παικτών υπολογιστή AI σε παιχνίδια πολλαπλών παικτών
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#εντολών πριν τη παύση δεσμών ενεργειών: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#εντολές πριν την παύση δεσμών ενεργειών: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Μέγιστος αριθμός βημάτων υπολογισμού που κάνει κάποιο σενάριο σε κάθε σειρά
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Τα διαστήματα μεταξύ συντήρησης είναι σε ποσοστά: {STRING}
@@ -1463,7 +1481,9 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Απενεργ�
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ενεργοποιώντας αυτήν την ρύθμιση απενεργοποιείται η ανάγκη ηλεκτροδότησης των σιδηροτροχιών για να μπορέσουν σε αυτές να λειτουργήσουν οι ηλεκτρικές μηχανές
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Άφιξη πρώτου οχήματος σε σταθμό του παίκτη: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Παρουσίασε τα νέα όταν το πρώτο όχημα φτάνει σε νέο σταθμό του παίκτη
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Άφιξη του πρώτου οχήματος σε σταθμό του αντιπάλου: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Παρουσίασε τα νέα όταν το πρώτο όχημα φτάνει σε νέο σταθμό ενός ανταγωνιστή
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ατυχήματα / καταστροφές: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Πληροφορίες εταιρίας: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Έναρξη των βιομηχανιών: {STRING}
@@ -1582,6 +1602,8 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Οικ�
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Ανταγωνιστές
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Επιλογές εμφάνισης
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Αλληλεπιδράσεις
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ηχητικά εφέ
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Νέα και μηνύματα
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Σηματοδότες
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Χειρισμός εμπορευμάτων
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Παίκτες υπολογιστή
@@ -1639,8 +1661,8 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Επιλ
 STR_INTRO_HIGHSCORE                                             :{BLACK}Πίνακας Βαθμολογιών
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Προηγμένες Ρυθμίσεις
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ρυθμίσεις NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Έλεγχος Διαδικτυακού Περιεχομένου
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Ρυθμίσεις AI και Δέσμης Ενεργειών Παιχνιδιού
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Διαδικτυακό Περιεχόμενο
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Ρυθμίσεις AI και Δέσμης Ενεργειών
 STR_INTRO_QUIT                                                  :{BLACK}Έξοδος
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού. Το Ctrl+Κλικ παρακάμπτει τη ρύθμιση του χάρτη
@@ -1844,7 +1866,7 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Συμμ
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Ανανέωση διακομιστή
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Ανανεώση πληροφοριών του διακομιστή
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Βρείτε το διακομιστή
+STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Αναζήτηση διακομιστή
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Ψάξτε το δίκτυο για ένα διακομιστή
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Προσθήκη διακομιστή
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Προσθέτει ένα διακομιστή στη λίστα ο οποίος θα ελέγχεται κάθε φορά για ενεργά παιχνίδια.
@@ -2599,15 +2621,15 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Δώστ
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Δημιουργία Κόσμου
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Διάσταση χάρτη:
 STR_MAPGEN_BY                                                   :{BLACK}*
-STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Αρ. πόλεων:
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Αριθμός πόλεων:
 STR_MAPGEN_DATE                                                 :{BLACK}Ημερομηνία:
-STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Αρ. βιομηχανιών:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Αριθμός βιομηχανιών:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Ύψος γραμμής χιονιού:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού ένα πάνω
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού ένα κάτω
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Σπόρος τυχαίας παραγωγής:
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Τυχαίος σπόρος:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Κάνετε κλικ για να δώσετε ένα σπόρο τυχαίας παραγωγής
-STR_MAPGEN_RANDOM                                               :{BLACK}Τυχαία δημιουργία
+STR_MAPGEN_RANDOM                                               :{BLACK}Τυχαίος
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Αλλαγή του σπόρου τυχαίας παραγωγής για την Δημιουργία Εδάφους
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Δημιουργός εδάφους:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Αλγόριθμος δέντρων:

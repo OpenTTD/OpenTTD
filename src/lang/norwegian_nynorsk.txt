@@ -3166,6 +3166,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Vedlikeh
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Auk vedlikehaldsintervall med 10. CTRL+klikk aukar vedlikehaldsintervallet med 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Minsk vedlikehaldsintervall av tog med 10. CTRL+klikk minskar intervallet med 5
 
+STR_VEHICLE_DETAILS_PERCENT                                     :Prosent
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Namngje tog
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Namngje køyretøy

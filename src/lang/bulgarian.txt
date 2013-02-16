@@ -3461,6 +3461,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Инте
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Удължава периода за сервиз с 10. Ctrl-click удължава периода за сервиз с 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Намалява периода за сервиз с 10. Ctrl-click намалява периода за сервиз с 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Промяна на сервизният интервал
+STR_VEHICLE_DETAILS_DEFAULT                                     :По подразбиране
+STR_VEHICLE_DETAILS_DAYS                                        :Дни
+STR_VEHICLE_DETAILS_PERCENT                                     :Процент
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Име на влак
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Преименувай МПС-то
@@ -3535,9 +3539,9 @@ STR_ORDER_GO_NON_STOP_VIA                                       :Отиди бе
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Промени начинат на спиране на осветената заповед
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}До пълно товарене на стоката
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Натовари ако е вазможно
-STR_ORDER_DROP_FULL_LOAD_ALL                                    :Напълно нотовари всичкиат товар
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Напълно нотовари какъвто и да е товар
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Натовари ако е възможно
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Натовари догоре целият товар
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Пълно товарене на какъвто и да е товар
 STR_ORDER_DROP_NO_LOADING                                       :Ненатаваряй
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Промени начинат на натоваряне на осветената заповед
 
@@ -3564,7 +3568,7 @@ STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Проп
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Данни за превозното средство, на които се базира
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Процент товарене
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Процент натовареност
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Надеждност
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Максимална скорост
 STR_ORDER_CONDITIONAL_AGE                                       :Възраст (години)
@@ -3627,19 +3631,19 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 STR_ORDER_IMPLICIT                                              :{G=n}(Автоматично)
 
 STR_ORDER_FULL_LOAD                                             :(Напълно натовари)
-STR_ORDER_FULL_LOAD_ANY                                         :(Напълно натовари какъвто и да е товар)
+STR_ORDER_FULL_LOAD_ANY                                         :(Натовари догоре какъвто и да е товар)
 STR_ORDER_NO_LOAD                                               :(Ненатоваряй)
-STR_ORDER_UNLOAD                                                :(Ненатоваряй и вземи товар)
+STR_ORDER_UNLOAD                                                :(Разтовари и вземи товар)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Разтовари и чакай за пълен товар)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Разтовари и чакай за какъвто и да е пълен товар)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Разтовари и потегли празен)
-STR_ORDER_TRANSFER                                              :(Смени и вземи товар)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Смени и чакай за пълен товар)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Смени и чакай за какъвто и да е пълен товар)
+STR_ORDER_TRANSFER                                              :(Прехвърли и вземи товар)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Прехвърли и чакай за пълен товар)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Прехвърли и чакай за какъвто и да е пълен товар)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Смени и потегли празен)
 STR_ORDER_NO_UNLOAD                                             :(Не разтоваряй и вземи товар)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Неразтоварвай и изчакай за пълен товар)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Не разтоваряй и чакай за какъвто и да е пълен товар)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Не разтоварвай и изчакай за пълен товар)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Не разтоварвай и чакай за какъвто и да е пълен товар)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Без разтоварване и без натоварване)
 
 STR_ORDER_AUTO_REFIT                                            :(Автоматично сменяне на товар с {STRING})
