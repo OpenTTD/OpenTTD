@@ -1176,7 +1176,7 @@ void CargoPayment::PayFinalDelivery(const CargoPacket *cp, uint count)
 	this->route_profit += profit;
 
 	/* The vehicle's profit is whatever route profit there is minus feeder shares. */
-	this->visual_profit += profit - cp->FeederShare();
+	this->visual_profit += profit - cp->FeederShare(count);
 }
 
 /**
