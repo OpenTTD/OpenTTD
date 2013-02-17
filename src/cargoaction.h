@@ -34,13 +34,7 @@ public:
 	 */
 	uint MaxMove() { return this->max_move; }
 
-	/**
-	 * Removes some cargo.
-	 * @param cp Packet to be removed.
-	 * @return True if the packet was completely delivered, false if only part of
-	 *         it was.
-	 */
-	inline bool operator()(CargoPacket *cp) { return this->Postprocess(cp, this->Preprocess(cp)); }
+	bool operator()(CargoPacket *cp);
 };
 
 /** Action of final delivery of cargo. */
@@ -92,6 +86,22 @@ protected:
 public:
 	CargoLoad(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex load_place) :
 			CargoMovement<StationCargoList, VehicleCargoList>(source, destination, max_move), load_place(load_place) {}
+	bool operator()(CargoPacket *cp);
+};
+
+/** Action of reserving cargo from a station to be loaded onto a vehicle. */
+class CargoReservation: public CargoLoad {
+public:
+	CargoReservation(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex load_place) :
+			CargoLoad(source, destination, max_move, load_place) {}
+	bool operator()(CargoPacket *cp);
+};
+
+/** Action of returning previously reserved cargo from the vehicle to the station. */
+class CargoReturn: public CargoMovement<VehicleCargoList, StationCargoList> {
+public:
+	CargoReturn(VehicleCargoList *source, StationCargoList *destination, uint max_move) :
+			CargoMovement<VehicleCargoList, StationCargoList>(source, destination, max_move) {}
 	bool operator()(CargoPacket *cp);
 };
 

@@ -42,11 +42,9 @@ uint CargoRemoval<Tsource>::Preprocess(CargoPacket *cp)
 {
 	if (this->max_move >= cp->Count()) {
 		this->max_move -= cp->Count();
-		this->source->RemoveFromCache(cp, cp->Count());
 		return cp->Count();
 	} else {
 		uint ret = this->max_move;
-		this->source->RemoveFromCache(cp, ret);
 		this->max_move = 0;
 		return ret;
 	}
@@ -71,6 +69,34 @@ bool CargoRemoval<Tsource>::Postprocess(CargoPacket *cp, uint remove)
 }
 
 /**
+ * Removes some cargo from a StationCargoList.
+ * @param cp Packet to be removed.
+ * @return True if the packet was completely delivered, false if only part of
+ *         it was.
+ */
+template<>
+bool CargoRemoval<StationCargoList>::operator()(CargoPacket *cp)
+{
+	uint remove = this->Preprocess(cp);
+	this->source->RemoveFromCache(cp, remove);
+	return this->Postprocess(cp, remove);
+}
+
+/**
+ * Removes some cargo from a VehicleCargoList.
+ * @param cp Packet to be removed.
+ * @return True if the packet was completely delivered, false if only part of
+ *         it was.
+ */
+template<>
+bool CargoRemoval<VehicleCargoList>::operator()(CargoPacket *cp)
+{
+	uint remove = this->Preprocess(cp);
+	this->source->RemoveFromMeta(cp, VehicleCargoList::MTA_KEEP, remove);
+	return this->Postprocess(cp, remove);
+}
+
+/**
  * Delivers some cargo.
  * @param cp Packet to be delivered.
  * @return True if the packet was completely delivered, false if only part of
@@ -79,6 +105,7 @@ bool CargoRemoval<Tsource>::Postprocess(CargoPacket *cp, uint remove)
 bool CargoDelivery::operator()(CargoPacket *cp)
 {
 	uint remove = this->Preprocess(cp);
+	this->source->RemoveFromMeta(cp, VehicleCargoList::MTA_DELIVER, remove);
 	this->payment->PayFinalDelivery(cp, remove);
 	return this->Postprocess(cp, remove);
 }
@@ -94,6 +121,38 @@ bool CargoLoad::operator()(CargoPacket *cp)
 	if (cp_new == NULL) return false;
 	cp_new->SetLoadPlace(this->load_place);
 	this->source->RemoveFromCache(cp_new, cp_new->Count());
+	this->destination->Append(cp_new, VehicleCargoList::MTA_KEEP);
+	return cp_new == cp;
+}
+
+/**
+ * Reserves some cargo for loading.
+ * @param cp Packet to be reserved.
+ * @return True if the packet was completely reserved, false if part of it was.
+ */
+bool CargoReservation::operator()(CargoPacket *cp)
+{
+	CargoPacket *cp_new = this->Preprocess(cp);
+	if (cp_new == NULL) return false;
+	cp_new->SetLoadPlace(this->load_place);
+	this->source->reserved_count += cp_new->Count();
+	this->source->RemoveFromCache(cp_new, cp_new->Count());
+	this->destination->Append(cp_new, VehicleCargoList::MTA_LOAD);
+	return cp_new == cp;
+}
+
+/**
+ * Returns some reserved cargo.
+ * @param cp Packet to be returned.
+ * @return True if the packet was completely returned, false if part of it was.
+ */
+bool CargoReturn::operator()(CargoPacket *cp)
+{
+	CargoPacket *cp_new = this->Preprocess(cp);
+	if (cp_new == NULL) cp_new = cp;
+	assert(cp_new->Count() <= this->destination->reserved_count);
+	this->source->RemoveFromMeta(cp_new, VehicleCargoList::MTA_LOAD, cp_new->Count());
+	this->destination->reserved_count -= cp_new->Count();
 	this->destination->Append(cp_new);
 	return cp_new == cp;
 }
@@ -107,7 +166,7 @@ bool CargoTransfer::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
 	if (cp_new == NULL) return false;
-	this->source->RemoveFromCache(cp_new, cp_new->Count());
+	this->source->RemoveFromMeta(cp_new, VehicleCargoList::MTA_TRANSFER, cp_new->Count());
 	this->destination->Append(cp_new);
 	return cp_new == cp;
 }
@@ -121,8 +180,8 @@ bool CargoShift::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
 	if (cp_new == NULL) cp_new = cp;
-	this->source->RemoveFromCache(cp_new, cp_new->Count());
-	this->destination->Append(cp_new);
+	this->source->RemoveFromMeta(cp_new, VehicleCargoList::MTA_KEEP, cp_new->Count());
+	this->destination->Append(cp_new, VehicleCargoList::MTA_KEEP);
 	return cp_new == cp;
 }
 

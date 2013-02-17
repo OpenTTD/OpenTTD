@@ -77,6 +77,11 @@
 			for (CargoID c = 0; c < NUM_CARGO; c++) st->goods[c].cargo.InvalidateCache();
 		}
 	}
+
+	if (IsSavegameVersionBefore(181)) {
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) v->cargo.KeepAll();
+	}
 }
 
 /**

@@ -29,6 +29,7 @@ typedef Pool<CargoPacket, CargoPacketID, 1024, 0xFFF000, PT_NORMAL, true, false>
 extern CargoPacketPool _cargopacket_pool;
 
 template <class Tinst> class CargoList;
+class StationCargoList; // forward-declare, so we can use it in VehicleCargoList.
 extern const struct SaveLoad *GetCargoPacketDesc();
 
 /**
@@ -203,10 +204,13 @@ public:
 
 	/** Kind of actions that could be done with packets on move. */
 	enum MoveToAction {
-		MTA_FINAL_DELIVERY, ///< "Deliver" the packet to the final destination, i.e. destroy the packet.
-		MTA_CARGO_LOAD,     ///< Load the packet onto a vehicle, i.e. set the last loaded station ID.
-		MTA_TRANSFER,       ///< The cargo is moved as part of a transfer.
-		MTA_UNLOAD,         ///< The cargo is moved as part of a forced unload.
+		MTA_BEGIN = 0,
+		MTA_TRANSFER = 0, ///< Transfer the cargo to the station.
+		MTA_DELIVER,      ///< Deliver the cargo to some town or industry.
+		MTA_KEEP,         ///< Keep the cargo in the vehicle.
+		MTA_LOAD,         ///< Load the cargo from the station.
+		MTA_END,
+		NUM_MOVE_TO_ACTION = MTA_END
 	};
 
 protected:
@@ -280,12 +284,7 @@ public:
 		return this->count == 0 ? 0 : this->cargo_days_in_transit / this->count;
 	}
 
-
-	void Append(CargoPacket *cp);
 	uint Truncate(uint max_move = UINT_MAX);
-
-	template <class Tother_inst>
-	bool MoveTo(Tother_inst *dest, uint count, MoveToAction mta, CargoPayment *payment, uint data = 0);
 
 	void InvalidateCache();
 };
@@ -298,10 +297,25 @@ protected:
 	/** The (direct) parent of this class. */
 	typedef CargoList<VehicleCargoList> Parent;
 
-	Money feeder_share; ///< Cache for the feeder share.
+	Money feeder_share;                     ///< Cache for the feeder share.
+	uint action_counts[NUM_MOVE_TO_ACTION]; ///< Counts of cargo to be transfered, delivered, kept and loaded.
+
+	/**
+	 * Assert that the designation counts add up.
+	 */
+	inline void AssertCountConsistency() const
+	{
+		assert(this->action_counts[MTA_KEEP] +
+				this->action_counts[MTA_DELIVER] +
+				this->action_counts[MTA_TRANSFER] +
+				this->action_counts[MTA_LOAD] == this->count);
+	}
 
 	void AddToCache(const CargoPacket *cp);
 	void RemoveFromCache(const CargoPacket *cp, uint count);
+
+	void AddToMeta(const CargoPacket *cp, MoveToAction action);
+	void RemoveFromMeta(const CargoPacket *cp, MoveToAction action, uint count);
 
 public:
 	/** The super class ought to know what it's doing. */
@@ -314,6 +328,7 @@ public:
 	friend class CargoDelivery;
 	template<class Tsource>
 	friend class CargoRemoval;
+	friend class CargoReturn;
 
 	/**
 	 * Returns total sum of the feeder share for all packets.
@@ -324,9 +339,71 @@ public:
 		return this->feeder_share;
 	}
 
+	/**
+	 * Returns the amount of cargo designated for a given purpose.
+	 * @param action Action the cargo is designated for.
+	 * @return Amount of cargo designated for the given action.
+	 */
+	inline uint ActionCount(MoveToAction action) const
+	{
+		return this->action_counts[action];
+	}
+
+	/**
+	 * Returns sum of cargo on board the vehicle (ie not only
+	 * reserved).
+	 * @return Cargo on board the vehicle.
+	 */
+	inline uint OnboardCount() const
+	{
+		return this->count - this->action_counts[MTA_LOAD];
+	}
+
+	/**
+	 * Returns sum of cargo to be moved out of the vehicle at the current station.
+	 * @return Cargo to be moved.
+	 */
+	inline uint UnloadCount() const
+	{
+		return this->action_counts[MTA_TRANSFER] + this->action_counts[MTA_DELIVER];
+	}
+
+	/**
+	 * Returns the sum of cargo to be kept in the vehicle at the current station.
+	 * @return Cargo to be kept or loaded.
+	 */
+	inline uint RemainingCount() const
+	{
+		return this->action_counts[MTA_KEEP] + this->action_counts[MTA_LOAD];
+	}
+
+	void Append(CargoPacket *cp, MoveToAction action = MTA_KEEP);
+
 	void AgeCargo();
 
 	void InvalidateCache();
+
+	bool Stage(bool accepted, StationID current_station, uint8 order_flags);
+
+	/**
+	 * Marks all cargo in the vehicle as to be kept. This is mostly useful for
+	 * loading old savegames. When loading is aborted the reserved cargo has
+	 * to be returned first.
+	 */
+	inline void KeepAll()
+	{
+		this->action_counts[MTA_DELIVER] = this->action_counts[MTA_TRANSFER] = this->action_counts[MTA_LOAD] = 0;
+		this->action_counts[MTA_KEEP] = this->count;
+	}
+
+	/* Methods for moving cargo around. First parameter is always maximum
+	 * amount of cargo to be moved. Second parameter is destination (if
+	 * applicable), return value is amount of cargo actually moved. */
+
+	uint Reassign(uint max_move, MoveToAction from, MoveToAction to);
+	uint Return(uint max_move, StationCargoList *dest);
+	uint Unload(uint max_move, StationCargoList *dest, CargoPayment *payment);
+	uint Shift(uint max_move, VehicleCargoList *dest);
 
 	/**
 	 * Are two the two CargoPackets mergeable in the context of
@@ -349,6 +426,12 @@ public:
  * CargoList that is used for stations.
  */
 class StationCargoList : public CargoList<StationCargoList> {
+protected:
+	/** The (direct) parent of this class. */
+	typedef CargoList<StationCargoList> Parent;
+
+	uint reserved_count; ///< Amount of cargo being reserved for loading.
+
 public:
 	/** The super class ought to know what it's doing. */
 	friend class CargoList<StationCargoList>;
@@ -359,6 +442,17 @@ public:
 	friend class CargoTransfer;
 	template<class Tsource>
 	friend class CargoRemoval;
+	friend class CargoReservation;
+	friend class CargoReturn;
+
+	void Append(CargoPacket *cp);
+
+	/* Methods for moving cargo around. First parameter is always maximum
+	 * amount of cargo to be moved. Second parameter is destination (if
+	 * applicable), return value is amount of cargo actually moved. */
+
+	uint Reserve(uint max_move, VehicleCargoList *dest, TileIndex load_place);
+	uint Load(uint max_move, VehicleCargoList *dest, TileIndex load_place);
 
 	/**
 	 * Are two the two CargoPackets mergeable in the context of

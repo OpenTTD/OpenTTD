@@ -259,7 +259,7 @@ const SaveLoad *GetGoodsDesc()
 		SLEG_CONDVAR(            _cargo_feeder_share, SLE_INT64,                  65, 67),
 		 SLE_CONDVAR(GoodsEntry, amount_fract,        SLE_UINT8,                 150, SL_MAX_VERSION),
 		 SLE_CONDLST(GoodsEntry, cargo.packets,       REF_CARGO_PACKET,           68, SL_MAX_VERSION),
-
+		 SLE_CONDVAR(GoodsEntry, cargo.reserved_count,SLE_UINT,                  181, SL_MAX_VERSION),
 		SLE_END()
 	};
 

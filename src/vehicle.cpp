@@ -720,10 +720,11 @@ void Vehicle::PreDestructor()
 	if (CleaningPool()) return;
 
 	if (Station::IsValidID(this->last_station_visited)) {
-		Station::Get(this->last_station_visited)->loading_vehicles.remove(this);
+		Station *st = Station::Get(this->last_station_visited);
+		st->loading_vehicles.remove(this);
 
 		HideFillingPercent(&this->fill_percent_te_id);
-
+		this->CancelReservation(st);
 		delete this->cargo_payment;
 	}
 
@@ -1255,7 +1256,7 @@ uint8 CalcPercentVehicleFilled(const Vehicle *front, StringID *colour)
 
 	/* Count up max and used */
 	for (const Vehicle *v = front; v != NULL; v = v->Next()) {
-		count += v->cargo.Count();
+		count += v->cargo.OnboardCount();
 		max += v->cargo_cap;
 		if (v->cargo_cap != 0 && colour != NULL) {
 			unloading += HasBit(v->vehicle_flags, VF_CARGO_UNLOADING) ? 1 : 0;
@@ -1981,6 +1982,22 @@ void Vehicle::BeginLoading()
 }
 
 /**
+ * Return all reserved cargo packets to the station.
+ * @param st the station where the reserved packets should go.
+ */
+void Vehicle::CancelReservation(Station *st)
+{
+	for (Vehicle *v = this; v != NULL; v = v->next) {
+		VehicleCargoList &cargo = v->cargo;
+		if (cargo.ActionCount(VehicleCargoList::MTA_LOAD) > 0) {
+			DEBUG(misc, 1, "cancelling cargo reservation");
+			cargo.Return(UINT_MAX, &st->goods[v->cargo_type].cargo);
+			cargo.KeepAll();
+		}
+	}
+}
+
+/**
  * Perform all actions when leaving a station.
  * @pre this->current_order.IsType(OT_LOADING)
  */
@@ -1995,6 +2012,7 @@ void Vehicle::LeaveStation()
 
 	this->current_order.MakeLeaveStation();
 	Station *st = Station::Get(this->last_station_visited);
+	this->CancelReservation(st);
 	st->loading_vehicles.remove(this);
 
 	HideFillingPercent(&this->fill_percent_te_id);

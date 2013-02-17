@@ -106,7 +106,7 @@ void CheckCargoCapacity(Vehicle *v)
 			if (dest->cargo.Count() >= dest->cargo_cap || dest->cargo_type != src->cargo_type) continue;
 
 			uint amount = min(to_spread, dest->cargo_cap - dest->cargo.Count());
-			src->cargo.MoveTo(&dest->cargo, amount, VehicleCargoList::MTA_UNLOAD, NULL);
+			src->cargo.Shift(amount, &dest->cargo);
 			to_spread -= amount;
 		}
 
@@ -145,7 +145,7 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chai
 			uint amount = min(src->cargo.Count(), dest->cargo_cap - dest->cargo.Count());
 			if (amount <= 0) continue;
 
-			src->cargo.MoveTo(&dest->cargo, amount, VehicleCargoList::MTA_UNLOAD, NULL);
+			src->cargo.Shift(amount, &dest->cargo);
 		}
 	}
 
