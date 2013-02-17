@@ -3307,7 +3307,9 @@ static void UpdateStationRating(Station *st)
 					waiting_changed = true;
 				}
 
-				if (waiting_changed) ge->cargo.Truncate(ge->cargo.Count() - waiting);
+				if (waiting_changed && waiting < ge->cargo.Count()) {
+					ge->cargo.Truncate(ge->cargo.Count() - waiting);
+				}
 			}
 		}
 	}
