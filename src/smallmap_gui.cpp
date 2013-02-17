@@ -1016,7 +1016,7 @@ uint SmallMapWindow::GetLegendHeight(uint num_columns) const
 	}
 }
 
-/* virtual */ void SmallMapWindow::SmallMapWindow::OnInit()
+/* virtual */ void SmallMapWindow::OnInit()
 {
 	uint min_width = 0;
 	this->min_number_of_columns = INDUSTRY_MIN_NUMBER_OF_COLUMNS;
