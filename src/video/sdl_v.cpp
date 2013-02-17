@@ -690,6 +690,7 @@ void VideoDriver_SDL::MainLoop()
 			if (!_draw_threaded) {
 				_draw_mutex->EndCritical();
 				delete _draw_mutex;
+				_draw_mutex = NULL;
 			} else {
 				/* Wait till the draw mutex has started itself. */
 				_draw_mutex->WaitForSignal();
@@ -757,26 +758,26 @@ void VideoDriver_SDL::MainLoop()
 
 			/* The gameloop is the part that can run asynchronously. The rest
 			 * except sleeping can't. */
-			if (_draw_threaded) _draw_mutex->EndCritical();
+			if (_draw_mutex != NULL) _draw_mutex->EndCritical();
 
 			GameLoop();
 
-			if (_draw_threaded) _draw_mutex->BeginCritical();
+			if (_draw_mutex != NULL) _draw_mutex->BeginCritical();
 
 			UpdateWindows();
 			_local_palette = _cur_palette;
 		} else {
 			/* Release the thread while sleeping */
-			if (_draw_threaded) _draw_mutex->EndCritical();
+			if (_draw_mutex != NULL) _draw_mutex->EndCritical();
 			CSleep(1);
-			if (_draw_threaded) _draw_mutex->BeginCritical();
+			if (_draw_mutex != NULL) _draw_mutex->BeginCritical();
 
 			NetworkDrawChatMessage();
 			DrawMouseCursor();
 		}
 
 		/* End of the critical part. */
-		if (_draw_threaded && !HasModalProgress()) {
+		if (_draw_mutex != NULL && !HasModalProgress()) {
 			_draw_mutex->SendSignal();
 		} else {
 			/* Oh, we didn't have threads, then just draw unthreaded */
@@ -785,7 +786,7 @@ void VideoDriver_SDL::MainLoop()
 		}
 	}
 
-	if (_draw_threaded) {
+	if (_draw_mutex != NULL) {
 		_draw_continue = false;
 		/* Sending signal if there is no thread blocked
 		 * is very valid and results in noop */
@@ -795,14 +796,17 @@ void VideoDriver_SDL::MainLoop()
 
 		delete _draw_mutex;
 		delete _draw_thread;
+
+		_draw_mutex = NULL;
+		_draw_thread = NULL;
 	}
 }
 
 bool VideoDriver_SDL::ChangeResolution(int w, int h)
 {
-	if (_draw_threaded) _draw_mutex->BeginCritical();
+	if (_draw_mutex != NULL) _draw_mutex->BeginCritical();
 	bool ret = CreateMainSurface(w, h);
-	if (_draw_threaded) _draw_mutex->EndCritical();
+	if (_draw_mutex != NULL) _draw_mutex->EndCritical();
 	return ret;
 }
 
