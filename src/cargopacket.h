@@ -246,7 +246,7 @@ public:
 
 
 	void Append(CargoPacket *cp);
-	void Truncate(uint max_remaining);
+	uint Truncate(uint max_move = UINT_MAX);
 
 	template <class Tother_inst>
 	bool MoveTo(Tother_inst *dest, uint count, MoveToAction mta, CargoPayment *payment, uint data = 0);

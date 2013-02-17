@@ -114,7 +114,7 @@ Station::~Station()
 	DeleteStationNews(this->index);
 
 	for (CargoID c = 0; c < NUM_CARGO; c++) {
-		this->goods[c].cargo.Truncate(0);
+		this->goods[c].cargo.Truncate();
 	}
 
 	CargoPacket::InvalidateAllFrom(this->index);

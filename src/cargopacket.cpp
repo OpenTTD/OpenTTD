@@ -209,11 +209,14 @@ void CargoList<Tinst>::Append(CargoPacket *cp)
 /**
  * Truncates the cargo in this list to the given amount. It leaves the
  * first count cargo entities and removes the rest.
- * @param max_remaining Maximum amount of entities to be in the list after the command.
+ * @param max_move Maximum amount of entities to be removed from the list.
+ * @return Amount of entities actually moved.
  */
 template <class Tinst>
-void CargoList<Tinst>::Truncate(uint max_remaining)
+uint CargoList<Tinst>::Truncate(uint max_move)
 {
+	max_move = min(this->count, max_move);
+	uint max_remaining = this->count - max_move;
 	for (Iterator it(packets.begin()); it != packets.end(); /* done during loop*/) {
 		CargoPacket *cp = *it;
 		if (max_remaining == 0) {
@@ -236,6 +239,7 @@ void CargoList<Tinst>::Truncate(uint max_remaining)
 		}
 		++it;
 	}
+	return max_move;
 }
 
 /**

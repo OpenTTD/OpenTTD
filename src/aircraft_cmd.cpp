@@ -1160,8 +1160,8 @@ static void CrashAirplane(Aircraft *v)
 	uint pass = v->Crash();
 	SetDParam(0, pass);
 
-	v->cargo.Truncate(0);
-	v->Next()->cargo.Truncate(0);
+	v->cargo.Truncate();
+	v->Next()->cargo.Truncate();
 	const Station *st = GetTargetAirportIfValid(v);
 	StringID newsitem;
 	if (st == NULL) {
@@ -1205,7 +1205,7 @@ static void MaybeCrashAirplane(Aircraft *v)
 	/* Crash the airplane. Remove all goods stored at the station. */
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		st->goods[i].rating = 1;
-		st->goods[i].cargo.Truncate(0);
+		st->goods[i].cargo.Truncate();
 	}
 
 	CrashAirplane(v);

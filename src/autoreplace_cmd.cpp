@@ -111,7 +111,7 @@ void CheckCargoCapacity(Vehicle *v)
 		}
 
 		/* Any left-overs will be thrown away, but not their feeder share. */
-		src->cargo.Truncate(src->cargo_cap);
+		if (src->cargo_cap < src->cargo.Count()) src->cargo.Truncate(src->cargo.Count() - src->cargo_cap);
 	}
 }
 

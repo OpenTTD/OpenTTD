@@ -386,14 +386,20 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 		/* Store the result */
 		for (RefitResult *result = refit_result.Begin(); result != refit_result.End(); result++) {
 			Vehicle *u = result->v;
-			u->cargo.Truncate((u->cargo_type == new_cid) ? result->capacity : 0);
+			if (u->cargo_type != new_cid) {
+				u->cargo.Truncate(u->cargo_cap);
+			} else if (u->cargo_cap > result->capacity) {
+				u->cargo.Truncate(u->cargo_cap - result->capacity);
+			}
 			u->cargo_type = new_cid;
 			u->cargo_cap = result->capacity;
 			u->cargo_subtype = new_subtype;
 			if (u->type == VEH_AIRCRAFT) {
 				Vehicle *w = u->Next();
+				if (w->cargo_cap > result->mail_capacity) {
+					w->cargo.Truncate(w->cargo_cap - result->mail_capacity);
+				}
 				w->cargo_cap = result->mail_capacity;
-				w->cargo.Truncate(result->mail_capacity);
 			}
 		}
 	}
