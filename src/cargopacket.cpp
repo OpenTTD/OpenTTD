@@ -12,6 +12,7 @@
 #include "stdafx.h"
 #include "core/pool_func.hpp"
 #include "economy_base.h"
+#include "cargoaction.h"
 
 /* Initialize the cargopacket-pool */
 CargoPacketPool _cargopacket_pool("CargoPacket");
@@ -225,28 +226,7 @@ template <class Tinst>
 uint CargoList<Tinst>::Truncate(uint max_move)
 {
 	max_move = min(this->count, max_move);
-	uint max_remaining = this->count - max_move;
-	for (Iterator it(packets.begin()); it != packets.end(); /* done during loop*/) {
-		CargoPacket *cp = *it;
-		if (max_remaining == 0) {
-			/* Nothing should remain, just remove the packets. */
-			it = this->packets.erase(it);
-			static_cast<Tinst *>(this)->RemoveFromCache(cp, cp->count);
-			delete cp;
-			continue;
-		}
-
-		uint local_count = cp->count;
-		if (local_count > max_remaining) {
-			uint diff = local_count - max_remaining;
-			static_cast<Tinst *>(this)->RemoveFromCache(cp, diff);
-			cp->Reduce(diff);
-			max_remaining = 0;
-		} else {
-			max_remaining -= local_count;
-		}
-		++it;
-	}
+	this->PopCargo(CargoRemoval<Tinst>(static_cast<Tinst *>(this), max_move));
 	return max_move;
 }
 
@@ -344,6 +324,59 @@ bool CargoList<Tinst>::MoveTo(Tother_inst *dest, uint max_move, MoveToAction mta
 	}
 
 	return it != packets.end();
+}
+
+/**
+ * Shifts cargo from the front of the packet list and applies some action to it.
+ * @tparam Taction Action class or function to be used. It should define
+ *                 "bool operator()(CargoPacket *)". If true is returned the
+ *                 cargo packet will be removed from the list. Otherwise it
+ *                 will be kept and the loop will be aborted.
+ * @param action Action instance to be applied.
+ */
+template <class Tinst>
+template <class Taction>
+void CargoList<Tinst>::ShiftCargo(Taction action)
+{
+	Iterator it(this->packets.begin());
+	while (it != this->packets.end() && action.MaxMove() > 0) {
+		CargoPacket *cp = *it;
+		if (action(cp)) {
+			it = this->packets.erase(it);
+		} else {
+			break;
+		}
+	}
+}
+
+/**
+ * Pops cargo from the back of the packet list and applies some action to it.
+ * @tparam Taction Action class or function to be used. It should define
+ *                 "bool operator()(CargoPacket *)". If true is returned the
+ *                 cargo packet will be removed from the list. Otherwise it
+ *                 will be kept and the loop will be aborted.
+ * @param action Action instance to be applied.
+ */
+template <class Tinst>
+template <class Taction>
+void CargoList<Tinst>::PopCargo(Taction action)
+{
+	if (this->packets.empty()) return;
+	Iterator it(--(this->packets.end()));
+	Iterator begin(this->packets.begin());
+	while (action.MaxMove() > 0) {
+		CargoPacket *cp = *it;
+		if (action(cp)) {
+			if (it != begin) {
+				this->packets.erase(it--);
+			} else {
+				this->packets.erase(it);
+				break;
+			}
+		} else {
+			break;
+		}
+	}
 }
 
 /** Invalidates the cached data and rebuilds it. */

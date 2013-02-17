@@ -1,0 +1,132 @@
+/* $Id$ */
+
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/** @file cargoaction.cpp Implementation of cargo actions. */
+
+#include "stdafx.h"
+#include "economy_base.h"
+#include "cargoaction.h"
+
+/**
+ * Decides if a packet needs to be split.
+ * @param cp Packet to be either split or moved in one piece.
+ * @return Either new packet if splitting was necessary or the given one
+ *         otherwise.
+ */
+template<class Tsource, class Tdest>
+CargoPacket *CargoMovement<Tsource, Tdest>::Preprocess(CargoPacket *cp)
+{
+	if (this->max_move < cp->Count()) {
+		cp = cp->Split(this->max_move);
+		this->max_move = 0;
+	} else {
+		this->max_move -= cp->Count();
+	}
+	return cp;
+}
+
+/**
+ * Determines the amount of cargo to be removed from a packet and removes that
+ * from the metadata of the list.
+ * @param cp Packet to be removed completely or partially.
+ * @return Amount of cargo to be removed.
+ */
+template<class Tsource>
+uint CargoRemoval<Tsource>::Preprocess(CargoPacket *cp)
+{
+	if (this->max_move >= cp->Count()) {
+		this->max_move -= cp->Count();
+		this->source->RemoveFromCache(cp, cp->Count());
+		return cp->Count();
+	} else {
+		uint ret = this->max_move;
+		this->source->RemoveFromCache(cp, ret);
+		this->max_move = 0;
+		return ret;
+	}
+}
+
+/**
+ * Finalize cargo removal. Either delete the packet or reduce it.
+ * @param cp Packet to be removed or reduced.
+ * @param remove Amount of cargo to be removed.
+ * @return True if the packet was deleted, False if it was reduced.
+ */
+template<class Tsource>
+bool CargoRemoval<Tsource>::Postprocess(CargoPacket *cp, uint remove)
+{
+	if (remove == cp->Count()) {
+		delete cp;
+		return true;
+	} else {
+		cp->Reduce(remove);
+		return false;
+	}
+}
+
+/**
+ * Delivers some cargo.
+ * @param cp Packet to be delivered.
+ * @return True if the packet was completely delivered, false if only part of
+ *         it was.
+ */
+bool CargoDelivery::operator()(CargoPacket *cp)
+{
+	uint remove = this->Preprocess(cp);
+	this->payment->PayFinalDelivery(cp, remove);
+	return this->Postprocess(cp, remove);
+}
+
+/**
+ * Loads some cargo onto a vehicle.
+ * @param cp Packet to be loaded.
+ * @return True if the packet was completely loaded, false if part of it was.
+ */
+bool CargoLoad::operator()(CargoPacket *cp)
+{
+	CargoPacket *cp_new = this->Preprocess(cp);
+	if (cp_new == NULL) return false;
+	cp_new->SetLoadPlace(this->load_place);
+	this->source->RemoveFromCache(cp_new, cp_new->Count());
+	this->destination->Append(cp_new);
+	return cp_new == cp;
+}
+
+/**
+ * Transfers some cargo from a vehicle to a station.
+ * @param cp Packet to be transfered.
+ * @return True if the packet was completely reserved, false if part of it was.
+ */
+bool CargoTransfer::operator()(CargoPacket *cp)
+{
+	CargoPacket *cp_new = this->Preprocess(cp);
+	if (cp_new == NULL) return false;
+	this->source->RemoveFromCache(cp_new, cp_new->Count());
+	this->destination->Append(cp_new);
+	return cp_new == cp;
+}
+
+/**
+ * Shifts some cargo from a vehicle to another one.
+ * @param cp Packet to be shifted.
+ * @return True if the packet was completely shifted, false if part of it was.
+ */
+bool CargoShift::operator()(CargoPacket *cp)
+{
+	CargoPacket *cp_new = this->Preprocess(cp);
+	if (cp_new == NULL) cp_new = cp;
+	this->source->RemoveFromCache(cp_new, cp_new->Count());
+	this->destination->Append(cp_new);
+	return cp_new == cp;
+}
+
+template uint CargoRemoval<VehicleCargoList>::Preprocess(CargoPacket *cp);
+template uint CargoRemoval<StationCargoList>::Preprocess(CargoPacket *cp);
+template bool CargoRemoval<VehicleCargoList>::Postprocess(CargoPacket *cp, uint remove);
+template bool CargoRemoval<StationCargoList>::Postprocess(CargoPacket *cp, uint remove);

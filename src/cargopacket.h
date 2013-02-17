@@ -219,6 +219,12 @@ protected:
 
 	void RemoveFromCache(const CargoPacket *cp, uint count);
 
+	template<class Taction>
+	void ShiftCargo(Taction action);
+
+	template<class Taction>
+	void PopCargo(Taction action);
+
 	static bool TryMerge(CargoPacket *cp, CargoPacket *icp);
 
 public:
@@ -303,6 +309,12 @@ public:
 	/** The vehicles have a cargo list (and we want that saved). */
 	friend const struct SaveLoad *GetVehicleDescription(VehicleType vt);
 
+	friend class CargoShift;
+	friend class CargoTransfer;
+	friend class CargoDelivery;
+	template<class Tsource>
+	friend class CargoRemoval;
+
 	/**
 	 * Returns total sum of the feeder share for all packets.
 	 * @return The before mentioned number.
@@ -342,6 +354,11 @@ public:
 	friend class CargoList<StationCargoList>;
 	/** The stations, via GoodsEntry, have a CargoList. */
 	friend const struct SaveLoad *GetGoodsDesc();
+
+	friend class CargoLoad;
+	friend class CargoTransfer;
+	template<class Tsource>
+	friend class CargoRemoval;
 
 	/**
 	 * Are two the two CargoPackets mergeable in the context of

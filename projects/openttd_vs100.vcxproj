@@ -296,6 +296,7 @@
     <ClCompile Include="..\src\articulated_vehicles.cpp" />
     <ClCompile Include="..\src\autoreplace.cpp" />
     <ClCompile Include="..\src\bmp.cpp" />
+    <ClCompile Include="..\src\cargoaction.cpp" />
     <ClCompile Include="..\src\cargomonitor.cpp" />
     <ClCompile Include="..\src\cargopacket.cpp" />
     <ClCompile Include="..\src\cargotype.cpp" />
@@ -392,6 +393,7 @@
     <ClInclude Include="..\src\bmp.h" />
     <ClInclude Include="..\src\bridge.h" />
     <ClInclude Include="..\src\cargo_type.h" />
+    <ClInclude Include="..\src\cargoaction.h" />
     <ClInclude Include="..\src\cargomonitor.h" />
     <ClInclude Include="..\src\cargopacket.h" />
     <ClInclude Include="..\src\cargotype.h" />
