@@ -996,17 +996,6 @@ SmallMapWindow::SmallMapWindow(const WindowDesc *desc, int window_number) : Wind
 	this->SmallMapCenterOnCurrentPos();
 }
 
-/**
- * Compute height given a number of columns.
- * @param num_columns Number of columns.
- * @return Needed height for displaying the smallmap legends in pixels.
- */
-uint SmallMapWindow::GetLegendHeight(uint num_columns) const
-{
-	uint num_rows = max(this->min_number_of_fixed_rows, CeilDiv(max(_smallmap_company_count, _smallmap_industry_count), num_columns));
-	return WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + num_rows * FONT_HEIGHT_SMALL;
-}
-
 /* virtual */ void SmallMapWindow::SetStringParameters(int widget) const
 {
 	switch (widget) {
@@ -1091,7 +1080,7 @@ uint SmallMapWindow::GetLegendHeight(uint num_columns) const
 
 		case WID_SM_LEGEND: {
 			uint columns = this->GetNumberColumnsLegend(r.right - r.left + 1);
-			uint number_of_rows = max((this->map_type == SMT_INDUSTRY || this->map_type == SMT_OWNER) ? CeilDiv(max(_smallmap_company_count, _smallmap_industry_count), columns) : 0, this->min_number_of_fixed_rows);
+			uint number_of_rows = this->GetNumberRowsLegend(columns);
 			bool rtl = _current_text_dir == TD_RTL;
 			uint y_org = r.top + WD_FRAMERECT_TOP;
 			uint x = rtl ? r.right - this->column_width - WD_FRAMERECT_RIGHT : r.left + WD_FRAMERECT_LEFT;
@@ -1104,6 +1093,18 @@ uint SmallMapWindow::GetLegendHeight(uint num_columns) const
 			uint blob_left  = rtl ? this->column_width - 1 - LEGEND_BLOB_WIDTH : 0;
 			uint blob_right = rtl ? this->column_width - 1 : LEGEND_BLOB_WIDTH;
 
+			StringID string = STR_NULL;
+			switch (this->map_type) {
+				case SMT_INDUSTRY:
+					string = STR_SMALLMAP_INDUSTRY;
+					break;
+				case SMT_OWNER:
+					string = STR_SMALLMAP_COMPANY;
+					break;
+				default:
+					break;
+			}
+
 			for (const LegendAndColour *tbl = _legend_table[this->map_type]; !tbl->end; ++tbl) {
 				if (tbl->col_break || ((this->map_type == SMT_INDUSTRY || this->map_type == SMT_OWNER) && i++ >= number_of_rows)) {
 					/* Column break needed, continue at top, COLUMN_WIDTH pixels
@@ -1115,38 +1116,36 @@ uint SmallMapWindow::GetLegendHeight(uint num_columns) const
 
 				uint8 legend_colour = tbl->colour;
 
-				if (this->map_type == SMT_INDUSTRY) {
-					/* Industry name must be formatted, since it's not in tiny font in the specs.
-					 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font */
-					SetDParam(0, tbl->legend);
-					SetDParam(1, Industry::GetIndustryTypeCount(tbl->type));
-					if (!tbl->show_on_map) {
-						/* Simply draw the string, not the black border of the legend colour.
-						 * This will enforce the idea of the disabled item */
-						DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_INDUSTRY, TC_GREY);
-					} else {
-						if (tbl->type == _smallmap_industry_highlight) {
+				switch (this->map_type) {
+					case SMT_INDUSTRY:
+						/* Industry name must be formatted, since it's not in tiny font in the specs.
+						 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font */
+						SetDParam(0, tbl->legend);
+						SetDParam(1, Industry::GetIndustryTypeCount(tbl->type));
+						if (tbl->show_on_map && tbl->type == _smallmap_industry_highlight) {
 							legend_colour = _smallmap_industry_highlight_state ? PC_WHITE : PC_BLACK;
 						}
-						DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_INDUSTRY, TC_BLACK);
-						GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, PC_BLACK); // Outer border of the legend colour
-					}
-				} else if (this->map_type == SMT_OWNER && tbl->company != INVALID_COMPANY) {
-					SetDParam(0, tbl->company);
-					if (!tbl->show_on_map) {
-						/* Simply draw the string, not the black border of the legend colour.
-						 * This will enforce the idea of the disabled item */
-						DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_COMPANY, TC_GREY);
-					} else {
-						DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_COMPANY, TC_BLACK);
-						GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, PC_BLACK); // Outer border of the legend colour
-					}
-				} else {
-					if (this->map_type == SMT_CONTOUR) SetDParam(0, tbl->height * TILE_HEIGHT_STEP);
-
-					/* Anything that is not an industry or a company is using normal process */
-					GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, PC_BLACK);
-					DrawString(x + text_left, x + text_right, y, tbl->legend);
+						/* FALL THROUGH */
+					case SMT_OWNER:
+						if (this->map_type != SMT_OWNER || tbl->company != INVALID_COMPANY) {
+							if (this->map_type == SMT_OWNER) SetDParam(0, tbl->company);
+							if (!tbl->show_on_map) {
+								/* Simply draw the string, not the black border of the legend colour.
+								 * This will enforce the idea of the disabled item */
+								DrawString(x + text_left, x + text_right, y, string, TC_GREY);
+							} else {
+								DrawString(x + text_left, x + text_right, y, string, TC_BLACK);
+								GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, PC_BLACK); // Outer border of the legend colour
+							}
+							break;
+						}
+						/* FALL_THROUGH */
+					default:
+						if (this->map_type == SMT_CONTOUR) SetDParam(0, tbl->height * TILE_HEIGHT_STEP);
+						/* Anything that is not an industry or a company is using normal process */
+						GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, PC_BLACK);
+						DrawString(x + text_left, x + text_right, y, tbl->legend);
+						break;
 				}
 				GfxFillRect(x + blob_left + 1, y + 2, x + blob_right - 1, y + row_height - 2, legend_colour); // Legend colour
 
@@ -1172,6 +1171,54 @@ void SmallMapWindow::SwitchMapType(SmallMapType map_type)
 }
 
 /**
+ * Get the number of rows in the legend from the number of columns. Those
+ * are at least min_number_of_fixed_rows and possibly more if there are so
+ * many cargoes, industry types or companies that they won't fit in the
+ * available space.
+ * @param columns Number of columns in the legend.
+ * @return Number of rows needed for everything to fit in.
+ */
+inline uint SmallMapWindow::GetNumberRowsLegend(uint columns) const
+{
+	uint num_rows = CeilDiv(max(_smallmap_industry_count,_smallmap_company_count), columns);
+	return max(this->min_number_of_fixed_rows, num_rows);
+}
+
+/**
+ * Select and toggle a legend item. When CTRL is pressed, disable all other
+ * items in the group defined by begin_legend_item and end_legend_item and
+ * keep the clicked one enabled even if it was already enabled before. If
+ * the other items in the group are all disabled already and CTRL is pressed
+ * enable them instead.
+ * @param click_pos the index of the item being selected
+ * @param legend the legend from which we select
+ * @param end_legend_item index one past the last item in the group to be inverted
+ * @param begin_legend_item index of the first item in the group to be inverted
+ */
+void SmallMapWindow::SelectLegendItem(int click_pos, LegendAndColour *legend, int end_legend_item, int begin_legend_item)
+{
+	if (_ctrl_pressed) {
+		/* Disable all, except the clicked one */
+		bool changes = false;
+		for (int i = begin_legend_item; i != end_legend_item; i++) {
+			bool new_state = (i == click_pos);
+			if (legend[i].show_on_map != new_state) {
+				changes = true;
+				legend[i].show_on_map = new_state;
+			}
+		}
+		if (!changes) {
+			/* Nothing changed? Then show all (again). */
+			for (int i = begin_legend_item; i != end_legend_item; i++) {
+				legend[i].show_on_map = true;
+			}
+		}
+	} else {
+		legend[click_pos].show_on_map = !legend[click_pos].show_on_map;
+	}
+}
+
+/**
  * Determines the mouse position on the legend.
  * @param pt Mouse position.
  * @return Legend item under the mouse.
@@ -1181,7 +1228,7 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 	const NWidgetBase *wi = this->GetWidget<NWidgetBase>(WID_SM_LEGEND);
 	uint line = (pt.y - wi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_SMALL;
 	uint columns = this->GetNumberColumnsLegend(wi->current_x);
-	uint number_of_rows = max(CeilDiv(max(_smallmap_company_count, _smallmap_industry_count), columns), this->min_number_of_fixed_rows);
+	uint number_of_rows = this->GetNumberRowsLegend(columns);
 	if (line >= number_of_rows) return -1;
 
 	bool rtl = _current_text_dir == TD_RTL;
@@ -1276,55 +1323,16 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 
 		case WID_SM_LEGEND: // Legend
 			if (this->map_type == SMT_INDUSTRY || this->map_type == SMT_OWNER) {
+				int click_pos = this->GetPositionOnLegend(pt);
 				/* If industry type small map*/
 				if (this->map_type == SMT_INDUSTRY) {
 					/* If click on industries label, find right industry type and enable/disable it. */
-					int industry_pos = GetPositionOnLegend(pt);
-					if (industry_pos >= 0 && industry_pos < _smallmap_industry_count) {
-						if (_ctrl_pressed) {
-							/* Disable all, except the clicked one. */
-							bool changes = false;
-							for (int i = 0; i != _smallmap_industry_count; i++) {
-								bool new_state = i == industry_pos;
-								if (_legend_from_industries[i].show_on_map != new_state) {
-									changes = true;
-									_legend_from_industries[i].show_on_map = new_state;
-								}
-							}
-							if (!changes) {
-								/* Nothing changed? Then show all (again). */
-								for (int i = 0; i != _smallmap_industry_count; i++) {
-									_legend_from_industries[i].show_on_map = true;
-								}
-							}
-						} else {
-							_legend_from_industries[industry_pos].show_on_map = !_legend_from_industries[industry_pos].show_on_map;
-						}
+					if (click_pos >= 0 && click_pos < _smallmap_industry_count) {
+						this->SelectLegendItem(click_pos, _legend_from_industries, _smallmap_industry_count);
 					}
 				} else if (this->map_type == SMT_OWNER) {
-					/* If click on companies label, find right company and enable/disable it. */
-					int company_pos = GetPositionOnLegend(pt);
-					if (company_pos < NUM_NO_COMPANY_ENTRIES) break;
-					if (company_pos < _smallmap_company_count) {
-						if (_ctrl_pressed) {
-							/* Disable all, except the clicked one */
-							bool changes = false;
-							for (int i = NUM_NO_COMPANY_ENTRIES; i != _smallmap_company_count; i++) {
-								bool new_state = i == company_pos;
-								if (_legend_land_owners[i].show_on_map != new_state) {
-									changes = true;
-									_legend_land_owners[i].show_on_map = new_state;
-								}
-							}
-							if (!changes) {
-								/* Nothing changed? Then show all (again). */
-								for (int i = NUM_NO_COMPANY_ENTRIES; i != _smallmap_company_count; i++) {
-									_legend_land_owners[i].show_on_map = true;
-								}
-							}
-						} else {
-							_legend_land_owners[company_pos].show_on_map = !_legend_land_owners[company_pos].show_on_map;
-						}
+					if (click_pos < _smallmap_company_count) {
+						this->SelectLegendItem(click_pos, _legend_land_owners, _smallmap_company_count, NUM_NO_COMPANY_ENTRIES);
 					}
 				}
 				this->SetDirty();
@@ -1332,30 +1340,25 @@ int SmallMapWindow::GetPositionOnLegend(Point pt)
 			break;
 
 		case WID_SM_ENABLE_ALL:
-			if (this->map_type == SMT_INDUSTRY) {
-				for (int i = 0; i != _smallmap_industry_count; i++) {
-					_legend_from_industries[i].show_on_map = true;
-				}
-			} else if (this->map_type == SMT_OWNER) {
-				for (int i = NUM_NO_COMPANY_ENTRIES; i != _smallmap_company_count; i++) {
-					_legend_land_owners[i].show_on_map = true;
-				}
+			/* FALL THROUGH */
+		case WID_SM_DISABLE_ALL: {
+			LegendAndColour *tbl = NULL;
+			switch (this->map_type) {
+				case SMT_INDUSTRY:
+					tbl = _legend_from_industries;
+					break;
+				case SMT_OWNER:
+					tbl = &(_legend_land_owners[NUM_NO_COMPANY_ENTRIES]);
+					break;
+				default:
+					NOT_REACHED();
+			}
+			for (;!tbl->end; ++tbl) {
+				tbl->show_on_map = (widget == WID_SM_ENABLE_ALL);
 			}
 			this->SetDirty();
 			break;
-
-		case WID_SM_DISABLE_ALL:
-			if (this->map_type == SMT_INDUSTRY) {
-				for (int i = 0; i != _smallmap_industry_count; i++) {
-					_legend_from_industries[i].show_on_map = false;
-				}
-			} else {
-				for (int i = NUM_NO_COMPANY_ENTRIES; i != _smallmap_company_count; i++) {
-					_legend_land_owners[i].show_on_map = false;
-				}
-			}
-			this->SetDirty();
-			break;
+		}
 
 		case WID_SM_SHOW_HEIGHT: // Enable/disable showing of heightmap.
 			_smallmap_show_heightmap = !_smallmap_show_heightmap;

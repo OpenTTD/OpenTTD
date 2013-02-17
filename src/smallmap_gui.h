@@ -139,8 +139,19 @@ public:
 		return width / this->column_width;
 	}
 
-	uint GetLegendHeight(uint num_columns) const;
+	/**
+	 * Compute height given a number of columns.
+	 * @param num_columns Number of columns.
+	 * @return Needed height for displaying the smallmap legends in pixels.
+	 */
+	inline uint GetLegendHeight(uint num_columns) const
+	{
+		return WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM +
+				this->GetNumberRowsLegend(num_columns) * FONT_HEIGHT_SMALL;
+	}
 
+	uint GetNumberRowsLegend(uint columns) const;
+	void SelectLegendItem(int click_pos, LegendAndColour *legend, int end_legend_item, int begin_legend_item = 0);
 	void SwitchMapType(SmallMapType map_type);
 	void SetNewScroll(int sx, int sy, int sub);
 	void SmallMapCenterOnCurrentPos();
