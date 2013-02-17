@@ -445,6 +445,25 @@ public:
 	friend class CargoReservation;
 	friend class CargoReturn;
 
+	/**
+	 * Returns sum of cargo reserved for loading onto vehicles.
+	 * @return Cargo reserved for loading.
+	 */
+	inline uint ReservedCount() const
+	{
+		return this->reserved_count;
+	}
+
+	/**
+	 * Returns total count of cargo, including reserved cargo that's not
+	 * actually in the list.
+	 * @return Total cargo count.
+	 */
+	inline uint TotalCount() const
+	{
+		return this->count + this->reserved_count;
+	}
+
 	void Append(CargoPacket *cp);
 
 	/* Methods for moving cargo around. First parameter is always maximum

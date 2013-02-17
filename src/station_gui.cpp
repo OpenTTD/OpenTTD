@@ -938,7 +938,7 @@ struct StationViewWindow : public Window {
 				this->cargo_rows[i] = 0;
 			} else {
 				/* Add an entry for total amount of cargo of this type waiting. */
-				cargolist->push_back(CargoData(i, INVALID_STATION, st->goods[i].cargo.Count()));
+				cargolist->push_back(CargoData(i, INVALID_STATION, st->goods[i].cargo.TotalCount()));
 
 				/* Set the row for this cargo entry for the expand/hide button */
 				this->cargo_rows[i] = (uint16)cargolist->size();
@@ -967,6 +967,12 @@ struct StationViewWindow : public Window {
 						}
 
 						if (!added) cargolist->push_back(CargoData(i, cp->SourceStation(), cp->Count()));
+					}
+				}
+				if (st->goods[i].cargo.ReservedCount() > 0) {
+					SetBit(*transfers, i);
+					if (HasBit(this->cargo, i)) {
+						cargolist->push_back(CargoData(i, NEW_STATION, st->goods[i].cargo.ReservedCount()));
 					}
 				}
 			}
@@ -1019,6 +1025,10 @@ struct StationViewWindow : public Window {
 					} else {
 						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_STATION_VIEW_WAITING_CARGO, TC_FROMSTRING, SA_RIGHT);
 					}
+				} else if (cd->source == NEW_STATION) {
+					SetDParam(0, cd->cargo);
+					SetDParam(1, cd->count);
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_STATION_VIEW_RESERVED, TC_FROMSTRING, SA_RIGHT);
 				} else {
 					SetDParam(0, cd->cargo);
 					SetDParam(1, cd->count);
