@@ -543,17 +543,28 @@ void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost)
 
 /**
  * Display animated feeder income.
- * @param x    World X position of the animation location.
- * @param y    World Y position of the animation location.
- * @param z    World Z position of the animation location.
- * @param cost Estimated feeder income.
+ * @param x        World X position of the animation location.
+ * @param y        World Y position of the animation location.
+ * @param z        World Z position of the animation location.
+ * @param transfer Estimated feeder income.
+ * @param income   Real income from goods being delivered to their final destination.
  */
-void ShowFeederIncomeAnimation(int x, int y, int z, Money cost)
+void ShowFeederIncomeAnimation(int x, int y, int z, Money transfer, Money income)
 {
 	Point pt = RemapCoords(x, y, z);
 
-	SetDParam(0, cost);
-	AddTextEffect(STR_FEEDER, pt.x, pt.y, DAY_TICKS, TE_RISING);
+	SetDParam(0, transfer);
+	if (income == 0) {
+		AddTextEffect(STR_FEEDER, pt.x, pt.y, DAY_TICKS, TE_RISING);
+	} else {
+		StringID msg = STR_FEEDER_COST;
+		if (income < 0) {
+			income = -income;
+			msg = STR_FEEDER_INCOME;
+		}
+		SetDParam(1, income);
+		AddTextEffect(msg, pt.x, pt.y, DAY_TICKS, TE_RISING);
+	}
 }
 
 /**

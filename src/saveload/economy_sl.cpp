@@ -63,11 +63,11 @@ static void Load_ECMY()
 }
 
 static const SaveLoad _cargopayment_desc[] = {
-	SLE_REF(CargoPayment, front,         REF_VEHICLE),
-	SLE_VAR(CargoPayment, route_profit,  SLE_INT64),
-	SLE_VAR(CargoPayment, visual_profit, SLE_INT64),
-
-	SLE_END()
+	    SLE_REF(CargoPayment, front,           REF_VEHICLE),
+	    SLE_VAR(CargoPayment, route_profit,    SLE_INT64),
+	    SLE_VAR(CargoPayment, visual_profit,   SLE_INT64),
+	SLE_CONDVAR(CargoPayment, visual_transfer, SLE_INT64, 181, SL_MAX_VERSION),
+	    SLE_END()
 };
 
 static void Save_CAPY()
