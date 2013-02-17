@@ -1158,6 +1158,11 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ρυθμίσε�
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Μειώνει την παρακάτω λίστα σε συγκεκριμένους τύπους ρυθμίσεων
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Όλες οι ρυθμίσεις
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Ρυθμίσεις πελάτη (δεν διατηρούνται στις αποθηκεύσεις· επηρεάζουν όλα τα παιχνίδια)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Ρυθμίσεις παιχνιδιού (διατηρούνται στις αποθηκεύσεις· επηρεάζουν μόνο τα νέα παιχνίδια)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Ρυθμίσεις παιχνιδιού (διατηρούνται στις αποθηκεύσεις· επηρεάζουν μόνο το τρέχον παιχνίδι)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Ρυθμίσεις εταιρίας (διατηρούνται στις αποθηκεύσεις· επηρεάζουν μόνο τα νέα παιχνίδια)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Ρυθμίσεις εταιρίας (διατηρούνται στις αποθηκεύσεις· επηρεάζουν μόνο την τωρινή εταιρία)
 
 STR_CONFIG_SETTING_OFF                                          :Ανενεργό
 STR_CONFIG_SETTING_ON                                           :Ενεργή
@@ -1182,12 +1187,16 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Επιτόκι�
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Λειτουργικά έξοδα: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ταχύτητα οικοδομής: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Περιορίστε το ποσοστό των οικοδομών από τα ΑΙ
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Καταρρεύσεις οχημάτων: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Ελέγχει πόσο συχνά καταρρέουν τα ανεπαρκώς συντηρημένα οχήματα
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Πολλαπλασιαστής επιδότησης: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Θέστε πόσο ξεπληρώνεται για επιδοτημένες συνδέσεις
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Κόστη οικοδομής: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Θέτει το επίπεδο κόστους για αγορές και οικοδομές
 STR_CONFIG_SETTING_RECESSIONS                                   :Υφέσεις: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Όταν είναι ενεργοποιημένο, υφέσεις συμβαίνουν κάθε λίγα χρόνια. Κατά τη διάρκεια μιας ύφεσης όλη η παραγωγή είναι πολύ χαμηλότερη (επιστρέφει στο προηγούμενο επίπεδο όταν τελειώσει η ύφεση)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Απαγορεύεται η αντιστροφή τρένων στους σταθμούς: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Όταν είναι ενεργοποιημένο, τα τρένα δεν θα κάνουν όπισθεν σε μη-τελικούς σταθμούς εάν υπάρχει κοντινότερη διαδρομή προς τον επόμενή τους προορισμό όταν κάνουν όπισθεν
 STR_CONFIG_SETTING_DISASTERS                                    :Καταστροφές: {STRING}
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Επιτρέπεται το χτίσιμο σε πλαγιές και ακτές: {STRING}
@@ -1432,8 +1441,17 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Διατήρη�
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Ομαδοποίηση εξόδων στο παράθυρο οικονομικών της εταιρίας: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Ορίστε τη μορφή για το παράθυρο των εξόδων της εταιρείας
 
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Παίζει ήχο για περιληπτικά μηνύματα ειδήσεων
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Εφημερίδα: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Παίζει ήχο όταν εμφανίζονται εφημερίδες
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Στο τέλος του χρόνου: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Παίζει ηχητικό εφέ στο τέλος του χρόνου συνοψίζοντας την επίδοση της εταιρείας κατά την διάρκεια αυτού του χρόνου σε σχέση με τον προηγούμενο χρόνο
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Οικοδομή: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Παίξε ηχητικό εφέ σε επιτυχής οικοδομές ή άλλες δράσεις
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Παίζει ηχητικό εφέ σε επιτυχής οικοδομές ή άλλες δράσεις
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Οχήματα: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Παίζει τα ηχητικά εφέ των οχημάτων
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Περιβαλλοντικά: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Παίζει τους περιβαλλοντικούς ήχους των βιομηχανιών των πόλεων, και του τοπίου γενικότερα
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Απενεργοποίηση των υποδομών για τα οχήματα που δεν είναι διαθέσιμα: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Όταν είναι ενεργοποιημένο, οι υποδομές είναι διαθέσιμες μόνο όταν υπάρχουν διαθέσιμα οχήματα, αποτρέποντας σπατάλη χρόνου και χρημάτων σε μη χρησιμοποιήσιμες υποδομές
@@ -1473,7 +1491,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Προκαθο�
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Ορίστε το προκαθορισμένο διάστημα μεταξύ συντηρήσεων για τα νέα αεροσκάφη, όταν δεν δίνεται άλλο διάστημα για το αεροσκάφος
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Προκαθορισμένο διάστημα μεταξύ επισκευών για τα πλοία: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Ορίστε το προκαθορισμένο διάστημα μεταξύ συντηρήσεων για τα νέα πλοία, όταν δεν δίνεται άλλο διάστημα για το πλοίο
-STR_CONFIG_SETTING_NOSERVICE                                    :Απενεργοποίηση επισκευών όταν οι βλάβες είναι απενεργοποιημένες: {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :Απενεργοποίηση επισκευών όταν οι καταρρεύσεις είναι απενεργοποιημένες: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Όταν είναι ενεργοποιημένη, τα οχήματα δεν συντηρούνται όταν δεν είναι δυνατό να χαλάσουν
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ενεργοποίηση ορίων ταχύτητας βαγονιών: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Όταν είναι ενεργοποιημένο, χρησιμοποιούνται και τα όρια ταχύτητας των βαγονιών όταν αποφασίζεται η μέγιστη ταχύτητα ενός τραίνου
@@ -2806,6 +2824,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Πρό�
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Δεν μπορεί να γίνει η προσθήκη του αρχείου: διπλότυπο GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Δεν βρέθηκε ταυτοποιημένο αρχείο (φορτώθηκε συμβατό GRF)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Δεν μπορεί να προστεθεί το αρχείο: φτάσατε το όριο αρχείων NewGRF
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Φόρτωση συμβατού/ών GRF για χαμένα αρχεία
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Απενεργοποιήθηκε/αν ανύπαρκτο/α αρχείο/α GRF
@@ -3484,7 +3503,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Βάρο
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Βάρος: {LTBLUE}{WEIGHT_SHORT} {BLACK}Δύναμη Κινητήρα: {LTBLUE}{POWER}{BLACK} Μέγ. Ταχύτητα: {LTBLUE}{VELOCITY} {BLACK}Μέγ. Ε.Δ: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Κέρδη αυτό το έτος: {LTBLUE}{CURRENCY_LONG} (προηγούμενου έτους: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Αξιοπιστία: {LTBLUE}{COMMA}%  {BLACK}Βλάβες μετά από την τελευταία επισκευή: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Αξιοπιστία: {LTBLUE}{COMMA}%  {BLACK}Καταρρεύσεις μετά από την τελευταία επισκευή: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Κατασκευή: {LTBLUE}{NUM}{BLACK} Αξία: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Χωρητικότητα: {LTBLUE}Τίποτα{STRING}
@@ -3499,6 +3518,8 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Διάσ
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Αύξηση διαστημάτων επισκευών κατά 10. Με Ctrl+Κλικ αυξάνονται τα διαστήματα επισκευών κατά 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Μείωση διαστημάτων επισκευών κατά 10. Με Ctrl+Κλικ μειώνεται τα διαστήματα επισκευών κατά 5
 
+STR_VEHICLE_DETAILS_DAYS                                        :Ημέρες
+STR_VEHICLE_DETAILS_PERCENT                                     :Ποσοστό
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Όνομα τρένου
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Όνομα οχήματος δρόμου

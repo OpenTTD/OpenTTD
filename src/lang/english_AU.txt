@@ -2215,18 +2215,18 @@ STR_STATION_CLASS_WAYP                                          :Waypoints
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signal Selection
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Block Signal (semaphore){}This is the most basic type of signal, allowing only one train to be in the same block at the same time
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Entry-Signal (semaphore){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Exit-Signal (semaphore){}Behaves in the same way as a block signal but is necessary to trigger the correct colour on entry & combo pre-signals
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Entry Signal (semaphore){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Exit Signal (semaphore){}Behaves in the same way as a block signal but is necessary to trigger the correct colour on entry & combo pre-signals
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Combo-Signal (semaphore){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of pre-signals
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Path Signal (semaphore){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Standard path signals can be passed from the back side
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}One-way Path Signal (semaphore){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way path signals can't be passed from the back side
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Block Signal (electric){}This is the most basic type of signal, allowing only one train to be in the same block at the same time
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Entry-Signal (electric){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Exit-Signal (electric){}Behaves in the same way as a block signal but is necessary to trigger the correct colour on entry & combo pre-signals
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Combo-Signal (electric){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of pre-signals
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Entry Signal (electric){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Exit Signal (electric){}Behaves in the same way as a block signal but is necessary to trigger the correct colour on entry & combo pre-signals
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Combo Signal (electric){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of pre-signals
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Standard path signals can be passed from the back side
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}One-way Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way path signals can't be passed from the back side
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signal Convert{}When selected, clicking an existing signal will convert it to the selected signal type and variant, Ctrl+Click will toggle the existing variant. Shift+Click shows estimated conversion cost
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signal Convert{}When selected, clicking an existing signal will convert it to the selected signal type and variant. Ctrl+Click will toggle the existing variant. Shift+Click shows estimated conversion cost
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Dragging signal density
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Decrease dragging signal density
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Increase dragging signal density
@@ -2353,7 +2353,7 @@ STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Select t
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Trees of random type
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Place trees of random type. Shift toggles building/showing cost estimate
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Random Trees
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plant trees randomly over landscape
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plant trees randomly throughout the landscape
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Land Generation
@@ -2547,7 +2547,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Company-owned l
 STR_ABOUT_OPENTTD                                               :{WHITE}About OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2011 The OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2013 The OpenTTD team
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Save Game
@@ -3451,6 +3451,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Servicin
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Increase servicing interval by 10. Ctrl+Click increases servicing interval by 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Decrease servicing interval by 10. Ctrl+Click decreases servicing interval by 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Change servicing interval type
+STR_VEHICLE_DETAILS_DEFAULT                                     :Default
+STR_VEHICLE_DETAILS_DAYS                                        :Days
+STR_VEHICLE_DETAILS_PERCENT                                     :Percentage
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Name train
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Name road vehicle

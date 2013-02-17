@@ -2764,6 +2764,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er i
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikke legge til fil: GRF ID finnes allerede
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchende fil ble ikke funnet (kompatibel GRF-fil lastet inn)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Kan ikke legge til fil: Maksgrense nådd for NewGRF-filer
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibel GRF(er) lastet for manglende filer
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manglende GRF-fil(er) har blitt deaktivert
@@ -3451,6 +3452,9 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Vedlikeh
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Øk vedlikeholdsintervall med 10. Ctrl+klikk øker med 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Reduser vedlikeholdsintervall med 10. Ctrl+klikk reduserer med 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Enhet for vedlikeholdsintervall
+STR_VEHICLE_DETAILS_DEFAULT                                     :Standard
+STR_VEHICLE_DETAILS_DAYS                                        :Dager
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Navngi tog
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Navngi kjøretøy

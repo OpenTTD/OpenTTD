@@ -3452,6 +3452,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Augmenta l'interval de les revisions en 10. Ctrl+Clic augmenta l'interval de les revisions en 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Disminueix l'interval de les revisions en 10. Ctrl+Clic disminueix l'interval de les revisions en 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Canvia el tipus d'interval de les revisions
+STR_VEHICLE_DETAILS_DEFAULT                                     :{G=Masculin}Predeterminat
+STR_VEHICLE_DETAILS_DAYS                                        :{G=Masculin}Dies
+STR_VEHICLE_DETAILS_PERCENT                                     :Percentatge
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Anomena tren
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Anomena automòbil

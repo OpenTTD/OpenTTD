@@ -2934,6 +2934,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}En attente{NBSP}: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} venant de {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} réservé au chargement)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepte
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Afficher les marchandises acceptées
@@ -3828,6 +3829,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Revenu{NBSP}: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transfert{NBSP}: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transfert{NBSP}: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Transfert{NBSP}: {CURRENCY_LONG}{WHITE} / {GREEN}Revenu{NBSP}: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Transfert{NBSP}: {CURRENCY_LONG}{WHITE} / {GREEN}Revenu{NBSP}: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Transfert{NBSP}: {CURRENCY_LONG}{WHITE} / {RED}Coût{NBSP}: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Transfert{NBSP}: {CURRENCY_LONG}{WHITE} / {RED}Coût{NBSP}: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Coût estimé{NBSP}: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Revenu estimé{NBSP}: {CURRENCY_LONG}
 

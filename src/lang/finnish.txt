@@ -2933,6 +2933,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Lähdössä: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} tuotu asemalta {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} varattu ladattavaksi)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Ottaa vastaan
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Näytä luettelo vastaanotettavasta rahdista.
@@ -3827,6 +3828,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Tulo: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Siirrä: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Siirrä: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Siirrä: {CURRENCY_LONG}{WHITE} / {GREEN}Tulo: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Siirrä: {CURRENCY_LONG}{WHITE} / {GREEN}Tulo: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Siirrä: {CURRENCY_LONG}{WHITE} / {RED}Kustannus: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Siirrä: {CURRENCY_LONG}{WHITE} / {RED}Kustannus: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Arvioitu kustannus: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Arvioitu tulo: {CURRENCY_LONG}
 

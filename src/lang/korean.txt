@@ -2934,6 +2934,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}대기: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({1:STATION}에서 온 {0:CARGO_SHORT})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} 적재 예정)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}받음
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}받는 화물의 목록 표시
@@ -3828,6 +3829,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}수익: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}환승: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}환승: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}환승: {CURRENCY_LONG}{WHITE} / {GREEN}수익: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}환승: {CURRENCY_LONG}{WHITE} / {GREEN}수익: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}환승: {CURRENCY_LONG}{WHITE} / {RED}가격: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}환승: {CURRENCY_LONG}{WHITE} / {RED}가격: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}예상 가격: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}예상 수익: {CURRENCY_LONG}
 
