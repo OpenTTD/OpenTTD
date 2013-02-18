@@ -3266,6 +3266,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Чакае: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} транзітам з {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} зарэзервавана для грузу)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Прымае
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Паказаць сьпіс прымаемых грузаў
@@ -3804,6 +3805,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Агля
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Павялiчыць інтэрвал абслугоўваньня на 10. Ctrl+клік — павялічыць інтэрвал абслугоўваньня на 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Зьменшыць інтэрвал абслугоўваньня на 10. Ctrl+клік — паменшыць інтэрвал абслугоўваньня на 5.
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Змяніць прынцып разліку інтэрвалу абслугоўваньня
+STR_VEHICLE_DETAILS_DEFAULT                                     :Па змаўчанні
+STR_VEHICLE_DETAILS_DAYS                                        :У днях
+STR_VEHICLE_DETAILS_PERCENT                                     :У адсотках
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Назва цягнiка
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Назва аўтамабiля
@@ -3907,7 +3912,7 @@ STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Прап
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Парамэтр транспарту для параўнаньня
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Працэнт пагрузкі
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Адсотак пагрузкі
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Надзейнасьць
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Макс. хуткасьць
 STR_ORDER_CONDITIONAL_AGE                                       :Узрост (гадоў)
@@ -4176,6 +4181,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Даход: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Трансфэр: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Трансфэр: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Перавозка: {CURRENCY_LONG}{WHITE} / {GREEN}Прыбытак: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Перавозка: {CURRENCY_LONG}{WHITE} / {GREEN}Прыбытак: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Перавозка: {CURRENCY_LONG}{WHITE} / {RED}Кошт: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Перавозка: {CURRENCY_LONG}{WHITE} / {RED}Кошт: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Меркаваны кошт: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Меркаваны даход: {CURRENCY_LONG}
 

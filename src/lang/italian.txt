@@ -2961,6 +2961,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}In attesa: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} in viaggio {G "da " dall' "dalla "}{STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} {G 0 riservati riservati riservate} per il caricamento)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accetta
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostra la lista delle merci accettate
@@ -3855,6 +3856,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Ricavo: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Trasferiti: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Trasferiti: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Trasferiti: {CURRENCY_LONG}{WHITE} / {GREEN}Ricavo: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Trasferiti: {CURRENCY_LONG}{WHITE} / {GREEN}Ricavo: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Trasferiti: {CURRENCY_LONG}{WHITE} / {RED}Costo: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Trasferiti: {CURRENCY_LONG}{WHITE} / {RED}Costo: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Costo stimato: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Ricavo stimato: {CURRENCY_LONG}
 

@@ -3113,6 +3113,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Ожидает: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} транзитом из {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} зарезервировано для груза)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Принимает
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Показать список принимаемых грузов
@@ -3641,6 +3642,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Осмо
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Увеличить интервал обслуживания на 10. Ctrl+щелчок увеличивает интервал обслуживания на 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Уменьшить интервал обслуживания на 10. Ctrl+щелчок уменьшает интервал обслуживания на 5.
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Изменить принцип расчёта интервала обслуживания
+STR_VEHICLE_DETAILS_DEFAULT                                     :По умолчанию
+STR_VEHICLE_DETAILS_DAYS                                        :В днях
+STR_VEHICLE_DETAILS_PERCENT                                     :В процентах
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Название поезда
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Название автомобиля
@@ -4013,6 +4018,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Доход: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Трансфер: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Трансфер: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Перевозка: {CURRENCY_LONG}{WHITE} / {GREEN}Доход: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Перевозка: {CURRENCY_LONG}{WHITE} / {GREEN}Доход: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Перевозка: {CURRENCY_LONG}{WHITE} / {RED}Стоимость: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Перевозка: {CURRENCY_LONG}{WHITE} / {RED}Стоимость: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Предполагаемая цена: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Предполагаемый доход: {CURRENCY_LONG}
 

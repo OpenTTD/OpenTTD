@@ -2764,6 +2764,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você e
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Impossível adicionar: registro de GRF já existe
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Arquivo procurado não encontrado (carregado compatível com GRF)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Impossível adicionar arquivo: Limite de NewGRF's atingido
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRG(s) compatível(eis) carregados para os arquivos que faltam
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}arquivo(s) GRF em falta foram desativados
@@ -2933,6 +2934,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Aguardando: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} vindo de {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservado para carregamento)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Aceita
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Exibir lista de carga aceita
@@ -3451,6 +3453,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Aumentar intervalo de serviço em 10. Ctrl+Clique aumenta em 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Reduzir intervalo de serviço em 10. Ctrl+Clique reduz em 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Alterar o tipo de intervalo entre manutenções
+STR_VEHICLE_DETAILS_DEFAULT                                     :Padrão
+STR_VEHICLE_DETAILS_DAYS                                        :Dias
+STR_VEHICLE_DETAILS_PERCENT                                     :Porcentagem
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Renomear trem
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Renomear automóvel
@@ -3823,6 +3829,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Lucro: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transferir: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transferir: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Transferência: {CURRENCY_LONG}{WHITE} / {GREEN}Lucro: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Transferência: {CURRENCY_LONG}{WHITE} / {GREEN}Lucro: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Transferência: {CURRENCY_LONG}{WHITE} / {RED}Custo: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Transferência: {CURRENCY_LONG}{WHITE} / {RED}Custo: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Preço Estimado: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Renda Estimada: {CURRENCY_LONG}
 

@@ -403,6 +403,7 @@ STR_GRAPH_MENU_HIGHSCORE                                        :Bästa spelresu
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industriförteckning
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Industrikedjor
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Bekosta ny industri
 ############ range ends here
 
@@ -1043,6 +1044,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ingen pa
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancerade inställningar
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Sökfilter:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Utöka alla
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Stäng alla
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen förklaring tillgänglig)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standardvärde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Typ av inställning: {ORANGE}{STRING}
@@ -1054,6 +1056,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Företagsinstä
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Visa:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Begränsar listan till att endast visa ändrade inställningar
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grundläggande inställningar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avancerade inställningar
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expertinställningar / alla inställningar
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Inställningar med annat värde än standardvärdet
@@ -1085,10 +1088,17 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Höger
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Räntenivå: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Driftkostnader: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Konstruktionshastighet: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Begränsar antalet konstruktionshandlingar för AI-spelare
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Fordonshaverier: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Styr hur ofta otillräckligt servade fordon kan få motorstopp
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subvention (multiplikativ): {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Ange hur mycket betalt som subventionerade anslutningar ger
 STR_CONFIG_SETTING_RECESSIONS                                   :Lågkonjunkturer: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Om det är aktiverat så kan lågkonjunkturer uppstå med ett antal års mellanrum. Under en lågkonjunktur är all produktion avsevärt lägre (men återgår till det normala när lågkonjunkturen är över)
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofer: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Slår av/på katastrofer vilka då och då kan blockera eller förstöra fordon och infrastruktur
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Stadsfullmäktiges attityd mot ombyggantion av områden: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Välj hur mycket ett företags oväsen och miljöpåverkan ska påverka dess anseende och möjlighet till vidare byggnationer i området
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillåt konstruktion på sluttningar och kuster: {STRING}
@@ -1281,7 +1291,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scrolla kartan
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Avstängd
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Mushjulshastighet: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontrollera känsligheten hos skrollning med mushjulet
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Skärmtangentbord: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Ange metod för hur skärmtangentbordet öppnas för inmatning av text i textrutor. Skärmtangentbordet används med hjälp mus, touch, eller andra pek-indata-enheter och är till för små enheter utan fysiskt tangentbord
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Avstängd
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dubbelklick
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Enkelklick (om redan fokuserad)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enkelklick (omedelbart)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Högerklicksemulering: {STRING}
@@ -1334,7 +1348,14 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Håll verktygen
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Gruppera utgifter i företagens finansfönster: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Välj layout för företagens utgiftsfönster
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Summerade nyheter: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Spela ljudeffekt för sammanfattade nyhetsmeddelanden
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Tidningsnyheter: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Spela upp ljud när tidningsnyheter visas
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Slut på året: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Spela en ljudeffekt vid årets slut som beskriver företagets resultat från det gångna året
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Konstruktion: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Spela ljudeffekter när konstruktion lyckas och vid andra händelser
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Knapptryckningar: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Pip vid knapptryckningar
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastrofer/olyckor: {STRING}
@@ -1393,23 +1414,38 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Använd inte el
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Om denna inställning aktiveras så tas kravet på att elektrifiera spår för att elektriska lok ska kunna köra på dem bort
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Första fordonets ankomst till spelarens stn.: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Visa nyhetstidning när det första fordonet ankommer till egna nya stationer
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Första fordonets ankomst till konkurrents stn.: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Visa nyhetstidning när det första fordonet ankommer till motståndarnas nya stationer
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Olyckor / katastrofer: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Visa nyhetstidning när olyckor eller katastrofer inträffar
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Företagsinformation: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Visa nyhetstidning när nya företag startar upp eller när ett befintligt företag riskerar att gå bankrupt
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Invigning av industrier: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Visa nyhetstidning när nya industrier öppnas
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Nedläggning av Industrier: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Visa nyhetstidning när industrier stängs ner
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomiska förändringar: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Visa nyhetstidning om förändringar i den globala ekonomin
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produktionsförändring vid industri som företaget betjänar: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Visa nyhetstidning vid förändring av industriers produktionsnivåer för industrier som används av det egna företaget
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produktionsförändring vid industri som motståndare betjänar: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Visa nyhetstidning vid förändring av industriers produktionsnivåer för industrier som används av motståndare
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Andra produktionsförändringar vid industrier.: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Visa nyhetstidning vid förändring av industriers produktionsnivåer för industrier som inte används av motståndare eller det egna företaget
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Råd / information om företagets fordon: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Visa meddelande ifall att ett fordon behöver uppmärksamhet
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nya fordon: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Visa nyhetstidning när en ny typ av fordon blir tillgängligt
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Ändringar i godsacceptans: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Visa meddelande när stationer ändrar upptagningsområde för någon vara
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventioner: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Visa nyhetstidning om händelser relaterade till subventioner
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Övergripande information: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Visa nyhetstidning om generella händelser så som köp av exklusiva rättigheter eller finansiering av vägbyggen
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Av
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Summarisk
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Summerad
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :På
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Nyheter i färg visas efter: {STRING}
@@ -2527,6 +2563,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Mata in 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Generera Värld
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kartstorlek:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Ange kartans storlek i rutor. Antalet tillgängliga rutor kommer att bli något lägre
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Antal städer:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
@@ -2702,6 +2739,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Innehåller flera Action 8 (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Läste förbi slutet av pseudo-spriteobjekt (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det aktiva grafikpaketet saknar ett antal bilder.{}Var vänlig och uppdatera grafikpaketet
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Det aktiva grafikpaketet saknar ett antal bilder.{}Var vänlig och uppdatera grafikpaketet.{}Eftersom du spelar en {YELLOW}utvecklings-version av OpenTTD{WHITE}, så kan du även behöva en {YELLOW}utvecklings-version av basgrafikpaketet{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Efterfrågade GRF-resurser är inte tillgängliga (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} har inaktiverats av {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Felaktig/okänd layout-format av spriteobjekt (spriteobjekt {3:NUM})
@@ -2882,6 +2920,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Väntar: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} på väg från {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reserverat för lastning)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepterar
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Visa lista över accepterat gods
@@ -3400,6 +3439,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Servicei
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Öka serviceintervall med 10. Ctrl+klick ökar serviceintervall med 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Minska serviceintervall med 10. Ctrl+klick minskar servinceintervall med 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Ändra typ av service-intervall
+STR_VEHICLE_DETAILS_DEFAULT                                     :Standard
+STR_VEHICLE_DETAILS_DAYS                                        :Dagar
+STR_VEHICLE_DETAILS_PERCENT                                     :Procent
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Byt namn på tåg
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Byt namn på vägfordon
@@ -3770,8 +3813,12 @@ STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED
 STR_INCOME_FLOAT_COST                                           :{RED}Kostnad: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Inkomst: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Inkomst: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Överförning: {CURRENCY_LONG}
-STR_FEEDER                                                      :{YELLOW}Överförning: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Överföring: {CURRENCY_LONG}
+STR_FEEDER                                                      :{YELLOW}Överföring: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Överföring: {CURRENCY_LONG}{WHITE} / {GREEN}Inkomst: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Överföring: {CURRENCY_LONG}{WHITE} / {GREEN}Inkomst: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Överföring: {CURRENCY_LONG}{WHITE} / {RED}Kostnad: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Överföring: {CURRENCY_LONG}{WHITE} / {RED}Kostnad: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Uppskattad kostnad: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Uppskattad inkomst: {CURRENCY_LONG}
 

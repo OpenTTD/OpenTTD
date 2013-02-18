@@ -166,11 +166,11 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}X
 STR_ABBREV_ALL                                                  :{TINY_FONT}모두
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{G=m}{COMMA} 승객
+STR_PASSENGERS                                                  :{G=m}승객 {COMMA}명
 STR_BAGS                                                        :{G=f}{COMMA} 자루
 STR_TONS                                                        :{G=m}{COMMA} 톤
 STR_LITERS                                                      :{G=f}{COMMA} 리터
-STR_ITEMS                                                       :{G=m}{COMMA} 품목
+STR_ITEMS                                                       :{G=m}{COMMA} 마리
 STR_CRATES                                                      :{G=f}{COMMA} 상자
 
 # Colours, do not shuffle
@@ -284,7 +284,7 @@ STR_SORT_BY_RATING_MIN                                          :낮은 화물 �
 STR_SORT_BY_ENGINE_ID                                           :차량ID (기본 정렬)
 STR_SORT_BY_COST                                                :가격
 STR_SORT_BY_POWER                                               :힘
-STR_SORT_BY_TRACTIVE_EFFORT                                     :견인 효과
+STR_SORT_BY_TRACTIVE_EFFORT                                     :견인력
 STR_SORT_BY_INTRO_DATE                                          :도입 날짜
 STR_SORT_BY_RUNNING_COST                                        :{G=f}유지비
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :유지비 분의 힘
@@ -800,9 +800,9 @@ STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE}에 잘못된 경로가 지정되어 있습니다
 # end of order system
 
-STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} : 열차가 낡았습니다.
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} : 열차가 매우 낡았습니다.
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} : 열차가 매우 낡아 교체가 시급합니다
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} : 차량이 낡았습니다.
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} : 차량이 매우 낡았습니다.
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} : 차량이 매우 낡아 교체가 시급합니다
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} : 다음 목적지로의 경로를 찾을 수 없습니다.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} : 아직 다음 목적지에 도착하지 못했습니다.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}의 작년 수익이 {CURRENCY_LONG} 입니다.
@@ -1405,17 +1405,17 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :멀티 플레�
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :게임 스크립트가 중지되기 직전에 계산할 수 있는 최대 횟수: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :게임 스크립트가 한 단계에서 계산할 수 있는 최대 계산 횟수를 설정합니다.
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :백분율에 의한 점검 주기: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :신뢰도 기준으로 차량을 점검: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :차량 점검 방식을 "마지막 점검 이후 지난 시간 (또는) 최대 신뢰도에 대한 차량 신뢰도의 일정 퍼센트 하락 여부" 중에 하나로 선택합니다.
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :열차에 대한 기본 점검 간격: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :열차에 대한 기본 점검 기준: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :열차에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} 일/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :사용 안 함
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :자동차에 대한 기본 점검 간격: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :자동차에 대한 기본 점검 기준: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :자동차에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :항공기에 대한 기본 점검 간격: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :항공기에 대한 기본 점검 기준: {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :항공기에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :선박에 대한 기본 점검 간격: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :선박에 대한 기본 점검 기준: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :선박에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
 STR_CONFIG_SETTING_NOSERVICE                                    :고장이 나지 않도록 설정되어 있으면 점검을 비활성화: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :이 옵션을 켜면 차량이 고장이 나지 않도록 설정되어 있는 경우에는 점검을 하지 않게 됩니다.
@@ -3192,7 +3192,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}전원 �
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}개조가능 화물: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :모든 종류의 화물
 STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST} 이외의 모든 화물
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 견인 효과: {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 견인력: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}항속거리: {GOLD}{COMMA} 칸
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}열차 선택 목록 - 차량 정보를 보려면 클릭
@@ -3448,12 +3448,12 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}수송�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}환승 수익: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}점검 간격: {LTBLUE}{COMMA}일마다{BLACK}   최근 점검: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}점검 간격: {LTBLUE}{COMMA}%{BLACK}   최근 점검: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 주기를 10씩 증가시킵니다. Ctrl+Click시 점검 주기를 5씩 증가시킵니다.
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 주기를 10씩 감소시킵니다. Ctrl+Click 시 점검 주기를 5씩 감소시킵니다.
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}점검 기준: {LTBLUE}{COMMA}일마다{BLACK}   최근 점검: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}점검 기준: {LTBLUE}{COMMA}%{BLACK}   최근 점검: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 기준값을 10만큼 올립니다. Ctrl+클릭하면 점검 기준값을 5만큼 올립니다.
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 기준값을 10만큼 내립니다. Ctrl+클릭하면 점검 기준값을 5만큼 내립니다.
 
-STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}점검 주기의 기준을 변경합니다.
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}점검 기준 종류를 변경합니다.
 STR_VEHICLE_DETAILS_DEFAULT                                     :기본
 STR_VEHICLE_DETAILS_DAYS                                        :날짜
 STR_VEHICLE_DETAILS_PERCENT                                     :신뢰도

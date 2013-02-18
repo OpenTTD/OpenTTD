@@ -2933,6 +2933,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Đang chờ: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} trung chuyển từ {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} đã được trống để dỡ hàng)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Chấp nhận
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Liệt kê hàng hoá được chấp nhận
@@ -3451,6 +3452,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Tần su
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Tăng tần suất bảo trì lên 10. Ctrl+Click để tăng 5 thôi
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Giảm tần suất bảo trì lên 10. Ctrl+Click để giảm 5 thôi
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Thay đổi kiểu tần suất phục vụ
+STR_VEHICLE_DETAILS_DEFAULT                                     :Mặc định
+STR_VEHICLE_DETAILS_DAYS                                        :Ngày
+STR_VEHICLE_DETAILS_PERCENT                                     :Phần trăm
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Đổi tên tàu hoả
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Đổi tên ôtô
@@ -3823,6 +3828,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Thu nhập: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Vận chuyển: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Vận chuyển: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Vận chuyển: {CURRENCY_LONG}{WHITE} / {GREEN}Thu nhập: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Vận chyển: {CURRENCY_LONG}{WHITE} / {GREEN}Thu nhập: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Vận chuyển: {CURRENCY_LONG}{WHITE} / {RED}Chi phí: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Vận chuyển: {CURRENCY_LONG}{WHITE} / {RED}Chi phí: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Chi phí ước tính: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Thu nhập ước tính: {CURRENCY_LONG}
 

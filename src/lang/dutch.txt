@@ -2933,6 +2933,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Wachtend: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} op weg van {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} gereserveerd voor laden)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepteert
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Laat lijst van gevraagde goederen zien
@@ -3451,6 +3452,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Onderhou
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Vergroot onderhoudsinterval met 10. Ctrl+klik verhoogt interval met 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Verklein onderhoudsinterval met 10. Ctrl+klik verlaagt interval met 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Wijzig onderhoudsinterval type
+STR_VEHICLE_DETAILS_DEFAULT                                     :Standaard
+STR_VEHICLE_DETAILS_DAYS                                        :Dagen
+STR_VEHICLE_DETAILS_PERCENT                                     :Percentage
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Hernoem trein
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Hernoem wegvoertuig
@@ -3823,6 +3828,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Inkomsten: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Overladen: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Overladen: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Overdragen: {CURRENCY_LONG}{WHITE} / {GREEN}Inkomsten: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Overdragen: {CURRENCY_LONG}{WHITE} / {GREEN}Inkomsten: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Overdragen: {CURRENCY_LONG}{WHITE} / {RED}Kosten: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Overdragen: {CURRENCY_LONG}{WHITE} / {RED}Kosten: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Verwachte kosten: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Verwachte inkomsten: {CURRENCY_LONG}
 

@@ -1233,7 +1233,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :A vonatok az á
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :A hely, ahol a vonat az állomási peron mellett alapértelmezetten megáll. Az 'elején' jelentése, hogy a vonat a peron belépéshez legközelebbi pontján fog megállni, 'közepén' jelentése, hogy a vonat a peron közepén fog megállni, 'végén' jelentése, hogy a vonat a peron belépéshez ellentétes végén fog megállni. Ez a beállítás csak egy alapértelmezett értéket jelent új utasítások részére, az egyes utasítások viszont beállíthatóak másfajta működésmódra is természetesen
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :elején
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :közepén
-STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :vége
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :távoli végén
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Közúti járművek sorbanállása: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Közúti járművek megállítása foglalt útszakasz előtt, míg az fel nem szabadul
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Ablakmozgatás, ha az egér a képernyő szélén van: {STRING}
@@ -2997,6 +2997,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Várakozik: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} ideszállítva {STATION} állomásról)
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} lefoglalva berakodáshoz)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Elfogadás
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Az elfogadott áruk listájának mutatása
@@ -3891,6 +3892,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}{CURRENCY_LONG} bevétel
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Eleszállít: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Elszállít: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Elszállítás: {CURRENCY_LONG}{WHITE} / {GREEN}Bevétel: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Elszállítás: {CURRENCY_LONG}{WHITE} / {GREEN}Bevétel: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Elszállítás: {CURRENCY_LONG}{WHITE} / {RED}Költség: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Elszállítás: {CURRENCY_LONG}{WHITE} / {RED}Költség: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Becsült ár: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Becsült bevétel: {CURRENCY_LONG}
 
