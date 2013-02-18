@@ -29,6 +29,11 @@
 #include "table/strings.h"
 #include "../table/sprites.h"
 
+
+/** Whether the user accepted to enter external websites during this session. */
+static bool _accepted_external_search = false;
+
+
 /** Window for displaying the textfile of an item in the content list. */
 struct ContentTextfileWindow : public TextfileWindow {
 	const ContentInfo *ci; ///< View the textfile of this ContentInfo.
@@ -296,6 +301,63 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	uint filesize_sum;           ///< The sum of all selected file sizes
 	Scrollbar *vscroll;          ///< Cache of the vertical scrollbar
 
+	/** Search external websites for content */
+	void OpenExternalSearch()
+	{
+		extern void OpenBrowser(const char *url);
+
+		char url[1024];
+		const char *last = lastof(url);
+
+		char *pos = strecpy(url, "http://grfsearch.openttd.org/?", last);
+
+		if (this->auto_select) {
+			pos = strecpy(pos, "do=searchgrfid&q=", last);
+
+			bool first = true;
+			for (ConstContentIterator iter = this->content.Begin(); iter != this->content.End(); iter++) {
+				const ContentInfo *ci = *iter;
+				if (ci->state != ContentInfo::DOES_NOT_EXIST) continue;
+
+				if (!first) pos = strecpy(pos, ",", last);
+				first = false;
+
+				pos += seprintf(pos, last, "%08X", ci->unique_id);
+				pos = strecpy(pos, ":", last);
+				pos = md5sumToString(pos, last, ci->md5sum);
+			}
+		} else {
+			pos = strecpy(pos, "do=searchtext&q=", last);
+
+			/* Escape search term */
+			for (const char *search = this->filter_editbox.text.buf; *search != '\0'; search++) {
+				/* Remove quotes */
+				if (*search == '\'' || *search == '"') continue;
+
+				/* Escape special chars, such as &%,= */
+				if (*search < 0x30) {
+					pos += seprintf(pos, last, "%%%02X", *search);
+				} else if (pos < last) {
+					*pos = *search;
+					*++pos = '\0';
+				}
+			}
+		}
+
+		OpenBrowser(url);
+	}
+
+	/**
+	 * Callback function for disclaimer about entering external websites.
+	 */
+	static void ExternalSearchDisclaimerCallback(Window *w, bool accepted)
+	{
+		if (accepted) {
+			_accepted_external_search = true;
+			((NetworkContentListWindow*)w)->OpenExternalSearch();
+		}
+	}
+
 	/**
 	 * (Re)build the network game list as its amount has changed because
 	 * an item has been added or deleted for example
@@ -307,9 +369,14 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		/* Create temporary array of games to use for listing */
 		this->content.Clear();
 
+		bool all_available = true;
+
 		for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
+			if ((*iter)->state == ContentInfo::DOES_NOT_EXIST) all_available = false;
 			*this->content.Append() = *iter;
 		}
+
+		this->SetWidgetDisabledState(WID_NCL_SEARCH_EXTERNAL, this->auto_select && all_available);
 
 		this->FilterContentList();
 		this->content.Compact();
@@ -421,6 +488,7 @@ public:
 		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;
 		this->filter_editbox.afilter = CS_ALPHANUMERAL;
 		this->SetFocusedWidget(WID_NCL_FILTER);
+		this->SetWidgetDisabledState(WID_NCL_SEARCH_EXTERNAL, this->auto_select);
 
 		_network_content_client.AddCallback(this);
 		this->content.SetListing(this->last_sorting);
@@ -721,6 +789,14 @@ public:
 			case WID_NCL_DOWNLOAD:
 				if (BringWindowToFrontById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD) == NULL) new NetworkContentDownloadStatusWindow();
 				break;
+
+			case WID_NCL_SEARCH_EXTERNAL:
+				if (_accepted_external_search) {
+					this->OpenExternalSearch();
+				} else {
+					ShowQuery(STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION, STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER, this, ExternalSearchDisclaimerCallback);
+				}
+				break;
 		}
 	}
 
@@ -896,7 +972,7 @@ static const NWidgetPart _nested_network_content_list_widgets[] = {
 		NWidget(NWID_SPACER), SetMinimalSize(0, 7), SetResize(1, 0),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(8, 8, 8),
 			/* Left side. */
-			NWidget(NWID_VERTICAL),
+			NWidget(NWID_VERTICAL), SetPIP(0, 4, 0),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(NWID_VERTICAL),
 						NWidget(NWID_HORIZONTAL),
@@ -909,6 +985,16 @@ static const NWidgetPart _nested_network_content_list_widgets[] = {
 						NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, WID_NCL_MATRIX), SetResize(1, 14), SetFill(1, 1), SetScrollbar(WID_NCL_SCROLLBAR), SetDataTip(STR_NULL, STR_CONTENT_MATRIX_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_VSCROLLBAR, COLOUR_LIGHT_BLUE, WID_NCL_SCROLLBAR),
+				EndContainer(),
+				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(0, 8, 0),
+					NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NCL_SEL_ALL_UPDATE), SetResize(1, 0), SetFill(1, 0),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NCL_SELECT_UPDATE), SetResize(1, 0), SetFill(1, 0),
+												SetDataTip(STR_CONTENT_SELECT_UPDATES_CAPTION, STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NCL_SELECT_ALL), SetResize(1, 0), SetFill(1, 0),
+												SetDataTip(STR_CONTENT_SELECT_ALL_CAPTION, STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP),
+					EndContainer(),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NCL_UNSELECT), SetResize(1, 0), SetFill(1, 0),
+												SetDataTip(STR_CONTENT_UNSELECT_ALL_CAPTION, STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP),
 				EndContainer(),
 			EndContainer(),
 			/* Right side. */
@@ -927,16 +1013,8 @@ static const NWidgetPart _nested_network_content_list_widgets[] = {
 		NWidget(NWID_SPACER), SetMinimalSize(0, 7), SetResize(1, 0),
 		/* Bottom. */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(8, 8, 8),
-			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(0, 8, 0),
-				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NCL_SEL_ALL_UPDATE), SetResize(1, 0), SetFill(1, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NCL_SELECT_UPDATE), SetResize(1, 0), SetFill(1, 0),
-											SetDataTip(STR_CONTENT_SELECT_UPDATES_CAPTION, STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NCL_SELECT_ALL), SetResize(1, 0), SetFill(1, 0),
-											SetDataTip(STR_CONTENT_SELECT_ALL_CAPTION, STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP),
-				EndContainer(),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NCL_UNSELECT), SetResize(1, 0), SetFill(1, 0),
-											SetDataTip(STR_CONTENT_UNSELECT_ALL_CAPTION, STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP),
-			EndContainer(),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NCL_SEARCH_EXTERNAL), SetResize(1, 0), SetFill(1, 0),
+										SetDataTip(STR_CONTENT_SEARCH_EXTERNAL, STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP),
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(0, 8, 0),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NCL_CANCEL), SetResize(1, 0), SetFill(1, 0),
 											SetDataTip(STR_BUTTON_CANCEL, STR_NULL),

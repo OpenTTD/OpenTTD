@@ -655,6 +655,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NCL_CANCEL,                            "WID_NCL_CANCEL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NCL_DOWNLOAD,                          "WID_NCL_DOWNLOAD");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NCL_SEL_ALL_UPDATE,                    "WID_NCL_SEL_ALL_UPDATE");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NCL_SEARCH_EXTERNAL,                   "WID_NCL_SEARCH_EXTERNAL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NG_MAIN,                               "WID_NG_MAIN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NG_CONNECTION,                         "WID_NG_CONNECTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NG_CONN_BTN,                           "WID_NG_CONN_BTN");

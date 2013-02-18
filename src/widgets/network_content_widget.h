@@ -45,6 +45,7 @@ enum NetworkContentListWidgets {
 	WID_NCL_DOWNLOAD,       ///< 'Download' button.
 
 	WID_NCL_SEL_ALL_UPDATE, ///< #NWID_SELECTION widget for select all/update buttons..
+	WID_NCL_SEARCH_EXTERNAL, ///< Search external sites for missing NewGRF.
 };
 
 #endif /* WIDGETS_NETWORK_CONTENT_WIDGET_H */

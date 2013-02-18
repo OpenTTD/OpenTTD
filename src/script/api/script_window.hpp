@@ -1611,6 +1611,7 @@ public:
 		WID_NCL_DOWNLOAD                             = ::WID_NCL_DOWNLOAD,                             ///< 'Download' button.
 
 		WID_NCL_SEL_ALL_UPDATE                       = ::WID_NCL_SEL_ALL_UPDATE,                       ///< #NWID_SELECTION widget for select all/update buttons..
+		WID_NCL_SEARCH_EXTERNAL                      = ::WID_NCL_SEARCH_EXTERNAL,                      ///< Search external sites for missing NewGRF.
 	};
 
 	/* automatically generated from ../../widgets/network_widget.h */
