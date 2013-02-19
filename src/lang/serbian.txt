@@ -3494,7 +3494,7 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Naziv le
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Kupljen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Vrednost: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Ukupana nosivost ovog voza:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Ukupna nosivost ovog voza:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
@@ -3509,7 +3509,7 @@ STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Prikazuj
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapaciteti
 STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Prikazuje nosivost svih vozila u kompoziciji
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Ukupni tovar
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Prikazuje ukupnu nosivist voza, podeljenu po vrsti tovara
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Prikazuje ukupnu nosivost voza, podeljenu po vrsti tovara
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Nosivost: {LTBLUE}
 
@@ -3775,7 +3775,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Prikazuj
 STR_AI_GAME_SCRIPT                                              :{BLACK}Skripta Partije
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Pregled zapisnika Skripte partije
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Nije pronađena nijadna prikladna VI.{}Učitana zamena neće raditi ništa.{}Možete preuzeti nekoliko VI preko sistema za preuzimanje dodataka
+STR_ERROR_AI_NO_AI_FOUND                                        :Nije pronađena nijedna prikladna VI.{}Učitana zamena neće raditi ništa.{}Možete preuzeti nekoliko VI preko sistema za preuzimanje dodataka
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna od pokrenutih skripti je pukla. Molimo vas da prijavite grešku autoru skripte sa slikom prozora za korigovanje VI / Skripte Partije
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Prozor za korigovanje VI / Skripte Partije je dostupan samo na serveru
 
@@ -3941,7 +3941,7 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... već
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Preduzeće se ne može preimenovati...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Vlasnik se ne može preimenovati...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maskimalan dozvoljen zajam iznosi: {CURRENCY_LONG}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksimalan dozvoljen zajam iznosi: {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nije moguće pozajmiti još novca...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nema duga
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... potrebno {CURRENCY_LONG}
@@ -4034,7 +4034,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Suviše 
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Ovde se ne može izgraditi putanja za prugu...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Bova se ovde ne može postaviti...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Neuspešana promena naziva putanje...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Neuspešna promena naziva putanje...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Odavde se ne može ukloniti putanja za prugu...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Prvo se mora ukloniti putanja za prugu
@@ -4044,7 +4044,7 @@ STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... plov
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Izgradnja železničkog depoa ovde nije moguća...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Izgradnja drumskog depoa ovde nije moguća...
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Izgradnja tramvajkog depoa ovde nije moguća...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Izgradnja tramvajskog depoa ovde nije moguća...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ovde nije moguće izgraditi brodski hangar
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ovaj depo se ne može preimenovati...
@@ -4113,7 +4113,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Akvadukt
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... drvo je već na tom mestu
-STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... teren neodgovara vrsti drveća
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... teren ne odgovara vrsti drveća
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Ovde je nemoguće posaditi drvo...
 
 # Bridge related errors
@@ -4252,7 +4252,7 @@ STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Radionica
 STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Male blagoste
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Crkva
 STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Velika radionica
-STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Gradna kuća
+STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Gradska kuća
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Hotel
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :Statua
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Fontana
@@ -4449,7 +4449,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Vagon za Bezalk
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Vagon za Plastiku
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :{G=ženski}Lev1 'Leviathan' (Electrična)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :{G=ženski}Lev2 'Cyclops' (Električna)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :{G=ženski}Lev3 'Pegasus' (Electrična)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :{G=ženski}Lev3 'Pegasus' (Električna)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :{G=ženski}Lev4 'Chimaera' (Električna)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Putnička Kola

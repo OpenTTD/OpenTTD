@@ -3837,6 +3837,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Okres mi
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zwiększ okres między serwisowaniami o 10. Ctrl+klik zwiększa okres między serwisowaniami o 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zmniejsz okres między serwisowaniami o 10. Ctrl+klik zmniejsza okres między serwisowaniami o 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Zmień typ interwału serwisowania
+STR_VEHICLE_DETAILS_DEFAULT                                     :Domyślne
+STR_VEHICLE_DETAILS_DAYS                                        :Dni
+STR_VEHICLE_DETAILS_PERCENT                                     :Procent
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nazwa pociągu
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nazwa samochodu

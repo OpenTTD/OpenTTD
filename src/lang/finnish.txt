@@ -2080,6 +2080,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Valitse 
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Valitse kaikki sisältö, joka on päivitys nykyiseen sisältöön, ladattavaksi
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Poista valinnat
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Merkitse kaikki sisältö ei-ladattavaksi
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Etsi ulkopuolisilta verkkosivuilta
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Etsi OpenTTD:n ulkopuolisilta verkkosivuilta sisältöä, jota ei ole saatavilla OpenTTD:n sisältöpalvelussa
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Olet poistumassa OpenTTD:stä!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Ulkopuolisilta verkkosivuilta ladattaessa käyttöehdot voivat vaihdella.{}Sinun on noudatettava ulkopuolisen sivuston ohjeita sisällön asentamiseksi OpenTTD:hen.{}Haluatko jatkaa?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Avainsana/nimi suodatus:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Vieraile verkkosivulla
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Vieraile sisällön verkkosivulla
@@ -3451,6 +3455,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Huoltov�
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Kasvata huoltoväliä kymmenellä. Ctrl+Klik kasvattaa huoltoväliä viidellä
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Pienennä huoltoväliä kymmenellä. Ctrl+Klik vähentää huoltoväliä viidellä
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Muuta huoltovälien tyyppiä
+STR_VEHICLE_DETAILS_DEFAULT                                     :Oletus
+STR_VEHICLE_DETAILS_DAYS                                        :Päiviä
+STR_VEHICLE_DETAILS_PERCENT                                     :Prosentteja
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nimeä juna
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nimeä ajoneuvo

@@ -2764,6 +2764,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você e
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Impossível adicionar: registro de GRF já existe
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Arquivo procurado não encontrado (carregado compatível com GRF)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Impossível adicionar arquivo: Limite de NewGRF's atingido
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRG(s) compatível(eis) carregados para os arquivos que faltam
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}arquivo(s) GRF em falta foram desativados
@@ -3451,6 +3452,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Aumentar intervalo de serviço em 10. Ctrl+Clique aumenta em 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Reduzir intervalo de serviço em 10. Ctrl+Clique reduz em 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Alterar o tipo de intervalo entre manutenções
+STR_VEHICLE_DETAILS_DEFAULT                                     :Padrão
+STR_VEHICLE_DETAILS_DAYS                                        :Dias
+STR_VEHICLE_DETAILS_PERCENT                                     :Porcentagem
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Renomear trem
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Renomear automóvel

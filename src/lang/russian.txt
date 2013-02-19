@@ -2232,6 +2232,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Выбр
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Отметить для загрузки обновления для имеющегося контента
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Снять выделение
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Ничего не загружать
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Искать на сторонних сайтах
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Результаты поиска находятся на сторонних сайтах, не имеющих отношения к OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Вы покидаете OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Условия загрузки содержимого со сторонних сайтов могут различаться.{}За инструкциями по установке компонентов OpenTTD вам следует обратиться на соответствующие сайты.{}Вы желаете продолжить?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Фильтр:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Посетить сайт
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Посетить веб-сайт с информацией об этом модуле
@@ -3641,6 +3645,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Осмо
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Увеличить интервал обслуживания на 10. Ctrl+щелчок увеличивает интервал обслуживания на 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Уменьшить интервал обслуживания на 10. Ctrl+щелчок уменьшает интервал обслуживания на 5.
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Изменить принцип расчёта интервала обслуживания
+STR_VEHICLE_DETAILS_DEFAULT                                     :По умолчанию
+STR_VEHICLE_DETAILS_DAYS                                        :В днях
+STR_VEHICLE_DETAILS_PERCENT                                     :В процентах
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Название поезда
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Название автомобиля

@@ -2080,6 +2080,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selectee
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Markeer alle updates voor bestaande content om te downloaden
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselecteer alles
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Markeer alle content om niet te downloaden
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Zoek externe websites
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Zoek inhoud niet beschikbaar op de server van OpenTTD op websites die niet gekoppeld zijn aan OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}U verlaat OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}De voorwaarden voor het downloaden van content van externe websites variëren.{}U moet naar de externe sites gaan voor instructies hoe de inhoud te installeren in OpenTTD.{}Wil je doorgaan?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag-/naamfilter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Bezoek website
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Bezoek de website voor deze inhoud
@@ -3451,6 +3455,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Onderhou
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Vergroot onderhoudsinterval met 10. Ctrl+klik verhoogt interval met 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Verklein onderhoudsinterval met 10. Ctrl+klik verlaagt interval met 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Wijzig onderhoudsinterval type
+STR_VEHICLE_DETAILS_DEFAULT                                     :Standaard
+STR_VEHICLE_DETAILS_DAYS                                        :Dagen
+STR_VEHICLE_DETAILS_PERCENT                                     :Percentage
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Hernoem trein
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Hernoem wegvoertuig
