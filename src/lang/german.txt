@@ -2081,6 +2081,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Upgrades
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Alle Erweiterungen, die einen bestehenden Inhalt verbessern, auswählen
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Alles abwählen
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Keine Erweiterung zum Herunterladen auswählen
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Externe Webseiten durchsuchen
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Inhalte suchen, welche nicht auf OpenTTD's Inhalte-Server gefunden werden, auf Webseiten suchen, die nicht mit OpenTTD verbunden sind
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}OpenTTD wird hiermit verlassen!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Die Bedingungen für den Download von Erweiterungen von fremden Webseiten variieren.{} OpenTTD.{}Fortfahren?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter für Stichworte oder Namen:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Webseite anzeigen
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Webseite für diesen Eintrag anzeigen

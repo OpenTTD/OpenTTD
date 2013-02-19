@@ -2104,6 +2104,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sel. agg
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Include nel download tutte le versioni aggiornate di contenuti esistenti
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deseleziona tutti
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Esclude dal download tutti gli elementi
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Cerca in siti web esterni
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Cerca contenuti non disponibili sul servizio contenuti di OpenTTD in siti esterni non direttamente associati a OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Si sta lasciando OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}I termini e le condizioni per lo scaricamento di contenuti da siti web esterni possono variare.{}Fare riferimento ai siti esterni per istruzioni su come installare il contenuto in OpenTTD.{}Si desidera proseguire?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtra per nome/tag:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Visita sito web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visita il sito web di questo contenuto

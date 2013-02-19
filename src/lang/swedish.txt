@@ -1087,6 +1087,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrerad
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Höger
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Räntenivå: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Räntenivå för lån; styr även inflationen om sådan är aktiverad
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Driftkostnader: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Konstruktionshastighet: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Begränsar antalet konstruktionshandlingar för AI-spelare
@@ -1813,7 +1814,7 @@ STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Uppdater
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Uppdatera server info
 
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Leta server
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Leta på nätverket efter en server
+STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Sök i nätverket efter en server
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Lägg till server
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Lägg till en server till listan som alltid kommer kontrolleras för aktiva spel
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Starta server
@@ -2070,6 +2071,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Välj up
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Markera allt innehåll som är en uppgradering på befintligt innehåll för nedladdning
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Avmarkera allt
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Markera att inte ladda hem någonting
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Sök på externa webbplatser
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Sök på webbplatser som är fristående från OpenTTD efter material som ej är tillgängligt på OpenTTD:s innehållstjänst
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Du lämnar nu OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Villkoren för nedladdning av material från externa webbplatser varierar.{}Du hänvisas till de externa sidorna när det gäller instruktioner för hur materialet ska installeras i OpenTTD.{}Vill du fortsätta?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter för Tagg/namn:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Besök hemsida
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Besök hemsidan för det här innehållet

@@ -2232,6 +2232,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Выбр
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Отметить для загрузки обновления для имеющегося контента
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Снять выделение
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Ничего не загружать
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Искать на сторонних сайтах
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Результаты поиска находятся на сторонних сайтах, не имеющих отношения к OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Вы покидаете OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Условия загрузки содержимого со сторонних сайтов могут различаться.{}За инструкциями по установке компонентов OpenTTD вам следует обратиться на соответствующие сайты.{}Вы желаете продолжить?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Фильтр:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Посетить сайт
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Посетить веб-сайт с информацией об этом модуле

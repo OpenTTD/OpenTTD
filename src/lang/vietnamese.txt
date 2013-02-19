@@ -2080,6 +2080,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Chọn c
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Đánh dấu tất cả các nội dung có bản cập nhật để tải về
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Bỏ chọn tất cả
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Chọn tất cả các nội dung không tải về
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Tìm kiếm những trang ngoài
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Tìm những nội dung không có sẵn trên cổng dịch vụ OpenTTD tại những trang không trực thuộc OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Bạn đang thoát khỏi OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Có nhiều điều kiện và điều khoản để tải nội dung từ những trang ngoài.{}Bạn sẽ phải tham khảo trang ngoài để đọc những hướng dẫn cài nội dung vào OpenTTD.{}Bạn có muốn tiếp tục?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Lọc theo tên:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Đến trang web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Đến trang web của nội dung này

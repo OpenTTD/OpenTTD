@@ -2081,6 +2081,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sélecti
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marquer comme étant à télécharger tous les modules qui sont une mise à jour des modules existants
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Désélectionner tout
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marquer tous les modules comme étant à ne pas télécharger
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Recherche sur des sites externes
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Chercher du contenu non disponible dans le service de contenu d'OpenTTD sur des sites non-associés à OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Vous quittez OpenTTD{NBSP}!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Les termes et conditions du téléchargement de contenu depuis des sites externes varient.{}Vous devrez vous référer aux sites externes pour les instructions d'installation du contenu dans OpenTTD.{}Voulez-vous continuer{NBSP}?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtre sur les étiquettes/le nom{NBSP}:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Visiter le site web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visiter le site web pour ce module

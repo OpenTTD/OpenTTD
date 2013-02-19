@@ -2081,6 +2081,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sel. act
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marca para descargar todo el contenido existente que ha sido actualizado
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Desmarcar todas
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marca todo el contenido para no ser descargado
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Buscar en páginas externas
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Buscar contenido no disponible en el servicio de contenido de OpenTTD en páginas externas no asociadas con OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}¡Estás abandonando OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Los términos y condiciones para descargar contenido de páginas externas varían.{}Será necesario referirse a dichas páginas par obtener instrucciones de cómo instalar su contenido en OpenTTD.{}¿Desea continuar?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Etiqueta/nombre del filtro
 STR_CONTENT_OPEN_URL                                            :{BLACK}Visitar web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visitar la página web de este contenido
@@ -2934,6 +2938,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Esperando: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} en ruta desde {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservado para cargar)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acepta
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostrar lista de carga aceptada
@@ -3828,6 +3833,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Ingreso: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transferir: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transferir: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Transferencia: {CURRENCY_LONG}{WHITE} / {GREEN}Beneficio: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Transferencia: {CURRENCY_LONG}{WHITE} / {GREEN}Beneficio: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Transferencia: {CURRENCY_LONG}{WHITE} / {RED}Coste: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Transferencia: {CURRENCY_LONG}{WHITE} / {RED}Coste: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Coste estimado: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Ingreso estimado: {CURRENCY_LONG}
 

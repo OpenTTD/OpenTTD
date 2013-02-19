@@ -2144,6 +2144,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Frissít
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Már meglévő tartalmakhoz az összes elérhető frissítés kijelölése letöltéshez
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Nincs kijelölés
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Megszünteti az összes kijelölést
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Keresés külső weblapokon
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Keresett tartalom nem érhető el az OpenTTD tartalomszolgáltatásának olyan weblapokon, melyek nincsenek az OpenTTD-hez társítva
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Elhagyod az OpenTTD-t!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Külső oldalakról letölthető tartalmak szabályai és feltételei változóak.{}A tartalom OpenTTD-be való telepítéséhez segítségért fordulj a külső weboldalhoz.{}Akarod folytatni?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Címke/név szűrő:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Webhely
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}A tartalom webhelyének meglátogatása

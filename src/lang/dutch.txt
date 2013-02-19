@@ -2080,6 +2080,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selectee
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Markeer alle updates voor bestaande content om te downloaden
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselecteer alles
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Markeer alle content om niet te downloaden
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Zoek externe websites
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Zoek inhoud niet beschikbaar op de server van OpenTTD op websites die niet gekoppeld zijn aan OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}U verlaat OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}De voorwaarden voor het downloaden van content van externe websites variëren.{}U moet naar de externe sites gaan voor instructies hoe de inhoud te installeren in OpenTTD.{}Wil je doorgaan?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag-/naamfilter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Bezoek website
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Bezoek de website voor deze inhoud

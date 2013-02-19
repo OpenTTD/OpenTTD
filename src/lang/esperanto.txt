@@ -3236,7 +3236,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Ordonoj
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Montri ordonvidujon.
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horaro - Klaku ordonon por emfazi.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horaro - klaku ordonon por emfazi.
 
 STR_TIMETABLE_NO_TRAVEL                                         :Neniu veturo
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Veturu (aŭtomata; horara ĝis sekvanta mana ordono)
@@ -3288,11 +3288,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Elekti j
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Sencimigo de la AI
+STR_AI_DEBUG                                                    :{WHITE}AI/Ludo Skripto Sencimigo
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nomo de la AI
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI Agordoj
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ŝanĝi agordojn de la AI
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nomo de la skripto
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Agordoj
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ŝanĝi agordojn de la skripto
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reŝarĝi AI-on
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Mortigi la AI-on, reŝarĝi la skripton, kaj restarti la AI-on
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Rompu sur:
@@ -3304,7 +3304,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vidu for
 
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI-agordo
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Ludo Skripto Agordo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Homa ludanto
 STR_AI_CONFIG_RANDOM_AI                                         :Hazarda AI
 
@@ -3316,17 +3316,17 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Movi ele
 
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Agordi
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Agordi parametroj de la AI
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Agordi parametroj de la skripto
 
 # Available AIs window
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Klaki por elekti AI
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Klaki por elekti skripto
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Aŭtoro: {ORANGE}{STRING}
 STR_AI_LIST_VERSION                                             :{LTBLUE}Versio: {ORANGE}{NUM}
 STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Akcepti
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Elekti emfazitan AI
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Elekti emfazita skripto
 STR_AI_LIST_CANCEL                                              :{BLACK}Nuligi
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne ŝanĝu AI-on
 
@@ -3488,7 +3488,7 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... nur 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... nur konstruebla en urboj havantaj pli ol 1200 enloĝantojn
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... nur konstruebla en praarbaraj regionoj
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... konstruebla nur en dezertaj regionoj
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... konstruebla nur en urboj
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... konstruebla nur en urboj (anstataŭante domoj)
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... konstruebla nur proksime la centro de urboj
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... konstruebla nur en malaltaj regionoj
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... lokebla nur ĉe la randoj de la mapo
@@ -3567,7 +3567,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... deva
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trajnoj povas esti ŝanĝitaj nur dum halto en garaĝo
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trajno tro longas
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Ne povas inversigi direkton de veturilo...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Ne povas turni veturilojn konsistantaj el pluraj unuoj
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... konsistantaj el pluraj unuoj
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Neinterŝanĝeblaj reltipoj
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Ne povas movi veturilon
@@ -3579,7 +3579,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Malĝusta gara�
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} tro longas post anstataŭado
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Neniuj aŭtoanstataŭo/renovigo-reguloj aplikitaj.
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Neniuj aŭtoanstataŭo/renovigo reguloj aplikitaj.
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(monlimo)
 
 # Rail construction errors
@@ -3753,7 +3753,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ne povas
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ne eblas forigi signon...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Imitaĵo de Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Al simulado ludo bazita sur Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

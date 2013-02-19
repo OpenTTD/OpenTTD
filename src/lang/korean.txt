@@ -2081,6 +2081,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}업데�
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}업데이트 항목이 있는 컨텐츠를 선택합니다.
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}모두 선택해제
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}모든 콘텐츠의 선택을 해제합니다.
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}외부 사이트에서 검색
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}OpenTTD의 온라인 콘텐츠 서비스에서 다운로드할 수 없는 콘텐츠를 OpenTTD와 관련이 없는 외부 사이트에서 검색합니다.
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}OpenTTD를 종료하는 중입니다!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}외부 웹사이트에서 콘텐츠를 다운로드할 때에는 그에 대한 약관과 조건이 다양합니다.{}이 콘텐츠를 OpenTTD에 설치하는 방법은 외부 사이트에서 찾아보아야 합니다.{}계속하시겠습니까?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}태그/이름 검색:
 STR_CONTENT_OPEN_URL                                            :{BLACK}웹사이트 방문
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}이 컨텐츠의 웹사이트를 방문합니다.

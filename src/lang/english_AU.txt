@@ -2080,6 +2080,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Select u
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Mark all content that is an upgrade for existing content to be downloaded
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Unselect all
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Mark all content to be not downloaded
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Search external websites
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Search content not available on OpenTTD's content service on websites not associated to OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}You are leaving OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}The terms and conditions for downloading content from external websites vary.{}You will have to refer to the external sites for instructions how to install the content into OpenTTD.{}Do you want to continue?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/name filter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Visit website
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visit the website for this content
@@ -2933,6 +2937,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Waiting: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} en-route from {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reserved for loading)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepts
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Show list of accepted cargo
@@ -3827,6 +3832,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Income: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {GREEN}Income: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {GREEN}Income: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {RED}Cost: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {RED}Cost: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Estimated Cost: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Estimated Income: {CURRENCY_LONG}
 

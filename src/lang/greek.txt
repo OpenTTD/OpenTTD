@@ -3515,7 +3515,7 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Έσοδ
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Διάστημα επισκευών: {LTBLUE}{COMMA}μέρες{BLACK}   Τελευταία επισκευή: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Διάστημα επισκευών: {LTBLUE}{COMMA}%{BLACK}   Τελευταία επισκευή: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Αύξηση διαστημάτων επισκευών κατά 10. Με Ctrl+Κλικ αυξάνονται τα διαστήματα επισκευών κατά 5
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Αύξηση διαστημάτων επισκευών κατά 10. Με Ctrl+Κλικ αυξάνονται τα διαστήματα ανάμεσα των επισκευών κατά 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Μείωση διαστημάτων επισκευών κατά 10. Με Ctrl+Κλικ μειώνεται τα διαστήματα επισκευών κατά 5
 
 STR_VEHICLE_DETAILS_DAYS                                        :Ημέρες
