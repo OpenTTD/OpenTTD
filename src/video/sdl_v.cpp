@@ -46,6 +46,7 @@ static Palette _local_palette;
 static SDL_Rect _dirty_rects[MAX_DIRTY_RECTS];
 static int _num_dirty_rects;
 static int _use_hwpalette;
+static int _requested_hwpalette; /* Did we request a HWPALETTE for the current video mode? */
 
 void VideoDriver_SDL::MakeDirty(int left, int top, int width, int height)
 {
@@ -326,20 +327,14 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 	if (_sdl_screen != NULL && _sdl_screen != _sdl_realscreen) SDL_CALL SDL_FreeSurface(_sdl_screen);
 
 	if (_sdl_realscreen != NULL) {
-		bool have_hwpalette = ((_sdl_realscreen->flags & SDL_HWPALETTE) == SDL_HWPALETTE);
-		if (have_hwpalette != want_hwpalette) {
+		if (_requested_hwpalette != want_hwpalette) {
 			/* SDL (at least the X11 driver), reuses the
 			 * same window and palette settings when the bpp
 			 * (and a few flags) are the same. Since we need
 			 * to hwpalette value to change (in particular
-			 * when switching betwen fullscreen and
+			 * when switching between fullscreen and
 			 * windowed), we restart the entire video
 			 * subsystem to force creating a new window.
-			 *
-			 * Note that checking the SDL_HWPALETTE on the
-			 * existing window might not be accurate when
-			 * SDL is running with its own shadow surface,
-			 * but this should not normally be a problem.
 			 */
 			DEBUG(driver, 0, "SDL: Restarting SDL video subsystem, to force hwpalette change");
 			SDL_CALL SDL_QuitSubSystem(SDL_INIT_VIDEO);
@@ -347,6 +342,11 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 			ClaimMousePointer();
 		}
 	}
+	/* Remember if we wanted a hwpalette. We can't reliably query
+	 * SDL for the SDL_HWPALETTE flag, since it might get set even
+	 * though we didn't ask for it (when SDL creates a shadow
+	 * surface, for example). */
+	_requested_hwpalette = want_hwpalette;
 
 	/* DO NOT CHANGE TO HWSURFACE, IT DOES NOT WORK */
 	newscreen = SDL_CALL SDL_SetVideoMode(w, h, bpp, SDL_SWSURFACE | (want_hwpalette ? SDL_HWPALETTE : 0) | (_fullscreen ? SDL_FULLSCREEN : SDL_RESIZABLE));
@@ -690,6 +690,7 @@ void VideoDriver_SDL::MainLoop()
 			if (!_draw_threaded) {
 				_draw_mutex->EndCritical();
 				delete _draw_mutex;
+				_draw_mutex = NULL;
 			} else {
 				/* Wait till the draw mutex has started itself. */
 				_draw_mutex->WaitForSignal();
@@ -757,26 +758,26 @@ void VideoDriver_SDL::MainLoop()
 
 			/* The gameloop is the part that can run asynchronously. The rest
 			 * except sleeping can't. */
-			if (_draw_threaded) _draw_mutex->EndCritical();
+			if (_draw_mutex != NULL) _draw_mutex->EndCritical();
 
 			GameLoop();
 
-			if (_draw_threaded) _draw_mutex->BeginCritical();
+			if (_draw_mutex != NULL) _draw_mutex->BeginCritical();
 
 			UpdateWindows();
 			_local_palette = _cur_palette;
 		} else {
 			/* Release the thread while sleeping */
-			if (_draw_threaded) _draw_mutex->EndCritical();
+			if (_draw_mutex != NULL) _draw_mutex->EndCritical();
 			CSleep(1);
-			if (_draw_threaded) _draw_mutex->BeginCritical();
+			if (_draw_mutex != NULL) _draw_mutex->BeginCritical();
 
 			NetworkDrawChatMessage();
 			DrawMouseCursor();
 		}
 
 		/* End of the critical part. */
-		if (_draw_threaded && !HasModalProgress()) {
+		if (_draw_mutex != NULL && !HasModalProgress()) {
 			_draw_mutex->SendSignal();
 		} else {
 			/* Oh, we didn't have threads, then just draw unthreaded */
@@ -785,7 +786,7 @@ void VideoDriver_SDL::MainLoop()
 		}
 	}
 
-	if (_draw_threaded) {
+	if (_draw_mutex != NULL) {
 		_draw_continue = false;
 		/* Sending signal if there is no thread blocked
 		 * is very valid and results in noop */
@@ -795,14 +796,17 @@ void VideoDriver_SDL::MainLoop()
 
 		delete _draw_mutex;
 		delete _draw_thread;
+
+		_draw_mutex = NULL;
+		_draw_thread = NULL;
 	}
 }
 
 bool VideoDriver_SDL::ChangeResolution(int w, int h)
 {
-	if (_draw_threaded) _draw_mutex->BeginCritical();
+	if (_draw_mutex != NULL) _draw_mutex->BeginCritical();
 	bool ret = CreateMainSurface(w, h);
-	if (_draw_threaded) _draw_mutex->EndCritical();
+	if (_draw_mutex != NULL) _draw_mutex->EndCritical();
 	return ret;
 }
 
