@@ -1,3 +1,15 @@
+1.3.0-RC1 (2013-02-19)
+------------------------------------------------------------------------
+- Feature: Searching of (missing) content via GrfCrawler (r25024, r25023)
+- Change: Cleanup goals and cargo monitors of companies when they go bankrupt or are taken over (r24986)
+- Change: Apply the same name sorting rules to content and NewGRF list as for the server list (r24983)
+- Fix: [SDL] Crash after bootstrap download of 32bits base set due to referencing a deleted mutex [FS#5466] (r25017)
+- Fix: [SDL] Improve 8bpp hardware palette support. Instead of always requesting SDL_HWPALETTE, it is now only done for 8bp blitters in fullscreen mode (r25003, r25002, r24993)
+- Fix: Set vehicle's service interval is percent flag appropriately on creation [FS#5137] (r24998)
+- Fix: When choosing a train in a depot to attach a newly purchased wagon to, do not consider trains currently moving in and out of the depot (r24987)
+- Fix: [Script] Crash when passing too many parameters [FS#5465] (r24982, r24981, r24980)
+
+
 1.3.0-beta2 (2013-02-07)
 ------------------------------------------------------------------------
 - Feature: [NewGRF] Station randomisation triggers (r24906, r24905)
