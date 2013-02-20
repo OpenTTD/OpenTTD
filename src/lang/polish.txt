@@ -2460,6 +2460,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Wybierz 
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Wybierz całą zawartość do pobrania, która jest ulepszeniem dla istniejącej zawartości
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznacz wszystko
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Zaznacz całą zawartość, aby nie była pobrana
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Przeszukaj zewnętrzne strony internetowe
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Opuszczasz OpenTTD!
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtr etykiety/nazwy:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Wejdź na stronę
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Wejdź na stronę, by pobrać tę zawartość

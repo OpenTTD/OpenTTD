@@ -2082,6 +2082,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Velg opp
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Merk alt innhold som er en oppgradering av eksisterende innhold
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Velg bort alle
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Merk alt innhold som ikke skal lastes ned
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Søk eksterne nettsider
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK} Søk etter innhold som ikke er tilgjengelig på OpenTTD sin innholdstjeneste på nettsteder som ikke er tilknyttet OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Du forlater OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE} Vilkårene for nedlasting av innhold fra eksterne nettsider kan variere.{}Du må henvende deg til de eksterne nettstedene for instruksjoner om hvordan du installerer innholdet i OpenTTD.{}Vil du fortsette?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Merke/Navnefilter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Besøk hjemmeside
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Besøk hjemmesiden for dette innholdet
@@ -2578,6 +2582,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Skriv in
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Generer en verden
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kartstørrelse:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Velg størrelsen på kartet i ruter. Antall tilgjengelige ruter vil være litt mindre
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Antall byer:
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
@@ -2934,6 +2939,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Venter: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} på vei fra {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservert for lasting)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Godtar
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Vis liste over godtatte varer
@@ -3455,6 +3461,7 @@ STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Reduser 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Enhet for vedlikeholdsintervall
 STR_VEHICLE_DETAILS_DEFAULT                                     :Standard
 STR_VEHICLE_DETAILS_DAYS                                        :Dager
+STR_VEHICLE_DETAILS_PERCENT                                     :Prosentandel
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Navngi tog
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Navngi kjøretøy
@@ -3827,6 +3834,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Inntekt: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Overføring: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Overføring: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Overføring: {CURRENCY_LONG}{WHITE} / {GREEN}Inntekt: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Overføring: {CURRENCY_LONG}{WHITE} / {GREEN}Inntekt: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Overføring: {CURRENCY_LONG}{WHITE} / {RED}Kostnad: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Overføring: {CURRENCY_LONG}{WHITE} / {RED}Kostnad: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Anslått kostnad: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Anslått inntekt: {CURRENCY_LONG}
 

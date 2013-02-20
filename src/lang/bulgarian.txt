@@ -2090,6 +2090,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Избе
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Избери всичко, което ще обновнови вече инстралирани компоненти
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Премахнете всички
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Размаркирай всичко
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Претърсване на външни уебстраници
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Напускате OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Условията и редът за сваляне на съдържание от външни уебсайтове са най-различни.{}Ще трябва да се обърнете към самият сайт за инструкции как да инсталирате съдържание в OpenTTD.{}Искате ли да продължите?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Филтър по таг/име:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Посети уебсайта
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Посети уебсайта за това съдържание
@@ -2943,6 +2946,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Чакат: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} на път от {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} запазени за товарене)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Приема
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Покажи списък с приетите товари
@@ -3837,6 +3841,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Приход: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Превод: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Превод: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Прехвърляне: {CURRENCY_LONG}{WHITE} / {GREEN}Приход: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Прехвърляне: {CURRENCY_LONG}{WHITE} / {GREEN}Приход: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Прехвърляне: {CURRENCY_LONG}{WHITE} / {RED}Цена: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Прехвърляне: {CURRENCY_LONG}{WHITE} / {RED}Цена: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Приблизителна цена: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Приблизителен приход: {CURRENCY_LONG}
 

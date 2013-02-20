@@ -2081,6 +2081,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sel. act
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marca tots els continguts que siguin actualitzacions dels continguts a ser descarregats
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselecciona tot
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marca tots els continguts a no ser descarregats
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Cerca en webs externes
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Cerca contingut no disponible al servei de continguts d'OpenTTD en webs no associades amb OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Estàs sortint d'OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Els termes i condicions per descarregar contingut des de webs externes varia.{}Hauràs d'adreçar-te a les webs externes per trobar instruccions sobre com instal·lar contingut a OpenTTD.{}Vols continuar?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Marca/anomena filtre:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Visita la web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visita la web per accedir a aquest contingut
@@ -2934,6 +2938,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Esperant: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} en ruta des de {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservat per carregar)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepta
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostra la llista de càrregues admeses
@@ -3828,6 +3833,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Ingressos: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transfereix: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transfereix: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Transferència: {CURRENCY_LONG}{WHITE} / {GREEN}Ingressos: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Transferència: {CURRENCY_LONG}{WHITE} / {GREEN}Ingressos: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Transferència: {CURRENCY_LONG}{WHITE} / {RED}Cost: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Transferència: {CURRENCY_LONG}{WHITE} / {RED}Cost: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Cost Estimat: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Ingressos Estimats: {CURRENCY_LONG}
 
