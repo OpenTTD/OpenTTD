@@ -2176,6 +2176,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Izaberi 
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Označi sav sadržaj koji je nadogradnja postojećem sadržaju kako bi ga preuzeo
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznači sve
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Označi sav sadržaj koji se ne preuzima
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Pretraži vanjske web stranice
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Traženje sadržaja nije dostupno u OpenTTD-ovom servisu za sadržaje za web stranice koje nisu pridružene OpenTTD-u
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Napuštate OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Pravila i uvjeti za preuzimanje sadržaja sa vanjskih web stranica variraju.{}Morate pogledati vanjske stranice za upute kako instalirati sadržaj u OpenTTD.{}Da li želite nastaviti?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Ime/Tag filter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Posjetite web-stranicu
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Posjetite web-stranicu za ovaj sadržaj

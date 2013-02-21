@@ -1086,17 +1086,23 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vänster
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrerad
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Höger
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximalt startlån: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalt belopp ett företag kan låna (där inflationen inte tas med i beräkningen)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Räntenivå: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Räntenivå för lån; styr även inflationen om sådan är aktiverad
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Driftkostnader: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Sätt nivån för underhålls- och driftkostnader för fordon och infrastruktur
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Konstruktionshastighet: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Begränsar antalet konstruktionshandlingar för AI-spelare
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Fordonshaverier: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Styr hur ofta otillräckligt servade fordon kan få motorstopp
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subvention (multiplikativ): {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Ange hur mycket betalt som subventionerade anslutningar ger
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruktionskostnader: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Sätt nivån för konstruktions- och inköpskostnader
 STR_CONFIG_SETTING_RECESSIONS                                   :Lågkonjunkturer: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Om det är aktiverat så kan lågkonjunkturer uppstå med ett antal års mellanrum. Under en lågkonjunktur är all produktion avsevärt lägre (men återgår till det normala när lågkonjunkturen är över)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Förbjud tåg att vända vid stationer: {STRING}
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofer: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Slår av/på katastrofer vilka då och då kan blockera eller förstöra fordon och infrastruktur
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Stadsfullmäktiges attityd mot ombyggantion av områden: {STRING}
@@ -1140,10 +1146,10 @@ STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximal brolän
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximal längd för broar
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximal tunnellängd: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximal längd för tunnlar
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manuell prioritering för industrins konstruktionsmetod: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metod för att finansiera en primär industri. 'Inget' betyder att det inte är tillåtet att finansiera några primära industrier. 'Prospekterande' betyder att finansiering är möjligt men industrin byggs på en slumpvis plats och kan även misslyckas. 'Som andra industrier' betyder att industrier som genererar råmaterial kan byggas av företag på samma sätt som industrier som processar material, dvs på valfri plats.
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Inget
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Som andra industrier
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Metod för manuell konstruktion av primära industrier: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metod för att finansiera en primär industri. 'Ingen' betyder att det inte är tillåtet att finansiera några primära industrier. 'Prospekterande' betyder att finansiering är möjlig men industrin byggs på en slumpvis plats och kan även misslyckas. 'Som andra industrier' betyder att industrier som genererar råmaterial kan byggas av företag på samma sätt som industrier som processar material, dvs på valfri plats.
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Ingen
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Samma som för andra industrier
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospekterande
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Platt yta runt industrier: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Hur mycket platt yta som finns runt en industri. Detta säkerställer att tom yta finns tillgängligt runt en industri för byggnation av spår mm.
@@ -1480,7 +1486,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alla
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Vägnätslayout för nya städer: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Layout för städernas vägnät
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :standard
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Original
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Bättre vägar
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 rutnät
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 rutnät
@@ -1555,7 +1561,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signale
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Frakthantering
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datorspelare
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoförnya
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servicing
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Service
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Planering av resrutt
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Tåg
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Städer
@@ -1571,8 +1577,8 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Vägfinnare fö
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Vägfinnare som vägfordon ska använda
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Vägfinnare för skepp: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Vägfinnare som skepp ska använda
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Backa automatiskt vid signaler: {STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Tillåt att tåg backar vid en signal om de har väntat där länge
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Vänd automatiskt vid signaler: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Tillåt att tåg vänder vid en signal om de har väntat där länge
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ändra inställningsvärde
 
@@ -2097,7 +2103,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Nedladd
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Vald på grund av: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Filer som behövs: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Taggar: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD har byggts utan stöd för "zlib"...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD saknar stöd för "zlib"...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... nerladdning av innehåll är inte möjligt!
 
 # Order of these is important!
@@ -2209,16 +2215,16 @@ STR_STATION_CLASS_WAYP                                          :Riktmärken
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalval
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Standardsignal (semafor){}Detta är den enklaste typen av signal, som tillåter endast ett tåg per block vid samma tidpunkt
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Infartssignal (semafor){}Grön så länge det finns en eller flera gröna utfarts-signaler på efterföljande bit av spår, annars visas rött
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Utfartssignal (semafor){}Fungerar på samma sätt som en vanlig signal men behövs för att utlösa korrekt färg på In- eller kombinations-signaler
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinationssignal (semafor){}Kombinationssignalen fungerar som både en För- och Utfarts-signal. Denna tillåter dig att bygga stora "träd" av För-signaler
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Avancerad signal (semafor){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån (gäller inte avancerade envägs-signaler)
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Avancerad envägssignal (semafor){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade envägs-signaler kan inte passeras bakifrån
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Normal signal (elektrisk){}Detta är den enklaste typen av signal, som tillåter endast ett tåg per block vid samma tidpunkt
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Infartssignal (elektrisk){}Grön så länge det finns en eller flera gröna utfarts-signaler på efterföljande bit av spår, annars visas rött
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Utfartssignal (elektrisk){}Fungerar på samma sätt som en vanlig signal men behövs för att utlösa korrekt färg på In- eller kombinations-signaler
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinationssignal (elektrisk){}Kombinationssignalen fungerar som både en För- och Utfarts-signal. Denna tillåter dig att bygga stora "träd" av För-signaler
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Standardsignal (semafor){}Detta är den enklaste typen av signal, som endast tillåter ett tåg per block vid samma tidpunkt
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Infartssignal (semafor){}Grön så länge det finns en eller flera gröna utfartssignaler på efterföljande bit av spår, annars visas rött
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Utfartssignal (semafor){}Fungerar på samma sätt som en vanlig signal, men behövs för att utlösa korrekt färg på in- eller kombinationssignaler
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinationssignal (semafor){}Kombinationssignalen fungerar som både en infarts- och utfartssignal. Detta gör det möjligt att bygga stora "träd" av för-signaler
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Avancerad signal (semafor){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån (gäller inte avancerade envägssignaler)
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Avancerad envägssignal (semafor){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade envägssignaler kan inte passeras bakifrån
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Normal signal (elektrisk){}Detta är den enklaste typen av signal, som endast tillåter ett tåg per block vid samma tidpunkt
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Infartssignal (elektrisk){}Grön så länge det finns en eller flera gröna utfartssignaler på efterföljande bit av spår, annars visas rött
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Utfartssignal (elektrisk){}Fungerar på samma sätt som en vanlig signal men behövs för att utlösa korrekt färg på infarts- och kombinationssignaler
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinationssignal (elektrisk){}Kombinationssignalen fungerar som både en infarts- och utfartssignal. Detta gör det möjligt att bygga stora "träd" av för-signaler
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Avancerad signal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Avancerad envägssignal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade envägs-signaler kan inte passeras bakifrån
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konvertera signal{}När den är markerad, klicka på en existerande signal för att konvertera den till vald signaltyp och -variant. Ctrl-klick ändrar den existerande varianten. Shift-klick visar beräknad konverteringskostnad
@@ -2418,7 +2424,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Visa ked
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Visa industrier som levererar och tar emot gods
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Koppla till minikartan
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Markera visade industrier även på minikartan
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Välj last
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Välj den typ av last du vill visa
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Välj industri
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Välj den typ av industri du vill visa
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Markområdesinformation
@@ -3363,10 +3372,10 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Köper e
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tvinga tåg att fortsätta utan att vänta på signal
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Anpassa tåg för att bära annan godstyp
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Anpassa vägfordon till att bära en annan sorts last
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Anpassa skepp för att frakta en annan godstyp
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Anpassa flygplan för att frakta en annan godstyp
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Anpassa tåg till att frakta en annan sorts last
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Anpassa vägfordon till att frakta en annan sorts last
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Anpassa skepp till att frakta en annan sorts last
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Anpassa flygplan till att frakta en annan sorts last
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Byt tågets riktning
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Tvinga fordonet att vända om
@@ -3497,7 +3506,7 @@ STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Anpassa 
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Anpassa flygplan
 
 STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Anpassa tåg för att bära vald godstyp
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Anpassa vägfordon till att bära markerad last
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Anpassa vägfordon till att frakta markerad last
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Anpassa skepp för att frakta markerad godstyp
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Anpassa flygplan för att frakta markerad godstyp
 
@@ -4050,7 +4059,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Måste t
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Inget passande järnvägsspår
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Måste ta bort järnväg först
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Vägen är enkelriktad eller blockerad
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Planskilda korsningar är inte tillåtet för denna typ av spår
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Plankorsningar är inte tillåtna för denna typ av spår
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kan inte bygga signaler här...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan inte bygga järnvägsspår här...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan inte ta bort järnvägspår här...
@@ -4546,10 +4555,10 @@ STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP Passagerarf
 STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 svävare
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug Passagerarfärja
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake Passagerarfärja
-STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate Godsskepp
-STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Godsskepp
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover Godsskepp
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut Godsskepp
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate lastfartyg
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell lastfartyg
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover lastfartyg
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut lastfartyg
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
