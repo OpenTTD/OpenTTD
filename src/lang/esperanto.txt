@@ -293,7 +293,7 @@ STR_SORT_BY_RANGE                                               :Atingopovo
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Paŭzigu la ludon
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Rapide pluirigu la ludon
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcioj
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Konservu ludon, foriru de la ludo, fermu
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Konservu ludon, foriru ludo, forlasi
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Montru mapon
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Montru urbaron
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Montru subvenciojn
@@ -331,18 +331,18 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landaspe
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Urba generado
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industria generado
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Vojkonstruado
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantu arbojn
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantu arbojn. «Shift» aktivigita konstruado/montrante kosto takso
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Metu signon
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Loku objekton
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Loku objekton. «Shift» aktivigita konstruado/montrante kosto takso
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Konservu scenaron
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Ŝarĝu scenaron
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Konservu altecmapon
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Ŝarĝu altecmapon
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Fermu kreilon
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Forlasi scenaro kreilo
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
-STR_SCENEDIT_FILE_MENU_QUIT                                     :Fermu
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Forlasi
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
@@ -358,7 +358,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Konkurantaj sig
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Plena animado
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Plenaj detaloj
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Travideblaj konstruaĵoj
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Travideblaj staciosignoj
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Travideblaj signoj
 ############ range ends here
 
 ############ range for file menu starts
@@ -444,7 +444,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Mesaĝa Histori
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landkvadrataj informoj
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Baskuligi Konzolon
-STR_ABOUT_MENU_AI_DEBUG                                         :Sencimigo de AI
+STR_ABOUT_MENU_AI_DEBUG                                         :AI/Ludo skripto sencimigo
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekranfoto
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Pligrandiga ekranfoto
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Ekranfoto defaŭlte zoma
@@ -798,7 +798,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} tre malnoviĝis
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} tro malnoviĝis kaj postulas anstataŭiĝon
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne povas trovi padon por daŭrigi.
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} estas perdita.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} estas perdita
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} pasintjare gajnis {CURRENCY_LONG}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} haltis ĉar komanda transformo fiaskis
@@ -840,7 +840,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Elekto d
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Brita Pundo (GBP)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerika Dolaro (USD)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Eŭro (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Enoj (¥)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Enoj (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Aŭstriaj Ŝilingoj (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgaj Frankoj (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Svisaj Frankoj (CHF)
@@ -1042,6 +1042,10 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :agordoj kiuj ma
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Agordoj kiu malsimilas al via novajuldaj agordoj
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Ĉiuj agordoj
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Ludo agordojn (stokite en savoj, nur tuŝas novajn ludojn)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Ludo agordojn (stokite en savo; tuŝas nur kuranta ludo)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Kompanio agordojn (stokite en savoj, nur tuŝas novajn ludojn)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Kompanio agordojn (stokita en savu; tuŝas nur kuranta kompanio)
 
 STR_CONFIG_SETTING_OFF                                          :Malaktiva
 STR_CONFIG_SETTING_ON                                           :Aktiva
@@ -1116,7 +1120,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permesu trairaj
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permesu trairajn strathaltejojn sur stratoj posedataj de konkurantoj: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Permesu konstrui staciojn apude: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Ebligu multoblajn NewGRF-motorarojn: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ne eblas ŝanĝi ĉi tiujn agordon dum veturiloj ĉeestas.
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ne eblas ŝanĝi ĉi tiujn agordon dum veturiloj ĉeestas
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flughavenoj neniam antikviĝas: {STRING}
 
@@ -1358,7 +1362,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Altpoent
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avancitaj agordoj
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Agordoj de NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Provu Enretan Enhavon
-STR_INTRO_QUIT                                                  :{BLACK}Fermu
+STR_INTRO_QUIT                                                  :{BLACK}Forlasi
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Starti novan ludon. Stir-Klak por preterpasi mapan agordon.
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ŝarĝu konservitan ludon
@@ -1382,7 +1386,7 @@ STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Fermu 'O
 STR_INTRO_TRANSLATION                                           :{BLACK}Ĉi tiu traduko ne havas {NUM} teksto{P "" j}. Bonvolu helpu fari OpenTTD pli bona per estigi traduktiston. Vidi readme.txt por detaloj.
 
 # Quit window
-STR_QUIT_CAPTION                                                :{WHITE}Fermi
+STR_QUIT_CAPTION                                                :{WHITE}Forlasi
 STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Ĉu vi vere volas fermi la ludon kaj reiri al {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Jes
 STR_QUIT_NO                                                     :{BLACK}Ne
@@ -1805,6 +1809,9 @@ STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Marki ĉ
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Elektu ĝisdatigojn.
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Malelekti ĉiujn
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marki ĉiujn enhavojn neelŝutotan
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Serĉo eksteraj retejoj
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK} Serĉu enhavo ne estas disponebla en OpenTTD enhavon servon en retejoj ne asocias al OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Vi forlase OpenTTD!
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Etikeda/noma filtro:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Elŝuti
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Komencu elŝuti la elektitan enhavon.
@@ -2252,6 +2259,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Entajpu 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Mondgenerado
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Mapgrandeco:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Selektu la grandeco de la mapo en azuleĥoj. La nombro de disponeblaj azuleĥoj estos iom pli malgranda
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Kiom da urboj:
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
@@ -2549,6 +2557,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Atendas: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} survoje de {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervita por ŝarĝu)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Akceptas
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Montri liston de akceptataj ŝarĝoj.
@@ -3031,6 +3040,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Prizorga
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Pliigu prizorgintervalon
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Malpliigu prizorgintervalon
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Ŝanĝi la tipo de servon intervalon
+STR_VEHICLE_DETAILS_DEFAULT                                     :Defaŭlto
+STR_VEHICLE_DETAILS_DAYS                                        :Tagoj
+STR_VEHICLE_DETAILS_PERCENT                                     :Procentaĵo
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nomu trajnon
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nomi stratveturilon
@@ -3363,6 +3376,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Enspezo: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transigo: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transigo: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Tradona: {CURRENCY_LONG}{WHITE} / {GREEN}Revenuo: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Tradona: {CURRENCY_LONG}{WHITE} / {GREEN}Revenuo: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Tradona: {CURRENCY_LONG}{WHITE} / {RED}Kosta: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Tradona: {CURRENCY_LONG}{WHITE} / {RED}Kosto: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Atendata Kosto: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Atendata enspezo: {CURRENCY_LONG}
 

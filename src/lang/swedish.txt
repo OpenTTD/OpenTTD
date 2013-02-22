@@ -1392,6 +1392,8 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :När denna inst
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Förbjud skepp för datorn: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :När denna inställning aktiveras blir det omöjligt för datorspelare att bygga skepp
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Inställningsprofil som standard: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Välj vilken inställningsprofil som ska användas för slumpvis valda datorspelare, eller för startvärden när en ny datorspelare (AI) eller ett spelskript läggs till
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lätt
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mellan
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Svår

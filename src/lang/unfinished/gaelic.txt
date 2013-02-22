@@ -1238,13 +1238,20 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :An t-ùine a mh
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :An t-ùine a mhaireas brath mearachd ann an uinneag dearg. Thoir an aire nach dùin cuid dhe na brathan as cudromaiche leotha fhèin is gum feum thu an toirt air falbh a làimh.
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} {P 0 diog dhiog diogan diog}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Seall gliocasan-sgrìn: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Cùm an luchag os a cionn fad {COMMA} {P 0 diog dhiog diogan diog}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Briogadh deas
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Seall àireamh-shluaigh ann an leubail a' bhaile: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Seall àireamh-shluaigh aig bailtean san leubail aca air a' mhapa
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Tiughad nan loidhnichean ann an grafan: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Leud na loidhne ann an grafan. Gabhaidh loidhne tana fhaicinn nas pongaile ach tha loidhne tiugh nas fhasa fhaicinnn is dathan nas fhasa a mhothachadh
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Gineadair tìre: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Tùsail
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Astar as motha eadar an oir is fìneadairean-ola: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Cha tèid fìneadairean-ola a thogail ach faisg air crìochan a' mhapa, seo an oirthir le mapaichean eilein
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Àirde an loidhne sneachda: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Garbhachd a' chrutha-tìre (TerraGenesis a-mhàin): {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Glè rèidh
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Rèidh
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Garbh
@@ -1256,15 +1263,56 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Leasaichte
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Cuairteachadh a'mhapa-àirde: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Tuathal
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Deiseil
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Ìre na h-àirde a bhios aig mapa cnàmh-sgeòil rèidh: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Cuir cruth-tìre nan leacan ri crìochan a' mhapa an comas: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Ma tha seo dheth, bidh crìochan a' mhapa nan cuantan an-còmhnaidh
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Tha co-dhiù aon leac aig oir a tuath nach eil falamh
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Tha co-dhiù aon leac aig oir nach eil na uisge
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Sgaoileadh as motha aig stèisean: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :An raon as motha sa dh'fhaodas an t-aon stèisean a sgaoileadh. Thoir an aire gun dèan luachan mòra an geama nas slaodaiche
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Càraich heileacoptairean gu fèin-obrachail aig puirt-heileacoptair: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Càraich heileacoprairean gach turas a thèid iad air tìr, fiù 's mura h-eil hangar aig a' phort-adhair
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Ceangail am bàr-inneal critha-tìre ri bàraichean-inneal rèile/rathaid/uisge/puirt-adhair: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Nuair a dh'fhosglas mi bàr-inneal togail airson seòrsa dhe ghiùlain, fosgail am bàr-inneal airson crutha-tìre cuideachd
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Dath na tìre a thèid a chleachdach sa mheanbh-mhapa: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Dath na crutha-tìre air a' mheanbh-mhapa
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Uaine
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Dorch-uaine
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Purpaidh
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Comhair sgrolaidh chontrarra: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Giùlan nuair a thèid am mapa a sgroladh le putan deas na luchaige. Nuair a bhios seo air, gluaisidh an luchag am mapa
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Sgroladh mìn nam port-seallaidh: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Tagh mar a ghluaiseas am prìomh-shealladh gu ionad sònraichte. Ma tha seo dheth, thèid leum dhan ionad a chaidh a thaghadh sa bhad
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Seall gliocasan-sgrìn tomhais le innealan togail: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Seall faide eadar leacan is diofar an àirde nuair a nì thu slaodadh fhad 's a bhios tu a' togail rudeigin
+STR_CONFIG_SETTING_LIVERIES_NONE                                :Gun ghin
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :A' chompanaidh agam fhèin
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :Na h-uile companaidh
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :'S docha leam cabadaich sgioba le <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Tagh an dèan thu suids eadar cabadaich taobh a-staigh na companaidh is cabadaich poblach leis an iuchair <ENTER> no le <Ctrl+ENTER>
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Giùlan a' chuibhle-sgrolaidh: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Cuir sgroladh an comas le cuibhle-sgrolaidh luchaige aig a bheil dà dhimeinsean
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Sùm am mapa
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Sgrolaich am mapa
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Dheth
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Luaths aig sgroladh a' mhapa leis a' chuibhle: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Tagh dè cho luath 's a thèid sgroladh le cuibhle-sgrolaidh na luchaige
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Meur-clàr air an sgrìn: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Tagh an dòigh a thèid meur-chlàr fhosgladh air an sgrìn gus teacsa a chur a-steach leis tomhaire a-mhàin. Tha seo airson uidheaman beaga aig nach eil meur-chlàr fhèin
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :À comas
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Briogadh dùbailte
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Aon bhriogadh (le fòcas)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Aon bhriogadh (sa bhad)
 
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulation a' bhriogaidh dheis: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Tagh an dòigh a thèid emulation a dhèanamh airson briogadh le putan deas na luchaige
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Briogadh
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Briogadh
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Dheth
 
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Sgroladh le briogadh clì: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Cuir an comas gun tèid am mapa a sgroladh le slaodadh le putan clì na luchaige. Tha seo feumail gu h-àraidh nuair a chleachdas tu sgrìn-shuathaidh airson sgroladh
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Cleachd am fòrmat cinn-latha {STRING} airson ainmean nan geamannan air an sàbhaladh
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Fòrmat a' chinn-latha ann an ainmean faidhle nan geamannan air an sàbhaladh
@@ -1272,32 +1320,181 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :fada (31d Dùbh
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :goirid (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Pailead bunaiteach airson NewGRFan aig nach eil pailead aca fhèin: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Pailead dhathan bunasach a thèid a chleachdadh le NewGRFan nach sònraicheas dè am fear a tha a dhìth
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Pailead DOS
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Pailead Windows
 
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Cuir geamannan air ùr-thòiseachadh nan stad gu fèin-obrachail: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Nuair a bhios seo air, stadaidh an geama gu fèin-obrachail nuair a thòisicheas tu geama ùr. Bheir seo cothrom dhut gus am mapa a sgrùdadh air do shocair
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Ceadaich nuair a bhios an geama na stad: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Tagh dè na gnìomhan a hios ceadaichte nuair a bhios ann geama na stad
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Gun gnìomh sam bith
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :A h-uile gnìomh ach togail
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :A h-uile gnìomh ach atharrachadh a' chrutha-tìre
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Na h-uile gnìomh
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Tagh liosta nan carbadan adhartach: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Cuir liostaichean adhartach nan carbadan an comas gus carbadan a chur ann am buidhnean
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :Cleachd taisbeanairean luchdaidh: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Tagh an tèid taisbeanairean luchdaidh a shealltainn os cionn charbadan a bhios a' luchdadh no dì-luchdadh
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Seall an clàr-ama ann an diogan seach làithean: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Seall na h-ùinean siubhail ann an clàran-ama le diogan geama seach làithean
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Seall àm ruigsinn is falbh air clàran-ama: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Seall na h-amannan ruigsinn is falbh air a bheilear an dùil air clàran-ama
+STR_CONFIG_SETTING_QUICKGOTO                                    :Cruthachadh luath aig òrduighean charbadan:{STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Ro-thagh an cùrsair "rach gu" nuair a thèid uinneag nan òrduighean fhosgladh
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Seòrsa rèile bunaiteach (le geama ùr/air ùr-luchdadh): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :An seòrsa rèile a thèid a thaghadh nuair a bhios geama ùr air thòiseachadh no geama air luchdadh. Taghaidh "Seòrsa as sine" an seòrsa as sine dhe rèile, "Seòrsa as ùire" an seòrsa as ùire a tha ri làimh is "Ga chleachdadh mar as trice" an seòrsa a tha thu a' cleachdadh as trice an-dràsta
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Seòrsa as sine
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Seòrsa as ùire
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Ga chleachdadh mar as trice
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Show reserved tracks: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Seall slighean glèidhte: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Cuiridh seo dath eile air slighean glèidhte gus cuideachadh le duilgheadasan gun diùlt trèana dol a-steach dha bhlocaichean stèidhichte air slighean
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Cùm innealan togail gnìomhach an dèidh an cleachdadh: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Cùm na h-innealan togail airson dhrochaidean, thunailean amsaa. fosgailte nuair a chaidh an cleachdadh
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Cuir cosgaisean ann am buidhnean ann an uinneag maoin na companaidh: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Tagh a' cho-dhealbhachd airson uinneag maoin na companaidh
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Cinn-naidheachd: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Cluich fuaim airson gearr-chunntasan naidheachd
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Pàipear-naidheachd: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Cluich fuaim nuair a thèid pàipear-naidheachd a shealltainn
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Deireadh a' bhliadhna: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Cluich èifeachd fuaime air deireadh gach bliadhna nuair a thèid dèanadas na companaidh airson a' bhliadhna a dh'fhalbh a shealltainn
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Togail: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Cluich èifeachd fuaime nuair a thèid rudeigin a thogail gu soirbheachail is le gnìomhan eile
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Brùthadh phutanan: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Dèan bìd le brùthadh phutanan
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Dunaidhean/tubaistean: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Cluich èifeachd fuaime le dunaidh no tubaist
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Carbadan: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Cluich èifeachdan fuaime nan carbadan
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Àrainneachd: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Cluich èifeachdan fuaime àrainneachd a' chrutha-tìre, nan gnìomhachasan is nam bailtean
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Cuir togail a' bhun-structair à comas mura h-eil carbad iomchaidh ri làimh: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ma tha seo air, chan eil bun-structar ri làimh ach ma tha carbad freagarrach ri làimh cuideachd. Mar sin, cha chaill thu àm is airgead air bun-structar gun fheum
+STR_CONFIG_SETTING_MAX_TRAINS                                   :An t-uiread as motha dhe thrèanaichean airson gach companaidh: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :An àireamh as motha dhe thrèanaichean a dh'fhaodas a bhith aig gach companaidh
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :An t-uiread as motha dhe charbadan-rathaid airson gach companaidh: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :An àireamh as motha dhe charbadan-rathaid a dh'fhaodas a bhith aig gach companaidh
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :An t-uiread as motha dhe charbadan-athair airson gach companaidh: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :An àireamh as motha dhe charbadan-adhair a dh'fhaodas a bhith aig gach companaidh
+STR_CONFIG_SETTING_MAX_SHIPS                                    :An t-uiread as motha dhe longan airson gach companaidh: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :An àireamh as motha dhe longan a dh'fhaodas a bhith aig gach companaidh
 
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Cuir trèanaichean à comas airson a' choimpiutair: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Ma tha seo air, chan urrainn dha chluicheadairean coimpiutair trèanaichean a thogail
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Cuir carbadan-rathaid à comas airson a' choimpiutair: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Ma tha seo air, chan urrainn dha chluicheadairean coimpiutair carbadan-rathaid a thogail
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Cuir carbadan-adhair à comas airson a' choimpiutair: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Ma tha seo air, chan urrainn dha chluicheadairean coimpiutair carbadan-adhair a thogail
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Cuir longan à comas airson a' choimpiutair: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ma tha seo air, chan urrainn dha chluicheadairean coimpiutair longan a thogail
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Pròifil nan roghainnean bunaiteach: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Tagh pròifil nan roghainnean a thèid a chleachdadh airson IFan air thuaiream no airson luachan tòiseachaidh nuair a thèid IF no sgriobt geama ùr a chur ris
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Furasta
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Meadhanach
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Doirbh
 
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Ceadaich IFan sa mhodh ioma-chluicheadair: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Ceadaich gun gabh cluicheadairean coimpiutair IF pàirt an an geamannan ioma-chluicheadair
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Àireamh dhe dh'opcodes mus tèid sgriobt a chur na dhàil: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :An àireamh as motha dhe cheuman àireamhachaidh as urrainn dha sgriobt a dhèanamh san aon chuairt
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Tha tricead a' chàraidh ann an ceudadan: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Tagh an tèid carbad a chur gus obair-càraidh fhaighinn a rèir an turais mu dheireadh a fhuair iad càradh air no nuair a bhios earbsachd air lùghdachadh le ceudad sònraichte dhen earbsachd as motha
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Dè cho tric 's a thèid trèanaichean a chàradh a ghnàth: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Tagh dè cho tric 's a thèid obair-càraidh a dhèanamh air carbadan-trèana ùra mura deach tricead nan càraidhean sònraichte a shuidheachadh airson a' charbaid
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} {P 0 latha latha làithean latha}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :À comas
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Dè cho tric 's a thèid carbadan-rathaid a chàradh a ghnàth: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Tagh dè cho tric 's a thèid obair-càraidh a dhèanamh air carbadan-rathaid ùra mura deach tricead nan càraidhean sònraichte a shuidheachadh airson a' charbaid
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Dè cho tric 's a thèid carbadan-adhair a chàradh a ghnàth: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Tagh dè cho tric 's a thèid obair-càraidh a dhèanamh air carbadan-adhair ùra mura deach tricead nan càraidhean sònraichte a shuidheachadh airson a' charbaid
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Dè cho tric 's a thèid longan a chàradh a ghnàth: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Tagh dè cho tric 's a thèid obair-càraidh a dhèanamh air longan ùra mura deach tricead nan càraidhean sònraichte a shuidheachadh airson na luinge
+STR_CONFIG_SETTING_NOSERVICE                                    :Cuir obair-càraidh à comas ma chaidh briseadh a chur gu "Gun ghin": {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ma tha seo air, chan fhaigh carbadan obair-càraidh mur urrainn dhaibh briseadh
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Cuir crìochan luaiths nan carbadan-trèana an coma: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ma tha seo air, cleachd crìochan luaiths nan carbadan cuideachd gus an luaths as motha aig trèana a shuidheachadh
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Cuir rèilean dealanach à comas: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ma tha seo air, cha leig thu leas slighean dealanach a thogail gus einseanan dealanach a chleachdadh orra
 
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Tha a' chiad carbad air stèisean a' chluicheadair a ruigsinn: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Seall pàipear-naidheachd nuair a bhios a' chiad carbad air stèisean ùr a' chluicheadair a ruigsinn
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Tha a' chiad carbad air stèisean aig co-fharpaisiche a ruigsinn: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Seall pàipear-naidheachd nuair a bhios a' chiad carbad air stèisean ùr aig co-fharpaisiche a ruigsinn
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Tubaistean / dunaidhean: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Seall pàipear-naidheachd nuair a thachras tubaist no dunaidh
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Fiosrachadh na companaidh: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Seal pàipear-naidheachd nuair chaidh companaidh ùr a stèidheachadh no nuair a bhios companaidh fo chunnart brisidh
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Fosgladh aig gnìomhachasan: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Seall pàipear-naidheachd nuair a dh'fhosglas gnìomhachas ùr
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Dùnadh aig gnìomhachasan: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Seall pàipear-naidheachd nuair a thèid gnìomhachas a dhùnadh
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Atharraichean an eaconamaidh: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Seall pàipear-naidheachd nuair a dh'atharraicheas eaconamaidh na cruinne
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Atharraichean dèanadais aig gnìomhachasan a tha gan frithealadh leis a' chompanaidh: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Seall pàipear-naidheachd nuair a dh'atharraicheas ìre dèanadais aig gnìomhachas a tha gam frithealach leis a' chompanaidh agad
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Atharraichean dèanadais aig gnìomhachasan a tha gan frithealadh le co-fharpaisiche: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Seall pàipear-naidheachd nuair a dh'atharraicheas ìre dèanadais aig gnìomhachas a tha gam frithealach le co-fharpaisiche
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Atharraichean dèanadais aig gnìomhachasan eile: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Seall pàipear-naidheachd nuair a dh'atharraicheas ìre dèanadais aig gnìomhachas nach eil gam frithealach le companaidh sam bith
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :Comhairlean / fiosrachadh mu charbadan a' chompanaidh: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Seall brathan mu charbadan a bu chòir dhut an aire a thoirt orra
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Carbadan ùra: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Seall pàipear-naidheachd nuair a bhios seòrsa dhe charbad ùr ri làimh
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Atharraichean air a' charago a gabhar ris: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Seall brathan mu stèiseanan a dh'atharraicheas dè an carago a ghabhas iad ris
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Tarrailean: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Seall pàipear-naidheachd mu thachartasan co-cheangailte ri tarrailean
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Fiosrachadh coitcheann: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Seall pàipear-naidheachd mu thachartasan coitcheann a leithid ceannach aig còirichean às-dùnach no maoineachadh air ath-thogail rathaidean
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Dheth
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Gearr-chunntas
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Slàn
 
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Nochdaidh naidheachdan dathte ann an: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Am bliadhna a thèid pàipear-naidheachd dathte a chlò-bhualadh a' chiad turas. Bidh na pàipearan-naidheachd ann an dubh is geal roimhe seo
+STR_CONFIG_SETTING_STARTING_YEAR                                :Bliadhna tòiseachaidh: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Cuir eaconamaidh rèidh an comas (atharraichean nas trice is nas beaga): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Ma tha seo air, atharraichidh dèanadas nan gnìomhachasan nas trice is le ceuman nas lugha. Chan eil buaidh aig seo air seòrsaichean gnìomhachais a chaidh a sholar le NewGRF mar as trice
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ceadaich gun tèid stoca a cheannach bho chompanaidhean eile: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ma tha seo air, 's urrainn dhut stocan chompanaidhean a cheannach is a reic. Cha bhi stoca ri làimh ach aig companaidhean aig a bheil aois shònraichte
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Le slaodadh, cuir comharra gach: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Tagh an t-astar eadar comharran a thèid a thogail air slighe is an t-ath-chnap-starra (comharra, gobhal) nuair a bhios comarran gan slaodadh
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} {P 0 leac leac leacan leac}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Le slaodadh, cùm astar co-ionnan eadar comharran: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Tagh an giùlan aig cur nan comharran nuair a thèid comharran a shlaodadh le Ctrl. Ma tha seo dheth, thèid comharran a chur gach taobh tunail no drochaide gus slighean fada gun chomharran a sheachnadh. Ma tha seo air, thèid comharran a chur gach Nmh leac, is nì seo co-thaobhadh aig comharran air slighean co-shìnte nas fhasa
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Tog saimeaforean gu fèin-obrachail ro: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Tagh am bliadhna a thèid comharran dealanach a chleachdadh airson slighean. Ron bhliadhna seo, thèid comharran neo-dhealanach a chleachdadh (tha an dearbh ghiùlan aca ach coltas eadar-dhealaichte)
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Cuir eadar-aghaidh nan comharran an comas: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Seall uinneag gus an seòrsa dhe chomharra a thogas tu a thaghadh seach dol tro na seòrsaichean dhe chomharran às aonais uinneige le Ctrl+briogadh air togail chomharran
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Seòrsa dhe chomharra a thèid a thogail a ghnàth: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Seòrsa bunaiteach dhe chomharra a thèid a chleachdadh
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Comharran bacaidh
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Comharran slighe
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Comharran aon-shligheach
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Cuairtich tro na seòrsaichean comharra: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Tagh dè na seòrsaichean dhe chomharra a thèid a chuairteachadh troimhe nuair a thèid briogadh le Ctrl air togail comharra leis an inneal togail chomharran
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Comharran bacaidh a-mhain
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Comharran slighe a-mhàin
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Na h-uile
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Co-dhealbhachd nan rathaidean airson bailtean ùra: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Co-dhealbhachd airson nan rathaidean ann am bailtean ùra
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Tùsail
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Rathaidean as fhearr
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Griod 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Griod 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Air thuaiream
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Faodaidh bailtean rathaidean a thogail: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Ceadaich dha bhailtean gun tog iad rathaidean ach am fàs iad. Cuir seo à comas gus ughdarrasan nam bailtean a bhacadh bho thogail rathaidean dhaibh fhèin
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Ceadaich bha bhailtean staranan-rèile a thogail: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Ma tha seo air, faodaidh bailtean staranan-rèile a thogail
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Toirmisgte
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Ceadaichte
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Ceadaichte, co-dhealbhachd a' bhaile ghnàthaichte
