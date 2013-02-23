@@ -1090,7 +1090,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :오른쪽
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :최대 초기 대출금: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :한 회사가 최대한 빌릴 수 있는 (계좌에 인플레이션을 고려하지 않고 들어오는) 대출금의 양을 조절할 수 있습니다.
 STR_CONFIG_SETTING_INTEREST_RATE                                :대출 금리: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :대출 금리입니다. 인플레이션 설정의 영향을 받습니다.
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :대출 금리입니다. 인플레이션 설정이 켜져있는 경우 인플레이션의 영향을 받습니다.
 STR_CONFIG_SETTING_RUNNING_COSTS                                :유지비: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :차량과 기반시설의 유지비 수준을 설정하십시오.
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :건설 속도: {STRING}
@@ -1114,8 +1114,8 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :경사/해안�
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :이 옵션을 켜면 도로, 철도, 역 등을 대부분의 경사에 설치할 수 있게 됩니다. 이 옵션을 끄면 오직 트랙의 방향과 일치하는 경사에만 설치가 가능하기 때문에 기반 지형을 만들 필요가 없습니다.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :건물, 트랙 등의 하부 지형 편집 허용 (자동 슬로프): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :건물이나 도로/선로 등을 제거하지 않고도 하부의 지형을 편집할 수 있게 허용합니다.
-STR_CONFIG_SETTING_CATCHMENT                                    :더욱 현실적인 역세권 지정 허용: {STRING}
-STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :역과 공항의 종류에 따라 서로 다른 크기의 역세권을 지정하도록 합니다.
+STR_CONFIG_SETTING_CATCHMENT                                    :더 현실적인 역세권 지정: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :역과 공항의 종류에 따라 다른 크기의 역세권을 가지도록 만듭니다.
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :도시 소유의 도로, 다리 등의 제거 허용: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :도시 소유의 기반시설이나 건물을 제거할 수 있게 합니다.
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :열차의 최대 길이: {STRING}
@@ -2155,11 +2155,11 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}적재�
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}투명이 아니라 아예 안보이게 할 항목을 선택하세요
 
 # Base for station construction window(s)
-STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}역세권 하이라이트
+STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}역세권 표시
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}끄기
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}켜기
-STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}역세권을 하이라이트하지 않습니다.
-STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}역세권을 하이라이트합니다.
+STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}역세권을 표시하지 않습니다.
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}역세권을 표시합니다.
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}받음: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}공급: {GOLD}{CARGO_LIST}
 

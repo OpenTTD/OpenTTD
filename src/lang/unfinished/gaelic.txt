@@ -30,70 +30,256 @@ STR_JUST_NOTHING                                                :Gun ghin
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Taistealaich
+STR_CARGO_PLURAL_PASSENGERS.nom                                 :Taistealaich
+STR_CARGO_PLURAL_PASSENGERS.gen                                 :Thaistealach
+STR_CARGO_PLURAL_PASSENGERS.dat                                 :Taistealaich
 STR_CARGO_PLURAL_COAL                                           :{G=m}Gual
+STR_CARGO_PLURAL_COAL.nom                                       :Gual
+STR_CARGO_PLURAL_COAL.gen                                       :Guail
+STR_CARGO_PLURAL_COAL.dat                                       :Gual
 STR_CARGO_PLURAL_MAIL                                           :{G=m}Post
+STR_CARGO_PLURAL_MAIL.nom                                       :Post
+STR_CARGO_PLURAL_MAIL.gen                                       :Puist
+STR_CARGO_PLURAL_MAIL.dat                                       :Post
 STR_CARGO_PLURAL_OIL                                            :{G=f}Ola
+STR_CARGO_PLURAL_OIL.nom                                        :Ola
+STR_CARGO_PLURAL_OIL.gen                                        :Ola
+STR_CARGO_PLURAL_OIL.dat                                        :Ola
 STR_CARGO_PLURAL_LIVESTOCK                                      :{G=f}Sprèidh
+STR_CARGO_PLURAL_LIVESTOCK.nom                                  :Sprèidh
+STR_CARGO_PLURAL_LIVESTOCK.gen                                  :Sprèidhe
+STR_CARGO_PLURAL_LIVESTOCK.dat                                  :Sprèidh
 STR_CARGO_PLURAL_GOODS                                          :{G=m}Bathar
+STR_CARGO_PLURAL_GOODS.nom                                      :Bathar
+STR_CARGO_PLURAL_GOODS.gen                                      :Bathair
+STR_CARGO_PLURAL_GOODS.dat                                      :Bathar
 STR_CARGO_PLURAL_GRAIN                                          :{G=m}Gràn
+STR_CARGO_PLURAL_GRAIN.nom                                      :Gràn
+STR_CARGO_PLURAL_GRAIN.gen                                      :Gràin
+STR_CARGO_PLURAL_GRAIN.dat                                      :Gràn
 STR_CARGO_PLURAL_WOOD                                           :{G=m}Fiodh
+STR_CARGO_PLURAL_WOOD.nom                                       :Fiodh
+STR_CARGO_PLURAL_WOOD.gen                                       :Fiodha
+STR_CARGO_PLURAL_WOOD.dat                                       :Fiodh
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=f}Clach-iarainn
+STR_CARGO_PLURAL_IRON_ORE.nom                                   :Clach-iarainn
+STR_CARGO_PLURAL_IRON_ORE.gen                                   :Cloich-iarainn
+STR_CARGO_PLURAL_IRON_ORE.dat                                   :Clach-iarainn
 STR_CARGO_PLURAL_STEEL                                          :{G=f}Stàilinn
-STR_CARGO_PLURAL_VALUABLES                                      :{G=f}Seilbh
+STR_CARGO_PLURAL_STEEL.nom                                      :Stàilinn
+STR_CARGO_PLURAL_STEEL.gen                                      :Stàilinne
+STR_CARGO_PLURAL_STEEL.dat                                      :Stàilinn
+STR_CARGO_PLURAL_VALUABLES                                      :{G=m}Seilbh
+STR_CARGO_PLURAL_VALUABLES.nom                                  :Seilbh
+STR_CARGO_PLURAL_VALUABLES.gen                                  :Shealbh
+STR_CARGO_PLURAL_VALUABLES.dat                                  :Seilbh
 STR_CARGO_PLURAL_COPPER_ORE                                     :{G=f}Clach-chopair
+STR_CARGO_PLURAL_COPPER_ORE.nom                                 :Clach-chopair
+STR_CARGO_PLURAL_COPPER_ORE.gen                                 :Cloiche-copair
+STR_CARGO_PLURAL_COPPER_ORE.dat                                 :Clach-chopair
 STR_CARGO_PLURAL_MAIZE                                          :{G=f}Cruithneachd Innseanach
+STR_CARGO_PLURAL_MAIZE.nom                                      :Cruithneachd Innseanach
+STR_CARGO_PLURAL_MAIZE.gen                                      :Cruithneachd Innseanach
+STR_CARGO_PLURAL_MAIZE.dat                                      :Cruithneachd Innseanach
 STR_CARGO_PLURAL_FRUIT                                          :{G=m}Measan
+STR_CARGO_PLURAL_FRUIT.nom                                      :Measan
+STR_CARGO_PLURAL_FRUIT.gen                                      :Mheasan
+STR_CARGO_PLURAL_FRUIT.dat                                      :Measan
 STR_CARGO_PLURAL_DIAMONDS                                       :{G=m}Daoimeanan
+STR_CARGO_PLURAL_DIAMONDS.nom                                   :Daoimeanan
+STR_CARGO_PLURAL_DIAMONDS.gen                                   :Dhaoimeanan
+STR_CARGO_PLURAL_DIAMONDS.dat                                   :Daoimeanan
 STR_CARGO_PLURAL_FOOD                                           :Biadh
+STR_CARGO_PLURAL_FOOD.nom                                       :Biadh
+STR_CARGO_PLURAL_FOOD.gen                                       :Bìdh
+STR_CARGO_PLURAL_FOOD.dat                                       :Biadh
 STR_CARGO_PLURAL_PAPER                                          :{G=m}Pàipear
+STR_CARGO_PLURAL_PAPER.nom                                      :Pàipear
+STR_CARGO_PLURAL_PAPER.gen                                      :Pàipeir
+STR_CARGO_PLURAL_PAPER.dat                                      :Pàipear
 STR_CARGO_PLURAL_GOLD                                           :{G=m}Òr
+STR_CARGO_PLURAL_GOLD.nom                                       :Òr
+STR_CARGO_PLURAL_GOLD.gen                                       :Òir
+STR_CARGO_PLURAL_GOLD.dat                                       :Òr
 STR_CARGO_PLURAL_WATER                                          :{G=m}Uisge
+STR_CARGO_PLURAL_WATER.nom                                      :Uisge
+STR_CARGO_PLURAL_WATER.gen                                      :Uisge
+STR_CARGO_PLURAL_WATER.dat                                      :Uisge
 STR_CARGO_PLURAL_WHEAT                                          :{G=f}Cruithneachd
+STR_CARGO_PLURAL_WHEAT.nom                                      :Cruithneachd
+STR_CARGO_PLURAL_WHEAT.gen                                      :Cruithneachd
+STR_CARGO_PLURAL_WHEAT.dat                                      :Cruithneachd
 STR_CARGO_PLURAL_RUBBER                                         :{G=m}Rubair
+STR_CARGO_PLURAL_RUBBER.nom                                     :Rubair
+STR_CARGO_PLURAL_RUBBER.gen                                     :Rubair
+STR_CARGO_PLURAL_RUBBER.dat                                     :Rubair
 STR_CARGO_PLURAL_SUGAR                                          :{G=m}Siùcar
+STR_CARGO_PLURAL_SUGAR.nom                                      :Siùcar
+STR_CARGO_PLURAL_SUGAR.gen                                      :Siùcair
+STR_CARGO_PLURAL_SUGAR.dat                                      :Siùcar
 STR_CARGO_PLURAL_TOYS                                           :{G=f}Dèideagan
+STR_CARGO_PLURAL_TOYS.nom                                       :Dèideagan
+STR_CARGO_PLURAL_TOYS.gen                                       :Dhèideagan
+STR_CARGO_PLURAL_TOYS.dat                                       :Dèideagan
 STR_CARGO_PLURAL_CANDY                                          :{G=m}Mìlseanan
+STR_CARGO_PLURAL_CANDY.nom                                      :Mìlseanan
+STR_CARGO_PLURAL_CANDY.gen                                      :Mhìlseanan
+STR_CARGO_PLURAL_CANDY.dat                                      :Mìlseanan
 STR_CARGO_PLURAL_COLA                                           :{G=m}Cola
+STR_CARGO_PLURAL_COLA.nom                                       :Cola
+STR_CARGO_PLURAL_COLA.gen                                       :Cola
+STR_CARGO_PLURAL_COLA.dat                                       :Cola
 STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=f}Canach-shiùcair
+STR_CARGO_PLURAL_COTTON_CANDY.nom                               :Canach-shiùcair
+STR_CARGO_PLURAL_COTTON_CANDY.gen                               :Canaich-siùcair
+STR_CARGO_PLURAL_COTTON_CANDY.dat                               :Canach-shiùcair
 STR_CARGO_PLURAL_BUBBLES                                        :{G=m}Builgeanan
+STR_CARGO_PLURAL_BUBBLES.nom                                    :Builgeanan
+STR_CARGO_PLURAL_BUBBLES.gen                                    :Bhuilgeanan
+STR_CARGO_PLURAL_BUBBLES.dat                                    :Builgeanan
 STR_CARGO_PLURAL_TOFFEE                                         :{G=m}Tofaidh
+STR_CARGO_PLURAL_TOFFEE.nom                                     :Tofaidh
+STR_CARGO_PLURAL_TOFFEE.gen                                     :Tofaidh
+STR_CARGO_PLURAL_TOFFEE.dat                                     :Tofaidh
 STR_CARGO_PLURAL_BATTERIES                                      :{G=f}Bataraidhean
+STR_CARGO_PLURAL_BATTERIES.nom                                  :Bataraidhean
+STR_CARGO_PLURAL_BATTERIES.gen                                  :Bhataraidhean
+STR_CARGO_PLURAL_BATTERIES.dat                                  :Bataraidhean
 STR_CARGO_PLURAL_PLASTIC                                        :{G=f}Plastaig
+STR_CARGO_PLURAL_PLASTIC.nom                                    :Plastaig
+STR_CARGO_PLURAL_PLASTIC.gen                                    :Plastaig
+STR_CARGO_PLURAL_PLASTIC.dat                                    :Plastaig
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=f}Deochan gucagach
+STR_CARGO_PLURAL_FIZZY_DRINKS.nom                               :Deochan gucagach
+STR_CARGO_PLURAL_FIZZY_DRINKS.gen                               :Dheochan gucagach
+STR_CARGO_PLURAL_FIZZY_DRINKS.dat                               :Deochan gucagach
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :{G=m}Taistealach
+STR_CARGO_SINGULAR_PASSENGER.nom                                :Taistealach
+STR_CARGO_SINGULAR_PASSENGER.gen                                :Taistealaich
+STR_CARGO_SINGULAR_PASSENGER.dat                                :Taistealach
 STR_CARGO_SINGULAR_COAL                                         :{G=m}Gual
+STR_CARGO_SINGULAR_COAL.nom                                     :Gual
+STR_CARGO_SINGULAR_COAL.gen                                     :Guail
+STR_CARGO_SINGULAR_COAL.dat                                     :Gual
 STR_CARGO_SINGULAR_MAIL                                         :{G=m}Post
+STR_CARGO_SINGULAR_MAIL.nom                                     :Post
+STR_CARGO_SINGULAR_MAIL.gen                                     :Puist
+STR_CARGO_SINGULAR_MAIL.dat                                     :Post
 STR_CARGO_SINGULAR_OIL                                          :{G=f}Ola
+STR_CARGO_SINGULAR_OIL.nom                                      :Ola
+STR_CARGO_SINGULAR_OIL.gen                                      :Ola
+STR_CARGO_SINGULAR_OIL.dat                                      :Ola
 STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=f}Sprèidh
+STR_CARGO_SINGULAR_LIVESTOCK.nom                                :Sprèidh
+STR_CARGO_SINGULAR_LIVESTOCK.gen                                :Sprèidhe
+STR_CARGO_SINGULAR_LIVESTOCK.dat                                :Sprèidh
 STR_CARGO_SINGULAR_GOODS                                        :{G=m}Bathar
+STR_CARGO_SINGULAR_GOODS.nom                                    :Bathar
+STR_CARGO_SINGULAR_GOODS.gen                                    :Bathair
+STR_CARGO_SINGULAR_GOODS.dat                                    :Bathar
 STR_CARGO_SINGULAR_GRAIN                                        :{G=m}Gràn
+STR_CARGO_SINGULAR_GRAIN.nom                                    :Gràn
+STR_CARGO_SINGULAR_GRAIN.gen                                    :Gràin
+STR_CARGO_SINGULAR_GRAIN.dat                                    :Gràn
 STR_CARGO_SINGULAR_WOOD                                         :{G=m}Fiodh
+STR_CARGO_SINGULAR_WOOD.nom                                     :Fiodh
+STR_CARGO_SINGULAR_WOOD.gen                                     :Fiodha
+STR_CARGO_SINGULAR_WOOD.dat                                     :Fiodh
 STR_CARGO_SINGULAR_IRON_ORE                                     :{G=f}Clach-iarainn
+STR_CARGO_SINGULAR_IRON_ORE.nom                                 :Clach-iarainn
+STR_CARGO_SINGULAR_IRON_ORE.gen                                 :Cloich-iarainn
+STR_CARGO_SINGULAR_IRON_ORE.dat                                 :Clach-iarainn
 STR_CARGO_SINGULAR_STEEL                                        :{G=f}Stàilinn
+STR_CARGO_SINGULAR_STEEL.nom                                    :Stàilinn
+STR_CARGO_SINGULAR_STEEL.gen                                    :Stàilinne
+STR_CARGO_SINGULAR_STEEL.dat                                    :Stàilinn
 STR_CARGO_SINGULAR_VALUABLES                                    :{G=m}Sealbh
+STR_CARGO_SINGULAR_VALUABLES.nom                                :Sealbh
+STR_CARGO_SINGULAR_VALUABLES.gen                                :Seilbh
+STR_CARGO_SINGULAR_VALUABLES.dat                                :Sealbh
 STR_CARGO_SINGULAR_COPPER_ORE                                   :{G=f}Clach-chopair
+STR_CARGO_SINGULAR_COPPER_ORE.nom                               :Clach-chopair
+STR_CARGO_SINGULAR_COPPER_ORE.gen                               :Cloiche-copair
+STR_CARGO_SINGULAR_COPPER_ORE.dat                               :Clach-chopair
 STR_CARGO_SINGULAR_MAIZE                                        :{G=f}Cruithneachd Innseanach
+STR_CARGO_SINGULAR_MAIZE.nom                                    :Cruithneachd Innseanach
+STR_CARGO_SINGULAR_MAIZE.gen                                    :Cruithneachd Innseanach
+STR_CARGO_SINGULAR_MAIZE.dat                                    :Cruithneachd Innseanach
 STR_CARGO_SINGULAR_FRUIT                                        :{G=m}Meas
+STR_CARGO_SINGULAR_FRUIT.nom                                    :Meas
+STR_CARGO_SINGULAR_FRUIT.gen                                    :Measa
+STR_CARGO_SINGULAR_FRUIT.dat                                    :Meas
 STR_CARGO_SINGULAR_DIAMOND                                      :{G=m}Daoimean
+STR_CARGO_SINGULAR_DIAMOND.nom                                  :Daoimean
+STR_CARGO_SINGULAR_DIAMOND.gen                                  :Daoimein
+STR_CARGO_SINGULAR_DIAMOND.dat                                  :Daoimean
 STR_CARGO_SINGULAR_FOOD                                         :{G=m}Biadh
+STR_CARGO_SINGULAR_FOOD.nom                                     :Biadh
+STR_CARGO_SINGULAR_FOOD.gen                                     :Bìdh
+STR_CARGO_SINGULAR_FOOD.dat                                     :Biadh
 STR_CARGO_SINGULAR_PAPER                                        :{G=m}Pàipear
+STR_CARGO_SINGULAR_PAPER.nom                                    :Pàipear
+STR_CARGO_SINGULAR_PAPER.gen                                    :Pàipeir
+STR_CARGO_SINGULAR_PAPER.dat                                    :Pàipear
 STR_CARGO_SINGULAR_GOLD                                         :{G=m}Òr
+STR_CARGO_SINGULAR_GOLD.nom                                     :Òr
+STR_CARGO_SINGULAR_GOLD.gen                                     :Òir
+STR_CARGO_SINGULAR_GOLD.dat                                     :Òr
 STR_CARGO_SINGULAR_WATER                                        :{G=m}Uisge
+STR_CARGO_SINGULAR_WATER.nom                                    :Uisge
+STR_CARGO_SINGULAR_WATER.gen                                    :Uisge
+STR_CARGO_SINGULAR_WATER.dat                                    :Uisge
 STR_CARGO_SINGULAR_WHEAT                                        :{G=f}Cruithneachd
+STR_CARGO_SINGULAR_WHEAT.nom                                    :Cruithneachd
+STR_CARGO_SINGULAR_WHEAT.gen                                    :Cruithneachd
+STR_CARGO_SINGULAR_WHEAT.dat                                    :Cruithneachd
 STR_CARGO_SINGULAR_RUBBER                                       :{G=m}Rubair
+STR_CARGO_SINGULAR_RUBBER.nom                                   :Rubair
+STR_CARGO_SINGULAR_RUBBER.gen                                   :Rubair
+STR_CARGO_SINGULAR_RUBBER.dat                                   :Rubair
 STR_CARGO_SINGULAR_SUGAR                                        :{G=m}Siùcar
+STR_CARGO_SINGULAR_SUGAR.nom                                    :Siùcar
+STR_CARGO_SINGULAR_SUGAR.gen                                    :Siùcair
+STR_CARGO_SINGULAR_SUGAR.dat                                    :Siùcar
 STR_CARGO_SINGULAR_TOY                                          :{G=f}Dèideag
+STR_CARGO_SINGULAR_TOY.nom                                      :Dèideag
+STR_CARGO_SINGULAR_TOY.gen                                      :Dèideig
+STR_CARGO_SINGULAR_TOY.dat                                      :Dèideag
 STR_CARGO_SINGULAR_CANDY                                        :{G=m}Mìlsean
+STR_CARGO_SINGULAR_CANDY.nom                                    :Mìlsean
+STR_CARGO_SINGULAR_CANDY.gen                                    :Mìlsein
+STR_CARGO_SINGULAR_CANDY.dat                                    :Mìlsean
 STR_CARGO_SINGULAR_COLA                                         :{G=m}Cola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=f}Canach-siùcair
+STR_CARGO_SINGULAR_COLA.nom                                     :Cola
+STR_CARGO_SINGULAR_COLA.gen                                     :Cola
+STR_CARGO_SINGULAR_COLA.dat                                     :Cola
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=f}Canach-shiùcair
+STR_CARGO_SINGULAR_COTTON_CANDY.nom                             :Canach-shiùcair
+STR_CARGO_SINGULAR_COTTON_CANDY.gen                             :Canaich-siùcair
+STR_CARGO_SINGULAR_COTTON_CANDY.dat                             :Canach-shiùcair
 STR_CARGO_SINGULAR_BUBBLE                                       :{G=m}Builgean
+STR_CARGO_SINGULAR_BUBBLE.nom                                   :Builgean
+STR_CARGO_SINGULAR_BUBBLE.gen                                   :Builgein
+STR_CARGO_SINGULAR_BUBBLE.dat                                   :Builgean
 STR_CARGO_SINGULAR_TOFFEE                                       :{G=m}Tofaidh
+STR_CARGO_SINGULAR_TOFFEE.nom                                   :Tofaidh
+STR_CARGO_SINGULAR_TOFFEE.gen                                   :Tofaidh
+STR_CARGO_SINGULAR_TOFFEE.dat                                   :Tofaidh
 STR_CARGO_SINGULAR_BATTERY                                      :{G=m}Bataraidh
+STR_CARGO_SINGULAR_BATTERY.nom                                  :Bataraidh
+STR_CARGO_SINGULAR_BATTERY.gen                                  :Bataraidh
+STR_CARGO_SINGULAR_BATTERY.dat                                  :Bataraidh
 STR_CARGO_SINGULAR_PLASTIC                                      :{G=f}Plastaig
+STR_CARGO_SINGULAR_PLASTIC.nom                                  :Plastaig
+STR_CARGO_SINGULAR_PLASTIC.gen                                  :Plastaig
+STR_CARGO_SINGULAR_PLASTIC.dat                                  :Plastaig
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=f}Deoch ghucagach
+STR_CARGO_SINGULAR_FIZZY_DRINK.nom                              :Deoch ghucagach
+STR_CARGO_SINGULAR_FIZZY_DRINK.gen                              :Dibhe gucagaich
+STR_CARGO_SINGULAR_FIZZY_DRINK.dat                              :Deoch ghucagach
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -1093,11 +1279,11 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :An t-airgead as
 STR_CONFIG_SETTING_INTEREST_RATE                                :Luach-rèidh: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Luach-rèidh iasaid; stiùiridh seo an atmhorachd cuideachd ma tha e an comas
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Cosgaisen ruith: {STRING}
-STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Suidhich ìre nan cosgaisean ruith is obrach-glèidhidh aig carbadan is a' bhun-structar
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Suidhich ìre nan cosgaisean ruith is obrach-càraidh aig carbadan is a' bhun-structar
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Astar togail: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Cuingich meud nan gnìomhan togail aig na IFan
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Briseadh charbadan: {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Stiùirich dè cho tric 's a bhios carbadan briste nach d' fhuair an obair-ghlèidhidh iomchaidh
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Stiùirich dè cho tric 's a bhios carbadan briste nach d' fhuair an obair-chàraidh iomchaidh
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Iomadaichear nan tarrail: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Suidhich na thèid a phàigheadh airson cheanglaichean le tarrail
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Cosgaisean togail: {STRING}
@@ -1121,7 +1307,7 @@ STR_CONFIG_SETTING_EXTRADYNAMITE                                :Ceadaich gun t�
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Bidh e nas fhasa bun-structar is togalaichean a tha le baile a thoirt air falbh
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Faide as motha thrèanaichean: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Suidhich dè cho fad's a bhios trèanaichean air a char as motha
-STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} {P 0 leacag leacag leacagan leacag}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} {P 0 leac leac leacan leac}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Meud dhe smùid/sradan nan carbadan: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Cuidhich an uiread dhe smùid no sradagan nan carbadan
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modail luathachaidh nan tèanaichean: {STRING}
@@ -1129,10 +1315,10 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Tagh am modail 
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modail luathachaidh nan carbadan-rathaid: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Tagh am modail fisigeachd airson luathachadh nan tèanaichean. Cuiridh am modail "tùsail" an aon pheanas air a h-uile carbad air sliabh. Cuiridh am modail "fìor-riochdail" peanas air slèibhtean is lùban a rèir bhuadhan diofraichte aca, mar eisimpleir 'spàirn tarraing'
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Caisead nan slèibhtean airson thrèanaichean: {STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Caisead aig na leacagan slèibhe dha thrèanaichean. Nì luachan nas àirde an dìreadh nas dorra
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Caisead aig na leacan slèibhe dha thrèanaichean. Nì luachan nas àirde an dìreadh nas dorra
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Caisead nan slèibhtean airson charbadan-rathaid: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Caisead aig na leacagan slèibhe dha charbad-rathaid. Nì luachan nas àirde an dìreadh nas dorra
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Caisead aig na leacan slèibhe dha charbad-rathaid. Nì luachan nas àirde an dìreadh nas dorra
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Bac trèanaichean is longan o thionndadh 90°: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Tachraidh tionndadh 90 nuair a bhios slighe còmhnard is inghearach dìreach an dèidh càch a chèile, mar sin bhiodh trèana a' tionndadh le 90 ceum nuair a ruig e oir ana leacaige an àite nan tionndaidhean àbhaisteach le 45 ceum aig co-cheanglachaidhean shlighean eile. Tha seo fìor airson rèideas tionndaidh nan longan cuideachd
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Ceadaich aonadh aig stèiseanan nach eil dìreach ri taobh càch a chèile: {STRING}
@@ -1436,12 +1622,12 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Dùnadh aig gn�
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Seall pàipear-naidheachd nuair a thèid gnìomhachas a dhùnadh
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Atharraichean an eaconamaidh: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Seall pàipear-naidheachd nuair a dh'atharraicheas eaconamaidh na cruinne
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Atharraichean dèanadais aig gnìomhachasan a tha gan frithealadh leis a' chompanaidh: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Seall pàipear-naidheachd nuair a dh'atharraicheas ìre dèanadais aig gnìomhachas a tha gam frithealach leis a' chompanaidh agad
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Atharraichean dèanadais aig gnìomhachasan a tha gan frithealadh le co-fharpaisiche: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Seall pàipear-naidheachd nuair a dh'atharraicheas ìre dèanadais aig gnìomhachas a tha gam frithealach le co-fharpaisiche
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Atharraichean dèanadais aig gnìomhachasan eile: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Seall pàipear-naidheachd nuair a dh'atharraicheas ìre dèanadais aig gnìomhachas nach eil gam frithealach le companaidh sam bith
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Atharraichean saothrachaidh aig gnìomhachasan a tha gan frithealadh leis a' chompanaidh: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Seall pàipear-naidheachd nuair a dh'atharraicheas ìre saothrachaidh aig gnìomhachas a tha gam frithealach leis a' chompanaidh agad
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Atharraichean saothrachaidh aig gnìomhachasan a tha gan frithealadh le co-fharpaisiche: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Seall pàipear-naidheachd nuair a dh'atharraicheas ìre saothrachaidh aig gnìomhachas a tha gam frithealach le co-fharpaisiche
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Atharraichean saothrachaidh aig gnìomhachasan eile: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Seall pàipear-naidheachd nuair a dh'atharraicheas ìre saothrachaidh aig gnìomhachas nach eil gam frithealach le companaidh sam bith
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Comhairlean / fiosrachadh mu charbadan a' chompanaidh: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Seall brathan mu charbadan a bu chòir dhut an aire a thoirt orra
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Carbadan ùra: {STRING}
@@ -1461,7 +1647,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Nochdaidh naidh
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Am bliadhna a thèid pàipear-naidheachd dathte a chlò-bhualadh a' chiad turas. Bidh na pàipearan-naidheachd ann an dubh is geal roimhe seo
 STR_CONFIG_SETTING_STARTING_YEAR                                :Bliadhna tòiseachaidh: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Cuir eaconamaidh rèidh an comas (atharraichean nas trice is nas beaga): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Ma tha seo air, atharraichidh dèanadas nan gnìomhachasan nas trice is le ceuman nas lugha. Chan eil buaidh aig seo air seòrsaichean gnìomhachais a chaidh a sholar le NewGRF mar as trice
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Ma tha seo air, atharraichidh saothrachadh nan gnìomhachasan nas trice is le ceuman nas lugha. Chan eil buaidh aig seo air seòrsaichean gnìomhachais a chaidh a sholar le NewGRF mar as trice
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ceadaich gun tèid stoca a cheannach bho chompanaidhean eile: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ma tha seo air, 's urrainn dhut stocan chompanaidhean a cheannach is a reic. Cha bhi stoca ri làimh ach aig companaidhean aig a bheil aois shònraichte
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Le slaodadh, cuir comharra gach: {STRING}
@@ -1495,18 +1681,53 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Faodaidh bailte
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Ceadaich dha bhailtean gun tog iad rathaidean ach am fàs iad. Cuir seo à comas gus ughdarrasan nam bailtean a bhacadh bho thogail rathaidean dhaibh fhèin
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Ceadaich bha bhailtean staranan-rèile a thogail: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Ma tha seo air, faodaidh bailtean staranan-rèile a thogail
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Ceadaich bha bhailtean smachd a chumail air an fhuaim a dh'adhbharaicheas puirt-adhair: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Toirmisgte
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Ceadaichte
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Ceadaichte, co-dhealbhachd a' bhaile ghnàthaichte
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Cùm smachd air na crohan a nochdas sa gheama air thuaiream. Dh'fhaoidte gu bheil seo buaidh air gnìomhachasan a tha an eisimeil fàs nan craobhan a leithid muileannan-fiodha
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Gun ghin {RED}(brisidh seo muileannan-fiodha)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Ann an coilltean-uisge a-mhàin
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Àite sam bith
 
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :Ionad a' phrìomh bhàir-inneal: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Ionad còmhnard a' phrìomh bhàir-inneal air barr na sgrìn
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Ionad a' bhàir-staide: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Ionad còmhnard a' bhàir-staide aig bonn na sgrìn
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Rèideas greimeachaidh nan uinneag: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :An t-astar eadar dà uinneag mus tèid an uinneag a tha thu a' gluasad a cho-thaobhadh ri uinneag faisg oirre
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} {P 0 phiogsail phiogsail piogsailean piogsail}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :À comas
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :An àireamh as motha dhe dh'uinnegan nach eil steigeach: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :An àireamh as motha dhe dh'uinneagan fosgailte nach eil steigeach nach tèid a dhùnadh gu fèin-opbrachail gus àite a chruthachadh airson uinneagan ùra
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :à comas
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Leibheil sùmaidh a-steach as àirde: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :An leibheil as àirde as urrainn dhut sùmadh a-steach ann am port-seallaidh. Thoir an aire gum bi barrachd cuimhne a dhìth ort ma cheadaicheas tu leibheilean sùmaidh nas àirde
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Leibheil sùmaidh a-mach as àirde: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :An leibeil as àirde as urrainn dhut sùmadh a-mach ann am port-seallaidh. Dh'fhaoidte gun adhbharaich leibheilean sùmaidh a-mach a tha ro àird dàil
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Àbhaisteach
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :Luaths fàs nam bailtean: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Suidhich dè cho luath 's a dh'fhàsas bailtean
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Gun ghin
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Slaodach
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Àbhaisteach
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Luath
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Glè luath
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Roinn nam bailtean a thèid nam mòr-bhailtean: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Suidhich co mheud bailtean a thèid nam mòr-bhailtean, 's e seo baile a thòisicheas nas motha is a dh'fhàsas nas luaithe
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 a-mach à {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Gun ghin
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Iomadaichear meud nam bailtean aig an toiseach: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Am meud cuibheasach dhe mhòr-bhailtean an coimeas ri bailtean àbhaisteach aig toiseach a' gheama
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Thoir air falbh eileamaidean-rathaid gun chiall nuair a thèid na rathaidean a thogail: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Thoir cùil-dhùinte nan rathaidean air falbh nuair a thèid togail rathaidean a mhaoineachadh
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Eadar-aghaidh
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Togail
@@ -1625,13 +1846,21 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}A bheil
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}A bheil thu cinnteach gu bheil thu airson an cnàmh-sgeul seo fhàgail?
 
 # Cheat window
+STR_CHEATS                                                      :{WHITE}Cealgaireachd
+STR_CHEATS_TOOLTIP                                              :{BLACK}Is ciall dha bhogsaichean-cromaige gun deach a' chealgaireachd seo a chleachdadh roimhe
+STR_CHEATS_WARNING                                              :{BLACK}Rabhadh! Tha thu gu bhith a' mealladh na co-fharpaisichean agad. Thoir an aire gun cumar cuimhne air an tàmailt seo gu bràth tuilleadh
+STR_CHEAT_MONEY                                                 :{LTBLUE}Meudaich an t-airgead le {CURRENCY_LONG}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}A' cluich mar a' chompanaidh: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer draoidheach (thoir air falh gnìomhachasan, oibseactan do-ghluasad): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Faodaidh tunailean dol tarsainn càch a chèile: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Cha tachair tubaist (gu tric) le steall-phlèan air port-adhair beag: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Cruth-tìre measarra
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Cruth-tìre fo-artach
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Cruth-tìre fo-thropaigeach
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Cruth-tìre nan dèideag
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Atharraich an ceann-latha: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Atharraich am bliadhna an-dràsta
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Cuir an comas atharrachadh air luachan dèanadais: {ORANGE}{STRING}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Cuir an comas atharrachadh air luachan saothrachaidh: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}Sgeama nan dath ùr
@@ -1727,17 +1956,84 @@ STR_FACE_EARRING                                                :Fàinne-chluais
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Atharraich an tàidh no an fhàinne-chluaise
 
 # Network server list
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Ioma-chluicheadair
+STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Ceangal:
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Tagh eadar geama air an eadar-lìn no air lìonraidh ionadail (LAN)
+STR_NETWORK_SERVER_LIST_LAN                                     :LAN
+STR_NETWORK_SERVER_LIST_INTERNET                                :Eadar-lìon
+STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ainm cluicheadair:
+STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Seo an t-ainm leis an aithnich cluicheadairean eile thu
 
+STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Ainm
+STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Ainm a' gheama
+STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Cliantan
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Cliantan air loidhne / cliantan air a char as motha{}Companaidhean air loidhne / companaidhean air a char as motha
+STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Meud a' mhapa
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Meud aig mapa a' gheama{}Briog gus seòrsachadh a rèir raoin
+STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Ceann-latha
+STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Ceann-latha an-dràsta
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Bliadhnaichean
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Àireamh nam bliadhnaichean{}a bhios an geama a' ruith
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Cànan, tionndadh an fhrithealaiche, amsaa.
 
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Briog air geama air an liosta gus a thaghadh
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Am frithealaiche sa ghabh thu an turas mu dheireadh:
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Briog gus am frithealaiche a thaghadh air an do chluich thu an turas mu dheireadh
 
+STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}FIOSRACHADH A' GHEAMA
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Cliantan: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Cànan: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Cruth-tìre: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Meud a' mhapa: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Tionndadh an fhrithealaiche: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Seòladh an fhrithealaiche: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Ceann-latha tòiseachaidh: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Ceann-latha an-dràsta: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Ga dhìon le facal-faire!
+STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}FRITHEALAICHE FAR LOIDHNE
+STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}FRITHEALAICHE LÀN
+STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}TIONNDAIDHEAN NACH EIL CO-IONNAN
+STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF NACH EIL CO-IONNAN
 
+STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Gabh sa gheama
+STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Ath-nuadhaich am frithealaiche
+STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Ath-nuadhaich fiosrachadh an fhrithealaiche
 
+STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Lorg frithealaiche
+STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Lorg san lìonraidh airson frithealaiche
+STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Cuir frithealaiche ris
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Cuiridh seo frithealaiche ris an liosta gus an tèid sùil a thoirt air airson geamannan nan ruith
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Tòisich am frithealaiche
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Tòisich am frithealaiche agad fhèin
 
+STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Cuir d' ainm a-steach
+STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Cuir seòladh an òstair a-steach
 
 # Start new multiplayer server
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Tòisich geama ioma-chluicheadair ùr
 
+STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Ainm a' gheama:
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Thèid ainm a' gheama a shealltainn dha chàch ann an clàr-taice nan geamannan ioma-chluicheadair
+STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Suidhich facal-faire
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Dìon an geama agad le facal-faire ach nach eil e ri fhaighinn gu poblach
 
+STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Eadar-lìon
+STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Eadar-lìon (sanasaich)
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} {P chliant chliant cliantan cliant}
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Cliantan air a char as motha:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Tagh an àireamh as motha dhe chliantan. Cha leig thu leas a h-uile slot a lìonadh
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} {P chompanaidh chompanaidh companaidhean companaidh}
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Companaidhean air a char as motha:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Cuingich am frithealaiche gu àireamh shònraichte dhe chompanaidhean
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} {P amharcaiche amharcaiche amharcaichean amharcaiche}
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Amharcaichean air a char as motha:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Cuingich co mheud duine a dh'fhaodas sealltainn air geamannan air an fhrithealaiche
+STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Cànan a tha ga bruidhinn:
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Bidh fios aig cluicheadairean eile dè an cànan a tha ga bruidhinn air an fhrithealaiche
 
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Cuir a-steach ainm airson a' gheama lìonraidh
 
 # Network game languages
 ############ Leave those lines in this order!!
@@ -1780,22 +2076,65 @@ STR_NETWORK_LANG_LATVIAN                                        :Laitbheis
 ############ End of leave-in-this-order
 
 # Network game lobby
+STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Lobaidh nan geamannan ioma-chluicheadair
 
+STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Ag ullachadh gus gabhail ann: {ORANGE}{STRING}
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Liosta dhen a h-uile companaidh a tha sa gheama an-dràsta. 'S urrainn dhut gabhail ann an tè no tè ùr a stèidheachadh ma tha slot companaidh saor ri làimh
 
+STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}FIOSRACHADH A' CHOMPANAIDH
+STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Ainm a' chompanaidh: {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Stèidheachadh: {WHITE}{NUM}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Luach a' chompanaidh: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Balans an-dràsta: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Teachd a-steach an-uiridh: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Dèanadas: {WHITE}{NUM}
 
+STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Carbadan: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
+STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Stèiseanan: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
+STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Cluicheadairean: {WHITE}{STRING}
 
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Companaidh ùr
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Cruthaich companaidh ùr
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Coimhead air geama
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Coimhead air a' gheama mar amharcaiche
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Gabh sa chompanaidh
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Cuidich le stiùireadh na companaidh seo
 
 # Network connecting window
+STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}A' ceangal ...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) A' cheangal ...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) A' dearbhadh ...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) A' feitheamh ...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) A' luchdadh mapa a-nuas ...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) A' giullachd dàta ...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) A' clàradh ...
 
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}A' faighinn fiosrachadh a' gheama ...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}A' faighinn fiosrachadh na companaidh ...
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} {P chliant chliant cliantan cliant} air do bheulaibh
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} air a{P 0 "" "" n ""} luchdadh a-nuas gu ruige seo
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} air a{P 0 "" "" n ""} luchdadh a-nuas gu ruige seo
 
+STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Dì-cheangail
 
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tha am frithealaiche dìonta. Cuir a-steach facal-faire
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Tha a' chompanaidh dìonta. Cuir a-steach facal-faire
 
 # Network company list added strings
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Liosta nan cliant
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Coimhead air
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Companaidh ùr
 
 # Network client list
+STR_NETWORK_CLIENTLIST_KICK                                     :Thoir a bhròg dha
+STR_NETWORK_CLIENTLIST_BAN                                      :Toirmisg
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Thoir airgead dha
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Bruidhinn ris a h-uile duine
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Bruidhinn ris a' chompanaidh
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Teachdaireachd phrìobhaideach
 
 STR_NETWORK_SERVER                                              :Frithealaiche
 STR_NETWORK_CLIENT                                              :Cliant
@@ -1808,7 +2147,7 @@ STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Na sàbh
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Thoir am facal-faire ùr dhan chompanaidh
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Facal-faire na companaidh
 STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Facal-faire bunaiteach na companaidh
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Cleachd am facal-faire companaidh seo mar bhun-roghainn airson chompanaidhean ùra
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Cleachd am facal-faire companaidh seo a ghnàth airson chompanaidhean ùra
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Gabh ann
@@ -1920,6 +2259,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Tagh ùr
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Tagh a h-uile susbaint a tha na ùrachadh airson susbaint a tha ann gus a luchdadh a-nuas
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Neo-thagh na h-uile
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Comharraich nach tèid susbaint sam bith a luchdadh a-nuas
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Lorg air làraichean-lìn taobh a-muigh
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Lorg susbaint nach eil ri làimh air seirbheise susbaint OpenTTD is a bheil ri làimh air làraichean lìn nach eil ceangailte ri OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Tha thu a' fàgail OpenTTD!
 STR_CONTENT_OPEN_URL                                            :{BLACK}Tadhail air an làrach-lìn
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Tadhail air làrach-lìn na susbainte seo
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Luchdaich a-nuas
@@ -2089,23 +2431,85 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Fuaim ai
 # Landscaping toolbar
 
 # Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Tagh oibseact
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Tagh oibseact airson togail. Toglaidh Shift an tèid tuairmse chosgaisean/togail a shealltainn
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Ro-shealladh an oibseict
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Meud: {GOLD}{NUM} x {NUM} leacan
 
 STR_OBJECT_CLASS_LTHS                                           :Taighean-solais
 STR_OBJECT_CLASS_TRNS                                           :Tùir chraobh-sgaoilidh
 
 # Tree planting window (last two for SE only)
+STR_PLANT_TREE_CAPTION                                          :{WHITE}Craobhan
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Craobhan dhe sheòrsa air thuaiream
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Craobhan air thuaiream
 
 # Land generation window (SE)
+STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Gintinn crutha-tìre
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Cuir raointean creagach air a' chruth-tìre
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Sònraich raon fàsaich.{}Cùm air Ctrl gus a thoirt air falbh
+STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Meudaich an raon-tìre a thèid àrdachadh/ìsleachadh
+STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Lùghdaich an raon-tìre a thèid àrdachadh/ìsleachadh
+STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Gin tìr air thuaiream
+STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Cruthaich cnàmh-sgeul ùr
+STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Ath-shuithich an cruth-tìre
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Thoir a h-uile sealbh companaidh air falbh on mhapa
 
+STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Ath-shuidhich an cruth-tìre
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}A bheil thu cinnteach gu bheil thu airson a h-uile sealbh companaidh a thoirt air falbh?
 
 # Town generation window (SE)
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Gintinn bhailtean
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Baile ùr
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Stèidhich baile ùr. Cha dèan Shift+Briogadh ach tuairmse chosgaisean a shealltainn
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Baile air thuaiream
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Stèidhich baile ann an àite air thuaiream
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Iomadh bhaile air thuaiream
+STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Còmhdaich am mapa le bailtean air thuaiream
 
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Ainm a' bhaile:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Cuir a-steach ainm a' bhaile
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Briog gus ainm a' bhaile a chur a-steach
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Ainm air thuaiream
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Gin ainm air thuaiream ùr
 
+STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Meud a' bhaile:
+STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Beag
+STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Meadhanach
+STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Mòr
+STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Air thuaiream
+STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Tagh meud a' bhaile
+STR_FOUND_TOWN_CITY                                             :{BLACK}Mòr-bhaile
 
+STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Co-chealbhachd rathaidean a' bhaile
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Tagh co-dhealbhachd nan rathaidean aig a' bhaile
+STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Tùsail
+STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Rathaidean as fhearr
+STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Griod 2x2
+STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}Griod 3x3
+STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Air thuaiream
 
 # Fund new industry window
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Stèidhich gnìomhachas ùr
+STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Tagh an gnìomhachas freagarrach bhon liosta seo
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Grunn ghnìomhachasan air thuaiream
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Còmhdaich am mapa le gnìomhachasan air thuaiream
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Cosgais: {YELLOW}{CURRENCY_LONG}
+STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Rùraich
+STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Tog
+STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Maoinich
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Sreath gnìomhachais airson gnìomhachas {STRING.gen}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Sreath gnìomhachais airson carago {STRING.gen}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Gnìomhachasan saothrachaidh
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Gnìomhachasan a ghabhas ris
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Taighean
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Briog air a' ghnìomhachas gus a luchd-solair is ceannachd a shealltainn
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}riog air a' charago gus a luchd-solair is ceannachd a shealltainn
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Seall sreath
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Seall gnìomhachasan a sholaireas is a ghabhas ri carago
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Ceangail ris a' mheanbh-mhapa
 
 # Land area window
 
@@ -2244,7 +2648,7 @@ STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Amasan c
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Gun ghin -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Amasan na companaidh:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Briog air an amas gus am prìomh-shealladh a chur air gnìomhachas/baile/leacag. Fosglaidh Ctrl+Briogadh port-seallaidh ùr air ionad a' ghnìomhachais/a' bhaile/na leacaige
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Briog air an amas gus am prìomh-shealladh a chur air gnìomhachas/baile/leac. Fosglaidh Ctrl+Briogadh port-seallaidh ùr air ionad a' ghnìomhachais/a' bhaile/na lice
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Ceist
@@ -2332,8 +2736,8 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Toradh: 
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Toradh: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Atharraich an dèanadas (iomadach aig 8, suas gu 2040)
-STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Atharraich ìre an dèanadais (ceudad, suas gu 800%)
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Atharraich an saothrachaidh (iomadach aig 8, suas gu 2040)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Atharraich ìre an saothrachaidh (ceudad, suas gu 800%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} {P trèana thrèana trèanaichean treana}
@@ -2485,7 +2889,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} {P bhli
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P bhliadhna bhliadhna bliadhna bliadhna} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Luaths as motha: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Luaths as motha: {LTBLUE}{VELOCITY} {BLACK}Astar: {LTBLUE}{COMMA} {P leacag leacag leacagan leacag}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Luaths as motha: {LTBLUE}{VELOCITY} {BLACK}Astar: {LTBLUE}{COMMA} {P leac leac leacan leac}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Cuideam: {LTBLUE}{WEIGHT_SHORT} {BLACK}Cumhachd: {LTBLUE}{POWER}{BLACK} Luaths as motha: {LTBLUE}{VELOCITY}
 
 
@@ -2680,42 +3084,150 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(crìoch airgid
 ##id 0x4800
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :Mèinn guail
+STR_INDUSTRY_NAME_COAL_MINE.nom                                 :Mèinn guail
+STR_INDUSTRY_NAME_COAL_MINE.gen                                 :Mèinn guail
+STR_INDUSTRY_NAME_COAL_MINE.dat                                 :Mèinn guail
 STR_INDUSTRY_NAME_POWER_STATION                                 :Stèisean-cumhachd
+STR_INDUSTRY_NAME_POWER_STATION.nom                             :Stèisean-cumhachd
+STR_INDUSTRY_NAME_POWER_STATION.gen                             :Stèisein-chumhachd
+STR_INDUSTRY_NAME_POWER_STATION.dat                             :Stèisean-cumhachd
 STR_INDUSTRY_NAME_SAWMILL                                       :Muileann-sàbhaidh
-STR_INDUSTRY_NAME_FOREST                                        :coille
+STR_INDUSTRY_NAME_SAWMILL.nom                                   :Muileann-sàbhaidh
+STR_INDUSTRY_NAME_SAWMILL.gen                                   :Muilinn-shàbhaidh
+STR_INDUSTRY_NAME_SAWMILL.dat                                   :Muileann-sàbhaidh
+STR_INDUSTRY_NAME_FOREST                                        :Coille
+STR_INDUSTRY_NAME_FOREST.nom                                    :Coille
+STR_INDUSTRY_NAME_FOREST.gen                                    :Coille
+STR_INDUSTRY_NAME_FOREST.dat                                    :Coille
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :Fìneadair-ola
 STR_INDUSTRY_NAME_OIL_RIG                                       :Crann-ola
+STR_INDUSTRY_NAME_OIL_RIG.nom                                   :Crann-ola
+STR_INDUSTRY_NAME_OIL_RIG.gen                                   :Crainn-ola
+STR_INDUSTRY_NAME_OIL_RIG.dat                                   :Crann-ola
 STR_INDUSTRY_NAME_FACTORY                                       :Factaraidh
+STR_INDUSTRY_NAME_FACTORY.nom                                   :Factaraidh
+STR_INDUSTRY_NAME_FACTORY.gen                                   :Factaraidh
+STR_INDUSTRY_NAME_FACTORY.dat                                   :Factaraidh
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :Ionad clò-bhualaidh
-STR_INDUSTRY_NAME_STEEL_MILL                                    :Muillean-stàilinne
+STR_INDUSTRY_NAME_PRINTING_WORKS.nom                            :Ionad clò-bhualaidh
+STR_INDUSTRY_NAME_PRINTING_WORKS.gen                            :Ionad clò-bhualaidh
+STR_INDUSTRY_NAME_PRINTING_WORKS.dat                            :Ionad clò-bhualaidh
+STR_INDUSTRY_NAME_STEEL_MILL                                    :Muilleann-stàilinne
+STR_INDUSTRY_NAME_STEEL_MILL.nom                                :Muilleann-stàilinne
+STR_INDUSTRY_NAME_STEEL_MILL.gen                                :Muillinn-stàilinne
+STR_INDUSTRY_NAME_STEEL_MILL.dat                                :Muilleann-stàilinne
 STR_INDUSTRY_NAME_FARM                                          :Tuathanas
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Mèinn Cloich-copair
-STR_INDUSTRY_NAME_OIL_WELLS                                     :Tobraichean ola
+STR_INDUSTRY_NAME_FARM.nom                                      :Tuathanas
+STR_INDUSTRY_NAME_FARM.gen                                      :Tuathanais
+STR_INDUSTRY_NAME_FARM.dat                                      :Tuathanas
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Mèinn cloich-copair
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.nom                           :Mèinn cloich-copair
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.gen                           :Mèinn cloich-copair
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.dat                           :Mèinn cloich-copair
+STR_INDUSTRY_NAME_OIL_WELLS                                     :Tobraichean-ola
+STR_INDUSTRY_NAME_OIL_WELLS.nom                                 :Tobraichean-ola
+STR_INDUSTRY_NAME_OIL_WELLS.gen                                 :Thobraichean-ola
+STR_INDUSTRY_NAME_OIL_WELLS.dat                                 :Tobraichean-ola
 STR_INDUSTRY_NAME_BANK                                          :Banca
+STR_INDUSTRY_NAME_BANK.nom                                      :Banca
+STR_INDUSTRY_NAME_BANK.gen                                      :Banca
+STR_INDUSTRY_NAME_BANK.dat                                      :Banca
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Factaraidh bidhe
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.nom                     :Factaraidh bidhe
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.gen                     :Factaraidh bidhe
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.dat                     :Factaraidh bidhe
 STR_INDUSTRY_NAME_PAPER_MILL                                    :Muileann-pàipeir
+STR_INDUSTRY_NAME_PAPER_MILL.nom                                :Muileann-pàipeir
+STR_INDUSTRY_NAME_PAPER_MILL.gen                                :Muilinn-phàipeir
+STR_INDUSTRY_NAME_PAPER_MILL.dat                                :Muileann-pàipeir
 STR_INDUSTRY_NAME_GOLD_MINE                                     :Mèinn òir
+STR_INDUSTRY_NAME_GOLD_MINE.nom                                 :Mèinn òir
+STR_INDUSTRY_NAME_GOLD_MINE.gen                                 :Mèinn òir
+STR_INDUSTRY_NAME_GOLD_MINE.dat                                 :Mèinn òir
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Banca
-STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Mèinn-daoimein
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Mèinn Cloich-iarainn
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.nom                        :Banca
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.gen                        :Banca
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.dat                        :Banca
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Mèinn daoimein
+STR_INDUSTRY_NAME_DIAMOND_MINE.nom                              :Mèinn daoimein
+STR_INDUSTRY_NAME_DIAMOND_MINE.gen                              :Mèinn daoimein
+STR_INDUSTRY_NAME_DIAMOND_MINE.dat                              :Mèinn daoimein
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Mèinn cloich-iarainn
+STR_INDUSTRY_NAME_IRON_ORE_MINE.nom                             :Mèinn cloich-iarainn
+STR_INDUSTRY_NAME_IRON_ORE_MINE.gen                             :Mèinn cloich-iarainn
+STR_INDUSTRY_NAME_IRON_ORE_MINE.dat                             :Mèinn cloich-iarainn
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Planntachadh-measa
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.nom                          :Planntachadh-measa
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.gen                          :Planntachaidh-mheasa
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.dat                          :Planntachadh-measa
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Planntachadh-rubair
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.nom                         :Planntachadh-rubair
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.gen                         :Planntachaidh-rubair
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.dat                         :Planntachadh-rubair
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Solar-uisge
+STR_INDUSTRY_NAME_WATER_SUPPLY.nom                              :Solar-uisge
+STR_INDUSTRY_NAME_WATER_SUPPLY.gen                              :Solair-uisge
+STR_INDUSTRY_NAME_WATER_SUPPLY.dat                              :Solar-uisge
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Tùr-uisge
+STR_INDUSTRY_NAME_WATER_TOWER.nom                               :Tùr-uisge
+STR_INDUSTRY_NAME_WATER_TOWER.gen                               :Tùir-uisge
+STR_INDUSTRY_NAME_WATER_TOWER.dat                               :Tùr-uisge
 STR_INDUSTRY_NAME_FACTORY_2                                     :Factaraidh
+STR_INDUSTRY_NAME_FACTORY_2.nom                                 :Factaraidh
+STR_INDUSTRY_NAME_FACTORY_2.gen                                 :Factaraidh
+STR_INDUSTRY_NAME_FACTORY_2.dat                                 :Factaraidh
 STR_INDUSTRY_NAME_FARM_2                                        :Tuathanas
+STR_INDUSTRY_NAME_FARM_2.nom                                    :Tuathanas
+STR_INDUSTRY_NAME_FARM_2.gen                                    :Tuathanais
+STR_INDUSTRY_NAME_FARM_2.dat                                    :Tuathanas
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Muileann-fiodha
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Coille canach-siùcair
+STR_INDUSTRY_NAME_LUMBER_MILL.nom                               :Muileann-fiodha
+STR_INDUSTRY_NAME_LUMBER_MILL.gen                               :Muilinn-fhiodha
+STR_INDUSTRY_NAME_LUMBER_MILL.dat                               :Muileann-fiodha
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Coille canaich-siùcair
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.nom                       :Coille canaich-siùcair
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.gen                       :Coille canaich-siùcair
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.dat                       :Coille canaich-siùcair
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Factaraidh mhìlseanan
+STR_INDUSTRY_NAME_CANDY_FACTORY.nom                             :Factaraidh mhìlseanan
+STR_INDUSTRY_NAME_CANDY_FACTORY.gen                             :Factaraidh mhìlseanan
+STR_INDUSTRY_NAME_CANDY_FACTORY.dat                             :Factaraidh mhìlseanan
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Tuathanas bataraidh
-STR_INDUSTRY_NAME_COLA_WELLS                                    :Tobraichean cola
+STR_INDUSTRY_NAME_BATTERY_FARM.nom                              :Tuathanas bataraidh
+STR_INDUSTRY_NAME_BATTERY_FARM.gen                              :Tuathanas bataraidh
+STR_INDUSTRY_NAME_BATTERY_FARM.dat                              :Tuathanas bataraidh
+STR_INDUSTRY_NAME_COLA_WELLS                                    :Tobraichean-cola
+STR_INDUSTRY_NAME_COLA_WELLS.nom                                :Tobraichean-cola
+STR_INDUSTRY_NAME_COLA_WELLS.gen                                :Thobraichean-cola
+STR_INDUSTRY_NAME_COLA_WELLS.dat                                :Tobraichean-cola
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Bùth dhèideagan
+STR_INDUSTRY_NAME_TOY_SHOP.nom                                  :Bùth dhèideagan
+STR_INDUSTRY_NAME_TOY_SHOP.gen                                  :Bùth dhèideagan
+STR_INDUSTRY_NAME_TOY_SHOP.dat                                  :Bùth dhèideagan
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Factaraidh dhèideagan
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Tobraichean plastaig
+STR_INDUSTRY_NAME_TOY_FACTORY.nom                               :Factaraidh dhèideagan
+STR_INDUSTRY_NAME_TOY_FACTORY.gen                               :Factaraidh dhèideagan
+STR_INDUSTRY_NAME_TOY_FACTORY.dat                               :Factaraidh dhèideagan
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Tobraichean-plastaig
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.nom                         :Tobraichean-plastaig
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.gen                         :Thobraichean-plastaig
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.dat                         :Tobraichean-plastaig
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Factaraidh dheochan gucagach
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.nom                       :Factaraidh dheochan gucagach
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.gen                       :Factaraidh dheochan gucagach
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.dat                       :Factaraidh dheochan gucagach
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Gineadair bhuilgeanan
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.nom                          :Gineadair bhuilgeanan
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.gen                          :Gineadair bhuilgeanan
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.dat                          :Gineadair bhuilgeanan
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Coireall tofaidh
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :Mèinn-siùcair
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.nom                             :Coireall tofaidh
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.gen                             :Coireall tofaidh
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.dat                             :Coireall tofaidh
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :Mèinn siùcair
+STR_INDUSTRY_NAME_SUGAR_MINE.nom                                :Mèinn siùcair
+STR_INDUSTRY_NAME_SUGAR_MINE.gen                                :Mèinn siùcair
+STR_INDUSTRY_NAME_SUGAR_MINE.dat                                :Mèinn siùcair
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!

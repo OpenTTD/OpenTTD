@@ -1103,6 +1103,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Sätt nivån f�
 STR_CONFIG_SETTING_RECESSIONS                                   :Lågkonjunkturer: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Om det är aktiverat så kan lågkonjunkturer uppstå med ett antal års mellanrum. Under en lågkonjunktur är all produktion avsevärt lägre (men återgår till det normala när lågkonjunkturen är över)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Förbjud tåg att vända vid stationer: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Om det är aktiverat så kommer tågen inte vända på genomfartsstationer, ens om vägen till deras destination skulle ha blivit kortare ifall de vände
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofer: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Slår av/på katastrofer vilka då och då kan blockera eller förstöra fordon och infrastruktur
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Stadsfullmäktiges attityd mot ombyggantion av områden: {STRING}
@@ -3051,7 +3052,7 @@ STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Byt fär
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Företagsnamn
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Byt företagets namn
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Namn på VD
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Byt VD:ns namn
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Byt namn på VD:n
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Köp 25% andelar i företaget
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Sälj 25% andelar i företaget

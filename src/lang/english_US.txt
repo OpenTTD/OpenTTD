@@ -1089,7 +1089,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Right
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximum initial loan: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximum amount a company can loan (without taking inflation into account)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Interest rate: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Loan interest rate; also controls inflation if enabled
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Loan interest rate; also controls inflation, if enabled
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Running costs: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Set level of maintainance and running costs of vehicles and infrastructure
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Construction speed: {STRING}
@@ -1101,9 +1101,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Set how much is
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Construction costs: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Set level of construction and purchase costs
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :If enabled recessions may occur every few years. During a recession all production is significantly lower (it returns to previous level when the recession is over)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :If enabled, recessions may occur every few years. During a recession all production is significantly lower (it returns to previous level when the recession is over)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Disallow train reversing in stations: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :If enabled trains will not reverse in non-terminus stations, if there is a shorter path to their next destination when reversing
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :If enabled, trains will not reverse in non-terminus stations, even if there is a shorter path to their next destination when reversing
 STR_CONFIG_SETTING_DISASTERS                                    :Disasters: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toggle disasters which may occasionally block or destroy vehicles or infrastructure
 STR_CONFIG_SETTING_CITY_APPROVAL                                :City council's attitude towards area restructuring: {STRING}
