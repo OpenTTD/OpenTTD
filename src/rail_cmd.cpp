@@ -1320,7 +1320,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 			if (HasBit(signal_dir, 1)) signals |= SignalAgainstTrackdir(trackdir);
 
 			/* Test tiles in between for suitability as well if minimising gaps. */
-			bool test_only = minimise_gaps && signal_ctr < (last_used_ctr + signal_density);
+			bool test_only = !remove && minimise_gaps && signal_ctr < (last_used_ctr + signal_density);
 			CommandCost ret = DoCommand(tile, p1, signals, test_only ? flags & ~DC_EXEC : flags, remove ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
 
 			if (ret.Succeeded()) {
