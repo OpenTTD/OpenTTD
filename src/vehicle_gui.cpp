@@ -395,6 +395,15 @@ struct RefitWindow : public Window {
 					continue;
 				}
 
+				bool first_vehicle = this->list[current_index].Length() == 0;
+				if (first_vehicle) {
+					/* Keeping the current subtype is always an option. It also serves as the option in case of no subtypes */
+					RefitOption *option = this->list[current_index].Append();
+					option->cargo   = cid;
+					option->subtype = 0xFF;
+					option->string  = STR_EMPTY;
+				}
+
 				/* Check the vehicle's callback mask for cargo suffixes.
 				 * This is not supported for ordered refits, since subtypes only have a meaning
 				 * for a specific vehicle at a specific point in time, which conflicts with shared orders,
@@ -415,13 +424,40 @@ struct RefitWindow : public Window {
 						v->InvalidateNewGRFCache();
 
 						StringID subtype = GetCargoSubtypeText(v);
-						if (refit_cyc != 0 && subtype == STR_EMPTY) break;
 
-						RefitOption option;
-						option.cargo   = cid;
-						option.subtype = refit_cyc;
-						option.string  = subtype;
-						this->list[current_index].Include(option);
+						if (first_vehicle) {
+							/* Append new subtype (don't add duplicates though) */
+							if (subtype == STR_EMPTY) break;
+
+							RefitOption option;
+							option.cargo   = cid;
+							option.subtype = refit_cyc;
+							option.string  = subtype;
+							this->list[current_index].Include(option);
+						} else {
+							/* Intersect the subtypes of earlier vehicles with the subtypes of this vehicle */
+							if (subtype == STR_EMPTY) {
+								/* No more subtypes for this vehicle, delete all subtypes >= refit_cyc */
+								SubtypeList &l = this->list[current_index];
+								/* 0xFF item is in front, other subtypes are sorted. So just truncate the list in the right spot */
+								for (uint i = 1; i < l.Length(); i++) {
+									if (l[i].subtype >= refit_cyc) {
+										l.Resize(i);
+										break;
+									}
+								}
+								break;
+							} else {
+								/* Check whether the subtype matches with the subtype of earlier vehicles. */
+								uint pos = 1;
+								SubtypeList &l = this->list[current_index];
+								while (pos < l.Length() && l[pos].subtype != refit_cyc) pos++;
+								if (pos < l.Length() && l[pos].string != subtype) {
+									/* String mismatch, remove item keeping the order */
+									l.ErasePreservingOrder(pos);
+								}
+							}
+						}
 					}
 
 					/* Reset the vehicle's cargo type */
@@ -431,13 +467,6 @@ struct RefitWindow : public Window {
 					/* And make sure we haven't tainted the cache */
 					v->First()->InvalidateNewGRFCache();
 					v->InvalidateNewGRFCache();
-				} else {
-					/* No cargo suffix callback -- use no subtype */
-					RefitOption option;
-					option.cargo   = cid;
-					option.subtype = 0;
-					option.string  = STR_EMPTY;
-					this->list[current_index].Include(option);
 				}
 				current_index++;
 			}

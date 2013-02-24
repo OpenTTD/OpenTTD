@@ -145,6 +145,20 @@ public:
 	}
 
 	/**
+	 * Set the size of the vector, effectively truncating items from the end or appending uninitialised ones.
+	 * @param num_items Target size.
+	 */
+	inline void Resize(uint num_items)
+	{
+		this->items = num_items;
+
+		if (this->items > this->capacity) {
+			this->capacity = Align(this->items, S);
+			this->data = ReallocT(this->data, this->capacity);
+		}
+	}
+
+	/**
 	 * Search for the first occurrence of an item.
 	 * The '!=' operator of T is used for comparison.
 	 * @param item Item to search for
@@ -210,6 +224,21 @@ public:
 	{
 		assert(item >= this->Begin() && item < this->End());
 		*item = this->data[--this->items];
+	}
+
+	/**
+	 * Remove items from the vector while preserving the order of other items.
+	 * @param pos First item to remove.
+	 * @param count Number of consecutive items to remove.
+	 */
+	void ErasePreservingOrder(uint pos, uint count = 1)
+	{
+		if (count == 0) return;
+		assert(pos < this->items);
+		assert(pos + count <= this->items);
+		this->items -= count;
+		uint to_move = this->items - pos;
+		if (to_move > 0) MemMoveT(this->data + pos, this->data + pos + count, to_move);
 	}
 
 	/**
