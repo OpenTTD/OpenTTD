@@ -2417,8 +2417,8 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}건설
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}투자
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}{STRING}{G "과" "와"} 관련된 산업시설 연계도
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING}{G "과" "와"} 관련된 산업시설 연계망
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}{STRING}{G 0 "과" "와"} 관련된 산업시설 연계도
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING}{G 0 "과" "와"} 관련된 산업시설 연계망
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}생산 산업시설
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}소비 산업시설
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}도시 가구
