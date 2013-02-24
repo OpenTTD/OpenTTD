@@ -288,6 +288,7 @@ struct RefitResult {
 	Vehicle *v;         ///< Vehicle to refit
 	uint capacity;      ///< New capacity of vehicle
 	uint mail_capacity; ///< New mail capacity of aircraft
+	byte subtype;       ///< cargo subtype to refit to
 };
 
 /**
@@ -297,7 +298,7 @@ struct RefitResult {
  * @param only_this    Whether to only refit this vehicle, or to check the rest of them.
  * @param num_vehicles Number of vehicles to refit (not counting articulated parts). Zero means the whole chain.
  * @param new_cid      Cargotype to refit to
- * @param new_subtype  Cargo subtype to refit to
+ * @param new_subtype  Cargo subtype to refit to. 0xFF means to try keeping the same subtype according to GetBestFittingSubType().
  * @param flags        Command flags
  * @param auto_refit   Refitting is done as automatic refitting outside a depot.
  * @return Refit cost.
@@ -320,7 +321,11 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 	refit_result.Clear();
 
 	v->InvalidateNewGRFCacheOfChain();
+	byte actual_subtype = new_subtype;
 	for (; v != NULL; v = (only_this ? NULL : v->Next())) {
+		/* Reset actual_subtype for every new vehicle */
+		if (!v->IsArticulatedPart()) actual_subtype = new_subtype;
+
 		if (v->type == VEH_TRAIN && !vehicles_to_refit.Contains(v->index) && !only_this) continue;
 
 		const Engine *e = v->GetEngine();
@@ -331,12 +336,17 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 		bool refittable = HasBit(e->info.refit_mask, new_cid) && (!auto_refit || HasBit(e->info.misc_flags, EF_AUTO_REFIT));
 		if (!refittable && v->cargo_type != new_cid) continue;
 
+		/* Determine best fitting subtype if requested */
+		if (actual_subtype == 0xFF) {
+			actual_subtype = GetBestFittingSubType(v, v, new_cid);
+		}
+
 		/* Back up the vehicle's cargo type */
 		CargoID temp_cid = v->cargo_type;
 		byte temp_subtype = v->cargo_subtype;
 		if (refittable) {
 			v->cargo_type = new_cid;
-			v->cargo_subtype = new_subtype;
+			v->cargo_subtype = actual_subtype;
 		}
 
 		uint16 mail_capacity = 0;
@@ -352,7 +362,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 		v->cargo_subtype = temp_subtype;
 
 		bool auto_refit_allowed;
-		CommandCost refit_cost = GetRefitCost(v, v->engine_type, new_cid, new_subtype, &auto_refit_allowed);
+		CommandCost refit_cost = GetRefitCost(v, v->engine_type, new_cid, actual_subtype, &auto_refit_allowed);
 		if (auto_refit && !auto_refit_allowed) {
 			/* Sorry, auto-refitting not allowed, subtract the cargo amount again from the total. */
 			total_capacity -= amount;
@@ -380,6 +390,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 		result->v = v;
 		result->capacity = amount;
 		result->mail_capacity = mail_capacity;
+		result->subtype = actual_subtype;
 	}
 
 	if (flags & DC_EXEC) {
@@ -393,7 +404,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 			}
 			u->cargo_type = new_cid;
 			u->cargo_cap = result->capacity;
-			u->cargo_subtype = new_subtype;
+			u->cargo_subtype = result->subtype;
 			if (u->type == VEH_AIRCRAFT) {
 				Vehicle *w = u->Next();
 				if (w->cargo_cap > result->mail_capacity) {
@@ -419,7 +430,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
  * - p2 = (bit 0-4)   - New cargo type to refit to.
  * - p2 = (bit 6)     - Automatic refitting.
  * - p2 = (bit 7)     - Refit only this vehicle. Used only for cloning vehicles.
- * - p2 = (bit 8-15)  - New cargo subtype to refit to.
+ * - p2 = (bit 8-15)  - New cargo subtype to refit to. 0xFF means to try keeping the same subtype according to GetBestFittingSubType().
  * - p2 = (bit 16-23) - Number of vehicles to refit (not counting articulated parts). Zero means all vehicles.
  *                      Only used if "refit only this vehicle" is false.
  * @param text unused
