@@ -405,8 +405,11 @@ struct RefitWindow : public Window {
 					continue;
 				}
 
-				/* Check the vehicle's callback mask for cargo suffixes */
-				if (HasBit(callback_mask, CBM_VEHICLE_CARGO_SUFFIX)) {
+				/* Check the vehicle's callback mask for cargo suffixes.
+				 * This is not supported for ordered refits, since subtypes only have a meaning
+				 * for a specific vehicle at a specific point in time, which conflicts with shared orders,
+				 * autoreplace, autorenew, clone, order restoration, ... */
+				if (this->order == INVALID_VEH_ORDER_ID && HasBit(callback_mask, CBM_VEHICLE_CARGO_SUFFIX)) {
 					/* Make a note of the original cargo type. It has to be
 					 * changed to test the cargo & subtype... */
 					CargoID temp_cargo = v->cargo_type;
@@ -487,6 +490,7 @@ struct RefitWindow : public Window {
 	{
 		this->sel = -1;
 		this->auto_refit = auto_refit;
+		this->order = order;
 		this->CreateNestedTree(desc);
 
 		this->vscroll = this->GetScrollbar(WID_VR_SCROLLBAR);
@@ -502,7 +506,6 @@ struct RefitWindow : public Window {
 		this->FinishInitNested(desc, v->index);
 		this->owner = v->owner;
 
-		this->order = order;
 		this->SetWidgetDisabledState(WID_VR_REFIT, this->sel == -1);
 	}
 
@@ -847,7 +850,7 @@ struct RefitWindow : public Window {
 						bool delete_window = this->selected_vehicle == v->index && this->num_vehicles == UINT8_MAX;
 						if (DoCommandP(v->tile, this->selected_vehicle, this->cargo->cargo | this->cargo->subtype << 8 | this->num_vehicles << 16, GetCmdRefitVeh(v)) && delete_window) delete this;
 					} else {
-						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8 | this->order << 16, CMD_ORDER_REFIT)) delete this;
+						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->order << 16, CMD_ORDER_REFIT)) delete this;
 					}
 				}
 				break;
@@ -924,7 +927,7 @@ static const WindowDesc _vehicle_refit_desc(
 /**
  * Show the refit window for a vehicle
  * @param *v The vehicle to show the refit window for
- * @param order of the vehicle ( ? )
+ * @param order of the vehicle to assign refit to, or INVALID_VEH_ORDER_ID to refit the vehicle now
  * @param parent the parent window of the refit window
  * @param auto_refit Choose cargo for auto-refitting
  */

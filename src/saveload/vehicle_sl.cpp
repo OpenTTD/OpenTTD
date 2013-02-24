@@ -639,7 +639,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 
 		/* Refit in current order */
 		 SLE_CONDVAR(Vehicle, current_order.refit_cargo,   SLE_UINT8,             36, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, current_order.refit_subtype, SLE_UINT8,             36, SL_MAX_VERSION),
+		SLE_CONDNULL(1,                                                           36, 181), // refit_subtype
 
 		/* Timetable in current order */
 		 SLE_CONDVAR(Vehicle, current_order.wait_time,     SLE_UINT16,            67, SL_MAX_VERSION),

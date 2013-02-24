@@ -42,7 +42,6 @@ private:
 	DestinationID dest;   ///< The destination of the order.
 
 	CargoID refit_cargo;  ///< Refit CargoID
-	byte refit_subtype;   ///< Refit subtype
 
 public:
 	Order *next;          ///< Pointer to next order. If NULL, end of list
@@ -72,7 +71,7 @@ public:
 	void Free();
 
 	void MakeGoToStation(StationID destination);
-	void MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, OrderNonStopFlags non_stop_type = ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS, OrderDepotActionFlags action = ODATF_SERVICE_ONLY, CargoID cargo = CT_NO_REFIT, byte subtype = 0);
+	void MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, OrderNonStopFlags non_stop_type = ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS, OrderDepotActionFlags action = ODATF_SERVICE_ONLY, CargoID cargo = CT_NO_REFIT);
 	void MakeGoToWaypoint(StationID destination);
 	void MakeLoading(bool ordered);
 	void MakeLeaveStation();
@@ -124,14 +123,7 @@ public:
 	 */
 	inline CargoID GetRefitCargo() const { return this->refit_cargo; }
 
-	/**
-	 * Get the cargo subtype to to refit to.
-	 * @pre IsType(OT_GOTO_DEPOT) || IsType(OT_GOTO_STATION)
-	 * @return the cargo subtype.
-	 */
-	inline byte GetRefitSubtype() const { return this->refit_subtype; }
-
-	void SetRefit(CargoID cargo, byte subtype = 0);
+	void SetRefit(CargoID cargo);
 
 	/** How must the consist be loaded? */
 	inline OrderLoadFlags GetLoadType() const { return (OrderLoadFlags)GB(this->flags, 4, 4); }

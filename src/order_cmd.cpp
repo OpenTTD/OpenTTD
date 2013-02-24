@@ -83,16 +83,15 @@ void Order::MakeGoToStation(StationID destination)
  * @param non_stop_type how to get to the depot?
  * @param action        what to do in the depot?
  * @param cargo         the cargo type to change to.
- * @param subtype       the subtype to change to.
  */
-void Order::MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, OrderNonStopFlags non_stop_type, OrderDepotActionFlags action, CargoID cargo, byte subtype)
+void Order::MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, OrderNonStopFlags non_stop_type, OrderDepotActionFlags action, CargoID cargo)
 {
 	this->type = OT_GOTO_DEPOT;
 	this->SetDepotOrderType(order);
 	this->SetDepotActionType(action);
 	this->SetNonStopType(non_stop_type);
 	this->dest = destination;
-	this->SetRefit(cargo, subtype);
+	this->SetRefit(cargo);
 }
 
 /**
@@ -158,13 +157,11 @@ void Order::MakeImplicit(StationID destination)
 /**
  * Make this depot/station order also a refit order.
  * @param cargo   the cargo type to change to.
- * @param subtype the subtype to change to.
  * @pre IsType(OT_GOTO_DEPOT) || IsType(OT_GOTO_STATION).
  */
-void Order::SetRefit(CargoID cargo, byte subtype)
+void Order::SetRefit(CargoID cargo)
 {
 	this->refit_cargo = cargo;
-	this->refit_subtype = subtype;
 }
 
 /**
@@ -238,7 +235,6 @@ Order::Order(uint32 packed)
 	this->dest    = GB(packed, 16, 16);
 	this->next    = NULL;
 	this->refit_cargo   = CT_NO_REFIT;
-	this->refit_subtype = 0;
 	this->wait_time     = 0;
 	this->travel_time   = 0;
 	this->max_speed     = UINT16_MAX;
@@ -278,7 +274,6 @@ void Order::AssignOrder(const Order &other)
 	this->dest  = other.dest;
 
 	this->refit_cargo   = other.refit_cargo;
-	this->refit_subtype = other.refit_subtype;
 
 	this->wait_time   = other.wait_time;
 	this->travel_time = other.travel_time;
@@ -1587,7 +1582,6 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
  * @param p1 VehicleIndex of the vehicle having the order
  * @param p2 bitmask
  *   - bit 0-7 CargoID
- *   - bit 8-15 Cargo subtype
  *   - bit 16-23 number of order to modify
  * @param text unused
  * @return the cost of this operation or an error
@@ -1597,7 +1591,6 @@ CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	VehicleID veh = GB(p1, 0, 20);
 	VehicleOrderID order_number  = GB(p2, 16, 8);
 	CargoID cargo = GB(p2, 0, 8);
-	byte subtype  = GB(p2, 8, 8);
 
 	if (cargo >= NUM_CARGO && cargo != CT_NO_REFIT && cargo != CT_AUTO_REFIT) return CMD_ERROR;
 
@@ -1616,7 +1609,7 @@ CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	if (order->GetLoadType() & OLFB_NO_LOAD) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		order->SetRefit(cargo, subtype);
+		order->SetRefit(cargo);
 
 		/* Make the depot order an 'always go' order. */
 		if (cargo != CT_NO_REFIT && order->IsType(OT_GOTO_DEPOT)) {
@@ -1630,7 +1623,7 @@ CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 			/* If the vehicle already got the current depot set as current order, then update current order as well */
 			if (u->cur_real_order_index == order_number && (u->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS)) {
-				u->current_order.SetRefit(cargo, subtype);
+				u->current_order.SetRefit(cargo);
 			}
 		}
 	}
@@ -1932,7 +1925,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 					if (pbs_look_ahead && reverse) return false;
 
 					v->dest_tile = location;
-					v->current_order.MakeGoToDepot(destination, v->current_order.GetDepotOrderType(), v->current_order.GetNonStopType(), (OrderDepotActionFlags)(v->current_order.GetDepotActionType() & ~ODATFB_NEAREST_DEPOT), v->current_order.GetRefitCargo(), v->current_order.GetRefitSubtype());
+					v->current_order.MakeGoToDepot(destination, v->current_order.GetDepotOrderType(), v->current_order.GetNonStopType(), (OrderDepotActionFlags)(v->current_order.GetDepotActionType() & ~ODATFB_NEAREST_DEPOT), v->current_order.GetRefitCargo());
 
 					/* If there is no depot in front, reverse automatically (trains only) */
 					if (v->type == VEH_TRAIN && reverse) DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
