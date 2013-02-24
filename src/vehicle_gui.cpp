@@ -251,15 +251,11 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_t
 				/* Make sure we don't pick up anything cached. */
 				v->First()->InvalidateNewGRFCache();
 				v->InvalidateNewGRFCache();
-				uint16 callback = GetVehicleCallback(CBID_VEHICLE_CARGO_SUFFIX, 0, 0, v->engine_type, v);
 
-				if (callback != CALLBACK_FAILED) {
-					if (callback > 0x400) ErrorUnknownCallbackResult(v->GetGRFID(), CBID_VEHICLE_CARGO_SUFFIX, callback);
-					if (callback >= 0x400 || (v->GetGRF()->grf_version < 8 && callback == 0xFF)) callback = CALLBACK_FAILED;
-				}
-				if (callback == CALLBACK_FAILED) break;
+				StringID subtype = GetCargoSubtypeText(v);
+				if (subtype == STR_EMPTY) break;
 
-				if (!subtypes.Contains(GetCargoSubtypeText(v))) continue;
+				if (!subtypes.Contains(subtype)) continue;
 
 				/* We found something matching. */
 				ret_refit_cyc = refit_cyc;
@@ -286,8 +282,7 @@ byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_t
 struct RefitOption {
 	CargoID cargo;    ///< Cargo to refit to
 	byte subtype;     ///< Subcargo to use
-	uint16 value;     ///< GRF-local String to display for the cargo
-	const Engine *engine;  ///< Engine for which to resolve #value
+	StringID string;  ///< GRF-local String to display for the cargo
 
 	/**
 	 * Inequality operator for #RefitOption.
@@ -296,7 +291,7 @@ struct RefitOption {
 	 */
 	inline bool operator != (const RefitOption &other) const
 	{
-		return other.cargo != this->cargo || other.value != this->value;
+		return other.cargo != this->cargo || other.string != this->string;
 	}
 
 	/**
@@ -306,7 +301,7 @@ struct RefitOption {
 	 */
 	inline bool operator == (const RefitOption &other) const
 	{
-		return other.cargo == this->cargo && other.value == this->value;
+		return other.cargo == this->cargo && other.string == this->string;
 	}
 };
 
@@ -339,13 +334,8 @@ static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], int sel, u
 			const RefitOption refit = list[i][j];
 			/* Get the cargo name. */
 			SetDParam(0, CargoSpec::Get(refit.cargo)->name);
-			/* If the callback succeeded, draw the cargo suffix. */
-			if (refit.value != CALLBACK_FAILED && refit.value < 0x400) {
-				SetDParam(1, GetGRFStringID(refit.engine->GetGRFID(), 0xD000 + refit.value));
-				DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, STR_JUST_STRING_STRING, colour);
-			} else {
-				DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, STR_JUST_STRING, colour);
-			}
+			SetDParam(1, refit.string);
+			DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, STR_JUST_STRING_STRING, colour);
 
 			y += delta;
 			current++;
@@ -423,19 +413,14 @@ struct RefitWindow : public Window {
 						/* Make sure we don't pick up anything cached. */
 						v->First()->InvalidateNewGRFCache();
 						v->InvalidateNewGRFCache();
-						uint16 callback = GetVehicleCallback(CBID_VEHICLE_CARGO_SUFFIX, 0, 0, v->engine_type, v);
 
-						if (callback != CALLBACK_FAILED) {
-							if (callback > 0x400) ErrorUnknownCallbackResult(v->GetGRFID(), CBID_VEHICLE_CARGO_SUFFIX, callback);
-							if (callback >= 0x400 || (v->GetGRF()->grf_version < 8 && callback == 0xFF)) callback = CALLBACK_FAILED;
-						}
-						if (refit_cyc != 0 && callback == CALLBACK_FAILED) break;
+						StringID subtype = GetCargoSubtypeText(v);
+						if (refit_cyc != 0 && subtype == STR_EMPTY) break;
 
 						RefitOption option;
 						option.cargo   = cid;
 						option.subtype = refit_cyc;
-						option.value   = callback;
-						option.engine  = v->GetEngine();
+						option.string  = subtype;
 						this->list[current_index].Include(option);
 					}
 
@@ -451,8 +436,7 @@ struct RefitWindow : public Window {
 					RefitOption option;
 					option.cargo   = cid;
 					option.subtype = 0;
-					option.value   = CALLBACK_FAILED;
-					option.engine  = NULL;
+					option.string  = STR_EMPTY;
 					this->list[current_index].Include(option);
 				}
 				current_index++;
