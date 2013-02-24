@@ -316,7 +316,7 @@ typedef SmallVector<RefitOption, 32> SubtypeList; ///< List of refit subtypes as
  * @param delta Step height in caller window
  * @param r     Rectangle of the matrix widget.
  */
-static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], int sel, uint pos, uint rows, uint delta, const Rect &r)
+static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], const int sel[2], uint pos, uint rows, uint delta, const Rect &r)
 {
 	uint y = r.top + WD_MATRIX_TOP;
 	uint current = 0;
@@ -324,14 +324,18 @@ static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], int sel, u
 	/* Draw the list of subtypes for each cargo, and find the selected refit option (by its position). */
 	for (uint i = 0; current < pos + rows && i < NUM_CARGO; i++) {
 		for (uint j = 0; current < pos + rows && j < list[i].Length(); j++) {
+			const RefitOption &refit = list[i][j];
+
+			/* Hide subtypes if sel[0] does not match */
+			if (sel[0] != (int)i && refit.subtype != 0xFF) continue;
+
 			/* Refit options with a position smaller than pos don't have to be drawn. */
 			if (current < pos) {
 				current++;
 				continue;
 			}
 
-			TextColour colour = (sel == (int)current) ? TC_WHITE : TC_BLACK;
-			const RefitOption refit = list[i][j];
+			TextColour colour = (sel[0] == (int)i && (uint)sel[1] == j) ? TC_WHITE : TC_BLACK;
 			/* Get the cargo name. */
 			SetDParam(0, CargoSpec::Get(refit.cargo)->name);
 			SetDParam(1, refit.string);
@@ -345,7 +349,7 @@ static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], int sel, u
 
 /** Refit cargo window. */
 struct RefitWindow : public Window {
-	int sel;                     ///< Index in refit options, \c -1 if nothing is selected.
+	int sel[2];                  ///< Index in refit options, sel[0] == -1 if nothing is selected.
 	RefitOption *cargo;          ///< Refit option selected by #sel.
 	SubtypeList list[NUM_CARGO]; ///< List of refit subtypes available for each sorted cargo.
 	VehicleOrderID order;        ///< If not #INVALID_VEH_ORDER_ID, selection is part of a refit order (rather than execute directly).
@@ -471,12 +475,60 @@ struct RefitWindow : public Window {
 				current_index++;
 			}
 		} while (v->IsGroundVehicle() && (v = v->Next()) != NULL);
+	}
 
-		int scroll_size = 0;
+	/**
+	 * Refresh scrollbar after selection changed
+	 */
+	void RefreshScrollbar()
+	{
+		uint scroll_row = 0;
+		uint row = 0;
+
 		for (uint i = 0; i < NUM_CARGO; i++) {
-			scroll_size += (this->list[i].Length());
+			for (uint j = 0; j < this->list[i].Length(); j++) {
+				const RefitOption &refit = this->list[i][j];
+
+				/* Hide subtypes if sel[0] does not match */
+				if (this->sel[0] != (int)i && refit.subtype != 0xFF) continue;
+
+				if (this->sel[0] == (int)i && (uint)this->sel[1] == j) scroll_row = row;
+
+				row++;
+			}
 		}
-		this->vscroll->SetCount(scroll_size);
+
+		this->vscroll->SetCount(row);
+		this->vscroll->ScrollTowards(scroll_row);
+	}
+
+	/**
+	 * Select a row.
+	 * @param click_row Clicked row
+	 */
+	void SetSelection(uint click_row)
+	{
+		uint row = 0;
+
+		for (uint i = 0; i < NUM_CARGO; i++) {
+			for (uint j = 0; j < this->list[i].Length(); j++) {
+				const RefitOption &refit = this->list[i][j];
+
+				/* Hide subtypes if sel[0] does not match */
+				if (this->sel[0] != (int)i && refit.subtype != 0xFF) continue;
+
+				if (row == click_row) {
+					this->sel[0] = i;
+					this->sel[1] = j;
+					return;
+				}
+
+				row++;
+			}
+		}
+
+		this->sel[0] = -1;
+		this->sel[1] = 0;
 	}
 
 	/**
@@ -485,23 +537,18 @@ struct RefitWindow : public Window {
 	 */
 	RefitOption *GetRefitOption()
 	{
-		if (this->sel < 0) return NULL;
-		int subtype = 0;
-		for (uint i = 0; subtype <= this->sel && i < NUM_CARGO; i++) {
-			for (uint j = 0; subtype <= this->sel && j < this->list[i].Length(); j++) {
-				if (subtype == this->sel) {
-					return &this->list[i][j];
-				}
-				subtype++;
-			}
-		}
+		if (this->sel[0] < 0) return NULL;
 
-		return NULL;
+		SubtypeList &l = this->list[this->sel[0]];
+		if ((uint)this->sel[1] >= l.Length()) return NULL;
+
+		return &l[this->sel[1]];
 	}
 
 	RefitWindow(const WindowDesc *desc, const Vehicle *v, VehicleOrderID order, bool auto_refit) : Window()
 	{
-		this->sel = -1;
+		this->sel[0] = -1;
+		this->sel[1] = 0;
 		this->auto_refit = auto_refit;
 		this->order = order;
 		this->CreateNestedTree(desc);
@@ -519,7 +566,7 @@ struct RefitWindow : public Window {
 		this->FinishInitNested(desc, v->index);
 		this->owner = v->owner;
 
-		this->SetWidgetDisabledState(WID_VR_REFIT, this->sel == -1);
+		this->SetWidgetDisabledState(WID_VR_REFIT, this->sel[0] < 0);
 	}
 
 	virtual void OnInit()
@@ -530,24 +577,22 @@ struct RefitWindow : public Window {
 
 			/* Rebuild the refit list */
 			this->BuildRefitList();
-			this->sel = -1;
+			this->sel[0] = -1;
+			this->sel[1] = 0;
 			this->cargo = NULL;
-			int current = 0;
 			for (uint i = 0; this->cargo == NULL && i < NUM_CARGO; i++) {
 				for (uint j = 0; j < list[i].Length(); j++) {
 					if (list[i][j] == current_refit_option) {
-						this->sel = current;
+						this->sel[0] = i;
+						this->sel[1] = j;
 						this->cargo = &list[i][j];
-						this->vscroll->ScrollTowards(current);
 						break;
 					}
-					current++;
 				}
 			}
 
-			this->SetWidgetDisabledState(WID_VR_REFIT, this->sel == -1);
-			/* If the selected refit option was not found, scroll the window to the initial position. */
-			if (this->sel == -1) this->vscroll->ScrollTowards(0);
+			this->SetWidgetDisabledState(WID_VR_REFIT, this->sel[0] < 0);
+			this->RefreshScrollbar();
 		} else {
 			/* Rebuild the refit list */
 			this->OnInvalidateData(VIWD_CONSIST_CHANGED);
@@ -761,6 +806,7 @@ struct RefitWindow : public Window {
 			case 1: // A new cargo has been selected.
 				if (!gui_scope) break;
 				this->cargo = GetRefitOption();
+				this->RefreshScrollbar();
 				break;
 		}
 	}
@@ -846,9 +892,8 @@ struct RefitWindow : public Window {
 			}
 
 			case WID_VR_MATRIX: { // listbox
-				this->sel = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_VR_MATRIX);
-				if (this->sel == INT_MAX) this->sel = -1;
-				this->SetWidgetDisabledState(WID_VR_REFIT, this->sel == -1);
+				this->SetSelection(this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_VR_MATRIX));
+				this->SetWidgetDisabledState(WID_VR_REFIT, this->sel[0] < 0);
 				this->InvalidateData(1);
 
 				if (click_count == 1) break;
