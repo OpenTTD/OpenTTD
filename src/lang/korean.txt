@@ -56,7 +56,7 @@ STR_CARGO_PLURAL_COLA                                           :{G=f}콜라
 STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=m}솜사탕
 STR_CARGO_PLURAL_BUBBLES                                        :{G=m}거품
 STR_CARGO_PLURAL_TOFFEE                                         :{G=f}태피
-STR_CARGO_PLURAL_BATTERIES                                      :{G=f}배터리
+STR_CARGO_PLURAL_BATTERIES                                      :{G=f}건전지
 STR_CARGO_PLURAL_PLASTIC                                        :{G=m}플라스틱
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=f}탄산음료
 
@@ -90,7 +90,7 @@ STR_CARGO_SINGULAR_COLA                                         :{G=f}콜라
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=m}솜사탕
 STR_CARGO_SINGULAR_BUBBLE                                       :{G=m}거품
 STR_CARGO_SINGULAR_TOFFEE                                       :{G=f}태피
-STR_CARGO_SINGULAR_BATTERY                                      :{G=f}배터리
+STR_CARGO_SINGULAR_BATTERY                                      :{G=f}건전지
 STR_CARGO_SINGULAR_PLASTIC                                      :{G=m}플라스틱
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=f}탄산음료
 
@@ -124,7 +124,7 @@ STR_QUANTITY_COLA                                               :콜라 {VOLUME_
 STR_QUANTITY_CANDYFLOSS                                         :솜사탕 {WEIGHT_LONG}
 STR_QUANTITY_BUBBLES                                            :거품 {COMMA}개
 STR_QUANTITY_TOFFEE                                             :태피 {WEIGHT_LONG}
-STR_QUANTITY_BATTERIES                                          :배터리 {COMMA}개
+STR_QUANTITY_BATTERIES                                          :건전지 {COMMA}개
 STR_QUANTITY_PLASTIC                                            :플라스틱 {VOLUME_LONG}
 STR_QUANTITY_FIZZY_DRINKS                                       :탄산음료 {COMMA}개
 STR_QUANTITY_N_A                                                :없음
@@ -159,7 +159,7 @@ STR_ABBREV_COLA                                                 :{TINY_FONT}콜
 STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}솜
 STR_ABBREV_BUBBLES                                              :{TINY_FONT}거
 STR_ABBREV_TOFFEE                                               :{TINY_FONT}태
-STR_ABBREV_BATTERIES                                            :{TINY_FONT}배
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}건
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}플
 STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}탄
 STR_ABBREV_NONE                                                 :{TINY_FONT}X
@@ -404,7 +404,7 @@ STR_GRAPH_MENU_HIGHSCORE                                        :고득점 순�
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :산업시설 목록
-STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :산업시설 연계
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :산업시설 연계도
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :새 산업시설 건설
 ############ range ends here
 
@@ -2417,8 +2417,8 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}건설
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}투자
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}{STRING} 산업시설의 산업망
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING} 화물의 산업망
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}{STRING}{G "과" "와"} 관련된 산업시설 연계도
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING}{G "과" "와"} 관련된 산업시설 연계망
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}생산 산업시설
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}소비 산업시설
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}도시 가구
@@ -2453,7 +2453,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}공항 �
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}공항 이름: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}공항 칸 이름: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}화물 인수: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}받을 수 있는 화물: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}선로의 제한 속력: {LTBLUE}{VELOCITY}
 
@@ -4271,40 +4271,40 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :돼지 저금�
 STR_INDUSTRY_NAME_COAL_MINE                                     :{G=m}탄광
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}발전소
 STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}제재소
-STR_INDUSTRY_NAME_FOREST                                        :숲
+STR_INDUSTRY_NAME_FOREST                                        :{G=m}숲
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=m}정유 공장
-STR_INDUSTRY_NAME_OIL_RIG                                       :유전
-STR_INDUSTRY_NAME_FACTORY                                       :공장
-STR_INDUSTRY_NAME_PRINTING_WORKS                                :인쇄소
+STR_INDUSTRY_NAME_OIL_RIG                                       :{G=m}유전
+STR_INDUSTRY_NAME_FACTORY                                       :{G=m}공장
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}인쇄소
 STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}제철소
-STR_INDUSTRY_NAME_FARM                                          :농장
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :구리 광산
-STR_INDUSTRY_NAME_OIL_WELLS                                     :유정
-STR_INDUSTRY_NAME_BANK                                          :은행
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :식품 처리 공장
-STR_INDUSTRY_NAME_PAPER_MILL                                    :제지소
+STR_INDUSTRY_NAME_FARM                                          :{G=m}농장
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=m}구리 광산
+STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=m}유정
+STR_INDUSTRY_NAME_BANK                                          :{G=m}은행
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=m}식품 처리 공장
+STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=f}제지소
 STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=m}금광
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :은행
-STR_INDUSTRY_NAME_DIAMOND_MINE                                  :다이아몬드 광산
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :철 광산
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :과일 농장
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :고무 농장
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :상수도
-STR_INDUSTRY_NAME_WATER_TOWER                                   :급수탑
-STR_INDUSTRY_NAME_FACTORY_2                                     :공장
-STR_INDUSTRY_NAME_FARM_2                                        :농장
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :제목소
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :솜사탕 숲
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :사탕 공장
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :배터리 농장
-STR_INDUSTRY_NAME_COLA_WELLS                                    :콜라 우물
-STR_INDUSTRY_NAME_TOY_SHOP                                      :장난감 가게
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :장난감 공장
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :플라스틱 분수
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :탄산음료 공장
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :거품 제조 공장
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :태피 채취장
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :설탕 광산
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=m}은행
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=m}다이아몬드 광산
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=m}철 광산
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=m}과일 농장
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=m}고무 농장
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=f}상수도
+STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=m}급수탑
+STR_INDUSTRY_NAME_FACTORY_2                                     :{G=m}공장
+STR_INDUSTRY_NAME_FARM_2                                        :{G=m}농장
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=f}제재소
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}솜사탕 숲
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=m}사탕 공장
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=m}건전지 농장
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=m}콜라 우물
+STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=f}장난감 가게
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=m}장난감 공장
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=f}플라스틱 분수
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=m}탄산음료 공장
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}거품 제조 공장
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=m}태피 채취장
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=m}설탕 광산
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
@@ -4399,7 +4399,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :거품 수송�
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :콜라 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :사탕 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :장난감 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :배터리 수송차량
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :건전지 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :탄산음료 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :플라스틱 수송차량
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (전기)
@@ -4429,7 +4429,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :거품 수송�
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :콜라 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :사탕 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :장난감 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :배터리 수송차량
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :건전지 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :탄산음료 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :플라스틱 수송차량
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (전기)
@@ -4461,7 +4461,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :거품 수송�
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :콜라 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :사탕 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :장난감 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :배터리 수송차량
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :건전지 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :탄산음료 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :플라스틱 수송차량
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal 버스
@@ -4540,9 +4540,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow 장난
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover 사탕 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught 사탕 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow 사탕 수송차
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover 배터리 수송차
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught 배터리 수송차
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow 배터리 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover 건전지 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught 건전지 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow 건전지 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover 탄산음료 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught 탄산음료 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow 탄산음료 수송차

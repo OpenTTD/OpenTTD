@@ -1090,7 +1090,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Direita
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Empréstimo Inicial Máximo: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantia máxima a ser emprestada para uma companhia (sem levar em conta a inflação)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa de Juros: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Juros de empréstimo; também controla inflação se ativado
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Juros de empréstimo; também controla inflação, se ativado
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Custos de Operação: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Define o nível e custos de manutenção de veículos e infraestrutura
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidade de construção: {STRING}
@@ -1102,9 +1102,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Define quando �
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Custos de construção: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Define o nível de construção e custos de compra
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessões: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se ativado, recessões podem ocorrer a alguns anos. Durante as recessões, toda produção é significativamente menor (retorna ao nível normal após a recessão)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Se ativado, recessões podem ocorrer a alguns anos. Durante recessões, toda produção é significativamente menor (retorna ao nível normal após a recessão)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Desabilitar reversão de trens nas estações: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se ativado, trens não irão mudar de direção em estações não terminais, se houver um caminho mais curto ao próximo destino ao trocar de direção
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Se ativado, trens não irão mudar de direção em estações não terminais, mesmo se houver um caminho mais curto ao próximo destino ao trocar de direção
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Alterna desastres que podem ocasionalmente bloquear ou destruir veículos ou infraestrutura
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitude da prefeitura em relação à restruturação de área: {STRING}
@@ -2081,6 +2081,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selecion
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Seleciona tudo que consistir em upgrades para conteúdo existente para ser baixado
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Desmarcar tudo
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Desceleciona todos
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Procurar em sites externos
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Conteúdo procurado não está disponível no servidor de conteúdo do OpenTTD se hospedado em websites não relacionados ao OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Você está saindo do OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Os termos e condições ao baixar conteúdo de fontes externas pode varias.{}Você deverá consultar as fontes para obter instruções de como instalar o conteúdo no OpenTTD.{} Deseja continuar?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/nome do filtro:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Visitar website
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visitar o site desse conteúdo

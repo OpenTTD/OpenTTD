@@ -1104,7 +1104,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Fixa el nivell 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si està actiu les recessions poden passar cada pocs anys. Durant una recessió tota la producció és significativament baixa (torna al nivell previ quan la recessió s'acaba)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :No permet que els trens canviïn de sentit a les estacions: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si està actiu els trens no canviaran de sentit a les estacions no-finals, si hi ha un camí més curt al seu proper destí en cas de canviar de sentit
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si està actiu els trens no canviaran de sentit a les estacions no-finals, inclús si hi ha un camí més curt al seu proper destí en cas de canviar de sentit
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Commuta els desastres que poden bloquejar o destruir ocasionalment vehicles o infraestructures
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de l'alcaldia de la ciutat davant de reestructuracions a la zona: {STRING}

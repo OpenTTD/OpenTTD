@@ -1241,7 +1241,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :справа
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Максимальная сумма займа: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Максимальная сумма займа для компании (без учета инфляции)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Процентная ставка: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Процентная ставка по займам; также влияет на инфляцию, если та включена.
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Процентная ставка по займам; также устанавливает уровень инфляции, если та включена.
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Эксплуатационные расходы: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Установите уровень стоимости обслуживания и эксплуатации транспорта и инфраструктуры
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Скорость строительства: {STRING}
