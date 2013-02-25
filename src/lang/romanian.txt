@@ -2051,6 +2051,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sel. act
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marchează toate resursele care sunt actualizări ale resurselor existente pentru descărcare
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselectează tot
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Deselectează toate resursele selectate
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Caută pe site-uri externe
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Caută conținut care nu este disponibil pe serverele OpenTTD pe site-uri care nu sunt asociate cu OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Ești pe cale de a ieși din OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Termenii și condițiile impuse la descărcarea de pe site-uri web externe pot varia:{}Va trebui să accesezi site-urile externe pentru informații referitoare la modul de instalare a conținutului în OpenTTD.{}Dorești să continui?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtru nume/etichetă:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Vizitează site-ul web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Vizitează site-ul web al acestei resurse
@@ -2547,6 +2551,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Introduc
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Generare lume
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Mărime hartă:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Alege mărimea hărții folosind ca unitate de măsură suprafețele. Numărul de suprafețe disponibile va fi puțin mai mic decât această valoare
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nr. de oraşe:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
@@ -2733,6 +2738,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Eşti p
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nu pot adăuga fişierul: ID GRF duplicat
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Nu am găsit niciun fişier corespunzător (am încărcat un GRF compatibil)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Nu pot adăuga fișierul: Limita de fișiere NewGRF este atinsă
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF-uri compatibile au fost încărcate pentru fişierele lipsă
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fişierele GRF lipsă au fost dezactivate
@@ -2902,6 +2908,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}În aşteptare: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} pe drum de la {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervat pentru încărcare)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acceptă
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Afişează lista de încărcături acceptate
@@ -3420,6 +3427,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Măreşte intervalul de service cu 10. Ctrl+click măreşte intervalul de service cu 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Micşorează intervalul de service cu 10. Ctrl+Click micşorează intervalul de service cu 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Schimbă tipul intervalului de întreținere
+STR_VEHICLE_DETAILS_DEFAULT                                     :Standard
+STR_VEHICLE_DETAILS_DAYS                                        :Zile
+STR_VEHICLE_DETAILS_PERCENT                                     :Procent
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Numele trenului
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Numele autovehiculului
@@ -3792,6 +3803,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Venituri: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transferă: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transferă: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {GREEN}Venit: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {GREEN}Venit: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {RED}Preț: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {RED}Preț: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Cost estimat: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Venit estimat: {CURRENCY_LONG}
 

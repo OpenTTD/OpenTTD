@@ -125,7 +125,7 @@ STR_QUANTITY_COLA                                               :{VOLUME_LONG} c
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} sukkerspinn
 STR_QUANTITY_BUBBLES                                            :{COMMA} boble{P "" r}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} karamell
-STR_QUANTITY_BATTERIES                                          :{COMMA} batteri{P "" er}
+STR_QUANTITY_BATTERIES                                          :{COMMA} batteri
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} plast
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} brus
 STR_QUANTITY_N_A                                                :N/A
@@ -168,11 +168,11 @@ STR_ABBREV_ALL                                                  :{TINY_FONT}ALLE
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} passasjer{P "" ar}
-STR_BAGS                                                        :{COMMA} sekkar{P "" s}
-STR_TONS                                                        :{COMMA} tonn{P "" s}
-STR_LITERS                                                      :{COMMA} liter{P "" s}
-STR_ITEMS                                                       :{COMMA} einingar{P "" s}
-STR_CRATES                                                      :{COMMA} kassar{P "" s}
+STR_BAGS                                                        :{COMMA} sekk{P "" er}
+STR_TONS                                                        :{COMMA} tonn
+STR_LITERS                                                      :{COMMA} liter
+STR_ITEMS                                                       :{COMMA} eining{P "" ar}
+STR_CRATES                                                      :{COMMA} kasse{P "" r}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Mørkeblå
@@ -185,7 +185,7 @@ STR_COLOUR_GREEN                                                :Grøn
 STR_COLOUR_DARK_GREEN                                           :Mørkegrøn
 STR_COLOUR_BLUE                                                 :Blå
 STR_COLOUR_CREAM                                                :Kremgul
-STR_COLOUR_MAUVE                                                :Rødlilla
+STR_COLOUR_MAUVE                                                :Raudlilla
 STR_COLOUR_PURPLE                                               :Lilla
 STR_COLOUR_ORANGE                                               :Oransje
 STR_COLOUR_BROWN                                                :Brun
@@ -399,6 +399,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Varetakster
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Firmarangeringstabell
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaljert prestasjonsnivå
+STR_GRAPH_MENU_HIGHSCORE                                        :Poengtavle
 ############ range ends here
 
 ############ range for industry menu starts
@@ -868,6 +869,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Tyrkiske lira (
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakisk koruna (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasiliansk real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estiske kroner (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauiske Litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Sør-Koreanske Won (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Sør-Afrikanske Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Eigendefinert...
 ############ end of currency region
 
@@ -1035,7 +1039,14 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Inga pas
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avanserte innstillingar
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Utvid alle
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(inga forklaring tilgjengeleg)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standarverdi: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Vis:
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grunnlegjande instillingar
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avanserte instillingar
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Instillingar med ein anna verdi enn standarden
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Begrenstar lista til spesifikke instillingstypar
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alle innstillingar
@@ -1061,11 +1072,20 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Venstre
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midtstilt
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Høgre
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimalt startlån: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimalt lån eit firma kan ta opp (utan å reikne med inflasjon)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Rente: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lånerente; kontrollerar óg mogleg inflasjon
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Køyrekostnadar: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Byggjekostnadar: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Ikkje la tog vende om på stasjonar: {STRING}
+STR_CONFIG_SETTING_DISASTERS                                    :Ulukker: {STRING}
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillet bygging på skråningar og i vasskanten: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillet landskapsendringar under bygningar, spor o.s.b.: {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Meir realistisk storleik på oppfangingsområde: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Tillet fjerning av fleire vegar, bruar osb. egd av byane.: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Vel største moglege toglengde
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Mengde køyretøyrøyk/-gnistar: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Togakselerasjonsmodell: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Køyretøyers akselerasjonstype: {STRING}
@@ -1211,9 +1231,13 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spel lydar frå
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Ikkje tillet konstruksjon av infrastruktur om ingen passande køyretøy er tilgjengeleg: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks antal tog per firma: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimalt antal tog eit firma kan eige.
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks antal bilar per firma: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maksimalt antal bilar eit firma kan eige
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maks antal luftfartøy per firma: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maksimalt antal luftfartøy eit firma kan eige
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Maks antal skip per firma: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maksimalt antal skip eit firma kan eige
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Hindre datamaskina i å byggje tog: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Hindre datamaskina i å byggje køyretøy: {STRING}
@@ -1267,7 +1291,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Fullt
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Avisa vert trykt i fargar i: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Start spelet i år {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Jamn økonomi (fleire, mindre endringar): {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillet kjøp av aksjar i andre selskap: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillet kjøp av aksjar i andre firma: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Bygg vingesignal automatisk før: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Slå på signalgrensesnittet: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Standard signaltype: {STRING}
@@ -1286,9 +1310,11 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 rutenett
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 rutenett
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :tilfeldig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Byar har lov til å byggja vegar: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Let stader byggje veger for å vekse. Slå av for å hindre at myndighetene byggjer veger sjølv
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Byar har lov å bygge overgangar: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Tillet at byen kontrollerar støynivået for flyplassane: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Grunnlegga byar i spelet: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Let spelare grunnleggje nye stader
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :ikkje tillete
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tillete
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tillete, eigendefinert oppsett av by
@@ -1299,10 +1325,21 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :kun i regnskoge
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :over alt
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Plassering av hovudverktøylinje: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Plassering av verktøylinja øvst på skjermen
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Plassering av statuslinje: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Plassering av statuslinja nederst på skjermen
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Radius for at vindauge klikker på plass: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Når eit vindauge flyttast vil det automatisk verte flytta like til andre vindauge når dei er nærare enn den her lengda
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piks{P 0 "el" "lar"}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Slått av
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maks. antal vindauge (ikkje fest til andre): {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Antal vindauge som kan vere opne før gamle vindauge automatisk vert lukka når nye opnast
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :slått av
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maksimum zoom-inn-nivå: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maksimalt zoom-in-nivå for tilleggsvindauge. Høgare zoom-inn-nivå krever meir minne
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maksimum zoom-ut-nivå: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maksimalt zoom-ut-nivå for tilleggsvindauge. Høge zoom-ut-nivå kan føre til at spelet hakker
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
@@ -1310,13 +1347,20 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Hastighet for byars vekst: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Kor fort byar skal vekse
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ingen
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Sakte
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rask
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Særs rask
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Andel stader som skal vere byar: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Andel stader som vert byar i staden for tettstader. Byar veks fortare enn tettstader og er større når spelet startar
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 av {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ingen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Innleiande bystorleiksmultiplikator: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Storleiken til byar på starten av spelet, jamført med tettstader
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Fjern absurde vegelement under vegkonstruksjon: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Fjern blindvegar under finansiering av vegutbygging
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Grensesnitt
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruksjon
@@ -1343,9 +1387,13 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Anbefalt)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Vegfinnar for tog: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Kva for vegfinnar som skal nyttast for tog
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Vegfinnar for køyretøy på vegar: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Kva for vegfinnar som skal nyttast for bilar og bussar
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Vegfinnar for skip: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Kva for vegfinnar som skal nyttast for skip
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatisk reversering ved signal: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :La tog snu ved signal, når dei har venta lengje
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Byt innstillingsverdi
 
@@ -1363,6 +1411,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :inkompatibel me
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :ukjend
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... kompresjonsnivå '{STRING}' er ikkje gyldig
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... lagra spels format '{STRING}' er ikkje tilgjengeleg. Vender attende til '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... utelèt grafikksettet "{STRING}": ikkje funne
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... utelèt lydsettet "{STRING}": ikkje funne
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... utelèt musikksettet "{STRING}": ikkje funne
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1375,6 +1426,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenario
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Fleirspelar
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelinnstillingar
+STR_INTRO_HIGHSCORE                                             :{BLACK}Poengtavle
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avanserte innstillingar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-innstillingar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sjå etter innhald på nett
@@ -1394,6 +1446,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Vel subt
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vel leiketøyland-miljø
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Syne spelinstillingar
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Syn poengtavla
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Syne avanserte innstillingar
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Syne NewGRF-instillingar
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Sjå etter nytt og oppdatert innhald som kan lastas ned
@@ -1839,6 +1892,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Vel oppd
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Merk alt innhald som er ei oppgradering av eksisterande, og skal lastast ned
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Vel bort alle
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Merk alt innhald som ikkje skal lastast ned
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Vilkåra for nedlasting av innhald frå eksterne nettsider varierar.{}Du må oppsøke dei eksterne nettsidane for å finne instruksjonar om korleis du innstalerar innhaldet i OpenTTD.{}Vil du fortsette?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Merke/Namnefilter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Vitje nettsida
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Vitje nettsida for dette innhaldet
@@ -2182,6 +2236,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{G=masculine}{B
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Syn vareleverande og varemottakande industriar
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Kople til oversiktskart
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Velg dei viste industriane på oversiktskartet også
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Vel last
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Vel kva for last du vil syne
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Vel industri
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Vel kva for industri du vil syne
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informasjon om landområde
@@ -2507,6 +2565,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inneheld fleire tilfelle av handling 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lest forbi slutten av pseudo-sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det nåværande grafikksettet manglar ein del bilete.{}Vennligst oppdater grafikksettet.
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Det valde grafikksettet manglar nokre bilete.{}Vær venleg og forny grafikksettet.{}I og med at du spelar eit {YELLOW}utviklingsutkast av OpenTTD{WHITE} treng du òg eit {YELLOW}utviklingsutkast av grafikksettet{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Etterspurde GRF-ressursar ikkje tilgjengeleg (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} vart deaktivert av {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ugyldig/ukjend sprite layout-format (sprite {3:NUM})
@@ -2687,11 +2746,14 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Ventar: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} på veg frå {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservert for lasting)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Aksepterer
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Syne liste over godtekne varer
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Godtek: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Eigaren av stasjonen har eksklusive transportrettar i den her byen.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} har kjøp eksklusive transportrettar i byen.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vurderingar
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Syne stasjonsvurdering
@@ -2719,6 +2781,8 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Syne all
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Endre namnet på stasjon/lasteterminal
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Steng flyplassen
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hindre at luftfartøy lander på flyplassen
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -2786,7 +2850,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg fir
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Syne hovudkontor
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Syne firmaets hovudkontor
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Omplasser hovudkvarter
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Omplasser selskapet sitt hovudkontor til ein kostnad av 1{NBSP}% av firmaverdien. Shift+klikk viser prisoverslag utan å flytte hovudkontoret.
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Flytt hovudkontoret til firmaet, til ein kostnad av 1{NBSP}% av firmaverdien. Shift+klikk viser prisoverslag utan å flytte hovudkontoret.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaljar
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Vis detaljert infrastrukturteljing
 
@@ -3076,6 +3140,8 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vel loko
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vel den nye typen lokomotiv du vil at skal ta over for den du har vald til venstre
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start utskiftinga av køyretøy
+STR_REPLACE_VEHICLES_NOW                                        :Forny alle køyretøya no
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Berre forny gamle køyretøy
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klikk denne knappen dersom du vil byte ut det valde lokomotivet på venstresida med det valde lokomotivet på høgresida
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Erstatter ikkje
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ingen køyretøy vald
@@ -3574,6 +3640,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Inntekt: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Overføring: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Overføring: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Overføring: {CURRENCY_LONG}{WHITE} / {GREEN}Inntekt: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Overføring: {CURRENCY_LONG}{WHITE} / {GREEN}Inntekt: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Overføring: {CURRENCY_LONG}{WHITE} / {RED}Kostnad: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Overføring: {CURRENCY_LONG}{WHITE} / {RED}Kostnad: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Berekna kostnad: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Berekna inntekt: {CURRENCY_LONG}
 
@@ -3614,6 +3684,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Å endr
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Kun eit reservelydsett ble funne. Hvis du vil ha lyder, installer eit lydsett via innhaldsnedlastinga
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Stort skjermskudd
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Skjermskuddet får ei oppløysing på {COMMA} x {COMMA} pikslar. Det kan ta litt tid. Vil du fortsette?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skjermdumpen vart lagra som '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Skjermdump gjekk gale!
@@ -3637,6 +3709,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... eigd
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... feltet er eigd av eit anna firma
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... landskapningsgrense nådd
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... rutetømminga si grense er nådd
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... øvre grense for antal tre er nådd
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Namnet må vera unikt
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} er i vegen
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ikkje tillet når spelet er pausa
@@ -3670,7 +3743,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan ikkj
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan ikkje byggje hovudkontor...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kan ikkje kjøpa 25{NBSP}% av aksjane...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kan ikkje selja 25{NBSP}% av aksjane...
-STR_ERROR_PROTECTED                                             :{WHITE}Dette selskapet sel ikkje aksjer enno...
+STR_ERROR_PROTECTED                                             :{WHITE}Det her firmaet sel ikkje aksjer enno...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan ikkje byggje nokon byar
@@ -3698,6 +3771,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kan 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kan berre byggjast i regnskogområde
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kan berre byggjast i ørkenområde
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan berre byggjast i byar
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... kan berre byggjast i nærleiken av bysentrum
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan berre byggjast i lavtliggande område
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan berre plasserast nær kanten på kartet
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skog kan berre plantast over snøgrensa
