@@ -2275,6 +2275,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pažymė
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Pažymėti visą turinį, atnaujinimui skirtą turinį atsisiuntimui
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Nieko nežymėti
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Pažymėti visą turinį kaip neatsisiųstą
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Ieškoti išorinėse svetainėse
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Ieškoti turinio neoficialiose OpenTTd svetainėse
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Paliekate OpenTTD programą!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Turinio parsisiuntimo sąlygos įvairiose išorinėse svetainėse skiriasi.{}Norėdami įdiegti turinį, turėsite sekti nurodymus, pateikiamus tose svetainėse. {}Ar tęsti?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Žymės/pavadinimo filtravimas:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Aplankyti svetainę
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Aplankyti šio turinio svetainę
@@ -3128,6 +3132,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Laukia: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} pakeliui iš „{STATION}“)
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervuota krovai)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Priima
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Rodyti priimamų krovinių sąrašą
@@ -3684,6 +3689,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Siųsti 
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Padidinti techninės apžiūros intervalą 10 dienų (arba procentų). Spragtelėjus laikant nuspaustą Ctrl klavišą, intervalas bus padidintas 5 dienomis (arba procentais)
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Sumažinti techninės apžiūros intervalą 10 dienų (arba procentų). Spragtelėjus laikant nuspaustą Ctrl klavišą, intervalas bus sumažintas 5 dienomis (arba procentais)
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Techninės apžiūros intervalo tipas
+STR_VEHICLE_DETAILS_DEFAULT                                     :Numatytasis
+STR_VEHICLE_DETAILS_DAYS                                        :Dienos
+STR_VEHICLE_DETAILS_PERCENT                                     :Procentai
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Pervadinti traukinį
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Pervadinti automobilį
@@ -4074,6 +4083,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Pajamos: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Pervesti: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Pervesti: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Perkelti: {CURRENCY_LONG}{WHITE} / {GREEN}Pajamos: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Perkelti: {CURRENCY_LONG}{WHITE} / {GREEN}Pajamos: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Perkelti: {CURRENCY_LONG}{WHITE} / {RED}Kaštai: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Perkelti: {CURRENCY_LONG}{WHITE} / {RED}Kaštai: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Numatoma kaina: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Numatomos pajamos: {CURRENCY_LONG}
 
