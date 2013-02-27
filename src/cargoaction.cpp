@@ -167,6 +167,7 @@ bool CargoTransfer::operator()(CargoPacket *cp)
 	CargoPacket *cp_new = this->Preprocess(cp);
 	if (cp_new == NULL) return false;
 	this->source->RemoveFromMeta(cp_new, VehicleCargoList::MTA_TRANSFER, cp_new->Count());
+	cp_new->AddFeederShare(this->payment->PayTransfer(cp_new, cp_new->Count()));
 	this->destination->Append(cp_new);
 	return cp_new == cp;
 }
