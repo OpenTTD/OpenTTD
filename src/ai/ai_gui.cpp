@@ -1001,6 +1001,43 @@ struct AIDebugWindow : public Window {
 	}
 
 	/**
+	 * Check whether a company is a valid AI company or GS.
+	 * @param company Company to check for validity.
+	 * @return true if company is valid for debugging.
+	 */
+	bool IsValidDebugCompany(CompanyID company) const
+	{
+		switch (company) {
+			case INVALID_COMPANY: return false;
+			case OWNER_DEITY:     return Game::GetInstance() != NULL;
+			default:              return Company::IsValidAiID(company);
+		}
+	}
+
+	/**
+	 * Ensure that \c ai_debug_company refers to a valid AI company or GS, or is set to #INVALID_COMPANY.
+	 * If no valid company is selected, it selects the first valid AI or GS if any.
+	 */
+	void SelectValidDebugCompany()
+	{
+		/* Check if the currently selected company is still active. */
+		if (this->IsValidDebugCompany(ai_debug_company)) return;
+
+		ai_debug_company = INVALID_COMPANY;
+
+		const Company *c;
+		FOR_ALL_COMPANIES(c) {
+			if (c->is_ai) {
+				ChangeToAI(c->index);
+				return;
+			}
+		}
+
+		/* If no AI is available, see if there is a game script. */
+		if (Game::GetInstance() != NULL) ChangeToAI(OWNER_DEITY);
+	}
+
+	/**
 	 * Constructor for the window.
 	 * @param desc The description of the window.
 	 * @param number The window number (actually unused).
@@ -1014,14 +1051,6 @@ struct AIDebugWindow : public Window {
 		this->FinishInitNested(desc, number);
 
 		if (!this->show_break_box) break_check_enabled = false;
-		/* Disable the companies who are not active or not an AI */
-		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-			this->SetWidgetDisabledState(i + WID_AID_COMPANY_BUTTON_START, !Company::IsValidAiID(i));
-		}
-		this->EnableWidget(WID_AID_SCRIPT_GAME);
-		this->DisableWidget(WID_AID_RELOAD_TOGGLE);
-		this->DisableWidget(WID_AID_SETTINGS);
-		this->DisableWidget(WID_AID_CONTINUE_BTN);
 
 		this->last_vscroll_pos = 0;
 		this->autoscroll = true;
@@ -1032,17 +1061,8 @@ struct AIDebugWindow : public Window {
 		/* Restore the break string value from static variable */
 		this->break_editbox.text.Assign(this->break_string);
 
-		/* Restore button state from static class variables */
-		if (ai_debug_company == OWNER_DEITY) {
-			this->LowerWidget(WID_AID_SCRIPT_GAME);
-			this->SetWidgetDisabledState(WID_AID_CONTINUE_BTN, !Game::IsPaused());
-		} else if (ai_debug_company != INVALID_COMPANY) {
-			this->LowerWidget(ai_debug_company + WID_AID_COMPANY_BUTTON_START);
-			this->SetWidgetDisabledState(WID_AID_CONTINUE_BTN, !AI::IsPaused(ai_debug_company));
-		}
-		this->SetWidgetLoweredState(WID_AID_BREAK_STR_ON_OFF_BTN, this->break_check_enabled);
-		this->SetWidgetLoweredState(WID_AID_MATCH_CASE_BTN, this->case_sensitive_break_check);
-
+		this->SelectValidDebugCompany();
+		this->InvalidateData(-1);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -1055,67 +1075,31 @@ struct AIDebugWindow : public Window {
 
 	virtual void OnPaint()
 	{
-		/* Check if the currently selected company is still active. */
-		if (ai_debug_company == INVALID_COMPANY || (ai_debug_company != OWNER_DEITY && !Company::IsValidAiID(ai_debug_company))) {
-			if (ai_debug_company != INVALID_COMPANY) {
-				/* Raise the widget for the previous selection. */
-				this->RaiseWidget(ai_debug_company + WID_AID_COMPANY_BUTTON_START);
-
-				ai_debug_company = INVALID_COMPANY;
-			}
-
-			const Company *c;
-			FOR_ALL_COMPANIES(c) {
-				if (c->is_ai) {
-					/* Lower the widget corresponding to this company. */
-					this->LowerWidget(c->index + WID_AID_COMPANY_BUTTON_START);
-
-					ai_debug_company = c->index;
-					break;
-				}
-			}
-
-			/* If no AI is available, see if there is a game script. */
-			if (ai_debug_company == INVALID_COMPANY && Game::GetInstance() != NULL) {
-				/* Lower the widget corresponding to the game script. */
-				this->LowerWidget(WID_AID_SCRIPT_GAME);
-
-				ai_debug_company = OWNER_DEITY;
-			}
-		}
-
-		/* Update "Reload AI" and "AI settings" buttons */
-		this->SetWidgetDisabledState(WID_AID_SETTINGS, ai_debug_company == INVALID_COMPANY);
-		this->SetWidgetDisabledState(WID_AID_RELOAD_TOGGLE, ai_debug_company == INVALID_COMPANY || ai_debug_company == OWNER_DEITY);
-		this->SetWidgetDisabledState(WID_AID_SCRIPT_GAME, Game::GetGameInstance() == NULL);
+		this->SelectValidDebugCompany();
 
 		/* Draw standard stuff */
 		this->DrawWidgets();
 
 		if (this->IsShaded()) return; // Don't draw anything when the window is shaded.
 
+		bool dirty = false;
+
 		/* Paint the company icons */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
 			NWidgetCore *button = this->GetWidget<NWidgetCore>(i + WID_AID_COMPANY_BUTTON_START);
-			bool dirty = false;
 
 			bool valid = Company::IsValidAiID(i);
-			bool disabled = !valid;
-			if (button->IsDisabled() != disabled) {
-				/* Invalid/non-AI companies have button disabled */
-				button->SetDisabled(disabled);
-				dirty = true;
-			}
+
+			/* Check whether the validity of the company changed */
+			dirty |= (button->IsDisabled() == valid);
 
 			/* Mark dead/paused AIs by setting the background colour. */
 			bool dead = valid && Company::Get(i)->ai_instance->IsDead();
 			bool paused = valid && Company::Get(i)->ai_instance->IsPaused();
 			/* Re-paint if the button was updated.
 			 * (note that it is intentional that SetScriptButtonColour is always called) */
-			dirty = SetScriptButtonColour(*button, dead, paused) || dirty;
+			dirty |= SetScriptButtonColour(*button, dead, paused);
 
-			/* Do we need a repaint? */
-			if (dirty) this->SetDirty();
 			/* Draw company icon only for valid AI companies */
 			if (!valid) continue;
 
@@ -1125,13 +1109,14 @@ struct AIDebugWindow : public Window {
 
 		/* Set button colour for Game Script. */
 		GameInstance *game = Game::GetInstance();
-		bool dead = game != NULL && game->IsDead();
-		bool paused = game != NULL && game->IsPaused();
+		bool valid = game != NULL;
+		bool dead = valid && game->IsDead();
+		bool paused = valid && game->IsPaused();
+
 		NWidgetCore *button = this->GetWidget<NWidgetCore>(WID_AID_SCRIPT_GAME);
-		if (SetScriptButtonColour(*button, dead, paused)) {
-			/* Re-paint if the button was updated. */
-			this->SetWidgetDirty(WID_AID_SCRIPT_GAME);
-		}
+		dirty |= (button->IsDisabled() == valid) || SetScriptButtonColour(*button, dead, paused);
+
+		if (dirty) this->InvalidateData(-1);
 
 		/* If there are no active companies, don't display anything else. */
 		if (ai_debug_company == INVALID_COMPANY) return;
@@ -1233,30 +1218,19 @@ struct AIDebugWindow : public Window {
 	 */
 	void ChangeToAI(CompanyID show_ai)
 	{
-		if (ai_debug_company == OWNER_DEITY) {
-			this->RaiseWidget(WID_AID_SCRIPT_GAME);
-		} else {
-			this->RaiseWidget(ai_debug_company + WID_AID_COMPANY_BUTTON_START);
-		}
+		if (!this->IsValidDebugCompany(show_ai)) return;
+
 		ai_debug_company = show_ai;
 
-		ScriptLog::LogData *log = this->GetLogPointer();
-		this->vscroll->SetCount((log == NULL) ? 0 : log->used);
-
-		if (ai_debug_company == OWNER_DEITY) {
-			this->LowerWidget(WID_AID_SCRIPT_GAME);
-			this->SetWidgetDisabledState(WID_AID_CONTINUE_BTN, !Game::IsPaused());
-		} else {
-			this->LowerWidget(ai_debug_company + WID_AID_COMPANY_BUTTON_START);
-			this->SetWidgetDisabledState(WID_AID_CONTINUE_BTN, !AI::IsPaused(ai_debug_company));
-		}
-
 		this->highlight_row = -1; // The highlight of one AI make little sense for another AI.
-		this->autoscroll = true;
-		this->last_vscroll_pos = this->vscroll->GetPosition();
-		this->SetDirty();
+
 		/* Close AI settings window to prevent confusion */
 		DeleteWindowByClass(WC_AI_SETTINGS);
+
+		this->InvalidateData(-1);
+
+		this->autoscroll = true;
+		this->last_vscroll_pos = this->vscroll->GetPosition();
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -1287,25 +1261,21 @@ struct AIDebugWindow : public Window {
 
 			case WID_AID_BREAK_STR_ON_OFF_BTN:
 				this->break_check_enabled = !this->break_check_enabled;
-				this->SetWidgetLoweredState(WID_AID_BREAK_STR_ON_OFF_BTN, this->break_check_enabled);
-				this->SetWidgetDirty(WID_AID_BREAK_STR_ON_OFF_BTN);
+				this->InvalidateData(-1);
 				break;
 
 			case WID_AID_MATCH_CASE_BTN:
 				this->case_sensitive_break_check = !this->case_sensitive_break_check;
-				this->SetWidgetLoweredState(WID_AID_MATCH_CASE_BTN, this->case_sensitive_break_check);
-				this->SetWidgetDirty(WID_AID_MATCH_CASE_BTN);
+				this->InvalidateData(-1);
 				break;
 
 			case WID_AID_CONTINUE_BTN:
 				/* Unpause current AI / game script and mark the corresponding script button dirty. */
-				if (!IsDead()) {
+				if (!this->IsDead()) {
 					if (ai_debug_company == OWNER_DEITY) {
 						Game::Unpause();
-						this->SetWidgetDirty(WID_AID_SCRIPT_GAME);
 					} else {
 						AI::Unpause(ai_debug_company);
-						this->SetWidgetDirty(WID_AID_COMPANY_BUTTON_START + ai_debug_company);
 					}
 				}
 
@@ -1328,8 +1298,7 @@ struct AIDebugWindow : public Window {
 				}
 
 				this->highlight_row = -1;
-				this->SetWidgetDirty(WID_AID_LOG_PANEL);
-				this->DisableWidget(WID_AID_CONTINUE_BTN);
+				this->InvalidateData(-1);
 				break;
 		}
 	}
@@ -1363,15 +1332,14 @@ struct AIDebugWindow : public Window {
 	/**
 	 * Some data on this window has become invalid.
 	 * @param data Information about the changed data.
+	 *             This is the company ID of the AI/GS which wrote a new log message, or -1 in other cases.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (data == -1 || ai_debug_company == data) this->SetDirty();
-
 		/* If the log message is related to the active company tab, check the break string.
 		 * This needs to be done in gameloop-scope, so the AI is suspended immediately. */
-		if (!gui_scope && data == ai_debug_company && this->break_check_enabled && !this->break_string_filter.IsEmpty()) {
+		if (!gui_scope && data == ai_debug_company && this->IsValidDebugCompany(ai_debug_company) && this->break_check_enabled && !this->break_string_filter.IsEmpty()) {
 			/* Get the log instance of the active company */
 			ScriptLog::LogData *log = this->GetLogPointer();
 
@@ -1380,7 +1348,7 @@ struct AIDebugWindow : public Window {
 				this->break_string_filter.AddLine(log->lines[log->pos]);
 				if (this->break_string_filter.GetState()) {
 					/* Pause execution of script. */
-					if (!IsDead()) {
+					if (!this->IsDead()) {
 						if (ai_debug_company == OWNER_DEITY) {
 							Game::Pause();
 						} else {
@@ -1393,15 +1361,35 @@ struct AIDebugWindow : public Window {
 						DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
 					}
 
-					/* Make it possible to click on the continue button */
-					this->EnableWidget(WID_AID_CONTINUE_BTN);
-					this->SetWidgetDirty(WID_AID_CONTINUE_BTN);
-
 					/* Highlight row that matched */
 					this->highlight_row = log->pos;
 				}
 			}
 		}
+
+		if (!gui_scope) return;
+
+		this->SelectValidDebugCompany();
+
+		ScriptLog::LogData *log = ai_debug_company != INVALID_COMPANY ? this->GetLogPointer() : NULL;
+		this->vscroll->SetCount((log == NULL) ? 0 : log->used);
+
+		/* Update company buttons */
+		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
+			this->SetWidgetDisabledState(i + WID_AID_COMPANY_BUTTON_START, !Company::IsValidAiID(i));
+			this->SetWidgetLoweredState(i + WID_AID_COMPANY_BUTTON_START, ai_debug_company == i);
+		}
+
+		this->SetWidgetDisabledState(WID_AID_SCRIPT_GAME, Game::GetGameInstance() == NULL);
+		this->SetWidgetLoweredState(WID_AID_SCRIPT_GAME, ai_debug_company == OWNER_DEITY);
+
+		this->SetWidgetLoweredState(WID_AID_BREAK_STR_ON_OFF_BTN, this->break_check_enabled);
+		this->SetWidgetLoweredState(WID_AID_MATCH_CASE_BTN, this->case_sensitive_break_check);
+
+		this->SetWidgetDisabledState(WID_AID_SETTINGS, ai_debug_company == INVALID_COMPANY);
+		this->SetWidgetDisabledState(WID_AID_RELOAD_TOGGLE, ai_debug_company == INVALID_COMPANY || ai_debug_company == OWNER_DEITY);
+		this->SetWidgetDisabledState(WID_AID_CONTINUE_BTN, ai_debug_company == INVALID_COMPANY ||
+				(ai_debug_company == OWNER_DEITY ? !Game::IsPaused() : !AI::IsPaused(ai_debug_company)));
 	}
 
 	virtual void OnResize()
