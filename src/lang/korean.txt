@@ -2336,7 +2336,7 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :헬리콥터 �
 STR_STATION_BUILD_NOISE                                         :{BLACK}발생 소음: {GOLD}{COMMA}
 
 # Landscaping toolbar
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}지평편집
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}지형 편집
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}땅의 모퉁이를 낮춥니다.
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}땅의 모퉁이를 높입니다.
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}땅을 평평하게 고릅니다.

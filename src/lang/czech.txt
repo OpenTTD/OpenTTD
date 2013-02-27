@@ -2162,6 +2162,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Vybrat v
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Označit všechen vylepšený/aktualizovaný obsah ke stáhnutí
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznačit vše
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Nestahovat nic
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Prohledat externí stránky
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Hledaný obsah není dostupný ve službě pro správu obsahu OpenTTD na stránkách nepřidružených k OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Opouštíš OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Podmínky pro stahování obsahu z externích stránek se různí.{}Budeš muset navštívit externí stránky pro instrukce k nainstalování obsahu do OpenTTD.{}Přeješ si pokračovat?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtr na značku/jméno:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Navštívit stránky
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK} Zobrazit internetové stránky pro tuto položku
@@ -3021,6 +3025,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Čeká tu: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} na cestě z{NBSP}{STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervováno pro naložení)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Přijímá
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Ukázat seznam přijímaného nákladu
@@ -3545,6 +3550,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Prodloužit interval servisů o 10. S Ctrl prodloužit o 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zkrátit interval servisů o 10. S Ctrl zkrátit o 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Změnit typ servisního intervalu
+STR_VEHICLE_DETAILS_DEFAULT                                     :Defaultní
+STR_VEHICLE_DETAILS_DAYS                                        :Dnů
+STR_VEHICLE_DETAILS_PERCENT                                     :Procent
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Pojmenovat vlak
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Přejmenovat silniční vozidlo
@@ -3917,6 +3926,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Příjem: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Překládka: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Překládka: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Překládka: {CURRENCY_LONG}{WHITE} / {GREEN}Příjem: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Překládka: {CURRENCY_LONG}{WHITE} / {GREEN}Příjem: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Překládka: {CURRENCY_LONG}{WHITE} / {RED}Náklady: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Překládka: {CURRENCY_LONG}{WHITE} / {RED}Náklady: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Odhadovaná cena: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Odhadovaný příjem: {CURRENCY_LONG}
 

@@ -2148,6 +2148,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Označi�
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Označiť všetok obsah obsahujúci aktualizáciu, ktorý sa má stiahnuť
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznačiť všetko
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Označiť všetok obsah ktorý nemá byť stiahnutý
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Hľadanie na externých stránkach
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK} Hľadanie obsahu nie je k dispozícii v obsahovej službe OpenTTD na stránkach, ktoré nie sú spojené s OpenTTD.
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Opúšťate OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Pravidlá a podmienky pre sťahovanie obsahu z externých webových stránok sa líšia.{}Musíte sa obrátiť na externé webové stránky pre inštrukcie, ako inštalovať obsah do OpenTTD.{}Chcete pokračovať?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/meno filtra:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Navštív webstránku
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Choď na webstránku pre ďalší obsah
@@ -3001,6 +3005,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Čaká: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} na ceste z {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervované pre nakladanie)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Prijíma
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Zobraziť zoznam prijímaného nákladu
@@ -3519,6 +3524,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Servisn�
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Predĺžiť servisný interval o 10. Ctrl+klik predĺži servisný interval o 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Skrátiť servisný interval o 10. Ctrl+klik pre skrátenie servisného intervalu o 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Zmeniť typ servisného intervalu
+STR_VEHICLE_DETAILS_DEFAULT                                     :Štandardné
+STR_VEHICLE_DETAILS_DAYS                                        :Dni
+STR_VEHICLE_DETAILS_PERCENT                                     :Percentáž
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Premenovať vlak
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Pomenovať automobil
