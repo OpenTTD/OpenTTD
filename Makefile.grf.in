@@ -36,6 +36,7 @@ endif
 
 GRFCODEC := !!GRFCODEC!!
 NFORENUM := !!NFORENUM!!
+CC_BUILD := !!CC_BUILD!!
 MD5SUM   := $(shell [ "$(OS)" = "OSX" ] && echo "md5 -r" || echo "md5sum")
 
 # Some "should not be changed" settings.
@@ -63,7 +64,7 @@ $(BIN_DIR)/openttd.grf: $(OBJS_DIR)/openttd.grf
 $(OBJS_DIR)/openttd.grf: $(PNG_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
 	$(E) '$(STAGE) Assembling openttd.nfo'
 	$(Q)-cp $(PNG_FILES) $(OBJS_DIR)/sprites 2> /dev/null
-	$(Q) gcc -I$(GRF_DIR) -C -E - < "$(GRF_DIR)/openttd.nfo" | sed -e '/^#/d' -e '/^$$/d' > $(OBJS_DIR)/sprites/openttd.nfo
+	$(Q) $(CC_BUILD) -nostdinc -I$(GRF_DIR) -C -E - < "$(GRF_DIR)/openttd.nfo" | sed -e '/^#/d' -e '/^$$/d' > $(OBJS_DIR)/sprites/openttd.nfo
 	$(Q) $(NFORENUM) -s $(OBJS_DIR)/sprites/openttd.nfo
 	$(E) '$(STAGE) Compiling openttd.grf'
 	$(Q) $(GRFCODEC) -n -s -e -p1 $(OBJS_DIR)/openttd.grf
