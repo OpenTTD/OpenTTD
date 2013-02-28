@@ -1082,7 +1082,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Eskuina
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Gehienezko mailegua joko hasieran: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Konpainiek eskatu dezaketen gehienezko mailegua(inflazioa kontua hartu gabe)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Interes tasa: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Maileguen interes tasa; inflazioa ere kontrolatuko du (Gaitua badago)
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Maileguen interes tasa; inflazioa ere kontrolatuko du, gaitzen bada
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Mantenimendu kostea: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Ibilgailu eta azpigiturak mantentzea kostatuko duena ezarri
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Eraikitzeko abiadura: {STRING}
@@ -1094,7 +1094,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Subsidio garrai
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Eraikuntza kosteak: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Erosketa eta eraikuntza kostuak ezarri
 STR_CONFIG_SETTING_RECESSIONS                                   :Atzerapen ekonomikoak: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Gaitua dagoenean, atzeratze ekonomikoa urte gutxika gertatuko da. Atzeratze ekonomikoan, fabriken ekoizpena dexente gutxituko da (Aurreko balioetara bueltatuko da atzerapena amaitzerakoan)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Gaitua dagoenean, atzeratze ekonomikoa urte gutxika gertatuko da. Atzeratze ekonomikoan, ekoizpen orokorra dexente gutxituko da (Aurreko balioetara bueltatuko da atzerapena amaitzerakoan)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Trenak geltokietan buelta eman ahal izatea: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Gaitua dagoenean, trenak ezingo dute geltokietan (trebidea bertan bukatzen ez denean) buelta eman, nahiz eta biderik motzena izan helmugara iristeko
 STR_CONFIG_SETTING_DISASTERS                                    :Hondamendiak: {STRING}
@@ -2040,6 +2040,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Bertsio 
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Haukeratu dituzun edukiak berrituko dituzten edukiak deskargatuak izateko
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Guztia desmarkatu
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Dekargatuak izango ez diren eduki guztiak markatu
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}OpenTTD uzten zaude!
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Etiketa/izen iragazkia:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Webgunera joan
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Eduki honen webgunera joan
@@ -2062,7 +2063,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Deskarg
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Honengatik aurkeratua: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Menpekotasunak: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Etiketak: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD "zlib" euskarria gabe eraikia izan da...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD "zlib" euskarria gabe eraikita dago...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ezin da edukia deskargatu!
 
 # Order of these is important!
@@ -2176,14 +2177,14 @@ STR_STATION_CLASS_WAYP                                          :Bidepuntuak
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Seinale aukerak
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK} Blokeo seinalea (mekanikoa){}Oinarrizkoena den seinale mota, bloke berdinean tren bakarra egotea ahalbidetzen duena
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sarrera seinalea (mekanikoa){}Berde egongo da hurrengo sekzioan irteera seinale bat edo bat baino gehiago berde badago. Bestela gorria egongo da
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Irteera seinalea (mekanikoa){} Blokeo seinalea bezala funtzionatzen du, baina beharrezko da sarrera seinaleak eta konbo aurre-seinaleak kolore egokia izateko
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Konbo seinalea (mekanikoa){}Sarrera seinale eta irteera seinale bezala funtzionatzen du. Honek ahalbidetzen du aurre-seinale zuhaitz haundiak eraikitzea
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Irteera seinalea (mekanikoa){} Blokeo seinalea bezala funtzionatzen du, baina beharrezkoa da sarrera seinaleak eta konbo aurre-seinaleak kolore egokia edukitzea
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Konbo seinalea (semaforoa){}Sarrera seinale eta irteera seinale bezala funtzionatzen du. Honek aurre-seinale "zuhaitz" handiak eraikitzea ahalbidetzen du
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Bide seinalea (mekanikoa){}Bide seinalea bloke batean tren bat baino gehiago egotea ahalbidetzen du, trenak gelditzeko bide egokia erreserbatu badezake. Oinarrizko bide seinaleak atzekaldetik pasa daitezke
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Norabide bakarreko bide seinalea (mekanikoa){}Norabide bakarreko bide seinalea bloke berdinean tren bat baino gehiago egotea ahalbidetzen du, trenak gelditzeko tokia aurkitu badezake. Ezin dira atzekaldetik pasa
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blokeo seinalea (elektrikoa){}Oinarrizkoena den seinale mota, bloke berdinean tren bakarra egotea ahalbidetzen duena
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sarrera seinalea (elektrikoa){}Berde egongo da hurrengo sekzioan irteera seinale bat edo bat baino gehiago berde badago. Bestela gorria egongo da
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Irteera seinalea (elektrikoa){} Blokeo seinalea bezala funtzionatzen du, baina beharrezko da sarrera seinaleak eta konbo aurre-seinaleak kolore egokia izateko
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Konbo seinalea (elektrikoa){}Sarrera seinale eta irteera seinale bezala funtzionatzen du. Honek ahalbidetzen du aurre-seinale zuhaitz haundiak eraikitzea
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sarrera seinalea (elektrikoa){}Berde egongo da hurrengo sekzioan irteera seinale bat edo bat baino gehiago berde badago. Bestela gorri egongo da
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Irteera seinalea (elektrikoa){} Blokeo seinalea bezala funtzionatzen du, baina beharrezkoa da sarrera seinaleak eta konbo aurre-seinaleen kolorea egokia izatea
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Konbo seinalea (elektrikoa){}Sarrera seinale eta irteera seinale bezala funtzionatzen du. Honek aurre-seinale "zuhaitz" haundiak eraikitzea ahalbidetzen du
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Bide seinalea (elektrikoa){}Bide seinalea bloke batean tren bat baino gehiago egotea ahalbidetzen du, trenak gelditzeko bide egokia erreserbatu badezake. Oinarrizko bide seinaleak atzekaldetik pasa daitezke
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Norabide bakarreko bide seinalea (elektrikoa){}Norabide bakarreko bide seinalea bloke berdinean tren bat baino gehiago egotea ahalbidetzen du, trenak gelditzeko tokia aurkitu badezake. Ezin dira atzekaldetik pasa
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Seinaleak aldatu{}Aukeratua dagoenean, aukeratutako seinalea aldatuko da hautatutako seinale motagatik. Krtl+Klik mota aldatuko du, Shift+Klik gutxi gora beherako kostea erakutsiko du
@@ -2628,7 +2629,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Gora mug
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Aukeratutako NewGRFa gora mugitu
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Behera mugitu
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mugitu aukeratutako NewGRFa zerrendan behera
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Instalatutako NewGRFen zerrenda
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Instalatutako NewGRF fitxategien zerrenda
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Parametroak ezarri
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Erakutsi parametroak
