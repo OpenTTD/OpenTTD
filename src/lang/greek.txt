@@ -1183,7 +1183,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Δεξιά
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Μέγιστο αρχικό δάνειο: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Μέγιστο ποσό που μπορεί να δανειστεί μία εταιρία (χωρίς να λαμβάνεται υπόψη ο πληθωρισμός)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Επιτόκιο: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Επιτόκιο δανείων· επίσης ελέγχει τον πληθωρισμό αν είναι ενεργοποιημένος
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Επιτόκιο δανείων· επίσης ελέγχεται ο πληθωρισμός αν είναι ενεργοποιημένος
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Λειτουργικά έξοδα: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ταχύτητα οικοδομής: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Περιορίστε το ποσοστό των οικοδομών από τα ΑΙ
@@ -1390,6 +1390,10 @@ STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Απενεργ�
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Ταχύτητα ροδέλας μετακίνησης χάρτη: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Έλεγχος της ευαισθησίας του τροχού του ποντικιού κατά την κύλιση
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Πληκτρολόγιο στην οθόνη: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Απενεργοποιημένο
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Με διπλό κλικ
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Με απλό κλικ (όταν είναι επικεντρωμένο)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Με απλό κλικ (άμεσα)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Εξομοίωση δεξιού κλικ {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Επιλέξτε τον τρόπο μίμησης των πατημάτων του δεξιού κουμπιού του ποντικιού
@@ -1448,6 +1452,7 @@ STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Στο τέλο
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Παίζει ηχητικό εφέ στο τέλος του χρόνου συνοψίζοντας την επίδοση της εταιρείας κατά την διάρκεια αυτού του χρόνου σε σχέση με τον προηγούμενο χρόνο
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Οικοδομή: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Παίζει ηχητικό εφέ σε επιτυχής οικοδομές ή άλλες δράσεις
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Παίζει ήχο όταν γίνεται κλικ σε κουμπιά
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Οχήματα: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Παίζει τα ηχητικά εφέ των οχημάτων
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Περιβαλλοντικά: {STRING}
@@ -2142,6 +2147,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Επιλ
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Μαρκάρισμα όλων των περιεχόμενων που είναι για αναβάθμιση υπαρχόντων περιεχόμενων για κατέβασμα
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Αποεπιλογή όλων
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Σημείωση όλων των περιεχομένων να μην κατέβουν
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Αναζήτηση εξωτερικών ιστοσελίδων
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Ψάξτε για περιεχόμενο που δεν είναι διαθέσιμο μέσω την υπηρεσία λήψης περιεχομένου του OpenTTD σε ιστοσελίδες που δεν είναι συνδεδεμένες με το OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Φεύγετε από το OpenTTD!
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Ετικέτα/όνομα φίλτρου:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Επισκεφθείτε την ιστοσελίδα
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Επισκεφθείτε την ιστοσελίδα αυτού του περιεχομένου
@@ -3892,6 +3900,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Έσοδα: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Από Μεταφορά: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Από Μεταφορά: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Μεταφορά: {CURRENCY_LONG}{WHITE} / {GREEN}Εισόδημα: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Μεταφορά: {CURRENCY_LONG}{WHITE} / {GREEN}Εισόδημα: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Μεταφορά: {CURRENCY_LONG}{WHITE} / {RED}Κόστος: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Μεταφορά: {CURRENCY_LONG}{WHITE} / {RED}Κόστος: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Εκτιμώμενο Κόστος: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Υπολογιζόμενα Έσοδα: {CURRENCY_LONG}
 

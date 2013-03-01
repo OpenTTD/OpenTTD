@@ -219,6 +219,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} fot
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Søkefilter:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriv inn søkefilter
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Skriv eit nøkkelord for filtrering av lista
 
@@ -293,7 +294,7 @@ STR_SORT_BY_RANGE                                               :Rekkevidde
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Dobbel hastighet på spelet
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Dobbel fart på spelet
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Instillingar
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lagre, avbryt spel, avslutt OpenTTD
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Syne kart, ekstra tilleggsvindauge eller skiltliste
@@ -404,6 +405,7 @@ STR_GRAPH_MENU_HIGHSCORE                                        :Poengtavle
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Oversikt over industriar
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Næringskjeder
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finansier ny industri
 ############ range ends here
 
@@ -827,6 +829,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STRING} til {STRING} vil gje firedobbel inntekt i eit år!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Trafikkaos i {TOWN}!{}{}Ombyggjing av vegen, finansiert av {STRING}, medførar 6 månaders irritasjon for bilistane!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transportmonopol!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Bystyret i {TOWN} signerer kontrakt med {STRING} om eitt års eksklusive transportrettar!!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Tilleggsvindauge {COMMA}
@@ -1039,14 +1043,24 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Inga pas
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avanserte innstillingar
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Søkefilter:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Utvid alle
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skjul alle
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(inga forklaring tilgjengeleg)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standarverdi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Type innstilling: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Klientinnstilling (ikkje lagra med enkeltspel; påverkar alle spela)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Spelinnstilling (lagra med enkeltspel; påverkar berre nye spel)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spelinnstilling (lagra med enkeltspel; påverkar berre gjeldande spel)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Firmainnstilling (lagra med enkeltspel; påverkar berre nye spel)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firmainnstilling (lagra med enkeltspel; påverkar berre noverande firma)
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Vis:
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grunnlegjande instillingar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avanserte instillingar
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspertinnstillingar / alle innstillingar
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Instillingar med ein anna verdi enn standarden
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Innstillingar som skil seg frå innstillingar for nye spel
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Begrenstar lista til spesifikke instillingstypar
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alle innstillingar
@@ -1077,16 +1091,35 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimalt lån 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Rente: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lånerente; kontrollerar óg mogleg inflasjon
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Køyrekostnadar: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Set vedlikehaldsnivå og driftskostnadar for køyretøy og infrastruktur
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Fart for bygging: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Avgrensing av farten AIar kan gjere konstruksjonshandlingar i.
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Køyretøy bryt saman: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Kontroller kor ofte køyretøy bryt saman når dei ikkje har fått nok vedlikehald
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplikator for subsidiar: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Kor mykje ekstra betaling som blir gitt ved subsidiar
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Byggjekostnadar: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nivået kostnadene for konstruksjon og kjøp ligg på
+STR_CONFIG_SETTING_RECESSIONS                                   :Nedgangstider: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Skru på at det frå tid til anna kjem nedgangstider. Under nedgangstider fell all produksjon kraftig. (Han går opp att når nedgangstida er over.)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Ikkje la tog vende om på stasjonar: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Skru på for å hindre at tog snur på andre stasjonar enn endestasjonar.
 STR_CONFIG_SETTING_DISASTERS                                    :Ulukker: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Haldninga til bystyra når det gjeld ombygging: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vel kor mykje vurderinga frå bystyra og høvet for meir bygging i området vert påverka av støy og øydelegging frå eit firma.
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillet bygging på skråningar og i vasskanten: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Tillet bygging av vegar, jernbanespor og stasjonar i bakkar, med hjelp av ekstra fundament. Skru av for å gjere at all bygging i bakkar må passe med kva retning terrenget skrånar
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillet landskapsendringar under bygningar, spor o.s.b.: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillet å endre landskapet under bygningar, vegar og jernbanespor, utan å måtte fjerne dei fyrst.
 STR_CONFIG_SETTING_CATCHMENT                                    :Meir realistisk storleik på oppfangingsområde: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Tillet fjerning av fleire vegar, bruar osb. egd av byane.: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Gjer det greiare å fjerne infrastruktur og bygningar eigd av byar.
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maksimal toglengd: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Vel største moglege toglengde
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} rute{P 0 "" r}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Mengde køyretøyrøyk/-gnistar: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Mengd røyk og gnistar som kjem frå køyretøy.
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Togakselerasjonsmodell: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Køyretøyers akselerasjonstype: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Forby tog og skip å gjere 90-graderssvingar: {STRING}
@@ -1346,7 +1379,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :Hastighet for byars vekst: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :Fart for veksten til byar: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Kor fort byar skal vekse
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ingen
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Sakte
