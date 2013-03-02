@@ -2937,7 +2937,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Keine Fr
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Es warten: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} unterwegs von {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} von {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reserviert zum Beladen)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Angenommen

@@ -1056,6 +1056,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Firmainnstillin
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firmainnstilling (lagra med enkeltspel; påverkar berre noverande firma)
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Vis:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Gjer at lista under berre viser innstillingar som er gjorde om
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grunnlegjande instillingar
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avanserte instillingar
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspertinnstillingar / alle innstillingar
@@ -1105,6 +1106,7 @@ STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Skru på at det
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Ikkje la tog vende om på stasjonar: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Skru på for å hindre at tog snur på andre stasjonar enn endestasjonar.
 STR_CONFIG_SETTING_DISASTERS                                    :Ulukker: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skru av/på katastrofar og ulukker, som kan stogge eller øydeleggje køyretøy og øydeleggje infrastruktur.
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Haldninga til bystyra når det gjeld ombygging: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vel kor mykje vurderinga frå bystyra og høvet for meir bygging i området vert påverka av støy og øydelegging frå eit firma.
 
@@ -1121,7 +1123,10 @@ STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} rute{P 
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Mengde køyretøyrøyk/-gnistar: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Mengd røyk og gnistar som kjem frå køyretøy.
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Togakselerasjonsmodell: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Vel fysikkmodell for akselerasjonen til tog. Med den opphavlege modellen vert alle toga påverka like mykje av bakkar. Med den realistiske modellen vert toga påverka ut i frå eigenskapar som lengd og trekkraft
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Køyretøyers akselerasjonstype: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Vel fysikkmodell for akselerasjonen til køyretøy på vegar. Med den opphavlege modellen vert alle køyretøya påverka like mykje av bakkar. Med den realistiske modellen vert køyretøya påverka ut i frå eigenskapar som lengd og trekkraft
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Forby tog og skip å gjere 90-graderssvingar: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Tillet samanbygging av ikkje direkte tilstøtande stasjonar: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Bruk forbetra lastingsalgoritme: {STRING}

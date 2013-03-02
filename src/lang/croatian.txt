@@ -3032,7 +3032,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nijedna 
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Čekanje: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT}dolazi iz {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} iz {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervirano za ukrcaj)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Prihvaća

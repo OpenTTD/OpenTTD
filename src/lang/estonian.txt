@@ -2137,6 +2137,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Märgi u
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Tähista allalaaditavaks kõik olemasoleva sisu uuendused
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Eemalda märgistus kõigilt
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Eemaldatakse allalaadimise märgistus
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Sa oled lahkumas OpenTTD-st!
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Sildi- ja nimefilter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Külasta lehekülge
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Külasta lehekülge selle sisu jaoks.

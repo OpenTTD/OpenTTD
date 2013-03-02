@@ -1251,8 +1251,8 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :kompanijos (įr
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Rodyti:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Rodyti tik tam tikros rūšies nuostatas
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :pagrindines nuostatas
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :sudėtingesnes nuostatos
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Pagrindines nuostatas
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Sudėtingesnes nuostatas
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :visas nuostatas
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :nuostatas, kurių reikšmės skiriasi nuo numatytųjų
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :nuostatas, kurių reikšmės skiriasi nuo naujai pradedamo žaidimo nuostatų
@@ -1750,7 +1750,7 @@ STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstru
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Tr. priemonės
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stotelės
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomika
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Priešininkai
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurentai
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Vaizdo nustatymai
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Sąveika
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Garsai
