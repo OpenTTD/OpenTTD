@@ -321,6 +321,18 @@ static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], const int 
 	uint y = r.top + WD_MATRIX_TOP;
 	uint current = 0;
 
+	bool rtl = _current_text_dir == TD_RTL;
+	uint iconwidth = max(GetSpriteSize(SPR_CIRCLE_FOLDED).width, GetSpriteSize(SPR_CIRCLE_UNFOLDED).width);
+	uint iconheight = GetSpriteSize(SPR_CIRCLE_FOLDED).height;
+	int linecolour = _colour_gradient[COLOUR_ORANGE][4];
+
+	int iconleft   = rtl ? r.right - WD_MATRIX_RIGHT - iconwidth     : r.left + WD_MATRIX_LEFT;
+	int iconcenter = rtl ? r.right - WD_MATRIX_RIGHT - iconwidth / 2 : r.left + WD_MATRIX_LEFT + iconwidth / 2;
+	int iconinner  = rtl ? r.right - WD_MATRIX_RIGHT - iconwidth     : r.left + WD_MATRIX_LEFT + iconwidth;
+
+	int textleft   = r.left  + WD_MATRIX_LEFT  + (rtl ? 0 : iconwidth + 4);
+	int textright  = r.right - WD_MATRIX_RIGHT - (rtl ? iconwidth + 4 : 0);
+
 	/* Draw the list of subtypes for each cargo, and find the selected refit option (by its position). */
 	for (uint i = 0; current < pos + rows && i < NUM_CARGO; i++) {
 		for (uint j = 0; current < pos + rows && j < list[i].Length(); j++) {
@@ -335,11 +347,23 @@ static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], const int 
 				continue;
 			}
 
+			if (list[i].Length() > 1) {
+				if (refit.subtype != 0xFF) {
+					/* Draw tree lines */
+					int ycenter = y + FONT_HEIGHT_NORMAL / 2;
+					GfxDrawLine(iconcenter, y - WD_MATRIX_TOP, iconcenter, j == list[i].Length() - 1 ? ycenter : y - WD_MATRIX_TOP + delta - 1, linecolour);
+					GfxDrawLine(iconcenter, ycenter, iconinner, ycenter, linecolour);
+				} else {
+					/* Draw expand/collapse icon */
+					DrawSprite(sel[0] == (int)i ? SPR_CIRCLE_UNFOLDED : SPR_CIRCLE_FOLDED, PAL_NONE, iconleft, y + (FONT_HEIGHT_NORMAL - iconheight) / 2);
+				}
+			}
+
 			TextColour colour = (sel[0] == (int)i && (uint)sel[1] == j) ? TC_WHITE : TC_BLACK;
 			/* Get the cargo name. */
 			SetDParam(0, CargoSpec::Get(refit.cargo)->name);
 			SetDParam(1, refit.string);
-			DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, STR_JUST_STRING_STRING, colour);
+			DrawString(textleft, textright, y, STR_JUST_STRING_STRING, colour);
 
 			y += delta;
 			current++;
