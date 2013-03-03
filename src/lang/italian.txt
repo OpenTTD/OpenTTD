@@ -2964,7 +2964,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Non c'è
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}In attesa: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} in viaggio {G "da " dall' "dalla "}{STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} {G "da " dall' "dalla "}{STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} riservati per il caricamento)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accetta

@@ -1669,6 +1669,7 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... ο �
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... αγνόηση βασικού σετ γραφικών «{STRING}»: δεν βρέθηκε
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... αγνόηση βασικού σετ ήχων «{STRING}»: δεν βρέθηκε
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... αγνόηση βασικού σετ μουσικής «{STRING}»: δεν βρέθηκε
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Έλληψη μνήμης
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

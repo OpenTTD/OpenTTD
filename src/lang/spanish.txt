@@ -1603,6 +1603,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... el f
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorando conjunto de gráficos base '{STRING}': no encontrado
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorando conjunto de sonidos base '{STRING}': no encontrado
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorando conjunto de música base '{STRING}': no encontrado
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}No hay memoria suficiente
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Hubo un fallo al reservar {BYTES} de caché de sprites. La caché de sprites ha sido reducida a {BYTES}. Esto reducirá el rendimiento de OpenTTD. Para reducir los requisitos de memoria es posible deshabilitar los gráficos 32bpp o los niveles de zoom adicionales
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
