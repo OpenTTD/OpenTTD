@@ -456,6 +456,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Stort skjermfot
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spriteforskyver
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Syne/gøym markeringsramme
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Slå av/på farging av skitne blokkar
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)

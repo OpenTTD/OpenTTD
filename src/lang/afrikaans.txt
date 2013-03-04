@@ -218,6 +218,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} vt
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filter string:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sleutel filter string in
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Tik 'n sleutelwoord in om die lys te filter
 
@@ -402,6 +403,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Omstandig prest
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Nywerheid Gids
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Nywerheidsskakels
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Konsolideer nuwe nywerheid
 ############ range ends here
 
@@ -611,7 +613,7 @@ STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLA
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Titel
 STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Skommel
 STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Musiek lys
-STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Gaan terug na vorig liedjie in seleksie
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Gaan terug na vorige liedjie in keuse-lys
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Gaan na volgende liedjie in seleksie
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Hou op musiek speel
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Begin musiek speel
@@ -1040,6 +1042,8 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen ges
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Gevorderde stellings
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter string:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Brei alles uit
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(geen verduideliking beskikbaar)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standaard waarde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Stelling tipe: {ORANGE}{STRING}
@@ -1050,6 +1054,11 @@ STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Maatskappy inst
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Maatskappy instelling (word gestoor in spaarspeletjie; raak net die huidige maatskappy)
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Vertoon:
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basiese verstellings
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gevorderde verstellings
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspert verstellings / alle verstellings
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Verstellings met 'n waarde anders as die verstek waarde
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Verstellings met 'n waarde anders as die nuwe spel verstellings
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Beperk die lys hieronder tot net sekere instelling tiepes
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alle instellings
@@ -1075,6 +1084,22 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Links
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Senter
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Regs
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimum aanvanklike lening: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimum bedrag wat 'n maatskappy kan leen (sonder die inagneming van inflasie)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Rentekoers: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lening rentekoers: beheer ook inflasie indien aangeskakel
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Bedryfskostes: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Verstel die vlak van instandhouding en bedryfskoste van voertuie en infrastruktuur
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Konstruksie spoed: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Beperk die hoeveelheid konstruksie aksies vir die AIs
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Voertuig onklaarrakings: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Beheer hoe gereeld voertuie breek as hulle in 'n toestand van swak instandhouding verkeer
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidie vermenigvuldiger: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Verstel hoeveel is betaalbaar vir gesubsidieerde aansluitings
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruksie kostes: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Verstel die vlak van konstruksie en aankoop-kostes
+STR_CONFIG_SETTING_DISASTERS                                    :Rampe: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Stadsraad se gesindheid teenoor omgewings-konstruksie: {STRING}
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Laat bou op skuinstes en kuslyn toe: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :As geaktiveer, kan spore en stasies op meeste hellings gebou word. Indien gedeaktiveer, kan hulle net gebou work op hellings wat die rigting van die spoor volg, en dus geen fondasies verg nie
@@ -1141,6 +1166,9 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Pad voertuig to
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Maak 'n pad voertuig wag by besette padstoppe totdat hulle leeg is
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Rol skerm as muis by die kant is: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Gedeaktiveer
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Hoof skerm, slegs volskerm
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Hoof skerm
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Elke skerm
 STR_CONFIG_SETTING_BRIBE                                        :Laat omkooping van die plaaslike raad toe: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Laat maatskappye die plaaslike dorpsraad probeer omkoop. Indien 'n inspekteur die omkoopgeld opgemerk, sal die maatskappy nie in staat wees om in die dorp te werk vir ses maande.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Laat die koop van eksklusief vervoer regte toe: {STRING}
@@ -1251,6 +1279,10 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Rol kaart
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Af
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Kaart rolwiel spoed: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontroleer die sensitiwiteit van die muis-wiel "scrolling"
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Gedeaktiveer
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dubbel-kliek
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Enkel kliek (indien geselekteerd)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Enkel kliek (dadelik)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Regs-kliek emulasie: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :selekteer die metode om the regter muis-knoppie kliek te emuleer
@@ -1293,6 +1325,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meeste gebruik
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Wys gereserveerde spore: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Hou bou gereedskap aktief na gebruik: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Groep uitgawes in maatskappy finansies venster: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Verstel die uitleg van die maatskappy uitgawes venster
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Nuustikker: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Speel klank vir opgesomde nuus boodskappe
@@ -1322,14 +1355,23 @@ STR_CONFIG_SETTING_MAX_SHIPS                                    :Max skepe per s
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maksimum hoeveelheid bote was 'n besigheid kan hê
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Sper treine vir rekenaar: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Aktiveer om te verhoed dat die rekenaar speler kan treine bou
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Sper pad voertuie vir rekenaar: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Aktiveer om te verhoed dat die rekenaar speler kan pad voertuie bou
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Sper vliegtuie vir rekenaar: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Aktiveer om te verhoed dat die rekenaar speler kan vliegtuie bou
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Sper skepe vir rekenaar: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Aktiveer om te verhoed dat die rekenaar speler kan skepe bou
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Verstek verstellings profiel: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Maklik
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Middelmatig
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Moeilik
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Laat AI in multispeler toe: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Laat AI Rekenaaar spelers by 'n multi-speler spel toe
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes voor die skripte gestaak word: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Die maksimum hoeveelheid berekeningstappe wat 'n skrip kan vat in een beurt
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Diens pouse is in persente: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standaard diens interval vir treine: {STRING}
@@ -1343,14 +1385,23 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Laat wa spoed b
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiveer elektriese spoore: {STRING}
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Aankoms van eerste voertuig by speler se stasie: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Vertoon 'n koerantberig waneer die eerste voertuig by 'n nuwe speler se stasie arriveer
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Aankoms van eerste voertuig by mededinger se stasie: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Vertoon 'n koerantberig waneer die eerste voertuig by 'n nuwe teenstander se stasie arriveer
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ongelukke / rampe: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Vertoon 'n koerantberig wanneer daar ongelukke of natuurrampe voorkom
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Maatskappy informasie: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Vertoon 'n koerantberig wanneer 'n nuwe maatskappy begin, of wanneer 'n maatskappy in gevaar is om bankkrot te speel
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Opening van industrieë: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Vertoon die koerant wanneer 'n nuwe nywerheid oopmaak
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Toemaak van industrieë: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Vertoon die koerant wanneer 'n nywerheid toemaak
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomie veranderings: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Vertoon die koerant vir enige globale veranderinge aan die ekonomie
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Verandering in produksie van industrieë voorsien deur die maatskapy: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Vertoon die koerant indien enige produksie vlakke van nywerhede bedien deur die maatskappy verander
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produksie veranderings van nywerhede wat deur mededingers bedien word: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Vertoon die koerant indien enige produksie vlakke van nywerhede bedien deur die kompetisie verander
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Ander nywerheid produksie veranderings: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Vertoon 'n koerant wanner die produksievlak van industriëe verander, wat nie tans bedien word deur die maatskappy of kompeteerders nie
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Advies / informasie van maatskappy se voertuie: {STRING}
@@ -1369,6 +1420,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Opsomming
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Vol
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Gekleurde nuus verskyn in: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :In watter jaar begin koerante in kleur vertoon. Voor dit is hulle swart en wit.
 STR_CONFIG_SETTING_STARTING_YEAR                                :Jaar om te begin: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Aktiveer geleike ekonomie (meer, kleiner veranderings): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Laat die koop van aandeele van ander maatskappye toe: {STRING}
@@ -1503,6 +1555,7 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... save
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoreer Basis Grafiek stel '{STRING}': nie gevind nie
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoreer Basis Klank stel '{STRING}': nie gevind nie
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoreer Basis Musiek stel '{STRING}': nie gevind
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Program is uit geheue uit
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1979,6 +2032,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selektee
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Merk alle inhoud wat 'n opgradering is vir bestande inhoud om af te laai word
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Onselekteer alles
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Merk alle inhoud wat nie afgelaai moet word nie
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Soek deur eksterne webwerwe
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Jy gaan OpenTDD verlaat!
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Merker/naam filter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Besoek webblad
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Besoek die webwerf vir hierdie inhoud
@@ -2322,6 +2377,10 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Vertoon 
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Vertoon vrag voorsiening en aanvaar nywerhede
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Verbinding na kleinkaart
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Selekteer die vertoonde industrie ook op die kleinkaart
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Selekteer vrag
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Selekteer die vrag om te vertoon
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Kies die nywerheid
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Kies die nywerheid om te vertoon
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land gebied informasie
@@ -2827,6 +2886,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Wagtend: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} op roete vanaf {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} gereserveer vir oplaai)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Aanvaar
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Wys lys van aanvaarde vrag
@@ -3345,6 +3405,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Diens tu
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Maak diens interval met 10 dae meer. Ctrl+Kliek om interval met 5 dae meer te maak
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Maak diens interval met 10 dae minder. Ctrl+Kliek om interval met 5 dae minder te maak
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Verander instandhoudings-interval tipe
+STR_VEHICLE_DETAILS_DEFAULT                                     :Verstek
+STR_VEHICLE_DETAILS_DAYS                                        :Dae
+STR_VEHICLE_DETAILS_PERCENT                                     :Persentasie
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Benoem trein
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Benoem pad voertuig
@@ -3717,6 +3781,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Inkomste: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Oorplaas: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Oorplaas: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Oordrag: {CURRENCY_LONG}{WHITE} / {GREEN}Inkomste: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Oordrag: {CURRENCY_LONG}{WHITE} / {GREEN}Inkomste: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Oordrag: {CURRENCY_LONG}{WHITE} / {RED}Koste: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW} Oordrag: {CURRENCY_LONG}{WHITE} / {RED}Koste: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Beraamde Koste: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Beraamde Inkomste: {CURRENCY_LONG}
 
@@ -3757,6 +3825,7 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Om die 
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Kon slegs 'n nood klank stel op spoor. Gaan na 'Aanlyn Inhoud' om klank stelle af te laai
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Groot skermskoot
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skermkiekie suksesvol gestoor as '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Skermskoot het misluk!
@@ -4091,7 +4160,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... 'n v
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kan nie opdraglys deel nie...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Kan nie opdraglys ophou deel nie......
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan nie opdrag lys kopie nie...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... te ver van vorige destinasie
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... te ver van vorige bestemming
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... vliegtuig kan nie so ver vlieg nie
 
 # Timetable related errors
