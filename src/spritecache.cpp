@@ -13,6 +13,7 @@
 #include "fileio_func.h"
 #include "spriteloader/grf.hpp"
 #include "gfx_func.h"
+#include "error.h"
 #include "zoom_func.h"
 #include "settings_type.h"
 #include "blitter/factory.hpp"
@@ -20,6 +21,7 @@
 #include "core/mem_func.hpp"
 
 #include "table/sprites.h"
+#include "table/strings.h"
 #include "table/palette_convert.h"
 
 /* Default of 4MB spritecache */
@@ -847,10 +849,43 @@ static void GfxInitSpriteCache()
 	int bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
 	uint target_size = (bpp > 0 ? _sprite_cache_size * bpp / 8 : 1) * 1024 * 1024;
 
-	if (_spritecache_ptr == NULL || _allocated_sprite_cache_size != target_size) {
-		free(_spritecache_ptr);
+	/* Remember 'target_size' from the previous allocation attempt, so we do not try to reach the target_size multiple times in case of failure. */
+	static uint last_alloc_attempt = 0;
+
+	if (_spritecache_ptr == NULL || (_allocated_sprite_cache_size != target_size && target_size != last_alloc_attempt)) {
+		delete[] reinterpret_cast<byte *>(_spritecache_ptr);
+
+		last_alloc_attempt = target_size;
 		_allocated_sprite_cache_size = target_size;
-		_spritecache_ptr = (MemBlock*)MallocT<byte>(_allocated_sprite_cache_size);
+
+		do {
+			try {
+				/* Try to allocate 50% more to make sure we do not allocate almost all available. */
+				_spritecache_ptr = reinterpret_cast<MemBlock *>(new byte[_allocated_sprite_cache_size + _allocated_sprite_cache_size / 2]);
+			} catch (std::bad_alloc &oom) {
+				_spritecache_ptr = NULL;
+			}
+
+			if (_spritecache_ptr != NULL) {
+				/* Allocation succeeded, but we wanted less. */
+				delete[] reinterpret_cast<byte *>(_spritecache_ptr);
+				_spritecache_ptr = reinterpret_cast<MemBlock *>(new byte[_allocated_sprite_cache_size]);
+			} else if (_allocated_sprite_cache_size < 2 * 1024 * 1024) {
+				usererror("Cannot allocate spritecache");
+			} else {
+				/* Try again to allocate half. */
+				_allocated_sprite_cache_size >>= 1;
+			}
+		} while (_spritecache_ptr == NULL);
+
+		if (_allocated_sprite_cache_size != target_size) {
+			DEBUG(misc, 0, "Not enough memory to allocate %d MiB of spritecache. Spritecache was reduced to %d MiB.", target_size / 1024 / 1024, _allocated_sprite_cache_size / 1024 / 1024);
+
+			ErrorMessageData msg(STR_CONFIG_ERROR_OUT_OF_MEMORY, STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG);
+			msg.SetDParam(0, target_size);
+			msg.SetDParam(1, _allocated_sprite_cache_size);
+			ScheduleErrorMessage(msg);
+		}
 	}
 
 	/* A big free block */
