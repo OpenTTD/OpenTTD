@@ -1197,9 +1197,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Postavi koliko 
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Građevinski troškovi: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Postavi razinu građevinskih troškova i troškova kupnje
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesije: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ukoliko je uključeno, recesija se može pojaviti svakih nekoliko godine. Tijekom recesije sva proizvodnja je značajno manja (vraća se na prethodnu razinu kada recesija završi)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ukoliko je uključeno, recesija se može pojaviti svakih nekoliko godina. Tijekom recesije sva proizvodnja je značajno manja (vraća se na prethodnu razinu kada recesija završi)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Zabrani okretanje vlakova na stanicama: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ukoliko je uključeno, vlakovi se neće okretati na stanicama koje nisu krajnje ukoliko postoji kraći put do njihovog sljedećeg odredišta prilikom okretanja
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ukoliko je uključeno, vlakovi se neće okretati na stanicama koje nisu krajnje čak i ukoliko postoji kraći put do njihovog sljedećeg odredišta prilikom okretanja
 STR_CONFIG_SETTING_DISASTERS                                    :Nesreće: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Uključivanje nesreća koje mogu povremeno blokirati ili uništiti vozila ili infrastrukturu
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Stav gradske uprave prema restrukturiranju područja: {STRING}
@@ -2176,6 +2176,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Izaberi 
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Označi sav sadržaj koji je nadogradnja postojećem sadržaju kako bi ga preuzeo
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznači sve
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Označi sav sadržaj koji se ne preuzima
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Pretraži vanjske web stranice
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Traženje sadržaja nije dostupno u OpenTTD-ovom servisu za sadržaje za web stranice koje nisu pridružene OpenTTD-u
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Napuštate OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Pravila i uvjeti za preuzimanje sadržaja sa vanjskih web stranica variraju.{}Morate pogledati vanjske stranice za upute kako instalirati sadržaj u OpenTTD.{}Da li želite nastaviti?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Ime/Tag filter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Posjetite web-stranicu
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Posjetite web-stranicu za ovaj sadržaj
@@ -3028,7 +3032,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nijedna 
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Čekanje: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT}dolazi iz {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} iz {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Prihvaća
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Pokaži popis tereta koji se prihvaća

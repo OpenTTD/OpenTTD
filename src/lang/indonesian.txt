@@ -1103,7 +1103,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Menetapkan ting
 STR_CONFIG_SETTING_RECESSIONS                                   :Resesi : {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jika dinyalakan, resesi akan terjadi dalam beberapa tahun sekali. Saat resesi semua produksi produk akan berkurang (kembali normal saat resesi selesai)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Melarang pemutaran kereta di stasiun: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Jika diaktifkan, kereta tidak akan berputar selain di stasiun akhir / ujung, jika ada jalan yang lebih pendek ketika berputar
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Jika diaktifkan, kereta tidak akan berputar selain di stasiun ujung, termasuk jika ada jalan yang lebih pendek kalau berbalik
 STR_CONFIG_SETTING_DISASTERS                                    :Bencana: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :mengaktifkan bencana yang mungkin memblok atau menghancurkan kendaraan atau infrastruktur
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Sikap pemerintah kota terhadap restrukturasi area: {STRING}
@@ -2625,7 +2625,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Keatas
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Pindahkan berkas NewGRF yang terpilih kebagian atas daftar
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Kebawah
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pindahkan berkas NewGRF yang terpilih kebagian bawah daftar
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Daftar file NewGRF yang diinstal.
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Daftar file NewGRF yang terinstal
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Atur parameter
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Tampilkan parameter

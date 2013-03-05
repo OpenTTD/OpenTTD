@@ -2162,6 +2162,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Vybrat v
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Označit všechen vylepšený/aktualizovaný obsah ke stáhnutí
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznačit vše
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Nestahovat nic
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Prohledat externí stránky
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Hledaný obsah není dostupný ve službě pro správu obsahu OpenTTD na stránkách nepřidružených k OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Opouštíš OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Podmínky pro stahování obsahu z externích stránek se různí.{}Budeš muset navštívit externí stránky pro instrukce k nainstalování obsahu do OpenTTD.{}Přeješ si pokračovat?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtr na značku/jméno:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Navštívit stránky
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK} Zobrazit internetové stránky pro tuto položku
@@ -3545,6 +3549,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Prodloužit interval servisů o 10. S Ctrl prodloužit o 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zkrátit interval servisů o 10. S Ctrl zkrátit o 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Změnit typ servisního intervalu
+STR_VEHICLE_DETAILS_DEFAULT                                     :Defaultní
+STR_VEHICLE_DETAILS_DAYS                                        :Dnů
+STR_VEHICLE_DETAILS_PERCENT                                     :Procent
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Pojmenovat vlak
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Přejmenovat silniční vozidlo

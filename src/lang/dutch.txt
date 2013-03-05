@@ -1450,7 +1450,7 @@ STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Toon een krant 
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Verandering van geaccepteerde vrachtsoorten: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Toon een bericht over gewijzigde acceptatie van goederen van stations
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidies: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Toon een krant over subsidie ​​gerelateerde gebeurtenissen
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Toon een krant over subsidie gerelateerde gebeurtenissen
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Algemene informatie: {STRING}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Weergave krant over algemene gebeurtenissen, zoals de aankoop van exclusieve rechten of financiering van weg-reconstructie
 

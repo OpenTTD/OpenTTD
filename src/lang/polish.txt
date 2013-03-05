@@ -1469,7 +1469,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :z prawej strony
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksymalna wysokość początkowej pożyczki: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksymalna wysokość pożyczki jaką firma może zaciągnąć (nie uwzględnia inflacji)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Oprocentowanie: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Oprocentowanie pożyczki; kontroluje też inflację jeśli włączona
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Oprocentowanie pożyczki; kontroluje też inflację, jeśli jest włączona
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Koszty amortyzacji: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Ustaw poziom kosztów utrzymania i amortyzacji pojazdów i infrastruktury
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Szybkość budowy: {STRING}
@@ -2460,6 +2460,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Wybierz 
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Wybierz całą zawartość do pobrania, która jest ulepszeniem dla istniejącej zawartości
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznacz wszystko
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Zaznacz całą zawartość, aby nie była pobrana
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Przeszukaj zewnętrzne strony internetowe
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Przeszukaj dodatki niedostępne w serwisie OpenTTD na stronach nie współpracujących z OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Opuszczasz OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Warunki pobierania dodatków z zewnętrznych stron internetowych są inne.{}Będziesz musiał(a) odnieść się do zewnętrznych stron w celu uzyskania wskazówek dotyczących instalacji dodatku w OpenTTD.{}Czy chcesz kontynuować?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtr etykiety/nazwy:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Wejdź na stronę
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Wejdź na stronę, by pobrać tę zawartość

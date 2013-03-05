@@ -1091,7 +1091,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Høyre
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimalt innledende lån: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Det maksimale beløp et selskap kan låne (uten å ta inflasjon i betraktning)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Lånerente: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lånerente; kontrollerer også inflasjonen hvis aktivert
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Lånerente; kontrollerer også inflasjonen, hvis aktivert
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Driftskostnader: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Still nivå av vedlikehold og driftskostnader for kjøretøy og infrastruktur
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Byggehastighet: {STRING}
@@ -1103,9 +1103,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Angi hvor mye s
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Byggekostnader: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Still kostnadsnivå for bygging og kjøp
 STR_CONFIG_SETTING_RECESSIONS                                   :Resesjoner: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Hvorvidt aktiverte resesjoner kan forekomme med noen års mellomrom. Under en lavkonjunktur vil all produksjon være betydelig lavere (den returnerer til tidligere nivå når resesjonen er over)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Hvis aktivert, resesjoner kan forekomme med noen års mellomrom. Under en lavkonjunktur vil all produksjon være betydelig lavere (den returnerer til tidligere nivå når resesjonen er over)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Forby reversering av tog i stasjoner: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Hvorvidt aktiverte tok ikke vil snu i gjennomgående stasjoner, hvis det å snu medfører en kortere strekning til deres neste destinasjon
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Hvis aktivert, tåg vil ikke rygge i ikke-terminus stationer, selv om det er en kortere vei til deres neste stasjon ved å rygge
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofer: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Aktiver/inaktiver katastrofer som tidvis kan blokkere eller ødelegge kjøretøy og infrastruktur
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Byrådets holdning til restrukturering i nærområdet: {STRING}
@@ -1604,6 +1604,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... lagr
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorerer Grunn Graffik set '{STRING}': ikke funnet
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorerer Grunn Lyd set '{STRING}': ikke funnet
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorerer Grunn Musikk set '{STRING}': ikke funnet
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Tomt for minne
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Tildeling av {BYTES} fra spritecachen feilet. Spritecachen ble redusert til {BYTES}. Dette senke ytelsen av OpenTTD. For å redusere minneforbruken kan du forsøke å slå av 32bpp grafikk og/eller zoomnivå.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2082,6 +2084,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Velg opp
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Merk alt innhold som er en oppgradering av eksisterende innhold
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Velg bort alle
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Merk alt innhold som ikke skal lastes ned
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Søk eksterne nettsider
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK} Søk etter innhold som ikke er tilgjengelig på OpenTTD sin innholdstjeneste på nettsteder som ikke er tilknyttet OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Du forlater OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE} Vilkårene for nedlasting av innhold fra eksterne nettsider kan variere.{}Du må henvende deg til de eksterne nettstedene for instruksjoner om hvordan du installerer innholdet i OpenTTD.{}Vil du fortsette?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Merke/Navnefilter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Besøk hjemmeside
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Besøk hjemmesiden for dette innholdet
@@ -2578,6 +2584,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Skriv in
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Generer en verden
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kartstørrelse:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Velg størrelsen på kartet i ruter. Antall tilgjengelige ruter vil være litt mindre
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Antall byer:
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
@@ -3455,6 +3462,7 @@ STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Reduser 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Enhet for vedlikeholdsintervall
 STR_VEHICLE_DETAILS_DEFAULT                                     :Standard
 STR_VEHICLE_DETAILS_DAYS                                        :Dager
+STR_VEHICLE_DETAILS_PERCENT                                     :Prosentandel
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Navngi tog
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Navngi kjøretøy

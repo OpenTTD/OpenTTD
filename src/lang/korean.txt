@@ -56,7 +56,7 @@ STR_CARGO_PLURAL_COLA                                           :{G=f}콜라
 STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=m}솜사탕
 STR_CARGO_PLURAL_BUBBLES                                        :{G=m}거품
 STR_CARGO_PLURAL_TOFFEE                                         :{G=f}태피
-STR_CARGO_PLURAL_BATTERIES                                      :{G=f}배터리
+STR_CARGO_PLURAL_BATTERIES                                      :{G=f}건전지
 STR_CARGO_PLURAL_PLASTIC                                        :{G=m}플라스틱
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=f}탄산음료
 
@@ -90,7 +90,7 @@ STR_CARGO_SINGULAR_COLA                                         :{G=f}콜라
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=m}솜사탕
 STR_CARGO_SINGULAR_BUBBLE                                       :{G=m}거품
 STR_CARGO_SINGULAR_TOFFEE                                       :{G=f}태피
-STR_CARGO_SINGULAR_BATTERY                                      :{G=f}배터리
+STR_CARGO_SINGULAR_BATTERY                                      :{G=f}건전지
 STR_CARGO_SINGULAR_PLASTIC                                      :{G=m}플라스틱
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=f}탄산음료
 
@@ -124,7 +124,7 @@ STR_QUANTITY_COLA                                               :콜라 {VOLUME_
 STR_QUANTITY_CANDYFLOSS                                         :솜사탕 {WEIGHT_LONG}
 STR_QUANTITY_BUBBLES                                            :거품 {COMMA}개
 STR_QUANTITY_TOFFEE                                             :태피 {WEIGHT_LONG}
-STR_QUANTITY_BATTERIES                                          :배터리 {COMMA}개
+STR_QUANTITY_BATTERIES                                          :건전지 {COMMA}개
 STR_QUANTITY_PLASTIC                                            :플라스틱 {VOLUME_LONG}
 STR_QUANTITY_FIZZY_DRINKS                                       :탄산음료 {COMMA}개
 STR_QUANTITY_N_A                                                :없음
@@ -159,7 +159,7 @@ STR_ABBREV_COLA                                                 :{TINY_FONT}콜
 STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}솜
 STR_ABBREV_BUBBLES                                              :{TINY_FONT}거
 STR_ABBREV_TOFFEE                                               :{TINY_FONT}태
-STR_ABBREV_BATTERIES                                            :{TINY_FONT}배
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}건
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}플
 STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}탄
 STR_ABBREV_NONE                                                 :{TINY_FONT}X
@@ -404,7 +404,7 @@ STR_GRAPH_MENU_HIGHSCORE                                        :고득점 순�
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :산업시설 목록
-STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :산업시설 연계
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :산업시설 연계도
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :새 산업시설 건설
 ############ range ends here
 
@@ -781,14 +781,14 @@ STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY}{G 0 "이" "가"} 생산량을 늘렸습니다!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}{INDUSTRY}에서 새 석탄 광맥을 찾았습니다!{}생산량이 2배가 되었습니다!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}{INDUSTRY}에서 새 유전을 찾았습니다!{}생산량이 2배가 되었습니다!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY}에서 향상된 농업 기술을 발견해 생산량이 2배가 되었습니다!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY}에서 향상된 농업 기술을 개발하여 생산량이 2배가 되었습니다!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{1:INDUSTRY}의 {0:STRING} 생산량이 {2:COMMA}% 증가하였습니다!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY}의 생산량이 50%로 떨어졌습니다.
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY}{G 0 "이" "가"} 곤충떼의 습격으로 황폐화되었습니다!{}생산량이 50%로 떨어졌습니다.
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{1:INDUSTRY}의 {0:STRING} 생산량이 {2:COMMA}% 감소하였습니다!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} : 차량기지 안에서 대기 중입니다.
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} : 차고에서 대기 중입니다.
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} : 차고지에서 대기 중입니다.
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} : 정박소 안에서 대기 중입니다.
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} : 격납고 안에서 대기 중입니다.
 
@@ -1090,7 +1090,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :오른쪽
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :최대 초기 대출금: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :한 회사가 최대한 빌릴 수 있는 (계좌에 인플레이션을 고려하지 않고 들어오는) 대출금의 양을 조절할 수 있습니다.
 STR_CONFIG_SETTING_INTEREST_RATE                                :대출 금리: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :대출 금리입니다. 인플레이션 설정의 영향을 받습니다.
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :대출 금리입니다. 인플레이션 설정이 켜져있는 경우 인플레이션의 영향을 받습니다.
 STR_CONFIG_SETTING_RUNNING_COSTS                                :유지비: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :차량과 기반시설의 유지비 수준을 설정하십시오.
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :건설 속도: {STRING}
@@ -1098,7 +1098,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :인공지능의
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :차량 고장 빈도수: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :점검을 제대로 받지 않은 차량이 얼마나 자주 고장나도록 할 지를 조절하십시오.
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :보조금 배수: {STRING}
-STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :보조금을 얼마나 지급할 지 설정하십시오.
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :보조금을 얼마나 지급할지 설정하십시오.
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :건설 가격: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :건설 및 구매 가격의 수준을 설정하십시오.
 STR_CONFIG_SETTING_RECESSIONS                                   :경제 불황: {STRING}
@@ -1114,8 +1114,8 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :경사/해안�
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :이 옵션을 켜면 도로, 철도, 역 등을 대부분의 경사에 설치할 수 있게 됩니다. 이 옵션을 끄면 오직 트랙의 방향과 일치하는 경사에만 설치가 가능하기 때문에 기반 지형을 만들 필요가 없습니다.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :건물, 트랙 등의 하부 지형 편집 허용 (자동 슬로프): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :건물이나 도로/선로 등을 제거하지 않고도 하부의 지형을 편집할 수 있게 허용합니다.
-STR_CONFIG_SETTING_CATCHMENT                                    :더욱 현실적인 역세권 지정 허용: {STRING}
-STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :역과 공항의 종류에 따라 서로 다른 크기의 역세권을 지정하도록 합니다.
+STR_CONFIG_SETTING_CATCHMENT                                    :더 현실적인 역세권 지정: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :역과 공항의 종류에 따라 다른 크기의 역세권을 가지도록 만듭니다.
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :도시 소유의 도로, 다리 등의 제거 허용: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :도시 소유의 기반시설이나 건물을 제거할 수 있게 합니다.
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :열차의 최대 길이: {STRING}
@@ -1137,7 +1137,7 @@ STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :─ 모양의 �
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :역이 같은 방향으로 붙어있지 않아도 같은 이름의 역 짓기 허용: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :이미 존재하는 역을 직접 건드리지 않고도 역의 일부분을 새로 추가/확장하는 것을 허용합니다. 인접한 칸에 기존과 다른 새로운 역을 놓을 때에는 Ctrl+클릭이 필요합니다.
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :향상된 수송 알고리즘 사용: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :이 옵션을 켜면 역에서 대기하는 여러 대의 차량이 순서대로 화물을 싣게 됩니다. 다음에 도착하는 차량의 화물 적재는 기존에 정차한 차량에 완벽히 적재할 수 있을 정도의 충분한 화물이 있어야 시작될 것입니다.
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :이 옵션을 켜면 역에서 차량이 여러 대가 기다리고 있으면 먼저 도착한 순서대로 화물을 싣게 됩니다. 다음에 도착하는 차량은, 이미 화물을 싣고 있는 차량이 화물을 모두 싣고 난 다음에서야 적재를 시작하게 됩니다.
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :화물을 차량에 단계적으로 싣기: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :적재된 화물의 양에 따라 고정된 시간이 지나면 한 번에 모두 적재하는 대신, 차량의 적재 상황을 시간이 지남에 따라 단계별로 표시합니다.
 STR_CONFIG_SETTING_INFLATION                                    :인플레이션(화폐 가치 하락) 사용: {STRING}
@@ -2027,7 +2027,7 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :잘못된 패�
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :잘못된 버전
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :이미 사용중인 이름
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :잘못된 암호
-STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand에서의 잘못된 회사 번호
+STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand 구문 내의 잘못된 회사
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :강제추방
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :치트 사용 시도
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :서버 꽉참
@@ -2155,11 +2155,11 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}적재�
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}투명이 아니라 아예 안보이게 할 항목을 선택하세요
 
 # Base for station construction window(s)
-STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}역세권 하이라이트
+STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}역세권 표시
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}끄기
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}켜기
-STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}역세권을 하이라이트하지 않습니다.
-STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}역세권을 하이라이트합니다.
+STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}역세권을 표시하지 않습니다.
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}역세권을 표시합니다.
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}받음: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}공급: {GOLD}{CARGO_LIST}
 
@@ -2202,9 +2202,9 @@ STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}경유�
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}철도 역사 선택
-STR_STATION_BUILD_ORIENTATION                                   :{BLACK}방향
+STR_STATION_BUILD_ORIENTATION                                   :{BLACK}방향 선택
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}철도역의 방향을 선택합니다.
-STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}트랙 수
+STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}선로 수
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}철도역의 플랫폼 개수를 선택합니다.
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}플랫폼 길이
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}철도역의 길이를 선택합니다.
@@ -2259,12 +2259,12 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}도로�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}전차 선로를 짓습니다. Ctrl을 사용하여 건설/제거를 전환하십시오. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}자동건설 모드로 도로를 짓습니다. Ctrl을 사용하여 건설/제거를 전환하십시오. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}자동건설 모드로 전차 선로를 짓습니다. Ctrl을 사용하여 건설/제거를 전환하십시오. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}차량 구입과 점검을 위한 차고를 짓습니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}차고지(차량 구입 및 점검용)를 짓습니다. Shift를 사용하면 예상 가격을 볼 수 있습니다.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}차량 구입과 점검을 위한 차량기지를 짓습니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}버스 정류장을 짓습니다. Ctrl을 누르면 역간 결합을 사용합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}승객 전차역을 짓습니다. Ctrl을 누르면 역간 결합을 사용합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}여객 전차역을 짓습니다. Ctrl을 누르면 역간 결합을 사용합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}트럭 적하장을 짓습니다. Ctrl을 누르면 역간 결합을 사용합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}화물 전차 정거장을 짓습니다. Ctrl을 누르면 역간 결합을 사용합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}화물 전차역을 짓습니다. Ctrl을 누르면 역간 결합을 사용합니다. Shift를 사용하면 예상 가격을 볼 수 있습니다.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}일방통행 도로 건설 모드를 켜거나 끕니다.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}다리를 짓습니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}전차교를 짓습니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
@@ -2274,20 +2274,20 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}도로 �
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}전찻길 건설/제거 툴 켜기/끄기
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}차고 방향
-STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}차고의 방향을 선택하십시오
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}차량기지 방향
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}차고지 방향 선택
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}차고지의 방향을 선택하세요.
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}전차 차량기지 방향 선택
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}차량기지의 방향을 선택하세요
 
 # Road vehicle station construction window
-STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}버스 정류장 방향
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}버스 정류장 방향 선택
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}버스 정류장의 방향을 선택합니다.
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}트럭 적하장 방향
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}트럭 적하장 방향 선택
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}트럭 적하장의 방향을 선택합니다.
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}승객 전차 정거장 방향
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}승객 전차 정거장의 방향을 선택하세요.
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}화물 전차 정거장 방향
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}화물 전차 정거장의 방향을 선택하세요.
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}여객 전차역 방향 선택
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}여객 전차역의 방향을 선택하세요.
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}화물 전차역 방향 선택
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}화물 전차역의 방향을 선택하세요.
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}수로 건설
@@ -2302,7 +2302,7 @@ STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}벽으�
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}강을 만듭니다.
 
 # Ship depot construction window
-STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}정박소 방향
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}정박소 방향 선택
 STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}정박소의 방향을 선택합니다.
 
 # Dock construction window
@@ -2333,10 +2333,10 @@ STR_AIRPORT_CLASS_LARGE                                         :대형 공항
 STR_AIRPORT_CLASS_HUB                                           :허브 공항
 STR_AIRPORT_CLASS_HELIPORTS                                     :헬리콥터 공항
 
-STR_STATION_BUILD_NOISE                                         :{BLACK}발생 소음: {GOLD}{COMMA}
+STR_STATION_BUILD_NOISE                                         :{BLACK}발생하는 소음 수준: {GOLD}{COMMA}
 
 # Landscaping toolbar
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}지평편집
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}지형 편집
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}땅의 모퉁이를 낮춥니다.
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}땅의 모퉁이를 높입니다.
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}땅을 평평하게 고릅니다.
@@ -2417,8 +2417,8 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}건설
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}투자
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}{STRING} 산업시설의 산업망
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING} 화물의 산업망
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}{STRING}{G 0 "과" "와"} 관련된 산업시설 연계도
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING}{G 0 "과" "와"} 관련된 산업시설 연계망
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}생산 산업시설
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}소비 산업시설
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}도시 가구
@@ -2453,7 +2453,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}공항 �
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}공항 이름: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}공항 칸 이름: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}화물 인수: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}받을 수 있는 화물: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}선로의 제한 속력: {LTBLUE}{VELOCITY}
 
@@ -2493,7 +2493,7 @@ STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} 차량
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :도로
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :가로등이 있는 도로
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :가로수가 있는 도로
-STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :차고
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :{G=f}차고지
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :철도 건널목
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :전찻길
 
@@ -2783,8 +2783,8 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}파일 없
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}'의 행동은 비동기화 혹은 충돌을 일으킬 수 있습니다.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고 안에 있지 않으면 동력차량의 상태가 바뀝니다.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고 안에 있지 않으면 차량 길이가 바뀝니다.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}차고지 안에 있지 않은 '{1:ENGINE}'에 대한 동력 차량 상태가 바뀌었습니다.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고지 안에 있지 않으면 차량 길이가 바뀝니다.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'에 속한 열차 '{0:VEHICLE}'의 길이가 잘못된 값을 가지고 있습니다. NewGRF에 의한 문제로 추축됩니다. 게임이 비동기화 또는 충돌을 일으킬 수 있습니다.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' (이)가 잘못된 정보를 제공하고 있습니다.
@@ -2839,7 +2839,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}도시가 {ORANGE}{COMMA}{BLACK}일마다 성장합니다.
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}도시가 {ORANGE}{COMMA}{BLACK}일마다 성장합니다. (투자 중)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}도시는 {RED}성장하지 않고{BLACK} 있습니다.
-STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}도시 소음 제한: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}현재 소음 수준: {ORANGE}{COMMA}{BLACK}  최대 허용 수준: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}이 도시의 위치로 시점을 변경합니다. Ctrl+클릭하면 이 도시 위치를 기준으로 새로운 외부 화면을 엽니다.
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}지역 당국
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}지역 당국의 정보를 보여줍니다.
@@ -2915,10 +2915,10 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :닫기
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}보조금
-STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}제공되는 보조금:
+STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}지급 대기 중인 보조금:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{1:STRING}에서 {2:STRING}까지 {0:STRING} 수송{YELLOW} ({3:DATE_SHORT}까지)
 STR_SUBSIDIES_NONE                                              :{ORANGE}없음
-STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}이미 지급된 보조금:
+STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}이미 지급 중인 보조금:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{1:STRING}에서 {2:STRING}까지 {0:STRING} 수송{YELLOW} ({3:COMPANY}{YELLOW}, {DATE_SHORT}까지)
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}산업시설/도시의 위치로 시점을 변경하려면 클릭하세요. Ctrl+클릭하면 이 산업시설/도시의 위치를 기준으로 새로운 외부 화면을 엽니다.
 
@@ -3135,7 +3135,7 @@ STR_VEHICLE_LIST_REPLACE_VEHICLES                               :차량 교체
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :점검하러 보냄
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :차량기지로 보내기
-STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :차고로 보내기
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :차고지로 보내기
 STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :정박소로 보내기
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :격납고로 보내기
 
@@ -3276,13 +3276,13 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}차량 �
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}선박 복제
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}항공기 복제
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}모든 차량을 포함한 열차 전체를 복제합니다. 이 버튼을 클릭하고 차고 안이나 밖에 있는 차량을 클릭하십시오. Ctrl+클릭하면 경로를 같이 공유합니다.
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}이 자동차를 복제합니다. 이 버튼을 클릭하고 차고 안이나 밖에 있는 차량을 클릭하십시오. Ctrl+클릭하면 경로를 같이 공유합니다.
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}화물칸을 포함한 열차 전체를 복제합니다. 이 버튼을 클릭하고 차량기지 안이나 밖에 있는 열차를 클릭하십시오. Ctrl+클릭하면 경로를 같이 공유합니다.
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}자동차를 복제합니다. 이 버튼을 클릭하고 차고지 안이나 밖에 있는 차량을 클릭하십시오. Ctrl+클릭하면 경로를 같이 공유합니다.
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}이 선박을 복제합니다. 이 버튼을 누르고 정류소의 안이나 밖에 있는 선박을 클릭하십시오. Ctrl+클릭하면 경로를 같이 공유합니다.
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}이 항공기를 복제합니다. 격납고 안이나 밖에 있는 항공기를 선택하십시오. Ctrl+클릭하면 경로를 같이 공유합니다.
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}이 차량기지로 시점을 변경합니다. Ctrl+Click하면 이 차량 기지의 위치를 기준으로 새로운 외부 화면을 엽니다.
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}이 차고가 있는 곳으로 시점을 변경합니다. Ctrl+Click하면 이 차고 위치를 기준으로 새로운 외부 화면을 엽니다.
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}이 차고지가 있는 곳으로 시점을 변경합니다. Ctrl+클릭하면 이 차고지 위치를 기준으로 새로운 외부 화면을 엽니다.
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}이 정박소의 위치로 시점을 변경합니다. Ctrl+Click하면 이 정박소의 위치를 기준으로 새로운 외부 화면을 엽니다.
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}이 격납고의 위치로 시점을 이동합니다. Ctrl+클릭하면 이 격납고의 위치를 기준으로 새로운 외부 화면을 엽니다.
 
@@ -3292,12 +3292,12 @@ STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}이 정�
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}이 격납고를 거쳐가는 모든 항공기의 목록을 보여줍니다.
 
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}이 차량기지 안에 있는 모든 열차의 운행을 중지시킵니다.
-STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}이 차고 내의 모든 자동차의 운행을 중지시킵니다.
+STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}이 차고지 안에 있는 모든 자동차의 운행을 중지시킵니다.
 STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}이 정박소 안에 있는 모든 선박의 운행을 중지시킵니다.
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}이 격납고 안에 있는 모든 항공기의 운행을 중지시킵니다.
 
 STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}이 차량기지 안에 있는 모든 열차의 운행을 시작합니다.
-STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}이 차고 내의 모든 자동차의 운행을 시작합니다.
+STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}이 차고지 안에 있는 모든 자동차의 운행을 시작합니다.
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}이 정박소 안에 있는 모든 선박의 운행을 시작합니다.
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}이 격납고 안에 있는 모든 항공기의 운행을 시작합니다.
 
@@ -3358,13 +3358,13 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}자동 �
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}이 열차가 있는 곳으로 이동합니다. Ctrl+Click은 메인 뷰에서 이 열차를 따라갈것입니다.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}이 차량이 있는 곳으로 이동합니다. Ctrl+Click은 메인 뷰에서 이 차량을 따라갈것입니다.
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}이 선박이 있는 곳으로 이동합니다. Ctrl+Click은 메인 뷰에서 이 선박을 따라갈것입니다.
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}이 항공기가 있는 곳으로 이동합니다. Ctrl+Click은 메인 뷰에서 이 항공기를 따라갈것입니다.
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}이 열차가 있는 곳으로 이동합니다. Ctrl+클릭하면 이 열차를 따라갑니다.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}이 차량이 있는 곳으로 이동합니다. Ctrl+클릭하면 이 차량을 따라갑니다.
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}이 선박이 있는 곳으로 이동합니다. Ctrl+클릭하면 이 선박을 따라갑니다.
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}이 항공기가 있는 곳으로 이동합니다. Ctrl+클릭하면 이 항공기를 따라갑니다.
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}열차를 차량기지로 보냅니다. (CTRL+클릭시 점검만 합니다)
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}차량을 차고로 보냅니다. CTRL+클릭하면 점검만 합니다.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}차량을 차고지로 보냅니다. Ctrl+클릭하면 점검만 합니다.
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}선박을 정박소로 보냅니다. CTRL+클릭하면 점검만 합니다.
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}항공기를 격납고로 보냅니다. CTRL+클릭하면 점검만 합니다
 
@@ -3944,7 +3944,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... 도�
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 지도에 더이상 공간이 없습니다!
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}도시가 도로를 짓지 않을 것입니다. [고급설정->경제->도시]에서 도로를 지을 수 있도록 설정을 변경하실 수 있습니다.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}도로 작업이 진행중입니다
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}이 도시를 삭제할 수 없습니다...{}도시 또는 도시가 소유하고 있는 땅에 역이나 차고가 존재합니다.
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}이 도시를 삭제할 수 없습니다...{}도시나 도시 소유의 땅에 역, 정류장, 항구, 공항 또는 차량기지, 차고지, 정박소 등이 존재하면 도시를 삭제할 수 없습니다.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 이 도시의 중심에 동상을 세우기 적합한 장소가 없습니다.
 
 # Industry related errors
@@ -3970,8 +3970,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... 만�
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}여기에 역을 건설할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}버스 정류장을 지을 수 없습니다...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}트럭 적하장을 지을 수 없습니다...
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}여기에 승객 전차 정거장을 건설할 수 없습니다...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}여기에 화물 전차 정거장을 건설할 수 없습니다...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}여기에 여객 전차역을 건설할 수 없습니다...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}여기에 화물 전차역을 건설할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}여기에 항구를 건설할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}여기에 공항을 만들 수 없습니다...
 
@@ -3986,7 +3986,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}다른 �
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}다른 공항과 너무 가깝습니다!
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}역 이름을 바꿀 수 없습니다...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... 여기는 도시 소유의 도로 입니다
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... 도로가 잘못된 방향을 향하고 있습니다
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... 도로의 방향과 일치하지 않습니다.
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... 도로 통과 정류장은 곡선도로에 건설할 수 없습니다.
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... 도로 통과 정류장은 교차로에 건설할 수 없습니다.
 
@@ -3995,16 +3995,16 @@ STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}역의 �
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}먼저 철도역을 제거해야 합니다
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}버스정류장을 제거할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}트럭 터미널을 제거할 수 없습니다...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}승객 전차 정거장을 제거할 수 없습니다...
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}화물 전차 정거장을 제거할 수 없습니다...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}여객 전차역을 제거할 수 없습니다...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}화물 전차역을 제거할 수 없습니다...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}정류장을 먼저 제거하십시오.
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... 여기에는 정거장이 없습니다.
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}철도역을 먼저 제거하십시오.
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}버스 정류장을 먼저 제거하십시오.
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}트럭 적하장을 먼저 제거하십시오.
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}승객 전차 정거장을 먼저 제거하십시오.
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}화물 전차 정거장을 먼저 제거하십시오.
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}여객 전차역을 먼저 제거하십시오.
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}화물 전차역을 먼저 제거하십시오.
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}항구를 먼저 제거하십시오!
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}공항을 먼저 제거하십시오!
 
@@ -4023,14 +4023,14 @@ STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... 다�
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}여기에 차량기지를 건설할 수 없습니다...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}여기에 차고를 지을 수 없습니다...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}여기에 차고지를 지을 수 없습니다...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}여기에 차량기지를 건설할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}여기에 정박소를 지을 수 없습니다...
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}차량기지의 이름을 바꿀 수 없습니다...
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... 차량기지 안에 정지되어 있어야 합니다
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... 차고 안에 정지해 있어야 합니다
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... 차고지 안에 정지해 있어야 합니다
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... 정박소 내에 정지해 있어야 합니다!
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... 격납고 내에서 정지되어 있어야합 니다
 
@@ -4043,7 +4043,7 @@ STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :알맞지 않�
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}차량을 옮길 수 없습니다...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}뒷쪽 기관차는 앞쪽것을 항상 따라다닐 것입니다.
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}근처에 있는 차량기지로 가는 길을 찾을 수 없습니다
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}인접한 차고를 찾을 수 없습니다
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}근처에 있는 차고지를 찾을 수 없습니다
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :잘못된 차량기지 종류
 
@@ -4154,7 +4154,7 @@ STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}선박�
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}항공기를 운행/중지시킬 수 없습니다...
 
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}열차를 차량기지로 보낼 수 없습니다...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}차량을 차고로 보낼 수 없습니다...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}차량을 차고지로 보낼 수 없습니다...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}선박을 정박소로 보낼 수 없습니다...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}항공기를 격납고로 보낼 수 없습니다...
 
@@ -4266,40 +4266,40 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :돼지 저금�
 STR_INDUSTRY_NAME_COAL_MINE                                     :{G=m}탄광
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}발전소
 STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}제재소
-STR_INDUSTRY_NAME_FOREST                                        :숲
+STR_INDUSTRY_NAME_FOREST                                        :{G=m}숲
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=m}정유 공장
-STR_INDUSTRY_NAME_OIL_RIG                                       :유전
-STR_INDUSTRY_NAME_FACTORY                                       :공장
-STR_INDUSTRY_NAME_PRINTING_WORKS                                :인쇄소
+STR_INDUSTRY_NAME_OIL_RIG                                       :{G=m}유전
+STR_INDUSTRY_NAME_FACTORY                                       :{G=m}공장
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}인쇄소
 STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}제철소
-STR_INDUSTRY_NAME_FARM                                          :농장
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :구리 광산
-STR_INDUSTRY_NAME_OIL_WELLS                                     :유정
-STR_INDUSTRY_NAME_BANK                                          :은행
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :식품 처리 공장
-STR_INDUSTRY_NAME_PAPER_MILL                                    :제지소
+STR_INDUSTRY_NAME_FARM                                          :{G=m}농장
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=m}구리 광산
+STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=m}유정
+STR_INDUSTRY_NAME_BANK                                          :{G=m}은행
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=m}식품 처리 공장
+STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=f}제지소
 STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=m}금광
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :은행
-STR_INDUSTRY_NAME_DIAMOND_MINE                                  :다이아몬드 광산
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :철 광산
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :과일 농장
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :고무 농장
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :상수도
-STR_INDUSTRY_NAME_WATER_TOWER                                   :급수탑
-STR_INDUSTRY_NAME_FACTORY_2                                     :공장
-STR_INDUSTRY_NAME_FARM_2                                        :농장
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :제목소
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :솜사탕 숲
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :사탕 공장
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :배터리 농장
-STR_INDUSTRY_NAME_COLA_WELLS                                    :콜라 우물
-STR_INDUSTRY_NAME_TOY_SHOP                                      :장난감 가게
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :장난감 공장
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :플라스틱 분수
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :탄산음료 공장
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :거품 제조 공장
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :태피 채취장
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :설탕 광산
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=m}은행
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=m}다이아몬드 광산
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=m}철 광산
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=m}과일 농장
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=m}고무 농장
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=f}상수도
+STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=m}급수탑
+STR_INDUSTRY_NAME_FACTORY_2                                     :{G=m}공장
+STR_INDUSTRY_NAME_FARM_2                                        :{G=m}농장
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=f}제재소
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}솜사탕 숲
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=m}사탕 공장
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=m}건전지 농장
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=m}콜라 우물
+STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=f}장난감 가게
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=m}장난감 공장
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=f}플라스틱 분수
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=m}탄산음료 공장
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}거품 제조 공장
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=m}태피 채취장
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=m}설탕 광산
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
@@ -4394,7 +4394,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :거품 수송�
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :콜라 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :사탕 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :장난감 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :배터리 수송차량
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :건전지 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :탄산음료 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :플라스틱 수송차량
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (전기)
@@ -4424,7 +4424,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :거품 수송�
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :콜라 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :사탕 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :장난감 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :배터리 수송차량
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :건전지 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :탄산음료 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :플라스틱 수송차량
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (전기)
@@ -4456,7 +4456,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :거품 수송�
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :콜라 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :사탕 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :장난감 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :배터리 수송차량
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :건전지 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :탄산음료 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :플라스틱 수송차량
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal 버스
@@ -4535,9 +4535,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow 장난
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover 사탕 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught 사탕 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow 사탕 수송차
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover 배터리 수송차
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught 배터리 수송차
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow 배터리 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover 건전지 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught 건전지 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow 건전지 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover 탄산음료 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught 탄산음료 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow 탄산음료 수송차

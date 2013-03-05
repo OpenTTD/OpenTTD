@@ -1065,11 +1065,11 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Paramètres ave
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restreint la liste ci-dessous à certains types de paramètres
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tous les paramètres
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Paramètres du client (n'est pas enregistré dans les sauvegardes{NBSP}; affecte toutes les parties)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Paramètres de jeu (enregistré dans les sauvegardes{NBSP}; affecte uniquement les nouvelles parties)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Paramètres de jeu (enregistrés dans les sauvegardes{NBSP}; affecte uniquement la partie actuelle)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Paramètres de compagnie (enregistrés dans les sauvegardes{NBSP}; affecte uniquement les nouvelles parties)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Paramètres de compagnie (enregistré dans les sauvegardes{NBSP}; affecte uniquement la compagnie actuelle)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Paramètres du client (ne sont pas enregistrés dans les sauvegardes{NBSP}; affectent toutes les parties)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Paramètres de jeu (enregistrés dans les sauvegardes{NBSP}; affectent uniquement les nouvelles parties)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Paramètres de jeu (enregistrés dans les sauvegardes{NBSP}; affectent uniquement la partie actuelle)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Paramètres de compagnie (enregistrés dans les sauvegardes{NBSP}; affectent uniquement les nouvelles parties)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Paramètres de compagnie (enregistrés dans les sauvegardes{NBSP}; affectent uniquement la compagnie actuelle)
 
 STR_CONFIG_SETTING_OFF                                          :Désactivé
 STR_CONFIG_SETTING_ON                                           :Activé
@@ -1090,7 +1090,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :À droite
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Emprunt initial maximum{NBSP}: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Montant maximum qu'une compagnie peut emprunter (sans tenir compte de l'inflation)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taux d'intérêt{NBSP}: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taux d’intérêt de l'emprunt; contrôle également l'inflation si activé
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taux d’intérêt de l'emprunt{NBSP}; contrôle également l'inflation si activé
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Coûts d'entretien{NBSP}: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Définit le niveau des coûts d'entretien et de fonctionnement des véhicules et des infrastructures
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Vitesse de construction{NBSP}: {STRING}
@@ -1102,9 +1102,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Définit combie
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Coûts de construction{NBSP}: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Définit le niveau des coûts de construction et d'achat
 STR_CONFIG_SETTING_RECESSIONS                                   :Récessions{NBSP}: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si activé, des récessions peuvent se produire toutes les quelques années. Pendant une récession, toute la production baisse de façon significative (elle retourne à son niveau antérieur à la fin de la récession)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si activé, des récessions peuvent se produire toutes les quelques années. Pendant une récession, toute la production baisse de façon significative (elle retourne à son niveau antérieur à la fin de la récession).
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Interdire le retournement des trains dans les stations{NBSP}: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si activé, les trains de se retourneront plus dans les stations non terminus, s'il y a un chemin plus court vers leur prochaine destination en se retournant
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si activé, les trains ne feront plus demi-tour dans les stations non terminus, même si ce faisant il y avait un chemin plus court vers leur prochaine destination.
 STR_CONFIG_SETTING_DISASTERS                                    :Catastrophes{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activer/Désactiver les catastrophes qui peuvent occasionnellement bloquer ou détruire des véhicules ou des infrastructures
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Attitude du conseil municipal envers la restructuration de la zone{NBSP}: {STRING}
@@ -1367,8 +1367,8 @@ STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construction{NB
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Jouer un effet sonore pour les constructions réussies ou d'autres actions
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Clics des boutons{NBSP}: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Émettre un bip lors des clics sur les boutons
-STR_CONFIG_SETTING_SOUND_DISASTER                               :Désastres/accidents{NBSP}: {STRING}
-STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Jouer les effets sonores des accidents et des désastres
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Catastrophes/Accidents{NBSP}: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Jouer les effets sonores des accidents et des catastrophes
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Véhicules{NBSP}: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Jouer les effets sonores des véhicules
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiance{NBSP}: {STRING}
@@ -1429,7 +1429,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Afficher un jou
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arrivée du premier véhicule dans la station d'un concurrent: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Afficher un journal quand le premier véhicule arrive à une nouvelle station d'un concurrent
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / Catastrophes: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Afficher un journal quand des accidents ou des désastres se produisent
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Afficher un journal quand des accidents ou des catastrophes se produisent
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informations corporatives: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Afficher un journal quand une nouvelle compagnie débute, ou quand des compagnies risquent la banqueroute
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Ouvertures d'industries: {STRING}
@@ -2768,7 +2768,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vous ê
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ajout impossible{NBSP}: GRF ID en double
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Module exact non trouvé (GRF compatible chargé)
-STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Impossible d'ajouter le module: la limite des modules NewGRF a été atteinte
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Impossible d'ajouter le module{NBSP}: la limite des modules NewGRF a été atteinte
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatible(s) chargé(s) pour les modules absents
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Module(s) GRF absent(s) désactivés

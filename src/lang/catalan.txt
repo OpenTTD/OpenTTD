@@ -1104,7 +1104,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Fixa el nivell 
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si està actiu les recessions poden passar cada pocs anys. Durant una recessió tota la producció és significativament baixa (torna al nivell previ quan la recessió s'acaba)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :No permet que els trens canviïn de sentit a les estacions: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si està actiu els trens no canviaran de sentit a les estacions no-finals, si hi ha un camí més curt al seu proper destí en cas de canviar de sentit
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si està actiu els trens no canviaran de sentit a les estacions no-finals, inclús si hi ha un camí més curt al seu proper destí en cas de canviar de sentit
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Commuta els desastres que poden bloquejar o destruir ocasionalment vehicles o infraestructures
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de l'alcaldia de la ciutat davant de reestructuracions a la zona: {STRING}
@@ -1603,6 +1603,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... el f
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorant el conjunt de gràfics base '{STRING}': no trobats
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorant el conjunt de sons base '{STRING}': no trobats
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorant el conjunt de músiques base '{STRING}': no trobats
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Memòria exhaurida
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}L'assignació de {BYTES} de la memòria cau d'sprites ha fallat. La memòria cau d'sprites s'ha reduït a {BYTES}. Això reduirà el rendiment d'OpenTTD. Per reduir els requeriments de memòia pots probar a desactivar els gràfics de 32bpp i/o els nivells amb zoom
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2081,6 +2083,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sel. act
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marca tots els continguts que siguin actualitzacions dels continguts a ser descarregats
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselecciona tot
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marca tots els continguts a no ser descarregats
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Cerca en webs externes
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Cerca contingut no disponible al servei de continguts d'OpenTTD en webs no associades amb OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Estàs sortint d'OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Els termes i condicions per descarregar contingut des de webs externes varia.{}Hauràs d'adreçar-te a les webs externes per trobar instruccions sobre com instal·lar contingut a OpenTTD.{}Vols continuar?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Marca/anomena filtre:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Visita la web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visita la web per accedir a aquest contingut
