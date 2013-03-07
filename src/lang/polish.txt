@@ -1982,6 +1982,7 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... form
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoruję zestaw Base Graphics '{STRING}': nie odnaleziono
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoruję zestaw Base Sounds '{STRING}': nie odnaleziono
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoruję zestaw Base Music '{STRING}': nie odnaleziono
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Brak pamięci
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

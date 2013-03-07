@@ -1603,6 +1603,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... '{ST
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... 기본 그래픽 세트({STRING})가 무시되었습니다: 파일을 찾을 수 없습니다.
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... 기본 효과음 세트({STRING})가 무시되었습니다: 파일을 찾을 수 없습니다.
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... 기본 배경음 세트({STRING})가 무시되었습니다: 파일을 찾을 수 없습니다.
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}메모리 초과
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}{BYTES}의 스프라이트 캐시 할당에 실패하였습니다. 스프라이트 캐시는 {BYTES} 만큼으로 감소합니다. 이는 OpenTTD의 성능을 저하시킬 것입니다. 메모리 요구사항을 낮추려면 32bpp를 비활성화하거나 화면 확대 옵션을 기본값에 가깝게 조절하십시오.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
