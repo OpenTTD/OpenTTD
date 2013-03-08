@@ -1558,6 +1558,7 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... form
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... mengabaikan set grafis dasar '{STRING}': tak ditemukan
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... mengabaikan set suara dasar '{STRING}': tidak ditemukan
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... mengabaikan set musik dasar '{STRING}': tidak ditemukan
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Memori habis
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2036,6 +2037,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pilih pe
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Pilih semua konten yang tersedia pembaruannya untuk diunduh
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Hps semua pilihan
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Tandai semua untuk tidak diunduh
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Cari di website luar
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Anda keluar dari OpenTTD!
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tanda/nama filter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Kunjungi laman
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Kunjungi laman untuk konten ini

@@ -399,6 +399,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Vrag vergoeding
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Maatskappy verbond tabel
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Omstandig prestasie gradering
+STR_GRAPH_MENU_HIGHSCORE                                        :Hoogste tellings tafel
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1044,6 +1045,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen ges
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Gevorderde stellings
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter string:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Brei alles uit
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Krimp alles in
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(geen verduideliking beskikbaar)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standaard waarde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Stelling tipe: {ORANGE}{STRING}
@@ -1054,6 +1056,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Maatskappy inst
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Maatskappy instelling (word gestoor in spaarspeletjie; raak net die huidige maatskappy)
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Vertoon:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Beperk die lys hier onder tot slegs veranderde verstellings
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basiese verstellings
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gevorderde verstellings
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspert verstellings / alle verstellings
@@ -1098,6 +1101,8 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidie vermen
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Verstel hoeveel is betaalbaar vir gesubsidieerde aansluitings
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruksie kostes: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Verstel die vlak van konstruksie en aankoop-kostes
+STR_CONFIG_SETTING_RECESSIONS                                   :Resessies: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Verhoed dat treine kan omdraai in stasies: {STRING}
 STR_CONFIG_SETTING_DISASTERS                                    :Rampe: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Stadsraad se gesindheid teenoor omgewings-konstruksie: {STRING}
 
@@ -1556,6 +1561,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... igno
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoreer Basis Klank stel '{STRING}': nie gevind nie
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoreer Basis Musiek stel '{STRING}': nie gevind
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Program is uit geheue uit
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Allokering van {BYTES} kasgeheue vir grafika het gefaal. Die kasgeheue is verminder na {BYTES}. Dit sal OpenTDD stadiger maak. Om geheue-aanvraag te verminder, kan u 32bpp grafika en/of zoom-vlakke afskakel.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1568,6 +1574,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenario
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multispeler
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spel Opsies
+STR_INTRO_HIGHSCORE                                             :{BLACK}Hoogste Tellings Tafel
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Gevorderde stellings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Stellings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kyk Na Aanlyn Inhoud
@@ -1587,6 +1594,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Kies 'su
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Kies 'speelgoedland' landskap styl
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Vertoon speletjie opsies
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Vertoon hoogste tellings tafel
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Toon gevorderde stellings
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Wys NewGRF stellings
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kyk vir nuwe of bygewerkde inhoud om af te laai
@@ -3826,6 +3834,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Kon sleg
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Groot skermskoot
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Die skermskoot sal 'n resolusie van {COMMA} x {COMMA} pixels beslaan. Hierdie skermskoot mag 'n tydjie neem. Wil u aangaan??
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skermkiekie suksesvol gestoor as '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Skermskoot het misluk!
