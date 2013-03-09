@@ -19,8 +19,9 @@ static const int CF_NOEURO = 0; ///< Currency never switches to the Euro (as far
 static const int CF_ISEURO = 1; ///< Currency _is_ the Euro.
 
 /**
- * This enum gives the currencies a unique id in order to refer
- * quickly to them, especially the custom one. And to ensure
+ * This enum gives the currencies a unique id which must be maintained for
+ * savegame compatibility and in order to refer to them quickly, especially
+ * for referencing the custom one.
  */
 enum Currencies {
 	CURRENCY_GBP,       ///< British Pound
