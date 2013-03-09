@@ -23,7 +23,7 @@
 	 *   |   |   Euro year   |              |                | name
 	 *   |   |    |          |              |                |  | */
 /** The original currency specifications. */
-static const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
+static const CurrencySpec origin_currency_specs[CURRENCY_END] = {
 	{    1, "", CF_NOEURO, "\xC2\xA3",     "",               0, STR_GAME_OPTIONS_CURRENCY_GBP    }, ///< british pound
 	{    2, "", CF_NOEURO, "$",            "",               0, STR_GAME_OPTIONS_CURRENCY_USD    }, ///< american dollar
 	{    2, "", CF_ISEURO, "\xE2\x82\xAC", "",               0, STR_GAME_OPTIONS_CURRENCY_EUR    }, ///< euro
@@ -55,49 +55,11 @@ static const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
 	{    4, "", 2014,      "",             NBSP "Lt",        1, STR_GAME_OPTIONS_CURRENCY_LTL    }, ///< lithuanian litas
 	{ 1850, "", CF_NOEURO, "\xE2\x82\xA9", "",               0, STR_GAME_OPTIONS_CURRENCY_KRW    }, ///< south korean won
 	{   13, "", CF_NOEURO, "R" NBSP,       "",               0, STR_GAME_OPTIONS_CURRENCY_ZAR    }, ///< south african rand
-	{    1, "", CF_NOEURO, "",             "",               2, STR_GAME_OPTIONS_CURRENCY_CUSTOM }, ///< custom currency
+	{    1, "", CF_NOEURO, "",             "",               2, STR_GAME_OPTIONS_CURRENCY_CUSTOM }, ///< custom currency (add further languages below)
 };
 
 /** Array of currencies used by the system */
-CurrencySpec _currency_specs[NUM_CURRENCY];
-
-/**
- * These enums are only declared in order to make sense
- * out of the TTDPatch_To_OTTDIndex array that will follow
- * Every currency used by Ottd is there, just in case TTDPatch will
- * add those missing in its code
- */
-enum Currencies {
-	CURR_GBP,
-	CURR_USD,
-	CURR_EUR,
-	CURR_JPY,
-	CURR_ATS,
-	CURR_BEF,
-	CURR_CHF,
-	CURR_CZK,
-	CURR_DEM,
-	CURR_DKK,
-	CURR_ESP,
-	CURR_FIM,
-	CURR_FRF,
-	CURR_GRD,
-	CURR_HUF,
-	CURR_ISK,
-	CURR_ITL,
-	CURR_NLG,
-	CURR_NOK,
-	CURR_PLN,
-	CURR_RON,
-	CURR_RUR,
-	CURR_SIT,
-	CURR_SEK,
-	CURR_YTL,
-	CURR_SKK,
-	CURR_BRL,
-	CURR_EEK,
-	CURR_LTL,
-};
+CurrencySpec _currency_specs[CURRENCY_END];
 
 /**
  * This array represent the position of OpenTTD's currencies,
@@ -107,25 +69,25 @@ enum Currencies {
  */
 const byte TTDPatch_To_OTTDIndex[] =
 {
-	CURR_GBP,
-	CURR_USD,
-	CURR_FRF,
-	CURR_DEM,
-	CURR_JPY,
-	CURR_ESP,
-	CURR_HUF,
-	CURR_PLN,
-	CURR_ATS,
-	CURR_BEF,
-	CURR_DKK,
-	CURR_FIM,
-	CURR_GRD,
-	CURR_CHF,
-	CURR_NLG,
-	CURR_ITL,
-	CURR_SEK,
-	CURR_RUR,
-	CURR_EUR,
+	CURRENCY_GBP,
+	CURRENCY_USD,
+	CURRENCY_FRF,
+	CURRENCY_DEM,
+	CURRENCY_JPY,
+	CURRENCY_ESP,
+	CURRENCY_HUF,
+	CURRENCY_PLN,
+	CURRENCY_ATS,
+	CURRENCY_BEF,
+	CURRENCY_DKK,
+	CURRENCY_FIM,
+	CURRENCY_GRD,
+	CURRENCY_CHF,
+	CURRENCY_NLG,
+	CURRENCY_ITL,
+	CURRENCY_SEK,
+	CURRENCY_RUR,
+	CURRENCY_EUR,
 };
 
 /**
@@ -150,14 +112,14 @@ uint GetMaskOfAllowedCurrencies()
 	uint mask = 0;
 	uint i;
 
-	for (i = 0; i < NUM_CURRENCY; i++) {
+	for (i = 0; i < CURRENCY_END; i++) {
 		Year to_euro = _currency_specs[i].to_euro;
 
 		if (to_euro != CF_NOEURO && to_euro != CF_ISEURO && _cur_year >= to_euro) continue;
 		if (to_euro == CF_ISEURO && _cur_year < 2000) continue;
 		mask |= (1 << i);
 	}
-	mask |= (1 << CUSTOM_CURRENCY_ID); // always allow custom currency
+	mask |= (1 << CURRENCY_CUSTOM); // always allow custom currency
 	return mask;
 }
 
@@ -195,11 +157,11 @@ void ResetCurrencies(bool preserve_custom)
 StringID *BuildCurrencyDropdown()
 {
 	/* Allow room for all currencies, plus a terminator entry */
-	static StringID names[NUM_CURRENCY + 1];
+	static StringID names[CURRENCY_END + 1];
 	uint i;
 
 	/* Add each name */
-	for (i = 0; i < NUM_CURRENCY; i++) {
+	for (i = 0; i < CURRENCY_END; i++) {
 		names[i] = _currency_specs[i].name;
 	}
 	/* Terminate the list */

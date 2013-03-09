@@ -2487,7 +2487,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
 				StringID newone = GetGRFStringID(_cur.grffile->grfid, buf->ReadWord());
 
-				if ((newone != STR_UNDEFINED) && (curidx < NUM_CURRENCY)) {
+				if ((newone != STR_UNDEFINED) && (curidx < CURRENCY_END)) {
 					_currency_specs[curidx].name = newone;
 				}
 				break;
@@ -2497,7 +2497,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
 				uint32 rate = buf->ReadDWord();
 
-				if (curidx < NUM_CURRENCY) {
+				if (curidx < CURRENCY_END) {
 					/* TTDPatch uses a multiple of 1000 for its conversion calculations,
 					 * which OTTD does not. For this reason, divide grf value by 1000,
 					 * to be compatible */
@@ -2512,7 +2512,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
 				uint16 options = buf->ReadWord();
 
-				if (curidx < NUM_CURRENCY) {
+				if (curidx < CURRENCY_END) {
 					_currency_specs[curidx].separator[0] = GB(options, 0, 8);
 					_currency_specs[curidx].separator[1] = '\0';
 					/* By specifying only one bit, we prevent errors,
@@ -2528,7 +2528,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
 				uint32 tempfix = buf->ReadDWord();
 
-				if (curidx < NUM_CURRENCY) {
+				if (curidx < CURRENCY_END) {
 					memcpy(_currency_specs[curidx].prefix, &tempfix, 4);
 					_currency_specs[curidx].prefix[4] = 0;
 				} else {
@@ -2541,7 +2541,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
 				uint32 tempfix = buf->ReadDWord();
 
-				if (curidx < NUM_CURRENCY) {
+				if (curidx < CURRENCY_END) {
 					memcpy(&_currency_specs[curidx].suffix, &tempfix, 4);
 					_currency_specs[curidx].suffix[4] = 0;
 				} else {
@@ -2554,7 +2554,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
 				Year year_euro = buf->ReadWord();
 
-				if (curidx < NUM_CURRENCY) {
+				if (curidx < CURRENCY_END) {
 					_currency_specs[curidx].to_euro = year_euro;
 				} else {
 					grfmsg(1, "GlobalVarChangeInfo: Euro intro date %d out of range, ignoring", curidx);
