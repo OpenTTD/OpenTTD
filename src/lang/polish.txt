@@ -1983,6 +1983,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... igno
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoruję zestaw Base Sounds '{STRING}': nie odnaleziono
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoruję zestaw Base Music '{STRING}': nie odnaleziono
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Brak pamięci
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Nie powiodła się rezerwacja pamięci cache dla sprite'ów od wielkości {BYTES}. Pamięć cache sprite'ów została zredukowana do {BYTES}. Obniży to wydajność OpenTTD. By zmniejszyć zapotrzebowanie pamięci, możesz spróbować wyłączyć grafikę 32bpp i/lub poziomy zbliżenia
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3317,7 +3318,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nie ma �
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Czeka: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} skierowany z {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} z {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} zarezerwowane do załadunku)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Akceptuje

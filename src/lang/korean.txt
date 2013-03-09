@@ -1096,7 +1096,7 @@ STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :차량과 기�
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :건설 속도: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :인공지능의 건설 행동량을 제한하여 건설 속도를 조절할 수 있습니다.
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :차량 고장 빈도수: {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :점검을 제대로 받지 않은 차량이 얼마나 자주 고장나도록 할 지를 조절하십시오.
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :점검을 제대로 받지 않은 차량이 얼마나 자주 고장나도록 할지를 조절하십시오.
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :보조금 배수: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :보조금을 얼마나 지급할지 설정하십시오.
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :건설 가격: {STRING}
@@ -1106,7 +1106,7 @@ STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :이 옵션을 �
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :열차가 역 내에서 회차하는 것을 금지: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :이 옵션을 켜면 회차했을 때 다음 목적지까지 가는 더 짧은 경로가 있어도 열차가 비두단식 역에서 회차할 수 없게 됩니다.
 STR_CONFIG_SETTING_DISASTERS                                    :재앙: {STRING}
-STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :블록이나 차량, 기반시설을 가끔씩 파괴하는 재앙을 켜거나 끕니다.
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :블록이나 차량, 기반시설을 간혹 파괴할 수도 있는 재앙 옵션을 켜거나 끕니다.
 STR_CONFIG_SETTING_CITY_APPROVAL                                :지역 개발에 대한 도시 의회의 태도: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :회사가 유발하는 소음과 환경 파괴가 회사에 대한 도시의 평가치와 향후 해당 지역에서의 건설 행동에 얼마나 영향을 미칠지 선택하십시오.
 
@@ -1240,8 +1240,8 @@ STR_CONFIG_SETTING_HOVER_DELAY                                  :도움말 보�
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :마우스를 올려놓았을 때 도움말이 뜨는데 걸리는 시간을 설정합니다. 마우스 오른쪽 클릭으로 바로 뜨도록 할 수도 있습니다.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :마우스를 {COMMA}초간 올려놓기
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :마우스 오른쪽 클릭
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :도시명 옆에 도시의 인구수를 표시함: {STRING}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :도시명 옆에 도시의 인구수를 표시합니다.
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :도시 이름 옆에 도시의 인구 수를 표시함: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :도시 이름 옆에 도시의 인구 수를 표시합니다.
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :그래프 선의 두께: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :그래프의 선 두께를 설정합니다. 얇으면 자세히 볼 수 있고, 두꺼우면 눈에 확 들어오며 색상을 분간하기가 편해집니다.
 
@@ -1355,7 +1355,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :열차가 경�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :건설 도구를 사용 후 계속 유지: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :다리, 터널 등의 건설 도구를 사용 후에도 계속 열어둔 채로 놔둡니다.
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :재정 창에서 비용을 종류별로 묶어서 표시: {STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :재정 창에 나타나는 회사 비용을 어떻게 표시할 지 설정합니다.
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :재정 창에 나타나는 회사 비용을 어떻게 표시할지 설정합니다.
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :뉴스 자막: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :요약된 뉴스 메시지가 나타나면 효과음을 재생합니다.
@@ -2824,7 +2824,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}도시 �
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}(없음)
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}도시 이름 - 이 도시로 시점을 변경하려면 클릭하세요. Ctrl+클릭하면 이 도시 위치를 기준으로 새로운 외부 화면을 엽니다.
-STR_TOWN_POPULATION                                             :{BLACK}총 인구수: {COMMA}
+STR_TOWN_POPULATION                                             :{BLACK}총 인구 수: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
@@ -3749,7 +3749,7 @@ STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}중단 �
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}중단 문구
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}인공지능 로그 메시지가 이 문자열과 일치하면 게임을 일시 정지시킵니다.
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}대소문자 구분
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}인공지능 기록 메시지에서 중단 문구를 검색할 때 대소문자를 구분할 지 여부를 선택합니다.
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}인공지능 기록 메시지에서 중단 문구를 검색할 때 대소문자를 구분할지 여부를 선택합니다.
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}계속
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}중단된 인공지능의 연산을 재개합니다.
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}이 인공지능에서 출력된 기록 메시지를 보여줍니다.

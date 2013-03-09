@@ -2060,6 +2060,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Atlasīt
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Atzīmēt visu saturu lejupielādei, lai tas ir jauninājums jau esošajam
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Atcelt visu atlasi
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Noņemt visas satura lejupielādes atzīmes
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Meklēt ārējās vietnēs
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Meklēt OpenTTD pakalpojumos nepieejamu saturu ar OpenTTD nesaistītās vietnēs
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Jūs aizejat no OpenTTD!
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Atzīmju/nosaukumu filtrs:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Apmeklēt tīmekļa vietni
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Apmeklēt tīmekļa vietni, lai tiktu pie šī satura
