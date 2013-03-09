@@ -10,6 +10,8 @@
 /** @file currency.cpp Support for different currencies. */
 
 #include "stdafx.h"
+#include "core/bitmath_func.hpp"
+
 #include "currency.h"
 #include "news_func.h"
 #include "settings_type.h"
@@ -107,9 +109,9 @@ byte GetNewgrfCurrencyIdConverted(byte grfcurr_id)
  * get a mask of the allowed currencies depending on the year
  * @return mask of currencies
  */
-uint GetMaskOfAllowedCurrencies()
+uint64 GetMaskOfAllowedCurrencies()
 {
-	uint mask = 0;
+	uint64 mask = 0LL;
 	uint i;
 
 	for (i = 0; i < CURRENCY_END; i++) {
@@ -117,9 +119,9 @@ uint GetMaskOfAllowedCurrencies()
 
 		if (to_euro != CF_NOEURO && to_euro != CF_ISEURO && _cur_year >= to_euro) continue;
 		if (to_euro == CF_ISEURO && _cur_year < 2000) continue;
-		mask |= (1 << i);
+		SetBit(mask, i);
 	}
-	mask |= (1 << CURRENCY_CUSTOM); // always allow custom currency
+	SetBit(mask, CURRENCY_CUSTOM); // always allow custom currency
 	return mask;
 }
 

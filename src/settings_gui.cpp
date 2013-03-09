@@ -189,7 +189,7 @@ struct GameOptionsWindow : Window {
 				list = new DropDownList();
 				*selected_index = this->opt->locale.currency;
 				StringID *items = BuildCurrencyDropdown();
-				uint disabled = _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies();
+				uint64 disabled = _game_mode == GM_MENU ? 0LL : ~GetMaskOfAllowedCurrencies();
 
 				/* Add non-custom currencies; sorted naturally */
 				for (uint i = 0; i < CURRENCY_END; items++, i++) {

@@ -85,7 +85,7 @@ extern CurrencySpec _currency_specs[CURRENCY_END];
 #define _custom_currency (_currency_specs[CURRENCY_CUSTOM])
 #define _currency ((const CurrencySpec*)&_currency_specs[GetGameSettings().locale.currency])
 
-uint GetMaskOfAllowedCurrencies();
+uint64 GetMaskOfAllowedCurrencies();
 void CheckSwitchToEuro();
 void ResetCurrencies(bool preserve_custom = true);
 StringID *BuildCurrencyDropdown();
