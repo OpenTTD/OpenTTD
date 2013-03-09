@@ -56,6 +56,8 @@ enum Currencies {
 	CURRENCY_KRW,       ///< South Korean Won
 	CURRENCY_ZAR,       ///< South African Rand
 	CURRENCY_CUSTOM,    ///< Custom currency
+	CURRENCY_GEL,       ///< Georgian Lari
+	CURRENCY_IRR,       ///< Iranian Rial
 	CURRENCY_END,       ///< always the last item
 };
 
