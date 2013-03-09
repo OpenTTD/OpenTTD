@@ -190,23 +190,17 @@ struct GameOptionsWindow : Window {
 				*selected_index = this->opt->locale.currency;
 				StringID *items = BuildCurrencyDropdown();
 				uint disabled = _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies();
-				int custom_index = -1;
 
 				/* Add non-custom currencies; sorted naturally */
-				for (uint i = 0; *items != INVALID_STRING_ID; items++, i++) {
-					if (*items == STR_GAME_OPTIONS_CURRENCY_CUSTOM) {
-						custom_index = i;
-					} else {
-						list->push_back(new DropDownListStringItem(*items, i, HasBit(disabled, i)));
-					}
+				for (uint i = 0; i < CURRENCY_END; items++, i++) {
+					if (i == CURRENCY_CUSTOM) continue;
+					list->push_back(new DropDownListStringItem(*items, i, HasBit(disabled, i)));
 				}
 				list->sort(DropDownListStringItem::NatSortFunc);
 
 				/* Append custom currency at the end */
-				if (custom_index >= 0) {
-					list->push_back(new DropDownListItem(-1, false)); // separator line
-					list->push_back(new DropDownListStringItem(STR_GAME_OPTIONS_CURRENCY_CUSTOM, custom_index, HasBit(disabled, custom_index)));
-				}
+				list->push_back(new DropDownListItem(-1, false)); // separator line
+				list->push_back(new DropDownListStringItem(STR_GAME_OPTIONS_CURRENCY_CUSTOM, CURRENCY_CUSTOM, HasBit(disabled, CURRENCY_CUSTOM)));
 				break;
 			}
 
