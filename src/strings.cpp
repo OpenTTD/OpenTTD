@@ -617,6 +617,11 @@ static int DeterminePluralForm(int64 count, int plural_form)
 		 *  Maltese */
 		case 12:
 			return (n == 1 ? 0 : n == 0 || (n % 100 > 1 && n % 100 < 11) ? 1 : (n % 100 > 10 && n % 100 < 20) ? 2 : 3);
+		/* Four forms: special cases for 1 and 11, 2 and 12, 3 .. 10 and 13 .. 19, other
+		 * Used in:
+		 *  Scottish Gaelic */
+		case 13:
+			return ((n == 1 || n == 11) ? 0 : (n == 2 || n == 12) ? 1 : ((n > 2 && n < 11) || (n > 12 && n < 20)) ? 2 : 3);
 	}
 }
 
