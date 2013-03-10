@@ -877,6 +877,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauische Lita
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Südkoreanischer Won (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Südafrikanischer Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Eigene...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgischer Lari (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranischer Rial (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Maßeinheiten
@@ -1104,7 +1106,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Höhe der Bau- 
 STR_CONFIG_SETTING_RECESSIONS                                   :Rezessionen: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Falls aktiv, können Rezessionen alle paar Jahre auftreten. Während einer Rezession ist die Produktion aller Industrien viel niedriger (und kehrt zum Ende der Rezession zum gleichen Level zurück wie vor der Rezession)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Zügen das Umdrehen in Bahnhöfen verbieten: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Falls aktiv, werden Züge in Durchgangsbahnhöfen nicht umdrehen, auch wenn ein kürzerer Pfad zum nächsten Zielbahnhof mittels umdrehen verfügbar ist
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Falls aktiv, werden Züge in Durchgangsbahnhöfen nicht umdrehen, auch wenn ein kürzerer Pfad zum nächsten Zielbahnhof mittels Umdrehen verfügbar ist
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrophen: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Katastrophen umschalten, welche gelegentlich Fahrzeugeoder Infrastruktur blockieren oder zerstören
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Haltung der Stadtverwaltung gegenüber Landschaftsumgestaltungen: {STRING}

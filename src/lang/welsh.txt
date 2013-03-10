@@ -873,6 +873,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litau Lithiwana
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won De Korea (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand De Affrica (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Addasedig...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgia (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iran (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Unedau mesur
@@ -1049,10 +1051,14 @@ STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Gosodiad cwmni 
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Gosodiad cwmni (storir yn y ffeil gadw; yn effeithio ar y cwmni presennol yn unig)
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Gosodiadau gêm (cedwir yn y ffeiliau cadw, gan effeithio ar gemau newydd yn unig)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Gosodiadau gêm (cedwir yn y ffeil cadw, gan effeithio ar y gêm bresennol yn unig)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Gosodiadau cwmni (cedwir yn y ffeiliau cadw, gan effeithio ar y gemau newydd yn unig)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Gosodiadau cwmni (cedwir yn y ffeil cadw, gan effeithio ar y cwmni presennol yn unig)
 
 STR_CONFIG_SETTING_OFF                                          :I Ffwrdd
 STR_CONFIG_SETTING_ON                                           :Ymlaen
-STR_CONFIG_SETTING_DISABLED                                     :analluogwyd
+STR_CONFIG_SETTING_DISABLED                                     :Analluogwyd
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :I ffwrdd
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Eich cwmni
@@ -1359,6 +1365,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... nid 
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... yn anwybyddu set Graffeg Sylfaenol '{STRING}': ni ganfuwyd
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... yn anwybyddu setiau Sain Sylfaenol '{STRING}': ni ganfuwyd
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... yn anwybyddu set Sain Sylfaenol '{STRING}': ni ganfuwyd
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Allan o gof
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Methwyd dyroddi {BYTES} o storfa corluniau. Lleihawyd y storfa corluniau at {BYTES}. Bydd hyn yn lleihau perfformiad OpenTTD. I leihau gofynion cof gallwch roi cynnig ar analluogi graffigiau 32 did a/neu lefelau mwyháu
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1835,6 +1843,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Dewis uw
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marcio'r holl gynnwys sydd yn uwchraddiad ar gyfer cynnwys sydd eisioes yn bodoli ac i'w lwytho i lawr
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Dad-ddewis y cyfan
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marcio'r holl gynnwys nad yw i'w lwytho i lawr
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Chwilio gwefannau allanol
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Nid yw cynnwys chwilio ar gael ar wasannaeth cynnwys OpenTTD ar gyfer gwefannau nad ydynt yn gysylltiedig ag OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Rydych yn gadael OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Mae'r termau ac amodau ar gyfer llawrlwytho cynnwys o wefannau allanolyn amrywio.{}Bydd yn rhaid i chi gyfeirio at y gwefannau allanol ar gyfer cyfarwyddiadau a sut i lwytho'r cynnwys yn OpenTTD.{}A ydych am barhau?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Hidlydd enw/tag:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Gwefan
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Llwytho'r gwefan ar gyfer y cynnwys yma
@@ -1976,12 +1988,12 @@ STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Signal C
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Signal Llwybr (semaffor){}Mae signal llwybr yn caniatáu i fwy nag un trên symud i mewn i floc signal ar yr un pryd, os oes modd i'r trên gofrestru llwybr clir at fan aros diogel. Gellir pasio signalau llwybro cyffredin o'r ochr gefn
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Signal Llwybr Unffordd (semaffor){}Mae signal llwybr yn caniatáu i fwy nag un trên symud i mewn i floc signal ar yr un pryd, os oes modd i'r trên gofrestru llwybr clir at fan aros diogel. Ni ellir pasio signalau llwybro unffordd o'r ochr gefn
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Signal Bloc (trydan){}Dyma'r math mwyaf sylfaenol o signal, sy'n caniatáu un trên yn unig ymhob bloc ar unrhyw adeg
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Signal Mynediad (trydan){}Gwyrdd cyhyd a bod un neu fwy o signalau gadael yn wyrdd yn yr ardal nesaf. Coch fel arall
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Signal Mynediad (trydan){}Gwyrdd cyhyd y bod un neu fwy o signalau gadael yn wyrdd yn yr ardal nesaf o drac. Dangosai coch fel arall
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Signal Gadael (trydan){}Yn ymddwyn fel signal bloc, ond yn angenrheidiol ar gyfer gweithredu'r lliw cywir ar signalau mynediad a chyfun
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Signal Cyfun (trydan){}Mae'r signal cyfun yn gweithredu fel signal mynediad ac fel signal gadael. Mae hyn yn eich galluogi i adeiladu "coed" o ragsignalau
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Signal Llwybr (trydan){}Mae signal llwybr yn caniatáu i fwy nag un trên symud i mewn i floc signal ar yr un pryd, os oes modd i'r trên gofrestru llwybr clir at fan aros diogel. Gellir pasio signalau llwybro cyffredin o'r ochr gefn
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Signal Llwybr Unffordd (trydan){}Mae signal llwybr yn caniatáu i fwy nag un trên symud i mewn i floc signal ar yr un pryd, os oes modd i'r trên gofrestru llwybr clir at fan aros diogel. Ni ellir pasio signalau llwybro unffordd o'r ochr gefn
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Trosi Signal{}Pan fydd wedi'i ddewis, bydd clicio ar signal sy'n bodoli yn ei drosi i'r math ac amrywiad a ddewiswyd, bydd Ctrl+Clic yn toglu'r amrywiad sy'n bodoli. Mae Shift+Clic yn dangos amcangyfrif o'r gost
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Trosi Signal{}Pan fydd wedi'i ddewis, bydd clicio ar signal sy'n bodoli yn ei drosi i'r math ac amrywiad a ddewiswyd, Mae Shift+Clic yn dangos amcangyfrif o'r gost
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Dwysedd llusgo signalau
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Cynyddu dwysedd llusgo signalau
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Cynyddu amlder y signalau wrth lusgo
@@ -2327,6 +2339,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Rhowch e
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Cynhyrchu Byd
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Maint Map:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Dewis maint y map mewn teiliau. Bydd y nifer o deiliau sydd ara gael ychydig yn llai
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nifer trefi:
 STR_MAPGEN_DATE                                                 :{BLACK}Dyddiad:
@@ -2419,7 +2432,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Symud i 
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Symud y ffeil NewGRF sydd wedi'i ddewis i fyny'r rhestr
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Symud i Lawr
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Symud y ffeil NewGRF sydd wedi'i ddewis i lawr y rhestr
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Rhestr o bob ffeil NewGRF sydd wedi'u gosod.
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Rhestr o bob ffeil NewGRF sydd wedi'u gosod
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Gosod paramedrau
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Dangos paramedrau
@@ -2512,6 +2525,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Rydych 
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Methu ychwanegu'r ffeil: ID GRF dyblyg
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ni ddarganfuwyd ffeil sy'n cydweddu (GRF cydnaws wedi'i lwytho)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Methu ychwanegu ffeil: Wedi cyrraedd terfyn ffeiliau NewGRF
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Llwythwyd GRF(au) cydnaws yn lle'r rhai coll
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Analluogwyd y ffeiliau GRF coll
@@ -2680,7 +2694,8 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nid oes 
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Disgwyl: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} ar ei ffordd o {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} o {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} wedi ei gadw ar gyfer llwytho)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Derbyn
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Dangos rhestr o'r llwythi sy'n cael eu derbyn
@@ -3193,6 +3208,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Bwlch rh
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Cynyddu'r bwlch rhwng gwasanaethau fesul 10. Mae Ctrl+Clic yn gostwng y bwlch rhwng gwasanaethau fesul 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Gostwng y bwlch rhwng gwasanaethau fesul 10. Mae Ctrl+Clic yn gostwng y bwlch rhwng gwasanaethau fesul 5.
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Newid dull ystod gwasanaethu
+STR_VEHICLE_DETAILS_DEFAULT                                     :Rhagosodedig
+STR_VEHICLE_DETAILS_DAYS                                        :Diwrnod
+STR_VEHICLE_DETAILS_PERCENT                                     :Canran
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Enwi trên
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Enwi cerbyd ffordd
@@ -3563,6 +3582,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Incwm: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Trosglwyddo: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Trosglwyddo: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Trosglwyddo: {CURRENCY_LONG}{WHITE} / {GREEN}Incwm: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Trosglwyddo: {CURRENCY_LONG}{WHITE} / {GREEN}Incwm: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Trosglwyddo: {CURRENCY_LONG}{WHITE} / {RED}Cost: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Trosglwyddo: {CURRENCY_LONG}{WHITE} / {RED}Cost: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Amcangyfrif Côst: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Amcangyfrif Incwm: {CURRENCY_LONG}
 

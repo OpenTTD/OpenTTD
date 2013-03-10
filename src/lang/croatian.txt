@@ -972,6 +972,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litvanski Litas
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Južnokorejski Won (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Južnoafrički Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Proizvoljno...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijski Lari (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranski Rial (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mjerni sustav
@@ -1698,6 +1700,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... form
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... zaobilazim Osnovni Grafički set '{STRING}': nije pronađen
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... zaobilazim Osnovni Zvukovni set '{STRING}': nije pronađen
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... zaobilazim Osnovni Muzički set '{STRING}': nije pronađen
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Nedostaje memorije
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Dodjeljivanje {BYTES} predmemorije spriteova nije uspjelo. Predmemorija spriteova je smanjena na {BYTES}. Ovo će smanjiti performanse OpenTTD-a. Za smanjivanje potreba memorije you možete pokušati isključiti 32bpp grafiku i/ili razine zumiranja.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
