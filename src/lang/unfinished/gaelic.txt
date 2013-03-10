@@ -1,7 +1,7 @@
 ##name Scottish Gaelic
 ##ownname Gàidhlig
 ##isocode gd_GB
-##plural 8
+##plural 13
 ##textdir ltr
 ##digitsep ,
 ##digitsepcur ,
