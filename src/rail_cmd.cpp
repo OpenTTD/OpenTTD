@@ -1022,15 +1022,8 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	CommandCost ret = CheckTileOwnership(tile);
 	if (ret.Failed()) return ret;
 
-	{
-		/* See if this is a valid track combination for signals, (ie, no overlap) */
-		TrackBits trackbits = GetTrackBits(tile);
-		if (KillFirstBit(trackbits) != TRACK_BIT_NONE && // More than one track present
-				trackbits != TRACK_BIT_HORZ &&
-				trackbits != TRACK_BIT_VERT) {
-			return_cmd_error(STR_ERROR_NO_SUITABLE_RAILROAD_TRACK);
-		}
-	}
+	/* See if this is a valid track combination for signals (no overlap) */
+	if (TracksOverlap(GetTrackBits(tile))) return_cmd_error(STR_ERROR_NO_SUITABLE_RAILROAD_TRACK);
 
 	/* In case we don't want to change an existing signal, return without error. */
 	if (HasBit(p1, 17) && HasSignalOnTrack(tile, track)) return CommandCost();
