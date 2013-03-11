@@ -940,6 +940,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litván Litas (
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Dél-koreai Von (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Dél-afrikai Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Saját...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Grúz Lari (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iráni Riál (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mértékegységek

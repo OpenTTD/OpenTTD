@@ -1021,6 +1021,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Литовск�
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Южнокорейская вона (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Южноафриканский ранд (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Своя...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузинский лари (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Иранский риал (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Единицы измерения

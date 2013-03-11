@@ -876,6 +876,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litouwse Litas 
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Zuid-Koreaanse Won (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Zuid-Afrikaanse Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Aangepast...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgische Lari (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iraanse Rial (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Meeteenheden
@@ -2938,7 +2940,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Er wacht
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Wachtend: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} op weg van {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} van {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} gereserveerd voor laden)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepteert

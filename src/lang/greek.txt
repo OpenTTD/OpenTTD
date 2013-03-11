@@ -970,6 +970,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Λιθουαν�
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Νοτιοκορεάτικο Γουόν (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Νοτιοαφρικάνικο Ραντ (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Άλλο...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Γεοργιανό Λάρι (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Ιρανικό Ριάλ (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Μονάδες μέτρησης
@@ -1198,6 +1200,7 @@ STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Όταν είν
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Απαγορεύεται η αντιστροφή τρένων στους σταθμούς: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Όταν είναι ενεργοποιημένο, τα τρένα δεν θα κάνουν όπισθεν σε μη-τελικούς σταθμούς εάν υπάρχει κοντινότερη διαδρομή προς τον επόμενή τους προορισμό όταν κάνουν όπισθεν
 STR_CONFIG_SETTING_DISASTERS                                    :Καταστροφές: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Στάση δημοτικού συμβουλίου προς τον μετασχηματισμό της περιοχής: {STRING}
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Επιτρέπεται το κτίσιμο σε πλαγιές και ακτές: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Όταν είναι ενεργοποιημένο, οι σιδηροτροχιές και σταθμοί μπορούν να κτισθούν στις περισσότερες κλίσεις. Όταν είναι απενεργοποιημένο, επιτρέπονται μόνο όπου αντιστοιχούν στην κατεύθυνση της σιδηροτροχιάς και γι' αυτό δεν χρειάζονται θεμέλια
