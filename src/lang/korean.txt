@@ -877,6 +877,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :리투아니아
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :대한민국 원 (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :남아프리카공화국 자르 (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :사용자 설정...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :그루지야 라리 (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :이란 리알 (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}길이 단위

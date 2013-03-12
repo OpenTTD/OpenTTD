@@ -1686,8 +1686,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Toirmisgte
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Ceadaichte
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Ceadaichte, co-dhealbhachd a' bhaile ghnàthaichte
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :In game placement of trees: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Cùm smachd air na crohan a nochdas sa gheama air thuaiream. Dh'fhaoidte gu bheil seo buaidh air gnìomhachasan a tha an eisimeil fàs nan craobhan a leithid muileannan-fiodha
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Cur nan craobh sa gheama: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Cùm smachd air na craobhan a nochdas sa gheama air thuaiream. Dh'fhaoidte gu bheil seo buaidh air gnìomhachasan a tha an eisimeil fàs nan craobhan a leithid muileannan-fiodha
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Gun ghin {RED}(brisidh seo muileannan-fiodha)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Ann an coilltean-uisge a-mhàin
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Àite sam bith
