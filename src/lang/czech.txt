@@ -958,6 +958,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litevský litas
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Jihokorejský won (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Jihoafrický rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Vlastní...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgijské Lari (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Íránský Riál (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Jednotka vzdálenosti
@@ -1171,7 +1173,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximální půjčka: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Jak moc si může společnost půjčit (bez ohledu na inflaci)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Výše úroků: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Výše úroků půjček; pokud je zapnuta inflace, ovlivňuje i ji
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Výše úroků z půjček; rovněž ovlivňuje inflaci, pokud je zapnuta
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Cena provozu: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Nastav cenu držby a provozu vozidel a infrastruktury
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Rychlost výstavby: {STRING}
@@ -1185,7 +1187,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nastav cenu vý
 STR_CONFIG_SETTING_RECESSIONS                                   :Krize: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Pokud jsou krize zapnuty, mohou se objevit každých pár let. Během krize je snížena veškerá produkce. Po krizi se opět vrátí do původních hodnot
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Zakázat otáčení vlaků ve stanicích: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Pokud je zapnuto, vlaky se nebudou otáčet v nekoncových stanicích ani i když by to zkrátilo cestu k dalšímu cíli
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Pokud je zapnuto, vlaky se nebudou otáčet v nekoncových stanicích ani pokud by to zkrátilo cestu k dalšímu cíli
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofy: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Katastrofy, které mohou občas zablokovat či zničit vozidla nebo infrastrukturu
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Postoj městské rady k úpravám v oblasti: {STRING}
@@ -1684,6 +1686,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... form
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorování základní grafické sady '{STRING}': nenalezeno
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorování základní hudební sady '{STRING}': nenalazeno
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorování základní hudební sady '{STRING}': nenalezeno
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Nedostatek paměti
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Alokování {BYTES} grafické mezipaměti selhalo. Grafická mezipaměť byla zredukována na {BYTES}. To sníží výkon OpenTTD. Pro snížení paměťových nároků můžeš zkusit vypnout 32bpp grafiku a/nebo úrovně přiblížení
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3024,7 +3028,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nečeká
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Čeká tu: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} na cestě z{NBSP}{STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} z {NBSP}{STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervováno pro naložení)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Přijímá

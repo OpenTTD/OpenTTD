@@ -1256,6 +1256,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lit litewski (L
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won południowokoreański (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Południowej Afryki (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Własna...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari gruzińskie (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial irański (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Jednostki miar
