@@ -845,37 +845,39 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Välj va
 
 ############ start of currency region
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Britiska pund (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikanska Dollar (USD)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikansk dollar (USD)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japanska Yen (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Österrikiska shilling (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgiska franc (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Schweiziska franc (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tjeckiska kronor (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Tyska mark (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danska kronor (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Spanska Peseta (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finska mark (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franska Franc (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grekiska drachmer (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungerska Forint (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Isländska kronor (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italienska lire (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Holländska guilder (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norska kronor (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polska Zloty (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumänsk Leu (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ryska rubel (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenska Tolar (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Svenska kronor (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkisk Lire (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakisk Koruna (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasiliansk Real (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estniska Kroon (EEK)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japansk yen (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Österrikisk shilling (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgisk franc (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Schweizisk franc (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tjeckisk krona (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :D-mark (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Dansk krona (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Spansk peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finsk mark (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Fransk franc (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grekisk drachme (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungersk forint (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Isländsk krona (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italiensk lira (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Nederländsk gulden (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norsk krona (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polsk złoty (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumänsk leu (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rysk rubel (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovensk tolar (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Svensk krona (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkisk lira (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakisk krona (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasiliansk real (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estnisk krona (EEK)
 STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauisk litas (LTL)
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Sydkoreansk won (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Sydafrikansk rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Egen...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgisk lari (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iransk rial (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mätenheter
@@ -973,11 +975,11 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Sätt pr
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Ändelse: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Sätt suffix-sträng för din valuta
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Går över till Euro: {ORANGE}{NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Går över till Euro: {ORANGE}aldrig
-STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Sätt år för byte till Euro
-STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Byt till Euro tidigare
-STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Byt till Euro senare
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Går över till euron: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Går över till euron: {ORANGE}aldrig
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Sätt år för byte till euron
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Byt till euron tidigare
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Byt till euron senare
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Förhandsgranska: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pund (£) i din valuta
@@ -2936,7 +2938,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Ingen so
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Väntar: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} på väg från {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} från {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reserverat för lastning)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepterar
