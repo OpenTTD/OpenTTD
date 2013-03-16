@@ -1048,9 +1048,9 @@ STR_GAME_OPTIONS_CURRENCY_CHF                                   :Švajcarski Fra
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Češka Kruna (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Nemačka Marka (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danska Kruna (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pezeta (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finski Marka (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franak (FRF)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Španska Pezeta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finska Marka (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Francuski Franak (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grčka Drahma (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Mađarska Forinta (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandska Kruna (ISK)
@@ -1058,7 +1058,7 @@ STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italijanska Lir
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Holandski Gulden (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norveška Kruna (NOK)
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Poljski Zlot (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumunska Lej (RON)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumunski Lej (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ruska Rublja (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenački Tolar (SIT)
 STR_GAME_OPTIONS_CURRENCY_SEK                                   :Švedska Kruna (SEK)
@@ -1070,6 +1070,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litvanski Litas
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Južnokorejski Von (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Južnoafrički Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sopstvena...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijski Lari (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranski Rijal (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Merne jedinice
@@ -1106,7 +1108,7 @@ STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Mađarska
 STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austrijanska
 STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumunska
 STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Češka
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Švajcerska
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Švajcarska
 STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danska
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turska
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italijanska
@@ -1225,7 +1227,7 @@ STR_SUBSIDY_X4                                                  :x4
 
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Ravničarski
 STR_TERRAIN_TYPE_FLAT                                           :Brdski
-STR_TERRAIN_TYPE_HILLY                                          :Brdskio-planinski
+STR_TERRAIN_TYPE_HILLY                                          :Brdsko-planinski
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Planinski
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Popustljiv
@@ -1236,6 +1238,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nisu dos
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredna Podešavanja
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtriraj po:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Proširi sve
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skupi sve
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(nema objašnjenja)
@@ -1248,10 +1251,12 @@ STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Podešavanja pr
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Podešavanja preduzeća (čuvaju se prilikom snimanja; utiču samo tekuće preduzeće)
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Prikaži:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Ograničava donju listu tako da prikazuje samo promenjena podešavanja
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Osnovna podešavanja
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Napredna podešavanja
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspertska / sva podešavanja
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Podešavanja sa vrednošću različitom od podrazumevane
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Podešavanja sa vrednošću različitom od vrednosti za novu igru
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Ograničava donju listu na određen tip podešavanja
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Sva podešavanja
@@ -1290,6 +1295,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Koliko često m
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Množilac subvencije: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Podešava koliko se plaća za subvencionisane konekcije
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Troškovi gradnje: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Podešava nivo troškova gradnje i kupovine
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesije: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ako je omogućeno, recesije mogu da se jave svakih nekoliko godina. Proizvodnja je značajno smanjena tokom recesije (vraća se na prethodni nivo kada se recesija završi)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Onemogući okretanje voza u stanicama: {STRING}
@@ -1309,24 +1315,38 @@ STR_CONFIG_SETTING_EXTRADYNAMITE                                :Dozvoljeno ukla
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Olakšava uklanjanje infrastrukture i zgrada u gradskom vlasništvu
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Najveća dužina vozova: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Podešava najveću dužinu vozova
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} pločic{P a e a}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Količina dima/varnica vozila: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Podešava količinu dima ili varnica koje emituju vozila
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model ubrzavanja vozova: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Bira fizički model za ubrzanje vozova. "Originalni" model ima istovetni penal na usponima za sa vozila. "Realistični" model ima različit penal u zavisnosti od osobina kompozicije poput dužine i sile potrebne za pokretanje voza
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model ubrzavanja drumskih vozila: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Bira fizički model za ubrzanje drumskih vozila. "Originalni" model ima istovetni penal na usponima za sa vozila. "Realistični" model ima različit penal u zavisnosti od osobina motora i sile potrebne za pokretanje vozila
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Nagib uspona za vozove: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Nagib uspona za voz. Veće vrednosti čine težim penjanje uzbrdo
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Nagib uspona za drumska vozila: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Nagib uspona za drumsko vozilo. Veće vrednosti čine težim penjanje uzbrdo
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Zabranjeno okretanje brodova i vozova za 90 stepeni: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Okretanje za 90 stepeni se dešava kada se uspravna pruga nalazi odmah posle vodoravne pruge na susednoj pločici i time čini da voz skreće pod 90 stepeni kad prelazi sa pločice na pločicu, umesto uobičajenih 45 stepeni kod drugih kombinacija pruge. Ovo takođe važi i za radijus zaokreta brodova
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Dozvoljeno sjedinjavanje udaljenih stanica: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Dozvoljava dodavanje delova stanici bez da oni dodiruju postojeće delove stanice. Zahteva Ctrl+Klik kod postavljanja novih delova
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Koristiti poboljšan algoritam utovara: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Ako je omogućen, više vozila koja čekaju u stanici će se utovarivati jedno za drugim. Sledeće vozilo će početi sa utovarom kada čeka dovoljno tereta da napuni prethodno vozilo
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Postepeno utovarivanje u vozilo: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Postupno utovaruj vozila koristeći različito vreme utovara za svako vozilo, umesto utovara odjednom za fiksno vreme koje zavisi samo od količine tovara
 STR_CONFIG_SETTING_INFLATION                                    :Inflacija: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Omogućuje inflaciju tako da troškovi rastu malo brže od isplata
 STR_CONFIG_SETTING_SELECTGOODS                                  :Dostavljanje tovara na stanicu samo ako ima potražnje: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Dostavlja na stanicu samo onaj tovar koji je potreban vozilu koje se utovaruje. Ovo onemogućava loš rejting za one vrste tovara koji ne mogu da se iskoriste u stanici
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Najveća dužina mosta: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimalna dužina za podizanje mostova
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Najveća dužina tunela: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimalna dužina za iskopavanje tunela
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Metod izgradnje finansiranih primarnih industrija: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Način izgradnje primarnih industrija. 'nikakav' znači da finansiranje nije moguće, 'istraživački' znači da jeste moguće ali se izgradnja odvija na slučajnom mestu na karti i može da ne uspe, 'uobičajen' znači da preduzeća mogu da postave primarnu industriju na bilo koju poziciju na karti
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nikakav
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :uobičajan
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :uobičajen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :istraživački
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Ravna površina oko industrija: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Količina ravne površine u okružini jedne industrije. Ovo osigurava da će u okolini industrije biti dovoljno slobodnog mesta za konstrukciju pruga, i tako dalje.

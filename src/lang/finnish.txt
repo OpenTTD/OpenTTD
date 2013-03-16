@@ -876,6 +876,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Liettuan liti (
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Etelä-Korean won (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Etelä-Afrikan randi (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Oma...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian lari (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranin rial (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mittayksiköt

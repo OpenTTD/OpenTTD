@@ -876,6 +876,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lithuanian Lita
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :South Korean Won (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :South African Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Custom...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian Lari (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranian Rial (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Measuring units
@@ -1089,7 +1091,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Right
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximum initial loan: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximum amount a company can loan (without taking inflation into account)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Interest rate: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Loan interest rate; also controls inflation if enabled
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Loan interest rate; also controls inflation, if enabled
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Running costs: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Set level of maintainance and running costs of vehicles and infrastructure
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Construction speed: {STRING}
@@ -1101,9 +1103,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Set how much is
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Construction costs: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Set level of construction and purchase costs
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :If enabled recessions may occur every few years. During a recession all production is significantly lower (it returns to previous level when the recession is over)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :If enabled, recessions may occur every few years. During a recession all production is significantly lower (it returns to previous level when the recession is over)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Disallow train reversing in stations: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :If enabled trains will not reverse in non-terminus stations, if there is a shorter path to their next destination when reversing
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :If enabled, trains will not reverse in non-terminus stations, even if there is a shorter path to their next destination when reversing
 STR_CONFIG_SETTING_DISASTERS                                    :Disasters: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toggle disasters which may occasionally block or destroy vehicles or infrastructure
 STR_CONFIG_SETTING_CITY_APPROVAL                                :City council's attitude towards area restructuring: {STRING}
@@ -1602,6 +1604,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... save
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoring Base Graphics set '{STRING}': not found
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoring Base Sounds set '{STRING}': not found
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoring Base Music set '{STRING}': not found
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Out of memory
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Allocating {BYTES} of spritecache failed. The spritecache was reduced to {BYTES}. This will reduce the performance of OpenTTD. To reduce memory requirements you can try to disable 32bpp graphics and/or zoom-in levels
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2936,7 +2940,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}No cargo
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Waiting: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} en-route from {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} from {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reserved for loading)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepts
