@@ -256,7 +256,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {N
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Population
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Name
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Date
 # These are used in dropdowns
@@ -289,6 +288,8 @@ STR_SORT_BY_RUNNING_COST                                        :Running Cost
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Power/Running Cost
 STR_SORT_BY_CARGO_CAPACITY                                      :Cargo Capacity
 STR_SORT_BY_RANGE                                               :Range
+STR_SORT_BY_POPULATION                                          :Population
+STR_SORT_BY_RATING                                              :Rating
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause game
