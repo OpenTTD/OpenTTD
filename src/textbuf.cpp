@@ -98,13 +98,13 @@ void Textbuf::DelChar(bool backspace)
 /**
  * Delete a character from a textbuffer, either with 'Delete' or 'Backspace'
  * The character is delete from the position the caret is at
- * @param delmode Type of deletion, either WKC_BACKSPACE or WKC_DELETE
+ * @param keycode Type of deletion, either WKC_BACKSPACE or WKC_DELETE
  * @return Return true on successful change of Textbuf, or false otherwise
  */
-bool Textbuf::DeleteChar(int delmode)
+bool Textbuf::DeleteChar(uint16 keycode)
 {
-	if (delmode == WKC_BACKSPACE || delmode == WKC_DELETE) {
-		bool backspace = delmode == WKC_BACKSPACE;
+	if (keycode == WKC_BACKSPACE || keycode == WKC_DELETE) {
+		bool backspace = keycode == WKC_BACKSPACE;
 		if (CanDelChar(backspace)) {
 			this->DelChar(backspace);
 			return true;
@@ -112,8 +112,8 @@ bool Textbuf::DeleteChar(int delmode)
 		return false;
 	}
 
-	if (delmode == (WKC_CTRL | WKC_BACKSPACE) || delmode == (WKC_CTRL | WKC_DELETE)) {
-		bool backspace = delmode == (WKC_CTRL | WKC_BACKSPACE);
+	if (keycode == (WKC_CTRL | WKC_BACKSPACE) || keycode == (WKC_CTRL | WKC_DELETE)) {
+		bool backspace = keycode == (WKC_CTRL | WKC_BACKSPACE);
 
 		if (!CanDelChar(backspace)) return false;
 		WChar c = this->GetNextDelChar(backspace);
@@ -276,12 +276,12 @@ WChar Textbuf::MoveCaretRight()
 /**
  * Handle text navigation with arrow keys left/right.
  * This defines where the caret will blink and the next character interaction will occur
- * @param navmode Direction in which navigation occurs (WKC_CTRL |) WKC_LEFT, (WKC_CTRL |) WKC_RIGHT, WKC_END, WKC_HOME
+ * @param keycode Direction in which navigation occurs (WKC_CTRL |) WKC_LEFT, (WKC_CTRL |) WKC_RIGHT, WKC_END, WKC_HOME
  * @return Return true on successful change of Textbuf, or false otherwise
  */
-bool Textbuf::MovePos(int navmode)
+bool Textbuf::MovePos(uint16 keycode)
 {
-	switch (navmode) {
+	switch (keycode) {
 		case WKC_LEFT:
 			if (this->CanMoveCaretLeft()) {
 				this->MoveCaretLeft();

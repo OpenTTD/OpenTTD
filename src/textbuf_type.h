@@ -36,10 +36,12 @@ struct Textbuf {
 	void CDECL Print(const char *format, ...) WARN_FORMAT(2, 3);
 
 	void DeleteAll();
-	bool DeleteChar(int delmode);
-	bool InsertChar(uint32 key);
 	bool InsertClipboard();
-	bool MovePos(int navmode);
+
+	bool InsertChar(uint32 key);
+
+	bool DeleteChar(uint16 keycode);
+	bool MovePos(uint16 keycode);
 
 	bool HandleCaret();
 	void UpdateSize();
