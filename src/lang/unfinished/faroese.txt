@@ -254,7 +254,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Øki: {N
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Fólkatal
+STR_SORT_BY_POPULATION                                          :Fólkatal
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Navn
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dato
 # These are used in dropdowns

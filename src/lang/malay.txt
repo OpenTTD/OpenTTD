@@ -256,7 +256,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Ukuran k
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Jumlah Penduduk
+STR_SORT_BY_POPULATION                                          :Jumlah Penduduk
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nama
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Tarikh
 # These are used in dropdowns

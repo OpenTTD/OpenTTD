@@ -256,7 +256,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Diện t
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Dân số
+STR_SORT_BY_POPULATION                                          :Dân số
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Tên
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Ngày tháng
 # These are used in dropdowns

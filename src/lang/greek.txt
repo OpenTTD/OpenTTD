@@ -319,7 +319,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Περι
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Πληθυσμός
+STR_SORT_BY_POPULATION                                          :Πληθυσμός
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Όνομα
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Ημερομηνία
 # These are used in dropdowns

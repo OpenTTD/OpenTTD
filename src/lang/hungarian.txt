@@ -319,7 +319,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Terület
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Lakosság
+STR_SORT_BY_POPULATION                                          :Lakosság
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Név
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dátum
 # These are used in dropdowns

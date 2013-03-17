@@ -256,7 +256,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}區域�
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}人口
+STR_SORT_BY_POPULATION                                          :人口
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}名稱
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}日期
 # These are used in dropdowns

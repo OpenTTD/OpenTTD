@@ -443,7 +443,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Područj
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Naseljenosti
+STR_SORT_BY_POPULATION                                          :Naseljenosti
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Imenu
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datumu
 # These are used in dropdowns

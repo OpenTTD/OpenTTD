@@ -256,7 +256,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Areal: {
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Bevölkerung
+STR_SORT_BY_POPULATION                                          :Bevölkerung
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Numm
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 # These are used in dropdowns

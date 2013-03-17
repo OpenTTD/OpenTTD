@@ -320,7 +320,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Plocha: 
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populácia
+STR_SORT_BY_POPULATION                                          :Populácia
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Názov
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dátum
 # These are used in dropdowns

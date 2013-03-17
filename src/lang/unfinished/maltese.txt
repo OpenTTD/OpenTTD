@@ -207,7 +207,7 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Tul: {NU
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Popolazzjoni
+STR_SORT_BY_POPULATION                                          :Popolazzjoni
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Isem
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 # These are used in dropdowns

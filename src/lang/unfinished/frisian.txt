@@ -255,7 +255,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Gebied: 
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Ynwenners
+STR_SORT_BY_POPULATION                                          :Ynwenners
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Namme
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 # These are used in dropdowns

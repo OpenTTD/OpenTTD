@@ -232,7 +232,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}क्�
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}लोकसंख्या
+STR_SORT_BY_POPULATION                                          :लोकसंख्या
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}नाव
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}दिनांक
 # These are used in dropdowns

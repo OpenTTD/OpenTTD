@@ -313,7 +313,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Pindala:
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Rahvaarv
+STR_SORT_BY_POPULATION                                          :Rahvaarv
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nimi
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Kuupäev
 # These are used in dropdowns

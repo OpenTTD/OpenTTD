@@ -326,7 +326,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Oblast: 
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Podle populace
+STR_SORT_BY_POPULATION                                          :Podle populace
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Podle jména
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Podle data
 # These are used in dropdowns

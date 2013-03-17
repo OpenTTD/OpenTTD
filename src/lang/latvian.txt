@@ -258,7 +258,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Laukums:
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Iedzīvotāju skaits
+STR_SORT_BY_POPULATION                                          :Iedzīvotāju skaits
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nosaukums
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datums
 # These are used in dropdowns

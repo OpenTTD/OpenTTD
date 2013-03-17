@@ -257,7 +257,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Alan: {N
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Nüfus
+STR_SORT_BY_POPULATION                                          :Nüfus
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}İsim
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Tarih
 # These are used in dropdowns

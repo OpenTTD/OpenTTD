@@ -444,7 +444,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Raon: {N
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Àireamh-shluaigh
+STR_SORT_BY_POPULATION                                          :Àireamh-shluaigh
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Ainm
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Ceann-latha
 # These are used in dropdowns

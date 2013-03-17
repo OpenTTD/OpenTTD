@@ -257,7 +257,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Svæði:
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Fólksfjöldi
+STR_SORT_BY_POPULATION                                          :Fólksfjöldi
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nafn
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dagsetning
 # These are used in dropdowns

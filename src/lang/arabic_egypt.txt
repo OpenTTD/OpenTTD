@@ -255,7 +255,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}المس
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}عدد السكان
+STR_SORT_BY_POPULATION                                          :عدد السكان
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}اسم
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}تاريخ
 # These are used in dropdowns

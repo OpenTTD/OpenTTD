@@ -255,7 +255,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Achar: {
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Daonra
+STR_SORT_BY_POPULATION                                          :Daonra
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Ainm
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dáta
 # These are used in dropdowns

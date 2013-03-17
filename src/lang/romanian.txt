@@ -256,7 +256,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Suprafa�
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populaţia
+STR_SORT_BY_POPULATION                                          :Populaţia
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nume
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dată
 # These are used in dropdowns

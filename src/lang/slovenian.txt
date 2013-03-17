@@ -409,7 +409,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Površin
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Prebivalstvo
+STR_SORT_BY_POPULATION                                          :Prebivalstvo
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Ime
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 # These are used in dropdowns

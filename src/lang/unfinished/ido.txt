@@ -240,7 +240,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Areo: {N
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populo
+STR_SORT_BY_POPULATION                                          :Populo
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nomo
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dato
 # These are used in dropdowns

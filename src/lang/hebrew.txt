@@ -270,7 +270,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}איזו
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}אכלוסיה
+STR_SORT_BY_POPULATION                                          :אכלוסיה
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}שם
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}תאריך
 # These are used in dropdowns

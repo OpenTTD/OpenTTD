@@ -255,7 +255,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Долж
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Населеност
+STR_SORT_BY_POPULATION                                          :Населеност
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Име
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Датум
 # These are used in dropdowns

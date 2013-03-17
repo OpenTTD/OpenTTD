@@ -255,7 +255,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Ardal: {
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Poblogaeth
+STR_SORT_BY_POPULATION                                          :Poblogaeth
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Enw
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dyddiad
 # These are used in dropdowns
