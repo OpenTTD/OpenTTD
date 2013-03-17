@@ -454,7 +454,6 @@ public:
 
 		this->querystrings[WID_NG_CLIENT] = &this->name_editbox;
 		this->name_editbox.text.Assign(_settings_client.network.client_name);
-		this->name_editbox.afilter = CS_ALPHANUMERAL;
 
 		this->querystrings[WID_NG_FILTER] = &this->filter_editbox;
 		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;
@@ -1042,7 +1041,6 @@ struct NetworkStartServerWindow : public Window {
 		this->querystrings[WID_NSS_GAMENAME] = &this->name_editbox;
 		this->name_editbox.text.Assign(_settings_client.network.server_name);
 
-		this->name_editbox.afilter = CS_ALPHANUMERAL;
 		this->SetFocusedWidget(WID_NSS_GAMENAME);
 	}
 
@@ -2147,7 +2145,6 @@ struct NetworkCompanyPasswordWindow : public Window {
 		this->querystrings[WID_NCP_PASSWORD] = &this->password_editbox;
 		this->password_editbox.cancel_button = WID_NCP_CANCEL;
 		this->password_editbox.ok_button = WID_NCP_OK;
-		this->password_editbox.afilter = CS_ALPHANUMERAL;
 		this->SetFocusedWidget(WID_NCP_PASSWORD);
 	}
 

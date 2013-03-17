@@ -862,7 +862,7 @@ static void GfxInitSpriteCache()
 			try {
 				/* Try to allocate 50% more to make sure we do not allocate almost all available. */
 				_spritecache_ptr = reinterpret_cast<MemBlock *>(new byte[_allocated_sprite_cache_size + _allocated_sprite_cache_size / 2]);
-			} catch (std::bad_alloc &oom) {
+			} catch (std::bad_alloc &) {
 				_spritecache_ptr = NULL;
 			}
 

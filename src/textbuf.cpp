@@ -190,7 +190,7 @@ bool Textbuf::InsertClipboard()
 	uint16 pixels = 0, bytes = 0, chars = 0;
 	WChar c;
 	for (const char *ptr = utf8_buf; (c = Utf8Consume(&ptr)) != '\0';) {
-		if (!IsPrintable(c)) break;
+		if (!IsValidChar(c, this->afilter)) break;
 
 		byte len = Utf8CharLen(c);
 		if (this->bytes + bytes + len > this->max_bytes) break;
@@ -364,6 +364,7 @@ Textbuf::Textbuf(uint16 max_bytes, uint16 max_chars)
 	assert(max_bytes != 0);
 	assert(max_chars != 0);
 
+	this->afilter    = CS_ALPHANUMERAL;
 	this->max_bytes  = max_bytes;
 	this->max_chars  = max_chars == UINT16_MAX ? max_bytes : max_chars;
 	this->caret      = true;

@@ -303,7 +303,6 @@ struct NetworkChatWindow : public Window {
 		this->querystrings[WID_NC_TEXTBOX] = &this->message_editbox;
 		this->message_editbox.cancel_button = WID_NC_CLOSE;
 		this->message_editbox.ok_button = WID_NC_SENDBUTTON;
-		this->message_editbox.afilter = CS_ALPHANUMERAL;
 
 		static const StringID chat_captions[] = {
 			STR_NETWORK_CHAT_ALL_CAPTION,

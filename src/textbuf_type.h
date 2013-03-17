@@ -17,6 +17,7 @@
 
 /** Helper/buffer for input fields. */
 struct Textbuf {
+	CharSetFilter afilter;    ///< Allowed characters
 	char * const buf;         ///< buffer in which text is saved
 	uint16 max_bytes;         ///< the maximum size of the buffer in bytes (including terminating '\0')
 	uint16 max_chars;         ///< the maximum size of the buffer in characters (including terminating '\0')

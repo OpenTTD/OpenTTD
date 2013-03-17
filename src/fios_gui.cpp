@@ -266,7 +266,6 @@ public:
 
 		this->querystrings[WID_SL_SAVE_OSK_TITLE] = &this->filename_editbox;
 		this->filename_editbox.ok_button = WID_SL_SAVE_GAME;
-		this->filename_editbox.afilter = CS_ALPHANUMERAL;
 
 		this->CreateNestedTree(desc, true);
 		if (mode == SLD_LOAD_GAME) this->GetWidget<NWidgetStacked>(WID_SL_CONTENT_DOWNLOAD_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);

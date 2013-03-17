@@ -320,7 +320,7 @@ struct GenerateLandscapeWindow : public Window {
 		this->querystrings[WID_GL_RANDOM_EDITBOX] = &this->seed_editbox;
 		this->seed_editbox.text.Print("%u", _settings_newgame.game_creation.generation_seed);
 		this->seed_editbox.caption = STR_NULL;
-		this->seed_editbox.afilter = CS_NUMERAL;
+		this->seed_editbox.text.afilter = CS_NUMERAL;
 
 		this->mode = (GenenerateLandscapeWindowMode)this->window_number;
 
