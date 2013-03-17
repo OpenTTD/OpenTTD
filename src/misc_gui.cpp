@@ -764,7 +764,7 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 			break;
 
 		default:
-			if (IsValidChar(key, this->afilter)) {
+			if (IsValidChar(key, this->text.afilter)) {
 				edited = this->text.InsertChar(key);
 			} else {
 				state = ES_NOT_HANDLED;
@@ -889,7 +889,7 @@ struct QueryStringWindow : public Window
 		this->editbox.caption = caption;
 		this->editbox.cancel_button = WID_QS_CANCEL;
 		this->editbox.ok_button = WID_QS_OK;
-		this->editbox.afilter = afilter;
+		this->editbox.text.afilter = afilter;
 		this->flags = flags;
 
 		this->InitNested(desc, WN_QUERY_STRING);

@@ -364,6 +364,7 @@ Textbuf::Textbuf(uint16 max_bytes, uint16 max_chars)
 	assert(max_bytes != 0);
 	assert(max_chars != 0);
 
+	this->afilter    = CS_ALPHANUMERAL;
 	this->max_bytes  = max_bytes;
 	this->max_chars  = max_chars == UINT16_MAX ? max_bytes : max_chars;
 	this->caret      = true;

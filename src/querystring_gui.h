@@ -42,7 +42,6 @@ struct QueryString {
 	int cancel_button;  ///< Widget button of parent window to simulate when pressing CANCEL in OSK.
 	Textbuf text;
 	const char *orig;
-	CharSetFilter afilter;
 	bool handled;
 
 	/**

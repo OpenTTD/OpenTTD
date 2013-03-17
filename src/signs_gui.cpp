@@ -160,7 +160,6 @@ struct SignListWindow : Window, SignList {
 		this->querystrings[WID_SIL_FILTER_TEXT] = &this->filter_editbox;
 		this->filter_editbox.ok_button = WID_SIL_FILTER_ENTER_BTN;
 		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;
-		this->filter_editbox.afilter = CS_ALPHANUMERAL;
 
 		/* Initialize the filtering variables */
 		this->SetFilterString("");
@@ -419,7 +418,6 @@ struct SignWindow : Window, SignList {
 		this->name_editbox.caption = STR_EDIT_SIGN_CAPTION;
 		this->name_editbox.cancel_button = WID_QES_CANCEL;
 		this->name_editbox.ok_button = WID_QES_OK;
-		this->name_editbox.afilter = CS_ALPHANUMERAL;
 
 		this->InitNested(desc, WN_QUERY_STRING_SIGN);
 

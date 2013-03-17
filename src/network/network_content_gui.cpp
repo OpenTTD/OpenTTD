@@ -486,7 +486,6 @@ public:
 
 		this->querystrings[WID_NCL_FILTER] = &this->filter_editbox;
 		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;
-		this->filter_editbox.afilter = CS_ALPHANUMERAL;
 		this->SetFocusedWidget(WID_NCL_FILTER);
 		this->SetWidgetDisabledState(WID_NCL_SEARCH_EXTERNAL, this->auto_select);
 

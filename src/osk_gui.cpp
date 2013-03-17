@@ -83,9 +83,9 @@ struct OskWindow : public Window {
 
 		for (uint i = 0; i < OSK_KEYBOARD_ENTRIES; i++) {
 			this->SetWidgetDisabledState(WID_OSK_LETTERS + i,
-					!IsValidChar(_keyboard[this->shift][i], this->qs->afilter) || _keyboard[this->shift][i] == ' ');
+					!IsValidChar(_keyboard[this->shift][i], this->qs->text.afilter) || _keyboard[this->shift][i] == ' ');
 		}
-		this->SetWidgetDisabledState(WID_OSK_SPACE, !IsValidChar(' ', this->qs->afilter));
+		this->SetWidgetDisabledState(WID_OSK_SPACE, !IsValidChar(' ', this->qs->text.afilter));
 
 		this->SetWidgetLoweredState(WID_OSK_SHIFT, HasBit(_keystate, KEYS_SHIFT));
 		this->SetWidgetLoweredState(WID_OSK_CAPS, HasBit(_keystate, KEYS_CAPS));
@@ -113,7 +113,7 @@ struct OskWindow : public Window {
 		if (widget >= WID_OSK_LETTERS) {
 			WChar c = _keyboard[this->shift][widget - WID_OSK_LETTERS];
 
-			if (!IsValidChar(c, this->qs->afilter)) return;
+			if (!IsValidChar(c, this->qs->text.afilter)) return;
 
 			if (this->qs->text.InsertChar(c)) this->OnEditboxChanged(WID_OSK_TEXT);
 
