@@ -682,10 +682,13 @@ private:
 		return strnatcmp(buf, buf_cache); // Sort by name (natural sorting).
 	}
 
-	/** Sort by population */
+	/** Sort by population (default descending, as big towns are of the most interest). */
 	static int CDECL TownPopulationSorter(const Town * const *a, const Town * const *b)
 	{
-		return (*a)->cache.population - (*b)->cache.population;
+		uint32 a_population = (*a)->cache.population;
+		uint32 b_population = (*b)->cache.population;
+		if (a_population == b_population) return TownDirectoryWindow::TownNameSorter(a, b);
+		return (a_population > b_population) ? -1 : 1;
 	}
 
 public:
