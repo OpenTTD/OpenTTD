@@ -450,3 +450,49 @@ bool Textbuf::HandleCaret()
 	}
 	return false;
 }
+
+HandleKeyPressResult Textbuf::HandleKeyPress(uint16 key, uint16 keycode)
+{
+	bool edited = false;
+
+	switch (keycode) {
+		case WKC_ESC: return HKPR_CANCEL;
+
+		case WKC_RETURN: case WKC_NUM_ENTER: return HKPR_CONFIRM;
+
+#ifdef WITH_COCOA
+		case (WKC_META | 'V'):
+#endif
+		case (WKC_CTRL | 'V'):
+			edited = this->InsertClipboard();
+			break;
+
+#ifdef WITH_COCOA
+		case (WKC_META | 'U'):
+#endif
+		case (WKC_CTRL | 'U'):
+			this->DeleteAll();
+			edited = true;
+			break;
+
+		case WKC_BACKSPACE: case WKC_DELETE:
+		case WKC_CTRL | WKC_BACKSPACE: case WKC_CTRL | WKC_DELETE:
+			edited = this->DeleteChar(keycode);
+			break;
+
+		case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
+		case WKC_CTRL | WKC_LEFT: case WKC_CTRL | WKC_RIGHT:
+			this->MovePos(keycode);
+			break;
+
+		default:
+			if (IsValidChar(key, this->afilter)) {
+				edited = this->InsertChar(key);
+			} else {
+				return HKPR_NOT_HANDLED;
+			}
+			break;
+	}
+
+	return edited ? HKPR_EDITING : HKPR_CURSOR;
+}

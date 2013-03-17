@@ -290,46 +290,13 @@ struct IConsoleWindow : Window
 				MarkWholeScreenDirty();
 				break;
 
-#ifdef WITH_COCOA
-			case (WKC_META | 'V'):
-#endif
-			case (WKC_CTRL | 'V'):
-				if (_iconsole_cmdline.InsertClipboard()) {
-					IConsoleResetHistoryPos();
-					this->SetDirty();
-				}
-				break;
-
 			case (WKC_CTRL | 'L'):
 				IConsoleCmdExec("clear");
 				break;
 
-#ifdef WITH_COCOA
-			case (WKC_META | 'U'):
-#endif
-			case (WKC_CTRL | 'U'):
-				_iconsole_cmdline.DeleteAll();
-				this->SetDirty();
-				break;
-
-			case WKC_BACKSPACE: case WKC_DELETE:
-				if (_iconsole_cmdline.DeleteChar(keycode)) {
-					IConsoleResetHistoryPos();
-					this->SetDirty();
-				}
-				break;
-
-			case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
-				if (_iconsole_cmdline.MovePos(keycode)) {
-					IConsoleResetHistoryPos();
-					this->SetDirty();
-				}
-				break;
-
 			default:
-				if (IsValidChar(key, CS_ALPHANUMERAL)) {
+				if (_iconsole_cmdline.HandleKeyPress(key, keycode) != HKPR_NOT_HANDLED) {
 					IConsoleWindow::scroll = 0;
-					_iconsole_cmdline.InsertChar(key);
 					IConsoleResetHistoryPos();
 					this->SetDirty();
 				} else {

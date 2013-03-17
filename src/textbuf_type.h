@@ -15,6 +15,18 @@
 #include "string_type.h"
 #include "strings_type.h"
 
+/**
+ * Return values for Textbuf::HandleKeypress
+ */
+enum HandleKeyPressResult
+{
+	HKPR_EDITING,     ///< Textbuf content changed.
+	HKPR_CURSOR,      ///< Non-text change, e.g. cursor position.
+	HKPR_CONFIRM,     ///< Return or enter key pressed.
+	HKPR_CANCEL,      ///< Escape key pressed.
+	HKPR_NOT_HANDLED, ///< Key does not affect editboxes.
+};
+
 /** Helper/buffer for input fields. */
 struct Textbuf {
 	CharSetFilter afilter;    ///< Allowed characters
@@ -42,6 +54,8 @@ struct Textbuf {
 
 	bool DeleteChar(uint16 keycode);
 	bool MovePos(uint16 keycode);
+
+	HandleKeyPressResult HandleKeyPress(uint16 key, uint16 keycode);
 
 	bool HandleCaret();
 	void UpdateSize();

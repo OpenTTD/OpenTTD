@@ -725,56 +725,6 @@ void GuiShowTooltips(Window *parent, StringID str, uint paramcount, const uint64
 	new TooltipsWindow(parent, str, paramcount, params, close_tooltip);
 }
 
-HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, EventState &state)
-{
-	if (!w->IsWidgetGloballyFocused(wid)) return HEBR_NOT_FOCUSED;
-
-	state = ES_HANDLED;
-
-	bool edited = false;
-
-	switch (keycode) {
-		case WKC_ESC: return HEBR_CANCEL;
-
-		case WKC_RETURN: case WKC_NUM_ENTER: return HEBR_CONFIRM;
-
-#ifdef WITH_COCOA
-		case (WKC_META | 'V'):
-#endif
-		case (WKC_CTRL | 'V'):
-			edited = this->text.InsertClipboard();
-			break;
-
-#ifdef WITH_COCOA
-		case (WKC_META | 'U'):
-#endif
-		case (WKC_CTRL | 'U'):
-			this->text.DeleteAll();
-			edited = true;
-			break;
-
-		case WKC_BACKSPACE: case WKC_DELETE:
-		case WKC_CTRL | WKC_BACKSPACE: case WKC_CTRL | WKC_DELETE:
-			edited = this->text.DeleteChar(keycode);
-			break;
-
-		case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
-		case WKC_CTRL | WKC_LEFT: case WKC_CTRL | WKC_RIGHT:
-			this->text.MovePos(keycode);
-			break;
-
-		default:
-			if (IsValidChar(key, this->text.afilter)) {
-				edited = this->text.InsertChar(key);
-			} else {
-				state = ES_NOT_HANDLED;
-			}
-			break;
-	}
-
-	return edited ? HEBR_EDITING : HEBR_CURSOR;
-}
-
 void QueryString::HandleEditBox(Window *w, int wid)
 {
 	if (w->IsWidgetGloballyFocused(wid) && this->text.HandleCaret()) {
