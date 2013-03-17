@@ -2342,8 +2342,8 @@ public:
 	/* automatically generated from ../../widgets/town_widget.h */
 	/** Widgets of the #TownDirectoryWindow class. */
 	enum TownDirectoryWidgets {
-		WID_TD_SORT_NAME                             = ::WID_TD_SORT_NAME,                             ///< Sort by town name.
-		WID_TD_SORT_POPULATION                       = ::WID_TD_SORT_POPULATION,                       ///< Sort by town population.
+		WID_TD_SORT_ORDER                            = ::WID_TD_SORT_ORDER,                            ///< Direction of sort dropdown.
+		WID_TD_SORT_CRITERIA                         = ::WID_TD_SORT_CRITERIA,                         ///< Criteria of sort dropdown.
 		WID_TD_LIST                                  = ::WID_TD_LIST,                                  ///< List of towns.
 		WID_TD_SCROLLBAR                             = ::WID_TD_SCROLLBAR,                             ///< Scrollbar for the town list.
 		WID_TD_WORLD_POPULATION                      = ::WID_TD_WORLD_POPULATION,                      ///< The world's population.

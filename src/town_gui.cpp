@@ -31,6 +31,7 @@
 #include "townname_func.h"
 #include "core/geometry_func.hpp"
 #include "genworld.h"
+#include "widgets/dropdown_func.h"
 
 #include "widgets/town_widget.h"
 
@@ -606,8 +607,9 @@ static const NWidgetPart _nested_town_directory_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TD_SORT_NAME), SetMinimalSize(99, 12), SetDataTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_TD_SORT_POPULATION), SetMinimalSize(97, 12), SetDataTip(STR_SORT_BY_CAPTION_POPULATION, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0),
+				NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_TD_SORT_ORDER), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
+				NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_TD_SORT_CRITERIA), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_SORT_CRITERIA),
+				NWidget(WWT_PANEL, COLOUR_BROWN), SetResize(1, 0), EndContainer(),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_BROWN, WID_TD_LIST), SetMinimalSize(196, 0), SetDataTip(0x0, STR_TOWN_DIRECTORY_LIST_TOOLTIP),
 							SetFill(1, 0), SetResize(0, 10), SetScrollbar(WID_TD_SCROLLBAR), EndContainer(),
@@ -630,6 +632,7 @@ private:
 	static const Town *last_town;
 
 	/* Constants for sorting towns */
+	static const StringID sorter_names[];
 	static GUITownList::SortFunction * const sorter_funcs[];
 
 	GUITownList towns;
@@ -653,6 +656,7 @@ private:
 		/* Always sort the towns. */
 		this->last_town = NULL;
 		this->towns.Sort();
+		this->SetWidgetDirty(WID_TD_LIST); // Force repaint of the displayed towns.
 	}
 
 	/** Sort by town name */
@@ -706,18 +710,22 @@ public:
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget == WID_TD_WORLD_POPULATION) SetDParam(0, GetWorldPopulation());
+		switch (widget) {
+			case WID_TD_WORLD_POPULATION:
+				SetDParam(0, GetWorldPopulation());
+				break;
+
+			case WID_TD_SORT_CRITERIA:
+				SetDParam(0, TownDirectoryWindow::sorter_names[this->towns.SortType()]);
+				break;
+		}
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
-			case WID_TD_SORT_NAME:
-				if (this->towns.SortType() == 0) this->DrawSortButtonState(widget, this->towns.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
-				break;
-
-			case WID_TD_SORT_POPULATION:
-				if (this->towns.SortType() != 0) this->DrawSortButtonState(widget, this->towns.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
+			case WID_TD_SORT_ORDER:
+				this->DrawSortButtonState(widget, this->towns.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 				break;
 
 			case WID_TD_LIST: {
@@ -764,10 +772,19 @@ public:
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case WID_TD_SORT_NAME:
-			case WID_TD_SORT_POPULATION: {
+			case WID_TD_SORT_ORDER: {
 				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
 				d.width += padding.width + WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the string is centred and it also looks better.
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				break;
+			}
+			case WID_TD_SORT_CRITERIA: {
+				Dimension d = {0, 0};
+				for (uint i = 0; TownDirectoryWindow::sorter_names[i] != INVALID_STRING_ID; i++) {
+					d = maxdim(d, GetStringBoundingBox(TownDirectoryWindow::sorter_names[i]));
+				}
+				d.width += padding.width;
 				d.height += padding.height;
 				*size = maxdim(*size, d);
 				break;
@@ -807,24 +824,13 @@ public:
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
-			case WID_TD_SORT_NAME: // Sort by Name ascending/descending
-				if (this->towns.SortType() == 0) {
-					this->towns.ToggleSortOrder();
-				} else {
-					this->towns.SetSortType(0);
-				}
-				this->BuildSortTownList();
+			case WID_TD_SORT_ORDER: // Click on sort order button
+				this->towns.ToggleSortOrder();
 				this->SetDirty();
 				break;
 
-			case WID_TD_SORT_POPULATION: // Sort by Population ascending/descending
-				if (this->towns.SortType() == 1) {
-					this->towns.ToggleSortOrder();
-				} else {
-					this->towns.SetSortType(1);
-				}
-				this->BuildSortTownList();
-				this->SetDirty();
+			case WID_TD_SORT_CRITERIA: // Click on sort criteria dropdown
+				ShowDropDownMenu(this, TownDirectoryWindow::sorter_names, this->towns.SortType(), WID_TD_SORT_CRITERIA, 0, 0);
 				break;
 
 			case WID_TD_LIST: { // Click on Town Matrix
@@ -840,6 +846,16 @@ public:
 				}
 				break;
 			}
+		}
+	}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		if (widget != WID_TD_SORT_CRITERIA) return;
+
+		if (this->towns.SortType() != index) {
+			this->towns.SetSortType(index);
+			this->BuildSortTownList();
 		}
 	}
 
@@ -879,7 +895,14 @@ public:
 Listing TownDirectoryWindow::last_sorting = {false, 0};
 const Town *TownDirectoryWindow::last_town = NULL;
 
-/* Available town directory sorting functions */
+/** Names of the sorting functions. */
+const StringID TownDirectoryWindow::sorter_names[] = {
+	STR_SORT_BY_NAME,
+	STR_SORT_BY_POPULATION,
+	INVALID_STRING_ID
+};
+
+/** Available town directory sorting functions. */
 GUITownList::SortFunction * const TownDirectoryWindow::sorter_funcs[] = {
 	&TownNameSorter,
 	&TownPopulationSorter,
