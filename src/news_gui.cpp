@@ -909,8 +909,14 @@ void ShowLastNewsMessage()
 	} else if (_forced_news == NULL) {
 		/* Not forced any news yet, show the current one, unless a news window is
 		 * open (which can only be the current one), then show the previous item */
-		const Window *w = FindWindowById(WC_NEWS_WINDOW, 0);
-		ni = (w == NULL || (_current_news == _oldest_news)) ? _current_news : _current_news->prev;
+		if (_current_news == NULL) {
+			/* No news were shown yet resp. the last shown one was already deleted.
+			 * Threat this as if _forced_news reached _oldest_news; so, wrap around and start anew with the latest. */
+			ni = _latest_news;
+		} else {
+			const Window *w = FindWindowById(WC_NEWS_WINDOW, 0);
+			ni = (w == NULL || (_current_news == _oldest_news)) ? _current_news : _current_news->prev;
+		}
 	} else if (_forced_news == _oldest_news) {
 		/* We have reached the oldest news, start anew with the latest */
 		ni = _latest_news;
