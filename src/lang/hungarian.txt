@@ -1153,7 +1153,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Jobbra
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximális kezdeti hitelkeret: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximálisan kölcsönözhető összeg (az inflációtól eltekintve)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Kamatláb: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Banki hitel kamat; valamint szabályozza az inflációt is
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Banki hitel kamat; valamint szabályozza az inflációt is, ha be van kapcsolva
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Üzemeltetési költségek: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Járművek karbantartási és üzemeltetési költségeinek a szintje
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Építkezési sebesség: {STRING}
@@ -1666,6 +1666,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... a(z)
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... érvénytelen grafikus alapcsomag nem került betöltésre - '{STRING}': nem található
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... érvénytelen hang alapcsomag nem került betöltésre - '{STRING}': nem található
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... érvénytelen zenei alapcsomag nem került betöltésre - '{STRING}': nem található
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Kevés a memória
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}{BYTES} memória gyorsítótár kiosztása sikertelen. A gyorsítótár le lett csökkentve {BYTES}ra. Ez csökkenti az OpenTTD teljesítményét. Csökkentheted a memóriaigényt, ha kikapcsolod a 32bpp grafikát és/vagy a nagyítási szinteket.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

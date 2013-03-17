@@ -1353,6 +1353,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Acordă căilor
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Pastrează active instrumentele de construcţie după utilizare: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Menține barele de construcție pentru tunele, poduri șamd deschise după folosire
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupează cheltuielile în raportul financiar al companiei: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definește stilul ferestrei care afișează cheltuielile companiei
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Afișaj știri: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Redă sunet la afișarea sumarului știrilor
@@ -1372,6 +1373,7 @@ STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambient: {STRIN
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Redă sunetele ambientale ale peisajului, industriei și orașelor
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Dezactivează construcția de infrastructuri pentru care nu există vehicule disponibile: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Dacă este activată, infrastructura este disponibilă doar când există vehicule sau nave, prevenind astfel pierderea de timp si fonduri pe infrastructură inutilă în acel moment
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Nr. max. de trenuri per companie: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Numărul maxim de trenuri pe care o companie le poate deține
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Nr. max. de autovehicule per companie: {STRING}
@@ -1382,9 +1384,13 @@ STR_CONFIG_SETTING_MAX_SHIPS                                    :Nr. max. de nav
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Numărul maxim de nave pe care o companie le poate deține
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Dezactivează trenurile pentru jucătorii controlaţi de calculator: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Prin activarea acestei opțiuni, jucatorul controlat de calculator nu poate construi trenuri
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Dezactivează autovehiculele pentru jucătorii controlaţi de calculator: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Prin activarea acestei opțiuni, jucatorul controlat de calculator nu poate construi vehicule rutiere
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Dezactivează aeronavele pentru jucătorii controlaţi de calculator: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Prin activarea acestei opțiuni, jucatorul controlat de calculator nu poate construi aeronave
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Dezactivează navele pentru jucătorii controlaţi de calculator: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Prin activarea acestei opțiuni, jucatorul controlat de calculator nu poate construi nave
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Configurația implicită: {STRING}
 STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Alege o configurație care va fi folosită pentru AI aleator, sau care va fi furniza valori implicite când se adaugă un nou AI sau script
@@ -1393,9 +1399,12 @@ STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mediu
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Dificil
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permite Inteligenţă Artificială în multiplayer: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permite ca jucătorii controlați de AI să participe în jocuri multiplayer
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Număr opcodes înainte de suspendarea scripturilor: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Numărul maxim de instrucțiuni pe care un script le poate executa pe parcursul unei ture
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervaluri de service în procente: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Alege dacă întreținerea vehiculelor este activată de trecerea unei anumite perioade de timp, sau scăzând un anumit procent din gradul de rezistență al vehiculului
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalul de întreținere implicit al trenurilor: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Alege perioada de întreținere implicită pentru noi vehicule feroviare, dacă nu există un interval de întreținere stabilit pentru vehicul
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Dezactivat

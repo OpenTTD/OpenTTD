@@ -1089,7 +1089,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :初期借入の最大額: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :初期の借入限度額(インフレは考慮されません)
 STR_CONFIG_SETTING_INTEREST_RATE                                :金利: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :インフレを有効にしたときの借入利率
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :インフレ設定を有効にしたときの借入利率
 STR_CONFIG_SETTING_RUNNING_COSTS                                :維持費用: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :車両や施設のメンテナンスコストを設定します
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :建設速度: {STRING}
@@ -2825,7 +2825,7 @@ STR_CARGO_RATING_EXCELLENT                                      :すばらしい
 STR_CARGO_RATING_OUTSTANDING                                    :最高
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}メイン画面を駅の場所に移動します
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}メイン画面を駅の場所に移動します。CTRL+クリックで新しいウィンドウを開きます。
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}駅名を変更します
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}この駅が指令リストに入っているすべての列車を表示します
@@ -3036,7 +3036,7 @@ STR_BUY_VEHICLE_SHIP_CAPTION                                    :新規船舶
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :新規飛行機
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}価格：{GOLD}{CURRENCY_LONG}{BLACK}　重量：{GOLD}{WEIGHT_SHORT}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}最大速度：{GOLD}{VELOCITY}{BLACK}　出力：{GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}最大速度：{GOLD}{VELOCITY}{BLACK} 出力：{GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}最大速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}洋上での速度: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}水路/川における速度: {GOLD}{VELOCITY}
@@ -3097,9 +3097,9 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM}車
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車 - 情報を見るには列車をクリックします。車両を追加／取り除くにはドラッグします。
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}車両 - クリックして情報を表示します
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船舶のリスト - 情報を見るには船舶をクリックします
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飛行機 - 情報を見るには飛行機をクリックします
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}車両 - 右クリックして情報を表示します
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船舶のリスト - 情報を見るには船舶を右クリックします
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飛行機 - 情報を見るには飛行機を右クリックします
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}車両を売却するには、ここへドラッグします
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}販売するには道路車両をここへドラッグします
@@ -3138,10 +3138,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}道路�
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}船舶を複製します。このボタンをクリックして、造船所内や造船所外の船舶をクリックします。コントロール+クリックすると、指令を共有します。シフト+クリックで金額の概算が出ます
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}飛行機を複製します。このボタンをクリックして、格納庫内や格納庫外の飛行機をクリックします。コントロール+クリックすると、指令リストを共有します。シフト+クリックで金額の概算が出ます
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}メイン画面を鉄道車庫の場所に移動します
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}主の画面を車庫の場所に移動します
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}メイン画面を造船所の場所に移動します
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}メイン画面を格納庫の場所に移動します
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}メイン画面を鉄道車庫の場所に移動します。CTRL+クリックで新しいウィンドウを開きます
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}主の画面を車庫の場所に移動します。CTRL+クリックで新しいウィンドウを開きます
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}メイン画面を造船所の場所に移動します。CTRL+クリックで新しいウィンドウを開きます。
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}メイン画面を格納庫の場所に移動します。CTRL+クリックで新しいウィンドウを開きます
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}選択中の電車庫が指令リストに入っているすべての列車のリストを表示します
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}選択中の車庫が指令リストに入っているすべての道路車両のリストを表示します

@@ -1101,9 +1101,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Indstil, hvor m
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Konstruktionspriser: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Indstil prisniveau for køb og konstruktion
 STR_CONFIG_SETTING_RECESSIONS                                   :Kriser: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Kriser kan forekomme hvis denne instilling er slået til. Under en krise falder produktionsniveauet markant (produktionsniveauet returnerer til tidligere produktionsniveau når krisen er ovre)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Lavkonjunkturer kan forekomme hvis denne indstilling er slået til. Ved lavkonjunktur falder produktionen markant (produktionen returnerer til tidligere niveau når lavkonjunkturen er ovre)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Forbyd toge at køre baglængs i stationer: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Hvis aktiverede tog ikke vil kører baglæns i ikke-terminale stationer, hvis der er en kortere vej til deres næste destination, når der bakkes
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Hvis aktiveret, vil tog ikke vende på ikke-endestationer, også selvom der er en kortere rute til deres næste destination ved at vende
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofer: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Slå katastrofer, som lejlighedsvis kan blokere eller ødelægge køretøjer eller infrastruktur, til og fra
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Byrådets holdning til omstrukturering: {STRING}
@@ -1527,7 +1527,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :deaktiveret
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maksimalt zoom-in niveau: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximalt zoom-in niveau for skærmbilledet. Højere zoom niveau vil øge hukommelseskravet
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maksimalt zoom-ud niveau: {STRING}
-STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Det maksimale udzoomnings niveau for skærmbilledet. Højere udzoomnings niveauer kan forsage forsinkelser i programmet ved brug
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Det maksimale udzoomnings-niveau for skærmbilledet. Højere niveauer kan forsage forsinkelser i programmet ved brug
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
