@@ -703,11 +703,6 @@ public:
 		this->FinishInitNested(desc, 0);
 	}
 
-	~TownDirectoryWindow()
-	{
-		this->last_sorting = this->towns.GetListing();
-	}
-
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
@@ -826,6 +821,7 @@ public:
 		switch (widget) {
 			case WID_TD_SORT_ORDER: // Click on sort order button
 				this->towns.ToggleSortOrder();
+				this->last_sorting = this->towns.GetListing(); // Store new sorting order.
 				this->SetDirty();
 				break;
 
@@ -855,6 +851,7 @@ public:
 
 		if (this->towns.SortType() != index) {
 			this->towns.SetSortType(index);
+			this->last_sorting = this->towns.GetListing(); // Store new sorting order.
 			this->BuildSortTownList();
 		}
 	}
