@@ -1,3 +1,11 @@
+1.3.0-RC3 (2013-03-18)
+------------------------------------------------------------------------
+- Fix: Limit aircraft property 0D to 19, since the conversion result to km-ish/h needs to fit into a byte [FS#5492] (r25099)
+- Fix: Clicking the statusbar crashed, when news were pending but no news were shown yet [FS#5486] (r25093)
+- Fix: Make editbox character filters also apply to pasted content from clipboard (r25090, r25089)
+- Fix: Catch exception anonymously, if the exception content is not of interest [FS#5500] (r25081)
+
+
 1.3.0-RC2 (2013-03-05)
 ------------------------------------------------------------------------
 - Fix: Make sizes of the station preview list and direction selection identical in the station build window [FS#5472] (r25064)
