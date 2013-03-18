@@ -258,7 +258,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {N
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Popolazione
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nome
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 # These are used in dropdowns
@@ -291,6 +290,8 @@ STR_SORT_BY_RUNNING_COST                                        :Costo d'eserciz
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potenza / Costo d'esercizio
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacità di carico
 STR_SORT_BY_RANGE                                               :{G=f}Autonomia
+STR_SORT_BY_POPULATION                                          :Popolazione
+STR_SORT_BY_RATING                                              :Valutazione
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausa

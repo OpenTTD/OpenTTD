@@ -635,7 +635,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Obszar: 
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Liczba mieszkańców
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nazwa
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 # These are used in dropdowns
@@ -668,6 +667,8 @@ STR_SORT_BY_RUNNING_COST                                        :Koszt utrzymani
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Moc/Koszt utrzymania
 STR_SORT_BY_CARGO_CAPACITY                                      :Ładowność
 STR_SORT_BY_RANGE                                               :Zasięg
+STR_SORT_BY_POPULATION                                          :Liczba mieszkańców
+STR_SORT_BY_RATING                                              :Ocena
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauza
