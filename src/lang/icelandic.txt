@@ -257,7 +257,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Svæði:
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Fólksfjöldi
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nafn
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dagsetning
 # These are used in dropdowns
@@ -290,6 +289,8 @@ STR_SORT_BY_RUNNING_COST                                        :Rekstrarkostna�
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Afl/Rekstrarkostnaður
 STR_SORT_BY_CARGO_CAPACITY                                      :Burðargeta
 STR_SORT_BY_RANGE                                               :Drægni
+STR_SORT_BY_POPULATION                                          :Fólksfjöldi
+STR_SORT_BY_RATING                                              :Einkunn
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Stöðva leik
@@ -877,6 +878,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litháenskt lit
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Suðurkóreskt vonn (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Suður-Afrískt rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sérvalið...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari (Gel)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Íranskt ríal (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mælieiningar
@@ -1090,7 +1093,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Hægri
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Hámarkslán: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Hámarks upphæð sem fyrirtæki getur fengið lánað (ekki er gert ráð fyrir verðbólgu)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Vextir: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Vexti á lánum; stjórnar einnig verðbólgi ef hún ef kveikt er á henni
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Vextir á lánum, stjórnar einnig verðbólgu, ef hún er virk
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Rekstrarkostnaður: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Stillingar á hversu dýrt er að reka farartæki og mannvirki teng þeim
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Framkvæmdahraði: {STRING}
@@ -1104,7 +1107,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Stillingar á b
 STR_CONFIG_SETTING_RECESSIONS                                   :Efnahagslægð: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ef virkt getur komið efnahagslægð á nokkurra ára fresti. Meðan á efnahagslægð stendur er öll framleiðsla marktækt minni (framleiðslan fellur í fyrra horf þegar efnahagslægðinni líkur)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Banna lest að snúa í lestarstöð: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ef þetta er virkt munu lestar ekki snúna við á lestartstöð, ef það er styttri leið á næsta áfangastað þegar þær snúa við
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ef virkt, munu lestar ekki snúa við á lestastöðvum sem eru ekki endastöðvarekki snúa við á lestarstöðvar, þó að styttri leið sé á næsta áfangastað þegar þær snúa við
 STR_CONFIG_SETTING_DISASTERS                                    :Hörmungar: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Kveikja eða slökkva á hörmungum, hörmungar sem af og til stoppa eða eyðileggja farartæki eða byggingar
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Viðhörf bæjaryfirvalda til endurskipulagningar: {STRING}
@@ -1603,6 +1606,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... vist
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... sleppi grunngrafík, '{STRING}' finnst ekki
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... sleppi grunn hljóðsafni, '{STRING}' finnst ekki
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... sleppi grunn tónlistarsafni, '{STRING}' finnst ekki
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Minnið í tölvunni nægir ekki
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Úthlutuðum {BYTES} af skyndiminni fyrir hreyfimyndir mistókst. Skyndiminnið vegna hreyfimynda var minnkað í {BYTES}. Þetta mun minnka reiknigetu OpenTTD. Til minnka minniskröfur getur þú reynt að óvikrja 32bpp grafíkina og/eða minnkað leyfilegt súm
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2081,6 +2086,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Velja up
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Velja til niðurhals allar uppfærslur fyrir pakka sem nú þegar hefur verið náð í
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Af-velja allt
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Afvelja allt frá niðurhali
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Leita á utanaðkomandi vefsíðum
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Leita eftir efni sem ekki er fáanlegt á OpenTTD efnisveitunni, á vefsíðum sem ekki eru hluti af OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Þú ert að fara úr OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Skilyrði og skilmálar til að sækja efni frá utanaðkomandi vefsíðum eru mismunandi.{}Þú verður að fara eftir upplýsingum frá þeim vefsíðum um hvernig setja á inn efni í OpenTTD.{}Viltu halda áfram?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Leitarstrengur:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Skoða vefsíðu
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Kíktu á vefsíðu tengda þessu efni
@@ -2216,18 +2225,18 @@ STR_STATION_CLASS_WAYP                                          :Millistöð
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Umferðarmerki
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Hefðbundin merki (hreyfimerki){}Þetta er einfaldasta tegund merkja, bara ein lest getur verið á sama svæði hverju sinni
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Komumerki(hreyfimerki){}Hleypir í gegn meðan ekkert frámerki sem á eftir kemur er grænt. Annars sýnir það rautt
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Frámerki (hreyfimerki){}Virkar eins og hefðbundið merki en er nauðsynlegt til að fá rétta virkni fyrir komu- og tvívirk for-merki
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Tvívirk merki (hreyfimerki){}Tvívirku merkin einfaldlega virka bæði sem inn og út merki. Þetta leyfir þér að byggja stór "tré" af for-merkjum
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Komumerki(hreyfimerki){}Grænt svo lengi sem eitt eða fleiri græn frámerki koma á eftir. Annars sýnir það rautt
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Frámerki (hreyfimerki){}Virkar eins og hefðbundið merki en er nauðsynlegt til að fá réttan lit á komu- og tvívirk for-merki
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Tvívirk merki (hreyfimerki){}Tvívirku merkin virka einfaldlega bæði sem inn og út merki. Þetta leyfir þér að byggja stór "tré" af for-merkjum
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Leiðarmerki (hreyfimerki){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á sama umferðarsvæðið á sama tíma ef þær finna örugga leið út úr því aftur. Lestir geta farið framhjá venjulegum merkjum aftanfrá
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Einstefnumerki (hreyfimerki){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á sama umferðarsvæðið á sama tíma ef þær finna örugga leið út úr því aftur. Lestir geta ekki farið framhjá venjulegum merkjum aftanfrá
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Hefðbundin merki (ljósamerki){}Þetta er einfaldasta tegund merkja, bara ein lest getur verið á sama svæði hverju sinni
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Komumerki (ljósamerki){}Hleypir í gegn meðan eitt eða fleiri frámerki sem á eftir koma eru græn. Annars sýnir það rautt
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Komumerki (ljósamerki){}Græn eins lengi og eitt eða fleiri frámerki sem á eftir koma eru græn. Annars sýnir það rautt
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Frámerki (ljósamerki){}Virkar eins og hefðbundið merki en er nauðsynlegt til að fá rétta virkni fyrir komu- og tvívirk for-merki
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Tvívirk merki (ljósamerki){}Tvívirku merkin einfaldlega virka bæði sem inn og út merki. Þetta leyfir þér að byggja stór "tré" af for-ljósum
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Tvívirk merki (ljósamerki){}Tvívirku merkin virka einfaldlega sem bæði inn og út merki. Þetta leyfir þér að byggja stór "tré" af for-ljósum
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Leiðarljós (lestaljós){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á sama umferðarsvæðið á sama tíma ef þær finna örugga leið út úr því aftur. Lestir geta farið framhjá venjulegum merkjum aftanfrá
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einstefnumerki (ljósamerki){}Leiðarmerki gera fleiri en einni lest í einu kleift að keyra inn á sama umferðarsvæðið á sama tíma ef þær finna örugga leið út úr því aftur. Lestir geta ekki farið framhjá venjulegum merkjum aftanfrá
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Breyta merkjum{}Þegar þetta er valið þá breytist umferðarmerkið sem fyrir er í valda gerð og tegund. Ctrl-smella mun rúlla í gegnum merkin. Shift+smella sýnir áætlaðan kostnað
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Breyta merkjum{}Þegar þetta er valið þá breytist umferðarmerkið sem fyrir er í valda gerð og tegund. Ctrl-smella mun rúlla í gegnum merkin. Shift-smella sýnir áætlaðan kostnað við að skipta um skilti
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Þéttleiki dreginna umferðarmerkja
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Minnka þéttleika dreginna umferðarmerkja
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Auka þéttleika dreginna umferðarmerkja
@@ -2354,7 +2363,7 @@ STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Veldu tr
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tré af handahófskenndri gerð
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Gróðursetja tré af handahófskenndri gerð. Shift sýnir áætlaðan kostnað
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Tré af handahófi
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Gróðursetja tré af handahófi á landið
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Gróðursetja tré af handahófi um landið
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landslagsgerð
@@ -2670,7 +2679,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Færa of
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Færa valda NewGRF skrá ofar á listann
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Færa neðar
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Færa valda NewGRF skrá neðar á listann
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Listi yfir NewGRF skrár sem eru uppsettar.
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Listi yfir NewGRF skrár sem eru uppsettar
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Stilla breytur
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Sýna breytur
@@ -2934,6 +2943,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Bíður: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} frá {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} frátekin fyrir hleðslu)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Tekur við
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Sýna lista yfir móttækilegan varning

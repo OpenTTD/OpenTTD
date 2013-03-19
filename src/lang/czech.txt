@@ -326,7 +326,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Oblast: 
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Podle populace
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Podle jména
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Podle data
 # These are used in dropdowns
@@ -359,6 +358,8 @@ STR_SORT_BY_RUNNING_COST                                        :provozních ná
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :výkonu/provozních nákladů
 STR_SORT_BY_CARGO_CAPACITY                                      :přepravní kapacity
 STR_SORT_BY_RANGE                                               :dosah
+STR_SORT_BY_POPULATION                                          :Podle populace
+STR_SORT_BY_RATING                                              :Hodnocení
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauza

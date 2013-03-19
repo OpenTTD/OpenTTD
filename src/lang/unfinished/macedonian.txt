@@ -255,7 +255,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Долж
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Населеност
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Име
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Датум
 # These are used in dropdowns
@@ -265,7 +264,7 @@ STR_SORT_BY_TYPE                                                :Тип
 STR_SORT_BY_TRANSPORTED                                         :Транспортирано
 STR_SORT_BY_NUMBER                                              :Број
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Минатогодишен профит
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Годинашен профит
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Профит оваа година
 STR_SORT_BY_AGE                                                 :Старост
 STR_SORT_BY_RELIABILITY                                         :Веродостојност
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Вкупен капацитет според типот на товарот
@@ -277,8 +276,8 @@ STR_SORT_BY_LIFE_TIME                                           :Преоста�
 STR_SORT_BY_TIMETABLE_DELAY                                     :распоред задоцнување
 STR_SORT_BY_FACILITY                                            :Вид на станица
 STR_SORT_BY_WAITING                                             :Вредност на товарот кој чека
-STR_SORT_BY_RATING_MAX                                          :Највисока товар рејтинг
-STR_SORT_BY_RATING_MIN                                          :Најниска товар рејтинг
+STR_SORT_BY_RATING_MAX                                          :Највисок рејтинг за товар
+STR_SORT_BY_RATING_MIN                                          :Најнизок рејтинг за товар
 STR_SORT_BY_ENGINE_ID                                           :Идентификација на моторот (класично сортирање)
 STR_SORT_BY_COST                                                :Цена
 STR_SORT_BY_POWER                                               :Моќност
@@ -288,6 +287,8 @@ STR_SORT_BY_RUNNING_COST                                        :Потрошу�
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Моќност/Потрошувачка
 STR_SORT_BY_CARGO_CAPACITY                                      :Капацитет за товар
 STR_SORT_BY_RANGE                                               :опсег
+STR_SORT_BY_POPULATION                                          :Населеност
+STR_SORT_BY_RATING                                              :Рејтинг
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Паузирај ја играта
@@ -349,7 +350,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Напушти
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :игра опции
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :напредни поставувања
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :АИ / игри поставувања
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :НовGRF подесувања
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF подесувања
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :транспарентност опции
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Место имиња прикажани
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Станица имиња прикажани
@@ -697,7 +698,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Пустина
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Снег
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Вклучи/исклучи имиња на градови на мапа
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Вклучи/исклучи ги имињата на градовите на мапата
 STR_SMALLMAP_CENTER                                             :{BLACK}Центар мали мапата на тековната позиција
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -900,6 +901,7 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :некомпа�
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :непознат
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... ниво на компресија '{STRING}' не е валидна
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... спаси играта формат '{STRING}' не е достапен. се врати на '{STRING}'
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Нема доволно меморија
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1008,6 +1010,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :игра скр
 ############ End of leave-in-this-order
 
 # Content downloading window
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Пребарај надворешни веб-страни
 STR_CONTENT_OPEN_URL                                            :{BLACK}Посетете го веб-
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Посетете го веб-сајт за оваа содржина
 
@@ -1205,8 +1208,13 @@ STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Изб�
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Филтер стринг:
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Додај го избраниот НовGRF датотека за вашата конфигурација
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}повторно да го скенира додадени фајлови
-STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Ажурирање на листата на НоваGRF датотеки
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Ажурирање на листата на NewGRF датотеки
+STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Отстрани
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Отстрани го слектиранијот NewGRF фајл од листата
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Листа на NewGRF фајлови кој се инсталирани
 
+STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Внеси параметри
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Прикажи параметри
 
 
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Верзија за: {SILVER}{NUM}
@@ -1509,6 +1517,9 @@ STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Макс
 
 
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Смени тип на интервалот за сервисирање
+STR_VEHICLE_DETAILS_DAYS                                        :Дена
+STR_VEHICLE_DETAILS_PERCENT                                     :Процент
 
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Име на авионот
 
