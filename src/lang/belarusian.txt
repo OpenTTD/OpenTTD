@@ -569,7 +569,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Плош
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Насельніцтва
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Назва
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Дата
 # These are used in dropdowns
@@ -602,6 +601,8 @@ STR_SORT_BY_RUNNING_COST                                        :Кошт абс
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Магутнасьць/кошт абслуг.
 STR_SORT_BY_CARGO_CAPACITY                                      :Ёмiстасьць
 STR_SORT_BY_RANGE                                               :Далёкасьць
+STR_SORT_BY_POPULATION                                          :Насельніцтва
+STR_SORT_BY_RATING                                              :Рэйтынг
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Паўза
@@ -1189,6 +1190,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Летувiск
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Паўднёвакарэйская вона (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Паўднёваафрыканскі рэнд (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Уласная...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузінскі лары (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Іранскі рыал (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Адзінкі вымярэньня

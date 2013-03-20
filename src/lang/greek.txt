@@ -319,7 +319,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Περι
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Πληθυσμός
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Όνομα
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Ημερομηνία
 # These are used in dropdowns
@@ -352,6 +351,8 @@ STR_SORT_BY_RUNNING_COST                                        :Λειτουρ�
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Ισχύς/Λειτουργικό Κόστος
 STR_SORT_BY_CARGO_CAPACITY                                      :Χωρητικότητα Φορτίου
 STR_SORT_BY_RANGE                                               :Εύρος
+STR_SORT_BY_POPULATION                                          :Πληθυσμός
+STR_SORT_BY_RATING                                              :Εκτίμηση
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Παύση παιχνιδιού
@@ -367,16 +368,16 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Εμφά
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Εμφάνιση γραφημάτων
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Εμφάνιση πίνακα κατάταξης των εταιριών
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Χρηματοδοτήστε την κατασκευή νέας βιομηχανίας
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Εμφάνιση λίστας τρένων της εταιρίας. Το Ctrl+Κλικ εναλλάσσει το ανοίγμα της λίστας ομάδων/οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Εμφάνιση λίστας τρένων της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται το άνοιγμα της λίστας ομάδων/οχημάτων
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Εμφάνιση λίστας με τα οδικά οχήματα της εταιρίας. Το Ctrl+Κλικ εναλλάσσει το άνοιγμα της λίστας ομάδων/οχημάτων
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Εμφάνιση λίστας με τα πλοία της εταιρίας. Το Ctrl+Κλικ εναλλάσσει το ανοίγμα της λίστας ομάδων/οχημάτων
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Εμφάνιση λίστας με τα αεροσκάφη της εταιρίας. Το Ctrl+Κλικ εναλλάσσει το ανοίγμα της λίστας ομάδων/οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Εμφανίστε λίστα με τα αεροσκάφη της εταιρίας. Με Ctrl+Κλικ εναλλάσσεται το άνοιγμα της λίστας ομάδων/οχημάτων
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Μεγέθυνση εικόνας
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Σμίκρυνση εικόνας
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Κατασκευή σιδηροτροχιάς
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Κατασκευή δρόμων
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Κατασκευάστε δρόμους
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Κατασκευή λιμένων
-STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Κατασκευή αεροδρομίων
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Κατασκευάστε αεροδρόμια
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Ανοίξτε την μπάρα εργαλείων μορφοποίησης εδάφους για ανύψωση/βύθιση γης, δενδροφύτευση, κλπ.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Εμφάνιση παραθύρου ήχου/μουσικής
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Εμφάνιση τελευταίου μηνύματος/αναφοράς νέων, επιλογές μηνυμάτων
@@ -388,7 +389,7 @@ STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Αποθ
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Πρόγραμμα Επεξεργασίας Σεναρίου
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Μετακίνηση ημ/νίας εκκίνησης 1 χρόνο πίσω
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Μετακίνηση ημ/νίας εκκίνησης 1 χρόνο μπροστά
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Μετακινήστε την ημερομηνία εκκίνησης 1 χρόνο μπροστά
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Κάντε κλικ εδώ για να εισάγετε την χρονιά έναρξης
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Εμφάνιση χάρτη, καταλόγου πόλεων
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Δημιουργία τοπίου
@@ -758,12 +759,12 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :Βιομηχα�
 STR_SMALLMAP_TYPE_ROUTES                                        :Διαδρομές
 STR_SMALLMAP_TYPE_VEGETATION                                    :Βλάστηση
 STR_SMALLMAP_TYPE_OWNERS                                        :Ιδιοκτήτες
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Εμφάνιση περιγραμμάτων εδάφους στο χάρτη
-STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Εμφάνιση οχημάτων στον χάρτη
-STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Εμφάνιση βιομηχανιών στον χάρτη
-STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Εμφάνιση μεταφορικών οδών στον χάρτη
-STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Εμφάνιση βλάστησης στο χάρτη
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Εμφάνιση ιδιοκτητών γης στο χάρτη
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Εμφανίστε περιγράμματα εδάφους στον χάρτη
+STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Εμφανίστε οχήματα στον χάρτη
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Εμφανίστε βιομηχανίες στον χάρτη
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Εμφανίστε μεταφορικούς οδούς στον χάρτη
+STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Εμφανίστε βλάστηση στον χάρτη
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Εμφανίστε ιδιοκτήτες γης στον χάρτη
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Επιλέξτε μια βιομηχανία για εναλλαγή εμφάνισής της. Το Ctrl+Κλικ απενεργοποιεί όλους τους τύπους εκτός του επιλεγμένου. Πατήστε Ctrl+Κλικ ξανά για την επαναφορά όλων των τύπων
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Επιλέξτε μια εταιρεία για εναλλαγή εμφάνισης της περιουσίας της. Το Ctrl+Κλικ απενεργοποιεί όλες τις εταιρείες εκτός της επιλεγμένης. Πατήστε Ctrl+Κλικ ξανά για την επαναφορά όλων των εταιρειών
 
@@ -1058,7 +1059,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Θέση
 STR_CURRENCY_WINDOW                                             :{WHITE}Προσαρμοσμένο νόμισμα
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Ισοτιμία: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Μείωση του ποσού της ισοτιμίας σας για μία λίρα (£)
-STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Αύξηση του ποσού της ισοτιμίας σας για μία λίρα (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Αυξήστε το ποσό της ισοτιμίας σας για μία Λίρα (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ρυθμίστε τη συναλλαγματική ισοτιμία του νομίσματος για μια λίρα (£)
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Διαχωριστικό: {ORANGE}{STRING}
@@ -1481,6 +1482,11 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Ενεργοπ�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Απενεργοποίηση πλοίων υπολογιστή: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ενεργοποιώντας αυτήν τη ρύθμιση κάνει αδύνατη την κατασκευή πλοίων από παίκτη του υπολογιστή
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Προκαθορισμένο προφίλ ρυθμίσεων: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Επιλέξτε το προφίλ ρυθμίσεων για χρήση με τυχαία ΑΙ ή για τις αρχικές τιμές όταν προστίθεται νέο AI ή δέσμη ενεργειών
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Εύκολο
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Μεσαίο
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Δύσκολο
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Επιτρέπονται AI σε παιχνίδια πολλών παικτών: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Επιτρέπεται η συμμετοχή παικτών υπολογιστή AI σε παιχνίδια πολλαπλών παικτών
@@ -1522,6 +1528,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE                                  :Συμβουλ�
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Νέα οχήματα: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Αλλαγές στην αποδοχή φορτίου: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Επιχορηγήσεις: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Πρόβαλλε εφημερίδα σχετικά με συμβάντα που σχετίζονται με επιδοτήσεις
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Γενικές πληροφορίες: {STRING}
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Απενεργοποιημένα
@@ -2428,7 +2435,7 @@ STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Επιλ
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Δέντρα τυχαίου τύπου
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Τοποθετήστε δέντρα τυχαίου τύπου. Το Shift εναλλάσσει κτίσιμο/εμφάνιση εκτίμησης κόστους
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Τυχαία Δέντρα
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Φύτευση δέντρων τυχαία στο τοπίο
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Φυτέψτε δέντρα τυχαία στο έδαφος
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Δημιουργία Γης
@@ -3533,6 +3540,8 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Διάσ
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Αύξηση διαστημάτων επισκευών κατά 10. Με Ctrl+Κλικ αυξάνονται τα διαστήματα ανάμεσα των επισκευών κατά 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Μείωση διαστημάτων επισκευών κατά 10. Με Ctrl+Κλικ μειώνεται τα διαστήματα επισκευών κατά 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Αλλάξτε τον τύπο διαστήματος επισκευών
+STR_VEHICLE_DETAILS_DEFAULT                                     :Προκαθορισμένο
 STR_VEHICLE_DETAILS_DAYS                                        :Ημέρες
 STR_VEHICLE_DETAILS_PERCENT                                     :Ποσοστό
 

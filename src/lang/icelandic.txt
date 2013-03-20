@@ -226,7 +226,7 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Velja up
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Velja uppröðun
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Veldu hvers kyns farartæki þú vilt kaupa
 STR_BUTTON_SORT_BY                                              :{BLACK}Flokka eftir
-STR_BUTTON_LOCATION                                             :{BLACK}Staður
+STR_BUTTON_LOCATION                                             :{BLACK}Staðsetning
 STR_BUTTON_RENAME                                               :{BLACK}Endurnefna
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Loka glugga
@@ -877,7 +877,7 @@ STR_GAME_OPTIONS_CURRENCY_EEK                                   :Eistnesk Króna
 STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litháenskt litas (LTL)
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Suðurkóreskt vonn (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Suður-Afrískt rand (ZAR)
-STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sérvalið...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sérsniðinn...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari (Gel)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Íranskt ríal (IRR)
 ############ end of currency region
@@ -963,7 +963,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Skjáfyl
 
 # Custom currency window
 
-STR_CURRENCY_WINDOW                                             :{WHITE}Sérvalinn gjaldeyrir
+STR_CURRENCY_WINDOW                                             :{WHITE}Sérsniðinn gjaldmiðill
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Gengi: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Hækka gengi miðað við pund (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Lækka gengi miðað við pund (£)
@@ -980,12 +980,12 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Veldu vi
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Skipta í Evrur: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Skipta í Evrur: {ORANGE}aldrei
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Veldu ártal fyrir evruskipti
-STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Skipta fyr yfir í evru
-STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Skipta síðar yfir í evru
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Skipta yfir í evrur fyrr
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Skipta yfir í evrur síðar
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Dæmi: {ORANGE}{CURRENCY_LONG}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10.000 pund (£) í þessum gjaldmiðli
-STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Breyta sérvöldum gjaldeyri
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Breyta sérsniðnum gjaldmiðli
 
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Hámarksfjöldi keppinauta: {ORANGE}{COMMA}
 
@@ -3455,7 +3455,7 @@ STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Burðarg
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Burðargeta: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Burðargeta: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Millifæra gjaldeyri: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Flytja inneign: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Skoðanamillibil: {LTBLUE}{COMMA}dagar{BLACK}   Seinasta skoðun: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Skoðanamillibil: {LTBLUE}{COMMA}%{BLACK}   Seinasta skoðun: {LTBLUE}{DATE_LONG}
@@ -3838,6 +3838,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Tekjur: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Yfirfæra: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Yfirfæra: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Flutt: {CURRENCY_LONG}{WHITE} / {GREEN}Tekjur: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Flutt: {CURRENCY_LONG}{WHITE} / {GREEN}Tekjur: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Flutt: {CURRENCY_LONG}{WHITE} / {RED} Kostnaður: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Flutt: {CURRENCY_LONG}{WHITE} / {RED}Kostnaður: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Áætlaður kostnaður: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Áætlaðar tekjur: {CURRENCY_LONG}
 
