@@ -405,7 +405,8 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Unes filter niske
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtriraj po:
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Unesite tekst za filter
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Unesite ključnu reč kako bi se filtriralo spisak
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Odaberite način sortiranja (opadajući/rastući)
@@ -418,7 +419,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Preimenu
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zatvori prozor
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Naslov - povucite mišem da biste pomerili prozor
 STR_TOOLTIP_SHADE                                               :{BLACK}Zamotaj prozor - prikazuje se samo naslov
-STR_TOOLTIP_DEBUG                                               :{BLACK}Prokazuje NewGRF podatake o otklanjanju grešaka
+STR_TOOLTIP_DEBUG                                               :{BLACK}Prikazuje NewGRF podatake o otklanjanju grešaka
 STR_TOOLTIP_STICKY                                              :{BLACK}Pridenite kako bi ovaj prozor ostao otvoren prilikom pritiska na dugme za zatvaranje svih prozora
 STR_TOOLTIP_RESIZE                                              :{BLACK}Pritisnite i povucite kako bi prozor promenio veličinu
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Izbor velikog/malog prozora
@@ -443,7 +444,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Područj
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Naseljenosti
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Imenu
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datumu
 # These are used in dropdowns
@@ -476,6 +476,8 @@ STR_SORT_BY_RUNNING_COST                                        :Troškovima odr
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Snazi/Troškovima održavanja
 STR_SORT_BY_CARGO_CAPACITY                                      :Nosivosti tovara
 STR_SORT_BY_RANGE                                               :Dometu
+STR_SORT_BY_POPULATION                                          :Naseljenosti
+STR_SORT_BY_RATING                                              :Rejtingu
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauziranje partije
@@ -1169,7 +1171,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Postavit
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Postavite sufiks za vašu monetu
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Pelazak na Euro: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Prelazak na Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Prelazak na Euro: {ORANGE}nikada
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Odredite godinu za prelazak na euro
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Raniji prelazak na euro
@@ -1351,20 +1353,29 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :istraživački
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Ravna površina oko industrija: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Količina ravne površine u okružini jedne industrije. Ovo osigurava da će u okolini industrije biti dovoljno slobodnog mesta za konstrukciju pruga, i tako dalje.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Dozvoljeno više industrija iste vrste na teritoriji jednog naselja: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Naselje uobičajeno ne dozvoljava više industrija iste vrste. Sa ovim podešavanjem će biti dozvoljeno više industrija iste vrste na teritoriji jednog naselja
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Prikaži signale: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Odaberi na kojoj strani koloseka se postavlja signalizacija
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Na levoj
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Na strani na kojoj se vozi
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Na desnoj
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Prikazivanje finansijskog stanja na kraju godine: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Ako je omogućeno, na kraju svake godine će se prikazati prozor sa finansijskim stanjem što omogućava lakše praćenje finansija preduzeća
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nove naredbe su postavljene sa 'direktno': {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Vozilo će uobičajeno stati u svakoj stanici kroz koju prolazi. Ako se ovo podešavanje omogući, vozilo će samo proći kroz stanicu bez zaustavljanja sve do krajnje stanice. Ovo podešavanje menja samo podrazumevanu vrednost za nove naredbe. Pojedinačne naredbe mogu da imaju i jedno i drugo ponašanje
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nove naredbe zaustavljaju voz na {STRING} stanice
-STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :kraj
-STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :sredinu
-STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :početak
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Mesto gde će se voz zaustaviti u stanici. 'početak' znači blizu ulaska, 'sredina' znači na sredini platforme a 'kraj' znači najdalje od ulaska. Ovo podešavanje menja samo podrazumevanu vrednost za nove naredbe. Pojedinačne naredbe za vozove mogu da imaju bilo koje od ova tri ponašanja
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :početak
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :sredina
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :kraj
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Vozila čekaju u koloni (na zauzetim stanicama): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Čini da drumsko vozilo čeka ispred zauzetih stanica dok se ne raščiste
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Pomeranje prozora kada miš priđe ivicama: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Isključeno
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Glavni prikaz
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Svaki prikaz
 STR_CONFIG_SETTING_BRIBE                                        :Dozvoljeno podmićivanje lokalnih vlasti: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Dozvoljava preduzećima da pokušaju da podmite lokalne vlasti. Ako inspektor primeti podmićivanje, preduzeće neće moći da deluje u naselju sledećih šest meseci
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Dozvoljena kupovina ekskluzivnih prava prevoza: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Dozvoljeno finansiranje zgrada: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Dozvoljeno finansiranje rekonstrukcije lokalnih puteva: {STRING}
