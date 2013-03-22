@@ -27,11 +27,6 @@
 /* static */ GameScannerInfo *Game::scanner_info = NULL;
 /* static */ GameScannerLibrary *Game::scanner_library = NULL;
 
-/* static */ const char *Game::GetMainScript()
-{
-		return Game::info->GetMainScript();
-}
-
 /* static */ void Game::GameLoop()
 {
 	if (_networking && !_network_server) return;

@@ -13,10 +13,12 @@
 #include "../strgen/strgen.h"
 #include "../debug.h"
 #include "../fileio_func.h"
+#include "../tar_type.h"
 #include "../script/squirrel_class.hpp"
 #include "../strings_func.h"
 #include "game_text.hpp"
 #include "game.hpp"
+#include "game_info.hpp"
 
 #include "table/strings.h"
 
@@ -208,22 +210,6 @@ struct StringNameWriter : HeaderWriter {
 	}
 };
 
-static void GetBasePath(char *buffer, size_t length)
-{
-	strecpy(buffer, Game::GetMainScript(), buffer + length);
-	char *s = strrchr(buffer, PATHSEPCHAR);
-	if (s != NULL) {
-		/* Keep the PATHSEPCHAR there, remove the rest */
-		s++;
-		*s = '\0';
-	}
-
-	/* Tars dislike opening files with '/' on Windows.. so convert it to '\\' */
-#if (PATHSEPCHAR != '/')
-	for (char *n = buffer; *n != '\0'; n++) if (*n == '/') *n = PATHSEPCHAR;
-#endif
-}
-
 /**
  * Scanner to find language files in a GameScript directory.
  */
@@ -260,20 +246,45 @@ public:
  */
 GameStrings *LoadTranslations()
 {
+	const GameInfo *info = Game::GetInfo();
+	char filename[512];
+	strecpy(filename, info->GetMainScript(), lastof(filename));
+	char *e = strrchr(filename, PATHSEPCHAR);
+	if (e == NULL) return NULL;
+	e++; // Make 'e' point after the PATHSEPCHAR
+
+	strecpy(e, "lang" PATHSEP "english.txt", lastof(filename));
+	if (!FioCheckFileExists(filename, GAME_DIR)) return NULL;
+
 	GameStrings *gs = new GameStrings();
 	try {
-		char filename[512];
-		GetBasePath(filename, sizeof(filename));
-		char *e = filename + strlen(filename);
-
-		seprintf(e, filename + sizeof(filename), "lang" PATHSEP "english.txt");
-		if (!FioCheckFileExists(filename, GAME_DIR)) throw std::exception();
 		*gs->raw_strings.Append() = ReadRawLanguageStrings(filename);
 
 		/* Scan for other language files */
 		LanguageScanner scanner(gs, filename);
-		strecpy(e, "lang" PATHSEP, filename + sizeof(filename));
-		scanner.Scan(filename);
+		strecpy(e, "lang" PATHSEP, lastof(filename));
+		uint len = strlen(filename);
+
+		const char *tar_filename = info->GetTarFile();
+		TarList::iterator iter;
+		if (tar_filename != NULL && (iter = _tar_list[GAME_DIR].find(tar_filename)) != _tar_list[GAME_DIR].end()) {
+			/* The main script is in a tar file, so find all files that
+			 * are in the same tar and add them to the langfile scanner. */
+			TarFileList::iterator tar;
+			FOR_ALL_TARS(tar, GAME_DIR) {
+				/* Not in the same tar. */
+				if (tar->second.tar_filename != iter->first) continue;
+
+				/* Check the path and extension. */
+				if (tar->first.size() <= len || tar->first.compare(0, len, filename) != 0) continue;
+				if (tar->first.compare(tar->first.size() - 4, 4, ".txt") != 0) continue;
+
+				scanner.AddFile(tar->first.c_str(), 0, tar_filename);
+			}
+		} else {
+			/* Scan filesystem */
+			scanner.Scan(filename);
+		}
 
 		gs->Compile();
 		return gs;
