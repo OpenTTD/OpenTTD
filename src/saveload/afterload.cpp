@@ -2761,6 +2761,17 @@ bool AfterLoadGame()
 		_settings_game.script.settings_profile = IsInsideMM(_old_diff_level, SP_BEGIN, SP_END) ? _old_diff_level : (uint)SP_MEDIUM;
 	}
 
+	if (IsSavegameVersionBefore(182)) {
+		Aircraft *v;
+		/* Aircraft acceleration variable was bonkers */
+		FOR_ALL_AIRCRAFT(v) {
+			if (v->subtype <= AIR_AIRCRAFT) {
+				const AircraftVehicleInfo *avi = AircraftVehInfo(v->engine_type);
+				v->acceleration = avi->acceleration;
+			}
+		}
+	}
+
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();

@@ -580,8 +580,8 @@ static const ShipVehicleInfo _orig_ship_vehicle_info[] = {
  * @param c running_Cost
  * @param d subtype (bit 0 - plane, bit 1 - large plane)
  * @param e sound effect
- * @param f acceleration
- * @param g max_speed (1 unit = 8 mph = 12.8 km-ish/h)
+ * @param f acceleration (1 unit = 3/8 mph/tick = 3/5 km-ish/h/tick) (stays the same in the variable)
+ * @param g max_speed (1 unit = 8 mph = 12.8 km-ish/h) (is converted to km-ish/h by the macro)
  * @param h mail_capacity (bags)
  * @param i passenger_capacity (persons)
  */

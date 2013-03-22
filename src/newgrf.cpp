@@ -1618,15 +1618,9 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				avi->max_speed = (buf->ReadByte() * 128) / 10;
 				break;
 
-			case 0x0D: { // Acceleration
-				uint acceleration = (buf->ReadByte() * 128) / 10;
-				if (acceleration > UINT8_MAX) {
-					grfmsg(1, "Acceleration property of aircraft %d is too big.", engine + i);
-					acceleration = UINT8_MAX;
-				}
-				avi->acceleration = acceleration;
+			case 0x0D: // Acceleration
+				avi->acceleration = buf->ReadByte();
 				break;
-			}
 
 			case PROP_AIRCRAFT_RUNNING_COST_FACTOR: // 0x0E Running cost factor
 				avi->running_cost = buf->ReadByte();

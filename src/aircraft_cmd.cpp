@@ -598,7 +598,14 @@ enum AircraftSpeedLimits {
  */
 static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE, bool hard_limit = true)
 {
-	uint spd = v->acceleration * 16;
+	/**
+	 * 'acceleration' has the unit 3/8 mph/tick. This function is called twice per tick.
+	 * So the speed amount we need to accelerate is:
+	 *     acceleration * 3 / 16 mph = acceleration * 3 / 16 * 16 / 10 km-ish/h
+	 *                               = acceleration * 3 / 10 * 256 * (km-ish/h / 256)
+	 *                               ~ acceleration * 77 (km-ish/h / 256)
+	 */
+	uint spd = v->acceleration * 77;
 	byte t;
 
 	/* Adjust speed limits by plane speed factor to prevent taxiing
