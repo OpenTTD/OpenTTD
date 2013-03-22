@@ -1377,18 +1377,28 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Svaki prikaz
 STR_CONFIG_SETTING_BRIBE                                        :Dozvoljeno podmićivanje lokalnih vlasti: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Dozvoljava preduzećima da pokušaju da podmite lokalne vlasti. Ako inspektor primeti podmićivanje, preduzeće neće moći da deluje u naselju sledećih šest meseci
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Dozvoljena kupovina ekskluzivnih prava prevoza: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ako preduzeće kupi ekskluzivna prava prevoza u naselju, protivničke stanice neće primati nikakav tovar ni putnike cele godine
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Dozvoljeno finansiranje zgrada: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Dozvoljava preduzećima da naselju daju novac za gradnju novih kuća
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Dozvoljeno finansiranje rekonstrukcije lokalnih puteva: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Dozvoljava preduzećima da daju novac naseljima za rekonstrukciju puteva kako bi sabotirali drumski saobraćaj
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Dozvoljeno slanje novca drugim preduzećima: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Dozvoljava prenos novca između preduzeća u modu za više igrača
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Množilac težine tovara za simulaciju opterećenja vozova: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Faktor brzine aviona: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Postavlja brzinu aviona relativno u odnosu na druge vrste vozila kako bi se ograničio prihod od avio saobraćaja
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Broj avionskih nesreća: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Postavlja šansu da se dogodi avionska nesreća
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nikakav
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :umanjen
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalan
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Dozvoljene ulične stanice na kolovozima u vlasništvu naselja: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Dozvoljava izgradnju protočnih drumskih stanica na putevima čiji je vlasnik naselje
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Dozvoljene ulične stanice na kolovozima u vlasništvu drugih preduzeća: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Dozvoljava izgradnju protočnih drumskih stanica na putevima čiji je vlasnik drugo preduzeće
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Dozvoljena gradnja stanica jedne pored druge: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Dozvoljava da se različite stanice dodiruju
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Dozvoljeno više NewGRF kolekcija mašina: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Promena ovog podešavanja nije moguća dok postoje vozila
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Održavanje infrastrukture: {STRING}
@@ -1396,14 +1406,21 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Održavanje inf
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Nezastarevanje aerodroma: {STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Upozorenje ukoliko se vozilo izgubi: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Prikazuje poruke o vozilima koja ne mogu da nađu put do odredišta
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Provera naredbi vozila: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nijedno
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :da, osim zaustavljenih vozila
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :svih vozila
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Upozorenje ukoliko vozilo pravi gubitke: {STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila su uvek dostupna: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Ako je omogućeno, šalje vest kada vozilo u toku kalendarske godine nije ostvarilo zaradu
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila nikad ne zastarevaju: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatska zamena kada vozilo ostari: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatska zamena kada je vozilo staro najviše {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Starost vozila pri kojoj postaje kandidat za automatsku zamenu
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mesec{P "" a i} pre
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mesec{P "" a i} posle
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Najmanja potrebna količina novca za zamenu: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Trajanje poruke o greški: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Prikazivanje broja populacije pored naziva naselja: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Debljina linija u grafikonima: {STRING}
 
