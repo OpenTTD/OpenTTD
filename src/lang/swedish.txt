@@ -2789,7 +2789,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Saknade fi
 STR_NEWGRF_BROKEN                                               :{WHITE}'Beteendet hos '{0:STRING}' kommer troligen orsaka desynkronisering och/eller krascher
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Power wagon-tillstånd för '{1:ENGINE}' ändrades utanför en depå
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Fordonslängd för '{1:ENGINE}' ändrades utanför en depå
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig länd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig längd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' ger felaktig information
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last/återställnings information för '{1:ENGINE}' är skilld ifrån köp lista efter konstruktion. Detta kan leda till att utomatisk förnyelse/uppgradering misslyckas med att anpassa fordonen/vagnarna korrekt
@@ -3319,7 +3319,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail-lok
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-lok
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kostnad: {CURRENCY_LONG} Vikt: {WEIGHT_SHORT}{}Hastighet: {VELOCITY}  Kraft {POWER}{}Löpande kostnad: {CURRENCY_LONG}/år{}Kapacitet: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kostnad: {CURRENCY_LONG} Vikt: {WEIGHT_SHORT}{}Hastighet: {VELOCITY}  Effekt: {POWER}  Max. T.E.: {6:FORCE}{}Löpande kostnad: {4:CURRENCY_LONG}/yr{}Kapacitet: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kostnad: {CURRENCY_LONG} Vikt: {WEIGHT_SHORT}{}Hastighet: {VELOCITY}  Effekt: {POWER}  Max. T.E.: {6:FORCE}{}Löpande kostnad: {4:CURRENCY_LONG}/år{}Kapacitet: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kostnad: {CURRENCY_LONG} Maxhastiget: {VELOCITY}{}Kapacitet: {CARGO_LONG}, {CARGO_LONG}{}Körkostnad: {CURRENCY_LONG}/år
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kostnad: {CURRENCY_LONG} Maxhastiget: {VELOCITY}{}Kapacitet: {CARGO_LONG}{}Körkostnad: {CURRENCY_LONG}/år
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Kostnad: {CURRENCY_LONG} Maxhastighet: {VELOCITY} Räckvidd: {COMMA} rutor{}Kapacitet: {CARGO_LONG}, {CARGO_LONG}{}Driftkostnad: {CURRENCY_LONG}/år

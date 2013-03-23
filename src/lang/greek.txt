@@ -1197,9 +1197,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Θέστε πό
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Κόστη οικοδομής: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Θέτει το επίπεδο κόστους για αγορές και οικοδομές
 STR_CONFIG_SETTING_RECESSIONS                                   :Υφέσεις: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Όταν είναι ενεργοποιημένο, υφέσεις συμβαίνουν κάθε λίγα χρόνια. Κατά τη διάρκεια μιας ύφεσης όλη η παραγωγή είναι πολύ χαμηλότερη (επιστρέφει στο προηγούμενο επίπεδο όταν τελειώσει η ύφεση)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Όταν είναι ενεργοποιημένο, μπορεί να υπάρξουν υφέσεις κάθε λίγα χρόνια. Κατά τη διάρκεια μιας ύφεσης, όλη η παραγωγή είναι πολύ χαμηλότερη (επιστρέφει στο προηγούμενο επίπεδο όταν τελειώσει η ύφεση)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Απαγορεύεται η αντιστροφή τρένων στους σταθμούς: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Όταν είναι ενεργοποιημένο, τα τρένα δεν θα κάνουν όπισθεν σε μη-τελικούς σταθμούς εάν υπάρχει κοντινότερη διαδρομή προς τον επόμενή τους προορισμό όταν κάνουν όπισθεν
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Όταν είναι ενεργοποιημένο, τα τρένα δεν θα κάνουν όπισθεν σε μη-τελικούς σταθμούς, ακόμα και εάν υπάρχει κοντινότερη διαδρομή προς τον επόμενή τους προορισμό όταν κάνουν όπισθεν
 STR_CONFIG_SETTING_DISASTERS                                    :Καταστροφές: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Στάση δημοτικού συμβουλίου προς τον μετασχηματισμό της περιοχής: {STRING}
 
