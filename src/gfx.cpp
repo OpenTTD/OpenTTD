@@ -192,6 +192,71 @@ void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectM
 }
 
 /**
+ * Check line clipping by using a linear equation and draw the visible part of
+ * the line given by x/y and x2/y2.
+ * @param video Destination pointer to draw into.
+ * @param x X coordinate of first point.
+ * @param y Y coordinate of first point.
+ * @param x2 X coordinate of second point.
+ * @param y2 Y coordinate of second point.
+ * @param screen_width With of the screen to check clipping against.
+ * @param screen_height Height of the screen to check clipping against.
+ * @param colour Colour of the line.
+ * @param width Width of the line.
+ */
+static inline void GfxDoDrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width)
+{
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+
+	assert(width > 0);
+
+	if (y2 == y) {
+		/* Special case: horizontal line. */
+		blitter->DrawLine(video,
+				Clamp(x, 0, screen_width), y,
+				Clamp(x2, 0, screen_width), y2,
+				screen_width, screen_height, colour, width);
+		return;
+	}
+	if (x2 == x) {
+		/* Special case: vertical line. */
+		blitter->DrawLine(video,
+				x, Clamp(y, 0, screen_height),
+				x2, Clamp(y2, 0, screen_height),
+				screen_width, screen_height, colour, width);
+		return;
+	}
+
+	int grade_y = y2 - y;
+	int grade_x = x2 - x;
+
+	/* prevent integer overflows. */
+	int margin = 1;
+	while (INT_MAX / abs(grade_y) < max(abs(x), abs(screen_width - x))) {
+		grade_y /= 2;
+		grade_x /= 2;
+		margin  *= 2; // account for rounding errors
+	}
+
+	/* If the line is outside the screen on the same side at X positions 0
+	 * and screen_width, we don't need to draw anything. */
+	int offset_0 = y - x * grade_y / grade_x;
+	int offset_width = y + (screen_width - x) * grade_y / grade_x;
+	if ((offset_0 > screen_height + width / 2 + margin && offset_width > screen_height + width / 2 + margin) ||
+			(offset_0 < -width / 2 - margin && offset_width < -width / 2 - margin)) {
+		return;
+	}
+
+	/* It is possible to use the line equation to further reduce the amount of
+	 * work the blitter has to do by shortening the effective line segment.
+	 * However, in order to get that right and prevent the flickering effects
+	 * of rounding errors so much additional code has to be run here that in
+	 * the general case the effect is not noticable. */
+
+	blitter->DrawLine(video, x, y, x2, y2, screen_width, screen_height, colour, width);
+}
+
+/**
  * Align parameters of a line to the given DPI and check simple clipping.
  * @param dpi Screen parameters to align with.
  * @param x X coordinate of first point.
@@ -219,23 +284,17 @@ static inline bool GfxPreprocessLine(DrawPixelInfo *dpi, int &x, int &y, int &x2
 
 void GfxDrawLine(int x, int y, int x2, int y2, int colour, int width)
 {
-	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	DrawPixelInfo *dpi = _cur_dpi;
-
-	assert(width > 0);
-
 	if (GfxPreprocessLine(dpi, x, y, x2, y2, width)) {
-		blitter->DrawLine(dpi->dst_ptr, x, y, x2, y2, dpi->width, dpi->height, colour, width);
+		GfxDoDrawLine(dpi->dst_ptr, x, y, x2, y2, dpi->width, dpi->height, colour, width);
 	}
 }
 
 void GfxDrawLineUnscaled(int x, int y, int x2, int y2, int colour)
 {
-	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	DrawPixelInfo *dpi = _cur_dpi;
-
 	if (GfxPreprocessLine(dpi, x, y, x2, y2, 1)) {
-		blitter->DrawLine(dpi->dst_ptr,
+		GfxDoDrawLine(dpi->dst_ptr,
 				UnScaleByZoom(x, dpi->zoom), UnScaleByZoom(y, dpi->zoom),
 				UnScaleByZoom(x2, dpi->zoom), UnScaleByZoom(y2, dpi->zoom),
 				UnScaleByZoom(dpi->width, dpi->zoom), UnScaleByZoom(dpi->height, dpi->zoom), colour, 1);
