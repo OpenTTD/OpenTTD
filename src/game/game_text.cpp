@@ -263,7 +263,7 @@ GameStrings *LoadTranslations()
 		/* Scan for other language files */
 		LanguageScanner scanner(gs, filename);
 		strecpy(e, "lang" PATHSEP, lastof(filename));
-		uint len = strlen(filename);
+		size_t len = strlen(filename);
 
 		const char *tar_filename = info->GetTarFile();
 		TarList::iterator iter;
