@@ -256,7 +256,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Diện t
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Dân số
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Tên
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Ngày tháng
 # These are used in dropdowns
@@ -289,6 +288,7 @@ STR_SORT_BY_RUNNING_COST                                        :Chi phí chạy
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Chi phí Năng lượng/Chạy
 STR_SORT_BY_CARGO_CAPACITY                                      :Khả năng chở hàng
 STR_SORT_BY_RANGE                                               :Tầm xa
+STR_SORT_BY_POPULATION                                          :Dân số
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tạm dừng trò chơi
@@ -876,6 +876,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Đồng Litas L
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Hàn Quốc (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Nam Phi (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Tùy chọn...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgia (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iran (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Đơn vị đo lường

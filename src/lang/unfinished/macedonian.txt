@@ -1011,6 +1011,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :игра скр
 
 # Content downloading window
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Пребарај надворешни веб-страни
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Вие заминувате од OpenTTD!
 STR_CONTENT_OPEN_URL                                            :{BLACK}Посетете го веб-
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Посетете го веб-сајт за оваа содржина
 
