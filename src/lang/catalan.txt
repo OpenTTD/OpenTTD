@@ -257,7 +257,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Àrea: {
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Població
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nom
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 # These are used in dropdowns
@@ -290,6 +289,8 @@ STR_SORT_BY_RUNNING_COST                                        :Cost d'utilitza
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potència/Cost d'utilització
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacitat de càrrega
 STR_SORT_BY_RANGE                                               :Abast
+STR_SORT_BY_POPULATION                                          :Població
+STR_SORT_BY_RATING                                              :Qualificació
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Para el joc
