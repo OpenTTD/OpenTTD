@@ -256,7 +256,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}地域�
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :人口
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}名前
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}日付
 # These are used in dropdowns
@@ -289,6 +288,8 @@ STR_SORT_BY_RUNNING_COST                                        :運転費用
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :動力／運転費用
 STR_SORT_BY_CARGO_CAPACITY                                      :積載容量
 STR_SORT_BY_RANGE                                               :距離
+STR_SORT_BY_POPULATION                                          :人口
+STR_SORT_BY_RATING                                              :レーティング
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}ゲームをポーズします。
@@ -876,6 +877,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :リトアニア
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :韓国ウォン (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :南アフリカランド (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :カスタム・・・
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :グルジア ラリー(GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :イラン リアル(IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}測定単位
@@ -1099,6 +1102,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :補修が不十
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :助成金の乗数: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :助成金の設定
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建設費: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :建設・購入費用のレベル
 STR_CONFIG_SETTING_RECESSIONS                                   :景気の後退: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :駅で運転方向の変更(折り返し)をしない: {STRING}
 STR_CONFIG_SETTING_DISASTERS                                    :災害: {STRING}
@@ -1199,6 +1203,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :地形作成：
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :旧式
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :石油採掘施設のマップ端からの距離: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :石油採掘施設はマップの境界付近にのみ建設されます。
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪線の位置：{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地形のでこぼこ（TerraGenesis のみ）：{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :特にスムーズ
@@ -1948,13 +1953,15 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}種類
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}項目の種類
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}名前
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}項目の名前
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}項目をキリックして詳しく表示します。{}ダウンロードするにはチェックボックスを付けます。
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}クリックすると詳細を表示します。{}ダウンロードするにはチェックボックスをオンにします。
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}すべてを選択
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}すべての項目を選択します。
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}アップデートを選択
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}すでにダウンロードした項目のためのアップデートをすべて選択します。
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}選択を解除
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}何も選択していないようにします
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}外部サイトで検索
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}OpenTTDコンテンツサービスに掲載されていないものを外部サイトを使用して検索できます。
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}タグ／名前のフィルター：
 STR_CONTENT_OPEN_URL                                            :{BLACK}ウェブサイト
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}このコンテンツのウェブサイト
@@ -2803,6 +2810,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}到着待ち：{WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}（{1:STATION}から運送途中の{0:CARGO_SHORT}）
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reserved for loading)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}受入れ貨物
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}受入れる貨物のリストを表示します
@@ -3639,6 +3647,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}収入：{CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}送金：{CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}送金：{CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}転送: {CURRENCY_LONG}{WHITE} / {GREEN}収入: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}転送: {CURRENCY_LONG}{WHITE} / {GREEN}収入: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}転送: {CURRENCY_LONG}{WHITE} / {RED}費用: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}転送: {CURRENCY_LONG}{WHITE} / {RED}費用: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}推定の費用：{CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}推定の収入：{CURRENCY_LONG}
 

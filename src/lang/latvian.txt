@@ -258,7 +258,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Laukums:
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Iedzīvotāju skaits
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nosaukums
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datums
 # These are used in dropdowns
@@ -291,6 +290,8 @@ STR_SORT_BY_RUNNING_COST                                        :kārtējām izm
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :jaudas/kārtējām izmaksām
 STR_SORT_BY_CARGO_CAPACITY                                      :kravnesības
 STR_SORT_BY_RANGE                                               :apgabala
+STR_SORT_BY_POPULATION                                          :iedzīvotāju skaita
+STR_SORT_BY_RATING                                              :vērtējuma
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauzēt spēli
@@ -878,6 +879,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lietuvas liti (
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Dienvidkorejas vonas (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Dienvidāfrikas rendi (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Cita...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijas lari (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Irānas riāli (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mērvienības

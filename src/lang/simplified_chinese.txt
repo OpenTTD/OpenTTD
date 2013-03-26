@@ -256,7 +256,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}面积�
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :人口
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}名称
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}日期
 # These are used in dropdowns
@@ -289,6 +288,8 @@ STR_SORT_BY_RUNNING_COST                                        :运行费用
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :功率/运行费用 比值
 STR_SORT_BY_CARGO_CAPACITY                                      :运载能力
 STR_SORT_BY_RANGE                                               :航行距离
+STR_SORT_BY_POPULATION                                          :人口
+STR_SORT_BY_RATING                                              :等级
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}暂停游戏
@@ -876,6 +877,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :立陶宛立特
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :韩元（KRW）
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :南非兰特（ZAR）
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :自定义…
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :格鲁吉亚拉里(GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :伊朗里亚尔(IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}度量单位
@@ -1602,6 +1605,7 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}...存�
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... 禁用基础图形设置 '{STRING}': 未找到
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... 禁用基础意义设置 '{STRING}': 未找到
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... 禁用基础音乐设置 '{STRING}': 未找到
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}内存溢出
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2080,6 +2084,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}选择�
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}更新所有已下载的扩展包
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}取消全选
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}取消全部选择
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}搜索整个网络
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}正在离开游戏！
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}标签/名称过滤器
 STR_CONTENT_OPEN_URL                                            :{BLACK}查看主页
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}打开该扩展包主页
@@ -2576,6 +2582,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}为存�
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}地图生成器
 STR_MAPGEN_MAPSIZE                                              :{BLACK}地图规模：
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}选择地图尺寸（单位：格）。可用的数值会略小。
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}城镇数量：
 STR_MAPGEN_DATE                                                 :{BLACK}日期:
@@ -2762,6 +2769,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}此操�
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}不能添加文件：重复的 GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}未找到匹配的文件 (已载入兼容的 GRF)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}加入的NewGRF文件达到上限，不能再新增。
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}已为缺失的文件载入兼容的 GRF
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}缺失的 GRF 文件已经被禁用
@@ -3449,6 +3457,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}保养�
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}增大检修时间间隔,以10为单位进行调整. 按住Ctrl同时点击则以5为单位进行调整
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}减少检修时间间隔,以10为单位进行调整. 按住Ctrl同时点击则以5为单位进行调整
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}更改服务时间间隔类型
+STR_VEHICLE_DETAILS_DEFAULT                                     :默认
+STR_VEHICLE_DETAILS_DAYS                                        :天
+STR_VEHICLE_DETAILS_PERCENT                                     :百分比
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}给列车命名
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}命名汽车
@@ -3821,6 +3833,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}收入：{CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}中转：{CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}中转：{CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}联运: {CURRENCY_LONG}{WHITE} / {GREEN}收入: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}联运: {CURRENCY_LONG}{WHITE} / {GREEN}收入: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}联运: {CURRENCY_LONG}{WHITE} / {RED}支付: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}联运: {CURRENCY_LONG}{WHITE} / {RED}支付: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}预计费用：{CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}预计收入：{CURRENCY_LONG}
 

@@ -1188,7 +1188,7 @@ STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :독점 운송�
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :한 회사가 어떤 도시의 독점수송권을 구매하면, 그 도시에 있는 상대편의 역에서는 그 해동안 (승객을 포함한) 그 어떠한 화물도 받을 수 없습니다.
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :도시 상업 건물 건설에 투자하는 행위 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :회사가 도시가 새로운 건물에 투자할 수 있도록 자금을 주는 것을 허용합니다.
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :지역 도로 재공사에 투자하는 행위 허용: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :도시 도로 재공사 시행 행위를 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :도로 기반의 수송 체계를 갖추고 있는 다른 회사를 방해하기 위해 해당 도시가 도로 재건축을 시작하도록 회사가 도시에 돈을 지불하는 행위를 허용합니다.
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :다른 회사에게 돈을 송금하는 것을 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :멀티 플레이 모드에서 회사 사이에 돈을 보내는 것을 허용합니다.
@@ -2869,11 +2869,11 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}선택�
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :소규모 광고 캠페인
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :중규모 광고 캠페인
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :대규모 광고 캠페인
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :지역 도로 재공사에 투자
+STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :도시의 도로 재공사 시행
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :회사 소유주의 동상 건설
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :새 건물에 투자
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :수송 권한 독점권 구입
-STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :지역 당국에 뇌물 먹이기
+STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :지역 당국에게 뇌물 주기
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} 더 많은 승객과 화물을 유치하기 위해 소규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} 더 많은 승객과 화물을 유치하기 위해 중간 규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY_LONG}
