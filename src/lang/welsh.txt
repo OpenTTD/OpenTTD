@@ -217,6 +217,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} tr
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Llinyn hidlo:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Rhowch linyn hidlo
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Rhowch allweddair er mwyn ei ddefnyddio i hidlo'r rhestr
 
@@ -288,6 +289,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Pŵer/Cost Rhed
 STR_SORT_BY_CARGO_CAPACITY                                      :Gallu cludo Llwyth
 STR_SORT_BY_RANGE                                               :Maes teithio
 STR_SORT_BY_POPULATION                                          :Poblogaeth
+STR_SORT_BY_RATING                                              :Gradd
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Oedi'r gêm
@@ -397,10 +399,12 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Cyfraddau Tâl 
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabl Cynghrair Cwmnïau
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Graddfa Fanwl Perfformiad
+STR_GRAPH_MENU_HIGHSCORE                                        :Tabl sgôr uchaf
 ############ range ends here
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Cyfeiriadur Diwydiannau
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Cadwyni diwydiant
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Ariannu diwydiant newydd
 ############ range ends here
 
@@ -1054,6 +1058,7 @@ STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Gosodiad cwmni 
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Gosodiad cwmni (cedwir yn y ffeil gadw; yn effeithio ar y cwmni presennol yn unig)
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Dangos:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Yn cyfyngu'r rhestr isod gan ddangos gosodiadau sydd wedi newid yn unig
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Gosodiadau sylfaenol
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Gosodiadau uwch
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Gosodiadau arbenigwyr / pob gosodiad
@@ -1084,8 +1089,28 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Chwith
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Canol
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :De
 
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Benthyciad agoriadol uchafsymol: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Y swm uchaf y gall cwmni fenthyca (heb ustyried chwyddiant)
+STR_CONFIG_SETTING_INTEREST_RATE                                :Cyfradd chwyddiant: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Cyfradd chwyddiant y benthyciad; hefyd chwyddiant yr economi os y galluogir
+STR_CONFIG_SETTING_RUNNING_COSTS                                :Costau rhedeg: {STRING}
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Gosod lefel costau cynnal a chadw ar gerbydau a thanadeiledd
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Cyflymder adeiladu: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Cyfyngu'r nifer o weithredoedd adeiliadu ar gyfer AIau
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Toriadau cerbydau: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Gosod pa mor aml y gall gerbydau heb eu gwasanaethu'n rheolaidd dorri i lawr
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Lluosydd cymhorthdal: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Gosod faint a delir ar gyfer cysylltiadau gyda chymhorthdal
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costau adeiladu: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Gosod lefel costau prynnu ac adeiladu
 STR_CONFIG_SETTING_RECESSIONS                                   :Dirwasgiadau: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Os y galluogir, gall dirwasgiadau ddigwydd ambell flwyddyn. Yn ystod dirwasgiad bydd lefelau gweithgynhyrchu'n is o lawer (gan ddychwelyd at y lefel gwreiddiol wedi diwedd y dirwasgiad)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Rhwystro trenau rhag gwrthdroi mewn gorsafoedd: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Os y galluogir, ni fydd trenau yn gwrthdroi mewn gorsafoedd nad ydynt yn derfynfeydd, hyd yn oed os oes llwybr byrach i'w cyrchfan drwy wrthdroi
 STR_CONFIG_SETTING_DISASTERS                                    :Trychinebau: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toglo trychinebau a all rhwystro neu ddinistrio cerbydau neu tanadeiledd
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Agwedd cyngor dinas at ailstrwythuro'r ardal: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Dewis faint y mae sŵn a niewd amgycheddol gan gwmnïau yn effeithio ar eu graddio trefol a gweithredoedd adeiladu pellach yn eu hardal
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Caniatáu adeiladu a'r lethrau ac arfordiroedd {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Os y galluogir, gellir adeiladu traciau a gorsafoedd ar y rhan helaeth o lethrau. Os yr analluogir, feu caniateir ar lethrau sy'n gweddu at lwybr y trac yn unig (h.y. heb angen eu tanseilio)
@@ -1139,13 +1164,16 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Ar y chwith
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Ar yr ochr gyrru
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Ar y dde
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Dangos y ffenestr gyllid ar ddechrau'r flwyddyn: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Os y galluogir, bydd y ffenestr gyllid yn agor ar ddiwedd y flwyddyn i hwyluso archwilio sefyllfa ariannol y cwmni
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Gosodir gorchmynion newydd yn 'ddi-stop' fel rhagosodiad: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Fel rheol, bydd cerbyd yn aros wrth pob gorsaf yr aiff drwyddo. Bydd y gosodiad yma yn peri i'r cerbyd yrru'n syth drwy pob gorsaf ar ei ffordd at ei gyrchfan olaf heb aros. Sylwer fod y gosodiad yma'n diffinio rhagosodiad ar gyfer gorchmynion newydd. Gellir newid gorchmynion penodol at unrhyw ddull a fynnir
 STR_CONFIG_SETTING_STOP_LOCATION                                :Gorchmynion trenau newydd yn nodi aros ar y {STRING} o'r platfform fel rhagosodiad
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Y man lle y daw trên at aros wrth blatfform fel rheol. Mae'r 'ochr agos' yn cyfeirio at y pen lle mae'r trên yn myned, 'canol' at ganol y platfform, ac 'ochr bell' yn bell o'r mynedfa. Sylwer fod y gosodiad yma'n diffinio rhagosodiad ar gyfer gorchmynion newydd. Gellir newid gorchmynion penodol at unrhyw ddull a fynnir
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :ochr agos
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :canol
-STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ochr hir
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ochr bell
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Ciwio cerbydau ffordd (gyda effeithiau cwantwm): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Gorfodi i gerbydau ffordd aros o flaen arosfannau llawn nes eu bod yn glir
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Tremio'r ffenestr pan fydd y llygoden ar ymyl y sgrin: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Analluogwyd
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Prif ffenestr olygfa, sgrin llawn yn unig
@@ -3391,7 +3419,7 @@ STR_ORDER_GO_VIA                                                :Galw heibio
 STR_ORDER_GO_NON_STOP_VIA                                       :Myn heb stop gan alw heibio
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Newid ymddygiad stopio o'r gorchymyn a amlygwyd
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Llwyth llawn o unrhyw gargo
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Llwyth llawn o unrhyw nwyddau
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Llwytho os yw ar gael
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Llwyth llawn o'r holl nwyddau
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Llwyth llawn o unrhyw nwyddau
@@ -3516,7 +3544,7 @@ STR_ORDER_AUTO_REFIT_ANY                                        :llwythi ar gael
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[ochr agos]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[canol]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[ochr hir]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[ochr bell]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Mae'r cyrchfan nesaf allan o gyrraedd y cerbyd)
 

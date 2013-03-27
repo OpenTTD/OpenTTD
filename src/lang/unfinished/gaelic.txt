@@ -444,7 +444,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Raon: {N
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Àireamh-shluaigh
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Ainm
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Ceann-latha
 # These are used in dropdowns
@@ -477,6 +476,7 @@ STR_SORT_BY_RUNNING_COST                                        :Cosgaisean ruit
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Lùth/Cosgaisean ruith
 STR_SORT_BY_CARGO_CAPACITY                                      :Tomhas-lìonaidh carago
 STR_SORT_BY_RANGE                                               :Dlùths
+STR_SORT_BY_POPULATION                                          :Àireamh-shluaigh
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Cuir an geama na stad
@@ -2826,6 +2826,7 @@ STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Fèin-le
 
 
 # Engine preview window
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :einnsean magnaiteach
 
 
 # Autoreplace window

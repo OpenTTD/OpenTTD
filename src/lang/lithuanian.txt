@@ -451,7 +451,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Sritis: 
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Populiaciją
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Vardą
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datą
 # These are used in dropdowns
@@ -484,6 +483,8 @@ STR_SORT_BY_RUNNING_COST                                        :Eksplotacijos i
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Galią/Eksplotacijos išlaidas
 STR_SORT_BY_CARGO_CAPACITY                                      :Vagono talpą
 STR_SORT_BY_RANGE                                               :Atstumas
+STR_SORT_BY_POPULATION                                          :Populiaciją
+STR_SORT_BY_RATING                                              :Reitingas
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pristabdyti žaidimą
@@ -1071,6 +1072,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lietuvos Respub
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Pietų Korėjos vonas (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Pietų Afrikos Respublikos randas (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Kita...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijos Laris (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Irano Rialas (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Suvienodinti vienetus
@@ -1298,7 +1301,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nustatykite sta
 STR_CONFIG_SETTING_RECESSIONS                                   :Nuosmukiai: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Įgalinus šią nusotatą, kas keletą metų gali užklupti ekonomikos nuosmukis. Nuosmukio metų smarkiai smunka gamyba (kuri atsistato nuosmukiai pasibaigus)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Drausti apsisukimus stotelėse: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Įgalinus šią nusotatą, traukiniai galės apsisukti tik galinėse stotelėse su bendru įvažiavimu ir išvažiavimu.
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Įgalinus šią nuostatą, traukiniai galės apsisukti tik galinėse stotelėse su bendru įvažiavimu ir išvažiavimu.
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofos: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Įgalinti atsitiktines katastrofas, kurių metų gali būti apgadintos ar sunaikintos transporto priemonės bei infrastruktūra
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Miestų gyventojų požiūris į triukšmą ir aplinkos darkymą: {STRING}
@@ -1797,6 +1800,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... nepr
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... nerastas grafikos rinkinys „{STRING}“
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... nerastas garsų rinkinys „{STRING}“
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... nerastas muzikos įrašų rinkinys „{STRING}“
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Pritrūko atminties
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Nepavyko rezervuoti sprukliams {BYTES} laikinosios atminties. Spruklių laikinoji atmintis sumažinta iki {BYTES}, o tai pablogins OpenTTD veikimo spartą. Galite pamėginti išjungti 32-ų bitų grafiką ir/arba sumažinti priartinimo lygį — tai turėtų sumažinti atminties poreikį.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2516,7 +2521,7 @@ STR_AIRPORT_SMALL                                               :Vietinis
 STR_AIRPORT_CITY                                                :Miesto
 STR_AIRPORT_METRO                                               :Didmiesčio
 STR_AIRPORT_INTERNATIONAL                                       :Tarptautinis
-STR_AIRPORT_COMMUTER                                            :Rajono
+STR_AIRPORT_COMMUTER                                            :Regioninis
 STR_AIRPORT_INTERCONTINENTAL                                    :Tarpkontinentinis
 STR_AIRPORT_HELIPORT                                            :Heliportas
 STR_AIRPORT_HELIDEPOT                                           :Helidepas
@@ -3030,8 +3035,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} pristatyta
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (vis dar reikia)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (pristatyta)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Miestas didėja kas {ORANGE}{COMMA}{BLACK} dien{P ą as ų}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Miestas didėja kas {ORANGE}{COMMA}{BLACK} dien{P ą as ų} (paremtas)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Miestas auga kas {ORANGE}{COMMA}{BLACK} dien{P ą as ų}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Miestas auga kas {ORANGE}{COMMA}{BLACK} dien{P ą as ų} (paremtas)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Miestas {RED}ne{BLACK}didėja
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Triukšmo limitas mieste: {ORANGE}{COMMA}{BLACK}  daugiausia: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Rodyti miestą ekrano centre. Ctrl+Paspaudimas atidaro naują langą su miesto vaizdu
