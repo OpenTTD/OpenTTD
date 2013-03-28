@@ -1150,7 +1150,7 @@ STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Hyd uchafsymol 
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Hyd twnel uchafsymol: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Hyd uchafsymol ar gyfer adeiladu twneli
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Prif ddull adeiladu diwydiannau cynradd: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Dull o ariannu diwydiant cynradd. Mae 'dim' yn golygu nid yw'n bosib ariannu rhai, 'mwynchwilio' yn golygu fod modd ariannu, ond bydd adeiladu'n digwydd mewn man ar hap ac y gall fethu llawn cystad, ac 'fel diwydiannau eraill' yn golygu fod modd eu hadeiladu gan gwmniau fel diwydiannau eraill mewn unryw man y mynnent
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Dull o ariannu diwydiant cynradd. Mae 'dim' yn golygu nid yw'n bosib ariannu rhai, 'mwynchwilio' yn golygu fod modd ariannu, ond bydd adeiladu'n digwydd mewn man ar hap ac y gall fethu llawn cystad, ac 'fel diwydiannau eraill' yn golygu fod modd eu hadeiladu gan gwmnïau fel diwydiannau eraill mewn unryw man y mynnent
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Dim
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Fel diwydiannau eraill
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Mwynchwilio
@@ -1175,17 +1175,25 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ochr bell
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Ciwio cerbydau ffordd (gyda effeithiau cwantwm): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Gorfodi i gerbydau ffordd aros o flaen arosfannau llawn nes eu bod yn glir
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Tremio'r ffenestr pan fydd y llygoden ar ymyl y sgrin: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Pan y galluogir, bydd ffenestri golwg yn dechrau sgrolio pan fo'r llygoden yn agos at ochr y ffenest
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Analluogwyd
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Prif ffenestr olygfa, sgrin llawn yn unig
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Prif ffenestr olygfa
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Pob ffenestr olygfa
 STR_CONFIG_SETTING_BRIBE                                        :Caniatáu llwgrwobrwyo'r awdurdod lleol: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Caniatáu i gwmnïau geisio llwgrwobrwyo'r awdurdod lleol. Os bydd arolygydd yn sylwi ar yr ymgais ni gaiff y cwmni weithredu yn y dref am chwe mis
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Caniatáu prynu hawliau cludo cyfyngol: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Os yw cwmni'n prynnu hawliau cludiant cyfyngol mewn tref, ni fydd gosafoedd (teithwyr a chargo) gwrthwynebwyr yn derbyn unrhyw gargo am flwyddyn
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Caniatáu ariannu adeiladau: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Caniatáu i gwmnïau rhoi arian i drefi er mwyn adeiladu tai newydd
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Caniatáu ariannu gwaith ffordd lleol: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Caniatáu i gwmnïau rhoi arian i drefi er mwyn ail-adeiladu ffyrdd a drysu gwasanaethau ffordd yn y dref
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Caniatáu trosglwyddo arian i gwmnïau eraill: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Caniatáu trosglwyddo arian rhwng cwmnïau mewn gêm amlchwaraewr
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Lluosogydd pwysau ar gyfer llwythi i adlewyrchu trenau trwm{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Gosod yr effaith o gario llwythi trom mewn trenau. Bydd gwerth uwch yn gwneud cludo llwythi'n galetach i drenau, yn arbennig ar elltydd
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Ffactor cyflymder awyrennau: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Gosod cyflymder awyrennau o gymharu â cherbydau eraill, i leihau'r incwm wrth gludo mewn awyren
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Nifer o ddamweiniau awyren: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Gosod y tebygolrwydd o drychineb awyren
@@ -1195,7 +1203,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Arferol
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Caniatáu arosfannau gyrru-trwodd ar ffyrdd sy'n eiddo i drefi: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Caniatáu adeiladu arosfannau gyrru-trwodd ar ffyrdd sy'n eiddo i drefi
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Caniatáu arosfannau gyrru-trwodd ar ffyrdd sy'n eiddo i gystadleuwyr: {STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Caniatáu adeiladu arosfannau gyrru-trwodd ar ffyrth sy'n eiddo i gwmniau eraill
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Caniatáu adeiladu arosfannau gyrru-trwodd ar ffyrth sy'n eiddo i gwmnïau eraill
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Caniatáu adeiladu gorsafoedd cyfochrog: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Caniatáu i orsafoedd gwahanol gyffwrdd eu gilydd
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Galluogi defnyddio mwy nag un o setiau injian NewGRF: {STRING}
@@ -1205,23 +1213,38 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Cynnal a chadw 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Pan fo wedi'i alluogi, mae tanadeiledd yn creu costau cynnal a chadw. Mae'r cost yn codi'n gyflymach na'i gyfradd gyda thŵf y rhwydwaith, gan effeithio'n fwy ar gwmniau mawr na rhai bychan
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Maes awyr ddim yn dibennu: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Mae galluogi'r dewis yma'n peri i bob math o faes awyr aros ar gael am byth wedi ei gyflwyniad gyntaf
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Rhybuddio os yw cerbyd ar goll: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Creu negeseuon am gerbydau sy'n methu dod o hyd i lwybr at eu cyrchfan gorchymedig
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Adolygu gorchmynion y cerbyd: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Pan fo wedi'i alluogi, caiff gorchmynion cerbydau eu gwirio'n aclysurol, ac fe adroddir am rai trafferthion amlwg gyda neges newyddion
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Na
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ia, ond hepgor cerbydau sydd yn aros
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :O bob cerbyd
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Rhybuddio os yw cerbyd yn gwneud colled: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Pan fo wedi'i alluogi, fe yrrir neges newyddion pan fo cerbyd heb wneud elw yn ystod blwyddyn calendr
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Nid yw cerbydau'n darfod: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Pan fo wedi'i alluogi, bydd bob math o gerbyd yn aros ar gael am byth wedi eu cyflwyniad gyntaf
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Awtoadnewyddu cerbyd pan aiff yn hen: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Pan fo wedi'i alluogi, bydd cerbyd sy'n agos at ddiwedd ei oes yn cael ei ddisodli'n ddiofyn pan y caiff yr amodau adnewyddu eu cyflawni
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Awtoadnewyddu pan fo'r cerbyd {STRING} ei oed uchafsymol
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Oed cymharol pan y dylid ystyried awtoadnewyddu cerbyd
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mis cyn
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mis wedi
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Isafswm arian awtoadnewyddu ar gyfer adnewyddu: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Lleiafswm arian a ddylai aros yn y banc cyn ystyried awtoadnewyddu cerbydau
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Ystod neges gwall: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Amser i ddangos negeseuon gwall mewn ffenestr coch. Sylwer ni gaiff rhai negeseuon gwall (difrifol) eu cau'n ddiofyn
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} eiliad
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Dangos cynghorion: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Oediad cyn y dangosir cynghorion wrth ddal y cyrchydd dros rhyw elfen rhyngwyneb. Fel arall gellir rhwymo cynghorion at botwm dde'r llygoden
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Oedi am {COMMA} eiliad
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :De glicio
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Dangos poblogaeth tref yn label y dref: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Dangos poblogaeth trefi yn eu label ar y map
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Trwch llinellau graff: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Lled y linell mewn graffiau. Bydd llinell fain yn fwy manwl, tra y bydd llinell trwchus yn haws i'w weld gyda lliwiau'n fwy amlwg
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Cynhyrchydd Tir: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Gwreiddiol
@@ -1348,7 +1371,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Dangos papur ne
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Damweiniau / trychinebau: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Dangos papur newydd pan fo damweiniau neu drychinebau'n digwydd
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Gwybodaeth Cwmnïau: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Dangos papur newydd pan fo cwmni newydd yn dechrau, neu pan fo cwmniau ar fin taro'r wal
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Dangos papur newydd pan fo cwmni newydd yn dechrau, neu pan fo cwmnïau ar fin taro'r wal
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Cychwyn diwydiannau: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Dangos papur newydd pan fo diwydiannau newydd yn agor
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Cau diwydiannau: {STRING}
@@ -3419,10 +3442,10 @@ STR_ORDER_GO_VIA                                                :Galw heibio
 STR_ORDER_GO_NON_STOP_VIA                                       :Myn heb stop gan alw heibio
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Newid ymddygiad stopio o'r gorchymyn a amlygwyd
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Llwyth llawn o unrhyw nwyddau
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Llwyth llawn, unrhyw gargo
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Llwytho os yw ar gael
-STR_ORDER_DROP_FULL_LOAD_ALL                                    :Llwyth llawn o'r holl nwyddau
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Llwyth llawn o unrhyw nwyddau
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Llwyth llawn, pob cargo
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Llwyth llawn, unrhyw gargo
 STR_ORDER_DROP_NO_LOADING                                       :Dim llwytho
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Newid ymddygiad llwytho'r gorchymyn a amlygwyd
 
@@ -3512,7 +3535,7 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 STR_ORDER_IMPLICIT                                              :(Ymhlyg)
 
 STR_ORDER_FULL_LOAD                                             :(Llwyth llawn)
-STR_ORDER_FULL_LOAD_ANY                                         :(Llwyth llawn o unrhyw nwyddau)
+STR_ORDER_FULL_LOAD_ANY                                         :(Llwyth llawn, unrhyw gargo)
 STR_ORDER_NO_LOAD                                               :(Dim llwytho)
 STR_ORDER_UNLOAD                                                :(Dadlwytho a llwytho)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Dadlwytho ac aros am lwyth llawn)
