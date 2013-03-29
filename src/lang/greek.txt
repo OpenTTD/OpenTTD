@@ -1188,13 +1188,14 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Μέγιστο 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Επιτόκιο: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Επιτόκιο δανείων· επίσης ελέγχεται ο πληθωρισμός αν είναι ενεργοποιημένος
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Λειτουργικά έξοδα: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ταχύτητα οικοδομής: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Περιορίστε το ποσοστό των οικοδομών από τα ΑΙ
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Θέτει το επίπεδο συντήρησης και τα λειτουργικά έξοδα των οχημάτων και της υποδομής
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ταχύτητα οικοδόμησης: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Περιορίζει το ποσοστό των οικοδομήμσεων από τα ΑΙ
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Καταρρεύσεις οχημάτων: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Ελέγχει πόσο συχνά καταρρέουν τα ανεπαρκώς συντηρημένα οχήματα
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Πολλαπλασιαστής επιδότησης: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Θέστε πόσο ξεπληρώνεται για επιδοτημένες συνδέσεις
-STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Κόστη οικοδομής: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Κόστη οικοδόμησης: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Θέτει το επίπεδο κόστους για αγορές και οικοδομές
 STR_CONFIG_SETTING_RECESSIONS                                   :Υφέσεις: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Όταν είναι ενεργοποιημένο, μπορεί να υπάρξουν υφέσεις κάθε λίγα χρόνια. Κατά τη διάρκεια μιας ύφεσης, όλη η παραγωγή είναι πολύ χαμηλότερη (επιστρέφει στο προηγούμενο επίπεδο όταν τελειώσει η ύφεση)
@@ -1457,6 +1458,7 @@ STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Παίζει η
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Οικοδομή: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Παίζει ηχητικό εφέ σε επιτυχής οικοδομές ή άλλες δράσεις
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Παίζει ήχο όταν γίνεται κλικ σε κουμπιά
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Παίζει ήχους για ατυχήματα και συμφορές
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Οχήματα: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Παίζει τα ηχητικά εφέ των οχημάτων
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Περιβαλλοντικά: {STRING}
@@ -1517,7 +1519,9 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Παρουσί�
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Άφιξη του πρώτου οχήματος σε σταθμό του αντιπάλου: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Παρουσίασε τα νέα όταν το πρώτο όχημα φτάνει σε νέο σταθμό ενός ανταγωνιστή
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Ατυχήματα / καταστροφές: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Προβάλλει εφημερίδα όταν συμβαίνουν ατυχήματα ή συμφορές
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Πληροφορίες εταιρίας: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Προβάλλει εφημερίδα όταν αρχίζει νέα εταιρεία ή όταν οι εταιρίες ρισκάρουν χρεωκοπία
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Έναρξη των βιομηχανιών: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Κλείσιμο βιομηχανιών: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Οικονομικές αλλαγές: {STRING}
@@ -1548,7 +1552,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Όταν σύρ
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Ορισμός απόστασης στην οποία θα τοποθετούνται σήματα σε μια γραμμή και μέχρι το επόμενο εμπόδιο (σήμα, διακλάδωση), αν σύρονται τα σήματα
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} τετραγωνίδι{P 0 ο α}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Όταν σύρετε, διατηρείται σταθερή απόσταση μεταξύ των σημάτων: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Επιλέξτε τη συμπεριφορά της τοποθέτησης σημάτων όταν πατάτε Ctrl και σύρετε. Όταν είναι απενεργοποιημένο, τα σήματα τοποθετούνται γύρω από σήραγγες και γέφυρες για να αποφεύγονται μεγάλα τμήματα χωρίς σήματα. Όταν είναι ενεργοποιημένο, τα σήματα τοποθετούνται κάθε ν τετραγωνίδια, κάνοντας την ευθυγράμμιση των σημάτων σε παράλληλες γραμμές ευκολότερη
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Επιλέξτε τη συμπεριφορά της τοποθέτησης σημάτων όταν πατάτε Ctrl και σύρετε. Όταν είναι απενεργοποιημένο, τα σήματα τοποθετούνται γύρω από σήραγγες και γέφυρες για να αποφεύγονται μεγάλα τμήματα χωρίς σήματα. Όταν είναι ενεργοποιημένο, τα σήματα τοποθετούνται κάθε n τετραγωνίδια, κάνοντας την ευθυγράμμιση των σημάτων σε παράλληλες γραμμές ευκολότερη
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Αυτόματο κτίσιμο σηματοφόρων πριν από το: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Ορίζεται το έτος κατά το οποίο θα χρησιμοποιούνται τα ηλεκτρικά σήματα στις σιδηροτροχιές. Πριν από αυτό, θα χρησιμοποιούνται μηχανικά σήματα (που έχουν ακριβώς την ίδια λειτουργία, αλλά έχουν διαφορετική μορφή)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ενεργοποίηση του μενού σηματοδοτών: {STRING}
