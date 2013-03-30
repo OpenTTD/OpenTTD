@@ -829,7 +829,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 3배의 추가 보조금을 내년까지 받게 됩니다!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 4배의 추가 보조금을 내년까지 받게 됩니다!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}의 교통 혼잡!{}{}{STRING}에 의한 도로 재공사 프로그램이 운전자들에게 6개월간의 고통을 가져왔습니다!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}의 교통 혼잡!{}{}{STRING}에 의한 도로 보수공사 프로그램이 운전자들에게 6개월간의 고통을 가져다 줄 것입니다!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}독점 수송!
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{0:TOWN} 지역 당국이 {1:STRING}과 1년 간의 수송 독점권 계약을 체결하였습니다!
 
@@ -1188,7 +1188,7 @@ STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :독점 운송�
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :한 회사가 어떤 도시의 독점수송권을 구매하면, 그 도시에 있는 상대편의 역에서는 그 해동안 (승객을 포함한) 그 어떠한 화물도 받을 수 없습니다.
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :도시 상업 건물 건설에 투자하는 행위 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :회사가 도시가 새로운 건물에 투자할 수 있도록 자금을 주는 것을 허용합니다.
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :도시 도로 재공사 시행 행위를 허용: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :도시 도로 보수공사 시행을 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :도로 기반의 수송 체계를 갖추고 있는 다른 회사를 방해하기 위해 해당 도시가 도로 재건축을 시작하도록 회사가 도시에 돈을 지불하는 행위를 허용합니다.
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :다른 회사에게 돈을 송금하는 것을 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :멀티 플레이 모드에서 회사 사이에 돈을 보내는 것을 허용합니다.
@@ -2698,7 +2698,7 @@ STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5합: 
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}색상표: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}매개 변숫값: {SILVER}{STRING}
 
-STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}사용가능한 정보 없음
+STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}관련 정보 없음
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}일치하는 파일을 찾을 수 없습니다
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}사용 안 함
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}이 OpenTTD 버전과 맞지 않습니다...
@@ -2866,10 +2866,10 @@ STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}이 도�
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}실행
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}선택된 항목을 실행에 옮깁니다
 
-STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :소규모 광고 캠페인
-STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :중규모 광고 캠페인
-STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :대규모 광고 캠페인
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :도시의 도로 재공사 시행
+STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :소규모의 광고 진행
+STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :중간 규모의 광고 진행
+STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :대규모의 광고 진행
+STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :도로 보수공사 시행
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :회사 소유주의 동상 건설
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :새 건물에 투자
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :수송 권한 독점권 구입
@@ -2878,7 +2878,7 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :지역 당국�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} 더 많은 승객과 화물을 유치하기 위해 소규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} 더 많은 승객과 화물을 유치하기 위해 중간 규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} 더 많은 승객과 화물을 유치하기 위해 대규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} 도시 도로 네트워크망의 재공사에 투자합니다. 앞으로 6개월간 극심한 도로 혼잡을 일으킵니다.{}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}도시 도로망 보수공사를 시행합니다. 앞으로 6개월간 극심한 도로 혼잡을 일으킵니다.{}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} 당신의 회사를 대표하는 '명예의 동상'을 건설합니다.{}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} 도시 상업 건물의 건설에 투자합니다.{}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} 1년간의 수송 권한 독점권을 구입합니다. 도시 당국은 오직 당신 회사의 역에만 승객과 화물을 허용할 것입니다.{}가격: {CURRENCY_LONG}
@@ -3097,7 +3097,7 @@ STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}산업�
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}지난달 생산량:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% 수송됨)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}이 산업시설로 시점을 변경합니다. Ctrl+Click하면 이 산업시설을 기준으로 새로운 외부 화면을 엽니다.
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}이 산업시설로 이동합니다. Ctrl+클릭하면 이 산업시설을 기준으로 새로운 외부 화면을 엽니다.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}생산 수준: {YELLOW}{COMMA}%
 
 ############ range for requires starts
@@ -3287,9 +3287,9 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}자동�
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}이 선박을 복제합니다. 이 버튼을 누르고 정류소의 안이나 밖에 있는 선박을 클릭하십시오. Ctrl+클릭하면 경로를 같이 공유합니다.
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}이 항공기를 복제합니다. 격납고 안이나 밖에 있는 항공기를 선택하십시오. Ctrl+클릭하면 경로를 같이 공유합니다.
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}이 차량기지로 시점을 변경합니다. Ctrl+Click하면 이 차량 기지의 위치를 기준으로 새로운 외부 화면을 엽니다.
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}이 차량기지로 이동합니다. Ctrl+클릭하면 이 차량 기지의 위치를 기준으로 새로운 외부 화면을 엽니다.
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}이 차고지가 있는 곳으로 시점을 변경합니다. Ctrl+클릭하면 이 차고지 위치를 기준으로 새로운 외부 화면을 엽니다.
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}이 정박소의 위치로 시점을 변경합니다. Ctrl+Click하면 이 정박소의 위치를 기준으로 새로운 외부 화면을 엽니다.
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}이 정박소로 이동합니다. Ctrl+클릭하면 이 정박소의 위치를 기준으로 새로운 외부 화면을 엽니다.
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}이 격납고의 위치로 시점을 이동합니다. Ctrl+클릭하면 이 격납고의 위치를 기준으로 새로운 외부 화면을 엽니다.
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}이 차량기지를 거쳐가는 모든 열차의 목록을 보여줍니다.
@@ -3389,10 +3389,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}이 항�
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}열차를 회차시킵니다.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}차량을 U턴시킵니다.
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}열차의 경로를 보여줍니다. Ctrl+Click은 열차의 시간표를 보여줍니다.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}차량의 경로를 보여줍니다. Ctrl+Click은 차량의 시간표를 보여줍니다.
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}선박의 경로를 보여줍니다. Ctrl+Click은 선박의 시간표를 보여줍니다.
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}항공기의 경로를 보여줍니다. Ctrl+Click은 항공기의 시간표를 보여줍니다.
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}열차의 경로를 보여줍니다. Ctrl+클릭하면 열차의 시간표를 보여줍니다.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}차량의 경로를 보여줍니다. Ctrl+클릭하면 차량의 시간표를 보여줍니다.
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}선박의 경로를 보여줍니다. Ctrl+클릭하면 선박의 시간표를 보여줍니다.
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}항공기의 경로를 보여줍니다. Ctrl+클릭하면 항공기의 시간표를 보여줍니다.
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}열차 상세정보 보기
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}자동차 상세정보 보이기
@@ -3556,7 +3556,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}선택�
 STR_ORDER_REFIT                                                 :{BLACK}개조
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}이 경로에서 어떤 화물을 받을 것인지 선택하십시오. CTRL+클릭은 제거입니다.
 STR_ORDER_REFIT_AUTO                                            :{G=f}{BLACK}자동 개조
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}이 명령으로 자동 개조할 화물 종류를 선택하세요. Ctrl+Click은 제거입니다. 자동 개조 기능은 이 기능을 지원하는 차량에서만 사용가능합니다.
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}이 단계에서 자동으로 개조할 화물의 종류를 선택하세요. Ctrl+클릭하면 개조 지시를 해제합니다. 자동 개조 기능은 개조 가능한 차량에서만 사용할 수 있습니다.
 STR_ORDER_DROP_REFIT_AUTO                                       :화물 종류 고정
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :이용가능한 화물
 

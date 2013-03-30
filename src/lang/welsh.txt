@@ -277,8 +277,8 @@ STR_SORT_BY_LIFE_TIME                                           :Oes yn weddill
 STR_SORT_BY_TIMETABLE_DELAY                                     :Oediad amserlen
 STR_SORT_BY_FACILITY                                            :Math Gorsaf
 STR_SORT_BY_WAITING                                             :Gwerth y llwyth sy'n disgwyl
-STR_SORT_BY_RATING_MAX                                          :Uchaf amcangrif cargo
-STR_SORT_BY_RATING_MIN                                          :Isaf amcangrif cargo
+STR_SORT_BY_RATING_MAX                                          :Safon cludiant uchaf
+STR_SORT_BY_RATING_MIN                                          :Safon cludiant isaf
 STR_SORT_BY_ENGINE_ID                                           :ID Injan (math clasurol)
 STR_SORT_BY_COST                                                :Cost
 STR_SORT_BY_POWER                                               :Pŵer
@@ -1422,6 +1422,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Pan y galluogir
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Galluogi terfynau cyflymder wagenni: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Pan y galluogir, fe ddefnyddir terfynnau cyflymder pob cerbyd mewn trên pan yn cyfrifo ei gyflymder uchafsymol
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Analluogi cledrau trydan: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Mae galluogi'r gosodiad yma yn gwaredu a'r angen i drydaneiddio traciau cyn y gall injan drydan redeg arnynt
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Y cerbyd cyntaf yn cyrraedd gorsaf y chwaraewr: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Dangos papur newydd pan fo'r cerbyd cyntaf yn cyrraedd gorsaf newydd y chwaraewr
@@ -1459,12 +1460,24 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Crynodeb
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Llawn
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Bydd newyddion lliw yn ymddangos yn: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Y blwyddyn y caiff cyhoeddiadau newyddion eu hargraffu mewn lliw. Cyn y dyddiad yma rhai du a gwyn fyddent
 STR_CONFIG_SETTING_STARTING_YEAR                                :Blwyddyn dechreuol: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Galluogi economi llyfn (mwy o newidiadau llai): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Pan fe wedi'i alluogi, mae gweithgynhyrchiant diwydiant yn newid yn fwy aml, ac mewn cammau llai. Ni fydd y gosodiad yma yn cael effaith os y defnyddir diwydiannau NewGRF, fel rheol
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Caniatáu prynu cyfranddaliadau mewn cwmnïau eraill: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Pan fo wedi'i alluogi, fe ganiateir prynnu a gwerthu cyfrandalaidau cwmni. Rhaid i gwmni gyrraedd oed penodol cyn y daw eu cyfrandaliadau ar gael
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Canran elw y cymal i'w dalu mewn systemau trosglwyddo: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Y canran o elw a ddyfarnir i'r cymalau rhyngol mewn systemau trosglwyddo, gan rhoi fwy o reolaeth dros yr elw
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Wrth lusgo, gosod signalau bob: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Gosod y pellter y codir signalau ar drac hyd at y rhwystr nesaf (signal, cyffordd), os y llusgir signalau
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} teil
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Pan yn llusgo, cadw pellter cyson rhwng y signalau: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Gosod ymddygiad gosod signalau pan y defnyddio Ctrl+llusgo. Os analluogir, caiff signalau eu gosod o amgylch twneli a phontydd i osgoi ystodau hir heb signalau. Os y galluogir, caiff signalau eu gosod bob N teil, gan rwyddhau alinio signalau ar traciau paralel
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Adeiladu semafforau cyn: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Gosod y flwyddyn pan y defnyddir signalau trydan ar draciau. Cyn y flwyddyn hon, fe ddefnyddir signalau semaffor (sydd â gweithred unfath, ond edrychiad gwahanol)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Galluogi'r GUI signalau: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Y math o signal i'w adeiladu fel rhagosodiad: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Signal rhagosodedig i'w ddefnyddio
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Signalau Bloc
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Signalau Llwybr
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Signalau Llwybr Un-ffordd
@@ -1474,32 +1487,46 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Signalau llwybr
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Pob math
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Cynllun ffyrdd ar gyfer trefi newydd: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Cynllun rhwydwaith ffyrdd trefi
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Gwreiddiol
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Ffyrdd gwell
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grid 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grid 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Ar hap
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Caiff trefi adeiladu ffyrdd: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Caniatáu i drefi adeiladu ffyrdd er mwyn tyfu. Bydd analluogi yn rhwystro awdurdodau trefi rhag adeiladu ffyrdd eu hunain
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Caniatáu i drefi adeiladau croesfannau rheilffordd: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Galluogwch y gosodiad yma i ganiatáu i drefi adeiladu croesfannau rheilffordd
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Caniatáu i drefi reoli lefel swn meysydd awyrenau: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Os analluogir y gosodiad yma, gellir cael dwy faes awyr ymhob tref. Os y galluogir, fe gyfyngir y nifer o feysydd awyr gan dderbyniath sŵn y dref, sydd yn dibynnu ar y boblogaeth, ynghŷd â maint a phellter maes awyr
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Sefydlu trefi mewn gêm: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Mae galluogi'r gosodiad yma'n caniatáu i chwaraewyr sefydlu trefi newydd yn y gêm
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Gwahardd
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Caniatáu
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Caniatáu, cynllun tref addasiedig
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Gosod coed mewn gêm: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Rheoli ymddangosiad coed ar hap yn ystod y gêm. Gall hyn effeithio ar ddiwydiannau sy'n ddibynnol ar dyfiant coed, megis melinau coed
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Dim {RED}(yn torri'r felin goed)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Mewn glawgoedwigoedd yn unig
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Pob man
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Safle'r prif far offer: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Lleoliad llorweddol y brif bar offer ar frig y sgrin
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Lleoliad y bar statws: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Lleoliad llorweddol y bar statws ar waelod y sgrin
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Pellter snapio ffenestr: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Y pellter rhwng ffenestri cyn y bydd y ffenest sy'n cael ei symyd ei alinio'n ddiofyn at ffenestri gerllaw
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} picsel
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Analluogwyd
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Uchafswm ffenestri (nad yw'n ludiog): {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Y nifer o ffenestri agored (nad ydynt yn ludiog) cyn y caiff hen ffenestri eu cau'n ddiofyn i wneud lle ar gyfer ffenestri newydd
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :analluogwyd
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Lefel mwyháu uchafsymol: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Y lefel agosáu uchaf ar gyfer ffenestri olygfa. Sylwer y bydd galluogi lefelau uwch yn codi 'r gofynion côf
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Lefel mwyháu isafsymol: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Y lefel pellhau uchaf ar gyfer ffenestri golygfa. Gall lefelau pellhau uwch beri oediadau pan y defnyddient
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Arferol
@@ -3296,7 +3323,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cost: {C
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Disodli {STRING} - {STRING}
-STR_REPLACE_VEHICLE_TRAIN                                       :Mae Trên
+STR_REPLACE_VEHICLE_TRAIN                                       :Trên
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Mae Cerbyd Ffordd
 STR_REPLACE_VEHICLE_SHIP                                        :Mae Llong
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Mae Awyren
@@ -3311,7 +3338,7 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Pwyswch 
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ddim yn disodli
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Dim cerbyd wedi'i ddewis
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} pan yn hen
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Dechrau Disodli Cerbydau
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Gorffen Disodli Cerbydau
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Gwasgwch i atal disodli'r math injan sydd wedi'i ddewis ar y chwith
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Disodli: {ORANGE}{STRING}
@@ -3637,8 +3664,8 @@ STR_ORDER_STOP_LOCATION_FAR_END                                 :[ochr bell]
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Mae'r cyrchfan nesaf allan o gyrraedd y cerbyd)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Neidio i orchymyn {COMMA}
-STR_ORDER_CONDITIONAL_NUM                                       :Neidio i orchymyn {COMMA} pan {STRING} {STRING} {COMMA}
-STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Neidio i orchymyn {COMMA} pan {STRING} {STRING}
+STR_ORDER_CONDITIONAL_NUM                                       :Neidio i orchymyn {COMMA} pan fo {STRING} {STRING} {COMMA}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Neidio i orchymyn {COMMA} pan fo {STRING} {STRING}
 
 STR_INVALID_ORDER                                               :{RED} (Gorchymyn Annilys)
 
@@ -3881,7 +3908,7 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRIN
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ni chaniateir hynny tra fo'r gêm wedi ei oedi
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Nid yw awdurdod lleol {TOWN}yn caniatáu hyn
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Nid yw awdurdod lleol {TOWN} yn caniatáu hyn
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Mae awdurdod lleol {TOWN} yn gwrthod caniatáu i faes awyr arall gael ei adeiladu ger y dref hon
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Mae awdurdod lleol {TOWN} wedi gwrthod caniatâd ar gyfer maes awyr oherwydd pryderon ynglŷn â sŵn
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Cawsoch eich dal gan ymchwilydd rhanbarth wrth geisio llwgrwobrwyo

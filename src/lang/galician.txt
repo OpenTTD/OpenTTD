@@ -1284,27 +1284,42 @@ STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Inverti-la dire
 STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Acción cando o mapa se despraza co botón dereito do rato. Cando se desactiva, o rato move a cámara. Cando se activa, o rato move o mapa
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Desprazamento de vista suave: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla como a vista principal se despraza a unah posición específica cando se fai clic no minimapa ou cando se emprega un comando para desprazarse a un obxecto específico sobre o mapa. Se se activa, a vista desprázase suavemente, se se desactiva salta directamente
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostra-la medida cando se usen as ferramentas de construír: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar medidas ao usar as ferramentas de construción: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Amosa as distancias en cadros e as diferencias de cota ao arrastrar durante as operacións de construción
 STR_CONFIG_SETTING_LIVERIES                                     :Mostrar esquemas de cor das compañías: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Uso de esquemas de cor específicos para vehículos (en oposición a esquemas de cor da compañía)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ningunha
-STR_CONFIG_SETTING_LIVERIES_OWN                                 :Propia Compañía
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Propia compañía
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Tódalas compañías
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Charla de equipo o pulsar <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Preferencias de charla de equipo ao pulsar <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Cambia a asignación de chat interno da compañía ou público ás teclas <ENTER> resp. <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Función da roda do rato: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Habilitar desprazamento con rodas de rado bidimensionais
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom no mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Desprazar mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Desconectado
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Velocidade de desprazamento do mapa: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controla a sensibilidade do desprazamento coa roda do rato
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Teclado en pantalla: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Selecciona o método para abrir o teclado en pantalla para introducir texto nos cadros editables usando o dispositivo sinalador exclusivamente. Para pequenos dispositivos sen teclado real
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Deshabilitado
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dobre clic
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Clic sinxelo (centrado)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Clic sinxelo (inmediatamente)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulación do botón dereito: {STRING}
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Tecla Command
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Tecla Control
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Selecciona o método para emular clics co botón dereito do rato
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Tecla Command+Clic
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Clic
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Apagado
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Desprazamento con click esquerdo: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Habilitar o desprazamento do mapa arrastrándoo co botón esquerdo do rato. Isto é especialmente útil se se emprega unha pantalla táctil para desprazarse
 
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Empregar o formato de data {STRING} para os nomes das partidas gravadas
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formato da data nos nomes das partidas gravadas
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :longo (31 Dec 2008)
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :corto (31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curto (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 
