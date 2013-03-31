@@ -21,8 +21,6 @@
  *
  * \b 1.3.0
  *
- * 1.3.0 is not yet released. The following changes are not set in stone yet.
- *
  * API additions:
  * \li AIEventExclusiveTransportRights
  * \li AIEventRoadReconstruction

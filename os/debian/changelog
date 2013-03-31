@@ -1,284 +1,308 @@
-openttd (1.3.0-beta2) unstable; urgency=low
+openttd (1.3.0-0) unstable; urgency=low
+
+  * New upstream release 1.3.0
+
+ -- OpenTTD <info@openttd.org>  Mon, 01 Apr 2013 00:00:00 +0200
+
+openttd (1.3.0~RC3) unstable; urgency=low
+
+  * New upstream release 1.3.0-RC3
+
+ -- OpenTTD <info@openttd.org>  Mon, 18 Mar 2013 00:00:00 +0100
+
+openttd (1.3.0~RC2) unstable; urgency=low
+
+  * New upstream release 1.3.0-RC2
+
+ -- OpenTTD <info@openttd.org>  Tue, 05 Mar 2013 00:00:00 +0100
+
+openttd (1.3.0~RC1) unstable; urgency=low
+
+  * New upstream release 1.3.0-RC1
+
+ -- OpenTTD <info@openttd.org>  Tue, 19 Feb 2013 00:00:00 +0100
+
+openttd (1.3.0~beta2) unstable; urgency=low
 
   * New upstream release 1.3.0-beta2
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Thu, 07 Feb 2013 00:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Thu, 07 Feb 2013 00:00:00 +0100
 
-openttd (1.3.0-beta1) unstable; urgency=low
+openttd (1.3.0~beta1) unstable; urgency=low
 
   * New upstream release 1.3.0-beta1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Mon, 24 Dec 2012 00:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Mon, 24 Dec 2012 00:00:00 +0100
 
 openttd (1.2.3) unstable; urgency=low
 
   * New upstream release 1.2.3
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Thu, 01 Nov 2012 00:00:00 +0200
+ -- OpenTTD <info@openttd.org>  Thu, 01 Nov 2012 00:00:00 +0200
 
 openttd (1.2.3~RC1) unstable; urgency=low
 
   * New upstream release 1.2.3-RC1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Wed, 17 Oct 2012 00:00:00 +0200
+ -- OpenTTD <info@openttd.org>  Wed, 17 Oct 2012 00:00:00 +0200
 
 openttd (1.2.2) unstable; urgency=low
 
   * New upstream release 1.2.2
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Thu, 16 Aug 2012 20:00:00 +0200
+ -- OpenTTD <info@openttd.org>  Thu, 16 Aug 2012 20:00:00 +0200
 
 openttd (1.2.2~RC1) unstable; urgency=low
 
   * New upstream release 1.2.2-RC1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Wed, 01 Aug 2012 00:00:00 +0200
+ -- OpenTTD <info@openttd.org>  Wed, 01 Aug 2012 00:00:00 +0200
 
 openttd (1.2.1) unstable; urgency=low
 
   * New upstream release 1.2.1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Fri, 01 Jun 2012 00:00:00 +0200
+ -- OpenTTD <info@openttd.org>  Fri, 01 Jun 2012 00:00:00 +0200
 
 openttd (1.2.1~RC1) unstable; urgency=low
 
   * New upstream release 1.2.1-RC1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Wed, 16 Apr 2012 22:00:00 +0200
+ -- OpenTTD <info@openttd.org>  Wed, 16 Apr 2012 22:00:00 +0200
 
 openttd (1.2.0) unstable; urgency=low
 
   * New upstream release 1.2.0
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 15 Apr 2012 14:00:00 +0200
+ -- OpenTTD <info@openttd.org>  Sun, 15 Apr 2012 14:00:00 +0200
 
 openttd (1.2.0~RC4) unstable; urgency=low
 
   * New upstream release 1.2.0-RC4
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 01 Apr 2012 00:00:00 +0200
+ -- OpenTTD <info@openttd.org>  Sun, 01 Apr 2012 00:00:00 +0200
 
 openttd (1.2.0~RC3) unstable; urgency=low
 
   * New upstream release 1.2.0-RC3
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 18 Mar 2012 18:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Sun, 18 Mar 2012 18:00:00 +0100
 
 openttd (1.2.0~RC2) unstable; urgency=low
 
   * New upstream release 1.2.0-RC2
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 04 Mar 2012 18:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Sun, 04 Mar 2012 18:00:00 +0100
 
 openttd (1.2.0~RC1) unstable; urgency=low
 
   * New upstream release 1.2.0-RC1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 19 Feb 2012 23:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Sun, 19 Feb 2012 23:00:00 +0100
 
 openttd (1.2.0~beta4) unstable; urgency=low
 
   * New upstream release 1.2.0-beta4
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 04 Feb 2012 16:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Sat, 04 Feb 2012 16:00:00 +0100
 
 openttd (1.2.0~beta3) unstable; urgency=low
 
   * New upstream release 1.2.0-beta3
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 21 Jan 2012 16:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Sat, 21 Jan 2012 16:00:00 +0100
 
 openttd (1.2.0~beta2) unstable; urgency=low
 
   * New upstream release 1.2.0-beta2
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 07 Jan 2012 00:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Sat, 07 Jan 2012 00:00:00 +0100
 
 openttd (1.2.0~beta1) unstable; urgency=low
 
   * New upstream release 1.2.0-beta1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 24 Dec 2011 00:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Sat, 24 Dec 2011 00:00:00 +0100
 
 openttd (1.1.4) unstable; urgency=low
 
   * New upstream release 1.1.4
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Mon, 05 Dec 2011 00:00:00 +0400
+ -- OpenTTD <info@openttd.org>  Mon, 05 Dec 2011 00:00:00 +0400
 
 openttd (1.1.4-RC1) unstable; urgency=low
 
   * New upstream release 1.1.4-RC1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 20 Nov 2011 17:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Sun, 20 Nov 2011 17:00:00 +0100
 
 openttd (1.1.3) unstable; urgency=low
 
   * New upstream release 1.1.3
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Thu, 15 Sep 2011 21:00:00 +0200
+ -- OpenTTD <info@openttd.org>  Thu, 15 Sep 2011 21:00:00 +0200
 
 openttd (1.1.3-RC1) unstable; urgency=low
 
   * New upstream release 1.1.3-RC1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 04 Sep 2011 17:00:00 +0200
+ -- OpenTTD <info@openttd.org>  Sun, 04 Sep 2011 17:00:00 +0200
 
 openttd (1.1.2) unstable; urgency=low
 
   * New upstream release 1.1.2
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 14 Aug 2011 17:00:00 +0200
+ -- OpenTTD <info@openttd.org>  Sun, 14 Aug 2011 17:00:00 +0200
 
 openttd (1.1.2~RC2) unstable; urgency=low
 
   * New upstream release 1.1.2-RC2
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 30 Jul 2011 21:00:00 +0200
+ -- OpenTTD <info@openttd.org>  Sat, 30 Jul 2011 21:00:00 +0200
 
 openttd (1.1.2~RC1) unstable; urgency=low
 
   * New upstream release 1.1.2-RC1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 24 Jul 2011 21:00:00 +0200
+ -- OpenTTD <info@openttd.org>  Sun, 24 Jul 2011 21:00:00 +0200
 
 openttd (1.1.1) unstable; urgency=low
 
   * New upstream release 1.1.1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Wed, 01 Jun 2011 00:00:00 +0200
+ -- OpenTTD <info@openttd.org>  Wed, 01 Jun 2011 00:00:00 +0200
 
 openttd (1.1.1~RC1) unstable; urgency=low
 
   * New upstream release 1.1.1-RC1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 15 May 2011 21:00:00 +0200
+ -- OpenTTD <info@openttd.org>  Sun, 15 May 2011 21:00:00 +0200
 
 openttd (1.1.0) unstable; urgency=low
 
   * New upstream release 1.1.0
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Fri, 01 Apr 2011 00:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Fri, 01 Apr 2011 00:00:00 +0100
 
 openttd (1.1.0~RC3) unstable; urgency=low
 
   * New upstream release 1.1.0-RC3
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Fri, 18 Mar 2011 22:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Fri, 18 Mar 2011 22:00:00 +0100
 
 openttd (1.1.0~RC2) unstable; urgency=low
 
   * New upstream release 1.1.0-RC2
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Fri, 04 Mar 2011 22:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Fri, 04 Mar 2011 22:00:00 +0100
 
 openttd (1.1.0~RC1) unstable; urgency=low
 
   * New upstream release 1.1.0-RC1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Fri, 18 Feb 2011 22:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Fri, 18 Feb 2011 22:00:00 +0100
 
 openttd (1.1.0~beta5) unstable; urgency=low
 
   * New upstream release 1.1.0-beta5
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Fri, 04 Feb 2011 22:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Fri, 04 Feb 2011 22:00:00 +0100
 
 openttd (1.1.0~beta4) unstable; urgency=low
 
   * New upstream release 1.1.0-beta4
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Fri, 21 Jan 2011 00:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Fri, 21 Jan 2011 00:00:00 +0100
 
 openttd (1.1.0~beta3) unstable; urgency=low
 
   * New upstream release 1.1.0-beta3
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 09 Jan 2011 18:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Sun, 09 Jan 2011 18:00:00 +0100
 
 openttd (1.1.0~beta2) unstable; urgency=low
 
   * New upstream release 1.1.0-beta2
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Fri, 31 Dec 2010 18:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Fri, 31 Dec 2010 18:00:00 +0100
 
 openttd (1.1.0~beta1) unstable; urgency=low
 
   * New upstream release 1.1.0-beta1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Fri, 24 Dec 2010 00:00:00 +0100
+ -- OpenTTD <info@openttd.org>  Fri, 24 Dec 2010 00:00:00 +0100
 
 openttd (1.0.5-0) unstable; urgency=low
 
   * New upstream release 1.0.5
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 20 Nov 2010 21:00:00 +0000
+ -- OpenTTD <info@openttd.org>  Sat, 20 Nov 2010 21:00:00 +0000
 
 openttd (1.0.5~rc2-0) unstable; urgency=low
 
   * New upstream release 1.0.5~rc2
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 14 Nov 2010 15:00:00 +0000
+ -- OpenTTD <info@openttd.org>  Sun, 14 Nov 2010 15:00:00 +0000
 
 openttd (1.0.5~rc1-0) unstable; urgency=low
 
   * New upstream release 1.0.5-RC1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 31 Oct 2010 15:00:00 +0000
+ -- OpenTTD <info@openttd.org>  Sun, 31 Oct 2010 15:00:00 +0000
 
 openttd (1.0.4-0) unstable; urgency=low
 
   * New upstream release 1.0.4
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Tue, 14 Sep 2010 20:00:00 +0000
+ -- OpenTTD <info@openttd.org>  Tue, 14 Sep 2010 20:00:00 +0000
 
 openttd (1.0.4~rc1-0) unstable; urgency=low
 
   * New upstream release 1.0.4-RC1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Mon, 30 Aug 2010 20:00:00 +0000
+ -- OpenTTD <info@openttd.org>  Mon, 30 Aug 2010 20:00:00 +0000
 
 openttd (1.0.3-0) unstable; urgency=low
 
   * New upstream release 1.0.3
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 01 Aug 2010 00:00:00 +0000
+ -- OpenTTD <info@openttd.org>  Sun, 01 Aug 2010 00:00:00 +0000
 
 openttd (1.0.3~rc1-0) unstable; urgency=low
 
   * New upstream release 1.0.3-RC1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 05 Jul 2010 17:37:21 +0000
+ -- OpenTTD <info@openttd.org>  Sat, 05 Jul 2010 17:37:21 +0000
 
 openttd (1.0.2-0) unstable; urgency=low
 
   * New upstream release 1.0.2
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 19 Jun 2010 18:36:21 +0000
+ -- OpenTTD <info@openttd.org>  Sat, 19 Jun 2010 18:36:21 +0000
 
 openttd (1.0.2~rc1-0) unstable; urgency=low
 
   * New upstream release 1.0.2-RC1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 05 Jun 2010 23:36:21 +0000
+ -- OpenTTD <info@openttd.org>  Sat, 05 Jun 2010 23:36:21 +0000
 
 openttd (1.0.1-0) unstable; urgency=low
 
   * New upstream release 1.0.1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 01 May 2010 00:00:00 +0200
+ -- OpenTTD <info@openttd.org>  Sat, 01 May 2010 00:00:00 +0200
 
 openttd (1.0.1~rc2-0) unstable; urgency=low
 
   * New upstream release 1.0.1-RC2
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Wed, 21 Apr 2010 21:36:21 +0200
+ -- OpenTTD <info@openttd.org>  Wed, 21 Apr 2010 21:36:21 +0200
 
 openttd (1.0.1~rc1-0) unstable; urgency=low
 
   * New upstream release 1.0.1-RC1
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 17 Apr 2010 23:36:21 +0000
+ -- OpenTTD <info@openttd.org>  Sat, 17 Apr 2010 23:36:21 +0000
 
 openttd (1.0.0-1) unstable; urgency=low
 

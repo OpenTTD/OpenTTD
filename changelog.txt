@@ -1,3 +1,39 @@
+1.3.0 (2013-04-01)
+------------------------------------------------------------------------
+- Fix: Station rebuilding could leave reserved tiles which caused crashes later on [FS#5510, FS#5516] (r25132)
+- Fix: When the count for a scrollbar was 0, the inter distance was subtracted too much causing a scrollbar with a negative size (r25123)
+
+
+1.3.0-RC3 (2013-03-18)
+------------------------------------------------------------------------
+- Fix: Limit aircraft property 0D to 19, since the conversion result to km-ish/h needs to fit into a byte [FS#5492] (r25099)
+- Fix: Clicking the statusbar crashed, when news were pending but no news were shown yet [FS#5486] (r25093)
+- Fix: Make editbox character filters also apply to pasted content from clipboard (r25090, r25089)
+- Fix: Catch exception anonymously, if the exception content is not of interest [FS#5500] (r25081)
+
+
+1.3.0-RC2 (2013-03-05)
+------------------------------------------------------------------------
+- Fix: Make sizes of the station preview list and direction selection identical in the station build window [FS#5472] (r25064)
+- Fix: When allocation of the sprite cache fails, try to allocate less memory and display an error message later on (r25061)
+- Fix: Refactor Script Debug GUI to only set widget states in OnInvalidateData [FS#5490] (r25052)
+- Fix: Do not let gcc include files from the "standard C" include directories to avoid inclusion of header files at the top of the preprocessed nfo files, which cause NFOrenum/GRFcodec to make invalid assumptions about the NFO version (r25050)
+- Fix: Minimise gaps feature caused removal to only happen at the signal build interval instead of the implicit interval of 1 [FS#5479] (r25038)
+- Fix: Green path signals would be shown when building them 'under' a train, and they would keep showing green until they were passed again [FS#5480] (r25037)
+
+
+1.3.0-RC1 (2013-02-19)
+------------------------------------------------------------------------
+- Feature: Searching of (missing) content via GrfCrawler (r25024, r25023)
+- Change: Cleanup goals and cargo monitors of companies when they go bankrupt or are taken over (r24986)
+- Change: Apply the same name sorting rules to content and NewGRF list as for the server list (r24983)
+- Fix: [SDL] Crash after bootstrap download of 32bits base set due to referencing a deleted mutex [FS#5466] (r25017)
+- Fix: [SDL] Improve 8bpp hardware palette support. Instead of always requesting SDL_HWPALETTE, it is now only done for 8bp blitters in fullscreen mode (r25003, r25002, r24993)
+- Fix: Set vehicle's service interval is percent flag appropriately on creation [FS#5137] (r24998)
+- Fix: When choosing a train in a depot to attach a newly purchased wagon to, do not consider trains currently moving in and out of the depot (r24987)
+- Fix: [Script] Crash when passing too many parameters [FS#5465] (r24982, r24981, r24980)
+
+
 1.3.0-beta2 (2013-02-07)
 ------------------------------------------------------------------------
 - Feature: [NewGRF] Station randomisation triggers (r24906, r24905)
