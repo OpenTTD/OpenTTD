@@ -1,14 +1,13 @@
 OpenTTD's known bugs
-Last updated:    2012-06-01
-Release version: 1.2.1
+Last updated:    2013-04-01
+Release version: 1.3.0
 ------------------------------------------------------------------------
 
 
 Table of contents
 -----------------
 1.0) About
-2.0) Known bugs in this release
- * 2.1) Known bugs that will not be solved
+2.0) Known bugs
 
 
 1.0) About
@@ -17,36 +16,13 @@ All bugs listed below are marked as known. Please do not submit any bugs
 that are the same as these. If you do, do not act surprised, because
 we WILL flame you!!
 
-Of course if you have more knowledge about any of these bugs, have more
-specifics, we welcome you to report them. React to the given bug indicated
-by the number below on http://bugs.openttd.org.
+The current list of known bugs that we intend to fix can be found in our
+bug tracking system at: http://bugs.openttd.org
+Also check the closed bugs when searching for your bug in this system as
+we might have fixed the bug in the mean time.
 
 
-2.0) Known bugs in this release
----- --------------------------
-The following bugs are known to exist in this release and we intend to
-fix them. Some bugs are known but are not fixable or fixing them would
-cause further problems. Those bugs can be found in the "Known bugs that
-will not be solved" section.
-
-The bugs in this section all refer to a ticket in our bug tracking system
-that you can find at: http://bugs.openttd.org
-If the bugs are closed but still listed here it means that the bug is fixed
-and that the nightlies and next major release will not have that bug.
-
-Issues prefixed with [OSX] are required to be fixed before we consider
-officially supporting Mac OS X again. For now it remains unsupported and
-we only apply bug fixes provided by the community but we are unable to fix
-these bugs ourselves.
-
-- 4857	[OSX] No support for detecting mono space font
-- 4847	[OSX] No support for bootstrap downloading of base graphics
-- 4744  [OSX] Crash when switching to full screen with OS X Lion
-- 4689  [OSX] Crash when hiding window after coming from full screen
-- 4420  [OSX] OS' mouse pointer still shows
-- 2484  [OSX] Cannot enter CJK characters
-
-2.1) Known bugs that will not be solved
+2.0) Known bugs
 ---- ----------------------------------
 This section lists all known bugs that we do not intend to fix and the
 reasons why we think that fixing them is infeasible. We might make some

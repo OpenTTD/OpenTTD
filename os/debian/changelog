@@ -1,3 +1,9 @@
+openttd (1.3.0-0) unstable; urgency=low
+
+  * New upstream release 1.3.0
+
+ -- OpenTTD <info@openttd.org>  Mon, 01 Apr 2013 00:00:00 +0200
+
 openttd (1.3.0~RC3) unstable; urgency=low
 
   * New upstream release 1.3.0-RC3
