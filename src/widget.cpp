@@ -1470,7 +1470,8 @@ void NWidgetMatrix::SetCount(int count)
 	 * and post spacing "offsets". */
 	count = CeilDiv(count, this->sb->IsVertical() ? this->widgets_x : this->widgets_y);
 	count *= (this->sb->IsVertical() ? this->head->smallest_y : this->head->smallest_x) + this->pip_inter;
-	count += -this->pip_inter + this->pip_pre + this->pip_post; // We counted an inter too much in the multiplication above
+	if (count > 0) count -= this->pip_inter; // We counted an inter too much in the multiplication above
+	count += this->pip_pre + this->pip_post;
 	this->sb->SetCount(count);
 	this->sb->SetCapacity(this->sb->IsVertical() ? this->current_y : this->current_x);
 	this->sb->SetStepSize(this->sb->IsVertical() ? this->widget_h  : this->widget_w);
