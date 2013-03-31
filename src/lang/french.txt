@@ -257,7 +257,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Région{
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Population
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nom
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Date
 # These are used in dropdowns
@@ -290,6 +289,8 @@ STR_SORT_BY_RUNNING_COST                                        :Coûts d'entret
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Puissance / Coûts d'entretien
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacité
 STR_SORT_BY_RANGE                                               :Rayon d'action
+STR_SORT_BY_POPULATION                                          :Population
+STR_SORT_BY_RATING                                              :Qualité de service
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Mettre le jeu en pause
@@ -877,6 +878,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas lituanien
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won sud-coréen (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand sud-africain (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personnalisée...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Géorgien (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iranien (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Unités de mesure
@@ -1603,6 +1606,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... le f
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... graphiques de base '{STRING}' ignorés{NBSP}: non trouvés
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... sons de base '{STRING}' ignorés{NBSP}: non trouvés
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... musique de base '{STRING}' ignorée{NBSP}: non trouvée
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Plus de mémoire
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}L'allocation de {BYTES} pour le cache des sprites a échoué. Le cache des sprites a été réduit à {BYTES}. Cela va réduire les performances d'OpenTTD. Pour diminuer les besoins en mémoire vous pouvez essayer de désactiver les graphismes 32bpp et/ou les niveaux de zoom avant
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

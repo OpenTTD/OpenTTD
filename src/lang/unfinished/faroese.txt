@@ -254,7 +254,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Øki: {N
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Fólkatal
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Navn
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dato
 # These are used in dropdowns
@@ -272,7 +271,7 @@ STR_SORT_BY_MAX_SPEED                                           :Hægstu fer
 STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Virði
 STR_SORT_BY_LENGTH                                              :Longd
-STR_SORT_BY_LIFE_TIME                                           :Eftirverandi lív tíð
+STR_SORT_BY_LIFE_TIME                                           :Eftirverandi livitíð
 STR_SORT_BY_TIMETABLE_DELAY                                     :Tíðarætlan seinka
 STR_SORT_BY_FACILITY                                            :Støð slagi
 STR_SORT_BY_WAITING                                             :Bíðar farmur virði
@@ -286,6 +285,8 @@ STR_SORT_BY_INTRO_DATE                                          :Innleiðslu Dag
 STR_SORT_BY_RUNNING_COST                                        :Raktstrar kostnaði
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Megi/Rakstrar kostnaði
 STR_SORT_BY_CARGO_CAPACITY                                      :Farm Pláss
+STR_SORT_BY_POPULATION                                          :Fólkatal
+STR_SORT_BY_RATING                                              :Virði
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Steðga spælinum
@@ -348,7 +349,7 @@ STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Tekin víst
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Full animatión
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Allar smálutir
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Gjøgnumskygdir bygningar
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gjøgnumskygd statións tekin
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gjøgnumskygd statións skelti
 ############ range ends here
 
 ############ range for file menu starts
@@ -605,19 +606,19 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Gjaldsoy
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Úrval av gjaldsoyra eindum
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pund (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarar ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Evrir (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Bretsk Pund (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarar (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Evrir (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Eysturríkskan Shilling (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgiskan Frank (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveisiskan Frank (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tjekkisk Koruna (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danskar Krónir (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Spanskir Peseta (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finskan Mark (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frankar (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franskan Frank (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grikkskan Drachma (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungarskan Forint (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Íslenska Krónu (ISK)
@@ -633,6 +634,8 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkiskan Lira 
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakiska Koruna (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasilskan Real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estoniska Krooni (EEK)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiskur Lari
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranskur Rial
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Máti eindir
@@ -699,6 +702,7 @@ STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungarsk
 # Advanced settings window
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Fyritøku stillingar (goymdir í goymslufílu; ávirkar einans núverðandi fyritøku)
 
 
 
@@ -734,6 +738,8 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 
 
 # Config errors
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Einki minni eftir
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Leitan eftir {BYTES} av spritecache eydnaðist ikki. Spritecache var skerd til {BYTES}. Hetta vil skerja framførsluna av OpenTTD. Fyri at minka um minnis krøvini kann tú royna at sløkkja fyri 32bpp grafikki og/ella suma-in stig
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -828,6 +834,9 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ End of leave-in-this-order
 
 # Content downloading window
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Leita á útihýsis heimasíðum
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Tygum fara nú frá OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Treytir og umstøður fyri niðurtøku av tilfari frá útihýsis heimasíðum eru ymiskar.{}Kunning um hvussu tygum installera hetta tilfari inn í OpenTTD mugu tygum finna á hesum útihýsis heimasíðunum.{}Vilja tygum halda á fram?
 STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
 
 # Order of these is important!
@@ -926,6 +935,7 @@ STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}
 
 
 # World generation
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Vel stødd av korti í puntum. Talið av tøkum puntum verur eitt sindur minni
 STR_MAPGEN_BY                                                   :{BLACK}*
 
 # Strings for map borders at game generation
@@ -960,6 +970,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 
 # NewGRF related 'general' warnings
 
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Kann ikki leggja fílu aftrat: NewGRF fílu mark rokki
 
 
 # NewGRF status
@@ -1006,6 +1017,7 @@ STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOI
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservera til lessing)
 
 
 
@@ -1137,6 +1149,10 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 
 
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Broyt eftirlits interval typu
+STR_VEHICLE_DETAILS_DEFAULT                                     :Vanligt
+STR_VEHICLE_DETAILS_DAYS                                        :Dagar
+STR_VEHICLE_DETAILS_PERCENT                                     :Prosent
 
 
 # Extra buttons for train details windows
@@ -1237,6 +1253,10 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHI
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Yvurflyting: {CURRENCY_LONG}{WHITE} / {GREEN}Inntøka: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Yvurflyting: {CURRENCY_LONG}{WHITE} / {GREEN}Inntøka: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Yvurflyting: {CURRENCY_LONG}{WHITE} / {RED}Kostnaður: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Yvurflyting: {CURRENCY_LONG}{WHITE} / {RED}Kostnaður: {CURRENCY_LONG}
 
 # Saveload messages
 
@@ -1346,6 +1366,45 @@ STR_SV_STNAME_WAYPOINT                                          :{STRING}
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
+STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :Yate Haugan
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :Bakewell Cotswald LB-3
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_8                 :Bakewell Luckett LB-8
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :Bakewell Luckett LB-9
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :Bakewell Luckett LB80
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :Bakewell Luckett LB-10
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :Bakewell Luckett LB-11
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :Yate Aerospace YAC 1-11
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :Darwin 100
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :Darwin 200
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :Darwin 300
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :Darwin 400
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :Darwin 500
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :Darwin 600
+STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :Guru Galaxy
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :Airtaxi A21
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :Airtaxi A31
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Airtaxi A32
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :Airtaxi A33
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :Yate Aerospace YAe46
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :Dinger 100
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :AirTaxi A34-1000
+STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :Yate Z-Shuttle
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :Kelling K1
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :Kelling K6
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :Kelling K7
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :Darwin 700
+STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP Hyperdart 2
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :Dinger 200
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :Dinger 1000
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :Ploddyphut 100
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :Ploddyphut 500
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :Flashbang X1
+STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :Juggerplane M1
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :Flashbang Wizzer
+STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Tricario Tyrla
+STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Guru X2 Tyrla
+STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut Tyrla
 
 ##id 0x8800
 # Formatting of some strings
@@ -1354,7 +1413,13 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_FORMAT_BUOY_NAME                                            :{TOWN} Boyja
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Boyja #{COMMA}
+STR_FORMAT_COMPANY_NUM                                          :(Fyritøka {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Bólkur {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Waypoint
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Waypoint #{COMMA}
 
 
 

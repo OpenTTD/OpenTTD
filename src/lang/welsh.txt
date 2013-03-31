@@ -1144,7 +1144,8 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :Llwytho cerbyda
 STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Llwytho cerbydau'n raddol gan ddefnyddio ystodau cerbyd-benodol, yn hytrach na llwytho pob dim ar unwaith gydag amser penodedig yn dibynnu ar faint y llwyth yn unig
 STR_CONFIG_SETTING_INFLATION                                    :Chwyddiant: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Galluogi chwyddiant yn yr economi, lle y bydd costau'n codi ychydig yn gyflymach na thaliadau
-STR_CONFIG_SETTING_SELECTGOODS                                  :Danfon llwyth i orsaf dim ond pan fo galw: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :Danfon llwyth i orsaf dim ond pan fo galw amdano: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Dim ond danfon llwyth i orsaf lle y bu cais gan cerbyd i'w lwytho. Mae hyn yn osgoi creu graddfa cludiant gwael ar gyfer llwythi nas gwasanaethir mewn gorsaf
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Hyd pont uchafsymol: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Hyd uchafsymol ar gyfer adeiladu pontydd
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Hyd twnel uchafsymol: {STRING}
@@ -1345,6 +1346,7 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Dangos amseroed
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Dangos cyrraedd a gadael mewn amserlenni: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Dangos amseroedd cyrraedd a gadael rhagdybiedig mewn amserlenni
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creu cyflym ar gyfer gorchmynion cerbydau: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Rhag-ddewis y 'cyrchydd mynd i' pan yn agor y ffenestr gorchmynion
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Math rheilffordd ragosodedig (ar ôl gêm newydd/llwytho gêm ): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Math o gledrau i'w ddewis wedi dechrau neu lwytho gêm. Bydd 'y cyntaf ar gael' yn dewis y math hynaf, 'yr olaf ar gael' yn dewis y diweddaraf, a 'defnydd mwyaf' y math mwyaf cyffredin ar hyn o bryd
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Y cyntaf sydd ar gael
@@ -1476,12 +1478,14 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Gosod ymddygiad
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Adeiladu semafforau cyn: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Gosod y flwyddyn pan y defnyddir signalau trydan ar draciau. Cyn y flwyddyn hon, fe ddefnyddir signalau semaffor (sydd â gweithred unfath, ond edrychiad gwahanol)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Galluogi'r GUI signalau: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Dangos ffenestr ar gyfer dewis y math o signalau i ddewis, yn hytrach na chylchu drwy mathau signal wrth Ctrl+clicio heb ffenest pan yn adeiladu signalau
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Y math o signal i'w adeiladu fel rhagosodiad: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Signal rhagosodedig i'w ddefnyddio
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Signalau Bloc
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Signalau Llwybr
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Signalau Llwybr Un-ffordd
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Cylchu trwy mathau signal: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Dewis pa fathau o signalau i gylchu drwyddynt, pan yn Ctrl+clicio i adeiladu signalau gyda'r offer signal
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Signalau bloc yn unig
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Signalau llwybr yn unig
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Pob math
