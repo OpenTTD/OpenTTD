@@ -1319,8 +1319,16 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 		TILE_AREA_LOOP(tile, update_reservation_area) {
 			DiagDirection dir = AxisToDiagDir(axis);
 			TileIndexDiff tile_offset = TileOffsByDiagDir(dir);
-			TileIndex platform_begin = tile - tile_offset * (st->GetPlatformLength(tile, ReverseDiagDir(dir)) - 1);
-			TileIndex platform_end   = tile + tile_offset * (st->GetPlatformLength(tile, dir) - 1);
+			TileIndex platform_begin = tile;
+			TileIndex platform_end = tile;
+
+			/* We can only account for tiles that are reachable from this tile, so ignore primarily blocked tiles while finding the platform begin and end. */
+			for (TileIndex next_tile = platform_begin - tile_offset; IsCompatibleTrainStationTile(next_tile, platform_begin); next_tile -= tile_offset) {
+				platform_begin = next_tile;
+			}
+			for (TileIndex next_tile = platform_end + tile_offset; IsCompatibleTrainStationTile(next_tile, platform_end); next_tile += tile_offset) {
+				platform_end = next_tile;
+			}
 
 			/* If there is at least on reservation on the platform, we reserve the whole platform. */
 			bool reservation = false;
