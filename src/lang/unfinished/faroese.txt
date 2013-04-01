@@ -1366,6 +1366,12 @@ STR_SV_STNAME_WAYPOINT                                          :{STRING}
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate Cargo skip
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Cargo skip
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover Cargo skip
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut Cargo skip
+STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
+STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
 STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :Yate Haugan
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :Bakewell Cotswald LB-3
@@ -1421,9 +1427,20 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Waypoint
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Waypoint #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Tok Goymsla
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Tok Goymsla #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Veg Akfars Goymsla
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Veg Akfars Goymsla #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Skipa Goymsla
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Skipa Goymsla #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangarur
 
+STR_UNKNOWN_STATION                                             :ókend støð
+STR_DEFAULT_SIGN_NAME                                           :Skelti
+STR_COMPANY_SOMEONE                                             :onkur
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Eygleiðari, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

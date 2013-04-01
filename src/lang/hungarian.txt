@@ -319,7 +319,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Terület
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Lakosság
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Név
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dátum
 # These are used in dropdowns
@@ -352,6 +351,8 @@ STR_SORT_BY_RUNNING_COST                                        :Üzemeltetési 
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Telj./Üzemeltetési ktsg.
 STR_SORT_BY_CARGO_CAPACITY                                      :Szállítási kapacitás
 STR_SORT_BY_RANGE                                               :Hatótávolság
+STR_SORT_BY_POPULATION                                          :Lakosság
+STR_SORT_BY_RATING                                              :Értékelés
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Játék szüneteltetése

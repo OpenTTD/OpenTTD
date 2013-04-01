@@ -289,10 +289,11 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Chi phí Năng 
 STR_SORT_BY_CARGO_CAPACITY                                      :Khả năng chở hàng
 STR_SORT_BY_RANGE                                               :Tầm xa
 STR_SORT_BY_POPULATION                                          :Dân số
+STR_SORT_BY_RATING                                              :Đánh giá
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tạm dừng trò chơi
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Game tua nhanh
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Tua nhanh trò chơi
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Tuỳ chọn
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lưu, bỏ ván chơi, thoát chương trình
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Hiển thị bản đồ
@@ -332,16 +333,16 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Tạo đ
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Tạo thị trấn
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Tạo nhà máy
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Xây dựng đường
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Trồng cây. Shift để xem chi phí dự tính
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Trồng cây. Nhấn Shift để xem chi phí dự tính
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Tạo bảng ký hiệu
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Đặt đối tượng. Shift để xem chi phí dự tính
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Đặt đối tượng. Nhấn Shift để xem chi phí dự tính
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Lưu màn chơi kịch bản
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Nạp màn chơi kịch bản
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Lưu bản đồ địa hình
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Tải bản đồ địa hình
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Thoat khỏi trình biên tập
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Thoát khỏi trình biên tập
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Thoát
 ############ range for SE file menu starts
@@ -1605,6 +1606,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... từ
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... từ chối gói âm thanh chuẩn '{STRING}': không tìm thấy
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... từ chối gói nhạc chuẩn '{STRING}': không tìm thấy
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Hết bộ nhớ
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Phân bổ {BYTES} cho spritecache thất bại. Spritecache đã được giảm còn {BYTES}. Điều này có thể làm giảm hiệu năng của OpenTTD. Để giảm yêu cầu bộ nhớ, bạn có thể thử tắt gói đồ họa 32bpp và/hoặc mức độ phóng to
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
