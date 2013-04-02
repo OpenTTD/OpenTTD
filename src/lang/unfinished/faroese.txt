@@ -54,10 +54,10 @@ STR_CARGO_PLURAL_TOYS                                           :Leikur
 STR_CARGO_PLURAL_CANDY                                          :Góðgæti
 STR_CARGO_PLURAL_COLA                                           :Kola
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Kandifloss
-STR_CARGO_PLURAL_BUBBLES                                        :Bobblur
+STR_CARGO_PLURAL_BUBBLES                                        :Sápiblørir
 STR_CARGO_PLURAL_TOFFEE                                         :errin
 STR_CARGO_PLURAL_BATTERIES                                      :Battarí
-STR_CARGO_PLURAL_PLASTIC                                        :Plastik
+STR_CARGO_PLURAL_PLASTIC                                        :Plastikk
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Sodavatn
 
 # Singular cargo name
@@ -88,10 +88,10 @@ STR_CARGO_SINGULAR_TOY                                          :Leika
 STR_CARGO_SINGULAR_CANDY                                        :Góðgæti
 STR_CARGO_SINGULAR_COLA                                         :Kola
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Kandifloss
-STR_CARGO_SINGULAR_BUBBLE                                       :Bobbla
+STR_CARGO_SINGULAR_BUBBLE                                       :Sápibløra
 STR_CARGO_SINGULAR_TOFFEE                                       :Errin
 STR_CARGO_SINGULAR_BATTERY                                      :Battarí
-STR_CARGO_SINGULAR_PLASTIC                                      :Plastik
+STR_CARGO_SINGULAR_PLASTIC                                      :Plastikk
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Sodavatn
 
 # Quantity of cargo
@@ -100,7 +100,7 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA} ferðaf
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} av kol
 STR_QUANTITY_MAIL                                               :{COMMA} sekk{P "" ir} av posti
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} av olju
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} lutur{P "" s} av fenaði
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} lutur{P "" s} av kríatúr
 STR_QUANTITY_GOODS                                              :{COMMA} kassa{P "" r} av góðsi
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} av korni
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} av viði
@@ -159,6 +159,7 @@ STR_ABBREV_COLA                                                 :{TINY_FONT}KL
 STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}KF
 STR_ABBREV_BUBBLES                                              :{TINY_FONT}BL
 STR_ABBREV_TOFFEE                                               :{TINY_FONT}TF
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}SV
 STR_ABBREV_NONE                                                 :{TINY_FONT}EI
@@ -217,6 +218,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}Filtur strong:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriva inn filtur strong
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Skriva inn lyklaorð til at filtreða listan eftur
 
@@ -231,6 +233,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Lat glug
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Glugga heiti - drag her fyri at fyta glugga
 STR_TOOLTIP_SHADE                                               :{BLACK}Skugga gluggi - vís einans heitis bjálkan
 STR_TOOLTIP_DEBUG                                               :{BLACK}Vís NewGRF debug kunning
+STR_TOOLTIP_STICKY                                              :{BLACK}Marka hetta vindeyga óafturlatiligt av 'Lat øll vindeygu aftur' knøttinum
 STR_TOOLTIP_RESIZE                                              :{BLACK}Týst og drag fyri at broyta støddina á hesum glugganum
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Skift millum stóran/lítlan glugga
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skriðu bjálki - drag listan upp/niður
@@ -272,9 +275,9 @@ STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Virði
 STR_SORT_BY_LENGTH                                              :Longd
 STR_SORT_BY_LIFE_TIME                                           :Eftirverandi livitíð
-STR_SORT_BY_TIMETABLE_DELAY                                     :Tíðarætlan seinka
+STR_SORT_BY_TIMETABLE_DELAY                                     :Tíðarætlanar seinking
 STR_SORT_BY_FACILITY                                            :Støð slagi
-STR_SORT_BY_WAITING                                             :Bíðar farmur virði
+STR_SORT_BY_WAITING                                             :Virði á bíðjandi farmi
 STR_SORT_BY_RATING_MAX                                          :Hægsta farm virði
 STR_SORT_BY_RATING_MIN                                          :Lægsta farm virði
 STR_SORT_BY_ENGINE_ID                                           :MaskinID (klassiskt svart)
@@ -285,6 +288,7 @@ STR_SORT_BY_INTRO_DATE                                          :Innleiðslu Dag
 STR_SORT_BY_RUNNING_COST                                        :Raktstrar kostnaði
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Megi/Rakstrar kostnaði
 STR_SORT_BY_CARGO_CAPACITY                                      :Farm Pláss
+STR_SORT_BY_RANGE                                               :Vídd
 STR_SORT_BY_POPULATION                                          :Fólkatal
 STR_SORT_BY_RATING                                              :Virði
 
@@ -295,7 +299,7 @@ STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Møgulei
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Goym spælið, far frá spælið, gevst
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Vís kort, eyka glugga ella lista yvir skelti
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Vís bygdar lista
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Vís undirsíðir
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Vís stuðulsflutning
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Vís lista yvir støðir hjá felagnum
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Vís felagsins fíggjarligu støðu
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Vís felagsins støðu
@@ -305,14 +309,17 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Fíggja 
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Vís lista yvir tok hjá felagnum. Ctrl+Klikk skiftur ímillum bólkur/akfar listan
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Vis lista yvir akfør hjá felagnum. Ctrl+Klikk skiftur ímillum bólkur/akfar listan
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Vís lista yvir skip hjá felagnum. Ctrl+Klikk skiftur ímillum bólk/akfar listan
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Vís lista yvir flogfør hjá fyritøkuni. Ctrl+Click skiftur millum at lata upp bólka/akfars listan
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Forstørra mynduna in
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Minka vindeyga út
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bygg ein tog bana
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bygg tok bana
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bygg vegir
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bygg báta havn
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bygg lufthavn
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Lat up landslags amboðskassan fyri at hækka/lækka land, planta trøð, osv.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Vís ljóð/musik vindeyga
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vís sísta boð/nýggjheit frágreiðing, vís boð møguleikarnar
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landslags økis kunning, console, script debug, skermmyndir, um OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skift amboðslinju
 
 # Extra tooltips for the scenario editor toolbar
@@ -327,12 +334,16 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}landslag
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Bygda generatión
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Vinnu generatión
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Vegagerð
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Planta trø. Shift skiftur millum at byggja/vísa kostnaðar meting
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Set tekin
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Legg lut. Shift skiftur millum at byggja/vísa kostnaðar meting
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Goym mannagongd
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Heinta mannagongd
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Goym hæddarkort
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Heinta hæddarkort
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Far frá mannagongds editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Gevst
 ############ range for SE file menu starts
@@ -340,12 +351,14 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Gevst
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spæl møguleikar
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Víðka innstilling
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/Spæl script innstillingar
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NýggjGRF innstilling
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gjøgnumskygnis møguleikar
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bygdarnøvn víst
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Statión navn víst
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Positión navn víst
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Tekin víst
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Kappingarneyta skelti og nøvn víst
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Full animatión
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Allar smálutir
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Gjøgnumskygdir bygningar
@@ -362,6 +375,7 @@ STR_FILE_MENU_EXIT                                              :Útgongd
 
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kort av verð
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Eyka synisgluggi
 STR_MAP_MENU_SIGN_LIST                                          :Listi yvur tekin
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Bygdar yvirlit
@@ -370,6 +384,8 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Funnar bygdir
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :Stuðulsflutningur
+STR_SUBSIDIES_MENU_GOAL                                         :Núverðandi mál
 ############ range ends here
 
 ############ range for graph menu starts
@@ -377,24 +393,27 @@ STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Rakstrar avkast
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Inntøku grafur
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Avlevera farm grafur
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Avrik søgu grafur
-STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Virkis virði grafur
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Fyritøkus virði grafur
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Farma gjald takstur
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Virkis felagsskapur yvirlit
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Fyritøku deildar yvirlit
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaliera avriks meting
+STR_GRAPH_MENU_HIGHSCORE                                        :Hástigs yvirlit
 ############ range ends here
 
 ############ range for industry menu starts
-STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Virkis yvurlit
-STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fíggja nýggj virki
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Ídnaðar yvirlit
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Ídnaðar ketur
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fíggja nýggjan ídnað
 ############ range ends here
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Jarnbreyta bygging
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :El jarnbreyta bygging
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :einsporað jarnbreyta bygging
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Maglev bygging
 ############ range ends here
 
 ############ range for road construction menu starts
@@ -411,6 +430,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Flogvalla byggi
 ############ range ends here
 
 ############ range for landscaping menu starts
+STR_LANDSCAPING_MENU_LANDSCAPING                                :Landslags broyting
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Planta trø
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Set tekin
 ############ range ends here
@@ -421,14 +441,22 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Ljóð/ tónlei
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Seinastu boð/tíðinda frásøgn
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Boð søga
 ############ range ends here
 
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landa økis kunning
 STR_ABOUT_MENU_SEPARATOR                                        :
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Console opið ella lukka
+STR_ABOUT_MENU_AI_DEBUG                                         :AI/Spæl script debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Skermmynd
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Suma in skermmynd
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Vanliga suma skermmynd
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skermmynd av øllum kortinum
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Um 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite aligner
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Skift millum bindingar kassar
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Skift millum liting av skitnum blokkum
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -503,6 +531,8 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Rakstrar avkast grafur
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Inntøku grafur
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Eindir av farmi útflýggja
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Framførðslu meting av fyritøku (hægsta meting=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Virkis virði
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Farma gjald takstur
@@ -513,12 +543,14 @@ STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Vís all
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Vís ongan farm á farmagjalds takst grafi
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Vís framførðslu metingar í smálutum
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Knøttur til virkis graf
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Virkis samtaks tabel
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Teknikari
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Ferðslu Leiðari
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Flutnings Samskipari
@@ -527,12 +559,15 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Leiðari
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Ovasti Stjóri
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Leiðari
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :President
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Framførðslu meting í smálutum
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaljur
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Sjá smálutir um hesa fyritøkuna
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Akfar :
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Støðir:
@@ -545,13 +580,27 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Pengar:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lán:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Nøgd av peningi hendan fyritøkan hevur í bankanum
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Nøgdin av peningi hendan fyritøkan hevur í láni
 
 # Music window
+STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jazz Jukebox
+STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}Alt
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Gamlan stíl
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Nýggjan stíl
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Sjálvgjørdur 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Sjálvgjørdur 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Tónleika ljóðstyrki
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Effekt ljóðstyrki
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAX
 STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}:
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Spor
 
 
 # Playlist window
@@ -1342,30 +1391,346 @@ STR_FEEDER_COST                                                 :{YELLOW}Yvurfly
 
 
 # Timetable related errors
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Hetta akfar steðgar ikki á hesi støðini
 
 # Sign related errors
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... ov nógv skeltir
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kann ikki seta skelti her...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kann ikki broyta navn á skelti...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kann ikki strika skelti...
 
 # Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Eitt eftirgerðar spæl bygt á Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Høgur skrivstovu bygningur
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Skrivstovu bygningur
+STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Lítil íbúðar bygningur
+STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Kirkja
+STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Stórur skrivstovu bygningur
+STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Bygdar hús
+STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Gistingarhús
+STR_TOWN_BUILDING_NAME_STATUE_1                                 :Standmynd
+STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Gosvatn
+STR_TOWN_BUILDING_NAME_PARK_1                                   :Viðarlund
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Skrivstovu bygningur
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Handlar og skrivstovir
+STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Nútímans skrivstovu bygningur
+STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Vøruhús
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Skrivstovu bygningur
+STR_TOWN_BUILDING_NAME_STADIUM_1                                :Stadium
+STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Gomul hús
+STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Smáttir
+STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Hús
+STR_TOWN_BUILDING_NAME_FLATS_1                                  :Íbúðir
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Høgur skrivstovu bygningur
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Handlar og skrivstovur
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Handlar og skrivstovur
+STR_TOWN_BUILDING_NAME_THEATER_1                                :Sjónleikahús
+STR_TOWN_BUILDING_NAME_STADIUM_2                                :Stadium
+STR_TOWN_BUILDING_NAME_OFFICES_1                                :Skrivstovir
+STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Hús
+STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Biografur
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Sølu miðstøð
+STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Igloo
+STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Indianaratelt
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Thekannu-Hús
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Sparibússa
 
 ##id 0x4800
 # industry names
+STR_INDUSTRY_NAME_COAL_MINE                                     :Kola Nám
+STR_INDUSTRY_NAME_POWER_STATION                                 :Orku Støð
+STR_INDUSTRY_NAME_SAWMILL                                       :Sagverk
+STR_INDUSTRY_NAME_FOREST                                        :Skógur
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :Olju Reinsiverk
+STR_INDUSTRY_NAME_OIL_RIG                                       :Olju Boriplatformur
+STR_INDUSTRY_NAME_FACTORY                                       :Verksmiðja
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :Prent Verksmiðja
+STR_INDUSTRY_NAME_STEEL_MILL                                    :Stál Verksmiðja
+STR_INDUSTRY_NAME_FARM                                          :Bóndagarður
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Kopar Málms Nám
+STR_INDUSTRY_NAME_OIL_WELLS                                     :Olju Brunnar
+STR_INDUSTRY_NAME_BANK                                          :Peningastovnur
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Mat Viðgeris Verksmiðja
+STR_INDUSTRY_NAME_PAPER_MILL                                    :Pappírs Verksmiðja
+STR_INDUSTRY_NAME_GOLD_MINE                                     :Gull Nám
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Peningastovnur
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Gymsteina Nám
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Jarn Málms Nám
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Frukt Viðarlund
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Gummi Viðarlund
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Vatn Veiting
+STR_INDUSTRY_NAME_WATER_TOWER                                   :Vatn Tárn
+STR_INDUSTRY_NAME_FACTORY_2                                     :Verksmiðja
+STR_INDUSTRY_NAME_FARM_2                                        :Bóndagarður
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :Timbur Verksmiðja
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Kandifloss Skógur
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Góðgætis Verksmiðja
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :Battarí Garður
+STR_INDUSTRY_NAME_COLA_WELLS                                    :Kola Brunnar
+STR_INDUSTRY_NAME_TOY_SHOP                                      :Leikutoys Handil
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :Leikutoys Verksmiðja
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Plastikk Gosvatn
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Sodavatns Verksmiðja
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Sápibløru Framleiðari
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Toffee brot
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :Sukur nám
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
+STR_SV_UNNAMED                                                  :Ikki navngivið
+STR_SV_TRAIN_NAME                                               :Tok {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Akfar {COMMA}
+STR_SV_SHIP_NAME                                                :Skip {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Flogfar {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} Norður
+STR_SV_STNAME_SOUTH                                             :{STRING} Suður
+STR_SV_STNAME_EAST                                              :{STRING} Eystur
+STR_SV_STNAME_WEST                                              :{STRING} Vestur
+STR_SV_STNAME_CENTRAL                                           :{STRING} Miðstøð
+STR_SV_STNAME_TRANSFER                                          :{STRING} Umskipan
+STR_SV_STNAME_HALT                                              :{STRING} á Hjalla
+STR_SV_STNAME_VALLEY                                            :{STRING} Dalur
+STR_SV_STNAME_HEIGHTS                                           :{STRING} Hæddir
+STR_SV_STNAME_WOODS                                             :{STRING} Skógir
+STR_SV_STNAME_LAKESIDE                                          :{STRING} við Áðarbakkan
+STR_SV_STNAME_EXCHANGE                                          :{STRING} Skiftistøð
+STR_SV_STNAME_AIRPORT                                           :{STRING} Floghavn
+STR_SV_STNAME_OILFIELD                                          :{STRING} Oljufelt
+STR_SV_STNAME_MINES                                             :{STRING} Nám
+STR_SV_STNAME_DOCKS                                             :{STRING} Havnalag
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
+STR_SV_STNAME_ANNEXE                                            :{STRING} Farstøð
+STR_SV_STNAME_SIDINGS                                           :{STRING} Lí
+STR_SV_STNAME_BRANCH                                            :{STRING} Grein
+STR_SV_STNAME_UPPER                                             :Ovara {STRING}
+STR_SV_STNAME_LOWER                                             :Niðara {STRING}
+STR_SV_STNAME_HELIPORT                                          :{STRING} Tyrlupallur
+STR_SV_STNAME_FOREST                                            :{STRING} Skógur
+STR_SV_STNAME_FALLBACK                                          :{STRING} Støð #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (Guv)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Guv)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (Guv)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (Guv)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (Guv)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Ravmagn)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Ravmagn)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Ravmagn)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Ravmagn)
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Ferðafólka vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Post vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Kol vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Olju vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Kríatúr vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Góðs vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Korn vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Træ vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Jarn málm vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Stál vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Skjøldraður vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Mat vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Pappír vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Kopar málm vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Vatn vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Frukt vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Gummi vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Sukur vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Kandifloss vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Toffee vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Sápibløru vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Kola vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Góðgæti vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Leikutoy vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Battarí vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Sodavatn vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Plastikk vognur
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Ravmagn)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Ravmagn)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Ferðafólka vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Post vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Kol vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Olju vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Kríatúr vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Góðs vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Korn vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Træ vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Jarn málm vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Stál vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Skjøldraður vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Mat vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Pappír vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Kopar málm vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Vatn vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Frukt vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Gummi vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Sukur vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Kandifloss vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Toffe vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Sápibløru vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Kola vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Góðgæti vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Leikutoy vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Battai vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Sodavatn vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Plastikk vognur
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Ravmagn)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Ravmagn)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (Ravmagn)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (Ravmagn)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Ferðafólk vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Post vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Kol vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Olju vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Kríatúr vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Góðs vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Korn vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Træ vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Jarn málm vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Stál vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Skjøldraður vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Mat vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Pappír vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Kopar málm vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Vatn vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Frukt vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Gummi vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Sukur vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Kandifloss vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Toffee Vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Sápibløra Vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Kola tanga vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Góðgætis Vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Leikutoys Vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Battarí Vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Fizzy Drink Vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Plastikk Vognur
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal Bussur
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard Bussur
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster Bussur
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII Superbussur
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Ploddyphut MkI Bussur
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Ploddyphut MkII Bussur
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Ploddyphut MkIII Bussur
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh Kol Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl Kol Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW Kol Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS Post Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard Post Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry Post Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover Post Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught Post Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow Post Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe Olju Tangabilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster Olju Tangabilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry Olju Tangabilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott Kríatúr Vørðubilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl Kríatúr Vørðubilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster Kríatúr Vørðubilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh Góðs Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead Góðs Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss Góðs Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford Korn Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas Korn Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss Korn Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe Træ Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster Træ Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland Træ Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS Jarn Málm Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl Jarn Málm Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy Jarn Málm Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh Stál Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl Stál Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling Stál Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh Skjøldraður Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl Skjøldraður Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster Skjøldraður Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster Mat Vørðubilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry Mat Vørðubilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy Food Vørðubilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl Paper Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh Paper Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS Paper Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS Kopar Málm Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl Kopar Málm Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss Kopar Málm Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl Vatn Tangabilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh Vatn Tangabilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS Vatn Tangabilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh Fruit Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl Fruit Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling Frukt Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh Gummi Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl Gummi Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT Gummi Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover Sukur Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught Sukur Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow Sukur Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover Kola Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught Kola Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow Kola Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover Candyfloss Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught Candyfloss Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow Candyfloss Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover Toffee Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught Toffee Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow Toffee Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover Toy Van
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught Toy Van
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow Toy Van
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover Góðgæti Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught Góðgæti Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow Søtmeti Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover Battery Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught Battery Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow Battarí Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover Fizzy Drink Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught Fizzy Drink Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow Fizzy Drink Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover Plastikk Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught Plastikk Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow Plastik Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover Bubble Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught Bubble Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow Bobbli Lastbilur
+STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS Oil Tanker
+STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. Oil Tanker
+STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS Ferðafólka Ferga
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP Ferðafólka Ferga
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 Hovercraft
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug Ferðafólka Ferga
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake Ferðafólka Ferga
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate Cargo skip
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Cargo skip
 STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover Cargo skip

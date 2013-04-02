@@ -4270,7 +4270,7 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :猪猪银行
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :煤矿
 STR_INDUSTRY_NAME_POWER_STATION                                 :火力发电厂
-STR_INDUSTRY_NAME_SAWMILL                                       :木材厂
+STR_INDUSTRY_NAME_SAWMILL                                       :锯木厂
 STR_INDUSTRY_NAME_FOREST                                        :林场
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :炼油厂
 STR_INDUSTRY_NAME_OIL_RIG                                       :钻井平台

@@ -278,8 +278,8 @@ STR_SORT_BY_LIFE_TIME                                           :Tiempo de vida 
 STR_SORT_BY_TIMETABLE_DELAY                                     :Retraso en horarios
 STR_SORT_BY_FACILITY                                            :Tipo de estación
 STR_SORT_BY_WAITING                                             :Carga en espera
-STR_SORT_BY_RATING_MAX                                          :Clasificación de carga más alta
-STR_SORT_BY_RATING_MIN                                          :Clasificación de carga más baja
+STR_SORT_BY_RATING_MAX                                          :Calificación más alta de carga
+STR_SORT_BY_RATING_MIN                                          :Calificación más baja de carga
 STR_SORT_BY_ENGINE_ID                                           :ID Motor (ordenación clásica)
 STR_SORT_BY_COST                                                :Coste
 STR_SORT_BY_POWER                                               :Potencia
@@ -290,7 +290,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potencia/Coste 
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacidad de carga
 STR_SORT_BY_RANGE                                               :Alcance
 STR_SORT_BY_POPULATION                                          :Población
-STR_SORT_BY_RATING                                              :Ranking
+STR_SORT_BY_RATING                                              :Calificación
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar juego
@@ -304,7 +304,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Mostrar 
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Mostrar información financiera de la empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Mostrar información general de la empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostrar gráficos
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Mostrar tabla de ranking de empresas
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Mostrar tabla de clasificación de empresas
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Aportar fondos para construir una nueva industria
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Mostrar lista de trenes de la empresa. Ctrl+Click hace que no aparezca la lista de grupos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostrar lista de vehículos de carretera de la empresa. Ctrl+Click hace que no aparezca la lista de grupos
@@ -398,7 +398,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifas de pago
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabla de ranking de empresas
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabla de clasificación de empresas
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detalles del rendimiento
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabla de puntuaciones
 ############ range ends here
@@ -552,7 +552,7 @@ STR_GRAPH_KEY_CAPTION                                           :{WHITE}Leyenda 
 STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Click aquí para intercambiar la entrada de la empresa
 
 # Company league window
-STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Ranking de Empresas
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Tabla de Clasificación de Empresas
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingeniero
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Gerente de tráfico
@@ -1111,7 +1111,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si se activa, l
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activa desastres que ocasionalmente pueden bloquear o destruir vehículos o infraestructuras
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de los pueblos frente a reestructuraciones en su zona: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Permite elegir la medida en la que el ruido y el daño ambiental causado por las compañías afecta a su clasificación local en los pueblos
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Permite elegir la medida en la que el ruido y el daño ambiental causado por las compañías afecta a su calificación local en los pueblos
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permitir la construcción en cuestas y orillas: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Si se habilita, las vías y estaciones pueden construirse sobre pendiente. Si se deshabilita, las vías solamente pueden construirse sobre pendientes que sigan la misma dirección
@@ -1675,7 +1675,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Está
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trucos
 STR_CHEATS_TOOLTIP                                              :{BLACK}Las casillas indican si ha usado este truco antes
-STR_CHEATS_WARNING                                              :{BLACK}¡Atención! Usted está a punto de traicionar a sus competidores. Tenga presente que tal deshonra será recordada para toda la eternidad
+STR_CHEATS_WARNING                                              :{BLACK}¡Atención! Usted está a punto de traicionar a sus competidores. Tenga presente que tal deshonra será recordada por la eternidad
 STR_CHEAT_MONEY                                                 :{LTBLUE}Incrementar dinero en {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jugando como la empresa: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldózer mágico (elimina industrias, objetos inamovibles): {ORANGE}{STRING}
@@ -2859,7 +2859,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Renombrar puebl
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} autoridad local
-STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Ranking de empresas de transporte:
+STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Calificación de empresas de transporte:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Acciones disponibles:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lista de acciones posibles en este pueblo - Click sobre cada línea para obtener más detalles
@@ -2882,7 +2882,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Pagar l
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construye una estatua en honor a su empresa.{}Coste: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Pagar la construcción de nuevos edificios comerciales en el pueblo.{}Coste: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Comprar en exclusiva los derechos de transporte en este pueblo durante un año. Las autoridades solo permitirán el uso de las estaciones de su empresa.{}Coste: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Sobornar a las autoridades locales para aumentar su ranking, con el riesgo de una severa penalización si es descubierto.{}Coste: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Sobornar a las autoridades locales para aumentar su calificación, con el riesgo de una severa penalización si es descubierto.{}Coste: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Metas
@@ -2952,9 +2952,9 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Acepta: 
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Esta estación tiene derechos de transporte exclusivos en este pueblo.
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} compró derechos de transporte exclusivo en este pueblo.
 
-STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ranking
+STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Calificación
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Ver calificación de la estación
-STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Clasificación local de servicios de transporte:
+STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Calificación local de servicios de transporte:
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts

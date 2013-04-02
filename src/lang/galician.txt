@@ -1323,130 +1323,234 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :longo (31 Dec 2
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curto (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Paleta a empregar por defecto para NewGRFs que non especifican unha paleta: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Paleta a empregar por defecto para NewGRFs que non especifican a paleta que necesitan
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Paleta DOS
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Paleta Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pausar automáticamente ó comezo dunha nova partida: {STRING}
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Cando estea activado, a partida pausarase automaticamente no comezo dun novo xogo, permitindo un estudo detallado do mapa
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Cando estea activado, a partida pausarase automaticamente ao comezo dun novo xogo, permitindo un estudo detallado do mapa
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Permitir {STRING} durante pausa
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Selecciona qué accións poderán ser realizadas cando a partida estea pausada
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Selecciona que accións poderán ser realizadas cando a partida estea pausada
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Sen accións
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Tódalas accións excepto as referidas a modificacións de paisaxe
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Tódalas accións non construtivas
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Tódalas accións excepto as referidas a modificacións da paisaxe
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Tódalas accións
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Usa-la lista avanzada de vehículos: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Habilita-lo uso da lista avanzada de vehículos para agrupalos
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Usar indicadores de carga: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Mostra-lo horario en ticks en lugar de días: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostra chegadas e saídas no horario: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Escolle se os indicadores de carga se amosan sobre os vehículos en carga/descarga
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Mostra-lo horario en ticks en lugar de en días: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Mostra-los tempos de viaxe nos horarios en ticks en vez de en días
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostrar chegada e saída nos horarios: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Amosar chegadas e saídas anticipadas nos horarios
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creación rápida de ordes para vehículos: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Raíl por defecto (nova partida/cargar partida): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro dispoñible
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último dispoñible
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Máis usado
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pre-selecciona o cursor "ir a" cando se abre a ventá de ordes
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Carril por defecto (despois denova partida/cargar partida): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo de carril seleccionado despois de comezar ou cargar unha partida. "o primeiro dispoñíbel" selecciona o tipo de vías máis antigo, "último dispoñíbel" selecciona o último dispoñíbel e "o máis usado" selecciona o tipo que se está a usar máis
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :O primeiro dispoñíbel
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :O último dispoñíbel
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :O máis usado
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostra-las vías reservadas: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Usa unha cor distinta para as vías reservadas para axudar en problemas de trens que refusan entrar en bloques baseados en rutas
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Mante-las ferramentas de construcción activas tralo uso: {STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mante-las ferramentas de construcción abertas para pontes, túneles, etc. tralo uso
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mante-las ferramentas de construción abertas para pontes, túneis, etc. tralo uso
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupa-los gastos na ventá de finanzas da compañía: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Define a apariencia da ventá de gastos da compañía
 
-STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reproducir son para as mensaxes resumidas de noticias
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Son coas novas: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reproducir son para as mensaxes abreviadas de novas
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Xornal: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Reproducir son coas novas do xornal
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Fin do ano: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reproducir efecto de son ó final dun ano, comparando o resultado anual da empresa co ano anterior
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reproducir un son ao final dun ano, comparando o resultado anual da empresa co do ano anterior
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construción: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reproducir efecto de son para construcións rematadas exitosamente ou outras accións
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reproducir son para construcións rematadas exitosamente ou outras accións
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Click nos botóns: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Pitar cando se fai click nos botóns
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Desastres/accidentes: {STRING}
-STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Reproducir efecto de son para accidentes e desastres
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Reproducir son para accidentes e desastres
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vehículos: {STRING}
-STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Reproducir efectos de son de vehículos
-STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiente: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Reproducir efectos de son dos vehículos
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Son ambiente: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reproducir efectos de son ambiente de paisaxe, industrias e cidades
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desactivar construción de infraestruturas cando non haxa vehículos adecuados dispoñibles: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Cando estea activado, unha infraestrutura estará dispoñible se hai tamén vehículos dispoñobles, previndo desperdicios de tempo e cartos nunha infraestrutura inutilizable
-STR_CONFIG_SETTING_MAX_TRAINS                                   :Nº máximo de trens por xogador: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desactivar construción de infraestruturas cando non haxa vehículos adecuados dispoñíbels: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Cando estea activado, unha infraestrutura estará dispoñíbel se hai tamén vehículos dispoñíbels, previndo desperdicios de tempo e cartos nunha infraestrutura inutilizábel
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Número máximo de trens por xogador: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Número máximo de trens que unha compañía pode ter
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Nº máximo de vehículos de estrada por xogador: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Número máximo de vehículos de estrada por compañía: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Número máximo de vehículos de estrada que unha compañía pode ter
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Nº máximo de avións por xogador: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Número máximo de avións por compañía: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Número máximo de avíons que unha compañía pode ter
-STR_CONFIG_SETTING_MAX_SHIPS                                    :Nº máximo de barcos por xogador: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Número máximo de navíos por compañía: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Número máximo de navíos que unha compañía pode ter
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Deshabilita-los trens para o ordenador: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Activando esta opción, o xogador controlado por computador non pode construir trens
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Deshabilita-los vehículos de estrada para o ordenador: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Activando esta opción, o xogador controlado por computador non pode construir vehículos de estrada
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Deshabilita-los avións para o ordenador: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Activando esta opción, o xogador controlado por computador non pode construir avións
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Deshabilita-los barcos para o ordenador: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Activando esta opción, o xogador controlado por computador non pode construir navíos
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Activando esta opción, o xogador controlado pola computadora non pode construir trens
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Deshabilita-los vehículos de estrada para a computadora: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Activando esta opción, o xogador controlado pola computadora non pode construir vehículos de estrada
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Deshabilita-los avións para a computadora: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Activando esta opción, o xogador controlado pola computadora non pode construir avións
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Deshabilita-los navíos para a computadora: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Activando esta opción, o xogador controlado pola computadora non pode construir navíos
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Configuración por defecto: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Escolle a configuración para usar en IAs aleatorias ou para valores iniciais ao engadir unha nova IA ou un novo script do xogo
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Fácil
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Medio
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Difícil
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permitir IA en multixogador: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permitir aos xogadores controlados pola computadora participar en partidas multixogador
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes antes de que os scripts sexan suspendidos: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Número máximo de operacións de computación que un scrpit pode realizar nun turno
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervalos de servizo en porcentaxes: {STRING}
-STR_CONFIG_SETTING_NOSERVICE                                    :Deshabilita-lo servizo cando as roturas están a ningún: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Permite escoller se o mantemento de vehículos comezará debido ao tempo transcurrido dende o último mantemento ou por unha redución da fiabilidade cando se sobrepase unha porcentaxe determinado
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo de mantemento por defecto para trens: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Fixa o intervalo de mantemento por defecto para trens novos, o cal se empregará no caso de que non se defina explicitamente un novo intervalo de mantemento para o vehículo
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} día{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desactivado
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalo de mantemento por defecto para vehículos de estrada: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Fixa o intervalo de mantemento por defecto para vehículos de estrada novos, o cal se empregará no caso de que non se defina explicitamente un novo intervalo de mantemento para o vehículo
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalo de mantemento por defecto para avións: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Fixa o intervalo de mantemento por defecto para avións novos, o cal se empregará no caso de que non se defina explicitamente un novo intervalo de mantemento para o vehículo
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalo de mantemento por defecto para navíos: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Fixa o intervalo de mantemento por defecto para navíos novos, o cal se empregará no caso de que non se defina explicitamente un novo intervalo de mantemento para o vehículo
+STR_CONFIG_SETTING_NOSERVICE                                    :Deshabilita-lo mantemento cando as avarías están desactivadas: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Cando estea activado, os vehículos non teñen mantemento no caso de que non poidan ter avarías
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activa-los límites de velocidade dos vagóns: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Cando estea activado, usar tamén os límites de velocidade dos vagóns para decidir a máxima velocidade do tren
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactivar vías electrificadas: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Cando estea activado, desactívase o requerimento de electrifica-las vías para o funcionamento de vehículos eléctricos
 
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Chegada do 1º vehículo a estación do xogador: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Chegada do 1º vehículo a estación dun oponente: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Chegada do primeiro vehículo a estación do xogador: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Amosa un xornal cando o primeiro vehíchulo chegue a unha nova estacion
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Chegada do primeiro vehículo a estación dun opoñente: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Amosa un xornal cando o primeiro vehíchulo chegue a unha nova estacion dun opoñente
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidentes / desastres: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Amosa un xornal cando un accidente ou desastre ocurre
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Información da compañía: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Amosa un xornal cando unha nova compañía é creada, ou cando unha compañía está en risco de bancarrota
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Apertura de industrias: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Pecha unha industria: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Cambios económicos: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Amosa no xornal cando abre unha industria nova
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Peche de industrias: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Amosa no xornal as industrias que pechan
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Cambios na economía: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Amosa no xornal os cambios globáis na economía
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Cambios de producción nas industrias servidas pola compañía: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Amosa no xornal cando os niveis de produción das industrias servidas pola compañía cambian
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Cambios na producción das industrias servidas polos competidores: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Amosa no xornal cando os niveis de produción das industrias servidas polos competidores cambian
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Cambios de producción doutras industrias: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Amosa no xornal cando os niveis de produción das industrias non servidas pola compañía ou polos competidores cambian
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Consello / información acerca dos vehículos da compañía: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Mostra mensaxes sobre os vehículos que requiren atención
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Novos vehículos: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Amosa no xornal a dispoñibilidade de novos vehículos
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Cambios na admisión de carga: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidios: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Mostra mensaxes sobre os cambios na aceptación de carga das estacións
+STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencións: {STRING}
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Amosa no xornal información sobre os temas relacionados coas subvencións
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Información xeral: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Amosa no xornal infoamación sobre acontecementos xerais, coma a compra de dereitos exclusivos ou o financiamento da reconstrucion das estradas
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Apagado
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sumario
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resumo
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Data de aparición das noticias en cor: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Data de aparición das novas en cor: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Ano no que os avisos dos xornais son impresos en cor. Antes deste ano, emprégase monocromo branco e negro
 STR_CONFIG_SETTING_STARTING_YEAR                                :Data de comezo: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Habilita-la economía "suave"(máis cambios, pero máis pequenos): {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permiti-la compra de accións por outras compañías: {STRING}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construír semáforos automáticamente antes de: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activa-la IGU de sinais: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Habilita-la economía "estable" (máis cambios, pero máis pequenos): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Cando se activa, as producións industriais cambian máis frecuentemente, e a pasos máis curtos
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permiti-la compra de accións de outras compañías: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Cando se activa, permite comprar ou vender accións da compañía. As accións só estarán dispoñíbeis para compañías que acaden certa idade
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentaxe do beneficio parcial a pagar en sistemas transitivos: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentaxe dos beneficios asignados ás partes intermedias da ruta en sistemas transitivos, dando un maior control sobre os ingresos
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Colocar sinais cada {STRING} ao arrastrar
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Controla a distancia entre sinais nunha vía en construción ata o seguinte obstáculo (sinal, cruce) se se arrastran os sinais
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} cadro{P 0 "" s}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Ao arrastrar, manter a distancia fixa entre sinais: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecciona o comportamento da ferramenta de colocación de sinais para Ctrl+arrastrar. Se se desactiva, os sinais colócanse nos extremos dos túneis ou das pontes para evitar cantóns largos. Se se activa, os sinais colócanse cada N cadros, facilitando o aliñamento dos sinais en vías paralelas
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construír sinais mecánicos automáticamente antes de: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Selecciona o ano no que se comezan a empregar sinais eléctricos nas vías. Antes de este ano, empregaranse sinais mecánicos (que teñen exactamente a mesma función, pero distinta apariencia)
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activa-la GUI de sinais: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Mostra unha xanela para escoller o tipo de sinais que se van a construir, en vez da rotación sen xanela con Ctrl+clic
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipo de sinal a construír por defecto: {STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Normal
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Avanzado
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Avanzado de un sentido
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipo de sinal por defecto
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :De bloqueo (normais)
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Sinais de ruta
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Sinais de ruta de sentido único
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Circular polos tipos de sinais: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selecciona os tipos de sinal polos que rodará o cursor ao facer Ctrl+clic
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Só normais
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Só avanzadas
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Só sinais de ruta
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todas
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Distribución das estradas en novas cidades: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Distribución da rede de estradas de cidades
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Por defecto
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Estradas mellores
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Mellores estradas
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Reixa 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Reixa 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Aleatorio
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Permitir ás poboacións construír estradas: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permitir ás poboacións construír estradas. Desactiva esta opción para evitar que as cidades constrúan novas estradas
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :As cidades poden construir pasos a nivel: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Activando esta opción, as cidades poden construir pasos a nivel
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permitir á cidade controla-lo nivel de ruído dos aeroportos: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Cando esta opción estea desactivada, pode haber dous aeroportos por cidade. Coa opción activada, o número de aeroportos por cidade está limitada polo nivel de aceptación de ruido da cidade, o cal depende da población da cidade, do tamaño do aeroporto e da distancia
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundar cidades: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Activando esta opción, os distintos xogadores poden fundar novas cidades
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Prohibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permitido, patrón de estradas personalizado
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Colocación de árbores durante a partida: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controla a aparición aleatoria de árbores durante a partida. Isto pode afectar ás industrias que dependan do crecemento arbóreo, por exemplo o serradoiro
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ningún {RED}(rompe o serradoiro)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Só nos bosques
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :todas partes
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :En todas partes
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posición da barra de ferramentas principal: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Posición horizontal da barra de ferramentas principal da parte superior da pantalla
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Posición da barra de estado: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Posición horizontal da barra de estado da parte inferior da pantalla
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Radio de fixación de fiestra: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :A distancia entre fiestras antes de que unha fiestra sexa movida é automaticamente aliñada ás fiestras próximas
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Deshabilitado
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Número máximo de fiestras non ancladas: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Número de fiestras abertas non ancladas antes de que se pechen as fiestras máis vellas para facer sitio para unha nova
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Deshabilitado
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Nivel de ampliación de zoom máximo: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Nivel máximo de ampliación de zoom para vistas. Habilitando un nivel de zoom maior, aumentan tamén os requisitos de memoria
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Nivel de redución de zoom máximo: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Nivel máximo de redución de zoom para vistas. Un nivel de redución de zoom moi alto pode causar retrasos e dificultades na partida
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Velocidade de crecemento das cidades: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Velocidade de crecemento das cidades
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ningún
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lento
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rápido
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Moi rápido
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporción de pobos que se convertirán en cidades: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Cantidade de pobos que se convertirán en cidade. As cidades empezan sendo máis grandes e medran máis rápido
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 entre {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ningunha
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador inicial do tamaño da cidade: {STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Elimina-los elementos absurdos das estradas na construción: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Relación entre o tamaño medio das cidades e o dos pobos ao inicio da partida
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Elimina-los elementos absurdos das estradas en construción: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Eliminar tramos de estrada sen saída durante a reconstrución financiada das estradas
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construción
@@ -1456,63 +1560,96 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Econom�
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidores
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Mostrar opcións
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interacción
+STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Efectos de son
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Novas e mensaxes
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinais
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Xestión da carga
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Xogadores do ordenador
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Xogadores da computadora
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autorenovar
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}En servizo
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Encamiñamento
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trens
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Cidades
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrias
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Orixinal
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomendado)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Buscador de ruta para trens: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Buscador de ruta empregado polos trens
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Buscador de ruta para vehículos de estrada: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Buscador de ruta empregado polos vehículos de estrada
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Buscador de ruta para barcos: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Buscador de ruta empregado polos barcos
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Cambio de sentido automático nos sinais: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permite aos trens cambiar de sentido nun sinal, se agardaron durante moito tempo
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Cambia-lo valor
 
 # Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Erro co arquivo de configuración...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... erro no vector '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}...'{STRING}' non é un valor válido para '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... caracteres en branco ao final da opción '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorando '{STRING}' en NewGRF: ID de GRP duplicada con '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignorando '{STRING}' invlálido en NewGRF: {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :non atopado
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :non é seguro para uso estático
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistema NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :incompatible con ista versión de OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :descoñecido
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... nivel de compresión '{STRING}' non válido
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}...o formato de partida gravada '{STRING}' non está dispoñíbel. Voltando a '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}...ignorando o set de gráficos básicos '{STRING}': non atopado
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}...ignorando o set de sons básicos '{STRING}': non atopado
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}...ignorando o set de música básico '{STRING}': non atopado
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Memoria esgotada
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE} Fallo ao reservar {BYTES} de caché de sprites. A caché de sprites reduciuse a {BYTES}. Isto reducirá o rendemento de OpenTTD. Para reducir os requisitos de memoria podes tentar deshabilitar os gráficos 32bpp e/ou niveles de zoom
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
-STR_INTRO_NEW_GAME                                              :{BLACK}Nova Partida
-STR_INTRO_LOAD_GAME                                             :{BLACK}Cargar Partida
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Xogar Escenario
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Xogar Mapa De Altitude
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor De Escenarios
+STR_INTRO_NEW_GAME                                              :{BLACK}Nova partida
+STR_INTRO_LOAD_GAME                                             :{BLACK}Cargar partida
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Xogar escenario
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Xogar mapa de alturas
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor de escenarios
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multixogador
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcións da Partida
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Opcións Avanzadas
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcións da partida
+STR_INTRO_HIGHSCORE                                             :{BLACK}Táboa das máximas puntuacións
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Configuración avanzada
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configuración NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Comprobar Contido Online
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Comprobar contido online
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Configuración dos scripts de IA
 STR_INTRO_QUIT                                                  :{BLACK}Saír
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Comezar nova partida. CTRL+Click salta a configuración do mapa
-STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Cargar unha partida
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Comezar unha nova partida. Ctrl+Click para saltarse a configuración do mapa
+STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Cargar unha partida gravada
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Comezar una nova partida, usando un mapa de altura coma paisaxe
-STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Comezar unha nova partida, usando un escenario persoalizado
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Crear un mundo/escenario persoalizado
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Comezar unha nova partida, usando un escenario personalizado
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Crear un mundo/escenario personalizado
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Comezar unha partida multixogador
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Selecciona-lo estilo da paisaxe 'Templado'
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Selecciona-lo estilo da paisaxe 'Subártico'
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Selecciona-lo estilo da paisaxe 'Subtropical'
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selecciona-lo estilo da paisaxe 'Xoguetelandia'
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Selecciona-lo estilo de paisaxe 'Temperado'
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Selecciona-lo estilo de paisaxe 'Subártico'
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Selecciona-lo estilo de paisaxe 'Subtropical'
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selecciona-lo estilo da paisaxe 'Terra dos xoguetes'
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Amosa-las opcións do xogo
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Mostra as opcións avanzadas
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Mostra-las opcións da partida
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostrar táboa das máximas puntuacións
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Mostrar a configuración avanzada
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra-la configuración de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Buscar contidos novos e actualizados para descargar
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Motra-la configuración dos scripts de IA
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Saír de 'OpenTTD'
 
+STR_INTRO_TRANSLATION                                           :{BLACK}A ista tradución fáltanlle {NUM} string{P "" s}. Por favor, axúdanos a mellorar OpenTTD rexistrándote coma tradutor. Bótalle un ollo ao readme.txt para máis detalles.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Saír
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}¿Estás seguro de querer saír e volver a {STRING}?
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Estás seguro de que queres saír e voltar a {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Si
 STR_QUIT_NO                                                     :{BLACK}Non
 
@@ -1529,61 +1666,62 @@ STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Saír ó menú principal
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}¿Está seguro de que desexa saír da partida?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Estás seguro de que desexas saír deste escenario?
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Saír da partida
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Estás seguro de que queres saír desta partida?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Estás seguro de que desexas saír deste escenario?
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}Trampas
+STR_CHEATS                                                      :{WHITE}Trampulladas
 STR_CHEATS_TOOLTIP                                              :{BLACK}As caixas de confirmación indican se usaches esta trampa antes
 STR_CHEATS_WARNING                                              :{BLACK}Coidado! Estás a piques de traizoar aos teus competidores. Ten en conta que un escándalo coma este vai ser lembrado eternamente
-STR_CHEAT_MONEY                                                 :{LTBLUE}Incrementar o diñeiro en {CURRENCY_LONG}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Incrementar os cartos en {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Xogando coma compañía: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadora máxica (elimina industrias, obx. non eliminables): {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os tuneis poden cruzarse entre eles: {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadora máxica (elimina industrias, obxectos non eliminables): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os túneis poden cruzarse entre eles: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Os avións jet non se estrelarán (frecuentemente) nos aeroportos pequenos: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Escenario temperado
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Escenario sub-ártico
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Escenario sub-tropical
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Escenario xoguetelandia
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Paisaxe temperada
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Paisaxe subártica
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Paisaxe subtropical
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Paisaxe xoguetelandia
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Cambiar data: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Cambiar o ano actual
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permitir a modificación dos valores de producción: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Novo Esquema de Cor
+STR_LIVERY_CAPTION                                              :{WHITE}Novo esquema de cor
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Mostra-los esquemas de cor xerais
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Mostra-los esquemas de cor dos trens
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Mostra-los esquemas de cor dos vehículos de estrada
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Mostra-los esquemas de cor dos barcos
-STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Mostra-los esquemas de cor dos avións
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Mostra-los esquemas de cor das aeronaves
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Elixe a cor primaria para o esquema seleccionado. Ctrl+Click aplicará esta cor a tódolos esquemas
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Elixe a cor secundaria para o esquema seleccionado. Ctrl+Click aplicará esta cor a tódolos esquemas
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Selecciona un esquema de cor para cambialo, ou múltiples esquemas con CTRL+click. Pincha na caixa para cambia lo uso do esquema
 
-STR_LIVERY_DEFAULT                                              :Esquema de Cor Estándar
-STR_LIVERY_STEAM                                                :Máquina de Vapor
-STR_LIVERY_DIESEL                                               :Máquina Diésel
-STR_LIVERY_ELECTRIC                                             :Máquina Eléctrica
-STR_LIVERY_MONORAIL                                             :Máquina Monorraíl
-STR_LIVERY_MAGLEV                                               :Máquina Maglev
-STR_LIVERY_DMU                                                  :DMU
-STR_LIVERY_EMU                                                  :EMU
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :Vagón De Pasaxeiros (Vapor)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Vagón De Pasaxeiros (Diésel)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Vagón De Pasaxeiros (Eléctrico)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Coche de Pasaxeiros (Monoraíl)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Coche de Pasaxeiros (Maglev)
-STR_LIVERY_FREIGHT_WAGON                                        :Vagón de Carga
+STR_LIVERY_DEFAULT                                              :Esquemas de cor estándar
+STR_LIVERY_STEAM                                                :Locomotora de vapor
+STR_LIVERY_DIESEL                                               :Locomotora diésel
+STR_LIVERY_ELECTRIC                                             :Locomotora eléctrica
+STR_LIVERY_MONORAIL                                             :Locomotora de monorraíl
+STR_LIVERY_MAGLEV                                               :Locomotora maglev
+STR_LIVERY_DMU                                                  :Automotor diésel
+STR_LIVERY_EMU                                                  :Automotor eléctrico
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Coche de pasaxeiros (vapor)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Coche de pasaxeiros (diésel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Coche de pasaxeiros (eléctrico)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Coche de pasaxeiros (monorraíl)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Coche de pasaxeiros (maglev)
+STR_LIVERY_FREIGHT_WAGON                                        :Vagón de carga
 STR_LIVERY_BUS                                                  :Autobús
 STR_LIVERY_TRUCK                                                :Camión
-STR_LIVERY_PASSENGER_SHIP                                       :Barco de Pasaxeiros
-STR_LIVERY_FREIGHT_SHIP                                         :Barco de Carga
+STR_LIVERY_PASSENGER_SHIP                                       :Ferry de pasaxeiros
+STR_LIVERY_FREIGHT_SHIP                                         :Cargueiro
 STR_LIVERY_HELICOPTER                                           :Helicóptero
-STR_LIVERY_SMALL_PLANE                                          :Aeronave Pequena
-STR_LIVERY_LARGE_PLANE                                          :Aeronave Grande
-STR_LIVERY_PASSENGER_TRAM                                       :Tranvía de Pasaxeiros
-STR_LIVERY_FREIGHT_TRAM                                         :Tranvía de Carga
+STR_LIVERY_SMALL_PLANE                                          :Avión pequeno
+STR_LIVERY_LARGE_PLANE                                          :Avión grande
+STR_LIVERY_PASSENGER_TRAM                                       :Tranvía de pasaxeiros
+STR_LIVERY_FREIGHT_TRAM                                         :Tranvía de carga
 
 # Face selection window
 STR_FACE_CAPTION                                                :{WHITE}Selección de cara
@@ -1594,30 +1732,30 @@ STR_FACE_MALE_BUTTON                                            :{BLACK}Home
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Seleccionar caras masculinas
 STR_FACE_FEMALE_BUTTON                                          :{BLACK}Muller
 STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Seleccionar caras femininas
-STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nova Cara
+STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nova cara
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Xerar unha nova cara aleatoriamente
 STR_FACE_ADVANCED                                               :{BLACK}Avanzado
 STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Selección avanzada de cara
-STR_FACE_SIMPLE                                                 :{BLACK}Simple
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Selección simple de cara
+STR_FACE_SIMPLE                                                 :{BLACK}Sinxela
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Selección sinxela de cara
 STR_FACE_LOAD                                                   :{BLACK}Cargar
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Carga-la cara favorita
 STR_FACE_LOAD_DONE                                              :{WHITE}A túa cara favorita cargouse dende o arquivo de configuración de OpenTTD.
-STR_FACE_FACECODE                                               :{BLACK}Nº de cara
+STR_FACE_FACECODE                                               :{BLACK}Número de cara
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Ver e/ou establecer o número da cara do presidente da compañía
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Ver e/ou establecer o número da cara do presidente
 STR_FACE_FACECODE_SET                                           :{WHITE}Estableceuse o novo número de cara
 STR_FACE_FACECODE_ERR                                           :{WHITE}Non se puido establecer o número de cara! - debe ser un número entre 0 e 4.294.967.295!
-STR_FACE_SAVE                                                   :{BLACK}Grabar
-STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Grabar a cara favorita
-STR_FACE_SAVE_DONE                                              :{WHITE}Esta cara grabaráse como a túa favorita no ficheiro de configuración de OpenTTD.
+STR_FACE_SAVE                                                   :{BLACK}Gravar
+STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Gravar coma cara favorita
+STR_FACE_SAVE_DONE                                              :{WHITE}Esta cara gravarase coma favorita no arquivo de configuración de OpenTTD.
 STR_FACE_EUROPEAN                                               :{BLACK}Europea
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Seleccionar caras europeas
 STR_FACE_AFRICAN                                                :{BLACK}Africana
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Seleccionar caras africanas
 STR_FACE_YES                                                    :Si
 STR_FACE_NO                                                     :Non
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Activar bigote ou pendentes
+STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Activar mostacho ou pendentes
 STR_FACE_HAIR                                                   :Pelo:
 STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Cambiar pelo
 STR_FACE_EYEBROWS                                               :Cellas:
@@ -1629,18 +1767,18 @@ STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Poñer l
 STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Cambia-las lentes
 STR_FACE_NOSE                                                   :Nariz:
 STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Cambia-lo nariz
-STR_FACE_LIPS                                                   :Labios:
-STR_FACE_MOUSTACHE                                              :Bigote:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Cambia-los labios ou o bigote
-STR_FACE_CHIN                                                   :Barbela:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Cambia-la barbela
+STR_FACE_LIPS                                                   :Beizos:
+STR_FACE_MOUSTACHE                                              :Mostacho:
+STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Cambia-los beizos ou o mostacho
+STR_FACE_CHIN                                                   :Queixo:
+STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Cambia-lo queixo
 STR_FACE_JACKET                                                 :Chaqueta:
 STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Cambia-la chaqueta
 STR_FACE_COLLAR                                                 :Colo:
 STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Cambia-lo colo
-STR_FACE_TIE                                                    :Lazo:
+STR_FACE_TIE                                                    :Garavata:
 STR_FACE_EARRING                                                :Pendentes:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambia-lo lazo ou os pendentes
+STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambia-la garavata ou os pendentes
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multixogador
@@ -1663,22 +1801,22 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Data
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Data actual
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Anos
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Número de anos que{}leva a partida funcionando
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Idioma, versión do servidor, etc.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Lingua, versión do servidor, etc.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Pincha nunha partida da lista para seleccionala
-STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}O servidor público o que te uniches a última vez:
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}O servidor público ao que te uniches a última vez:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Pincha para selecciona-lo servidor no que xogaches a última vez
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFORMACIÓN DA PARTIDA
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clientes: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Idioma: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Set de Terreo: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Tamaño: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Lingua: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Paisaxe: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Tamaño do mapa: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versión do servidor: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Dirección do servidor: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Data de comezo: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Data actual: {WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}¡Protexido con clave!
+STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protexido con contrasinal!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVIDOR DESCONECTADO
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVIDOR CHEO
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIÓN INCORRECTA
@@ -1688,39 +1826,39 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Unirse �
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Actualizar servidor
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Actualiza-la información do servidor
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Buscar servidor
+STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Procurar servidor
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Buscar un servidor na rede
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Engadir servidor
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Engade un servidor á lista que será comprobado sempre para buscar partidas.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Iniciar servidor
-STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Comezar un servidor propio
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Comezar o teu propio servidor
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Escribe o teu nome
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Introduce a dirección IP do servidor
 
 # Start new multiplayer server
-STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Comezar nova partida
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Comezar nova partida multixogador
 
-STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nome:
-STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}O nome da partida mostraráse a outros xogadores no menú de selección de partida multixogador
+STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nome da partida:
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}O nome da partida mostrarase a outros xogadores no menú de selección de partida multixogador
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Establecer contrasinal
-STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protexe a túa partida cun contrasinal se non queres que outras persoas se unan
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protexe a túa partida cun contrasinal se non queres ser accesible públicamente
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (anunciar)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} cliente{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Máximo de clientes:
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Escolle o máximo número de clientes. Non tódolas liñas teñen que estar cubertas
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Escolle o máximo número de clientes. Non tódolos ocos teñen que estar cubertos
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compañía{P "" s}
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Nº máx. de compañías:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Número máx. de compañías:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limita-lo servidor a unha certa cantidade de compañías
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} espectador{P "" es}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Nº máx. de espectadores:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Número máx. de espectadores:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limita-lo servidor a unha certa cantidade de espectadores
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Idioma falado:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Outros xogadores sabrán cal é o idioma que se fala no servidor
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Outros xogadores saberán cal é o idioma que se fala no servidor
 
-STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Escribe o nome para a partida en rede
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Escribe un nome para a partida en rede
 
 # Network game languages
 ############ Leave those lines in this order!!
