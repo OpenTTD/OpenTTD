@@ -820,6 +820,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Прилаго�
 # Advanced settings window
 
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Сите подесувања
 
 
 
@@ -842,6 +843,9 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Дебелин�
 
 
 
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Крај на година: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Изградба: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Возила: {STRING}
 
 
 

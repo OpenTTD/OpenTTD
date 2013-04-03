@@ -1597,7 +1597,7 @@ STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... igno
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :non atopado
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :non é seguro para uso estático
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistema NewGRF
-STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :incompatible con ista versión de OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :incompatible con esta versión de OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :descoñecido
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... nivel de compresión '{STRING}' non válido
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}...o formato de partida gravada '{STRING}' non está dispoñíbel. Voltando a '{STRING}'
@@ -1919,36 +1919,37 @@ STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Estaci�
 STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Xogadores: {WHITE}{STRING}
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nova compañía
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Abrir unha nova compañía
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Crear unha nova compañía
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Observar partida
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Observa-la partida coma espectador
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Unirse a compañía
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Axudar a manexar compañía
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Unirse a unha compañía
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Axudar a dirixir esta compañía
 
 # Network connecting window
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Conectando...
 
 ############ Leave those lines in this order!!
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Conectando..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizando..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Esperando..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Descargando mapa..
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Procesando datos..
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Rexistrando..
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizando...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6)Agardando...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Descargando mapa...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Procesando datos...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Rexistrando...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Descargando información da partida..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Descargando información da compañía..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Descargando información da partida...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Descargando información da compañía...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cliente{P "" s} diante de ti
-STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} descargados
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}Descargados {BYTES} ata agora
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} descargados ata agora
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconectar
 
-STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}O servidor está protexido. Introduce clave
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A compañía está protexida. Introduce clave
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}O servidor está protexido. Introduce o contrasinal
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A compañía está protexida. Introduce o contrasinal
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Lista de Clientes
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Lista de clientes
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Observar
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova compañía
 

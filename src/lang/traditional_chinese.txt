@@ -256,7 +256,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}區域�
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :人口
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}名稱
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}日期
 # These are used in dropdowns
@@ -289,6 +288,8 @@ STR_SORT_BY_RUNNING_COST                                        :營運成本
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :功率／營運成本
 STR_SORT_BY_CARGO_CAPACITY                                      :載貨量
 STR_SORT_BY_RANGE                                               :範圍
+STR_SORT_BY_POPULATION                                          :人口
+STR_SORT_BY_RATING                                              :評價
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}暫停遊戲
@@ -876,6 +877,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :立陶宛立特
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :韓圓 (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :南非蘭特 (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :自訂...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :喬治亞拉里 (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :伊朗里亞爾 (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}度量單位
