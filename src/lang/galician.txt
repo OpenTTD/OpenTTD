@@ -1954,9 +1954,9 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Observar
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova compañía
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Patear
-STR_NETWORK_CLIENTLIST_BAN                                      :Expulsar
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dar diñeiro
+STR_NETWORK_CLIENTLIST_KICK                                     :Chimpar
+STR_NETWORK_CLIENTLIST_BAN                                      :Bloquear
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dar cartos
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Falar a todos
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Falar con compañía
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Mensaxe privada
@@ -1968,7 +1968,7 @@ STR_NETWORK_SPECTATORS                                          :Espectadores
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introduce a cantidade de cartos que queres dar
 
 # Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Non graba lo contrasinal introducido
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Non grava-lo contrasinal introducido
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Asignar á compañía o novo contrasinal
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Contrasinal da compañía
 STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Contrasinal por defecto para a compañía
@@ -1992,7 +1992,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipo] A {STR
 STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] A {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Escribe o texto para a charla en rede
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Escribe o texto para a parola en rede
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Non se atoparon dispositivos de rede ou compilouse sen ENABLE_NETWORK
@@ -2002,21 +2002,26 @@ STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Non se p
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sincronización da partida en rede fallida
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Perdeuse a conexión da partida en rede
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Non se pode carga-la partida
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Non se pode arranca-lo servidor
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Non se pode conectar
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Non se puido inicia-lo servidor
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Non se puido conectar
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Conexión #{NUM} fóra de tempo
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Produciuse un erro de protocolo e pechouse a conexión
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}A revisión deste cliente non é igual ca revisión do servidor.
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Contrasinal errónea
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Detectouse un erro de protocolo e pechouse a conexión
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}A revisión deste cliente non é igual ca revisión do servidor
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Contrasinal incorrecto
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}O servidor está cheo
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Non se che permite o acceso a este servidor
-STR_NETWORK_ERROR_KICKED                                        :{WHITE}Fuches pateado da partida
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Chimpáronte da partida
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Non se permite facer trampas neste servidor
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Estiveches mandando demasiados comandos ao servidor
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Tardaches demasiado en introduci-lo contrasinal
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}A túa computadora é demasiado lenta para seguir a velocidade do servidor
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}A túa computadora tardou demasiado en descarga-lo mapa
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}A túa computadora tardou demasiado en unirse ao servidor
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :erro xeral
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :erro de descincronización
-STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :no se pode carga-lo mapa
+STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :no se puido carga-lo mapa
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :perdeuse a conexión
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :erro de protocolo
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF erróneo
@@ -2024,39 +2029,52 @@ STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :non autorizado
 STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :recibiuse un paquete inválido ou inesperado
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :revisión errónea
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :o nome xa está en uso
-STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :contrasinal incorrecta
-STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :company-id erróneo en DoCommand
-STR_NETWORK_ERROR_CLIENT_KICKED                                 :pateado polo servidor
+STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :contrasinal incorrecto
+STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :compañía errónea nun DoCommand
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :chimpado polo servidor
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :intentaba usar unha trampa
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servidor cheo
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :estaba mandando demasiados comandos
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :non recibiu ningún contrasinal a tempo
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :timeout xeral
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :a descarga do mapa tardou demasiado
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :o procesado do mapa tardou demasiado
 ############ End of leave-in-this-order
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Posible perda da conexión
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Nos últimos {NUM} segundo{P "" s} non chegaron datos do servidor
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Partida en pausa ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Partida aínda en pausa ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Partida aínda en pausa ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Partida aínda en pausa ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Partida aínda en pausa ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Pausa rematada ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :número de xogadores
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :conectando clientes
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :script do xogo
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :saíndo
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} uniuse á partida
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} uniuse á partida (Cliente #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} uniuse a compañía #{2:NUM}
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} uniuse ós espectadores
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} uniuse á compañía #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} uniuse aos espectadores
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} comezou unha nova compañía (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} saiu da partida ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} cambiou o seu nome a {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} deu a túa companía {2:CURRENCY_LONG}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} deu á túa companía {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Diches a {1:STRING} {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}O servidor pechou a conexión
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}O servidor estase a reiniciar...{}Espera por favor...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}O servidor pechou a sesión
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}O servidor estase a reiniciar...{}Agarda por favor...
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Descargar contido
+STR_CONTENT_TITLE                                               :{WHITE}Descargando contidos
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipo
-STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Tipo do contido
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Tipo de contido
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nome
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Nome do contido
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Pincha nunha liña para ve-los detalles{}Pincha na caixa para marcalo para descargar
@@ -2071,13 +2089,15 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Procurar
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Estás a saír de OpenTTD!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Os termos e condicións cambian para descargar contidos de páxinas web externas.{}Terás que dirixirte aos sitios web externos para ter instruccións acerca de cómo instalar os contidos en OpenTTD.{}Queres continuar?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtro etiqueta/nome:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Visita a páxina web
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visita a páxina web para este contido
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descargar
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Comezar a descarga-lo contido seleccionado
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Tamaño total da descarga: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFORMACIÓN DO CONTIDO
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Non seleccionaches isto para descargar
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Seleccionaches isto para descargalo
-STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Esta dependencia for seleccionada para descargar
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Esta dependencia foi seleccionada para descargar
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Xa tes isto
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Este contido é descoñecido e non pode baixarse en OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Esto é un reemprazo para o {STRING} existente
@@ -2090,8 +2110,8 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Tamaño
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Seleccionado porque: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependencias: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Etiquetas: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD construíuse sen soporte para "zlib"...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... non é posible descargar contido!
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD non ten soporte para "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... non é posible descarga-lo contido!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Gráficos base
@@ -2102,6 +2122,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Escenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa de altura
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons base
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Música base
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script do xogo
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Biblioteca GS
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Descargando contido...
@@ -2117,18 +2139,22 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... perd
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... arquivo non escribible
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Non se puido descomprimi-lo arquivo descargado
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Gráficos non atopados
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD require gráficos para funcionar que non foron atopados. Queres que OpenTTD descargue e instale estes gráficos?
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Si, descarga os gráficos
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Non, abandona OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opcións de Transparencia
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Habilitar transparencia para as sinais das estacións. CTRL+Click para bloquear.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Habilitar transparencia para árbores CTRL+Click para bloquear.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Habilitar transparencia para casas. CTRL+Click para bloquear.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Habilitar transparencia para industrias. CTRL+Click para bloquear.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Habilitar transparencia para estacións, depósitos e puntos de ruta. CTRL+Click para bloquear.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Habilitar transparencia para pontes. CTRL+Click para bloquear.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Habilitar transparencia para estruturas coma faros e antenas. CTRL+Click para bloquear.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Activar a transparencia para a catenaria. CTRL+Click para bloquear.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Activar transparencia para os indicadores de carga. CTRL+Click para bloquear.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Habilitar transparencia para os rótulos. CTRL+Click para bloquear
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Habilitar transparencia para as árbores CTRL+Click para bloquear
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Habilitar transparencia para as casas. CTRL+Click para bloquear
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Habilitar transparencia para as industrias. CTRL+Click para bloquear
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Habilitar transparencia para as estacións, depósitos e puntos de ruta. CTRL+Click para bloquear
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Habilitar transparencia para as pontes. CTRL+Click para bloquear
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Habilitar transparencia para estruturas coma faros e antenas. CTRL+Click para bloquear
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Activar a transparencia para a catenaria. CTRL+Click para bloquear
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Activar transparencia para os indicadores de carga. CTRL+Click para bloquear
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Facer os obxectos invisibles en lugar de transparentes
 
 # Base for station construction window(s)
@@ -2145,6 +2171,7 @@ STR_JOIN_STATION_CAPTION                                        :{WHITE}Unir est
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Construír unha estación separada
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unir punto de ruta
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Constrúe un un punto de ruta separado
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construción de Ferrocarrís
@@ -2152,20 +2179,24 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construción de
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construción de Monorraíl
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construción de Maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construír vía de ferrocarril. CTRL conmuta entre construír/borrar para a construción das vías
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construír vía de ferrocarril. CTRL conmuta entre construír/eliminar para a construción das vías. Shift conmunta entre construir/mostrar a estimación de custo
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construír a vía de ferrocarril usando o modo Autoraíl. CTRL conmuta entre construír/borrar para a construción das vías
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construír depósito de trens (para construír e dar servizo os trens)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Convertir raíl a punto de ruta. CTRL permite unir puntos de ruta
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construír estación de ferrocarril. CTRL permite unir estacións
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construír sinais de ferrocaril. Ctrl troca entre semáforos/sináis luminosas{}Arrastrando constrúense sinais ó longo dun tramo recto de ferrocarril. Ctrl construe sináis ata o seguinte cruce{}Ctrl+Click abre a ventana de selección
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construír ponte de ferrocaril
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construír túnel de ferocarril
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construír depósito de trens (para construción e mantemento de trens). Shift conmuta entre construir e mostrar unha estimación de custo
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Convertir raíl a punto de ruta. CTRL permite unir puntos de ruta. Shift conmuta entre construción e mostrar unha estimación do custo
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construír estación de ferrocarril. CTRL permite unir estacións. Shift conmuta entre construción e mostrar unha estimación do custo
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construír sinais de ferrocaril. Ctrl conmuta entre semáforos/sináis luminosas{}Arrastrando constrúense sinais ó longo dun tramo recto de carril de ferrocarril. Ctrl construe sináis ata o seguinte cruce{}Ctrl+Click abre a ventana de selección. Shift conmuta entre construcion e mostrar unha estimación de coste
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construír ponte de ferrocaril. Shift conmuta entre contrución e mostrar unha estimación do coste
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construír túnel de ferocarril. Shift conmuta entre construción e mostrar unha estimación do coste
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Construír/eliminar vías, sinais, puntos de ruta e estacións. Pulsando CTRL tamén borra a vía de puntos de ruta e estacións
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convertir/Actualizar tipo de vía
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convertir/Actualizar tipo de vía. Shift conmuta entre construción e mostrar unha estimación do coste
 
+STR_RAIL_NAME_RAILROAD                                          :Ferrocarril
+STR_RAIL_NAME_ELRAIL                                            :Ferrocarril electrificado
+STR_RAIL_NAME_MONORAIL                                          :Monorrail
+STR_RAIL_NAME_MAGLEV                                            :Maglev
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orient. do Dep. de Trens
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientación do depósito de trens
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Selecciona-la orientación do depósito de ferrocarrís
 
 # Rail waypoint construction window
@@ -2173,14 +2204,14 @@ STR_WAYPOINT_CAPTION                                            :{WHITE}Punto de
 STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Selecciona-lo tipo de punto de ruta
 
 # Rail station construction window
-STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Selección da Estación
+STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Selección da estación
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Orientación
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Selecciona-la orientación da estación de ferrocarril
-STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Lonxitude da plataforma
-STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Selecciona-lo número de platafomas da estación de ferrocarril
-STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Número de vías
+STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Número de vías
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Selecciona-lo número de andéns da estación de ferrocarril
+STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Lonxitude do andén
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Selecciona-la lonxitude da estación de ferrocarril
-STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrastrar e Soltar
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrastrar e soltar
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construír estación arrastrando e soltando
 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Selecciona a clase de estación a mostrar
@@ -2190,62 +2221,63 @@ STR_STATION_CLASS_DFLT                                          :Estación por d
 STR_STATION_CLASS_WAYP                                          :Puntos de ruta
 
 # Signal window
-STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selección de Sinais
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinal De Bloque (semáforo){}Este é o tipo máis básico de sinal, só permite un tren no mesmo bloque ó mesmo tempo.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de Entrada(semáforo){}Verde mentras haxa unha ou máis sinais de saída verdes na seguinte sección de vía. Noutro caso estará vermella.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de Saída (semáforo){}Actúa igual que unha sinal de bloque pero é necesaria para activar a cor correcta nas sinais de entrada e nas pre-sinais combo.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinal Combo (semáforo){}A sinal combo funciona coma unha sinal de entrada e saída. Esto permíteche crear "árbores" grandes de presinais.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinal De Ruta (semáforo){}Unha sinal de ruta permite entrar a máis dun tren nun bloque ó mesmo tempo, se o tren pode atopar unha ruta a un punto de parada seguro. As sinais de ruta estándar poden pasarse en sentido contrario.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinal De Ruta Dun Sentido (semáforo){}Unha sinal de ruta permite entrar a máis dun tren nun bloque ó mesmo tempo, se o tren pode atopar unha ruta a un punto de parada seguro. As dun sentido non se poden atravesar en sentido contrario.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinal De Bloque (eléctrica){}Este é o tipo máis básico de sinal, permite só un tren no mesmo bloque ó mesmo tempo.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinal de Entrada (eléctrica){}Verde mentras haxa unha ou máis sinais de saída verdes na seguinte sección de vía. Noutro caso estará vermella.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de Saída (eléctrica){}Actúa igual que unha sinal de bloque pero é necesaria para activar o color correcto nas sinais de entrada e nas pre-sinais combo.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal Combo (eléctrica){}A sinal combo funciona coma unha sinal de entrada e saída. Esto permíteche crear "árbores" grandes de presinais.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal De Ruta (eléctrica){}Unha sinal de ruta permite entrar a máis dun tren nun bloque ó mesmo tempo, se o tren pode atopar unha ruta a un punto de parada seguro. As sinais de ruta estándar poden pasarse en sentido contrario.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal De Ruta Dun Sentido (eléctrica){}Unha sinal de ruta permite entrar a máis dun tren nun bloque ó mesmo tempo, se o tren pode atopar unha ruta a un punto de parada seguro. As dun sentido non se poden atravesar en sentido contrario.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Convertir Sinal{}Cando está seleccionado, convertirá o sinal no que se pinche ó tipo e variante seleccionados, CTRL+click cambiará a variante existente.
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densidade de sinais ó arrastrar
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Diminuír a densidade de sinais ó arrastrar
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar a densidade de sinais ó arrastrar
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selección de sinais
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinal de bloqueo (mecánico){}Este é o tipo máis básico de sinal, só permite un tren no mesmo cantón ao mesmo tempo.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de entrada (mecánico){}Verde mentras haxa un ou máis sinais de saída verdes na seguinte sección de vía. Noutro caso estará vermella.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de saída (mecánico){}Actúa igual que un sinal de bloqueo pero é necesaria para activar a cor correcta nas combinacións de sinal avanzado + sinal de entrada
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinal combo (mecánico){}O sinal combo funciona coma un sinal de entrada e saída. Esto permíteche crear "árbores" grandes de sinais avanzados
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinal de ruta (mecánico){}Un sinal de ruta permite entrar a máis dun tren nun cantón ao mesmo tempo, se o tren pode atopar unha ruta a un punto de parada seguro. Os sinais de ruta estándar poden rebasarse en sentido contrario.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinal de ruta de sentido único (mecánico){}Un sinal de ruta permite entrar a máis dun tren nun cantón ao mesmo tempo, se o tren pode atopar unha ruta a un punto de parada seguro. Os de un sentido non se poden rebasar en sentido contrario.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinal de bloqueo (eléctrico){}Este é o tipo máis básico de sinal, permite só un tren no mesmo cantón ao mesmo tempo.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinal de entrada (eléctrico){}Verde mentras haxa un ou máis sinais de saída verdes na seguinte sección de vía. Noutro caso estará vermella.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de saída (eléctrico){}Actúa igual que un sinal de bloqueo pero é necesaria para activar a cor correcta nas combinacións de sinal avanzado + sinal de entrada
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal combo (eléctrico){}O sinal combo funciona coma un sinal de entrada e saída. Esto permíteche crear "árbores" grandes de sinais avanzados
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal de ruta (eléctrico){}Un sinal de ruta permite entrar a máis dun tren nun cantón ao mesmo tempo, se o tren pode atopar unha ruta a un punto de parada seguro. Os sinais de ruta estándar poden rebasarse en sentido contrario.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal de ruta de sentido único (eléctrico){}Un sinal de ruta permite entrar a máis dun tren nun cantón ao mesmo tempo, se o tren pode atopar unha ruta a un punto de parada seguro. Os de un sentido non se poden atravesar en sentido contrario.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Convertir sinal{}Cando está seleccionado, convertirá o sinal no que se pinche ao tipo e variante seleccionados, Ctrl+click cambiará a variante existente. Shift+click amosa o custo estimado de conversión
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densidade de sinais ao arrastrar
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Diminuír a densidade de sinais ao arrastrar
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar a densidade de sinais ao arrastrar
 
 # Bridge selection window
-STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selecciona a Ponte do Ferrocarril
-STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selecciona a Ponte
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selecciona ponte ferroviaria
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selecciona ponte de estrada
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selección de pontes - picha na ponte seleccionada para construíla
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Colgante, Aceiro
-STR_BRIDGE_NAME_GIRDER_STEEL                                    :Vigas, Aceiro
-STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Voladizo, Aceiro
-STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Colgante, Cemento
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Colgante, aceiro
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :Vigas, aceiro
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Voladizo, aceiro
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Colgante, formigón
 STR_BRIDGE_NAME_WOODEN                                          :Madeira
-STR_BRIDGE_NAME_CONCRETE                                        :Cemento
-STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Tubular, Aceiro
-STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silicona
+STR_BRIDGE_NAME_CONCRETE                                        :Formigón
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Tubular, aceiro
+STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, silicio
 
 
 # Road construction toolbar
-STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construción de Estradas
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construción de Tranvías
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construír sección de estrada. CTRL conmuta entre construír/borrar para a construción de estradas
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construír sección de vía de tranvía. CTRL conmuta entre construír/borrar para a construción de vías de tranvía
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construír estrada usando o modo Autoestrada. CTRL conmuta entre construír/borrar para a construción de estradas
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construír sección de tranvía usando o modo Autotranvía. CTRL conmuta entre construír/borrar para as vías de tranvía
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construír depósito de vehículos de estrada (para comprar e dar servizo aos vehículos de estrada)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construír depósito de tranvías (para comprar e dar servizo aos vehículos)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construír estación de autobús
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construír estación de tranvía de pasaxeiros
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construír bahía de carga de camións
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construír estación de tranvía de carga
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activar/Desactivar estradas dun sentido
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construír ponte de estrada
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construír ponte de tranvías
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construír túnel de estrada
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construír túnel de tranvías
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Intecambiar construír/eliminar para construír estradas
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construción de estradas
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construción de tranvía
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construír sección de estrada. CTRL conmuta entre construír/borrar para a construción de estradas. Shift conmuta entre construír/mostrar estimación de custo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construír sección de vía de tranvía. Ctrl conmuta entre construír/borrar para a construción de vías de tranvía. Shift conmuta entre construír/mostrar estimación de custo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construír estrada usando o modo Auto-estrada. Ctrl conmuta entre construír/borrar para a construción de estradas. Shift alterna entre construír/mostrar estimación de custo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construír sección de tranvía usando o modo Auto-tranvía. Ctrl conmuta entre construír/borrar para as vías de tranvía. Shift alterna entre construír/mostrar estimación de custo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construír depósito de vehículos de estrada (para comprar e dar servizo aos vehículos de estrada). Shift alterna entre construír/mostrar estimación de custo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construír depósito de tranvías (para comprar e dar servizo aos vehículos). Shift alterna entre construír/mostrar estimación de custo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construír estación de autobuses. Ctrl habilita unir estacións. Shift alterna entre construír/mostrar estimación de custo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construír estación de tranvía de pasaxeiros. Ctrl habilita unir estacións. Shift alterna entre construír/mostrar estimación de custo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construír área de carga de camións. Ctrl habilita unir estacións. Shift alterna entre construír/mostrar estimación de custo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construír estación de tranvía de carga. Ctrl habilita unir estacións. Shift alterna entre construír/mostrar estimación de custo
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activar/Desactivar estradas de sentido único
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construír ponte de estrada. Shift alterna entre construír/mostrar estimación de custo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construír ponte de tranvía. Shift alterna entre construír/mostrar estimación de custo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construír túnel de estrada. Shift alterna entre construír/mostrar estimación de custo
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construír túnel de tranvía. Shift alterna entre construír/mostrar estimación de custo
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Intecambiar construír/eliminar para a construción de estradas
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Cambia entre construír/quitar para a construción de tranvías
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orient. do Depósito
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientación do depósito de estrada
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Seleciona-la orientación do depósito de vehículos de estrada
 STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientación do Depósito de Tranvías
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Selecciona a orientación do depósito de tranvías

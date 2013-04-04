@@ -256,7 +256,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {N
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Populasi
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nama
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Tanggal
 # These are used in dropdowns
@@ -289,6 +288,8 @@ STR_SORT_BY_RUNNING_COST                                        :Biaya Operasion
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Daya/Biaya Ops.
 STR_SORT_BY_CARGO_CAPACITY                                      :Kapasitas kargo
 STR_SORT_BY_RANGE                                               :Jangkauan
+STR_SORT_BY_POPULATION                                          :Populasi
+STR_SORT_BY_RATING                                              :Peringkat
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Hentikan sementara permainan
@@ -876,6 +877,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Lithuania
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Korea Selatan (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Afrika Selatan (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Atur sendiri...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgia (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iran (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Satuan pengukuran
@@ -1362,20 +1365,20 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Ijinkan kecerda
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes sebelum scripts di-tahan: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Jangka waktu perbaikan dalam persen: {STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :Interval default untuk kereta: {STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Setel interval default untuk kereta, jika tidak ada interval tetap
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Interval dasar untuk kereta: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Setel interval dasar untuk kereta, jika tidak ada interval tetap
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} hari/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Di non-aktifkan
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Interval default untuk kendaraan jalan raya: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Interval dasar untuk kendaraan jalan raya: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Setel Interval perbaikan untuk kendaraan jalan raya baru, jika tidak ada interval tetap
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Interval perbaikan untuk pesawat: {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Setel interval perbaikan untuk pesawat baru, jika tidak ada interval asli yang disetel
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :Interval asli untuk kapal: {STRING}
-STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Mengatur interval perbaikan untuk kapal baru, jika tidak ada interval perbaikan, setelan asli akan diatur untuk kendaraan
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Interval dasar untuk kapal: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Mengatur interval perbaikan untuk kapal baru, jika tidak ada interval perbaikan, setelan dasar akan diatur untuk kendaraan
 STR_CONFIG_SETTING_NOSERVICE                                    :Tidak perlu perbaikan jika tidak pernah mogok: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Jika diaktifkan, kendaraan tidak akan diperbaiki jika tidak pernah mogok
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktifkan batas kecepatan gerbong: {STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Jika diaktifkan, juga menggunakan batas kecepatan gerbong untuk menentukan kecepatan maksimum kereta
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Jika diaktifkan, batas kecepatan gerbong juga digunakan untuk menentukan kecepatan maksimum kereta
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Non-aktifkan rel listrik: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Mengaktifkan setelan ini mematikan kebutuhan kereta listrik untuk berjalan di rel elektris
 
@@ -1404,7 +1407,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Tampilkan pesan
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Kendaraan baru: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Tampilkan koran/surat kabar saat kendaraan baru menjadi ada
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Perubahan penerimaan kargo: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Tampilkan pesan tentang stasiun yang mengganti kargo yang diterima
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Tampilkan pesan tentang stasiun yang mengganti penerimaan kargo
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidi: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Tampilkan koran tentang kejadian yg berhubungan dengan subsidi
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informasi umum: {STRING}
@@ -1453,7 +1456,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Acak
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Kota mengijinkan untuk membuat jalan: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Perbolehkan kota untuk membangun jalan. Matikan untuk mencegah kota membangun jalan
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Kota yang diperbolehkan untuk membangun perlintasan tingkat: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Mengaktifkan setelan ini akan memperbolehkan kota membuat perlintasan tingkat antara jalan dan rel kereta
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Mengaktifkan setelan ini akan memperbolehkan kota membuat perlintasan rel kereta
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Ijinkan kota mengatur tingkat kebisingan bandara : {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Jika diaktifkan, pembuatan bandara di kota tergantung dari jarak,kebisingan bandara dan populasi kota. Jika dimatikan, di kota hanya boleh ada dua bandara
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Mendirikan kota pada permainan: {STRING}
@@ -1545,7 +1548,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ganti ni
 STR_CONFIG_ERROR                                                :{WHITE}Kesalahan pada file konfigurasi...
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... kesalahan pada array '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... nilai '{STRING}' tdk sah untuk '{STRING}'
-STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... pengisi huruf di akhir setelan '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... karakter pengisi di akhir setelan '{STRING}'
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... mengabaikan NewGRF '{STRING}': GRF ID kembar sama '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... mengabaikan NewGRF tidak valid '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :tdk ditemukan
@@ -1558,7 +1561,7 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... form
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... mengabaikan set grafis dasar '{STRING}': tak ditemukan
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... mengabaikan set suara dasar '{STRING}': tidak ditemukan
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... mengabaikan set musik dasar '{STRING}': tidak ditemukan
-STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Memori habis
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Kehabisan memori
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1632,7 +1635,7 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer ajaib (hancurkan industri, objek tidak bergerak): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Terowongan boleh menerobos terowongan lain: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Pesawat tak akan (sering) celaka di bandara kecil: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Lansekap 'Temperata'
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Lanskap 'Temperata'
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Lansekap 'Sub Arktik'
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Lansekap 'Sub Tropis'
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Lansekap 'Taman Bermain'
@@ -2038,6 +2041,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Pilih se
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Hps semua pilihan
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Tandai semua untuk tidak diunduh
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Cari di website luar
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Cari konten yang tidak tersedia dalam server konten OpenTTD di website yang tidak berhubungan dengan OpenTTD
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Anda keluar dari OpenTTD!
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tanda/nama filter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Kunjungi laman
@@ -2891,7 +2895,8 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Tidak ad
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Menunggu: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} dialihkan dari {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} dari {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} direservasi untuk memuat)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Menerima
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Tampilkan daftar kargo yang bisa diterima
@@ -3410,6 +3415,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Jangka w
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Tambah jarak waktu perbaikan dengan 10. Ctrl+Click menambah jarak waktu perbaikan dengan 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Kurangi jarak waktu perbaikan dengan 10. Ctrl+Click mengurangi jarak waktu perbaikan dengan 5
 
+STR_VEHICLE_DETAILS_PERCENT                                     :Persentase
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nama kereta
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nama kendaraan
@@ -3782,6 +3788,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Pemasukan: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {GREEN}Pemasukan: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {GREEN}Pemasukan: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {RED}Biaya: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {RED}Biaya: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Perkiraan Biaya: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Perkiraan Pemasukan: {CURRENCY_LONG}
 
