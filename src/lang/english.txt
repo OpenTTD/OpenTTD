@@ -1364,9 +1364,9 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Play sound for 
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Newspaper: {STRING2}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Play sound upon display of newspapers
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :End of year: {STRING2}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Play sound effect at the end of a year summarising the company's performance during the year compared to the previous year
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Play sound at the end of a year summarising the company's performance during the year compared to the previous year
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construction: {STRING2}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Play sound effect on successful constructions or other actions
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Play sound on successful constructions or other actions
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Button clicks: {STRING2}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Beep when clicking buttons
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Disasters/accidents: {STRING2}
@@ -1374,7 +1374,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Play sound effe
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vehicles: {STRING2}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Play sound effects of vehicles
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambient: {STRING2}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Play ambient sound effects of landscape, industries and towns
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Play ambient sounds of landscape, industries and towns
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Disable infrastructure building when no suitable vehicles are available: {STRING2}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :When enabled, infrastructure is only available if there are also vehicles available, preventing waste of time and money on unusable infrastructure
@@ -1431,7 +1431,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Display a newsp
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arrival of first vehicle at competitor's station: {STRING2}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Display a newspaper when the first vehicle arrives at a new competitor's station
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / disasters: {STRING2}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Display a newspaper when accidents or disasters occurs
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Display a newspaper when accidents or disasters occur
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Company information: {STRING2}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Display a newspaper when a new company starts, or when companies are risking to bankrupt
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Opening of industries: {STRING2}
@@ -1474,7 +1474,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :When dragging, 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Set the distance at which signals will be built on a track up to the next obstacle (signal, junction), if signals are dragged
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} tile{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :When dragging, keep fixed distance between signals: {STRING2}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Select the behaviour of signal placement when Ctrl+dragging signals. If disabled, signals are placed around tunnels or bridges to avoid long stretches without signals. If enabled, signals are placed every N tiles, making alignment of signals at parallel tracks easier
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Select the behaviour of signal placement when Ctrl+dragging signals. If disabled, signals are placed around tunnels or bridges to avoid long stretches without signals. If enabled, signals are placed every n tiles, making alignment of signals at parallel tracks easier
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatically build semaphores before: {STRING2}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Set the year when electric signals will be used for tracks. Before this year, non-electric signals will be used (which have the exact same function, but different looks)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Enable the signal GUI: {STRING2}
@@ -3723,7 +3723,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fill the
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Expected
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Scheduled
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Switch between expected and schedule
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Switch between expected and scheduled
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
@@ -4563,10 +4563,10 @@ STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP Passenger F
 STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 Hovercraft
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug Passenger Ferry
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake Passenger Ferry
-STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate Cargo ship
-STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Cargo ship
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover Cargo ship
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut Cargo ship
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate Cargo Ship
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Cargo Ship
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover Cargo Ship
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut Cargo Ship
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
