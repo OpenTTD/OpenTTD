@@ -1364,9 +1364,9 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Toista ääni t
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Sanomalehti: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Toista ääni sanomalehden ilmestyessä
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Vuoden loppu: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Toista ääniefekti vuoden lopussa verrattaessa yhtiön tulosta edelliseen vuoteen
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Toista ääni vuoden lopussa verrattaessa yhtiön tulosta edelliseen vuoteen
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Rakentaminen: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Toista ääniefekti onnistuneen rakennus- tai muun toiminnon jälkeen
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Toista ääni onnistuneen rakennus- tai muun toiminnon jälkeen
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Painikkeiden klikkaus: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Piippaa klikattaessa painikkeita
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Vahingot/onnettomuudet: {STRING}
@@ -1474,7 +1474,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Opastimien väl
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Määrittää etäisyyden opastimien välillä seuraavaan esteeseen saakka (opastin, risteys) opastimia vedettäessä
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} ruutu{P 0 "" a}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Vedettäessä, pidä opastimien välinen matka vakiona: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Valitse käyttäytyminen vedettäessä opastimia Ctrl-näppäin pohjassa. Mikäli pois käytöstä, opastimia rakennetaan siltojen ja tunnelien ympärille pitkien opastimista vapaiden alueiden välttämiseksi. Mikäli käytössä, opastimia rakennetaan N ruudun välein, tehden vierekkäisten ratojen opastimien kohdistamisesta helpompaa
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Valitse käyttäytyminen vedettäessä opastimia Ctrl-näppäin pohjassa. Mikäli pois käytöstä, opastimia rakennetaan siltojen ja tunnelien ympärille pitkien opastimista vapaiden alueiden välttämiseksi. Mikäli käytössä, opastimia rakennetaan n ruudun välein, tehden vierekkäisten ratojen opastimien kohdistamisesta helpompaa
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Rakenna oletuksena siipiopastimia ennen vuotta: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Valitse vuosi jonka jälkeen käytetään sähköisiä opastimia. Ennen tätä vuotta käytetään siipiopastimia (joilla on sama toiminnallisuus mutta eri ulkonäkö)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Käytä graafista opastinkäyttöliittymää: {STRING}

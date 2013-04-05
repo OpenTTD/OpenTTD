@@ -2279,28 +2279,28 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Cambia e
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientación do depósito de estrada
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Seleciona-la orientación do depósito de vehículos de estrada
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientación do Depósito de Tranvías
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientación do depósito de tranvías
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Selecciona a orientación do depósito de tranvías
 
 # Road vehicle station construction window
-STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientación da Estación
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientación da estación de autobuses
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Selecciona-la orientación da estación de autobús
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientación da Estación
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Selecciona-la orientación da bahía de carga de camións
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientación Tranvía Pasaxeiros
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientación da área de carga de camións
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Selecciona-la orientación da área de carga de camións
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientación da estación de tranvía de pasaxeiros
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Selecciona a orientación da estación de tranvías de pasaxeiros
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orientación da Estación de Carga
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orientación da estación de tranvía de carga
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selecciona a orientación da estación de tranvías de carga
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construción de Canais
-STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canais
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canais.
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construír peches
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construír depósito para barcos (para comprar e dar servizo aos barcos)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construír peirao para barcos
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Boia de posición, pódese utilizar para marcar puntos de ruta adicionais
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construír acueducto
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construción de canles
+STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canles
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construír canles. Shift alterna entre construír/amosar estimación de custo
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construír esclusas. Shift alterna entre construír/amosar estimación de custo
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construír depósito para barcos (para comprar e dar servizo aos barcos). Shift alterna entre construír/amosar estimación de custo
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construír peirao para barcos. Ctrl habilita a unión de estacións. Shift alterna entre construír/amosar estimación de custo
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Boia de posición, pódese empregar para marcar puntos de ruta adicionais. Shift alterna entre construír/amosar estimación de custo
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construír acueduto. Shift alterna entre construír/amosar estimación de custo
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Define a área de auga.{}Fai un canal, a non ser que manteñas pulsado CTRL ó nivel do mar, entonces inundaránse os arredores do lugar
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Colocar ríos.
 

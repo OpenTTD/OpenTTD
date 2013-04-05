@@ -28,75 +28,75 @@ STR_JUST_NOTHING                                                :Einki
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
-STR_CARGO_PLURAL_PASSENGERS                                     :Ferðafólk
-STR_CARGO_PLURAL_COAL                                           :Kol
-STR_CARGO_PLURAL_MAIL                                           :Postur
-STR_CARGO_PLURAL_OIL                                            :Olja
+STR_CARGO_PLURAL_PASSENGERS                                     :{G=n}Ferðafólk
+STR_CARGO_PLURAL_COAL                                           :{G=n}Kol
+STR_CARGO_PLURAL_MAIL                                           :{G=m}Postur
+STR_CARGO_PLURAL_OIL                                            :{G=f}Olja
 STR_CARGO_PLURAL_LIVESTOCK                                      :Kríatúr
-STR_CARGO_PLURAL_GOODS                                          :Góðs
-STR_CARGO_PLURAL_GRAIN                                          :Korn
-STR_CARGO_PLURAL_WOOD                                           :Viður
-STR_CARGO_PLURAL_IRON_ORE                                       :Jarn Málmur
-STR_CARGO_PLURAL_STEEL                                          :Stál
-STR_CARGO_PLURAL_VALUABLES                                      :Virðislutir
-STR_CARGO_PLURAL_COPPER_ORE                                     :Kopar Málmur
-STR_CARGO_PLURAL_MAIZE                                          :Meis
-STR_CARGO_PLURAL_FRUIT                                          :Fruktir
-STR_CARGO_PLURAL_DIAMONDS                                       :Diamantar
-STR_CARGO_PLURAL_FOOD                                           :Matur
-STR_CARGO_PLURAL_PAPER                                          :Pappír
-STR_CARGO_PLURAL_GOLD                                           :Gull
-STR_CARGO_PLURAL_WATER                                          :Vatn
-STR_CARGO_PLURAL_WHEAT                                          :Hveiti
-STR_CARGO_PLURAL_RUBBER                                         :Gummi
-STR_CARGO_PLURAL_SUGAR                                          :Sukur
-STR_CARGO_PLURAL_TOYS                                           :Leikur
-STR_CARGO_PLURAL_CANDY                                          :Góðgæti
-STR_CARGO_PLURAL_COLA                                           :Kola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Kandifloss
-STR_CARGO_PLURAL_BUBBLES                                        :Sápiblørir
-STR_CARGO_PLURAL_TOFFEE                                         :errin
-STR_CARGO_PLURAL_BATTERIES                                      :Battarí
-STR_CARGO_PLURAL_PLASTIC                                        :Plastikk
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Sodavatn
+STR_CARGO_PLURAL_GOODS                                          :{G=n}Góðs
+STR_CARGO_PLURAL_GRAIN                                          :{G=n}Korn
+STR_CARGO_PLURAL_WOOD                                           :{G=m}Viður
+STR_CARGO_PLURAL_IRON_ORE                                       :{G=m}Jarn Málmur
+STR_CARGO_PLURAL_STEEL                                          :{G=n}Stál
+STR_CARGO_PLURAL_VALUABLES                                      :{G=m}Virðislutir
+STR_CARGO_PLURAL_COPPER_ORE                                     :{G=m}Kopar Málmur
+STR_CARGO_PLURAL_MAIZE                                          :{G=n}Meis
+STR_CARGO_PLURAL_FRUIT                                          :{G=f}Fruktir
+STR_CARGO_PLURAL_DIAMONDS                                       :{G=m}Diamantar
+STR_CARGO_PLURAL_FOOD                                           :{G=m}Matur
+STR_CARGO_PLURAL_PAPER                                          :{G=n}Pappír
+STR_CARGO_PLURAL_GOLD                                           :{G=n}Gull
+STR_CARGO_PLURAL_WATER                                          :{G=n}Vatn
+STR_CARGO_PLURAL_WHEAT                                          :{G=n}Hveiti
+STR_CARGO_PLURAL_RUBBER                                         :{G=n}Gummi
+STR_CARGO_PLURAL_SUGAR                                          :{G=n}Sukur
+STR_CARGO_PLURAL_TOYS                                           :{G=n}Leikutoy
+STR_CARGO_PLURAL_CANDY                                          :{G=n}Góðgæti
+STR_CARGO_PLURAL_COLA                                           :{G=n}Kola
+STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=n}Kandifloss
+STR_CARGO_PLURAL_BUBBLES                                        :{G=f}Sápiblørir
+STR_CARGO_PLURAL_TOFFEE                                         :{G=n}Toffee
+STR_CARGO_PLURAL_BATTERIES                                      :{G=n}Battarí
+STR_CARGO_PLURAL_PLASTIC                                        :{G=n}Plastikk
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=n}Sodavatn
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
-STR_CARGO_SINGULAR_PASSENGER                                    :Ferðafólk
-STR_CARGO_SINGULAR_COAL                                         :Kol
-STR_CARGO_SINGULAR_MAIL                                         :Postur
-STR_CARGO_SINGULAR_OIL                                          :Olja
-STR_CARGO_SINGULAR_LIVESTOCK                                    :Kríatúr
-STR_CARGO_SINGULAR_GOODS                                        :Góðs
-STR_CARGO_SINGULAR_GRAIN                                        :Korn
-STR_CARGO_SINGULAR_WOOD                                         :Viður
-STR_CARGO_SINGULAR_IRON_ORE                                     :Jarn Málm
-STR_CARGO_SINGULAR_STEEL                                        :Stál
-STR_CARGO_SINGULAR_VALUABLES                                    :Viðrislutur
-STR_CARGO_SINGULAR_COPPER_ORE                                   :Kopar Málm
-STR_CARGO_SINGULAR_MAIZE                                        :Meis
-STR_CARGO_SINGULAR_FRUIT                                        :Frukt
-STR_CARGO_SINGULAR_DIAMOND                                      :Diamantur
-STR_CARGO_SINGULAR_FOOD                                         :Matur
-STR_CARGO_SINGULAR_PAPER                                        :Pappír
-STR_CARGO_SINGULAR_GOLD                                         :Gull
-STR_CARGO_SINGULAR_WATER                                        :Vatn
-STR_CARGO_SINGULAR_WHEAT                                        :Hveiti
-STR_CARGO_SINGULAR_RUBBER                                       :Gummi
-STR_CARGO_SINGULAR_SUGAR                                        :Sukur
-STR_CARGO_SINGULAR_TOY                                          :Leika
-STR_CARGO_SINGULAR_CANDY                                        :Góðgæti
-STR_CARGO_SINGULAR_COLA                                         :Kola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Kandifloss
-STR_CARGO_SINGULAR_BUBBLE                                       :Sápibløra
-STR_CARGO_SINGULAR_TOFFEE                                       :Errin
-STR_CARGO_SINGULAR_BATTERY                                      :Battarí
-STR_CARGO_SINGULAR_PLASTIC                                      :Plastikk
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Sodavatn
+STR_CARGO_SINGULAR_PASSENGER                                    :{G=n}Ferðafólk
+STR_CARGO_SINGULAR_COAL                                         :{G=n}Kol
+STR_CARGO_SINGULAR_MAIL                                         :{G=m}Postur
+STR_CARGO_SINGULAR_OIL                                          :{G=f}Olja
+STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=n}Kríatúr
+STR_CARGO_SINGULAR_GOODS                                        :{G=n}Góðs
+STR_CARGO_SINGULAR_GRAIN                                        :{G=n}Korn
+STR_CARGO_SINGULAR_WOOD                                         :{G=m}Viði
+STR_CARGO_SINGULAR_IRON_ORE                                     :{G=m}Jarn Málm
+STR_CARGO_SINGULAR_STEEL                                        :{G=n}Stál
+STR_CARGO_SINGULAR_VALUABLES                                    :{G=m}Viðrislutur
+STR_CARGO_SINGULAR_COPPER_ORE                                   :{G=m}Kopar Málm
+STR_CARGO_SINGULAR_MAIZE                                        :{G=n}Meis
+STR_CARGO_SINGULAR_FRUIT                                        :{G=f}Frukt
+STR_CARGO_SINGULAR_DIAMOND                                      :{G=m}Diamantur
+STR_CARGO_SINGULAR_FOOD                                         :{G=m}Matur
+STR_CARGO_SINGULAR_PAPER                                        :{G=n}Pappír
+STR_CARGO_SINGULAR_GOLD                                         :{G=n}Gull
+STR_CARGO_SINGULAR_WATER                                        :{G=n}Vatn
+STR_CARGO_SINGULAR_WHEAT                                        :{G=n}Hveiti
+STR_CARGO_SINGULAR_RUBBER                                       :{G=n}Gummi
+STR_CARGO_SINGULAR_SUGAR                                        :{G=n}Sukur
+STR_CARGO_SINGULAR_TOY                                          :{G=n}Leikutoy
+STR_CARGO_SINGULAR_CANDY                                        :{G=n}Góðgæti
+STR_CARGO_SINGULAR_COLA                                         :{G=n}Kola
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=n}Kandifloss
+STR_CARGO_SINGULAR_BUBBLE                                       :{G=f}Sápibløra
+STR_CARGO_SINGULAR_TOFFEE                                       :{G=n}Toffee
+STR_CARGO_SINGULAR_BATTERY                                      :{G=n}Battarí
+STR_CARGO_SINGULAR_PLASTIC                                      :{G=n}Plastikk
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=f}Sodavatn
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} ferðafólk
+STR_QUANTITY_PASSENGERS                                         :{G=n}{COMMA} ferðafólk
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} av kol
 STR_QUANTITY_MAIL                                               :{COMMA} sekk{P "" ir} av posti
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} av olju
@@ -304,7 +304,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Vís lis
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Vís felagsins fíggjarligu støðu
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Vís felagsins støðu
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Vís grafar
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Vís støðuna millum feløgini
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Vís fyritøku deildar yvirlit
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Fíggja bygging av nýggjum ídnaði ella vís lista yvir allan ídnað
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Vís lista yvir tok hjá felagnum. Ctrl+Klikk skiftur ímillum bólkur/akfar listan
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Vis lista yvir akfør hjá felagnum. Ctrl+Klikk skiftur ímillum bólkur/akfar listan
@@ -323,9 +323,9 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landslag
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skift amboðslinju
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Goym mannagongd, heinta mannagongd, slepp mannagongd editor, gevst
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Goym tilburð, heinta tilburð, far frá tilburðs ritara, gevst
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
-STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Mannagongd Editor
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Tilburðs ritari
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Flyt byrjunar dato 1 ár aftur
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Flyt byrjunar dato 1 ár fram
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Trýst her fyri at seta inn byrjunar dato
@@ -339,11 +339,11 @@ STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Set teki
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Legg lut. Shift skiftur millum at byggja/vísa kostnaðar meting
 
 ############ range for SE file menu starts
-STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Goym mannagongd
-STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Heinta mannagongd
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Goym tilburð
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Heinta tilburð
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Goym hæddarkort
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Heinta hæddarkort
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Far frá mannagongds editor
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Far frá tilburðs ritara
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Gevst
 ############ range for SE file menu starts
@@ -356,7 +356,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF innstill
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gjøgnumskygnis møguleikar
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bygdarnøvn víst
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Statión navn víst
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Positión navn víst
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Waypoint nøvn víst
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Tekin víst
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Kappingarneyta skelti og nøvn víst
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Full animatión
@@ -370,7 +370,7 @@ STR_FILE_MENU_SAVE_GAME                                         :Goym spæl
 STR_FILE_MENU_LOAD_GAME                                         :Heinta spæl
 STR_FILE_MENU_QUIT_GAME                                         :Far frá spæli
 STR_FILE_MENU_SEPARATOR                                         :
-STR_FILE_MENU_EXIT                                              :Útgongd
+STR_FILE_MENU_EXIT                                              :Gevst
 ############ range ends here
 
 ############ range for map menu starts
@@ -552,7 +552,7 @@ STR_GRAPH_KEY_CAPTION                                           :{WHITE}Knøttur
 STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Trýst her fyri at tendra/sløkkja graf hjá fyritøku
 
 # Company league window
-STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Virkis samtaks tabel
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Fyritøku deildar yvirlit
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Teknikari
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Ferðslu Leiðari
@@ -624,8 +624,12 @@ STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Vel 'øl
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Vel 'gamlan tónleika stíl' skránna
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Vel 'nýggjan tónleika stíl' skránna
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Vel 'Ezy Street tónleika stíl' skránna
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Vel 'Sjálvgjørdur 1' (brúkara ásett) skránna
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Vel 'Sjálvgjørdur 2' (brúkara ásett) skránna
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Tendra/sløkk bland av skránni
+STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Vís tónleika spor úrvals glugga
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Eitt tónleika sett uttan sangir er valt. Engir sangir vera spældir
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Úrval av tónleika skráðum
@@ -633,6 +637,9 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTB
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Spor yvirlit
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Skrá - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Strika
+STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Reinsa núverðandi skrá (Sjálvgjørdur1 ella Sjálvgjørdur2 einans)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Trýst á tónleika spor fyri at leggja til núverðandi skrá (Sjálvgjørdur1 ella Sjálvgjørdur2 einans)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Trýst á tónleika spor fyri at strika frá núverðani skrá (Sjálvgjørdur1 ella Sjálvgjørdur2 einans)
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Fremstu fyritøkunar ið rukku {NUM}
@@ -665,6 +672,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Vís íd
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Vís flutnings rutir á korti
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Vís vøkstur á korti
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Vís land eigarar á korti
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Trýst á eitt ídnaðar slag fyri at vísa/fjala tað. Ctrl+trýst fjalir øll sløg uttan ta valda. Ctrl+trýst á ta aftur fyri at vísa øll ídnaðar sløg
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Trýst á eina fyritøku fyri at fjala/vísa teirra ognir. Ctrl+trýst fjalir allar fyritøkur uttan ta valdu. Ctrl+trýst umaftur fyri at vísa allar fyritøkur
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Vegir
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Tok banar
@@ -695,6 +704,8 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Oyðimørk
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Kavi
 
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Vís/fjal bygda nøvn á kortinum
+STR_SMALLMAP_CENTER                                             :{BLACK}Miðsavna korti á núverðandi stað
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
@@ -747,29 +758,90 @@ STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Flutnings fyritøka í vanda!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} verður selt ella lýst á húsagang um ikki úrtøkan økist skjótt!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Flutnings fyritøkur samanlagdar!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} er selt til {STRING} fyri {CURRENCY_LONG}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Húsagangur!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} er lukka niður av ognarum og øll virði seld!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nýggj flutnings fyritøka stovnað!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} setur spakan í tætt vi {TOWN}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} er yvirtikið av {STRING}!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Leiðari)
 
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} stuðlaði stovnanina av nýggju bygdini {TOWN}!
 
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Ný{G "ggjur" "ggj" "tt"} {STRING} stendur í gerð tætt við {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Nýggjur {STRING} plantaður tætt vi {TOWN}!
 
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} steingir brátt!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Trupulleikar við førningi fær {STRING} at steingja brátt!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Vantandi nærhendis trø fær {STRING} at steingja brátt!
 
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Evropeisk gjaldsoyra samstarv!{}{}Evran verður innførd sum einasta gjaldsoyra í tínum landi!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Ringar tíðir kring allan heimin!{}{}Búskaparfrøðingar vanta ta ringasta!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Endi á ringum tíðum!{}{}Øktur handil skapar álit hjá vinnuni nú búskapurin styrknar!
 
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} økir framleiðslu!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nýtt lag av koli funni í {INDUSTRY}!{}Framleiðslan vantast at tvífaldast!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nýggjur oljubrunnur funnin við {INDUSTRY}!{}Framleiðslan vantast at tvífaldast!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Betraðir arbeiðsháttir á {INDUSTRY} vantast at tvífalda framleiðslu!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} framleiðslan hjá {INDUSTRY} økist við {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} framleiðsla minka 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Flogkykta álop elvir til oyðilegging á {INDUSTRY}!{}Framleiðsla skerd 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} framleiðslan hjá {INDUSTRY} minkar {COMMA}%!
 
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} bíðar í goymsluni
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} bíðar í goymsluni
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} bíðar í goymsluni
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} bíðar í hangarinum
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} hevur ov fá boð í skránni
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} hevur eini ógyldig boð
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} hevur boð ið eru eins
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} hevur eina óviðkomandi støð í sinum boðum
 # end of order system
 
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} er vi at eldast
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} er við at eldast serstakliga nógv
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} er við at eldast serstakliga nógv og tørvast at skifta um í bræði
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kann ikki finna eina leið at halda fram
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} er glata
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :Vinningurin síðsta ár hjá {WHITE}{VEHICLE} var {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} sleppur ikki til ætlaða staðið tí ta er ov langt vekk
 
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} steðgaði tí eini boð um umbyggjing miseydnaðust
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Sjálvendurnýggjan miseydnaðist vi {VEHICLE}{}{STRING}
 
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Ný{G ggjur ggj tt} {STRING} til sølu!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Ný{G ggjur ggj tt} {STRING} til sølu!  -  {ENGINE}
 
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} tekur ikki longur ímóti {STRING}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} tekur ikki longur ímóti hvørki {STRING} ella {STRING}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} tekur nú ímóti {STRING}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} tekur nú ímóti bæði {STRING} og {STRING}
 
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Tilboð um stuðul útgingi:{}{}{STRING} frá {STRING} til {STRING} fær nú ongan stuðul
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Stuðul tikin aftur:{}{}{STRING} flutningur frá {STRING} til {STRING} er ikki stuðla longur
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Tilboð um flutnings stuðul:{}{}Fyrsti {STRING} flutningur frá {STRING} til {STRING} fær stuðul í eitt ár frá mynduleikanum á staðnum!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Flutnings stuðul handaður {STRING}!{}{}{STRING} flutningur frá {STRING} til {STRING} gevur 50% eyka úrtøku í eitt ár!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Flutnings stuðul handaður {STRING}!{}{}{STRING} flutningur frá {STRING} til {STRING} hevur tvífaldaða úrtøku í eitt ár!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Flutnings stuðul handaður {STRING}!{}{}{STRING} flutningur frá {STRING} til {STRING} hevur trýfaldaða úrtøku í eitt ár!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Flutnings stuðul handaður {STRING}!{}{}{STRING} flutningur frá {STRING} til {STRING} hevur ferfaldaða úrtøku í eitt ár!
 
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Ferðslu ruðuleiki í {TOWN}!{}{}Umvæling av vega kervi fíggja av {STRING} førir við sær 6 mánaðir av neyð fyri bilførarar!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Flutnings einahandil!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Mynduleikanir í {TOWN} skriva undir sáttmála við {STRING} fyri einkarrætt av flutningi í eitt ár!
 
 # Extra view window
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Set staðið í hesum glugganum inn í høvuðsgluggan
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Sýnisgluggi {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Rita til sýnisglugga
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Avrita staðið í høvuðsglugganum inn hendan sýnisgluggan
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Set inn frá sýnisglugga
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Set staðið í hesum sýnisglugganum inn í høvuðsgluggan
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spælið Møguleikar
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spæli møguleikar
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Gjaldsoyra eindir
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Úrval av gjaldsoyra eindum
 
@@ -802,6 +874,10 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkiskan Lira 
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakiska Koruna (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasilskan Real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estoniska Krooni (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Latviskar Litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Suður Koreanskar Won (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Suður Afrikanskir Rand (ZAR)
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sjálvgjørt...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiskur Lari
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranskur Rial
 ############ end of currency region
@@ -837,44 +913,182 @@ STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polsk
 STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakisk
 STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norsk
 STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungarsk
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Eysturrísk
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumensk
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tjekkisk
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Sveisisk
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Donsk
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkisk
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italiensk
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalanisk
 ############ end of townname region
 
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Sjálvgoymsla
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vel títtleika av sjálvgoymslu
 
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Sløkt
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Hvønn mánað
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Hvønn 3 mánað
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Hvønn 6 mánað
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Einaferð um árið
 
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Mál
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Vel mál at nýta í brúkaraflatuni
 
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Fullan skerm
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marka hendan kassan fyri at spæla OpenTTD í fullum skermi
 
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skerm upploysn
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vel hvørja skermupploysn tú vil brúka
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
 
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Skermmynda snið
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Vel hvat skermmynda snið tú vil brúka
 
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Base grafikk sett
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel ta base grafikk setti tú vil brúka
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} vantandi/oyðiløgd fíl{P a ir}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Meira kunning um base grafikk setti
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Base ljóð sett
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vel ta base ljóð setti tú vil brúka
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Meira kunning um base ljóð setti
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Base tónleika sett
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vel ta base tónleika setti tú vil brúka
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} oyðilagd{P "" ar} fíl{P a ir}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Meira kunning um base tónleika setti
 
+STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Eydnaðist ikki at brúka fullan skerm
 
 # Custom currency window
 
+STR_CURRENCY_WINDOW                                             :{WHITE}Sjálvgjørt gjaldsoyra
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Gjaldsoyra kursur: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Minka um hvussu nógv av tínum gjaldoyra skal til fyri at keypa eitt pund (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Vaks um hvussu nógv av tínum gjaldoyra skal til fyri at keypa eitt pund (£)
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Set gjaldsoyra kursin av tínum gjaldsoyra fyri eitt pund (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Set separatorin fyri títt gjaldsoyra
 
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Set prefiksi fyri títt gjaldsoyra
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffiks: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Set suffiksi fyri títt gjaldsoyra
 
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Skift til Evru: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Skift til Evru: {ORANGE}ongantíð
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Set árstal fyri skift til Evru
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Skift til Evru fyrr
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Skift til Evru seinni
 
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Undanvísing: {ORANGE}{CURRENCY_LONG}
+STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pund (£) í tínum gjaldsoyra
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Broyt parametur í sjálvgjørda gjaldsoyranum
 
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Hægsta tali av kappingarneytum: {ORANGE}{COMMA}
 
+STR_NONE                                                        :Einki
+STR_FUNDING_ONLY                                                :Fíggjing einans
+STR_MINIMAL                                                     :Minst
+STR_NUM_VERY_LOW                                                :Sera lágt
+STR_NUM_LOW                                                     :Lágt
+STR_NUM_NORMAL                                                  :Vanligt
+STR_NUM_HIGH                                                    :Høgt
+STR_NUM_CUSTOM                                                  :Sjálvgjørt
+STR_NUM_CUSTOM_NUMBER                                           :Sjálvgjørt ({NUM})
 
+STR_VARIETY_NONE                                                :Einki
+STR_VARIETY_VERY_LOW                                            :Sera lágt
+STR_VARIETY_LOW                                                 :Lágt
+STR_VARIETY_MEDIUM                                              :Miðal
+STR_VARIETY_HIGH                                                :Høgt
+STR_VARIETY_VERY_HIGH                                           :Sera høgt
 
+STR_AI_SPEED_VERY_SLOW                                          :Sera seinur
+STR_AI_SPEED_SLOW                                               :Seinur
+STR_AI_SPEED_MEDIUM                                             :Miðal
+STR_AI_SPEED_FAST                                               :Skjótur
+STR_AI_SPEED_VERY_FAST                                          :Sera skjótur
 
+STR_SEA_LEVEL_VERY_LOW                                          :Sera lágur
+STR_SEA_LEVEL_LOW                                               :Lágur
+STR_SEA_LEVEL_MEDIUM                                            :Miðal
+STR_SEA_LEVEL_HIGH                                              :Høgur
+STR_SEA_LEVEL_CUSTOM                                            :Sjálvgjørdur
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Sjálvgjørdur ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Eingir
+STR_RIVERS_FEW                                                  :Fáir
+STR_RIVERS_MODERATE                                             :Miðal
+STR_RIVERS_LOT                                                  :Nógvir
 
+STR_DISASTER_NONE                                               :Ongar
+STR_DISASTER_REDUCED                                            :Færri
+STR_DISASTER_NORMAL                                             :Vanligar
 
+STR_SUBSIDY_X1_5                                                :x1.5
+STR_SUBSIDY_X2                                                  :x2
+STR_SUBSIDY_X3                                                  :x3
+STR_SUBSIDY_X4                                                  :x4
 
+STR_TERRAIN_TYPE_VERY_FLAT                                      :Sera flatt
+STR_TERRAIN_TYPE_FLAT                                           :Flatt
+STR_TERRAIN_TYPE_HILLY                                          :Bakkaríkt
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Fjallaríkt
 
+STR_CITY_APPROVAL_PERMISSIVE                                    :Eftirgevandi
+STR_CITY_APPROVAL_TOLERANT                                      :Tolsamir
+STR_CITY_APPROVAL_HOSTILE                                       :Fíggjindaligir
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Einki hóskandi AI til taks...{}Tú kann taka niður fleiri ymisk AI gjøgnum 'Online tilfar' kervi
 
 # Advanced settings window
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Víðkaðir instillingar
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtur strongur:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Víðka alt
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Toga alt saman
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(eingin frágreiðing tøk)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Vanligt virði: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Slag av instilling: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Klient instilling (ikki goymt í goymslufílum; ávirkar øll spøl)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Spæl instilling (goymt í goymslufílum; ávirkar einans nýggj spøl)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Goymslu instilling (goymt í goymslufílum; ávirkar einans núverðandi spæl)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Fyritøku instilling (goymt í goymslufílum; ávirkar einans nýggj spøl)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Fyritøku instilling (goymt í goymslufílum; ávirkar einans núverðandi fyritøku)
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Vís:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Avmarkar listan niðanfyr so hann einans vísur broyttar instillingar
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grund innstillingar
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Víðkaðir instillingar
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Serfrøðinga instillingar / allir instillingar
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Innstillingar við einum ørvisi virði enn ta vanliga
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Instillingar við einum ørvisi virði enn tínir 'nýtt spæl' innstillingar
 
+STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Avmarkar listan niðanfyri so hann einans vísur ávís sløg av innstillingum
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Allir innstillingar
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Klient instilling (ikki goymt í goymslufílum; ávirkar øll spøl)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spæl instilling (goymt í goymslufílum; ávirkar einans nýggj spøl)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spæl instilling (goymt í goymslufílum; ávirkar einans núverðandi spæl)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Fyritøku instilling (goymt í goymslufílum; ávirkar einans nýggj spøl)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Fyritøku stillingar (goymdir í goymslufílu; ávirkar einans núverðandi fyritøku)
 
+STR_CONFIG_SETTING_OFF                                          :Sløkt
+STR_CONFIG_SETTING_ON                                           :Tendra
+STR_CONFIG_SETTING_DISABLED                                     :Ikki sligi til
 
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Sløkt
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Egna fyritøka
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Allar fyritøkur
 
+STR_CONFIG_SETTING_NONE                                         :Eingin
+STR_CONFIG_SETTING_ORIGINAL                                     :Upprunaligir
+STR_CONFIG_SETTING_REALISTIC                                    :Verðuleikakendir
 
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vinstra
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Miðja
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Høgra
 
 
 
@@ -912,13 +1126,48 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Leitan e
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
+STR_INTRO_NEW_GAME                                              :{BLACK}Nýtt spæl
+STR_INTRO_LOAD_GAME                                             :{BLACK}Heinta spæl
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Spæl tilburð
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Spæl hæddarkort
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Tilburðs ritari
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Hópspæl
 
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spæli møguleikar
+STR_INTRO_HIGHSCORE                                             :{BLACK}Hástigs yvirlit
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Víðkaðir instillingar
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF innstillingar
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kanna online tilfar
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Spæli script innstillingar
+STR_INTRO_QUIT                                                  :{BLACK}Gevst
 
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Byrja eitt nýtt spæl. Ctrl+trýst leypur um uppseting av korti
+STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Heinta eitt goymt spæl
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Byrja eitt nýtt spæl, har tú brúkar eitt hæddarkort sum landslag
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Byrja eitt nýtt spæl, har tú brúkar ein sjálvgørdan tilburð
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Skapa ein sjálvgørdan spæli heim/tilburð
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Byrja eitt hópspæl
 
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Vel 'temperate' landslags stíl
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Vel 'sub-arctic' landslags stíl
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Vel 'sub-tropical' landslags stíl
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vel 'toyland' landslags stíl
 
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Vís spæli møguleikar
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Vís hástigs yvirlit
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Vís víðkaðar innstillingar
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Vís NewGRF innstillingar
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kanna um nýtt og betra tilfar er klárt at taka niður
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vís AI/Spæli script innstillingar
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Gevst at spælta 'OpenTTD'
 
+STR_INTRO_TRANSLATION                                           :{BLACK}Hesi umsetingini vantar {NUM} streingir{P "" s}. Vinarliga hjálp til við at gera OpenTTD betri, tekna teg sum umsetara. Sí readme.txt viðvíkjandi smálutum.
 
 # Quit window
+STR_QUIT_CAPTION                                                :{WHITE}Gevst
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Er tú vís/vísur í at tú vilt gevast at spæla OpenTTD og fara aftur til {STRING}?
+STR_QUIT_YES                                                    :{BLACK}Ja
+STR_QUIT_NO                                                     :{BLACK}Nei
 
 # Supported OSes
 STR_OSNAME_WINDOWS                                              :Windows
@@ -933,8 +1182,13 @@ STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Far frá spæli
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er tú vís/vísur í at tú vilt fara frá hesum spæli?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er tú vís/vísur í at tú vilt fara frá hesum tilburði?
 
 # Cheat window
+STR_CHEATS                                                      :{WHITE}Snýt
+STR_CHEATS_TOOLTIP                                              :{BLACK}Flugubeins kassanir vísa um tú hevur nýtt hetta snýti áður
 
 # Livery window
 
@@ -1393,7 +1647,13 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 
 # AI debug window
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Halt á fram
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Set í gongd og halt á fram við AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Sjá debug outputti fyri hetta AI
+STR_AI_GAME_SCRIPT                                              :{BLACK}Spæl script
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Kanna spæl script skránna
 
+STR_ERROR_AI_NO_AI_FOUND                                        :Einki hóskandi AI funni at heinta.{}Hetta AI er ein gina og ger einki.{}Tú kann taka niður fleiri ymisk AI gjøgnum 'Online tilfar' kervi
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eitt av scriptunum ið koyra er krasja. Vinarliga melda hetta til script rithøvundan saman við eini skermmynd av AI/spæli script debug glugganum
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/Game script debug gluggi er einans tøkur fyri servaran
 
@@ -1497,7 +1757,7 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spæl va
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kort framleiðsla steðga...{}... eingi hóskandi støð til bygdir
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... eingin bygd í hesari mannagongdini
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... eingin bygd í hesum tilburðið
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kann ikki heinta landslag frá PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fíla ikki funnin
@@ -1907,53 +2167,53 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Sparibússa
 
 ##id 0x4800
 # industry names
-STR_INDUSTRY_NAME_COAL_MINE                                     :Kola Nám
-STR_INDUSTRY_NAME_POWER_STATION                                 :Orku Støð
-STR_INDUSTRY_NAME_SAWMILL                                       :Sagverk
-STR_INDUSTRY_NAME_FOREST                                        :Skógur
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :Olju Reinsiverk
-STR_INDUSTRY_NAME_OIL_RIG                                       :Olju Boriplatformur
-STR_INDUSTRY_NAME_FACTORY                                       :Verksmiðja
-STR_INDUSTRY_NAME_PRINTING_WORKS                                :Prent Verksmiðja
-STR_INDUSTRY_NAME_STEEL_MILL                                    :Stál Verksmiðja
-STR_INDUSTRY_NAME_FARM                                          :Bóndagarður
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Kopar Málms Nám
-STR_INDUSTRY_NAME_OIL_WELLS                                     :Olju Brunnar
-STR_INDUSTRY_NAME_BANK                                          :Peningastovnur
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Mat Viðgeris Verksmiðja
-STR_INDUSTRY_NAME_PAPER_MILL                                    :Pappírs Verksmiðja
-STR_INDUSTRY_NAME_GOLD_MINE                                     :Gull Nám
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Peningastovnur
-STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Gymsteina Nám
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Jarn Málms Nám
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Frukt Viðarlund
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Gummi Viðarlund
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Vatn Veiting
-STR_INDUSTRY_NAME_WATER_TOWER                                   :Vatn Tárn
-STR_INDUSTRY_NAME_FACTORY_2                                     :Verksmiðja
-STR_INDUSTRY_NAME_FARM_2                                        :Bóndagarður
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Timbur Verksmiðja
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Kandifloss Skógur
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Góðgætis Verksmiðja
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :Battarí Garður
-STR_INDUSTRY_NAME_COLA_WELLS                                    :Kola Brunnar
-STR_INDUSTRY_NAME_TOY_SHOP                                      :Leikutoys Handil
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :Leikutoys Verksmiðja
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Plastikk Gosvatn
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Sodavatns Verksmiðja
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Sápibløru Framleiðari
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Toffee brot
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :Sukur nám
+STR_INDUSTRY_NAME_COAL_MINE                                     :{G=n}Kola Nám
+STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Orku Støð
+STR_INDUSTRY_NAME_SAWMILL                                       :{G=n}Sagverk
+STR_INDUSTRY_NAME_FOREST                                        :{G=m}Skógur
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=n}Olju Reinsiverk
+STR_INDUSTRY_NAME_OIL_RIG                                       :{G=m}Olju Boriplatformur
+STR_INDUSTRY_NAME_FACTORY                                       :{G=f}Verksmiðja
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Prent Verksmiðja
+STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}Stál Verksmiðja
+STR_INDUSTRY_NAME_FARM                                          :{G=m}Bóndagarður
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=n}Kopar Málms Nám
+STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=m}Olju Brunnar
+STR_INDUSTRY_NAME_BANK                                          :{G=m}Peningastovnur
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=f}Mat Viðgeris Verksmiðja
+STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=f}Pappírs Verksmiðja
+STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=n}Gull Nám
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=m}Peningastovnur
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=n}Gymsteina Nám
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=n}Jarn Málms Nám
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=f}Frukt Viðarlund
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Gummi Viðarlund
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=f}Vatn Veiting
+STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=n}Vatn Tárn
+STR_INDUSTRY_NAME_FACTORY_2                                     :{G=f}Verksmiðja
+STR_INDUSTRY_NAME_FARM_2                                        :{G=m}Bóndagarður
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=f}Timbur Verksmiðja
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Kandifloss Skógur
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=f}Góðgætis Verksmiðja
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=m}Battarí Garður
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=m}Kola Brunnar
+STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=m}Leikutoys Handil
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Leikutoys Verksmiðja
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=n}Plastikk Gosvatn
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=f}Sodavatns Verksmiðja
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Sápibløru Framleiðari
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=n}Toffee brot
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=n}Sukur nám
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Ikki navngivið
-STR_SV_TRAIN_NAME                                               :Tok {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Akfar {COMMA}
-STR_SV_SHIP_NAME                                                :Skip {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :Flogfar {COMMA}
+STR_SV_TRAIN_NAME                                               :{G=n}Tok {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :{G=n}Akfar {COMMA}
+STR_SV_SHIP_NAME                                                :{G=n}Skip {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :{G=n}Flogfar {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Norður
@@ -1966,23 +2226,23 @@ STR_SV_STNAME_HALT                                              :{STRING} á Hja
 STR_SV_STNAME_VALLEY                                            :{STRING} Dalur
 STR_SV_STNAME_HEIGHTS                                           :{STRING} Hæddir
 STR_SV_STNAME_WOODS                                             :{STRING} Skógir
-STR_SV_STNAME_LAKESIDE                                          :{STRING} við Áðarbakkan
-STR_SV_STNAME_EXCHANGE                                          :{STRING} Skiftistøð
-STR_SV_STNAME_AIRPORT                                           :{STRING} Floghavn
-STR_SV_STNAME_OILFIELD                                          :{STRING} Oljufelt
-STR_SV_STNAME_MINES                                             :{STRING} Nám
-STR_SV_STNAME_DOCKS                                             :{STRING} Havnalag
+STR_SV_STNAME_LAKESIDE                                          :{G=n}{STRING} við Vatni
+STR_SV_STNAME_EXCHANGE                                          :{G=f}{STRING} Skiftistøð
+STR_SV_STNAME_AIRPORT                                           :{G=f}{STRING} Floghavn
+STR_SV_STNAME_OILFIELD                                          :{G=n}{STRING} Oljufelt
+STR_SV_STNAME_MINES                                             :{G=n}{STRING} Nám
+STR_SV_STNAME_DOCKS                                             :{G=n}{STRING} Havnalag
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
-STR_SV_STNAME_ANNEXE                                            :{STRING} Farstøð
-STR_SV_STNAME_SIDINGS                                           :{STRING} Lí
-STR_SV_STNAME_BRANCH                                            :{STRING} Grein
+STR_SV_STNAME_ANNEXE                                            :{G=f}{STRING} Farstøð
+STR_SV_STNAME_SIDINGS                                           :{G=f}{STRING} Lí
+STR_SV_STNAME_BRANCH                                            :{G=f}{STRING} Grein
 STR_SV_STNAME_UPPER                                             :Ovara {STRING}
 STR_SV_STNAME_LOWER                                             :Niðara {STRING}
-STR_SV_STNAME_HELIPORT                                          :{STRING} Tyrlupallur
-STR_SV_STNAME_FOREST                                            :{STRING} Skógur
-STR_SV_STNAME_FALLBACK                                          :{STRING} Støð #{NUM}
+STR_SV_STNAME_HELIPORT                                          :{G=m}{STRING} Tyrlupallur
+STR_SV_STNAME_FOREST                                            :{G=m}{STRING} Skógur
+STR_SV_STNAME_FALLBACK                                          :{G=f}{STRING} Støð #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
