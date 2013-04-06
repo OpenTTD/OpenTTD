@@ -40,12 +40,6 @@ extern uint _codepage; // local code-page in the system @see win32_v.cpp:WM_INPU
 # define WIDE_TO_MB_BUFFER(str, buffer, buflen) (str)
 #endif
 
-/* Override SHGetFolderPath with our custom implementation */
-#if defined(SHGetFolderPath)
-#undef SHGetFolderPath
-#endif
-#define SHGetFolderPath OTTDSHGetFolderPath
-
 HRESULT OTTDSHGetFolderPath(HWND, int, HANDLE, DWORD, LPTSTR);
 
 #if defined(__MINGW32__)

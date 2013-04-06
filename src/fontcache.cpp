@@ -173,7 +173,7 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 		}
 	}
 
-	if (!SUCCEEDED(SHGetFolderPath(NULL, CSIDL_FONTS, NULL, SHGFP_TYPE_CURRENT, vbuffer))) {
+	if (!SUCCEEDED(OTTDSHGetFolderPath(NULL, CSIDL_FONTS, NULL, SHGFP_TYPE_CURRENT, vbuffer))) {
 		DEBUG(freetype, 0, "SHGetFolderPath cannot return fonts directory");
 		goto folder_error;
 	}

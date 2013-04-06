@@ -505,14 +505,14 @@ void DetermineBasePaths(const char *exe)
 	char tmp[MAX_PATH];
 	TCHAR path[MAX_PATH];
 #ifdef WITH_PERSONAL_DIR
-	SHGetFolderPath(NULL, CSIDL_PERSONAL, NULL, SHGFP_TYPE_CURRENT, path);
+	OTTDSHGetFolderPath(NULL, CSIDL_PERSONAL, NULL, SHGFP_TYPE_CURRENT, path);
 	strecpy(tmp, WIDE_TO_MB_BUFFER(path, tmp, lengthof(tmp)), lastof(tmp));
 	AppendPathSeparator(tmp, MAX_PATH);
 	ttd_strlcat(tmp, PERSONAL_DIR, MAX_PATH);
 	AppendPathSeparator(tmp, MAX_PATH);
 	_searchpaths[SP_PERSONAL_DIR] = strdup(tmp);
 
-	SHGetFolderPath(NULL, CSIDL_COMMON_DOCUMENTS, NULL, SHGFP_TYPE_CURRENT, path);
+	OTTDSHGetFolderPath(NULL, CSIDL_COMMON_DOCUMENTS, NULL, SHGFP_TYPE_CURRENT, path);
 	strecpy(tmp, WIDE_TO_MB_BUFFER(path, tmp, lengthof(tmp)), lastof(tmp));
 	AppendPathSeparator(tmp, MAX_PATH);
 	ttd_strlcat(tmp, PERSONAL_DIR, MAX_PATH);
