@@ -9118,8 +9118,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
     5 => 0
     4 => 0
   CargoRating(1) ListDump:
-    5 => 69
-    4 => 69
+    5 => -1
+    4 => -1
   DistanceManhattanToTile(30000) ListDump:
     5 => 106
     4 => 96

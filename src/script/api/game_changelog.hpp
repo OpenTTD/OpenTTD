@@ -19,6 +19,13 @@
  *
  * 1.4.0 is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li AIStation::HasRating
+ *
+ * Other changes:
+ * \li AIStation::GetRating does return -1 for cargo-station combinations that
+ *     do not have a rating yet instead of returning 69.
+ *
  * \b 1.3.0
  *
  * API additions:

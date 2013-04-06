@@ -87,11 +87,22 @@ public:
 	static int32 GetCargoWaiting(StationID station_id, CargoID cargo_id);
 
 	/**
+	 * Check whether the given cargo at the given station a rating.
+	 * @param station_id The station to get the cargo-rating state of.
+	 * @param cargo_id The cargo to get the cargo-rating state of.
+	 * @pre IsValidStation(station_id).
+	 * @pre IsValidCargo(cargo_id).
+	 * @return True if the cargo has a rating, otherwise false.
+	 */
+	static bool HasCargoRating(StationID station_id, CargoID cargo_id);
+
+	/**
 	 * See how high the rating is of a cargo on a station.
 	 * @param station_id The station to get the cargo-rating of.
 	 * @param cargo_id The cargo to get the cargo-rating of.
 	 * @pre IsValidStation(station_id).
 	 * @pre IsValidCargo(cargo_id).
+	 * @pre HasCargoRating(station_id, cargo_id).
 	 * @return The rating in percent of the cargo on the station.
 	 */
 	static int32 GetCargoRating(StationID station_id, CargoID cargo_id);
