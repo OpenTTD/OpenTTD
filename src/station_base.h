@@ -114,6 +114,15 @@ struct GoodsEntry {
 	 * @return true if vehicle tried to load.
 	 */
 	bool HasVehicleEverTriedLoading() const { return this->last_speed != 0; }
+
+	/**
+	 * Does this cargo have a rating at this station?
+	 * @return true if the cargo has a rating, i.e. pickup has been attempted.
+	 */
+	inline bool HasRating() const
+	{
+		return HasBit(this->acceptance_pickup, GES_PICKUP);
+	}
 };
 
 /** All airport-related information. Only valid if tile != INVALID_TILE. */

@@ -178,7 +178,7 @@ protected:
 				if (this->facilities & st->facilities) { // only stations with selected facilities
 					int num_waiting_cargo = 0;
 					for (CargoID j = 0; j < NUM_CARGO; j++) {
-						if (HasBit(st->goods[j].acceptance_pickup, GoodsEntry::GES_PICKUP)) {
+						if (st->goods[j].HasRating()) {
 							num_waiting_cargo++; // count number of waiting cargo
 							if (HasBit(this->cargo_filter, j)) {
 								*this->stations.Append() = st;
@@ -246,8 +246,8 @@ protected:
 
 		CargoID j;
 		FOR_EACH_SET_CARGO_ID(j, cargo_filter) {
-			if (HasBit((*a)->goods[j].acceptance_pickup, GoodsEntry::GES_PICKUP)) maxr1 = max(maxr1, (*a)->goods[j].rating);
-			if (HasBit((*b)->goods[j].acceptance_pickup, GoodsEntry::GES_PICKUP)) maxr2 = max(maxr2, (*b)->goods[j].rating);
+			if ((*a)->goods[j].HasRating()) maxr1 = max(maxr1, (*a)->goods[j].rating);
+			if ((*b)->goods[j].HasRating()) maxr2 = max(maxr2, (*b)->goods[j].rating);
 		}
 
 		return maxr1 - maxr2;
@@ -261,8 +261,8 @@ protected:
 
 		for (CargoID j = 0; j < NUM_CARGO; j++) {
 			if (!HasBit(cargo_filter, j)) continue;
-			if (HasBit((*a)->goods[j].acceptance_pickup, GoodsEntry::GES_PICKUP)) minr1 = min(minr1, (*a)->goods[j].rating);
-			if (HasBit((*b)->goods[j].acceptance_pickup, GoodsEntry::GES_PICKUP)) minr2 = min(minr2, (*b)->goods[j].rating);
+			if ((*a)->goods[j].HasRating()) minr1 = min(minr1, (*a)->goods[j].rating);
+			if ((*b)->goods[j].HasRating()) minr2 = min(minr2, (*b)->goods[j].rating);
 		}
 
 		return -(minr1 - minr2);
@@ -1081,7 +1081,7 @@ struct StationViewWindow : public Window {
 		const CargoSpec *cs;
 		FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
 			const GoodsEntry *ge = &st->goods[cs->Index()];
-			if (!HasBit(ge->acceptance_pickup, GoodsEntry::GES_PICKUP)) continue;
+			if (!ge->HasRating()) continue;
 
 			SetDParam(0, cs->name);
 			SetDParam(2, ToPercent8(ge->rating));
