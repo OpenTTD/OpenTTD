@@ -1220,7 +1220,7 @@ void PrepareUnload(Vehicle *front_v)
 				v->cargo.Stage(
 						HasBit(Station::Get(front_v->last_station_visited)->goods[v->cargo_type].acceptance_pickup, GoodsEntry::GES_ACCEPTANCE),
 						front_v->last_station_visited, front_v->current_order.GetUnloadType());
-				SetBit(v->vehicle_flags, VF_CARGO_UNLOADING);
+				if (v->cargo.UnloadCount() > 0) SetBit(v->vehicle_flags, VF_CARGO_UNLOADING);
 			}
 		}
 	}
