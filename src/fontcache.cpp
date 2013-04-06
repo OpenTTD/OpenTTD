@@ -20,9 +20,12 @@
 #include "table/control_codes.h"
 
 static const int ASCII_LETTERSTART = 32; ///< First printable ASCII letter.
+static const int MAX_FONT_SIZE     = 72; ///< Maximum font size.
 
 /** Semi-constant for the height of the different sizes of fonts. */
 int _font_height[FS_END];
+/** Default heights for the different sizes of fonts. */
+static const int _default_font_height[FS_END] = {10, 6, 18, 10};
 
 /**
  * Reset the font sizes to the defaults of the sprite based fonts.
@@ -31,11 +34,11 @@ int _font_height[FS_END];
 void ResetFontSizes(bool monospace)
 {
 	if (monospace) {
-		_font_height[FS_MONO]   = 10;
+		_font_height[FS_MONO]   = _default_font_height[FS_MONO];
 	} else {
-		_font_height[FS_SMALL]  =  6;
-		_font_height[FS_NORMAL] = 10;
-		_font_height[FS_LARGE]  = 18;
+		_font_height[FS_SMALL]  = _default_font_height[FS_SMALL];
+		_font_height[FS_NORMAL] = _default_font_height[FS_NORMAL];
+		_font_height[FS_LARGE]  = _default_font_height[FS_LARGE];
 	}
 }
 
@@ -43,6 +46,7 @@ void ResetFontSizes(bool monospace)
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include FT_GLYPH_H
+#include FT_TRUETYPE_TABLES_H
 
 #ifdef WITH_FONTCONFIG
 #include <fontconfig/fontconfig.h>
@@ -815,6 +819,19 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 
 static void SetFontGeometry(FT_Face face, FontSize size, int pixels)
 {
+	if (pixels == 0) {
+		/* Try to determine a good height based on the minimal height recommended by the font. */
+		pixels = _default_font_height[size];
+
+		TT_Header *head = (TT_Header *)FT_Get_Sfnt_Table(face, ft_sfnt_head);
+		if (head != NULL) {
+			/* Font height is minimum height plus the difference between the default
+			 * height for this font size and the small size. */
+			int diff = _default_font_height[size] - _default_font_height[FS_SMALL];
+			pixels = Clamp(min(head->Lowest_Rec_PPEM, 20) + diff, _default_font_height[size], MAX_FONT_SIZE);
+		}
+	}
+
 	FT_Error err = FT_Set_Pixel_Sizes(face, 0, pixels);
 	if (err == FT_Err_Invalid_Pixel_Size) {
 
