@@ -1365,9 +1365,9 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reproducir soni
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Noticias: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Reproducir sonido al mostrar noticias
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Final del año: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reproducir efecto de sonido al mostrar el resumen anual del rendimiento de la compañía al terminar el año
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reproducir sonido al mostrar el resumen anual del rendimiento de la compañía al terminar el año
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construcción: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reproducir un efecto de sonido al construir exitosamente o realizar otras acciones
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reproducir sonido al construir con éxito o realizar otras acciones
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Click de botones: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Pitido al pulsar botones
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Desastres/accidentes: {STRING}
@@ -1375,7 +1375,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Reproducir efec
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vehículos: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Reproducir efectos de sonido de vehículos
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiental: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reproducir efectos de sonido ambientales de terreno, industrias y pueblos
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reproducir sonidos ambientales de terreno, industrias y pueblos
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Deshabilitar construcción de infraestructuras cuando no haya vehículos apropiados disponibles: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Cuando se activa, solamente se pueden construir infraestructuras si hay vehículos disponibles para ellas, previniendo un gasto innecesario de tiempo y dinero
