@@ -300,15 +300,15 @@ STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Goym sp�
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Vís kort, eyka glugga ella lista yvir skelti
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Vís bygdar lista
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Vís stuðulsflutning
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Vís lista yvir støðir hjá felagnum
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Vís felagsins fíggjarligu støðu
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Vís felagsins støðu
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Vís lista yvir støðir hjá fyritøkuni
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Vís fíggjarligu støðuna hjá fyritøkuni
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Vís støðuna hjá fyritøkuni
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Vís grafar
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Vís fyritøku deildar yvirlit
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Fíggja bygging av nýggjum ídnaði ella vís lista yvir allan ídnað
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Vís lista yvir tok hjá felagnum. Ctrl+Klikk skiftur ímillum bólkur/akfar listan
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Vis lista yvir akfør hjá felagnum. Ctrl+Klikk skiftur ímillum bólkur/akfar listan
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Vís lista yvir skip hjá felagnum. Ctrl+Klikk skiftur ímillum bólk/akfar listan
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Vís lista yvir tok hjá fyritøkuni. Ctrl+Klikk skiftur ímillum bólkur/akfar listan
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Vis lista yvir akfør hjá fyritøkuni. Ctrl+Klikk skiftur ímillum bólkur/akfar listan
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Vís lista yvir skip hjá fyritøkuni. Ctrl+Klikk skiftur ímillum bólk/akfar listan
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Vís lista yvir flogfør hjá fyritøkuni. Ctrl+Click skiftur millum at lata upp bólka/akfars listan
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Forstørra mynduna in
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Minka vindeyga út
@@ -522,8 +522,8 @@ STR_MONTH_DEC                                                   :Desembur
 ############ range for months ends
 
 # Graph window
-STR_GRAPH_KEY_BUTTON                                            :{BLACK}Knøttur
-STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Vís knøttar til graf
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}Lykil
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Vís lykil til graf
 STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
@@ -548,7 +548,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Vís avriks metingar í smálutum
 
 # Graph key window
-STR_GRAPH_KEY_CAPTION                                           :{WHITE}Knøttur til virkis graf
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Lykil til fyritøku graf
 STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Trýst her fyri at tendra/sløkkja graf hjá fyritøku
 
 # Company league window
@@ -1042,7 +1042,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Eftirgevandi
 STR_CITY_APPROVAL_TOLERANT                                      :Tolsamir
 STR_CITY_APPROVAL_HOSTILE                                       :Fíggjindaligir
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Einki hóskandi AI til taks...{}Tú kann taka niður fleiri ymisk AI gjøgnum 'Online tilfar' kervi
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Einki hóskandi AI til taks...{}Tú kann heinta niður fleiri ymisk AI gjøgnum 'Online tilfar' kervi
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Víðkaðir instillingar
@@ -1091,24 +1091,60 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Miðja
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Høgra
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Hægst loyvda byrjunar lán: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Mest loyvda upphæddin ein fyritøka kann lána (uttan at taka virðisminkan til eftirtektar)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Rentu stigi: {STRING}
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Rentustigi á láni, stýrir eisini virðisminkan um hon er sligin til
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Rakstrar kostnaður: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Set hvussu høgur/lágur rakstrarkostnaðurin av førum og innankervi skal vera
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Byggingar fer: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Avmarka hvussu nógv AI kann byggja
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Før steðga upp: {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Vel hvussu ofta før, ið ikki hava veri til eftirlit, steðga upp
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Stuðuls faldari: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Vel hvussu nógv verður útgoldi fyri stuðlaðan flutning
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Bygnings kostnaður: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Set hvussu høgur/lágur bygnings- og keypskostnaður skal vera
 STR_CONFIG_SETTING_RECESSIONS                                   :Ringar tíðir: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Um hetta er tendra kunnu ringar tíðir koma fyri við nøkrum árs millumbili. Meðan ringar tíðir eru, er øll framleiðsla munandi lægri (fer aftur á støði ta var áðrenn tá ringu tíðinar eru av)
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Tok hava ikki loyvi at venda inni á støðum: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Um hetta er sligi til, venda tok ikki vi inni á ikki-endastøðum, sjálvt um ta er ein styttri leið til næsta stað um tey venda vi
 STR_CONFIG_SETTING_DISASTERS                                    :Ólukkir: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Tendra/sløkk ólukkur sum kunnu av og á blokera ella oyðileggja før ella innankervi
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Støðan hjá býraðnum viðvíkjandi umbygging: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vel hvussu nógv óljóð og umhvørvis skaði frá fyritøkum virkar á teirra meting í bygdini og hvussu tær sleppa at byggja víðari í økinum
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Loyv bygging á hellandi lendi og strondum: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Um tendra kunnu breytir og støðir byggjast har lendi hellur. Um sløkt, mugu breytir fara sama veg sum lendi hellir og støðir mugu byggjast á flatt lendi
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Loyv landslagsbroytingar undir bygningum, breytum, osv. (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Loyv landslagsbroytingar undir bygningum og breytum uttan at beina tey burtur
+STR_CONFIG_SETTING_CATCHMENT                                    :Loyv meira verðuleikakendum støddum á upplandi hjá støðum: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Ymiskar støddir á upplandi fyri ymisk sløg av støðum og floghavnum
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Loyv burtur beining av vegum, brúm og tunnlum ið bygdir eiga: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Ger tað lættari at beina burtur innankervi og bygningar hjá bygdum
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Mest loyvda longd av tokum: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Áset mest loyvdu longdina á tokum
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} punt{P 0 "" ar}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Nøgd av royki/neistum frá førum: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Áset hvussu nógvur roykur ella neistar koma úr førum
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Tok akselerasjóns modell: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Vel fysik modelli fyri tok akselerasjón. Upprunaliga modelli mótroknar brekkur líka fyri øll før. Verðuleikakenda modelli mótroknar brekkur ymiskt fyri ymisku førini, treytað av ymiskum eginleikum so sum longd og dráttarmátt
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Akfar akselerasjóns modell: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Vel fysik modelli fyri akfars akselerasjón. Upprunaliga modelli mótroknar brekkur líka fyri øll akfør. Verðuleikakenda modelli mótroknar brekkur treytað av ymiskum eginleikum hjá motorinum, til dømis 'dráttar ómak'
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Brattleiki í brekkum fyri tok: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Brattleiki av einum hellandi punti fyri eitt tok. Hægri virði gera tað meiri torført at fara niðan brekkuna
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Brattleiki í brekkum fyri akfør: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Brattleiki av einum hellandi punti fyri eitt akfar. Hægri virði gera tað meiri torført at fara niðan brekkuna
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Bannað tokum og skipum at gerða 90° sneiðingar : {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 gradirs sneiðingar eru tá ein vatnrætt breyt kemur beint aftaná eina loddrætta breyt í tí puntinum ið er næstur, ið førir við sær at toki ger eina 90 gradirs sneiðing heldur enn tær vanligu 45. Hetta ávirkar eisini snúnings radius hjá skipum
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Loyv at skoyta støðir saman ið ikki hava beinleiðis samband: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Loyvir at leggja deilir til eina støð uttan at teir beinleiðis nerta verðandi deilir. Krevst Ctrl+trýst tá tú leggur nýggju deilinar
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Brúka betraða lessingar algoritmu: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Um tendra, verða før lessaði hvørt eftir annað tá tey eru fleyri í einari støð. Lessing av næsta farinum byrjar ikki fyrr enn nóg miki av farmi er til at fylla fyrra fari
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :Lessa før so líðandi: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Lessa før so líðandi við nýtslu av serligum lessingar tíðarbilum fyri hvørt fari, í staðin fyri at lessa alt uppá ein gang uppá eina fasta tíð einans treytað av hvussu nógvur farmur skal lessast
+STR_CONFIG_SETTING_INFLATION                                    :Virðisminkan: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Gilda virðisminkan í búskapinum, har kostnaðir vaksa eitt sindur skjótari enn lønir
 
 
 
@@ -1175,7 +1211,7 @@ STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Vís sp�
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Vís hástigs yvirlit
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Vís víðkaðar innstillingar
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Vís NewGRF innstillingar
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kanna um nýtt og betra tilfar er klárt at taka niður
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kanna um nýtt og betra tilfar er klárt at heinta niður
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vís AI/Spæli script innstillingar
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Gevst at spælta 'OpenTTD'
 
@@ -1217,7 +1253,10 @@ STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Vís akf
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Vís skips lit samansetingarnar
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Vís flogfars lit samansetingarnar
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Vel aðal litin fyri valdu samansetingina. Ctrl+trýst ásetur hendan litin fyri allar samansetingar
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Vel vara litin fyri valdu samansetingina. Ctrl+trýst ásetur henda litin fyri allar samansetingar
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Vel eina lit samanseting at broyta, ella fleiri lit samansetingar við Ctrl+trýst. Trýst á kassan fyri at tendra/sløkkja nýtslu av samanseting
 
+STR_LIVERY_DEFAULT                                              :Vanligir litir
 STR_LIVERY_STEAM                                                :Guvu motor
 STR_LIVERY_DIESEL                                               :Diesel motor
 STR_LIVERY_ELECTRIC                                             :Ravmagns motor
@@ -1261,13 +1300,18 @@ STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Heinta y
 STR_FACE_LOAD_DONE                                              :{WHITE}Títt yndis andlit er heinta úr OpenTTD uppsetanar fíluni
 STR_FACE_FACECODE                                               :{BLACK}Spælara andlits nr.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Sjá og/ella áset andlits nummar hjá fyritøku leiðaranum
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Sjá og/ella áset eitt tal fyri andlit
+STR_FACE_FACECODE_SET                                           :{WHITE}Nýtt andlits tal er ásett
+STR_FACE_FACECODE_ERR                                           :{WHITE}Eydnaðist ikki at áseta andlits tal - má vera eitt tal millum 0 og 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Goym
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Goym yndis andlit
+STR_FACE_SAVE_DONE                                              :{WHITE}Hetta andliti verur goymt sum títt yndis andlit í OpenTTD uppsetanar fíluni
 STR_FACE_EUROPEAN                                               :{BLACK}Evropeiskt
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Vel Evropeisk andlit
 STR_FACE_AFRICAN                                                :{BLACK}Afrikansk
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Vel Afrikonsk andlit
 STR_FACE_YES                                                    :Já
+STR_FACE_NO                                                     :Nei
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Tendra yvirskegg ella oyraring
 STR_FACE_HAIR                                                   :Hár:
 STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Broyt hár
@@ -1296,6 +1340,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Broyt sl
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hópspæl
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Samband:
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Vel millum eitt alnóts spæl ella eitt Local Area Network (LAN) spæl
 STR_NETWORK_SERVER_LIST_LAN                                     :LAN
 STR_NETWORK_SERVER_LIST_INTERNET                                :Alnót
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spælara navn:
@@ -1444,7 +1489,7 @@ STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Fær sam
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Fær samband...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Heimildar...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Bíðar...
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Tekur niður kort...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Heintar niður kort...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Viðgerð dáta...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Skrásetur...
 
@@ -1452,8 +1497,8 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Fær kun
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Fær kunning um fyritøku til vega...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P ur ar} in front of you
-STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} tikið niður sum nú er
-STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} tikið niður sum nú er
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} heinta niður sum nú er
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} heinta niður sum nú er
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Slít samband
 
@@ -1507,6 +1552,7 @@ STR_NETWORK_CHAT_ALL                                            :[Øll] {STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Skriva tekst til netverks chat
 
 # Network messages
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Eingi netverks tól funnin ella kompileraði uttan ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Eydnaðist ikki at finna nøkur netverks spøl
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Servarin svaraði ikki fyrispurningi
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Eydnaðist ikki at fáa samband orsakað av at NewGRF samsvaraði ikki
@@ -1517,13 +1563,16 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Eydnaði
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Eydnaðist ikki at fáa samband
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Samband #{NUM} rann út
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Ein protokol feilur var funnin og sambandi bleiv lukka
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Útgávan hjá klientinum samsvarar ikki við útgávuna hjá servaranum
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Skeivt loyniorð
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Servarin er fullur
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Tú er bannaður á hesum servaranum
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Tú varð sparkaður út úr spælinum
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Ikki loyvt at snýta á hesum servaranum
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Tú sendi ov nógv boð til servarin
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Tú tók ov langa tíð at skriva loyniorðið
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Tín telda er ov sein at fylgja við servaranum
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Tín telda tók ov langa tíð at taka niður korti
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Tín telda tók ov langa tíð at heinta niður korti
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Tín telda tók ov leinga at fáa samband við servaran
 
 ############ Leave those lines in this order!!
@@ -1535,15 +1584,17 @@ STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokol villa
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF samsvarar ikki
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :ikki heimilda
 STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :tók ímóti óviðkomandi ella óvæntaðum pakka
+STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :skeiv útgáva
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :navn er longu í nýstlu
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :skeivt loyniorð
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :skeiv fyritøka í DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :sparkaður av servara
+STR_NETWORK_ERROR_CLIENT_CHEATER                                :royndi at snýta
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servari fullur
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sendi ov nógv boð
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :fekk ikki loyniorð til tíðina
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :tíðin rann alment út
-STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :tók ov langa tíð at taka niður kort
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :tók ov langa tíð at heinta niður kort
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :viðgerð av kort tók ov langa tíð
 ############ End of leave-in-this-order
 
@@ -1578,17 +1629,21 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Servarin
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Servarin endurstartar...{}Vinarliga bíða...
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Tilfar verur tiki niður
+STR_CONTENT_TITLE                                               :{WHITE}Tilfar verur heinta niður
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Slag
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Slag av tilfari
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Navn
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Navni á tilfarinum
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Trýst á eina reglu fyri at síggja smálutirnar{}Trýst á flugubeinskassan fyri at marka ta til niðurtøku
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Trýst á eina reglu fyri at síggja smálutirnar{}Trýst á flugubeinskassan fyri at marka ta til niðurheintan
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Vel alt
-STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Marka alt tilfar til niðurtøku
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Marka alt tilfar til niðurheintan
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Vel betringar
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marka alt tilfar, ið er ein betring av verðandi tilfari til niðurheintan
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Vel einki
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marka alt tilfar til ikki at vera heinta niður
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Leita á útihýsis heimasíðum
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Tygum fara nú frá OpenTTD!
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Treytir og umstøður fyri niðurtøku av tilfari frá útihýsis heimasíðum eru ymiskar.{}Kunning um hvussu tygum installera hetta tilfari inn í OpenTTD mugu tygum finna á hesum útihýsis heimasíðunum.{}Vilja tygum halda á fram?
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Treytir og umstøður fyri niðurheintan av tilfari frá útihýsis heimasíðum eru ymiskar.{}Kunning um hvussu tygum installera hetta tilfari inn í OpenTTD mugu tygum finna á hesum útihýsis heimasíðunum.{}Vilja tygum halda á fram?
 STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
 
 # Order of these is important!
@@ -1807,46 +1862,207 @@ STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Veg eiga
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Sporvogns eigari: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Jarnbreyta eigari: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Mynduleikar á staðnum: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Eingin
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinatar: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Bygt: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Støð klassi: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Støð slag: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Floghavna klassi: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Navn á floghavn: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Navn á floghavna punti: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Farmur móttikin: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Jarnbreyta hámarksfer: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
+STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Grót
+STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Harrent lendi
+STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Bert lendi
+STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gras
+STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Markir
+STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Kava-klætt lendi
+STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Oyðimørk
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} breyt
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} breyt við blokk teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} breyt við for teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} breyt við útvegs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} breyt við blandings teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} breyt við leið teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} breyt við einvegis leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} breyt við blokk og for teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} breyt við blokk og útvegs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} breyt við block og blandings teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} breyt við blokk og leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} breyt við blokk og einvegis leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} breyt við for og útvegis teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} breyt við for og blandings teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} breyt við for og leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} breyt við for og einvegis leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} breyt við útvegs og blandings teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} breyt við útvegs og leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} breyt við útvegs og einvegis leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} breyt við blandings og leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} breyt við blandings og einvegis leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} breyt við leiðs og einvegis leiðs teknum
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} Tok goymsla
 
+STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Vegur
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Vegur við lyktapelum
+STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Vegur við trøum
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Akfars goymsla
+STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Veg/jarnbreyt krossur
+STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Sporvogna breyt
 
 # Houses come directly from their building names
+STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (stendur í gerð)
 
+STR_LAI_TREE_NAME_TREES                                         :Trø
+STR_LAI_TREE_NAME_RAINFOREST                                    :Frumskógur
+STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Kaktus plantir
 
+STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Tok støð
+STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Flogfars hangarur
+STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Floghavn
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Lastbila lessi øki
+STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Buss støð
+STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Skips havn
+STR_LAI_STATION_DESCRIPTION_BUOY                                :Boyja
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Waypoint
 
+STR_LAI_WATER_DESCRIPTION_WATER                                 :Vatn
+STR_LAI_WATER_DESCRIPTION_CANAL                                 :Siglingarrenna
+STR_LAI_WATER_DESCRIPTION_LOCK                                  :Slúsa
+STR_LAI_WATER_DESCRIPTION_RIVER                                 :Løkur
+STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Strond ella áarbakki
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Skips goymsla
 
 # Industries come directly from their industry names
 
+STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Jarnbreyta tunnil
+STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Veg tunnil
 
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Stál heingibrúgv
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Stál bjálkabrúgv
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Stál cantilever jarnbreyta brúgv
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Jarnbreyta heingibrúgv av styrktum betongi
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Jarnbreyta brúgv av træ
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Jarnbreyta brúgv av betong
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Jarnbreyta rør brúgv
 
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Veg heingibrúgv av stáli
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Veg bjálkabrúgv av stáli
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Veg cantilever brúgv av stáli
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Veg heingibrúgv av styrktum betongi
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Veg brúgv av træ
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Veg brúgv av betongi
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Veg rør brúgv
 
+STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akvedukt
 
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Sendari
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Viti
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Fyritøku høvuðsborg
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Ogn hjá fyritøku
 
 # About OpenTTD window
+STR_ABOUT_OPENTTD                                               :{WHITE}Um OpenTTD
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Upprunalig upphavsrættindi {COPYRIGHT} 1995 Chris Sawyer, Øll rættindi umbiðin
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD útgáva {REV}
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2013 OpenTTD toymi
 
 # Save/load game/scenario
+STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Goym spæl
+STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Heinta spæl
+STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Goym tilburð
+STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Heinta tilburð
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Heinta hæddarkort
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Goym hæddarkort
+STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} frí
+STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Strika
+STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Goym
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Heinta
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spæli smálutir
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Eingin kunning tøk
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 
 # World generation
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Heims framleiðsla
+STR_MAPGEN_MAPSIZE                                              :{BLACK}Stødd á korti:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Vel stødd av korti í puntum. Talið av tøkum puntum verur eitt sindur minni
 STR_MAPGEN_BY                                                   :{BLACK}*
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nr. av bygdum:
+STR_MAPGEN_DATE                                                 :{BLACK}Dato:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nr. av ídnaðum:
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hædd á kava linju:
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Tilvildarligt sáð:
+STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Trýst fyri at skriva tilvildarligt sáð
+STR_MAPGEN_RANDOM                                               :{BLACK}Blanda
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Broyt tilvildarliga sáði ið verur nýtt til landslags framleiðslu
+STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Lendis framleiðari:
+STR_MAPGEN_TREE_PLACER                                          :{BLACK}Træ algoritma:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Slag av lendi:
+STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Sjóvarmáli:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Løkar:
+STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Mjúkleiki:
+STR_MAPGEN_GENERATE                                             :{WHITE}Framleið
 
 # Strings for map borders at game generation
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Kort eggir:
+STR_MAPGEN_NORTHWEST                                            :{BLACK}Útnyrðingur
+STR_MAPGEN_NORTHEAST                                            :{BLACK}Landnyrðingur
+STR_MAPGEN_SOUTHEAST                                            :{BLACK}Landsynningur
+STR_MAPGEN_SOUTHWEST                                            :{BLACK}Útsynningur
+STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vatn
+STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Tilvildarligt
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Tilvildarligt
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuelt
 
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Snarðing av hæddarkorti:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Navn á hæddarkorti:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Stødd:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
+STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Skriva eitt tilvildarligt sáð
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Broyt hædd á kava linju
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Broyt byrjunar ár
 
 # SE Map generation
+STR_SE_MAPGEN_CAPTION                                           :{WHITE}Slag av tilburði
+STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Flatt lendi
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Framleið eitt flatt lendi
+STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Tilvildarligt lendi
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Hædd á flatt lendi:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Flyt hæddina á flatt lendi eitt niður
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Flyt hæddina á flatt lendi eitt upp
 
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Broyt hæddina á flatt lendi
 
 # Map generation progress
+STR_GENERATION_WORLD                                            :{WHITE}Framleiðir heim...
+STR_GENERATION_ABORT                                            :{BLACK}Avbrót
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Avbrót framleiðslu av heimi
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vil tú verðuliga avbróta framleiðsluna?
+STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% liðugt
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Heims framleiðsla
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Løks framleiðsla
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Træ framleiðsla
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Luta framleiðsla
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}Framleiðsa av harrendum og grýtutum øki
+STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ger spæli klárt
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Koyrir punta sloyfu
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Koyrir skript
+STR_GENERATION_PREPARING_GAME                                   :{BLACK}Fyrireikar spæl
 
 # NewGRF settings
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF Innstillingar
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Víðka NewGRF kunning
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Virknir NewGRF fílar
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Ikki virknir NewGRF fílar
 
 
 
@@ -1881,21 +2097,58 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 # NewGRF scanning window
 
 # Sign list window
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Skelta yvirlit - {COMMA} Skelt{P i ir}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Samsvara stødd á bókstavum
 
 # Sign window
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Broy skelta tekst
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Far til næsta skelti
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Far til fyrra skelti
 
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Skriva eitt navn fyri skelti
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Bygdir
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ongar -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_POPULATION                                             :{BLACK}Heims fólkatal: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
+STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Býur)
+STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Fólkatal: {ORANGE}{COMMA}{BLACK}  Hús: {ORANGE}{COMMA}
+STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Ferðafólk síðsta mánað: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
+STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Postur síðsta mánað: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Farmur ið tørvast fyri bygda menning:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} krevst
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} krevst um veturin
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} útflýggja
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (krevst enn)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (útflýggja)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Bygdin vaksur hvønn {ORANGE}{COMMA}{BLACK} dag
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Bygdin vaksur hvønn {ORANGE}{COMMA}{BLACK} dag (fíggja)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Bygdin {BLACK}vaksur {RED}ikki
+STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Mynduleiki á staðnum
 
+STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Strika
 
+STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Navngev bygd
 
 # Town local authority window
+STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} Mynduleiki á staðnum
+STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Metingar av flutnings fyritøku:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Gerðir tøkar:
+STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Ger ta
 
+STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Lítl lýsinga herferð
+STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Miðal lýsinga herferð
+STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Stór lýsinga herferð
+STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Fíggja vega endurbygging á staðnum
+STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Reis eina standmynd av fyritøku eigaranum
+STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Fíggja nýggjar bygningar
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Keyp einarættindi til flutning
+STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Mutra mynduleikarnar á staðnum
 
 
 # Goal window
@@ -2128,7 +2381,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Sjá deb
 STR_AI_GAME_SCRIPT                                              :{BLACK}Spæl script
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Kanna spæl script skránna
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Einki hóskandi AI funni at heinta.{}Hetta AI er ein gina og ger einki.{}Tú kann taka niður fleiri ymisk AI gjøgnum 'Online tilfar' kervi
+STR_ERROR_AI_NO_AI_FOUND                                        :Einki hóskandi AI funni at heinta.{}Hetta AI er ein gina og ger einki.{}Tú kann heinta niður fleiri ymisk AI gjøgnum 'Online tilfar' kervi
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eitt av scriptunum ið koyra er krasja. Vinarliga melda hetta til script rithøvundan saman við eini skermmynd av AI/spæli script debug glugganum
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/Game script debug gluggi er einans tøkur fyri servaran
 
@@ -2248,7 +2501,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Støddar
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Tað er ikki viðmælt at broyta støddina á keldu kortinum ov nógv. Halda á fram við framleiðsluni?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Einans eitt fyribils ljóð sett var funni. Um tú vil hava ljóð, installera eitt ljóð sett gjøgnum tilfarðs niðurtøku kervi
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Einans eitt fyribils ljóð sett var funni. Um tú vil hava ljóð, installera eitt ljóð sett gjøgnum tilfarðs niðurheintanar kervi
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Risa skermmynd
@@ -2292,7 +2545,7 @@ STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kann ikk
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Kann ikki lækka lendi her...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kann ikki javna lendi her...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Útgrevstur hevði gjørt skaða á tunnil
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... longu við sjóðamálan
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... longu við sjóvarmálan
 STR_ERROR_TOO_HIGH                                              :{WHITE}... ov høgt
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... longu flatt
 

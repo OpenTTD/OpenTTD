@@ -1515,24 +1515,43 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Reprodukuj zvu�
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vozila: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Reprodukuj zvučne efekte vozila
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Okruženje: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reprodukuj ambijentalne zvučne efekte za teren, industriju i gradove
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reprodukuj ambijentalne zvučne efekte za teren, industrije i gradove
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Onemogućena izgradnja infrastrukture kada nema odgovarajućih vozila: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Najviše vozova po preduzeću: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Najveći broj vozova koje preduzeće može da ima
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Najviše drumskih vozila po preduzeću: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Najveći broj drumskih vozila koje preduzeće može da ima
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Najviše letilica po preduzeću: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Najveći broj letilica koje preduzeće može da ima
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Najviše brodova po preduzeću: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Najveći broj brodova koje preduzeće može da ima
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Računar ne može da koristi železnički prevoz: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Omogućavanje ovog podešavanja znači da računar ne može da stvara vozove
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Računar ne može da koristi drumski prevoz: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Omogućavanje ovog podešavanja znači da računar ne može da stvara drumska vozila
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Računar ne može da koristi vazdušni prevoz: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Omogućavanje ovog podešavanja znači da računar ne može da stvara letilice
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Računar ne može da koristi vodni prevoz: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Omogućavanje ovog podešavanja znači da računar ne može da stvara brodove
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Podrazumevani profil podešavanja: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lak
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Srednji
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Težak
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Dozvoljena VI u mrežnoj partiji: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Dozvoljava računarskoj VI da učestvuje u mrežnoj partiji
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Suspendovanje #opkodova pre skripti: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Najveći broj koraka računanja koje skript može da izvede u jednom krugu
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervali servisiranja u procentima: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Da li se intervali servisiranja vozila okidaju vremenom proteklim od prošlog servisiranja ili padom pouzdanosti za određeni procenat u odnosu na najveću pouzdanost
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Podrazumevani servisni interval za vozove: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Podrazumevani servisni interval za drumska vozila: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Podrazumevani servisni interval za letilice: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Podrazumevani servisni interval za brodove: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Isključeno servisiranje kada ne postoje kvarovi: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Uključeno ograničenje brzine kod vagona: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Ne postoji posebna električna pruga: {STRING}
@@ -1542,7 +1561,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Prikazuje novin
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Dolazak prvog vozila na suparničku stanicu: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Prikazuje novinske naslove kada prvo vozilo pristigne u konkurentsku novu stanicu
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Udesi/nepogode: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Prikazuje novinske naslove kada se desi nezgoda ili katastrofa
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Prikazuje novinske naslove kada se dese nezgode ili katastrofe
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Podaci o preduzeću: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Prikazuje novinske naslove kada se otvori nova kompanija, ili kada postojeća rizikuje bankrot
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Otvaranje nove fabrike: {STRING}
@@ -1575,10 +1594,14 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Potpuno
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Vesti u boji se objavljuju od: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Početna godina: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Uključena glatka ekonomija (više, manjih promena): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Ako je omogućeno, industrijska proizvodnja se češće menja u manjim koracima. Ako se vrste industrija učitavaju preko NewGRF dodataka ovo podešavanje uglavnom nema efekta
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Dozvoljena kupovina deonica drugih preduzeća: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ako je omogućeno, dozvoljava kupovinu i prodaju deonica preduzeća. Deonice su dostupne tek kad preduzeće dostigne određenu starost
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Prilikom prevlačenja, postavi signale na svakih: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} pločic{P 0 u e e}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatsko postavljanje semafora do: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Omogućena traka za signalizaciju:{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Uobičajna vrsta signalizacije za izgradnju: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Uobičajena vrsta signalizacije za izgradnju: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blok signalizacija
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Putna signalizacija
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Jednosmerna putna signalizacija
@@ -1613,11 +1636,12 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :Najbliži nivo:
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Najudaljeniji nivo: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
-STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Uobičajan
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Uobičajen
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Brzina razvoja naselja: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Brzina kojom se naselje razvija
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nimalo
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Sporo
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normalno
