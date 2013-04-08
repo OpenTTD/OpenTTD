@@ -70,6 +70,7 @@ public:
 	 * @param unused_param This parameter is not used, but is needed to work with lists.
 	 * @param out How many times it should return true.
 	 * @param max Out of this many times.
+	 * @pre \a out is at most equal to \a max.
 	 * @return True if the chance worked out.
 	 */
 	static bool ChanceItem(int unused_param, uint out, uint max);

@@ -371,10 +371,11 @@ int Train::GetCurveSpeedLimit() const
  */
 int Train::GetCurrentMaxSpeed() const
 {
-	if (_settings_game.vehicle.train_acceleration_model == AM_ORIGINAL) return min(this->gcache.cached_max_track_speed, this->current_order.max_speed);
+	int max_speed = _settings_game.vehicle.train_acceleration_model == AM_ORIGINAL ?
+			this->gcache.cached_max_track_speed :
+			this->tcache.cached_max_curve_speed;
 
-	int max_speed = this->tcache.cached_max_curve_speed;
-	if (IsRailStationTile(this->tile)) {
+	if (_settings_game.vehicle.train_acceleration_model == AM_REALISTIC && IsRailStationTile(this->tile)) {
 		StationID sid = GetStationIndex(this->tile);
 		if (this->current_order.ShouldStopAtStation(this, sid)) {
 			int station_ahead;
@@ -400,7 +401,7 @@ int Train::GetCurrentMaxSpeed() const
 	}
 
 	for (const Train *u = this; u != NULL; u = u->Next()) {
-		if (u->track == TRACK_BIT_DEPOT) {
+		if (_settings_game.vehicle.train_acceleration_model == AM_REALISTIC && u->track == TRACK_BIT_DEPOT) {
 			max_speed = min(max_speed, 61);
 			break;
 		}
@@ -2775,7 +2776,7 @@ int Train::UpdateSpeed()
 	switch (_settings_game.vehicle.train_acceleration_model) {
 		default: NOT_REACHED();
 		case AM_ORIGINAL:
-			return this->DoUpdateSpeed(this->acceleration * (this->GetAccelerationStatus() == AS_BRAKE ? -4 : 2), 0, min(this->gcache.cached_max_track_speed, this->current_order.max_speed));
+			return this->DoUpdateSpeed(this->acceleration * (this->GetAccelerationStatus() == AS_BRAKE ? -4 : 2), 0, this->GetCurrentMaxSpeed());
 
 		case AM_REALISTIC:
 			return this->DoUpdateSpeed(this->GetAcceleration(), this->GetAccelerationStatus() == AS_BRAKE ? 0 : 2, this->GetCurrentMaxSpeed());

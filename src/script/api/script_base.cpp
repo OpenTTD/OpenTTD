@@ -44,7 +44,7 @@
 /* static */ bool ScriptBase::Chance(uint out, uint max)
 {
 	EnforcePrecondition(false, out <= max);
-	return (uint16)Rand() <= (uint16)((65535 * out) / max);
+	return ScriptBase::RandRange(max) < out;
 }
 
 /* static */ bool ScriptBase::ChanceItem(int unused_param, uint out, uint max)

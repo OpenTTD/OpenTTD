@@ -17,6 +17,7 @@
 #include "../../fios.h"
 #include <windows.h>
 #include <fcntl.h>
+#include <regstr.h>
 #include <shlobj.h> /* SHGetFolderPath */
 #include <Shellapi.h>
 #include "win32.h"
@@ -505,19 +506,25 @@ void DetermineBasePaths(const char *exe)
 	char tmp[MAX_PATH];
 	TCHAR path[MAX_PATH];
 #ifdef WITH_PERSONAL_DIR
-	SHGetFolderPath(NULL, CSIDL_PERSONAL, NULL, SHGFP_TYPE_CURRENT, path);
-	strecpy(tmp, WIDE_TO_MB_BUFFER(path, tmp, lengthof(tmp)), lastof(tmp));
-	AppendPathSeparator(tmp, MAX_PATH);
-	ttd_strlcat(tmp, PERSONAL_DIR, MAX_PATH);
-	AppendPathSeparator(tmp, MAX_PATH);
-	_searchpaths[SP_PERSONAL_DIR] = strdup(tmp);
+	if (SUCCEEDED(OTTDSHGetFolderPath(NULL, CSIDL_PERSONAL, NULL, SHGFP_TYPE_CURRENT, path))) {
+		strecpy(tmp, WIDE_TO_MB_BUFFER(path, tmp, lengthof(tmp)), lastof(tmp));
+		AppendPathSeparator(tmp, MAX_PATH);
+		ttd_strlcat(tmp, PERSONAL_DIR, MAX_PATH);
+		AppendPathSeparator(tmp, MAX_PATH);
+		_searchpaths[SP_PERSONAL_DIR] = strdup(tmp);
+	} else {
+		_searchpaths[SP_PERSONAL_DIR] = NULL;
+	}
 
-	SHGetFolderPath(NULL, CSIDL_COMMON_DOCUMENTS, NULL, SHGFP_TYPE_CURRENT, path);
-	strecpy(tmp, WIDE_TO_MB_BUFFER(path, tmp, lengthof(tmp)), lastof(tmp));
-	AppendPathSeparator(tmp, MAX_PATH);
-	ttd_strlcat(tmp, PERSONAL_DIR, MAX_PATH);
-	AppendPathSeparator(tmp, MAX_PATH);
-	_searchpaths[SP_SHARED_DIR] = strdup(tmp);
+	if (SUCCEEDED(OTTDSHGetFolderPath(NULL, CSIDL_COMMON_DOCUMENTS, NULL, SHGFP_TYPE_CURRENT, path))) {
+		strecpy(tmp, WIDE_TO_MB_BUFFER(path, tmp, lengthof(tmp)), lastof(tmp));
+		AppendPathSeparator(tmp, MAX_PATH);
+		ttd_strlcat(tmp, PERSONAL_DIR, MAX_PATH);
+		AppendPathSeparator(tmp, MAX_PATH);
+		_searchpaths[SP_SHARED_DIR] = strdup(tmp);
+	} else {
+		_searchpaths[SP_SHARED_DIR] = NULL;
+	}
 #else
 	_searchpaths[SP_PERSONAL_DIR] = NULL;
 	_searchpaths[SP_SHARED_DIR]   = NULL;
@@ -726,8 +733,11 @@ HRESULT OTTDSHGetFolderPath(HWND hwnd, int csidl, HANDLE hToken, DWORD dwFlags, 
 #else
 # define W(x) x "A"
 #endif
-		if (!LoadLibraryList((Function*)&SHGetFolderPath, "SHFolder.dll\0" W("SHGetFolderPath") "\0\0")) {
-			DEBUG(misc, 0, "Unable to load " W("SHGetFolderPath") "from SHFolder.dll");
+		/* The function lives in shell32.dll for all current Windows versions, but it first started to appear in SHFolder.dll. */
+		if (!LoadLibraryList((Function*)&SHGetFolderPath, "shell32.dll\0" W("SHGetFolderPath") "\0\0")) {
+			if (!LoadLibraryList((Function*)&SHGetFolderPath, "SHFolder.dll\0" W("SHGetFolderPath") "\0\0")) {
+				DEBUG(misc, 0, "Unable to load " W("SHGetFolderPath") "from either shell32.dll or SHFolder.dll");
+			}
 		}
 #undef W
 		first_time = false;
@@ -751,6 +761,17 @@ HRESULT OTTDSHGetFolderPath(HWND hwnd, int csidl, HANDLE hToken, DWORD dwFlags, 
 				_tcsncat(pszPath, _T("\\Fonts"), MAX_PATH);
 
 				return (HRESULT)0;
+
+			case CSIDL_PERSONAL:
+			case CSIDL_COMMON_DOCUMENTS: {
+				HKEY key;
+				if (RegOpenKeyEx(csidl == CSIDL_PERSONAL ? HKEY_CURRENT_USER : HKEY_LOCAL_MACHINE, REGSTR_PATH_SPECIAL_FOLDERS, 0, KEY_READ, &key) != ERROR_SUCCESS) break;
+				DWORD len = MAX_PATH;
+				ret = RegQueryValueEx(key, csidl == CSIDL_PERSONAL ? _T("Personal") : _T("Common Documents"), NULL, NULL, (LPBYTE)pszPath, &len);
+				RegCloseKey(key);
+				if (ret == ERROR_SUCCESS) return (HRESULT)0;
+				break;
+			}
 
 			/* XXX - other types to go here when needed... */
 		}

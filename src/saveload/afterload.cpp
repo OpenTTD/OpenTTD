@@ -2770,6 +2770,14 @@ bool AfterLoadGame()
 				v->acceleration = avi->acceleration;
 			}
 		}
+
+		/* Blocked tiles could be reserved due to a bug, which causes
+		 * other places to assert upon e.g. station reconstruction. */
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (HasStationTileRail(t) && IsStationTileBlocked(t)) {
+				SetRailStationReservation(t, false);
+			}
+		}
 	}
 
 	/* Road stops is 'only' updating some caches */
