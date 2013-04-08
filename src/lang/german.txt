@@ -1365,7 +1365,7 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Soundeffekte f�
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Zeitung: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Soundeffekte bei der Anzeige der Zeitung abspielen
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Jahresende: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Soundeffekte beim Jahresrückblick auf die Bilanzen der vergangenen Jahre
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Soundeffekte beim Jahresrückblick auf die Bilanzen der vergangenen Jahre abspielen
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Baumaßnahmen: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Soundeffekte bei Baumaßnahmen oder anderen Aktionen abspielen
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Klich auf Knöpfe: {STRING}
@@ -1375,7 +1375,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Soundeffekte vo
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Fahrzeuge: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Soundeffekte von Fahrzeugen abspielen
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Umgebungsgeräusche: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Soundeffekte für Landschaft, Industrien und Städte
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Soundeffekte für Landschaft, Industrien und Städte abspielen
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Bau von Infrastruktur verbieten, wenn dafür keine Fahrzeuge verfügbar sind: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Zeige Infrastruktur nur, wenn sie auch von Fahrzeugen genutzt werden kann, um Verschwendung von Zeit und Geld auf den Bau von unnützer Infrastruktur zu vermeiden

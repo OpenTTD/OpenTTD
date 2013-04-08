@@ -1475,7 +1475,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :신호기를 �
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :신호기를 드래그할 때, 다음 장애물(신호기, 분기점 등)을 만날 때까지 신호기가 설치될 간격을 설정합니다.
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA}칸 간격으로 설치
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :드래그할 때, 신호기 사이의 거리를 계속 고정: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :신호기를 Ctrl+드래그 하여 설치할 때의 행동을 선택합니다. 이 옵션을 끄면, 신호기가 없는 긴 폐색을 만들지 않기 위해 터널이나 다리 주변에 먼저 설치될 것입니다. 이 옵션을 켜면, 신호기는 평행한 선로에 정렬하기 쉽도록 매 N개의 칸마다 설치될 것입니다.
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :신호기를 Ctrl+드래그 하여 설치할 때의 행동을 선택합니다. 이 옵션을 끄면, 신호기가 없는 긴 폐색을 만들지 않기 위해 터널이나 다리 주변에 먼저 설치될 것입니다. 이 옵션을 켜면, 신호기는 평행한 선로에 정렬하기 쉽도록 매 n개의 칸마다 설치될 것입니다.
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :전자식 신호기의 사용: {STRING}년 이후에
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :전자식 신호기를 사용할 수 있는 연도를 설정합니다. 이 이전에는 구식 신호기만 사용 가능합니다. (두 신호등은 기능적으로는 동일하고 모습만 다릅니다.)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :신호기 설치시 신호기 선택 창을 띄움: {STRING}
@@ -3724,7 +3724,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}다음�
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}예정일 기준
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}예정 소요시간 기준
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}시간표 준수 기준을 도착 예정일 기준과 도착 예정 소요시간 기준 중에서 선택.
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}시간표 검사 기준을 도착 예정일과 도착 예정 시간 기준 중에서 선택합니다.
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :도착:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :출발:
