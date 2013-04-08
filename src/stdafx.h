@@ -30,7 +30,7 @@
  * We need INT64_MAX, which for most systems comes from stdint.h. However, MSVC
  * does not have stdint.h and apparently neither does MorphOS.
  * For OSX the inclusion is already done in osx_stdafx.h. */
-#if !defined(__APPLE__) && !defined(_MSC_VER) && !defined(__MORPHOS__)
+#if !defined(__APPLE__) && (!defined(_MSC_VER) || _MSC_VER >= 1600) && !defined(__MORPHOS__)
 	#if defined(SUNOS)
 		/* SunOS/Solaris does not have stdint.h, but inttypes.h defines everything
 		 * stdint.h defines and we need. */

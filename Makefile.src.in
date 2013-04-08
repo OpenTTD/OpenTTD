@@ -276,7 +276,7 @@ endian_target.h: $(ENDIAN_CHECK) $(CONFIG_CACHE_ENDIAN)
 
 $(ENDIAN_CHECK): $(SRC_DIR)/endian_check.cpp
 	$(E) '$(STAGE) Compiling and Linking $@'
-	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) $< -o $@
+	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) $(LDFLAGS_BUILD) $< -o $@
 
 # Revision files
 

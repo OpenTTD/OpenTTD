@@ -70,7 +70,7 @@ ROOT_DIR=`pwd`
 # Determine if we are using a modified version
 # Assume the dir is not modified
 MODIFIED="0"
-if [ -d "$ROOT_DIR/.svn" ]; then
+if [ -d "$ROOT_DIR/.svn" ] || [ -d "$ROOT_DIR/../.svn" ]; then
 	# We are an svn checkout
 	if [ -n "`svnversion | grep 'M'`" ]; then
 		MODIFIED="2"
