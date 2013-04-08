@@ -429,17 +429,17 @@ void RoadVehicle::UpdateDeltaXY(Direction direction)
  */
 inline int RoadVehicle::GetCurrentMaxSpeed() const
 {
-	if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) return min(this->vcache.cached_max_speed, this->current_order.max_speed * 2);
-
 	int max_speed = this->vcache.cached_max_speed;
 
 	/* Limit speed to 50% while reversing, 75% in curves. */
 	for (const RoadVehicle *u = this; u != NULL; u = u->Next()) {
-		if (this->state <= RVSB_TRACKDIR_MASK && IsReversingRoadTrackdir((Trackdir)this->state)) {
-			max_speed = this->vcache.cached_max_speed / 2;
-			break;
-		} else if ((u->direction & 1) == 0) {
-			max_speed = this->vcache.cached_max_speed * 3 / 4;
+		if (_settings_game.vehicle.roadveh_acceleration_model == AM_REALISTIC) {
+			if (this->state <= RVSB_TRACKDIR_MASK && IsReversingRoadTrackdir((Trackdir)this->state)) {
+				max_speed = this->vcache.cached_max_speed / 2;
+				break;
+			} else if ((u->direction & 1) == 0) {
+				max_speed = this->vcache.cached_max_speed * 3 / 4;
+			}
 		}
 
 		/* Vehicle is on the middle part of a bridge. */
