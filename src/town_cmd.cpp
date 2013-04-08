@@ -1847,7 +1847,10 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 		/* if the population is still 0 at the point, then the
 		 * placement is so bad it couldn't grow at all */
 		if (t->cache.population > 0) return t;
+
+		Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
 		CommandCost rc = DoCommand(t->xy, t->index, 0, DC_EXEC, CMD_DELETE_TOWN);
+		cur_company.Restore();
 		assert(rc.Succeeded());
 
 		/* We already know that we can allocate a single town when

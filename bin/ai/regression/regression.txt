@@ -5079,7 +5079,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetPlaneType():     -1
   Engine 211
     IsValidEngine():    true
-    GetName():          Yate Cargo ship
+    GetName():          Yate Cargo Ship
     GetCargoType():     5
     CanRefitCargo():    true
     GetCapacity():      160
