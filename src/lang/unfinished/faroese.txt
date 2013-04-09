@@ -100,7 +100,7 @@ STR_QUANTITY_PASSENGERS                                         :{G=n}{COMMA} fe
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} av kol
 STR_QUANTITY_MAIL                                               :{COMMA} sekk{P "" ir} av posti
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} av olju
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} lutur{P "" s} av kríatúr
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} lut{P ur ir} av kríatúr
 STR_QUANTITY_GOODS                                              :{COMMA} kassa{P "" r} av góðsi
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} av korni
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} av viði
@@ -170,7 +170,7 @@ STR_PASSENGERS                                                  :{COMMA} ferðaf
 STR_BAGS                                                        :{COMMA} sekk{P "" ir}
 STR_TONS                                                        :{COMMA} ton{P "" s}
 STR_LITERS                                                      :{COMMA} lit{P ur rar}
-STR_ITEMS                                                       :{COMMA} lutur{P "" s}
+STR_ITEMS                                                       :{COMMA} lut{P ur ir}
 STR_CRATES                                                      :{COMMA} kassa{P "" r}
 
 # Colours, do not shuffle
@@ -184,7 +184,7 @@ STR_COLOUR_GREEN                                                :Grønt
 STR_COLOUR_DARK_GREEN                                           :Myrka Grønt
 STR_COLOUR_BLUE                                                 :Blátt
 STR_COLOUR_CREAM                                                :Krem
-STR_COLOUR_MAUVE                                                :Mauve
+STR_COLOUR_MAUVE                                                :Bláreytt
 STR_COLOUR_PURPLE                                               :Lilla
 STR_COLOUR_ORANGE                                               :Appelsingult
 STR_COLOUR_BROWN                                                :Brúnt
@@ -1420,7 +1420,7 @@ STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Vís ví
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Vís NewGRF innstillingar
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kanna um nýtt og betra tilfar er klárt at heinta niður
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vís AI/Spæli script innstillingar
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Gevst at spælta 'OpenTTD'
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Gevst at spæla 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Hesi umsetingini vantar {NUM} streingir{P "" s}. Vinarliga hjálp til við at gera OpenTTD betri, tekna teg sum umsetara. Sí readme.txt viðvíkjandi smálutum.
 
@@ -2942,7 +2942,7 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Boð fr�
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vit hava júst sniðgivi eitt nýtt {STRING} - hevði tú havt áhuga í einkarrættindum at nýtt hetta flutningstóli í eitt ár, so vit kunnu síggja hvussu ta virkar áðrenn vit gera ta tøkt á marknaðinum?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :jarnbreyta lokomotiv
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :akfar
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :flogfar
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}flogfar
 STR_ENGINE_PREVIEW_SHIP                                         :skip
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :einsporað lokomotiv
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev lokomotiv
@@ -2959,7 +2959,7 @@ STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Být um 
 STR_REPLACE_VEHICLE_TRAIN                                       :Tok
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Akfar
 STR_REPLACE_VEHICLE_SHIP                                        :Skip
-STR_REPLACE_VEHICLE_AIRCRAFT                                    :Flogfar
+STR_REPLACE_VEHICLE_AIRCRAFT                                    :{G=n}Flogfar
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vel slagi av motori at býta um
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vel ta nýggja slagi av motori tú vil nýta ið staðin fyri tann tú valdi til vinstru

@@ -425,7 +425,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Briog is
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Toglaidh meud mòr/beag na h-uinneige
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bàr sgrolaidh - sgrolaich suas/sìos air an liosta
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bàr sgrolaidh - sgrolaich gu deas/gu clì air an liosta
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Leag togalaichean amsaa. air ceàrnag dhe thìr. Taghaidh Ctrl an roinn gu trastanach. Toglaidh Shift an tèid tuairmse chosgaisean/togail a shealltainn
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Leag togalaichean amsaa. air ceàrnag dhe thìr. Taghaidh Ctrl an roinn gu trastanach. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Bunaiteach
@@ -477,6 +477,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Lùth/Cosgaisea
 STR_SORT_BY_CARGO_CAPACITY                                      :Tomhas-lìonaidh carago
 STR_SORT_BY_RANGE                                               :Dlùths
 STR_SORT_BY_POPULATION                                          :Àireamh-shluaigh
+STR_SORT_BY_RATING                                              :Rangachadh
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Cuir an geama na stad
@@ -1064,6 +1065,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Liotuaine
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Choirèa a Deas (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Afraga a Deas (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Gnàthaichte...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Cairtbheileach (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iorànach (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Aonadan tomhais
@@ -1424,6 +1427,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :An t-ùine a mh
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :An t-ùine a mhaireas brath mearachd ann an uinneag dearg. Thoir an aire nach dùin cuid dhe na brathan as cudromaiche leotha fhèin is gum feum thu an toirt air falbh a làimh.
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} {P 0 diog dhiog diogan diog}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Seall gliocasan-sgrìn: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Dèan dàil mus tèid gliocasan-sgrìn a shealltainn nuair a chumas mi an luchag os cionn eileamaid na h-eadar-aghaidh. Mar roghainn eile, gabhaidh gliocasan-sgrìn nasgadh ri putan deas na luchaige
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Cùm an luchag os a cionn fad {COMMA} {P 0 diog dhiog diogan diog}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Briogadh deas
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Seall àireamh-shluaigh ann an leubail a' bhaile: {STRING}
@@ -1606,7 +1610,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ma tha seo air,
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Cuir crìochan luaiths nan carbadan-trèana an coma: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ma tha seo air, cleachd crìochan luaiths nan carbadan cuideachd gus an luaths as motha aig trèana a shuidheachadh
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Cuir rèilean dealanach à comas: {STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ma tha seo air, cha leig thu leas slighean dealanach a thogail gus einseanan dealanach a chleachdadh orra
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ma tha seo air, cha leig thu leas slighean dealanach a thogail gus einnseanan dealanach a chleachdadh orra
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Tha a' chiad carbad air stèisean a' chluicheadair a ruigsinn: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Seall pàipear-naidheachd nuair a bhios a' chiad carbad air stèisean ùr a' chluicheadair a ruigsinn
@@ -1650,11 +1654,13 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Cuir eaconamaid
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Ma tha seo air, atharraichidh saothrachadh nan gnìomhachasan nas trice is le ceuman nas lugha. Chan eil buaidh aig seo air seòrsaichean gnìomhachais a chaidh a sholar le NewGRF mar as trice
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ceadaich gun tèid stoca a cheannach bho chompanaidhean eile: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ma tha seo air, 's urrainn dhut stocan chompanaidhean a cheannach is a reic. Cha bhi stoca ri làimh ach aig companaidhean aig a bheil aois shònraichte
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :A' cheudad dhen prothaid a gheibh carbadan le tar-aiseag carago: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :A' cheudad dhen prothaid a gheibh carbadan airson an t-slighe a shiubhal iad nuair a nì iad tar-aiseag. Bheir seo barrachd smachd air an teachd a-steach dhut
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Le slaodadh, cuir comharra gach: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Tagh an t-astar eadar comharran a thèid a thogail air slighe is an t-ath-chnap-starra (comharra, gobhal) nuair a bhios comarran gan slaodadh
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} {P 0 leac leac leacan leac}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Le slaodadh, cùm astar co-ionnan eadar comharran: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Tagh an giùlan aig cur nan comharran nuair a thèid comharran a shlaodadh le Ctrl. Ma tha seo dheth, thèid comharran a chur gach taobh tunail no drochaide gus slighean fada gun chomharran a sheachnadh. Ma tha seo air, thèid comharran a chur gach Nmh leac, is nì seo co-thaobhadh aig comharran air slighean co-shìnte nas fhasa
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Tagh an giùlan aig cur nan comharran nuair a thèid comharran a shlaodadh le Ctrl. Ma tha seo dheth, thèid comharran a chur gach taobh tunail no drochaide gus slighean fada gun chomharran a sheachnadh. Ma tha seo air, thèid comharran a chur gach n-mh leac agus nì seo co-thaobhadh aig comharran air slighean co-shìnte nas fhasa
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Tog saimeaforean gu fèin-obrachail ro: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Tagh am bliadhna a thèid comharran dealanach a chleachdadh airson slighean. Ron bhliadhna seo, thèid comharran neo-dhealanach a chleachdadh (tha an dearbh ghiùlan aca ach coltas eadar-dhealaichte)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Cuir eadar-aghaidh nan comharran an comas: {STRING}
@@ -1682,6 +1688,9 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Ceadaich dha bh
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Ceadaich bha bhailtean staranan-rèile a thogail: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Ma tha seo air, faodaidh bailtean staranan-rèile a thogail
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Ceadaich bha bhailtean smachd a chumail air an fhuaim a dh'adhbharaicheas puirt-adhair: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Ma tha an roghainn seo à comas, faodaidh dà phort-adhair a bhith san aon bhaile. Nuair a bhios an roghainn seo air, bidh cuingeachadh air an àireamh dhe phuirt-adhair a rèir na fuaime a dh'fhulaingeas am baile na chrochas air meud an t-slughaidh is air meud is astar a' phuirt-adhair
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :A' stèidheachadh bailtean sa gheama: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Ma tha an roghainn seo air, faodaidh cluicheadairean bailtean ùra a stèidheachadh sa gheama
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Toirmisgte
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Ceadaichte
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Ceadaichte, co-dhealbhachd a' bhaile ghnàthaichte
@@ -1782,6 +1791,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... chan
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... a' leigeil seachad an seata grafaigeachd bunasach "{STRING}": cha deach a lorg
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... a' leigeil seachad an seata fuaime bunasach "{STRING}": cha deach a lorg
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... a' leigeil seachad an seata ciùil bunasach "{STRING}": cha deach a lorg
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Chan eil cuimhne gu leòr agad
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Dh'fhàillig le sònrachadh aig {BYTES} dhe thasgadan nam sprites. Chaidh tasgadan nam sprites a lùghdachadh gu {BYTES}. Le sin, bidh an dèanadas aig OpenTTD nas lugha. Gus nach bidh feum ann airson a leithid dhe chuimhne, feuch an cuir thu grafaigeachd 32bpp is/no leibheilean sùmaidh à comas
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2263,6 +2274,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Comharra
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Lorg air làraichean-lìn taobh a-muigh
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Lorg susbaint nach eil ri làimh air seirbheise susbaint OpenTTD is a bheil ri làimh air làraichean lìn nach eil ceangailte ri OpenTTD
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Tha thu a' fàgail OpenTTD!
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Criathrag taga/ainm:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Tadhail air an làrach-lìn
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Tadhail air làrach-lìn na susbainte seo
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Luchdaich a-nuas
@@ -2353,6 +2365,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Togail rathaid-
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Togail rathaid-iarainn aona-rèile
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Togail rathaid-iarainn mhagnaiteach
 
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Tog rathad-iarrainn. Toglaidh Ctrl togail/toirt air falbh airson togail rathad-iarrainn. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Tog rathad-iarrainn sa mhodh fhèin-togail. Toglaidh Ctrl togail/toirt air falbh airson togail rathad-iarrainn. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Tog trèana-lann (gus trèanaichean a cheannach no obair-càraidh a dhèanamh orra). Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Dèan puing-thurais dhe rèile. Ceanglaichidh Ctrl puingean-turais ri chèile. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Tog stèisean. Ceanglaichidh Ctrl stèiseanan ri chèile. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Tog comharran rèile. Toglaidh Ctrl eadar comharran saimeafoir/solais{}Slaod gus comharran a thogail rè slighe rèile dìrich. Togaidh Ctrl comharran gu ruige an ath ghobhail{}Toglaidh Ctrl+briogadh a bheil uinneag taghadh nan comharran fosgailte. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Tog drochaid rèile. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Tog tunail rèile. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Toglaich togail/toirt air falbh airson slighe-rèile, comharran, puingean-turais is stèiseanan. Cùm Ctrl sìos gus rèile nam puingean-turais is stèiseanan a thoirt air falbh cuideachd
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Iompaidh/Àrdaich seòrsa na rèile. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 
 STR_RAIL_NAME_RAILROAD                                          :Rathad-iarainn
 STR_RAIL_NAME_ELRAIL                                            :Rathad-iarainn dealanach
@@ -2378,15 +2400,40 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Tagh dè
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Slaod is leig às
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tog stèisean le slaodadh is leigeil às
 
+STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Tagh seòrsa stèisean gus a shealltainn
+STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Tagh seòrsa an stèisein a tha thu airson togail
 
 STR_STATION_CLASS_DFLT                                          :Stèisean bunaiteach
 STR_STATION_CLASS_WAYP                                          :Puingean-turais
 
 # Signal window
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Roghainn nan comharran
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Comharra bloca (saimeafor){}Seo an seòrsa comharra as bunasaiche is chan fhaod ach aon trèana a bhith san aon bhloca aig an aon àm
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Comharra a-steach (saimeafor){}Bidh seo uaine fhad 's a tha comharra a-mach uaine san ath roinn dhen t-slighe. Mur eil, bidh e dearg
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Comharra a-mach (saimeafor){}Tha an t-aon ghiulan aige 's a tha aig comharra bloca ach tha feum air gus an dath mar bu chòir a thoirt air comharran a-steach is ro-chomharran aonaichte
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Comharra aonaichte (saimeafor){}'S e comharra a-steach is a-mach a th' anns a' chomharra aonaichte seo aig an aon àm. Mar sin, 's urrainn dhut "craobhan" mòra dhe ro-chomharran a thogail
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Comharra slighe (saimeafor){}Leigidh comharra slighe le barrachd air aon trèana dol a-steach dhan bhloca comharra air an aon àm, mas urrainn dhan trèana slighe gu ionad stadaidh sàbhailte a ghlèidheadh. Faodar dol seachad air comharran slighe àbhaisteach on chùlaibh
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Comharra slighe aon-shligheach (saimeafor){}Leigidh comharra slighe le barrachd air aon trèana dol a-steach dhan bhloca comharra air an aon àm, mas urrainn dhan trèana slighe gu ionad stadaidh sàbhailte a ghlèidheadh. Chan fhaodar dol seachad air comharran slighe àbhaisteach on chùlaibh
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Comharra bloca (dealanach){}Seo an seòrsa comharra as bunasaiche is chan fhaod ach aon trèana a bhith san aon bhloca aig an aon àm
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Comharra a-steach (dealanach){}Bidh seo uaine fhad 's a tha comharra a-mach uaine san ath roinn dhen t-slighe. Mur eil, bidh e dearg
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Comharra a-mach (dealanach){}Tha an t-aon ghiulan aige 's a tha aig comharra bloca ach tha feum air gus an dath mar bu chòir a thoirt air comharran a-steach is ro-chomharran aonaichte
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Comharra aonaichte (dealanach){}'S e comharra a-steach is a-mach a th' anns a' chomharra aonaichte seo aig an aon àm. Mar sin, 's urrainn dhut "craobhan" mòra dhe ro-chomharran a thogail
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Comharra slighe (dealanach){}Leigidh comharra slighe le barrachd air aon trèana dol a-steach dhan bhloca comharra air an aon àm, mas urrainn dhan trèana slighe gu ionad stadaidh sàbhailte a ghlèidheadh. Faodar dol seachad air comharran slighe àbhaisteach on chùlaibh
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Comharra slighe aon-shligheach (dealanach){}Leigidh comharra slighe le barrachd air aon trèana dol a-steach dhan bhloca comharra air an aon àm, mas urrainn dhan trèana slighe gu ionad stadaidh sàbhailte a ghlèidheadh. Chan fhaodar dol seachad air comharran slighe àbhaisteach on chùlaibh
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Iompachadh chomharran{}Ma thagh thu seo 's tu a' briogadh air comarra a tha ann, iompaichidh seo an comharra dhan t-seòrsa a thagh thu. Seallaidh Shift+briogadh tuairmse air cosgaisean an iompachaidh dhut
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Dlùths nan comharran air an cruthachadh le slaodadh
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Lùghdaich dlùths nan comharran air an cruthachadh le slaodadh
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Meudaich dlùths nan comharran air an cruthachadh le slaodadh
 
 # Bridge selection window
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Tagh drochaid rèile
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Tagh drochaid rathaid
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Tagh drochaid - briog air an drochaid a thogras tu gus a togail
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Crochaidh, Stàilinn
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Teannadair, Stàilinn
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Starr-chrann, Stàillinn
 STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Crochaidh, Concraid
 STR_BRIDGE_NAME_WOODEN                                          :Fiodha
 STR_BRIDGE_NAME_CONCRETE                                        :Concraid
@@ -2395,12 +2442,45 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Pìobach, Silea
 
 
 # Road construction toolbar
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Togail rathaidean
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Togail slighe-trama
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Tog pìos dhe rathad. Toglaidh Ctrl togail/toirt air falbh airson togail rathaid. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tog pìos dhe shlighe-trama. Toglaidh Ctrl togail/toirt air falbh airson togail slighe-trama. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Tog pìos dhe rathad leis a' mhodh fèin-togail. Toglaidh Ctrl togail/toirt air falbh airson togail rathaid. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Tog pìos dhe slighe-trama sa mhodh fhèin-togail. Toglaidh Ctrl togail/toirt air falbh airson togail slighe-trama. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Tog garaids (gus carbadan a cheannach is obair-glèidhidh a dhèanamh orra). Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tog trama-lann (gus carbadan a cheannach is obair-glèidhidh a dhèanamh orra). Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Tog stèisean bus. Ceanglaichidh Ctrl stèiseanan ri chèile. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Tog stèisean trama thaistealach. Ceanglaichidh Ctrl stèiseanan ri chèile. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Tog ionad-luchdaidh nan làraidh. Ceanglaichidh Ctrl stèiseanan ri chèile. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Tog stèisean trama carago. Ceanglaichidh Ctrl stèiseanan ri chèile. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Cuir rathaidean aon-shligheach an/à comas
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Tog drochaid rathaid. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Togh drochaid trama. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Tog tunail rathaid. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Tog tunail trama. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Toglaich togail/toirt air falbh airson togail rathaidean
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Toglaich togail/tort air falbh airson slighean trama
 
 # Road depot construction window
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Comhair a' gharaid
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tagh comhair a' gharaid
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Comhair an trama-lainn
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tagh comhair an trama-lainn
 
 # Road vehicle station construction window
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Comhair an stèisein bhus
+STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Tagh comhair an stèisein bhus
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Comhair an stèisein loraidh
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Tagh comhair an stèisein loraidh
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Comhair an stèisean trama thaisgealach
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Tagh comhair an stèisein airson tramaichean thaisgealach
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Comhair an stèisein trama carago
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Tagh comhair an stèisein airson tramaichean carago
 
 # Waterways toolbar (last two for SE only)
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Togail slighe-uisge
+STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Slighean-uisge
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Cuir fleodrainn ris as urrainn dhut cleachdadh mar phuing-thurais. Toglaidh Shift tuairmse cosgaisean/togail
 
 # Ship depot construction window
@@ -2411,6 +2491,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Cala
 # Airport toolbar
 
 # Airport construction window
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Seòrsa puirt-adhair
 
 STR_AIRPORT_SMALL                                               :Beag
 STR_AIRPORT_CITY                                                :Baile
@@ -2433,7 +2514,8 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Fuaim ai
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Tagh oibseact
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Tagh oibseact airson togail. Toglaidh Shift an tèid tuairmse chosgaisean/togail a shealltainn
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Tagh oibseact airson togail. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Tagh seòrsa na h-oibseicte a tha thu airson togail
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Ro-shealladh an oibseict
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Meud: {GOLD}{NUM} x {NUM} leacan
 
@@ -2513,6 +2595,8 @@ STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Seall gn
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Ceangail ris a' mheanbh-mhapa
 
 # Land area window
+STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Seòrsa an stèisein: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Seòrsa a' phuirt-adhair: {LTBLUE}{STRING}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Creagan
@@ -2828,6 +2912,12 @@ STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Fèin-le
 # Engine preview window
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :einnsean magnaiteach
 
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cosgais: {CURRENCY_LONG} Cuideam: {WEIGHT_SHORT}{}Luaths: {VELOCITY}  Cumhachd: {POWER}{}Cosgaisean ruith: {CURRENCY_LONG}/bliadhna{}Tomhas-lìonaidh: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cosgais: {CURRENCY_LONG} Cuideam: {WEIGHT_SHORT}{}Luaths: {VELOCITY}  Cumhachd: {POWER}  Neart: {6:FORCE}{}Cosgaisen ruith: {4:CURRENCY_LONG}/bliadhna{}Tomhas-lìonaidh: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cosgais: {CURRENCY_LONG} Luaths as motha: {VELOCITY}{}Tomhas-lìonaidh: {CARGO_LONG}, {CARGO_LONG}{}Cosgaisean ruith: {CURRENCY_LONG}/bliadhna
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cosgais: {CURRENCY_LONG} Luaths as motha: {VELOCITY}{}Tomhas-lìonaidh: {CARGO_LONG}{}Cosgaisean ruith: {CURRENCY_LONG}/bliadhna
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cosgais: {CURRENCY_LONG} Luaths as motha: {VELOCITY} Astar: {COMMA} leacan{}Tomhas-lìonaidh: {CARGO_LONG}, {CARGO_LONG}{}Cosgaisean ruith: {CURRENCY_LONG}/bliadhna
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cosgais: {CURRENCY_LONG} Luaths as motha: {VELOCITY} Astar: {COMMA} leacan{}Tomhas-lìonaidh: {CARGO_LONG}{}Cosgaisean ruith: {CURRENCY_LONG}/bliadhna
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Cuir na àite {STRING} - {STRING}
@@ -2836,8 +2926,20 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Carbad-rathaid
 STR_REPLACE_VEHICLE_SHIP                                        :Long
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Carbad-adhair
 
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Tagh seòrsa an einnsein a tha thu airson cur na àite
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Tagh an seòrsa ùr dhen einnsean a bu toil leat a chleachdadh an àite an fhir a thagh thu air an taobh chlì
 
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Tòisich le cur charbadan nan àite
+STR_REPLACE_VEHICLES_NOW                                        :Cuir a h-uile carbad nan àite an-dràsta
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Na cuir ach an àite seann charbadan
+STR_REPLACE_NOT_REPLACING                                       :{BLACK}Gun chur nan àite
+STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Cha deach carbad sam bith a thaghadh
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} nuair a bhios e sean
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Sguir de chur charbadan nan àite
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Briog air ach nach tèid a chur an àite nan einnseanan dhen t-seòrsa a thagh thu air an taobh chlì
 
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}A' cur na àite: {ORANGE}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Gearr leum eadar uinneagan cur an àite nan einnseanan is nan carbadan
 
 
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Glèidhich faide aig trèana nuair a thèid fhèin-leasachadh le toirt air falbh nan carbadan (bho thoiseach an trèana a-mach) ma dh'fhasas an trèana nas fhaide le einnsean ùr
