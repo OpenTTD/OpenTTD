@@ -52,6 +52,9 @@
     <CustomBuild Include="..\src\lang\estonian.txt">
       <Filter>Translations</Filter>
     </CustomBuild>
+    <CustomBuild Include="..\src\lang\faroese.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
     <CustomBuild Include="..\src\lang\finnish.txt">
       <Filter>Translations</Filter>
     </CustomBuild>
