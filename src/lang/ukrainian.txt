@@ -381,7 +381,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площ
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :за населенням
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}за назвою
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}за датою
 # These are used in dropdowns
@@ -414,6 +413,7 @@ STR_SORT_BY_RUNNING_COST                                        :за варті
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :за потужністю/вартістю експ.
 STR_SORT_BY_CARGO_CAPACITY                                      :за місткістю
 STR_SORT_BY_RANGE                                               :за дальністю
+STR_SORT_BY_POPULATION                                          :за населенням
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауза

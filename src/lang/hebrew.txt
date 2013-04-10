@@ -270,7 +270,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}איזו
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :אכלוסיה
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}שם
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}תאריך
 # These are used in dropdowns
@@ -303,6 +302,7 @@ STR_SORT_BY_RUNNING_COST                                        :עלות הפע
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :כח/עלות הפעלה
 STR_SORT_BY_CARGO_CAPACITY                                      :קיבולת סחורה
 STR_SORT_BY_RANGE                                               :טווח
+STR_SORT_BY_POPULATION                                          :אכלוסיה
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}השהה משחק

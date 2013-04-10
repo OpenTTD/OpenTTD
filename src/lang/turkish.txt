@@ -257,7 +257,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Alan: {N
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Nüfus
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}İsim
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Tarih
 # These are used in dropdowns
@@ -290,6 +289,7 @@ STR_SORT_BY_RUNNING_COST                                        :Bakım Gideri
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Güç/Bakım Gideri
 STR_SORT_BY_CARGO_CAPACITY                                      :Kapasite
 STR_SORT_BY_RANGE                                               :Menzil
+STR_SORT_BY_POPULATION                                          :Nüfus
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Oyunu durdur

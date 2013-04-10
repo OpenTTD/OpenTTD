@@ -255,7 +255,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}المس
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :عدد السكان
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}اسم
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}تاريخ
 # These are used in dropdowns
@@ -288,6 +287,7 @@ STR_SORT_BY_RUNNING_COST                                        :تكلفة ال
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :القوة/تكلفة التشغيل
 STR_SORT_BY_CARGO_CAPACITY                                      :سعة الشحن
 STR_SORT_BY_RANGE                                               :مدى
+STR_SORT_BY_POPULATION                                          :عدد السكان
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}ايقاف اللعبة

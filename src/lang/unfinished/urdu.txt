@@ -256,7 +256,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK} پھی�
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :آبادی
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}نام
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}تاریخ
 # These are used in dropdowns
@@ -289,6 +288,7 @@ STR_SORT_BY_RUNNING_COST                                        :قیمتِ رو
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :قیمتِ رواں/ طاقت
 STR_SORT_BY_CARGO_CAPACITY                                      :سامان کی گنجایش
 STR_SORT_BY_RANGE                                               :پہنچ
+STR_SORT_BY_POPULATION                                          :آبادی
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK} کھیل میں وقفھ لیجیئے

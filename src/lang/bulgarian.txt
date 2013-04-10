@@ -258,7 +258,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площ
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Население
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Име
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Дата
 # These are used in dropdowns
@@ -291,6 +290,7 @@ STR_SORT_BY_RUNNING_COST                                        :Операти�
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Мощност/оперативни разходи
 STR_SORT_BY_CARGO_CAPACITY                                      :Товарен капацитет
 STR_SORT_BY_RANGE                                               :Обхват
+STR_SORT_BY_POPULATION                                          :Население
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауза

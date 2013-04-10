@@ -207,7 +207,6 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Tul: {NU
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Popolazzjoni
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Isem
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 # These are used in dropdowns
@@ -240,6 +239,7 @@ STR_SORT_BY_RUNNING_COST                                        :Kemm Taħli
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Saħħa/Kemm Taħli
 STR_SORT_BY_CARGO_CAPACITY                                      :Kapaċita ta' merkanzija
 STR_SORT_BY_RANGE                                               :Kemm Twassal
+STR_SORT_BY_POPULATION                                          :Popolazzjoni
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Waqfa temporanja mil-logħba

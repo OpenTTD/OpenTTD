@@ -256,7 +256,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {N
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Biztanleria
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Izena
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 # These are used in dropdowns
@@ -289,6 +288,7 @@ STR_SORT_BY_RUNNING_COST                                        :Mantenimendu ko
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potentzia/Mantenimendu kosteak
 STR_SORT_BY_CARGO_CAPACITY                                      :Zama Edukiera
 STR_SORT_BY_RANGE                                               :Irismena
+STR_SORT_BY_POPULATION                                          :Biztanleria
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Jokoa pausatu

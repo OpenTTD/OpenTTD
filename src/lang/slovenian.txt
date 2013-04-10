@@ -409,7 +409,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Površin
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Prebivalstvo
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Ime
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 # These are used in dropdowns
@@ -442,6 +441,7 @@ STR_SORT_BY_RUNNING_COST                                        :Cena delovanja
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Moč/Cena delovanja
 STR_SORT_BY_CARGO_CAPACITY                                      :Zmogljivost tovora
 STR_SORT_BY_RANGE                                               :Domet
+STR_SORT_BY_POPULATION                                          :Prebivalstvo
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Premor

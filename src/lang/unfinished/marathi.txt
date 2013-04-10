@@ -232,7 +232,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}क्�
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :लोकसंख्या
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}नाव
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}दिनांक
 # These are used in dropdowns
@@ -257,6 +256,7 @@ STR_SORT_BY_POWER                                               :ताकद
 STR_SORT_BY_RUNNING_COST                                        :चालवण्याचा खर्च
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :ताकद/चालवण्याचा खर्च
 STR_SORT_BY_CARGO_CAPACITY                                      :मालवाहन क्षमता
+STR_SORT_BY_POPULATION                                          :लोकसंख्या
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK} खेळ स्थगित करा

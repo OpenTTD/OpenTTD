@@ -255,7 +255,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}مساح
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :جمعیت
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}نام
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}تاریخ
 # These are used in dropdowns
@@ -288,6 +287,7 @@ STR_SORT_BY_RUNNING_COST                                        :هزینه کا
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :توان/هزینه کارکرد
 STR_SORT_BY_CARGO_CAPACITY                                      :ظرفیت محموله
 STR_SORT_BY_RANGE                                               :بازه
+STR_SORT_BY_POPULATION                                          :جمعیت
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}متوقف کردن بازی

@@ -257,7 +257,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {N
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Populasie
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Naam
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 # These are used in dropdowns
@@ -290,6 +289,7 @@ STR_SORT_BY_RUNNING_COST                                        :Loopkoste
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Krag/Loopkoste
 STR_SORT_BY_CARGO_CAPACITY                                      :Vrag Kapasiteit
 STR_SORT_BY_RANGE                                               :Afstand
+STR_SORT_BY_POPULATION                                          :Populasie
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pouseer spel

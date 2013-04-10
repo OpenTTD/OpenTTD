@@ -186,7 +186,6 @@ STR_MEASURE_AREA                                                :{BLACK}Лапт
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Ҫынисем
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Ячӗ
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Кун
 # These are used in dropdowns
@@ -201,6 +200,7 @@ STR_SORT_BY_VALUE                                               :Хак
 STR_SORT_BY_LENGTH                                              :Тӑршшӗ
 STR_SORT_BY_COST                                                :Хак
 STR_SORT_BY_POWER                                               :Хӑватлӑх
+STR_SORT_BY_POPULATION                                          :Ҫынисем
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Вӑййи тӑхтав

@@ -256,7 +256,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}ขน�
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :ประชากร
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}ชื่อ
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}วันที่
 # These are used in dropdowns
@@ -289,6 +288,7 @@ STR_SORT_BY_RUNNING_COST                                        :ค่าใช
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :อัตตราส่วน กำลัง/ค่าใช้จ่าย
 STR_SORT_BY_CARGO_CAPACITY                                      :ความจุการบรรทุก
 STR_SORT_BY_RANGE                                               :ช่วง
+STR_SORT_BY_POPULATION                                          :ประชากร
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}หยุดเกมชั่วคราว

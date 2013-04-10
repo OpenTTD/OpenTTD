@@ -256,7 +256,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Ukuran k
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Jumlah Penduduk
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nama
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Tarikh
 # These are used in dropdowns
@@ -289,6 +288,7 @@ STR_SORT_BY_RUNNING_COST                                        :Kos Pengendalia
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Kuasa/Kos Pengendalian
 STR_SORT_BY_CARGO_CAPACITY                                      :Muatan Kargo
 STR_SORT_BY_RANGE                                               :Jarak
+STR_SORT_BY_POPULATION                                          :Jumlah Penduduk
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Henti Sebentar Permainan

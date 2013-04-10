@@ -313,7 +313,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Pindala:
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Rahvaarv
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nimi
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Kuupäev
 # These are used in dropdowns
@@ -346,6 +345,7 @@ STR_SORT_BY_RUNNING_COST                                        :Käituskulud
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Võimsus- ja käituskulud
 STR_SORT_BY_CARGO_CAPACITY                                      :Kandevõime
 STR_SORT_BY_RANGE                                               :Vahekaugus
+STR_SORT_BY_POPULATION                                          :Rahvaarv
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Seisata mäng

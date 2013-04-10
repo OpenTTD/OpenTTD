@@ -255,7 +255,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Achar: {
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :Daonra
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Ainm
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dáta
 # These are used in dropdowns
@@ -288,6 +287,7 @@ STR_SORT_BY_RUNNING_COST                                        :Costas le Rith
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Cumhacht/Costas le Rith
 STR_SORT_BY_CARGO_CAPACITY                                      :Méid an Lastais
 STR_SORT_BY_RANGE                                               :Raon
+STR_SORT_BY_POPULATION                                          :Daonra
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Cuir an cluiche ar sos

@@ -256,7 +256,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}நீ�
 
 
 # These are used in buttons
-STR_SORT_BY_POPULATION                                          :மக்கள் தொகை
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}பெயர்
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}தேதி
 # These are used in dropdowns
@@ -289,6 +288,7 @@ STR_SORT_BY_RUNNING_COST                                        :நடத்த
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :ஆற்றல்/நடத்துதல் செலவு
 STR_SORT_BY_CARGO_CAPACITY                                      :சரக்கு கொள்ளளவு
 STR_SORT_BY_RANGE                                               :வரையறை
+STR_SORT_BY_POPULATION                                          :மக்கள் தொகை
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}இடை நிறுத்து
