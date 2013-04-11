@@ -3396,8 +3396,8 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Közúti járm�
 STR_REPLACE_VEHICLE_SHIP                                        :Hajók
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Repülőgépek
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Cserélendő mozdonytípus kiválasztása
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}A bal oldalon kiválasztott mozdonytípus helyett kívánt új mozdonytípus kiválasztása
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Cserélendő járműtípus kiválasztása
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}A bal oldalon kiválasztott járműtípus helyett kívánt új járműtípus kiválasztása
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Járműcsere elkezdése
 STR_REPLACE_VEHICLES_NOW                                        :Az összes jármű azonnali lecserélése

@@ -35,7 +35,7 @@ STR_CARGO_PLURAL_OIL                                            :{G=f}Olja
 STR_CARGO_PLURAL_LIVESTOCK                                      :Kríatúr
 STR_CARGO_PLURAL_GOODS                                          :{G=n}Góðs
 STR_CARGO_PLURAL_GRAIN                                          :{G=n}Korn
-STR_CARGO_PLURAL_WOOD                                           :{G=m}Viður
+STR_CARGO_PLURAL_WOOD                                           :{G=m}Timbur
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=m}Jarn Málmur
 STR_CARGO_PLURAL_STEEL                                          :{G=n}Stál
 STR_CARGO_PLURAL_VALUABLES                                      :{G=m}Virðislutir
@@ -69,7 +69,7 @@ STR_CARGO_SINGULAR_OIL                                          :{G=f}Olja
 STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=n}Kríatúr
 STR_CARGO_SINGULAR_GOODS                                        :{G=n}Góðs
 STR_CARGO_SINGULAR_GRAIN                                        :{G=n}Korn
-STR_CARGO_SINGULAR_WOOD                                         :{G=m}Viði
+STR_CARGO_SINGULAR_WOOD                                         :{G=m}Timbur
 STR_CARGO_SINGULAR_IRON_ORE                                     :{G=m}Jarn Málm
 STR_CARGO_SINGULAR_STEEL                                        :{G=n}Stál
 STR_CARGO_SINGULAR_VALUABLES                                    :{G=m}Viðrislutur
@@ -103,7 +103,7 @@ STR_QUANTITY_OIL                                                :{VOLUME_LONG} a
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} lut{P ur ir} av kríatúr
 STR_QUANTITY_GOODS                                              :{COMMA} kassa{P "" r} av góðsi
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} av korni
-STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} av viði
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} av timbur
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} av jarn málmi
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} av stáli
 STR_QUANTITY_VALUABLES                                          :{COMMA} sekk{P "" ir} av virðislutum
@@ -138,7 +138,7 @@ STR_ABBREV_OIL                                                  :{TINY_FONT}OL
 STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}KÚ
 STR_ABBREV_GOODS                                                :{TINY_FONT}GS
 STR_ABBREV_GRAIN                                                :{TINY_FONT}KN
-STR_ABBREV_WOOD                                                 :{TINY_FONT}VI
+STR_ABBREV_WOOD                                                 :{TINY_FONT}TM
 STR_ABBREV_IRON_ORE                                             :{TINY_FONT}ML
 STR_ABBREV_STEEL                                                :{TINY_FONT}ST
 STR_ABBREV_VALUABLES                                            :{TINY_FONT}VL
@@ -325,7 +325,7 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skift am
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Goym tilburð, heinta tilburð, far frá tilburðs ritara, gevst
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
-STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Tilburðs ritari
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Tilburðs ritil
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Flyt byrjunar dato 1 ár aftur
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Flyt byrjunar dato 1 ár fram
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Trýst her fyri at seta inn byrjunar dato
@@ -561,7 +561,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Rutu Vegleiðar
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Leiðari
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Ovasti Stjóri
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Leiðari
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :President
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Forseti
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
 
 # Performance detail window
@@ -900,10 +900,10 @@ STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Bygdar n
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Áset slag av bygdar nøvnum
 
 ############ start of townname region
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ensk (Original)
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ensk (Upprunalig)
 STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Fronsk
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Týsk
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Ensk (Additional)
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Ensk (Meiri)
 STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latin-Amerikonsk
 STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Fjákut
 STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Svensk
@@ -1045,7 +1045,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Fíggjindaligir
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Einki hóskandi AI til taks...{}Tú kann heinta niður fleiri ymisk AI gjøgnum 'Online tilfar' kervi
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Víðkaðir instillingar
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Víðkaðir innstillingar
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtur strongur:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Víðka alt
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Toga alt saman
@@ -1061,17 +1061,17 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Fyritøku insti
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Vís:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Avmarkar listan niðanfyr so hann einans vísur broyttar instillingar
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grund innstillingar
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Víðkaðir instillingar
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Serfrøðinga instillingar / allir instillingar
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Víðkaðir innstillingar
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Serfrøðinga innstillingar / allir innstillingar
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Innstillingar við einum ørvisi virði enn ta vanliga
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Instillingar við einum ørvisi virði enn tínir 'nýtt spæl' innstillingar
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Innstillingar við einum ørvisi virði enn tínir 'nýtt spæl' innstillingar
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Avmarkar listan niðanfyri so hann einans vísur ávís sløg av innstillingum
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Allir innstillingar
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Klient instilling (ikki goymt í goymslufílum; ávirkar øll spøl)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spæl instilling (goymt í goymslufílum; ávirkar einans nýggj spøl)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spæl instilling (goymt í goymslufílum; ávirkar einans núverðandi spæl)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Fyritøku instilling (goymt í goymslufílum; ávirkar einans nýggj spøl)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Klient innstilling (ikki goymt í goymslufílum; ávirkar øll spøl)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spæl innstilling (goymt í goymslufílum; ávirkar einans nýggj spøl)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spæl innstilling (goymt í goymslufílum; ávirkar einans núverðandi spæl)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Fyritøku innstilling (goymt í goymslufílum; ávirkar einans nýggj spøl)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Fyritøku stillingar (goymdir í goymslufílu; ávirkar einans núverðandi fyritøku)
 
 STR_CONFIG_SETTING_OFF                                          :Sløkt
@@ -1084,7 +1084,7 @@ STR_CONFIG_SETTING_COMPANIES_ALL                                :Allar fyritøku
 
 STR_CONFIG_SETTING_NONE                                         :Eingin
 STR_CONFIG_SETTING_ORIGINAL                                     :Upprunaligir
-STR_CONFIG_SETTING_REALISTIC                                    :Verðuleikakendir
+STR_CONFIG_SETTING_REALISTIC                                    :Verðuleikakend
 
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vinstra
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Miðja
@@ -1105,7 +1105,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Vel hvussu nóg
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Bygnings kostnaður: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Set hvussu høgur/lágur bygnings- og keypskostnaður skal vera
 STR_CONFIG_SETTING_RECESSIONS                                   :Ringar tíðir: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Um hetta er tendra kunnu ringar tíðir koma fyri við nøkrum árs millumbili. Meðan ringar tíðir eru, er øll framleiðsla munandi lægri (fer aftur á støði ta var áðrenn tá ringu tíðinar eru av)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Um hetta er tendra kunnu ringar tíðir koma fyri við nøkrum ára millumbili. Meðan ringar tíðir eru, er øll framleiðsla munandi lægri (fer aftur á støði ta var áðrenn tá ringu tíðinar eru av)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Tok hava ikki loyvi at venda inni á støðum: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Um hetta er sligi til, venda tok ikki vi inni á ikki-endastøðum, sjálvt um ta er ein styttri leið til næsta stað um tey venda vi
 STR_CONFIG_SETTING_DISASTERS                                    :Ólukkur: {STRING}
@@ -1208,8 +1208,8 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Loyv gjøgnumko
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Loyv bygging av gjøgnumkoyrings steðgum á vegum ið kappingarneytar eiga
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Loyv at byggja støðir síð um síð: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Loyv ymsum støðum at nema við hvørja aðra
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Gilda fleiri NewGRF motor settum: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Háttlíkis møguleiki fyri gomul NewGRF. Ikki ógilda hetta, utta so er at tú veist nágreiniliga hvat tú ger!
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Gilda fleiri NewGRF motor sett: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Háttlíkis møguleiki fyri gomul NewGRF. Ikki ógilda hetta, uttan so er at tú veist nágreiniliga hvat tú ger!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ikki møguligt at broyta hesa áseting tá ta eru flutningstól
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Innakervis viðlílkahald: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Um gilda, innankervi elvir til viðlíkahalds kostnað. Kostnaðurin vaksur yvir-lutfalsliga við støddina á kervinum, og ávirkar harvið størri fyritøkur meira enn smærri fyritøkur
@@ -1230,7 +1230,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Flutningstól g
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Um gilda, eru øll sløg av flutningstólum altíð tøk eftir tey eru komin í nýtslu
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Sjálvendurnýggja flutningstól tá ta gerst gamalt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Um gilda, verður eitt flutningstól tá tað nærkast endanum á sínum lívi sjálvirkandi umbýtt tá endurnýggjanar treytirnar eru nøktaðar
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Sjálvendurnýggja tá flutningstól er {STRING} av maks aldur
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Sjálvendurnýggja flutningstól {STRING} maks aldur
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Lutfalsligur aldur fyri nær eitt flutningstól átti at veri umhugsað til sjálvendurnýggjan
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mánað{P 0 "" ir} áðrenn
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mánað{P 0 "" ir} eftir
@@ -1474,9 +1474,18 @@ STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Prosentpartur a
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Tá toga verður, set tekin hvønn: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Áset fjarstøðuna millum tekin ið verða sett á breytina fram til ta næstu forðingina (teking, samanrenning), um tekin verða togaði
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} punt
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Tá toga verður, halt fasta fjarstøðu millum tekin: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Velt atburðin á tekn seting tá tú Ctrl+togar tekin. Um ógilda verða tekin sett vi berghol og brúgvar fyri at sleppa undan longum strekkjum uttan tekin. Um gilda verða tekin sett hvønn n punt fyri at gera ta lættari at fylkja tekin á javnfjarðum breytum
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Sjálvvirkandi bygging av teknmastrum áðrenn: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Áset hvat ár ravmagns tekin verða nýtt á jarnbreytum. Áðrenn hetta verða ikki-ravmagns tekin nýtt (tey virka á sama hátt, men hava ørðvísi útsjónd)
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Gilda GUI fyri tekin: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Vís eitt vindeyga har tú kann velja hvat slag av tekin tú vil byggja, ístaðin fyri einans vindyga-leyst Ctrl+trýst á tekin
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Slag av tekin at byggja vanligt: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Hvat slag av tekin er vanliga valt
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blokk tekin
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Leið tekin
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Einvegis leið tekin
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Blaða gjøgnum tekn sløg: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Blokk tekin einans
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Leið tekin einans
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Øll
@@ -1563,12 +1572,12 @@ STR_INTRO_NEW_GAME                                              :{BLACK}Nýtt sp
 STR_INTRO_LOAD_GAME                                             :{BLACK}Heinta spæl
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Spæl tilburð
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Spæl hæddarkort
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Tilburðs ritari
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Tilburðs ritil
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Hópspæl
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spæli møguleikar
 STR_INTRO_HIGHSCORE                                             :{BLACK}Hástigs yvirlit
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Víðkaðir instillingar
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Víðkaðir innstillingar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF innstillingar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kanna online tilfar
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Spæli script innstillingar
@@ -1594,7 +1603,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kanna um
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vís AI/Spæli script innstillingar
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Gevst at spæla 'OpenTTD'
 
-STR_INTRO_TRANSLATION                                           :{BLACK}Hesi umsetingini vantar {NUM} streingir{P "" s}. Vinarliga hjálp til við at gera OpenTTD betri, tekna teg sum umsetara. Sí readme.txt viðvíkjandi smálutum.
+STR_INTRO_TRANSLATION                                           :{BLACK}Hesi umseting vantar {NUM} str{P ong eingir}. Vinarliga hjálp til við at gera OpenTTD betri, tekna teg sum umsetara. Sí readme.txt viðvíkjandi smálutum.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Gevst
@@ -2419,7 +2428,7 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Veg heingibrúg
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Veg bjálkabrúgv av stáli
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Veg cantilever brúgv av stáli
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Veg heingibrúgv av styrktum betongi
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Veg brúgv av træ
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Vega brúgv av træ
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Veg brúgv av betongi
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Veg rør brúgv
 
@@ -3201,7 +3210,7 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Lessar / Avlessar
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Fer avstað
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Krasja!
-STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Steðga upp
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Maskinskaði
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Steðga
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Steðgar, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Eingin megi
@@ -3325,12 +3334,14 @@ STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lessa um tøkt
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Fult less allan farm
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Fult less onkran farm
 STR_ORDER_DROP_NO_LOADING                                       :Eingin lessing
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Broyt lessingar atburðin hjá undirstrikaða boðinum
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Avlessa alt
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Avlessa um góðtiki
 STR_ORDER_DROP_UNLOAD                                           :Avlessa alt
 STR_ORDER_DROP_TRANSFER                                         :Umskipa
 STR_ORDER_DROP_NO_UNLOADING                                     :Eingin avlessing
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Broyt avlessingar atburðin hjá undirstrikaða boðinum
 
 STR_ORDER_REFIT                                                 :{BLACK}Umbygg
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Sjálvumbygg
@@ -3364,9 +3375,13 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :er ósatt
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Skriva eitt virði at samanbera við
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Leyp um
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Leyp verðandi boð um, og byrja næsta. Ctrl+trýst leypur til ta valda boðið
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Strika
+STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Strika undirstrikaða boði
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Strika øll boð
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Steðga deiling
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Steðga við at deila boðs listan. Ctrl+trýst strikar eisini øll boðini hjá flutningstólinum
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Far til
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Far til nærmastu goymslu
@@ -3446,19 +3461,25 @@ STR_INVALID_ORDER                                               :{RED} (Ógildig
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Tíðarætlan)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Boð
+STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Skift til boðs sýni
 
 
 STR_TIMETABLE_NO_TRAVEL                                         :Ferðast ikki
+STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" ar}
 
 
 
 
 
 
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Broyt mest loyvdu ferðina á undirstrikaða boðinum
 
 
 
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Væntað
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Ætlað
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Skift ímillum væntað og ætlað
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :K:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :F:
@@ -3467,6 +3488,7 @@ STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :F:
 # Date window (for timetable)
 STR_DATE_CAPTION                                                :{WHITE}Áset dato
 STR_DATE_SET_DATE                                               :{BLACK}Áset dato
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Nýt ta valdu dagfestingina sum bryjunar dato fyri tíðarætlanina
 STR_DATE_DAY_TOOLTIP                                            :{BLACK}Vel dag
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Vel mánað
 STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Vel ár
@@ -4115,7 +4137,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Olju vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Kríatúr vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Góðs vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Korn vognur
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Træ vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Timbur vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Jarn málm vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Stál vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Skjøldraður vognur
@@ -4145,7 +4167,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Olju vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Kríatúr vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Góðs vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Korn vognur
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Træ vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Timbur vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Jarn málm vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Stál vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Skjøldraður vognur
@@ -4177,7 +4199,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Olju vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Kríatúr vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Góðs vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Korn vognur
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Træ vognur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Timbur vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Jarn málm vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Stál vognur
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Skjøldraður vognur
@@ -4225,9 +4247,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss Góðs Las
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford Korn Lastbilur
 STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas Korn Lastbilur
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss Korn Lastbilur
-STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe Træ Lastbilur
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster Træ Lastbilur
-STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland Træ Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe Timbur Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster Timbur Lastbilur
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland Timbur Lastbilur
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS Jarn Málm Lastbilur
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl Jarn Málm Lastbilur
 STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy Jarn Málm Lastbilur
