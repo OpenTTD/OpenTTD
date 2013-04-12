@@ -2481,17 +2481,30 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Tagh com
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Togail slighe-uisge
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Slighean-uisge
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Tog canalan. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Tog locan. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Tog long-lann (gus longan a cheannach is obair-caraidh a dhèanamh orra). Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Tog cala. Ceanglaichidh Ctrl stèiseanan ri chèile. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Cuir fleodrainn ris as urrainn dhut cleachdadh mar phuing-thurais. Toglaidh Shift tuairmse cosgaisean/togail
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Tog duct-uisge. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Cuir aibhnean ann
 
 # Ship depot construction window
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Comhair an long-lainn
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Tagh comhair an long-lainn
 
 # Dock construction window
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Cala
 
 # Airport toolbar
+STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Puirt-adhair
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Tog port-adhair. Ceanglaichidh Ctrl stèiseanan ri chèile. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 
 # Airport construction window
+STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Tagh port-adhair
+STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Tagh meud/seòrsa a' phuirt-adhair
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Seòrsa puirt-adhair
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Co-dhealbhachd {NUM}
 
 STR_AIRPORT_SMALL                                               :Beag
 STR_AIRPORT_CITY                                                :Baile
@@ -2511,6 +2524,7 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :Pùirt-adhair h
 STR_STATION_BUILD_NOISE                                         :{BLACK}Fuaim air adhbharachadh: {GOLD}{COMMA}
 
 # Landscaping toolbar
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Cruth-tìre
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Tagh oibseact
