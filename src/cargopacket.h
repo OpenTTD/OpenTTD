@@ -249,30 +249,12 @@ public:
 	}
 
 	/**
-	 * Checks whether this list is empty.
-	 * @return True if and only if the list is empty.
-	 */
-	inline bool Empty() const
-	{
-		return this->count == 0;
-	}
-
-	/**
-	 * Returns the number of cargo entities in this list.
-	 * @return The before mentioned number.
-	 */
-	inline uint Count() const
-	{
-		return this->count;
-	}
-
-	/**
 	 * Returns source of the first cargo packet in this list.
 	 * @return The before mentioned source.
 	 */
 	inline StationID Source() const
 	{
-		return this->Empty() ? INVALID_STATION : this->packets.front()->source;
+		return this->count == 0 ? INVALID_STATION : this->packets.front()->source;
 	}
 
 	/**
@@ -354,9 +336,27 @@ public:
 	 * reserved).
 	 * @return Cargo on board the vehicle.
 	 */
-	inline uint OnboardCount() const
+	inline uint StoredCount() const
 	{
 		return this->count - this->action_counts[MTA_LOAD];
+	}
+
+	/**
+	 * Returns sum of cargo, including reserved cargo.
+	 * @return Sum of cargo.
+	 */
+	inline uint TotalCount() const
+	{
+		return this->count;
+	}
+
+	/**
+	 * Returns sum of reserved cargo.
+	 * @return Sum of reserved cargo.
+	 */
+	inline uint ReservedCount() const
+	{
+		return this->action_counts[MTA_LOAD];
 	}
 
 	/**
@@ -446,6 +446,16 @@ public:
 	friend class CargoReturn;
 
 	/**
+	 * Returns sum of cargo still available for loading at the sation.
+	 * (i.e. not counting cargo which is already reserved for loading)
+	 * @return Cargo on board the vehicle.
+	 */
+	inline uint AvailableCount() const
+	{
+		return this->count;
+	}
+
+	/**
 	 * Returns sum of cargo reserved for loading onto vehicles.
 	 * @return Cargo reserved for loading.
 	 */
@@ -455,8 +465,8 @@ public:
 	}
 
 	/**
-	 * Returns total count of cargo, including reserved cargo that's not
-	 * actually in the list.
+	 * Returns total count of cargo at the station, including
+	 * cargo which is already reserved for loading.
 	 * @return Total cargo count.
 	 */
 	inline uint TotalCount() const

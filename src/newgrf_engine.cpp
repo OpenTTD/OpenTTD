@@ -768,8 +768,8 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 		case 0x39: return v->cargo_type;
 		case 0x3A: return v->cargo_cap;
 		case 0x3B: return GB(v->cargo_cap, 8, 8);
-		case 0x3C: return ClampToU16(v->cargo.Count());
-		case 0x3D: return GB(ClampToU16(v->cargo.Count()), 8, 8);
+		case 0x3C: return ClampToU16(v->cargo.StoredCount());
+		case 0x3D: return GB(ClampToU16(v->cargo.StoredCount()), 8, 8);
 		case 0x3E: return v->cargo.Source();
 		case 0x3F: return ClampU(v->cargo.DaysInTransit(), 0, 0xFF);
 		case 0x40: return ClampToU16(v->age);
@@ -922,7 +922,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 
 	if (totalsets == 0) return NULL;
 
-	uint set = (v->cargo.Count() * totalsets) / max((uint16)1, v->cargo_cap);
+	uint set = (v->cargo.StoredCount() * totalsets) / max((uint16)1, v->cargo_cap);
 	set = min(set, totalsets - 1);
 
 	return in_motion ? group->loaded[set] : group->loading[set];

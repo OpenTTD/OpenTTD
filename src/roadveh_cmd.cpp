@@ -133,7 +133,7 @@ SpriteID RoadVehicle::GetImage(Direction direction, EngineImageType image_type) 
 
 	sprite = direction + _roadveh_images[spritenum];
 
-	if (this->cargo.Count() >= this->cargo_cap / 2U) sprite += _roadveh_full_adder[spritenum];
+	if (this->cargo.StoredCount() >= this->cargo_cap / 2U) sprite += _roadveh_full_adder[spritenum];
 
 	return sprite;
 }

@@ -3225,7 +3225,7 @@ static void UpdateStationRating(Station *st)
 
 			bool skip = false;
 			int rating = 0;
-			uint waiting = ge->cargo.Count();
+			uint waiting = ge->cargo.TotalCount();
 
 			if (HasBit(cs->callback_mask, CBM_CARGO_STATION_RATING_CALC)) {
 				/* Perform custom station rating. If it succeeds the speed, days in transit and
@@ -3315,8 +3315,10 @@ static void UpdateStationRating(Station *st)
 					waiting_changed = true;
 				}
 
-				if (waiting_changed && waiting < ge->cargo.Count()) {
-					ge->cargo.Truncate(ge->cargo.Count() - waiting);
+				/* We can't truncate cargo that's already reserved for loading.
+				 * Thus StoredCount() here. */
+				if (waiting_changed && waiting < ge->cargo.AvailableCount()) {
+					ge->cargo.Truncate(ge->cargo.AvailableCount() - waiting);
 				}
 			}
 		}

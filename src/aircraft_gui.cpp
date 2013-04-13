@@ -50,7 +50,7 @@ void DrawAircraftDetails(const Aircraft *v, int left, int right, int y)
 		}
 
 		if (u->cargo_cap != 0) {
-			uint cargo_count = u->cargo.Count();
+			uint cargo_count = u->cargo.StoredCount();
 
 			y_offset += FONT_HEIGHT_NORMAL + 1;
 			if (cargo_count != 0) {

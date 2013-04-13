@@ -421,7 +421,7 @@ uint32 Station::GetNewGRFVariable(const ResolverObject *object, byte variable, b
 		const GoodsEntry *ge = &this->goods[c];
 
 		switch (variable) {
-			case 0x60: return min(ge->cargo.Count(), 4095);
+			case 0x60: return min(ge->cargo.TotalCount(), 4095);
 			case 0x61: return ge->HasVehicleEverTriedLoading() ? ge->time_since_pickup : 0;
 			case 0x62: return ge->HasRating() ? ge->rating : 0xFFFFFFFF;
 			case 0x63: return ge->cargo.DaysInTransit();
@@ -440,8 +440,8 @@ uint32 Station::GetNewGRFVariable(const ResolverObject *object, byte variable, b
 	if (variable >= 0x8C && variable <= 0xEC) {
 		const GoodsEntry *g = &this->goods[GB(variable - 0x8C, 3, 4)];
 		switch (GB(variable - 0x8C, 0, 3)) {
-			case 0: return g->cargo.Count();
-			case 1: return GB(min(g->cargo.Count(), 4095), 0, 4) | (GB(g->acceptance_pickup, GoodsEntry::GES_ACCEPTANCE, 1) << 7);
+			case 0: return g->cargo.TotalCount();
+			case 1: return GB(min(g->cargo.TotalCount(), 4095), 0, 4) | (GB(g->acceptance_pickup, GoodsEntry::GES_ACCEPTANCE, 1) << 7);
 			case 2: return g->time_since_pickup;
 			case 3: return g->rating;
 			case 4: return g->cargo.Source();
@@ -507,12 +507,12 @@ uint32 Waypoint::GetNewGRFVariable(const ResolverObject *object, byte variable, 
 
 		case CT_DEFAULT:
 			for (CargoID cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
-				cargo += st->goods[cargo_type].cargo.Count();
+				cargo += st->goods[cargo_type].cargo.TotalCount();
 			}
 			break;
 
 		default:
-			cargo = st->goods[this->station_scope.cargo_type].cargo.Count();
+			cargo = st->goods[this->station_scope.cargo_type].cargo.TotalCount();
 			break;
 	}
 
@@ -587,7 +587,7 @@ static const SpriteGroup *ResolveStation(StationResolverObject *object)
 		const CargoSpec *cs;
 		FOR_ALL_CARGOSPECS(cs) {
 			if (object->station_scope.statspec->grf_prop.spritegroup[cs->Index()] != NULL &&
-					!st->goods[cs->Index()].cargo.Empty()) {
+					st->goods[cs->Index()].cargo.TotalCount() > 0) {
 				ctype = cs->Index();
 				break;
 			}
@@ -998,7 +998,7 @@ void TriggerStationRandomisation(Station *st, TileIndex tile, StationRandomTrigg
 	if (trigger == SRT_CARGO_TAKEN) {
 		/* Create a bitmask of completely empty cargo types to be matched */
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			if (st->goods[i].cargo.Empty()) {
+			if (st->goods[i].cargo.TotalCount() == 0) {
 				SetBit(empty_mask, i);
 			}
 		}

@@ -189,7 +189,8 @@ uint Vehicle::Crash(bool flooded)
 	if (this->IsPrimaryVehicle()) this->vehstatus |= VS_STOPPED;
 	/* crash all wagons, and count passengers */
 	for (Vehicle *v = this; v != NULL; v = v->Next()) {
-		if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) pass += v->cargo.Count();
+		/* We do not transfer reserver cargo back, so TotalCount() instead of StoredCount() */
+		if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) pass += v->cargo.TotalCount();
 		v->vehstatus |= VS_CRASHED;
 		MarkSingleVehicleDirty(v);
 	}
@@ -1256,7 +1257,7 @@ uint8 CalcPercentVehicleFilled(const Vehicle *front, StringID *colour)
 
 	/* Count up max and used */
 	for (const Vehicle *v = front; v != NULL; v = v->Next()) {
-		count += v->cargo.OnboardCount();
+		count += v->cargo.StoredCount();
 		max += v->cargo_cap;
 		if (v->cargo_cap != 0 && colour != NULL) {
 			unloading += HasBit(v->vehicle_flags, VF_CARGO_UNLOADING) ? 1 : 0;

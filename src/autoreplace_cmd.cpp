@@ -91,27 +91,32 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 /**
  * Check the capacity of all vehicles in a chain and spread cargo if needed.
  * @param v The vehicle to check.
+ * @pre You can only do this if the consist is not loading or unloading. It
+ *      must not carry reserved cargo, nor cargo to be unloaded or transferred.
  */
 void CheckCargoCapacity(Vehicle *v)
 {
 	assert(v == NULL || v->First() == v);
 
 	for (Vehicle *src = v; src != NULL; src = src->Next()) {
+		assert(src->cargo.TotalCount() == src->cargo.ActionCount(VehicleCargoList::MTA_KEEP));
+
 		/* Do we need to more cargo away? */
-		if (src->cargo.Count() <= src->cargo_cap) continue;
+		if (src->cargo.TotalCount() <= src->cargo_cap) continue;
 
 		/* We need to move a particular amount. Try that on the other vehicles. */
-		uint to_spread = src->cargo.Count() - src->cargo_cap;
+		uint to_spread = src->cargo.TotalCount() - src->cargo_cap;
 		for (Vehicle *dest = v; dest != NULL && to_spread != 0; dest = dest->Next()) {
-			if (dest->cargo.Count() >= dest->cargo_cap || dest->cargo_type != src->cargo_type) continue;
+			assert(dest->cargo.TotalCount() == dest->cargo.ActionCount(VehicleCargoList::MTA_KEEP));
+			if (dest->cargo.TotalCount() >= dest->cargo_cap || dest->cargo_type != src->cargo_type) continue;
 
-			uint amount = min(to_spread, dest->cargo_cap - dest->cargo.Count());
+			uint amount = min(to_spread, dest->cargo_cap - dest->cargo.TotalCount());
 			src->cargo.Shift(amount, &dest->cargo);
 			to_spread -= amount;
 		}
 
 		/* Any left-overs will be thrown away, but not their feeder share. */
-		if (src->cargo_cap < src->cargo.Count()) src->cargo.Truncate(src->cargo.Count() - src->cargo_cap);
+		if (src->cargo_cap < src->cargo.TotalCount()) src->cargo.Truncate(src->cargo.TotalCount() - src->cargo_cap);
 	}
 }
 
@@ -120,21 +125,26 @@ void CheckCargoCapacity(Vehicle *v)
  * @param old_veh Old vehicle that will be sold
  * @param new_head Head of the completely constructed new vehicle chain
  * @param part_of_chain The vehicle is part of a train
+ * @pre You can only do this if both consists are not loading or unloading.
+ *      They must not carry reserved cargo, nor cargo to be unloaded or
+ *      transferred.
  */
 static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chain)
 {
 	assert(!part_of_chain || new_head->IsPrimaryVehicle());
 	/* Loop through source parts */
 	for (Vehicle *src = old_veh; src != NULL; src = src->Next()) {
+		assert(src->cargo.TotalCount() == src->cargo.ActionCount(VehicleCargoList::MTA_KEEP));
 		if (!part_of_chain && src->type == VEH_TRAIN && src != old_veh && src != Train::From(old_veh)->other_multiheaded_part && !src->IsArticulatedPart()) {
 			/* Skip vehicles, which do not belong to old_veh */
 			src = src->GetLastEnginePart();
 			continue;
 		}
-		if (src->cargo_type >= NUM_CARGO || src->cargo.Count() == 0) continue;
+		if (src->cargo_type >= NUM_CARGO || src->cargo.TotalCount() == 0) continue;
 
 		/* Find free space in the new chain */
-		for (Vehicle *dest = new_head; dest != NULL && src->cargo.Count() > 0; dest = dest->Next()) {
+		for (Vehicle *dest = new_head; dest != NULL && src->cargo.TotalCount() > 0; dest = dest->Next()) {
+			assert(dest->cargo.TotalCount() == dest->cargo.ActionCount(VehicleCargoList::MTA_KEEP));
 			if (!part_of_chain && dest->type == VEH_TRAIN && dest != new_head && dest != Train::From(new_head)->other_multiheaded_part && !dest->IsArticulatedPart()) {
 				/* Skip vehicles, which do not belong to new_head */
 				dest = dest->GetLastEnginePart();
@@ -142,7 +152,7 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chai
 			}
 			if (dest->cargo_type != src->cargo_type) continue;
 
-			uint amount = min(src->cargo.Count(), dest->cargo_cap - dest->cargo.Count());
+			uint amount = min(src->cargo.TotalCount(), dest->cargo_cap - dest->cargo.TotalCount());
 			if (amount <= 0) continue;
 
 			src->cargo.Shift(amount, &dest->cargo);

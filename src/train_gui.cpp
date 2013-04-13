@@ -276,7 +276,7 @@ static void GetCargoSummaryOfArticulatedVehicle(const Train *v, CargoSummary *su
 		}
 
 		item->capacity += v->cargo_cap;
-		item->amount += v->cargo.Count();
+		item->amount += v->cargo.StoredCount();
 		if (item->source == INVALID_STATION) item->source = v->cargo.Source();
 	} while ((v = v->Next()) != NULL && v->IsArticulatedPart());
 }
@@ -311,7 +311,7 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
 		CargoArray act_cargo;
 		CargoArray max_cargo;
 		for (const Vehicle *v = Vehicle::Get(veh_id); v != NULL; v = v->Next()) {
-			act_cargo[v->cargo_type] += v->cargo.Count();
+			act_cargo[v->cargo_type] += v->cargo.StoredCount();
 			max_cargo[v->cargo_type] += v->cargo_cap;
 		}
 
@@ -424,7 +424,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 		Money feeder_share = 0;
 
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
-			act_cargo[u->cargo_type] += u->cargo.Count();
+			act_cargo[u->cargo_type] += u->cargo.StoredCount();
 			max_cargo[u->cargo_type] += u->cargo_cap;
 			feeder_share             += u->cargo.FeederShare();
 		}

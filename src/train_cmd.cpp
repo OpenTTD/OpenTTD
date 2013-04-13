@@ -477,7 +477,7 @@ SpriteID Train::GetImage(Direction direction, EngineImageType image_type) const
 
 	sprite = GetDefaultTrainSprite(spritenum, direction);
 
-	if (this->cargo.Count() >= this->cargo_cap / 2U) sprite += _wagon_full_adder[spritenum];
+	if (this->cargo.StoredCount() >= this->cargo_cap / 2U) sprite += _wagon_full_adder[spritenum];
 
 	return sprite;
 }

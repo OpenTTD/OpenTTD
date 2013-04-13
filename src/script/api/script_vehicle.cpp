@@ -399,7 +399,7 @@
 
 	uint32 amount = 0;
 	for (const Vehicle *v = ::Vehicle::Get(vehicle_id); v != NULL; v = v->Next()) {
-		if (v->cargo_type == cargo) amount += v->cargo.Count();
+		if (v->cargo_type == cargo) amount += v->cargo.StoredCount();
 	}
 
 	return amount;

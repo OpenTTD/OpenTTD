@@ -802,7 +802,7 @@ struct DepotWindow : Window {
 		for (const Vehicle *w = v; w != NULL; w = w->Next()) {
 			if (w->cargo_cap > 0 && w->cargo_type < NUM_CARGO) {
 				capacity[w->cargo_type] += w->cargo_cap;
-				loaded  [w->cargo_type] += w->cargo.Count();
+				loaded  [w->cargo_type] += w->cargo.StoredCount();
 			}
 
 			if (w->type == VEH_TRAIN && !w->HasArticulatedPart()) {

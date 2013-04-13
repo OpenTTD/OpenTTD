@@ -41,7 +41,7 @@
 	if (!IsValidStation(station_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo_id)) return -1;
 
-	return ::Station::Get(station_id)->goods[cargo_id].cargo.Count();
+	return ::Station::Get(station_id)->goods[cargo_id].cargo.TotalCount();
 }
 
 /* static */ bool ScriptStation::HasCargoRating(StationID station_id, CargoID cargo_id)

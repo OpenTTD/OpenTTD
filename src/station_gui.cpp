@@ -231,8 +231,8 @@ protected:
 
 		CargoID j;
 		FOR_EACH_SET_CARGO_ID(j, cargo_filter) {
-			if (!(*a)->goods[j].cargo.Empty()) diff += GetTransportedGoodsIncome((*a)->goods[j].cargo.Count(), 20, 50, j);
-			if (!(*b)->goods[j].cargo.Empty()) diff -= GetTransportedGoodsIncome((*b)->goods[j].cargo.Count(), 20, 50, j);
+			if ((*a)->goods[j].cargo.TotalCount() > 0) diff += GetTransportedGoodsIncome((*a)->goods[j].cargo.TotalCount(), 20, 50, j);
+			if ((*b)->goods[j].cargo.TotalCount() > 0) diff -= GetTransportedGoodsIncome((*b)->goods[j].cargo.TotalCount(), 20, 50, j);
 		}
 
 		return ClampToI32(diff);
@@ -407,7 +407,7 @@ public:
 					/* show cargo waiting and station ratings */
 					for (uint j = 0; j < _sorted_standard_cargo_specs_size; j++) {
 						CargoID cid = _sorted_cargo_specs[j]->Index();
-						if (!st->goods[cid].cargo.Empty()) {
+						if (st->goods[cid].cargo.TotalCount() > 0) {
 							/* For RTL we work in exactly the opposite direction. So
 							 * decrement the space needed first, then draw to the left
 							 * instead of drawing to the left and then incrementing
@@ -416,7 +416,7 @@ public:
 								x -= 20;
 								if (x < r.left + WD_FRAMERECT_LEFT) break;
 							}
-							StationsWndShowStationRating(x, x + 16, y, cid, st->goods[cid].cargo.Count(), st->goods[cid].rating);
+							StationsWndShowStationRating(x, x + 16, y, cid, st->goods[cid].cargo.TotalCount(), st->goods[cid].rating);
 							if (!rtl) {
 								x += 20;
 								if (x > r.right - WD_FRAMERECT_RIGHT) break;
@@ -934,7 +934,7 @@ struct StationViewWindow : public Window {
 
 		/* count types of cargoes waiting in station */
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			if (st->goods[i].cargo.Empty()) {
+			if (st->goods[i].cargo.TotalCount() == 0) {
 				this->cargo_rows[i] = 0;
 			} else {
 				/* Add an entry for total amount of cargo of this type waiting. */
@@ -994,7 +994,7 @@ struct StationViewWindow : public Window {
 		if (--pos < 0) {
 			StringID str = STR_JUST_NOTHING;
 			for (CargoID i = 0; i < NUM_CARGO; i++) {
-				if (!st->goods[i].cargo.Empty()) str = STR_EMPTY;
+				if (st->goods[i].cargo.TotalCount() > 0) str = STR_EMPTY;
 			}
 			SetDParam(0, str);
 			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_STATION_VIEW_WAITING_TITLE);
