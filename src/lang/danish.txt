@@ -757,7 +757,7 @@ STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} vil blive erklæret konkurs eller solgt, hvis ikke ydelsen stiger snart!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Fussion mellem transportselskaber!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} er blevet solgt til {STRING} for {CURRENCY_LONG}!
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Bankerupt!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Bankerot!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} er blevet lukket af kreditorerne og alle ejendomme er solgt!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nyt transportselskab er startet!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} starter konstruktion i nærheden af {TOWN}!
