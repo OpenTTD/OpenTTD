@@ -1607,8 +1607,8 @@ STR_CONFIG_SETTING_SERVINT_SHIPS                                :Dè cho tric 's
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Tagh dè cho tric 's a thèid obair-càraidh a dhèanamh air longan ùra mura deach tricead nan càraidhean sònraichte a shuidheachadh airson na luinge
 STR_CONFIG_SETTING_NOSERVICE                                    :Cuir obair-càraidh à comas ma chaidh briseadh a chur gu "Gun ghin": {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ma tha seo air, chan fhaigh carbadan obair-càraidh mur urrainn dhaibh briseadh
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Cuir crìochan luaiths nan carbadan-trèana an coma: {STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ma tha seo air, cleachd crìochan luaiths nan carbadan cuideachd gus an luaths as motha aig trèana a shuidheachadh
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Cuir crìochan-luaiths nan carbadan-trèana an comas: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ma tha seo air, cleachd crìochan-luaiths nan carbadan cuideachd gus an luaths as motha aig trèana a shuidheachadh
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Cuir rèilean dealanach à comas: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ma tha seo air, cha leig thu leas slighean dealanach a thogail gus einnseanan dealanach a chleachdadh orra
 
@@ -1901,7 +1901,7 @@ STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Carbad thaistea
 STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Carbad thaistealach (Magnaiteach)
 STR_LIVERY_FREIGHT_WAGON                                        :Carbad carago
 STR_LIVERY_BUS                                                  :Bus
-STR_LIVERY_TRUCK                                                :Loraidh
+STR_LIVERY_TRUCK                                                :Làraidh
 STR_LIVERY_PASSENGER_SHIP                                       :Bata-aiseig
 STR_LIVERY_FREIGHT_SHIP                                         :Long carago
 STR_LIVERY_HELICOPTER                                           :Heileacoptair
@@ -2471,8 +2471,8 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tagh com
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Comhair an stèisein bhus
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Tagh comhair an stèisein bhus
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Comhair an stèisein loraidh
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Tagh comhair an stèisein loraidh
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Comhair an stèisein làraidh
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Tagh comhair an stèisein làraidh
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Comhair an stèisean trama thaisgealach
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Tagh comhair an stèisein airson tramaichean thaisgealach
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Comhair an stèisein trama carago
@@ -2540,6 +2540,7 @@ STR_OBJECT_CLASS_TRNS                                           :Tùir chraobh-s
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Craobhan
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Craobhan dhe sheòrsa air thuaiream
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Craobhan air thuaiream
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Cuir craobhan air thuaiream air feadh na tìre
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Gintinn crutha-tìre
@@ -2607,10 +2608,33 @@ STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Seall sreath
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Seall gnìomhachasan a sholaireas is a ghabhas ri carago
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Ceangail ris a' mheanbh-mhapa
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Tagh carago
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Tagh an carago a tha thu airson sealltainn
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Tagh gnìomhachas
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Tagh an gnìomhachas a tha thu airson sealltainn
 
 # Land area window
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Fiosrachadh air roinn tìre
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Cosgais an fhalamhachaidh: {LTBLUE}neo-aithnichte
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Cosgais an fhalmhachaidh: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Teachd a-steach leis an fhalamhachadh: {LTBLUE}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_OWNER_N_A                             :neo-aithnichte
+STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Sealbhadair: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Seilbheadair an rathaid: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Seilbheadair na slighe-trama: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Seilbheadair na slighe-iarainn: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Ùghdarras ionadail: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Gun ghin
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Ionad: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Seòrsa an stèisein: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Seòrsa an stèisein: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Seòrsa a' phuirt-adhair: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Ainm a' phuirt-adhair: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Ainm leac a' phuirt-adhair: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carago air a ghabhail ris: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Crìoch-luaiths rèile: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Creagan
@@ -2621,16 +2645,64 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Achaidhean
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Tìr sneachdach
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Fàsach
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Slighe {STRING.gen}
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Slighe {STRING.gen} le comharran bacaidh
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Slighe {STRING.gen} le ro-chomharran
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Slighe {STRING.gen} le comharran a-mach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Slighe {STRING.gen} le comharran aonaichte
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Slighe {STRING.gen} le comharran slighe
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Slighe {STRING.gen} le comharran aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Slighe {STRING.gen} le comharran bacaidh is ro-chomarran
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Slighe {STRING.gen} le comharran-bacaidh is a-mach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Slighe {STRING.gen} le comharran-bacaidh is aonaichte
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Slighe {STRING.gen} le comharran-bacaidh is slighe
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Slighe {STRING.gen} le comharran-bacaidh is aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Slighe {STRING.gen} le ro-chomharran is comharran a-mach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Slighe {STRING.gen} le ro-chomharran is comharran aonaichte
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Slighe {STRING.gen} le ro-chomharran is comharran slighe
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Slighe {STRING.gen} le ro-chomharran is comharran aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Slighe {STRING.gen} le comharran a-mach is aonaichte
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Slighe {STRING.gen} le comharran a-mach is slighe
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Slighe {STRING.gen} le comharran a-mach is aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Slighe {STRING.gen} le comharran aonaichte is slighe
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Slighe {STRING.gen} le comharran aonaichte is aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Slighe {STRING.gen} le comharran slighe is aon-shligheach
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Trèana-lann {STRING.gen}
 
+STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Rathad
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Rathad le solasan-rathaid
+STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Rathad craobhach
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Garaids
+STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Staran-rèile
+STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Slighe-trama
 
 # Houses come directly from their building names
 STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (ga togail)
 
+STR_LAI_TREE_NAME_TREES                                         :Craobhan
+STR_LAI_TREE_NAME_RAINFOREST                                    :Coille-uisge
+STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Cactasan
 
+STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Stèisean rèile
+STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Hangar
+STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Port-adhair
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Raon luchdaidh nan làraidhean
+STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Stèisean bus
+STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Cala
+STR_LAI_STATION_DESCRIPTION_BUOY                                :Fleodrainn
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Puing-thurais
 
+STR_LAI_WATER_DESCRIPTION_WATER                                 :Uisge
+STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canal
+STR_LAI_WATER_DESCRIPTION_LOCK                                  :Loc
+STR_LAI_WATER_DESCRIPTION_RIVER                                 :Abhainn
+STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Oirthir no bot
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Long-lann
 
 # Industries come directly from their industry names
 
+STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Tunail rèile
+STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Tunail rathaid
 
 
 
