@@ -289,6 +289,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Drivmiddel/omko
 STR_SORT_BY_CARGO_CAPACITY                                      :Lasteevne
 STR_SORT_BY_RANGE                                               :Interval
 STR_SORT_BY_POPULATION                                          :Indbyggertal
+STR_SORT_BY_RATING                                              :Værdi
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Sæt spillet på pause
@@ -876,6 +877,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauiske Litas
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Sydkoreansk Won (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Sydafrikansk Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Brugerdefineret...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiske Lari (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranske Rialer (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Måleenheder
@@ -1602,6 +1605,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... save
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorere Basis Grafik sæt '{STRING}': ikke fundet
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorere Basis Lyde sæt '{STRING}': ikke fundet
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorere Basis Musik sæt '{STRING}': ikke fundet
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Utilstrækkelig hukommelse
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Allokering af {BYTES} spritecache fejlede. Spritecachen blev indskrænket til {BYTES}. Dette vil sænke OpenTTDs ydelse. Du kan forsøge at slå 32bpp grafik og/eller zoom-ind niveauer for at reducere hukommelseskravet
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2080,6 +2085,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Vælg op
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Vælg alt indhold, der er opdateringer til eksisterende indhold, til download
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Fravælg alle
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Fravælg alt indhold fra download
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Søg på eksterne websider
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Søgeresultat ikke tilgængeligt på OpenTTD's indholdstjeneste for websteder som ikke er associeret med OpenTTD
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Du forlader OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Betingelserne for download af indhold fra eksterne websteder varierer.{}Du må referere til de eksterne sites for vejledning i hvordan indholdet skal installeres i OpenTTD.{} Ønsker du at fortsætte?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/navngiv filter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Besøg hjemmeside
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Besøg hjemmesiden for dette indhold
@@ -2933,6 +2942,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Venter: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} undervejs fra {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} forbeholdt lastning)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepterer
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Vis liste over accepteret last
@@ -3451,6 +3461,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Servicei
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Forøg serviceintervallet med 10. Ctrl+Klik forøger serviceintervallet med 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Sænk serviceintervallet med 10. Ctrl+Klik nedsætter serviceintervallet med 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Ændre serviceintervallets type
+STR_VEHICLE_DETAILS_DEFAULT                                     :Standard
+STR_VEHICLE_DETAILS_DAYS                                        :Dage
+STR_VEHICLE_DETAILS_PERCENT                                     :Procent
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Giv toget et navn
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Giv køretøjet et navn
@@ -3823,6 +3837,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Indkomst: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Overført: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Overført: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Overførsel: {CURRENCY_LONG}{WHITE} / {GREEN}Indtægt: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Overførsel: {CURRENCY_LONG}{WHITE} / {GREEN}Indtægt: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Overførsel: {CURRENCY_LONG}{WHITE} / {RED}Omkostning: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Overførsel: {CURRENCY_LONG}{WHITE} / {RED}Omkostning: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Anslået Pris: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Anslået Indkomst: {CURRENCY_LONG}
 

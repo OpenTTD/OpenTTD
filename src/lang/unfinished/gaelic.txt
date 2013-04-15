@@ -2274,6 +2274,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Comharra
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Lorg air làraichean-lìn taobh a-muigh
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Lorg susbaint nach eil ri làimh air seirbheise susbaint OpenTTD is a bheil ri làimh air làraichean lìn nach eil ceangailte ri OpenTTD
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Tha thu a' fàgail OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Dh'fhaoidte gum bi na teirmichean 's na cumhaichean gus susbaint a luchdadh a-nuas bho làraichean-lìn eile eadar-dhealaichte.{}Feumaidh tu sùil a thoirt air na làraichean-lìn a-muigh mu mar a stàlaicheas tu an t-susbaint ann an OpenTTD.{}A bheil thu airson leantainn air adhart?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Criathrag taga/ainm:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Tadhail air an làrach-lìn
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Tadhail air làrach-lìn na susbainte seo
@@ -2437,8 +2438,8 @@ STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Starr-chrann, S
 STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Crochaidh, Concraid
 STR_BRIDGE_NAME_WOODEN                                          :Fiodha
 STR_BRIDGE_NAME_CONCRETE                                        :Concraid
-STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Pìobach, Stàilinn
-STR_BRIDGE_TUBULAR_SILICON                                      :Pìobach, Sileagan
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Phìobach, Stàilinn
+STR_BRIDGE_TUBULAR_SILICON                                      :Phìobach, Sileagan
 
 
 # Road construction toolbar
@@ -2487,6 +2488,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Tog long
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Tog cala. Ceanglaichidh Ctrl stèiseanan ri chèile. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Cuir fleodrainn ris as urrainn dhut cleachdadh mar phuing-thurais. Toglaidh Shift tuairmse cosgaisean/togail
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Tog duct-uisge. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Mìnich raon uisge.{}Tog canal, mura h-eil thu a' cumail Ctrl sìos air àirde na mara far an tuilich thu an tìr timcheall air an àite.
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Cuir aibhnean ann
 
 # Ship depot construction window
@@ -2525,6 +2527,10 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Fuaim ai
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Cruth-tìre
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Ìslich oisean tìre. Le slaodadh, thèid a' chiad oisean ìsleachadh is an raon a thaghas tu a chur air an aon àirde. Taghaidh Ctrl raon trastanach. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Àrdaich oisean tìre. Le slaodadh, thèid a' chiad oisean àrdachadh is an raon a thaghas tu a chur air an aon àirde. Taghaidh Ctrl raon trastanach. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Cuir raon tìre air an aon àirde 's a tha aig a' chiad oisean a thaghas tu. Taghaidh Ctrl raon trastanach. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Ceannaich tìr gus a chleachdadh san àm ri teachd. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Tagh oibseact
@@ -2704,11 +2710,28 @@ STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Long-lann
 STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Tunail rèile
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Tunail rathaid
 
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Drochaid-chrochaidh stàilinn rèile
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Drochaid-theannadair stàilinn rèile
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Drochaid starr-chrainn stàilinn rèile
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Drochaid-chrochaidh concraid neartaichte rèile
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Drochaid fhiodha rèile
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Drochaid concraid rèile
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Drochaid phìobach rèile
 
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Drochaid-chrochaidh stàilinn rathaid
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Drochaid-theannadair stàilinn rathaid
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Drochaid starr-chrainn stàilinn rathaid
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Drochaid-chrochaidh concraid neartaichte rathaid
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Drochaid fhiodha rathaid
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Drochaid concraid rathaid
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Drochaid phìobach rathaid
 
+STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Duct-uisge
 
 STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Tùr craobh-sgaoilidh
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Taigh-solais
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Ionad a' chompanaidh
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Tìr a' chompanaidh
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Mu dheidhinn OpenTTD
@@ -2723,7 +2746,10 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Sàbhail
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Luchdaich cnàmh-sgeul
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Luchdaich mapa-àirde
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Sàbhail am mapa-àirde
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Briog an-seo gus leum a ghearradh dhan phasgan shàbhalaidh/luchdaidh bhunasach làithreach
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} saora
+STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liosta dhe na draibhean, pasganan is faidhlichean nan geamannan sàbhailte
+STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}An t-ainm a thagh thu an-dràsta gus an geama a shàbhaladh
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Sguab às
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Sguab às dhan gheama air a shàbhaladh a thagh thu
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Sàbhail
@@ -2738,32 +2764,173 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Cuir a-steach ainm ùr gus an geama a shàbhaladh
 
 # World generation
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Gin saoghal
+STR_MAPGEN_MAPSIZE                                              :{BLACK}Meud a' mhapa:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Tagh co mheud leacan a bhios sa mhapa. Bidh an àireamh dhe leacan ri làimh beagan nas lugha
+STR_MAPGEN_BY                                                   :{BLACK}*
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Àir. dhe bhailtean:
+STR_MAPGEN_DATE                                                 :{BLACK}Ceann-latha:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Àir. dhe ghnìomhachasan:
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Àirde na loidhne-shneachda:
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Gluais an loidhne-shneachda suas aon cheum
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Gluais an loidhne-shneachda sìos aon cheum
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Sìol air thuaiream:
+STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Briog gus sìol air thuaiream a chur a-steach
+STR_MAPGEN_RANDOM                                               :{BLACK}Cuir air thuaiream
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Atharraich an sìol air thuaiream a thèid a chleachdadh gus cruth-tìre a ghintinn
+STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Gineadair crutha-thìre:
+STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algairim chraobhan:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Seòrsa a' chrutha-thìre:
+STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Àirde na mara:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Aibhnean:
+STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Dè cho rèidh:
+STR_MAPGEN_VARIETY                                              :{BLACK}Sgaoileadh caochlaidh:
+STR_MAPGEN_GENERATE                                             :{WHITE}Gin
 
 # Strings for map borders at game generation
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Oirean a' mhapa:
+STR_MAPGEN_NORTHWEST                                            :{BLACK}Iar-thuath
+STR_MAPGEN_NORTHEAST                                            :{BLACK}Ear-thuath
+STR_MAPGEN_SOUTHEAST                                            :{BLACK}Ear-dheas
+STR_MAPGEN_SOUTHWEST                                            :{BLACK}Iar-dheas
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Cruth saor
+STR_MAPGEN_BORDER_WATER                                         :{BLACK}Uisge
+STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Air thuaiream
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Air thuaiream
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}A làimh
 
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Cuairteachadh a' mhapa-àirde:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Ainm a' mhapa-àirde:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Meud:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Cuir a-steach sìol air thuaiream
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Atharraich àirde na loidhne-shneachda
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Atharraich am bliadhna-tòiseachaidh
 
 # SE Map generation
+STR_SE_MAPGEN_CAPTION                                           :{WHITE}Seòrsa a' chnàmh-sgeul
+STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Tìr rèidh
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Gin tìr rèidh
+STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Tìr air thuaiream
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Àirde na tìre rèidhe:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Gluais àirde na tìre rèidhe sìos aon cheum
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Gluais àirde na tìre rèidhe suas aon cheum
 
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Atharrich àirde na tìre rèidhe
 
 # Map generation progress
+STR_GENERATION_WORLD                                            :{WHITE}A' gintinn saoghal...
+STR_GENERATION_ABORT                                            :{BLACK}Sguir dheth
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Sguir dhe ghintinn an t-saoghail
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}A bheil thu airson sgur dhe ghintinn an t-saoghail?
+STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% coileanta
+STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Gin saoghal
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Gin aibhnean
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Gin craobhan
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Gin oibseactan
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}Gin raon garbh is creagach
+STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}A' suidheachadh a' gheama
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}A' ruith lùb-lice
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}A' ruith sgriobt
+STR_GENERATION_PREPARING_GAME                                   :{BLACK}Ag ullachadh a' gheama
 
 # NewGRF settings
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Roghainnean NewGRF
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Mion-fhiosrachadh NewGRF
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Faidhlichean NewGRF gnìomhach
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Faidhlichean NewGRF neo-ghnìomhach
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Tagh ro-sheata:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Criathraich sreang:
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Luchdaich an ro-sheata a thagh thu
+STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Sàbhail ro-sheata
+STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Sàbhail an liosta seo mar ro-sheata
+STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Cuir a-steach ainm airson an ro-sheata
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Sguab às dhan ro-sheata
+STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Sguab às dhan ro-sheata a thagh thu
+STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Cuir ris
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Cuir am faidhle NewGRF a thagh thu ris an rèiteachadh agad
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Ath-sganaich na faidhlichean
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Ùraich an liosta dhe na faidhlichean NewGRF a tha ri làimh
+STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Thoir air falbh
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Thoir am faidhle NewGRF a thagh thu air falbh on liosta
+STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Gluais suas
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Gluais am faidhle NewGRF a thagh thu suas san liosta
+STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Gluais sìos
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Gluais am faidhle NewGRF a thagh thu sìos san liosta
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Liosta dhe na faidhlichean NewGRF a tha stàlaichte
 
+STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Suidhich paramadairean
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Seall paramadairean
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Toglaich am palaid
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Toglaich am paileid aig a' NewGRF a thagh thu.{}Dèan seo ma tha coltas pinc air grafaigeachd a' NewGRF seo sa gheama
+STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Cuir na h-atharraichean an sàs
 
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Lorg an t-susbaint a tha a dhìth air loidhne
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Thoir sùil air loidhne a bheil an t-susbaint a tha a dhìth ri fhaighinn
 
+STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Ainm an fhaidhle: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}ID a' GRF: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Tionndadh: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}An tionndadh as sine a tha co-chòrdail: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}Suim MD5: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paileid: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paramadairean: {SILVER}{STRING}
 
+STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Chan eil fiosrachadh ri làimh
+STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Cha deach faidhle a dh'freagras a lorg
+STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}À comas
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Neo-chòrdail ris an tionndadh seo dhe OpenTTD
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Atharraich paramadairean NewGRF
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Dùin
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Ath-shuidhich
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Suidhich a h-uile paramadair air a luach tùsail
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paramadair {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Àireamh dhe pharamadairean: {ORANGE}{NUM}
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Sgrùd - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Pàrant
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Sgrùd oibseact an sgòip phàraint
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} aig {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Oibseact
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Seòrsa an rèile
 
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}A' co-thaobhachadh sprite {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}An t-ath sprite
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Lean air adhart dhan ath sprite àbhaisteach, a' gearradh leum thairis air sprites mas fhìor/ath-dhathaidh/crutha-chlò is a' pasgadh aig an deireadh
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Rach dhan sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Rach dhan sprite a thagh thu. Mura h-e sprite àbhaisteach a th' ann, lean air adhart dhan ath-sprite àbhaisteach
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}An sprite roimhe
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Lean air adhart dhan sprite àbhaisteach roimhe, a' gearradh leum thairis air sprites mas fhìor/ath-dhathaidh/crutha-chlò is a' pasgadh aig an toiseach
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Riochdachadh air an sprite a thagh thu an-dràsta. Thèid an co-thaobhadh a chur dhan dàrna taobh nuair a thèid an sprite a tharraing
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Gluais an sprite mu thimcheall, ag atharrachadh nam frith-àireamhean aig X is Y
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Frith-àireamh X: {NUM}, frith-àireamh Y: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Tagh sprite
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Tagh sprite bho àite sam bith air an sgrìn
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Rach dhan sprite
 
 # NewGRF (self) generated warnings/errors
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Rabhadh: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Mearachd: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Marbhtach: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Thachair mearachd NewGRF marbhtach: {}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :Chan obraich {1:STRING} leis an tionndadh aig TTDPatch a chaidh aithris le OpenTTD
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :Tha {1:STRING} airson tionndadh {STRING} aig TTD
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :Chaidh {1:STRING} a dhealbhachadh gus cleachdadh le {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Paramadair mì-dhligheach airson {1:STRING.gen}: paramadair {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :Feumaidh {1:STRING} a bhith air a luchdadh mus tèid {STRING} a luchdadh
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :Feumaidh {2:STRING} air a bhith a' luchdadh mus tèid {1:STRING} a luchdadh
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :Tha OpenTTD tionndadh {2:STRING} no nas fhearr a dhìth air {1:STRING}
 
 # NewGRF related 'general' warnings
 
