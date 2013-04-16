@@ -2544,7 +2544,9 @@ STR_OBJECT_CLASS_TRNS                                           :Tùir chraobh-s
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Craobhan
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Tagh seòrsa na craoibhe airson cur. Ma tha craobh air an leac mu thràth, cuiridh seo barrachd chraobhan aig a bheil caochladh dhe sheòrsachan a tha neo-eisimeileach on t-seòrsa a thagh thu
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Craobhan dhe sheòrsa air thuaiream
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Cuir craobhan dhe sheòrsachan air thuaiream. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Craobhan air thuaiream
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Cuir craobhan air thuaiream air feadh na tìre
 
@@ -2584,6 +2586,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Mòr
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Air thuaiream
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Tagh meud a' bhaile
 STR_FOUND_TOWN_CITY                                             :{BLACK}Mòr-bhaile
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Fàsaidh mòr-bhailtean nas luaithe na bailtean àbhaisteach{}A' crochadh air na roghainnean, tha iad nas motha nuair a thèid an stèidheachadh
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Co-chealbhachd rathaidean a' bhaile
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Tagh co-dhealbhachd nan rathaidean aig a' bhaile
@@ -2614,6 +2617,7 @@ STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Seall sreath
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Seall gnìomhachasan a sholaireas is a ghabhas ri carago
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Ceangail ris a' mheanbh-mhapa
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Tagh na gnìomhachasan a tha gan sealltainn air a' mheanbh-mhapa cuideachd
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Tagh carago
 STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Tagh an carago a tha thu airson sealltainn
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Tagh gnìomhachas
@@ -2901,6 +2905,7 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} aig {H
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Oibseact
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Seòrsa an rèile
 
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Paramadair 60+x (sia-dheicheach) caochladair NewGRF
 
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}A' co-thaobhachadh sprite {COMMA} ({STRING})
@@ -2931,28 +2936,98 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Paramadair mì-
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :Feumaidh {1:STRING} a bhith air a luchdadh mus tèid {STRING} a luchdadh
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :Feumaidh {2:STRING} air a bhith a' luchdadh mus tèid {1:STRING} a luchdadh
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :Tha OpenTTD tionndadh {2:STRING} no nas fhearr a dhìth air {1:STRING}
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :am faidhle GRF ri eadar-theangachadh
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Chaidh cus NewGRFan a luchdadh
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ma luchdas tu {1:STRING} mar NewGRF stadaigeach le {STRING}, dh'fhaoidte gun adhbharaich seo dì-shioncronachadh
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite air nach robh dùil (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Tha buadh {4:HEX} gnìomh 0 neo-aithnichte ann (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Chaidh feuchainn ri ID mì-dhligheach a chleachdadh (sprite {3:NUM})
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}Tha sprite coirbte am broinn {STRING.gen}. Thèid a h-uile sprite coirbte a shealltainn na comharra-ceiste dhearg (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Tha iomadh innteart gnìomh 8 ann (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Chaidh leughadh thar deireadh a' sprite mas fhìor (sprite {3:NUM})
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Tha sprite no dhà a dhìth air an t-seata ghrafaigeachd bhunasach a tha thu a' cleachdadh an-dràsta.{}Feuch an ùraidh thu an seata grafaigeachd bunasach
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Tha sprite no dhà a dhìth air an t-seata ghrafaigeachd bhunasach a tha thu a' cleachdadh an-dràsta.{}Feuch an ùraidh thu an seata grafaigeachd bunasach.{}Bhon a tha thu a' cluich le {YELLOW}snapshot leasachaidh aig OpenTTD{WHITE}, 's dòcha gu bheil {YELLOW} snapshot leasachaidh dhen t-seata grafaigeachd bunasach{WHITE} a dhìth ort cuideachd
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Chan eil na goireasan GRF a chaidh iarraidh ri làimh (sprite {3:NUM})
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Chaidh {1:STRING} a chur à comas le {2:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Fòrmat co-dhealbhachd sprite mì-dhligheach/neo-aithnichte (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
+STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}An aire!
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Tha thu an impis geama a tha a' ruith atharrachadh. Dh'fhaoidte gun tuislich seo OpenTTD no gum bris e cor a' gheama. Na dèan aithisg air buga mu na duilgheadasan seo.{}A bheil thu cinnteach dha-rìribh mu dheidhinn seo?
 
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Cha ghabh am faidhle a chur ris: ID GRF dùblaichte
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Cha deach faidhle a dh'fhreagras a lorg (chaidh GRF co-chòrdail a luchdadh)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Cha ghabh am faidhle a cur ris: Rachadh seo thairis air na tha ceadaichte dhe dh'fhaidhlichean NewGRF
 
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Chaidh GRF(an) co-chòrdail a luchdadh airson nam faidhlichean a tha a dhìth
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chaidh am faidhle/na faidhlichean GRF a tha a dhìth a chur à comas
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Faidhle/faidhlichean GRF a dhìth
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Dh'fhaoidte gun tuislich OpenTTD ma leanas tu air a' gheama. Na dèan aithisg air buga mu tuisleachaidhean an uairsin.{}A bheil thu cinnteach dha-rìribh gu bheil thu airson leantainn air a' gheama?
 
 # NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Gun ghin
+STR_NEWGRF_LIST_ALL_FOUND                                       :Tha a h-uile faidhle ann
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Chaidh faidhlichean co-chòrdail a lorg
+STR_NEWGRF_LIST_MISSING                                         :{RED}Tha faidhlichean a dhìth
 
 # NewGRF 'it's broken' warnings
+STR_NEWGRF_BROKEN                                               :{WHITE}Tha e coltach gun adhbharaich an NewGRF "{0:STRING}" dì-shioncronachadh is/no tuisleadh
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tha faide mì-dhligheach aig an trèana "{VEHICLE}" le "{COMPANY}". Tha e coltach gu bheil duilgheadasan le NewGRF as coireach. Dh'fhaoidte gun dì-shioncronaich no gun tuislich an geama
 
+STR_NEWGRF_BUGGY                                                :{WHITE}Tha an NewGRF "{0:STRING}" a' toirt seachad fiosrachadh mealltach
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}Dh'adhbharaich "{1:STRING}" lùb gun chrìch ann an ais-ghairm an dèanadais
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Thill an ais-ghairm {1:HEX} toradh {2:HEX}neo-aithnichte/mì-dhligheach
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
+STR_NEWGRF_INVALID_CARGO                                        :<carago mì-dhligheach>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} dhe <charago mì-dhligheach>
+STR_NEWGRF_INVALID_ENGINE                                       :<modail carbaid mì-dligheach>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<gnìomhachas mì-dhligheach>
 
 # NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}A' sganadh NewGRFan
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}A' sganadh NewGRFan. A' crochaidh air na tha dhiubh ann, dh'fhaoidte gun toir seo greis...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Chaidh {NUM} NewGRF{P "" "" an ""} a-mach à mu {NUM} NewGRF{P "" "" an ""} a sganadh
+STR_NEWGRF_SCAN_ARCHIVES                                        :A' sganadh airson tasglannan
 
 # Sign list window
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Liosta nan sanasan - {COMMA} {P sanas shanas sanasan sanas}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Aire air litrichean mòra is beaga
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Toglaich aire air litrichean mòra is beaga nuair a thèid coimeas a dhèanamh eadar ainm sanais is sreang na criathraige
 
 # Sign window
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Deasaich teacsa an t-sanais
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Rach dhan ath shanas
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Rach dhan t-sanas roimhe
 
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Cuir a-steach ainm airson an t-sanais
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Bailtean
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Gun ghin -
+STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Ainmean nam bailtean - briog air ainm gus am prìomh-shealladh a mheadhanachadh air a' bhaile. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' bhaile
+STR_TOWN_POPULATION                                             :{BLACK}Sluagh an t-saoghail: {COMMA}
 
 # Town view window
+STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
+STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Mòr-bhaile)
+STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Sluagh: {ORANGE}{COMMA}{BLACK}  Taighean: {ORANGE}{COMMA}
+STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Taistealaich am mìos mu dheireadh: {ORANGE}{COMMA}{BLACK}  as motha: {ORANGE}{COMMA}
+STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post am mìos mu dheireadh: {ORANGE}{COMMA}{BLACK}  as motha: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carago a tha a dhìth ach am fàs am baile:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}Feum air {ORANGE}{STRING}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (a dhìth fhathast)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (air lìbhrigeadh)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Fàsaidh am baile gach uile {ORANGE}{COMMA}{BLACK} latha
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Fàsaidh am baile gach uile {ORANGE}{COMMA}{BLACK} latha (maoinichte)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{RED}Chan eil {BLACK}a' fàs{BLACK}
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Cuingeachaidhean fuaime sa bhaile: {ORANGE}{COMMA}{BLACK}  air a char as motha: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Meadhanaich am prìomh-shealladh air a bhaile. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' bhaile
+STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Ùghdarras ionadail
+STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Seall fiosrachadh air an ùghdarras ionadail
+STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Atharraich ainm a' bhaile
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Meudaich
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Dèan am baile nas motha
@@ -2979,6 +3054,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Maoinich togala
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Ceannaich còirichean giùlain às-dùnach
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Thoir brìbeadh dhan ùghdarras ionadail
 
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Dèan iomairt shànasachd bheag ionadail gus barrachd thaistealach is carago a thadhal dha na seirbheisein giùlain agad.{}Cosgais: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Dèan iomairt shànasachd mheadhanach ionadail gus barrachd thaistealach is carago a thadhal dha na seirbheisein giùlain agad.{}Cosgais: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Dèan iomairt shànasachd mhòr ionadail gus barrachd thaistealach is carago a thadhal dha na seirbheisein giùlain agad.{}Cosgais: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Maoinich ath-thogail rathaidean a' bhaile. Adhbharaichidh seo bacaidhean mòra air trafaig-rathaid gu ruige 6 mìosan.{}Cosgais: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Tog ìomhaigh gus urram a thoirt air a chompanaidh agad.{}Cosgais: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Maoinich togalaichean malairt ùra sa bhaile.{}Cosgais: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Ceannaich còirichean giùlain ás-dùnach sa bhaile fad bliadhna. Cha toir an t-ùghdarras ionadail cead air taisgealaich is carago gus stèiseanan aig companaidhean eile a chleachdadh.{}Cosgais: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Ceannaich an t-ùghdarras ionadail ach an toir iad rangachadh as fhearr dhut, ach tha cunnart ann gum faigh thu peanas mòr ma thèid do ghlacadh.{}Cosgais: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Amasan
@@ -2986,7 +3069,7 @@ STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Amasan c
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Gun ghin -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Amasan na companaidh:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Briog air an amas gus am prìomh-shealladh a chur air gnìomhachas/baile/leac. Fosglaidh Ctrl+Briogadh port-seallaidh ùr air ionad a' ghnìomhachais/a' bhaile/na lice
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Briog air an amas gus am prìomh-shealladh a mheadhanachadh air gnìomhachas/baile/leac. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' ghnìomhachais/a' bhaile/na lice
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Ceist
@@ -3015,14 +3098,41 @@ STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Gèill
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Dùin
 
 # Subsidies window
+STR_SUBSIDIES_CAPTION                                           :{WHITE}Tarrailean
+STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Tarrailean gan tairgsinn airson seirbheisean a bheir:
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} bho {STRING} gu {STRING}{YELLOW} (ro {DATE_SHORT})
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Gun ghin -
+STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Seirbeisean a gheibh tarrail mu thràth:
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} bho {STRING} gu {STRING}{YELLOW} ({COMPANY}{YELLOW}, gu ruige {DATE_SHORT})
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Briog air an t-seirbheis gus am prìomh-shealladh a mheadhanachadh air a' ghnìomhachas/bhaile. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' ghnìomhachais/a' bhaile
 
 # Station list window
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ainmean nan stéiseanan - briog air ainm gus am prìomh-shealladh a mheadhanachadh air an stèisean. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad an stèisein
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Cùm Ctrl sìos gus barrachd air aon nì a thaghadh
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} stèisean{P "" "" an ""}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
+STR_STATION_LIST_NONE                                           :{YELLOW}- Gun ghin -
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Tagh a h-uile seòrsa carago (a' gabhail a-steach gun charago a' feitheamh)
+STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Chan eil carago dhe sheòrsa sam bith a' feitheamh
 
 # Station view window
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
+STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}A' feitheamh: {WHITE}{STRING}
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} bho {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} glèidhte airson luchdadh)
 
+STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Gabhaidh e ris
+STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Seall liosta a' charago a thèid a ghabhail ris
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Gabhaidh e ri: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Tha còirichean giùlain às-dùnach aig an stèisean seo sa bhaile seo.
 
+STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Rangachaidhean
+STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Seall rangachaidhean nan stèiseanan
+STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Rangachadh ionadail na seirbheise giùlain:
+STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Sgriosail
@@ -3035,6 +3145,8 @@ STR_CARGO_RATING_EXCELLENT                                      :Uabhasach math
 STR_CARGO_RATING_OUTSTANDING                                    :Barraichte
 ############ range for rating ends
 
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Meadhanaich am prìomh-shealladh air an stèisean. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad an stèisein
+STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Atharraich ainm an stèisein
 
 
 
