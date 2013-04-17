@@ -598,7 +598,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Maoinich gnìom
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Togail rathaid-iarainn
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Togail rathaid-iarainn dealanach
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Togail rathaid-iarainn dealain
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Togail rathaid-iarainn aona-rèile
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Togail rathaid-iarainn magnaiteach
 ############ range ends here
@@ -951,7 +951,7 @@ STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Companaidh ghiùlain ùr air a chur air bhog!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}Thòisich {STRING} a' togail faisg air {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}Chuir {1:STRING} {0:STRING} foidhe fhèin!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Manager)
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Stiùiriche)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}Sponsairich {STRING} togail baile ùir {TOWN}!
 
@@ -1609,8 +1609,8 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Cuir obair-càr
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ma tha seo air, chan fhaigh carbadan obair-càraidh mur urrainn dhaibh briseadh
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Cuir crìochan-luaiths nan carbadan-trèana an comas: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ma tha seo air, cleachd crìochan-luaiths nan carbadan cuideachd gus an luaths as motha aig trèana a shuidheachadh
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Cuir rèilean dealanach à comas: {STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ma tha seo air, cha leig thu leas slighean dealanach a thogail gus einnseanan dealanach a chleachdadh orra
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Cuir rèilean dealain à comas: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ma tha seo air, cha leig thu leas slighean dealain a thogail gus einnseanan dealain a chleachdadh orra
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Tha a' chiad carbad air stèisean a' chluicheadair a ruigsinn: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Seall pàipear-naidheachd nuair a bhios a' chiad carbad air stèisean ùr a' chluicheadair a ruigsinn
@@ -1662,7 +1662,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} {P 0 le
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Le slaodadh, cùm astar co-ionnan eadar comharran: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Tagh an giùlan aig cur nan comharran nuair a thèid comharran a shlaodadh le Ctrl. Ma tha seo dheth, thèid comharran a chur gach taobh tunail no drochaide gus slighean fada gun chomharran a sheachnadh. Ma tha seo air, thèid comharran a chur gach n-mh leac agus nì seo co-thaobhadh aig comharran air slighean co-shìnte nas fhasa
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Tog saimeaforean gu fèin-obrachail ro: {STRING}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Tagh am bliadhna a thèid comharran dealanach a chleachdadh airson slighean. Ron bhliadhna seo, thèid comharran neo-dhealanach a chleachdadh (tha an dearbh ghiùlan aca ach coltas eadar-dhealaichte)
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Tagh am bliadhna a thèid comharran dealain a chleachdadh airson slighean. Ron bhliadhna seo, thèid comharran neo-dhealanach a chleachdadh (tha an dearbh ghiùlan aca ach coltas eadar-dhealaichte)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Cuir eadar-aghaidh nan comharran an comas: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Seall uinneag gus an seòrsa dhe chomharra a thogas tu a thaghadh seach dol tro na seòrsaichean dhe chomharran às aonais uinneige le Ctrl+briogadh air togail chomharran
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Seòrsa dhe chomharra a thèid a thogail a ghnàth: {STRING}
@@ -2362,7 +2362,7 @@ STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Tog pui
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Togail rathaid-iarainn
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Togail rathaid-iarainn dhealanach
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Togail rathaid-iarainn dealain
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Togail rathaid-iarainn aona-rèile
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Togail rathaid-iarainn mhagnaiteach
 
@@ -2378,7 +2378,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Toglaich
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Iompaidh/Àrdaich seòrsa na rèile. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 
 STR_RAIL_NAME_RAILROAD                                          :Rathad-iarainn
-STR_RAIL_NAME_ELRAIL                                            :Rathad-iarainn dealanach
+STR_RAIL_NAME_ELRAIL                                            :Rathad-iarainn dealain
 STR_RAIL_NAME_MONORAIL                                          :Rathad-iarainn aona-rèile
 STR_RAIL_NAME_MAGLEV                                            :Rathad-iarainn magnaiteach
 
@@ -2415,12 +2415,12 @@ STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Comharra
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Comharra aonaichte (saimeafor){}'S e comharra a-steach is a-mach a th' anns a' chomharra aonaichte seo aig an aon àm. Mar sin, 's urrainn dhut "craobhan" mòra dhe ro-chomharran a thogail
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Comharra slighe (saimeafor){}Leigidh comharra slighe le barrachd air aon trèana dol a-steach dhan bhloca comharra air an aon àm, mas urrainn dhan trèana slighe gu ionad stadaidh sàbhailte a ghlèidheadh. Faodar dol seachad air comharran slighe àbhaisteach on chùlaibh
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Comharra slighe aon-shligheach (saimeafor){}Leigidh comharra slighe le barrachd air aon trèana dol a-steach dhan bhloca comharra air an aon àm, mas urrainn dhan trèana slighe gu ionad stadaidh sàbhailte a ghlèidheadh. Chan fhaodar dol seachad air comharran slighe àbhaisteach on chùlaibh
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Comharra bloca (dealanach){}Seo an seòrsa comharra as bunasaiche is chan fhaod ach aon trèana a bhith san aon bhloca aig an aon àm
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Comharra a-steach (dealanach){}Bidh seo uaine fhad 's a tha comharra a-mach uaine san ath roinn dhen t-slighe. Mur eil, bidh e dearg
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Comharra a-mach (dealanach){}Tha an t-aon ghiulan aige 's a tha aig comharra bloca ach tha feum air gus an dath mar bu chòir a thoirt air comharran a-steach is ro-chomharran aonaichte
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Comharra aonaichte (dealanach){}'S e comharra a-steach is a-mach a th' anns a' chomharra aonaichte seo aig an aon àm. Mar sin, 's urrainn dhut "craobhan" mòra dhe ro-chomharran a thogail
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Comharra slighe (dealanach){}Leigidh comharra slighe le barrachd air aon trèana dol a-steach dhan bhloca comharra air an aon àm, mas urrainn dhan trèana slighe gu ionad stadaidh sàbhailte a ghlèidheadh. Faodar dol seachad air comharran slighe àbhaisteach on chùlaibh
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Comharra slighe aon-shligheach (dealanach){}Leigidh comharra slighe le barrachd air aon trèana dol a-steach dhan bhloca comharra air an aon àm, mas urrainn dhan trèana slighe gu ionad stadaidh sàbhailte a ghlèidheadh. Chan fhaodar dol seachad air comharran slighe àbhaisteach on chùlaibh
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Comharra bloca (dealain){}Seo an seòrsa comharra as bunasaiche is chan fhaod ach aon trèana a bhith san aon bhloca aig an aon àm
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Comharra a-steach (dealain){}Bidh seo uaine fhad 's a tha comharra a-mach uaine san ath roinn dhen t-slighe. Mur eil, bidh e dearg
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Comharra a-mach (dealain){}Tha an t-aon ghiulan aige 's a tha aig comharra bloca ach tha feum air gus an dath mar bu chòir a thoirt air comharran a-steach is ro-chomharran aonaichte
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Comharra aonaichte (dealain){}'S e comharra a-steach is a-mach a th' anns a' chomharra aonaichte seo aig an aon àm. Mar sin, 's urrainn dhut "craobhan" mòra dhe ro-chomharran a thogail
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Comharra slighe (dealain){}Leigidh comharra slighe le barrachd air aon trèana dol a-steach dhan bhloca comharra air an aon àm, mas urrainn dhan trèana slighe gu ionad stadaidh sàbhailte a ghlèidheadh. Faodar dol seachad air comharran slighe àbhaisteach on chùlaibh
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Comharra slighe aon-shligheach (dealain){}Leigidh comharra slighe le barrachd air aon trèana dol a-steach dhan bhloca comharra air an aon àm, mas urrainn dhan trèana slighe gu ionad stadaidh sàbhailte a ghlèidheadh. Chan fhaodar dol seachad air comharran slighe àbhaisteach on chùlaibh
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Iompachadh chomharran{}Ma thagh thu seo 's tu a' briogadh air comarra a tha ann, iompaichidh seo an comharra dhan t-seòrsa a thagh thu. Seallaidh Shift+briogadh tuairmse air cosgaisean an iompachaidh dhut
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Dlùths nan comharran air an cruthachadh le slaodadh
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Lùghdaich dlùths nan comharran air an cruthachadh le slaodadh
@@ -2696,7 +2696,7 @@ STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Cactasan
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Stèisean rèile
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Hangar
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Port-adhair
-STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Raon luchdaidh nan làraidhean
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Ionad luchdaidh nan làraidhean
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Stèisean bus
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Cala
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Fleodrainn
@@ -3024,7 +3024,7 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Fàsaidh
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Fàsaidh am baile gach uile {ORANGE}{COMMA}{BLACK} latha (maoinichte)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{RED}Chan eil {BLACK}a' fàs{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Cuingeachaidhean fuaime sa bhaile: {ORANGE}{COMMA}{BLACK}  air a char as motha: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Meadhanaich am prìomh-shealladh air a bhaile. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' bhaile
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Meadhanaich am prìomh-shealladh air a' bhaile. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' bhaile
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Ùghdarras ionadail
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Seall fiosrachadh air an ùghdarras ionadail
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Atharraich ainm a' bhaile
@@ -3113,7 +3113,7 @@ STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Gun ghin -
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Tagh a h-uile seòrsa carago (a' gabhail a-steach gun charago a' feitheamh)
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Tagh na h-uile seòrsa carago (a' gabhail a-steach gun charago a' feitheamh)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Chan eil carago dhe sheòrsa sam bith a' feitheamh
 
 # Station view window
@@ -3148,30 +3148,132 @@ STR_CARGO_RATING_OUTSTANDING                                    :Barraichte
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Meadhanaich am prìomh-shealladh air an stèisean. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad an stèisein
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Atharraich ainm an stèisein
 
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Seall a h-uile trèana is an stèisean seo air an sgeideal aige
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Seall a h-uile carbad-rathaid is an stèisean seo air an sgeideal aige
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Seall a h-uile carbad-adhair is am port-adhair seo air an sgeideal aige
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Seall a h-uile long is an cala seo air an sgeideal aige
 
+STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Thoir ainm ùr air an stèisean/ionad luchdaidh
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Dùin am port-adhair
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Bac carbadan-adhair bho laighe air a' phort-adhair seo
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Meadhanaich am prìomh-shealladh air a' phuing-thurais. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad na puinge-turais
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Thoir ainm ùr air a' phuing-thurais
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Meadhanaich am prìomh-shealladh air an fhleodrainn. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad na fleodrainn
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Atharraich ainm an fhleodrainn
 
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Deasaich ainm na puinge-turais
 
 # Finances window
+STR_FINANCES_CAPTION                                            :{WHITE}Maoin aig {COMPANY} {BLACK}{COMPANY_NUM}
+STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Caiteachas/Teachd a-steach
+STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Togail
+STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Carbadan ùra
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Cosgaisen ruith nan trèana
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Cosgaisen ruith nan carbadan-rathaid
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Cosgaisen ruith nan carbadan-adhair
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Cosgaisen ruith nan long
+STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Cumail suas nan sealbh
+STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Teachd a-steach nan trèana
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Teachd a-steach nan carbadan-rathaid
+STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Teachd a-steach nan carbadan-adhair
+STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Teachd a-steach nan long
+STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Luach-rèidh iasaid
+STR_FINANCES_SECTION_OTHER                                      :{GOLD}Eile
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
+STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Iomlan:
+STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balans a' bhanca
+STR_FINANCES_LOAN_TITLE                                         :{WHITE}Iasad
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Iasad as motha: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Gabh {CURRENCY_LONG} air iasad
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Meudaich an iasad. Le Ctrl+briogadh, gabhaidh tu na dh'fhaodas tu air iasad
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Pàigh {CURRENCY_LONG} air ais
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Pàigh pàirt dhen iasad air ais. Le Ctrl+briogadh, pàigidh tu air ais nas urrainn dhut
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Am bun-structar
 
 # Company view
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Stiùiriche)
 
+STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Air a stèidheachadh: {WHITE}{NUM}
+STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Sgeama nan dathan:
+STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Carbadan:
+STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} {P trèana thrèana trèanaichean trèana}
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} {P charbad-rathaid charbad-rathaid carbadan-rathaid carbad-rathaid}
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} {P charbad-adhair charbad-adhair carbadan-adhair carbad-adhair}
+STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} {P long long longan long}
+STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Gun charbad
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Luach a' chompanaidh: {WHITE}{CURRENCY_LONG}
+STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% le {COMPANY})
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Bun-structar:
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} {P earrann earrann earrannan earrann} rèile
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} {P earrann earrann earrannan earrann} rathaid
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} {P leac leac leacan leac} uisge
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} {P leac leac leacan leac} stèisein
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} {P phort-adhair phort-adhair puirt-adhair port-adhair}
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Gun bhun-structar
 
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Tog ionad a' chompanaidh
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Tog ionad a' chompanaidh
+STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Seall ionad a' chompanaidh
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Seall ionad a' chompanaidh
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Imrich ionad a' chompanaidh
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ath-thog ionad a' chompanaidh àiteigin eile airson cosgaid dhe 1% dhe luach a' chompanaidh. Seallaidh Shift+briogadh tuairmse nan cosgaisean gun a bhith ag imrich ionad a' chompanaidh
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Mion-fhiosrachadh
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Seall cunntaidhean mionaideach a' bhun-structair
 
+STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Aghaidh ùr
+STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Tagh aghaidh ùr airson an stiùiriche
+STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Sgeama nan dathan
+STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Ainm a' chompanaidh
+STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Atharraich ainm a' chompanaidh
+STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Ainm an stiùiriche
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Thoir ainm ùr air an stiùiriche
 
+STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Ceannaich earrann dhe 25% aig a' chompanaidh
+STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Reic earrann dhe 25% aig a' chompanaidh
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Ceannaich earrann dhe 25% aig a' chompanaidh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' cheannach earrann
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Reic earrann dhe 25% aig a' chompanaidh seo. Seallaidh Shift+briogadh tuairmse air an teachd a-steach gun a bhith a' reic earrann sam bith
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Ainm na companaidh
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Ainm an stiùiriche
 
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Tha sinn a' sireadh companaidh giùlain a ghabhas stiùir air a' chompanaidh againn.{}{}A bheil thu airson {COMPANY} a cheannach airson {CURRENCY_LONG}?
 
 # Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Bun-structar aig {COMPANY}
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Earrannan rèile:
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Comharran
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Earrannan rathaid:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Rathad
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Slighe-trama
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Leacan uisge:
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canalan
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stèiseanan:
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Leacan stèisein
+STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Puirt-adhair
+STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/bliadhna ({0:COMMA})
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/bliadhna
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Gnìomhachasan
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Gun ghnìomhachas -
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% air a ghiùlan)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% air a ghiùlan)
+STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Ainmean nan gnìomhachasan - briog air an ainm gus am prìomh-shealladh a mheadhanachadh air a' ghnìomhachais. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' ghnìomhachais
 
 # Industry view
+STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Dèanadas sa mhìos seo chaidh:
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% air a ghiùlan)
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Meadhanaich am prìomh-shealladh air a' ghnìomhachas. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' ghnìomhachais
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}A dhìth: {YELLOW}{STRING}{STRING}
@@ -3195,7 +3297,12 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} long{P "" "" an ""}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} {P charbad charbad carbadan carbad}-adhair
 
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trèanaichean - briog air trèana airson fiosrachaidh
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Carbadan-rathaid - briog air carbad airson fiosrachaidh
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Longan - briog air long airson fiosrachaidh
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Carbadan-adhair - briog air carbad airson fiosrachaidh
 
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Prothaid am bliadhna: {CURRENCY_LONG} (an-uiridh: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trèanaichean ri làimh
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Carbadan ri làimh
@@ -3229,32 +3336,87 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Carbadan-rathai
 STR_GROUP_DEFAULT_SHIPS                                         :Longan gun bhuidheann
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Carbadan-adhair gun bhuidheann
 
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Buidhnean - briog air buidheann gus a h-uile carbad a tha sa bhuidheann seo a shealltainn
+STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Briog gus buidheann a chruthachadh
+STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Sguab às dhan bhuidheann a thagh thu
+STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Thoir ainm ùr air a' bhuidheann a thagh thu
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Briog gus am buidheann seo a dhìon bho fhèin-leasachadh
 
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Cuir carbadan co-roinnte ris
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Thoir a h-uile carbad air falbh
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Thoir ainm ùr air buidheann
 
 # Build vehicle window
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Carbadan-rèile ùra
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Carbadan-rèile dealain ùra
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Carbadan aona-rèile ùra
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Carbadan magnaiteach ùra
 
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Carbadan-rèile ùra
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Carbadan-rathaid ùra
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Longan ùra
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Carbadan-adhair ùra
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cosgais: {GOLD}{CURRENCY_LONG}{BLACK} Cuideam: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Luaths: {GOLD}{VELOCITY}{BLACK} Cumhachd: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Luaths: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Luths air a' chuain: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Luaths air canal/abhainn: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cosgaisean ruith: {GOLD}{CURRENCY_LONG}/bliadhna
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Tomhas-lìonaidh: {GOLD}{CARGO_LONG} {STRING}
+STR_PURCHASE_INFO_REFITTABLE                                    :(gabhaidh leasachadh)
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Air a dhealbhadh: {GOLD}{NUM}{BLACK} Beatha: {GOLD}{COMMA} bliadhna
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Earbsachd as motha: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_COST                                          :{BLACK}Cosgais: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Cuideam: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cosgais: {GOLD}{CURRENCY_LONG}{BLACK} Luaths: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Tomhas-lìonaidh: {GOLD}{CARGO_LONG}, {CARGO_LONG}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Carbadan le cumhachd: {GOLD}+{POWER}{BLACK} Cuideam: {GOLD}+{WEIGHT_SHORT}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Gabhaidh leasachadh na: {GOLD}{STRING}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Na h-uile seòrsa dhe charago
+STR_PURCHASE_INFO_ALL_BUT                                       :Na h-uile ach {CARGO_LIST}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Spàirn tàirnge as motha: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Astar: {GOLD}{COMMA} {P leac leac leacan leac}
 
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Roghainn nan carbadan-rèile - briog air carbad airson fiosrachaidh
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Roghainn nan carbadan-rathaid - briog air carbad airson fiosrachaidh
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Roghainn nan long - briog air long airson fiosrachaidh
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Roghainn nan carbadan-adhair - briog air carbad airson fiosrachaidh
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Ceannaich carbad
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Ceannaich carbad
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Ceannaich long
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Ceannaich carbad-adhair
 
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Ceannaich an carbad-rèile a thagh thu. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' cheannach dad
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Ceannaich an carbad-rathaid a thagh thu. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' cheannach dad
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Ceannaich an long a thagh thu. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' cheannach dad
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Ceannaich an carbad-adhair a thagh thu. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' cheannach dad
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Thoir ainm ùr air
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Thoir ainm ùr air
 STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Thoir ainm ùr air
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Thoir ainm ùr air
 
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Thoir ainm ùr air an t-seòrsa dhe charbad-rèile
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Thoir ainm ùr air an t-seòrsa dhe charbad-rathaid
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Thoir ainm ùr air an t-seòrsa dhe long
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Thoir ainm ùr air an t-seòrsa dhe charbad-adhair
 
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Thoir ainm ùr air an t-seòrsa dhe charbad-rèile
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Thoir ainm ùr air an t-seòrsa dhe charbad-rathaid
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Thoir ainm ùr air an t-seòrsa dhe long
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Thoir ainm ùr air an t-seòrsa dhe charbad-adhair
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
 
+STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} {P charbad charbad carbadan carbad}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 
 
@@ -3269,6 +3431,10 @@ STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Fèin-le
 
 
 
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Meadhanaich am prìomh-shealladh air an trèana-lann. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad na trèana-lainn
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Meadhanaich am prìomh-shealladh air a' gharaids. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad na garaids
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Meadhanaich am prìomh-shealladh air an long-lann. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad na long-lainn
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Meadhanaich am prìomh-shealladh air a' hangar. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' hangair
 
 
 
@@ -3311,6 +3477,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Glèidhi
 
 # Vehicle view
 
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Meadhanaich am prìomh-shealladh air an trèana. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad an trèana
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Meadhanaich am prìomh-shealladh air a' charbad. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' charbaid
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Meadhanaich am prìomh-shealladh air an long. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad na luinge
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Meadhanaich am prìomh-shealladh air a' charbad-adhair. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' charbaid-adhair
 
 
 
@@ -3478,6 +3648,7 @@ STR_FEEDER_COST                                                 :{YELLOW}Tar-ais
 # Levelling errors
 
 # Company related errors
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Chan urrainn dhuinn ainm an stiùiriche atharrachadh...
 
 
 # Town related errors
