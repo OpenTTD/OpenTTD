@@ -289,6 +289,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :ஆற்றல
 STR_SORT_BY_CARGO_CAPACITY                                      :சரக்கு கொள்ளளவு
 STR_SORT_BY_RANGE                                               :வரையறை
 STR_SORT_BY_POPULATION                                          :மக்கள் தொகை
+STR_SORT_BY_RATING                                              :மதிப்பீடு
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}இடை நிறுத்து
@@ -1291,7 +1292,7 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :மின்ச
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :விளையாடுபவரின் நிலையத்திற்கு முதல் வாகனம் வருகை புரிந்தது: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :போட்டியாளரின் நிலையத்திற்கு முதல் வாகனம் வருகை புரிந்தது: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :விபத்துகள் / பேரழிவுகள்: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :விபத்துகள் அல்லது பேரழிவுகள் நிகழும்போது செய்தித்தாளினைக் காட்டு
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :விபத்துகள் அல்லது பேரழிவுகள் நிகழும்போது செய்தித்தாள் ஒன்றினைக் காட்டு
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :நிறுவனத்தின் விவரம்: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :தொழிற்சாலைகளின் திறப்பு: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :தொழிற்சாலைகள் திறக்கப்படும்போது செய்தித்தாளினைக் காட்டு
@@ -3370,7 +3371,7 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}தா�
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}எதிர்ப்பார்க்கப்படுவது
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}அட்டவணையிடப்பட்ட
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}எதிர்பார்க்கப்பட்ட மற்றும் அட்டவணையிடப்பட்ட மாற்றவும்
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}எதிர்பார்க்கப்பட்ட மற்றும் அட்டவணையிடப்பட்ட ஆகிவற்றிற்குள் இடைமாற்றவும்
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
@@ -4205,12 +4206,12 @@ STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP பயண�
 STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :பேக்வெல் 300 ஹோவர்கிராப்ட்
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :சுக்கெர்-சுக் பயணப்படகு
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :ஸெவர்ஸெஅக் பயணப்படகு
-STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :ஈஏட் சரக்குக் கப்பல்
-STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :பெக்வெல் சரக்குக் கப்பல்
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :மைடீமூவர் சரக்குக் கப்பல்
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :பவர்னட் சரக்குக் கப்பல்
-STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :ஸம்ப்ஸன் U52
-STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :கொல்மன் கவுன்ட்
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :யேட் சரக்குக் கப்பல்
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :பேக்வெல் சரக்குக் கப்பல்
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :மைட்டிமூவர் சரக்குக் கப்பல்
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :பவர்னாட் சரக்குக் கப்பல்
+STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :சாம்ப்சன் யு52
+STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :கோல்மேன் கவுன்ட்
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP டார்ட்
 STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :ஈஏட் ஹவ்கன்
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :பேக்வெல் கோட்ஸ்வால்டு LB-3
@@ -4239,7 +4240,7 @@ STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :கெல்ல
 STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :கெல்லிங்க் கெ6
 STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :கெல்லிங்க் கெ7
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :டார்வின் 700
-STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP ஹைபர்டிராபட் 2
+STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP ஹைபர்டார்ட் 2
 STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :டிங்௧ர் 200
 STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :டிங்௧ர் 1000
 STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :பிலோடிபுட் 100
