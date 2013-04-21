@@ -289,6 +289,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Kraaft/Betriebs
 STR_SORT_BY_CARGO_CAPACITY                                      :Luedungskapazitéit
 STR_SORT_BY_RANGE                                               :Längt
 STR_SORT_BY_POPULATION                                          :Bevölkerung
+STR_SORT_BY_RATING                                              :Rating
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Spill pausen
@@ -876,6 +877,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lithauësch Lit
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Südkoreanëschen Won (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Südafrikanësche Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Eegen...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgëschen Lari (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranëschen Rial (IRR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Moosseenheeten
@@ -1103,7 +1106,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Bestëmm den Ni
 STR_CONFIG_SETTING_RECESSIONS                                   :Rezessiounen: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Wann ugeschalt kann all puer Joer eng Rezessioun kommen. Während enger Rezessioun ass d'Produktioun däitlech méi niddreg (an klëmmt erëm op den alen Niveau no der Rezessioun)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Verbidden dass Zich an enger Statioun emdréinen: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Wann ugeschalt kënnen Zich net an Nët-Endstatiounen emdréinen, wann en méi kuerzen Wee op d'Destinatioun ass wann en emdréint
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Wann ugeschalt kënnen Zich net an Net-Endstatiounen emdréinen, wann en méi kuerzen Wee op d'Destinatioun ass wann en emdréint
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrophen: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Stelle Katastrophen un oder aus déi eventuell Gefierer an Industrien blockéiren oder zerstéiren
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Dem Stadrot seng Astellung zum Embauen vun der Landschaft: {STRING}
@@ -1602,6 +1605,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... Spil
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoréiren Basis Grafik Set '{STRING}': net fonnt
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoréiren Basis Sound Set '{STRING}': net fonnt
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoréiren Basis Music Set '{STRING}': net fonnt
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Out of memory
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Reservéirung vun {BYTES} Spritecache feel versot. De Spritecache gouf reduzéiert op {BYTES}. Dëst reduzéiert d'Performance vun OpenTTD. Fir Späicher ze spueren kann een probéiren 32bpp Grafiken auszeschalten an/oder Zoom-Eran Stufen
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2080,6 +2085,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Wiel Upg
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Markéier all Inhalt,den en Upgrade fir existéirenden Inhalt ass, als Download
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Alles ofwielen
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Alles markéiren fir net downzeloaden
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Extern Websäiten durchsichen
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Sich Inhalter déi net op der OpenTTD Downloadwebsäit stin op aneren Websäiten
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Du verléiss OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Terms and conditions fir Inhalter vun externen Websäiten ze downloaden goufen geännert.{}Du muss op där Säit nokucken wéi een den Inhalt installéiert.{}Wellsde weiderman?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag-/Nummfilter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Websäit besichen
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Besicht d'Websäit vun dësem Inhalt
@@ -2933,6 +2942,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Um waarden: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} ënnerwee vun {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservéiert fir gelueden ze ginn)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acceptéiert
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Weis d'Lëscht vun den acceptéierten Wueren
@@ -3451,6 +3461,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Revisiou
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Revisiounsintervall em 10 erhéijen. Ctrl+Klick erhéicht Intervall em 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Revisiounsintervall em 10 erofsetzen. Ctrl+Klick setzt den Intervall em 5 rof
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Wiesselt den Revisiounsintervall
+STR_VEHICLE_DETAILS_DEFAULT                                     :Standard
+STR_VEHICLE_DETAILS_DAYS                                        :Deeg
+STR_VEHICLE_DETAILS_PERCENT                                     :Prozent
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Zuch benennen
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Stroossengefiert benennen
@@ -3823,6 +3837,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Akommes: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {GREEN}Akommes: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {GREEN}Akommes: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {RED}Käschten: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {RED}Käschten: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Geschätzten Käschten: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Geschätzten Akommen: {CURRENCY_LONG}
 

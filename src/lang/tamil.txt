@@ -793,6 +793,7 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}இன் சென்ற வருட நிகர லாபம் {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} அடுத்த இடத்திற்கு செல்ல இயல்வில்லை எல்லைக்கு வெளியே இருப்பதினால்
 
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} மாற்றியமைப்பு கட்டளை நிறைவேற்றப்படாததால் நிறுத்தப்பட்டது
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}தானியங்கி புதுப்பித்தல் தோல்வியடைந்தது {VEHICLE} இன்{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}புதிய {STRING} இப்போது கிடைக்கும்!
@@ -804,6 +805,7 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} இப்போது {STRING} ஏற்றுக்கொள்கிறது
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} இப்போது {STRING} {STRING} ஆகியவற்றை ஏற்றுக்கொள்கிறது
 
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}மானியம் இனிமேல் தரப்படாது:{}{}{STRING} இருந்து {STRING} {STRING} வரை போக்குவரத்திற்கு மானியம் வழங்கப்படாது
 
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}போக்குவரத்து தனியுரிமை!
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN} நகராட்சியின் முழு போக்குவரத்து உரிமைகளையும் ஒரு வருடத்திற்கு {STRING} வாங்கியுள்ளது!
