@@ -985,7 +985,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}Tha {VEH
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Chan eil òrduighean gu leòr aig {VEHICLE} air an sgeideal
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Chan eil òrduighean gu leòr air a' chlàr-ama aig {VEHICLE}
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Tha òrdugh falamh aig {VEHICLE}
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Tha òrdugh dùbailte aig {VEHICLE}
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Tha stèisean mì-dhligheach sna h-òrduighean aig {VEHICLE}
@@ -1758,7 +1758,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Comharr
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Làimhseachadh carago
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Cluicheadairean coimpiutair
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Fèin-nuadhachadh
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Seirbheis
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Obair-glèidhidh
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Lorg shlighean
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trèanaichean
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Bailtean
@@ -3051,12 +3051,13 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Taisteal
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post am mìos mu dheireadh: {ORANGE}{COMMA}{BLACK}  as motha: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carago a tha a dhìth ach am fàs am baile:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}Feum air {ORANGE}{STRING}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{BLACK}Feum air {ORANGE}{STRING}{BLACK} sa gheamhradh
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} air a lìbhrigeah
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (a dhìth fhathast)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (air lìbhrigeadh)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Fàsaidh am baile gach uile {ORANGE}{COMMA}{BLACK} latha
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Fàsaidh am baile gach uile {ORANGE}{COMMA}{BLACK} latha (maoinichte)
-STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{RED}Chan eil {BLACK}a' fàs{BLACK}
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{RED}Chan eil {BLACK}a' fàs
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Cuingeachaidhean fuaime sa bhaile: {ORANGE}{COMMA}{BLACK}  air a char as motha: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Meadhanaich am prìomh-shealladh air a' bhaile. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' bhaile
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Ùghdarras ionadail
@@ -3163,6 +3164,7 @@ STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Seall li
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Gabhaidh e ri: {WHITE}{CARGO_LIST}
 
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Tha còirichean giùlain às-dùnach aig an stèisean seo sa bhaile seo.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{BLACK}Cheannaich {YELLOW}{COMPANY}{BLACK} còirichean giùlain às-dùnach sa bhaile seo.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Rangachaidhean
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Seall rangachaidhean nan stèiseanan
@@ -3183,10 +3185,10 @@ STR_CARGO_RATING_OUTSTANDING                                    :Barraichte
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Meadhanaich am prìomh-shealladh air an stèisean. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad an stèisein
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Atharraich ainm an stèisein
 
-STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Seall a h-uile trèan is an stèisean seo air an sgeideal aice
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Seall a h-uile carbad-rathaid is an stèisean seo air an sgeideal aige
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Seall a h-uile carbad-adhair is am port-adhair seo air an sgeideal aige
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Seall a h-uile long is am port seo air an sgeideal aice
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Seall a h-uile trèan is an stèisean seo air a' chlàr-ama aice
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Seall a h-uile carbad-rathaid is an stèisean seo air a' chlàr-ama aige
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Seall a h-uile carbad-adhair is am port-adhair seo air an clàr-ama aige
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Seall a h-uile long is am port seo air a' chlàr-ama aice
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Thoir ainm ùr air an stèisean/ionad luchdaidh
 
@@ -3350,7 +3352,7 @@ STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Seall li
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Stiùirich an liosta
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Cuir òrduighean dhan a h-uile carbad air an liosta seo
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Cuir carbadan nan àite
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Cuir airson seirbheise
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Cuir airson obrach-glèidhidh
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Cuir gu trèan-lann
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Cuir gu garaid
@@ -3455,6 +3457,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} {P charbad charbad carbadan carbad}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trèanaichean - slaod carbad le briogadh deas gus a chur ris/a thoirt air falbh bhon trèan no dèan briogadh deas airson fiosrachaidh. Cùm Ctrl sìos gus an dà rud a chur an sàs air a' cheangal a leanas
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Carbadan - Dèan briogadh deas air a' charbad airson fiosrachaidh
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Longan - Dèan briogadh deas air an long airson fiosrachaidh
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Carbadan-adhair - Dèan briogadh deas air a' charbad airson fiosrachaidh
@@ -3501,6 +3504,10 @@ STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Meadhana
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Meadhanaich am prìomh-shealladh air a' chala. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' chalaidh
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Meadhanaich am prìomh-shealladh air a' hangar. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' hangair
 
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Faigh liosta dhe na h-uile trèana is an trèana-lann seo sna h-òrduighean aice
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Faigh liosta dhe na h-uile carbad-rathaid is a' gharaids seo sna h-òrduighean aige
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Faigh liosta dhe na h-uile long is an cala seo sna h-òrduighean aice
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Faigh liosta dhe na h-uile carbad-adhair is an hangar seo sna h-òrduighean aige
 
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Briog gus a h-uile trèan a chur na stad san trèan-lann
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Briog gus a h-uile carbad-rathaid a chur na stad sa gharaids
@@ -3559,6 +3566,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Carbadan-rèile
 STR_REPLACE_MONORAIL_VEHICLES                                   :Carbadan aona-rèile
 STR_REPLACE_MAGLEV_VEHICLES                                     :Carbadan magnaiteach
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}A' toirt air falbh carbad: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Glèidhich faide aig trèan nuair a thèid fhèin-leasachadh le toirt air falbh nan carbadan (bho thoiseach na trèan a-mach) ma dh'fhasas an trèan nas fhaide le einnsean ùr
 
 # Vehicle view
@@ -3579,6 +3587,7 @@ STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ceannaic
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ceannaichidh seo lethbhreac dhen long. Thoir na h-aon òrduighean dhan tè ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ceannaichidh seo lethbhreac dhen charbad-adhair. Thoir na h-aon òrduighean dhan fhear ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
 
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Thoir air an trèan leantainn air adhart gun a bhith a' feitheamh air a' chomharra
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Leasaich an trèan ach an gabh i ri seòrsa dhe charago eile
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Leasaich an carbad-rhathaid ach an gabh e ri seòrsa dhe charago eile
@@ -3588,16 +3597,20 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Leasaich
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Thoir tilleadh air an trèan
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Thoir tilleadh air a' charbad
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Seall òrduighean na trèan. Cleachd Ctrl+briogadh gus an sgeideal aig an trèan a shealltainn
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Seall òrduighean a' charbaid. Cleachd Ctrl+briogadh gus an sgeideal aig a' charbad a shealltainn
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Seall òrduighean na luinge. Cleachd Ctrl+briogadh gus an sgeideal aig an long a shealltainn
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Seall òrduighean a' charbaid. Cleachd Ctrl+briogadh gus an sgeideal aig a' charbad a shealltainn
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Seall òrduighean na trèan. Cleachd Ctrl+briogadh gus an clàr-ama aig an trèan a shealltainn
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Seall òrduighean a' charbaid. Cleachd Ctrl+briogadh gus an clàr-ama aig a' charbad a shealltainn
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Seall òrduighean na luinge. Cleachd Ctrl+briogadh gus an clàr-ama aig an long a shealltainn
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Seall òrduighean a' charbaid. Cleachd Ctrl+briogadh gus an clàr-ama aig a' charbad a shealltainn
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Seall mion-fhiosrachadh na trèan
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Seall mion-fhiosrachadh a' charbaid-rathaid
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Seall mion-fhiosrachadh na luinge
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Seall mion-fhiosrachadh a' charbaid
 
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Gniomh na trèan seo - briog gus an trèan a chur a' dol/na stad. Sgolaich dhan cheann-uidhe le Ctrl+briogadh
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gniomh a' charbaid seo - briog gus an carbad a chur a' dol/na stad. Sgolaich dhan cheann-uidhe le Ctrl+briogadh
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Gniomh na luinge seo - briog gus an long a chur a' dol/na stad. Sgolaich dhan cheann-uidhe le Ctrl+briogadh
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gniomh a' charbaid-adhair seo - briog gus an carbad a chur a' dol/na stad. Sgolaich dhan cheann-uidhe le Ctrl+briogadh
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Ga luchdadh / dì-luchdadh
@@ -3614,7 +3627,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}A' dèa
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Gun òrdugh, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}A' dèanamh air {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}A' dèanamh air {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Seirbheis aig {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Obair-glèidhidh aig {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}air stad
@@ -3650,8 +3663,14 @@ STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Tomhas-l
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Tomhas-lìonaidh: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Tomhas-lìonaidh: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Tar-aisig creidseas: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Tricead na h-obrach-glèidhidh: {LTBLUE}{COMMA} {P latha latha làithean latha}{BLACK}   An obair-glèidhidh mu dheireadh: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Tricead na h-obrach-glèidhidh: {LTBLUE}{COMMA}%{BLACK}   An obair-glèidhidh mu dheireadh: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Meudaich tricead na h-obrach-glèidhidh le 10. Meudaichidh Ctrl+briogadh tricead na h-obrach-glèidhidh le 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Lùghdaich tricead na h-obrach-glèidhidh le 10. Lùghdaichidh Ctrl+briogadh tricead na h-obrach-glèidhidh le 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Atharraich seòrsa dhe thricead na h-obrach-glèidhidh
 STR_VEHICLE_DETAILS_DEFAULT                                     :Tùsail
 STR_VEHICLE_DETAILS_DAYS                                        :Latha
 STR_VEHICLE_DETAILS_PERCENT                                     :Ceudad
@@ -3665,43 +3684,186 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Thoir ai
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Air a {G 0 thogail togail}: {LTBLUE}{NUM}{BLACK} Luach: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Luach: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Tomhas-lìonaidh carago iomlan aig an trèan seo:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
+STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Falamh
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} bho {STATION}
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} bho {STATION} (x{NUM})
 
+STR_VEHICLE_DETAIL_TAB_CARGO                                    :{G=m}{BLACK}Carago
+STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Seall mion-fhiosrachadh mun charago ga ghùlan
+STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Fiosrachadh
+STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Seall mion-fhiosrachadh air carbadan-trèan
+STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Tomhasan-lìonaidh
+STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Seall an tomhas-lìonaidh aig gach carbad
+STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Carago iomlan
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Seall an carago iomlan aig an trèan, air a roinneadh le seòrsa a' charago
 
+STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Tomhas-lìonaidh: {LTBLUE}
 
 # Vehicle refit
+STR_REFIT_TITLE                                                 :{GOLD}Tagh an seòrsa dhe charago airson a ghiùlan:
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Tomhas-lìonaidh ùr: {GOLD}{CARGO_LONG}{}{BLACK}Cosgais an leasachaidh: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Tomhas-lìonaidh ùr: {GOLD}{CARGO_LONG}{}{BLACK}Teachd a-steach bhon leasachadh: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Tomhas-lìonaidh ùr: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cosgais an leasachaidh: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Tomhas-lìonaidh ùr: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Teachd a-steach bhon leasachadh: {GREEN}{CURRENCY_LONG}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Tagh na carbadan a tha thu airson leasachadh. Slaod an luchag gus iomad charbad a thaghadh. Briog air àite bàn gus an carbad air fad a thaghadh. Taghaidh Ctrl+briogadh carbad is an ceangal a leanas
 
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tagh an seòrsa dhe charago a ghùlaineas an trèan
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Tagh an seòsa dhe charago a ghùlaineas an carbad-rathaid
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Tagh an seòsa dhe charago a ghùlaineas an long
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Tagh an seòsa dhe charago a ghùlaineas an carbad-adhair
 
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Leasaich an trèan
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Leasaich an carbad-rathaid
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Leasaich an long
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Leasaich an carbad-adhair
 
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Leasaich an trèan ach an giùlain e an seòrsa dhe charago a thagh thu
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Leasaich an carbad-rathaid ach an giùlain e an seòrsa dhe charago a thagh thu
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Leasaich an long ach an giùlain i an seòrsa dhe charago a thagh thu
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Leasaich an carbad-adhair ach an giùlain e an seòrsa dhe charago a thagh thu
 
 # Order view
+STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Òrduighean)
+STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Clàr-ama
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Gearr leum dhan t-sealladh clàir-ama
 
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Liosta nan òrduighean - briog air òrdugh gus a thaghadh. Sgolaichidh Ctrl+briogadh gu ceann-uidhe an òrduigh
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
+STR_ORDERS_END_OF_ORDERS                                        :- - Deireadh nan òrduighean - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Deireadh nan òrduighean ro-roinnte - -
 
 # Order bottom buttons
+STR_ORDER_NON_STOP                                              :{BLACK}Gun stad
+STR_ORDER_GO_TO                                                 :Rach gu
+STR_ORDER_GO_NON_STOP_TO                                        :Rach gun stad gu
+STR_ORDER_GO_VIA                                                :Rach slighe
+STR_ORDER_GO_NON_STOP_VIA                                       :Rach gun stad slighe
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Atharraich an tèid stad leis an òrdugh a thagh thu
 
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Luchdaich carago sam bith gu iomlan
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Luchdaidh na tha ri làimh
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Luchdaich a h-uile carago gu iomlan
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Luchdaich carago sam bith gu iomlan
+STR_ORDER_DROP_NO_LOADING                                       :Gun luchdadh sam bith
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Atharraich giùlan luchdaidh aig an òrdugh a thagh thu
 
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Dì-luchdaich na h-uile
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Dì-luchdaich ma ghabhar ris
+STR_ORDER_DROP_UNLOAD                                           :Dì-luchdaich a h-uile
+STR_ORDER_DROP_TRANSFER                                         :Tar-aisig
+STR_ORDER_DROP_NO_UNLOADING                                     :Gun dì-luchdadh sam bith
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Atharraich giùlan dì-luchdaidh aig an òrdugh a thagh thu
 
+STR_ORDER_REFIT                                                 :{BLACK}Leasaich
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Tagh an seòrsa dhe charago 's tu airson leasachadh air a shon leis an òrdugh seo. Dèan Ctrl+briogadh gus an stiùireadh leasachaidh a thoirt air falbh
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Fèin-leasaich
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Tagh an seòrsa dhe charago 's tu airson fèin-leasachadh air a shon leis an òrdugh seo. Dèan Ctrl+briogadh gus an stiùireadh leasachaidh a thoirt air falbh. Cha tèid fèin-leasachadha dhèanamh ach ma tha an carbad comasach
+STR_ORDER_DROP_REFIT_AUTO                                       :Carago stèidhichte
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Carago ri làimh
 
+STR_ORDER_SERVICE                                               :{BLACK}Serbheis
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Rach ann an-còmhnaidh
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Seibheis ma tha e a dhìth
+STR_ORDER_DROP_HALT_DEPOT                                       :Stad
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Leum thairis air an òrdugh seo mur eil feum air obair-glèidhidh
 
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dàta a' charbaid air a bheil an leum stèidhichte
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Ceudad an luchdaidh
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Earbsachd
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Luaths as motha
+STR_ORDER_CONDITIONAL_AGE                                       :Aois (bliadhna)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Feumach air obair-glèidhidh
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :An-còmhnaidh
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Beatha air fhàgail (bliadhna)
 
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Mar a thèid dàta a' charbaid a choimeas ris an luach
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :a tha co-ionnan ri
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nach eil co-ionnan ri
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :a tha nas lugha na
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :a tha nas lugha na no co-ionnan ri
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :a tha nas motha na
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :a tha nas motha na no co-ionnan ri
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :a tha fìor
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :a tha breugach
 
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}An luach ris a thèid dàta a' charbaid a choimeas
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Cuir a-steach luach airson coimeas ris
 
+STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Leum thairis air
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Leum thàiris air an òrdugh seo is tòisich air an ath-fhear. Nì Ctrl+briogadh leum dhan òrdugh a thagh thu
 
+STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Sguab às dha
+STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Sguab às dhan òrdugh a thagh thu
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Sguab às dha na h-uile òrdugh
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Sguir dhen cho-roinneadh
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Sguir dhe cho-roinneadh liosta nan òrduighean. Sguabaidh Ctrl+briogadh às dhe na h-uile òrdugh airson a' charbaid seo cuideachd
 
+STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Rach gu
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Rach dhan hangar as fhaisge
+STR_ORDER_SHARE                                                 :Co-roinn na h-òrduighean
 
 
 # String parts to build the order string
+STR_ORDER_GO_TO_WAYPOINT                                        :Rach slighe {WAYPOINT}
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Rach gun stad slighe {WAYPOINT}
 
+STR_ORDER_SERVICE_AT                                            :Obair-glèidhidh aig
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Obair-glèidhidh gun stad aig
 
+STR_ORDER_NEAREST_DEPOT                                         :as fhaisge
+STR_ORDER_NEAREST_HANGAR                                        :an hangar as fhaisge
+STR_ORDER_TRAIN_DEPOT                                           :trèan-lann
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :garaids
+STR_ORDER_SHIP_DEPOT                                            :cala
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{0:STRING} {2:STRING} {1:STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
+STR_ORDER_REFIT_ORDER                                           :(Leasaich na {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :(Leasaich na {STRING} is stad)
+STR_ORDER_STOP_ORDER                                            :(Stad)
 
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_IMPLICIT                                              :(Fillte a-staigh)
 
+STR_ORDER_FULL_LOAD                                             :(Luchdaich gu iomlan)
+STR_ORDER_FULL_LOAD_ANY                                         :(Luchdaich carago sam bith gu iomlan)
+STR_ORDER_NO_LOAD                                               :(Gun luchdadh sam bith)
+STR_ORDER_UNLOAD                                                :(Dì-luchdaich is gabh ri carago)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Dì-luchdaich is feitheamh air luchdadh iomlan)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Dì-luchdaich is feitheamh air carago sam bith iomlan)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Dì-luchdaich is fàg falamh)
+STR_ORDER_TRANSFER                                              :(Tar-aisig is gabh ri carago)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Tar-aisig is feitheamh air luchdadh iomlan)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Tar-aisig is feitheamh air luchdadh sam bith iomlan)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Tar-aisig is fàg falamh)
+STR_ORDER_NO_UNLOAD                                             :(Na dì-luchdaich is gabh ri carago)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Na dì-luchdaich is feitheamh air carago iomlan)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Na dì-luchdaich is feitheamh air carago sam bith iomlan)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Na dì-luchdaich is na luchdaich)
 
+STR_ORDER_AUTO_REFIT                                            :(Fèin-leasaich na {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Luchdadh iomlan le fèin-leasachadh na {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Luchdadh iomlan aig carago sam bith le fèin-leasachadh na {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Dì-luchdaich is gabh ri carago le fèin-leasachadh na {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Dì-luchdaich is feitheamh air luchdadh iomlan le fèin-leasachadh na {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Dì-luchdaich is feitheamh air luchdadh sam bith iomlan le fèin-leasachadh na {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Tar-aisig is gabh ri carago le fèin-leasachadh na {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Tar-aisig is feitheamh air carago iomlan le fèin-leasachadh na {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Tar-aisig is feitheamh air carago sam bith iomlan le fèin-leasachadh na {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Na dì-luchdaich is gabh ri carago le fèin-leasachadh na {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Na dì-luchdaich is feitheamh air carago iomlan le fèin-leasachadh na {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Na dì-luchdaich is feitheamh air carago sam bith iomlan le fèin-leasachadh na {STRING})
 
+STR_ORDER_AUTO_REFIT_ANY                                        :carago ri làimh
 
 
 
@@ -3850,6 +4012,69 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(crìoch airgid
 
 ##id 0x2000
 # Town building names
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :{G=m}Ionad oifisean àrd
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :{G=m}Ionad oifisean
+STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :{G=m}Ionad fhlataichean beag
+STR_TOWN_BUILDING_NAME_CHURCH_1                                 :{G=f}Eaglais
+STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :{G=m}Ionad oifisean mòr
+STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Taighean-baile
+STR_TOWN_BUILDING_NAME_HOTEL_1                                  :{G=m}Taigh-òsta
+STR_TOWN_BUILDING_NAME_STATUE_1                                 :{G=f}Ìomhaigh
+STR_TOWN_BUILDING_NAME_STATUE_1.nom                             :{G=f}Ìomhaigh
+STR_TOWN_BUILDING_NAME_STATUE_1.gen                             :{G=f}Ìomhaighe
+STR_TOWN_BUILDING_NAME_STATUE_1.dat                             :{G=f}Ìomhaigh
+STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :{G=m}Fuaran
+STR_TOWN_BUILDING_NAME_PARK_1                                   :{G=f}Pàirc
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :{G=m}Ionad oifisean
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Bùthan is oifisean
+STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :{G=m}Togalach oifisean ùr-nòsach
+STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :{G=m}Taigh-bathair
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :{G=m}Ionad oifisean
+STR_TOWN_BUILDING_NAME_STADIUM_1                                :{G=m}Stèideam
+STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Seann taighean
+STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Taighean-croite
+STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Taighean
+STR_TOWN_BUILDING_NAME_FLATS_1                                  :Flataichean
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Ionad oifisean àrd
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Bùthan is oifisean
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Bùthan is oifisean
+STR_TOWN_BUILDING_NAME_THEATER_1                                :{G=m}Taigh-cluiche
+STR_TOWN_BUILDING_NAME_THEATER_1.nom                            :{G=m}Taigh-cluiche
+STR_TOWN_BUILDING_NAME_THEATER_1.gen                            :{G=m}Taighe-chluiche
+STR_TOWN_BUILDING_NAME_THEATER_1.dat                            :{G=m}Taigh-cluiche
+STR_TOWN_BUILDING_NAME_STADIUM_2                                :{G=m}Stèideam
+STR_TOWN_BUILDING_NAME_STADIUM_2.nom                            :{G=m}Stèideam
+STR_TOWN_BUILDING_NAME_STADIUM_2.gen                            :{G=m}Stèideim
+STR_TOWN_BUILDING_NAME_STADIUM_2.dat                            :{G=m}Stèideam
+STR_TOWN_BUILDING_NAME_OFFICES_1                                :{G=f}Oifisean
+STR_TOWN_BUILDING_NAME_HOUSES_2                                 :{G=m}Taighean
+STR_TOWN_BUILDING_NAME_HOUSES_2.nom                             :{G=m}Taighean
+STR_TOWN_BUILDING_NAME_HOUSES_2.gen                             :{G=m}Thaighean
+STR_TOWN_BUILDING_NAME_HOUSES_2.dat                             :{G=m}Taighean
+STR_TOWN_BUILDING_NAME_CINEMA_1                                 :{G=m}Taigh-dhealbh
+STR_TOWN_BUILDING_NAME_CINEMA_1.nom                             :{G=m}Taigh-dhealbh
+STR_TOWN_BUILDING_NAME_CINEMA_1.gen                             :{G=m}Taighe-dhealbh
+STR_TOWN_BUILDING_NAME_CINEMA_1.dat                             :{G=m}Taigh-dhealbh
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :{G=m}Ionad bhùthan
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1.nom                      :{G=m}Ionad bhùthan
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1.gen                      :{G=m}Ionaid bhùthan
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1.dat                      :{G=m}Ionad bhùthan
+STR_TOWN_BUILDING_NAME_IGLOO_1                                  :{G=m}Taigh-sneachda
+STR_TOWN_BUILDING_NAME_IGLOO_1.nom                              :{G=m}Taigh-sneachda
+STR_TOWN_BUILDING_NAME_IGLOO_1.gen                              :{G=m}Taighe-sneachda
+STR_TOWN_BUILDING_NAME_IGLOO_1.dat                              :{G=m}Taigh-sneachda
+STR_TOWN_BUILDING_NAME_TEPEES_1                                 :{G=m}Tìpidhean
+STR_TOWN_BUILDING_NAME_TEPEES_1.nom                             :{G=m}Tìpidhean
+STR_TOWN_BUILDING_NAME_TEPEES_1.gen                             :{G=m}Thìpidhean
+STR_TOWN_BUILDING_NAME_TEPEES_1.dat                             :{G=m}Tìpidhean
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :{G=m}Taigh poit-teatha
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1.nom                       :{G=m}Taigh poit-teatha
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1.gen                       :{G=m}Taighe poit-teatha
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1.dat                       :{G=m}Taigh poit-teatha
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :{G=f}Mucag-airgid
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1.nom                         :{G=f}Mucag-airgid
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1.gen                         :{G=f}Mucaige-airgid
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1.dat                         :{G=f}Mucag-airgid
 
 ##id 0x4800
 # industry names
@@ -3902,7 +4127,7 @@ STR_INDUSTRY_NAME_BANK                                          :Banca
 STR_INDUSTRY_NAME_BANK.nom                                      :Banca
 STR_INDUSTRY_NAME_BANK.gen                                      :Banca
 STR_INDUSTRY_NAME_BANK.dat                                      :Banca
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Factaraidh bidhe
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Factaraidh bìdh
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.nom                     :Factaraidh bidhe
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.gen                     :Factaraidh bidhe
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.dat                     :Factaraidh bidhe
@@ -4077,11 +4302,171 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Dealai
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Dealain)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Dealain)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Dealain)
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Carbad taistealaich
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Bhana nan litrichean
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Carbad guail
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Carbad thaistealach
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Bhana litrichean
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :{G=f}Truca guail
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Tancair ola
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Bhana sprèidhe
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :{G=m}Bhana bathair
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :{G=f}Drabhailt gràine
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :{G=f}Truca fiodha
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :{G=f}Drabhailt cloich-iarainn
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :{G=f}Truca stàilinne
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :{G=m}Bhana armach
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :{G=m}Bhana bìdh
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :{G=f}Truca pàipeir
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :{G=f}Drabhailt cloich-copair
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :{G=m}Tancair uisge
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :{G=f}Truca measa
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :{G=f}Truca rubair
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :{G=f}Truca siùcair
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :{G=f}Drabhailt canaich-siùcair
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :{G=f}Drabhailt tofaidh
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :{G=m}Bhana builgein
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :{G=m}Tancair cola
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :{G=m}Bhana mìlsein
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :{G=m}Bhana dhèideagan
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :{G=f}Truca bataraidh
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :{G=f}Truca dheochan gucagach
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :{G=f}Truca plastaig
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Dealain)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Dealain)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :{G=m}Carbad thaistealach
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :{G=m}Bhana puist
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :{G=f}Truca guail
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :{G=m}Tancair ola
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :{G=m}Bhana sprèidhe
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :{G=m}Bhana bathair
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :{G=f}Drabhailt gràine
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :{G=f}Truca fiodha
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :{G=f}Drabhailt cloich-iarainn
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :{G=f}Truca stàilinne
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :{G=m}Bhana armach
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Bhana bìdh
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :{G=f}Truca pàipeir
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :{G=f}Drabhailt cloich-copair
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :{G=m}Tancair uisge
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :{G=f}Truca measa
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :{G=f}Truca rubair
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :{G=f}Truca siùcair
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :{G=f}Drabhailt canaich-siùcair
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :{G=f}Drabhailt tofaidh
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :{G=m}Bhana builgein
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Tancair cola
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :{G=m}Tancair mìlsein
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :{G=m}Bhana dhèideagan
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :{G=f}Truca bataraidh
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :{G=f}Truca dheochan gucagach
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :{G=f}Truca plastaig
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Dealain)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Dealain)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (Dealain)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (Dealain)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :{G=m}Carbad thaistealach
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :{G=m}Bhana puist
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :{G=f}Truca guail
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :{G=m}Tancair ola
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :{G=m}Bhana sprèidhe
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :{G=m}Bhana bathair
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :{G=f}Drabhailt gràine
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :{G=f}Truca fiodha
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :{G=f}Drabhailt cloich-iarainn
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :{G=f}Truca stàilinne
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :{G=m}Bhana armach
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :{G=m}Bhana bìdh
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :{G=f}Truca pàipeir
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :{G=f}Drabhailt cloich-copair
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :{G=m}Tancair uisge
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :{G=f}Truca measa
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :{G=f}Truca rubair
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :{G=f}Truca siùcair
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :{G=f}Drabhailt canaich-siùcair
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :{G=f}Drabhailt tofaidh
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :{G=m}Bhana builgein
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :{G=m}Tancair cola
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Tancair mìlsein
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :{G=m}Bhana dhèideagan
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :{G=f}Truca bataraidh
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :{G=f}Truca dheochan gucagach
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :{G=f}Truca plastaig
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :{G=m}Bus rìoghail MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :{G=m}Bus Hereford Leopard
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :{G=m}Bus Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :{G=m}Sàr-bhus Foster MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :{G=m}Bus Ploddyphut MkI
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :{G=m}Bus Ploddyphut MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :{G=m}Bus Ploddyphut MkIII
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :{G=f}Truca guail Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :{G=f}Truca guail Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :{G=f}Truca guail DW
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :{G=f}Truca puist MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :{G=f}Truca puist Reynard
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :{G=f}Truca puist Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :{G=f}Truca puist MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :{G=f}Truca puist Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :{G=f}Truca puist Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :{G=m}Tancair ola Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :{G=m}Tancair ola Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :{G=m}Tancair ola Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :{G=m}Bhana sprèidhe Talbott
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :{G=m}Bhana sprèidhe Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :{G=m}Bhana sprèidhe Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :{G=f}Truca bathair Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :{G=f}Truca bathair Craighead
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :{G=f}Truca bathair Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :{G=f}Truca gràine Hereford
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :{G=f}Truca gràine Thòmais
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :{G=f}Truca gràine Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :{G=f}Truca fiodha Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :{G=f}Truca fiodha Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :{G=f}Truca fiodha Moreland
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :{G=f}Truca cloich-iarainn MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :{G=f}Truca cloich-iarainn Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :{G=f}Truca cloich-iarainn Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :{G=f}Truca stàilinne Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :{G=f}Truca stàilinne Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :{G=f}Truca stàilinne Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :{G=f}Truca armach Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :{G=f}Truca armach Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :{G=f}Truca armach Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :{G=m}Bhana bìdh Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :{G=m}Bhana bìdh Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :{G=m}Bhana bìdh Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :{G=f}Truca pàipeir Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :{G=f}Truca pàipeir Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :{G=f}Truca pàipeir MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :{G=f}Truca cloich-copair MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :{G=f}Truca cloich-copair Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :{G=f}Truca cloich-copair Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :{G=m}Tancair uisge Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :{G=m}Tancair uisge Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :{G=m}Tancair uisge MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :{G=f}Truca measa Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :{G=f}Truca measa Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :{G=f}Truca measa Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :{G=f}Truca rubair Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :{G=f}Truca rubair Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :{G=f}Truca rubair RMT
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :{G=f}Truca siùcair MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :{G=f}Truca siùcair Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :{G=f}Truca siùcair Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :{G=f}Truca cola MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :{G=f}Truca cola Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :{G=f}Truca cola Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :{G=f}Truca canaich-siùcair MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :{G=f}Truca canaich-siùcair Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :{G=f}Truca canaich-siùcair Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :{G=f}Truca tofaidh MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :{G=f}Truca tofaidh Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :{G=f}Truca tofaidh Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :{G=m}Bhana dhèideagan MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :{G=m}Bhana dhèideagan Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :{G=m}Bhana dhèideagan Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :{G=f}Truca mìlsein MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :{G=f}Truca mìlsein Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :{G=f}Truca mìlsein Wizzowow
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :{G=f}Truca bataraidh MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :{G=f}Truca bataraidh Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :{G=f}Truca bataraidh Wizzowow

@@ -290,6 +290,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potência/Custo
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacidade de Carga
 STR_SORT_BY_RANGE                                               :Alcance
 STR_SORT_BY_POPULATION                                          :População
+STR_SORT_BY_RATING                                              :Classificação
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar jogo
@@ -877,6 +878,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Lituano (
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Sul-Coreano (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Sul-Africano (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizado...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari da Georgia
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniano
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Unidades de medidas
@@ -1372,7 +1375,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Toca efeitos so
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Veículos: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Toca efeitos sonoros dos veículos
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiente: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Toca sons de ambiente, sons de indústrias e cidades
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Tocar som ambiente para paisagismo, indústrias e cidades
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desativar construção de infraestrutura quando nenhum veículo adequado estiver disponível: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Quando ativado, a infraestrutura só é disponível se há veículos disponíveis para usá-la, prevenindo gasto de tempo e dinheiro com infraestrutura inútil.
@@ -1429,7 +1432,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Exibe um jornal
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Chegada do primeiro veículo na estação concorrente: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Exibe um jornal quando o primeiro veículo chega numa estação de um competidor
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Acidentes / desastres: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Exibe um jornal quando acidentes ou desastres acontecem
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Exibir jornal quando acidentes ou desastres acontecem
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informações da empresa: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Exibe um jornal quando uma companhia é aberta, ou quando estão próximas da bancarrota
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Abertura de indústrias: {STRING}
@@ -1472,7 +1475,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Ao arrastar, co
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Define a distância a cada qual sinais serão construídos até o próximo obstáculo (sinal, intersecção), ao clicar e arrastar sinais
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} quadrado{P "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Ao arrastar, manter distância fixa entre os sinais: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecione o comportamento da construção de sinais ao Ctrl+Clicar. Se desativado, sinais são colocados ao redor de túneis ou pontes para evitar trechos compridos sem sinalização. Se ativado, sinais são colocados a cada N quadrados, tornando o alinhamento de sinais em trilhos paralelos mais fácil
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecione o comportamento da construção de sinais ao Ctrl+Arrastar. Se desativado, sinais são colocados ao redor de túneis ou pontes para evitar trechos compridos sem sinalização. Se ativado, sinais são colocados a cada N quadrados, tornando o alinhamento de sinais em trilhos paralelos mais fácil
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construir sinaleiros até: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Seleciona o ano a partir do qual semáforos substituirão sinais. Antes desse ano, serão utilizados sinais de placa (diferença puramente estética)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ativar interface de sinais: {STRING}
@@ -1603,6 +1606,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... form
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorando conj. de Gráficos Base '{STRING}': não encontrado
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorando conj. de Sons Base '{STRING}': não encontrado
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorando conj. de Músicas Base '{STRING}': não encontrado
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Sem memória
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}A alocação {BYTES} de spritecache falhou. O spritecache foi reduzido a {BYTES}. A performance do jogo será reduzida. Para reduzir a necessidade de memória tente disabilitar 32bpp gráficos e/ou reduzir o zoom.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3719,7 +3724,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Preenche
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Agendado
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Mudar entre esperado e agendado
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Trocar entre esperado e agendado
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :C:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :P:

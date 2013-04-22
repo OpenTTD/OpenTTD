@@ -3819,7 +3819,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Automats
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Očekivano
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Raspoređeno
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Promijeni između očekivanog i raspoređenog
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Promijeni između očekivanog i zadanog
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :D:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :O:
@@ -4699,7 +4699,7 @@ STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Putnički traje
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Teretni brod Yate
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Teretni brod Bakewell
 STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Teretni brod Mightymover
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Teretni brod Powernaught
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Teretni brod Powernaut
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
