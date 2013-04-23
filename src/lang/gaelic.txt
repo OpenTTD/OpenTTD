@@ -7,7 +7,7 @@
 ##digitsepcur ,
 ##decimalsep .
 ##winlangid 0x083c
-##grflangid 0x00
+##grflangid 0x13
 ##gender m f
 ##case nom gen dat voc
 
