@@ -2284,7 +2284,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Seleccio
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientación da estación de autobuses
-STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Selecciona-la orientación da estación de autobús
+STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Selecciona-la orientación da estación de autobuses
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientación da área de carga de camións
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Selecciona-la orientación da área de carga de camións
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientación da estación de tranvía de pasaxeiros
@@ -2301,11 +2301,11 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Constru�
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construír peirao para barcos. Ctrl habilita a unión de estacións. Shift alterna entre construír/amosar estimación de custo
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Boia de posición, pódese empregar para marcar puntos de ruta adicionais. Shift alterna entre construír/amosar estimación de custo
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construír acueduto. Shift alterna entre construír/amosar estimación de custo
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Define a área de auga.{}Fai un canal, a non ser que manteñas pulsado CTRL ó nivel do mar, entonces inundaránse os arredores do lugar
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Colocar ríos.
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Define a área de auga.{}Fai unha canle, a non ser que manteñas pulsado CTRL ao nivel do mar, entón inundaranse os arredores do lugar
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Colocar ríos
 
 # Ship depot construction window
-STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orient. do Depósito de Barcos
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientación do depósito de barcos
 STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Selecciona-la orientación do depósito de barcos
 
 # Dock construction window
@@ -2313,21 +2313,23 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Peirao
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aeroportos
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construír aeroporto
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construír aeroporto. Ctrl permite unir estacións. Shift alterna entre construír e amosa-lo custo estimado
 
 # Airport construction window
-STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Selección do Aeroporto
+STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Selección de aeroporto
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Selecciona o tamaño/tipo de aeroporto
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Clase de aeroporto
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Patrón {NUM}
 
 STR_AIRPORT_SMALL                                               :Pequeno
 STR_AIRPORT_CITY                                                :Cidade
-STR_AIRPORT_METRO                                               :Aeroporto metropolitano
-STR_AIRPORT_INTERNATIONAL                                       :Aeroporto Internacional
-STR_AIRPORT_COMMUTER                                            :Conmutador
+STR_AIRPORT_METRO                                               :Metropolitano
+STR_AIRPORT_INTERNATIONAL                                       :Internacional
+STR_AIRPORT_COMMUTER                                            :Intercambiador
 STR_AIRPORT_INTERCONTINENTAL                                    :Intercontinental
 STR_AIRPORT_HELIPORT                                            :Heliporto
-STR_AIRPORT_HELIDEPOT                                           :Helidepósito
-STR_AIRPORT_HELISTATION                                         :Heliporto
+STR_AIRPORT_HELIDEPOT                                           :Helihangar
+STR_AIRPORT_HELISTATION                                         :Heliestación
 
 STR_AIRPORT_CLASS_SMALL                                         :Aeroportos pequenos
 STR_AIRPORT_CLASS_LARGE                                         :Aeroportos grandes
@@ -2337,15 +2339,16 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :Aeroportos para
 STR_STATION_BUILD_NOISE                                         :{BLACK}Ruído xerado: {GOLD}{COMMA}
 
 # Landscaping toolbar
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Modificar o terreo
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Baixar unha esquina de terreo
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar unha esquina de terreo
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar terreo
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreo para futuro uso
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Movemento de terras
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Baixar unha esquina de terreo. Ao arrastrar báixase a primeira esquina seleccionada e nivela a área seleccionada á nova cota da esquina. Ctrl selecciona a área diagonalmente. Shift alterna entre construír e amosa-lo custo estimado
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar unha esquina de terreo. Ao arrastrar elévase a primeira esquina seleccionada e nivela a área seleccionada á nova cota da esquina. Ctrl selecciona a área diagonalmente. Shift alterna entre construír e amosa-lo custo estimado
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}{BLACK}Nivela unha área de terreo á cota da primeira esquina de terreo seleccionada. Ctrl selecciona a área diagonalmente. Shift alterna entre construír e amosa-lo custo estimado
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreo para usar no futuro. Shift alterna entre construír e amosa-lo custo estimado
 
 # Object construction window
-STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selección Obxectos
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecciona o obxecto a construír
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selección de obxectos
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecciona o obxecto a construír. Shift alterna entre construír e amosa-lo custo estimado
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Selecciona a clase de obxecto a construír
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Previsualización do obxecto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamaño: {GOLD}{NUM} x {NUM} cadros
 
@@ -2354,31 +2357,31 @@ STR_OBJECT_CLASS_TRNS                                           :Transmisores
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árbores
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecciona-lo tipo de árbore a plantar
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecciona-lo tipo de árbore a plantar. Se xa hai unha árbore no cadro, isto engadirá máis árbores de varios tipos independentemente do tipo seleccionado
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Árbores de tipo aleatorio
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Colocar árbores dun tipo aleatorio
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Colocar árbores de tipo aleatorio. Shift alterna entre construír e amosa-lo custo estimado
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Árbores aleatorias
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantar árbores aleatoriamente sobre a paisaxe
 
 # Land generation window (SE)
-STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Xeración de Terreo
-STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Colocar áreas rocosas na paisaxe
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definir área de deserto.{}Presiona CTRL para borrala
-STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Aumenta-lo tamaño de terreo a baixar/subir
-STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Disminuí-lo tamaño de terreo a baixar/subir
+STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Xeración de terreo
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Colocar áreas rochosas na paisaxe
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definir área de deserto.{}Mantén pulsado CTRL para borrala
+STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Aumenta-lo tamaño de terreo a baixar/elevar
+STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Disminuí-lo tamaño de terreo a baixar/elevar
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Xerar terreo aleatorio
-STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Crear novo escenario
+STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Crear un novo escenario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Reiniciar paisaxe
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Quitar tódalas propiedades do xogador do mapa
 
-STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Reiniciar Paisaxe
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}¿Estás seguro de querer quitar tódalas propiedades do xogador?
+STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Reiniciar paisaxe
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Estás seguro de querer quitar tódalas propiedades do xogador?
 
 # Town generation window (SE)
-STR_FOUND_TOWN_CAPTION                                          :{WHITE}Xeración de Cidades
-STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova Cidade
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar nova cidade
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Cidade Aleatoria
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Xeración de cidades
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova cidade
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar unha nova cidade. Shift+Click amosa o custo estimado
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Cidade aleatoria
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fundar cidade nun emprazamento aleatorio
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Moitas cidades aleatorias
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cubri-lo mapa con cidades colocadas aleatoriamente
@@ -2394,7 +2397,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Pequeno
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Mediano
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Grande
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Aleatorio
-STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Selecciona o tamaño da cidade:
+STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Selecciona o tamaño da cidade
 STR_FOUND_TOWN_CITY                                             :{BLACK}Cidade
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}As cidades crecen máis rápido que os pobos{}Segundo a configuración, son máis grandes cando se fundan
 
@@ -2407,17 +2410,31 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}Grella 3
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Aleatoria
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Fundar unha nova industria
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financiar unha nova industria
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Elixe a industria apropiada desta lista
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Moitas industrias aleatorias
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Cubri-lo mapa con industrias colocadas aleatoriamente
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Custo: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospección
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construír
-STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fundar
+STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Financiar
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadea de industrias para a industria {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadea de industrias para a carga {STRING}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industrias provedoras
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Industrias clientes
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Casas
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Pincha na industria para ver os seus provedores e clientes
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Pincha na carga para ver os seus provedores e clientes
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Mostrar cadea
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostra-las industrias provedoras e clientes da carga
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Ligar ao mapa
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Selecciona as industrias que tamén se amosan no mapa
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Seleccionar carga
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Selecciona a carga que queres mostrar
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Seleccionar industria
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Seleccionar a industria que queres mostrar
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Información dunha área de terreo
@@ -2427,29 +2444,54 @@ STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Ingresos
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/D
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Propietario: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Propietario da estrada: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Propietario da vía: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Propietario da vía: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Propietario da vía tranviaria: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Propietario da vía ferroviaria: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autoridade local: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ningún
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordinadas: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ningunha
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordenadas: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Construído: {LTBLUE}{DATE_LONG}
-STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Clase da estación: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Clase de estación: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tipo de estación: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Clase aeroporto: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Nome aeroporto: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Clase de aeroporto: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Nome do aeroporto: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nome do cadro do aeroporto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carga aceptada: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Límite de velocidade da vía: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
-STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rochas
-STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Terra Quebrada
-STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Terra Deserta
+STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Cons
+STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Terra árida
+STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Terra deserta
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Herba
-STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Campos
+STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Leiras
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Terra cuberta de neve
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deserto
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Vía de {STRING}
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Vía de {STRING} con sinais de bloqueo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Vía de {STRING} con sinais avanzados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Vía de {STRING} con sinais de saída
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Vía de {STRING} con sinais combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Vía de {STRING} con sinais de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Vía de {STRING} con sinais de ruta monosentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Vía de {STRING} con sinais de bloqueo e avanzados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Vía de {STRING} con sinais de bloqueo e saída
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Vía de {STRING} con sinais de bloqueo e combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Vía de {STRING} con sinais de bloqueo e de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Vía de {STRING} con sinais de bloqueo e de ruta monosentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Vía de {STRING} con sinais avanzados e de saída
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Vía de {STRING} con sinais avanzados e combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Vía de {STRING} con sinais avanzados e de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Vía de {STRING} con sinais avanzados e de ruta monosentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Vía de {STRING} con sinais de saída e combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Vía de {STRING} con sinais de saída e de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Vía de {STRING} con sinais de saída e de ruta monosentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Vía de {STRING} con sinais combo e de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Vía de {STRING} con sinais combo e de ruta monosentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Vía de {STRING} con sinais de ruta e de ruta monosentido
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depósito ferroviario {STRING}
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Estrada
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Estrada con iluminación
@@ -2463,73 +2505,77 @@ STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (en co
 
 STR_LAI_TREE_NAME_TREES                                         :Árbores
 STR_LAI_TREE_NAME_RAINFOREST                                    :Selva tropical
-STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Plantas cactus
+STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Cactus
 
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Estación de ferrocarril
-STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Hangar de avións
+STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Hangar de aeronaves
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Aeroporto
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Área de carga de camións
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Estación de autobús
-STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Peirao para barco
+STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Peirao para barcos
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boia
 STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Punto de control
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Auga
-STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canal
+STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canle
 STR_LAI_WATER_DESCRIPTION_LOCK                                  :Peche
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Río
-STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Costa ou beiramar
+STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Beiramar ou ribeira fluvial
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Depósito de barcos
 
 # Industries come directly from their industry names
 
-STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Túnel de ferrocarril
+STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Túnel ferroviario
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Túnel de estrada
 
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Ponte colgante de aceiro para ferrocarrís
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Ponte de vigas de aceiro para ferrocarrís
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Ponte voladiza de aceiro para ferrocarrís
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Ponte colgante de cemento reforzado para ferrocarrís
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Ponte de madeira para ferrocarrís
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Ponte de cemento para ferrocarrís
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Ponte tubular para ferrocarrís
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Ponte ferroviaria colgante de aceiro
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Ponte ferroviaria de vigas de aceiro
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Ponte ferroviaria en voladizo de aceiro
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Ponte ferroviaria colgante de formigón
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Ponte ferroviaria de madeira
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Ponte ferroviaria de formigón
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Ponte ferroviaria tubular
 
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Ponte colgante de aceiro para estradas
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Ponte de vigas de aceiro para estradas
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Ponte voladiza de aceiro para estradas
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Ponte colgante de cemento reforzado para estradas
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Ponte de madeira para estradas
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Ponte de cemento para estradas
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Ponte tubular para estradas
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Ponte de estrada colgante de aceiro
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Ponte de estrada de vigas de aceiro
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Ponte de estrada en voladizo de aceiro
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Ponte de estrada colgante de formigón
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Ponte de estrada de madeira
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Ponte de estrada de formigón
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Ponte de estrada tubular
 
-STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Acueducto
+STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Acueduto
 
 STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Transmisor
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Faro
-STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Cuartel Xeral de Compañía
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Sede da compañía
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Terreo propiedade dunha compañía
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Acerca de OpenTTD
-STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyright Orixinal {COPYRIGHT} 1995 Chris Sawyer, Tódolos dereitos reservados
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyright orixinal {COPYRIGHT} 1995 Chris Sawyer, Tódolos dereitos reservados
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versión {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2013 O Equipo de OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2013 O equipo de OpenTTD
 
 # Save/load game/scenario
-STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Grabar Partida
-STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Cargar Partida
-STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Grabar Escenario
-STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Cargar Escenario
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Cargar Mapa de Altitude
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Pincha aquí para ir o directorio por defecto actual para grabar/cargar
+STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Gravar partida
+STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Cargar partida
+STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Gravar escenario
+STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Cargar escenario
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Cargar mapa de alturas
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Gravar mapa de alturas
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Pincha aquí para ir ao directorio por defecto actual para gravar/cargar
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} libre{P "" s}
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de unidades, directorios e arquivos de partida
-STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nome seleccionado actualmente para o arquivo
+STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nome seleccionado actualmente para partidas gravadas
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Borrar
-STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Borra-lo arquivo que está seleccionado
-STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Grabar
+STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Borra-lo arquivo de partida gravada seleccionado
+STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Gravar
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Salva-la partida actual, usando o nome seleccionado
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Cargar
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carga-la partida seleccionada
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalles da partida
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Non hai información dispoñíbel
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
@@ -2538,6 +2584,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Escribe 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Xeración do mundo
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Tamaño do mapa:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK} Selecciona o tamaño do mapa en cadros. O número de cadros dispoñíbeis será sensiblemente menor
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Num. de cidades:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:

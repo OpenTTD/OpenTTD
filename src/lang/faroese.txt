@@ -1711,7 +1711,7 @@ STR_FACE_EUROPEAN                                               :{BLACK}Evropeis
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Vel Evropeisk andlit
 STR_FACE_AFRICAN                                                :{BLACK}Afrikansk
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Vel Afrikonsk andlit
-STR_FACE_YES                                                    :Já
+STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nei
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Tendra yvirskegg ella oyraring
 STR_FACE_HAIR                                                   :Hár:
