@@ -2586,47 +2586,49 @@ STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Xeració
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Tamaño do mapa:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK} Selecciona o tamaño do mapa en cadros. O número de cadros dispoñíbeis será sensiblemente menor
 STR_MAPGEN_BY                                                   :{BLACK}*
-STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Num. de cidades:
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nº de cidades:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
-STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Num. de industrias:
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Altura da liña de neve:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Subir a altura da liña de neve
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Baixar a altura da liña de neve
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Semente Aleatoria:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Pincha para introducir unha semilla
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nº de industrias:
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Cota de neve:
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Subir a cota de neve unha altura
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Baixar a cota de neve unha altura
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Semente aleatoria:
+STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Pincha para introducir unha semente aleatoria
 STR_MAPGEN_RANDOM                                               :{BLACK}Aleatorio
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Cambia-la semente aleatoria usada para a Xeración de Terreo
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Cambia-la semente aleatoria usada para a xeración de terreo
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Xerador de terreo:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritmo para árbores:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreo:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivel do mar:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ríos:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Suavidade:
+STR_MAPGEN_VARIETY                                              :{BLACK}Variedade:
 STR_MAPGEN_GENERATE                                             :{WHITE}Xerar
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Bordes do mapa:
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Noroeste
-STR_MAPGEN_NORTHEAST                                            :{BLACK}Noreste
-STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sureste
+STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordés
+STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sueste
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Suroeste
-STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Forma Libre
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Forma libre
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Auga
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aleatorio
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Aleatorio
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 
-STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotación do mapa de altura:
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do mapa de altura:
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotación do mapa de alturas:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do mapa de alturas:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamaño:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Introduce a semente aleatoria
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Cambiar a altura da liña de neve
+STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Introduce unha semente aleatoria
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Cambiar a altura da cota de neve
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Cambia-lo ano de inicio
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Tipo de escenario
-STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Terreo Chan
+STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Terreo chan
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Xerar terreo chan
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Terreo aleatorio
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Altura do terreo chan:
@@ -2636,41 +2638,49 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Baixar a
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Cambiar a altura do terreo chan
 
 # Map generation progress
-STR_GENERATION_WORLD                                            :{WHITE}Xerando Mundo...
+STR_GENERATION_WORLD                                            :{WHITE}Xerando mundo...
 STR_GENERATION_ABORT                                            :{BLACK}Cancelar
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Cancelar Xeración De Mundo
-STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}¿Estás seguro de querer terminar a xeración?
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Cancelar a xeración do mundo
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Estás seguro de querer cancelar a xeración?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% completado
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Xeración do mundo
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Xeración de ríos
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Xeración de árbores
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Xeración de obxectos
-STR_GENERATION_CLEARING_TILES                                   :{BLACK}Xeración de áreas rocosas e quebradas
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}Xeración de áreas rochosas e escarpadas
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurando partida
-STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Executando tile-loop
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Executando bucle de cadros
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Executando script
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparando partida
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configuracións NewGRF
-STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carga la programación seleccionada
-STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Grabar programación
-STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Graba-la lista actual como programación
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Escribe un nome para a programación
-STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Borrar programación
-STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Borra-la programación seleccionada actualmente
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Información detallada do NewGRF
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Arquivos NewGRF activos
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Arquivos NewGRF inactivos
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Seleccionar perfil
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrar cadea de caracteres
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carga-lo perfil seleccionado
+STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Gravar perfil
+STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Grava-la lista actual coma un perfil
+STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Escribe un nome para o perfil
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Borrar perfil
+STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Borra-lo perfil seleccionado actualmente
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Engadir
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Engadi-lo arquivo NewGRF seleccionado a túa configuración
-STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Actualizar ficheiros
-STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Actualiza a lista dos ficheiros NewGRF dispoñibles
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Actualizar arquivos
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Actualiza a lista dos arquivos NewGRF dispoñíbeis
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Eliminar
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Elimina-lo arquivo NewGRF seleccionado da lista
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Subir
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Move-lo arquivo NewGRF seleccionado arriba na lista
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Baixar
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Move-lo arquivo NewGRF seleccionado abaixo na lista
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista dos ficheiros NewGRF instalados. Pincha nun ficheiro para cambiar os parámetros
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Unha lista dos arquivos NewGRF instalados.
 
-STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Conf. parámetros
+STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Establecer parámetros
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Mostrar parámetros
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Cambiar paleta
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Cambia-la paleta para o NewGRF seleccionado.{}Faino cando os gráficos deste NewGRF se vexan rosa no xogo
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplica-los cambios
@@ -2678,50 +2688,79 @@ STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplica-l
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Busca-lo contido que falta en liña
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Comprobar se o contido que falta pode atoparse en liña
 
-STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Ficheiro: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Arquivo: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versión: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Mínima versión compatíbel: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}Suma MD5: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parámetros: {SILVER}{STRING}
 
-STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Non hai información dispoñible
-STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ficheiro non atopado
+STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Non hai información dispoñíbel
+STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Arquivo correspondente non atopado
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivado
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatible con esta versión de OpenTTD
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Cambiar os parámetros de NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Pechar
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reiniciar
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Establecer tódolos parámetros cos seus valores por defecto
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parámetro {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Número de parámetros: {ORANGE}{NUM}
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspeccionar - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Anterior
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspecciona-lo obxecto do entorno superior
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} en {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Obxecto
-STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de vía
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de carril
 
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parámetro de variable NewGRF 60+x (hexadecimal)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Aliñar sprite {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Seguinte sprite
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Ir ao sprite seguinte, ignorando pseudosprites, sprites recoloreados e sprites de fonte, e volvendo a empezar ao chegar á fin
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ir a sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ir ao sprite dado. Se non é un sprite normal, ir ao seguinte sprite normal
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite anterior
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Ir ao sprite anterior, ignorando pseudosprites, sprites recoloreados e sprites de fonte, e volvendo a empezar ao chegar ao inicio
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representación do sprite seleccionado. A aliñación ignórase ao debuxar este sprite
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Move-lo sprite, cambiando os valores de X e Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Desp. X: {NUM}, Desp. Y: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Seleccionar sprite
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Seleccionar un sprite en calquera parte da pantalla
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Ir ao sprite
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
-STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Aviso: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Coidado: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erro: {SILVER}{STRING}
-STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Grave: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Erro fatal: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ocorreu un erro fatal de NewGRF: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} non funcionará coa versión de TTDPatch reportada por OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} é para a versión {STRING} de TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} está deseñado para ser usado con {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parámetro incorrecto para {1:STRING}: parámetro {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} debe cargarse antes de {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} debe cargarse despois de {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} require OpenTTD versión {STRING} ou posterior.
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o ficheiro GRF foi deseñado para traducir
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} require a versión de OpenTTD {STRING} ou posterior
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo GRF que foi deseñado para traducir
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Cargáronse demasiados NewGRFs.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Cargar {1:STRING} como NewGRF estático con {STRING} pode causar desincronizacións.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contén un sprite corrupto. Tódolos sprites corruptos mostraránse coma una interrogación vermella (?).
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Cargar {1:STRING} como NewGRF estático con {STRING} pode causar desincronizacións
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inesperado (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propiedade de acción 0 descoñecida {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Intento de usar un ID inválido (sprite {3:NUM})
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contén un sprite corrupto. Tódolos sprites corruptos mostraranse coma unha interrogación vermella (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contén múltiples entradas de acción 8 (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectura máis aló da fin dun pseudo-sprite (sprite {3:NUM})
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE} Ao conxunto de gráficos básicos empregado actualmente fáltalle un número de sprites. {}Por favor, actualiza o conxunto de gráficos básico
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE} Ao conxunto de gráficos básicos empregado actualmente fáltalle un número de sprites. {}Por favor, actualiza o conxunto de gráficos básico.{}Dado que estás a xogar unha {YELLOW}versión de desenrolo de OpenTTD{WHITE}, é posíbel que tamén necesites unha {YELLOW}versión de desenrolo do conjunto de gráficos base{WHITE}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}¡Atención!

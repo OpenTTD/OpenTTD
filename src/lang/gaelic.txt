@@ -24,7 +24,7 @@
 STR_NULL                                                        :
 STR_EMPTY                                                       :
 STR_UNDEFINED                                                   :(sreang gun deifinisean)
-STR_JUST_NOTHING                                                :Gun ghin
+STR_JUST_NOTHING                                                :—
 
 # Cargo related strings
 # Plural cargo name
@@ -290,7 +290,7 @@ STR_QUANTITY_OIL                                                :{VOLUME_LONG} d
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} dhe sprèidh
 STR_QUANTITY_GOODS                                              :{COMMA} {P chreata chreata creataichean creata} dhe bhathar
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} dhe ghràn
-STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} dhe fhiodh
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} dhe dh'fhiodh
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} dhe chlach-iarainn
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} dhe stàilinn
 STR_QUANTITY_VALUABLES                                          :{COMMA} {P bhaga bhaga bagaichean baga} dhe sheilbh
@@ -361,16 +361,16 @@ STR_ITEMS                                                       :{COMMA} {P nì 
 STR_CRATES                                                      :{COMMA} {P chreat chreat creataichean creat}
 
 # Colours, do not shuffle
-STR_COLOUR_DARK_BLUE                                            :Dubh-ghorm
-STR_COLOUR_PALE_GREEN                                           :Soilleir-uaine
-STR_COLOUR_PINK                                                 :Bàn-dhearg
+STR_COLOUR_DARK_BLUE                                            :Gorm
+STR_COLOUR_PALE_GREEN                                           :Liath-uaine
+STR_COLOUR_PINK                                                 :Pinc
 STR_COLOUR_YELLOW                                               :Buidhe
 STR_COLOUR_RED                                                  :Dearg
-STR_COLOUR_LIGHT_BLUE                                           :Soilleir-ghorm
-STR_COLOUR_GREEN                                                :Guaine
+STR_COLOUR_LIGHT_BLUE                                           :Liath-ghorm
+STR_COLOUR_GREEN                                                :Uaine
 STR_COLOUR_DARK_GREEN                                           :Dorch-uaine
-STR_COLOUR_BLUE                                                 :Gorm
-STR_COLOUR_CREAM                                                :Bàn
+STR_COLOUR_BLUE                                                 :Saidhean
+STR_COLOUR_CREAM                                                :Bàn-dhearg
 STR_COLOUR_MAUVE                                                :Liath-phurpur
 STR_COLOUR_PURPLE                                               :Corca
 STR_COLOUR_ORANGE                                               :Orains
@@ -407,20 +407,20 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}Sreang criathraige:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Cuir a-steach sreang criathraige
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Cuir a-steach facal-luirg gus an liosta a chriathradh le
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Cuir a-steach facal-luirg gus an liosta a chriathradh leis
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Tagh òrdugh an t-seòrsachaidh (a' teàrnadh/a' dìreadh)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Tagh cuspairean-deuchainn an t-seòrsachaidh
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Tagh cuspairean-deuchainn a' chriathraidh
-STR_BUTTON_SORT_BY                                              :{BLACK}Seòrsaich le
+STR_BUTTON_SORT_BY                                              :{BLACK}Seòrsaich a rèir
 STR_BUTTON_LOCATION                                             :{BLACK}Ionad
-STR_BUTTON_RENAME                                               :{BLACK}Cuir ainm ùr air
+STR_BUTTON_RENAME                                               :{BLACK}Thoir ainm ùr air
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Dùin an uinneag
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tiotal na h-uinneige - slaod seo gus an uinneag a ghluasad
 STR_TOOLTIP_SHADE                                               :{BLACK}Sgàil an uinneag - na seall ach am bàr-tiotail
 STR_TOOLTIP_DEBUG                                               :{BLACK}Seall fiosrachadh dì-bhugaidh NewGRF
-STR_TOOLTIP_STICKY                                              :{BLACK}Comharraich nach tèid an uinneag seo a dhùnadh leis an òrdugh 'Dùin a h-uile uinneag'
+STR_TOOLTIP_STICKY                                              :{BLACK}Comharraich nach tèid an uinneag seo a dhùnadh leis an òrdugh “Dùin a h-uile uinneag"
 STR_TOOLTIP_RESIZE                                              :{BLACK}Briog is slaod gus an uinneag seo ath-mheudachadh
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Toglaidh meud mòr/beag na h-uinneige
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bàr sgrolaidh - sgrolaich suas/sìos air an liosta
@@ -451,7 +451,7 @@ STR_SORT_BY_NAME                                                :Ainm
 STR_SORT_BY_PRODUCTION                                          :Toradh
 STR_SORT_BY_TYPE                                                :Seòrsa
 STR_SORT_BY_TRANSPORTED                                         :Air a ghiulain
-STR_SORT_BY_NUMBER                                              :Àireamn
+STR_SORT_BY_NUMBER                                              :Àireamh
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Prothaid an-uiridh
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Prothaid am bliadhna
 STR_SORT_BY_AGE                                                 :Aois
@@ -526,9 +526,9 @@ STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Cuir san
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Cuir nì ann. Toglaidh Shift tuairmse cosgaisean/togail
 
 ############ range for SE file menu starts
-STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Sàbhail cnàmh-sgeul
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Sàbhail an cnàmh-sgeul
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Luchdaich cnàmh-sgeul
-STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Sàbhail mapa-àirde
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Sàbhail am mapa-àirde
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Luchdaich mapa-àirde
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Fàg deasaiche nan cnàmh-sgeul
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -542,8 +542,8 @@ STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Roghainnean IF/
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Roghainnean NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Roghainnean trìd-shoilleireachd
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Ainmean nam bailtean gan sealltainn
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Ainmean nan stèseanan gan sealltainn
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Ainmean phuingean-turais gan sealltainn
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Ainmean nan stèiseanan gan sealltainn
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Ainmean nam puingean-turais gan sealltainn
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Sanasan gan sealltainn
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Sanasan is ainmean nam fairpaisichean gan sealltainn
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Beòthachadh slàn
@@ -553,7 +553,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Sanasan trìd-s
 ############ range ends here
 
 ############ range for file menu starts
-STR_FILE_MENU_SAVE_GAME                                         :Sàbhail geama
+STR_FILE_MENU_SAVE_GAME                                         :Sàbhail an geama
 STR_FILE_MENU_LOAD_GAME                                         :Luchdaich geama
 STR_FILE_MENU_QUIT_GAME                                         :Fàg an geama
 STR_FILE_MENU_SEPARATOR                                         :
@@ -634,13 +634,13 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Eachdraidh nam 
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Fiosrachadh raon tìre
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toglaidh consoil
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toglaich a' chonsoil
 STR_ABOUT_MENU_AI_DEBUG                                         :Dì-bhugaich IF/sgriobt geama
 STR_ABOUT_MENU_SCREENSHOT                                       :Glacadh-sgrìn
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Glacadh-sgrìn le sùmadh a-steach as motha
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Glacadh-sgrìn le sùmadh a-steach bunaiteach
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Glacadh-sgrìn leis a' mhapa shlàn
-STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Mu dheidhinn 'OpenTTD'
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Mu dheidhinn “OpenTTD"
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Co-thaobhaichear nan sprite
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Toglaich bogsaichean-iadhaidh
 STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Toglaich dathadh nam blocaichean salach
@@ -740,7 +740,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Dèan br
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Clàr co-bhonn nan companaidh
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} “{STRING}"
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Innleadair
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Stiùiriche trafaige
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Co-òrdanaiche giùlain
@@ -771,7 +771,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Iasad:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Iomlan:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}An àireamh dhe charbadan a rinn prothaid an-uiridh. Gabhaidh seo a-steach carbadan-rathaid, trèanaichean, longan is carbadan-adhair
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}An àireamh dhe stèiseanan a chaidh a fhrithealadh o chionn ghoirid. théid stèiseanan rèile, stèiseanan bus, stadan bus, puirt-adhair is mar sin air adhart a chunntadh fa leth fiù 's ma bhuineas iad ris an aon stèisean
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}An àireamh dhe stèiseanan a chaidh a fhrithealadh o chionn ghoirid. théid stèiseanan rèile, stèiseanan bus, stadan bus, puirt-adhair is mar sin air adhart a chunntadh fa leth fiù ’s ma bhuineas iad ris an aon stèisean
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Am prothaid aig a' charbad leis an teachd a-steach as lugha (cha tèid sùil a thoirt ach air carbadan a tha co-dhiù dà bhliadhna a dh'aois)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}An t-airgead a chaidh a bhuannachd san ràith leis a' phrothaid as lugha am measg an dusan ràith mu dheireadh
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}An t-airgead a chaidh a bhuannachd san ràidh leis a' phrothaid as motha am measg an dusan ràith mu dheireadh
@@ -797,7 +797,7 @@ STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}“{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Traca
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Tiotal
 STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Air thuaiream
@@ -807,12 +807,12 @@ STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Leum dha
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Stad cluiche a' chiùil
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Tòisich cluiche a' chiùil
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Slaod na sleamhnachain gus àirde a' chiùil is nam buaidhean fuaime a shuidheachadh
-STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Tagh am prògram 'a h-uile traca'
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Tagh am prògram 'ceòl seann nòis'
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Tagh am prògram 'ceòl nòis ùir'
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Tagh am prògram 'ceòl le stoidhle Ezy Street'
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Tagh am prògram 'Gnàthaichte 1' (a rinn thu fhèin)
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Tagh am prògram 'Gnàthaichte 2' (a rinn thu fhèin)
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Tagh am prògram “Na h-uile traca"
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Tagh am prògram “Ceòl seann nòis"
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Tagh am prògram “Ceòl nòis ùir"
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Tagh am prògram “Ceòl le stoidhle Ezy Street"
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Tagh am prògram “Gnàthaichte 1" (a rinn thu fhèin)
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Tagh am prògram “Gnàthaichte 2" (a rinn thu fhèin)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Toglaich prògram air thuaiream air/dheth
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Seall uinneag taghadh tracaichean ciùil
 
@@ -820,9 +820,9 @@ STR_ERROR_NO_SONGS                                              :{WHITE}Chaidh s
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Taghadh prògram ciùil
-STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} “{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Clàr-amais nan traca
-STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Prògram - '{STRING}'
+STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Prògram - “{STRING}"
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Falamhaich
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Falamhaich am prògram làithreach (Gnàthaichte1 no Gnàthaichte2 a-mhàin)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Dèan briogadh air traca ciùil gus a chur ris a' phrògram làithreach (Gnàthaichte1 no Gnàthaichte2 a-mhàin)
@@ -840,12 +840,12 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Baran
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mogul
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Taidhcùn na linne
 STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}Bhuannaich {COMPANY} an rang '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}Bhuannaich {PRESIDENT_NAME} aig {COMPANY} an rang '{STRING}'!
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}“{STRING}"   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}Bhuannaich {COMPANY} an rang “{STRING}"!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}Bhuannaich {PRESIDENT_NAME} aig {COMPANY} an rang “{STRING}"!
 
 # Smallmap window
-STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {STRING}
+STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa {STRING}
 
 STR_SMALLMAP_TYPE_CONTOURS                                      :Loidhnichean-àirde
 STR_SMALLMAP_TYPE_VEHICLES                                      :Carbadan
@@ -912,7 +912,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Seall a 
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Seall am brath no aithisg naidheachd mu dheireadh
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  NA STAD  *  *
-STR_STATUSBAR_AUTOSAVE                                          :{RED}FÈIN-SÀBHALADH
+STR_STATUSBAR_AUTOSAVE                                          :{RED}FÈIN-SHÀBHALADH
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  A' SÀBHALADH GEAMA  *  *
 
 # News message history
@@ -965,7 +965,7 @@ STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Tha duilgheadasan solair ag adhbharachadh gun do dh'ainmich {STRING} gun tèid a {G 0 dùnadh dhùnadh} a dh'aithghearr!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Tha dìth chraobhan faisg {G 0 air oirre} ag adhbharachadh gun do dh'ainmich {STRING} gun tèid a {G 0 dùnadh dhùnadh} a dh'aithghearr!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Aonadh Airgid na h-Eòrpa!{}{}Tha an t-Eòro ga chur air bhog mar an t-aon airgeadra airson thar-ghnìomhan cumanta san dùthaich agad!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Aonadh Airgid na h-Eòrpa!{}{}Tha an t-Eòro ga chur air bhog mar an t-aon airgeadra airson tar-ghnìomhan cumanta san dùthaich agad!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Crìonadh eaconamaidh an t-saoghail!{}{}tha eagal air na h-eòlaichean ionmhais gu bheil dubh staing romhainn le crìonadh an eaconamaidh!
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Crìonadh an eaconamaidh seachad!{}{}Tha meudachadh na malairt a' cur earbsa sna gnìomhachasan le neartachadh an eaconamaidh!
 
@@ -993,7 +993,7 @@ STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Tha stè
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}Tha {VEHICLE} a' fàs aosta
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}Tha {VEHICLE} a' fàs glè aosta
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}Tha {VEHICLE} a' fàs glè aosta is feumaidh tu fear ùr a chur na àite cho luath 's a ghabhas
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}Tha {VEHICLE} a' fàs glè aosta is feumaidh tu fear ùr a chur na àite cho luath ’s a ghabhas
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}Chan urrainn dha {VEHICLE} slighe air adhart a lorg
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}Chaidh {VEHICLE} air chall
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Rinn {VEHICLE} prothaid dhe {CURRENCY_LONG} an-uiridh
@@ -1025,9 +1025,9 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Port-seallaidh {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Cuir lethbhreac ann am port-seallaidh
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Cuir lethbhreac sa phort-seallaidh seo
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Cuir lethbhreac dhen ionad air a' phrìomh shealladh sa phort-seallaidh seo
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Cuir ann bho phort-seallaidh
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Cuir ann bhon phort-seallaidh seo
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Cuir ionad a' phuirt-seallaidh seo sa phrìomh shealladh
 
 # Game options window
@@ -1083,8 +1083,8 @@ STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI (Siostam ead
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Carbadan-rathaid
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Tagh taobh an rathaid air a dhràibheas na carbadan
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Draibheadh air taobh clì
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Draibheadh air taobh deas
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Draibheadh air an taobh chlì
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Draibheadh air an taobh deas
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Ainmean bhailtean
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Tagh stoidhle aig ainmean nam bailtean
@@ -1113,8 +1113,8 @@ STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Eadailteach
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalanach
 ############ end of townname region
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Fèin-sàbhaladh
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tagh dè cho tric 's a thèid an geama fèin-sàbhaladh
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Fèin-shàbhaladh
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tagh dè cho tric ’s a thèid an geama fèin-shàbhaladh
 
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Dheth
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Gach mìos
@@ -1128,8 +1128,8 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Tach cà
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Làn-sgrìn
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Cuir cromag sa bhogsa seo gus OpenTTD a chluiche sa mhodh làn-sgrìn
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Bhreacadh-sgrìn
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Tagh dùmhlachd-bhreacaidh an sgrìn a chleachdas tu
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Dùmhlachd-bhreacaidh na sgrìn
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Tagh dùmhlachd-bhreacaidh na sgrìn a chleachdas tu
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :eile
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Fòrmat ghlacaidhean-sgrìn
@@ -1177,15 +1177,15 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Ro-shea
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 not (£) san airgeadra agad
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Atharraich paramadair an airgeadra ghnàthaichte
 
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Àireamh as motha dhe fharpaisichean: {ORANGE}{COMMA}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Àireamh as motha dhe dh'fharpaisichean: {ORANGE}{COMMA}
 
 STR_NONE                                                        :Gun ghin
-STR_FUNDING_ONLY                                                :Maoineachadh a-mhàin
+STR_FUNDING_ONLY                                                :Le maoineachadh a-mhàin
 STR_MINIMAL                                                     :As lugha
-STR_NUM_VERY_LOW                                                :Glè ìseal
-STR_NUM_LOW                                                     :Ìseal
+STR_NUM_VERY_LOW                                                :Gann
+STR_NUM_LOW                                                     :Beagan dhiubh
 STR_NUM_NORMAL                                                  :Àbhaisteach
-STR_NUM_HIGH                                                    :Àrd
+STR_NUM_HIGH                                                    :Mòran dhiubh
 STR_NUM_CUSTOM                                                  :Gnàthaichte
 STR_NUM_CUSTOM_NUMBER                                           :Gnàthaichte ({NUM})
 
@@ -1198,7 +1198,7 @@ STR_VARIETY_VERY_HIGH                                           :Glè àrd
 
 STR_AI_SPEED_VERY_SLOW                                          :Glè shlaodach
 STR_AI_SPEED_SLOW                                               :Slaodach
-STR_AI_SPEED_MEDIUM                                             :MediumMeadhanach
+STR_AI_SPEED_MEDIUM                                             :Meadhanach
 STR_AI_SPEED_FAST                                               :Luath
 STR_AI_SPEED_VERY_FAST                                          :Gle luath
 
@@ -1209,13 +1209,13 @@ STR_SEA_LEVEL_HIGH                                              :Àrd
 STR_SEA_LEVEL_CUSTOM                                            :Gnàthaichte
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Gnàthaichte ({NUM}%)
 
-STR_RIVERS_NONE                                                 :Gun ghin
+STR_RIVERS_NONE                                                 :Gun abhainn sam bith
 STR_RIVERS_FEW                                                  :Beagan dhiubh
 STR_RIVERS_MODERATE                                             :Meadhanach
 STR_RIVERS_LOT                                                  :Mòran dhiubh
 
-STR_DISASTER_NONE                                               :Gun ghin
-STR_DISASTER_REDUCED                                            :Ìslichte
+STR_DISASTER_NONE                                               :Cha tachair seo idir
+STR_DISASTER_REDUCED                                            :Ainneamh
 STR_DISASTER_NORMAL                                             :Àbhaisteach
 
 STR_SUBSIDY_X1_5                                                :x1.5
@@ -1228,11 +1228,11 @@ STR_TERRAIN_TYPE_FLAT                                           :Rèidh
 STR_TERRAIN_TYPE_HILLY                                          :Cnuic
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Beanntan
 
-STR_CITY_APPROVAL_PERMISSIVE                                    :Ceadachail
-STR_CITY_APPROVAL_TOLERANT                                      :Ceadach
+STR_CITY_APPROVAL_PERMISSIVE                                    :Coibhneil
+STR_CITY_APPROVAL_TOLERANT                                      :Ceadachail
 STR_CITY_APPROVAL_HOSTILE                                       :Nàimhdeil
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Chan eil IF freagarrach ri fhaighinn...{}'S urrainn dhut roghainn dhe IFan a luchdadh a-nuas leis an t-siostam 'Susbaint air loidhne'
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Chan eil IF freagarrach ri fhaighinn...{}’S urrainn dhut roghainn dhe IFan a luchdadh a-nuas leis an t-siostam “Susbaint air loidhne"
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Roghainnean adhartach
@@ -1242,11 +1242,11 @@ STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Co-thean
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(chan eil mìneachadh ri làimh)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Luach bunaiteach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Seòrsa an roghainn: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TYPE_CLIENT                                  :Roghainn cliant (cha tèid a sàbhaladh le geamannan; buaidh air a h-uile geama)
-STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Roghainn a' gheama (ga sàbhaladh leis a' gheama; gun bhuaidh ach air geamannan ùra)
-STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Roghainn a' gheama (ga sàbhaladh leis a' gheama; gun bhuaidh ach air a' gheama seo)
-STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Roghainn na companaidh (ga sàbhaladh leis a' gheama; gun bhuaidh ach air geamannan ùra)
-STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Roghainn na companaidh (ga sàbhaladh leis a' gheama; gun bhuaidh ach air a' chompanaidh seo)
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Roghainnean a' chliant (cha tèid an sàbhaladh le geamannan; buaidh air a h-uile geama)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Roghainnean a' gheama (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air geamannan ùra)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Roghainnean a' gheama (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air a' gheama seo)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Roghainnean na companaidh (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air geamannan ùra)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Roghainnean na companaidh (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air a' chompanaidh seo)
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Seall:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Cuingichidh seo an liosta gu h-ìosal gus nach tèid a shealltainn ach roghainnean air an atharrachadh
@@ -1258,11 +1258,11 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Roghainnean le 
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Cuingichidh seo an liosta gu h-ìosal gus nach tèid a shealltainn ach seòrsaichean sònraichte dhe roghainn
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :A h-uile roghainn
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Roghainn cliant (cha tèid a sàbhaladh le geamannan; buaidh air a h-uile geama)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Roghainn a' gheama (ga sàbhaladh leis a' gheama; gun bhuaidh ach air geamannan ùra)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Roghainn a' gheama (ga sàbhaladh leis a' gheama; gun bhuaidh ach air a' gheama seo)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Roghainn na companaidh (ga sàbhaladh leis a' gheama; gun bhuaidh ach air geamannan ùra)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Roghainn na companaidh (ga sàbhaladh leis a' gheama; gun bhuaidh ach air a' chompanaidh seo)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Roghainnean a' chliant (cha tèid an sàbhaladh le geamannan; buaidh air a h-uile geama)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Roghainnean a' gheama (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air geamannan ùra)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Roghainnean a' gheama (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air a' gheama seo)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Roghainnean na companaidh (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air geamannan ùra)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Roghainnean na companaidh (thèid an sàbhaladh leis a' gheama; gun bhuaidh ach air a' chompanaidh seo)
 
 STR_CONFIG_SETTING_OFF                                          :Dheth
 STR_CONFIG_SETTING_ON                                           :Air
@@ -1276,9 +1276,9 @@ STR_CONFIG_SETTING_NONE                                         :Gun ghin
 STR_CONFIG_SETTING_ORIGINAL                                     :Tùsail
 STR_CONFIG_SETTING_REALISTIC                                    :Fìor-riochdail
 
-STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Clì
-STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :meadhanach
-STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Deas
+STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Ris an taobh chlì
+STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sa mheadhan
+STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Ris an taobh deas
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Iasad tòiseachaidh as motha: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :An t-airgead as motha as urrainn dha chompanaidh fhaighinn mar iasad (a' fàgail an atmhorachd dhan darna taobh)
@@ -1286,68 +1286,68 @@ STR_CONFIG_SETTING_INTEREST_RATE                                :Luach-rèidh: {
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Luach-rèidh iasaid; stiùiridh seo an atmhorachd cuideachd ma tha e an comas
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Cosgaisen ruith: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Suidhich ìre nan cosgaisean ruith is obrach-càraidh aig carbadan is a' bhun-structar
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Astar togail: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Astar na togail: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Cuingich meud nan gnìomhan togail aig na IFan
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Briseadh charbadan: {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Stiùirich dè cho tric 's a bhios carbadan briste nach d' fhuair an obair-chàraidh iomchaidh
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Stiùirich dè cho tric ’s a bhios carbadan briste nach d' fhuair an obair-chàraidh iomchaidh
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Iomadaichear nan tarrail: {STRING}
-STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Suidhich na thèid a phàigheadh airson cheanglaichean le tarrail
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Suidhich na thèid a phàigheadh airson ceanglaichean le tarrail
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Cosgaisean togail: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Suidhich ìre nan cosgaisean togail is ceannachd
 STR_CONFIG_SETTING_RECESSIONS                                   :Crìonaidhean eaconamaidh: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ma tha seo air, faodaidh crìonadh eaconamaidh tachairt gach beagan bhliadhnaichean. Rè crìonaidh eaconamaidh, tha a h-uile toradh mòran nas ìsle (tillidh e dhan ìre roimhe nuair a bhios an crìonadh eaconamaidh seachad)
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Bac gun tionndaidheadh trèanaichean ann an stèiseanan: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ma tha seo air, cha tionndaidh trèanaichean an comhair mur eil iad ann an stèisean ceann-rèile, fiù 's nan robh slighe nas giorra dhan ath cheann-uidhe ann le tionndadh
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Bac gun till trèanaichean ann an stèiseanan: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ma tha seo air, cha tionndaidh trèanaichean an comhair mur eil iad ann an stèisean ceann-rèile, fiù ’s nan robh slighe nas giorra dhan ath cheann-uidhe ann le tionndadh
 STR_CONFIG_SETTING_DISASTERS                                    :Dunaidhean: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toglaich dunaidhean a dh'fhaodas carbadan no am bun-structar a bhacadh no a mhilleadh
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Beachdan comhairle a' bhaile air leasachadh raointean: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Tagh am meud dhe dh'fhuaim is milleadh an àrainneachd le companaidhean a tha a dhìth mus bi buaidh air luachadh a' bhaile is barrachd togail na sgìre
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Tagh am meud dhe dh'fhuaim is milleadh na h-àrainneachd le companaidhean a tha a dhìth mus bi buaidh air luachadh a' bhaile is barrachd togail san sgìre
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Ceadaich gun tèid togail air slèibhtean is an oirthir: {STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ma tha seo air, faodar slighean is stèiseanan a thogail air a' mhòr chuid dhe shlèibhtean. Ma tha seo dheth, chan fhaodar an togail ach air slèibhtean leis an aon chomhair 's a tha aig an t-slighe is aig nach eil feum air bonn togalaich
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ma tha seo air, faodar slighean is stèiseanan a thogail air a' mhòr chuid dhe shlèibhtean. Ma tha seo dheth, chan fhaodar an togail ach air slèibhtean leis an aon chomhair ’s a tha aig an t-slighe is aig nach eil feum air bonn togalaich
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Ceadaich atharrachadh crutha-tìre fo thogalaichean, slighean amsaa. (fèin-sliabh): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Ceadaich atharrachadh crutha-tìre fo thogalaichean is slighean gun a bhith gan toirt air falbh
-STR_CONFIG_SETTING_CATCHMENT                                    :Ceadaich ceàrnan tionail le meud nas fhìor-riochdail: {STRING}
-STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Bi meaud eadar-dhealaichte aig ceàrnan tionail a rèir seòrsa an stèisein no puirt-adhair
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :Ceadaich gun tèid barrachd rathaidean, dhrochaidean is thunailean a tha le baile fhèin a thoirt air falbh: {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :Ceadaich raointean tionail le meud a tha nas fhìor-riochdail: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Bi meud eadar-dhealaichte aig raointean tionail a rèir seòrsa an stèisein no puirt-adhair
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Faodar barrachd rathaidean, dhrochaidean is thunailean le baile a thoirt air falbh: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Bidh e nas fhasa bun-structar is togalaichean a tha le baile a thoirt air falbh
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Faide as motha thrèanaichean: {STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Suidhich dè cho fad's a bhios trèanaichean air a char as motha
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :An fhaide as motha aig trèanaichean: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Suidhich dè cho fad ’s a bhios trèanaichean air a char as motha
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} {P 0 leac leac leacan leac}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Meud dhe smùid/sradan nan carbadan: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Meud dhe smùid is sradan nan carbadan: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Cuidhich an uiread dhe smùid no sradagan nan carbadan
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modail luathachaidh nan tèanaichean: {STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Tagh am modail fisigeachd airson luathachadh nan tèanaichean. Cuiridh am modail "tùsail" an aon pheanas air a h-uile carbad air sliabh. Cuiridh am modail "fìor-riochdail" peanas air slèibhtean is lùban a rèir bhuadhan diofraichte aca a leithid faide is spàirn tarraing
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Tagh am modail fisigeachd airson luathachadh nan tèanaichean. Cuiridh am modail “tùsail” an t-aon pheanas air a h-uile carbad air sliabh. Cuiridh am modail “fìor-riochdail” peanas air slèibhtean is lùban a rèir bhuadhan diofraichte aca a leithid faide is spàirn tarraing
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modail luathachaidh nan carbadan-rathaid: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Tagh am modail fisigeachd airson luathachadh nan tèanaichean. Cuiridh am modail "tùsail" an aon pheanas air a h-uile carbad air sliabh. Cuiridh am modail "fìor-riochdail" peanas air slèibhtean is lùban a rèir bhuadhan diofraichte aca, mar eisimpleir 'spàirn tarraing'
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Caisead nan slèibhtean airson thrèanaichean: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Tagh am modail fisigeachd airson luathachadh nan carbadan-rathaid. Cuiridh am modail “tùsail” an t-aon pheanas air a h-uile carbad air sliabh. Cuiridh am modail “fìor-riochdail” peanas air slèibhtean is lùban a rèir bhuadhan diofraichte aca, mar eisimpleir “spàirn tarraing”
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Caisead nan slèibhtean airson trèanaichean: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Caisead aig na leacan slèibhe dha thrèanaichean. Nì luachan nas àirde an dìreadh nas dorra
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Caisead nan slèibhtean airson charbadan-rathaid: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Caisead nan slèibhtean airson carbadan-rathaid: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Caisead aig na leacan slèibhe dha charbad-rathaid. Nì luachan nas àirde an dìreadh nas dorra
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Bac trèanaichean is longan bho thionndadh 90°: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Tachraidh tionndadh 90 nuair a bhios slighe còmhnard is inghearach dìreach an dèidh càch a chèile, mar sin bhiodh trèan a' tionndadh le 90 ceum nuair a ruigeas i oir ana leacaige an àite nan tionndaidhean àbhaisteach le 45 ceum aig co-cheanglachaidhean shlighean eile. Tha seo fìor airson rèideas tionndaidh nan longan cuideachd
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Tachraidh tionndadh 90 nuair a bhios slighe còmhnard is inghearach dìreach an dèidh càch a chèile, mar sin bhiodh trèan a' tionndadh le 90 ceum nuair a ruigeas i oir na leacaige an àite nan tionndaidhean àbhaisteach le 45 ceum aig co-cheanglachaidhean shlighean eile. Tha seo fìor airson rèideas tionndaidh nan longan cuideachd
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Ceadaich aonadh aig stèiseanan nach eil dìreach ri taobh càch a chèile: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Ceadaich gun tèid pàirtean a chur ri stèisean nach eil dìreach ri taobh nam pàirtean a tha ann mu thràth. Feumaidh tu Ctrl+Click a chleachdadh nuair a chuireas tu na pàirtean ùra ann
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Cleachd algairim luchdaidh leasaichte: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Ma tha seo air, thèid iomadh charbad a bhios a' feitheamh aig stèisean a luchdadh an dèich càch a chèile. Cha tòisich luchdadh an ath charbaid nuair a bhios carago gu leòr ann gus a' chiad charbad a lìonadh
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Ma tha seo air, thèid iomadh carbad a bhios a' feitheamh aig stèisean a luchdadh an dèidh càch a chèile. Cha tòisich luchdadh an ath charbaid nuair a bhios carago gu leòr ann gus a' chiad charbad a lìonadh
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Luchdaich carbadan beag air bheag: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Luchdaich carbadan beag air bheag is ùine an luchdaidh a' crochadh air seòrsa a' charbaid an àite a bhith a' luchdadh a h-uile rud aig an aon àm le ùine luchdaidh shuidhichte a tha a' crochadh air seòrsa a' charago a-mhàin
 STR_CONFIG_SETTING_INFLATION                                    :Atmhorachd: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Cuir atmhorachd an comas san eaconamaidh is bidh cosgaisean a' dìreadh beagan nas luaithe na pàighidhean
 STR_CONFIG_SETTING_SELECTGOODS                                  :Na lìbhrig carago dha stèisean ach ma tha iarrtas ann: {STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Na lìbhrig carago dha stèisean a chaidh iarraidh bho carbad a' luchdadh. Le seo, chan fhaigh thu rangachadh dona airson charago nach tèid a fhrithealadh aig an stèisean
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Faide nan drochaidean as motha: {STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Chan urrainn dhut drochaidn a thogail a tha nas fhaide na seo
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Faide nan tunailean as motha: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Na lìbhrig carago dha stèisean ach ma chaidh iarraidh aig carbad a bhios a' luchdadh. Le seo, chan fhaigh thu rangachadh dona airson carago nach tèid a fhrithealadh aig an stèisean
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Faide as motha nan drochaidean: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Chan urrainn dhut drochaidean a thogail a tha nas fhaide na seo
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Faide as motha nan tunailean: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Chan urrainn dhut tunail a thogail a tha nas fhaide na seo
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Modh togail a làimh aig prìomh ghnìomhachasan: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :An dòigh a thèid prìomh ghnìomhachas a stèidheachadh. Is ciall dha 'Gun ghin' nach gabh fear sam bith stèidheachadh, is ciall dha 'Rùrachadh' gun gabh a mhaoineachadh ach gun tèid a thogail an àite air thaiream air a' mhapa is 's dòcha nach soirbhich leis, is ciall dha 'Mar ghnìomhachasan eile' gun gabh gnìomhachasan bunasach togail le companaidhean a leithid ghnìomhachasan pròiseasaich an àite sam bith a thogras iad
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :An dòigh a thèid prìomh ghnìomhachas a stèidheachadh. Is ciall dha “Gun ghin” nach gabh fear sam bith stèidheachadh, is ciall dha “Rùrachadh” gun gabh a mhaoineachadh ach gun tèid a thogail an àite air thuaiream air a' mhapa is ’s dòcha nach soirbhich leis, is ciall dha “Mar ghnìomhachasan eile” gun gabh gnìomhachasan bunasach togail le companaidhean a leithid ghnìomhachasan pròiseasaich an àite sam bith a thogras iad
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Gun ghin
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Mar ghnìomhachasan eile
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Rùrachadh
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Raon rèid mu thimcheall gnìomhachasan: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Meud dhe dh'àite rèidh mu thimcheall gnìomhachais. Nì seo cinnteach gum bi rum ann mu thimcheall gnìomhachais gus slighean amsaa. a thogail
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Raon rèidh mu thimcheall gnìomhachasan: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Meud dhe dh'àite rèidh mu thimcheall gnìomhachais. Nì seo cinnteach gum bi rum ann mu thimcheall gnìomhachais gus slighean is mar sin air adhart a thogail
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Ceadaich iomadh gnìomhachas coltach ri chèile san aon bhaile: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Mar as trice, cha bhi baile ag iarraidh barrachd air aon dhe gach seòrsa gnìomhachais. Leis an roghainn seo, faodaidh iomadh gnìomhachas dhen aon seòrsa a bhith san aon bhaile
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Seall comharran: {STRING}
@@ -1357,23 +1357,23 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Taobh draibhidh
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Taobh deas
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Seall uinneag ionmhais air deireadh a' bhliadhna: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Ma tha seo air, thèid uinneag ionmhais a shealltainn air deireadh gach bliadhna ach an toir thu sùil air staid ionmhais na companaidh gu furasta
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Bidh òrduighean ùra 'gun stad' gu bunasach: {STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Mar as àbhaist, stadaidh carbad aig gach stèisean air an tèid e seachad. Ma chuireas tu an roghainn seo air, draibhidh e tron a h-uile stèisean air an t-slighe dha cheann-uidhe mu dheireadh gun stad. Thoir an aire nach mìnichidh an roghainn seo ach an luach bunaiteach airson òrduighean ùra. Faodaidh tu fhèin òrduighean fa leth a shuidheachadh mas as toigh leat co-dhiù
-STR_CONFIG_SETTING_STOP_LOCATION                                :Stadaidh òrduighean ùra aig trèanaichean aig {STRING} a' chlàr gu bunaiteach
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Tagh càite an stad trèan aig clàr gu bunaiteach. Is ciall dha "thoiseach" gun stad i faisg air a' cheann a thig i a-steach, dha "mheadhan" gun stad i sa mheadhan a' chlàir is dha "cheann thall" gun stad i fad air falbh on taobh a thig i a-steach. Thoir an aire nach mìnichidh an roghainn seo ach an luach bunaiteach airson òrduighean ùra. Faodaidh tu fhèin òrduighean fa leth a shuidheachadh mas as toigh leat co-dhiù
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Bidh òrduighean ùra “gun stad” gu bunasach: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Mar as àbhaist, stadaidh carbad aig gach stèisean air an tèid e seachad. Ma chuireas tu an roghainn seo air, draibhidh e tron a h-uile stèisean air an t-slighe dha cheann-uidhe mu dheireadh gun stad. Thoir an aire nach mìnich an roghainn seo ach an luach bunaiteach airson òrduighean ùra. Faodaidh tu fhèin òrduighean fa leth a shuidheachadh mar as toigh leat co-dhiù
+STR_CONFIG_SETTING_STOP_LOCATION                                :Stadaidh òrduighean ùra aig trèanaichean aig {STRING} a' chlàir gu bunaiteach
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Tagh far an stad trèan aig clàr gu bunaiteach. Is ciall dha “toiseach” gun stad i faisg air a' cheann a thig i a-steach, dha “meadhan” gun stad i sa mheadhan a' chlàir is dha “ceann thall” gun stad i fad air falbh on taobh a thig i a-steach. Thoir an aire nach mìnich an roghainn seo ach an luach bunaiteach airson òrduighean ùra. Faodaidh tu fhèin òrduighean fa leth a shuidheachadh mar as toigh leat co-dhiù
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :toiseach
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :meadhan
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ceann thall
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Ciutha nan carbadan-rathaid (le èifeachdan quantum): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Thoir air carbad-rathaid stad air beulaibh stèiseanan rathaid sa bheil carbad eile gus am falbh am fear eile
-STR_CONFIG_SETTING_AUTOSCROLL                                   :Panaich an uinneag nuair a bhios an luchag aig oir an sgrìn: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Panaich an uinneag nuair a bhios an luchag aig oir na sgrìn: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Nuair a bhios seo air, tòisichidh pùirt-seallaidh air sgroladh nuair a bhios an luchag faisg air oir na h-uinneige
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :À comas
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Prìomh-phort-seallaidh, làn-sgrìn a-mhàin
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Prìomh-phort-seallaidh
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Na h-uile port-seallaidh
 STR_CONFIG_SETTING_BRIBE                                        :Ceadaich brìbeadh an ùghdarrais ionadail: {STRING}
-STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Faodaidh commpanaidhean a' feuchainn ri ùghdarras ionadal a' bhaile a bhrìbeadh. Ma mhothaicheas neach-sgrùdaidh am brìbeadh, chan fhad a' chompanaidh dad a dhèanamh tuilleadh sa bhaile fad sia mìosan
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Faodaidh companaidhean feuchainn ri ùghdarras ionadal a' bhaile a bhrìbeadh. Ma mhothaicheas neach-sgrùdaidh am brìbeadh, chan fhaod a' chompanaidh dad a dhèanamh tuilleadh sa bhaile fad sia mìosan
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Ceadaich ceannach aig còirichean giùlain às-dùnach: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ma cheannaicheas companaidh còirichean giùlain às-dùnach airson baile, chan fhaigh stèiseanan (taistealaich no carago) nan co-fharpaisichean carago sam bith fad bliadhna
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Ceadaich maoineachadh thogalaichean: {STRING}
@@ -1383,23 +1383,23 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Faodaidh compan
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Ceadaich toirt airgead dha chompanaidh eile: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Faodaidh companaidhean airgead a thoirt dha chàch a chèile sa mhodh ioma-chluicheadair
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Iomadaichear truimead carago airson giùlan thrèanaichean troma: {STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Suidhich am buaidh a bhios aig carago air na trèanaichean. Bi e nas dorra dha thrèanaichean carago a ghiùlan le luach as àirde, gu h-àraidh air slèibhtean
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Suidhich am buaidh a bhios aig carago air na trèanaichean. Bidh e nas dorra dha thrèanaichean carago a ghiùlan le luach as àirde, gu h-àraidh air slèibhtean
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Factar luaiths nam plèanaichean: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Suidhich luaths nam plèanaichean an coimeas ri carbadan dhe sheòrsaichean eile gus an teachd a-steach tro ghiùlan le plèanaichean a lùghdachadh
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Àireamh dhe thubaistean plèana: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Suidhich an seans gun tuit plèana
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Gun ghin
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Ìslichte
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Cha tachair seo idir
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Ainneamh
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Àbhaisteach
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Ceadaich stèiseanan ri taobh an rathaid air rathaidean a bheil aig bailtean: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Ceadaich gun tèid stèiseanan ri taobh an rathaid a thogail air rathaidean a bheil aig bailtean
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Ceadaich stèiseanan ri taobh an rathaid air rathaidean a bheil aig co-fharpaisichean: {STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Ceadaich gun tèid stèiseanan ri taobh an rathaid a thogail air rathaidean a bheil aig companaidh eile
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Ceadaich stèiseanan ri taobh an rathaid air rathaidean a bhuineas ri baile: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Ceadaich gun tèid stèiseanan ri taobh an rathaid a thogail air rathaidean a bhuineas ri baile
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Ceadaich stèiseanan ri taobh an rathaid air rathaidean a bhuineas ri co-fharpaisiche: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Ceadaich gun tèid stèiseanan ri taobh an rathaid a thogail air rathaidean a bhuineas ri companaidh eile
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Ceadaich togail stèiseanan ri taobh càch a chèile: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Ceadaich gum bean stèiseanan eadar-dhealaichte ri chèile
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Cuir seataidhean iomadach NewGRF an comas: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Roghainn co-chòrdalachd airson NewGRFan seana. Na cuir seo à comas mura h-eil fios agad na tha thu a' dèanamh!
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Roghainn co-chòrdalachd airson NewGRFan seana. Na cuir seo à comas mura h-eil thu eòlach air na tha thu a' dèanamh!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Cha ghabh an roghainn seo atharrachadh nuair a bhios carbad ann
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Cumail suas a' bhun-structair: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Nuair a bhios seo air, bidh cumail suas a' bhun-structair a' cosg airgid. Fàsaidh na cosgaisean nas luaithe na meud an lìonraidh, mar sin bheir an roghainn seo barrachd buaidh air companaidhean mòra
@@ -1408,7 +1408,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Chan fhalbh an 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Nuair a chuireas tu an roghainn seo an comas, cumaidh gach port-adhair a' dol gu bràth an dèidh a thogail
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Thoir rabhadh nuair a thèid carbad air chall: {STRING}
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Seallaidh seo brath mura tèid le carbar slighe a lorg dha cheann-uidhe
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Seallaidh seo brath mura tèid le carbad slighe a lorg dha cheann-uidhe
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Sgrùdaich òrduighean nan carbadan: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Nuair a bhios seo air, thèid òrduighean nan carbadan ath-sgrùdadh bho àm gu àm is thèid duilgheadasan follaiseach aithris le brath naidheachd nuair a mholar e.
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Na sgrùdaich
@@ -1417,17 +1417,17 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Sgrùdaich a h-
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Thoir rabhadh nuair a dh'adhbharaicheas carbad call airgid: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Nuair a bhios seo air, thèid brath a chur mur an do rinn carbad prothaid feadh bliadhna
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Chan fhalbh an ùine air carbadan gu bràth: {STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ma tha seo air, bi a h-uile modail dhe charbad ri làimh gu bràth tuilleadh an dèidh an tionnsgnadh
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ma tha seo air, bidh a h-uile modail dhe charbad ri làimh gu bràth tuilleadh an dèidh an tionnsgnadh
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Fèin-nuadhaich carbad nuair a bhios e air fàs aosta: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Nuair a bhios seo air, nuair a bhios carbad air fàs ro aosta, thèid fear ùr a chur na àite gu fèin-obrachail ma dh'fhreagraicheas e ri cumhan an fhèin-nuadhachaidh
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Nuair a bhios seo air, nuair a bhios carbad air fàs ro aosta, thèid fear ùr a chur na àite gu fèin-obrachail ma dh'fhreagras e ri cumhan an fhèin-nuadhachaidh
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Fèin-nuadhaich nuair a bhios carbad {STRING} na an aois as motha
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :An aois aig carbad a bu chòir fèin-nuadhachadh fhaighinn
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} {P mhìos mhìos mìosan mìos} nas oige
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} {P mhìos mhìos mìosan mìos} nas sine
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :An t-airgead as lugha a tha a dhìth gus fèin-nuadhachadh a dhèanamh: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Feumaidh an uireadh dhe dh'airgid seo a bhith air fhàghail sa bhanca agad an dèidh carbad fèin-nuadhachadh
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :An t-ùine a mhaireas brath mearachd: {STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :An t-ùine a mhaireas brath mearachd ann an uinneag dearg. Thoir an aire nach dùin cuid dhe na brathan as cudromaiche leotha fhèin is gum feum thu an toirt air falbh a làimh.
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Feumaidh an uireadh dhe dh'airgid seo a bhith air fhàghail sa bhanca agad an dèidh carbad fhèin-nuadhachadh
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :An ùine a mhaireas brath mearachd: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :An ùine a mhaireas brath mearachd ann an uinneag dearg. Thoir an aire nach dùin cuid dhe na brathan as cudromaiche leotha fhèin is gum feum thu an toirt air falbh a làimh.
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} {P 0 diog dhiog diogan diog}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Seall gliocasan-sgrìn: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Dèan dàil mus tèid gliocasan-sgrìn a shealltainn nuair a chumas mi an luchag os cionn eileamaid na h-eadar-aghaidh. Mar roghainn eile, gabhaidh gliocasan-sgrìn nasgadh ri putan deas na luchaige
@@ -1436,7 +1436,7 @@ STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Briogadh deas
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Seall àireamh-shluaigh ann an leubail a' bhaile: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Seall àireamh-shluaigh aig bailtean san leubail aca air a' mhapa
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Tiughad nan loidhnichean ann an grafan: {STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Leud na loidhne ann an grafan. Gabhaidh loidhne tana fhaicinn nas pongaile ach tha loidhne tiugh nas fhasa fhaicinnn is dathan nas fhasa a mhothachadh
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Leud na loidhne ann an grafan. Gabhaidh loidhne thana fhaicinn nas pongaile ach tha loidhne thiugh nas fhasa fhaicinnn is dathan nas fhasa a mhothachadh
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Gineadair tìre: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Tùsail
@@ -1453,7 +1453,7 @@ STR_CONFIG_SETTING_TREE_PLACER                                  :Algairim ionad 
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Gun ghin
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Tùsail
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Leasaichte
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Cuairteachadh a'mhapa-àirde: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Cuairteachadh a' mhapa-àirde: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Tuathal
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Deiseil
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Ìre na h-àirde a bhios aig mapa cnàmh-sgeòil rèidh: {STRING}
@@ -1465,9 +1465,9 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Tha co-d
 STR_CONFIG_SETTING_STATION_SPREAD                               :Sgaoileadh as motha aig stèisean: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :An raon as motha sa dh'fhaodas an t-aon stèisean a sgaoileadh. Thoir an aire gun dèan luachan mòra an geama nas slaodaiche
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Càraich heileacoptairean gu fèin-obrachail aig puirt-heileacoptair: {STRING}
-STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Càraich heileacoprairean gach turas a thèid iad air tìr, fiù 's mura h-eil hangar aig a' phort-adhair
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Ceangail am bàr-inneal critha-tìre ri bàraichean-inneal rèile/rathaid/uisge/puirt-adhair: {STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Nuair a dh'fhosglas mi bàr-inneal togail airson seòrsa dhe ghiùlain, fosgail am bàr-inneal airson crutha-tìre cuideachd
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Càraich heileacoprairean gach turas a thèid iad air tìr, fiù ’s mura h-eil hangar aig a' phort-adhair
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Ceangail am bàr-inneal crutha-tìre ri bàraichean-inneal rèile/rathaid/uisge/puirt-adhair: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Nuair a dh'fhosglas mi bàr-inneal togail airson seòrsa dhe ghiùlan, fosgail am bàr-inneal airson crutha-tìre cuideachd
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Dath na tìre a thèid a chleachdach sa mheanbh-mhapa: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Dath na crutha-tìre air a' mheanbh-mhapa
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Uaine
@@ -1478,13 +1478,13 @@ STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Giùlan nuair a
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Sgroladh mìn nam port-seallaidh: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Tagh mar a ghluaiseas am prìomh-shealladh gu ionad sònraichte. Ma tha seo dheth, thèid leum dhan ionad a chaidh a thaghadh sa bhad
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Seall gliocasan-sgrìn tomhais le innealan togail: {STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Seall faide eadar leacan is diofar an àirde nuair a nì thu slaodadh fhad 's a bhios tu a' togail rudeigin
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Seall faide eadar leacan is diofar an àirde nuair a nì thu slaodadh fhad ’s a bhios tu a' togail rudeigin
 STR_CONFIG_SETTING_LIVERIES                                     :Seall dathan na companaidh: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Stiùirich cleachdadh nan dathan a rèir seòrsa a' charbaid (seach a rèir na companaidh)
-STR_CONFIG_SETTING_LIVERIES_NONE                                :Gun ghin
-STR_CONFIG_SETTING_LIVERIES_OWN                                 :A' chompanaidh agam fhèin
-STR_CONFIG_SETTING_LIVERIES_ALL                                 :Na h-uile companaidh
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :'S docha leam cabadaich sgioba le <ENTER>: {STRING}
+STR_CONFIG_SETTING_LIVERIES_NONE                                :Na seall idir
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Aig a' chompanaidh agam fhèin
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :Aig a h-uile companaidh
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Cabadaich sgioba le <ENTER>: {STRING}
 STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Tagh an dèan thu suids eadar cabadaich taobh a-staigh na companaidh is cabadaich poblach leis an iuchair <ENTER> no le <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Giùlan a' chuibhle-sgrolaidh: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Cuir sgroladh an comas le cuibhle-sgrolaidh luchaige aig a bheil dà dhimeinsean
@@ -1492,9 +1492,9 @@ STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Sùm am mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Sgrolaich am mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Dheth
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Luaths aig sgroladh a' mhapa leis a' chuibhle: {STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Tagh dè cho luath 's a thèid sgroladh le cuibhle-sgrolaidh na luchaige
-STR_CONFIG_SETTING_OSK_ACTIVATION                               :Meur-clàr air an sgrìn: {STRING}
-STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Tagh an dòigh a thèid meur-chlàr fhosgladh air an sgrìn gus teacsa a chur a-steach leis tomhaire a-mhàin. Tha seo airson uidheaman beaga aig nach eil meur-chlàr fhèin
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Tagh dè cho luath ’s a thèid sgroladh le cuibhle-sgrolaidh na luchaige
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Meur-chlàr air an sgrìn: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Tagh an dòigh a thèid meur-chlàr fhosgladh air an sgrìn gus teacsa a chur a-steach leis an tomhaire a-mhàin. Tha seo airson uidheaman beaga aig nach eil meur-chlàr fhèin
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :À comas
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Briogadh dùbailte
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Aon bhriogadh (le fòcas)
@@ -1509,44 +1509,44 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Dheth
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Sgroladh le briogadh clì: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Cuir an comas gun tèid am mapa a sgroladh le slaodadh le putan clì na luchaige. Tha seo feumail gu h-àraidh nuair a chleachdas tu sgrìn-shuathaidh airson sgroladh
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Cleachd am fòrmat cinn-latha {STRING} airson ainmean nan geamannan air an sàbhaladh
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Fòrmat cinn-latha {STRING} airson ainmean nan geamannan air an sàbhaladh
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Fòrmat a' chinn-latha ann an ainmean faidhle nan geamannan air an sàbhaladh
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :fada (31d Dùbh 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :goirid (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Pailead bunaiteach airson NewGRFan aig nach eil pailead aca fhèin: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Pailead dhathan bunasach a thèid a chleachdadh le NewGRFan nach sònraicheas dè am fear a tha a dhìth
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Pailead dhathan bunasach a thèid a chleachdadh le NewGRFan nach sònraich dè am fear a tha a dhìth
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Pailead DOS
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Pailead Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Cuir geamannan air ùr-thòiseachadh nan stad gu fèin-obrachail: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Nuair a bhios seo air, stadaidh an geama gu fèin-obrachail nuair a thòisicheas tu geama ùr. Bheir seo cothrom dhut gus am mapa a sgrùdadh air do shocair
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Ceadaich nuair a bhios an geama na stad: {STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Tagh dè na gnìomhan a hios ceadaichte nuair a bhios ann geama na stad
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Gun gnìomh sam bith
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Tagh na gnìomhan a bhios ceadaichte nuair a bhios ann geama na stad
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Na ceadaich gnìomh sam bith
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :A h-uile gnìomh ach togail
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :A h-uile gnìomh ach atharrachadh a' chrutha-tìre
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Na h-uile gnìomh
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Tagh liosta nan carbadan adhartach: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Cleachd liosta nan carbadan adhartach: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Cuir liostaichean adhartach nan carbadan an comas gus carbadan a chur ann am buidhnean
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :Cleachd taisbeanairean luchdaidh: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :Seall taisbeanairean luchdaidh aig: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Tagh an tèid taisbeanairean luchdaidh a shealltainn os cionn charbadan a bhios a' luchdadh no dì-luchdadh
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Seall an clàr-ama ann an diogan seach làithean: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Seall na h-ùinean siubhail ann an clàran-ama le diogan geama seach làithean
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Seall àm ruigsinn is falbh air clàran-ama: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Seall na h-amannan ruigsinn is falbh air a bheilear an dùil air clàran-ama
 STR_CONFIG_SETTING_QUICKGOTO                                    :Cruthachadh luath aig òrduighean charbadan:{STRING}
-STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Ro-thagh an cùrsair "rach gu" nuair a thèid uinneag nan òrduighean fhosgladh
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Ro-thagh an cùrsair “rach gu” nuair a thèid uinneag nan òrduighean fhosgladh
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Seòrsa rèile bunaiteach (le geama ùr/air ùr-luchdadh): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :An seòrsa rèile a thèid a thaghadh nuair a bhios geama ùr air thòiseachadh no geama air luchdadh. Taghaidh "Seòrsa as sine" an seòrsa as sine dhe rèile, "Seòrsa as ùire" an seòrsa as ùire a tha ri làimh is "Ga chleachdadh mar as trice" an seòrsa a tha thu a' cleachdadh as trice an-dràsta
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :An seòrsa rèile a thèid a thaghadh nuair a bhios geama ùr air a thòiseachadh no geama air luchdadh. Taghaidh “Seòrsa as sine” an seòrsa as sine dhe rèile, “Seòrsa as ùire” an seòrsa as ùire a tha ri làimh is “Ga chleachdadh mar as trice” an seòrsa a tha thu a' cleachdadh mar as trice an-dràsta
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Seòrsa as sine
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Seòrsa as ùire
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Ga chleachdadh mar as trice
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Seall slighean glèidhte: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Cuiridh seo dath eile air slighean glèidhte gus cuideachadh le duilgheadasan gun diùlt trèan dol a-steach dha bhlocaichean stèidhichte air slighean
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Cùm innealan togail gnìomhach an dèidh an cleachdadh: {STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Cùm na h-innealan togail airson dhrochaidean, thunailean amsaa. fosgailte nuair a chaidh an cleachdadh
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Cùm na h-innealan togail airson drochaidean, tunailean amsaa. fosgailte nuair a chaidh an cleachdadh
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Cuir cosgaisean ann am buidhnean ann an uinneag maoin na companaidh: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Tagh a' cho-dhealbhachd airson uinneag maoin na companaidh
 
@@ -1600,17 +1600,17 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :An àireamh as 
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Tha tricead a' chàraidh ann an ceudadan: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Tagh an tèid carbad a chur gus obair-càraidh fhaighinn a rèir an turais mu dheireadh a fhuair iad càradh air no nuair a bhios earbsachd air lùghdachadh le ceudad sònraichte dhen earbsachd as motha
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :Dè cho tric 's a thèid trèanaichean a chàradh a ghnàth: {STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Tagh dè cho tric 's a thèid obair-càraidh a dhèanamh air carbadan-trèan ùra mura deach tricead nan càraidhean sònraichte a shuidheachadh airson a' charbaid
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Dè cho tric ’s a thèid trèanaichean a chàradh a ghnàth: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Tagh dè cho tric ’s a thèid obair-càraidh a dhèanamh air carbadan-trèan ùra mura deach tricead nan càraidhean sònraichte a shuidheachadh airson a' charbaid
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} {P 0 latha latha làithean latha}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :À comas
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Dè cho tric 's a thèid carbadan-rathaid a chàradh a ghnàth: {STRING}
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Tagh dè cho tric 's a thèid obair-càraidh a dhèanamh air carbadan-rathaid ùra mura deach tricead nan càraidhean sònraichte a shuidheachadh airson a' charbaid
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Dè cho tric 's a thèid carbadan-adhair a chàradh a ghnàth: {STRING}
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Tagh dè cho tric 's a thèid obair-càraidh a dhèanamh air carbadan-adhair ùra mura deach tricead nan càraidhean sònraichte a shuidheachadh airson a' charbaid
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :Dè cho tric 's a thèid longan a chàradh a ghnàth: {STRING}
-STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Tagh dè cho tric 's a thèid obair-càraidh a dhèanamh air longan ùra mura deach tricead nan càraidhean sònraichte a shuidheachadh airson na luinge
-STR_CONFIG_SETTING_NOSERVICE                                    :Cuir obair-càraidh à comas ma chaidh briseadh a chur gu "Gun ghin": {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Dè cho tric ’s a thèid carbadan-rathaid a chàradh a ghnàth: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Tagh dè cho tric ’s a thèid obair-càraidh a dhèanamh air carbadan-rathaid ùra mura deach tricead nan càraidhean sònraichte a shuidheachadh airson a' charbaid
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Dè cho tric ’s a thèid carbadan-adhair a chàradh a ghnàth: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Tagh dè cho tric ’s a thèid obair-càraidh a dhèanamh air carbadan-adhair ùra mura deach tricead nan càraidhean sònraichte a shuidheachadh airson a' charbaid
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Dè cho tric ’s a thèid longan a chàradh a ghnàth: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Tagh dè cho tric ’s a thèid obair-càraidh a dhèanamh air longan ùra mura deach tricead nan càraidhean sònraichte a shuidheachadh airson na luinge
+STR_CONFIG_SETTING_NOSERVICE                                    :Cuir obair-càraidh à comas ma chaidh briseadh a chur gu “Cha tachair seo idir”: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ma tha seo air, chan fhaigh carbadan obair-càraidh mur urrainn dhaibh briseadh
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Cuir crìochan-luaiths nan carbadan-trèan an comas: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ma tha seo air, cleachd crìochan-luaiths nan carbadan cuideachd gus an luaths as motha aig trèan a shuidheachadh
@@ -1624,16 +1624,16 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Seall pàipear-
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Tubaistean / dunaidhean: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Seall pàipear-naidheachd nuair a thachras tubaist no dunaidh
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Fiosrachadh na companaidh: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Seal pàipear-naidheachd nuair chaidh companaidh ùr a stèidheachadh no nuair a bhios companaidh fo chunnart brisidh
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Fosgladh aig gnìomhachasan: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Seall pàipear-naidheachd nuair thèid companaidh ùr a stèidheachadh no nuair a bhios companaidh fo chunnart brisidh
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Gnìomhachas ùr air fhosgladh: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Seall pàipear-naidheachd nuair a dh'fhosglas gnìomhachas ùr
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Dùnadh aig gnìomhachasan: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Gnìomhachas air a dhùnadh: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Seall pàipear-naidheachd nuair a thèid gnìomhachas a dhùnadh
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Atharraichean an eaconamaidh: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Seall pàipear-naidheachd nuair a dh'atharraicheas eaconamaidh na cruinne
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Atharraichean saothrachaidh aig gnìomhachasan a tha gan frithealadh leis a' chompanaidh: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Atharraichean saothrachaidh aig gnìomhachasan a tha gam frithealadh leis a' chompanaidh: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Seall pàipear-naidheachd nuair a dh'atharraicheas ìre saothrachaidh aig gnìomhachas a tha gam frithealach leis a' chompanaidh agad
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Atharraichean saothrachaidh aig gnìomhachasan a tha gan frithealadh le co-fharpaisiche: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Atharraichean saothrachaidh aig gnìomhachasan a tha gam frithealadh le co-fharpaisiche: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Seall pàipear-naidheachd nuair a dh'atharraicheas ìre saothrachaidh aig gnìomhachas a tha gam frithealach le co-fharpaisiche
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Atharraichean saothrachaidh aig gnìomhachasan eile: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Seall pàipear-naidheachd nuair a dh'atharraicheas ìre saothrachaidh aig gnìomhachas nach eil gam frithealach le companaidh sam bith
@@ -1658,9 +1658,9 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Bliadhna tòise
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Cuir eaconamaidh rèidh an comas (atharraichean nas trice is nas beaga): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Ma tha seo air, atharraichidh saothrachadh nan gnìomhachasan nas trice is le ceuman nas lugha. Chan eil buaidh aig seo air seòrsaichean gnìomhachais a chaidh a sholar le NewGRF mar as trice
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ceadaich gun tèid stoca a cheannach bho chompanaidhean eile: {STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ma tha seo air, 's urrainn dhut stocan chompanaidhean a cheannach is a reic. Cha bhi stoca ri làimh ach aig companaidhean aig a bheil aois shònraichte
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :A' cheudad dhen prothaid a gheibh carbadan le tar-aiseag carago: {STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :A' cheudad dhen prothaid a gheibh carbadan airson an t-slighe a shiubhal iad nuair a nì iad tar-aiseag. Bheir seo barrachd smachd air an teachd a-steach dhut
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ma tha seo air, ’s urrainn dhut stocan chompanaidhean a cheannach is a reic. Cha bhi stoca ri làimh ach aig companaidhean aig a bheil aois shònraichte
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :A' cheudad dhen phrothaid a gheibh carbadan le tar-aiseag carago: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :A' cheudad dhen phrothaid a gheibh carbadan airson na slighe a shiubhlas iad nuair a nì iad tar-aiseag. Bheir seo barrachd smachd air an teachd a-steach dhut
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Le slaodadh, cuir comharra gach: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Tagh an t-astar eadar comharran a thèid a thogail air slighe is an t-ath-chnap-starra (comharra, gobhal) nuair a bhios comarran gan slaodadh
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} {P 0 leac leac leacan leac}
@@ -1670,8 +1670,8 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Tog saimeaforea
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Tagh am bliadhna a thèid comharran dealain a chleachdadh airson slighean. Ron bhliadhna seo, thèid comharran neo-dhealanach a chleachdadh (tha an dearbh ghiùlan aca ach coltas eadar-dhealaichte)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Cuir eadar-aghaidh nan comharran an comas: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Seall uinneag gus an seòrsa dhe chomharra a thogas tu a thaghadh seach dol tro na seòrsaichean dhe chomharran às aonais uinneige le Ctrl+briogadh air togail chomharran
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Seòrsa dhe chomharra a thèid a thogail a ghnàth: {STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Seòrsa bunaiteach dhe chomharra a thèid a chleachdadh
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :An seòrsa dhe chomharra a thèid a thogail a ghnàth: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :An seòrsa bunaiteach dhe chomharra a thèid a chleachdadh
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Comharran bacaidh
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Comharran slighe
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Comharran aon-shligheach
@@ -1690,18 +1690,18 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Griod 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Air thuaiream
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Faodaidh bailtean rathaidean a thogail: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Ceadaich dha bhailtean gun tog iad rathaidean ach am fàs iad. Cuir seo à comas gus ughdarrasan nam bailtean a bhacadh bho thogail rathaidean dhaibh fhèin
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Ceadaich bha bhailtean staranan-rèile a thogail: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Ceadaich dha bhailtean staranan-rèile a thogail: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Ma tha seo air, faodaidh bailtean staranan-rèile a thogail
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :Ceadaich bha bhailtean smachd a chumail air an fhuaim a dh'adhbharaicheas puirt-adhair: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Ceadaich dha bhailtean smachd a chumail air an fhuaim a dh'adhbharaicheas puirt-adhair: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Ma tha an roghainn seo à comas, faodaidh dà phort-adhair a bhith san aon bhaile. Nuair a bhios an roghainn seo air, bidh cuingeachadh air an àireamh dhe phuirt-adhair a rèir na fuaime a dh'fhulaingeas am baile na chrochas air meud an t-slughaidh is air meud is astar a' phuirt-adhair
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :A' stèidheachadh bailtean sa gheama: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Stèidheachadh bhailtean sa gheama: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Ma tha an roghainn seo air, faodaidh cluicheadairean bailtean ùra a stèidheachadh sa gheama
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Toirmisgte
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Ceadaichte
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Ceadaichte, co-dhealbhachd a' bhaile ghnàthaichte
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Cur nan craobh sa gheama: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Cùm smachd air na craobhan a nochdas sa gheama air thuaiream. Dh'fhaoidte gu bheil seo buaidh air gnìomhachasan a tha an eisimeil fàs nan craobhan a leithid muileannan-fiodha
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Cùm smachd air na craobhan a nochdas sa gheama air thuaiream. Dh'fhaoidte gun toir seo buaidh air gnìomhachasan a tha an eisimeil fàs nan craobhan a leithid muileannan-fiodha
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Gun ghin {RED}(brisidh seo muileannan-fiodha)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Ann an coilltean-uisge a-mhàin
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Àite sam bith
@@ -1715,7 +1715,7 @@ STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :An t-astar eada
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} {P 0 phiogsail phiogsail piogsailean piogsail}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :À comas
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :An àireamh as motha dhe dh'uinnegan nach eil steigeach: {STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :An àireamh as motha dhe dh'uinneagan fosgailte nach eil steigeach nach tèid a dhùnadh gu fèin-opbrachail gus àite a chruthachadh airson uinneagan ùra
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :An àireamh as motha dhe dh'uinneagan fosgailte nach eil steigeach nach tèid a dhùnadh gu fèin-obrachail gus àite a chruthachadh airson uinneagan ùra
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :à comas
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Leibheil sùmaidh a-steach as àirde: {STRING}
@@ -1729,19 +1729,19 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Luaths fàs nam bailtean: {STRING}
-STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Suidhich dè cho luath 's a dh'fhàsas bailtean
-STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Gun ghin
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Suidhich dè cho luath ’s a dh'fhàsas bailtean
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Gun fhàs idir
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Slaodach
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Àbhaisteach
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Luath
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Glè luath
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Roinn nam bailtean a thèid nam mòr-bhailtean: {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Suidhich co mheud bailtean a thèid nam mòr-bhailtean, 's e seo baile a thòisicheas nas motha is a dh'fhàsas nas luaithe
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Suidhich co mheud bailtean a thèid nam mòr-bhailtean, ’s e seo baile a thòisicheas nas motha is a dh'fhàsas nas luaithe
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 a-mach à {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Gun ghin
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Iomadaichear meud nam bailtean aig an toiseach: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Am meud cuibheasach dhe mhòr-bhailtean an coimeas ri bailtean àbhaisteach aig toiseach a' gheama
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Thoir air falbh eileamaidean-rathaid gun chiall nuair a thèid na rathaidean a thogail: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Thoir air falbh eileamaidean-rathaid gun chiall nuair a thèid rathaid a thogail: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Thoir cùil-dhùinte nan rathaidean air falbh nuair a thèid togail rathaidean a mhaoineachadh
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Eadar-aghaidh
@@ -1750,7 +1750,7 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Carbada
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stèiseanan
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Eaconamaidh
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Co-farpaisichean
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Roghainnean seallaidh
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Roghainnean a t-seallaidh
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Eadar-ghnìomh
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Èifeachdan fuaime
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Naidheachdan is brathan
@@ -1758,7 +1758,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Comharr
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Làimhseachadh carago
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Cluicheadairean coimpiutair
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Fèin-nuadhachadh
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Obair-glèidhidh
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Obair-ghlèidhidh
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Lorg shlighean
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trèanaichean
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Bailtean
@@ -1781,21 +1781,21 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Atharrai
 
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}Mearachd leis an fhaidhle rèiteachaidh...
-STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... mearachd ann an arraigh "{STRING}"
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... luach "{STRING}" mì-dhligheach airson "{STRING}"
-STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... caractaran anabarrach air deireadh roghainn "{STRING}"
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... a' leigeil seachad NewGRF "{STRING}": ID GRF dùblaichte le "{STRING}"
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... a' leigeil seachad NewGRF "{STRING}" mì-dhligheach: {STRING}
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... mearachd ann an arraigh “{STRING}"
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... luach “{STRING}" mì-dhligheach airson “{STRING}"
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... caractaran anabarrach air deireadh roghainn “{STRING}"
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... a' leigeil seachad NewGRF “{STRING}": ID GRF dùblaichte le “{STRING}"
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... a' leigeil seachad NewGRF “{STRING}" mì-dhligheach: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :gun lorg
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :neo-thèarainte airson cleachdaidh stadaigich
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :siostam NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :neo-chòrdail ris an tionndadh seo dhe OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :neo-aithnichte
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... tha an leibheil dùmhlachaidh "{STRING}" mì-dhligheach
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... chan eil am fòrmat "{STRING}" gus geamannan a shabhaladh ri làimh. A' tilleadh gu "{STRING}"
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... a' leigeil seachad an seata grafaigeachd bunasach "{STRING}": cha deach a lorg
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... a' leigeil seachad an seata fuaime bunasach "{STRING}": cha deach a lorg
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... a' leigeil seachad an seata ciùil bunasach "{STRING}": cha deach a lorg
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... tha an leibheil dùmhlachaidh “{STRING}" mì-dhligheach
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... chan eil am fòrmat “{STRING}" gus geamannan a shabhaladh ri làimh. A' tilleadh gu “{STRING}"
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... a' leigeil seachad an seata grafaigeachd bunasach “{STRING}": cha deach a lorg
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... a' leigeil seachad an seata fuaime bunasach “{STRING}": cha deach a lorg
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... a' leigeil seachad an seata ciùil bunasach “{STRING}": cha deach a lorg
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Chan eil cuimhne gu leòr agad
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Dh'fhàillig le sònrachadh aig {BYTES} dhe thasgadan nam sprites. Chaidh tasgadan nam sprites a lùghdachadh gu {BYTES}. Le sin, bidh an dèanadas aig OpenTTD nas lugha. Gus nach bidh feum ann airson a leithid dhe chuimhne, feuch an cuir thu grafaigeachd 32bpp is/no leibheilean sùmaidh à comas
 
@@ -1824,10 +1824,10 @@ STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Tòisich
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Cruthaich saoghal a' gheama/cnàmh-sgeul gnàthaichte
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Tòisich geama ioma-chluicheadair
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Tagh an stoidhle crutha-tìre "measarra"
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Tagh an stoidhle crutha-tìre "fo-artach"
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Tagh an stoidhle crutha-tìre "fo-thropaigeach"
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Tagh an stoidhle crutha-tìre "tìr nan dèideag"
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Tagh an stoidhle crutha-tìre “measarra"
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Tagh an stoidhle crutha-tìre “fo-artach"
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Tagh an stoidhle crutha-tìre “fo-thropaigeach"
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Tagh an stoidhle crutha-tìre “tìr nan dèideag"
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Seall roghainnean a' gheama
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Seall clàr nan sgòran àrda
@@ -1835,9 +1835,9 @@ STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Seall na
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Seall na roghainnean NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Thoir sùil airson susbainte ùire no air a h-ùrachadh ri luchdadh a-nuas
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Seall roghainnean sgriobt IF/geama
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Fàg 'OpenTTD'
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Fàg “OpenTTD"
 
-STR_INTRO_TRANSLATION                                           :{BLACK}Tha {NUM} {P sreang shreang sreangan sreang} a dhìth air an earad-theangachadh seo. Nach toir thu cuideachadh dhuinn gus piseach a thort air OpenTTD 's tu a' clàradh mar eadar-theangaiche? Thoir sùil air readme.txt airson fiosrachaidh.
+STR_INTRO_TRANSLATION                                           :{BLACK}Tha {NUM} {P sreang shreang sreangan sreang} a dhìth air an earad-theangachadh seo. Nach toir thu cuideachadh dhuinn gus piseach a thort air OpenTTD ’s tu a' clàradh mar eadar-theangaiche? Thoir sùil air readme.txt airson fiosrachaidh.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Fàg an-seo
@@ -1883,15 +1883,15 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Cuir an
 STR_LIVERY_CAPTION                                              :{WHITE}Sgeama nan dath ùr
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Seall sgeamannan nan dath coitcheann
-STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Seall sgeamannan nan dath airson thrèanaichean
-STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Seall sgeamannan nan dath airson charbadan-rathaid
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Seall sgeamannan nan dath airson trèanaichean
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Seall sgeamannan nan dath airson carbadan-rathaid
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Seall sgeamannan nan dath airson longan
-STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Seall sgeamannan nan dath airson charbadan-adhair
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Seall sgeamannan nan dath airson carbadan-adhair
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Tagh am prìomh dhath airson an sgeama a thagh thu. Suidhichidh Ctrl+Briogadh an dath seo airsion na h-uile sgeama
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Tagh an dàrna dath airson an sgeama a thagh thu. Suidhichidh Ctrl+Briogadh an dath seo airsion na h-uile sgeama
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Tagh sgeama nan dath airson atharrachadh, no iomadh sgeama le Ctrl+Briogadh. Briog air a' bhogsa gus cleachdadh an sgeama a thogladh
 
-STR_LIVERY_DEFAULT                                              :Lìbhre àbhaisteach
+STR_LIVERY_DEFAULT                                              :Dathan àbhaisteach
 STR_LIVERY_STEAM                                                :Einnsean-smùide
 STR_LIVERY_DIESEL                                               :Einnean Diesel
 STR_LIVERY_ELECTRIC                                             :Einnsean-dealain
@@ -1945,8 +1945,8 @@ STR_FACE_EUROPEAN                                               :{BLACK}Eòrpach
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Tagh aodan Eòrpach
 STR_FACE_AFRICAN                                                :{BLACK}Afraganach
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Tagh aodann Afraganach
-STR_FACE_YES                                                    :Tha
-STR_FACE_NO                                                     :Chan eil
+STR_FACE_YES                                                    :Air/Oirre
+STR_FACE_NO                                                     :—
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Cuir stais no fàinne-chluaise an comas
 STR_FACE_HAIR                                                   :Falt:
 STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Atharraich am falt
@@ -1960,7 +1960,7 @@ STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Atharrai
 STR_FACE_NOSE                                                   :Sròn:
 STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Atharraich an t-sròn
 STR_FACE_LIPS                                                   :Bilean:
-STR_FACE_MOUSTACHE                                              :Staid:
+STR_FACE_MOUSTACHE                                              :Stais:
 STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Atharraich na bilean no an stais
 STR_FACE_CHIN                                                   :Smigead:
 STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Atharraich an smigead
@@ -2022,8 +2022,8 @@ STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Lorg fri
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Lorg san lìonraidh airson frithealaiche
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Cuir frithealaiche ris
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Cuiridh seo frithealaiche ris an liosta gus an tèid sùil a thoirt air airson geamannan nan ruith
-STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Tòisich am frithealaiche
-STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Tòisich am frithealaiche agad fhèin
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Tòisich frithealaiche
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Tòisich frithealaiche agad fhèin
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Cuir d' ainm a-steach
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Cuir seòladh an òstair a-steach
@@ -2096,10 +2096,10 @@ STR_NETWORK_LANG_LATVIAN                                        :Laitbheis
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Lobaidh nan geamannan ioma-chluicheadair
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Ag ullachadh gus gabhail ann: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Liosta dhen a h-uile companaidh a tha sa gheama an-dràsta. 'S urrainn dhut gabhail ann an tè no tè ùr a stèidheachadh ma tha slot companaidh saor ri làimh
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Liosta dhen a h-uile companaidh a tha sa gheama an-dràsta. ’S urrainn dhut gabhail ann an tè no tè ùr a stèidheachadh ma tha slot companaidh saor ri làimh
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}FIOSRACHADH A' CHOMPANAIDH
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Ainm a' chompanaidh: {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Ainm na companaidh: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Stèidheachadh: {WHITE}{NUM}
 STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Luach a' chompanaidh: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Balans an-dràsta: {WHITE}{CURRENCY_LONG}
@@ -2164,7 +2164,7 @@ STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Na sàbh
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Thoir am facal-faire ùr dhan chompanaidh
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Facal-faire na companaidh
 STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Facal-faire bunaiteach na companaidh
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Cleachd am facal-faire companaidh seo a ghnàth airson chompanaidhean ùra
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Cleachd am facal-faire companaidh seo a ghnàth airson companaidhean ùra
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Gabh ann
@@ -2264,12 +2264,12 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Dhùin a
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tha am frithealaiche ag ath-thòiseachadh...{}Fuirich greis...
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Tha susbaint a' luchdadh a-nuas
+STR_CONTENT_TITLE                                               :{WHITE}Susbaint ri luchdadh a-nuas
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Seòrsa
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Seòrsa na susbaint
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Ainm
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Ainm na susbainte
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Briog air loidhne gus fiosrachadh a shealltainn{}Thoir cromag sa bhogsa gus a taghadh airson luchdadh a-nuas
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Briog air nì gus fiosrachadh mu dheidhinn a shealltainn{}Thoir cromag sa bhogsa gus a taghadh airson luchdadh a-nuas
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Tagh na h-uile
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Tagh an t-susbaint uile gus a luchdadh a-nuas
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Tagh ùrachaidhean
@@ -2279,7 +2279,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Comharra
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Lorg air làraichean-lìn taobh a-muigh
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Lorg susbaint nach eil ri làimh air seirbheise susbaint OpenTTD is a bheil ri làimh air làraichean lìn nach eil ceangailte ri OpenTTD
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Tha thu a' fàgail OpenTTD!
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Dh'fhaoidte gum bi na teirmichean 's na cumhaichean gus susbaint a luchdadh a-nuas bho làraichean-lìn eile eadar-dhealaichte.{}Feumaidh tu sùil a thoirt air na làraichean-lìn a-muigh mu mar a stàlaicheas tu an t-susbaint ann an OpenTTD.{}A bheil thu airson leantainn air adhart?
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Dh'fhaoidte gum bi na teirmichean ’s na cumhaichean gus susbaint a luchdadh a-nuas bho làraichean-lìn eile eadar-dhealaichte.{}Feumaidh tu sùil a thoirt air na làraichean-lìn a-muigh mu mar a stàlaicheas tu an t-susbaint ann an OpenTTD.{}A bheil thu airson leantainn air adhart?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Criathrag taga/ainm:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Tadhail air an làrach-lìn
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Tadhail air làrach-lìn na susbainte seo
@@ -2302,7 +2302,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Meud an
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Air a thaghadh air sàilleibh: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Eisimeileachdan: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tagaichean: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}Chaidh OpenTTD a thogail às aonais taic dha "zlib"...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}Chaidh OpenTTD a thogail às aonais taic dha “zlib"...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... cha ghabh susbaint sam bith luchdadh a-nuas!
 
 # Order of these is important!
@@ -2342,7 +2342,7 @@ STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Toglaich
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Toglaich trìd-shoilleireachd nan craobhan. Ctrl+Briogadh airson glasadh
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Toglaich trìd-shoilleireachd nan taighean. Ctrl+Briogadh airson glasadh
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Toglaich trìd-shoilleireachd nan gnìomhachasan. Ctrl+Briogadh airson glasadh
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Toglaich trìd-shoilleireachd nan rudan a ghabhas togail a leithis stèiseanan, lannan is puingean-turais. Ctrl+Briogadh airson glasadh
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Toglaich trìd-shoilleireachd nan rudan a ghabhas togail a leithid stèiseanan, trèan-lannan is puingean-turais. Ctrl+Briogadh airson glasadh
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Toglaich trìd-shoilleireachd nan drochaidean. Ctrl+Briogadh airson glasadh
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Toglaich trìd-shoilleireachd nan structaran a leithid thaighean-solais is tùir chraobh-sgaoilidh. Ctrl+Briogadh airson glasadh
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Toglaich trìd-shoilleireachd nan càballan-rèile. Ctrl+Briogadh airson glasadh
@@ -2402,7 +2402,7 @@ STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Tagh com
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Àireamh dhe shlighean
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Tagh cò mheud clàr a bhios aig an stèisean
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Faide nan clàr
-STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Tagh dè cho fad 's a bhios an stèisean
+STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Tagh dè cho fad ’s a bhios an stèisean
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Slaod is leig às
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tog stèisean le slaodadh is leigeil às
 
@@ -2415,18 +2415,18 @@ STR_STATION_CLASS_WAYP                                          :Puingean-turais
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Roghainn nan comharran
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Comharra bloca (saimeafor){}Seo an seòrsa comharra as bunasaiche is chan fhaod ach aon trèan a bhith san aon bhloca aig an aon àm
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Comharra a-steach (saimeafor){}Bidh seo uaine fhad 's a tha comharra a-mach uaine san ath roinn dhen t-slighe. Mur eil, bidh e dearg
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Comharra a-mach (saimeafor){}Tha an t-aon ghiulan aige 's a tha aig comharra bloca ach tha feum air gus an dath mar bu chòir a thoirt air comharran a-steach is ro-chomharran aonaichte
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Comharra aonaichte (saimeafor){}'S e comharra a-steach is a-mach a th' anns a' chomharra aonaichte seo aig an aon àm. Mar sin, 's urrainn dhut "craobhan" mòra dhe ro-chomharran a thogail
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Comharra a-steach (saimeafor){}Bidh seo uaine fhad ’s a tha comharra a-mach uaine san ath roinn dhen t-slighe. Mur eil, bidh e dearg
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Comharra a-mach (saimeafor){}Tha an t-aon ghiulan aige ’s a tha aig comharra bloca ach tha feum air gus an dath mar bu chòir a thoirt air comharran a-steach is ro-chomharran aonaichte
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Comharra aonaichte (saimeafor){}’S e comharra a-steach is a-mach a th' anns a' chomharra aonaichte seo aig an aon àm. Mar sin, ’s urrainn dhut “craobhan" mòra dhe ro-chomharran a thogail
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Comharra slighe (saimeafor){}Leigidh comharra slighe le barrachd air aon trèan dol a-steach dhan bhloca comharra air an aon àm, mas urrainn dhan trèan slighe gu ionad stadaidh sàbhailte a ghlèidheadh. Faodar dol seachad air comharran slighe àbhaisteach on chùlaibh
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Comharra slighe aon-shligheach (saimeafor){}Leigidh comharra slighe le barrachd air aon trèan dol a-steach dhan bhloca comharra air an aon àm, mas urrainn dhan trèan slighe gu ionad stadaidh sàbhailte a ghlèidheadh. Chan fhaodar dol seachad air comharran slighe àbhaisteach on chùlaibh
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Comharra bloca (dealain){}Seo an seòrsa comharra as bunasaiche is chan fhaod ach aon trèan a bhith san aon bhloca aig an aon àm
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Comharra a-steach (dealain){}Bidh seo uaine fhad 's a tha comharra a-mach uaine san ath roinn dhen t-slighe. Mur eil, bidh e dearg
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Comharra a-mach (dealain){}Tha an t-aon ghiulan aige 's a tha aig comharra bloca ach tha feum air gus an dath mar bu chòir a thoirt air comharran a-steach is ro-chomharran aonaichte
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Comharra aonaichte (dealain){}'S e comharra a-steach is a-mach a th' anns a' chomharra aonaichte seo aig an aon àm. Mar sin, 's urrainn dhut "craobhan" mòra dhe ro-chomharran a thogail
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Comharra a-steach (dealain){}Bidh seo uaine fhad ’s a tha comharra a-mach uaine san ath roinn dhen t-slighe. Mur eil, bidh e dearg
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Comharra a-mach (dealain){}Tha an t-aon ghiulan aige ’s a tha aig comharra bloca ach tha feum air gus an dath mar bu chòir a thoirt air comharran a-steach is ro-chomharran aonaichte
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Comharra aonaichte (dealain){}’S e comharra a-steach is a-mach a th' anns a' chomharra aonaichte seo aig an aon àm. Mar sin, ’s urrainn dhut “craobhan" mòra dhe ro-chomharran a thogail
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Comharra slighe (dealain){}Leigidh comharra slighe le barrachd air aon trèan dol a-steach dhan bhloca comharra air an aon àm, mas urrainn dhan trèan slighe gu ionad stadaidh sàbhailte a ghlèidheadh. Faodar dol seachad air comharran slighe àbhaisteach on chùlaibh
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Comharra slighe aon-shligheach (dealain){}Leigidh comharra slighe le barrachd air aon trèan dol a-steach dhan bhloca comharra air an aon àm, mas urrainn dhan trèan slighe gu ionad stadaidh sàbhailte a ghlèidheadh. Chan fhaodar dol seachad air comharran slighe àbhaisteach on chùlaibh
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Iompachadh chomharran{}Ma thagh thu seo 's tu a' briogadh air comarra a tha ann, iompaichidh seo an comharra dhan t-seòrsa a thagh thu. Seallaidh Shift+briogadh tuairmse air cosgaisean an iompachaidh dhut
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Iompachadh chomharran{}Ma thagh thu seo ’s tu a' briogadh air comarra a tha ann, iompaichidh seo an comharra dhan t-seòrsa a thagh thu. Seallaidh Shift+briogadh tuairmse air cosgaisean an iompachaidh dhut
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Dlùths nan comharran air an cruthachadh le slaodadh
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Lùghdaich dlùths nan comharran air an cruthachadh le slaodadh
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Meudaich dlùths nan comharran air an cruthachadh le slaodadh
@@ -2448,14 +2448,14 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Phìobach, Sile
 
 
 # Road construction toolbar
-STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Togail rathaidean
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Togail slighe-trama
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Tog rathaidean
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tog slighean-trama
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Tog pìos dhe rathad. Toglaidh Ctrl togail/toirt air falbh airson togail rathaid. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tog pìos dhe shlighe-trama. Toglaidh Ctrl togail/toirt air falbh airson togail slighe-trama. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Tog pìos dhe rathad leis a' mhodh fèin-togail. Toglaidh Ctrl togail/toirt air falbh airson togail rathaid. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Tog pìos dhe slighe-trama sa mhodh fhèin-togail. Toglaidh Ctrl togail/toirt air falbh airson togail slighe-trama. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Tog garaids (gus carbadan a cheannach is obair-glèidhidh a dhèanamh orra). Toglaidh Shift togail/sealladh air tuairmse chosgaisean
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tog trama-lann (gus carbadan a cheannach is obair-glèidhidh a dhèanamh orra). Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Tog garaids (gus carbadan a cheannach is obair-ghlèidhidh a dhèanamh orra). Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tog trama-lann (gus carbadan a cheannach is obair-ghlèidhidh a dhèanamh orra). Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Tog stèisean bus. Ceanglaichidh Ctrl stèiseanan ri chèile. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Tog stèisean trama thaistealach. Ceanglaichidh Ctrl stèiseanan ri chèile. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Tog ionad-luchdaidh nan làraidh. Ceanglaichidh Ctrl stèiseanan ri chèile. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
@@ -2469,8 +2469,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Toglaich
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Toglaich togail/tort air falbh airson slighean trama
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Comhair a' gharaid
-STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tagh comhair a' gharaid
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Comhair na garaid
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tagh comhair na garaid
 STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Comhair an trama-lainn
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tagh comhair an trama-lainn
 
@@ -2485,7 +2485,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Comhair 
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Tagh comhair an stèisein airson tramaichean carago
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Togail slighe-uisge
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Tog slighean-uisge
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Slighean-uisge
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Tog canalan. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Tog locan. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
@@ -2543,7 +2543,7 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Fuaim ai
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Cruth-tìre
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Ìslich oisean tìre. Le slaodadh, thèid a' chiad oisean ìsleachadh is an raon a thaghas tu a chur air an aon àirde. Taghaidh Ctrl raon trastanach. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Àrdaich oisean tìre. Le slaodadh, thèid a' chiad oisean àrdachadh is an raon a thaghas tu a chur air an aon àirde. Taghaidh Ctrl raon trastanach. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Cuir raon tìre air an aon àirde 's a tha aig a' chiad oisean a thaghas tu. Taghaidh Ctrl raon trastanach. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Cuir raon tìre air an aon àirde ’s a tha aig a' chiad oisean a thaghas tu. Taghaidh Ctrl raon trastanach. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Ceannaich tìr gus a chleachdadh san àm ri teachd. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 
 # Object construction window
@@ -2565,7 +2565,7 @@ STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Craobhan
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Cuir craobhan air thuaiream air feadh na tìre
 
 # Land generation window (SE)
-STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Gintinn crutha-tìre
+STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Gin cruth-tìre
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Cuir raointean creagach air a' chruth-tìre
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Sònraich raon fàsaich.{}Cùm air Ctrl gus a thoirt air falbh
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Meudaich an raon-tìre a thèid àrdachadh/ìsleachadh
@@ -2579,12 +2579,12 @@ STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Ath-shui
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}A bheil thu cinnteach gu bheil thu airson a h-uile sealbh companaidh a thoirt air falbh?
 
 # Town generation window (SE)
-STR_FOUND_TOWN_CAPTION                                          :{WHITE}Gintinn bhailtean
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Gin baile
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Baile ùr
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Stèidhich baile ùr. Cha dèan Shift+Briogadh ach tuairmse chosgaisean a shealltainn
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Baile air thuaiream
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Stèidhich baile ann an àite air thuaiream
-STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Iomadh bhaile air thuaiream
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Iomadh baile air thuaiream
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Còmhdaich am mapa le bailtean air thuaiream
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Ainm a' bhaile:
@@ -2692,7 +2692,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Slighe {STRING.
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Slighe {STRING.gen} le comharran aonaichte is slighe
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Slighe {STRING.gen} le comharran aonaichte is aon-shligheach
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Slighe {STRING.gen} le comharran slighe is aon-shligheach
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Trèan-lann - {STRING}
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Trèan-lann {STRING}
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Rathad
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Rathad le solasan-rathaid
@@ -2767,7 +2767,7 @@ STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Duct-uisge
 
 STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Tùr craobh-sgaoilidh
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Taigh-solais
-STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Ionad a' chompanaidh
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Ionad na companaidh
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Tìr a' chompanaidh
 
 # About OpenTTD window
@@ -2805,15 +2805,15 @@ STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Gin saog
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Meud a' mhapa:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Tagh co mheud leacan a bhios sa mhapa. Bidh an àireamh dhe leacan ri làimh beagan nas lugha
 STR_MAPGEN_BY                                                   :{BLACK}*
-STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Àir. dhe bhailtean:
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Bailtean:
 STR_MAPGEN_DATE                                                 :{BLACK}Ceann-latha:
-STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Àir. dhe ghnìomhachasan:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Gnìomhachasan:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Àirde na loidhne-shneachda:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Gluais an loidhne-shneachda suas aon cheum
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Gluais an loidhne-shneachda sìos aon cheum
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Sìol air thuaiream:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Briog gus sìol air thuaiream a chur a-steach
-STR_MAPGEN_RANDOM                                               :{BLACK}Cuir air thuaiream
+STR_MAPGEN_RANDOM                                               :{BLACK}Cuir sìol air thuaiream
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Atharraich an sìol air thuaiream a thèid a chleachdadh gus cruth-tìre a ghintinn
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Gineadair crutha-thìre:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algairim chraobhan:
@@ -2822,7 +2822,7 @@ STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Àirde n
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Aibhnean:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Dè cho rèidh:
 STR_MAPGEN_VARIETY                                              :{BLACK}Sgaoileadh caochlaidh:
-STR_MAPGEN_GENERATE                                             :{WHITE}Gin
+STR_MAPGEN_GENERATE                                             :{WHITE}Gin am mapa
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Oirean a' mhapa:
@@ -2901,7 +2901,7 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Liosta d
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Suidhich paramadairean
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Seall paramadairean
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Toglaich am palaid
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Toglaich am paileid aig a' NewGRF a thagh thu.{}Dèan seo ma tha coltas pinc air grafaigeachd a' NewGRF seo sa gheama
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Toglaich am pailead aig a' NewGRF a thagh thu.{}Dèan seo ma tha coltas pinc air grafaigeachd a' NewGRF seo sa gheama
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Cuir na h-atharraichean an sàs
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Lorg an t-susbaint a tha a dhìth air loidhne
@@ -2912,7 +2912,7 @@ STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}ID a' GR
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Tionndadh: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}An tionndadh as sine a tha co-chòrdail: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}Suim MD5: {SILVER}{STRING}
-STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paileid: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Pailead: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paramadairean: {SILVER}{STRING}
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Chan eil fiosrachadh ri làimh
@@ -2979,7 +2979,7 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}Tha spr
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Tha iomadh innteart gnìomh 8 ann (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Chaidh leughadh thar deireadh a' sprite mas fhìor (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Tha sprite no dhà a dhìth air an t-seata ghrafaigeachd bhunasach a tha thu a' cleachdadh an-dràsta.{}Feuch an ùraidh thu an seata grafaigeachd bunasach
-STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Tha sprite no dhà a dhìth air an t-seata ghrafaigeachd bhunasach a tha thu a' cleachdadh an-dràsta.{}Feuch an ùraidh thu an seata grafaigeachd bunasach.{}Bhon a tha thu a' cluich le {YELLOW}snapshot leasachaidh aig OpenTTD{WHITE}, 's dòcha gu bheil {YELLOW} snapshot leasachaidh dhen t-seata grafaigeachd bunasach{WHITE} a dhìth ort cuideachd
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Tha sprite no dhà a dhìth air an t-seata ghrafaigeachd bhunasach a tha thu a' cleachdadh an-dràsta.{}Feuch an ùraidh thu an seata grafaigeachd bunasach.{}Bhon a tha thu a' cluich le {YELLOW}snapshot leasachaidh aig OpenTTD{WHITE}, ’S dòcha gu bheil {YELLOW} snapshot leasachaidh dhen t-seata grafaigeachd bunasach{WHITE} a dhìth ort cuideachd
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Chan eil na goireasan GRF a chaidh iarraidh ri làimh (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Chaidh {1:STRING} a chur à comas le {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Fòrmat co-dhealbhachd sprite mì-dhligheach/neo-aithnichte (sprite {3:NUM})
@@ -3004,14 +3004,14 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Chaidh 
 STR_NEWGRF_LIST_MISSING                                         :{RED}Tha faidhlichean a dhìth
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Tha e coltach gun adhbharaich an NewGRF "{0:STRING}" dì-shioncronachadh is/no tuisleadh
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Dh'atharraich a staid a' charbaid-cumhachd airson "{1:ENGINE}" nuair nach robh e ann an trèan-lann
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Dh'atharraich e faide a' charbaid/na trèan airson '{1:ENGINE}' nuair nach robh e/i ann an garaids/trèana-lann
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tha faide mì-dhligheach aig an trèan "{VEHICLE}" le "{COMPANY}". Tha e coltach gu bheil duilgheadasan le NewGRF as coireach. Dh'fhaoidte gun dì-shioncronaich no gun tuislich an geama
+STR_NEWGRF_BROKEN                                               :{WHITE}Tha e coltach gun adhbharaich an NewGRF “{0:STRING}" dì-shioncronachadh is/no tuisleadh
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Dh'atharraich a staid a' charbaid-cumhachd airson “{1:ENGINE}" nuair nach robh e ann an trèan-lann
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Dh'atharraich e faide a' charbaid/na trèan airson “{1:ENGINE}" nuair nach robh e/i ann an garaids/trèana-lann
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tha faide mì-dhligheach aig an trèan “{VEHICLE}" le “{COMPANY}". Tha e coltach gu bheil duilgheadasan le NewGRF as coireach. Dh'fhaoidte gun dì-shioncronaich no gun tuislich an geama
 
-STR_NEWGRF_BUGGY                                                :{WHITE}Tha an NewGRF "{0:STRING}" a' toirt seachad fiosrachadh mealltach
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Tha am fiosrachadh carago/mùthaidh airson "{1:ENGINE}" eadar-dhealaichte on liosta cheannaich an dèidh na togail. Dh'fhaoidte nach mùth fèin-nuadhachadh/-leasachadh mar bu chòir
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}Dh'adhbharaich "{1:STRING}" lùb gun chrìch ann an ais-ghairm an dèanadais
+STR_NEWGRF_BUGGY                                                :{WHITE}Tha an NewGRF “{0:STRING}" a' toirt seachad fiosrachadh mealltach
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Tha am fiosrachadh carago/mùthaidh airson “{1:ENGINE}" eadar-dhealaichte on liosta cheannaich an dèidh na togail. Dh'fhaoidte nach mùth fèin-nuadhachadh/-leasachadh mar bu chòir
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}Dh'adhbharaich “{1:STRING}" lùb gun chrìch ann an ais-ghairm an dèanadais
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Thill an ais-ghairm {1:HEX} toradh {2:HEX}neo-aithnichte/mì-dhligheach
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
@@ -3029,8 +3029,8 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :A' sganadh airs
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liosta nan sanasan - {COMMA} {P sanas shanas sanasan sanas}
-STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Aire air litrichean mòra is beaga
-STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Toglaich aire air litrichean mòra is beaga nuair a thèid coimeas a dhèanamh eadar ainm sanais is sreang na criathraige
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Aire do litrichean mòra is beaga
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Toglaich aire do litrichean mòra is beaga nuair a thèid coimeas a dhèanamh eadar ainm sanais is sreang na criathraige
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Deasaich teacsa an t-sanais
@@ -3235,7 +3235,7 @@ STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Gabh {CU
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Meudaich an iasad. Le Ctrl+briogadh, gabhaidh tu na dh'fhaodas tu air iasad
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Pàigh {CURRENCY_LONG} air ais
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Pàigh pàirt dhen iasad air ais. Le Ctrl+briogadh, pàigidh tu air ais nas urrainn dhut
-STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Am bun-structar
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Bun-structar
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
@@ -3259,12 +3259,12 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} {P phort-adhair phort-adhair puirt-adhair port-adhair}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Gun bhun-structar
 
-STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Tog ionad a' chompanaidh
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Tog ionad a' chompanaidh
-STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Seall ionad a' chompanaidh
-STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Seall ionad a' chompanaidh
-STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Imrich ionad a' chompanaidh
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ath-thog ionad a' chompanaidh àiteigin eile airson cosgaid dhe 1% dhe luach a' chompanaidh. Seallaidh Shift+briogadh tuairmse nan cosgaisean gun a bhith ag imrich ionad a' chompanaidh
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Tog ionad na companaidh
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Tog ionad na companaidh
+STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Seall ionad na companaidh
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Seall ionad na companaidh
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Imrich ionad na companaidh
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ath-thog ionad na companaidh àiteigin eile airson cosgais dhe 1% dhe luach a' chompanaidh. Seallaidh Shift+briogadh tuairmse nan cosgaisean gun a bhith ag imrich ionad na companaidh
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Mion-fhiosrachadh
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Seall cunntaidhean mionaideach a' bhun-structair
 
@@ -3272,8 +3272,8 @@ STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Aghaidh 
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Tagh aghaidh ùr airson an stiùiriche
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Sgeama nan dathan
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Atharraich dathan na companaidh
-STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Ainm a' chompanaidh
-STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Atharraich ainm a' chompanaidh
+STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Ainm na companaidh
+STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Atharraich ainm na companaidh
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Ainm an stiùiriche
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Thoir ainm ùr air an stiùiriche
 
@@ -3288,7 +3288,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Ainm an stiùir
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Tha sinn a' sireadh companaidh giùlain a ghabhas stiùir air a' chompanaidh againn.{}{}A bheil thu airson {COMPANY} a cheannach airson {CURRENCY_LONG}?
 
 # Company infrastructure window
-STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Bun-structar aig {COMPANY}
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Am bun-structar aig {COMPANY}
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Earrannan rèile:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Comharran
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Earrannan rathaid:
@@ -3467,17 +3467,17 @@ STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Carbadan
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Longan - Dèan briogadh deas air an long airson fiosrachaidh
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Carbadan-adhair - Dèan briogadh deas air a' charbad airson fiosrachaidh
 
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Slaod carbad-trèan an-seo gus a rèic
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Slaod carbad-rathaid an-seo gus a rèic
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Slaod long an-seo gus a rèic
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Slaod carbad-adhair an-seo gus a rèic
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Slaod carbad-trèan an-seo gus a reic
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Slaod carbad-rathaid an-seo gus a reic
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Slaod long an-seo gus a reic
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Slaod carbad-adhair an-seo gus a reic
 
-STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Slaod einnsean trèan an-seo gus an trèan shlàn a rèic
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Slaod einnsean trèan an-seo gus an trèan shlàn a reic
 
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Rèic a h-uile trèan san trèan-lann
-STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Rèic a h-uile carbad-rathaid sa gharaids
-STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Rèic a h-uile long sa chala
-STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Rèic a h-uile carbad-adhair sa hangar
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Reic a h-uile trèan san trèan-lann
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Reic a h-uile carbad-rathaid sa gharaids
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Reic a h-uile long sa chala
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Reic a h-uile carbad-adhair sa hangar
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Fèin-leasaich a h-uile trèan san trèan-lann
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Fèin-leasaich a h-uile carbad-rathaid sa gharaid
@@ -3524,11 +3524,11 @@ STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Briog gu
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Briog gus a h-uile long sa chala a chur a' dol
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Briog gus a h-uile carbad-adhair sa hangar a chur a' dol
 
-STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Tha thu an impis na h-uile carbad sa gharaids / san trèan-lann / sa chala / sa hangar seo a rèic. A bheil thu cinnteach?
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Tha thu an impis na h-uile carbad sa gharaids / san trèan-lann / sa chala / sa hangar seo a reic. A bheil thu cinnteach?
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Brath bho dhèanadair a' charbaid
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Tha sinn air {STRING} ùr a dhealbhadh - am biodh ùidh agaibh ann 's nach cleachd ach sibh fhèin e fad bliadhna ach am faic sinn dè cho math 's a dh'obraicheas e mus rèic sinn don a h-uile duine e?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Tha sinn air {STRING} ùr a dhealbhadh - am biodh ùidh agaibh ann ’s nach cleachd ach sibh fhèin e fad bliadhna ach am faic sinn dè cho math ’s a dh'obraicheas e mus reic sinn don a h-uile duine e?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :einnsean-rèile
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :carbad-rathaid
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :carbad-adhair
@@ -3586,10 +3586,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Meadhana
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Meadhanaich am prìomh-shealladh air an long. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad na luinge
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Meadhanaich am prìomh-shealladh air a' charbad-adhair. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' charbaid-adhair
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Cuir an trèan dhan trèan-lann. Cha dèan Ctrl+briogadh ach obair-glèidhidh
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Cuir carbad dhan gharaids. Cha dèan Ctrl+briogadh ach obair-glèidhidh
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Cuir long dhan chala. Cha dèan Ctrl+briogadh ach obair-glèidhidh
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Cuir carbad-adhair dhan hangar. Cha dèan Ctrl+briogadh ach obair-glèidhidh
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Cuir an trèan dhan trèan-lann. Cha dèan Ctrl+briogadh ach obair-ghlèidhidh
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Cuir carbad dhan gharaids. Cha dèan Ctrl+briogadh ach obair-ghlèidhidh
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Cuir long dhan chala. Cha dèan Ctrl+briogadh ach obair-ghlèidhidh
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Cuir carbad-adhair dhan hangar. Cha dèan Ctrl+briogadh ach obair-ghlèidhidh
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ceannaichidh seo lethbhreac dhen trèan, a' gabhail a-steach a h-uile carbad. Thoir na h-aon òrduighean dhan tè ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ceannaichidh seo lethbhreac dhen charbad-rathaid. Thoir na h-aon òrduighean dhan fhear ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
@@ -3616,17 +3616,17 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Seall mi
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Seall mion-fhiosrachadh na luinge
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Seall mion-fhiosrachadh a' charbaid
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Gniomh na trèan seo - briog gus an trèan a chur a' dol/na stad. Sgolaich dhan cheann-uidhe le Ctrl+briogadh
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gniomh a' charbaid seo - briog gus an carbad a chur a' dol/na stad. Sgolaich dhan cheann-uidhe le Ctrl+briogadh
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Gniomh na luinge seo - briog gus an long a chur a' dol/na stad. Sgolaich dhan cheann-uidhe le Ctrl+briogadh
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gniomh a' charbaid-adhair seo - briog gus an carbad a chur a' dol/na stad. Sgolaich dhan cheann-uidhe le Ctrl+briogadh
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Gniomh na trèan seo - briog gus an trèan a chur a' dol/na stad. Sgrolaich dhan cheann-uidhe le Ctrl+briogadh
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gniomh a' charbaid seo - briog gus an carbad a chur a' dol/na stad. Sgrolaich dhan cheann-uidhe le Ctrl+briogadh
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Gniomh na luinge seo - briog gus an long a chur a' dol/na stad. Sgrolaich dhan cheann-uidhe le Ctrl+briogadh
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gniomh a' charbaid-adhair seo - briog gus an carbad a chur a' dol/na stad. Sgrolaich dhan cheann-uidhe le Ctrl+briogadh
 
 # Messages in the start stop button in the vehicle view
-STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Ga luchdadh / dì-luchdadh
+STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}A' luchdadh / dì-luchdadh
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}A' fagail
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Tubaist!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Briste
-STR_VEHICLE_STATUS_STOPPED                                      :{RED}Air stad
+STR_VEHICLE_STATUS_STOPPED                                      :{RED}Na stad
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}A' stad, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Gun chumhachd
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}A' feitheamh airson slighe saoire
@@ -3636,11 +3636,11 @@ STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}A' dèa
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Gun òrdugh, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}A' dèanamh air {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}A' dèanamh air {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Obair-glèidhidh aig {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Obair-ghlèidhidh aig {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}air stad
-STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Air stad
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Na stad
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Na stad
 STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Air tòiseachadh
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Air tòiseachadh
 
@@ -3672,10 +3672,10 @@ STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Tomhas-l
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Tomhas-lìonaidh: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Tomhas-lìonaidh: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Tar-aisig creidseas: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Creidseas tar-aisig: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Tricead na h-obrach-glèidhidh: {LTBLUE}{COMMA} {P latha latha làithean latha}{BLACK}   An obair-glèidhidh mu dheireadh: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Tricead na h-obrach-glèidhidh: {LTBLUE}{COMMA}%{BLACK}   An obair-glèidhidh mu dheireadh: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Tricead na h-obrach-glèidhidh: {LTBLUE}{COMMA} {P latha latha làithean latha}{BLACK}   An obair-ghlèidhidh mu dheireadh: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Tricead na h-obrach-glèidhidh: {LTBLUE}{COMMA}%{BLACK}   An obair-ghlèidhidh mu dheireadh: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Meudaich tricead na h-obrach-glèidhidh le 10. Meudaichidh Ctrl+briogadh tricead na h-obrach-glèidhidh le 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Lùghdaich tricead na h-obrach-glèidhidh le 10. Lùghdaichidh Ctrl+briogadh tricead na h-obrach-glèidhidh le 5
 
@@ -3741,7 +3741,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Clàr-ama
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Gearr leum dhan t-sealladh clàir-ama
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Liosta nan òrduighean - briog air òrdugh gus a thaghadh. Sgolaichidh Ctrl+briogadh gu ceann-uidhe an òrduigh
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Liosta nan òrduighean - briog air òrdugh gus a thaghadh. Sgrolaichidh Ctrl+briogadh gu ceann-uidhe an òrduigh
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
@@ -3760,20 +3760,20 @@ STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Luchdaic
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Luchdaidh na tha ri làimh
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Luchdaich a h-uile carago gu iomlan
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Luchdaich carago sam bith gu iomlan
-STR_ORDER_DROP_NO_LOADING                                       :Gun luchdadh sam bith
+STR_ORDER_DROP_NO_LOADING                                       :Na luchdaich dad
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Atharraich giùlan luchdaidh aig an òrdugh a thagh thu
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Dì-luchdaich na h-uile
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Dì-luchdaich ma ghabhar ris
-STR_ORDER_DROP_UNLOAD                                           :Dì-luchdaich a h-uile
+STR_ORDER_DROP_UNLOAD                                           :Dì-luchdaich a h-uile rud
 STR_ORDER_DROP_TRANSFER                                         :Tar-aisig
-STR_ORDER_DROP_NO_UNLOADING                                     :Gun dì-luchdadh sam bith
+STR_ORDER_DROP_NO_UNLOADING                                     :Na dì-luchdaich
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Atharraich giùlan dì-luchdaidh aig an òrdugh a thagh thu
 
 STR_ORDER_REFIT                                                 :{BLACK}Mùth
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Tagh an seòrsa dhe charago 's tu airson mùthadh air a shon leis an òrdugh seo. Dèan Ctrl+briogadh gus an t-òrdugh mùthaidh a thoirt air falbh
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Tagh an seòrsa dhe charago ’s tu airson mùthadh air a shon leis an òrdugh seo. Dèan Ctrl+briogadh gus an t-òrdugh mùthaidh a thoirt air falbh
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Fèin-mhùth
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Tagh an seòrsa dhe charago 's tu airson fèin-mhùthadh air a shon leis an òrdugh seo. Dèan Ctrl+briogadh gus an t-òrdugh mùthaidh a thoirt air falbh. Cha tèid fèin-mhùthadh a dhèanamh ach ma tha an carbad comasach
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Tagh an seòrsa dhe charago ’s tu airson fèin-mhùthadh air a shon leis an òrdugh seo. Dèan Ctrl+briogadh gus an t-òrdugh mùthaidh a thoirt air falbh. Cha tèid fèin-mhùthadh a dhèanamh ach ma tha an carbad comasach
 STR_ORDER_DROP_REFIT_AUTO                                       :Carago stèidhichte
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Carago ri làimh
 
@@ -3781,7 +3781,7 @@ STR_ORDER_SERVICE                                               :{BLACK}Serbheis
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Rach ann an-còmhnaidh
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Seibheis ma tha e a dhìth
 STR_ORDER_DROP_HALT_DEPOT                                       :Stad
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Leum thairis air an òrdugh seo mur eil feum air obair-glèidhidh
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Leum thairis air an òrdugh seo mur eil feum air obair-ghlèidhidh
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dàta a' charbaid air a bheil an leum stèidhichte
 
@@ -3790,7 +3790,7 @@ STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Ceudad an luchd
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Earbsachd
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Luaths as motha
 STR_ORDER_CONDITIONAL_AGE                                       :Aois (bliadhna)
-STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Feumach air obair-glèidhidh
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Feumach air obair-ghlèidhidh
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :An-còmhnaidh
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Beatha air fhàgail (bliadhna)
 
@@ -3817,11 +3817,11 @@ STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Sguir dh
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Sguir dhe cho-roinneadh liosta nan òrduighean. Sguabaidh Ctrl+briogadh às dhe na h-uile òrdugh airson a' charbaid seo cuideachd
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Rach gu
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Rach dhan gharaids / trèan-lann / chala / hangar as fhaisge
-STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Rach dhan hangar as fhaisge
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Rach gun gharaids / trèan-lann / chala / hangar as fhaisge
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Rach gun hangar as fhaisge
 STR_ORDER_CONDITIONAL                                           :Leum le òrdugh cumhach
 STR_ORDER_SHARE                                                 :Co-roinn na h-òrduighean
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Cuir a-steach òrdugh ùr ron òrdugh a thagh thu no cuir ri deireadh na liosta e. Le Ctrl, bith òrdugh stèisein na "Luchdaich carago sam bith gu iomlan", òrdugh puinge-turais na "Gun stad" is òrdugh garaids / trèan-lainn / calaidh / hangair na "obair-glèidhidh". Le "Co-roinn na h-òrduighean" no Ctrl, co-roinnidh an carbad seo na h-òrduighean leis a' charbad a thagh thu. Gheibh thu lethbhreac dhe òrduighean le biogadh air carbad. Cuiridh òrdugh garaids / trèan-lainn / calaidh / hangair feìn-obair-glèidhidh airson a' charbaid à commas
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Cuir a-steach òrdugh ùr ron òrdugh a thagh thu no cuir ri deireadh na liosta e. Le Ctrl, bith òrdugh stèisein na “Luchdaich carago sam bith gu iomlan", òrdugh puinge-turais na “Gun stad" is òrdugh garaids / trèan-lainn / calaidh / hangair na “obair-ghlèidhidh". Le “Co-roinn na h-òrduighean” no Ctrl, co-roinnidh an carbad seo na h-òrduighean leis a' charbad a thagh thu. Gheibh thu lethbhreac dhe òrduighean le biogadh air carbad. Cuiridh òrdugh garaids / trèan-lainn / calaidh / hangair feìn-obair-ghlèidhidh airson a' charbaid à comas
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Seall a h-uile carbad a cho-roinneas an clàr-ama seo
 
@@ -3829,14 +3829,14 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Seall a 
 STR_ORDER_GO_TO_WAYPOINT                                        :Rach slighe {WAYPOINT}
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Rach gun stad slighe {WAYPOINT}
 
-STR_ORDER_SERVICE_AT                                            :Obair-glèidhidh aig
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Obair-glèidhidh gun stad aig
+STR_ORDER_SERVICE_AT                                            :Obair-ghlèidhidh aig
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Obair-ghlèidhidh gun stad aig
 
 STR_ORDER_NEAREST_DEPOT                                         :as fhaisge
-STR_ORDER_NEAREST_HANGAR                                        :an hangar as fhaisge
-STR_ORDER_TRAIN_DEPOT                                           :trèan-lann
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :garaids
-STR_ORDER_SHIP_DEPOT                                            :cala
+STR_ORDER_NEAREST_HANGAR                                        :’n hangar as fhaisge
+STR_ORDER_TRAIN_DEPOT                                           :’n trèan-lann
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :’n gharaids
+STR_ORDER_SHIP_DEPOT                                            :’n chala
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{0:STRING} {2:STRING} {1:STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
@@ -3850,7 +3850,7 @@ STR_ORDER_IMPLICIT                                              :(Fillte a-staig
 
 STR_ORDER_FULL_LOAD                                             :(Luchdaich gu iomlan)
 STR_ORDER_FULL_LOAD_ANY                                         :(Luchdaich carago sam bith gu iomlan)
-STR_ORDER_NO_LOAD                                               :(Gun luchdadh sam bith)
+STR_ORDER_NO_LOAD                                               :(Na luchdaich dad)
 STR_ORDER_UNLOAD                                                :(Dì-luchdaich is gabh ri carago)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Dì-luchdaich is feitheamh air luchdadh iomlan)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Dì-luchdaich is feitheamh air carago sam bith iomlan)
@@ -3968,15 +3968,15 @@ STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Cuir bri
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Bris le:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Briseadh
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Nuair a dh'fhreagras teachdaireachd loga an IF ris an t-sreang seo, thèid an geama a chur na stad
-STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Aire air na litrichean mòra is beaga
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Toglaich an tèid aire a chumail air litrichean mòra is beaga nuair a thèid teachdaireachdan loga an IF a choimeas ris an t-sreang brisidh
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Aire do litrichean mòra is beaga
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Toglaich an tèid aire a thoirt do litrichean mòra is beaga nuair a thèid teachdaireachdan loga an IF a choimeas ris an t-sreang brisidh
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Lean air adhart
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Cuir a' dol is lean air an IF
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Seall às-chur dì-bhugaidh aig an IF seo
 STR_AI_GAME_SCRIPT                                              :{BLACK}Sgriobt geama
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Thoir sùil air loga aig an sgriobt geama
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Cha deach IF freagarrach a lorg airson luchdadh.{}Seo IF caochaige nach dèan dad.{}'S urrainn dhut caochladh dhe IF luchdadh a-nuas leis an t-siostam "Susbaint air loidhne"
+STR_ERROR_AI_NO_AI_FOUND                                        :Cha deach IF freagarrach a lorg airson luchdadh.{}Seo IF caochaige nach dèan dad.{}’S urrainn dhut caochladh dhe IF luchdadh a-nuas leis an t-siostam “Susbaint air loidhne"
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Thuislich aon dhe na sgriobtan a bha a' ruith. Feuch an cuir thu aithisg dha ùghdar an sgriobt le glacadh-sgrìn dhen uinneag dì-bhugaidh aig an IF/sgriobt geama
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Chan eil an uinneag dì-bhugaidh aig an IF/sgriobt geama ri làimh ach airson an fhrithealaiche
 
@@ -4030,10 +4030,10 @@ STR_AI_SETTINGS_START_DELAY                                     :An àireamh dhe
 
 
 # Textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}"Leugh mi" {STRING} aig {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}“Leugh mi” {STRING} aig {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Loga atharraichean {STRING} aig {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Ceadachas {STRING} aig {STRING}
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Seall "Leugh mi"
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Seall “Leugh mi”
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Loga nan atharraichean
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ceadachas
 
@@ -4096,13 +4096,13 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Rabhadh 
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Cha mholamaid gun tèid meud a' mhapa tùsail atharrachadh cus. A bheil thu airson leantainn air adhart leis an gintinn?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Cha deach ach seata dhe fhuaimean èiginneach a lorg. Ma tha thu ag iarraidh fuaimean, stàlaich seata dhe fhuaimean le siostam luchdaidh a-nuas na susbainte
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Cha deach ach seata dhe dh'fhuaimean èiginneach a lorg. Ma tha thu ag iarraidh fuaimean, stàlaich seata dhe dh'fhuaimean le siostam luchdaidh a-nuas na susbainte
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Glacadh-sgrìn anabarrach mòr
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Bidh dùmhladh-bhreacaidh dhe {COMMA} x {COMMA} piogsail aig a' ghlachadh-sgrìn seo. Dh'fhaoidte gun toir e beagan ùine an glacadh-sgrìn seo a thogail. A bheil thu airson leantainn air adhart?
 
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Chaidh an glacadh-sgrìn a shàbhaladh gu soirbheachail mar "{STRING}"
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Chaidh an glacadh-sgrìn a shàbhaladh gu soirbheachail mar “{STRING}"
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Dh'fhàillig leis a' ghlacadh-sgrìn!
 
 # Error message titles
@@ -4113,7 +4113,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Brath b
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Taobh a-muigh a' mhapa
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Ro fhaisg air oir a' mhapa
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Airgead a dhìth - feum air {CURRENCY_LONG}
-STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Tìr rèidh a dhìth
+STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Tha tìr rèidh a dhìth
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Sliabh na tìre ris a' chomhair chearr
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Cha ghabh seo dèanamh...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Feumaidh tu an togalach a leagail an toiseach
@@ -4127,7 +4127,7 @@ STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... rài
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... ràinig thu na tha ceadaichte dhut dhe chur chraobhan
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Chan fhaod an t-aon ainm a bhith ann barrachd air aon turas
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}Tha {1:STRING} san rathad
-STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Chan eil seo ceadaichte fhad 's a bhios an geama na stad
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Chan eil seo ceadaichte fhad ’s a bhios an geama na stad
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Dhiùilt an t-ùghdarras ionadail aig {TOWN} gun dèan thu seo
@@ -4145,7 +4145,7 @@ STR_ERROR_TOO_HIGH                                              :{WHITE}... ro �
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... rèidh mu thràth
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Cha ghabh ainm a' chompanaidh atharrachadh...
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Cha ghabh ainm na companaidh atharrachadh...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Chan urrainn dhuinn ainm an stiùiriche atharrachadh...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... is {CURRENCY_LONG} an t-iasad as motha a tha ceadaichte dhut
@@ -4157,8 +4157,8 @@ STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Chan urr
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Chan urrainn dhut a' chompanaidh a cheannach...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Cha ghabh ionad na companaidh togail...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Chan urrainn dhut earrann dhe 25% aig a' chompanaidh seo a cheannach....
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Chan urrainn dhut earrann dhe 25% aig a' chompanaidh seo a rèic....
-STR_ERROR_PROTECTED                                             :{WHITE}Chan eil a' chompanaidh seo sen gu leòr gus earrannan a rèic no a cheannach fhathast...
+STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Chan urrainn dhut earrann dhe 25% aig a' chompanaidh seo a reic....
+STR_ERROR_PROTECTED                                             :{WHITE}Chan eil a' chompanaidh seo sean gu leòr gus earrannan a reic no a cheannach fhathast...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Gha ghabh baile sam bith a thogail
@@ -4168,8 +4168,8 @@ STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Cha ghab
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... ro fhaisg air oir a' mhapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... ro fhaisg air baile eile
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... tha cus bhailtean ann
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... chan eil rùm air fhàgail air a' mhapa
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Cha tog am baile rathad sam bith. 'S urrainn dhut togail rathaidean a chur an comas le Roghainnean adhartach->Eaconamaidh->Bailtean
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... chan eil rum air fhàgail air a' mhapa
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Cha tog am baile rathad sam bith. ’S urrainn dhut togail rathaidean a chur an comas le Roghainnean adhartach->Eaconamaidh->Bailtean
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Rathad ga ath-thogail
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Cha ghabh sguabadh às dhan bhaile seo...{}Tha stèisean no port no garaids no trèana-lann no cala no hangar a' toirt iomradh air a' bhaile no tha leac ann a tha leis a' bhaile is nach gabh toirt air falbh
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... chan eil ionad freagarrach airson ìomhaigh ann am meadhan a' bhaile seo
@@ -4284,7 +4284,7 @@ STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Co-mheas
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Feumaidh tu na comharran a thoirt air falbh an toiseach
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Chan eil slighe rèile iomchaidh ann
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Feumaidh tu an t-slighe rèile a thoirt air fabh an toiseach
-STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Rathad aona-shligheach no bacte
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Rathad aon-shligheach no bacte
 STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Chan eil staranan-rèile ceadaichte leis an t-seòrsa dhe rèile seo
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Cha ghabh comharran togail an-seo...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Cha ghabh slighe-rèile togail an-seo...
@@ -4298,7 +4298,7 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Cha ghab
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Feumaidh tu an rathad a toirt air falbh an toiseach
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... chan urrainn dha ghobhal a bhith aig rathad aona-sligheach
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... chan urrainn dha ghobhal a bhith aig rathad aon-shligheach
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Cha ghabh rathad togail an-seo...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Cha ghabh slighe-trama togail an-seo...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Cha ghabh rathad toirt air falbh an-seo...
@@ -4395,10 +4395,10 @@ STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Cha ghab
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Cha ghabh ainm ùr toirt air an t-seòrsa luinge...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Cha ghabh ainm ùr toirt air an t-seòrsa carbad-adhair...
 
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Cha ghabh an carbad-rèile rèic...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Cha ghabh an carbad-rathaid rèic...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Cha ghabh an long rèic...
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Cha ghabh an carbad-adhair rèic...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Cha ghabh an carbad-rèile reic...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Cha ghabh an carbad-rathaid reic...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Cha ghabh an long reic...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Cha ghabh an carbad-adhair reic...
 
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Chan eil an carbad ri làimh
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Chan eil an carbad ri làimh
@@ -4420,7 +4420,7 @@ STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Chan urr
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Tha an carbad-adhair air sgiath
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Chan eil barrachd rùm airson òrduighean ann
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Chan eil barrachd rum airson òrduighean ann
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Tha cus òrduighean ann
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Cha ghabh òrdugh ùr cur a-steach...
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Cha ghabh sguabadh às dhan òrdugh seo...
@@ -4678,10 +4678,10 @@ STR_SV_AIRCRAFT_NAME                                            :Carbad-adhair {
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} a Tuath
-STR_SV_STNAME_SOUTH                                             :{STRING} a deas
+STR_SV_STNAME_SOUTH                                             :{STRING} a Deas
 STR_SV_STNAME_EAST                                              :{STRING} an Ear
 STR_SV_STNAME_WEST                                              :{STRING} an Iar
-STR_SV_STNAME_CENTRAL                                           :{STRING} Meadhanach
+STR_SV_STNAME_CENTRAL                                           :Meadhan {STRING}
 STR_SV_STNAME_TRANSFER                                          :Tar-aiseag {STRING}
 STR_SV_STNAME_HALT                                              :Stad {STRING}
 STR_SV_STNAME_VALLEY                                            :Gleann {STRING}
@@ -4689,13 +4689,13 @@ STR_SV_STNAME_HEIGHTS                                           :Àirde {STRING}
 STR_SV_STNAME_WOODS                                             :Coille {STRING}
 STR_SV_STNAME_LAKESIDE                                          :Loch {STRING}
 STR_SV_STNAME_EXCHANGE                                          :Iomlaid {STRING}
-STR_SV_STNAME_AIRPORT                                           :{G=m}Port-adhair - {STRING}
+STR_SV_STNAME_AIRPORT                                           :{G=m}Port-adhair {STRING}
 STR_SV_STNAME_AIRPORT.nom                                       :{G=m}Port-adhair - {STRING}
 STR_SV_STNAME_AIRPORT.gen                                       :{G=m}Puirt-adhair - {STRING}
 STR_SV_STNAME_AIRPORT.dat                                       :{G=m}Port-adhair - {STRING}
 STR_SV_STNAME_OILFIELD                                          :Achadh-ola {STRING}
 STR_SV_STNAME_MINES                                             :Mèinnean {STRING}
-STR_SV_STNAME_DOCKS                                             :{G=m}Port - {STRING}
+STR_SV_STNAME_DOCKS                                             :{G=m}Port {STRING}
 STR_SV_STNAME_DOCKS.nom                                         :{G=m}Port - {STRING}
 STR_SV_STNAME_DOCKS.gen                                         :{G=m}Puirt - {STRING}
 STR_SV_STNAME_DOCKS.dat                                         :{G=m}Port - {STRING}
@@ -4707,7 +4707,7 @@ STR_SV_STNAME_SIDINGS                                           :Taobhadh {STRIN
 STR_SV_STNAME_BRANCH                                            :Meur {STRING}
 STR_SV_STNAME_UPPER                                             :{STRING} Uachdarach
 STR_SV_STNAME_LOWER                                             :{STRING} Iochdarach
-STR_SV_STNAME_HELIPORT                                          :{G=m}Port-heileacoptair - {STRING}
+STR_SV_STNAME_HELIPORT                                          :{G=m}Port-heileacoptair {STRING}
 STR_SV_STNAME_HELIPORT.nom                                      :{G=m}Port-heileacoptair - {STRING}
 STR_SV_STNAME_HELIPORT.gen                                      :{G=m}Puirt-heileacoptair - {STRING}
 STR_SV_STNAME_HELIPORT.dat                                      :{G=m}Port-heileacoptair - {STRING}
@@ -4725,25 +4725,25 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Cho
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Smùide)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (Smùide)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (Smùide)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (Smùide)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney “Jubilee" (Smùide)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu “A4" (Smùide)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH “8P" (Smùide)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :“Dash" (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry “25" (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU “37" (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss “47" (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Dealain)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Dealain)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Dealain)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Dealain)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH “125" (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH “30" (Dealain)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH “40" (Dealain)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :“T.I.M." (Dealain)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :“AsiaStar" (Dealain)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Carbad thaistealach
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Bhana litrichean
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :{G=f}Truca guail
@@ -4771,8 +4771,8 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :{G=m}Bhana dhè
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :{G=f}Truca bataraidh
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :{G=f}Truca dheochan gucagach
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :{G=f}Truca plastaig
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Dealain)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Dealain)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :“X2001" (Dealain)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :“Millennium Z1" (Dealain)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :{G=m}Carbad thaistealach
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :{G=m}Bhana puist
@@ -4801,10 +4801,10 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :{G=m}Bhana dhè
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :{G=f}Truca bataraidh
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :{G=f}Truca dheochan gucagach
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :{G=f}Truca plastaig
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Dealain)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Dealain)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (Dealain)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (Dealain)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 “Leviathan" (Dealain)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 “Cyclops" (Dealain)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 “Pegasus" (Dealain)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 “Chimaera" (Dealain)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :{G=m}Carbad thaistealach
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :{G=m}Bhana puist
@@ -4982,26 +4982,26 @@ STR_FORMAT_DATE_LONG                                            :{STRING} {STRIN
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_FORMAT_BUOY_NAME                                            :Fleodrainn {TOWN}
-STR_FORMAT_BUOY_NAME_SERIAL                                     :Fleodrainn {1:COMMA} - {0:TOWN}
+STR_FORMAT_BUOY_NAME_SERIAL                                     :Fleodrainn {1:COMMA} {0:TOWN}
 STR_FORMAT_COMPANY_NUM                                          :(Companaidh {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Buidheann {COMMA}
-STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} - {0:TOWN}
-STR_FORMAT_WAYPOINT_NAME                                        :Puing-thurais - {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Puing-thurais {1:COMMA} - {0:TOWN}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
+STR_FORMAT_WAYPOINT_NAME                                        :Puing-thurais {TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Puing-thurais {1:COMMA} {0:TOWN}
 
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :{G=f}Trèan-lann - {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{G=f}Trèan-lann {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN.nom                                 :{G=f}Trèan-lann - {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN.gen                                 :{G=f}Trèan-lainn - {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN.dat                                 :{G=f}Trèan-lann - {TOWN}
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Trèan-lann {1:COMMA} - {0:TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{G=f}Garaids - {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{G=f}Garaids {1:COMMA} - {0:TOWN}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :{G=m}Cala - {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Trèan-lann {1:COMMA} {0:TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{G=f}Garaids {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{G=f}Garaids {1:COMMA} {0:TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{G=m}Cala {TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP.nom                                  :{G=m}Cala - {TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP.gen                                  :{G=m}Calaidh - {TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP.dat                                  :{G=m}Cala - {TOWN}
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{G=m}Cala {1:COMMA} - {0:TOWN}
-STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{G=m}Hangar - {STATION}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{G=m}Cala {1:COMMA} {0:TOWN}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{G=m}Hangar {STATION}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT.nom                              :{G=m}Hangar - {STATION}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT.gen                              :{G=m}Hangair - {STATION}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT.dat                              :{G=m}Hangar - {STATION}
