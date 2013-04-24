@@ -4771,3 +4771,11 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Algse Transport Tycoon Deluxe DOSi versiooni graafika.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Algse Transport Tycoon Deluxe DOSi (Saksa) versiooni graafika.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Algse Transport Tycoon Deluxe Windowsi versiooni graafika.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Algse Transport Tycoon Deluxe DOSi versiooni helid.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Algse Transport Tycoon Deluxe Windowsi versiooni helid.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Ilma häälteta helipakk.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Algse Transport Tycoon Deluxe Windowsi versiooni muusika.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Muusikakomplekt ilma igasuguse muusikata.

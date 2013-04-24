@@ -4682,3 +4682,11 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Grafik orisinil Transport Tycoon Deluxe versi DOS.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Grafik orisinil Transport Tycoon Deluxe versi DOS (Jerman).
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Grafik orisinil Transport Tycoon Deluxe versi Windows.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Efek suara orisinil Transport Tycoon Deluxe versi DOS.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Efek suara orisinil Transport Tycoon Deluxe versi Windows.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Paket efek suara tanpa berisi suara.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Musik pengiring orisinil Transport Tycoon Deluxe versi Windows.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Paket musik tanpa berisi musik.

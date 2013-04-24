@@ -4864,3 +4864,11 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Originalna grafika za Transport Tycoon Deluxe DOS izdanje.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Originalna grafika za Transport Tycoon Deluxe DOS (Njemački) izdanje.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Originalna grafika za Transport Tycoon Deluxe Windows izdanje.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Originalni zvukovi za Transport Tycoon Deluxe DOS izdanje.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Originalni zvukovi za Transport Tycoon Deluxe Windows izdanje.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Zvučni paket bez ikakvih zvukova.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Originalna muzika za Transport Tycoon Deluxe Windows izdanje.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Muzički paket bez ikakve muzike.

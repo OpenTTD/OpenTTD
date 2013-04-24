@@ -1,0 +1,19 @@
+; $Id$
+;
+; This represents the original sounds as on the Transport
+; Tycoon Deluxe DOS CD.
+;
+[metadata]
+name              = original_dos
+shortname         = TTDO
+version           = 0
+!! description STR_BASESOUNDS_DOS_DESCRIPTION
+
+[files]
+samples      = SAMPLE.CAT
+
+[md5s]
+SAMPLE.CAT   = 422ea3dd074d2859bb51639a6e0e85da
+
+[origin]
+default      = You can find it on your Transport Tycoon Deluxe CD-ROM.

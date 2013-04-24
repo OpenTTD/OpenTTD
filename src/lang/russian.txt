@@ -4958,3 +4958,11 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Оригинальная графика из Transport Tycoon Deluxe для DOS.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Оригинальная графика из немецкой версии Transport Tycoon Deluxe для DOS.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Оригинальная графика из Transport Tycoon Deluxe для Windows.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Оригинальный набор звукового оформления из игры Transport Tycoon Deluxe для DOS.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Оригинальный набор звукового оформления из игры Transport Tycoon Deluxe для Windows.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :"Пустой" набор звукового оформления, не содержащий никаких звуков.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Оригинальный набор музыкального оформления из игры Transport Tycoon Deluxe.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :"Пустой" набор музыкального оформления, не содержащий никакой музыки.

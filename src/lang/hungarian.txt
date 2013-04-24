@@ -4836,3 +4836,11 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Az eredeti Transport Tycoon Deluxe DOS verziójának grafikája.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Az eredeti Transport Tycoon Deluxe DOS (német) verziójának grafikája.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Az eredeti Transport Tycoon Deluxe Windows verziójának grafikája.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Az eredeti Transport Tycoon Deluxe DOS verziójának hangjai.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Az eredeti Transport Tycoon Deluxe Windows verziójának hangjai.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Hang alapcsomag hangok nélkül.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Az eredeti Transport Tycoon Deluxe Windows verziójának zenéje.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Zenei alapcsomag zene nélkül.

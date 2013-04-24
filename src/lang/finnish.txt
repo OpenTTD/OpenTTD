@@ -4731,3 +4731,11 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Alkuperäiset Transport Tycoon Deluxe DOS grafiikat.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Alkuperäiset Transport Tycoon Deluxe DOS (Saksalainen) grafiikat.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Alkuperäiset Transport Tycoon Deluxe Windows grafiikat.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Alkuperäiset Transport Tycoon Deluxe DOS äänet.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Alkuperäiset Transport Tycoon Deluxe Windows äänet.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Äänipaketti ilman ääniä.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Alkuperäinen Transport Tycoon Deluxe Windows musiikki.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Musiikkipaketti, jossa ei ole musiikkia.

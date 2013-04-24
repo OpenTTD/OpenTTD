@@ -5105,3 +5105,11 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Grafaigeachd aig an deasachadh DOS tùsail aig Transport Tycoon Deluxe.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Grafaigeachd aig an deasachadh DOS (Germailteach) tùsail aig Transport Tycoon Deluxe.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Grafaigeachd aig an deasachadh Windows tùsail aig Transport Tycoon Deluxe.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Fuaimean aig an deasachadh DOS tùsail aig Transport Tycoon Deluxe.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Fuaimean aig an deasachadh Windows tùsail aig Transport Tycoon Deluxe.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Pacaid fhuaimean anns nach eil fuaim sam bith.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Ceòl aig an deasachadh Windows tùsail aig Transport Tycoon Deluxe.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Pacaid ciùil anns nach eil fonn sam bith.

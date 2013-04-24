@@ -3435,7 +3435,7 @@ generate_settings() {
 }
 
 generate_grf() {
-	STAGE="[GRF]"
+	STAGE="[BASESET]"
 
 	make_sed
 

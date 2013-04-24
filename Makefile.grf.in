@@ -20,6 +20,8 @@
 
 ROOT_DIR = !!ROOT_DIR!!
 GRF_DIR  = $(ROOT_DIR)/media/extra_grf
+BASESET_DIR = $(ROOT_DIR)/media/baseset
+LANG_DIR = $(ROOT_DIR)/src/lang
 BIN_DIR  = !!BIN_DIR!!/baseset
 OBJS_DIR = !!GRF_OBJS_DIR!!
 OS       = !!OS!!
@@ -45,7 +47,7 @@ PNG_FILES    := $(GRF_DIR)/*.png $(GRF_DIR)/rivers/*.png
 
 # Build the GRF.
 ifdef GRFCODEC
-all: $(BIN_DIR)/openttd.grf
+all: $(BIN_DIR)/openttd.grf $(BIN_DIR)/orig_dos.obg $(BIN_DIR)/orig_dos_de.obg $(BIN_DIR)/orig_win.obg $(BIN_DIR)/orig_dos.obs $(BIN_DIR)/orig_win.obs $(BIN_DIR)/no_sound.obs $(BIN_DIR)/orig_win.obm $(BIN_DIR)/no_music.obm
 else
 all:
 endif
@@ -54,20 +56,33 @@ endif
 $(OBJS_DIR)/sprites:
 	$(Q)-mkdir "$@"
 
-# Generic
-$(BIN_DIR)/openttd.grf: $(OBJS_DIR)/openttd.grf
-	$(Q)cp $(OBJS_DIR)/openttd.grf $(BIN_DIR)/openttd.grf
-	$(E) '$(STAGE) Updating base graphics sets'
-	$(Q) for grf in $(BIN_DIR)/orig*.obg; do sed 's/^OPENTTD.GRF  = [0-9a-f]*$$/OPENTTD.GRF  = '`$(MD5SUM) $(BIN_DIR)/openttd.grf | sed 's@ .*@@'`'/' $$grf > $$grf.tmp && mv $$grf.tmp $$grf; done
+$(OBJS_DIR)/langfiles.tmp: $(LANG_DIR)/*.txt
+	$(E) '$(STAGE) Collecting baseset translations'
+	$(Q) cat $^ > $@
 
-# Yeah, we'd like to use -i in the sed, but Mac OS X's sed and GNU sed just can't agree on the usage of -i. In any case either one of them fails.
-$(OBJS_DIR)/openttd.grf: $(PNG_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
+$(BIN_DIR)/%.obg: $(BASESET_DIR)/%.obg $(BIN_DIR)/openttd.grf $(OBJS_DIR)/langfiles.tmp $(BASESET_DIR)/translations.awk
+	$(E) '$(STAGE) Updating $(notdir $@)'
+	$(Q) sed 's/^OPENTTD.GRF  = *[0-9a-f]*$$/OPENTTD.GRF  = '`$(MD5SUM) $(BIN_DIR)/openttd.grf | sed 's@ .*@@'`'/' $< > $@.tmp
+	$(Q) awk -v langfiles='$(OBJS_DIR)/langfiles.tmp' -f $(BASESET_DIR)/translations.awk $@.tmp >$@
+	$(Q) rm $@.tmp
+
+$(BIN_DIR)/%.obs: $(BASESET_DIR)/%.obs $(OBJS_DIR)/langfiles.tmp $(BASESET_DIR)/translations.awk
+	$(E) '$(STAGE) Updating $(notdir $@)'
+	$(Q) awk -v langfiles='$(OBJS_DIR)/langfiles.tmp' -f $(BASESET_DIR)/translations.awk $< >$@
+
+$(BIN_DIR)/%.obm: $(BASESET_DIR)/%.obm $(OBJS_DIR)/langfiles.tmp $(BASESET_DIR)/translations.awk
+	$(E) '$(STAGE) Updating $(notdir $@)'
+	$(Q) awk -v langfiles='$(OBJS_DIR)/langfiles.tmp' -f $(BASESET_DIR)/translations.awk $< >$@
+
+# Compile extra grf
+$(BIN_DIR)/openttd.grf: $(PNG_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
 	$(E) '$(STAGE) Assembling openttd.nfo'
 	$(Q)-cp $(PNG_FILES) $(OBJS_DIR)/sprites 2> /dev/null
 	$(Q) $(CC_BUILD) -nostdinc -I$(GRF_DIR) -C -E - < "$(GRF_DIR)/openttd.nfo" | sed -e '/^#/d' -e '/^$$/d' > $(OBJS_DIR)/sprites/openttd.nfo
 	$(Q) $(NFORENUM) -s $(OBJS_DIR)/sprites/openttd.nfo
 	$(E) '$(STAGE) Compiling openttd.grf'
 	$(Q) $(GRFCODEC) -n -s -e -p1 $(OBJS_DIR)/openttd.grf
+	$(Q)cp $(OBJS_DIR)/openttd.grf $(BIN_DIR)/openttd.grf
 
 # Clean up temporary files.
 clean:

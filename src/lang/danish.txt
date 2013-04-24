@@ -4731,3 +4731,11 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Originalgrafik fra Transport Tycoon Deluxe DOS-version.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Originalgrafik fra Transport Tycoon Deluxe DOS (Tysk) version.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Originalgrafik fra Transport Tycoon Deluxe Windows-version.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Originallyd fra Transport Tycoon Deluxe DOS-version.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Originallyd fra Transport Tycoon Deluxe Windows-version.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :En lydpakke uden lyde.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Originalmusik fra Transport Tycoon Deluxe Windows-version.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :En musikpakke uden musik.

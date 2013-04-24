@@ -4814,3 +4814,11 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Originalni skup grafika Transport Tycoon Deluxe DOS izdanja.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Originalni skup grafika nemačkog Transport Tycoon Deluxe DOS izdanja.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Originalni skup grafika Transport Tycoon Deluxe Windows izdanja.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Originalni skup zvukova Transport Tycoon Deluxe DOS izdanja.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Originalni skup zvukova Transport Tycoon Deluxe Windows izdanja.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Prazan skup zvukova.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Originalni skup muzičkih numera Transport Tycoon Deluxe Windows izdanja.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Prazan skup muzičkih numera.

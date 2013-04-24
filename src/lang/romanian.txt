@@ -4706,3 +4706,11 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Setul grafic original al Transport Tycoon Deluxe pentru DOS.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Setul grafic original al Transport Tycoon Deluxe pentru DOS (ediţia germană).
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Setul grafic original al Transport Tycoon Deluxe pentru Windows.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Setul de sunete original al Transport Tycoon Deluxe pentru DOS.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Setul de sunete original al Transport Tycoon Deluxe pentru Windows.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Un set de sunete fără nici un sunet inclus.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Setul de muzică original al Transport Tycoon Deluxe pentru Windows.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Un set de muzică fără muzică inclusă.
