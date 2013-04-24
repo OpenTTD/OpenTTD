@@ -434,24 +434,14 @@ int CDECL main(int argc, char *argv[])
 				printf("args\tflags\tcommand\treplacement\n");
 				for (const CmdStruct *cs = _cmd_structs; cs < endof(_cmd_structs); cs++) {
 					char flags;
-					switch (cs->value) {
-						case 0x200E: case 0x200F: // Implicit BIDI controls
-						case 0x202A: case 0x202B: case 0x202C: case 0x202D: case 0x202E: // Explicit BIDI controls
-						case 0xA0: // Non breaking space
-						case '\n': // Newlines may be added too
-						case '{':  // This special
-							/* This command may be in the translation when it is not in base */
-							flags = 'i';
-							break;
-
-						default:
-							if (cs->proc == EmitGender) {
-								flags = 'g'; // Command needs number of parameters defined by number of genders
-							} else if (cs->proc == EmitPlural) {
-								flags = 'p'; // Command needs number of parameters defined by plural value
-							} else {
-								flags = '0'; // Command needs no parameters
-							}
+					if (cs->proc == EmitGender) {
+						flags = 'g'; // Command needs number of parameters defined by number of genders
+					} else if (cs->proc == EmitPlural) {
+						flags = 'p'; // Command needs number of parameters defined by plural value
+					} else if (cs->flags & C_DONTCOUNT) {
+						flags = 'i'; // Command may be in the translation when it is not in base
+					} else {
+						flags = '0'; // Command needs no parameters
 					}
 					printf("%i\t%c\t\"%s\"\t\"%s\"\n", cs->consumes, flags, cs->cmd, strstr(cs->cmd, "STRING") ? "STRING" : cs->cmd);
 				}
