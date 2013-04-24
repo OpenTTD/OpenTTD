@@ -1099,6 +1099,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :補修が不十
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :助成金の乗数: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :助成金の設定
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建設費: {STRING}
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :建設・購入費用のレベル
 STR_CONFIG_SETTING_RECESSIONS                                   :景気の後退: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :駅で運転方向の変更(折り返し)をしない: {STRING}
 STR_CONFIG_SETTING_DISASTERS                                    :災害: {STRING}
@@ -1199,6 +1200,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :地形作成：
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :旧式
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :石油採掘施設のマップ端からの距離: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :石油採掘施設はマップの境界付近にのみ建設されます。
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪線の位置：{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地形のでこぼこ（TerraGenesis のみ）：{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :特にスムーズ
@@ -1948,13 +1950,15 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}種類
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}項目の種類
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}名前
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}項目の名前
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}項目をキリックして詳しく表示します。{}ダウンロードするにはチェックボックスを付けます。
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}クリックすると詳細を表示します。{}ダウンロードするにはチェックボックスをオンにします。
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}すべてを選択
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}すべての項目を選択します。
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}アップデートを選択
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}すでにダウンロードした項目のためのアップデートをすべて選択します。
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}選択を解除
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}何も選択していないようにします
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}外部サイトで検索
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}OpenTTDコンテンツサービスに掲載されていないものを外部サイトを使用して検索できます。
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}タグ／名前のフィルター：
 STR_CONTENT_OPEN_URL                                            :{BLACK}ウェブサイト
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}このコンテンツのウェブサイト

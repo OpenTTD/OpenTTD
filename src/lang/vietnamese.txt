@@ -292,7 +292,7 @@ STR_SORT_BY_RANGE                                               :Tầm xa
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tạm dừng trò chơi
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Game tua nhanh
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Tua nhanh trò chơi
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Tuỳ chọn
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lưu, bỏ ván chơi, thoát chương trình
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Hiển thị bản đồ
@@ -332,16 +332,16 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Tạo đ
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Tạo thị trấn
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Tạo nhà máy
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Xây dựng đường
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Trồng cây. Shift để xem chi phí dự tính
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Trồng cây. Nhấn Shift để xem chi phí dự tính
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Tạo bảng ký hiệu
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Đặt đối tượng. Shift để xem chi phí dự tính
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Đặt đối tượng. Nhấn Shift để xem chi phí dự tính
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Lưu màn chơi kịch bản
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Nạp màn chơi kịch bản
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Lưu bản đồ địa hình
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Tải bản đồ địa hình
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Thoat khỏi trình biên tập
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Thoát khỏi trình biên tập
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Thoát
 ############ range for SE file menu starts
@@ -1471,7 +1471,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Khi kéo, đặ
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Đặt khoảng cách để xây liên tiếp các đèn tín hiệu khi được kéo
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} ô
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Khi kéo-thả, giữ khoảng cách cố định giữa các đèn tín hiệu: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Lựa chọn cách đặt đèn hiệu khi bấm Ctrl+kéo thả đèn hiệu, nếu tắt, đèn hiệu đặt ngay trước và sau cầu, hầm để tránh bị quãng kéo dài không có đèn. Nếu bật, đèn hiệu sẽ được đặt sau mỗi N ô, tạo ra việc căn đèn đối với các ray song song dễ dàng hơn
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Lựa chọn cách đặt đèn hiệu khi bấm Ctrl+kéo thả đèn hiệu, nếu tắt, đèn hiệu đặt ngay trước và sau cầu, hầm để tránh bị quãng kéo dài không có đèn. Nếu bật, đèn hiệu sẽ được đặt sau mỗi n ô, tạo ra việc căn đèn đối với các ray song song dễ dàng hơn
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Xây cờ hiệu thay vì đèn trước năm: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Thiết lập năm mà đèn hiệu điện sẽ được sử dụng. Trước năm này chỉ có cờ hiệu được sử dụng (chúng cùng chức năng, chỉ khác hình thức)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Bật GUI đèn tín hiệu : {STRING}
@@ -1603,6 +1603,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... từ
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... từ chối gói âm thanh chuẩn '{STRING}': không tìm thấy
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... từ chối gói nhạc chuẩn '{STRING}': không tìm thấy
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Hết bộ nhớ
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Phân bổ {BYTES} cho spritecache thất bại. Spritecache đã được giảm còn {BYTES}. Điều này có thể làm giảm hiệu năng của OpenTTD. Để giảm yêu cầu bộ nhớ, bạn có thể thử tắt gói đồ họa 32bpp và/hoặc mức độ phóng to
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3718,7 +3719,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Tự đi
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Mong muốn
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Chốt lịch
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Chuyển giữa lịch mong muốn là lịch được chốt
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Chuyển giữa lịch mong muốn và lịch được chốt
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Đến:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Đi:
