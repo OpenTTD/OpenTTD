@@ -3280,7 +3280,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 
 					/* If we are approaching a crossing that is reserved, play the sound now. */
 					TileIndex crossing = TrainApproachingCrossingTile(v);
-					if (crossing != INVALID_TILE && HasCrossingReservation(crossing) && _settings_client.sound.new_year) SndPlayTileFx(SND_0E_LEVEL_CROSSING, crossing);
+					if (crossing != INVALID_TILE && HasCrossingReservation(crossing) && _settings_client.sound.ambient) SndPlayTileFx(SND_0E_LEVEL_CROSSING, crossing);
 
 					/* Always try to extend the reservation when entering a tile. */
 					CheckNextTrainTile(v);
