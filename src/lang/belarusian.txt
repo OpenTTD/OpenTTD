@@ -4587,6 +4587,16 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не а�
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Эканамічны сімулятар на аснове «Transport Tycoon Deluxe»
 
+# Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Арыгінальная графіка з Transport Tycoon Deluxe для DOS.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Арыгінальная графіка з нямецкай версіі Transport Tycoon Deluxe для DOS.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Арыгінальная графіка з Transport Tycoon Deluxe для Windows.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Арыгінальны набор гукавога афармленьня з гульні Transport Tycoon Deluxe для DOS.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Арыгінальны набор гукавога афармленьня з гульні Transport Tycoon Deluxe для Windows.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :"Пусты" набор гукавога афармленьня, не змяшчаючы ніякіх гукаў.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Арыгінальны набор музычнага афармленьня з гульні Transport Tycoon Deluxe для Windows.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :"Пусты" набор музычнага афармлення, не змяшчаючы ніякай музыкі.
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Вышынны офісны будынак

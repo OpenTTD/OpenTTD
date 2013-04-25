@@ -414,6 +414,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :за потуж
 STR_SORT_BY_CARGO_CAPACITY                                      :за місткістю
 STR_SORT_BY_RANGE                                               :за дальністю
 STR_SORT_BY_POPULATION                                          :за населенням
+STR_SORT_BY_RATING                                              :Рейтинг
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауза
@@ -1727,6 +1728,7 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... фо
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... базовий набір графіки '{STRING}' не знайдено
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... базовий набір звуків '{STRING}' не знайдено
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... базовий набір музики '{STRING}' не знайдено
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Не вистачає пам'яті
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -4340,6 +4342,8 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не м�
 
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Гра-симулятор, заснована на Transport Tycoon Deluxe
+
+# Translatable descriptions in media/baseset/*.ob* files
 
 ##id 0x2000
 # Town building names
