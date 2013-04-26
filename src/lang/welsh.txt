@@ -4234,6 +4234,8 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Methu di
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Gêm efelychu wedi ei seilio ar Transport Tycoon Deluxe
 
+# Translatable descriptions in media/baseset/*.ob* files
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Bloc swyddfa uchel
@@ -4340,9 +4342,9 @@ STR_SV_STNAME_DOCKS                                             :Dociau {STRING}
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
-STR_SV_STNAME_ANNEXE                                            :{STRING} Rhandre
-STR_SV_STNAME_SIDINGS                                           :{STRING} Cilffordd
-STR_SV_STNAME_BRANCH                                            :{STRING} Cangen
+STR_SV_STNAME_ANNEXE                                            :Rhandre {STRING}
+STR_SV_STNAME_SIDINGS                                           :Cilffordd {STRING}
+STR_SV_STNAME_BRANCH                                            :Cangen {STRING}
 STR_SV_STNAME_UPPER                                             :Blaenau {STRING}
 STR_SV_STNAME_LOWER                                             :Dyffryn {STRING}
 STR_SV_STNAME_HELIPORT                                          :Hofrenyddborth {STRING}

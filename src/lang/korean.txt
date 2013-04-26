@@ -4233,7 +4233,17 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}팻말 �
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}팻말을 삭제할 수 없습니다...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :트랜스포트 타이쿤 디럭스에 기초한 시뮬레이션 게임
+STR_DESKTOP_SHORTCUT_COMMENT                                    :트랜스포트 타이쿤 디럭스를 기반으로 한 시뮬레이션 게임입니다.
+
+# Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :오리지널 트랜스포트 타이쿤 디럭스 도스 에디션의 그래픽입니다.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :오리지널 트랜스포트 타이쿤 디럭스 도스 에디션(독일)의 그래픽입니다.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :오리지널 트랜스포트 타이쿤 디럭스 윈도우 에디션의 그래픽입니다.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :오리지널 트랜스포트 타이쿤 도스 에디션의 효과음입니다.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :오리지널 트랜스포트 타이쿤 디럭스 윈도우 에디션의 효과음입니다.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :아무런 효과음도 없는 효과음 팩입니다.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :오리지널 트랜스포트 타이쿤 디럭스 윈도우 에디션의 음악입니다.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :실제 음악이 없는 음악 목록입니다.
 
 ##id 0x2000
 # Town building names

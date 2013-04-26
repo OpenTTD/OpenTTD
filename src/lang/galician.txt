@@ -2761,44 +2761,64 @@ STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contén múltip
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectura máis aló da fin dun pseudo-sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE} Ao conxunto de gráficos básicos empregado actualmente fáltalle un número de sprites. {}Por favor, actualiza o conxunto de gráficos básico
 STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE} Ao conxunto de gráficos básicos empregado actualmente fáltalle un número de sprites. {}Por favor, actualiza o conxunto de gráficos básico.{}Dado que estás a xogar unha {YELLOW}versión de desenrolo de OpenTTD{WHITE}, é posíbel que tamén necesites unha {YELLOW}versión de desenrolo do conjunto de gráficos base{WHITE}
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Os recursos GRF solicitados non están disponíbeis (sprite {3:NUM})
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} foi desactivado por {2:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato de colocación de sprites inválido ou descoñecido (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
-STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}¡Atención!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vas realizar cambios nunha partida en execución. Esto pode cerrar OpenTTD.{}¿Estás completamente seguro de querer facelo?
+STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Coidado!
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Estás a piques de facer cambios nunha partida en execución. Isto pode forzar o peche de Open ou romper o estado do xogoTTD. Non arquives informes acerca deste problema{}Estás completamente seguro de querer facelo?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Non se pode engadir o ficheiro: ID do GRF duplicado
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ficheiro non atopado (cargouse GRF compatible)
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Non se pode engadir o arquivo: ID do GRF duplicado
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Arquivo correspondente non atopado (cargouse GRF compatible)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Non se pode engadir o arquivo: acadado límite de arquivos NewGRF
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatibles cargados para os ficheiros que faltan
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Deshabilitáronse os ficheiros GRF que faltan
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Faltan ficheiro(s) GRF
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quitar a pausa pode pechar OpenTTD. Non notifiques os erros que se produzan.{}¿Está seguro de querer quitar a pausa?
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatibles cargados para os arquivos que faltan
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Deshabilitáronse os arquivos GRF que faltan
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Falta(n) arquivo(s) GRF
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quitar a pausa pode forzar o peche de OpenTTD. Non notifiques os erros que se produzan.{}Estás seguro de querer quitar a pausa?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Ningún
+STR_NEWGRF_LIST_ALL_FOUND                                       :Tódolos arquivos presentes
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Atopados arquivos compatíbeis
 STR_NEWGRF_LIST_MISSING                                         :{RED}Faltan arquivos
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}O comportamento do NewGRF '{0:STRING}' pode causar desincronizacións e/ou colgues.
+STR_NEWGRF_BROKEN                                               :{WHITE}O comportamento do NewGRF '{0:STRING}' pode causar desincronizacións e/ou colgues
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Cambiou o estado 'vagón con potencia' para '{1:ENGINE}' fóra dun depósito
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Cambiou a lonxitude do vehículo a '{1:ENGINE}' cando non está nun depósito
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O tren '{VEHICLE}' pertencente a '{COMPANY}' ten unha lonxitude incorrecta. Esto está causado probablemente por problemas con NewGRFs. O xogo pode desincronizarse ou colgarse.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O tren '{VEHICLE}' pertencente a '{COMPANY}' ten unha lonxitude inválida. Esto está causado probabelmente por problemas con NewGRFs. O xogo pode desincronizarse ou colgarse
 
 STR_NEWGRF_BUGGY                                                :{WHITE}O NewGRF '{0:STRING}' proporciona información incorrecta.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Información de carga/reforma para '{1:ENGINE}' difiire da lista de compra despois da construción. Isto pode causar que a renovación/reemprazo automáticos non reformen correctamente
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' produciu un bucle sen fin na chamada de retorno de produción
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}A chamada {1:HEX} devolveu o resultado inválido ou descoñecido {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
+STR_NEWGRF_INVALID_CARGO                                        :<carga inválida>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <carga inválida>
+STR_NEWGRF_INVALID_ENGINE                                       :<modelo de vehículo inválido>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria inválida>
 
 # NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Escaneando NewGRFs
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Escaneando NewGRFs. Dependendo da cantidade esto pode tardar un chisco...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} comprobados dun total estimado de {NUM} NewGRF{P "" s}
+STR_NEWGRF_SCAN_ARCHIVES                                        :Procurando arquivos
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Sinais - {COMMA} Sina{P l is}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de rótulos - {COMMA} rótulo{P "" s}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Corresponder maiúsculas/minúsculas
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Activar correspondencia de maiúsculas ao comparar os nomes dos rótulos coa cadea de filtrado
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edita lo texto do sinal
-STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Ir ó sinal seguinte
-STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Ir ó sinal anterior
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edita-lo texto do rótulo
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Ir ao seguinte rótulo
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Ir ao rótulo anterior
 
-STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Escribe un nome para o sinal
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Escribe un nome para o rótulo
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Cidades
@@ -2813,11 +2833,18 @@ STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Poboación: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Pasaxeiros último mes: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Correo último mes: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necesaria para o crecemento:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necesaria para o crecemento da cidade:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} necesario{P "" s}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} necesarios en inverno
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregados
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (todavía requeridos)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregados)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}A cidade medra cada {ORANGE}{COMMA}{BLACK} día{P "" s}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}A cidade medra cada {ORANGE}{COMMA}{BLACK} día{P "" s} (financiada)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}A cidade {RED}non{BLACK} está a medrar
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Límite de ruído na cidade: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar a vista principal na localización da cidade. CTRL+Click abre una nova fiestra na localización da cidade
-STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Aut. Local
+STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoridade local
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Mostra-la información sobre a autoridade local
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambia-lo nome da cidade
 
@@ -2832,66 +2859,96 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Renomear cidade
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Autoridade local de {TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Puntuacións das compañías de transporte:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
-STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Accións dispoñibles:
+STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Accións dispoñíbeis:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lista de cousas para facer nesta cidade - pincha nun ítem para máis detalles
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Faino
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Executa-la acción marcada na lista superior
 
-STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Campaña publicitaria pequena
+STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Pequena campaña publicitaria
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Campaña publicitaria mediana
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Gan campaña publicitaria
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Subvenciona-la reconstrución das estradas da cidade
+STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Financia-la reparación das fochancas nas rúas da cidade
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Construír unha estatua do propietario da compañía
-STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Subvencionar novos edificios
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Compra-los dereitos de transporte exclusivos
+STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financiar novos edificios
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Compra-los dereitos exclusivos de transporte
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Suborna-la autoridade local
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniciar unha campaña de publicidade pequena, para atraer máis pasaxeiros e mercadorías os teus servizos de transporte.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniciar unha campaña de publicidade mediana, para atraer máis pasaxeiros e mercadorías os teus servizos de transporte.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniciar unha gran campaña de publicidade, para atraer máis pasaxeiros e mercadorías ós teus servizos de transporte.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Subvenciona-la reconstrución da rede de estradas urbanas. Provoca unha considerable interrupción no tráfico durante seis meses.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construír unha estatua en honor a túa compañía.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Subvenciona-la construción de novos edificios comerciais na cidade.{}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniciar unha campaña de publicidade pequena, para atraer máis pasaxeiros e mercadorías aos teus servizos de transporte.{}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniciar unha campaña de publicidade mediana, para atraer máis pasaxeiros e mercadorías aos teus servizos de transporte.{}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniciar unha gran campaña de publicidade, para atraer máis pasaxeiros e mercadorías aos teus servizos de transporte.{}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financia-la reconstrución das rúas da cidade. Provoca unhas considerables interrupcións no tráfico durante seis meses.{}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construír unha estatua en honor á túa compañía.{}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Financia-la construción de novos edificios comerciais na cidade.{}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Compra-los dereitos exclusivos de transporte na cidade durante 1 ano. A autoridade só permitirá que os pasaxeiros e as mercadorías usen as estacións da túa compañía.{}Custo: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Suborna-la autoridade local para mellorá-la túa puntuación, co risco dunha gran penalización se o descobren.{}Custo: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Suborna-la autoridade local para mellora-la túa puntuación, co risco dunha gran penalización se o descobren.{}Custo: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Obxectivos
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Obxectivos globais:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Ningún -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Obxectivos da compañía:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Pincha nun obxectivo para centra-la vista principal na industria/cidade/cadro. Ctrl+Click abre unha nova ventá na localización da industria/cidade/cadro
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pregunta
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Información
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Aviso
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Erro
 
 ### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cancelar
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :Non
+STR_GOAL_QUESTION_BUTTON_YES                                    :Si
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Declinar
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Aceptar
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignorar
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Tentar de novo
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Anterior
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Seguinte
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Stop
+STR_GOAL_QUESTION_BUTTON_START                                  :Comezar
+STR_GOAL_QUESTION_BUTTON_GO                                     :Ir
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Continuar
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Reiniciar
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Pospoñer
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Renderse
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Pechar
 
 # Subsidies window
-STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidios
-STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Sibsidios en oferta para sevicios que transporten:
+STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencións
+STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subvencións ofrecidas para sevizos que transporten:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} dende {STRING} ata {STRING}{YELLOW} (antes de {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}- Ningún -
-STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servizos que xa teñen subsidio:
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Ningunha -
+STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servizos que xa teñen subvención:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} dende {STRING} ata {STRING}{YELLOW} ({COMPANY}{YELLOW}, ata {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Pincha no servizo para centrar a vista na industria/cidade. CTRL+Click abre unha nova fiestra na localización da industria/cidade
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomes das estacións - pincha nun nome para centrar a vista na estación. CTRL+Click abre unha nova fiestra na localización da estación
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Presiona CTRL para seleccionar máis dun ítem
-STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estacións
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Mantén pulsado CTRL para seleccionar máis dun ítem
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estación{P "" s}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
-STR_STATION_LIST_NONE                                           :{YELLOW}- Ningún -
+STR_STATION_LIST_NONE                                           :{YELLOW}- Ningunha -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleccionar tódolos edificios
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Seleccionar tódolos tipos de carga (incluso os que non están a esperar)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Non queda ningún tipo de carga en espera
+STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Non queda ningunha carga de ningún tipo en espera
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
-STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Esperando: {WHITE}{STRING}
+STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Agardando: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} en ruta dende {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservado para cargar)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acepta
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostrar a lista da carga aceptada
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Acepta: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Esta estación ten dereitos de transporte exclusivos nesta cidade.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} comprou a exclusiva de dereitos de transporte nesta cidade.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Puntuacións:
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostra-las puntuacións da estación
@@ -2900,11 +2957,11 @@ STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Pésima
-STR_CARGO_RATING_VERY_POOR                                      :Moi Pobre
+STR_CARGO_RATING_VERY_POOR                                      :Moi pobre
 STR_CARGO_RATING_POOR                                           :Pobre
 STR_CARGO_RATING_MEDIOCRE                                       :Mediocre
 STR_CARGO_RATING_GOOD                                           :Boa
-STR_CARGO_RATING_VERY_GOOD                                      :Moi Boa
+STR_CARGO_RATING_VERY_GOOD                                      :Moi boa
 STR_CARGO_RATING_EXCELLENT                                      :Excelente
 STR_CARGO_RATING_OUTSTANDING                                    :Excepcional
 ############ range for rating ends
@@ -2919,85 +2976,112 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostrar 
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renomear estación/área de carga
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Pechar aeroporto
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Evita que os avións aterren neste aeroporto
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centra a vista principal na localización do punto de ruta. Ctrl+Click abre unha nova ventá na localización do punto de ruta
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Cambiar o nome do punto de ruta
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar a vista principal na localización da boia. Ctrl+Click abre unha nova ventá na localización da boia
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Cambiar o nome da boia
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar o nome do punto de control
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar o nome do punto de ruta
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanzas {BLACK}{COMPANY_NUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Gastos/Ingresos
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construción
-STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Novos Vehículos
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Mantemento dos Trens
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Coste de mantemento dos Vehículos
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Mantemendo das Aeronaves
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Mantemento dos Barcos
-STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Mantemento das Propiedades
-STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Ingresos dos Trens
-STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Ingresos dos Vehículos
-STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Ingresos das Aeronaves
-STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Ingresos dos Barcos
-STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Interese do Préstamo
+STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Novos vehículos
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Custo operativo dos trens
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Custo operativo dos vehículos de estrada
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Custo operativo das aeronaves
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Custo operativo dos barcos
+STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Mantemento de propiedades
+STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Ingresos dos trens
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Ingresos dos vehículos de estrada
+STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Ingresos das aeronaves
+STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Ingresos dos barcos
+STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Interese do préstamo
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Outros
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total:
-STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balance do Banco
+STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balance bancario
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Préstamo
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Préstamo Máx: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Préstamo máximo: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Solicitar {CURRENCY_LONG}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Incrementar o préstamo. CTRL+Click solicita o máximo posible
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pedir {CURRENCY_LONG}
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Incrementar o préstamo. CTRL+Click solicita o máximo posíbel
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Devolver {CURRENCY_LONG}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Pagar parte do préstamo. CTRL+Click paga tanto coma sexa posible
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Pagar parte do préstamo. CTRL+Click paga tanto coma sexa posíbel
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infraestrutura
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Presidente)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurado: {WHITE}{NUM}
-STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Esquema de Cor:
+STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Esquema de cor:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehículos:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tren{P "" s}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} vehículo{P "" s} de estrada
-STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}Aeronaves {COMMA}
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE} {COMMA} aeronave{P "" s}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} barco{P "" s}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ningún
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valor da Compañía: {WHITE}{CURRENCY_LONG}
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valor da compañía: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% propiedade de {COMPANY})
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infraestrutura:
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} segmento{P "" s} de vías de ferrocarril
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} segmento{P "" s} de estrada
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} cadro{P "" s} de auga
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} cadro{P "" s} de estación
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeroporto{P "" s}
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Ningún
 
-STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Construír CX
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construir o cuartel xeral da compañía
-STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ve-lo CX
-STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Ver o cuartel xeral da compañía
-STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Reposicionar CX
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Recontruí-lo cuartel xeral da compañía en calquer lugar cun custo do 1% do valor da compañía
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Construír sede
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construír a sede da compañía
+STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ver sede
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Ver a sede da compañía
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Reposicionar sede
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Recontruí-la sede da compañía en calquera outro lugar cun custo do 1% do valor da compañía. Shift+click mostra o custo estimado sen reubica-la sede
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalles
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver contas detalladas de infraestrutura
 
-STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nova Cara
+STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nova cara
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Selecciona-la nova cara do presidente
-STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Esquema de Cor
+STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Esquema de cor
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Cambia-la cor dos vehículos da compañía
-STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nome Compañía
+STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nome da compañía
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Cambiar o nome da compañía
-STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nome Presidente
+STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nome do presidente
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Cambiar o nome do presidente
 
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Comprar un 25% das accións da compañía
+STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Mercar un 25% das accións da compañía
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vender un 25% das accións da compañía
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Comprar un 25% das accións nesta compañía
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vender un 25% das accións desta compañía
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Mercar un 25% das accións desta compañía. Shift+Click mostra o custo estimado sen mercar ningunha acción
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vender un 25% das accións desta compañía. Shift+Click mostra o custo estimado sen vender ningunha acción
 
-STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nome da Compañía
-STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nome Do Presidente
+STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nome da compañía
+STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nome do presidente
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Buscamos unha compañía de transporte para adquiri-la nosa compañía{}{}¿Queres comprar {COMPANY} por {CURRENCY_LONG}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Buscamos unha compañía de transportes para adquiri-la nosa compañía{}{}Queres mercar{COMPANY} por {CURRENCY_LONG}?
 
 # Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infraestrutura de {COMPANY}
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Segmentos de vía de ferrocarril:
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Sinais
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Segmentos de estrada:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Estrada
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE} Tranvía
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Cadros de auga:
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canles
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Estacións:
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Cadros de estación
+STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Aeroportos
+STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/ano ({0:COMMA})
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/ano
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrias
@@ -3005,13 +3089,14 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ningu
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% transportado)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportado)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomes das industrias - pincha nun nome para centrar a vista nela. CTRL+Pinchar abre una nova fiestra na situación da industria
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomes das industrias - pincha nun nome para centrar a vista nela. Ctrl+Click abre una nova fiestra na situación da industria
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
-STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producción no último mes:
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produción no último mes:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportado)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar a vista principal na localización da industria. CTRl+Click abre unha nova fiestra na localización da industria
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar a vista principal na localización da industria. Ctrl+Click abre unha nova fiestra na localización da industria
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivel de produción: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Require: {YELLOW}{STRING}{STRING}
@@ -3027,40 +3112,41 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produce:
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambiar produción (múltiplo de 8, ata 2040)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Cambiar o nivel de produción (porcentaxe, ata 800%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tren{P "" s}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Vehículo{P "" s} de Estrada
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Vehículo{P "" s} de estrada
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Barco{P "" s}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aeronave
 
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trens - pincha nun tren para información
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Vehículos de estrada - pincha nun vehículo para máis información
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Barcos - pincha no barco para máis información
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Avións - pincha no avión para máis información
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trens - pincha nun tren para obter información
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Vehículos de estrada - pincha nun vehículo para obter información
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Barcos - pincha no barco para obter información
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Avións - pincha nun avión para obter información
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Beneficio este ano: {CURRENCY_LONG} (ano pasado: {CURRENCY_LONG})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trens Dispoñibles
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehículos Dispoñibles
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Barcos Dispoñibles
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aeronaves Dispoñibles
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ve-la lista das máquinas dispoñibles para este tipo de vehículo.
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trens dispoñíbeis
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehículos dispoñíbeis
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Barcos dispoñíbeis
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aeronaves dispoñíbeis
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ve-la lista das máquinas dispoñíbeis para este tipo de vehículo.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Xestionar lista
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Envia-las instruccións a tódolos vehículos desta lista
-STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Reemplazar Vehículos
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Enviar para Servizo
+STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Reemprazar vehículos
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Enviar para servizo
 
-STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Enviar ó Depósito
-STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Enviar ó Depósito
-STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Enviar ó Depósito
-STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Enviar ó Hangar
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Enviar ao depósito
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Enviar ao depósito
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Enviar ao depósito
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Enviar ao hangar
 
-STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Pincha para parar tódolos vehículos da lista
-STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Pincha para iniciar tódolos vehículos da lista
+STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Pincha para deter tódolos vehículos da lista
+STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Pincha para arrancar tódolos vehículos da lista
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Ordes compartidas de {COMMA} Vehículo{P "" s}
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Ordes compartidas de {COMMA} vehículo{P "" s}
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Tódolos trens
@@ -3085,48 +3171,51 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Borrar tódolos
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomear un grupo
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Novos Vehículos de Ferrocarril
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Novos Vehículos Eléctricos de Raíles
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Novos Vehículos de Monorraíl
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Novos Vehículos de Maglev
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Novos vehículos ferroviarios
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Novos vehículos ferroviarios eléctricos
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Novos vehículos de monorraíl
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Novos vehículos de levitación magnética (Maglev)
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Vehículos de Ferrocaril
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Novos Vehículos de Estrada
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novos Barcos
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nova Aeronave
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Novos vehículos ferroviarios
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Novos vehículos de estrada
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novos barcos
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Novas aeronaves
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Custo: {GOLD}{CURRENCY_LONG}{BLACK} Peso: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidade: {GOLD}{VELOCITY}{BLACK} Potencia: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocidade: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Mantemento: {GOLD}{CURRENCY_LONG}/ano
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Velocidade no océano: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Velocidade en canle/río: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Custo operativo: {GOLD}{CURRENCY_LONG}/ano
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidade: {GOLD}{CARGO_LONG} {STRING}
-STR_PURCHASE_INFO_REFITTABLE                                    :(reax.)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Deseñado: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} anos
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilidade Máx.: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_REFITTABLE                                    :(reformábel)
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Deseñado: {GOLD}{NUM}{BLACK} Vida útil: {GOLD}{COMMA} ano{P "" s}
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilidade máxima: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Custo: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Custo: {GOLD}{CURRENCY_LONG}{BLACK} Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagóns tractores: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Actualizable a: {GOLD}{STRING}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reformábel a: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tódolos tipos de carga
-STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {CARGO_LIST}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Esforzo Max. de Tracción: {GOLD}{FORCE}
+STR_PURCHASE_INFO_ALL_BUT                                       :Todos excepto {CARGO_LIST}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Esforzo máximo de tracción: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Autonomía: {GOLD}{COMMA} cadros
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de selección de vehículos para trens - pincha nun vehículo para máis información
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de selección de vehículos de estrada - pincha nun vehículo para máis información
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista de selección de barcos - pincha nun barco para máis información
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista de selección de avións - pincha nun avión para máis información
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de selección de vehículos ferroviarios - pincha nun vehículo para obter información
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de selección de vehículos de estrada - pincha nun vehículo para obter información
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista de selección de barcos - pincha nun barco para obter información
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista de selección de avións - pincha nun avión para obter información
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Comprar Vehículo
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Comprar Vehículo
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Comprar Barco
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Comprar Aeronave
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Mercar vehículo
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Mercar vehículo
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Mercar barco
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Mercar aeronave
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar o vehículo de ferrocarril seleccionado
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar o vehículo de estrada seleccionado
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar o barco seleccionado
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar o avión seleccionado
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Mercar o vehículo ferroviario seleccionado. Shift+click mostra o custo estimado sen mercar
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Mercar o vehículo de estrada seleccionado. Shift+click mostra o custo estimado sen mercar
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Mercar o barco seleccionado. Shift+click mostra o custo estimado sen mercar
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Mercar a aeronave seleccionada. Shift+click mostra o custo estimado sen mercar
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Renomear
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Renomear
@@ -3147,15 +3236,15 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Renomea-
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
 STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Cambiar o nome do depósito
-STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Nomear depósito
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Renomear depósito
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehículo{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trens - arrastra o vehículo para engadilo/quitalo do tren, pincha co botón dereito para información. Pulsa CTRL para aplicar ambas funcións a cadea seguinte
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehículos - pincha co botón dereito no vehículo para máis información
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trens - arrastra o vehículo co botón esquerdo para engadilo/quitalo do tren, pincha co botón dereito para obter información. Mantén pulsado Ctrl para aplicar ambas funcións á cadea seguinte
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehículos - click dereito no vehículo para obter información
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Barcos - pincha co botón dereito no barco para máis información
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Avións - pincha co botón dereito no avión para máis información
 
@@ -3164,10 +3253,10 @@ STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arrastra
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Arrastra o barco aquí para vendelo
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Arrastra o avión aquí para vendelo
 
-STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Arrastra a máquina do tren aquí para vender todo o tren
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Arrastra a locomotora aquí para vender todo o tren
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Vender tódolos trens do depósito
-STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Vender tódolos vehículos que hai no depósito
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Vender tódolos vehículos no depósito
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Vender tódolos barcos no depósito
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Vender tódolos avións do hangar
 
@@ -3176,30 +3265,30 @@ STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Autosubs
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Autosubstituír tódolos barcos no depósito
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Autosubstituír tódolos avións no hangar
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Novos Vehículos
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Novos Vehículos
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novos Barcos
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nova Aeronave
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Novos vehículos
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Novos vehículos
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novos barcos
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Novas aeronaves
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Comprar novo vehículo de ferrocarril
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Comprar novo vehículo de estrada
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Comprar novo barco
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Comprar novo avión
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Mercar novo vehículo ferroviario
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Mercar novo vehículo de estrada
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Mercar novo barco
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Mercar novo avión
 
-STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Clonar Tren
-STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clonar Vehículo
-STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar Barco
-STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar Aeronave
+STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Clonar tren
+STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clonar vehículo
+STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar barco
+STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar aeronave
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Isto comprará unha copia dun tren incluídos os vagóns. Pincha neste botón e despois nun tren dentro ou fóra do depósito. CTRL+Pinchar comparte as ordes
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Isto comprará unha copia do vehículo. Pincha neste botón e despois nun vehículo dentro ou fóra do depósito. CTRL+Pinchar compartirá as ordes
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esto comprará unha copia do barco. Pincha neste botón e despois nun barco dentro ou fóra do depósito. CTRL+Pinchar compartirá as ordes
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esto comprará unha copia do avión. Pincha neste botón e nun avión que estea dentro ou fóra do hangar. CTRL+Pinchar compartirá as ordes
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Isto mercará unha copia dun tren incluídos tódolos vagóns. Pincha neste botón e despois nun tren dentro ou fóra do depósito. Ctrl+click comparte as ordes. Shift+Click mostra o custo estimado sen mercar
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Isto mercará unha copia dun vehículo de estrada. Pincha neste botón e despois nun vehículo de estrada dentro ou fóra do depósito. Ctrl+click comparte as ordes. Shift+Click mostra o custo estimado sen mercar
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Isto mercará unha copia dun barco. Pincha neste botón e despois nun barco dentro ou fóra do depósito. Ctrl+click comparte as ordes. Shift+Click mostra o custo estimado sen mercar
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Isto mercará unha copia dun avión. Pincha neste botón e despois nun avión dentro ou fóra do hangar. Ctrl+click comparte as ordes. Shift+Click mostra o custo estimado sen mercar
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar a vista principal na situación do depósito. CTRL+Pinchar abrirá unha nova fiestra na situación do depósito
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrar a vista principal na situación do depósito. CTRL+Pinchar abrirá unha nova fiestra na situación do depósito
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrar a vista principal na situación do depósito. CTRL+Pinchar abrirá unha nova fiestra na situación do depósito
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrar a vista principal na situación do hangar. CTRL+Pinchar abrirá unha nova fiestra na situación do hangar
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar a vista principal na situación do depósito. Ctrl+Click abrirá unha nova fiestra na situación do depósito
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrar a vista principal na situación do depósito. Ctrl+Click abrirá unha nova fiestra na situación do depósito
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrar a vista principal na situación do depósito. Ctrl+Click abrirá unha nova fiestra na situación do depósito
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrar a vista principal na situación do hangar. Ctrl+click abrirá unha nova fiestra na situación do hangar
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Obter a lista de tódolos trens co depósito actual nas súas ordes
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Obter a lista de tódolos vehículos de estrada co depósito actual nas súas ordes
@@ -3211,27 +3300,29 @@ STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Pincha p
 STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Pincha para parar tódolos barcos que hai no depósito
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Pincha para parar tódolos avións que hai no hangar
 
-STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Pincha para iniciar tódolos trens que hai no depósito
-STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Pincha para iniciar tódolos vehículos que hai no depósito
-STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Pincha para iniciar tódolos barcos que hai no depósito
-STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Pincha para iniciar tódolos avións que hai no hangar
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Pincha para arrancar tódolos trens que hai no depósito
+STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Pincha para arrancar tódolos vehículos que hai no depósito
+STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Pincha para arrancar tódolos barcos que hai no depósito
+STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Pincha para arrancar tódolos avións que hai no hangar
 
-STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vas vender tódolos vehículos do depósito. ¿Estás seguro?
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vas vender tódolos vehículos do depósito. Estás seguro?
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensaxe dun fabricante de vehículos
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Rematamo-lo deseño dun/dunha nov@ {STRING} - ¿Interésache probar este vehículo en exclusiva durante un ano, para comproba-lo seu rendemento antes de facelo dispoñible para todos?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Acabamos de deseñar un novo {STRING} - Interésache probar este vehículo en exclusiva durante un ano, para ve-lo seu rendemento antes de facelo universalmente dispoñíbel?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :locomotora de ferrocarril
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :vehículo de estrada
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :avión
 STR_ENGINE_PREVIEW_SHIP                                         :barco
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotora de monoraíl
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotora de monorraíl
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotora de maglev
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidade: {VELOCITY}  Potencia: {POWER}{}Custo de Mantemento: {CURRENCY_LONG}/ano{}Capacidade: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Coste: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidade: {VELOCITY}  Potencia: {POWER}  Máx. T.E.: {6:FORCE}{}Mantemento: {4:CURRENCY_LONG}/a{}Capacidade: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Custo: {CURRENCY_LONG} Velocidade Máx.: {VELOCITY}{}Capacidade: {CARGO_LONG}, {CARGO_LONG}{}Custo Mantemento: {CURRENCY_LONG}/ano
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Custo: {CURRENCY_LONG} Velocidade Máx.: {VELOCITY}{}Capacidade: {CARGO_LONG}{}Custo Mantemento: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidade: {VELOCITY}  Potencia: {POWER}{}Custo operativo: {CURRENCY_LONG}/ano{}Capacidade: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Custo: {CURRENCY_LONG} Peso: {WEIGHT_SHORT}{}Velocidade: {VELOCITY}  Potencia: {POWER}  Esforzo tractor máximo: {6:FORCE}{}Custo operativo: {4:CURRENCY_LONG}/ano{}Capacidade: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Custo: {CURRENCY_LONG} Velocidade máxima: {VELOCITY}{}Capacidade: {CARGO_LONG}, {CARGO_LONG}{}Custo operativo: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Custo: {CURRENCY_LONG} Velocidade máxima: {VELOCITY}{}Capacidade: {CARGO_LONG}{}Custo operativo: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Custo: {CURRENCY_LONG} Velocidade máxima: {VELOCITY} Autonomía: {COMMA} cadros{}Capacidade: {CARGO_LONG}, {CARGO_LONG}{}Custo operativo: {CURRENCY_LONG}/ano
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Custo: {CURRENCY_LONG} Velocidade máxima: {VELOCITY} Autonomía: {COMMA} cadros{}Capacidade: {CARGO_LONG}{}Custo operativo: {CURRENCY_LONG}/ano
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituír {STRING} - {STRING}
@@ -3241,86 +3332,92 @@ STR_REPLACE_VEHICLE_SHIP                                        :Barco
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeronave
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selecciona o tipo de máquina a substituír
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Selecciona o tipo da nova máquina que queres usar en lugar do tipo de máquina seleccionada a esquerda
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Selecciona o tipo da nova máquina que queres usar en lugar do tipo de máquina seleccionado á esquerda
 
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Comezar a Substituír Vehículos
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Comezar a substituír vehículos
+STR_REPLACE_VEHICLES_NOW                                        :Reemprazar tódolos vehículos agora
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Reemprazar só vehículos vellos
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Presiona para comezar a substituír o tipo de máquina da esquerda co seleccionado na dereita
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Non substituír
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Non hai vehículos seleccionados
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar de Substituír Vehículos
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} cando vaia vello
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar de substituír vehículos
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Presiona para parar a substitución do tipo de máquina seleccionada na esquerda
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituíndo: {ORANGE}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Cambia entre as fiestras de substitución de máquinas e vagóns
-STR_REPLACE_ENGINES                                             :Máquinas
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Cambia entre as fiestras de substitución de locomotoras e vagóns
+STR_REPLACE_ENGINES                                             :Locomotoras
 STR_REPLACE_WAGONS                                              :Vagóns
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecciona o tipo de raíl para o que queres substituír as máquinas
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra qué máquina seleccionada a esquerda vai ser substituída, se é algunha.
-STR_REPLACE_RAIL_VEHICLES                                       :Vehículos Raíl
-STR_REPLACE_ELRAIL_VEHICLES                                     :Vehículos de Raíl Electrificados
-STR_REPLACE_MONORAIL_VEHICLES                                   :Vehículos Monoraíl
-STR_REPLACE_MAGLEV_VEHICLES                                     :Vehículos Maglev
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecciona o tipo de carril para o que queres substituír as locomotoras
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra que máquina seleccionada á esquerda vai ser substituída, se é algunha.
+STR_REPLACE_RAIL_VEHICLES                                       :Vehículos ferroviarios
+STR_REPLACE_ELRAIL_VEHICLES                                     :Vehículos de ferrocarril eléctrico
+STR_REPLACE_MONORAIL_VEHICLES                                   :Vehículos de monorraíl
+STR_REPLACE_MAGLEV_VEHICLES                                     :Vehículos maglev
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Eliminar os vagóns: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Facer que a autosubstitución manteña a lonxitude do tren quitando vagóns (empezando polo principio), se ó substituír a máquina o tren é máis longo.
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Facer que a autosubstitución manteña a lonxitude do tren quitando vagóns (empezando pola cabeza), se ao substituír a locomotora o tren se fixera máis longo.
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrar a vista principal na situación do tren. CTRL+Pinchar seguirá ao tran na vista principal
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrar a vista principal na situación do vehículo. CTRL+Pinchar seguirá ao vehículo na vista principal
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrar a vista principal na situación do barco. CTRL+Pinchar seguirá ao barco na vista principal
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centra-la vista principal na situación do avión
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrar a vista principal na situación do tren. Ctrl+click seguirá ao tren na vista principal
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrar a vista principal na situación do vehículo. Ctrl+click seguirá ao vehículo na vista principal
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrar a vista principal na situación do barco. Ctrl+click seguirá ao barco na vista principal
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centra-la vista principal na situación do avión. Ctrl+click seguirá ao avión na vista principal
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar tren ó depósito
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envia-lo vehículo ó depósito
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Envia-lo barco o depósito
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Envia-lo avión ó hangar
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar tren ao depósito. Ctrl+click para facer só servizo
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envia-lo vehículo ao depósito. Ctrl click para facer só servizo
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Envia-lo barco ao depósito. Ctrl click para facer só servizo
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Envia-lo avión ao hangar. Ctrl click para facer só servizo
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Esto construirá unha copia do tren incluídos os vagóns. CTRL+Click compartirá as ordes
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Esto construirá unha copia do vehículo. CTRL+Click compartirá as ordes
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Esto construirá unha copia do barco. CTRL+Click compartirá as ordes
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Esto construirá una copia do avión. CTRL+Click compartirá as ordes
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Esto mercará unha copia do tren incluídos os vagóns. Ctrl+click compartirá as ordes. Shift+click mostra o custo estimado sen mercar
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Esto construirá unha copia do vehículo. Ctrl+click compartirá as ordes. Shift+click mostra o custo estimado sen mercar
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Esto construirá unha copia do barco. Ctrl+click compartirá as ordes. Shift+click mostra o custo estimado sen mercar
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Esto construirá una copia do avión. Ctrl+click compartirá as ordes. Shift+click mostra o custo estimado sen mercar
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Obliga-lo tren a continuar sen esperar a que o sinal o indique
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Obligar ao tren a circular sen agardar a que o sinal o autorice
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Modificar o tren para un tipo de carga diferente
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Reaxustar vehículo para levar un tipo diferente de carga
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Reaxustar o barco para levar un tipo diferente de mercadoría
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Modificar o tren para levar un tipo de carga diferente
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Modificar vehículo para levar un tipo diferente de carga
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Modificar o barco para levar un tipo diferente de mercadoría
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Modificar o avión para levar un tipo distinto de carga
 
-STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Invertí-lo sentido do tren
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forza-lo vehículo a da-la volta
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inverti-la marcha do tren
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forzar ao vehículo a dar a volta
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Mostra-las ordes do tren. CTRL+Click mostrará o horario
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Mostra-las ordes do vehículo
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Mostra-las ordes do barco
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Mostra-las ordes do avión
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Mostra-las ordes do tren. Ctrl+click mostra o horario
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Mostra-las ordes do vehículo. Ctrl+click mostra o horario
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Mostra-las ordes do barco. Ctrl+click mostra o horario
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Mostra-las ordes do avión. Ctrl+click mostra o horario
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Mostra-los detalles do tren
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostra-los detalles do vehículo de estrada
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Mostra-los detalles do barco
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Mostra-los detalles do avión
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Acción actual do tren - pincha para parar/arrancar o tren. CTRL+Click para desprazarse ao destino
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Acción actual do vehículo - pincha para parar/arrancar o vehículo. CTRL+Click para desprazarse ao destino
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Acción actual do barco - pincha para parar/arrancar o barco. CTRL+Click para desprazarse ao destino
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Acción actual do avión - pincha para parar/arrancar o avión. CTRL+Click para desprazarse ao destino
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Acción actual do tren - pincha para deter/arrancar o tren. Ctrl+click para desprazarse ao destino
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Acción actual do vehículo - pincha para parar/arrancar o vehículo. Ctrl+click para desprazarse ao destino
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Acción actual do barco - pincha para parar/arrancar o barco. Ctrl+click para desprazarse ao destino
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Acción actual do avión - pincha para parar/arrancar o avión. Ctrl+click para desprazarse ao destino
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Cargando / Descargando
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Saíndo
-STR_VEHICLE_STATUS_CRASHED                                      :{RED}¡Estrelado!
+STR_VEHICLE_STATUS_CRASHED                                      :{RED}Estrelado!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Roto
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parado
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Parando, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Sen enerxía
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Esperando camiño libre
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Demasiado lonxe do próximo destino
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Diríxese a {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Dirixíndose a {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Sen ordes, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Diríxese a {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Dirixíndose a {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Dirixíndose a {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servizo en {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Parado
@@ -3335,7 +3432,7 @@ STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nome
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Renomear tren
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Renomear vehículo de estrada
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Renomear barco
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Cambia-lo nome do avión
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Renomear avión
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo Mantemento: {LTBLUE}{CURRENCY_LONG}/ano
 # The next two need to stay in this order
@@ -4019,6 +4116,8 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Non se p
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Non se pode borrar o sinal...
 
 # Translatable comment for OpenTTD's desktop shortcut
+
+# Translatable descriptions in media/baseset/*.ob* files
 
 ##id 0x2000
 # Town building names
