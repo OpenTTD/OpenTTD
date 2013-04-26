@@ -3644,6 +3644,7 @@ showhelp() {
 	echo "  --with-makedepend[=makedepend] enables makedepend support"
 	echo "  --with-ccache                  enables ccache support"
 	echo "  --with-distcc                  enables distcc support"
+	echo "  --without-grfcodec             disable usage of grfcodec and re-generation of base sets"
 	echo ""
 	echo "Some influential environment variables:"
 	echo "  CC                             C compiler command"
