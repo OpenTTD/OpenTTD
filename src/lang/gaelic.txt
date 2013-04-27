@@ -314,7 +314,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} d
 STR_QUANTITY_BATTERIES                                          :{COMMA} {P bhataraidh bhataraidh bataraidhean bataraidh}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} dhe phlastaig
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} {P deoch dheoch deochan deoch} {P ghucagach ghucagach gucagach ghucagach}
-STR_QUANTITY_N_A                                                :Neo-iomchaidh
+STR_QUANTITY_N_A                                                :Chan eil seo ann
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -480,7 +480,7 @@ STR_SORT_BY_POPULATION                                          :Àireamh-shluai
 STR_SORT_BY_RATING                                              :Rangachadh
 
 # Tooltips for the main toolbar
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Cuir an geama na stad
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Cuir an geama na stad / a' dol
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Cuir an geama air adhart gu luath
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Roghainnean
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Sàbhail an geama, fàg an geama, fàg an-seo
@@ -2047,7 +2047,7 @@ STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Cuingich
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} {P amharcaiche amharcaiche amharcaichean amharcaiche}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Amharcaichean air a char as motha:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Cuingich co mheud duine a dh'fhaodas sealltainn air geamannan air an fhrithealaiche
-STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Cànan a tha ga bruidhinn:
+STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Cànan a tha ga bhruidhinn:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Bidh fios aig cluicheadairean eile dè an cànan a tha ga bruidhinn air an fhrithealaiche
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Cuir a-steach ainm airson a' gheama lìonraidh
@@ -2879,7 +2879,7 @@ STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Mion-fhi
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Faidhlichean NewGRF gnìomhach
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Faidhlichean NewGRF neo-ghnìomhach
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Tagh ro-sheata:
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Criathraich sreang:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Sreang criathraige:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Luchdaich an ro-sheata a thagh thu
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Sàbhail ro-sheata
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Sàbhail an liosta seo mar ro-sheata
@@ -3138,7 +3138,7 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Dùin
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Tarrailean
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Tarrailean gan tairgsinn airson seirbheisean a bheir:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} bho {STRING} gu {STRING}{YELLOW} (ro {DATE_SHORT})
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} bho: {STRING} gu: {STRING}{YELLOW} (ro: {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Gun ghin -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Seirbeisean a gheibh tarrail mu thràth:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} bho {STRING} gu {STRING}{YELLOW} ({COMPANY}{YELLOW}, gu ruige {DATE_SHORT})
@@ -3162,7 +3162,7 @@ STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_L
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} bho {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} glèidhte airson luchdadh)
 
-STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Gabhaidh e ris
+STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Na ghabhar ris
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Seall liosta a' charago a thèid a ghabhail ris
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Gabhaidh e ri: {WHITE}{CARGO_LIST}
 
