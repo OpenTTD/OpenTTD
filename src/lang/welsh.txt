@@ -1364,9 +1364,9 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Chwarae sŵn ar
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Papur newydd: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Chwarae sŵn ar ddangos papurau newydd
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Diwedd y flwyddyn: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Chwarae effaith sŵn ar ddiwedd blwyddyn i adlewyrchu perfformiad y cwmni am y flwyddyn o'i gymharu a'r llynedd
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Chwarae sŵn ar ddiwedd blwyddyn i adlewyrchu perfformiad y cwmni am y flwyddyn o'i gymharu a'r llynedd
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Adeiladu: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Chwarae effeithiau sŵn wrth adeiladu'n lwyddiannus ac ar weithredoedd eraill
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Chwarae sŵn wrth adeiladu'n lwyddiannus neu ar weithredoedd eraill
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Cliciau botwm: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Bipio wrth glicio botymau
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Trychinebau/damweiniau: {STRING}
@@ -1374,7 +1374,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Chwarae effeith
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Cerbydau: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Chwarae effeithiau sŵn cerbydau
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Cefndir: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Chwarae effeithiau sŵn cefndirol y tirwedd, diwydiannau a threfi
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Chwarae synau cefndirol y tirwedd, diwydiannau a threfi
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Analluogi adeiladu tanadeiledd pan nad oes cerbydau addas ar gael: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Pan y galluogir, nid yw tanadeiledd ar gael nes fod cerbydau ar gael iddo, gan osgoi gwastraff arian ac amser ar danadeiledd na ellir ei ddefnyddio
@@ -1474,7 +1474,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Wrth lusgo, gos
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Gosod y pellter y codir signalau ar drac hyd at y rhwystr nesaf (signal, cyffordd), os y llusgir signalau
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} teil
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Pan yn llusgo, cadw pellter cyson rhwng y signalau: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Gosod ymddygiad gosod signalau pan y defnyddio Ctrl+llusgo. Os analluogir, caiff signalau eu gosod o amgylch twneli a phontydd i osgoi ystodau hir heb signalau. Os y galluogir, caiff signalau eu gosod bob N teil, gan rwyddhau alinio signalau ar traciau paralel
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Gosod ymddygiad gosod signalau pan yn Ctrl+llusgo signalau. Os analluogir, caiff signalau eu gosod o amgylch twneli a phontydd i osgoi ystodau hir heb signalau. Os y galluogir, caiff signalau eu gosod bob n teil, gan rwyddhau alinio signalau ar traciau paralel
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Adeiladu semafforau cyn: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Gosod y flwyddyn pan y defnyddir signalau trydan ar draciau. Cyn y flwyddyn hon, fe ddefnyddir signalau semaffor (sydd â gweithred unfath, ond edrychiad gwahanol)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Galluogi'r GUI signalau: {STRING}
