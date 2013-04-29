@@ -1,0 +1,18 @@
+; $Id$
+;
+; This represents more or less nothingness
+;
+[metadata]
+name              = NoSound
+shortname         = NULL
+version           = 2
+fallback          = true
+!! description STR_BASESOUNDS_NONE_DESCRIPTION
+
+[files]
+samples      =
+
+[md5s]
+
+[origin]
+default      = This file was part of your OpenTTD installation.

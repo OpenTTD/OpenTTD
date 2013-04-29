@@ -1,0 +1,94 @@
+; $Id$
+;
+; This represents the original music as on the Transport
+; Tycoon Deluxe for Windows CD.
+;
+[metadata]
+name              = original_windows
+shortname         = TTDW
+version           = 1
+!! description STR_BASEMUSIC_WIN_DESCRIPTION
+
+[files]
+theme = GM_TT00.GM
+old_0 = GM_TT02.GM
+old_1 = GM_TT06.GM
+old_2 = GM_TT03.GM
+old_3 = GM_TT12.GM
+old_4 = GM_TT08.GM
+old_5 = GM_TT13.GM
+old_6 = GM_TT14.GM
+old_7 = GM_TT10.GM
+old_8 =
+old_9 =
+new_0 = GM_TT04.GM
+new_1 = GM_TT01.GM
+new_2 = GM_TT05.GM
+new_3 = GM_TT15.GM
+new_4 = GM_TT11.GM
+new_5 = GM_TT16.GM
+new_6 = GM_TT09.GM
+new_7 =
+new_8 =
+new_9 =
+ezy_0 = GM_TT18.GM
+ezy_1 = GM_TT19.GM
+ezy_2 = GM_TT21.GM
+ezy_3 = GM_TT17.GM
+ezy_4 = GM_TT20.GM
+ezy_5 = GM_TT07.GM
+ezy_6 =
+ezy_7 =
+ezy_8 =
+ezy_9 =
+
+[md5s]
+GM_TT00.GM = 45cfec1b9d8c7a0ad45e755833cbf221
+GM_TT01.GM = ab14ed3392d848abd2a2e90a9d75d121
+GM_TT02.GM = dd4f696e4be5987ce738257b08b50171
+GM_TT03.GM = a1bfde23343df9e4063419bf29c166b8
+GM_TT04.GM = 4e6943aa0c455203d76c79389054747d
+GM_TT05.GM = cee281cb85a2e2343552d97640545a47
+GM_TT06.GM = 26d1de5efa8675f94065784e9d539e49
+GM_TT07.GM = 6f2691e17558f552ec4c565e4ab7139c
+GM_TT08.GM = a42bf2cb3340a822f1a69646fc7a487d
+GM_TT09.GM = eb35761a58a8df3c59ed8929cce13916
+GM_TT10.GM = 42fecd686720a785d20a78590c466a82
+GM_TT11.GM = 50ef1ef02e49d2112786dd45e69dc3ee
+GM_TT12.GM = 4ce707a0e0e72419f0681dd9bd95271b
+GM_TT13.GM = e765753be29d889ec818f38009103619
+GM_TT14.GM = 270e2d63bd32b95a4d007ce15a6ce45f
+GM_TT15.GM = 89e116a1c0c69f1845cc903a9bfbe460
+GM_TT16.GM = f824e2371b3bedfe61aad4b9c62dd6be
+GM_TT17.GM = 1b23eebb0796c1ab99cd97fa7082cf7b
+GM_TT18.GM = 15650de3bad645d0e88c4f5c7a2df92a
+GM_TT19.GM = 7aec079e15bd09588660b85545ac4dfc
+GM_TT20.GM = 1509097889dee617aa1e9a1738a5a930
+GM_TT21.GM = a8d0aaad02e1a762d8d54cf81da56bab
+
+[names]
+GM_TT00.GM = Tycoon DELUXE Theme
+GM_TT01.GM = Snarl Up
+GM_TT02.GM = Easy Driver
+GM_TT03.GM = Little Red Diesel
+GM_TT04.GM = City Groove
+GM_TT05.GM = Aliens Ate My Railway
+GM_TT06.GM = Stoke It
+GM_TT07.GM = Don't Walk!
+GM_TT08.GM = Sawyer's Tune
+GM_TT09.GM = Fell Apart On Me
+GM_TT10.GM = Can't Get There From Here
+GM_TT11.GM = Hard Drivin'
+GM_TT12.GM = Road Hog
+GM_TT13.GM = Hold That Train!
+GM_TT14.GM = Broomer's Oil Rag
+GM_TT15.GM = Goss Groove
+GM_TT16.GM = Small Town
+GM_TT17.GM = Cruise Control
+GM_TT18.GM = Stroll On
+GM_TT19.GM = Funk Central
+GM_TT20.GM = Jammit
+GM_TT21.GM = Movin' On
+
+[origin]
+default      = You can find it on your Transport Tycoon Deluxe CD-ROM.

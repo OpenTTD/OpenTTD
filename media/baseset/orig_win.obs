@@ -1,0 +1,19 @@
+; $Id$
+;
+; This represents the original sounds as on the Transport
+; Tycoon Deluxe for Windows CD.
+;
+[metadata]
+name              = original_windows
+shortname         = TTDO
+version           = 0
+!! description STR_BASESOUNDS_WIN_DESCRIPTION
+
+[files]
+samples      = SAMPLE.CAT
+
+[md5s]
+SAMPLE.CAT   = 9212e81e72badd4bbe1eaeae66458e10
+
+[origin]
+default      = You can find it on your Transport Tycoon Deluxe CD-ROM.

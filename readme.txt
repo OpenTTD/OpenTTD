@@ -1,5 +1,5 @@
 OpenTTD readme
-Last updated:    2013-04-01
+Last updated:    2013-04-26
 Release version: 1.3.0
 ------------------------------------------------------------------------
 
@@ -22,6 +22,7 @@ Table of contents
 7.0) Compiling
  * 7.1) Required/optional libraries
  * 7.2) Supported compilers
+ * 7.3) Compilation of base sets
 8.0) Translating
  * 8.1) Translation
  * 8.2) Previewing
@@ -501,12 +502,6 @@ open most older savegames or use the content downloading system.
 Without libSDL/liballegro on non-Windows and non-MacOS X machines you have
 no graphical user interface; you would be building a dedicated server.
 
-To recompile the extra graphics needed to play with the original Transport
-Tycoon Deluxe graphics you need GRFCodec (which includes NFORenum) as well.
-GRFCodec can be found at: http://www.openttd.org/download-grfcodec
-The compilation of these extra graphics does generally not happen, unless
-you remove the graphics file using 'make maintainer-clean'.
-
 7.2) Supported compilers
 ---- -------------------
 The following compilers are known to compile OpenTTD:
@@ -534,6 +529,21 @@ The following compilers are known not to compile OpenTTD:
 
 If any of these compilers can compile OpenTTD again, please let us know.
 Patches to support more compilers are welcome.
+
+7.3) Compilation of base sets
+-----------------------------
+To recompile the extra graphics needed to play with the original Transport
+Tycoon Deluxe graphics you need GRFCodec (which includes NFORenum) as well.
+GRFCodec can be found at: http://www.openttd.org/download-grfcodec
+The compilation of these extra graphics does generally not happen, unless
+you remove the graphics file using 'make maintainer-clean'.
+
+Re-compilation of the base sets, thus also use of --maintainer-clean can
+leave the repository in a modified state as different grfcodec versions can
+cause binary differences in the resulting grf. Also translations might have
+been added for the base sets which are not yet included in the base set
+information files. Use the configure option --without-grfcodec to avoid
+modification of the base set files by the build process.
 
 
 8.0) Translating

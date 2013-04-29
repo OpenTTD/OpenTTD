@@ -4345,3 +4345,11 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :النسخة الاصلية من ترانسبورت تايكون ديلوكس الرسومية نسخة الدوس
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :النسخة الاصلية من ترانسبورت تايكون ديلوكس الالمانية نسخة الدوس
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :النسخة الاصلية من ترانسبورت تايكون ديلوكس الرسومية نسخة وندوز
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :النسخة الاصلية من ترانسبورت تايكون ديلوكس الصوتية نسخة الدوس
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :النسخة الاصلية من ترانسبورت تايكون ديلوكس الصوتية نسخة وندوز
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :مجموعة صوت بدوت اصوات مضافة
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :النسخة الاصلية من ترانسبورت تايكون ديلوكس الموسيقية نسخة وندوز
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :مجموعة موسيقى بدون موسيقى
