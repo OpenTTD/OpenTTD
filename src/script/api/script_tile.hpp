@@ -121,6 +121,19 @@ public:
 	};
 
 	/**
+	 * The types of terrain a tile can have.
+	 *
+	 * @note When a desert or rainforest tile are changed, their terrain type will remain the same. In other words, a sea tile can be of the desert terrain type.
+	 * @note The snow terrain type can change to the normal terrain type and vice versa based on landscaping or variable snow lines from NewGRFs.
+	 */
+	enum TerrainType {
+		TERRAIN_NORMAL,     ///< A normal tile (default); not desert, rainforest or snow.
+		TERRAIN_DESERT,     ///< A tile in the desert (manually set in in scenarios, below certain height and certain distance from water in random games).
+		TERRAIN_RAINFOREST, ///< A tile in the rainforest (manually set in scenarios, certain distance away from deserts in random games),
+		TERRAIN_SNOW        ///< A tile on or above the snowline level.
+	};
+
+	/**
 	 * Check if this tile is buildable, i.e. no things on it that needs
 	 *  demolishing.
 	 * @param tile The tile to check on.
@@ -222,7 +235,8 @@ public:
 	static bool IsRoughTile(TileIndex tile);
 
 	/**
-	 * Check if the tile is a snow tile.
+	 * Check if the tile without buildings or infrastructure is a snow tile.
+	 * @note If you want to know if a tile (with or without buildings and infrastructure) is on or above the snowline, use ScriptTile::GetTerrainType(tile).
 	 * @param tile The tile to check on.
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile is snow tile.
@@ -230,12 +244,23 @@ public:
 	static bool IsSnowTile(TileIndex tile);
 
 	/**
-	 * Check if the tile is a desert tile.
+	 * Check if the tile without buildings or infrastructure is a desert tile.
+	 * @note If you want to know if a tile (with or without buildings and infrastructure) is in a desert, use ScriptTile::GetTerrainType(tile).
 	 * @param tile The tile to check on.
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile is desert tile.
 	 */
 	static bool IsDesertTile(TileIndex tile);
+
+	/**
+	 * Get the type of terrain regardless of buildings or infrastructure.
+	 * @note When a desert or rainforest tile are changed, their terrain type will remain the same. In other words, a sea tile can be of the desert terrain type.
+	 * @note The snow terrain type can change to the normal terrain type and vice versa based on landscaping or variable snow lines from NewGRFs.
+	 * @param tile The tile to check on.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @return The #TerrainType.
+	 */
+	static TerrainType GetTerrainType(TileIndex tile);
 
 	/**
 	 * Get the slope of a tile.

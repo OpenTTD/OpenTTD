@@ -23,6 +23,8 @@ namespace SQConvert {
 	template <> inline int Return<ScriptTile::TransportType>(HSQUIRRELVM vm, ScriptTile::TransportType res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptTile::BuildType GetParam(ForceType<ScriptTile::BuildType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptTile::BuildType)tmp; }
 	template <> inline int Return<ScriptTile::BuildType>(HSQUIRRELVM vm, ScriptTile::BuildType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptTile::TerrainType GetParam(ForceType<ScriptTile::TerrainType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptTile::TerrainType)tmp; }
+	template <> inline int Return<ScriptTile::TerrainType>(HSQUIRRELVM vm, ScriptTile::TerrainType res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow ScriptTile to be used as Squirrel parameter */
 	template <> inline ScriptTile *GetParam(ForceType<ScriptTile *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptTile *)instance; }

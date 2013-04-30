@@ -21,6 +21,7 @@
  *
  * API additions:
  * \li AIStation::HasRating
+ * \li AITile::GetTerrainType
  *
  * Other changes:
  * \li AIStation::GetRating does return -1 for cargo-station combinations that
