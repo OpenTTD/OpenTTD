@@ -1802,6 +1802,8 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... во
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :А симулација игра базирана на транспорт Тајкун Делукс
 
+# Translatable descriptions in media/baseset/*.ob* files
+
 ##id 0x2000
 # Town building names
 

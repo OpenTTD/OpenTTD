@@ -4238,6 +4238,16 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не м�
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Симулативна игра, базирана на Transport Tycoon Deluxe
 
+# Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Оригинални графики на Transport Tycoon Deluxe за DOS.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Оригинални графики на Transport Tycoon Deluxe за DOS (немски) .
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Оригинални графики на Transport Tycoon Deluxe за Windows.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Оригинални звуци на Transport Tycoon Deluxe за DOS.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Оригинални звуци на Transport Tycoon Deluxe за Windows.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Празен звуков пакет.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Оригинална музика на Transport Tycoon Deluxe за Windows.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Празен музикален пакет.
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Висока офис сграда
@@ -4735,11 +4745,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Оригинални графики на Transport Tycoon Deluxe за DOS.
-STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Оригинални графики на Transport Tycoon Deluxe за DOS (немски) .
-STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Оригинални графики на Transport Tycoon Deluxe за Windows.
-STR_BASESOUNDS_DOS_DESCRIPTION                                  :Оригинални звуци на Transport Tycoon Deluxe за DOS.
-STR_BASESOUNDS_WIN_DESCRIPTION                                  :Оригинални звуци на Transport Tycoon Deluxe за Windows.
-STR_BASESOUNDS_NONE_DESCRIPTION                                 :Празен звуков пакет.
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :Оригинална музика на Transport Tycoon Deluxe за Windows.
-STR_BASEMUSIC_NONE_DESCRIPTION                                  :Празен музикален пакет.

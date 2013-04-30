@@ -2676,6 +2676,8 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE} ۔ ۔ �
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe کا ھم جنس
 
+# Translatable descriptions in media/baseset/*.ob* files
+
 ##id 0x2000
 # Town building names
 

@@ -1232,6 +1232,8 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tro mult
 
 # Translatable comment for OpenTTD's desktop shortcut
 
+# Translatable descriptions in media/baseset/*.ob* files
+
 ##id 0x2000
 # Town building names
 

@@ -4186,6 +4186,16 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan nie 
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :'n Simulasie speletjie wat gebaseer is op Transport Tycoon Deluxe
 
+# Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Oorspronklike Transport Tycoon Deluxe DOS uitgawe grafieke.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Oorspronklike Transport Tycoon Deluxe DOS (German) uitgawe grafieke.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Oorspronklike Transport Tycoon Deluxe Windows uitgawe grafieke.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Oorspronklike Transport Tycoon Deluxe DOS uitgawe klanke.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Oorspronklike Transport Tycoon Deluxe Windows uitgawe klanke.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :'n Klank stel sonder enige klanke.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Oorspronklike Transport Tycoon Deluxe Windows uitgawe musiek.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :'n Musiek stel sonder enige musiek.
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Hoog kantoor blok
@@ -4683,11 +4693,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Oorspronklike Transport Tycoon Deluxe DOS uitgawe grafieke.
-STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Oorspronklike Transport Tycoon Deluxe DOS (German) uitgawe grafieke.
-STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Oorspronklike Transport Tycoon Deluxe Windows uitgawe grafieke.
-STR_BASESOUNDS_DOS_DESCRIPTION                                  :Oorspronklike Transport Tycoon Deluxe DOS uitgawe klanke.
-STR_BASESOUNDS_WIN_DESCRIPTION                                  :Oorspronklike Transport Tycoon Deluxe Windows uitgawe klanke.
-STR_BASESOUNDS_NONE_DESCRIPTION                                 :'n Klank stel sonder enige klanke.
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :Oorspronklike Transport Tycoon Deluxe Windows uitgawe musiek.
-STR_BASEMUSIC_NONE_DESCRIPTION                                  :'n Musiek stel sonder enige musiek.

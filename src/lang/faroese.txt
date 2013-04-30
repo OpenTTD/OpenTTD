@@ -3985,6 +3985,8 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kann ikk
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Eitt eftirgerðar spæl bygt á Transport Tycoon Deluxe
 
+# Translatable descriptions in media/baseset/*.ob* files
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Høgur skrivstovu bygningur

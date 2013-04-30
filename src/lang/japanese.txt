@@ -4042,6 +4042,8 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}標示�
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxeを基にしたシミュレーションゲーム
 
+# Translatable descriptions in media/baseset/*.ob* files
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :超高層ビル

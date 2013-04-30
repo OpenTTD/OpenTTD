@@ -4335,6 +4335,16 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nelze sm
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Simulační hra založená na Transport Tycoon Deluxe
 
+# Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Původní sada grafik Transport Tycoon Deluxe (verze pro DOS).
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Původní sada grafik Transport Tycoon Deluxe (německá verze pro DOS).
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Původní sada grafik Transport Tycoon Deluxe (verze pro Windows).
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Původní sada zvuků Transport Tycoon Deluxe (verze pro DOS).
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Původní sada zvuků Transport Tycoon Deluxe (verze pro Windows).
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Prázdná sada zvuků.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Původní hudba Transport Tycoon Deluxe (verze pro Windows).
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Prázná hudební sada.
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Vysoký kancelářský blok
@@ -4949,11 +4959,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Původní sada grafik Transport Tycoon Deluxe (verze pro DOS).
-STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Původní sada grafik Transport Tycoon Deluxe (německá verze pro DOS).
-STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Původní sada grafik Transport Tycoon Deluxe (verze pro Windows).
-STR_BASESOUNDS_DOS_DESCRIPTION                                  :Původní sada zvuků Transport Tycoon Deluxe (verze pro DOS).
-STR_BASESOUNDS_WIN_DESCRIPTION                                  :Původní sada zvuků Transport Tycoon Deluxe (verze pro Windows).
-STR_BASESOUNDS_NONE_DESCRIPTION                                 :Prázdná sada zvuků.
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :Původní hudba Transport Tycoon Deluxe (verze pro Windows).
-STR_BASEMUSIC_NONE_DESCRIPTION                                  :Prázná hudební sada.

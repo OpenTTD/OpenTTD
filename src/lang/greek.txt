@@ -4317,6 +4317,16 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Δεν �
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Ένα παιχνίδι εξομοίωσης βασισμένο στο Transport Tycoon Deluxe
 
+# Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Αρχικά γραφικά από το Transport Tycoon Deluxe έκδοση DOS.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Αρχικά γραφικά από το Transport Tycoon Deluxe έκδοση DOS (Γερμανικό).
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Αρχικά γραφικά από το Transport Tycoon Deluxe έκδοση Windows.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Αρχικοί ήχοι από το Transport Tycoon Deluxe έκδοση DOS.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Αρχικοί ήχοι από το Transport Tycoon Deluxe έκδοση Windows.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Ένα πάκετο ήχων χώρις ήχους.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Αρχική μουσική από το Transport Tycoon Deluxe έκδοση Windows.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Ένα πάκετο μουσικής χωρίς πραγματική μουσική.
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Ψηλό συγκρότημα γραφείων
@@ -4818,11 +4828,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Αρχικά γραφικά από το Transport Tycoon Deluxe έκδοση DOS.
-STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Αρχικά γραφικά από το Transport Tycoon Deluxe έκδοση DOS (Γερμανικό).
-STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Αρχικά γραφικά από το Transport Tycoon Deluxe έκδοση Windows.
-STR_BASESOUNDS_DOS_DESCRIPTION                                  :Αρχικοί ήχοι από το Transport Tycoon Deluxe έκδοση DOS.
-STR_BASESOUNDS_WIN_DESCRIPTION                                  :Αρχικοί ήχοι από το Transport Tycoon Deluxe έκδοση Windows.
-STR_BASESOUNDS_NONE_DESCRIPTION                                 :Ένα πάκετο ήχων χώρις ήχους.
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :Αρχική μουσική από το Transport Tycoon Deluxe έκδοση Windows.
-STR_BASEMUSIC_NONE_DESCRIPTION                                  :Ένα πάκετο μουσικής χωρίς πραγματική μουσική.

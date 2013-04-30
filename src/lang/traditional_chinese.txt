@@ -4217,6 +4217,16 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}無法�
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :基於《運輸大亨豪華版》的運輸模擬遊戲
 
+# Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :原版 Transport Tycoon Deluxe DOS 版的圖形。
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :原版 Transport Tycoon Deluxe DOS 版 (德國版) 的圖形。
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :原版 Transport Tycoon Deluxe Windows 版的圖形。
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :原版 Transport Tycoon Deluxe DOS 版的音效。
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :原版 Transport Tycoon Deluxe Windows 版的音效。
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :不含任何音效的音效集。
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :原版 Transport Tycoon Deluxe Windows 版的音樂。
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :不含任何音樂的音樂集。
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :摩天辦公大樓
@@ -4714,11 +4724,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_BASEGRAPHICS_DOS_DESCRIPTION                                :原版 Transport Tycoon Deluxe DOS 版的圖形。
-STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :原版 Transport Tycoon Deluxe DOS 版 (德國版) 的圖形。
-STR_BASEGRAPHICS_WIN_DESCRIPTION                                :原版 Transport Tycoon Deluxe Windows 版的圖形。
-STR_BASESOUNDS_DOS_DESCRIPTION                                  :原版 Transport Tycoon Deluxe DOS 版的音效。
-STR_BASESOUNDS_WIN_DESCRIPTION                                  :原版 Transport Tycoon Deluxe Windows 版的音效。
-STR_BASESOUNDS_NONE_DESCRIPTION                                 :不含任何音效的音效集。
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :原版 Transport Tycoon Deluxe Windows 版的音樂。
-STR_BASEMUSIC_NONE_DESCRIPTION                                  :不含任何音樂的音樂集。

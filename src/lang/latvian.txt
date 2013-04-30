@@ -4207,6 +4207,8 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nevar dz
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Uz 'Transport Tycoon Deluxe' balstīta simulācijas spēle
 
+# Translatable descriptions in media/baseset/*.ob* files
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Biroju augstceltne

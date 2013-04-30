@@ -4234,6 +4234,16 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Can't de
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :A simulation game based on Transport Tycoon Deluxe
 
+# Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Original Transport Tycoon Deluxe DOS edition graphics.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Original Transport Tycoon Deluxe DOS (German) edition graphics.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Original Transport Tycoon Deluxe Windows edition graphics.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Original Transport Tycoon Deluxe DOS edition sounds.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Original Transport Tycoon Deluxe Windows edition sounds.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :A sound pack without any sounds.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Original Transport Tycoon Deluxe Windows edition music.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :A music pack without actual music.
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Tall office block
@@ -4731,11 +4741,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Original Transport Tycoon Deluxe DOS edition graphics.
-STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Original Transport Tycoon Deluxe DOS (German) edition graphics.
-STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Original Transport Tycoon Deluxe Windows edition graphics.
-STR_BASESOUNDS_DOS_DESCRIPTION                                  :Original Transport Tycoon Deluxe DOS edition sounds.
-STR_BASESOUNDS_WIN_DESCRIPTION                                  :Original Transport Tycoon Deluxe Windows edition sounds.
-STR_BASESOUNDS_NONE_DESCRIPTION                                 :A sound pack without any sounds.
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :Original Transport Tycoon Deluxe Windows edition music.
-STR_BASEMUSIC_NONE_DESCRIPTION                                  :A music pack without actual music.
