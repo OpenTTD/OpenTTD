@@ -938,7 +938,7 @@ STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLAC
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Tubaist carbaid-adhair!{}Dh'fhalbh an connadh air carbad-adhair, chaochail {COMMA} san teine
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Dunaidh zeppelin aig {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}chaidh carbad-rathaid a mhilleadh le co-bhualadh ri 'UFO'!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Chaidh carbad-rathaid a mhilleadh le co-bhualadh ri 'UFO'!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Sprèidh fìneadair-ola faisg air {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Chaidh factaraidh a mhilleadh gu amharasach faisg air {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'UFO' a' laighe faisg air {TOWN}!

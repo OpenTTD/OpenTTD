@@ -4235,10 +4235,14 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Không t
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Một trò chơi mô phỏng dựa trên Transport Tycoon Deluxe
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Đồ họa gốc từ phiên bản Transport Tycoon Deluxe trên DOS
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Đồ họa gốc từ phiên bản Transport Tycoon Deluxe trên DOS (tiếng Đức)
 STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Đồ họa gốc từ phiên bản Transport Tycoon Deluxe trên Windows
 STR_BASESOUNDS_DOS_DESCRIPTION                                  :Âm thanh gốc từ phiên bản Transport Tycoon Deluxe trên DOS
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Âm thanh gốc từ phiên bản Transport Tycoon Deluxe trên Windows
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Gói âm thanh này không có âm thanh nào.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Nhạc gốc từ phiên bản Transport Tycoon Deluxe trên Windows
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Gói âm nhạc này không có nhạc nào.
 
 ##id 0x2000
 # Town building names
