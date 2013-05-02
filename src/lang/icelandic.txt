@@ -1475,7 +1475,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Bil milli umfer
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Stillir fjarlægð á milli umferðarmerkja, ef þau eru dregin, fram að næstu hindrun (merki, vegamót)
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} reit{P 0 ur ir}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Halda stöðugu bili milli umferðarmerkja, þegar þau eru dregin: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Veldu hvernig umferðarmerki dreifast þegar þau eru Ctrl+dregin. Ef stillingin er óvirk eru merki sett sitthvoru megin við göng og brýr. Ef hún er virk, eru merki sett á X reita fresti sem gerir það að verkum að auðveldara er að halda merkjum hlið við hlið á samsíða sporum
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Veldu hvernig umferðarmerki dreifast þegar þau eru Ctrl+dregin. Ef stillingin er óvirk eru merki sett sitthvoru megin við göng og brýr til að koma í veg fyrir að löng svæði án merkja myndis. Ef hún er virk, eru merki sett á X reita fresti sem gerir það að verkum að auðveldara er að halda merkjum hlið við hlið á samsíða sporum
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Nota skilti í stað ljósa fyrir: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Stilltu árið sem ljósamerki eru notuð í staðinn fyrir hreyfimerki. Fram að þessu ári eru notuð hreyfimerki (þau hafa nákvæmlega sömu virkni, en líta öðruvísi út)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Virkja valmynd umferðarmerkja: {STRING}
@@ -4236,6 +4236,14 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ekki hæ
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe eftirherma
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Upprunalega grafíkin úr Transport Tycoon Deluxe DOS útgáfunni.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Upprunalega grafíkin úr Transport Tycoon Deluxe DOS (þýsku) útgáfunni.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Upprunalega grafíkin úr Transport Tycoon Deluxe Windows útgáfunni.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Upprunalega hljóðið úr Transport Tycoon Deluxe DOS útgáfunni.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Upprunalega hljóðið úr Transport Tycoon Deluxe Windows útgáfunni.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Hljóðpakki án hljóðs.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Upprunalega tónlistin úr Transport Tycoon Deluxe Windows útgáfunni.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Tónlistarpakki sem er í raun án tónlistar.
 
 ##id 0x2000
 # Town building names
