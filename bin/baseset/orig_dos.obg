@@ -28,6 +28,7 @@ description.gd_GB = Grafaigeachd aig an deasachadh DOS tùsail aig Transport Tyc
 description.hr_HR = Originalna grafika za Transport Tycoon Deluxe DOS izdanje.
 description.hu_HU = Az eredeti Transport Tycoon Deluxe DOS verziójának grafikája.
 description.id_ID = Grafik orisinil Transport Tycoon Deluxe versi DOS.
+description.is_IS = Upprunalega grafíkin úr Transport Tycoon Deluxe DOS útgáfunni.
 description.it_IT = Grafica originale di Transport Tycoon Deluxe, edizione DOS.
 description.ko_KR = 오리지널 트랜스포트 타이쿤 디럭스 도스 에디션의 그래픽입니다.
 description.nb_NO = Original grafikk fra Transport Tycoon Deluxe for DOS.
@@ -42,6 +43,7 @@ description.sl_SI = Originalna grafika Transport Tycoon Deluxe za različico DOS
 description.sr_RS = Originalni skup grafika Transport Tycoon Deluxe DOS izdanja.
 description.sv_SE = Originalgrafiken från Transport Tycoon Deluxe, DOS-utgåvan.
 description.tr_TR = Orijinal Transport Tycoon Deluxe DOS sürümü grafikleri.
+description.vi_VN = Đồ họa gốc từ phiên bản Transport Tycoon Deluxe trên DOS
 description.zh_TW = 原版 Transport Tycoon Deluxe DOS 版的圖形。
 
 [files]

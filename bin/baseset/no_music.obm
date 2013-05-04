@@ -27,6 +27,7 @@ description.gd_GB = Pacaid ciùil anns nach eil fonn sam bith.
 description.hr_HR = Muzički paket bez ikakve muzike.
 description.hu_HU = Zenei alapcsomag zene nélkül.
 description.id_ID = Paket musik tanpa berisi musik.
+description.is_IS = Tónlistarpakki sem er í raun án tónlistar.
 description.it_IT = Un pacchetto musicale non contenente alcuna musica.
 description.ko_KR = 실제 음악이 없는 음악 목록입니다.
 description.nb_NO = En musikkpakke uten noe musikk.
@@ -41,6 +42,7 @@ description.sl_SI = Glasbeni paket z vključeno glasbo.
 description.sr_RS = Prazan skup muzičkih numera.
 description.sv_SE = Ett musikpaket utan någon musik.
 description.tr_TR = Müzik içermeyen boş bir müzik paketi.
+description.vi_VN = Gói âm nhạc này không có nhạc nào.
 description.zh_TW = 不含任何音樂的音樂集。
 
 [files]

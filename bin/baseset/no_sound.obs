@@ -27,6 +27,7 @@ description.gd_GB = Pacaid fhuaimean anns nach eil fuaim sam bith.
 description.hr_HR = Zvučni paket bez ikakvih zvukova.
 description.hu_HU = Hang alapcsomag hangok nélkül.
 description.id_ID = Paket efek suara tanpa berisi suara.
+description.is_IS = Hljóðpakki án hljóðs.
 description.it_IT = Un pacchetto sonoro non contenente alcun suono.
 description.ko_KR = 아무런 효과음도 없는 효과음 팩입니다.
 description.nb_NO = En lydpakke uten noen lyder.
@@ -41,6 +42,7 @@ description.sl_SI = Zvočni paket brez zvoka.
 description.sr_RS = Prazan skup zvukova.
 description.sv_SE = Ett ljudpaket utan några ljud.
 description.tr_TR = Ses içermeyen boş bir ses kümesi.
+description.vi_VN = Gói âm thanh này không có âm thanh nào.
 description.zh_TW = 不含任何音效的音效集。
 
 [files]
