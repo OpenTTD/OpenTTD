@@ -4338,7 +4338,7 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Cha ghab
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Cha ghabh an drochaid togail an-seo...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Feumaidh tu an drochaid a leagail an toiseach
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Chan urrainn dhut tòiseachadh is crìochnachadh air an aon àite
-STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Chan eil an dà cheann na drochaide air an aon àirde
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Chan eil an dà cheann aig an drochaid air an aon àirde
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Tha an drochaid ro ìosal airson a' chrutha-tìre seo
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Feumaidh an toiseach is a' chrìoch a bhith air an aon loidhne
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... feumaidh an dà cheann aig an drochaid a bhith air tìr
@@ -5071,9 +5071,13 @@ STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_TINY.dat                                          :{DATE_TINY.dat}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
+STR_JUST_DATE_SHORT.dat                                         :{DATE_SHORT.dat}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_LONG.dat                                          :{DATE_LONG.dat}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_DATE_ISO.dat                                           :{DATE_ISO.dat}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
@@ -5088,11 +5092,15 @@ STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
 STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
+STR_BLACK_DATE_LONG.dat                                         :{BLACK}{DATE_LONG.dat}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_WHITE_DATE_LONG.dat                                         :{WHITE}{DATE_LONG.dat}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
+STR_SHORT_DATE.dat                                              :{WHITE}{DATE_TINY.dat}
 STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
+STR_DATE_LONG_SMALL.dat                                         :{TINY_FONT}{BLACK}{DATE_LONG.dat}
 STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
 STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
