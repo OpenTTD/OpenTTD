@@ -890,9 +890,23 @@ void CallVehicleTicks()
 					}
 				}
 
-				if (v->type == VEH_TRAIN && Train::From(v)->IsWagon()) continue;
-				if (v->type == VEH_AIRCRAFT && v->subtype != AIR_HELICOPTER) continue;
-				if (v->type == VEH_ROAD && !RoadVehicle::From(v)->IsFrontEngine()) continue;
+				/* Check vehicle sounds */
+				switch (v->type) {
+					case VEH_TRAIN:
+						if (Train::From(v)->IsWagon()) continue;
+						break;
+
+					case VEH_ROAD:
+						if (!RoadVehicle::From(v)->IsFrontEngine()) continue;
+						break;
+
+					case VEH_AIRCRAFT:
+						if (!Aircraft::From(v)->IsNormalAircraft()) continue;
+						break;
+
+					default:
+						break;
+				}
 
 				v->motion_counter += front->cur_speed;
 				/* Play a running sound if the motion counter passes 256 (Do we not skip sounds?) */
