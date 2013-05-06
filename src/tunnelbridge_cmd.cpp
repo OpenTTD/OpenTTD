@@ -325,12 +325,15 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		}
 
 		/* Do not allow replacing another company's bridges. */
-		if (!IsTileOwner(tile_start, company) && !IsTileOwner(tile_start, OWNER_TOWN)) {
+		if (!IsTileOwner(tile_start, company) && !IsTileOwner(tile_start, OWNER_TOWN) && !IsTileOwner(tile_start, OWNER_NONE)) {
 			return_cmd_error(STR_ERROR_AREA_IS_OWNED_BY_ANOTHER);
 		}
 
 		cost.AddCost((bridge_len + 1) * _price[PR_CLEAR_BRIDGE]); // The cost of clearing the current bridge.
 		owner = GetTileOwner(tile_start);
+
+		/* If bridge belonged to bankrupt company, it has a new owner now */
+		if (owner == OWNER_NONE) owner = company;
 
 		switch (transport_type) {
 			case TRANSPORT_RAIL:
