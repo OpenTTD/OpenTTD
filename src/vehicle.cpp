@@ -890,7 +890,16 @@ void CallVehicleTicks()
 					}
 				}
 
-				/* Check vehicle sounds */
+				/* Do not play any sound when crashed */
+				if (front->vehstatus & VS_CRASHED) continue;
+
+				/* Do not play any sound when in depot or tunnel */
+				if (v->vehstatus & VS_HIDDEN) continue;
+
+				/* Do not play any sound when stopped */
+				if ((front->vehstatus & VS_STOPPED) && (front->type != VEH_TRAIN || front->cur_speed == 0)) continue;
+
+				/* Check vehicle type specifics */
 				switch (v->type) {
 					case VEH_TRAIN:
 						if (Train::From(v)->IsWagon()) continue;
@@ -913,7 +922,11 @@ void CallVehicleTicks()
 				if (GB(v->motion_counter, 0, 8) < front->cur_speed) PlayVehicleSound(v, VSE_RUNNING);
 
 				/* Play an alternating running sound every 16 ticks */
-				if (GB(v->tick_counter, 0, 4) == 0) PlayVehicleSound(v, front->cur_speed > 0 ? VSE_RUNNING_16 : VSE_STOPPED_16);
+				if (GB(v->tick_counter, 0, 4) == 0) {
+					/* Play running sound when speed > 0 and not braking */
+					bool running = (front->cur_speed > 0) && !(front->vehstatus & (VS_STOPPED | VS_TRAIN_SLOWING));
+					PlayVehicleSound(v, running ? VSE_RUNNING_16 : VSE_STOPPED_16);
+				}
 
 				break;
 			}
