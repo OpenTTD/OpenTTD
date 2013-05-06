@@ -1501,7 +1501,6 @@ again:
 static bool RoadVehController(RoadVehicle *v)
 {
 	/* decrease counters */
-	v->tick_counter++;
 	v->current_order_time++;
 	if (v->reverse_ctr != 0) v->reverse_ctr--;
 
@@ -1576,6 +1575,8 @@ Money RoadVehicle::GetRunningCost() const
 
 bool RoadVehicle::Tick()
 {
+	this->tick_counter++;
+
 	if (this->IsFrontEngine()) {
 		if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
 		return RoadVehController(this);
