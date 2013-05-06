@@ -548,7 +548,7 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
  * @return true iff the tile is water in the view of 'from'.
  *
  */
-static bool IsWateredTile(TileIndex tile, Direction from)
+bool IsWateredTile(TileIndex tile, Direction from)
 {
 	switch (GetTileType(tile)) {
 		case MP_WATER:

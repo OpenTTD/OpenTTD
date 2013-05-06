@@ -41,6 +41,8 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o);
 
 bool RiverModifyDesertZone(TileIndex tile, void *data);
 
+bool IsWateredTile(TileIndex tile, Direction from);
+
 /**
  * Calculates the maintenance cost of a number of canal tiles.
  * @param num Number of canal tiles.

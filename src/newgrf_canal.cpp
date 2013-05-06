@@ -13,6 +13,7 @@
 #include "debug.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_canal.h"
+#include "water.h"
 #include "water_map.h"
 
 /** Table of canal 'feature' sprite groups */
@@ -65,6 +66,29 @@ struct CanalResolverObject : public ResolverObject {
 
 		/* Terrain type */
 		case 0x81: return GetTerrainType(this->tile);
+
+		/* Dike map: Connectivity info for river and canal tiles
+		 *
+		 * Assignment of bits to directions defined in agreement with
+		 * http://projects.tt-forums.net/projects/ttdpatch/repository/revisions/2367/entry/trunk/patches/water.asm#L879
+		 *         7
+		 *      3     0
+		 *   6     *     4
+		 *      2     1
+		 *         5
+		 */
+		case 0x82: {
+			uint32 connectivity =
+				  (!IsWateredTile(TILE_ADDXY(tile, -1,  0), DIR_SW) << 0)  // NE
+				+ (!IsWateredTile(TILE_ADDXY(tile,  0,  1), DIR_NW) << 1)  // SE
+				+ (!IsWateredTile(TILE_ADDXY(tile,  1,  0), DIR_NE) << 2)  // SW
+				+ (!IsWateredTile(TILE_ADDXY(tile,  0, -1), DIR_SE) << 3)  // NW
+				+ (!IsWateredTile(TILE_ADDXY(tile, -1,  1), DIR_W)  << 4)  // E
+				+ (!IsWateredTile(TILE_ADDXY(tile,  1,  1), DIR_N)  << 5)  // S
+				+ (!IsWateredTile(TILE_ADDXY(tile,  1, -1), DIR_E)  << 6)  // W
+				+ (!IsWateredTile(TILE_ADDXY(tile, -1, -1), DIR_S)  << 7); // N
+			return connectivity;
+		}
 
 		/* Random data for river or canal tiles, otherwise zero */
 		case 0x83: return IsTileType(this->tile, MP_WATER) ? GetWaterTileRandomBits(this->tile) : 0;
