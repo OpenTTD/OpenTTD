@@ -606,6 +606,8 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 
 		case MP_TUNNELBRIDGE: return GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER && ReverseDiagDir(GetTunnelBridgeDirection(tile)) == DirToDiagDir(from);
 
+		case MP_VOID: return true; // consider map border as water, esp. for rivers
+
 		default:          return false;
 	}
 }
