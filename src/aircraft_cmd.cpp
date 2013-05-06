@@ -1066,7 +1066,12 @@ static bool HandleCrashedAircraft(Aircraft *v)
 }
 
 
-static void HandleAircraftSmoke(Aircraft *v)
+/**
+ * Handle smoke of broken aircraft.
+ * @param v Aircraft
+ * @param mode Is this the non-first call for this vehicle in this tick?
+ */
+static void HandleAircraftSmoke(Aircraft *v, bool mode)
 {
 	static const struct {
 		int8 x;
@@ -1084,13 +1089,15 @@ static void HandleAircraftSmoke(Aircraft *v)
 
 	if (!(v->vehstatus & VS_AIRCRAFT_BROKEN)) return;
 
+	/* Stop smoking when landed */
 	if (v->cur_speed < 10) {
 		v->vehstatus &= ~VS_AIRCRAFT_BROKEN;
 		v->breakdown_ctr = 0;
 		return;
 	}
 
-	if ((v->tick_counter & 0x1F) == 0) {
+	/* Spawn effect et most once per Tick, i.e. !mode */
+	if (!mode && (v->tick_counter & 0x0F) == 0) {
 		CreateEffectVehicleRel(v,
 			smoke_pos[v->direction].x,
 			smoke_pos[v->direction].y,
@@ -1893,8 +1900,6 @@ static void AircraftHandleDestTooFar(Aircraft *v, bool too_far)
 
 static bool AircraftEventHandler(Aircraft *v, int loop)
 {
-	v->tick_counter++;
-
 	if (v->vehstatus & VS_CRASHED) {
 		return HandleCrashedAircraft(v);
 	}
@@ -1903,7 +1908,7 @@ static bool AircraftEventHandler(Aircraft *v, int loop)
 
 	v->HandleBreakdown();
 
-	HandleAircraftSmoke(v);
+	HandleAircraftSmoke(v, loop != 0);
 	ProcessOrders(v);
 	v->HandleLoading(loop != 0);
 
@@ -1932,6 +1937,8 @@ static bool AircraftEventHandler(Aircraft *v, int loop)
 bool Aircraft::Tick()
 {
 	if (!this->IsNormalAircraft()) return true;
+
+	this->tick_counter++;
 
 	if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
 
