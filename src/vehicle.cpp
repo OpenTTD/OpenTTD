@@ -879,7 +879,9 @@ void CallVehicleTicks()
 			case VEH_TRAIN:
 			case VEH_ROAD:
 			case VEH_AIRCRAFT:
-			case VEH_SHIP:
+			case VEH_SHIP: {
+				Vehicle *front = v->First();
+
 				if (v->vcache.cached_cargo_age_period != 0) {
 					v->cargo_age_counter = min(v->cargo_age_counter, v->vcache.cached_cargo_age_period);
 					if (--v->cargo_age_counter == 0) {
@@ -892,12 +894,15 @@ void CallVehicleTicks()
 				if (v->type == VEH_AIRCRAFT && v->subtype != AIR_HELICOPTER) continue;
 				if (v->type == VEH_ROAD && !RoadVehicle::From(v)->IsFrontEngine()) continue;
 
-				v->motion_counter += v->cur_speed;
+				v->motion_counter += front->cur_speed;
 				/* Play a running sound if the motion counter passes 256 (Do we not skip sounds?) */
-				if (GB(v->motion_counter, 0, 8) < v->cur_speed) PlayVehicleSound(v, VSE_RUNNING);
+				if (GB(v->motion_counter, 0, 8) < front->cur_speed) PlayVehicleSound(v, VSE_RUNNING);
 
 				/* Play an alternating running sound every 16 ticks */
-				if (GB(v->tick_counter, 0, 4) == 0) PlayVehicleSound(v, v->cur_speed > 0 ? VSE_RUNNING_16 : VSE_STOPPED_16);
+				if (GB(v->tick_counter, 0, 4) == 0) PlayVehicleSound(v, front->cur_speed > 0 ? VSE_RUNNING_16 : VSE_STOPPED_16);
+
+				break;
+			}
 		}
 	}
 
