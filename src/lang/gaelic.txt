@@ -5071,13 +5071,9 @@ STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
 STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_TINY.dat                                          :{DATE_TINY.dat}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
-STR_JUST_DATE_SHORT.dat                                         :{DATE_SHORT.dat}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_LONG.dat                                          :{DATE_LONG.dat}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
-STR_JUST_DATE_ISO.dat                                           :{DATE_ISO.dat}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
@@ -5092,13 +5088,10 @@ STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
 STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
-STR_BLACK_DATE_LONG.dat                                         :{BLACK}{DATE_LONG.dat}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
-STR_WHITE_DATE_LONG.dat                                         :{WHITE}{DATE_LONG.dat}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SHORT_DATE.dat                                              :{WHITE}{DATE_TINY.dat}
 STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
 STR_DATE_LONG_SMALL.dat                                         :{TINY_FONT}{BLACK}{DATE_LONG.dat}
 STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
