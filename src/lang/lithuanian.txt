@@ -1559,7 +1559,7 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Skleisti garsus
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Laikraščio: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Skleisti garsus, kai parodomas laikraštis
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Metų pabaigos: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Skelisti garsą žymintį metų pabaigą
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Skleisti garsą žymintį metų pabaigą
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Statybos: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Skeisti statybų garsus
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Mygtukai: {STRING}
