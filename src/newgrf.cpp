@@ -6371,6 +6371,14 @@ static uint32 GetPatchVariable(uint8 param)
 		case 0x14:
 			return MAX_TILE_HEIGHT;
 
+		/* Extra foundations base sprite */
+		case 0x15:
+			return SPR_SLOPES_BASE;
+
+		/* Shore base sprite */
+		case 0x16:
+			return SPR_SHORE_BASE;
+
 		default:
 			grfmsg(2, "ParamSet: Unknown Patch variable 0x%02X.", param);
 			return 0;
