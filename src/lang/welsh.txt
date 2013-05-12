@@ -3723,7 +3723,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Llenwch 
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Disgwylir
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Amserlenwyd
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Newid rhwng yr amserlen a'r amser a ddisgwylir
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Newid rhwng yr amser a ddisgwylir a'r amserlen
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Cyr:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Gad:
@@ -4235,6 +4235,14 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Methu di
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Gêm efelychu wedi ei seilio ar Transport Tycoon Deluxe
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Graffeg gwreiddiol fersiwn DOS o Transport Tycoon Deluxe.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Graffeg gwreiddiol fersiwn DOS (Almaenig) o Transport Tycoon Deluxe.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Graffeg gwreiddiol fersiwn Windows o Transport Tycoon Deluxe.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Effeithiau sain gwreiddiol fersiwn DOS o Transport Tycoon Deluxe.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Effeithiau sain gwreiddiol fersiwn Windows o Transport Tycoon Deluxe.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Pecyn sain heb unrhyw effeithiau sain ynddo.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Cerddoriaeth gwreiddiol fersion Windows o Transport Tycoon Deluxe.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Pecyn cerddoriaeth heb unrhyw gerddoriaeth ynddo.
 
 ##id 0x2000
 # Town building names

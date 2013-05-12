@@ -1028,7 +1028,7 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avansear
 
 STR_CONFIG_SETTING_OFF                                          :út
 STR_CONFIG_SETTING_ON                                           :oan
-STR_CONFIG_SETTING_DISABLED                                     :utskeakele
+STR_CONFIG_SETTING_DISABLED                                     :Útskeakele
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Ût
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Eigen bedriuw
@@ -1058,8 +1058,8 @@ STR_CONFIG_SETTING_INFLATION                                    :Ynflaasje: {STR
 STR_CONFIG_SETTING_SELECTGOODS                                  :Bringst allinich besoargje by in stasjon as der fraach nei is: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Mei de hân te betsjinjen boumetoade foar primêre yndustryen: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Gjin
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :lyk as oare yndustryen
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :probearje
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Lyk as oare yndustryen
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Probearje
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Meardere ferlykbere yndustryen de sted tastean: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Finansjeel oersjoch oan it ein fan it jier sjen litte: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nije oarder binne standert 'non-stop': {STRING}
@@ -1075,9 +1075,9 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Finansierje fan
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Jild jaan oan oarde bedriuwen tastean: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Gewichtsfaktor foar vracht om swiere treinen te simulearje: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Oantal fleanmasine ûngelokken: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :gjin
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :minder
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :gewoan
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Gjin
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Minder
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Gewoan
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Stean ta dat Ienrjochtingsbuordsjes pleatst wurde troch de stêd behearde dyken: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Stean ta dat Ienrjochtingsbuordsjes pleatst wurde troch de tsjinstander behearde dyken: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Bouwe oanbuorjende stasjons tastean: {STRING}
@@ -1088,8 +1088,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Fleanfjilden fe
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Warskôgje as in reau it paad bjuster is: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Opennij besjen reau' oarders: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nee
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, mar slút stilsteande reau ût
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nee
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ja, mar slút stilsteande reau ût
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :fan alle reau
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warskôgje as de fertsjinsten fan in reau negatyf binne: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Reau ferrinne litte kin net: {STRING}
