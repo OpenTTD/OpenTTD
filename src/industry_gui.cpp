@@ -700,6 +700,11 @@ public:
 		bool has_accept = false;
 		char cargo_suffix[3][512];
 
+		if (i->prod_level == PRODLEVEL_CLOSURE) {
+			DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE);
+			y += 2 * FONT_HEIGHT_NORMAL;
+		}
+
 		if (HasBit(ind->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_mask, CBM_IND_PRODUCTION_256_TICKS)) {
 			GetAllCargoSuffixes(0, CST_VIEW, i, i->type, ind, i->accepts_cargo, cargo_suffix);
 			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
