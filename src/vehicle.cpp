@@ -877,7 +877,9 @@ void CallVehicleTicks()
 			case VEH_TRAIN:
 			case VEH_ROAD:
 			case VEH_AIRCRAFT:
-			case VEH_SHIP:
+			case VEH_SHIP: {
+				Vehicle *front = v->First();
+
 				if (v->vcache.cached_cargo_age_period != 0) {
 					v->cargo_age_counter = min(v->cargo_age_counter, v->vcache.cached_cargo_age_period);
 					if (--v->cargo_age_counter == 0) {
@@ -886,16 +888,46 @@ void CallVehicleTicks()
 					}
 				}
 
-				if (v->type == VEH_TRAIN && Train::From(v)->IsWagon()) continue;
-				if (v->type == VEH_AIRCRAFT && v->subtype != AIR_HELICOPTER) continue;
-				if (v->type == VEH_ROAD && !RoadVehicle::From(v)->IsFrontEngine()) continue;
+				/* Do not play any sound when crashed */
+				if (front->vehstatus & VS_CRASHED) continue;
 
-				v->motion_counter += v->cur_speed;
+				/* Do not play any sound when in depot or tunnel */
+				if (v->vehstatus & VS_HIDDEN) continue;
+
+				/* Do not play any sound when stopped */
+				if ((front->vehstatus & VS_STOPPED) && (front->type != VEH_TRAIN || front->cur_speed == 0)) continue;
+
+				/* Check vehicle type specifics */
+				switch (v->type) {
+					case VEH_TRAIN:
+						if (Train::From(v)->IsWagon()) continue;
+						break;
+
+					case VEH_ROAD:
+						if (!RoadVehicle::From(v)->IsFrontEngine()) continue;
+						break;
+
+					case VEH_AIRCRAFT:
+						if (!Aircraft::From(v)->IsNormalAircraft()) continue;
+						break;
+
+					default:
+						break;
+				}
+
+				v->motion_counter += front->cur_speed;
 				/* Play a running sound if the motion counter passes 256 (Do we not skip sounds?) */
-				if (GB(v->motion_counter, 0, 8) < v->cur_speed) PlayVehicleSound(v, VSE_RUNNING);
+				if (GB(v->motion_counter, 0, 8) < front->cur_speed) PlayVehicleSound(v, VSE_RUNNING);
 
 				/* Play an alternating running sound every 16 ticks */
-				if (GB(v->tick_counter, 0, 4) == 0) PlayVehicleSound(v, v->cur_speed > 0 ? VSE_RUNNING_16 : VSE_STOPPED_16);
+				if (GB(v->tick_counter, 0, 4) == 0) {
+					/* Play running sound when speed > 0 and not braking */
+					bool running = (front->cur_speed > 0) && !(front->vehstatus & (VS_STOPPED | VS_TRAIN_SLOWING));
+					PlayVehicleSound(v, running ? VSE_RUNNING_16 : VSE_STOPPED_16);
+				}
+
+				break;
+			}
 		}
 	}
 
