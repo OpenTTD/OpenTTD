@@ -1108,6 +1108,8 @@ STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Ma tista
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Logħba simulazzjoni bbażata fuq Transport Tycoon Deluxe
 
+# Translatable descriptions in media/baseset/*.ob* files
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Funtana

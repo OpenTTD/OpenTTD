@@ -1361,6 +1361,8 @@ STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}पू�
 
 # Translatable comment for OpenTTD's desktop shortcut
 
+# Translatable descriptions in media/baseset/*.ob* files
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :हॉटेल

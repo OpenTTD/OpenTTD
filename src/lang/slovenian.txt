@@ -4298,6 +4298,16 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ni mogo�
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Simulacija, temelječa na Transport Tycoonu Deluxe
 
+# Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Originalna grafika Transport Tycoon Deluxe za različico DOS.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Originalna grafika Transport Tycoon Deluxe za nemško različico DOS.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Originalna grafika Transport Tycoon Deluxe za različico oken(windows).
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Originalni zvoki Transport Tycoon Deluxe različice DOS.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Originalni zvoki Transport Tycoon Deluxe različice oken(windows).
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Zvočni paket brez zvoka.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Originalna glasba Transport Tycoon Deluxe različice oken(windows).
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Glasbeni paket z vključeno glasbo.
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Visok pisarniški blok
@@ -4840,11 +4850,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Originalna grafika Transport Tycoon Deluxe za različico DOS.
-STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Originalna grafika Transport Tycoon Deluxe za nemško različico DOS.
-STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Originalna grafika Transport Tycoon Deluxe za različico oken(windows).
-STR_BASESOUNDS_DOS_DESCRIPTION                                  :Originalni zvoki Transport Tycoon Deluxe različice DOS.
-STR_BASESOUNDS_WIN_DESCRIPTION                                  :Originalni zvoki Transport Tycoon Deluxe različice oken(windows).
-STR_BASESOUNDS_NONE_DESCRIPTION                                 :Zvočni paket brez zvoka.
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :Originalna glasba Transport Tycoon Deluxe različice oken(windows).
-STR_BASEMUSIC_NONE_DESCRIPTION                                  :Glasbeni paket z vključeno glasbo.

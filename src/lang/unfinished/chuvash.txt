@@ -1364,6 +1364,8 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Ҫул �
 
 # Translatable comment for OpenTTD's desktop shortcut
 
+# Translatable descriptions in media/baseset/*.ob* files
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Чиркӳ

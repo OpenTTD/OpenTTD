@@ -1361,9 +1361,9 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Chwarae sŵn ar
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Papur newydd: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Chwarae sŵn ar ddangos papurau newydd
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Diwedd y flwyddyn: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Chwarae effaith sŵn ar ddiwedd blwyddyn i adlewyrchu perfformiad y cwmni am y flwyddyn o'i gymharu a'r llynedd
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Chwarae sŵn ar ddiwedd blwyddyn i adlewyrchu perfformiad y cwmni am y flwyddyn o'i gymharu a'r llynedd
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Adeiladu: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Chwarae effeithiau sŵn wrth adeiladu'n lwyddiannus ac ar weithredoedd eraill
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Chwarae sŵn wrth adeiladu'n lwyddiannus neu ar weithredoedd eraill
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Cliciau botwm: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Bipio wrth glicio botymau
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Trychinebau/damweiniau: {STRING}
@@ -1371,7 +1371,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Chwarae effeith
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Cerbydau: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Chwarae effeithiau sŵn cerbydau
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Cefndir: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Chwarae effeithiau sŵn cefndirol y tirwedd, diwydiannau a threfi
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Chwarae synau cefndirol y tirwedd, diwydiannau a threfi
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Analluogi adeiladu tanadeiledd pan nad oes cerbydau addas ar gael: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Pan y galluogir, nid yw tanadeiledd ar gael nes fod cerbydau ar gael iddo, gan osgoi gwastraff arian ac amser ar danadeiledd na ellir ei ddefnyddio
@@ -1471,7 +1471,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Wrth lusgo, gos
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Gosod y pellter y codir signalau ar drac hyd at y rhwystr nesaf (signal, cyffordd), os y llusgir signalau
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} teil
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Pan yn llusgo, cadw pellter cyson rhwng y signalau: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Gosod ymddygiad gosod signalau pan y defnyddio Ctrl+llusgo. Os analluogir, caiff signalau eu gosod o amgylch twneli a phontydd i osgoi ystodau hir heb signalau. Os y galluogir, caiff signalau eu gosod bob N teil, gan rwyddhau alinio signalau ar traciau paralel
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Gosod ymddygiad gosod signalau pan yn Ctrl+llusgo signalau. Os analluogir, caiff signalau eu gosod o amgylch twneli a phontydd i osgoi ystodau hir heb signalau. Os y galluogir, caiff signalau eu gosod bob n teil, gan rwyddhau alinio signalau ar traciau paralel
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Adeiladu semafforau cyn: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Gosod y flwyddyn pan y defnyddir signalau trydan ar draciau. Cyn y flwyddyn hon, fe ddefnyddir signalau semaffor (sydd â gweithred unfath, ond edrychiad gwahanol)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Galluogi'r GUI signalau: {STRING}
@@ -3719,7 +3719,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Llenwch 
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Disgwylir
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Amserlenwyd
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Newid rhwng yr amserlen a'r amser a ddisgwylir
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Newid rhwng yr amser a ddisgwylir a'r amserlen
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Cyr:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Gad:
@@ -4226,6 +4226,16 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Methu di
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Gêm efelychu wedi ei seilio ar Transport Tycoon Deluxe
 
+# Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Graffeg gwreiddiol fersiwn DOS o Transport Tycoon Deluxe.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Graffeg gwreiddiol fersiwn DOS (Almaenig) o Transport Tycoon Deluxe.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Graffeg gwreiddiol fersiwn Windows o Transport Tycoon Deluxe.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Effeithiau sain gwreiddiol fersiwn DOS o Transport Tycoon Deluxe.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Effeithiau sain gwreiddiol fersiwn Windows o Transport Tycoon Deluxe.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Pecyn sain heb unrhyw effeithiau sain ynddo.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Cerddoriaeth gwreiddiol fersion Windows o Transport Tycoon Deluxe.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Pecyn cerddoriaeth heb unrhyw gerddoriaeth ynddo.
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Bloc swyddfa uchel
@@ -4332,9 +4342,9 @@ STR_SV_STNAME_DOCKS                                             :Dociau {STRING}
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
-STR_SV_STNAME_ANNEXE                                            :{STRING} Rhandre
-STR_SV_STNAME_SIDINGS                                           :{STRING} Cilffordd
-STR_SV_STNAME_BRANCH                                            :{STRING} Cangen
+STR_SV_STNAME_ANNEXE                                            :Rhandre {STRING}
+STR_SV_STNAME_SIDINGS                                           :Cilffordd {STRING}
+STR_SV_STNAME_BRANCH                                            :Cangen {STRING}
 STR_SV_STNAME_UPPER                                             :Blaenau {STRING}
 STR_SV_STNAME_LOWER                                             :Dyffryn {STRING}
 STR_SV_STNAME_HELIPORT                                          :Hofrenyddborth {STRING}
