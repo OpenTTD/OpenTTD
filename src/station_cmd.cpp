@@ -1422,6 +1422,10 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 	/* Count of the number of tiles removed */
 	int quantity = 0;
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
+	/* Accumulator for the errors seen during clearing. If no errors happen,
+	 * and the quantity is 0 there is no station. Otherwise it will be one
+	 * of the other error that got accumulated. */
+	CommandCost error;
 
 	/* Do the action for every tile into the area */
 	TILE_AREA_LOOP(tile, ta) {
@@ -1430,6 +1434,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 
 		/* If there is a vehicle on ground, do not allow to remove (flood) the tile */
 		CommandCost ret = EnsureNoVehicleOnGround(tile);
+		error.AddCost(ret);
 		if (ret.Failed()) continue;
 
 		/* Check ownership of station */
@@ -1438,6 +1443,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 
 		if (_current_company != OWNER_WATER) {
 			CommandCost ret = CheckOwnership(st->owner);
+			error.AddCost(ret);
 			if (ret.Failed()) continue;
 		}
 
@@ -1497,7 +1503,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 		}
 	}
 
-	if (quantity == 0) return_cmd_error(STR_ERROR_THERE_IS_NO_STATION);
+	if (quantity == 0) return error.Failed() ? error : CommandCost(STR_ERROR_THERE_IS_NO_STATION);
 
 	for (T **stp = affected_stations.Begin(); stp != affected_stations.End(); stp++) {
 		T *st = *stp;
