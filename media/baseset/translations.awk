@@ -18,6 +18,26 @@
 #  <ini-key>.<iso-code> = <translation>
 #
 
+# Simple insertion sort since not all AWKs have a sort implementation
+function isort(A) {
+	n = 0
+	for (val in A) {
+		n++;
+	}
+
+	for (i = 2; i <= n; i++) {
+		j = i;
+		hold = A[j]
+		while (A[j - 1] > hold) {
+			j--;
+			A[j + 1] = A[j]
+		}
+		A[j] = hold
+	}
+
+	return n
+}
+
 /^!!/ {
 	ini_key = $2;
 	str_id = $3;
@@ -28,16 +48,17 @@
 			lang = $2;
 		} else if (match($0, "^" str_id " *:") > 0) {
 			sub("^[^:]*:", "", $0)
+			i++;
 			if (lang == "en_GB") {
-				texts[""] = ini_key "       = "$0;
+				texts[i] = ini_key "       = "$0;
 			} else {
-				texts[lang] = ini_key "." lang " = "$0;
+				texts[i] = ini_key "." lang " = "$0;
 			}
 		}
 	}
 	close(file);
 
-	count = asort(texts);
+	count = isort(texts);
 	for (i = 1; i <= count; i++) {
 		print texts[i]
 	}

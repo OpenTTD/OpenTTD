@@ -73,8 +73,8 @@ struct ETileArea : TileArea {
 				Axis axis = GetRailStationAxis(tile);
 				TileIndexDiff delta = TileOffsByDiagDir(AxisToDiagDir(axis));
 
-				for (end = tile; IsRailStationTile(end + delta) && IsCompatibleTrainStationTile(tile, end + delta); end += delta) { /* Nothing */ }
-				for (start = tile; IsRailStationTile(start - delta) && IsCompatibleTrainStationTile(tile, start - delta); start -= delta) { /* Nothing */ }
+				for (end = tile; IsRailStationTile(end + delta) && IsCompatibleTrainStationTile(end + delta, tile); end += delta) { /* Nothing */ }
+				for (start = tile; IsRailStationTile(start - delta) && IsCompatibleTrainStationTile(start - delta, tile); start -= delta) { /* Nothing */ }
 
 				this->tile = start;
 				this->w = TileX(end) - TileX(start) + 1;

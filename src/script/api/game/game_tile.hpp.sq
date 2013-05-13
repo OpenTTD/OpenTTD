@@ -66,6 +66,10 @@ void SQGSTile_Register(Squirrel *engine)
 	SQGSTile.DefSQConst(engine, ScriptTile::BT_CLEAR_ROCKY,              "BT_CLEAR_ROCKY");
 	SQGSTile.DefSQConst(engine, ScriptTile::BT_CLEAR_FIELDS,             "BT_CLEAR_FIELDS");
 	SQGSTile.DefSQConst(engine, ScriptTile::BT_CLEAR_HOUSE,              "BT_CLEAR_HOUSE");
+	SQGSTile.DefSQConst(engine, ScriptTile::TERRAIN_NORMAL,              "TERRAIN_NORMAL");
+	SQGSTile.DefSQConst(engine, ScriptTile::TERRAIN_DESERT,              "TERRAIN_DESERT");
+	SQGSTile.DefSQConst(engine, ScriptTile::TERRAIN_RAINFOREST,          "TERRAIN_RAINFOREST");
+	SQGSTile.DefSQConst(engine, ScriptTile::TERRAIN_SNOW,                "TERRAIN_SNOW");
 
 	ScriptError::RegisterErrorMap(STR_ERROR_ALREADY_AT_SEA_LEVEL,    ScriptTile::ERR_TILE_TOO_HIGH);
 	ScriptError::RegisterErrorMap(STR_ERROR_ALREADY_AT_SEA_LEVEL,    ScriptTile::ERR_TILE_TOO_LOW);
@@ -90,6 +94,7 @@ void SQGSTile_Register(Squirrel *engine)
 	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::IsRoughTile,                "IsRoughTile",                2, ".i");
 	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::IsSnowTile,                 "IsSnowTile",                 2, ".i");
 	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::IsDesertTile,               "IsDesertTile",               2, ".i");
+	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::GetTerrainType,             "GetTerrainType",             2, ".i");
 	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::GetSlope,                   "GetSlope",                   2, ".i");
 	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::GetComplementSlope,         "GetComplementSlope",         2, ".i");
 	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::GetMinHeight,               "GetMinHeight",               2, ".i");

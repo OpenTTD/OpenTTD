@@ -135,6 +135,19 @@
 	return (::IsTileType(tile, MP_CLEAR) && ::IsClearGround(tile, CLEAR_DESERT));
 }
 
+/* static */ ScriptTile::TerrainType ScriptTile::GetTerrainType(TileIndex tile)
+{
+	if (!::IsValidTile(tile)) return TERRAIN_NORMAL;
+
+	switch (::GetTerrainType(tile)) {
+		default:
+		case 0: return TERRAIN_NORMAL;
+		case 1: return TERRAIN_DESERT;
+		case 2: return TERRAIN_RAINFOREST;
+		case 4: return TERRAIN_SNOW;
+	}
+}
+
 /* static */ ScriptTile::Slope ScriptTile::GetSlope(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return SLOPE_INVALID;

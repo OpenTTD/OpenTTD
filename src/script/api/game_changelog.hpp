@@ -15,6 +15,11 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
+ * \b 1.3.1
+ *
+ * API additions:
+ * \li GSTile::GetTerrainType
+ *
  * \b 1.3.0
  *
  * API additions:
