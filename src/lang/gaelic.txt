@@ -2480,8 +2480,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Toglaich
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Toglaich togail/tort air falbh airson slighean trama
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Comhair na garaid
-STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tagh comhair na garaid
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Comhair na garaids
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tagh comhair na garaids
 STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Comhair an trama-lainn
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tagh comhair an trama-lainn
 
@@ -4740,11 +4740,11 @@ STR_SV_STNAME_FALLBACK                                          :{STRING} Stèis
 # Vehicle names
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (Smùide)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Einnsean-smùide Calma
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Einnsean-smùide Cumhachdach
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Einnsean-smùide Treun
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Einnsean Diesel Calma
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Einnsean Diesel Cumhachdach
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Smùide)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney “Jubilee" (Smùide)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu “A4" (Smùide)
@@ -4794,7 +4794,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :{G=f}Truca dheo
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :{G=f}Truca plastaig
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :“X2001" (Dealain)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :“Millennium Z1" (Dealain)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Z99 Iongantach
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :{G=m}Carbad thaistealach
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :{G=m}Bhana puist
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :{G=f}Truca guail
@@ -4826,7 +4826,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 “Leviath
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 “Cyclops" (Dealain)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 “Pegasus" (Dealain)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 “Chimaera" (Dealain)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Rocaid Iongantach
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :{G=m}Carbad thaistealach
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :{G=m}Bhana puist
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :{G=f}Truca guail
@@ -4857,19 +4857,19 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :{G=f}Truca plas
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :{G=m}Bus rìoghail MPS
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :{G=m}Bus Hereford Leopard
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :{G=m}Bus Foster
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :{G=m}Sàr-bhus Foster MkII
-STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :{G=m}Bus Ploddyphut MkI
-STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :{G=m}Bus Ploddyphut MkII
-STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :{G=m}Bus Ploddyphut MkIII
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :{G=m}Sàr-bhus Foster II
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :{G=m}Bus Calma I
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :{G=m}Bus Calma II
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :{G=m}Bus Calma III
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :{G=f}Truca guail Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :{G=f}Truca guail Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :{G=f}Truca guail DW
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :{G=f}Truca puist MPS
 STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :{G=f}Truca puist Reynard
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :{G=f}Truca puist Perry
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :{G=f}Truca puist MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :{G=f}Truca puist Threun
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :{G=f}Truca puist Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :{G=f}Truca puist Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :{G=f}Truca puist Iongantach
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :{G=m}Tancair ola Witcombe
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :{G=m}Tancair ola Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :{G=m}Tancair ola Perry
@@ -4887,7 +4887,7 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :{G=f}Truca fiod
 STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :{G=f}Truca fiodha Moreland
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :{G=f}Truca cloich-iarainn MPS
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :{G=f}Truca cloich-iarainn Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :{G=f}Truca cloich-iarainn Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :{G=f}Truca cloich-iarainn Thapaidh
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :{G=f}Truca stàilinne Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :{G=f}Truca stàilinne Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :{G=f}Truca stàilinne Kelling
@@ -4896,7 +4896,7 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :{G=f}Truca arma
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :{G=f}Truca armach Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :{G=m}Bhana bìdh Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :{G=m}Bhana bìdh Perry
-STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :{G=m}Bhana bìdh Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :{G=m}Bhana bìdh Tapaidh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :{G=f}Truca pàipeir Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :{G=f}Truca pàipeir Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :{G=f}Truca pàipeir MPS
@@ -4912,47 +4912,47 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :{G=f}Truca meas
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :{G=f}Truca rubair Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :{G=f}Truca rubair Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :{G=f}Truca rubair RMT
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :{G=f}Truca siùcair MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :{G=f}Truca siùcair Threun
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :{G=f}Truca siùcair Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :{G=f}Truca siùcair Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :{G=f}Truca cola MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :{G=f}Truca siùcair Iongantach
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :{G=f}Truca cola Threun
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :{G=f}Truca cola Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :{G=f}Truca cola Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :{G=f}Truca canaich-siùcair MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :{G=f}Truca cola Iongantach
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :{G=f}Truca canaich-siùcair Threun
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :{G=f}Truca canaich-siùcair Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :{G=f}Truca canaich-siùcair Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :{G=f}Truca tofaidh MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :{G=f}Truca canaich-siùcair Iongantach
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :{G=f}Truca tofaidh Threun
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :{G=f}Truca tofaidh Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :{G=f}Truca tofaidh Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :{G=m}Bhana dhèideagan MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :{G=f}Truca tofaidh Iongantach
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :{G=m}Bhana dhèideagan Threun
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :{G=m}Bhana dhèideagan Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :{G=m}Bhana dhèideagan Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :{G=f}Truca mìlsein MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :{G=m}Bhana dhèideagan Iongantach
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :{G=f}Truca mìlsein Threun
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :{G=f}Truca mìlsein Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :{G=f}Truca mìlsein Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :{G=f}Truca bataraidh MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :{G=f}Truca mìlsein Iongantach
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :{G=f}Truca bataraidh Threun
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :{G=f}Truca bataraidh Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :{G=f}Truca bataraidh Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :{G=f}Truca dheochan gucagach MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :{G=f}Truca bataraidh Iongantach
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :{G=f}Truca dheochan gucagach Threun
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :{G=f}Truca dheochan gucagach Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :{G=f}Truca dheochan gucagach Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :{G=f}Truca plastaig MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :{G=f}Truca dheochan gucagach Iongantach
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :{G=f}Truca plastaig Threun
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :{G=f}Truca plastaig Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :{G=f}Truca plastaig Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :{G=f}Truca builgein MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :{G=f}Truca plastaig Iongantach
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :{G=f}Truca builgein Threun
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :{G=f}Truca builgein Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :{G=f}Truca builgein Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :{G=f}Truca builgein Iongantach
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :{G=m}Tancair ola MPS
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :{G=m}Tancair ola CS-Inc.
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :{G=f}Bàta-aiseig MPS
 STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :{G=f}Bàta-aiseig FFP
 STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :{G=f}Bàta-foluaimein Bakewell 300
-STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :{G=f}Bàta-aiseig Chugger-Chug
-STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :{G=f}Bàta-aiseig Shivershake
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :{G=f}Bàta-aiseig Mhall
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :{G=f}Bàta-aiseig Luasganach
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :{G=f}Long carago Yate
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :{G=f}Long carago Bakewell
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :{G=f}Long carago Mightymover
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :{G=f}Long carago Powernaut
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :{G=f}Long carago Threun
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :{G=f}Long carago Chumhachdach
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :{G=m}Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :{G=m}Coleman Count
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :{G=m}FFP Dart
@@ -4986,14 +4986,14 @@ STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :{G=m}Darwin 700
 STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :{G=m}FFP Hyperdart 2
 STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :{G=m}Dinger 200
 STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :{G=m}Dinger 1000
-STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :{G=m}Ploddyphut 100
-STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :{G=m}Ploddyphut 500
-STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :Flashbang X1
-STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :{G=m}Juggerplane M1
-STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :{G=m}Flashbang Wizzer
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :{G=m}Calma 100
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :{G=m}Calma 500
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :{G=m}Plèana clis X1
+STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :{G=m}Plèana Ealamh M1
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :{G=m}Plèana Clis Sgiobalta
 STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :{G=m}Heileacoptair Tricario
 STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :{G=m}Heileacoptair Guru X2
-STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :{G=m}Heileacoptair Powernaut
+STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :{G=m}Heileacoptair Cumhachdach
 
 ##id 0x8800
 # Formatting of some strings
