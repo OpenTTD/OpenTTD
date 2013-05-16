@@ -3099,6 +3099,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}지난�
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% 수송됨)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}이 산업시설로 이동합니다. Ctrl+클릭하면 이 산업시설을 기준으로 새로운 외부 화면을 엽니다.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}생산 수준: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}산업시설이 곧 폐쇄됩니다!
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}필요함: {YELLOW}{STRING}{STRING}
