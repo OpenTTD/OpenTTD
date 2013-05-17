@@ -1,3 +1,36 @@
+1.3.1-RC1 (2013-05-17)
+------------------------------------------------------------------------
+- Feature: Translations of baseset descriptions via language files (r25209, r25205)
+- Feature: Faroese and Scottish Gaelic translations (r25198, r25176)
+- Feature: Plural form to be used by Scottish Gaelic (1,11; 2,12; 3..10, 13..19; other) (r25078)
+- Change: [strgen] Allow any number of colour codes in translations (r25193, r25192, r25191)
+- Change: [Win32] MSVC 2010 comes with stdint.h (r25128)
+- Change: Be slightly more lenient with trying to detect a subversion repository in case someone has a sparse tags checkout. In that case the .svn folder misses from the $ROOT_DIR because it is in the $ROOT_DIR/.. (i.e. tags) folder (r25107)
+- Fix: 'No station' error was given, even when there was a station that way occupied or not yours [FS#5546] (r25243)
+- Fix: Crash when AI is executing a command as it is bankrupted (removed from the game) [FS#5547] (r25236)
+- Fix: Give bridges owned by noone (from bankrupt companies) to the first company which replaces the bridge. Everyone could have removed/rebuild the bridge anyway [FS#5541] (r25231, r25227)
+- Fix: [NewGRF] Revise when vehicle running sound effects 04, 07 and 08 are played; in depot or tunnel, or when crashed or stopped: No sound. Braking: Effect 08 instead of 07 [FS#5538] (r25226)
+- Fix: [NewGRF] Play vehicle sound effect also for planes (r25225)
+- Fix: [NewGRF] cur_speed is only valid for the front engine, so make other engines in the consist use the speed of the front [FS#5534] (r25224)
+- Fix: [NewGRF] Make tick_counters work the same for vehicles (r25223, r25222)
+- Fix: [NewGRF] IsCompatibleTrainStationTile() is not a symmetric function. Clarify the parameters and fix the cases were they were swapped (r25221)
+- Fix: Consider map border as water with repsect to river/canal continuation (r25220)
+- Fix: [Script] Clarify on which tiles IsDesertTile and IsSnowTile work, i.e. the ones without infrastructure or buildings, and introduce GetTerrainType for the cases where IsDesertTile/IsSnowTile do not work [FS#5537] (r25213)
+- Fix: The level crossing sound is an ambient sound and not a new year sound (r25200)
+- Fix: Original train and road vehicle acceleration did no longer respect bridge speed limits [FS#5523] (r25167)
+- Fix: [Win32] Do not statically link to SHGetFolderPath as it may not exist, and improve its emulation [FS#5522] (r25155, r25153)
+- Fix: [Win32] Do not store invalid paths in the search path list (r25154)
+- Fix: Remove stray reservation from savegames affected by FS#5510 et al. upon loading [FS#5520] (r25152)
+- Fix: [Script] XXBase::Chance function did not work for large values (>65535) [FS#5517] (r25148)
+- Fix: Several typos/inconsistencies in English strings [FS#5496] (r25144, r25143)
+- Fix: When extra dynamite was disabled, towns would be allowed to clear bridges with trams (r25141)
+- Fix: Towns are build as OWNER_TOWN, so they also need to be removed as OWNER_TOWN otherwise parts might remain [FS#5519] (r25140)
+- Fix: Editboxes could become too small when resizing windows (r25121)
+- Fix: Game script language files did not work, when inside a tar [FS#5509] (r25117, r25114)
+- Fix: [NewGRF] Acceleration of NewGRF aircraft was too fast, while acceleration of default aircraft was way too slow (r25115)
+- Fix: Pass $LDFLAGS_BUILD to all endian_check compilations (r25108)
+
+
 1.3.0 (2013-04-01)
 ------------------------------------------------------------------------
 - Fix: Station rebuilding could leave reserved tiles which caused crashes later on [FS#5510, FS#5516] (r25132)
@@ -17,7 +50,7 @@
 - Fix: Make sizes of the station preview list and direction selection identical in the station build window [FS#5472] (r25064)
 - Fix: When allocation of the sprite cache fails, try to allocate less memory and display an error message later on (r25061)
 - Fix: Refactor Script Debug GUI to only set widget states in OnInvalidateData [FS#5490] (r25052)
-- Fix: Do not let gcc include files from the "standard C" include directories to avoid inclusion of header files at the top of the preprocessed nfo files, which cause NFOrenum/GRFcodec to make invalid assumptions about the NFO version (r25050)
+- Fix: Do not let gcc include files from the 'standard C' include directories to avoid inclusion of header files at the top of the preprocessed nfo files, which cause NFOrenum/GRFcodec to make invalid assumptions about the NFO version (r25050)
 - Fix: Minimise gaps feature caused removal to only happen at the signal build interval instead of the implicit interval of 1 [FS#5479] (r25038)
 - Fix: Green path signals would be shown when building them 'under' a train, and they would keep showing green until they were passed again [FS#5480] (r25037)
 
@@ -1739,7 +1772,7 @@
 - Fix: The lock in the company window was only drawn for your own company [FS#3427] (r18729)
 - Fix: Some invalid gender/plural indices in strings, which could eventually cause crashes [FS#3480] (r18727)
 - Fix: With non-uniform industries the 'supplies' text when building a station could be incorrect (missing a cargo) [FS#3463] (r18726)
-- Fix: Refitting a non-refittable vehicle to it's default cargotype failed, causing problems for AIs [FS#3475] (r18724)
+- Fix: Refitting a non-refittable vehicle to its default cargotype failed, causing problems for AIs [FS#3475] (r18724)
 - Fix: The join station window did not account for scrolling, so if you did scroll the station was not joined with the selected station [FS#3476] (r18713)
 - Fix: The wrong town is mentioned in the error when trying to make one way roads of town owned roads [FS#3478] (r18710)
 - Fix: Animation buffer for 32bpp-anim blitter was only validated during sprite blitting, other drawing operations did not check it. Initial startup and window resize could therefore lead to crash [FS#3464] (r18709)
@@ -2400,7 +2433,7 @@
 - Feature: [NewGRF] Add support for property 0x13 for Bridges. In other words, one can now specifies a 16 bits cost multiplier (r14172)
 - Feature: Make it possible to choose between the DOS and Windows graphics packs while retaining the possibility to override the palette (r14151)
 - Feature: Increase the size of the console backlog. Now it'll only remove backlog items when there are more than a threshold and when they are there longer than (another) threshold (r14056)
-- Feature: Make it possible to filter list_patches output like it's done for other list_* console commands (r14041)
+- Feature: Make it possible to filter list_patches output like it is done for other list_* console commands (r14041)
 - Feature: Path based signalling (r13926-13967)
 - Feature: Show [total-]cargo info in depot when [ctrl-]right-clicking on vehicle (r13923)
 - Feature: NewGRF presets, selected by a drop down list in the NewGRF window. Presets are saved in the config file (r13781)
@@ -2480,7 +2513,7 @@
 - Fix: Order pool seemed to look full when it was not as it only checked whether it was possible to allocate a new block of pool items instead of checking for free pool items (r14547)
 - Fix: Do not deliver cargo to industries not inside station catchment area [FS#2138] (r14530)
 - Fix: Allocate stub (empty) sound entries when loading an empty/corrupt/incorrectly sized sample.cat instead of making valid NewGRFs fail to load (r14527)
-- Fix: Make sure trains stop at the end of a station; a 3/8th length train did stop 2/8th of it's length too early causing a 63/8th long train not to fit in a 4 tile station [FS#2379] (r14526)
+- Fix: Make sure trains stop at the end of a station; a 3/8th length train did stop 2/8th of its length too early causing a 63/8th long train not to fit in a 4 tile station [FS#2379] (r14526)
 - Fix: Small possible chance of desync due to sorting on pointer instead of by (station) index [FS#2348] (r14463)
 - Fix: When a road stop gets moved make sure to update the destination of RVs going to that road stop [FS#2330] (r14446)
 - Fix: Support for spaces in directories passed to ./configure [FS#1802] (r14440)
@@ -2678,7 +2711,7 @@
 - Fix: Do not crash very hard on unrecognised savegames, just go back to the intro menu instead (r12707)
 - Fix: In some cases a news messages would not be shown [FS#1906] (r12683)
 - Fix: Removing road pieces from a town gave you twice the intended penalty [FS#1920] (r12682)
-- Fix: When a road vehicle has a tram only stop multiple times in a row in it's orders, only the first one would be skipped [FS#1918] (r12678)
+- Fix: When a road vehicle has a tram only stop multiple times in a row in its orders, only the first one would be skipped [FS#1918] (r12678)
 - Fix: Colour remaps on station sprites only worked for company colours [FS#1902] (r12674)
 - Fix: Remove buggy buoys at tile 0 from old TTDP savegames (r12642)
 - Fix: Possible NULL pointer dereference when reading some NewGRF data [FS#1913] (r12637)
@@ -3391,7 +3424,7 @@
 - Fix: Some disaster-events fixed: combat chopper shoots from right position, submarine once again moves around (r8140, r8158)
 - Fix: 'out of sprite memory' warning messages due to incorrect assumption of requested memory for sprites (r8133)
 - Fix: Buoys are now built and numbered 1..9 not 9..1 [FS#538] (r8123)
-- Fix: Clicking for more news properly cycles through the news history backwards, and does not show the first item doubly if it's already open (r8049)
+- Fix: Clicking for more news properly cycles through the news history backwards, and does not show the first item doubly if it is already open (r8049)
 - Fix: Crash when removing a town in the scenario editor while the query window is open for one of the town's tiles (r8030)
 - Fix: Overflow of system-ticks was not handled properly, resulting in a possibly unresponsive server/client (r8028)
 - Fix: Automatic pause interfering with 'pause_on_join setting' in MP when <shift> is pressed [FS#486] (r8027)
@@ -3512,7 +3545,7 @@
 - Codechange: Show more correct capacity of articulated wagons in the train purchase list (r6650)
 - Codechange: When showing tooltips, properly position the tooltip taking into account window dimensions and cursor (r6405)
 - Codechange: Speed up the animated cursors a bit so they move once in a while at least (r6367)
-- Codechange: Remove the 'unsorted' vehicle sorter, because it's plain useless (r6270)
+- Codechange: Remove the 'unsorted' vehicle sorter, because it is plain useless (r6270)
 - Codechange: Remove MSVC6 support. The compiler was too stupid and too many workarounds were needed. Please switch to mingw or VC2005++ express (r5286)
 - Codechange: Allow a switch in Makefile.config to disable threads in OpenTTD (r5978)
 - Codechange: [Windows] Add native x64 target to VS2005 project files (r5813)
@@ -3619,9 +3652,9 @@
 - Fix: The wrong IP could get unbanned, e.g. 'unban 1.2.3.42' could result in unbanning 1.2.3.4
 - Fix: It was possible to convert the railtype of a bridge while a train was on it
 - Fix: It was possible to rename signs or waypoints with the chat box
-- Fix: Be more strict what it means for an aircraft to be in a hangar: It's not just being stopped on a hangar tile
-- Fix: If a road vehicle is on a road depot tile and stopped does not mean it's in the depot. Use the proper test for this
-- Fix: [AI] The AI should send a plane into a hangar if it's not in a hangar _or_ not stopped, not when it's not in a hangar _and_ not stopped
+- Fix: Be more strict what it means for an aircraft to be in a hangar: It is not just being stopped on a hangar tile
+- Fix: If a road vehicle is on a road depot tile and stopped does not mean it is in the depot. Use the proper test for this
+- Fix: [AI] The AI should send a plane into a hangar if it is not in a hangar _or_ not stopped, not when it is not in a hangar _and_ not stopped
 - Fix: [AI] The trolly AI used information from the wrong industry when calculating the amount of to be transported goods
 - Fix: [NTP] Fix NTP over bridges: do not check the rail type when on a bridge
 - Fix: Truncate text in dropdown lists to stop text overflowing
@@ -3693,7 +3726,7 @@
 - Fix: Update german and finnish languages (r3968)
 - Fix: Properly set back the owner of a crossing/road-under bridge after removing it (r3967)
 - Fix: [Autoreplace] Autoreplacing trains now keep their tile length instead of their pixel length [FS#67] (r3964)
-- Fix: Mark the right tile as dirty. It's just a graphical glitch which happend in r1592 (r3962)
+- Fix: Mark the right tile as dirty. It is just a graphical glitch which happend in r1592 (r3962)
 - Fix: Fix crash when resizing news history window (r3961)
 - Fix: Correctly implement minimum search, so road vehicles head twoards the closest station, not the last one in the list (r3960)
 - Fix: The tooltips for raising and lowering land buttons in the scenario editor are interchanged [FS#61] (r3959)
@@ -3794,7 +3827,7 @@
 - Fix: Spaces in the path to the MIDI files caused the Windows MIDI player to fail (r2563)
 - Fix: Set server map name to the loaded name of the game/scenario (r2610)
 - Fix: Improve the old pathfinder. Changed it to A* instead of Dijkstra. Benchmark shows that NTP is now around 10x faster than NPF (r2635)
-- Fix: Correctly save and load company_value, it's 64 bits wide, not 32 bits (r2684)
+- Fix: Correctly save and load company_value, it is 64 bits wide, not 32 bits (r2684)
 - Fix: Volume control works now for the DirectMusic MIDI backend (r2712)
 - Fix: Change the fence algorithm so it removes fences when no farm tile is adjacent (r2739)
 - Fix: Tree tiles above the snow line got redrawn disproportionately often (r2750)
@@ -3924,7 +3957,7 @@
 - Fix: Speeding up when pressing ALT+TAB (Windows) [SF#1114261]
 - Fix: Signals disappear after typing text and pressing enter!. Signs in Scenario Editor have no owner so ignore that [SF#1149403]
 - Fix: Single tile Bridge in Volcano City scenario. Some bridges still had the old single-tile bridge bug that was caused by improper town growth in combination with DC_AUTO. Fixed the scenario [SF#1149766]
-- Fix: Stop startup memory corruption crash using optimized MSVC6. MSVC6 workaround as it's too stupid again for its own good [SF#1119147]
+- Fix: Stop startup memory corruption crash using optimized MSVC6. MSVC6 workaround as it is too stupid again for its own good [SF#1119147]
 - Fix: Dedicated server now accepts '-g' (load game) as param [SF#1101874]
 - Fix: Crash with German umlauts in station names [SF#1155696]
 - Fix: Segmentation fault when loading savegame, out of bounds array check [SF#1158618]
@@ -3950,7 +3983,7 @@
 - Fix: [NewGRF] Helicopters are correctly recognized
 - Fix: [Autoreplace] Made sure that planes only show planes in replace GUI and helicopters only show helicopters
 - Fix: Crash when generating tropical maps
-- Fix: [Autoreplace] Cheaters can no longer exploit autoreplace to get vehicles, that's not invented yet
+- Fix: [Autoreplace] Cheaters can no longer exploit autoreplace to get vehicles, that is not invented yet
 - Fix: [Autoreplace] Fixed a stupid bug introduced in r1687, that made a crash if anybody tried to autoreplace anything but an aircraft
 - Fix: Expand rail stations beyond maximum spread
 - Fix: [Autoreplace] Fixed a typo that could prevent autoreplaced aircraft from automatically go to a hangar
@@ -4036,7 +4069,7 @@
 - Fix: Aircraft in hangar messages are now revalidated before display [SF#1104969]
 - Fix: Destroyed train locks crossings [SF#1105112]
 - Fix: Upgrade rail fails when train under bridge [SF#1105281]
-- Fix: Trains do not think they're on a slope any more while they drive around in a tunnel [SF#1105959]
+- Fix: Trains do not think they are on a slope any more while they drive around in a tunnel [SF#1105959]
 - Fix: Buoys can now only be removed if no ship has it in their schedule. This makes buoys more useable in multiplayer games again, as buoys cannot be deleted by other players if they are used [SF#1105963]
 - Fix: Graph's keys get confused [SF#1106354]
 - Fix: Placing signals with 2x1 drags is treated as placing a single signal [SF#1106930]
