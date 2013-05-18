@@ -1317,6 +1317,9 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 		}
 
 		TILE_AREA_LOOP(tile, update_reservation_area) {
+			/* Don't even try to make eye candy parts reserved. */
+			if (IsStationTileBlocked(tile)) continue;
+
 			DiagDirection dir = AxisToDiagDir(axis);
 			TileIndexDiff tile_offset = TileOffsByDiagDir(dir);
 			TileIndex platform_begin = tile;
