@@ -1783,10 +1783,10 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Change t
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Connection:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Choose between an internet game or a Local Area Network (LAN) game
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
+STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Advertised
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Choose between an advertised (internet) and a not advertised (Local Area Network, LAN) game
+STR_NETWORK_SERVER_LIST_LAN                                     :No
+STR_NETWORK_SERVER_LIST_INTERNET                                :Yes
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Player name:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}This is the name other players will identify you by
 
@@ -1845,8 +1845,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}The game
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Set password
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protect your game with a password if you don't want it to be publicly accessible
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (advertise)
+STR_NETWORK_START_SERVER_LAN_INTERNET                           :No
+STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Yes
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Max clients:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Choose the maximum number of clients. Not all slots need to be filled
