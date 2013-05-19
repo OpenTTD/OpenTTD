@@ -3347,6 +3347,39 @@ static void UpdateStationRating(Station *st)
 }
 
 /**
+ * Check all next hops of cargo packets in this station for existance of a
+ * a valid link they may use to travel on. Reroute any cargo not having a valid
+ * link and remove timed out links found like this from the linkgraph. We're
+ * not all links here as that is expensive and useless. A link no one is using
+ * doesn't hurt either.
+ * @param from Station to check.
+ */
+void DeleteStaleLinks(Station *from)
+{
+	for (CargoID c = 0; c < NUM_CARGO; ++c) {
+		GoodsEntry &ge = from->goods[c];
+		LinkGraph *lg = LinkGraph::GetIfValid(ge.link_graph);
+		if (lg == NULL) continue;
+		Node node = (*lg)[ge.node];
+		for (EdgeIterator it(node.Begin()); it != node.End();) {
+			Edge edge = it->second;
+			Station *to = Station::Get((*lg)[it->first].Station());
+			assert(to->goods[c].node == it->first);
+			++it; // Do that before removing the node. Anything else may crash.
+			assert(_date >= edge.LastUpdate());
+			if ((uint)(_date - edge.LastUpdate()) > LinkGraph::MIN_TIMEOUT_DISTANCE +
+					(DistanceManhattan(from->xy, to->xy) >> 2)) {
+				node.RemoveEdge(to->goods[c].node);
+			}
+		}
+		assert(_date >= lg->LastCompression());
+		if ((uint)(_date - lg->LastCompression()) > LinkGraph::COMPRESSION_INTERVAL) {
+			lg->Compress();
+		}
+	}
+}
+
+/**
  * Increase capacity for a link stat given by station cargo and next hop.
  * @param st Station to get the link stats from.
  * @param cargo Cargo to increase stat for.
@@ -3438,6 +3471,11 @@ void OnTick_Station()
 	BaseStation *st;
 	FOR_ALL_BASE_STATIONS(st) {
 		StationHandleSmallTick(st);
+
+		/* Clean up the link graph about once a week. */
+		if (Station::IsExpected(st) && (_tick_counter + st->index) % STATION_LINKGRAPH_TICKS == 0) {
+			DeleteStaleLinks(Station::From(st));
+		};
 
 		/* Run STATION_ACCEPTANCE_TICKS = 250 tick interval trigger for station animation.
 		 * Station index is included so that triggers are not all done
