@@ -697,6 +697,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}வரைபடத்தில் நகரத்தின் பெயர்களை மறை/காட்டு
 STR_SMALLMAP_CENTER                                             :{BLACK}தற்போதைய இடத்தினை சிறுவரைபடத்தின் நடுவில் காட்டவும்
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}அனைத்தையும் செயலிழக்க செய்
@@ -1589,6 +1590,8 @@ STR_FACE_EARRING                                                :கம்மல
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Tie அல்லது காதணியை மாற்றவும்
 
 # Network server list
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :இல்லை
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :ஆம்
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}விளையாடுபவரின் பெயர்:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}இந்தப் பெயரில் பிறர் உன்னை அறிவர்
 
@@ -1642,6 +1645,8 @@ STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}பு�
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}விளையாட்டு பெயர்:
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}கடவுச்சொல்லினை அமைக்கவும்
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :இல்லை
+STR_NETWORK_START_SERVER_ADVERTISED                             :ஆம்
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} விளையாடுபவர்{P "" கள்}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}அதிகபட்ச வீரர்கள்:
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} நிறுவன{P ம் ங்கள்}
@@ -1929,6 +1934,15 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}இல�
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}ஒளி அமைப்புகள்
+
+# Linkgraph legend window
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}அனைத்தும்
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}ஒன்றுமில்லை
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}கட்டப்பட வேண்டிய நிறுவனங்களைத் தேர்ந்தெடு
+
+# Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}பயன்படுத்தப்படவில்லை
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}அளவிற்கு அதிகமாக ஏற்றப்பட்டுள்ளது
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}செயல்படும் பகுதியினை குறிக்கவும்

@@ -2153,6 +2153,10 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Virkja/a
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Virkja/afvirkja gegnsæji hleðslumæla. Ctrl+smella til að læsa
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gera hluti ósýnilega en ekki gagnsæja
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Svæði sem tilheyrir stöð
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Fela
@@ -3093,6 +3097,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Framlei�
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% flutt)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Miðja aðalsjónarhorn á iðnað. Ctrl+smelltu til að opna sýnisglugga yfir þessum iðnaði
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Framleiðsla: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Iðnaðurinn hefur tilkynnt yfirvofandi lokun.
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Þarf: {YELLOW}{STRING}{STRING}

@@ -471,6 +471,7 @@ STR_FILE_MENU_EXIT                                              :Izlaz
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Karta svijeta
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Dodatni pogled
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda protoka tereta
 STR_MAP_MENU_SIGN_LIST                                          :Popis znakova
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Popis gradova
@@ -758,17 +759,20 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Karta - 
 STR_SMALLMAP_TYPE_CONTOURS                                      :Obrisi
 STR_SMALLMAP_TYPE_VEHICLES                                      :Vozila
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrije
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :Protok tereta
 STR_SMALLMAP_TYPE_ROUTES                                        :Trase
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetacija
 STR_SMALLMAP_TYPE_OWNERS                                        :Vlasnici
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Pokaži obrise zemlje na karti
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Pokaži vozila na karti
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Pokaži industrije na karti
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Prikaži protok tereta na mapi
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Pokaži prijevozne trase na karti
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Pokaži vegetaciju na karti
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Pokaži vlasnike zemlje na karti
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klikni na tip industrije za njen prikaz. Ctrl+Klik isključuje sve tipove industrije osim odabrane. Ponovni Ctrl+Klik uključuje sve tipove industrije.
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klikni na kompaniju za prikaz njenog vlasništva. Ctrl+Klik isključuje sve kompanije osim odabrane. Ponovni Ctrl+Klik uključuje sve kompanije.
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Klikni na teret za odabir prikaza njegovih svojstava. Ctrl+Klik isključuje sve terete osim odabranog. Ponovljeni Ctrl+Klik opet uključuje sve terete.
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Ceste
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Željeznice
@@ -802,6 +806,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Prikaži/sakrij imena gradova na karti
 STR_SMALLMAP_CENTER                                             :{BLACK}Centriraj malu kartu na trenutni položaj
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Onemogući sve
@@ -812,6 +817,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Prikaži
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Aktiviraj prikaz visinske karte
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Prikaži sve što nije vlasništvo kompanije na mapi
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Prikaži sve vlasništvo kompanije na mapi
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Prikaži bez tereta na mapi
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Prikaži sve terete na mapi
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Pokaži zadnju poruku ili vijest
@@ -1879,6 +1886,10 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Promijen
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Više igrača
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Sa oglasima
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Odaberi između igre s oglasima (internet) i bez oglasa (Local Area Network, LAN)
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ne
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Da
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ime igrača:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Ovo je ime po kojem će te drugi igrači raspoznavati
 
@@ -1937,6 +1948,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Ime igre
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Postavi zaporku
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Zaštiti svoju igru pomoću zaporke ukoliko ne želiš da bude javno dostupna
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :Ne
+STR_NETWORK_START_SERVER_ADVERTISED                             :Da
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klijen{P t ta ata}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maks klijenata:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Izaberi maksimalan broj klijenata. Ne moraju sva mjesta biti popunjena.
@@ -2247,6 +2260,17 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Namjesti
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Aktiviraj prozirnost za viseće žice. Ctrl+klik za zaključavanje
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Namjesti prozirnost za indikatore učitavanja. Ctrl+klik za zaključavanje
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Učini objekte nevidljivima umjesto prozirnima
+
+# Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legenda protoka tereta
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Sve
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Ništa
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Odaberi kompanije koje će se prikazati
+
+# Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}nekorišten
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}zasićen
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}prekrcan
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Označavanje područja pokrivanja

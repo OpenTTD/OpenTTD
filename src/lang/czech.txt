@@ -1446,9 +1446,9 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Přehrávat zvu
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Noviny: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Přehrát zvuk při zobrazení novin
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Konec roku: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Přehrát zvukový efekty na konci roku shrnující výkon společnosti v porovnání s předchozím rokem
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Na konci roku přehrát zvuk shrnující výkon společnosti v porovnání s předchozím rokem
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Výstavba: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Přehrávat zvukové efekty vozidel
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Přehrávat zvuk při úspěšných stavbách a dalších akcích
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Kliknutí na tlačítko: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Pípnutí při kliku na tlačítko
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastrofy/nehody: {STRING}
@@ -2233,6 +2233,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Změna p
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Změna průhlednosti elektrifikace. Nastavení se zamkne Ctrl+kliknutím
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Přepnout zobrazení ukazatelů naložení. Nastavení se zamkne Ctrl+kliknutím
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Objekty budou neviditelné, ne průhledné
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Zvýraznění oblasti pokrytí

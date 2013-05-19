@@ -1744,9 +1744,9 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Odtwarzaj dźwi
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Gazeta: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Odtwarzaj dźwięk po wyświetleniu gazety
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Koniec roku: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Odtwarzaj dźwięk na koniec roku podsumowując roczne postępy przedsiębiorstwa w porównaniu do roku poprzedniego
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Odtwarzaj dźwięk na koniec roku podsumowując roczną sytuację przedsiębiorstwa w porównaniu do roku poprzedniego
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Budowa: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Odtwarzaj efekt dźwiękowy po udanej konstrukcji lub innych czynnościach
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Odtwarzaj dźwięk po udanej budowie lub innych działaniach
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Kliknięcia: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Dźwięk przy kliknięciach
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Wypadki/katastrofy: {STRING}
@@ -2531,6 +2531,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Przełą
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Przełącz przeźroczystość dla trakcji (linii nośnych). Ctrl+klik, aby zablokować
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Przełącz przeźroczystość dla wskaźników załadunku. Ctrl+klik, aby zablokować
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ustaw obiekty jako niewidoczne zamiast przeźroczyste
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Podświetlaj zasięg
@@ -3472,6 +3476,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Wyproduk
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% przetransportowano)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centruj główny widok na przedsiębiorstwie. Ctrl+klik otwiera nowy podgląd na pozycji przedsiębiorstwa
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Poziom produkcji: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Przedsiębiorstwo ogłosiło likwidację!
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Wymaga: {YELLOW}{STRING}{STRING}
@@ -4103,7 +4108,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełni
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Wymagany
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Zaplanowany
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Przełącz między wymaganymi i zaplanowanymi
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Przełącz między spodziewanymi i zaplanowanymi
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :P:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :O:

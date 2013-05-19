@@ -1740,6 +1740,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Broyt sl
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hópspæl
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nei
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spælara navn:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Hetta er navni aðrir spælarir fara at kenna teg vi
 
@@ -1798,6 +1800,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Aðrir s
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Áset loyniorð
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Verj títt spæl við einum loyniorðið um tú ikki vil at ta skal verða opi fyri almenninginum
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :Nei
+STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" ar}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Mest loyvdir klientar:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Vel mest loyvda tali av klientum. Ta er ikki neyðugt at fylla øll plássini
@@ -2107,6 +2111,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Tendra/s
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Tendra/sløkk gjøgnumskygni fyri ketulinju. Ctrl+trýst fyri at læsa
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Tendra/sløkk gjøgnumskygni fyri lessingar vísarar. Ctrl+trýst fyri at læsa
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ger lutir ósjónligar heldur enn gjøgnumskygdar
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Hálýsing av deknings øki

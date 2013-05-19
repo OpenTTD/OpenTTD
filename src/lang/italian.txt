@@ -532,18 +532,18 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafico margine operativo
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafico ricavi
-STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unità di merce consegnate
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unità di carico consegnate
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Valutazione prestazioni compagnie (massima valutazione=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valore delle compagnie
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tariffe di pagamento carichi
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Giorni di viaggio
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pagamento per la consegna di 10 unità (o 10.000 litri) di merce alla distanza di 20 riquadri
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pagamento per la consegna di 10 unità (o 10.000 litri) di carico alla distanza di 20 riquadri
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Abilita tutti
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Disabilita tutti
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostra tutti i tipi di carico sul grafico delle tariffe
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Non mostra alcun tipo di carico sul grafico delle tariffe
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Attiva/disattiva il grafico per il tipo di merce
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Attiva/disattiva il grafico per il tipo di carico
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostra valutazione dettagliata prestazioni
@@ -589,8 +589,8 @@ STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Numero d
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Profitto del veicolo con ricavi minori (sono considerati solo i veicoli più vecchi di due anni)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Ammontare di denaro guadagnato nel trimestre con il minimo profitto degli ultimi 12 trimestri
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Ammontare di denaro guadagnato nel trimestre con il massimo profitto degli ultimi 12 trimestri
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unità di merce consegnate negli ultimi quattro trimestri
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Tipi di merci consegnati nell'ultimo trimestre
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unità di carico consegnate negli ultimi quattro trimestri
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Tipi di carico consegnati nell'ultimo trimestre
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Ammontare di denaro di questa compagnia in banca
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}L'ammontare di denaro che questa compagnia ha preso in prestito
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Punteggio totale rispetto al massimo realizzabile
@@ -708,6 +708,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Attiva/disattiva la visualizzazione dei nomi delle città sulla mappa
 STR_SMALLMAP_CENTER                                             :{BLACK}Centra la minimappa sulla posizione corrente
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Disabilita tutti
@@ -1474,8 +1475,8 @@ STR_CONFIG_SETTING_NEWS_ADVICE                                  :Consigli / info
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Mostra messaggi sui veicoli che richiedono attenzione
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nuovi veicoli: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Mostra un giornale quando un nuovo tipo di veicolo diventa disponibile
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Cambiamenti della merce accettata: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Mostra messaggi sui cambiamenti delle merci accettate dalle stazioni
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Cambiamenti dei carichi accettati: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Mostra messaggi sui cambiamenti delle carichi accettati dalle stazioni
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Sussidi: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Mostra un giornale su avvenimenti relativi ai sussidi
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informazioni generali: {STRING}
@@ -1807,6 +1808,10 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambia l
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multigiocatore
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Pubblico
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Sceglie fra partita pubblica (su Internet) o privata (su rete locale, LAN)
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :No
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Sì
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nome giocatore:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Questo è il nome con cui si verrà identificati dagli altri giocatori
 
@@ -1865,6 +1870,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Il nome 
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Imposta password
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protegge la partita con una password in modo che non sia accessibile pubblicamente
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :No
+STR_NETWORK_START_SERVER_ADVERTISED                             :Sì
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Limite client:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Imposta il numero massimo di client. Non tutti i posti dovranno essere occupati
@@ -2176,6 +2183,10 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Attiva/d
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Attiva/disattiva la trasparenza degli indicatori di caricamento. CTRL+clic per bloccare
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Rendi gli oggetti invisibili invece che trasparenti
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Evidenzia area coperta
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Off
@@ -2479,7 +2490,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Tipo aer
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Nome aeroporto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nome blocco aeroporto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Merce accettata: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carichi accettati: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Limite di velocità rotaie: {LTBLUE}{VELOCITY}
 
@@ -2956,8 +2967,8 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nessuna -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleziona tutti i fabbricati
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Seleziona tutti i tipi di merce (comprese le merci non in attesa)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Non c'è nessun tipo di merce in attesa
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Seleziona tutti i tipi di carico (inclusi i carichi non in attesa)
+STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Non c'è nessun tipo di carico in attesa
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -2967,7 +2978,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} riservati per il caricamento)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accetta
-STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostra la lista delle merci accettate
+STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostra la lista dei carichi accettati
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accetta: {WHITE}{CARGO_LIST}
 
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Questa stazione gode di diritti di trasporto esclusivi in questa città.
