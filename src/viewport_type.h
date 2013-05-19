@@ -15,6 +15,8 @@
 #include "zoom_type.h"
 #include "strings_type.h"
 
+class LinkGraphOverlay;
+
 /**
  * Data structure for viewport, display of a part of the world
  */
@@ -30,6 +32,7 @@ struct ViewPort {
 	int virtual_height;  ///< height << zoom
 
 	ZoomLevel zoom; ///< The zoom level of the viewport.
+	LinkGraphOverlay *overlay;
 };
 
 /** Margins for the viewport sign */

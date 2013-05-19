@@ -29,6 +29,7 @@
 #include "company_func.h"
 #include "toolbar_gui.h"
 #include "statusbar_gui.h"
+#include "linkgraph/linkgraph_gui.h"
 #include "tilehighlight_func.h"
 #include "hotkeys.h"
 
@@ -239,6 +240,11 @@ enum {
 
 struct MainWindow : Window
 {
+	uint refresh;
+
+	static const uint LINKGRAPH_REFRESH_PERIOD = 0xff;
+	static const uint LINKGRAPH_DELAY = 0xf;
+
 	MainWindow() : Window()
 	{
 		this->InitNested(&_main_window_desc, 0);
@@ -247,6 +253,18 @@ struct MainWindow : Window
 
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_M_VIEWPORT);
 		nvp->InitializeViewport(this, TileXY(32, 32), ZOOM_LVL_VIEWPORT);
+
+		this->viewport->overlay = new LinkGraphOverlay(this, WID_M_VIEWPORT, 0, 0, 3);
+		this->refresh = LINKGRAPH_DELAY;
+	}
+
+	virtual void OnTick()
+	{
+		if (--refresh == 0) {
+			this->viewport->overlay->RebuildCache();
+			this->GetWidget<NWidgetBase>(WID_M_VIEWPORT)->SetDirty(this);
+			this->refresh = LINKGRAPH_REFRESH_PERIOD;
+		}
 	}
 
 	virtual void OnPaint()
@@ -416,6 +434,7 @@ struct MainWindow : Window
 		this->viewport->scrollpos_y += ScaleByZoom(delta.y, this->viewport->zoom);
 		this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
 		this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
+		this->refresh = LINKGRAPH_DELAY;
 	}
 
 	virtual void OnMouseWheel(int wheel)
@@ -430,6 +449,7 @@ struct MainWindow : Window
 		if (this->viewport != NULL) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_M_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
+			this->refresh = LINKGRAPH_DELAY;
 		}
 	}
 

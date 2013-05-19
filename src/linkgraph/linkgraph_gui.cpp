@@ -11,6 +11,7 @@
 
 #include "../stdafx.h"
 #include "../window_gui.h"
+#include "../window_func.h"
 #include "../company_base.h"
 #include "../company_gui.h"
 #include "../date_func.h"
@@ -268,7 +269,12 @@ void LinkGraphOverlay::DrawStationDots(const DrawPixelInfo *dpi) const
  */
 Point LinkGraphOverlay::GetStationMiddle(const Station *st) const
 {
-	return static_cast<const SmallMapWindow *>(this->window)->GetStationMiddle(st);
+	if (this->window->viewport != NULL) {
+		return GetViewportStationMiddle(this->window->viewport, st);
+	} else {
+		/* assume this is a smallmap */
+		return static_cast<const SmallMapWindow *>(this->window)->GetStationMiddle(st);
+	}
 }
 
 /**
@@ -393,7 +399,7 @@ LinkGraphLegendWindow::LinkGraphLegendWindow(const WindowDesc *desc, int window_
 {
 	this->InitNested(desc, window_number);
 	this->InvalidateData(0);
-	//this->SetOverlay(FindWindowById(WC_MAIN_WINDOW, 0)->viewport->overlay);
+	this->SetOverlay(FindWindowById(WC_MAIN_WINDOW, 0)->viewport->overlay);
 }
 
 /**

@@ -16,6 +16,7 @@
 #include "viewport_type.h"
 #include "window_type.h"
 #include "tile_type.h"
+#include "station_type.h"
 
 static const int TILE_HEIGHT_STEP = 50; ///< One Z unit tile height difference is displayed as 50m.
 
@@ -67,6 +68,8 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 bool ScrollWindowToTile(TileIndex tile, Window *w, bool instant = false);
 bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant = false);
 
+void RebuildViewportOverlay(Window *w);
+
 bool ScrollMainWindowToTile(TileIndex tile, bool instant = false);
 bool ScrollMainWindowTo(int x, int y, int z = -1, bool instant = false);
 
@@ -75,5 +78,7 @@ void UpdateAllVirtCoords();
 extern Point _tile_fract_coords;
 
 void MarkTileDirtyByTile(TileIndex tile);
+
+Point GetViewportStationMiddle(const ViewPort *vp, const Station *st);
 
 #endif /* VIEWPORT_FUNC_H */

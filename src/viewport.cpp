@@ -45,6 +45,7 @@
 #include "window_func.h"
 #include "tilehighlight_func.h"
 #include "window_gui.h"
+#include "linkgraph/linkgraph_gui.h"
 
 #include "table/strings.h"
 #include "table/palettes.h"
@@ -217,6 +218,8 @@ void InitializeWindowViewport(Window *w, int x, int y,
 	vp->scrollpos_y = pt.y;
 	vp->dest_scrollpos_x = pt.x;
 	vp->dest_scrollpos_y = pt.y;
+
+	vp->overlay = NULL;
 
 	w->viewport = vp;
 	vp->virtual_left = 0;//pt.x;
@@ -1399,22 +1402,8 @@ static void ViewportDrawDirtyBlocks()
 	} while (--bottom > 0);
 }
 
-static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVector *sstdv)
+static void ViewportDrawStrings(ZoomLevel zoom, const StringSpriteToDrawVector *sstdv)
 {
-	DrawPixelInfo dp;
-	ZoomLevel zoom;
-
-	_cur_dpi = &dp;
-	dp = *dpi;
-
-	zoom = dp.zoom;
-	dp.zoom = ZOOM_LVL_NORMAL;
-
-	dp.left   = UnScaleByZoom(dp.left,   zoom);
-	dp.top    = UnScaleByZoom(dp.top,    zoom);
-	dp.width  = UnScaleByZoom(dp.width,  zoom);
-	dp.height = UnScaleByZoom(dp.height, zoom);
-
 	const StringSpriteToDraw *ssend = sstdv->End();
 	for (const StringSpriteToDraw *ss = sstdv->Begin(); ss != ssend; ++ss) {
 		TextColour colour = TC_BLACK;
@@ -1497,7 +1486,24 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	if (_draw_bounding_boxes) ViewportDrawBoundingBoxes(&_vd.parent_sprites_to_sort);
 	if (_draw_dirty_blocks) ViewportDrawDirtyBlocks();
 
-	if (_vd.string_sprites_to_draw.Length() != 0) ViewportDrawStrings(&_vd.dpi, &_vd.string_sprites_to_draw);
+	DrawPixelInfo dp = _vd.dpi;
+	ZoomLevel zoom = _vd.dpi.zoom;
+	dp.zoom = ZOOM_LVL_NORMAL;
+	dp.width = UnScaleByZoom(dp.width, zoom);
+	dp.height = UnScaleByZoom(dp.height, zoom);
+	_cur_dpi = &dp;
+
+	/* translate to window coordinates */
+	dp.left = x;
+	dp.top = y;
+
+	if (vp->overlay != NULL) vp->overlay->Draw(&dp);
+
+	/* translate back to world coordinates */
+	dp.left = UnScaleByZoom(_vd.dpi.left, zoom);
+	dp.top = UnScaleByZoom(_vd.dpi.top, zoom);
+
+	if (_vd.string_sprites_to_draw.Length() != 0) ViewportDrawStrings(zoom, &_vd.string_sprites_to_draw);
 
 	_cur_dpi = old_dpi;
 
@@ -1613,6 +1619,7 @@ void UpdateViewportPosition(Window *w)
 		int delta_x = w->viewport->dest_scrollpos_x - w->viewport->scrollpos_x;
 		int delta_y = w->viewport->dest_scrollpos_y - w->viewport->scrollpos_y;
 
+		bool update_overlay = false;
 		if (delta_x != 0 || delta_y != 0) {
 			if (_settings_client.gui.smooth_scroll) {
 				int max_scroll = ScaleByMapSize1D(512 * ZOOM_LVL_BASE);
@@ -1623,11 +1630,14 @@ void UpdateViewportPosition(Window *w)
 				w->viewport->scrollpos_x = w->viewport->dest_scrollpos_x;
 				w->viewport->scrollpos_y = w->viewport->dest_scrollpos_y;
 			}
+			update_overlay = (w->viewport->scrollpos_x == w->viewport->dest_scrollpos_x &&
+								w->viewport->scrollpos_y == w->viewport->dest_scrollpos_y);
 		}
 
 		ClampViewportToMap(vp, w->viewport->scrollpos_x, w->viewport->scrollpos_y);
 
 		SetViewportPosition(w, w->viewport->scrollpos_x, w->viewport->scrollpos_y);
+		if (update_overlay) RebuildViewportOverlay(w);
 	}
 }
 
@@ -1987,6 +1997,15 @@ bool HandleViewportClicked(const ViewPort *vp, int x, int y)
 	return result;
 }
 
+void RebuildViewportOverlay(Window *w)
+{
+	if (w->viewport->overlay != NULL &&
+			w->viewport->overlay->GetCompanyMask() != 0 &&
+			w->viewport->overlay->GetCargoMask() != 0) {
+		w->viewport->overlay->RebuildCache();
+		w->SetDirty();
+	}
+}
 
 /**
  * Scrolls the viewport in a window to a given location.
@@ -2010,6 +2029,7 @@ bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant)
 	if (instant) {
 		w->viewport->scrollpos_x = pt.x;
 		w->viewport->scrollpos_y = pt.y;
+		RebuildViewportOverlay(w);
 	}
 
 	w->viewport->dest_scrollpos_x = pt.x;
@@ -2965,4 +2985,16 @@ void SetObjectToPlace(CursorID icon, PaletteID pal, HighLightStyle mode, WindowC
 void ResetObjectToPlace()
 {
 	SetObjectToPlace(SPR_CURSOR_MOUSE, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
+}
+
+Point GetViewportStationMiddle(const ViewPort *vp, const Station *st)
+{
+	int x = TileX(st->xy) * TILE_SIZE;
+	int y = TileY(st->xy) * TILE_SIZE;
+	int z = GetSlopePixelZ(Clamp(x, 0, MapSizeX() * TILE_SIZE - 1), Clamp(y, 0, MapSizeY() * TILE_SIZE - 1));
+
+	Point p = RemapCoords(x, y, z);
+	p.x = UnScaleByZoom(p.x - vp->virtual_left, vp->zoom) + vp->left;
+	p.y = UnScaleByZoom(p.y - vp->virtual_top, vp->zoom) + vp->top;
+	return p;
 }

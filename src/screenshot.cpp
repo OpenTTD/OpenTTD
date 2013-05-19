@@ -781,6 +781,7 @@ void SetupScreenshotViewport(ScreenshotType t, ViewPort *vp)
 	vp->top = 0;
 	vp->width  = UnScaleByZoom(vp->virtual_width,  vp->zoom);
 	vp->height = UnScaleByZoom(vp->virtual_height, vp->zoom);
+	vp->overlay = NULL;
 }
 
 /**
