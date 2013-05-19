@@ -399,6 +399,7 @@ core/pool_type.hpp
 core/random_func.cpp
 core/random_func.hpp
 core/smallmap_type.hpp
+core/smallmatrix_type.hpp
 core/smallvec_type.hpp
 core/sort_func.hpp
 core/string_compare_type.hpp

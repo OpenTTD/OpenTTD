@@ -1176,6 +1176,9 @@
     <ClInclude Include="..\src\core\smallmap_type.hpp">
       <Filter>Core Source Code</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\core\smallmatrix_type.hpp">
+      <Filter>Core Source Code</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\core\smallvec_type.hpp">
       <Filter>Core Source Code</Filter>
     </ClInclude>

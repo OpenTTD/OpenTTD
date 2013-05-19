@@ -649,6 +649,7 @@
     <ClCompile Include="..\src\core\random_func.cpp" />
     <ClInclude Include="..\src\core\random_func.hpp" />
     <ClInclude Include="..\src\core\smallmap_type.hpp" />
+    <ClInclude Include="..\src\core\smallmatrix_type.hpp" />
     <ClInclude Include="..\src\core\smallvec_type.hpp" />
     <ClInclude Include="..\src\core\sort_func.hpp" />
     <ClInclude Include="..\src\core\string_compare_type.hpp" />
