@@ -73,16 +73,18 @@ struct NullStruct {
 
 /** Type of reference (#SLE_REF, #SLE_CONDREF). */
 enum SLRefType {
-	REF_ORDER         = 0, ///< Load/save a reference to an order.
-	REF_VEHICLE       = 1, ///< Load/save a reference to a vehicle.
-	REF_STATION       = 2, ///< Load/save a reference to a station.
-	REF_TOWN          = 3, ///< Load/save a reference to a town.
-	REF_VEHICLE_OLD   = 4, ///< Load/save an old-style reference to a vehicle (for pre-4.4 savegames).
-	REF_ROADSTOPS     = 5, ///< Load/save a reference to a bus/truck stop.
-	REF_ENGINE_RENEWS = 6, ///< Load/save a reference to an engine renewal (autoreplace).
-	REF_CARGO_PACKET  = 7, ///< Load/save a reference to a cargo packet.
-	REF_ORDERLIST     = 8, ///< Load/save a reference to an orderlist.
-	REF_STORAGE       = 9, ///< Load/save a reference to a persistent storage.
+	REF_ORDER          =  0, ///< Load/save a reference to an order.
+	REF_VEHICLE        =  1, ///< Load/save a reference to a vehicle.
+	REF_STATION        =  2, ///< Load/save a reference to a station.
+	REF_TOWN           =  3, ///< Load/save a reference to a town.
+	REF_VEHICLE_OLD    =  4, ///< Load/save an old-style reference to a vehicle (for pre-4.4 savegames).
+	REF_ROADSTOPS      =  5, ///< Load/save a reference to a bus/truck stop.
+	REF_ENGINE_RENEWS  =  6, ///< Load/save a reference to an engine renewal (autoreplace).
+	REF_CARGO_PACKET   =  7, ///< Load/save a reference to a cargo packet.
+	REF_ORDERLIST      =  8, ///< Load/save a reference to an orderlist.
+	REF_STORAGE        =  9, ///< Load/save a reference to a persistent storage.
+	REF_LINK_GRAPH     = 10, ///< Load/save a reference to a link graph.
+	REF_LINK_GRAPH_JOB = 11, ///< Load/save a reference to a link graph job.
 };
 
 /** Highest possible savegame version. */

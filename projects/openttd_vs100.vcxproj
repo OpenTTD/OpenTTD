@@ -811,6 +811,7 @@
     <ClCompile Include="..\src\saveload\group_sl.cpp" />
     <ClCompile Include="..\src\saveload\industry_sl.cpp" />
     <ClCompile Include="..\src\saveload\labelmaps_sl.cpp" />
+    <ClCompile Include="..\src\saveload\linkgraph_sl.cpp" />
     <ClCompile Include="..\src\saveload\map_sl.cpp" />
     <ClCompile Include="..\src\saveload\misc_sl.cpp" />
     <ClCompile Include="..\src\saveload\newgrf_sl.cpp" />

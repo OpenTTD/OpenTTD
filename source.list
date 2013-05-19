@@ -570,6 +570,7 @@ saveload/goal_sl.cpp
 saveload/group_sl.cpp
 saveload/industry_sl.cpp
 saveload/labelmaps_sl.cpp
+saveload/linkgraph_sl.cpp
 saveload/map_sl.cpp
 saveload/misc_sl.cpp
 saveload/newgrf_sl.cpp
