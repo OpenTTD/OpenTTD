@@ -24,6 +24,7 @@
 #include "roadstop_base.h"
 #include "industry.h"
 #include "core/random_func.hpp"
+#include "linkgraph/linkgraph.h"
 
 #include "table/strings.h"
 
@@ -63,7 +64,8 @@ Station::Station(TileIndex tile) :
 }
 
 /**
- * Clean up a station by clearing vehicle orders and invalidating windows.
+ * Clean up a station by clearing vehicle orders, invalidating windows and
+ * removing link stats.
  * Aircraft-Hangar orders need special treatment here, as the hangars are
  * actually part of a station (tiletype is STATION), but the order type
  * is OT_GOTO_DEPOT.
@@ -87,11 +89,24 @@ Station::~Station()
 		if (a->targetairport == this->index) a->targetairport = INVALID_STATION;
 	}
 
+	for (CargoID c = 0; c < NUM_CARGO; ++c) {
+		LinkGraph *lg = LinkGraph::GetIfValid(this->goods[c].link_graph);
+		if (lg != NULL) {
+			lg->RemoveNode(this->goods[c].node);
+			if (lg->Size() == 0) {
+				delete lg;
+			}
+		}
+	}
+
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		/* Forget about this station if this station is removed */
 		if (v->last_station_visited == this->index) {
 			v->last_station_visited = INVALID_STATION;
+		}
+		if (v->last_loading_station == this->index) {
+			v->last_loading_station = INVALID_STATION;
 		}
 	}
 

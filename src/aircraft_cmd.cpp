@@ -271,13 +271,16 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *
 		v->spritenum = avi->image_index;
 
 		v->cargo_cap = avi->passenger_capacity;
+		v->refit_cap = 0;
 		u->cargo_cap = avi->mail_capacity;
+		u->refit_cap = 0;
 
 		v->cargo_type = e->GetDefaultCargoType();
 		u->cargo_type = CT_MAIL;
 
 		v->name = NULL;
 		v->last_station_visited = INVALID_STATION;
+		v->last_loading_station = INVALID_STATION;
 
 		v->acceleration = avi->acceleration;
 		v->engine_type = e->index;

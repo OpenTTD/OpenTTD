@@ -355,6 +355,7 @@ void AddArticulatedParts(Vehicle *first)
 					t->cargo_type = front->cargo_type; // Needed for livery selection
 					t->cargo_cap = 0;
 				}
+				t->refit_cap = 0;
 
 				t->SetArticulatedPart();
 				break;
@@ -381,6 +382,7 @@ void AddArticulatedParts(Vehicle *first)
 					rv->cargo_type = front->cargo_type; // Needed for livery selection
 					rv->cargo_cap = 0;
 				}
+				rv->refit_cap = 0;
 
 				rv->SetArticulatedPart();
 				break;

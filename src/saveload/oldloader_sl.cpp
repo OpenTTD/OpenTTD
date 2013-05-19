@@ -1252,6 +1252,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 
 			if (!LoadChunk(ls, v, vehicle_chunk)) return false;
 			if (v == NULL) continue;
+			v->refit_cap = v->cargo_cap;
 
 			SpriteID sprite = v->cur_image;
 			/* no need to override other sprites */

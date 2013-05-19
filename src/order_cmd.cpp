@@ -20,6 +20,7 @@
 #include "vehicle_func.h"
 #include "depot_base.h"
 #include "core/pool_func.hpp"
+#include "core/random_func.hpp"
 #include "aircraft.h"
 #include "roadveh.h"
 #include "station_base.h"
@@ -347,6 +348,87 @@ Order *OrderList::GetOrderAt(int index) const
 		order = order->next;
 	}
 	return order;
+}
+
+/**
+ * Get the next order which will make the given vehicle stop at a station
+ * or refit at a depot if its state doesn't change.
+ * @param v The vehicle in question.
+ * @param next The order to start looking at.
+ * @param hops The number of orders we have already looked at.
+ * @return Either an order or NULL if the vehicle won't stop anymore.
+ */
+const Order *OrderList::GetNextStoppingOrder(const Vehicle *v, const Order *next, uint hops) const
+{
+	if (hops > this->GetNumOrders() || next == NULL) return NULL;
+
+	if (next->IsType(OT_CONDITIONAL)) {
+		if (next->GetConditionVariable() == OCV_LOAD_PERCENTAGE) {
+			/* If the condition is based on load percentage we can't
+			 * tell what it will do. So we choose randomly. */
+			const Order *skip_to = this->GetNextStoppingOrder(v,
+					this->GetOrderAt(next->GetConditionSkipToOrder()),
+					hops + 1);
+			const Order *advance = this->GetNextStoppingOrder(v,
+					this->GetNext(next), hops + 1);
+			if (advance == NULL) return skip_to;
+			if (skip_to == NULL) return advance;
+			return RandomRange(2) == 0 ? skip_to : advance;
+		}
+		/* Otherwise we're optimistic and expect that the
+		 * condition value won't change until it's evaluated. */
+		VehicleOrderID skip_to = ProcessConditionalOrder(next, v);
+		if (skip_to != INVALID_VEH_ORDER_ID) {
+			return this->GetNextStoppingOrder(v, this->GetOrderAt(skip_to),
+					hops + 1);
+		}
+		return this->GetNextStoppingOrder(v, this->GetNext(next), hops + 1);
+	}
+
+	if (next->IsType(OT_GOTO_DEPOT)) {
+		if (next->GetDepotActionType() == ODATFB_HALT) return NULL;
+		if (next->IsRefit()) return next;
+	}
+
+	if (!next->CanLoadOrUnload()) {
+		return this->GetNextStoppingOrder(v, this->GetNext(next), hops + 1);
+	}
+
+	return next;
+}
+
+/**
+ * Recursively determine the next deterministic station to stop at.
+ * @param v The vehicle we're looking at.
+ * @return Next stoppping station or INVALID_STATION.
+ */
+StationID OrderList::GetNextStoppingStation(const Vehicle *v) const
+{
+
+	const Order *next = this->GetOrderAt(v->cur_implicit_order_index);
+	if (next == NULL) {
+		next = this->GetFirstOrder();
+		if (next == NULL) return INVALID_STATION;
+	} else {
+		/* GetNext never returns NULL if there is a valid station in the list.
+		 * As the given "next" is already valid and a station in the list, we
+		 * don't have to check for NULL here.
+		 */
+		next = this->GetNext(next);
+		assert(next != NULL);
+	}
+
+	uint hops = 0;
+	do {
+		next = this->GetNextStoppingOrder(v, next, ++hops);
+		/* Don't return a next stop if the vehicle has to unload everything. */
+		if (next == NULL || (next->GetDestination() == v->last_station_visited &&
+				(next->GetUnloadType() & (OUFB_TRANSFER | OUFB_UNLOAD)) == 0)) {
+			return INVALID_STATION;
+		}
+	} while (next->IsType(OT_GOTO_DEPOT) || next->GetDestination() == v->last_station_visited);
+
+	return next->GetDestination();
 }
 
 /**
@@ -1044,10 +1126,10 @@ CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
+		if (v->current_order.IsType(OT_LOADING)) v->LeaveStation();
+
 		v->cur_implicit_order_index = v->cur_real_order_index = sel_ord;
 		v->UpdateRealOrderIndex();
-
-		if (v->current_order.IsType(OT_LOADING)) v->LeaveStation();
 
 		InvalidateVehicleOrder(v, VIWD_MODIFY_ORDERS);
 	}
@@ -2121,4 +2203,24 @@ bool Order::ShouldStopAtStation(const Vehicle *v, StationID station) const
 			v->last_station_visited != station && // Do stop only when we've not just been there
 			/* Finally do stop when there is no non-stop flag set for this type of station. */
 			!(this->GetNonStopType() & (is_dest_station ? ONSF_NO_STOP_AT_DESTINATION_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS));
+}
+
+bool Order::CanLoadOrUnload() const
+{
+	return (this->IsType(OT_GOTO_STATION) || this->IsType(OT_IMPLICIT)) &&
+			(this->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) == 0 &&
+			((this->GetLoadType() & OLFB_NO_LOAD) == 0 ||
+			(this->GetUnloadType() & OUFB_NO_UNLOAD) == 0);
+}
+
+/**
+ * A vehicle can leave the current station with cargo if:
+ * 1. it can load cargo here OR
+ * 2a. it could leave the last station with cargo AND
+ * 2b. it doesn't have to unload all cargo here.
+ */
+bool Order::CanLeaveWithCargo(bool has_cargo) const
+{
+	return (this->GetLoadType() & OLFB_NO_LOAD) == 0 || (has_cargo &&
+			(this->GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) == 0);
 }

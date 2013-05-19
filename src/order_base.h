@@ -168,6 +168,9 @@ public:
 	inline void SetConditionValue(uint16 value) { SB(this->dest, 0, 11, value); }
 
 	bool ShouldStopAtStation(const Vehicle *v, StationID station) const;
+	bool CanLoadOrUnload() const;
+	bool CanLeaveWithCargo(bool has_cargo) const;
+
 	TileIndex GetLocation(const Vehicle *v, bool airport = false) const;
 
 	/** Checks if this order has travel_time and if needed wait_time set. */
@@ -239,6 +242,14 @@ public:
 	inline Order *GetLastOrder() const { return this->GetOrderAt(this->num_orders - 1); }
 
 	/**
+	 * Get the order after the given one or the first one, if the given one is the
+	 * last one.
+	 * @param curr Order to find the next one for.
+	 * @return Next order.
+	 */
+	inline const Order *GetNext(const Order *curr) const { return (curr->next == NULL) ? this->GetFirstOrder() : curr->next; }
+
+	/**
 	 * Get number of orders in the order list.
 	 * @return number of orders in the chain.
 	 */
@@ -249,6 +260,9 @@ public:
 	 * @return number of manual orders in the chain.
 	 */
 	inline VehicleOrderID GetNumManualOrders() const { return this->num_manual_orders; }
+
+	StationID GetNextStoppingStation(const Vehicle *v) const;
+	const Order *GetNextStoppingOrder(const Vehicle *v, const Order *next, uint hops) const;
 
 	void InsertOrderAt(Order *new_order, int index);
 	void DeleteOrderAt(int index);

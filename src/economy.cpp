@@ -1615,6 +1615,13 @@ static void LoadUnloadVehicle(Vehicle *front)
 			} else if (cargo_not_full != 0) {
 				finished_loading = false;
 			}
+
+			/* Refresh next hop stats if we're full loading to make the links
+			 * known to the distribution algorithm and allow cargo to be sent
+			 * along them. Otherwise the vehicle could wait for cargo
+			 * indefinitely if it hasn't visited the other links yet, or if the
+			 * links die while it's loading. */
+			if (!finished_loading) front->RefreshNextHopsStats();
 		}
 		unloading_time = 20;
 

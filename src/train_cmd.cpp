@@ -200,7 +200,9 @@ void Train::ConsistChanged(bool same_length)
 			}
 		}
 
-		u->cargo_cap = e_u->DetermineCapacity(u);
+		uint16 new_cap = e_u->DetermineCapacity(u);
+		u->refit_cap = min(new_cap, u->refit_cap);
+		u->cargo_cap = new_cap;
 		u->vcache.cached_cargo_age_period = GetVehicleProperty(u, PROP_TRAIN_CARGO_AGE_PERIOD, e_u->info.cargo_age_period);
 
 		/* check the vehicle length (callback) */
@@ -606,6 +608,7 @@ static CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const 
 
 		v->cargo_type = e->GetDefaultCargoType();
 		v->cargo_cap = rvi->capacity;
+		v->refit_cap = 0;
 
 		v->railtype = rvi->railtype;
 
@@ -673,6 +676,7 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
 	u->cargo_type = v->cargo_type;
 	u->cargo_subtype = v->cargo_subtype;
 	u->cargo_cap = v->cargo_cap;
+	u->refit_cap = v->refit_cap;
 	u->railtype = v->railtype;
 	u->engine_type = v->engine_type;
 	u->build_year = v->build_year;
@@ -725,7 +729,9 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 		v->spritenum = rvi->image_index;
 		v->cargo_type = e->GetDefaultCargoType();
 		v->cargo_cap = rvi->capacity;
+		v->refit_cap = 0;
 		v->last_station_visited = INVALID_STATION;
+		v->last_loading_station = INVALID_STATION;
 
 		v->engine_type = e->index;
 		v->gcache.first_engine = INVALID_ENGINE; // needs to be set before first callback

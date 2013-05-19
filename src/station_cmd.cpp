@@ -50,6 +50,7 @@
 #include "order_backup.h"
 #include "newgrf_house.h"
 #include "company_gui.h"
+#include "linkgraph/linkgraph_base.h"
 #include "widgets/station_widget.h"
 
 #include "table/strings.h"
@@ -559,7 +560,7 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 
 	/* Adjust in case our station only accepts fewer kinds of goods */
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		uint amt = min(acceptance[i], 15);
+		uint amt = acceptance[i];
 
 		/* Make sure the station can accept the goods type. */
 		bool is_passengers = IsCargoInClass(i, CC_PASSENGERS);
@@ -568,7 +569,11 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 			amt = 0;
 		}
 
-		SB(st->goods[i].acceptance_pickup, GoodsEntry::GES_ACCEPTANCE, 1, amt >= 8);
+		GoodsEntry &ge = st->goods[i];
+		SB(ge.acceptance_pickup, GoodsEntry::GES_ACCEPTANCE, 1, amt >= 8);
+		if (LinkGraph::IsValidID(ge.link_graph)) {
+			(*LinkGraph::Get(ge.link_graph))[ge.node].SetDemand(amt / 8);
+		}
 	}
 
 	/* Only show a message in case the acceptance was actually changed. */
@@ -3341,6 +3346,79 @@ static void UpdateStationRating(Station *st)
 	}
 }
 
+/**
+ * Increase capacity for a link stat given by station cargo and next hop.
+ * @param st Station to get the link stats from.
+ * @param cargo Cargo to increase stat for.
+ * @param next_station_id Station the consist will be travelling to next.
+ * @param capacity Capacity to add to link stat.
+ * @param usage Usage to add to link stat. If UINT_MAX refresh the link instead of increasing.
+ */
+void IncreaseStats(Station *st, CargoID cargo, StationID next_station_id, uint capacity, uint usage)
+{
+	GoodsEntry &ge1 = st->goods[cargo];
+	Station *st2 = Station::Get(next_station_id);
+	GoodsEntry &ge2 = st2->goods[cargo];
+	LinkGraph *lg = NULL;
+	if (ge1.link_graph == INVALID_LINK_GRAPH) {
+		if (ge2.link_graph == INVALID_LINK_GRAPH) {
+			if (LinkGraph::CanAllocateItem()) {
+				lg = new LinkGraph(cargo);
+				ge2.link_graph = lg->index;
+				ge2.node = lg->AddNode(st2);
+			} else {
+				DEBUG(misc, 0, "Can't allocate link graph");
+			}
+		} else {
+			lg = LinkGraph::Get(ge2.link_graph);
+		}
+		if (lg) {
+			ge1.link_graph = lg->index;
+			ge1.node = lg->AddNode(st);
+		}
+	} else if (ge2.link_graph == INVALID_LINK_GRAPH) {
+		lg = LinkGraph::Get(ge1.link_graph);
+		ge2.link_graph = lg->index;
+		ge2.node = lg->AddNode(st2);
+	} else {
+		lg = LinkGraph::Get(ge1.link_graph);
+		if (ge1.link_graph != ge2.link_graph) {
+			LinkGraph *lg2 = LinkGraph::Get(ge2.link_graph);
+			if (lg->Size() < lg2->Size()) {
+				lg2->Merge(lg); // Updates GoodsEntries of lg
+				lg = lg2;
+			} else {
+				lg->Merge(lg2); // Updates GoodsEntries of lg2
+			}
+		}
+	}
+	if (lg != NULL) {
+		(*lg)[ge1.node].UpdateEdge(ge2.node, capacity, usage);
+	}
+}
+
+/**
+ * Increase capacity for all link stats associated with vehicles in the given consist.
+ * @param st Station to get the link stats from.
+ * @param front First vehicle in the consist.
+ * @param next_station_id Station the consist will be travelling to next.
+ */
+void IncreaseStats(Station *st, const Vehicle *front, StationID next_station_id)
+{
+	for (const Vehicle *v = front; v != NULL; v = v->Next()) {
+		if (v->refit_cap > 0) {
+			/* The cargo count can indeed be higher than the refit_cap if
+			 * wagons have been auto-replaced and subsequently auto-
+			 * refitted to a higher capacity. The cargo gets redistributed
+			 * among the wagons in that case.
+			 * As usage is not such an important figure anyway we just
+			 * ignore the additional cargo then.*/
+			IncreaseStats(st, v->cargo_type, next_station_id, v->refit_cap,
+				min(v->refit_cap, v->cargo.StoredCount()));
+		}
+	}
+}
+
 /* called for every station each tick */
 static void StationHandleSmallTick(BaseStation *st)
 {
@@ -3421,6 +3499,19 @@ static uint UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceT
 	if (amount == 0) return 0;
 
 	ge.cargo.Append(new CargoPacket(st->index, st->xy, amount, source_type, source_id));
+	LinkGraph *lg = NULL;
+	if (ge.link_graph == INVALID_LINK_GRAPH) {
+		if (LinkGraph::CanAllocateItem()) {
+			lg = new LinkGraph(type);
+			ge.link_graph = lg->index;
+			ge.node = lg->AddNode(st);
+		} else {
+			DEBUG(misc, 0, "Can't allocate link graph");
+		}
+	} else {
+		lg = LinkGraph::Get(ge.link_graph);
+	}
+	if (lg != NULL) (*lg)[ge.node].UpdateSupply(amount);
 
 	if (!ge.HasRating()) {
 		InvalidateWindowData(WC_STATION_LIST, st->index);
