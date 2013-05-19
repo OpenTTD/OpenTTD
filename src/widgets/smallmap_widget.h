@@ -18,11 +18,13 @@ enum SmallMapWidgets {
 	WID_SM_MAP_BORDER,     ///< Border around the smallmap.
 	WID_SM_MAP,            ///< Panel containing the smallmap.
 	WID_SM_LEGEND,         ///< Bottom panel to display smallmap legends.
+	WID_SM_BLANK,          ///< Empty button as placeholder.
 	WID_SM_ZOOM_IN,        ///< Button to zoom in one step.
 	WID_SM_ZOOM_OUT,       ///< Button to zoom out one step.
 	WID_SM_CONTOUR,        ///< Button to select the contour view (height map).
 	WID_SM_VEHICLES,       ///< Button to select the vehicles view.
 	WID_SM_INDUSTRIES,     ///< Button to select the industries view.
+	WID_SM_LINKSTATS,      ///< Button to select the link stats view.
 	WID_SM_ROUTES,         ///< Button to select the routes view.
 	WID_SM_VEGETATION,     ///< Button to select the vegetation view.
 	WID_SM_OWNERS,         ///< Button to select the owners view.

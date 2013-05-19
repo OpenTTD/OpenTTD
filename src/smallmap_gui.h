@@ -16,7 +16,11 @@
 #include "window_gui.h"
 #include "strings_func.h"
 #include "blitter/factory.hpp"
+#include "linkgraph/linkgraph_gui.h"
 #include "widgets/smallmap_widget.h"
+
+/* set up the cargos to be displayed in the smallmap's route legend */
+void BuildLinkStatsLegend();
 
 void BuildIndustriesLegend();
 void ShowSmallMap();
@@ -43,6 +47,7 @@ protected:
 		SMT_CONTOUR,
 		SMT_VEHICLES,
 		SMT_INDUSTRY,
+		SMT_LINKSTATS,
 		SMT_ROUTES,
 		SMT_VEGETATION,
 		SMT_OWNER,
@@ -73,6 +78,7 @@ protected:
 	int zoom;        ///< Zoom level. Bigger number means more zoom-out (further away).
 
 	uint8 refresh;   ///< Refresh counter, zeroed every FORCE_REFRESH_PERIOD ticks.
+	LinkGraphOverlay *overlay;
 
 	Point SmallmapRemapCoords(int x, int y) const;
 
@@ -144,6 +150,7 @@ protected:
 	Point PixelToTile(int px, int py, int *sub, bool add_sub = true) const;
 	Point ComputeScroll(int tx, int ty, int x, int y, int *sub);
 	void SetZoomLevel(ZoomLevelChange change, const Point *zoom_pt);
+	void SetOverlayCargoMask();
 	void SetupWidgetData();
 	uint32 GetTileColours(const TileArea &ta) const;
 
@@ -153,7 +160,10 @@ public:
 	friend class NWidgetSmallmapDisplay;
 
 	SmallMapWindow(const WindowDesc *desc, int window_number);
+	virtual ~SmallMapWindow() { delete this->overlay; }
+
 	void SmallMapCenterOnCurrentPos();
+	Point GetStationMiddle(const Station *st) const;
 
 	virtual void SetStringParameters(int widget) const;
 	virtual void OnInit();

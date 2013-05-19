@@ -13,8 +13,8 @@
 #include "../window_gui.h"
 #include "../company_base.h"
 #include "../date_func.h"
-#include "linkgraph_gui.h"
 #include "../viewport_func.h"
+#include "../smallmap_gui.h"
 
 /**
  * Colours for the various "load" states of links. Ordered from "unused" to
@@ -262,10 +262,9 @@ void LinkGraphOverlay::DrawStationDots(const DrawPixelInfo *dpi) const
  * @param st The station we're looking for.
  * @return Middle point of the station in the current window.
  */
-Point LinkGraphOverlay::GetStationMiddle(const Station *st) const {
-	Point dummy;
-	dummy.x = dummy.y = 0;
-	return dummy;
+Point LinkGraphOverlay::GetStationMiddle(const Station *st) const
+{
+	return static_cast<const SmallMapWindow *>(this->window)->GetStationMiddle(st);
 }
 
 /**
