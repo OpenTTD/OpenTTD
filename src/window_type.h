@@ -664,6 +664,12 @@ enum WindowClass {
 	 */
 	WC_SPRITE_ALIGNER,
 
+	/**
+	 * Linkgraph legend; Window numbers:
+	 *   - 0 = #LinkGraphWidgets
+	 */
+	WC_LINKGRAPH_LEGEND,
+
 	WC_INVALID = 0xFFFF, ///< Invalid window.
 };
 

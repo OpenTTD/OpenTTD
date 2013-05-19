@@ -1449,6 +1449,9 @@
     <ClInclude Include="..\src\widgets\intro_widget.h">
       <Filter>Widgets</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\widgets\link_graph_legend_widget.h">
+      <Filter>Widgets</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\widgets\main_widget.h">
       <Filter>Widgets</Filter>
     </ClInclude>

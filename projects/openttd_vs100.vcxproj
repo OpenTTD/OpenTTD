@@ -740,6 +740,7 @@
     <ClInclude Include="..\src\widgets\highscore_widget.h" />
     <ClInclude Include="..\src\widgets\industry_widget.h" />
     <ClInclude Include="..\src\widgets\intro_widget.h" />
+    <ClInclude Include="..\src\widgets\link_graph_legend_widget.h" />
     <ClInclude Include="..\src\widgets\main_widget.h" />
     <ClInclude Include="..\src\widgets\misc_widget.h" />
     <ClInclude Include="..\src\widgets\music_widget.h" />

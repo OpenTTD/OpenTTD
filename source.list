@@ -494,6 +494,7 @@ widgets/group_widget.h
 widgets/highscore_widget.h
 widgets/industry_widget.h
 widgets/intro_widget.h
+widgets/link_graph_legend_widget.h
 widgets/main_widget.h
 widgets/misc_widget.h
 widgets/music_widget.h

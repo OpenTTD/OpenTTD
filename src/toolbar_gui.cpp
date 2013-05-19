@@ -38,6 +38,7 @@
 #include "smallmap_gui.h"
 #include "graph_gui.h"
 #include "textbuf_gui.h"
+#include "linkgraph/linkgraph_gui.h"
 #include "newgrf_debug.h"
 #include "hotkeys.h"
 #include "engine_base.h"
@@ -409,10 +410,11 @@ static CallBackFunction MenuClickSaveLoad(int index = 0)
 enum MapMenuEntries {
 	MME_SHOW_SMALLMAP        = 0,
 	MME_SHOW_EXTRAVIEWPORTS,
+	MME_SHOW_LINKGRAPH,
 	MME_SHOW_SIGNLISTS,
 	MME_SHOW_TOWNDIRECTORY,    ///< This entry is only used in Editor mode
-	MME_MENUCOUNT_NORMAL     = 3,
-	MME_MENUCOUNT_EDITOR     = 4,
+	MME_MENUCOUNT_NORMAL     = 4,
+	MME_MENUCOUNT_EDITOR     = 5,
 };
 
 static CallBackFunction ToolbarMapClick(Window *w)
@@ -438,6 +440,7 @@ static CallBackFunction MenuClickMap(int index)
 	switch (index) {
 		case MME_SHOW_SMALLMAP:       ShowSmallMap();            break;
 		case MME_SHOW_EXTRAVIEWPORTS: ShowExtraViewPortWindow(); break;
+		case MME_SHOW_LINKGRAPH:      ShowLinkGraphLegend();     break;
 		case MME_SHOW_SIGNLISTS:      ShowSignList();            break;
 		case MME_SHOW_TOWNDIRECTORY:  if (_game_mode == GM_EDITOR) ShowTownDirectory(); break;
 	}
