@@ -1860,10 +1860,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Αλλα
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Παιχνίδι πολλών παικτών
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Σύνδεση:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Επιλέξτε μεταξύ διαδικτυακού παιχνιδιού ή τοπικού (LAN) παιχνιδιού
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :Διαδίκτυο
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Όνομα παίκτη:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Αυτό είναι το όνομα με το οποίο θα σας αναγνωρίζουν οι άλλοι παίκτες
 
@@ -1922,8 +1918,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Το ό�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Θέση κωδικού
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Προστατέψτε το παιχνίδι με έναν κωδικό εάν δε θέλετε να είναι δημοσίως προσβάσιμο
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Διαδίκτυο
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Διαδίκτυο (αναγγελία)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} συμπαίκτ{P ης ες}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Μέγιστος αριθμός συμμετεχόντων:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Επιλέξτε τον μέγιστο αριθμό συμμετεχόντων. Δεν είναι ανάγκη να γεμίσουν όλες οι θέσεις

@@ -1985,10 +1985,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Atharrai
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Ioma-chluicheadair
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Ceangal:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Tagh eadar geama air an eadar-lìn no air lìonraidh ionadail (LAN)
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :Eadar-lìon
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ainm cluicheadair:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Seo an t-ainm leis an aithnich cluicheadairean eile thu
 
@@ -2047,8 +2043,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Thèid a
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Suidhich facal-faire
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Dìon an geama agad le facal-faire ach nach eil e ri fhaighinn gu poblach
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Eadar-lìon
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Eadar-lìon (sanasaich)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} {P chliant chliant cliantan cliant}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Cliantan air a char as motha:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Tagh an àireamh as motha dhe chliantan. Cha leig thu leas a h-uile slot a lìonadh

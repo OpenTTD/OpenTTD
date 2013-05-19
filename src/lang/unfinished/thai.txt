@@ -1580,10 +1580,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}เป�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}เล่นหลายคน
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}การเชื่อมต่อ:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}เลือกเล่นระหว่างอินเตอร์เน็ตหรือ LAN
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}ชื่อผู้เล่น:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}เป็นชื่อที่ผู้เล่นคนอื่นจะมองเห็น
 
@@ -1642,8 +1638,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}ชื�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}กำหนดรหัสผ่าน
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}ป้องกันเกมด้วยรหัสผ่านหากไม่ต้องการให้มีการเข้าร่วมจากบุคคลทั่วไป
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :แลน / อินเตอร์เน็ต
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :อินเตอร์เน็ต (มีการประกาศ)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} ลูกข่าย
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}ลูกข่ายสูงสุด:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}เลือกจำนวนมากสุดของลูกข่าย (ไม่จำเป็นต้องครบตามจำนวนนี้)

@@ -1792,10 +1792,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK} שנה 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}משחק רשת
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK} :חיבור
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK} :(LAN)בחר משחק באינטרנט/רשת מקומית
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :אינטרנט
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK} :שם השחקן
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}זהו שמך כפי שיצפה ע"י המשתתפים האחרים
 
@@ -1854,8 +1850,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}השם �
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}קבע סיסמה
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}הגן על המשחק שלך עם סיסמה אם אתה לא רוצה שהוא יהיה זמין לכולם
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / אינטרנט
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :(אינטרנט (פרסם
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} לקוח{P "" "ות"}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}מקסימום לקוחות:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK} :מספר משתתפים מירבי

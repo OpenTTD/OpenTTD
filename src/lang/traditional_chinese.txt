@@ -1781,10 +1781,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}改變�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}多人遊戲
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}連線：
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}選擇網際網路 (Internet) 或區域網路 (LAN) 遊戲
-STR_NETWORK_SERVER_LIST_LAN                                     :區域網路 (LAN)
-STR_NETWORK_SERVER_LIST_INTERNET                                :網際網路 (Internet)
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}玩家名稱：
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}這是其他玩家辨認您的名稱
 
@@ -1843,8 +1839,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}遊戲�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}設定密碼
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}如果您不想讓大眾連線的話，可以用密碼保護遊戲
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :區域網路／網際網路
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :網際網路 (廣告)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} 玩家
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}用戶端上限：
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}選擇連線人數上限，但不是每個名額都要有人連線

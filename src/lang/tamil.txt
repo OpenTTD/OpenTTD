@@ -1589,9 +1589,6 @@ STR_FACE_EARRING                                                :கம்மல
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Tie அல்லது காதணியை மாற்றவும்
 
 # Network server list
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}இணைப்பு:
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :இணையம்
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}விளையாடுபவரின் பெயர்:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}இந்தப் பெயரில் பிறர் உன்னை அறிவர்
 
@@ -1645,8 +1642,6 @@ STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}பு�
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}விளையாட்டு பெயர்:
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}கடவுச்சொல்லினை அமைக்கவும்
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / இணையம்
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :இணையம் (விளம்பரம் செய்)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} விளையாடுபவர்{P "" கள்}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}அதிகபட்ச வீரர்கள்:
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} நிறுவன{P ம் ங்கள்}

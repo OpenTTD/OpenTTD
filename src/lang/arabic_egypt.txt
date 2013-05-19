@@ -1526,10 +1526,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}غير �
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}تعدد اللاعبين
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}اتصال
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}أختر بين لعبة على الإنترنت أو الشبكة المحلية (LAN)
-STR_NETWORK_SERVER_LIST_LAN                                     :شبكة محلية
-STR_NETWORK_SERVER_LIST_INTERNET                                :انترنت
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}أسم اللاعب
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}هذا الآسم الذي ستعرف به في اللعبة
 
@@ -1588,8 +1584,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}أسم �
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}ضع كلمة سر
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}احم لعبتك برقم سري حتى لا تصبح لعبتك مفتوحة للجميع
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :شبكة محلية / انترنت
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :انترنت (دعاية)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM}عميل
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}اقصى عدد عملاء:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}أختر أقصى عدد للعملاء

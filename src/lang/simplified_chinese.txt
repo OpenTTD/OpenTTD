@@ -1782,10 +1782,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}选择�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}联机游戏
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}连接：
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}选择一个 Internet 上的游戏或局域网 (LAN) 中的游戏
-STR_NETWORK_SERVER_LIST_LAN                                     :局域网
-STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}玩家名称：
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}其他玩家将通过该名字来认识您
 
@@ -1844,8 +1840,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}游戏�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}设置密码：
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}如果不希望你的游戏被外人加入，请设置一个密码
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :局域网 / Internet
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (advertise)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} 客户端
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}玩家数目：
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}选择可以参加的玩家上限（达不到此数量仍然可以开始游戏）

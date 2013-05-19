@@ -1867,10 +1867,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Spremeni
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Več igralcev
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Povezava:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Izberi med internetom ali lokalno mrezo (LAN)
-STR_NETWORK_SERVER_LIST_LAN                                     :Lokalno omrežje
-STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ime igralca:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}To je ime, po katerem te prepoznajo drugi igralci
 
@@ -1929,8 +1925,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Ime bo p
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Nastavi geslo
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Zaščiti igro z geslom, če želiš preprečiti dostop nepovabljenim
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :Lokalno omrežje / Internet
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (oglašuj)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} gost{P "" a i ov}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Dovoljeno število gostov:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Izberite največje število gostov. Ni potrebno, da so vsi prisotni

@@ -1935,10 +1935,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Изме
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Сетевая игра
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Соединение:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Искать серверы в локальной сети или в Интернете
-STR_NETWORK_SERVER_LIST_LAN                                     :Локальная сеть
-STR_NETWORK_SERVER_LIST_INTERNET                                :Интернет
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Имя игрока:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Это имя, которое будет видно другим игрокам
 
@@ -1997,8 +1993,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Назв
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Установить пароль
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Защитите вашу игру паролем, если не хотите, чтобы к ней могли подключиться посторонние.
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :Локальная сеть / Интернет
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Интернет (поместить в общий список)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клиент{P "" а ов}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Макс. клиентов:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Выбор максимального числа клиентов. Не все места должны быть заняты

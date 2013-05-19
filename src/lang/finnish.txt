@@ -1783,10 +1783,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Vaihda s
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Moninpeli
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Yhteys:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Valitse internet-peli tai paikallisverkkopeli (LAN)
-STR_NETWORK_SERVER_LIST_LAN                                     :Lähiverkko
-STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Pelaajan nimi
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Pelaajat tunnistetaan ja erotetaan toisistaan nimien avulla.
 
@@ -1845,8 +1841,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nimi nä
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Aseta salasana
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Jos peliin ei halua ulkopuolisia, voi sen suojata salasanalla.
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :Lähiverkko / Internet
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (mainosta)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} asiakas{P "" ta}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Pelaajien enimmäismäärä:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pelaajien enimmäismäärä. Pelissä voi olla myös vähemmän pelaajia.

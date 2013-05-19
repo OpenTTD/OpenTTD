@@ -1783,10 +1783,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Verander
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Verbinding:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Kies tussen een internetspel of een spel op het lokale netwerk (LAN)
-STR_NETWORK_SERVER_LIST_LAN                                     :Netwerk (LAN)
-STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spelersnaam:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Dit is de naam waarmee andere spelers je herkennen
 
@@ -1845,8 +1841,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}De speln
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Kies wachtwoord
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Bescherm je spel met een wachtwoord als je niet wilt dat deze algemeen toegankelijk is
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (adverteren)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} speler{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximaal aantal spelers:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Kies het maximaal aantal toegestane spelers. Niet alle posities hoeven gebruikt te worden

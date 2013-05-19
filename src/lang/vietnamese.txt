@@ -1783,10 +1783,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Thay đ�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Ván Chơi Mạng
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Kết nối:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Lựa chọn chơi game nối mạng internet hặc nối mạng nội bộ (LAN)
-STR_NETWORK_SERVER_LIST_LAN                                     :Mạng nội bộ
-STR_NETWORK_SERVER_LIST_INTERNET                                :Mạng internet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Tên người chơi:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Đây là tên khác mà người chơi sẽ nhận ra bạn
 
@@ -1845,8 +1841,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Tên c�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Đặt mật khẩu
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Bảo vệ game của bạn bằng mật khẩu nếu bạn không muốn người khác vào tùy tiện
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (lên list)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} máy trạm
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Số máy trạm tối đa:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Chọn số lượng máy trạm tối đa. Không nhất thiết phải chọn đầy các dòng

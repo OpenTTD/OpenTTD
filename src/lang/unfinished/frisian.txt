@@ -1431,10 +1431,6 @@ STR_FACE_GLASSES                                                :Bril:
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Ferbining:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Kies tusken internetspul of yn Lokaal netwurk spul (LAN)
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :Ynternet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Namme fan spieler:
 
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Namme
@@ -1469,7 +1465,6 @@ STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Start in
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Spulnamme:
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Ynternet
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} taskôger{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maksimaal tal taskôgers:
 

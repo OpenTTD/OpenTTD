@@ -716,9 +716,6 @@ STR_FACE_TIE                                                    :Галстук:
 STR_FACE_EARRING                                                :Алка:
 
 # Network server list
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Ҫыхӑну:
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :Тетел
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Вӑйӑҫӑ ят:
 
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Ят
@@ -760,7 +757,6 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Серв
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Вӑййи ят:
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Вырнаҫтар вӑрттӑн сӑмахӗ
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :Вырӑнти Тӗвӗлӗх/Тетел
 
 
 # Network game languages

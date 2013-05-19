@@ -1788,10 +1788,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cмен�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Онлайн играчи
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Връзка:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Избор между игра в интернет или локална мрежа (LAN)
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :Интернет
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Име на играч:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Чрез това име другите играчи ще ви идентифицират
 
@@ -1850,8 +1846,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Имет
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Поставяне на парола
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Защитаване на вашата игра с парола за да не е публично достъпна
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Интернет
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Интернет (реклама)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клиент{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Макс. брой играчи:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Избор на максималния брой клиенти. Не всички слотове трябва да се попълнят

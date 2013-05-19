@@ -1905,10 +1905,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Змін
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Мережева гра
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}З'єднання:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Виберіть гру через інтернет або через локальну мережу(ЛОМ)
-STR_NETWORK_SERVER_LIST_LAN                                     :Локальна
-STR_NETWORK_SERVER_LIST_INTERNET                                :Інтернет
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ім'я гравця:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Ім'я, за яким тебе розпізнаватимуть інші гравці
 
@@ -1967,8 +1963,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Назв
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Встановити пароль
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Захистіть вашу гру паролем, якщо не бажаєте загального доступу
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :Локальна/Інтернет
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (advertise)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клієнт{P "" а ів}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Макс. клієнтів:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Виберіть максимальну кількість клієнтів. Не всі слоти мають бути зайняті

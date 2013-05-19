@@ -1847,10 +1847,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Nyakkend
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hálózati játék
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Kapcsolat:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Válassz az internetes vagy helyi hálózati játék közül
-STR_NETWORK_SERVER_LIST_LAN                                     :Helyi hálózat
-STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Játékos neve:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}A többi játékos ilyen néven fog ismerni Téged.
 
@@ -1909,8 +1905,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}A játé
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Jelszó beállítása
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Védd le a játékodat jelszóval, ha nem akarod hogy illetéktelenek csatlakozzanak
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :Hálózat / Internet
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (reklámoz)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} kliens
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Játékosok max. száma:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}A maximálisan felcsatlakozható kliensek számának kiválasztása. Nem szükséges pont ennyi embernek éppen kapcsolódva lennie

@@ -1978,10 +1978,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Pakeisti
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Žaidimas tinkle
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Ryšys:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Pasirinkti žaidimą internete ar vietiniame tinkle (LAN)
-STR_NETWORK_SERVER_LIST_LAN                                     :Vietinis tinklas
-STR_NETWORK_SERVER_LIST_INTERNET                                :Internetas
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Žaidėjo vardas:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Tai vardas, pagal kurį kiti žaidėjai jus atpažins
 
@@ -2040,8 +2036,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Žaidimo
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Nustatyti slaptažodi
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Apsaugokite savo žaidimą slaptažodžiu, jei nenorite, kad jis būtų viešai prieinamas
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :Vietinis tinklas/ Internetas
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internetas (visiems)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P as ai ų}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimalus klientų skaičius:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pasirinkite maksimalų klientų skaičių. Nebūtinai visos jungtys turi buti užpildytos

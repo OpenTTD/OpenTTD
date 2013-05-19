@@ -1761,10 +1761,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mainīt 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Vairākspēlētāju spēle
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Savienojums:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Izvēlēties starp spēli internetā vai spēli lokālajā tīklā
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :Internets
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spēlētāja vārds:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Pēc šā vārda jūs atpazīs citi spēlētāji
 
@@ -1823,8 +1819,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Spēles 
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Uzstādīt paroli
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Aizsargā jūsu spēli ar paroli, ja nevēlaties lai tā būtu publiski pieejama
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / internets
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internets (izsludināt)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} spēlētāj{P s i u}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maks. spēlētāju skaits:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Izvēlēties maksimālo spēlētāju skaitu. Ne visiem slotiem ir jābūt aizpildītiem

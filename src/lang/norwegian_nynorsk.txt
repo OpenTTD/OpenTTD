@@ -1629,10 +1629,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Byt slip
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Fleirspelar
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Samband:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Vel mellom å spele på internett eller i lokalt nettverk (LAN)
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :Internett
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spelarnamn:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Dette er namnet andre spelarar vil identifisere deg med
 
@@ -1691,8 +1687,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Spelnamn
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Set passord
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beskytt spelet ditt med passord så ikkje kven som helst kan verte med på det
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internett
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internett (annonser)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" er}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maks. antal tilletne klientar:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Vel maks. antal klientar. Alle plassane treng ikkje å verte tekne

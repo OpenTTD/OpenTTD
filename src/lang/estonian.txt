@@ -1835,10 +1835,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Vaheta k
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Võrgumäng
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Ühendus:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Valimine interneti- või kohtvõrkmängu vahel
-STR_NETWORK_SERVER_LIST_LAN                                     :kohtvõrk (LAN)
-STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Mängija nimi:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Teised mängijad tunnevad sind selle nime järgi
 
@@ -1897,8 +1893,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Mängu n
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Sea parool
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Kaitse oma mäng parooliga, kui sa ei taha, et kõik sellele ligi pääseksid
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (reklaami)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" i}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Suurim klientide arv:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Määra suurim klientide arv. Kõik vabad kohad ei pea täidetud olema

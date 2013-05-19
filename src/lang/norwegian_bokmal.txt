@@ -1785,10 +1785,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Endre sl
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Flerspiller
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Forbindelse:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Velg mellom å spille på internett eller i lokalt nettverk (LAN)
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :Internett
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spillernavn:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Dette er navnet andre spillere vil identifisere deg med
 
@@ -1847,8 +1843,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Spillnav
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Sett passord
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beskytt ditt spill med et passord hvis du ikke vil at hvem som helst skal bli med på det
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internett
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internett (annonsér)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" er}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maks antall tillatte klienter:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Velg maks antall klienter. Ikke alle plassene trenger å bli tatt

@@ -1508,10 +1508,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}تغیی
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}چندنفره
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}اتصال:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}بین اینترنت و شبکه محلی داخلی یکی را انتخاب نمایید
-STR_NETWORK_SERVER_LIST_LAN                                     :شبکه محلی
-STR_NETWORK_SERVER_LIST_INTERNET                                :اینترنت
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}نام بازیگر:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}این نامی است که بقیه بازیگران شما را به آن نام می شناسند
 
@@ -1570,8 +1566,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}بازی
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}ثبت رمز
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}اگر بازی برای استفاده همگان نیست، بازی خود را با رمز محافظت کنید
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :شبکه محلی / اینترنت
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :اینترنت (آگهی)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} سرویس گیرنده
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}بیشترین تعداد سرویس گیرنده:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}بیشترین تعداد سرویس گیرنده را مشخص کنید.لازم نیست دقیقا به تعداد نفرات باشد

@@ -1631,10 +1631,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Kravatı
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Çok Oyunculu
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Bağlantı:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}İnternet ya da yerel ağ bağlantısı (LAN) oyunundan birini seçin
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :İnternet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Oyuncu adı:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Oyuncuların görecegi adınızı seçin
 
@@ -1693,8 +1689,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Bu oyun 
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Parola koy
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Erişimi kısıtlamak için oyuna parola koy
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / internet
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :İnternet (reklam vererek)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} istemci
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}İzin verilen en fazla oyuncu:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}İzin verilen en fazla oyuncu sayısını seç. Her yerin dolması gerekmez

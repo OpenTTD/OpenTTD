@@ -1522,10 +1522,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ŝanĝi 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Pluraj ludantoj
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Konekto:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Elektu inter interreta kaj lokareta ludo
-STR_NETWORK_SERVER_LIST_LAN                                     :Loka reto
-STR_NETWORK_SERVER_LIST_INTERNET                                :Interreto
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ludantnomo:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Ĉi tio estas la nomo per kiu la aliaj ekkonas vin
 
@@ -1584,8 +1580,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}La ludno
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Agordu pasvorton
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protektu vian ludon per pasvorto por ne publike atingebligi ĝin
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :Loka reto / Interreto
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Interreto (reklamu)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} kliento{P "" j}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Klienta maksimumo:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Elektu klientan maksimumon. Ne ĉiuj lokoj estas plenigendaj

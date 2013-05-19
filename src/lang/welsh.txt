@@ -1783,10 +1783,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Newid te
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Amlchwaraewr
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Cysylltiad:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Dewiswch rhwng gêm rhyngrwyd neu gêm Rwydwaith Ardal Leol (LAN)
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :Rhyngrwyd
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Enw chwaraewr:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Byddwch chi'n ymddangos i'r chwaraewyr eraill dan yr enw hwn
 
@@ -1845,8 +1841,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Bydd y g
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Gosod cyfrinair
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Diogelwch eich gêm â chyfrinair os nad ydych am i fynediad ato fod yn gyhoeddus
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Rhyngrwyd
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Rhyngrwyd (hysbysebu)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} gwestai
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Uchafswm gwesteion:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Dewiswch uchafswm y gwesteion. Does dim rhaid llanw pob slot

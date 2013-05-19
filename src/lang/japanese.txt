@@ -1658,10 +1658,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}ネク�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}多人数ゲーム
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}接続：
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}LAN内、もしくはインターネット上のゲームを選択します
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :インターネット
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}プレイヤー名：
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}他のプレーヤーから見えるあなたの名前です
 
@@ -1720,8 +1716,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}マル�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}パスワードを指定
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}ゲームをパスワードで保護することができます。正しいパスワードを入力しないと、接続できません。
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN／インターネット
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :インターネット（公開）
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}クライアント{NUM}人
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}最大接続数：
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}接続できるコンピュータの最大数を選択します。

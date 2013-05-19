@@ -1504,10 +1504,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}ٹائی
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}زیادہ کھلاڑی
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}کنکشن:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}انٹرنیٹ یا LAN کھیل میں سے کوئی ایک اختیار کریں
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :انٹرنیٹ
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}کھلاڑی کا نام:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}دوسرے کھلاڑی آپ کو اس نام سے جانیں گے
 
@@ -1566,8 +1562,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}کھیل
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}پاس ورڈ رکھیں
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}اگر آپ اس کھیل کو ہر کسی کی پہنچ سے بچانا چاہتے ہیں تو کھیل کو پاس ورڈ سے محفوظ بنا لیں
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / انٹرنیٹ
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (advertise)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} کلائینٹ{P "" س}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}زیادہ سے زیادہ کلائینٹ:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}زیادہ سے زیادہ کلائینٹس کی تعداد کا انتخاب کریں

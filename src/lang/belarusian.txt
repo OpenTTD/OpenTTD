@@ -2096,10 +2096,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Зьмя
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Сеткавая гульня
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Злучэньне:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Выберыце паміж гульнёй па Інтэрнэце й па лакальнай сетцы (LAN)
-STR_NETWORK_SERVER_LIST_LAN                                     :Лакальная сетка (LAN)
-STR_NETWORK_SERVER_LIST_INTERNET                                :Інтэрнэт
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Імя гульца:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Гэта ваша імя, якое будзе бачна іншым гульцам
 
@@ -2158,8 +2154,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Назв
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Усталяваць пароль
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Абараніце вашу гульню паролем, калі ня хочаце рабіць яе публічна даступнай
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :Лакальная сетка / Інтэрнэт
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Інтэрнэт (зьмясьціць у агульны сьпіс)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клiент{P "" ы аў}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Макс. клiентаў:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Выбар максымальнай колькасьці кліентаў. Ня ўсе месцы павінны быць занятыя

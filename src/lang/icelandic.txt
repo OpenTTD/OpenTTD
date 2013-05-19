@@ -1784,10 +1784,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Breyta b
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Fjölspilun
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Tenging:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Veldu milli internetleiks eða staðarnetleiks
-STR_NETWORK_SERVER_LIST_LAN                                     :Staðarnet
-STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nafn leikmanns:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Þetta er nafnið sem aðrir leikmenn munu þekkja þig undir
 
@@ -1846,8 +1842,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nafn lei
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Veldu lykilorð
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Verndaðu leikinn þinn með lykilorði ef þú vilt ekki að óboðnir tengist honum
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :Staðarnet / Internet
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (auglýsa)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} biðlar{P i ar}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Hámarksfjöldi notenda:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Veldu hámarksfjölda notenda. Ekki þarf að fylla öll pláss

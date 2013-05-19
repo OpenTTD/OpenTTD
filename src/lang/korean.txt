@@ -1784,10 +1784,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}넥타�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}멀티 플레이
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}접속방법:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}인터넷과 LAN 게임 중에 하나를 선택하세요.
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :인터넷
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}플레이어 이름:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}다른 사람들에게 보여줄 당신의 이름입니다.
 
@@ -1846,8 +1842,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}멀티�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}암호 설정
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}자유로운 접근을 막고 싶을 때 암호를 설정할 수 있습니다
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / 인터넷
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :인터넷 (광고 허용)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM}명
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}최대 접속자 수:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}최대 접속자수를 선택합니다. 모든 슬롯이 차있을 필요는 없습니다.

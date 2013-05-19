@@ -1782,10 +1782,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambia-l
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multixogador
-STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Conexión:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Escolle entre unha partida en Internet ou unha partida na rede de área local
-STR_NETWORK_SERVER_LIST_LAN                                     :LAN
-STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nome do xogador:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Este é o nome polo que te identificarán os outros xogadores
 
@@ -1844,8 +1840,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}O nome d
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Establecer contrasinal
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protexe a túa partida cun contrasinal se non queres ser accesible públicamente
 
-STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
-STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (anunciar)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} cliente{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Máximo de clientes:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Escolle o máximo número de clientes. Non tódolos ocos teñen que estar cubertos
