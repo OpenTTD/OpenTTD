@@ -1159,6 +1159,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\linkgraph\linkgraph_base.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\linkgraph\linkgraph_gui.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\linkgraph\linkgraph_type.h"
 				>
 			</File>
@@ -1992,6 +2000,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\intro_gui.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\linkgraph\linkgraph_gui.cpp"
 				>
 			</File>
 			<File

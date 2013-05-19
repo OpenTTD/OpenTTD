@@ -471,6 +471,8 @@
     <ClInclude Include="..\src\landscape_type.h" />
     <ClInclude Include="..\src\language.h" />
     <ClInclude Include="..\src\linkgraph\linkgraph.h" />
+    <ClInclude Include="..\src\linkgraph\linkgraph_base.h" />
+    <ClInclude Include="..\src\linkgraph\linkgraph_gui.h" />
     <ClInclude Include="..\src\linkgraph\linkgraph_type.h" />
     <ClInclude Include="..\src\livery.h" />
     <ClInclude Include="..\src\map_func.h" />
@@ -678,6 +680,7 @@
     <ClCompile Include="..\src\highscore_gui.cpp" />
     <ClCompile Include="..\src\industry_gui.cpp" />
     <ClCompile Include="..\src\intro_gui.cpp" />
+    <ClCompile Include="..\src\linkgraph\linkgraph_gui.cpp" />
     <ClCompile Include="..\src\main_gui.cpp" />
     <ClCompile Include="..\src\misc_gui.cpp" />
     <ClCompile Include="..\src\music_gui.cpp" />

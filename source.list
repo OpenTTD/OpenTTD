@@ -205,6 +205,7 @@ landscape_type.h
 language.h
 linkgraph/linkgraph.h
 linkgraph/linkgraph_base.h
+linkgraph/linkgraph_gui.h
 linkgraph/linkgraph_type.h
 livery.h
 map_func.h
@@ -431,6 +432,7 @@ group_gui.cpp
 highscore_gui.cpp
 industry_gui.cpp
 intro_gui.cpp
+linkgraph/linkgraph_gui.cpp
 main_gui.cpp
 misc_gui.cpp
 music_gui.cpp

@@ -642,6 +642,12 @@
     <ClInclude Include="..\src\linkgraph\linkgraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\linkgraph\linkgraph_base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\linkgraph\linkgraph_gui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\linkgraph\linkgraph_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -1261,6 +1267,9 @@
       <Filter>GUI Source Code</Filter>
     </ClCompile>
     <ClCompile Include="..\src\intro_gui.cpp">
+      <Filter>GUI Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\linkgraph\linkgraph_gui.cpp">
       <Filter>GUI Source Code</Filter>
     </ClCompile>
     <ClCompile Include="..\src\main_gui.cpp">
