@@ -39,6 +39,7 @@ hotkeys.cpp
 ini.cpp
 ini_load.cpp
 landscape.cpp
+linkgraph/linkgraph.cpp
 map.cpp
 misc.cpp
 mixer.cpp
@@ -202,6 +203,9 @@ ini_type.h
 landscape.h
 landscape_type.h
 language.h
+linkgraph/linkgraph.h
+linkgraph/linkgraph_base.h
+linkgraph/linkgraph_type.h
 livery.h
 map_func.h
 map_type.h

@@ -16,6 +16,7 @@
 #include "newgrf_airport.h"
 #include "cargopacket.h"
 #include "industry_type.h"
+#include "linkgraph/linkgraph_type.h"
 #include "newgrf_storage.h"
 
 typedef Pool<BaseStation, StationID, 32, 64000> StationPool;
@@ -74,7 +75,9 @@ struct GoodsEntry {
 		time_since_pickup(255),
 		rating(INITIAL_STATION_RATING),
 		last_speed(0),
-		last_age(255)
+		last_age(255),
+		link_graph(INVALID_LINK_GRAPH),
+		node(INVALID_NODE)
 	{}
 
 	byte acceptance_pickup; ///< Status of this cargo, see #GoodsEntryStatus.
@@ -107,6 +110,9 @@ struct GoodsEntry {
 
 	byte amount_fract;      ///< Fractional part of the amount in the cargo list
 	StationCargoList cargo; ///< The cargo packets of cargo waiting in this station
+
+	LinkGraphID link_graph; ///< Link graph this station belongs to.
+	NodeID node;            ///< ID of node in link graph referring to this goods entry.
 
 	/**
 	 * Reports whether a vehicle has ever tried to load the cargo at this station.

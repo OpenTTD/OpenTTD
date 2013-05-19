@@ -595,6 +595,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\linkgraph\linkgraph.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\map.cpp"
 				>
 			</File>
@@ -1148,6 +1152,14 @@
 			</File>
 			<File
 				RelativePath=".\..\src\language.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\linkgraph\linkgraph.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\linkgraph\linkgraph_type.h"
 				>
 			</File>
 			<File
