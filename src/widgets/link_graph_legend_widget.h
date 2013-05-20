@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file linkgraph_legend_widget.h Types related to the linkgraph_legend widgets. */
+/** @file link_graph_legend_widget.h Types related to the linkgraph_legend widgets. */
 
 #ifndef WIDGETS_LINKGRAPH_LEGEND_WIDGET_H
 #define WIDGETS_LINKGRAPH_LEGEND_WIDGET_H
