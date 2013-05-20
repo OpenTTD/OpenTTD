@@ -2334,15 +2334,15 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Пере
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Сделать объекты не прозрачными, а полностью невидимыми
 
 # Linkgraph legend window
-STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Легенда грузоперевозок
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Карта грузопотоков
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Все
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Нет
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Выберите компании для отображения
 
 # Linkgraph legend window and linkgraph legend in smallmap
-STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}неиспользуемые
-STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}насыщенные
-STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}перегруженные
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}неэксп.
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}загруж.
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}перегруз
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Подсветка зоны покрытия
