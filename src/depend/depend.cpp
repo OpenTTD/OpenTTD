@@ -83,7 +83,7 @@ public:
 	 * @param filename the file to open
 	 * @post the file is open; otherwise the application is killed.
 	 */
-	File(const char *filename) : filename(filename)
+	File(const char *filename)
 	{
 		this->fp = fopen(filename, "r");
 		if (this->fp == NULL) {
@@ -129,7 +129,6 @@ public:
 private:
 	FILE *fp;             ///< The currently opened file.
 	char *dirname;        ///< The directory of the file.
-	const char *filename; ///< The name of the file.
 };
 
 /** A token returned by the tokenizer. */

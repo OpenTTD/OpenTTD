@@ -30,7 +30,6 @@ static uint8 _selected_object_view;          ///< the view of the selected objec
 class BuildObjectWindow : public PickerWindowBase {
 	static const int OBJECT_MARGIN = 4; ///< The margin (in pixels) around an object.
 	int line_height;                    ///< The height of a single line.
-	int object_height;                  ///< The height of the object box.
 	int info_height;                    ///< The height of the info box.
 	Scrollbar *vscroll;                 ///< The scrollbar.
 
