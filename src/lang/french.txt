@@ -2972,8 +2972,6 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Qualité
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Afficher la qualité de service de la station
-STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Qualité du service de transport{NBSP}:
-STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}{NBSP}: {YELLOW}{STRING} ({COMMA}{NBSP}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Épouvantable

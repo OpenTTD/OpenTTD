@@ -2813,8 +2813,6 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}受入�
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}評価
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}駅の評価を表示します
-STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}近所の交通の評価：
-STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}：{YELLOW}{STRING}（{COMMA}％）
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :最低

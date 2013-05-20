@@ -2647,8 +2647,6 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}قبول
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}رده بندی
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}نشان دادن رتبه بندی ایستگاه
-STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}رده بندی محلی درباره ی وضعیت حمل و نقل
-STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :ترسناک

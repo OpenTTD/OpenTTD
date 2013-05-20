@@ -2957,8 +2957,6 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Arviot
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näytä aseman arviot.
-STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Paikallinen arvio kuljetuspalvelusta:
-STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}{NBSP}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Tyrmistyttävä

@@ -2630,8 +2630,6 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}يقبل
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}معدل النقل
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}اظهار معدل النقل للمحطة
-STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}التقييم المحلي لخدمات النقل:
-STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING} :{YELLOW}{STRING} ) {COMMA}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :منعدم
