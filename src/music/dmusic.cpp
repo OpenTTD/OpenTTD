@@ -82,24 +82,16 @@ const char *MusicDriver_DMusic::Start(const char * const *parm)
 				IID_IDirectMusicPerformance,
 				(LPVOID*)&performance
 			))) {
-		proc.CoUninitialize();
 		return "Failed to create the performance object";
 	}
 
 	/* initialize it */
 	if (FAILED(performance->Init(NULL, NULL, NULL))) {
-		performance->Release();
-		performance = NULL;
-		proc.CoUninitialize();
 		return "Failed to initialize performance object";
 	}
 
 	/* choose default Windows synth */
 	if (FAILED(performance->AddPort(NULL))) {
-		performance->CloseDown();
-		performance->Release();
-		performance = NULL;
-		proc.CoUninitialize();
 		return "AddPort failed";
 	}
 
@@ -111,14 +103,16 @@ const char *MusicDriver_DMusic::Start(const char * const *parm)
 				IID_IDirectMusicLoader,
 				(LPVOID*)&loader
 			))) {
-		performance->CloseDown();
-		performance->Release();
-		performance = NULL;
-		proc.CoUninitialize();
 		return "Failed to create loader object";
 	}
 
 	return NULL;
+}
+
+
+MusicDriver_DMusic::~MusicDriver_DMusic()
+{
+	this->Stop();
 }
 
 

@@ -17,6 +17,8 @@
 /** Music player making use of DirectX. */
 class MusicDriver_DMusic: public MusicDriver {
 public:
+	virtual ~MusicDriver_DMusic();
+
 	/* virtual */ const char *Start(const char * const *param);
 
 	/* virtual */ void Stop();
