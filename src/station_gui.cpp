@@ -30,6 +30,7 @@
 #include "core/geometry_func.hpp"
 #include "vehiclelist.h"
 #include "town.h"
+#include "linkgraph/linkgraph.h"
 
 #include "widgets/station_widget.h"
 
@@ -1075,7 +1076,7 @@ struct StationViewWindow : public Window {
 			y += WD_PAR_VSEP_WIDE;
 		}
 
-		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_STATION_VIEW_CARGO_RATINGS_TITLE);
+		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_STATION_VIEW_SUPPLY_RATINGS_TITLE);
 		y += FONT_HEIGHT_NORMAL;
 
 		const CargoSpec *cs;
@@ -1083,10 +1084,12 @@ struct StationViewWindow : public Window {
 			const GoodsEntry *ge = &st->goods[cs->Index()];
 			if (!ge->HasRating()) continue;
 
+			const LinkGraph *lg = LinkGraph::GetIfValid(ge->link_graph);
 			SetDParam(0, cs->name);
-			SetDParam(2, ToPercent8(ge->rating));
-			SetDParam(1, STR_CARGO_RATING_APPALLING + (ge->rating >> 5));
-			DrawString(r.left + WD_FRAMERECT_LEFT + 6, r.right - WD_FRAMERECT_RIGHT - 6, y, STR_STATION_VIEW_CARGO_RATING);
+			SetDParam(1, lg != NULL ? lg->Monthly((*lg)[ge->node].Supply()) : 0);
+			SetDParam(2, STR_CARGO_RATING_APPALLING + (ge->rating >> 5));
+			SetDParam(3, ToPercent8(ge->rating));
+			DrawString(r.left + WD_FRAMERECT_LEFT + 6, r.right - WD_FRAMERECT_RIGHT - 6, y, STR_STATION_VIEW_CARGO_SUPPLY_RATING);
 			y += FONT_HEIGHT_NORMAL;
 		}
 		return CeilDiv(y - r.top - WD_FRAMERECT_TOP, FONT_HEIGHT_NORMAL);
