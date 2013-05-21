@@ -2354,6 +2354,10 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Toglaich
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Toglaich trìd-shoillearachd nan comharraidhean luchdaidh. Ctrl+Briogadh airson glasadh
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Falaich nithean an àite an dèanamh trìd-shoilleir
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Seall raon-còmhdachaidh
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Air
@@ -3820,7 +3824,7 @@ STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Sguir dh
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Sguir dhe cho-roinneadh liosta nan òrduighean. Sguabaidh Ctrl+briogadh às dhe na h-uile òrdugh airson a' charbaid seo cuideachd
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Rach gu
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Rach gun gharaids / trèan-lann / chala / hangar as fhaisge
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Rach gun gharaids / trèan-lann / chala as fhaisge
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Rach gun hangar as fhaisge
 STR_ORDER_CONDITIONAL                                           :Leum le òrdugh cumhach
 STR_ORDER_SHARE                                                 :Co-roinn na h-òrduighean

@@ -2972,6 +2972,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Calificación
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Ver calificación de la estación
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Suministro mensual y calificación local:
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Espantoso

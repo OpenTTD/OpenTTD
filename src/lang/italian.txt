@@ -377,6 +377,7 @@ STR_FILE_MENU_EXIT                                              :Esci
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mappa del mondo
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Mini visuale extra
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda rotte commerciali
 STR_MAP_MENU_SIGN_LIST                                          :Elenco cartelli
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Elenco città
@@ -664,17 +665,20 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Mappa - 
 STR_SMALLMAP_TYPE_CONTOURS                                      :Territorio
 STR_SMALLMAP_TYPE_VEHICLES                                      :Veicoli
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrie
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :Rotte commerciali
 STR_SMALLMAP_TYPE_ROUTES                                        :Percorsi
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetazione
 STR_SMALLMAP_TYPE_OWNERS                                        :Proprietari
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Mostra la conformazione del terreno sulla mappa
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Mostra i veicoli sulla mappa
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Mostra le industrie sulla mappa
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Mostra le rotte commerciali sulla mappa
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Mostra i percorsi di trasporto sulla mappa
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Mostra la vegetazione sulla mappa
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Mostra i proprietari dei terreni sulla mappa
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Fare clic su un tipo di industria per attivare/disattivare la visualizzazione.CTRL+clic disabilita tutti i tipi tranne quello selezionato. CTRL+clic nuovamente abilita tutti i tipi
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Fare clic su una compagnia per attivare/disattivare la visualizzazione delle sue proprietà. CTRL+clic disabilita tutte le compagnie tranne quella selezionata. CTRL+clic nuovamente abilita tutte le compagnie
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Fare clic su un carico per attivare/disattivare la visualizzazione delle sue proprietà. CTRL+clic disabilita tutti i carichi tranne quello selezionato. CTRL+clic nuovamente abilita tutti i carichi
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Strade
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Ferrovie
@@ -719,6 +723,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostra t
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Attiva/disattiva la visualizzazione della mappa altimetrica
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nasconde le proprietà di tutte le compagnie dalla mappa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Mostra le proprietà di tutte le compagnie sulla mappa
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Nasconde tutti i carichi dalla mappa
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Mostra tutti i carichi sulla mappa
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostra l'ultimo messaggio o notizia
@@ -2184,8 +2190,17 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Attiva/d
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Rendi gli oggetti invisibili invece che trasparenti
 
 # Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legenda rotte commerciali
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Tutti
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Nessuno
+STR_LINKGRAPH_LEGEND_NONE.ms                                    :{BLACK}Nessuno
+STR_LINKGRAPH_LEGEND_NONE.fs                                    :{BLACK}Nessuna
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Seleziona le compagnie da mostrare
 
 # Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}inutilizzata
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}satura
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}sovraccarica
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Evidenzia area coperta
@@ -2986,6 +3001,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}La {COM
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Valutazione
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostra la valutazione della stazione
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Forniture mensili e valutazione locale:
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Terribile
