@@ -375,6 +375,7 @@ STR_FILE_MENU_EXIT                                              :Afsluiten
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kaart
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Extra kijkvenster
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Vracht Stroom Legenda
 STR_MAP_MENU_SIGN_LIST                                          :Bordenlijst
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stedenlijst
@@ -662,17 +663,20 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Kaart - 
 STR_SMALLMAP_TYPE_CONTOURS                                      :Contouren
 STR_SMALLMAP_TYPE_VEHICLES                                      :Voertuigen
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrieën
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :Vrachtstroom
 STR_SMALLMAP_TYPE_ROUTES                                        :Routes
 STR_SMALLMAP_TYPE_VEGETATION                                    :Begroeiïng
 STR_SMALLMAP_TYPE_OWNERS                                        :Eigenaren
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Toon landcontouren op de kaart
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Toon voertuigen op de kaart
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Toon industrieën op de kaart
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Toon vrachtstroom op de kaart
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Toon transportroutes op de kaart
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Toon begroeiïng op de kaart
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Toon landeigenaren op de kaart
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klik op een industriesoort om deze weer te geven. Ctrl+klik verbergt alle andere industriesoorten behalve de geselecteerde. Nogmaals Ctrl+klik geeft opnieuw alle industriesoorten weer.
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klik op een bedrijf om de bedrijfseigendommen weer te geven. Ctrl+klik verbergt alle andere bedrijven behalve de geselecteerde. Nogmaals Ctrl+klik geeft opnieuw alle bedrijven weer.
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Klik op een vrachtsoort om de eigenschappen weer te geven. Ctrl+Klik verbergt alle vrachtsoorten behalve de geselecteerde. Ctrl+Klik opnieuw om alle vrachttypes te activeren
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Wegen
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Spoorwegen
@@ -706,6 +710,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Plaatsnamen op de kaart aan/uit
 STR_SMALLMAP_CENTER                                             :{BLACK}Centreer de kaart op huidige positie
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Alles uitschakelen
@@ -716,6 +721,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Toon all
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Schakel tonen van hoogte aan/uit
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Verberg bedrijfseigendommen op de kaart
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Toon alle bedrijfseigendommen op de kaart
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Toon geen vrachtsoorten op de kaart
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Toon alle vrachtsoorten op de kaart
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Toon laatste (nieuws)bericht
@@ -1783,6 +1790,10 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Verander
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Openbaar
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Kies tussen een openbaar (internet) en een niet openbaar (Local Area Network, LAN) spel
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nee
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spelersnaam:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Dit is de naam waarmee andere spelers je herkennen
 
@@ -1841,6 +1852,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}De speln
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Kies wachtwoord
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Bescherm je spel met een wachtwoord als je niet wilt dat deze algemeen toegankelijk is
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :Nee
+STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} speler{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximaal aantal spelers:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Kies het maximaal aantal toegestane spelers. Niet alle posities hoeven gebruikt te worden
@@ -2151,6 +2164,17 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Schakel 
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Schakel transparantie voor bovenleiding aan/uit. Ctrl+klik voor onthouden
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Schakel transparantie voor laadindicatoren aan/uit. Ctrl+klik om vast te zetten
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Maak objecten onzichtbaar in plaats van transparant
+
+# Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Vracht Stroom Legenda
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Alle
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Geen
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Selecteer weer te geven bedrijven
+
+# Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}ongebruikt
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}verzadigd
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}overbelast
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Dekkingsgebied markeren
@@ -2947,6 +2971,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Rangen
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Bekijk stationsreputaties
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Maandelijkse levering en lokale waardering:
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Teleurstellend

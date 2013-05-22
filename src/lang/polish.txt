@@ -754,6 +754,7 @@ STR_FILE_MENU_EXIT                                              :Wyjście
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa świata
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Dodatkowy podgląd
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda przepływu towarów
 STR_MAP_MENU_SIGN_LIST                                          :Lista napisów
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista miast
@@ -1041,17 +1042,20 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {
 STR_SMALLMAP_TYPE_CONTOURS                                      :Ukształtowanie
 STR_SMALLMAP_TYPE_VEHICLES                                      :Pojazdy
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Przedsiębiorstwa
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :Przepływ towarów
 STR_SMALLMAP_TYPE_ROUTES                                        :Trasy
 STR_SMALLMAP_TYPE_VEGETATION                                    :Roślinność
 STR_SMALLMAP_TYPE_OWNERS                                        :Właściciele
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Pokaż zarysy lądu na mapie
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Pokaż pojazdy na mapie
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Pokaż przedsiębiorstwa na mapie
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK]Pokaż przepływ towarów na mapie
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Pokaż drogi na mapie
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Pokaż roślinność na mapie
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Pokaż teren mający właściciela
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klik na typie przedsiębiorstwa żeby przełączyć jego wyświetlanie. Ctrl+klik wyłącza wszystkie typy prócz wybranego. Ponowne Ctrl+klik włącza wszystkie typy przedsiębiorstw
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klik na firmie żeby wyświetlić jej posiadłości. Ctrl+klik wyłącza wszystkie firmy prócz wybranej. Ponowne Ctrl+klik włącza wszystkie firmy
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Kliknij towar by przełączać wyświetlanie jego własności. Ctrl+klik wyłącza wszystkie towary oprócz zaznaczonego. Ponowny Ctrl+klik na nim włącza wszystkie towary
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Drogi
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Koleje
@@ -1086,6 +1090,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Pokaż nazwy miast na mapie
 STR_SMALLMAP_CENTER                                             :{BLACK}Wyśrodkuj mapę na aktualnej lokalizacji
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Wyłącz wszystko
@@ -1096,6 +1101,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Pokaż w
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Przełącz wyświetlanie mapy wysokości
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nie wyświetlaj posiadłości firmy na mapie
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Wyświetl wszystkie posiadłości firmy na mapie
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Nie wyświetlaj towarów na mapie
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Wyświetl wszystkie towary na mapie
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Pokaż ostatnią wiadomość lub ogłoszenie
@@ -1831,7 +1838,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Wyświetl wiado
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nowe pojazdy: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Wyświetl wiadomość w gazecie o dostępnym nowym typie pojazdu
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Zmiany w akceptowaniu ładunku: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Wyświetl wiadomość o zmianach w akceptowaniu towarów przez stacje
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Wyświetlaj wiadomości o zmianach w akceptowaniu towarów przez stacje
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsydia: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Wyświetl wiadomość w gazecie o wydarzeniach związanych z subsydiami
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Ogólne informacje: {STRING}
@@ -2163,6 +2170,10 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Zmień k
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Gra wieloosobowa
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Reklamowany
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Wybierz między rozgrywkami reklamowanymi (internetowymi) a niereklamowanymi (w sieci lokalnej LAN)
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nie
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Tak
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nazwa gracza:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}To jest nazwa pod którą będą Cię widzieć inni gracze
 
@@ -2221,6 +2232,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nazwa gr
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Ustaw hasło
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Zabezpiecz grę hasłem jeśli nie chcesz, by była publicznie dostępna
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :Nie
+STR_NETWORK_START_SERVER_ADVERTISED                             :Tak
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" ów ów}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Dopuszczalna ilość klientów:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Ustaw maksymalną liczbę klientów. Nie wszystkie pola muszą być wypełnione.
@@ -2533,8 +2546,15 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Przełą
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ustaw obiekty jako niewidoczne zamiast przeźroczyste
 
 # Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legenda przepływu towarów
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Wszystkie
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Żadne
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Wybierz firmy, które mają być wyświetlane
 
 # Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}nieużywany
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}nasycony
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}przeładowany
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Podświetlaj zasięg
@@ -3331,6 +3351,7 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :Firma {YELLOW}{
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Oceny
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Pokaż ocenę stacji
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Miesięczna dostawa i lokalna ocena:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 ############ range for rating starts
