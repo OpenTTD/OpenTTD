@@ -17,6 +17,7 @@
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "window_gui.h"
+#include "window_func.h"
 
 #include "widgets/object_widget.h"
 
@@ -25,6 +26,8 @@
 static ObjectClassID _selected_object_class; ///< the currently visible object class
 static int _selected_object_index;           ///< the index of the selected object in the current class or -1
 static uint8 _selected_object_view;          ///< the view of the selected object
+static uint _matrix_col_count;               ///< Number of columns of the object type matrix
+static uint _list_row_count;                 ///< Number of rows of the object class list
 
 /** The window used for building objects. */
 class BuildObjectWindow : public PickerWindowBase {
@@ -58,6 +61,16 @@ class BuildObjectWindow : public PickerWindowBase {
 		return sel_objclass->GetSpec(_selected_object_index)->IsAvailable();
 	}
 
+	/**
+	 * Calculate the number of columns of the #WID_BO_SELECT_MATRIX widget.
+	 * @return Number of columns in the matrix.
+	 */
+	uint GetMatrixColumnCount()
+	{
+		const NWidgetBase *matrix = this->GetWidget<NWidgetBase>(WID_BO_SELECT_MATRIX);
+		return 1 + (matrix->current_x - matrix->smallest_x) / matrix->resize_x;
+	}
+
 public:
 	BuildObjectWindow(const WindowDesc *desc, Window *w) : PickerWindowBase(w), info_height(1)
 	{
@@ -82,11 +95,29 @@ public:
 		NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX);
 		matrix->SetScrollbar(this->GetScrollbar(WID_BO_SELECT_SCROLL));
 		matrix->SetCount(ObjectClass::Get(_selected_object_class)->GetUISpecCount());
+
+		/* If needed restore the window previous size with the stored values.*/
+		uint default_num_cols = this->GetMatrixColumnCount();
+		uint default_num_rows = this->vscroll->GetCapacity();
+		int delta_x = (_matrix_col_count > default_num_cols) ? (_matrix_col_count - default_num_cols) * this->resize.step_width : 0;
+		int delta_y = (_list_row_count > default_num_rows) ? (_list_row_count - default_num_rows) * this->resize.step_height : 0;
+		if (delta_x > 0 || delta_y > 0) {
+			ResizeWindow(this, delta_x, delta_y, false);
+			/* The window may be linked to the toolbars, thus positioned at the left-bottom of the toolbars.
+			 * If the resized window is wider than the toolbars, its position need te be adjusted to ensure all
+			 * matrix columns are visible. */
+			this->FindWindowPlacementAndResize(this->width, this->height);
+		}
+
 		if (_selected_object_index != -1) matrix->SetClicked(_selected_object_index);
 	}
 
 	virtual ~BuildObjectWindow()
 	{
+		/* Store the number of columns of the object type matrix and the number of rows of the object class list
+		 * to restore them on the next window invocation. */
+		_matrix_col_count = this->GetMatrixColumnCount();
+		_list_row_count = this->vscroll->GetCapacity();
 	}
 
 	virtual void SetStringParameters(int widget) const
