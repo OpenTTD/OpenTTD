@@ -44,6 +44,20 @@ class BuildObjectWindow : public PickerWindowBase {
 		this->vscroll->ScrollTowards(pos);
 	}
 
+	/**
+	 * Tests whether the previously selected object can be selected.
+	 * @return \c true if the selected object is available, \c false otherwise.
+	 */
+	bool CanRestoreSelectedObject()
+	{
+		if (_selected_object_index == -1) return false;
+
+		ObjectClass *sel_objclass = ObjectClass::Get(_selected_object_class);
+		if ((int)sel_objclass->GetSpecCount() <= _selected_object_index) return false;
+
+		return sel_objclass->GetSpec(_selected_object_index)->IsAvailable();
+	}
+
 public:
 	BuildObjectWindow(const WindowDesc *desc, Window *w) : PickerWindowBase(w), info_height(1)
 	{
@@ -56,7 +70,11 @@ public:
 
 		this->FinishInitNested(desc, 0);
 
-		this->SelectFirstAvailableObject(true);
+		if (this->CanRestoreSelectedObject()) {
+			this->SelectOtherObject(_selected_object_index);
+		} else {
+			this->SelectFirstAvailableObject(true);
+		}
 		assert(ObjectClass::Get(_selected_object_class)->GetUISpecCount() > 0); // object GUI should be disables elsewise
 		this->EnsureSelectedObjectClassIsVisible();
 		this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX)->SetCount(4);
