@@ -33,6 +33,17 @@ class BuildObjectWindow : public PickerWindowBase {
 	int info_height;                    ///< The height of the info box.
 	Scrollbar *vscroll;                 ///< The scrollbar.
 
+	/** Scroll #WID_BO_CLASS_LIST so that the selected object class is visible. */
+	void EnsureSelectedObjectClassIsVisible()
+	{
+		uint pos = 0;
+		for (int i = 0; i < _selected_object_class; i++) {
+			if (ObjectClass::Get((ObjectClassID) i)->GetUISpecCount() == 0) continue;
+			pos++;
+		}
+		this->vscroll->ScrollTowards(pos);
+	}
+
 public:
 	BuildObjectWindow(const WindowDesc *desc, Window *w) : PickerWindowBase(w), info_height(1)
 	{
@@ -47,6 +58,7 @@ public:
 
 		this->SelectFirstAvailableObject(true);
 		assert(ObjectClass::Get(_selected_object_class)->GetUISpecCount() > 0); // object GUI should be disables elsewise
+		this->EnsureSelectedObjectClassIsVisible();
 		this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX)->SetCount(4);
 
 		NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX);
