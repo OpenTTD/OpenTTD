@@ -125,7 +125,7 @@ void WindowDesc::LoadFromConfig()
 /**
  * Sort WindowDesc by ini_key.
  */
-static int DescSorter(WindowDesc * const *a, WindowDesc * const *b)
+static int CDECL DescSorter(WindowDesc * const *a, WindowDesc * const *b)
 {
 	if ((*a)->ini_key != NULL && (*b)->ini_key != NULL) return strcmp((*a)->ini_key, (*b)->ini_key);
 	return ((*b)->ini_key != NULL ? 1 : 0) - ((*a)->ini_key != NULL ? 1 : 0);
@@ -597,7 +597,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 		case WWT_STICKYBOX:
 			w->flags ^= WF_STICKY;
 			nw->SetDirty(w);
-			if (_ctrl_pressed) w->window_desc->pref_sticky = w->flags & WF_STICKY;
+			if (_ctrl_pressed) w->window_desc->pref_sticky = (w->flags & WF_STICKY) != 0;
 			return;
 
 		default:
