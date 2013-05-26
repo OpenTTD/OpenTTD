@@ -96,7 +96,9 @@ WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_wi
 	flags(flags),
 	nwid_parts(nwid_parts),
 	nwid_length(nwid_length),
-	pref_sticky(false)
+	pref_sticky(false),
+	pref_width(0),
+	pref_height(0)
 {
 	if (_window_descs == NULL) _window_descs = new SmallVector<WindowDesc*, 16>();
 	*_window_descs->Append() = this;
@@ -561,16 +563,21 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 			return;
 
 		case WWT_DEFSIZEBOX: {
-			int16 def_width = max<int16>(min(w->window_desc->default_width, _screen.width), w->nested_root->smallest_x);
-			int16 def_height = max<int16>(min(w->window_desc->default_height, _screen.height - 50), w->nested_root->smallest_y);
+			if (_ctrl_pressed) {
+				w->window_desc->pref_width = w->width;
+				w->window_desc->pref_height = w->height;
+			} else {
+				int16 def_width = max<int16>(min(w->window_desc->GetDefaultWidth(), _screen.width), w->nested_root->smallest_x);
+				int16 def_height = max<int16>(min(w->window_desc->GetDefaultHeight(), _screen.height - 50), w->nested_root->smallest_y);
 
-			int dx = (w->resize.step_width  == 0) ? 0 : def_width  - w->width;
-			int dy = (w->resize.step_height == 0) ? 0 : def_height - w->height;
-			/* dx and dy has to go by step.. calculate it.
-			 * The cast to int is necessary else dx/dy are implicitly casted to unsigned int, which won't work. */
-			if (w->resize.step_width  > 1) dx -= dx % (int)w->resize.step_width;
-			if (w->resize.step_height > 1) dy -= dy % (int)w->resize.step_height;
-			ResizeWindow(w, dx, dy, false);
+				int dx = (w->resize.step_width  == 0) ? 0 : def_width  - w->width;
+				int dy = (w->resize.step_height == 0) ? 0 : def_height - w->height;
+				/* dx and dy has to go by step.. calculate it.
+				 * The cast to int is necessary else dx/dy are implicitly casted to unsigned int, which won't work. */
+				if (w->resize.step_width  > 1) dx -= dx % (int)w->resize.step_width;
+				if (w->resize.step_height > 1) dy -= dy % (int)w->resize.step_height;
+				ResizeWindow(w, dx, dy, false);
+			}
 
 			nw->SetLowered(true);
 			nw->SetDirty(w);
@@ -1544,8 +1551,8 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int16 sm_width, int
 	Point pt;
 	const Window *w;
 
-	int16 default_width  = max(desc->default_width,  sm_width);
-	int16 default_height = max(desc->default_height, sm_height);
+	int16 default_width  = max(desc->GetDefaultWidth(),  sm_width);
+	int16 default_height = max(desc->GetDefaultHeight(), sm_height);
 
 	if (desc->parent_cls != 0 /* WC_MAIN_WINDOW */ &&
 			(w = FindWindowById(desc->parent_cls, window_number)) != NULL &&
@@ -1617,7 +1624,7 @@ void Window::FinishInitNested(WindowNumber window_number)
 	this->ApplyDefaults();
 	Point pt = this->OnInitialPosition(this->nested_root->smallest_x, this->nested_root->smallest_y, window_number);
 	this->InitializePositionSize(pt.x, pt.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
-	this->FindWindowPlacementAndResize(this->window_desc->default_width, this->window_desc->default_height);
+	this->FindWindowPlacementAndResize(this->window_desc->GetDefaultWidth(), this->window_desc->GetDefaultHeight());
 }
 
 /**

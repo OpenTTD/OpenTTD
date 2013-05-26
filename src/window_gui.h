@@ -189,6 +189,11 @@ struct WindowDesc : ZeroedMemoryAllocator {
 	int16 nwid_length;             ///< Length of the #nwid_parts array.
 
 	bool pref_sticky;              ///< Preferred stickyness.
+	int16 pref_width;              ///< User-preferred width of the window. Zero if unset.
+	int16 pref_height;             ///< User-preferred height of the window. Zero if unset.
+
+	int16 GetDefaultWidth() const { return this->pref_width != 0 ? this->pref_width : this->default_width; }
+	int16 GetDefaultHeight() const { return this->pref_height != 0 ? this->pref_height : this->default_height; }
 
 	static void LoadFromConfig();
 	static void SaveToConfig();
