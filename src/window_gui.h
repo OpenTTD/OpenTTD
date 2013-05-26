@@ -180,6 +180,9 @@ struct WindowDesc : ZeroedMemoryAllocator {
 	uint32 flags;                  ///< Flags. @see WindowDefaultFlag
 	const NWidgetPart *nwid_parts; ///< Nested widget parts describing the window.
 	int16 nwid_length;             ///< Length of the #nwid_parts array.
+
+	static void LoadFromConfig();
+	static void SaveToConfig();
 };
 
 /**

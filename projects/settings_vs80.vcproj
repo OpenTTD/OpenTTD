@@ -24,7 +24,7 @@
 				Name="VCPreBuildEventTool"
 				Description="Generating settings.h"
 				CommandLine="
-..\objs\settings\settings_gen.exe -o ..\objs\settings\table\settings.h -b ..\src\table\settings.h.preamble -a ..\src\table\settings.h.postamble ..\src\table\company_settings.ini ..\src\table\currency_settings.ini ..\src\table\gameopt_settings.ini ..\src\table\misc_settings.ini ..\src\table\settings.ini ..\src\table\win32_settings.ini
+..\objs\settings\settings_gen.exe -o ..\objs\settings\table\settings.h -b ..\src\table\settings.h.preamble -a ..\src\table\settings.h.postamble ..\src\table\company_settings.ini ..\src\table\currency_settings.ini ..\src\table\gameopt_settings.ini ..\src\table\misc_settings.ini ..\src\table\settings.ini ..\src\table\win32_settings.ini ..\src\table\window_settings.ini
 				"
 			/>
 			<Tool
@@ -66,6 +66,10 @@
 		</File>
 		<File
 			RelativePath="..\src\table\win32_settings.ini"
+			>
+		</File>
+		<File
+			RelativePath="..\src\table\window_settings.ini"
 			>
 		</File>
 		</Filter>

@@ -24,6 +24,9 @@
     <None Include="..\src\table\win32_settings.ini">
       <Filter>INI</Filter>
     </None>
+    <None Include="..\src\table\window_settings.ini">
+      <Filter>INI</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\table\settings.h.postamble" />

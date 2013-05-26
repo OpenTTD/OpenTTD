@@ -733,6 +733,28 @@ static void IniSaveSettingList(IniFile *ini, const char *grpname, StringList *li
 }
 
 /**
+ * Load a WindowDesc from config.
+ * @param ini IniFile handle to the ini file with the source data
+ * @param grpname character string identifying the section-header of the ini file that will be parsed
+ * @param desc Destination WindowDesc
+ */
+void IniLoadWindowSettings(IniFile *ini, const char *grpname, void *desc)
+{
+	IniLoadSettings(ini, _window_settings, grpname, desc);
+}
+
+/**
+ * Save a WindowDesc to config.
+ * @param ini IniFile handle to the ini file where the destination data is saved
+ * @param grpname character string identifying the section-header of the ini file
+ * @param desc Source WindowDesc
+ */
+void IniSaveWindowSettings(IniFile *ini, const char *grpname, void *desc)
+{
+	IniSaveSettings(ini, _window_settings, grpname, desc);
+}
+
+/**
  * Check whether the setting is editable in the current gamemode.
  * @param do_command true if this is about checking a command from the server.
  * @return true if editable.

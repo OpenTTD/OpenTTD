@@ -425,6 +425,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 		CheckConfig();
 		LoadFromHighScore();
 		LoadHotkeysFromConfig();
+		WindowDesc::LoadFromConfig();
 
 		/* We have loaded the config, so we may possibly save it. */
 		*save_config_ptr = save_config;
@@ -852,6 +853,7 @@ int ttd_main(int argc, char *argv[])
 	if (save_config) {
 		SaveToConfig();
 		SaveHotkeysToConfig();
+		WindowDesc::SaveToConfig();
 		SaveToHighScore();
 	}
 

@@ -27,6 +27,8 @@
 #include "widgets/dropdown_func.h"
 #include "strings_func.h"
 #include "settings_type.h"
+#include "settings_func.h"
+#include "ini_type.h"
 #include "newgrf_debug.h"
 #include "hotkeys.h"
 #include "toolbar_gui.h"
@@ -72,6 +74,15 @@ bool _mouse_hovering;      ///< The mouse is hovering over the same point.
 
 SpecialMouseMode _special_mouse_mode; ///< Mode of the mouse.
 
+/**
+ * List of all WindowDescs.
+ * This is a pointer to ensure initialisation order with the various static WindowDesc instances.
+ */
+static SmallVector<WindowDesc*, 16> *_window_descs = NULL;
+
+/** Config file to store WindowDesc */
+char *_windows_file;
+
 /** Window description constructor. */
 WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_width, int16 def_height,
 			WindowClass window_class, WindowClass parent_class, uint32 flags,
@@ -86,10 +97,53 @@ WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_wi
 	nwid_parts(nwid_parts),
 	nwid_length(nwid_length)
 {
+	if (_window_descs == NULL) _window_descs = new SmallVector<WindowDesc*, 16>();
+	*_window_descs->Append() = this;
 }
 
 WindowDesc::~WindowDesc()
 {
+}
+
+/**
+ * Load all WindowDesc settings from _windows_file.
+ */
+void WindowDesc::LoadFromConfig()
+{
+	IniFile *ini = new IniFile();
+	ini->LoadFromDisk(_windows_file, BASE_DIR);
+	for (WindowDesc **it = _window_descs->Begin(); it != _window_descs->End(); ++it) {
+		if ((*it)->ini_key == NULL) continue;
+		IniLoadWindowSettings(ini, (*it)->ini_key, *it);
+	}
+	delete ini;
+}
+
+/**
+ * Sort WindowDesc by ini_key.
+ */
+static int DescSorter(WindowDesc * const *a, WindowDesc * const *b)
+{
+	if ((*a)->ini_key != NULL && (*b)->ini_key != NULL) return strcmp((*a)->ini_key, (*b)->ini_key);
+	return ((*b)->ini_key != NULL ? 1 : 0) - ((*a)->ini_key != NULL ? 1 : 0);
+}
+
+/**
+ * Save all WindowDesc settings to _windows_file.
+ */
+void WindowDesc::SaveToConfig()
+{
+	/* Sort the stuff to get a nice ini file on first write */
+	QSortT(_window_descs->Begin(), _window_descs->Length(), DescSorter);
+
+	IniFile *ini = new IniFile();
+	ini->LoadFromDisk(_windows_file, BASE_DIR);
+	for (WindowDesc **it = _window_descs->Begin(); it != _window_descs->End(); ++it) {
+		if ((*it)->ini_key == NULL) continue;
+		IniSaveWindowSettings(ini, (*it)->ini_key, *it);
+	}
+	ini->SaveToDisk(_windows_file);
+	delete ini;
 }
 
 /**

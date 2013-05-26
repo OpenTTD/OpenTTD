@@ -15,6 +15,8 @@
 #include "core/smallvec_type.hpp"
 #include "company_type.h"
 
+struct IniFile;
+
 void IConsoleSetSetting(const char *name, const char *value, bool force_newgame = false);
 void IConsoleSetSetting(const char *name, int32 value);
 void IConsoleGetSetting(const char *name, bool force_newgame = false);
@@ -23,6 +25,9 @@ void IConsoleListSettings(const char *prefilter);
 void LoadFromConfig(bool minimal = false);
 void SaveToConfig();
 void CheckConfig();
+
+void IniLoadWindowSettings(IniFile *ini, const char *grpname, void *desc);
+void IniSaveWindowSettings(IniFile *ini, const char *grpname, void *desc);
 
 /* Functions to load and save NewGRF settings to a separate
  * configuration file, used for presets. */
