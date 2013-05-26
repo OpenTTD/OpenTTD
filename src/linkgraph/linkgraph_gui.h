@@ -96,7 +96,7 @@ void ShowLinkGraphLegend();
  */
 struct LinkGraphLegendWindow : Window {
 public:
-	LinkGraphLegendWindow(const WindowDesc *desc, int window_number);
+	LinkGraphLegendWindow(WindowDesc *desc, int window_number);
 	void SetOverlay(LinkGraphOverlay *overlay);
 
 	virtual void DrawWidget(const Rect &r, int widget) const;

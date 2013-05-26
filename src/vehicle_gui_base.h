@@ -38,7 +38,7 @@ struct BaseVehicleListWindow : public Window {
 	static const StringID vehicle_sorter_names[];
 	static GUIVehicleList::SortFunction * const vehicle_sorter_funcs[];
 
-	BaseVehicleListWindow(WindowNumber wno) : Window(), vli(wno)
+	BaseVehicleListWindow(WindowDesc *desc, WindowNumber wno) : Window(desc), vli(wno)
 	{
 		this->vehicles.SetSortFuncs(this->vehicle_sorter_funcs);
 	}

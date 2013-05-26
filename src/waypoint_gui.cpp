@@ -52,18 +52,18 @@ public:
 	 * @param desc The description of the window.
 	 * @param window_number The window number, in this case the waypoint's ID.
 	 */
-	WaypointWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
+	WaypointWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
 		this->wp = Waypoint::Get(window_number);
 		this->vt = (wp->string_id == STR_SV_STNAME_WAYPOINT) ? VEH_TRAIN : VEH_SHIP;
 
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 		if (this->vt == VEH_TRAIN) {
 			this->GetWidget<NWidgetCore>(WID_W_SHOW_VEHICLES)->SetDataTip(STR_TRAIN, STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP);
 			this->GetWidget<NWidgetCore>(WID_W_CENTER_VIEW)->tool_tip = STR_WAYPOINT_VIEW_CENTER_TOOLTIP;
 			this->GetWidget<NWidgetCore>(WID_W_RENAME)->tool_tip = STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME;
 		}
-		this->FinishInitNested(desc, window_number);
+		this->FinishInitNested(window_number);
 
 		if (this->wp->owner != OWNER_NONE) this->owner = this->wp->owner;
 		this->flags |= WF_DISABLE_VP_SCROLL;
@@ -170,7 +170,7 @@ static const NWidgetPart _nested_waypoint_view_widgets[] = {
 };
 
 /** The description of the waypoint view. */
-static const WindowDesc _waypoint_view_desc(
+static WindowDesc _waypoint_view_desc(
 	WDP_AUTO, 260, 118,
 	WC_WAYPOINT_VIEW, WC_NONE,
 	0,

@@ -1162,16 +1162,16 @@ static void BringWindowToFront(Window *w)
  * @pre If nested widgets are used (\a widget is \c NULL), #nested_root and #nested_array_size must be initialized.
  *      In addition, #nested_array is either \c NULL, or already initialized.
  */
-void Window::InitializeData(const WindowDesc *desc, WindowNumber window_number)
+void Window::InitializeData(WindowNumber window_number)
 {
 	/* Set up window properties; some of them are needed to set up smallest size below */
-	this->window_class = desc->cls;
+	this->window_class = this->window_desc->cls;
 	this->SetWhiteBorder();
-	if (desc->default_pos == WDP_CENTER) this->flags |= WF_CENTERED;
+	if (this->window_desc->default_pos == WDP_CENTER) this->flags |= WF_CENTERED;
 	this->owner = INVALID_OWNER;
 	this->nested_focus = NULL;
 	this->window_number = window_number;
-	this->desc_flags = desc->flags;
+	this->desc_flags = this->window_desc->flags;
 
 	this->OnInit();
 	/* Initialize nested widget tree. */
@@ -1489,23 +1489,22 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int16 sm_width, int
 	return pt;
 }
 
-/* virtual */ Point Window::OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
+/* virtual */ Point Window::OnInitialPosition(int16 sm_width, int16 sm_height, int window_number)
 {
-	return LocalGetWindowPlacement(desc, sm_width, sm_height, window_number);
+	return LocalGetWindowPlacement(this->window_desc, sm_width, sm_height, window_number);
 }
 
 /**
  * Perform the first part of the initialization of a nested widget tree.
  * Construct a nested widget tree in #nested_root, and optionally fill the #nested_array array to provide quick access to the uninitialized widgets.
  * This is mainly useful for setting very basic properties.
- * @param desc        Window description.
  * @param fill_nested Fill the #nested_array (enabling is expensive!).
  * @note Filling the nested array requires an additional traversal through the nested widget tree, and is best performed by #FinishInitNested rather than here.
  */
-void Window::CreateNestedTree(const WindowDesc *desc, bool fill_nested)
+void Window::CreateNestedTree(bool fill_nested)
 {
 	int biggest_index = -1;
-	this->nested_root = MakeWindowNWidgetTree(desc->nwid_parts, desc->nwid_length, &biggest_index, &this->shade_select);
+	this->nested_root = MakeWindowNWidgetTree(this->window_desc->nwid_parts, this->window_desc->nwid_length, &biggest_index, &this->shade_select);
 	this->nested_array_size = (uint)(biggest_index + 1);
 
 	if (fill_nested) {
@@ -1516,30 +1515,31 @@ void Window::CreateNestedTree(const WindowDesc *desc, bool fill_nested)
 
 /**
  * Perform the second part of the initialization of a nested widget tree.
- * @param desc          Window description.
  * @param window_number Number of the new window.
  */
-void Window::FinishInitNested(const WindowDesc *desc, WindowNumber window_number)
+void Window::FinishInitNested(WindowNumber window_number)
 {
-	this->InitializeData(desc, window_number);
-	Point pt = this->OnInitialPosition(desc, this->nested_root->smallest_x, this->nested_root->smallest_y, window_number);
+	this->InitializeData(window_number);
+	Point pt = this->OnInitialPosition(this->nested_root->smallest_x, this->nested_root->smallest_y, window_number);
 	this->InitializePositionSize(pt.x, pt.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
-	this->FindWindowPlacementAndResize(desc->default_width, desc->default_height);
+	this->FindWindowPlacementAndResize(this->window_desc->default_width, this->window_desc->default_height);
 }
 
 /**
  * Perform complete initialization of the #Window with nested widgets, to allow use.
- * @param desc          Window description.
  * @param window_number Number of the new window.
  */
-void Window::InitNested(const WindowDesc *desc, WindowNumber window_number)
+void Window::InitNested(WindowNumber window_number)
 {
-	this->CreateNestedTree(desc, false);
-	this->FinishInitNested(desc, window_number);
+	this->CreateNestedTree(false);
+	this->FinishInitNested(window_number);
 }
 
-/** Empty constructor, initialization has been moved to #InitNested() called from the constructor of the derived class. */
-Window::Window() : scrolling_scrollbar(-1)
+/**
+ * Empty constructor, initialization has been moved to #InitNested() called from the constructor of the derived class.
+ * @param desc The description of the window.
+ */
+Window::Window(WindowDesc *desc) : window_desc(desc), scrolling_scrollbar(-1)
 {
 }
 

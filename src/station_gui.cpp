@@ -282,7 +282,7 @@ protected:
 	}
 
 public:
-	CompanyStationsWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
+	CompanyStationsWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
 		this->stations.SetListing(this->last_sorting);
 		this->stations.SetSortFuncs(this->sorter_funcs);
@@ -290,9 +290,9 @@ public:
 		this->stations.NeedResort();
 		this->SortStationsList();
 
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_STL_SCROLLBAR);
-		this->FinishInitNested(desc, window_number);
+		this->FinishInitNested(window_number);
 		this->owner = (Owner)this->window_number;
 
 		const CargoSpec *cs;
@@ -711,7 +711,7 @@ static const NWidgetPart _nested_company_stations_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _company_stations_desc(
+static WindowDesc _company_stations_desc(
 	WDP_AUTO, 358, 162,
 	WC_STATION_LIST, WC_NONE,
 	0,
@@ -816,15 +816,15 @@ struct StationViewWindow : public Window {
 		ALH_ACCEPTS = 3,  ///< Height of the accepted cargo view.
 	};
 
-	StationViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
+	StationViewWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
 		this->rating_lines  = ALH_RATING;
 		this->accepts_lines = ALH_ACCEPTS;
 
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SV_SCROLLBAR);
 		/* Nested widget tree creation is done in two steps to ensure that this->GetWidget<NWidgetCore>(WID_SV_ACCEPTS_RATINGS) exists in UpdateWidgetSize(). */
-		this->FinishInitNested(desc, window_number);
+		this->FinishInitNested(window_number);
 
 		Owner owner = Station::Get(window_number)->owner;
 		if (owner != OWNER_NONE) this->owner = owner;
@@ -1183,7 +1183,7 @@ struct StationViewWindow : public Window {
 };
 
 
-static const WindowDesc _station_view_desc(
+static WindowDesc _station_view_desc(
 	WDP_AUTO, 249, 110,
 	WC_STATION_VIEW, WC_NONE,
 	0,
@@ -1326,15 +1326,15 @@ struct SelectStationWindow : Window {
 	TileArea area; ///< Location of new station
 	Scrollbar *vscroll;
 
-	SelectStationWindow(const WindowDesc *desc, CommandContainer cmd, TileArea ta) :
-		Window(),
+	SelectStationWindow(WindowDesc *desc, CommandContainer cmd, TileArea ta) :
+		Window(desc),
 		select_station_cmd(cmd),
 		area(ta)
 	{
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_JS_SCROLLBAR);
 		this->GetWidget<NWidgetCore>(WID_JS_CAPTION)->widget_data = T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_JOIN_WAYPOINT_CAPTION : STR_JOIN_STATION_CAPTION;
-		this->FinishInitNested(desc, 0);
+		this->FinishInitNested(0);
 		this->OnInvalidateData(0);
 	}
 
@@ -1427,7 +1427,7 @@ struct SelectStationWindow : Window {
 	}
 };
 
-static const WindowDesc _select_station_desc(
+static WindowDesc _select_station_desc(
 	WDP_AUTO, 200, 180,
 	WC_SELECT_STATION, WC_NONE,
 	WDF_CONSTRUCTION,

@@ -42,6 +42,9 @@ public:
 	~ErrorMessageData();
 	ErrorMessageData(StringID summary_msg, StringID detailed_msg, uint duration = 0, int x = 0, int y = 0, uint textref_stack_size = 0, const uint32 *textref_stack = NULL);
 
+	/** Check whether error window shall display a company manager face */
+	bool HasFace() const { return face != INVALID_COMPANY; }
+
 	void SetDParam(uint n, uint64 v);
 	void SetDParamStr(uint n, const char *str);
 

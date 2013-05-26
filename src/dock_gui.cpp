@@ -91,10 +91,10 @@ static TileIndex GetOtherAqueductEnd(TileIndex tile_from, TileIndex *tile_to = N
 struct BuildDocksToolbarWindow : Window {
 	DockToolbarWidgets last_clicked_widget; ///< Contains the last widget that has been clicked on this toolbar.
 
-	BuildDocksToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
+	BuildDocksToolbarWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
 		this->last_clicked_widget = WID_DT_INVALID;
-		this->InitNested(desc, window_number);
+		this->InitNested(window_number);
 		this->OnInvalidateData();
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
@@ -313,7 +313,7 @@ static const NWidgetPart _nested_build_docks_toolbar_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _build_docks_toolbar_desc(
+static WindowDesc _build_docks_toolbar_desc(
 	WDP_ALIGN_TOOLBAR, 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
@@ -365,7 +365,7 @@ static const NWidgetPart _nested_build_docks_scen_toolbar_widgets[] = {
 };
 
 /** Window definition for the build docks in scenario editor window. */
-static const WindowDesc _build_docks_scen_toolbar_desc(
+static WindowDesc _build_docks_scen_toolbar_desc(
 	WDP_AUTO, 0, 0,
 	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
@@ -392,9 +392,9 @@ enum BuildDockStationWidgets {
 
 struct BuildDocksStationWindow : public PickerWindowBase {
 public:
-	BuildDocksStationWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
+	BuildDocksStationWindow(WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
-		this->InitNested(desc, TRANSPORT_WATER);
+		this->InitNested(TRANSPORT_WATER);
 		this->LowerWidget(_settings_client.gui.station_show_coverage + BDSW_LT_OFF);
 	}
 
@@ -465,7 +465,7 @@ static const NWidgetPart _nested_build_dock_station_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _build_dock_station_desc(
+static WindowDesc _build_dock_station_desc(
 	WDP_AUTO, 0, 0,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
@@ -489,9 +489,9 @@ private:
 	}
 
 public:
-	BuildDocksDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
+	BuildDocksDepotWindow(WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
-		this->InitNested(desc, TRANSPORT_WATER);
+		this->InitNested(TRANSPORT_WATER);
 		this->LowerWidget(_ship_depot_direction + WID_BDD_X);
 		UpdateDocksDirection();
 	}
@@ -542,7 +542,7 @@ static const NWidgetPart _nested_build_docks_depot_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _build_docks_depot_desc(
+static WindowDesc _build_docks_depot_desc(
 	WDP_AUTO, 0, 0,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,

@@ -248,14 +248,14 @@ struct QueryString;
  */
 struct Window : ZeroedMemoryAllocator {
 protected:
-	void InitializeData(const WindowDesc *desc, WindowNumber window_number);
+	void InitializeData(WindowNumber window_number);
 	void InitializePositionSize(int x, int y, int min_width, int min_height);
 	void FindWindowPlacementAndResize(int def_width, int def_height);
 
 	SmallVector<int, 4> scheduled_invalidation_data;  ///< Data of scheduled OnInvalidateData() calls.
 
 public:
-	Window();
+	Window(WindowDesc *desc);
 
 	virtual ~Window();
 
@@ -279,6 +279,7 @@ public:
 	{
 	}
 
+	WindowDesc *window_desc;    ///< Window description
 	WindowFlags flags;          ///< Window flags
 	WindowClass window_class;   ///< Window class
 	WindowNumber window_number; ///< Window number within the window class
@@ -322,9 +323,9 @@ public:
 	const QueryString *GetQueryString(uint widnum) const;
 	QueryString *GetQueryString(uint widnum);
 
-	void InitNested(const WindowDesc *desc, WindowNumber number = 0);
-	void CreateNestedTree(const WindowDesc *desc, bool fill_nested = true);
-	void FinishInitNested(const WindowDesc *desc, WindowNumber window_number = 0);
+	void InitNested(WindowNumber number = 0);
+	void CreateNestedTree(bool fill_nested = true);
+	void FinishInitNested(WindowNumber window_number = 0);
 
 	/**
 	 * Set the timeout flag of the window and initiate the timer.
@@ -506,13 +507,12 @@ public:
 
 	/**
 	 * Compute the initial position of the window.
-	 * @param *desc         The pointer to the WindowDesc of the window to create.
 	 * @param sm_width      Smallest width of the window.
 	 * @param sm_height     Smallest height of the window.
 	 * @param window_number The window number of the new window.
 	 * @return Initial position of the top-left corner of the window.
 	 */
-	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number);
+	virtual Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number);
 
 	/**
 	 * The window must be repainted.
@@ -805,7 +805,7 @@ inline const NWID *Window::GetWidget(uint widnum) const
 class PickerWindowBase : public Window {
 
 public:
-	PickerWindowBase(Window *parent) : Window()
+	PickerWindowBase(WindowDesc *desc, Window *parent) : Window(desc)
 	{
 		this->parent = parent;
 	}
@@ -823,7 +823,7 @@ Window *FindWindowFromPt(int x, int y);
  * @return see Window pointer of the newly created window
  */
 template <typename Wcls>
-Wcls *AllocateWindowDescFront(const WindowDesc *desc, int window_number)
+Wcls *AllocateWindowDescFront(WindowDesc *desc, int window_number)
 {
 	if (BringWindowToFrontById(desc->cls, window_number)) return NULL;
 	return new Wcls(desc, window_number);

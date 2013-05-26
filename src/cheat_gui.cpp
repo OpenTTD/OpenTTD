@@ -170,9 +170,9 @@ struct CheatWindow : Window {
 	int clicked;
 	int header_height;
 
-	CheatWindow(const WindowDesc *desc) : Window()
+	CheatWindow(WindowDesc *desc) : Window(desc)
 	{
-		this->InitNested(desc);
+		this->InitNested();
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -348,7 +348,7 @@ struct CheatWindow : Window {
 };
 
 /** Window description of the cheats GUI. */
-static const WindowDesc _cheats_desc(
+static WindowDesc _cheats_desc(
 	WDP_AUTO, 0, 0,
 	WC_CHEATS, WC_NONE,
 	0,

@@ -793,13 +793,13 @@ private:
 	}
 
 public:
-	OrdersWindow(const WindowDesc *desc, const Vehicle *v) : Window()
+	OrdersWindow(WindowDesc *desc, const Vehicle *v) : Window(desc)
 	{
 		this->vehicle = v;
 
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_O_SCROLLBAR);
-		this->FinishInitNested(desc, v->index);
+		this->FinishInitNested(v->index);
 		if (v->owner == _local_company) {
 			this->DisableWidget(WID_O_EMPTY);
 		}
@@ -1593,7 +1593,7 @@ static const NWidgetPart _nested_orders_train_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _orders_train_desc(
+static WindowDesc _orders_train_desc(
 	WDP_AUTO, 384, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_CONSTRUCTION,
@@ -1664,7 +1664,7 @@ static const NWidgetPart _nested_orders_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _orders_desc(
+static WindowDesc _orders_desc(
 	WDP_AUTO, 384, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_CONSTRUCTION,
@@ -1689,7 +1689,7 @@ static const NWidgetPart _nested_other_orders_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _other_orders_desc(
+static WindowDesc _other_orders_desc(
 	WDP_AUTO, 384, 86,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_CONSTRUCTION,

@@ -35,10 +35,10 @@
 
 struct SelectGameWindow : public Window {
 
-	SelectGameWindow(const WindowDesc *desc) : Window()
+	SelectGameWindow(WindowDesc *desc) : Window(desc)
 	{
-		this->CreateNestedTree(desc);
-		this->FinishInitNested(desc, 0);
+		this->CreateNestedTree();
+		this->FinishInitNested(0);
 		this->OnInvalidateData();
 	}
 
@@ -246,7 +246,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _select_game_desc(
+static WindowDesc _select_game_desc(
 	WDP_CENTER, 0, 0,
 	WC_SELECT_GAME, WC_NONE,
 	0,

@@ -303,11 +303,11 @@ struct NewGRFInspectWindow : Window {
 		this->SetDirty();
 	}
 
-	NewGRFInspectWindow(const WindowDesc *desc, WindowNumber wno) : Window()
+	NewGRFInspectWindow(WindowDesc *desc, WindowNumber wno) : Window(desc)
 	{
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_NGRFI_SCROLLBAR);
-		this->FinishInitNested(desc, wno);
+		this->FinishInitNested(wno);
 
 		this->vscroll->SetCount(0);
 		this->SetWidgetDisabledState(WID_NGRFI_PARENT, GetFeatureHelper(this->window_number)->GetParent(GetFeatureIndex(this->window_number)) == UINT32_MAX);
@@ -518,7 +518,7 @@ static const NWidgetPart _nested_newgrf_inspect_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _newgrf_inspect_desc(
+static WindowDesc _newgrf_inspect_desc(
 	WDP_AUTO, 400, 300,
 	WC_NEWGRF_INSPECT, WC_NONE,
 	0,
@@ -630,11 +630,11 @@ struct SpriteAlignerWindow : Window {
 	SpriteID current_sprite; ///< The currently shown sprite
 	Scrollbar *vscroll;
 
-	SpriteAlignerWindow(const WindowDesc *desc, WindowNumber wno) : Window()
+	SpriteAlignerWindow(WindowDesc *desc, WindowNumber wno) : Window(desc)
 	{
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SA_SCROLLBAR);
-		this->FinishInitNested(desc, wno);
+		this->FinishInitNested(wno);
 
 		/* Oh yes, we assume there is at least one normal sprite! */
 		while (GetSpriteType(this->current_sprite) != ST_NORMAL) this->current_sprite++;
@@ -872,7 +872,7 @@ static const NWidgetPart _nested_sprite_aligner_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _sprite_aligner_desc(
+static WindowDesc _sprite_aligner_desc(
 	WDP_AUTO, 400, 300,
 	WC_SPRITE_ALIGNER, WC_NONE,
 	0,

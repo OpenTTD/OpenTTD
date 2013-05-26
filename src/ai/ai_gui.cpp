@@ -65,7 +65,7 @@ struct AIListWindow : public Window {
 	 * @param desc The description of the window.
 	 * @param slot The company we're changing the AI for.
 	 */
-	AIListWindow(const WindowDesc *desc, CompanyID slot) : Window(),
+	AIListWindow(WindowDesc *desc, CompanyID slot) : Window(desc),
 		slot(slot)
 	{
 		if (slot == OWNER_DEITY) {
@@ -74,9 +74,9 @@ struct AIListWindow : public Window {
 			this->info_list = AI::GetUniqueInfoList();
 		}
 
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_AIL_SCROLLBAR);
-		this->FinishInitNested(desc); // Initializes 'this->line_height' as side effect.
+		this->FinishInitNested(); // Initializes 'this->line_height' as side effect.
 
 		this->vscroll->SetCount((int)this->info_list->size() + 1);
 
@@ -257,7 +257,7 @@ static const NWidgetPart _nested_ai_list_widgets[] = {
 };
 
 /** Window definition for the ai list window. */
-static const WindowDesc _ai_list_desc(
+static WindowDesc _ai_list_desc(
 	WDP_CENTER, 200, 234,
 	WC_AI_LIST, WC_NONE,
 	0,
@@ -296,7 +296,7 @@ struct AISettingsWindow : public Window {
 	 * @param desc The description of the window.
 	 * @param slot The company we're changing the settings for.
 	 */
-	AISettingsWindow(const WindowDesc *desc, CompanyID slot) : Window(),
+	AISettingsWindow(WindowDesc *desc, CompanyID slot) : Window(desc),
 		slot(slot),
 		clicked_button(-1),
 		clicked_dropdown(false),
@@ -306,9 +306,9 @@ struct AISettingsWindow : public Window {
 		this->ai_config = GetConfig(slot);
 		this->RebuildVisibleSettings();
 
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_AIS_SCROLLBAR);
-		this->FinishInitNested(desc, slot);  // Initializes 'this->line_height' as side effect.
+		this->FinishInitNested(slot);  // Initializes 'this->line_height' as side effect.
 
 		this->SetWidgetDisabledState(WID_AIS_RESET, _game_mode != GM_MENU && Company::IsValidID(this->slot));
 
@@ -603,7 +603,7 @@ static const NWidgetPart _nested_ai_settings_widgets[] = {
 };
 
 /** Window definition for the AI settings window. */
-static const WindowDesc _ai_settings_desc(
+static WindowDesc _ai_settings_desc(
 	WDP_CENTER, 500, 208,
 	WC_AI_SETTINGS, WC_NONE,
 	0,
@@ -697,7 +697,7 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 };
 
 /** Window definition for the configure AI window. */
-static const WindowDesc _ai_config_desc(
+static WindowDesc _ai_config_desc(
 	WDP_CENTER, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
@@ -712,9 +712,9 @@ struct AIConfigWindow : public Window {
 	int line_height;         ///< Height of a single AI-name line.
 	Scrollbar *vscroll;      ///< Cache of the vertical scrollbar.
 
-	AIConfigWindow() : Window()
+	AIConfigWindow() : Window(&_ai_config_desc)
 	{
-		this->InitNested(&_ai_config_desc, WN_GAME_OPTIONS_AI); // Initializes 'this->line_height' as a side effect.
+		this->InitNested(WN_GAME_OPTIONS_AI); // Initializes 'this->line_height' as a side effect.
 		this->vscroll = this->GetScrollbar(WID_AIC_SCROLLBAR);
 		this->selected_slot = INVALID_COMPANY;
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_AIC_LIST);
@@ -1042,13 +1042,13 @@ struct AIDebugWindow : public Window {
 	 * @param desc The description of the window.
 	 * @param number The window number (actually unused).
 	 */
-	AIDebugWindow(const WindowDesc *desc, WindowNumber number) : break_editbox(MAX_BREAK_STR_STRING_LENGTH)
+	AIDebugWindow(WindowDesc *desc, WindowNumber number) : Window(desc), break_editbox(MAX_BREAK_STR_STRING_LENGTH)
 	{
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_AID_SCROLLBAR);
 		this->show_break_box = _settings_client.gui.ai_developer_tools;
 		this->GetWidget<NWidgetStacked>(WID_AID_BREAK_STRING_WIDGETS)->SetDisplayedPlane(this->show_break_box ? 0 : SZSP_HORIZONTAL);
-		this->FinishInitNested(desc, number);
+		this->FinishInitNested(number);
 
 		if (!this->show_break_box) break_check_enabled = false;
 
@@ -1486,7 +1486,7 @@ static const NWidgetPart _nested_ai_debug_widgets[] = {
 };
 
 /** Window definition for the AI debug window. */
-static const WindowDesc _ai_debug_desc(
+static WindowDesc _ai_debug_desc(
 	WDP_AUTO, 600, 450,
 	WC_AI_DEBUG, WC_NONE,
 	0,

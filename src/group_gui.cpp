@@ -277,9 +277,9 @@ private:
 	}
 
 public:
-	VehicleGroupWindow(const WindowDesc *desc, WindowNumber window_number) : BaseVehicleListWindow(window_number)
+	VehicleGroupWindow(WindowDesc *desc, WindowNumber window_number) : BaseVehicleListWindow(desc, window_number)
 	{
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 
 		this->vscroll = this->GetScrollbar(WID_GL_LIST_VEHICLE_SCROLLBAR);
 		this->group_sb = this->GetScrollbar(WID_GL_LIST_GROUP_SCROLLBAR);
@@ -317,7 +317,7 @@ public:
 		this->GetWidget<NWidgetCore>(WID_GL_DELETE_GROUP)->widget_data += this->vli.vtype;
 		this->GetWidget<NWidgetCore>(WID_GL_REPLACE_PROTECTION)->widget_data += this->vli.vtype;
 
-		this->FinishInitNested(desc, window_number);
+		this->FinishInitNested(window_number);
 		this->owner = vli.company;
 	}
 
@@ -805,7 +805,7 @@ static WindowDesc _other_group_desc(
 	_nested_group_widgets, lengthof(_nested_group_widgets)
 );
 
-static const WindowDesc _train_group_desc(
+static WindowDesc _train_group_desc(
 	WDP_AUTO, 525, 246,
 	WC_TRAINS_LIST, WC_NONE,
 	0,

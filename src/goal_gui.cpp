@@ -29,11 +29,11 @@
 struct GoalListWindow : Window {
 	Scrollbar *vscroll;
 
-	GoalListWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
+	GoalListWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_GL_SCROLLBAR);
-		this->FinishInitNested(desc, window_number);
+		this->FinishInitNested(window_number);
 		this->OnInvalidateData(0);
 	}
 
@@ -230,7 +230,7 @@ static const NWidgetPart _nested_goals_list_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _goals_list_desc(
+static WindowDesc _goals_list_desc(
 	WDP_AUTO, 500, 127,
 	WC_GOALS_LIST, WC_NONE,
 	0,
@@ -250,7 +250,7 @@ struct GoalQuestionWindow : Window {
 	int button[3];
 	byte type;
 
-	GoalQuestionWindow(const WindowDesc *desc, WindowNumber window_number, byte type, uint32 button_mask, const char *question) : Window(), type(type)
+	GoalQuestionWindow(WindowDesc *desc, WindowNumber window_number, byte type, uint32 button_mask, const char *question) : Window(desc), type(type)
 	{
 		assert(type < GOAL_QUESTION_TYPE_COUNT);
 		this->question = strdup(question);
@@ -266,9 +266,9 @@ struct GoalQuestionWindow : Window {
 		this->buttons = n;
 		assert(this->buttons > 0 && this->buttons < 4);
 
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 		this->GetWidget<NWidgetStacked>(WID_GQ_BUTTONS)->SetDisplayedPlane(this->buttons - 1);
-		this->FinishInitNested(desc, window_number);
+		this->FinishInitNested(window_number);
 	}
 
 	~GoalQuestionWindow()
@@ -359,7 +359,7 @@ static const NWidgetPart _nested_goal_question_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _goal_question_list_desc(
+static WindowDesc _goal_question_list_desc(
 	WDP_CENTER, 0, 0,
 	WC_GOAL_QUESTION, WC_NONE,
 	WDF_CONSTRUCTION,

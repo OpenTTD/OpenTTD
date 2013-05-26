@@ -938,7 +938,7 @@ struct BuildVehicleWindow : Window {
 	int details_height;                         ///< Minimal needed height of the details panels (found so far).
 	Scrollbar *vscroll;
 
-	BuildVehicleWindow(const WindowDesc *desc, TileIndex tile, VehicleType type) : Window()
+	BuildVehicleWindow(WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc)
 	{
 		this->vehicle_type = type;
 		this->window_number = tile == INVALID_TILE ? (int)type : tile;
@@ -962,7 +962,7 @@ struct BuildVehicleWindow : Window {
 
 		this->listview_mode = (this->window_number <= VEH_END);
 
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 
 		this->vscroll = this->GetScrollbar(WID_BV_SCROLLBAR);
 
@@ -983,7 +983,7 @@ struct BuildVehicleWindow : Window {
 
 		this->details_height = ((this->vehicle_type == VEH_TRAIN) ? 10 : 9) * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 
-		this->FinishInitNested(desc, tile == INVALID_TILE ? (int)type : tile);
+		this->FinishInitNested(tile == INVALID_TILE ? (int)type : tile);
 
 		this->owner = (tile != INVALID_TILE) ? GetTileOwner(tile) : _local_company;
 
@@ -1404,7 +1404,7 @@ struct BuildVehicleWindow : Window {
 	}
 };
 
-static const WindowDesc _build_vehicle_desc(
+static WindowDesc _build_vehicle_desc(
 	WDP_AUTO, 240, 268,
 	WC_BUILD_VEHICLE, WC_NONE,
 	WDF_CONSTRUCTION,

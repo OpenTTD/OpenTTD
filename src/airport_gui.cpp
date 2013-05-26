@@ -67,9 +67,9 @@ static void PlaceAirport(TileIndex tile)
 struct BuildAirToolbarWindow : Window {
 	int last_user_action; // Last started user action.
 
-	BuildAirToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
+	BuildAirToolbarWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
-		this->InitNested(desc, window_number);
+		this->InitNested(window_number);
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 		this->last_user_action = WIDGET_LIST_END;
 	}
@@ -165,7 +165,7 @@ static const NWidgetPart _nested_air_toolbar_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _air_toolbar_desc(
+static WindowDesc _air_toolbar_desc(
 	WDP_ALIGN_TOOLBAR, 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
@@ -215,15 +215,15 @@ class BuildAirportWindow : public PickerWindowBase {
 	}
 
 public:
-	BuildAirportWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
+	BuildAirportWindow(WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 
 		this->vscroll = this->GetScrollbar(WID_AP_SCROLLBAR);
 		this->vscroll->SetCapacity(5);
 		this->vscroll->SetPosition(0);
 
-		this->FinishInitNested(desc, TRANSPORT_AIR);
+		this->FinishInitNested(TRANSPORT_AIR);
 
 		this->SetWidgetLoweredState(WID_AP_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
 		this->SetWidgetLoweredState(WID_AP_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
@@ -554,7 +554,7 @@ static const NWidgetPart _nested_build_airport_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _build_airport_desc(
+static WindowDesc _build_airport_desc(
 	WDP_AUTO, 0, 0,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,

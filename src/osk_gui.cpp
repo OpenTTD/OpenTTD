@@ -40,7 +40,7 @@ struct OskWindow : public Window {
 	char *orig_str_buf;    ///< Original string.
 	bool shift;            ///< Is the shift effectively pressed?
 
-	OskWindow(const WindowDesc *desc, Window *parent, int button) : Window()
+	OskWindow(WindowDesc *desc, Window *parent, int button) : Window(desc)
 	{
 		this->parent = parent;
 		assert(parent != NULL);
@@ -58,7 +58,7 @@ struct OskWindow : public Window {
 		/* make a copy in case we need to reset later */
 		this->orig_str_buf = strdup(this->qs->text.buf);
 
-		this->InitNested(desc, 0);
+		this->InitNested(0);
 		this->SetFocusedWidget(WID_OSK_TEXT);
 
 		/* Not needed by default. */
@@ -339,7 +339,7 @@ static const NWidgetPart _nested_osk_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _osk_desc(
+static WindowDesc _osk_desc(
 	WDP_CENTER, 0, 0,
 	WC_OSK, WC_NONE,
 	0,

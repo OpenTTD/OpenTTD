@@ -78,28 +78,28 @@ static const NWidgetPart _nested_train_depot_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _train_depot_desc(
+static WindowDesc _train_depot_desc(
 	WDP_AUTO, 362, 123,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	0,
 	_nested_train_depot_widgets, lengthof(_nested_train_depot_widgets)
 );
 
-static const WindowDesc _road_depot_desc(
+static WindowDesc _road_depot_desc(
 	WDP_AUTO, 316, 97,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	0,
 	_nested_train_depot_widgets, lengthof(_nested_train_depot_widgets)
 );
 
-static const WindowDesc _ship_depot_desc(
+static WindowDesc _ship_depot_desc(
 	WDP_AUTO, 306, 99,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	0,
 	_nested_train_depot_widgets, lengthof(_nested_train_depot_widgets)
 );
 
-static const WindowDesc _aircraft_depot_desc(
+static WindowDesc _aircraft_depot_desc(
 	WDP_AUTO, 332, 99,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	0,
@@ -229,7 +229,7 @@ struct DepotWindow : Window {
 	Scrollbar *hscroll;     ///< Only for trains.
 	Scrollbar *vscroll;
 
-	DepotWindow(const WindowDesc *desc, TileIndex tile, VehicleType type) : Window()
+	DepotWindow(WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc)
 	{
 		assert(IsCompanyBuildableVehicleType(type)); // ensure that we make the call with a valid type
 
@@ -239,7 +239,7 @@ struct DepotWindow : Window {
 		this->type = type;
 		this->num_columns = 1; // for non-trains this gets set in FinishInitNested()
 
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 		this->hscroll = (this->type == VEH_TRAIN ? this->GetScrollbar(WID_D_H_SCROLL) : NULL);
 		this->vscroll = this->GetScrollbar(WID_D_V_SCROLL);
 		/* Don't show 'rename button' of aircraft hangar */
@@ -248,7 +248,7 @@ struct DepotWindow : Window {
 		this->GetWidget<NWidgetStacked>(WID_D_SHOW_H_SCROLL)->SetDisplayedPlane(type == VEH_TRAIN ? 0 : SZSP_HORIZONTAL);
 		this->GetWidget<NWidgetStacked>(WID_D_SHOW_SELL_CHAIN)->SetDisplayedPlane(type == VEH_TRAIN ? 0 : SZSP_NONE);
 		this->SetupWidgetData(type);
-		this->FinishInitNested(desc, tile);
+		this->FinishInitNested(tile);
 
 		this->owner = GetTileOwner(tile);
 		OrderBackup::Reset();
@@ -1009,7 +1009,7 @@ void ShowDepotWindow(TileIndex tile, VehicleType type)
 {
 	if (BringWindowToFrontById(WC_VEHICLE_DEPOT, tile) != NULL) return;
 
-	const WindowDesc *desc;
+	WindowDesc *desc;
 	switch (type) {
 		default: NOT_REACHED();
 		case VEH_TRAIN:    desc = &_train_depot_desc;    break;

@@ -72,16 +72,16 @@ class BuildObjectWindow : public PickerWindowBase {
 	}
 
 public:
-	BuildObjectWindow(const WindowDesc *desc, Window *w) : PickerWindowBase(w), info_height(1)
+	BuildObjectWindow(WindowDesc *desc, Window *w) : PickerWindowBase(desc, w), info_height(1)
 	{
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 
 		this->vscroll = this->GetScrollbar(WID_BO_SCROLLBAR);
 		this->vscroll->SetCapacity(5);
 		this->vscroll->SetPosition(0);
 		this->vscroll->SetCount(ObjectClass::GetUIClassCount());
 
-		this->FinishInitNested(desc, 0);
+		this->FinishInitNested(0);
 
 		if (this->CanRestoreSelectedObject()) {
 			this->SelectOtherObject(_selected_object_index);
@@ -488,7 +488,7 @@ static const NWidgetPart _nested_build_object_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _build_object_desc(
+static WindowDesc _build_object_desc(
 	WDP_AUTO, 0, 0,
 	WC_BUILD_OBJECT, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,

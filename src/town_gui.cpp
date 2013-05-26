@@ -88,10 +88,10 @@ private:
 	}
 
 public:
-	TownAuthorityWindow(const WindowDesc *desc, WindowNumber window_number) : Window(), sel_index(-1), displayed_actions_on_previous_painting(0)
+	TownAuthorityWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc), sel_index(-1), displayed_actions_on_previous_painting(0)
 	{
 		this->town = Town::Get(window_number);
-		this->InitNested(desc, window_number);
+		this->InitNested(window_number);
 		this->vscroll = this->GetScrollbar(WID_TA_SCROLLBAR);
 		this->vscroll->SetCapacity((this->GetWidget<NWidgetBase>(WID_TA_COMMAND_LIST)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / FONT_HEIGHT_NORMAL);
 	}
@@ -280,7 +280,7 @@ public:
 	}
 };
 
-static const WindowDesc _town_authority_desc(
+static WindowDesc _town_authority_desc(
 	WDP_AUTO, 317, 222,
 	WC_TOWN_AUTHORITY, WC_NONE,
 	0,
@@ -301,14 +301,14 @@ private:
 public:
 	static const int WID_TV_HEIGHT_NORMAL = 150;
 
-	TownViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
+	TownViewWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 
 		this->town = Town::Get(window_number);
 		if (this->town->larger_town) this->GetWidget<NWidgetCore>(WID_TV_CAPTION)->widget_data = STR_TOWN_VIEW_CITY_CAPTION;
 
-		this->FinishInitNested(desc, window_number);
+		this->FinishInitNested(window_number);
 
 		this->flags |= WF_DISABLE_VP_SCROLL;
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_TV_VIEWPORT);
@@ -550,7 +550,7 @@ static const NWidgetPart _nested_town_game_view_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _town_game_view_desc(
+static WindowDesc _town_game_view_desc(
 	WDP_AUTO, 260, TownViewWindow::WID_TV_HEIGHT_NORMAL,
 	WC_TOWN_VIEW, WC_NONE,
 	0,
@@ -581,7 +581,7 @@ static const NWidgetPart _nested_town_editor_view_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _town_editor_view_desc(
+static WindowDesc _town_editor_view_desc(
 	WDP_AUTO, 260, TownViewWindow::WID_TV_HEIGHT_NORMAL,
 	WC_TOWN_VIEW, WC_NONE,
 	0,
@@ -711,9 +711,9 @@ private:
 	}
 
 public:
-	TownDirectoryWindow(const WindowDesc *desc) : Window()
+	TownDirectoryWindow(WindowDesc *desc) : Window(desc)
 	{
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 
 		this->vscroll = this->GetScrollbar(WID_TD_SCROLLBAR);
 
@@ -722,7 +722,7 @@ public:
 		this->towns.ForceRebuild();
 		this->BuildSortTownList();
 
-		this->FinishInitNested(desc, 0);
+		this->FinishInitNested(0);
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -937,7 +937,7 @@ GUITownList::SortFunction * const TownDirectoryWindow::sorter_funcs[] = {
 	&TownRatingSorter,
 };
 
-static const WindowDesc _town_directory_desc(
+static WindowDesc _town_directory_desc(
 	WDP_AUTO, 208, 202,
 	WC_TOWN_DIRECTORY, WC_NONE,
 	0,
@@ -1041,13 +1041,14 @@ private:
 	TownNameParams params;  ///< Town name parameters
 
 public:
-	FoundTownWindow(const WindowDesc *desc, WindowNumber window_number) :
+	FoundTownWindow(WindowDesc *desc, WindowNumber window_number) :
+			Window(desc),
 			town_size(TSZ_MEDIUM),
 			town_layout(_settings_game.economy.town_layout),
 			townname_editbox(MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_TOWN_NAME_CHARS),
 			params(_settings_game.game_creation.town_name)
 	{
-		this->InitNested(desc, window_number);
+		this->InitNested(window_number);
 		this->querystrings[WID_TF_TOWN_NAME_EDITBOX] = &this->townname_editbox;
 		this->RandomTownName();
 		this->UpdateButtons(true);
@@ -1177,7 +1178,7 @@ public:
 	}
 };
 
-static const WindowDesc _found_town_desc(
+static WindowDesc _found_town_desc(
 	WDP_AUTO, 160, 162,
 	WC_FOUND_TOWN, WC_NONE,
 	WDF_CONSTRUCTION,

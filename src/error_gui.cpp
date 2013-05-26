@@ -39,7 +39,7 @@ static const NWidgetPart _nested_errmsg_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _errmsg_desc(
+static WindowDesc _errmsg_desc(
 	WDP_MANUAL, 0, 0,
 	WC_ERRMSG, WC_NONE,
 	0,
@@ -59,7 +59,7 @@ static const NWidgetPart _nested_errmsg_face_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _errmsg_face_desc(
+static WindowDesc _errmsg_face_desc(
 	WDP_MANUAL, 0, 0,
 	WC_ERRMSG, WC_NONE,
 	0,
@@ -171,9 +171,9 @@ private:
 	uint height_detailed;           ///< Height of the #detailed_msg string in pixels in the #WID_EM_MESSAGE widget.
 
 public:
-	ErrmsgWindow(const ErrorMessageData &data) : Window(), ErrorMessageData(data)
+	ErrmsgWindow(const ErrorMessageData &data) : Window(data.HasFace() ? &_errmsg_face_desc : &_errmsg_desc), ErrorMessageData(data)
 	{
-		this->InitNested((this->face == INVALID_COMPANY) ? &_errmsg_desc : &_errmsg_face_desc);
+		this->InitNested();
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -195,7 +195,7 @@ public:
 		size->height = max(size->height, panel_height);
 	}
 
-	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
+	virtual Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number)
 	{
 		/* Position (0, 0) given, center the window. */
 		if (this->position.x == 0 && this->position.y == 0) {

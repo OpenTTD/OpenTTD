@@ -158,7 +158,7 @@ static const struct NWidgetPart _nested_console_window_widgets[] = {
 	NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_BACKGROUND), SetResize(1, 1),
 };
 
-static const WindowDesc _console_window_desc(
+static WindowDesc _console_window_desc(
 	WDP_MANUAL, 0, 0,
 	WC_CONSOLE, WC_NONE,
 	0,
@@ -171,13 +171,13 @@ struct IConsoleWindow : Window
 	int line_height;   ///< Height of one line of text in the console.
 	int line_offset;
 
-	IConsoleWindow() : Window()
+	IConsoleWindow() : Window(&_console_window_desc)
 	{
 		_iconsole_mode = ICONSOLE_OPENED;
 		this->line_height = FONT_HEIGHT_NORMAL + ICON_LINE_SPACING;
 		this->line_offset = GetStringBoundingBox("] ").width + 5;
 
-		this->InitNested(&_console_window_desc, 0);
+		this->InitNested(0);
 		ResizeWindow(this, _screen.width, _screen.height / 3);
 	}
 

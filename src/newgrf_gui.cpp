@@ -159,7 +159,7 @@ struct NewGRFParametersWindow : public Window {
 	bool action14present;  ///< True if action14 information is present.
 	bool editable;         ///< Allow editing parameters.
 
-	NewGRFParametersWindow(const WindowDesc *desc, GRFConfig *c, bool editable) : Window(),
+	NewGRFParametersWindow(WindowDesc *desc, GRFConfig *c, bool editable) : Window(desc),
 		grf_config(c),
 		clicked_button(UINT_MAX),
 		clicked_dropdown(false),
@@ -170,11 +170,11 @@ struct NewGRFParametersWindow : public Window {
 	{
 		this->action14present = (c->num_valid_params != lengthof(c->param) || c->param_info.Length() != 0);
 
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_NP_SCROLLBAR);
 		this->GetWidget<NWidgetStacked>(WID_NP_SHOW_NUMPAR)->SetDisplayedPlane(this->action14present ? SZSP_HORIZONTAL : 0);
 		this->GetWidget<NWidgetStacked>(WID_NP_SHOW_DESCRIPTION)->SetDisplayedPlane(this->action14present ? 0 : SZSP_HORIZONTAL);
-		this->FinishInitNested(desc);  // Initializes 'this->line_height' as side effect.
+		this->FinishInitNested();  // Initializes 'this->line_height' as side effect.
 
 		this->SetWidgetDisabledState(WID_NP_RESET, !this->editable);
 
@@ -528,7 +528,7 @@ static const NWidgetPart _nested_newgrf_parameter_widgets[] = {
 };
 
 /** Window definition for the change grf parameters window */
-static const WindowDesc _newgrf_parameters_desc(
+static WindowDesc _newgrf_parameters_desc(
 	WDP_CENTER, 500, 208,
 	WC_GRF_PARAMETERS, WC_NONE,
 	0,
@@ -619,7 +619,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	Scrollbar *vscroll;
 	Scrollbar *vscroll2;
 
-	NewGRFWindow(const WindowDesc *desc, bool editable, bool show_params, bool execute, GRFConfig **orig_list) : filter_editbox(EDITBOX_MAX_SIZE)
+	NewGRFWindow(WindowDesc *desc, bool editable, bool show_params, bool execute, GRFConfig **orig_list) : Window(desc), filter_editbox(EDITBOX_MAX_SIZE)
 	{
 		this->avail_sel   = NULL;
 		this->avail_pos   = -1;
@@ -635,13 +635,13 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		CopyGRFConfigList(&this->actives, *orig_list, false);
 		GetGRFPresetList(&_grf_preset_list);
 
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_NS_SCROLLBAR);
 		this->vscroll2 = this->GetScrollbar(WID_NS_SCROLL2BAR);
 
 		this->GetWidget<NWidgetStacked>(WID_NS_SHOW_REMOVE)->SetDisplayedPlane(this->editable ? 0 : 1);
 		this->GetWidget<NWidgetStacked>(WID_NS_SHOW_APPLY)->SetDisplayedPlane(this->editable ? 0 : this->show_params ? 1 : SZSP_HORIZONTAL);
-		this->FinishInitNested(desc, WN_GAME_OPTIONS_NEWGRF_STATE);
+		this->FinishInitNested(WN_GAME_OPTIONS_NEWGRF_STATE);
 
 		this->querystrings[WID_NS_FILTER] = &this->filter_editbox;
 		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;
@@ -1877,7 +1877,7 @@ static const NWidgetPart _nested_newgrf_widgets[] = {
 };
 
 /* Window definition of the manage newgrfs window */
-static const WindowDesc _newgrf_desc(
+static WindowDesc _newgrf_desc(
 	WDP_CENTER, 300, 263,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
@@ -1948,7 +1948,7 @@ static const NWidgetPart _nested_scan_progress_widgets[] = {
 };
 
 /** Description of the widgets and other settings of the window. */
-static const WindowDesc _scan_progress_desc(
+static WindowDesc _scan_progress_desc(
 	WDP_CENTER, 0, 0,
 	WC_MODAL_PROGRESS, WC_NONE,
 	0,
@@ -1961,9 +1961,9 @@ struct ScanProgressWindow : public Window {
 	int scanned;     ///< The number of NewGRFs that we have seen.
 
 	/** Create the window. */
-	ScanProgressWindow() : Window(), last_name(NULL), scanned(0)
+	ScanProgressWindow() : Window(&_scan_progress_desc), last_name(NULL), scanned(0)
 	{
-		this->InitNested(&_scan_progress_desc, 1);
+		this->InitNested(1);
 	}
 
 	/** Free the last name buffer. */

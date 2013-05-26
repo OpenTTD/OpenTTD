@@ -290,9 +290,9 @@ static void SelectPlaylist(byte list)
 }
 
 struct MusicTrackSelectionWindow : public Window {
-	MusicTrackSelectionWindow(const WindowDesc *desc, WindowNumber number) : Window()
+	MusicTrackSelectionWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
 	{
-		this->InitNested(desc, number);
+		this->InitNested(number);
 		this->LowerWidget(WID_MTS_LIST_LEFT);
 		this->LowerWidget(WID_MTS_LIST_RIGHT);
 		this->SetWidgetDisabledState(WID_MTS_CLEAR, _settings_client.music.playlist <= 3);
@@ -495,7 +495,7 @@ static const NWidgetPart _nested_music_track_selection_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _music_track_selection_desc(
+static WindowDesc _music_track_selection_desc(
 	WDP_AUTO, 0, 0,
 	WC_MUSIC_TRACK_SELECTION, WC_NONE,
 	0,
@@ -510,9 +510,9 @@ static void ShowMusicTrackSelection()
 struct MusicWindow : public Window {
 	static const int slider_width = 3;
 
-	MusicWindow(const WindowDesc *desc, WindowNumber number) : Window()
+	MusicWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
 	{
-		this->InitNested(desc, number);
+		this->InitNested(number);
 		this->LowerWidget(_settings_client.music.playlist + WID_M_ALL);
 		this->SetWidgetLoweredState(WID_M_SHUFFLE, _settings_client.music.shuffle);
 	}
@@ -758,7 +758,7 @@ static const NWidgetPart _nested_music_window_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _music_window_desc(
+static WindowDesc _music_window_desc(
 	WDP_AUTO, 0, 0,
 	WC_MUSIC_WINDOW, WC_NONE,
 	0,

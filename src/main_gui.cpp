@@ -206,7 +206,7 @@ static const struct NWidgetPart _nested_main_window_widgets[] = {
 	NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_M_VIEWPORT), SetResize(1, 1),
 };
 
-static const WindowDesc _main_window_desc(
+static WindowDesc _main_window_desc(
 	WDP_MANUAL, 0, 0,
 	WC_MAIN_WINDOW, WC_NONE,
 	0,
@@ -245,9 +245,9 @@ struct MainWindow : Window
 	static const uint LINKGRAPH_REFRESH_PERIOD = 0xff;
 	static const uint LINKGRAPH_DELAY = 0xf;
 
-	MainWindow() : Window()
+	MainWindow() : Window(&_main_window_desc)
 	{
-		this->InitNested(&_main_window_desc, 0);
+		this->InitNested(0);
 		CLRBITS(this->flags, WF_WHITE_BORDER);
 		ResizeWindow(this, _screen.width, _screen.height);
 

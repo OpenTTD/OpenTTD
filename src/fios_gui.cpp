@@ -243,7 +243,7 @@ public:
 		this->filename_editbox.text.UpdateSize();
 	}
 
-	SaveLoadWindow(const WindowDesc *desc, SaveLoadDialogMode mode) : filename_editbox(64)
+	SaveLoadWindow(WindowDesc *desc, SaveLoadDialogMode mode) : Window(desc), filename_editbox(64)
 	{
 		static const StringID saveload_captions[] = {
 			STR_SAVELOAD_LOAD_CAPTION,
@@ -267,12 +267,12 @@ public:
 		this->querystrings[WID_SL_SAVE_OSK_TITLE] = &this->filename_editbox;
 		this->filename_editbox.ok_button = WID_SL_SAVE_GAME;
 
-		this->CreateNestedTree(desc, true);
+		this->CreateNestedTree(true);
 		if (mode == SLD_LOAD_GAME) this->GetWidget<NWidgetStacked>(WID_SL_CONTENT_DOWNLOAD_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
 		this->GetWidget<NWidgetCore>(WID_SL_CAPTION)->widget_data = saveload_captions[mode];
 		this->vscroll = this->GetScrollbar(WID_SL_SCROLLBAR);
 
-		this->FinishInitNested(desc, 0);
+		this->FinishInitNested(0);
 
 		this->LowerWidget(WID_SL_DRIVES_DIRECTORIES_LIST);
 
@@ -696,7 +696,7 @@ public:
 };
 
 /** Load game/scenario */
-static const WindowDesc _load_dialog_desc(
+static WindowDesc _load_dialog_desc(
 	WDP_CENTER, 500, 294,
 	WC_SAVELOAD, WC_NONE,
 	0,
@@ -704,7 +704,7 @@ static const WindowDesc _load_dialog_desc(
 );
 
 /** Load heightmap */
-static const WindowDesc _load_heightmap_dialog_desc(
+static WindowDesc _load_heightmap_dialog_desc(
 	WDP_CENTER, 257, 320,
 	WC_SAVELOAD, WC_NONE,
 	0,
@@ -712,7 +712,7 @@ static const WindowDesc _load_heightmap_dialog_desc(
 );
 
 /** Save game/scenario */
-static const WindowDesc _save_dialog_desc(
+static WindowDesc _save_dialog_desc(
 	WDP_CENTER, 500, 294,
 	WC_SAVELOAD, WC_NONE,
 	0,
@@ -740,7 +740,7 @@ void ShowSaveLoadDialog(SaveLoadDialogMode mode)
 {
 	DeleteWindowById(WC_SAVELOAD, 0);
 
-	const WindowDesc *sld;
+	WindowDesc *sld;
 	switch (mode) {
 		case SLD_SAVE_GAME:
 		case SLD_SAVE_SCENARIO:

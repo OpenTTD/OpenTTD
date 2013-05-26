@@ -380,7 +380,7 @@ static const NWidgetPart _nested_linkgraph_legend_widgets[] = {
 assert_compile(WID_LGL_SATURATION_LAST - WID_LGL_SATURATION_FIRST ==
 		lengthof(LinkGraphOverlay::LINK_COLOURS) - 1);
 
-static const WindowDesc _linkgraph_legend_desc(
+static WindowDesc _linkgraph_legend_desc(
 	WDP_MANUAL, 300, 314,
 	WC_LINKGRAPH_LEGEND, WC_NONE,
 	0,
@@ -395,9 +395,9 @@ void ShowLinkGraphLegend()
 	AllocateWindowDescFront<LinkGraphLegendWindow>(&_linkgraph_legend_desc, 0);
 }
 
-LinkGraphLegendWindow::LinkGraphLegendWindow(const WindowDesc *desc, int window_number)
+LinkGraphLegendWindow::LinkGraphLegendWindow(WindowDesc *desc, int window_number) : Window(desc)
 {
-	this->InitNested(desc, window_number);
+	this->InitNested(window_number);
 	this->InvalidateData(0);
 	this->SetOverlay(FindWindowById(WC_MAIN_WINDOW, 0)->viewport->overlay);
 }

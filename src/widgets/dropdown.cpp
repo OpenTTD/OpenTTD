@@ -90,7 +90,7 @@ static const NWidgetPart _nested_dropdown_menu_widgets[] = {
 	EndContainer(),
 };
 
-const WindowDesc _dropdown_desc(
+static WindowDesc _dropdown_desc(
 	WDP_MANUAL, 0, 0,
 	WC_DROPDOWN_MENU, WC_NONE,
 	0,
@@ -124,11 +124,12 @@ struct DropdownWindow : Window {
 	 * @param scroll        Dropdown menu has a scrollbar.
 	 * @param widget        Widgets of the dropdown menu window.
 	 */
-	DropdownWindow(Window *parent, DropDownList *list, int selected, int button, bool instant_close, const Point &position, const Dimension &size, Colours wi_colour, bool scroll) : Window()
+	DropdownWindow(Window *parent, DropDownList *list, int selected, int button, bool instant_close, const Point &position, const Dimension &size, Colours wi_colour, bool scroll)
+			: Window(&_dropdown_desc)
 	{
 		this->position = position;
 
-		this->CreateNestedTree(&_dropdown_desc);
+		this->CreateNestedTree();
 
 		this->vscroll = this->GetScrollbar(WID_DM_SCROLL);
 
@@ -142,7 +143,7 @@ struct DropdownWindow : Window {
 
 		this->GetWidget<NWidgetStacked>(WID_DM_SHOW_SCROLL)->SetDisplayedPlane(scroll ? 0 : SZSP_NONE);
 
-		this->FinishInitNested(&_dropdown_desc, 0);
+		this->FinishInitNested(0);
 		CLRBITS(this->flags, WF_WHITE_BORDER);
 
 		/* Total length of list */
@@ -183,7 +184,7 @@ struct DropdownWindow : Window {
 		DeleteDropDownList(this->list);
 	}
 
-	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
+	virtual Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number)
 	{
 		return this->position;
 	}

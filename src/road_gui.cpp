@@ -308,9 +308,9 @@ static bool RoadToolbar_CtrlChanged(Window *w)
 struct BuildRoadToolbarWindow : Window {
 	int last_started_action; ///< Last started user action.
 
-	BuildRoadToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
+	BuildRoadToolbarWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
-		this->InitNested(desc, window_number);
+		this->InitNested(window_number);
 		this->SetWidgetsDisabledState(true,
 				WID_ROT_REMOVE,
 				WID_ROT_ONE_WAY,
@@ -713,7 +713,7 @@ static const NWidgetPart _nested_build_road_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _build_road_desc(
+static WindowDesc _build_road_desc(
 	WDP_ALIGN_TOOLBAR, 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
@@ -752,7 +752,7 @@ static const NWidgetPart _nested_build_tramway_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _build_tramway_desc(
+static WindowDesc _build_tramway_desc(
 	WDP_ALIGN_TOOLBAR, 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
@@ -812,7 +812,7 @@ static const NWidgetPart _nested_build_road_scen_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _build_road_scen_desc(
+static WindowDesc _build_road_scen_desc(
 	WDP_AUTO, 0, 0,
 	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
@@ -839,9 +839,9 @@ EventState RoadToolbarEditorGlobalHotkeys(uint16 key, uint16 keycode)
 }
 
 struct BuildRoadDepotWindow : public PickerWindowBase {
-	BuildRoadDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
+	BuildRoadDepotWindow(WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 
 		this->LowerWidget(_road_depot_orientation + WID_BROD_DEPOT_NE);
 		if ( _cur_roadtype == ROADTYPE_TRAM) {
@@ -849,7 +849,7 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 			for (int i = WID_BROD_DEPOT_NE; i <= WID_BROD_DEPOT_NW; i++) this->GetWidget<NWidgetCore>(i)->tool_tip = STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP;
 		}
 
-		this->FinishInitNested(desc, TRANSPORT_ROAD);
+		this->FinishInitNested(TRANSPORT_ROAD);
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -909,7 +909,7 @@ static const NWidgetPart _nested_build_road_depot_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _build_road_depot_desc(
+static WindowDesc _build_road_depot_desc(
 	WDP_AUTO, 0, 0,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
@@ -922,9 +922,9 @@ static void ShowRoadDepotPicker(Window *parent)
 }
 
 struct BuildRoadStationWindow : public PickerWindowBase {
-	BuildRoadStationWindow(const WindowDesc *desc, Window *parent, RoadStopType rs) : PickerWindowBase(parent)
+	BuildRoadStationWindow(WindowDesc *desc, Window *parent, RoadStopType rs) : PickerWindowBase(desc, parent)
 	{
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 
 		/* Trams don't have non-drivethrough stations */
 		if (_cur_roadtype == ROADTYPE_TRAM && _road_station_picker_orientation < DIAGDIR_END) {
@@ -943,7 +943,7 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 		this->LowerWidget(_road_station_picker_orientation + WID_BROS_STATION_NE);
 		this->LowerWidget(_settings_client.gui.station_show_coverage + WID_BROS_LT_OFF);
 
-		this->FinishInitNested(desc, TRANSPORT_ROAD);
+		this->FinishInitNested(TRANSPORT_ROAD);
 
 		this->window_class = (rs == ROADSTOP_BUS) ? WC_BUS_STATION : WC_TRUCK_STATION;
 	}
@@ -1063,7 +1063,7 @@ static const NWidgetPart _nested_rv_station_picker_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _rv_station_picker_desc(
+static WindowDesc _rv_station_picker_desc(
 	WDP_AUTO, 0, 0,
 	WC_BUS_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,

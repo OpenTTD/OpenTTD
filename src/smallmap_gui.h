@@ -159,7 +159,7 @@ protected:
 public:
 	friend class NWidgetSmallmapDisplay;
 
-	SmallMapWindow(const WindowDesc *desc, int window_number);
+	SmallMapWindow(WindowDesc *desc, int window_number);
 	virtual ~SmallMapWindow() { delete this->overlay; }
 
 	void SmallMapCenterOnCurrentPos();

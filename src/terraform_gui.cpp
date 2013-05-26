@@ -147,11 +147,11 @@ void PlaceProc_DemolishArea(TileIndex tile)
 struct TerraformToolbarWindow : Window {
 	int last_user_action; ///< Last started user action.
 
-	TerraformToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
+	TerraformToolbarWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
 		/* This is needed as we like to have the tree available on OnInit. */
-		this->CreateNestedTree(desc);
-		this->FinishInitNested(desc, window_number);
+		this->CreateNestedTree();
+		this->FinishInitNested(window_number);
 		this->last_user_action = WIDGET_LIST_END;
 	}
 
@@ -266,7 +266,7 @@ struct TerraformToolbarWindow : Window {
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
-	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
+	virtual Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number)
 	{
 		Point pt = GetToolbarAlignedWindowPosition(sm_width);
 		pt.y += sm_height;
@@ -341,7 +341,7 @@ static const NWidgetPart _nested_terraform_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _terraform_desc(
+static WindowDesc _terraform_desc(
 	WDP_MANUAL, 0, 0,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_CONSTRUCTION,
@@ -536,12 +536,12 @@ static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 struct ScenarioEditorLandscapeGenerationWindow : Window {
 	int last_user_action; ///< Last started user action.
 
-	ScenarioEditorLandscapeGenerationWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
+	ScenarioEditorLandscapeGenerationWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
-		this->CreateNestedTree(desc);
+		this->CreateNestedTree();
 		NWidgetStacked *show_desert = this->GetWidget<NWidgetStacked>(WID_ETT_SHOW_PLACE_DESERT);
 		show_desert->SetDisplayedPlane(_settings_game.game_creation.landscape == LT_TROPIC ? 0 : SZSP_NONE);
-		this->FinishInitNested(desc, window_number);
+		this->FinishInitNested(window_number);
 		this->last_user_action = WIDGET_LIST_END;
 	}
 
@@ -739,7 +739,7 @@ Hotkey<ScenarioEditorLandscapeGenerationWindow> ScenarioEditorLandscapeGeneratio
 
 Hotkey<ScenarioEditorLandscapeGenerationWindow> *_terraform_editor_hotkeys = ScenarioEditorLandscapeGenerationWindow::terraform_editor_hotkeys;
 
-static const WindowDesc _scen_edit_land_gen_desc(
+static WindowDesc _scen_edit_land_gen_desc(
 	WDP_AUTO, 0, 0,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_CONSTRUCTION,
