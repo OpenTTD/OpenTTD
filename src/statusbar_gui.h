@@ -25,6 +25,4 @@ enum StatusBarInvalidate {
 bool IsNewsTickerShown();
 void ShowStatusBar();
 
-extern int16 *_preferred_statusbar_size;
-
 #endif /* STATUSBAR_GUI_H */

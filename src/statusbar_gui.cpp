@@ -251,8 +251,6 @@ bool IsNewsTickerShown()
 	return w != NULL && w->ticker_scroll < StatusBarWindow::TICKER_STOP;
 }
 
-int16 *_preferred_statusbar_size = &_main_status_desc.default_width; ///< Pointer to the default size for the status toolbar.
-
 /**
  * Show our status bar.
  */

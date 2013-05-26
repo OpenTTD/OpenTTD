@@ -3126,7 +3126,7 @@ void RelocateAllWindows(int neww, int newh)
 				continue;
 
 			case WC_MAIN_TOOLBAR:
-				ResizeWindow(w, min(neww, *_preferred_toolbar_size) - w->width, 0, false);
+				ResizeWindow(w, min(neww, w->window_desc->default_width) - w->width, 0, false);
 
 				top = w->top;
 				left = PositionMainToolbar(w); // changes toolbar orientation
@@ -3138,7 +3138,7 @@ void RelocateAllWindows(int neww, int newh)
 				break;
 
 			case WC_STATUS_BAR:
-				ResizeWindow(w, min(neww, *_preferred_statusbar_size) - w->width, 0, false);
+				ResizeWindow(w, min(neww, w->window_desc->default_width) - w->width, 0, false);
 
 				top = newh - w->height;
 				left = PositionStatusbar(w);

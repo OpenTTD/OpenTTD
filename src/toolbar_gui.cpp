@@ -1203,8 +1203,6 @@ static MenuClickedProc * const _menu_clicked_procs[] = {
 	MenuClickHelp,        // 26
 };
 
-int16 *_preferred_toolbar_size = NULL; ///< Pointer to the default size for the main toolbar.
-
 /** Full blown container to make it behave exactly as we want :) */
 class NWidgetToolbarContainer : public NWidgetContainer {
 	bool visible[WID_TN_END]; ///< The visible headers
@@ -1256,7 +1254,7 @@ public:
 				child_wid->current_x = child_wid->smallest_x;
 			}
 		}
-		*_preferred_toolbar_size = nbuttons * this->smallest_x;
+		w->window_desc->default_width = nbuttons * this->smallest_x;
 	}
 
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
@@ -1428,7 +1426,7 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 
 			assert(i < lengthof(this->panel_widths));
 			this->panel_widths[i++] = child_wid->current_x;
-			*_preferred_toolbar_size += child_wid->current_x;
+			w->window_desc->default_width += child_wid->current_x;
 		}
 	}
 
@@ -2111,10 +2109,8 @@ void AllocateToolbar()
 	_last_built_roadtype = ROADTYPE_ROAD;
 
 	if (_game_mode == GM_EDITOR) {
-		_preferred_toolbar_size = &_toolb_scen_desc.default_width;
 		new ScenarioEditorToolbarWindow(&_toolb_scen_desc);
 	} else {
-		_preferred_toolbar_size = &_toolb_normal_desc.default_width;
 		new MainToolbarWindow(&_toolb_normal_desc);
 	}
 }
