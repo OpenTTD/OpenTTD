@@ -95,7 +95,8 @@ WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_wi
 	ini_key(ini_key),
 	flags(flags),
 	nwid_parts(nwid_parts),
-	nwid_length(nwid_length)
+	nwid_length(nwid_length),
+	pref_sticky(false)
 {
 	if (_window_descs == NULL) _window_descs = new SmallVector<WindowDesc*, 16>();
 	*_window_descs->Append() = this;
@@ -144,6 +145,19 @@ void WindowDesc::SaveToConfig()
 	}
 	ini->SaveToDisk(_windows_file);
 	delete ini;
+}
+
+/**
+ * Read default values from WindowDesc configuration an apply them to the window.
+ */
+void Window::ApplyDefaults()
+{
+	if (this->nested_root != NULL && this->nested_root->GetWidgetOfType(WWT_STICKYBOX) != NULL) {
+		if (this->window_desc->pref_sticky) this->flags |= WF_STICKY;
+	} else {
+		/* There is no stickybox; clear the preference in case someone tried to be funny */
+		this->window_desc->pref_sticky = false;
+	}
 }
 
 /**
@@ -551,6 +565,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 		case WWT_STICKYBOX:
 			w->flags ^= WF_STICKY;
 			nw->SetDirty(w);
+			if (_ctrl_pressed) w->window_desc->pref_sticky = w->flags & WF_STICKY;
 			return;
 
 		default:
@@ -1574,6 +1589,7 @@ void Window::CreateNestedTree(bool fill_nested)
 void Window::FinishInitNested(WindowNumber window_number)
 {
 	this->InitializeData(window_number);
+	this->ApplyDefaults();
 	Point pt = this->OnInitialPosition(this->nested_root->smallest_x, this->nested_root->smallest_y, window_number);
 	this->InitializePositionSize(pt.x, pt.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
 	this->FindWindowPlacementAndResize(this->window_desc->default_width, this->window_desc->default_height);
