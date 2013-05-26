@@ -461,6 +461,18 @@ static inline void DrawStickyBox(const Rect &r, Colours colour, bool clicked)
 }
 
 /**
+ * Draw a defsize box.
+ * @param r       Rectangle of the box.
+ * @param colour  Colour of the defsize box.
+ * @param clicked Box is lowered.
+ */
+static inline void DrawDefSizeBox(const Rect &r, Colours colour, bool clicked)
+{
+	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
+	DrawSprite(SPR_WINDOW_DEFSIZE, PAL_NONE, r.left + WD_DEFSIZEBOX_LEFT + clicked, r.top + WD_DEFSIZEBOX_TOP + clicked);
+}
+
+/**
  * Draw a NewGRF debug box.
  * @param r       Rectangle of the box.
  * @param colour  Colour of the debug box.
@@ -2042,6 +2054,7 @@ Dimension NWidgetScrollbar::horizontal_dimension = {0, 0};
 
 Dimension NWidgetLeaf::shadebox_dimension  = {0, 0};
 Dimension NWidgetLeaf::debugbox_dimension  = {0, 0};
+Dimension NWidgetLeaf::defsizebox_dimension = {0, 0};
 Dimension NWidgetLeaf::stickybox_dimension = {0, 0};
 Dimension NWidgetLeaf::resizebox_dimension = {0, 0};
 Dimension NWidgetLeaf::closebox_dimension  = {0, 0};
@@ -2056,7 +2069,7 @@ Dimension NWidgetLeaf::closebox_dimension  = {0, 0};
  */
 NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, StringID tip) : NWidgetCore(tp, colour, 1, 1, data, tip)
 {
-	assert(index >= 0 || tp == WWT_LABEL || tp == WWT_TEXT || tp == WWT_CAPTION || tp == WWT_RESIZEBOX || tp == WWT_SHADEBOX || tp == WWT_DEBUGBOX || tp == WWT_STICKYBOX || tp == WWT_CLOSEBOX);
+	assert(index >= 0 || tp == WWT_LABEL || tp == WWT_TEXT || tp == WWT_CAPTION || tp == WWT_RESIZEBOX || tp == WWT_SHADEBOX || tp == WWT_DEFSIZEBOX || tp == WWT_DEBUGBOX || tp == WWT_STICKYBOX || tp == WWT_CLOSEBOX);
 	if (index >= 0) this->SetIndex(index);
 	this->SetMinimalSize(0, 0);
 	this->SetResize(0, 0);
@@ -2112,6 +2125,12 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 			this->SetFill(0, 0);
 			this->SetMinimalSize(WD_DEBUGBOX_TOP, WD_CAPTION_HEIGHT);
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_DEBUG);
+			break;
+
+		case WWT_DEFSIZEBOX:
+			this->SetFill(0, 0);
+			this->SetMinimalSize(WD_DEFSIZEBOX_TOP, WD_CAPTION_HEIGHT);
+			this->SetDataTip(STR_NULL, STR_TOOLTIP_DEFSIZE);
 			break;
 
 		case WWT_RESIZEBOX:
@@ -2199,6 +2218,19 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 			size = maxdim(size, NWidgetLeaf::stickybox_dimension);
 			break;
 		}
+
+		case WWT_DEFSIZEBOX: {
+			static const Dimension extra = {WD_DEFSIZEBOX_LEFT + WD_DEFSIZEBOX_RIGHT, WD_DEFSIZEBOX_TOP + WD_DEFSIZEBOX_BOTTOM};
+			padding = &extra;
+			if (NWidgetLeaf::defsizebox_dimension.width == 0) {
+				NWidgetLeaf::defsizebox_dimension = GetSpriteSize(SPR_WINDOW_DEFSIZE);
+				NWidgetLeaf::defsizebox_dimension.width += extra.width;
+				NWidgetLeaf::defsizebox_dimension.height += extra.height;
+			}
+			size = maxdim(size, NWidgetLeaf::defsizebox_dimension);
+			break;
+		}
+
 		case WWT_RESIZEBOX: {
 			static const Dimension extra = {WD_RESIZEBOX_LEFT + WD_RESIZEBOX_RIGHT, WD_RESIZEBOX_TOP + WD_RESIZEBOX_BOTTOM};
 			padding = &extra;
@@ -2395,6 +2427,11 @@ void NWidgetLeaf::Draw(const Window *w)
 		case WWT_STICKYBOX:
 			assert(this->widget_data == 0);
 			DrawStickyBox(r, this->colour, !!(w->flags & WF_STICKY));
+			break;
+
+		case WWT_DEFSIZEBOX:
+			assert(this->widget_data == 0);
+			DrawDefSizeBox(r, this->colour, clicked);
 			break;
 
 		case WWT_RESIZEBOX:

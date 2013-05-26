@@ -444,6 +444,13 @@ void Window::RaiseButtons(bool autoraise)
 			this->SetWidgetDirty(i);
 		}
 	}
+
+	/* Special widgets without widget index */
+	NWidgetCore *wid = this->nested_root != NULL ? (NWidgetCore*)this->nested_root->GetWidgetOfType(WWT_DEFSIZEBOX) : NULL;
+	if (wid != NULL) {
+		wid->SetLowered(false);
+		wid->SetDirty(this);
+	}
 }
 
 /**
@@ -552,6 +559,24 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 			StartWindowSizing(w, (int)nw->pos_x < (w->width / 2));
 			nw->SetDirty(w);
 			return;
+
+		case WWT_DEFSIZEBOX: {
+			int16 def_width = max<int16>(min(w->window_desc->default_width, _screen.width), w->nested_root->smallest_x);
+			int16 def_height = max<int16>(min(w->window_desc->default_height, _screen.height - 50), w->nested_root->smallest_y);
+
+			int dx = (w->resize.step_width  == 0) ? 0 : def_width  - w->width;
+			int dy = (w->resize.step_height == 0) ? 0 : def_height - w->height;
+			/* dx and dy has to go by step.. calculate it.
+			 * The cast to int is necessary else dx/dy are implicitly casted to unsigned int, which won't work. */
+			if (w->resize.step_width  > 1) dx -= dx % (int)w->resize.step_width;
+			if (w->resize.step_height > 1) dy -= dy % (int)w->resize.step_height;
+			ResizeWindow(w, dx, dy, false);
+
+			nw->SetLowered(true);
+			nw->SetDirty(w);
+			w->SetTimeout();
+			break;
+		}
 
 		case WWT_DEBUGBOX:
 			w->ShowNewGRFInspectWindow();

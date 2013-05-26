@@ -106,6 +106,13 @@ enum WidgetDrawDistances {
 	WD_DEBUGBOX_TOP    = 3,     ///< Top offset of debug sprite.
 	WD_DEBUGBOX_BOTTOM = 3,     ///< Bottom offset of debug sprite.
 
+	/* WWT_DEFSIZEBOX */
+	WD_DEFSIZEBOX_WIDTH  = 12,  ///< Width of a standard defsize box widget.
+	WD_DEFSIZEBOX_LEFT   = 2,   ///< Left offset of defsize sprite.
+	WD_DEFSIZEBOX_RIGHT  = 2,   ///< Right offset of defsize sprite.
+	WD_DEFSIZEBOX_TOP    = 3,   ///< Top offset of defsize sprite.
+	WD_DEFSIZEBOX_BOTTOM = 3,   ///< Bottom offset of defsize sprite.
+
 	/* WWT_RESIZEBOX */
 	WD_RESIZEBOX_WIDTH  = 12,   ///< Width of a resize box widget.
 	WD_RESIZEBOX_LEFT   = 3,    ///< Left offset of resize sprite.
