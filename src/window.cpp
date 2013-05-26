@@ -419,7 +419,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 	bool focused_widget_changed = false;
 	/* If clicked on a window that previously did dot have focus */
 	if (_focused_window != w &&                 // We already have focus, right?
-			(w->desc_flags & WDF_NO_FOCUS) == 0 &&  // Don't lose focus to toolbars
+			(w->window_desc->flags & WDF_NO_FOCUS) == 0 &&  // Don't lose focus to toolbars
 			widget_type != WWT_CLOSEBOX) {          // Don't change focused window if 'X' (close button) was clicked
 		focused_widget_changed = true;
 		SetFocusedWindow(w);
@@ -1171,7 +1171,6 @@ void Window::InitializeData(WindowNumber window_number)
 	this->owner = INVALID_OWNER;
 	this->nested_focus = NULL;
 	this->window_number = window_number;
-	this->desc_flags = this->window_desc->flags;
 
 	this->OnInit();
 	/* Initialize nested widget tree. */
@@ -2212,7 +2211,7 @@ static bool MaybeBringWindowToFront(Window *w)
 	Window *u;
 	FOR_ALL_WINDOWS_FROM_BACK_FROM(u, w->z_front) {
 		/* A modal child will prevent the activation of the parent window */
-		if (u->parent == w && (u->desc_flags & WDF_MODAL)) {
+		if (u->parent == w && (u->window_desc->flags & WDF_MODAL)) {
 			u->SetWhiteBorder();
 			u->SetDirty();
 			return false;
@@ -2975,7 +2974,7 @@ restart_search:
 	 * as deleting this window could cascade in deleting (many) others
 	 * anywhere in the z-array */
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		if (w->desc_flags & WDF_CONSTRUCTION) {
+		if (w->window_desc->flags & WDF_CONSTRUCTION) {
 			delete w;
 			goto restart_search;
 		}
