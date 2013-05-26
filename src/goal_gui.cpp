@@ -39,9 +39,9 @@ struct GoalListWindow : Window {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		if (widget != WID_GL_PANEL) return;
+		if (widget != WID_GL_GOAL && widget != WID_GL_PROGRESS) return;
 
-		int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GL_PANEL, WD_FRAMERECT_TOP);
+		int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GL_GOAL, WD_FRAMERECT_TOP);
 		int num = 0;
 		const Goal *s;
 		FOR_ALL_GOALS(s) {
@@ -135,8 +135,24 @@ struct GoalListWindow : Window {
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget != WID_GL_PANEL) return;
+		if (widget != WID_GL_GOAL && widget != WID_GL_PROGRESS) return;
 		Dimension d = maxdim(GetStringBoundingBox(STR_GOALS_GLOBAL_TITLE), GetStringBoundingBox(STR_GOALS_COMPANY_TITLE));
+
+		if (widget == WID_GL_PROGRESS) {
+			/* Get max progress width. */
+			d.width = 0;
+			Goal *s;
+			FOR_ALL_GOALS(s) {
+				if (s->progress != NULL) {
+					SetDParamStr(0, s->progress);
+					Dimension goal_d = GetStringBoundingBox(STR_GOALS_PROGRESS);
+
+					if (goal_d.width > d.width) {
+						d.width = goal_d.width;
+					}
+				}
+			}
+		}
 
 		resize->height = d.height;
 
@@ -150,9 +166,9 @@ struct GoalListWindow : Window {
 	 * Draws either the global goals or the company goal section.
 	 * This is a helper method for DrawWidget.
 	 */
-	void DrawPartialGoalList(int &pos, const int cap, int x, int y, int right, bool global_section) const
+	void DrawPartialGoalList(int widget, int &pos, const int cap, int x, int y, int right, bool global_section) const
 	{
-		if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, global_section ? STR_GOALS_GLOBAL_TITLE : STR_GOALS_COMPANY_TITLE);
+		if (widget == WID_GL_GOAL && IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, global_section ? STR_GOALS_GLOBAL_TITLE : STR_GOALS_COMPANY_TITLE);
 		pos++;
 
 		uint num = 0;
@@ -160,16 +176,27 @@ struct GoalListWindow : Window {
 		FOR_ALL_GOALS(s) {
 			if (global_section ? s->company == INVALID_COMPANY : s->company == _local_company && s->company != INVALID_COMPANY) {
 				if (IsInsideMM(pos, 0, cap)) {
-					/* Display the goal */
-					SetDParamStr(0, s->text);
-					DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_GOALS_TEXT);
+					switch (widget) {
+						case WID_GL_GOAL:
+							/* Display the goal. */
+							SetDParamStr(0, s->text);
+							DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_GOALS_TEXT);
+							break;
+
+						case WID_GL_PROGRESS:
+							if (s->progress != NULL) {
+								SetDParamStr(0, s->progress);
+								DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
+							}
+							break;
+					}
 				}
 				pos++;
 				num++;
 			}
 		}
 
-		if (num == 0) {
+		if (widget == WID_GL_GOAL && num == 0) {
 			if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_GOALS_NONE);
 			pos++;
 		}
@@ -177,7 +204,7 @@ struct GoalListWindow : Window {
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget != WID_GL_PANEL) return;
+		if (widget != WID_GL_GOAL && widget != WID_GL_PROGRESS) return;
 
 		YearMonthDay ymd;
 		ConvertDateToYMD(_date, &ymd);
@@ -190,16 +217,16 @@ struct GoalListWindow : Window {
 		const int cap = this->vscroll->GetCapacity();
 
 		/* Draw partial list with global goals */
-		DrawPartialGoalList(pos, cap, x, y, right, true);
+		DrawPartialGoalList(widget, pos, cap, x, y, right, true);
 
 		/* Draw partial list with company goals */
 		pos++;
-		DrawPartialGoalList(pos, cap, x, y, right, false);
+		DrawPartialGoalList(widget, pos, cap, x, y, right, false);
 	}
 
 	virtual void OnResize()
 	{
-		this->vscroll->SetCapacityFromWidget(this, WID_GL_PANEL);
+		this->vscroll->SetCapacityFromWidget(this, WID_GL_GOAL);
 	}
 
 	/**
@@ -222,8 +249,15 @@ static const NWidgetPart _nested_goals_list_widgets[] = {
 		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, WID_GL_PANEL), SetDataTip(0x0, STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetResize(1, 1), SetScrollbar(WID_GL_SCROLLBAR), EndContainer(),
+	NWidget(NWID_HORIZONTAL), SetFill(1, 1),
+		NWidget(WWT_PANEL, COLOUR_BROWN), SetDataTip(0x0, STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetResize(1, 1), SetFill(1, 0), SetScrollbar(WID_GL_SCROLLBAR),
+			NWidget(NWID_VERTICAL), SetPIP(WD_FRAMERECT_TOP, 4, WD_FRAMETEXT_BOTTOM),
+				NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
+					NWidget(WWT_EMPTY, COLOUR_GREY, WID_GL_GOAL), SetResize(1, 1), SetMinimalTextLines(2, 0), SetFill(1, 0),
+					NWidget(WWT_EMPTY, COLOUR_GREY, WID_GL_PROGRESS), SetResize(0, 1), SetMinimalTextLines(2, 0), SetFill(0, 1),
+				EndContainer(),
+			EndContainer(),
+		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_GL_SCROLLBAR),
 			NWidget(WWT_RESIZEBOX, COLOUR_BROWN),

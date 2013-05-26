@@ -1326,8 +1326,9 @@ public:
 	/* automatically generated from ../../widgets/goal_widget.h */
 	/** Widgets of the #GoalListWindow class. */
 	enum GoalListWidgets {
-		WID_GL_PANEL                                 = ::WID_GL_PANEL,                                 ///< Panel of the window.
-		WID_GL_SCROLLBAR                             = ::WID_GL_SCROLLBAR,                             ///< Scrollbar of the panel.
+		WID_GL_GOAL                                  = ::WID_GL_GOAL,                                  ///< Goal text column of the goal list.
+		WID_GL_PROGRESS                              = ::WID_GL_PROGRESS,                              ///< Goal progress column of the goal list.
+		WID_GL_SCROLLBAR                             = ::WID_GL_SCROLLBAR,                             ///< Scrollbar of the goal list.
 	};
 
 	/** Widgets of the #GoalQuestionWindow class. */

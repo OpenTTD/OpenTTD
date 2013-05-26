@@ -52,6 +52,50 @@
 	return ScriptObject::DoCommand(0, goal_id, 0, CMD_REMOVE_GOAL);
 }
 
+/* static */ bool ScriptGoal::SetText(GoalID goal_id, Text *goal)
+{
+	CCountedPtr<Text> counter(goal);
+
+	EnforcePrecondition(false, IsValidGoal(goal_id));
+	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+	EnforcePrecondition(false, goal != NULL);
+	EnforcePrecondition(false, !StrEmpty(goal->GetEncodedText()));
+
+	return ScriptObject::DoCommand(0, goal_id, 0, CMD_SET_GOAL_TEXT, goal->GetEncodedText());
+}
+
+/* static */ bool ScriptGoal::SetProgress(GoalID goal_id, Text *progress)
+{
+	CCountedPtr<Text> counter(progress);
+
+	EnforcePrecondition(false, IsValidGoal(goal_id));
+	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+
+	/* Ensure null as used for emtpy string. */
+	if (progress != NULL && StrEmpty(progress->GetEncodedText())) {
+		progress = NULL;
+	}
+
+	return ScriptObject::DoCommand(0, goal_id, 0, CMD_SET_GOAL_PROGRESS, progress != NULL ? progress->GetEncodedText() : NULL);
+}
+
+/* static */ bool ScriptGoal::SetCompleted(GoalID goal_id, bool completed)
+{
+	EnforcePrecondition(false, IsValidGoal(goal_id));
+	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+
+	return ScriptObject::DoCommand(0, goal_id, completed ? 1 : 0, CMD_SET_GOAL_COMPLETED);
+}
+
+/* static */ bool ScriptGoal::IsCompleted(GoalID goal_id)
+{
+	EnforcePrecondition(false, IsValidGoal(goal_id));
+	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+
+	Goal *g = Goal::Get(goal_id);
+	return g != NULL && g->completed;
+}
+
 /* static */ bool ScriptGoal::Question(uint16 uniqueid, ScriptCompany::CompanyID company, Text *question, QuestionType type, int buttons)
 {
 	CCountedPtr<Text> counter(question);

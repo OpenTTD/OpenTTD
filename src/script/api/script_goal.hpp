@@ -109,6 +109,50 @@ public:
 	static bool Remove(GoalID goal_id);
 
 	/**
+	 * Update goal text of a goal.
+	 * @param goal_id The goal to update.
+	 * @param goal The new goal text (can be either a raw string, or a ScriptText object).
+	 * @return True if the action succeeded.
+	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre goal != NULL && len(goal) != 0.
+	 * @pre IsValidGoal(goal_id).
+	 */
+	static bool SetText(GoalID goal_id, Text *goal);
+
+	/**
+	 * Update the progress text of a goal. The progress text is a text that
+	 * is shown adjacent to the goal but in a separate column. Try to keep
+	 * the progress string short.
+	 * @param goal_id The goal to update.
+	 * @param progress The new progress text for the goal (can be either a raw string,
+	 * or a ScriptText object). To clear the progress string you can pass NULL or an
+	 * empty string.
+	 * @return True if the action succeeded.
+	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre IsValidGoal(goal_id).
+	 */
+	static bool SetProgress(GoalID goal_id, Text *progress);
+
+	/**
+	 * Update completed status of goal
+	 * @param goal_id The goal to update.
+	 * @param complete The new goal completed status.
+	 * @return True if the action succeeded.
+	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre IsValidGoal(goal_id).
+	 */
+	static bool SetCompleted(GoalID goal_id, bool complete);
+
+	/**
+	 * Checks if a given goal have been marked as completed.
+	 * @param goal_id The goal to check complete status.
+	 * @return True if the goal is completed, otherwise false.
+	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre IsValidGoal(goal_id).
+	 */
+	static bool IsCompleted(GoalID goal_id);
+
+	/**
 	 * Ask a question.
 	 * @param uniqueid Your unique id to distinguish results of multiple questions in the returning event.
 	 * @param company The company to ask the question, or ScriptCompany::COMPANY_INVALID for all.

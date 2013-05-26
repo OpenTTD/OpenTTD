@@ -19,12 +19,14 @@
 typedef Pool<Goal, GoalID, 1, 256> GoalPool;
 extern GoalPool _goal_pool;
 
-/** Struct about subsidies, offered and awarded */
+/** Struct about goals, current and completed */
 struct Goal : GoalPool::PoolItem<&_goal_pool> {
 	CompanyByte company; ///< Goal is for a specific company; INVALID_COMPANY if it is global
 	GoalTypeByte type;   ///< Type of the goal
 	GoalTypeID dst;      ///< Index of type
 	char *text;          ///< Text of the goal.
+	char *progress;      ///< Progress text of the goal.
+	bool completed;      ///< Is the goal completed or not?
 
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
@@ -34,7 +36,7 @@ struct Goal : GoalPool::PoolItem<&_goal_pool> {
 	/**
 	 * (Empty) destructor has to be defined else operator delete might be called with NULL parameter
 	 */
-	inline ~Goal() { free(this->text); }
+	inline ~Goal() { free(this->text); free(this->progress); }
 };
 
 #define FOR_ALL_GOALS_FROM(var, start) FOR_ALL_ITEMS_FROM(Goal, goal_index, var, start)

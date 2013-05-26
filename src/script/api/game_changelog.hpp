@@ -20,6 +20,10 @@
  * 1.4.0 is not yet released. The following changes are not set in stone yet.
  *
  * API additions:
+ * \li GSGoal::IsCompleted
+ * \li GSGoal::SetCompleted
+ * \li GSGoal::SetProgress
+ * \li GSGoal::SetText
  * \li GSStation::HasRating
  * \li GSTile::GetTerrainType
  *

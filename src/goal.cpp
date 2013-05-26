@@ -81,6 +81,8 @@ CommandCost CmdCreateGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		g->dst = p2;
 		g->company = company;
 		g->text = strdup(text);
+		g->progress = NULL;
+		g->completed = false;
 
 		InvalidateWindowData(WC_GOALS_LIST, 0);
 
@@ -114,6 +116,84 @@ CommandCost CmdRemoveGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	return CommandCost();
 }
 
+/**
+ * Update goal text of a goal.
+ * @param tile unused.
+ * @param flags type of operation
+ * @param p1 GoalID to update.
+ * @param p2 unused
+ * @param text Text of the goal.
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdSetGoalText(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	if (_current_company != OWNER_DEITY) return CMD_ERROR;
+	if (!Goal::IsValidID(p1)) return CMD_ERROR;
+	if (StrEmpty(text)) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		Goal *g = Goal::Get(p1);
+		free(g->text);
+		g->text = strdup(text);
+
+		InvalidateWindowData(WC_GOALS_LIST, 0);
+	}
+
+	return CommandCost();
+}
+
+/**
+ * Update progress text of a goal.
+ * @param tile unused.
+ * @param flags type of operation
+ * @param p1 GoalID to update.
+ * @param p2 unused
+ * @param text Progress text of the goal.
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdSetGoalProgress(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	if (_current_company != OWNER_DEITY) return CMD_ERROR;
+	if (!Goal::IsValidID(p1)) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		Goal *g = Goal::Get(p1);
+		free(g->progress);
+		if (StrEmpty(text)) {
+			g->progress = NULL;
+		} else {
+			g->progress = strdup(text);
+		}
+
+		InvalidateWindowData(WC_GOALS_LIST, 0);
+	}
+
+	return CommandCost();
+}
+
+/**
+ * Update completed state of a goal.
+ * @param tile unused.
+ * @param flags type of operation
+ * @param p1 GoalID to update.
+ * @param p2 completed state. If goal is completed, set to 1, otherwise 0.
+ * @param text unused
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdSetGoalCompleted(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	if (_current_company != OWNER_DEITY) return CMD_ERROR;
+	if (!Goal::IsValidID(p1)) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		Goal *g = Goal::Get(p1);
+		g->completed = p2 == 1;
+
+		InvalidateWindowData(WC_GOALS_LIST, 0);
+	}
+
+	return CommandCost();
+}
 
 /**
  * Ask a goal related question
