@@ -154,7 +154,7 @@ public:
 };
 
 static WindowDesc _extra_view_port_desc(
-	WDP_AUTO, 300, 268,
+	WDP_AUTO, "extra_viewport", 300, 268,
 	WC_EXTRA_VIEW_PORT, WC_NONE,
 	0,
 	_nested_extra_view_port_widgets, lengthof(_nested_extra_view_port_widgets)

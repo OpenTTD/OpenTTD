@@ -564,7 +564,7 @@ static const NWidgetPart _nested_replace_rail_vehicle_widgets[] = {
 };
 
 static WindowDesc _replace_rail_vehicle_desc(
-	WDP_AUTO, 500, 140,
+	WDP_AUTO, "replace_vehicle_train", 500, 140,
 	WC_REPLACE_VEHICLE, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_replace_rail_vehicle_widgets, lengthof(_nested_replace_rail_vehicle_widgets)
@@ -596,7 +596,7 @@ static const NWidgetPart _nested_replace_vehicle_widgets[] = {
 };
 
 static WindowDesc _replace_vehicle_desc(
-	WDP_AUTO, 456, 118,
+	WDP_AUTO, "replace_vehicle", 456, 118,
 	WC_REPLACE_VEHICLE, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_replace_vehicle_widgets, lengthof(_nested_replace_vehicle_widgets)

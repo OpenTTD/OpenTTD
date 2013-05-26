@@ -231,7 +231,7 @@ static const NWidgetPart _nested_goals_list_widgets[] = {
 };
 
 static WindowDesc _goals_list_desc(
-	WDP_AUTO, 500, 127,
+	WDP_AUTO, "list_goals", 500, 127,
 	WC_GOALS_LIST, WC_NONE,
 	0,
 	_nested_goals_list_widgets, lengthof(_nested_goals_list_widgets)
@@ -360,7 +360,7 @@ static const NWidgetPart _nested_goal_question_widgets[] = {
 };
 
 static WindowDesc _goal_question_list_desc(
-	WDP_CENTER, 0, 0,
+	WDP_CENTER, NULL, 0, 0,
 	WC_GOAL_QUESTION, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_goal_question_widgets, lengthof(_nested_goal_question_widgets)

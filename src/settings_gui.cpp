@@ -663,7 +663,7 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 };
 
 static WindowDesc _game_options_desc(
-	WDP_CENTER, 0, 0,
+	WDP_CENTER, "settings_game", 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
 	_nested_game_options_widgets, lengthof(_nested_game_options_widgets)
@@ -2262,7 +2262,7 @@ static const NWidgetPart _nested_settings_selection_widgets[] = {
 };
 
 static WindowDesc _settings_selection_desc(
-	WDP_CENTER, 510, 450,
+	WDP_CENTER, "settings", 510, 450,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
 	_nested_settings_selection_widgets, lengthof(_nested_settings_selection_widgets)
@@ -2555,7 +2555,7 @@ static const NWidgetPart _nested_cust_currency_widgets[] = {
 };
 
 static WindowDesc _cust_currency_desc(
-	WDP_CENTER, 0, 0,
+	WDP_CENTER, NULL, 0, 0,
 	WC_CUSTOM_CURRENCY, WC_NONE,
 	0,
 	_nested_cust_currency_widgets, lengthof(_nested_cust_currency_widgets)

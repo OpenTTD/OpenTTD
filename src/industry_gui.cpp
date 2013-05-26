@@ -188,7 +188,7 @@ static const NWidgetPart _nested_build_industry_widgets[] = {
 
 /** Window definition of the dynamic place industries gui */
 static WindowDesc _build_industry_desc(
-	WDP_AUTO, 170, 212,
+	WDP_AUTO, "build_industry", 170, 212,
 	WC_BUILD_INDUSTRY, WC_NONE,
 	WDF_CONSTRUCTION,
 	_nested_build_industry_widgets, lengthof(_nested_build_industry_widgets)
@@ -1018,7 +1018,7 @@ static const NWidgetPart _nested_industry_view_widgets[] = {
 
 /** Window definition of the view industry gui */
 static WindowDesc _industry_view_desc(
-	WDP_AUTO, 260, 120,
+	WDP_AUTO, "view_industry", 260, 120,
 	WC_INDUSTRY_VIEW, WC_NONE,
 	0,
 	_nested_industry_view_widgets, lengthof(_nested_industry_view_widgets)
@@ -1389,7 +1389,7 @@ const StringID IndustryDirectoryWindow::sorter_names[] = {
 
 /** Window definition of the industry directory gui */
 static WindowDesc _industry_directory_desc(
-	WDP_AUTO, 428, 190,
+	WDP_AUTO, "list_industries", 428, 190,
 	WC_INDUSTRY_DIRECTORY, WC_NONE,
 	0,
 	_nested_industry_directory_widgets, lengthof(_nested_industry_directory_widgets)
@@ -1430,7 +1430,7 @@ static const NWidgetPart _nested_industry_cargoes_widgets[] = {
 
 /** Window description for the industry cargoes window. */
 static WindowDesc _industry_cargoes_desc(
-	WDP_AUTO, 300, 210,
+	WDP_AUTO, "industry_cargoes", 300, 210,
 	WC_INDUSTRY_CARGOES, WC_NONE,
 	0,
 	_nested_industry_cargoes_widgets, lengthof(_nested_industry_cargoes_widgets)

@@ -43,7 +43,7 @@ static const NWidgetPart _nested_textfile_widgets[] = {
 
 /** Window definition for the textfile window */
 static WindowDesc _textfile_desc(
-	WDP_CENTER, 630, 460,
+	WDP_CENTER, "textfile", 630, 460,
 	WC_TEXTFILE, WC_NONE,
 	0,
 	_nested_textfile_widgets, lengthof(_nested_textfile_widgets)

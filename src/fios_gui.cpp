@@ -697,7 +697,7 @@ public:
 
 /** Load game/scenario */
 static WindowDesc _load_dialog_desc(
-	WDP_CENTER, 500, 294,
+	WDP_CENTER, "load_game", 500, 294,
 	WC_SAVELOAD, WC_NONE,
 	0,
 	_nested_load_dialog_widgets, lengthof(_nested_load_dialog_widgets)
@@ -705,7 +705,7 @@ static WindowDesc _load_dialog_desc(
 
 /** Load heightmap */
 static WindowDesc _load_heightmap_dialog_desc(
-	WDP_CENTER, 257, 320,
+	WDP_CENTER, "load_heightmap", 257, 320,
 	WC_SAVELOAD, WC_NONE,
 	0,
 	_nested_load_heightmap_dialog_widgets, lengthof(_nested_load_heightmap_dialog_widgets)
@@ -713,7 +713,7 @@ static WindowDesc _load_heightmap_dialog_desc(
 
 /** Save game/scenario */
 static WindowDesc _save_dialog_desc(
-	WDP_CENTER, 500, 294,
+	WDP_CENTER, "save_game", 500, 294,
 	WC_SAVELOAD, WC_NONE,
 	0,
 	_nested_save_dialog_widgets, lengthof(_nested_save_dialog_widgets)

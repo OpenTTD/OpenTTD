@@ -489,7 +489,7 @@ static const NWidgetPart _nested_build_object_widgets[] = {
 };
 
 static WindowDesc _build_object_desc(
-	WDP_AUTO, 0, 0,
+	WDP_AUTO, "build_object", 0, 0,
 	WC_BUILD_OBJECT, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
 	_nested_build_object_widgets, lengthof(_nested_build_object_widgets)

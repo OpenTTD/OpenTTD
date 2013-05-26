@@ -73,7 +73,7 @@ bool _mouse_hovering;      ///< The mouse is hovering over the same point.
 SpecialMouseMode _special_mouse_mode; ///< Mode of the mouse.
 
 /** Window description constructor. */
-WindowDesc::WindowDesc(WindowPosition def_pos, int16 def_width, int16 def_height,
+WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_width, int16 def_height,
 			WindowClass window_class, WindowClass parent_class, uint32 flags,
 			const NWidgetPart *nwid_parts, int16 nwid_length) :
 	default_pos(def_pos),
@@ -81,6 +81,7 @@ WindowDesc::WindowDesc(WindowPosition def_pos, int16 def_width, int16 def_height
 	default_height(def_height),
 	cls(window_class),
 	parent_cls(parent_class),
+	ini_key(ini_key),
 	flags(flags),
 	nwid_parts(nwid_parts),
 	nwid_length(nwid_length)

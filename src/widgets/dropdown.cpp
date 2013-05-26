@@ -91,7 +91,7 @@ static const NWidgetPart _nested_dropdown_menu_widgets[] = {
 };
 
 static WindowDesc _dropdown_desc(
-	WDP_MANUAL, 0, 0,
+	WDP_MANUAL, NULL, 0, 0,
 	WC_DROPDOWN_MENU, WC_NONE,
 	0,
 	_nested_dropdown_menu_widgets, lengthof(_nested_dropdown_menu_widgets)

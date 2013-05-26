@@ -165,7 +165,7 @@ Point GetToolbarAlignedWindowPosition(int window_width);
  */
 struct WindowDesc : ZeroedMemoryAllocator {
 
-	WindowDesc(WindowPosition default_pos, int16 def_width, int16 def_height,
+	WindowDesc(WindowPosition default_pos, const char *ini_key, int16 def_width, int16 def_height,
 			WindowClass window_class, WindowClass parent_class, uint32 flags,
 			const NWidgetPart *nwid_parts, int16 nwid_length);
 
@@ -176,6 +176,7 @@ struct WindowDesc : ZeroedMemoryAllocator {
 	int16 default_height;          ///< Preferred initial height of the window.
 	WindowClass cls;               ///< Class of the window, @see WindowClass.
 	WindowClass parent_cls;        ///< Class of the parent window. @see WindowClass
+	const char *ini_key;           ///< Key to store window defaults in openttd.cfg. \c NULL if nothing shall be stored.
 	uint32 flags;                  ///< Flags. @see WindowDefaultFlag
 	const NWidgetPart *nwid_parts; ///< Nested widget parts describing the window.
 	int16 nwid_length;             ///< Length of the #nwid_parts array.
