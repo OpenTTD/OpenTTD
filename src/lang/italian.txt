@@ -234,6 +234,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Chiude l
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titolo della finestra - trascinarlo per muovere la finestra
 STR_TOOLTIP_SHADE                                               :{BLACK}Comprimi finestra - Mostra solo il titolo
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostra le informazioni di debug NewGRF
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Riporta la finestra alle dimensioni predefinite. CTRL+clic memorizza le dimensioni correnti come predefinite
 STR_TOOLTIP_STICKY                                              :{BLACK}Marca questa finestra in modo che non venga chiusa quando si preme il tasto 'Chiudi tutte le finestre'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Fare clic e trascinare per ridimensionare questa finestra
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Seleziona dimensione grande/piccola della finestra

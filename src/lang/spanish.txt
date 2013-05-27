@@ -233,7 +233,8 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Cerrar v
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título de la ventana - arrastre para moverla
 STR_TOOLTIP_SHADE                                               :{BLACK}Ocultar ventana - mostrar solo título de la ventana
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar información de depuración NewGRF
-STR_TOOLTIP_STICKY                                              :{BLACK}Esta ventana no se cerrará tras usar el comando 'Cerrar Todas las Ventanas'
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensionar ventana al tamaño por defecto. Ctrl+Click permite almacenar el tamaño actual como tamaño por defecto
+STR_TOOLTIP_STICKY                                              :{BLACK}Esta ventana no se cerrará tras usar el comando 'Cerrar Todas las Ventanas'. Ctrl+Click permite guardar el estado como estado por defecto
 STR_TOOLTIP_RESIZE                                              :{BLACK}Pulse y arrastre para redimensionar la ventana
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Cambiar entre tamaño de ventana grande/pequeño
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de desplazamiento - mueve la lista arriba/abajo
@@ -2907,6 +2908,8 @@ STR_GOALS_CAPTION                                               :{WHITE}Metas
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Metas globales:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ninguna -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Metas de la compañía:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click en una meta para centrar la vista principal en la casilla, industria o pueblo. Ctrl+Click abre una nueva vista en esa localización
 

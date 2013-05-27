@@ -611,7 +611,8 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zamknij 
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tytuł okna - przeciągnij, aby przesunąć okno
 STR_TOOLTIP_SHADE                                               :{BLACK}Zwiń okno - pokaż tylko nagłówek
 STR_TOOLTIP_DEBUG                                               :{BLACK}Pokaż informacje debugerra NewGRF
-STR_TOOLTIP_STICKY                                              :{BLACK}Zaznacz to okno jako niezamykalne przyciskiem 'Zamknij Wszystkie Okna'
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Zmień rozmiar okna na domyślny. Ctrl+klik zapisze obecne wymiary jako domyślne
+STR_TOOLTIP_STICKY                                              :{BLACK}Zaznacz to okno jako niezamykalne przyciskiem 'Zamknij Wszystkie Okna'. Ctrl+klik dodatkowo zapisze to ustawienie jako domyślne
 STR_TOOLTIP_RESIZE                                              :{BLACK}Kliknij i przeciągnij, by zmienić rozmiar okna
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Przełącz na duży/mały rozmiar okna
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Suwak - przesuwa listę w górę/w dół
@@ -3286,6 +3287,8 @@ STR_GOALS_CAPTION                                               :{WHITE}Cele
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Cele globalne:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Brak -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Cele firmy:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliknij na celu by wyśrodkować widok na przedsiębiorstwie/mieście/tytule. Ctrl+kliknięcie otwiera nowe okno podglądu lokacji danego przedsiębiorstwa.miasta/tytułu
 

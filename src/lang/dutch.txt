@@ -232,7 +232,8 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Sluit ve
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Vensternaam - sleep om venster te verplaatsen
 STR_TOOLTIP_SHADE                                               :{BLACK}Klap venster in - toon alleen de titelbalk
 STR_TOOLTIP_DEBUG                                               :{BLACK}Toon NewGRF debug informatie
-STR_TOOLTIP_STICKY                                              :{BLACK}Markeer dit venster als niet-sluitbaar door de 'Sluit alle vensters'-knop
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}wijzig venster naar standaardgrootte. Ctrl+Klik om de huidige grootte als standaard op te slaan
+STR_TOOLTIP_STICKY                                              :{BLACK}Markeer dit venster als niet-sluitbaar door de 'Sluit alle vensters'-knop. Ctrl+Klik om status als default op te slaan
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klik en sleep om de grootte van dit venster te veranderen
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Schakel tussen groot/klein venster
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Schuifbalk - scroll verticaal door de lijst
@@ -2906,6 +2907,8 @@ STR_GOALS_CAPTION                                               :{WHITE}Doelen
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Algemene doelen:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Geen -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Bedrijfsdoelen:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik op doel om venster te centreren op industrie/stad/tegel. Ctrl+Klik opent een nieuw venster op industrie/stad/tegel locatie
 

@@ -2395,10 +2395,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Co-aonai
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Tog puing-thurais fa leth
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Tog rathaid-iarainn
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Tog rathad-iarainn
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Togail rathaid-iarainn dealain
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Tog rathaid-iarainn aona-rèile
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Tog rathaid-iarainn mhagnaiteach
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Tog rathad-iarainn aona-rèile
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Tog rathad-iarainn mhagnaiteach
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Tog rathad-iarainn. Toglaidh Ctrl togail/toirt air falbh airson togail rathad-iarainn. Toglaidh Shift togail/sealladh air tuairmse chosgaisean
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Tog rathad-iarainn sa mhodh fhèin-thogail. Toglaidh Ctrl togail/toirt air falbh airson togail rathad-iarainn. Toglaidh Shift togail/sealladh air tuairmse chosgaisean

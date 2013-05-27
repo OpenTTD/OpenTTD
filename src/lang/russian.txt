@@ -358,7 +358,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закр
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заголовок окна - тащите его для перемещения окна
 STR_TOOLTIP_SHADE                                               :{BLACK}Свернуть окно, оставив заголовок
 STR_TOOLTIP_DEBUG                                               :{BLACK}Показать отладочную информацию NewGRF
-STR_TOOLTIP_STICKY                                              :{BLACK}Игнорировать нажатия клавиши «Закрыть все окна»
+STR_TOOLTIP_STICKY                                              :{BLACK}Игнорировать нажатия клавиши «Закрыть все окна». Ctrl+щелчок установит такое поведение по умолчанию.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Нажмите и тащите для изменения размера окна
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Большое/маленькое окно
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Прокрутка вверх/вниз
@@ -3086,6 +3086,8 @@ STR_GOALS_CAPTION                                               :{WHITE}Зада
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Общие задачи:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Нет -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Задачи компании:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Щёлкните по задаче, чтобы показать предприятие/город/клетку. Ctrl+щелчок показывает в новом окне.
 
