@@ -3154,11 +3154,11 @@ STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Gabh ris
 STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Leig seachad
 STR_GOAL_QUESTION_BUTTON_RETRY                                  :Feuch ris a-rithist
 STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Am fear roimhe
-STR_GOAL_QUESTION_BUTTON_NEXT                                   :an t-ath-fhear
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :An t-ath-fhear
 STR_GOAL_QUESTION_BUTTON_STOP                                   :Stad
 STR_GOAL_QUESTION_BUTTON_START                                  :Tòisich
 STR_GOAL_QUESTION_BUTTON_GO                                     :Siuthad
-STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Lean air
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Lean air adhart
 STR_GOAL_QUESTION_BUTTON_RESTART                                :Ath-thòisich
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Cuir na dhàil
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Gèill
@@ -3193,7 +3193,7 @@ STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Na ghabhar ris
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Seall liosta a' charago a thèid a ghabhail ris
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Gabhaidh e ri: {WHITE}{CARGO_LIST}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Gabhar ri: {WHITE}{CARGO_LIST}
 
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Tha còirichean giùlain às-dùnach aig an stèisean seo sa bhaile seo.
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{BLACK}Cheannaich {YELLOW}{COMPANY}{BLACK} còirichean giùlain às-dùnach sa bhaile seo.
@@ -3524,10 +3524,10 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Ceannaic
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Ceannaich long ùr
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Ceannaich carbad-adhair ùr
 
-STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Dèan lethbhreac dhen trèan
-STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Dèan lethbhreac dhen charbad
-STR_DEPOT_CLONE_SHIP                                            :{BLACK}Dèan lethbhreac dhen long
-STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Dèan lethbhreac dhen charbad
+STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Dèan lethbhreac dhe thrèan
+STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Dèan lethbhreac dhe charbad
+STR_DEPOT_CLONE_SHIP                                            :{BLACK}Dèan lethbhreac dhe long
+STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Dèan lethbhreac dhe charbad
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ceannaichidh seo lethbhreac dhe thrèan, a' gabhail a-steach a h-uile carbad. Briog air a' phutan seo is an uairsin air trèan taobh a-staigh no a-muigh na trèan-lainn. Thoir na h-aon òrduighean dhi le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ceannaichidh seo lethbhreac dhe charbad-rathaid. Briog air a' phutan seo is an uairsin air carbad taobh a-staigh no a-muigh na garaids. Thoir na h-aon òrduighean dha le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
@@ -3840,7 +3840,7 @@ STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Cuir a-s
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Leum thairis air
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Leum thairis air an òrdugh seo is tòisich air an ath-fhear. Nì Ctrl+briogadh leum dhan òrdugh a thagh thu
 
-STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Sguab às dha
+STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Sguab às
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Sguab às dhan òrdugh a thagh thu
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Sguab às dha na h-uile òrdugh
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Sguir dhen cho-roinneadh

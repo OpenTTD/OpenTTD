@@ -233,6 +233,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fechar j
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste isto para mover a janela
 STR_TOOLTIP_SHADE                                               :{BLACK}Encolher janela - apenas mostra a barra de título
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar informação de depuração de NewGRF
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Reajusta janela para tamanho por defeito. Ctrl+Clique para manter o tamanho actual como o por defeito
 STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela como não-encerrável pela tecla 'Fechar Todas as Janelas'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para reajustar janela
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela grande/pequena
@@ -2144,6 +2145,13 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Comutar 
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Alterar transparência para indicadores de carga. Ctrl+Clique para bloquear.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Definir objectos como invisíveis em vez de transparentes
 
+# Linkgraph legend window
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Todos
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Nenhuma
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Selecione as companhias a serem mostradas
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Exibir área de cobertura
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Não
@@ -2872,6 +2880,8 @@ STR_GOALS_CAPTION                                               :{WHITE}Objetivo
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Objetivos globais:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nenhum -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Objetivos da empresa:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clique no objetivo para centrar a vista principal na indústria/cidade/quadrado. Ctrl+clique abre uma nova vista na localização da indústria/cidade/quadrado
 
@@ -2936,6 +2946,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Avaliações
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostrar avaliações da estação
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Abastecimento mensal e classificação local:
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Inexistente

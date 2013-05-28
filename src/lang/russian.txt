@@ -358,6 +358,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закр
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заголовок окна - тащите его для перемещения окна
 STR_TOOLTIP_SHADE                                               :{BLACK}Свернуть окно, оставив заголовок
 STR_TOOLTIP_DEBUG                                               :{BLACK}Показать отладочную информацию NewGRF
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Изменить размеры окна на значения по умолчанию. Ctrl+щелчок сохранит текущий размер как значение по умолчанию.
 STR_TOOLTIP_STICKY                                              :{BLACK}Игнорировать нажатия клавиши «Закрыть все окна». Ctrl+щелчок установит такое поведение по умолчанию.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Нажмите и тащите для изменения размера окна
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Большое/маленькое окно

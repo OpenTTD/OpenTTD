@@ -232,6 +232,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Đóng c
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tiêu đề cửa sổ - kéo nó để di chuyển cửa số
 STR_TOOLTIP_SHADE                                               :{BLACK}Thu gọn cửa sổ - Chỉ hiển thị thanh tiêu đề
 STR_TOOLTIP_DEBUG                                               :{BLACK}Hiện thông tin debug của NewGRF
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Chuyển cửa sổ về kích thước mặc định. Ctrl+Click để lưu kích thước hiện tại làm mặc định
 STR_TOOLTIP_STICKY                                              :{BLACK}Đánh dấu không-thể-đóng khi bấm nút "Đóng Tất Cả Cửa Sổ"
 STR_TOOLTIP_RESIZE                                              :{BLACK}Click và kéo để thay đổi kích thước cửa sổ
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Bật kích cỡ cửa sổ lớn/nhỏ
@@ -2153,6 +2154,9 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Bật hi
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Đặt các đối ẩn đi thay vì trong suốt
 
 # Linkgraph legend window
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Tất cả
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Không
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Lựa chọn công ty nào sẽ được hiển thị
 
 # Linkgraph legend window and linkgraph legend in smallmap
 
@@ -2886,6 +2890,8 @@ STR_GOALS_CAPTION                                               :{WHITE}Các M�
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Các mục tiêu chung:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Không -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Các mục tiêu của công ty:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click vào mục tiêu để canh giữa cửa sổ lớn chính vào ô/đô thị/nhà máy tương ứng. Ctrl+Click để mở bằng các cửa sổ bổ sung tương ứng
 
@@ -2951,6 +2957,7 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Uy tín
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Hiện uy tín ga, bến, cảng
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Kinh hãi

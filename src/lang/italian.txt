@@ -235,7 +235,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titolo d
 STR_TOOLTIP_SHADE                                               :{BLACK}Comprimi finestra - Mostra solo il titolo
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostra le informazioni di debug NewGRF
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Riporta la finestra alle dimensioni predefinite. CTRL+clic memorizza le dimensioni correnti come predefinite
-STR_TOOLTIP_STICKY                                              :{BLACK}Marca questa finestra in modo che non venga chiusa quando si preme il tasto 'Chiudi tutte le finestre'
+STR_TOOLTIP_STICKY                                              :{BLACK}Marca questa finestra in modo che non venga chiusa quando si preme il tasto 'Chiudi tutte le finestre'. CTRL+clic salva lo scelta come predefinita
 STR_TOOLTIP_RESIZE                                              :{BLACK}Fare clic e trascinare per ridimensionare questa finestra
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Seleziona dimensione grande/piccola della finestra
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra di scorrimento - scorre l'elenco su/giù
@@ -2937,6 +2937,8 @@ STR_GOALS_CAPTION                                               :{WHITE}Obiettiv
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Obiettivi globali:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nessuno -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Obiettivi della compagnia:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Fare clic su un obiettivo per centrare la visuale principale sull'industria, città o riquadro. CTRL+clic mostra l'industria/città/riquadro in una mini visuale
 
