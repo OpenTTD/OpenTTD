@@ -300,7 +300,12 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 
 	if (_generating_world) {
 		IncreaseDoCommandCosts(res.GetCost());
-		if (callback != NULL) callback(GetActiveInstance());
+		if (callback != NULL) {
+			/* Insert return value into to stack and throw a control code that
+			 * the return value in the stack should be used. */
+			callback(GetActiveInstance());
+			throw SQInteger(1);
+		}
 		return true;
 	} else if (_networking) {
 		/* Suspend the script till the command is really executed. */

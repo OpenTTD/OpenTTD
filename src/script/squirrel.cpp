@@ -541,15 +541,19 @@ Squirrel::~Squirrel()
 void Squirrel::InsertResult(bool result)
 {
 	sq_pushbool(this->vm, result);
-	vm->GetAt(vm->_stackbase + vm->_suspended_target) = vm->GetUp(-1);
-	vm->Pop();
+	if (this->IsSuspended()) { // Called before resuming a suspended script?
+		vm->GetAt(vm->_stackbase + vm->_suspended_target) = vm->GetUp(-1);
+		vm->Pop();
+	}
 }
 
 void Squirrel::InsertResult(int result)
 {
 	sq_pushinteger(this->vm, result);
-	vm->GetAt(vm->_stackbase + vm->_suspended_target) = vm->GetUp(-1);
-	vm->Pop();
+	if (this->IsSuspended()) { // Called before resuming a suspended script?
+		vm->GetAt(vm->_stackbase + vm->_suspended_target) = vm->GetUp(-1);
+		vm->Pop();
+	}
 }
 
 /* static */ void Squirrel::DecreaseOps(HSQUIRRELVM vm, int ops)
