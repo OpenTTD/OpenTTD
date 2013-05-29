@@ -420,6 +420,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Dùin an
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tiotal na h-uinneige - slaod seo gus an uinneag a ghluasad
 STR_TOOLTIP_SHADE                                               :{BLACK}Sgàil an uinneag - na seall ach am bàr-tiotail
 STR_TOOLTIP_DEBUG                                               :{BLACK}Seall fiosrachadh dì-bhugaidh NewGRF
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Cuir am meud bunaiteach air an uinneag seo. Ctrl+Briog gus am meud làithreach a shàbhaladh mar am meud bunaiteach
 STR_TOOLTIP_STICKY                                              :{BLACK}Comharraich nach tèid an uinneag seo a dhùnadh leis an òrdugh “Dùin a h-uile uinneag"
 STR_TOOLTIP_RESIZE                                              :{BLACK}Briog is slaod gus an uinneag seo ath-mheudachadh
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Toglaidh meud mòr/beag na h-uinneige
@@ -1768,7 +1769,7 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Carbada
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stèiseanan
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Eaconamaidh
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Co-farpaisichean
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Roghainnean an t-seallaidh
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Taisbeanadh
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Eadar-ghnìomh
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Èifeachdan fuaime
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Naidheachdan is brathan
@@ -3135,6 +3136,8 @@ STR_GOALS_CAPTION                                               :{WHITE}Amasan
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Amasan coitcheann:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Chan eil gin -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Amasan na companaidh:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Briog air an amas gus am prìomh-shealladh a mheadhanachadh air gnìomhachas/baile/leac. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' ghnìomhachais/a' bhaile/na lice
 
@@ -3621,10 +3624,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Cuir car
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Cuir long dhan chala. Cha dèan Ctrl+briogadh ach obair-ghlèidhidh
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Cuir carbad-adhair dhan hangar. Cha dèan Ctrl+briogadh ach obair-ghlèidhidh
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ceannaichidh seo lethbhreac dhen trèan, a' gabhail a-steach a h-uile carbad. Thoir na h-aon òrduighean dhan tè ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ceannaichidh seo lethbhreac dhen charbad-rathaid. Thoir na h-aon òrduighean dhan fhear ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ceannaichidh seo lethbhreac dhen long. Thoir na h-aon òrduighean dhan tè ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ceannaichidh seo lethbhreac dhen charbad-adhair. Thoir na h-aon òrduighean dhan fhear ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ceannaichidh seo lethbhreac dhe thrèan, a' gabhail a-steach a h-uile carbad. Thoir na h-aon òrduighean dhan tè ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ceannaichidh seo lethbhreac dhe charbad-rathaid. Thoir na h-aon òrduighean dhan fhear ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ceannaichidh seo lethbhreac dhe long. Thoir na h-aon òrduighean dhan tè ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ceannaichidh seo lethbhreac dhe charbad-adhair. Thoir na h-aon òrduighean dhan fhear ùr le Ctrl+briogadh. Seallaidh Shift+briogadh tuairmse air na cosgaisean gun a bhith a' ceannach dad
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Thoir air an trèan leantainn air adhart gun a bhith a' feitheamh air a' chomharra
 
@@ -4743,7 +4746,7 @@ STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :Meudachadh {STRING}
-STR_SV_STNAME_SIDINGS                                           :Taobhadh {STRING}
+STR_SV_STNAME_SIDINGS                                           :Taobh {STRING}
 STR_SV_STNAME_BRANCH                                            :Meur {STRING}
 STR_SV_STNAME_UPPER                                             :{STRING} Uachdarach
 STR_SV_STNAME_LOWER                                             :{STRING} Iochdarach

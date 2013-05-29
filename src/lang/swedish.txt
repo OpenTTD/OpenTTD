@@ -232,6 +232,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Stäng f
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Fönstertitel - dra för att flytta fönstret
 STR_TOOLTIP_SHADE                                               :{BLACK}Dölj fönster - Visa bara namnlisten
 STR_TOOLTIP_DEBUG                                               :{BLACK}Visa NewGRF felsökningsinformation
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Återställ fönstret till standardstorlek. Ctrl-klicka för att sätta nuvarande storlek som ny standard
 STR_TOOLTIP_STICKY                                              :{BLACK}Markera att fönstret ska lämnas öppet när 'Stäng alla fönster'-knappen används
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klicka och dra för att förstora fönstret
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Växla stor/liten fönsterstorlek
@@ -1373,7 +1374,7 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Spela upp ljud 
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Slut på året: {STRING}
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Spela en ljudeffekt vid årets slut som beskriver företagets resultat från det gångna året jämfört med året innan
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Konstruktion: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Spela ljudeffekter när konstruktion lyckas och vid andra händelser
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Spela ljudeffekter när konstruktioner lyckas och vid andra händelser
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Knapptryckningar: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Pip vid knapptryckningar
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastrofer/olyckor: {STRING}
@@ -2906,6 +2907,8 @@ STR_GOALS_CAPTION                                               :{WHITE}Mål
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globala mål:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Inga -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Företagsmål:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klicka på målet för att centrera huvudvyn på industrin/byn/rutan. Ctrl+klick gör så att ett nytt vyfönster öppnas över platsen för industrin/byn/rutan
 
