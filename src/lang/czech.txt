@@ -454,7 +454,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Založit město
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Dotace
-STR_SUBSIDIES_MENU_GOAL                                         :Současné cíle
+STR_GRAPH_MENU_GOAL                                             :Současné cíle
 ############ range ends here
 
 ############ range for graph menu starts

@@ -386,7 +386,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Fonder une vill
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subventions
-STR_SUBSIDIES_MENU_GOAL                                         :Objectifs actuels
+STR_GRAPH_MENU_GOAL                                             :Objectifs actuels
 ############ range ends here
 
 ############ range for graph menu starts

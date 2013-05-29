@@ -386,7 +386,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Found town
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidies
-STR_SUBSIDIES_MENU_GOAL                                         :Current goals
+STR_GRAPH_MENU_GOAL                                             :Current goals
 ############ range ends here
 
 ############ range for graph menu starts

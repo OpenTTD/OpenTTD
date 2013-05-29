@@ -382,7 +382,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :جد المدي
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :العروض
-STR_SUBSIDIES_MENU_GOAL                                         :الاهداف الحالية
+STR_GRAPH_MENU_GOAL                                             :الاهداف الحالية
 ############ range ends here
 
 ############ range for graph menu starts

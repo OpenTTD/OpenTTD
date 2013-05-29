@@ -387,7 +387,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Stadt gründen
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subventionen
-STR_SUBSIDIES_MENU_GOAL                                         :Momentane Ziele
+STR_GRAPH_MENU_GOAL                                             :Momentane Ziele
 ############ range ends here
 
 ############ range for graph menu starts

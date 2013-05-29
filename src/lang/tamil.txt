@@ -384,7 +384,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :நகரம்
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :மானியங்கள்
-STR_SUBSIDIES_MENU_GOAL                                         :தற்போதைய குறிக்கோள்கள்
+STR_GRAPH_MENU_GOAL                                             :தற்போதைய குறிக்கோள்கள்
 ############ range ends here
 
 ############ range for graph menu starts

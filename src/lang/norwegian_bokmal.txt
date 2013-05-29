@@ -386,7 +386,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Grunnlegg by
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidier
-STR_SUBSIDIES_MENU_GOAL                                         :Nåværende mål
+STR_GRAPH_MENU_GOAL                                             :Nåværende mål
 ############ range ends here
 
 ############ range for graph menu starts

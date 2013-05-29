@@ -385,7 +385,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Sefydlu tref
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Cymorthdaliadau
-STR_SUBSIDIES_MENU_GOAL                                         :Nodau presennol
+STR_GRAPH_MENU_GOAL                                             :Nodau presennol
 ############ range ends here
 
 ############ range for graph menu starts

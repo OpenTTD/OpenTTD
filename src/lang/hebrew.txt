@@ -397,7 +397,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :ייסד עיר
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :סובסידיות
-STR_SUBSIDIES_MENU_GOAL                                         :מטרות נוכחיות
+STR_GRAPH_MENU_GOAL                                             :מטרות נוכחיות
 ############ range ends here
 
 ############ range for graph menu starts

@@ -572,7 +572,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Osnivanje nasel
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencije
-STR_SUBSIDIES_MENU_GOAL                                         :Trenutni ciljevi
+STR_GRAPH_MENU_GOAL                                             :Trenutni ciljevi
 ############ range ends here
 
 ############ range for graph menu starts

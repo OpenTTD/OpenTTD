@@ -385,7 +385,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Thị Xã
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Tiền trợ cấp
-STR_SUBSIDIES_MENU_GOAL                                         :Các mục tiêu hiện tại
+STR_GRAPH_MENU_GOAL                                             :Các mục tiêu hiện tại
 ############ range ends here
 
 ############ range for graph menu starts

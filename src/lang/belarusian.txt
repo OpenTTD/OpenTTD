@@ -697,7 +697,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Заснава�
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Субсыдыі
-STR_SUBSIDIES_MENU_GOAL                                         :Бягучыя задачы
+STR_GRAPH_MENU_GOAL                                             :Бягучыя задачы
 ############ range ends here
 
 ############ range for graph menu starts

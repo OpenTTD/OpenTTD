@@ -384,7 +384,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :興建市鎮
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :補助資訊
-STR_SUBSIDIES_MENU_GOAL                                         :當前目標
+STR_GRAPH_MENU_GOAL                                             :當前目標
 ############ range ends here
 
 ############ range for graph menu starts

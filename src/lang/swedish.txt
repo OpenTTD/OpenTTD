@@ -386,7 +386,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Grunda stad
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subventioner
-STR_SUBSIDIES_MENU_GOAL                                         :Nuvarande mål
+STR_GRAPH_MENU_GOAL                                             :Nuvarande mål
 ############ range ends here
 
 ############ range for graph menu starts

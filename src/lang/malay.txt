@@ -383,7 +383,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Binakan bandar
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidi
-STR_SUBSIDIES_MENU_GOAL                                         :Matlamat semasa
+STR_GRAPH_MENU_GOAL                                             :Matlamat semasa
 ############ range ends here
 
 ############ range for graph menu starts

@@ -383,7 +383,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :ตั้งเ
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :การสนับสนุน
-STR_SUBSIDIES_MENU_GOAL                                         :เป้าหมายปัจจุบัน
+STR_GRAPH_MENU_GOAL                                             :เป้าหมายปัจจุบัน
 ############ range ends here
 
 ############ range for graph menu starts

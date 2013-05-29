@@ -385,7 +385,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Fundar cidade
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsídios
-STR_SUBSIDIES_MENU_GOAL                                         :{G=m}Objetivos atuais
+STR_GRAPH_MENU_GOAL                                             :{G=m}Objetivos atuais
 ############ range ends here
 
 ############ range for graph menu starts

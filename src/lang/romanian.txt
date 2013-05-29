@@ -383,7 +383,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Fondează oraş
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvenţii
-STR_SUBSIDIES_MENU_GOAL                                         :Ţinte curente
+STR_GRAPH_MENU_GOAL                                             :Ţinte curente
 ############ range ends here
 
 ############ range for graph menu starts

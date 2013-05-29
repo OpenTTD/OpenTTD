@@ -383,7 +383,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :قصبھ قائ
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :امداد
-STR_SUBSIDIES_MENU_GOAL                                         :موجودہ اہداف
+STR_GRAPH_MENU_GOAL                                             :موجودہ اہداف
 ############ range ends here
 
 ############ range for graph menu starts

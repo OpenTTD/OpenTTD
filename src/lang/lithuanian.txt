@@ -579,7 +579,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Įkurti miestą
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidijos
-STR_SUBSIDIES_MENU_GOAL                                         :Dabartiniai tikslai
+STR_GRAPH_MENU_GOAL                                             :Dabartiniai tikslai
 ############ range ends here
 
 ############ range for graph menu starts

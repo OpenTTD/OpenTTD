@@ -509,7 +509,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Заснува�
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Субсидії
-STR_SUBSIDIES_MENU_GOAL                                         :Поточні цілі
+STR_GRAPH_MENU_GOAL                                             :Поточні цілі
 ############ range ends here
 
 ############ range for graph menu starts

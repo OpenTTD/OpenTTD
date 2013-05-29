@@ -43,6 +43,7 @@
 #include "hotkeys.h"
 #include "engine_base.h"
 #include "highscore.h"
+#include "game/game.hpp"
 
 #include "widgets/toolbar_widget.h"
 
@@ -161,13 +162,13 @@ public:
 /**
  * Pop up a generic text only menu.
  */
-static void PopupMainToolbMenu(Window *w, int widget, StringID string, int count)
+static void PopupMainToolbMenu(Window *w, int widget, StringID string, int count, int skip = 0)
 {
 	DropDownList *list = new DropDownList();
-	for (int i = 0; i < count; i++) {
+	for (int i = skip; i < count; i++) {
 		list->push_back(new DropDownListStringItem(string + i, i, false));
 	}
-	ShowDropDownList(w, list, 0, widget, 140, true, true);
+	ShowDropDownList(w, list, skip, widget, 140, true, true);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 }
 
@@ -476,7 +477,7 @@ static CallBackFunction MenuClickTown(int index)
 
 static CallBackFunction ToolbarSubsidiesClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_SUBSIDIES, STR_SUBSIDIES_MENU_SUBSIDIES, 2);
+	PopupMainToolbMenu(w, WID_TN_SUBSIDIES, STR_SUBSIDIES_MENU_SUBSIDIES, 1);
 	return CBF_NONE;
 }
 
@@ -490,7 +491,6 @@ static CallBackFunction MenuClickSubsidies(int index)
 {
 	switch (index) {
 		case 0: ShowSubsidiesList(); break;
-		case 1: ShowGoalsList();     break;
 	}
 	return CBF_NONE;
 }
@@ -615,7 +615,7 @@ static CallBackFunction MenuClickGraphs(int index)
 
 static CallBackFunction ToolbarLeagueClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_LEAGUE, STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE, _networking ? 2 : 3);
+	PopupMainToolbMenu(w, WID_TN_LEAGUE, STR_GRAPH_MENU_GOAL, _networking ? 3 : 4, Game::GetInstance() != NULL ? 0 : 1);
 	return CBF_NONE;
 }
 
@@ -628,9 +628,10 @@ static CallBackFunction ToolbarLeagueClick(Window *w)
 static CallBackFunction MenuClickLeague(int index)
 {
 	switch (index) {
-		case 0: ShowCompanyLeagueTable();      break;
-		case 1: ShowPerformanceRatingDetail(); break;
-		case 2: ShowHighscoreTable(); break;
+		case 0: ShowGoalsList();               break;
+		case 1: ShowCompanyLeagueTable();      break;
+		case 2: ShowPerformanceRatingDetail(); break;
+		case 3: ShowHighscoreTable();          break;
 	}
 	return CBF_NONE;
 }

@@ -448,7 +448,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Új város alap
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Támogatások
-STR_SUBSIDIES_MENU_GOAL                                         :Jelenlegi célok
+STR_GRAPH_MENU_GOAL                                             :Jelenlegi célok
 ############ range ends here
 
 ############ range for graph menu starts

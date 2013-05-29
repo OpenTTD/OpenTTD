@@ -382,7 +382,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Aimsíodh baile
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Fordheontais
-STR_SUBSIDIES_MENU_GOAL                                         :Spriocanna reatha
+STR_GRAPH_MENU_GOAL                                             :Spriocanna reatha
 ############ range ends here
 
 ############ range for graph menu starts

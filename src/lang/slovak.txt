@@ -448,7 +448,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Založiť mesto
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Dotácie
-STR_SUBSIDIES_MENU_GOAL                                         :Súčasné ciele
+STR_GRAPH_MENU_GOAL                                             :Súčasné ciele
 ############ range ends here
 
 ############ range for graph menu starts

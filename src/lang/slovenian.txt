@@ -536,7 +536,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Ustanovi mesto
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencije
-STR_SUBSIDIES_MENU_GOAL                                         :Trenutni cilji
+STR_GRAPH_MENU_GOAL                                             :Trenutni cilji
 ############ range ends here
 
 ############ range for graph menu starts

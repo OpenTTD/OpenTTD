@@ -386,7 +386,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Sticht een stad
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidies
-STR_SUBSIDIES_MENU_GOAL                                         :Huidige doelen
+STR_GRAPH_MENU_GOAL                                             :Huidige doelen
 ############ range ends here
 
 ############ range for graph menu starts

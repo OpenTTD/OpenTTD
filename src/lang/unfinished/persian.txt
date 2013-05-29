@@ -382,7 +382,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :ساخت شهر
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :یارانه ها
-STR_SUBSIDIES_MENU_GOAL                                         :اهداف فعلی
+STR_GRAPH_MENU_GOAL                                             :اهداف فعلی
 ############ range ends here
 
 ############ range for graph menu starts

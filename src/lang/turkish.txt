@@ -387,7 +387,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Şehir başlat
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Teşvikler
-STR_SUBSIDIES_MENU_GOAL                                         :Mevcut hedefler
+STR_GRAPH_MENU_GOAL                                             :Mevcut hedefler
 ############ range ends here
 
 ############ range for graph menu starts

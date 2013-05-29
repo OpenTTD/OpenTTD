@@ -386,7 +386,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Dibināt pilsē
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsīdijas
-STR_SUBSIDIES_MENU_GOAL                                         :Kārtējie mērķi
+STR_GRAPH_MENU_GOAL                                             :Kārtējie mērķi
 ############ range ends here
 
 ############ range for graph menu starts
