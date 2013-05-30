@@ -24,61 +24,61 @@
 STR_NULL                                                        :
 STR_EMPTY                                                       :
 STR_UNDEFINED                                                   :(nedefinovaný řetězec)
-STR_JUST_NOTHING                                                :nic
+STR_JUST_NOTHING                                                :Nic
 
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
-STR_CARGO_PLURAL_PASSENGERS                                     :cestující
-STR_CARGO_PLURAL_PASSENGERS.gen                                 :cestujících
+STR_CARGO_PLURAL_PASSENGERS                                     :Cestující
+STR_CARGO_PLURAL_PASSENGERS.gen                                 :Cestujících
 STR_CARGO_PLURAL_PASSENGERS.big                                 :Cestující
-STR_CARGO_PLURAL_COAL                                           :uhlí
+STR_CARGO_PLURAL_COAL                                           :Uhlí
 STR_CARGO_PLURAL_COAL.big                                       :Uhlí
-STR_CARGO_PLURAL_MAIL                                           :pošta
-STR_CARGO_PLURAL_MAIL.gen                                       :pošty
-STR_CARGO_PLURAL_MAIL.acc                                       :poštu
+STR_CARGO_PLURAL_MAIL                                           :Pošta
+STR_CARGO_PLURAL_MAIL.gen                                       :Pošty
+STR_CARGO_PLURAL_MAIL.acc                                       :Poštu
 STR_CARGO_PLURAL_MAIL.big                                       :Pošta
-STR_CARGO_PLURAL_OIL                                            :ropa
-STR_CARGO_PLURAL_OIL.gen                                        :ropy
-STR_CARGO_PLURAL_OIL.acc                                        :ropu
+STR_CARGO_PLURAL_OIL                                            :Ropa
+STR_CARGO_PLURAL_OIL.gen                                        :Ropy
+STR_CARGO_PLURAL_OIL.acc                                        :Ropu
 STR_CARGO_PLURAL_OIL.big                                        :Ropa
-STR_CARGO_PLURAL_LIVESTOCK                                      :dobytek
-STR_CARGO_PLURAL_LIVESTOCK.gen                                  :dobytka
+STR_CARGO_PLURAL_LIVESTOCK                                      :Dobytek
+STR_CARGO_PLURAL_LIVESTOCK.gen                                  :Dobytka
 STR_CARGO_PLURAL_LIVESTOCK.big                                  :Dobytek
-STR_CARGO_PLURAL_GOODS                                          :zboží
+STR_CARGO_PLURAL_GOODS                                          :Zboží
 STR_CARGO_PLURAL_GOODS.big                                      :Zboží
-STR_CARGO_PLURAL_GRAIN                                          :zrní
+STR_CARGO_PLURAL_GRAIN                                          :Zrní
 STR_CARGO_PLURAL_GRAIN.big                                      :Zrní
-STR_CARGO_PLURAL_WOOD                                           :dřevo
-STR_CARGO_PLURAL_WOOD.gen                                       :dřeva
+STR_CARGO_PLURAL_WOOD                                           :Dřevo
+STR_CARGO_PLURAL_WOOD.gen                                       :Dřeva
 STR_CARGO_PLURAL_WOOD.big                                       :Dřevo
-STR_CARGO_PLURAL_IRON_ORE                                       :železná ruda
-STR_CARGO_PLURAL_IRON_ORE.gen                                   :železné rudy
-STR_CARGO_PLURAL_IRON_ORE.acc                                   :železnou rudu
+STR_CARGO_PLURAL_IRON_ORE                                       :Železná ruda
+STR_CARGO_PLURAL_IRON_ORE.gen                                   :Železné rudy
+STR_CARGO_PLURAL_IRON_ORE.acc                                   :Železnou rudu
 STR_CARGO_PLURAL_IRON_ORE.big                                   :Železná ruda
-STR_CARGO_PLURAL_STEEL                                          :ocel
-STR_CARGO_PLURAL_STEEL.gen                                      :oceli
+STR_CARGO_PLURAL_STEEL                                          :Ocel
+STR_CARGO_PLURAL_STEEL.gen                                      :Oceli
 STR_CARGO_PLURAL_STEEL.big                                      :Ocel
-STR_CARGO_PLURAL_VALUABLES                                      :ceniny
-STR_CARGO_PLURAL_VALUABLES.gen                                  :cenin
-STR_CARGO_PLURAL_VALUABLES.big                                  :Ceniny
-STR_CARGO_PLURAL_COPPER_ORE                                     :měděná ruda
-STR_CARGO_PLURAL_COPPER_ORE.gen                                 :měděné rudy
-STR_CARGO_PLURAL_COPPER_ORE.acc                                 :měděnou rudu
+STR_CARGO_PLURAL_VALUABLES                                      :Cennosti
+STR_CARGO_PLURAL_VALUABLES.gen                                  :Cenností
+STR_CARGO_PLURAL_VALUABLES.big                                  :Cennosti
+STR_CARGO_PLURAL_COPPER_ORE                                     :Měděná ruda
+STR_CARGO_PLURAL_COPPER_ORE.gen                                 :Měděné rudy
+STR_CARGO_PLURAL_COPPER_ORE.acc                                 :Měděnou rudu
 STR_CARGO_PLURAL_COPPER_ORE.big                                 :Měděná ruda
-STR_CARGO_PLURAL_MAIZE                                          :kukuřice
-STR_CARGO_PLURAL_MAIZE.acc                                      :kukuřici
+STR_CARGO_PLURAL_MAIZE                                          :Kukuřice
+STR_CARGO_PLURAL_MAIZE.acc                                      :Kukuřici
 STR_CARGO_PLURAL_MAIZE.big                                      :Kukuřice
-STR_CARGO_PLURAL_FRUIT                                          :ovoce
+STR_CARGO_PLURAL_FRUIT                                          :Ovoce
 STR_CARGO_PLURAL_FRUIT.big                                      :Ovoce
-STR_CARGO_PLURAL_DIAMONDS                                       :diamanty
-STR_CARGO_PLURAL_DIAMONDS.gen                                   :diamantů
+STR_CARGO_PLURAL_DIAMONDS                                       :Diamanty
+STR_CARGO_PLURAL_DIAMONDS.gen                                   :Diamantů
 STR_CARGO_PLURAL_DIAMONDS.big                                   :Diamanty
-STR_CARGO_PLURAL_FOOD                                           :jídlo
-STR_CARGO_PLURAL_FOOD.gen                                       :jídla
+STR_CARGO_PLURAL_FOOD                                           :Jídlo
+STR_CARGO_PLURAL_FOOD.gen                                       :Jídla
 STR_CARGO_PLURAL_FOOD.big                                       :Jídlo
-STR_CARGO_PLURAL_PAPER                                          :papír
-STR_CARGO_PLURAL_PAPER.gen                                      :papíru
+STR_CARGO_PLURAL_PAPER                                          :Papír
+STR_CARGO_PLURAL_PAPER.gen                                      :Papíru
 STR_CARGO_PLURAL_PAPER.big                                      :Papír
 STR_CARGO_PLURAL_GOLD                                           :zlato
 STR_CARGO_PLURAL_GOLD.gen                                       :zlata
@@ -302,6 +302,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zavřít
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titulek okna - tahej pro posun okna
 STR_TOOLTIP_SHADE                                               :{BLACK}Srolovat okno - zobrazit pouze jeho záhlaví
 STR_TOOLTIP_DEBUG                                               :{BLACK}Zobrazit ladící informace pro grafiky
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Změna velikosti okna na základní. Ctrl+Click k uložení stávající velikosti jako základní
 STR_TOOLTIP_STICKY                                              :{BLACK}Označit toto okno, aby se nedalo zavřít klávesou pro zavření všech oken
 STR_TOOLTIP_RESIZE                                              :{BLACK}Velikost okna změníš uchopením a táhnutím zde
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Přepnout velké/malé okno
@@ -445,6 +446,7 @@ STR_FILE_MENU_EXIT                                              :Ukončit progra
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa světa
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Další pohled
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda toku nákladu
 STR_MAP_MENU_SIGN_LIST                                          :Seznam popisků
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Seznam měst
@@ -454,7 +456,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Založit město
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Dotace
-STR_GRAPH_MENU_GOAL                                             :Současné cíle
 ############ range ends here
 
 ############ range for graph menu starts
@@ -467,6 +468,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Graf přepravn�
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_GOAL                                             :Současné cíle
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabulka společností
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Podrobné hodnocení výkonu
 STR_GRAPH_MENU_HIGHSCORE                                        :Nejlepší výsledky
@@ -788,6 +790,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Zobrazovat na mapě jména měst
 STR_SMALLMAP_CENTER                                             :{BLACK}Vystředit malou mapu na tomto místě
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Vypnout všechny
@@ -798,6 +801,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Zobrazit
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Zapnout zobrazení výškové mapy
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Skrýt všechen majetek společnosti na mapě
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Zobrazit všechen majetek společnosti na mapě
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Zobraz všechen náklad na mapě
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Ukázat poslední zprávu nebo článek
@@ -1865,6 +1869,9 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Změnit 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Vypsané
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ne
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ano
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Jméno hráče:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Podle tohoto jména tě ostatní hráči poznají
 
@@ -1923,6 +1930,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Jméno h
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Nastavit heslo
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Svoji hru si můžeš ochránit heslem, když nechceš, aby se ti do ni hlásili jiní lidé
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :Ne
+STR_NETWORK_START_SERVER_ADVERTISED                             :Ano
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" i ů}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Nejvyšší počet hráčů:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Zvol nejvyšší počet hráčů. Může se jich připojit i méně
@@ -2235,8 +2244,15 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Přepnou
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Objekty budou neviditelné, ne průhledné
 
 # Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legenda toku nákladu
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Všechny
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Žádný
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Vybrat firmy, které mají být zobrazeny
 
 # Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}nepoužívaný
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}nasycený
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}přetížení
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Zvýraznění oblasti pokrytí
@@ -2974,6 +2990,8 @@ STR_GOALS_CAPTION                                               :{WHITE}Cíle
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globální cíle:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Žádné -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Cíle společnosti:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikni na cíl pro zaměření pohledu na průmysl/město/pole. Ctrl+Klik otevře nové okno s pohledem na průmyslu/městu/poli.
 
@@ -3039,6 +3057,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :Společnost {YE
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Hodnocení
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Ukázat hodnocení společností
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Měsíční zásobování a lokální rating:
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Příšerné

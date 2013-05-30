@@ -232,6 +232,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Închide
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titlul ferestrei - trage de aici pentru a muta fereastra
 STR_TOOLTIP_SHADE                                               :{BLACK}Minimizează fereastra - Afișează doar bara de titlu
 STR_TOOLTIP_DEBUG                                               :{BLACK}Arată informații depanare NewGRF
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensionează fereastra la dimensiunea standard. Ctrl+Click pentru a surprascrie dimensiunea standard cu dimensiunea curentă
 STR_TOOLTIP_STICKY                                              :{BLACK}Previne închiderea acestei ferestre de către tasta 'Închide toate ferestrele'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Apasă și trage pentru redimensionarea ferestrei
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Comutator pentru dimensiunea ferestrei
@@ -374,6 +375,7 @@ STR_FILE_MENU_EXIT                                              :Ieşire din joc
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Harta lumii
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ecran suplimentar
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda flux încărcătură
 STR_MAP_MENU_SIGN_LIST                                          :Lista de semne
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista oraşelor
@@ -383,7 +385,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Fondează oraş
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvenţii
-STR_GRAPH_MENU_GOAL                                             :Ţinte curente
 ############ range ends here
 
 ############ range for graph menu starts
@@ -396,6 +397,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Valorile plăţ
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_GOAL                                             :Ţinte curente
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Clasamentul companiilor
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Rating de performanţă detaliat
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabela cu scoruri maxime
@@ -661,17 +663,20 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Harta - 
 STR_SMALLMAP_TYPE_CONTOURS                                      :Relief
 STR_SMALLMAP_TYPE_VEHICLES                                      :Vehicule
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrii
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :Fluxul încărcăturilor
 STR_SMALLMAP_TYPE_ROUTES                                        :Rute
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetaţie
 STR_SMALLMAP_TYPE_OWNERS                                        :Proprietari
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Arată relieful pe hartă
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Arată vehiculele pe hartă
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Arată industriile pe hartă
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Arată fluxul încărcăturilor pe hartă
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Arată rutele de transport pe hartă
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Arată vegetaţia pe hartă
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Arată proprietarii de teren pe hartă
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Click pe tipul de industrie pentru a comuta afișarea acestuia. Ctrl+Click dezactivează toate tipurile cu excepția celui selectat. Ctrl+Click din nou pentru a reactiva toate tipurile de industrii
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Click pe o companie pentru a comuta afișarea proprietăților acesteia. Ctrl-Click dezactivează toate companiile cu excepția celei selectate. Ctrl-Click din nou pentru a activa toate companiile
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Click pe un tip de încărcătură pentru a afișa sau nu proprietățile. Ctrl+Click dezactivează toate tipurile de încărcături cu excepția celei curente. Ctrl+Click a doua oară pentru a vedea toate tipurile de încărcătură
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Drumuri
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Căi ferate
@@ -715,6 +720,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Afişeaz
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Comută afişarea hărţii de înălţimi
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nu se afisează proprietățile companiilor pe hartă
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Afișează toate proprietățile companiei pe hartă
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Nu afișa tipuri de încărcături pe hartă
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Afișează toate tipurile de încărcătură pe hartă
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Re-afişează ultimul mesaj
@@ -1582,6 +1589,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... form
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... setul de bază pentru grafică '{STRING}' este ignorat: nu a fost găsit
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... setul de bază pentru sunete '{STRING}' este ignorat: nu a fost găsit
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... setul de bază pentru muzică '{STRING}' este ignorat: nu a fost găsit
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Fără memorie
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Nu s-au putut rezerva {BYTES} pentru cache al sprite-urilor. Mărimea cache-ului a fost redusă la {BYTES}. Performanța OpenTTD va fi redusă. Pentru a micșora cerințele jocului cu privire la memorie, poți încerca să dezactivezi modul grafic 32bpp și/sau reducerea numărului de nivele zoom
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1758,6 +1767,9 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Schimbă
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Alege între un joc publicat (prin Internet) și unul privat (reț) game
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nu
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Da
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Numele jucătorului:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Acesta este numele prin care te vor identifica ceilalţi
 
@@ -1816,6 +1828,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Numele j
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Pune parolă
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protejează-ţi jocul cu o parolă dacă nu vrei să intre jucători neautorizaţi
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :Nu
+STR_NETWORK_START_SERVER_ADVERTISED                             :Da
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} clien{P t ţi}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Număr maxim de clienţi:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Alege un număr maxim de clienţi. Nu trebuie ocupate toate locurile.
@@ -2126,6 +2140,17 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Comută 
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Comută transparenţa pentru catenar. Ctrl+Click pentru blocare
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Comută transparenţa pentru indicatorii de încarcare. Ctrl+Click pentru blocare
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Setează obiectele ca invizibile în loc de transparente
+
+# Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legenda flux încărcătură
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Toate
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Nici una
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Alege companiile care vor fi afișate
+
+# Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}nefolosit
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}saturat
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}supraîncărcat
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Aria de acoperire
@@ -3600,7 +3625,7 @@ STR_ORDER_IMPLICIT                                              :(Implicit)
 STR_ORDER_FULL_LOAD                                             :(Încărcare maximă)
 STR_ORDER_FULL_LOAD_ANY                                         :(Încărcare orice produs)
 STR_ORDER_NO_LOAD                                               :(Fără încărcare)
-STR_ORDER_UNLOAD                                                :(Descarcă şi preia marfa)
+STR_ORDER_UNLOAD                                                :(Descarcă şi preia încărcătura)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Descarcă şi aşteaptă încărcare maximă)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Descarcă şi aşteaptă orice încărcătură)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Descarcă şi pleacă)
