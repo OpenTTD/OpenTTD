@@ -1,3 +1,8 @@
+1.3.1 (2013-06-01)
+------------------------------------------------------------------------
+- Fix: When overbuilding a reserved track with a non-track station tile, that tile would remain reserved and eventually trigger a crash upon removal [FS#5540] (r25251)
+
+
 1.3.1-RC1 (2013-05-17)
 ------------------------------------------------------------------------
 - Feature: Translations of baseset descriptions via language files (r25209, r25205)
