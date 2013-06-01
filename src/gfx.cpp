@@ -1689,6 +1689,24 @@ byte GetDigitWidth(FontSize size)
 	return width;
 }
 
+/**
+ * Return the digit with the biggest width.
+ * @param size  Font of the digit
+ * @return Broadest digit.
+ */
+uint GetBroadestDigit(FontSize size)
+{
+	uint digit = 0;
+	byte width = 0;
+	for (char c = '0'; c <= '9'; c++) {
+		byte w = GetCharacterWidth(size, c);
+		if (w > width) {
+			width = w;
+			digit = c - '0';
+		}
+	}
+	return digit;
+}
 
 void ScreenSizeChanged()
 {

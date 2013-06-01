@@ -890,7 +890,7 @@ void DrawEngineList(VehicleType type, int l, int r, int y, const GUIEngineList *
 	int count_width = 0;
 	if (show_count) {
 		replace_icon = GetSpriteSize(SPR_GROUP_REPLACE_ACTIVE);
-		SetDParamMaxDigits(0, 3);
+		SetDParamMaxDigits(0, 3, FS_SMALL);
 		count_width = GetStringBoundingBox(STR_TINY_BLACK_COMA).width;
 	}
 

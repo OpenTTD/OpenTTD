@@ -504,7 +504,7 @@ public:
 			}
 		} else {
 			/* Draw the label under the data point rather than on the grid line. */
-			SetDParamMaxValue(0, this->x_values_start + this->num_on_x_axis * this->x_values_increment);
+			SetDParamMaxValue(0, this->x_values_start + this->num_on_x_axis * this->x_values_increment, 0, FS_SMALL);
 			x_label_width = GetStringBoundingBox(STR_GRAPH_Y_LABEL_NUMBER).width;
 		}
 
