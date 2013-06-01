@@ -3625,7 +3625,7 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 
 							if (att[k].ti.x == 0 && att[k].ti.y == 0x80) {
 								/*  Not the same terminator.  The one we are using is rather
-								 x= -80, y = 0 .  So, adjust it. */
+								 * x = -80, y = 0 .  So, adjust it. */
 								att[k].ti.x = -0x80;
 								att[k].ti.y =  0;
 								att[k].gfx  =  0;

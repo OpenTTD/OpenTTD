@@ -1260,7 +1260,7 @@ inline uint SmallMapWindow::GetNumberRowsLegend(uint columns) const
 {
 	/* Reserve one column for link colours */
 	uint num_rows_linkstats = CeilDiv(_smallmap_cargo_count, columns - 1);
-	uint num_rows_others = CeilDiv(max(_smallmap_industry_count,_smallmap_company_count), columns);
+	uint num_rows_others = CeilDiv(max(_smallmap_industry_count, _smallmap_company_count), columns);
 	return max(this->min_number_of_fixed_rows, max(num_rows_linkstats, num_rows_others));
 }
 
