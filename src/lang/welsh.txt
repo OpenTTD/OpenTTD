@@ -232,7 +232,8 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Cau ffen
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Teitl ffenestr - llusgwch hwn i symud ffenestr
 STR_TOOLTIP_SHADE                                               :{BLACK}Cysgodi'r ffenest - dangos y bar teitl yn unig
 STR_TOOLTIP_DEBUG                                               :{BLACK}Dangos gwybodaeth dadnamu NewGRF
-STR_TOOLTIP_STICKY                                              :{BLACK}Peri na fydd y fysell 'cau pob Ffenestr' yn cau'r ffenestr hon
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Ailfeintio'r ffenestr i'w faint rhagosodedig. Bydd Ctrl+Clic yn storio'r maint presenol fel rhagosodiad
+STR_TOOLTIP_STICKY                                              :{BLACK}Nodi'r ffenest yma fel un na ellir ei gau can yr allwedd 'Cau Pob Ffenestr'. Bydd Ctrl+Clicio'n cadw'r dewis fel rhagosodiad
 STR_TOOLTIP_RESIZE                                              :{BLACK}Cliciwch a llusgo er mwyn newid maint y ffenestr
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Toglu maint ffenestri mawr/bach
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bar sgrolio - sgrolio'r rhestr i fyny neu i lawr
@@ -385,7 +386,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Sefydlu tref
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Cymorthdaliadau
-STR_GRAPH_MENU_GOAL                                             :Nodau presennol
 ############ range ends here
 
 ############ range for graph menu starts
@@ -398,6 +398,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Cyfraddau Tâl 
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_GOAL                                             :Nodau presennol
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabl Cynghrair Cwmnïau
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Graddfa Fanwl Perfformiad
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabl sgôr uchaf
@@ -2906,6 +2907,8 @@ STR_GOALS_CAPTION                                               :{WHITE}Nodau
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Nodau bydol:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Dim -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Nodau cwmni:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Cliciwch ar nod i ganoli'r brif olygfa ar y diwydiant/tref/teil Mae Ctrl+Clic yn agor ffenestr golwg newydd ar leoliad y diwydiant/tref/teil
 
@@ -2971,6 +2974,7 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :Mae {YELLOW}{CO
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Perfformiad
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Dangos graddfeydd gorsaf
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Graddio lleol a cyflenwi misol:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 ############ range for rating starts

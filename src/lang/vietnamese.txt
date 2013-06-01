@@ -233,7 +233,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tiêu đ
 STR_TOOLTIP_SHADE                                               :{BLACK}Thu gọn cửa sổ - Chỉ hiển thị thanh tiêu đề
 STR_TOOLTIP_DEBUG                                               :{BLACK}Hiện thông tin debug của NewGRF
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Chuyển cửa sổ về kích thước mặc định. Ctrl+Click để lưu kích thước hiện tại làm mặc định
-STR_TOOLTIP_STICKY                                              :{BLACK}Đánh dấu không-thể-đóng khi bấm nút "Đóng Tất Cả Cửa Sổ"
+STR_TOOLTIP_STICKY                                              :{BLACK}Đánh dấu không-thể-đóng khi bấm nút "Đóng Tất Cả Cửa Sổ". Ctrl+Click để lưu thành trạng thái mặc định
 STR_TOOLTIP_RESIZE                                              :{BLACK}Click và kéo để thay đổi kích thước cửa sổ
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Bật kích cỡ cửa sổ lớn/nhỏ
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Thanh cuộn lên/xuống
@@ -376,6 +376,7 @@ STR_FILE_MENU_EXIT                                              :Thoát
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Bản đồ thế giới
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Cửa sổ bổ sung
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Ghi chú luồng hàng hóa
 STR_MAP_MENU_SIGN_LIST                                          :Danh sách biển hiệu
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Thư mục thị trấn
@@ -385,7 +386,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Thị Xã
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Tiền trợ cấp
-STR_GRAPH_MENU_GOAL                                             :Các mục tiêu hiện tại
 ############ range ends here
 
 ############ range for graph menu starts
@@ -398,6 +398,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Bảng giá cư
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_GOAL                                             :Các mục tiêu hiện tại
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Bảng tầm cỡ công ty
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Chi tiết hệ số năng suất
 STR_GRAPH_MENU_HIGHSCORE                                        :Bảng điểm chơi cao nhất
@@ -663,17 +664,20 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Bản Đ
 STR_SMALLMAP_TYPE_CONTOURS                                      :Địa hình
 STR_SMALLMAP_TYPE_VEHICLES                                      :Phương tiện
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Nhà máy
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :Luồng hàng hóa
 STR_SMALLMAP_TYPE_ROUTES                                        :Tuyến
 STR_SMALLMAP_TYPE_VEGETATION                                    :Cây cối
 STR_SMALLMAP_TYPE_OWNERS                                        :Chủ sở hữu
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Hiện viền đất trên bản đồ
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Hiện phương tiện trên bản đồ
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Hiện cụm nhà máy trên b/đồ
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Hiển thị luồng hàng hóa trên bản đồ
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Hiện tuyến vận tải trên bản đồ
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Hiện cụm nông nghiệp trên b/đồ
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Hiện chủ sở hữu đất trên bản đồ
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Click lên nhà máy để tắt/bật hiển thị loại nhà máy đó. Ctrl+Click tắt hết các loại nhà máy trừ cái đang chọn. Ctrl+Click lần nữa để hiển thị cho tất cả các nhà máy
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Click lên công ty để tắt/bật hiển thị tài sản công ty đó. Ctrl+Click tắt hết các công ty trừ cái đang chọn. Ctrl+Click lần nữa để hiển thị cho tất cả các công ty
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Click vào hàng hóa để bật/tắt hiển thị tính chất. Ctrl+Click tắt tất cả trừ cái đang chọn. Ctrl+Click lần nữa để hiển thị tất cả.
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Đường bộ
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Đường ray
@@ -707,6 +711,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Bật/tắt tên thị trấn trên bản đồ
 STR_SMALLMAP_CENTER                                             :{BLACK}Xem bản đồ nhỏ này ở cửa sổ lớn
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Tắt tất cả
@@ -717,6 +722,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Hiện t
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Hiển thị bản đồ địa hình
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Không hiện thị tài sản công ty trên bản đồ
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Hiển thị tất cả tài sản các công ty trên bản đồ
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Không hiển thị hàng hóa trên bản đồ
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Hiển thị thất cả hàng hóa trên bản đồ
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Hiện thông điệp hoặc tin tức cuối cùng
@@ -1784,6 +1791,10 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Thay đ�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Ván Chơi Mạng
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Đã quảng bá
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Lựa chọn ván chơi quảng bá (ra ngoài internet) và không quảng bá (Local Area Network, LAN)
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Không
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Có
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Tên người chơi:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Đây là tên khác mà người chơi sẽ nhận ra bạn
 
@@ -1842,6 +1853,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Tên c�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Đặt mật khẩu
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Bảo vệ game của bạn bằng mật khẩu nếu bạn không muốn người khác vào tùy tiện
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :Không
+STR_NETWORK_START_SERVER_ADVERTISED                             :Có
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} máy trạm
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Số máy trạm tối đa:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Chọn số lượng máy trạm tối đa. Không nhất thiết phải chọn đầy các dòng
@@ -2154,11 +2167,15 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Bật hi
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Đặt các đối ẩn đi thay vì trong suốt
 
 # Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Ghi chú luồng hàng hóa
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Tất cả
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Không
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Lựa chọn công ty nào sẽ được hiển thị
 
 # Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}không sử dụng
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}bão hòa
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}quá tải
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Hiện rõ vùng phủ ảnh hưởng
@@ -2957,6 +2974,7 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Uy tín
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Hiện uy tín ga, bến, cảng
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Sản lượng và đánh giá địa phương hàng tháng:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 ############ range for rating starts

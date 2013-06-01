@@ -233,7 +233,8 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Tanca la
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Títol de la finestra - arrossega això per moure la finestra
 STR_TOOLTIP_SHADE                                               :{BLACK}Ombra de la finestra - mostra només la barra de títol
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostra la informació de depuració NewGRF
-STR_TOOLTIP_STICKY                                              :{BLACK}Marca aquesta finestra com a no eliminable pel 'Tanca totes les Finestres'
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensiona la finestra a la mida predeterminada. Ctrl+Clic per desar la mida actual com a predeterminada
+STR_TOOLTIP_STICKY                                              :{BLACK}Marca aquesta finestra com a no eliminable per la tecla 'Tanca totes les Finestres' Ctrl+Clic per desar també l'estat predeterminat
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clica i arrossega per redimensionar aquesta finestra
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Intercanvia mida gran/petita de finestra
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de desplaçament - desplaça la llista amunt/avall
@@ -376,6 +377,7 @@ STR_FILE_MENU_EXIT                                              :Surt
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa del món
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Vista extra
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Llegenda del fluxe de càrrega
 STR_MAP_MENU_SIGN_LIST                                          :Llista de senyals
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Directori de Poblacions
@@ -385,7 +387,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Funda un poble
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencions
-STR_GRAPH_MENU_GOAL                                             :Objectius actuals
 ############ range ends here
 
 ############ range for graph menu starts
@@ -398,6 +399,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifes de paga
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_GOAL                                             :Objectius actuals
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Taula de la Lliga d'Empreses
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detall de ratis de rendiment
 STR_GRAPH_MENU_HIGHSCORE                                        :Taula de rècords
@@ -663,17 +665,20 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {
 STR_SMALLMAP_TYPE_CONTOURS                                      :Límits
 STR_SMALLMAP_TYPE_VEHICLES                                      :Vehicles
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Indústries
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :Fluxe de càrregues
 STR_SMALLMAP_TYPE_ROUTES                                        :Rutes
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetació
 STR_SMALLMAP_TYPE_OWNERS                                        :Propietaris
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Mostra els límits de terreny al mapa
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Mostra els vehicles al mapa
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Mostra les indústries al mapa
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Mostra el fluxe de càrregues al mapa
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Mostra les rutes de transport al mapa
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Mostra la vegetació al mapa
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Mostra els propietaris del terreny al mapa
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Clica sobre el tipus d'indústria per commutar mostrar-les. Ctrl+Clic desactiva tots els tipus excepte la seleccionada. Ctrl+Clic sobre un altre cop activa tots els tipus d'indústria
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Clica sobre la companyia per commutar mostrar les seves propietats. Ctrl+Clic desactiva totes les companyies excepte la seleccionada. Ctrl+Clic sobre un altre cop per activar totes les companyies
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Clica sobre una càrrega per commutar la visualització. Ctrl+Clic desactiva totes les càrregues excepte la seleccionada. Ctrl+Clic sobre ella una altra vegada activa totes les càrregues
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Carreteres
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Vies
@@ -707,6 +712,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Activa/desactiva noms de poblacions al mapa
 STR_SMALLMAP_CENTER                                             :{BLACK}Centra el mapa petit a la posició actual
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desactiva-ho tot
@@ -717,6 +723,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostra t
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Commuta mostrar els mapes d'alçades
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}No mostris cap propietat de la companyia al mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Mostra totes les propietats de la companyia al mapa
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}No mostris càrregues al mapa
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Mostra totes les càrregues al mapa
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostra el darrer missatge o notícia
@@ -1093,7 +1101,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dreta
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Préstec inicial màxim: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantitat màxima de préstec que pot demanar una companyia (sense tenir en compte l'inflació)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa d'interès: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taxa d'interès dels préstecs; també controla la inflació si està activada
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tipus d'interès dels préstecs; també controla la inflació, si està activada
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costos d'utilització: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Fixa el nivell de manteniment i els costos d'utilització dels vehicles i infraestructures
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocitat de construcció: {STRING}
@@ -1365,7 +1373,7 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reprodueix un s
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Notícies: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Reprodueix un so quan apareix una notícia
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Cap d'any: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reprodueix un efecte de so al final de l'any quan apareix el resum financer de l'empresa
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reprodueix un efecte de so al final de l'any quan apareix el resum financer de l'any de l'empresa en comparació amb l'anterior
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construcció: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reprodueix un efecte de so quan es realitzin amb èxit construccions o altres accions
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Botons: {STRING}
@@ -1432,7 +1440,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Mostra les not�
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arribada del primer vehicle a una estació competidora: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Mostra les notícies quan arribi el primer vehicle a una estació d'un competidor
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / desastres: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostra les notícies d'accidents i desastres
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostra un diari quan passin accidents i desastres
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informació de l'Empresa: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostra les notícies de companyies noves que es creen i de companyies en risc de fer fallida
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Obertura d'indústries: {STRING}
@@ -1452,7 +1460,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Mostra missatge
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nous vehicles: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Mostra les notícies d'aparicions de nous tipus de vehicles
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Canvis en l'admissió de càrrega: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Mostra missatges quan les estacions canviïn l'acceptació d'alguna càrrega
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Mostra missatges sobre les estacions que canviïn l'acceptació d'alguna càrrega
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencions: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Mostra les notícies d'esdeveniments relacionats amb subsidis
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informació General: {STRING}
@@ -1475,7 +1483,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :En arrossegar, 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Estableix la distància en les quals els senyals seran construïts a la via fins al següent obstacle (senyal, desviament), si els senyals són arrossegats
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} cel·la{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Quan arrosseguis, mantingues fixada la distància entre senyals: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecciona el comportament de la situació de senyals quan Ctrl+arrossega senyals. Si es desactiva els senyals són situats al voltant dels túnels o ponts per evitar grans troços sense senyals. Si s'activa, els senyals són situats cada N cel·les, fent l'alineament de senyals en vies paral·leles més fàcil
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecciona el comportament de la situació de senyals quan Ctrl+arrossega senyals. Si es desactiva els senyals són situats al voltant dels túnels o ponts per evitar grans troços sense senyals. Si s'activa, els senyals són situats cada n cel·les, fent l'aliniament de senyals en vies paral·leles més fàcil
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construir semàfors mecànics automàticament abans de: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Estableix l'any per utilitzar semàfors elèctrics. Abans d'aquest any s'utilitzaran senyals mecànics (que tenen exactament la mateixa funció, però amb diferent aspecte)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activa la interfície de senyals: {STRING}
@@ -1784,6 +1792,10 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Canvia l
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijugador
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Anunciat
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Escull entre un joc anunciat (internet) i un joc no anunciat (Xarxa d'àrea local, LAN)
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :No
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Si
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nom del jugador:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Aquest és el nom amb el que els altres jugadors t'identificaran
 
@@ -1842,6 +1854,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}El nom d
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Posa una contrasenya
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protegeix el teu joc amb una contrasenya si no vols que d'altre gent el pugui utilitzar
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :No
+STR_NETWORK_START_SERVER_ADVERTISED                             :Si
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Màx. clients:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Tria el nombre màxim de clients. No és necessari omplir tots els llocs.
@@ -2152,6 +2166,17 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Commuta 
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Commuta la transparència de la catenària. CTRL+clic per bloquejar
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Commuta la transparència dels indicadors de càrrega. Ctrl+Clic per bloquejar
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Mostra els objectes invisibles enlloc de transparents
+
+# Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Llegenda del fluxe de càrrega
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Tot
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Cap
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Selecciona les companyies que seran mostrades
+
+# Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{G=Masculin}{TINY_FONT}{BLACK}no utilitzat
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{G=Masculin}{TINY_FONT}{BLACK}saturat
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{G=Masculin}{TINY_FONT}{BLACK}sobrecarregat
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Marca l'àrea de cobertura
@@ -2883,6 +2908,8 @@ STR_GOALS_CAPTION                                               :{WHITE}Objectiu
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Objectius globals:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Cap -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Objectius de la companyia:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clica sobre l'objectiu per centrar la vista principal sobre la indústria/poble/cel·la. Ctrl+clic per obrir una nova vista sobre la indústria/poble/cel·la
 
@@ -2936,7 +2963,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}No hi ha
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Esperant: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} en ruta des de {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} des de {STATION})
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservat per carregar)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepta
@@ -2948,6 +2975,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ratis
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostra els ratis de l'estació
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Aprovisionament mensual i ratis locals:
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Pèssim
@@ -3091,6 +3120,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producci
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportat)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra la vista principal al lloc de la indústria. Ctrl+Clic obre una nova vista al lloc de la indústria
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivell de producció: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}La indústria ha anunciat la seva clausura imminent!
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Necessita: {YELLOW}{STRING}{STRING}
