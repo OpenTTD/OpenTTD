@@ -116,10 +116,11 @@ void SetDParamMaxValue(uint n, uint64 max_value, uint min_count, FontSize size)
  */
 void SetDParamMaxDigits(uint n, uint count, FontSize size)
 {
-	uint biggest_digit = GetBroadestDigit(size);
-	uint64 val = biggest_digit;
+	uint front, next;
+	GetBroadestDigit(&front, &next, size);
+	uint64 val = count > 1 ? front : next;
 	for (; count > 1; count--) {
-		val = 10 * val + biggest_digit;
+		val = 10 * val + next;
 	}
 	SetDParam(n, val);
 }

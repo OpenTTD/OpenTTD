@@ -1690,22 +1690,22 @@ byte GetDigitWidth(FontSize size)
 }
 
 /**
- * Return the digit with the biggest width.
+ * Determine the broadest digits for guessing the maximum width of a n-digit number.
+ * @param [out] front Broadest digit, which is not 0. (Use this digit as first digit for numbers with more than one digit.)
+ * @param [out] next Broadest digit, including 0. (Use this digit for all digits, except the first one; or for numbers with only one digit.)
  * @param size  Font of the digit
- * @return Broadest digit.
  */
-uint GetBroadestDigit(FontSize size)
+void GetBroadestDigit(uint *front, uint *next, FontSize size)
 {
-	uint digit = 0;
-	byte width = 0;
-	for (char c = '0'; c <= '9'; c++) {
-		byte w = GetCharacterWidth(size, c);
+	int width = -1;
+	for (char c = '9'; c >= '0'; c--) {
+		int w = GetCharacterWidth(size, c);
 		if (w > width) {
 			width = w;
-			digit = c - '0';
+			*next = c - '0';
+			if (c != '0') *front = c - '0';
 		}
 	}
-	return digit;
 }
 
 void ScreenSizeChanged()
