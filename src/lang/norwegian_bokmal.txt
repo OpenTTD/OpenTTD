@@ -234,6 +234,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Lukk vin
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Vindustittel - dra her for å flytte vindu
 STR_TOOLTIP_SHADE                                               :{BLACK}Skyggevindu - Vis kun tittelfeltet
 STR_TOOLTIP_DEBUG                                               :{BLACK}Vis NewGRF-debuggingsinformasjon
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Gjennopprett vindu til standard størrelse. Ctrl + Klikk for å lagre gjeldende størrelse som standard
 STR_TOOLTIP_STICKY                                              :{BLACK}Beskytt dette vinduet mot 'Lukk alle vinduer'-knappen
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klikk og dra for å endre størrelsen på vinduet
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Veksle mellom stor/liten vindustørrelse
@@ -377,6 +378,7 @@ STR_FILE_MENU_EXIT                                              :Avslutt OpenTTD
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Verdenskart
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra tilleggsvindu
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Symbolforklaring for vareflyt
 STR_MAP_MENU_SIGN_LIST                                          :Skiltliste
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Byoversikt
@@ -386,7 +388,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Grunnlegg by
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidier
-STR_GRAPH_MENU_GOAL                                             :Nåværende mål
 ############ range ends here
 
 ############ range for graph menu starts
@@ -399,6 +400,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Varetakster
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_GOAL                                             :Nåværende mål
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Firmarangeringstabell
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaljert prestasjonrating
 STR_GRAPH_MENU_HIGHSCORE                                        :Tavle med høyeste poengsummer
@@ -664,17 +666,20 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Kart - {
 STR_SMALLMAP_TYPE_CONTOURS                                      :Konturer
 STR_SMALLMAP_TYPE_VEHICLES                                      :Kjøretøy
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrier
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :Vareflyt
 STR_SMALLMAP_TYPE_ROUTES                                        :Ruter
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetasjon
 STR_SMALLMAP_TYPE_OWNERS                                        :Eiere
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Vis landkonturer på kartet
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Vis kjøretøy på kartet
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Vis industrier på kartet
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Vis flyt av varetyper på kartet
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Vis transportruter på kartet
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Vis vegetasjon på kartet
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Vis landeiere på kartet
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klikk på en industritype for å slå på dens visning. Ctrl+klikk deaktiverer alle typer unntatt den valgte. Ctrl+klikk på den igjen for å slå på visning av alle industrier
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klikk på et firma for å slå på visning av firmaets eiendom. Ctrl+klikk deaktiverer visning av alle firmaene unntatt det valgte. Ctrl+klikk på firmaet igjen for å slå på visning av alle firmaene
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Klikk på en varetype for å veksle mellom å vise dens egenskap. Ctrl + Klikk deaktiverer alle varetyper utenom den valgte. Ctrl + klikk på den igjen for å aktivere alle varetyper
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Veier
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Jernbaner
@@ -708,6 +713,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Skru av/på bynavn på kartet
 STR_SMALLMAP_CENTER                                             :{BLACK}Midstill oversiktskartet på gjeldende posisjon
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Deaktiver alle
@@ -718,6 +724,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Vis alle
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Veksle mellom visning av høydekart
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Ikke vis firmaeiendommer på kartet
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Vis alle firmaeiendommer på kartet
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Ikke vis noen varetyper på kartet
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Vis alle varetyper på kartet
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Vis siste melding eller nyhetsrapport
@@ -1785,6 +1793,10 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Endre sl
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Flerspiller
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Annonsert
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Velg mellom et utlyst (internett) og et ikke utlyst (Lokalnettverk, LAN) spill
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nei
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spillernavn:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Dette er navnet andre spillere vil identifisere deg med
 
@@ -1843,6 +1855,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Spillnav
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Sett passord
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beskytt ditt spill med et passord hvis du ikke vil at hvem som helst skal bli med på det
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :Nei
+STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" er}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maks antall tillatte klienter:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Velg maks antall klienter. Ikke alle plassene trenger å bli tatt
@@ -2153,6 +2167,17 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Gjennoms
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Gjennomsiktighet for kjeder. Ctrl+klikk for å låse
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Gjennomsiktighet for lastingsindikatorer. Ctrl+klikk for å låse
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gjør objekter usynlige i stedet for gjennomsiktige
+
+# Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Symbolforklaring for lastflyt
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Alle
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Ingen
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Velg selskaper som skal vises
+
+# Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}ubrukt
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}mettet
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}overbelastet
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Markering av dekningsområde
@@ -2884,6 +2909,8 @@ STR_GOALS_CAPTION                                               :{WHITE}Mål
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globale mål:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ingen -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Firmaets mål:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}klikk på mål for å gå til industri/by/rute . Ctrl+klikk åpner et nytt tilleggsvindu over industriens/byens/rutens beliggenhet
 
@@ -2949,6 +2976,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vurderinger
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vis stasjonsvurdering
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Månedlig forsyning og lokal rangering:
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Elendig
@@ -3092,6 +3121,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produksj
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% transportert)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Gå til industri. Ctrl+klikk åpner et nytt tilleggsvindu over industrien
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produksjonsnivå: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Næringen har annonsert snarlig nedleggelse!
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Trenger: {YELLOW}{STRING}{STRING}

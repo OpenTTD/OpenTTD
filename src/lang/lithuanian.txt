@@ -427,6 +427,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Užverti
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Lango antraštė — tempkite ją, jei norite perkelti langą į kitą ekrano vietą
 STR_TOOLTIP_SHADE                                               :{BLACK}Sumažinti langą — rodyti tik lango antraštę
 STR_TOOLTIP_DEBUG                                               :{BLACK}Rodyti papildomą NewGRF derinimo informaciją
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Pakeisti lango dydį į numatytą. Ctrl+Click išsaugo į numatytą dydį
 STR_TOOLTIP_STICKY                                              :{BLACK}Uždrausti komandai „Užverti visus langus“ užverti šį langą (komanda „Užverti visus langus“ iškviečiama „Delete“ klavišu)
 STR_TOOLTIP_RESIZE                                              :{BLACK}Tempkite už šios vietos, jei norite pakeisti lango matmenis
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Pakeisti lango matmenis
@@ -570,6 +571,7 @@ STR_FILE_MENU_EXIT                                              :Išeiti
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Žemėlapis
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Papildomas peržiūros langas
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Krovinių Tiekimo Legenda
 STR_MAP_MENU_SIGN_LIST                                          :Ženklų sąrašas
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Miestų sąrašas
@@ -579,7 +581,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Įkurti miestą
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidijos
-STR_GRAPH_MENU_GOAL                                             :Dabartiniai tikslai
 ############ range ends here
 
 ############ range for graph menu starts
@@ -592,6 +593,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Krovinių apmok
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_GOAL                                             :Dabartiniai tikslai
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Kompanijos užimama vieta
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Išsamus veiklos įvertinimas
 STR_GRAPH_MENU_HIGHSCORE                                        :Nugalėtojų lentelė
@@ -857,17 +859,20 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Žemėla
 STR_SMALLMAP_TYPE_CONTOURS                                      :Kontūrai
 STR_SMALLMAP_TYPE_VEHICLES                                      :Transporto priemonės
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Pramonės įmonės
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :Krovinių Tiekimas
 STR_SMALLMAP_TYPE_ROUTES                                        :Keliai
 STR_SMALLMAP_TYPE_VEGETATION                                    :Augalija
 STR_SMALLMAP_TYPE_OWNERS                                        :Savininkai
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Rodyti žemės kontūrus žemėlapyje
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Rodyti transporto priemones žemėlapyje
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Rodyti gamyklas žemėlapyje
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Rodyti krovinių tiekimą žemėlapyje
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Rodyti transporto kelius žemėlapyje
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Rodyti augmeniją žemėlapyje
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Rodyti žemės savininkus žemėlapyje
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Paspaudus ant gamyklos tipo bus perjungiamas to tipo gamyklų rodymas. Ctrl+Paspaudimas neberodys visų išskyrus pasirinktą. Ctrl+Paspaudimas dar kartą rodys visas.
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Paspaudus ant įmonės perjungs įmonės turto rodymą. Ctrl+Paspaudimas panaikins visas įmones išskyrus pasirinktą. Ctrl+Paspaudimas dar kartą sugrąžins visas įmones.
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Spauskite ant krovinio, kad rodytų jo savybes. Ctrl+Click išjungia visus krovinius, išskyrus pasirinktus. Ctrl+Click pakartojus - įjungia juos
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Keliai
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Geležinkeliai
@@ -901,6 +906,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Rodyti/slėpti miestų pavadinimus žemėlapyje
 STR_SMALLMAP_CENTER                                             :{BLACK}Centruoti mažą žemėlapį į šitą vietą
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Išjungti visas
@@ -911,6 +917,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Žemėla
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Rodyti arba slėpti heightmap
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nerodyti įmonės turto žemėlapyje
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Rodyti visą įmonės turtą žemėlapyje
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Nerodyti krovinių žemėlapyje
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Rodyti visus krovinius žemėlapyje
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Parodyti paskutinę žinutę ar spaudos pranešimą
@@ -1978,6 +1986,10 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Pakeisti
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Žaidimas tinkle
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Reklamuoti
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Pasirinkite tarp reklamuojamo (internetas) ir nereklamuojamo (Vietinis Tinklas, LAN) žaidimo
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ne
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Taip
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Žaidėjo vardas:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Tai vardas, pagal kurį kiti žaidėjai jus atpažins
 
@@ -2036,6 +2048,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Žaidimo
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Nustatyti slaptažodi
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Apsaugokite savo žaidimą slaptažodžiu, jei nenorite, kad jis būtų viešai prieinamas
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :Ne
+STR_NETWORK_START_SERVER_ADVERTISED                             :Taip
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P as ai ų}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimalus klientų skaičius:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pasirinkite maksimalų klientų skaičių. Nebūtinai visos jungtys turi buti užpildytos
@@ -2346,6 +2360,17 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Perjungt
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Perjungti laidų permatomumą . Ctrl+Click užrakinti.
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Perjungti krovimo indikatorių permatomumą. Ctrl+Click užrakinti
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Nustatyti objektus nematomais vietoje permatomų
+
+# Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Krovinių Tiekimo Legenda
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Visi
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Nieko
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Pasirinkite vaizduojamas kompanijas
+
+# Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}nenaudotas
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}prisotintas
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}perkrautas
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Rodyti aptarnaujamą teritoriją?
@@ -3077,6 +3102,8 @@ STR_GOALS_CAPTION                                               :{WHITE}Tikslai
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Visuotiniai tikslai:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nieko -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Kompanijos tikslai:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Paspaudus ant nurodymo bus rodoma gamykla/miestas/vieta. Paspaudus laikant VALD (CTRL) klavišą bus atidarytas naujas langas su gamykla/miestu/vieta
 
@@ -3142,6 +3169,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Reitingai
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Rodyti stoties reitingus
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Mėnesinis tiekimas ir vietinis reitingas:
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Pasibaisėtinas
@@ -3285,6 +3314,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Praėjus
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportuota)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centruoti gamyklą pagrindiniame lange. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su vaizdu į šią gamyklą
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Gamybos sparta: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Pramonės įmonė paskelbė apie jos neišvengiamą uždarymą!
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Reikalauja: {YELLOW}{STRING.ko}{STRING}
@@ -4478,6 +4508,14 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Neįmano
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Simuliatoriaus žaidimas kurtas pagal Transport Tycoon Deluxe
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Originali Transport Tycoon Deluxe DOS leidimo grafika.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Originali Transport Tycoon Deluxe DOS (Vokiečių) leidimo grafika.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Originali Transport Tycoon Deluxe Windows leidimo grafika.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Originalūs Transport Tycoon Deluxe DOS leidimo garsai.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Originalūs Transport Tycoon Deluxe Windows leidimo garsai.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Garsų pakas be jokių garsų.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Originali Transport Tycoon Deluxe Windows leidimo muzika.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Muzikos pakas be muzikos.
 
 ##id 0x2000
 # Town building names

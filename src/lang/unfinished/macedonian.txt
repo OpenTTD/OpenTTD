@@ -166,7 +166,7 @@ STR_ABBREV_ALL                                                  :{TINY_FONT}Се
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} патници{P "" s}
-STR_BAGS                                                        :{COMMA} вреќи
+STR_BAGS                                                        :{COMMA} вреќи{P "" s}
 STR_TONS                                                        :{COMMA} тон{P "" s}
 STR_LITERS                                                      :{COMMA} литар{P "" s}
 STR_ITEMS                                                       :{COMMA} точка{P "" s}
@@ -383,7 +383,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Резулта�
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :субвенции
-STR_GRAPH_MENU_GOAL                                             :Сега цели
 ############ range ends here
 
 ############ range for graph menu starts
@@ -396,6 +395,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Курс на �
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_GOAL                                             :Сега цели
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Табела на вредност на компании
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Детален перформанси рејтинг
 ############ range ends here
@@ -1029,6 +1029,10 @@ STR_CONTENT_TYPE_GS_LIBRARY                                     :ГШ библи
 
 
 # Transparency settings window
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Прифаќа: {GOLD}{CARGO_LIST}
