@@ -386,7 +386,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Perusta kaupunk
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Tuet
-STR_GRAPH_MENU_GOAL                                             :Nykyiset tavoitteet
 ############ range ends here
 
 ############ range for graph menu starts
@@ -399,6 +398,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Rahtitaksat
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_GOAL                                             :Nykyiset tavoitteet
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Yhtiökilpataulukko
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Suoritearviointi
 STR_GRAPH_MENU_HIGHSCORE                                        :Pistetaulukko
@@ -3209,7 +3209,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Nopeus: 
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Nopeus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Nopeus merellä: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Nopeus kanaalissa/joessa: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Käyttökukustannus: {GOLD}{CURRENCY_LONG}/vuosi
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Käyttökustannus: {GOLD}{CURRENCY_LONG}/vuosi
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasiteetti: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(sovitettava)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Suunniteltu: {GOLD}{NUM}{BLACK} Elinikä: {GOLD}{COMMA} vuo{P si tta}
