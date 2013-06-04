@@ -442,6 +442,7 @@ public:
 	LinkGraph(CargoID cargo) : cargo(cargo), last_compression(_date) {}
 
 	void Init(uint size);
+	void ShiftDates(int interval);
 	void Compress();
 	void Merge(LinkGraph *other);
 

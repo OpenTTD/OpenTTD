@@ -43,6 +43,24 @@ inline void LinkGraph::BaseEdge::Init(uint distance)
 	this->next_edge = INVALID_NODE;
 }
 
+/**
+ * Shift all dates by given interval.
+ * This is useful if the date has been modified with the cheat menu.
+ * @param interval Number of days to be added or subtracted.
+ */
+void LinkGraph::ShiftDates(int interval)
+{
+	this->last_compression += interval;
+	for (NodeID node1 = 0; node1 < this->Size(); ++node1) {
+		BaseNode &source = this->nodes[node1];
+		if (source.last_update != INVALID_DATE) source.last_update += interval;
+		for (NodeID node2 = 0; node2 < this->Size(); ++node2) {
+			BaseEdge &edge = this->edges[node1][node2];
+			if (edge.last_update != INVALID_DATE) edge.last_update += interval;
+		}
+	}
+}
+
 void LinkGraph::Compress()
 {
 	this->last_compression = (_date + this->last_compression) / 2;
