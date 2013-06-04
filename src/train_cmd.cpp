@@ -3432,6 +3432,7 @@ static void DeleteLastWagon(Train *v)
 		if (first->track == TRACK_BIT_DEPOT) {
 			SetWindowDirty(WC_VEHICLE_DEPOT, first->tile);
 		}
+		v->last_station_visited = first->last_station_visited; // for PreDestructor
 	}
 
 	/* 'v' shouldn't be accessed after it has been deleted */
