@@ -384,7 +384,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :நகரம்
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :மானியங்கள்
-STR_GRAPH_MENU_GOAL                                             :தற்போதைய குறிக்கோள்கள்
 ############ range ends here
 
 ############ range for graph menu starts
@@ -397,6 +396,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :சரக்க
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_GOAL                                             :தற்போதைய குறிக்கோள்கள்
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :நிறுவனங்களின் பட்டியல்
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :விவரமான செயல்திறன் மதிப்பீடு
 STR_GRAPH_MENU_HIGHSCORE                                        :புள்ளிகள் பட்டியல்
@@ -655,6 +655,7 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}வர�
 STR_SMALLMAP_TYPE_CONTOURS                                      :அமைப்புகள்
 STR_SMALLMAP_TYPE_VEHICLES                                      :வாகனங்கள்
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :தொழிற்சாலைகள்
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :சரக்கு ஓட்டம்
 STR_SMALLMAP_TYPE_ROUTES                                        :வழித்தடங்கள்
 STR_SMALLMAP_TYPE_VEGETATION                                    :தாவரங்கள்
 STR_SMALLMAP_TYPE_OWNERS                                        :சொந்தக்காரர்கள்
@@ -708,6 +709,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}அன�
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}உயர்படத்தின் காட்சியினை மாற்றவும்
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}எந்த கம்பெனி சொத்துக்களையும் வரைபடத்தில் காட்டாதே
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}அனைத்து கம்பெனி சொத்துக்களையும் வரைபடத்தில் காட்டு
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}சரக்குகளை படத்தில் காட்டாதே
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}அனைத்து சரக்குகளையும் படத்தில் காட்டு
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}கடைசி தகவல் அல்லது செய்தி அறிக்கையினை காட்டு
@@ -1590,6 +1593,7 @@ STR_FACE_EARRING                                                :கம்மல
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Tie அல்லது காதணியை மாற்றவும்
 
 # Network server list
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}விளம்பரப்படுத்தப்பட்ட
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :இல்லை
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :ஆம்
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}விளையாடுபவரின் பெயர்:
@@ -1942,6 +1946,7 @@ STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}கட�
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}பயன்படுத்தப்படவில்லை
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}நிரம்பிய
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}அளவிற்கு அதிகமாக ஏற்றப்பட்டுள்ளது
 
 # Base for station construction window(s)
@@ -2596,6 +2601,8 @@ STR_GOALS_CAPTION                                               :{WHITE}கு�
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}பூலோக குறிக்கோள்கள்:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- ஏதுமில்லை -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}நிறுவனத்தின் குறிக்கோள்கள்:
 
 # Goal question window
@@ -2658,6 +2665,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}தரங்கள்
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}நிலைய தரத்தினைக் காட்டவும்
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}மாத வினியோகம் மற்றும் பகுதி தர மதிப்பீடு:
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :மட்டம்
@@ -2791,6 +2800,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}சென்ற மாத உற்பத்தி:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% நகர்த்தப்பட்டது)
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}தயாரிப்பு அளவு: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}தொழிற்சாலை உடனடியாக மூடப்படும் என்று அறிவிக்கப்பட்டுள்ளது!
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}தேவைப்படுகிறது: {YELLOW}{STRING}{STRING}
@@ -3887,6 +3897,14 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}கு�
 STR_DESKTOP_SHORTCUT_COMMENT                                    :A simulation game based on Transport Tycoon Deluxe
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :அசல் டிரான்ஸ்ஃபோர்ட் டைகூன் டீலக்ஸ் DOS பதிப்பு அசைவூட்டங்கள்.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :அசல் டிரான்ஸ்ஃபோர்ட் டைகூன் டீலக்ஸ் DOS (செருமன்) பதிப்பு அசைவூட்டங்கள்.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :அசல் டிரான்ஸ்ஃபோர்ட் டைகூன் டீலக்ஸ் விண்டோஸ் பதிப்பு அசைவூட்டங்கள்.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :அசல் டிரான்ஸ்ஃபோர்ட் டைகூன் டீலக்ஸ் DOS பதிப்பு ஒலிகள்.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :அசல் டிரான்ஸ்ஃபோர்ட் டைகூன் டீலக்ஸ் விண்டோஸ் பதிப்பு ஒலிகள்.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :ஒலிகள் இல்லாத ஒலி தொகுப்பு.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :அசல் டிரான்ஸ்ஃபோர்ட் டைகூன் டீலக்ஸ் விண்டோஸ் பதிப்பு இசை.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :இசை இல்லாத இசைத்தொகுப்பு.
 
 ##id 0x2000
 # Town building names
