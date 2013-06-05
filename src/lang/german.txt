@@ -387,7 +387,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Stadt gründen
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subventionen
-STR_GRAPH_MENU_GOAL                                             :Momentane Ziele
 ############ range ends here
 
 ############ range for graph menu starts
@@ -400,6 +399,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Frachtratendiag
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_GOAL                                             :Momentane Ziele
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Firmentabelle
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Leistungsaufschlüsselung
 STR_GRAPH_MENU_HIGHSCORE                                        :Bestenliste
@@ -1460,7 +1460,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Nachrichten anz
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Neue Fahrzeuge: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Zeitung anzeigen, wenn neue Fahrzeugtypen verfügbar werden
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Änderungen angenommener Fracht: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Nachrichten anzeigen, die Änderungen der aktzeptierten Fracht von Bahnhöfen betreffen
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Nachrichten anzeigen, die Änderungen der akzeptierten Fracht von Bahnhöfen betreffen
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventionen: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Zeitung anzeigen bei Ereignissen, die Subventionen betreffen
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Allgemeine Nachrichten: {STRING}
