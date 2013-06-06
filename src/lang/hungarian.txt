@@ -295,7 +295,8 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Ablak be
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Ablak címsora - húzd ezt a mozgatáshoz
 STR_TOOLTIP_SHADE                                               :{BLACK}Ablak összecsukása - csak a címsor látszódik
 STR_TOOLTIP_DEBUG                                               :{BLACK}NewGRF nyomonkövetés információ mutatása
-STR_TOOLTIP_STICKY                                              :{BLACK}Ez az ablak akkor se záródjon be, ha az "Összes ablak bezárása" gombot megnyomjuk
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Az alapértelmezett ablakméret visszaállítása. Ctrl+kattintással a jelenlegi méretet alapértelmezett méretként állíthatod be.
+STR_TOOLTIP_STICKY                                              :{BLACK}Ez az ablak akkor se záródjon be, ha az "Összes ablak bezárása" gombot megnyomjuk. Ctrl+kattintással ez az állapot alapértelmezettként állítható be.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Fogd és húzd hogy átméretezd az ablakot
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Kicsi/nagy ablakméret közötti váltás
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Görgetősáv - fel/le görgeti a listát
@@ -448,7 +449,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Új város alap
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Támogatások
-STR_GRAPH_MENU_GOAL                                             :Jelenlegi célok
 ############ range ends here
 
 ############ range for graph menu starts
@@ -461,6 +461,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Rakományok sz�
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_GOAL                                             :Jelenlegi célok
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Vállalatok helyezései
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Teljesítményértékelések részletezése
 STR_GRAPH_MENU_HIGHSCORE                                        :Rekord Tábla
@@ -2970,6 +2971,8 @@ STR_GOALS_CAPTION                                               :{WHITE}Célok
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globális célok:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nincs -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Vállalat céljai:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kattintással a fő nézetet a célra állítja. Ctrl+kattintással új látképet nyit a gazdasági épület/település/mező helyéről
 
@@ -4424,7 +4427,7 @@ STR_INDUSTRY_NAME_CANDY_FACTORY.t                               :cukorkagyárat
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Elemfarm
 STR_INDUSTRY_NAME_BATTERY_FARM.t                                :elemfarmot
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Kólakút
-STR_INDUSTRY_NAME_COLA_WELLS.t                                  :kólakútat
+STR_INDUSTRY_NAME_COLA_WELLS.t                                  :kólakutat
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Játékbolt
 STR_INDUSTRY_NAME_TOY_SHOP.t                                    :játékboltot
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Játékgyár

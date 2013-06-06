@@ -232,7 +232,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}關閉�
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}視窗標題 - 點此拖曳可移動視窗
 STR_TOOLTIP_SHADE                                               :{BLACK}陰影視窗 - 只顯示標題列
 STR_TOOLTIP_DEBUG                                               :{BLACK}顯示 NewGRF 除錯資訊
-STR_TOOLTIP_STICKY                                              :{BLACK}「關閉所有視窗」不會關閉本視窗
+STR_TOOLTIP_STICKY                                              :{BLACK}標記此視窗使其不受「關閉所有視窗」掣影響。按住 Ctrl 鍵點選此掣以將選項定為常態
 STR_TOOLTIP_RESIZE                                              :{BLACK}點選並拖曳可縮放視窗大小
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}切換大／小視窗
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}捲軸 - 上下捲動清單
@@ -384,7 +384,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :興建市鎮
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :補助資訊
-STR_GRAPH_MENU_GOAL                                             :當前目標
 ############ range ends here
 
 ############ range for graph menu starts
@@ -397,6 +396,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :貨物運費表
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_GOAL                                             :當前目標
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :公司排行榜
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :詳細營運評比
 STR_GRAPH_MENU_HIGHSCORE                                        :積分排行榜
@@ -449,7 +449,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切換主控台
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/遊戲腳本除錯
 STR_ABOUT_MENU_SCREENSHOT                                       :擷取畫面
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :放大截圖
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :最近鏡截圖
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :在預設的縮放範圍截圖
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :擷取全場景畫面
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :關於「OpenTTD」
@@ -1362,19 +1362,19 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :決定是否將
 STR_CONFIG_SETTING_SOUND_TICKER                                 :新聞提示: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :總結新訊息時播放音效
 STR_CONFIG_SETTING_SOUND_NEWS                                   :報紙: {STRING}
-STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :在顯示報紙時播放音效
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :在顯示報紙訊息時播放音效
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :年度結束: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :在年終報告上播放聲音
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :在顯示年終報告時播放音效
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :建造: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :在完成構建或其他動作時播放音效
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :在成功建造設施或執行其他動作時播放音效
 STR_CONFIG_SETTING_SOUND_CLICK                                  :按鈕點擊: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :按下按鈕時發出嗶聲
-STR_CONFIG_SETTING_SOUND_DISASTER                               :災難/事件: {STRING}
-STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :播放事件與災難的音效
+STR_CONFIG_SETTING_SOUND_DISASTER                               :事故／災難：{STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :播放事故與災難的音效
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :車輛: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :播放車輛音效
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :環境: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放夷平地面、工廠和城鎮的環境音效
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放與地貌、工業設施和城鎮有關的環境音效
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :當沒有適合的可用交通工具時，禁止建造基礎建設: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :如啟用此選項，基礎建設只會在有使用它的交通工具可供選擇時出現，避免玩家浪費時間和金錢去建造無法使用的基礎建設
@@ -1430,8 +1430,8 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :首輛交通工
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :當首輛交通工具抵達玩家站牌時顯示報紙
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :首輛交通工具抵達競爭對手的車站: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :當競爭者的首台交通工具到站時顯示報紙
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :意外／災難: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :當事件或災難發生時顯示報紙
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :事故／災難: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :當事故或災難發生時顯示報紙訊息
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :公司資訊: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :當新公司開始營業或倒閉破產時顯示報紙
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :開放工業: {STRING}
@@ -1451,7 +1451,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :顯示需要注
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :新交通工具: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :當新交通工具形態可用時顯示報紙。
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :可接收貨物的變動: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :當某些站改變它們所接受的貨物時顯示訊息
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :顯示有關車站、碼頭或機場改變所接受貨物種類的訊息
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :補助資訊: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :顯示關於補助金相關事件的報紙
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :一般資訊: {STRING}
@@ -1694,16 +1694,16 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}顯示�
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}顯示車輛配色
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}顯示船舶配色
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}顯示飛機配色
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}選擇所選配色的主色調
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}選擇所選配色的副色調
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}選擇所選配色的主色調。如按住 Ctrl 鍵點選色調，則所有配色皆採用此顏色為主色調
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}選擇所選配色的副色調。如按住 Ctrl 掣點選色調，則所有配色皆採用此顏色為副色調
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}選擇要修改的配色，按住 CTRL 可同時選擇多種配色，勾選方框可切換是否使用配色
 
 STR_LIVERY_DEFAULT                                              :標準配色
 STR_LIVERY_STEAM                                                :蒸汽機車
 STR_LIVERY_DIESEL                                               :柴油車頭
 STR_LIVERY_ELECTRIC                                             :電力車頭
-STR_LIVERY_MONORAIL                                             :單軌車頭
-STR_LIVERY_MAGLEV                                               :磁浮車頭
+STR_LIVERY_MONORAIL                                             :單軌鐵路機車
+STR_LIVERY_MAGLEV                                               :磁浮機車
 STR_LIVERY_DMU                                                  :柴聯車組
 STR_LIVERY_EMU                                                  :電聯車組
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :載客車廂 (蒸氣)
@@ -2135,7 +2135,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}否，�
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}透明度選項
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}切換車站標籤是否透明。按住 CTRL 點選可鎖定
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}切換車站標籤是否透明。按住 Ctrl 鍵點選此掣以鎖定狀態
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}切換樹木是否透明。按住 CTRL 點選可鎖定
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}切換房屋是否透明。按住 CTRL 點選可鎖定
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}切換工業是否透明。按住 CTRL 點選可鎖定
@@ -2145,6 +2145,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}切換�
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}切換供電線是否透明。按住 CTRL 點選可鎖定
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}切換裝載進度指示是否透明。按住 CTRL 點選可鎖定
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}讓物件完全隱藏，而非透明顯示
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}顯示運輸涵蓋範圍
@@ -2276,9 +2280,9 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}公車�
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}選擇公車站方向
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}貨運站方向
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}選擇貨運站方向
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}載客電車方向
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}載客電車站方向
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}選擇載客電車方向
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}載貨電車方向
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}載貨電車站方向
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}選擇載貨電車方向
 
 # Waterways toolbar (last two for SE only)
@@ -2346,7 +2350,7 @@ STR_OBJECT_CLASS_TRNS                                           :天線塔
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}樹木
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}選擇要種植的樹種
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}選擇要種植的樹種。無論您選擇了甚麼樹種，如所點擊的方格本身已經有樹，遊戲會在該方格加上一棵隨機樹種的樹
 STR_TREES_RANDOM_TYPE                                           :{BLACK}隨機種類樹木
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}種植隨機種類樹木。按 Shift 可切換種植／顯示預估的種植費用
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}隨機樹種
@@ -2730,7 +2734,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}錯誤：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}嚴重錯誤：{SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF 發生嚴重錯誤的處理方式：{}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}發生嚴重 NewGRF 錯誤的處理方式：{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} 跟由 OpenTTD 回報的 TTDPatch 版本不合
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} 只適合用於 TTD 版本 {STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} 必須跟 {STRING} 一起使用
@@ -2818,8 +2822,8 @@ STR_TOWN_POPULATION                                             :{BLACK}世界�
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (城市)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}人口：{ORANGE}{COMMA}{BLACK}  房屋：{ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}上月乘客：{ORANGE}{COMMA}{BLACK}  最多：{ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}上月郵件：{ORANGE}{COMMA}{BLACK}  最多：{ORANGE}{COMMA}
+STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}上月乘客數字：{ORANGE}{COMMA}{BLACK}  紀錄最高：{ORANGE}{COMMA}
+STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}上月郵件數量：{ORANGE}{COMMA}{BLACK}  紀錄最高：{ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}市鎮成長所需貨物：
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}還需要 {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} 必須是冬天
@@ -3044,8 +3048,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}修改�
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}購買 25% 公司股份
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}出售 25% 公司股份
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}購買這間公司的 25% 股份。按住 Shift 點選則只會顯示預估的購買費用
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}出售這間公司的 25% 股份。按住 Shift 點選則只會顯示預估的售價
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}購入這所公司的 25% 股份。按住 Shift 點選以顯示預估的購買費用而不作購入
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}出售這所公司的 25% 股份。按住 Shift 點選以顯示預估的出售所得而不賣出任何股份
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :公司名稱
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :總經理姓名
@@ -3130,7 +3134,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :送到機棚
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}點選可停止清單中所有交通工具
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}點選可起動清單内所有交通工具
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}{COMMA} 組交通工具的共用指令
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}由 {COMMA} 組交通工具共用的指令清單
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :所有列車
@@ -3149,7 +3153,7 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}移除�
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}重新命名群組
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}點選可保護此群組排除在全域自動替換設定之外
 
-STR_GROUP_ADD_SHARED_VEHICLE                                    :加入共享交通工具
+STR_GROUP_ADD_SHARED_VEHICLE                                    :加入共享指令的交通工具
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有交通工具
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}重新命名群組
@@ -3265,7 +3269,7 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}複製�
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}複製飛機
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}這會購買一列相同的列車，包含所有車廂。按下按鈕之後再點選機廠内外的其他列車，按住 CTRL 點選還可共享指令，按住 Shift 點選則只會顯示預估的購買費用
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}這會購買一部相同的車輛。按下按鈕之後再點選於車廠内或外的車輛，按住 CTRL 點選還可共享指令，按住 Shift 點選則只會顯示預估的購買費用
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}點選此按鈕，然後點選任何一部於車廠内或外的車輛，會購買一部屬性與指令清單皆相同的車輛。如按住 Ctrl 掣點選車輛，新車輛會與原有車輛共享指令；如按住 Shift 掣點選車輛，系統會顯示預估的購買費用但不作任何購買
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}這會購買一艘相同的船舶。按下按鈕之後再點選船塢内或外的船舶，按住 CTRL 點選還可共享指令，按住 Shift 點選則只會顯示預估的購買費用
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}這會購買一架相同的飛機。按下此鈕之後再點選機棚内或外的飛機，按住 CTRL 點選還可共享指令，按住 Shift 點選則只會顯示預估的購買費用
 
@@ -3581,10 +3585,10 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}前往
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :前往最近的機廠
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :前往最近的機棚
 STR_ORDER_CONDITIONAL                                           :條件式跳躍指令
-STR_ORDER_SHARE                                                 :分享命令
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}在選定的指令前插入新指令，或在最後新增指令。按住 Ctrl 於車站時可直接設為「滿載任一種類客貨」，於號誌站時則為「直達」，於機廠時則為「維護」
+STR_ORDER_SHARE                                                 :分享指令清單
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}在選定的指令前插入新指令，或在指令表的末尾新增指令。如按住 Ctrl 鍵再加入指令，點選車站會新增「滿載任一種類客貨」指令、點選號誌站會新增「直達」指令，而點選機廠則會新增「維護」指令。點選其他車輛以複製其指令清單，按住 Ctrl 鍵或在選取「分享指令清單」後點選其他車輛以分享指令清單。如指令清單上有任何指令涉及機廠，則該車輛不受自動維護功能影響
 
-STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}顯示所有共用這份指令的交通工具
+STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}顯示所有共享此指令清單的交通工具
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :經過 {WAYPOINT}
@@ -3702,7 +3706,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}自動�
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}實際時間
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}表定時間
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}切換顯示實際時間或表定時間
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}切換顯示 (根據實際情況的) 預期時間 或 表定時間
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :到:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :開:
@@ -4114,7 +4118,7 @@ STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}無法�
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}無法修改群組名稱...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}無法移除此群組的所有交通工具...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}無法加入交通工具到此群組...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}無法加入共享的交通工具到此群組...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}無法加入共享指令的交通工具到此群組...
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}前方有列車
@@ -4187,9 +4191,9 @@ STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}無法�
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}無法跳過指定的命令...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... 交通工具無法前往所有車站
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... 交通工具無法前往此車站
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... 一個分享這個指令的交通工具無法抵達車站
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... 一部共用這個指令清單的交通工具無法前往該站
 
-STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}無法共享指令清單...
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}無法分享指令清單...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}無法停止分享命令清單...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}無法複製指令清單...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... 與上個目的地相距太遠
