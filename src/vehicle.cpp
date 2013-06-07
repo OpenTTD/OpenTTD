@@ -2125,7 +2125,7 @@ void Vehicle::RefreshNextHopsStats()
 		/* Make sure the first order is a station order. */
 		first = this->orders.list->GetNextStoppingOrder(this, first, hops++);
 		if (first == NULL) return;
-	} while (!first->IsType(OT_GOTO_STATION));
+	} while (!first->IsType(OT_GOTO_STATION) && !first->IsType(OT_IMPLICIT));
 	hops = 0;
 
 	const Order *cur = first;
@@ -2181,7 +2181,7 @@ void Vehicle::RefreshNextHopsStats()
 			}
 		}
 
-		if (next->IsType(OT_GOTO_STATION)) {
+		if (next->IsType(OT_GOTO_STATION) || next->IsType(OT_IMPLICIT)) {
 			StationID next_station = next->GetDestination();
 			Station *st = Station::GetIfValid(cur->GetDestination());
 			if (st != NULL && next_station != INVALID_STATION && next_station != st->index) {
