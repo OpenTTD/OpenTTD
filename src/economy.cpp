@@ -1299,6 +1299,7 @@ static void ReserveConsist(Station *st, Vehicle *u, CargoArray *consist_capleft)
 				continue;
 			}
 
+			assert(v->cargo_cap >= v->cargo.RemainingCount());
 			uint cap = v->cargo_cap - v->cargo.RemainingCount();
 
 			/* Nothing to do if the vehicle is full */
@@ -1398,6 +1399,12 @@ static void LoadUnloadVehicle(Vehicle *front)
 					v->cargo.Reassign(v->cargo.ActionCount(VehicleCargoList::MTA_DELIVER),
 							VehicleCargoList::MTA_DELIVER, VehicleCargoList::MTA_TRANSFER);
 				} else {
+					uint new_remaining = v->cargo.RemainingCount() + v->cargo.ActionCount(VehicleCargoList::MTA_DELIVER);
+					if (v->cargo_cap < new_remaining) {
+						/* Return some of the reserved cargo to not overload the vehicle. */
+						v->cargo.Return(new_remaining - v->cargo_cap, &ge->cargo);
+					}
+
 					/* Keep instead of delivering. This may lead to no cargo being unloaded, so ...*/
 					v->cargo.Reassign(v->cargo.ActionCount(VehicleCargoList::MTA_DELIVER),
 							VehicleCargoList::MTA_DELIVER, VehicleCargoList::MTA_KEEP);
