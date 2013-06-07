@@ -232,6 +232,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}關閉�
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}視窗標題 - 點此拖曳可移動視窗
 STR_TOOLTIP_SHADE                                               :{BLACK}陰影視窗 - 只顯示標題列
 STR_TOOLTIP_DEBUG                                               :{BLACK}顯示 NewGRF 除錯資訊
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}將視窗改回預設大小。按下 Ctrl 鍵點選此掣則將視窗現時大小定為預設
 STR_TOOLTIP_STICKY                                              :{BLACK}標記此視窗使其不受「關閉所有視窗」掣影響。按住 Ctrl 鍵點選此掣以將選項定為常態
 STR_TOOLTIP_RESIZE                                              :{BLACK}點選並拖曳可縮放視窗大小
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}切換大／小視窗
@@ -375,6 +376,7 @@ STR_FILE_MENU_EXIT                                              :離開
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :世界地圖
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :打開新視野
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :貨物流程索引
 STR_MAP_MENU_SIGN_LIST                                          :標誌清單
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :市鎮目錄
@@ -662,17 +664,20 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}地圖 -
 STR_SMALLMAP_TYPE_CONTOURS                                      :地形
 STR_SMALLMAP_TYPE_VEHICLES                                      :交通工具
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :工業
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :貨物流動
 STR_SMALLMAP_TYPE_ROUTES                                        :路線
 STR_SMALLMAP_TYPE_VEGETATION                                    :植被
 STR_SMALLMAP_TYPE_OWNERS                                        :所有人
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}於地圖上顯示地形輪廓
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}於地圖上顯示交通工具
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}於地圖上顯示各種工業
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}在地圖上顯示貨物流動情況
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}於地圖上顯示運輸路線
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}於地圖上顯示植被
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}於地圖上顯示土地所有人
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}點選工業型態以切換顯示。按住Ctrl再次點選以啟用所有工業型態。
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}點選公司以切換顯示公司財產。按住Ctrl再點選可以啟用所有公司。
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}點選一種貨物以切換其屬性顯示。按下 Ctrl 鍵點選貨物則僅顯示該貨物的屬性而停止顯示其他貨物。再一次按下 Ctrl 鍵點選則會顯示所有貨物
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}道路
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}鐵路
@@ -706,6 +711,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}於地圖上開關市鎮名稱
 STR_SMALLMAP_CENTER                                             :{BLACK}將小地圖移到目前地點
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}全部停用
@@ -716,6 +722,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}地圖�
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}切換高度圖顯示
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}不要在地圖上顯示公司財產
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}在地圖上顯示所有公司財產
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}在地圖上不顯示任何貨物種類
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}在地圖上顯示所有貨物種類
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}顯示上次訊息／新聞報告
@@ -834,10 +842,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}視野 {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}將視窗視野移到主視野
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}將主視野的視野位置複製到此視窗視野
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}將主視野移到視窗視野
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}將此視窗的視野位置移到主視野
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}複製至本視野
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}將主視野的位置複製到此視窗
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}貼上至主視野
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}將主視野位置移到此視窗的中央位置
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}遊戲選項
@@ -1605,6 +1613,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... 本�
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... 正在忽略 '{STRING}' 基本圖形集： 找不到檔案
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... 正在忽略 '{STRING}' 基本音效集： 找不到檔案
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... 正在忽略 '{STRING}' 基本音樂集： 找不到檔案
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}記憶體不足
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}無法編配 {BYTES} 作為子畫面快取。子畫面快取的大小已降至 {BYTES}。這將會降低 OpenTTD 的效能。如欲減低記憶體要求，您可以嘗試停用 32bpp 圖形 及／或 減少放大倍數
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1781,6 +1791,10 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}改變�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}多人遊戲
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}已啟用宣傳
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}選擇是否在互聯網上宣傳此遊戲
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :否
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :是
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}玩家名稱：
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}這是其他玩家辨認您的名稱
 
@@ -1839,6 +1853,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}遊戲�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}設定密碼
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}如果您不想讓大眾連線的話，可以用密碼保護遊戲
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :否
+STR_NETWORK_START_SERVER_ADVERTISED                             :是
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} 玩家
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}用戶端上限：
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}選擇連線人數上限，但不是每個名額都要有人連線
@@ -2077,6 +2093,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}選擇�
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}將所有已下載項目的升級檔標示為要下載
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}取消全選
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}將所有內容標示為不要下載
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}尋找外面的網站
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}在與 OpenTTD 無聯繫的網站搜尋沒有納入 OpenTTD 內容服務的內容
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}您正在離開 OpenTTD!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}在外面的網站下載內容的規則及條款可能有異。{}您將需要參照外面的網站以取得在 OpenTTD 安裝有關內容的資訊。{}您要繼續嗎？
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}過濾條件 (標籤／名稱)：
 STR_CONTENT_OPEN_URL                                            :{BLACK}訪問網站
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}請造訪有關網站以取得此內容
@@ -2147,8 +2167,15 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}切換�
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}讓物件完全隱藏，而非透明顯示
 
 # Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}貨物流程索引
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}全部
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}無
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}選擇所顯示的公司
 
 # Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}未使用
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}飽和
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}超載
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}顯示運輸涵蓋範圍
@@ -2577,6 +2604,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}為存�
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}產生世界
 STR_MAPGEN_MAPSIZE                                              :{BLACK}地圖大小：
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}選擇地圖大小（單位為方格）。實際可供使用的方格數量會比所設定的值略低
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}市鎮數量：
 STR_MAPGEN_DATE                                                 :{BLACK}日期：
@@ -2763,6 +2791,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}您將�
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}無法新增檔案：GRF ID 重複
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}找不到符合的檔案 (已載入相容的 GRF)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}無法加入檔案：已達到 NewGRF 檔案數量上限
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}已為找不到的檔案載入相容的 GRF
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}找不到的 GRF 檔案已被停用
@@ -2825,7 +2854,7 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}人口�
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}上月乘客數字：{ORANGE}{COMMA}{BLACK}  紀錄最高：{ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}上月郵件數量：{ORANGE}{COMMA}{BLACK}  紀錄最高：{ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}市鎮成長所需貨物：
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}還需要 {ORANGE}{STRING}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}需要 {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} 必須是冬天
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} 已運送
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (仍然需要)
@@ -2878,6 +2907,8 @@ STR_GOALS_CAPTION                                               :{WHITE}目標
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}全局目標:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- 當前無目標 -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}公司目標:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}點選目標以將有關工業 / 市鎮或方格置於畫面中央。按下 Ctrl 鍵並點選目標以開啟一個以有關工業 / 市鎮或方格為中心的新視野
 
@@ -2931,7 +2962,8 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}無任�
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}等候：{WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} 轉送自 {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} 來自 {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}(已預留裝載{CARGO_SHORT})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}接受貨物
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}顯示接受的貨物種類
@@ -2942,6 +2974,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}評價
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}顯示車站評價
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}按月供應量與本地評比：
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :慘不忍睹
@@ -3085,6 +3119,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}上月�
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} (運送了 {COMMA}%)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}將工業置於畫面中央。按住 Ctrl 點選可於工業位置開啟新視窗視野
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}產出等級：{YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}該工業已宣佈關閉！
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}需要：{YELLOW}{STRING}{STRING}
@@ -3393,7 +3428,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}目前�
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}正在裝卸貨物
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}正在離開
-STR_VEHICLE_STATUS_CRASHED                                      :{RED}撞毀！
+STR_VEHICLE_STATUS_CRASHED                                      :{RED}已撞毀！
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}故障
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}停止
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}正在停止，{VELOCITY}
@@ -3433,21 +3468,25 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}載重�
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}載重：{LTBLUE}{WEIGHT_SHORT} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最高速度：{LTBLUE}{VELOCITY} {BLACK}最大牽引力：{LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年盈利：{LTBLUE}{CURRENCY_LONG} (去年盈利：{CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}可靠度：{LTBLUE}{COMMA}%  {BLACK}上次維護後的故障率：{LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}可靠度：{LTBLUE}{COMMA}%  {BLACK}上次維護後的故障次數：{LTBLUE}{COMMA}
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}興建：{LTBLUE}{NUM}{BLACK} 價值：{LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}興建於：{LTBLUE}{NUM}{BLACK} 價值：{LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}容量：{LTBLUE}無{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}容量：{LTBLUE}{CARGO_LONG}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}容量：{LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}容量：{LTBLUE}{CARGO_LONG}，{CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}轉運進帳：{LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}轉運潛在收入：{LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}維護間隔：{LTBLUE}{COMMA} 天{BLACK}   上次維護：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}維護間隔：{LTBLUE}{COMMA}%{BLACK}   上次維護：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}以 10 為單位延長維護間隔。 按住 Ctrl 點選可以 5 為單位
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}以 10 為單位縮短維護間隔。 按住 Ctrl 點選可以 5 為單位
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}更改檢修週期所用單位
+STR_VEHICLE_DETAILS_DEFAULT                                     :預設
+STR_VEHICLE_DETAILS_DAYS                                        :日數
+STR_VEHICLE_DETAILS_PERCENT                                     :百分比
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}命名列車
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}命名車輛
@@ -3743,7 +3782,7 @@ STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}檢查�
 
 STR_ERROR_AI_NO_AI_FOUND                                        :找不到適合的 AI 可以載入。{}此 AI 是虛擬 AI，沒有任何效果。{}您可以透過「線上內容」系統下載更多 AI。
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}正在運行中的其中一個 AI 發生錯誤。請打開「AI 除錯」視窗後擷取螢幕圖片，將此問題回報給 AI 作者。
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/遊戲腳本除錯視窗只可於伺服器使用
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/只可於伺服器打開遊戲腳本除錯視窗
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI /遊戲腳本的組態
@@ -3820,6 +3859,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}收入：{CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}轉運：{CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}轉運：{CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}轉運：{CURRENCY_LONG}{WHITE} / {GREEN}收入：{CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}轉運：{CURRENCY_LONG}{WHITE} / {GREEN}收入：{CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}轉運：{CURRENCY_LONG}{WHITE} / {RED}花費：{CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}轉運：{CURRENCY_LONG}{WHITE} / {RED}花費：{CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}預估費用：{CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}預估收入：{CURRENCY_LONG}
 
@@ -4554,7 +4597,7 @@ STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug �
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake 載客渡輪
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate 貨輪
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell 貨輪
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :MightyMover 貨輪
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover 貨輪
 STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut 貨輪
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :ViColeman Count
