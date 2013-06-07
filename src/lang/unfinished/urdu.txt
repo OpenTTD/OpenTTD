@@ -1092,8 +1092,8 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :گاڑیوں ک
 STR_CONFIG_SETTING_AUTOSCROLL                                   :ونڈو کو پین کرو جب ماؤس کنارے پر ہو: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :مقامی اتھارٹی کی رشوت کی اجازت دیں: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :خصوصی نقل و حمل کے حقوق کو خریدنے کی اجازت: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :فنڈنگ ​​عمارتوں کی اجازت: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :مقامی سڑکوں کی تعمیر نو فنڈنگ ​​کی اجازت: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :فنڈنگ عمارتوں کی اجازت: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :مقامی سڑکوں کی تعمیر نو فنڈنگ کی اجازت: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :دوسری کمپنیوں کو پیسے بھیجنے کی اجازت: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :مال گاڑیوں کو وزنی دکھانے کے لئے وزن کا ضارب: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :ہوائی جہازوں کے حادثوں کی تعداد: {STRING}
