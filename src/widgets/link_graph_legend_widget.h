@@ -12,6 +12,8 @@
 #ifndef WIDGETS_LINKGRAPH_LEGEND_WIDGET_H
 #define WIDGETS_LINKGRAPH_LEGEND_WIDGET_H
 
+#include "../cargo_type.h"
+
 /** Widgets of the WC_LINKGRAPH_LEGEND. */
 
 enum LinkGraphLegendWidgets {

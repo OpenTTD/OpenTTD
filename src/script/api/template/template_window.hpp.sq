@@ -113,6 +113,8 @@ namespace SQConvert {
 	template <> inline int Return<ScriptWindow::IndustryCargoesWidgets>(HSQUIRRELVM vm, ScriptWindow::IndustryCargoesWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::SelectGameIntroWidgets GetParam(ForceType<ScriptWindow::SelectGameIntroWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::SelectGameIntroWidgets)tmp; }
 	template <> inline int Return<ScriptWindow::SelectGameIntroWidgets>(HSQUIRRELVM vm, ScriptWindow::SelectGameIntroWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptWindow::LinkGraphLegendWidgets GetParam(ForceType<ScriptWindow::LinkGraphLegendWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::LinkGraphLegendWidgets)tmp; }
+	template <> inline int Return<ScriptWindow::LinkGraphLegendWidgets>(HSQUIRRELVM vm, ScriptWindow::LinkGraphLegendWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::MainWidgets GetParam(ForceType<ScriptWindow::MainWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::MainWidgets)tmp; }
 	template <> inline int Return<ScriptWindow::MainWidgets>(HSQUIRRELVM vm, ScriptWindow::MainWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::LandInfoWidgets GetParam(ForceType<ScriptWindow::LandInfoWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::LandInfoWidgets)tmp; }

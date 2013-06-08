@@ -68,6 +68,7 @@
 #include "../../widgets/vehicle_widget.h"
 #include "../../widgets/viewport_widget.h"
 #include "../../widgets/waypoint_widget.h"
+#include "../../widgets/link_graph_legend_widget.h"
 
 /**
  * Class that handles window interaction. A Window in OpenTTD has two imporant
@@ -744,6 +745,12 @@ public:
 		 *   - 0 = #SpriteAlignerWidgets
 		 */
 		WC_SPRITE_ALIGNER                            = ::WC_SPRITE_ALIGNER,
+
+		/**
+		 * Linkgraph legend; Window numbers:
+		 *   - 0 = #LinkGraphWidgets
+		 */
+		WC_LINKGRAPH_LEGEND                          = ::WC_LINKGRAPH_LEGEND,
 
 		WC_INVALID                                   = ::WC_INVALID,                                   ///< Invalid window.
 	};
@@ -1483,6 +1490,25 @@ public:
 		WID_SGI_EXIT                                 = ::WID_SGI_EXIT,                                 ///< Exit button.
 	};
 
+	/* automatically generated from ../../widgets/link_graph_legend_widget.h */
+	/** Widgets of the WC_LINKGRAPH_LEGEND. */
+	enum LinkGraphLegendWidgets {
+		WID_LGL_CAPTION                              = ::WID_LGL_CAPTION,                              ///< Caption widget.
+		WID_LGL_SATURATION                           = ::WID_LGL_SATURATION,                           ///< Saturation legend.
+		WID_LGL_SATURATION_FIRST                     = ::WID_LGL_SATURATION_FIRST,
+		WID_LGL_SATURATION_LAST                      = ::WID_LGL_SATURATION_LAST,
+		WID_LGL_COMPANIES                            = ::WID_LGL_COMPANIES,                            ///< Company selection widget.
+		WID_LGL_COMPANY_FIRST                        = ::WID_LGL_COMPANY_FIRST,
+		WID_LGL_COMPANY_LAST                         = ::WID_LGL_COMPANY_LAST,
+		WID_LGL_COMPANIES_ALL                        = ::WID_LGL_COMPANIES_ALL,
+		WID_LGL_COMPANIES_NONE                       = ::WID_LGL_COMPANIES_NONE,
+		WID_LGL_CARGOES                              = ::WID_LGL_CARGOES,                              ///< Cargo selection widget.
+		WID_LGL_CARGO_FIRST                          = ::WID_LGL_CARGO_FIRST,
+		WID_LGL_CARGO_LAST                           = ::WID_LGL_CARGO_LAST,
+		WID_LGL_CARGOES_ALL                          = ::WID_LGL_CARGOES_ALL,
+		WID_LGL_CARGOES_NONE                         = ::WID_LGL_CARGOES_NONE,
+	};
+
 	/* automatically generated from ../../widgets/main_widget.h */
 	/** Widgets of the #MainWindow class. */
 	enum MainWidgets {
@@ -2141,11 +2167,13 @@ public:
 		WID_SM_MAP_BORDER                            = ::WID_SM_MAP_BORDER,                            ///< Border around the smallmap.
 		WID_SM_MAP                                   = ::WID_SM_MAP,                                   ///< Panel containing the smallmap.
 		WID_SM_LEGEND                                = ::WID_SM_LEGEND,                                ///< Bottom panel to display smallmap legends.
+		WID_SM_BLANK                                 = ::WID_SM_BLANK,                                 ///< Empty button as placeholder.
 		WID_SM_ZOOM_IN                               = ::WID_SM_ZOOM_IN,                               ///< Button to zoom in one step.
 		WID_SM_ZOOM_OUT                              = ::WID_SM_ZOOM_OUT,                              ///< Button to zoom out one step.
 		WID_SM_CONTOUR                               = ::WID_SM_CONTOUR,                               ///< Button to select the contour view (height map).
 		WID_SM_VEHICLES                              = ::WID_SM_VEHICLES,                              ///< Button to select the vehicles view.
 		WID_SM_INDUSTRIES                            = ::WID_SM_INDUSTRIES,                            ///< Button to select the industries view.
+		WID_SM_LINKSTATS                             = ::WID_SM_LINKSTATS,                             ///< Button to select the link stats view.
 		WID_SM_ROUTES                                = ::WID_SM_ROUTES,                                ///< Button to select the routes view.
 		WID_SM_VEGETATION                            = ::WID_SM_VEGETATION,                            ///< Button to select the vegetation view.
 		WID_SM_OWNERS                                = ::WID_SM_OWNERS,                                ///< Button to select the owners view.
