@@ -205,7 +205,7 @@ static void OnNewYear()
 	/* check if we reached the maximum year, decrement dates by a year */
 	} else if (_cur_year == MAX_YEAR + 1) {
 		Vehicle *v;
-		uint days_this_year;
+		int days_this_year;
 
 		_cur_year--;
 		days_this_year = IsLeapYear(_cur_year) ? DAYS_IN_LEAP_YEAR : DAYS_IN_YEAR;
