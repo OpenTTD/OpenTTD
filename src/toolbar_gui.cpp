@@ -161,6 +161,24 @@ public:
 
 /**
  * Pop up a generic text only menu.
+ * @param w Toolbar
+ * @param widget Toolbar button
+ * @param list List of items
+ * @param def Default item
+ */
+static void PopupMainToolbMenu(Window *w, int widget, DropDownList *list, int def)
+{
+	ShowDropDownList(w, list, def, widget, 0, true, true);
+	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+}
+
+/**
+ * Pop up a generic text only menu.
+ * @param w Toolbar
+ * @param widget Toolbar button
+ * @param string String for the first item in the menu
+ * @param count Number of items in the menu
+ * @param skip Hide first \a skip items in the menu
  */
 static void PopupMainToolbMenu(Window *w, int widget, StringID string, int count, int skip = 0)
 {
@@ -168,8 +186,7 @@ static void PopupMainToolbMenu(Window *w, int widget, StringID string, int count
 	for (int i = skip; i < count; i++) {
 		list->push_back(new DropDownListStringItem(string + i, i, false));
 	}
-	ShowDropDownList(w, list, skip, widget, 140, true, true);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	PopupMainToolbMenu(w, widget, list, skip);
 }
 
 /** Enum for the Company Toolbar's network related buttons */
@@ -202,8 +219,7 @@ static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
 		list->push_back(new DropDownListCompanyItem(c, false, HasBit(grey, c)));
 	}
 
-	ShowDropDownList(w, list, _local_company == COMPANY_SPECTATOR ? CTMN_CLIENT_LIST : (int)_local_company, widget, 240, true, true);
-	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+	PopupMainToolbMenu(w, widget, list, _local_company == COMPANY_SPECTATOR ? CTMN_CLIENT_LIST : (int)_local_company);
 }
 
 
@@ -413,20 +429,30 @@ enum MapMenuEntries {
 	MME_SHOW_EXTRAVIEWPORTS,
 	MME_SHOW_LINKGRAPH,
 	MME_SHOW_SIGNLISTS,
-	MME_SHOW_TOWNDIRECTORY,    ///< This entry is only used in Editor mode
-	MME_MENUCOUNT_NORMAL     = 4,
-	MME_MENUCOUNT_EDITOR     = 5,
+	MME_SHOW_TOWNDIRECTORY,
+	MME_SHOW_INDUSTRYDIRECTORY,
 };
 
 static CallBackFunction ToolbarMapClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_SMALL_MAP, STR_MAP_MENU_MAP_OF_WORLD, MME_MENUCOUNT_NORMAL);
+	DropDownList *list = new DropDownList();
+	list->push_back(new DropDownListStringItem(STR_MAP_MENU_MAP_OF_WORLD,            MME_SHOW_SMALLMAP,          false));
+	list->push_back(new DropDownListStringItem(STR_MAP_MENU_EXTRA_VIEW_PORT,         MME_SHOW_EXTRAVIEWPORTS,    false));
+	list->push_back(new DropDownListStringItem(STR_MAP_MENU_LINGRAPH_LEGEND,         MME_SHOW_LINKGRAPH,         false));
+	list->push_back(new DropDownListStringItem(STR_MAP_MENU_SIGN_LIST,               MME_SHOW_SIGNLISTS,         false));
+	PopupMainToolbMenu(w, WID_TN_SMALL_MAP, list, 0);
 	return CBF_NONE;
 }
 
 static CallBackFunction ToolbarScenMapTownDir(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TE_SMALL_MAP, STR_MAP_MENU_MAP_OF_WORLD, MME_MENUCOUNT_EDITOR);
+	DropDownList *list = new DropDownList();
+	list->push_back(new DropDownListStringItem(STR_MAP_MENU_MAP_OF_WORLD,            MME_SHOW_SMALLMAP,          false));
+	list->push_back(new DropDownListStringItem(STR_MAP_MENU_EXTRA_VIEW_PORT,         MME_SHOW_EXTRAVIEWPORTS,    false));
+	list->push_back(new DropDownListStringItem(STR_MAP_MENU_SIGN_LIST,               MME_SHOW_SIGNLISTS,         false));
+	list->push_back(new DropDownListStringItem(STR_TOWN_MENU_TOWN_DIRECTORY,         MME_SHOW_TOWNDIRECTORY,     false));
+	list->push_back(new DropDownListStringItem(STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, MME_SHOW_INDUSTRYDIRECTORY, false));
+	PopupMainToolbMenu(w, WID_TE_SMALL_MAP, list, 0);
 	return CBF_NONE;
 }
 
@@ -443,7 +469,8 @@ static CallBackFunction MenuClickMap(int index)
 		case MME_SHOW_EXTRAVIEWPORTS: ShowExtraViewPortWindow(); break;
 		case MME_SHOW_LINKGRAPH:      ShowLinkGraphLegend();     break;
 		case MME_SHOW_SIGNLISTS:      ShowSignList();            break;
-		case MME_SHOW_TOWNDIRECTORY:  if (_game_mode == GM_EDITOR) ShowTownDirectory(); break;
+		case MME_SHOW_TOWNDIRECTORY:  ShowTownDirectory();       break;
+		case MME_SHOW_INDUSTRYDIRECTORY: ShowIndustryDirectory(); break;
 	}
 	return CBF_NONE;
 }
