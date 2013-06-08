@@ -374,20 +374,19 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :종료
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :전체 지도 보기
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :외부 화면
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :화물 흐름 범례
 STR_MAP_MENU_SIGN_LIST                                          :팻말 목록
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :도시 목록
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :도시 건설
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :보조금
-STR_GRAPH_MENU_GOAL                                             :현재 목표
 ############ range ends here
 
 ############ range for graph menu starts
@@ -400,6 +399,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :화물 운송�
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_GOAL                                             :현재 목표
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :회사 성취도 순위
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :상세 성취도
 STR_GRAPH_MENU_HIGHSCORE                                        :고득점 순위표
@@ -1578,7 +1578,7 @@ STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}컴퓨�
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}자동 교체
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}점검
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}경로
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}열차
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{G=f}{ORANGE}열차
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}도시
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}산업시설
 
@@ -3349,7 +3349,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}가격:
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY} 항속거리: {COMMA} 칸{}수용량: {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING}{G 0 "을" "를"} {STRING}{G 1 "으" ""}로 교체
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} 교체 - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :{G=f}열차
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :{G=f}자동차
 STR_REPLACE_VEHICLE_SHIP                                        :{G=m}선박
