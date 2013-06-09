@@ -649,6 +649,7 @@ The OpenTTD team (in alphabetical order):
   Albert Hofkamp (Alberth)        - GUI expert
   Jean-François Claeys (Belugas)  - GUI, newindustries and more
   Matthijs Kooijman (blathijs)    - Pathfinder-guru, pool rework
+  Ulf Hermann (fonsinchen)        - Cargo Distribution
   Christoph Elsenhans (frosch)    - General coding
   Loïc Guilloux (glx)             - Windows Expert
   Michael Lutz (michi_cc)         - Path based signals
