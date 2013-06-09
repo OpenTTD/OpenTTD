@@ -264,7 +264,7 @@ CommandCost CmdShowStoryPage(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	if (flags & DC_EXEC) {
 		StoryPage *g = StoryPage::Get(p1);
-		if ((g->company != INVALID_COMPANY && g->company == _local_company) || (g->company == INVALID_COMPANY && Company::IsValidID(_local_company))) ShowStoryBook(p1);
+		if ((g->company != INVALID_COMPANY && g->company == _local_company) || (g->company == INVALID_COMPANY && Company::IsValidID(_local_company))) ShowStoryBook(_local_company, p1);
 	}
 
 	return CommandCost();

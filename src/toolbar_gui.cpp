@@ -656,7 +656,7 @@ static CallBackFunction MenuClickLeague(int index)
 {
 	switch (index) {
 		case 0: ShowGoalsList();               break;
-		case 1: ShowStoryBook();               break;
+		case 1: ShowStoryBook(_local_company); break;
 		case 2: ShowCompanyLeagueTable();      break;
 		case 3: ShowPerformanceRatingDetail(); break;
 		case 4: ShowHighscoreTable();          break;

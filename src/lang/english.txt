@@ -2975,7 +2975,8 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click on service to centre main view on industry/town. Ctrl+Click opens a new viewport on industry/town location
 
 # Story book window
-STR_STORY_BOOK_CAPTION                                          :{WHITE}Story Book
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Story Book
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Global Story Book
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{RAW_STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Page {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Jump to a specific page by selecting it in this drop down list.

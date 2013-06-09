@@ -24,6 +24,7 @@
 #include "goal_base.h"
 #include "viewport_func.h"
 #include "window_func.h"
+#include "company_base.h"
 
 #include "widgets/story_widget.h"
 
@@ -107,7 +108,7 @@ protected:
 	 */
 	bool IsPageAvailable(const StoryPage *page) const
 	{
-		return page->company == INVALID_COMPANY || page->company == _local_company;
+		return page->company == INVALID_COMPANY || page->company == this->window_number;
 	}
 
 	/**
@@ -460,10 +461,21 @@ public:
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget != WID_SB_SEL_PAGE) return;
-
-		StoryPage *page = this->GetSelPage();
-		SetDParamStr(0, page != NULL && page->title != NULL ? page->title : this->selected_generic_title);
+		switch (widget) {
+			case WID_SB_SEL_PAGE: {
+				StoryPage *page = this->GetSelPage();
+				SetDParamStr(0, page != NULL && page->title != NULL ? page->title : this->selected_generic_title);
+				break;
+			}
+			case WID_SB_CAPTION:
+				if (this->window_number == INVALID_COMPANY) {
+					SetDParam(0, STR_STORY_BOOK_SPECTATOR_CAPTION);
+				} else {
+					SetDParam(0, STR_STORY_BOOK_CAPTION);
+					SetDParam(1, this->window_number);
+				}
+				break;
+		}
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -697,7 +709,7 @@ GUIStoryPageElementList::SortFunction * const StoryBookWindow::page_element_sort
 static const NWidgetPart _nested_story_book_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_SB_CAPTION), SetDataTip(STR_STORY_BOOK_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_SB_CAPTION), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
@@ -726,11 +738,13 @@ static WindowDesc _story_book_desc(
 	_nested_story_book_widgets, lengthof(_nested_story_book_widgets)
 );
 
-void ShowStoryBook(uint16 page_id)
+void ShowStoryBook(CompanyID company, uint16 page_id)
 {
-	StoryBookWindow *w = AllocateWindowDescFront<StoryBookWindow>(&_story_book_desc, 0);
+	if (!Company::IsValidID(company)) company = (CompanyID)INVALID_COMPANY;
+
+	StoryBookWindow *w = AllocateWindowDescFront<StoryBookWindow>(&_story_book_desc, company);
 	if (page_id != INVALID_STORY_PAGE) {
-		if (w == NULL) w = (StoryBookWindow *)FindWindowById(WC_STORY_BOOK, 0);
+		if (w == NULL) w = (StoryBookWindow *)FindWindowById(WC_STORY_BOOK, company);
 		w->SetSelectedPage(page_id);
 	}
 }
