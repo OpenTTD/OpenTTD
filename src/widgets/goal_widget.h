@@ -15,6 +15,7 @@
 
 /** Widgets of the #GoalListWindow class. */
 enum GoalListWidgets {
+	WID_GOAL_CAPTION,   ///< Caption of the window.
 	WID_GOAL_GOAL,      ///< Goal text column of the goal list.
 	WID_GOAL_PROGRESS,  ///< Goal progress column of the goal list.
 	WID_GOAL_SCROLLBAR, ///< Scrollbar of the goal list.

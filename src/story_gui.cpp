@@ -405,7 +405,7 @@ protected:
 				break;
 
 			case SPET_GOAL:
-				ShowGoalsList();
+				ShowGoalsList((CompanyID)this->window_number);
 				break;
 
 			default:

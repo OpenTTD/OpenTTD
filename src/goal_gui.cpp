@@ -20,6 +20,7 @@
 #include "goal_base.h"
 #include "core/geometry_func.hpp"
 #include "company_func.h"
+#include "company_base.h"
 #include "command_func.h"
 
 #include "widgets/goal_widget.h"
@@ -35,6 +36,18 @@ struct GoalListWindow : Window {
 		this->vscroll = this->GetScrollbar(WID_GOAL_SCROLLBAR);
 		this->FinishInitNested(window_number);
 		this->OnInvalidateData(0);
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget != WID_GOAL_CAPTION) return;
+
+		if (this->window_number == INVALID_COMPANY) {
+			SetDParam(0, STR_GOALS_SPECTATOR_CAPTION);
+		} else {
+			SetDParam(0, STR_GOALS_CAPTION);
+			SetDParam(1, this->window_number);
+		}
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -64,7 +77,7 @@ struct GoalListWindow : Window {
 		if (y < 0) return;
 
 		FOR_ALL_GOALS(s) {
-			if (s->company == _local_company) {
+			if (s->company == this->window_number) {
 				y--;
 				if (y == 0) {
 					this->HandleClick(s);
@@ -120,7 +133,7 @@ struct GoalListWindow : Window {
 		FOR_ALL_GOALS(s) {
 			if (s->company == INVALID_COMPANY) {
 				num_global++;
-			} else if (s->company == _local_company) {
+			} else if (s->company == this->window_number) {
 				num_company++;
 			}
 		}
@@ -174,7 +187,7 @@ struct GoalListWindow : Window {
 		uint num = 0;
 		const Goal *s;
 		FOR_ALL_GOALS(s) {
-			if (global_section ? s->company == INVALID_COMPANY : s->company == _local_company && s->company != INVALID_COMPANY) {
+			if (global_section ? s->company == INVALID_COMPANY : s->company == this->window_number && s->company != INVALID_COMPANY) {
 				if (IsInsideMM(pos, 0, cap)) {
 					switch (widget) {
 						case WID_GOAL_GOAL:
@@ -197,7 +210,7 @@ struct GoalListWindow : Window {
 		}
 
 		if (widget == WID_GOAL_GOAL && num == 0) {
-			if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_GOALS_NONE);
+			if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, !global_section && this->window_number == INVALID_COMPANY ? STR_GOALS_SPECTATOR_NONE : STR_GOALS_NONE);
 			pos++;
 		}
 	}
@@ -244,7 +257,7 @@ struct GoalListWindow : Window {
 static const NWidgetPart _nested_goals_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN), SetDataTip(STR_GOALS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_GOAL_CAPTION), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
@@ -272,9 +285,11 @@ static WindowDesc _goals_list_desc(
 	_nested_goals_list_widgets, lengthof(_nested_goals_list_widgets)
 );
 
-void ShowGoalsList()
+void ShowGoalsList(CompanyID company)
 {
-	AllocateWindowDescFront<GoalListWindow>(&_goals_list_desc, 0);
+	if (!Company::IsValidID(company)) company = (CompanyID)INVALID_COMPANY;
+
+	AllocateWindowDescFront<GoalListWindow>(&_goals_list_desc, company);
 }
 
 
