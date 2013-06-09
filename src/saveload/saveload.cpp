@@ -36,6 +36,7 @@
 #include "../autoreplace_base.h"
 #include "../roadstop_base.h"
 #include "../linkgraph/linkgraph.h"
+#include "../linkgraph/linkgraphjob.h"
 #include "../statusbar_gui.h"
 #include "../fileio_func.h"
 #include "../gamelog.h"
@@ -1223,6 +1224,7 @@ static size_t ReferenceToInt(const void *obj, SLRefType rt)
 		case REF_ORDERLIST:      return ((const         OrderList*)obj)->index + 1;
 		case REF_STORAGE:        return ((const PersistentStorage*)obj)->index + 1;
 		case REF_LINK_GRAPH:     return ((const         LinkGraph*)obj)->index + 1;
+		case REF_LINK_GRAPH_JOB: return ((const      LinkGraphJob*)obj)->index + 1;
 		default: NOT_REACHED();
 	}
 }
@@ -1299,6 +1301,10 @@ static void *IntToReference(size_t index, SLRefType rt)
 		case REF_LINK_GRAPH:
 			if (LinkGraph::IsValidID(index)) return LinkGraph::Get(index);
 			SlErrorCorrupt("Referencing invalid LinkGraph");
+
+		case REF_LINK_GRAPH_JOB:
+			if (LinkGraphJob::IsValidID(index)) return LinkGraphJob::Get(index);
+			SlErrorCorrupt("Referencing invalid LinkGraphJob");
 
 		default: NOT_REACHED();
 	}

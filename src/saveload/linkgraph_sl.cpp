@@ -11,11 +11,15 @@
 
 #include "../stdafx.h"
 #include "../linkgraph/linkgraph.h"
+#include "../linkgraph/linkgraphjob.h"
+#include "../linkgraph/linkgraphschedule.h"
 #include "../settings_internal.h"
 #include "saveload.h"
 
 typedef LinkGraph::BaseNode Node;
 typedef LinkGraph::BaseEdge Edge;
+
+const SettingDesc *GetSettingDescription(uint index);
 
 static uint _num_nodes;
 
@@ -32,6 +36,69 @@ const SaveLoad *GetLinkGraphDesc()
 		 SLE_END()
 	};
 	return link_graph_desc;
+}
+
+/**
+ * Get a SaveLoad array for a link graph job. The settings struct is derived from
+ * the global settings saveload array. The exact entries are calculated when the function
+ * is called the first time.
+ * It's necessary to keep a copy of the settings for each link graph job so that you can
+ * change the settings while in-game and still not mess with current link graph runs.
+ * Of course the settings have to be saved and loaded, too, to avoid desyncs.
+ * @return Array of SaveLoad structs.
+ */
+const SaveLoad *GetLinkGraphJobDesc()
+{
+	static SmallVector<SaveLoad, 16> saveloads;
+	static const char *prefix = "linkgraph.";
+
+	/* Build the SaveLoad array on first call and don't touch it later on */
+	if (saveloads.Length() == 0) {
+		size_t offset_gamesettings = cpp_offsetof(GameSettings, linkgraph);
+		size_t offset_component = cpp_offsetof(LinkGraphJob, settings);
+
+		size_t prefixlen = strlen(prefix);
+
+		int setting = 0;
+		const SettingDesc *desc = GetSettingDescription(setting);
+		while (desc->save.cmd != SL_END) {
+			if (desc->desc.name != NULL && strncmp(desc->desc.name, prefix, prefixlen) == 0) {
+				SaveLoad sl = desc->save;
+				char *&address = reinterpret_cast<char *&>(sl.address);
+				address -= offset_gamesettings;
+				address += offset_component;
+				*(saveloads.Append()) = sl;
+			}
+			desc = GetSettingDescription(++setting);
+		}
+
+		const SaveLoad job_desc[] = {
+			SLE_VAR(LinkGraphJob, join_date,        SLE_UINT32),
+			SLE_VAR(LinkGraphJob, link_graph.index, SLE_UINT16),
+			SLE_END()
+		};
+
+		int i = 0;
+		do {
+			*(saveloads.Append()) = job_desc[i++];
+		} while (saveloads[saveloads.Length() - 1].cmd != SL_END);
+	}
+
+	return &saveloads[0];
+}
+
+/**
+ * Get a SaveLoad array for the link graph schedule.
+ * @return SaveLoad array for the link graph schedule.
+ */
+const SaveLoad *GetLinkGraphScheduleDesc()
+{
+	static const SaveLoad schedule_desc[] = {
+		SLE_LST(LinkGraphSchedule, schedule, REF_LINK_GRAPH),
+		SLE_LST(LinkGraphSchedule, running,  REF_LINK_GRAPH_JOB),
+		SLE_END()
+	};
+	return schedule_desc;
 }
 
 /* Edges and nodes are saved in the correct order, so we don't need to save their IDs. */
@@ -76,6 +143,18 @@ void SaveLoad_LinkGraph(LinkGraph &lg)
 }
 
 /**
+ * Save a link graph job.
+ * @param lgj LinkGraphJob to be saved.
+ */
+static void DoSave_LGRJ(LinkGraphJob *lgj)
+{
+	SlObject(lgj, GetLinkGraphJobDesc());
+	_num_nodes = lgj->Size();
+	SlObject(const_cast<LinkGraph *>(&lgj->Graph()), GetLinkGraphDesc());
+	SaveLoad_LinkGraph(const_cast<LinkGraph &>(lgj->Graph()));
+}
+
+/**
  * Save a link graph.
  * @param lg LinkGraph to be saved.
  */
@@ -105,6 +184,43 @@ static void Load_LGRP()
 }
 
 /**
+ * Load all link graph jobs.
+ */
+static void Load_LGRJ()
+{
+	int index;
+	while ((index = SlIterateArray()) != -1) {
+		if (!LinkGraphJob::CanAllocateItem()) {
+			/* Impossible as they have been present in previous game. */
+			NOT_REACHED();
+		}
+		LinkGraphJob *lgj = new (index) LinkGraphJob();
+		SlObject(lgj, GetLinkGraphJobDesc());
+		LinkGraph &lg = const_cast<LinkGraph &>(lgj->Graph());
+		SlObject(&lg, GetLinkGraphDesc());
+		lg.Init(_num_nodes);
+		SaveLoad_LinkGraph(lg);
+	}
+}
+
+/**
+ * Load the link graph schedule.
+ */
+static void Load_LGRS()
+{
+	SlObject(LinkGraphSchedule::Instance(), GetLinkGraphScheduleDesc());
+}
+
+/**
+ * Spawn the threads for running link graph calculations.
+ * Has to be done after loading as the cargo classes might have changed.
+ */
+void AfterLoadLinkGraphs()
+{
+	LinkGraphSchedule::Instance()->SpawnAll();
+}
+
+/**
  * Save all link graphs.
  */
 static void Save_LGRP()
@@ -116,6 +232,36 @@ static void Save_LGRP()
 	}
 }
 
+/**
+ * Save all link graph jobs.
+ */
+static void Save_LGRJ()
+{
+	LinkGraphJob *lgj;
+	FOR_ALL_LINK_GRAPH_JOBS(lgj) {
+		SlSetArrayIndex(lgj->index);
+		SlAutolength((AutolengthProc*)DoSave_LGRJ, lgj);
+	}
+}
+
+/**
+ * Save the link graph schedule.
+ */
+static void Save_LGRS()
+{
+	SlObject(LinkGraphSchedule::Instance(), GetLinkGraphScheduleDesc());
+}
+
+/**
+ * Substitute pointers in link graph schedule.
+ */
+static void Ptrs_LGRS()
+{
+	SlObject(LinkGraphSchedule::Instance(), GetLinkGraphScheduleDesc());
+}
+
 extern const ChunkHandler _linkgraph_chunk_handlers[] = {
-	{ 'LGRP', Save_LGRP, Load_LGRP, NULL,      NULL, CH_ARRAY | CH_LAST }
+	{ 'LGRP', Save_LGRP, Load_LGRP, NULL,      NULL, CH_ARRAY },
+	{ 'LGRJ', Save_LGRJ, Load_LGRJ, NULL,      NULL, CH_ARRAY },
+	{ 'LGRS', Save_LGRS, Load_LGRS, Ptrs_LGRS, NULL, CH_LAST  }
 };
