@@ -25,6 +25,7 @@
 #include "industry.h"
 #include "core/random_func.hpp"
 #include "linkgraph/linkgraph.h"
+#include "linkgraph/linkgraphschedule.h"
 
 #include "table/strings.h"
 
@@ -94,6 +95,7 @@ Station::~Station()
 		if (lg != NULL) {
 			lg->RemoveNode(this->goods[c].node);
 			if (lg->Size() == 0) {
+				LinkGraphSchedule::Instance()->Unqueue(lg);
 				delete lg;
 			}
 		}
