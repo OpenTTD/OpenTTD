@@ -645,7 +645,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 		this->querystrings[WID_NS_FILTER] = &this->filter_editbox;
 		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;
-		this->SetFocusedWidget(WID_NS_FILTER);
+		if (editable) this->SetFocusedWidget(WID_NS_FILTER);
 
 		this->avails.SetListing(this->last_sorting);
 		this->avails.SetFiltering(this->last_filtering);

@@ -1487,12 +1487,15 @@ make_cflags_and_ldflags() {
 			LDFLAGS="$LDFLAGS -mwin32"
 		fi
 		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ]; then
-			flags="$flags -mno-cygwin"
+			if [ $cc_version -lt 46 ]; then
+				flags="$flags -mno-cygwin"
+				LDFLAGS="$LDFLAGS -mno-cygwin"
+			fi
 
 			if [ "$enable_console" != "0" ]; then
-				LDFLAGS="$LDFLAGS -mno-cygwin -Wl,--subsystem,console"
+				LDFLAGS="$LDFLAGS -Wl,--subsystem,console"
 			else
-				LDFLAGS="$LDFLAGS -mno-cygwin -Wl,--subsystem,windows"
+				LDFLAGS="$LDFLAGS -Wl,--subsystem,windows"
 			fi
 
 			LIBS="$LIBS -lws2_32 -lwinmm -lgdi32 -ldxguid -lole32"
