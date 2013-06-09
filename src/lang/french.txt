@@ -4759,3 +4759,55 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symétrique
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymétrique
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuel
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Type de distribution pour les passagers: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Type de distribution pour le courrier: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Type de distribution pour les cargaisons de classe ARMOURED: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Type de distribution pour les autres classes de cargaison: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Précision de la distribution: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effet de la distance sur la demande: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Quantité de cargaison renvoyée en mode symétrique: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturation des chemins courts avant utilisation des chemins à forte capacité: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Distribution des cargaisons
+
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Cargaison reçue (mensuel) et qualité du service:
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+STR_STATION_VIEW_GROUP                                          :{BLACK}Regrouper par
+STR_STATION_VIEW_WAITING_STATION                                :Station: En attente
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Quantité: En attente
+STR_STATION_VIEW_PLANNED_STATION                                :Station: Prévu
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Quantité: Prévu
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} depuis {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} par {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} vers {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} station d'origine inconnue
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} vers toute station
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} par toute station
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} depuis cette station
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} en arrêt à cette station
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} vers cette station
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} sans arrêt
+STR_STATION_VIEW_GROUP_S_V_D                                    :Origine-Route-Destination
+STR_STATION_VIEW_GROUP_S_D_V                                    :Origine-Destination-Route
+STR_STATION_VIEW_GROUP_V_S_D                                    :Route-Origine-Destination
+STR_STATION_VIEW_GROUP_V_D_S                                    :Route-Destination-Origine
+STR_STATION_VIEW_GROUP_D_S_V                                    :Destination-Origine-Route
+STR_STATION_VIEW_GROUP_D_V_S                                    :Destination-Route-Origine
+
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Réactualiser le graphique de la distribution tous les {STRING} jours
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Intervalle entre la recalculation des liens du graphique. À chaque itération, une seule composante du graphique est recalculée. Donc, une valeur X pour ce réglage ne signifie pas que le graphique est réactualisé entièrement tous les X jours. Plus l'intervalle est court, plus de temps CPU est nécessaire pour la recalculation. Plus il est long, et plus de temps sera nécessaire pour que la distribution s'effectue sur de nouvelles routes.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Durée maximale de la réactualisation du graphique (en jours): {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Durée maximale (en jours) de la réactualisation d'une composante du graphique. À chaque itération, un thread est initié, qui a une durée maximale définie par ce réglage. Plus celui-ci est court, plus la probabilité que le thread ne termine pas sa tâche à temps est élevée. Le jeu s'interrompt alors jusqu'à la fin de la recalculation ("lag"). Plus le réglage est long, et moins rapidement la distribution sera réactualisée en cas de changement de routes.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symétrique" signifie qu'autant de passagers iront d'une station A vers une station B, que de la station B vers la station A. "asymétrique" signifie qu'un nombre arbitraire de passagers peut être envoyé dans les deux directions. "manuel" signifie qu'aucune distribution n'est mise en place pour les passagers.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symétrique" signifie qu'autant de courrier ira d'une station A vers une station B, que de la station B vers la station A. "asymétrique" signifie qu'une quantité arbitraire de courrier peut être envoyée dans les deux directions. "manuel" signifie qu'aucune distribution n'est mise en place pour le courrier.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La classe de cargaison ARMOURED contient des biens de valeur dans les climats tempéré et subtropical, et de l'or dans le climat subarctique. Les NewGRFs peuvent changer ça. "symétrique" signifie qu'autant de ces cargaisons iront d'une station A vers une station B, que de la station B vers la station A. "asymétrique" signifie qu'une quantité arbitraire de ces cargaisons peut être envoyée dans les deux directions. "manuel" signifie qu'aucune distribution n'est mise en place pour ces cargaisons. Il est conseillé de choisir "asymétrique" ou "manuel" dans le climat subarctique, car les banques n'enverront pas d'or en retour vers les mines d'or. Dans les climats tempéré et subtropical, on peut choisir aussi "symétrique", car les banques peuvent renvoyer en retour des biens de valeurs aux banques qui en envoient à l'origine.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symétrique" signifie qu'autant de cargaison ira d'une station A vers une station B, que de la station B vers la station A. "asymétrique" signifie qu'une quantité arbitraire de cargaison peut être envoyée dans les deux directions. "manuel" signifie qu'aucune distribution n'est mise en place pour la cargaison. Le mieux ici est logiquement de choisir "asymétrique" ou "manuel".
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Plus ce réglage est élevé, plus la réactualisation du graphique de distribution occupe de temps CPU. S'il est trop élevé, cela peut produire de la latence ("lag"). Au contraire, plus la valeur est basse, plus la distribution sera imprécise et l'on risque de voir des cargaisons ne pas aller vers la destination attendue.
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Si cette valeur est supérieure à 0, la distance entre la station d'origine A d'une cargaison et une possible destination B a un impact sur la quantité de cargaison envoyée de A vers B. Plus la distance est grande entre les deux, moins de cargaison sera envoyée. Plus cette valeur est élevée, moins de cargaison sera envoyée vers des stations lointaines, et plus vers les stations plus proches.
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Définir ici une valeur inférieure à 100% rapproche le comportement de la distribution symétrique de celui d'une distribution asymétrique. Moins de cargaison sera envoyée en retour de celle envoyée par une autre. Si cette valeur est réglée à 0% la distribution devient totalement asymétrique.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Il y a souvent plusieures routes possibles entre deux stations. Cargodist s'efforce d'utiliser d'abord les chemins plus courts jusqu'à saturation, ensuite les chemins un peu moins courts, et ainsi de suite. La saturation est déterminée par une estimation de la capacité et de l'usage prévu. Une fois que tous les chemins sont saturés, s'il y a encore une demande, il va surcharger tous les chemins, en privilégiant ceux à plus haute capacité. Mais la plupart du temps, la capacité n'est pas évaluée précisément. Ce réglage permets de spécifier jusqu'à quel pourcentage un chemin court doit être initialement saturé avant de passer au prochain chemin moins court. Il vaut mieux le régler à moins de 100% pour éviter que les stations soient surchargées en cas de surestimation de la capacité.
+
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Ordre de regroupement
