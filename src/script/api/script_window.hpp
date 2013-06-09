@@ -2196,6 +2196,10 @@ public:
 	/** Widgets of the #StationViewWindow class. */
 	enum StationViewWidgets {
 		WID_SV_CAPTION                               = ::WID_SV_CAPTION,                               ///< Caption of the window.
+		WID_SV_SORT_ORDER                            = ::WID_SV_SORT_ORDER,                            ///< 'Sort order' button
+		WID_SV_SORT_BY                               = ::WID_SV_SORT_BY,                               ///< 'Sort by' button
+		WID_SV_GROUP                                 = ::WID_SV_GROUP,                                 ///< label for "group by"
+		WID_SV_GROUP_BY                              = ::WID_SV_GROUP_BY,                              ///< 'Group by' button
 		WID_SV_WAITING                               = ::WID_SV_WAITING,                               ///< List of waiting cargo.
 		WID_SV_SCROLLBAR                             = ::WID_SV_SCROLLBAR,                             ///< Scrollbar.
 		WID_SV_ACCEPT_RATING_LIST                    = ::WID_SV_ACCEPT_RATING_LIST,                    ///< List of accepted cargoes / rating of cargoes.

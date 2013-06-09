@@ -1054,6 +1054,10 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SM_DISABLE_ALL,                        "WID_SM_DISABLE_ALL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SM_SHOW_HEIGHT,                        "WID_SM_SHOW_HEIGHT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SV_CAPTION,                            "WID_SV_CAPTION");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SV_SORT_ORDER,                         "WID_SV_SORT_ORDER");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SV_SORT_BY,                            "WID_SV_SORT_BY");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SV_GROUP,                              "WID_SV_GROUP");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SV_GROUP_BY,                           "WID_SV_GROUP_BY");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SV_WAITING,                            "WID_SV_WAITING");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SV_SCROLLBAR,                          "WID_SV_SCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SV_ACCEPT_RATING_LIST,                 "WID_SV_ACCEPT_RATING_LIST");
