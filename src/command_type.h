@@ -275,6 +275,7 @@ enum Commands {
 	CMD_CREATE_STORY_PAGE_ELEMENT,    ///< create a new story page element
 	CMD_UPDATE_STORY_PAGE_ELEMENT,    ///< update a story page element
 	CMD_SET_STORY_PAGE_TITLE,         ///< update title of a story page
+	CMD_SHOW_STORY_PAGE,              ///< show a story page
 	CMD_REMOVE_STORY_PAGE,            ///< remove a story page
 	CMD_LEVEL_LAND,                   ///< level land
 

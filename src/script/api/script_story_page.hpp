@@ -129,6 +129,17 @@ public:
 	static bool SetTitle(StoryPageID story_page_id, Text *title);
 
 	/**
+	 * Opens the Story Book if not yet open and selects the given page.
+	 * @param story_page_id The story page to update. If it is a global page, clients of all
+	 * companies are affecetd. Otherwise only the clients of the company which the page belongs
+	 * to are affected.
+	 * @return True if the action succeeded.
+	 * @pre No ScriptCompanyMode may be in scope.
+	 * @pre IsValidStoryPage(story_page_id).
+	 */
+	static bool Show(StoryPageID story_page_id);
+
+	/**
 	 * Remove a story page from the list.
 	 * @param story_page_id The story page to remove.
 	 * @return True if the action succeeded.

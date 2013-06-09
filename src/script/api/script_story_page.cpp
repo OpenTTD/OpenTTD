@@ -109,6 +109,14 @@
 	return ScriptObject::DoCommand(0, story_page_id, 0, CMD_SET_STORY_PAGE_TITLE, title != NULL? title->GetEncodedText() : NULL);
 }
 
+/* static */ bool ScriptStoryPage::Show(StoryPageID story_page_id)
+{
+	EnforcePrecondition(false, IsValidStoryPage(story_page_id));
+	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
+
+	return ScriptObject::DoCommand(0, story_page_id, 0, CMD_SHOW_STORY_PAGE);
+}
+
 /* static */ bool ScriptStoryPage::Remove(StoryPageID story_page_id)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);

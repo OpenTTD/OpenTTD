@@ -33,6 +33,7 @@ void SQGSStoryPage_Register(Squirrel *engine)
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::NewElement,              "NewElement",              5, ".iii.");
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::UpdateElement,           "UpdateElement",           4, ".ii.");
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::SetTitle,                "SetTitle",                3, ".i.");
+	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::Show,                    "Show",                    2, ".i");
 	SQGSStoryPage.DefSQStaticMethod(engine, &ScriptStoryPage::Remove,                  "Remove",                  2, ".i");
 
 	SQGSStoryPage.PostRegister(engine);

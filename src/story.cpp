@@ -21,6 +21,7 @@
 #include "goal_type.h"
 #include "goal_base.h"
 #include "window_func.h"
+#include "gui.h"
 
 
 StoryPageElementID _new_story_page_element_id;
@@ -246,6 +247,28 @@ CommandCost CmdSetStoryPageTitle(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	return CommandCost();
 }
 
+/**
+ * Display a story page for all clients that are allowed to
+ * view the story page.
+ * @param tile unused.
+ * @param flags type of operation
+ * @param p1 StoryPageID to show.
+ * @param p2 unused
+ * @param text unused
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdShowStoryPage(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	if (_current_company != OWNER_DEITY) return CMD_ERROR;
+	if (!StoryPage::IsValidID(p1)) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		StoryPage *g = StoryPage::Get(p1);
+		if ((g->company != INVALID_COMPANY && g->company == _local_company) || (g->company == INVALID_COMPANY && Company::IsValidID(_local_company))) ShowStoryBook(p1);
+	}
+
+	return CommandCost();
+}
 /**
  * Remove a story page and associated story page elements.
  * @param tile unused.

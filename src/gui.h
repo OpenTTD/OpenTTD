@@ -16,6 +16,7 @@
 #include "economy_type.h"
 #include "tile_type.h"
 #include "transport_type.h"
+#include "story_type.h"
 
 struct Window;
 
@@ -51,7 +52,7 @@ void ShowIndustryCargoesWindow();
 void ShowSubsidiesList();
 void ShowGoalsList();
 void ShowGoalQuestion(uint16 id, byte type, uint32 button_mask, const char *question);
-void ShowStoryBook();
+void ShowStoryBook(uint16 page_id = INVALID_STORY_PAGE);
 
 void ShowEstimatedCostOrIncome(Money cost, int x, int y);
 

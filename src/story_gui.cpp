@@ -23,6 +23,7 @@
 #include "sortlist_type.h"
 #include "goal_base.h"
 #include "viewport_func.h"
+#include "window_func.h"
 
 #include "widgets/story_widget.h"
 
@@ -725,7 +726,11 @@ static WindowDesc _story_book_desc(
 	_nested_story_book_widgets, lengthof(_nested_story_book_widgets)
 );
 
-void ShowStoryBook()
+void ShowStoryBook(uint16 page_id)
 {
-	AllocateWindowDescFront<StoryBookWindow>(&_story_book_desc, 0);
+	StoryBookWindow *w = AllocateWindowDescFront<StoryBookWindow>(&_story_book_desc, 0);
+	if (page_id != INVALID_STORY_PAGE) {
+		if (w == NULL) w = (StoryBookWindow *)FindWindowById(WC_STORY_BOOK, 0);
+		w->SetSelectedPage(page_id);
+	}
 }
