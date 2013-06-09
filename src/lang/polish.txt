@@ -1741,9 +1741,9 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Odtwarzaj dźwi
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Gazeta: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Odtwarzaj dźwięk po wyświetleniu gazety
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Koniec roku: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Odtwarzaj dźwięk na koniec roku podsumowując roczne postępy przedsiębiorstwa w porównaniu do roku poprzedniego
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Odtwarzaj dźwięk na koniec roku podsumowując roczną sytuację przedsiębiorstwa w porównaniu do roku poprzedniego
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Budowa: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Odtwarzaj efekt dźwiękowy po udanej konstrukcji lub innych czynnościach
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Odtwarzaj dźwięk po udanej budowie lub innych działaniach
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Kliknięcia: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Dźwięk przy kliknięciach
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Wypadki/katastrofy: {STRING}
@@ -1828,7 +1828,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Wyświetl wiado
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nowe pojazdy: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Wyświetl wiadomość w gazecie o dostępnym nowym typie pojazdu
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Zmiany w akceptowaniu ładunku: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Wyświetl wiadomość o zmianach w akceptowaniu towarów przez stacje
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Wyświetlaj wiadomości o zmianach w akceptowaniu towarów przez stacje
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsydia: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Wyświetl wiadomość w gazecie o wydarzeniach związanych z subsydiami
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Ogólne informacje: {STRING}
@@ -2534,6 +2534,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Przełą
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Przełącz przeźroczystość dla trakcji (linii nośnych). Ctrl+klik, aby zablokować
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Przełącz przeźroczystość dla wskaźników załadunku. Ctrl+klik, aby zablokować
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ustaw obiekty jako niewidoczne zamiast przeźroczyste
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Podświetlaj zasięg
@@ -4105,7 +4109,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełni
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Wymagany
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Zaplanowany
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Przełącz między wymaganymi i zaplanowanymi
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Przełącz między spodziewanymi i zaplanowanymi
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :P:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :O:

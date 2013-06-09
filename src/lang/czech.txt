@@ -24,61 +24,61 @@
 STR_NULL                                                        :
 STR_EMPTY                                                       :
 STR_UNDEFINED                                                   :(nedefinovaný řetězec)
-STR_JUST_NOTHING                                                :nic
+STR_JUST_NOTHING                                                :Nic
 
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
-STR_CARGO_PLURAL_PASSENGERS                                     :cestující
-STR_CARGO_PLURAL_PASSENGERS.gen                                 :cestujících
+STR_CARGO_PLURAL_PASSENGERS                                     :Cestující
+STR_CARGO_PLURAL_PASSENGERS.gen                                 :Cestujících
 STR_CARGO_PLURAL_PASSENGERS.big                                 :Cestující
-STR_CARGO_PLURAL_COAL                                           :uhlí
+STR_CARGO_PLURAL_COAL                                           :Uhlí
 STR_CARGO_PLURAL_COAL.big                                       :Uhlí
-STR_CARGO_PLURAL_MAIL                                           :pošta
-STR_CARGO_PLURAL_MAIL.gen                                       :pošty
-STR_CARGO_PLURAL_MAIL.acc                                       :poštu
+STR_CARGO_PLURAL_MAIL                                           :Pošta
+STR_CARGO_PLURAL_MAIL.gen                                       :Pošty
+STR_CARGO_PLURAL_MAIL.acc                                       :Poštu
 STR_CARGO_PLURAL_MAIL.big                                       :Pošta
-STR_CARGO_PLURAL_OIL                                            :ropa
-STR_CARGO_PLURAL_OIL.gen                                        :ropy
-STR_CARGO_PLURAL_OIL.acc                                        :ropu
+STR_CARGO_PLURAL_OIL                                            :Ropa
+STR_CARGO_PLURAL_OIL.gen                                        :Ropy
+STR_CARGO_PLURAL_OIL.acc                                        :Ropu
 STR_CARGO_PLURAL_OIL.big                                        :Ropa
-STR_CARGO_PLURAL_LIVESTOCK                                      :dobytek
-STR_CARGO_PLURAL_LIVESTOCK.gen                                  :dobytka
+STR_CARGO_PLURAL_LIVESTOCK                                      :Dobytek
+STR_CARGO_PLURAL_LIVESTOCK.gen                                  :Dobytka
 STR_CARGO_PLURAL_LIVESTOCK.big                                  :Dobytek
-STR_CARGO_PLURAL_GOODS                                          :zboží
+STR_CARGO_PLURAL_GOODS                                          :Zboží
 STR_CARGO_PLURAL_GOODS.big                                      :Zboží
-STR_CARGO_PLURAL_GRAIN                                          :zrní
+STR_CARGO_PLURAL_GRAIN                                          :Zrní
 STR_CARGO_PLURAL_GRAIN.big                                      :Zrní
-STR_CARGO_PLURAL_WOOD                                           :dřevo
-STR_CARGO_PLURAL_WOOD.gen                                       :dřeva
+STR_CARGO_PLURAL_WOOD                                           :Dřevo
+STR_CARGO_PLURAL_WOOD.gen                                       :Dřeva
 STR_CARGO_PLURAL_WOOD.big                                       :Dřevo
-STR_CARGO_PLURAL_IRON_ORE                                       :železná ruda
-STR_CARGO_PLURAL_IRON_ORE.gen                                   :železné rudy
-STR_CARGO_PLURAL_IRON_ORE.acc                                   :železnou rudu
+STR_CARGO_PLURAL_IRON_ORE                                       :Železná ruda
+STR_CARGO_PLURAL_IRON_ORE.gen                                   :Železné rudy
+STR_CARGO_PLURAL_IRON_ORE.acc                                   :Železnou rudu
 STR_CARGO_PLURAL_IRON_ORE.big                                   :Železná ruda
-STR_CARGO_PLURAL_STEEL                                          :ocel
-STR_CARGO_PLURAL_STEEL.gen                                      :oceli
+STR_CARGO_PLURAL_STEEL                                          :Ocel
+STR_CARGO_PLURAL_STEEL.gen                                      :Oceli
 STR_CARGO_PLURAL_STEEL.big                                      :Ocel
-STR_CARGO_PLURAL_VALUABLES                                      :ceniny
-STR_CARGO_PLURAL_VALUABLES.gen                                  :cenin
-STR_CARGO_PLURAL_VALUABLES.big                                  :Ceniny
-STR_CARGO_PLURAL_COPPER_ORE                                     :měděná ruda
-STR_CARGO_PLURAL_COPPER_ORE.gen                                 :měděné rudy
-STR_CARGO_PLURAL_COPPER_ORE.acc                                 :měděnou rudu
+STR_CARGO_PLURAL_VALUABLES                                      :Cennosti
+STR_CARGO_PLURAL_VALUABLES.gen                                  :Cenností
+STR_CARGO_PLURAL_VALUABLES.big                                  :Cennosti
+STR_CARGO_PLURAL_COPPER_ORE                                     :Měděná ruda
+STR_CARGO_PLURAL_COPPER_ORE.gen                                 :Měděné rudy
+STR_CARGO_PLURAL_COPPER_ORE.acc                                 :Měděnou rudu
 STR_CARGO_PLURAL_COPPER_ORE.big                                 :Měděná ruda
-STR_CARGO_PLURAL_MAIZE                                          :kukuřice
-STR_CARGO_PLURAL_MAIZE.acc                                      :kukuřici
+STR_CARGO_PLURAL_MAIZE                                          :Kukuřice
+STR_CARGO_PLURAL_MAIZE.acc                                      :Kukuřici
 STR_CARGO_PLURAL_MAIZE.big                                      :Kukuřice
-STR_CARGO_PLURAL_FRUIT                                          :ovoce
+STR_CARGO_PLURAL_FRUIT                                          :Ovoce
 STR_CARGO_PLURAL_FRUIT.big                                      :Ovoce
-STR_CARGO_PLURAL_DIAMONDS                                       :diamanty
-STR_CARGO_PLURAL_DIAMONDS.gen                                   :diamantů
+STR_CARGO_PLURAL_DIAMONDS                                       :Diamanty
+STR_CARGO_PLURAL_DIAMONDS.gen                                   :Diamantů
 STR_CARGO_PLURAL_DIAMONDS.big                                   :Diamanty
-STR_CARGO_PLURAL_FOOD                                           :jídlo
-STR_CARGO_PLURAL_FOOD.gen                                       :jídla
+STR_CARGO_PLURAL_FOOD                                           :Jídlo
+STR_CARGO_PLURAL_FOOD.gen                                       :Jídla
 STR_CARGO_PLURAL_FOOD.big                                       :Jídlo
-STR_CARGO_PLURAL_PAPER                                          :papír
-STR_CARGO_PLURAL_PAPER.gen                                      :papíru
+STR_CARGO_PLURAL_PAPER                                          :Papír
+STR_CARGO_PLURAL_PAPER.gen                                      :Papíru
 STR_CARGO_PLURAL_PAPER.big                                      :Papír
 STR_CARGO_PLURAL_GOLD                                           :zlato
 STR_CARGO_PLURAL_GOLD.gen                                       :zlata
@@ -1443,9 +1443,9 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Přehrávat zvu
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Noviny: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Přehrát zvuk při zobrazení novin
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Konec roku: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Přehrát zvukový efekty na konci roku shrnující výkon společnosti v porovnání s předchozím rokem
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Na konci roku přehrát zvuk shrnující výkon společnosti v porovnání s předchozím rokem
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Výstavba: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Přehrávat zvukové efekty vozidel
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Přehrávat zvuk při úspěšných stavbách a dalších akcích
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Kliknutí na tlačítko: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Pípnutí při kliku na tlačítko
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastrofy/nehody: {STRING}
@@ -2236,6 +2236,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Změna p
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Změna průhlednosti elektrifikace. Nastavení se zamkne Ctrl+kliknutím
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Přepnout zobrazení ukazatelů naložení. Nastavení se zamkne Ctrl+kliknutím
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Objekty budou neviditelné, ne průhledné
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Zvýraznění oblasti pokrytí

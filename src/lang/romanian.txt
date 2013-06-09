@@ -1582,6 +1582,8 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... form
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... setul de bază pentru grafică '{STRING}' este ignorat: nu a fost găsit
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... setul de bază pentru sunete '{STRING}' este ignorat: nu a fost găsit
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... setul de bază pentru muzică '{STRING}' este ignorat: nu a fost găsit
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Fără memorie
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Nu s-au putut rezerva {BYTES} pentru cache al sprite-urilor. Mărimea cache-ului a fost redusă la {BYTES}. Performanța OpenTTD va fi redusă. Pentru a micșora cerințele jocului cu privire la memorie, poți încerca să dezactivezi modul grafic 32bpp și/sau reducerea numărului de nivele zoom
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2132,6 +2134,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Comută 
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Comută transparenţa pentru catenar. Ctrl+Click pentru blocare
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Comută transparenţa pentru indicatorii de încarcare. Ctrl+Click pentru blocare
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Setează obiectele ca invizibile în loc de transparente
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Aria de acoperire
@@ -3607,7 +3613,7 @@ STR_ORDER_IMPLICIT                                              :(Implicit)
 STR_ORDER_FULL_LOAD                                             :(Încărcare maximă)
 STR_ORDER_FULL_LOAD_ANY                                         :(Încărcare orice produs)
 STR_ORDER_NO_LOAD                                               :(Fără încărcare)
-STR_ORDER_UNLOAD                                                :(Descarcă şi preia marfa)
+STR_ORDER_UNLOAD                                                :(Descarcă şi preia încărcătura)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Descarcă şi aşteaptă încărcare maximă)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Descarcă şi aşteaptă orice încărcătură)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Descarcă şi pleacă)

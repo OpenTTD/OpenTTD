@@ -1153,7 +1153,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Ingen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Som andre industrier
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Efterforskning
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Fladt område omkring industier: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Mængden af ​​fladt område omkring en industri. Dette sikrer tom plads vil forblive tilgængelige omkring en industri for bygge spor osv.
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Mængden af fladt område omkring en industri. Dette sikrer tom plads vil forblive tilgængelige omkring en industri for bygge spor osv.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Tillad flere af samme slags industri per by: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalt vil en by ikke vil have mere end en industri af hver type. Med denne indstilling, vil det give flere industrier af samme type i samme by
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Vis signaler: {STRING}
@@ -1240,7 +1240,7 @@ STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Forsinkelse fø
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hold markøren i {COMMA} sekund{P 0 "" er}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Højre klik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Vis byens indbyggertal i bynavnet: {STRING}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Vis befolkningen i ​​byerne i deres etiket på kortet
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Vis befolkningen i byerne i deres etiket på kortet
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linjetykkelse i grafer: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Bredde af linjerne i graferne. En tynd linie er mere læsbar, en tykkere linje er nemmere at se og det er lettere at skelne mellem farverne
 
@@ -1291,7 +1291,7 @@ STR_CONFIG_SETTING_LIVERIES_NONE                                :Ingen
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eget selskab
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Alle selskaber
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Foretræk hold-chat med <ENTER>: {STRING}
-STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Skift bindingen af ​​virksomheds-intern og offentlig chat til <ENTER> hhv. <Ctrl+ENTER>
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Skift bindingen af virksomheds-intern og offentlig chat til <ENTER> hhv. <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Rulleknappens funktion: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Aktiver rulning med to-dimensionelle muse-hjul
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom kort

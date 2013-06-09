@@ -2251,6 +2251,10 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Aktivira
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Namjesti prozirnost za indikatore učitavanja. Ctrl+klik za zaključavanje
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Učini objekte nevidljivima umjesto prozirnima
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Označavanje područja pokrivanja
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Isključeno

@@ -1361,9 +1361,9 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Spela ljudeffek
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Tidningsnyheter: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Spela upp ljud när tidningsnyheter visas
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Slut på året: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Spela en ljudeffekt vid årets slut som beskriver företagets resultat från det gångna året
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Spela en ljudeffekt vid årets slut som beskriver företagets resultat från det gångna året jämfört med året innan
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Konstruktion: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Spela ljudeffekter när konstruktion lyckas och vid andra händelser
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Spela ljudeffekter när konstruktioner lyckas och vid andra händelser
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Knapptryckningar: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Pip vid knapptryckningar
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastrofer/olyckor: {STRING}
@@ -1448,7 +1448,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Visa meddelande
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nya fordon: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Visa nyhetstidning när en ny typ av fordon blir tillgängligt
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Ändringar i godsacceptans: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Visa meddelande när stationer ändrar upptagningsområde för någon vara
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Visa meddelande vid förändring av stationers varuacceptans
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventioner: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Visa nyhetstidning om händelser relaterade till subventioner
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Övergripande information: {STRING}
@@ -1471,7 +1471,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Vid dragning me
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Ställ in med vilket avstånd signaler ska byggas utmed ett spår, fram till nästa hinder (signal, korsning), om signalverktyget dras
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} rut{P 0 a or}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Vid dragning med verktyget, håll ett fast avstånd mellan signalerna: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Välj beteende för signalplacering när signalverktyget dras med Ctrl nedtryckt. Om det är avstängt placeras signaler runt tunnlar och broar för att undvika långa sträckor utan signaler. Om det är påslaget placeras signaler ut varje N rutor, vilket gör det lättare att få dem jämsides vid parallella spår
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Välj beteende för signalplacering när signalverktyget dras med Ctrl nedtryckt. Om det är avstängt placeras signaler runt tunnlar och broar för att undvika långa sträckor utan signaler. Om det är påslaget placeras signaler ut varje n rutor, vilket gör det lättare att få dem jämsides vid parallella spår
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Bygg automatiskt semaforer innan: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Välj vilket år elektriska signaler ska börja användas för spår. Innan detta årtal används icke-elektriska signaler (vilka har exakt samma funktion, men annorlunda utseende)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Använd signal-GUI: {STRING}
@@ -2154,6 +2154,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Växla g
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Växla genomskinlighet för kontaktledning. CTRL+klick för att låsa
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Växla genomskinlighet för lastningsindikatörer. CTRL+klick för att låsa
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gör object osynliga istället för genomskinliga
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Markera upptagningsområde

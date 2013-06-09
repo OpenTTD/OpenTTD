@@ -973,7 +973,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Masukkan
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Akhiran: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Masukkan akhiran untuk mata uang
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Menggunakan Euro tahun: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Berganti ke Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Menggunakan Euro: {ORANGE}tidak pernah
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Masukkan tahun perpindahan ke Euro
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Berpindah ke Euro lebih awal
@@ -1138,7 +1138,7 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Ijinkan penamba
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Gunakan algoritma pengangkutan terbaru : {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Jika diaktifkan, beberapa kendaraan di stasiun dimuat secara berurutan. Pemuatan kendaraan berikutnya hanya dimulai ketika ada kargo cukup menunggu untuk benar-benar mengisi kendaraan pertama
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Angkut secara bertahap: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Secara bertahap kendaraan menggunakan jangka waktu untuk memuat, bukannya memuat semuanya sekaligus dengan waktu sama
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Muat kendaraan secara bertahap menggunakan jangka waktu spesifik kendaraan, bukan memuat dengan jangka waktu tetap berdasarkan jumlah kargo
 STR_CONFIG_SETTING_INFLATION                                    :Inflasi: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Perbolehkan inflasi dalam ekonomi, dimana biaya naik sedikit lebih cepat daripada pembayaran
 STR_CONFIG_SETTING_SELECTGOODS                                  :Menerima kargo di suatu stasiun hanya jika dibutuhkan: {STRING}
@@ -1384,7 +1384,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Tampilkan koran
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Kedatangan kendaraan pertama pada stasiun lawan: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Tampilkan koran saat kendaraan pertama datang di stasiun kompetitor
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Kecelakaan / bencana: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Tampilkan koran saat ada kecelakaan atau bencana
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Tampilkan berita saat ada kecelakaan atau bencana
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informasi Perusahaan: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Tampilkan koran saat ada perusahaan yang baru berdiri, atau jika ada perusahaan yang akan bangkrut
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Pembukaan Industri Baru: {STRING}
@@ -2108,6 +2108,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Hidup/ma
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Hidup/matikan transparansi katenari CTRL+klik untuk mengunci
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Hidup/matikan indikator proses pemuatan kargo. CTRL+klik untuk mengunci
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Atur obyek menjadi sama sekali tidak nampak daripada transparan.
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Jangkauan layanan
@@ -3670,7 +3674,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi jadw
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Harapan
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Dijadwalkan
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Ubah antara harapan dan jadwal
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Ubah antara perkiraan dan jadwal
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
@@ -4183,9 +4187,9 @@ STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Grafik orisinil
 STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Grafik orisinil Transport Tycoon Deluxe versi Windows.
 STR_BASESOUNDS_DOS_DESCRIPTION                                  :Efek suara orisinil Transport Tycoon Deluxe versi DOS.
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Efek suara orisinil Transport Tycoon Deluxe versi Windows.
-STR_BASESOUNDS_NONE_DESCRIPTION                                 :Paket efek suara tanpa berisi suara.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Paket efek suara tanpa suara apapun.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Musik pengiring orisinil Transport Tycoon Deluxe versi Windows.
-STR_BASEMUSIC_NONE_DESCRIPTION                                  :Paket musik tanpa berisi musik.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Paket musik tanpa musik sungguhan.
 
 ##id 0x2000
 # Town building names

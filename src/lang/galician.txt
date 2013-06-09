@@ -454,6 +454,8 @@ STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Zoom de captura
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de pantalla do mapa completo
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Acerca de 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Aliñador de sprites
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Activa/desactiva caixas delimitadoras
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Activa/desactiva o coloreado de bloques modificados
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -2154,6 +2156,10 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Activar 
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Activar transparencia para os indicadores de carga. CTRL+Click para bloquear
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Facer os obxectos invisibles en lugar de transparentes
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Resaltar área de cobertura
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Off
@@ -2177,7 +2183,7 @@ STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construción de
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construción de Maglev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construír vía de ferrocarril. CTRL conmuta entre construír/eliminar para a construción das vías. Shift conmunta entre construir/mostrar a estimación de custo
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construír a vía de ferrocarril usando o modo Autoraíl. CTRL conmuta entre construír/borrar para a construción das vías
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construír a vía de ferrocarril usando o modo Autorail. CTRL conmuta entre construír/borrar para a construción das vías
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construír depósito de trens (para construción e mantemento de trens). Shift conmuta entre construir e mostrar unha estimación de custo
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Convertir raíl a punto de ruta. CTRL permite unir puntos de ruta. Shift conmuta entre construción e mostrar unha estimación do custo
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construír estación de ferrocarril. CTRL permite unir estacións. Shift conmuta entre construción e mostrar unha estimación do custo
@@ -3644,10 +3650,10 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Non descargar 
 STR_ORDER_AUTO_REFIT                                            :(Auto-axuste a {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :(Carga completa con auto-axuste a {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Carga completa de calquera carga con auto-axuste a {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Unload and take cargo with auto-refit to {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Descargar e tomar cargo con autoaxuste para {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Descargar e agardar por carga completa con auto-axuste a {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Descargar e esperar a calquera carga completa con auto-axuste a {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Transfer and take cargo with auto-refit to {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Transferir e tomar carga con autoaxuste para {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transferir e esperar a carga completa con auto-axuste a {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transferir e esperar por calquera carga completa con auto-axuste a {STRING})
 STR_ORDER_NO_UNLOAD_REFIT                                       :(Non descargar e tomar carga con auto-axuste a {STRING})
@@ -4181,19 +4187,19 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Aeronave
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Demasiados vehículos na partida
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Non se pode cambia-lo intervalo de servizo...
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... o vehiculo foi destruído
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... o vehículo está destruído
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Non se pode face-lo tren pasar unha sinal en perigo...
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Non se pode facer que o tren rebase un sinal en perigo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}No se pode cambia-lo sentido do tren...
-STR_ERROR_TRAIN_START_NO_POWER                                  :O tren quedou sen enerxía
+STR_ERROR_TRAIN_START_NO_POWER                                  :O tren non ten potencia
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Non se pode xira-lo vehículo...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Non se pode facer que o vehículo dea a volta...
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}O avión está voando
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Non hai espacio para máis ordes
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Non hai espazo para máis ordes
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Demasiadas ordes
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Non se pode engadir unha nova orde...
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Non se pode borrar esta orde...
@@ -4209,7 +4215,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Non se p
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Non se pode parar de compartir a lista de ordes...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Non se pode copia-la lista de ordes...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... demasiado lonxe do destino anterior
-STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... o avión non ten alcance suficiente
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... o avión non ten autonomía suficiente
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Non se pode axusta-lo horario do vehículo...
@@ -4229,6 +4235,11 @@ STR_DESKTOP_SHORTCUT_COMMENT                                    :Xogo de simulac
 STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Graficos da edición orixinal de Transport Tycoon Deluxe para DOS.
 STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Graficos da edición orixinal (alemá) de Transport Tycoon Deluxe para DOS.
 STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Graficos da edición orixinal de Transport Tycoon Deluxe para Windows.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Sons da edición orixinal de Transport Tycoon Deluxe para DOS.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Sons da edición orixinal de Transport Tycoon Deluxe para Windows.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Un conxunto de sons sen ningún son
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Música da edición orixinal de Transport Tycoon Deluxe para Windows.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Un conxunto de músicas sen ningunha música.
 
 ##id 0x2000
 # Town building names
@@ -4237,7 +4248,7 @@ STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Bloque de ofici
 STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Bloque pequeno de apartamentos
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Igrexa
 STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Bloque grande de oficinas
-STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Casas de cidade
+STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Casas da cidade
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Hotel
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :Estatua
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Fonte
@@ -4249,7 +4260,7 @@ STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Almacén
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Bloque de oficinas
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :Estadio
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Casas antigas
-STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Casiñas de campo
+STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Galpóns
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Casas
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Apartamentos
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Bloque alto de oficinas
@@ -4263,54 +4274,54 @@ STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Cine
 STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Centro comercial
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iglú
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tipis
-STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Casa Tetera
-STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Banco Porquiño
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Casa-tetera
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Porquiño-hucha
 
 ##id 0x4800
 # industry names
-STR_INDUSTRY_NAME_COAL_MINE                                     :Mina de Carbón
-STR_INDUSTRY_NAME_POWER_STATION                                 :Estación Enerxética
-STR_INDUSTRY_NAME_SAWMILL                                       :Serradeiro
+STR_INDUSTRY_NAME_COAL_MINE                                     :Mina de carbón
+STR_INDUSTRY_NAME_POWER_STATION                                 :Central eléctrica
+STR_INDUSTRY_NAME_SAWMILL                                       :Serradoiro
 STR_INDUSTRY_NAME_FOREST                                        :Bosque
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :Ref. de Petróleo
-STR_INDUSTRY_NAME_OIL_RIG                                       :Torre Petrolífera
-STR_INDUSTRY_NAME_FACTORY                                       :Factoría
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :Refinaría de petróleo
+STR_INDUSTRY_NAME_OIL_RIG                                       :Plataforma petrolífera
+STR_INDUSTRY_NAME_FACTORY                                       :Fábrica
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :Imprenta
 STR_INDUSTRY_NAME_STEEL_MILL                                    :Siderúrxica
 STR_INDUSTRY_NAME_FARM                                          :Granxa
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Mina de Mineral de Cobre
-STR_INDUSTRY_NAME_OIL_WELLS                                     :Pozo Petrolífero
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Mina de cobre
+STR_INDUSTRY_NAME_OIL_WELLS                                     :Pozos petrolíferos
 STR_INDUSTRY_NAME_BANK                                          :Banco
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Planta de Proc. de Comida
-STR_INDUSTRY_NAME_PAPER_MILL                                    :Fábrica de Papel
-STR_INDUSTRY_NAME_GOLD_MINE                                     :Mina de Ouro
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Planta de procesado de alimentos
+STR_INDUSTRY_NAME_PAPER_MILL                                    :Fábrica de papel
+STR_INDUSTRY_NAME_GOLD_MINE                                     :Mina de ouro
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Banco
-STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Mina de Diamantes
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Mina de Hematita
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Plantación de Froita
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Plant. de Árbores de Caucho
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Acuífero
-STR_INDUSTRY_NAME_WATER_TOWER                                   :Torre de Auga
-STR_INDUSTRY_NAME_FACTORY_2                                     :Factoría
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Mina de diamante
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Mina de ferro
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Plantación de froita
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Plantación de sobreiras
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Subministro de auga
+STR_INDUSTRY_NAME_WATER_TOWER                                   :Torre de auga
+STR_INDUSTRY_NAME_FACTORY_2                                     :Fábrica
 STR_INDUSTRY_NAME_FARM_2                                        :Granxa
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Fábrica de Madeiros
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Bosque de Algodón de Azucre
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Fábrica de Caramelos
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :Granxa de Pilas
-STR_INDUSTRY_NAME_COLA_WELLS                                    :Fontes de Cola
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :Aserradoiro
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Bosque de algodón de azucre
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Fábrica de lambetadas
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :Granxa de pilas
+STR_INDUSTRY_NAME_COLA_WELLS                                    :Pozos de cola
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Xoguetería
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :Fábrica de Xoguetes
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Fontes de Plástico
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Fábrica de Bebidas Gaseosas
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Xerador de Burbullas
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Canteira de Toffee
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :Mina de Azucre
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :Fábrica de xoguetes
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Fontes de plástico
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Fábrica de bebidas gaseosas
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Xerador de burbullas
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Canteira de toffee
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :Mina de azucre
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
-STR_SV_UNNAMED                                                  :Sen Nome
+STR_SV_UNNAMED                                                  :Sen nome
 STR_SV_TRAIN_NAME                                               :Tren {COMMA}
 STR_SV_ROAD_VEHICLE_NAME                                        :Vehículo de estrada {COMMA}
 STR_SV_SHIP_NAME                                                :Barco {COMMA}
@@ -4319,7 +4330,7 @@ STR_SV_AIRCRAFT_NAME                                            :Aeronave {COMMA
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Norte
 STR_SV_STNAME_SOUTH                                             :{STRING} Sur
-STR_SV_STNAME_EAST                                              :{STRING} Este
+STR_SV_STNAME_EAST                                              :{STRING} Leste
 STR_SV_STNAME_WEST                                              :{STRING} Oeste
 STR_SV_STNAME_CENTRAL                                           :{STRING} Central
 STR_SV_STNAME_TRANSFER                                          :{STRING} Transferencia
@@ -4328,45 +4339,45 @@ STR_SV_STNAME_VALLEY                                            :{STRING} Val
 STR_SV_STNAME_HEIGHTS                                           :{STRING} Lombas
 STR_SV_STNAME_WOODS                                             :{STRING} Bosques
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Ribeira de lago
-STR_SV_STNAME_EXCHANGE                                          :{STRING} Cambio
+STR_SV_STNAME_EXCHANGE                                          :{STRING} Intercambio
 STR_SV_STNAME_AIRPORT                                           :Aeroporto de {STRING}
-STR_SV_STNAME_OILFIELD                                          :{STRING} Campo de petróleo
-STR_SV_STNAME_MINES                                             :{STRING} Minas
+STR_SV_STNAME_OILFIELD                                          :Campo de petróleo de {STRING}
+STR_SV_STNAME_MINES                                             :Minas de {STRING}
 STR_SV_STNAME_DOCKS                                             :Peirao de {STRING}
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Anexo
 STR_SV_STNAME_SIDINGS                                           :{STRING} Apartadeiro
-STR_SV_STNAME_BRANCH                                            :{STRING} Rama
-STR_SV_STNAME_UPPER                                             :Superior {STRING}
-STR_SV_STNAME_LOWER                                             :Inferior {STRING}
-STR_SV_STNAME_HELIPORT                                          :{STRING} Heliporto
-STR_SV_STNAME_FOREST                                            :{STRING} Bosque
-STR_SV_STNAME_FALLBACK                                          :{STRING} Estación #{NUM}
+STR_SV_STNAME_BRANCH                                            :{STRING} Ramal
+STR_SV_STNAME_UPPER                                             :Alto {STRING}
+STR_SV_STNAME_LOWER                                             :Baixo {STRING}
+STR_SV_STNAME_HELIPORT                                          :Heliporto de {STRING}
+STR_SV_STNAME_FOREST                                            :Bosque de {STRING}
+STR_SV_STNAME_FALLBACK                                          :Estación de {STRING} #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
 # Vehicle names
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (Vapor)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diésel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diésel
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diésel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Vapor)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (Vapor)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (Vapor)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (Vapor)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (Diésel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (Diésel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (Diésel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (Diésel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (Diésel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (Diésel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (Diésel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (Diésel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (Diesel)
@@ -4537,7 +4548,7 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Camión de Tofe
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :Furgón de Xoguetes MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Furgón de Xoguetes Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Furgón de Xoguetes Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :Cam. de Caramelos MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :Camión de Caramelos MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Camión de Caramelos Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Camión de Caramelos Wizzowow
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Camión de Pilas MightyMover
@@ -4620,6 +4631,13 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}: {STRING
 STR_FORMAT_WAYPOINT_NAME                                        :Punto de Ruta de {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Punto de Ruta de {TOWN} #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Depósito Ferroviario
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Depósito Ferroviario #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Depósito de Vehículos de Estrada
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Depósito de Vehículos de Estrada #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Depósito de Barcos
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Depósito de Barcos #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
 
 STR_UNKNOWN_STATION                                             :estación descoñecida
 STR_DEFAULT_SIGN_NAME                                           :Sinal

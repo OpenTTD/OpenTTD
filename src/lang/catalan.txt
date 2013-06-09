@@ -1090,7 +1090,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dreta
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Préstec inicial màxim: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Quantitat màxima de préstec que pot demanar una companyia (sense tenir en compte l'inflació)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Taxa d'interès: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Taxa d'interès dels préstecs; també controla la inflació si està activada
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Tipus d'interès dels préstecs; també controla la inflació, si està activada
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costos d'utilització: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Fixa el nivell de manteniment i els costos d'utilització dels vehicles i infraestructures
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocitat de construcció: {STRING}
@@ -1362,7 +1362,7 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reprodueix un s
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Notícies: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Reprodueix un so quan apareix una notícia
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Cap d'any: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reprodueix un efecte de so al final de l'any quan apareix el resum financer de l'empresa
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Reprodueix un efecte de so al final de l'any quan apareix el resum financer de l'any de l'empresa en comparació amb l'anterior
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Construcció: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Reprodueix un efecte de so quan es realitzin amb èxit construccions o altres accions
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Botons: {STRING}
@@ -1429,7 +1429,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Mostra les not�
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Arribada del primer vehicle a una estació competidora: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Mostra les notícies quan arribi el primer vehicle a una estació d'un competidor
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Accidents / desastres: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostra les notícies d'accidents i desastres
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Mostra un diari quan passin accidents i desastres
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informació de l'Empresa: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostra les notícies de companyies noves que es creen i de companyies en risc de fer fallida
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Obertura d'indústries: {STRING}
@@ -1449,7 +1449,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Mostra missatge
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nous vehicles: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Mostra les notícies d'aparicions de nous tipus de vehicles
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Canvis en l'admissió de càrrega: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Mostra missatges quan les estacions canviïn l'acceptació d'alguna càrrega
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Mostra missatges sobre les estacions que canviïn l'acceptació d'alguna càrrega
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subvencions: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Mostra les notícies d'esdeveniments relacionats amb subsidis
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informació General: {STRING}
@@ -1472,7 +1472,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :En arrossegar, 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Estableix la distància en les quals els senyals seran construïts a la via fins al següent obstacle (senyal, desviament), si els senyals són arrossegats
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} cel·la{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Quan arrosseguis, mantingues fixada la distància entre senyals: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecciona el comportament de la situació de senyals quan Ctrl+arrossega senyals. Si es desactiva els senyals són situats al voltant dels túnels o ponts per evitar grans troços sense senyals. Si s'activa, els senyals són situats cada N cel·les, fent l'alineament de senyals en vies paral·leles més fàcil
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecciona el comportament de la situació de senyals quan Ctrl+arrossega senyals. Si es desactiva els senyals són situats al voltant dels túnels o ponts per evitar grans troços sense senyals. Si s'activa, els senyals són situats cada n cel·les, fent l'aliniament de senyals en vies paral·leles més fàcil
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construir semàfors mecànics automàticament abans de: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Estableix l'any per utilitzar semàfors elèctrics. Abans d'aquest any s'utilitzaran senyals mecànics (que tenen exactament la mateixa funció, però amb diferent aspecte)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activa la interfície de senyals: {STRING}
@@ -2155,6 +2155,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Commuta 
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Commuta la transparència de la catenària. CTRL+clic per bloquejar
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Commuta la transparència dels indicadors de càrrega. Ctrl+Clic per bloquejar
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Mostra els objectes invisibles enlloc de transparents
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Marca l'àrea de cobertura
@@ -2939,7 +2943,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}No hi ha
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Esperant: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} en ruta des de {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} des de {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepta
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostra la llista de càrregues admeses

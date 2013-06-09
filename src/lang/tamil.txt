@@ -1934,6 +1934,10 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}இல�
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}ஒளி அமைப்புகள்
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}செயல்படும் பகுதியினை குறிக்கவும்
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}நிறுத்து
@@ -3874,6 +3878,14 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}கு�
 STR_DESKTOP_SHORTCUT_COMMENT                                    :A simulation game based on Transport Tycoon Deluxe
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :அசல் டிரான்ஸ்ஃபோர்ட் டைகூன் டீலக்ஸ் DOS பதிப்பு அசைவூட்டங்கள்.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :அசல் டிரான்ஸ்ஃபோர்ட் டைகூன் டீலக்ஸ் DOS (செருமன்) பதிப்பு அசைவூட்டங்கள்.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :அசல் டிரான்ஸ்ஃபோர்ட் டைகூன் டீலக்ஸ் விண்டோஸ் பதிப்பு அசைவூட்டங்கள்.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :அசல் டிரான்ஸ்ஃபோர்ட் டைகூன் டீலக்ஸ் DOS பதிப்பு ஒலிகள்.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :அசல் டிரான்ஸ்ஃபோர்ட் டைகூன் டீலக்ஸ் விண்டோஸ் பதிப்பு ஒலிகள்.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :ஒலிகள் இல்லாத ஒலி தொகுப்பு.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :அசல் டிரான்ஸ்ஃபோர்ட் டைகூன் டீலக்ஸ் விண்டோஸ் பதிப்பு இசை.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :இசை இல்லாத இசைத்தொகுப்பு.
 
 ##id 0x2000
 # Town building names

@@ -371,15 +371,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Exit
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Map of world
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Extra viewport
 STR_MAP_MENU_SIGN_LIST                                          :Sign list
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Town directory
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Found town
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidies
@@ -1448,7 +1448,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Display message
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :New vehicles: {STRING2}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Display a newspaper when a new vehicle type becomes available
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Changes to cargo acceptance: {STRING2}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Display messages about stations changing acceptance of some cargos
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Display messages about stations changing acceptance of some cargoes
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidies: {STRING2}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Display a newspaper about subsidy related events
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :General information: {STRING2}
@@ -2154,6 +2154,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Toggle t
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Toggle transparency for catenary. Ctrl+Click to lock
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Toggle transparency for loading indicators. Ctrl+Click to lock
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Set objects invisible instead of transparent
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Coverage area highlight

@@ -2155,6 +2155,10 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Schakel 
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Schakel transparantie voor laadindicatoren aan/uit. Ctrl+klik om vast te zetten
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Maak objecten onzichtbaar in plaats van transparant
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Dekkingsgebied markeren
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Uit

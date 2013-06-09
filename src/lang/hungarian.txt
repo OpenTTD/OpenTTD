@@ -1425,7 +1425,7 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Hang lejátszá
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Újság: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Hanglejátszás az újság megjelenésekor
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Év vége: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Hang lejátszása év végén, összesítve a cég teljesítményét
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Hang lejátszása az előző évhez viszonyítva a cég jelen évi teljesítményének év végi összesítésénél
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Építkezés: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Hanglejátszás sikeres építkezések vagy más tevékenységek után
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Gombra kattintás: {STRING}
@@ -1435,7 +1435,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Balesetek és k
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Járművek: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Járműhangok lejátszása
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Terület: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Hang lejátszása, amikor valamilyen tereptárgy közelében járunk (város, ipar, terep, stb)
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Az ipar, városok és tájak környezeti hangjainak lejátszása
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Infrastruktúra építésének tiltása amíg nem elérhető megfelelő jármű: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Bekapcsolva az infrastruktúra csak akkor elérhető, ha van megfelelő jármű, megakadályozva a felesleges pénzköltést a kihasználhatatlan infrastruktúrára
@@ -1512,7 +1512,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Üzenet megjele
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Új járművek: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Újság megjelenítése, amikor egy új jármű elérhetővé válik
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Rakományok elfogadásainak változásai: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Üzenet megjelenítése az állomások fogadóképességéről
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Üzenet megjelenítése az állomások bizonyos árúk fogadóképességének változásáról.
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Támogatások: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Újság megjelenítése szállítási támogatásokkal kapcsolatban
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Általános információk: {STRING}
@@ -2218,6 +2218,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Tereptá
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Felsővezetékek átlátszóságának bekapcsolása. Ctrl+kattintással zárolható
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Átlátszó rakodásjelző bekapcsolása. Ctrl+kattintással zárolható
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Az objektum ne átlátszó legyen, hanem láthatatlan
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Lefedett terület mutatása:
@@ -4397,7 +4401,7 @@ STR_INDUSTRY_NAME_CANDY_FACTORY.t                               :cukorkagyárat
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Elemfarm
 STR_INDUSTRY_NAME_BATTERY_FARM.t                                :elemfarmot
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Kólakút
-STR_INDUSTRY_NAME_COLA_WELLS.t                                  :kólakútat
+STR_INDUSTRY_NAME_COLA_WELLS.t                                  :kólakutat
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Játékbolt
 STR_INDUSTRY_NAME_TOY_SHOP.t                                    :játékboltot
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Játékgyár

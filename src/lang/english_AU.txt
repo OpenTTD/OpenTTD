@@ -1448,7 +1448,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Display message
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :New vehicles: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Display a newspaper when a new vehicle type becomes available
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Changes to cargo acceptance: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Display messages about stations changing acceptance of some cargos
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Display messages about stations changing acceptance of some cargoes
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidies: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Display a newspaper about subsidy related events
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :General information: {STRING}
@@ -2154,6 +2154,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Toggle t
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Toggle transparency for catenary. Ctrl+Click to lock
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Toggle transparency for loading indicators. Ctrl+Click to lock
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Set objects invisible instead of transparent
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Coverage area highlight

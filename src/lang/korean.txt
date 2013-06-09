@@ -372,15 +372,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :종료
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :전체 지도 보기
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :외부 화면
 STR_MAP_MENU_SIGN_LIST                                          :팻말 목록
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :도시 목록
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :도시 건설
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :보조금
@@ -776,7 +776,7 @@ STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLAC
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}유럽 화폐단위 통일!{}{}국가의 단일 유통 화폐로 유로화가 도입되었습니다!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}세계 공황!{}{}경제 전문가들이 경제 슬럼프에 대해 우려를 표망하고 있습니다!
-STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}공황 종료!{}{}무역량의 증대로 경제를 살려낸 결과 산업시설에 대한 신뢰를 가져왔습니다!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}공황 종료!{}{}경제가 살아나면서 무역량이 늘어나 산업시설이 제 기능을 되찾았습니다!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY}{G 0 "이" "가"} 생산량을 늘렸습니다!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}{INDUSTRY}에서 새 석탄 광맥을 찾았습니다!{}생산량이 2배가 되었습니다!
@@ -1567,7 +1567,7 @@ STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}컴퓨�
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}자동 교체
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}점검
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}경로
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}열차
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{G=f}{ORANGE}열차
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}도시
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}산업시설
 
@@ -2155,6 +2155,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}등대�
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}전차선 보이기/숨기기. 고정하려면 CTRL+클릭하세요.
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}적재율 투명 전환. 고정하려면 CTRL+클릭하세요.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}투명이 아니라 아예 안보이게 할 항목을 선택하세요
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}역세권 표시
@@ -2945,7 +2949,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}받음
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}받는 화물의 목록 표시
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}받음: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}이 역은 이 도시에서 수송 독점권을 갖고있습니다.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}이 역은 도시의 수송권을 독점하고 있는 역입니다.
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} 이(가) 이 도시의 수송 독점권을 구매하였습니다.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}등급
@@ -3323,7 +3327,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}가격:
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY} 항속거리: {COMMA} 칸{}수용량: {CARGO_LONG}{}유지비: {CURRENCY_LONG}/년
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING}{G 0 "을" "를"} {STRING}{G 1 "으" ""}로 교체
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} 교체 - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :{G=f}열차
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :{G=f}자동차
 STR_REPLACE_VEHICLE_SHIP                                        :{G=m}선박

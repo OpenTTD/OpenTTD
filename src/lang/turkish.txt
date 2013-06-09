@@ -1190,18 +1190,29 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Şirketlerin ka
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Diğer şirketlere para gönderme izinli: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Çok oyunculu oyunlarda şirketler arası para transferine izin ver
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Ağır yük trenleri için ağırlık çarpanı: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Trenlerde yük taşımanın etkisini ayarlayın. Yüksek bir değer trenlerde yük taşımayı özellikle tepelerde daha zor hale getirir
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Uçak hız faktörü: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Havayolundan elde edilen geliri azaltmak için uçakların diğer araç tiplerine göre hızını ayarlayın
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Uçak kazası sayısı: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Uçak kazası olasılığını belirleyin
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Hiç
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Azaltılmış
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Şehiriçi yollara durak yapmak izinli: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Kasabanın sahip olduğu yollarda yol üstü durakların inşasına izin verir
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Rakiplerin yolu üzerinde durak yapmaya izin ver: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Başka şirketlerin sahip olduğu yollarda yol üstü durakların inşasına izin verir
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Bitişik istasyonlar izinli: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Farklı istasyonların birbirine değmesine izin verir
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Birden çok NewGRF lokomotif setini aktifleştir: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Eski NewGRF'ler için uyumluluk seçeneği. Ne yaptığınızı kesin olarak bilmiyorsanız, bu seçeneği kapatmayın!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Araçlar varken bu ayarı değiştirmezsiniz
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Altyapı bakımları: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Etkinleştirildiğinde; altyapı, bakım giderine neden olur. Maliyet ağ büyüklüğüne göre daha hızlı yükselir, dolayısıyla büyük şirketleri küçüklere göre daha çok etkiler
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Havalimanlarının süresi asla dolmasın: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Bu ayar tüm havalimanı tiplerini aktif hale geldikten sonra sürekli kılar
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Araç yolunu kaybederse uyar: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Arac talimatlarını önizle: {STRING}
@@ -2001,6 +2012,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Antenler
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Tren elektrik hatları için şeffaflığı aç/kapat. Kilitlemek için Ctrl ile tıklayın
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Transparan yükleme göstergesi. Kilitlemek için Ctrl ile tıklayın
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Nesneleri şeffaf değil görünmez yap
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Kapsama alanı

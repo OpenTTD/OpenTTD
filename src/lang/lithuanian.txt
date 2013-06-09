@@ -2350,6 +2350,10 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Perjungt
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Perjungti krovimo indikatorių permatomumą. Ctrl+Click užrakinti
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Nustatyti objektus nematomais vietoje permatomų
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Rodyti aptarnaujamą teritoriją?
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Ne
@@ -4478,6 +4482,14 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Neįmano
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Simuliatoriaus žaidimas kurtas pagal Transport Tycoon Deluxe
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Originali Transport Tycoon Deluxe DOS leidimo grafika.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Originali Transport Tycoon Deluxe DOS (Vokiečių) leidimo grafika.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Originali Transport Tycoon Deluxe Windows leidimo grafika.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Originalūs Transport Tycoon Deluxe DOS leidimo garsai.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Originalūs Transport Tycoon Deluxe Windows leidimo garsai.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Garsų pakas be jokių garsų.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Originali Transport Tycoon Deluxe Windows leidimo muzika.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Muzikos pakas be muzikos.
 
 ##id 0x2000
 # Town building names

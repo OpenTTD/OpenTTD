@@ -2323,6 +2323,10 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Пере
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Переключение прозрачности индикаторов загрузки. Ctrl+щелчок - заблокировать.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Сделать объекты не прозрачными, а полностью невидимыми
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Подсветка зоны покрытия
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Выкл

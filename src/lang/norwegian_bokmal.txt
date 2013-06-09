@@ -2157,6 +2157,10 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Gjennoms
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Gjennomsiktighet for lastingsindikatorer. Ctrl+klikk for å låse
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gjør objekter usynlige i stedet for gjennomsiktige
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Markering av dekningsområde
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Av

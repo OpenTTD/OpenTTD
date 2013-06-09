@@ -760,7 +760,7 @@ STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Konkurssi!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} on suljettu velkojien toimesta ja kaikki omaisuus on myyty pois!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Uusi kuljetusyhtiö perustettu!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} aloittaa rakentamisen kaupugin {TOWN} lähistölle!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} aloittaa rakentamisen kaupungin {TOWN} lähistölle!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}Yhtiön {STRING} on ottanut haltuun {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(pääjohtaja)
 
@@ -1504,7 +1504,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING                                :Kaupunkien peru
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Mikäli käytössä, pelaajat voivat perustaa uusia kaupunkeja
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Kielletty
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Sallittu
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Sallittu, oma kaupugin kaava
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Sallittu, oma kaupungin kaava
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Puiden istutus pelissä: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Määrittää puiden sattumanvaraisen luomisen. Tämä voi vaikuttaa teollisuuslaitoksiin jotka ovat riippuvaisia puiden kasvamisesta, esimerkiksi sahat
@@ -2154,6 +2154,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Muuta ra
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Muuta ajolinjojen läpinäkyvyyttä. Ctrl+Klik lukitaksesi
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Muuta lastausilmaisimien läpinäkyvyyttä. Ctrl+Klik lukitaksesi
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Tee kohteista läpinäkyvyyden sijaan näkymättömiä
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Vaikutusalueen korostus
@@ -3183,7 +3187,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Nopeus: 
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Nopeus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Nopeus merellä: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Nopeus kanaalissa/joessa: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Käyttökukustannus: {GOLD}{CURRENCY_LONG}/vuosi
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Käyttökustannus: {GOLD}{CURRENCY_LONG}/vuosi
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasiteetti: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(sovitettava)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Suunniteltu: {GOLD}{NUM}{BLACK} Elinikä: {GOLD}{COMMA} vuo{P si tta}
@@ -3365,7 +3369,7 @@ STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Keskitä
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Keskitä näkymä lentokoneen sijaintiin. Ctrl+Klik seuraa lentokonetta päänäkymässä
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Lähetä juna veturitalliin. Ctrl+Klik suorittaa vain huollon
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Lähetä ajoneuvo huoltoasemalle. Ctrl+Klik suorittaa vain huollon
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Lähetä ajoneuvo varikolle. Ctrl+Klik suorittaa vain huollon
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Lähetä laiva telakalle. Ctrl+Klik suorittaa vain huollon
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Lähetä lentokone lentokonehalliin. Ctrl+Klik suorittaa vain huollon
 
@@ -3436,7 +3440,7 @@ STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ikä: {L
 STR_VEHICLE_INFO_AGE                                            :{COMMA} vuo{P si tta} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} vuo{P si tta} ({COMMA})
 
-STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. nopeus: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Huippunopeus: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Suurin nopeus: {LTBLUE}{VELOCITY} {BLACK}Toimintasäde: {LTBLUE}{COMMA} ruutua
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Paino: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Maks. nopeus: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Paino: {LTBLUE}{WEIGHT_SHORT} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Maks. nopeus: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
@@ -3450,7 +3454,7 @@ STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasite
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapasiteetti: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasiteetti: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Siirrä rahaa: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Siirron arvo: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Huoltoväli: {LTBLUE}{COMMA} päivää{BLACK}   Viimeisin huolto: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Huoltoväli: {LTBLUE}{COMMA}%{BLACK}   Viime huolto: {LTBLUE}{DATE_LONG}
@@ -3754,7 +3758,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Näytä 
 STR_AI_GAME_SCRIPT                                              :{BLACK}Peliskripti
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Tarkista peliskriptin loki
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Sopivaa tekoälyä ei löydetty.{}Tämä tekoäly ei tee mitään.{}Voit ladata tekoälyjä 'Online-sisältö' järjestelmällä
+STR_ERROR_AI_NO_AI_FOUND                                        :Sopivaa tekoälyä ei löydetty.{}Tämä tekoäly ei tee mitään.{}Voit ladata tekoälyjä 'Online-sisältö'-järjestelmän kautta
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Yksi käynnissä olevista skripteistä kaatui. Ilmoita tästä skriptin kehittäjälle littäen mukaan kuvankaappaus Tekoälyn/Peliskriptin virheenjäljitys -ikkunasta
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tekoälyn/Peliskriptin virheenjäljitysikkuna on vain palvelimen käytettävissä
 
@@ -4044,7 +4048,7 @@ STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Raiteet eivät 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Liikennevälinettä ei voi poistaa...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Moottorivaunun takaosa seuraa aina etuosaansa
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Reittiä paikalliselle veturitallille ei löydy.
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Paikallista huoltoasemaa ei löydy.
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Paikallista varikkoa ei löydy.
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Väärä varikkotyyppi
 
@@ -4155,7 +4159,7 @@ STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Laivaa e
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Lentokonetta ei voi pysäyttää/laittaa liikkeelle...
 
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Junan lähettäminen veturitalliin ei onnistu...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Ajoneuvon lähettäminen huoltoasemalle ei onnistu...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Ajoneuvon lähettäminen varikolle ei onnistu...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Laivaa ei voi lähettää telakalle...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Lentokonetta ei voi lähettää lentokonehalliin...
 

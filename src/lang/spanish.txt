@@ -2156,6 +2156,10 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Ajustar 
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Ajustar transparencia para los indicadores de carga. Ctrl+Click para bloquear
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Poner objetos invisibles en vez de transparentes
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Mostrar área de recogida
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Apagado

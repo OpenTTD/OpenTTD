@@ -2110,6 +2110,10 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Tendra/s
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Tendra/sløkk gjøgnumskygni fyri lessingar vísarar. Ctrl+trýst fyri at læsa
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ger lutir ósjónligar heldur enn gjøgnumskygdar
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Hálýsing av deknings øki
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Sløkt

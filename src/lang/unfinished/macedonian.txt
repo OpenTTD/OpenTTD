@@ -166,7 +166,7 @@ STR_ABBREV_ALL                                                  :{TINY_FONT}Се
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} патници{P "" s}
-STR_BAGS                                                        :{COMMA} вреќи
+STR_BAGS                                                        :{COMMA} вреќи{P "" s}
 STR_TONS                                                        :{COMMA} тон{P "" s}
 STR_LITERS                                                      :{COMMA} литар{P "" s}
 STR_ITEMS                                                       :{COMMA} точка{P "" s}
@@ -1028,6 +1028,10 @@ STR_CONTENT_TYPE_GS_LIBRARY                                     :ГШ библи
 
 
 # Transparency settings window
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Прифаќа: {GOLD}{CARGO_LIST}
