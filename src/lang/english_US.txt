@@ -221,6 +221,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Filter s
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Enter filter string
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Enter a keyword to filter the list for
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Select grouping order
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Select sorting order (descending/ascending)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Select sorting criteria
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Select filtering criteria
@@ -373,16 +374,16 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Quit
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Map of world
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Extra viewport
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Cargo Flow Legend
 STR_MAP_MENU_SIGN_LIST                                          :Sign list
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Town directory
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Found town
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidies
@@ -1560,11 +1561,36 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Average size of
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Remove absurd road-elements during the road construction: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Remove dead road ends during funded road reconstruction
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Update distribution graph every {STRING} days
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Time between subsequent recalculations of the link graph. Each recalculation calculates the plans for one component of the graph. That means that a value X for this setting does not mean the whole graph will be updated every X days. Only some component will. The shorter you set it the more CPU time will be necessary to calculate it. The longer you set it the longer it will take until the cargo distribution starts on new routes.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Take {STRING} days for recalculation of distribution graph
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Time taken for each recalculation of a link graph component. When a recalculation is started, a thread is spawned which is allowed to run for this number of days. The shorter you set this the more likely it is that the thread is not finished when it's supposed to. Then the game stops until it is ("lag"). The longer you set it the longer it takes for the distribution to be updated when routes change.
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetric
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetric
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distribution mode for passengers: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symmetric" means that roughly the same number of passengers will go from a station A to a station B as from B to A. "asymmetric" means that arbitrary numbers of passengers can go in either direction. "manual" means that no automatic distribution will take place for passengers.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distribution mode for mail: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetric" means that roughly the same amount of mail will be sent from a station A to a station B as from B to A. "asymmetric" means that arbitrary amounts of mail can be sent in either direction. "manual" means that no automatic distribution will take place for mail.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distribution mode for the ARMORED cargo class: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :The ARMORED cargo class contains valuables in the temperate, diamonds in the subtropical or gold in subarctic climate. NewGRFs may change that. "symmetric" means that roughly the same amount of that cargo will be sent from a station A to a station B as from B to A. "asymmetric" means that arbitrary of that cargo can be sent in either direction. "manual" means that no automatic distribution will take place for that cargo. It is recommended to set this to asymmetric or manual when playing subarctic, as banks won't send any gold back to gold mines. For temperate and subtropical you can also choose symmetric as banks will send valuables back to the origin bank of some load of valuables.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distribution mode for other cargo classes: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symmetric" means that roughly the same amount of cargo will be sent from a station A to a station B as from B to A. "asymmetric" means that arbitrary amounts of cargo can be sent in either direction. "manual" means that no automatic distribution will take place for those cargos. You probably want to set this to either "asymmetric" or manual.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distribution accuracy: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :The higher you set this the more CPU time the calculation of the link graph will take. If it takes too long you may notice lag. If you set it to a low value, however, the distribution will be inaccurate, and you may notice cargo not being sent to the places you expect it to go.
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effect of distance on demands: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :If you set this to a value higher than 0, the distance between the origin station A of some cargo and a possible destination B will have an effect on the amount of cargo sent from A to B. The further away B is from A the less cargo will be sent. The higher you set it, the less cargo will be sent to far away stations and the more cargo will be sent to near stations.
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Amount of returning cargo for symmetric mode: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Setting this to less than 100% makes the symmetric distribution behave more like the asymmetric one. Less cargo will be forcibly sent back if a certain amount is sent to a station. If you set it to 0% the symmetric distribution behaves just like the asymmetric one.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturation of short paths before using capacious paths: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frequently there are multiple paths between two given stations. Cargodist will saturate the shortest path first, then use the second shortest path until that is saturated and so on. Saturation is determined by an estimation of capacity and planned usage. Once it has saturated all paths, if there is still demand left, it will overload all paths, prefering the ones with high capacity. Most of the time the algorithm will not estimate the capacity accurately, though. This setting allows you to specify up to which percentage a shorter path must be saturated in the first pass before choosing the next longer one. Set it to less than 100% to avoid overcrowded stations in case of overestimated capacity.
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construction
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicles
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stations
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economy
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Cargo Distribution
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competitors
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Display options
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaction
@@ -2902,9 +2928,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Buy 1 y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Bribe the local authority to increase your rating, at the risk of a severe penalty if caught.{}Cost: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Goals
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Global Goals
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Global goals:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- None -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Not applicable -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Company goals:
@@ -2945,6 +2974,17 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Services
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} from {STRING} to {STRING}{YELLOW} ({COMPANY}{YELLOW}, until {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click on service to center main view on industry/town. Ctrl+Click opens a new viewport on industry/town location
 
+# Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Story Book
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Global Story Book
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Page {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Jump to a specific page by selecting it in this drop down list.
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Previous
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Go to previous page
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Next
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Go to next page
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Station names - click on name to center main view on station. Ctrl+Click opens a new viewport on station location
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hold Ctrl to select more than one item
@@ -2974,6 +3014,29 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ratings
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Show station ratings
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Monthly supply and local rating:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
+STR_STATION_VIEW_GROUP                                          :{BLACK}Group by
+STR_STATION_VIEW_WAITING_STATION                                :Station: Waiting
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Amount: Waiting
+STR_STATION_VIEW_PLANNED_STATION                                :Station: Planned
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Amount: Planned
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} from {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} via {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} to {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} from unknown station
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} to any station
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} via any station
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} from this station
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} stopping at this station
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} to this station
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} non-stop
+
+STR_STATION_VIEW_GROUP_S_V_D                                    :Source-Via-Destination
+STR_STATION_VIEW_GROUP_S_D_V                                    :Source-Destination-Via
+STR_STATION_VIEW_GROUP_V_S_D                                    :Via-Source-Destination
+STR_STATION_VIEW_GROUP_V_D_S                                    :Via-Destination-Source
+STR_STATION_VIEW_GROUP_D_S_V                                    :Destination-Source-Via
+STR_STATION_VIEW_GROUP_D_V_S                                    :Destination-Via-Source
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Appalling
@@ -3721,6 +3784,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}This tim
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}This timetable will start at {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Start date
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Select a date as starting point of this timetable. Ctrl+Click sets the starting point of this timetable and distributes all vehicles sharing this order evenly based on their relative order, if the order is completely timetabled
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Change Time
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Change the amount of time that the highlighted order should take

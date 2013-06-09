@@ -435,15 +435,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Έξοδος
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Χάρτης του κόσμου
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Πρόσθετη εμφάνιση
 STR_MAP_MENU_SIGN_LIST                                          :Λίστα πινακίδων
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Καταλογος πόλεων
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Ιδρύση πόλης
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Χρηματοδοτήσεις
@@ -1630,6 +1630,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Μέσο μέγ
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Να αφαιρούνται παράλογα στοιχεία δρόμων κατά την κατασκευή τους: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Αφαίρεση αδιέξοδων άκρων κατά την χρηματοδοτούμενη ανακατασκευή δρόμων
 
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Περιβάλλον Λειτουργίας
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Κατασκευή
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Οχήματα
@@ -2227,6 +2228,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Εναλ
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Εναλλαγή διαφάνειας για τις συνδέσεις. Ctrl+Κλικ για να την κλειδώσετε
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Εναλλαγή διαφάνειας για τις ενδείξεις φόρτωσης. Ctrl+Κλικ για να την κλειδώσετε
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Επιλέξτε τα αντικείμενα που θα είναι αόρατα αντί για διάφανα
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Κάλυψη περιοχής
@@ -2995,6 +3000,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Υπηρ
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} από τον σταθμό {STRING} προς τον σταθμό {STRING}{YELLOW} ({COMPANY}{YELLOW}, έως τις {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Κάνετε κλικ στην υπηρεσία για κεντράρισμα στην βιομηχανία/πόλη. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία της βιομηχανίας/πόλης
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ονόματα σταθμών - κάνετε κλικ στο όνομα για κεντράρισμα στο σταθμό. Με Ctrl+Κλικ ανοίγει νέο παράθυρο προβολής στην τοποθεσία του σταθμού
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Κρατήστε πατημένο το Ctrl για να επιλέξετε περισσότερα από ένα αντικείμενα
@@ -3022,6 +3029,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Βαθμολογίες
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Εμφάνιση στατιστικών σταθμού
+
+
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Απαίσια

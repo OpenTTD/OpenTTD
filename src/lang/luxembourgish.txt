@@ -372,15 +372,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Eraus
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Weltkaart
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Extra Usiicht
 STR_MAP_MENU_SIGN_LIST                                          :Schëlderlëscht
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stiedverzeeschniss
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Stad grënnen
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subventiounen
@@ -1552,6 +1552,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Duerchschnëtts
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Beim Stroossebau absurd Stroossenelementer ofrappen: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Huel Sakgaassen ewech wann d'Stroossen renovéiert ginn
 
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruktioun
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Gefierer
@@ -2150,6 +2151,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Wiesselt
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Wiesselt d'Transparenz fir d'Iwerleitung. Ctrl+Klick fir festzesetzen
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Wiesselt d'Transparenz fir d'Luedungsindikatoren. Ctrl+Klick fir festzesetzen
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Setzt d'Objeten op onsichtbar amplaz transparent
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Reechwäit
@@ -2918,6 +2923,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servicer
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} vun {STRING} op {STRING}{YELLOW} ({COMPANY}{YELLOW}, bis {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klick op den Service fir d'Usiicht op d'Industrie/Stad ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht op d'Industrie/Stad
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Statiounennimm - klick op den Numm fir d'Siicht drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht op d'Statioun
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Haalt Ctrl un fir méi wéi 1 Objekt auszewielen
@@ -2945,6 +2952,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bewertungen
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Weis d'Statiounsbewertungen
+
+
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Schrecklech

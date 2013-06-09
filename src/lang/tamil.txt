@@ -372,15 +372,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :வெளியேறு
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :உலகப் படம்
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :கூடுதல் பார்வைபடம்
 STR_MAP_MENU_SIGN_LIST                                          :குறிகளின் பட்டியல்
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :நகர புத்தகம்
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :நகரம் உருவாக்கு
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :மானியங்கள்
@@ -1385,6 +1385,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 in {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ஒன்றுமில்லை
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :தொடக்க நகர அளவு பெருக்கம்: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :ஆட்டத்தின் தொடக்கத்தில் மாநகரங்களின் அளவு நகரங்களை ஒப்பிடுகையில்
+
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}கட்டுமானம்
@@ -2637,6 +2638,8 @@ STR_SUBSIDIES_NONE                                              :{ORANGE}- ஒ�
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}மானியம் ஏற்கனவே வழங்கப்பட்ட பணிகள்:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} {STRING} இருந்து {STRING} வரை {YELLOW} ({COMPANY}{YELLOW}, {DATE_SHORT} வரை)
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl அழுத்தி ஒன்றிற்கும் மேற்ப்பட்ட பொருட்களைத் தேர்ந்தெடுக்கவும்
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} நிலையம்{P "நிலையம்" நிலையங்கள்}
@@ -2665,6 +2668,8 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}தர�
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}நிலைய தரத்தினைக் காட்டவும்
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}மாத வினியோகம் மற்றும் பகுதி தர மதிப்பீடு:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
+
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :மட்டம்

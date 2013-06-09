@@ -371,19 +371,18 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :ออกจากเกม
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :แผนที่โลก
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :มุมมองเพิ่มเติม
 STR_MAP_MENU_SIGN_LIST                                          :รายการป้าย
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :ทำเนียบชื่อเมือง
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :ตั้งเมือง
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :การสนับสนุน
-STR_GRAPH_MENU_GOAL                                             :เป้าหมายปัจจุบัน
 ############ range ends here
 
 ############ range for graph menu starts
@@ -1360,6 +1359,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :เร็วม
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :ตัวคูณขนาดเมืองเริ่มต้น: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :นำสิ่งที่เป็นอุปสรรคของถนนออกระหว่างการก่อสร้างถนน: {STRING}
 
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}ส่วนเชื่อมต่อผู้ใช้
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}การก่อสร้าง
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}ยานพาหนะ
@@ -1945,6 +1945,10 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}เป�
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}เปิด/ปิด การโปร่งใสของตัวบอกการบรรทุกของ. กด Ctrl+Click สำหรับการล็อก
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}ตั้งให้วัตถุมองไม่เห็นแทนการโปร่งใส
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}แสดงพื้นที่ให้บริการ
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}ปิด
@@ -2460,6 +2464,8 @@ STR_SUBSIDIES_CAPTION                                           :{WHITE}เง�
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}ให้เงินอุดหนุนสำหรับการบริการ:
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}การบริการได้เงินอุดหนุนเรียบร้อยแล้ว:
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2471,6 +2477,8 @@ STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_L
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} ถ่ายมาจาก {STATION})
 
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}กำลังต้องการ: {WHITE}{CARGO_LIST}
+
+
 
 
 

@@ -221,6 +221,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Suodatin
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Syötä suodatinteksti
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Syötä avainsana suodattaaksesi listan
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Valitse ryhmittelyjärjestys
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Valitse järjestys (laskeva/nouseva)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Valitse järjestyskriteeri
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Valitse suodatuskriteerit
@@ -373,16 +374,16 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Sulje
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Maailmankartta
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Lisänäkymä
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Rahtivirran selitys
 STR_MAP_MENU_SIGN_LIST                                          :Kylttilista
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Kaupunkihakemisto
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Perusta kaupunki
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Tuet
@@ -1560,11 +1561,36 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Suurkaupunkien 
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Poista turhat tie-elementit tienrakennuksen aikana: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Poista turhat tien loppuosat tieverkon uudelleenrakentamisen yhteydessä
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Päivitä rahdin jakautuminen {STRING} päivän välein
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Yhteyskuvaajan uudelleenlaskujen välinen aika. Kukin uudelleenlasku laskee yhden kuvaajan komponentin. Tämä tarkoittaa sitä, että koko kuvaajaa ei lasketa uudelleen määrittämäsi ajan välein, vaan ainoastaan yksi komponentti. Mitä lyhyemmäksi määrität asetuksen, sitä enemmän prosessoriaikaa komponentin laskemiseen vaaditaan. Mitä pidemmäksi määrität sen, sitä pidempi aika kuluu, kunnes rahdin jakaminen alkaa uusilla reiteillä.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Käytä {STRING} päivää rahdin jakauman uudelleenlaskemiseen
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Jokaisen yhteyskuvaajan komponentin uudelleenlaskemiseen käytettävä aika. Uudelleenlaskun alkaessa käynnistetään uusi säie, jonka annetaan toimia näin monta päivää. Mitä lyhyemmäksi määrität tämän, sitä todennäköisempää on, että säie ei ole valmis ajoissa. Tällöin peli pysähtyy kunnes lasku on suoritettu loppuun (peli pätkii). Mitä pidemmäksi määrität asetuksen, sitä pitempään rahdin jakauman päivittämiseen kuluu aikaa reittien muuttuessa.
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuaalinen
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :epäsymmetrinen
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrinen
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Matkustajien jakautuminen: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symmetrinen" tarkoittaa, että suunnilleen sama määrä matkustajia kulkee asemalta A asemalle B kuin asemalta B asemalle A. "epäsymmetrinen" tarkoittaa, että eri suuntiin voi kulkea eriävä määrä matkustajia. "manuaalinen" tarkoittaa, että automaattinen rahdin jakautuminen on pois käytöstä matkustajilla.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Postin jakautuminen: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetrinen" tarkoittaa, että suunnilleen sama määrä postia lähetetään asemalta A asemalle B kuin asemalta B asemalle A. "epäsymmetrinen" tarkoittaa, että eri suuntiin voidaan lähettää eriävä määrä postia. "manuaalinen" tarkoittaa, että automaattinen rahdin jakautuminen on pois käytöstä postilla.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Arvokuljetusten jakautuminen: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Arvokuljetuksiin kuuluvat arvotavarat lauhkeassa ilmastossa, timantit subtrooppisessa ilmastossa ja kulta pohjoisessa ilmastossa. NewGRF:t voivat kuitenkin muuttaa näitä rahteja. "symmetrinen" tarkoittaa, että suunnilleen sama määrä rahtia lähetetään asemalta A asemalle B kuin asemalta B asemalle A. "epäsymmetrinen" tarkoittaa, että eri suuntiin voidaan lähettää eriävä määrä rahtia. "manuaalinen" tarkoittaa, että automaattinen rahdin jakautuminen on poistettu käytöstä rahdilta. Suositeltavia asetuksia ovat "epäsymmetrinen" tai "manuaalinen" pelattaessa pohjoisessa ilmastossa, sillä pankit eivät lähetä kultaa takaisin kaivoksille. Lauhkeassa ja subtrooppisessa ilmastossa pelatessa voidaan myös valita "symmetrinen", sillä pankit lähettävät arvotavaroita takaisin alkuperäiselle pankille.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Muiden rahtityyppien jakautuminen: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symmetrinen" tarkoittaa, että suunnilleen sama määrä rahtia lähetetään asemalta A asemalle B kuin asemalta B asemalle A. "epäsymmetrinen" tarkoittaa, että eri suuntiin voidaan lähettää eriäviä määriä rahtia. "manuaalinen" tarkoittaa, että automaattinen jakautuminen ei ole käytössä rahdille. Suositeltavia asetuksia ovat "epäsymmetrinen" ja "manuaalinen".
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Jakautumisen tarkkuus: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Mitä suuremmaksi tämä asetus on määritetty, sitä enemmän prosessoriaikaa yhteyskuvaajan laskemiseen kuluu. Mikäli tähän kuluu liian paljon aikaa, saatat havaita pelin nykimistä. Jos arvo on määritetty liian pieneksi, jakauman laskeminen ei ole tarkka ja rahtia ei välttämättä lähetetä odotetuille asemille.
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Välimatkan vaikutus kysyntään: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Mikäli asetuksen arvo on määritelty suuremmaksi kuin 0, alkuperäisen aseman A ja mahdollisen määränpään B välimatkalla on vaikutus A:sta B:hen lähetetyn rahdin määrään. Mitä kauempana B on A:sta, sitä vähemmän rahtia lähetetään. Mitä suuremmaksi tämä asetus on määritetty, sitä vähemmän rahtia lähetetään kaukana oleville ja enemmän lähellä oleville asemille.
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Palautettavan rahdin määrä symmetrisessä tilassa: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Mikäli asetuksen arvoksi on määritetty alle 100%, symmetrinen jakauma toimii enemmän epäsymmetrisen jakauman tavoin ja vähemmän rahtia pakotetaan lähetettäväksi takaisin alkuperäiselle asemalle. Jos arvoksi määritetään 0%, symmetrinen jakauma toimii täysin epäsymmetrisen jakauman tavoin.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Lyhyiden reittien kuormittuminen ennen vapaampien reittien käyttämistä: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Kahden aseman välillä on usein useita reittejä. Lyhintä reittiä käytetään ensisijaisesti, toisiksi lyhintä ensimmäisen kuormittuessa ja niin edelleen. Kuormitus määritellään arvioidun kapasiteetin ja suunnitellun käytön mukaan. Kaikkien reittien ollessa kuormittuneita reittejä aletaan ylikuormittamaan, suurimman kapasiteetin omaavista reiteista aloittaen. Algoritmi ei kuitenkaan aina arvioi kapasiteettia oikein. Tämä asetus mahdollistaa reitin kuormitustason määrittämisen ennen seuraavan reitin käyttämistä. Määritä arvoksi vähemmän kuin 100% välttääksesi ylikuormittuneita asemia jos kapasiteetti yliarvioidaan.
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Käyttöliittymä
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Rakentaminen
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ajoneuvot
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Asemat
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Talous
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Rahdin jakautuminen
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Kilpailijat
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Näyttöasetukset
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Vuorovaikutus
@@ -2902,9 +2928,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Osta vu
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Lahjo viranomaisia lisätäksesi arviotasi; rangaistus voi olla kuitenkin suuri, jos jäät kiinni.{}Kulu: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Tavoitteet
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Maailmanlaajuiset tavoitteet
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Maailmanlaajuiset tavoitteet:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ei mitään -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Ei saatavilla -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Yhtiön tavoitteet:
@@ -2945,6 +2974,17 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Käytety
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} välille {STRING}-{STRING}{YELLOW} ({COMPANY}{YELLOW}, {DATE_SHORT} asti)
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Napsauta palvelua keskittääksesi päänäkymän teollisuuteen/kaupunkiin. Ctrl+Klik avaa uuden näkymäikkunan teollisuuden/kaupungin sijaintiin
 
+# Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}Yhtiön {COMPANY} historia
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Yleinen yhtiöhistoria
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Sivu {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Siirry tietylle sivulle valitsemalla se tästä valikosta
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Edellinen
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Siirry edelliselle sivulle
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Seuraava
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Siirry seuraavalle sivulle
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Asemien nimet - napsauta nimeä keskittääksesi päänäkymän asemaan. Ctrl+Klik avaa uuden näkymäikkunan aseman sijaintiin
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Pidä Ctrl-näppäin painettuna valitaksesi useamman kuin yhden vaihtoehdon
@@ -2974,6 +3014,29 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Arviot
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näytä aseman arviot.
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Kuukausittainen tarjonta ja paikallinen arvio:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
+STR_STATION_VIEW_GROUP                                          :{BLACK}Järjestä
+STR_STATION_VIEW_WAITING_STATION                                :Asema: Odottaa
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Määrä: Odottaa
+STR_STATION_VIEW_PLANNED_STATION                                :Asema: Suunniteltu
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Määrä: Suunniteltu
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} asemalta {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} aseman {STATION} kautta
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} asemalle {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} tuntemattomalta asemalta
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} mille tahansa asemalle
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} minkä tahansa aseman kautta
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} tältä asemalta
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} pysähtyy tällä asemalla
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} tälle asemalle
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} pysähtymättä
+
+STR_STATION_VIEW_GROUP_S_V_D                                    :Lähde-Kautta-Päämäärä
+STR_STATION_VIEW_GROUP_S_D_V                                    :Lähde-Päämäärä-Kautta
+STR_STATION_VIEW_GROUP_V_S_D                                    :Kautta-Lähde-Päämäärä
+STR_STATION_VIEW_GROUP_V_D_S                                    :Kautta-Päämäärä-Lähde
+STR_STATION_VIEW_GROUP_D_S_V                                    :Päämäärä-Lähde-Kautta
+STR_STATION_VIEW_GROUP_D_V_S                                    :Päämäärä-Kautta-Lähde
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Tyrmistyttävä
@@ -3721,6 +3784,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Tämä a
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tämä aikataulu alkaa {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Aloituspäivä
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Valitse päivämäärä aikataulun aloituspäiväksi. Ctrl+Klik määrittää aikataulun aloituspäivän ja jakaa aikataulun tasaisesti kaikkien sitä käyttävien ajoneuvojen kesken niiden järjestyksen mukaan.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuta aikaa
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Aseta kuinka kauan käskyn tulisi kestää

@@ -373,16 +373,16 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Afsluiten
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kaart
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Extra kijkvenster
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Vracht Stroom Legenda
 STR_MAP_MENU_SIGN_LIST                                          :Bordenlijst
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stedenlijst
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Sticht een stad
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidies
@@ -1559,6 +1559,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Stadsgroei-indi
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gemiddelde grootte van steden in vergelijking tot normale steden bij het begin van het spel.
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Verwijder rare weg-elementen tijdens het repareren van de weg: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Verwijder doodlopende wegen bij het bouwen van gefinancierde wegen.
+
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Constructie
@@ -2945,6 +2946,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Bestaand
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} van {STRING} naar {STRING}{YELLOW} ({COMPANY}{YELLOW}, tot {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik op de dienst om het dorp/industrie te centreren. Ctrl+klik opent een nieuw venster op de locatie van het dorp/industrie
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen - klik op naam om het scherm te centreren op het station. Ctrl+klik opent een nieuw venster op de locatie van het station
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Houd Ctrl ingedrukt om meer items te kiezen
@@ -2974,6 +2977,8 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Rangen
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Bekijk stationsreputaties
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Maandelijkse levering en lokale waardering:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
+
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Teleurstellend

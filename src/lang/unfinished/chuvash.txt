@@ -227,10 +227,10 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Тух
 ############ range ends here
 
-############ range for map menu starts
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
-############ end of the 'Display map' dropdown
-############ end of the 'Town' dropdown
+# map menu
+
+############ range for town menu starts
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Грантсем
@@ -604,6 +604,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Виҫеллӗ
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Хӑвӑрт
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Питӗ хӑвӑрт
 
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Интерфейс
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Лартӑм
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ҫул-йӗр:
@@ -812,6 +813,10 @@ STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Вер�
 
 
 # Transparency settings window
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 
@@ -1031,6 +1036,8 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 # Subsidies window
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ҫук -
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -1039,6 +1046,8 @@ STR_STATION_LIST_NONE                                           :{YELLOW}- Ҫу�
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+
+
 
 
 

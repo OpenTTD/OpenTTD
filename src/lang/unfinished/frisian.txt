@@ -368,15 +368,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Ofslúte
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kaart fan 'e wrâld
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra sichtber diel
 STR_MAP_MENU_SIGN_LIST                                          :Buordsjeslist
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stêden list
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Sticht in stêd
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsydzjes
@@ -1262,6 +1262,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Hiel snel
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Begjin stêdgrutte fermenigfuldiger: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Helje frjemde stikken dyk fourt by it bouen fan nije routes: {STRING}
 
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}konstruksje
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Auto's
@@ -1613,6 +1614,10 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kin it d
 
 
 # Transparency settings window
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Ut
@@ -2057,6 +2062,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Tsjinste
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} fan {STRING} nei {STRING}{YELLOW} ({COMPANY}{YELLOW}, oant {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik om te sentrearen op yndusty/stêd. Ctrl+klick iepent in nij sichtber diel op yndustry/stêd lokaasje
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2070,6 +2077,8 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aksepteart: {WHITE}{CARGO_LIST}
+
+
 
 
 

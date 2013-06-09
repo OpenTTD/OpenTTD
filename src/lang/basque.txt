@@ -371,15 +371,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Irten
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Munduko mapa
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :lehio extra
 STR_MAP_MENU_SIGN_LIST                                          :Seinale zerrenda
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Herri direktorioa
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Herria eraiki
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidioak
@@ -1511,6 +1511,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Joko hasieran h
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Errepideak eraikitzerakoan elementu ez egokiak eragotzi: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Errepide berreraikuntza ordaintzerakoan irteerarik gabeko errepideak kentzea
 
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfazea
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Eraikuntza
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ibilgailuak
@@ -2102,6 +2103,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Itsasarg
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}katenariaren gardentasuna aldatu. Ktrl+Klik blokeatzeko
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Zama adierazleen gardentasuna aldatu. Ktrl+Klik blokeatzeko
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Objektuak ikusezinak egin, gardenak izan ordez
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Geltoki irismena erakutsi
@@ -2867,6 +2872,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Subentzi
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} {STRING}tik {STRING}{YELLOW}ra ({COMPANY}{YELLOW}, {DATE_SHORT} arte)
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikatu garraio zerbitzuan ikuspegi nagusia industria/herrian zentratzeko. Ktrl+Klik ikuspegi lehio berria irekiko du indutri/herriaren kokapenean
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Geltokien izenak - Klikatu geltokiaren izenean ikuspegi nagusia geltokian zentratzeko. Ktrl+Klik Ikuspegi lehio berria irekiko du geltokiaren kokapenean
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Mantendu Ktrl geltoki bat baino gehiago aukeratzeko
@@ -2893,6 +2900,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Zama balorazioak
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Geltokiaren zama balorazioak erakutsi
+
+
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Negargarria

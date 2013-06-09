@@ -369,15 +369,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Fermu
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mondomapo
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Plia vidujo
 STR_MAP_MENU_SIGN_LIST                                          :Afiŝa listo
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Urba katalogo
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Urbo troviĝas.
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencioj
@@ -1315,6 +1315,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Tre rapide
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Komenca urbgrandeca multobligo: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Forigu sensensajn straterojn dum stratkonstruado: {STRING}
 
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfaco
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruado
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veturiloj
@@ -1869,6 +1870,10 @@ STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Baskulig
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Baskuligi travideblecon de aĵoj kiel lumturoj kaj antenoj. Stir+Klak por ŝlosi.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Baskuligi travideblecon de katenarion. Stir+Klak por ŝlosi.
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Baskuligi travideblecon de ŝarĝindikiloj. Stir+Klak por ŝlosi.
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Ŝarĝregiona marko
@@ -2536,6 +2541,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servoj s
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} de {STRING} al {STRING}{YELLOW} ({COMPANY}{YELLOW}, ĝis {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klaku servon por centri vidon ĉe la industrio/urbo. Stir+Klak por malfermi novan vidujon ĉe la loko.
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stacionomoj - klaku nomon por centri vidon ĉe la stacio. Stir+Klak por malfermi novan vidujon ĉe la stacioloko.
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Tenu la CTRL-klavon por elekti plurajn erojn
@@ -2561,6 +2568,8 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Akcepti�
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Takso
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Montru stacian takson
+
+
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Plorige

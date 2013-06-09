@@ -385,15 +385,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :יציאה
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :מפת העולם
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :השקפה נוספת
 STR_MAP_MENU_SIGN_LIST                                          :רשימת שלטים
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :מדריך הערים
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :ייסד עיר
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :סובסידיות
@@ -1563,6 +1563,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :גודל ממו
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :הסר רכיבי-דרך לא הגיוניים במהלך בניית דרכים: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :הסר קצות כבישים ללא מוצא בעת סלילה מחדש ממומנת של כבישים
 
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}ממשק חזותי
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}בנייה
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}כלי תחבורה
@@ -2155,6 +2156,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}שנה �
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}שנה שקיפות עבור עמודי חשמל
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}שנה שקיפות עבור מצביעי הטענה
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}הסתר במקום הפוך לשקוף
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}הדגשת שטח הכיסוי
@@ -2923,6 +2928,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK} :שיר
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} מ-{STRING} אל {STRING}{YELLOW} ({COMPANY}{YELLOW}, עד {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}לחץ על שירות כדי להתמקד על עיר/תעשייה. Ctrl+לחיצה פותח חלונית תצוגה חדשה על מיקום העיר/תעשייה
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}שמות תחנות - לחץ על השם כדי להתמקד בתחנה. Ctrl+לחיצה פותח חלונית תצוגה חדשה על מיקום התחנה
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}לחץ והחזק מקש קונטרל כדי לבחור יותר מפריט אחד
@@ -2949,6 +2956,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}דירוג
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}הצג את דירוג השירות
+
+
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :מחריד

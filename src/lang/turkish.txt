@@ -374,16 +374,16 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Çıkış
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Dünya haritası
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra görünüm
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Kargo Akış Lejantı
 STR_MAP_MENU_SIGN_LIST                                          :Tabela listesi
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Şehir listesi
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Şehir başlat
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Teşvikler
@@ -1430,6 +1430,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Hızlı
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Çok Hızlı
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Birincil şehir büyüklüğü çarpanı: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Yol yapımı sırasında gerçekçi olmayan yerleri kaldır: {STRING}
+
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Arayüz
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}İnşaat
@@ -2803,6 +2804,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Teşvik 
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} {STRING} -> {STRING}{YELLOW} ({COMPANY}{YELLOW}, {DATE_SHORT} tarihine kadar)
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Görüntüyü ortalamak için endüstriye/şehre tıklayın. Ctrl ile tıklama endüstrinin/şehrin konumunu gösteren yeni bir pencere açar
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}İstasyon isimleri - gitmek için istasyon ismini tıklayın. Ctrl ile tıklama istasyonun konumunu gösteren yeni bir pencere açar
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Birden fazla nesne seçmek için Ctrl'yi basılı tutun
@@ -2831,6 +2834,8 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Reyting
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}İstasyonun reytinglerini göster
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Aylık üretim ve yerel reyting
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} (%{COMMA})
+
+
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Berbat

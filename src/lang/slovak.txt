@@ -436,15 +436,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Koniec
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa sveta
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ďalší pohľad
 STR_MAP_MENU_SIGN_LIST                                          :Zoznam popisov
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Zoznam miest
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Založiť mesto
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Dotácie
@@ -1620,6 +1620,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Priemerná veľ
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Pri rekonštrukcii ciest odstrániť nezmyselné časti: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Odstráň "mŕtve" konce ciest počas financovanej rekonštrukcie ciest.
 
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Rozhranie
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Výstavba
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozidlá
@@ -2218,6 +2219,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Prepnú�
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Zmena priehľadnosti trakčného vedenia. CTRL+klik uzamkne nastavenie
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Prepnúť zobrazenie ukazateľov nakladania. CTRL+klik uzamkne nastavenie
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Nastavit objekty neviditelné namiesto priehladných
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Ukázať oblasť pokrytia
@@ -2986,6 +2991,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}V súča
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} z {STRING} do {STRING}{YELLOW} ({COMPANY}{YELLOW}, do {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kliknúť na trasu pre centrovanie pohľadu na továreň/mesto
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Názvy staníc - klikni pre pohľad na polohu stanice. Ctrl+klik presunie pohľad na stanicu
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Podržte CTRL pre výber viacerých položiek
@@ -3013,6 +3020,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :Spoločnosť {Y
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Hodnotenie
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Zobraziť hodnotenia stanice
+
+
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Hrozné

@@ -221,6 +221,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Sökfilt
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriv in sökfilter
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Skriv in ett sökord att filtrera listan efter
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Välj order att gruppera på
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Välj sorteringsordning (fallande/stigande)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Välj sortering
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Angre kriterier för filtrering
@@ -233,7 +234,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Fönster
 STR_TOOLTIP_SHADE                                               :{BLACK}Dölj fönster - Visa bara namnlisten
 STR_TOOLTIP_DEBUG                                               :{BLACK}Visa NewGRF felsökningsinformation
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Återställ fönstret till standardstorlek. Ctrl-klicka för att sätta nuvarande storlek som ny standard
-STR_TOOLTIP_STICKY                                              :{BLACK}Markera att fönstret ska lämnas öppet när 'Stäng alla fönster'-knappen används
+STR_TOOLTIP_STICKY                                              :{BLACK}Markera att fönstret ska lämnas öppet när 'Stäng alla fönster'-knappen används. Ctrl+Click för att spara som default
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klicka och dra för att förstora fönstret
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Växla stor/liten fönsterstorlek
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullningslist - rullar listan upp/ned
@@ -373,16 +374,16 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Avsluta
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Världskarta
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Nytt vyfönster
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legend för Godsflöden
 STR_MAP_MENU_SIGN_LIST                                          :Skyltlista
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista med städer
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Grunda stad
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subventioner
@@ -1560,11 +1561,15 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Storstäders ge
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Ta bort absurda väg-element under vägkonstruktion: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Ta bort återvändsgränder vid bekostad vägombyggnad
 
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Belastning av korta ruter innan längre rutter används: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofta finns det flera rutter mellan två givna stationer. Godsdistributionen kommer att fylla upp den första rutten först och därefter den näst kortaste tills den är mättad osv. Mättnadsgraden bestäms utifrån en uppskattning av kapaciteten och planerad användning. När godsdristributionen har belastat samtliga rutter, och om det finns kvarvarande behov, då kommer samtliga rutter att överbelastas med preferens för rutterna med högst kapacitet. Uppskattningen av kapaciteten kommer oftast inte ske med hög noggrannhet. Denna inställning tillåter dig att ställa in hur många procent som en kort rutt ska belastas innan algoritmen ska välja nästa längre rutt. Sätt värdet till under 100 % om du vill undvika överfulla stationer i händelse av överskattad kapacitet.
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Gränssnitt
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruktion
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Fordon
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stationer
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomi
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Godsdistribution
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Motståndare
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Skärminställningar
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interagera
@@ -2902,9 +2907,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Köp 1
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Muta de lokala myndigheterna för att öka din värdering, med risk för att få höga böter om du blir upptäckt.{} Kostnad: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Mål
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globala mål
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globala mål:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Inga -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Inte tillämpligt -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Företagsmål:
@@ -2945,6 +2953,17 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Redan su
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} från {STRING} till {STRING}{YELLOW} ({COMPANY}{YELLOW}, tills {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klicka för att centrera huvudvyn ovanför industrin/staden. Ctrl+klick öppnar en ny vy över industrin/stadens läge
 
+# Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} berättelsebok
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Global berättelsebok
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Sida {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Hoppa till valfri sida genom att välja sidan i denna lista
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Föregående
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Gå till föregående sida
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Nästa
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Gå till nästa sida
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamn - klicka på ett namn för att centrera huvudvyn på stationen. Ctrl+klick öppnar en ny vy över stationens läge
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Håll nere Ctrl för att markera mer än en sak
@@ -2973,6 +2992,29 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Värderingar
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Visa stationens klassificering
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
+STR_STATION_VIEW_GROUP                                          :{BLACK}Gruppera med hänsyn till
+STR_STATION_VIEW_WAITING_STATION                                :Station: väntar
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Mängd: väntar
+STR_STATION_VIEW_PLANNED_STATION                                :Station: planerad
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Mängd: planerad
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} från {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} via {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} till {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} från okänd station
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} till vilken station som helst
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} via vilken station som helst
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} från denna station
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} stannar vid denna station
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} till denna station
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} utan uppehåll
+
+STR_STATION_VIEW_GROUP_S_V_D                                    :Källa-Via-Mål
+STR_STATION_VIEW_GROUP_S_D_V                                    :Källa-Mål-Via
+STR_STATION_VIEW_GROUP_V_S_D                                    :Via-Källa-Mål
+STR_STATION_VIEW_GROUP_V_D_S                                    :Via-Mål-Källa
+STR_STATION_VIEW_GROUP_D_S_V                                    :Mål-Källa-Via
+STR_STATION_VIEW_GROUP_D_V_S                                    :Mål-Via-Källa
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Hemskt dålig
@@ -3720,6 +3762,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Den här
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Den här tidtabellen kommer starta {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdatum
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Välj ett datum som startpunkt för den här tidtabellen. Om tidtabellen är fullt tidssatt så innebär Ctrl+klick att startpunkten sätts för denna tidtabell och att startpunkten för övriga fordon som delar dessa order fördelas ut jämt baserat på deras relativa ordning
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ändra Tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ändra hur lång tid den markerade ordern bör ta

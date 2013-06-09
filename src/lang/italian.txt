@@ -375,16 +375,16 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Esci
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mappa del mondo
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Mini visuale extra
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda rotte commerciali
 STR_MAP_MENU_SIGN_LIST                                          :Elenco cartelli
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Elenco città
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Fonda città
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Sussidi
@@ -1583,6 +1583,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Moltiplicatore 
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Dimensione media delle metropoli in rapporto alle normali città all'inizio della partita
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Rimuovi segmenti isolati con la ricostruzione delle strade cittadine: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Rimuove i segmenti di strada abbandonati come parte di una ricostruzione finanziata delle strade
+
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfaccia
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Costruzione
@@ -2975,6 +2976,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servizi 
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} da {STRING} a {STRING}{YELLOW} ({COMPANY}{YELLOW}, fino al {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Fare clic su un servizio per centrare la visuale principale sull'industria o città. CTRL+clic mostra l'industria/città in una mini visuale
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomi delle stazioni - fare clic su un nome per centrare la visuale principale sulla stazione. CTRL+clic la mostra in una mini visuale.
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Tenere premuto CTRL per selezionare più di un elemento
@@ -3004,6 +3007,8 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Valutazi
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostra la valutazione della stazione
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Forniture mensili e valutazione locale:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
+
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Terribile

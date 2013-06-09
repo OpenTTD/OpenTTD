@@ -222,6 +222,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Patrón 
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Escriba un patrón de filtrado
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduzca una palabra clave para filtrar la lista
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Seleccionar orden de agrupamiento
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Seleccione ordenación (descendiente/ascendiente)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Seleccione criterio de orden
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Seleccione criterio de filtrado
@@ -374,16 +375,16 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Salir
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa del mundo
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Punto de vista extra
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Leyenda de Movimientos de Carga
 STR_MAP_MENU_SIGN_LIST                                          :Lista de carteles
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Directorio de pueblos
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Fundar pueblo
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvenciones
@@ -1561,11 +1562,36 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamaño medio d
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Quitar absurdos de la carretera durante su construcción: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Elimina carreteras sin salida durante la reconstrucción de carreteras de los pueblos
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualizar el gráfico de distribución cada {STRING} días
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Periodo de tiempo entre calculos del gráfico de distribucion consecutivos. Esta opcion se refiere a los calculos para cada uno de los componentes del grafico, por lo cual fijar un valor no quiere decir que el gráfico completo se actualizará tras ese número de dias. Cuanto menor sea, mayor tiempo de CPU será necesario para calcular el gráfico de distribución. Cuanto mayor sea, más tardará el gráfico de distribución en adaptarse a nuevas rutas
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Usar {STRING} días para el cálculo del gráfico de distribución
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tiempo a emplear en el cálculo de cada uno de los componentes del gráfico de distribución. Cuanto menor sea este valor, más probable es que se produzca lag. Cuanto mayor sea, más tiempo tardará la distribución en actualizarse cuando se producen cambios en las rutas
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimétrico
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simétrico
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribución para pasajeros: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :En una distribución simétrica, se envía la misma cantidad de pasajeros deste la estación A a la B que desde B a A. En una distribución asimétrica se pueden enviar cantidades arbitrarias de pasajeros en ambas direcciones. Manual significa que no se realiza una distribución automática para los pasajeros
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modo de distribución para el correo: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :En una distribución simétrica, se envía la misma cantidad de carga deste la estación A a la B que desde B a A. En una distribución asimétrica se pueden enviar cantidades arbitrarias de carga en ambas direcciones. Manual significa que no se realiza una distribución automática para el correo
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modo de distribución para la clase de carga ARMOURED: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La clase de carga ARMOURED contiene los objetos de valor del clima templado, los diamantes del clima subtropical o el oro del clima subártico. Los NewGRFs pueden modificar las clases de ARMOURED presentes en una partida. En una distribución simétrica, se envía la misma cantidad de carga deste la estación A a la B que desde B a A. En una distribución asimétrica se pueden enviar cantidades arbitrarias de carga en ambas direcciones. Manual significa que no se realiza una distribución automática para esta carga. Se recomienda fijar esta distribucion a asimétrica o manual al jugar en subártico o subtropical. En el clima templado es posible escoger simétrica ya que los bancos pueden enviar de vuelta objetos de valor
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modo de distribución para otras clases de carga: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :La clase de carga ARMOURED contiene los objetos de valor del clima templado, los diamantes del clima subtropical o el oro del clima subártico. Los NewGRFs pueden modificar las clases de ARMOURED presentes en una partida. En una distribución simétrica, se envía la misma cantidad de carga deste la estación A a la B que desde B a A. En una distribución asimétrica se pueden enviar cantidades arbitrarias de carga en ambas direcciones. Manual significa que no se realiza una distribución automática para esta carga. Se recomienda fijar esta distribucion a asimétrica o manual al jugar en subártico o subtropical. En el clima templado es posible escoger simétrica ya que los bancos pueden enviar de vuelta objetos de valor
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisión de la Distribución: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Este valor determina el tiempo de CPU empleado en calcular el gráfico de distribución. Si es demasiado elevado puede producir lag. Si es demasiado bajo la distribucion puede ser poco precisa, causando que ocasionalmente se produzcan errores en los lugares a los que va la carga
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efecto de la distancia en la demanda: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Si se fija a un valor superior a 0, la distancia entre la estación origen A de cierta carga y un posible destino B afectará a la cantidad de carga que se enviará desde A a B. Cuanto más lejos esté B de A, menos carga se enviará. Cuanto mayor sea el valor de esta opción, menos carga se enviará a estaciones distantes en favor de estaciones cercanas
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Cantidad de carga a devolver en modo simétrico: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Fijar esta opción a menos de 100% hace que la distribución simétrica de carga se comporte de una forma más asimétrica. Se enviará menos carga de vuelta a la fuerza si una cantidad determinada es enviada a una estación. Si se fija a 0% la distribución simétrica se comporta como una distribución asimétrica
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturación de caminos cortos antes de usar aquellos de mayor capacidad: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frecuentemente hay múltiples caminos posibles entre dos estaciones determinadas. En primer lugar se intentará saturar el camino más corto, para posteriormente saturar el segundo más corto y así sucesivamente. La saturación está determinada por una estimación de capacidad y uso planificado. Una vez que se hayan saturado todos los caminos, si todavía hay demanda, se sobrecargarán los caminos empezando por aquellos de mayor capacidad. La mayor parte de las veces, el algoritmo no estimará la capacidad de forma precisa. Esta opción permite especificar el porcentaje de saturación que debe de tener una línea en la primera parte del algoritmo antes de pasar a la siguiente línea. Fijarlo a menos de 100% permite evitar estaciones sobrecargadas en el caso de que se sobreestimen las capacidades
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfaz
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construcción
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehículos
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Estaciones
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economía
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Distribución de Carga
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidores
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Opciones de visualización
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interacción
@@ -2903,9 +2929,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Comprar
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Sobornar a las autoridades locales para aumentar su calificación, con el riesgo de una severa penalización si es descubierto.{}Coste: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Metas de {COMPANY}
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Metas Globales
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Metas globales:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ninguna -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- No aplicable -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Metas de la compañía:
@@ -2946,6 +2975,17 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Líneas 
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} desde {STRING} a {STRING}{YELLOW} ({COMPANY}{YELLOW}, hasta {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click sobre el servicio para centrar la vista principal en esta industria/pueblo. Ctrl+Click abre un punto de vista en dicha posición
 
+# Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}Historial de {COMPANY}
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Historial Global
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Página {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Permite saltar a una página específica al seleccionarla en esta lista desplegable
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Anterior
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Ir a la página anterior
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Siguiente
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Ir a la siguiente página
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nombres de estación - Click sobre un nombre para centrar la vista principal en la estación. Ctrl+Click abre un punto de vista en dicha posición
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Mantén pulsado Ctrl para seleccionar más de un elemento
@@ -2975,6 +3015,29 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Califica
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Ver calificación de la estación
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Suministro mensual y calificación local:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
+STR_STATION_VIEW_GROUP                                          :{BLACK}Agrupar por
+STR_STATION_VIEW_WAITING_STATION                                :Estación: Esperando
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Cantidad: Esperando
+STR_STATION_VIEW_PLANNED_STATION                                :Estación: Planeada
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Cantidad: Planeada
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} desde {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} vía {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} a {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} desde estación desconocida
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} a cualquier estación
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} vía cualquier estación
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} con salida desde esta estación
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} se detendrá en esta estación
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} a esta estación
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} sin paradas
+
+STR_STATION_VIEW_GROUP_S_V_D                                    :Origen-Vía-Destino
+STR_STATION_VIEW_GROUP_S_D_V                                    :Origen-Destino-Vía
+STR_STATION_VIEW_GROUP_V_S_D                                    :Vía-Origen-Destino
+STR_STATION_VIEW_GROUP_V_D_S                                    :Vía-Destino-Origen
+STR_STATION_VIEW_GROUP_D_S_V                                    :Destino-Origen-Vía
+STR_STATION_VIEW_GROUP_D_V_S                                    :Destino-Vía-Origen
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Espantoso
@@ -3722,6 +3785,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este hor
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este horario empezará en {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Fecha de inicio
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecciona una fecha como punto de partida de este horario. Ctrl+Click permite fijar el punto de partida de este horario y distribuye todos los vehículos que lo compartan siempre y cuando el horario esté completo
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar Horario
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia la cantidad de tiempo que debe tomar una orden marcada

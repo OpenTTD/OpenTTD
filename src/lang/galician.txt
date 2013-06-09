@@ -374,16 +374,16 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Saír
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa do mundo
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Xanela extra
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Lenda de tomar carga
 STR_MAP_MENU_SIGN_LIST                                          :Lista de rótulos
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Directorio de cidades
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Fundar poboación
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencións
@@ -1560,6 +1560,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador i
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Relación entre o tamaño medio das cidades e o dos pobos ao inicio da partida
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Elimina-los elementos absurdos das estradas en construción: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Eliminar tramos de estrada sen saída durante a reconstrución financiada das estradas
+
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construción
@@ -2946,6 +2947,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servizos
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} dende {STRING} ata {STRING}{YELLOW} ({COMPANY}{YELLOW}, ata {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Pincha no servizo para centrar a vista na industria/cidade. CTRL+Click abre unha nova fiestra na localización da industria/cidade
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomes das estacións - pincha nun nome para centrar a vista na estación. CTRL+Click abre unha nova fiestra na localización da estación
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Mantén pulsado CTRL para seleccionar máis dun ítem
@@ -2975,6 +2978,8 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Puntuaci
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostra-las puntuacións da estación
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Suministro mensual e puntuación local:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
+
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Pésima

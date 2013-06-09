@@ -27,7 +27,7 @@ STR_UNDEFINED                                                   :(neapibrėžta 
 STR_JUST_NOTHING                                                :Nieko
 STR_JUST_NOTHING.kas                                            :Niekas
 STR_JUST_NOTHING.ko                                             :Nieko
-STR_JUST_NOTHING.kam                                            :Niekui
+STR_JUST_NOTHING.kam                                            :Niekam
 STR_JUST_NOTHING.ka                                             :Nieką
 STR_JUST_NOTHING.kuo                                            :Nieku
 STR_JUST_NOTHING.kur                                            :Niekur
@@ -416,6 +416,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Raktažo
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Įveskite filtro raktažodį
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Įveskite raktažodį sąrašui filtruoti
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Pasirinkti grupavimo tvarką
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Rikiavimo tvarka (didėjančiai/mažėjančiai)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Rikiavimo raktas
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Filtravimo raktas
@@ -568,16 +569,16 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Išeiti
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Žemėlapis
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Papildomas peržiūros langas
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Krovinių Tiekimo Legenda
 STR_MAP_MENU_SIGN_LIST                                          :Ženklų sąrašas
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Miestų sąrašas
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Įkurti miestą
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidijos
@@ -1298,7 +1299,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Paskolos palūk
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Eksploatacijos išlaidų lygmuo: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Nustatyti infrastruktūros bei transporto priemonių ekploatacijos išlaidų lygmenį
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Statymo greitis: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Kompiuterio priešininko statymo sparta
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Kompiuterinio priešininko statymo sparta
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Transporto priemonių gedimo dažnumas: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Nurodo, kaip dažnai ges netinkamai prižiūrimos transporto priemonės
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidijų daugiklis: {STRING}
@@ -1755,11 +1756,37 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Vidutinis miest
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Panaikinti beprasmius kelio elementus kelių statybos metu: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Panaikinti aklavietes po finansuojamų kelių rekonstrukcijos
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Pasiskirstymo grafiką atnaujinti kas {STRING} dienų
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Užtrukti {STRING} dienų pasiskirstymo grafikui perskaičiuoti
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :pasirinktinai
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetriškas
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC.kas                  :{G=vyr}asimetriškas
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC.ko                   :{G=vyr}asimetriško
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC.kam                  :{G=vyr}asimetriškam
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC.ka                   :{G=vyr}asimetišką
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC.kuo                  :{G=vyr}asimetrišku
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC.kur                  :{G=vyr}asimetriškame
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC.kreip                :{G=vyr}asimetriškas
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetriškas
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC.kas                   :{G=vyr}simetriškas
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC.ko                    :{G=vyr}simetriško
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC.kam                   :{G=vyr}simetriškam
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC.ka                    :{G=vyr}simetrišką
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC.kuo                   :{G=vyr}simetrišku
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC.kur                   :{G=vyr}simetriškame
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC.kreip                 :{G=vyr}simetriškas
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Pasiskirstymo režimas paštui: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Pasiskirstymo režimas ŠARVUOTAI krovinių klasei: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Pasiskirstymo režimas kitoms krovinių klasėms: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Pasiskirstymo tikslumas: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Nustatant šį parametrą žemiau nei 100%, simetrinis pasiskirstymas panašėja į asimetrinį pasiskirstymą. Jei krovinio į stotį bus atvežama mažiau, nei tam tikra nustatyta riba, jis bus priverstinai išsiųstas atgal. Jei bus nustatyta 0% riba, simetrinis pasiskirstymas taps asimetriniu.
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Vaizdas
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstrukcijos
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Tr. priemonės
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stotelės
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomika
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Krovinių pasiskirstymas
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurentai
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Vaizdo nustatymai
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Sąveika
@@ -3097,9 +3124,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Pirkti 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Paperkant vietinę valdžią pakelti Jūsų reitingą, rizikuojant būti sunkiai nubaustam.{}Kaina: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Tikslai
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globalūs tikslai
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Visuotiniai tikslai:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nieko -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Netaikomas -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Kompanijos tikslai:
@@ -3140,6 +3170,16 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Jau subs
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} iš {STRING} į {STRING}{YELLOW} ({COMPANY}{YELLOW}, iki {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Paspauskite ant paslaugos, norėdami pamatyti pramonės vietą/miestą. Ctrl+Paspaudimas atidaro naują langą su pramonės vietos/miesto vaizdu
 
+# Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Scenarijaus knyga
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Puslapis {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Peršokti į konkretų puslapį pasirenkant jį iš sąrašo.
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Buvęs
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Į ankstesnį puslapį
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Kitas
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Į kitą puslapį
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stotelių pavadinimai - paspausk ant stotelės pavadinimo, kad pamatytum ją ekrano centre. Ctrl+Paspaudimas atidaro naują langą su stotelės vaizdu
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Laikant nuspaustą VALD (CTRL) galima pažymėti daugiau nei vieną
@@ -3169,6 +3209,23 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Reitinga
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Rodyti stoties reitingus
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Mėnesinis tiekimas ir vietinis reitingas:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
+STR_STATION_VIEW_GROUP                                          :{BLACK}Grupuoti pagal
+STR_STATION_VIEW_WAITING_STATION                                :Stotis: Laukia
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Suma: Laukiama
+STR_STATION_VIEW_PLANNED_STATION                                :Stotis: Planuota
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Suma: Planuota
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} iš {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} per {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} į {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} iš nežinomos stoties
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} į bet kurią stotį
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} per bet kurią stotį
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} iš šios stoties
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} stoja šioje stotyje
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} į šią stotį
+
+STR_STATION_VIEW_GROUP_D_V_S                                    :Nuvykimo taškas per Išvykimo tašką
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Pasibaisėtinas
@@ -3972,6 +4029,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Tvarkara
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tvarkaraštis bus aktyvintas {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Aktyvinimo data
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Tvarkaraštyje pasirinkite pradžios datą. Ctrl+pelės paspaudimas pažymės datą kaip pradžios tašką ir paskirstys visas transporto priemones su tokiais pačiais maršrutais tolygiai pagal jų santykinę poziciją maršrute (jei kryptys maršrute visiškai apibūdintos)
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Keisti trukmę
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Keisti pažymėtos užduoties trukmę
@@ -4272,7 +4330,7 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... prav
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Neįmanoma pašalinti stoties dalies...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Pašalinkite stotelę prieš tęsdami!
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Neįmanoma statyti autobuso stotelės...
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Neįmanoma pašalinti autobuso stotelės...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Neįmanoma griauti sunkvežimių stotelės...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Neįmanoma griauti keleivinio tramvajaus stotelės...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Neįmanoma griauti krovininio tramvajaus stotelės...

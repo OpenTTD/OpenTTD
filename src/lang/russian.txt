@@ -347,6 +347,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Филь
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Введите строку фильтра
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Введите ключевое слово для фильтрации списка
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Выбор порядка группировки
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Смена направления сортировки (убывание/возрастание)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Смена критерия сортировки
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Выберите фильтр
@@ -499,16 +500,16 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Выход
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Карта мира
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Доп. окно просмотра
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Легенда грузоперевозок
 STR_MAP_MENU_SIGN_LIST                                          :Список табличек
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Список городов
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Основать город
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Субсидии
@@ -1712,11 +1713,25 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Средний 
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Удалять бесполезные элементы дорог во время реконструкции: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Удалять тупиковые элементы дорог при реконструкции
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Обновлять граф распределения каждые {STRING} дней
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :вручную
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :несимметричное
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :симметричное
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Распределение пассажиров: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Распределение почты: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Распределение ценных грузов: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Распределение прочих грузов: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Точность распределения: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Зависимость спроса от расстояния: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Зависимость симметричного спроса от популярности отдаленных станций: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Насыщение коротких маршрутов перед использованием вместительных: {STRING}
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Интерфейс
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Строительство
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспорт
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Станции
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Экономика
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Распределение грузов
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Конкуренты
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Настройки экрана
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Взаимодействие
@@ -3125,6 +3140,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Субс
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} по маршруту из {STRING} в {STRING}{YELLOW} ({COMPANY}{YELLOW}, до {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Нажмите на маршрут для отображения предприятия/города. Ctrl+щелчок показывает в дополнительном окне.
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Список станций - щелчок по названию показывает станцию в основном окне. Ctrl+щелчок показывает в дополнительном окне.
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Нажмите и удерживайте Ctrl для выбора более одного варианта
@@ -3154,6 +3171,29 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейт
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Показать рейтинг станции
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Месячный объём поставок и местный рейтинг:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
+STR_STATION_VIEW_GROUP                                          :{BLACK}Группировать
+STR_STATION_VIEW_WAITING_STATION                                :по станции (ожидающие)
+STR_STATION_VIEW_WAITING_AMOUNT                                 :по количеству (ожидающие)
+STR_STATION_VIEW_PLANNED_STATION                                :по станции (планируемые)
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :по количеству (планируемые)
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} из {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} через {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} в {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} с неизвестной станции
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} на любую станцию
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} через любую станцию
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} с этой станции
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} через эту станцию
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} на эту станцию
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} без пересадок
+
+STR_STATION_VIEW_GROUP_S_V_D                                    :Откуда - Через - Куда
+STR_STATION_VIEW_GROUP_S_D_V                                    :Откуда - Куда - Через
+STR_STATION_VIEW_GROUP_V_S_D                                    :Через - Откуда - Куда
+STR_STATION_VIEW_GROUP_V_D_S                                    :Через - Куда - Откуда
+STR_STATION_VIEW_GROUP_D_S_V                                    :Куда - Откуда - Через
+STR_STATION_VIEW_GROUP_D_V_S                                    :Куда - Через - Откуда
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Ужасный
@@ -4987,42 +5027,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-
-STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Выбор порядка группировки
-
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Обновлять граф распределения каждые {STRING} дней
-STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :симметричное
-STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :несимметричное
-STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :вручную
-STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Распределение пассажиров: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Распределение почты: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Распределение ценных грузов: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Распределение прочих грузов: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Точность распределения: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Зависимость спроса от расстояния: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE                                  :Зависимость симметричного спроса от популярности отдаленных станций: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Насыщение коротких маршрутов перед использованием вместительных: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Распределение грузов
-
-STR_STATION_VIEW_GROUP                                          :{BLACK}Группировать
-STR_STATION_VIEW_WAITING_STATION                                :по станции (ожидающие)
-STR_STATION_VIEW_WAITING_AMOUNT                                 :по количеству (ожидающие)
-STR_STATION_VIEW_PLANNED_STATION                                :по станции (планируемые)
-STR_STATION_VIEW_PLANNED_AMOUNT                                 :по количеству (планируемые)
-STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} из {STATION}
-STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} через {STATION}
-STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} в {STATION}
-STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} с неизвестной станции
-STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} на любую станцию
-STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} через любую станцию
-STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} с этой станции
-STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} через эту станцию
-STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} на эту станцию
-STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} без пересадок
-
-STR_STATION_VIEW_GROUP_S_V_D                                    :Откуда - Через - Куда
-STR_STATION_VIEW_GROUP_S_D_V                                    :Откуда - Куда - Через
-STR_STATION_VIEW_GROUP_V_S_D                                    :Через - Откуда - Куда
-STR_STATION_VIEW_GROUP_V_D_S                                    :Через - Куда - Откуда
-STR_STATION_VIEW_GROUP_D_S_V                                    :Куда - Откуда - Через
-STR_STATION_VIEW_GROUP_D_V_S                                    :Куда - Через - Откуда

@@ -371,15 +371,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Излез
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Мапа на светот
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :екстра прозорец
 STR_MAP_MENU_SIGN_LIST                                          :Си листа
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Место
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Резултати градот
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :субвенции
@@ -395,7 +395,6 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Курс на �
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_GOAL                                             :Сега цели
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Табела на вредност на компании
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Детален перформанси рејтинг
 ############ range ends here
@@ -891,6 +890,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 
 
+
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}Грешка со конфигурациската датотека...
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... грешка во низа '{STRING}'
@@ -1312,6 +1312,8 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Клик
 # Subsidies window
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Кликни на сервис за да се центрира погледот на индустријата/градот
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -1326,6 +1328,8 @@ STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_L
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} пренасочено од {STATION})
 
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Прифаќа: {WHITE}{CARGO_LIST}
+
+
 
 
 

@@ -373,16 +373,16 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :خروج
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :نقشه ی دنیا
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :نمای اضافه
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :میزان حمل بار
 STR_MAP_MENU_SIGN_LIST                                          :لیست نشانه
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :لیست شهر ها
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :ساخت شهر
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :یارانه ها
@@ -398,7 +398,6 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :نمودار ق
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_GOAL                                             :اهداف فعلی
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :جدول اتحادیه شرکتها
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :جزییات امتیازهای کارایی
 STR_GRAPH_MENU_HIGHSCORE                                        :جدول بالاترین امتیازها
@@ -1338,6 +1337,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :تند
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :بسیار تند
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :مضرب ابتدایی اندازه شهرستان: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :حذف عناصر پوچ جاده در طول ساخت و ساز جاده: {STRING}
+
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}واسط کاربری
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}ساخت و ساز
@@ -2688,6 +2688,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}سروی
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} از {STRING} به {STRING}{YELLOW} ({COMPANY}{YELLOW}, تا {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}روی سرویس کلیک کنید تا آن شهر/صنایع در مرکز صفحه نمایش نشان داده شود. کنترل+کلیک یک صفحه نمایش تازه برای محل شهر/صنایع باز خواهد کرد
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}نام ایستگاه ها- بر روی نام کلیک کنید تا مرکز صفحه را بر روی ایستگاه قرار دهد. Ctrl+Click برای گشودن یک پنجره نمای جدا از ایستگاه
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}برای انتخاب بیش از یک آیتم، کنترل را بگیرید
@@ -2714,6 +2716,8 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}رده �
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}نشان دادن رتبه بندی ایستگاه
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}تولید ماهیانه و رتبه و محلی:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
+
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :ترسناک

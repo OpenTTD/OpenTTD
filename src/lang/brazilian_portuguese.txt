@@ -373,15 +373,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Sair
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa do mundo
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Janela extra
 STR_MAP_MENU_SIGN_LIST                                          :Lista de sinais
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista de cidades
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Fundar cidade
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsídios
@@ -1553,6 +1553,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamanho médio 
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Remover elementos de estrada absurdos ao construir ruas: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Remove ruas sem saída durante a reconstrução de ruas patrocinada
 
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construção
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veículos
@@ -2151,6 +2152,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Alternar
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Alternar transparência para catenária. Ctrl+Clique para travar
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Altera transparência para os indicadores de carga. Ctrl+Clique para travar
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Definir objetivos como invisíveis ao invés de transparentes.
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Destacar cobertura
@@ -2919,6 +2924,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Transpor
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} de {STRING} para {STRING}{YELLOW} ({COMPANY}{YELLOW}, até {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clique num serviço para centralizar a visualização principal numa indústria/cidade.Ctrl+Clique abre uma nova janela na localização da indústria/cidade
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomes da estação - clique no nome para centralizar a visualização principal na estação. Ctrl+Clique abre uma nova janela na localização da estação
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Segure Ctrl para selecionar mais de um item
@@ -2946,6 +2953,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Avaliações
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Exibir avaliações da estação
+
+
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Inexistente

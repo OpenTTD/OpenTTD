@@ -373,15 +373,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Изход
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Карта на света
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Допълнителна камера
 STR_MAP_MENU_SIGN_LIST                                          :Списък с табели
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Списък с градовете
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Основи град
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Субсидии
@@ -1559,6 +1559,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Относит�
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Премахване на абсурдни разклонения при строене на пътища: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Премахва краищата на пътища при финансиране на ремонт на пътя
 
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Интерфейс
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Строене
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Автомобили
@@ -2154,6 +2155,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Изпо
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Активирай прозрачност за висящите. CTRL+клик за фиксиране.
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Вклучи прозрачност за товарещи указатели. Ctrl+Click за заключване
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Направи обектите невидими вместо прозрачни
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Маркиране на Отбелязаната зона
@@ -2922,6 +2927,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Субс
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} от {STRING} до {STRING}{YELLOW} ({COMPANY}{YELLOW}, до {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Натисни върху услугата за да се фокусира върху индустрията/града. Ctrl отваря нов изглед към индустрията/града
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Имена на станции - натиснете върху името, за да фиксирате главния прозорец върху станцията
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Задържете CTRL, за да изберете повече от един обект
@@ -2949,6 +2956,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейтинги
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Покажи нивото на обслужване
+
+
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Плачевно

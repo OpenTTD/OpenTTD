@@ -373,16 +373,16 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :離開
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :世界地圖
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :打開新視野
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :貨物流程索引
 STR_MAP_MENU_SIGN_LIST                                          :標誌清單
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :市鎮目錄
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :興建市鎮
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :補助資訊
@@ -1559,6 +1559,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初始城市規
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :設定遊戲開始時城市的大小 (相對於一般市鎮而言)
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :鋪設道路時移除不合理的路面：{STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :設定是否在資助市鎮重建道路時移除死路
+
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}介面
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}建造
@@ -2945,6 +2946,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}已獲�
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}將 {STRING} 從 {STRING} 運到 {STRING}{YELLOW} ({COMPANY}{YELLOW}，補助到 {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}點選運送服務可將工業／市鎮置於畫面中央。 按住 Ctrl 點選可於工業／市鎮位置開啟新視窗視野
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}車站名稱 - 點選名稱可將車站置於畫面中央。按住 Ctrl 點選可於車站位置開啟新視窗視野
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}按住 CTRL 選擇多個項目
@@ -2974,6 +2977,8 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}評價
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}顯示車站評價
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}按月供應量與本地評比：
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
+
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :慘不忍睹

@@ -373,16 +373,16 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Thoát
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Bản đồ thế giới
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Cửa sổ bổ sung
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Ghi chú luồng hàng hóa
 STR_MAP_MENU_SIGN_LIST                                          :Danh sách biển hiệu
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Thư mục thị trấn
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Thị Xã
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Tiền trợ cấp
@@ -1559,6 +1559,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Hệ số quy m
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Kích thước trung bình của thành phố tỉ lệ với đô thị lúc bắt đầu trò chơi
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Bỏ đi những khúc đường ngớ ngẩn khi xây dựng đường: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Xóa bỏ những khúc đường cụt trong khi đầu tư cải tạo lại đường
+
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Giao Diện
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Xây Dựng
@@ -2945,6 +2946,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Chính q
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} từ {STRING} đến {STRING}{YELLOW} ({COMPANY}{YELLOW}, hết hạn {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Nháy vào tên dịch vụ để xem nhà máy/đô thị liên quan. Ctrl+Click mở cửa sổ mới để xem
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Các nhà ga, bến, cảng - nháy vào tên để xem vị trí nhà ga,bến, cảng. Ctrl+Click mở cửa sổ mới để xem
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Giữ nút Ctrl để chọn nhiều mục
@@ -2974,6 +2977,8 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Uy tín
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Hiện uy tín ga, bến, cảng
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Sản lượng và đánh giá địa phương hàng tháng:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
+
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Kinh hãi

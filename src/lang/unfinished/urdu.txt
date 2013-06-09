@@ -371,19 +371,18 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :باہر نکلو
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :دنیا کا نقشھ
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :اضافی منظر
 STR_MAP_MENU_SIGN_LIST                                          :اشاروں کی فھرست
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :کتبِ قصبھ جات
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :قصبھ قائم کیجیئے
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :امداد
-STR_GRAPH_MENU_GOAL                                             :موجودہ اہداف
 ############ range ends here
 
 ############ range for graph menu starts
@@ -1288,6 +1287,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :بہت تیز
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :شہر کا شروعاتی ضارب: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :سڑک کی تعمیر کے دوران غلط تعمیر شدہ حصوں کو ہٹا دے: {STRING}
 
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}انٹرفیس
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}تعمیرات
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}گاڑیاں
@@ -1869,6 +1869,10 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}catenary
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}لوڈ کرنے کے نشانوں کی شفافیت کی تدویم کریں۔ محدوظ کرنے کے لئے Ctrl+Click دبائیں
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}چیزوں کو شفاف کی بجائے غائب کر دیں
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}کوریج والے علاقے کو واضح کریں
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}بند
@@ -2229,6 +2233,8 @@ STR_GOAL_QUESTION_CAPTION_ERROR                                 :خرابی
 
 # Subsidies window
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2243,6 +2249,8 @@ STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_L
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} سے براستہ ہے {STATION})
 
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}منظور کرتا ہے: {WHITE}{CARGO_LIST}
+
+
 
 
 

@@ -372,15 +372,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Afslut
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kort over verden
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Nyt lokalitetsvindue
 STR_MAP_MENU_SIGN_LIST                                          :Liste over skilte
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Byoversigt
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Stift by
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Tilskudsordninger
@@ -1552,6 +1552,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gennemsnitlig s
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Fjern absurde vejelementer under opførelse af vej: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Fjern døde vej-ender i løbet af finansierede vej-rekostruktioner
 
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Brugerflade
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruktion
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køretøjer
@@ -2150,6 +2151,10 @@ STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Skift ge
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Slå transparens til/fra for køreledninger. CTRL+klik for at låse.
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Slå gennemsigtighed til/fra for laste-indikatorer. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gør objekter usynlige i stedet for gennemsigtige
+
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Vis dækningsområde
@@ -2918,6 +2923,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Tilskuds
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} fra {STRING} til {STRING}{YELLOW} ({COMPANY}{YELLOW}, indtil {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik på servicen for at centrere skærmen over industrien/byen. Ctrl+Klik åbner et nyt vindue ved industriens/byens lokalitet.
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnavne - klik på et navn for at centrere skærmen over stationen. Ctrl+Klik åbner et nyt vindue ved stationens lokalitet
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hold Ctrl nede for at vælge mere end én ting
@@ -2945,6 +2952,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW} {COMPA
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bedømmelse
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vis stationens bedømmelse
+
+
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Rædselsfuld
