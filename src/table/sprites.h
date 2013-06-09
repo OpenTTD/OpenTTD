@@ -56,7 +56,7 @@ static const SpriteID SPR_LARGE_SMALL_WINDOW = 682;
 
 /** Extra graphic spritenumbers */
 static const SpriteID SPR_OPENTTD_BASE   = 4896;
-static const uint16 OPENTTD_SPRITE_COUNT = 169;
+static const uint16 OPENTTD_SPRITE_COUNT = 174;
 
 /* Halftile-selection sprites */
 static const SpriteID SPR_HALFTILE_SELECTION_FLAT = SPR_OPENTTD_BASE;
@@ -1088,6 +1088,7 @@ static const SpriteID SPR_IMG_MESSAGES        = 680;
 static const SpriteID SPR_IMG_QUERY           = 723;
 static const SpriteID SPR_IMG_SIGN            = 4082;
 static const SpriteID SPR_IMG_BUY_LAND        = 4791;
+static const SpriteID SPR_IMG_STORY_BOOK      = SPR_OPENTTD_BASE + 169;
 
 /* OpenTTD in gamescreen */
 static const SpriteID SPR_OTTD_O                = 4842;
@@ -1316,6 +1317,12 @@ static const SpriteID SPR_IMG_CONVERT_RAIL   = SPR_OPENTTD_BASE + 55;
 static const SpriteID SPR_IMG_CONVERT_ELRAIL = SPR_OPENTTD_BASE + 59;
 static const SpriteID SPR_IMG_CONVERT_MONO   = SPR_OPENTTD_BASE + 65;
 static const SpriteID SPR_IMG_CONVERT_MAGLEV = SPR_OPENTTD_BASE + 71;
+
+/* story_gui.cpp */
+static const SpriteID SPR_IMG_VIEW_LOCATION  = SPR_OPENTTD_BASE + 170;
+static const SpriteID SPR_IMG_GOAL           = SPR_OPENTTD_BASE + 171;
+static const SpriteID SPR_IMG_GOAL_COMPLETED = SPR_OPENTTD_BASE + 172;
+static const SpriteID SPR_IMG_GOAL_BROKEN_REF= SPR_OPENTTD_BASE + 173;
 
 /* intro_gui.cpp, genworld_gui.cpp */
 static const SpriteID SPR_SELECT_TEMPERATE           = 4882;

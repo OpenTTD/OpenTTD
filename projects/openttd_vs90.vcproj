@@ -2100,6 +2100,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\story_gui.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\subsidy_gui.cpp"
 				>
 			</File>
@@ -2333,6 +2337,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\widgets\statusbar_widget.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\widgets\story_widget.h"
 				>
 			</File>
 			<File

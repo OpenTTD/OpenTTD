@@ -284,6 +284,11 @@ enum WindowClass {
 	 */
 	WC_GOALS_LIST,
 
+	/**
+	 * Story book; %Window numbers:
+	 *   - CompanyID = #StoryBookWidgets
+	 */
+	WC_STORY_BOOK,
 
 	/**
 	 * Station list; %Window numbers:

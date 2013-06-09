@@ -20,6 +20,7 @@
 #include "tile_map.h"
 #include "goal_type.h"
 #include "goal_base.h"
+#include "window_func.h"
 
 
 StoryPageElementID _new_story_page_element_id;
@@ -123,6 +124,8 @@ CommandCost CmdCreateStoryPage(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			s->title = strdup(text);
 		}
 
+		InvalidateWindowData(WC_STORY_BOOK, -1);
+
 		_new_story_page_id = s->index;
 		_story_page_next_sort_value++;
 	}
@@ -172,6 +175,8 @@ CommandCost CmdCreateStoryPageElement(TileIndex tile, DoCommandFlag flags, uint3
 		pe->page = page_id;
 		UpdateElement(*pe, tile, p2, text);
 
+		InvalidateWindowData(WC_STORY_BOOK, page_id);
+
 		_new_story_page_element_id = pe->index;
 		_story_page_element_next_sort_value++;
 	}
@@ -205,6 +210,7 @@ CommandCost CmdUpdateStoryPageElement(TileIndex tile, DoCommandFlag flags, uint3
 
 	if (flags & DC_EXEC) {
 		UpdateElement(*pe, tile, p2, text);
+		InvalidateWindowData(WC_STORY_BOOK, pe->page);
 	}
 
 	return CommandCost();
@@ -233,6 +239,8 @@ CommandCost CmdSetStoryPageTitle(TileIndex tile, DoCommandFlag flags, uint32 p1,
 		} else {
 			p->title = strdup(text);
 		}
+
+		InvalidateWindowData(WC_STORY_BOOK, page_id);
 	}
 
 	return CommandCost();
@@ -264,6 +272,8 @@ CommandCost CmdRemoveStoryPage(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		}
 
 		delete p;
+
+		InvalidateWindowData(WC_STORY_BOOK, -1);
 	}
 
 	return CommandCost();

@@ -642,7 +642,7 @@ static CallBackFunction MenuClickGraphs(int index)
 
 static CallBackFunction ToolbarLeagueClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_LEAGUE, STR_GRAPH_MENU_GOAL, _networking ? 3 : 4, Game::GetInstance() != NULL ? 0 : 1);
+	PopupMainToolbMenu(w, WID_TN_LEAGUE, STR_GRAPH_MENU_GOAL, _networking ? 4 : 5, Game::GetInstance() != NULL ? 0 : 2);
 	return CBF_NONE;
 }
 
@@ -656,9 +656,10 @@ static CallBackFunction MenuClickLeague(int index)
 {
 	switch (index) {
 		case 0: ShowGoalsList();               break;
-		case 1: ShowCompanyLeagueTable();      break;
-		case 2: ShowPerformanceRatingDetail(); break;
-		case 3: ShowHighscoreTable();          break;
+		case 1: ShowStoryBook();               break;
+		case 2: ShowCompanyLeagueTable();      break;
+		case 3: ShowPerformanceRatingDetail(); break;
+		case 4: ShowHighscoreTable();          break;
 	}
 	return CBF_NONE;
 }

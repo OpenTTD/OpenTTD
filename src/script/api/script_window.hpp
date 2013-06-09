@@ -69,6 +69,7 @@
 #include "../../widgets/viewport_widget.h"
 #include "../../widgets/waypoint_widget.h"
 #include "../../widgets/link_graph_legend_widget.h"
+#include "../../widgets/story_widget.h"
 
 /**
  * Class that handles window interaction. A Window in OpenTTD has two imporant
@@ -366,6 +367,11 @@ public:
 		 */
 		WC_GOALS_LIST                                = ::WC_GOALS_LIST,
 
+		/**
+		 * Story book; %Window numbers:
+		 *   - CompanyID = #StoryBookWidgets
+		 */
+		WC_STORY_BOOK                                = ::WC_STORY_BOOK,
 
 		/**
 		 * Station list; %Window numbers:
@@ -2239,6 +2245,17 @@ public:
 		WID_S_LEFT                                   = ::WID_S_LEFT,                                   ///< Left part of the statusbar; date is shown there.
 		WID_S_MIDDLE                                 = ::WID_S_MIDDLE,                                 ///< Middle part; current news or company name or *** SAVING *** or *** PAUSED ***.
 		WID_S_RIGHT                                  = ::WID_S_RIGHT,                                  ///< Right part; bank balance.
+	};
+
+	/* automatically generated from ../../widgets/story_widget.h */
+	/** Widgets of the #GoalListWindow class. */
+	enum StoryBookWidgets {
+		WID_SB_CAPTION                               = ::WID_SB_CAPTION,                               ///< Caption of the window.
+		WID_SB_SEL_PAGE                              = ::WID_SB_SEL_PAGE,                              ///< Page selector.
+		WID_SB_PAGE_PANEL                            = ::WID_SB_PAGE_PANEL,                            ///< Page body.
+		WID_SB_SCROLLBAR                             = ::WID_SB_SCROLLBAR,                             ///< Scrollbar of the goal list.
+		WID_SB_PREV_PAGE                             = ::WID_SB_PREV_PAGE,                             ///< Prev button.
+		WID_SB_NEXT_PAGE                             = ::WID_SB_NEXT_PAGE,                             ///< Next button.
 	};
 
 	/* automatically generated from ../../widgets/subsidy_widget.h */

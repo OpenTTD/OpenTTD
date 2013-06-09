@@ -76,6 +76,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_SIGN_LIST,                              "WC_SIGN_LIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_AI_LIST,                                "WC_AI_LIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_GOALS_LIST,                             "WC_GOALS_LIST");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_STORY_BOOK,                             "WC_STORY_BOOK");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_STATION_LIST,                           "WC_STATION_LIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_TRAINS_LIST,                            "WC_TRAINS_LIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_ROADVEH_LIST,                           "WC_ROADVEH_LIST");
@@ -1084,6 +1085,12 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_S_LEFT,                                "WID_S_LEFT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_S_MIDDLE,                              "WID_S_MIDDLE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_S_RIGHT,                               "WID_S_RIGHT");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SB_CAPTION,                            "WID_SB_CAPTION");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SB_SEL_PAGE,                           "WID_SB_SEL_PAGE");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SB_PAGE_PANEL,                         "WID_SB_PAGE_PANEL");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SB_SCROLLBAR,                          "WID_SB_SCROLLBAR");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SB_PREV_PAGE,                          "WID_SB_PREV_PAGE");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SB_NEXT_PAGE,                          "WID_SB_NEXT_PAGE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SUL_PANEL,                             "WID_SUL_PANEL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SUL_SCROLLBAR,                         "WID_SUL_SCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TT_SHOW_PLACE_OBJECT,                  "WID_TT_SHOW_PLACE_OBJECT");

@@ -399,6 +399,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Cargo payment r
 
 ############ range for company league menu starts
 STR_GRAPH_MENU_GOAL                                             :Current goals
+STR_GRAPH_MENU_STORY_BOOK                                       :Story book
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Company league table
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detailed performance rating
 STR_GRAPH_MENU_HIGHSCORE                                        :Highscore table
@@ -2946,6 +2947,16 @@ STR_SUBSIDIES_NONE                                              :{ORANGE}- None 
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Services already subsidised:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} from {STRING2} to {STRING2}{YELLOW} ({COMPANY}{YELLOW}, until {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click on service to centre main view on industry/town. Ctrl+Click opens a new viewport on industry/town location
+
+# Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}Story Book
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{RAW_STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Page {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Jump to a specific page by selecting it in this drop down list.
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Previous
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Go to previous page
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Next
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Go to next page
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Station names - click on name to centre main view on station. Ctrl+Click opens a new viewport on station location

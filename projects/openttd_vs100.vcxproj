@@ -705,6 +705,7 @@
     <ClCompile Include="..\src\smallmap_gui.cpp" />
     <ClCompile Include="..\src\station_gui.cpp" />
     <ClCompile Include="..\src\statusbar_gui.cpp" />
+    <ClCompile Include="..\src\story_gui.cpp" />
     <ClCompile Include="..\src\subsidy_gui.cpp" />
     <ClCompile Include="..\src\terraform_gui.cpp" />
     <ClCompile Include="..\src\textfile_gui.cpp" />
@@ -763,6 +764,7 @@
     <ClInclude Include="..\src\widgets\smallmap_widget.h" />
     <ClInclude Include="..\src\widgets\station_widget.h" />
     <ClInclude Include="..\src\widgets\statusbar_widget.h" />
+    <ClInclude Include="..\src\widgets\story_widget.h" />
     <ClInclude Include="..\src\widgets\subsidy_widget.h" />
     <ClInclude Include="..\src\widgets\terraform_widget.h" />
     <ClInclude Include="..\src\widgets\timetable_widget.h" />

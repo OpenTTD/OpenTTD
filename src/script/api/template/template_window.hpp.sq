@@ -209,6 +209,8 @@ namespace SQConvert {
 	template <> inline int Return<ScriptWindow::JoinStationWidgets>(HSQUIRRELVM vm, ScriptWindow::JoinStationWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::StatusbarWidgets GetParam(ForceType<ScriptWindow::StatusbarWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::StatusbarWidgets)tmp; }
 	template <> inline int Return<ScriptWindow::StatusbarWidgets>(HSQUIRRELVM vm, ScriptWindow::StatusbarWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptWindow::StoryBookWidgets GetParam(ForceType<ScriptWindow::StoryBookWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::StoryBookWidgets)tmp; }
+	template <> inline int Return<ScriptWindow::StoryBookWidgets>(HSQUIRRELVM vm, ScriptWindow::StoryBookWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::SubsidyListWidgets GetParam(ForceType<ScriptWindow::SubsidyListWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::SubsidyListWidgets)tmp; }
 	template <> inline int Return<ScriptWindow::SubsidyListWidgets>(HSQUIRRELVM vm, ScriptWindow::SubsidyListWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::TerraformToolbarWidgets GetParam(ForceType<ScriptWindow::TerraformToolbarWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::TerraformToolbarWidgets)tmp; }

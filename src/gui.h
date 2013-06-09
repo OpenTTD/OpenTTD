@@ -51,6 +51,7 @@ void ShowIndustryCargoesWindow();
 void ShowSubsidiesList();
 void ShowGoalsList();
 void ShowGoalQuestion(uint16 id, byte type, uint32 button_mask, const char *question);
+void ShowStoryBook();
 
 void ShowEstimatedCostOrIncome(Money cost, int x, int y);
 
