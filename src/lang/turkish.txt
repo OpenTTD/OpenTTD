@@ -3573,7 +3573,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Bu çize
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Bu çizelge {STRING} tarihinde başlayacak
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Başlangıç tarihi
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Bu çizelgenin başlangıç tarihi olacak tarihi seçin
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zamanı değiştir
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Seçili talimatın harcaması gereken süreyi değiştir

@@ -3504,7 +3504,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Jadual w
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Jadual waktu ini akan bermula pada {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Tarikh mula
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Pilih satu tarikh sebagai titik permulaan untuk jadual waktu ini
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Tukar Masa
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Tukar tempoh masa bagi jadual waktu yang terpilih

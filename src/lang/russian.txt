@@ -3912,7 +3912,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Граф
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Отсчёт времени начнётся с {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Начальная дата
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Изменить дату начала расчёта графика движения
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Изменить время
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Изменить время для выделенного задания

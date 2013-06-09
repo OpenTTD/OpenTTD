@@ -3760,7 +3760,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ta urnik
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Ta urnik se bo začel ob {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Začetni datum
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Izberi datum kot začetno točko tega urnika
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Spremeni čas
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Spremeni čas, ki naj bi ga označeni ukaz porabil

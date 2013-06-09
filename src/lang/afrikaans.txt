@@ -3644,7 +3644,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Hierdie 
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Hierdie tydrooster sal begin by {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Begin datum
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selekteer 'n datum as beginpunt van die rooster
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Verander Tyd
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander die bedrag van tyd die verlig opdrag moes vat

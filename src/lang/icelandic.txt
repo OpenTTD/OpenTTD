@@ -3699,7 +3699,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Þessi t
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tímaáætlunin byrjar {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Byrjunardagsetning
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Veldu dagsetningu til að hefja notkun tímaáætlunar
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Breyta tíma
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Breyta tímanum sem valin skipun ætti að taka

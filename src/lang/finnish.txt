@@ -3722,7 +3722,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Tämä a
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tämä aikataulu alkaa {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Aloituspäivä
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Valitse tämän aikataulun alkamispäivä
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuta aikaa
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Aseta kuinka kauan käskyn tulisi kestää

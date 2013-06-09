@@ -3692,7 +3692,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Dësen Z
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Dësen Zäitplang start um {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Start Datum
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Wiel en Datum als Startpunkt fir dësen Zäitplang
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zäit wiesselen
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Änner Zäit déi den ugewielten Optrag brauchen soll

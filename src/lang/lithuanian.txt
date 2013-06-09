@@ -3973,7 +3973,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Tvarkara
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tvarkaraštis bus aktyvintas {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Aktyvinimo data
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Nustatykite šio tvarkaraščio aktyvinimo datą
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Keisti trukmę
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Keisti pažymėtos užduoties trukmę

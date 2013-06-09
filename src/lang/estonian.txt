@@ -3736,7 +3736,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Sõidupl
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Sõiduplaani alustatakse {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Alustuskuupäev
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vali sõiduplaani alguskuupäev
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuda aega
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muuda, kaua esile tõstetud sihtpunkti peale aega peaks kuluma

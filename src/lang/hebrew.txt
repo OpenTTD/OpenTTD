@@ -3692,7 +3692,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}לוח �
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}לוח זמנים זה יתחיל ב-{STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}תאריך התחלה
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}בחר תאריך להיות נקודת ההתחלה של לוח זמנים זה
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}שנה זמן
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}שנה את פרק הזמן לשהייה ביעד שנבחר

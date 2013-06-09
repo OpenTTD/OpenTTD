@@ -3648,7 +3648,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Jadwal m
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Jadwal ini akan dimulai pada {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Tanggal mulai
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Pilih tanggal sebagai titik awal jadwal ini
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ubah Durasi
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ubah jumlah waktu yang seharusnya dibutuhkan, pada tujuan yang terpilih

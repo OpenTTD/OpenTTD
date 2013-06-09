@@ -3722,7 +3722,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Deze die
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Deze dienstregeling begint bij {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Begindatum
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Kies een datum als beginpunt voor deze dienstregeling
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Verander de tijd
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander de tijdsduur die de geselecteerde order mag duren

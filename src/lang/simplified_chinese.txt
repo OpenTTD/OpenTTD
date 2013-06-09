@@ -3688,7 +3688,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}此时�
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}此时刻表将于 {STRING} 开始
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}起始日期
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}选择此时刻表的起始日期
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}改变时间
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}改变高亮选择的命令执行的时间

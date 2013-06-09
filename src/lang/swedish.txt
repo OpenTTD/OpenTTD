@@ -3721,7 +3721,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Den här
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Den här tidtabellen kommer starta {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdatum
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Välj ett datum som startpunkt för den här tidtabellen
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ändra Tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ändra hur lång tid den markerade ordern bör ta

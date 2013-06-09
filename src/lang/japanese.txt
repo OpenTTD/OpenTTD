@@ -3525,7 +3525,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}この�
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}このタイムテーブルは{STRING}にスタート
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}開始日
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}タイムテーブルを始める日時を選んでください
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}時間を変更
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}選択した指令の実行時間を変更します

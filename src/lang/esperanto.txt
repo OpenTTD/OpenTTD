@@ -3264,7 +3264,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ĉi tiu 
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Ĉi tiu horaro komenciĝos je {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Komencodato
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Elekti daton por komenci ĉi tiun horaron.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ŝanĝu tempon
 

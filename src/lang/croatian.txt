@@ -3818,7 +3818,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ovaj voz
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Ovaj će vozni red početi u {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Početni datum
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Odaberi početni datum za ovaj vozni red.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Promijeni vrijeme
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Promijeni količinu vremena koju bi označena naredba trebala uzeti

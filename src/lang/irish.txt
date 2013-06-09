@@ -3235,7 +3235,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Níor th
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tosóidh an t-amchlár seo ag {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Dáta tosaigh
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Roghnaith dáta mar phointe tosaigh don amchlár seo
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Athraigh Am
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Athraigh an méid ama ar chóir don ordú aibhsithe a thógáil

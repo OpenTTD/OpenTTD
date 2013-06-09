@@ -3805,7 +3805,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Цей �
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Цей розклад почнеться о {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Дата початку
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Оберіть дату для початку цього розкладу
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Змінити час
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Змінити час, впродовж якого має виконуватись наказ

@@ -3724,7 +3724,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Denne ru
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Denne rutetabellen vil bli startet {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdato
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Velg en dato som startpunkt for denne rutetabellen
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Endre tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Endre varigheten for den merkede ordren

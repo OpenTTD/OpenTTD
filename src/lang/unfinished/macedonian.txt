@@ -1299,7 +1299,6 @@ STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPAN
 
 
 # Goal window
-STR_GOALS_CAPTION                                               :{WHITE}цели
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Глобал цели:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Никој -

@@ -3752,7 +3752,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Il viagg
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Il viaggio inizierà in data {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data iniziale
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Seleziona una data come punto di partenza della tabella oraria
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambia tempo
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia la quantità di tempo che dovrebbe essere impiegata per l'ordine selezionato

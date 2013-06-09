@@ -3786,7 +3786,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}A menetr
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}A menetrend megkezdésének dátuma {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Indulás dátuma
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Menetrend kezdeti dátumának kiválasztása
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Idő megváltoztatása
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}A kijelölt utasítás végrehajtási idejét változtatja meg

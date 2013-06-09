@@ -3534,7 +3534,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Denne ru
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Startdato for denne rutetabellen er {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdato
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vel ein startdato for denne rutetabellen
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Byt Tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Byt tida den merka ordra skal bruke

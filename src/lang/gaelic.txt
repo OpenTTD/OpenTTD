@@ -3951,7 +3951,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Cha do t
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tòisich an clàr-ama seo {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Ceann-latha tòiseachaidh
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Tagh an ceann-latha a thòisicheas an clàr-ama seo
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Uair eile
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Atharraich an ùine a bheireadh an t-òrdugh a thagh thu

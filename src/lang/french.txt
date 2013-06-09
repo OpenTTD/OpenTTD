@@ -3718,7 +3718,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Cet hora
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Cet horaire démarrera à {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Date de départ
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Sélectionner une date comme point de départ de cet horaire
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifier la durée
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifier la durée de l'ordre sélectionné

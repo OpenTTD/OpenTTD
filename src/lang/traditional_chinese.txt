@@ -3722,7 +3722,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}此時�
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}此時刻表實施日期為 {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}實施日期
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}選擇此時刻表開始實施日期
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}修改時刻
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}改變目前選定命令所需的時間

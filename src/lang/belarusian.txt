@@ -4045,7 +4045,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ґраф
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Адлік часу пачнецца з {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Пачатковая дата
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Зьмяніць дату пачатку гэтага раскладу
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Зьмяніць час
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Зьмяніць час для вылучанага заданьня

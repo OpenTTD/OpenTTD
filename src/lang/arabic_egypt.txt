@@ -3336,7 +3336,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}جدول
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}جدولة الاعمال سوف تبدأ في {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}تاريخ البدأ
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}اختر تاريخ كنقطة بداية لجدول الاعمال هذا
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}غير الوقت
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}غير مقدار الزمن الذي يستغرقة الامر

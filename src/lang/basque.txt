@@ -3636,7 +3636,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ordutegi
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK} {STRING} hasiko da ordutegia
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Hasiera data
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Aukeratu data ordutegiaren hasiera puntu bezala
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Denbora aldatu
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Piztutako agindua betzeko denbora aldatu

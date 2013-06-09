@@ -3811,7 +3811,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Tento j�
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tento jízdní řád začne v {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Datum začátku
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vyberte počáteční datum jízdního řádu
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Změnit čas
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Změnit čas pro splnění jízdního příkazu

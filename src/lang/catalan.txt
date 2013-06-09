@@ -3723,7 +3723,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Aquest h
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Aquest horari començarpa a {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data de partida
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecciona una data com a punt de partida d'aquest horari
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Canvia Temps
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Canvia la quantitat de temps que l'ordre marcada hauria de prendre

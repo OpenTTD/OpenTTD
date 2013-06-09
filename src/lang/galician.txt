@@ -3723,7 +3723,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este hor
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este horario comezará o {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data comezo
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecciona unha data como data de inicio de este horario
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar Tempo
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambiar o tempo que debería levar a orde seleccionada

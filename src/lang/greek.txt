@@ -3775,7 +3775,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Αυτό
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Αυτό το δρομολόγιο θα ξεκινήσει στις {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Εναρκτήρια ημερομηνία
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Επιλέξτε μια ημερομηνία ως αρχή για αυτό το δρομολόγιο
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Αλλαγή Χρόνων
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Αλλάζει ο χρόνος που παίρνει η επιλεγμένη επιλογή για να εκτελεστεί

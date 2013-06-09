@@ -3781,7 +3781,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ovaj ras
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Ovaj raspored počinje {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Datum početka
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Izbor datuma kao vreme početaka rasporeda
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Promena Vremena
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Menjanje količine vremena za koje će obeležena naredba trajati

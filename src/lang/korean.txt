@@ -3723,7 +3723,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}이 시�
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}이 시간표는 {STRING}에 시작될 것입니다.
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}시작 날짜
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}이 시간표의 시작 날짜를 선택하세요.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}시간값 변경
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로에서 소요되는 시간 값을 변경합니다.

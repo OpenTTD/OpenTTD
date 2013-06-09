@@ -3722,7 +3722,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Bảng l
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Bảng lịch trình sẽ bắt đầu lúc {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Ngày bắt đầu
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Chọn một ngày khởi đầu của bảng lịch trình
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Đổi thời gian
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Thay đổi thời lượng của điểm lộ trình được phép sử dụng

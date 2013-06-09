@@ -3722,7 +3722,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Nid yw'r
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Bydd yr amserlen yma'n dechrau ar {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Dyddiad dechrau
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Dewis dyddiad fel man dechrau ar gyfer yr amselen yma
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Newid Amser
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Newid faint o amser y dylai'r gorchymyn a amlygwyd ei gymryd

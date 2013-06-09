@@ -4108,7 +4108,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ten rozk
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Ten rozkład jazdy rozpocznie się {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data początkowa
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Wybierz datę początkową tego rozkładu jazdy
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmień czas
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmień ilość czasu którą zaznaczone zadanie powinno zająć

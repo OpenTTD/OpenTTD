@@ -3696,7 +3696,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Това
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Това разписание ще започне на {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Дата на започване
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Избери дата за начална точка на това разписание
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Промени времето
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Промени времетраенето на маркираната заповед

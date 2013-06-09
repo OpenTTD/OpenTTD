@@ -3692,7 +3692,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Acest or
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Acest orar va începe la {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Dată pornire
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Alege o dată de pornire pentru acestu orar
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifică timpul
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifică durata de timp alocată pentru comanda selectată
