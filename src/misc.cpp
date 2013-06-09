@@ -27,6 +27,7 @@
 #include "window_func.h"
 #include "core/pool_type.hpp"
 #include "game/game.hpp"
+#include "linkgraph/linkgraphschedule.h"
 
 
 extern TileIndex _cur_tileloop_tile;
@@ -68,6 +69,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 		InitializeOldNames();
 	}
 
+	LinkGraphSchedule::Clear();
 	PoolBase::Clean(PT_NORMAL);
 
 	ResetPersistentNewGRFData();

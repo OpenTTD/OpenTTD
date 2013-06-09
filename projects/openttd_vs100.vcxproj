@@ -333,6 +333,7 @@
     <ClCompile Include="..\src\landscape.cpp" />
     <ClCompile Include="..\src\linkgraph\linkgraph.cpp" />
     <ClCompile Include="..\src\linkgraph\linkgraphjob.cpp" />
+    <ClCompile Include="..\src\linkgraph\linkgraphschedule.cpp" />
     <ClCompile Include="..\src\map.cpp" />
     <ClCompile Include="..\src\misc.cpp" />
     <ClCompile Include="..\src\mixer.cpp" />
@@ -472,11 +473,14 @@
     <ClInclude Include="..\src\landscape.h" />
     <ClInclude Include="..\src\landscape_type.h" />
     <ClInclude Include="..\src\language.h" />
+    <ClInclude Include="..\src\linkgraph\init.h" />
     <ClInclude Include="..\src\linkgraph\linkgraph.h" />
     <ClInclude Include="..\src\linkgraph\linkgraph_base.h" />
     <ClInclude Include="..\src\linkgraph\linkgraph_gui.h" />
     <ClInclude Include="..\src\linkgraph\linkgraph_type.h" />
     <ClInclude Include="..\src\linkgraph\linkgraphjob.h" />
+    <ClInclude Include="..\src\linkgraph\linkgraphjob_base.h" />
+    <ClInclude Include="..\src\linkgraph\linkgraphschedule.h" />
     <ClInclude Include="..\src\livery.h" />
     <ClInclude Include="..\src\map_func.h" />
     <ClInclude Include="..\src\map_type.h" />

@@ -7,21 +7,17 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file linkgraph_base.h Some typedefs for the main game. */
+/** @file linkgraphjob_base.h Some typedefs for component handlers. */
 
-#ifndef LINKGRAPH_BASE_H
-#define LINKGRAPH_BASE_H
+#ifndef LINKGRAPHJOB_BASE_H
+#define LINKGRAPHJOB_BASE_H
 
 #include "linkgraph.h"
+#include "linkgraphjob.h"
 #include "linkgraphschedule.h"
 
-typedef LinkGraph::Node Node;
-typedef LinkGraph::Edge Edge;
-typedef LinkGraph::EdgeIterator EdgeIterator;
+typedef LinkGraphJob::Node Node;
+typedef LinkGraphJob::Edge Edge;
+typedef LinkGraphJob::EdgeIterator EdgeIterator;
 
-typedef LinkGraph::ConstNode ConstNode;
-typedef LinkGraph::ConstEdge ConstEdge;
-typedef LinkGraph::ConstEdgeIterator ConstEdgeIterator;
-
-
-#endif /* LINKGRAPH_BASE_H */
+#endif /* LINKGRAPHJOB_BASE_H */

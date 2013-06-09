@@ -228,6 +228,9 @@
     <ClCompile Include="..\src\linkgraph\linkgraphjob.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\linkgraph\linkgraphschedule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -645,6 +648,9 @@
     <ClInclude Include="..\src\language.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\linkgraph\init.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\linkgraph\linkgraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -658,6 +664,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\linkgraph\linkgraphjob.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\linkgraph\linkgraphjob_base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\linkgraph\linkgraphschedule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\livery.h">

@@ -63,6 +63,8 @@
 #include "subsidy_func.h"
 
 
+#include "linkgraph/linkgraphschedule.h"
+
 #include <stdarg.h>
 
 
@@ -297,6 +299,7 @@ static void ShutdownGame()
 	free(_config_file);
 #endif
 
+	LinkGraphSchedule::Clear();
 	PoolBase::Clean(PT_ALL);
 
 	/* No NewGRFs were loaded when it was still bootstrapping. */
