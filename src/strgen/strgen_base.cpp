@@ -723,6 +723,7 @@ void StringReader::HandleString(char *str)
 		WChar c;
 		Utf8Decode(&c, tmp);
 		if (c <= 0x001F || // ASCII control character range
+				c == 0x200B || // Zero width space
 				(c >= 0xE000 && c <= 0xF8FF) || // Private range
 				(c >= 0xFFF0 && c <= 0xFFFF)) { // Specials range
 			strgen_fatal("Unwanted UTF-8 character U+%04X in sequence '%s'", c, s);

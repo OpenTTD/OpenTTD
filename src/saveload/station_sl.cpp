@@ -226,7 +226,7 @@ static const SaveLoad _old_station_desc[] = {
 static uint16 _waiting_acceptance;
 static uint16 _cargo_source;
 static uint32 _cargo_source_xy;
-static uint16 _cargo_days;
+static uint8  _cargo_days;
 static Money  _cargo_feeder_share;
 
 static const SaveLoad _station_speclist_desc[] = {

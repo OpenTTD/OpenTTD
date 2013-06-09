@@ -96,28 +96,31 @@ void StringParameters::ShiftParameters(uint amount)
  * @param max_value The biggest value which shall be displayed.
  *                  For the result only the number of digits of \a max_value matter.
  * @param min_count Minimum number of digits independent of \a max.
+ * @param size  Font of the number
  */
-void SetDParamMaxValue(uint n, uint64 max_value, uint min_count)
+void SetDParamMaxValue(uint n, uint64 max_value, uint min_count, FontSize size)
 {
 	uint num_digits = 1;
 	while (max_value >= 10) {
 		num_digits++;
 		max_value /= 10;
 	}
-	SetDParamMaxDigits(n, max(min_count, num_digits));
+	SetDParamMaxDigits(n, max(min_count, num_digits), size);
 }
 
 /**
  * Set DParam n to some number that is suitable for string size computations.
  * @param n Index of the string parameter.
  * @param count Number of digits which shall be displayable.
+ * @param size  Font of the number
  */
-void SetDParamMaxDigits(uint n, uint count)
+void SetDParamMaxDigits(uint n, uint count, FontSize size)
 {
-	static const uint biggest_digit = 8; ///< Digit with the biggest string width.
-	uint64 val = biggest_digit;
+	uint front, next;
+	GetBroadestDigit(&front, &next, size);
+	uint64 val = count > 1 ? front : next;
 	for (; count > 1; count--) {
-		val = 10 * val + biggest_digit;
+		val = 10 * val + next;
 	}
 	SetDParam(n, val);
 }

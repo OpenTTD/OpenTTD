@@ -155,8 +155,8 @@ static inline void SetDParam(uint n, uint64 v)
 	_global_string_params.SetParam(n, v);
 }
 
-void SetDParamMaxValue(uint n, uint64 max_value, uint min_count = 0);
-void SetDParamMaxDigits(uint n, uint count);
+void SetDParamMaxValue(uint n, uint64 max_value, uint min_count = 0, FontSize size = FS_NORMAL);
+void SetDParamMaxDigits(uint n, uint count, FontSize size = FS_NORMAL);
 
 void SetDParamStr(uint n, const char *str);
 
