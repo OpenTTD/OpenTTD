@@ -4990,3 +4990,42 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Выбор порядка группировки
+
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Обновлять граф распределения каждые {STRING} дней
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :симметричное
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :несимметричное
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :вручную
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Распределение пассажиров: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Распределение почты: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Распределение ценных грузов: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Распределение прочих грузов: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Точность распределения: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Зависимость спроса от расстояния: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Зависимость симметричного спроса от популярности отдаленных станций: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Насыщение коротких маршрутов перед использованием вместительных: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Распределение грузов
+
+STR_STATION_VIEW_GROUP                                          :{BLACK}Группировать
+STR_STATION_VIEW_WAITING_STATION                                :по станции (ожидающие)
+STR_STATION_VIEW_WAITING_AMOUNT                                 :по количеству (ожидающие)
+STR_STATION_VIEW_PLANNED_STATION                                :по станции (планируемые)
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :по количеству (планируемые)
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} из {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} через {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} в {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} с неизвестной станции
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} на любую станцию
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} через любую станцию
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} с этой станции
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} через эту станцию
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} на эту станцию
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} без пересадок
+
+STR_STATION_VIEW_GROUP_S_V_D                                    :Откуда - Через - Куда
+STR_STATION_VIEW_GROUP_S_D_V                                    :Откуда - Куда - Через
+STR_STATION_VIEW_GROUP_V_S_D                                    :Через - Откуда - Куда
+STR_STATION_VIEW_GROUP_V_D_S                                    :Через - Куда - Откуда
+STR_STATION_VIEW_GROUP_D_S_V                                    :Куда - Откуда - Через
+STR_STATION_VIEW_GROUP_D_V_S                                    :Куда - Через - Откуда
