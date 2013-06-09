@@ -2341,6 +2341,8 @@ public:
 		WID_TN_STATIONS                              = ::WID_TN_STATIONS,                              ///< Station menu.
 		WID_TN_FINANCES                              = ::WID_TN_FINANCES,                              ///< Finance menu.
 		WID_TN_COMPANIES                             = ::WID_TN_COMPANIES,                             ///< Company menu.
+		WID_TN_STORY                                 = ::WID_TN_STORY,                                 ///< Story menu.
+		WID_TN_GOAL                                  = ::WID_TN_GOAL,                                  ///< Goal menu.
 		WID_TN_GRAPHS                                = ::WID_TN_GRAPHS,                                ///< Graph menu.
 		WID_TN_LEAGUE                                = ::WID_TN_LEAGUE,                                ///< Company league menu.
 		WID_TN_INDUSTRIES                            = ::WID_TN_INDUSTRIES,                            ///< Industry menu.

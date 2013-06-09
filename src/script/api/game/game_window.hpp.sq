@@ -495,6 +495,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GP_PROGRESS_BAR,                       "WID_GP_PROGRESS_BAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GP_PROGRESS_TEXT,                      "WID_GP_PROGRESS_TEXT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GP_ABORT,                              "WID_GP_ABORT");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GOAL_CAPTION,                          "WID_GOAL_CAPTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GOAL_GOAL,                             "WID_GOAL_GOAL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GOAL_PROGRESS,                         "WID_GOAL_PROGRESS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GOAL_SCROLLBAR,                        "WID_GOAL_SCROLLBAR");
@@ -1150,6 +1151,8 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_STATIONS,                           "WID_TN_STATIONS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_FINANCES,                           "WID_TN_FINANCES");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_COMPANIES,                          "WID_TN_COMPANIES");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_STORY,                              "WID_TN_STORY");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_GOAL,                               "WID_TN_GOAL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_GRAPHS,                             "WID_TN_GRAPHS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_LEAGUE,                             "WID_TN_LEAGUE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_INDUSTRIES,                         "WID_TN_INDUSTRIES");

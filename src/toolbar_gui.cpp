@@ -608,6 +608,46 @@ static CallBackFunction MenuClickCompany(int index)
 	return CBF_NONE;
 }
 
+/* --- Story button menu --- */
+
+static CallBackFunction ToolbarStoryClick(Window *w)
+{
+	PopupMainCompanyToolbMenu(w, WID_TN_STORY);
+	return CBF_NONE;
+}
+
+/**
+ * Handle click on the entry in the Story menu
+ *
+ * @param index CompanyID to show story book for
+ * @return #CBF_NONE
+ */
+static CallBackFunction MenuClickStory(int index)
+{
+	ShowStoryBook((CompanyID)index);
+	return CBF_NONE;
+}
+
+/* --- Goal button menu --- */
+
+static CallBackFunction ToolbarGoalClick(Window *w)
+{
+	PopupMainCompanyToolbMenu(w, WID_TN_GOAL);
+	return CBF_NONE;
+}
+
+/**
+ * Handle click on the entry in the Goal menu
+ *
+ * @param index CompanyID to show story book for
+ * @return #CBF_NONE
+ */
+static CallBackFunction MenuClickGoal(int index)
+{
+	ShowGoalsList((CompanyID)index);
+	return CBF_NONE;
+}
+
 /* --- Graphs button menu --- */
 
 static CallBackFunction ToolbarGraphsClick(Window *w)
@@ -1213,23 +1253,25 @@ static MenuClickedProc * const _menu_clicked_procs[] = {
 	MenuClickStations,    // 7
 	MenuClickFinances,    // 8
 	MenuClickCompany,     // 9
-	MenuClickGraphs,      // 10
-	MenuClickLeague,      // 11
-	MenuClickIndustry,    // 12
-	MenuClickShowTrains,  // 13
-	MenuClickShowRoad,    // 14
-	MenuClickShowShips,   // 15
-	MenuClickShowAir,     // 16
-	MenuClickMap,         // 17
-	NULL,                 // 18
-	MenuClickBuildRail,   // 19
-	MenuClickBuildRoad,   // 20
-	MenuClickBuildWater,  // 21
-	MenuClickBuildAir,    // 22
-	MenuClickForest,      // 23
-	MenuClickMusicWindow, // 24
-	MenuClickNewspaper,   // 25
-	MenuClickHelp,        // 26
+	MenuClickStory,       // 10
+	MenuClickGoal,        // 11
+	MenuClickGraphs,      // 12
+	MenuClickLeague,      // 13
+	MenuClickIndustry,    // 14
+	MenuClickShowTrains,  // 15
+	MenuClickShowRoad,    // 16
+	MenuClickShowShips,   // 17
+	MenuClickShowAir,     // 18
+	MenuClickMap,         // 19
+	NULL,                 // 20
+	MenuClickBuildRail,   // 21
+	MenuClickBuildRoad,   // 22
+	MenuClickBuildWater,  // 23
+	MenuClickBuildAir,    // 24
+	MenuClickForest,      // 25
+	MenuClickMusicWindow, // 26
+	MenuClickNewspaper,   // 27
+	MenuClickHelp,        // 28
 };
 
 /** Full blown container to make it behave exactly as we want :) */
@@ -1396,31 +1438,31 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 		static const uint SMALLEST_ARRANGEMENT = 14;
 		static const uint BIGGEST_ARRANGEMENT  = 19;
 		static const byte arrange14[] = {
-			0,  1, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 27,
-			2,  3,  4,  5,  6,  7,  8,  9, 10, 12, 24, 25, 26, 27,
+			0,  1, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 29,
+			2,  3,  4,  5,  6,  7,  8,  9, 12, 14, 26, 27, 28, 29,
 		};
 		static const byte arrange15[] = {
-			0,  1,  4, 13, 14, 15, 16, 19, 20, 21, 22, 23, 17, 18, 27,
-			0,  2,  4,  3,  5,  6,  7,  8,  9, 10, 12, 24, 25, 26, 27,
+			0,  1,  4, 15, 16, 17, 18, 21, 22, 23, 24, 25, 19, 20, 29,
+			0,  2,  4,  3,  5,  6,  7,  8,  9, 12, 14, 26, 27, 28, 29,
 		};
 		static const byte arrange16[] = {
-			0,  1,  2,  4, 13, 14, 15, 16, 19, 20, 21, 22, 23, 17, 18, 27,
-			0,  1,  3,  5,  6,  7,  8,  9, 10, 12, 24, 25, 26, 17, 18, 27,
+			0,  1,  2,  4, 15, 16, 17, 18, 21, 22, 23, 24, 25, 19, 20, 29,
+			0,  1,  3,  5,  6,  7,  8,  9, 12, 14, 26, 27, 28, 19, 20, 29,
 		};
 		static const byte arrange17[] = {
-			0,  1,  2,  4,  6, 13, 14, 15, 16, 19, 20, 21, 22, 23, 17, 18, 27,
-			0,  1,  3,  4,  6,  5,  7,  8,  9, 10, 12, 24, 25, 26, 17, 18, 27,
+			0,  1,  2,  4,  6, 15, 16, 17, 18, 21, 22, 23, 24, 25, 19, 20, 29,
+			0,  1,  3,  4,  6,  5,  7,  8,  9, 12, 14, 26, 27, 28, 19, 20, 29,
 		};
 		static const byte arrange18[] = {
-			0,  1,  2,  4,  5,  6,  7,  8,  9, 12, 19, 20, 21, 22, 23, 17, 18, 27,
-			0,  1,  3,  4,  5,  6,  7, 10, 13, 14, 15, 16, 24, 25, 26, 17, 18, 27,
+			0,  1,  2,  4,  5,  6,  7,  8,  9, 14, 21, 22, 23, 24, 25, 19, 20, 29,
+			0,  1,  3,  4,  5,  6,  7, 12, 15, 16, 17, 18, 26, 27, 28, 19, 20, 29,
 		};
 		static const byte arrange19[] = {
-			0,  1,  2,  4,  5,  6, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 17, 18, 27,
-			0,  1,  3,  4,  7,  8,  9, 10, 12, 25, 19, 20, 21, 22, 23, 26, 17, 18, 27,
+			0,  1,  2,  4,  5,  6, 15, 16, 17, 18, 21, 22, 23, 24, 25, 26, 19, 20, 29,
+			0,  1,  3,  4,  7,  8,  9, 12, 14, 27, 21, 22, 23, 24, 25, 28, 19, 20, 29,
 		};
 		static const byte arrange_all[] = {
-			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
+			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28
 		};
 
 		/* If at least BIGGEST_ARRANGEMENT fit, just spread all the buttons nicely */
@@ -1462,14 +1504,14 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 	/* virtual */ const byte *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const
 	{
 		static const byte arrange_all[] = {
-			0, 1, 2, 3, 4, 18, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 24, 26,
+			0, 1, 2, 3, 4, 18, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 26, 28,
 		};
 		static const byte arrange_nopanel[] = {
-			0, 1, 2, 3, 18, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 24, 26,
+			0, 1, 2, 3, 18, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 26, 28,
 		};
 		static const byte arrange_switch[] = {
-			18,  8, 11, 12, 13, 14, 15, 16, 17, 27,
-			 0,  1,  2,  3, 18,  9, 10, 24, 26, 27,
+			18,  8, 11, 12, 13, 14, 15, 16, 17, 29,
+			 0,  1,  2,  3, 18,  9, 10, 26, 28, 29,
 		};
 
 		/* If we can place all buttons *and* the panels, show them. */
@@ -1516,6 +1558,8 @@ static ToolbarButtonProc * const _toolbar_button_procs[] = {
 	ToolbarStationsClick,
 	ToolbarFinancesClick,
 	ToolbarCompaniesClick,
+	ToolbarStoryClick,
+	ToolbarGoalClick,
 	ToolbarGraphsClick,
 	ToolbarLeagueClick,
 	ToolbarIndustryClick,
@@ -1548,6 +1592,8 @@ enum MainToolbarHotkeys {
 	MTHK_STATIONS,
 	MTHK_FINANCES,
 	MTHK_COMPANIES,
+	MTHK_STORY,
+	MTHK_GOAL,
 	MTHK_GRAPHS,
 	MTHK_LEAGUE,
 	MTHK_INDUSTRIES,
@@ -1598,7 +1644,7 @@ struct MainToolbarWindow : Window {
 		 * Since enabled state is the default, just disable when needed */
 		this->SetWidgetsDisabledState(_local_company == COMPANY_SPECTATOR, WID_TN_RAILS, WID_TN_ROADS, WID_TN_WATER, WID_TN_AIR, WID_TN_LANDSCAPE, WIDGET_LIST_END);
 		/* disable company list drop downs, if there are no companies */
-		this->SetWidgetsDisabledState(Company::GetNumItems() == 0, WID_TN_STATIONS, WID_TN_FINANCES, WID_TN_TRAINS, WID_TN_ROADVEHS, WID_TN_SHIPS, WID_TN_AIRCRAFTS, WIDGET_LIST_END);
+		this->SetWidgetsDisabledState(Company::GetNumItems() == 0, WID_TN_STATIONS, WID_TN_FINANCES, WID_TN_TRAINS, WID_TN_ROADVEHS, WID_TN_SHIPS, WID_TN_AIRCRAFTS, WID_TN_STORY, WID_TN_GOAL, WIDGET_LIST_END);
 
 		this->SetWidgetDisabledState(WID_TN_RAILS, !CanBuildVehicleInfrastructure(VEH_TRAIN));
 		this->SetWidgetDisabledState(WID_TN_AIR, !CanBuildVehicleInfrastructure(VEH_AIRCRAFT));
@@ -1631,6 +1677,8 @@ struct MainToolbarWindow : Window {
 			case MTHK_STATIONS: ShowCompanyStations(_local_company); break;
 			case MTHK_FINANCES: ShowCompanyFinances(_local_company); break;
 			case MTHK_COMPANIES: ShowCompany(_local_company); break;
+			case MTHK_STORY: ShowStoryBook(_local_company); break;
+			case MTHK_GOAL: ShowGoalsList(_local_company); break;
 			case MTHK_GRAPHS: ShowOperatingProfitGraph(); break;
 			case MTHK_LEAGUE: ShowCompanyLeagueTable(); break;
 			case MTHK_INDUSTRIES: ShowBuildIndustryWindow(); break;
@@ -1734,6 +1782,8 @@ Hotkey<MainToolbarWindow> MainToolbarWindow::maintoolbar_hotkeys[] = {
 	Hotkey<MainToolbarWindow>(WKC_F7, "station_list", MTHK_STATIONS),
 	Hotkey<MainToolbarWindow>(WKC_F8, "finances", MTHK_FINANCES),
 	Hotkey<MainToolbarWindow>(WKC_F9, "companies", MTHK_COMPANIES),
+	Hotkey<MainToolbarWindow>((uint16)0, "story_book", MTHK_STORY),
+	Hotkey<MainToolbarWindow>((uint16)0, "goal_list", MTHK_GOAL),
 	Hotkey<MainToolbarWindow>(WKC_F10, "graphs", MTHK_GRAPHS),
 	Hotkey<MainToolbarWindow>(WKC_F11, "league", MTHK_LEAGUE),
 	Hotkey<MainToolbarWindow>(WKC_F12, "industry_list", MTHK_INDUSTRIES),
@@ -1779,6 +1829,8 @@ static NWidgetBase *MakeMainToolbar(int *biggest_index)
 		SPR_IMG_COMPANY_LIST,    // WID_TN_STATIONS
 		SPR_IMG_COMPANY_FINANCE, // WID_TN_FINANCES
 		SPR_IMG_COMPANY_GENERAL, // WID_TN_COMPANIES
+		SPR_IMG_STORY_BOOK,      // WID_TN_STORY
+		SPR_IMG_GOAL,            // WID_TN_GOAL
 		SPR_IMG_GRAPHS,          // WID_TN_GRAPHS
 		SPR_IMG_COMPANY_LEAGUE,  // WID_TN_LEAGUE
 		SPR_IMG_INDUSTRY,        // WID_TN_INDUSTRIES
@@ -1802,7 +1854,7 @@ static NWidgetBase *MakeMainToolbar(int *biggest_index)
 	NWidgetMainToolbarContainer *hor = new NWidgetMainToolbarContainer();
 	for (uint i = 0; i < WID_TN_END; i++) {
 		switch (i) {
-			case 4: case 8: case 13: case 17: case 19: case 24: hor->Add(new NWidgetSpacer(0, 0)); break;
+			case 4: case 8: case 15: case 19: case 21: case 26: hor->Add(new NWidgetSpacer(0, 0)); break;
 		}
 		hor->Add(new NWidgetLeaf(i == WID_TN_SAVE ? WWT_IMGBTN_2 : WWT_IMGBTN, COLOUR_GREY, i, toolbar_button_sprites[i], STR_TOOLBAR_TOOLTIP_PAUSE_GAME + i));
 	}
@@ -1845,6 +1897,8 @@ static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
 	ToolbarScenPlantTrees,
 	ToolbarScenPlaceSign,
 	ToolbarBtn_NULL,
+	NULL,
+	NULL,
 	NULL,
 	NULL,
 	NULL,

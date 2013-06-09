@@ -24,6 +24,8 @@ enum ToolbarNormalWidgets {
 	WID_TN_STATIONS,      ///< Station menu.
 	WID_TN_FINANCES,      ///< Finance menu.
 	WID_TN_COMPANIES,     ///< Company menu.
+	WID_TN_STORY,         ///< Story menu.
+	WID_TN_GOAL,          ///< Goal menu.
 	WID_TN_GRAPHS,        ///< Graph menu.
 	WID_TN_LEAGUE,        ///< Company league menu.
 	WID_TN_INDUSTRIES,    ///< Industry menu.
