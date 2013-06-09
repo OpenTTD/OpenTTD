@@ -167,6 +167,16 @@ protected:
 	static GoalID GetNewGoalID();
 
 	/**
+	 * Get the latest stored new_story_page_id.
+	 */
+	static StoryPageID GetNewStoryPageID();
+
+	/**
+	 * Get the latest stored new_story_page_id.
+	 */
+	static StoryPageID GetNewStoryPageElementID();
+
+	/**
 	 * Store a allow_do_command per company.
 	 * @param allow The new allow.
 	 */
@@ -266,6 +276,18 @@ private:
 	 * @param goal_id The new GoalID.
 	 */
 	static void SetNewGoalID(GoalID goal_id);
+
+	/**
+	 * Store a new_story_page_id per company.
+	 * @param story_page_id The new StoryPageID.
+	 */
+	static void SetNewStoryPageID(StoryPageID story_page_id);
+
+	/**
+	 * Store a new_story_page_id per company.
+	 * @param story_page_id The new StoryPageID.
+	 */
+	static void SetNewStoryPageElementID(StoryPageElementID story_page_element_id);
 };
 
 #endif /* SCRIPT_OBJECT_HPP */

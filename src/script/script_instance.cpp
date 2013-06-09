@@ -275,6 +275,16 @@ void ScriptInstance::CollectGarbage() const
 	instance->engine->InsertResult(ScriptObject::GetNewGoalID());
 }
 
+/* static */ void ScriptInstance::DoCommandReturnStoryPageID(ScriptInstance *instance)
+{
+	instance->engine->InsertResult(ScriptObject::GetNewStoryPageID());
+}
+
+/* static */ void ScriptInstance::DoCommandReturnStoryPageElementID(ScriptInstance *instance)
+{
+	instance->engine->InsertResult(ScriptObject::GetNewStoryPageElementID());
+}
+
 ScriptStorage *ScriptInstance::GetStorage()
 {
 	return this->storage;

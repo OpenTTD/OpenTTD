@@ -108,6 +108,16 @@ public:
 	static void DoCommandReturnGoalID(ScriptInstance *instance);
 
 	/**
+	 * Return a StoryPageID reply for a DoCommand.
+	 */
+	static void DoCommandReturnStoryPageID(ScriptInstance *instance);
+
+	/**
+	 * Return a StoryPageElementID reply for a DoCommand.
+	 */
+	static void DoCommandReturnStoryPageElementID(ScriptInstance *instance);
+
+	/**
 	 * Get the controller attached to the instance.
 	 */
 	class ScriptController *GetController() { return controller; }

@@ -76,6 +76,7 @@ strgen/strgen_base.cpp
 string.cpp
 stringfilter.cpp
 strings.cpp
+story.cpp
 subsidy.cpp
 textbuf.cpp
 texteff.cpp
@@ -308,6 +309,8 @@ station_gui.h
 station_type.h
 statusbar_gui.h
 stdafx.h
+story_base.h
+story_type.h
 strgen/strgen.h
 string_func.h
 string_type.h
@@ -591,6 +594,7 @@ saveload/signs_sl.cpp
 saveload/station_sl.cpp
 saveload/storage_sl.cpp
 saveload/strings_sl.cpp
+saveload/story_sl.cpp
 saveload/subsidy_sl.cpp
 saveload/town_sl.cpp
 saveload/vehicle_sl.cpp
@@ -783,6 +787,7 @@ script/api/script_sign.hpp
 script/api/script_signlist.hpp
 script/api/script_station.hpp
 script/api/script_stationlist.hpp
+script/api/script_story_page.hpp
 script/api/script_subsidy.hpp
 script/api/script_subsidylist.hpp
 script/api/script_testmode.hpp
@@ -846,6 +851,7 @@ script/api/script_sign.cpp
 script/api/script_signlist.cpp
 script/api/script_station.cpp
 script/api/script_stationlist.cpp
+script/api/script_story_page.cpp
 script/api/script_subsidy.cpp
 script/api/script_subsidylist.cpp
 script/api/script_testmode.cpp

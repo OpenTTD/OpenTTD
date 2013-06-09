@@ -735,6 +735,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\story.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\subsidy.cpp"
 				>
 			</File>
@@ -1572,6 +1576,14 @@
 			</File>
 			<File
 				RelativePath=".\..\src\stdafx.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\story_base.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\story_type.h"
 				>
 			</File>
 			<File
@@ -2627,6 +2639,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\saveload\story_sl.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\saveload\subsidy_sl.cpp"
 				>
 			</File>
@@ -3355,6 +3371,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\script\api\script_story_page.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\script\api\script_subsidy.hpp"
 				>
 			</File>
@@ -3600,6 +3620,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\script\api\script_stationlist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_story_page.cpp"
 				>
 			</File>
 			<File

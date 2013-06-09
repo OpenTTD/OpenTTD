@@ -17,6 +17,7 @@
 #include "../road_type.h"
 #include "../group.h"
 #include "../goal_type.h"
+#include "../story_type.h"
 
 #include "table/strings.h"
 #include <vector>
@@ -49,6 +50,8 @@ private:
 	SignID new_sign_id;              ///< The ID of the new Sign.
 	GroupID new_group_id;            ///< The ID of the new Group.
 	GoalID new_goal_id;              ///< The ID of the new Goal.
+	StoryPageID new_story_page_id;   ///< The ID of the new StoryPage.
+	StoryPageID new_story_page_element_id; ///< The ID of the new StoryPageElement.
 
 	std::vector<int> callback_value; ///< The values which need to survive a callback.
 
