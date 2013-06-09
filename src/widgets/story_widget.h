@@ -8,7 +8,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file goal_widget.h Types related to the goal widgets. */
+/** @file story_widget.h Types related to the story widgets. */
 
 #ifndef WIDGETS_STORY_WIDGET_H
 #define WIDGETS_STORY_WIDGET_H

@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file linkgraph.h Declaration of link graph job classes used for cargo distribution. */
+/** @file linkgraphjob.h Declaration of link graph job classes used for cargo distribution. */
 
 #ifndef LINKGRAPHJOB_H
 #define LINKGRAPHJOB_H

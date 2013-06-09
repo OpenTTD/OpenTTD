@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file story_page_sl.cpp Code handling saving and loading of story pages */
+/** @file story_sl.cpp Code handling saving and loading of story pages */
 
 #include "../stdafx.h"
 #include "../story_base.h"
