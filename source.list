@@ -40,6 +40,7 @@ ini.cpp
 ini_load.cpp
 landscape.cpp
 linkgraph/demands.cpp
+linkgraph/flowmapper.cpp
 linkgraph/linkgraph.cpp
 linkgraph/linkgraphjob.cpp
 linkgraph/linkgraphschedule.cpp
@@ -209,6 +210,7 @@ landscape.h
 landscape_type.h
 language.h
 linkgraph/demands.h
+linkgraph/flowmapper.h
 linkgraph/init.h
 linkgraph/linkgraph.h
 linkgraph/linkgraph_base.h

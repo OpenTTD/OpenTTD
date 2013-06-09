@@ -14,6 +14,7 @@
 #include "init.h"
 #include "demands.h"
 #include "mcf.h"
+#include "flowmapper.h"
 
 /**
  * Spawn a thread if possible and run the link graph job in the thread. If
@@ -132,7 +133,9 @@ LinkGraphSchedule::LinkGraphSchedule()
 	this->handlers[0] = new InitHandler;
 	this->handlers[1] = new DemandHandler;
 	this->handlers[2] = new MCFHandler<MCF1stPass>;
-	this->handlers[3] = new MCFHandler<MCF2ndPass>;
+	this->handlers[3] = new FlowMapper;
+	this->handlers[4] = new MCFHandler<MCF2ndPass>;
+	this->handlers[5] = new FlowMapper;
 }
 
 /**
