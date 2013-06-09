@@ -4764,3 +4764,53 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Neuberechnung der Warenverteilung alle: {STRING} Tage
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Laufzeit für jede Neuberechnung der Warenverteilung: {STRING} Tage
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrisch
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisch
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuell
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Verteilungsschema für Passagiere: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Verteilungsschema für Post: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Verteilungsschema für Werttransporte: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Verteilungsschema für sonstige Frachtarten: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Genauigkeit für die Berechnung der Warenverteilung: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Einfluss der Entfernung auf die Transportnachfrage: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Einfluss der Beliebtheit der Zielhaltestelle auf die Transportnachfrage bei symmetrischen Verbindungen: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Auslastung der kürzeren Verbindungenen bevor längere Verbindungen gewählt werden: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Warenverteilung
+
+STR_STATION_VIEW_WAITING_STATION                                :Station: Wartend
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Menge: Wartend
+STR_STATION_VIEW_PLANNED_STATION                                :Station: Voraussichtlich
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Menge: Voraussichtlich
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} von {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} via {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} nach {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} von unbekannter Haltestelle
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} zu beliebiger Haltestelle
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} via beliebiger Haltestelle
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} von hier
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} hier anhaltend
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} nach hier
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} direkt
+
+STR_STATION_VIEW_GROUP                                          :{BLACK}Gruppieren nach
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Gruppierung wählen
+STR_STATION_VIEW_GROUP_S_V_D                                    :Start-Via-Ziel
+STR_STATION_VIEW_GROUP_S_D_V                                    :Start-Ziel-Via
+STR_STATION_VIEW_GROUP_V_S_D                                    :Via-Start-Ziel
+STR_STATION_VIEW_GROUP_V_D_S                                    :Via-Ziel-Start
+STR_STATION_VIEW_GROUP_D_S_V                                    :Ziel-Start-Via
+STR_STATION_VIEW_GROUP_D_V_S                                    :Ziel-Via-Start
+
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Jede Neuberechnung berechnet die Verteilungspläne für eine Komponente des Graphen. Das heißt dass ein Wert X für diese Einstellung nicht zu einer Neuberechnung der gesamten Verteilung alle X Tage führt, sofern es mehrere getrennte Komponenten gibt. Je kleiner der Wert, desto rechenaufwändiger ist die Berechnung. Je größer er ist, desto länger dauert es bis Änderungen an den Fahrplänen sich auf die Verteilung auswirken.
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Für jede Neuberechnung wird ein Thread gestartet, der diese Zeit bekommt, um fertig zu werden. Wenn die Zeit gering ist, ist die Wahrscheinlichkeit hoch, dass er zum gegebenen Zeitpunkt noch nicht fertig ist. Das manifestiert sich darin, dass das Spiel "stehen bleibt", bis der Thread fertig wird. Wenn die Zeit sehr lang ist, dauert es länger bis Änderungen an den Fahrplänen sich auf die Verteilung auswirken.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symmetrisch" heißt, dass etwa die selbe Zahl von Passagieren von einer Station A zu einer anderen Station B reisen, wie von B nach A. "asymmetrisch" heißt, dass Passagiere in beliebigen Zahlen hin- und her fahren können. "manuell" heißt, dass keine automatische Verteilung der Passagiere stattfindet.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetrisch" heißt, dass etwa die selbe Menge Post von einer Station A zu einer anderen Station B geschickt wird, wie von B nach A. "asymmetrisch" heißt, dass Post in beliebigen Mengen hin- und her geschickt werden kann. "manuell" heißt, dass keine automatische Verteilung der Post stattfindet.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Werttransporte umfassen Goldtransporte im subarktischen und Transporte von Wertsachen in anderen Klimas. newGRFs können das ändern. "symmetrisch" heißt, dass etwa die selbe Menge dieser Waren von einer Station A zu einer anderen Station B geschickt wird, wie von B nach A. "asymmetrisch" heißt, dass diese Waren in beliebigen Mengen hin- und her geschickt werden können. "manuell" heißt, dass keine automatische Verteilung dieser Waren stattfindet. Es ist empfehlenswert, diese Einstellung auf "asymmetrisch"" oder "manuell" zu setzen, da Banken kein Gold an Goldminen schicken. Im gemäßigten oder subtropischen Klima kann auch "symmetrisch" gewählt werden, da Banken sich gegenseitig Wertsachen schicken.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symmetrisch" heißt, dass etwa die selbe Menge Waren von einer Station A zu einer anderen Station B geschickt wird, wie von B nach A. "asymmetrisch" heißt, dass Waren in beliebigen Mengen hin- und her geschickt werden können. "manuell" heißt, dass keine automatische Verteilung der Waren stattfindet. Hier sollte fast immer "asymmetrisch" oder "manuell" gewählt werden.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Je höher dieser Wert ist, desto genauer und rechenintensiver ist die Berechnung der Warenverteilung. Wird ein zu hoher Wert gewählt, kann das Spiel bei der Berechnung "hängen". Wird ein zu niedriger Wert gewählt, kann es vorkommen, dass Waren nicht dorthin geschickt werden, wo man erwarten würde dass sie hin sollen.
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Wenn hier ein Wert größer als 0 gewählt wird, so spielt die Entfernung zwischen dem Ursprung und den möglichen Zielen eine Rolle bei der Verteilung von Waren. Je größer die Entfernung und je höher der Wert, desto geringer der Anteil der Waren, die zu der entsprechenden Station geschickt werden.
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Wenn hier weniger als 100% gesetzt wird, so verhält sich die symmetrische Verteilung mehr wie die asymmetrische. Das heißt weniger Waren werden für eine gegebene Menge in einer Richtung reisender Waren zurück geschickt. Wenn hier 0 angegeben wird, verhält sich die symmetrische wie die asymmetrische Verteilung.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Häufig gibt es mehrere Verbindungen um von einer Station zu einer anderen zu kommen. Zuerst wird der Algorithmus die kürzesten Verbindungen auslasten, dann die längeren usw. Wenn alle Verbindungen ausgelastet sind, verteilt er die verbliebene Nachfrage gleichmäßig. Diese Einstellung besagt, ab welcher Auslastung eine Verbinudng als "voll" gilt und der Algorithmus in der ersten Runde die nächst längere wählt. Da die Kapazität der Verbindungen geschätzt wird, ist es sinnvoll, hier weniger als 100% anzugeben, um etwas "Luft" für Fehlschätzungen zu lassen.
