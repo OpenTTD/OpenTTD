@@ -17,6 +17,8 @@
 #include "transport_type.h"
 #include "network/core/config.h"
 #include "company_type.h"
+#include "cargotype.h"
+#include "linkgraph/linkgraph_type.h"
 #include "zoom_type.h"
 #include "openttd.h"
 
@@ -477,6 +479,26 @@ struct EconomySettings {
 	bool   infrastructure_maintenance;       ///< enable monthly maintenance fee for owner infrastructure
 };
 
+struct LinkGraphSettings {
+	uint16 recalc_time;                         ///< time (in days) for recalculating each link graph component.
+	uint16 recalc_interval;                     ///< time (in days) between subsequent checks for link graphs to be calculated.
+	DistributionTypeByte distribution_pax;      ///< distribution type for passengers
+	DistributionTypeByte distribution_mail;     ///< distribution type for mail
+	DistributionTypeByte distribution_armoured; ///< distribution type for armoured cargo class
+	DistributionTypeByte distribution_default;  ///< distribution type for all other goods
+	uint8 accuracy;                             ///< accuracy when calculating things on the link graph. low accuracy => low running time
+	uint8 demand_size;                          ///< influence of supply ("station size") on the demand function
+	uint8 demand_distance;                      ///< influence of distance between stations on the demand function
+	uint8 short_path_saturation;                ///< percentage up to which short paths are saturated before saturating most capacious paths
+
+	inline DistributionType GetDistributionType(CargoID cargo) const {
+		if (IsCargoInClass(cargo, CC_PASSENGERS)) return this->distribution_pax;
+		if (IsCargoInClass(cargo, CC_MAIL)) return this->distribution_mail;
+		if (IsCargoInClass(cargo, CC_ARMOURED)) return this->distribution_armoured;
+		return this->distribution_default;
+	}
+};
+
 /** Settings related to stations. */
 struct StationSettings {
 	bool   modified_catchment;               ///< different-size catchment areas
@@ -517,6 +539,7 @@ struct GameSettings {
 	OrderSettings        order;              ///< settings related to orders
 	VehicleSettings      vehicle;            ///< options for vehicles
 	EconomySettings      economy;            ///< settings to change the economy
+	LinkGraphSettings    linkgraph;          ///< settings for link graph calculations
 	StationSettings      station;            ///< settings related to station management
 	LocaleSettings       locale;             ///< settings related to used currency/unit system in the current game
 };

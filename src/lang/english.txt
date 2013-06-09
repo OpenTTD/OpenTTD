@@ -1562,11 +1562,36 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Average size of
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Remove absurd road-elements during the road construction: {STRING2}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Remove dead road ends during funded road reconstruction
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Update distribution graph every {STRING2} days
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Time between subsequent recalculations of the link graph. Each recalculation calculates the plans for one component of the graph. That means that a value X for this setting does not mean the whole graph will be updated every X days. Only some component will. The shorter you set it the more CPU time will be necessary to calculate it. The longer you set it the longer it will take until the cargo distribution starts on new routes.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Take {STRING2} days for recalculation of distribution graph
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Time taken for each recalculation of a link graph component. When a recalculation is started, a thread is spawned which is allowed to run for this number of days. The shorter you set this the more likely it is that the thread is not finished when it's supposed to. Then the game stops until it is ("lag"). The longer you set it the longer it takes for the distribution to be updated when routes change.
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetric
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetric
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distribution mode for passengers: {STRING2}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symmetric" means that roughly the same number of passengers will go from a station A to a station B as from B to A. "asymmetric" means that arbitrary numbers of passengers can go in either direction. "manual" means that no automatic distribution will take place for passengers.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distribution mode for mail: {STRING2}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetric" means that roughly the same amount of mail will be sent from a station A to a station B as from B to A. "asymmetric" means that arbitrary amounts of mail can be sent in either direction. "manual" means that no automatic distribution will take place for mail.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distribution mode for the ARMOURED cargo class: {STRING2}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :The ARMOURED cargo class contains valuables in the temperate and subtropical climates or gold in subarctic climate. NewGRFs may change that. "symmetric" means that roughly the same amount of that cargo will be sent from a station A to a station B as from B to A. "asymmetric" means that arbitrary of that cargo can be sent in either direction. "manual" means that no automatic distribution will take place for that cargo. It is recommended to set this to asymmetric or manual when playing subarctic, as banks won't send any gold back to gold mines. For temperate and subtropical you can also choose symmetric as banks will send valuables back to the origin bank of some load of valuables.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distribution mode for other cargo classes: {STRING2}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symmetric" means that roughly the same amount of cargo will be sent from a station A to a station B as from B to A. "asymmetric" means that arbitrary amounts of cargo can be sent in either direction. "manual" means that no automatic distribution will take place for those cargos. You probably want to set this to either "asymmetric" or manual.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distribution accuracy: {STRING2}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :The higher you set this the more CPU time the calculation of the link graph will take. If it takes too long you may notice lag. If you set it to a low value, however, the distribution will be inaccurate, and you may notice cargo not being sent to the places you expect it to go.
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effect of distance on demands: {STRING2}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :If you set this to a value higher than 0, the distance between the origin station A of some cargo and a possible destination B will have an effect on the amount of cargo sent from A to B. The further away B is from A the less cargo will be sent. The higher you set it, the less cargo will be sent to far away stations and the more cargo will be sent to near stations.
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Amount of returning cargo for symmetric mode: {STRING2}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Setting this to less than 100% makes the symmetric distribution behave more like the asymmetric one. Less cargo will be forcibly sent back if a certain amount is sent to a station. If you set it to 0% the symmetric distribution behaves just like the asymmetric one.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturation of short paths before using capacious paths: {STRING2}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frequently there are multiple paths between two given stations. Cargodist will saturate the shortest path first, then use the second shortest path until that is saturated and so on. Saturation is determined by an estimation of capacity and planned usage. Once it has saturated all paths, if there is still demand left, it will overload all paths, prefering the ones with high capacity. Most of the time the algorithm will not estimate the capacity accurately, though. This setting allows you to specify up to which percentage a shorter path must be saturated in the first pass before choosing the next longer one. Set it to less than 100% to avoid overcrowded stations in case of overestimated capacity.
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construction
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicles
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stations
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economy
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Cargo Distribution
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competitors
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Display options
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaction
