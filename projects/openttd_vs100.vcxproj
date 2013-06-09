@@ -650,6 +650,7 @@
     <ClCompile Include="..\src\core\math_func.cpp" />
     <ClInclude Include="..\src\core\math_func.hpp" />
     <ClInclude Include="..\src\core\mem_func.hpp" />
+    <ClInclude Include="..\src\core\multimap.hpp" />
     <ClInclude Include="..\src\core\overflowsafe_type.hpp" />
     <ClCompile Include="..\src\core\pool_func.cpp" />
     <ClInclude Include="..\src\core\pool_func.hpp" />

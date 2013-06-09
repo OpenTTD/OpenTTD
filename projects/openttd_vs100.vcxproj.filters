@@ -1179,6 +1179,9 @@
     <ClInclude Include="..\src\core\mem_func.hpp">
       <Filter>Core Source Code</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\core\multimap.hpp">
+      <Filter>Core Source Code</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\core\overflowsafe_type.hpp">
       <Filter>Core Source Code</Filter>
     </ClInclude>

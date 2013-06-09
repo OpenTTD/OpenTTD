@@ -1879,6 +1879,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\core\multimap.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\core\overflowsafe_type.hpp"
 				>
 			</File>
