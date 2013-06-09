@@ -384,7 +384,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Stift by
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Tilskudsordninger
-STR_GRAPH_MENU_GOAL                                             :Nuværende mål
 ############ range ends here
 
 ############ range for graph menu starts

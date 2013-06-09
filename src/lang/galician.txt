@@ -399,7 +399,6 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Taxas de pago p
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_GOAL                                             :Metas actuais
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Cadro da liga de compañías
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Puntuación de rendemento detallada
 STR_GRAPH_MENU_HIGHSCORE                                        :Táboa de máximas puntuacións

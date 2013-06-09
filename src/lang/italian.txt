@@ -388,7 +388,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Fonda città
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Sussidi
-STR_GRAPH_MENU_GOAL                                             :Obiettivi
 ############ range ends here
 
 ############ range for graph menu starts

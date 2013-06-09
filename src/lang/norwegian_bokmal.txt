@@ -400,7 +400,6 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Varetakster
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_GOAL                                             :Nåværende mål
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Firmarangeringstabell
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaljert prestasjonrating
 STR_GRAPH_MENU_HIGHSCORE                                        :Tavle med høyeste poengsummer

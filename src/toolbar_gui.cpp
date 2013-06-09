@@ -178,15 +178,14 @@ static void PopupMainToolbMenu(Window *w, int widget, DropDownList *list, int de
  * @param widget Toolbar button
  * @param string String for the first item in the menu
  * @param count Number of items in the menu
- * @param skip Hide first \a skip items in the menu
  */
-static void PopupMainToolbMenu(Window *w, int widget, StringID string, int count, int skip = 0)
+static void PopupMainToolbMenu(Window *w, int widget, StringID string, int count)
 {
 	DropDownList *list = new DropDownList();
-	for (int i = skip; i < count; i++) {
+	for (int i = 0; i < count; i++) {
 		list->push_back(new DropDownListStringItem(string + i, i, false));
 	}
-	PopupMainToolbMenu(w, widget, list, skip);
+	PopupMainToolbMenu(w, widget, list, 0);
 }
 
 /** Enum for the Company Toolbar's network related buttons */
@@ -682,7 +681,7 @@ static CallBackFunction MenuClickGraphs(int index)
 
 static CallBackFunction ToolbarLeagueClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_LEAGUE, STR_GRAPH_MENU_GOAL, _networking ? 4 : 5, Game::GetInstance() != NULL ? 0 : 2);
+	PopupMainToolbMenu(w, WID_TN_LEAGUE, STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE, _networking ? 2 : 3);
 	return CBF_NONE;
 }
 
@@ -695,11 +694,9 @@ static CallBackFunction ToolbarLeagueClick(Window *w)
 static CallBackFunction MenuClickLeague(int index)
 {
 	switch (index) {
-		case 0: ShowGoalsList(_local_company); break;
-		case 1: ShowStoryBook(_local_company); break;
-		case 2: ShowCompanyLeagueTable();      break;
-		case 3: ShowPerformanceRatingDetail(); break;
-		case 4: ShowHighscoreTable();          break;
+		case 0: ShowCompanyLeagueTable();      break;
+		case 1: ShowPerformanceRatingDetail(); break;
+		case 2: ShowHighscoreTable();          break;
 	}
 	return CBF_NONE;
 }

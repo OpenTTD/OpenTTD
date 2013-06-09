@@ -384,7 +384,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :町の新設に
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :助成金
-STR_GRAPH_MENU_GOAL                                             :現在の目的
 ############ range ends here
 
 ############ range for graph menu starts

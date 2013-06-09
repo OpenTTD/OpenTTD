@@ -398,7 +398,6 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Bảng giá cư
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_GOAL                                             :Các mục tiêu hiện tại
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Bảng tầm cỡ công ty
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Chi tiết hệ số năng suất
 STR_GRAPH_MENU_HIGHSCORE                                        :Bảng điểm chơi cao nhất

@@ -381,7 +381,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Urbo troviĝas.
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencioj
-STR_GRAPH_MENU_GOAL                                             :Aktualaj celoj
 ############ range ends here
 
 ############ range for graph menu starts

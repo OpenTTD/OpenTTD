@@ -440,7 +440,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Raja linn
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Toetused
-STR_GRAPH_MENU_GOAL                                             :Praegused eesmärgid
 ############ range ends here
 
 ############ range for graph menu starts

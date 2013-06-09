@@ -385,7 +385,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Основи г
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Субсидии
-STR_GRAPH_MENU_GOAL                                             :Настоящи цели
 ############ range ends here
 
 ############ range for graph menu starts

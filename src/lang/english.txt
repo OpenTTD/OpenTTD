@@ -399,8 +399,6 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Cargo payment r
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_GOAL                                             :Current goals
-STR_GRAPH_MENU_STORY_BOOK                                       :Story book
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Company league table
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detailed performance rating
 STR_GRAPH_MENU_HIGHSCORE                                        :Highscore table

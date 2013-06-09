@@ -385,7 +385,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Fann bæ
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Samstarfssamningar
-STR_GRAPH_MENU_GOAL                                             :Markmið
 ############ range ends here
 
 ############ range for graph menu starts

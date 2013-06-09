@@ -399,7 +399,6 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :화물 운송�
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_GOAL                                             :현재 목표
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :회사 성취도 순위
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :상세 성취도
 STR_GRAPH_MENU_HIGHSCORE                                        :고득점 순위표

@@ -397,7 +397,6 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Valorile plăţ
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_GOAL                                             :Ţinte curente
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Clasamentul companiilor
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Rating de performanţă detaliat
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabela cu scoruri maxime

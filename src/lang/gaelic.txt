@@ -574,7 +574,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Baile air a lor
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Tarrailean
-STR_GRAPH_MENU_GOAL                                             :Amasan an-dràsta
 ############ range ends here
 
 ############ range for graph menu starts

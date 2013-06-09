@@ -396,7 +396,6 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Daftar biaya ka
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_GOAL                                             :Target saat ini
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabel Perusahaan
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Rating kemampuan secara rinci
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabel Skor

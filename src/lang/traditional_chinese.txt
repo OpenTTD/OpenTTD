@@ -398,7 +398,6 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :貨物運費表
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_GOAL                                             :當前目標
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :公司排行榜
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :詳細營運評比
 STR_GRAPH_MENU_HIGHSCORE                                        :積分排行榜

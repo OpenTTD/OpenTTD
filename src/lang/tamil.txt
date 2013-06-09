@@ -396,7 +396,6 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :சரக்க
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_GOAL                                             :தற்போதைய குறிக்கோள்கள்
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :நிறுவனங்களின் பட்டியல்
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :விவரமான செயல்திறன் மதிப்பீடு
 STR_GRAPH_MENU_HIGHSCORE                                        :புள்ளிகள் பட்டியல்

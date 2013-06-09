@@ -398,7 +398,6 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Cyfraddau Tâl 
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_GOAL                                             :Nodau presennol
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabl Cynghrair Cwmnïau
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Graddfa Fanwl Perfformiad
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabl sgôr uchaf

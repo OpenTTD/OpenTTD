@@ -398,7 +398,6 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Rahtitaksat
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_GOAL                                             :Nykyiset tavoitteet
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Yhtiökilpataulukko
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Suoritearviointi
 STR_GRAPH_MENU_HIGHSCORE                                        :Pistetaulukko

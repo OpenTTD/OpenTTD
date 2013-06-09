@@ -387,7 +387,6 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Fundar pueblo
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvenciones
-STR_GRAPH_MENU_GOAL                                             :Metas actuales
 ############ range ends here
 
 ############ range for graph menu starts
