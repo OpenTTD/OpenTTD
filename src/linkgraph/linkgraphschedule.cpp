@@ -12,6 +12,7 @@
 #include "../stdafx.h"
 #include "linkgraphschedule.h"
 #include "init.h"
+#include "demands.h"
 
 /**
  * Spawn a thread if possible and run the link graph job in the thread. If
@@ -128,6 +129,7 @@ void LinkGraphSchedule::SpawnAll()
 LinkGraphSchedule::LinkGraphSchedule()
 {
 	this->handlers[0] = new InitHandler;
+	this->handlers[1] = new DemandHandler;
 }
 
 /**

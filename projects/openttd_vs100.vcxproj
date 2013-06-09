@@ -331,6 +331,7 @@
     <ClCompile Include="..\src\ini.cpp" />
     <ClCompile Include="..\src\ini_load.cpp" />
     <ClCompile Include="..\src\landscape.cpp" />
+    <ClCompile Include="..\src\linkgraph\demands.cpp" />
     <ClCompile Include="..\src\linkgraph\linkgraph.cpp" />
     <ClCompile Include="..\src\linkgraph\linkgraphjob.cpp" />
     <ClCompile Include="..\src\linkgraph\linkgraphschedule.cpp" />
@@ -473,6 +474,7 @@
     <ClInclude Include="..\src\landscape.h" />
     <ClInclude Include="..\src\landscape_type.h" />
     <ClInclude Include="..\src\language.h" />
+    <ClInclude Include="..\src\linkgraph\demands.h" />
     <ClInclude Include="..\src\linkgraph\init.h" />
     <ClInclude Include="..\src\linkgraph\linkgraph.h" />
     <ClInclude Include="..\src\linkgraph\linkgraph_base.h" />
