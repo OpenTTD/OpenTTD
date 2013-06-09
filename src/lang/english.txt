@@ -221,6 +221,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Filter s
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Enter filter string
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Enter a keyword to filter the list for
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Select grouping order
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Select sorting order (descending/ascending)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Select sorting criteria
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Select filtering criteria
@@ -3012,6 +3013,29 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ratings
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Show station ratings
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Monthly supply and local rating:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
+STR_STATION_VIEW_GROUP                                          :{BLACK}Group by
+STR_STATION_VIEW_WAITING_STATION                                :Station: Waiting
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Amount: Waiting
+STR_STATION_VIEW_PLANNED_STATION                                :Station: Planned
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Amount: Planned
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} from {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} via {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} to {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} from unknown station
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} to any station
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} via any station
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} from this station
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} stopping at this station
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} to this station
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} non-stop
+
+STR_STATION_VIEW_GROUP_S_V_D                                    :Source-Via-Destination
+STR_STATION_VIEW_GROUP_S_D_V                                    :Source-Destination-Via
+STR_STATION_VIEW_GROUP_V_S_D                                    :Via-Source-Destination
+STR_STATION_VIEW_GROUP_V_D_S                                    :Via-Destination-Source
+STR_STATION_VIEW_GROUP_D_S_V                                    :Destination-Source-Via
+STR_STATION_VIEW_GROUP_D_V_S                                    :Destination-Via-Source
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Appalling

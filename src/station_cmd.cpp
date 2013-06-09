@@ -2285,7 +2285,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		st->RecomputeIndustriesNear();
 		InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
-		InvalidateWindowData(WC_STATION_VIEW, st->index);
+		InvalidateWindowData(WC_STATION_VIEW, st->index, -1);
 
 		if (_settings_game.economy.station_noise_level) {
 			SetWindowDirty(WC_TOWN_VIEW, st->town->index);
@@ -2361,7 +2361,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 		st->airport.Clear();
 		st->facilities &= ~FACIL_AIRPORT;
 
-		InvalidateWindowData(WC_STATION_VIEW, st->index);
+		InvalidateWindowData(WC_STATION_VIEW, st->index, -1);
 
 		if (_settings_game.economy.station_noise_level) {
 			SetWindowDirty(WC_TOWN_VIEW, st->town->index);
