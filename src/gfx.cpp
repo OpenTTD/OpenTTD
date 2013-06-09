@@ -883,6 +883,23 @@ int GetStringHeight(StringID str, int maxw)
 }
 
 /**
+ * Calculates number of lines of string. The string is changed to a multiline string if needed.
+ * @param str string to check
+ * @param maxw maximum string width
+ * @return number of lines of string when it is drawn
+ */
+int GetStringLineCount(StringID str, int maxw)
+{
+	char buffer[DRAW_STRING_BUFFER];
+
+	GetString(buffer, str, lastof(buffer));
+
+	uint32 tmp = FormatStringLinebreaks(buffer, lastof(buffer), maxw);
+
+	return 1 + GB(tmp, 0, 16);
+}
+
+/**
  * Calculate string bounding box for multi-line strings.
  * @param str        String to check.
  * @param suggestion Suggested bounding box.
