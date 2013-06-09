@@ -379,7 +379,7 @@ protected:
 		uint sprite_top = y_offset + (element_height - sprite_dim.height) / 2;
 		uint text_top = y_offset + (element_height - line_height) / 2;
 
-		DrawSprite(action_sprite, PAL_NONE, 0, y_offset);
+		DrawSprite(action_sprite, PAL_NONE, 0, sprite_top);
 		DrawString(sprite_dim.width + WD_FRAMETEXT_LEFT, width, text_top, STR_JUST_RAW_STRING, TC_BLACK);
 
 		y_offset += element_height;
