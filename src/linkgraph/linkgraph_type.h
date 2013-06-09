@@ -21,4 +21,22 @@ static const LinkGraphID INVALID_LIN_KGRAPH_JOB = UINT16_MAX;
 typedef uint16 NodeID;
 static const NodeID INVALID_NODE = UINT16_MAX;
 
+enum DistributionType {
+	DT_BEGIN = 0,
+	DT_MIN = 0,
+	DT_MANUAL = 0,           ///< Manual distribution. No link graph calculations are run.
+	DT_ASYMMETRIC = 1,       ///< Asymmetric distribution. Usually cargo will only travel in one direction.
+	DT_MAX_NONSYMMETRIC = 1, ///< Maximum non-symmetric distribution.
+	DT_SYMMETRIC = 2,        ///< Symmetric distribution. The same amount of cargo travels in each direction between each pair of nodes.
+	DT_MAX = 2,
+	DT_NUM = 3,
+	DT_END = 3
+};
+
+/* It needs to be 8bits, because we save and load it as such
+ * Define basic enum properties
+ */
+template <> struct EnumPropsT<DistributionType> : MakeEnumPropsT<DistributionType, byte, DT_BEGIN, DT_END, DT_NUM> {};
+typedef TinyEnumT<DistributionType> DistributionTypeByte; // typedefing-enumification of DistributionType
+
 #endif /* LINKGRAPH_TYPE_H */
