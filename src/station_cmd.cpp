@@ -4173,8 +4173,13 @@ void FlowStatMap::FinalizeLocalConsumption(StationID self)
 	for (FlowStatMap::iterator i = this->begin(); i != this->end(); ++i) {
 		FlowStat &fs = i->second;
 		uint local = fs.GetShare(INVALID_STATION);
-		fs.ChangeShare(self, -local);
-		fs.ChangeShare(INVALID_STATION, -local);
+		if (local > INT_MAX) { // make sure it fits in an int
+			fs.ChangeShare(self, -INT_MAX);
+			fs.ChangeShare(INVALID_STATION, -INT_MAX);
+			local -= INT_MAX;
+		}
+		fs.ChangeShare(self, (int)-local);
+		fs.ChangeShare(INVALID_STATION, (int)-local);
 
 		/* If the local share is used up there must be a share for some
 		 * remote station. */
