@@ -44,7 +44,7 @@ private:
 	friend const SaveLoad *GetLinkGraphScheduleDesc();
 
 protected:
-	ComponentHandler *handlers[2]; ///< Handlers to be run for each job.
+	ComponentHandler *handlers[4]; ///< Handlers to be run for each job.
 	GraphList schedule;            ///< Queue for new jobs.
 	JobList running;               ///< Currently running jobs.
 

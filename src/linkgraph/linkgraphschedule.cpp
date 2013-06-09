@@ -13,6 +13,7 @@
 #include "linkgraphschedule.h"
 #include "init.h"
 #include "demands.h"
+#include "mcf.h"
 
 /**
  * Spawn a thread if possible and run the link graph job in the thread. If
@@ -130,6 +131,8 @@ LinkGraphSchedule::LinkGraphSchedule()
 {
 	this->handlers[0] = new InitHandler;
 	this->handlers[1] = new DemandHandler;
+	this->handlers[2] = new MCFHandler<MCF1stPass>;
+	this->handlers[3] = new MCFHandler<MCF2ndPass>;
 }
 
 /**

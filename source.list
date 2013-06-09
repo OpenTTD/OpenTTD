@@ -43,6 +43,7 @@ linkgraph/demands.cpp
 linkgraph/linkgraph.cpp
 linkgraph/linkgraphjob.cpp
 linkgraph/linkgraphschedule.cpp
+linkgraph/mcf.cpp
 map.cpp
 misc.cpp
 mixer.cpp
@@ -216,6 +217,7 @@ linkgraph/linkgraph_type.h
 linkgraph/linkgraphjob.h
 linkgraph/linkgraphjob_base.h
 linkgraph/linkgraphschedule.h
+linkgraph/mcf.h
 livery.h
 map_func.h
 map_type.h
