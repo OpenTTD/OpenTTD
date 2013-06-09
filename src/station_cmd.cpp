@@ -3979,6 +3979,187 @@ static CommandCost TerraformTile_Station(TileIndex tile, DoCommandFlag flags, in
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 }
 
+/**
+ * Get flow for a station.
+ * @param st Station to get flow for.
+ * @return Flow for st.
+ */
+uint FlowStat::GetShare(StationID st) const
+{
+	uint32 prev = 0;
+	for (SharesMap::const_iterator it = this->shares.begin(); it != this->shares.end(); ++it) {
+		if (it->second == st) {
+			return it->first - prev;
+		} else {
+			prev = it->first;
+		}
+	}
+	return 0;
+}
+
+/**
+ * Get a station a package can be routed to, but exclude the given one.
+ * @param excluded StationID not to be selected.
+ * @return A station ID from the shares map.
+ */
+StationID FlowStat::GetVia(StationID excluded, StationID excluded2) const
+{
+	assert(!this->shares.empty());
+	uint max = (--this->shares.end())->first - 1;
+	SharesMap::const_iterator it = this->shares.upper_bound(RandomRange(max));
+	assert(it != this->shares.end());
+	if (it->second != excluded && it->second != excluded2) return it->second;
+
+	/* We've hit one of the excluded stations.
+	 * Draw another share, from outside its range. */
+
+	uint end = it->first;
+	uint begin = (it == this->shares.begin() ? 0 : (--it)->first);
+	uint interval = end - begin;
+	if (interval > max) return INVALID_STATION; // Only one station in the map.
+	uint new_max = max - interval;
+	uint rand = RandomRange(new_max);
+	SharesMap::const_iterator it2 = (rand < begin) ? this->shares.upper_bound(rand) :
+			this->shares.upper_bound(rand + interval);
+	assert(it2 != this->shares.end());
+	if (it2->second != excluded && it2->second != excluded2) return it2->second;
+
+	/* We've hit the second excluded station.
+	 * Same as before, only a bit more complicated. */
+
+	uint end2 = it2->first;
+	uint begin2 = (it2 == this->shares.begin() ? 0 : (--it2)->first);
+	uint interval2 = end2 - begin2;
+	if (interval2 > new_max) return INVALID_STATION; // Only the two excluded stations in the map.
+	new_max -= interval2;
+	if (begin > begin2) {
+		Swap(begin, begin2);
+		Swap(end, end2);
+		Swap(interval, interval2);
+	}
+	rand = RandomRange(new_max);
+	SharesMap::const_iterator it3 = this->shares.end();
+	if (rand < begin) {
+		it3 = this->shares.upper_bound(rand);
+	} else if (rand < begin2 - interval) {
+		it3 = this->shares.upper_bound(rand + interval);
+	} else {
+		it3 = this->shares.upper_bound(rand + interval + interval2);
+	}
+	assert(it3 != this->shares.end());
+	return it3->second;
+
+}
+
+/**
+ * Change share for specified station. By specifing INT_MIN as parameter you
+ * can erase a share.
+ * @param st Next Hop to be removed.
+ * @param flow Share to be added or removed.
+ */
+void FlowStat::ChangeShare(StationID st, int flow)
+{
+	/* We assert only before changing as afterwards the shares can actually
+	 * be empty. In that case the whole flow stat must be deleted then. */
+	assert(!this->shares.empty());
+
+	int32 added_shares = 0;
+	uint32 last_share = 0;
+	SharesMap new_shares;
+	for (SharesMap::iterator it(this->shares.begin()); it != this->shares.end(); ++it) {
+		if (it->second == st) {
+			uint share = it->first - last_share;
+			int change = flow - added_shares;
+			uint new_share = (change < 0 && (uint)(-change) > share) ? 0 : share + change;
+			added_shares -= share;
+			added_shares += new_share;
+			if (new_share > 0) {
+				new_shares[it->first + added_shares] = it->second;
+			}
+		} else {
+			new_shares[it->first + added_shares] = it->second;
+		}
+		last_share = it->first;
+	}
+	if (flow > added_shares) {
+		new_shares[last_share + flow - added_shares] = st;
+	}
+	this->shares.swap(new_shares);
+}
+
+/**
+ * Add some flow from "origin", going via "via".
+ * @param origin Origin of the flow.
+ * @param via Next hop.
+ * @param flow Amount of flow to be added.
+ */
+void FlowStatMap::AddFlow(StationID origin, StationID via, uint flow)
+{
+	FlowStatMap::iterator origin_it = this->find(origin);
+	if (origin_it == this->end()) {
+		this->insert(std::make_pair(origin, FlowStat(via, flow)));
+	} else {
+		origin_it->second.ChangeShare(via, flow);
+		assert(!origin_it->second.GetShares()->empty());
+	}
+}
+
+/**
+ * Pass on some flow, remembering it as invalid, for later subtraction from
+ * locally consumed flow. This is necessary because we can't have negative
+ * flows and we don't want to sort the flows before adding them up.
+ * @param origin Origin of the flow.
+ * @param via Next hop.
+ * @param flow Amount of flow to be passed.
+ */
+void FlowStatMap::PassOnFlow(StationID origin, StationID via, uint flow)
+{
+	FlowStatMap::iterator prev_it = this->find(origin);
+	if (prev_it == this->end()) {
+		FlowStat fs(via, flow);
+		fs.AppendShare(INVALID_STATION, flow);
+		this->insert(std::make_pair(origin, fs));
+	} else {
+		prev_it->second.ChangeShare(via, flow);
+		prev_it->second.ChangeShare(INVALID_STATION, flow);
+		assert(!prev_it->second.GetShares()->empty());
+	}
+}
+
+/**
+ * Subtract invalid flows from locally consumed flow.
+ * @param self ID of own station.
+ */
+void FlowStatMap::FinalizeLocalConsumption(StationID self)
+{
+	for (FlowStatMap::iterator i = this->begin(); i != this->end(); ++i) {
+		FlowStat &fs = i->second;
+		uint local = fs.GetShare(INVALID_STATION);
+		fs.ChangeShare(self, -local);
+		fs.ChangeShare(INVALID_STATION, -local);
+
+		/* If the local share is used up there must be a share for some
+		 * remote station. */
+		assert(!fs.GetShares()->empty());
+	}
+}
+
+/**
+ * Delete all flows at a station for specific cargo and destination.
+ * @param via Remote station of flows to be deleted.
+ */
+void FlowStatMap::DeleteFlows(StationID via)
+{
+	for (FlowStatMap::iterator f_it = this->begin(); f_it != this->end();) {
+		FlowStat &s_flows = f_it->second;
+		s_flows.ChangeShare(via, INT_MIN);
+		if (s_flows.GetShares()->empty()) {
+			this->erase(f_it++);
+		} else {
+			++f_it;
+		}
+	}
+}
 
 extern const TileTypeProcs _tile_type_station_procs = {
 	DrawTile_Station,           // draw_tile_proc
