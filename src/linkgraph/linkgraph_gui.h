@@ -23,10 +23,11 @@
  * Properties of a link between two stations.
  */
 struct LinkProperties {
-	LinkProperties() : capacity(0), usage(0) {}
+	LinkProperties() : capacity(0), usage(0), planned(0) {}
 
 	uint capacity; ///< Capacity of the link.
 	uint usage;    ///< Actual usage of the link.
+	uint planned;  ///< Planned usage of the link.
 };
 
 /**
@@ -85,7 +86,7 @@ protected:
 	bool IsPointVisible(Point pt, const DrawPixelInfo *dpi, int padding = 0) const;
 	void GetWidgetDpi(DrawPixelInfo *dpi) const;
 
-	static void AddStats(uint new_cap, uint new_usg, LinkProperties &cargo);
+	static void AddStats(uint new_cap, uint new_usg, uint new_flow, LinkProperties &cargo);
 	static void DrawVertex(int x, int y, int size, int colour, int border_colour);
 };
 

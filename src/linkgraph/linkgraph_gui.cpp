@@ -149,7 +149,7 @@ void LinkGraphOverlay::AddLinks(const Station *from, const Station *to)
 		ConstEdge edge = lg[ge.node][to->goods[c].node];
 		if (edge.Capacity() > 0) {
 			this->AddStats(lg.Monthly(edge.Capacity()), lg.Monthly(edge.Usage()),
-					this->cached_links[from->index][to->index]);
+					ge.GetSumFlowVia(to->index), this->cached_links[from->index][to->index]);
 		}
 	}
 }
@@ -160,13 +160,14 @@ void LinkGraphOverlay::AddLinks(const Station *from, const Station *to)
  * @param new_plan Planned flow for the link.
  * @param cargo LinkProperties to write the information to.
  */
-/* static */ void LinkGraphOverlay::AddStats(uint new_cap, uint new_usg, LinkProperties &cargo)
+/* static */ void LinkGraphOverlay::AddStats(uint new_cap, uint new_usg, uint new_plan, LinkProperties &cargo)
 {
 	/* multiply the numbers by 32 in order to avoid comparing to 0 too often. */
 	if (cargo.capacity == 0 ||
-			cargo.usage * 32 / (cargo.capacity + 1) < new_usg * 32 / (new_cap + 1)) {
+			max(cargo.usage, cargo.planned) * 32 / (cargo.capacity + 1) < max(new_usg, new_plan) * 32 / (new_cap + 1)) {
 		cargo.capacity = new_cap;
 		cargo.usage = new_usg;
+		cargo.planned = new_plan;
 	}
 }
 
@@ -209,7 +210,8 @@ void LinkGraphOverlay::DrawContent(Point pta, Point ptb, const LinkProperties &c
 	int offset_y = (pta.x < ptb.x ? 1 : -1) * this->scale;
 	int offset_x = (pta.y > ptb.y ? 1 : -1) * this->scale;
 
-	int colour = LinkGraphOverlay::LINK_COLOURS[cargo.usage * lengthof(LinkGraphOverlay::LINK_COLOURS) / (cargo.capacity * 2 + 2)];
+	uint usage_or_plan = min(cargo.capacity * 2 + 1, max(cargo.usage, cargo.planned));
+	int colour = LinkGraphOverlay::LINK_COLOURS[usage_or_plan * lengthof(LinkGraphOverlay::LINK_COLOURS) / (cargo.capacity * 2 + 2)];
 
 	GfxDrawLine(pta.x + offset_x, pta.y, ptb.x + offset_x, ptb.y, colour, scale);
 	GfxDrawLine(pta.x, pta.y + offset_y, ptb.x, ptb.y + offset_y, colour, scale);
