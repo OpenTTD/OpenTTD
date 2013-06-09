@@ -16,6 +16,7 @@
 #include "window_func.h"
 #include "vehicle_base.h"
 #include "cmd_helper.h"
+#include "core/sort_func.hpp"
 
 #include "table/strings.h"
 
@@ -179,16 +180,60 @@ CommandCost CmdSetVehicleOnTime(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 }
 
 /**
+ * Order vehicles based on their timetable. The vehicles will be sorted in order
+ * they would reach the first station.
+ *
+ * @param ap First Vehicle pointer.
+ * @param bp Second Vehicle pointer.
+ * @return Comparison value.
+ */
+static int CDECL VehicleTimetableSorter(Vehicle * const *ap, Vehicle * const *bp)
+{
+	const Vehicle *a = *ap;
+	const Vehicle *b = *bp;
+
+	VehicleOrderID a_order = a->cur_real_order_index;
+	VehicleOrderID b_order = b->cur_real_order_index;
+	int j = (int)b_order - (int)a_order;
+
+	/* Are we currently at an ordered station (un)loading? */
+	bool a_load = a->current_order.IsType(OT_LOADING) && a->current_order.GetNonStopType() != ONSF_STOP_EVERYWHERE;
+	bool b_load = b->current_order.IsType(OT_LOADING) && b->current_order.GetNonStopType() != ONSF_STOP_EVERYWHERE;
+
+	/* If the current order is not loading at the ordered station, decrease the order index by one since we have
+	 * not yet arrived at the station (and thus the timetable entry; still in the travelling of the previous one).
+	 * Since the ?_order variables are unsigned the -1 will flow under and place the vehicles going to order #0 at
+	 * the begin of the list with vehicles arriving at #0. */
+	if (!a_load) a_order--;
+	if (!b_load) b_order--;
+
+	/* First check the order index that accounted for loading, then just the raw one. */
+	int i = (int)b_order - (int)a_order;
+	if (i != 0) return i;
+	if (j != 0) return j;
+
+	/* Look at the time we spent in this order; the higher, the closer to its destination. */
+	i = b->current_order_time - a->current_order_time;
+	if (i != 0) return i;
+
+	/* If all else is equal, use some unique index to sort it the same way. */
+	return b->unitnumber - a->unitnumber;
+}
+
+/**
  * Set the start date of the timetable.
  * @param tile Not used.
  * @param flags Operation to perform.
- * @param p1 Vehicle id.
+ * @param p2 Various bitstuffed elements
+ * - p2 = (bit 0-19) - Vehicle ID.
+ * - p2 = (bit 20)   - Set to 1 to set timetable start for all vehicles sharing this order
  * @param p2 The timetable start date.
  * @param text Not used.
  * @return The error or cost of the operation.
  */
 CommandCost CmdSetTimetableStart(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
+	bool timetable_all = HasBit(p1, 20);
 	Vehicle *v = Vehicle::GetIfValid(GB(p1, 0, 20));
 	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
@@ -200,13 +245,39 @@ CommandCost CmdSetTimetableStart(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	if (start_date < 0 || start_date > MAX_DAY) return CMD_ERROR;
 	if (start_date - _date > 15 * DAYS_IN_LEAP_YEAR) return CMD_ERROR;
 	if (_date - start_date > DAYS_IN_LEAP_YEAR) return CMD_ERROR;
+	if (timetable_all && !v->orders.list->IsCompleteTimetable()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		v->lateness_counter = 0;
-		ClrBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
-		v->timetable_start = start_date;
+		SmallVector<Vehicle *, 8> vehs;
 
-		SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
+		if (timetable_all) {
+			for (Vehicle *w = v->orders.list->GetFirstSharedVehicle(); w != NULL; w = w->NextShared()) {
+				*vehs.Append() = w;
+			}
+		} else {
+			*vehs.Append() = v;
+		}
+
+		int total_duration = v->orders.list->GetTimetableTotalDuration();
+		int num_vehs = vehs.Length();
+
+		if (num_vehs >= 2) {
+			QSortT(vehs.Begin(), vehs.Length(), &VehicleTimetableSorter);
+		}
+
+		int base = vehs.FindIndex(v);
+
+		for (Vehicle **viter = vehs.Begin(); viter != vehs.End(); viter++) {
+			int idx = (viter - vehs.Begin()) - base;
+			Vehicle *w = *viter;
+
+			w->lateness_counter = 0;
+			ClrBit(w->vehicle_flags, VF_TIMETABLE_STARTED);
+			/* Do multiplication, then division to reduce rounding errors. */
+			w->timetable_start = start_date + idx * total_duration / num_vehs / DAY_TICKS;
+			SetWindowDirty(WC_VEHICLE_TIMETABLE, w->index);
+		}
+
 	}
 
 	return CommandCost();
