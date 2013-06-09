@@ -3370,6 +3370,8 @@ void DeleteStaleLinks(Station *from)
 			if ((uint)(_date - edge.LastUpdate()) > LinkGraph::MIN_TIMEOUT_DISTANCE +
 					(DistanceManhattan(from->xy, to->xy) >> 2)) {
 				node.RemoveEdge(to->goods[c].node);
+				ge.flows.DeleteFlows(to->index);
+				ge.cargo.Reroute(UINT_MAX, &ge.cargo, to->index, from->index, &ge);
 			}
 		}
 		assert(_date >= lg->LastCompression());
@@ -3539,7 +3541,8 @@ static uint UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceT
 	/* No new "real" cargo item yet. */
 	if (amount == 0) return 0;
 
-	ge.cargo.Append(new CargoPacket(st->index, st->xy, amount, source_type, source_id));
+	StationID next = ge.GetVia(st->index);
+	ge.cargo.Append(new CargoPacket(st->index, st->xy, amount, source_type, source_id), next);
 	LinkGraph *lg = NULL;
 	if (ge.link_graph == INVALID_LINK_GRAPH) {
 		if (LinkGraph::CanAllocateItem()) {

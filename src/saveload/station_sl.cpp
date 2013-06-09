@@ -237,6 +237,9 @@ static const SaveLoad _station_speclist_desc[] = {
 	SLE_END()
 };
 
+std::list<CargoPacket *> _packets;
+uint32 _num_dests;
+
 struct FlowSaveLoad {
 	FlowSaveLoad() : via(0), share(0) {}
 	StationID source;
@@ -273,7 +276,8 @@ const SaveLoad *GetGoodsDesc()
 		SLEG_CONDVAR(            _cargo_feeder_share,  SLE_FILE_U32 | SLE_VAR_I64, 14, 64),
 		SLEG_CONDVAR(            _cargo_feeder_share,  SLE_INT64,                  65, 67),
 		 SLE_CONDVAR(GoodsEntry, amount_fract,         SLE_UINT8,                 150, SL_MAX_VERSION),
-		 SLE_CONDLST(GoodsEntry, cargo.packets,        REF_CARGO_PACKET,           68, SL_MAX_VERSION),
+		SLEG_CONDLST(            _packets,             REF_CARGO_PACKET,           68, 182),
+		SLEG_CONDVAR(            _num_dests,           SLE_UINT32,                183, SL_MAX_VERSION),
 		 SLE_CONDVAR(GoodsEntry, cargo.reserved_count, SLE_UINT,                  181, SL_MAX_VERSION),
 		 SLE_CONDVAR(GoodsEntry, link_graph,           SLE_UINT16,                183, SL_MAX_VERSION),
 		 SLE_CONDVAR(GoodsEntry, node,                 SLE_UINT16,                183, SL_MAX_VERSION),
@@ -284,6 +288,35 @@ const SaveLoad *GetGoodsDesc()
 	return goods_desc;
 }
 
+typedef std::pair<const StationID, std::list<CargoPacket *> > StationCargoPair;
+
+static const SaveLoad _cargo_list_desc[] = {
+	SLE_VAR(StationCargoPair, first,  SLE_UINT16),
+	SLE_LST(StationCargoPair, second, REF_CARGO_PACKET),
+	SLE_END()
+};
+
+/**
+ * Swap the temporary packets with the packets without specific destination in
+ * the given goods entry. Assert that at least one of those is empty.
+ * @param ge Goods entry to swap with.
+ */
+static void SwapPackets(GoodsEntry *ge)
+{
+	StationCargoPacketMap &ge_packets = const_cast<StationCargoPacketMap &>(*ge->cargo.Packets());
+
+	if (_packets.empty()) {
+		std::map<StationID, std::list<CargoPacket *> >::iterator it(ge_packets.find(INVALID_STATION));
+		if (it == ge_packets.end()) {
+			return;
+		} else {
+			it->second.swap(_packets);
+		}
+	} else {
+		assert(ge_packets[INVALID_STATION].empty());
+		ge_packets[INVALID_STATION].swap(_packets);
+	}
+}
 
 static void Load_STNS()
 {
@@ -299,6 +332,7 @@ static void Load_STNS()
 		for (CargoID i = 0; i < num_cargo; i++) {
 			GoodsEntry *ge = &st->goods[i];
 			SlObject(ge, GetGoodsDesc());
+			SwapPackets(ge);
 			if (IsSavegameVersionBefore(68)) {
 				SB(ge->acceptance_pickup, GoodsEntry::GES_ACCEPTANCE, 1, HasBit(_waiting_acceptance, 15));
 				if (GB(_waiting_acceptance, 0, 12) != 0) {
@@ -310,7 +344,10 @@ static void Load_STNS()
 					 * savegame versions. As the CargoPacketPool has more than
 					 * 16 million entries; it fits by an order of magnitude. */
 					assert(CargoPacket::CanAllocateItem());
-					ge->cargo.Append(new CargoPacket(GB(_waiting_acceptance, 0, 12), _cargo_days, source, _cargo_source_xy, _cargo_source_xy, _cargo_feeder_share));
+
+					/* Don't construct the packet with station here, because that'll fail with old savegames */
+					CargoPacket *cp = new CargoPacket(GB(_waiting_acceptance, 0, 12), _cargo_days, source, _cargo_source_xy, _cargo_source_xy, _cargo_feeder_share);
+					ge->cargo.Append(cp, INVALID_STATION);
 					SB(ge->acceptance_pickup, GoodsEntry::GES_PICKUP, 1, 1);
 				}
 			}
@@ -336,7 +373,9 @@ static void Ptrs_STNS()
 		if (!IsSavegameVersionBefore(68)) {
 			for (CargoID i = 0; i < NUM_CARGO; i++) {
 				GoodsEntry *ge = &st->goods[i];
+				SwapPackets(ge);
 				SlObject(ge, GetGoodsDesc());
+				SwapPackets(ge);
 			}
 		}
 		SlObject(st, _old_station_desc);
@@ -427,6 +466,7 @@ static void RealSave_STNN(BaseStation *bst)
 	if (!waypoint) {
 		Station *st = Station::From(bst);
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
+			_num_dests = (uint32)st->goods[i].cargo.Packets()->MapSize();
 			_num_flows = 0;
 			for (FlowStatMap::const_iterator it(st->goods[i].flows.begin()); it != st->goods[i].flows.end(); ++it) {
 				_num_flows += (uint32)it->second.GetShares()->size();
@@ -444,6 +484,9 @@ static void RealSave_STNN(BaseStation *bst)
 					assert(flow.share > 0);
 					SlObject(&flow, _flow_desc);
 				}
+			}
+			for (StationCargoPacketMap::ConstMapIterator it(st->goods[i].cargo.Packets()->begin()); it != st->goods[i].cargo.Packets()->end(); ++it) {
+				SlObject(const_cast<StationCargoPacketMap::value_type *>(&(*it)), _cargo_list_desc);
 			}
 		}
 	}
@@ -498,6 +541,16 @@ static void Load_STNN()
 					}
 					prev_source = flow.source;
 				}
+				if (IsSavegameVersionBefore(183)) {
+					SwapPackets(&st->goods[i]);
+				} else {
+					StationCargoPair pair;
+					for (uint j = 0; j < _num_dests; ++j) {
+						SlObject(&pair, _cargo_list_desc);
+						const_cast<StationCargoPacketMap &>(*(st->goods[i].cargo.Packets()))[pair.first].swap(pair.second);
+						assert(pair.second.empty());
+					}
+				}
 			}
 		}
 
@@ -520,7 +573,16 @@ static void Ptrs_STNN()
 	FOR_ALL_STATIONS(st) {
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			GoodsEntry *ge = &st->goods[i];
-			SlObject(ge, GetGoodsDesc());
+			if (IsSavegameVersionBefore(183)) {
+				SwapPackets(ge);
+				SlObject(ge, GetGoodsDesc());
+				SwapPackets(ge);
+			} else {
+				SlObject(ge, GetGoodsDesc());
+				for (StationCargoPacketMap::ConstMapIterator it = ge->cargo.Packets()->begin(); it != ge->cargo.Packets()->end(); ++it) {
+					SlObject(const_cast<StationCargoPair *>(&(*it)), _cargo_list_desc);
+				}
+			}
 		}
 		SlObject(st, _station_desc);
 	}

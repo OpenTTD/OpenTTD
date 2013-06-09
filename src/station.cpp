@@ -103,6 +103,7 @@ Station::~Station()
 		FOR_ALL_STATIONS(st) {
 			GoodsEntry *ge = &st->goods[c];
 			ge->flows.DeleteFlows(this->index);
+			ge->cargo.Reroute(UINT_MAX, &ge->cargo, this->index, st->index, ge);
 		}
 	}
 

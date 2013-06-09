@@ -947,7 +947,7 @@ struct StationViewWindow : public Window {
 				this->cargo_rows[i] = (uint16)cargolist->size();
 
 				/* Add an entry for each distinct cargo source. */
-				const StationCargoList::List *packets = st->goods[i].cargo.Packets();
+				const StationCargoPacketMap *packets = st->goods[i].cargo.Packets();
 				for (StationCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
 					const CargoPacket *cp = *it;
 					if (cp->SourceStation() != station_id) {

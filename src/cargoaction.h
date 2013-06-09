@@ -71,11 +71,9 @@ public:
 
 /** Action of transferring cargo from a vehicle to a station. */
 class CargoTransfer : public CargoMovement<VehicleCargoList, StationCargoList> {
-protected:
-	CargoPayment *payment;  ///< Payment object for registering transfer credits.
 public:
-	CargoTransfer(VehicleCargoList *source, StationCargoList *destination, uint max_move, CargoPayment *payment) :
-			CargoMovement<VehicleCargoList, StationCargoList>(source, destination, max_move), payment(payment) {}
+	CargoTransfer(VehicleCargoList *source, StationCargoList *destination, uint max_move) :
+			CargoMovement<VehicleCargoList, StationCargoList>(source, destination, max_move) {}
 	bool operator()(CargoPacket *cp);
 };
 
@@ -99,9 +97,10 @@ public:
 
 /** Action of returning previously reserved cargo from the vehicle to the station. */
 class CargoReturn: public CargoMovement<VehicleCargoList, StationCargoList> {
+	StationID next;
 public:
-	CargoReturn(VehicleCargoList *source, StationCargoList *destination, uint max_move) :
-			CargoMovement<VehicleCargoList, StationCargoList>(source, destination, max_move) {}
+	CargoReturn(VehicleCargoList *source, StationCargoList *destination, uint max_move, StationID next) :
+			CargoMovement<VehicleCargoList, StationCargoList>(source, destination, max_move), next(next) {}
 	bool operator()(CargoPacket *cp);
 };
 
@@ -110,6 +109,18 @@ class CargoShift : public CargoMovement<VehicleCargoList, VehicleCargoList> {
 public:
 	CargoShift(VehicleCargoList *source, VehicleCargoList *destination, uint max_move) :
 			CargoMovement<VehicleCargoList, VehicleCargoList>(source, destination, max_move) {}
+	bool operator()(CargoPacket *cp);
+};
+
+/** Action of rerouting cargo between different station cargo lists and/or next hops. */
+class CargoReroute : public CargoMovement<StationCargoList, StationCargoList> {
+protected:
+	StationID avoid;
+	StationID avoid2;
+	const GoodsEntry *ge;
+public:
+	CargoReroute(StationCargoList *source, StationCargoList *dest, uint max_move, StationID avoid, StationID avoid2, const GoodsEntry *ge) :
+			CargoMovement<StationCargoList, StationCargoList>(source, dest, max_move), avoid(avoid), avoid2(avoid2), ge(ge) {}
 	bool operator()(CargoPacket *cp);
 };
 
