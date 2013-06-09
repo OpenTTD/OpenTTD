@@ -659,33 +659,53 @@ uint StationCargoList::ShiftCargo(Taction action, StationID next, bool include_i
 /**
  * Truncates where each destination loses roughly the same percentage of its
  * cargo. This is done by randomizing the selection of packets to be removed.
+ * Optionally count the cargo by origin station.
  * @param max_move Maximum amount of cargo to remove.
+ * @param cargo_per_source Container for counting the cargo by origin.
  * @return Amount of cargo actually moved.
  */
-uint StationCargoList::Truncate(uint max_move)
+uint StationCargoList::Truncate(uint max_move, StationCargoAmountMap *cargo_per_source)
 {
 	max_move = min(max_move, this->count);
 	uint prev_count = this->count;
 	uint moved = 0;
+	uint loop = 0;
+	bool do_count = cargo_per_source != NULL;
 	while (max_move > moved) {
 		for (Iterator it(this->packets.begin()); it != this->packets.end();) {
+			CargoPacket *cp = *it;
 			if (prev_count > max_move && RandomRange(prev_count) < prev_count - max_move) {
+				if (do_count && loop == 0) {
+					(*cargo_per_source)[cp->source] += cp->count;
+				}
 				++it;
 				continue;
 			}
-			CargoPacket *cp = *it;
 			uint diff = max_move - moved;
 			if (cp->count > diff) {
-				this->RemoveFromCache(cp, diff);
-				cp->Reduce(diff);
-				return moved + diff;
+				if (diff > 0) {
+					this->RemoveFromCache(cp, diff);
+					cp->Reduce(diff);
+					moved += diff;
+				}
+				if (loop > 0) {
+					if (do_count) (*cargo_per_source)[cp->source] -= diff;
+					return moved;
+				} else {
+					if (do_count) (*cargo_per_source)[cp->source] += cp->count;
+					++it;
+				}
 			} else {
 				it = this->packets.erase(it);
+				if (do_count && loop > 0) {
+					(*cargo_per_source)[cp->source] -= cp->count;
+				}
 				moved += cp->count;
 				this->RemoveFromCache(cp, cp->count);
 				delete cp;
 			}
 		}
+		loop++;
 	}
 	return moved;
 }

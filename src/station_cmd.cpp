@@ -3241,6 +3241,19 @@ static void UpdateStationRating(Station *st)
 			int rating = 0;
 			uint waiting = ge->cargo.TotalCount();
 
+			/* num_dests is at least 1 if there is any cargo as
+			 * INVALID_STATION is also a destination.
+			 */
+			uint num_dests = (uint)ge->cargo.Packets()->MapSize();
+
+			/* Average amount of cargo per next hop, but prefer solitary stations
+			 * with only one or two next hops. They are allowed to have more
+			 * cargo waiting per next hop.
+			 * With manual cargo distribution waiting_avg = waiting / 2 as then
+			 * INVALID_STATION is the only destination.
+			 */
+			uint waiting_avg = waiting / (num_dests + 1);
+
 			if (HasBit(cs->callback_mask, CBM_CARGO_STATION_RATING_CALC)) {
 				/* Perform custom station rating. If it succeeds the speed, days in transit and
 				 * waiting cargo ratings must not be executed. */
@@ -3248,7 +3261,7 @@ static void UpdateStationRating(Station *st)
 				/* NewGRFs expect last speed to be 0xFF when no vehicle has arrived yet. */
 				uint last_speed = ge->HasVehicleEverTriedLoading() ? ge->last_speed : 0xFF;
 
-				uint32 var18 = min(ge->time_since_pickup, 0xFF) | (min(waiting, 0xFFFF) << 8) | (min(last_speed, 0xFF) << 24);
+				uint32 var18 = min(ge->time_since_pickup, 0xFF) | (min(ge->max_waiting_cargo, 0xFFFF) << 8) | (min(last_speed, 0xFF) << 24);
 				/* Convert to the 'old' vehicle types */
 				uint32 var10 = (st->last_vehicle_type == VEH_INVALID) ? 0x0 : (st->last_vehicle_type + 0x10);
 				uint16 callback = GetCargoCallback(CBID_CARGO_STATION_RATING_CALC, var10, var18, cs);
@@ -3273,11 +3286,11 @@ static void UpdateStationRating(Station *st)
 				(rating += 45, waittime > 3) ||
 				(rating += 35, true);
 
-				(rating -= 90, waiting > 1500) ||
-				(rating += 55, waiting > 1000) ||
-				(rating += 35, waiting > 600) ||
-				(rating += 10, waiting > 300) ||
-				(rating += 20, waiting > 100) ||
+				(rating -= 90, ge->max_waiting_cargo > 1500) ||
+				(rating += 55, ge->max_waiting_cargo > 1000) ||
+				(rating += 35, ge->max_waiting_cargo > 600) ||
+				(rating += 10, ge->max_waiting_cargo > 300) ||
+				(rating += 20, ge->max_waiting_cargo > 100) ||
 				(rating += 10, true);
 			}
 
@@ -3295,12 +3308,12 @@ static void UpdateStationRating(Station *st)
 				/* only modify rating in steps of -2, -1, 0, 1 or 2 */
 				ge->rating = rating = or_ + Clamp(Clamp(rating, 0, 255) - or_, -2, 2);
 
-				/* if rating is <= 64 and more than 200 items waiting,
+				/* if rating is <= 64 and more than 100 items waiting on average per destination,
 				 * remove some random amount of goods from the station */
-				if (rating <= 64 && waiting >= 200) {
+				if (rating <= 64 && waiting_avg >= 100) {
 					int dec = Random() & 0x1F;
-					if (waiting < 400) dec &= 7;
-					waiting -= dec + 1;
+					if (waiting_avg < 200) dec &= 7;
+					waiting -= (dec + 1) * num_dests;
 					waiting_changed = true;
 				}
 
@@ -3309,7 +3322,7 @@ static void UpdateStationRating(Station *st)
 					uint32 r = Random();
 					if (rating <= (int)GB(r, 0, 7)) {
 						/* Need to have int, otherwise it will just overflow etc. */
-						waiting = max((int)waiting - (int)GB(r, 8, 2) - 1, 0);
+						waiting = max((int)waiting - (int)((GB(r, 8, 2) - 1) * num_dests), 0);
 						waiting_changed = true;
 					}
 				}
@@ -3332,7 +3345,25 @@ static void UpdateStationRating(Station *st)
 				/* We can't truncate cargo that's already reserved for loading.
 				 * Thus StoredCount() here. */
 				if (waiting_changed && waiting < ge->cargo.AvailableCount()) {
-					ge->cargo.Truncate(ge->cargo.AvailableCount() - waiting);
+					/* Feed back the exact own waiting cargo at this station for the
+					 * next rating calculation. */
+					ge->max_waiting_cargo = 0;
+
+					/* If truncating also punish the source stations' ratings to
+					 * decrease the flow of incoming cargo. */
+
+					StationCargoAmountMap waiting_per_source;
+					ge->cargo.Truncate(ge->cargo.AvailableCount() - waiting, &waiting_per_source);
+					for (StationCargoAmountMap::iterator i(waiting_per_source.begin()); i != waiting_per_source.end(); ++i) {
+						Station *source_station = Station::GetIfValid(i->first);
+						if (source_station == NULL) continue;
+
+						GoodsEntry &source_ge = source_station->goods[cs->Index()];
+						source_ge.max_waiting_cargo = max(source_ge.max_waiting_cargo, i->second);
+					}
+				} else {
+					/* If the average number per next hop is low, be more forgiving. */
+					ge->max_waiting_cargo = waiting_avg;
 				}
 			}
 		}
