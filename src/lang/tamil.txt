@@ -2597,7 +2597,6 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}பெ�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}தங்கள் நிறுவனத்தின் பெருமைக்காக ஓர் சிலையினைக் கட்டவும்.{}செலவு: {CURRENCY_LONG}
 
 # Goal window
-STR_GOALS_CAPTION                                               :{WHITE}குறிக்கோள்கள்
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}பூலோக குறிக்கோள்கள்:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- ஏதுமில்லை -

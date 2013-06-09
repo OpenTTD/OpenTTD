@@ -3083,7 +3083,6 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Куп�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Дать взятку городской администрации для повышения рейтинга. Существует риск санкций, если факт взятки раскроется.{}Цена: {CURRENCY_LONG}
 
 # Goal window
-STR_GOALS_CAPTION                                               :{WHITE}Задачи
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Общие задачи:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Нет -

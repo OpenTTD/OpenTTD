@@ -2830,7 +2830,6 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Koop 1
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Koop die plaaslike regering om vir 'n gunstige gradering, indien die komplot ontdek word sal 'n groot boete opgelê word.{}Cost: {CURRENCY_LONG}
 
 # Goal window
-STR_GOALS_CAPTION                                               :{WHITE}Doelwitte
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globale doelwitte:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Geen -

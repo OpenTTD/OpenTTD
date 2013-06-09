@@ -2878,7 +2878,6 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Cumpăr
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Mituieşte autorităţile locale pentru a-ţi îmbunătăţi ratingul, dar cu riscul de a fi prins şi de a plăti amenzi serioase.{} Cost: {CURRENCY_LONG}
 
 # Goal window
-STR_GOALS_CAPTION                                               :{WHITE}Ţinte
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Ţinte globale:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nici unul -

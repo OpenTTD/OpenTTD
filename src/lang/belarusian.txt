@@ -3211,7 +3211,6 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Куп�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Даць хабар гарадзкой адміністрацыі для павышэньня рэйтынґу. Існуе рызыка санкцыяў, калі факт хабару раскрыецца.{}Кошт: {CURRENCY_LONG}
 
 # Goal window
-STR_GOALS_CAPTION                                               :{WHITE}Задачы
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Агульныя задачы:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Няма -
