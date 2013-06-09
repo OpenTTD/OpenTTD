@@ -234,7 +234,6 @@ protected:
 		uint16 page_num = 1;
 		for (const StoryPage *const*iter = this->story_pages.Begin(); iter != this->story_pages.End(); iter++) {
 			const StoryPage *p = *iter;
-			char *title = p->title;
 			bool current_page = p->index == this->selected_page_id;
 			DropDownListStringItem *item = NULL;
 			if (p->title != NULL) {
