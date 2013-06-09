@@ -332,6 +332,7 @@
     <ClCompile Include="..\src\ini_load.cpp" />
     <ClCompile Include="..\src\landscape.cpp" />
     <ClCompile Include="..\src\linkgraph\linkgraph.cpp" />
+    <ClCompile Include="..\src\linkgraph\linkgraphjob.cpp" />
     <ClCompile Include="..\src\map.cpp" />
     <ClCompile Include="..\src\misc.cpp" />
     <ClCompile Include="..\src\mixer.cpp" />
@@ -475,6 +476,7 @@
     <ClInclude Include="..\src\linkgraph\linkgraph_base.h" />
     <ClInclude Include="..\src\linkgraph\linkgraph_gui.h" />
     <ClInclude Include="..\src\linkgraph\linkgraph_type.h" />
+    <ClInclude Include="..\src\linkgraph\linkgraphjob.h" />
     <ClInclude Include="..\src\livery.h" />
     <ClInclude Include="..\src\map_func.h" />
     <ClInclude Include="..\src\map_type.h" />
