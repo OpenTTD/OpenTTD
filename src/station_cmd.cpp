@@ -4161,6 +4161,20 @@ void FlowStatMap::DeleteFlows(StationID via)
 	}
 }
 
+/**
+ * Get the sum of flows via a specific station from this GoodsEntry.
+ * @param via Remote station to look for.
+ * @return a FlowStat with all flows for 'via' added up.
+ */
+uint GoodsEntry::GetSumFlowVia(StationID via) const
+{
+	uint ret = 0;
+	for (FlowStatMap::const_iterator i = this->flows.begin(); i != this->flows.end(); ++i) {
+		ret += i->second.GetShare(via);
+	}
+	return ret;
+}
+
 extern const TileTypeProcs _tile_type_station_procs = {
 	DrawTile_Station,           // draw_tile_proc
 	GetSlopePixelZ_Station,     // get_slope_z_proc

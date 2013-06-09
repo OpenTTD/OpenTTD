@@ -97,6 +97,11 @@ Station::~Station()
 				delete lg;
 			}
 		}
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			GoodsEntry *ge = &st->goods[c];
+			ge->flows.DeleteFlows(this->index);
+		}
 	}
 
 	Vehicle *v;

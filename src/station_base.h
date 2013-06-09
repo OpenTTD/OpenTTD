@@ -196,6 +196,7 @@ struct GoodsEntry {
 
 	LinkGraphID link_graph; ///< Link graph this station belongs to.
 	NodeID node;            ///< ID of node in link graph referring to this goods entry.
+	FlowStatMap flows;      ///< Planned flows through this station.
 
 	/**
 	 * Reports whether a vehicle has ever tried to load the cargo at this station.
@@ -211,6 +212,33 @@ struct GoodsEntry {
 	inline bool HasRating() const
 	{
 		return HasBit(this->acceptance_pickup, GES_PICKUP);
+	}
+
+	uint GetSumFlowVia(StationID via) const;
+
+	/**
+	 * Get the best next hop for a cargo packet from station source.
+	 * @param source Source of the packet.
+	 * @return The chosen next hop or INVALID_STATION if none was found.
+	 */
+	inline StationID GetVia(StationID source) const
+	{
+		FlowStatMap::const_iterator flow_it(this->flows.find(source));
+		return flow_it != this->flows.end() ? flow_it->second.GetVia() : INVALID_STATION;
+	}
+
+	/**
+	 * Get the best next hop for a cargo packet from station source, optionally
+	 * excluding one or two stations.
+	 * @param source Source of the packet.
+	 * @param excluded If this station would be chosen choose the second best one instead.
+	 * @param excluded2 Second station to be excluded, if != INVALID_STATION.
+	 * @return The chosen next hop or INVALID_STATION if none was found.
+	 */
+	inline StationID GetVia(StationID source, StationID excluded, StationID excluded2 = INVALID_STATION) const
+	{
+		FlowStatMap::const_iterator flow_it(this->flows.find(source));
+		return flow_it != this->flows.end() ? flow_it->second.GetVia(excluded, excluded2) : INVALID_STATION;
 	}
 };
 
