@@ -1562,9 +1562,9 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamaño medio d
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Quitar absurdos de la carretera durante su construcción: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Elimina carreteras sin salida durante la reconstrucción de carreteras de los pueblos
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualizar el gráfico de distribución cada {STRING} días
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualizar el gráfico de distribución cada {STRING} dia{P 0:2 "" s}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Periodo de tiempo entre calculos del gráfico de distribucion consecutivos. Esta opcion se refiere a los calculos para cada uno de los componentes del grafico, por lo cual fijar un valor no quiere decir que el gráfico completo se actualizará tras ese número de dias. Cuanto menor sea, mayor tiempo de CPU será necesario para calcular el gráfico de distribución. Cuanto mayor sea, más tardará el gráfico de distribución en adaptarse a nuevas rutas
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Usar {STRING} días para el cálculo del gráfico de distribución
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Usar {STRING} dia{P 0:2 "" s} para el cálculo del gráfico de distribución
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tiempo a emplear en el cálculo de cada uno de los componentes del gráfico de distribución. Cuanto menor sea este valor, más probable es que se produzca lag. Cuanto mayor sea, más tiempo tardará la distribución en actualizarse cuando se producen cambios en las rutas
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimétrico
