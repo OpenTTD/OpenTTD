@@ -4101,27 +4101,33 @@ void FlowStat::ChangeShare(StationID st, int flow)
 	 * be empty. In that case the whole flow stat must be deleted then. */
 	assert(!this->shares.empty());
 
-	int32 added_shares = 0;
-	uint32 last_share = 0;
+	uint removed_shares = 0;
+	uint added_shares = 0;
+	uint last_share = 0;
 	SharesMap new_shares;
 	for (SharesMap::iterator it(this->shares.begin()); it != this->shares.end(); ++it) {
 		if (it->second == st) {
-			uint share = it->first - last_share;
-			int change = flow - added_shares;
-			uint new_share = (change < 0 && (uint)(-change) > share) ? 0 : share + change;
-			added_shares -= share;
-			added_shares += new_share;
-			if (new_share > 0) {
-				new_shares[it->first + added_shares] = it->second;
+			if (flow < 0) {
+				uint share = it->first - last_share;
+				if (flow == INT_MIN || (uint)(-flow) >= share) {
+					removed_shares += share;
+					if (flow != INT_MIN) flow += share;
+					last_share = it->first;
+					continue; // remove the whole share
+				}
+				removed_shares += (uint)(-flow);
+			} else {
+				added_shares += (uint)(flow);
 			}
-		} else {
-			new_shares[it->first + added_shares] = it->second;
+
+			/* If we don't continue above the whole flow has been added or
+			 * removed. */
+			flow = 0;
 		}
+		new_shares[it->first + added_shares - removed_shares] = it->second;
 		last_share = it->first;
 	}
-	if (flow > added_shares) {
-		new_shares[last_share + flow - added_shares] = st;
-	}
+	if (flow > 0) new_shares[last_share + (uint)flow] = st;
 	this->shares.swap(new_shares);
 }
 
