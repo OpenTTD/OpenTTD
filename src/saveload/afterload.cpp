@@ -636,7 +636,12 @@ bool AfterLoadGame()
 	SetDate(_date, _date_fract);
 
 	/*
-	 * Force the old behaviour for compatibility reasons with old savegames.
+	 * Force the old behaviour for compatibility reasons with old savegames. As new
+	 * settings can only be loaded from new savegames loading old savegames with new
+	 * versions of OpenTTD will normally initialize settings newer than the savegame
+	 * version with "new game" defaults which the player can define to their liking.
+	 * For some settings we override that to keep the behaviour the same as when the
+	 * game was saved.
 	 *
 	 * Note that there is no non-stop in here. This is because the setting could have
 	 * either value in TTDPatch. To convert it properly the user has to make sure the
@@ -648,9 +653,27 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(21))   _settings_game.vehicle.train_acceleration_model = 0;
 	if (IsSavegameVersionBefore(90))   _settings_game.vehicle.plane_speed = 4;
 	if (IsSavegameVersionBefore(95))   _settings_game.vehicle.dynamic_engines = 0;
-	if (IsSavegameVersionBefore(133))  _settings_game.vehicle.roadveh_acceleration_model = 0;
-	if (IsSavegameVersionBefore(159))  _settings_game.vehicle.max_train_length = 50;
+	if (IsSavegameVersionBefore(96))   _settings_game.economy.station_noise_level = false;
+	if (IsSavegameVersionBefore(133)) {
+		_settings_game.vehicle.roadveh_acceleration_model = 0;
+		_settings_game.vehicle.train_slope_steepness = 3;
+	}
+	if (IsSavegameVersionBefore(134))  _settings_game.economy.feeder_payment_share = 75;
+	if (IsSavegameVersionBefore(138))  _settings_game.vehicle.plane_crashes = 2;
+	if (IsSavegameVersionBefore(139))  _settings_game.vehicle.roadveh_slope_steepness = 7;
+	if (IsSavegameVersionBefore(143))  _settings_game.economy.allow_town_level_crossings = true;
+	if (IsSavegameVersionBefore(159)) {
+		_settings_game.vehicle.max_train_length = 50;
+		_settings_game.construction.max_bridge_length = 64;
+		_settings_game.construction.max_tunnel_length = 64;
+	}
 	if (IsSavegameVersionBefore(166))  _settings_game.economy.infrastructure_maintenance = false;
+	if (IsSavegameVersionBefore(183)) {
+		_settings_game.linkgraph.distribution_pax = DT_MANUAL;
+		_settings_game.linkgraph.distribution_mail = DT_MANUAL;
+		_settings_game.linkgraph.distribution_armoured = DT_MANUAL;
+		_settings_game.linkgraph.distribution_default = DT_MANUAL;
+	}
 
 	/* Load the sprites */
 	GfxLoadSprites();
