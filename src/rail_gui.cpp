@@ -1012,8 +1012,10 @@ public:
 		int bottom = cov->pos_y + cov->current_y;
 		top = DrawStationCoverageAreaText(left, right, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
 		top = DrawStationCoverageAreaText(left, right, top, SCT_ALL, rad, true) + WD_PAR_VSEP_NORMAL;
-		/* Resize the coverage text space if the text is not equally long as the window. */
-		if (top != bottom) {
+		/* Resize background if the window is too small.
+		 * Never make the window smaller to avoid oscillating if the size change affects the acceptance.
+		 * (This is the case, if making the window bigger moves the mouse into the window.) */
+		if (top > bottom) {
 			this->coverage_height += top - bottom;
 			this->ReInit();
 		}
