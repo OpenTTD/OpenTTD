@@ -877,7 +877,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetName():          Wooden rail bridge
     GetMaxSpeed():      32
     GetPrice():         450
-    GetMaxLength():     102
+    GetMaxLength():     66
     GetMinLength():     2
   Bridge 1
     IsValidBridge():    true
@@ -905,14 +905,14 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetName():          Steel suspension rail bridge
     GetMaxSpeed():      96
     GetPrice():         1042
-    GetMaxLength():     102
+    GetMaxLength():     66
     GetMinLength():     5
   Bridge 5
     IsValidBridge():    true
     GetName():          Steel suspension rail bridge
     GetMaxSpeed():      112
     GetPrice():         1081
-    GetMaxLength():     102
+    GetMaxLength():     66
     GetMinLength():     5
   Bridge 6
     IsValidBridge():    true
@@ -1012,9 +1012,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     1 => 630
     0 => 450
   MaxLength ListDump:
-    5 => 102
-    4 => 102
-    0 => 102
+    5 => 66
+    4 => 66
+    0 => 66
     3 => 12
     8 => 11
     7 => 10
