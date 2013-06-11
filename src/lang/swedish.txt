@@ -304,6 +304,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Visa sub
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Visa lista över företagets stationer
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Visa finansinformation för företaget
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Visa allmän företagsinformation
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Visa berättelsebok
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Visa lista över mål
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Visa grafer
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Visa topplista över företag
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Bekosta konstruktion av en ny industri eller lista alla industrier
@@ -2991,6 +2993,7 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Värderingar
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Visa stationens klassificering
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Månadsvis tillförsel av gods och lokal värdering:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Gruppera med hänsyn till

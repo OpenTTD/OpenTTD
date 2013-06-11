@@ -409,6 +409,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Sreang c
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Cuir a-steach sreang criathraige
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Cuir a-steach facal-luirg gus an liosta a chriathradh leis
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Tagh òrdugh a' bhuidhinn
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Tagh òrdugh an t-seòrsachaidh (a' teàrnadh/a' dìreadh)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Tagh cuspairean-deuchainn an t-seòrsachaidh
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Tagh cuspairean-deuchainn a' chriathraidh
@@ -491,6 +492,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Seall ta
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Seall liosta stèiseanan na companaidh
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Seall fiosrachadh maoin na companaidh
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Seall fiosrachadh coitcheann na companaidh
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Seall an sgeulaiche
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Seall liosta nan amasan
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Seall grafaichean
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Seall clàr co-bhann nan companaidh
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Maoinich togail aig gnìomhachas ùr no seall liosta dhen a h-uile gnìomhachas
@@ -1768,6 +1771,7 @@ STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Togail
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Carbadan
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stèiseanan
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Eaconamaidh
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Sgaoileadh carago
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Co-farpaisichean
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Taisbeanadh
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Eadar-ghnìomh
@@ -3132,6 +3136,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Ceannai
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Ceannaich an t-ùghdarras ionadail ach an toir iad rangachadh as fhearr dhut, ach tha cunnart ann gum faigh thu peanas mòr ma thèid do ghlacadh.{}Cosgais: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Amasan aig {COMPANY}
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Amasan coitcheann
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Amasan coitcheann:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Chan eil gin -
@@ -3176,6 +3182,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Briog air an t-seirbheis gus am prìomh-shealladh a mheadhanachadh air a' ghnìomhachas/bhaile. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' ghnìomhachais/a' bhaile
 
 # Story book window
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Sgeulaiche coitcheann
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ainmean nan stéiseanan - briog air ainm gus am prìomh-shealladh a mheadhanachadh air an stèisean. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad an stèisein
@@ -3207,7 +3214,28 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Seall ra
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Solar mìosail is rangachadh ionadail:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Buidhnich a-rèir
+STR_STATION_VIEW_WAITING_STATION                                :Stèisean: A' feitheamh
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Meud: A' feitheamh
+STR_STATION_VIEW_PLANNED_STATION                                :Stèisean: Air a' phlana
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Meud: Air a' phlana
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} bho {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} slighe {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} gu {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} o stèisean neo-aithnichte
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} gu stèisean sam bith
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} slighe stèisean sam bith
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} on stèisean seo
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} a' stad aig an stèisean seo
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} gun stèisean seo
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} gun stad
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Tùs - Slighe - Ceann-uidhe
+STR_STATION_VIEW_GROUP_S_D_V                                    :Tùs - Ceann-uidhe - Slighe
+STR_STATION_VIEW_GROUP_V_S_D                                    :Slighe -Tùs - Ceann-uidhe
+STR_STATION_VIEW_GROUP_V_D_S                                    :Slighe - Ceann-uidhe -Tùs
+STR_STATION_VIEW_GROUP_D_S_V                                    :Ceann-uidhe - Tùs - Slighe
+STR_STATION_VIEW_GROUP_D_V_S                                    :Ceann-uidhe - Slighe -Tùs
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Sgriosail

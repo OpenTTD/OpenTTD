@@ -305,6 +305,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subventi
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Liste der firmeneigenen Stationen anzeigen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Firmenfinanzen anzeigen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Allgemeine Firmeninformationen anzeigen
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Zeigt die Chronik an
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Zeigt die von einem Spielskript festgelegten Ziele an
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Diagramme anzeigen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Firmentabelle oder Punktestand anzeigen
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Liste aller Industrien oder Errichtung und Finanzierung einer neuen Industrie

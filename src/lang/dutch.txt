@@ -221,6 +221,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Filter t
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Voer filtertekst in
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Geef een woord waarop gefilterd kan worden in de lijst
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Kies groepeervolgorde
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecteer sorteerrichting (aflopend/oplopend)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecteer sorteercriteria
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Kies filtercriteria
@@ -303,6 +304,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Toon sub
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Toon lijst met stations van het bedrijf
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Toon financiële informatie over het bedrijf
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Toon algemene informatie over het bedrijf
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Toon verhaallijn
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Geven doellijst
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Toon grafieken
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Toon bedrijfscompetitietabel
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Betaal de bouw van nieuwe industrie of toon lijst van alle industrieën
@@ -1560,12 +1563,15 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gemiddelde groo
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Verwijder rare weg-elementen tijdens het repareren van de weg: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Verwijder doodlopende wegen bij het bouwen van gefinancierde wegen.
 
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Verzadiging van korte routes voor het gebruik van ruime routes: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Vaak zijn er meerdere routes mogelijk tussen twee stations. Cargodist zal de kortste route eerst verzadigen, gebruik dan de tweede kortste route tot die verzadigd is en ga zo maar door. Verzadiging wordt bepaald door een schatting van de capaciteit en het geplande gebruik. Zodra alle routes verzadigd zijn, maar er is meer vraag, zal alle wegen overbelast worden, die met hoge capaciteit eerst. In veel gevallen zat het algoritme niet nauwkeurig de capaciteit inschatten, helaas. Met deze instelling kunt u aangeven tot welk percentage een korter pad moet worden verzadigd eer de eerst volgende langere route wordt gekozen. Zet deze op minder dan 100% om overvolle stations in geval van overschat capaciteit te voorkomen.
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Constructie
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Voertuigen
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stations
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economie
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Vrachtdistributie
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Tegenstanders
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Weergave-opties
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interactie
@@ -2903,9 +2909,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Koop 1 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Koop het plaatselijk gezag om om je reputatie te verhogen, met het gevaar van een strenge sanctie wanneer je gepakt wordt.{}Kosten: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Doelen
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Algemene doelen
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Algemene doelen:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Geen -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Niet van toepassing -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Bedrijfsdoelen:
@@ -2947,6 +2956,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik op de dienst om het dorp/industrie te centreren. Ctrl+klik opent een nieuw venster op de locatie van het dorp/industrie
 
 # Story book window
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Algemene verhaallijn
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen - klik op naam om het scherm te centreren op het station. Ctrl+klik opent een nieuw venster op de locatie van het station
@@ -2978,7 +2988,28 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Bekijk s
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Maandelijkse levering en lokale waardering:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Groeperen op
+STR_STATION_VIEW_WAITING_STATION                                :Station: Wachtend
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Hoeveelheid: Wachtend
+STR_STATION_VIEW_PLANNED_STATION                                :Station: Gepland
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Hoeveelheid: Gepland
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} van {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} via {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} naar {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} van onbekend station
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} naar willekeurig station
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} via willekeurig station
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} van dit station
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} stopt op dit station
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} naar dit station
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} non-stop
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Bron-Via-Bestemming
+STR_STATION_VIEW_GROUP_S_D_V                                    :Bron-Bestemming-Via
+STR_STATION_VIEW_GROUP_V_S_D                                    :Via-Bron-Bestemming
+STR_STATION_VIEW_GROUP_V_D_S                                    :Via-Bestemming-Bron
+STR_STATION_VIEW_GROUP_D_S_V                                    :Bestemming-Bron-Via
+STR_STATION_VIEW_GROUP_D_V_S                                    :Bestemming-Via-Bron
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Teleurstellend
@@ -3726,6 +3757,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Deze die
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Deze dienstregeling begint bij {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Begindatum
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecteer een datum als uitgangspunt van dit tijdschema. Ctrl + klik geeft het startpunt van dit tijdschema en distribueert alle voertuigen die deze orders delen gelijkmatig op basis van hun relatieve volgorde, indien de order volledig is ingeroosterd
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Verander de tijd
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander de tijdsduur die de geselecteerde order mag duren
