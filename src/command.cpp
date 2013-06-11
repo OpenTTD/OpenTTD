@@ -261,7 +261,7 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdWantEnginePreview,                              0, CMDT_VEHICLE_MANAGEMENT    ), // CMD_WANT_ENGINE_PREVIEW
 
 	DEF_CMD(CmdRenameVehicle,                       CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_VEHICLE
-	DEF_CMD(CmdRenameEngine,                        CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_ENGINE
+	DEF_CMD(CmdRenameEngine,           CMD_STR_CTRL | CMD_SERVER, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_ENGINE
 
 	DEF_CMD(CmdRenameCompany,                       CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_COMPANY
 	DEF_CMD(CmdRenamePresident,                     CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_PRESIDENT

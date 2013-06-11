@@ -13,6 +13,7 @@
 #include "engine_base.h"
 #include "engine_func.h"
 #include "station_base.h"
+#include "network/network.h"
 #include "articulated_vehicles.h"
 #include "textbuf_gui.h"
 #include "command_func.h"
@@ -970,6 +971,9 @@ struct BuildVehicleWindow : Window {
 		/* If we are just viewing the list of vehicles, we do not need the Build button.
 		 * So we just hide it, and enlarge the Rename button by the now vacant place. */
 		if (this->listview_mode) this->GetWidget<NWidgetStacked>(WID_BV_BUILD_SEL)->SetDisplayedPlane(SZSP_NONE);
+
+		/* disable renaming engines in network games if you are not the server */
+		this->SetWidgetDisabledState(WID_BV_RENAME, _networking && !_network_server);
 
 		NWidgetCore *widget = this->GetWidget<NWidgetCore>(WID_BV_LIST);
 		widget->tool_tip = STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP + type;
