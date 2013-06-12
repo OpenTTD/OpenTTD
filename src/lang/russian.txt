@@ -1525,7 +1525,7 @@ STR_CONFIG_SETTING_SOUND_TICKER                                 :Бегущая 
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Воспроизводить звук при появлении бегущей строки с новостями
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Новости: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Воспроизводить звуковые эффекты при публикации новостных статей
-STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :В конце года: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Финансовый отчёт: {STRING}
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Воспроизводить звуковой эффект при отображении финансового отчёта компании за прошедшие годы
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Строительство: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Воспроизводить звуковые эффекты при строительстве и других действиях
@@ -1715,7 +1715,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Средний 
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Удалять бесполезные элементы дорог во время реконструкции: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Удалять тупиковые элементы дорог при реконструкции
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Обновлять граф распределения каждые {STRING} дней
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Обновлять граф распределения раз в {STRING} д{P 0:2 ень ня ней}
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :вручную
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :несимметричное
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :симметричное
@@ -3163,7 +3163,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Ожидает: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} транзитом из {STATION})
-STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} зарезервировано для груза)
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} зарезервировано для погрузки)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Принимает
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Показать список принимаемых грузов

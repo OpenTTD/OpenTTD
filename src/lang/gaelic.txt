@@ -1765,6 +1765,11 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Am meud cuibhea
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Thoir air falbh eileamaidean-rathaid gun chiall nuair a thèid rathaid a thogail: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Thoir cùil-dhùinte nan rathaidean air falbh nuair a thèid togail rathaidean a mhaoineachadh
 
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Am buaidh aig an t-astar air iarrtasan: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Ma chuireas tu luach nas àirde na 0 ann, bidh buaidh aig an t-astar eadar an stèisean tùsail A aig carago air choireigin is stèisean cinn-uidhe B air a' mheud dhe charago a thèid a chur o A gu B. Mar as fhaide air falbh o B 's a tha A, 's ann as lugha dhe charago a thèid a chur. Mar as àirde a shuidhicheas tu an luach seo, 's ann as lugha dhe charago a thèid a chur gu stèiseanan a bhios fad air falbh agus 's ann as motha dhe charago a thèid a chur gu stèiseanan a tha faisg.
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Na thèid a thilleadh dhe charago leis a' mhodh co-chothromach: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Lìonadh nan slighean giorra mus tèid slighean le mòran ruim a chleachdadh: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Gu tric, tha iomadh slighe eadar dà stèisean ann. Lìonaidh an sgaoileadh carago an t-slighe as giorra an toiseach is an dàrna slighe as giorra an uairsin is mar sin air adhart. Thèid a mheasadh a bheil slighe làn gus nach eil le tuairmse air na ghabhas an t-slighe ris is air a' chleachdadh a th' air a' phlana. Nuair a bhios na h-uile slighe air an lìonadh is rum a dhìth fhathast, thèid luchd a bharrachd a chur air gach slighe is an fheadhainn aig a bheil mòran rum a thaghadh an toiseach. Co-dhiù, cha dèan an algairim tuairmse buileach ceart air an rum mar as trice. Leigidh an roghainn seo leat sònrachadh dè an ceudad aig slighe as giorra a thèid a cleachdadh sa chiad dol a-mach mus tèid an ath shlighe as fhaide a thaghadh. Dèan nas lugha na 100% e ach nach bidh na stèiseanan ro làn nuair a thèid rum a mheas ro mhòr.
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Eadar-aghaidh
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Togail
@@ -3983,6 +3988,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Cha do t
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tòisich an clàr-ama seo {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Ceann-latha tòiseachaidh
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Tagh ceann-latha tòiseachaidh airson a' chlàir-ama seo. Suidhichidh Ctrl+Briogadh ceann-latha tòiseachaidh a' chlàir-ama seo is ma tha clàr-ama slàn aig an òrdugh seo, sgaoilidh seo a h-uile carbad a cho-roinneas an t-òrdugh seo gu cunbhalach, stèidhichte air an òrdugh eatorra
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Uair eile
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Atharraich an ùine a bheireadh an t-òrdugh a thagh thu

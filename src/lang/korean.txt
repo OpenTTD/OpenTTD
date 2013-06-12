@@ -222,6 +222,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}검색�
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}검색할 문자를 입력하세요
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}검색할 키워드를 입력하세요
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}그룹화 순서를 선택하세요.
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}정렬 방법을 선택하십시오 (내림차순/오름차순)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}정렬 기준 선택
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}검색 기준 선택
@@ -304,6 +305,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}보조�
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}각 회사의 정거장 목록을 표시합니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}각 회사의 재정 정보를 표시합니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}각 회사의 기본 정보를 표시합니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}스토리 북을 엽니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}목표 목록을 보여줍니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}그래프 메뉴를 표시합니다.
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}회사의 성취도 순위를 표시합니다.
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}새 산업시설에 투자하거나 산업시설의 목록을 표시합니다.
@@ -1561,12 +1564,36 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :게임을 시�
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :도로 재건설 중 불필요한 도로 요소를 제거: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :도로 재건설에 투자하였을 때, 재건설 도중에 불필요한 도로를 제거합니다.
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :분배 상태를 매 {STRING}일 마다 갱신
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :다음 연결 상태를 재계산하기까지의 시간입니다. 한 번의 재계산할 때마다 그래프의 한 요소를 위한 계획을 계산합니다. 이는 이 설정의 X값에 따라 모든 그래프가 매 X일마다 갱신되는 것이 아니라는 것을 뜻합니다. 일부 요소만 재계산된다는 뜻입니다. 값이 작으면 작을 수록 CPU가 계산해야 할 횟수가 늘어납니다. 값을 크게 설정할 수록 화물 분배 상태가 새롭게 지정되는 데 더 오랜 시간이 걸립니다.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :분배 상태 재계산 주기: {STRING}일
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :각 연결 상태 요소의 재계산을 위해 필요한 시간입니다. 재계산이 시작될 때, 이 날짜만큼 작동하는 스레드가 생성됩니다. 이 값이 작으면 작을수록, 스레드가 끝나야할 때에 스레드가 끝나지 않게 됩니다. 그러면 게임이 랙에 걸려 멈추게 됩니다. 값을 크게 설정할수록 경로가 바뀔 때 분배 상태가 업데이트 되는 시간이 오래 걸리게 됩니다.
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :수동
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :불균형
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :균형
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :승객에 대한 분배 형식: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"균형"은 A역에서 B역으로 가려는 승객의 수가 B에서 A로 가려는 승객의 수와 비슷하다는 뜻입니다. "불균형"은 승객이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 승객 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :우편에 대한 분배 형식: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"균형"은 A역에서 B역으로 가려는 우편물의 수가 B에서 A로 가려는 우편물의 수와 비슷하다는 뜻입니다. "불균형"은 우편물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 우편물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :장갑 화물에 대한 분배 형식: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :장갑 화물은 온대 기후의 귀금속, 아열대 기후의 다이아몬드 또는 냉대 기후의 금을 말합니다. NewGRF을 사용하면 달라질 수 있습니다. "균형"은 A역에서 B역으로 가려는 화물의 수가 B에서 A로 가려는 화물의 수와 비슷하다는 뜻입니다. "불균형"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 냉대 기후에서는 균형으로 설정하면 은행이 금광으로 금을 보내지 않으려 하기 때문에 불균형이나 수동으로 설정하는 것을 추천합니다. 온대 기후나 아열대 기후에서는 은행이 일부 적재한 귀금속을 원래 은행으로 보내려고 하기 때문에 균형을 선택해도 됩니다.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :다른 화물에 대한 분배 형식: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"균형"은 A역에서 B역으로 가려는 화물의 수가 B에서 A로 가려는 화물의 수와 비슷하다는 뜻입니다. "불균형"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 특별한 이유가 없는 한, "불균형"이나 "수동"으로 설정하십시오.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :분배 정확도: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :값이 높으면 높을수록 CPU가 연결 상태를 계산하는 시간이 더 오래 걸립니다. 만약 이 시간이 너무 오래 걸리면 랙 현상이 나타날 것입니다. 하지만, 낮은 값으로 설정하면 분배가 부정확하게 일어나서, 화물이 원하는 곳으로 분배되지 않는 것을 알 수 있습니다.
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :거리에 따른 수요 효과: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :이 값을 0보다 크게 설정하면, 어떤 화물이 있는 A역과 목적지가 될 수 있는 역 B 사이의 거리는 A에서 B로 가는 화물의 양에 영향을 미치게 됩니다. A역에서 B역이 더 멀리 떨어질 수록 이동하는 화물의 양은 적어질 것입니다. 값이 크면 클 수록 화물은 멀리 이동하지 않고 가까운 역으로 가게 됩니다.
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :균형 모드에서 되돌아오는 화물의 양: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :이 값을 100%보다 작게 설정할 수록 균형 분배는 불균형 분배와 비슷해집니다. 특정 양의 화물을 역으로 보내면 그보다 더 적은 화물이 강제로 되돌아오게 됩니다. 이 값을 0%로 설정하면 균형 분배는 불균형 분배와 똑같습니다.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :다음으로 짧은 경로를 사용하기 위한 경로 포화도: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :종종 두 역 사이에는 여러 가지 경로가 존재할 수 있습니다. 이 경우, 화물 분배 기능은 먼저 가장 짧은 경로로 화물을 보내고, 그 경로가 포화 상태에 이르면 그 다음으로 짧은 경로를 사용하는 식으로 화물을 분배합니다. 포화도는 경로의 수송 능력과 예정 사용량을 추정하여 계산됩니다. 일단 모든 경로가 포화 상태가 되었는데 아직 수요가 남아있다면, 수송 능력이 높은 경로를 사용하면서 모든 경로를 과부하 상태로 만들게 됩니다. 하지만, 이 알고리즘은 수송량을 대부분 정확히 추정하지는 않습니다. 이 설정을 이용해서, 화물 분배 기능이 짧은 경로의 포화 상태가 몇 퍼센트가 되어야 다음으로 짧은 경로에 화물을 분배할 것인지를 지정할 수 있습니다. 과대평가된 수송량의 경우 너무 붐비는 역이 생기지 않도록 하기 위해서는 이 값을 100%보다 작게 설정하십시오.
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}인터페이스
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}건설
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}차량
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}역
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}경제
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}화물 분배
 STR_CONFIG_SETTING_AI                                           :{ORANGE}경쟁자
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}디스플레이 옵션
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}조작 옵션
@@ -2904,10 +2931,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} 1년�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} 성취도를 올리기 위해 처벌을 감수하고 지역 당국에 뇌물을 줍니다.{}가격: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} 목표
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}전체 목표
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}전체 목표:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- 없음 -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- 적용 불가 -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}회사 목표:
@@ -2949,6 +2978,15 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{1:STRI
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}산업시설/도시의 위치로 시점을 변경하려면 클릭하세요. Ctrl+클릭하면 이 산업시설/도시의 위치를 기준으로 새로운 외부 화면을 엽니다.
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY}의 스토리 북
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}전체 스토리 북
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :{NUM}쪽
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}드롭 다운 목록에서 이동하고자 하는 쪽수를 선택하세요.
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}이전
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}이전 쪽으로 이동합니다.
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}다음
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}다음 쪽으로 이동합니다.
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}역 이름 - 이 역의 위치로 시점을 변경하려면 클릭하세요. Ctrl+클릭하면 이 역 위치를 기준으로 새로운 외부 화면을 엽니다.
@@ -2980,7 +3018,28 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}역의 �
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}월 공급 및 지역 등급:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}그룹화
+STR_STATION_VIEW_WAITING_STATION                                :역: 대기
+STR_STATION_VIEW_WAITING_AMOUNT                                 :양: 대기
+STR_STATION_VIEW_PLANNED_STATION                                :역: 계획
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :양: 계획
+STR_STATION_VIEW_FROM                                           :{YELLOW}{1:STATION} 역에서 출발한 {0:CARGO_SHORT}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{1:STATION} 역을 경유하는 {0:CARGO_SHORT}
+STR_STATION_VIEW_TO                                             :{YELLOW}{1:STATION} 역으로 가는 {0:CARGO_SHORT}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}알 수 없는 역에서 출발한 {CARGO_SHORT}
+STR_STATION_VIEW_TO_ANY                                         :{RED}아무 역에나 도착하는 {CARGO_SHORT}
+STR_STATION_VIEW_VIA_ANY                                        :{RED}어디든 경유하는 {CARGO_SHORT}
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}이 역에서 출발하는 {CARGO_SHORT}
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}이 역을 경유하는 {CARGO_SHORT}
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}이 역에 도착하는 {CARGO_SHORT}
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} (직통)
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :출발-경유-도착
+STR_STATION_VIEW_GROUP_S_D_V                                    :출발-도착-경유
+STR_STATION_VIEW_GROUP_V_S_D                                    :경유-출발-도착
+STR_STATION_VIEW_GROUP_V_D_S                                    :경유-도착-출발
+STR_STATION_VIEW_GROUP_D_S_V                                    :도착-출발-경유
+STR_STATION_VIEW_GROUP_D_V_S                                    :도착-경유-출발
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :형편없음
@@ -3728,6 +3787,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}이 시�
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}이 시간표는 {STRING}에 시작될 것입니다.
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}시작 날짜
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}이 시간표의 시작 날짜를 선택하세요. Ctrl+클릭하면 이 차량과 경로를 공유하는 모든 차량에 대하여, 만약 시간표가 완전히 작성되어 있다면 그 경로의 상대적인 순서에 따라 시간표의 시작점을 설정하고 적절히 분배합니다.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}시간값 변경
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로에서 소요되는 시간 값을 변경합니다.
