@@ -25,6 +25,7 @@
  * \li GSGoal::SetProgress
  * \li GSGoal::SetText
  * \li GSStation::HasRating
+ * \li GSStoryPage
  * \li GSTile::GetTerrainType
  *
  * Other changes:
