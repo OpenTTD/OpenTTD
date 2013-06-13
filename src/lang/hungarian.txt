@@ -284,6 +284,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Szűrő 
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Kulcsszó megadása a szűréshez
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Írj ide egy kulcsszót ami alapján szűrni szeretnéd a listát
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Csoportosítási szempont kiválasztása
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Csökkenő/növekvő sorbarendezés
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Sorbarendezési feltétel
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Szűrési feltétel kiválasztása
@@ -366,6 +367,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Támogat
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Állomások listája
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Pénzügyi adatok
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Általános adatok
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Napló
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Célok listája
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafikonok
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}A vállalatok helyezése
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Gazdasági épület építése, meglévők listázása
@@ -1624,12 +1627,36 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Átlagos város
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Abszurd útrészletek automatikus eltávolítása útépítés közben: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Zsákutcák eltávolítása támogatott útfelújítások ideje alatt
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :A szétosztási gráf frissítése {STRING} naponként
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :A kapcsolati gráf egyes újraszámításai között eltelő idő. Minden számítás a gráf egy adott komponensére vonatkozik. Egy adott X beállítás esetén nem fog a teljes gráf X naponként frissülni, csak egy komponense. Minél rövidebb ez az idő, annál több CPU időre lesz szükség a számítás elvégzéséhez. Minél hosszabb ez az idő, annál több ideig fog tartani, mire a szétosztás megindul az új útvonalakon.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :A szétosztási gráf újraszámolására szánt idő: {STRING} nap
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :A kapcsolati gráf egy komponensének újraszámítására szánt idő. Az újraszámítás egy külön szálon indul el, és a megadott számú napig fut. Minél rövidebb ez az időtartam, annál valószínűbb, hogy a számítás nincs kész az idő lejártakor, ekkor a játék megáll a számítás befejeződéséig (ettől a játék akadhat). Minél hosszabb ez az időtartam, annál több idp kell a szétosztás frissüléséhez, amikor megváltoznak az útvonalak.
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :kézi
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :aszimmetrikus
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :szimmetrikus
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Utasok szétosztása: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :A "szimmetrikus" azt jelenti, hogy megközelítóleg ugyanannyi utas megy majd A-ból B-be, mint B-ből A-ba. Az "aszimmetrikus" beállítás esetén a különbözö irányokba tetszőleges mennyiségű utas mehet. "Kézi" esetben az utasok nem lesznek automatikusan szétosztva.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Levelek szétosztása: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :A "szimmetrikus" azt jelenti, hogy megközelítóleg ugyanannyi levél megy majd A-ból B-be, mint B-ből A-ba. Az "aszimmetrikus" beállítás esetén a különbözö irányokba tetszőleges mennyiségű levél mehet. "Kézi" esetben a levelek nem lesznek automatikusan szétosztva.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :A PÁNCÉLOZOTT rakománytípus szétosztása: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :A PÁNCÉLOZOTT rakománytípus a mérsékelt égövi tájon az értéktárgyakat, szubtrópusi tájon a gyémántot, szubarktikus tájon pedig az aranyat jelenti, ezeken a NewGRF-ek változtathatnak. A "szimmetrikus" azt jelenti, hogy megközelítóleg ugyanannyi rakomány megy majd A-ból B-be, mint B-ből A-ba. Az "aszimmetrikus" beállítás esetén a különbözö irányokba tetszőleges mennyiségű rakomány mehet. "Kézi" esetben a rakományok nem lesznek automatikusan szétosztva. Szubarktikus és szubtrópusi esetben az "aszimmetrikus" vagy "kézi" beállítás javasolt, mivel a bankok nem fognak aranyat, ill. gyémántot visszaküldeni a bányáknak. Mérsékelt égövi esetben a "szimmetrikus" is jó választás, ebben az esetben a bankok a fogadott mennyiségnek megfelelően fognak értéktárgyakat visszaküldeni a küldő banknak.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Egyéb rakománytípusok szétosztása: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :A "szimmetrikus" azt jelenti, hogy megközelítóleg ugyanannyi rakomány megy majd A-ból B-be, mint B-ből A-ba. Az "aszimmetrikus" beállítás esetén a különbözö irányokba tetszőleges mennyiségű rakomány mehet. "Kézi" esetben a rakományok nem lesznek automatikusan szétosztva. Javasolt az "aszimmetrikus" vagy a "kézi" beállítás.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :A szétosztás pontossága: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Magasabb beállítás esetén a kapcsolati gráf kiszámítása több időt fog igénybe venni. A játék akadozhat, ha ez a számítás túl sok időbe telik. Alacsony beállítás esetén viszont a szétosztás pontatlan lehet, a rakományok váratlan célokat kaphatnak.
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :A távolság hatása a küldött mennyiségekre: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Ha 0-nál magasabb értékre állítod, az A és B állomás távolsága befolyásolni fogja az A-ból B-be küldött rakomány mennyiségét. Minél messzebb van B A-tól, annál kevesebb rakomány kerül majd küldésre. Minél magasabb ez a beállítás, annál kevesebb rakomány megy majd a távolibb állomásokra, és annál több rakomány megy majd a közelebbi állomásokra.
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Szimmetrikus esetben a visszaküldött rakomány mennyisége: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :100%-nál kisebb beállítás esetén a szimmetrikus szétosztás jobban fog hasonlítani az aszimmetrikusra. Adott mennyiségű rakomány küldése esetén kevesebb lesz automatikusan visszaküldve. 0% esetén a szimmetrikus szétosztás pontosan úgy fog viselkedni, mint az aszimmetrikus szétosztás.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :A rövidebb utak telítettsége a szabad utak felhasználása előtt: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Gyakran több útvonal is van két adott állomás között. A Cargodist először a legrövidebb útvonalat telíti be, majd a második legrövidebb útvonalat, miután az első útvonal már telített, és így tovább. A telítettséget a kapacitás becslése és a tervezett kihasználtság határozza meg. Amennyiben az összes útvonal telített, és még mindig van igény, az összes útvonalat terhelni fogja, elsősorban a legnagyobb kapacitásúakat. Viszont a legtöbb esetben az algoritmus nem fogja pontosan megbecsülni a kapcitást. Ezen opció segítségével bellíthatjuk, hogy milyen telítettségi szintig legyen kihasználva a rövidebb útvonal a hosszabb útvonal használatba vétele előtt. Állítsd 100%-nál kisebbre, hogy elkerült a túlterhelődő állomásokat abban az esetben, ha a kapacitás túl lenne becsülve.
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Megjelenítés
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Építkezés
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Járművek
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Állomások
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Gazdaság
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Rakományok szétosztása (úticélok)
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Ellenfelek
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Megjelenítési beállítások
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Irányítás
@@ -2967,9 +2994,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Egy év
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}A megítélésed növelése az önkormányzat megvesztegetésével, komoly büntetést kockáztatva, ha az kiderül.{}Ára: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} céljai
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globális célok
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globális célok:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nincs -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Nem alkalmazható -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Vállalat céljai:
@@ -3011,6 +3041,15 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kattints egy sorra a város/gazdasági épület megnézéséhez. Ctrl+kattintás esetén új látképet nyit a város/gazdasági épület pozíciójára
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} naplója
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globális napló
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :{NUM}. oldal
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Ugrás tetszőleges oldalra
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Előző
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Előző oldal
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Következő
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Következő oldal
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Állomásnevek - kattints egy névre az állomás megnézéséhez. Ctrl+kattintásra új látképet nyit az állomás pozíciójára
@@ -3042,7 +3081,28 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vélemé
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Havi kínálat és helyi minősítés:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Csoportosítás
+STR_STATION_VIEW_WAITING_STATION                                :Állomás: várakozik
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Mennyiség: várakozik
+STR_STATION_VIEW_PLANNED_STATION                                :Állomás: tervezett
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Mennyiség: tervezett
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} {STATION} állomásról
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} {STATION} állomáson keresztül
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} {STATION} állomásra
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} ismeretlen állomásról
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} bármely állomásra
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} bármely állomáson keresztül
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} erről az állomásról
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} ezen az állomáson keresztül
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} erre az állomásra
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} megállás nélkül
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Honnan-Keresztül-Hova
+STR_STATION_VIEW_GROUP_S_D_V                                    :Honnan-Hova-Keresztül
+STR_STATION_VIEW_GROUP_V_S_D                                    :Keresztül-Honnan-Hova
+STR_STATION_VIEW_GROUP_V_D_S                                    :Keresztül-Hova-Honnan
+STR_STATION_VIEW_GROUP_D_S_V                                    :Hova-Honnan-Keresztül
+STR_STATION_VIEW_GROUP_D_V_S                                    :Hova-Keresztül-Honnan
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :szörnyű
@@ -3790,6 +3850,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}A menetr
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}A menetrend megkezdésének dátuma {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Indulás dátuma
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Menetrend kezdeti dátumának kiválasztása. A ctrl+kattintás azon kívül, hogy beállítja ennek a menetrendnek a kezdetét, egyenletesen elosztja az ezen a menetrenden osztozó járműveket a jelenlegi utasításuk alapján, amennyiben a menetrend teljesen időzítve van.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Idő megváltoztatása
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}A kijelölt utasítás végrehajtási idejét változtatja meg

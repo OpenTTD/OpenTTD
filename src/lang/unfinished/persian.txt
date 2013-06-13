@@ -303,6 +303,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}نمای
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}نمایش لیست ایستگاه های شرکت
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}اطلاعات مالی شرکت را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}توضیحات کلی راجع به شرکت را نشان می دهد
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}نمایش کتابچه راهنما
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}نمایش لیست اهداف
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}نمودار ها را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}جدول رده بندی شرکت ها را نشان می دهد
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}ساخت صنایع جدید یا لیست همه صنایع موجود
@@ -1344,6 +1346,7 @@ STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}ساخ�
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}وسایل نقلیه
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}ایستگاه ها
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}اقتصاد
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}توزیع محموله
 STR_CONFIG_SETTING_AI                                           :{ORANGE}رقیبان
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}نمایش گزینه ها
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}اثرمتقابل
@@ -2648,9 +2651,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}خری�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}رشوه به فرماندار محلی برای افزایش رده، با احتمال جریمه زیاد در صورت گیر افتادن.{}قیمت: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} اهداف
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}اهداف جهانی
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}اهداف جهانی:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- هیچکدام -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- غیرقابل اعمال -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}اهداف شرکت:
@@ -2689,6 +2695,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}روی سرویس کلیک کنید تا آن شهر/صنایع در مرکز صفحه نمایش نشان داده شود. کنترل+کلیک یک صفحه نمایش تازه برای محل شهر/صنایع باز خواهد کرد
 
 # Story book window
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}کتابچه راهنمای عمومی
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}نام ایستگاه ها- بر روی نام کلیک کنید تا مرکز صفحه را بر روی ایستگاه قرار دهد. Ctrl+Click برای گشودن یک پنجره نمای جدا از ایستگاه
@@ -2717,6 +2724,17 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}نشان
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}تولید ماهیانه و رتبه و محلی:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}همگروه با
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} از {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} ازطریق {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} به {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} از یک ایستگاه نامشخص
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} به هر ایستگاهی
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} ازطریق هر ایستگاهی
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} از این ایستگاه
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} توقف در این ایستگاه
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} به این ایستگاه
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} بدون توقف
 
 
 ############ range for rating starts
