@@ -1563,7 +1563,21 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gemiddelde groo
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Verwijder rare weg-elementen tijdens het repareren van de weg: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Verwijder doodlopende wegen bij het bouwen van gefinancierde wegen.
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Bijwerken distributie grafiek elke {STRING} dag{P 0:2 "" en}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tijd tussen opeenvolgende herberekeningen van de link grafiek. Elke herberekening berekent de plannen voor een component van de grafiek. Dat betekent dat een waarde X voor deze instelling betekent niet dat de hele grafiek wordt elke X dagen worden bijgewerkt. Slechts een component wil. Hoe korter u instellen hoe meer CPU-tijd nodig is om het te berekenen zal zijn. Hoe langer je instellen hoe langer het zal duren totdat de lading distributie start op nieuwe routes.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Neem {STRING} dag{P 0:2 "" en} voor de herberekening van de distributie grafiek
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tijd gebruikt voor elke herberekening van een link grafiek component. Wanneer een herberekening wordt gestart, wordt een thread voortgebracht die mag lopen voor dit aantal dagen. Hoe korter u dit instelt des te waarschijnlijker het is dat de draad niet is voltooid als het zou moeten. Dan stopt het spel totdat het is ("lag"). Hoe langer je instellen hoe langer het duurt voor de distributie aan te passen wanneer routes te wijzigen.
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :handmatig
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisch
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrisch
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributie-modus voor passagiers: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symmetrisch" betekent dat ongeveer hetzelfde aantal passagiers gaan van een station A naar station B als een van B naar A. "asymmetrische" betekent dat willekeurig aantal passagiers kunnen gaan in beide richtingen. "handmatig" betekent dat er geen automatische distributie zal plaatsvinden voor passagiers.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distributie-modus voor post: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetrisch" betekent dat ongeveer dezelfde hoeveelheid e-mail wordt verzonden van een station A naar station B als een van B naar A. "asymmetrische" dat willekeurige hoeveelheden post in beide richtingen worden verzonden. "handmatig" betekent dat er geen automatische distributie zal plaatsvinden voor post.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distributie-modus voor de GEPANTSERDE lading klasse: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :De GEPANTSERDE lading klasse bevat waardevolle spullen in het gematigde klimaat, diamanten in de subtropische of goud in subarctische klimaat. NewGRFs kan dat veranderen. "symmetrisch" betekent dat ongeveer dezelfde hoeveelheid lading die wordt verzonden van een station A naar station B als een van B naar A. "asymmetrische" dat willekeurige deze vracht kan in beide richtingen worden verzonden. "handmatig" betekent dat er geen automatische distributie zal plaatsvinden voor die lading. Het wordt aanbevolen om dit op asymmetrische of handmatig bij het spelen van subarctische, zoals banken zullen geen goud terug te sturen naar goudmijnen. Voor gematigde en subtropische kunt u ook kiezen symmetrische als banken zullen waardevolle spullen terugsturen naar de oorsprong bank van enkele lading van kostbaarheden.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distributie-modus voor andere vrachtsoorten: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symmetrisch" betekent dat ongeveer dezelfde hoeveelheid vracht wordt verzonden van een station A naar station B als een van B naar A. "asymmetrische" dat willekeurige hoeveelheid lading in beide richtingen worden verzonden. "handmatig" betekent dat er geen automatische distributie zal plaatsvinden voor die ladingen. Waarschijnlijk wilt u dit instellen op "asymmetrische" of handmatig.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Verdeelnauwkeurigheid: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Hoe hoger de instelling des te meer CPU-tijd de berekening van de link grafiek zal gebruiken. Als het te lang duurt kan vertraging opleveren. Als u deze instelt op een lage waarde, echter, zal de verdeling onnauwkeurig zijn, en de lading zal niet altijd worden verzonden naar de plaatsen die u verwacht.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effect van afstand op de vraag: {STRING}
@@ -2963,7 +2977,15 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik op de dienst om het dorp/industrie te centreren. Ctrl+klik opent een nieuw venster op de locatie van het dorp/industrie
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Verhaallijn
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Algemene verhaallijn
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Pagina {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Spring naar een bepaalde pagina door deze te selecteren in deze keuzelijst.
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Vorige
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Ga naar de vorige pagina
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Volgende
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Ga naar de volgende pagina
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen - klik op naam om het scherm te centreren op het station. Ctrl+klik opent een nieuw venster op de locatie van het station

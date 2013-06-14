@@ -318,8 +318,8 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Ansicht 
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Ansicht verkleinern (herauszoomen)
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Gleise legen
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Straßen bauen
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Hafen bauen
-STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Flughafen bauen
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Häfen und Wasserstraßen bauen
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Flughäfen bauen
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Landschaftsbau: Land heben/senken, Bäume pflanzen etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Sound-/Musikfenster anzeigen
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Zeige letzte Mitteilung/Nachricht, Nachrichtenoptionen anzeigen
@@ -1678,7 +1678,7 @@ STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Spielein
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Zeige die Bestenliste
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Erweiterte Einstellungen anzeigen und/oder ändern
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF-Einstellungen anzeigen und/oder ändern
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Prüfe auf neue oder aktualisierte Erweiterungen zum Herunterladen
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Prüfe, ob neue oder aktualisierte Erweiterungen zum Herunterladen bereitstehen
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Zeige KI- und Skripteinstellungen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}OpenTTD beenden
 
@@ -2118,13 +2118,13 @@ STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Auf eine
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Alles wählen
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Alle Erweiterungen zum Herunterladen auswählen
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Upgrades auswählen
-STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Alle Erweiterungen, die einen bestehenden Inhalt verbessern, auswählen
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Wähle bei allen vorhandenen Erweiterungen, von denen eine neuere Version verfügbar ist, diese zum Herunterladen aus
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Alles abwählen
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Keine Erweiterung zum Herunterladen auswählen
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Externe Webseiten durchsuchen
-STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Inhalte suchen, welche nicht auf OpenTTD's Inhalte-Server gefunden werden, auf Webseiten suchen, die nicht mit OpenTTD verbunden sind
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Inhalte, die nicht auf OpenTTD's Server für Online-Erweiterungen vorhanden sind, auf Webseiten suchen, die nicht mit OpenTTD in Verbindung stehen.
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}OpenTTD wird hiermit verlassen!
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Die Bedingungen für den Download von Erweiterungen von fremden Webseiten variieren.{} OpenTTD.{}Fortfahren?
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Die Bedingungen für den Download von Erweiterungen von fremden Webseiten variieren.{}Bei Problemen mit der Installation der Erweiterung in OpenTTD bitte auf der externen Webseite nach Anleitungen suchen.{}Fortfahren?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter für Stichworte oder Namen:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Webseite anzeigen
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Webseite für diesen Eintrag anzeigen
@@ -2143,7 +2143,7 @@ STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Version
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Beschreibung: {WHITE}{STRING}
 STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Typ: {WHITE}{STRING}
-STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Gesamtgröße der Erweiterungen: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Gesamtgröße der Erweiterung: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Ausgewählt wegen: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Abhängigkeiten: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Stichworte: {WHITE}{STRING}
@@ -2202,8 +2202,8 @@ STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Anzuzeig
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}unbenutzt
-STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}gesättigt
-STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}überladen
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}ausgeglichen
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}überlastet
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Einzugsgebiet anzeigen

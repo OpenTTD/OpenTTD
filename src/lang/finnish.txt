@@ -304,6 +304,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Näytä 
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Näytä luettelo yhtiön asemista
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Näytä yhtiön taloustiedot
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Näytä yhtiön yleiset tiedot
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Näytä yhtiöhistoria
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Näytä tavoitteet
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Näytä kuvaajat
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Näytä yhtiökilpataulukko
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Rahoita uuden teollisuuden rakentamista ja näytä teollisuushakemisto
