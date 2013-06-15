@@ -148,6 +148,9 @@
     <CustomBuild Include="..\src\lang\tamil.txt">
       <Filter>Translations</Filter>
     </CustomBuild>
+    <CustomBuild Include="..\src\lang\thai.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
     <CustomBuild Include="..\src\lang\traditional_chinese.txt">
       <Filter>Translations</Filter>
     </CustomBuild>
