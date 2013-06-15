@@ -475,7 +475,7 @@ struct BuildRoadToolbarWindow : Window {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		int num = CheckHotkeyMatch(roadtoolbar_hotkeys, keycode);
+		int num = this->hotkeys.CheckMatch(keycode);
 		if (num == -1 || this->GetWidget<NWidgetBase>(num) == NULL) return ES_NOT_HANDLED;
 		this->OnClick(Point(), num, 1);
 		MarkTileDirtyByTile(TileVirtXY(_thd.pos.x, _thd.pos.y)); // redraw tile selection
@@ -660,10 +660,10 @@ struct BuildRoadToolbarWindow : Window {
 		return ES_NOT_HANDLED;
 	}
 
-	static Hotkey roadtoolbar_hotkeys[];
+	static HotkeyList hotkeys;
 };
 
-Hotkey BuildRoadToolbarWindow::roadtoolbar_hotkeys[] = {
+static Hotkey roadtoolbar_hotkeys[] = {
 	Hotkey('1', "build_x", WID_ROT_ROAD_X),
 	Hotkey('2', "build_y", WID_ROT_ROAD_Y),
 	Hotkey('3', "autoroad", WID_ROT_AUTOROAD),
@@ -677,7 +677,7 @@ Hotkey BuildRoadToolbarWindow::roadtoolbar_hotkeys[] = {
 	Hotkey('R', "remove", WID_ROT_REMOVE),
 	HOTKEY_LIST_END
 };
-Hotkey *_roadtoolbar_hotkeys = BuildRoadToolbarWindow::roadtoolbar_hotkeys;
+HotkeyList BuildRoadToolbarWindow::hotkeys("roadtoolbar", roadtoolbar_hotkeys);
 
 
 static const NWidgetPart _nested_build_road_widgets[] = {
@@ -778,7 +778,7 @@ Window *ShowBuildRoadToolbar(RoadType roadtype)
 EventState RoadToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 {
 	extern RoadType _last_built_roadtype;
-	int num = CheckHotkeyMatch(_roadtoolbar_hotkeys, keycode, true);
+	int num = BuildRoadToolbarWindow::hotkeys.CheckMatch(keycode, true);
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowBuildRoadToolbar(_last_built_roadtype);
 	if (w == NULL) return ES_NOT_HANDLED;
@@ -831,7 +831,7 @@ Window *ShowBuildRoadScenToolbar()
 
 EventState RoadToolbarEditorGlobalHotkeys(uint16 key, uint16 keycode)
 {
-	int num = CheckHotkeyMatch(_roadtoolbar_hotkeys, keycode, true);
+	int num = BuildRoadToolbarWindow::hotkeys.CheckMatch(keycode, true);
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowBuildRoadScenToolbar();
 	if (w == NULL) return ES_NOT_HANDLED;

@@ -102,7 +102,7 @@ struct BuildAirToolbarWindow : Window {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		int num = CheckHotkeyMatch(airtoolbar_hotkeys, keycode);
+		int num = this->hotkeys.CheckMatch(keycode);
 		if (num == -1) return ES_NOT_HANDLED;
 		this->OnClick(Point(), num, 1);
 		return ES_HANDLED;
@@ -143,15 +143,15 @@ struct BuildAirToolbarWindow : Window {
 		DeleteWindowById(WC_SELECT_STATION, 0);
 	}
 
-	static Hotkey airtoolbar_hotkeys[];
+	static HotkeyList hotkeys;
 };
 
-Hotkey BuildAirToolbarWindow::airtoolbar_hotkeys[] = {
+static Hotkey airtoolbar_hotkeys[] = {
 	Hotkey('1', "airport", WID_AT_AIRPORT),
 	Hotkey('2', "demolish", WID_AT_DEMOLISH),
 	HOTKEY_LIST_END
 };
-Hotkey *_airtoolbar_hotkeys = BuildAirToolbarWindow::airtoolbar_hotkeys;
+HotkeyList BuildAirToolbarWindow::hotkeys("airtoolbar", airtoolbar_hotkeys);
 
 static const NWidgetPart _nested_air_toolbar_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -191,7 +191,7 @@ Window *ShowBuildAirToolbar()
 EventState AirportToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 {
 	if (!CanBuildVehicleInfrastructure(VEH_AIRCRAFT)) return ES_NOT_HANDLED;
-	int num = CheckHotkeyMatch(_airtoolbar_hotkeys, keycode, true);
+	int num = BuildAirToolbarWindow::hotkeys.CheckMatch(keycode, true);
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowBuildAirToolbar();
 	if (w == NULL) return ES_NOT_HANDLED;

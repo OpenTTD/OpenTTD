@@ -284,7 +284,7 @@ struct SignListWindow : Window, SignList {
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		if (CheckHotkeyMatch(signlist_hotkeys, keycode) == SLHK_FOCUS_FILTER_BOX) {
+		if (this->hotkeys.CheckMatch(keycode) == SLHK_FOCUS_FILTER_BOX) {
 			this->SetFocusedWidget(WID_SIL_FILTER_TEXT);
 			SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
 			state = ES_HANDLED;
@@ -332,14 +332,14 @@ struct SignListWindow : Window, SignList {
 		}
 	}
 
-	static Hotkey signlist_hotkeys[];
+	static HotkeyList hotkeys;
 };
 
-Hotkey SignListWindow::signlist_hotkeys[] = {
+static Hotkey signlist_hotkeys[] = {
 	Hotkey('F', "focus_filter_box", SLHK_FOCUS_FILTER_BOX),
 	HOTKEY_LIST_END
 };
-Hotkey *_signlist_hotkeys = SignListWindow::signlist_hotkeys;
+HotkeyList SignListWindow::hotkeys("signlist", signlist_hotkeys);
 
 static const NWidgetPart _nested_sign_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -389,7 +389,7 @@ Window *ShowSignList()
 
 EventState SignListGlobalHotkeys(uint16 key, uint16 keycode)
 {
-	int num = CheckHotkeyMatch(_signlist_hotkeys, keycode, true);
+	int num = SignListWindow::hotkeys.CheckMatch(keycode, true);
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowSignList();
 	if (w == NULL) return ES_NOT_HANDLED;

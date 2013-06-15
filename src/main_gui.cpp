@@ -289,7 +289,7 @@ struct MainWindow : Window
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		int num = CheckHotkeyMatch(global_hotkeys, keycode);
+		int num = this->hotkeys.CheckMatch(keycode);
 		if (num == GHK_QUIT) {
 			HandleExitGameRequest();
 			return ES_HANDLED;
@@ -465,7 +465,7 @@ struct MainWindow : Window
 		InvalidateWindowData(WC_MAIN_TOOLBAR, 0, data, true);
 	}
 
-	static Hotkey global_hotkeys[];
+	static HotkeyList hotkeys;
 };
 
 const uint16 _ghk_quit_keys[] = {'Q' | WKC_CTRL, 'Q' | WKC_META, 0};
@@ -475,7 +475,7 @@ const uint16 _ghk_chat_all_keys[] = {WKC_SHIFT | WKC_RETURN, WKC_SHIFT | 'T', 0}
 const uint16 _ghk_chat_company_keys[] = {WKC_CTRL | WKC_RETURN, WKC_CTRL | 'T', 0};
 const uint16 _ghk_chat_server_keys[] = {WKC_CTRL | WKC_SHIFT | WKC_RETURN, WKC_CTRL | WKC_SHIFT | 'T', 0};
 
-Hotkey MainWindow::global_hotkeys[] = {
+static Hotkey global_hotkeys[] = {
 	Hotkey(_ghk_quit_keys, "quit", GHK_QUIT),
 	Hotkey(_ghk_abandon_keys, "abandon", GHK_ABANDON),
 	Hotkey(WKC_BACKQUOTE, "console", GHK_CONSOLE),
@@ -519,7 +519,7 @@ Hotkey MainWindow::global_hotkeys[] = {
 #endif
 	HOTKEY_LIST_END
 };
-Hotkey *_global_hotkeys = MainWindow::global_hotkeys;
+HotkeyList MainWindow::hotkeys("global", global_hotkeys);
 
 /**
  * Does the given keycode match one of the keycodes bound to 'quit game'?
@@ -528,7 +528,7 @@ Hotkey *_global_hotkeys = MainWindow::global_hotkeys;
  */
 bool IsQuitKey(uint16 keycode)
 {
-	int num = CheckHotkeyMatch(_global_hotkeys, keycode);
+	int num = MainWindow::hotkeys.CheckMatch(keycode);
 	return num == GHK_QUIT;
 }
 

@@ -32,7 +32,30 @@ struct Hotkey {
 
 #define HOTKEY_LIST_END Hotkey((uint16)0, NULL, -1)
 
-int CheckHotkeyMatch(Hotkey *list, uint16 keycode, bool global_only = false);
+struct IniFile;
+
+/**
+ * List of hotkeys for a window.
+ */
+struct HotkeyList {
+	HotkeyList(const char *ini_group, Hotkey *items);
+	~HotkeyList();
+
+	void Load(IniFile *ini);
+	void Save(IniFile *ini) const;
+
+	int CheckMatch(uint16 keycode, bool global_only = false) const;
+
+private:
+	const char *ini_group;
+	Hotkey *items;
+
+	/**
+	 * Dummy private copy constructor to prevent compilers from
+	 * copying the structure, which fails due to _hotkey_lists.
+	 */
+	HotkeyList(const HotkeyList &other);
+};
 
 bool IsQuitKey(uint16 keycode);
 

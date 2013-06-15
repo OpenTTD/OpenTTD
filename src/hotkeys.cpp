@@ -18,6 +18,12 @@
 
 char *_hotkeys_file;
 
+/**
+ * List of all HotkeyLists.
+ * This is a pointer to ensure initialisation order with the various static HotkeyList instances.
+ */
+static SmallVector<HotkeyList*, 16> *_hotkey_lists = NULL;
+
 /** String representation of a keycode */
 struct KeycodeNames {
 	const char *name;       ///< Name of the keycode
@@ -243,10 +249,26 @@ void Hotkey::AddKeycode(uint16 keycode)
 	this->keycodes.Include(keycode);
 }
 
-void LoadHotkeyGroup(IniGroup *group, Hotkey *hotkey_list)
+HotkeyList::HotkeyList(const char *ini_group, Hotkey *items) :
+	ini_group(ini_group), items(items)
 {
-	for (uint i = 0; hotkey_list[i].num != -1; i++) {
-		Hotkey *hotkey = &hotkey_list[i];
+	if (_hotkey_lists == NULL) _hotkey_lists = new SmallVector<HotkeyList*, 16>();
+	*_hotkey_lists->Append() = this;
+}
+
+HotkeyList::~HotkeyList()
+{
+	_hotkey_lists->Erase(_hotkey_lists->Find(this));
+}
+
+/**
+ * Load HotkeyList from IniFile.
+ * @param ini IniFile to load from.
+ */
+void HotkeyList::Load(IniFile *ini)
+{
+	IniGroup *group = ini->GetGroup(this->ini_group);
+	for (Hotkey *hotkey = this->items; hotkey->name != NULL; ++hotkey) {
 		IniItem *item = group->GetItem(hotkey->name, false);
 		if (item != NULL) {
 			hotkey->keycodes.Clear();
@@ -255,38 +277,31 @@ void LoadHotkeyGroup(IniGroup *group, Hotkey *hotkey_list)
 	}
 }
 
-void SaveHotkeyGroup(IniGroup *group, const Hotkey *hotkey_list)
+/**
+ * Save HotkeyList to IniFile.
+ * @param ini IniFile to save to.
+ */
+void HotkeyList::Save(IniFile *ini) const
 {
-	for (uint i = 0; hotkey_list[i].num != -1; i++) {
-		const Hotkey *hotkey = &hotkey_list[i];
+	IniGroup *group = ini->GetGroup(this->ini_group);
+	for (const Hotkey *hotkey = this->items; hotkey->name != NULL; ++hotkey) {
 		IniItem *item = group->GetItem(hotkey->name, true);
 		item->SetValue(SaveKeycodes(hotkey));
 	}
 }
 
-void SaveLoadHotkeyGroup(IniGroup *group, Hotkey *hotkey_list, bool save)
-{
-	if (save) {
-		SaveHotkeyGroup(group, hotkey_list);
-	} else {
-		LoadHotkeyGroup(group, hotkey_list);
-	}
-}
-
 /**
  * Check if a keycode is bound to something.
- * @param list The list with hotkeys to check
  * @param keycode The keycode that was pressed
  * @param global_only Limit the search to hotkeys defined as 'global'.
  * @return The number of the matching hotkey or -1.
  */
-int CheckHotkeyMatch(Hotkey *list, uint16 keycode, bool global_only)
+int HotkeyList::CheckMatch(uint16 keycode, bool global_only) const
 {
-	while (list->num != -1) {
+	for (const Hotkey *list = this->items; list->name != NULL; ++list) {
 		if (list->keycodes.Contains(keycode | WKC_GLOBAL_HOTKEY) || (!global_only && list->keycodes.Contains(keycode))) {
 			return list->num;
 		}
-		list++;
 	}
 	return -1;
 }
@@ -297,28 +312,14 @@ static void SaveLoadHotkeys(bool save)
 	IniFile *ini = new IniFile();
 	ini->LoadFromDisk(_hotkeys_file, BASE_DIR);
 
-	IniGroup *group;
+	for (HotkeyList **list = _hotkey_lists->Begin(); list != _hotkey_lists->End(); ++list) {
+		if (save) {
+			(*list)->Save(ini);
+		} else {
+			(*list)->Load(ini);
+		}
+	}
 
-#define SL_HOTKEYS(name) \
-	extern Hotkey *_##name##_hotkeys;\
-	group = ini->GetGroup(#name);\
-	SaveLoadHotkeyGroup(group, _##name##_hotkeys, save);
-
-	SL_HOTKEYS(global);
-	SL_HOTKEYS(maintoolbar);
-	SL_HOTKEYS(scenedit_maintoolbar);
-	SL_HOTKEYS(terraform);
-	SL_HOTKEYS(terraform_editor);
-	SL_HOTKEYS(order);
-	SL_HOTKEYS(airtoolbar);
-	SL_HOTKEYS(dockstoolbar);
-	SL_HOTKEYS(railtoolbar);
-	SL_HOTKEYS(roadtoolbar);
-	SL_HOTKEYS(signlist);
-	SL_HOTKEYS(aidebug);
-
-
-#undef SL_HOTKEYS
 	if (save) ini->SaveToDisk(_hotkeys_file);
 	delete ini;
 }

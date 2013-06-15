@@ -599,7 +599,7 @@ struct BuildRailToolbarWindow : Window {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		int num = CheckHotkeyMatch(railtoolbar_hotkeys, keycode);
+		int num = this->hotkeys.CheckMatch(keycode);
 		if (num == -1) return ES_NOT_HANDLED;
 		this->OnClick(Point(), num, 1);
 		MarkTileDirtyByTile(TileVirtXY(_thd.pos.x, _thd.pos.y)); // redraw tile selection
@@ -755,12 +755,12 @@ struct BuildRailToolbarWindow : Window {
 		return ES_NOT_HANDLED;
 	}
 
-	static Hotkey railtoolbar_hotkeys[];
+	static HotkeyList hotkeys;
 };
 
 const uint16 _railtoolbar_autorail_keys[] = {'5', 'A' | WKC_GLOBAL_HOTKEY, 0};
 
-Hotkey BuildRailToolbarWindow::railtoolbar_hotkeys[] = {
+static Hotkey railtoolbar_hotkeys[] = {
 	Hotkey('1', "build_ns", WID_RAT_BUILD_NS),
 	Hotkey('2', "build_x", WID_RAT_BUILD_X),
 	Hotkey('3', "build_ew", WID_RAT_BUILD_EW),
@@ -777,7 +777,7 @@ Hotkey BuildRailToolbarWindow::railtoolbar_hotkeys[] = {
 	Hotkey('C', "convert", WID_RAT_CONVERT_RAIL),
 	HOTKEY_LIST_END
 };
-Hotkey *_railtoolbar_hotkeys = BuildRailToolbarWindow::railtoolbar_hotkeys;
+HotkeyList BuildRailToolbarWindow::hotkeys("railtoolbar", railtoolbar_hotkeys);
 
 static const NWidgetPart _nested_build_rail_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -851,7 +851,7 @@ EventState RailToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 {
 	if (!CanBuildVehicleInfrastructure(VEH_TRAIN)) return ES_NOT_HANDLED;
 	extern RailType _last_built_railtype;
-	int num = CheckHotkeyMatch(_railtoolbar_hotkeys, keycode, true);
+	int num = BuildRailToolbarWindow::hotkeys.CheckMatch(keycode, true);
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowBuildRailToolbar(_last_built_railtype);
 	if (w == NULL) return ES_NOT_HANDLED;

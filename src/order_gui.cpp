@@ -1440,7 +1440,7 @@ public:
 	{
 		if (this->vehicle->owner != _local_company) return ES_NOT_HANDLED;
 
-		switch (CheckHotkeyMatch(order_hotkeys, keycode)) {
+		switch (this->hotkeys.CheckMatch(keycode)) {
 			case OHK_SKIP:           this->OrderClick_Skip();         break;
 			case OHK_DELETE:         this->OrderClick_Delete();       break;
 			case OHK_GOTO:           this->OrderClick_Goto();         break;
@@ -1526,10 +1526,10 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, WID_O_ORDER_LIST);
 	}
 
-	static Hotkey order_hotkeys[];
+	static HotkeyList hotkeys;
 };
 
-Hotkey OrdersWindow::order_hotkeys[] = {
+static Hotkey order_hotkeys[] = {
 	Hotkey('D', "skip", OHK_SKIP),
 	Hotkey('F', "delete", OHK_DELETE),
 	Hotkey('G', "goto", OHK_GOTO),
@@ -1543,7 +1543,7 @@ Hotkey OrdersWindow::order_hotkeys[] = {
 	Hotkey((uint16)0, "no_load", OHK_NO_LOAD),
 	HOTKEY_LIST_END
 };
-Hotkey *_order_hotkeys = OrdersWindow::order_hotkeys;
+HotkeyList OrdersWindow::hotkeys("order", order_hotkeys);
 
 /** Nested widget definition for "your" train orders. */
 static const NWidgetPart _nested_orders_train_widgets[] = {

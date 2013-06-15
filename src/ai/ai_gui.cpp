@@ -1309,7 +1309,7 @@ struct AIDebugWindow : public Window {
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		int num = CheckHotkeyMatch(aidebug_hotkeys, keycode);
+		int num = this->hotkeys.CheckMatch(keycode);
 		if (num != -1) {
 			if (this->show_break_box && num == WID_AID_BREAK_STR_EDIT_BOX) {
 				this->SetFocusedWidget(WID_AID_BREAK_STR_EDIT_BOX);
@@ -1400,7 +1400,7 @@ struct AIDebugWindow : public Window {
 		this->vscroll->SetCapacityFromWidget(this, WID_AID_LOG_PANEL);
 	}
 
-	static Hotkey aidebug_hotkeys[];
+	static HotkeyList hotkeys;
 };
 
 const int AIDebugWindow::top_offset = WD_FRAMERECT_TOP + 2;
@@ -1417,7 +1417,7 @@ NWidgetBase *MakeCompanyButtonRowsAIDebug(int *biggest_index)
 	return MakeCompanyButtonRows(biggest_index, WID_AID_COMPANY_BUTTON_START, WID_AID_COMPANY_BUTTON_END, 8, STR_AI_DEBUG_SELECT_AI_TOOLTIP);
 }
 
-Hotkey AIDebugWindow::aidebug_hotkeys[] = {
+static Hotkey aidebug_hotkeys[] = {
 	Hotkey('1', "company_1", WID_AID_COMPANY_BUTTON_START),
 	Hotkey('2', "company_2", WID_AID_COMPANY_BUTTON_START + 1),
 	Hotkey('3', "company_3", WID_AID_COMPANY_BUTTON_START + 2),
@@ -1442,7 +1442,7 @@ Hotkey AIDebugWindow::aidebug_hotkeys[] = {
 	Hotkey(WKC_RETURN, "continue", WID_AID_CONTINUE_BTN),
 	HOTKEY_LIST_END
 };
-Hotkey *_aidebug_hotkeys = AIDebugWindow::aidebug_hotkeys;
+HotkeyList AIDebugWindow::hotkeys("aidebug", aidebug_hotkeys);
 
 /** Widgets for the AI debug window. */
 static const NWidgetPart _nested_ai_debug_widgets[] = {
@@ -1520,7 +1520,7 @@ Window *ShowAIDebugWindow(CompanyID show_company)
  */
 EventState AIDebugGlobalHotkeys(uint16 key, uint16 keycode)
 {
-	int num = CheckHotkeyMatch(_aidebug_hotkeys, keycode, true);
+	int num = AIDebugWindow::hotkeys.CheckMatch(keycode, true);
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowAIDebugWindow(INVALID_COMPANY);
 	if (w == NULL) return ES_NOT_HANDLED;

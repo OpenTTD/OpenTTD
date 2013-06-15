@@ -1662,7 +1662,7 @@ struct MainToolbarWindow : Window {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		switch (CheckHotkeyMatch(maintoolbar_hotkeys, keycode)) {
+		switch (this->hotkeys.CheckMatch(keycode)) {
 			case MTHK_PAUSE: ToolbarPauseClick(this); break;
 			case MTHK_FASTFORWARD: ToolbarFastForwardClick(this); break;
 			case MTHK_SETTINGS: ShowGameOptions(); break;
@@ -1759,7 +1759,7 @@ struct MainToolbarWindow : Window {
 		if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) HandleZoomMessage(this, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, WID_TN_ZOOM_IN, WID_TN_ZOOM_OUT);
 	}
 
-	static Hotkey maintoolbar_hotkeys[];
+	static HotkeyList hotkeys;
 };
 
 const uint16 _maintoolbar_pause_keys[] = {WKC_F1, WKC_PAUSE, 0};
@@ -1767,7 +1767,7 @@ const uint16 _maintoolbar_zoomin_keys[] = {WKC_NUM_PLUS, WKC_EQUALS, WKC_SHIFT |
 const uint16 _maintoolbar_zoomout_keys[] = {WKC_NUM_MINUS, WKC_MINUS, WKC_SHIFT | WKC_MINUS, WKC_SHIFT | WKC_F6, 0};
 const uint16 _maintoolbar_smallmap_keys[] = {WKC_F4, 'M', 0};
 
-Hotkey MainToolbarWindow::maintoolbar_hotkeys[] = {
+static Hotkey maintoolbar_hotkeys[] = {
 	Hotkey(_maintoolbar_pause_keys, "pause", MTHK_PAUSE),
 	Hotkey((uint16)0, "fastforward", MTHK_FASTFORWARD),
 	Hotkey(WKC_F2, "settings", MTHK_SETTINGS),
@@ -1810,7 +1810,7 @@ Hotkey MainToolbarWindow::maintoolbar_hotkeys[] = {
 	Hotkey((uint16)0, "sign_list", MTHK_SIGN_LIST),
 	HOTKEY_LIST_END
 };
-Hotkey *_maintoolbar_hotkeys = MainToolbarWindow::maintoolbar_hotkeys;
+HotkeyList MainToolbarWindow::hotkeys("maintoolbar", maintoolbar_hotkeys);
 
 static NWidgetBase *MakeMainToolbar(int *biggest_index)
 {
@@ -2009,7 +2009,7 @@ struct ScenarioEditorToolbarWindow : Window {
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		CallBackFunction cbf = CBF_NONE;
-		switch (CheckHotkeyMatch(scenedit_maintoolbar_hotkeys, keycode)) {
+		switch (this->hotkeys.CheckMatch(keycode)) {
 			case MTEHK_PAUSE:                  ToolbarPauseClick(this); break;
 			case MTEHK_FASTFORWARD:            ToolbarFastForwardClick(this); break;
 			case MTEHK_SETTINGS:               ShowGameOptions(); break;
@@ -2102,10 +2102,10 @@ struct ScenarioEditorToolbarWindow : Window {
 		this->SetDirty();
 	}
 
-	static Hotkey scenedit_maintoolbar_hotkeys[];
+	static HotkeyList hotkeys;
 };
 
-Hotkey ScenarioEditorToolbarWindow::scenedit_maintoolbar_hotkeys[] = {
+static Hotkey scenedit_maintoolbar_hotkeys[] = {
 	Hotkey(_maintoolbar_pause_keys, "pause", MTEHK_PAUSE),
 	Hotkey((uint16)0, "fastforward", MTEHK_FASTFORWARD),
 	Hotkey(WKC_F2, "settings", MTEHK_SETTINGS),
@@ -2130,7 +2130,7 @@ Hotkey ScenarioEditorToolbarWindow::scenedit_maintoolbar_hotkeys[] = {
 	Hotkey('V', "extra_viewport", MTEHK_EXTRA_VIEWPORT),
 	HOTKEY_LIST_END
 };
-Hotkey *_scenedit_maintoolbar_hotkeys = ScenarioEditorToolbarWindow::scenedit_maintoolbar_hotkeys;
+HotkeyList ScenarioEditorToolbarWindow::hotkeys("scenedit_maintoolbar", scenedit_maintoolbar_hotkeys);
 
 static const NWidgetPart _nested_toolb_scen_inner_widgets[] = {
 	NWidget(WWT_IMGBTN, COLOUR_GREY, WID_TE_PAUSE), SetDataTip(SPR_IMG_PAUSE, STR_TOOLBAR_TOOLTIP_PAUSE_GAME),
