@@ -428,15 +428,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Välju
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Maailmakaart
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Lisa vaateaken
 STR_MAP_MENU_SIGN_LIST                                          :Siltide nimekiri
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Linnanimistu
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Raja linn
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Toetused
@@ -2207,6 +2207,10 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Õhuliin
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Vaheta laadimisnäidikute läbipaistvust. Ctrl+klõps lukustab
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Muuda esemed nähtamatuks, mitte läbipaistvaks
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Mõjupiirkonna näitamine
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Väljas
@@ -2974,6 +2978,8 @@ STR_SUBSIDIES_NONE                                              :{ORANGE}Mitte �
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Juba toetatavad veoteenused:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} kohast {STRING} kohta {STRING}{YELLOW} ({COMPANY}{YELLOW}, kuni {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Vajuta pakkumisele, et näha linna või tööstuse asukohta. Ctrl+klõps avab uue vaate ettevõtte/linna asukohast
+
+# Story book window
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Jaamanimed - nimel vajutades viiakse vaade jaamale. Ctrl+klõps avab jaama asukohas uue vaate.

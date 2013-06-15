@@ -371,15 +371,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :OpenTTDを終了
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :世界地図
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :ビューポートを開く
 STR_MAP_MENU_SIGN_LIST                                          :看板のリスト
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :町のリスト
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :町の新設に出資
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :助成金
@@ -2028,6 +2028,10 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}懸垂�
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}積み降ろしの表示の透過(トグル) Ctrl+クリックでロックします
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}透明のかわりに不可視を使用
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}駅の受入れる地域をハイライトします
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}切
@@ -2790,6 +2794,8 @@ STR_SUBSIDIES_NONE                                              :{ORANGE}- な�
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}すでに助成金を受けている運送経路：
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING}を{STRING}から{STRING}へ{YELLOW}（{COMPANY}{YELLOW}、{DATE_SHORT}まで）
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}町／産業を見るためにサービスをクリックして下さい。コントロールキーを押しながらクリックすることでミニウィンドウ表示になります
+
+# Story book window
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}駅名 - メイン画面を駅の場所に移動するには駅名をクリックします

@@ -370,15 +370,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :خروج
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :خريطة العالم
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :شاشة عرض اضافية
 STR_MAP_MENU_SIGN_LIST                                          :قائمة العلامات
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :دليل المدن
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :جد المدينة
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :العروض
@@ -1883,6 +1883,10 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK} غير 
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}غير الشفافية لنسبة التحميل. مفتاح كنترول للاغلاق.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}اخفاء الاجرام تماما بدلا من الشفافية
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}وضح منطقة التغطية
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}غلق
@@ -2611,6 +2615,8 @@ STR_SUBSIDIES_NONE                                              :{ORANGE}بدو�
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}العروض المأخوذة
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} من {STRING} الى {STRING}{YELLOW} - {COMPANY}{YELLOW}, حتى {DATE_SHORT}-
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}اضغط على الخدمة لتوسيط الخريطة على المصنع/المدينة. اضغط + كنترول لفتح شاشة عرض جديدة للمدينة.
+
+# Story book window
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}اسم المحطة - اضغط على اسم المحطة لتوسيطها في الشاشة. اضغط + كنترول لفتح شاشة عرض جديدة بمنطقة المحطة.

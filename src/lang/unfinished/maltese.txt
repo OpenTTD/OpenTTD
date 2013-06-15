@@ -266,10 +266,10 @@ STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_FILE_MENU_SEPARATOR                                         :
 ############ range ends here
 
-############ range for map menu starts
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
-############ end of the 'Display map' dropdown
-############ end of the 'Town' dropdown
+# map menu
+
+############ range for town menu starts
+############ range ends here
 
 ############ range for subsidies menu starts
 ############ range ends here
@@ -588,6 +588,10 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 
 # Transparency settings window
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 
 # Join station window
@@ -751,6 +755,8 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 ### Start of Goal Question button list
 
 # Subsidies window
+
+# Story book window
 
 # Station list window
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}

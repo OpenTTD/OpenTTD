@@ -306,14 +306,14 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :बाहेर पडा
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :वैश्विक नकाशा
 STR_MAP_MENU_SIGN_LIST                                          :चिन्हांची यादी
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :शहरांची यादी
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :सापडलेलं शहर
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 ############ range ends here
@@ -781,6 +781,10 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 
 # Transparency settings window
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 
 # Join station window
@@ -972,6 +976,8 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 ### Start of Goal Question button list
 
 # Subsidies window
+
+# Story book window
 
 # Station list window
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}

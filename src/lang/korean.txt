@@ -2928,6 +2928,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}이미 �
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{1:STRING}에서 {2:STRING}까지 {0:STRING} 수송{YELLOW} ({3:COMPANY}{YELLOW}, {DATE_SHORT}까지)
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}산업시설/도시의 위치로 시점을 변경하려면 클릭하세요. Ctrl+클릭하면 이 산업시설/도시의 위치를 기준으로 새로운 외부 화면을 엽니다.
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}역 이름 - 이 역의 위치로 시점을 변경하려면 클릭하세요. Ctrl+클릭하면 이 역 위치를 기준으로 새로운 외부 화면을 엽니다.
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}1개 이상의 아이템을 선택하려면 CTRL키를 누르세요

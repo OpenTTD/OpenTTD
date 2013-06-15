@@ -524,15 +524,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Izhod
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Zemljevid sveta
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Dodaten pogled
 STR_MAP_MENU_SIGN_LIST                                          :Seznam napisov
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Imenik mest
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Ustanovi mesto
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencije
@@ -2238,6 +2238,10 @@ STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Preklop 
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Preklop na prosojnost za prikaz polnenja. Ctrl+Klik za zaklepanje
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Nastavi predmete nevidne namesto prosojne
 
+# Linkgraph legend window
+
+# Linkgraph legend window and linkgraph legend in smallmap
+
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Osvetlitev območja zajema
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Izključeno
@@ -2998,6 +3002,8 @@ STR_SUBSIDIES_NONE                                              :{ORANGE}- Brez 
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Že subvencionirane storitve:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}Prevoz {STRING.r} od {STRING} do {STRING}{YELLOW} ({COMPANY}{YELLOW}, do {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikni na storitev za pogled na industrijo/mesto. Ctrl+Klik odpre nov pogled na lokaciji industrije/mesta
+
+# Story book window
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Imena postaj - klikni na ime za pogled na postajo. Ctrl+Klik odpre nov pogled na lokaciji postaje

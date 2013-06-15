@@ -27,7 +27,7 @@ STR_UNDEFINED                                                   :(neapibrėžta 
 STR_JUST_NOTHING                                                :Nieko
 STR_JUST_NOTHING.kas                                            :Niekas
 STR_JUST_NOTHING.ko                                             :Nieko
-STR_JUST_NOTHING.kam                                            :Niekui
+STR_JUST_NOTHING.kam                                            :Niekam
 STR_JUST_NOTHING.ka                                             :Nieką
 STR_JUST_NOTHING.kuo                                            :Nieku
 STR_JUST_NOTHING.kur                                            :Niekur
@@ -566,15 +566,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Išeiti
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Žemėlapis
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Papildomas peržiūros langas
 STR_MAP_MENU_SIGN_LIST                                          :Ženklų sąrašas
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Miestų sąrašas
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Įkurti miestą
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidijos
@@ -1288,7 +1288,7 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Paskolos palūk
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Eksploatacijos išlaidų lygmuo: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Nustatyti infrastruktūros bei transporto priemonių ekploatacijos išlaidų lygmenį
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Statymo greitis: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Kompiuterio priešininko statymo sparta
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Kompiuterinio priešininko statymo sparta
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Transporto priemonių gedimo dažnumas: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Nurodo, kaip dažnai ges netinkamai prižiūrimos transporto priemonės
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidijų daugiklis: {STRING}
@@ -3122,6 +3122,8 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Jau subs
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} iš {STRING} į {STRING}{YELLOW} ({COMPANY}{YELLOW}, iki {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Paspauskite ant paslaugos, norėdami pamatyti pramonės vietą/miestą. Ctrl+Paspaudimas atidaro naują langą su pramonės vietos/miesto vaizdu
 
+# Story book window
+
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stotelių pavadinimai - paspausk ant stotelės pavadinimo, kad pamatytum ją ekrano centre. Ctrl+Paspaudimas atidaro naują langą su stotelės vaizdu
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Laikant nuspaustą VALD (CTRL) galima pažymėti daugiau nei vieną
@@ -4249,7 +4251,7 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... prav
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Neįmanoma pašalinti stoties dalies...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Pašalinkite stotelę prieš tęsdami!
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Neįmanoma statyti autobuso stotelės...
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Neįmanoma pašalinti autobuso stotelės...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Neįmanoma griauti sunkvežimių stotelės...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Neįmanoma griauti keleivinio tramvajaus stotelės...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Neįmanoma griauti krovininio tramvajaus stotelės...

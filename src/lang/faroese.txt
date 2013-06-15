@@ -371,15 +371,15 @@ STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Gevst
 ############ range ends here
 
-############ range for map menu starts
+# map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Heimskort
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Eyka synisgluggi
 STR_MAP_MENU_SIGN_LIST                                          :Listi yvur tekin
-############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+
+############ range for town menu starts
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Bygdar yvirlit
-############ end of the 'Display map' dropdown
 STR_TOWN_MENU_FOUND_TOWN                                        :Funnar bygdir
-############ end of the 'Town' dropdown
+############ range ends here
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Stuðulsflutningur
@@ -2760,6 +2760,8 @@ STR_SUBSIDIES_NONE                                              :{ORANGE}- Einki
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Flutningur ið longu fær stuðul:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} frá {STRING} til {STRING}{YELLOW} ({COMPANY}{YELLOW}, inntil {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Trýst á eina tænastu fyri at savna høvuðs sýni á ídnaðin/bygdina. Ctrl+trýst letur upp ein nýggjan sýnisglugga á ídnaðin/bygdina
+
+# Story book window
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nøvn á støðum - trýst á eitt navn fyri at savna høvuðs sýni á støðina. Ctrl+trýst letur upp ein nýggjan sýnisglugga á støðina
