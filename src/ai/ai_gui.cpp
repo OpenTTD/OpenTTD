@@ -1061,6 +1061,8 @@ struct AIDebugWindow : public Window {
 
 		this->querystrings[WID_AID_BREAK_STR_EDIT_BOX] = &this->break_editbox;
 
+		SetWidgetsDisabledState(!this->show_break_box, WID_AID_BREAK_STR_ON_OFF_BTN, WID_AID_BREAK_STR_EDIT_BOX, WID_AID_MATCH_CASE_BTN, WIDGET_LIST_END);
+
 		/* Restore the break string value from static variable */
 		this->break_editbox.text.Assign(this->break_string);
 

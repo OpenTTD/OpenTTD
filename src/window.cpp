@@ -482,6 +482,8 @@ EventState Window::OnHotkey(int hotkey)
 	if (nw == NULL || nw->IsDisabled()) return ES_NOT_HANDLED;
 
 	if (nw->type == WWT_EDITBOX) {
+		if (this->IsShaded()) return ES_NOT_HANDLED;
+
 		/* Focus editbox */
 		this->SetFocusedWidget(hotkey);
 		SetFocusedWindow(this);
@@ -891,6 +893,7 @@ void Window::SetShaded(bool make_shaded)
 	int desired = make_shaded ? SZSP_HORIZONTAL : 0;
 	if (this->shade_select->shown_plane != desired) {
 		if (make_shaded) {
+			if (this->nested_focus != NULL) this->UnfocusFocusedWidget();
 			this->unshaded_size.width  = this->width;
 			this->unshaded_size.height = this->height;
 			this->shade_select->SetDisplayedPlane(desired);
