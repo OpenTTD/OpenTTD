@@ -166,7 +166,7 @@ struct BuildDocksToolbarWindow : Window {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		int num = CheckHotkeyMatch(dockstoolbar_hotkeys, keycode, this);
+		int num = CheckHotkeyMatch(dockstoolbar_hotkeys, keycode);
 		if (num == -1) return ES_NOT_HANDLED;
 		this->OnClick(Point(), num, 1);
 		return ES_HANDLED;
@@ -274,23 +274,23 @@ struct BuildDocksToolbarWindow : Window {
 		VpSetPresizeRange(tile_from, tile_to);
 	}
 
-	static Hotkey<BuildDocksToolbarWindow> dockstoolbar_hotkeys[];
+	static Hotkey dockstoolbar_hotkeys[];
 };
 
 const uint16 _dockstoolbar_aqueduct_keys[] = {'B', '8', 0};
 
-Hotkey<BuildDocksToolbarWindow> BuildDocksToolbarWindow::dockstoolbar_hotkeys[] = {
-	Hotkey<BuildDocksToolbarWindow>('1', "canal", WID_DT_CANAL),
-	Hotkey<BuildDocksToolbarWindow>('2', "lock", WID_DT_LOCK),
-	Hotkey<BuildDocksToolbarWindow>('3', "demolish", WID_DT_DEMOLISH),
-	Hotkey<BuildDocksToolbarWindow>('4', "depot", WID_DT_DEPOT),
-	Hotkey<BuildDocksToolbarWindow>('5', "dock", WID_DT_STATION),
-	Hotkey<BuildDocksToolbarWindow>('6', "buoy", WID_DT_BUOY),
-	Hotkey<BuildDocksToolbarWindow>('7', "river", WID_DT_RIVER),
-	Hotkey<BuildDocksToolbarWindow>(_dockstoolbar_aqueduct_keys, "aqueduct", WID_DT_BUILD_AQUEDUCT),
-	HOTKEY_LIST_END(BuildDocksToolbarWindow)
+Hotkey BuildDocksToolbarWindow::dockstoolbar_hotkeys[] = {
+	Hotkey('1', "canal", WID_DT_CANAL),
+	Hotkey('2', "lock", WID_DT_LOCK),
+	Hotkey('3', "demolish", WID_DT_DEMOLISH),
+	Hotkey('4', "depot", WID_DT_DEPOT),
+	Hotkey('5', "dock", WID_DT_STATION),
+	Hotkey('6', "buoy", WID_DT_BUOY),
+	Hotkey('7', "river", WID_DT_RIVER),
+	Hotkey(_dockstoolbar_aqueduct_keys, "aqueduct", WID_DT_BUILD_AQUEDUCT),
+	HOTKEY_LIST_END
 };
-Hotkey<BuildDocksToolbarWindow> *_dockstoolbar_hotkeys = BuildDocksToolbarWindow::dockstoolbar_hotkeys;
+Hotkey *_dockstoolbar_hotkeys = BuildDocksToolbarWindow::dockstoolbar_hotkeys;
 
 /**
  * Nested widget parts of docks toolbar, game version.
@@ -338,7 +338,7 @@ Window *ShowBuildDocksToolbar()
 
 EventState DockToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 {
-	int num = CheckHotkeyMatch<BuildDocksToolbarWindow>(_dockstoolbar_hotkeys, keycode, NULL, true);
+	int num = CheckHotkeyMatch(_dockstoolbar_hotkeys, keycode, true);
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowBuildDocksToolbar();
 	if (w == NULL) return ES_NOT_HANDLED;

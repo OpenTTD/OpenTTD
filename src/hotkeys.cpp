@@ -116,8 +116,7 @@ static uint16 ParseKeycode(const char *start, const char *end)
  * @param hotkey The hotkey object to add the keycodes to
  * @param value The string to parse
  */
-template<class T>
-static void ParseHotkeys(Hotkey<T> *hotkey, const char *value)
+static void ParseHotkeys(Hotkey *hotkey, const char *value)
 {
 	const char *start = value;
 	while (*start != '\0') {
@@ -192,8 +191,7 @@ static const char *KeycodeToString(uint16 keycode)
  * @note The return value is a static buffer, strdup the result before calling
  *  this function again.
  */
-template<class T>
-const char *SaveKeycodes(const Hotkey<T> *hotkey)
+const char *SaveKeycodes(const Hotkey *hotkey)
 {
 	static char buf[128];
 	buf[0] = '\0';
@@ -205,11 +203,50 @@ const char *SaveKeycodes(const Hotkey<T> *hotkey)
 	return buf;
 }
 
-template<class T>
-void LoadHotkeyGroup(IniGroup *group, T *hotkey_list)
+/**
+ * Create a new Hotkey object with a single default keycode.
+ * @param default_keycode The default keycode for this hotkey.
+ * @param name The name of this hotkey.
+ * @param num Number of this hotkey, should be unique within the hotkey list.
+ */
+Hotkey::Hotkey(uint16 default_keycode, const char *name, int num) :
+	name(name),
+	num(num)
+{
+	if (default_keycode != 0) this->AddKeycode(default_keycode);
+}
+
+/**
+ * Create a new Hotkey object with multiple default keycodes.
+ * @param default_keycodes An array of default keycodes terminated with 0.
+ * @param name The name of this hotkey.
+ * @param num Number of this hotkey, should be unique within the hotkey list.
+ */
+Hotkey::Hotkey(const uint16 *default_keycodes, const char *name, int num) :
+	name(name),
+	num(num)
+{
+	const uint16 *keycode = default_keycodes;
+	while (*keycode != 0) {
+		this->AddKeycode(*keycode);
+		keycode++;
+	}
+}
+
+/**
+ * Add a keycode to this hotkey, from now that keycode will be matched
+ * in addition to any previously added keycodes.
+ * @param keycode The keycode to add.
+ */
+void Hotkey::AddKeycode(uint16 keycode)
+{
+	this->keycodes.Include(keycode);
+}
+
+void LoadHotkeyGroup(IniGroup *group, Hotkey *hotkey_list)
 {
 	for (uint i = 0; hotkey_list[i].num != -1; i++) {
-		T *hotkey = &hotkey_list[i];
+		Hotkey *hotkey = &hotkey_list[i];
 		IniItem *item = group->GetItem(hotkey->name, false);
 		if (item != NULL) {
 			hotkey->keycodes.Clear();
@@ -218,18 +255,16 @@ void LoadHotkeyGroup(IniGroup *group, T *hotkey_list)
 	}
 }
 
-template<class T>
-void SaveHotkeyGroup(IniGroup *group, T *hotkey_list)
+void SaveHotkeyGroup(IniGroup *group, const Hotkey *hotkey_list)
 {
 	for (uint i = 0; hotkey_list[i].num != -1; i++) {
-		T *hotkey = &hotkey_list[i];
+		const Hotkey *hotkey = &hotkey_list[i];
 		IniItem *item = group->GetItem(hotkey->name, true);
 		item->SetValue(SaveKeycodes(hotkey));
 	}
 }
 
-template<class T>
-void SaveLoadHotkeyGroup(IniGroup *group, T *hotkey_list, bool save)
+void SaveLoadHotkeyGroup(IniGroup *group, Hotkey *hotkey_list, bool save)
 {
 	if (save) {
 		SaveHotkeyGroup(group, hotkey_list);
@@ -238,18 +273,24 @@ void SaveLoadHotkeyGroup(IniGroup *group, T *hotkey_list, bool save)
 	}
 }
 
-struct MainWindow;
-struct MainToolbarWindow;
-struct ScenarioEditorToolbarWindow;
-struct TerraformToolbarWindow;
-struct ScenarioEditorLandscapeGenerationWindow;
-struct OrdersWindow;
-struct BuildAirToolbarWindow;
-struct BuildDocksToolbarWindow;
-struct BuildRailToolbarWindow;
-struct BuildRoadToolbarWindow;
-struct SignListWindow;
-struct AIDebugWindow;
+/**
+ * Check if a keycode is bound to something.
+ * @param list The list with hotkeys to check
+ * @param keycode The keycode that was pressed
+ * @param global_only Limit the search to hotkeys defined as 'global'.
+ * @return The number of the matching hotkey or -1.
+ */
+int CheckHotkeyMatch(Hotkey *list, uint16 keycode, bool global_only)
+{
+	while (list->num != -1) {
+		if (list->keycodes.Contains(keycode | WKC_GLOBAL_HOTKEY) || (!global_only && list->keycodes.Contains(keycode))) {
+			return list->num;
+		}
+		list++;
+	}
+	return -1;
+}
+
 
 static void SaveLoadHotkeys(bool save)
 {
@@ -258,23 +299,23 @@ static void SaveLoadHotkeys(bool save)
 
 	IniGroup *group;
 
-#define SL_HOTKEYS(name, window_name) \
-	extern Hotkey<window_name> *_##name##_hotkeys;\
+#define SL_HOTKEYS(name) \
+	extern Hotkey *_##name##_hotkeys;\
 	group = ini->GetGroup(#name);\
 	SaveLoadHotkeyGroup(group, _##name##_hotkeys, save);
 
-	SL_HOTKEYS(global, MainWindow);
-	SL_HOTKEYS(maintoolbar, MainToolbarWindow);
-	SL_HOTKEYS(scenedit_maintoolbar, ScenarioEditorToolbarWindow);
-	SL_HOTKEYS(terraform, TerraformToolbarWindow);
-	SL_HOTKEYS(terraform_editor, ScenarioEditorLandscapeGenerationWindow);
-	SL_HOTKEYS(order, OrdersWindow);
-	SL_HOTKEYS(airtoolbar, BuildAirToolbarWindow);
-	SL_HOTKEYS(dockstoolbar, BuildDocksToolbarWindow);
-	SL_HOTKEYS(railtoolbar, BuildRailToolbarWindow);
-	SL_HOTKEYS(roadtoolbar, BuildRoadToolbarWindow);
-	SL_HOTKEYS(signlist, SignListWindow);
-	SL_HOTKEYS(aidebug, AIDebugWindow);
+	SL_HOTKEYS(global);
+	SL_HOTKEYS(maintoolbar);
+	SL_HOTKEYS(scenedit_maintoolbar);
+	SL_HOTKEYS(terraform);
+	SL_HOTKEYS(terraform_editor);
+	SL_HOTKEYS(order);
+	SL_HOTKEYS(airtoolbar);
+	SL_HOTKEYS(dockstoolbar);
+	SL_HOTKEYS(railtoolbar);
+	SL_HOTKEYS(roadtoolbar);
+	SL_HOTKEYS(signlist);
+	SL_HOTKEYS(aidebug);
 
 
 #undef SL_HOTKEYS

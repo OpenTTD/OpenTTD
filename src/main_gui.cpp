@@ -289,7 +289,7 @@ struct MainWindow : Window
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		int num = CheckHotkeyMatch(global_hotkeys, keycode, this);
+		int num = CheckHotkeyMatch(global_hotkeys, keycode);
 		if (num == GHK_QUIT) {
 			HandleExitGameRequest();
 			return ES_HANDLED;
@@ -465,7 +465,7 @@ struct MainWindow : Window
 		InvalidateWindowData(WC_MAIN_TOOLBAR, 0, data, true);
 	}
 
-	static Hotkey<MainWindow> global_hotkeys[];
+	static Hotkey global_hotkeys[];
 };
 
 const uint16 _ghk_quit_keys[] = {'Q' | WKC_CTRL, 'Q' | WKC_META, 0};
@@ -475,51 +475,51 @@ const uint16 _ghk_chat_all_keys[] = {WKC_SHIFT | WKC_RETURN, WKC_SHIFT | 'T', 0}
 const uint16 _ghk_chat_company_keys[] = {WKC_CTRL | WKC_RETURN, WKC_CTRL | 'T', 0};
 const uint16 _ghk_chat_server_keys[] = {WKC_CTRL | WKC_SHIFT | WKC_RETURN, WKC_CTRL | WKC_SHIFT | 'T', 0};
 
-Hotkey<MainWindow> MainWindow::global_hotkeys[] = {
-	Hotkey<MainWindow>(_ghk_quit_keys, "quit", GHK_QUIT),
-	Hotkey<MainWindow>(_ghk_abandon_keys, "abandon", GHK_ABANDON),
-	Hotkey<MainWindow>(WKC_BACKQUOTE, "console", GHK_CONSOLE),
-	Hotkey<MainWindow>('B' | WKC_CTRL, "bounding_boxes", GHK_BOUNDING_BOXES),
-	Hotkey<MainWindow>('I' | WKC_CTRL, "dirty_blocks", GHK_DIRTY_BLOCKS),
-	Hotkey<MainWindow>('C', "center", GHK_CENTER),
-	Hotkey<MainWindow>('Z', "center_zoom", GHK_CENTER_ZOOM),
-	Hotkey<MainWindow>(WKC_ESC, "reset_object_to_place", GHK_RESET_OBJECT_TO_PLACE),
-	Hotkey<MainWindow>(WKC_DELETE, "delete_windows", GHK_DELETE_WINDOWS),
-	Hotkey<MainWindow>(WKC_DELETE | WKC_SHIFT, "delete_all_windows", GHK_DELETE_NONVITAL_WINDOWS),
-	Hotkey<MainWindow>('R' | WKC_CTRL, "refresh_screen", GHK_REFRESH_SCREEN),
+Hotkey MainWindow::global_hotkeys[] = {
+	Hotkey(_ghk_quit_keys, "quit", GHK_QUIT),
+	Hotkey(_ghk_abandon_keys, "abandon", GHK_ABANDON),
+	Hotkey(WKC_BACKQUOTE, "console", GHK_CONSOLE),
+	Hotkey('B' | WKC_CTRL, "bounding_boxes", GHK_BOUNDING_BOXES),
+	Hotkey('I' | WKC_CTRL, "dirty_blocks", GHK_DIRTY_BLOCKS),
+	Hotkey('C', "center", GHK_CENTER),
+	Hotkey('Z', "center_zoom", GHK_CENTER_ZOOM),
+	Hotkey(WKC_ESC, "reset_object_to_place", GHK_RESET_OBJECT_TO_PLACE),
+	Hotkey(WKC_DELETE, "delete_windows", GHK_DELETE_WINDOWS),
+	Hotkey(WKC_DELETE | WKC_SHIFT, "delete_all_windows", GHK_DELETE_NONVITAL_WINDOWS),
+	Hotkey('R' | WKC_CTRL, "refresh_screen", GHK_REFRESH_SCREEN),
 #if defined(_DEBUG)
-	Hotkey<MainWindow>('0' | WKC_ALT, "crash_game", GHK_CRASH),
-	Hotkey<MainWindow>('1' | WKC_ALT, "money", GHK_MONEY),
-	Hotkey<MainWindow>('2' | WKC_ALT, "update_coordinates", GHK_UPDATE_COORDS),
+	Hotkey('0' | WKC_ALT, "crash_game", GHK_CRASH),
+	Hotkey('1' | WKC_ALT, "money", GHK_MONEY),
+	Hotkey('2' | WKC_ALT, "update_coordinates", GHK_UPDATE_COORDS),
 #endif
-	Hotkey<MainWindow>('1' | WKC_CTRL, "transparency_signs", GHK_TOGGLE_TRANSPARENCY),
-	Hotkey<MainWindow>('2' | WKC_CTRL, "transparency_trees", GHK_TOGGLE_TRANSPARENCY + 1),
-	Hotkey<MainWindow>('3' | WKC_CTRL, "transparency_houses", GHK_TOGGLE_TRANSPARENCY + 2),
-	Hotkey<MainWindow>('4' | WKC_CTRL, "transparency_industries", GHK_TOGGLE_TRANSPARENCY + 3),
-	Hotkey<MainWindow>('5' | WKC_CTRL, "transparency_buildings", GHK_TOGGLE_TRANSPARENCY + 4),
-	Hotkey<MainWindow>('6' | WKC_CTRL, "transparency_bridges", GHK_TOGGLE_TRANSPARENCY + 5),
-	Hotkey<MainWindow>('7' | WKC_CTRL, "transparency_structures", GHK_TOGGLE_TRANSPARENCY + 6),
-	Hotkey<MainWindow>('8' | WKC_CTRL, "transparency_catenary", GHK_TOGGLE_TRANSPARENCY + 7),
-	Hotkey<MainWindow>('9' | WKC_CTRL, "transparency_loading", GHK_TOGGLE_TRANSPARENCY + 8),
-	Hotkey<MainWindow>('1' | WKC_CTRL | WKC_SHIFT, "invisibility_signs", GHK_TOGGLE_INVISIBILITY),
-	Hotkey<MainWindow>('2' | WKC_CTRL | WKC_SHIFT, "invisibility_trees", GHK_TOGGLE_INVISIBILITY + 1),
-	Hotkey<MainWindow>('3' | WKC_CTRL | WKC_SHIFT, "invisibility_houses", GHK_TOGGLE_INVISIBILITY + 2),
-	Hotkey<MainWindow>('4' | WKC_CTRL | WKC_SHIFT, "invisibility_industries", GHK_TOGGLE_INVISIBILITY + 3),
-	Hotkey<MainWindow>('5' | WKC_CTRL | WKC_SHIFT, "invisibility_buildings", GHK_TOGGLE_INVISIBILITY + 4),
-	Hotkey<MainWindow>('6' | WKC_CTRL | WKC_SHIFT, "invisibility_bridges", GHK_TOGGLE_INVISIBILITY + 5),
-	Hotkey<MainWindow>('7' | WKC_CTRL | WKC_SHIFT, "invisibility_structures", GHK_TOGGLE_INVISIBILITY + 6),
-	Hotkey<MainWindow>('8' | WKC_CTRL | WKC_SHIFT, "invisibility_catenary", GHK_TOGGLE_INVISIBILITY + 7),
-	Hotkey<MainWindow>('X' | WKC_CTRL, "transparency_toolbar", GHK_TRANSPARENCY_TOOLBAR),
-	Hotkey<MainWindow>('X', "toggle_transparency", GHK_TRANSPARANCY),
+	Hotkey('1' | WKC_CTRL, "transparency_signs", GHK_TOGGLE_TRANSPARENCY),
+	Hotkey('2' | WKC_CTRL, "transparency_trees", GHK_TOGGLE_TRANSPARENCY + 1),
+	Hotkey('3' | WKC_CTRL, "transparency_houses", GHK_TOGGLE_TRANSPARENCY + 2),
+	Hotkey('4' | WKC_CTRL, "transparency_industries", GHK_TOGGLE_TRANSPARENCY + 3),
+	Hotkey('5' | WKC_CTRL, "transparency_buildings", GHK_TOGGLE_TRANSPARENCY + 4),
+	Hotkey('6' | WKC_CTRL, "transparency_bridges", GHK_TOGGLE_TRANSPARENCY + 5),
+	Hotkey('7' | WKC_CTRL, "transparency_structures", GHK_TOGGLE_TRANSPARENCY + 6),
+	Hotkey('8' | WKC_CTRL, "transparency_catenary", GHK_TOGGLE_TRANSPARENCY + 7),
+	Hotkey('9' | WKC_CTRL, "transparency_loading", GHK_TOGGLE_TRANSPARENCY + 8),
+	Hotkey('1' | WKC_CTRL | WKC_SHIFT, "invisibility_signs", GHK_TOGGLE_INVISIBILITY),
+	Hotkey('2' | WKC_CTRL | WKC_SHIFT, "invisibility_trees", GHK_TOGGLE_INVISIBILITY + 1),
+	Hotkey('3' | WKC_CTRL | WKC_SHIFT, "invisibility_houses", GHK_TOGGLE_INVISIBILITY + 2),
+	Hotkey('4' | WKC_CTRL | WKC_SHIFT, "invisibility_industries", GHK_TOGGLE_INVISIBILITY + 3),
+	Hotkey('5' | WKC_CTRL | WKC_SHIFT, "invisibility_buildings", GHK_TOGGLE_INVISIBILITY + 4),
+	Hotkey('6' | WKC_CTRL | WKC_SHIFT, "invisibility_bridges", GHK_TOGGLE_INVISIBILITY + 5),
+	Hotkey('7' | WKC_CTRL | WKC_SHIFT, "invisibility_structures", GHK_TOGGLE_INVISIBILITY + 6),
+	Hotkey('8' | WKC_CTRL | WKC_SHIFT, "invisibility_catenary", GHK_TOGGLE_INVISIBILITY + 7),
+	Hotkey('X' | WKC_CTRL, "transparency_toolbar", GHK_TRANSPARENCY_TOOLBAR),
+	Hotkey('X', "toggle_transparency", GHK_TRANSPARANCY),
 #ifdef ENABLE_NETWORK
-	Hotkey<MainWindow>(_ghk_chat_keys, "chat", GHK_CHAT),
-	Hotkey<MainWindow>(_ghk_chat_all_keys, "chat_all", GHK_CHAT_ALL),
-	Hotkey<MainWindow>(_ghk_chat_company_keys, "chat_company", GHK_CHAT_COMPANY),
-	Hotkey<MainWindow>(_ghk_chat_server_keys, "chat_server", GHK_CHAT_SERVER),
+	Hotkey(_ghk_chat_keys, "chat", GHK_CHAT),
+	Hotkey(_ghk_chat_all_keys, "chat_all", GHK_CHAT_ALL),
+	Hotkey(_ghk_chat_company_keys, "chat_company", GHK_CHAT_COMPANY),
+	Hotkey(_ghk_chat_server_keys, "chat_server", GHK_CHAT_SERVER),
 #endif
-	HOTKEY_LIST_END(MainWindow)
+	HOTKEY_LIST_END
 };
-Hotkey<MainWindow> *_global_hotkeys = MainWindow::global_hotkeys;
+Hotkey *_global_hotkeys = MainWindow::global_hotkeys;
 
 /**
  * Does the given keycode match one of the keycodes bound to 'quit game'?
@@ -528,7 +528,7 @@ Hotkey<MainWindow> *_global_hotkeys = MainWindow::global_hotkeys;
  */
 bool IsQuitKey(uint16 keycode)
 {
-	int num = CheckHotkeyMatch<MainWindow>(_global_hotkeys, keycode, NULL);
+	int num = CheckHotkeyMatch(_global_hotkeys, keycode);
 	return num == GHK_QUIT;
 }
 

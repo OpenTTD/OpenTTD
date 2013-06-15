@@ -1440,7 +1440,7 @@ public:
 	{
 		if (this->vehicle->owner != _local_company) return ES_NOT_HANDLED;
 
-		switch (CheckHotkeyMatch<OrdersWindow>(order_hotkeys, keycode, this)) {
+		switch (CheckHotkeyMatch(order_hotkeys, keycode)) {
 			case OHK_SKIP:           this->OrderClick_Skip();         break;
 			case OHK_DELETE:         this->OrderClick_Delete();       break;
 			case OHK_GOTO:           this->OrderClick_Goto();         break;
@@ -1526,24 +1526,24 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, WID_O_ORDER_LIST);
 	}
 
-	static Hotkey<OrdersWindow> order_hotkeys[];
+	static Hotkey order_hotkeys[];
 };
 
-Hotkey<OrdersWindow> OrdersWindow::order_hotkeys[] = {
-	Hotkey<OrdersWindow>('D', "skip", OHK_SKIP),
-	Hotkey<OrdersWindow>('F', "delete", OHK_DELETE),
-	Hotkey<OrdersWindow>('G', "goto", OHK_GOTO),
-	Hotkey<OrdersWindow>('H', "nonstop", OHK_NONSTOP),
-	Hotkey<OrdersWindow>('J', "fullload", OHK_FULLLOAD),
-	Hotkey<OrdersWindow>('K', "unload", OHK_UNLOAD),
-	Hotkey<OrdersWindow>((uint16)0, "nearest_depot", OHK_NEAREST_DEPOT),
-	Hotkey<OrdersWindow>((uint16)0, "always_service", OHK_ALWAYS_SERVICE),
-	Hotkey<OrdersWindow>((uint16)0, "transfer", OHK_TRANSFER),
-	Hotkey<OrdersWindow>((uint16)0, "no_unload", OHK_NO_UNLOAD),
-	Hotkey<OrdersWindow>((uint16)0, "no_load", OHK_NO_LOAD),
-	HOTKEY_LIST_END(OrdersWindow)
+Hotkey OrdersWindow::order_hotkeys[] = {
+	Hotkey('D', "skip", OHK_SKIP),
+	Hotkey('F', "delete", OHK_DELETE),
+	Hotkey('G', "goto", OHK_GOTO),
+	Hotkey('H', "nonstop", OHK_NONSTOP),
+	Hotkey('J', "fullload", OHK_FULLLOAD),
+	Hotkey('K', "unload", OHK_UNLOAD),
+	Hotkey((uint16)0, "nearest_depot", OHK_NEAREST_DEPOT),
+	Hotkey((uint16)0, "always_service", OHK_ALWAYS_SERVICE),
+	Hotkey((uint16)0, "transfer", OHK_TRANSFER),
+	Hotkey((uint16)0, "no_unload", OHK_NO_UNLOAD),
+	Hotkey((uint16)0, "no_load", OHK_NO_LOAD),
+	HOTKEY_LIST_END
 };
-Hotkey<OrdersWindow> *_order_hotkeys = OrdersWindow::order_hotkeys;
+Hotkey *_order_hotkeys = OrdersWindow::order_hotkeys;
 
 /** Nested widget definition for "your" train orders. */
 static const NWidgetPart _nested_orders_train_widgets[] = {

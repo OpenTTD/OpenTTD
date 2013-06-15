@@ -599,7 +599,7 @@ struct BuildRailToolbarWindow : Window {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		int num = CheckHotkeyMatch(railtoolbar_hotkeys, keycode, this);
+		int num = CheckHotkeyMatch(railtoolbar_hotkeys, keycode);
 		if (num == -1) return ES_NOT_HANDLED;
 		this->OnClick(Point(), num, 1);
 		MarkTileDirtyByTile(TileVirtXY(_thd.pos.x, _thd.pos.y)); // redraw tile selection
@@ -755,29 +755,29 @@ struct BuildRailToolbarWindow : Window {
 		return ES_NOT_HANDLED;
 	}
 
-	static Hotkey<BuildRailToolbarWindow> railtoolbar_hotkeys[];
+	static Hotkey railtoolbar_hotkeys[];
 };
 
 const uint16 _railtoolbar_autorail_keys[] = {'5', 'A' | WKC_GLOBAL_HOTKEY, 0};
 
-Hotkey<BuildRailToolbarWindow> BuildRailToolbarWindow::railtoolbar_hotkeys[] = {
-	Hotkey<BuildRailToolbarWindow>('1', "build_ns", WID_RAT_BUILD_NS),
-	Hotkey<BuildRailToolbarWindow>('2', "build_x", WID_RAT_BUILD_X),
-	Hotkey<BuildRailToolbarWindow>('3', "build_ew", WID_RAT_BUILD_EW),
-	Hotkey<BuildRailToolbarWindow>('4', "build_y", WID_RAT_BUILD_Y),
-	Hotkey<BuildRailToolbarWindow>(_railtoolbar_autorail_keys, "autorail", WID_RAT_AUTORAIL),
-	Hotkey<BuildRailToolbarWindow>('6', "demolish", WID_RAT_DEMOLISH),
-	Hotkey<BuildRailToolbarWindow>('7', "depot", WID_RAT_BUILD_DEPOT),
-	Hotkey<BuildRailToolbarWindow>('8', "waypoint", WID_RAT_BUILD_WAYPOINT),
-	Hotkey<BuildRailToolbarWindow>('9', "station", WID_RAT_BUILD_STATION),
-	Hotkey<BuildRailToolbarWindow>('S', "signal", WID_RAT_BUILD_SIGNALS),
-	Hotkey<BuildRailToolbarWindow>('B', "bridge", WID_RAT_BUILD_BRIDGE),
-	Hotkey<BuildRailToolbarWindow>('T', "tunnel", WID_RAT_BUILD_TUNNEL),
-	Hotkey<BuildRailToolbarWindow>('R', "remove", WID_RAT_REMOVE),
-	Hotkey<BuildRailToolbarWindow>('C', "convert", WID_RAT_CONVERT_RAIL),
-	HOTKEY_LIST_END(BuildRailToolbarWindow)
+Hotkey BuildRailToolbarWindow::railtoolbar_hotkeys[] = {
+	Hotkey('1', "build_ns", WID_RAT_BUILD_NS),
+	Hotkey('2', "build_x", WID_RAT_BUILD_X),
+	Hotkey('3', "build_ew", WID_RAT_BUILD_EW),
+	Hotkey('4', "build_y", WID_RAT_BUILD_Y),
+	Hotkey(_railtoolbar_autorail_keys, "autorail", WID_RAT_AUTORAIL),
+	Hotkey('6', "demolish", WID_RAT_DEMOLISH),
+	Hotkey('7', "depot", WID_RAT_BUILD_DEPOT),
+	Hotkey('8', "waypoint", WID_RAT_BUILD_WAYPOINT),
+	Hotkey('9', "station", WID_RAT_BUILD_STATION),
+	Hotkey('S', "signal", WID_RAT_BUILD_SIGNALS),
+	Hotkey('B', "bridge", WID_RAT_BUILD_BRIDGE),
+	Hotkey('T', "tunnel", WID_RAT_BUILD_TUNNEL),
+	Hotkey('R', "remove", WID_RAT_REMOVE),
+	Hotkey('C', "convert", WID_RAT_CONVERT_RAIL),
+	HOTKEY_LIST_END
 };
-Hotkey<BuildRailToolbarWindow> *_railtoolbar_hotkeys = BuildRailToolbarWindow::railtoolbar_hotkeys;
+Hotkey *_railtoolbar_hotkeys = BuildRailToolbarWindow::railtoolbar_hotkeys;
 
 static const NWidgetPart _nested_build_rail_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -851,7 +851,7 @@ EventState RailToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 {
 	if (!CanBuildVehicleInfrastructure(VEH_TRAIN)) return ES_NOT_HANDLED;
 	extern RailType _last_built_railtype;
-	int num = CheckHotkeyMatch<BuildRailToolbarWindow>(_railtoolbar_hotkeys, keycode, NULL, true);
+	int num = CheckHotkeyMatch(_railtoolbar_hotkeys, keycode, true);
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowBuildRailToolbar(_last_built_railtype);
 	if (w == NULL) return ES_NOT_HANDLED;
