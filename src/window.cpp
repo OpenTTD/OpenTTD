@@ -86,7 +86,7 @@ char *_windows_file;
 /** Window description constructor. */
 WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_width, int16 def_height,
 			WindowClass window_class, WindowClass parent_class, uint32 flags,
-			const NWidgetPart *nwid_parts, int16 nwid_length) :
+			const NWidgetPart *nwid_parts, int16 nwid_length, HotkeyList *hotkeys) :
 	default_pos(def_pos),
 	default_width(def_width),
 	default_height(def_height),
@@ -96,6 +96,7 @@ WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_wi
 	flags(flags),
 	nwid_parts(nwid_parts),
 	nwid_length(nwid_length),
+	hotkeys(hotkeys),
 	pref_sticky(false),
 	pref_width(0),
 	pref_height(0)
@@ -466,6 +467,29 @@ void Window::SetWidgetDirty(byte widget_index) const
 	if (this->nested_array == NULL) return;
 
 	this->nested_array[widget_index]->SetDirty(this);
+}
+
+/**
+ * A hotkey has been pressed.
+ * @param hotkey  Hotkey index, by default a widget index of a button or editbox.
+ * @return #ES_HANDLED if the key press has been handled, and the hotkey is not unavailable for some reason.
+ */
+EventState Window::OnHotkey(int hotkey)
+{
+	if (hotkey < 0) return ES_NOT_HANDLED;
+
+	NWidgetCore *nw = this->GetWidget<NWidgetCore>(hotkey);
+	if (nw == NULL || nw->IsDisabled()) return ES_NOT_HANDLED;
+
+	if (nw->type == WWT_EDITBOX) {
+		/* Focus editbox */
+		this->SetFocusedWidget(hotkey);
+		SetFocusedWindow(this);
+	} else {
+		/* Click button */
+		this->OnClick(Point(), hotkey, 1);
+	}
+	return ES_HANDLED;
 }
 
 /**
@@ -2456,12 +2480,22 @@ void HandleKeypress(uint32 raw_key)
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
 		if (w->window_class == WC_MAIN_TOOLBAR) continue;
+		if (w->window_desc->hotkeys != NULL) {
+			int hotkey = w->window_desc->hotkeys->CheckMatch(keycode);
+			if (hotkey >= 0 && w->OnHotkey(hotkey) == ES_HANDLED) return;
+		}
 		if (w->OnKeyPress(key, keycode) == ES_HANDLED) return;
 	}
 
 	w = FindWindowById(WC_MAIN_TOOLBAR, 0);
 	/* When there is no toolbar w is null, check for that */
-	if (w != NULL && w->OnKeyPress(key, keycode) == ES_HANDLED) return;
+	if (w != NULL) {
+		if (w->window_desc->hotkeys != NULL) {
+			int hotkey = w->window_desc->hotkeys->CheckMatch(keycode);
+			if (hotkey >= 0 && w->OnHotkey(hotkey) == ES_HANDLED) return;
+		}
+		if (w->OnKeyPress(key, keycode) == ES_HANDLED) return;
+	}
 
 	HandleGlobalHotkeys(key, keycode);
 }

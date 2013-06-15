@@ -167,6 +167,8 @@ enum WindowPosition {
 
 Point GetToolbarAlignedWindowPosition(int window_width);
 
+struct HotkeyList;
+
 /**
  * High level window description
  */
@@ -174,7 +176,7 @@ struct WindowDesc : ZeroedMemoryAllocator {
 
 	WindowDesc(WindowPosition default_pos, const char *ini_key, int16 def_width, int16 def_height,
 			WindowClass window_class, WindowClass parent_class, uint32 flags,
-			const NWidgetPart *nwid_parts, int16 nwid_length);
+			const NWidgetPart *nwid_parts, int16 nwid_length, HotkeyList *hotkeys = NULL);
 
 	~WindowDesc();
 
@@ -187,6 +189,7 @@ struct WindowDesc : ZeroedMemoryAllocator {
 	uint32 flags;                  ///< Flags. @see WindowDefaultFlag
 	const NWidgetPart *nwid_parts; ///< Nested widget parts describing the window.
 	int16 nwid_length;             ///< Length of the #nwid_parts array.
+	HotkeyList *hotkeys;           ///< Hotkeys for the window.
 
 	bool pref_sticky;              ///< Preferred stickyness.
 	int16 pref_width;              ///< User-preferred width of the window. Zero if unset.
@@ -597,6 +600,8 @@ public:
 	 *         window should receive the event.
 	 */
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode) { return ES_NOT_HANDLED; }
+
+	virtual EventState OnHotkey(int hotkey);
 
 	/**
 	 * The state of the control key has changed
