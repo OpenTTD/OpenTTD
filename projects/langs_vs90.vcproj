@@ -770,6 +770,21 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\src\lang\thai.txt"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Generating thai language file"
+						CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+						AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
+						Outputs="..\bin\lang\thai.lng"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
 				RelativePath="..\src\lang\traditional_chinese.txt"
 				>
 				<FileConfiguration

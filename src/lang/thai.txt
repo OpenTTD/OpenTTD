@@ -1819,7 +1819,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}เป�
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}เล่นหลายคน
 STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}การประกาศ
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACKเลือกระหว่างการโฆษณา (internet) หรือไม่โฆษณา (Local Area Network, LAN) เกม
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}เลือกระหว่างการโฆษณา (internet) หรือไม่โฆษณา (Local Area Network, LAN) เกม
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :ไม่ใช่
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :ใช่
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}ชื่อผู้เล่น:
@@ -2852,11 +2852,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<อุตส�
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}ตรวจสอบ NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}ตรวจสอบ NewGRFs. ขึ้นอยู่กับจำนวนที่มี อาจใช้เวลาสักครู่...
-STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "1" s} scanned out of an estimated {NUM} NewGRF{P "1" s}
 STR_NEWGRF_SCAN_ARCHIVES                                        :ตรวจหาแฟ้มข้อมูล
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}รายชื่อป้าย - {COMMA} ป้าย{P "1" s}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}รายชื่อป้าย - {COMMA} ป้าย
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}ตรงกัน
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}แสดงข้อมูลที่ตรงกันเมื่อเปรียบเทียบกับชื่อที่กรองไว้
 
@@ -2886,8 +2885,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} จัดส่งมา
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (still required)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (delivered)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}เมืองขยายตัวทุกๆ {ORANGE}{COMMA}{BLACK} วัน{P "1" s}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}เมืองเติบโตทุกๆ {ORANGE}{COMMA}{BLACK} วัน{P "1" s} (funded)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}เมืองขยายตัวทุกๆ {ORANGE}{COMMA}{BLACK} วัน
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}เมืองเติบโตทุกๆ {ORANGE}{COMMA}{BLACK} วัน (funded)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}เมือง {RED}ไม่{BLACK} ขยายตัว
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}จำกัดมดลพิษทางเสียงของเมือง: {ORANGE}{COMMA}{BLACK}  สูงสุดไว้ที่: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}กดเมื่อไปยังมุมมองใจกลางเมือง
@@ -2990,7 +2989,7 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}หน�
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}ชื่อสถานี - กดที่ชื่อเพื่อไปยังจุดกึ่งกลาง
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}กด Crtl เพื่อเลือกมากกว่า 1 รายการ
-STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} สถานี{P "1" s}
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} สถานี
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- ไม่มี -
@@ -3110,19 +3109,19 @@ STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDE
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}ก่อตั้งอย่างเป็นทางการเมื่อ: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}สีของบริษัท:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}ยานพาหนะ:
-STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} รถไฟ{P "1" s}
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} พาหนะทางบก{P "1" s}
+STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} รถไฟ
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} พาหนะทางบก
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} อากาศยาน
-STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} พาหนะทางน้ำ{P "1" s}
+STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} พาหนะทางน้ำ
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}ไม่มี
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}ทรัพสินสุทธิ: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% เป็นของ {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}โครงสร้างพื้นฐาน:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} ทางรถไฟ{P "1" s}
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} ถนน{P "1" s}
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} คลอง{P "1" s}
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} สถานี{P "1" s}
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} ท่าอากาศยาน{P "1" s}
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} ทางรถไฟ
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} ถนน
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} คลอง
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} สถานี
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} ท่าอากาศยาน
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}ไม่มี
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}สร้างที่ทำการบริษัท
@@ -3201,9 +3200,9 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}ปร�
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}เปลี่ยนระดับการผลิต (เปอร์เซ็นต์เพิ่มมากสุดถึง 800%)
 
 # Vehicle lists
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} รถไฟ{P "1" s}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} พาหนะทางบก{P "1" s}
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} พาหนะทางน้ำ{P "1" s}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} รถไฟ
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} พาหนะทางบก
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} พาหนะทางน้ำ
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} อากาศยาน
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}ขบวนรถไฟ - คลิ๊กเพื่อดูรายละเอียด
@@ -3232,7 +3231,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :ส่งเข
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}กดเพื่อหยุดยานพาหนะทั้งหมดในรายการ
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}กดเพื่อเริมต้นให้ยานพาหนะทั้งหมดในรายการทำงานตามปกติ
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}ยานพาหนะที่ใช้งานคำสั่งร่วมกัน{COMMA} {P "1" s}
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}ยานพาหนะที่ใช้งานคำสั่งร่วมกัน{COMMA}
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :รถไฟทั้งหมด
@@ -3275,7 +3274,7 @@ STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}คว�
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}ค่าปฏิบัติการ: {GOLD}{CURRENCY_LONG}/ปี
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}ความจุ: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(เปลี่ยนการบรรจุได้)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}สร้างครั้งแรก: {GOLD}{NUM}{BLACK} อายุการใช้งาน: {GOLD}{COMMA} ปี{P "1" s}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}สร้างครั้งแรก: {GOLD}{NUM}{BLACK} อายุการใช้งาน: {GOLD}{COMMA} ปี
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}ประสิทธิภาพสูงสุด: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}มูลค่า: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}น้ำหนัก: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
@@ -3326,7 +3325,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :เปลี่
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ยานพาหนะ{P "1" s}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ยานพาหนะ{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}รถไฟ - ลากพาหนะด้วยคลิกซ้ายสำหรับ เพิ่ม/ลด จากขบวนรถไฟ, คลิกขวาสำหรับข้อมูล, กด Ctrl ค้างไว้เพื่อกำหนดให้กับขบวนต่อไป
@@ -3773,8 +3772,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :เดินท
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :ความเร็วการเดินทางสำหรับ {STRING} สูงสุดไม่เกิน {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :หยุดเป็นเวลา {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :และเดินทาง {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} วัน{P "1" s}
-STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "1" s}
+STR_TIMETABLE_DAYS                                              :{COMMA} วัน
+STR_TIMETABLE_TICKS                                             :{COMMA} tick
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}ตารางเวลานี้จะเสร็จสิ้นใน {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}ตารางเวลานี้จะเสร็จสิ้นอย่างน้อยใน {STRING} (ยังไม่สมบูรณ์)
