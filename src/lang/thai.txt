@@ -2853,7 +2853,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<อุตส�
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}ตรวจสอบ NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}ตรวจสอบ NewGRFs. ขึ้นอยู่กับจำนวนที่มี อาจใช้เวลาสักครู่...
-STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "1" s} ค้นหาเสร็จสิ้น อยู่นอกเหนือการประเมิน {NUM} NewGRF{P "1" s}
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF ค้นหาเสร็จสิ้น อยู่นอกเหนือการประเมิน {NUM} NewGRF
 STR_NEWGRF_SCAN_ARCHIVES                                        :ตรวจหาแฟ้มข้อมูล
 
 # Sign list window
