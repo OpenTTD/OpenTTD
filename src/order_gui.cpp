@@ -1516,7 +1516,6 @@ Hotkey<OrdersWindow> OrdersWindow::order_hotkeys[] = {
 	Hotkey<OrdersWindow>('K', "unload", 0, &OrdersWindow::OrderClick_Unload),
 	Hotkey<OrdersWindow>((uint16)0, "nearest_depot", 0, &OrdersWindow::OrderClick_NearestDepot),
 	Hotkey<OrdersWindow>((uint16)0, "always_service", 0, &OrdersWindow::OrderClick_Service),
-	Hotkey<OrdersWindow>((uint16)0, "force_unload", 0, &OrdersWindow::OrderClick_Unload),
 	Hotkey<OrdersWindow>((uint16)0, "transfer", 0, &OrdersWindow::OrderHotkey_Transfer),
 	Hotkey<OrdersWindow>((uint16)0, "no_unload", 0, &OrdersWindow::OrderHotkey_NoUnload),
 	Hotkey<OrdersWindow>((uint16)0, "no_load", 0, &OrdersWindow::OrderHotkey_NoLoad),
