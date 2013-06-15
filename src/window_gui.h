@@ -20,12 +20,6 @@
 #include "core/smallvec_type.hpp"
 #include "core/smallmap_type.hpp"
 
-/** State of handling an event. */
-enum EventState {
-	ES_HANDLED,     ///< The passed event is handled.
-	ES_NOT_HANDLED, ///< The passed event is not handled.
-};
-
 /**
  * Flags to describe the look of the frame
  */

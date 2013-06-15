@@ -691,4 +691,10 @@ struct Window;
 /** Number to differentiate different windows of the same class */
 typedef int32 WindowNumber;
 
+/** State of handling an event. */
+enum EventState {
+	ES_HANDLED,     ///< The passed event is handled.
+	ES_NOT_HANDLED, ///< The passed event is not handled.
+};
+
 #endif /* WINDOW_TYPE_H */

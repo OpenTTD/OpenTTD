@@ -138,12 +138,25 @@ struct BuildAirToolbarWindow : Window {
 	static HotkeyList hotkeys;
 };
 
+/**
+ * Handler for global hotkeys of the BuildAirToolbarWindow.
+ * @param hotkey Hotkey
+ * @return ES_HANDLED if hotkey was accepted.
+ */
+static EventState AirportToolbarGlobalHotkeys(int hotkey)
+{
+	if (_game_mode != GM_NORMAL || !CanBuildVehicleInfrastructure(VEH_AIRCRAFT)) return ES_NOT_HANDLED;
+	Window *w = ShowBuildAirToolbar();
+	if (w == NULL) return ES_NOT_HANDLED;
+	return w->OnHotkey(hotkey);
+}
+
 static Hotkey airtoolbar_hotkeys[] = {
 	Hotkey('1', "airport", WID_AT_AIRPORT),
 	Hotkey('2', "demolish", WID_AT_DEMOLISH),
 	HOTKEY_LIST_END
 };
-HotkeyList BuildAirToolbarWindow::hotkeys("airtoolbar", airtoolbar_hotkeys);
+HotkeyList BuildAirToolbarWindow::hotkeys("airtoolbar", airtoolbar_hotkeys, AirportToolbarGlobalHotkeys);
 
 static const NWidgetPart _nested_air_toolbar_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -179,16 +192,6 @@ Window *ShowBuildAirToolbar()
 
 	DeleteWindowByClass(WC_BUILD_TOOLBAR);
 	return AllocateWindowDescFront<BuildAirToolbarWindow>(&_air_toolbar_desc, TRANSPORT_AIR);
-}
-
-EventState AirportToolbarGlobalHotkeys(uint16 key, uint16 keycode)
-{
-	if (!CanBuildVehicleInfrastructure(VEH_AIRCRAFT)) return ES_NOT_HANDLED;
-	int num = BuildAirToolbarWindow::hotkeys.CheckMatch(keycode, true);
-	if (num == -1) return ES_NOT_HANDLED;
-	Window *w = ShowBuildAirToolbar();
-	if (w == NULL) return ES_NOT_HANDLED;
-	return w->OnHotkey(num);
 }
 
 class BuildAirportWindow : public PickerWindowBase {

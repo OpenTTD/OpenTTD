@@ -338,11 +338,24 @@ struct SignListWindow : Window, SignList {
 	static HotkeyList hotkeys;
 };
 
+/**
+ * Handler for global hotkeys of the SignListWindow.
+ * @param hotkey Hotkey
+ * @return ES_HANDLED if hotkey was accepted.
+ */
+static EventState SignListGlobalHotkeys(int hotkey)
+{
+	if (_game_mode == GM_MENU) return ES_NOT_HANDLED;
+	Window *w = ShowSignList();
+	if (w == NULL) return ES_NOT_HANDLED;
+	return w->OnHotkey(hotkey);
+}
+
 static Hotkey signlist_hotkeys[] = {
 	Hotkey('F', "focus_filter_box", SLHK_FOCUS_FILTER_BOX),
 	HOTKEY_LIST_END
 };
-HotkeyList SignListWindow::hotkeys("signlist", signlist_hotkeys);
+HotkeyList SignListWindow::hotkeys("signlist", signlist_hotkeys, SignListGlobalHotkeys);
 
 static const NWidgetPart _nested_sign_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -389,15 +402,6 @@ static WindowDesc _sign_list_desc(
 Window *ShowSignList()
 {
 	return AllocateWindowDescFront<SignListWindow>(&_sign_list_desc, 0);
-}
-
-EventState SignListGlobalHotkeys(uint16 key, uint16 keycode)
-{
-	int num = SignListWindow::hotkeys.CheckMatch(keycode, true);
-	if (num == -1) return ES_NOT_HANDLED;
-	Window *w = ShowSignList();
-	if (w == NULL) return ES_NOT_HANDLED;
-	return w->OnHotkey(num);
 }
 
 /**

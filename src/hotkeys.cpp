@@ -249,8 +249,8 @@ void Hotkey::AddKeycode(uint16 keycode)
 	this->keycodes.Include(keycode);
 }
 
-HotkeyList::HotkeyList(const char *ini_group, Hotkey *items) :
-	ini_group(ini_group), items(items)
+HotkeyList::HotkeyList(const char *ini_group, Hotkey *items, GlobalHotkeyHandlerFunc global_hotkey_handler) :
+	global_hotkey_handler(global_hotkey_handler), ini_group(ini_group), items(items)
 {
 	if (_hotkey_lists == NULL) _hotkey_lists = new SmallVector<HotkeyList*, 16>();
 	*_hotkey_lists->Append() = this;
@@ -337,45 +337,13 @@ void SaveHotkeysToConfig()
 	SaveLoadHotkeys(true);
 }
 
-typedef EventState GlobalHotkeyHandler(uint16, uint16);
-
-GlobalHotkeyHandler RailToolbarGlobalHotkeys;
-GlobalHotkeyHandler DockToolbarGlobalHotkeys;
-GlobalHotkeyHandler AirportToolbarGlobalHotkeys;
-GlobalHotkeyHandler TerraformToolbarGlobalHotkeys;
-GlobalHotkeyHandler TerraformToolbarEditorGlobalHotkeys;
-GlobalHotkeyHandler RoadToolbarGlobalHotkeys;
-GlobalHotkeyHandler RoadToolbarEditorGlobalHotkeys;
-GlobalHotkeyHandler SignListGlobalHotkeys;
-GlobalHotkeyHandler AIDebugGlobalHotkeys;
-
-
-GlobalHotkeyHandler *_global_hotkey_handlers[] = {
-	RailToolbarGlobalHotkeys,
-	DockToolbarGlobalHotkeys,
-	AirportToolbarGlobalHotkeys,
-	TerraformToolbarGlobalHotkeys,
-	RoadToolbarGlobalHotkeys,
-	SignListGlobalHotkeys,
-	AIDebugGlobalHotkeys,
-};
-
-GlobalHotkeyHandler *_global_hotkey_handlers_editor[] = {
-	TerraformToolbarEditorGlobalHotkeys,
-	RoadToolbarEditorGlobalHotkeys,
-};
-
-
 void HandleGlobalHotkeys(uint16 key, uint16 keycode)
 {
-	if (_game_mode == GM_NORMAL) {
-		for (uint i = 0; i < lengthof(_global_hotkey_handlers); i++) {
-			if (_global_hotkey_handlers[i](key, keycode) == ES_HANDLED) return;
-		}
-	} else if (_game_mode == GM_EDITOR) {
-		for (uint i = 0; i < lengthof(_global_hotkey_handlers_editor); i++) {
-			if (_global_hotkey_handlers_editor[i](key, keycode) == ES_HANDLED) return;
-		}
+	for (HotkeyList **list = _hotkey_lists->Begin(); list != _hotkey_lists->End(); ++list) {
+		if ((*list)->global_hotkey_handler == NULL) continue;
+
+		int hotkey = (*list)->CheckMatch(keycode, true);
+		if (hotkey >= 0 && ((*list)->global_hotkey_handler(hotkey) == ES_HANDLED)) return;
 	}
 }
 

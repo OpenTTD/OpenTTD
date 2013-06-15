@@ -290,6 +290,19 @@ struct TerraformToolbarWindow : Window {
 	static HotkeyList hotkeys;
 };
 
+/**
+ * Handler for global hotkeys of the TerraformToolbarWindow.
+ * @param hotkey Hotkey
+ * @return ES_HANDLED if hotkey was accepted.
+ */
+static EventState TerraformToolbarGlobalHotkeys(int hotkey)
+{
+	if (_game_mode != GM_NORMAL) return ES_NOT_HANDLED;
+	Window *w = ShowTerraformToolbar(NULL);
+	if (w == NULL) return ES_NOT_HANDLED;
+	return w->OnHotkey(hotkey);
+}
+
 static Hotkey terraform_hotkeys[] = {
 	Hotkey('Q' | WKC_GLOBAL_HOTKEY, "lower", WID_TT_LOWER_LAND),
 	Hotkey('W' | WKC_GLOBAL_HOTKEY, "raise", WID_TT_RAISE_LAND),
@@ -301,7 +314,7 @@ static Hotkey terraform_hotkeys[] = {
 	Hotkey('P', "placeobject", WID_TT_PLACE_OBJECT),
 	HOTKEY_LIST_END
 };
-HotkeyList TerraformToolbarWindow::hotkeys("terraform", terraform_hotkeys);
+HotkeyList TerraformToolbarWindow::hotkeys("terraform", terraform_hotkeys, TerraformToolbarGlobalHotkeys);
 
 static const NWidgetPart _nested_terraform_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -369,15 +382,6 @@ Window *ShowTerraformToolbar(Window *link)
 	link->SetDirty();
 
 	return w;
-}
-
-EventState TerraformToolbarGlobalHotkeys(uint16 key, uint16 keycode)
-{
-	int num = TerraformToolbarWindow::hotkeys.CheckMatch(keycode, true);
-	if (num == -1) return ES_NOT_HANDLED;
-	Window *w = ShowTerraformToolbar(NULL);
-	if (w == NULL) return ES_NOT_HANDLED;
-	return w->OnHotkey(num);
 }
 
 static byte _terraform_size = 1;
@@ -712,6 +716,19 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 	static HotkeyList hotkeys;
 };
 
+/**
+ * Handler for global hotkeys of the ScenarioEditorLandscapeGenerationWindow.
+ * @param hotkey Hotkey
+ * @return ES_HANDLED if hotkey was accepted.
+ */
+static EventState TerraformToolbarEditorGlobalHotkeys(int hotkey)
+{
+	if (_game_mode != GM_EDITOR) return ES_NOT_HANDLED;
+	Window *w = ShowEditorTerraformToolbar();
+	if (w == NULL) return ES_NOT_HANDLED;
+	return w->OnHotkey(hotkey);
+}
+
 static Hotkey terraform_editor_hotkeys[] = {
 	Hotkey('D' | WKC_GLOBAL_HOTKEY, "dynamite", WID_ETT_DEMOLISH),
 	Hotkey('Q' | WKC_GLOBAL_HOTKEY, "lower", WID_ETT_LOWER_LAND),
@@ -723,7 +740,7 @@ static Hotkey terraform_editor_hotkeys[] = {
 	HOTKEY_LIST_END
 };
 
-HotkeyList ScenarioEditorLandscapeGenerationWindow::hotkeys("terraform_editor", terraform_editor_hotkeys);
+HotkeyList ScenarioEditorLandscapeGenerationWindow::hotkeys("terraform_editor", terraform_editor_hotkeys, TerraformToolbarEditorGlobalHotkeys);
 
 static WindowDesc _scen_edit_land_gen_desc(
 	WDP_AUTO, "toolbar_landscape_scen", 0, 0,
@@ -740,13 +757,4 @@ static WindowDesc _scen_edit_land_gen_desc(
 Window *ShowEditorTerraformToolbar()
 {
 	return AllocateWindowDescFront<ScenarioEditorLandscapeGenerationWindow>(&_scen_edit_land_gen_desc, 0);
-}
-
-EventState TerraformToolbarEditorGlobalHotkeys(uint16 key, uint16 keycode)
-{
-	int num = ScenarioEditorLandscapeGenerationWindow::hotkeys.CheckMatch(keycode, true);
-	if (num == -1) return ES_NOT_HANDLED;
-	Window *w = ShowEditorTerraformToolbar();
-	if (w == NULL) return ES_NOT_HANDLED;
-	return w->OnHotkey(num);
 }

@@ -14,6 +14,7 @@
 
 #include "core/smallvec_type.hpp"
 #include "gfx_type.h"
+#include "window_type.h"
 
 /**
  * All data for a single hotkey. The name (for saving/loading a configfile),
@@ -38,7 +39,9 @@ struct IniFile;
  * List of hotkeys for a window.
  */
 struct HotkeyList {
-	HotkeyList(const char *ini_group, Hotkey *items);
+	typedef EventState (*GlobalHotkeyHandlerFunc)(int hotkey);
+
+	HotkeyList(const char *ini_group, Hotkey *items, GlobalHotkeyHandlerFunc global_hotkey_handler = NULL);
 	~HotkeyList();
 
 	void Load(IniFile *ini);
@@ -46,6 +49,7 @@ struct HotkeyList {
 
 	int CheckMatch(uint16 keycode, bool global_only = false) const;
 
+	GlobalHotkeyHandlerFunc global_hotkey_handler;
 private:
 	const char *ini_group;
 	Hotkey *items;

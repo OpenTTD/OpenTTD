@@ -660,6 +660,33 @@ struct BuildRoadToolbarWindow : Window {
 	static HotkeyList hotkeys;
 };
 
+/**
+ * Handler for global hotkeys of the BuildRoadToolbarWindow.
+ * @param hotkey Hotkey
+ * @return ES_HANDLED if hotkey was accepted.
+ */
+static EventState RoadToolbarGlobalHotkeys(int hotkey)
+{
+	Window *w = NULL;
+	switch (_game_mode) {
+		case GM_NORMAL: {
+			extern RoadType _last_built_roadtype;
+			w = ShowBuildRoadToolbar(_last_built_roadtype);
+			break;
+		}
+
+		case GM_EDITOR:
+			w = ShowBuildRoadScenToolbar();
+			break;
+
+		default:
+			break;
+	}
+
+	if (w == NULL) return ES_NOT_HANDLED;
+	return w->OnHotkey(hotkey);
+}
+
 static Hotkey roadtoolbar_hotkeys[] = {
 	Hotkey('1', "build_x", WID_ROT_ROAD_X),
 	Hotkey('2', "build_y", WID_ROT_ROAD_Y),
@@ -674,7 +701,7 @@ static Hotkey roadtoolbar_hotkeys[] = {
 	Hotkey('R', "remove", WID_ROT_REMOVE),
 	HOTKEY_LIST_END
 };
-HotkeyList BuildRoadToolbarWindow::hotkeys("roadtoolbar", roadtoolbar_hotkeys);
+HotkeyList BuildRoadToolbarWindow::hotkeys("roadtoolbar", roadtoolbar_hotkeys, RoadToolbarGlobalHotkeys);
 
 
 static const NWidgetPart _nested_build_road_widgets[] = {
@@ -774,16 +801,6 @@ Window *ShowBuildRoadToolbar(RoadType roadtype)
 	return AllocateWindowDescFront<BuildRoadToolbarWindow>(roadtype == ROADTYPE_ROAD ? &_build_road_desc : &_build_tramway_desc, TRANSPORT_ROAD);
 }
 
-EventState RoadToolbarGlobalHotkeys(uint16 key, uint16 keycode)
-{
-	extern RoadType _last_built_roadtype;
-	int num = BuildRoadToolbarWindow::hotkeys.CheckMatch(keycode, true);
-	if (num == -1) return ES_NOT_HANDLED;
-	Window *w = ShowBuildRoadToolbar(_last_built_roadtype);
-	if (w == NULL) return ES_NOT_HANDLED;
-	return w->OnHotkey(num);
-}
-
 static const NWidgetPart _nested_build_road_scen_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -827,15 +844,6 @@ Window *ShowBuildRoadScenToolbar()
 {
 	_cur_roadtype = ROADTYPE_ROAD;
 	return AllocateWindowDescFront<BuildRoadToolbarWindow>(&_build_road_scen_desc, TRANSPORT_ROAD);
-}
-
-EventState RoadToolbarEditorGlobalHotkeys(uint16 key, uint16 keycode)
-{
-	int num = BuildRoadToolbarWindow::hotkeys.CheckMatch(keycode, true);
-	if (num == -1) return ES_NOT_HANDLED;
-	Window *w = ShowBuildRoadScenToolbar();
-	if (w == NULL) return ES_NOT_HANDLED;
-	return w->OnHotkey(num);
 }
 
 struct BuildRoadDepotWindow : public PickerWindowBase {

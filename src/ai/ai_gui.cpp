@@ -1402,6 +1402,19 @@ NWidgetBase *MakeCompanyButtonRowsAIDebug(int *biggest_index)
 	return MakeCompanyButtonRows(biggest_index, WID_AID_COMPANY_BUTTON_START, WID_AID_COMPANY_BUTTON_END, 8, STR_AI_DEBUG_SELECT_AI_TOOLTIP);
 }
 
+/**
+ * Handler for global hotkeys of the AIDebugWindow.
+ * @param hotkey Hotkey
+ * @return ES_HANDLED if hotkey was accepted.
+ */
+static EventState AIDebugGlobalHotkeys(int hotkey)
+{
+	if (_game_mode != GM_NORMAL) return ES_NOT_HANDLED;
+	Window *w = ShowAIDebugWindow(INVALID_COMPANY);
+	if (w == NULL) return ES_NOT_HANDLED;
+	return w->OnHotkey(hotkey);
+}
+
 static Hotkey aidebug_hotkeys[] = {
 	Hotkey('1', "company_1", WID_AID_COMPANY_BUTTON_START),
 	Hotkey('2', "company_2", WID_AID_COMPANY_BUTTON_START + 1),
@@ -1427,7 +1440,7 @@ static Hotkey aidebug_hotkeys[] = {
 	Hotkey(WKC_RETURN, "continue", WID_AID_CONTINUE_BTN),
 	HOTKEY_LIST_END
 };
-HotkeyList AIDebugWindow::hotkeys("aidebug", aidebug_hotkeys);
+HotkeyList AIDebugWindow::hotkeys("aidebug", aidebug_hotkeys, AIDebugGlobalHotkeys);
 
 /** Widgets for the AI debug window. */
 static const NWidgetPart _nested_ai_debug_widgets[] = {
@@ -1499,18 +1512,6 @@ Window *ShowAIDebugWindow(CompanyID show_company)
 	}
 
 	return NULL;
-}
-
-/**
- * Handler for global AI debug window hotkeys.
- */
-EventState AIDebugGlobalHotkeys(uint16 key, uint16 keycode)
-{
-	int num = AIDebugWindow::hotkeys.CheckMatch(keycode, true);
-	if (num == -1) return ES_NOT_HANDLED;
-	Window *w = ShowAIDebugWindow(INVALID_COMPANY);
-	if (w == NULL) return ES_NOT_HANDLED;
-	return w->OnHotkey(num);
 }
 
 /**

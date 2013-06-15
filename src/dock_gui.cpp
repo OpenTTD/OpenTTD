@@ -269,6 +269,19 @@ struct BuildDocksToolbarWindow : Window {
 	static HotkeyList hotkeys;
 };
 
+/**
+ * Handler for global hotkeys of the BuildDocksToolbarWindow.
+ * @param hotkey Hotkey
+ * @return ES_HANDLED if hotkey was accepted.
+ */
+static EventState DockToolbarGlobalHotkeys(int hotkey)
+{
+	if (_game_mode != GM_NORMAL) return ES_NOT_HANDLED;
+	Window *w = ShowBuildDocksToolbar();
+	if (w == NULL) return ES_NOT_HANDLED;
+	return w->OnHotkey(hotkey);
+}
+
 const uint16 _dockstoolbar_aqueduct_keys[] = {'B', '8', 0};
 
 static Hotkey dockstoolbar_hotkeys[] = {
@@ -282,7 +295,7 @@ static Hotkey dockstoolbar_hotkeys[] = {
 	Hotkey(_dockstoolbar_aqueduct_keys, "aqueduct", WID_DT_BUILD_AQUEDUCT),
 	HOTKEY_LIST_END
 };
-HotkeyList BuildDocksToolbarWindow::hotkeys("dockstoolbar", dockstoolbar_hotkeys);
+HotkeyList BuildDocksToolbarWindow::hotkeys("dockstoolbar", dockstoolbar_hotkeys, DockToolbarGlobalHotkeys);
 
 /**
  * Nested widget parts of docks toolbar, game version.
@@ -327,15 +340,6 @@ Window *ShowBuildDocksToolbar()
 
 	DeleteWindowByClass(WC_BUILD_TOOLBAR);
 	return AllocateWindowDescFront<BuildDocksToolbarWindow>(&_build_docks_toolbar_desc, TRANSPORT_WATER);
-}
-
-EventState DockToolbarGlobalHotkeys(uint16 key, uint16 keycode)
-{
-	int num = BuildDocksToolbarWindow::hotkeys.CheckMatch(keycode, true);
-	if (num == -1) return ES_NOT_HANDLED;
-	Window *w = ShowBuildDocksToolbar();
-	if (w == NULL) return ES_NOT_HANDLED;
-	return w->OnHotkey(num);
 }
 
 /**

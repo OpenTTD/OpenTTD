@@ -755,6 +755,20 @@ struct BuildRailToolbarWindow : Window {
 	static HotkeyList hotkeys;
 };
 
+/**
+ * Handler for global hotkeys of the BuildRailToolbarWindow.
+ * @param hotkey Hotkey
+ * @return ES_HANDLED if hotkey was accepted.
+ */
+static EventState RailToolbarGlobalHotkeys(int hotkey)
+{
+	if (_game_mode != GM_NORMAL || !CanBuildVehicleInfrastructure(VEH_TRAIN)) return ES_NOT_HANDLED;
+	extern RailType _last_built_railtype;
+	Window *w = ShowBuildRailToolbar(_last_built_railtype);
+	if (w == NULL) return ES_NOT_HANDLED;
+	return w->OnHotkey(hotkey);
+}
+
 const uint16 _railtoolbar_autorail_keys[] = {'5', 'A' | WKC_GLOBAL_HOTKEY, 0};
 
 static Hotkey railtoolbar_hotkeys[] = {
@@ -774,7 +788,7 @@ static Hotkey railtoolbar_hotkeys[] = {
 	Hotkey('C', "convert", WID_RAT_CONVERT_RAIL),
 	HOTKEY_LIST_END
 };
-HotkeyList BuildRailToolbarWindow::hotkeys("railtoolbar", railtoolbar_hotkeys);
+HotkeyList BuildRailToolbarWindow::hotkeys("railtoolbar", railtoolbar_hotkeys, RailToolbarGlobalHotkeys);
 
 static const NWidgetPart _nested_build_rail_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -843,17 +857,6 @@ Window *ShowBuildRailToolbar(RailType railtype)
 	_cur_railtype = railtype;
 	_remove_button_clicked = false;
 	return new BuildRailToolbarWindow(&_build_rail_desc, railtype);
-}
-
-EventState RailToolbarGlobalHotkeys(uint16 key, uint16 keycode)
-{
-	if (!CanBuildVehicleInfrastructure(VEH_TRAIN)) return ES_NOT_HANDLED;
-	extern RailType _last_built_railtype;
-	int num = BuildRailToolbarWindow::hotkeys.CheckMatch(keycode, true);
-	if (num == -1) return ES_NOT_HANDLED;
-	Window *w = ShowBuildRailToolbar(_last_built_railtype);
-	if (w == NULL) return ES_NOT_HANDLED;
-	return w->OnHotkey(num);
 }
 
 /* TODO: For custom stations, respect their allowed platforms/lengths bitmasks!
