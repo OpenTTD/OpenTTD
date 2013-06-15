@@ -197,6 +197,13 @@ struct WindowDesc : ZeroedMemoryAllocator {
 
 	static void LoadFromConfig();
 	static void SaveToConfig();
+
+private:
+	/**
+	 * Dummy private copy constructor to prevent compilers from
+	 * copying the structure, which fails due to _window_descs.
+	 */
+	WindowDesc(const WindowDesc &other);
 };
 
 /**

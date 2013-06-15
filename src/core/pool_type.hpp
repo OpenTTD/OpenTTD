@@ -59,6 +59,13 @@ struct PoolBase {
 	 * Virtual method that deletes all items in the pool.
 	 */
 	virtual void CleanPool() = 0;
+
+private:
+	/**
+	 * Dummy private copy constructor to prevent compilers from
+	 * copying the structure, which fails due to GetPools().
+	 */
+	PoolBase(const PoolBase &other);
 };
 
 /**
