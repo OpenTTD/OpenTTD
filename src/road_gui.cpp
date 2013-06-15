@@ -473,13 +473,10 @@ struct BuildRoadToolbarWindow : Window {
 		if (_ctrl_pressed) RoadToolbar_CtrlChanged(this);
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnHotkey(int hotkey)
 	{
-		int num = this->hotkeys.CheckMatch(keycode);
-		if (num == -1 || this->GetWidget<NWidgetBase>(num) == NULL) return ES_NOT_HANDLED;
-		this->OnClick(Point(), num, 1);
 		MarkTileDirtyByTile(TileVirtXY(_thd.pos.x, _thd.pos.y)); // redraw tile selection
-		return ES_HANDLED;
+		return Window::OnHotkey(hotkey);
 	}
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
@@ -717,7 +714,8 @@ static WindowDesc _build_road_desc(
 	WDP_ALIGN_TOOLBAR, "toolbar_road", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_build_road_widgets, lengthof(_nested_build_road_widgets)
+	_nested_build_road_widgets, lengthof(_nested_build_road_widgets),
+	&BuildRoadToolbarWindow::hotkeys
 );
 
 static const NWidgetPart _nested_build_tramway_widgets[] = {
@@ -756,7 +754,8 @@ static WindowDesc _build_tramway_desc(
 	WDP_ALIGN_TOOLBAR, "toolbar_tramway", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_build_tramway_widgets, lengthof(_nested_build_tramway_widgets)
+	_nested_build_tramway_widgets, lengthof(_nested_build_tramway_widgets),
+	&BuildRoadToolbarWindow::hotkeys
 );
 
 /**
@@ -782,7 +781,7 @@ EventState RoadToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowBuildRoadToolbar(_last_built_roadtype);
 	if (w == NULL) return ES_NOT_HANDLED;
-	return w->OnKeyPress(key, keycode);
+	return w->OnHotkey(num);
 }
 
 static const NWidgetPart _nested_build_road_scen_widgets[] = {
@@ -816,7 +815,8 @@ static WindowDesc _build_road_scen_desc(
 	WDP_AUTO, "toolbar_road_scen", 0, 0,
 	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_build_road_scen_widgets, lengthof(_nested_build_road_scen_widgets)
+	_nested_build_road_scen_widgets, lengthof(_nested_build_road_scen_widgets),
+	&BuildRoadToolbarWindow::hotkeys
 );
 
 /**
@@ -835,7 +835,7 @@ EventState RoadToolbarEditorGlobalHotkeys(uint16 key, uint16 keycode)
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowBuildRoadScenToolbar();
 	if (w == NULL) return ES_NOT_HANDLED;
-	return w->OnKeyPress(key, keycode);
+	return w->OnHotkey(num);
 }
 
 struct BuildRoadDepotWindow : public PickerWindowBase {

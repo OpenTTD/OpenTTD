@@ -1436,11 +1436,11 @@ public:
 		}
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnHotkey(int hotkey)
 	{
 		if (this->vehicle->owner != _local_company) return ES_NOT_HANDLED;
 
-		switch (this->hotkeys.CheckMatch(keycode)) {
+		switch (hotkey) {
 			case OHK_SKIP:           this->OrderClick_Skip();         break;
 			case OHK_DELETE:         this->OrderClick_Delete();       break;
 			case OHK_GOTO:           this->OrderClick_Goto();         break;
@@ -1619,7 +1619,8 @@ static WindowDesc _orders_train_desc(
 	WDP_AUTO, "view_vehicle_orders_train", 384, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_CONSTRUCTION,
-	_nested_orders_train_widgets, lengthof(_nested_orders_train_widgets)
+	_nested_orders_train_widgets, lengthof(_nested_orders_train_widgets),
+	&OrdersWindow::hotkeys
 );
 
 /** Nested widget definition for "your" orders (non-train). */
@@ -1691,7 +1692,8 @@ static WindowDesc _orders_desc(
 	WDP_AUTO, "view_vehicle_orders", 384, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_CONSTRUCTION,
-	_nested_orders_widgets, lengthof(_nested_orders_widgets)
+	_nested_orders_widgets, lengthof(_nested_orders_widgets),
+	&OrdersWindow::hotkeys
 );
 
 /** Nested widget definition for competitor orders. */
@@ -1717,7 +1719,8 @@ static WindowDesc _other_orders_desc(
 	WDP_AUTO, "view_vehicle_orders_competitor", 384, 86,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_CONSTRUCTION,
-	_nested_other_orders_widgets, lengthof(_nested_other_orders_widgets)
+	_nested_other_orders_widgets, lengthof(_nested_other_orders_widgets),
+	&OrdersWindow::hotkeys
 );
 
 void ShowOrdersWindow(const Vehicle *v)

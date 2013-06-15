@@ -219,14 +219,6 @@ struct TerraformToolbarWindow : Window {
 		}
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
-	{
-		int num = this->hotkeys.CheckMatch(keycode);
-		if (num == -1) return ES_NOT_HANDLED;
-		this->OnClick(Point(), num, 1);
-		return ES_HANDLED;
-	}
-
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
 		switch (this->last_user_action) {
@@ -346,7 +338,8 @@ static WindowDesc _terraform_desc(
 	WDP_MANUAL, "toolbar_landscape", 0, 0,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_terraform_widgets, lengthof(_nested_terraform_widgets)
+	_nested_terraform_widgets, lengthof(_nested_terraform_widgets),
+	&TerraformToolbarWindow::hotkeys
 );
 
 /**
@@ -384,7 +377,7 @@ EventState TerraformToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowTerraformToolbar(NULL);
 	if (w == NULL) return ES_NOT_HANDLED;
-	return w->OnKeyPress(key, keycode);
+	return w->OnHotkey(num);
 }
 
 static byte _terraform_size = 1;
@@ -572,14 +565,6 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 		} while (--n);
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
-	{
-		int num = this->hotkeys.CheckMatch(keycode);
-		if (num == -1) return ES_NOT_HANDLED;
-		this->OnClick(Point(), num, 1);
-		return ES_HANDLED;
-	}
-
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget < WID_ETT_BUTTONS_START) return;
@@ -744,7 +729,8 @@ static WindowDesc _scen_edit_land_gen_desc(
 	WDP_AUTO, "toolbar_landscape_scen", 0, 0,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_scen_edit_land_gen_widgets, lengthof(_nested_scen_edit_land_gen_widgets)
+	_nested_scen_edit_land_gen_widgets, lengthof(_nested_scen_edit_land_gen_widgets),
+	&ScenarioEditorLandscapeGenerationWindow::hotkeys
 );
 
 /**
@@ -762,5 +748,5 @@ EventState TerraformToolbarEditorGlobalHotkeys(uint16 key, uint16 keycode)
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowEditorTerraformToolbar();
 	if (w == NULL) return ES_NOT_HANDLED;
-	return w->OnKeyPress(key, keycode);
+	return w->OnHotkey(num);
 }

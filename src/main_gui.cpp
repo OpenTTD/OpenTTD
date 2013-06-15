@@ -206,13 +206,6 @@ static const struct NWidgetPart _nested_main_window_widgets[] = {
 	NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_M_VIEWPORT), SetResize(1, 1),
 };
 
-static WindowDesc _main_window_desc(
-	WDP_MANUAL, NULL, 0, 0,
-	WC_MAIN_WINDOW, WC_NONE,
-	0,
-	_nested_main_window_widgets, lengthof(_nested_main_window_widgets)
-);
-
 enum {
 	GHK_QUIT,
 	GHK_ABANDON,
@@ -245,7 +238,7 @@ struct MainWindow : Window
 	static const uint LINKGRAPH_REFRESH_PERIOD = 0xff;
 	static const uint LINKGRAPH_DELAY = 0xf;
 
-	MainWindow() : Window(&_main_window_desc)
+	MainWindow(WindowDesc *desc) : Window(desc)
 	{
 		this->InitNested(0);
 		CLRBITS(this->flags, WF_WHITE_BORDER);
@@ -287,10 +280,9 @@ struct MainWindow : Window
 		}
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnHotkey(int hotkey)
 	{
-		int num = this->hotkeys.CheckMatch(keycode);
-		if (num == GHK_QUIT) {
+		if (hotkey == GHK_QUIT) {
 			HandleExitGameRequest();
 			return ES_HANDLED;
 		}
@@ -301,7 +293,7 @@ struct MainWindow : Window
 		 * assertions that are hard to trigger and debug */
 		if (HasModalProgress()) return ES_NOT_HANDLED;
 
-		switch (num) {
+		switch (hotkey) {
 			case GHK_ABANDON:
 				/* No point returning from the main menu to itself */
 				if (_game_mode == GM_MENU) return ES_HANDLED;
@@ -328,13 +320,13 @@ struct MainWindow : Window
 
 		if (_game_mode == GM_MENU) return ES_NOT_HANDLED;
 
-		switch (num) {
+		switch (hotkey) {
 			case GHK_CENTER:
 			case GHK_CENTER_ZOOM: {
 				Point pt = GetTileBelowCursor();
 				if (pt.x != -1) {
-					bool instant = (num == GHK_CENTER_ZOOM && this->viewport->zoom != _settings_client.gui.zoom_min);
-					if (num == GHK_CENTER_ZOOM) MaxZoomInOut(ZOOM_IN, this);
+					bool instant = (hotkey == GHK_CENTER_ZOOM && this->viewport->zoom != _settings_client.gui.zoom_min);
+					if (hotkey == GHK_CENTER_ZOOM) MaxZoomInOut(ZOOM_IN, this);
 					ScrollMainWindowTo(pt.x, pt.y, -1, instant);
 				}
 				break;
@@ -368,7 +360,7 @@ struct MainWindow : Window
 			case GHK_TOGGLE_TRANSPARENCY + 7:
 			case GHK_TOGGLE_TRANSPARENCY + 8:
 				/* Transparency toggle hot keys */
-				ToggleTransparency((TransparencyOption)(num - GHK_TOGGLE_TRANSPARENCY));
+				ToggleTransparency((TransparencyOption)(hotkey - GHK_TOGGLE_TRANSPARENCY));
 				MarkWholeScreenDirty();
 				break;
 
@@ -381,7 +373,7 @@ struct MainWindow : Window
 			case GHK_TOGGLE_INVISIBILITY + 6:
 			case GHK_TOGGLE_INVISIBILITY + 7:
 				/* Invisibility toggle hot keys */
-				ToggleInvisibilityWithTransparency((TransparencyOption)(num - GHK_TOGGLE_INVISIBILITY));
+				ToggleInvisibilityWithTransparency((TransparencyOption)(hotkey - GHK_TOGGLE_INVISIBILITY));
 				MarkWholeScreenDirty();
 				break;
 
@@ -521,6 +513,14 @@ static Hotkey global_hotkeys[] = {
 };
 HotkeyList MainWindow::hotkeys("global", global_hotkeys);
 
+static WindowDesc _main_window_desc(
+	WDP_MANUAL, NULL, 0, 0,
+	WC_MAIN_WINDOW, WC_NONE,
+	0,
+	_nested_main_window_widgets, lengthof(_nested_main_window_widgets),
+	&MainWindow::hotkeys
+);
+
 /**
  * Does the given keycode match one of the keycodes bound to 'quit game'?
  * @param keycode The keycode that was pressed by the user.
@@ -547,7 +547,7 @@ void SetupColoursAndInitialWindow()
 		memcpy(_colour_gradient[i], b + 0xC6, sizeof(_colour_gradient[i]));
 	}
 
-	new MainWindow;
+	new MainWindow(&_main_window_desc);
 
 	/* XXX: these are not done */
 	switch (_game_mode) {

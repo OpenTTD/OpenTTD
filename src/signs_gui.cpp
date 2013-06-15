@@ -281,16 +281,19 @@ struct SignListWindow : Window, SignList {
 		}
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnHotkey(int hotkey)
 	{
-		EventState state = ES_NOT_HANDLED;
-		if (this->hotkeys.CheckMatch(keycode) == SLHK_FOCUS_FILTER_BOX) {
-			this->SetFocusedWidget(WID_SIL_FILTER_TEXT);
-			SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
-			state = ES_HANDLED;
+		switch (hotkey) {
+			case SLHK_FOCUS_FILTER_BOX:
+				this->SetFocusedWidget(WID_SIL_FILTER_TEXT);
+				SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
+				break;
+
+			default:
+				return ES_NOT_HANDLED;
 		}
 
-		return state;
+		return ES_HANDLED;
 	}
 
 	virtual void OnEditboxChanged(int widget)
@@ -374,7 +377,8 @@ static WindowDesc _sign_list_desc(
 	WDP_AUTO, "list_signs", 358, 138,
 	WC_SIGN_LIST, WC_NONE,
 	0,
-	_nested_sign_list_widgets, lengthof(_nested_sign_list_widgets)
+	_nested_sign_list_widgets, lengthof(_nested_sign_list_widgets),
+	&SignListWindow::hotkeys
 );
 
 /**
@@ -393,7 +397,7 @@ EventState SignListGlobalHotkeys(uint16 key, uint16 keycode)
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowSignList();
 	if (w == NULL) return ES_NOT_HANDLED;
-	return w->OnKeyPress(key, keycode);
+	return w->OnHotkey(num);
 }
 
 /**

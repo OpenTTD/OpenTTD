@@ -1306,23 +1306,6 @@ struct AIDebugWindow : public Window {
 		}
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
-	{
-		EventState state = ES_NOT_HANDLED;
-		int num = this->hotkeys.CheckMatch(keycode);
-		if (num != -1) {
-			if (this->show_break_box && num == WID_AID_BREAK_STR_EDIT_BOX) {
-				this->SetFocusedWidget(WID_AID_BREAK_STR_EDIT_BOX);
-				SetFocusedWindow(this);
-				state = ES_HANDLED;
-			} else if (this->show_break_box || num < WID_AID_BREAK_STRING_WIDGETS) {
-				this->OnClick(Point(), num, 1);
-				state = ES_HANDLED;
-			}
-		}
-		return state;
-	}
-
 	virtual void OnEditboxChanged(int wid)
 	{
 		if (wid == WID_AID_BREAK_STR_EDIT_BOX) {
@@ -1494,7 +1477,8 @@ static WindowDesc _ai_debug_desc(
 	WDP_AUTO, "script_debug", 600, 450,
 	WC_AI_DEBUG, WC_NONE,
 	0,
-	_nested_ai_debug_widgets, lengthof(_nested_ai_debug_widgets)
+	_nested_ai_debug_widgets, lengthof(_nested_ai_debug_widgets),
+	&AIDebugWindow::hotkeys
 );
 
 /**
@@ -1524,7 +1508,7 @@ EventState AIDebugGlobalHotkeys(uint16 key, uint16 keycode)
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowAIDebugWindow(INVALID_COMPANY);
 	if (w == NULL) return ES_NOT_HANDLED;
-	return w->OnKeyPress(key, keycode);
+	return w->OnHotkey(num);
 }
 
 /**

@@ -597,13 +597,10 @@ struct BuildRailToolbarWindow : Window {
 		if (_ctrl_pressed) RailToolbar_CtrlChanged(this);
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnHotkey(int hotkey)
 	{
-		int num = this->hotkeys.CheckMatch(keycode);
-		if (num == -1) return ES_NOT_HANDLED;
-		this->OnClick(Point(), num, 1);
 		MarkTileDirtyByTile(TileVirtXY(_thd.pos.x, _thd.pos.y)); // redraw tile selection
-		return ES_HANDLED;
+		return Window::OnHotkey(hotkey);
 	}
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
@@ -824,7 +821,8 @@ static WindowDesc _build_rail_desc(
 	WDP_ALIGN_TOOLBAR, "toolbar_rail", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_build_rail_widgets, lengthof(_nested_build_rail_widgets)
+	_nested_build_rail_widgets, lengthof(_nested_build_rail_widgets),
+	&BuildRailToolbarWindow::hotkeys
 );
 
 
@@ -855,7 +853,7 @@ EventState RailToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowBuildRailToolbar(_last_built_railtype);
 	if (w == NULL) return ES_NOT_HANDLED;
-	return w->OnKeyPress(key, keycode);
+	return w->OnHotkey(num);
 }
 
 /* TODO: For custom stations, respect their allowed platforms/lengths bitmasks!

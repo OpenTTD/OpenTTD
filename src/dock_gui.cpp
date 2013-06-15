@@ -164,14 +164,6 @@ struct BuildDocksToolbarWindow : Window {
 		this->last_clicked_widget = (DockToolbarWidgets)widget;
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
-	{
-		int num = this->hotkeys.CheckMatch(keycode);
-		if (num == -1) return ES_NOT_HANDLED;
-		this->OnClick(Point(), num, 1);
-		return ES_HANDLED;
-	}
-
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
 		switch (this->last_clicked_widget) {
@@ -318,7 +310,8 @@ static WindowDesc _build_docks_toolbar_desc(
 	WDP_ALIGN_TOOLBAR, "toolbar_water", 0, 0,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_build_docks_toolbar_widgets, lengthof(_nested_build_docks_toolbar_widgets)
+	_nested_build_docks_toolbar_widgets, lengthof(_nested_build_docks_toolbar_widgets),
+	&BuildDocksToolbarWindow::hotkeys
 );
 
 /**
@@ -342,7 +335,7 @@ EventState DockToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowBuildDocksToolbar();
 	if (w == NULL) return ES_NOT_HANDLED;
-	return w->OnKeyPress(key, keycode);
+	return w->OnHotkey(num);
 }
 
 /**
