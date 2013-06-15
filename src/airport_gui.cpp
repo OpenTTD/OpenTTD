@@ -27,6 +27,7 @@
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
 #include "vehicle_func.h"
+#include "gui.h"
 
 #include "widgets/airport_widget.h"
 

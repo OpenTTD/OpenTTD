@@ -30,6 +30,7 @@
 #include "../hotkeys.h"
 
 #include "ai.hpp"
+#include "ai_gui.hpp"
 #include "../script/api/script_log.hpp"
 #include "ai_config.hpp"
 #include "ai_info.hpp"

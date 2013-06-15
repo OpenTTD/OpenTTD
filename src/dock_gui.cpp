@@ -25,6 +25,7 @@
 #include "tilehighlight_func.h"
 #include "company_base.h"
 #include "hotkeys.h"
+#include "gui.h"
 
 #include "widgets/dock_widget.h"
 

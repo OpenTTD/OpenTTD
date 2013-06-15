@@ -31,6 +31,7 @@
 #include "object.h"
 #include "hotkeys.h"
 #include "engine_base.h"
+#include "terraform_gui.h"
 
 #include "widgets/terraform_widget.h"
 

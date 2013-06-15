@@ -33,6 +33,7 @@
 #include "engine_base.h"
 #include "vehicle_func.h"
 #include "zoom_func.h"
+#include "rail_gui.h"
 
 #include "station_map.h"
 #include "tunnelbridge_map.h"
@@ -1874,7 +1875,7 @@ static void SetDefaultRailGui()
  * @param p needed to be called when a setting changes
  * @return success, needed for settings
  */
-bool ResetSignalVariant(int32 p = 0)
+bool ResetSignalVariant(int32 p)
 {
 	SignalVariant new_variant = (_cur_year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC);
 
