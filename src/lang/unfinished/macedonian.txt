@@ -275,7 +275,6 @@ STR_SORT_BY_LENGTH                                              :Должина
 STR_SORT_BY_LIFE_TIME                                           :Преостанат животен век
 STR_SORT_BY_TIMETABLE_DELAY                                     :распоред задоцнување
 STR_SORT_BY_FACILITY                                            :Вид на станица
-STR_SORT_BY_WAITING                                             :Вредност на товарот кој чека
 STR_SORT_BY_RATING_MAX                                          :Највисок рејтинг за товар
 STR_SORT_BY_RATING_MIN                                          :Најнизок рејтинг за товар
 STR_SORT_BY_ENGINE_ID                                           :Идентификација на моторот (класично сортирање)

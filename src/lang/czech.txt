@@ -347,7 +347,6 @@ STR_SORT_BY_LENGTH                                              :délky
 STR_SORT_BY_LIFE_TIME                                           :Zbývající životnost
 STR_SORT_BY_TIMETABLE_DELAY                                     :zpoždění
 STR_SORT_BY_FACILITY                                            :druhu stanice
-STR_SORT_BY_WAITING                                             :množství čekajícího nákladu
 STR_SORT_BY_RATING_MAX                                          :nejlepšího hodnocení přepravy
 STR_SORT_BY_RATING_MIN                                          :nejhoršího hodnocení přepravy
 STR_SORT_BY_ENGINE_ID                                           :ID vozu (klasické pořadí)

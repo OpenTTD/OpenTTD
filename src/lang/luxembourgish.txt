@@ -276,7 +276,6 @@ STR_SORT_BY_LENGTH                                              :Lengt
 STR_SORT_BY_LIFE_TIME                                           :Reschtlaafzäit
 STR_SORT_BY_TIMETABLE_DELAY                                     :Zäitplang Verspéidung
 STR_SORT_BY_FACILITY                                            :Statiounstyp
-STR_SORT_BY_WAITING                                             :Luedungswäert
 STR_SORT_BY_RATING_MAX                                          :Héchsten Luedungsbewertung
 STR_SORT_BY_RATING_MIN                                          :Nidregsten Luedungsbewertung
 STR_SORT_BY_ENGINE_ID                                           :ID (klassësch Sortéierung)

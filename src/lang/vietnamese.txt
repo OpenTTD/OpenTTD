@@ -277,7 +277,6 @@ STR_SORT_BY_LENGTH                                              :Chiều dài
 STR_SORT_BY_LIFE_TIME                                           :Thời gian sử dụng còn lại
 STR_SORT_BY_TIMETABLE_DELAY                                     :Độ trễ lịch trình
 STR_SORT_BY_FACILITY                                            :Kiểu nhà ga
-STR_SORT_BY_WAITING                                             :Giá trị hàng hoá đang đợi
 STR_SORT_BY_RATING_MAX                                          :Đánh giá mức hàng hoá cao nhất
 STR_SORT_BY_RATING_MIN                                          :Đánh giá mức hàng hoá thấp nhất
 STR_SORT_BY_ENGINE_ID                                           :ID Máy (sắp xếp thông thường)

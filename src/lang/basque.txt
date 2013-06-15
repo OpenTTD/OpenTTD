@@ -276,7 +276,6 @@ STR_SORT_BY_LENGTH                                              :Luzera
 STR_SORT_BY_LIFE_TIME                                           :Geratzen zaion bizitza denbora
 STR_SORT_BY_TIMETABLE_DELAY                                     :Ordutegiko atzerapena
 STR_SORT_BY_FACILITY                                            :Geltoki mota
-STR_SORT_BY_WAITING                                             :Itxaroten dagoen zamaren balioa
 STR_SORT_BY_RATING_MAX                                          :Zama balorazio handiena
 STR_SORT_BY_RATING_MIN                                          :Zama balorazio txikiena
 STR_SORT_BY_ENGINE_ID                                           :MotoreID (ordenatze klasikoa)

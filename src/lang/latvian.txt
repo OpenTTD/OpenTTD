@@ -278,7 +278,6 @@ STR_SORT_BY_LENGTH                                              :garuma
 STR_SORT_BY_LIFE_TIME                                           :atlikušā kalpošanas laika
 STR_SORT_BY_TIMETABLE_DELAY                                     :saraksta kavējuma
 STR_SORT_BY_FACILITY                                            :stacijas veida
-STR_SORT_BY_WAITING                                             :gaidošās kravas vērtības
 STR_SORT_BY_RATING_MAX                                          :augstākā kravu vērtējuma
 STR_SORT_BY_RATING_MIN                                          :zemākā kravu vērtējuma
 STR_SORT_BY_ENGINE_ID                                           :dzinēja ID (klasiskais veids)

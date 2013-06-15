@@ -278,7 +278,6 @@ STR_SORT_BY_LENGTH                                              :Llargada
 STR_SORT_BY_LIFE_TIME                                           :Temps de vida restant
 STR_SORT_BY_TIMETABLE_DELAY                                     :Retràs de l'horari
 STR_SORT_BY_FACILITY                                            :Tipus de estació
-STR_SORT_BY_WAITING                                             :Valor de espera de càrrega
 STR_SORT_BY_RATING_MAX                                          :Rati de càrrega més alt
 STR_SORT_BY_RATING_MIN                                          :Rati de càrrega més baix
 STR_SORT_BY_ENGINE_ID                                           :IDMotor (ordre clàssic)

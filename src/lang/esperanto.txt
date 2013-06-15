@@ -275,7 +275,6 @@ STR_SORT_BY_LENGTH                                              :Longo
 STR_SORT_BY_LIFE_TIME                                           :Resta vivo
 STR_SORT_BY_TIMETABLE_DELAY                                     :Horara malfruo
 STR_SORT_BY_FACILITY                                            :Stacidoma tipo
-STR_SORT_BY_WAITING                                             :Valoro de atendanta ŝarĝo
 STR_SORT_BY_RATING_MAX                                          :Plejalta ŝarĝotakso
 STR_SORT_BY_RATING_MIN                                          :Malplejalta ŝarĝotakso
 STR_SORT_BY_ENGINE_ID                                           :Maŝina ID (klasika ordigo)

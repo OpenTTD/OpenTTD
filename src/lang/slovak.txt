@@ -340,7 +340,6 @@ STR_SORT_BY_LENGTH                                              :Dlžka
 STR_SORT_BY_LIFE_TIME                                           :Zostávajúca životnost
 STR_SORT_BY_TIMETABLE_DELAY                                     :Oneskorenie cestovného poriadku
 STR_SORT_BY_FACILITY                                            :Typ stanice
-STR_SORT_BY_WAITING                                             :Množstvo čakajúceho nákladu
 STR_SORT_BY_RATING_MAX                                          :Hodnotenie najlepšej prepravy
 STR_SORT_BY_RATING_MIN                                          :Hodnotenie najhoršej prepravy
 STR_SORT_BY_ENGINE_ID                                           :EngineID (netriedené)

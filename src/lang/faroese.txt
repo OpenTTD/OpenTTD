@@ -277,7 +277,6 @@ STR_SORT_BY_LENGTH                                              :Longd
 STR_SORT_BY_LIFE_TIME                                           :Eftirverandi livitíð
 STR_SORT_BY_TIMETABLE_DELAY                                     :Tíðarætlanar seinking
 STR_SORT_BY_FACILITY                                            :Støð slagi
-STR_SORT_BY_WAITING                                             :Virði á bíðjandi farmi
 STR_SORT_BY_RATING_MAX                                          :Hægsta farma virðismeting
 STR_SORT_BY_RATING_MIN                                          :Lægsta farma virðismeting
 STR_SORT_BY_ENGINE_ID                                           :MaskinID (klassiskt svart)

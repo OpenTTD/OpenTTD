@@ -278,7 +278,6 @@ STR_SORT_BY_LENGTH                                              :Uzunluk
 STR_SORT_BY_LIFE_TIME                                           :Kalan ömür
 STR_SORT_BY_TIMETABLE_DELAY                                     :Zaman çizelgesi gecikmesi
 STR_SORT_BY_FACILITY                                            :İstasyon türü
-STR_SORT_BY_WAITING                                             :Bekleyen kargo değeri
 STR_SORT_BY_RATING_MAX                                          :En yüksek kargo puanı
 STR_SORT_BY_RATING_MIN                                          :En düşük kargo puanı
 STR_SORT_BY_ENGINE_ID                                           :LokoAdı (klasik sıra)

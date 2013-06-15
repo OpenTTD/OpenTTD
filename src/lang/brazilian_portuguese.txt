@@ -277,7 +277,6 @@ STR_SORT_BY_LENGTH                                              :Comprimento
 STR_SORT_BY_LIFE_TIME                                           :Tempo de uso restante
 STR_SORT_BY_TIMETABLE_DELAY                                     :Atraso de horário
 STR_SORT_BY_FACILITY                                            :Tipo de estação
-STR_SORT_BY_WAITING                                             :Valor da carga em espera
 STR_SORT_BY_RATING_MAX                                          :Maior avaliação de carga
 STR_SORT_BY_RATING_MIN                                          :Menor avaliação de carga
 STR_SORT_BY_ENGINE_ID                                           :RG da Locomotiva (classificação clássica)

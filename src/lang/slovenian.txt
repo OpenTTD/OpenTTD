@@ -429,7 +429,6 @@ STR_SORT_BY_LENGTH                                              :Dolžina
 STR_SORT_BY_LIFE_TIME                                           :Preostala življenjska doba
 STR_SORT_BY_TIMETABLE_DELAY                                     :Zamuda urnika
 STR_SORT_BY_FACILITY                                            :Vrsta postaje
-STR_SORT_BY_WAITING                                             :Čakanje vrednosti tovora
 STR_SORT_BY_RATING_MAX                                          :Najvišja ocena tovora
 STR_SORT_BY_RATING_MIN                                          :Najnižja ocena tovora
 STR_SORT_BY_ENGINE_ID                                           :ID motorja (klasično urejanje)

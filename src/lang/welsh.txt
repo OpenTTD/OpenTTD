@@ -277,7 +277,6 @@ STR_SORT_BY_LENGTH                                              :Hyd
 STR_SORT_BY_LIFE_TIME                                           :Oes yn weddill
 STR_SORT_BY_TIMETABLE_DELAY                                     :Oediad amserlen
 STR_SORT_BY_FACILITY                                            :Math Gorsaf
-STR_SORT_BY_WAITING                                             :Gwerth y llwyth sy'n disgwyl
 STR_SORT_BY_RATING_MAX                                          :Safon cludiant uchaf
 STR_SORT_BY_RATING_MIN                                          :Safon cludiant isaf
 STR_SORT_BY_ENGINE_ID                                           :ID Injan (math clasurol)

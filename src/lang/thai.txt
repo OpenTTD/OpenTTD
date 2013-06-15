@@ -278,7 +278,6 @@ STR_SORT_BY_LENGTH                                              :ความย
 STR_SORT_BY_LIFE_TIME                                           :อายุการใช้งานคงเหลือ
 STR_SORT_BY_TIMETABLE_DELAY                                     :ความล่าช้าจากตารางเวลา
 STR_SORT_BY_FACILITY                                            :ประเภทสถานี
-STR_SORT_BY_WAITING                                             :มูลค่าสินค้าที่ค้างอยู่
 STR_SORT_BY_RATING_MAX                                          :สินค้ายอดนิยม
 STR_SORT_BY_RATING_MIN                                          :สินค้านิยมน้อยสุด
 STR_SORT_BY_ENGINE_ID                                           :EngineID (เรียงแบบดั้งเดิม)

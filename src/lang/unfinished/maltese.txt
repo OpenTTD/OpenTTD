@@ -227,7 +227,6 @@ STR_SORT_BY_LENGTH                                              :Tul
 STR_SORT_BY_LIFE_TIME                                           :Isservi sa
 STR_SORT_BY_TIMETABLE_DELAY                                     :Dewmien fl-iskeda
 STR_SORT_BY_FACILITY                                            :Tip ta' stazzjon
-STR_SORT_BY_WAITING                                             :Valur tal-Kargo
 STR_SORT_BY_RATING_MAX                                          :L-Ogħla livell tal-Kargo
 STR_SORT_BY_RATING_MIN                                          :L-Inqas livell tal-Kargo
 STR_SORT_BY_ENGINE_ID                                           :ID tal-magna (issortjar klassiku)

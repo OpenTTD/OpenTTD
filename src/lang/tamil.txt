@@ -276,7 +276,6 @@ STR_SORT_BY_LENGTH                                              :நீளம்
 STR_SORT_BY_LIFE_TIME                                           :மீதமிருக்கும் வாழ்நாள்
 STR_SORT_BY_TIMETABLE_DELAY                                     :கால தாமதம்
 STR_SORT_BY_FACILITY                                            :நிலைய வகை
-STR_SORT_BY_WAITING                                             :காத்திருக்கும் சரக்கின் அளவு
 STR_SORT_BY_RATING_MAX                                          :சரக்கு உச்ச வகைமதிப்பு
 STR_SORT_BY_RATING_MIN                                          :சரக்கு மீச்சிறு வகைமதிப்பு
 STR_SORT_BY_ENGINE_ID                                           :இயந்திரம் அடையாளம் (வரிசை செய்)

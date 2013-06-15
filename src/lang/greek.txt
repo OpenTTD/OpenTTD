@@ -339,7 +339,6 @@ STR_SORT_BY_LENGTH                                              :Μήκος
 STR_SORT_BY_LIFE_TIME                                           :Υπόλοιπη διάρκεια ζωής
 STR_SORT_BY_TIMETABLE_DELAY                                     :Καθυστέρηση δρομολογίου
 STR_SORT_BY_FACILITY                                            :Τύπος σταθμού
-STR_SORT_BY_WAITING                                             :Αξία φορτίου σε αναμονή
 STR_SORT_BY_RATING_MAX                                          :Υψηλότερη βαθμολογία φορτίου
 STR_SORT_BY_RATING_MIN                                          :Χαμηλότερη βαθμολογία φορτίου
 STR_SORT_BY_ENGINE_ID                                           :EngineID (κλασική ταξινόμηση)

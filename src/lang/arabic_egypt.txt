@@ -275,7 +275,6 @@ STR_SORT_BY_LENGTH                                              :الطول
 STR_SORT_BY_LIFE_TIME                                           :العمر المتبقي
 STR_SORT_BY_TIMETABLE_DELAY                                     :تاخير جدولة الاوامر
 STR_SORT_BY_FACILITY                                            :نوع المحطة
-STR_SORT_BY_WAITING                                             :قيمة الشحنة المنتظرة
 STR_SORT_BY_RATING_MAX                                          :اعلى نسبة شحن
 STR_SORT_BY_RATING_MIN                                          :اقل نسبة شحن
 STR_SORT_BY_ENGINE_ID                                           :نوع المحرك (قياسي(

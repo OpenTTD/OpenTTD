@@ -280,7 +280,6 @@ STR_SORT_BY_LENGTH                                              :Lunghezza
 STR_SORT_BY_LIFE_TIME                                           :Vita rimanente
 STR_SORT_BY_TIMETABLE_DELAY                                     :Ritardo sull'orario
 STR_SORT_BY_FACILITY                                            :Tipo di stazione
-STR_SORT_BY_WAITING                                             :Carichi in attesa
 STR_SORT_BY_RATING_MAX                                          :Valutazione maggiore
 STR_SORT_BY_RATING_MIN                                          :Valutazione minore
 STR_SORT_BY_ENGINE_ID                                           :EngineID (ordine classico)

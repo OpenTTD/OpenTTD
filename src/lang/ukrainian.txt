@@ -401,7 +401,6 @@ STR_SORT_BY_LENGTH                                              :за довжи
 STR_SORT_BY_LIFE_TIME                                           :за залишком строку служби
 STR_SORT_BY_TIMETABLE_DELAY                                     :за відхиленням від розкладу
 STR_SORT_BY_FACILITY                                            :за типом станції
-STR_SORT_BY_WAITING                                             :за кількістю вантажу
 STR_SORT_BY_RATING_MAX                                          :за найвищим рейтингом
 STR_SORT_BY_RATING_MIN                                          :за найнижчим рейтингом
 STR_SORT_BY_ENGINE_ID                                           :за ID (класичний порядок)

@@ -277,7 +277,6 @@ STR_SORT_BY_LENGTH                                              :Lengte
 STR_SORT_BY_LIFE_TIME                                           :Oorblywende leeftyd
 STR_SORT_BY_TIMETABLE_DELAY                                     :Rooster vertraging
 STR_SORT_BY_FACILITY                                            :Stasie tipe
-STR_SORT_BY_WAITING                                             :Wagtend vrag waarde
 STR_SORT_BY_RATING_MAX                                          :Hoogste vrag gradering
 STR_SORT_BY_RATING_MIN                                          :Laagte vrag gradering
 STR_SORT_BY_ENGINE_ID                                           :EngineID (klassieke sorteer)

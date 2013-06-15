@@ -277,7 +277,6 @@ STR_SORT_BY_LENGTH                                              :طول
 STR_SORT_BY_LIFE_TIME                                           :عمر مفید باقی مانده
 STR_SORT_BY_TIMETABLE_DELAY                                     :تاخیر جدول زمانی
 STR_SORT_BY_FACILITY                                            :نوع ایستگاه
-STR_SORT_BY_WAITING                                             :ارزش محموله ی درانتظار
 STR_SORT_BY_RATING_MAX                                          :حداکثر نرخ محموله
 STR_SORT_BY_RATING_MIN                                          :کمترین نرخ محموله
 STR_SORT_BY_ENGINE_ID                                           :شناسه موتور

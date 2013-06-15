@@ -373,7 +373,6 @@ STR_SORT_BY_LENGTH                                              :Dužina
 STR_SORT_BY_LIFE_TIME                                           :Preostali životni vijek
 STR_SORT_BY_TIMETABLE_DELAY                                     :Kašnjenje voznog reda
 STR_SORT_BY_FACILITY                                            :Vrsta stanice
-STR_SORT_BY_WAITING                                             :Vrijednost tereta koji čeka
 STR_SORT_BY_RATING_MAX                                          :Najviša ocjena tereta
 STR_SORT_BY_RATING_MIN                                          :Najniža ocjena tereta
 STR_SORT_BY_ENGINE_ID                                           :MotorID (standardno sortiranje)

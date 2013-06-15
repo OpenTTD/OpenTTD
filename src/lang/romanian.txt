@@ -277,7 +277,6 @@ STR_SORT_BY_LENGTH                                              :Lungime
 STR_SORT_BY_LIFE_TIME                                           :Durată de viaţă rămasă
 STR_SORT_BY_TIMETABLE_DELAY                                     :Întârzieri
 STR_SORT_BY_FACILITY                                            :Tipul staţiei
-STR_SORT_BY_WAITING                                             :Valoarea mărfii în aşteptare
 STR_SORT_BY_RATING_MAX                                          :Cel mai mare rating
 STR_SORT_BY_RATING_MIN                                          :Cel mai mic rating
 STR_SORT_BY_ENGINE_ID                                           :IDMotor (model clasic)

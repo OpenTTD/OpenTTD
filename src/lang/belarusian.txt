@@ -589,7 +589,6 @@ STR_SORT_BY_LENGTH                                              :Даўжыня
 STR_SORT_BY_LIFE_TIME                                           :Рэшткавы тэрмін службы
 STR_SORT_BY_TIMETABLE_DELAY                                     :Адставаньне ад ґрафіку
 STR_SORT_BY_FACILITY                                            :Тып станцыі
-STR_SORT_BY_WAITING                                             :Коль-ць грузу на станцыі
 STR_SORT_BY_RATING_MAX                                          :Найвышэйшы рэйтынґ
 STR_SORT_BY_RATING_MIN                                          :Ніжэйшы рэйтынґ
 STR_SORT_BY_ENGINE_ID                                           :Назва, серыя

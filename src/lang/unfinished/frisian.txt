@@ -275,7 +275,6 @@ STR_SORT_BY_LENGTH                                              :Lingte
 STR_SORT_BY_LIFE_TIME                                           :Restearjende libbensdagen
 STR_SORT_BY_TIMETABLE_DELAY                                     :Opûnthâld yn de tsjinstregeling
 STR_SORT_BY_FACILITY                                            :Stasjonstype
-STR_SORT_BY_WAITING                                             :Wearde fan wachtsjende fracht
 STR_SORT_BY_RATING_MAX                                          :Heechste fracht foldwaning
 STR_SORT_BY_RATING_MIN                                          :Minste fracht foldwanning
 STR_SORT_BY_ENGINE_ID                                           :Reau ID (klassyke soart)

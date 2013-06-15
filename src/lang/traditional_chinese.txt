@@ -277,7 +277,6 @@ STR_SORT_BY_LENGTH                                              :長度
 STR_SORT_BY_LIFE_TIME                                           :剩餘年限
 STR_SORT_BY_TIMETABLE_DELAY                                     :時刻表誤點
 STR_SORT_BY_FACILITY                                            :車站種類
-STR_SORT_BY_WAITING                                             :等候客貨總值
 STR_SORT_BY_RATING_MAX                                          :最高運輸評價
 STR_SORT_BY_RATING_MIN                                          :最低運輸評價
 STR_SORT_BY_ENGINE_ID                                           :引擎編號

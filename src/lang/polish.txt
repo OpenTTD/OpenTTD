@@ -656,7 +656,6 @@ STR_SORT_BY_LENGTH                                              :Długość
 STR_SORT_BY_LIFE_TIME                                           :Pozostały czas życia
 STR_SORT_BY_TIMETABLE_DELAY                                     :Opóźnienie rozkładu jazdy
 STR_SORT_BY_FACILITY                                            :Typ stacji
-STR_SORT_BY_WAITING                                             :Wartość oczekującego ładunku
 STR_SORT_BY_RATING_MAX                                          :Towar najwyżej oceniany
 STR_SORT_BY_RATING_MIN                                          :Towar najniżej oceniany
 STR_SORT_BY_ENGINE_ID                                           :ID pojazdu (klasyczne sortowanie)

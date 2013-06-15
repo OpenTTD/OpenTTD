@@ -279,7 +279,6 @@ STR_SORT_BY_LENGTH                                              :Longueur
 STR_SORT_BY_LIFE_TIME                                           :Durée de vie restante
 STR_SORT_BY_TIMETABLE_DELAY                                     :Retard sur l'horaire
 STR_SORT_BY_FACILITY                                            :Type de station
-STR_SORT_BY_WAITING                                             :Marchandises en attente
 STR_SORT_BY_RATING_MAX                                          :Meilleure qualité de service
 STR_SORT_BY_RATING_MIN                                          :Pire qualité de service
 STR_SORT_BY_ENGINE_ID                                           :ID véhicule (tri classique)

@@ -276,7 +276,6 @@ STR_SORT_BY_LENGTH                                              :長さ
 STR_SORT_BY_LIFE_TIME                                           :寿命までの残期間
 STR_SORT_BY_TIMETABLE_DELAY                                     :到着時刻の遅れ
 STR_SORT_BY_FACILITY                                            :駅の種類
-STR_SORT_BY_WAITING                                             :積載待ち貨物の価値
 STR_SORT_BY_RATING_MAX                                          :貨物運搬の最高評価
 STR_SORT_BY_RATING_MIN                                          :貨物運搬の最低評価
 STR_SORT_BY_ENGINE_ID                                           :エンジンID（標準）

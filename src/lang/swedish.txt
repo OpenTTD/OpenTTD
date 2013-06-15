@@ -278,7 +278,6 @@ STR_SORT_BY_LENGTH                                              :Längd
 STR_SORT_BY_LIFE_TIME                                           :Återstående livstid
 STR_SORT_BY_TIMETABLE_DELAY                                     :Tidtabellsförsening
 STR_SORT_BY_FACILITY                                            :Stationstyp
-STR_SORT_BY_WAITING                                             :Värde på väntande last
 STR_SORT_BY_RATING_MAX                                          :Högsta värdering av last
 STR_SORT_BY_RATING_MIN                                          :Lägsta värdering av last
 STR_SORT_BY_ENGINE_ID                                           :MotorID (klassisk sortering)

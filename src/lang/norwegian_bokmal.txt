@@ -279,7 +279,6 @@ STR_SORT_BY_LENGTH                                              :Lengde
 STR_SORT_BY_LIFE_TIME                                           :Gjenværende levetid
 STR_SORT_BY_TIMETABLE_DELAY                                     :Rutetabellforsinkelse
 STR_SORT_BY_FACILITY                                            :Stasjonstype
-STR_SORT_BY_WAITING                                             :Verdi på ventende varer
 STR_SORT_BY_RATING_MAX                                          :Høyeste varerating
 STR_SORT_BY_RATING_MIN                                          :Laveste varerating
 STR_SORT_BY_ENGINE_ID                                           :MaskinID (klassisk type)

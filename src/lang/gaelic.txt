@@ -466,7 +466,6 @@ STR_SORT_BY_LENGTH                                              :Faide
 STR_SORT_BY_LIFE_TIME                                           :Beatha air fhàgail
 STR_SORT_BY_TIMETABLE_DELAY                                     :Fadal clàir-ama
 STR_SORT_BY_FACILITY                                            :Seòrsa stèisein
-STR_SORT_BY_WAITING                                             :Luach carago a' feitheamh
 STR_SORT_BY_RATING_MAX                                          :Rangachadh carago as motha
 STR_SORT_BY_RATING_MIN                                          :Rangachadh carago as lugha
 STR_SORT_BY_ENGINE_ID                                           :Aithnichear einnsein (seòrsachadh clasaigeach)

@@ -275,7 +275,6 @@ STR_SORT_BY_LENGTH                                              :Fad
 STR_SORT_BY_LIFE_TIME                                           :Saolré fágtha
 STR_SORT_BY_TIMETABLE_DELAY                                     :Moill san amchlár
 STR_SORT_BY_FACILITY                                            :Cineál stáisiúin
-STR_SORT_BY_WAITING                                             :Luach an lastais atá ag fanacht
 STR_SORT_BY_RATING_MAX                                          :Rátáil lastais is airde
 STR_SORT_BY_RATING_MIN                                          :Rátáil lastais is ísle
 STR_SORT_BY_ENGINE_ID                                           :ID an Innill (sórtáil chlaisiceach)

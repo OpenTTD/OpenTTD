@@ -464,7 +464,6 @@ STR_SORT_BY_LENGTH                                              :Dužini
 STR_SORT_BY_LIFE_TIME                                           :Isticanju životnog veka
 STR_SORT_BY_TIMETABLE_DELAY                                     :Kašnjenje u rasporedu
 STR_SORT_BY_FACILITY                                            :Vrsti stanice
-STR_SORT_BY_WAITING                                             :Vrednosti tovara na čekanju
 STR_SORT_BY_RATING_MAX                                          :Najvišoj oceni tereta
 STR_SORT_BY_RATING_MIN                                          :Najnižoj oceni tereta
 STR_SORT_BY_ENGINE_ID                                           :ID mašine (standardno)

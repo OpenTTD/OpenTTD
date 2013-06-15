@@ -276,7 +276,6 @@ STR_SORT_BY_LENGTH                                              :长度
 STR_SORT_BY_LIFE_TIME                                           :剩余寿命年限
 STR_SORT_BY_TIMETABLE_DELAY                                     :晚点
 STR_SORT_BY_FACILITY                                            :车站类型
-STR_SORT_BY_WAITING                                             :等待的货物数量
 STR_SORT_BY_RATING_MAX                                          :车站中最高的货物评价
 STR_SORT_BY_RATING_MIN                                          :车站中最低的货物评价
 STR_SORT_BY_ENGINE_ID                                           :引擎ID （默认方式）
