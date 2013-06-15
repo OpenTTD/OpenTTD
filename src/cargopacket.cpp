@@ -450,6 +450,11 @@ bool VehicleCargoList::Stage(bool accepted, StationID current_station, StationID
 			assert((cargo_next != next_station || cargo_next == INVALID_STATION) &&
 					cargo_next != current_station);
 		} else {
+			/* Rewrite an invalid source station to some random other one to
+			 * avoid keeping the cargo in the vehicle forever. */
+			if (cp->source == INVALID_STATION && !ge->flows.empty()) {
+				cp->source = ge->flows.begin()->first;
+			}
 			cargo_next = ge->GetVia(cp->source);
 			if (cargo_next == INVALID_STATION) {
 				action = (accepted && cp->source != current_station) ? MTA_DELIVER : MTA_KEEP;
