@@ -436,6 +436,21 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	return order;
 }
 
+/** Hotkeys for order window. */
+enum {
+	OHK_SKIP,
+	OHK_DELETE,
+	OHK_GOTO,
+	OHK_NONSTOP,
+	OHK_FULLLOAD,
+	OHK_UNLOAD,
+	OHK_NEAREST_DEPOT,
+	OHK_ALWAYS_SERVICE,
+	OHK_TRANSFER,
+	OHK_NO_UNLOAD,
+	OHK_NO_LOAD,
+};
+
 /**
  * %Order window code for all vehicles.
  *
@@ -553,9 +568,8 @@ private:
 
 	/**
 	 * Handle the click on the goto button.
-	 * @param i Dummy parameter.
 	 */
-	void OrderClick_Goto(int i)
+	void OrderClick_Goto()
 	{
 		this->SetWidgetDirty(WID_O_GOTO);
 		this->ToggleWidgetLoweredState(WID_O_GOTO);
@@ -587,7 +601,7 @@ private:
 	/**
 	 * Handle the 'no loading' hotkey
 	 */
-	void OrderHotkey_NoLoad(int i)
+	void OrderHotkey_NoLoad()
 	{
 		this->OrderClick_FullLoad(OLFB_NO_LOAD);
 	}
@@ -609,9 +623,8 @@ private:
 
 	/**
 	 * Handle the click on the service in nearest depot button.
-	 * @param i Dummy parameter.
 	 */
-	void OrderClick_NearestDepot(int i)
+	void OrderClick_NearestDepot()
 	{
 		Order order;
 		order.next = NULL;
@@ -625,9 +638,8 @@ private:
 
 	/**
 	 * Handle the click on the conditional order button.
-	 * @param i Dummy parameter.
 	 */
-	void OrderClick_Conditional(int i)
+	void OrderClick_Conditional()
 	{
 		this->LowerWidget(WID_O_GOTO);
 		this->SetWidgetDirty(WID_O_GOTO);
@@ -637,9 +649,8 @@ private:
 
 	/**
 	 * Handle the click on the share button.
-	 * @param i Dummy parameter.
 	 */
-	void OrderClick_Share(int i)
+	void OrderClick_Share()
 	{
 		this->LowerWidget(WID_O_GOTO);
 		this->SetWidgetDirty(WID_O_GOTO);
@@ -673,7 +684,7 @@ private:
 	/**
 	 * Handle the transfer hotkey
 	 */
-	void OrderHotkey_Transfer(int i)
+	void OrderHotkey_Transfer()
 	{
 		this->OrderClick_Unload(OUFB_TRANSFER);
 	}
@@ -681,7 +692,7 @@ private:
 	/**
 	 * Handle the 'no unload' hotkey
 	 */
-	void OrderHotkey_NoUnload(int i)
+	void OrderHotkey_NoUnload()
 	{
 		this->OrderClick_Unload(OUFB_NO_UNLOAD);
 	}
@@ -711,9 +722,8 @@ private:
 	/**
 	 * Handle the click on the skip button.
 	 * If ctrl is pressed, skip to selected order, else skip to current order + 1
-	 * @param i Dummy parameter.
 	 */
-	void OrderClick_Skip(int i)
+	void OrderClick_Skip()
 	{
 		/* Don't skip when there's nothing to skip */
 		if (_ctrl_pressed && this->vehicle->cur_implicit_order_index == this->OrderGetSel()) return;
@@ -725,9 +735,8 @@ private:
 
 	/**
 	 * Handle the click on the delete button.
-	 * @param i Dummy parameter.
 	 */
-	void OrderClick_Delete(int i)
+	void OrderClick_Delete()
 	{
 		/* When networking, move one order lower */
 		int selected = this->selected_order + (int)_networking;
@@ -743,15 +752,14 @@ private:
 	 * If 'End of Shared Orders' isn't selected, do nothing. If Ctrl is pressed, call OrderClick_Delete and exit.
 	 * To stop sharing this vehicle order list, we copy the orders of a vehicle that share this order list. That way we
 	 * exit the group of shared vehicles while keeping the same order list.
-	 * @param i Dummy parameter.
 	 */
-	void OrderClick_StopSharing(int i)
+	void OrderClick_StopSharing()
 	{
 		/* Don't try to stop sharing orders if 'End of Shared Orders' isn't selected. */
 		if (!this->vehicle->IsOrderListShared() || this->selected_order != this->vehicle->GetNumOrders()) return;
 		/* If Ctrl is pressed, delete the order list as if we clicked the 'Delete' button. */
 		if (_ctrl_pressed) {
-			this->OrderClick_Delete(0);
+			this->OrderClick_Delete();
 			return;
 		}
 
@@ -818,7 +826,7 @@ public:
 				if (order->IsType(OT_GOTO_STATION)) station_orders++;
 			}
 
-			if (station_orders < 2) this->OrderClick_Goto(0);
+			if (station_orders < 2) this->OrderClick_Goto();
 		}
 		this->OnInvalidateData(VIWD_MODIFY_ORDERS);
 	}
@@ -1230,15 +1238,15 @@ public:
 			}
 
 			case WID_O_SKIP:
-				this->OrderClick_Skip(0);
+				this->OrderClick_Skip();
 				break;
 
 			case WID_O_DELETE:
-				this->OrderClick_Delete(0);
+				this->OrderClick_Delete();
 				break;
 
 			case WID_O_STOP_SHARING:
-				this->OrderClick_StopSharing(0);
+				this->OrderClick_StopSharing();
 				break;
 
 			case WID_O_NON_STOP:
@@ -1253,7 +1261,7 @@ public:
 
 			case WID_O_GOTO:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
-					this->OrderClick_Goto(0);
+					this->OrderClick_Goto();
 				} else {
 					ShowDropDownMenu(this, this->vehicle->type == VEH_AIRCRAFT ? _order_goto_dropdown_aircraft : _order_goto_dropdown, 0, WID_O_GOTO, 0, 0);
 				}
@@ -1369,10 +1377,10 @@ public:
 
 			case WID_O_GOTO:
 				switch (index) {
-					case 0: this->OrderClick_Goto(0); break;
-					case 1: this->OrderClick_NearestDepot(0); break;
-					case 2: this->OrderClick_Conditional(0); break;
-					case 3: this->OrderClick_Share(0); break;
+					case 0: this->OrderClick_Goto(); break;
+					case 1: this->OrderClick_NearestDepot(); break;
+					case 2: this->OrderClick_Conditional(); break;
+					case 3: this->OrderClick_Share(); break;
 					default: NOT_REACHED();
 				}
 				break;
@@ -1411,11 +1419,11 @@ public:
 			}
 
 			case WID_O_DELETE:
-				this->OrderClick_Delete(0);
+				this->OrderClick_Delete();
 				break;
 
 			case WID_O_STOP_SHARING:
-				this->OrderClick_StopSharing(0);
+				this->OrderClick_StopSharing();
 				break;
 		}
 
@@ -1432,7 +1440,21 @@ public:
 	{
 		if (this->vehicle->owner != _local_company) return ES_NOT_HANDLED;
 
-		return CheckHotkeyMatch<OrdersWindow>(order_hotkeys, keycode, this) != -1 ? ES_HANDLED : ES_NOT_HANDLED;
+		switch (CheckHotkeyMatch<OrdersWindow>(order_hotkeys, keycode, this)) {
+			case OHK_SKIP:           this->OrderClick_Skip();         break;
+			case OHK_DELETE:         this->OrderClick_Delete();       break;
+			case OHK_GOTO:           this->OrderClick_Goto();         break;
+			case OHK_NONSTOP:        this->OrderClick_Nonstop(-1);    break;
+			case OHK_FULLLOAD:       this->OrderClick_FullLoad(-1);   break;
+			case OHK_UNLOAD:         this->OrderClick_Unload(-1);     break;
+			case OHK_NEAREST_DEPOT:  this->OrderClick_NearestDepot(); break;
+			case OHK_ALWAYS_SERVICE: this->OrderClick_Service(-1);    break;
+			case OHK_TRANSFER:       this->OrderHotkey_Transfer();    break;
+			case OHK_NO_UNLOAD:      this->OrderHotkey_NoUnload();    break;
+			case OHK_NO_LOAD:        this->OrderHotkey_NoLoad();      break;
+			default: return ES_NOT_HANDLED;
+		}
+		return ES_HANDLED;
 	}
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
@@ -1508,17 +1530,17 @@ public:
 };
 
 Hotkey<OrdersWindow> OrdersWindow::order_hotkeys[] = {
-	Hotkey<OrdersWindow>('D', "skip", 0, &OrdersWindow::OrderClick_Skip),
-	Hotkey<OrdersWindow>('F', "delete", 0, &OrdersWindow::OrderClick_Delete),
-	Hotkey<OrdersWindow>('G', "goto", 0, &OrdersWindow::OrderClick_Goto),
-	Hotkey<OrdersWindow>('H', "nonstop", 0, &OrdersWindow::OrderClick_Nonstop),
-	Hotkey<OrdersWindow>('J', "fullload", 0, &OrdersWindow::OrderClick_FullLoad),
-	Hotkey<OrdersWindow>('K', "unload", 0, &OrdersWindow::OrderClick_Unload),
-	Hotkey<OrdersWindow>((uint16)0, "nearest_depot", 0, &OrdersWindow::OrderClick_NearestDepot),
-	Hotkey<OrdersWindow>((uint16)0, "always_service", 0, &OrdersWindow::OrderClick_Service),
-	Hotkey<OrdersWindow>((uint16)0, "transfer", 0, &OrdersWindow::OrderHotkey_Transfer),
-	Hotkey<OrdersWindow>((uint16)0, "no_unload", 0, &OrdersWindow::OrderHotkey_NoUnload),
-	Hotkey<OrdersWindow>((uint16)0, "no_load", 0, &OrdersWindow::OrderHotkey_NoLoad),
+	Hotkey<OrdersWindow>('D', "skip", OHK_SKIP),
+	Hotkey<OrdersWindow>('F', "delete", OHK_DELETE),
+	Hotkey<OrdersWindow>('G', "goto", OHK_GOTO),
+	Hotkey<OrdersWindow>('H', "nonstop", OHK_NONSTOP),
+	Hotkey<OrdersWindow>('J', "fullload", OHK_FULLLOAD),
+	Hotkey<OrdersWindow>('K', "unload", OHK_UNLOAD),
+	Hotkey<OrdersWindow>((uint16)0, "nearest_depot", OHK_NEAREST_DEPOT),
+	Hotkey<OrdersWindow>((uint16)0, "always_service", OHK_ALWAYS_SERVICE),
+	Hotkey<OrdersWindow>((uint16)0, "transfer", OHK_TRANSFER),
+	Hotkey<OrdersWindow>((uint16)0, "no_unload", OHK_NO_UNLOAD),
+	Hotkey<OrdersWindow>((uint16)0, "no_load", OHK_NO_LOAD),
 	HOTKEY_LIST_END(OrdersWindow)
 };
 Hotkey<OrdersWindow> *_order_hotkeys = OrdersWindow::order_hotkeys;
