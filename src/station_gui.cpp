@@ -229,17 +229,29 @@ protected:
 	}
 
 	/** Sort stations by their waiting cargo */
-	static int CDECL StationWaitingSorter(const Station * const *a, const Station * const *b)
+	static int CDECL StationWaitingTotalSorter(const Station * const *a, const Station * const *b)
 	{
-		Money diff = 0;
+		int diff = 0;
 
 		CargoID j;
 		FOR_EACH_SET_CARGO_ID(j, cargo_filter) {
-			if ((*a)->goods[j].cargo.TotalCount() > 0) diff += GetTransportedGoodsIncome((*a)->goods[j].cargo.TotalCount(), 20, 50, j);
-			if ((*b)->goods[j].cargo.TotalCount() > 0) diff -= GetTransportedGoodsIncome((*b)->goods[j].cargo.TotalCount(), 20, 50, j);
+			diff += (*a)->goods[j].cargo.TotalCount() - (*b)->goods[j].cargo.TotalCount();
 		}
 
-		return ClampToI32(diff);
+		return diff;
+	}
+
+	/** Sort stations by their available waiting cargo */
+	static int CDECL StationWaitingAvailableSorter(const Station * const *a, const Station * const *b)
+	{
+		int diff = 0;
+
+		CargoID j;
+		FOR_EACH_SET_CARGO_ID(j, cargo_filter) {
+			diff += (*a)->goods[j].cargo.AvailableCount() - (*b)->goods[j].cargo.AvailableCount();
+		}
+
+		return diff;
 	}
 
 	/** Sort stations by their rating */
@@ -644,7 +656,8 @@ const Station *CompanyStationsWindow::last_station = NULL;
 GUIStationList::SortFunction * const CompanyStationsWindow::sorter_funcs[] = {
 	&StationNameSorter,
 	&StationTypeSorter,
-	&StationWaitingSorter,
+	&StationWaitingTotalSorter,
+	&StationWaitingAvailableSorter,
 	&StationRatingMaxSorter,
 	&StationRatingMinSorter
 };
@@ -653,7 +666,8 @@ GUIStationList::SortFunction * const CompanyStationsWindow::sorter_funcs[] = {
 const StringID CompanyStationsWindow::sorter_names[] = {
 	STR_SORT_BY_NAME,
 	STR_SORT_BY_FACILITY,
-	STR_SORT_BY_WAITING,
+	STR_SORT_BY_WAITING_TOTAL,
+	STR_SORT_BY_WAITING_AVAILABLE,
 	STR_SORT_BY_RATING_MAX,
 	STR_SORT_BY_RATING_MIN,
 	INVALID_STRING_ID
