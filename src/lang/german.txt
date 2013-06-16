@@ -279,6 +279,8 @@ STR_SORT_BY_LENGTH                                              :Länge
 STR_SORT_BY_LIFE_TIME                                           :Verbleibende Betriebsdauer
 STR_SORT_BY_TIMETABLE_DELAY                                     :Verspätung
 STR_SORT_BY_FACILITY                                            :Stationsart
+STR_SORT_BY_WAITING_TOTAL                                       :Insgesamt wartende Fracht
+STR_SORT_BY_WAITING_AVAILABLE                                   :Verfügbare, wartende Fracht
 STR_SORT_BY_RATING_MAX                                          :Beste Bewertung
 STR_SORT_BY_RATING_MIN                                          :Schlechteste Bewertung
 STR_SORT_BY_ENGINE_ID                                           :Baureihe

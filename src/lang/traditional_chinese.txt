@@ -221,6 +221,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}篩選�
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}輸入篩選字串
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}輸入篩選所使用的關鍵字，對於清單……
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}選擇群組次序
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}選擇排序 (逆序／順序)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}選擇排序項目
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}選擇過濾條件
@@ -302,6 +303,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}顯示�
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}列出各公司車站清單
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}顯示公司財務資訊
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}顯示公司一般資訊
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}顯示遊戲目標列表
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}顯示圖表
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}顯示公司排行榜
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}出資建造新工廠或顯示所有工業清單
@@ -1559,12 +1561,36 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :設定遊戲開
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :鋪設道路時移除不合理的路面：{STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :設定是否在資助市鎮重建道路時移除死路
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :每{STRING}日更新貨物分配圖
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :指定每次計算貨物分配圖之間的時間。由於每次重新計算只會處理一個貨物分配圖元件，因此本設定並不是指「每隔若干日整個貨物分配圖就會重新計算」。如果您把時間設定得越短，則系統需要使用更多的中央處理器時間去計算貨物分配圖。相反，如果您把時間設定得越長，則貨物被派往新路線所需的時間越長。
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :重新計算貨物分配圖所用日數：{STRING}
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :指定更新貨物分配圖元件所用的時間。每當貨物分配圖被重新運算，系統會衍生一執行緒。該執行緒的持續時間即為本設定的值。這個設定賦值越小，執行緒越有可能在應當停止的時候仍未完成運算，使遊戲出現運行延遲的情況。相反，這個設定賦值越大，則貨物分配越需較長時間回應路線變更。
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :手動
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :不對稱
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :對稱
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :乘客分配方式：{STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :設使有交通路線連接甲、乙兩站。「對稱」指甲站往乙站的乘客數量與乙站往甲站的乘客數量大致相同。「不對稱」指任何一站往另一站的乘客數量皆由系統隨意決定。「手動」指系統不會自動分配乘客的目的地。
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :郵件分配方式：{STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :設使有交通路線連接甲、乙兩站。「對稱」指甲站往乙站的郵件數量與乙站往甲站的郵件數量大致相同。「不對稱」指任何一站往另一站的郵件數量皆由系統隨意決定。「手動」指系統不會自動分配郵件的目的地。
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :裝甲貨物分配方式：{STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :依原有設定，「裝甲貨物」包括溫帶場景的「貴重物品」、寒帶場景的「金塊」及亞熱帶場景的「鑽石」。一些 NewGRF 可能有不同設定。{} 設使有交通路線連接甲、乙兩站。「對稱」指甲站往乙站的郵件數量與乙站往甲站的裝甲貨物數量大致相同。「不對稱」指任何一站往另一站的裝甲貨物數量皆由系統隨意決定。「手動」指系統不會自動分配裝甲貨物的目的地。{} 建議的設定：在溫帶場景應使用「對稱」，因為銀行會互相運送貴重物品；而在寒帶場景及亞熱帶場景應使用「不對稱」，因為銀行不會把金塊或鑽石送回礦場。
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :其他貨物分配方式：{STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :設使有交通路線連接甲、乙兩站。「對稱」指甲站往乙站的貨物數量與乙站往甲站的貨物數量大致相同。「不對稱」指任何一站往另一站的貨物數量皆由系統隨意決定。「手動」指系統不會自動分配貨物的目的地。{}由於貨物一般只會被單方向運輸，此設定應被賦值為「不對稱」或「手動」。
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :分配精確度：{STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :此設定賦值越大，則運算連結圖所需的處理器時間越長，您可能會因此見到遊戲運行延遲。如果此設定賦值越小，則貨物分配的準確度越低，而您可能會發現部份貨物沒有被送往您預期它們會到達的目的地。
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :距離對需求的影響：{STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :如果您對此設定賦大於0的值，則出發站與另一站的距離會影響該路線獲分派貨物的數量。目的站距離越遠，獲分派的貨物越少。此設定的賦值越大，越多貨物會被派往較接近的站。
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :在對稱模式下產生的返程貨物比例： {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :如把此值定於100%以下，到達一站的貨物不會全部被送回始發站。如此設定的值為0%，則對稱模式的表現跟不對稱模式完全一樣
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :如最短路徑的飽和度超過{STRING}，貨物改用容量較大的路徑
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Cargodist子程序在派送貨物時，會優先使用最短路徑，至其飽和後改採第二短的路徑，如此類推。當所有路徑皆飽和但仍未滿足需求，系統會由容量較大的路徑開始繼續加載貨物。由於路徑飽和度難以準確估算，此設定容許您定義一值，使短路徑達至該飽和度後，系統加載容量較大的路徑。如此設定的值少於100%，即使系統高估路徑容量，也不會使過多的貨物滯留車站。
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}介面
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}建造
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}交通工具
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}車站
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}經濟
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}貨物分配
 STR_CONFIG_SETTING_AI                                           :{ORANGE}競爭對手
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}顯示選項
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}互動
@@ -2902,9 +2928,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}購買�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}冒著被抓到嚴懲的風險，向地方政府行賄以提高評價{}費用：{CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} 遊戲目標
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}全局目標
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}全局目標:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- 當前無目標 -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- 不適用 -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}公司目標:
@@ -2946,6 +2975,13 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}將 {ST
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}點選運送服務可將工業／市鎮置於畫面中央。 按住 Ctrl 點選可於工業／市鎮位置開啟新視窗視野
 
 # Story book window
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :第{NUM}頁
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}在下拉式選單中選擇一頁以前往該頁觀看
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}上一頁
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}前往上一頁繼續觀看
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}下一頁
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}前往下一頁繼續觀看
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}車站名稱 - 點選名稱可將車站置於畫面中央。按住 Ctrl 點選可於車站位置開啟新視窗視野
@@ -2977,7 +3013,24 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}顯示�
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}按月供應量與本地評比：
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}群組方式
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} 來自 {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} 途經 {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} 前往 {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} 來自 不明的車站
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} 前往 任何車站
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} 途經 任何車站
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} 來自 本站
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} 途經 本站
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} 前往 本站
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} 直達該站
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :來源-途經-目的地
+STR_STATION_VIEW_GROUP_S_D_V                                    :來源-目的地-途經
+STR_STATION_VIEW_GROUP_V_S_D                                    :途經-來源-目的地
+STR_STATION_VIEW_GROUP_V_D_S                                    :途經-目的地-來源
+STR_STATION_VIEW_GROUP_D_S_V                                    :目的地-來源-途經
+STR_STATION_VIEW_GROUP_D_V_S                                    :目的地-途經-來源
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :慘不忍睹
@@ -3725,6 +3778,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}此時�
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}此時刻表實施日期為 {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}實施日期
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}選擇此時刻表開始實施的日期。如按住Ctrl鍵點選此掣，而時刻表每一項指令皆已指定持續時間，則系統會為每個共用此時刻表的交通工具賦予一個開始實施時間表的日期，使這些交通工具的出發時間平均分配。
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}修改時刻
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}改變目前選定命令所需的時間

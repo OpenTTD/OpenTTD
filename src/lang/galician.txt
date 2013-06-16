@@ -222,6 +222,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrar 
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introducir cadea de texto a filtrar
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduce unha palabra clave pola que filtra-la lista
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Selecciona a orde de agrupamento
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecciona a ordenación (descendente/ascendente)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecciona o criterio de ordenación
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecciona o criterio de filtrado
@@ -278,6 +279,8 @@ STR_SORT_BY_LENGTH                                              :Lonxitude
 STR_SORT_BY_LIFE_TIME                                           :Vida útil restante
 STR_SORT_BY_TIMETABLE_DELAY                                     :Retraso
 STR_SORT_BY_FACILITY                                            :Tipo de estación
+STR_SORT_BY_WAITING_TOTAL                                       :Carga total en agarda
+STR_SORT_BY_WAITING_AVAILABLE                                   :Carga en agarda dispoñíbel
 STR_SORT_BY_RATING_MAX                                          :Maior valoración de carga
 STR_SORT_BY_RATING_MIN                                          :Menor valoración de carga
 STR_SORT_BY_ENGINE_ID                                           :ID do motor (ordenación clásica)
@@ -303,6 +306,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Amosa-la
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Amosa-la lista das estacións da compañía
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Amosa-la información das finanzas da compañía
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Amosa-la información xeral da compañía
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Mostrar historial
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK} Mostrar lista de obxectivos
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Amosa-las gráficas
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Amosa-lo cadro da liga de compañías
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financia-la construción dunha nova industria ou listar tódalas industrias
@@ -1560,12 +1565,15 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Relación entre
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Elimina-los elementos absurdos das estradas en construción: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Eliminar tramos de estrada sen saída durante a reconstrución financiada das estradas
 
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturación de rutas curtas antes de empregar rutas con capacidade: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frecuentemente hai múltiples rutas posíbeis entre dúas estacións dadas. En primero lugar intentarase satura-la ruta máis curta, para posteriormente satura-la segunda máis curta e así sucesivamente. A saturación está determinada por unha estimación de capacidade e uso planificado. Unha vez saturadas tódalas rutas, se aínda queda demanda, sobrecargaranse as rutas comezando por aquelas de maior capacidade. A maior parte das veces, o algoritmo non estimará a capacidade con precisión. Esta opción permite especificar ata que porcentaxe de saturación pode ter unha ruta curta na primeira volta do algoritmo antes de escolle-la seguinte máis curta. Fíxao en menos do 100% para evitar estacións sobrecargadas no caso de que se sobreestime a capacidade.
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construción
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehículos
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Estacións
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economía
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Distribución da carga
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidores
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Mostrar opcións
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interacción
@@ -2903,9 +2911,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Compra-
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Suborna-la autoridade local para mellora-la túa puntuación, co risco dunha gran penalización se o descobren.{}Custo: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Obxectivos
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Obxectivos globais
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Obxectivos globais:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ningún -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Non aplicábel -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Obxectivos da compañía:
@@ -2947,6 +2958,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Pincha no servizo para centrar a vista na industria/cidade. CTRL+Click abre unha nova fiestra na localización da industria/cidade
 
 # Story book window
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Historial global
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomes das estacións - pincha nun nome para centrar a vista na estación. CTRL+Click abre unha nova fiestra na localización da estación
@@ -2978,7 +2990,28 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostra-l
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Suministro mensual e puntuación local:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Agrupar por
+STR_STATION_VIEW_WAITING_STATION                                :Estación: en agarda
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Cantidade: en agarda
+STR_STATION_VIEW_PLANNED_STATION                                :Estación: planificada
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Cantidade: planificada
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} dende{STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} vía {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} a {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} dende estación descoñecida
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} a calquera estación
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} pasando por calquera estación
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} dende esta estación
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} con parada nesta estación
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} a esta estación
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} sen paradas
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Orixe-vía-destino
+STR_STATION_VIEW_GROUP_S_D_V                                    :Orixe-destino-vía
+STR_STATION_VIEW_GROUP_V_S_D                                    :Vía-orixe-destino
+STR_STATION_VIEW_GROUP_V_D_S                                    :Vía-destino-orixe
+STR_STATION_VIEW_GROUP_D_S_V                                    :Destino-orixe-vía
+STR_STATION_VIEW_GROUP_D_V_S                                    :Destino-vía-orixe
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Pésima
@@ -3726,6 +3759,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este hor
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este horario comezará o {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data comezo
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecciona unha data coma punto de inicio para este horario. Ctrl + click determina o punto de partida deste horario e distribúe uniformemente tódolos vehículos que compartan esta orde baséandose na súa orde relativa. se a orde está completamente tabulada nos horarios
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar Tempo
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambiar o tempo que debería levar a orde seleccionada

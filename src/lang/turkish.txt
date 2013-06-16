@@ -278,6 +278,8 @@ STR_SORT_BY_LENGTH                                              :Uzunluk
 STR_SORT_BY_LIFE_TIME                                           :Kalan ömür
 STR_SORT_BY_TIMETABLE_DELAY                                     :Zaman çizelgesi gecikmesi
 STR_SORT_BY_FACILITY                                            :İstasyon türü
+STR_SORT_BY_WAITING_TOTAL                                       :Toplam bekleyen kargo
+STR_SORT_BY_WAITING_AVAILABLE                                   :Kullanılabilir bekleyen kargo
 STR_SORT_BY_RATING_MAX                                          :En yüksek kargo puanı
 STR_SORT_BY_RATING_MIN                                          :En düşük kargo puanı
 STR_SORT_BY_ENGINE_ID                                           :LokoAdı (klasik sıra)
@@ -303,6 +305,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Teşvikl
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Şirkete ait istasyonları listele
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Şirketin mâli durumunu göster
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Şirketin genel durumunu göster
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Hikaye kitabını görüntüle
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Amaç listesini görüntüle
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafikleri göster
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Şirketler ligini göster
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Yeni fabrika kur veya tüm fabrikaları listele
@@ -460,37 +464,37 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Kirli blokları
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
-STR_ORDINAL_NUMBER_1ST                                          :1inci
-STR_ORDINAL_NUMBER_2ND                                          :2nci
-STR_ORDINAL_NUMBER_3RD                                          :3üncü
-STR_ORDINAL_NUMBER_4TH                                          :4üncü
-STR_ORDINAL_NUMBER_5TH                                          :5inci
-STR_ORDINAL_NUMBER_6TH                                          :6ncı
-STR_ORDINAL_NUMBER_7TH                                          :7nci
-STR_ORDINAL_NUMBER_8TH                                          :8inci
-STR_ORDINAL_NUMBER_9TH                                          :9uncu
-STR_ORDINAL_NUMBER_10TH                                         :10uncu
-STR_ORDINAL_NUMBER_11TH                                         :11inci
-STR_ORDINAL_NUMBER_12TH                                         :12nci
-STR_ORDINAL_NUMBER_13TH                                         :13üncü
-STR_ORDINAL_NUMBER_14TH                                         :14üncü
-STR_ORDINAL_NUMBER_15TH                                         :15inci
-STR_ORDINAL_NUMBER_16TH                                         :16ncı
-STR_ORDINAL_NUMBER_17TH                                         :17nci
-STR_ORDINAL_NUMBER_18TH                                         :18inci
-STR_ORDINAL_NUMBER_19TH                                         :19uncu
-STR_ORDINAL_NUMBER_20TH                                         :20nci
-STR_ORDINAL_NUMBER_21ST                                         :21inci
-STR_ORDINAL_NUMBER_22ND                                         :22nci
-STR_ORDINAL_NUMBER_23RD                                         :23üncü
-STR_ORDINAL_NUMBER_24TH                                         :24üncü
-STR_ORDINAL_NUMBER_25TH                                         :25inci
-STR_ORDINAL_NUMBER_26TH                                         :26ncı
-STR_ORDINAL_NUMBER_27TH                                         :27nci
-STR_ORDINAL_NUMBER_28TH                                         :28inci
-STR_ORDINAL_NUMBER_29TH                                         :29uncu
-STR_ORDINAL_NUMBER_30TH                                         :30uncu
-STR_ORDINAL_NUMBER_31ST                                         :31inci
+STR_ORDINAL_NUMBER_1ST                                          :1.
+STR_ORDINAL_NUMBER_2ND                                          :2.
+STR_ORDINAL_NUMBER_3RD                                          :3.
+STR_ORDINAL_NUMBER_4TH                                          :4.
+STR_ORDINAL_NUMBER_5TH                                          :5.
+STR_ORDINAL_NUMBER_6TH                                          :6.
+STR_ORDINAL_NUMBER_7TH                                          :7.
+STR_ORDINAL_NUMBER_8TH                                          :8.
+STR_ORDINAL_NUMBER_9TH                                          :9.
+STR_ORDINAL_NUMBER_10TH                                         :10.
+STR_ORDINAL_NUMBER_11TH                                         :11.
+STR_ORDINAL_NUMBER_12TH                                         :12.
+STR_ORDINAL_NUMBER_13TH                                         :13.
+STR_ORDINAL_NUMBER_14TH                                         :14.
+STR_ORDINAL_NUMBER_15TH                                         :15.
+STR_ORDINAL_NUMBER_16TH                                         :16.
+STR_ORDINAL_NUMBER_17TH                                         :17.
+STR_ORDINAL_NUMBER_18TH                                         :18.
+STR_ORDINAL_NUMBER_19TH                                         :19.
+STR_ORDINAL_NUMBER_20TH                                         :20.
+STR_ORDINAL_NUMBER_21ST                                         :21.
+STR_ORDINAL_NUMBER_22ND                                         :22.
+STR_ORDINAL_NUMBER_23RD                                         :23.
+STR_ORDINAL_NUMBER_24TH                                         :24.
+STR_ORDINAL_NUMBER_25TH                                         :25.
+STR_ORDINAL_NUMBER_26TH                                         :26.
+STR_ORDINAL_NUMBER_27TH                                         :27.
+STR_ORDINAL_NUMBER_28TH                                         :28.
+STR_ORDINAL_NUMBER_29TH                                         :29.
+STR_ORDINAL_NUMBER_30TH                                         :30.
+STR_ORDINAL_NUMBER_31ST                                         :31.
 ############ range for days ends
 
 ############ range for months starts
@@ -2760,9 +2764,11 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Bir y�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Yakalanma riskini göze alarak belediyeye rüşvet ver.{} Fiyat: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Evrensel Amaçlar
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Genel hedefler:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Hiçbiri -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Kullanılamaz -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Şirket hedefleri:
@@ -2804,6 +2810,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Görüntüyü ortalamak için endüstriye/şehre tıklayın. Ctrl ile tıklama endüstrinin/şehrin konumunu gösteren yeni bir pencere açar
 
 # Story book window
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Evrensel Hikaye Kitabı
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}İstasyon isimleri - gitmek için istasyon ismini tıklayın. Ctrl ile tıklama istasyonun konumunu gösteren yeni bir pencere açar
@@ -3711,6 +3718,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Gelir: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Gönder: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Gönder: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Aktarım: {CURRENCY_LONG}{WHITE} / {GREEN}Gelir: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Aktarım: {CURRENCY_LONG}{WHITE} / {GREEN}Gelir: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Aktarım: {CURRENCY_LONG}{WHITE} / {RED}Ücret: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Aktarım: {CURRENCY_LONG}{WHITE} / {RED}Ücret: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Tahmini Gider: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Tahmini Gelir: {CURRENCY_LONG}
 

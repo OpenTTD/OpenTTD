@@ -333,6 +333,8 @@ STR_SORT_BY_LENGTH                                              :Pikkus
 STR_SORT_BY_LIFE_TIME                                           :Allesjäänud eluaeg
 STR_SORT_BY_TIMETABLE_DELAY                                     :Hilinemine sõiduplaanis
 STR_SORT_BY_FACILITY                                            :Jaama tüüp
+STR_SORT_BY_WAITING_TOTAL                                       :Kaupa kokku
+STR_SORT_BY_WAITING_AVAILABLE                                   :Kaupa saadaval
 STR_SORT_BY_RATING_MAX                                          :Kõrgeim kaubahinnang
 STR_SORT_BY_RATING_MIN                                          :Madalaim kaubahinnang
 STR_SORT_BY_ENGINE_ID                                           :MootoriID (klassikaline)
@@ -357,6 +359,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Kuva toe
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Kuvab ettevõtte jaamade nimistu
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Kuva ettevõtte finantsolukord
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Kuva üldine info ettevõtte kohta
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Näite juturaamatut
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Näita eesmärke
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Kuva graafikuid
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Kuva ettevõtete edetabel
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Rahasta uute ehitiste konstrueerimist
@@ -1605,12 +1609,15 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Keskmine linna 
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Mittevajaliku eemaldamine teedeehitusel: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Eemalda tupikteed kui rahastatakse kohalikku teedeehitust
 
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Liikluskoormus kõrgema läbilaskevõimega raja otsimiseks: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Kauba vedamisel ühest jaamast teise saab kasutada mitu rada. Kaubajaotusel arvestatakse läbilaskevõimet ja liikluskoormust. Kui liikluskoormus on suurem kui läbilaskevõime, suunatakse kaup kõigepealt kõrgema läbilaskevõimega radadele. Läbilaskevõime arvutamine ei ole täpne; antud seaded määravad liikluskoormuse millal kaup suunatakse järgmisele rajale. Ülekoormuse vältimiseks on soovitatav liikluskoormus alla 100%.
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Kasutajaliides
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Ehitamine
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Sõidukid
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Jaamad
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Majandus
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Kaubajaotus
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurendid
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Kuvaseaded
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Suhtlemine
@@ -1834,6 +1841,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Vaheta k
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Võrgumäng
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ei
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Jah
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Mängija nimi:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Teised mängijad tunnevad sind selle nime järgi
 
@@ -1892,6 +1901,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Mängu n
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Sea parool
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Kaitse oma mäng parooliga, kui sa ei taha, et kõik sellele ligi pääseksid
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :Jah
+STR_NETWORK_START_SERVER_ADVERTISED                             :Jah
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" i}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Suurim klientide arv:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Määra suurim klientide arv. Kõik vabad kohad ei pea täidetud olema
@@ -2930,9 +2941,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Üheks
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Linna omavalitusele ettevõtte hinnangu tõstmise eesmärgil altkäemaksu pakkumine. Vahele jäädes tuleb trahvi maksta.{} Hind: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} eesmärgid
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Üldeesmärgid
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globaalsed eesmärgid:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Mitte ühtegi -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Kehtetu -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Ettevõtte eesmärgid:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliki sihtmärgil et liikuda põhikuvas tööstuse/linna/ruudu asukohale. Ctrl+klõps avab uue vaateakna tööstuse/linna/ruudu asukohas
 
@@ -2972,6 +2986,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Vajuta pakkumisele, et näha linna või tööstuse asukohta. Ctrl+klõps avab uue vaate ettevõtte/linna asukohast
 
 # Story book window
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Üldjuturaamat
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Jaamanimed - nimel vajutades viiakse vaade jaamale. Ctrl+klõps avab jaama asukohas uue vaate.
@@ -3000,6 +3015,7 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Hinnangud
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näita jaamahinnangut
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Rühmitusalus
 
 
 ############ range for rating starts
