@@ -32,7 +32,7 @@ STR_CARGO_PLURAL_COAL                                           :ถ่านห
 STR_CARGO_PLURAL_MAIL                                           :พัสดุ
 STR_CARGO_PLURAL_OIL                                            :น้ำมันดิบ
 STR_CARGO_PLURAL_LIVESTOCK                                      :ปศุสัตว์
-STR_CARGO_PLURAL_GOODS                                          :สินค้า
+STR_CARGO_PLURAL_GOODS                                          :สินค้าแปรรูป
 STR_CARGO_PLURAL_GRAIN                                          :ข้าวสาลี
 STR_CARGO_PLURAL_WOOD                                           :ไม้
 STR_CARGO_PLURAL_IRON_ORE                                       :แร่เหล็ก
@@ -66,7 +66,7 @@ STR_CARGO_SINGULAR_COAL                                         :ถ่านห
 STR_CARGO_SINGULAR_MAIL                                         :ไปรษณีย์
 STR_CARGO_SINGULAR_OIL                                          :น้ำมันดิบ
 STR_CARGO_SINGULAR_LIVESTOCK                                    :ปศุสัตว์
-STR_CARGO_SINGULAR_GOODS                                        :สินค้า
+STR_CARGO_SINGULAR_GOODS                                        :สินค้าแปรรูป
 STR_CARGO_SINGULAR_GRAIN                                        :ข้าวสาลี
 STR_CARGO_SINGULAR_WOOD                                         :ท่อนซุง
 STR_CARGO_SINGULAR_IRON_ORE                                     :แร่เหล็ก
@@ -96,33 +96,33 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :น้ำอั
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :ผู้โดยสาร {COMMA} คน
-STR_QUANTITY_COAL                                               :ถ่านหิน {WEIGHT_LONG} ตัน
+STR_QUANTITY_COAL                                               :ถ่านหิน {WEIGHT_LONG}
 STR_QUANTITY_MAIL                                               :ไปรษณียภัณฑ์ {COMMA} ถุง
 STR_QUANTITY_OIL                                                :น้ำมันดิบ {VOLUME_LONG} ลิตร
 STR_QUANTITY_LIVESTOCK                                          :ปศุสัตว์ {COMMA} ตัว
-STR_QUANTITY_GOODS                                              :สินค้า {COMMA} ลัง
-STR_QUANTITY_GRAIN                                              :ข้าวสาลี {WEIGHT_LONG} ตัน
-STR_QUANTITY_WOOD                                               :ท่อนซุง {WEIGHT_LONG} ท่อน
-STR_QUANTITY_IRON_ORE                                           :แร่เหล็ก {WEIGHT_LONG} ตัน
-STR_QUANTITY_STEEL                                              :เหล็กกล้า {WEIGHT_LONG} ตัน
+STR_QUANTITY_GOODS                                              :สินค้าแปรรูป {COMMA} ลัง
+STR_QUANTITY_GRAIN                                              :ข้าวสาลี {WEIGHT_LONG}
+STR_QUANTITY_WOOD                                               :ท่อนซุง {WEIGHT_LONG}
+STR_QUANTITY_IRON_ORE                                           :แร่เหล็ก {WEIGHT_LONG}
+STR_QUANTITY_STEEL                                              :เหล็กกล้า {WEIGHT_LONG}
 STR_QUANTITY_VALUABLES                                          :ของมีค่า {COMMA} ถุง
-STR_QUANTITY_COPPER_ORE                                         :แร่ทองแดง {WEIGHT_LONG} ตัน
-STR_QUANTITY_MAIZE                                              :ข้าวโพด {WEIGHT_LONG} ตัน
-STR_QUANTITY_FRUIT                                              :ผลไม้ {WEIGHT_LONG} ตัน
+STR_QUANTITY_COPPER_ORE                                         :แร่ทองแดง {WEIGHT_LONG}
+STR_QUANTITY_MAIZE                                              :ข้าวโพด {WEIGHT_LONG}
+STR_QUANTITY_FRUIT                                              :ผลไม้ {WEIGHT_LONG}
 STR_QUANTITY_DIAMONDS                                           :เพชร {COMMA} ถุง
-STR_QUANTITY_FOOD                                               :อาหาร {WEIGHT_LONG} หน่วย
-STR_QUANTITY_PAPER                                              :กระดาษ {WEIGHT_LONG} ตัน
+STR_QUANTITY_FOOD                                               :อาหาร {WEIGHT_LONG}
+STR_QUANTITY_PAPER                                              :กระดาษ {WEIGHT_LONG}
 STR_QUANTITY_GOLD                                               :ทองคำ {COMMA} ถุง
 STR_QUANTITY_WATER                                              :น้ำ {VOLUME_LONG} สิตร
-STR_QUANTITY_WHEAT                                              :ข้าวสาลี {WEIGHT_LONG} ตัน
+STR_QUANTITY_WHEAT                                              :ข้าวสาลี {WEIGHT_LONG}
 STR_QUANTITY_RUBBER                                             :ยางพารา {VOLUME_LONG} สิตร
-STR_QUANTITY_SUGAR                                              :น้ำตาล {WEIGHT_LONG} ตัน
+STR_QUANTITY_SUGAR                                              :น้ำตาล {WEIGHT_LONG}
 STR_QUANTITY_TOYS                                               :ของเล่น {COMMA} ชิ้น
 STR_QUANTITY_SWEETS                                             :ขนมหวาน {COMMA} ถุง
 STR_QUANTITY_COLA                                               :น้ำโคล่า {VOLUME_LONG} สิตร
-STR_QUANTITY_CANDYFLOSS                                         :ขนมสายไหม {WEIGHT_LONG} ตัน
+STR_QUANTITY_CANDYFLOSS                                         :ขนมสายไหม {WEIGHT_LONG}
 STR_QUANTITY_BUBBLES                                            :ฟอง {COMMA} ลูก
-STR_QUANTITY_TOFFEE                                             :ลูกอม {WEIGHT_LONG} ตัน
+STR_QUANTITY_TOFFEE                                             :ลูกอม {WEIGHT_LONG}
 STR_QUANTITY_BATTERIES                                          :ถ่านไฟฉาย {COMMA} ก้อน
 STR_QUANTITY_PLASTIC                                            :พลาสติก {VOLUME_LONG} ลิตร
 STR_QUANTITY_FIZZY_DRINKS                                       :น้ำอัดลมหรรษา {COMMA} ชุด
@@ -135,7 +135,7 @@ STR_ABBREV_COAL                                                 :{TINY_FONT}ถ�
 STR_ABBREV_MAIL                                                 :{TINY_FONT}พัสดุ
 STR_ABBREV_OIL                                                  :{TINY_FONT}น้ำมัน
 STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}เนื้อ
-STR_ABBREV_GOODS                                                :{TINY_FONT}สินค้า
+STR_ABBREV_GOODS                                                :{TINY_FONT}สินค้าแปรรูป
 STR_ABBREV_GRAIN                                                :{TINY_FONT}ข้าวสาลี
 STR_ABBREV_WOOD                                                 :{TINY_FONT}ไม้
 STR_ABBREV_IRON_ORE                                             :{TINY_FONT}แร่
@@ -292,7 +292,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :อัตตร
 STR_SORT_BY_CARGO_CAPACITY                                      :ความจุการบรรทุก
 STR_SORT_BY_RANGE                                               :ช่วง
 STR_SORT_BY_POPULATION                                          :ประชากร
-STR_SORT_BY_RATING                                              :ความนิยม
+STR_SORT_BY_RATING                                              :ความพึงพอใจ
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}หยุดเกมชั่วคราว
@@ -549,7 +549,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}ไม�
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}เปิด/ปิด กราฟสำหรับประเภทของสินค้า
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
-STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}แสดงรายละเอียดความนิยม
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}แสดงรายละเอียดความพึงพอใจของผู้ใช้บริการ
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}ตัวเลือกกราฟของบริษัท
@@ -751,22 +751,22 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}ผู้คนต่างยินดีปรีดา. . .{}ที่เรือเที่ยวปฐมฤกษ์ได้เทียบท่าที่ {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}ผู้คนต่างยินดีปรีดา. . .{}ที่เที่ยวบินปฐมฤกษ์ได้มาถึง{STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}รถไฟชนกัน!!{}{COMMA} เสียชีวิตในกองเพลิงหลังประสบอุบัติเหตุ
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}สลดรถไฟชนรถ มีผู้เสียชีวิต {} คนหลังรถไฟมรณะพุ่งชน
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}สลดรถไฟชนรถ มีผู้เสียชีวิต {}{COMMA} คนหลังรถไฟมรณะพุ่งชน
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}เครื่องบินประสบอุบัติเหตุคร่า{}{COMMA} ศพที่ {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}นกเหล็กตก!{}สาเหตุน้ำมันหมด, {COMMA} ตายอนาถ
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}อุบัติเหตุรถไฟชนกัน!!{}มีผู้เสียชีวิต{COMMA}คนจากอุบัติเหตุครั้งนี้
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}เกิดอุบัติเหตุรถไฟชนรถยนต์!!{}หลังจากเจ้าหน้าที่เข้าตรวจสอบพื้นที่ พบว่าคนขับรถยนต์เสียชีวิต
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}เกิดอุบัติเหตุรถไฟชนรถยนต์ {}มีผู้เสียชีวิต {COMMA} คนหลังรถไฟมรณะพุ่งชน
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}เกิดอุบัติเหตุเครื่องบินตก{}คร่าชีวิตผู้โดยสารและลูกเรือรวม {COMMA} ศพที่ {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}เครื่องบินตกตก!{}ด้วยสาเหตุ เชื้อเพลิงหมดกลางอากาศ, ผู้โดยสารและลูกเรือ {COMMA} ชีวิตตายอนาถ
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}บอลลูนระเบิดที่{STATION}!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}เกิดเหตุบอลลูนระเบิดที่{STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}รถยนต์ถูกทำลายโดย UFO!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}โรงกลั่นน้ำมันระเบิดใกล้เมือง {TOWN}!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}เกิดเหตุโรงกลั่นน้ำมันระเบิดใกล้เมือง {TOWN}! {}ทางการกำลังสั่งอพยพผู้คนในละแวกใกล้เคียงออกนอกพื้นที่
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}โรงงานอุตสาหกรรมถูกทำลายอย่างไม่ทราบสาเหตุใกล้ {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'ยูเอฟโอ' มาลงใกล้ๆ{TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}เหมืองถ่านหินถล่มเสียหายใกล้เมือง {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}น้ำท่วม!{}อย่างน้อย {COMMA} สูญหาย คาดว่าจะเสียชีวิตจากน้ำท่วมอย่างหนัก!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}มี 'UFO' มาลงใกล้ๆ{TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}เกิดเหตุเหมืองถ่านหินถล่มใกล้กับเมืองเมือง {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}น้ำท่วม!{}ประชาชนอย่างน้อย {COMMA} สูญหาย ด้วยกระแสน้ำที่แรงมาก คาดว่าจะเสียชีวิตแล้วจากการจมน้ำ!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}บริษัทขนส่งมีปัญหา
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} จะถูกขายหรือประกาศล้มละลาย ยกเว้นเสียแต่จะฟื้นตัวได้ในเวลาอันสั้น
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}วิกฤติการการเงินบริษัท!!!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} ด้วยสภาวะขาดทุนสะสมต่อเนื่อง บริษัทจะถูกขายหรือประกาศล้มละลาย ยกเว้นเสียแต่จะฟื้นตัวได้ในเวลาอันสั้น
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}ยุบรวมบริษัทขนส่งแล้ว
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} ถูกขายให้ {STRING} เป็นจำนวนเงิน {CURRENCY_LONG}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}ล้มละลาย!
@@ -1747,8 +1747,8 @@ STR_LIVERY_EMU                                                  :รถไฟฟ
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :รถโดยสารของรถจักรไอน้ำ
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :รถโดยสารของรถจักรดีเซล
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :รถโดยสารของรถจักรไฟฟ้า
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :รถโดยสารของรถจักรของรถไฟรางเดี่ยว
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :รถโดยสารของรถจักรของรถไฟแมคเลฟ
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :รถไฟรางเดี่ยว
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :รถไฟแมคเลฟ
 STR_LIVERY_FREIGHT_WAGON                                        :รถสินค้า
 STR_LIVERY_BUS                                                  :รถโดยสาร
 STR_LIVERY_TRUCK                                                :รถบรรทุก
@@ -2890,7 +2890,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}เมืองขยายตัวทุกๆ {ORANGE}{COMMA}{BLACK} วัน
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}เมืองเติบโตทุกๆ {ORANGE}{COMMA}{BLACK} วัน (funded)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}เมือง {RED}ไม่{BLACK} ขยายตัว
-STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}มีมลภาวะทางเสียงจากสนามบิน: {ORANGE}{COMMA}{BLACK}{}มลภาวะทางเสียงสูงสุดที่มีได้: {ORANGE}{COMMA}
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}มีมลภาวะทางเสียงจากสนามบิน: {ORANGE}{COMMA}{BLACK} สูงสุดที่มีได้: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}กดเมื่อไปยังมุมมองใจกลางเมือง
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}เจ้าหน้าที่ท้องถิ่น
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}ดูข้อมูลเกี่ยวกับเจ้าหน้าที่ในท้องถิ่น
@@ -3013,8 +3013,8 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}กำ�
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}สถานนีนี้มีสัมปทานขนส่งจากเมืองนี้
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} ซื้อสัมปทานขนส่งที่เมืองนี้
 
-STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}ความนิยม
-STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}แสดงความนิยมของสถานี
+STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}ความพึงพอใจ
+STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}แสดงความพึงพอใจของสถานี
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}อัตราของการขนส่งและความพึงพอใจในท้องถิ่น:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
@@ -3117,7 +3117,7 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} พาหนะทางน้ำ
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}ไม่มี
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}ทรัพสินสุทธิ: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% เป็นของ {COMPANY})
+STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}(หุ้น {COMMA}% เป็นของ {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}โครงสร้างพื้นฐาน:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} ทางรถไฟ
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} ถนน
@@ -3663,8 +3663,8 @@ STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :ตลอดเ
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :เหลืออายุการใช้งาน(ปี)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}วิธีการเปรียบเทียบข้อมูลยานพาหนะเพื่อใส่ค่า
-STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :เท่ากัน
-STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ไม่เท่ากัน
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :เท่ากับ
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ไม่เท่ากับ
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :น้อยกว่า
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :น้อยกว่าหรือเท่ากับ
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :มากกว่า
@@ -3768,8 +3768,8 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}ตา�
 
 STR_TIMETABLE_NO_TRAVEL                                         :ไม่มีการเดินทาง
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :เดินทาง (อัตโนมัติ; ตามตารางเวลาต่อไปที่ตั้งไว้)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :เดินทางไปที่หมายถัดไปโดยไม่มีกำหนดเวลา
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :ความเร็วการเดินทางไม่เกิน {2:VELOCITY} (ไม่ได้กำหนดตารางเวลา)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :>>>ไม่ได้กำหนดเวลา ไปยังที่หมายถัดไป<<<
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :>>>ความเร็วไม่เกิน {2:VELOCITY} (ไม่มีกำหนดเวลา)<<<
 STR_TIMETABLE_TRAVEL_FOR                                        :เวลาในการเดินทางคือ {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :เวลาในการเดินทางคือ {STRING} ความเร็วสูงสุดไม่เกิน {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :หยุดเป็นเวลา {STRING}
@@ -3917,16 +3917,16 @@ STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}ขาดทุน: {CURRENCY_LONG}
-STR_INCOME_FLOAT_COST                                           :{RED}ขาดทุน: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}กำไร: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}กำไร: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}รายจ่าย: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}รายจ่าย: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}รายได้: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}รายได้: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}ถ่ายเท: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}ถ่ายเท: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}ถ่ายเท: {CURRENCY_LONG}{WHITE} / {GREEN}กำไร: {CURRENCY_LONG}
-STR_FEEDER_INCOME                                               :{YELLOW}ถ่ายเท: {CURRENCY_LONG}{WHITE} / {GREEN}กำไร: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}ถ่ายเท: {CURRENCY_LONG}{WHITE} / {RED}ขาดทุน: {CURRENCY_LONG}
-STR_FEEDER_COST                                                 :{YELLOW}ถ่ายเท: {CURRENCY_LONG}{WHITE} / {RED}ขาดทุน: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}ถ่ายเท: {CURRENCY_LONG}{WHITE} / {GREEN}รายได้: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}ถ่ายเท: {CURRENCY_LONG}{WHITE} / {GREEN}รายได้: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}ถ่ายเท: {CURRENCY_LONG}{WHITE} / {RED}รายจ่าย: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}ถ่ายเท: {CURRENCY_LONG}{WHITE} / {RED}รายจ่าย: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}มูลค่าประมาณการ: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}รายได้ประมาณการ: {CURRENCY_LONG}
 
@@ -3998,10 +3998,10 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRIN
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}ไม่อนุญาตให้ สร้าง/รื้อถอน ขณะหยุดเกม
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}เจ้าหน้าที่ในท้องถิ่นอนุญาตให้ท่านดำเนินการ
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}{} เจ้าหน้าที่ในท้องถิ่นไม่อนุญาตให้ท่านดำเนินการ
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}เจ้าหน้าที่ท้องถิ่นปฏิเสธที่จะอนุญาตให้สร้างท่าอากาศยานเพิ่มในท้องถิ่น
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}เจ้าหน้าที่ท้องถิ่นปฏิเสธที่จะอนุญาตให้สร้างท่าอากาศยานเนื่องจากมลภาวะทางเีสียงเกินปริมาณ
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}สินบนของคุณถูกตรวจพบโดยผู้รักษากฎหมายในท้องที่
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}สินบนของคุณถูกตรวจพบโดย{}ผู้รักษากฎหมายในท้องที่
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}ตรงนี้ไม่สามารถยกระดับพื้นดินได้
@@ -4717,8 +4717,8 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :ทุ่น {T
 STR_FORMAT_COMPANY_NUM                                          :(บริษัท {COMMA})
 STR_FORMAT_GROUP_NAME                                           :กลุ่ม {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_FORMAT_WAYPOINT_NAME                                        :---จุดตรวจ--- {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :---จุดตรวจ--- {TOWN} #{COMMA}
+STR_FORMAT_WAYPOINT_NAME                                        :จุดตรวจ {TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :จุดตรวจ {TOWN} #{COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :โรงซ่อมบำรุงรถไฟ {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :โรงซ่อมบำรุงรถไฟ {TOWN} #{COMMA}

@@ -221,6 +221,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}过滤�
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}输入过滤器字符串
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}输入用以过滤此列表的关键词
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}选择分组次序
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}选择排序方法 （降序/升序）
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}选择排序标准
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}选择过滤标准
@@ -232,7 +233,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}关闭�
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}窗口标题 - 拖动这里可以移动该窗口
 STR_TOOLTIP_SHADE                                               :{BLACK}阴影窗口 - 仅显示标题栏
 STR_TOOLTIP_DEBUG                                               :{BLACK}显示 NewGRF 纠错信息
-STR_TOOLTIP_STICKY                                              :{BLACK}锁定窗口 使用“关闭所有窗口”快捷键时保留此窗口
+STR_TOOLTIP_STICKY                                              :{BLACK}标记此窗口，使其不受“关闭所有窗口”快捷键影晌。Ctrl+左击将选项定为预设
 STR_TOOLTIP_RESIZE                                              :{BLACK}点击并拖动这里可以缩放窗口
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}切换窗口大小
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}滚动条 - 上下滚动列表
@@ -276,6 +277,8 @@ STR_SORT_BY_LENGTH                                              :长度
 STR_SORT_BY_LIFE_TIME                                           :剩余寿命年限
 STR_SORT_BY_TIMETABLE_DELAY                                     :晚点
 STR_SORT_BY_FACILITY                                            :车站类型
+STR_SORT_BY_WAITING_TOTAL                                       :等候中的货物总量
+STR_SORT_BY_WAITING_AVAILABLE                                   :等候中的可运载货物总量
 STR_SORT_BY_RATING_MAX                                          :车站中最高的货物评价
 STR_SORT_BY_RATING_MIN                                          :车站中最低的货物评价
 STR_SORT_BY_ENGINE_ID                                           :引擎ID （默认方式）
@@ -301,6 +304,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}显示�
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}显示公司所有的车站列表
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}显示公司财务状况
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}显示公司综合信息
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}显示公司历史纪录
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}显示游戏目标选单
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}显示图表
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}显示公司名次表
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}建设新的工业设施
@@ -1364,7 +1369,7 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :显示报纸时
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :年终: {STRING}
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :在年末弹出报表时，播放相应音效
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :建设: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :播放成功建设或其它动作时的音效
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :播放成功建设或执行其它动作时的音效
 STR_CONFIG_SETTING_SOUND_CLICK                                  :点击按钮: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :按一下按钮时发出蜂鸣声
 STR_CONFIG_SETTING_SOUND_DISASTER                               :灾难/事故: {STRING}
@@ -1372,7 +1377,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :播放灾难和
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :交通工具: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :播放运输工具音效
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :音效：{STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放环境、工业和城镇音效
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放与地貌、工业设施和城镇有关的环境音效
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :不显示没有对应车辆的轨道建设面板: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :启用时，将不会显示没有对应车辆的建设面板，避免浪费时间和资金在无用的建设上
@@ -1472,7 +1477,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :当拖动时，
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :设置以拖动的方式建设时，自动放置信号灯时的间距，将以该间距放置信号灯，直到碰到障碍（信号灯，分支）
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA}格
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :拖动方式建设时，保持固定的间距放置信号灯：{STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :选择以Ctrl+拖动方法建设信号灯时是否保持固定的间距，如果“关闭”，不考虑隧道和桥梁长度（在隧道和桥梁进出口第一个各放置一个），避免很长一段没有信号灯，如果“打开”，每隔设定的距离就放置一个信号灯，桥梁和隧道长度也计算在内。
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :选择以Ctrl+拖动方法建设信号灯时是否保持固定的间距，如果“关闭”，不考虑隧道和桥梁长度（在隧道和桥梁进出口第一个各放置一个），避免很长一段没有信号灯，如果“打开”，每隔设定的距离（桥梁和隧道长度也计算在内）就放置一个信号灯。
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :在 {STRING} 年前自动设置悬臂信号
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :设置电子信号灯出现的时间，在此之前，使用悬臂信号灯（功能相同，外观不同）
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :使用信号GUI： {STRING}
@@ -1551,12 +1556,32 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :游戏开局时
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :在道路建设过程中移除荒废的道路元素：{STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :在道路重建改造过程中，移除荒废的道路元素
 
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :手动
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :不对称
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :对称
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :乗客分配方式：{STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的乗客数量與乙站往甲站的乗客数量大致相同。“不对称”指任何一站往另一站的乗客数量皆由系统随意决定。“手动”指系统不会自动分配乗客的目的地。
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :邮件分配方式：{STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的邮件数量與乙站往甲站的邮件数量大致相同。“不对称”指任何一站往另一站的邮件数量皆由系统随意决定。“手动”指系统不会自动分配邮件的目的地。
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :装甲货物分配方式：{STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :依原有设定，“装甲货物”包括溫带景观的“贵重品”、寒带景观的“金块”及沙漠景观的“钻石”。一些NewGRF可能有不同设置。{} 假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的货物数量與乙站往甲站的装甲货物数量大致相同。“不对称”指任何一站往另一站的装甲货物数量皆由系统随意决定。“手动”指系统不会自动分配装甲货物的目的地。{} 建议的设定：在溫带景观应使用“对称”，因为银行会互相运送贵重品；而在寒带及沙漠景观应使用“不对称”，因为银行不会把金块或钻石送回矿场。
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :其他货物分配方式：{STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :假设有交通路线连接甲、乙两站。“对称”指甲站往乙站的货物数量與乙站往甲站的货物数量大致相同。“不对称”指任何一站往另一站的货物数量皆由系统随意决定。“手动”指系统不会自动分配货物的目的地。{}由於货物一般只会被单方向运输，此设定应赋值为“不对称”或“手动”。
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :分配精确度：{STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :此设定赋值越大，則运算连结图所需的处理器时间越长，您可能会因此见到游戏运行延迟。如果此设定赋值越小，则货物分配的准确度越低，而您可能会发现部份货物沒有被送往您预期它们会到达的目的地。
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :距离对需求的影晌：{STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :如果此设定赋值大于0，则始发站与另一站的距离会影晌该路线获分派货物的数量。目的站距离越远，获分派的货物越少。此设定的赋值越大，越多货物会被派往较接近的站。
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :在对称模式下产生的返程货物比例： {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :如果把此设定赋一个少于100%的值，则到达某站的货物不会全部被送回始发站。{}如果此设定被赋值为0%，則“对称”模式的表现跟“不对称”模式完全一样
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :如果最短路径的饱和度超过{STRING}，把货物改派往容量较大的路径
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :货物分配功能在派送货物时，会优先使用最短路径，当它饱和后改用第二短的路径，如此类推。当所有路径皆饱和但仍未满足需求，系统會由容量较大的路径开始继续加载货物。{}由于路径饱和度难以准确估算，此设定容许您定义一值，使短路径达到该饱和度后，系统便开始加载容量较大的路径。{}如果此设定的值少於100%，就算系统高估路径容量，也不會使过多的货物滞留在站台上。
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}界面
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}建设
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}车辆
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}车站
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}经济
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}货物分配
 STR_CONFIG_SETTING_AI                                           :{ORANGE}竞争
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}显示选项
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}互动
@@ -2878,9 +2903,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}购买�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}贿赂地方政府以提高评价，但有被发现后严厉惩罚的风险。{}费用：{CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} 目标
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}全球目标:
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}全球目标:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- 无目标 -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- 不适用 -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}公司目标:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}点击使得视图移动到该工业/城镇/地块. Ctrl+左键 在该处创建一个视点.
 
@@ -2920,6 +2948,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}将 {ST
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}点击项目可将屏幕中心移动到{}城镇/工业 所在的位置. 单击的同时按住Ctrl会在新视点中显示城镇/工业位置
 
 # Story book window
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}全域历史纪录
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}车站名称{}点击可将屏幕中心移动到车站所在位置. 单击的同时按住Ctrl会在新视点中显示车站位置
@@ -2948,7 +2977,28 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}评价
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}显示车站评价
 
+STR_STATION_VIEW_GROUP                                          :群组方式
+STR_STATION_VIEW_WAITING_STATION                                :车站名：等候中
+STR_STATION_VIEW_WAITING_AMOUNT                                 :货物总量：等候中
+STR_STATION_VIEW_PLANNED_STATION                                :车站名：计划中
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :货物总量：计划中
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} 来自 {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} 途经 {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} 前往 {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} 来自 不明的车站
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} 前往 任何车站
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} 途经 任何车站
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} 来自 本站
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} 途经 本站
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} 前往 本站
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} 直达该站
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :來源-途经-目的地
+STR_STATION_VIEW_GROUP_S_D_V                                    :來源-目的地-途经
+STR_STATION_VIEW_GROUP_V_S_D                                    :途经-來源-目的地
+STR_STATION_VIEW_GROUP_V_D_S                                    :途经-目的地-來源
+STR_STATION_VIEW_GROUP_D_S_V                                    :目的地-來源-途经
+STR_STATION_VIEW_GROUP_D_V_S                                    :目的地-途经-來源
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :垃圾（最差评价）
@@ -3695,6 +3745,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}此时�
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}此时刻表将于 {STRING} 开始
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}起始日期
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}选择此时刻表开始实施的日期。如果时刻表每一项指令皆已指定持续时间，Ctrl+左击会使系统为每个共用此时刻表的交通工具赋予一个开始实施时刻表的日期，使这些交通工具的出发时间平均分配。
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}改变时间
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}改变高亮选择的命令执行的时间
@@ -3714,9 +3765,9 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}重置�
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自动填充
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}根据下一次运行的时间自动填充时间表{}(CRTL+单击 可保持等候时间)
 
-STR_TIMETABLE_EXPECTED                                          :{BLACK}预期的
-STR_TIMETABLE_SCHEDULED                                         :{BLACK}计划的
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}在预期的与计划的间切换
+STR_TIMETABLE_EXPECTED                                          :{BLACK}预期时间
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}表定时间
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}切换显示（根据实际情况计算的）预期时间或表定时间
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:

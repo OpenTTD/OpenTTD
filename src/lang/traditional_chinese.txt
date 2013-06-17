@@ -278,6 +278,8 @@ STR_SORT_BY_LENGTH                                              :長度
 STR_SORT_BY_LIFE_TIME                                           :剩餘年限
 STR_SORT_BY_TIMETABLE_DELAY                                     :時刻表誤點
 STR_SORT_BY_FACILITY                                            :車站種類
+STR_SORT_BY_WAITING_TOTAL                                       :等候中的貨物總量
+STR_SORT_BY_WAITING_AVAILABLE                                   :等候中的可運載貨物總量
 STR_SORT_BY_RATING_MAX                                          :最高運輸評價
 STR_SORT_BY_RATING_MIN                                          :最低運輸評價
 STR_SORT_BY_ENGINE_ID                                           :引擎編號
@@ -303,6 +305,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}顯示�
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}列出各公司車站清單
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}顯示公司財務資訊
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}顯示公司一般資訊
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}顯示公司歷史紀錄
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}顯示遊戲目標列表
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}顯示圖表
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}顯示公司排行榜
@@ -1581,9 +1584,9 @@ STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :此設定賦值
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :距離對需求的影響：{STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :如果您對此設定賦大於0的值，則出發站與另一站的距離會影響該路線獲分派貨物的數量。目的站距離越遠，獲分派的貨物越少。此設定的賦值越大，越多貨物會被派往較接近的站。
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :在對稱模式下產生的返程貨物比例： {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :如把此值定於100%以下，到達一站的貨物不會全部被送回始發站。如此設定的值為0%，則對稱模式的表現跟不對稱模式完全一樣
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :如最短路徑的飽和度超過{STRING}，貨物改用容量較大的路徑
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Cargodist子程序在派送貨物時，會優先使用最短路徑，至其飽和後改採第二短的路徑，如此類推。當所有路徑皆飽和但仍未滿足需求，系統會由容量較大的路徑開始繼續加載貨物。由於路徑飽和度難以準確估算，此設定容許您定義一值，使短路徑達至該飽和度後，系統加載容量較大的路徑。如此設定的值少於100%，即使系統高估路徑容量，也不會使過多的貨物滯留車站。
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :如果把此值定於100%以下，到達一站的貨物不會全部被送回始發站。{}如果此設定的值為0%，則「對稱」分配模式的表現跟「不對稱」分配模式完全一樣
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :如果最短路徑的飽和度超過{STRING}，把貨物改派往容量較大的路徑
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :貨物分配功能在派送貨物時，會優先使用最短路徑，至其飽和後改用第二短的路徑，如此類推。當所有路徑皆飽和但仍未滿足需求，系統會由容量較大的路徑開始繼續加載貨物。{}由於路徑飽和度難以準確估算，此設定容許您定義一值，使短路徑達至該飽和度後，系統便開始加載容量較大的路徑。{}如果此設定的值少於100%，即使系統高估路徑容量，也不會使過多的貨物滯留車站。
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}介面
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}建造
@@ -2975,6 +2978,8 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}將 {ST
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}點選運送服務可將工業／市鎮置於畫面中央。 按住 Ctrl 點選可於工業／市鎮位置開啟新視窗視野
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY}的歷史紀錄
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}全局歷史紀錄
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :第{NUM}頁
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}在下拉式選單中選擇一頁以前往該頁觀看
@@ -3014,6 +3019,10 @@ STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}按月�
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}群組方式
+STR_STATION_VIEW_WAITING_STATION                                :車站名：等候中
+STR_STATION_VIEW_WAITING_AMOUNT                                 :貨物總量：等候中
+STR_STATION_VIEW_PLANNED_STATION                                :車站名：計劃中
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :貨物總量：計劃中
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} 來自 {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} 途經 {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} 前往 {STATION}
