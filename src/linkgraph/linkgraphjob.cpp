@@ -177,7 +177,7 @@ uint Path::AddFlow(uint new_flow, LinkGraphJob &job, uint max_saturation)
  */
 Path::Path(NodeID n, bool source) :
 	distance(source ? 0 : UINT_MAX),
-	capacity(0),
+	capacity(source ? UINT_MAX : 0),
 	free_capacity(source ? INT_MAX : INT_MIN),
 	flow(0), node(n), origin(source ? n : INVALID_NODE),
 	num_children(0), parent(NULL)
