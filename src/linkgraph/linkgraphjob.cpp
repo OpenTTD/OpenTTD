@@ -72,7 +72,19 @@ LinkGraphJob::~LinkGraphJob()
 			}
 		}
 
-		ge.flows.swap(flows);
+		/* Swap shares and invalidate ones that are completely deleted. Don't
+		 * really delete them as we could then end up with unroutable cargo
+		 * somewhere. */
+		for (FlowStatMap::iterator it(ge.flows.begin()); it != ge.flows.end(); ++it) {
+			FlowStatMap::iterator new_it = flows.find(it->first);
+			if (new_it == flows.end()) {
+				it->second.Invalidate();
+			} else {
+				it->second.SwapShares(new_it->second);
+				flows.erase(new_it);
+			}
+		}
+		ge.flows.insert(flows.begin(), flows.end());
 		InvalidateWindowData(WC_STATION_VIEW, st->index, this->Cargo());
 	}
 }

@@ -80,6 +80,13 @@ public:
 	inline const SharesMap *GetShares() const { return &this->shares; }
 
 	/**
+	 * Swap the shares maps, and thus the content of this FlowStat with the
+	 * other one.
+	 * @param other FlowStat to swap with.
+	 */
+	inline void SwapShares(FlowStat &other) { this->shares.swap(other.shares); }
+
+	/**
 	 * Get a station a package can be routed to. This done by drawing a
 	 * random number between 0 and sum_shares and then looking that up in
 	 * the map with lower_bound. So each share gets selected with a
@@ -93,6 +100,8 @@ public:
 	}
 
 	StationID GetVia(StationID excluded, StationID excluded2 = INVALID_STATION) const;
+
+	void Invalidate();
 
 private:
 	SharesMap shares;  ///< Shares of flow to be sent via specified station (or consumed locally).

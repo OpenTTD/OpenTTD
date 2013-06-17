@@ -4086,7 +4086,23 @@ StationID FlowStat::GetVia(StationID excluded, StationID excluded2) const
 	}
 	assert(it3 != this->shares.end());
 	return it3->second;
+}
 
+/**
+ * Reduce all flows to minimum capacity so that they don't get in the way of
+ * link usage statistics too much. Keep them around, though, to continue
+ * routing any remaining cargo.
+ */
+void FlowStat::Invalidate()
+{
+	assert(!this->shares.empty());
+	SharesMap new_shares;
+	uint i = 0;
+	for (SharesMap::iterator it(this->shares.begin()); it != this->shares.end(); ++it) {
+		new_shares[++i] = it->second;
+	}
+	this->shares.swap(new_shares);
+	assert(!this->shares.empty());
 }
 
 /**
