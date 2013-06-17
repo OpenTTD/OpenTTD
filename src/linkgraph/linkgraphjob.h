@@ -351,14 +351,14 @@ public:
 
 	/**
 	 * Get ratio of free * 16 (so that we get fewer 0) /
-	 * total capacity + 1 (so that we don't divide by 0).
+	 * max(total capacity, 1) (so that we don't divide by 0).
 	 * @param free Free capacity.
 	 * @param total Total capacity.
-	 * @return free * 16 / (total + 1).
+	 * @return free * 16 / max(total, 1).
 	 */
-	inline static int GetCapacityRatio(int free, int total)
+	inline static int GetCapacityRatio(int free, uint total)
 	{
-		return (free << 4) / (total + 1);
+		return Clamp(free, PATH_CAP_MIN_FREE, PATH_CAP_MAX_FREE) * PATH_CAP_MULTIPLIER / max(total, 1U);
 	}
 
 	/**
@@ -400,6 +400,16 @@ public:
 	void Fork(Path *base, uint cap, int free_cap, uint dist);
 
 protected:
+
+	/**
+	 * Some boundaries to clamp agains in order to avoid integer overflows.
+	 */
+	enum PathCapacityBoundaries {
+		PATH_CAP_MULTIPLIER = 16,
+		PATH_CAP_MIN_FREE = (INT_MIN + 1) / PATH_CAP_MULTIPLIER,
+		PATH_CAP_MAX_FREE = (INT_MAX - 1) / PATH_CAP_MULTIPLIER
+	};
+
 	uint distance;     ///< Sum(distance of all legs up to this one).
 	uint capacity;     ///< This capacity is min(capacity) fom all edges.
 	int free_capacity; ///< This capacity is min(edge.capacity - edge.flow) for the current run of Dijkstra.
