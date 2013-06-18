@@ -680,7 +680,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}於地�
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}於地圖上顯示土地所有人
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}點選工業型態以切換顯示。按住Ctrl再次點選以啟用所有工業型態。
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}點選公司以切換顯示公司財產。按住Ctrl再點選可以啟用所有公司。
-STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}點選一種貨物以切換其屬性顯示。按下 Ctrl 鍵點選貨物則僅顯示該貨物的屬性而停止顯示其他貨物。再一次按下 Ctrl 鍵點選則會顯示所有貨物
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}點選一種貨物以切換是否顯示其屬性。{}按住Ctrl鍵點選貨物以顯示該貨物的屬性而隱藏其他貨物；再次按住Ctrl鍵點選則顯示所有貨物
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}道路
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}鐵路
@@ -1565,9 +1565,9 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :鋪設道路時
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :設定是否在資助市鎮重建道路時移除死路
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :每{STRING}日更新貨物分配圖
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :指定每次計算貨物分配圖之間的時間。由於每次重新計算只會處理一個貨物分配圖元件，因此本設定並不是指「每隔若干日整個貨物分配圖就會重新計算」。如果您把時間設定得越短，則系統需要使用更多的中央處理器時間去計算貨物分配圖。相反，如果您把時間設定得越長，則貨物被派往新路線所需的時間越長。
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :重新計算貨物分配圖所用日數：{STRING}
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :指定更新貨物分配圖元件所用的時間。每當貨物分配圖被重新運算，系統會衍生一執行緒。該執行緒的持續時間即為本設定的值。這個設定賦值越小，執行緒越有可能在應當停止的時候仍未完成運算，使遊戲出現運行延遲的情況。相反，這個設定賦值越大，則貨物分配越需較長時間回應路線變更。
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :指定每次計算貨物分配圖之間的時間。由於每次重新計算只會處理一個貨物分配圖元件，因此本設定不代表「每若干日重新計算整個貨物分配圖」。{}如果此設定賦值越小，則系統需要使用更多處理器時間計算貨物分配圖。相反，如果此設定賦值越大，則貨物被派往新路線所需的時間越長。
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :每隔{STRING}天更新貨物分配圖
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :當更新貨物分配圖時，系統會衍生一條執行緒。本設定的值即為執行緒的持續時間。{}這設定賦值越小，執行緒越有可能在應當停止的時候仍未完成運算，遊戲會暫停運行至執行緒完成工作。相反，這設定賦值越大，則貨物分配功能需要較長時間反映路線網絡變動的影響。
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :手動
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :不對稱
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :對稱
@@ -1642,7 +1642,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... 正�
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... 正在忽略 '{STRING}' 基本音效集： 找不到檔案
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... 正在忽略 '{STRING}' 基本音樂集： 找不到檔案
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}記憶體不足
-STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}無法編配 {BYTES} 作為子畫面快取。子畫面快取的大小已降至 {BYTES}。這將會降低 OpenTTD 的效能。如欲減低記憶體要求，您可以嘗試停用 32bpp 圖形 及／或 減少放大倍數
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}無法編配{BYTES}作為子畫面快取。子畫面快取的大小已降至{BYTES}。OpenTTD的效能會受到影響。請嘗試停用32bpp圖形及／或減少放大倍數，以減低記憶體要求
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2122,9 +2122,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}將所�
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}取消全選
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}將所有內容標示為不要下載
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}尋找外面的網站
-STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}在與 OpenTTD 無聯繫的網站搜尋沒有納入 OpenTTD 內容服務的內容
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}在與OpenTTD無聯繫的網站搜尋沒有納入OpenTTD內容服務的內容
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}您正在離開 OpenTTD!
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}在外面的網站下載內容的規則及條款可能有異。{}您將需要參照外面的網站以取得在 OpenTTD 安裝有關內容的資訊。{}您要繼續嗎？
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}在外部網站下載內容的規則及條款跟OpenTTD引用的規則及條款不同。{}您需要參照有關網站以取得在OpenTTD安裝有關內容的資訊。{}您要繼續嗎？
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}過濾條件 (標籤／名稱)：
 STR_CONTENT_OPEN_URL                                            :{BLACK}訪問網站
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}請造訪有關網站以取得此內容

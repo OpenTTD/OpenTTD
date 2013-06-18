@@ -1250,9 +1250,9 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Geldbetrag, der
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Anzeigedauer für Fehlermeldungen: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Anzeigedauer für Fehlermeldungen in einem roten Fenster. Bedenke, dass einige (kritische) Fehlermeldungen nicht automatisch nach dieser Dauer geschlossen werden sondern manuell geschlossen werden müssen
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} Sekunde{P 0 "" n}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :Zeige Hilfe-Texte: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Verzögerung, bevor ein schwebender Hilfetext angezeigt wird. Er kann auch auf die rechte Maustaste gelegt werden
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hover für {COMMA} Sekunde{P 0 "" n}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Zeige kurzen Hilfstext: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Einstellen, wie lange man zum Aufruf von Hilfstexten zur Erklärung der Funktionen im Spiel mit dem Mauszeiger auf die gewünschte Stelle zeigen muss, oder, als Alternative, dass die Hilfstexte bei einem Rechtsklick angezeigt werden sollen
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Nach {COMMA} Sekunde{P 0 "" n}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Rechtsklick
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Zeige die Einwohnerzahl von Städten neben ihrem Namen: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Zeige die Einwohneranzahl neben den Städtenamen auf der Karte an
@@ -1262,7 +1262,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Strichdicke der
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Algorithmus zur Landschaftserzeugung: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximalabstand vom Kartenrand für Ölrafinerien: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximalabstand vom Kartenrand für Ölraffinerien: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Ölraffinerien werden nur in der Nähe des Kartenrands gebaut, bei inselreichen Karten nahe der Küste
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Schneegrenze auf: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rauheit (nur TerraGenesis): {STRING}
@@ -1375,13 +1375,13 @@ STR_CONFIG_SETTING_SOUND_TICKER                                 :Nachrichtentick
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Soundeffekte für Kurzfassungen von Nachrichten abspielen (Ticker)
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Zeitung: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Soundeffekte bei der Anzeige der Zeitung abspielen
-STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Jahresende: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Bericht am Jahresende: {STRING}
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Soundeffekte beim Jahresrückblick auf die Bilanzen der vergangenen Jahre abspielen
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Baumaßnahmen: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Soundeffekte bei Baumaßnahmen oder anderen Aktionen abspielen
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Klick auf Knöpfe: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Piepton bei Klick auf Knöpfe
-STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastrophen und Unfälle: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Unfälle und Katastrophen: {STRING}
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Soundeffekte von Unfällen und Katastrophen abspielen
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Fahrzeuge: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Soundeffekte von Fahrzeugen abspielen
@@ -1442,7 +1442,7 @@ STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Ankunft des ers
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Zeitung anzeigen, wenn das erste Fahrzeug an einem eigenen Bahnhof eintrifft
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Ankunft des ersten Fahrzeugs an Station eines Mitbewerbers: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Zeitung anzeigen, wenn das erste Fahrzeug am Bahnhof eines Wettbewerbers eintrifft
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Unfälle/Katastrophen: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Unfälle und Katastrophen: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Zeitung anzeigen, wenn Unfälle oder Katastrophen auftreten
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Firmenmitteilungen: {STRING}
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Zeitung anzeigen, wenn neue Firmen gegründet werden oder kurz vor dem Bankrott stehen
@@ -1481,12 +1481,12 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Wird diese Opti
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Handel mit Firmenanteilen erlauben: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Erlaube das Kaufen und Verkaufen von Firmenanteilen. Firmenanteile sind nur verfügbar für Firmen, die hinreichend lange existieren
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Prozentsatz des Profits für Teilstrecken: {STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Prozentsatz des Einkommens, der Zuliefer-Routen zugeschlagen wird, um das Einkommen der Fahrzeuge der Lieferkette relativ zueinander zu justieren
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Um das Einkommen der einzelnen Fahrzeuge einer Lieferkette ungefähr abschätzen zu können, wird vom Transporterlös bei Ablieferung einer Fracht der gewählte Prozentsatz den Zulieferfahrzeugen zugeschlagen
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Signalabstand beim Ziehen: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Lege den Abstand fest, in dem Signale auf Gleisen bis zum nächsten Hindernis (Signal, Weiche) gebaut werden, wenn sie gezogen werden
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} Feld{P 0 "" er}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Signalabstand nach Lücken (durch Tunnel, Brücken) nicht verkürzen : {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Lege das Verhalten beim Bau von Signalen mit Strg+Ziehen fest. Wenn eingeschaltet, werden Signale alle N Felder gebaut, so dass Signale auf parallelen Strecken leichter in Einklang gebracht werden können
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Lege das Verhalten beim Bau von Signalen mit Strg+Ziehen fest. Wenn eingeschaltet, werden Signale immer im ausgewählten Signalabstand gebaut. Kann ein Signal wegen einer Brücke oder eines Tunnels nicht gebaut werden, wird es ausgelassen. Ist diese Option ausgeschaltet, wird das Signal in diesem Fall nicht ausgelassen, sondern vor die Brücke bzw. den Tunnel gesetzt. Allerdings verschiebt sich dadurch die Position der folgenden Signale, was bei zweigleisigen Strecken dazu führen kann, dass die Signale nicht auf gleicher Höhe gesetzt werden.
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatischer Bau von Formsignalen bis: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Lege das Jahr für die Einführung von Lichtzeichen-Signalen fest. Vor diesem Jahr werden Formsignale gebaut. Die haben die gleiche Funktion, sehen aber anders aus
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Aktiviere Signal-Menü: {STRING}

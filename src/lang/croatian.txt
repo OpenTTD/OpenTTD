@@ -317,6 +317,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrira
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Unesi znak za filter
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Unesite ključnu riječ kako bi filtrirali popis
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Odaberi naredbu za grupiranje
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Izaberi način sortiranja (silazno/uzlazno)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Izaberi kriterij za sortiranje
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Odaberi kriterij filtriranja
@@ -373,6 +374,8 @@ STR_SORT_BY_LENGTH                                              :Dužina
 STR_SORT_BY_LIFE_TIME                                           :Preostali životni vijek
 STR_SORT_BY_TIMETABLE_DELAY                                     :Kašnjenje voznog reda
 STR_SORT_BY_FACILITY                                            :Vrsta stanice
+STR_SORT_BY_WAITING_TOTAL                                       :Ukupni teret na čekanju
+STR_SORT_BY_WAITING_AVAILABLE                                   :Dostupni teret na čekanju
 STR_SORT_BY_RATING_MAX                                          :Najviša ocjena tereta
 STR_SORT_BY_RATING_MIN                                          :Najniža ocjena tereta
 STR_SORT_BY_ENGINE_ID                                           :MotorID (standardno sortiranje)
@@ -398,6 +401,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Prikaži
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Prikaži popis postaja u vlasništvu tvrtke
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Prikaži financijske podatke tvrtke
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Prikaži opće podatke tvrtke
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Prikaži priču
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Prikaži listu ciljeva
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Prikaži grafikone
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Prikaži tablicu lige tvrtki
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financiraj izgradnju nove industrije
@@ -1661,6 +1666,7 @@ STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Izgradn
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozila
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Postaje
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomija
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Distribucija tereta
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Suparnici
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Postavke prikaza
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakcija
@@ -2998,9 +3004,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kupi je
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Podmiti lokalnu samoupravu kako bi povećao ugled, riskirajući ozbiljne kazne ako te uhvate.{} Trošak: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Ciljevi
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globalni ciljevi
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globalni ciljevi:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nijedan -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Nije primjenjivo -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Ciljevi kompanije:
@@ -3042,6 +3051,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikni na uslugu za centriranje pogleda na industriju/grad. Ctrl+klik otvara novi prozor sa lokacijom industrije/grada
 
 # Story book window
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globalna priča
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Imena postaja - klikni na ime kako bi centrirao glavni pogled na postaju. Ctrl+klik otvara novi prozor sa lokacijom postaje
@@ -3073,7 +3083,28 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Pokaži 
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Mjesečna dostava i lokalni rejting:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Grupiraj po
+STR_STATION_VIEW_WAITING_STATION                                :Stanica: Na čekanju
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Iznos: Na čekanju
+STR_STATION_VIEW_PLANNED_STATION                                :Stanica: Planirana
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Iznos: Planirani
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} od {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} putem {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} do {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} od nepoznate stanice
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} do bilo koje stanice
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} putem bilo koje stanice
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} od ove stanice
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} staje na ovoj stanici
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} do ove stanice
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} bez zaustavljanja
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Ishodište-Putem-Odredište
+STR_STATION_VIEW_GROUP_S_D_V                                    :Ishodište-Odredište-Putem
+STR_STATION_VIEW_GROUP_V_S_D                                    :Putem-Ishodište-Odredište
+STR_STATION_VIEW_GROUP_V_D_S                                    :Putem-Odredište-Ishodište
+STR_STATION_VIEW_GROUP_D_S_V                                    :Odredište-Ishodište-Putem
+STR_STATION_VIEW_GROUP_D_V_S                                    :Odredište-Putem-Ishodište
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Užasno
@@ -3821,6 +3852,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ovaj voz
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Ovaj će vozni red početi u {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Početni datum
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Odaberi datum za početak ovog voznog reda. Ctrl+Klik odabire početnu točku ovog voznog reda i ravnomjerno raspodjeljuje sva vozila koja dijele ovu naredbu prema njihovoj relativnoj naredbi, ako je raspored naredbe potpuno određen
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Promijeni vrijeme
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Promijeni količinu vremena koju bi označena naredba trebala uzeti
