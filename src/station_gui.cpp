@@ -1913,7 +1913,13 @@ struct StationViewWindow : public Window {
 			}
 
 			case WID_SV_SORT_BY: {
-				ShowDropDownMenu(this, _sort_names, this->current_mode, WID_SV_SORT_BY, 0, 0);
+				/* The initial selection is composed of current mode and
+				 * sorting criteria for columns 1, 2, and 3. Column 0 is always
+				 * sorted by cargo ID. The others can theoretically be sorted
+				 * by different things but there is no UI for that. */
+				ShowDropDownMenu(this, _sort_names,
+						this->current_mode * 2 + (this->sortings[1] == ST_COUNT ? 1 : 0),
+						WID_SV_SORT_BY, 0, 0);
 				break;
 			}
 
