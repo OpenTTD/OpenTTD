@@ -1573,7 +1573,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2-es háló
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3-as háló
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :véletlenszerű
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Települések építhetnek utakat: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Településeknek útak építésének engedélyezése a növekedéshez. Kikapcsolva megakadályozza az önkormányzatot, hogy önmaga utakat építhessen
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Településeknek utak építésének engedélyezése a növekedéshez. Kikapcsolva megakadályozza az önkormányzatot, hogy önmaga utakat építhessen
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :A városok építhetnek vasúti átjárókat: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Engedélyezve a települések építhetnek vasúti átjárókat
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Település által szabályzott zajszint reptereknek: {STRING}

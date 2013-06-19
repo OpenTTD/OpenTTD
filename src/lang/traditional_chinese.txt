@@ -1566,7 +1566,7 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :設定是否在
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :每{STRING}日更新貨物分配圖
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :指定每次計算貨物分配圖之間的時間。由於每次重新計算只會處理一個貨物分配圖元件，因此本設定不代表「每若干日重新計算整個貨物分配圖」。{}如果此設定賦值越小，則系統需要使用更多處理器時間計算貨物分配圖。相反，如果此設定賦值越大，則貨物被派往新路線所需的時間越長。
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :每隔{STRING}天更新貨物分配圖
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :每次更新貨物分配圖持續 {STRING} 天
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :當更新貨物分配圖時，系統會衍生一條執行緒。本設定的值即為執行緒的持續時間。{}這設定賦值越小，執行緒越有可能在應當停止的時候仍未完成運算，遊戲會暫停運行至執行緒完成工作。相反，這設定賦值越大，則貨物分配功能需要較長時間反映路線網絡變動的影響。
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :手動
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :不對稱
@@ -2124,7 +2124,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}將所�
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}尋找外面的網站
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}在與OpenTTD無聯繫的網站搜尋沒有納入OpenTTD內容服務的內容
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}您正在離開 OpenTTD!
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}在外部網站下載內容的規則及條款跟OpenTTD引用的規則及條款不同。{}您需要參照有關網站以取得在OpenTTD安裝有關內容的資訊。{}您要繼續嗎？
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}在外部網站下載內容的規則及條款可能跟OpenTTD引用的規則及條款不同。{}您需要參照有關網站以取得在OpenTTD安裝有關內容的資訊。{}您要繼續嗎？
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}過濾條件 (標籤／名稱)：
 STR_CONTENT_OPEN_URL                                            :{BLACK}訪問網站
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}請造訪有關網站以取得此內容

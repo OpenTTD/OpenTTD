@@ -1660,6 +1660,29 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Prosječna veli
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Ukloni besmislene cestovne elemente tijekom izgradnje prometnica: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Uklanjanje slijepih ulica kod financirane rekonstrukcije cesta
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Ažuriraj povezni grafikon svakih {STRING} dan{P 0:2 a a a}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Vrijeme između slijedećih rekalkulacija poveznog grafikona. Svaka rekalkulacija izračunava planove za jednu komponentu grafikona. To znači da vrijednost X za ovu postavku ne mora značiti i ažuriranje kompletnog grafikona unutar X dana. Samo neke komponente će biti ažurirane. Čim kraće vrijeme odredite, više će biti potrebno resursa CPU-a za izračun. Čim duže vrijeme odredite, trebati će više vremena za pokretanje distribucije po novim rutama.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Uzmi {STRING} dan{P 0:2 a a a} za rekalkulaciju poveznog grafikona
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Vrijeme potrebno za rekalkulaciju komponente poveznog grafikona. Kada se rekalkulacija pokrene, stvara se slijed koji može raditi broj dana koliko ovdje odredite. Čim kraće vrijeme odredite, postoji mogućnost da slijed neće biti gotov kada bi trebao. Tada se igra usporava odnosno zaustavlja dok ne bude gotovo. Čim duže vrijeme odredite, potrebno je duže da se distribucija ažurira kad se izmijene rute.
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :ručno
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetrično
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetrično
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Način distribucije za putnike: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Simetrično" znači da će se otprilike isti broj putnika slati od stanice A prema stanici B ako od B prema A. "Asimetrično" znači da će se proizvoljni brojevi putnika slati u oba smjera. "Ručno" znači da se distribucija za putnike neće vršiti automatski.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Način distribucije poštu: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Simetrično" znači da će se otprilike ista količina pošte slati od stanice A prema stanici B ako od B prema A. "Asimetrično" znači da će se proizvoljne količine pošte slati u oba smjera. "Ručno" znači da se distribucija neće vršiti automatski.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Način distribucije za OKLOPLJENU klasu tereta: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :OKLOPLJENA klasa tereta sadrži vrijednosnice u umjerenoj klimi, dijamante u subtropskoj klimi ili zlato u subarktičkoj klimi. NewGFR-ovi bi mogli ovo izmijeniti. "Simetrično" znači da će se otprilike ista količina tereta slati od stanice A prema stanici B ako od B prema A. "Asimetrično" znači da će se proizvoljne količine tereta slati u oba smjera. "Ručno" znači da se distribucija tih tereta neće vršiti automatski. Preporučljivo je namjestiti ovu postavku na "asimetrično" ili "ručno" kod subarktičke klime jer banke neće slati zlato natrag prema rudnicima zlata. Za umjerenu i subtropsku klimu možete namjestiti i "simetrično" jer će banke slati neke vrijednosnice natrag prema izvorišnoj banci.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Način distribucije za ostale klase tereta: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Simetrično" znači da će se otprilike ista količina tereta slati od stanice A prema stanici B ako od B prema A. "Asimetrično" znači da će se proizvoljne količine tereta slati u oba smjera. "Ručno" znači da se distribucija tih tereta neće vršiti automatski. Preporučljivo bi bilo ovu postavku namjestiti na "asimetrično" ili "ručno".
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Točnost distribucije: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Čim višu vrijednost odaberete, CPU će trebati više vremena za kalkulaciju poveznog grafikona. Ako bude trebalo predugo, mogli bi primijetiti usporavanje igre. U suprotnom, ako namjestite na manju vrijednost, distribucija će biti netočnija i mogli bi primijetiti da se teret šalje na mjesta koja niste očekivali.
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efekt udaljenosti na potražnju: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Ako postavite ovo na vrijednost veću od 0, udaljenost između izvorne stanice A nekog tereta i mogućeg odredišta B će imati efekt na količinu tereta poslanu od A do B. Čim je B dalje od A, manje će tereta biti poslano. Čim veću vrijednost postavite, manje tereta će biti slano na dalje stanice a više tereta na bliže stanice.
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Količina povratnog tereta za simetrični način: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Postavljajući ovo na manje od 100% daje da se simetrična distribucija ponaša sličnije asimetričnoj distribuciji. Manje tereta će se prisilno vraćati ukoliko je određena količina poslana na stanicu. Ako postavku namjestite na 0%, simetrična distribucija se ponaša točno kao asimetrična distribucija.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Popunjenost kratkih puteva prije korištenja puteva s visokim kapacitetom: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Često postoji više puteva izmeđe dvije stanice. Cargodist će prvo popuniti najkraći put, nakon toga koristiti drugi najkraći put dok se ne popuni itd. Popunjenost se određuje procjenom kapaciteta i planirane uporabe. Jednom kad se popune svi putevi i ako i dalje postoji potreba, pretrpati će sve puteve preferirajući one sa visokim kapacitetom. Ipak, algoritam najčešće neće procijeniti kapacitet točno. Ova postavka vam omogućuje da specificirate do kojeg postotka će kraći put biti popunjavan u prvom prolazu prije nego se počne popunjavati sljedeći put. Namjestite ga na manje od 100% da bi izbjegli prenapučene stanice u slučaju previsoko procijenjenog kapaciteta.
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Sučelje
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Izgradnja
@@ -3051,7 +3074,15 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikni na uslugu za centriranje pogleda na industriju/grad. Ctrl+klik otvara novi prozor sa lokacijom industrije/grada
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Priča
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globalna priča
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Stranica {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Preskoči na specifičnu stranicu odabravši je iz liste.
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Prethodno
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Prethodna stranica
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Sljedeće
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Sljedeća stranica
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Imena postaja - klikni na ime kako bi centrirao glavni pogled na postaju. Ctrl+klik otvara novi prozor sa lokacijom postaje

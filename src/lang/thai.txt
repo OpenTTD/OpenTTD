@@ -98,7 +98,7 @@ STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :ผู้โดยสาร {COMMA} คน
 STR_QUANTITY_COAL                                               :ถ่านหิน {WEIGHT_LONG}
 STR_QUANTITY_MAIL                                               :ไปรษณียภัณฑ์ {COMMA} ถุง
-STR_QUANTITY_OIL                                                :น้ำมันดิบ {VOLUME_LONG} ลิตร
+STR_QUANTITY_OIL                                                :น้ำมันดิบ {VOLUME_LONG}
 STR_QUANTITY_LIVESTOCK                                          :ปศุสัตว์ {COMMA} ตัว
 STR_QUANTITY_GOODS                                              :สินค้าแปรรูป {COMMA} ลัง
 STR_QUANTITY_GRAIN                                              :ข้าวสาลี {WEIGHT_LONG}
@@ -113,7 +113,7 @@ STR_QUANTITY_DIAMONDS                                           :เพชร {C
 STR_QUANTITY_FOOD                                               :อาหาร {WEIGHT_LONG}
 STR_QUANTITY_PAPER                                              :กระดาษ {WEIGHT_LONG}
 STR_QUANTITY_GOLD                                               :ทองคำ {COMMA} ถุง
-STR_QUANTITY_WATER                                              :น้ำ {VOLUME_LONG} สิตร
+STR_QUANTITY_WATER                                              :น้ำ {VOLUME_LONG}
 STR_QUANTITY_WHEAT                                              :ข้าวสาลี {WEIGHT_LONG}
 STR_QUANTITY_RUBBER                                             :ยางพารา {VOLUME_LONG} สิตร
 STR_QUANTITY_SUGAR                                              :น้ำตาล {WEIGHT_LONG}
@@ -124,7 +124,7 @@ STR_QUANTITY_CANDYFLOSS                                         :ขนมสา
 STR_QUANTITY_BUBBLES                                            :ฟอง {COMMA} ลูก
 STR_QUANTITY_TOFFEE                                             :ลูกอม {WEIGHT_LONG}
 STR_QUANTITY_BATTERIES                                          :ถ่านไฟฉาย {COMMA} ก้อน
-STR_QUANTITY_PLASTIC                                            :พลาสติก {VOLUME_LONG} ลิตร
+STR_QUANTITY_PLASTIC                                            :พลาสติก {VOLUME_LONG}
 STR_QUANTITY_FIZZY_DRINKS                                       :น้ำอัดลมหรรษา {COMMA} ชุด
 STR_QUANTITY_N_A                                                :N/A
 
@@ -202,7 +202,7 @@ STR_UNITS_POWER_SI                                              :{COMMA} กิ�
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} ตัน
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} กิโลกรัม
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ตัน
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} กิโลกรัม
 
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} ลิตร
@@ -329,7 +329,7 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}เป�
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}บันทึกฉาก, โหลดฉาก, ยกเลิกการแก้ไขฉาก, ออก
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
-STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}โปรแกรมสร้างฉาก
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}โปรแกรมแก้ไขแผนที่
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}เลื่อนวันที่เริ่มต้นย้อนไป 1 ปี
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}เลือนวันที่เริ่มต้นไปอีก 1 ปี
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}คลิกเพื่อใส่ปีเริ่มต้น
@@ -343,11 +343,11 @@ STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}ปั�
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}วางวัตถุ. กด Shift เพื่อปิด-เปิดสิ่งปลูกสร้าง/แสดงการประเมินค่าใช้จ่าย
 
 ############ range for SE file menu starts
-STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :บันทึกฉาก
-STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :โหลดฉาก
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :บันทึกแผนที่
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :โหลดแผนที่
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :บันทึกแผนที่ความสูง
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :โหลดแผนที่ความสูง
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :ออกจากตัวแก้ไขฉาก
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :ออกจากโปรแกรมแก้ไขแผนที่
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :ออก
 ############ range for SE file menu starts
@@ -584,7 +584,7 @@ STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}รา�
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}หน่วยการขนส่ง:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}ประเภทสินค้า:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}เงิน:
-STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}เงินกู้:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}ยอดเงินกู้:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}รวมทั้งสิ้น:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}จำนวนของยานพาหนะที่ทำกำไรในปีที่ผ่านมา ทั้ง รถ รถไฟ เรือ และ เครื่องบิน
@@ -896,7 +896,7 @@ STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}หน�
 STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}การเลือกหน่วยการวัด
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :ระบบอังกฤษ
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :ระบบอิมพีเรียล
 STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :ระบบเมตริก
 STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :ระบบมาตรฐานสากล (SI)
 ############ end of measuring units region
@@ -1163,9 +1163,9 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :ความย
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :ปรับความยาวสูงสุดสำหรับการสร้างอุโมงค์
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :กำหนดวิธีหลักในการก่อสร้างอุตสาหกรรมเอง: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :การเลือกช่องทางการสร้างโรงงานอุตสาหกรรมหลัก เลือก "ไม่มี" จะทำให้ไม่สามารถสร้างอุตสาหกรรมเพิ่มได้ เลือก "สุมที่ตั้ง" จะเป็นการสุ่มตำแหน่งที่ตั้ง "เหมือนกับอุตสาหกรรมอื่น" ก็จะสามารถกำหนดสถานที่ตั้งได้เลย
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ไม่เลย
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ตามอุตสาหกรรมอื่นๆ
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :การสำรวจแร่
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ไม่อนุญาตให้ก่อตั้ง
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ก่อตั้งได้เหมือนกับอุตสาหกรรมอื่นๆ
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :สุ่มตำแหน่งที่ตั้ง
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :พื้นที่ราบเรียบรอบโรงงานอุตสาหกรรม: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :การปรับระยะของพื้นที่ราบเรียบโดยรอบของโรงงานอุตสาหกรรมต่างๆ
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :อนุญาตให้มีหลายอุตสาหกรรมที่เหมือนกันต่อหนึ่งเมือง: {STRING}
@@ -1276,7 +1276,7 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :ปรังป
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :ทิศการหมุน Heightmap: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :ทวนเข็มนาฬิกา
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :ตามเข็มนาฬิกา
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :ระดับความสูงที่ แผนที่ flat scenario ได้: {STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :ค่าระดับความสูงต่ำสุดของพื้นราบ: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :ยอมให้เปลี่ยนสภาพพื้นผิวบริเวณช่องริมขอบแผนที่: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :ถ้าปิด ขอบแผนที่จะเป็นน้ำเสมอ
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}ขอบทางเหนือมีอย่างน้อยหนึ่งช่องหรือมากกว่านั้นที่ไม่ว่าง
@@ -2418,7 +2418,7 @@ STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}สร�
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}เพิ่มพื้นที่ในการปรับระดับแผ่นดิน
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}ลดพื้นที่ในการปรับระดับแผ่นดิน
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}สร้างแผ่นดินแบบสุ่ม
-STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}สร้างฉากใหม่
+STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}สร้างแผนที่ใหม่
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}ยกเลิกภูมิทัศน์ทังหมด
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}ลบทรัพย์สินทั้งหมดที่เป็นของบริษัทออกจากแผนที่
 
@@ -2472,7 +2472,7 @@ STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}สา�
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}สายการผลิตสำหรับสินค้า {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}อุตสาหกรรมการผลิต
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}อุตสาหกรรมที่รองรับ
-STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}บ้าน
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}บ้านเรือน
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}คลิกที่อุตสาหกรรมเพื่อแสดงผู้ผลิตสินค้าและลูกค้า
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}คลิกที่สินค้าเพื่อแสดงผู้ผลิตสินค้าและลูกค้า
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}แสดงห่วงโซ่
@@ -2608,8 +2608,8 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}ลิ�
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}บันทึกเกม
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}โหลดเกม
-STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}บันทึกฉาก
-STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}โหลดฉากเดิม
+STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}บันทึกแผนที่
+STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}โหลดแผนที่
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}โหลดแผนที่ระดับสูง
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}บันทึกแผนที่จำลองเสมือนจริง
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}กดที่นี่เพื่อเข้าสู่ตำแหน่งบันทึกเกม/โหลดเกมที่ใช้อยู่
@@ -2877,10 +2877,10 @@ STR_TOWN_POPULATION                                             :{BLACK}ปร�
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
-STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (City)
-STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}จำนวนประชากร: {ORANGE}{COMMA}{BLACK}  ที่อยู่อาศัย: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}นคร {TOWN}
+STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}จำนวนประชากร: {ORANGE}{COMMA}{BLACK}  จำนวนอาคาร: {ORANGE}{COMMA}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}ผู้โดยสารเมื่อเดือนที่แล้ว: {ORANGE}{COMMA}{BLACK}  จำนวนสูงสุด: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}จดหมายเมื่อเดือนที่แล้ว: {ORANGE}{COMMA}{BLACK}  จำนวนสูงสุด: {ORANGE}{COMMA}
+STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}ไปรษณีย์ภัณฑ์เมื่อเดือนที่แล้ว: {ORANGE}{COMMA}{BLACK}  จำนวนสูงสุด: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}ความต้องการสินค้าสำหรับการขยายตัวของเมือง:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} required
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} ต้องการหิมะ
@@ -2890,7 +2890,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}เมืองขยายตัวทุกๆ {ORANGE}{COMMA}{BLACK} วัน
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}เมืองเติบโตทุกๆ {ORANGE}{COMMA}{BLACK} วัน (funded)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}เมือง {RED}ไม่{BLACK} ขยายตัว
-STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}มีมลภาวะทางเสียงจากสนามบิน: {ORANGE}{COMMA}{BLACK} สูงสุดที่มีได้: {ORANGE}{COMMA}
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}มีมลภาวะทางเสียง: {ORANGE}{COMMA}{BLACK} สูงสุดที่มีได้: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}กดเมื่อไปยังมุมมองใจกลางเมือง
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}เจ้าหน้าที่ท้องถิ่น
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}ดูข้อมูลเกี่ยวกับเจ้าหน้าที่ในท้องถิ่น
@@ -2904,12 +2904,12 @@ STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}ลบ�
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :เปลี่ยนชื่อเมือง
 
 # Town local authority window
-STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} เจ้าหน้าที่ท้องถิ่น
-STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}ความนิยมของบริษัท:
+STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}เจ้าหน้าที่ท้องถิ่นของ {TOWN}
+STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}ความพึงพอใจต่อบริษัท:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}การกระทำที่สามารถทำได้:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}รายการสิ่งที่สามารถทำได้กับเมืองนี้ - กดเพื่อดูรายละเอียดเพิ่มเติม
-STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}ลงมือทำ
+STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}ดำเนินการ
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}กระทำตามที่เลือกไว้ในรายการด้านบน
 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :โฆษณาโดยใช้สื่อสิ่งพิมพ์
@@ -3241,10 +3241,10 @@ STR_GROUP_ALL_ROAD_VEHICLES                                     :ยานพา
 STR_GROUP_ALL_SHIPS                                             :ยานพาหนะทางน้ำทั้งหมด
 STR_GROUP_ALL_AIRCRAFTS                                         :อากาศยานทั้งหมด
 
-STR_GROUP_DEFAULT_TRAINS                                        :ขบวนรถที่ไม่ได้จัดกลุ่ม
-STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :ยานพาหนะที่ไม่ได้จัดกลุ่ม
-STR_GROUP_DEFAULT_SHIPS                                         :เรือที่ไม่ได้จัดกลุ่ม
-STR_GROUP_DEFAULT_AIRCRAFTS                                     :อากาศยานที่ไม่ได้จัดกลุ่ม
+STR_GROUP_DEFAULT_TRAINS                                        :พาหนะที่ไม่ได้จัดกลุ่ม
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :พาหนะที่ไม่ได้จัดกลุ่ม
+STR_GROUP_DEFAULT_SHIPS                                         :พาหนะที่ไม่ได้จัดกลุ่ม
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :พาหนะที่ไม่ได้จัดกลุ่ม
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}กลุ่ม - คลิ๊กที่กลุ่มเพื่อดูรายการยานพาหนะในกลุ่ม
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}กดเพื่อสร้างกลุ่ม
@@ -3902,7 +3902,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} changelog ของ {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} การอนุญาตของ {STRING}
 STR_TEXTFILE_VIEW_README                                        :{BLACK}แสดง readme
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Changelog
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}ข้อมูลการอัพเดต
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}การอนุญาต
 
 

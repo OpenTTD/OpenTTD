@@ -1566,7 +1566,7 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :在道路重建
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :每 {STRING} 天更新一次统计图
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :指定每次计算货物分配图之间的时间。由于每次重新计算只会处理一个货物分配图元件，因此本设定不代表“每若干日重新计算整个货物分配图”。{}如果此设定赋值越小，則系统需要使用更多处理器时间计算货物分配图。相反，如果此设定赋值越大，則货物被派往新路线所需的时间越长。
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :每隔{STRING}天刷新货物分配图
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :每次刷新货物分配图持续 {STRING} 天
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :當刷新货物分配图时，系统會衍生一条线程。本设定的值即为线程的持续时间。{}这设定赋值越小，线程越有可能在应当停止的时候还未完成，游戏会暂停运作至线程完成工作。相反，这设定赋值越大，則货物分配功能需要较长时间反映线路网変动的影晌。
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :手动
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :不对称
@@ -2124,7 +2124,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}取消�
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}搜索整个网络
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}在与OpenTTD没有联系的网站搜寻没有纳入OpenTTD內容服务的內容
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}正在离开游戏！
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}在外部网站下载內容的规则及条款跟OpenTTD引用的规则及条款不同。{}您需要参照有关网站以取得在OpenTTD安装有关內容的资讯。{}您要継续吗？
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}在外部网站下载內容的规则及条款可能跟OpenTTD引用的规则及条款不同。{}您需要参照有关网站以取得在OpenTTD安装有关內容的资讯。{}您要継续吗？
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}标签/名称过滤器
 STR_CONTENT_OPEN_URL                                            :{BLACK}查看主页
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}打开该扩展包主页
