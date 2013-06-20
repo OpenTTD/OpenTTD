@@ -706,6 +706,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Rādīt/nerādīt pilsētu nosaukumus uz kartes
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrēt minikarti uz pašreizējo pozīciju
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Atspējot visu
@@ -1531,6 +1532,8 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Lielpilsētu vi
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Ceļu būves laikā novākt bezjēdzīgus ceļu elementus: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Finansētās ceļu rekonstrukcijas laikā noņem vairs neizmantojamos ceļu nobeiguma posmus
 
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetriska
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetriska
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Saskarne
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Būvniecība
@@ -1760,6 +1763,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mainīt 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Vairākspēlētāju spēle
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nē
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Jā
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spēlētāja vārds:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Pēc šā vārda jūs atpazīs citi spēlētāji
 
@@ -1818,6 +1823,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Spēles 
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Uzstādīt paroli
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Aizsargā jūsu spēli ar paroli, ja nevēlaties lai tā būtu publiski pieejama
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :Nē
+STR_NETWORK_START_SERVER_ADVERTISED                             :Jā
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} spēlētāj{P s i u}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maks. spēlētāju skaits:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Izvēlēties maksimālo spēlētāju skaitu. Ne visiem slotiem ir jābūt aizpildītiem
@@ -2860,9 +2867,13 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Pirkt 1
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Piekukuļot vietējo pašvaldību lai paceltu reitingu, riskējot saņemt lielu sodu.{}Izmaksas: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} mērķi
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globālie mērķi
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globālie mērķi:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nav -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Uzņēmuma mērķi:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikšķināt uz mērķa, lai centrētu galveno skatu uz ražotni/pilsētu/lauciņu. Ctrl+klikšķis atver jaunu skatvietu uz ražotni/pilsētu/lauciņu
 
@@ -2904,6 +2915,12 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikšķināt uz servisa, lai iecentrētu skatu uz rūpnīcu/pilsētu. Ctrl+klikšķis atvērs jaunu skatu lauku uz pilsētu/rūpnīcu
 
 # Story book window
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :{NUM} lapa
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Iepriekšējā
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Doties uz iepriekšējo lapu
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Nākamā
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Doties uz nākamo lapu
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Staciju nosaukumi - klikšķināt uz nosaukuma, lai centrētu galveno skatu uz staciju. Ctrl+klikšķis atvērs jaunu skatvietu pie stacijas
@@ -2931,7 +2948,9 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vērtējumi
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Rādīt stacijas vērtējumus
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} no {STATION}
 
 
 ############ range for rating starts
@@ -3440,6 +3459,9 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Apkopes 
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Palielināt apkopes starplaiku par 10. Ctrl+klikšķis palielina apkopes starplaiku par 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Samazināt apkopes starplaiku par 10. Ctrl+klikšķis samazina apkopes starplaiku par 5
 
+STR_VEHICLE_DETAILS_DEFAULT                                     :Noklusējuma
+STR_VEHICLE_DETAILS_DAYS                                        :Dienas
+STR_VEHICLE_DETAILS_PERCENT                                     :Procenti
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nosaukt vilcienu
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nosaukt autotransporta līdzekli
