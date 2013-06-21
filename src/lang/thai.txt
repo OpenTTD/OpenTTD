@@ -576,16 +576,16 @@ STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}ดูรายละเอียดของบริษัทนี้
 ############ Those following lines need to be in this order!!
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}จำนวนยานพาหนะ:
-STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}สถานี:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}กำไรต่ำสุด:
-STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}รายได้ต่ำสุด:
-STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}รายได้สูงสุด:
-STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}หน่วยการขนส่ง:
-STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}ประเภทสินค้า:
-STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}เงิน:
-STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}ยอดเงินกู้:
-STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}รวมทั้งสิ้น:
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}จำนวนยานพาหนะ
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}จำนวนสถานี
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}กำไรต่ำสุด
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}รายได้ต่ำสุด
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}รายได้สูงสุด
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}ปริมาณการขนส่ง
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}ประเภทสินค้า
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}เงินในธนาคาร
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}หนี้สิน
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}รวมทั้งสิ้น
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}จำนวนของยานพาหนะที่ทำกำไรในปีที่ผ่านมา ทั้ง รถ รถไฟ เรือ และ เครื่องบิน
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}ตัวเลขแสดงสถานีที่รองรับการซ่อมแซมในปัจจุบัน สถานีรถไฟ ป้ายรถประจำทาง ท่าอากาศยาน และอื่นๆ จะนับแยกกันจนกระทั่งสถานีเหล่านั้นจะรวมกันเป็นสถานีเดียว
