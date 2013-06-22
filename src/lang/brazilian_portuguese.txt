@@ -222,6 +222,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Filtro:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Digite o filtro de série
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Digite uma palavra-chave para filtrar a lista
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Selecionar ordem de agrupamento
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecione ordem de classificação (descendente/ascendente)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecione critério de classificação
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecione critério para filtração
@@ -277,6 +278,8 @@ STR_SORT_BY_LENGTH                                              :Comprimento
 STR_SORT_BY_LIFE_TIME                                           :Tempo de uso restante
 STR_SORT_BY_TIMETABLE_DELAY                                     :Atraso de horário
 STR_SORT_BY_FACILITY                                            :Tipo de estação
+STR_SORT_BY_WAITING_TOTAL                                       :Carga total aguardando
+STR_SORT_BY_WAITING_AVAILABLE                                   :Carga disponível aguardando
 STR_SORT_BY_RATING_MAX                                          :Maior avaliação de carga
 STR_SORT_BY_RATING_MIN                                          :Menor avaliação de carga
 STR_SORT_BY_ENGINE_ID                                           :RG da Locomotiva (classificação clássica)
@@ -302,6 +305,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Exibir s
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Exibir lista de estações da empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Exibir informações financeiras da empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Exibir informações gerais da empresa
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Exibe o livro de histórias
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Exibie a lista de objetivos
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Exibir gráficos
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Exibir tabela de classificação das empresas
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Fundar construção de nova indústria or listar todas as indústrias
@@ -2882,9 +2887,11 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Compra
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Subornar a prefeitura para aumentar a sua avaliação, correndo o risco de uma penalidade severa se apanhado.{}Preço: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Objetivos globais
 STR_GOALS_GLOBAL_TITLE                                          :{G=m}{BLACK}Objetivos globais:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{G=m}{ORANGE}- Nenhum -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Não aplicável -
 STR_GOALS_COMPANY_TITLE                                         :{G=m}{BLACK}Objetivos da empresa:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clique num objetivo para centralizar a visualização principal numa indústria/cidade.Ctrl+Clique abre uma nova janela na localização da indústria/cidade
 
@@ -2924,6 +2931,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clique num serviço para centralizar a visualização principal numa indústria/cidade.Ctrl+Clique abre uma nova janela na localização da indústria/cidade
 
 # Story book window
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Livro de Histórias Global
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomes da estação - clique no nome para centralizar a visualização principal na estação. Ctrl+Clique abre uma nova janela na localização da estação
@@ -2953,7 +2961,28 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Avaliações
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Exibir avaliações da estação
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Agrupar por
+STR_STATION_VIEW_WAITING_STATION                                :Estação: Aguardando
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Quantidade: Aguardando
+STR_STATION_VIEW_PLANNED_STATION                                :Estação: Planejada
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Quantidade: Planejada
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} de {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} via {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} para {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} de estação desconhecida
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} para qualquer estação
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} via qualquer estação
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} dessa estação
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} parando nessa estação
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} a essa estação
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} sem parar
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Origem-Via-Destino
+STR_STATION_VIEW_GROUP_S_D_V                                    :Origem-Destino-Via
+STR_STATION_VIEW_GROUP_V_S_D                                    :Via-Origem-Destino
+STR_STATION_VIEW_GROUP_V_D_S                                    :Via-Destino-Origem
+STR_STATION_VIEW_GROUP_D_S_V                                    :Destino-Origem-Via
+STR_STATION_VIEW_GROUP_D_V_S                                    :Destino-Via-Origem
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Inexistente
