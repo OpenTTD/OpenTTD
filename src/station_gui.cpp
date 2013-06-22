@@ -956,6 +956,16 @@ public:
 	 */
 	CargoDataSet::iterator End() const { return this->children->end(); }
 
+	/**
+	 * Has this entry transfers.
+	 */
+	bool HasTransfers() const { return this->transfers; }
+
+	/**
+	 * Set the transfers state.
+	 */
+	void SetTransfers(bool value) { this->transfers = value; }
+
 	void Clear();
 private:
 
@@ -1322,7 +1332,7 @@ struct StationViewWindow : public Window {
 				case GR_CARGO:
 					assert(i == 0);
 					data = data->InsertOrRetrieve(cargo);
-					data->transfers = (source != this->window_number);
+					data->SetTransfers(source != this->window_number);
 					expand = expand->Retrieve(cargo);
 					break;
 				case GR_SOURCE:
@@ -1759,7 +1769,7 @@ struct StationViewWindow : public Window {
 					} else {
 						/* Only draw '+' if there is something to be shown. */
 						const StationCargoList &list = Station::Get(this->window_number)->goods[cargo].cargo;
-						if (grouping == GR_CARGO && (list.ReservedCount() > 0 || cd->transfers)) {
+						if (grouping == GR_CARGO && (list.ReservedCount() > 0 || cd->HasTransfers())) {
 							sym = "+";
 						}
 					}
