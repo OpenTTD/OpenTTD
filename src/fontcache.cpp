@@ -62,8 +62,13 @@ FontCache::~FontCache()
 
 /** Font cache for fonts that are based on a freetype font. */
 class SpriteFontCache : public FontCache {
+private:
+	SpriteID **glyph_to_spriteid_map; ///< Mapping of glyphs to sprite IDs.
+
+	void ClearGlyphToSpriteMap();
 public:
-	SpriteFontCache(FontSize fs) : FontCache(fs) {}
+	SpriteFontCache(FontSize fs);
+	~SpriteFontCache();
 	virtual SpriteID GetUnicodeGlyph(uint32 key);
 	virtual void SetUnicodeGlyph(uint32 key, SpriteID sprite);
 	virtual void InitializeUnicodeGlyphMap();
@@ -72,6 +77,37 @@ public:
 	virtual uint GetGlyphWidth(uint32 key);
 	virtual bool GetDrawGlyphShadow();
 };
+
+/**
+ * Create a new sprite font cache.
+ * @param fs The font size to create the cache for.
+ */
+SpriteFontCache::SpriteFontCache(FontSize fs) : FontCache(fs), glyph_to_spriteid_map(NULL)
+{
+	this->InitializeUnicodeGlyphMap();
+}
+
+/**
+ * Free everything we allocated.
+ */
+SpriteFontCache::~SpriteFontCache()
+{
+	this->ClearGlyphToSpriteMap();
+}
+
+/**
+ * Clear the glyph to sprite mapping.
+ */
+void SpriteFontCache::ClearGlyphToSpriteMap()
+{
+	if (this->glyph_to_spriteid_map == NULL) return;
+
+	for (uint i = 0; i < 256; i++) {
+		free(this->glyph_to_spriteid_map[i]);
+	}
+	free(this->glyph_to_spriteid_map);
+	this->glyph_to_spriteid_map = NULL;
+}
 
 void SpriteFontCache::ClearFontCache() {}
 
@@ -566,9 +602,6 @@ uint FreeTypeFontCache::GetGlyphWidth(WChar key)
 
 #include "table/unicode.h"
 
-static SpriteID **_unicode_glyph_map[FS_END];
-
-
 /** Get the SpriteID of the first glyph for the given font size */
 static SpriteID GetFontBase(FontSize size)
 {
@@ -584,29 +617,23 @@ static SpriteID GetFontBase(FontSize size)
 
 SpriteID SpriteFontCache::GetUnicodeGlyph(uint32 key)
 {
-	if (_unicode_glyph_map[this->fs][GB(key, 8, 8)] == NULL) return 0;
-	return _unicode_glyph_map[this->fs][GB(key, 8, 8)][GB(key, 0, 8)];
+	if (this->glyph_to_spriteid_map[GB(key, 8, 8)] == NULL) return 0;
+	return this->glyph_to_spriteid_map[GB(key, 8, 8)][GB(key, 0, 8)];
 }
 
 
 void SpriteFontCache::SetUnicodeGlyph(uint32 key, SpriteID sprite)
 {
-	if (_unicode_glyph_map[this->fs] == NULL) _unicode_glyph_map[this->fs] = CallocT<SpriteID*>(256);
-	if (_unicode_glyph_map[this->fs][GB(key, 8, 8)] == NULL) _unicode_glyph_map[this->fs][GB(key, 8, 8)] = CallocT<SpriteID>(256);
-	_unicode_glyph_map[this->fs][GB(key, 8, 8)][GB(key, 0, 8)] = sprite;
+	if (this->glyph_to_spriteid_map == NULL) this->glyph_to_spriteid_map = CallocT<SpriteID*>(256);
+	if (this->glyph_to_spriteid_map[GB(key, 8, 8)] == NULL) this->glyph_to_spriteid_map[GB(key, 8, 8)] = CallocT<SpriteID>(256);
+	this->glyph_to_spriteid_map[GB(key, 8, 8)][GB(key, 0, 8)] = sprite;
 }
 
 
 void SpriteFontCache::InitializeUnicodeGlyphMap()
 {
 	/* Clear out existing glyph map if it exists */
-	if (_unicode_glyph_map[this->fs] != NULL) {
-		for (uint i = 0; i < 256; i++) {
-			free(_unicode_glyph_map[this->fs][i]);
-		}
-		free(_unicode_glyph_map[this->fs]);
-		_unicode_glyph_map[this->fs] = NULL;
-	}
+	this->ClearGlyphToSpriteMap();
 
 	SpriteID base = GetFontBase(this->fs);
 
