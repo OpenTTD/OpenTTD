@@ -19,6 +19,7 @@
 
 #include "table/sprites.h"
 #include "table/control_codes.h"
+#include "table/unicode.h"
 
 static const int ASCII_LETTERSTART = 32; ///< First printable ASCII letter.
 static const int MAX_FONT_SIZE     = 72; ///< Maximum font size.
@@ -88,6 +89,54 @@ SpriteFontCache::SpriteFontCache(FontSize fs) : FontCache(fs), glyph_to_spriteid
 SpriteFontCache::~SpriteFontCache()
 {
 	this->ClearGlyphToSpriteMap();
+}
+
+SpriteID SpriteFontCache::GetUnicodeGlyph(uint32 key)
+{
+	if (this->glyph_to_spriteid_map[GB(key, 8, 8)] == NULL) return 0;
+	return this->glyph_to_spriteid_map[GB(key, 8, 8)][GB(key, 0, 8)];
+}
+
+void SpriteFontCache::SetUnicodeGlyph(uint32 key, SpriteID sprite)
+{
+	if (this->glyph_to_spriteid_map == NULL) this->glyph_to_spriteid_map = CallocT<SpriteID*>(256);
+	if (this->glyph_to_spriteid_map[GB(key, 8, 8)] == NULL) this->glyph_to_spriteid_map[GB(key, 8, 8)] = CallocT<SpriteID>(256);
+	this->glyph_to_spriteid_map[GB(key, 8, 8)][GB(key, 0, 8)] = sprite;
+}
+
+void SpriteFontCache::InitializeUnicodeGlyphMap()
+{
+	/* Clear out existing glyph map if it exists */
+	this->ClearGlyphToSpriteMap();
+
+	SpriteID base;
+	switch (this->fs) {
+		default: NOT_REACHED();
+		case FS_MONO:   // Use normal as default for mono spaced font, i.e. FALL THROUGH
+		case FS_NORMAL: base = SPR_ASCII_SPACE;       break;
+		case FS_SMALL:  base = SPR_ASCII_SPACE_SMALL; break;
+		case FS_LARGE:  base = SPR_ASCII_SPACE_BIG;   break;
+	}
+
+	for (uint i = ASCII_LETTERSTART; i < 256; i++) {
+		SpriteID sprite = base + i - ASCII_LETTERSTART;
+		if (!SpriteExists(sprite)) continue;
+		this->SetUnicodeGlyph(i, sprite);
+		this->SetUnicodeGlyph(i + SCC_SPRITE_START, sprite);
+	}
+
+	for (uint i = 0; i < lengthof(_default_unicode_map); i++) {
+		byte key = _default_unicode_map[i].key;
+		if (key == CLRA) {
+			/* Clear the glyph. This happens if the glyph at this code point
+				* is non-standard and should be accessed by an SCC_xxx enum
+				* entry only. */
+			this->SetUnicodeGlyph(_default_unicode_map[i].code, 0);
+		} else {
+			SpriteID sprite = base + key - ASCII_LETTERSTART;
+			this->SetUnicodeGlyph(_default_unicode_map[i].code, sprite);
+		}
+	}
 }
 
 /**
@@ -547,65 +596,4 @@ uint FreeTypeFontCache::GetGlyphWidth(WChar key)
 	return glyph->width;
 }
 
-
 #endif /* WITH_FREETYPE */
-
-/* Sprite based glyph mapping */
-
-#include "table/unicode.h"
-
-/** Get the SpriteID of the first glyph for the given font size */
-static SpriteID GetFontBase(FontSize size)
-{
-	switch (size) {
-		default: NOT_REACHED();
-		case FS_NORMAL: return SPR_ASCII_SPACE;
-		case FS_SMALL:  return SPR_ASCII_SPACE_SMALL;
-		case FS_LARGE:  return SPR_ASCII_SPACE_BIG;
-		case FS_MONO:   return SPR_ASCII_SPACE;
-	}
-}
-
-
-SpriteID SpriteFontCache::GetUnicodeGlyph(uint32 key)
-{
-	if (this->glyph_to_spriteid_map[GB(key, 8, 8)] == NULL) return 0;
-	return this->glyph_to_spriteid_map[GB(key, 8, 8)][GB(key, 0, 8)];
-}
-
-
-void SpriteFontCache::SetUnicodeGlyph(uint32 key, SpriteID sprite)
-{
-	if (this->glyph_to_spriteid_map == NULL) this->glyph_to_spriteid_map = CallocT<SpriteID*>(256);
-	if (this->glyph_to_spriteid_map[GB(key, 8, 8)] == NULL) this->glyph_to_spriteid_map[GB(key, 8, 8)] = CallocT<SpriteID>(256);
-	this->glyph_to_spriteid_map[GB(key, 8, 8)][GB(key, 0, 8)] = sprite;
-}
-
-
-void SpriteFontCache::InitializeUnicodeGlyphMap()
-{
-	/* Clear out existing glyph map if it exists */
-	this->ClearGlyphToSpriteMap();
-
-	SpriteID base = GetFontBase(this->fs);
-
-	for (uint i = ASCII_LETTERSTART; i < 256; i++) {
-		SpriteID sprite = base + i - ASCII_LETTERSTART;
-		if (!SpriteExists(sprite)) continue;
-		this->SetUnicodeGlyph(i, sprite);
-		this->SetUnicodeGlyph(i + SCC_SPRITE_START, sprite);
-	}
-
-	for (uint i = 0; i < lengthof(_default_unicode_map); i++) {
-		byte key = _default_unicode_map[i].key;
-		if (key == CLRA) {
-			/* Clear the glyph. This happens if the glyph at this code point
-				* is non-standard and should be accessed by an SCC_xxx enum
-				* entry only. */
-			this->SetUnicodeGlyph(_default_unicode_map[i].code, 0);
-		} else {
-			SpriteID sprite = base + key - ASCII_LETTERSTART;
-			this->SetUnicodeGlyph(_default_unicode_map[i].code, sprite);
-		}
-	}
-}
