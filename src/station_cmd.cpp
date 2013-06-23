@@ -3402,7 +3402,17 @@ void DeleteStaleLinks(Station *from)
 					(DistanceManhattan(from->xy, to->xy) >> 2)) {
 				node.RemoveEdge(to->goods[c].node);
 				ge.flows.DeleteFlows(to->index);
+
+				/* Reroute cargo in station. */
 				ge.cargo.Reroute(UINT_MAX, &ge.cargo, to->index, from->index, &ge);
+
+				/* Reroute cargo staged to be transfered. */
+				for (std::list<Vehicle *>::iterator it(from->loading_vehicles.begin()); it != from->loading_vehicles.end(); ++it) {
+					for (Vehicle *v = *it; v != NULL; v = v->Next()) {
+						if (v->cargo_type != c) continue;
+						v->cargo.Reroute(UINT_MAX, &v->cargo, to->index, from->index, &ge);
+					}
+				}
 			}
 		}
 		assert(_date >= lg->LastCompression());

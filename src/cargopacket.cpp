@@ -580,6 +580,21 @@ uint VehicleCargoList::Truncate(uint max_move)
 	return max_move;
 }
 
+/**
+ * Routes packets with station "avoid" as next hop to a different place.
+ * @param max_move Maximum amount of cargo to move.
+ * @param dest List to prepend the cargo to.
+ * @param avoid Station to exclude from routing and current next hop of packets to reroute.
+ * @param avoid2 Additional station to exclude from routing.
+ * @oaram ge GoodsEntry to get the routing info from.
+ */
+uint VehicleCargoList::Reroute(uint max_move, VehicleCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge)
+{
+	max_move = min(this->action_counts[MTA_TRANSFER], max_move);
+	this->ShiftCargo(VehicleCargoReroute(this, dest, max_move, avoid, avoid2, ge));
+	return max_move;
+}
+
 /*
  *
  * Station cargo list implementation.
@@ -759,7 +774,7 @@ uint StationCargoList::Load(uint max_move, VehicleCargoList *dest, TileIndex loa
  */
 uint StationCargoList::Reroute(uint max_move, StationCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge)
 {
-	return this->ShiftCargo(CargoReroute(this, dest, max_move, avoid, avoid2, ge), avoid, false);
+	return this->ShiftCargo(StationCargoReroute(this, dest, max_move, avoid, avoid2, ge), avoid, false);
 }
 
 /*

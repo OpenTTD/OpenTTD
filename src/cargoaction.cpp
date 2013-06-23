@@ -192,7 +192,7 @@ bool CargoShift::operator()(CargoPacket *cp)
  * @param cp Packet to be rerouted.
  * @return True if the packet was completely rerouted, false if part of it was.
  */
-bool CargoReroute::operator()(CargoPacket *cp)
+bool StationCargoReroute::operator()(CargoPacket *cp)
 {
 	CargoPacket *cp_new = this->Preprocess(cp);
 	if (cp_new == NULL) cp_new = cp;
@@ -207,6 +207,29 @@ bool CargoReroute::operator()(CargoPacket *cp)
 	 * this might insert the packet between range.first and range.second (which might be end())
 	 * This is why we check for GetKey above to avoid infinite loops. */
 	this->destination->packets.Insert(next, cp_new);
+	return cp_new == cp;
+}
+
+/**
+ * Reroutes some cargo in a VehicleCargoList.
+ * @param cp Packet to be rerouted.
+ * @return True if the packet was completely rerouted, false if part of it was.
+ */
+bool VehicleCargoReroute::operator()(CargoPacket *cp)
+{
+	CargoPacket *cp_new = this->Preprocess(cp);
+	if (cp_new == NULL) cp_new = cp;
+	if (cp_new->NextStation() == this->avoid || cp_new->NextStation() == this->avoid2) {
+		cp->SetNextStation(this->ge->GetVia(cp_new->SourceStation(), this->avoid, this->avoid2));
+	}
+	if (this->source != this->destination) {
+		this->source->RemoveFromMeta(cp_new, VehicleCargoList::MTA_TRANSFER, cp_new->Count());
+		this->source->AddToMeta(cp_new, VehicleCargoList::MTA_TRANSFER);
+		this->destination->action_counts[VehicleCargoList::MTA_TRANSFER] += cp_new->Count();
+	}
+
+	/* Legal, as front pushing doesn't invalidate iterators in std::list. */
+	this->destination->packets.push_front(cp_new);
 	return cp_new == cp;
 }
 

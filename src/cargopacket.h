@@ -83,6 +83,12 @@ public:
 	void SetLoadPlace(TileIndex load_place) { this->loaded_at_xy = load_place; }
 
 	/**
+	 * Sets the station where the packet is supposed to go next.
+	 * @param next_station Next station the packet should go to.
+	 */
+	void SetNextStation(StationID next_station) { this->next_station = next_station; }
+
+	/**
 	 * Adds some feeder share to the packet.
 	 * @param new_share Feeder share to be added.
 	 */
@@ -319,6 +325,7 @@ public:
 	template<class Tsource>
 	friend class CargoRemoval;
 	friend class CargoReturn;
+	friend class VehicleCargoReroute;
 
 	/**
 	 * Returns source of the first cargo packet in this list.
@@ -424,6 +431,7 @@ public:
 	uint Unload(uint max_move, StationCargoList *dest, CargoPayment *payment);
 	uint Shift(uint max_move, VehicleCargoList *dest);
 	uint Truncate(uint max_move = UINT_MAX);
+	uint Reroute(uint max_move, VehicleCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge);
 
 	/**
 	 * Are two the two CargoPackets mergeable in the context of
@@ -467,7 +475,7 @@ public:
 	friend class CargoRemoval;
 	friend class CargoReservation;
 	friend class CargoReturn;
-	friend class CargoReroute;
+	friend class StationCargoReroute;
 
 	static void InvalidateAllFrom(SourceType src_type, SourceID src);
 
