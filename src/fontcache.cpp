@@ -139,6 +139,32 @@ private:
 	FT_Face face;  ///< The font face associated with this font.
 	int ascender;  ///< The ascender value of this font.
 	int descender; ///< The descender value of this font.
+
+	/** Container for information about a glyph. */
+	struct GlyphEntry {
+		Sprite *sprite; ///< The loaded sprite.
+		byte width;     ///< The width of the glyph.
+		bool duplicate; ///< Whether this glyph entry is a duplicate, i.e. may this be freed?
+	};
+
+	/**
+	 * The glyph cache. This is structured to reduce memory consumption.
+	 * 1) There is a 'segment' table for each font size.
+	 * 2) Each segment table is a discrete block of characters.
+	 * 3) Each block contains 256 (aligned) characters sequential characters.
+	 *
+	 * The cache is accessed in the following way:
+	 * For character 0x0041  ('A'): glyph_to_sprite[0x00][0x41]
+	 * For character 0x20AC (Euro): glyph_to_sprite[0x20][0xAC]
+	 *
+	 * Currently only 256 segments are allocated, "limiting" us to 65536 characters.
+	 * This can be simply changed in the two functions Get & SetGlyphPtr.
+	 */
+	GlyphEntry **glyph_to_sprite;
+
+	GlyphEntry *GetGlyphPtr(WChar key);
+	void SetGlyphPtr(WChar key, const GlyphEntry *glyph, bool duplicate = false);
+
 public:
 	FreeTypeFontCache(FontSize fs, FT_Face face, int pixels);
 	~FreeTypeFontCache();
@@ -164,7 +190,7 @@ static const byte SHADOW_COLOUR = 2;
  * @param face   The font that has to be loaded.
  * @param pixels The number of pixels this font should be high.
  */
-FreeTypeFontCache::FreeTypeFontCache(FontSize fs, FT_Face face, int pixels) : FontCache(fs), face(face)
+FreeTypeFontCache::FreeTypeFontCache(FontSize fs, FT_Face face, int pixels) : FontCache(fs), face(face), glyph_to_sprite(NULL)
 {
 	if (pixels == 0) {
 		/* Try to determine a good height based on the minimal height recommended by the font. */
@@ -249,14 +275,14 @@ static void LoadFreeTypeFont(const char *font_name, FT_Face *face, const char *t
 }
 
 
-static void ResetGlyphCache(bool monospace);
-
 /**
- * Unload the face
+ * Free everything that was allocated for this font cache.
  */
 FreeTypeFontCache::~FreeTypeFontCache()
 {
 	if (this->face != NULL) FT_Done_Face(this->face);
+
+	this->ClearFontCache();
 }
 
 /**
@@ -265,8 +291,6 @@ FreeTypeFontCache::~FreeTypeFontCache()
  */
 void InitFreeType(bool monospace)
 {
-	ResetGlyphCache(monospace);
-
 	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
 		FontCache *fc = FontCache::Get(fs);
 		if (fc->HasParent()) delete fc;
@@ -313,8 +337,6 @@ void InitFreeType(bool monospace)
  */
 void UninitFreeType()
 {
-	ClearFontCache();
-
 	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
 		FontCache *fc = FontCache::Get(fs);
 		if (fc->HasParent()) delete fc;
@@ -329,81 +351,47 @@ void UninitFreeType()
  */
 void FreeTypeFontCache::ClearFontCache()
 {
-	ResetGlyphCache(true);
-	ResetGlyphCache(false);
-}
+	if (this->glyph_to_sprite == NULL) return;
 
-struct GlyphEntry {
-	Sprite *sprite;
-	byte width;
-	bool duplicate;
-};
-
-
-/* The glyph cache. This is structured to reduce memory consumption.
- * 1) There is a 'segment' table for each font size.
- * 2) Each segment table is a discrete block of characters.
- * 3) Each block contains 256 (aligned) characters sequential characters.
- *
- * The cache is accessed in the following way:
- * For character 0x0041  ('A'): _glyph_ptr[FS_NORMAL][0x00][0x41]
- * For character 0x20AC (Euro): _glyph_ptr[FS_NORMAL][0x20][0xAC]
- *
- * Currently only 256 segments are allocated, "limiting" us to 65536 characters.
- * This can be simply changed in the two functions Get & SetGlyphPtr.
- */
-static GlyphEntry **_glyph_ptr[FS_END];
-
-/**
- * Clear the complete cache
- * @param monospace Whether to reset the monospace or regular font.
- */
-static void ResetGlyphCache(bool monospace)
-{
-	for (FontSize i = FS_BEGIN; i < FS_END; i++) {
-		if (monospace != (i == FS_MONO)) continue;
-		if (_glyph_ptr[i] == NULL) continue;
+	for (int i = 0; i < 256; i++) {
+		if (this->glyph_to_sprite[i] == NULL) continue;
 
 		for (int j = 0; j < 256; j++) {
-			if (_glyph_ptr[i][j] == NULL) continue;
-
-			for (int k = 0; k < 256; k++) {
-				if (_glyph_ptr[i][j][k].duplicate) continue;
-				free(_glyph_ptr[i][j][k].sprite);
-			}
-
-			free(_glyph_ptr[i][j]);
+			if (this->glyph_to_sprite[i][j].duplicate) continue;
+			free(this->glyph_to_sprite[i][j].sprite);
 		}
 
-		free(_glyph_ptr[i]);
-		_glyph_ptr[i] = NULL;
+		free(this->glyph_to_sprite[i]);
 	}
+
+	free(this->glyph_to_sprite);
+	this->glyph_to_sprite = NULL;
 }
 
-static GlyphEntry *GetGlyphPtr(FontSize size, WChar key)
+FreeTypeFontCache::GlyphEntry *FreeTypeFontCache::GetGlyphPtr(WChar key)
 {
-	if (_glyph_ptr[size] == NULL) return NULL;
-	if (_glyph_ptr[size][GB(key, 8, 8)] == NULL) return NULL;
-	return &_glyph_ptr[size][GB(key, 8, 8)][GB(key, 0, 8)];
+	if (this->glyph_to_sprite == NULL) return NULL;
+	if (this->glyph_to_sprite[GB(key, 8, 8)] == NULL) return NULL;
+	return &this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)];
 }
 
 
-static void SetGlyphPtr(FontSize size, WChar key, const GlyphEntry *glyph, bool duplicate = false)
+void FreeTypeFontCache::SetGlyphPtr(WChar key, const GlyphEntry *glyph, bool duplicate)
 {
-	if (_glyph_ptr[size] == NULL) {
-		DEBUG(freetype, 3, "Allocating root glyph cache for size %u", size);
-		_glyph_ptr[size] = CallocT<GlyphEntry*>(256);
+	if (this->glyph_to_sprite == NULL) {
+		DEBUG(freetype, 3, "Allocating root glyph cache for size %u", this->fs);
+		this->glyph_to_sprite = CallocT<GlyphEntry*>(256);
 	}
 
-	if (_glyph_ptr[size][GB(key, 8, 8)] == NULL) {
-		DEBUG(freetype, 3, "Allocating glyph cache for range 0x%02X00, size %u", GB(key, 8, 8), size);
-		_glyph_ptr[size][GB(key, 8, 8)] = CallocT<GlyphEntry>(256);
+	if (this->glyph_to_sprite[GB(key, 8, 8)] == NULL) {
+		DEBUG(freetype, 3, "Allocating glyph cache for range 0x%02X00, size %u", GB(key, 8, 8), this->fs);
+		this->glyph_to_sprite[GB(key, 8, 8)] = CallocT<GlyphEntry>(256);
 	}
 
-	DEBUG(freetype, 4, "Set glyph for unicode character 0x%04X, size %u", key, size);
-	_glyph_ptr[size][GB(key, 8, 8)][GB(key, 0, 8)].sprite    = glyph->sprite;
-	_glyph_ptr[size][GB(key, 8, 8)][GB(key, 0, 8)].width     = glyph->width;
-	_glyph_ptr[size][GB(key, 8, 8)][GB(key, 0, 8)].duplicate = duplicate;
+	DEBUG(freetype, 4, "Set glyph for unicode character 0x%04X, size %u", key, this->fs);
+	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].sprite    = glyph->sprite;
+	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].width     = glyph->width;
+	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].duplicate = duplicate;
 }
 
 static void *AllocateFont(size_t size)
@@ -457,7 +445,7 @@ const Sprite *FreeTypeFontCache::GetGlyph(WChar key)
 	}
 
 	/* Check for the glyph in our cache */
-	glyph = GetGlyphPtr(this->fs, key);
+	glyph = this->GetGlyphPtr(key);
 	if (glyph != NULL && glyph->sprite != NULL) return glyph->sprite;
 
 	slot = this->face->glyph;
@@ -473,13 +461,13 @@ const Sprite *FreeTypeFontCache::GetGlyph(WChar key)
 			assert(spr != NULL);
 			new_glyph.sprite = spr;
 			new_glyph.width  = spr->width + (this->fs != FS_NORMAL);
-			SetGlyphPtr(this->fs, key, &new_glyph, false);
+			this->SetGlyphPtr(key, &new_glyph, false);
 			return new_glyph.sprite;
 		} else {
 			/* Use '?' for missing characters. */
 			this->GetGlyph('?');
-			glyph = GetGlyphPtr(this->fs, '?');
-			SetGlyphPtr(this->fs, key, glyph, true);
+			glyph = this->GetGlyphPtr('?');
+			this->SetGlyphPtr(key, glyph, true);
 			return glyph->sprite;
 		}
 	}
@@ -528,7 +516,7 @@ const Sprite *FreeTypeFontCache::GetGlyph(WChar key)
 	new_glyph.sprite = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, AllocateFont);
 	new_glyph.width  = slot->advance.x >> 6;
 
-	SetGlyphPtr(this->fs, key, &new_glyph);
+	this->SetGlyphPtr(key, &new_glyph);
 
 	return new_glyph.sprite;
 }
@@ -550,10 +538,10 @@ uint FreeTypeFontCache::GetGlyphWidth(WChar key)
 		return SpriteExists(sprite) ? GetSprite(sprite, ST_FONT)->width + (this->fs != FS_NORMAL && this->fs != FS_MONO) : 0;
 	}
 
-	glyph = GetGlyphPtr(this->fs, key);
+	glyph = this->GetGlyphPtr(key);
 	if (glyph == NULL || glyph->sprite == NULL) {
 		this->GetGlyph(key);
-		glyph = GetGlyphPtr(this->fs, key);
+		glyph = this->GetGlyphPtr(key);
 	}
 
 	return glyph->width;
