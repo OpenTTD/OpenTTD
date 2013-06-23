@@ -1192,7 +1192,7 @@ STR_CONFIG_SETTING_EXTRADYNAMITE                                :Odstrániť via
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Uľahči odstraňovanie mestom vlastnených budov a infraštruktúry
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximálna dĺžka vlakov: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Nastav maximálnu dĺžku vlakov
-STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} dielec
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} diel{P "ec" "ce" "cov"}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Množstvo dymu/iskier z lokomotív: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Nastav koľko dymu alebo iskier budú vozidlá produkovať
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model akcelerácie vlaku: {STRING}
@@ -1623,11 +1623,14 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Priemerná veľ
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Pri rekonštrukcii ciest odstrániť nezmyselné časti: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Odstráň "mŕtve" konce ciest počas financovanej rekonštrukcie ciest.
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aktualizovať distribučný graf každ{P "ý" "é" "ých"} {STRING} {P "deň" "dni" "dní"}
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuálne
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymetricky
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symetricky
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Druh distribúcie pre cestujúcich: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Druh distribúcie pre poštu: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Druh distribúcie pre "obrnené" druhy nákladu: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Druh distribúcie pre ostatné druhy nákladu: {STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Rozhranie
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Výstavba
