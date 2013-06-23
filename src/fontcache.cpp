@@ -241,6 +241,8 @@ static const byte SHADOW_COLOUR = 2;
  */
 FreeTypeFontCache::FreeTypeFontCache(FontSize fs, FT_Face face, int pixels) : FontCache(fs), face(face), glyph_to_sprite(NULL)
 {
+	assert(face != NULL);
+
 	if (pixels == 0) {
 		/* Try to determine a good height based on the minimal height recommended by the font. */
 		pixels = _default_font_height[this->fs];
@@ -351,8 +353,7 @@ found_face:
  */
 FreeTypeFontCache::~FreeTypeFontCache()
 {
-	if (this->face != NULL) FT_Done_Face(this->face);
-
+	FT_Done_Face(this->face);
 	this->ClearFontCache();
 }
 
@@ -428,41 +429,23 @@ static bool GetFontAAState(FontSize size)
 
 const Sprite *FreeTypeFontCache::GetGlyph(WChar key)
 {
-	FT_GlyphSlot slot;
-	GlyphEntry new_glyph;
-	GlyphEntry *glyph;
-	SpriteLoader::Sprite sprite;
-	int width;
-	int height;
-	int x;
-	int y;
-
 	assert(IsPrintable(key));
 
-	/* Bail out if no face loaded, or for our special characters */
-	if (this->face == NULL || (key >= SCC_SPRITE_START && key <= SCC_SPRITE_END)) {
-		SpriteID sprite = this->GetUnicodeGlyph(key);
-		if (sprite == 0) sprite = this->GetUnicodeGlyph('?');
-
-		/* Load the sprite if it's known. */
-		if (sprite != 0) return GetSprite(sprite, ST_FONT);
-
-		/* For the 'rare' case there is no font available at all. */
-		if (this->face == NULL) error("No sprite font and no real font either... bailing!");
-
-		/* Use the '?' from the freetype font. */
-		key = '?';
+	/* Bail out for our special characters */
+	if (key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
+		return parent->GetGlyph(key);
 	}
 
 	/* Check for the glyph in our cache */
-	glyph = this->GetGlyphPtr(key);
+	GlyphEntry *glyph = this->GetGlyphPtr(key);
 	if (glyph != NULL && glyph->sprite != NULL) return glyph->sprite;
 
-	slot = this->face->glyph;
+	FT_GlyphSlot slot = this->face->glyph;
 
 	bool aa = GetFontAAState(this->fs);
 
 	FT_UInt glyph_index = FT_Get_Char_Index(this->face, key);
+	GlyphEntry new_glyph;
 	if (glyph_index == 0) {
 		if (key == '?') {
 			/* The font misses the '?' character. Use sprite font. */
@@ -488,13 +471,14 @@ const Sprite *FreeTypeFontCache::GetGlyph(WChar key)
 	aa = (slot->bitmap.pixel_mode == FT_PIXEL_MODE_GRAY);
 
 	/* Add 1 pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel */
-	width  = max(1, slot->bitmap.width + (this->fs == FS_NORMAL));
-	height = max(1, slot->bitmap.rows  + (this->fs == FS_NORMAL));
+	int width  = max(1, slot->bitmap.width + (this->fs == FS_NORMAL));
+	int height = max(1, slot->bitmap.rows  + (this->fs == FS_NORMAL));
 
 	/* Limit glyph size to prevent overflows later on. */
 	if (width > 256 || height > 256) usererror("Font glyph is too large");
 
 	/* FreeType has rendered the glyph, now we allocate a sprite and copy the image into it */
+	SpriteLoader::Sprite sprite;
 	sprite.AllocateData(ZOOM_LVL_NORMAL, width * height);
 	sprite.type = ST_FONT;
 	sprite.width = width;
@@ -504,8 +488,8 @@ const Sprite *FreeTypeFontCache::GetGlyph(WChar key)
 
 	/* Draw shadow for medium size */
 	if (this->fs == FS_NORMAL && !aa) {
-		for (y = 0; y < slot->bitmap.rows; y++) {
-			for (x = 0; x < slot->bitmap.width; x++) {
+		for (int y = 0; y < slot->bitmap.rows; y++) {
+			for (int x = 0; x < slot->bitmap.width; x++) {
 				if (aa ? (slot->bitmap.buffer[x + y * slot->bitmap.pitch] > 0) : HasBit(slot->bitmap.buffer[(x / 8) + y * slot->bitmap.pitch], 7 - (x % 8))) {
 					sprite.data[1 + x + (1 + y) * sprite.width].m = SHADOW_COLOUR;
 					sprite.data[1 + x + (1 + y) * sprite.width].a = aa ? slot->bitmap.buffer[x + y * slot->bitmap.pitch] : 0xFF;
@@ -514,8 +498,8 @@ const Sprite *FreeTypeFontCache::GetGlyph(WChar key)
 		}
 	}
 
-	for (y = 0; y < slot->bitmap.rows; y++) {
-		for (x = 0; x < slot->bitmap.width; x++) {
+	for (int y = 0; y < slot->bitmap.rows; y++) {
+		for (int x = 0; x < slot->bitmap.width; x++) {
 			if (aa ? (slot->bitmap.buffer[x + y * slot->bitmap.pitch] > 0) : HasBit(slot->bitmap.buffer[(x / 8) + y * slot->bitmap.pitch], 7 - (x % 8))) {
 				sprite.data[x + y * sprite.width].m = FACE_COLOUR;
 				sprite.data[x + y * sprite.width].a = aa ? slot->bitmap.buffer[x + y * slot->bitmap.pitch] : 0xFF;
@@ -540,15 +524,11 @@ bool FreeTypeFontCache::GetDrawGlyphShadow()
 
 uint FreeTypeFontCache::GetGlyphWidth(WChar key)
 {
-	GlyphEntry *glyph;
-
-	if (this->face == NULL || (key >= SCC_SPRITE_START && key <= SCC_SPRITE_END)) {
-		SpriteID sprite = this->GetUnicodeGlyph(key);
-		if (sprite == 0) sprite = this->GetUnicodeGlyph('?');
-		return SpriteExists(sprite) ? GetSprite(sprite, ST_FONT)->width + (this->fs != FS_NORMAL && this->fs != FS_MONO) : 0;
+	if (key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
+		return this->parent->GetGlyphWidth(key);
 	}
 
-	glyph = this->GetGlyphPtr(key);
+	GlyphEntry *glyph = this->GetGlyphPtr(key);
 	if (glyph == NULL || glyph->sprite == NULL) {
 		this->GetGlyph(key);
 		glyph = this->GetGlyphPtr(key);
