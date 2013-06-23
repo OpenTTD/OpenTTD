@@ -1179,7 +1179,7 @@ void DrawCharCentered(WChar c, int x, int y, TextColour colour)
 static int ReallyDoDrawString(const WChar *string, int x, int y, DrawStringParams &params, bool parse_string_also_when_clipped)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
-	bool draw_shadow = GetDrawGlyphShadow();
+	bool draw_shadow = GetDrawGlyphShadow(FS_NORMAL);
 	WChar c;
 	int xo = x;
 
