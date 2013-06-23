@@ -27,6 +27,8 @@ extern FT_Library _library;
  * ======================================================================================== */
 
 #ifdef WIN32
+#include "core/alloc_func.hpp"
+#include "core/math_func.hpp"
 #include <windows.h>
 #include <shlobj.h> /* SHGetFolderPath */
 #include "os/windows/win32.h"
