@@ -21,9 +21,16 @@ private:
 protected:
 	FontCache *parent;                ///< The parent of this font cache.
 	const FontSize fs;                ///< The size of the font.
+	int height;                       ///< The height of the font;
 public:
 	FontCache(FontSize fs);
 	virtual ~FontCache();
+
+	/**
+	 * Get the height of the font.
+	 * @return The height of the font.
+	 */
+	inline int GetHeight() { return this->height; }
 
 	/**
 	 * Get the SpriteID mapped to the given key
@@ -153,7 +160,7 @@ void UninitFreeType();
 #else
 
 /* Stub for initializiation */
-static inline void InitFreeType(bool monospace) { extern void ResetFontSizes(bool monospace); ResetFontSizes(monospace); }
+static inline void InitFreeType(bool monospace) {}
 static inline void UninitFreeType() {}
 
 #endif /* WITH_FREETYPE */

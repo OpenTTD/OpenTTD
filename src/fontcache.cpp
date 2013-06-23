@@ -23,31 +23,14 @@
 static const int ASCII_LETTERSTART = 32; ///< First printable ASCII letter.
 static const int MAX_FONT_SIZE     = 72; ///< Maximum font size.
 
-/** Semi-constant for the height of the different sizes of fonts. */
-int _font_height[FS_END];
 /** Default heights for the different sizes of fonts. */
 static const int _default_font_height[FS_END] = {10, 6, 18, 10};
-
-/**
- * Reset the font sizes to the defaults of the sprite based fonts.
- * @param monospace Whether to reset the monospace or regular fonts.
- */
-void ResetFontSizes(bool monospace)
-{
-	if (monospace) {
-		_font_height[FS_MONO]   = _default_font_height[FS_MONO];
-	} else {
-		_font_height[FS_SMALL]  = _default_font_height[FS_SMALL];
-		_font_height[FS_NORMAL] = _default_font_height[FS_NORMAL];
-		_font_height[FS_LARGE]  = _default_font_height[FS_LARGE];
-	}
-}
 
 /**
  * Create a new font cache.
  * @param fs The size of the font.
  */
-FontCache::FontCache(FontSize fs) : parent(FontCache::Get(fs)), fs(fs)
+FontCache::FontCache(FontSize fs) : parent(FontCache::Get(fs)), fs(fs), height(_default_font_height[fs])
 {
 	assert(parent == NULL || this->fs == parent->fs);
 	FontCache::caches[this->fs] = this;
@@ -59,6 +42,18 @@ FontCache::~FontCache()
 	assert(this->fs == parent->fs);
 	FontCache::caches[this->fs] = this->parent;
 }
+
+
+/**
+ * Get height of a character for a given font size.
+ * @param size Font size to get height of
+ * @return     Height of characters in the given font (pixels)
+ */
+int GetCharacterHeight(FontSize size)
+{
+	return FontCache::Get(size)->GetHeight();
+}
+
 
 /** Font cache for fonts that are based on a freetype font. */
 class SpriteFontCache : public FontCache {
@@ -142,6 +137,8 @@ bool SpriteFontCache::GetDrawGlyphShadow()
 class FreeTypeFontCache : public FontCache {
 private:
 	FT_Face face;  ///< The font face associated with this font.
+	int ascender;  ///< The ascender value of this font.
+	int descender; ///< The descender value of this font.
 public:
 	FreeTypeFontCache(FontSize fs, FT_Face face, int pixels);
 	~FreeTypeFontCache();
@@ -155,7 +152,6 @@ public:
 };
 
 FT_Library _library = NULL;
-static int _ascender[FS_END];
 
 FreeTypeSettings _freetype;
 
@@ -197,11 +193,9 @@ FreeTypeFontCache::FreeTypeFontCache(FontSize fs, FT_Face face, int pixels) : Fo
 		FT_Set_Pixel_Sizes(this->face, 0, n);
 	}
 
-	int asc = this->face->size->metrics.ascender >> 6;
-	int dec = this->face->size->metrics.descender >> 6;
-
-	_ascender[this->fs] = asc;
-	_font_height[this->fs] = asc - dec;
+	this->ascender  = this->face->size->metrics.ascender >> 6;
+	this->descender = this->face->size->metrics.descender >> 6;
+	this->height    = this->ascender - this->descender;
 }
 
 /**
@@ -271,8 +265,12 @@ FreeTypeFontCache::~FreeTypeFontCache()
  */
 void InitFreeType(bool monospace)
 {
-	ResetFontSizes(monospace);
 	ResetGlyphCache(monospace);
+
+	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
+		FontCache *fc = FontCache::Get(fs);
+		if (fc->HasParent()) delete fc;
+	}
 
 	if (StrEmpty(_freetype.small.font) && StrEmpty(_freetype.medium.font) && StrEmpty(_freetype.large.font) && StrEmpty(_freetype.mono.font)) {
 		DEBUG(freetype, 1, "No font faces specified, using sprite fonts instead");
@@ -315,8 +313,6 @@ void InitFreeType(bool monospace)
  */
 void UninitFreeType()
 {
-	ResetFontSizes(true);
-	ResetFontSizes(false);
 	ClearFontCache();
 
 	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
@@ -506,7 +502,7 @@ const Sprite *FreeTypeFontCache::GetGlyph(WChar key)
 	sprite.width = width;
 	sprite.height = height;
 	sprite.x_offs = slot->bitmap_left;
-	sprite.y_offs = _ascender[this->fs] - slot->bitmap_top;
+	sprite.y_offs = this->ascender - slot->bitmap_top;
 
 	/* Draw shadow for medium size */
 	if (this->fs == FS_NORMAL && !aa) {

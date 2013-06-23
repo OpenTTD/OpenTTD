@@ -526,7 +526,7 @@ public:
 
 	uint Height(uint width) const
 	{
-		return max(FONT_HEIGHT_NORMAL, (byte)14);
+		return max(FONT_HEIGHT_NORMAL, 14);
 	}
 
 	bool Selectable() const
