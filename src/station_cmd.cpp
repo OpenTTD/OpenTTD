@@ -3378,6 +3378,30 @@ static void UpdateStationRating(Station *st)
 }
 
 /**
+ * Reroute cargo of type c at station st or in any vehicles unloading there.
+ * Make sure the cargo's new next hop is neither "avoid" nor "avoid2".
+ * @param st Station to be rerouted at.
+ * @param c Type of cargo.
+ * @param avoid Original next hop of cargo, avoid this.
+ * @param avoid2 Another station to be avoided when rerouting.
+ */
+void RerouteCargo(Station *st, CargoID c, StationID avoid, StationID avoid2)
+{
+	GoodsEntry &ge = st->goods[c];
+
+	/* Reroute cargo in station. */
+	ge.cargo.Reroute(UINT_MAX, &ge.cargo, avoid, avoid2, &ge);
+
+	/* Reroute cargo staged to be transfered. */
+	for (std::list<Vehicle *>::iterator it(st->loading_vehicles.begin()); it != st->loading_vehicles.end(); ++it) {
+		for (Vehicle *v = *it; v != NULL; v = v->Next()) {
+			if (v->cargo_type != c) continue;
+			v->cargo.Reroute(UINT_MAX, &v->cargo, avoid, avoid2, &ge);
+		}
+	}
+}
+
+/**
  * Check all next hops of cargo packets in this station for existance of a
  * a valid link they may use to travel on. Reroute any cargo not having a valid
  * link and remove timed out links found like this from the linkgraph. We're
@@ -3402,17 +3426,7 @@ void DeleteStaleLinks(Station *from)
 					(DistanceManhattan(from->xy, to->xy) >> 2)) {
 				node.RemoveEdge(to->goods[c].node);
 				ge.flows.DeleteFlows(to->index);
-
-				/* Reroute cargo in station. */
-				ge.cargo.Reroute(UINT_MAX, &ge.cargo, to->index, from->index, &ge);
-
-				/* Reroute cargo staged to be transfered. */
-				for (std::list<Vehicle *>::iterator it(from->loading_vehicles.begin()); it != from->loading_vehicles.end(); ++it) {
-					for (Vehicle *v = *it; v != NULL; v = v->Next()) {
-						if (v->cargo_type != c) continue;
-						v->cargo.Reroute(UINT_MAX, &v->cargo, to->index, from->index, &ge);
-					}
-				}
+				RerouteCargo(from, c, to->index, from->index);
 			}
 		}
 		assert(_date >= lg->LastCompression());

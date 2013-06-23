@@ -92,18 +92,19 @@ Station::~Station()
 
 	for (CargoID c = 0; c < NUM_CARGO; ++c) {
 		LinkGraph *lg = LinkGraph::GetIfValid(this->goods[c].link_graph);
-		if (lg != NULL) {
-			lg->RemoveNode(this->goods[c].node);
-			if (lg->Size() == 0) {
-				LinkGraphSchedule::Instance()->Unqueue(lg);
-				delete lg;
+		if (lg == NULL) continue;
+
+		for (NodeID node = 0; node < lg->Size(); ++node) {
+			if ((*lg)[node][this->goods[c].node].LastUpdate() != INVALID_DATE) {
+				Station *st = Station::Get((*lg)[node].Station());
+				st->goods[c].flows.DeleteFlows(this->index);
+				RerouteCargo(st, c, this->index, st->index);
 			}
 		}
-		Station *st;
-		FOR_ALL_STATIONS(st) {
-			GoodsEntry *ge = &st->goods[c];
-			ge->flows.DeleteFlows(this->index);
-			ge->cargo.Reroute(UINT_MAX, &ge->cargo, this->index, st->index, ge);
+		lg->RemoveNode(this->goods[c].node);
+		if (lg->Size() == 0) {
+			LinkGraphSchedule::Instance()->Unqueue(lg);
+			delete lg;
 		}
 	}
 

@@ -50,6 +50,7 @@ bool SplitGroundSpriteForOverlay(const TileInfo *ti, SpriteID *ground, RailTrack
 
 void IncreaseStats(Station *st, const Vehicle *v, StationID next_station_id);
 void IncreaseStats(Station *st, CargoID cargo, StationID next_station_id, uint capacity, uint usage);
+void RerouteCargo(Station *st, CargoID c, StationID avoid, StationID avoid2);
 
 /**
  * Calculates the maintenance cost of a number of station tiles.
