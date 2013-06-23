@@ -20,7 +20,7 @@
 #include "newgrf_text.h"
 #include "fileio_func.h"
 #include "signs_base.h"
-#include "fontcache.h"
+#include "fontdetection.h"
 #include "error.h"
 #include "strings_func.h"
 #include "rev.h"

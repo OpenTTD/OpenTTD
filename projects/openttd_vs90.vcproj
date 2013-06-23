@@ -540,6 +540,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\fontdetection.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\base_consist.cpp"
 				>
 			</File>
@@ -1065,6 +1069,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\fontcache.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\fontdetection.h"
 				>
 			</File>
 			<File
