@@ -154,15 +154,9 @@ struct FreeTypeSettings {
 
 extern FreeTypeSettings _freetype;
 
+#endif /* WITH_FREETYPE */
+
 void InitFreeType(bool monospace);
 void UninitFreeType();
-
-#else
-
-/* Stub for initializiation */
-static inline void InitFreeType(bool monospace) {}
-static inline void UninitFreeType() {}
-
-#endif /* WITH_FREETYPE */
 
 #endif /* FONTCACHE_H */

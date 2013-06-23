@@ -278,49 +278,71 @@ FreeTypeFontCache::FreeTypeFontCache(FontSize fs, FT_Face face, int pixels) : Fo
  * First type to load the fontname as if it were a path. If that fails,
  * try to resolve the filename of the font using fontconfig, where the
  * format is 'font family name' or 'font family name, font style'.
+ * @param fs The font size to load.
  */
-static void LoadFreeTypeFont(const char *font_name, FT_Face *face, const char *type)
+static void LoadFreeTypeFont(FontSize fs)
 {
-	FT_Error error;
+	FreeTypeSubSetting &settings = _freetype.medium;
+	switch (fs) {
+		default: NOT_REACHED();
+		case FS_SMALL:  settings = _freetype.small;  break;
+		case FS_NORMAL: settings = _freetype.medium; break;
+		case FS_LARGE:  settings = _freetype.large;  break;
+		case FS_MONO:   settings = _freetype.mono;   break;
+	}
 
-	if (StrEmpty(font_name)) return;
+	if (StrEmpty(settings.font)) return;
 
-	error = FT_New_Face(_library, font_name, 0, face);
+	if (_library == NULL) {
+		if (FT_Init_FreeType(&_library) != FT_Err_Ok) {
+			ShowInfoF("Unable to initialize FreeType, using sprite fonts instead");
+			return;
+		}
 
-	if (error != FT_Err_Ok) error = GetFontByFaceName(font_name, face);
+		DEBUG(freetype, 2, "Initialized");
+	}
+
+	FT_Face face = NULL;
+	FT_Error error = FT_New_Face(_library, settings.font, 0, &face);
+
+	if (error != FT_Err_Ok) error = GetFontByFaceName(settings.font, &face);
 
 	if (error == FT_Err_Ok) {
-		DEBUG(freetype, 2, "Requested '%s', using '%s %s'", font_name, (*face)->family_name, (*face)->style_name);
+		DEBUG(freetype, 2, "Requested '%s', using '%s %s'", settings.font, face->family_name, face->style_name);
 
 		/* Attempt to select the unicode character map */
-		error = FT_Select_Charmap(*face, ft_encoding_unicode);
-		if (error == FT_Err_Ok) return; // Success
+		error = FT_Select_Charmap(face, ft_encoding_unicode);
+		if (error == FT_Err_Ok) goto found_face; // Success
 
 		if (error == FT_Err_Invalid_CharMap_Handle) {
 			/* Try to pick a different character map instead. We default to
 			 * the first map, but platform_id 0 encoding_id 0 should also
 			 * be unicode (strange system...) */
-			FT_CharMap found = (*face)->charmaps[0];
+			FT_CharMap found = face->charmaps[0];
 			int i;
 
-			for (i = 0; i < (*face)->num_charmaps; i++) {
-				FT_CharMap charmap = (*face)->charmaps[i];
+			for (i = 0; i < face->num_charmaps; i++) {
+				FT_CharMap charmap = face->charmaps[i];
 				if (charmap->platform_id == 0 && charmap->encoding_id == 0) {
 					found = charmap;
 				}
 			}
 
 			if (found != NULL) {
-				error = FT_Set_Charmap(*face, found);
-				if (error == FT_Err_Ok) return;
+				error = FT_Set_Charmap(face, found);
+				if (error == FT_Err_Ok) goto found_face;
 			}
 		}
 	}
 
-	FT_Done_Face(*face);
-	*face = NULL;
+	FT_Done_Face(face);
 
-	ShowInfoF("Unable to use '%s' for %s font, FreeType reported error 0x%X, using sprite font instead", font_name, type, error);
+	static const char *SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
+	ShowInfoF("Unable to use '%s' for %s font, FreeType reported error 0x%X, using sprite font instead", settings.font, SIZE_TO_NAME[fs], error);
+	return;
+
+found_face:
+	new FreeTypeFontCache(fs, face, settings.size);
 }
 
 
@@ -332,67 +354,6 @@ FreeTypeFontCache::~FreeTypeFontCache()
 	if (this->face != NULL) FT_Done_Face(this->face);
 
 	this->ClearFontCache();
-}
-
-/**
- * (Re)initialize the freetype related things, i.e. load the non-sprite fonts.
- * @param monospace Whether to initialise the monospace or regular fonts.
- */
-void InitFreeType(bool monospace)
-{
-	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-		FontCache *fc = FontCache::Get(fs);
-		if (fc->HasParent()) delete fc;
-	}
-
-	if (StrEmpty(_freetype.small.font) && StrEmpty(_freetype.medium.font) && StrEmpty(_freetype.large.font) && StrEmpty(_freetype.mono.font)) {
-		DEBUG(freetype, 1, "No font faces specified, using sprite fonts instead");
-		return;
-	}
-
-	if (_library == NULL) {
-		if (FT_Init_FreeType(&_library) != FT_Err_Ok) {
-			ShowInfoF("Unable to initialize FreeType, using sprite fonts instead");
-			return;
-		}
-
-		DEBUG(freetype, 2, "Initialized");
-	}
-
-	/* Load each font */
-	if (monospace) {
-		FT_Face mono = NULL;
-		LoadFreeTypeFont(_freetype.mono.font ,  &mono,   "mono");
-
-		if (mono != NULL) new FreeTypeFontCache(FS_MONO, mono, _freetype.mono.size);
-	} else {
-		FT_Face small  = NULL;
-		FT_Face medium = NULL;
-		FT_Face large  = NULL;
-
-		LoadFreeTypeFont(_freetype.small.font,  &small,  "small");
-		LoadFreeTypeFont(_freetype.medium.font, &medium, "medium");
-		LoadFreeTypeFont(_freetype.large.font,  &large,  "large");
-
-		/* Set each font size */
-		if (small != NULL)  new FreeTypeFontCache(FS_SMALL,  small,  _freetype.small.size);
-		if (medium != NULL) new FreeTypeFontCache(FS_NORMAL, medium, _freetype.medium.size);
-		if (large != NULL)  new FreeTypeFontCache(FS_LARGE,  large,  _freetype.large.size);
-	}
-}
-
-/**
- * Free everything allocated w.r.t. fonts.
- */
-void UninitFreeType()
-{
-	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-		FontCache *fc = FontCache::Get(fs);
-		if (fc->HasParent()) delete fc;
-	}
-
-	FT_Done_FreeType(_library);
-	_library = NULL;
 }
 
 /**
@@ -597,3 +558,37 @@ uint FreeTypeFontCache::GetGlyphWidth(WChar key)
 }
 
 #endif /* WITH_FREETYPE */
+
+/**
+ * (Re)initialize the freetype related things, i.e. load the non-sprite fonts.
+ * @param monospace Whether to initialise the monospace or regular fonts.
+ */
+void InitFreeType(bool monospace)
+{
+	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
+		if (monospace != (fs == FS_MONO)) continue;
+
+		FontCache *fc = FontCache::Get(fs);
+		if (fc->HasParent()) delete fc;
+
+#ifdef WITH_FREETYPE
+		LoadFreeTypeFont(fs);
+#endif
+	}
+}
+
+/**
+ * Free everything allocated w.r.t. fonts.
+ */
+void UninitFreeType()
+{
+	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
+		FontCache *fc = FontCache::Get(fs);
+		if (fc->HasParent()) delete fc;
+	}
+
+#ifdef WITH_FREETYPE
+	FT_Done_FreeType(_library);
+	_library = NULL;
+#endif /* WITH_FREETYPE */
+}
