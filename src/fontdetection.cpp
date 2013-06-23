@@ -9,6 +9,8 @@
 
 /** @file fontdetection.cpp Detection of the right font. */
 
+#ifdef WITH_FREETYPE
+
 #include "stdafx.h"
 #include "debug.h"
 #include "fontdetection.h"
@@ -774,3 +776,5 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 FT_Error GetFontByFaceName(const char *font_name, FT_Face *face) {return FT_Err_Cannot_Open_Resource;}
 bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback) { return false; }
 #endif /* WITH_FONTCONFIG */
+
+#endif /* WITH_FREETYPE */

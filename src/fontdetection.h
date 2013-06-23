@@ -12,9 +12,10 @@
 #ifndef FONTDETECTION_H
 #define FONTDETECTION_H
 
+#include "fontcache.h"
+
 #ifdef WITH_FREETYPE
 
-#include "fontcache.h"
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
