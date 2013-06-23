@@ -284,16 +284,16 @@ FreeTypeFontCache::FreeTypeFontCache(FontSize fs, FT_Face face, int pixels) : Fo
  */
 static void LoadFreeTypeFont(FontSize fs)
 {
-	FreeTypeSubSetting &settings = _freetype.medium;
+	FreeTypeSubSetting *settings = NULL;
 	switch (fs) {
 		default: NOT_REACHED();
-		case FS_SMALL:  settings = _freetype.small;  break;
-		case FS_NORMAL: settings = _freetype.medium; break;
-		case FS_LARGE:  settings = _freetype.large;  break;
-		case FS_MONO:   settings = _freetype.mono;   break;
+		case FS_SMALL:  settings = &_freetype.small;  break;
+		case FS_NORMAL: settings = &_freetype.medium; break;
+		case FS_LARGE:  settings = &_freetype.large;  break;
+		case FS_MONO:   settings = &_freetype.mono;   break;
 	}
 
-	if (StrEmpty(settings.font)) return;
+	if (StrEmpty(settings->font)) return;
 
 	if (_library == NULL) {
 		if (FT_Init_FreeType(&_library) != FT_Err_Ok) {
@@ -305,12 +305,12 @@ static void LoadFreeTypeFont(FontSize fs)
 	}
 
 	FT_Face face = NULL;
-	FT_Error error = FT_New_Face(_library, settings.font, 0, &face);
+	FT_Error error = FT_New_Face(_library, settings->font, 0, &face);
 
-	if (error != FT_Err_Ok) error = GetFontByFaceName(settings.font, &face);
+	if (error != FT_Err_Ok) error = GetFontByFaceName(settings->font, &face);
 
 	if (error == FT_Err_Ok) {
-		DEBUG(freetype, 2, "Requested '%s', using '%s %s'", settings.font, face->family_name, face->style_name);
+		DEBUG(freetype, 2, "Requested '%s', using '%s %s'", settings->font, face->family_name, face->style_name);
 
 		/* Attempt to select the unicode character map */
 		error = FT_Select_Charmap(face, ft_encoding_unicode);
@@ -340,11 +340,11 @@ static void LoadFreeTypeFont(FontSize fs)
 	FT_Done_Face(face);
 
 	static const char *SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
-	ShowInfoF("Unable to use '%s' for %s font, FreeType reported error 0x%X, using sprite font instead", settings.font, SIZE_TO_NAME[fs], error);
+	ShowInfoF("Unable to use '%s' for %s font, FreeType reported error 0x%X, using sprite font instead", settings->font, SIZE_TO_NAME[fs], error);
 	return;
 
 found_face:
-	new FreeTypeFontCache(fs, face, settings.size);
+	new FreeTypeFontCache(fs, face, settings->size);
 }
 
 
