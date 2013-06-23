@@ -25,19 +25,19 @@ void InitializeUnicodeGlyphMap();
 
 #ifdef WITH_FREETYPE
 
+/** Settings for a single freetype font. */
+struct FreeTypeSubSetting {
+	char font[MAX_PATH]; ///< The name of the font, or path to the font.
+	uint size;           ///< The (requested) size of the font.
+	bool aa;             ///< Whether to do anti aliasing or not.
+};
+
+/** Settings for the freetype fonts. */
 struct FreeTypeSettings {
-	char small_font[MAX_PATH];
-	char medium_font[MAX_PATH];
-	char large_font[MAX_PATH];
-	char mono_font[MAX_PATH];
-	uint small_size;
-	uint medium_size;
-	uint large_size;
-	uint mono_size;
-	bool small_aa;
-	bool medium_aa;
-	bool large_aa;
-	bool mono_aa;
+	FreeTypeSubSetting small;  ///< The smallest font; mostly used for zoomed out view.
+	FreeTypeSubSetting medium; ///< The normal font size.
+	FreeTypeSubSetting large;  ///< The largest font; mostly used for newspapers.
+	FreeTypeSubSetting mono;   ///< The mono space font used for license/readme viewers.
 };
 
 extern FreeTypeSettings _freetype;

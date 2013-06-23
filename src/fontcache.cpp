@@ -179,7 +179,7 @@ void InitFreeType(bool monospace)
 		UnloadFace(&_face_large);
 	}
 
-	if (StrEmpty(_freetype.small_font) && StrEmpty(_freetype.medium_font) && StrEmpty(_freetype.large_font) && StrEmpty(_freetype.mono_font)) {
+	if (StrEmpty(_freetype.small.font) && StrEmpty(_freetype.medium.font) && StrEmpty(_freetype.large.font) && StrEmpty(_freetype.mono.font)) {
 		DEBUG(freetype, 1, "No font faces specified, using sprite fonts instead");
 		return;
 	}
@@ -195,25 +195,25 @@ void InitFreeType(bool monospace)
 
 	/* Load each font */
 	if (monospace) {
-		LoadFreeTypeFont(_freetype.mono_font ,  &_face_mono,   "mono");
+		LoadFreeTypeFont(_freetype.mono.font ,  &_face_mono,   "mono");
 
 		if (_face_mono != NULL) {
-			SetFontGeometry(_face_mono, FS_MONO, _freetype.mono_size);
+			SetFontGeometry(_face_mono, FS_MONO, _freetype.mono.size);
 		}
 	} else {
-		LoadFreeTypeFont(_freetype.small_font,  &_face_small,  "small");
-		LoadFreeTypeFont(_freetype.medium_font, &_face_medium, "medium");
-		LoadFreeTypeFont(_freetype.large_font,  &_face_large,  "large");
+		LoadFreeTypeFont(_freetype.small.font,  &_face_small,  "small");
+		LoadFreeTypeFont(_freetype.medium.font, &_face_medium, "medium");
+		LoadFreeTypeFont(_freetype.large.font,  &_face_large,  "large");
 
 		/* Set each font size */
 		if (_face_small != NULL) {
-			SetFontGeometry(_face_small, FS_SMALL, _freetype.small_size);
+			SetFontGeometry(_face_small, FS_SMALL, _freetype.small.size);
 		}
 		if (_face_medium != NULL) {
-			SetFontGeometry(_face_medium, FS_NORMAL, _freetype.medium_size);
+			SetFontGeometry(_face_medium, FS_NORMAL, _freetype.medium.size);
 		}
 		if (_face_large != NULL) {
-			SetFontGeometry(_face_large, FS_LARGE, _freetype.large_size);
+			SetFontGeometry(_face_large, FS_LARGE, _freetype.large.size);
 		}
 	}
 }
@@ -343,10 +343,10 @@ static bool GetFontAAState(FontSize size)
 
 	switch (size) {
 		default: NOT_REACHED();
-		case FS_NORMAL: return _freetype.medium_aa;
-		case FS_SMALL:  return _freetype.small_aa;
-		case FS_LARGE:  return _freetype.large_aa;
-		case FS_MONO:   return _freetype.mono_aa;
+		case FS_NORMAL: return _freetype.medium.aa;
+		case FS_SMALL:  return _freetype.small.aa;
+		case FS_LARGE:  return _freetype.large.aa;
+		case FS_MONO:   return _freetype.mono.aa;
 	}
 }
 
