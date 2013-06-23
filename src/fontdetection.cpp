@@ -596,7 +596,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 #endif
 	}
 
-	if (result && strncmp(settings->medium_font, "Geeza Pro", 9) == 0) {
+	if (result && strncmp(settings->medium.font, "Geeza Pro", 9) == 0) {
 		/* The font 'Geeza Pro' is often found for arabic characters, but
 		 * it has the 'tiny' problem of not having any latin characters.
 		 * 'Arial Unicode MS' on the other hand has arabic and latin glyphs,
