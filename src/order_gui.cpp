@@ -1022,8 +1022,11 @@ public:
 					this->SetWidgetLoweredState(WID_O_FULL_LOAD, order->GetLoadType() == OLF_FULL_LOAD_ANY);
 					this->SetWidgetLoweredState(WID_O_UNLOAD, order->GetUnloadType() == OUFB_UNLOAD);
 
-					/* Can only do refitting when stopping at the destination and loading cargo. */
-					this->SetWidgetDisabledState(WID_O_REFIT_DROPDOWN, !this->can_do_autorefit || order->GetLoadType() == OLFB_NO_LOAD || order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION);
+					/* Can only do refitting when stopping at the destination and loading cargo.
+					 * Also enable the button if a refit is already set to allow clearing it. */
+					this->SetWidgetDisabledState(WID_O_REFIT_DROPDOWN,
+							order->GetLoadType() == OLFB_NO_LOAD || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) ||
+							(!this->can_do_autorefit && !order->IsRefit()));
 
 					break;
 
