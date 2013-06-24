@@ -523,7 +523,7 @@ struct RefitWindow : public Window {
 		}
 
 		this->vscroll->SetCount(row);
-		this->vscroll->ScrollTowards(scroll_row);
+		if (scroll_row < row) this->vscroll->ScrollTowards(scroll_row);
 	}
 
 	/**
