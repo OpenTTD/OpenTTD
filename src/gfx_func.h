@@ -105,7 +105,6 @@ enum StringAlignment {
 	SA_CENTER      = SA_HOR_CENTER | SA_VERT_CENTER, ///< Center both horizontally and vertically.
 
 	SA_FORCE       = 1 << 4, ///< Force the alignment, i.e. don't swap for RTL languages.
-	SA_STRIP       = 1 << 5, ///< Strip the SETX/SETXY commands from the string
 };
 DECLARE_ENUM_AS_BIT_SET(StringAlignment)
 

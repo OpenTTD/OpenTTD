@@ -27,8 +27,6 @@ enum StringControlCode {
 	SCC_ENCODED = SCC_CONTROL_START,
 
 	/* Display control codes */
-	SCC_SETX,
-	SCC_SETXY,
 	SCC_TINYFONT,  ///< Switch to small font
 	SCC_BIGFONT,   ///< Switch to large font
 

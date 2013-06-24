@@ -1003,21 +1003,6 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				break;
 			}
 
-			case SCC_SETX: // {SETX}
-				if (buff + Utf8CharLen(SCC_SETX) + 1 < last) {
-					buff += Utf8Encode(buff, SCC_SETX);
-					*buff++ = *str++;
-				}
-				break;
-
-			case SCC_SETXY: // {SETXY}
-				if (buff + Utf8CharLen(SCC_SETXY) + 2 < last) {
-					buff += Utf8Encode(buff, SCC_SETXY);
-					*buff++ = *str++;
-					*buff++ = *str++;
-				}
-				break;
-
 			case SCC_REVISION: // {REV}
 				buff = strecpy(buff, _openttd_revision, last);
 				break;
@@ -2036,14 +2021,7 @@ bool MissingGlyphSearcher::FindMissingGlyphs(const char **str)
 		FontSize size = this->DefaultSize();
 		if (str != NULL) *str = text;
 		for (WChar c = Utf8Consume(&text); c != '\0'; c = Utf8Consume(&text)) {
-			if (c == SCC_SETX) {
-				/* SetX is, together with SetXY as special character that
-					* uses the next (two) characters as data points. We have
-					* to skip those, otherwise the UTF8 reading will go haywire. */
-				text++;
-			} else if (c == SCC_SETXY) {
-				text += 2;
-			} else if (c == SCC_TINYFONT) {
+			if (c == SCC_TINYFONT) {
 				size = FS_SMALL;
 			} else if (c == SCC_BIGFONT) {
 				size = FS_LARGE;

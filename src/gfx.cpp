@@ -437,11 +437,10 @@ static WChar *HandleBiDiAndArabicShapes(WChar *buffer)
  * If the string is truncated, add three dots ('...') to show this.
  * @param *str string that is checked and possibly truncated
  * @param maxw maximum width in pixels of the string
- * @param ignore_setxy whether to ignore SETX(Y) or not
  * @param start_fontsize Fontsize to start the text with
  * @return new width of (truncated) string
  */
-static int TruncateString(char *str, int maxw, bool ignore_setxy, FontSize start_fontsize)
+static int TruncateString(char *str, int maxw, FontSize start_fontsize)
 {
 	int w = 0;
 	FontSize size = start_fontsize;
@@ -464,13 +463,7 @@ static int TruncateString(char *str, int maxw, bool ignore_setxy, FontSize start
 				return ddd_w;
 			}
 		} else {
-			if (c == SCC_SETX) {
-				if (!ignore_setxy) w = *str;
-				str++;
-			} else if (c == SCC_SETXY) {
-				if (!ignore_setxy) w = *str;
-				str += 2;
-			} else if (c == SCC_TINYFONT) {
+			if (c == SCC_TINYFONT) {
 				size = FS_SMALL;
 				ddd = GetCharacterWidth(size, '.') * 3;
 			} else if (c == SCC_BIGFONT) {
@@ -514,11 +507,6 @@ static int GetStringWidth(const WChar *str, FontSize start_fontsize)
 			width += GetCharacterWidth(size, c);
 		} else {
 			switch (c) {
-				case SCC_SETX:
-				case SCC_SETXY:
-					/* At this point there is no SCC_SETX(Y) anymore */
-					NOT_REACHED();
-					break;
 				case SCC_TINYFONT: size = FS_SMALL; break;
 				case SCC_BIGFONT:  size = FS_LARGE; break;
 				case '\n':
@@ -551,135 +539,54 @@ static int GetStringWidth(const WChar *str, FontSize start_fontsize)
  */
 static int DrawString(int left, int right, int top, char *str, const char *last, DrawStringParams &params, StringAlignment align, bool underline = false, bool truncate = true)
 {
-	/* We need the outer limits of both left/right */
-	int min_left = INT32_MAX;
-	int max_right = INT32_MIN;
-
-	int initial_left = left;
-	int initial_right = right;
-	int initial_top = top;
-
-	if (truncate) TruncateString(str, right - left + 1, (align & SA_STRIP) == SA_STRIP, params.fontsize);
-
-	/*
-	 * To support SETX and SETXY properly with RTL languages we have to
-	 * calculate the offsets from the right. To do this we need to split
-	 * the string and draw the parts separated by SETX(Y).
-	 * So here we split
-	 */
-	static SmallVector<WChar *, 4> setx_offsets;
-	setx_offsets.Clear();
+	if (truncate) TruncateString(str, right - left + 1, params.fontsize);
 
 	WChar draw_buffer[DRAW_STRING_BUFFER];
 	WChar *p = draw_buffer;
 
-	*setx_offsets.Append() = p;
-
-	char *loc = str;
-	for (;;) {
-		WChar c;
-		/* We cannot use Utf8Consume as we need the location of the SETX(Y) */
-		size_t len = Utf8Decode(&c, loc);
+	const char *text = str;
+	for (WChar c = Utf8Consume(&text); c != '\0'; c = Utf8Consume(&text)) {
 		*p++ = c;
-
-		if (c == '\0') break;
-		if (p >= lastof(draw_buffer) - 3) {
-			/* Make sure we never overflow (even if copying SCC_SETX(Y)). */
-			*p = '\0';
-			break;
-		}
-		if (c != SCC_SETX && c != SCC_SETXY) {
-			loc += len;
-			continue;
-		}
-
-		if (align & SA_STRIP) {
-			/* We do not want to keep the SETX(Y)!. It was already copied, so
-			 * remove it and undo the incrementing of the pointer! */
-			*p-- = '\0';
-			loc += len + (c == SCC_SETXY ? 2 : 1);
-			continue;
-		}
-
-		if ((align & SA_HOR_MASK) != SA_LEFT) {
-			DEBUG(grf, 1, "Using SETX and/or SETXY when not aligned to the left. Fixing alignment...");
-
-			/* For left alignment and change the left so it will roughly be in the
-			 * middle. This will never cause the string to be completely centered,
-			 * but once SETX is used you cannot be sure the actual content of the
-			 * string is centered, so it doesn't really matter. */
-			align = SA_LEFT | SA_FORCE;
-			initial_left = left = max(left, (left + right - (int)GetStringBoundingBox(str).width) / 2);
-		}
-
-		/* We add the begin of the string, but don't add it twice */
-		if (p != draw_buffer) {
-			*setx_offsets.Append() = p;
-			p[-1] = '\0';
-			*p++ = c;
-		}
-
-		/* Skip the SCC_SETX(Y) ... */
-		loc += len;
-		/* ... copy the x coordinate ... */
-		*p++ = *loc++;
-		/* ... and finally copy the y coordinate if it exists */
-		if (c == SCC_SETXY) *p++ = *loc++;
 	}
+	*p++ = '\0';
 
 	/* In case we have a RTL language we swap the alignment. */
-	if (!(align & SA_FORCE) && _current_text_dir == TD_RTL && !(align & SA_STRIP) && (align & SA_HOR_MASK) != SA_HOR_CENTER) align ^= SA_RIGHT;
+	if (!(align & SA_FORCE) && _current_text_dir == TD_RTL && (align & SA_HOR_MASK) != SA_HOR_CENTER) align ^= SA_RIGHT;
 
-	for (WChar **iter = setx_offsets.Begin(); iter != setx_offsets.End(); iter++) {
-		WChar *to_draw = *iter;
-		int offset = 0;
+	WChar *to_draw = HandleBiDiAndArabicShapes(draw_buffer);
+	int w = GetStringWidth(to_draw, params.fontsize);
 
-		/* Skip the SETX(Y) and set the appropriate offsets. */
-		if (*to_draw == SCC_SETX || *to_draw == SCC_SETXY) {
-			to_draw++;
-			offset = *to_draw++;
-			if (*to_draw == SCC_SETXY) top = initial_top + *to_draw++;
-		}
+	/* right is the right most position to draw on. In this case we want to do
+	 * calculations with the width of the string. In comparison right can be
+	 * seen as lastof(todraw) and width as lengthof(todraw). They differ by 1.
+	 * So most +1/-1 additions are to move from lengthof to 'indices'.
+	 */
+	switch (align & SA_HOR_MASK) {
+		case SA_LEFT:
+			/* right + 1 = left + w */
+			right = left + w - 1;
+			break;
 
-		to_draw = HandleBiDiAndArabicShapes(to_draw);
-		int w = GetStringWidth(to_draw, params.fontsize);
+		case SA_HOR_CENTER:
+			left  = RoundDivSU(right + 1 + left - w, 2);
+			/* right + 1 = left + w */
+			right = left + w - 1;
+			break;
 
-		/* right is the right most position to draw on. In this case we want to do
-		 * calculations with the width of the string. In comparison right can be
-		 * seen as lastof(todraw) and width as lengthof(todraw). They differ by 1.
-		 * So most +1/-1 additions are to move from lengthof to 'indices'.
-		 */
-		switch (align & SA_HOR_MASK) {
-			case SA_LEFT:
-				/* right + 1 = left + w */
-				left = initial_left + offset;
-				right = left + w - 1;
-				break;
+		case SA_RIGHT:
+			left = right + 1 - w;
+			break;
 
-			case SA_HOR_CENTER:
-				left  = RoundDivSU(initial_right + 1 + initial_left - w, 2);
-				/* right + 1 = left + w */
-				right = left + w - 1;
-				break;
-
-			case SA_RIGHT:
-				left = initial_right + 1 - w - offset;
-				break;
-
-			default:
-				NOT_REACHED();
-		}
-
-		min_left  = min(left, min_left);
-		max_right = max(right, max_right);
-
-		ReallyDoDrawString(to_draw, left, top, params, !truncate);
-		if (underline) {
-			GfxFillRect(left, top + FONT_HEIGHT_NORMAL, right, top + FONT_HEIGHT_NORMAL, _string_colourremap[1]);
-		}
+		default:
+			NOT_REACHED();
 	}
 
-	return (align & SA_HOR_MASK) == SA_RIGHT ? min_left : max_right;
+	ReallyDoDrawString(to_draw, left, top, params, !truncate);
+	if (underline) {
+		GfxFillRect(left, top + FONT_HEIGHT_NORMAL, right, top + FONT_HEIGHT_NORMAL, _string_colourremap[1]);
+	}
+
+	return (align & SA_HOR_MASK) == SA_RIGHT ? left : right;
 }
 
 /**
@@ -811,8 +718,6 @@ uint32 FormatStringLinebreaks(char *str, const char *last, int maxw, FontSize si
 			} else {
 				switch (c) {
 					case '\0': return num + (size << 16);
-					case SCC_SETX:  str++; break;
-					case SCC_SETXY: str += 2; break;
 					case SCC_TINYFONT: size = FS_SMALL; break;
 					case SCC_BIGFONT:  size = FS_LARGE; break;
 					case '\n': goto end_of_inner_loop;
@@ -855,8 +760,6 @@ static int GetMultilineStringHeight(const char *src, int num, FontSize start_fon
 		switch (c) {
 			case 0:            y += fh; if (--num < 0) return maxy; break;
 			case '\n':         y += fh;                             break;
-			case SCC_SETX:     src++;                               break;
-			case SCC_SETXY:    src++; y = (int)*src++;              break;
 			case SCC_TINYFONT: fh = GetCharacterHeight(FS_SMALL);   break;
 			case SCC_BIGFONT:  fh = GetCharacterHeight(FS_LARGE);   break;
 			default:           maxy = max<int>(maxy, y + fh);       break;
@@ -1019,10 +922,6 @@ static int DrawStringMultiLine(int left, int right, int top, int bottom, char *s
 			WChar c = Utf8Consume(&src);
 			if (c == 0) {
 				break;
-			} else if (c == SCC_SETX) {
-				src++;
-			} else if (c == SCC_SETXY) {
-				src += 2;
 			} else if (skip_lines > 0) {
 				/* Skipped drawing, so do additional processing to update params. */
 				if (c >= SCC_BLUE && c <= SCC_BLACK) {
@@ -1111,11 +1010,6 @@ Dimension GetStringBoundingBox(const char *str, FontSize start_fontsize)
 			br.width += GetCharacterWidth(size, c);
 		} else {
 			switch (c) {
-				case SCC_SETX: br.width = max((uint)*str++, br.width); break;
-				case SCC_SETXY:
-					br.width  = max((uint)*str++, br.width);
-					br.height = max((uint)*str++, br.height);
-					break;
 				case SCC_TINYFONT: size = FS_SMALL; break;
 				case SCC_BIGFONT:  size = FS_LARGE; break;
 				case '\n':
@@ -1229,9 +1123,6 @@ skip_cont:;
 		} else if (c == SCC_PREVIOUS_COLOUR) { // revert to the previous colour
 			params.SetPreviousColour();
 			goto switch_colour;
-		} else if (c == SCC_SETX || c == SCC_SETXY) { // {SETX}/{SETXY}
-			/* The characters are handled before calling this. */
-			NOT_REACHED();
 		} else if (c == SCC_TINYFONT) { // {TINYFONT}
 			params.SetFontSize(FS_SMALL);
 		} else if (c == SCC_BIGFONT) { // {BIGFONT}
