@@ -653,7 +653,7 @@ int DrawString(int left, int right, int top, StringID str, TextColour colour, St
  *  0 - 15 the number of lines ADDED to the string
  * 16 - 31 the fontsize in which the length calculation was done at
  */
-uint32 FormatStringLinebreaks(char *str, const char *last, int maxw, FontSize size)
+static uint32 FormatStringLinebreaks(char *str, const char *last, int maxw, FontSize size = FS_NORMAL)
 {
 	int num = 0;
 
