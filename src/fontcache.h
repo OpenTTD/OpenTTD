@@ -26,16 +26,43 @@ private:
 protected:
 	FontCache *parent;                ///< The parent of this font cache.
 	const FontSize fs;                ///< The size of the font.
-	int height;                       ///< The height of the font;
+	int height;                       ///< The height of the font.
+	int ascender;                     ///< The ascender value of the font.
+	int descender;                    ///< The descender value of the font.
+	int units_per_em;                 ///< The units per EM value of the font.
 public:
 	FontCache(FontSize fs);
 	virtual ~FontCache();
 
 	/**
+	 * Get the FontSize of the font.
+	 * @return The FontSize.
+	 */
+	inline FontSize GetSize() const { return this->fs; }
+
+	/**
 	 * Get the height of the font.
 	 * @return The height of the font.
 	 */
-	inline int GetHeight() { return this->height; }
+	inline int GetHeight() const { return this->height; }
+
+	/**
+	 * Get the ascender value of the font.
+	 * @return The ascender value of the font.
+	 */
+	inline int GetAscender() const { return this->ascender; }
+
+	/**
+	 * Get the descender value of the font.
+	 * @return The descender value of the font.
+	 */
+	inline int GetDescender() const{ return this->descender; }
+
+	/**
+	 * Get the units per EM value of the font.
+	 * @return The units per EM value of the font.
+	 */
+	inline int GetUnitsPerEM() const { return this->units_per_em; }
 
 	/**
 	 * Get the SpriteID mapped to the given key

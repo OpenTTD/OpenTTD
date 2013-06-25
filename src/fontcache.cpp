@@ -25,13 +25,16 @@ static const int ASCII_LETTERSTART = 32; ///< First printable ASCII letter.
 static const int MAX_FONT_SIZE     = 72; ///< Maximum font size.
 
 /** Default heights for the different sizes of fonts. */
-static const int _default_font_height[FS_END] = {10, 6, 18, 10};
+static const int _default_font_height[FS_END]   = {10, 6, 18, 10};
+static const int _default_font_ascender[FS_END] = { 8, 5, 15,  8};
 
 /**
  * Create a new font cache.
  * @param fs The size of the font.
  */
-FontCache::FontCache(FontSize fs) : parent(FontCache::Get(fs)), fs(fs), height(_default_font_height[fs])
+FontCache::FontCache(FontSize fs) : parent(FontCache::Get(fs)), fs(fs), height(_default_font_height[fs]),
+		ascender(_default_font_ascender[fs]), descender(_default_font_ascender[fs] - _default_font_height[fs]),
+		units_per_em(1)
 {
 	assert(parent == NULL || this->fs == parent->fs);
 	FontCache::caches[this->fs] = this;
@@ -187,8 +190,6 @@ bool SpriteFontCache::GetDrawGlyphShadow()
 class FreeTypeFontCache : public FontCache {
 private:
 	FT_Face face;  ///< The font face associated with this font.
-	int ascender;  ///< The ascender value of this font.
-	int descender; ///< The descender value of this font.
 
 	/** Container for information about a glyph. */
 	struct GlyphEntry {
@@ -272,9 +273,10 @@ FreeTypeFontCache::FreeTypeFontCache(FontSize fs, FT_Face face, int pixels) : Fo
 		FT_Set_Pixel_Sizes(this->face, 0, n);
 	}
 
-	this->ascender  = this->face->size->metrics.ascender >> 6;
-	this->descender = this->face->size->metrics.descender >> 6;
-	this->height    = this->ascender - this->descender;
+	this->units_per_em = this->face->units_per_EM;
+	this->ascender     = this->face->size->metrics.ascender >> 6;
+	this->descender    = this->face->size->metrics.descender >> 6;
+	this->height       = this->ascender - this->descender;
 }
 
 /**
