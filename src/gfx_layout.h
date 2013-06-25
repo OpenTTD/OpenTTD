@@ -16,20 +16,45 @@
 #include "gfx_func.h"
 #include "core/smallmap_type.hpp"
 
+#ifdef WITH_ICU
+#include "layout/ParagraphLayout.h"
+#define ICU_FONTINSTANCE : public LEFontInstance
+#else /* WITH_ICU */
+#define ICU_FONTINSTANCE
+#endif /* WITH_ICU */
+
 /**
  * Container with information about a font.
  */
-class Font {
+class Font ICU_FONTINSTANCE {
 public:
 	FontCache *fc;     ///< The font we are using.
 	TextColour colour; ///< The colour this font has to be.
 
 	Font(FontSize size, TextColour colour);
+
+#ifdef WITH_ICU
+	/* Implementation details of LEFontInstance */
+
+	le_int32 getUnitsPerEM() const;
+	le_int32 getAscent() const;
+	le_int32 getDescent() const;
+	le_int32 getLeading() const;
+	float getXPixelsPerEm() const;
+	float getYPixelsPerEm() const;
+	float getScaleFactorX() const;
+	float getScaleFactorY() const;
+	const void *getFontTable(LETag tableTag) const;
+	LEGlyphID mapCharToGlyph(LEUnicode32 ch) const;
+	void getGlyphAdvance(LEGlyphID glyph, LEPoint &advance) const;
+	le_bool getGlyphPoint(LEGlyphID glyph, le_int32 pointNumber, LEPoint &point) const;
+#endif /* WITH_ICU */
 };
 
 /** Mapping from index to font. */
 typedef SmallMap<int, Font *> FontMap;
 
+#ifndef WITH_ICU
 /**
  * Class handling the splitting of a paragraph of text into lines and
  * visual runs.
@@ -85,6 +110,7 @@ public:
 	ParagraphLayout(WChar *buffer, int length, FontMap &runs);
 	Line *nextLine(int max_width);
 };
+#endif /* !WITH_ICU */
 
 /**
  * The layouter performs all the layout work.
@@ -92,7 +118,11 @@ public:
  * It also accounts for the memory allocations and frees.
  */
 class Layouter : public AutoDeleteSmallVector<ParagraphLayout::Line *, 4> {
+#ifdef WITH_ICU
+	typedef UChar CharType; ///< The type of character used within the layouter.
+#else /* WITH_ICU */
 	typedef WChar CharType; ///< The type of character used within the layouter.
+#endif /* WITH_ICU */
 
 	size_t AppendToBuffer(CharType *buff, const CharType *buffer_last, WChar c);
 	ParagraphLayout *GetParagraphLayout(CharType *buff);

@@ -12,8 +12,13 @@
 #include "stdafx.h"
 #include "gfx_layout.h"
 #include "string_func.h"
+#include "strings_func.h"
 
 #include "table/control_codes.h"
+
+#ifdef WITH_ICU
+#include <unicode/ustring.h>
+#endif /* WITH_ICU */
 
 /**
  * Construct a new font.
@@ -25,6 +30,103 @@ Font::Font(FontSize size, TextColour colour) :
 {
 	assert(size < FS_END);
 }
+
+#ifdef WITH_ICU
+/* Implementation details of LEFontInstance */
+
+le_int32 Font::getUnitsPerEM() const
+{
+	return this->fc->GetUnitsPerEM();
+}
+
+le_int32 Font::getAscent() const
+{
+	return this->fc->GetAscender();
+}
+
+le_int32 Font::getDescent() const
+{
+	return -this->fc->GetDescender();
+}
+
+le_int32 Font::getLeading() const
+{
+	return this->fc->GetHeight();
+}
+
+float Font::getXPixelsPerEm() const
+{
+	return (float)this->fc->GetHeight();
+}
+
+float Font::getYPixelsPerEm() const
+{
+	return (float)this->fc->GetHeight();
+}
+
+float Font::getScaleFactorX() const
+{
+	return 1.0f;
+}
+
+float Font::getScaleFactorY() const
+{
+	return 1.0f;
+}
+
+const void *Font::getFontTable(LETag tableTag) const
+{
+	return this->fc->GetFontTable(tableTag);
+}
+
+LEGlyphID Font::mapCharToGlyph(LEUnicode32 ch) const
+{
+	if (IsTextDirectionChar(ch)) return 0;
+	return this->fc->MapCharToGlyph(ch);
+}
+
+void Font::getGlyphAdvance(LEGlyphID glyph, LEPoint &advance) const
+{
+	advance.fX = glyph == 0xFFFF ? 0 : this->fc->GetGlyphWidth(glyph);
+	advance.fY = 0;
+}
+
+le_bool Font::getGlyphPoint(LEGlyphID glyph, le_int32 pointNumber, LEPoint &point) const
+{
+	return FALSE;
+}
+
+size_t Layouter::AppendToBuffer(UChar *buff, const UChar *buffer_last, WChar c)
+{
+	/* Transform from UTF-32 to internal ICU format of UTF-16. */
+	int32 length = 0;
+	UErrorCode err = U_ZERO_ERROR;
+	u_strFromUTF32(buff, buffer_last - buff, &length, (UChar32*)&c, 1, &err);
+	return length;
+}
+
+ParagraphLayout *Layouter::GetParagraphLayout(UChar *buff)
+{
+	int32 length = buff - this->buffer;
+
+	if (length == 0) {
+		/* ICU's ParagraphLayout cannot handle empty strings, so fake one. */
+		this->buffer[0] = ' ';
+		length = 1;
+		this->fonts.End()[-1].first++;
+	}
+
+	/* Fill ICU's FontRuns with the right data. */
+	FontRuns runs(this->fonts.Length());
+	for (FontMap::iterator iter = this->fonts.Begin(); iter != this->fonts.End(); iter++) {
+		runs.add(iter->second, iter->first);
+	}
+
+	LEErrorCode status = LE_NO_ERROR;
+	return new ParagraphLayout(this->buffer, length, &runs, NULL, NULL, NULL, _current_text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, false, status);
+}
+
+#else /* WITH_ICU */
 
 /*** Paragraph layout ***/
 
@@ -276,6 +378,7 @@ ParagraphLayout *Layouter::GetParagraphLayout(WChar *buff_end)
 {
 	return new ParagraphLayout(this->buffer, buff_end - this->buffer, this->fonts);
 }
+#endif /* !WITH_ICU */
 
 /**
  * Create a new layouter.
