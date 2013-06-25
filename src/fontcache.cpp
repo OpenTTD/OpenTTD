@@ -65,13 +65,14 @@ private:
 public:
 	SpriteFontCache(FontSize fs);
 	~SpriteFontCache();
-	virtual SpriteID GetUnicodeGlyph(uint32 key);
-	virtual void SetUnicodeGlyph(uint32 key, SpriteID sprite);
+	virtual SpriteID GetUnicodeGlyph(WChar key);
+	virtual void SetUnicodeGlyph(WChar key, SpriteID sprite);
 	virtual void InitializeUnicodeGlyphMap();
 	virtual void ClearFontCache();
-	virtual const Sprite *GetGlyph(uint32 key);
-	virtual uint GetGlyphWidth(uint32 key);
+	virtual const Sprite *GetGlyph(GlyphID key);
+	virtual uint GetGlyphWidth(GlyphID key);
 	virtual bool GetDrawGlyphShadow();
+	virtual GlyphID MapCharToGlyph(WChar key) { return SPRITE_GLYPH | key; }
 };
 
 /**
@@ -91,13 +92,13 @@ SpriteFontCache::~SpriteFontCache()
 	this->ClearGlyphToSpriteMap();
 }
 
-SpriteID SpriteFontCache::GetUnicodeGlyph(uint32 key)
+SpriteID SpriteFontCache::GetUnicodeGlyph(GlyphID key)
 {
 	if (this->glyph_to_spriteid_map[GB(key, 8, 8)] == NULL) return 0;
 	return this->glyph_to_spriteid_map[GB(key, 8, 8)][GB(key, 0, 8)];
 }
 
-void SpriteFontCache::SetUnicodeGlyph(uint32 key, SpriteID sprite)
+void SpriteFontCache::SetUnicodeGlyph(GlyphID key, SpriteID sprite)
 {
 	if (this->glyph_to_spriteid_map == NULL) this->glyph_to_spriteid_map = CallocT<SpriteID*>(256);
 	if (this->glyph_to_spriteid_map[GB(key, 8, 8)] == NULL) this->glyph_to_spriteid_map[GB(key, 8, 8)] = CallocT<SpriteID>(256);
@@ -155,14 +156,14 @@ void SpriteFontCache::ClearGlyphToSpriteMap()
 
 void SpriteFontCache::ClearFontCache() {}
 
-const Sprite *SpriteFontCache::GetGlyph(uint32 key)
+const Sprite *SpriteFontCache::GetGlyph(GlyphID key)
 {
 	SpriteID sprite = this->GetUnicodeGlyph(key);
 	if (sprite == 0) sprite = this->GetUnicodeGlyph('?');
 	return GetSprite(sprite, ST_FONT);
 }
 
-uint SpriteFontCache::GetGlyphWidth(uint32 key)
+uint SpriteFontCache::GetGlyphWidth(GlyphID key)
 {
 	SpriteID sprite = this->GetUnicodeGlyph(key);
 	if (sprite == 0) sprite = this->GetUnicodeGlyph('?');
@@ -211,19 +212,20 @@ private:
 	 */
 	GlyphEntry **glyph_to_sprite;
 
-	GlyphEntry *GetGlyphPtr(WChar key);
-	void SetGlyphPtr(WChar key, const GlyphEntry *glyph, bool duplicate = false);
+	GlyphEntry *GetGlyphPtr(GlyphID key);
+	void SetGlyphPtr(GlyphID key, const GlyphEntry *glyph, bool duplicate = false);
 
 public:
 	FreeTypeFontCache(FontSize fs, FT_Face face, int pixels);
 	~FreeTypeFontCache();
-	virtual SpriteID GetUnicodeGlyph(uint32 key) { return this->parent->GetUnicodeGlyph(key); }
-	virtual void SetUnicodeGlyph(uint32 key, SpriteID sprite) { this->parent->SetUnicodeGlyph(key, sprite); }
+	virtual SpriteID GetUnicodeGlyph(WChar key) { return this->parent->GetUnicodeGlyph(key); }
+	virtual void SetUnicodeGlyph(WChar key, SpriteID sprite) { this->parent->SetUnicodeGlyph(key, sprite); }
 	virtual void InitializeUnicodeGlyphMap() { this->parent->InitializeUnicodeGlyphMap(); }
 	virtual void ClearFontCache();
-	virtual const Sprite *GetGlyph(uint32 key);
-	virtual uint GetGlyphWidth(uint32 key);
+	virtual const Sprite *GetGlyph(GlyphID key);
+	virtual uint GetGlyphWidth(GlyphID key);
 	virtual bool GetDrawGlyphShadow();
+	virtual GlyphID MapCharToGlyph(WChar key);
 };
 
 FT_Library _library = NULL;
@@ -379,7 +381,7 @@ void FreeTypeFontCache::ClearFontCache()
 	this->glyph_to_sprite = NULL;
 }
 
-FreeTypeFontCache::GlyphEntry *FreeTypeFontCache::GetGlyphPtr(WChar key)
+FreeTypeFontCache::GlyphEntry *FreeTypeFontCache::GetGlyphPtr(GlyphID key)
 {
 	if (this->glyph_to_sprite == NULL) return NULL;
 	if (this->glyph_to_sprite[GB(key, 8, 8)] == NULL) return NULL;
@@ -387,7 +389,7 @@ FreeTypeFontCache::GlyphEntry *FreeTypeFontCache::GetGlyphPtr(WChar key)
 }
 
 
-void FreeTypeFontCache::SetGlyphPtr(WChar key, const GlyphEntry *glyph, bool duplicate)
+void FreeTypeFontCache::SetGlyphPtr(GlyphID key, const GlyphEntry *glyph, bool duplicate)
 {
 	if (this->glyph_to_sprite == NULL) {
 		DEBUG(freetype, 3, "Allocating root glyph cache for size %u", this->fs);
@@ -427,14 +429,9 @@ static bool GetFontAAState(FontSize size)
 }
 
 
-const Sprite *FreeTypeFontCache::GetGlyph(WChar key)
+const Sprite *FreeTypeFontCache::GetGlyph(GlyphID key)
 {
-	assert(IsPrintable(key));
-
-	/* Bail out for our special characters */
-	if (key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
-		return parent->GetGlyph(key);
-	}
+	if ((key & SPRITE_GLYPH) != 0) return parent->GetGlyph(key);
 
 	/* Check for the glyph in our cache */
 	GlyphEntry *glyph = this->GetGlyphPtr(key);
@@ -444,10 +441,10 @@ const Sprite *FreeTypeFontCache::GetGlyph(WChar key)
 
 	bool aa = GetFontAAState(this->fs);
 
-	FT_UInt glyph_index = FT_Get_Char_Index(this->face, key);
 	GlyphEntry new_glyph;
-	if (glyph_index == 0) {
-		if (key == '?') {
+	if (key == 0) {
+		GlyphID question_glyph = this->MapCharToGlyph('?');
+		if (question_glyph == 0) {
 			/* The font misses the '?' character. Use sprite font. */
 			SpriteID sprite = this->GetUnicodeGlyph(key);
 			Sprite *spr = (Sprite*)GetRawSprite(sprite, ST_FONT, AllocateFont);
@@ -458,13 +455,13 @@ const Sprite *FreeTypeFontCache::GetGlyph(WChar key)
 			return new_glyph.sprite;
 		} else {
 			/* Use '?' for missing characters. */
-			this->GetGlyph('?');
-			glyph = this->GetGlyphPtr('?');
+			this->GetGlyph(question_glyph);
+			glyph = this->GetGlyphPtr(question_glyph);
 			this->SetGlyphPtr(key, glyph, true);
 			return glyph->sprite;
 		}
 	}
-	FT_Load_Glyph(this->face, glyph_index, FT_LOAD_DEFAULT);
+	FT_Load_Glyph(this->face, key, FT_LOAD_DEFAULT);
 	FT_Render_Glyph(this->face->glyph, aa ? FT_RENDER_MODE_NORMAL : FT_RENDER_MODE_MONO);
 
 	/* Despite requesting a normal glyph, FreeType may have returned a bitmap */
@@ -518,15 +515,13 @@ const Sprite *FreeTypeFontCache::GetGlyph(WChar key)
 
 bool FreeTypeFontCache::GetDrawGlyphShadow()
 {
-	return GetFontAAState(FS_NORMAL);
+	return this->fs == FS_NORMAL && GetFontAAState(FS_NORMAL);
 }
 
 
-uint FreeTypeFontCache::GetGlyphWidth(WChar key)
+uint FreeTypeFontCache::GetGlyphWidth(GlyphID key)
 {
-	if (key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
-		return this->parent->GetGlyphWidth(key);
-	}
+	if ((key & SPRITE_GLYPH) != 0) return this->parent->GetGlyphWidth(key);
 
 	GlyphEntry *glyph = this->GetGlyphPtr(key);
 	if (glyph == NULL || glyph->sprite == NULL) {
@@ -535,6 +530,17 @@ uint FreeTypeFontCache::GetGlyphWidth(WChar key)
 	}
 
 	return glyph->width;
+}
+
+GlyphID FreeTypeFontCache::MapCharToGlyph(WChar key)
+{
+	assert(IsPrintable(key));
+
+	if (key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
+		return this->parent->MapCharToGlyph(key);
+	}
+
+	return FT_Get_Char_Index(this->face, key);
 }
 
 #endif /* WITH_FREETYPE */
