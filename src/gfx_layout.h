@@ -35,7 +35,7 @@ typedef SmallMap<int, Font *> FontMap;
  * visual runs.
  *
  * One constructs this class with the text that needs to be split into
- * lines. Then nextLine is called with the maximum with until NULL is
+ * lines. Then nextLine is called with the maximum width until NULL is
  * returned. Each nextLine call creates VisualRuns which contain the
  * length of text that are to be drawn with the same font. In other
  * words, the result of this class is a list of sub strings with their

@@ -10,8 +10,7 @@
 /** @file gfx.cpp Handling of drawing text and other gfx related stuff. */
 
 #include "stdafx.h"
-#include "gfx_func.h"
-#include "fontcache.h"
+#include "gfx_layout.h"
 #include "progress.h"
 #include "zoom_func.h"
 #include "blitter/factory.hpp"
@@ -485,6 +484,99 @@ static int TruncateString(char *str, int maxw, FontSize start_fontsize)
 }
 
 static int ReallyDoDrawString(const WChar *string, int x, int y, DrawStringParams &params, bool parse_string_also_when_clipped = false);
+
+/**
+ * Drawing routine for drawing a laid out line of text.
+ * @param line      String to draw.
+ * @param y         The top most position to draw on.
+ * @param left      The left most position to draw on.
+ * @param right     The right most position to draw on.
+ * @param align     The alignment of the string when drawing left-to-right. In the
+ *                  case a right-to-left language is chosen this is inverted so it
+ *                  will be drawn in the right direction.
+ * @param underline Whether to underline what has been drawn or not.
+ *
+ * @return In case of left or center alignment the right most pixel we have drawn to.
+ *         In case of right alignment the left most pixel we have drawn to.
+ */
+static int DrawLayoutLine(ParagraphLayout::Line *line, int y, int left, int right, StringAlignment align, bool underline)
+{
+	if (line->countRuns() == 0) return 0;
+
+	int w = line->getWidth();
+	int h = line->getLeading();
+
+	/* In case we have a RTL language we swap the alignment. */
+	if (!(align & SA_FORCE) && _current_text_dir == TD_RTL && (align & SA_HOR_MASK) != SA_HOR_CENTER) align ^= SA_RIGHT;
+
+	/* right is the right most position to draw on. In this case we want to do
+	 * calculations with the width of the string. In comparison right can be
+	 * seen as lastof(todraw) and width as lengthof(todraw). They differ by 1.
+	 * So most +1/-1 additions are to move from lengthof to 'indices'.
+	 */
+	switch (align & SA_HOR_MASK) {
+		case SA_LEFT:
+			/* right + 1 = left + w */
+			right = left + w - 1;
+			break;
+
+		case SA_HOR_CENTER:
+			left  = RoundDivSU(right + 1 + left - w, 2);
+			/* right + 1 = left + w */
+			right = left + w - 1;
+			break;
+
+		case SA_RIGHT:
+			left = right + 1 - w;
+			break;
+
+		default:
+			NOT_REACHED();
+	}
+
+	for (int run_index = 0; run_index < line->countRuns(); run_index++) {
+		const ParagraphLayout::VisualRun *run = line->getVisualRun(run_index);
+		const Font *f = (const Font*)run->getFont();
+
+		FontCache *fc = f->fc;
+		TextColour colour = f->colour;
+		SetColourRemap(colour);
+
+		DrawPixelInfo *dpi = _cur_dpi;
+		int dpi_left  = dpi->left;
+		int dpi_right = dpi->left + dpi->width;
+
+		bool draw_shadow = fc->GetDrawGlyphShadow() && colour != TC_BLACK;
+
+		for (int i = 0; i < run->getGlyphCount(); i++) {
+			GlyphID glyph = run->getGlyphs()[i];
+
+			/* Not a valid glyph (empty) */
+			if (glyph == 0xFFFF) continue;
+
+			int begin_x = run->getPositions()[i * 2]     + left;
+			int end_x   = run->getPositions()[i * 2 + 2] + left;
+			int top     = run->getPositions()[i * 2 + 1] + y;
+
+			/* Not within the bounds to draw. */
+			if (begin_x >= dpi_right || end_x <= dpi_left) continue;
+
+			const Sprite *sprite = fc->GetGlyph(glyph);
+			if (draw_shadow && (glyph & SPRITE_GLYPH) == 0) {
+				SetColourRemap(TC_BLACK);
+				GfxMainBlitter(sprite, begin_x + 1, top + 1, BM_COLOUR_REMAP);
+				SetColourRemap(colour);
+			}
+			GfxMainBlitter(sprite, begin_x, top, BM_COLOUR_REMAP);
+		}
+	}
+
+	if (underline) {
+		GfxFillRect(left, y + h, right, y + h, _string_colourremap[1]);
+	}
+
+	return (align & SA_HOR_MASK) == SA_RIGHT ? left : right;
+}
 
 /**
  * Get the real width of the string.
