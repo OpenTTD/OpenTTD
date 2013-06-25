@@ -201,6 +201,9 @@
     <ClCompile Include="..\src\gfxinit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\gfx_layout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\goal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -595,6 +598,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\gfx_func.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gfx_layout.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\gfx_type.h">

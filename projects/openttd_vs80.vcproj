@@ -567,6 +567,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\gfx_layout.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\goal.cpp"
 				>
 			</File>
@@ -1096,6 +1100,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\gfx_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\gfx_layout.h"
 				>
 			</File>
 			<File

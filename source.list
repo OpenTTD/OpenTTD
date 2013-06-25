@@ -32,6 +32,7 @@ gamelog.cpp
 genworld.cpp
 gfx.cpp
 gfxinit.cpp
+gfx_layout.cpp
 goal.cpp
 ground_vehicle.cpp
 heightmap.cpp
@@ -189,6 +190,7 @@ gamelog.h
 gamelog_internal.h
 genworld.h
 gfx_func.h
+gfx_layout.h
 gfx_type.h
 gfxinit.h
 goal_base.h

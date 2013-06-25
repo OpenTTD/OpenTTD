@@ -324,6 +324,7 @@
     <ClCompile Include="..\src\genworld.cpp" />
     <ClCompile Include="..\src\gfx.cpp" />
     <ClCompile Include="..\src\gfxinit.cpp" />
+    <ClCompile Include="..\src\gfx_layout.cpp" />
     <ClCompile Include="..\src\goal.cpp" />
     <ClCompile Include="..\src\ground_vehicle.cpp" />
     <ClCompile Include="..\src\heightmap.cpp" />
@@ -456,6 +457,7 @@
     <ClInclude Include="..\src\gamelog_internal.h" />
     <ClInclude Include="..\src\genworld.h" />
     <ClInclude Include="..\src\gfx_func.h" />
+    <ClInclude Include="..\src\gfx_layout.h" />
     <ClInclude Include="..\src\gfx_type.h" />
     <ClInclude Include="..\src\gfxinit.h" />
     <ClInclude Include="..\src\goal_base.h" />
