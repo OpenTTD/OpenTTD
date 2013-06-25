@@ -506,6 +506,50 @@ static int DrawLayoutLine(ParagraphLayout::Line *line, int y, int left, int righ
 	int w = line->getWidth();
 	int h = line->getLeading();
 
+	/*
+	 * The following is needed for truncation.
+	 * Depending on the text direction, we either remove bits at the rear
+	 * or the front. For this we shift the entire area to draw so it fits
+	 * within the left/right bounds and the side we do not truncate it on.
+	 * Then we determine the truncation location, i.e. glyphs that fall
+	 * outside of the range min_x - max_x will not be drawn; they are thus
+	 * the truncated glyphs.
+	 *
+	 * At a later step we insert the dots.
+	 */
+
+	int max_w = right - left + 1; // The maximum width.
+
+	int offset_x = 0;  // The offset we need for positioning the glyphs
+	int min_x = left;  // The minimum x position to draw normal glyphs on.
+	int max_x = right; // The maximum x position to draw normal glyphs on.
+
+	bool truncation = max_w < w;     // Whether we need to do truncation.
+	int dot_width = 0;               // Cache for the width of the dot.
+	const Sprite *dot_sprite = NULL; // Cache for the sprite of the dot.
+
+	if (truncation) {
+		/*
+		 * Assumption may be made that all fonts of a run are of the same size.
+		 * In any case, we'll use these dots for the abbreviation, so even if
+		 * another size would be chosen it won't have truncated too little for
+		 * the truncation dots.
+		 */
+		FontCache *fc = ((const Font*)line->getVisualRun(0)->getFont())->fc;
+		GlyphID dot_glyph = fc->MapCharToGlyph('.');
+		dot_width = fc->GetGlyphWidth(dot_glyph);
+		dot_sprite = fc->GetGlyph(dot_glyph);
+
+		if (_current_text_dir == TD_RTL) {
+			min_x += 3 * dot_width;
+			offset_x = w - 3 * dot_width - max_w;
+		} else {
+			max_x -= 3 * dot_width;
+		}
+
+		w = max_w;
+	}
+
 	/* In case we have a RTL language we swap the alignment. */
 	if (!(align & SA_FORCE) && _current_text_dir == TD_RTL && (align & SA_HOR_MASK) != SA_HOR_CENTER) align ^= SA_RIGHT;
 
@@ -554,9 +598,12 @@ static int DrawLayoutLine(ParagraphLayout::Line *line, int y, int left, int righ
 			/* Not a valid glyph (empty) */
 			if (glyph == 0xFFFF) continue;
 
-			int begin_x = run->getPositions()[i * 2]     + left;
-			int end_x   = run->getPositions()[i * 2 + 2] + left;
+			int begin_x = run->getPositions()[i * 2]     + left - offset_x;
+			int end_x   = run->getPositions()[i * 2 + 2] + left - offset_x  - 1;
 			int top     = run->getPositions()[i * 2 + 1] + y;
+
+			/* Truncated away. */
+			if (begin_x < min_x || end_x > max_x) continue;
 
 			/* Not within the bounds to draw. */
 			if (begin_x >= dpi_right || end_x <= dpi_left) continue;
@@ -568,6 +615,13 @@ static int DrawLayoutLine(ParagraphLayout::Line *line, int y, int left, int righ
 				SetColourRemap(colour);
 			}
 			GfxMainBlitter(sprite, begin_x, top, BM_COLOUR_REMAP);
+		}
+	}
+
+	if (truncation) {
+		int x = (_current_text_dir == TD_RTL) ? left : (right - 3 * dot_width);
+		for (int i = 0; i < 3; i++, x += dot_width) {
+			GfxMainBlitter(dot_sprite, x, y, BM_COLOUR_REMAP);
 		}
 	}
 
