@@ -282,7 +282,7 @@ ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 	Line *l = new Line();
 
 	const WChar *begin = this->buffer;
-	WChar *last_space;
+	WChar *last_space = NULL;
 	const WChar *last_char = begin;
 	int width = 0;
 
