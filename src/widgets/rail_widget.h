@@ -64,6 +64,7 @@ enum BuildRailStationWidgets {
 	WID_BRAS_IMAGE,                ///< Panel used at each cell of the matrix.
 	WID_BRAS_MATRIX_SCROLL,        ///< Scrollbar of the matrix widget.
 
+	WID_BRAS_SHOW_NEWST_DEFSIZE,   ///< Selection for default-size button for newstation.
 	WID_BRAS_SHOW_NEWST_ADDITIONS, ///< Selection for newstation class selection list.
 	WID_BRAS_SHOW_NEWST_MATRIX,    ///< Selection for newstation image matrix.
 	WID_BRAS_SHOW_NEWST_RESIZE,    ///< Selection for panel and resize at bottom right for newstation.

@@ -920,6 +920,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BRAS_MATRIX,                           "WID_BRAS_MATRIX");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BRAS_IMAGE,                            "WID_BRAS_IMAGE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BRAS_MATRIX_SCROLL,                    "WID_BRAS_MATRIX_SCROLL");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BRAS_SHOW_NEWST_DEFSIZE,               "WID_BRAS_SHOW_NEWST_DEFSIZE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BRAS_SHOW_NEWST_ADDITIONS,             "WID_BRAS_SHOW_NEWST_ADDITIONS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BRAS_SHOW_NEWST_MATRIX,                "WID_BRAS_SHOW_NEWST_MATRIX");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BRAS_SHOW_NEWST_RESIZE,                "WID_BRAS_SHOW_NEWST_RESIZE");
