@@ -751,10 +751,10 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
  */
 int DrawString(int left, int right, int top, const char *str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
-	char buffer[DRAW_STRING_BUFFER];
-	strecpy(buffer, str, lastof(buffer));
-	DrawStringParams params(colour, fontsize);
-	return DrawString(left, right, top, buffer, lastof(buffer), params, align, underline);
+	Layouter layout(str, right - left + 1, colour, fontsize);
+	if (layout.Length() == 0) return 0;
+
+	return DrawLayoutLine(*layout.Begin(), top, left, right, align, underline);
 }
 
 /**
@@ -775,8 +775,7 @@ int DrawString(int left, int right, int top, StringID str, TextColour colour, St
 {
 	char buffer[DRAW_STRING_BUFFER];
 	GetString(buffer, str, lastof(buffer));
-	DrawStringParams params(colour, fontsize);
-	return DrawString(left, right, top, buffer, lastof(buffer), params, align, underline);
+	return DrawString(left, right, top, buffer, colour, align, underline, fontsize);
 }
 
 /**
@@ -920,15 +919,23 @@ static int GetMultilineStringHeight(const char *src, int num, FontSize start_fon
  * @param maxw maximum string width
  * @return height of pixels of string when it is drawn
  */
+static int GetStringHeight(const char *str, int maxw)
+{
+	Layouter layout(str, maxw);
+	return layout.GetBounds().height;
+}
+
+/**
+ * Calculates height of string (in pixels). The string is changed to a multiline string if needed.
+ * @param str string to check
+ * @param maxw maximum string width
+ * @return height of pixels of string when it is drawn
+ */
 int GetStringHeight(StringID str, int maxw)
 {
 	char buffer[DRAW_STRING_BUFFER];
-
 	GetString(buffer, str, lastof(buffer));
-
-	uint32 tmp = FormatStringLinebreaks(buffer, lastof(buffer), maxw);
-
-	return GetMultilineStringHeight(buffer, GB(tmp, 0, 16), FS_NORMAL);
+	return GetStringHeight(buffer, maxw);
 }
 
 /**
@@ -940,12 +947,10 @@ int GetStringHeight(StringID str, int maxw)
 int GetStringLineCount(StringID str, int maxw)
 {
 	char buffer[DRAW_STRING_BUFFER];
-
 	GetString(buffer, str, lastof(buffer));
 
-	uint32 tmp = FormatStringLinebreaks(buffer, lastof(buffer), maxw);
-
-	return 1 + GB(tmp, 0, 16);
+	Layouter layout(buffer, maxw);
+	return layout.Length();
 }
 
 /**
@@ -958,24 +963,6 @@ Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestio
 {
 	Dimension box = {suggestion.width, GetStringHeight(str, suggestion.width)};
 	return box;
-}
-
-
-/**
- * Calculates height of string (in pixels). The string is changed to a multiline string if needed.
- * @param str string to check
- * @param maxw maximum string width
- * @return height of pixels of string when it is drawn
- */
-int GetStringHeight(const char *str, int maxw)
-{
-	char buffer[DRAW_STRING_BUFFER];
-
-	strecpy(buffer, str, lastof(buffer));
-
-	uint32 tmp = FormatStringLinebreaks(buffer, lastof(buffer), maxw);
-
-	return GetMultilineStringHeight(buffer, GB(tmp, 0, 16), FS_NORMAL);
 }
 
 /**
@@ -1104,9 +1091,49 @@ static int DrawStringMultiLine(int left, int right, int top, int bottom, char *s
  */
 int DrawStringMultiLine(int left, int right, int top, int bottom, const char *str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
-	char buffer[DRAW_STRING_BUFFER];
-	strecpy(buffer, str, lastof(buffer));
-	return DrawStringMultiLine(left, right, top, bottom, buffer, lastof(buffer), colour, align, underline, fontsize);
+	int maxw = right - left + 1;
+	int maxh = bottom - top + 1;
+
+	/* It makes no sense to even try if it can't be drawn anyway, or
+	 * do we really want to support fonts of 0 or less pixels high? */
+	if (maxh <= 0) return top;
+
+	Layouter layout(str, maxw, colour, fontsize);
+	int total_height = layout.GetBounds().height;
+	int y;
+	switch (align & SA_VERT_MASK) {
+		case SA_TOP:
+			y = top;
+			break;
+
+		case SA_VERT_CENTER:
+			y = RoundDivSU(bottom + top - total_height, 2);
+			break;
+
+		case SA_BOTTOM:
+			y = bottom - total_height;
+			break;
+
+		default: NOT_REACHED();
+	}
+
+	int last_line = top;
+	int first_line = bottom;
+
+	for (ParagraphLayout::Line **iter = layout.Begin(); iter != layout.End(); iter++) {
+		ParagraphLayout::Line *line = *iter;
+
+		int line_height = line->getLeading();
+		if (y >= top && y < bottom) {
+			last_line = y + line_height;
+			if (first_line > y) first_line = y;
+
+			DrawLayoutLine(line, y, left, right, align, underline);
+		}
+		y += line_height;
+	}
+
+	return ((align & SA_VERT_MASK) == SA_BOTTOM) ? first_line : last_line;
 }
 
 /**
@@ -1128,7 +1155,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 {
 	char buffer[DRAW_STRING_BUFFER];
 	GetString(buffer, str, lastof(buffer));
-	return DrawStringMultiLine(left, right, top, bottom, buffer, lastof(buffer), colour, align, underline, fontsize);
+	return DrawStringMultiLine(left, right, top, bottom, buffer, colour, align, underline, fontsize);
 }
 
 /**
@@ -1143,33 +1170,8 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
  */
 Dimension GetStringBoundingBox(const char *str, FontSize start_fontsize)
 {
-	FontSize size = start_fontsize;
-	Dimension br;
-	uint max_width;
-	WChar c;
-
-	br.width = br.height = max_width = 0;
-	for (;;) {
-		c = Utf8Consume(&str);
-		if (c == 0) break;
-		if (IsPrintable(c) && !IsTextDirectionChar(c)) {
-			br.width += GetCharacterWidth(size, c);
-		} else {
-			switch (c) {
-				case SCC_TINYFONT: size = FS_SMALL; break;
-				case SCC_BIGFONT:  size = FS_LARGE; break;
-				case '\n':
-					br.height += GetCharacterHeight(size);
-					if (br.width > max_width) max_width = br.width;
-					br.width = 0;
-					break;
-			}
-		}
-	}
-	br.height += GetCharacterHeight(size);
-
-	br.width  = max(br.width, max_width);
-	return br;
+	Layouter layout(str, INT32_MAX, TC_FROMSTRING, start_fontsize);
+	return layout.GetBounds();
 }
 
 /**
