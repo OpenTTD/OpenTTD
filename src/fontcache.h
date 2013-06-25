@@ -112,6 +112,13 @@ public:
 	virtual GlyphID MapCharToGlyph(WChar key) = 0;
 
 	/**
+	 * Read a font table from the font.
+	 * @param tag The of the table to load.
+	 * @return The loaded table data.
+	 */
+	virtual const void *GetFontTable(uint32 tag) = 0;
+
+	/**
 	 * Get the font cache of a given font size.
 	 * @param fs The font size to look up.
 	 * @return The font cache.
