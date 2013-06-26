@@ -523,7 +523,7 @@ static int DrawLayoutLine(ParagraphLayout::Line *line, int y, int left, int righ
  */
 int DrawString(int left, int right, int top, const char *str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
-	Layouter layout(str, right - left + 1, colour, fontsize);
+	Layouter layout(str, INT32_MAX, colour, fontsize);
 	if (layout.Length() == 0) return 0;
 
 	return DrawLayoutLine(*layout.Begin(), top, left, right, align, underline);
