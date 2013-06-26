@@ -77,4 +77,9 @@ typedef unsigned int NSUInteger;
 #endif /* __LP64__ */
 #endif /* NSInteger */
 
+/* OS X SDK versions >= 10.5 have a non-const iconv. */
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5
+#	define HAVE_NON_CONST_ICONV
+#endif
+
 #endif /* MACOS_STDAFX_H */
