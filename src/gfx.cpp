@@ -463,7 +463,7 @@ static int DrawLayoutLine(ParagraphLayout::Line *line, int y, int left, int righ
 
 		DrawPixelInfo *dpi = _cur_dpi;
 		int dpi_left  = dpi->left;
-		int dpi_right = dpi->left + dpi->width;
+		int dpi_right = dpi->left + dpi->width - 1;
 
 		bool draw_shadow = fc->GetDrawGlyphShadow() && colour != TC_BLACK;
 
@@ -478,12 +478,12 @@ static int DrawLayoutLine(ParagraphLayout::Line *line, int y, int left, int righ
 			int top     = run->getPositions()[i * 2 + 1] + y;
 
 			/* Truncated away. */
-			if (begin_x < min_x || end_x > max_x) continue;
-
-			/* Not within the bounds to draw. */
-			if (begin_x >= dpi_right || end_x <= dpi_left) continue;
+			if (truncation && (begin_x < min_x || end_x > max_x)) continue;
 
 			const Sprite *sprite = fc->GetGlyph(glyph);
+			/* Check clipping (the "+ 1" is for the shadow). */
+			if (begin_x + sprite->x_offs > dpi_right || begin_x + sprite->x_offs + sprite->width /* - 1 + 1 */ < dpi_left) continue;
+
 			if (draw_shadow && (glyph & SPRITE_GLYPH) == 0) {
 				SetColourRemap(TC_BLACK);
 				GfxMainBlitter(sprite, begin_x + 1, top + 1, BM_COLOUR_REMAP);
