@@ -442,6 +442,7 @@ STR_FILE_MENU_EXIT                                              :Koniec
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa sveta
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ďalší pohľad
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenka k smerovaniu nákladu
 STR_MAP_MENU_SIGN_LIST                                          :Zoznam popisov
 
 ############ range for town menu starts
@@ -732,12 +733,14 @@ STR_SMALLMAP_TYPE_VEHICLES                                      :Dopravné prost
 STR_SMALLMAP_TYPE_VEHICLES.g                                    :dopravných prostriedkov
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Priemysel
 STR_SMALLMAP_TYPE_INDUSTRIES.g                                  :priemyslu
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :Smerovanie nákladu
 STR_SMALLMAP_TYPE_ROUTES                                        :Trasy
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetácia
 STR_SMALLMAP_TYPE_OWNERS                                        :Vlastníci
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Zobraziť vrstevnice na mape
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Zobraziť dopravné prostriedky na mape
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Zobraziť priemysel na mape
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Zobraziť smerovanie nákladu na mape
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Zobraziť dopravné trasy na mape
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Zobraziť vegetáciu na mape
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Zobraziť vlastníkov pozemkov na mape
@@ -776,6 +779,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Zapnúť/vypnúť názvy miest na mape
 STR_SMALLMAP_CENTER                                             :{BLACK}Vycentrovať malú mapu na aktuálnu pozíciu
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}zakázať všetky
@@ -786,6 +790,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Zobrazi�
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Prepnúť zobrazenie výškovej mapy
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nezobrazovať žiadný majetok spoločnosti na mape
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Zobraziť celý majetok spoločnosti na mape
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Nezobraziť žiadny náklad na mape
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Zobraziť všetok náklad na mape
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Zobraziť poslednú správu alebo novinku
@@ -1624,6 +1630,7 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Pri rekonštruk
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Odstráň "mŕtve" konce ciest počas financovanej rekonštrukcie ciest.
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aktualizovať distribučný graf každ{P 0:2 "ý" "é" "ých"} {STRING} {P 0:2 "deň" "dni" "dní"}
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Použiť {STRING} {P "deň" "dni" "dní"} na prepočítanie distribučného grafu
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuálne
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymetricky
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symetricky
@@ -1631,6 +1638,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Druh distribúc
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Druh distribúcie pre poštu: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Druh distribúcie pre "obrnené" druhy nákladu: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Druh distribúcie pre ostatné druhy nákladu: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Množstvo vráteného nákladu pre symetrický mód: {STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Rozhranie
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Výstavba
@@ -2237,6 +2245,10 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Prepnú�
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Nastavit objekty neviditelné namiesto priehladných
 
 # Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legenda k smerovaniu nákladu
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Všetko
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Nič
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Vyberte spoločnosti pre zobrazenie
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}nepoužité
@@ -2968,11 +2980,14 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Zakúpi
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Podplatiť miestnu správu pre zvýšenie hodnotenia tvojej spoločnosti, s rizikom ťažkého postihu pri odhalení!{}Cena: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Ciele
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globálne ciele
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globálne ciele:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nič -
 STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Nepoužiteľné -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Ciele spoločnosti:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikni pre vycentrovanie na priemysel/mesto/políčko. Ctrl+klik otvorí nové okno s priemyslom/mestom/políčkom
 
@@ -3012,6 +3027,13 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kliknúť na trasu pre centrovanie pohľadu na továreň/mesto
 
 # Story book window
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Strana {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Skočiť na určitú stranu výberom zo zoznamu
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Predchádzajúca
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Ísť na predchádzajúcu stranu
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Ďalšia
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Ísť na ďalšiu stranu
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Názvy staníc - klikni pre pohľad na polohu stanice. Ctrl+klik presunie pohľad na stanicu
@@ -3040,8 +3062,13 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :Spoločnosť {Y
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Hodnotenie
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Zobraziť hodnotenia stanice
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Zoskupiť podľa
+STR_STATION_VIEW_WAITING_STATION                                :Stanica: Čakajúce
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Množstvo: Čakajúce
+STR_STATION_VIEW_PLANNED_STATION                                :Stanica: Plánované
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Množstvo: Plánované
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} z {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} cez {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} do {STATION}

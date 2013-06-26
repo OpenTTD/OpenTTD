@@ -3019,10 +3019,10 @@ STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}อั�
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}จัดกลุ่มโดย
-STR_STATION_VIEW_WAITING_STATION                                :สถานี: จำนวนที่กำลังรอการขนถ่าย
-STR_STATION_VIEW_WAITING_AMOUNT                                 :จำนวน: ที่กำลังรอการขนถ่าย
-STR_STATION_VIEW_PLANNED_STATION                                :สถานี: ตามแผนที่วางไว้
-STR_STATION_VIEW_PLANNED_AMOUNT                                 :จำนวน: ตามแผนที่วางไว้
+STR_STATION_VIEW_WAITING_STATION                                :จำนวนที่รอ: เรียงตามชื่อสถานี
+STR_STATION_VIEW_WAITING_AMOUNT                                 :จำนวนที่รอ: เรียงตามจำนวน
+STR_STATION_VIEW_PLANNED_STATION                                :ตามแผน: เรียงตามชื่อสถานี
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :ตามแผน: เรียงตามจำนวน
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} จาก {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} ผ่าน {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} ไปยัง {STATION}

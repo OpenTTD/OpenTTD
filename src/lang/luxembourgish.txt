@@ -276,6 +276,8 @@ STR_SORT_BY_LENGTH                                              :Lengt
 STR_SORT_BY_LIFE_TIME                                           :Reschtlaafzäit
 STR_SORT_BY_TIMETABLE_DELAY                                     :Zäitplang Verspéidung
 STR_SORT_BY_FACILITY                                            :Statiounstyp
+STR_SORT_BY_WAITING_TOTAL                                       :Gesamt wardend Güter
+STR_SORT_BY_WAITING_AVAILABLE                                   :Verfügbar wardend Güter
 STR_SORT_BY_RATING_MAX                                          :Héchsten Luedungsbewertung
 STR_SORT_BY_RATING_MIN                                          :Nidregsten Luedungsbewertung
 STR_SORT_BY_ENGINE_ID                                           :ID (klassësch Sortéierung)
@@ -301,6 +303,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subventi
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Weis d'Lëscht vun den Firmen hieren Statiounen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Informatiounen zu den Firmenfinanzen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Generel Firmeninformatioun
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Weis d'Storybuch
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Weis d'Zillëscht
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Weis Grafiken
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Weis d'Firmen-Ranglëscht
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finanzéiert den Bau vun enger neier Industrie oder lëscht all d'Industrien op
@@ -2881,9 +2885,11 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kaft fi
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}D'Gemeng bestiechen fir d'Bewäertung ze erhéijen, mam Risiko fir eng grouss Bestrofung, falls der erwëscht gitt.{} Käschten: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Global Ziler
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Global Zieler:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Keng -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Net uwendbar -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Firmenzieler:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klick op Ziel fir d'Haptfënster op d'Industrie/Stad/Feld ze zentréiren. Ctrl+Klick mëcht eng nei Fënster op der Industrie/Stad/Feld-Positioun op
 
@@ -2923,6 +2929,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klick op den Service fir d'Usiicht op d'Industrie/Stad ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht op d'Industrie/Stad
 
 # Story book window
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globalt Storybuch
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Statiounennimm - klick op den Numm fir d'Siicht drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht op d'Statioun
@@ -2953,6 +2960,7 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bewertun
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Weis d'Statiounsbewertungen
 
 
+STR_STATION_VIEW_GROUP_D_V_S                                    :Destinatioun-Via-Quell
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Schrecklech
