@@ -401,7 +401,7 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 	CharType *buff = this->buffer;
 
 	TextColour cur_colour = colour, prev_colour = colour;
-	WChar c;
+	WChar c = 0;
 
 	do {
 		Font *f = new Font(fontsize, cur_colour);
