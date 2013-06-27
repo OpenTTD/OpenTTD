@@ -221,6 +221,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Filter W
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filter string
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Wuert fir d'Lëscht ze filtern
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Wiel Gruppéierreihenfollëg
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Richtung fir ze sortéieren (ofsteigend/opsteigend)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Argument fir ze sortéieren
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Filterkritère wielen
@@ -2959,7 +2960,27 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bewertungen
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Weis d'Statiounsbewertungen
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Gruppéier no
+STR_STATION_VIEW_WAITING_STATION                                :Statioun: wardend
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Unzuel: Wardend
+STR_STATION_VIEW_PLANNED_STATION                                :Statioun: geplangt
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Unzuel: geplangt
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} vun {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} via {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} op {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} vun iergendenger Statioun
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} op iergendeng Statioun
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} via iergendeng Statioun
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} vun dëser Statioun
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} stoppt op dëser Statioun
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} op des Statioun
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} non-stop
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Quell-Via-Destinatioun
+STR_STATION_VIEW_GROUP_S_D_V                                    :Quell-Destinatioun-Via
+STR_STATION_VIEW_GROUP_V_S_D                                    :Via-Quell-Destinatioun
+STR_STATION_VIEW_GROUP_V_D_S                                    :Via-Destinatioun-Quell
+STR_STATION_VIEW_GROUP_D_S_V                                    :Destinatioun-Quell-Via
 STR_STATION_VIEW_GROUP_D_V_S                                    :Destinatioun-Via-Quell
 
 ############ range for rating starts

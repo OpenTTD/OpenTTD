@@ -746,6 +746,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Zobrazi�
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Zobraziť vlastníkov pozemkov na mape
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Kliknite na typ priemyslu pre zmenu jeho zobrazenia. Ctrl+Klik skryje všetky priemysly okrem vybraného. Ctrl+Klik znova zobrazí všetky priemysly
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klikni na spoločnosť pre prepnutie zobrazenia jej majetku. Ctrl+Klik skryje všetky spoločnosti okrem vybranej. Ctrl+Klik znova zase zobrazí všetky spoložnosti.
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Kliknite na náklad pre prepnutie jeho zobrazenia. Ctrl+klik skryje všetky druhy nákladu okrem určeného. Opätovný Ctrl+klik zobrazí všetky druhy nákladu
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Cesty
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Železničné trate
@@ -1450,7 +1451,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Prehrávať zvu
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vozidlá: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Prehrávať zvukové efekty vozidiel
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Prostredie: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Prehrávať zukové efekty prostredia krajiny, priemyslu a miest
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Prehrávať zukové efekty okolitého prostredia, priemyslu a miest
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Zakázať výstavbu infraštruktúry ak nieje dostupné žiadne vhodné vozidlo: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ak je zapnuté, infraštruktúra je k dispozícii len ak su k nej pripojené vozidlá. Toto predchádza plýtvaniu peniazmi a časom pri nepoužiteľnej infraštruktúre.
