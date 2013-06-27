@@ -445,7 +445,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 }
 
 
-/** */
+/** Map from sprite numbers to position in the GRF file. */
 static std::map<uint32, size_t> _grf_sprite_offsets;
 
 /**
