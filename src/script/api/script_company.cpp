@@ -66,6 +66,7 @@
 	EnforcePrecondition(false, name != NULL);
 	const char *text = name->GetEncodedText();
 	EnforcePreconditionEncodedText(false, text);
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_PRESIDENT_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
 	return ScriptObject::DoCommand(0, 0, 0, CMD_RENAME_PRESIDENT, text);
 }

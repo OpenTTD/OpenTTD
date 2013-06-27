@@ -46,6 +46,7 @@
 	const char *encoded_text = text->GetEncodedText();
 	EnforcePreconditionEncodedText(false, encoded_text);
 	EnforcePrecondition(false, IsValidTown(town_id));
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(encoded_text) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
 	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id, 0, CMD_TOWN_SET_TEXT, encoded_text);
 }
