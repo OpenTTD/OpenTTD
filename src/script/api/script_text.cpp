@@ -202,5 +202,6 @@ const char *Text::GetDecodedText()
 
 	static char buf[1024];
 	::SetDParamStr(0, encoded_text);
-	return ::GetString(buf, STR_JUST_RAW_STRING, lastof(buf));
+	::GetString(buf, STR_JUST_RAW_STRING, lastof(buf));
+	return buf;
 }
