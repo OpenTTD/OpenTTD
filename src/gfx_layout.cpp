@@ -420,8 +420,10 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 
 		if (!this->fonts.Contains(buff - this->buffer)) {
 			this->fonts.Insert(buff - this->buffer, f);
-			f = new Font(fontsize, cur_colour);
+		} else {
+			delete f;
 		}
+		f = new Font(fontsize, cur_colour);
 	}
 
 	/* Better safe than sorry. */
