@@ -105,25 +105,25 @@ size_t Layouter::AppendToBuffer(UChar *buff, const UChar *buffer_last, WChar c)
 	return length;
 }
 
-ParagraphLayout *Layouter::GetParagraphLayout(UChar *buff)
+ParagraphLayout *Layouter::GetParagraphLayout(UChar *buff, UChar *buff_end, FontMap &fontMapping)
 {
-	int32 length = buff - this->buffer;
+	int32 length = buff_end - buff;
 
 	if (length == 0) {
 		/* ICU's ParagraphLayout cannot handle empty strings, so fake one. */
-		this->buffer[0] = ' ';
+		buff[0] = ' ';
 		length = 1;
-		this->fonts.End()[-1].first++;
+		fontMapping.End()[-1].first++;
 	}
 
 	/* Fill ICU's FontRuns with the right data. */
-	FontRuns runs(this->fonts.Length());
-	for (FontMap::iterator iter = this->fonts.Begin(); iter != this->fonts.End(); iter++) {
+	FontRuns runs(fontMapping.Length());
+	for (FontMap::iterator iter = fontMapping.Begin(); iter != fontMapping.End(); iter++) {
 		runs.add(iter->second, iter->first);
 	}
 
 	LEErrorCode status = LE_NO_ERROR;
-	return new ParagraphLayout(this->buffer, length, &runs, NULL, NULL, NULL, _current_text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, false, status);
+	return new ParagraphLayout(buff, length, &runs, NULL, NULL, NULL, _current_text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, false, status);
 }
 
 #else /* WITH_ICU */
@@ -277,9 +277,16 @@ ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 	 *  - split a line at a newline character, or at a space where we can break a line.
 	 *  - split for a visual run whenever a new line happens, or the font changes.
 	 */
-	if (this->buffer == NULL|| *this->buffer == '\0') return NULL;
+	if (this->buffer == NULL) return NULL;
 
 	Line *l = new Line();
+
+	if (*this->buffer == '\0') {
+		/* Only a newline. */
+		this->buffer = NULL;
+		*l->Append() = new VisualRun(this->runs.Begin()->second, this->buffer, 0, 0);
+		return l;
+	}
 
 	const WChar *begin = this->buffer;
 	WChar *last_space = NULL;
@@ -287,10 +294,10 @@ ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 	int width = 0;
 
 	int offset = this->buffer - this->buffer_begin;
-	FontMap::iterator iter = runs.Begin();
+	FontMap::iterator iter = this->runs.Begin();
 	while (iter->first <= offset) {
 		iter++;
-		assert(iter != runs.End());
+		assert(iter != this->runs.End());
 	}
 
 	const FontCache *fc = iter->second->fc;
@@ -303,12 +310,11 @@ ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 			this->buffer = NULL;
 			break;
 		}
-		if (c == '\n') break;
 
 		if (this->buffer == next_run) {
 			*l->Append() = new VisualRun(iter->second, begin, this->buffer - begin, l->getWidth());
 			iter++;
-			assert(iter != runs.End());
+			assert(iter != this->runs.End());
 
 			next_run = this->buffer_begin + iter->first + 1;
 			begin = this->buffer;
@@ -350,7 +356,7 @@ ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 		}
 	}
 
-	if (last_char - begin != 0) {
+	if (l->Length() == 0 || last_char - begin != 0) {
 		*l->Append() = new VisualRun(iter->second, begin, last_char - begin, l->getWidth());
 	}
 	return l;
@@ -371,12 +377,14 @@ size_t Layouter::AppendToBuffer(WChar *buff, const WChar *buffer_last, WChar c)
 
 /**
  * Get the actual ParagraphLayout for the given buffer.
+ * @param buff The begin of the buffer.
  * @param buff_end The location after the last element in the buffer.
+ * @param fontMapping THe mapping of the fonts.
  * @return The ParagraphLayout instance.
  */
-ParagraphLayout *Layouter::GetParagraphLayout(WChar *buff_end)
+ParagraphLayout *Layouter::GetParagraphLayout(WChar *buff, WChar *buff_end, FontMap &fontMapping)
 {
-	return new ParagraphLayout(this->buffer, buff_end - this->buffer, this->fonts);
+	return new ParagraphLayout(buff, buff_end - buff, fontMapping);
 }
 #endif /* !WITH_ICU */
 
@@ -393,61 +401,70 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 	CharType *buff = this->buffer;
 
 	TextColour cur_colour = colour, prev_colour = colour;
-	Font *f = new Font(fontsize, cur_colour);
+	WChar c;
 
-	/*
-	 * Go through the whole string while adding Font instances to the font map
-	 * whenever the font changes, and convert the wide characters into a format
-	 * usable by ParagraphLayout.
-	 */
-	for (; buff < buffer_last;) {
-		WChar c = Utf8Consume(const_cast<const char **>(&str));
-		if (c == 0) {
-			break;
-		} else if (c >= SCC_BLUE && c <= SCC_BLACK) {
-			prev_colour = cur_colour;
-			cur_colour = (TextColour)(c - SCC_BLUE);
-		} else if (c == SCC_PREVIOUS_COLOUR) { // Revert to the previous colour.
-			Swap(prev_colour, cur_colour);
-		} else if (c == SCC_TINYFONT) {
-			fontsize = FS_SMALL;
-		} else if (c == SCC_BIGFONT) {
-			fontsize = FS_LARGE;
-		} else {
-			buff += AppendToBuffer(buff, buffer_last, c);
-			continue;
+	do {
+		Font *f = new Font(fontsize, cur_colour);
+		CharType *buff_begin = buff;
+		FontMap fontMapping;
+
+		/*
+		 * Go through the whole string while adding Font instances to the font map
+		 * whenever the font changes, and convert the wide characters into a format
+		 * usable by ParagraphLayout.
+		 */
+		for (; buff < buffer_last;) {
+			c = Utf8Consume(const_cast<const char **>(&str));
+			if (c == '\0' || c == '\n') {
+				break;
+			} else if (c >= SCC_BLUE && c <= SCC_BLACK) {
+				prev_colour = cur_colour;
+				cur_colour = (TextColour)(c - SCC_BLUE);
+			} else if (c == SCC_PREVIOUS_COLOUR) { // Revert to the previous colour.
+				Swap(prev_colour, cur_colour);
+			} else if (c == SCC_TINYFONT) {
+				fontsize = FS_SMALL;
+			} else if (c == SCC_BIGFONT) {
+				fontsize = FS_LARGE;
+			} else {
+				buff += AppendToBuffer(buff, buffer_last, c);
+				continue;
+			}
+
+			if (!fontMapping.Contains(buff - buff_begin)) {
+				fontMapping.Insert(buff - buff_begin, f);
+				*this->fonts.Append() = f;
+			} else {
+				delete f;
+			}
+			f = new Font(fontsize, cur_colour);
 		}
 
-		if (!this->fonts.Contains(buff - this->buffer)) {
-			this->fonts.Insert(buff - this->buffer, f);
-		} else {
-			delete f;
+		/* Better safe than sorry. */
+		*buff = '\0';
+
+		if (!fontMapping.Contains(buff - buff_begin)) {
+			fontMapping.Insert(buff - buff_begin, f);
+			*this->fonts.Append() = f;
 		}
-		f = new Font(fontsize, cur_colour);
-	}
+		ParagraphLayout *p = GetParagraphLayout(buff_begin, buff, fontMapping);
 
-	/* Better safe than sorry. */
-	*buff = '\0';
+		/* Copy all lines into a local cache so we can reuse them later on more easily. */
+		ParagraphLayout::Line *l;
+		while ((l = p->nextLine(maxw)) != NULL) {
+			*this->Append() = l;
+		}
 
-	if (!this->fonts.Contains(buff - this->buffer)) {
-		this->fonts.Insert(buff - this->buffer, f);
-	}
-	ParagraphLayout *p = GetParagraphLayout(buff);
+		delete p;
 
-	/* Copy all lines into a local cache so we can reuse them later on more easily. */
-	ParagraphLayout::Line *l;
-	while ((l = p->nextLine(maxw)) != NULL) {
-		*this->Append() = l;
-	}
-
-	delete p;
+	} while (c != '\0' && buff < buffer_last);
 }
 
 /** Free everything we allocated. */
 Layouter::~Layouter()
 {
-	for (FontMap::iterator iter = this->fonts.Begin(); iter != this->fonts.End(); iter++) {
-		delete iter->second;
+	for (Font **iter = this->fonts.Begin(); iter != this->fonts.End(); iter++) {
+		delete *iter;
 	}
 }
 

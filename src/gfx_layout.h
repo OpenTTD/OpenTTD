@@ -16,6 +16,8 @@
 #include "gfx_func.h"
 #include "core/smallmap_type.hpp"
 
+#undef WITH_ICU
+
 #ifdef WITH_ICU
 #include "layout/ParagraphLayout.h"
 #define ICU_FONTINSTANCE : public LEFontInstance
@@ -125,10 +127,10 @@ class Layouter : public AutoDeleteSmallVector<ParagraphLayout::Line *, 4> {
 #endif /* WITH_ICU */
 
 	size_t AppendToBuffer(CharType *buff, const CharType *buffer_last, WChar c);
-	ParagraphLayout *GetParagraphLayout(CharType *buff);
+	ParagraphLayout *GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &fontMapping);
 
 	CharType buffer[DRAW_STRING_BUFFER]; ///< Buffer for the text that is going to be drawn.
-	FontMap fonts;                       ///< The fonts needed for drawing.
+	SmallVector<Font *, 4> fonts;        ///< The fonts needed for drawing.
 
 public:
 	Layouter(const char *str, int maxw = INT32_MAX, TextColour colour = TC_FROMSTRING, FontSize fontsize = FS_NORMAL);
