@@ -77,7 +77,7 @@ public:
 	virtual uint GetGlyphWidth(GlyphID key);
 	virtual bool GetDrawGlyphShadow();
 	virtual GlyphID MapCharToGlyph(WChar key) { return SPRITE_GLYPH | key; }
-	virtual const void *GetFontTable(uint32 tag) { return NULL; }
+	virtual const void *GetFontTable(uint32 tag, size_t &length) { length = 0; return NULL; }
 };
 
 /**
@@ -191,7 +191,8 @@ class FreeTypeFontCache : public FontCache {
 private:
 	FT_Face face;  ///< The font face associated with this font.
 
-	SmallMap<uint32, const void*> font_tables; ///< Cached font tables.
+	typedef SmallMap<uint32, SmallPair<size_t, const void*>> FontTable; ///< Table with font table cache
+	FontTable font_tables; ///< Cached font tables.
 
 	/** Container for information about a glyph. */
 	struct GlyphEntry {
@@ -229,7 +230,7 @@ public:
 	virtual uint GetGlyphWidth(GlyphID key);
 	virtual bool GetDrawGlyphShadow();
 	virtual GlyphID MapCharToGlyph(WChar key);
-	virtual const void *GetFontTable(uint32 tag);
+	virtual const void *GetFontTable(uint32 tag, size_t &length);
 };
 
 FT_Library _library = NULL;
@@ -363,8 +364,8 @@ FreeTypeFontCache::~FreeTypeFontCache()
 	FT_Done_Face(this->face);
 	this->ClearFontCache();
 
-	for (SmallPair<uint32, const void *> *iter = this->font_tables.Begin(); iter != this->font_tables.End(); iter++) {
-		free(iter->second);
+	for (FontTable::iterator iter = this->font_tables.Begin(); iter != this->font_tables.End(); iter++) {
+		free(iter->second.second);
 	}
 }
 
@@ -552,10 +553,13 @@ GlyphID FreeTypeFontCache::MapCharToGlyph(WChar key)
 	return FT_Get_Char_Index(this->face, key);
 }
 
-const void *FreeTypeFontCache::GetFontTable(uint32 tag)
+const void *FreeTypeFontCache::GetFontTable(uint32 tag, size_t &length)
 {
-	const SmallPair<uint32, const void *> *iter = this->font_tables.Find(tag);
-	if (iter != this->font_tables.End()) return iter->second;
+	const FontTable::iterator iter = this->font_tables.Find(tag);
+	if (iter != this->font_tables.End()) {
+		length = iter->second.first;
+		return iter->second.second;
+	}
 
 	FT_ULong len = 0;
 	FT_Byte *result = NULL;
@@ -566,8 +570,9 @@ const void *FreeTypeFontCache::GetFontTable(uint32 tag)
 		result = MallocT<FT_Byte>(len);
 		FT_Load_Sfnt_Table(this->face, tag, 0, result, &len);
 	}
+	length = len;
 
-	this->font_tables.Insert(tag, result);
+	this->font_tables.Insert(tag, SmallPair<size_t, const void *>(length, result));
 	return result;
 }
 

@@ -76,7 +76,13 @@ float Font::getScaleFactorY() const
 
 const void *Font::getFontTable(LETag tableTag) const
 {
-	return this->fc->GetFontTable(tableTag);
+	size_t length;
+	return this->getFontTable(tableTag, length);
+}
+
+const void *Font::getFontTable(LETag tableTag, size_t &length) const
+{
+	return this->fc->GetFontTable(tableTag, length);
 }
 
 LEGlyphID Font::mapCharToGlyph(LEUnicode32 ch) const

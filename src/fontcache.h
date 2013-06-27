@@ -114,9 +114,10 @@ public:
 	/**
 	 * Read a font table from the font.
 	 * @param tag The of the table to load.
+	 * @param length The length of the read data.
 	 * @return The loaded table data.
 	 */
-	virtual const void *GetFontTable(uint32 tag) = 0;
+	virtual const void *GetFontTable(uint32 tag, size_t &length) = 0;
 
 	/**
 	 * Get the font cache of a given font size.

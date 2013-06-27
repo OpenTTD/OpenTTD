@@ -45,6 +45,7 @@ public:
 	float getScaleFactorX() const;
 	float getScaleFactorY() const;
 	const void *getFontTable(LETag tableTag) const;
+	const void *getFontTable(LETag tableTag, size_t &length) const;
 	LEGlyphID mapCharToGlyph(LEUnicode32 ch) const;
 	void getGlyphAdvance(LEGlyphID glyph, LEPoint &advance) const;
 	le_bool getGlyphPoint(LEGlyphID glyph, le_int32 pointNumber, LEPoint &point) const;
