@@ -16,8 +16,6 @@
 #include "gfx_func.h"
 #include "core/smallmap_type.hpp"
 
-#undef WITH_ICU
-
 #ifdef WITH_ICU
 #include "layout/ParagraphLayout.h"
 #define ICU_FONTINSTANCE : public LEFontInstance
