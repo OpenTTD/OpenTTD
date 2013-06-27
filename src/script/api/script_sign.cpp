@@ -37,7 +37,7 @@
 
 	EnforcePrecondition(false, IsValidSign(sign_id));
 	EnforcePrecondition(false, name != NULL);
-	const char *text = name->GetEncodedText();
+	const char *text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_SIGN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
@@ -72,7 +72,7 @@
 
 	EnforcePrecondition(INVALID_SIGN, ::IsValidTile(location));
 	EnforcePrecondition(INVALID_SIGN, name != NULL);
-	const char *text = name->GetEncodedText();
+	const char *text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(INVALID_SIGN, text);
 	EnforcePreconditionCustomError(INVALID_SIGN, ::Utf8StringLength(text) < MAX_LENGTH_SIGN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 

@@ -43,7 +43,7 @@
 	CCountedPtr<Text> counter(text);
 
 	EnforcePrecondition(false, text != NULL);
-	const char *encoded_text = text->GetEncodedText();
+	const char *encoded_text = text->GetDecodedText();
 	EnforcePreconditionEncodedText(false, encoded_text);
 	EnforcePrecondition(false, IsValidTown(town_id));
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(encoded_text) < MAX_LENGTH_TOWN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);

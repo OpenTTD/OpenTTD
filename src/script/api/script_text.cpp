@@ -11,8 +11,11 @@
 
 #include "../../stdafx.h"
 #include "../../string_func.h"
+#include "../../strings_func.h"
 #include "script_text.hpp"
 #include "../../table/control_codes.h"
+
+#include "table/strings.h"
 
 ScriptText::ScriptText(HSQUIRRELVM vm) :
 	ZeroedMemoryAllocator()
@@ -190,4 +193,14 @@ char *ScriptText::_GetEncodedText(char *p, char *lastofp, int &param_count)
 	}
 
 	return p;
+}
+
+const char *Text::GetDecodedText()
+{
+	const char *encoded_text = this->GetEncodedText();
+	if (encoded_text == NULL) return NULL;
+
+	static char buf[1024];
+	::SetDParamStr(0, encoded_text);
+	return ::GetString(buf, STR_JUST_RAW_STRING, lastof(buf));
 }
