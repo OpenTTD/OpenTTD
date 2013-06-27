@@ -588,7 +588,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   SetName():            false
   GetLastErrorString(): ERR_NAME_IS_NOT_UNIQUE
   GetName():                         Regression
-  GetPresidentName():                P. Sharkey
+  GetPresidentName():                E. McAlpine
   SetPresidentName():                true
   GetPresidentName():                Regression AI
   GetBankBalance():                  100000
