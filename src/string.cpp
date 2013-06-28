@@ -248,16 +248,6 @@ void str_validate(char *str, const char *last, StringValidationSettings settings
 			/* Replace the undesirable character with a question mark */
 			str += len;
 			if ((settings & SVS_REPLACE_WITH_QUESTION_MARK) != 0) *dst++ = '?';
-
-			/* In case of these two special cases assume that they really
-			 * mean SETX/SETXY and also "eat" the parameter. If this was
-			 * not the case the string was broken to begin with and this
-			 * would not break much more. */
-			if (c == SCC_SETX) {
-				str++;
-			} else if (c == SCC_SETXY) {
-				str += 2;
-			}
 		}
 	}
 

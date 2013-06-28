@@ -550,7 +550,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	c->avail_railtypes = GetCompanyRailtypes(c->index);
 	c->avail_roadtypes = GetCompanyRoadtypes(c->index);
 	c->inaugurated_year = _cur_year;
-	RandomCompanyManagerFaceBits(c->face, (GenderEthnicity)Random(), false); // create a random company manager face
+	RandomCompanyManagerFaceBits(c->face, (GenderEthnicity)Random(), false, false); // create a random company manager face
 
 	SetDefaultCompanySettings(c->index);
 

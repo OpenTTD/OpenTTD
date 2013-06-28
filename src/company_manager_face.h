@@ -201,12 +201,15 @@ static inline void ScaleAllCompanyManagerFaceBits(CompanyManagerFace &cmf)
  * @param cmf the company manager's face to write the bits to
  * @param ge  the gender and ethnicity of the old company manager's face
  * @param adv if it for the advanced company manager's face window
+ * @param interactive is the call from within the user interface?
  *
  * @pre scale 'ge' to a valid gender/ethnicity combination
  */
-static inline void RandomCompanyManagerFaceBits(CompanyManagerFace &cmf, GenderEthnicity ge, bool adv)
+static inline void RandomCompanyManagerFaceBits(CompanyManagerFace &cmf, GenderEthnicity ge, bool adv, bool interactive = true)
 {
-	cmf = InteractiveRandom(); // random all company manager's face bits
+	/* This method is called from a command when not interactive and
+	 * then we must use Random to get the same result on all clients. */
+	cmf = interactive ? InteractiveRandom() : Random(); // random all company manager's face bits
 
 	/* scale ge: 0 == GE_WM, 1 == GE_WF, 2 == GE_BM, 3 == GE_BF (and maybe in future: ...) */
 	ge = (GenderEthnicity)((uint)ge % GE_END);

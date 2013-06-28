@@ -432,8 +432,8 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newline
 		switch (c) {
 			case 0x01:
 				if (str[0] == '\0') goto string_end;
-				d += Utf8Encode(d, SCC_SETX);
-				*d++ = *str++;
+				d += Utf8Encode(d, ' ');
+				str++;
 				break;
 			case 0x0A: break;
 			case 0x0D:
@@ -447,9 +447,8 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newline
 			case 0x0F: d += Utf8Encode(d, SCC_BIGFONT); break;
 			case 0x1F:
 				if (str[0] == '\0' || str[1] == '\0') goto string_end;
-				d += Utf8Encode(d, SCC_SETXY);
-				*d++ = *str++;
-				*d++ = *str++;
+				d += Utf8Encode(d, ' ');
+				str += 2;
 				break;
 			case 0x7B:
 			case 0x7C:
