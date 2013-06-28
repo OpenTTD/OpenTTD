@@ -28,6 +28,7 @@
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
 #include "aircraft.h"
+#include "engine_func.h"
 
 #include "widgets/order_widget.h"
 
@@ -518,6 +519,7 @@ private:
 	OrderPlaceObjectState goto_type;
 	const Vehicle *vehicle; ///< Vehicle owning the orders being displayed and manipulated.
 	Scrollbar *vscroll;
+	bool can_do_refit;     ///< Vehicle chain can be refitted in depot.
 	bool can_do_autorefit; ///< Vehicle chain can be auto-refitted.
 
 	/**
@@ -786,8 +788,10 @@ private:
 	/** Cache auto-refittability of the vehicle chain. */
 	void UpdateAutoRefitState()
 	{
+		this->can_do_refit = false;
 		this->can_do_autorefit = false;
-		for (const Vehicle *w = this->vehicle; w != NULL; w = w->Next()) {
+		for (const Vehicle *w = this->vehicle; w != NULL; w = w->IsGroundVehicle() ? w->Next() : NULL) {
+			if (IsEngineRefittable(w->engine_type)) this->can_do_refit = true;
 			if (HasBit(Engine::Get(w->engine_type)->info.misc_flags, EF_AUTO_REFIT)) this->can_do_autorefit = true;
 		}
 	}
@@ -1014,8 +1018,11 @@ public:
 					this->SetWidgetLoweredState(WID_O_FULL_LOAD, order->GetLoadType() == OLF_FULL_LOAD_ANY);
 					this->SetWidgetLoweredState(WID_O_UNLOAD, order->GetUnloadType() == OUFB_UNLOAD);
 
-					/* Can only do refitting when stopping at the destination and loading cargo. */
-					this->SetWidgetDisabledState(WID_O_REFIT_DROPDOWN, !this->can_do_autorefit || order->GetLoadType() == OLFB_NO_LOAD || order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION);
+					/* Can only do refitting when stopping at the destination and loading cargo.
+					 * Also enable the button if a refit is already set to allow clearing it. */
+					this->SetWidgetDisabledState(WID_O_REFIT_DROPDOWN,
+							order->GetLoadType() == OLFB_NO_LOAD || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) ||
+							((!this->can_do_refit || !this->can_do_autorefit) && !order->IsRefit()));
 
 					break;
 
@@ -1048,7 +1055,9 @@ public:
 					}
 					/* Disable refit button if the order is no 'always go' order.
 					 * However, keep the service button enabled for refit-orders to allow clearing refits (without knowing about ctrl). */
-					this->SetWidgetDisabledState(WID_O_REFIT, (order->GetDepotOrderType() & ODTFB_SERVICE) || (order->GetDepotActionType() & ODATFB_HALT));
+					this->SetWidgetDisabledState(WID_O_REFIT,
+							(order->GetDepotOrderType() & ODTFB_SERVICE) || (order->GetDepotActionType() & ODATFB_HALT) ||
+							(!this->can_do_refit && !order->IsRefit()));
 					this->SetWidgetLoweredState(WID_O_SERVICE, order->GetDepotOrderType() & ODTFB_SERVICE);
 					break;
 

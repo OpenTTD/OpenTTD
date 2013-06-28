@@ -1313,10 +1313,11 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 		artic_part++;
 
 		const Engine *e = v->GetEngine();
-		byte load_amount = e->info.load_amount;
+		uint load_amount = e->info.load_amount;
 
 		/* The default loadamount for mail is 1/4 of the load amount for passengers */
-		if (v->type == VEH_AIRCRAFT && !Aircraft::From(v)->IsNormalAircraft()) load_amount = CeilDiv(load_amount, 4);
+		bool air_mail = v->type == VEH_AIRCRAFT && !Aircraft::From(v)->IsNormalAircraft();
+		if (air_mail) load_amount = CeilDiv(load_amount, 4);
 
 		if (_settings_game.order.gradual_loading) {
 			uint16 cb_load_amount = CALLBACK_FAILED;
@@ -1336,6 +1337,9 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 				}
 			}
 		}
+
+		/* Scale load amount the same as capacity */
+		if (HasBit(e->info.misc_flags, EF_NO_DEFAULT_CARGO_MULTIPLIER) && !air_mail) load_amount = CeilDiv(load_amount * CargoSpec::Get(v->cargo_type)->multiplier, 0x100);
 
 		GoodsEntry *ge = &st->goods[v->cargo_type];
 
