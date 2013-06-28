@@ -49,8 +49,8 @@
  * that are impossible (because the pylon would be situated on the track) and
  * some that are preferred (because the pylon would be rectangular to the track).
  *
- * <img src="../../elrail_tile.png">
- * <img src="../../elrail_track.png">
+ * @image html elrail_tile.png
+ * @image html elrail_track.png
  *
  */
 
