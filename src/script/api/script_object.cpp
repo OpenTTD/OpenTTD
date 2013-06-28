@@ -265,6 +265,8 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 		return false;
 	}
 
+	assert(StrEmpty(text) || (GetCommandFlags(cmd) & CMD_STR_CTRL) != 0 || StrValid(text, text + strlen(text)));
+
 	/* Set the default callback to return a true/false result of the DoCommand */
 	if (callback == NULL) callback = &ScriptInstance::DoCommandReturn;
 

@@ -43,7 +43,7 @@
 	CCountedPtr<Text> counter(name);
 
 	EnforcePrecondition(false, name != NULL);
-	const char *text = name->GetEncodedText();
+	const char *text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_COMPANY_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
@@ -64,8 +64,9 @@
 	CCountedPtr<Text> counter(name);
 
 	EnforcePrecondition(false, name != NULL);
-	const char *text = name->GetEncodedText();
+	const char *text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_PRESIDENT_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
 	return ScriptObject::DoCommand(0, 0, 0, CMD_RENAME_PRESIDENT, text);
 }

@@ -53,7 +53,7 @@
 
 	EnforcePrecondition(false, IsValidGroup(group_id));
 	EnforcePrecondition(false, name != NULL);
-	const char *text = name->GetEncodedText();
+	const char *text = name->GetDecodedText();
 	EnforcePreconditionEncodedText(false, text);
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_GROUP_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 

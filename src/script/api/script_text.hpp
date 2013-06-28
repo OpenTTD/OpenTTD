@@ -27,6 +27,13 @@ public:
 	 * @api -all
 	 */
 	virtual const char *GetEncodedText() = 0;
+
+	/**
+	 * Convert a #ScriptText into a decoded normal string.
+	 * @return A string (in a static buffer), or NULL.
+	 * @api -all
+	 */
+	const char *GetDecodedText();
 };
 
 /**
