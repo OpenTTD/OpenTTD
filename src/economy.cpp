@@ -1258,7 +1258,7 @@ void PrepareUnload(Vehicle *front_v)
 static uint GetLoadAmount(Vehicle *v)
 {
 	const Engine *e = v->GetEngine();
-	byte load_amount = e->info.load_amount;
+	uint load_amount = e->info.load_amount;
 
 	/* The default loadamount for mail is 1/4 of the load amount for passengers */
 	bool air_mail = v->type == VEH_AIRCRAFT && !Aircraft::From(v)->IsNormalAircraft();
