@@ -172,7 +172,7 @@ int CDECL main(int argc, char *argv[])
 {
 	SetRandomSeed(time(NULL));
 
-	return ttd_main(argc, argv);
+	return openttd_main(argc, argv);
 }
 
 bool GetClipboardContents(char *buffer, size_t buff_len)

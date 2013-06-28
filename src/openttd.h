@@ -75,7 +75,7 @@ extern PauseModeByte _pause_mode;
 void AskExitGame();
 void AskExitToGameMenu();
 
-int ttd_main(int argc, char *argv[]);
+int openttd_main(int argc, char *argv[]);
 void HandleExitGameRequest();
 
 void SwitchToMode(SwitchMode new_mode);

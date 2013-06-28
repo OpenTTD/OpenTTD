@@ -272,7 +272,7 @@ int CDECL main(int argc, char *argv[])
 
 	signal(SIGPIPE, SIG_IGN);
 
-	ret = ttd_main(argc, argv);
+	ret = openttd_main(argc, argv);
 
 #ifdef WITH_COCOA
 	cocoaReleaseAutoreleasePool();

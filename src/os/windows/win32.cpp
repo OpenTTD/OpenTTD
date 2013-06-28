@@ -462,7 +462,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	argc = ParseCommandLine(cmdline, argv, lengthof(argv));
 
-	ttd_main(argc, argv);
+	openttd_main(argc, argv);
 	return 0;
 }
 

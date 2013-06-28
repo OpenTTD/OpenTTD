@@ -524,8 +524,13 @@ static const OptionData _options[] = {
 	GETOPT_END()
 };
 
-
-int ttd_main(int argc, char *argv[])
+/**
+ * Main entry point for this lovely game.
+ * @param argc The number of arguments passed to this game.
+ * @param argv The values of the arguments.
+ * @return 0 when there is no error.
+ */
+int openttd_main(int argc, char *argv[])
 {
 	char *musicdriver = NULL;
 	char *sounddriver = NULL;
