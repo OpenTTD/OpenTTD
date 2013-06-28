@@ -391,8 +391,10 @@ public:
 			top = DrawStationCoverageAreaText(panel_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, true) + WD_PAR_VSEP_NORMAL;
 		}
 
-		/* Resize background if the text is not equally long as the window. */
-		if (top > bottom || (top < bottom && panel_nwi->current_y > panel_nwi->smallest_y)) {
+		/* Resize background if the window is too small.
+		 * Never make the window smaller to avoid oscillating if the size change affects the acceptance.
+		 * (This is the case, if making the window bigger moves the mouse into the window.) */
+		if (top > bottom) {
 			ResizeWindow(this, 0, top - bottom);
 		}
 	}
