@@ -1219,7 +1219,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Muestra mensaje
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Revisar órdenes de vehículos: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Cuando se activa, se comprueban periódicamente las órdenes de los vehículos, y los problemas que se encuentren se reportan con un mensaje
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :No
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Si, excluyendo los detenidos
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Sí, excluyendo los detenidos
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Todos
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar si las ganancias de un vehículo son negativas: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Si se activa, se muestra un mensaje cuando un vehículo no haya obtenido ningún beneficio durante un año
@@ -1649,7 +1649,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}A esta t
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Salir
 STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}¿Está seguro de abandonar OpenTTD y regresar a {STRING}?
-STR_QUIT_YES                                                    :{BLACK}Si
+STR_QUIT_YES                                                    :{BLACK}Sí
 STR_QUIT_NO                                                     :{BLACK}No
 
 # Supported OSes
@@ -2903,7 +2903,7 @@ STR_GOAL_QUESTION_CAPTION_ERROR                                 :Error
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cancelar
 STR_GOAL_QUESTION_BUTTON_OK                                     :Ok
 STR_GOAL_QUESTION_BUTTON_NO                                     :No
-STR_GOAL_QUESTION_BUTTON_YES                                    :Si
+STR_GOAL_QUESTION_BUTTON_YES                                    :Sí
 STR_GOAL_QUESTION_BUTTON_DECLINE                                :Rechazar
 STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Aceptar
 STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignorar

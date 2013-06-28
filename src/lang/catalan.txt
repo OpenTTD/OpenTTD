@@ -1219,7 +1219,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Alerta amb miss
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Revisa ordres dels vehicles: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Quan està activat, les ordres dels vehicles són verificades periòdicament, i alguns problemes evidents seran informats amb missatges de noticia quan siguin detectats
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :No
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Si, excepte vehicles parats
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Sí, excepte vehicles parats
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :De tots els vehicles
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisa si el benefici del vehicle és negatiu: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quan està activat, un missatge de noticia és enviat quan un vehicle no ha tingut beneficis durant l'any
@@ -1649,7 +1649,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}A aquest
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Surt
 STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Estàs segur que vols abandonar aquest joc i tornar a {STRING}?
-STR_QUIT_YES                                                    :{BLACK}Si
+STR_QUIT_YES                                                    :{BLACK}Sí
 STR_QUIT_NO                                                     :{BLACK}No
 
 # Supported OSes
@@ -1752,7 +1752,7 @@ STR_FACE_EUROPEAN                                               :{BLACK}Europea
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Selecciona cares europees
 STR_FACE_AFRICAN                                                :{BLACK}Africana
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Selecciona cares africanes
-STR_FACE_YES                                                    :Si
+STR_FACE_YES                                                    :Sí
 STR_FACE_NO                                                     :No
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Activa el bigoti o les arracades
 STR_FACE_HAIR                                                   :Cabell:
@@ -2140,7 +2140,7 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No s'han
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Gràfics que falten
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD necessita gràfics per funcionar però no se n'ha trobat cap. Vols permetre a OpenTTD descarregar i instal·lar aquests gràfics?
-STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Si, descarregar els gràfics
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Sí, descarregar els gràfics
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}No, surt d'OpenTTD
 
 # Transparency settings window
@@ -2903,7 +2903,7 @@ STR_GOAL_QUESTION_CAPTION_ERROR                                 :Error
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cancel·la
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
 STR_GOAL_QUESTION_BUTTON_NO                                     :No
-STR_GOAL_QUESTION_BUTTON_YES                                    :Si
+STR_GOAL_QUESTION_BUTTON_YES                                    :Sí
 STR_GOAL_QUESTION_BUTTON_DECLINE                                :Declina
 STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Accepta
 STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignora

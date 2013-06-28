@@ -3150,7 +3150,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :격납고로 �
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}이 목록의 모든 차량의 운행을 중지시킵니다.
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}이 목록에 있는 모든 차량의 운행을 시작합니다.
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}경로를 공유하고 있는 차량 {COMMA}대의 목록
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}경로를 공유 중인 차량 {COMMA}대
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :모든 열차
@@ -3169,7 +3169,7 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}선택�
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}선택한 그룹 이름 바꾸기
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}클릭하여 전체 자동 교체로부터 이 그룹을 보호합니다.
 
-STR_GROUP_ADD_SHARED_VEHICLE                                    :경로를 공유하는 차량 추가
+STR_GROUP_ADD_SHARED_VEHICLE                                    :경로를 공유 중인 차량 추가
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :모든 차량 제거
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}그룹 이름 설정

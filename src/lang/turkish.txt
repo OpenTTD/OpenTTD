@@ -459,37 +459,37 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Kirli blokları
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
-STR_ORDINAL_NUMBER_1ST                                          :1inci
-STR_ORDINAL_NUMBER_2ND                                          :2nci
-STR_ORDINAL_NUMBER_3RD                                          :3üncü
-STR_ORDINAL_NUMBER_4TH                                          :4üncü
-STR_ORDINAL_NUMBER_5TH                                          :5inci
-STR_ORDINAL_NUMBER_6TH                                          :6ncı
-STR_ORDINAL_NUMBER_7TH                                          :7nci
-STR_ORDINAL_NUMBER_8TH                                          :8inci
-STR_ORDINAL_NUMBER_9TH                                          :9uncu
-STR_ORDINAL_NUMBER_10TH                                         :10uncu
-STR_ORDINAL_NUMBER_11TH                                         :11inci
-STR_ORDINAL_NUMBER_12TH                                         :12nci
-STR_ORDINAL_NUMBER_13TH                                         :13üncü
-STR_ORDINAL_NUMBER_14TH                                         :14üncü
-STR_ORDINAL_NUMBER_15TH                                         :15inci
-STR_ORDINAL_NUMBER_16TH                                         :16ncı
-STR_ORDINAL_NUMBER_17TH                                         :17nci
-STR_ORDINAL_NUMBER_18TH                                         :18inci
-STR_ORDINAL_NUMBER_19TH                                         :19uncu
-STR_ORDINAL_NUMBER_20TH                                         :20nci
-STR_ORDINAL_NUMBER_21ST                                         :21inci
-STR_ORDINAL_NUMBER_22ND                                         :22nci
-STR_ORDINAL_NUMBER_23RD                                         :23üncü
-STR_ORDINAL_NUMBER_24TH                                         :24üncü
-STR_ORDINAL_NUMBER_25TH                                         :25inci
-STR_ORDINAL_NUMBER_26TH                                         :26ncı
-STR_ORDINAL_NUMBER_27TH                                         :27nci
-STR_ORDINAL_NUMBER_28TH                                         :28inci
-STR_ORDINAL_NUMBER_29TH                                         :29uncu
-STR_ORDINAL_NUMBER_30TH                                         :30uncu
-STR_ORDINAL_NUMBER_31ST                                         :31inci
+STR_ORDINAL_NUMBER_1ST                                          :1.
+STR_ORDINAL_NUMBER_2ND                                          :2.
+STR_ORDINAL_NUMBER_3RD                                          :3.
+STR_ORDINAL_NUMBER_4TH                                          :4.
+STR_ORDINAL_NUMBER_5TH                                          :5.
+STR_ORDINAL_NUMBER_6TH                                          :6.
+STR_ORDINAL_NUMBER_7TH                                          :7.
+STR_ORDINAL_NUMBER_8TH                                          :8.
+STR_ORDINAL_NUMBER_9TH                                          :9.
+STR_ORDINAL_NUMBER_10TH                                         :10.
+STR_ORDINAL_NUMBER_11TH                                         :11.
+STR_ORDINAL_NUMBER_12TH                                         :12.
+STR_ORDINAL_NUMBER_13TH                                         :13.
+STR_ORDINAL_NUMBER_14TH                                         :14.
+STR_ORDINAL_NUMBER_15TH                                         :15.
+STR_ORDINAL_NUMBER_16TH                                         :16.
+STR_ORDINAL_NUMBER_17TH                                         :17.
+STR_ORDINAL_NUMBER_18TH                                         :18.
+STR_ORDINAL_NUMBER_19TH                                         :19.
+STR_ORDINAL_NUMBER_20TH                                         :20.
+STR_ORDINAL_NUMBER_21ST                                         :21.
+STR_ORDINAL_NUMBER_22ND                                         :22.
+STR_ORDINAL_NUMBER_23RD                                         :23.
+STR_ORDINAL_NUMBER_24TH                                         :24.
+STR_ORDINAL_NUMBER_25TH                                         :25.
+STR_ORDINAL_NUMBER_26TH                                         :26.
+STR_ORDINAL_NUMBER_27TH                                         :27.
+STR_ORDINAL_NUMBER_28TH                                         :28.
+STR_ORDINAL_NUMBER_29TH                                         :29.
+STR_ORDINAL_NUMBER_30TH                                         :30.
+STR_ORDINAL_NUMBER_31ST                                         :31.
 ############ range for days ends
 
 ############ range for months starts

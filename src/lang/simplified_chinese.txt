@@ -1363,7 +1363,7 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :显示报纸时
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :年终: {STRING}
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :在年末弹出报表时，播放相应音效
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :建设: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :播放成功建设或其它动作时的音效
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :播放成功建设或执行其它动作时的音效
 STR_CONFIG_SETTING_SOUND_CLICK                                  :点击按钮: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :按一下按钮时发出蜂鸣声
 STR_CONFIG_SETTING_SOUND_DISASTER                               :灾难/事故: {STRING}
@@ -1371,7 +1371,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :播放灾难和
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :交通工具: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :播放运输工具音效
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :音效：{STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放环境、工业和城镇音效
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放与地貌、工业设施和城镇有关的环境音效
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :不显示没有对应车辆的轨道建设面板: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :启用时，将不会显示没有对应车辆的建设面板，避免浪费时间和资金在无用的建设上
@@ -1471,7 +1471,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :当拖动时，
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :设置以拖动的方式建设时，自动放置信号灯时的间距，将以该间距放置信号灯，直到碰到障碍（信号灯，分支）
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA}格
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :拖动方式建设时，保持固定的间距放置信号灯：{STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :选择以Ctrl+拖动方法建设信号灯时是否保持固定的间距，如果“关闭”，不考虑隧道和桥梁长度（在隧道和桥梁进出口第一个各放置一个），避免很长一段没有信号灯，如果“打开”，每隔设定的距离就放置一个信号灯，桥梁和隧道长度也计算在内。
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :选择以Ctrl+拖动方法建设信号灯时是否保持固定的间距，如果“关闭”，不考虑隧道和桥梁长度（在隧道和桥梁进出口第一个各放置一个），避免很长一段没有信号灯，如果“打开”，每隔设定的距离（桥梁和隧道长度也计算在内）就放置一个信号灯。
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :在 {STRING} 年前自动设置悬臂信号
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :设置电子信号灯出现的时间，在此之前，使用悬臂信号灯（功能相同，外观不同）
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :使用信号GUI： {STRING}
@@ -1603,6 +1603,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... 禁�
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... 禁用基础意义设置 '{STRING}': 未找到
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... 禁用基础音乐设置 '{STRING}': 未找到
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}内存溢出
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}无法编配{BYTES}作为sprite快取。sprite快取的大小已降至{BYTES}。OpenTTD的效能将受到影晌。请尝试停用32bpp图形及／或减少放大倍数，以减低內存要求
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2082,7 +2083,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}更新�
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}取消全选
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}取消全部选择
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}搜索整个网络
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}在与OpenTTD没有联系的网站搜寻没有纳入OpenTTD內容服务的內容
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}正在离开游戏！
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}在外部网站下载內容的规则及条款可能跟OpenTTD引用的规则及条款不同。{}您需要参照有关网站以取得在OpenTTD安装有关內容的资讯。{}您要継续吗？
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}标签/名称过滤器
 STR_CONTENT_OPEN_URL                                            :{BLACK}查看主页
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}打开该扩展包主页
@@ -3720,9 +3723,9 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}重置�
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自动填充
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}根据下一次运行的时间自动填充时间表{}(CRTL+单击 可保持等候时间)
 
-STR_TIMETABLE_EXPECTED                                          :{BLACK}预期的
-STR_TIMETABLE_SCHEDULED                                         :{BLACK}计划的
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}在预期的与计划的间切换
+STR_TIMETABLE_EXPECTED                                          :{BLACK}预期时间
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}表定时间
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}切换显示（根据实际情况计算的）预期时间或表定时间
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
@@ -4230,6 +4233,14 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}无法�
 STR_DESKTOP_SHORTCUT_COMMENT                                    :基于Transport Tycoon Deluxe（运输大亨豪华版）的模拟运营游戏
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :运输大亨DOS豪华版原版图形包.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :运输大亨DOS豪华德语版原版图形包.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :运输大亨Windows豪华版原版图形包.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :运输大亨DOS豪华版原版音效包.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Transport Tycoon Deluxe Windows (运输大亨Windows豪华版)的原版音效包.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :一个空的音效包.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Transport Tycoon Deluxe（运输大亨Windows豪华版）的原版音乐包
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :一个没有实际内容的音乐包.
 
 ##id 0x2000
 # Town building names
