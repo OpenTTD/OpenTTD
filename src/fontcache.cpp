@@ -191,7 +191,7 @@ class FreeTypeFontCache : public FontCache {
 private:
 	FT_Face face;  ///< The font face associated with this font.
 
-	typedef SmallMap<uint32, SmallPair<size_t, const void*>> FontTable; ///< Table with font table cache
+	typedef SmallMap<uint32, SmallPair<size_t, const void*> > FontTable; ///< Table with font table cache
 	FontTable font_tables; ///< Cached font tables.
 
 	/** Container for information about a glyph. */
