@@ -1559,6 +1559,7 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Kích thước 
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Bỏ đi những khúc đường ngớ ngẩn khi xây dựng đường: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Xóa bỏ những khúc đường cụt trong khi đầu tư cải tạo lại đường
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Cập nhật đồ thị phân phối mỗi {STRING} ngày
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Giao Diện
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Xây Dựng
@@ -2947,6 +2948,14 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Nháy vào tên dịch vụ để xem nhà máy/đô thị liên quan. Ctrl+Click mở cửa sổ mới để xem
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Tình Tiết
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Trang {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Chuyển tới trang cụ thể bằng cách chọn trong danh sách sổ xuống
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Trước
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Chuyển về trang trước
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Sau
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Chuyển tới trang sau
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Các nhà ga, bến, cảng - nháy vào tên để xem vị trí nhà ga,bến, cảng. Ctrl+Click mở cửa sổ mới để xem
