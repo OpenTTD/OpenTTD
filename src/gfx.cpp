@@ -10,8 +10,7 @@
 /** @file gfx.cpp Handling of drawing text and other gfx related stuff. */
 
 #include "stdafx.h"
-#include "gfx_func.h"
-#include "fontcache.h"
+#include "gfx_layout.h"
 #include "progress.h"
 #include "zoom_func.h"
 #include "blitter/factory.hpp"
@@ -45,9 +44,6 @@ SwitchMode _switch_mode;  ///< The next mainloop command.
 PauseModeByte _pause_mode;
 Palette _cur_palette;
 
-static Dimension _max_char_size[FS_END]; ///< Cache of the maximum size of any character of a font.
-static int _max_char_height; ///< Cache of the height of the largest font
-static int _max_char_width;  ///< Cache of the width of the largest font
 static byte _stringwidth_table[FS_END][224]; ///< Cache containing width of often used characters. @see GetCharacterWidth()
 DrawPixelInfo *_cur_dpi;
 byte _colour_gradient[COLOUR_END][8];
@@ -296,197 +292,73 @@ static void SetColourRemap(TextColour colour)
 	_colour_remap_ptr = _string_colourremap;
 }
 
-#if !defined(WITH_ICU)
-static WChar *HandleBiDiAndArabicShapes(WChar *text) { return text; }
-#else
-#include <unicode/ubidi.h>
-#include <unicode/ushape.h>
-#include <unicode/ustring.h>
-
 /**
- * Function to be able to handle right-to-left text and Arabic chars properly.
- *
- * First: right-to-left (RTL) is stored 'logically' in almost all applications
- *        and so do we. This means that their text is stored from right to the
- *        left in memory and any non-RTL text (like numbers or English) are
- *        then stored from left-to-right. When we want to actually draw the
- *        text we need to reverse the RTL text in memory, which is what
- *        happens in ubidi_writeReordered.
- * Second: Arabic characters "differ" based on their context. To draw the
- *        correct variant we pass it through u_shapeArabic. This function can
- *        add or remove some characters. This is the reason for the lastof
- *        so we know till where we can fill the output.
- *
- * Sadly enough these functions work with a custom character format, UChar,
- * which isn't the same size as WChar. Because of that we need to transform
- * our text first to UChars and then back to something we can use.
- *
- * To be able to truncate strings properly you must truncate before passing to
- * this function. This way the logical begin of the string remains and the end
- * gets chopped of instead of the other way around.
- *
- * The reshaping of Arabic characters might increase or decrease the width of
- * the characters/string. So it might still overflow after truncation, though
- * the chance is fairly slim as most characters get shorter instead of longer.
- * @param buffer the buffer to read from/to
- * @param lastof the end of the buffer
- * @return the buffer to draw from
- */
-static WChar *HandleBiDiAndArabicShapes(WChar *buffer)
-{
-	UChar input[DRAW_STRING_BUFFER];
-	UChar intermediate[DRAW_STRING_BUFFER];
-	static WChar output[DRAW_STRING_BUFFER];
-
-	/* Transform from UTF-32 to internal ICU format of UTF-16. */
-	UErrorCode err = U_ZERO_ERROR;
-	int32_t length = 0;
-	u_strFromUTF32(input, lengthof(input), &length, (UChar32 *)buffer, -1, &err);
-	if (U_FAILURE(err)) return buffer;
-
-	UBiDi *para = ubidi_openSized(length, 0, &err);
-	if (para == NULL) return buffer;
-
-	ubidi_setPara(para, input, length, _current_text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, NULL, &err);
-	length = ubidi_writeReordered(para, intermediate, lengthof(intermediate), UBIDI_REMOVE_BIDI_CONTROLS, &err);
-	length = u_shapeArabic(intermediate, length, input, lengthof(input), U_SHAPE_TEXT_DIRECTION_VISUAL_LTR | U_SHAPE_LETTERS_SHAPE, &err);
-	ubidi_close(para);
-	if (U_FAILURE(err)) return buffer;
-
-	/* Transform back to UTF-32. */
-	u_strToUTF32((UChar32 *)output, lengthof(output), NULL, input, length, &err);
-	if (U_FAILURE(err)) return buffer;
-
-	/* u_strToUTF32 doesn't add a NUL charcter if the buffer is too small, be safe. */
-	output[lengthof(output) - 1] = '\0';
-	return output;
-}
-#endif /* WITH_ICU */
-
-
-/**
- * Truncate a given string to a maximum width if necessary.
- * If the string is truncated, add three dots ('...') to show this.
- * @param *str string that is checked and possibly truncated
- * @param maxw maximum width in pixels of the string
- * @param start_fontsize Fontsize to start the text with
- * @return new width of (truncated) string
- */
-static int TruncateString(char *str, int maxw, FontSize start_fontsize)
-{
-	int w = 0;
-	FontSize size = start_fontsize;
-	int ddd, ddd_w;
-
-	WChar c;
-	char *ddd_pos;
-
-	ddd_w = ddd = GetCharacterWidth(size, '.') * 3;
-
-	for (ddd_pos = str; (c = Utf8Consume(const_cast<const char **>(&str))) != '\0'; ) {
-		if (IsPrintable(c) && !IsTextDirectionChar(c)) {
-			w += GetCharacterWidth(size, c);
-
-			if (w > maxw) {
-				/* string got too big... insert dotdotdot, but make sure we do not
-				 * print anything beyond the string termination character. */
-				for (int i = 0; *ddd_pos != '\0' && i < 3; i++, ddd_pos++) *ddd_pos = '.';
-				*ddd_pos = '\0';
-				return ddd_w;
-			}
-		} else {
-			if (c == SCC_TINYFONT) {
-				size = FS_SMALL;
-				ddd = GetCharacterWidth(size, '.') * 3;
-			} else if (c == SCC_BIGFONT) {
-				size = FS_LARGE;
-				ddd = GetCharacterWidth(size, '.') * 3;
-			} else if (c == '\n') {
-				DEBUG(misc, 0, "Drawing string using newlines with DrawString instead of DrawStringMultiLine. Please notify the developers of this: [%s]", str);
-			}
-		}
-
-		/* Remember the last position where three dots fit. */
-		if (w + ddd < maxw) {
-			ddd_w = w + ddd;
-			ddd_pos = str;
-		}
-	}
-
-	return w;
-}
-
-static int ReallyDoDrawString(const WChar *string, int x, int y, DrawStringParams &params, bool parse_string_also_when_clipped = false);
-
-/**
- * Get the real width of the string.
- * @param str the string to draw
- * @param start_fontsize Fontsize to start the text with
- * @return the width.
- */
-static int GetStringWidth(const WChar *str, FontSize start_fontsize)
-{
-	FontSize size = start_fontsize;
-	int max_width;
-	int width;
-	WChar c;
-
-	width = max_width = 0;
-	for (;;) {
-		c = *str++;
-		if (c == 0) break;
-		if (IsPrintable(c) && !IsTextDirectionChar(c)) {
-			width += GetCharacterWidth(size, c);
-		} else {
-			switch (c) {
-				case SCC_TINYFONT: size = FS_SMALL; break;
-				case SCC_BIGFONT:  size = FS_LARGE; break;
-				case '\n':
-					max_width = max(max_width, width);
-					break;
-			}
-		}
-	}
-
-	return max(max_width, width);
-}
-
-/**
- * Draw string, possibly truncated to make it fit in its allocated space
- *
- * @param left   The left most position to draw on.
- * @param right  The right most position to draw on.
- * @param top    The top most position to draw on.
- * @param str    String to draw.
- * @param last   The end of the string buffer to draw.
- * @param params Text drawing parameters.
- * @param align  The alignment of the string when drawing left-to-right. In the
- *               case a right-to-left language is chosen this is inverted so it
- *               will be drawn in the right direction.
+ * Drawing routine for drawing a laid out line of text.
+ * @param line      String to draw.
+ * @param y         The top most position to draw on.
+ * @param left      The left most position to draw on.
+ * @param right     The right most position to draw on.
+ * @param align     The alignment of the string when drawing left-to-right. In the
+ *                  case a right-to-left language is chosen this is inverted so it
+ *                  will be drawn in the right direction.
  * @param underline Whether to underline what has been drawn or not.
- * @param truncate  Whether to truncate the string or not.
  *
  * @return In case of left or center alignment the right most pixel we have drawn to.
  *         In case of right alignment the left most pixel we have drawn to.
  */
-static int DrawString(int left, int right, int top, char *str, const char *last, DrawStringParams &params, StringAlignment align, bool underline = false, bool truncate = true)
+static int DrawLayoutLine(ParagraphLayout::Line *line, int y, int left, int right, StringAlignment align, bool underline)
 {
-	if (truncate) TruncateString(str, right - left + 1, params.fontsize);
+	if (line->countRuns() == 0) return 0;
 
-	WChar draw_buffer[DRAW_STRING_BUFFER];
-	WChar *p = draw_buffer;
+	int w = line->getWidth();
+	int h = line->getLeading();
 
-	const char *text = str;
-	for (WChar c = Utf8Consume(&text); c != '\0'; c = Utf8Consume(&text)) {
-		*p++ = c;
+	/*
+	 * The following is needed for truncation.
+	 * Depending on the text direction, we either remove bits at the rear
+	 * or the front. For this we shift the entire area to draw so it fits
+	 * within the left/right bounds and the side we do not truncate it on.
+	 * Then we determine the truncation location, i.e. glyphs that fall
+	 * outside of the range min_x - max_x will not be drawn; they are thus
+	 * the truncated glyphs.
+	 *
+	 * At a later step we insert the dots.
+	 */
+
+	int max_w = right - left + 1; // The maximum width.
+
+	int offset_x = 0;  // The offset we need for positioning the glyphs
+	int min_x = left;  // The minimum x position to draw normal glyphs on.
+	int max_x = right; // The maximum x position to draw normal glyphs on.
+
+	bool truncation = max_w < w;     // Whether we need to do truncation.
+	int dot_width = 0;               // Cache for the width of the dot.
+	const Sprite *dot_sprite = NULL; // Cache for the sprite of the dot.
+
+	if (truncation) {
+		/*
+		 * Assumption may be made that all fonts of a run are of the same size.
+		 * In any case, we'll use these dots for the abbreviation, so even if
+		 * another size would be chosen it won't have truncated too little for
+		 * the truncation dots.
+		 */
+		FontCache *fc = ((const Font*)line->getVisualRun(0)->getFont())->fc;
+		GlyphID dot_glyph = fc->MapCharToGlyph('.');
+		dot_width = fc->GetGlyphWidth(dot_glyph);
+		dot_sprite = fc->GetGlyph(dot_glyph);
+
+		if (_current_text_dir == TD_RTL) {
+			min_x += 3 * dot_width;
+			offset_x = w - 3 * dot_width - max_w;
+		} else {
+			max_x -= 3 * dot_width;
+		}
+
+		w = max_w;
 	}
-	*p++ = '\0';
 
 	/* In case we have a RTL language we swap the alignment. */
 	if (!(align & SA_FORCE) && _current_text_dir == TD_RTL && (align & SA_HOR_MASK) != SA_HOR_CENTER) align ^= SA_RIGHT;
-
-	WChar *to_draw = HandleBiDiAndArabicShapes(draw_buffer);
-	int w = GetStringWidth(to_draw, params.fontsize);
 
 	/* right is the right most position to draw on. In this case we want to do
 	 * calculations with the width of the string. In comparison right can be
@@ -513,9 +385,55 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 			NOT_REACHED();
 	}
 
-	ReallyDoDrawString(to_draw, left, top, params, !truncate);
+	for (int run_index = 0; run_index < line->countRuns(); run_index++) {
+		const ParagraphLayout::VisualRun *run = line->getVisualRun(run_index);
+		const Font *f = (const Font*)run->getFont();
+
+		FontCache *fc = f->fc;
+		TextColour colour = f->colour;
+		SetColourRemap(colour);
+
+		DrawPixelInfo *dpi = _cur_dpi;
+		int dpi_left  = dpi->left;
+		int dpi_right = dpi->left + dpi->width - 1;
+
+		bool draw_shadow = fc->GetDrawGlyphShadow() && colour != TC_BLACK;
+
+		for (int i = 0; i < run->getGlyphCount(); i++) {
+			GlyphID glyph = run->getGlyphs()[i];
+
+			/* Not a valid glyph (empty) */
+			if (glyph == 0xFFFF) continue;
+
+			int begin_x = run->getPositions()[i * 2]     + left - offset_x;
+			int end_x   = run->getPositions()[i * 2 + 2] + left - offset_x  - 1;
+			int top     = run->getPositions()[i * 2 + 1] + y;
+
+			/* Truncated away. */
+			if (truncation && (begin_x < min_x || end_x > max_x)) continue;
+
+			const Sprite *sprite = fc->GetGlyph(glyph);
+			/* Check clipping (the "+ 1" is for the shadow). */
+			if (begin_x + sprite->x_offs > dpi_right || begin_x + sprite->x_offs + sprite->width /* - 1 + 1 */ < dpi_left) continue;
+
+			if (draw_shadow && (glyph & SPRITE_GLYPH) == 0) {
+				SetColourRemap(TC_BLACK);
+				GfxMainBlitter(sprite, begin_x + 1, top + 1, BM_COLOUR_REMAP);
+				SetColourRemap(colour);
+			}
+			GfxMainBlitter(sprite, begin_x, top, BM_COLOUR_REMAP);
+		}
+	}
+
+	if (truncation) {
+		int x = (_current_text_dir == TD_RTL) ? left : (right - 3 * dot_width);
+		for (int i = 0; i < 3; i++, x += dot_width) {
+			GfxMainBlitter(dot_sprite, x, y, BM_COLOUR_REMAP);
+		}
+	}
+
 	if (underline) {
-		GfxFillRect(left, top + FONT_HEIGHT_NORMAL, right, top + FONT_HEIGHT_NORMAL, _string_colourremap[1]);
+		GfxFillRect(left, y + h, right, y + h, _string_colourremap[1]);
 	}
 
 	return (align & SA_HOR_MASK) == SA_RIGHT ? left : right;
@@ -537,10 +455,10 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
  */
 int DrawString(int left, int right, int top, const char *str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
-	char buffer[DRAW_STRING_BUFFER];
-	strecpy(buffer, str, lastof(buffer));
-	DrawStringParams params(colour, fontsize);
-	return DrawString(left, right, top, buffer, lastof(buffer), params, align, underline);
+	Layouter layout(str, INT32_MAX, colour, fontsize);
+	if (layout.Length() == 0) return 0;
+
+	return DrawLayoutLine(*layout.Begin(), top, left, right, align, underline);
 }
 
 /**
@@ -561,144 +479,20 @@ int DrawString(int left, int right, int top, StringID str, TextColour colour, St
 {
 	char buffer[DRAW_STRING_BUFFER];
 	GetString(buffer, str, lastof(buffer));
-	DrawStringParams params(colour, fontsize);
-	return DrawString(left, right, top, buffer, lastof(buffer), params, align, underline);
+	return DrawString(left, right, top, buffer, colour, align, underline, fontsize);
 }
 
 /**
- * 'Correct' a string to a maximum length. Longer strings will be cut into
- * additional lines at whitespace characters if possible. The string parameter
- * is modified with terminating characters mid-string which are the
- * placeholders for the newlines.
- * The string WILL be truncated if there was no whitespace for the current
- * line's maximum width.
- *
- * @note To know if the terminating '\0' is the string end or just a
- * newline, the returned 'num' value should be consulted. The num'th '\0',
- * starting with index 0 is the real string end.
- *
- * @param str string to check and correct for length restrictions
- * @param last the last valid location (for '\0') in the buffer of str
- * @param maxw the maximum width the string can have on one line
- * @param size Fontsize to start the text with
- * @return return a 32bit wide number consisting of 2 packed values:
- *  0 - 15 the number of lines ADDED to the string
- * 16 - 31 the fontsize in which the length calculation was done at
- */
-uint32 FormatStringLinebreaks(char *str, const char *last, int maxw, FontSize size)
-{
-	int num = 0;
-
-	assert(maxw > 0);
-
-	for (;;) {
-		/* The character *after* the last space. */
-		char *last_space = NULL;
-		int w = 0;
-
-		for (;;) {
-			WChar c = Utf8Consume(const_cast<const char **>(&str));
-			/* whitespace is where we will insert the line-break */
-			if (IsWhitespace(c)) last_space = str;
-
-			if (IsPrintable(c) && !IsTextDirectionChar(c)) {
-				int char_w = GetCharacterWidth(size, c);
-				w += char_w;
-				if (w > maxw) {
-					/* The string is longer than maximum width so we need to decide
-					 * what to do with it. */
-					if (w == char_w) {
-						/* The character is wider than allowed width; don't know
-						 * what to do with this case... bail out! */
-						return num + (size << 16);
-					}
-					if (last_space == NULL) {
-						/* No space has been found. Just terminate at our current
-						 * location. This usually happens for languages that do not
-						 * require spaces in strings, like Chinese, Japanese and
-						 * Korean. For other languages terminating mid-word might
-						 * not be the best, but terminating the whole string instead
-						 * of continuing the word at the next line is worse. */
-						str = Utf8PrevChar(str);
-						size_t len = strlen(str);
-						char *terminator = str + len;
-
-						/* The string location + length of the string + 1 for '\0'
-						 * always fits; otherwise there's no trailing '\0' and it
-						 * it not a valid string. */
-						assert(terminator <= last);
-						assert(*terminator == '\0');
-
-						/* If the string is too long we have to terminate it earlier. */
-						if (terminator == last) {
-							/* Get the 'begin' of the previous character and make that
-							 * the terminator of the string; we truncate it 'early'. */
-							*Utf8PrevChar(terminator) = '\0';
-							len = strlen(str);
-						}
-						/* Also move the terminator! */
-						memmove(str + 1, str, len + 1);
-						*str = '\0';
-						/* str needs to point to the character *after* the last space */
-						str++;
-					} else {
-						/* A space is found; perfect place to terminate */
-						str = last_space;
-					}
-					break;
-				}
-			} else {
-				switch (c) {
-					case '\0': return num + (size << 16);
-					case SCC_TINYFONT: size = FS_SMALL; break;
-					case SCC_BIGFONT:  size = FS_LARGE; break;
-					case '\n': goto end_of_inner_loop;
-				}
-			}
-		}
-end_of_inner_loop:
-		/* String didn't fit on line (or a '\n' was encountered), so 'dummy' terminate
-		 * and increase linecount. We use Utf8PrevChar() as also non 1 char long
-		 * whitespace separators are supported */
-		num++;
-		char *s = Utf8PrevChar(str);
-		*s++ = '\0';
-
-		/* In which case (see above) we will shift remainder to left and close the gap */
-		if (str - s >= 1) {
-			for (; str[-1] != '\0';) *s++ = *str++;
-		}
-	}
-}
-
-
-/**
- * Calculates height of string (in pixels). Accepts multiline string with '\0' as separators.
- * @param src string to check
- * @param num number of extra lines (output of FormatStringLinebreaks())
- * @param start_fontsize Fontsize to start the text with
- * @note assumes text won't be truncated. FormatStringLinebreaks() is a good way to ensure that.
+ * Calculates height of string (in pixels). The string is changed to a multiline string if needed.
+ * @param str string to check
+ * @param maxw maximum string width
  * @return height of pixels of string when it is drawn
  */
-static int GetMultilineStringHeight(const char *src, int num, FontSize start_fontsize)
+static int GetStringHeight(const char *str, int maxw)
 {
-	int maxy = 0;
-	int y = 0;
-	int fh = GetCharacterHeight(start_fontsize);
-
-	for (;;) {
-		WChar c = Utf8Consume(&src);
-
-		switch (c) {
-			case 0:            y += fh; if (--num < 0) return maxy; break;
-			case '\n':         y += fh;                             break;
-			case SCC_TINYFONT: fh = GetCharacterHeight(FS_SMALL);   break;
-			case SCC_BIGFONT:  fh = GetCharacterHeight(FS_LARGE);   break;
-			default:           maxy = max<int>(maxy, y + fh);       break;
-		}
-	}
+	Layouter layout(str, maxw);
+	return layout.GetBounds().height;
 }
-
 
 /**
  * Calculates height of string (in pixels). The string is changed to a multiline string if needed.
@@ -709,12 +503,23 @@ static int GetMultilineStringHeight(const char *src, int num, FontSize start_fon
 int GetStringHeight(StringID str, int maxw)
 {
 	char buffer[DRAW_STRING_BUFFER];
+	GetString(buffer, str, lastof(buffer));
+	return GetStringHeight(buffer, maxw);
+}
 
+/**
+ * Calculates number of lines of string. The string is changed to a multiline string if needed.
+ * @param str string to check
+ * @param maxw maximum string width
+ * @return number of lines of string when it is drawn
+ */
+int GetStringLineCount(StringID str, int maxw)
+{
+	char buffer[DRAW_STRING_BUFFER];
 	GetString(buffer, str, lastof(buffer));
 
-	uint32 tmp = FormatStringLinebreaks(buffer, lastof(buffer), maxw);
-
-	return GetMultilineStringHeight(buffer, GB(tmp, 0, 16), FS_NORMAL);
+	Layouter layout(buffer, maxw);
+	return layout.Length();
 }
 
 /**
@@ -727,24 +532,6 @@ Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestio
 {
 	Dimension box = {suggestion.width, GetStringHeight(str, suggestion.width)};
 	return box;
-}
-
-
-/**
- * Calculates height of string (in pixels). The string is changed to a multiline string if needed.
- * @param str string to check
- * @param maxw maximum string width
- * @return height of pixels of string when it is drawn
- */
-int GetStringHeight(const char *str, int maxw)
-{
-	char buffer[DRAW_STRING_BUFFER];
-
-	strecpy(buffer, str, lastof(buffer));
-
-	uint32 tmp = FormatStringLinebreaks(buffer, lastof(buffer), maxw);
-
-	return GetMultilineStringHeight(buffer, GB(tmp, 0, 16), FS_NORMAL);
 }
 
 /**
@@ -767,7 +554,6 @@ Dimension GetStringMultiLineBoundingBox(const char *str, const Dimension &sugges
  * @param top    The top most position to draw on.
  * @param bottom The bottom most position to draw on.
  * @param str    String to draw.
- * @param last   The end of the string buffer to draw.
  * @param colour Colour used for drawing the string, see DoDrawString() for details
  * @param align  The horizontal and vertical alignment of the string.
  * @param underline Whether to underline all strings
@@ -775,7 +561,7 @@ Dimension GetStringMultiLineBoundingBox(const char *str, const Dimension &sugges
  *
  * @return If \a align is #SA_BOTTOM, the top to where we have written, else the bottom to where we have written.
  */
-static int DrawStringMultiLine(int left, int right, int top, int bottom, char *str, const char *last, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
+int DrawStringMultiLine(int left, int right, int top, int bottom, const char *str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
 	int maxw = right - left + 1;
 	int maxh = bottom - top + 1;
@@ -784,25 +570,8 @@ static int DrawStringMultiLine(int left, int right, int top, int bottom, char *s
 	 * do we really want to support fonts of 0 or less pixels high? */
 	if (maxh <= 0) return top;
 
-	uint32 tmp = FormatStringLinebreaks(str, last, maxw);
-	int num = GB(tmp, 0, 16) + 1;
-
-	int mt = GetCharacterHeight((FontSize)GB(tmp, 16, 16));
-	int total_height = num * mt;
-
-	int skip_lines = 0;
-	if (total_height > maxh) {
-		if (maxh < mt) return top; //  Not enough room for a single line.
-		if ((align & SA_VERT_MASK) == SA_BOTTOM) {
-			skip_lines = num;
-			num = maxh / mt;
-			skip_lines -= num;
-		} else {
-			num = maxh / mt;
-		}
-		total_height = num * mt;
-	}
-
+	Layouter layout(str, maxw, colour, fontsize);
+	int total_height = layout.GetBounds().height;
 	int y;
 	switch (align & SA_VERT_MASK) {
 		case SA_TOP:
@@ -820,62 +589,23 @@ static int DrawStringMultiLine(int left, int right, int top, int bottom, char *s
 		default: NOT_REACHED();
 	}
 
-	const char *src = str;
-	DrawStringParams params(colour, fontsize);
-	int written_top = bottom; // Uppermost position of rendering a line of text
-	for (;;) {
-		if (skip_lines == 0) {
-			char buf2[DRAW_STRING_BUFFER];
-			strecpy(buf2, src, lastof(buf2));
-			DrawString(left, right, y, buf2, lastof(buf2), params, align, underline, false);
-			if (written_top > y) written_top = y;
-			y += mt;
-			num--;
-		}
+	int last_line = top;
+	int first_line = bottom;
 
-		for (;;) {
-			WChar c = Utf8Consume(&src);
-			if (c == 0) {
-				break;
-			} else if (skip_lines > 0) {
-				/* Skipped drawing, so do additional processing to update params. */
-				if (c >= SCC_BLUE && c <= SCC_BLACK) {
-					params.SetColour((TextColour)(c - SCC_BLUE));
-				} else if (c == SCC_PREVIOUS_COLOUR) { // Revert to the previous colour.
-					params.SetPreviousColour();
-				} else if (c == SCC_TINYFONT) {
-					params.SetFontSize(FS_SMALL);
-				} else if (c == SCC_BIGFONT) {
-					params.SetFontSize(FS_LARGE);
-				}
+	for (ParagraphLayout::Line **iter = layout.Begin(); iter != layout.End(); iter++) {
+		ParagraphLayout::Line *line = *iter;
 
-			}
+		int line_height = line->getLeading();
+		if (y >= top && y < bottom) {
+			last_line = y + line_height;
+			if (first_line > y) first_line = y;
+
+			DrawLayoutLine(line, y, left, right, align, underline);
 		}
-		if (skip_lines > 0) skip_lines--;
-		if (num == 0) return ((align & SA_VERT_MASK) == SA_BOTTOM) ? written_top : y;
+		y += line_height;
 	}
-}
 
-/**
- * Draw string, possibly over multiple lines.
- *
- * @param left   The left most position to draw on.
- * @param right  The right most position to draw on.
- * @param top    The top most position to draw on.
- * @param bottom The bottom most position to draw on.
- * @param str    String to draw.
- * @param colour Colour used for drawing the string, see DoDrawString() for details
- * @param align  The horizontal and vertical alignment of the string.
- * @param underline Whether to underline all strings
- * @param fontsize The size of the initial characters.
- *
- * @return If \a align is #SA_BOTTOM, the top to where we have written, else the bottom to where we have written.
- */
-int DrawStringMultiLine(int left, int right, int top, int bottom, const char *str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
-{
-	char buffer[DRAW_STRING_BUFFER];
-	strecpy(buffer, str, lastof(buffer));
-	return DrawStringMultiLine(left, right, top, bottom, buffer, lastof(buffer), colour, align, underline, fontsize);
+	return ((align & SA_VERT_MASK) == SA_BOTTOM) ? first_line : last_line;
 }
 
 /**
@@ -897,7 +627,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 {
 	char buffer[DRAW_STRING_BUFFER];
 	GetString(buffer, str, lastof(buffer));
-	return DrawStringMultiLine(left, right, top, bottom, buffer, lastof(buffer), colour, align, underline, fontsize);
+	return DrawStringMultiLine(left, right, top, bottom, buffer, colour, align, underline, fontsize);
 }
 
 /**
@@ -912,33 +642,8 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
  */
 Dimension GetStringBoundingBox(const char *str, FontSize start_fontsize)
 {
-	FontSize size = start_fontsize;
-	Dimension br;
-	uint max_width;
-	WChar c;
-
-	br.width = br.height = max_width = 0;
-	for (;;) {
-		c = Utf8Consume(&str);
-		if (c == 0) break;
-		if (IsPrintable(c) && !IsTextDirectionChar(c)) {
-			br.width += GetCharacterWidth(size, c);
-		} else {
-			switch (c) {
-				case SCC_TINYFONT: size = FS_SMALL; break;
-				case SCC_BIGFONT:  size = FS_LARGE; break;
-				case '\n':
-					br.height += GetCharacterHeight(size);
-					if (br.width > max_width) max_width = br.width;
-					br.width = 0;
-					break;
-			}
-		}
-	}
-	br.height += GetCharacterHeight(size);
-
-	br.width  = max(br.width, max_width);
-	return br;
+	Layouter layout(str, INT32_MAX, TC_FROMSTRING, start_fontsize);
+	return layout.GetBounds();
 }
 
 /**
@@ -966,86 +671,6 @@ void DrawCharCentered(WChar c, int x, int y, TextColour colour)
 {
 	SetColourRemap(colour);
 	GfxMainBlitter(GetGlyph(FS_NORMAL, c), x - GetCharacterWidth(FS_NORMAL, c) / 2, y, BM_COLOUR_REMAP);
-}
-
-/**
- * Draw a string at the given coordinates with the given colour.
- *  While drawing the string, parse it in case some formatting is specified,
- *  like new colour, new size or even positioning.
- * @param string              The string to draw. This is already bidi reordered.
- * @param x                   Offset from left side of the screen
- * @param y                   Offset from top side of the screen
- * @param params              Text drawing parameters
- * @param parse_string_also_when_clipped
- *                            By default, always test the available space where to draw the string.
- *                            When in multiline drawing, it would already be done,
- *                            so no need to re-perform the same kind (more or less) of verifications.
- *                            It's not only an optimisation, it's also a way to ensures the string will be parsed
- *                            (as there are certain side effects on global variables, which are important for the next line)
- * @return                    the x-coordinates where the drawing has finished.
- *                            If nothing is drawn, the originally passed x-coordinate is returned
- */
-static int ReallyDoDrawString(const WChar *string, int x, int y, DrawStringParams &params, bool parse_string_also_when_clipped)
-{
-	DrawPixelInfo *dpi = _cur_dpi;
-	bool draw_shadow = GetDrawGlyphShadow();
-	WChar c;
-	int xo = x;
-
-	if (!parse_string_also_when_clipped) {
-		/* in "mode multiline", the available space have been verified. Not in regular one.
-		 * So if the string cannot be drawn, return the original start to say so.*/
-		if (x >= dpi->left + dpi->width || y >= dpi->top + dpi->height) return x;
-	}
-
-switch_colour:;
-	SetColourRemap(params.cur_colour);
-
-check_bounds:
-	if (y + _max_char_height <= dpi->top || dpi->top + dpi->height <= y) {
-skip_char:;
-		for (;;) {
-			c = *string++;
-			if (!IsPrintable(c)) goto skip_cont;
-		}
-	}
-
-	for (;;) {
-		c = *string++;
-skip_cont:;
-		if (c == 0) {
-			return x;  // Nothing more to draw, get out. And here is the new x position
-		}
-		if (IsPrintable(c) && !IsTextDirectionChar(c)) {
-			if (x >= dpi->left + dpi->width) goto skip_char;
-			if (x + _max_char_width >= dpi->left) {
-				const Sprite *glyph = GetGlyph(params.fontsize, c);
-				if (draw_shadow && params.fontsize == FS_NORMAL && params.cur_colour != TC_BLACK && !(c >= SCC_SPRITE_START && c <= SCC_SPRITE_END)) {
-					SetColourRemap(TC_BLACK);
-					GfxMainBlitter(glyph, x + 1, y + 1, BM_COLOUR_REMAP);
-					SetColourRemap(params.cur_colour);
-				}
-				GfxMainBlitter(glyph, x, y, BM_COLOUR_REMAP);
-			}
-			x += GetCharacterWidth(params.fontsize, c);
-		} else if (c == '\n') { // newline = {}
-			x = xo;  // We require a new line, so the x coordinate is reset
-			y += GetCharacterHeight(params.fontsize);
-			goto check_bounds;
-		} else if (c >= SCC_BLUE && c <= SCC_BLACK) { // change colour?
-			params.SetColour((TextColour)(c - SCC_BLUE));
-			goto switch_colour;
-		} else if (c == SCC_PREVIOUS_COLOUR) { // revert to the previous colour
-			params.SetPreviousColour();
-			goto switch_colour;
-		} else if (c == SCC_TINYFONT) { // {TINYFONT}
-			params.SetFontSize(FS_SMALL);
-		} else if (c == SCC_BIGFONT) { // {BIGFONT}
-			params.SetFontSize(FS_LARGE);
-		} else if (!IsTextDirectionChar(c)) {
-			DEBUG(misc, 0, "[utf8] unknown string command character %d", c);
-		}
-	}
 }
 
 /**
@@ -1462,23 +1087,9 @@ TextColour GetContrastColour(uint8 background)
 void LoadStringWidthTable(bool monospace)
 {
 	for (FontSize fs = monospace ? FS_MONO : FS_BEGIN; fs < (monospace ? FS_END : FS_MONO); fs++) {
-		_max_char_size[fs].width = 0;
-		_max_char_size[fs].height = GetCharacterHeight(fs);
 		for (uint i = 0; i != 224; i++) {
 			_stringwidth_table[fs][i] = GetGlyphWidth(fs, i + 32);
-			_max_char_size[fs].width = max<int>(_max_char_size[fs].width, _stringwidth_table[fs][i]);
 		}
-
-		/* Needed because they need to be 1 more than the widest. */
-		_max_char_size[fs].width++;
-		_max_char_size[fs].height++;
-	}
-
-	_max_char_width  = 0;
-	_max_char_height = 0;
-	for (FontSize fs = FS_BEGIN; fs < FS_END; fs++) {
-		_max_char_width = max<int>(_max_char_width, _max_char_size[fs].width);
-		_max_char_height = max<int>(_max_char_height, _max_char_size[fs].height);
 	}
 
 	ReInitAllWindows();

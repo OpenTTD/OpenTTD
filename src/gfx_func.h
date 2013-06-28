@@ -121,8 +121,8 @@ void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3)
 
 Dimension GetStringBoundingBox(const char *str, FontSize start_fontsize = FS_NORMAL);
 Dimension GetStringBoundingBox(StringID strid);
-uint32 FormatStringLinebreaks(char *str, const char *last, int maxw, FontSize start_fontsize = FS_NORMAL);
 int GetStringHeight(StringID str, int maxw);
+int GetStringLineCount(StringID str, int maxw);
 Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestion);
 Dimension GetStringMultiLineBoundingBox(const char *str, const Dimension &suggestion);
 void LoadStringWidthTable(bool monospace = false);
@@ -151,17 +151,7 @@ byte GetCharacterWidth(FontSize size, uint32 key);
 byte GetDigitWidth(FontSize size = FS_NORMAL);
 void GetBroadestDigit(uint *front, uint *next, FontSize size = FS_NORMAL);
 
-/**
- * Get height of a character for a given font size.
- * @param size Font size to get height of
- * @return     Height of characters in the given font (pixels)
- */
-static inline byte GetCharacterHeight(FontSize size)
-{
-	assert(size < FS_END);
-	extern int _font_height[FS_END];
-	return _font_height[size];
-}
+int GetCharacterHeight(FontSize size);
 
 /** Height of characters in the small (#FS_SMALL) font. */
 #define FONT_HEIGHT_SMALL  (GetCharacterHeight(FS_SMALL))

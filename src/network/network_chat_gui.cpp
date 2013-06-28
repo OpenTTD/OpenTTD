@@ -81,10 +81,7 @@ static inline uint GetChatMessageCount()
 void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const char *message, ...)
 {
 	char buf[DRAW_STRING_BUFFER];
-	const char *bufp;
 	va_list va;
-	uint msg_count;
-	uint16 lines;
 
 	va_start(va, message);
 	vsnprintf(buf, lengthof(buf), message, va);
@@ -92,29 +89,16 @@ void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const char *m
 
 	Utf8TrimString(buf, DRAW_STRING_BUFFER);
 
-	/* Force linebreaks for strings that are too long */
-	lines = GB(FormatStringLinebreaks(buf, lastof(buf), _chatmsg_box.width - 8), 0, 16) + 1;
-	if (lines >= MAX_CHAT_MESSAGES) return;
-
-	msg_count = GetChatMessageCount();
-	/* We want to add more chat messages than there is free space for, remove 'old' */
-	if (lines > MAX_CHAT_MESSAGES - msg_count) {
-		int i = lines - (MAX_CHAT_MESSAGES - msg_count);
-		memmove(&_chatmsg_list[0], &_chatmsg_list[i], sizeof(_chatmsg_list[0]) * (msg_count - i));
-		msg_count = MAX_CHAT_MESSAGES - lines;
+	uint msg_count = GetChatMessageCount();
+	if (MAX_CHAT_MESSAGES == msg_count) {
+		memmove(&_chatmsg_list[0], &_chatmsg_list[1], sizeof(_chatmsg_list[0]) * (msg_count - 1));
+		msg_count = MAX_CHAT_MESSAGES - 1;
 	}
 
-	for (bufp = buf; lines != 0; lines--) {
-		ChatMessage *cmsg = &_chatmsg_list[msg_count++];
-		strecpy(cmsg->message, bufp, lastof(cmsg->message));
-
-		/* The default colour for a message is company colour. Replace this with
-		 * white for any additional lines */
-		cmsg->colour = (bufp == buf && (colour & TC_IS_PALETTE_COLOUR)) ? colour : TC_WHITE;
-		cmsg->remove_time = _realtime_tick + duration * 1000;
-
-		bufp += strlen(bufp) + 1; // jump to 'next line' in the formatted string
-	}
+	ChatMessage *cmsg = &_chatmsg_list[msg_count++];
+	strecpy(cmsg->message, buf, lastof(cmsg->message));
+	cmsg->colour = (colour & TC_IS_PALETTE_COLOUR) ? colour : TC_WHITE;
+	cmsg->remove_time = _realtime_tick + duration * 1000;
 
 	_chatmessage_dirty = true;
 }
@@ -246,18 +230,27 @@ void NetworkDrawChatMessage()
 
 	_cur_dpi = &_screen; // switch to _screen painting
 
+	int string_height = 0;
+	for (uint i = 0; i < count; i++) {
+		SetDParamStr(0, _chatmsg_list[i].message);
+		string_height += GetStringLineCount(STR_JUST_RAW_STRING, width - 1) * FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING;
+	}
+
+	string_height = min(string_height, MAX_CHAT_MESSAGES * (FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING));
+
+	int top = _screen.height - _chatmsg_box.y - string_height - 2;
+	int bottom = _screen.height - _chatmsg_box.y - 2;
 	/* Paint a half-transparent box behind the chat messages */
-	GfxFillRect(
-			_chatmsg_box.x,
-			_screen.height - _chatmsg_box.y - count * (FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING) - 2,
-			_chatmsg_box.x + _chatmsg_box.width - 1,
-			_screen.height - _chatmsg_box.y - 2,
+	GfxFillRect(_chatmsg_box.x, top - 2, _chatmsg_box.x + _chatmsg_box.width - 1, bottom,
 			PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOUR // black, but with some alpha for background
 		);
 
 	/* Paint the chat messages starting with the lowest at the bottom */
-	for (uint y = FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING; count-- != 0; y += (FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING)) {
-		DrawString(_chatmsg_box.x + 3, _chatmsg_box.x + _chatmsg_box.width - 1, _screen.height - _chatmsg_box.y - y + 1, _chatmsg_list[count].message, _chatmsg_list[count].colour);
+	int ypos = bottom - 2;
+
+	for (int i = count - 1; i >= 0; i--) {
+		ypos = DrawStringMultiLine(_chatmsg_box.x + 3, _chatmsg_box.x + _chatmsg_box.width - 1, top, ypos, _chatmsg_list[i].message, _chatmsg_list[i].colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - NETWORK_CHAT_LINE_SPACING;
+		if (ypos < top) break;
 	}
 
 	/* Make sure the data is updated next flush */

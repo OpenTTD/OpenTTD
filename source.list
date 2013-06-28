@@ -25,11 +25,13 @@ engine.cpp
 fileio.cpp
 fios.cpp
 fontcache.cpp
+fontdetection.cpp
 base_consist.cpp
 gamelog.cpp
 genworld.cpp
 gfx.cpp
 gfxinit.cpp
+gfx_layout.cpp
 goal.cpp
 ground_vehicle.cpp
 heightmap.cpp
@@ -173,11 +175,13 @@ fileio_func.h
 fileio_type.h
 fios.h
 fontcache.h
+fontdetection.h
 base_consist.h
 gamelog.h
 gamelog_internal.h
 genworld.h
 gfx_func.h
+gfx_layout.h
 gfx_type.h
 gfxinit.h
 goal_base.h

@@ -1718,9 +1718,9 @@ make_cflags_and_ldflags() {
 
 		# Some icu-configs have the 'feature' of not adding a space where others do add the space
 		if [ "$static_icu" != "0" ]; then
-			LIBS="$LIBS `$icu_config --ldflags-searchpath` `$icu_config --ldflags-libsonly | tr '\n\r' '  ' | sed s/licu/lsicu/g`"
+			LIBS="$LIBS `$icu_config --ldflags-searchpath` `$icu_config --ldflags-libsonly --ldflags-layout | tr '\n\r' '  ' | sed s/licu/lsicu/g`"
 		else
-			LIBS="$LIBS `$icu_config --ldflags-searchpath` `$icu_config --ldflags-libsonly | tr '\n\r' '  '`"
+			LIBS="$LIBS `$icu_config --ldflags-searchpath` `$icu_config --ldflags-libsonly --ldflags-layout | tr '\n\r' '  '`"
 		fi
 	fi
 

@@ -88,7 +88,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib lzo2.lib liblzma.lib libfreetype2.lib icuuc.lib icuin.lib icudt.lib"
+				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib lzo2.lib liblzma.lib libfreetype2.lib icuuc.lib icuin.lib icudt.lib icule.lib iculx.lib"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				IgnoreDefaultLibraryNames=""
@@ -183,7 +183,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib lzo2.lib liblzma.lib libfreetype2.lib icuuc.lib icuin.lib icudt.lib"
+				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib lzo2.lib liblzma.lib libfreetype2.lib icuuc.lib icuin.lib icudt.lib icule.lib iculx.lib"
 				LinkIncremental="0"
 				SuppressStartupBanner="true"
 				IgnoreDefaultLibraryNames="LIBCMT.lib"
@@ -290,7 +290,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib lzo2.lib liblzma.lib libfreetype2.lib icuuc.lib icuin.lib icudt.lib"
+				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib lzo2.lib liblzma.lib libfreetype2.lib icuuc.lib icuin.lib icudt.lib icule.lib iculx.lib"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				IgnoreDefaultLibraryNames=""
@@ -389,7 +389,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib lzo2.lib liblzma.lib libfreetype2.lib icuuc.lib icuin.lib icudt.lib"
+				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib lzo2.lib liblzma.lib libfreetype2.lib icuuc.lib icuin.lib icudt.lib icule.lib iculx.lib"
 				LinkIncremental="0"
 				SuppressStartupBanner="true"
 				IgnoreDefaultLibraryNames="LIBCMT.lib"
@@ -536,6 +536,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\fontdetection.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\base_consist.cpp"
 				>
 			</File>
@@ -553,6 +557,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\gfxinit.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\gfx_layout.cpp"
 				>
 			</File>
 			<File
@@ -1032,6 +1040,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\fontdetection.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\base_consist.h"
 				>
 			</File>
@@ -1049,6 +1061,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\gfx_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\gfx_layout.h"
 				>
 			</File>
 			<File
