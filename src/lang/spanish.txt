@@ -200,21 +200,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cv
 STR_UNITS_POWER_METRIC                                          :{COMMA}cv
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonelada{P "" s}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonelada{P "" s}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P "" es}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kp
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pies
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -1584,7 +1591,44 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Fijar esta opci
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturación de caminos cortos antes de usar aquellos de mayor capacidad: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frecuentemente hay múltiples caminos posibles entre dos estaciones determinadas. En primer lugar se intentará saturar el camino más corto, para posteriormente saturar el segundo más corto y así sucesivamente. La saturación está determinada por una estimación de capacidad y uso planificado. Una vez que se hayan saturado todos los caminos, si todavía hay demanda, se sobrecargarán los caminos empezando por aquellos de mayor capacidad. La mayor parte de las veces, el algoritmo no estimará la capacidad de forma precisa. Esta opción permite especificar el porcentaje de saturación que debe de tener una línea en la primera parte del algoritmo antes de pasar a la siguiente línea. Fijarlo a menos de 100% permite evitar estaciones sobrecargadas en el caso de que se sobreestimen las capacidades
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unidades de velocidad: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Cada vez que se muestra una velocidad en la interfaz de usuario, se emplean las unidades seleccionadas
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Métrico (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unidades de potencia de vehículos: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Cada vez que se muestra la potencia de un vehículo en la interfaz de usuario, se emplean las unidades seleccionadas
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperial (cv)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Métrico (cv)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Unidades de peso: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Cada vez que se muestren pesos en la interfaz de usuario, se emplearán estas unidades
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (t/tonelada)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Métrico (t/tonelada)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Unidades de volumen: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Cada vez que se muestren volúmenes en la interfaz de usuario, se emplearán estas unidades
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Métrico (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Unidades de esfuerzo de tracción: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Cada vez que se muestre esfuerzo de tracción en la interfaz de usuario, se emplearán estas unidades
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Métrico (kp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unidades de altura: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Cada vez que se muestren alturas en el interfaz de usuario, se emplearán estas medidas
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (pies)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrico (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfaz
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localización
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construcción
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehículos
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Estaciones
@@ -4773,6 +4817,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

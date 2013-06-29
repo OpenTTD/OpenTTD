@@ -276,6 +276,8 @@ STR_SORT_BY_LENGTH                                              :நீளம்
 STR_SORT_BY_LIFE_TIME                                           :மீதமிருக்கும் வாழ்நாள்
 STR_SORT_BY_TIMETABLE_DELAY                                     :கால தாமதம்
 STR_SORT_BY_FACILITY                                            :நிலைய வகை
+STR_SORT_BY_WAITING_TOTAL                                       :மொத்த காத்திருக்கும் சரக்கு
+STR_SORT_BY_WAITING_AVAILABLE                                   :கிடைக்கக்கூடிய காத்திருக்கும் சரக்கு
 STR_SORT_BY_RATING_MAX                                          :சரக்கு உச்ச வகைமதிப்பு
 STR_SORT_BY_RATING_MIN                                          :சரக்கு மீச்சிறு வகைமதிப்பு
 STR_SORT_BY_ENGINE_ID                                           :இயந்திரம் அடையாளம் (வரிசை செய்)
@@ -1382,11 +1384,18 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :தொடக்
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :ஆட்டத்தின் தொடக்கத்தில் மாநகரங்களின் அளவு நகரங்களை ஒப்பிடுகையில்
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}கட்டுமானம்
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}வாகனங்கள்
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}நிலையங்கள்
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}பொருளாதாரம்
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}சரக்கு பரிமாற்றம்
 STR_CONFIG_SETTING_AI                                           :{ORANGE}போட்டியாளர்கள்
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}திரை அமைப்புகள்
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaction
@@ -2592,9 +2601,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}பெ�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}தங்கள் நிறுவனத்தின் பெருமைக்காக ஓர் சிலையினைக் கட்டவும்.{}செலவு: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} குறிக்கோள்கள்
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}பூலோக குறிக்கோள்கள்
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}பூலோக குறிக்கோள்கள்:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- ஏதுமில்லை -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- இதற்கு அமையாது -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}நிறுவனத்தின் குறிக்கோள்கள்:
@@ -2664,6 +2676,16 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}நி�
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}மாத வினியோகம் மற்றும் பகுதி தர மதிப்பீடு:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} {STATION} இலிருந்து
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} {STATION} வழியாக
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} {STATION} இந்கு
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} தெரியாத நிலைத்திலிருந்து
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} எந்த நிலையத்திற்கும்
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} எந்த நிலையம் வழியாகவும்
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} இந்த நிலையத்திலிருந்து
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} இந்த நிலையத்தில் நிற்கின்றது
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} இந்த நிலையத்திற்கு
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} எங்கும் நிற்காமல்
 
 
 ############ range for rating starts

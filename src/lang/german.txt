@@ -200,21 +200,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}PS
 STR_UNITS_POWER_METRIC                                          :{COMMA}PS
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} Tonne{P "" n}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} Tonne{P "" n}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} Gallone{P "" n}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} Liter
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kp
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} Fuß
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -1572,7 +1579,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetrisch" h
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Verteilungsschema für Post: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Symmetrisch" heißt, dass etwa die selbe Menge Post von einer Station A zu einer anderen Station B geschickt wird, wie von B nach A. "Asymmetrisch" heißt, dass Post in beliebigen Mengen hin- und her geschickt werden kann. "Manuell" heißt, dass keine automatische Verteilung der Post stattfindet.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Verteilungsschema für Wertsachen: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Wertsachen umfassen Gold im subarktischen, Diamanten im subtropischen und Wertsachen im gemäßigten Klima. NewGRFs können das ändern. "symmetrisch" heißt, dass etwa die selbe Menge dieser Waren von einer Station A zu einer anderen Station B geschickt wird, wie von B nach A. "asymmetrisch" heißt, dass diese Waren in beliebigen Mengen hin- und her geschickt werden können. "manuell" heißt, dass keine automatische Verteilung dieser Waren stattfindet. Es ist empfehlenswert, diese Einstellung auf "asymmetrisch"" oder "manuell" zu setzen, da Banken kein Gold an Goldminen oder Diamanten and Diamantenminen schicken. Im gemäßigten Klima kann auch "symmetrisch" gewählt werden, da Banken sich gegenseitig Wertsachen schicken.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Neben den Wertsachen im gemäßigten Klima fallen hierunter auch Diamanten im subtropischen und Gold im subarktischen Klima. Bei Verwendung von NewGRFs evtl. auch weitere ähnliche Güter. "Symmetrisch" heißt, dass etwa dieselbe Menge an Waren von Station A zur Station B gelangen möchte, wie umgekehrt von B nach A. "Asymmetrisch" heißt, dass Waren in unterschiedlichen Mengen hin- und hergelangen möchten. "Manuell" heißt, dass keine automatische Verteilung dieser Waren stattfindet. Im gemäßigten Klima kann "symmetrisch" gewählt werden, da Banken sich gegenseitig Wertsachen zusenden. Ansonsten ist "asymmetrisch" oder "manuell" zu empfehlen, da Banken dann nur Gold bzw. Diamanten annehmen und nichts produzieren.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Verteilungsschema für sonstige Frachtarten: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Symmetrisch" heißt, dass etwa die selbe Menge Waren von einer Station A zu einer anderen Station B geschickt wird, wie von B nach A. "Asymmetrisch" heißt, dass Waren in beliebigen Mengen hin- und her geschickt werden können. "Manuell" heißt, dass keine automatische Verteilung der Waren stattfindet. Hier sollte fast immer "asymmetrisch" oder "manuell" gewählt werden.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Genauigkeit für die Berechnung der Warenverteilung: {STRING}
@@ -1584,7 +1591,44 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Wenn hier wenig
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Auslastung der kürzeren Verbindungenen bevor längere Verbindungen gewählt werden: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Häufig gibt es mehrere Verbindungen um von einer Station zu einer anderen zu kommen. Zuerst wird der Algorithmus die kürzesten Verbindungen auslasten, dann die längeren usw. Wenn alle Verbindungen ausgelastet sind, verteilt er die verbliebene Nachfrage gleichmäßig. Diese Einstellung besagt, ab welcher Auslastung eine Verbinudng als "voll" gilt und der Algorithmus in der ersten Runde die nächst längere wählt. Da die Kapazität der Verbindungen geschätzt wird, ist es sinnvoll, hier weniger als 100% anzugeben, um etwas "Luft" für Fehlschätzungen zu lassen.
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Geschwindigkeitseinheit: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Immer wenn die Geschwindigkeit angezeigt wird, zeige sie in den gewählten Einheiten
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrisch (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Leistungseinheit von Fahrzeugen: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Immer wenn die Leistung eins Fahrzeugs angezeigt wird, zeige es in den gewählten Einheiten
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperial (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrisch (PS)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Gewichtseinheit: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Immer wenn Gewichte angezeigt werden, zeige sie in den gewählten Einheiten
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (short t/ton)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrisch (t/Tonne)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Volumeneinheit: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Immer wenn Volumina angezeigt werden, zeige sie in den gewählten Einheiten
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrisch (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Einheit für Zugkraft: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Immer wenn die Zugkraft angezeigt wird, zeige sie in den gewählten Einheiten an
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrisch (kp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Höheneinheiten: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Immer wenn Höhen angezeigt werden, zeige sie in den gewählten Einheiten an
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisch (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Oberfläche
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisierung
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruktion
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Fahrzeuge
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stationen
@@ -4773,6 +4817,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
