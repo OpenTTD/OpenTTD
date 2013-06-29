@@ -801,7 +801,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Транспо�
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL.abl                       :транспортным королём
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Магнат Века
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY.abl       :Магнатом Века
-STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}«{STRING}»   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}Директора компании «{COMPANY}» называют {STRING.abl}!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME}, президент компании «{COMPANY}», заслужил титул «{STRING}»!

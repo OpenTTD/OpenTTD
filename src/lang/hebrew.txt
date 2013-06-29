@@ -662,7 +662,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :קפיטליס�
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :איל הון
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :איל הון
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :טיקון המאה
-STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} הגיעה למעמד '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}'{2:STRING}' הגיע לדרגת {NBSP}{1:COMPANY} מ {NBSP}{0:PRESIDENT_NAME}

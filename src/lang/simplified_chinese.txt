@@ -656,7 +656,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :运输资本家
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :运输行业巨子
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :运输行业领袖
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :世纪大亨
-STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} 达到 '{STRING}' 的状态！
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} 在 {COMPANY} 达到 '{STRING}' 状态！

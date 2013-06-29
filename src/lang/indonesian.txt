@@ -649,7 +649,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Kapitalis
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Tokoh terkemuka
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Jutawan
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Tycoon abad ini
-STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} mencapai status '{STRING}' !
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} dari {COMPANY} mencapai status '{STRING}' !

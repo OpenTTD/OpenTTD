@@ -645,7 +645,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Caipitlí
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Móruasal
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mógal
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Toicí an Chéid
-STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}Baineann {COMPANY} an stádas '{STRING}' amach!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}Baineann {PRESIDENT_NAME} ó {COMPANY} an stádas '{STRING}' amach!

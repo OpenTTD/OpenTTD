@@ -648,7 +648,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Kapitalista
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnatea
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Handikia
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Mendeko Tycoona
-STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} lorpenak '{STRING}' estatusa!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} {COMPANY} lorpenak '{STRING}' estatusa!

@@ -644,7 +644,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :عمدة الت
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :وزير التجارة و النقل
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :ملك التجارة و النقل
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :امبراطور القرن
-STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}. {COMPANY}
+STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}. {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}حققت شركة {COMPANY} بجدارة'{STRING}'
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}حقق {PRESIDENT_NAME}مدير شركة {COMPANY} '{STRING}' بجدارة
