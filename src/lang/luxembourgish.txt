@@ -884,13 +884,8 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgëschen La
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranëschen Rial (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Moosseenheeten
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Moosseenheetenauswiel
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Britësche System
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Métreschen System
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Stroossengefierer

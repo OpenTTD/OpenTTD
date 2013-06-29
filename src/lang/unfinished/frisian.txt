@@ -862,13 +862,8 @@ STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estlânske kroa
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Oanpasse...
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mjitienhied
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Mjitienhied seleksje
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperiaal
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metriesk
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Auto's

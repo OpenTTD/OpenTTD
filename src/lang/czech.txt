@@ -973,13 +973,8 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgijské Lar
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Íránský Riál (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Jednotka vzdálenosti
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Výběr jednotek vzdálenosti
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperiální (míle)
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrické (kilometry)
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI (metry)
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Silniční vozidla jezdí

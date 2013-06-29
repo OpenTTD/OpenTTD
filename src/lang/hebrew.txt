@@ -890,13 +890,8 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :(ZAR) ראנד 
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :אחר...
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}יחידות מידה
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}בחירת יחידות מדידה
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :אימפריאל
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :מטרית
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :השיטה הבינלאומית
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}רכבי כביש

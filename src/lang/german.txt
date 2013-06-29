@@ -893,13 +893,8 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgischer Lar
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranischer Rial (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Maßeinheiten
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Auswahl der Maßeinheiten
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Britisch
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :metrisch
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI-Basiseinheiten
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Fahrzeuge

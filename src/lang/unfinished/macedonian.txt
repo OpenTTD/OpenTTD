@@ -773,9 +773,6 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Опци
 
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Империјален
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Метрички
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 

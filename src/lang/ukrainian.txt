@@ -1003,13 +1003,8 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Південн�
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Власна...
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Система одиниць виміру
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Виберіть систему одиниць виміру
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Імперська
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Метрична
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :Міжнародна
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Сторона руху транспорту

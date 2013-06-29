@@ -856,12 +856,8 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :தென் �
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :புதிதாக...
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}அளவிடும் பிரிவுகள்
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}அளவிடும் பிரிவு தேர்ந்தெடுத்தல்
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :மெட்ரிக்
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}சாலை வாகனங்கள்

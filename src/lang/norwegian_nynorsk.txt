@@ -878,13 +878,8 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Sør-Afrikanske
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Eigendefinert...
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Einingar for mål
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Vel einingar for mål
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperiell
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrisk
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Køyreretning

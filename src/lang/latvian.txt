@@ -882,13 +882,8 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijas lari (
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Irānas riāli (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mērvienības
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Mērvienību izvēle
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Impērijas (Britu)
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metriskās
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :Starptautiskās (SI)
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Autotransporta līdzekļi

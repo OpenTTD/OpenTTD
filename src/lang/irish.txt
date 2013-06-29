@@ -865,13 +865,8 @@ STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni na hEast
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Saincheaptha...
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Aonaid tomhais
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Aonaid tomhais a roghnú
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Impiriúil
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Méadrach
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Feithiclí Bóithre

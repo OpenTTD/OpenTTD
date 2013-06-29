@@ -877,13 +877,8 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Suid Afrikaanse
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Pasmaak...
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Meet eenhede
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Meet eenhede keuse
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperiaal
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metriek
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Pad voertuie

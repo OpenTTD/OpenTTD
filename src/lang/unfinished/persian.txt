@@ -889,13 +889,8 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :لیره گرج
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :ریال ایران (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}واحد های اندازه گیری
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}انتخاب واحدهای اندازه گیری
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :شاهنشاهی
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :متری
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK} خودروی جاده ای

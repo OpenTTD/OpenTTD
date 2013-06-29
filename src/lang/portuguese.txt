@@ -878,13 +878,8 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Sul Africa
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizado...
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Unidades de medida
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Selecção de unidades de medida
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Anglo-Saxónico
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Métrico
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :Sistema Internacional
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Veículos rodoviários

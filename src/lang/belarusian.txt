@@ -1192,13 +1192,8 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузінс�
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Іранскі рыал (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Адзінкі вымярэньня
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Выбар сістэмы адзінак вымярэньня
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Брытанская
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Мэтрычная
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :СІ
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Дарожны рух

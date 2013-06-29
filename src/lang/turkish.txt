@@ -892,13 +892,8 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gürcistan Lari
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :İran Riyali (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Ölçü birimleri
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Ölçü birimi seçimi
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :İngiliz
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrik
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Karayolu taşıtları

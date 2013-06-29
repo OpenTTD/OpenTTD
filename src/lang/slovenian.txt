@@ -1029,13 +1029,8 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Južnoafriški 
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Po meri...
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Merske enote
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Izbor merskih enot
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Colski
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrični
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cestna vozila

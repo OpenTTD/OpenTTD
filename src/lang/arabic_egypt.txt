@@ -867,13 +867,8 @@ STR_GAME_OPTIONS_CURRENCY_EEK                                   :كرونا اس
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :مخصص ...
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}وحدات القياس
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}اختيار وحدات القياس
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :امبريل
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :متري
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :النظام الدولي للوحدات ( م-كجم-ث)
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}العربات البرية
