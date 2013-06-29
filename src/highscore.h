@@ -17,9 +17,14 @@
 #include "settings_type.h"
 
 struct HighScore {
-	char company[100];
+	/**
+	 * The name of the company and president.
+	 * The + 5 is for the comma and space or possibly other characters
+	 * that join the two names in this single string and the '\0'.
+	 */
+	char company[(MAX_LENGTH_COMPANY_NAME_CHARS + MAX_LENGTH_PRESIDENT_NAME_CHARS + 5) * MAX_CHAR_LENGTH];
 	StringID title; ///< NOSAVE, has troubles with changing string-numbers.
-	uint16 score;   ///< do NOT change type, will break hs.dat
+	uint16 score;   ///< The score for this high score. Do NOT change type, will break hs.dat
 };
 
 extern HighScore _highscore_table[SP_HIGHSCORE_END][5];
