@@ -673,49 +673,59 @@ struct UnitConversion {
 	}
 };
 
+/** Information about a specific unit system. */
 struct Units {
-	UnitConversion c_velocity; ///< Conversion for velocity
-	StringID velocity;         ///< String for velocity
-	UnitConversion c_power;    ///< Conversion for power
-	StringID power;            ///< String for power
-	UnitConversion c_weight;   ///< Conversion for weight
-	StringID s_weight;         ///< Short string for weight
-	StringID l_weight;         ///< Long string for weight
-	UnitConversion c_volume;   ///< Conversion for volume
-	StringID s_volume;         ///< Short string for volume
-	StringID l_volume;         ///< Long string for volume
-	UnitConversion c_force;    ///< Conversion for force
-	StringID force;            ///< String for force
-	UnitConversion c_height;   ///< Conversion for height
-	StringID height;           ///< String for height
+	UnitConversion c; ///< Conversion
+	StringID s;       ///< String for the unit
 };
 
-/* Unit conversions */
-static const Units _units[] = {
-	{ // Imperial (Original, mph, hp, metric ton, litre, kN, ft)
-		{   1,  0}, STR_UNITS_VELOCITY_IMPERIAL,
-		{   1,  0}, STR_UNITS_POWER_IMPERIAL,
-		{   1,  0}, STR_UNITS_WEIGHT_SHORT_METRIC, STR_UNITS_WEIGHT_LONG_METRIC,
-		{1000,  0}, STR_UNITS_VOLUME_SHORT_METRIC, STR_UNITS_VOLUME_LONG_METRIC,
-		{   1,  0}, STR_UNITS_FORCE_SI,
-		{   3,  0}, STR_UNITS_HEIGHT_IMPERIAL, // "Wrong" conversion factor for more nicer GUI values
-	},
-	{ // Metric (km/h, hp, metric ton, litre, kN, metre)
-		{ 103,  6}, STR_UNITS_VELOCITY_METRIC,
-		{4153, 12}, STR_UNITS_POWER_METRIC,
-		{   1,  0}, STR_UNITS_WEIGHT_SHORT_METRIC, STR_UNITS_WEIGHT_LONG_METRIC,
-		{1000,  0}, STR_UNITS_VOLUME_SHORT_METRIC, STR_UNITS_VOLUME_LONG_METRIC,
-		{   1,  0}, STR_UNITS_FORCE_SI,
-		{   1,  0}, STR_UNITS_HEIGHT_SI,
-	},
-	{ // SI (m/s, kilowatt, kilogram, cubic metre, kilonewton, metre)
-		{1831, 12}, STR_UNITS_VELOCITY_SI,
-		{6109, 13}, STR_UNITS_POWER_SI,
-		{1000,  0}, STR_UNITS_WEIGHT_SHORT_SI, STR_UNITS_WEIGHT_LONG_SI,
-		{   1,  0}, STR_UNITS_VOLUME_SHORT_SI, STR_UNITS_VOLUME_LONG_SI,
-		{   1,  0}, STR_UNITS_FORCE_SI,
-		{   1,  0}, STR_UNITS_HEIGHT_SI,
-	},
+/** Information about a specific unit system with a long variant. */
+struct UnitsLong {
+	UnitConversion c; ///< Conversion
+	StringID s;       ///< String for the short variant of the unit
+	StringID l;       ///< String for the long variant of the unit
+};
+
+/** Unit conversions for velocity. */
+static const Units _units_velocity[] = {
+	{ {   1,  0}, STR_UNITS_VELOCITY_IMPERIAL },
+	{ { 103,  6}, STR_UNITS_VELOCITY_METRIC   },
+	{ {1831, 12}, STR_UNITS_VELOCITY_SI       },
+};
+
+/** Unit conversions for velocity. */
+static const Units _units_power[] = {
+	{ {   1,  0}, STR_UNITS_POWER_IMPERIAL },
+	{ {4153, 12}, STR_UNITS_POWER_METRIC   },
+	{ {6109, 13}, STR_UNITS_POWER_SI       },
+};
+
+/** Unit conversions for weight. */
+static const UnitsLong _units_weight[] = {
+	{ {4515, 12}, STR_UNITS_WEIGHT_SHORT_IMPERIAL, STR_UNITS_WEIGHT_LONG_IMPERIAL },
+	{ {   1,  0}, STR_UNITS_WEIGHT_SHORT_METRIC,   STR_UNITS_WEIGHT_LONG_METRIC   },
+	{ {1000,  0}, STR_UNITS_WEIGHT_SHORT_SI,       STR_UNITS_WEIGHT_LONG_SI       },
+};
+
+/** Unit conversions for volume. */
+static const UnitsLong _units_volume[] = {
+	{ {4227,  4}, STR_UNITS_VOLUME_SHORT_IMPERIAL, STR_UNITS_VOLUME_LONG_IMPERIAL },
+	{ {1000,  0}, STR_UNITS_VOLUME_SHORT_METRIC,   STR_UNITS_VOLUME_LONG_METRIC   },
+	{ {   1,  0}, STR_UNITS_VOLUME_SHORT_SI,       STR_UNITS_VOLUME_LONG_SI       },
+};
+
+/** Unit conversions for force. */
+static const Units _units_force[] = {
+	{ {3597,  4}, STR_UNITS_FORCE_IMPERIAL },
+	{ {3263,  5}, STR_UNITS_FORCE_METRIC   },
+	{ {   1,  0}, STR_UNITS_FORCE_SI       },
+};
+
+/** Unit conversions for height. */
+static const Units _units_height[] = {
+	{ {   3,  0}, STR_UNITS_HEIGHT_IMPERIAL }, // "Wrong" conversion factor for more nicer GUI values
+	{ {   1,  0}, STR_UNITS_HEIGHT_METRIC   },
+	{ {   1,  0}, STR_UNITS_HEIGHT_SI       },
 };
 
 /**
@@ -728,7 +738,7 @@ uint ConvertSpeedToDisplaySpeed(uint speed)
 	/* For historical reasons we don't want to mess with the
 	 * conversion for speed. So, don't round it and keep the
 	 * original conversion factors instead of the real ones. */
-	return _units[_settings_game.locale.units].c_velocity.ToDisplay(speed, false);
+	return _units_velocity[_settings_game.locale.units_velocity].c.ToDisplay(speed, false);
 }
 
 /**
@@ -738,7 +748,7 @@ uint ConvertSpeedToDisplaySpeed(uint speed)
  */
 uint ConvertDisplaySpeedToSpeed(uint speed)
 {
-	return _units[_settings_game.locale.units].c_velocity.FromDisplay(speed);
+	return _units_velocity[_settings_game.locale.units_velocity].c.FromDisplay(speed);
 }
 
 /**
@@ -748,7 +758,7 @@ uint ConvertDisplaySpeedToSpeed(uint speed)
  */
 uint ConvertKmhishSpeedToDisplaySpeed(uint speed)
 {
-	return _units[_settings_game.locale.units].c_velocity.ToDisplay(speed * 10, false) / 16;
+	return _units_velocity[_settings_game.locale.units_velocity].c.ToDisplay(speed * 10, false) / 16;
 }
 
 /**
@@ -758,7 +768,7 @@ uint ConvertKmhishSpeedToDisplaySpeed(uint speed)
  */
 uint ConvertDisplaySpeedToKmhishSpeed(uint speed)
 {
-	return _units[_settings_game.locale.units].c_velocity.FromDisplay(speed * 16, true, 10);
+	return _units_velocity[_settings_game.locale.units_velocity].c.FromDisplay(speed * 16, true, 10);
 }
 /**
  * Parse most format codes within a string and write the result to a buffer.
@@ -1092,11 +1102,11 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				int64 amount = 0;
 				switch (cargo_str) {
 					case STR_TONS:
-						amount = _units[_settings_game.locale.units].c_weight.ToDisplay(args->GetInt64());
+						amount = _units_weight[_settings_game.locale.units_weight].c.ToDisplay(args->GetInt64());
 						break;
 
 					case STR_LITERS:
-						amount = _units[_settings_game.locale.units].c_volume.ToDisplay(args->GetInt64());
+						amount = _units_volume[_settings_game.locale.units_volume].c.ToDisplay(args->GetInt64());
 						break;
 
 					default: {
@@ -1119,18 +1129,18 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				StringID cargo_str = CargoSpec::Get(cargo)->units_volume;
 				switch (cargo_str) {
 					case STR_TONS: {
-						assert(_settings_game.locale.units < lengthof(_units));
-						int64 args_array[] = {_units[_settings_game.locale.units].c_weight.ToDisplay(args->GetInt64())};
+						assert(_settings_game.locale.units_weight < lengthof(_units_weight));
+						int64 args_array[] = {_units_weight[_settings_game.locale.units_weight].c.ToDisplay(args->GetInt64())};
 						StringParameters tmp_params(args_array);
-						buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_weight), &tmp_params, last);
+						buff = FormatString(buff, GetStringPtr(_units_weight[_settings_game.locale.units_weight].l), &tmp_params, last);
 						break;
 					}
 
 					case STR_LITERS: {
-						assert(_settings_game.locale.units < lengthof(_units));
-						int64 args_array[] = {_units[_settings_game.locale.units].c_volume.ToDisplay(args->GetInt64())};
+						assert(_settings_game.locale.units_volume < lengthof(_units_volume));
+						int64 args_array[] = {_units_volume[_settings_game.locale.units_volume].c.ToDisplay(args->GetInt64())};
 						StringParameters tmp_params(args_array);
-						buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_volume), &tmp_params, last);
+						buff = FormatString(buff, GetStringPtr(_units_volume[_settings_game.locale.units_volume].l), &tmp_params, last);
 						break;
 					}
 
@@ -1213,65 +1223,66 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				break;
 
 			case SCC_FORCE: { // {FORCE}
-				assert(_settings_game.locale.units < lengthof(_units));
-				int64 args_array[1] = {_units[_settings_game.locale.units].c_force.ToDisplay(args->GetInt64())};
+				assert(_settings_game.locale.units_force < lengthof(_units_force));
+				int64 args_array[1] = {_units_force[_settings_game.locale.units_force].c.ToDisplay(args->GetInt64())};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].force), &tmp_params, last);
+				buff = FormatString(buff, GetStringPtr(_units_force[_settings_game.locale.units_force].s), &tmp_params, last);
 				break;
 			}
 
 			case SCC_HEIGHT: { // {HEIGHT}
-				int64 args_array[] = {_units[_settings_game.locale.units].c_height.ToDisplay(args->GetInt64())};
+				assert(_settings_game.locale.units_height < lengthof(_units_height));
+				int64 args_array[] = {_units_height[_settings_game.locale.units_height].c.ToDisplay(args->GetInt64())};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].height), &tmp_params, last);
+				buff = FormatString(buff, GetStringPtr(_units_height[_settings_game.locale.units_height].s), &tmp_params, last);
 				break;
 			}
 
 			case SCC_POWER: { // {POWER}
-				assert(_settings_game.locale.units < lengthof(_units));
-				int64 args_array[1] = {_units[_settings_game.locale.units].c_power.ToDisplay(args->GetInt64())};
+				assert(_settings_game.locale.units_power < lengthof(_units_power));
+				int64 args_array[1] = {_units_power[_settings_game.locale.units_power].c.ToDisplay(args->GetInt64())};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].power), &tmp_params, last);
+				buff = FormatString(buff, GetStringPtr(_units_power[_settings_game.locale.units_power].s), &tmp_params, last);
 				break;
 			}
 
 			case SCC_VELOCITY: { // {VELOCITY}
-				assert(_settings_game.locale.units < lengthof(_units));
+				assert(_settings_game.locale.units_velocity < lengthof(_units_velocity));
 				int64 args_array[] = {ConvertKmhishSpeedToDisplaySpeed(args->GetInt64(SCC_VELOCITY))};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].velocity), &tmp_params, last);
+				buff = FormatString(buff, GetStringPtr(_units_velocity[_settings_game.locale.units_velocity].s), &tmp_params, last);
 				break;
 			}
 
 			case SCC_VOLUME_SHORT: { // {VOLUME_SHORT}
-				assert(_settings_game.locale.units < lengthof(_units));
-				int64 args_array[1] = {_units[_settings_game.locale.units].c_volume.ToDisplay(args->GetInt64())};
+				assert(_settings_game.locale.units_volume < lengthof(_units_volume));
+				int64 args_array[1] = {_units_volume[_settings_game.locale.units_volume].c.ToDisplay(args->GetInt64())};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].s_volume), &tmp_params, last);
+				buff = FormatString(buff, GetStringPtr(_units_volume[_settings_game.locale.units_volume].s), &tmp_params, last);
 				break;
 			}
 
 			case SCC_VOLUME_LONG: { // {VOLUME_LONG}
-				assert(_settings_game.locale.units < lengthof(_units));
-				int64 args_array[1] = {_units[_settings_game.locale.units].c_volume.ToDisplay(args->GetInt64(SCC_VOLUME_LONG))};
+				assert(_settings_game.locale.units_volume < lengthof(_units_volume));
+				int64 args_array[1] = {_units_volume[_settings_game.locale.units_volume].c.ToDisplay(args->GetInt64(SCC_VOLUME_LONG))};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_volume), &tmp_params, last);
+				buff = FormatString(buff, GetStringPtr(_units_volume[_settings_game.locale.units_volume].l), &tmp_params, last);
 				break;
 			}
 
 			case SCC_WEIGHT_SHORT: { // {WEIGHT_SHORT}
-				assert(_settings_game.locale.units < lengthof(_units));
-				int64 args_array[1] = {_units[_settings_game.locale.units].c_weight.ToDisplay(args->GetInt64())};
+				assert(_settings_game.locale.units_weight < lengthof(_units_weight));
+				int64 args_array[1] = {_units_weight[_settings_game.locale.units_weight].c.ToDisplay(args->GetInt64())};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].s_weight), &tmp_params, last);
+				buff = FormatString(buff, GetStringPtr(_units_weight[_settings_game.locale.units_weight].s), &tmp_params, last);
 				break;
 			}
 
 			case SCC_WEIGHT_LONG: { // {WEIGHT_LONG}
-				assert(_settings_game.locale.units < lengthof(_units));
-				int64 args_array[1] = {_units[_settings_game.locale.units].c_weight.ToDisplay(args->GetInt64(SCC_WEIGHT_LONG))};
+				assert(_settings_game.locale.units_weight < lengthof(_units_weight));
+				int64 args_array[1] = {_units_weight[_settings_game.locale.units_weight].c.ToDisplay(args->GetInt64(SCC_WEIGHT_LONG))};
 				StringParameters tmp_params(args_array);
-				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].l_weight), &tmp_params, last);
+				buff = FormatString(buff, GetStringPtr(_units_weight[_settings_game.locale.units_weight].l), &tmp_params, last);
 				break;
 			}
 

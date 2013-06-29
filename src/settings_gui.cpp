@@ -39,13 +39,6 @@
 #include "querystring_gui.h"
 
 
-static const StringID _units_dropdown[] = {
-	STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL,
-	STR_GAME_OPTIONS_MEASURING_UNITS_METRIC,
-	STR_GAME_OPTIONS_MEASURING_UNITS_SI,
-	INVALID_STRING_ID
-};
-
 static const StringID _driveside_dropdown[] = {
 	STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT,
 	STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT,
@@ -204,16 +197,6 @@ struct GameOptionsWindow : Window {
 				break;
 			}
 
-			case WID_GO_DISTANCE_DROPDOWN: { // Setup distance unit dropdown
-				list = new DropDownList();
-				*selected_index = this->opt->locale.units;
-				const StringID *items = _units_dropdown;
-				for (uint i = 0; *items != INVALID_STRING_ID; items++, i++) {
-					list->push_back(new DropDownListStringItem(*items, i, false));
-				}
-				break;
-			}
-
 			case WID_GO_ROADSIDE_DROPDOWN: { // Setup road-side dropdown
 				list = new DropDownList();
 				*selected_index = this->opt->vehicle.road_side;
@@ -321,7 +304,6 @@ struct GameOptionsWindow : Window {
 	{
 		switch (widget) {
 			case WID_GO_CURRENCY_DROPDOWN:   SetDParam(0, _currency_specs[this->opt->locale.currency].name); break;
-			case WID_GO_DISTANCE_DROPDOWN:   SetDParam(0, STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL + this->opt->locale.units); break;
 			case WID_GO_ROADSIDE_DROPDOWN:   SetDParam(0, STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT + this->opt->vehicle.road_side); break;
 			case WID_GO_TOWNNAME_DROPDOWN:   SetDParam(0, TownName(this->opt->game_creation.town_name)); break;
 			case WID_GO_AUTOSAVE_DROPDOWN:   SetDParam(0, _autosave_dropdown[_settings_client.gui.autosave]); break;
@@ -495,11 +477,6 @@ struct GameOptionsWindow : Window {
 				ReInitAllWindows();
 				break;
 
-			case WID_GO_DISTANCE_DROPDOWN: // Measuring units
-				this->opt->locale.units = index;
-				MarkWholeScreenDirty();
-				break;
-
 			case WID_GO_ROADSIDE_DROPDOWN: // Road side
 				if (this->opt->vehicle.road_side != index) { // only change if setting changed
 					uint i;
@@ -605,9 +582,6 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 			EndContainer(),
 
 			NWidget(NWID_VERTICAL), SetPIP(0, 6, 0),
-				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_MEASURING_UNITS_FRAME, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_DISTANCE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP), SetFill(1, 0),
-				EndContainer(),
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_TOWN_NAMES_FRAME, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_TOWNNAME_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
@@ -1413,6 +1387,17 @@ uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int bas
 }
 
 
+static SettingEntry _settings_ui_localisation[] = {
+	SettingEntry("locale.units_velocity"),
+	SettingEntry("locale.units_power"),
+	SettingEntry("locale.units_weight"),
+	SettingEntry("locale.units_volume"),
+	SettingEntry("locale.units_force"),
+	SettingEntry("locale.units_height"),
+};
+/** Localisation options sub-page */
+static SettingsPage _settings_ui_localisation_page = {_settings_ui_localisation, lengthof(_settings_ui_localisation)};
+
 static SettingEntry _settings_ui_display[] = {
 	SettingEntry("gui.date_format_in_default_names"),
 	SettingEntry("gui.population_in_label"),
@@ -1487,6 +1472,7 @@ static SettingEntry _settings_ui_news[] = {
 static SettingsPage _settings_ui_news_page = {_settings_ui_news, lengthof(_settings_ui_news)};
 
 static SettingEntry _settings_ui[] = {
+	SettingEntry(&_settings_ui_localisation_page, STR_CONFIG_SETTING_LOCALISATION),
 	SettingEntry(&_settings_ui_display_page, STR_CONFIG_SETTING_DISPLAY_OPTIONS),
 	SettingEntry(&_settings_ui_interaction_page, STR_CONFIG_SETTING_INTERACTION),
 	SettingEntry(&_settings_ui_sound_page, STR_CONFIG_SETTING_SOUND),

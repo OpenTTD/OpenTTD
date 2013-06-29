@@ -194,7 +194,12 @@ struct MusicSettings {
 /** Settings related to currency/unit systems. */
 struct LocaleSettings {
 	byte   currency;                         ///< currency we currently use
-	byte   units;                            ///< unit system we show everything
+	byte   units_velocity;                   ///< unit system for velocity
+	byte   units_power;                      ///< unit system for power
+	byte   units_weight;                     ///< unit system for weight
+	byte   units_volume;                     ///< unit system for volume
+	byte   units_force;                      ///< unit system for force
+	byte   units_height;                     ///< unit system for height
 	char  *digit_group_separator;            ///< thousand separator for non-currencies
 	char  *digit_group_separator_currency;   ///< thousand separator for currencies
 	char  *digit_decimal_separator;          ///< decimal separator

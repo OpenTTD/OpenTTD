@@ -249,8 +249,9 @@
  *  181   25012
  *  182   25296
  *  183   25363
+ *  184   xxxxx
  */
-extern const uint16 SAVEGAME_VERSION = 183; ///< Current savegame version of OpenTTD.
+extern const uint16 SAVEGAME_VERSION = 184; ///< Current savegame version of OpenTTD.
 
 SavegameType _savegame_type; ///< type of savegame we are loading
 

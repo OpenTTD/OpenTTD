@@ -2803,6 +2803,17 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(184)) {
+		/* The global units configuration is split up in multiple configurations. */
+		extern uint8 _old_units;
+		_settings_game.locale.units_velocity = Clamp(_old_units, 0, 2);
+		_settings_game.locale.units_power    = Clamp(_old_units, 0, 2);
+		_settings_game.locale.units_weight   = Clamp(_old_units, 1, 2);
+		_settings_game.locale.units_volume   = Clamp(_old_units, 1, 2);
+		_settings_game.locale.units_force    = 2;
+		_settings_game.locale.units_height   = Clamp(_old_units, 0, 2);
+	}
+
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();
