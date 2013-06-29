@@ -1710,6 +1710,20 @@ struct CompanyInfrastructureWindow : Window
 		}
 	}
 
+	/**
+	 * Helper for drawing the counts line.
+	 * @param r            The bounds to draw in.
+	 * @param y            The y position to draw at.
+	 * @param count        The count to show on this line.
+	 * @param monthly_cost The monthly costs.
+	 */
+	void DrawCountLine(const Rect &r, int &y, int count, Money monthly_cost) const
+	{
+		SetDParam(0, count);
+		SetDParam(1, monthly_cost * 12); // Convert to per year
+		DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA, TC_FROMSTRING, SA_RIGHT);
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		const Company *c = Company::Get((CompanyID)this->window_number);
@@ -1743,15 +1757,11 @@ struct CompanyInfrastructureWindow : Window
 				uint32 rail_total = c->infrastructure.GetRailTotal();
 				for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
 					if (HasBit(this->railtypes, rt)) {
-						SetDParam(0, c->infrastructure.rail[rt]);
-						SetDParam(1, RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total) * 12); // Convert to per year
-						DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA, TC_FROMSTRING, SA_RIGHT);
+						this->DrawCountLine(r, y, c->infrastructure.rail[rt], RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total));
 					}
 				}
 				if (this->railtypes != RAILTYPES_NONE) {
-					SetDParam(0, c->infrastructure.signal);
-					SetDParam(1, SignalMaintenanceCost(c->infrastructure.signal) * 12); // Convert to per year
-					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA, TC_FROMSTRING, SA_RIGHT);
+					this->DrawCountLine(r, y, c->infrastructure.signal, SignalMaintenanceCost(c->infrastructure.signal));
 				}
 				break;
 			}
@@ -1771,14 +1781,10 @@ struct CompanyInfrastructureWindow : Window
 
 			case WID_CI_ROAD_COUNT:
 				if (HasBit(this->roadtypes, ROADTYPE_ROAD)) {
-					SetDParam(0, c->infrastructure.road[ROADTYPE_ROAD]);
-					SetDParam(1, RoadMaintenanceCost(ROADTYPE_ROAD, c->infrastructure.road[ROADTYPE_ROAD]) * 12); // Convert to per year
-					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA, TC_FROMSTRING, SA_RIGHT);
+					this->DrawCountLine(r, y, c->infrastructure.road[ROADTYPE_ROAD], RoadMaintenanceCost(ROADTYPE_ROAD, c->infrastructure.road[ROADTYPE_ROAD]));
 				}
 				if (HasBit(this->roadtypes, ROADTYPE_TRAM)) {
-					SetDParam(0, c->infrastructure.road[ROADTYPE_TRAM]);
-					SetDParam(1, RoadMaintenanceCost(ROADTYPE_TRAM, c->infrastructure.road[ROADTYPE_TRAM]) * 12); // Convert to per year
-					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA, TC_FROMSTRING, SA_RIGHT);
+					this->DrawCountLine(r, y, c->infrastructure.road[ROADTYPE_TRAM], RoadMaintenanceCost(ROADTYPE_TRAM, c->infrastructure.road[ROADTYPE_TRAM]));
 				}
 				break;
 
@@ -1788,9 +1794,7 @@ struct CompanyInfrastructureWindow : Window
 				break;
 
 			case WID_CI_WATER_COUNT:
-				SetDParam(0, c->infrastructure.water);
-				SetDParam(1, CanalMaintenanceCost(c->infrastructure.water) * 12); // Convert to per year
-				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA, TC_FROMSTRING, SA_RIGHT);
+				this->DrawCountLine(r, y, c->infrastructure.water, CanalMaintenanceCost(c->infrastructure.water));
 				break;
 
 			case WID_CI_TOTAL:
@@ -1798,7 +1802,7 @@ struct CompanyInfrastructureWindow : Window
 					GfxFillRect(r.left, y, r.left + this->total_width, y, PC_WHITE);
 					y += EXP_LINESPACE;
 					SetDParam(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
-					DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL, TC_FROMSTRING, SA_RIGHT);
+					DrawString(r.left, r.left + this->total_width, y, STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL, TC_FROMSTRING, SA_RIGHT);
 				}
 				break;
 
@@ -1809,12 +1813,8 @@ struct CompanyInfrastructureWindow : Window
 				break;
 
 			case WID_CI_STATION_COUNT:
-				SetDParam(0, c->infrastructure.station);
-				SetDParam(1, StationMaintenanceCost(c->infrastructure.station) * 12); // Convert to per year
-				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA, TC_FROMSTRING, SA_RIGHT);
-				SetDParam(0, c->infrastructure.airport);
-				SetDParam(1, AirportMaintenanceCost(c->index) * 12); // Convert to per year
-				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA, TC_FROMSTRING, SA_RIGHT);
+				this->DrawCountLine(r, y, c->infrastructure.station, StationMaintenanceCost(c->infrastructure.station));
+				this->DrawCountLine(r, y, c->infrastructure.airport, AirportMaintenanceCost(c->index));
 				break;
 		}
 	}
