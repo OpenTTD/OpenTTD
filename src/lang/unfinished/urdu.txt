@@ -2290,7 +2290,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}نہری
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD} اسٹیشن:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}اسٹیشن کی ٹائل
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}ہوائی اڈے
-STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}سالانہ ({0:COMMA})
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}سالانہ
 
 # Industry directory

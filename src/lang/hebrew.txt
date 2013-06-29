@@ -3078,7 +3078,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}תעלו
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}תחנות:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}משבצות תחנה
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}נמלי תעופה
-STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/שנה ({0:COMMA})
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/שנה
 
 # Industry directory

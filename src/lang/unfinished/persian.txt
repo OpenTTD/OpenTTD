@@ -2814,7 +2814,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}کانا
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}ایستگاه ها:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}قطعه های ایستگاه
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}فرودگاه ها
-STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/سال ({0:COMMA})
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/سال
 
 # Industry directory
