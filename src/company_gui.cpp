@@ -1745,13 +1745,13 @@ struct CompanyInfrastructureWindow : Window
 					if (HasBit(this->railtypes, rt)) {
 						SetDParam(0, c->infrastructure.rail[rt]);
 						SetDParam(1, RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total) * 12); // Convert to per year
-						DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
+						DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA, TC_FROMSTRING, SA_RIGHT);
 					}
 				}
 				if (this->railtypes != RAILTYPES_NONE) {
 					SetDParam(0, c->infrastructure.signal);
 					SetDParam(1, SignalMaintenanceCost(c->infrastructure.signal) * 12); // Convert to per year
-					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
+					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA, TC_FROMSTRING, SA_RIGHT);
 				}
 				break;
 			}
@@ -1773,12 +1773,12 @@ struct CompanyInfrastructureWindow : Window
 				if (HasBit(this->roadtypes, ROADTYPE_ROAD)) {
 					SetDParam(0, c->infrastructure.road[ROADTYPE_ROAD]);
 					SetDParam(1, RoadMaintenanceCost(ROADTYPE_ROAD, c->infrastructure.road[ROADTYPE_ROAD]) * 12); // Convert to per year
-					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
+					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA, TC_FROMSTRING, SA_RIGHT);
 				}
 				if (HasBit(this->roadtypes, ROADTYPE_TRAM)) {
 					SetDParam(0, c->infrastructure.road[ROADTYPE_TRAM]);
 					SetDParam(1, RoadMaintenanceCost(ROADTYPE_TRAM, c->infrastructure.road[ROADTYPE_TRAM]) * 12); // Convert to per year
-					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
+					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA, TC_FROMSTRING, SA_RIGHT);
 				}
 				break;
 
@@ -1790,7 +1790,7 @@ struct CompanyInfrastructureWindow : Window
 			case WID_CI_WATER_COUNT:
 				SetDParam(0, c->infrastructure.water);
 				SetDParam(1, CanalMaintenanceCost(c->infrastructure.water) * 12); // Convert to per year
-				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
+				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA, TC_FROMSTRING, SA_RIGHT);
 				break;
 
 			case WID_CI_TOTAL:
@@ -1798,7 +1798,7 @@ struct CompanyInfrastructureWindow : Window
 					GfxFillRect(r.left, y, r.left + this->total_width, y, PC_WHITE);
 					y += EXP_LINESPACE;
 					SetDParam(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
-					DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL);
+					DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL, TC_FROMSTRING, SA_RIGHT);
 				}
 				break;
 
@@ -1811,10 +1811,10 @@ struct CompanyInfrastructureWindow : Window
 			case WID_CI_STATION_COUNT:
 				SetDParam(0, c->infrastructure.station);
 				SetDParam(1, StationMaintenanceCost(c->infrastructure.station) * 12); // Convert to per year
-				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
+				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA, TC_FROMSTRING, SA_RIGHT);
 				SetDParam(0, c->infrastructure.airport);
 				SetDParam(1, AirportMaintenanceCost(c->index) * 12); // Convert to per year
-				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
+				DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA, TC_FROMSTRING, SA_RIGHT);
 				break;
 		}
 	}
