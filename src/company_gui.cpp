@@ -1692,14 +1692,18 @@ struct CompanyInfrastructureWindow : Window
 				max_cost = max(max_cost, AirportMaintenanceCost(c->index));
 
 				SetDParamMaxValue(0, max_val);
-				SetDParamMaxValue(1, max_cost * 12); // Convert to per year
-				size->width = max(size->width, GetStringBoundingBox(_settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA).width + 20); // Reserve some wiggle room.
+				uint count_width = GetStringBoundingBox(STR_WHITE_COMMA).width + 20; // Reserve some wiggle room
 
 				if (_settings_game.economy.infrastructure_maintenance) {
 					SetDParamMaxValue(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
 					this->total_width = GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL).width + 20;
 					size->width = max(size->width, this->total_width);
+
+					SetDParamMaxValue(0, max_cost * 12); // Convert to per year
+					count_width += max(this->total_width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL).width);
 				}
+
+				size->width = max(size->width, count_width);
 
 				/* Set height of the total line. */
 				if (widget == WID_CI_TOTAL) {
@@ -1720,8 +1724,13 @@ struct CompanyInfrastructureWindow : Window
 	void DrawCountLine(const Rect &r, int &y, int count, Money monthly_cost) const
 	{
 		SetDParam(0, count);
-		SetDParam(1, monthly_cost * 12); // Convert to per year
-		DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA, TC_FROMSTRING, SA_RIGHT);
+		DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, STR_WHITE_COMMA, TC_FROMSTRING, SA_RIGHT);
+
+		if (_settings_game.economy.infrastructure_maintenance) {
+			SetDParam(0, monthly_cost * 12); // Convert to per year
+			int left = _current_text_dir == TD_RTL ? r.right - this->total_width : r.left;
+			DrawString(left, left + this->total_width, y, STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL, TC_FROMSTRING, SA_RIGHT);
+		}
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -1799,10 +1808,11 @@ struct CompanyInfrastructureWindow : Window
 
 			case WID_CI_TOTAL:
 				if (_settings_game.economy.infrastructure_maintenance) {
-					GfxFillRect(r.left, y, r.left + this->total_width, y, PC_WHITE);
+					int left = _current_text_dir == TD_RTL ? r.right - this->total_width : r.left;
+					GfxFillRect(left, y, left + this->total_width, y, PC_WHITE);
 					y += EXP_LINESPACE;
 					SetDParam(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
-					DrawString(r.left, r.left + this->total_width, y, STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL, TC_FROMSTRING, SA_RIGHT);
+					DrawString(left, left + this->total_width, y, STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL, TC_FROMSTRING, SA_RIGHT);
 				}
 				break;
 
