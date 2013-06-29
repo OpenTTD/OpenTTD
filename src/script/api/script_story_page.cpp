@@ -92,7 +92,7 @@
 	EnforcePrecondition(false, type != ::SPET_GOAL || !(p->company == INVALID_COMPANY && Goal::Get(reference)->company != INVALID_COMPANY));
 
 	return ScriptObject::DoCommand(type == ::SPET_LOCATION ? reference : 0,
-			pe->page,
+			story_page_element_id,
 			type == ::SPET_GOAL ? reference : 0,
 			CMD_UPDATE_STORY_PAGE_ELEMENT,
 			type == ::SPET_TEXT || type == ::SPET_LOCATION ? text->GetEncodedText() : NULL,
