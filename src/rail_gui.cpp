@@ -1037,7 +1037,7 @@ public:
 				}
 				size->width = max(size->width, d.width + padding.width);
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
-				size->height = GB(this->GetWidget<NWidgetCore>(widget)->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
+				size->height = 5 * this->line_height;
 				resize->height = this->line_height;
 				break;
 			}

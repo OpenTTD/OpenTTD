@@ -215,7 +215,7 @@ struct NewGRFParametersWindow : public Window {
 
 				resize->width = 1;
 				resize->height = this->line_height;
-				size->height = GB(this->GetWidget<NWidgetCore>(widget)->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
+				size->height = 5 * this->line_height;
 				break;
 
 			case WID_NP_DESCRIPTION:
