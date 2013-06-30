@@ -1456,8 +1456,6 @@ public:
 
 		this->FinishInitNested(window_number);
 		if (this->vli.company != OWNER_NONE) this->owner = this->vli.company;
-
-		if (this->vli.vtype == VEH_TRAIN) ResizeWindow(this, 65, 0);
 	}
 
 	~VehicleListWindow()
@@ -1696,9 +1694,16 @@ public:
 	}
 };
 
-static WindowDesc _vehicle_list_desc(
+static WindowDesc _vehicle_list_other_desc(
 	WDP_AUTO, "list_vehicles", 260, 246,
 	WC_INVALID, WC_NONE,
+	0,
+	_nested_vehicle_list, lengthof(_nested_vehicle_list)
+);
+
+static WindowDesc _vehicle_list_train_desc(
+	WDP_AUTO, "list_vehicles_train", 325, 246,
+	WC_TRAINS_LIST, WC_NONE,
 	0,
 	_nested_vehicle_list, lengthof(_nested_vehicle_list)
 );
@@ -1707,8 +1712,13 @@ static void ShowVehicleListWindowLocal(CompanyID company, VehicleListType vlt, V
 {
 	if (!Company::IsValidID(company) && company != OWNER_NONE) return;
 
-	_vehicle_list_desc.cls = GetWindowClassForVehicleType(vehicle_type);
-	AllocateWindowDescFront<VehicleListWindow>(&_vehicle_list_desc, VehicleListIdentifier(vlt, vehicle_type, company, unique_number).Pack());
+	WindowNumber num = VehicleListIdentifier(vlt, vehicle_type, company, unique_number).Pack();
+	if (vehicle_type == VEH_TRAIN) {
+		AllocateWindowDescFront<VehicleListWindow>(&_vehicle_list_train_desc, num);
+	} else {
+		_vehicle_list_other_desc.cls = GetWindowClassForVehicleType(vehicle_type);
+		AllocateWindowDescFront<VehicleListWindow>(&_vehicle_list_other_desc, num);
+	}
 }
 
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type)
