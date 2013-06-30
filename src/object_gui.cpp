@@ -75,13 +75,11 @@ public:
 	BuildObjectWindow(WindowDesc *desc, Window *w) : PickerWindowBase(desc, w), info_height(1)
 	{
 		this->CreateNestedTree();
-
 		this->vscroll = this->GetScrollbar(WID_BO_SCROLLBAR);
-		this->vscroll->SetCapacity(5);
+		this->FinishInitNested(0);
+
 		this->vscroll->SetPosition(0);
 		this->vscroll->SetCount(ObjectClass::GetUIClassCount());
-
-		this->FinishInitNested(0);
 
 		if (this->CanRestoreSelectedObject()) {
 			this->SelectOtherObject(_selected_object_index);

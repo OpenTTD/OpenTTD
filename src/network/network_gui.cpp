@@ -1354,7 +1354,6 @@ struct NetworkLobbyWindow : public Window {
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_NL_SCROLLBAR);
 		this->FinishInitNested(WN_NETWORK_WINDOW_LOBBY);
-		this->OnResize();
 	}
 
 	CompanyID NetworkLobbyFindCompanyIndex(byte pos) const
