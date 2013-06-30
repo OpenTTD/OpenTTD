@@ -560,10 +560,9 @@ size_t Utf8TrimString(char *s, size_t maxlen)
 }
 
 #ifdef DEFINE_STRNDUP
-#include "core/math_func.hpp"
 char *strndup(const char *s, size_t len)
 {
-	len = min(strlen(s), len);
+	len = ttd_strnlen(s, len);
 	char *tmp = CallocT<char>(len + 1);
 	memcpy(tmp, s, len);
 	return tmp;

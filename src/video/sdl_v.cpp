@@ -393,6 +393,11 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 	_screen.dst_ptr = newscreen->pixels;
 	_sdl_screen = newscreen;
 
+	/* When in full screen, we will always have the mouse cursor
+	 * within the window, even though SDL does not give us the
+	 * appropriate event to know this. */
+	if (_fullscreen) _cursor.in_window = true;
+
 	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	blitter->PostResize();
 

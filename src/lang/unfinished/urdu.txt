@@ -646,7 +646,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :سرمایہ د
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :امیر و اثر پزیر
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :مُغل
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :صدی کا ٹائیکون
-STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} '{STRING}' کا درجہ حاصل کرتا ہے
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} جو {COMPANY} سے تعلق رکھتا ہے۔ '{STRING}' کا درجہ حاصل کرتا ہے

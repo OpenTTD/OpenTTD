@@ -775,7 +775,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Капітал�
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Магнат
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Магнат року
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Магнат сторіччя
-STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} досягла статусу '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}Гравець {PRESIDENT_NAME} з {COMPANY} досяг статусу '{STRING}'

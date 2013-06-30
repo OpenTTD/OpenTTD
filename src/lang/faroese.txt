@@ -650,7 +650,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Peningamaður
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Ídnaðarkongur
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Máttmikil ídnaðar kongur
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Aldarinnar Tycoon
-STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} røkkur '{STRING}' støði!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} frá {COMPANY} røkkur '{STRING}' støði!

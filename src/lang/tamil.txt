@@ -643,7 +643,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :முதலா
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :மேன்மையர்
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :மொகல்
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :நூற்றாண்டின் டைக்கூன்
-STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} '{STRING}' நிலையை அடைந்தது!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} {COMPANY} '{STRING}' நிலையை அடைந்தார்!

@@ -650,7 +650,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :นักลง
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :เจ้าสัว
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :ผู้มีอำนาจ
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :นักธุรกิจผู้ร่ำรวยและมีอิทธิพลมากแห่งศตวรรษ
-STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} ได้ก้าวไปสู่ขั้น '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} จาก {COMPANY} ได้ก้าวไปสู่ขั้น '{STRING}'!

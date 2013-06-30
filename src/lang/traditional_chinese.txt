@@ -650,7 +650,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :資本家
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :企業鉅子
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :商業龍頭
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :世紀大亨
-STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}，{COMPANY}
+STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}，{COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} 達成「{STRING}」的地位！
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} 的 {COMPANY} 達成「{STRING}」 的地位！

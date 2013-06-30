@@ -650,7 +650,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :سرمایه د
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :نجیب زاده
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :بزرگ و با نفوذ
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :سرمایه دار مهم قرن
-STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} به وضعیت'{STRING}' دست یافت!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} از {COMPANY} به وضعیت '{STRING}' دست یافت!

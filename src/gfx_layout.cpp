@@ -307,10 +307,11 @@ ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 	}
 
 	const FontCache *fc = iter->second->fc;
-	const WChar *next_run = this->buffer_begin + iter->first + 1;
+	const WChar *next_run = this->buffer_begin + iter->first;
 
 	for (;;) {
-		WChar c = *this->buffer++;
+		WChar c = *this->buffer;
+		last_char = this->buffer;
 
 		if (c == '\0') {
 			this->buffer = NULL;
@@ -322,13 +323,13 @@ ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 			iter++;
 			assert(iter != this->runs.End());
 
-			next_run = this->buffer_begin + iter->first + 1;
+			next_run = this->buffer_begin + iter->first;
 			begin = this->buffer;
+
+			last_space = NULL;
 		}
 
 		if (IsWhitespace(c)) last_space = this->buffer;
-
-		last_char = this->buffer;
 
 		if (IsPrintable(c) && !IsTextDirectionChar(c)) {
 			int char_width = GetCharacterWidth(fc->GetSize(), c);
@@ -350,16 +351,17 @@ ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 					 * Korean. For other languages terminating mid-word might
 					 * not be the best, but terminating the whole string instead
 					 * of continuing the word at the next line is worse. */
-					this->buffer--;
 					last_char = this->buffer;
 				} else {
 					/* A space is found; perfect place to terminate */
 					this->buffer = last_space;
-					last_char = last_space - 1;
+					last_char = last_space;
 				}
 				break;
 			}
 		}
+
+		this->buffer++;
 	}
 
 	if (l->Length() == 0 || last_char - begin != 0) {
