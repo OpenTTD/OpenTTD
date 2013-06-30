@@ -107,7 +107,7 @@ public:
 			this->FindWindowPlacementAndResize(this->width, this->height);
 		}
 
-		if (_selected_object_index != -1) matrix->SetClicked(_selected_object_index);
+		if (_selected_object_index != -1) matrix->SetClicked(ObjectClass::Get(_selected_object_class)->GetUIFromIndex(_selected_object_index));
 	}
 
 	virtual ~BuildObjectWindow()
