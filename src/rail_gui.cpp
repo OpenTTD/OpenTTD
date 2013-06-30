@@ -929,6 +929,10 @@ public:
 		newst_additions->SetDisplayedPlane(newstation ? 0 : SZSP_NONE);
 		newst_additions = this->GetWidget<NWidgetStacked>(WID_BRAS_SHOW_NEWST_RESIZE);
 		newst_additions->SetDisplayedPlane(newstation ? 0 : SZSP_NONE);
+		if (newstation) {
+			this->vscroll = this->GetScrollbar(WID_BRAS_NEWST_SCROLL);
+			this->vscroll2 = this->GetScrollbar(WID_BRAS_MATRIX_SCROLL);
+		}
 		this->FinishInitNested(TRANSPORT_RAIL);
 
 		this->LowerWidget(_railstation.orientation + WID_BRAS_PLATFORM_DIR_X);
@@ -957,12 +961,9 @@ public:
 				if (i == STAT_CLASS_WAYP) continue;
 				count++;
 			}
-			this->vscroll = this->GetScrollbar(WID_BRAS_NEWST_SCROLL);
 			this->vscroll->SetCount(count);
-			this->vscroll->SetCapacity(GB(this->GetWidget<NWidgetCore>(WID_BRAS_NEWST_LIST)->widget_data, MAT_ROW_START, MAT_ROW_BITS));
 			this->vscroll->SetPosition(Clamp(_railstation.station_class - 2, 0, max(this->vscroll->GetCount() - this->vscroll->GetCapacity(), 0)));
 
-			this->vscroll2 = this->GetScrollbar(WID_BRAS_MATRIX_SCROLL);
 			NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(WID_BRAS_MATRIX);
 			matrix->SetScrollbar(this->vscroll2);
 			matrix->SetCount(_railstation.station_count);
