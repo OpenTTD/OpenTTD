@@ -76,6 +76,7 @@ ScriptScanner::~ScriptScanner()
 	this->Reset();
 
 	free(this->main_script);
+	free(this->tar_file);
 	delete this->engine;
 }
 
