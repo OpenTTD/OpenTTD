@@ -324,6 +324,9 @@ ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 
 			next_run = this->buffer_begin + iter->first + 1;
 			begin = this->buffer;
+
+			last_char = begin;
+			last_space = NULL;
 		}
 
 		if (IsWhitespace(c)) last_space = this->buffer;
