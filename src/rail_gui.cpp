@@ -1149,7 +1149,6 @@ public:
 	{
 		if (this->vscroll != NULL) { // New stations available.
 			this->vscroll->SetCapacityFromWidget(this, WID_BRAS_NEWST_LIST);
-			this->GetWidget<NWidgetCore>(WID_BRAS_NEWST_LIST)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 		}
 	}
 
@@ -1357,7 +1356,7 @@ static const NWidgetPart _nested_station_builder_widgets[] = {
 				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_BRAS_SHOW_NEWST_ADDITIONS),
 					NWidget(NWID_HORIZONTAL), SetPIP(7, 0, 7), SetPadding(2, 0, 1, 0),
 						NWidget(WWT_MATRIX, COLOUR_GREY, WID_BRAS_NEWST_LIST), SetMinimalSize(122, 71), SetFill(1, 0),
-								SetMatrixDataTip(1, 5, STR_STATION_BUILD_STATION_CLASS_TOOLTIP), SetScrollbar(WID_BRAS_NEWST_SCROLL),
+								SetMatrixDataTip(1, 0, STR_STATION_BUILD_STATION_CLASS_TOOLTIP), SetScrollbar(WID_BRAS_NEWST_SCROLL),
 						NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_BRAS_NEWST_SCROLL),
 					EndContainer(),
 				EndContainer(),

@@ -509,9 +509,6 @@ public:
 	{
 		this->vscroll[0]->SetCapacityFromWidget(this, WID_RV_LEFT_MATRIX);
 		this->vscroll[1]->SetCapacityFromWidget(this, WID_RV_RIGHT_MATRIX);
-
-		this->GetWidget<NWidgetCore>(WID_RV_LEFT_MATRIX)->widget_data =
-				this->GetWidget<NWidgetCore>(WID_RV_RIGHT_MATRIX)->widget_data = (this->vscroll[0]->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	/**

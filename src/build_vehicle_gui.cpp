@@ -69,7 +69,7 @@ static const NWidgetPart _nested_build_vehicle_widgets[] = {
 	EndContainer(),
 	/* Vehicle list. */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_GREY, WID_BV_LIST), SetResize(1, 1), SetFill(1, 0), SetMatrixDataTip(1, 1, STR_NULL), SetScrollbar(WID_BV_SCROLLBAR),
+		NWidget(WWT_MATRIX, COLOUR_GREY, WID_BV_LIST), SetResize(1, 1), SetFill(1, 0), SetMatrixDataTip(1, 0, STR_NULL), SetScrollbar(WID_BV_SCROLLBAR),
 		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_BV_SCROLLBAR),
 	EndContainer(),
 	/* Panel with details. */
@@ -1405,7 +1405,6 @@ struct BuildVehicleWindow : Window {
 	virtual void OnResize()
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_BV_LIST);
-		this->GetWidget<NWidgetCore>(WID_BV_LIST)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 

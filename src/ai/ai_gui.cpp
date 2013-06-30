@@ -210,9 +210,7 @@ struct AIListWindow : public Window {
 
 	virtual void OnResize()
 	{
-		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_AIL_LIST);
 		this->vscroll->SetCapacityFromWidget(this, WID_AIL_LIST);
-		nwi->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	/**
@@ -244,7 +242,7 @@ static const NWidgetPart _nested_ai_list_widgets[] = {
 		NWidget(WWT_DEFSIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_AIL_LIST), SetMinimalSize(188, 112), SetFill(1, 1), SetResize(1, 1), SetMatrixDataTip(1, 5, STR_AI_LIST_TOOLTIP), SetScrollbar(WID_AIL_SCROLLBAR),
+		NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_AIL_LIST), SetMinimalSize(188, 112), SetFill(1, 1), SetResize(1, 1), SetMatrixDataTip(1, 0, STR_AI_LIST_TOOLTIP), SetScrollbar(WID_AIL_SCROLLBAR),
 		NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_AIL_SCROLLBAR),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_MAUVE, WID_AIL_INFO_BG), SetMinimalTextLines(8, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM), SetResize(1, 0),
@@ -561,9 +559,7 @@ struct AISettingsWindow : public Window {
 
 	virtual void OnResize()
 	{
-		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_AIS_BACKGROUND);
 		this->vscroll->SetCapacityFromWidget(this, WID_AIS_BACKGROUND);
-		nwi->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnTick()
@@ -593,7 +589,7 @@ static const NWidgetPart _nested_ai_settings_widgets[] = {
 		NWidget(WWT_DEFSIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_AIS_BACKGROUND), SetMinimalSize(188, 182), SetResize(1, 1), SetFill(1, 0), SetMatrixDataTip(1, 5, STR_NULL), SetScrollbar(WID_AIS_SCROLLBAR),
+		NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_AIS_BACKGROUND), SetMinimalSize(188, 182), SetResize(1, 1), SetFill(1, 0), SetMatrixDataTip(1, 0, STR_NULL), SetScrollbar(WID_AIS_SCROLLBAR),
 		NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_AIS_SCROLLBAR),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -723,7 +719,6 @@ struct AIConfigWindow : public Window {
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_AIC_LIST);
 		this->vscroll->SetCapacity(nwi->current_y / this->line_height);
 		this->vscroll->SetCount(MAX_COMPANIES);
-		nwi->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 		this->OnInvalidateData(0);
 	}
 

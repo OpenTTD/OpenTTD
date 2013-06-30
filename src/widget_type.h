@@ -1022,8 +1022,8 @@ static inline NWidgetPart SetDataTip(uint16 data, StringID tip)
 
 /**
  * Widget part function for setting the data and tooltip of WWT_MATRIX widgets
- * @param cols Number of columns.
- * @param rows Number of rows.
+ * @param cols Number of columns. \c 0 means to use draw columns with width according to the resize step size.
+ * @param rows Number of rows. \c 0 means to use draw rows with height according to the resize step size.
  * @param tip  Tooltip of the widget.
  * @ingroup NestedWidgetParts
  */

@@ -246,6 +246,7 @@ struct DepotWindow : Window {
 		/* Don't show 'rename button' of aircraft hangar */
 		this->GetWidget<NWidgetStacked>(WID_D_SHOW_RENAME)->SetDisplayedPlane(type == VEH_AIRCRAFT ? SZSP_NONE : 0);
 		/* Only train depots have a horizontal scrollbar and a 'sell chain' button */
+		if (type == VEH_TRAIN) this->GetWidget<NWidgetCore>(WID_D_MATRIX)->widget_data = 1 << MAT_COL_START;
 		this->GetWidget<NWidgetStacked>(WID_D_SHOW_H_SCROLL)->SetDisplayedPlane(type == VEH_TRAIN ? 0 : SZSP_HORIZONTAL);
 		this->GetWidget<NWidgetStacked>(WID_D_SHOW_SELL_CHAIN)->SetDisplayedPlane(type == VEH_TRAIN ? 0 : SZSP_NONE);
 		this->SetupWidgetData(type);
@@ -335,9 +336,9 @@ struct DepotWindow : Window {
 		bool rtl = _current_text_dir == TD_RTL;
 
 		/* Set the row and number of boxes in each row based on the number of boxes drawn in the matrix */
-		uint16 mat_data = this->GetWidget<NWidgetCore>(WID_D_MATRIX)->widget_data;
-		uint16 rows_in_display   = GB(mat_data, MAT_ROW_START, MAT_ROW_BITS);
-		uint16 boxes_in_each_row = GB(mat_data, MAT_COL_START, MAT_COL_BITS);
+		const NWidgetCore *wid = this->GetWidget<NWidgetCore>(WID_D_MATRIX);
+		uint16 boxes_in_each_row = this->type == VEH_TRAIN ? 1 : wid->current_x / wid->resize_x;
+		uint16 rows_in_display = wid->current_y / wid->resize_y;
 
 		uint16 num = this->vscroll->GetPosition() * boxes_in_each_row;
 		int maxval = min(this->vehicle_list.Length(), num + (rows_in_display * boxes_in_each_row));
@@ -968,14 +969,10 @@ struct DepotWindow : Window {
 
 	virtual void OnResize()
 	{
-		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_D_MATRIX);
 		this->vscroll->SetCapacityFromWidget(this, WID_D_MATRIX);
 		if (this->type == VEH_TRAIN) {
+			NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_D_MATRIX);
 			this->hscroll->SetCapacity(nwi->current_x - this->header_width - this->count_width);
-			nwi->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
-		} else {
-			this->num_columns = nwi->current_x / nwi->resize_x;
-			nwi->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (this->num_columns << MAT_COL_START);
 		}
 	}
 

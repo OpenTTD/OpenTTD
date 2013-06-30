@@ -366,7 +366,6 @@ public:
 	virtual void OnResize()
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_BO_CLASS_LIST);
-		this->GetWidget<NWidgetCore>(WID_BO_CLASS_LIST)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -455,7 +454,7 @@ static const NWidgetPart _nested_build_object_widgets[] = {
 		NWidget(NWID_HORIZONTAL), SetPadding(2, 0, 0, 0),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_HORIZONTAL), SetPadding(0, 5, 2, 5),
-					NWidget(WWT_MATRIX, COLOUR_GREY, WID_BO_CLASS_LIST), SetFill(1, 0), SetMatrixDataTip(1, 5, STR_OBJECT_BUILD_CLASS_TOOLTIP), SetScrollbar(WID_BO_SCROLLBAR),
+					NWidget(WWT_MATRIX, COLOUR_GREY, WID_BO_CLASS_LIST), SetFill(1, 0), SetMatrixDataTip(1, 0, STR_OBJECT_BUILD_CLASS_TOOLTIP), SetScrollbar(WID_BO_SCROLLBAR),
 					NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_BO_SCROLLBAR),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL), SetPadding(0, 5, 0, 5),

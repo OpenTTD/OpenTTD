@@ -159,7 +159,6 @@ public:
 		if (this->last_size > this->vscroll->GetCapacity()) {
 			ResizeWindow(this, 0, (this->last_size - this->vscroll->GetCapacity()) * this->resize.step_height);
 		}
-		this->GetWidget<NWidgetCore>(WID_BBS_BRIDGE_LIST)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	~BuildBridgeWindow()
@@ -297,7 +296,6 @@ public:
 	virtual void OnResize()
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_BBS_BRIDGE_LIST);
-		this->GetWidget<NWidgetCore>(WID_BBS_BRIDGE_LIST)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		this->last_size = max(this->vscroll->GetCapacity(), this->last_size);
 	}
@@ -340,7 +338,7 @@ static const NWidgetPart _nested_build_bridge_widgets[] = {
 				NWidget(WWT_DROPDOWN, COLOUR_DARK_GREEN, WID_BBS_DROPDOWN_CRITERIA), SetFill(1, 0), SetDataTip(0x0, STR_TOOLTIP_SORT_CRITERIA),
 			EndContainer(),
 			/* Matrix. */
-			NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, WID_BBS_BRIDGE_LIST), SetFill(1, 0), SetResize(0, 22), SetMatrixDataTip(1, 4, STR_SELECT_BRIDGE_SELECTION_TOOLTIP), SetScrollbar(WID_BBS_SCROLLBAR),
+			NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, WID_BBS_BRIDGE_LIST), SetFill(1, 0), SetResize(0, 22), SetMatrixDataTip(1, 0, STR_SELECT_BRIDGE_SELECTION_TOOLTIP), SetScrollbar(WID_BBS_SCROLLBAR),
 		EndContainer(),
 
 		/* scrollbar + resize button */

@@ -270,16 +270,30 @@ static inline void DrawInset(const Rect &r, Colours colour, StringID str)
  * @param colour  Colour of the background.
  * @param clicked Matrix is rendered lowered.
  * @param data    Data of the widget, number of rows and columns of the widget.
+ * @param resize_x Matrix resize unit size.
+ * @param resize_y Matrix resize unit size.
  */
-static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint16 data)
+static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint16 data, uint resize_x, uint resize_y)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 
 	int num_columns = GB(data, MAT_COL_START, MAT_COL_BITS);  // Lower 8 bits of the widget data: Number of columns in the matrix.
-	int column_width = (r.right - r.left + 1) / num_columns; // Width of a single column in the matrix.
+	int column_width; // Width of a single column in the matrix.
+	if (num_columns == 0) {
+		column_width = resize_x;
+		num_columns = (r.right - r.left + 1) / column_width;
+	} else {
+		column_width = (r.right - r.left + 1) / num_columns;
+	}
 
 	int num_rows = GB(data, MAT_ROW_START, MAT_ROW_BITS); // Upper 8 bits of the widget data: Number of rows in the matrix.
-	int row_height = (r.bottom - r.top + 1) / num_rows; // Height of a single row in the matrix.
+	int row_height; // Height of a single row in the matrix.
+	if (num_rows == 0) {
+		row_height = resize_y;
+		num_rows = (r.bottom - r.top + 1) / row_height;
+	} else {
+		row_height = (r.bottom - r.top + 1) / num_rows;
+	}
 
 	int col = _colour_gradient[colour & 0xF][6];
 
@@ -2401,7 +2415,7 @@ void NWidgetLeaf::Draw(const Window *w)
 			break;
 
 		case WWT_MATRIX:
-			DrawMatrix(r, this->colour, clicked, this->widget_data);
+			DrawMatrix(r, this->colour, clicked, this->widget_data, this->resize_x, this->resize_y);
 			break;
 
 		case WWT_EDITBOX: {
