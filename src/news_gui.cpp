@@ -1084,7 +1084,7 @@ struct MessageHistoryWindow : Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll->SetCapacity(this->GetWidget<NWidgetBase>(WID_MH_BACKGROUND)->current_y / this->line_height);
+		this->vscroll->SetCapacityFromWidget(this, WID_MH_BACKGROUND);
 	}
 };
 

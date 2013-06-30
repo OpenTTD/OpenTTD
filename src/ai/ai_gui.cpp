@@ -211,7 +211,7 @@ struct AIListWindow : public Window {
 	virtual void OnResize()
 	{
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_AIL_LIST);
-		this->vscroll->SetCapacity(nwi->current_y / this->line_height);
+		this->vscroll->SetCapacityFromWidget(this, WID_AIL_LIST);
 		nwi->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
@@ -562,7 +562,7 @@ struct AISettingsWindow : public Window {
 	virtual void OnResize()
 	{
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_AIS_BACKGROUND);
-		this->vscroll->SetCapacity(nwi->current_y / this->line_height);
+		this->vscroll->SetCapacityFromWidget(this, WID_AIS_BACKGROUND);
 		nwi->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 

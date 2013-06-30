@@ -680,7 +680,7 @@ public:
 	virtual void OnResize()
 	{
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_GL_LIST_GROUP);
-		this->group_sb->SetCapacity(nwi->current_y / this->tiny_step_height);
+		this->group_sb->SetCapacityFromWidget(this, WID_GL_LIST_GROUP);
 		nwi->widget_data = (this->group_sb->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		nwi = this->GetWidget<NWidgetCore>(WID_GL_LIST_VEHICLE);

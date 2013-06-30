@@ -461,7 +461,7 @@ struct NewGRFParametersWindow : public Window {
 	virtual void OnResize()
 	{
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_NP_BACKGROUND);
-		this->vscroll->SetCapacity(nwi->current_y / this->line_height);
+		this->vscroll->SetCapacityFromWidget(this, WID_NP_BACKGROUND);
 		nwi->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
