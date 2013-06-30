@@ -1732,7 +1732,6 @@ void ShowVehicleListWindow(const Vehicle *v)
 
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, StationID station)
 {
-	_vehicle_list_desc.flags &= ~WDF_CONSTRUCTION;
 	ShowVehicleListWindowLocal(company, VL_STATION_LIST, vehicle_type, station);
 }
 
