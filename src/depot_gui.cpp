@@ -50,7 +50,7 @@ static const NWidgetPart _nested_train_depot_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
-			NWidget(WWT_MATRIX, COLOUR_GREY, WID_D_MATRIX), SetDataTip(0x0, STR_NULL), SetResize(1, 1), SetScrollbar(WID_D_V_SCROLL),
+			NWidget(WWT_MATRIX, COLOUR_GREY, WID_D_MATRIX), SetResize(1, 1), SetScrollbar(WID_D_V_SCROLL),
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_D_SHOW_H_SCROLL),
 				NWidget(NWID_HSCROLLBAR, COLOUR_GREY, WID_D_H_SCROLL),
 			EndContainer(),

@@ -1021,6 +1021,18 @@ static inline NWidgetPart SetDataTip(uint16 data, StringID tip)
 }
 
 /**
+ * Widget part function for setting the data and tooltip of WWT_MATRIX widgets
+ * @param cols Number of columns.
+ * @param rows Number of rows.
+ * @param tip  Tooltip of the widget.
+ * @ingroup NestedWidgetParts
+ */
+static inline NWidgetPart SetMatrixDataTip(uint8 cols, uint8 rows, StringID tip)
+{
+	return SetDataTip((rows << MAT_ROW_START) | (cols << MAT_COL_START), tip);
+}
+
+/**
  * Widget part function for setting additional space around a widget.
  * Parameters start above the widget, and are specified in clock-wise direction.
  * @param top The padding above the widget.

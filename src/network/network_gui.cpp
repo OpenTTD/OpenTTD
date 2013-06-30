@@ -946,7 +946,7 @@ static const NWidgetPart _nested_network_game_widgets[] = {
 						NWidget(NWID_VERTICAL),
 							NWidgetFunction(MakeResizableHeader),
 							NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, WID_NG_MATRIX), SetResize(1, 1), SetFill(1, 0),
-												SetDataTip(0, STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT), SetScrollbar(WID_NG_SCROLLBAR),
+												SetMatrixDataTip(0, 0, STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT), SetScrollbar(WID_NG_SCROLLBAR),
 						EndContainer(),
 						NWidget(NWID_VSCROLLBAR, COLOUR_LIGHT_BLUE, WID_NG_SCROLLBAR),
 					EndContainer(),
@@ -1589,7 +1589,7 @@ static const NWidgetPart _nested_network_lobby_window_widgets[] = {
 			/* Company list. */
 			NWidget(NWID_VERTICAL),
 				NWidget(WWT_PANEL, COLOUR_WHITE, WID_NL_HEADER), SetMinimalSize(146, 0), SetResize(1, 0), SetFill(1, 0), EndContainer(),
-				NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, WID_NL_MATRIX), SetMinimalSize(146, 0), SetResize(1, 1), SetFill(1, 1), SetDataTip(0, STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP), SetScrollbar(WID_NL_SCROLLBAR),
+				NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, WID_NL_MATRIX), SetMinimalSize(146, 0), SetResize(1, 1), SetFill(1, 1), SetMatrixDataTip(0, 0, STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP), SetScrollbar(WID_NL_SCROLLBAR),
 			EndContainer(),
 			NWidget(NWID_VSCROLLBAR, COLOUR_LIGHT_BLUE, WID_NL_SCROLLBAR),
 			NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetResize(0, 1),

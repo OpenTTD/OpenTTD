@@ -865,7 +865,7 @@ static const NWidgetPart _nested_sprite_aligner_widgets[] = {
 			NWidget(NWID_VERTICAL), SetPIP(10, 5, 10),
 				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_PICKER), SetDataTip(STR_SPRITE_ALIGNER_PICKER_BUTTON, STR_SPRITE_ALIGNER_PICKER_TOOLTIP), SetFill(1, 0),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_MATRIX, COLOUR_GREY, WID_SA_LIST), SetResize(1, 1), SetDataTip(0x101, STR_NULL), SetFill(1, 1), SetScrollbar(WID_SA_SCROLLBAR),
+					NWidget(WWT_MATRIX, COLOUR_GREY, WID_SA_LIST), SetResize(1, 1), SetMatrixDataTip(1, 1, STR_NULL), SetFill(1, 1), SetScrollbar(WID_SA_SCROLLBAR),
 					NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SA_SCROLLBAR),
 				EndContainer(),
 			EndContainer(),

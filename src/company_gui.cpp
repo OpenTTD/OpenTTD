@@ -838,7 +838,7 @@ static const NWidgetPart _nested_select_company_livery_widgets [] = {
 		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_SCL_SEC_COL_DROPDOWN), SetMinimalSize(125, 12), SetFill(0, 1),
 				SetDataTip(STR_BLACK_STRING, STR_LIVERY_SECONDARY_TOOLTIP),
 	EndContainer(),
-	NWidget(WWT_MATRIX, COLOUR_GREY, WID_SCL_MATRIX), SetMinimalSize(275, 15), SetFill(1, 0), SetDataTip((1 << MAT_ROW_START) | (1 << MAT_COL_START), STR_LIVERY_PANEL_TOOLTIP),
+	NWidget(WWT_MATRIX, COLOUR_GREY, WID_SCL_MATRIX), SetMinimalSize(275, 15), SetFill(1, 0), SetMatrixDataTip(1, 1, STR_LIVERY_PANEL_TOOLTIP),
 };
 
 static WindowDesc _select_company_livery_desc(

@@ -512,7 +512,7 @@ static const NWidgetPart _nested_newgrf_parameter_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_NP_BACKGROUND), SetMinimalSize(188, 182), SetResize(1, 1), SetFill(1, 0), SetDataTip(0x501, STR_NULL), SetScrollbar(WID_NP_SCROLLBAR),
+		NWidget(WWT_MATRIX, COLOUR_MAUVE, WID_NP_BACKGROUND), SetMinimalSize(188, 182), SetResize(1, 1), SetFill(1, 0), SetMatrixDataTip(1, 5, STR_NULL), SetScrollbar(WID_NP_SCROLLBAR),
 		NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_NP_SCROLLBAR),
 	EndContainer(),
 	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NP_SHOW_DESCRIPTION),

@@ -990,7 +990,7 @@ static const NWidgetPart _nested_vehicle_refit_widgets[] = {
 	NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_VR_SELECT_HEADER), SetDataTip(STR_REFIT_TITLE, STR_NULL), SetResize(1, 0),
 	/* Matrix + scrollbar. */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_GREY, WID_VR_MATRIX), SetMinimalSize(228, 112), SetResize(1, 14), SetFill(1, 1), SetDataTip(0x801, STR_NULL), SetScrollbar(WID_VR_SCROLLBAR),
+		NWidget(WWT_MATRIX, COLOUR_GREY, WID_VR_MATRIX), SetMinimalSize(228, 112), SetResize(1, 14), SetFill(1, 1), SetMatrixDataTip(1, 8, STR_NULL), SetScrollbar(WID_VR_SCROLLBAR),
 		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_VR_SCROLLBAR),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_VR_INFO), SetMinimalTextLines(2, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM), SetResize(1, 0), EndContainer(),
@@ -1794,7 +1794,7 @@ static const NWidgetPart _nested_train_vehicle_details_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_VD_TOP_DETAILS), SetResize(1, 0), SetMinimalSize(405, 42), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_GREY, WID_VD_MATRIX), SetResize(1, 1), SetMinimalSize(393, 45), SetDataTip(0x701, STR_NULL), SetFill(1, 0), SetScrollbar(WID_VD_SCROLLBAR),
+		NWidget(WWT_MATRIX, COLOUR_GREY, WID_VD_MATRIX), SetResize(1, 1), SetMinimalSize(393, 45), SetMatrixDataTip(1, 7, STR_NULL), SetFill(1, 0), SetScrollbar(WID_VD_SCROLLBAR),
 		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_VD_SCROLLBAR),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
