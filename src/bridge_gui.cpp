@@ -76,7 +76,6 @@ void CcBuildBridge(const CommandCost &result, TileIndex end_tile, uint32 p1, uin
 class BuildBridgeWindow : public Window {
 private:
 	/* Runtime saved values */
-	static uint16 last_size;     ///< Last size of the bridge GUI window.
 	static Listing last_sorting; ///< Last setting of the sort.
 
 	/* Constants for sorting the bridges */
@@ -153,12 +152,6 @@ public:
 		this->SortBridgeList();
 
 		this->vscroll->SetCount(bl->Length());
-		if (this->last_size < this->vscroll->GetCapacity()) this->last_size = this->vscroll->GetCapacity();
-		if (this->last_size > this->vscroll->GetCount()) this->last_size = this->vscroll->GetCount();
-		/* Resize the bridge selection window if we used a bigger one the last time. */
-		if (this->last_size > this->vscroll->GetCapacity()) {
-			ResizeWindow(this, 0, (this->last_size - this->vscroll->GetCapacity()) * this->resize.step_height);
-		}
 	}
 
 	~BuildBridgeWindow()
@@ -296,13 +289,9 @@ public:
 	virtual void OnResize()
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_BBS_BRIDGE_LIST);
-
-		this->last_size = max(this->vscroll->GetCapacity(), this->last_size);
 	}
 };
 
-/** Set the default size of the Build Bridge Window. */
-uint16 BuildBridgeWindow::last_size = 4;
 /** Set the default sorting for the bridges */
 Listing BuildBridgeWindow::last_sorting = {true, 2};
 

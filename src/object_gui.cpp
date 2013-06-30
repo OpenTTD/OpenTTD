@@ -26,8 +26,6 @@
 static ObjectClassID _selected_object_class; ///< the currently visible object class
 static int _selected_object_index;           ///< the index of the selected object in the current class or -1
 static uint8 _selected_object_view;          ///< the view of the selected object
-static uint _matrix_col_count;               ///< Number of columns of the object type matrix
-static uint _list_row_count;                 ///< Number of rows of the object class list
 
 /** The window used for building objects. */
 class BuildObjectWindow : public PickerWindowBase {
@@ -93,27 +91,6 @@ public:
 		assert(ObjectClass::Get(_selected_object_class)->GetUISpecCount() > 0); // object GUI should be disables elsewise
 		this->EnsureSelectedObjectClassIsVisible();
 		this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX)->SetCount(4);
-
-		/* If needed restore the window previous size with the stored values.*/
-		uint default_num_cols = this->GetMatrixColumnCount();
-		uint default_num_rows = this->vscroll->GetCapacity();
-		int delta_x = (_matrix_col_count > default_num_cols) ? (_matrix_col_count - default_num_cols) * this->resize.step_width : 0;
-		int delta_y = (_list_row_count > default_num_rows) ? (_list_row_count - default_num_rows) * this->resize.step_height : 0;
-		if (delta_x > 0 || delta_y > 0) {
-			ResizeWindow(this, delta_x, delta_y, false);
-			/* The window may be linked to the toolbars, thus positioned at the left-bottom of the toolbars.
-			 * If the resized window is wider than the toolbars, its position need te be adjusted to ensure all
-			 * matrix columns are visible. */
-			this->FindWindowPlacementAndResize(this->width, this->height);
-		}
-	}
-
-	virtual ~BuildObjectWindow()
-	{
-		/* Store the number of columns of the object type matrix and the number of rows of the object class list
-		 * to restore them on the next window invocation. */
-		_matrix_col_count = this->GetMatrixColumnCount();
-		_list_row_count = this->vscroll->GetCapacity();
 	}
 
 	virtual void SetStringParameters(int widget) const
