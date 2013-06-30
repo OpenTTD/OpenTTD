@@ -81,6 +81,10 @@ public:
 		this->vscroll->SetPosition(0);
 		this->vscroll->SetCount(ObjectClass::GetUIClassCount());
 
+		NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX);
+		matrix->SetScrollbar(this->GetScrollbar(WID_BO_SELECT_SCROLL));
+		matrix->SetCount(ObjectClass::Get(_selected_object_class)->GetUISpecCount());
+
 		if (this->CanRestoreSelectedObject()) {
 			this->SelectOtherObject(_selected_object_index);
 		} else {
@@ -89,10 +93,6 @@ public:
 		assert(ObjectClass::Get(_selected_object_class)->GetUISpecCount() > 0); // object GUI should be disables elsewise
 		this->EnsureSelectedObjectClassIsVisible();
 		this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX)->SetCount(4);
-
-		NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX);
-		matrix->SetScrollbar(this->GetScrollbar(WID_BO_SELECT_SCROLL));
-		matrix->SetCount(ObjectClass::Get(_selected_object_class)->GetUISpecCount());
 
 		/* If needed restore the window previous size with the stored values.*/
 		uint default_num_cols = this->GetMatrixColumnCount();
@@ -106,8 +106,6 @@ public:
 			 * matrix columns are visible. */
 			this->FindWindowPlacementAndResize(this->width, this->height);
 		}
-
-		if (_selected_object_index != -1) matrix->SetClicked(ObjectClass::Get(_selected_object_class)->GetUIFromIndex(_selected_object_index));
 	}
 
 	virtual ~BuildObjectWindow()
@@ -424,6 +422,7 @@ public:
 					const ObjectSpec *spec = objclass->GetSpec(i);
 					if (spec->IsAvailable()) {
 						_selected_object_class = j;
+						this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX)->SetCount(ObjectClass::Get(_selected_object_class)->GetUISpecCount());
 						this->SelectOtherObject(i);
 						return;
 					}
