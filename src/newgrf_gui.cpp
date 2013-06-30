@@ -1170,10 +1170,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				int i = 0;
 				for (const GRFConfig *c = this->actives; c != NULL; c = c->next, i++) {}
 
-				this->vscroll->SetCapacityFromWidget(this, WID_NS_FILE_LIST);
 				this->vscroll->SetCount(i + 1); // Reserve empty space for drag and drop handling.
 
-				this->vscroll2->SetCapacityFromWidget(this, WID_NS_AVAIL_LIST);
 				if (this->avail_pos >= 0) this->vscroll2->ScrollTowards(this->avail_pos);
 				break;
 			}
