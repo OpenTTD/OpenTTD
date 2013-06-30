@@ -2707,8 +2707,8 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}게임 �
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 설정
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF 상세 정보
-STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}사용 중인 NewGRF 파일
-STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}사용하지 않고 있는 NewGRF 파일
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}적용한 NewGRF 파일
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}적용하지 않은 NewGRF 파일
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}프리셋 선택:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}검색할 문자열:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}선택한 프리셋을 불러옵니다

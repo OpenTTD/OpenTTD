@@ -1936,7 +1936,17 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Usuwaj absurdal
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Usuń ślepe zaułki podczas sponsorowanych remontów dróg
 
 
+
+
+
+
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperialne (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrzyczne (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfejs
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizacja
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstrukcje
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Pojazdy
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stacje
@@ -5133,6 +5143,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

@@ -191,29 +191,36 @@ STR_COLOUR_GREY                                                 :เทา
 STR_COLOUR_WHITE                                                :ขาว
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} ไมล์/ชม.
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} กม./ชม.
-STR_UNITS_VELOCITY_SI                                           :{COMMA} ม./วิ.
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} ไมล์ต่อชั่วโมง
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} กิโลเมตรต่อชั่วโมง
+STR_UNITS_VELOCITY_SI                                           :{COMMA} เมตรต่อวินาที
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA} แรงม้า
 STR_UNITS_POWER_METRIC                                          :{COMMA} แรงม้า
 STR_UNITS_POWER_SI                                              :{COMMA} กิโลวัตต์
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}ตัน
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} ตัน
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} กิโลกรัม
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ตัน
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} กิโลกรัม
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}แกลลอน
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} ลิตร
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} ลบ.ม.
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} แกลลอน
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} ลิตร
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ลบ.ม.
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} ปอนด์
+STR_UNITS_FORCE_METRIC                                          :{COMMA} กิโลกรัม
 STR_UNITS_FORCE_SI                                              :{COMMA} กิโลนิวตัน
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ฟุต
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} เมตร
 STR_UNITS_HEIGHT_SI                                             :{COMMA} ม.
 
 # Common window strings
@@ -1583,7 +1590,44 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :เมื่อ
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :ความเข้มข้นของการเลือกทางที่สั้นที่สุดก่อนเลือกทางที่มีการรองรับมากสุด: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :ความถี่ของเส้นทางสองเส้นทางระหว่างสถานีสองสถานี สินค้าและผู้โดยสารจะให้ความถี่กับเส้นทางที่สุั้นที่สุดก่อนเป็นอันดับแรก
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :หน่วยวัดความเร็ว: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :หน่วยวัดความเร็ว แสดงผลในหน้าต่างรายละเอียดยานพาหนะ
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :อิมพิเรียล (ไมล์ต่อชั่วโมง)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :เมตริก (กิโลเมตรต่อชั่วโมง)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :มาตรฐานสากล (เมตร/วินาที)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :หน่วยวัดกำลัง: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :หน่วยวัดกำลัง แสดงผลในหน้าต่างรายละเอียดยานพาหานะ
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :อิมพีเีรียล (แรงม้า)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :เมตริก (แรงม้า)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :มาตรฐานสากล (กิโลวัตต์)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :หน่วยวัดน้ำหนัก: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :หน่วยวัดน้ำหนัก แสดงผลในหน้าต่างรายละเอียดยานพาหนะ
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :อิมพีเรียล (ตัน)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :เมตริก (ตัน)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :มาตรฐานสากล (กิโลกรัม)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :หน่วยวัดปริมาณความจุ: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :หน่วยวัดความจุ แสดงผลในหน้าต่างรายละเอียดยานพาหนะ
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :อิมพีเรียล (แกลลอน)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :เมตริก (ลิตร)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :มาตรฐานสากล (ลูกบาศก์เมตร)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :หน่วยวัดกำลังลากจูง: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :หน่วยวัดกำลังลากจูง ที่แสดงผลในหน้าต่างรายละเอียดยานพาหานะ
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :อิมพีเรียล (ปอนด์)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :เมตริก (กิโลกรัม)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :มาตรฐานสากล (กิโลนิวตัน)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :หน่วยวัดความสูง: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :การแสดงหน่วยวัดความสูงเมื่อกดดูรายละเอียดของวัตถุต่างๆ
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :อิมพีเรียล (ฟุต)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :เมตริก (เมตร)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :มาตรฐานสากล (เมตร)
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}ส่วนเชื่อมต่อผู้ใช้
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}มาตราวัดต่างๆ
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}การก่อสร้าง
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}ยานพาหนะ
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}สถานี
@@ -4772,6 +4816,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

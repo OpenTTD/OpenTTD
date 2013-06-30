@@ -204,6 +204,7 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
@@ -211,6 +212,7 @@ STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litre
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
@@ -240,7 +242,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Pencere 
 STR_TOOLTIP_SHADE                                               :{BLACK}Pencereyi gizle - yalnız başlık çubuğunu göster
 STR_TOOLTIP_DEBUG                                               :{BLACK}NewGRF hata ayıklama bilgisini göster
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Pencereyi varsayılan boyuta getirir. Ctrl ile tıklayarak mevcut boyutu varsayılan olarak kaydedin
-STR_TOOLTIP_STICKY                                              :{BLACK}'Tüm pencereleri kapat' tuşuyla kapanmasın
+STR_TOOLTIP_STICKY                                              :{BLACK}Bu pencereyi 'Tüm pencereleri kapat' tuşuyla kapatılamaz olarak işaretle. Ctrl+tıklama aynı zamanda şu anki durumunu varsayılan olarak kaydeder
 STR_TOOLTIP_RESIZE                                              :{BLACK}Pencereyi boyutlandirmak için tıklayıp sürükle
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Pencere boyutunu büyült/küçült
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Kaydırma çubuğu - listeyi aşağı/yukarı kaydırır
@@ -1104,7 +1106,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Sağ
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :En yüsek açılış borcu: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Bir şirketin alabileceği en fazla borç (enflasyon hesaba katılmadan)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Faiz oranı: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Borç faiz oranı; aynı zamanda eğer aktifse enflasyonu da belirler
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Borç faiz oranı; eğer aktifse aynı zamanda enflasyonu da belirler
 STR_CONFIG_SETTING_RUNNING_COSTS                                :İşletme giderleri: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Araçlar ve altyapı için bakım ve işletme giderlerinin seviyesini ayarlayın
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :İnşaat hızı: {STRING}
@@ -1116,9 +1118,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Sübvanse edile
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :İnşaat maliyetleri: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :İnşaat ve satın alma maliyet seviyesini belirleyin
 STR_CONFIG_SETTING_RECESSIONS                                   :Ekonomik krizler: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Etkinleştirilirse her birkaç yılda ekonomik durgunluk yaşanır. Durgunluk sırasında tüm üretim seviyeleri düşer (durgunluk sona erdiğinde önceki seviyesine tekrar yükselir)
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Etkinleştirilirse, her bir kaç yılda bir ekonomik durgunluk yaşanır. Durgunluk süresince tüm üretim seviyeleri belirgin oranda düşer (durgunluk sona erdiğinde önceki seviyesine tekrar yükselir)
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Trenlerin istasyonda yön değiştirmesini yasakla: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Etkinleştirilirse trenler bir sonraki varış yerlerine giden daha kısa bir yol olması halinde son durak olmayan istasyonlarda geri dönüş yapmayacak
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Etkinleştirildiğinde, trenler dönüş yaparak bir sonraki varış yerlerine daha kısa yoldan ulaşabilecek olsalar dahi, son-durak-olmayan istasyonlarda geri dönüş yapmalarına izin verilmez
 STR_CONFIG_SETTING_DISASTERS                                    :Felaketler: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Araçları ya da altyapıyı yok edebilecek felaketleri açın ya da kapatın
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Arazi şekillendirmeye karşı belediye meclisinin tavrı: {STRING}
@@ -1243,12 +1245,16 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Araç eskiyince
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Etkinleştirildiğinde, yenileme koşulları sağlandığı takdirde ömrünün sonuna yaklaşan bir araç otomatik olarak yenilenir.
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Aracın maksimum yaşı {STRING} ulaştığında otomatik yenile
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Bir aracın otomatik-yenileme için göz önünde bulundurulması gereken göreceli yaş
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} ay önce
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} ay sonra
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Yenileme icin gerekli en az parayı otomatik yenile: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Araçları otomatik-yenileme için göz önünde bulundurmadan önce bankada bulunması gereken minimum para miktarı
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Hata mesajının süresi: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Kırmızı penceredeki hata mesajlarının görüntüleneceği süre. Fakat bazı (kritik) hata mesajları bu süre dolduğunda otomatik kapanmaz, el ile kapatılması gerekir.
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} saniye
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Araçlara dair bilgileri göster: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Fare bir arayüz elemanının üzerine getirildiğinde o araca dair bilgilerin gösterilmesi için geçmesi gereken süre. Alternatif olarak bu işlem için sağ fare tuşu da kullanılabilir.
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Fareyi {COMMA} saniye boyunca üzerinde bekletin
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Sağ tıklama
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Şehir nüfusunu isminin yanına yaz: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Haritadaki şehir etiketlerinde nüfus bilgisini görüntüle
@@ -1374,7 +1380,7 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Gazete gösteri
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Yıl sonu: {STRING}
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Yıl sonunda şirketin o yılki performansını bir önceki yılın performansıyla karşılaştıran özet eşliğinde ses çal
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :İnşaat: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Başarılı inşaat ya da diğer eylemlerde ses oynat
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Başarılı inşaatlarda ya da diğer eylemlerde ses oynat
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Düğme klikleri: {STRING}
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Düğmelere basıldığında bip'le
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Kaza/felaketler: {STRING}
@@ -1418,70 +1424,127 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Bir komut dosya
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Servis gecikmeleri yüzde ile: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Araçlara bakım yapılmasına bir önceki bakımın üzerinden geçen zamana göre mi, yoksa aracın güvenilirlik değerinin maksimum güvenilirliğe kıyasla belli bir yüzde oranında düşmesine göre mi karar verileceğini seçin
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Trenler için varsayılan bakım aralığı: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Yeni tren yolu araçları için varsayılan bakım aralığını ayarlar, eğer araç için özel bir bakım aralığı belirtilmemişse geçerlidir
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} gün/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Etkisiz
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Yol araçları için varsayılan bakım aralığı: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Yeni karayolu araçları için varsayılan bakım aralığını ayarlar, eğer araç için özel bir bakım aralığı belirtilmemişse geçerlidir
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Hava araçları için varsayılan bakım aralığı: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Yeni hava araçları için varsayılan bakım aralığını ayarlar, eğer araç için özel bir bakım aralığı belirtilmemişse geçerlidir
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Gemiler için varsayılan bakım aralığı: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Yeni gemiler için varsayılan bakım aralığını ayarlar, eğer araç için özel bir bakım aralığı belirtilmemişse geçerlidir
 STR_CONFIG_SETTING_NOSERVICE                                    :Bozulmalar kapalıysa sevisler kapalı olsun: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Etkinleştirildiğinde, araçlar bozulmuyorlarsa bakıma gönderilmezler
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Vagonların treni yavaşlatması izinli: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Etkinleştirildiğinde, bir trenin maksimum hızına karar verirken vagonların hız limitleri de göz önünde bulundurulur
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Elektrikli rayları iptal et: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Etkinleştirildiğinde, elektrikli araçları kullanabilmek için rayların elektrikli olması gerekmez
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Oyuncunun istasyonuna ilk aracın gelişi: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Oyuncuya ait yeni yapılan bir durağa ilk kez araç ulaştığında gazete haberi olarak göster
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Rakibin istasyonuna ilk aracın gelişi: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Rakibe ait yeni yapılan bir durağa ilk kez araç ulaştığında gazete haberi olarak göster
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Kazalar / felaketler: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Kazalar veya felaketler meydana geldiğinde gazete haberi olarak göster
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Şirket bilgisi: {STRING}
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Yeni bir şirket oyuna başladığında veya şirketler iflas etme riski taşıdığında gazete haberi olarak göster
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Fabrikaların açılışı: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Yeni endüstriler kurulduğunda gazete haberi olarak göster
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Fabrikaların kapanışı: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Endüstriler kapandığında gazete haberi olarak göster
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomideki değişimler: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Ekonomideki küresel değişiklikleri gazete haberi olarak göster
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Şirket tarafından hizmet verilen fabrikaların üretim değişiklikleri: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Oyuncuya ait şirketin hizmet ettiği endüstrilerin üretim miktarları değiştiğinde gazete haberi olarak göster
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Rakiplerin hizmet ettiği fabrikalardaki üretim değişiklikleri: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Rakiplere ait şirketlerin hizmet ettiği endüstrilerin üretim miktarları değiştiğinde gazete haberi olarak göster
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Diğer fabrikalardaki üretim değişiklikleri: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Ne oyuncu ne de rakipler tarafından hizmet edilen endüstrilerin üretim miktarları değiştiğinde gazete haberi olarak göster
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Şirketin araçları hakkında tavsiye / bilgi: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Dikkat gerektiren araçlar hakkında mesajlar göster
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Yeni araçlar: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Yeni bir araç tipi ortaya çıktığında gazete haberi olarak göster
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Kargo isteğindeki değişiklikler: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Durakların bazı kargo türlerini kabul etmesiyle ilgili değişiklikler olduğunda haber ver
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Teşvikler: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Teşvikle ilgili olaylarda gazete göster
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Genel bilgi: {STRING}
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Ayrıcalıklı hakların satın alınması veya yolların yeniden yapılmasının finanse edilmesi gibi genel olayları gazetede göster
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Kapalı
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Özet
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Tam
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Renkli gazete şu senede çıksın: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Gazete haberlerinin renkli olarak basılmaya başlandığı yıl. Bu tarihe kadar gazete siyah/beyaz olarak basılır
 STR_CONFIG_SETTING_STARTING_YEAR                                :Başlangıç tarihi: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Yüzeysel ekonomi (daha çok ve küçük çapta değişiklikler): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Etkinleştirildiğinde, endüstri üretim miktarı daha sık ve daha küçük adımlarla değişir. Eğer endüstriler bir NewGRF dosyası tarafından sağlanıyorsa bu özellik genellikle etkisiz kalır
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Diğer şirketlerin hisseleri alınabilsin: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Etkinleştirildiğinde, şirketlerin hisse senetlerinin alınıp satılması mümkün olur. Hisse senetleri sadece belli bir yaşa ulaşan şirketler için geçerlidir
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Besleme sistemlerinde, bölümlerden elde edilen kardan ödenecek yüzde: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Besleme sistemlerinde, sistemi oluşturan ara bölümlere verilen kâr yüzdesi. Böylece kâr miktarı üzerinde daha fazla kontrol elde edilmiş olur
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Fare sürüklendiğinde sinyal yerleştirme sıklığı: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Fareyi sürükleyerek sinyal inşa ederken, sinyallerin ray üzerindeki bir sonraki engele dek (sinyal, kavşak) ne kadar mesafe bırakarak inşa edileceğini belirler
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} kare
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Fare sürüklendiğinde, sinyaller arasında sabit mesafe bırakılsın: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Ctrl+fare sürüklemesi ile sinyal inşa ederken sinyallerin nasıl yerleştirileceğini belirler. Etkinleştirildiğinde her "n" karede bir sinyal yerleştirilir, böylece birbirine paralel raylardaki sinyallerin aynı hizada olmasını sağlamak kolaylaşır
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Bu tarihten önce ışık yerine semafor kullan: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Raylar için elektrikli sinyallerin kullanılmaya başlanacağı yılı belirler. Bu tarihe kadar elektriksiz sinyaller kullanılır (bunlar da aynı işi görür, sadece görünüşleri farklıdır)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Sinyal arayüzünü etkinleştir: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Pencere kullanmaksızın Ctrl+tıklama ile farklı sinyal çeşitleri seçmek yerine, hangi sinyal tipinin inşa edileceğinin seçilebildiği bir pencere göster
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Varsayılan sinyal tipi: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Kullanılacak varsayılan sinyal tipi
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blok sinyalleri
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Yol sinyalleri
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Tek yön yol sinyalleri
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Sinyal tipleri arasında dön: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Ctrl+tıklama ile sinyal inşa ederken hangi sinyal tiplerinin kullanılacağını seç
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Yalnızca blok sinyalleri
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Yalnızca yol sinyalleri
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Hepsi
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Yeni kasabalar için yol yerleşimi: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Şehirlerin karayolu ağlarını gösteren şema
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Orjinal
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Daha iyi yollar
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Rastgele
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Kasabalara yol yapma izni verilsin: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Şehirlerin büyüme için yollar yapmasına izin ver. Şehirlerin kendi kendine yol yapmasını engellemek için bu özelliği kapatın
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Şehirlerde hemzemin geçit yapmaya izin ver: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Etkinleştirildiğinde şehirlerin demiryolu ile karayolunun kesiştiği kavşaklar yapmasına izin verilir
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Kasabalar tarafından kontrol edilen havaalanı gürültü seviyesine izin ver: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Etkisiz hale getirildiğinde, her şehirde iki havaalanı olabilir. Etkinleştirildiğinde ise, bir şehirdeki havaalanı sayısı o şehrin ne kadar gürültüye tahammül edebildiğiyle sınırlıdır; bu da nüfus miktarına, havaalanının büyüklüğüne ve uzaklığına bağlıdır
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Oyunda yeni şehirler kurma: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Bu seçeneği etkinleştirmek, oyuncuların yeni şehirler kurmasına izin verir
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Yasak
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :İzin verildi
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :İzin verildi, özel kasaba yerleşimi
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Oyunda ağaç dikme: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Oyundaki rastgele ağaçların görünümünü kontrol eder. Bu, ağaçların büyümesine bağımlı olan endüstrileri etkileyebilir, örneğin keresteciler gibi
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Hiçbiri {RED}(kauçuk fabrikasını yok eder)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Yalnız yağmur ormanlarında
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Her yerde
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Ana araç çubuğu pozisyonu: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Ekranın üst kısmındaki ana araç çubuğunun yatay pozisyonu
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Durum çubuğunun konumu: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Ekranın alt kısmındaki durum çubuğunun yatay pozisyonu
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Pencere yaslama çapı: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Bir pencereyi yanındaki pencereye otomatik olarak yaslamak için iki pencere arasında bulunması gereken mesafe
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piksel
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Etkisiz
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Azami sabitlenmemiş pencere sayısı: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Yeni pencerelere yer açmak üzere eski pencerelerin otomatik olarak kapanmaya başlaması için ekranda bulunması gereken "sabitlenmemiş" pencere sayısı
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :etkisiz
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Azami yaklaşma seviyesi: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Haritadan kısımlar gösteren pencereler (viewport) için maksimum yaklaştırma (zoom) seviyesi. Daha yüksek yaklaştırma ayarları oyunun bellek gereksinimini artırır.
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Azami uzaklaşma seviyesi: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Haritadan kısımlar gösteren pencereler (viewport) için maksimum uzaklaştırma (zoom out) seviyesi. Daha yüksek uzaklaştırma ayarları oyunda gecikmelere sebep olabilir
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
@@ -1489,15 +1552,24 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Şehirlerin genişleme hızı: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Şehir büyüme hızı
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Hiçbiri
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Yavaş
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Hızlı
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Çok Hızlı
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Şehirlere dönüşecek kasabaların oranı: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Şehirlere dönüşecek kasabaların miktarı, yani nispeten büyük başlayıp daha hızlı büyüyen kasabalar
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :{COMMA}'de 1
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Hiçbiri
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Birincil şehir büyüklüğü çarpanı: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Oyun başlangıcında şehirlerin normal kasabalara kıyasla ortalama büyüklüğü
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Yol yapımı sırasında gerçekçi olmayan yerleri kaldır: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Yolların yeniden yapılmasını finanse ederken çıkmaz sokakları kaldır
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Dağıtım grafiğini her {STRING} günde bir güncelle
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Bağlantı grafiğinin tekrar hesaplamaları arasında geçen süre. Her tekrar hesaplama grafiğin öğelerinden biri için planları hesaplar. Yani bu ayar için girdiğiniz X değeri tüm grafiğin her X günde bir güncelleneceği manasına gelmez; sadece grafiğin öğelerinden biri güncellenir. Daha kısa sürelere ayarladıkça hesaplamalar için daha fazla işlemci süresi gerekir. Daha uzun süreler seçtikçe yeni güzergahlardaki kargo dağıtımının başlaması da daha uzun sürer.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Dağıtım grafiğini {STRING} güne göre tekrar hesapla
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Bağlantı grafiğini oluşturan parçaların her tekrar hesaplaması için kullanılan zaman. Tekrar hesaplama başlatıldığında bu kadar gün sürecek bir işlem başlatılmış olur. Buraya daha kısa süreler girdikçe işlemin bitmesi gerekirken bitmemiş olma ihtimali artar. Ardından oyun ("lag") olana dek durur. Daha uzun süreler girdiğinizde güzergahlar değiştikçe dağıtımın güncellenmesi daha uzun sürer.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :el ile (manual)
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetrik
@@ -1582,9 +1654,13 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Önerilen)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Trenler için yol bulucu: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Trenler için kullanılacak "yol bulucu" algoritma
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Arabalar için yol bulucu: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Karayolu araçları için kullanılacak "yol bulucu" algoritma
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Gemiler için yol bulucu: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Gemiler için kullanılacak "yol bulucu" algoritma
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :İşaretlerde otomatik geri çevirme: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Tren sinyalde uzun süre beklediği takdirde ters yöne gitmesine izin ver
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ayar değerini değiştir
 
@@ -1602,6 +1678,11 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :OpenTTD'nin bu 
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :bilinmiyor
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... sıkıştırma seviyesi '{STRING}' geçerli değil
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... kaydedilmiş oyun formatı olarak '{STRING}' mevcut değil. '{STRING}' formatına çevriliyor
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... Temel Grafik seti görmezden geliniyor '{STRING}': bulunamadı
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... Temel Ses seti görmezden geliniyor '{STRING}': bulunamadı
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... Temel Müzik seti görmezden geliniyor '{STRING}': bulunamadı
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Bellek yetersiz
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}{BYTES} sprite-önbelleği ayırma işlemi başarısız. Sprite-önbelleği {BYTES}'a düşürüldü. Bu OpenTTD'nin performansını azaltacak. Bellek gereksinimini azaltmak için 32bpp grafikleri ve/veya yakınlaştırma seviyelerini kapatmayı deneyebilirsiniz
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2080,6 +2161,10 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Güncell
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Mevcut içeriğin güncellemesi olan tüm içeriği indirilmek üzere işaretle
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Tümünden seçimi kaldır
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Tüm içeriği indirilmemek üzere işaretle
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Dış sitelerde ara
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}OpenTTD'nin kendi servisinde bulunmayan içeriği OpenTTD ile ilişkisi bulunmayan diğer sitelerde ara
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}OpenTTD'den çıkıyorsunuz!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Harici sitelerden içerik indirmenin şart ve koşulları değişiklik gösterir.{}İndirdiğiniz içeriği OpenTTD'ye nasıl kuracağınıza dair talimatlar için harici sitelere bakmalısınız.{}Devam etmek istiyor musunuz?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Etiket/isim süzgeci:
 STR_CONTENT_OPEN_URL                                            :{BLACK}İnternet sitesine git
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Bu içeriğin internet sitesi
@@ -2958,7 +3043,8 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Hiç kar
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Bekleyen: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} çıkış noktası {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} {STATION}'dan)
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} yükleme için rezerve edilmiş)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}İstenen
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}İstenen kargoların listesini göster
@@ -3500,6 +3586,9 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Bakım z
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Bakım periyodunu 10 artır. Ctrl-tık bakım periyodunu 5 artırır.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Bakım periyodunu 10 azalt. Ctrl+tık bakım periyodunu 5 azaltır
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Bakım aralığı tipini değiştir
+STR_VEHICLE_DETAILS_DEFAULT                                     :Varsayılan
+STR_VEHICLE_DETAILS_DAYS                                        :Gün
 STR_VEHICLE_DETAILS_PERCENT                                     :Yüzde
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Treni adlandır
@@ -3536,6 +3625,7 @@ STR_REFIT_TITLE                                                 :{GOLD}Tasinacak
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Yeni kapasite: {GOLD}{CARGO_LONG}{}{BLACK}Modifiye fiyatı: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Yeni kapasite: {GOLD}{CARGO_LONG}{}{BLACK}Modifiyeden elde edilen kar: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Yeni kapasite: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Modifiye bedeli: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Yeni kapasite: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Modifiyeden elde edilen gelir: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Dönüşecek araçları seçin. Fare ile sürüklemek birden fazla aracı seçmeye izin verir. Boş alana tıklamak tüm aracı seçtirir. Ctrl+tık bir aracı ve takip eden katarı seçmeye olan sağlar
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenin taşıyacağı kargo türünü seçin
@@ -3638,7 +3728,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :En yakın gara 
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :En yakın hangara git
 STR_ORDER_CONDITIONAL                                           :Duruma göre dallan
 STR_ORDER_SHARE                                                 :Emirleri paylaştır
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Seçili emrin önüne ya da listenin sonuna yeni emir ekle. Ctrl; istasyon emirlerini 'bir kargo tipini tam yükle', yol imi emirlerini 'durmaksızın', garaj emirlerini 'bakıma gir' olarak değiştirir
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Seçili emrin önüne ya da listenin sonuna yeni emir ekle. Ctrl tuşuna basmak; istasyon emirlerini 'bir kargo tipini tam yükle', yol imi emirlerini 'durmaksızın', garaj emirlerini 'bakıma gir' olarak değiştirir. 'Emirleri paylaş' veya Ctrl bu aracın emirlerini seçili araçla paylaşmasını sağlar. Bir araca tıklamak o aracın emirlerini kopyalar. Bir garaj emri araca otomatik olarak bakım yapılması özelliğini kapatır
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Aynı talimatlara sahip bütün araçları göster
 
@@ -3776,9 +3866,9 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Yılı s
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}YZ Hata Ayıklama
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}YZ adı
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Komut dosyası (script) adı
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}YZ Ayarları
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}YZ ayarlarını değiştir
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Komut dosyası (script) ayarlarını değiştir
 STR_AI_DEBUG_RELOAD                                             :{BLACK}YZ'yı baştan yükle
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}YZ'yı öldür, kodu tekrar yükle ve YZ'yı tekrar başlat
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}YZ log iletisi durma metni ile eşleştiğinde duraklatmayı aç/kapa
@@ -3794,12 +3884,12 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Oyun Bet
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Oyun Betiği günlüğünü kontrol edin
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Yüklenecek uygun bir YZ bulunamadı.{}Bu YZ boş bir YZ'dir ve hiçbir şey yapmaz.{}'Çevrimiçi İçerik" sistemiyle pekçok YZ'yi indirebilirsiniz
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Çalışan YZ'lerden biri çakıldı. Lütfen bu durumu AI Hata Ayıklama Penceresi görüntüsüyle birlikte YZ'nin yazarına bildirin
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Çalışan komut dosyalarından (script) biri çakıldı. Lütfen bu durumu AI Hata Ayıklama Penceresi görüntüsüyle birlikte dosyanın yazarına bildirin
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}YZ Hata Ayıklama penceresi sadece sunucu içindir
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}YZ Yapılandırması
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Bir sonraki oyunda yüklenecek OyunBetiği
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Bir sonraki oyunda yüklenecek Oyun Betiği (script)
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Bir sonraki oyunda yüklenecek YZ'ler
 STR_AI_CONFIG_HUMAN_PLAYER                                      :İnsan oyuncu
 STR_AI_CONFIG_RANDOM_AI                                         :Rastgele YZ
@@ -3810,36 +3900,36 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Seçilen
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Aşağı taşı
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Seçilen YZ'yi listede aşağı taşı
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}OyunBetiği
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Oyun Betiği
 STR_AI_CONFIG_AI                                                :{SILVER}YZler
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Seç {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :YZ
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :OyunBetiği
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Oyun Betiği
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Başka bir betik yükle
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Yapılandır
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}YZ parametrelerini yapılandır
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Komut dosyası (script) parametrelerini yapılandır
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Mevcut {STRING}
 STR_AI_LIST_CAPTION_AI                                          :YZ'ler
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :OyunBetikleri
-STR_AI_LIST_TOOLTIP                                             :{BLACK}YZ seçmek için bir tuşa basın
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Oyun Betikleri (script)
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Komut dosyası (script) seçmek için bir tuşa basın
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Yazar: {ORANGE}{STRING}
 STR_AI_LIST_VERSION                                             :{LTBLUE}Sürüm: {ORANGE}{NUM}
 STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Kabul et
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vurgulanan YZ'yi seç
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vurgulanan komut dosyasını (script) seç
 STR_AI_LIST_CANCEL                                              :{BLACK}İptal
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}YZ'yi değiştirme
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Komut dosyası (script) değişmesin
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametreler
 STR_AI_SETTINGS_CAPTION_AI                                      :YZ
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :OyunBetiği
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Oyun Betiği (script)
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Kapat
 STR_AI_SETTINGS_RESET                                           :{BLACK}Yeniden başlat
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4002,7 +4092,7 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... her 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... yalnızca nüfusu en az 1200 olan şehirlere yapılabilir
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... yalnızca yağmur ormanlarında yapılabilir
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... yalnızca çöllerde yapılabilir
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... yalnızca şehirlerde yapılabilir
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... yalnızca şehirlerde yapılabilir (evlerin yerine)
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... yalnızca şehir merkezlerinin yakınına yapılabilir
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... yalnız alçak bölgelere yapılabilir
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... sadece haritanın kenarlarına yerleştirilebilir
@@ -4081,7 +4171,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... hang
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Sadece garda durdurulmuş trenler üzerinde işlem yapılabilir
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren çok uzun
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Aracın yönü çevrilemiyor...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Birden fazla birimden oluşan araçlar çevrilemez
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... birden fazla birimden oluşuyor
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Uyumsuz ray türleri
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Araç hareket edemiyor...
@@ -4111,7 +4201,7 @@ STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Buradaki
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... ray yok
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... sinyal yok
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Ray türü değiştirilemiyor...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Ray türü burada değiştirilemiyor...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Önce yol silinmeli
@@ -4737,6 +4827,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
