@@ -83,9 +83,9 @@ public:
 
 		NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX);
 		matrix->SetScrollbar(this->GetScrollbar(WID_BO_SELECT_SCROLL));
-		matrix->SetCount(ObjectClass::Get(_selected_object_class)->GetUISpecCount());
 
 		if (this->CanRestoreSelectedObject()) {
+			this->SelectOtherClass(_selected_object_class),
 			this->SelectOtherObject(_selected_object_index);
 		} else {
 			this->SelectFirstAvailableObject(true);
@@ -329,6 +329,16 @@ public:
 	}
 
 	/**
+	 * Select the specified object class.
+	 * @param object_class_index Object class index to select.
+	 */
+	void SelectOtherClass(ObjectClassID object_class_index)
+	{
+		_selected_object_class = object_class_index;
+		this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX)->SetCount(ObjectClass::Get(_selected_object_class)->GetUISpecCount());
+	}
+
+	/**
 	 * Select the specified object in #_selected_object_class class.
 	 * @param object_index Object index to select, \c -1 means select nothing.
 	 */
@@ -373,8 +383,7 @@ public:
 				int num_clicked = this->vscroll->GetPosition() + (pt.y - this->nested_array[widget]->pos_y) / this->line_height;
 				if (num_clicked >= (int)ObjectClass::GetUIClassCount()) break;
 
-				_selected_object_class = ObjectClass::GetUIClass(num_clicked);
-				this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX)->SetCount(ObjectClass::Get(_selected_object_class)->GetUISpecCount());
+				this->SelectOtherClass(ObjectClass::GetUIClass(num_clicked));
 				this->SelectFirstAvailableObject(false);
 				break;
 			}
@@ -421,8 +430,7 @@ public:
 				for (uint i = 0; i < objclass->GetSpecCount(); i++) {
 					const ObjectSpec *spec = objclass->GetSpec(i);
 					if (spec->IsAvailable()) {
-						_selected_object_class = j;
-						this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX)->SetCount(ObjectClass::Get(_selected_object_class)->GetUISpecCount());
+						this->SelectOtherClass(j);
 						this->SelectOtherObject(i);
 						return;
 					}
@@ -434,7 +442,7 @@ public:
 			/* ... but make sure that the class is not empty. */
 			for (ObjectClassID j = OBJECT_CLASS_BEGIN; j < OBJECT_CLASS_MAX; j++) {
 				if (ObjectClass::Get(j)->GetUISpecCount() > 0) {
-					_selected_object_class = j;
+					this->SelectOtherClass(j);
 					break;
 				}
 			}
