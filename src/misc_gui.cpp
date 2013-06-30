@@ -381,6 +381,7 @@ static const char * const _credits[] = {
 	"  Jean-Fran\xC3\xA7ois Claeys (Belugas) - GUI, newindustries and more",
 	"  Matthijs Kooijman (blathijs) - Pathfinder-guru, pool rework",
 	"  Christoph Elsenhans (frosch) - General coding",
+	"  Ulf Hermann (fonsinchen) - Cargo Distribution",
 	"  Lo\xC3\xAF""c Guilloux (glx) - Windows Expert",
 	"  Michael Lutz (michi_cc) - Path based signals",
 	"  Owen Rudge (orudge) - Forum host, OS/2 port",

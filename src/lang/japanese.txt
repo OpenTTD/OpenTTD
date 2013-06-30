@@ -1101,19 +1101,27 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :助成金の設
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建設費: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :建設・購入費用のレベル
 STR_CONFIG_SETTING_RECESSIONS                                   :景気の後退: {STRING}
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :設定が有効であれば数年ごとに不況が行われます。不況のとき、全ての生産量が落ちます（ただし、不況が終わり次第生産量を既定に戻ります）
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :駅で運転方向の変更(折り返し)をしない: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :設定が有効であれば電車が終点に着いたら逆方向を行われません。
 STR_CONFIG_SETTING_DISASTERS                                    :災害: {STRING}
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :設定が有効であれば時々災害を行われます（災害は車両及びインフラを壊します）
 STR_CONFIG_SETTING_CITY_APPROVAL                                :地域の再編に対する町の姿勢: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :どんなに各会社をノイズと環境被害をタウン評価をインパクトする
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :傾斜地／海岸上の建設を許容：{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :設定が有効であれば斜面に建設を行うことができます。無効であれば建設には方向に一致した斜面か平面が必要になります。
 STR_CONFIG_SETTING_AUTOSLOPE                                    :建物、道路、鉄道などの下の地形変更を行う(傾斜を合わせる)：{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :インフラと鉄道を壊すに地下に建設を許可をする
 STR_CONFIG_SETTING_CATCHMENT                                    :より現実的な受入れ地域を許容：{STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :サイズ別の空港及び駅の御客様区域を区別する
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :より多くの町有の道路／橋などの破壊を許容：{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :政府を持ってるインフラとビルの処刑をもっと簡単にする
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :列車の最大長:{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :列車の最大長を設定できます
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA}タイル
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :車両の 煙/スパーク の量{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :車両の煙量を設定する
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :電車の加速モデル：{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :道路車両の加速モデル: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :線路の勾配率: {STRING}
@@ -4041,6 +4049,14 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}標示�
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxeを基にしたシミュレーションゲーム
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :オリジナルDOS『トランスポートタイクンデラックス』版画像
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :オリジナルDOS『トランスポートタイクンデラックス』ドイツ語版 画像
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :オリジナルウィンドーズ『トランスポートタイクンデラックス』版 画像
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :オリジナル DOS 『トランスポートタイクンデラックス』版音楽
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :オリジナルウィンドーズ『トランスポートタイクンデラックス』版音楽
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :音楽が無いミュージックパック
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :オリジナルウィンドーズ『トランスポートタイクンデラックス』版音楽
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :音楽が無いミュージックパック
 
 ##id 0x2000
 # Town building names

@@ -1,5 +1,5 @@
-Last updated:    2013-06-01
-Release version: 1.3.1
+Last updated:    2013-06-30
+Release version: 1.3.2-RC1
 ------------------------------------------------------------------------
 
 
@@ -649,6 +649,7 @@ The OpenTTD team (in alphabetical order):
   Albert Hofkamp (Alberth)        - GUI expert
   Jean-François Claeys (Belugas)  - GUI, newindustries and more
   Matthijs Kooijman (blathijs)    - Pathfinder-guru, pool rework
+  Ulf Hermann (fonsinchen)        - Cargo Distribution
   Christoph Elsenhans (frosch)    - General coding
   Loïc Guilloux (glx)             - Windows Expert
   Michael Lutz (michi_cc)         - Path based signals
