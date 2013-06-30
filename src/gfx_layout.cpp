@@ -307,7 +307,7 @@ ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 	}
 
 	const FontCache *fc = iter->second->fc;
-	const WChar *next_run = this->buffer_begin + iter->first + 1;
+	const WChar *next_run = this->buffer_begin + iter->first;
 
 	for (;;) {
 		WChar c = *this->buffer++;
@@ -322,7 +322,7 @@ ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 			iter++;
 			assert(iter != this->runs.End());
 
-			next_run = this->buffer_begin + iter->first + 1;
+			next_run = this->buffer_begin + iter->first;
 			begin = this->buffer;
 
 			last_char = begin;
