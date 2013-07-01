@@ -263,21 +263,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}hp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P "a" "y" ""}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P a y ""}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galón{P "" "y" "ov"}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lit{P er re rov}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} st{P opa opy ôp}
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -368,6 +375,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Zobrazi�
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Zoznam staníc spoločností
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Finančné informácie o spoločnosti
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Informácie o spoločnosti
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Zobraziť knihu príbehov
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Zobraziť zoznam cieľov
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Hodnotenie spoločností
@@ -1546,7 +1554,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Pri ťahaní, u
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Nastav vzdialenosť ako ďaleko budú umiestnené semafóry po prekážke na trati (most/tunel/rozcestie) pri ťahaní.
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} diel(ov)
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Pri ťahaní, zachovaj fixnú medzeru medzi semafórmi: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Zvoľte ako sa zachová umiestňovanie semafórov pri CTRL+posun. AK je vypnuté, semafóry sú umiestnené okolo tunelov alebo mostov aby sa zabránilo dlhým úsekom bez signalizácie. Ak je zapnuité, semafóry sú umiestňované každých N dielov čím sa umožní lepšie rozloženie na paralelných tratiach.
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Zvoľte ako sa zachová umiestňovanie semafórov pri CTRL+posun. Ak je vypnuté, semafóry sú umiestnené okolo tunelov alebo mostov aby sa zabránilo dlhým úsekom bez signalizácie. Ak je zapnuité, semafóry sú umiestňované každých N dielov čím sa umožní lepšie rozloženie na paralelných tratiach.
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automaticky stavať semafóry namiesto signálov pred rokom: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Zvoľte rk o ktorého sa budú používať elekrické semafór na tratach. Pred týmto rokom sa budú používať staré ne-elektrické návestidlá. Funkcionalita je ale stále rovnaká len vzhľad je iný.
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Zapnúť grafické rozhranie stavby signálov: {STRING}
@@ -1636,7 +1644,38 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Druh distribúc
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Druh distribúcie pre ostatné druhy nákladu: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Množstvo vráteného nákladu pre symetrický mód: {STRING}
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Jednotky rýchlosti: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperiálne (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrické (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Jednotky výkonu vozidiel: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperiálne (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrické (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Jednotky váhy: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperiálne ("krátka" t/tona)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrické (t/tona)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Jednotky objemu: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperiálne (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrické (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Jednotky ťažnej sily: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperiálne (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrické (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Jednotky výšky: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperialne (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrické (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Rozhranie
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizácia
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Výstavba
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozidlá
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stanice
@@ -3023,6 +3062,8 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kliknúť na trasu pre centrovanie pohľadu na továreň/mesto
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Kniha príbehov
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globálna kniha príbehov
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Strana {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Skočiť na určitú stranu výberom zo zoznamu
@@ -4817,6 +4858,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

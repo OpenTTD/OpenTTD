@@ -199,21 +199,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hv
 STR_UNITS_POWER_METRIC                                          :{COMMA}hv
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonni{P "" a}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonni{P "" a}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallona{P "" a}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litra{P "" a}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -278,6 +285,8 @@ STR_SORT_BY_LENGTH                                              :Pituus
 STR_SORT_BY_LIFE_TIME                                           :Jäljelläoleva elinikä
 STR_SORT_BY_TIMETABLE_DELAY                                     :Aikataulun viive
 STR_SORT_BY_FACILITY                                            :Asematyyppi
+STR_SORT_BY_WAITING_TOTAL                                       :Odottava rahti yhteensä
+STR_SORT_BY_WAITING_AVAILABLE                                   :Saatavilla oleva odottava rahti
 STR_SORT_BY_RATING_MAX                                          :Korkein rahtiluokitus
 STR_SORT_BY_RATING_MIN                                          :Matalin rahtiluokitus
 STR_SORT_BY_ENGINE_ID                                           :EngineID (perinteinen lajittelu)
@@ -1581,7 +1590,44 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Mikäli asetuks
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Lyhyiden reittien kuormittuminen ennen vapaampien reittien käyttämistä: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Kahden aseman välillä on usein useita reittejä. Lyhintä reittiä käytetään ensisijaisesti, toisiksi lyhintä ensimmäisen kuormittuessa ja niin edelleen. Kuormitus määritellään arvioidun kapasiteetin ja suunnitellun käytön mukaan. Kaikkien reittien ollessa kuormittuneita reittejä aletaan ylikuormittamaan, suurimman kapasiteetin omaavista reiteista aloittaen. Algoritmi ei kuitenkaan aina arvioi kapasiteettia oikein. Tämä asetus mahdollistaa reitin kuormitustason määrittämisen ennen seuraavan reitin käyttämistä. Määritä arvoksi vähemmän kuin 100% välttääksesi ylikuormittuneita asemia jos kapasiteetti yliarvioidaan.
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Nopeuden yksikkö: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kun käyttöliittymässä näytetään nopeus, näytä se valittua yksikköä käyttäen
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Brittiläinen (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrinen (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Kulkuneuvon tehon yksikkö: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Kun käyttöliittymässä näytetään kulkuneuvon teho, näytä se valittua yksikköä käyttäen
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Brittiläinen (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrinen (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Painon yksikkö: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Kun käyttöliittymässä näytetään paino, näytä se valittua yksikköä käyttäen
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Brittiläinen (lyhyt t/tonni)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrinen (t/tonni)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Tilavuuden yksikkö: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Kun käyttöliittymässä näytetään tilavuus, näytä se valittua yksikköä käyttäen
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Brittiläinen (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrinen (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Vetovoiman yksikkö: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Kun käyttöliittymässä näytetään vetovoima, näytä se valittua yksikköä käyttäen
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Brittiläinen (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrinen (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Korkeuden yksikkö: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Kun käyttöliittymässä näytetään korkeus, näytä se valittua yksikköä käyttäen
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Brittiläinen (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrinen (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Käyttöliittymä
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisointi
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Rakentaminen
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ajoneuvot
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Asemat
@@ -4770,6 +4816,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

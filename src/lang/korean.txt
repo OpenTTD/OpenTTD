@@ -200,21 +200,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}마력
 STR_UNITS_POWER_METRIC                                          :{COMMA}마력
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} 톤
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}톤
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}갤런
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} 갤런
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}리터
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} 파운드중
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kg중
 STR_UNITS_FORCE_SI                                              :{COMMA}kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}ft
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA}m
 
 # Common window strings
@@ -1584,13 +1591,44 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :이 값을 100%
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :다음으로 짧은 경로를 사용하기 위한 경로 포화도: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :종종 두 역 사이에는 여러 가지 경로가 존재할 수 있습니다. 이 경우, 화물 분배 기능은 먼저 가장 짧은 경로로 화물을 보내고, 그 경로가 포화 상태에 이르면 그 다음으로 짧은 경로를 사용하는 식으로 화물을 분배합니다. 포화도는 경로의 수송 능력과 예정 사용량을 추정하여 계산됩니다. 일단 모든 경로가 포화 상태가 되었는데 아직 수요가 남아있다면, 수송 능력이 높은 경로를 사용하면서 모든 경로를 과부하 상태로 만들게 됩니다. 하지만, 이 알고리즘은 수송량을 대부분 정확히 추정하지는 않습니다. 이 설정을 이용해서, 화물 분배 기능이 짧은 경로의 포화 상태가 몇 퍼센트가 되어야 다음으로 짧은 경로에 화물을 분배할 것인지를 지정할 수 있습니다. 과대평가된 수송량의 경우 너무 붐비는 역이 생기지 않도록 하기 위해서는 이 값을 100%보다 작게 설정하십시오.
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :속력 단위: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :출력할 속력 단위를 선택합니다.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :임페리얼법 (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :미터법 (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :국제표준규격 (m/s)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :차량의 힘 단위: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :출력할 차량의 힘 단위를 선택합니다.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :임페리얼법 (마력)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :미터법 (마력)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :국제표준규격 (킬로와트)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :무게 단위: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :출력할 무게 단위를 선택합니다.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :임페리얼법 (미국 톤)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :미터법 (톤)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :국제표준규격 (kg)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :부피 단위: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :출력할 부피 단위를 선택합니다.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :임페리얼법 (갤런)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :미터법 (리터)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :국제표준규격 (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :견인 효과 단위: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :출력할 견인 효과(견인력) 단위를 선택합니다.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :임페리얼법 (파운드중)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :미터법 (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :국제표준규격 (kN)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :높이 단위: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :출력할 높이 단위를 선택합니다.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :임페리얼법 (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :미터법 (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :국제표준규격 (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}인터페이스
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}단위 설정
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}건설
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}차량
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}역
@@ -4779,6 +4817,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
