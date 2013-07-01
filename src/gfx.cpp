@@ -370,11 +370,12 @@ static void SetColourRemap(TextColour colour)
  *                  case a right-to-left language is chosen this is inverted so it
  *                  will be drawn in the right direction.
  * @param underline Whether to underline what has been drawn or not.
+ * @param truncation Whether to perform string truncation or not.
  *
  * @return In case of left or center alignment the right most pixel we have drawn to.
  *         In case of right alignment the left most pixel we have drawn to.
  */
-static int DrawLayoutLine(ParagraphLayout::Line *line, int y, int left, int right, StringAlignment align, bool underline)
+static int DrawLayoutLine(ParagraphLayout::Line *line, int y, int left, int right, StringAlignment align, bool underline, bool truncation)
 {
 	if (line->countRuns() == 0) return 0;
 
@@ -399,7 +400,7 @@ static int DrawLayoutLine(ParagraphLayout::Line *line, int y, int left, int righ
 	int min_x = left;  // The minimum x position to draw normal glyphs on.
 	int max_x = right; // The maximum x position to draw normal glyphs on.
 
-	bool truncation = max_w < w;     // Whether we need to do truncation.
+	truncation &= max_w < w;         // Whether we need to do truncation.
 	int dot_width = 0;               // Cache for the width of the dot.
 	const Sprite *dot_sprite = NULL; // Cache for the sprite of the dot.
 
@@ -526,7 +527,7 @@ int DrawString(int left, int right, int top, const char *str, TextColour colour,
 	Layouter layout(str, INT32_MAX, colour, fontsize);
 	if (layout.Length() == 0) return 0;
 
-	return DrawLayoutLine(*layout.Begin(), top, left, right, align, underline);
+	return DrawLayoutLine(*layout.Begin(), top, left, right, align, underline, true);
 }
 
 /**
@@ -668,7 +669,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, const char *st
 			last_line = y + line_height;
 			if (first_line > y) first_line = y;
 
-			DrawLayoutLine(line, y, left, right, align, underline);
+			DrawLayoutLine(line, y, left, right, align, underline, false);
 		}
 		y += line_height;
 	}
