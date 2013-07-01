@@ -319,7 +319,8 @@ ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 		}
 
 		if (this->buffer == next_run) {
-			*l->Append() = new VisualRun(iter->second, begin, this->buffer - begin, l->getWidth());
+			int w = l->getWidth();
+			*l->Append() = new VisualRun(iter->second, begin, this->buffer - begin, w);
 			iter++;
 			assert(iter != this->runs.End());
 
@@ -365,7 +366,8 @@ ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 	}
 
 	if (l->Length() == 0 || last_char - begin != 0) {
-		*l->Append() = new VisualRun(iter->second, begin, last_char - begin, l->getWidth());
+		int w = l->getWidth();
+		*l->Append() = new VisualRun(iter->second, begin, last_char - begin, w);
 	}
 	return l;
 }
