@@ -337,26 +337,25 @@ struct DepotWindow : Window {
 
 		/* Set the row and number of boxes in each row based on the number of boxes drawn in the matrix */
 		const NWidgetCore *wid = this->GetWidget<NWidgetCore>(WID_D_MATRIX);
-		uint16 boxes_in_each_row = this->type == VEH_TRAIN ? 1 : wid->current_x / wid->resize_x;
 		uint16 rows_in_display = wid->current_y / wid->resize_y;
 
-		uint16 num = this->vscroll->GetPosition() * boxes_in_each_row;
-		int maxval = min(this->vehicle_list.Length(), num + (rows_in_display * boxes_in_each_row));
+		uint16 num = this->vscroll->GetPosition() * this->num_columns;
+		int maxval = min(this->vehicle_list.Length(), num + (rows_in_display * this->num_columns));
 		int y;
 		for (y = r.top + 1; num < maxval; y += this->resize.step_height) { // Draw the rows
-			for (byte i = 0; i < boxes_in_each_row && num < maxval; i++, num++) {
+			for (byte i = 0; i < this->num_columns && num < maxval; i++, num++) {
 				/* Draw all vehicles in the current row */
 				const Vehicle *v = this->vehicle_list[num];
-				if (boxes_in_each_row == 1) {
+				if (this->num_columns == 1) {
 					this->DrawVehicleInDepot(v, r.left, r.right, y);
 				} else {
-					int x = r.left + (rtl ? (boxes_in_each_row - i - 1) : i) * this->resize.step_width;
+					int x = r.left + (rtl ? (this->num_columns - i - 1) : i) * this->resize.step_width;
 					this->DrawVehicleInDepot(v, x, x + this->resize.step_width - 1, y);
 				}
 			}
 		}
 
-		maxval = min(this->vehicle_list.Length() + this->wagon_list.Length(), (this->vscroll->GetPosition() * boxes_in_each_row) + (rows_in_display * boxes_in_each_row));
+		maxval = min(this->vehicle_list.Length() + this->wagon_list.Length(), (this->vscroll->GetPosition() * this->num_columns) + (rows_in_display * this->num_columns));
 
 		/* Draw the train wagons without an engine in front. */
 		for (; num < maxval; num++, y += this->resize.step_height) {
@@ -406,8 +405,7 @@ struct DepotWindow : Window {
 		uint row = y / this->resize.step_height;
 		if (row >= this->vscroll->GetCapacity()) return MODE_ERROR;
 
-		uint boxes_in_each_row = GB(matrix_widget->widget_data, MAT_COL_START, MAT_COL_BITS);
-		uint pos = ((row + this->vscroll->GetPosition()) * boxes_in_each_row) + xt;
+		uint pos = ((row + this->vscroll->GetPosition()) * this->num_columns) + xt;
 
 		if (this->vehicle_list.Length() + this->wagon_list.Length() <= pos) {
 			/* Clicking on 'line' / 'block' without a vehicle */
@@ -970,9 +968,11 @@ struct DepotWindow : Window {
 	virtual void OnResize()
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_D_MATRIX);
+		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_D_MATRIX);
 		if (this->type == VEH_TRAIN) {
-			NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_D_MATRIX);
 			this->hscroll->SetCapacity(nwi->current_x - this->header_width - this->count_width);
+		} else {
+			this->num_columns = nwi->current_x / nwi->resize_x;
 		}
 	}
 
