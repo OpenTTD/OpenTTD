@@ -325,21 +325,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA} лс
 STR_UNITS_POWER_METRIC                                          :{COMMA} лс
 STR_UNITS_POWER_SI                                              :{COMMA} кВт
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA} т
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} т
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} кг
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} тонн{P а ы ""}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} тонн{P а ы ""}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} кг
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA} гал.
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} л
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} м³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} галлон{P "" а ов}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} литр{P "" а ов}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} м³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} фунт{P "" а ов}-силы
+STR_UNITS_FORCE_METRIC                                          :{COMMA} кгс
 STR_UNITS_FORCE_SI                                              :{COMMA} кН
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} фут{P "" а ов}
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} м
 STR_UNITS_HEIGHT_SI                                             :{COMMA} м
 
 # Common window strings
@@ -1728,7 +1735,44 @@ STR_CONFIG_SETTING_DEMAND_SIZE                                  :Зависим�
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Насыщение коротких маршрутов перед использованием вместительных: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :При наличии нескольких маршрутов между станциями алгоритм распределения грузов будет использовать кратчайший маршрут до его загрузки, потом следующий по длине и т.{NBSP}д. При избытке груза маршруты будут перегружаться начиная с самых производительных. Загрузка рассчитывается исходя из оценки пропускной способности (которая может быть неточной) и интенсивности использования. Эта настройка определяет, насколько загружать маршрут перед тем, как начать использовать следующий. Установите значение ниже 100% для того, чтобы избежать задержки груза, если пропускная способность маршрута будет переоценена алгоритмом.
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Скорость: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Показывать значения скорости в выбранной системе единиц
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Английская (миль/ч)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Метрическая (км/ч)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :СИ (м/с)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Мощность двигателя: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Показывать мощность двигателей транспортных средств в выбранной системе единиц
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Английская (л. с.)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Метрическая (л. с.)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :СИ (кВт)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Масса: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Показывать величины массы в выбранной системе единиц
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Английская (малая тонна)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Метрическая (т)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :СИ (кг)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Объём: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Показывать значения объёмов в выбранной системе единиц
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Английская (галлон)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Метрическая (л)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :СИ (м³)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Тяговое усилие: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Показывать значения тягового усилия в выбранной системе единиц
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Английская (фунт-сила)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Метрическая (кгс)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :СИ (кН)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Высота: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Показывать значения высот в выбранной системе единиц
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Английская (фут)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Метрическая (м)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :СИ (м)
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Интерфейс
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Локализация
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Строительство
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспорт
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Станции
@@ -4990,6 +5034,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

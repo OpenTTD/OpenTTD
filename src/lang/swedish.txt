@@ -1563,6 +1563,12 @@ STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrisk
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Belastning av korta ruter innan längre rutter används: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofta finns det flera rutter mellan två givna stationer. Godsdistributionen kommer att fylla upp den första rutten först och därefter den näst kortaste tills den är mättad osv. Mättnadsgraden bestäms utifrån en uppskattning av kapaciteten och planerad användning. När godsdristributionen har belastat samtliga rutter, och om det finns kvarvarande behov, då kommer samtliga rutter att överbelastas med preferens för rutterna med högst kapacitet. Uppskattningen av kapaciteten kommer oftast inte ske med hög noggrannhet. Denna inställning tillåter dig att ställa in hur många procent som en kort rutt ska belastas innan algoritmen ska välja nästa längre rutt. Sätt värdet till under 100 % om du vill undvika överfulla stationer i händelse av överskattad kapacitet.
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Gränssnitt
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruktion
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Fordon
@@ -4752,6 +4758,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

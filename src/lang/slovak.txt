@@ -304,6 +304,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zavrieť
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Nadpis okna - potiahni pre posun okna
 STR_TOOLTIP_SHADE                                               :{BLACK}Zabaliť okno - zobraziť len názov okna
 STR_TOOLTIP_DEBUG                                               :{BLACK}Zobraziť NewGRF debugové informácie
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Zmena veľkosti okna na základnú veľkosť. Ctrl+klik uloží aktuálnu veľkosť ako základnú
 STR_TOOLTIP_STICKY                                              :{BLACK}Zamknúť toto okno, nebude sa dať zatvoriť klávesou "Zavri všetky okná". Ctrl+Click uloží stav ako predvolený
 STR_TOOLTIP_RESIZE                                              :{BLACK}Uchop a ťahaj pre zmenu veľkosti okna
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Prepnúť veľkosť okna
@@ -1640,36 +1641,48 @@ STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymetricky
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symetricky
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Druh distribúcie pre cestujúcich: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Druh distribúcie pre poštu: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Druh distribúcie pre "obrnené" druhy nákladu: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Druh distribúcie pre náklad prevážaný obrnenými vozidlami: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Druh distribúcie pre ostatné druhy nákladu: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Presnosť distribúcie: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Vplyv vzdialenosti na požiadavky: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Ak nastavíte toto na hodnotu väčšiu ako 0, tak vzdialenosť medzi východiskovou stanicou A nejakého nákladu a možnou cieľovou stanicou B bude mať vplyv na množstvo nákladu poslaného z A do B. Čím bude B ďalej od A, tým menej nákladu bude odoslaného. Čím viac nastavíte, tým menej nákladu bude odoslaného do vzdialenejších staníc a viac nákladu bude odoslaného do bližších staníc.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Množstvo vráteného nákladu pre symetrický mód: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Nastavením na menej ako 100% sa bude symetrická distribúcia správať viac asymetricky. Menej nákladu sa bude povinne vracať späť, ak sa určité množstvo pošle do stanice. Ak nastavíte 0%, symetrická distribúcia sa bude správať ako asymetrická.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Vyťaženie krátkych ciest pred použitím kapacitných ciest: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Často je viac ciest medzi dvoma stanicami. Cargodist vyťaží najprv najkratšiu cestu, potom využije druhú najkratšiu cestu až kým nebude vyťažená atď. Vyťaženie je určené podľa odhadu kapacity a plánovaného využitia. Ak sú vyťažené všetky trasy a nepostačuje to, preťaží všetky trasy, s preferenciou najkapacitnejšej. Väčšinou algoritmus neodhadne kapacitu presne. Toto nastavenie umožňuje určiť na koľko percent musí byť vyťažená prvá pred výberom nasledujúcej dlhšej. Nastavte na menej ako 100%, aby sa zabránilo preplneniu staníc v prípade nadhodnotenia kapacity.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Jednotky rýchlosti: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Vždy, keď sú zobrazené rýchlosti v používateľskom rozhraní, zobrazia sa vo vybraných jednotkách
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperiálne (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrické (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Jednotky výkonu vozidiel: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Vždy, keď sú zobrazené výkony vozidla v používateľskom rozhraní, zobrazia sa vo vybraných jednotkách
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperiálne (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrické (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Jednotky váhy: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Vždy, keď sú zobrazené váhy v používateľskom rozhraní, zobrazia sa vo vybraných jednotkách
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperiálne ("krátka" t/tona)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrické (t/tona)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Jednotky objemu: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Vždy, keď sú zobrazené objemy v používateľskom rozhraní, zobrazia sa vo vybraných jednotkách
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperiálne (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrické (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Jednotky ťažnej sily: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Vždy, keď sa zobrazí ťažná sila v používateľskom rozhraní, zobrazí sa vo vybraných jednotkách
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperiálne (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrické (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Jednotky výšky: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Vždy, keď sú zobrazené výšky v používateľskom rozhraní, zobrazia sa vo vybraných jednotkách
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperialne (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrické (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -1906,6 +1919,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Zmenit k
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hra pre viac hráčov
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Vyberte medzi propagovanou (internet) alebo nepropagovanou (lokálna sieť, LAN) hrou
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nie
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Áno
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Meno hráča:
@@ -2286,7 +2300,8 @@ STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Nič
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Vyberte spoločnosti pre zobrazenie
 
 # Linkgraph legend window and linkgraph legend in smallmap
-STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}nepoužité
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}nevyužité
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}vyťažené
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}preťažené
 
 # Base for station construction window(s)
@@ -3099,6 +3114,7 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :Spoločnosť {Y
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Hodnotenie
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Zobraziť hodnotenia stanice
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Mesačné zásobovanie a lokálne hodnotenie
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Zoskupiť podľa
@@ -3889,7 +3905,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Naplň �
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Čakať
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Naplánovaný
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Prepnúť medzi čakaním a cestovným poriadkom
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Prepnúť medzi očakávaným a plánovaným
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :P:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :O:
