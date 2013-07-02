@@ -30,6 +30,7 @@
 #include "company_base.h"
 #include "vehicle_func.h"
 #include "articulated_vehicles.h"
+#include "error.h"
 
 #include "table/strings.h"
 #include "table/engines.h"
@@ -1097,4 +1098,26 @@ bool IsEngineRefittable(EngineID engine)
 	/* Is there any cargo except the default cargo? */
 	CargoID default_cargo = e->GetDefaultCargoType();
 	return default_cargo != CT_INVALID && ei->refit_mask != 1U << default_cargo;
+}
+
+/**
+ * Check for engines that have an appropriate availability.
+ */
+void CheckEngines()
+{
+	const Engine *e;
+	Date min_date = INT32_MAX;
+
+	FOR_ALL_ENGINES(e) {
+		if (!e->IsEnabled()) continue;
+
+		/* We have an available engine... yay! */
+		if (e->flags & ENGINE_AVAILABLE && e->company_avail != 0) return;
+
+		/* Okay, try to find the earliest date. */
+		min_date = min(min_date, e->info.base_intro);
+	}
+
+	SetDParam(0, min_date);
+	ShowErrorMessage(STR_ERROR_NO_VEHICLES_AVAILABLE, STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION, WL_WARNING);
 }
