@@ -4346,6 +4346,9 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Impossib
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... il veicolo è distrutto
 
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Non sono ancora disponibili veicoli
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Iniziare una nuova partita dopo il {DATE_SHORT} o utilizzare un NewGRF che fornisca veicoli a partire da date antecedenti
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Impossibile far passare al treno un segnale di pericolo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Impossibile invertire la direzione del treno...

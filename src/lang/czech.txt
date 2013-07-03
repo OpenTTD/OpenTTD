@@ -269,21 +269,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA} hp
 STR_UNITS_POWER_METRIC                                          :{COMMA} hp
 STR_UNITS_POWER_SI                                              :{COMMA} kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tun{P a y ""}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tun{P a y ""}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" "y" "ů"}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P "" y ů}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} stop{P a y ""}
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -762,6 +769,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Zobrazit
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Zobrazit na mapě vlastníky pozemků
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Kliknutím na typ průmyslu přepnete jeho zobrazení. Ctrl+Klik vypne všechny typy kromě toho vybraného. Ctrl+Klik znovu pro zapnutí všech druhů průmyslu.
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Kliknutím na společnost přepnete zobrazení jejího majetku. Ctrl+Klik vypne všechny společnosti kromě té vybrané. Ctrl+Klik znovu zobrazí opět všechny společnosti.
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Klikni na náklad pro přepnutí zobrazení jeho vlastností. Ctrl+Klik vypne zobrazení všech nákladů kromě jednoho vybraného. Další Ctrl+Klik všechny náklady opět zobrazí
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Silnice
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Železnice
@@ -1640,6 +1648,8 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Průměrná vel
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Odstraňovat nesmyslné prvky vozovky při výstavbě silnic: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Odstraní mrtvé konce silnice při rekonstrukci silnic
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aktualizovat distribuční graf každých {STRING} {P den dny dnů}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Čas mezi přepočítáváním částí grafu spojení. Každý přepočet přepočítává plány jedné části grafu. To znamená, že hodnota X u toho nastavení nezpůsobí, že se každých X dní přepočítá celý graf, ale pouze určité části. Čím kratší interval nastavíš, tím více času CPU bude potřeba ke spočítání. Čím delší nastavíš, tím déle bude trvat dokud si distribuce nákladu najde nové trasy.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuální
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :nerovnoměrný
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :rovnoměrný
@@ -1660,7 +1670,44 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Nastavením mé
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Vytížení kratších cest před využitím kapacitnějších: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Vzhledem k tomu, že je často mezi dvěmi stanicemi více cest, Cargodist jako první vytíží tu nejkratší a dále využije druhou nejkratší dokud také není vytížená a tak dále. Pokud jsou všechny trasy zatížené ale stále nestačí provozu, přetíží všechny trasy s preferencí té nejkapacitnější. Bohužel, většinou však algoritmus neodhaduje kapacitu přesně. Toto nastavení dovolí zvolit na kolik procent musí být nejkratší cesta zaplněna, než dojde k vytížení té delší. Nastav na méně než 100% pro zabránění přeplnění stanic v případně nadhodnocené kapacity.
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Jednotky rychlosti: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kdykoliv bude rychlost zobrazena v uživatelském rozhraní, bude ve zvolených jednotkách
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperiální (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrické (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Jednotky výkonu vozidla: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Kdykoliv se výkon vozidla zobrazí v uživatelském rozhraní, bude ve zvolených jednotkách
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperiální (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrické (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Jednotky hmotnost: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Kdykoliv se hmotnost zobrazí v uživatelském rozhraní, bude ve zvolených jednotkách
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperiální (short t/ton)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrické (t/tuna)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Jednotky objemu: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Kdykoliv se objem zobrazí v uživatelském rozhraní, bude ve zvolených jednotkách
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperiální (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrické (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Jednotky tažné síly: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Kdykoliv se tažná síla zobrazí v uživatelském rozhraní, bude ve zvolených jednotkách
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperiální (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrické (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Výškové jednotky: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Kdykoliv se v uživatelském rozhraní zobrazí výška, bude ve zvolených jednotkách
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperiální (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrické (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Ovládaní
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Překlad
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Výstavba
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Dopravní prostředky
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stanice
@@ -4368,6 +4415,9 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nelze zm
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozidlo bylo zničeno
 
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Zatím nejsou dostupná žádná vozidla
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Začít hru po {DATE_SHORT} nebo použít NewGRF, která zajistí dřívější vozidla
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nelze nechat vlak projet semafory v nebezpečí...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nelze obrátit vlak...
@@ -4985,6 +5035,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

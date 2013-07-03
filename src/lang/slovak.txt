@@ -1640,9 +1640,13 @@ STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuálne
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymetricky
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symetricky
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Druh distribúcie pre cestujúcich: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symetricky" znamená, že približne rovnaké množstvo pasažierov bude cestovať zo stanice A do stanice B ako z B do A. "asymetricky"znamená, že v oboch smeroch môže cestovať ľubovoľné množstvo pasažierov. "manuálne" znamená, že sa pre pasažierov nevykoná automatická distribúcia.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Druh distribúcie pre poštu: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symetricky" znamená, že približne rovnaké množstvo pošty bude odoslané zo stanice A do stanice B ako z B do A. "asymetricky"znamená, že v oboch smeroch môže byť odoslané ľubovoľné množstvo pošty. "manuálne" znamená, že sa pre poštu nevykoná automatická distribúcia.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Druh distribúcie pre náklad prevážaný obrnenými vozidlami: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Náklad prevážaný obrnenými vozidlami sú cennosti v miernom, diamanty v subtropickom alebo zlato v subarktickom podnebí. NewGRF to môže zmeniť. "symetricky" znamená, že rovnaké množstvo nákladu bude odoslané zo stanice A do stanice B a naopak. "asymetricky" znamená, že v oboch smeroch môže byť odoslané ľubovoľné množstvo nákladu. "manuálne" znamená, že sa pre náklad nevykoná automatická distribúcia. Doporučuje sa nastaviť na "asymetricky" alebo "manuálne" pri hraní v subarktickom, pretože banky neodošlú žiadne zlato do zlatých baní. Pre mierne a subtropické si môžete vybrať aj "symetricky", pretože banky budú posielať cennosti späť do pôvodnej banky, ktorá ich odoslala.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Druh distribúcie pre ostatné druhy nákladu: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symetricky" znamená, že približne rovnaké množstvo nákladu bude odoslané zo stanice A do stanice B ako z B do A. "asymetricky"znamená, že v oboch smeroch môže byť odoslané ľubovoľné množstvo nákladu. "manuálne" znamená, že sa pre náklad nevykoná automatická distribúcia. Pravdepodobne budete chcieť nastaviť na "asymetricky" alebo "manuálne".
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Presnosť distribúcie: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Vplyv vzdialenosti na požiadavky: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Ak nastavíte toto na hodnotu väčšiu ako 0, tak vzdialenosť medzi východiskovou stanicou A nejakého nákladu a možnou cieľovou stanicou B bude mať vplyv na množstvo nákladu poslaného z A do B. Čím bude B ďalej od A, tým menej nákladu bude odoslaného. Čím viac nastavíte, tým menej nákladu bude odoslaného do vzdialenejších staníc a viac nákladu bude odoslaného do bližších staníc.
@@ -1919,6 +1923,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Zmenit k
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hra pre viac hráčov
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}S reklamou
 STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Vyberte medzi propagovanou (internet) alebo nepropagovanou (lokálna sieť, LAN) hrou
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nie
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Áno
@@ -3129,6 +3134,7 @@ STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHO
 STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} do akejkoľvek stanice
 STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} cez akúkoľvek stanicu
 STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} z tejto stanice
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} zastavuje v tejto stanici
 STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} na túto stanicu
 STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} bez zastávky
 
@@ -4373,6 +4379,9 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}V hre je
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nie je možné zmenit servisný interval ...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozidlo je zničené
+
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Zatiaľ nie sú dostupné žiadne vozidlá
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Začnite novú hru po {DATE_SHORT} alebo použite NewGRF, ktoré zabezpečí vozidlá v skoršom čase
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nemôžeš pustiť vlak na červenú keď hrozí nebezpečenstvo...
