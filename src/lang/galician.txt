@@ -200,21 +200,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cv
 STR_UNITS_POWER_METRIC                                          :{COMMA}cv
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonelada{P "" s}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonelada{P "" s}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galón{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pés
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -1560,6 +1567,9 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Relación entre
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Elimina-los elementos absurdos das estradas en construción: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Eliminar tramos de estrada sen saída durante a reconstrución financiada das estradas
 
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimétrica
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simétrica
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisión da distribución: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Canto máis alto sexa o valor, máis tempo de CPU levará o cálculo de distribución. Se leva demasiado tempo podes experimentar retraso. Se sen embargo o fixas nun valor baixo, a distribución será imprecisa, e pode que a carga non sexa enviada aos destinos que ti queres.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efecto da distancia na demanda: {STRING}
@@ -1569,7 +1579,44 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Fixar esta opci
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturación de rutas curtas antes de empregar rutas con capacidade: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frecuentemente hai múltiples rutas posíbeis entre dúas estacións dadas. En primero lugar intentarase satura-la ruta máis curta, para posteriormente satura-la segunda máis curta e así sucesivamente. A saturación está determinada por unha estimación de capacidade e uso planificado. Unha vez saturadas tódalas rutas, se aínda queda demanda, sobrecargaranse as rutas comezando por aquelas de maior capacidade. A maior parte das veces, o algoritmo non estimará a capacidade con precisión. Esta opción permite especificar ata que porcentaxe de saturación pode ter unha ruta curta na primeira volta do algoritmo antes de escolle-la seguinte máis curta. Fíxao en menos do 100% para evitar estacións sobrecargadas no caso de que se sobreestime a capacidade.
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unidades de velocidade: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Cando unha velocidade apareza na interfaz de usuario, facelo nas unidades seleccionadas
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Métrico (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unidades de potencia dos vehículos: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Cando a potencia dun vehículo se amose na interfaz de usuario, facelo nas unidades seleccionadas
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperial (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Métrico (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Unidades de peso: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Cando se amosen pesos na interfaz do usuario, facelo nas unidades seleccionadas
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (t/ton curta)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Métrica (t/tonne)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Unidades de volume: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Cando se amosen volumes na interfaz do usuario, facelo nas unidades seleccionadas
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Métrico (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Unidades para o esforzo tractor: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Cando o esforzo tractor, tamén coñecido coma forza tractriz, se amose na interfaz de usuario, facelo nas unidades seleccionadas
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Métrico (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unidades para a altura (cota): {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Cando as cotas se amosen na interfaz de usuario, facelo coas unidades seleccionadas
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrico (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localización
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construción
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehículos
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Estacións
@@ -2960,6 +3007,12 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Pincha n
 
 # Story book window
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Historial global
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Páxina {NUM}
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Anterior
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Ir á páxina anterior
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Seguinte
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Ir á páxina seguinte
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomes das estacións - pincha nun nome para centrar a vista na estación. CTRL+Click abre unha nova fiestra na localización da estación
@@ -4250,6 +4303,9 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Non se p
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... o vehículo está destruído
 
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Aínda non hai vehículos dispoñíbeis
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Comezar unha partida nova a partires de {DATE_SHORT} ou empregar un NewGRF que proporcione vehículos antigos
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Non se pode facer que o tren rebase un sinal en perigo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}No se pode cambia-lo sentido do tren...
@@ -4750,6 +4806,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

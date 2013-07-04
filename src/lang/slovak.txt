@@ -1648,6 +1648,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Náklad prevá�
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Druh distribúcie pre ostatné druhy nákladu: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symetricky" znamená, že približne rovnaké množstvo nákladu bude odoslané zo stanice A do stanice B ako z B do A. "asymetricky"znamená, že v oboch smeroch môže byť odoslané ľubovoľné množstvo nákladu. "manuálne" znamená, že sa pre náklad nevykoná automatická distribúcia. Pravdepodobne budete chcieť nastaviť na "asymetricky" alebo "manuálne".
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Presnosť distribúcie: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Čím viac nastavíte, tým viac procesorového času zaberie vypočítavanie trás spojov. Pokiaľ to bude trvať príliš dlho, môžete si všimnúť oneskorenie. Ak nastavíte nízku hodnotu, rozdelenie bude nepresné a môže sa stať, že náklad nebude odoslaný na miesta, ktoré očakávate.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Vplyv vzdialenosti na požiadavky: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Ak nastavíte toto na hodnotu väčšiu ako 0, tak vzdialenosť medzi východiskovou stanicou A nejakého nákladu a možnou cieľovou stanicou B bude mať vplyv na množstvo nákladu poslaného z A do B. Čím bude B ďalej od A, tým menej nákladu bude odoslaného. Čím viac nastavíte, tým menej nákladu bude odoslaného do vzdialenejších staníc a viac nákladu bude odoslaného do bližších staníc.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Množstvo vráteného nákladu pre symetrický mód: {STRING}
@@ -3890,6 +3891,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Tento ce
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tento cestovný poriadok začne {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Začiatočný dátum
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vyberte dátum začiatku cestovného poriadku. Ctrl+klik nastaví počiatočný dátum tohto cestovného poriadku pre všetky vozidlá zdieľajúce tieto príkazy na základe ich relatívneho poradia, ak je cestovný poriadok kompletne vyplnený
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmenit cas
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmenit dlžku trvania oznaceného príkazu

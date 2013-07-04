@@ -191,29 +191,36 @@ STR_COLOUR_GREY                                                 :灰
 STR_COLOUR_WHITE                                                :白
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} 英里/小時
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} 公里/小時
+STR_UNITS_VELOCITY_SI                                           :{COMMA} 米/秒
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
-STR_UNITS_POWER_METRIC                                          :{COMMA}hp
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}匹
+STR_UNITS_POWER_METRIC                                          :{COMMA}匹
+STR_UNITS_POWER_SI                                              :{COMMA}千瓦
 
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA} 短噸
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}噸
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} 短噸
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}公噸
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} 千克
 
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA} 加侖
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}升
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}米³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} 加侖
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} 公升
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} 立方米
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} 磅力
+STR_UNITS_FORCE_METRIC                                          :{COMMA} 公斤力
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} 英呎
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} 米
 STR_UNITS_HEIGHT_SI                                             :{COMMA} 公尺
 
 # Common window strings
@@ -1583,7 +1590,44 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :如果把此值
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :如果最短路徑的飽和度超過{STRING}，把貨物改派往容量較大的路徑
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :貨物分配功能在派送貨物時，會優先使用最短路徑，至其飽和後改用第二短的路徑，如此類推。當所有路徑皆飽和但仍未滿足需求，系統會由容量較大的路徑開始繼續加載貨物。{}由於路徑飽和度難以準確估算，此設定容許您定義一值，使短路徑達至該飽和度後，系統便開始加載容量較大的路徑。{}如果此設定的值少於100%，即使系統高估路徑容量，也不會使過多的貨物滯留車站。
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :速度單位：{STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :在界面上以所選擇的單位表示速度
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :英制（英里/小時）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :米制（公里/小時）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :國際單位（米/秒）
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :交通工具功率單位：{STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :在界面上以所選擇的單位表示交通工具的功率
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :英制（匹）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :米制（匹）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :國際單位（千瓦）
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :重量單位：{STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :在界面上以所選擇的單位表示重量
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :英制（短噸）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :米制（公噸）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :國際單位（千克）
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :體積單位：{STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :在界面上以所選擇的單位表示體積
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :英制（加侖）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :米制（升）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :國際單位（立方米）
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :牽引力單位：{STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :在界面上以所選擇的單位表示牽引力
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :英制（磅力）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :米制（千克力）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :國際單位（千牛頓）
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :高度單位：{STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :在界面上以所選擇的單位表示高度
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :英制（英呎）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :米制（米）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :國際單位（米）
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}介面
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}本地化
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}建造
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}交通工具
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}車站
@@ -4272,6 +4316,9 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}不能�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 交通工具已摧毀
 
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}暫時沒有可用的交通工具
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}在{DATE_SHORT}後開始新遊戲，或使用一款提供早期交通工具的NewGRF
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}無法讓列車通過險阻號誌...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}無法倒轉列車方向...
@@ -4772,6 +4819,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

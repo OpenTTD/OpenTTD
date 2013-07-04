@@ -3289,6 +3289,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Daj ła
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Cele
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Cele globalne
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Cele globalne:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Brak -
@@ -3364,6 +3365,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Pokaż o
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Miesięczna dostawa i lokalna ocena:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} non-stop
 
 
 ############ range for rating starts
@@ -4606,6 +4608,8 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Za dużo
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nie można zmienić okresu między serwisowaniami...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... pojazd jest zniszczony
+
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Obecnie żaden pojazd nie jest dostępny
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nie można przepuścić pociągu za sygnał, niebezpieczeństwo...

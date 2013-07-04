@@ -200,21 +200,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cv
 STR_UNITS_POWER_METRIC                                          :{COMMA}cv
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tones{P "" s}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{G=Femenin}{COMMA} ton{P a es}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{G=Masculin}{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galons{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{G=Masculin}{COMMA} litre{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{G=Masculin}{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{G=Masculin}{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{G=Masculin}{COMMA} m
 
 # Common window strings
@@ -222,6 +229,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Cadena d
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introdueix una cadena de filtre
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introdueix una paraula clau per filtrar la llista de
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Selecciona ordre d'agrupament
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecciona l'ordre de classificació (descendent/ascendent)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecciona el criteri de classificació
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecciona el criteri de filtratge
@@ -278,6 +286,8 @@ STR_SORT_BY_LENGTH                                              :Llargada
 STR_SORT_BY_LIFE_TIME                                           :Temps de vida restant
 STR_SORT_BY_TIMETABLE_DELAY                                     :Retràs de l'horari
 STR_SORT_BY_FACILITY                                            :Tipus de estació
+STR_SORT_BY_WAITING_TOTAL                                       :Càrrega en espera total
+STR_SORT_BY_WAITING_AVAILABLE                                   :Càrrega en espera disponible
 STR_SORT_BY_RATING_MAX                                          :Rati de càrrega més alt
 STR_SORT_BY_RATING_MIN                                          :Rati de càrrega més baix
 STR_SORT_BY_ENGINE_ID                                           :IDMotor (ordre clàssic)
@@ -303,6 +313,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Mostra l
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Mostra la llista d'estacions de la companyia
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Mostra informació financera de la companyia
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Mostra informació general de la companyia
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Mostra llista d'objectius
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostra gràfics
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Mostra la taula de la lliga d'empreses
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financia la construcció d'una nova indústria
@@ -1555,12 +1566,62 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :La grandària m
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Treu els elements de carretera absurds durant la reconstrucció de carretera: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Elimina les carreteres sense sortida durant les reconstruccions de carreteres finançades
 
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Mode de distribució per la classe de càrrega BLINDADA: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La classe de càrrega BLINDADA conté objectes de valor a la zona temperada, diamants a la subtropical o or al clima subàrtic. Els NewGRF poden canviar això. "simètric" significa que aproximadament la mateixa quantitat d'aquesta càrrega s'enviarà de l'estació A a la B que de B a A. "asimètric" vol dir que quantitats arbitràries d'aquesta càrrega poden ser enviades en qualsevol sentit. "manual" significa que no s'aplicarà cap distribució automàtica a aquesta càrrega. Es recomana indicar asimètric o manual en clima subàrtic, doncs els bancs no enviaran or de tornada a les mines. Pels climes temperat i subtropical podeu també seleccionar simètric, doncs els bancs enviaran objectes de valor de tornada al banc d'origen de certa quantitat d'aquests.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Mode de distribució per altres classes de càrrega: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"simètric" significa que aproximadament la mateixa quantitat de càrrega s'enviarà de l'estació A a la B que de B a A. "asimètric" vol dir que quantitats arbitràries de càrrega poden ser enviades en qualsevol sentit. "manual" significa que no s'aplicarà cap distribució automàtica a aquestes càrregues. Probablement voldreu indicar "asimètric" o manual.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisió de la distribució: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Com més alt el valor indicat, més temps de processador requerirà el càlcul del graf de connexions. Si requereix massa temps podeu notar ralentització. Si indiqueu un valor baix, però, la distribució serà poc acurada, i us podeu trobar que la càrrega no és enviada als llocs que espereu.
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efecte de la distància sobre les demandes: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Si indiqueu un valor major de 0, la distància entre l'estació d'origen A d'una càrrega i la possible destinació B, tindrà efecte en la quantitat de càrrega enviada de A a B. Com més lluny és B de A menys càrrega s'hi enviarà. Com més alt el valor, menys càrrega s'enviarà a estacions llunyanes i més càrrega a estacions properes.
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Quantitat de càrrega retornada per mode simètric: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Indicant menys del 100% la distribució simètrica es comporta més com l'asimètrica. Menys càrrega serà retornada si una certa quantitat és enviada a una estació. Si indiqueu 0% la distribució simètrica es comporta igual que l'asimètrica.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturació de camins curts abans d'usar camins d'alta capacitat: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Sovint hi ha diversos camins entre dues estacions donades. Cargodist primer saturarà el camí més curt, després usarà el segon camí més curt fins a saturar-lo i així successivament. La saturació és determinada per una estimació de la capacitat i l'ús previst. Un cop ha saturat tots els camins, si encara hi ha demanda, sobrecarregarà tots els camins, preferint aquells de major capacitat. No obstant, molt sovint l'algoritme no farà una estimació acurada de la capacitat. Aquest paràmetre us permet especificar fins a quin percentatge un camí més curt ha de ser saturat en la primera ronda abans d'escollir el següent en longitud. Indiqueu menys del 100% per evitar la superpoblació d'estacions en cas de capacitat sobreestimada.
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unitats de velocitat: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Quan es mostren velocitats a la interfície d'usuari, presenta-les en les unitats seleccionades
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Mètric (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unitats de potència dels vehicles: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Quan es mostra la potència d'n vehicle a la interfície d'usuari, presenta-la en les unitats seleccionades
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperial (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Mètric (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Unitats dels pesos: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Quan es mostren pesos a la interfície d'usuari, presenta-les en les unitats seleccionades
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (t curta/tona)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Mètric (t/tona)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Unitats de volums: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Quan es mostren volums a la interfície d'usuari, presenta'ls en les unitats seleccionades
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Mètric (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Unitats de força de tracció: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Quan es mostri força de tracció a la interfície d'usuari, presenta-la en les unitats seleccionades
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Mètric (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unitats de les alçades: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Quan es mostren alçades a la interfície d'usuari, presenta-les en les unitats seleccionades
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (peu)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Mètric (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfície
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localització
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construcció
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicles
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Estacions
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economia
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Distribució de la Càrrega
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidors
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Opcions de pantalla
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interacció
@@ -2898,9 +2959,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Compra 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Suborna les autoritats locals per incrementar el teu rati, a risc de greus penalitzacions si et pesquen!!.{}Cost: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Objectius
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Objectius globals
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Objectius globals:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Cap -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- No aplicable -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Objectius de la companyia:
@@ -2973,7 +3037,28 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostra e
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Aprovisionament mensual i ratis locals:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Agrupa per
+STR_STATION_VIEW_WAITING_STATION                                :Estació: En espera
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Quantitat: En espera
+STR_STATION_VIEW_PLANNED_STATION                                :Estació: Planejada
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Quantitat: Planejada
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} des de {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} via {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} cap a {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} des d'estació desconeguda
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} cap a qualsevol estació
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} via qualsevol estació
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} des d'aquesta estació
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} s'atura en aquesta estació
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} cap aquesta estació
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} sense parar
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Origen-Via-Destinació
+STR_STATION_VIEW_GROUP_S_D_V                                    :Origen-Destinació-Via
+STR_STATION_VIEW_GROUP_V_S_D                                    :Via-Origen-Destinació
+STR_STATION_VIEW_GROUP_V_D_S                                    :Via-Destinació-Origen
+STR_STATION_VIEW_GROUP_D_S_V                                    :Destinació-Origen-Via
+STR_STATION_VIEW_GROUP_D_V_S                                    :Destincació-Via-Origen
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Pèssim
@@ -3720,6 +3805,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Aquest h
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Aquest horari començarpa a {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data de partida
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecciona una data com a punt de partida d'aquest Horari. Ctrl+Click fixa el punt de partida d'aquest Horari i distribueix tots els vehicles que comparteixen aquest ordre equitativament en base al seu ordre relatiu, si l'ordre és totalment inclòs a l'Horari
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Canvia Temps
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Canvia la quantitat de temps que l'ordre marcada hauria de prendre
@@ -4209,6 +4295,9 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Massa ve
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}No es pot canviar l'interval de les revisions...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vehicle està destruït
+
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Encara no hi ha vehicles disponibles
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Iniciar un nou joc desprès de {DATE_SHORT} o usar un NewGRF que proporciona vehicles primerencs
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}No pots fer que un tren passi d'una senyal amb perill...
@@ -4710,6 +4799,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
