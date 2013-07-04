@@ -126,12 +126,15 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 		const SQChar *sqkey;
 		if (SQ_FAILED(sq_getstring(vm, -2, &sqkey))) return SQ_ERROR;
 		const char *key = SQ2OTTD(sqkey);
+		ValidateString(key);
 
 		if (strcmp(key, "name") == 0) {
 			const SQChar *sqvalue;
 			if (SQ_FAILED(sq_getstring(vm, -1, &sqvalue))) return SQ_ERROR;
 			char *name = strdup(SQ2OTTD(sqvalue));
 			char *s;
+			ValidateString(name);
+
 			/* Don't allow '=' and ',' in configure setting names, as we need those
 			 *  2 chars to nicely store the settings as a string. */
 			while ((s = strchr(name, '=')) != NULL) *s = '_';
@@ -142,6 +145,7 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 			const SQChar *sqdescription;
 			if (SQ_FAILED(sq_getstring(vm, -1, &sqdescription))) return SQ_ERROR;
 			config.description = strdup(SQ2OTTD(sqdescription));
+			ValidateString(config.description);
 			items |= 0x002;
 		} else if (strcmp(key, "min_value") == 0) {
 			SQInteger res;
@@ -227,6 +231,7 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 	const SQChar *sq_setting_name;
 	if (SQ_FAILED(sq_getstring(vm, -2, &sq_setting_name))) return SQ_ERROR;
 	const char *setting_name = SQ2OTTD(sq_setting_name);
+	ValidateString(setting_name);
 
 	ScriptConfigItem *config = NULL;
 	for (ScriptConfigItemList::iterator it = this->config_list.begin(); it != this->config_list.end(); it++) {
@@ -255,6 +260,7 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 		const char *key_string = SQ2OTTD(sq_key);
 		int key = atoi(key_string + 1);
 		const char *label = SQ2OTTD(sq_label);
+		ValidateString(label);
 
 		/* !Contains() prevents strdup from leaking. */
 		if (!config->labels->Contains(key)) config->labels->Insert(key, strdup(label));
