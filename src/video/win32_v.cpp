@@ -176,6 +176,7 @@ static void ClientSizeChanged(int w, int h)
 {
 	/* allocate new dib section of the new size */
 	if (AllocateDibSection(w, h)) {
+		if (_draw_mutex != NULL) _draw_mutex->BeginCritical();
 		/* mark all palette colours dirty */
 		_cur_palette.first_dirty = 0;
 		_cur_palette.count_dirty = 256;
@@ -190,6 +191,8 @@ static void ClientSizeChanged(int w, int h)
 			_screen.dst_ptr = _wnd.buffer_bits;
 			UpdateWindows();
 		}
+
+		if (_draw_mutex != NULL) _draw_mutex->EndCritical();
 	}
 }
 
