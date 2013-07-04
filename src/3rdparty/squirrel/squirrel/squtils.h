@@ -37,9 +37,13 @@ public:
 	~sqvector()
 	{
 		if(_allocated) {
+		        /* Break freeing loops, if this vector (indirectly) links to itself. */
+		        size_t allocated_size = _allocated * sizeof(T);
+		        _allocated = 0;
+
 			for(SQUnsignedInteger i = 0; i < _size; i++)
 				_vals[i].~T();
-			SQ_FREE(_vals, (_allocated * sizeof(T)));
+			SQ_FREE(_vals, allocated_size);
 		}
 	}
 	void reserve(SQUnsignedInteger newsize) { _realloc(newsize); }
