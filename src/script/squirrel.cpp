@@ -14,6 +14,7 @@
 #include "../debug.h"
 #include "squirrel_std.hpp"
 #include "../fileio_func.h"
+#include "../string_func.h"
 #include <sqstdaux.h>
 #include <../squirrel/sqpcheader.h>
 #include <../squirrel/sqvm.h>
@@ -252,6 +253,7 @@ bool Squirrel::CallStringMethodStrdup(HSQOBJECT instance, const char *method_nam
 	if (!this->CallMethod(instance, method_name, &ret, suspend)) return false;
 	if (ret._type != OT_STRING) return false;
 	*res = strdup(ObjectToString(&ret));
+	ValidateString(*res);
 	return true;
 }
 

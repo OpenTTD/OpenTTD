@@ -255,6 +255,18 @@ void str_validate(char *str, const char *last, StringValidationSettings settings
 }
 
 /**
+ * Scans the string for valid characters and if it finds invalid ones,
+ * replaces them with a question mark '?'.
+ * @param str the string to validate
+ */
+void ValidateString(const char *str)
+{
+	/* We know it is '\0' terminated. */
+	str_validate(const_cast<char *>(str), str + strlen(str) + 1);
+}
+
+
+/**
  * Checks whether the given string is valid, i.e. contains only
  * valid (printable) characters and is properly terminated.
  * @param str  The string to validate.

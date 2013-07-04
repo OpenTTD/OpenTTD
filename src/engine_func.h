@@ -18,6 +18,7 @@
 
 void SetupEngines();
 void StartupEngines();
+void CheckEngines();
 
 /* Original engine data counts and offsets */
 extern const uint8 _engine_counts[4];
