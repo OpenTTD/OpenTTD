@@ -750,7 +750,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Növény
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Tulajdonosok mutatása a térképen
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Kattints egy gazdasági épület típusra annak megjelenítésének ki/bekapcsolásához. Ctrl+kattintással kikapcsolja az összeset kivéve a kiválasztott típust. Ctrl+kattintás még egyszer bekapcsolja az összeset
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Kattints egy vállalatra a tulajdonainak megjelenítésének ki/bekapcsolásához. Ctrl+kattintással kikapcsolja az összeset kivéve a kiválasztottat. Ctrl+kattintás még egyszer bekapcsolja az összeset
-STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Kattints egy árúra, hogy váltsad a tulajdonságának megjelenítését. Ctrl+Kattintás a kíválasztott árún kívül a többit letiltja. Ismételt Ctrl+Kattintásra minden árút engedélyez.
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Kattints egy árura, hogy váltsad a tulajdonságának megjelenítését. Ctrl+Kattintás a kíválasztott árun kívül a többit letiltja. Ismételt Ctrl+Kattintásra minden árut engedélyez
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Út
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Vasút
@@ -1528,7 +1528,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Üzenet megjele
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Új járművek: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Újság megjelenítése, amikor egy új jármű elérhetővé válik
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Rakományok elfogadásainak változásai: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Üzenet megjelenítése az állomások bizonyos árúk fogadóképességének változásáról.
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Üzenet megjelenítése az állomások bizonyos áruk fogadóképességének változásáról
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Támogatások: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Újság megjelenítése szállítási támogatásokkal kapcsolatban
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Általános információk: {STRING}
@@ -1633,7 +1633,7 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Zsákutcák elt
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :A szétosztási gráf frissítése {STRING} naponként
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :A kapcsolati gráf egyes újraszámításai között eltelő idő. Minden számítás a gráf egy adott komponensére vonatkozik. Egy adott X beállítás esetén nem fog a teljes gráf X naponként frissülni, csak egy komponense. Minél rövidebb ez az idő, annál több CPU időre lesz szükség a számítás elvégzéséhez. Minél hosszabb ez az idő, annál több ideig fog tartani, mire a szétosztás megindul az új útvonalakon.
 STR_CONFIG_SETTING_LINKGRAPH_TIME                               :A szétosztási gráf újraszámolására szánt idő: {STRING} nap
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :A kapcsolati gráf egy komponensének újraszámítására szánt idő. Az újraszámítás egy külön szálon indul el, és a megadott számú napig fut. Minél rövidebb ez az időtartam, annál valószínűbb, hogy a számítás nincs kész az idő lejártakor, ekkor a játék megáll a számítás befejeződéséig (ettől a játék akadhat). Minél hosszabb ez az időtartam, annál több idp kell a szétosztás frissüléséhez, amikor megváltoznak az útvonalak.
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :A kapcsolati gráf egy komponensének újraszámítására szánt idő. Az újraszámítás egy külön szálon indul el, és a megadott számú napig fut. Minél rövidebb ez az időtartam, annál valószínűbb, hogy a számítás nincs kész az idő lejártakor, ekkor a játék megáll a számítás befejeződéséig (ettől a játék akadhat). Minél hosszabb ez az időtartam, annál több idő kell a szétosztás frissüléséhez, amikor megváltoznak az útvonalak.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :kézi
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :aszimmetrikus
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :szimmetrikus
@@ -1652,7 +1652,7 @@ STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Ha 0-nál magas
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Szimmetrikus esetben a visszaküldött rakomány mennyisége: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :100%-nál kisebb beállítás esetén a szimmetrikus szétosztás jobban fog hasonlítani az aszimmetrikusra. Adott mennyiségű rakomány küldése esetén kevesebb lesz automatikusan visszaküldve. 0% esetén a szimmetrikus szétosztás pontosan úgy fog viselkedni, mint az aszimmetrikus szétosztás.
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :A rövidebb utak telítettsége a szabad utak felhasználása előtt: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Gyakran több útvonal is van két adott állomás között. A Cargodist először a legrövidebb útvonalat telíti be, majd a második legrövidebb útvonalat, miután az első útvonal már telített, és így tovább. A telítettséget a kapacitás becslése és a tervezett kihasználtság határozza meg. Amennyiben az összes útvonal telített, és még mindig van igény, az összes útvonalat terhelni fogja, elsősorban a legnagyobb kapacitásúakat. Viszont a legtöbb esetben az algoritmus nem fogja pontosan megbecsülni a kapcitást. Ezen opció segítségével bellíthatjuk, hogy milyen telítettségi szintig legyen kihasználva a rövidebb útvonal a hosszabb útvonal használatba vétele előtt. Állítsd 100%-nál kisebbre, hogy elkerüld a túlterhelődő állomásokat abban az esetben, ha a kapacitás túl lenne becsülve.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Gyakran több útvonal is van két adott állomás között. A Cargodist először a legrövidebb útvonalat telíti be, majd a második legrövidebb útvonalat, miután az első útvonal már telített, és így tovább. A telítettséget a kapacitás becslése és a tervezett kihasználtság határozza meg. Amennyiben az összes útvonal telített, és még mindig van igény, az összes útvonalat terhelni fogja, elsősorban a legnagyobb kapacitásúakat. Viszont a legtöbb esetben az algoritmus nem fogja pontosan megbecsülni a kapacitást. Ezen opció segítségével beállíthatjuk, hogy milyen telítettségi szintig legyen kihasználva a rövidebb útvonal a hosszabb útvonal használatba vétele előtt. Állítsd 100%-nál kisebbre, hogy elkerüld a túlterhelődő állomásokat abban az esetben, ha a kapacitás túl lenne becsülve!
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Sebesség mértékegysége: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :A sebességek a kiválasztott mértékegységben fognak megjelenni a felhasználói felületen
@@ -4380,7 +4380,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nem vál
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... jármű megsemmisült
 
-STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Még nincsenek elérhető járművek.
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Még nincsenek elérhető járművek
 STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Indíts új játékot {DATE_SHORT} után, vagy használj olyan NewGRF-et, ami tartalmaz megfelelően korai járműveket!
 
 # Specific vehicle errors

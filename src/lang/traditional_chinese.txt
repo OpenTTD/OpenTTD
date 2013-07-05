@@ -317,10 +317,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}顯示�
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}顯示圖表
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}顯示公司排行榜
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}出資建造新工廠或顯示所有工業清單
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}顯示公司擁有的列車。 按住 Ctrl 點選可切換群組／交通工具清單
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}顯示公司擁有的車輛。 按住 Ctrl 點選可切換群組／交通工具清單
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}顯示公司擁有的船舶。 按住 Ctrl 點選可切換群組／交通工具清單
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}顯示公司擁有的飛機。 按住 Ctrl 點選可切換群組／交通工具清單
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}顯示公司擁有的列車。 按住 Ctrl 點選以切換是否顯示群組的清單
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}顯示公司擁有的公路車輛。 按住 Ctrl 點選以切換是否顯示群組的清單
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}顯示公司擁有的船舶。 按住 Ctrl 點選以切換是否顯示群組的清單
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}顯示公司擁有的飛機。 按住 Ctrl 點選以切換是否顯示群組的清單
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}拉近場景
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}拉遠場景
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}鋪設鐵軌
@@ -583,7 +583,7 @@ STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}檢視此公司的詳細資訊
 ############ Those following lines need to be in this order!!
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}交通工具：
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}運輸工具：
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}車站：
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}最低損益：
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}最低收入：
@@ -594,9 +594,9 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}資金�
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}貸款：
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}總計：
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}去年盈利的交通工具數量； 包含公路車輛、火車、船舶與飛機
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}去年錄得盈利的運輸工具（包括公路車輛、火車、船舶與飛機）數量
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}最後提供服務的車站各部份數量。 每部份車站 (火車站、公車站、機場) 都算在内，就算連在一起亦然
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}最低收入交通工具的損益 (只計算出廠兩年以上的交通工具)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}最低收入的運輸工具的損益（只計算出廠兩年以上的運輸工具）
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}最近三年的單季最低收入
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}最近三年的單季最高收入
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}前四季運送的貨物量
@@ -672,14 +672,14 @@ STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHIT
 STR_SMALLMAP_CAPTION                                            :{WHITE}地圖 - {STRING}
 
 STR_SMALLMAP_TYPE_CONTOURS                                      :地形
-STR_SMALLMAP_TYPE_VEHICLES                                      :交通工具
+STR_SMALLMAP_TYPE_VEHICLES                                      :運輸工具
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :工業
 STR_SMALLMAP_TYPE_ROUTEMAP                                      :貨物流動
 STR_SMALLMAP_TYPE_ROUTES                                        :路線
 STR_SMALLMAP_TYPE_VEGETATION                                    :植被
 STR_SMALLMAP_TYPE_OWNERS                                        :所有人
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}於地圖上顯示地形輪廓
-STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}於地圖上顯示交通工具
+STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}於地圖上顯示運輸工具
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}於地圖上顯示各種工業
 STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}在地圖上顯示貨物流動情況
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}於地圖上顯示運輸路線
@@ -693,7 +693,7 @@ STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}鐵路
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}車站／機場／碼頭
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}建築／工業
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}交通工具
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}運輸工具
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}列車
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}公車／貨車
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}船舶
@@ -1107,11 +1107,11 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :公司最多可
 STR_CONFIG_SETTING_INTEREST_RATE                                :息率： {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :設定貸款息率。如果啟用了通貨膨脹的設定，則此設定同時決定通脹率
 STR_CONFIG_SETTING_RUNNING_COSTS                                :營運成本： {STRING}
-STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :設定交通工具和基礎建設的營運與維護成本水平
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :設定運輸工具和基礎建設的營運與維護成本水平
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :建造速度： {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :限制電腦 AI 的建造速度
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :交通工具故障率： {STRING}
-STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :控制維修不足的交通工具故障的頻率
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :運輸工具故障率： {STRING}
+STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :控制維修不足的運輸工具故障的頻率
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :補助倍率： {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :設定獲補助服務的總利潤金額相對原有利潤的倍率
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建造成本： {STRING}
@@ -1121,7 +1121,7 @@ STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :如果此選項
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :禁止列車在車站內折返： {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :如果此選項被啟用，即使折返能使列車走較少的路到達下一目的地，列車仍不會在非端點的車站折返
 STR_CONFIG_SETTING_DISASTERS                                    :災難： {STRING}
-STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :切換那些有可能阻碍、摧毀交通工具或基礎建設的災難
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :切換那些有可能阻碍、摧毀運輸工具或基礎建設的災難
 STR_CONFIG_SETTING_CITY_APPROVAL                                :地方政府對地區結構重組的態度： {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :選擇公司所製造的噪音和環境傷害對其在市鎮的評比及未來的建設行動會造成多大影響
 
@@ -1141,24 +1141,24 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :設定車輛可
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :列車加速演算模型：{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :選擇列車加速的物理模型。「原版」模型對所有在斜坡上的列車施加同樣的減速量；至於「真實」模型則根據所在斜坡的斜度、彎道的彎度、列車的長度和牽引力等因素決定列車的減速量
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :車輛加速演算模型：{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :選擇路面車輛加速的物理模型。「原版」模型對所有在斜坡上的車輛施加同樣的減速量；至於「真實」模型則根據車輛的牽引力等因素決定該車輛的減速量
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :選擇公路車輛加速的物理模型。「原版」模型對所有在斜坡上的車輛施加同樣的減速量；至於「真實」模型則根據車輛的牽引力等因素決定該車輛的減速量
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :對列車而言的斜坡斜度： {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :對列車而言，一格斜坡的斜度大小。數值越高，斜坡越陡峭，列車越難攀上斜坡
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :對路面車輛而言的斜坡斜度： {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :對路面車輛而言，一格斜坡的斜度大小。數值越高，斜坡越陡峭，車輛越難攀上斜坡
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :對公路車輛而言的斜坡斜度： {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :對公路車輛而言，一格斜坡的斜度大小。數值越高，斜坡越陡峭，車輛越難攀上斜坡
 STR_CONFIG_SETTING_FORBID_90_DEG                                :禁止列車及船舶直角轉向：{STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :列車於縱向路軌與橫向路軌交接之處轉向稱為「直角轉向」；列車於其他的路軌配置上轉向稱為「45度轉向」。如啟用此設定，所有列車皆不會進行直角轉向。除列車外，此設定同樣適用於船舶
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :允許將不相鄰的車站與附近的車站結合：{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :容許以「CTRL 鍵 + 點選」的方式，加入與現有部份不相連接的車站部件。
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :使用改善後的裝載演算法：{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :如啟用此設定，在車站內等候的多個交通工具會依其進站次序裝載：只有當站內的乘客或貨物足夠令第一個交通工具滿載時，下一個交通工具才會開始裝載
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :交通工具逐步裝載：{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :如啟用此設定，交通工具會根據其裝載設定逐步裝載貨物。否則，所有交通工具都會在特定時間內裝載所有乘客或貨物，而裝載所用的時間則取決於所裝載的乘客或貨物之數量
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :如啟用此設定，在車站內等候的多部運輸工具會依其進站次序裝載：只有當站內的乘客或貨物足夠令第一部運輸工具滿載時，下一部運輸工具才會開始裝載
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :運輸工具逐步裝載貨物：{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :如啟用此設定，運輸工具會根據其裝載設定逐步裝載貨物。否則，所有運輸工具都會在特定時間內裝載所有乘客或貨物，而裝載所用的時間則取決於所裝載的乘客或貨物之數量
 STR_CONFIG_SETTING_INFLATION                                    :通貨膨脹：{STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :啟用通貨膨脹，而且成本的增長會稍為比收入的增長快
 STR_CONFIG_SETTING_SELECTGOODS                                  :有需求才向車站供貨：{STRING}
-STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :車站只會在有接收有關乘客或貨物的交通工具停靠後才收到附近建築物供應的乘客或貨物。這避免了車站評價因為未有交通工具使用而下降
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :車站只會在能運送有關乘客或貨物的運輸工具停靠後，才開始接收附近建築物供應的乘客或貨物。這樣可避免車站評價因為未有運輸工具使用而下降
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :橋樑長度上限： {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :建造橋樑長度的上限
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :隧道長度上限： {STRING}
@@ -1180,14 +1180,14 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :路軌右方
 STR_CONFIG_SETTING_SHOWFINANCES                                 :於年末顯示財政視窗：{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :如啟用此選項，財務視窗會在每年年終出現，讓玩家可輕易查察公司的財務狀況
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :設定指令時預設選擇「直達」指令：{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :在正常情況下，交通工具會停靠所有沿途進入的車站。如啟用此選項，交通工具只會停靠指令上的目的地而跳過沿途的其他車站。請注意：本設定僅改變新指令的產生方式，而且玩家仍可手動更改指令，使交通工具停靠沿途其他車站
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :在正常情況下，運輸工具會停靠沿途所有車站。如啟用此選項，運輸工具只會停靠指令上的目的地而跳過沿途的其他車站。請注意：本設定僅改變新指令的產生方式，而且玩家仍可手動更改指令，使運輸工具停靠沿途其他車站
 STR_CONFIG_SETTING_STOP_LOCATION                                :新列車調度計劃中預設命令為停靠車站月台 {STRING} 位置
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :預設列車在車站內停靠的位置。「近端」指列車會在接近其進入車站的一端停靠；「中間」指列車會在車站中央位置停靠；「遠端」指列車會在遠離其進入車站的一端停靠。請注意：本設定僅改變新指令的產生方式，而且玩家仍可手動更改指令，設定列車在個別車站停靠的位置
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :近端
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :中間
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :遠端
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :車輛排隊 (量子效應)：{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :強制進入車站的路面車輛在車站未有空位時停在站前排隊等候，而非調頭離開。請注意：過多車輛等候會造成交通擠塞 (此即設定標籤中所指的「量子效應」)
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :強制進入站點的公路車輛在未有空位時停在站前排隊等候，而非調頭離開。請注意：過多車輛等候會造成交通擠塞（此即設定標籤中所指的「量子效應」）
 STR_CONFIG_SETTING_AUTOSCROLL                                   :滑鼠在視窗邊緣時移動視窗：{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :如啟用此選項，額外視野的畫面會在游標接近其視窗邊緣時捲動
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :停用
@@ -1207,7 +1207,7 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :在多人遊戲
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :貨物重量倍率，以模擬較重列車：{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :設定運載貨物對列車構成的負荷影響。設定的數值越高，貨物對列車而言越重，並影響其加速、轉彎或上落坡道的表現
 STR_CONFIG_SETTING_PLANE_SPEED                                  :飛機速度系數： {STRING}
-STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :設定飛機速度相對其他交通工具速度的比率。此設定作用為減少因飛機速度過高而出現的過量收入
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :設定飛機速度相對其他運輸工具速度的比率，以減少因飛機速度過高而出現過多收入
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :飛機墜機機率：{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :設定發生空難的機率
@@ -1222,32 +1222,32 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :允許按 Ctrl 
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :容許不同車站相互鄰接
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :允許載入多個 NewGRF 車輛組：{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :此為對舊版 NewGRF 包的相容設定。如果您並非完全清楚其功用，請勿停用。
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}當此項目為交通工具時不能修改此設定
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}當有運輸工具運轉時不能修改此設定
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :基礎建設維護： {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :如啟用此選項，基礎建設會產生維護成本。該成本的增長會根據公司基礎建設的規模而加倍增大，因此該設定對大公司的影響比對小公司更大
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :機場永不過期：{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :如啟用此選項，所有機場一經面世，就永遠可以選擇建設
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :當交通工具走失時發出警告：{STRING}
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :切換是否顯示「交通工具無法到達指定目的地」的訊息
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :檢查交通工具指令：{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :如啟用此選項，系統會定時檢查交通工具獲指派的指令，並在檢測到明顯異常的時候顯示訊息
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :當運輸工具走失時發出警告：{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :切換是否顯示「運輸工具無法到達指定目的地」的訊息
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :檢查運輸工具指令：{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :如啟用此選項，系統會定時檢查運輸工具獲指派的指令，並在檢測到明顯異常的時候顯示訊息
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :否
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :是，不過被停止的交通工具除外
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :所有交通工具
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :當交通工具收入為負時警告：{STRING}
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :如啟用此選項，系統會為上一年度賺不到錢的交通工具顯示訊息
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :是（停止的運輸工具除外）
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :所有運輸工具
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :當運輸工具收入為負時發放警告：{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :如啟用此選項，系統會為上一年度賺不到錢的運輸工具顯示訊息
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :運輸工具永不過期：{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :如啟用此選項，所有交通工具一經面世，就永遠可以選擇建造
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :交通工具自動翻新: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :如啟用此選項，所有交通工具如在符合更換條件時進入維修設施，會被更換
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :自動更換年齡到達使用期限{STRING}的交通工具
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :如交通工具距離使用期限的時間符合指定的值，當它進入維修設施後便會被自動更換
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :如啟用此選項，所有運輸工具一經面世，就永遠可以選擇建造
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :運輸工具自動更新: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :如啟用此選項，所有在符合更換條件時進入維修設施的運輸工具會被更換
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :自動更換年齡到達使用期限{STRING}的運輸工具
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :如運輸工具距離使用期限的時間小於或等於指定值，當它進入了維修設施便會被自動更換
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :前 {COMMA} 個月
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :後 {COMMA} 個月
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :自動翻新所需最低餘額：{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :如果公司銀行賬戶內的存款低於該設定的值，系統不會自動更換交通工具
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :如果公司銀行賬戶內的存款低於該設定的值，系統不會自動更換運輸工具
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :錯誤訊息持續時間： {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :設定所有以紅色對話窗顯示的錯誤訊息之持續時間。請注意有些較嚴重的錯誤訊息必須手動關閉
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} 秒
@@ -1302,7 +1302,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :設定在小地
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :使用某些建設工具時顯示度量提示：{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :當點選建造工具後拖曳滑鼠時，是否顯示兩端的方格距離及高度差異
 STR_CONFIG_SETTING_LIVERIES                                     :顯示運輸公司的自訂配色：{STRING}
-STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :設定是否准許為個別交通工具種類指定配色 (而非為全公司的所有交通工具指定同一種配色)
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :設定是否准許為個別運輸工具種類指定配色，而非為公司旗下的所有運輸工具指定同一種配色
 STR_CONFIG_SETTING_LIVERIES_NONE                                :不顯示
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :自家公司
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :所有公司
@@ -1350,15 +1350,15 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :無動作
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :所有非建設指令
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :所有，除了場景變更動作外
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :所有動作
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :使用進階交通工具清單： {STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :啟用可以為交通工具分組的進階交通工具清單
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :使用進階運輸工具清單： {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :啟用可以為運輸工具分組的進階運輸工具清單
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :使用裝載進度指示：{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :選擇是否在交通工具裝卸的時候顯示裝載狀況
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :選擇是否在運輸工具裝卸的時候顯示裝載狀況
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :顯示時刻表時以刻度數目取代日為單位：{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :在時刻表上以刻度數目取代日數顯示運行時間
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :顯示時刻表排定的到離時間：{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :在時刻表上顯示預料的到站、出發時間
-STR_CONFIG_SETTING_QUICKGOTO                                    :快速建立交通工具調度命令：{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :快速建立運輸工具指令：{STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :設定是否在打開指令視窗時自動選取「前往」按鈕
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :預設的鐵軌種類 (將在新遊戲／載入遊戲時生效)：{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :設定開始新遊戲或載入遊戲後預設選擇的軌道種類。「最先可用的軌道」指最早出現而可用的軌道種類；「最新可用的軌道」指最後出現而可用的軌道種類；「最常用的軌道」指遊戲中使用最多的軌道種類
@@ -1389,8 +1389,8 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :播放車輛音
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :環境: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放與地貌、工業設施和城鎮有關的環境音效
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :當沒有適合的可用交通工具時，禁止建造基礎建設: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :如啟用此選項，基礎建設只會在有使用它的交通工具可供選擇時出現，避免玩家浪費時間和金錢去建造無法使用的基礎建設
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :當沒有適合的運輸工具時，禁止建造基礎建設: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :如啟用此選項，設施只會在有使用它的運輸工具可供選擇時出現，避免玩家浪費時間和金錢去建造無用的設施
 STR_CONFIG_SETTING_MAX_TRAINS                                   :公司可擁有最大列車數量：{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :每所公司擁有的列車數量上限
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :公司可擁有最大車輛數量：{STRING}
@@ -1403,7 +1403,7 @@ STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :每所公司擁
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :不允許電腦使用鐵路：{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :如啟用此選項，電腦玩家將無法建造列車
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :不允許電腦使用車輛：{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :如啟用此選項，電腦玩家將無法建造路面車輛 (包括電車)
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :如啟用此選項，電腦玩家將無法建造公路車輛 (包括電車)
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :不允許電腦使用飛機：{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :如啟用此選項，電腦玩家將無法建造飛機
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :不允許電腦使用船舶：{STRING}
@@ -1421,52 +1421,52 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :不令腳本代
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :設定每個計算循環之中，每一句代碼最多可進行多少個計算步驟
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :維護間隔以百分比 (%) 計算：{STRING}
-STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :選擇啟動交通工具自動前往維修設施進行維護的條件：要麼以上次進行維修的時距決定，要麼以交通工具可靠度的下降百分比 (相對於其最大可靠度而言) 決定
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :選擇啟動運輸工具自動前往維修設施進行維護的條件：要麼以上次進行維修的時距決定，要麼以可靠度下降的百分比（相對於其最大可靠度而言）決定
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :預設的列車維護作業時距： {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :設定預設的列車維護作業時距。所有沒有指定維護作業時距的列車都會使用這個預設值
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} 日/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :停用
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :預設的路面車輛維護作業時距： {STRING}
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :設定預設的路面車輛維護作業時距。所有沒有指定維護作業時距的路面車輛都會使用這個預設值
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :預設的公路車輛維護作業時距： {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :設定預設的公路車輛維護作業時距。所有沒有指定維護作業時距的公路車輛都會使用這個預設值
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :預設的飛機維護作業時距： {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :設定預設的飛機維護作業時距。所有沒有指定維護作業時距的飛機都會使用這個預設值
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :預設的船舶維護作業時距： {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :設定預設的船舶維護作業時距。所有沒有指定維護作業時距的船舶都會使用這個預設值
-STR_CONFIG_SETTING_NOSERVICE                                    :如果停用故障，交通工具不自動維護：{STRING}
-STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :如果啟用此選項，而且交通工具不會故障，它們將不會獲得維護
+STR_CONFIG_SETTING_NOSERVICE                                    :如果停用故障，運輸工具不進行自動維護：{STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :如果啟用此選項，而且運輸工具設定為不故障，它們將不會進入機廠接受維護
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :開啟列車車廂速限：{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :如啟用此選項，無動力車廂的限速會影響列車的極速
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :停用電氣化鐵路：{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :如啟用此選項，電動列車可於普通軌道上行走，毋需鋪設電氣化軌道
 
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :首輛交通工具抵達玩家的車站: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :當首輛交通工具抵達玩家站牌時顯示報紙
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :首輛交通工具抵達競爭對手的車站: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :當競爭者的首台交通工具到站時顯示報紙
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :首部運輸工具抵達玩家的車站: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :當玩家設立的站點首次有運輸工具停靠時顯示報紙訊息
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :首部運輸工具抵達對手的車站: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :當對手設立的站點首次有運輸工具停靠時顯示報紙訊息
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :事故／災難: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :當事故或災難發生時顯示報紙訊息
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :公司資訊: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :當新公司開始營業或倒閉破產時顯示報紙
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :當一所公司開始營業或倒閉破產時顯示報紙訊息
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :開放工業: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :當新工業開張時顯示報紙
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :當有新工業開張時顯示報紙訊息
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :關閉工業: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :當工廠關閉時顯示報紙
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :當工業設施關閉時顯示報紙訊息
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :經濟景氣的變動: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :顯示關於經濟總體變動的報紙
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :顯示關於經濟總體變動的報紙訊息
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :由自家公司提供服務的工業產量變動: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :當公司工廠的生產等級改變時顯示報紙
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :當自家所服務的工業設施改變產量時顯示報紙訊息
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :由競爭對手提供服務的工業產量變動: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :當被對方服務的產業的生產水平改變時顯示報紙
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :當對手所服務的工業改變產量時顯示報紙訊息
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :其他工業產量變更: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :當自家工廠生產等級改變時顯示報紙
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :自家公司交通工具的建議或資訊: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :顯示需要注意的交通工具的訊息
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :新交通工具: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :當新交通工具形態可用時顯示報紙。
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :當自家或對手皆沒有服務的工廠改變產量時顯示報紙訊息
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :有關自家公司運輸工具的建議或資訊: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :顯示需要注意的運輸工具的訊息
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :新運輸工具：{STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :當新運輸工具型號面世時顯示報紙訊息
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :可接收貨物的變動: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :顯示有關車站、碼頭或機場改變所接受貨物種類的訊息
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :補助資訊: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :顯示關於補助金相關事件的報紙
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :顯示補助金相關事件的報紙訊息
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :一般資訊: {STRING}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :顯示關於一般事件的報紙，像是專有權的收購或是道路興建投資。
 
@@ -1482,7 +1482,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :如啟用此選
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :允許購買其它公司的股票：{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :啟用此選項以容許公司買賣股票。一所公司必須達到一定的年齡方能買賣股票
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :轉運服務所得的收入百分比： {STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :設定進行轉運的交通工具在卸載被轉運的貨物時獲得的收入佔貨物總收入的百分比。此選項讓玩家更有效地控制收入分配方式
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :設定進行轉運的運輸工具在卸載被轉運的貨物時，獲得的收入佔貨物總收入的百分比。此選項讓玩家更有效地控制收入分配方式
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :拖曳滑鼠時，每隔 {STRING}設置一個號誌
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :設定拖曳滑鼠時，每隔多遠建造一個號誌。如果拖曳的路徑上遇到別的號誌、彎位或道岔，系統只會在直至該障礙物之前的軌道上建造號誌
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} 格
@@ -1596,8 +1596,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :英制（英里
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :米制（公里/小時）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :國際單位（米/秒）
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :交通工具功率單位：{STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :在界面上以所選擇的單位表示交通工具的功率
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :運輸工具功率單位：{STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :在界面上以所選擇的單位表示運輸工具的功率
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :英制（匹）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :米制（匹）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :國際單位（千瓦）
@@ -1629,7 +1629,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :國際單位（
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}介面
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}本地化
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}建造
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}交通工具
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}運輸工具
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}車站
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}經濟
 STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}貨物分配
@@ -1655,7 +1655,7 @@ STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(建
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :列車的路徑搜尋方式：{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :設定列車使用的路徑搜尋方式
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :車輛的路徑搜尋方式：{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :設定路面車輛 (包括電車) 使用的路徑搜尋方式
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :設定公路車輛（包括電車）使用的路徑搜尋方式
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :船隻的路徑搜尋方式：{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :設定船舶使用的路徑搜尋方式
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :在號誌自動倒轉: {STRING}
@@ -1990,7 +1990,7 @@ STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}目前�
 STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}去年收入：{WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}效率：{WHITE}{NUM}
 
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}交通工具：{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
+STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}運輸工具總數：{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
 STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}車站：{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
 STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}玩家：{WHITE}{STRING}
 
@@ -2878,7 +2878,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGI
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}' 所擁有的列車 '{0:VEHICLE}' 長度無效。 這個錯誤可能是 NewGRFs 有問題所致，遊戲可能會無法同步或當機
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' 提供了錯誤的資訊。
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}購買清單中 '{1:ENGINE}' 的貨物／改裝資訊和購買後的資訊不同。 這可能會導致自動更新／取代時無法正確的改裝交通工具。
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}購買清單中 '{1:ENGINE}' 的貨物/改裝資訊和購買後的資訊不同。 這可能會導致自動更新/取代時無法正確的改裝該運輸工具。
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}{1:STRING}會導致產量 Callback 時發生無窮迴圈的錯誤。
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}回調程序 {1:HEX} 返回預料之外或無效的結果： {2:HEX}
 
@@ -2886,7 +2886,7 @@ STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}回調�
 STR_NEWGRF_INVALID_CARGO                                        :<無效貨物>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} / <無效貨物>
-STR_NEWGRF_INVALID_ENGINE                                       :<無效交通工具模型>
+STR_NEWGRF_INVALID_ENGINE                                       :<無效的運輸工具型號>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<無效工業>
 
 # NewGRF scanning window
@@ -3118,7 +3118,7 @@ STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}收入／支出
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}建造
-STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}新交通工具
+STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}購置新運輸工具
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}鐵路列車營運成本
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}公路車輛營運成本
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}飛機營運成本
@@ -3149,7 +3149,7 @@ STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDE
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}成立於：{WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}配色：
-STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}交通工具：
+STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}運輸工具總數：
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}列車 {COMMA} 列
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}車輛 {COMMA} 部
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}飛機 {COMMA} 架
@@ -3177,7 +3177,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}顯示�
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}新臉孔
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}選擇總經理的新臉孔
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}配色
-STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}修改公司交通工具配色
+STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}修改公司運輸工具的配色
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}公司名稱
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}修改公司名稱
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}總經理姓名
@@ -3256,11 +3256,11 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :可用列車
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :可用車輛
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :可用船舶
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :可用飛機
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}顯示此交通工具的所有可用的引擎設計
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}顯示此運輸工具種類所有可用的引擎設計
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}管理名單
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}向清單所有車輛發出指示
-STR_VEHICLE_LIST_REPLACE_VEHICLES                               :替換交通工具
+STR_VEHICLE_LIST_REPLACE_VEHICLES                               :替換運輸工具
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :送去維護
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :送到機廠
@@ -3268,10 +3268,10 @@ STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :送到車廠
 STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :送到船塢
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :送到機棚
 
-STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}點選可停止清單中所有交通工具
-STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}點選可起動清單内所有交通工具
+STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}點選此掣以停止清單上的所有運輸工具
+STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}點選此掣以起動清單内的所有運輸工具
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}由 {COMMA} 組交通工具共用的指令清單
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}由 {COMMA} 部運輸工具共用的指令清單
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :所有列車
@@ -3284,14 +3284,14 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :未分組的車
 STR_GROUP_DEFAULT_SHIPS                                         :未分組的船舶
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :未分組的飛機
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}群組 - 點選群組顯示其中的交通工具清單
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}群組 - 點選群組以顯示其中的運輸工具清單
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}點選可建立群組
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}移除所選群組
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}重新命名群組
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}點選可保護此群組排除在全域自動替換設定之外
 
-STR_GROUP_ADD_SHARED_VEHICLE                                    :加入共享指令的交通工具
-STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有交通工具
+STR_GROUP_ADD_SHARED_VEHICLE                                    :加入共享指令的運具
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :移去所有運具
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}重新命名群組
 
@@ -3332,7 +3332,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}車輛�
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}船舶清單 - 點選船舶顯示詳細資料
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}飛機清單 - 點選飛機檢視詳細資料
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}購買交通工具
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}購買運具
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}購買車輛
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}購買船舶
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}購買飛機
@@ -3390,7 +3390,7 @@ STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}自動�
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}自動替換所有船塢内船舶
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}自動替換所有機棚内飛機
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}購買新交通工具
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}購買新運具
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}購買新車輛
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}購買船舶
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}購買飛機
@@ -3433,7 +3433,7 @@ STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}點選�
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}您正準備出售車廠内所有車輛。確定嗎？
 
 # Engine preview window
-STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}交通工具製造商的訊息
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}運輸工具製造商的訊息
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}我們剛設計了一種新{STRING} - 您有興趣獨家使用它一年，讓我們在正式上市之前先 觀察它的表現嗎？
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :鐵路機車頭
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :車輛
@@ -3459,14 +3459,14 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :飛機
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}選擇要替換的車頭種類
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}選擇您想替換左方選定車頭的新車頭種類
 
-STR_REPLACE_VEHICLES_START                                      :{BLACK}開始替換交通工具
-STR_REPLACE_VEHICLES_NOW                                        :立刻更換所有交通工具
-STR_REPLACE_VEHICLES_WHEN_OLD                                   :僅更換老舊的交通工具
+STR_REPLACE_VEHICLES_START                                      :{BLACK}開始替換運輸工具
+STR_REPLACE_VEHICLES_NOW                                        :立刻更換所有運輸工具
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :僅更換老舊的運輸工具
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}按下之後就會開始將左方選定的車頭替換成右方指定的車頭
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}不替換
-STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}未選擇交通工具
+STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}未選擇任何運輸工具
 STR_REPLACE_REPLACING_WHEN_OLD                                  :更換舊運具為 {ENGINE}
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}停止替換交通工具
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}停止替換運輸工具
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}按下之後會停止替換左方指定的車頭
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}替換：{ORANGE}{STRING}
@@ -3625,7 +3625,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}新容�
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}新容量： {GOLD}{CARGO_LONG}{}{BLACK}改裝所得的收入： {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}新容量: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}整修成本: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}新容量： {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}改裝所得的收入： {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}選擇交通工具以進行整修。以滑鼠拖曳可以選擇多個交通工具。選空白的區域將選擇整個交通工具。按住Ctrl再點選將選擇交通工具以及與其後串接的車廂
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}選擇車廂進行改裝。以滑鼠拖曳以選擇多節連續的車廂。點選空白的區域以選擇整列列車。Ctrl+點選以選擇該車廂以及與其後串接的車廂
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}選擇要運輸的貨物種類
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}選擇車輛要運送的貨物種類
@@ -3700,7 +3700,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :需要維護
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :總是
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :剩餘年限 (年)
 
-STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}如何與指定數值比對交通工具資料
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}運輸工具相關數字與指定數值比對的條件
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :等於
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :不等於
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :小於
@@ -3710,7 +3710,7 @@ STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :大於或等於
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :為是
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :為否
 
-STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}與交通工具資料比對的數值
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}此欄指定的數值將與運輸工具上的指定數據比對
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}輸入想比對的數值
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}跳過
@@ -3729,7 +3729,7 @@ STR_ORDER_CONDITIONAL                                           :條件式跳躍
 STR_ORDER_SHARE                                                 :分享指令清單
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}在選定的指令前插入新指令，或在指令表的末尾新增指令。如按住 Ctrl 鍵再加入指令，點選車站會新增「滿載任一種類客貨」指令、點選號誌站會新增「直達」指令，而點選機廠則會新增「維護」指令。點選其他車輛以複製其指令清單，按住 Ctrl 鍵或在選取「分享指令清單」後點選其他車輛以分享指令清單。如指令清單上有任何指令涉及機廠，則該車輛不受自動維護功能影響
 
-STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}顯示所有共享此指令清單的交通工具
+STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}顯示所有共享此指令清單的運輸工具
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :經過 {WAYPOINT}
@@ -3818,14 +3818,14 @@ STR_TIMETABLE_TICKS                                             :{COMMA} tick
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}此時刻表跑完全程需時 {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}此時刻表跑完全程至少需時 {STRING} (此表尚未完成)
 
-STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}此交通工具目前準點
-STR_TIMETABLE_STATUS_LATE                                       :{BLACK}此交通工具目前慢了 {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}此交通工具目前早了 {STRING}
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}此運輸工具目前準點
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}此運具目前比表定時間遲 {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}此運具目前比表定時間早 {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}此時刻表尚未實施
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}此時刻表實施日期為 {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}實施日期
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}選擇此時刻表開始實施的日期。如按住Ctrl鍵點選此掣，而時刻表每一項指令皆已指定持續時間，則系統會為每個共用此時刻表的交通工具賦予一個開始實施時間表的日期，使這些交通工具的出發時間平均分配。
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}選擇此時刻表開始實施的日期。如按住Ctrl鍵點選此掣，而時刻表每一項指令皆已指定持續時間，則系統會為每個共用此時刻表的運輸工具賦予一個開始實施時間表的日期，使它們之間的間隔一致。
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}修改時刻
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}改變目前選定命令所需的時間
@@ -3840,7 +3840,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}清除�
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}清除目前選定命令所設定的最高速度
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}歸零誤點／慢分
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}將誤點／慢分歸零，如此交通工具將會準時抵達
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}將記錄上的誤點值歸零，使該運輸工具被視為準點
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動製表
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}自動以下次運轉的時間排定時刻表 (按住 CTRL 可保持等待時間)
@@ -4261,9 +4261,9 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... 您�
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}無法建立群組...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}無法移除群組...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}無法修改群組名稱...
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}無法移除此群組的所有交通工具...
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}無法加入交通工具到此群組...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}無法加入共享指令的交通工具到此群組...
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}無法從此群組移去所有運輸工具...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}無法加入該運輸工具到此群組...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}無法加入共享指令的運輸工具到此群組...
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}前方有列車
@@ -4306,18 +4306,18 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}無法�
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}無法出售船舶...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}無法出售飛機...
 
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}交通工具已經停產
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}運輸工具沒有供應
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}車輛已經停產
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}船舶已經停產
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}飛機已經停產
 
-STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}遊戲中已有太多交通工具
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}遊戲中已有太多運輸工具
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}不能更改檢修週期...
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 交通工具已摧毀
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 運具已摧毀
 
-STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}暫時沒有可用的交通工具
-STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}在{DATE_SHORT}後開始新遊戲，或使用一款提供早期交通工具的NewGRF
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}暫時沒有可用的運輸工具
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}在{DATE_SHORT}後開始新遊戲，或使用一款提供早期運輸工具的NewGRF
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}無法讓列車通過險阻號誌...
@@ -4337,9 +4337,9 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}無法�
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}無法移動這個命令...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}無法跳過目前的命令...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}無法跳過指定的命令...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... 交通工具無法前往所有車站
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... 交通工具無法前往此車站
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... 一部共用這個指令清單的交通工具無法前往該站
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... 運輸工具無法前往所有站點
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... 運輸工具無法前往此站點
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... 一部共用這個指令清單的運輸工具無法前往該站
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}無法分享指令清單...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}無法停止分享命令清單...
@@ -4348,9 +4348,9 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... 與�
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... 飛機的飛行範圍不足
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}無法為交通工具加入時刻表...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}交通工具只能於車站內停著
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}此交通工具將不停靠此車站
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}無法為運輸工具加入時刻表...
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}運輸工具只能在車站停靠等候
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}此運輸工具不會停靠此車站
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... 已有太多標誌
