@@ -3088,7 +3088,7 @@ STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}産業�
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
-STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK生産量(前月):
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}生産量(前月):
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK}({COMMA}%搬送済)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}この産業の場所にメイン画面を移動します。Ctrl+クリックでこの産業の場所を新たなビューポートに表示します
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}生産量: {YELLOW}{COMMA}%
