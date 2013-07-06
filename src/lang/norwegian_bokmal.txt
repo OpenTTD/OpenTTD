@@ -1557,7 +1557,37 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Fjern absurde v
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Fjern blindveier under finansiert veikonstruksjon
 
 
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Det britiske imperiets enhetssystem (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrisk (HK)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Vekt-enheter: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Når vektene er vist i brukergrensesnittet , vise det i de utvalgte enheter
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Det britiske imperiets enhetssystem ('short t'/tonn)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrisk (t/tonn)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Volumenheter: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Når volumene er vist i brukergrensesnittet, vise det i de utvalgte enhter
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Det britiske imperiets enhetssystem (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrisk (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Enhet for trekkraft: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Når trekkarbeid, også kjent som trekkraft, er vist i brukergrensesnittet, vis det i de utvaglte enheter
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Det britiske imperiets enhetssystem (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrisk (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Høyde-enheter: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Når høyder vises i brukergrensesnittet, vise det i de utvalgte enheter
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Det britiske imperiets enhetssystem (fot)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisk (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Grensesnitt
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisering
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruksjon
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kjøretøy
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stasjoner
@@ -4211,6 +4241,9 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikke
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}...{NBSP}kjøretøy er ødelagt
 
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Ingen kjøretøyer er tilgjengelig enda
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Starte et nytt spill etter {DATE_SHORT}, eller bruke en NewGRF som inneholder tidlige kjøretøy
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikke tvinge tog til å passere signal ved fare...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan ikke snu om toget...
@@ -4711,6 +4744,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

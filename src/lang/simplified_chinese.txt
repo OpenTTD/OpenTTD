@@ -1384,7 +1384,7 @@ STR_CONFIG_SETTING_SOUND_CLICK                                  :点击按钮: {
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :按一下按钮时发出蜂鸣声
 STR_CONFIG_SETTING_SOUND_DISASTER                               :灾难/事故: {STRING}
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :播放灾难和事故音效
-STR_CONFIG_SETTING_SOUND_VEHICLE                                :交通工具: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :运输工具: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :播放运输工具音效
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :音效：{STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放与地貌、工业设施和城镇有关的环境音效
@@ -1596,8 +1596,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :英制（英里
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :米制（千米/小时）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :国际单位（米/秒）
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :交通工具功率单位：{STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :在界面上以所选择的单位表示交通工具的功率
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :运输工具功率单位：{STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :在界面上以所选择的单位表示运输工具的功率
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :英制（马力）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :米制（马力）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :国际单位（千瓦）
@@ -3118,7 +3118,7 @@ STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}收入/支出
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}建设费用
-STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}购置交通工具
+STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}购置新运输工具
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}铁路运行费用
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}汽车运行费用
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}航空运行费用
@@ -3825,7 +3825,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}此时�
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}此时刻表将于 {STRING} 开始
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}起始日期
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}选择此时刻表开始实施的日期。如果时刻表每一项指令皆已指定持续时间，Ctrl+左击会使系统为每个共用此时刻表的交通工具赋予一个开始实施时刻表的日期，使这些交通工具的出发时间平均分配。
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}选择此时刻表开始实施的日期。如果时刻表每一项指令皆已指定持续时间，Ctrl+左击会使系统为每个共用此时刻表的运具赋予一个开始实施时刻表的日期，使它们之间的时间间距一致
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}改变时间
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}改变高亮选择的命令执行的时间
@@ -4261,9 +4261,9 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}你已�
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}无法新建分组……
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}无法删除分组……
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}无法重命名分组……
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}无法从该组移除所有交通工具
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}无法添加交通工具到该组……
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}无法添加共享交通工具到该组……
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}无法从该组移除所有运输工具
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}无法添加运输工具到该组……
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}无法添加共享指令的运输工具到该组……
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}指定位置有列车
@@ -4314,10 +4314,10 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}飞机�
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}游戏中的车辆过多
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}不能改变保养周期……
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 交通工具已毁
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 运具已撞毁
 
-STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}暂时沒有可用的交通工具
-STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}在{DATE_SHORT}后开始新游戏，或使用一款于早期提供交通工具的NewGRF
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}暂时沒有可用的运输工具
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}在{DATE_SHORT}后开始新游戏，或使用一款能提供早期运输工具的NewGRF
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}不能让列车冒险通过信号...

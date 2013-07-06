@@ -367,7 +367,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRFの設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透過表示設定
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :街名を表示
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :駅名を表示
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :通過点名を表示
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :中継駅名を表示
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :標識を表示
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :競争者の標識と名前を表示
 STR_SETTINGS_MENU_FULL_ANIMATION                                :アニメーションをフル表示
@@ -846,7 +846,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{0:STRING}が助成金を獲得!{}今後一年間{2:STRING}から{3:STRING}へ{1:STRING}を運ぶ便の{}収入は3倍になります!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{0:STRING}が助成金を獲得!{}今後一年間{2:STRING}から{3:STRING}へ{1:STRING}を運ぶ便の{}収入は4倍になります!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}混乱する{TOWN}の道路交通!{}{}{STRING}が街路補修に出資{}ドライバーには悪夢の半年に!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}混乱する道路交通!{}{}{1:STRING}が{0:TOWN}の街路補修に出資{}地元ドライバーには悪夢の半年に!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}輸送独占!
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK} {TOWN}が{STRING}と1年間の排他輸送契約を締結!
 
@@ -1164,10 +1164,10 @@ STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :橋の最大長
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :トンネルの最大長：{STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :トンネルの最大長を設定できます
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :一次産業の開設法: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :ゲーム中で一次産業をプレイヤーが開設できるかどうかを決めます。「なし」では開設出来ません。「探鉱」では出資することは可能ですが、どこに建設されるかは分かりませんし、失敗することもあります。「他の産業と同様」では一次産業も二次産業同様、好きなところに作ることが出来ます。
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :ゲーム中で一次産業をプレイヤーが開設できるかどうかを決めます。「なし」では開設出来ません。「調査/探鉱」では出資することは可能ですが、どこに建設されるかは分かりませんし、失敗することもあります。「他の産業と同様」では一次産業も二次産業同様、好きなところに作ることが出来ます。
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :なし
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :他の産業と同様
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :探鉱
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :調査/探鉱
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :産業周辺の平地: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :産業拠点の周囲に広がっている平地の量です。これによりインフラ設備などを作る余地があることが保証されます
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :重複産業の建設許可: {STRING}
@@ -2183,7 +2183,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}駅を�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}鉄道信号を建設します。Ctrlで腕木式と色灯式を切り替えられます。{}ドラックして決定するとその区間に一定間隔で信号が配置されます。このときCtrlを押しておくと、その先分岐に行き着くまで信号を配置していきます。{}Ctrl+クリックで信号種類を選ぶウィンドウが出ます(「信号のGUIを使用」設定オフ時のみ)。Shiftを押しながら決定すると費用の見積が出ます
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}鉄道橋を建設します。Shiftを押しながら決定すると費用の見積が出ます
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}鉄道トンネルを建設します。Shiftを押しながら決定すると費用の見積が出ます
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}線路・信号・駅・通過点の建設/撤去を切り替えます。{}Ctrlを押したままにすると駅・通過点の撤去時に線路ごと撤去されます
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}線路・信号・駅・中継駅の建設/撤去を切り替えます。{}Ctrlを押したままにすると駅・通過点の撤去時に線路ごと撤去されます
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}既設の線路をこのレール種に変更します。Shiftを押しながら決定すると費用の見積が出ます
 
 STR_RAIL_NAME_RAILROAD                                          :鉄道 (非電化)
@@ -2411,7 +2411,7 @@ STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}適当�
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :多くのランダムな産業
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}地図にたくさんの産業を建設します
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}価格：{YELLOW}{CURRENCY_LONG}
-STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}調査
+STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}調査/探鉱
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}建設
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}出資
 
@@ -2977,12 +2977,12 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}航空�
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}メイン画面をこの通過点の場所に移動します。Ctrl+クリックではこの通過点の場所を新たなビューポートに表示します
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}通過点の名称を変更
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}メイン画面をこの中継駅の場所に移動します。Ctrl+クリックではこの通過点の場所を新たなビューポートに表示します
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}中継駅の名称を変更
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}メイン画面をこのブイの場所に移動します。Ctrl+クリックでこのブイの場所を新たなビューポートに表示します
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}ブイの名称を変更
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}通過点の名称を変更
+STR_EDIT_WAYPOINT_NAME                                          :中継駅名を表示
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} 経営状況　{BLACK}{COMPANY_NUM}

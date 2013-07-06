@@ -234,7 +234,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fechar j
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste isto para mover a janela
 STR_TOOLTIP_SHADE                                               :{BLACK}Obscurecer janela - mostrar apenas a barra de título
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar informações de depuração do NewGRF
-STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela como infechável pela tecla 'Fechar Todas as Janelas'
+STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela como infechável pela tecla 'Fechar Todas as Janelas'. Ctrl+Clique torna essa opção padrão
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para redimensionar esta janela
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela de tamanho grande/pequena
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - rola a lista acima/abaixo
@@ -1450,7 +1450,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Exibe mensagens
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Novos veículos: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Exibe um jornal quando um novo tipo de veículo se torna disponível
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Mudanças à aceitação de carga: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Exibe mensagens sobre estações alterando aceitação de cargas
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Exibe mensagens sobre estações alterando aceitação de algumas cargas
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsídios: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Exibe um jornal sobre eventos relacionados a subsídios
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Informações gerais: {STRING}
@@ -1551,6 +1551,12 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador d
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamanho médio das cidades grandes em relação às cidades no início do jogo
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Remover elementos de estrada absurdos ao construir ruas: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Remove ruas sem saída durante a reconstrução de ruas patrocinada
+
+
+
+
+
+
 
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
@@ -4212,6 +4218,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Existem 
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Impossível alterar o intervalo de manutenção...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... veículo está destruído
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Impossível fazer o trem passar o sinal de perigo...

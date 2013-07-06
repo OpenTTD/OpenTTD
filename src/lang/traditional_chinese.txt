@@ -1384,8 +1384,8 @@ STR_CONFIG_SETTING_SOUND_CLICK                                  :按鈕點擊: {
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :按下按鈕時發出嗶聲
 STR_CONFIG_SETTING_SOUND_DISASTER                               :事故／災難：{STRING}
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :播放事故與災難的音效
-STR_CONFIG_SETTING_SOUND_VEHICLE                                :車輛: {STRING}
-STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :播放車輛音效
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :運輸工具: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :播放運輸工具的音效
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :環境: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放與地貌、工業設施和城鎮有關的環境音效
 
@@ -3323,7 +3323,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}容量�
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}動力車廂：{GOLD}+{POWER}{BLACK} 載重：{GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}可改裝成：{GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :所有貨物種類
-STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST}除了
+STR_PURCHASE_INFO_ALL_BUT                                       :所有貨物（{CARGO_LIST}除外）
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大牽引力：{GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}範圍： {GOLD}{COMMA} 方格
 
@@ -4522,7 +4522,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :煤炭車
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :油罐車
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :家畜車
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :商品車
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :穀斗車
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :穀物斗車
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :木材車
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :鐵礦斗車
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :運鋼車
