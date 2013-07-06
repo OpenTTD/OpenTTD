@@ -20,6 +20,11 @@
 #include <unicode/ustring.h>
 #endif /* WITH_ICU */
 
+
+/** Cache of Font instances. */
+Layouter::FontColourMap Layouter::fonts[FS_END];
+
+
 /**
  * Construct a new font.
  * @param size   The font size to use for this font.
@@ -414,7 +419,7 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 	WChar c = 0;
 
 	do {
-		Font *f = new Font(state.fontsize, state.cur_colour);
+		Font *f = GetFont(state.fontsize, state.cur_colour);
 		CharType *buff_begin = buff;
 		FontMap fontMapping;
 
@@ -442,11 +447,8 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 
 			if (!fontMapping.Contains(buff - buff_begin)) {
 				fontMapping.Insert(buff - buff_begin, f);
-				*this->fonts.Append() = f;
-			} else {
-				delete f;
 			}
-			f = new Font(state.fontsize, state.cur_colour);
+			f = GetFont(state.fontsize, state.cur_colour);
 		}
 
 		/* Better safe than sorry. */
@@ -454,7 +456,6 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 
 		if (!fontMapping.Contains(buff - buff_begin)) {
 			fontMapping.Insert(buff - buff_begin, f);
-			*this->fonts.Append() = f;
 		}
 		ParagraphLayout *p = GetParagraphLayout(buff_begin, buff, fontMapping);
 
@@ -469,14 +470,6 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 	} while (c != '\0' && buff < buffer_last);
 }
 
-/** Free everything we allocated. */
-Layouter::~Layouter()
-{
-	for (Font **iter = this->fonts.Begin(); iter != this->fonts.End(); iter++) {
-		delete *iter;
-	}
-}
-
 /**
  * Get the boundaries of this paragraph.
  * @return The boundaries.
@@ -489,4 +482,29 @@ Dimension Layouter::GetBounds()
 		d.height += (*l)->getLeading();
 	}
 	return d;
+}
+
+/**
+ * Get a static font instance.
+ */
+Font *Layouter::GetFont(FontSize size, TextColour colour)
+{
+	FontColourMap::iterator it = fonts[size].Find(colour);
+	if (it != fonts[size].End()) return it->second;
+
+	Font *f = new Font(size, colour);
+	*fonts[size].Append() = FontColourMap::Pair(colour, f);
+	return f;
+}
+
+/**
+ * Reset cached font information.
+ * @param size Font size to reset.
+ */
+void Layouter::ResetFontCache(FontSize size)
+{
+	for (FontColourMap::iterator it = fonts[size].Begin(); it != fonts[size].End(); ++it) {
+		delete it->second;
+	}
+	fonts[size].Clear();
 }

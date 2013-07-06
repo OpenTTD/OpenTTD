@@ -17,6 +17,7 @@
 #include "core/smallmap_type.hpp"
 #include "strings_func.h"
 #include "zoom_type.h"
+#include "gfx_layout.h"
 
 #include "table/sprites.h"
 #include "table/control_codes.h"
@@ -39,6 +40,7 @@ FontCache::FontCache(FontSize fs) : parent(FontCache::Get(fs)), fs(fs), height(_
 {
 	assert(parent == NULL || this->fs == parent->fs);
 	FontCache::caches[this->fs] = this;
+	Layouter::ResetFontCache(this->fs);
 }
 
 /** Clean everything up. */
@@ -46,6 +48,7 @@ FontCache::~FontCache()
 {
 	assert(this->fs == parent->fs);
 	FontCache::caches[this->fs] = this->parent;
+	Layouter::ResetFontCache(this->fs);
 }
 
 

@@ -167,12 +167,16 @@ class Layouter : public AutoDeleteSmallVector<ParagraphLayout::Line *, 4> {
 	ParagraphLayout *GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &fontMapping);
 
 	CharType buffer[DRAW_STRING_BUFFER]; ///< Buffer for the text that is going to be drawn.
-	SmallVector<Font *, 4> fonts;        ///< The fonts needed for drawing.
+
+	typedef SmallMap<TextColour, Font *> FontColourMap;
+	static FontColourMap fonts[FS_END];
+	static Font *GetFont(FontSize size, TextColour colour);
 
 public:
 	Layouter(const char *str, int maxw = INT32_MAX, TextColour colour = TC_FROMSTRING, FontSize fontsize = FS_NORMAL);
-	~Layouter();
 	Dimension GetBounds();
+
+	static void ResetFontCache(FontSize size);
 };
 
 #endif /* GFX_LAYOUT_H */
