@@ -2058,6 +2058,7 @@ void Vehicle::LeaveStation()
 			/* Refresh next hop stats to make sure we've done that at least once
 			 * during the stop and that refit_cap == cargo_cap for each vehicle in
 			 * the consist. */
+			this->ResetRefitCaps();
 			this->RefreshNextHopsStats();
 
 			/* if the vehicle could load here or could stop with cargo loaded set the last loading station */
@@ -2088,64 +2089,73 @@ void Vehicle::LeaveStation()
 }
 
 /**
+ * Reset all refit_cap in the consist to cargo_cap.
+ */
+void Vehicle::ResetRefitCaps()
+{
+	for (Vehicle *v = this; v != NULL; v = v->Next()) v->refit_cap = v->cargo_cap;
+}
+
+/**
+ * Simulated cargo type and capacity for prediction of future links.
+ */
+struct RefitDesc {
+	CargoID cargo;    ///< Cargo type the vehicle will be carrying.
+	uint16 capacity;  ///< Capacity the vehicle will have.
+	uint16 remaining; ///< Capacity remaining from before the previous refit.
+	RefitDesc(CargoID cargo, uint16 capacity, uint16 remaining) :
+			cargo(cargo), capacity(capacity), remaining(remaining) {}
+};
+
+typedef std::list<RefitDesc> RefitList;
+typedef std::map<CargoID, uint> CapacitiesMap;
+
+/**
  * Predict a vehicle's course from its current state and refresh all links it
- * will visit. As a side effect reset the refit_cap of all vehicles in the
- * consist to the cargo_cap. This method is expected to be called when loading
- * at a station so it's safe to do so.
+ * will visit.
  */
 void Vehicle::RefreshNextHopsStats()
 {
 	/* Assemble list of capacities and set last loading stations to 0. */
-	SmallMap<CargoID, uint, 1> capacities;
+	CapacitiesMap capacities;
+	RefitList refit_capacities;
 	for (Vehicle *v = this; v != NULL; v = v->Next()) {
-		v->refit_cap = v->cargo_cap;
-		if (v->refit_cap == 0) continue;
-
-		SmallPair<CargoID, uint> *i = capacities.Find(v->cargo_type);
-		if (i == capacities.End()) {
-			/* Braindead smallmap not providing a good method for that...
-			 * capacities[v->cargo_type] += v->cargo_cap won't do as that just
-			 * allocates the memory, but doesn't initialize it if the key isn't
-			 * there, yet. So we still have to check if the key exists and that
-			 * is best done with Find(). */
-			i = capacities.Append();
-			i->first = v->cargo_type;
-			i->second = v->refit_cap;
-		} else {
-			i->second += v->refit_cap;
-		}
+		refit_capacities.push_back(RefitDesc(v->cargo_type, v->cargo_cap, v->refit_cap));
+		if (v->refit_cap > 0) capacities[v->cargo_type] += v->refit_cap;
 	}
 
 	/* If orders were deleted while loading, we're done here.*/
 	if (this->orders.list == NULL) return;
 
-	uint hops = 0;
 	const Order *first = this->GetOrder(this->cur_implicit_order_index);
-	do {
-		/* Make sure the first order is a station order. */
-		first = this->orders.list->GetNextStoppingOrder(this, first, hops++);
-		if (first == NULL) return;
-	} while (!first->IsType(OT_GOTO_STATION) && !first->IsType(OT_IMPLICIT));
-	hops = 0;
+
+	/* Make sure the first order is a station order. */
+	first = this->orders.list->GetNextStoppingOrder(this, first, 0);
+	if (first == NULL) return;
 
 	const Order *cur = first;
 	const Order *next = first;
-	while (next != NULL && cur->CanLeaveWithCargo(true)) {
-		next = this->orders.list->GetNextStoppingOrder(this,
-				this->orders.list->GetNext(next), ++hops);
-		if (next == NULL) break;
+	bool has_cargo = this->last_loading_station != INVALID_STATION;
+	bool was_refit = false;
+	uint hops = 0;
+
+	while (next != NULL) {
 
 		/* If the refit cargo is CT_AUTO_REFIT, we're optimistic and assume the
 		 * cargo will stay the same. The point of this method is to avoid
 		 * deadlocks due to vehicles waiting for cargo that isn't being routed,
 		 * yet. That situation will not occur if the vehicle is actually
 		 * carrying a different cargo in the end. */
-		if (next->IsAutoRefit() && next->GetRefitCargo() != CT_AUTO_REFIT) {
-			/* Handle refit by dropping some vehicles. */
+		if (next->IsRefit() && !next->IsAutoRefit()) {
+			was_refit = true;
 			CargoID new_cid = next->GetRefitCargo();
+			RefitList::iterator refit_it = refit_capacities.begin();
 			for (Vehicle *v = this; v != NULL; v = v->Next()) {
 				const Engine *e = Engine::Get(v->engine_type);
-				if (!HasBit(e->info.refit_mask, new_cid)) continue;
+				if (!HasBit(e->info.refit_mask, new_cid)) {
+					++refit_it;
+					continue;
+				}
 
 				/* Back up the vehicle's cargo type */
 				CargoID temp_cid = v->cargo_type;
@@ -2161,41 +2171,80 @@ void Vehicle::RefreshNextHopsStats()
 				v->cargo_subtype = temp_subtype;
 
 				/* Skip on next refit. */
-				if (new_cid != v->cargo_type && v->refit_cap > 0) {
-					capacities[v->cargo_type] -= v->refit_cap;
-					v->refit_cap = 0;
-				} else if (amount < v->refit_cap) {
-					capacities[v->cargo_type] -= v->refit_cap - amount;
-					v->refit_cap = amount;
+				if (new_cid != refit_it->cargo && refit_it->remaining > 0) {
+					capacities[refit_it->cargo] -= refit_it->remaining;
+					refit_it->remaining = 0;
+				} else if (amount < refit_it->remaining) {
+					capacities[refit_it->cargo] -= refit_it->remaining - amount;
+					refit_it->remaining = amount;
 				}
+				refit_it->capacity = amount;
+				refit_it->cargo = new_cid;
+
+				++refit_it;
 
 				/* Special case for aircraft with mail. */
 				if (v->type == VEH_AIRCRAFT) {
-					Vehicle *u = v->Next();
-					if (mail_capacity < u->refit_cap) {
-						capacities[u->cargo_type] -= u->refit_cap - mail_capacity;
-						u->refit_cap = mail_capacity;
+					if (mail_capacity < refit_it->remaining) {
+						capacities[refit_it->cargo] -= refit_it->remaining - mail_capacity;
+						refit_it->remaining = mail_capacity;
 					}
+					refit_it->capacity = mail_capacity;
 					break; // aircraft have only one vehicle
 				}
 			}
 		}
 
+		/* Only reset the refit capacities if the "previous" next is a station,
+		 * meaning that either the vehicle was refit at the previous station or
+		 * it wasn't at all refit during the current hop. */
+		bool reset_refit = was_refit && (next->IsType(OT_GOTO_STATION) || next->IsType(OT_IMPLICIT));
+
+		/* Reassign next with the following stop. This can be a station or a
+		 * depot. Allow the order list to be walked twice so that we can
+		 * reassign "first" below without afterwards terminating early here. */
+		next = this->orders.list->GetNextStoppingOrder(this,
+				this->orders.list->GetNext(next), hops++ / 2);
+		if (next == NULL) break;
+
 		if (next->IsType(OT_GOTO_STATION) || next->IsType(OT_IMPLICIT)) {
-			StationID next_station = next->GetDestination();
-			Station *st = Station::GetIfValid(cur->GetDestination());
-			if (st != NULL && next_station != INVALID_STATION && next_station != st->index) {
-				for (const SmallPair<CargoID, uint> *i = capacities.Begin(); i != capacities.End(); ++i) {
-					/* Refresh the link and give it a minimum capacity. */
-					if (i->second > 0) IncreaseStats(st, i->first, next_station, i->second, UINT_MAX);
+			if (reset_refit) {
+				/* Restore remaining capacities as vehicle might have been able to load now. */
+				for (RefitList::iterator it(refit_capacities.begin()); it != refit_capacities.end(); ++it) {
+					if (it->remaining == it->capacity) continue;
+					capacities[it->cargo] += it->capacity - it->remaining;
+					it->remaining = it->capacity;
+				}
+				reset_refit = false;
+				was_refit = false;
+			}
+
+			if (cur->IsType(OT_GOTO_STATION) || cur->IsType(OT_IMPLICIT)) {
+				has_cargo = cur->CanLeaveWithCargo(has_cargo);
+				if (has_cargo) {
+					StationID next_station = next->GetDestination();
+					Station *st = Station::GetIfValid(cur->GetDestination());
+					if (st != NULL && next_station != INVALID_STATION && next_station != st->index) {
+						for (CapacitiesMap::const_iterator i = capacities.begin(); i != capacities.end(); ++i) {
+							/* Refresh the link and give it a minimum capacity. */
+							if (i->second > 0) IncreaseStats(st, i->first, next_station, i->second, UINT_MAX);
+						}
+					}
 				}
 			}
+
+			/* "cur" is only assigned here if the stop is a station so that
+			 * whenever stats are to be increased two stations can be found.
+			 * However, "first" can be a depot stop. If that is the case
+			 * reassign it to make sure we end up with a station for the last
+			 * link. */
 			cur = next;
 			if (cur == first) break;
+			if (!first->IsType(OT_GOTO_STATION) && !first->IsType(OT_IMPLICIT)) {
+				first = cur;
+			}
 		}
 	}
-
-	for (Vehicle *v = this; v != NULL; v = v->Next()) v->refit_cap = v->cargo_cap;
 }
 
 /**

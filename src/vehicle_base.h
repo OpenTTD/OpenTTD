@@ -613,6 +613,8 @@ public:
 		return (this->orders.list == NULL) ? INVALID_STATION : this->orders.list->GetNextStoppingStation(this);
 	}
 
+	void ResetRefitCaps();
+
 	void RefreshNextHopsStats();
 
 	/**

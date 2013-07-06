@@ -1530,6 +1530,9 @@ static void LoadUnloadVehicle(Vehicle *front)
 			cur_company.Restore();
 		}
 
+		/* As we're loading here the following link can carry the full capacity of the vehicle. */
+		v->refit_cap = v->cargo_cap;
+
 		/* update stats */
 		int t;
 		switch (front->type) {
