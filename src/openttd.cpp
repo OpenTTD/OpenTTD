@@ -61,6 +61,7 @@
 #include "game/game_config.hpp"
 #include "town.h"
 #include "subsidy_func.h"
+#include "gfx_layout.h"
 
 
 #include "linkgraph/linkgraphschedule.h"
@@ -1317,6 +1318,8 @@ void StateGameLoop()
 	if (HasModalProgress()) return;
 
 	ClearStorageChanges(false);
+
+	Layouter::ReduceLineCache();
 
 	if (_game_mode == GM_EDITOR) {
 		RunTileLoop();
