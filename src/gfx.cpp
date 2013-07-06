@@ -51,43 +51,6 @@ byte _colour_gradient[COLOUR_END][8];
 static void GfxMainBlitterViewport(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = NULL, SpriteID sprite_id = SPR_CURSOR_MOUSE);
 static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = NULL, SpriteID sprite_id = SPR_CURSOR_MOUSE, ZoomLevel zoom = ZOOM_LVL_NORMAL);
 
-/**
- * Text drawing parameters, which can change while drawing a line, but are kept between multiple parts
- * of the same text, e.g. on line breaks.
- */
-struct DrawStringParams {
-	FontSize fontsize;
-	TextColour cur_colour, prev_colour;
-
-	DrawStringParams(TextColour colour, FontSize fontsize) : fontsize(fontsize), cur_colour(colour), prev_colour(colour) {}
-
-	/**
-	 * Switch to new colour \a c.
-	 * @param c New colour to use.
-	 */
-	inline void SetColour(TextColour c)
-	{
-		assert(c >=  TC_BLUE && c <= TC_BLACK);
-		this->prev_colour = this->cur_colour;
-		this->cur_colour = c;
-	}
-
-	/** Switch to previous colour. */
-	inline void SetPreviousColour()
-	{
-		Swap(this->cur_colour, this->prev_colour);
-	}
-
-	/**
-	 * Switch to using a new font \a f.
-	 * @param f New font to use.
-	 */
-	inline void SetFontSize(FontSize f)
-	{
-		this->fontsize = f;
-	}
-};
-
 static ReusableBuffer<uint8> _cursor_backup;
 
 /**

@@ -410,11 +410,11 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 	const CharType *buffer_last = lastof(this->buffer);
 	CharType *buff = this->buffer;
 
-	TextColour cur_colour = colour, prev_colour = colour;
+	FontState state(colour, fontsize);
 	WChar c = 0;
 
 	do {
-		Font *f = new Font(fontsize, cur_colour);
+		Font *f = new Font(state.fontsize, state.cur_colour);
 		CharType *buff_begin = buff;
 		FontMap fontMapping;
 
@@ -428,14 +428,13 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 			if (c == '\0' || c == '\n') {
 				break;
 			} else if (c >= SCC_BLUE && c <= SCC_BLACK) {
-				prev_colour = cur_colour;
-				cur_colour = (TextColour)(c - SCC_BLUE);
+				state.SetColour((TextColour)(c - SCC_BLUE));
 			} else if (c == SCC_PREVIOUS_COLOUR) { // Revert to the previous colour.
-				Swap(prev_colour, cur_colour);
+				state.SetPreviousColour();
 			} else if (c == SCC_TINYFONT) {
-				fontsize = FS_SMALL;
+				state.SetFontSize(FS_SMALL);
 			} else if (c == SCC_BIGFONT) {
-				fontsize = FS_LARGE;
+				state.SetFontSize(FS_LARGE);
 			} else {
 				buff += AppendToBuffer(buff, buffer_last, c);
 				continue;
@@ -447,7 +446,7 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 			} else {
 				delete f;
 			}
-			f = new Font(fontsize, cur_colour);
+			f = new Font(state.fontsize, state.cur_colour);
 		}
 
 		/* Better safe than sorry. */

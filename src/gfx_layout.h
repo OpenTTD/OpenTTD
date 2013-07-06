@@ -24,6 +24,44 @@
 #endif /* WITH_ICU */
 
 /**
+ * Text drawing parameters, which can change while drawing a line, but are kept between multiple parts
+ * of the same text, e.g. on line breaks.
+ */
+struct FontState {
+	FontSize fontsize;       ///< Current font size.
+	TextColour cur_colour;   ///< Current text colour.
+	TextColour prev_colour;  ///< Text colour from before the last colour switch.
+
+	FontState(TextColour colour, FontSize fontsize) : fontsize(fontsize), cur_colour(colour), prev_colour(colour) {}
+
+	/**
+	 * Switch to new colour \a c.
+	 * @param c New colour to use.
+	 */
+	inline void SetColour(TextColour c)
+	{
+		assert(c >= TC_BLUE && c <= TC_BLACK);
+		this->prev_colour = this->cur_colour;
+		this->cur_colour = c;
+	}
+
+	/** Switch to previous colour. */
+	inline void SetPreviousColour()
+	{
+		Swap(this->cur_colour, this->prev_colour);
+	}
+
+	/**
+	 * Switch to using a new font \a f.
+	 * @param f New font to use.
+	 */
+	inline void SetFontSize(FontSize f)
+	{
+		this->fontsize = f;
+	}
+};
+
+/**
  * Container with information about a font.
  */
 class Font ICU_FONTINSTANCE {
