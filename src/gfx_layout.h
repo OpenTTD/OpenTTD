@@ -198,7 +198,7 @@ class Layouter : public AutoDeleteSmallVector<ParagraphLayout::Line *, 4> {
 		~LineCacheItem() { delete layout; }
 	};
 	typedef std::map<LineCacheKey, LineCacheItem> LineCache;
-	static LineCache linecache;
+	static LineCache *linecache;
 
 	static LineCacheItem &GetCachedParagraphLayout(const char *str, size_t len, const FontState &state);
 

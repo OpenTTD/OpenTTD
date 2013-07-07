@@ -22,7 +22,7 @@
 
 
 /** Cache of ParagraphLayout lines. */
-Layouter::LineCache Layouter::linecache;
+Layouter::LineCache *Layouter::linecache;
 
 /** Cache of Font instances. */
 Layouter::FontColourMap Layouter::fonts[FS_END];
@@ -550,10 +550,15 @@ void Layouter::ResetFontCache(FontSize size)
  */
 Layouter::LineCacheItem &Layouter::GetCachedParagraphLayout(const char *str, size_t len, const FontState &state)
 {
+	if (linecache == NULL) {
+		/* Create linecache on first access to avoid trouble with initialisation order of static variables. */
+		linecache = new LineCache();
+	}
+
 	LineCacheKey key;
 	key.state_before = state;
 	key.str.assign(str, len);
-	return linecache[key];
+	return (*linecache)[key];
 }
 
 /**
@@ -561,7 +566,7 @@ Layouter::LineCacheItem &Layouter::GetCachedParagraphLayout(const char *str, siz
  */
 void Layouter::ResetLineCache()
 {
-	linecache.clear();
+	if (linecache != NULL) linecache->clear();
 }
 
 /**
@@ -569,6 +574,8 @@ void Layouter::ResetLineCache()
  */
 void Layouter::ReduceLineCache()
 {
-	/* TODO LRU cache would be fancy, but not exactly necessary */
-	if (linecache.size() > 4096) ResetLineCache();
+	if (linecache != NULL) {
+		/* TODO LRU cache would be fancy, but not exactly necessary */
+		if (linecache->size() > 4096) ResetLineCache();
+	}
 }
