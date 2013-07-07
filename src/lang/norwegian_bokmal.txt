@@ -201,21 +201,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA} hk
 STR_UNITS_POWER_METRIC                                          :{COMMA} hk
 STR_UNITS_POWER_SI                                              :{COMMA} kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P "" s}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonn
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} fot
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -279,6 +286,8 @@ STR_SORT_BY_LENGTH                                              :Lengde
 STR_SORT_BY_LIFE_TIME                                           :Gjenværende levetid
 STR_SORT_BY_TIMETABLE_DELAY                                     :Rutetabellforsinkelse
 STR_SORT_BY_FACILITY                                            :Stasjonstype
+STR_SORT_BY_WAITING_TOTAL                                       :Samlet ventende last
+STR_SORT_BY_WAITING_AVAILABLE                                   :Tilgjengelig ventende last
 STR_SORT_BY_RATING_MAX                                          :Høyeste varerating
 STR_SORT_BY_RATING_MIN                                          :Laveste varerating
 STR_SORT_BY_ENGINE_ID                                           :MaskinID (klassisk type)
@@ -304,6 +313,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Vis subs
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Vis liste over firmaets stasjoner
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Vis firmaenes økonomiske data
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Vis firmaenes generelle data
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Vise historiebok
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Vise målliste
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Vis grafer
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Vis firmarangeringstabell
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansier bygging av ny industri eller vis liste over industrier
@@ -1556,8 +1567,23 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gjennomsnittsst
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Fjern absurde veielementer under veikonstruksjon: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Fjern blindveier under finansiert veikonstruksjon
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Oppdater distribusjonsgraf hver {STRING} dag{P 0:2 "" s}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tid mellom påfølgende reberegning av koblingsgrafen. Hver reberegning beregner planene for en del av grafen. Det betyr at en verdi X for denne innstillingen ikke betyr at hele grafen vil bli oppdatert for hver X. dag. Bare noen komponenter vil. Jo kortere du setter det, dess mer CPU tid bil være nødvendig for å beregne det. Jo lenger du setter den, dess lenger vil det ta før last-distribusjonen begynner på nye ruter.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Benytt {STRING} dag{P 0:2 "" er} for reberegning av distribusjonsgraf
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Tiden det tar for hver ny reberegning av en graf-link komponent. Når en reberegning iverksettes, blir en tråd startet som tillates å kjøre for dette antall dager. Jo kortere du setter dette, desto mer sannsynlig er det at tråden ikke er ferdig til ønsket tid. Da stopper spillet ("etterslep"). Jo lenger du setter den, desto lenger tid tar det for distribusjonen å bli oppdatert når rutene endres.
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisk
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrisk
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distribusjonsmodus for passasjerer: {STRING}
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighetsenheter: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Når en hastighet vises i brukergrensesnittet, vise det i de valgte enheter
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Det britiske imperiets enhetssystem (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrisk (km/t)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Kjøretøys effektenheter: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Når et kjøretøys effekt er vist i brukergrensesnittet, vise det i de valgte enheter
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Det britiske imperiets enhetssystem (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrisk (HK)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
@@ -2929,9 +2955,11 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kjøp e
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Du kan bestikke bystyret for å forbedre vurderingen av firmaet ditt, men du risikerer å bli bøtelagt hvis du blir oppdaget.{}Kostnad: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globale mål
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globale mål:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ingen -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Ikke relevant -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Firmaets mål:
@@ -2973,6 +3001,15 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikk for å gå til industri/by. Ctrl+klikk åpner et nytt tilleggsvindu over industrien/byen
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Historiebok
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Global historiebok
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Side {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Gå til en bestemt side ved å velge den i denne nedtrekkslisten.
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Forrige
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Gå til forrige side
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Neste
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Gå til neste side
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stasjonsnavn - klikk på navnet for å gå til stasjonen. Ctrl+klikk åpner et nytt tilleggsvindu over stasjonen.
@@ -3005,6 +3042,7 @@ STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Månedli
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 
+STR_STATION_VIEW_GROUP_D_V_S                                    :Mål via kilde
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Elendig

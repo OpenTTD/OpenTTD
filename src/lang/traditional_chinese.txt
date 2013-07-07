@@ -2867,7 +2867,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}取消�
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :無
-STR_NEWGRF_LIST_ALL_FOUND                                       :目前所有檔案
+STR_NEWGRF_LIST_ALL_FOUND                                       :所有檔案齊備
 STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}發現相容檔案
 STR_NEWGRF_LIST_MISSING                                         :{RED}缺少檔案
 

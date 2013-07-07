@@ -1358,39 +1358,47 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :時刻表の時
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :時刻表で行程時間を定めるために使われる時間単位を「日」ではなく「ゲーム時」にします。1日は約74ゲーム時に相当します
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :時刻表に発着情報を表示: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :時刻表に出発・到着の予定時刻を表示します
-STR_CONFIG_SETTING_QUICKGOTO                                    :【駅を選択】をデフォルトでONにする： {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :デフォルトの鉄道の種類（新規ゲーム後／ゲームの読み込み後）：{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :最初の鉄道種類
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :最新の鉄道種類
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :最も使われている鉄道種類
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :予約済みの線路を表示: {STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :建設が終わってもツールバーは表示したままにする：{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :指令の作成を高速化: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :司令作成画面を開いたときに規定で「駅を選択」を選択するようにします
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :デフォルトの線路種類: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :新規ゲーム/ゲームロード直後に選択される線路の種類を指定します。「最初」では最初に開発された種類(普通は非電化の線路)、「最新」では最も新しく開発された種類、「最多」はマップ内で一番使われている種類になります
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :最初
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :最新
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :最多
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :予約済み経路を表示: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :列車が移動のために予約した経路部分に色づけします。パス信号で作られた閉塞区間に他の列車が入れないといったトラブルの解決に役立ちます
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :建設ツールバーの表示を維持: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :橋やトンネルなどを建設した後もツールバーを開いたままにします
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :財政ウィンドウ内でグループ分けされた費用表示をする: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :財政ウィンドウのグループ分け: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :財政ウィンドウのレイアウトを収入部門・支出部門でグループ分けするかどうかを設定します
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :ニュース表示: {STRING}
-STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :ニュース要約の効果音再生
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :ステータスバーにニュースが流れたとき効果音を鳴らすかどうかを設定します
 STR_CONFIG_SETTING_SOUND_NEWS                                   :新聞: {STRING}
-STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :新聞の観覧時の効果音
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :画面に新聞が現れたときに効果音を鳴らすかどうかを設定します
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :年末: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :年始の企業パフォーマンス中の効果音
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :年始に行われる過年度の営業総括が表示されたときに効果音を鳴らすかどうかを設定します
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :建設: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :建設成功時と色々な動作の効果音
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :建設などが成功した場合に効果音を鳴らすかどうかを設定します
 STR_CONFIG_SETTING_SOUND_CLICK                                  :ボタンのクリック: {STRING}
-STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :ボタンのクリック音
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :ボタンのクリック音を鳴らすかどうかを設定します
 STR_CONFIG_SETTING_SOUND_DISASTER                               :災害/事故: {STRING}
-STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :事故と災害の効果音の再生
-STR_CONFIG_SETTING_SOUND_VEHICLE                                :乗り物: {STRING}
-STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :乗り物の効果音
-STR_CONFIG_SETTING_SOUND_AMBIENT                                :周辺: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :町と産業の環境音
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :事故や災害時に効果音を鳴らすかどうかを設定します
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :輸送機器: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :輸送機器関係の効果音を鳴らすかどうかを設定します
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :環境音: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :町や産業、自然環境に関する効果音を鳴らすかどうかを設定します
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :その時点で導入できるインフラのみが建設可能 {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :有効にするとその時点で使用可能な設備のみが建設できます。(例：電気機関車が購入できないときに電気鉄道は建設不可）
-STR_CONFIG_SETTING_MAX_TRAINS                                   :会社1つあたりの列車数上限：{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :会社1つあたりの道路車両数上限：{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :会社一つあたりの航空機数上限：{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :会社一つあたりの船舶数上限：{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :有効なインフラのみ建設可能: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :有効にするとその時点で使用可能な設備のみが建設できます。(例: 電気機関車が購入できないときに電気鉄道は建設不可)
+STR_CONFIG_SETTING_MAX_TRAINS                                   :会社あたりの列車数上限: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :1社が保有できる最大の列車数を設定します
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :会社あたりの車両数上限: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :1社が保有できる最大の車両数を設定します
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :会社あたりの航空機数上限: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :1社が保有できる最大の航空機数を設定します
+STR_CONFIG_SETTING_MAX_SHIPS                                    :会社あたりの船舶数上限: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :1社が保有できる最大の船舶数を設定します
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :コンピュータは鉄道車両を使用しない：{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :コンピュータは道路車両を使用しない：{STRING}

@@ -199,21 +199,26 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}hp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}டன்
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} டன்{P "" கள்}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} டன்{P "" கள்}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} கிலோ
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}கேலன்
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} கேலன்{P "" கள்}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} லிட்டர்{P "" கள்}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} அடி
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} மீ
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -303,6 +308,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}மா�
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}நிறுவனத்தின் நிலையங்களின் பட்டியலை காண்பி
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}நிறுவனத்தின் நிதி நிலைமையை காட்டு
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}நிறுவனத்தின் விவரங்களை காட்டு
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}கதை புத்தகத்தினைக் காட்டு
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}குறிக்கோள் பட்டியலைக் காட்டு
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}வரைபடம் காண்பி
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}நிறுவங்களின் பட்டியலை காட்டு
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}ஓர் தொழிற்சாலையை கட்டு அல்லது தொழிற்சாலைகளின் பட்டியலை காட்டு
@@ -1384,9 +1391,15 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :தொடக்
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :ஆட்டத்தின் தொடக்கத்தில் மாநகரங்களின் அளவு நகரங்களை ஒப்பிடுகையில்
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :வேக அலகுகள்: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :மெட்ரிக் (கி.மீ/மணிநேரம்)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (மீ/நொடி)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :வாகன திறன் பிரிவுகள்: {STRING}
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :எடை பிரிவுகள்: {STRING}
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :கன அளவு பிரிவுகள்: {STRING}
 
 
 
@@ -2646,6 +2659,7 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}மா�
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} {STRING} இருந்து {STRING} வரை {YELLOW} ({COMPANY}{YELLOW}, {DATE_SHORT} வரை)
 
 # Story book window
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}உலக கதைப் புத்தகம்
 
 # Station list window
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl அழுத்தி ஒன்றிற்கும் மேற்ப்பட்ட பொருட்களைத் தேர்ந்தெடுக்கவும்
@@ -3872,6 +3886,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}சர�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... வாகனம் அழிக்கப்பட்டுள்ளது
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}இரயில் சிக்னலைத் தாண்டிச் செல்ல முடியாது...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}இரயில் செல்லும் திசையினை திருப்ப முடியாது...
@@ -4372,6 +4387,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
