@@ -192,8 +192,28 @@ bool NetworkContentSocketHandler::HandlePacket(Packet *p)
  */
 void NetworkContentSocketHandler::ReceivePackets()
 {
+	/*
+	 * We read only a few of the packets. This as receiving packets can be expensive
+	 * due to the re-resolving of the parent/child relations and checking the toggle
+	 * state of all bits. We cannot do this all in one go, as we want to show the
+	 * user what we already received. Otherwise, it can take very long before any
+	 * progress is shown to the end user that something has been received.
+	 * It is also the case that we request extra content from the content server in
+	 * case there is an unknown (in the content list) piece of content. These will
+	 * come in after the main lists have been requested. As a result, we won't be
+	 * getting everything reliably in one batch. Thus, we need to make subsequent
+	 * updates in that case as well.
+	 *
+	 * As a result, we simple handle an arbitrary number of packets in one cycle,
+	 * and let the rest be handled in subsequent cycles. These are ran, almost,
+	 * immediately after this cycle so in speed it does not matter much, except
+	 * that the user inferface will appear better responding.
+	 *
+	 * What arbitrary number to choose is the ultimate question though.
+	 */
 	Packet *p;
-	while ((p = this->ReceivePacket()) != NULL) {
+	int i = 42;
+	while (--i != 0 && (p = this->ReceivePacket()) != NULL) {
 		bool cont = this->HandlePacket(p);
 		delete p;
 		if (!cont) return;
