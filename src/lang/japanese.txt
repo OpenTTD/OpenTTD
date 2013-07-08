@@ -195,8 +195,8 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}馬力
-STR_UNITS_POWER_METRIC                                          :{COMMA}馬力
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}英馬力
+STR_UNITS_POWER_METRIC                                          :{COMMA}仏馬力
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
@@ -1400,89 +1400,107 @@ STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :1社が保有�
 STR_CONFIG_SETTING_MAX_SHIPS                                    :会社あたりの船舶数上限: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :1社が保有できる最大の船舶数を設定します
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :コンピュータは鉄道車両を使用しない：{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :コンピュータは道路車両を使用しない：{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :コンピュータは航空機を使用しない：{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :コンピュータは船舶を使用しない：{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :AI企業の鉄道輸送を不許可: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :コンピュータが設立するライバル企業が鉄道輸送を使えないようにします
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :AI企業の道路輸送を不許可: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :コンピュータが設立するライバル企業が道路輸送/路面電車輸送を使えないようにします
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :AI企業の航空輸送を不許可: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :コンピュータが設立するライバル企業が航空輸送を使えないようにします
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :AI企業の船舶輸送を不許可: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :コンピュータが設立するライバル企業が船舶輸送を使えないようにします
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :プロフィール初期設定: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_EASY                              :イージー
-STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :ミディアム
-STR_CONFIG_SETTING_AI_PROFILE_HARD                              :ハード
+STR_CONFIG_SETTING_AI_PROFILE                                   :規定の設定プロファイル: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :新たなAIやゲームスクリプトを追加するときに、どの設定プロファイルを使ってランダムAIや初期値を与えるかを決定します
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :初級
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :中級
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :上級
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :マルチプレイヤーゲームで AI を使用：{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :マルチプレイヤーゲームでもAIを使用: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :マルチプレイヤーゲームでもAIのライバル企業が登場するかを設定します
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :命令コード処理上限: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :AIやゲームスクリプトが一つの「詰め込み指令」を処理する際に、一度に演算できる命令コード数を設定します。一般に値を小さくした場合、ゲームへの負荷が軽減されます
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :修理間隔をパーセントで表示：{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :鉄道車両の補修間隔: {STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :鉄道車両の補修間隔を設定します。(明示的に指定されていない車両)
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :最大信頼度を点検要件化: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :次の点検が必要と判断される条件を設定します。無効の場合は、前の点検から指定の期間が経過した際に点検が必要と判断されます。有効にすると、輸送機器の最大信頼度が指定の値より落ち込んだ場合に次の点検が必要と判断されます
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :列車の点検周期: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :個別に指定されていない場合の、列車の点検周期を設定します
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} 日/%
-STR_CONFIG_SETTING_SERVINT_DISABLED                             :補修しない
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :道路車両の補修間隔: {STRING}
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :道路車両の補修間隔を設定します。(明示的に指定されていない車両)
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :航空機の補修間隔: {STRING}
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :航空機の補修間隔を設定します。(明示的に指定されていない航空機)
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :船舶の補修間隔: {STRING}
-STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :船舶の補修間隔を設定します。(明示的に指定されていない船舶)
-STR_CONFIG_SETTING_NOSERVICE                                    :故障を切にすると修理も切にする：{STRING}
-STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :故障が起こらない設定の時は補修も行われないようになります。
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :貨車の速度制限を使用：{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :貨車の速度制限を適用します
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :電気鉄道を使用しない:{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :この設定を有効にすると、電気鉄道車両でも電化線路を必要としません。
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :点検なし
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :車両の点検周期: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :個別に指定されていない場合の、車両の点検周期を設定します
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :航空機の点検周期: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :個別に指定されていない場合の、航空機の点検周期を設定します
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :船舶の点検周期: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :個別に指定されていない場合の、船舶の点検周期を設定します
+STR_CONFIG_SETTING_NOSERVICE                                    :故障切ならば点検無効化: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :有効にすると、故障が起こらない設定の時には点検も行わなくなります
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :貨車の上限速度: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :有効にすると、上限速度が設定されている貨車を使用した場合、列車はその速度以上出せなくなります
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :電気鉄道を無効化:{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :この設定を有効にすると電気鉄道を建設できなくなります。ただし電気機関車・電車でも架線のない非電化の線路を走ることができるようになります
 
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :自分の新しい駅に初めて車両が到着: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :最初の列車が駅に到着したときにニュースを表示します。
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :競争相手の新しい駅に初めて車両が到着: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :競争相手の駅に最初の車両が到着したときにニュースを表示します
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :事故／災害: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :事故や災害が発生したときにニュースを表示します
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :停留施設の開業(自社): {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :自社の新しい停留施設に最初の列車が到着したときにニュースを表示するかを設定します
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :停留施設の開業(他社): {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :他社の新しい停留施設に最初の列車が到着したときにニュースを表示するかを設定します
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :事故/災害: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :事故や災害が発生したときにニュースを表示するかを設定します
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :会社情報: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :新しい会社の設立時、会社の経営危機時などにニュースを表示します
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :新会社の設立や社の経営危機などのニュースを表示するかを設定します
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :産業の開業: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :新しい産業が開設されたときにニュースを表示します
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :新しい産業が開設されたときにニュースを表示するかを設定します
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :産業の閉業: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :産業が閉鎖されるときにニュースを表示します。
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :経済の変化: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :経済状況が変化したときにニュースを表示します
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :自分が運送している産業の生産量の変化: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :輸送中の産業で生産量の変化があったときにニュースを表示します
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :競争相手が運送している産業の生産量の変化: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :他プレイヤーが輸送中な産業の生産量が変化したときにニュースを表示します
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :その他の産業の生産量の変化: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :輸送などの関わりが無い産業の生産量が変化したときにニュースを表示します
-STR_CONFIG_SETTING_NEWS_ADVICE                                  :会社の車両の勧告／情報: {STRING}
-STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :車両に対する注意情報を表示します
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :新しい乗り物の登場: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :新しい車両が登場したときにニュースを表示します
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :受入れする貨物の変化: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :駅の受入対象が変化したときにニュースを表示します
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :産業が閉鎖されるときにニュースを表示するかを設定します
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :景気変動: {STRING}
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :景気が変動したときにニュースを表示するかを設定します
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :生産量の変動(自社): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :自社の輸送網に関わる産業で生産量の変化があったときにニュースを表示するかを設定します
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :生産量の変動(他社): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :他社の輸送網に関わる産業で生産量の変化があったときにニュースを表示するかを設定します
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :生産量の変動(その他): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :いずれの社の輸送網に関わっていない産業で生産量の変化があったときにニュースを表示するかを設定します
+STR_CONFIG_SETTING_NEWS_ADVICE                                  :輸送機器の注意勧告/情報: {STRING}
+STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :輸送機器に対する注意・警告・情報を表示するかを設定します
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :新輸送機器の登場: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :新しい輸送機器が登場したときにニュースを表示するかを設定します
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :受入れ貨物の変化: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :停留施設での受入対象の変化を表示するかを設定します
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :助成金: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :補助金に関する情報を表示します
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :助成金に関する情報のニュースを表示するかを設定します
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :一般情報: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :排他的輸送権や道路再建の資金調達などの一般情報を表示します
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :独占輸送契約締結や道路補修などの一般情報のニュースを表示するかを設定します
 
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :切
-STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :簡易
-STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :完全
+STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :ステータスバー
+STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :新聞
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :色刷ニュースの開始年：{STRING}
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :ニュースがカラー版になる境目の年を設定します
-STR_CONFIG_SETTING_STARTING_YEAR                                :開始年：{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :スムーズな経済を使用：{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :他社所有株式の購入を許容する：{STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :ドラッグで信号を設置する間隔: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :信号がドラッグされたときに次の信号を(信号やジャンクションが出現するまで)設置する間隔。
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :カラー新聞の開始年: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :新聞がカラー版になる境目の年を設定します
+STR_CONFIG_SETTING_STARTING_YEAR                                :開始年: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :緩やかな経済変動: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :有効にすると、一次産業での生産量はより小幅な変動がより頻繁に起こるようになります。この設定はNewGRFで提供されるような、デフォルト以外の産業に対してはほとんど効果がありません
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :他社株の取引許容: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :有効にすると、ライバル会社の株式を取引できるようになります。この設定を有効にしても、目的の社が設立から丸5年経過していない場合は取引できません
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :区間払いの割合: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :転送を行う輸送網(フィーダーシステム)を構築した場合、中継地点までの輸送で総輸送費の何%を受け取れるかを設定します(転送時に予想される最終輸送費から仮に部分払いし、最終的に貨物が目的地に到着した時点で清算します)。転送元の輸送機器が赤字になるのを防ぎます
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :信号間隔: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Ctrl+ドラッグで信号を設置する際に、障害物(別の信号やポイント)が現れるまでどのくらいの間隔で信号を設置するかを設定します
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} タイル
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :信号がドラッグされたとき間隔を一定に保つ: {STRING}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :次の年まで腕木式信号を建設：{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :信号のGUIを使用: {STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :信号建設コマンドのデフォルト信号形式 : {STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :ブロック信号
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :信号間隔を固定: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Ctrl+ドラッグで信号を設置する際の挙動を調整します。無効にした場合、閉塞が極端に長くなるのを防ぐため、橋/トンネルの両端に信号が特に設置されます。有効にした場合、橋/トンネルがあっても一切無視して一定間隔で信号を配置します。これは特に平行路線で信号の位置を揃えるのに有効です
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :腕木式信号の年限: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :色灯式信号が使われるようになる年を設定します。腕木式信号と見た目は変わりますが、機能は変わりません。また、この設定に関わらず、「信号建設用のウィンドウを表示」が有効であればいつであっても両方のタイプが使えます
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :信号建設用のウィンドウを表示: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :信号の建設時にその種類を選べるウィンドウを表示します。この設定が無効の時は、信号の建設時にCtrl+クリックで信号の種類を変更できます
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :デフォルトの信号: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :「信号建設」を選択した際に、デフォルトで選択されている信号種類を指定します
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :閉塞信号
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :パス信号
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :一方通行パス信号
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :信号種類のサイクル範囲: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :ブロック信号のみ
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :パス信号のみ
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Ctrl+クリックで信号種類を切り替える際に使う、サイクル種類を決定します
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :閉塞・入口・出口・コンボ
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :パス・一方通行パス
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :全て
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :街の道路配置: {STRING}
@@ -1493,61 +1511,83 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :格子状（2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :格子状（3x3）
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ランダム
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :街路の自動構築: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :街の自治体が街の成長に応じて街路を自動で拡張するようになります。無効にすると勝手な街路拡張は行われなくなりますが、街を成長させるためにはプレイヤーが街路の建設を行う必要が出てきます
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :街路との平面交差を許可: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :有効にすると、会社が作る道路と街路とが交差することが可能となります
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :空港建設に対する街の騒音レベル規制: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :この設定を無効にすると、街に作れる空港は最大2つまでになります。有効にした場合は、各空港の騒音レベルの総和が街の騒音許容レベル以下になるようにしか建てられません。騒音レベルは空港の大きさ・街からの距離により、騒音許容レベルは街の人口により左右されます
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :ゲーム中での街新設: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :有効にすると、ゲーム中でも新規の街を開設するために出資することが可能になります
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :無効
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :有効
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :有効(道路配置も設定可)
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :ゲーム内での植樹: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :なし {RED}(亜熱帯地方の伐採所が使い物にならなくなります)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :熱帯雨林のみ可
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :全ての樹種が可
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :樹木の自然成長: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :ゲーム中、ランダムに生えてくる樹種を設定します。設定によっては樹木の生育に依存する産業に悪影響が生じる可能性があります(「不可」にした場合、亜熱帯地域の伐採所を機能させ続けるためには手動で植林し続ける必要があります)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :不能 {RED}(亜熱帯地域の伐採所に影響)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :熱帯雨林地帯のみ
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :全地域
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :メインツールバーの位置：{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :メインツールバーの位置: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :画面上のメインツールバーの位置を決めます
 STR_CONFIG_SETTING_STATUSBAR_POS                                :ステータスバーの位置: {STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :ウィンドウをスナップする範囲: {STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :隣接するウィンドウが設定した範囲に近づくとスナップ(引き寄せ)します。
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :画面下のステータスバーの位置を決めます
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :スナップ距離: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :他のウィンドウに近づけられたウィンドウがスナップ(引き寄せ)される距離を設定します。スナップの無効化もできます
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} ピクセル
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :スナップしない
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :スティッキーではないウィンドウの制限 : {STRING}個
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :最大ウィンドウ数: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :ピン留めしないで同時に開いておけるウィンドウ数を設定します。この数を超えると古いウィンドウから順次閉じられます
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :無制限
 STR_CONFIG_SETTING_ZOOM_MIN                                     :最大ズームインレベル: {STRING}
-STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :最大ズームインレベルを設定します。この設定を有効にするとメモリー使用量が増えます。
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :ズームインの最大倍率を設定します。倍率を高くすればするほどメモリー使用量が増えます
 STR_CONFIG_SETTING_ZOOM_MAX                                     :最大ズームアウトレベル:{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :最大ズームアウトレベルを設定します。.ズームアウトによってラグが発生する場合があります。
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :ズームアウトの最大倍率を設定します。ズームアウトの倍率が大きいと、処理遅延が発生する可能性があります
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4倍
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2倍
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :通常
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2倍
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4倍
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8倍
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :市町村の展開：{STRING}
-STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :町の成長速度
-STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :なし
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :街の成長速度: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :街の成長速度を設定します
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :成長しない
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :遅い
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :普通
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :早い
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :特に早い
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初期の市町村のサイズの乗数：{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :道路建設時に変な部分を削除：{STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :都市になる町の比率: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :町のうち、成長によってその何分の1が都市になるか(あるいは全くならないか)を設定します。都市になると拡大・成長速度が速くなります
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :{COMMA}分の1
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :変化なし
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初期の都市サイズ乗数: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :ゲーム開始時に都市が普通の町に比べて平均して何倍の人口規模になるかを設定します
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :街路補修時に道路整理: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :街路補修に出資した際に、先が建物に塞がれた交差点などを整理撤去するようなります
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :速度単位: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :ゲーム中の速度をいずれの単位系で表すか決定します
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :ヤード・ポンド法 (マイル時(mph))
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :メートル法 (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :国際単位系 (m/s)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :動力単位: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :ゲーム中の動力(仕事率、主に輸送機器の出力表記)をいずれの単位系で表すか決定します
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :ヤード・ポンド法 (英馬力)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :メートル法 (仏馬力)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :国際単位系 (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :質量単位: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :ゲーム中の重量をいずれの単位系で表すか決定します
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :ヤード・ポンド法 (米トン)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :メートル法 (トン)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI単位系 (kg)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :国際単位系 (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :容積単位: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :ゲーム中の容積をいずれの単位系で表すか決定します
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :ヤード・ポンド法 (ガロン)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :ヤード・ポンド法 (ガロン(gal))
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :メートル法 (リットル)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :国際単位系 (m³)
 
@@ -1559,28 +1599,29 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :国際単位系
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :距離単位: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :ゲーム中の長さをいずれの単位系で表すか決定します
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :ヤード・ポンド法 (フィート)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :ヤード・ポンド法 (フィート(ft))
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :メートル法 (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :国際単位系 (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}インターフェース
 STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}多国籍対応
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}建設
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}車両
-STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}駅
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}輸送機器
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}停留施設
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}経済
-STR_CONFIG_SETTING_AI                                           :{ORANGE}競争者
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}表示の設定
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}貨物配送先
+STR_CONFIG_SETTING_AI                                           :{ORANGE}競争会社
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}表示設定
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}インターフェース
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}効果音
-STR_CONFIG_SETTING_NEWS                                         :{ORANGE}ニュースとメッセージ
+STR_CONFIG_SETTING_NEWS                                         :{ORANGE}ニュース/メッセージ
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}信号
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}貨物の取り扱い
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}コンピュータのプレイヤー
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}自動リニュアル
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}修理
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}経路の計算
-STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}電車
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}貨物取扱
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}コンピュータプレイヤー
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}自動更新
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}点検
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}経路構築
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}列車
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}市町村
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}産業
 
@@ -1588,17 +1629,36 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :オリジナル
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF{BLUE}(おすすめ)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :電車の経路探索アルゴリズム：{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :道路車両の経路探索アルゴリズム：{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :船舶の経路処理アルゴリズム：{STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :信号待ちで自動的に折り返す: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :列車の経路探索アルゴリズム: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :列車の経路探索アルゴリズムを決めます
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :車両の経路探索アルゴリズム: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :車両の経路探索アルゴリズムを決めます
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :船舶の経路探索アルゴリズム: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :船舶の経路探索アルゴリズムを決めます
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :信号待ちでの折返し: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :列車が信号で長く待たされた場合、進路を反転することを許可します
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}設定を変更します
 
 # Config errors
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... 無効です Base Graphics set '{STRING}': がありません
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... 無効です Base Sounds set '{STRING}': がありません
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... 無効です Base Music set '{STRING}':がありません
+STR_CONFIG_ERROR                                                :{WHITE}コンフィグファイルにエラーがあります
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}設定'{STRING}'が不正です
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}設定'{1:STRING}'の値、'{0:STRING}'が不正です
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}設定'{STRING}'の文末に不正な制御文字があります
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}'{1:STRING}'とGRF IDが重複したため、NewGRF '{0:STRING}'は読み込まれませんでした
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}{1:STRING}為、NewGRF '{0:STRING}'は読み込まれませんでした
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ファイルが見つからない
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :安定版ではない
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :システムNewGRFの
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :このバージョンのOpenTTDとは互換性がない
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :未知の理由の
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}'{STRING}'の圧縮レベルが不正です
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}データ形式'{STRING}'には対応していません。'{STRING}'に戻ります
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}ファイルが見つからないため、基本グラフィックセット'{STRING}'は読み込まれませんでした
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}ファイルが見つからないため、基本効果音セット '{STRING}'は読み込まれませんでした
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}ファイルが見つからないため、基本音楽セット'{STRING}'は読み込まれませんでした
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}メモリー不足
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}スプライトキャッシュ中、{BYTES}の割り当てに失敗しました。スプライトキャッシュは{BYTES}に減ったため、OpenTTDの処理速度が低下する恐れがあります。必要メモリ量を減らすには32bitグラフィックを無効にするか、最大ズームイン・ズームアウトのレベルを下げてください
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1610,7 +1670,7 @@ STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}ハイ�
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}シナリオエディタ
 STR_INTRO_MULTIPLAYER                                           :{BLACK}マルチプレイヤーゲーム
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}ゲームの基本設定
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}基本設定
 STR_INTRO_HIGHSCORE                                             :{BLACK}ハイスコア
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}拡張設定
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRFの設定
@@ -1623,26 +1683,26 @@ STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}ゲー�
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}地形をハイトマップに基づいて作成し、新規ゲームを開始します
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}カスタムシナリオを使用して新規ゲームを開始します
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}カスタムシナリオを作成します
-STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}多人数プレイヤーゲームを開始
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}マルチプレイヤーゲームを開始します
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}温帯国を選択します
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}亜寒帯国を選択します
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}亜熱帯国を選択します
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}玩具国を選択します
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}地域を温帯にします
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}地域を亜寒帯にします
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}地域を亜熱帯にします
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}地域をおもちゃの国にします
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}ゲームの設定を表示します
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}ハイスコアの表示
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}拡張設定を表示
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF の設定を表示
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}コンテンツの新規追加または更新のチェックとダウンロード
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}ハイスコアを表示します
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}より細かいゲームの設定画面を表示します
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRFの有効/無効化、各パラメータの設定ができます
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}公式オンラインコンテンツのデータベースからデータの確認・追加・更新ができます
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}AI/ゲームスクリプトの設定を行います
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}OpenTTD を終了します
 
-STR_INTRO_TRANSLATION                                           :{BLACK}この言語セットには{NUM}個{P ""}の未訳があります。翻訳者としてサインアップしOpenTTDをより良くする為に御助力下さい。(詳細はreadme.txtをごらんください)
+STR_INTRO_TRANSLATION                                           :{BLACK}この言語セットには{NUM}個の未訳文字列があります。翻訳者としてWeb登録し、OpenTTDをより良くする為にご助力下さい。(詳細はreadme.txtをご覧下さい)
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}終了
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}このゲームを終了して、{}{STRING}に戻してもよろしいですか？
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}このゲームを終了し、{}{STRING}に戻ってもよろしいですか?
 STR_QUIT_YES                                                    :{BLACK}はい
 STR_QUIT_NO                                                     :{BLACK}いいえ
 
@@ -1659,52 +1719,52 @@ STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}ゲームを断念
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}このゲームを終了してもよろしいですか？
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}このシナリオを終了してもよろしいですか？
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}ゲームを放棄
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}このゲームを終了してもよろしいですか?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}このシナリオを終了してもよろしいですか?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}チート
 STR_CHEATS_TOOLTIP                                              :{BLACK}以前にこのチートを使用したことがあることを示します
-STR_CHEATS_WARNING                                              :{BLACK}注意: チートをしたら、競争者に裏切りと見做され、永遠にのろわれる可能性があります。
-STR_CHEAT_MONEY                                                 :{LTBLUE}残額に{CURRENCY_LONG}を追加
-STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}会社: {ORANGE}{COMMA}でプレイする
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}魔法のブルドーザー(産業など何でも破壊できる) : {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}トンネルを交差可能にする: {ORANGE}{STRING}
+STR_CHEATS_WARNING                                              :{BLACK}注意: チートを使用すると、競争者に裏切りと見做され、永久に呪われる可能性があります
+STR_CHEAT_MONEY                                                 :{LTBLUE}預金残高を{CURRENCY_LONG}増やす
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}会社: {ORANGE}{COMMA}を乗っ取ってプレイする
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}魔法のブルドーザー(産業拠点等、何でも撤去できる): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}トンネルの平面交差を許容: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}ジェット機の小型空港での墜落率を減少: {ORANGE}{STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :温帯国
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :亜寒帯国
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :亜熱帯国
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :玩具国
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :地域を温帯に変更
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :地域を亜寒帯に変更
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :地域を亜熱帯に変更
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :地域をおもちゃの国に変更
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}日付を変更: {ORANGE}{DATE_SHORT}
-STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}年を変更する
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}生産量の変更を入にする：{ORANGE}{STRING}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}現在日時を変更
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}生産量変更: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}新規カラースキーム
+STR_LIVERY_CAPTION                                              :{WHITE}コーポレートカラー
 
-STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}一般のカラースキームを表示します
-STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}列車のカラースキームを表示します
-STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}道路車両のカラースキームを表示します
-STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}船舶のカラースキームを表示します
-STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}航空機のカラースキームを表示します
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}選択したカラースキームの主の色を選択します。Ctrl +クリックは、すべての方式のため、この色を設定します
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}選択したカラースキームの二次色を選択します。Ctrl +クリックは、すべての方式のため、この色を設定します
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}変更するにはカラースキームを選択します。Control+クリックすると多数のカラースキームが選択できます。カラースキームの使用を切り替えるにはチックボックスをクリックします。
+STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}通常のコーポレートカラー(車両塗装色)を表示します
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}列車の塗装色を表示します
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}車両の塗装色を表示します
+STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}船舶用の塗装色を表示します
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}航空機用の塗装色を表示します
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}選択した輸送機器に使う、塗装の主色を選択します。Ctrl+クリックで、このタブの輸送機器全ての主色をこの色にします
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}選択した輸送機器に使う、塗装の二次色を選択します。Ctrl+クリックで、このタブの輸送機器全ての二次色をこの色にします
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}塗装を変更する輸送機器を選択します。Ctrl+クリックで複数の輸送機器を選択できます。適用状況を切り替えるにはチェックボックスをクリックします
 
-STR_LIVERY_DEFAULT                                              :通常のカラースキーム
-STR_LIVERY_STEAM                                                :蒸気機関車
-STR_LIVERY_DIESEL                                               :ディーゼル機関車
-STR_LIVERY_ELECTRIC                                             :電気機関車
-STR_LIVERY_MONORAIL                                             :モノレール機関車
-STR_LIVERY_MAGLEV                                               :磁気浮上式機関車
-STR_LIVERY_DMU                                                  :気動車
-STR_LIVERY_EMU                                                  :電車
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :客車(蒸気)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :客車(ディーゼル)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :客車(電気)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :客車(モノレール)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :客車(リニア-マグレブ)
+STR_LIVERY_DEFAULT                                              :通常の塗装色
+STR_LIVERY_STEAM                                                :機関車 (蒸気)
+STR_LIVERY_DIESEL                                               :機関車 (ディーゼル)
+STR_LIVERY_ELECTRIC                                             :機関車 (電気)
+STR_LIVERY_MONORAIL                                             :機関車 (モノレール)
+STR_LIVERY_MAGLEV                                               :機関車 (リニア)
+STR_LIVERY_DMU                                                  :気動車 (動力分散式)
+STR_LIVERY_EMU                                                  :電車 (動力分散式)
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :客車 (蒸気)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :客車 (ディーゼル)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :客車 (電気)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :客車 (モノレール)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :客車 (リニア)
 STR_LIVERY_FREIGHT_WAGON                                        :貨車
 STR_LIVERY_BUS                                                  :バス
 STR_LIVERY_TRUCK                                                :トラック
@@ -1717,9 +1777,9 @@ STR_LIVERY_PASSENGER_TRAM                                       :旅客用路面
 STR_LIVERY_FREIGHT_TRAM                                         :貨物用路面電車
 
 # Face selection window
-STR_FACE_CAPTION                                                :{WHITE}顔の選択
-STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}新規顔の選択をキャンセルします
-STR_FACE_OK_TOOLTIP                                             :{BLACK}新規顔を適用します
+STR_FACE_CAPTION                                                :{WHITE}顔の変更
+STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}顔の変更をキャンセルします
+STR_FACE_OK_TOOLTIP                                             :{BLACK}顔の変更を適用します
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}男性
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}男性顔を表示します
@@ -1728,103 +1788,103 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}女性�
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}新規顔
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}ランダムな顔を作成します
 STR_FACE_ADVANCED                                               :{BLACK}詳細
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}顔を詳しく選択します。
-STR_FACE_SIMPLE                                                 :{BLACK}簡単
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}顔を簡単に選択します。
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}顔をパーツ別に詳しく選択します
+STR_FACE_SIMPLE                                                 :{BLACK}簡易
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}顔を簡易式で編集します
 STR_FACE_LOAD                                                   :{BLACK}開く
-STR_FACE_LOAD_TOOLTIP                                           :{BLACK}お好みの顔を開きます。
-STR_FACE_LOAD_DONE                                              :{WHITE}お好みの顔を OpenTTD の設定ファイルから読み込みました。
-STR_FACE_FACECODE                                               :{BLACK}プレーヤーの顔番号
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}プレイヤーの顔番号を表示／変更
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}社長の顔番号を表示／変更
-STR_FACE_FACECODE_SET                                           :{WHITE}新しい顔番号が設定されました。
-STR_FACE_FACECODE_ERR                                           :{WHITE}顔番号が設定できませんでした - 0 と 4,294,967,295 の間の数値ではありません。
+STR_FACE_LOAD_TOOLTIP                                           :{BLACK}お気に入りの顔を開きます
+STR_FACE_LOAD_DONE                                              :{WHITE}お気に入りの顔をOpenTTDの設定ファイルから読み込みました
+STR_FACE_FACECODE                                               :{BLACK}顔番号
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}この顔番号を表示/変更します
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}顔番号を表示/変更
+STR_FACE_FACECODE_SET                                           :{WHITE}顔番号が更新されました
+STR_FACE_FACECODE_ERR                                           :{WHITE}顔番号を更新できませんでした。数値は0から4,294,967,295の間でなければなりません
 STR_FACE_SAVE                                                   :{BLACK}保存
-STR_FACE_SAVE_TOOLTIP                                           :{BLACK}お好みの顔を保存します。
-STR_FACE_SAVE_DONE                                              :{WHITE}この顔をお好みの顔として OpenTTD の設定ファイルに保存します。
-STR_FACE_EUROPEAN                                               :{BLACK}白人
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}白人の顔を選択します
-STR_FACE_AFRICAN                                                :{BLACK}黒人
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}黒人の顔を選択します
-STR_FACE_YES                                                    :はい
-STR_FACE_NO                                                     :いいえ
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}口ひげもしくはイヤリングを表示
-STR_FACE_HAIR                                                   :髪の毛：
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}髪の毛を変更
-STR_FACE_EYEBROWS                                               :まゆ：
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}まゆを変更
-STR_FACE_EYECOLOUR                                              :目の色：
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}瞳の色を変更
-STR_FACE_GLASSES                                                :眼鏡：
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}眼鏡をかける
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}眼鏡を変更
-STR_FACE_NOSE                                                   :鼻：
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}鼻を変更：
-STR_FACE_LIPS                                                   :口唇：
-STR_FACE_MOUSTACHE                                              :口ひげ：
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}口唇／口ひげを変更
-STR_FACE_CHIN                                                   :顎：
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}顎を変更
-STR_FACE_JACKET                                                 :ジャケット：
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}ジャケットを変更：
-STR_FACE_COLLAR                                                 :襟：
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}襟を変更：
-STR_FACE_TIE                                                    :ネクタイ：
-STR_FACE_EARRING                                                :イヤリング：
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}ネクタイ／イヤリングを変更
+STR_FACE_SAVE_TOOLTIP                                           :{BLACK}お気に入りの顔として保存します
+STR_FACE_SAVE_DONE                                              :{WHITE}この顔をお気に入りの顔として、OpenTTDの設定ファイルに保存します
+STR_FACE_EUROPEAN                                               :{BLACK}ヨーロッパ系
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}ヨーロッパ系の顔を選択します
+STR_FACE_AFRICAN                                                :{BLACK}アフリカ系
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}アフリカ系の顔を選択します
+STR_FACE_YES                                                    :あり
+STR_FACE_NO                                                     :なし
+STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}口ひげかイヤリングを付けます
+STR_FACE_HAIR                                                   :髪型:
+STR_FACE_HAIR_TOOLTIP                                           :{BLACK}髪型を変更します
+STR_FACE_EYEBROWS                                               :まゆ:
+STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}まゆを変更します
+STR_FACE_EYECOLOUR                                              :瞳の色:
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}瞳の色を変更します
+STR_FACE_GLASSES                                                :眼鏡:
+STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}眼鏡ありにします
+STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}眼鏡を変更します
+STR_FACE_NOSE                                                   :鼻:
+STR_FACE_NOSE_TOOLTIP                                           :{BLACK}鼻を変更します
+STR_FACE_LIPS                                                   :唇:
+STR_FACE_MOUSTACHE                                              :口ひげ:
+STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}唇/口ひげを変更します
+STR_FACE_CHIN                                                   :顎:
+STR_FACE_CHIN_TOOLTIP                                           :{BLACK}顎を変更します
+STR_FACE_JACKET                                                 :ジャケット:
+STR_FACE_JACKET_TOOLTIP                                         :{BLACK}ジャケットを変更します
+STR_FACE_COLLAR                                                 :襟:
+STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}襟を変更します
+STR_FACE_TIE                                                    :ネクタイ:
+STR_FACE_EARRING                                                :イヤリング:
+STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}ネクタイ/イヤリングを変更します
 
 # Network server list
-STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}多人数ゲーム
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}開放
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}LAN（ローカル）のゲーム又はインタネット（開放）のゲームを選択する
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :いいえ
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :hai
-STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}プレイヤー名：
-STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}他のプレーヤーから見えるあなたの名前です
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}マルチプレイヤーゲーム
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}ゲーム公示
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}ゲームを公示(インターネット)するか、非公示(LAN)にするかを選びます
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :非公示
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :公示
+STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}プレイヤー名:
+STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}他のプレーヤーがあなたを特定するために使う名前です
 
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}名前
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}ゲーム名
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}クライアント
-STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}オンラインのクライアント数／最高クライアント数{}オンラインの会社数／最高会社数
-STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}地図のサイズ
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}ゲームの地図のサイズ{}クリックして地域によって並べ替えます
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}オンラインのクライアント数/最大クライアント数{}オンラインの会社数/最大会社数
+STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}×{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}地図サイズ
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}ゲームの地図サイズです{}クリックすると地域順に並べ替えます
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}日付
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}ゲームの現在の日付を示します
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}実行年間
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}ゲームの起動から{}の年間
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}言語、サーババージョンなど
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}ゲームの起動から経過した年数です
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}言語、サーバーバージョンなど
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}選択するにはリスト内のゲームをクリックします
-STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}前回参加したサーバ：
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}クリックして前回参加したサーバを選択します
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}前回参加したサーバー:
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}クリックすると前回参加したサーバーを選択します
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ゲーム情報
-STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}クライアント：{WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}クライアント: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}言語: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}タイルセット：{WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}地図のサイズ：{WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}サーババージョン：{WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}サーバアドレス：{WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}地域: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}地図サイズ: {WHITE}{COMMA}×{COMMA}
+STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}サーバーバージョン: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}サーバーアドレス: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}開始日: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}現在の日付：{WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}パスワードが必要！
-STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}サーバはオフラインです
-STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}満員です
-STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}バージョン不一致
-STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF 不一致
+STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}パスワード保護有!
+STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}サーバーがオフラインです
+STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}サーバーが満員です
+STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}バージョンが一致しません
+STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NewGRFが一致しません
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}ゲームに参加
-STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}サーバを更新
-STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}サーバ情報を更新します
+STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}サーバーを更新
+STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}サーバー情報を更新します
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}サーバを検索
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}ネットワーク上のサーバを検索します
-STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}サーバを追加
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}検索時常に稼働確認するサーバを追加します
-STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}サーバを開始
-STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}自分のサーバを開始します
+STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}サーバーを検索
+STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}ネットワーク上のサーバーを検索します
+STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}サーバーを追加
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}検索時、常に稼働確認するサーバーのリストに追加します
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}サーバーを開始
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}自分でサーバーを立ち上げます
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}プレイヤー名を入力
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}ホストアドレスを入力します
@@ -1832,30 +1892,30 @@ STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}ホス�
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}新規マルチプレイヤーゲームを開始
 
-STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}ゲーム名：
-STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}マルチプレイゲームメニュー内で他のプレーヤに表示するゲーム名を指定します
-STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}パスワードを指定
-STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}ゲームをパスワードで保護することができます。正しいパスワードを入力しないと、接続できません。
+STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}ゲーム名:
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}ゲーム名を指定します。これはマルチプレイヤーゲームの選択画面に表示される名前になります
+STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}パスワードを設定
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}ゲームをパスワードで保護することができます。一般から公然とアクセスされたくない場合等に設定します
 
-STR_NETWORK_START_SERVER_UNADVERTISED                           :いいえ
-STR_NETWORK_START_SERVER_ADVERTISED                             :はい
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}クライアント{NUM}人
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}最大接続数：
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}接続できるコンピュータの最大数を選択します。
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}会社{NUM}つ
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}最高交通会社数：
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}サーバ上の会社上限を指定します
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}傍観者{NUM}人
+STR_NETWORK_START_SERVER_UNADVERTISED                           :非公示
+STR_NETWORK_START_SERVER_ADVERTISED                             :公示
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}接続者数: {NUM}
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}最大接続数:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}接続できるクライアントの最大数を指定します。必ずしも全スロットを埋める必要はありません
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}会社数: {NUM}
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}最大会社数:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}このサーバーでの最大会社数を指定します
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}観覧者数: {NUM}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}最高傍観者数:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}サーバ上の傍観者数上限を指定します
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}このサーバーでの最大観覧者数を指定します
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}言語:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}サーバ上の主言語を表示します
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}このサーバーで使われる主言語を表示します
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}ネットワークゲーム名を入力
 
 # Network game languages
 ############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :何でも
+STR_NETWORK_LANG_ANY                                            :言語未指定
 STR_NETWORK_LANG_ENGLISH                                        :英語
 STR_NETWORK_LANG_GERMAN                                         :ドイツ語
 STR_NETWORK_LANG_FRENCH                                         :フランス語
@@ -1894,175 +1954,175 @@ STR_NETWORK_LANG_LATVIAN                                        :ラトビア語
 ############ End of leave-in-this-order
 
 # Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}マルチプレイヤーゲームロビー
+STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}マルチプレイヤーゲーム　ロビー
 
-STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}次のゲームを準備中：{ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}このゲームに現在参加している交通会社のリストです。すでに経営している交通会社に参加するか、空き会社スロットがある場合は交通会社を新規開業することができます。
+STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{ORANGE}{STRING}{BLACK}への参加準備
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}このゲームに現在参加している会社のリストです。ゲームに参加する場合、既にある会社の経営に参画するか、新規開業(空きスロットがある場合)するかのいずれかになります
 
-STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}交通会社情報
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}会社名：{WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}開業日付：{WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}企業価値：{WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}残額：{WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}昨年の損益：{WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}パフォーマンス：{WHITE}{NUM}
+STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}会社情報
+STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}会社名: {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}開業日: {WHITE}{NUM}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}企業価値: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}預金残高: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}昨年の損益: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}会社格付: {WHITE}{NUM}
 
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}車両：{WHITE}{NUM} {TRAIN}、{NUM} {LORRY}、{NUM} {BUS}、{NUM} {SHIP}、{NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}駅／バス停／空港／埠頭：{WHITE}{NUM} {TRAIN}、{NUM} {LORRY}、{NUM} {BUS}、{NUM} {SHIP}、{NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}プレイヤー：{WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}輸送機器数: {WHITE}{NUM} {TRAIN}、{NUM} {LORRY}、{NUM} {BUS}、{NUM} {SHIP}、{NUM} {PLANE}
+STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}停留施設数: {WHITE}{NUM} {TRAIN}、{NUM} {LORRY}、{NUM} {BUS}、{NUM} {SHIP}、{NUM} {PLANE}
+STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}プレイヤー数: {WHITE}{STRING}
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}新規会社
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}新規交通会社を作成します
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}ゲームを傍観
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}傍観者としてゲームを見ます
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}会社に加入
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}この交通会社の経営に参加します
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}新規に会社を設立します
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}ゲームを観覧
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}観覧者としてゲームを観戦します
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}経営に参画
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}この交通会社の経営に参画します
 
 # Network connecting window
-STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}接続中...
+STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}接続中…
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}（１／６）接続中...
-STR_NETWORK_CONNECTING_2                                        :{BLACK}（２／６）認証中...
-STR_NETWORK_CONNECTING_3                                        :{BLACK}（３／６）待機中...
-STR_NETWORK_CONNECTING_4                                        :{BLACK}（４／６）地図をダウンロード中...
-STR_NETWORK_CONNECTING_5                                        :{BLACK}（５／６）データを処理中...
-STR_NETWORK_CONNECTING_6                                        :{BLACK}（６／６）登録中...
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) 接続中
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) 認証中
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) 待機中
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) 地図をダウンロード中
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) データ処理中
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) 登録中
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}ゲーム情報を読み込み中...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}会社情報を読み込み中...
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}ゲーム情報を読み込み中
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}会社情報を読み込み中
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}先に {NUM} 人のプレイヤーがいます
-STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES}をダウンロードしました
-STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES}／{BYTES} がダウンロードしました
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}あなたより先に{NUM}人が待機しています
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES}ダウンロード済
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{1:BYTES}中、{0:BYTES}ダウンロード済
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}接続を解除
 
-STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}サーバへ接続するにはパスワードを入力してください
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}会社の経営に参加するにはパスワードを入力してください
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}このサーバーは保護されています。接続するにはパスワードを入力してください
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}この会社は保護されています。経営に参画するにはパスワードを入力してください
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}クライアントリスト
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}傍観モード
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}観覧モード
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新会社
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :蹴る
-STR_NETWORK_CLIENTLIST_BAN                                      :BAN
+STR_NETWORK_CLIENTLIST_KICK                                     :追放
+STR_NETWORK_CLIENTLIST_BAN                                      :参入禁止
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :送金
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :全員へ発言
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :チームへ発言
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :秘密メッセージ
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :個人的なメッセージ
 
-STR_NETWORK_SERVER                                              :サーバ
+STR_NETWORK_SERVER                                              :サーバー
 STR_NETWORK_CLIENT                                              :クライアント
-STR_NETWORK_SPECTATORS                                          :傍観者
+STR_NETWORK_SPECTATORS                                          :観覧者
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}送金したい総額を入力
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}送りたい金額を入力
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}入力したパスワードを保存しない
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}選択した交通会社の新しいパスワードを設定
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}交通会社のパスワード
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}デフォルトの交通会社のパスワード
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}このパスワードを新しい交通会社のパスワードとして使用
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}会社パスワードを変更
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}会社パスワード
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}デフォルトの会社パスワード
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}このパスワードを新しい交通会社の規定パスワードとして使用します
 
 # Network company info join/password
-STR_COMPANY_VIEW_JOIN                                           :{BLACK}参加
-STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}この会社に参加します
+STR_COMPANY_VIEW_JOIN                                           :{BLACK}参画
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}この会社の経営に参画します
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}パスワード
 STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}認証されていないプレーヤーの参加を防ぐために、会社をパスワードで保護します
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}会社のパスワードを設定
+STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}会社パスワードを設定
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}送信
-STR_NETWORK_CHAT_COMPANY_CAPTION                                :『チーム』：
-STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[プライベート] {STRING}:
-STR_NETWORK_CHAT_ALL_CAPTION                                    :『全員』：
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :『チーム』:
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :『個人通信』 {STRING}:
+STR_NETWORK_CHAT_ALL_CAPTION                                    :『全員』:
 
-STR_NETWORK_CHAT_COMPANY                                        :『チーム』{STRING}：{WHITE}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :『チーム』{STRING}へ：{WHITE}{STRING}
-STR_NETWORK_CHAT_CLIENT                                         :『秘密』{STRING}：{WHITE}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :『秘密』{STRING}へ：{WHITE}{STRING}
-STR_NETWORK_CHAT_ALL                                            :『全員』{STRING}：{WHITE}{STRING}
-STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}チャットのメッセージを入力
+STR_NETWORK_CHAT_COMPANY                                        :『チーム』{STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :『チーム』{STRING}へ: {WHITE}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :『個人』{STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :『個人』{STRING}へ: {WHITE}{STRING}
+STR_NETWORK_CHAT_ALL                                            :『全員』{STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}チャットメッセージを入力
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}ネットワークデバイスが見つかりませんでした。ENABLE_NETWORK を切にしてコンパイルされた可能性もあります。
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}ネットワークデバイスが見つかりませんでした。ENABLE_NETWORKなしでゲームがコンパイルされた可能性もあります
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}ネットワークゲームが見つかりませんでした
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}サーバが応答しませんでした
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRF 不一致によって接続できませんでした
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRFの不一致によって接続できませんでした
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}ネットワークゲームの同期が失敗しました
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}ネットワークゲームへの接続が失われました
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}ネットワークゲームへの接続が切断しました
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}保存したゲームが開けませんでした
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}サーバが開始できませんでした
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}サーバーを開始できませんでした
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}接続できませんでした
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}接続 {NUM} にタイムアウトエラーが発生しました
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}プロトコルエラーによって接続が解除されました
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}クライアントバージョンはサーババージョンと一致していません
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}不正なパスワード
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}接続 {NUM} でタイムアウトエラーが発生しました
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}プロトコルエラーによって接続が切断されました
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}クライアントバージョンがサーバーバージョンと一致していません
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}不正なパスワードです
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}サーバが満員です
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}このサーバに禁止されています
-STR_NETWORK_ERROR_KICKED                                        :{WHITE}げーむから蹴られました
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE}このサーバ上にチートを許可しません
-STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}プレーヤがサーバにコマンドを送り過ぎです。
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}サーバー側であなたの参加が禁止されています
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}ゲームから追放されました
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}このサーバーではチート行為は許可されていません
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}サーバーに送ったコマンド数が過剰です
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}パスワード入力時間切れです
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}サーバータイムアウトです
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}サーバータイムアウトです（マップのダウンロードに時間がかかりすぎです）
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}サーバータイムアウトです（サーバーへの接続に時間がかかりすぎです）
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}サーバーとの接続を維持できる十分な処理能力がありません
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}マップのダウンロード時間が規定を超過しました
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}タイムアウトによりサーバーへの接続を確立できません
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :一般エラー
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :同期エラー
-STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :保存したゲームが開けなかった
-STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :接続消失
+STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :マップロード失敗
+STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :接続切断
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :プロトコルエラー
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF 不一致
-STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :認証されていない
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :不正あるいは予期しないパケットを受信しました
-STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :対応していないバージョン
-STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :プレイヤー名がすでに使用されています
+STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :非認証
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :不正・予期しないパケットを受信
+STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :不正なバージョン
+STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :プレイヤー名が重複
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :不正なパスワード
-STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :wrong company-id in DoCommand
-STR_NETWORK_ERROR_CLIENT_KICKED                                 :サーバに蹴られた
-STR_NETWORK_ERROR_CLIENT_CHEATER                                :チートを試していた
-STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :サーバ満員
-STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :コマンドを送りすぎ
-STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :時間内にパスワードを受け取りませんでした
-STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :接続時間切れ
-STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :マップのダウンロード時間が長すぎる
-STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :接続に時間がかかりすぎ
+STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand内に不正な会社
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :サーバーが追放
+STR_NETWORK_ERROR_CLIENT_CHEATER                                :がチートを使用しようとしました
+STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :サーバーが満員
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :が過剰なコマンドを送信していました
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :パスワード入力時間超過
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :一般的なタイムアウト
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :マップのダウンロード時間超過
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :マップの処理時間超過
 ############ End of leave-in-this-order
 
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}ネットワークに接続を無くしたかのせいがあります
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}最後の{NUM} 瞬間 サーバーからデータが届きませんでした。
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}接続切断の可能性
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}過去{NUM}秒間にわたりサーバーからデータを受信できていません
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :ゲームはポーズされました。 ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :ゲームがポーズされました。 ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :ゲームはまだポーズされています。 ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :ゲームはまだポーズされています。({STRING}、{STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :ゲームはまだポーズされています。 ({STRING}、{STRING}、{STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :ゲームはまだポーズされています。 ({STRING}、{STRING}、{STRING}、{STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :ポーズは解除されました。({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :プレーヤーの人数が十分ではありません
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :クライアントを接続中
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :ゲームのポーズが解除されました。({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :プレーヤー数不足
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :クライアントに接続中
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :手動
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :ゲームスクリプト
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :退出
-STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} は参加してきました
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} がゲームに参加しました (クライアント #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} が 会社 #{2:NUM} の経営に参加しました。
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} が傍観者として参加しました。
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} が新会社 (#{2:NUM}) を設立しました。
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} は退出してきました（{2:STRING}）
+STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} が参加してきました
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} がゲームに参加してきました (クライアント #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} が 会社 #{2:NUM} の経営に参画してきました
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} がゲームを観覧し始めました
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} が新会社 (#{2:NUM}) を設立しました
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} が退出しました({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} は名前を {STRING} に変更しました
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} は {2:CURRENCY_LONG} を送金してくれました
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} が {2:CURRENCY_LONG} を送金してくれました
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** {1:STRING} に {2:CURRENCY_LONG} を送金しました
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}サーバがセッションを終了しました
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}このサーバは再起動中です...{}しばらくお待ちください...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}このサーバーは再起動中です…{}しばらくお待ちください…
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}コンテンツをダウンロード中
@@ -2104,7 +2164,7 @@ STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}以下�
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}依存する他コンテンツ: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}タグ: {WHITE}{STRING}
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTDは"zlib"をサポートしていません
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}{}ダウンロードすることができません!
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}ダウンロードすることができません!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :基本グラフィック
@@ -2128,8 +2188,8 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}サーバーに接続することができませんでした...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}ダウンロード失敗...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}{}接続が切断されました
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}{}ダウンロード先への書込権限がありません
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}接続が切断されました
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}ダウンロード先への書込権限がありません
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}ダウンロードしたファイルを開展することができませんでした
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}基本グラフィック欠落
@@ -2162,11 +2222,11 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}供給過多
 
 # Base for station construction window(s)
-STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}停留施設の旅客・貨物集荷範囲をハイライトします
+STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}集荷範囲のハイライト
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}切
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}入
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}停留施設の旅客・貨物集荷範囲をハイライトしません
-STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}集荷範囲のハイライト
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}停留施設の旅客・貨物集荷範囲をハイライトします
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}受入貨物: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供給貨物: {GOLD}{CARGO_LIST}
 
@@ -2204,8 +2264,8 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}列車�
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}列車庫の向きを選択します
 
 # Rail waypoint construction window
-STR_WAYPOINT_CAPTION                                            :{WHITE}通過点
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}通過点の種類を選択します
+STR_WAYPOINT_CAPTION                                            :{WHITE}中継駅
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}中継駅の種類を選択します
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}駅の選択
@@ -2222,7 +2282,7 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}駅の�
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}駅の種類を選択します
 
 STR_STATION_CLASS_DFLT                                          :標準駅
-STR_STATION_CLASS_WAYP                                          :通過点
+STR_STATION_CLASS_WAYP                                          :中継駅
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}信号種類の選択
@@ -2239,13 +2299,13 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}コン�
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}パス信号 (色灯式) {}パス信号では、互いに衝突しない経路が確保できる場合には1つの閉塞内に複数の列車が入ることを許容します。汎用性は高いですが、一方向式しか使えず信号の背面から進行してくる列車を防護することができません。この信号で列車が停車中に正面から対向列車が来ると問答無用で衝突事故を起こします!
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}一方通行パス信号 (色灯式) {}一方通行パス信号 (腕木式) {}パス信号では、互いに衝突しない経路が確保できる場合には1つの閉塞内に複数の列車が入ることを許容します。このタイプのパス信号は信号の背面から通過することはできません
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}信号交換{}既存の信号を今選択している信号に交換します。Ctrl+クリックで種類は替えずに腕木/色灯の形式のみ切り替えます。Shift+クリックで費用を見積もります
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}ドラッグ時の信号設置間隔
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}ドラッグ時の信号設置間隔を減らす
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}ドラッグ時の信号設置間隔を増やす
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}ドラッグ時の信号設置間隔を指定します
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}ドラッグ時の信号設置間隔を減らします
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}ドラッグ時の信号設置間隔を増やします
 
 # Bridge selection window
-STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}鉄道橋選択
-STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}道路橋選択
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}鉄道橋建設
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}道路橋建設
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}建設したい橋の種類をクリックしてください
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING}、{}　{VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
@@ -2293,7 +2353,7 @@ STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}荷役�
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}荷役所の向きを選択します
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}旅客用電停建設
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}旅客用電停の向きを選択します
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}貨物用電停の配置
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}貨物用電停建設
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}貨物用電停の向きを選択します
 
 # Waterways toolbar (last two for SE only)
@@ -2343,7 +2403,7 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :ヘリコプタ
 STR_STATION_BUILD_NOISE                                         :{BLACK}騒音量: {GOLD}{COMMA}
 
 # Landscaping toolbar
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}整地
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}地形
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}土地の角を下げます
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}土地の角を上げます
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}土地をならす

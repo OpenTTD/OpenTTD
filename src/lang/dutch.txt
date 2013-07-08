@@ -199,21 +199,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA} pk
 STR_UNITS_POWER_METRIC                                          :{COMMA} pk
 STR_UNITS_POWER_SI                                              :{COMMA} kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -278,6 +285,8 @@ STR_SORT_BY_LENGTH                                              :Lengte
 STR_SORT_BY_LIFE_TIME                                           :Resterende levensverwachting
 STR_SORT_BY_TIMETABLE_DELAY                                     :Vertraging in dienstregeling
 STR_SORT_BY_FACILITY                                            :Stationstype
+STR_SORT_BY_WAITING_TOTAL                                       :Totaal wachtende vracht
+STR_SORT_BY_WAITING_AVAILABLE                                   :Beschikbare wachtende lading
 STR_SORT_BY_RATING_MAX                                          :Hoogste vrachtwaardering
 STR_SORT_BY_RATING_MIN                                          :Laagste vrachtwaardering
 STR_SORT_BY_ENGINE_ID                                           :Voertuig-ID (klassieke sortering)
@@ -1581,7 +1590,44 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Door dit op min
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Verzadiging van korte routes voor het gebruik van ruime routes: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Vaak zijn er meerdere routes mogelijk tussen twee stations. Cargodist zal de kortste route eerst verzadigen, gebruik dan de tweede kortste route tot die verzadigd is en ga zo maar door. Verzadiging wordt bepaald door een schatting van de capaciteit en het geplande gebruik. Zodra alle routes verzadigd zijn, maar er is meer vraag, zal alle wegen overbelast worden, die met hoge capaciteit eerst. In veel gevallen zat het algoritme niet nauwkeurig de capaciteit inschatten, helaas. Met deze instelling kunt u aangeven tot welk percentage een korter pad moet worden verzadigd eer de eerst volgende langere route wordt gekozen. Zet deze op minder dan 100% om overvolle stations in geval van overschat capaciteit te voorkomen.
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Snelheid eenheden: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Wanneer een snelheid wordt weergegeven in de gebruikersinterface, laten dat in de geselecteerde eenheden zien
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrisch (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Voertuig kracht eenheden: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Als het verbruik van een voertuig wordt weergegeven in de gebruikersinterface, laten dat in de geselecteerde eenheden zien
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperial (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrisch (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Gewichten eenheden: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Telkens als gewichten worden weergegeven in de gebruikersinterface, laten dat in de geselecteerde eenheden zien
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (short t/ton)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrisch (t/ton)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Volume eenheden: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Wanneer volumes worden getoond in de gebruikersinterface, laten dat in de geselecteerde eenheden zien
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrisch (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Trekkracht eenheden: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Wanneer trekkracht, wordt weergegeven in de gebruikersinterface, laten dat in de geselecteerde eenheden zien
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrisch (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :hoogte eenheden: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Wanneer hoogtes worden weergegeven in de gebruikersinterface, laten dat in de geselecteerde eenheden zien
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrisch (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisatie
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Constructie
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Voertuigen
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stations
@@ -4270,6 +4316,9 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan onde
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... voertuig is vernietigd
 
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Nog geen voertuigen beschikbaar
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE} Start een nieuw spel na {DATE_SHORT} of gebruik een NewGRF dat in vroege voertuigen voorziet
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan trein niet het signaal laten passeren bij gevaar...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan de richting van de trein niet omdraaien...
@@ -4770,6 +4819,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
