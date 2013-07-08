@@ -54,13 +54,16 @@ public:
 	ScriptList();
 	~ScriptList();
 
+#ifdef DOXYGEN_API
 	/**
 	 * Add a single item to the list.
 	 * @param item the item to add. Should be unique, otherwise it is ignored.
 	 * @param value the value to assign.
-	 * @note the value is set to 0 by default.
 	 */
+	void AddItem(int32 item, int32 value);
+#else
 	void AddItem(int32 item, int32 value = 0);
+#endif
 
 	/**
 	 * Remove a single item from the list.
