@@ -200,21 +200,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cv
 STR_UNITS_POWER_METRIC                                          :{COMMA}cv
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonelada{P "" s}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonelada{P "" s}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gal{P ão ões}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pés
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -1552,18 +1559,54 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamanho médio 
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Remover elementos de estrada absurdos ao construir ruas: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Remove ruas sem saída durante a reconstrução de ruas patrocinada
 
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Quantidade de carga retornada no modo simétrico: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Definir isso para menos de 100% faz com que a distribuição simétrica comporte-se mais como a assimétrica. Menos carga será devolvida forçosamente se uma certa quantidade for mandada a uma estação. Se você definir a 0%, a distribuição se comportará exatamente como a assimétrica.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Saturação de caminhos curtos antes de usar outros caminhos: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Frequentemente há múltiplos caminhos entre duas estações. Cargodist irá saturar o caminho mais curto primeiro, depois usar o segundo caminho mais curto até saturá-lo, e assim por diante. Saturação é determinada pela estimação da capacidade de do uso planejado. Ao saturar todos os caminhos, se ainda houver demanda, irá sobrecarregar todos os caminhos, com preferência aos de maior capacidade. No entanto, na maior parte do tempo o algorítimo não irá estimar a capacidade corretamente. Essa configuração permite você definir até que porcentagem um caminho mais curto deverá ser saturado na primeira passada antes do algorítimo proceder ao próxido. Defina-o para menos de 100% para evitar estações sobrecarregadas no caso de capacidade superestimada.
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Unidade de velocidade: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Sempre que uma velocidade for exibida na interface do usuário, será exibida na unidade selecionada
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Métrico (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unidade de potência veicular: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Sempre que a potência de um veículo for exibida na interface de usuário, será exibida na unidade selecionada
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :IMperial (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Métrico (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Unidades de peso: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Sempre que pesos forem exibidos na interface de usuário, serão exibidos na unidade selecionada
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (ton. imperial)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Métrico (ton)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Unidades volumétricas: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Sempre que volumes forem exibidos na interface de usuário, serão exibidos na unidade selecionada
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Métrico (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Unidade de tração: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Sempre que tração, ou efeito trator, é exibido na interface de usuário, será exibido na unidade selecionada
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Métrico (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unidade de altitude: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Sempre que altitudes são exibidas na interface do usuário, será exibida na unidade selecionada
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrico (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localização
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construção
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veículos
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Estações
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economia
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Distribuição de Carga
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Oponentes
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Opções de visualização
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interação
@@ -2888,6 +2931,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Compra
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Subornar a prefeitura para aumentar a sua avaliação, correndo o risco de uma penalidade severa se apanhado.{}Preço: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Objetivos
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Objetivos globais
 STR_GOALS_GLOBAL_TITLE                                          :{G=m}{BLACK}Objetivos globais:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
@@ -3729,6 +3773,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este hor
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este horário começará em{STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data de início
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Seleciona uma data como ponto de partida para esse horário. Ctrl+Clique define o ponto de partida desse horário, e distribui todos os veículos que compartilham essa ordem igualmente, baseados na sua ordem relativa, mesmo que a ordem esteja totalmente tabelada
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mudar horário
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mudar a quantidade de tempo que a ordem destacada deverá levar
@@ -4219,6 +4264,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Impossí
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... veículo está destruído
 
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Não há veículos disponíveis ainda
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :[WHITE]Inicie um jogo após {DATE_SHORT} ou use um NewGRF que tenha veículos anteriores
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Impossível fazer o trem passar o sinal de perigo...
@@ -4712,6 +4759,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

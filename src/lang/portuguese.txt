@@ -200,21 +200,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cv
 STR_UNITS_POWER_METRIC                                          :{COMMA}cv
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} small ton{P "" s}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonelada{P "" s}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} quilogramas
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gal{P ão ões}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} metros³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pé(s)
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -290,6 +297,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potência/Custo
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacidade de Carga
 STR_SORT_BY_RANGE                                               :Alcance
 STR_SORT_BY_POPULATION                                          :População
+STR_SORT_BY_RATING                                              :Classificação
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausa
@@ -705,6 +713,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Mostrar/ocultar nomes das cidades no mapa
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrar o mapa na posição actual
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desactivar tudo
@@ -876,6 +885,8 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Lituanias
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Sul Coreano (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Sul Africano (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizado...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiano (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniano (IRR)
 ############ end of currency region
 
 
@@ -1503,7 +1514,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permitido, estr
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Criação de árvores no decorrer do jogo: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controlar o aparecimento aleatório de árvores durante o jogo. Isto poderá afectar indústrias que dependem do crescimento de árvores, como as madeireiras
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Nenhuma {RED}(quebra as Serrações)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Nenhuma {RED}(Serrações ficam inactivas)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Apenas em florestas húmidas
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Em todo o lado
 
@@ -1530,13 +1541,13 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Ritmo de crescimento de cidades: {STRING}
-STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Velocidade de crescimento de vilas
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Velocidade de crescimento das cidades
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nenhum
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lento
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rápido
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Muito Rápido
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporção de vilas que chegarão a cidades: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporção de cidades que chegarão a metrópoles: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Quantidade de povoações que se tornarão cidades, logo cidades que começarão maiores e crescerão mais depressa
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 em {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Nenhum
@@ -1545,8 +1556,36 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamanho relativ
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Remover partes absurdas durante a constr. de estradas: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Remover blocos de estrada sem ligação aquando do financiamento de reconstrução
 
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimétrico
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simétrico
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Métrico (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperial (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Métrico (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (short ton)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Métrico (t/tonelada)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Métrico (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Métrico (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (ft/pé)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Métrico (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Localização
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construção
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veículos
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Estações
@@ -1654,7 +1693,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
-STR_OSNAME_OS2                                                  :SO/2
+STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
@@ -1774,6 +1813,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mudar gr
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multi-jogador
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Não
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Sim
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nome do jogador:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Este é o nome pelo qual os outros jogadores o irão identificar
 
@@ -1832,6 +1873,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}O nome d
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Definir palavra-chave
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Proteja o jogo com uma senha se não desejar que pessoas indesejadas se juntem
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :Não
+STR_NETWORK_START_SERVER_ADVERTISED                             :Sim
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} cliente{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Máximo de clientes:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Escolha o número máximo de clientes. Não necessitam estar todos presentes.
@@ -2246,7 +2289,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silíc
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construir Estradas
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construção de eléctricos
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construção de Eléctricos
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir estradas. Ctrl alterna a construção/remoção de estradas
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir secção de carris para eléctricos. Ctrl alterna a construção/remoção de carris para eléctricos. Shift alterna contruir/mostrar custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir estradas usando o modo automático. Ctrl alterna a construção/remoção de estradas. Shift alterna contruir/mostrar custo estimado
@@ -2870,9 +2913,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Comprar
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Subornar a autoridade local para aumentar a sua avaliação, correndo o risco de uma penalidade severa se apanhado.{}Custo: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Objectivos
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Objetivos globais
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Objetivos globais:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nenhum -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Não aplicável -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Objetivos da empresa:
@@ -2914,6 +2960,12 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clique num serviço para centrar a visualização numa indústria/cidade. Ctrl+Clique abre um novo visualizador na localização da indústria/cidade
 
 # Story book window
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Página nº {NUM}
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Anterior
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Ir para a página anterior
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Próxima
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Ir para a próxima página
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nome da estação - clique no nome para centrar a visualização na estação. Ctrl+Clique abre um novo visualizador na localização da estação
@@ -2944,6 +2996,12 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostrar 
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Abastecimento mensal e classificação local:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Agrupar por
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} de {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} via {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} para {STATION}
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} para esta estação
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} sem parar
 
 
 ############ range for rating starts
@@ -3450,6 +3508,9 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Aumentar o intervalo de serviço por 10. Ctrl+Clique aumenta o intervalo de serviço por 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Diminuir intervalo de serviço por 10. Ctrl+Clique diminui o intervalo de serviço por 5
 
+STR_VEHICLE_DETAILS_DEFAULT                                     :Por Defeito
+STR_VEHICLE_DETAILS_DAYS                                        :Dias
+STR_VEHICLE_DETAILS_PERCENT                                     :Percentagem
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Renomear comboio
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Renomear veículo rodoviário
@@ -4172,6 +4233,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Não é 
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... o veículo está destruido
 
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Não é possível fazer o comboio passar o sinal com perigo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Não é possível inverter a direcção do comboio...
@@ -4672,6 +4734,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

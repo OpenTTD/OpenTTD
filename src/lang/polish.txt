@@ -1940,7 +1940,12 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Usuń ślepe za
 
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperialna (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metryczna (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Jednostka wysokości: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Jeśli kiedykolwiek wysokości są pokazywane w interfejsie użytkownika, pokaż je w wybranych jednostkach
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperialne (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrzyczne (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -4610,6 +4615,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nie moż
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... pojazd jest zniszczony
 
 STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Obecnie żaden pojazd nie jest dostępny
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Zacznij grę po {DATE_SHORT} albo użyj zestawu NewGRF, który zawiera wczesne pojazdy
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nie można przepuścić pociągu za sygnał, niebezpieczeństwo...

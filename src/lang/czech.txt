@@ -1168,7 +1168,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Nastavení hry 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Nastavení společnosti (uchováno v uložených hrách; ovlivní pouze nové hry)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Nastavení společnosti (uchováno v uložené hře; ovlivní pouze stávající společnost)
 
-STR_CONFIG_SETTING_OFF                                          :vypnuto
+STR_CONFIG_SETTING_OFF                                          :Vypnuto
 STR_CONFIG_SETTING_ON                                           :Zapnuto
 STR_CONFIG_SETTING_DISABLED                                     :Vypnuto
 
@@ -1189,7 +1189,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Jak moc si mů�
 STR_CONFIG_SETTING_INTEREST_RATE                                :Výše úroků: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Výše úroků z půjček; rovněž ovlivňuje inflaci, pokud je zapnuta
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Cena provozu: {STRING}
-STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Nastav cenu držby a provozu vozidel a infrastruktury
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Nastav cenu údržby a provozu vozidel a infrastruktury
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Rychlost výstavby: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Omezení výstavby AI
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Poruchy vozidel: {STRING}
@@ -1380,7 +1380,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :fialová
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Posouvat pohled opačným směrem: {STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Chování při posouvání mapy pomocí stisku pravého tlačítka myši. Pokud vypnuto, myš pohybuje kamerou. Pokud zapnuto, myš pohybuje mapou
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Plynulé posouvání po mapě: {STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Ovládá jak se hlavní pohled posouvá na specifické místo na mapě, kliknutím na minimapu nebo spuštěním příkazu na posun na specifický objekt na mapě. Pokud povoleno, pohled se posouvá plynule, pokud vypnuto, skáče pohled přímo na cílové místo
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Ovládá jak se hlavní pohled posouvá na specifické místo na mapě, kliknutím na minimapu nebo spuštěním příkazu na posun na specifický objekt na mapě. Pokud zapnuto, pohled se posouvá plynule, pokud vypnuto, skáče pohled přímo na cílové místo
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Ukázat rozměry při použití stavebních nástrojů: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Zobrazovat vzdálenost a výškový rozdíl při výstavbě tahem.
 STR_CONFIG_SETTING_LIVERIES                                     :Zobrazovat barvy společnosti pro: {STRING}
@@ -1650,6 +1650,8 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Odstraní mrtv�
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aktualizovat distribuční graf každých {STRING} {P den dny dnů}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Čas mezi přepočítáváním částí grafu spojení. Každý přepočet přepočítává plány jedné části grafu. To znamená, že hodnota X u toho nastavení nezpůsobí, že se každých X dní přepočítá celý graf, ale pouze určité části. Čím kratší interval nastavíš, tím více času CPU bude potřeba ke spočítání. Čím delší nastavíš, tím déle bude trvat dokud si distribuce nákladu najde nové trasy.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Zaber si {STRING} {P "den" "dny" "dnů"} na přepočet grafu spojení
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Čas vyhrazený pro každý přepočet části grafu spojení. Pokud přepočet začne, je vytvořeno nové vlákno, které má dovoleno běžet po zvolený počet dnů. Čím nižší hodnotu nastavíš tím je pravděpodobnější, že vlákno nebude dokončeno kdy má. Pokud se tak stane, hra se zastaví ("lagne") dokud dokončeno nebude. Čím vyšší hodnotu nastavíš, tím déle bude trvat aktualizace grafu pokud se trasy změní.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuální
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :nerovnoměrný
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :rovnoměrný
@@ -1671,7 +1673,7 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Vytížení kra
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Vzhledem k tomu, že je často mezi dvěmi stanicemi více cest, Cargodist jako první vytíží tu nejkratší a dále využije druhou nejkratší dokud také není vytížená a tak dále. Pokud jsou všechny trasy zatížené ale stále nestačí provozu, přetíží všechny trasy s preferencí té nejkapacitnější. Bohužel, většinou však algoritmus neodhaduje kapacitu přesně. Toto nastavení dovolí zvolit na kolik procent musí být nejkratší cesta zaplněna, než dojde k vytížení té delší. Nastav na méně než 100% pro zabránění přeplnění stanic v případně nadhodnocené kapacity.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Jednotky rychlosti: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kdykoliv bude rychlost zobrazena v uživatelském rozhraní, bude ve zvolených jednotkách
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kdykoliv se rychlost zobrazí v uživatelském rozhraní, bude ve zvolených jednotkách
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperiální (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrické (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)

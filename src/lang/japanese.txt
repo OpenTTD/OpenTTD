@@ -2404,123 +2404,123 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}騒音�
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}地形
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}土地の角を下げます
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}土地の角を上げます
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}土地をならす
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}将来用に土地を購入
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}土地の角を下げます。ドラッグで範囲選択すると最初に選択した土地の高度より一段低い高さに土地をならします。Ctrlで斜めの範囲を選択できます。またShiftを押しながら決定すると工事費用を見積もります
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}土地の角を上げます。ドラッグで範囲選択すると最初に選択した土地の高度より一段高い高さに土地をならします。Ctrlで斜めの範囲を選択できます。またShiftを押しながら決定すると工事費用を見積もります
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}最初に選択した土地の高さに選択範囲をならします。Ctrlで斜めの範囲を選択できます。またShiftを押しながら決定すると工事費用を見積もります
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}将来用に土地を購入します。Shiftを押しながら決定すると費用を見積もります
 
 # Object construction window
-STR_OBJECT_BUILD_CAPTION                                        :{WHITE}選択物
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}建設する物を選択して下さい。（シフト）で物の価格を表します
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}造る物を選びます。
-STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}物のプレヴィウ
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}オブジェクトを配置
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}設置するオブジェクトを選択して下さい。Shift+クリックで費用を見積もります
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}設置するオブジェクトを選びます
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}オブジェクトをプレビューします
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}サイズ: {GOLD}{NUM} x {NUM} マス
 
-STR_OBJECT_CLASS_LTHS                                           :ライトハウス
-STR_OBJECT_CLASS_TRNS                                           :ラジオツランスメーター
+STR_OBJECT_CLASS_LTHS                                           :灯台
+STR_OBJECT_CLASS_TRNS                                           :電波塔
 
 # Tree planting window (last two for SE only)
-STR_PLANT_TREE_CAPTION                                          :{WHITE}木
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}植林する木の種類を選択。すでに木がある場合は追加で植林されます。
-STR_TREES_RANDOM_TYPE                                           :{BLACK}ランダムな木
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}ランダムな木で植林します
-STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}ランダムな木
+STR_PLANT_TREE_CAPTION                                          :{WHITE}植林
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}植林する樹類を選択します。既に木がある場合は追加で植林されます
+STR_TREES_RANDOM_TYPE                                           :{BLACK}ランダムな樹類
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}ランダムな樹類で植林します。Shift+クリックで費用を見積もります
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}ランダムに広域植林
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}地表全体にランダムに植林します
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}地形の作成
-STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}土地に岩石を置きます
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}地表を岩石地帯にします
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}砂漠を作成します。{}Ctrl+クリックで消去します
-STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}上げる／下げる地域のサイズを拡大します
-STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}上げる／下げる地域のサイズを縮小します
+STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}上げ下げするタイルサイズを拡大します
+STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}上げ下げするタイルサイズを縮小します
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}ランダムな地形を作成します
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}新規シナリオを作成
-STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}地形をリセットします
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}地図上のすべての会社が所有している不動産を破壊します
+STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}地形をリセット
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}地図上の全社有不動産を撤去します
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}地形のリセット
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}地図上のすべての会社が所有している不動産を破壊してもよろしいですか？
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}地図上の全社有不動産を撤去してもよろしいですか?
 
 # Town generation window (SE)
-STR_FOUND_TOWN_CAPTION                                          :{WHITE}市町村の建設
-STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}新規町
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}新しい町を造成します
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}ランダムな町
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}ランダムなところに町を建設します
-STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}多くのランダムな市町村
-STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}地図にたくさんの市町村を建設します
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}街の建設
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}新規街
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}新しい街を造成します。Shift+クリックで費用を見積もります
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}ランダムな街
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}ランダムなところに街を建設します
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}多くのランダムな街
+STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}地図にたくさんの街を建設します
 
-STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}町名：
-STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}町名入力
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}クリックしたら、町名入力ができます
-STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}ランダム町名
-STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}ランダム町名を作らせます
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}街名:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}街名入力
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}クリックすると街名を変更できます
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}ランダムな街名
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}ランダムな街名を出力します
 
-STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}町のサイズ：
-STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}村
-STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}町
-STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}市
+STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}街のサイズ:
+STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}小
+STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}中
+STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}大
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}ランダム
-STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}町のサイズを選択します
-STR_FOUND_TOWN_CITY                                             :{BLACK}市町村
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}市は町と比べて、より早く拡大します。{}設定によって、基礎のときの大きさもより大きいです。
+STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}街のサイズを選択します
+STR_FOUND_TOWN_CITY                                             :{BLACK}都市
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}都市は町と比べて、より早く拡大します。{}初期設定によりますが、設立の時点でも人口は町より多くなります
 
-STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}市町村の道路配置
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}この市町村の道路配置を選択してください。
+STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}街の道路配置
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}この街の道路配置(区画)を決定します
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}オリジナル
-STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}改善した道路
-STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2の格子
-STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 格子
+STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}改善版
+STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2の格子状
+STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3の格子状
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}ランダム
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}新規産業の建設を出資
-STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}適当な産業を選択します
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}新規産業の建設に出資
+STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}建設したい産業をリストから選択します
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :多くのランダムな産業
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}地図にたくさんの産業を建設します
-STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}価格：{YELLOW}{CURRENCY_LONG}
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}マップ全域にランダムに産業を建設します
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}費用: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}調査/探鉱
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}建設
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}出資
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}産業チェーンから{STRING}産業
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}産業チェーンから{STRING}貨物
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}産業を生成
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}産業を受け入れる。
-STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}家屋
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}産業をクリックすると、その配給元と顧客を見に行きます。
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}貨物をクリックすると、その配給元と顧客を見に行きます。
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}続きを表示。
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}貨物の配給と受け入れをしている産業を表示。
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}小マップに結ぶ。
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}小マップでも、産業を選べます。
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}産業:{STRING}に関わる産業チェーン
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}貨物:{STRING}に関わる産業チェーン
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}産業(生産側)
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}産業(受入側)
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}街
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}産業をクリックすると、その産業に関わる産業チェーンを表示します
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}貨物をクリックすると、その貨物を供給または受入れする産業を表示します
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}チェーンを表示
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}貨物の供給元と受入れ産業を表示します
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}小マップとリンク
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}産業チェーンで選択した産業を小マップでも表示選択するようにします
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}貨物を選択
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}表示したい貨物を選択します
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}産業チェーンを表示したい貨物を選択します
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}産業を選択
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}表示したい産業を選択します
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}産業チェーンを表示したい産業を選択します
 
 # Land area window
-STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地域の情報
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}破壊費用：{LTBLUE}破壊不可
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}破壊費用：{RED}{CURRENCY_LONG}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}撤去すると収入: {LTBLUE}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地域情報
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}撤去費用: {LTBLUE}撤去不可
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}撤去費用: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}撤去時売却益: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/A
-STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}所有者：{LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}道路の所有者: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}路面電車線の所有者: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}線路の所有者: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}町議会：{LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}所有者: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}道路所有者: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}軌道所有者: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}線路所有者: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}所属街域: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :なし
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}座標：{LTBLUE}{NUM}x{NUM}x{NUM}（{STRING}）
-STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}購入年：{LTBLUE}{DATE_LONG}
-STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}駅の種類：{LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}駅の種類：{LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}空港のクラス: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}空港の名前: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}空港のタイル名: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF：{LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}受入れる貨物：{LTBLUE}
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}座標: {LTBLUE}{NUM}x{NUM}x{NUM}({STRING})
+STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}建設年: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}駅の種類: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}駅の種類: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}空港規模: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}空港種類: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}空港の土地種類: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}受入れ貨物: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}線路の制限速度: {LTBLUE}{VELOCITY}
 
@@ -2529,43 +2529,43 @@ STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :岩石
 STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :荒地
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :裸地
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :草地
-STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :田畑
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :積雪地域
+STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :耕作地
+STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :積雪地帯
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :砂漠
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} 線路
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} 閉塞信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} 入り口信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} 出口信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} コンボ信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} パス信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} 一方通行パス信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} 閉塞信号と入口信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} 閉塞信号と出口信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} 閉塞信号とコンボ信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} 閉塞信号とパス信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} 閉塞信号と一方通行パス信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} 入口信号と出口信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} 入口信号とコンボ信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} 入口信号とパス信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} 入口信号と一方通行パス信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} 出口信号とコンボ信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} 出口信号とパス信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} 出口信号と一方通行パス信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} コンボ信号とパス信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} コンボ信号と一方通行パス信号付き
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} パス信号と一方通行パス信号付き
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} 車庫
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} 信号付線路 (閉塞)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} 信号付線路 (入口)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} 信号付線路 (出口)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} 信号付線路 (コンボ)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} 信号付線路 (パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} 信号付線路 (一方通行パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} 信号付線路 (閉塞+入口)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} 信号付線路 (閉塞+出口)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} 信号付線路 (閉塞+コンボ)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} 信号付線路 (閉塞+パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} 信号付線路 (閉塞+一方通行パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} 信号付線路 (入口+出口)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} 信号付線路 (入口+コンボ)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} 信号付線路 (入口+パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} 信号付線路 (入口+一方通行パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} 信号付線路 (出口+コンボ)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} 信号付線路 (出口+パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} 信号付線路 (出口+一方通行パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} 信号付線路 (コンボ+パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} 信号付線路 (コンボ+一方通行パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} 信号付線路 (パス+一方通行パス)
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} 列車庫
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :道路
-STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :街路照明のある道路
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :街灯付道路
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :並木道
-STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :自動車車庫
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :車庫
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :踏切
-STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :路面電車路線
+STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :軌道
 
 # Houses come directly from their building names
-STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING}（工事中）
+STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING}(工事中)
 
 STR_LAI_TREE_NAME_TREES                                         :木
 STR_LAI_TREE_NAME_RAINFOREST                                    :熱帯雨林
@@ -2578,13 +2578,13 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :荷役所
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :バス停
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :埠頭
 STR_LAI_STATION_DESCRIPTION_BUOY                                :ブイ
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :通過点
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :中継駅
 
-STR_LAI_WATER_DESCRIPTION_WATER                                 :水
+STR_LAI_WATER_DESCRIPTION_WATER                                 :水域
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :運河
 STR_LAI_WATER_DESCRIPTION_LOCK                                  :水門
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :川
-STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :海岸または川岸
+STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :海岸/川岸
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :造船所
 
 # Industries come directly from their industry names
@@ -2592,31 +2592,31 @@ STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :造船所
 STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :鉄道トンネル
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :道路トンネル
 
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :鋼鉄製つり橋（鉄橋）
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :けた橋、鋼鉄製
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :鋼鉄製カンチレバー方式の鉄橋
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :つり橋、鉄筋コンクリート製
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :木造鉄橋
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :コンクリート鉄橋
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :鋼管鉄橋
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :鉄道橋 (吊橋(S造))
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :鉄道橋 (桁橋(S造))
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :鉄道橋 (カンチレバートラス橋(S造))
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :鉄道橋 (斜張橋(RC造))
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :鉄道橋 (トラス橋(木造))
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :鉄道橋 (桁橋(RC造))
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :鉄道橋 (管状橋(S造))
 
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :鋼鉄製つり橋（道路橋）
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :鋼鉄製けた橋（道路橋）
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :鋼鉄製カンチレバー方式の道路橋
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :鉄筋コンクリート製つり橋（道路橋）
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :木造橋（道路橋）
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :コンクリート橋
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :鋼管橋
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :道路橋 (吊橋(S造))
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :道路橋 (桁橋(S造))
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :道路橋 (カンチレバートラス橋(S造))
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :道路橋 (斜張橋(RC造))
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :道路橋 (トラス橋(木造))
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :道路橋 (桁橋(RC造))
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :鉄道橋 (管状橋(S造))
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :水路橋
 
-STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :送信所
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :電波塔
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :灯台
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :本社ビル
-STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :会社が所有している地域
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :社有地
 
 # About OpenTTD window
-STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD について
+STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTDについて
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}オリジナル版権{COPYRIGHT} 1995 Chris Sawyer All rights reserved
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD バージョン {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2013 The OpenTTD team
@@ -2628,7 +2628,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}シナ�
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}シナリオを開く
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}ハイトマップを開く
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}ハイトマップを保存
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}デフォルトの保存先フォルダへジャンプするにはここへクリックします
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}デフォルトの保存先フォルダへジャンプするにはここをクリックします
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} 使用可能
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}ドライブ、フォルダ、ゲームファイルのリスト
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}ゲームのファイル名
@@ -2639,91 +2639,91 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}指定�
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}ロード
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}ロードするゲームを選びます
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}ゲームの詳細
-STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}情報はありません
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}― 情報なし ―
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
-STR_SAVELOAD_OSKTITLE                                           :{BLACK}セーブゲーム名を入力
+STR_SAVELOAD_OSKTITLE                                           :{BLACK}保存名を入力
 
 # World generation
-STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}世界作成
-STR_MAPGEN_MAPSIZE                                              :{BLACK}地図のサイズ：
-STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}生成する地図のサイズです。実際にはこのサイズより少し小さくなります。
-STR_MAPGEN_BY                                                   :{BLACK}x
-STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}街の数：
-STR_MAPGEN_DATE                                                 :{BLACK}日付：
-STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}産業数：
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}雪線の位置：
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}地域設定
+STR_MAPGEN_MAPSIZE                                              :{BLACK}地図サイズ:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}生成する地図のサイズです。実際にはこのサイズより少し小さくなります
+STR_MAPGEN_BY                                                   :{BLACK}×
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}街数:
+STR_MAPGEN_DATE                                                 :{BLACK}日付:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}産業数:
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}雪線の位置:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}雪線を上げる
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}雪線を下げる
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}乱数の種（シード）：
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}乱数シードを入力するにはクリックします
-STR_MAPGEN_RANDOM                                               :{BLACK}ランダム化
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}地形作成の乱数シードを変更します
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}地形作成：
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}植林アルゴリズム：
-STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形種類：
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}海水位：
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}乱数種(シード):
+STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}乱数種を入力するにはクリックします
+STR_MAPGEN_RANDOM                                               :{BLACK}ランダム
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}地形作成の乱数種を変更します
+STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}地形作成:
+STR_MAPGEN_TREE_PLACER                                          :{BLACK}植林アルゴリズム:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形種類:
+STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}海水位:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河川:
-STR_MAPGEN_SMOOTHNESS                                           :{BLACK}スムーズ度：
-STR_MAPGEN_VARIETY                                              :{BLACK}地方の相違の分布:
+STR_MAPGEN_SMOOTHNESS                                           :{BLACK}地形のなだらかさ:
+STR_MAPGEN_VARIETY                                              :{BLACK}地形の地域性:
 STR_MAPGEN_GENERATE                                             :{WHITE}作成
 
 # Strings for map borders at game generation
-STR_MAPGEN_BORDER_TYPE                                          :{BLACK}地図の端：
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}地図端:
 STR_MAPGEN_NORTHWEST                                            :{BLACK}北西
 STR_MAPGEN_NORTHEAST                                            :{BLACK}北東
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}南東
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}南西
-STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}自由な型
-STR_MAPGEN_BORDER_WATER                                         :{BLACK}水
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}自由形成
+STR_MAPGEN_BORDER_WATER                                         :{BLACK}水域
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}ランダム
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}ランダム
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}手動
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}ランダム設定
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}手動設定
 
-STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}ハイトマップの回転：
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}ハイトマップ名：
-STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}サイズ：
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}ハイトマップの回転:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}ハイトマップ名:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}サイズ:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}ランダムシードを入力
+STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}乱数種を入力
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}雪線の位置を変更
-STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}始める年を変えます
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}開始年の変更
 
 # SE Map generation
-STR_SE_MAPGEN_CAPTION                                           :{WHITE}シナリオの種類
-STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}平たい地形
-STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}平たい地形を作成
-STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}ランダムな地形
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}平地の土地の高さ：
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}平地の高さを下げる
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}平地の高さを上げる
+STR_SE_MAPGEN_CAPTION                                           :{WHITE}シナリオ種類
+STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}平地マップ
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}全域が平地のマップを作成します
+STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}ランダムマップ
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}平地マップの高度:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}平地高度を下げる
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}平地高度を上げる
 
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}平地の高さを変更
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}平地高度を変更
 
 # Map generation progress
-STR_GENERATION_WORLD                                            :{WHITE}地形作成中...
+STR_GENERATION_WORLD                                            :{WHITE}地形作成中
 STR_GENERATION_ABORT                                            :{BLACK}キャンセル
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}地形作成のキャンセル
-STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}地形作成をキャンセルしてもよろしいですか？
-STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}％完了
-STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM}／{NUM}
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}地形作成を中止
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}地形作成をキャンセルしてもよろしいですか?
+STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}%完了
+STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM}/{NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}地形作成中
-STR_GENERATION_RIVER_GENERATION                                 :{BLACK}河川を生成
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}河川を生成中
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}植林中
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}灯台／送信機作成中
-STR_GENERATION_CLEARING_TILES                                   :{BLACK}岩石／でこぼこの地形を作成中
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}灯台/電波塔配置中
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}岩石/荒地を設定中
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}ゲームを設定中
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}タイルループを実行中
-STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}スクリプト実行
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}スクリプト実行中
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}ゲームを準備中
 
 # NewGRF settings
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRFの設定
-STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRFの詳細情報
-STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}有効なNewGRFファイル
-STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}無効なNewGRFファイル
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}プリセットの選択:
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF設定
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF 詳細情報
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}アクティブなNewGRF
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}非アクティブなNewGRF
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}プリセット:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}フィルター:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}選択したプリセットを開きます
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}プリセットを保存
@@ -2732,47 +2732,47 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}プリ�
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}プリセットを削除
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}選択したプリセットを削除します
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}追加
-STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}選択したNewGRFファイルをリストに追加します
-STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}ファイルを更新
-STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}使用可能なNewGRFファイルのリストを更新
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}選択したNewGRFをアクティブリストに追加します
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}更新
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}使用可能なNewGRFのリストを更新します
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}削除
-STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}NewGRFファイルをリストから削除します
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}選択したNewGRFをアクティブリストから削除します
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}上へ
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}選択したNewGRFファイルを上へ移動します
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}下へ
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}選択したNewGRFファイルを下へ移動します
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}インストールされたNewGRFファイルのリストです
 
-STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}パラメータの設定
-STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}パラメーターの表示
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}パレットを切り替える
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}選択したパレットを切り替えます。{}（この NewGRF のスプライトがピンクになってしまうとき、この操作を試します。）
+STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}パラメータ設定
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}パラメータを表示
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}パレットの切り替え
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}選択したパレットを切り替えます。{}(このNewGRFのグラフィックがピンクになってしまうとき、この操作を試してみてください)
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}変更を適用
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}抜けている項目をオンラインで検索
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}抜けている項目はインターネットで検索します。
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}不足コンテンツをオンラインで検索
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}不足しているコンテンツをインターネットで検索します
 
-STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}ファイル名：{SILVER}{STRING}
-STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID：{SILVER}{STRING}
+STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}ファイル名: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}バージョン: {SILVER}{NUM}
-STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}最小対応するバージョン: {SILVER}{NUM}
-STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum：{SILVER}{STRING}
-STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}パレット：{SILVER}{STRING}
-STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}設定：{SILVER}{STRING}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}対応する最旧バージョン: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}パレット: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}設定: {SILVER}{STRING}
 
-STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}情報はありません
-STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}一致しているファイルが見つかりません
+STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}情報がありません
+STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}一致するファイルが見つかりません
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}切
-STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}このバージョンのOpenTTDと適合しません。
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}このバージョンのOpenTTDでは使用できません
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRFパラメータの変更
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}閉じる
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}リセット
-STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}すべてのパラメータをデファルトヴァルウに変更する
-STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :パラメーター{NUM}
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}全パラメータを標準値に変更する
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :パラメーター {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
-STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}パラメータの数: {ORANGE}{NUM}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}パラメータ総数: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}検査する - {STRING}
@@ -2826,23 +2826,23 @@ STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING}は{S
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :不正なレイアウト書式です (スプライト {3:NUM})
 
 # NewGRF related 'general' warnings
-STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}実行中のゲームに変更を適用すると、クラッシュのリスクがあります。{}続けてもよろしいですか？
+STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意!
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}実行中のゲームに変更を適用すると、ソフトのクラッシュ又はゲーム破損が起こる可能性があります。これらのトラブルに関するバグ報告はしないで下さい。{}続けてもよろしいですか?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}ファイルが追加できません：重複のGRF ID
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}一致しているファイルが見つかりません（代替 GRF を使用中）
-STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}NewGRFの限度に達したためファイルを追加できません
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}既にあるファイルとGRF IDが重複するため、このファイルは追加できません
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}一致するファイルが見つかりません(代替GRFを使用中)
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}NewGRFの使用上限に達したため、このファイルは追加できません
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}見つからないファイルの代わりに対応している代替 GRF ファイルを使用しています
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}見つからない GRF ファイルを切にしています
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF ファイルが見つかりません
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}ポーズを解除した場合は、OpenTTD の安定性に悪影響を与える可能性があります。この後クラッシュが行った場合は、バグレポートの報告をご遠慮ください。{}ポーズを解除してもよろしいですか？
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}見つからないファイルの代わりに対応している代替GRFファイルを使用しています
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}見つからないGRFファイルは無効になっています
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRFファイルが見つかりません
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}ポーズを解除した場合、OpenTTDがクラッシュする可能性があります。解除後クラッシュが起こった場合のバグ報告はご遠慮ください。{}ポーズを解除してもよろしいですか?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :なし
-STR_NEWGRF_LIST_ALL_FOUND                                       :現存する全てのファイル
-STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}一致したファイル
-STR_NEWGRF_LIST_MISSING                                         :{RED}欠けているファイル
+STR_NEWGRF_LIST_ALL_FOUND                                       :ローカルにある全ファイル
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}一致するファイル
+STR_NEWGRF_LIST_MISSING                                         :{RED}欠落ファイル
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' のビヘービアは 同期エラーやクラッシュを引き起こす可能性があります！
@@ -2858,80 +2858,80 @@ STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}コー�
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<無効な貨物>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
-STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} は <無効な貨物>
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :<無効な貨物>{COMMA}ユニット
 STR_NEWGRF_INVALID_ENGINE                                       :<無効な輸送機器モデル>
-STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<潰れそうな産業>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<無効な産業>
 
 # NewGRF scanning window
-STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRFをスキャンしています。
-STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRFをスキャンしています。NewGRFの数により時間がかかります。
-STR_NEWGRF_SCAN_STATUS                                          :{BLACK} NewGRFをスキャンしました ({NUM}/{NUM})
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRFをスキャンしています
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRFをスキャンしています。NewGRFの数によっては時間がかかります
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}総数{1:NUM}個中{0:NUM}個のNewGRFをスキャンしました
 STR_NEWGRF_SCAN_ARCHIVES                                        :アーカイブをスキャン中
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}標示のリスト - {COMMA}つの標示
-STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}一致
-STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}フィルターの適用方法を一致/不一致で切り替える
+STR_SIGN_LIST_CAPTION                                           :{WHITE}標識リスト - {COMMA}個の標識
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}文字種判別
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}標識の文字を検索する際、大文字/小文字を区別するかどうかを切り替えます
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}標示のテキストを編集
-STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}次の標示へ移動
-STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}前の標示へ移動
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}標識を編集
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}次の標識へ移動
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}前の標識へ移動
 
-STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}看板のメッセージを入力
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}標識の内容を入力
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}市町村
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}街一覧
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- なし-
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}町名 - メイン画面を町の場所に移動するには町名をクリックします。
-STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}人
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}町名 - メイン画面を町の場所に移動するには町名をクリックします
+STR_TOWN_POPULATION                                             :{BLACK}地域人口: {COMMA}人
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
-STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN}（市）
-STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}人口：{ORANGE}{COMMA}人{BLACK}　建物：{ORANGE}{COMMA}戸
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}先月の旅客：{ORANGE}{COMMA}人{BLACK}　最大：{ORANGE}{COMMA}人
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}先月の郵便袋：{ORANGE}{COMMA}袋{BLACK}　最大：{ORANGE}{COMMA}袋
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}町の成長に必要な貨物：
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} required
+STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN}(市)
+STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}人口: {ORANGE}{COMMA}人{BLACK}　建物: {ORANGE}{COMMA}戸
+STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}旅客数(先月): {ORANGE}{COMMA}人{BLACK}　最大: {ORANGE}{COMMA}人
+STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}郵便袋(先月): {ORANGE}{COMMA}袋{BLACK}　最大: {ORANGE}{COMMA}袋
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}街の成長に必要な物資:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} が必要です
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} が冬に必要です
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} を配送しました
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{RED}配送が必要です:{ORANGE}{CARGO_TINY} / {CARGO_LONG}
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{GREEN}配送しました {ORANGE}{CARGO_TINY} / {CARGO_LONG}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}街は {ORANGE}{COMMA}{BLACK} 日おきに成長しています
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}街は {ORANGE}{COMMA}{BLACK} 日おきに成長しています(資金提供)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} は配送されています
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG} {RED}(更なる配送が必要)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG} {GREEN}(需要充足)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}街は {ORANGE}{COMMA}{BLACK} 日毎に成長しています
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}街は {ORANGE}{COMMA}{BLACK} 日毎に成長しています(資金提供)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}街は{RED}成長を止めています{BLACK}
-STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}市内の騒音制限：{ORANGE}{COMMA}{BLACK} 最大：{ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}画面を町の場所に移動します
-STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}町議会
-STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}町議会の情報を表示します
-STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}町名を変更します
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}騒音量: {ORANGE}{COMMA}{BLACK} (現状) / {ORANGE}{COMMA}{BLACK} (最大)
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}メイン画面を街の場所に移動します
+STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}地方自治体
+STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}地方自治体の情報を表示します
+STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}街名を変更します
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}拡大
-STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}町のサイズをあげます
-STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}破壊
-STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}この町を完全に破壊します
+STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}街のサイズを大きくします
+STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}撤去
+STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}この街を完全に撤去します
 
-STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :町名を変更
+STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :街名を変更
 
 # Town local authority window
-STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN}の町議会
-STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}会社の評判：
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}：{ORANGE}{STRING}
-STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}起こせる行動：
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}この町に起こせる行動 - 詳しくは項目をクリックします
-STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}続ける
-STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}上記のリストの選択中の動作を起こします。
+STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} 地方自治体
+STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}社の評判:
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}可能な活動:
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}この街で行える活動です。クリックするとそれぞれの詳細が表示されます
+STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}実行
+STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}上のリストで選択した活動を行います
 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :小規模広告キャンペーン
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :中規模広告キャンペーン
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :大規模広告キャンペーン
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :道路再建に出資
+STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :道路補修に出資
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :社長の彫像を建設
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :市街地開発に出資
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :独占的運送権を購入
-STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :町議会を買収
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :独占運送契約を締結
+STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :議会を買収
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}あなたの路線の利用率を増やす為に、{}町内で小規模な広告キャンペーンを行います。{} 価格：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}あなたの路線の利用率を増やす為に、{}町内で中規模な広告キャンペーンを行います。{} 価格：{CURRENCY_LONG}
@@ -3784,8 +3784,8 @@ STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}AIログ
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}停止条件:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}停止
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}AIログメッセージがこの文字列にマッチしたときゲームはポーズされます。
-STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}マッチケース
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}AIのログメッセージと文字列の一致条件を切り替え
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}文字種判別
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}AIのログメッセージと停止条件の文字列を比較する際に、大文字/小文字を区別するかどうかを切り替えます
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}続ける
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}AIの一時中断を解く
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}AIのコンソールを見る
