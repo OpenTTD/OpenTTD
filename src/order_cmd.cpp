@@ -1906,7 +1906,11 @@ VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v)
  */
 bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool pbs_look_ahead)
 {
-	if (conditional_depth > v->GetNumOrders()) return false;
+	if (conditional_depth > v->GetNumOrders()) {
+		v->current_order.Free();
+		v->dest_tile = 0;
+		return false;
+	}
 
 	switch (order->GetType()) {
 		case OT_GOTO_STATION:

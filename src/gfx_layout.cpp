@@ -355,7 +355,7 @@ ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 					last_char = this->buffer;
 				} else {
 					/* A space is found; perfect place to terminate */
-					this->buffer = last_space;
+					this->buffer = last_space + 1;
 					last_char = last_space;
 				}
 				break;
