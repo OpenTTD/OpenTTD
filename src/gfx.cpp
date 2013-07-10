@@ -51,43 +51,6 @@ byte _colour_gradient[COLOUR_END][8];
 static void GfxMainBlitterViewport(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = NULL, SpriteID sprite_id = SPR_CURSOR_MOUSE);
 static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = NULL, SpriteID sprite_id = SPR_CURSOR_MOUSE, ZoomLevel zoom = ZOOM_LVL_NORMAL);
 
-/**
- * Text drawing parameters, which can change while drawing a line, but are kept between multiple parts
- * of the same text, e.g. on line breaks.
- */
-struct DrawStringParams {
-	FontSize fontsize;
-	TextColour cur_colour, prev_colour;
-
-	DrawStringParams(TextColour colour, FontSize fontsize) : fontsize(fontsize), cur_colour(colour), prev_colour(colour) {}
-
-	/**
-	 * Switch to new colour \a c.
-	 * @param c New colour to use.
-	 */
-	inline void SetColour(TextColour c)
-	{
-		assert(c >=  TC_BLUE && c <= TC_BLACK);
-		this->prev_colour = this->cur_colour;
-		this->cur_colour = c;
-	}
-
-	/** Switch to previous colour. */
-	inline void SetPreviousColour()
-	{
-		Swap(this->cur_colour, this->prev_colour);
-	}
-
-	/**
-	 * Switch to using a new font \a f.
-	 * @param f New font to use.
-	 */
-	inline void SetFontSize(FontSize f)
-	{
-		this->fontsize = f;
-	}
-};
-
 static ReusableBuffer<uint8> _cursor_backup;
 
 /**
@@ -453,9 +416,22 @@ static int DrawLayoutLine(ParagraphLayout::Line *line, int y, int left, int righ
  *               will be drawn in the right direction.
  * @param underline Whether to underline what has been drawn or not.
  * @param fontsize The size of the initial characters.
+ * @return In case of left or center alignment the right most pixel we have drawn to.
+ *         In case of right alignment the left most pixel we have drawn to.
  */
 int DrawString(int left, int right, int top, const char *str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
+	/* The string may contain control chars to change the font, just use the biggest font for clipping. */
+	int max_height = max(max(FONT_HEIGHT_SMALL, FONT_HEIGHT_NORMAL), max(FONT_HEIGHT_LARGE, FONT_HEIGHT_MONO));
+
+	/* Funny glyphs may extent outside the usual bounds, so relax the clipping somewhat. */
+	int extra = max_height / 2;
+
+	if (_cur_dpi->top + _cur_dpi->height + extra < top || _cur_dpi->top > top + max_height + extra ||
+			_cur_dpi->left + _cur_dpi->width + extra < left || _cur_dpi->left > right + extra) {
+		return 0;
+	}
+
 	Layouter layout(str, INT32_MAX, colour, fontsize);
 	if (layout.Length() == 0) return 0;
 
@@ -475,6 +451,8 @@ int DrawString(int left, int right, int top, const char *str, TextColour colour,
  *               will be drawn in the right direction.
  * @param underline Whether to underline what has been drawn or not.
  * @param fontsize The size of the initial characters.
+ * @return In case of left or center alignment the right most pixel we have drawn to.
+ *         In case of right alignment the left most pixel we have drawn to.
  */
 int DrawString(int left, int right, int top, StringID str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {

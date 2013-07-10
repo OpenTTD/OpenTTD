@@ -20,6 +20,14 @@
 #include <unicode/ustring.h>
 #endif /* WITH_ICU */
 
+
+/** Cache of ParagraphLayout lines. */
+Layouter::LineCache *Layouter::linecache;
+
+/** Cache of Font instances. */
+Layouter::FontColourMap Layouter::fonts[FS_END];
+
+
 /**
  * Construct a new font.
  * @param size   The font size to use for this font.
@@ -129,6 +137,8 @@ ParagraphLayout *Layouter::GetParagraphLayout(UChar *buff, UChar *buff_end, Font
 	}
 
 	LEErrorCode status = LE_NO_ERROR;
+	/* ParagraphLayout does not copy "buff", so it must stay valid.
+	 * "runs" is copied according to the ICU source, but the documentation does not specify anything, so this might break somewhen. */
 	return new ParagraphLayout(buff, length, &runs, NULL, NULL, NULL, _current_text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, false, status);
 }
 
@@ -273,6 +283,14 @@ ParagraphLayout::ParagraphLayout(WChar *buffer, int length, FontMap &runs) : buf
 }
 
 /**
+ * Reset the position to the start of the paragraph.
+ */
+void ParagraphLayout::reflow()
+{
+	this->buffer = this->buffer_begin;
+}
+
+/**
  * Construct a new line with a maximum width.
  * @param max_width The maximum width of the string.
  * @return A Line, or NULL when at the end of the paragraph.
@@ -295,7 +313,7 @@ ParagraphLayout::Line *ParagraphLayout::nextLine(int max_width)
 	}
 
 	const WChar *begin = this->buffer;
-	WChar *last_space = NULL;
+	const WChar *last_space = NULL;
 	const WChar *last_char = begin;
 	int width = 0;
 
@@ -407,75 +425,77 @@ ParagraphLayout *Layouter::GetParagraphLayout(WChar *buff, WChar *buff_end, Font
  */
 Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsize)
 {
-	const CharType *buffer_last = lastof(this->buffer);
-	CharType *buff = this->buffer;
-
-	TextColour cur_colour = colour, prev_colour = colour;
+	FontState state(colour, fontsize);
 	WChar c = 0;
 
 	do {
-		Font *f = new Font(fontsize, cur_colour);
-		CharType *buff_begin = buff;
-		FontMap fontMapping;
+		/* Scan string for end of line */
+		const char *lineend = str;
+		for (;;) {
+			size_t len = Utf8Decode(&c, lineend);
+			if (c == '\0' || c == '\n') break;
+			lineend += len;
+		}
 
-		/*
-		 * Go through the whole string while adding Font instances to the font map
-		 * whenever the font changes, and convert the wide characters into a format
-		 * usable by ParagraphLayout.
-		 */
-		for (; buff < buffer_last;) {
-			c = Utf8Consume(const_cast<const char **>(&str));
-			if (c == '\0' || c == '\n') {
-				break;
-			} else if (c >= SCC_BLUE && c <= SCC_BLACK) {
-				prev_colour = cur_colour;
-				cur_colour = (TextColour)(c - SCC_BLUE);
-			} else if (c == SCC_PREVIOUS_COLOUR) { // Revert to the previous colour.
-				Swap(prev_colour, cur_colour);
-			} else if (c == SCC_TINYFONT) {
-				fontsize = FS_SMALL;
-			} else if (c == SCC_BIGFONT) {
-				fontsize = FS_LARGE;
-			} else {
-				buff += AppendToBuffer(buff, buffer_last, c);
-				continue;
+		LineCacheItem& line = GetCachedParagraphLayout(str, lineend - str, state);
+		if (line.layout != NULL) {
+			/* Line is in cache */
+			str = lineend + 1;
+			state = line.state_after;
+			line.layout->reflow();
+		} else {
+			/* Line is new, layout it */
+			const CharType *buffer_last = lastof(line.buffer);
+			CharType *buff_begin = line.buffer;
+			CharType *buff = buff_begin;
+			FontMap &fontMapping = line.runs;
+			Font *f = GetFont(state.fontsize, state.cur_colour);
+
+			/*
+			 * Go through the whole string while adding Font instances to the font map
+			 * whenever the font changes, and convert the wide characters into a format
+			 * usable by ParagraphLayout.
+			 */
+			for (; buff < buffer_last;) {
+				c = Utf8Consume(const_cast<const char **>(&str));
+				if (c == '\0' || c == '\n') {
+					break;
+				} else if (c >= SCC_BLUE && c <= SCC_BLACK) {
+					state.SetColour((TextColour)(c - SCC_BLUE));
+				} else if (c == SCC_PREVIOUS_COLOUR) { // Revert to the previous colour.
+					state.SetPreviousColour();
+				} else if (c == SCC_TINYFONT) {
+					state.SetFontSize(FS_SMALL);
+				} else if (c == SCC_BIGFONT) {
+					state.SetFontSize(FS_LARGE);
+				} else {
+					buff += AppendToBuffer(buff, buffer_last, c);
+					continue;
+				}
+
+				if (!fontMapping.Contains(buff - buff_begin)) {
+					fontMapping.Insert(buff - buff_begin, f);
+				}
+				f = GetFont(state.fontsize, state.cur_colour);
 			}
+
+			/* Better safe than sorry. */
+			*buff = '\0';
 
 			if (!fontMapping.Contains(buff - buff_begin)) {
 				fontMapping.Insert(buff - buff_begin, f);
-				*this->fonts.Append() = f;
-			} else {
-				delete f;
 			}
-			f = new Font(fontsize, cur_colour);
+			line.layout = GetParagraphLayout(buff_begin, buff, fontMapping);
+			line.state_after = state;
 		}
-
-		/* Better safe than sorry. */
-		*buff = '\0';
-
-		if (!fontMapping.Contains(buff - buff_begin)) {
-			fontMapping.Insert(buff - buff_begin, f);
-			*this->fonts.Append() = f;
-		}
-		ParagraphLayout *p = GetParagraphLayout(buff_begin, buff, fontMapping);
 
 		/* Copy all lines into a local cache so we can reuse them later on more easily. */
 		ParagraphLayout::Line *l;
-		while ((l = p->nextLine(maxw)) != NULL) {
+		while ((l = line.layout->nextLine(maxw)) != NULL) {
 			*this->Append() = l;
 		}
 
-		delete p;
-
-	} while (c != '\0' && buff < buffer_last);
-}
-
-/** Free everything we allocated. */
-Layouter::~Layouter()
-{
-	for (Font **iter = this->fonts.Begin(); iter != this->fonts.End(); iter++) {
-		delete *iter;
-	}
+	} while (c != '\0');
 }
 
 /**
@@ -490,4 +510,72 @@ Dimension Layouter::GetBounds()
 		d.height += (*l)->getLeading();
 	}
 	return d;
+}
+
+/**
+ * Get a static font instance.
+ */
+Font *Layouter::GetFont(FontSize size, TextColour colour)
+{
+	FontColourMap::iterator it = fonts[size].Find(colour);
+	if (it != fonts[size].End()) return it->second;
+
+	Font *f = new Font(size, colour);
+	*fonts[size].Append() = FontColourMap::Pair(colour, f);
+	return f;
+}
+
+/**
+ * Reset cached font information.
+ * @param size Font size to reset.
+ */
+void Layouter::ResetFontCache(FontSize size)
+{
+	for (FontColourMap::iterator it = fonts[size].Begin(); it != fonts[size].End(); ++it) {
+		delete it->second;
+	}
+	fonts[size].Clear();
+
+	/* We must reset the linecache since it references the just freed fonts */
+	ResetLineCache();
+}
+
+/**
+ * Get reference to cache item.
+ * If the item does not exist yet, it is default constructed.
+ * @param str Source string of the line (including colour and font size codes).
+ * @param len Length of \a str in bytes (no termination).
+ * @param state State of the font at the beginning of the line.
+ * @return Reference to cache item.
+ */
+Layouter::LineCacheItem &Layouter::GetCachedParagraphLayout(const char *str, size_t len, const FontState &state)
+{
+	if (linecache == NULL) {
+		/* Create linecache on first access to avoid trouble with initialisation order of static variables. */
+		linecache = new LineCache();
+	}
+
+	LineCacheKey key;
+	key.state_before = state;
+	key.str.assign(str, len);
+	return (*linecache)[key];
+}
+
+/**
+ * Clear line cache.
+ */
+void Layouter::ResetLineCache()
+{
+	if (linecache != NULL) linecache->clear();
+}
+
+/**
+ * Reduce the size of linecache if necessary to prevent infinite growth.
+ */
+void Layouter::ReduceLineCache()
+{
+	if (linecache != NULL) {
+		/* TODO LRU cache would be fancy, but not exactly necessary */
+		if (linecache->size() > 4096) ResetLineCache();
+	}
 }

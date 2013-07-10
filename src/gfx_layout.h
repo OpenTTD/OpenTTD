@@ -16,12 +16,54 @@
 #include "gfx_func.h"
 #include "core/smallmap_type.hpp"
 
+#include <map>
+#include <string>
+
 #ifdef WITH_ICU
 #include "layout/ParagraphLayout.h"
 #define ICU_FONTINSTANCE : public LEFontInstance
 #else /* WITH_ICU */
 #define ICU_FONTINSTANCE
 #endif /* WITH_ICU */
+
+/**
+ * Text drawing parameters, which can change while drawing a line, but are kept between multiple parts
+ * of the same text, e.g. on line breaks.
+ */
+struct FontState {
+	FontSize fontsize;       ///< Current font size.
+	TextColour cur_colour;   ///< Current text colour.
+	TextColour prev_colour;  ///< Text colour from before the last colour switch.
+
+	FontState() : fontsize(FS_END), cur_colour(TC_INVALID), prev_colour(TC_INVALID) {}
+	FontState(TextColour colour, FontSize fontsize) : fontsize(fontsize), cur_colour(colour), prev_colour(colour) {}
+
+	/**
+	 * Switch to new colour \a c.
+	 * @param c New colour to use.
+	 */
+	inline void SetColour(TextColour c)
+	{
+		assert(c >= TC_BLUE && c <= TC_BLACK);
+		this->prev_colour = this->cur_colour;
+		this->cur_colour = c;
+	}
+
+	/** Switch to previous colour. */
+	inline void SetPreviousColour()
+	{
+		Swap(this->cur_colour, this->prev_colour);
+	}
+
+	/**
+	 * Switch to using a new font \a f.
+	 * @param f New font to use.
+	 */
+	inline void SetFontSize(FontSize f)
+	{
+		this->fontsize = f;
+	}
+};
 
 /**
  * Container with information about a font.
@@ -105,10 +147,11 @@ public:
 	};
 
 	const WChar *buffer_begin; ///< Begin of the buffer.
-	WChar *buffer;             ///< The current location in the buffer.
+	const WChar *buffer;       ///< The current location in the buffer.
 	FontMap &runs;             ///< The fonts we have to use for this paragraph.
 
 	ParagraphLayout(WChar *buffer, int length, FontMap &runs);
+	void reflow();
 	Line *nextLine(int max_width);
 };
 #endif /* !WITH_ICU */
@@ -128,13 +171,48 @@ class Layouter : public AutoDeleteSmallVector<ParagraphLayout::Line *, 4> {
 	size_t AppendToBuffer(CharType *buff, const CharType *buffer_last, WChar c);
 	ParagraphLayout *GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &fontMapping);
 
-	CharType buffer[DRAW_STRING_BUFFER]; ///< Buffer for the text that is going to be drawn.
-	SmallVector<Font *, 4> fonts;        ///< The fonts needed for drawing.
+	/** Key into the linecache */
+	struct LineCacheKey {
+		FontState state_before;  ///< Font state at the beginning of the line.
+		std::string str;         ///< Source string of the line (including colour and font size codes).
+
+		/** Comparison operator for std::map */
+		bool operator<(const LineCacheKey &other) const
+		{
+			if (this->state_before.fontsize != other.state_before.fontsize) return this->state_before.fontsize < other.state_before.fontsize;
+			if (this->state_before.cur_colour != other.state_before.cur_colour) return this->state_before.cur_colour < other.state_before.cur_colour;
+			if (this->state_before.prev_colour != other.state_before.prev_colour) return this->state_before.prev_colour < other.state_before.prev_colour;
+			return this->str < other.str;
+		}
+	};
+	/** Item in the linecache */
+	struct LineCacheItem {
+		/* Stuff that cannot be freed until the ParagraphLayout is freed */
+		CharType buffer[DRAW_STRING_BUFFER]; ///< Accessed by both ICU's and our ParagraphLayout::nextLine.
+		FontMap runs;                        ///< Accessed by our ParagraphLayout::nextLine.
+
+		FontState state_after;   ///< Font state after the line.
+		ParagraphLayout *layout; ///< Layout of the line.
+
+		LineCacheItem() : layout(NULL) {}
+		~LineCacheItem() { delete layout; }
+	};
+	typedef std::map<LineCacheKey, LineCacheItem> LineCache;
+	static LineCache *linecache;
+
+	static LineCacheItem &GetCachedParagraphLayout(const char *str, size_t len, const FontState &state);
+
+	typedef SmallMap<TextColour, Font *> FontColourMap;
+	static FontColourMap fonts[FS_END];
+	static Font *GetFont(FontSize size, TextColour colour);
 
 public:
 	Layouter(const char *str, int maxw = INT32_MAX, TextColour colour = TC_FROMSTRING, FontSize fontsize = FS_NORMAL);
-	~Layouter();
 	Dimension GetBounds();
+
+	static void ResetFontCache(FontSize size);
+	static void ResetLineCache();
+	static void ReduceLineCache();
 };
 
 #endif /* GFX_LAYOUT_H */
