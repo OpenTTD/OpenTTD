@@ -3741,7 +3741,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}指令
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}指令表示に切り替えます
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACKダイヤ - 指令を選択するにはクリックします
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}ダイヤ - 指令を選択するにはクリックします
 
 STR_TIMETABLE_NO_TRAVEL                                         :運行計画無
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :該当区間を運行 (次の手動指令により自動設定)
