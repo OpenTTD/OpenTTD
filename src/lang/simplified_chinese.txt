@@ -191,7 +191,7 @@ STR_COLOUR_GREY                                                 :浅灰色
 STR_COLOUR_WHITE                                                :白　色
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} 英里/时
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} 英里/小时
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} 千米/小时
 STR_UNITS_VELOCITY_SI                                           :{COMMA} 米/秒
 
@@ -202,7 +202,7 @@ STR_UNITS_POWER_SI                                              :{COMMA} 千瓦
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} 吨
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} 千克
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} 吨
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} 公吨
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} 千克
 
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} 升
@@ -211,7 +211,7 @@ STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} 立方�
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} 升
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} 立方米
 
-STR_UNITS_FORCE_SI                                              :{COMMA} 千牛
+STR_UNITS_FORCE_SI                                              :{COMMA} 千牛顿
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} 英呎
 STR_UNITS_HEIGHT_SI                                             :{COMMA} 公尺
@@ -1368,7 +1368,7 @@ STR_CONFIG_SETTING_SOUND_CLICK                                  :点击按钮: {
 STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :按一下按钮时发出蜂鸣声
 STR_CONFIG_SETTING_SOUND_DISASTER                               :灾难/事故: {STRING}
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :播放灾难和事故音效
-STR_CONFIG_SETTING_SOUND_VEHICLE                                :交通工具: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :运输工具: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :播放运输工具音效
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :音效：{STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :播放与地貌、工业设施和城镇有关的环境音效
@@ -2996,7 +2996,7 @@ STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}收入/支出
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}建设费用
-STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}购置交通工具
+STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}购置新运输工具
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}铁路运行费用
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}汽车运行费用
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}航空运行费用
@@ -4135,9 +4135,9 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}你已�
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}无法新建分组……
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}无法删除分组……
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}无法重命名分组……
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}无法从该组移除所有交通工具
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}无法添加交通工具到该组……
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}无法添加共享交通工具到该组……
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}无法从该组移除所有运输工具
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}无法添加运输工具到该组……
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}无法添加共享指令的运输工具到该组……
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}指定位置有列车
@@ -4188,7 +4188,10 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}飞机�
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}游戏中的车辆过多
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}不能改变保养周期……
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 交通工具已毁
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 运具已撞毁
+
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}暂时沒有可用的运输工具
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}在{DATE_SHORT}后开始新游戏，或使用一款能提供早期运输工具的NewGRF
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}不能让列车冒险通过信号...
@@ -4690,6 +4693,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

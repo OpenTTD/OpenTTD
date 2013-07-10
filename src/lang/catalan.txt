@@ -4191,6 +4191,9 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}No es po
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vehicle està destruït
 
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Encara no hi ha vehicles disponibles
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Iniciar un nou joc desprès de {DATE_SHORT} o usar un NewGRF que proporciona vehicles primerencs
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}No pots fer que un tren passi d'una senyal amb perill...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}No es pot invertir la direcció del tren...
@@ -4691,6 +4694,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
