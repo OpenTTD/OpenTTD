@@ -33,11 +33,11 @@ public:
 
 	/** Sort ascending */
 	static const bool SORT_ASCENDING = true;
-	/** Sort descnding */
+	/** Sort descending */
 	static const bool SORT_DESCENDING = false;
 
 private:
-	ScriptListSorter *sorter;         ///< Sorting algorithm
+	ScriptListSorter *sorter;     ///< Sorting algorithm
 	SorterType sorter_type;       ///< Sorting type
 	bool sort_ascending;          ///< Whether to sort ascending or descending
 	bool initialized;             ///< Whether an iteration has been started
@@ -63,7 +63,7 @@ public:
 	void AddItem(int32 item, int32 value);
 #else
 	void AddItem(int32 item, int32 value = 0);
-#endif
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Remove a single item from the list.
