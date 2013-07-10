@@ -283,7 +283,7 @@ STR_SORT_BY_MODEL                                               :モデル
 STR_SORT_BY_VALUE                                               :資産価値
 STR_SORT_BY_LENGTH                                              :全長
 STR_SORT_BY_LIFE_TIME                                           :耐用年数までの残期間
-STR_SORT_BY_TIMETABLE_DELAY                                     :時刻表からの遅延
+STR_SORT_BY_TIMETABLE_DELAY                                     :ダイヤからの遅延
 STR_SORT_BY_FACILITY                                            :停留施設の種類
 STR_SORT_BY_WAITING_TOTAL                                       :積載待ち貨物総量
 STR_SORT_BY_WAITING_AVAILABLE                                   :搬送可能な積載待ち貨物総量
@@ -1354,9 +1354,9 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :詳細輸送機
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :有効にすると、リスト内で輸送機器をグループ化できるようになります
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :積み降ろし進行度を表示: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :積み降ろしを行っている輸送機関の上に、その進行度合いを示すインジケーターを表示するかどうかを設定します
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :時刻表の時間単位にゲーム時を使用: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :時刻表で行程時間を定めるために使われる時間単位を「日」ではなく「ゲーム時」にします。1日は約74ゲーム時に相当します
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :時刻表に発着情報を表示: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :ダイヤの時間単位にゲーム時を使用: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :ダイヤで行程時間を定めるために使われる時間単位を「日」ではなく「ゲーム時」にします。1日は約74ゲーム時に相当します
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :ダイヤに発着情報を表示: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :時刻表に出発・到着の予定時刻を表示します
 STR_CONFIG_SETTING_QUICKGOTO                                    :指令の作成を高速化: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :司令作成画面を開いたときに規定で「駅を選択」を選択するようにします
@@ -1622,7 +1622,7 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}自動�
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}点検
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}経路構築
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}列車
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}市町村
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}街
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}産業
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :オリジナル
@@ -3344,47 +3344,49 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}道路�
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}船舶を複製
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}航空機を複製
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}この列車を複製します。このボタンをクリックして、他の列車をクリックします。電車庫内でも電車庫外でもかまいません。コントロール+クリックすると、指令を共有します。シフト+クリックで金額の概算が出ます
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}道路車両を複製します。このボタンをクリックして、他の車両をクリックします。車庫内でも車庫外でもかまいません。コントロール+クリックすると、指令を共有します。シフト+クリックで金額の概算が出ます
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}船舶を複製します。このボタンをクリックして、造船所内や造船所外の船舶をクリックします。コントロール+クリックすると、指令を共有します。シフト+クリックで金額の概算が出ます
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}航空機を複製します。このボタンをクリックして、格納庫内や格納庫外の航空機をクリックします。Ctrl+クリックすると、指令リストを共有します。Shift+クリックで費用を見積もります
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}列車を複製します。このボタンを押してから列車庫内/外の列車をクリックして下さい。Ctrl+クリックすると、複製相手は元列車と指令を共有します。Shift+クリックで金額の概算が出ます
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}車両を複製します。このボタンを押してから車庫内/外の車両をクリックして下さい。Ctrl+クリックすると、複製相手は元車両と指令を共有します。Shift+クリックで金額の概算が出ます
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}船舶を複製します。このボタンを押してから造船所内/外の船舶をクリックして下さい。Ctrl+クリックすると、複製相手は元船舶と指令を共有します。Shift+クリックで金額の概算が出ます
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}航空機を複製します。このボタンを押してから格納庫内/外の航空機をクリックして下さい。Ctrl+クリックすると、複製相手は元航空機と指令を共有します。Shift+クリックで金額の概算が出ます
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}メイン画面を鉄道車庫の場所に移動します。CTRL+クリックで新しいウィンドウを開きます
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}主の画面を車庫の場所に移動します。CTRL+クリックで新しいウィンドウを開きます
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}メイン画面を造船所の場所に移動します。CTRL+クリックで新しいウィンドウを開きます。
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}メイン画面を格納庫の場所に移動します。CTRL+クリックで新しいウィンドウを開きます
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}メイン画面を列車庫の場所に移動します。Ctrl+クリックで新規のビューポートに表示します
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}主の画面を車庫の場所に移動します。Ctrl+クリックで新規のビューポートに表示します
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}メイン画面を造船所の場所に移動します。Ctrl+クリックで新規のビューポートに表示します
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}メイン画面を格納庫の場所に移動します。Ctrl+クリックで新規のビューポートに表示します
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}選択中の電車庫が指令リストに入っているすべての列車のリストを表示します
-STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}選択中の車庫が指令リストに入っているすべての道路車両のリストを表示します
-STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}選択中の造船所が指令リストに入っているすべての船舶のリストを表示します
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}選択した格納庫が指令リストに入っているすべての航空機のリストを表示します
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}選択中の列車庫が指令リストに入っている全列車のリストを表示します
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}選択中の車庫が指令リストに入っている全車両のリストを表示します
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}選択中の造船所が指令リストに入っている全船舶のリストを表示します
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}選択中の格納庫が指令リストに入っている全航空機のリストを表示します
 
-STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}ここをクリックすると電車庫内のすべての列車が停車します
-STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}車庫内のすべての道路車両を停車するにはクリックします
-STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}造船所内のすべての船舶を停止するにはクリックします
-STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}格納庫内のすべての航空機を運用停止するにはクリックします
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}列車庫内の全列車の運用を停止します
+STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}車庫内の全車両の運用を停止します
+STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}造船所内の全船舶の運用を停止します
+STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}格納庫内の全航空機の運用を停止します
 
-STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}ここをクリックすると電車庫内のすべての列車の運転を再開します
-STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}車庫内のすべての道路車両を開始するにはクリックします
-STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}造船所内のすべての船舶を開始するにはクリックします
-STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}格納庫内のすべての航空機の運用を開始するにはクリックします
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}車両庫内の全列車の運用を開始します
+STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}車庫内の全車両の運用を開始します
+STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}造船所内の全船舶の運用を開始します
+STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}格納庫内の全航空機の運用を開始します
 
-STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}車庫／格納庫／造船所内のすべての車両を売却します。続けてもよろしいですか？
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}庫内の全車両を売却します。続けてもよろしいですか?
 
 # Engine preview window
-STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}製造社からのメッセージ
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}弊社は新しい{STRING}を設計致しました。{}パフォーマンスなどを検査する為貴社に一年間の独占的先行利用をご提供したいと思いますがよろしいでしょうか？
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :鉄道車両
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :道路車両
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}製造会社からのメッセージ
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}弊社は新たに{STRING}を設計致しました。{}実地でのパフォーマンスなどを検討する為、貴社に独占モニター権を提供したいと考えておりますがいかがでしょうか?
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :列車
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :車両
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :航空機
 STR_ENGINE_PREVIEW_SHIP                                         :船舶
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :モノレール車両
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :磁気浮上式鉄道車両
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :モノレール列車
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :リニア列車
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}価格: {CURRENCY_LONG}　重量: {WEIGHT_SHORT}{}最高速度: {VELOCITY}　出力: {POWER}{}運転費: 一年間{CURRENCY_LONG}{}容量: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}価格: {CURRENCY_LONG} 重量: {WEIGHT_SHORT}{}速度: {VELOCITY}  出力: {POWER}  最大牽引力: {6:FORCE}{}運転費用: {4:CURRENCY_LONG}/年{}容量: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}値段：{CURRENCY_LONG}　最高速度：{VELOCITY}{}収容能力：{CARGO_LONG}、{CARGO_LONG}{}維持費：一年間{CURRENCY_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}値段：{CURRENCY_LONG}　最高速度：{VELOCITY}{}収容能力：{CARGO_LONG}{}維持費：一年間{CURRENCY_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}価格: {CURRENCY_LONG} 重量: {WEIGHT_SHORT}{}最高速度: {VELOCITY}{}出力: {POWER}{}運用費: {CURRENCY_LONG}/年{}収容量: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}価格: {CURRENCY_LONG} 重量: {WEIGHT_SHORT}{}最高速度: {VELOCITY} 出力: {POWER} 最大牽引力: {6:FORCE}{}運用費: {4:CURRENCY_LONG}/年{}収容量 {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}価格: {CURRENCY_LONG} 最高速度: {VELOCITY}{}収容量: {CARGO_LONG}、{CARGO_LONG}{}運用費: {CURRENCY_LONG}/年
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}価格: {CURRENCY_LONG} 最高速度: {VELOCITY}{}収容量: {CARGO_LONG}{}運用費: {CURRENCY_LONG}/年
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}価格: {CURRENCY_LONG} 最高速度: {VELOCITY} 航続距離: {COMMA}タイル{}収容量: {CARGO_LONG}、{CARGO_LONG}{}運用費: {CURRENCY_LONG}/年
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}価格: {CURRENCY_LONG} 最高速度: {VELOCITY} 航続距離: {COMMA}タイル{}収容量: {CARGO_LONG}{}運用費: {CURRENCY_LONG}/年
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING}の自動置換 - {STRING}
@@ -3424,134 +3426,136 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}機関�
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}メイン画面を列車の場所に移動します
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}主の画面を車両の場所に移動します
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}主の画面を船舶の場所に移動します
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}メイン画面を航空機の現在位置に移動します
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}メイン画面を列車の場所に移動します。Ctrl+クリックで、そのまま列車を追跡します
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}メイン画面を車両の場所に移動します。Ctrl+クリックで、そのまま車両を追跡します
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}メイン画面を船舶の場所に移動します。Ctrl+クリックで、そのまま船舶を追跡します
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}メイン画面を航空機の場所に移動します。Ctrl+クリックで、そのまま航空機を追跡します
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}列車を列車庫へ回送します。Ctrl+クリックすると点検後出庫します
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}車両を車庫へ改装します。Control+クリックすると修理しか行いません。
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}船舶を造船所へ回送します。Ctrl+クリックすると点検後出庫します
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}航空機を格納庫へ回送します。Ctrl+クリックすると点検後出庫します
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}列車を列車庫へ回送します。Ctrl+クリックすると点検後、再出庫します
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}車両を車庫へ回送します。Ctrl+クリックすると点検後、再出庫します
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}船舶を造船所へ回送します。Ctrl+クリックすると点検後、再出庫します
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}航空機を格納庫へ回送します。Ctrl+クリックすると点検後、再出庫します
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}この列車を複製します。コントロール+クリックすると、指令を共有します。シフト+クリックで金額の概算が出ます
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}道路車両を複製します。Control+クリックすると、指令を共有します。シフト+クリックで金額の概算が出ます
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}船を購入します。（コントロール+クリック）すると、プランを共有します。（シフト＋クイック）をすると、）船の価格を表せます。
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}航空機を購入します。Ctrl+クリックすると、指令リストを共有します。Shift＋クリックすると購入費用を見積もります
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}列車を複製します。Ctrl+クリックで複製相手が指令を共有します。Shift+クリックで費用の見積が出ます
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}車両を複製します。Ctrl+クリックで複製相手が指令を共有します。Shift+クリックで費用の見積が出ます
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}船舶を複製します。Ctrl+クリックで複製相手が指令を共有します。Shift+クリックで費用の見積が出ます
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}航空機を複製します。Ctrl+クリックで複製相手が指令を共有します。Shift+クリックで費用の見積が出ます
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}信号が緑でなくても列車を進行させます。
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}赤信号を無視して進行させます
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}他の貨物種類を運送するに列車を再装備
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}他の貨物の種類を運送するに道路車両を再装備します
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}他の種類の貨物を運送する為に貨物船を改造します
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}他の種類の貨物を運送する為に航空機を改造します
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}現在とは異なる種類の貨物を運送出来るよう列車を改造します
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}現在とは異なる種類の貨物を運送出来るよう車両を改造します
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}現在とは異なる種類の貨物を運送出来るよう船舶を改造します
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}現在とは異なる種類の貨物を運送出来るよう航空機を改造します
 
-STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}運転方向を逆転させます
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}車両を逆転します
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}運転方向を反転させます
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}車両を反転します
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}列車の指令を表示します
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}車両の指令を表示します
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}船舶の指令を表示
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}この航空機の指令を表示します。Ctrl+クリックで航空機の時刻表を表示します
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}列車の指令を表示します。Ctrl+クリックでダイヤを表示します
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}車両の指令を表示します。Ctrl+クリックでダイヤを表示します
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}船舶の指令を表示します。Ctrl+クリックでダイヤを表示します
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}航空機の指令を表示します。Ctrl+クリックでダイヤを表示します
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}列車の情報を表示します
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}車両の情報を表示します
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}船舶の情報を表示
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}航空機の情報を表示します
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}列車の現在の動作 - 始動／停止するにはここにクリックします
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}車両の現在の動作 - 開始／停止するにはクリックします
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}船舶の現在の動作 - 始動／停止するにはここへクリックします
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}航空機の現在の動作 - 始動／停止するにはここをクリックします。Ctrl+クリックで目的地に移動します
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}列車の現在の動作 - 運用開始/運用停止するにはここをクリックします。Ctrl+クリックで目的地に移動します
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}車両の現在の動作 - 運用開始/運用停止するにはここをクリックします。Ctrl+クリックで目的地に移動します
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}船舶の現在の動作 - 運用開始/運用停止するにはここをここへクリックします。Ctrl+クリックで目的地に移動します
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}航空機の現在の動作 - 運用開始/運用停止するにはここをクリックします。Ctrl+クリックで目的地に移動します
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}積み降ろし中
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}出発中
-STR_VEHICLE_STATUS_CRASHED                                      :{RED}事故！
-STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}故障中
-STR_VEHICLE_STATUS_STOPPED                                      :{RED}停止中
-STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}停車中、{VELOCITY}
+STR_VEHICLE_STATUS_CRASHED                                      :{RED}事故!
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}故障!
+STR_VEHICLE_STATUS_STOPPED                                      :{RED}運用停止中
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}減速中　{VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}動力がありません
-STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}空き経路待ち中
+STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}先の区間が空くのを待っています
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}次の目的地が遠すぎます
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{STATION}へ行く、{VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}指令なし、{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{WAYPOINT}へ行く、{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}先頭へ{DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}サービスで{DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{STATION}へ向かっています　{VELOCITY}
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}指令なし　{VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{WAYPOINT}へ向かっています　{VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{DEPOT}へ回送中です　{VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{DEPOT}へ保守回送中です　{VELOCITY}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}停止中
-STR_VEHICLE_COMMAND_STOPPED                                     :{RED}停止中
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}運用停止中
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}運用停止中
 STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}発進中
-STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}発進中
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}運用開始
 
 # Vehicle details
-STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE}（詳細）
+STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (詳細)
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}名称
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}列車に名前を付ける
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}道路車両を名付ける
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}船舶を名付ける
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}車両に名前を付ける
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}船舶に名前を付ける
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}航空機に名前を付ける
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}年齢：{LTBLUE}{STRING}{BLACK}　維持費：一年間{LTBLUE}{CURRENCY_LONG}
 # The next two need to stay in this order
-STR_VEHICLE_INFO_AGE                                            :{COMMA}年（{COMMA}年）
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}年（{COMMA}年）
+STR_VEHICLE_INFO_AGE                                            :{COMMA}年({COMMA}年)
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}年({COMMA}年)
 
-STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最高速度：{LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重さ：{LTBLUE}{WEIGHT_SHORT}　{BLACK}力：{LTBLUE}{POWER}{BLACK}　最高速度：{LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重さ：{LTBLUE}{WEIGHT_SHORT}　{BLACK}力：{LTBLUE}{POWER}{BLACK}　最高速度：{LTBLUE}{VELOCITY}　{BLACK}最大牽引力：{LTBLUE}{FORCE}
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最高速度: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}最高速度: {LTBLUE}{VELOCITY} {BLACK}航続距離: {LTBLUE}{COMMA}タイル
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重量: {LTBLUE}{WEIGHT_SHORT}　{BLACK}出力: {LTBLUE}{POWER}{BLACK}　最高速度: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量: {LTBLUE}{WEIGHT_SHORT}　{BLACK}出力: {LTBLUE}{POWER}{BLACK}　最高速度: {LTBLUE}{VELOCITY}　{BLACK}最大牽引力: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年の利益：{LTBLUE}{CURRENCY_LONG}（昨年：{CURRENCY_LONG}）
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}信頼度：{LTBLUE}{COMMA}%　{BLACK}修理後の故障：{LTBLUE}{COMMA}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年の収益: {LTBLUE}{CURRENCY_LONG}(昨年: {CURRENCY_LONG})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}信頼度: {LTBLUE}{COMMA}%　{BLACK}点検後の故障数: {LTBLUE}{COMMA}
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}　{BLACK}購入年：{LTBLUE}{NUM}{BLACK}　現在価値：{LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}容量： {LTBLUE}なし{STRING}
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}収容能力：{LTBLUE}{CARGO_LONG}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}収容能力：{LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
-STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}収容能力：{LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}　{BLACK}購入年: {LTBLUE}{NUM}{BLACK}　車両価値: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}収容能力: {LTBLUE}なし{STRING}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}収容能力: {LTBLUE}{CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}収容能力: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}収容能力: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}振り替えクレジット: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}転送による部分払い: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}補修間隔：{LTBLUE}{COMMA}日間{BLACK}  最新の補修：{LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}修理の間隔：{LTBLUE}{COMMA}％{BLACK}　最終の修理：{LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}補修間隔を10日延ばす。CTRL+クリックで5日延ばせます。
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}補修間隔を10日縮める。CTRL+クリックで5日縮めます。
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}点検周期: {LTBLUE}{COMMA}日{BLACK}  最終点検日: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}点検周期: {LTBLUE}{COMMA}%{BLACK}　最終点検日: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}点検周期を10日(%)延ばします。Ctrl+クリックで5日(%)単位になります
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}点検周期を10日(%)縮めます。Ctrl+クリックで5日(%)単位になります
 
-STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}補修間隔の変更
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}点検周期の変更
 STR_VEHICLE_DETAILS_DEFAULT                                     :既定
 STR_VEHICLE_DETAILS_DAYS                                        :日
 STR_VEHICLE_DETAILS_PERCENT                                     :パーセント
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}列車に名前を付ける
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}道路車両を名付ける
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}車両を名付ける
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}船舶を名付ける
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}航空機に名前を付ける
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}航空機を名付ける
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}　購入日付：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}　価値：{LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}　購入日: {LTBLUE}{NUM}{BLACK}　車両価値: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}　車両価値: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}この列車の貨物最大容量：
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}この列車の貨物最大収容量:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
-STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}空
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG}（原点：{STATION}）
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG}（原点：{STATION}）（x{NUM}）
+STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}空荷
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} (積載地: {STATION})
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} (積載地: {STATION})(x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}貨物
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}運送している貨物の情報を表示します
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}情報
-STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}鉄道車両の情報を表示します
-STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}容量
-STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}各車両の容量を表示します
+STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}列車の情報を表示します
+STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}収容量
+STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}各車両の収容量を表示します
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}合計貨物
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}貨物種類に並べ替えて列車の合計容量を表示します
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}貨物種類別に並べ替え、列車の合計収容量を表示します
 
-STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}容量：{LTBLUE}
+STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}収容量: {LTBLUE}
 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE}(改造)
@@ -3578,195 +3582,220 @@ STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}選択�
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}選択した種類の貨物を運送するために航空機を改造します
 
 # Order view
-STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE}（指令）
-STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}時刻表
-STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}時刻表表示に変更
+STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (指令)
+STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}ダイヤ
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}ダイヤ表示に変更
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}指令リスト - 指令を選択するにはクリックします
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}指令リスト - 指令を選択するにはクリックします。Ctrl+クリックで指令先に飛びます
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - 指令終了 - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 共有指令の終了- -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 共有指令終了- -
 
 # Order bottom buttons
-STR_ORDER_NON_STOP                                              :{BLACK}直通運転（途中停車しない）
-STR_ORDER_GO_TO                                                 :行く
-STR_ORDER_GO_NON_STOP_TO                                        :まで直通運転（途中の駅を通過する）
-STR_ORDER_GO_VIA                                                :経由停車点
-STR_ORDER_GO_NON_STOP_VIA                                       :まで直通運転（経由点を通る）
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}選択した指令の停止方法を変更します
+STR_ORDER_NON_STOP                                              :{BLACK}直通運転
+STR_ORDER_GO_TO                                                 :各停運転し停車
+STR_ORDER_GO_NON_STOP_TO                                        :直通運転し停車
+STR_ORDER_GO_VIA                                                :各停運転し通過
+STR_ORDER_GO_NON_STOP_VIA                                       :直通運転し通過
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}選択した指令先にどのように向かうかを設定します
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}いずれかを全積載
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :可能なら積載
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :全積載
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :いずれかを全積載
-STR_ORDER_DROP_NO_LOADING                                       :積載しない
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}選択した指令の積み込む方法を変更します
+STR_ORDER_DROP_NO_LOADING                                       :荷積み無し
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}選択した指令先での荷積み方式を変更します
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}全て降ろす
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :受入有なら降ろす
 STR_ORDER_DROP_UNLOAD                                           :全て降ろす
 STR_ORDER_DROP_TRANSFER                                         :転送
-STR_ORDER_DROP_NO_UNLOADING                                     :降ろさない
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}選択した指令の降ろす方法を変更します
+STR_ORDER_DROP_NO_UNLOADING                                     :荷下ろし無し
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}選択した指令先での荷下ろし方式を変更します
 
-STR_ORDER_REFIT                                                 :{BLACK}改装
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}貨物の種類を選択してください。Control+クリックすると改装をキャンセルします
+STR_ORDER_REFIT                                                 :{BLACK}改造
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}改造後搬送する貨物種類を選択してください。Ctrl+クリックで改造指令をキャンセルします
+STR_ORDER_REFIT_AUTO                                            :{BLACK}自動改造
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}改造後搬送する貨物種類を選択してください。Ctrl+クリックで改造指令をキャンセルします。自動改造はその輸送機器が改造可能な場合にのみ行われます
+STR_ORDER_DROP_REFIT_AUTO                                       :改造不能な車両
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :改造可能な車両
 
-STR_ORDER_SERVICE                                               :{BLACK}修理
+STR_ORDER_SERVICE                                               :{BLACK}点検
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :常に行く
-STR_ORDER_DROP_SERVICE_DEPOT                                    :必要であれば修理
-STR_ORDER_DROP_HALT_DEPOT                                       :停止
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}修理が必要でないとこの指令をスキップ
+STR_ORDER_DROP_SERVICE_DEPOT                                    :必要であれば点検
+STR_ORDER_DROP_HALT_DEPOT                                       :運用停止
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}点検が必要ない時にはこの指令はスキップされます
 
-STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}ベースに車両のデータをジャンプ
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}輸送機器データに基づく条件分岐
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :積載率
 STR_ORDER_CONDITIONAL_RELIABILITY                               :信頼度
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :最高速度
-STR_ORDER_CONDITIONAL_AGE                                       :乗り物の経年(年)
-STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :修理要求有
+STR_ORDER_CONDITIONAL_AGE                                       :使用年数(年)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :点検要求
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :常に
-STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :耐用年数までの残年数
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :耐用年数までの残期間(年)
 
-STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}車両の価格を見る
-STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :の
-STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ではない
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}輸送機器のデータと指定の数値でどのような条件式を組むかを決定します
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :に等しい
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :と異なる
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :未満の
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :以下の
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :より多い
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :以上の
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :である
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :ではない
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :真である
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :偽である
 
-STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}乗り物のデータと比較する値
-STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}比較に用いる値を入力
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}輸送機器のデータと比較する値を指定します
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}比較値を入力
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}スキップ
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}実行中の指令をスキップして、次へ移動します。Control クリックすると、選択した指令へ移動します。
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}現在の指令をスキップして、次へ移動します。Ctrl+クリックで、選択した指令まで移動します
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}削除
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}選択した指令を削除します
-STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}車両のオーダを消去する
-STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}共有を止める
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}注文オーダの共有が止まる。（コントロール＋クリック）を押したら、リストも消去します。
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}指令を全て消去
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}共有を解除
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}指令の共有を解除します。Ctrl+クリックで全司令を消去します
 
-STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}駅を選択
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :最寄りの列車庫へ行く
-STR_ORDER_GO_TO_NEAREST_HANGAR                                  :近辺の格納庫へ行く
-STR_ORDER_CONDITIONAL                                           :条件ジャンプ
-STR_ORDER_SHARE                                                 :オーダを共有する
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}選択した指令の前／リストの終わりに新規指令を挿入します
+STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}移動先を選択
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :最寄りの車両庫へ向かう
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :最寄りの格納庫へ向かう
+STR_ORDER_CONDITIONAL                                           :条件分岐
+STR_ORDER_SHARE                                                 :指令を共有
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}選択した指令の前またはリストの終わりに新規指令を挿入します。Ctrlを押しながら停留施設をクリックした場合は指令に「いずれかの貨物の満載まで待機」、中継駅の場合は「直通運転」、車両庫では「保守回送」がそれぞれ付きます。「指令を共有」またはCtrlを押しながら他の輸送機器をクリックするとその輸送機器と指令を共有します。普通に他の輸送機器をクリックした場合は指令をコピーします。指令で車両庫を経由するよう設定すると自動点検は無効になります
 
-STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}この指令リストを共有しているすべての車両を表示します
+STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}この指令リストを共有している全車両を表示します
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :{WAYPOINT}を経由する
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :{WAYPOINT}を経由して直行
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :直通運転で{WAYPOINT}を経由する
 
-STR_ORDER_SERVICE_AT                                            :修理：
-STR_ORDER_SERVICE_NON_STOP_AT                                   :回送して修理を行う
+STR_ORDER_SERVICE_AT                                            :に保守回送
+STR_ORDER_SERVICE_NON_STOP_AT                                   :に保守回送(直行)
 
-STR_ORDER_NEAREST_DEPOT                                         :最も近い
-STR_ORDER_NEAREST_HANGAR                                        :最も近い格納庫
+STR_ORDER_NEAREST_DEPOT                                         :最寄りの
+STR_ORDER_NEAREST_HANGAR                                        :最寄りの格納庫
 STR_ORDER_TRAIN_DEPOT                                           :列車庫
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :車庫
 STR_ORDER_SHIP_DEPOT                                            :造船所
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{1:STRING}{2:STRING}{0:STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{1:DEPOT}{0:STRING}
 
-STR_ORDER_REFIT_ORDER                                           :（{STRING}に改装）
-STR_ORDER_REFIT_STOP_ORDER                                      :({STRING}に改装して、止める)
-STR_ORDER_STOP_ORDER                                            :（停止）
+STR_ORDER_REFIT_ORDER                                           :({STRING}に改造)
+STR_ORDER_REFIT_STOP_ORDER                                      :({STRING}に改造して、運用停止)
+STR_ORDER_STOP_ORDER                                            :(運用停止)
 
-STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION                                         :{1:STATION}へ向かい{0:STRING} {2:STRING}
 
-STR_ORDER_IMPLICIT                                              :（自動的）
+STR_ORDER_IMPLICIT                                              :(自動)
 
-STR_ORDER_FULL_LOAD                                             :(全積載)
-STR_ORDER_FULL_LOAD_ANY                                         :(いずれか一種の貨物を全積載するまで待つ)
-STR_ORDER_NO_LOAD                                               :(積載しない)
-STR_ORDER_UNLOAD                                                :(降ろして積載する)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(降ろして全積載まで待つ)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(降ろしていずれか一種のを全積載)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(降ろして空荷のまま出発)
+STR_ORDER_FULL_LOAD                                             :(満載まで待機)
+STR_ORDER_FULL_LOAD_ANY                                         :(いずれかの貨物の満載まで待機)
+STR_ORDER_NO_LOAD                                               :(積み込み無し)
+STR_ORDER_UNLOAD                                                :(荷下ろしして積載)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(荷下ろしして満載まで待機)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(荷下ろししていずれかの貨物の満載まで待機)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(荷下ろしして空荷のまま出発)
 STR_ORDER_TRANSFER                                              :(転載して積載)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(転載して満載するまで待つ)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(転載していずれかを満載するまで待つ)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(転載して何も積まない)
-STR_ORDER_NO_UNLOAD                                             :（積み荷を降ろさずに貨物を積む）
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :（積み荷を降ろさずに満載するまで待つ）
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :（積み荷を降ろさずにいずれかを満載するまで待つ）
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(降ろさず積載しない)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(転載して満載するまで待機)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(転載していずれかの貨物の満載まで待機)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(転載して空荷のまま出発)
+STR_ORDER_NO_UNLOAD                                             :(荷下ろしせず追加で積載する)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(荷下ろしせず満載するまで待機)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(荷下ろしせずいずれかの貨物の満載まで待機)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(貨物取扱無)
 
+STR_ORDER_AUTO_REFIT                                            :({STRING}に自動改造)
+STR_ORDER_FULL_LOAD_REFIT                                       :({STRING}に自動改造し満載まで待機)
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :({STRING}に自動改造しいずれかの貨物の満載まで待機)
+STR_ORDER_UNLOAD_REFIT                                          :(荷下ろしして{STRING}に自動改造し積載)
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(荷下ろしして{STRING}に自動改造し満載まで待機)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(荷下ろしして{STRING}に自動改造しいずれかの貨物の満載まで待機)
+STR_ORDER_TRANSFER_REFIT                                        :(転載して{STRING}に自動改造し積載)
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(転載して{STRING}に自動改造し満載するまで待機)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(転載して{STRING}に自動改造しいずれかの貨物の満載まで待機)
+STR_ORDER_NO_UNLOAD_REFIT                                       :(荷下ろしせず{STRING}に自動改造し追加で積載する)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(荷下ろしせず{STRING}に自動改造し満載するまで待機)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(荷下ろしせず{STRING}に自動改造しいずれかの貨物の満載まで待機)
 
+STR_ORDER_AUTO_REFIT_ANY                                        :改造可能な貨物種類
 
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[手前に止まる]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[中間に止まる]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[奥に止まる]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[停止位置:先端]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[停止位置:中間]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[停止位置:終端]
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (航続距離不足)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :指令{COMMA}に飛ぶ
-STR_ORDER_CONDITIONAL_NUM                                       :{1:STRING} が {3:COMMA}{2:STRING}時、指令{0:COMMA}に飛ぶ
-STR_ORDER_CONDITIONAL_TRUE_FALSE                                :{1:STRING}{2:STRING}時、指令{0:COMMA}に飛ぶ
+STR_ORDER_CONDITIONAL_NUM                                       :{1:STRING}が{3:COMMA}{2:STRING}時、指令{0:COMMA}に飛ぶ
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :{1:STRING}が{2:STRING}時、指令{0:COMMA}に飛ぶ
 
-STR_INVALID_ORDER                                               :{RED}（不正な指令）
+STR_INVALID_ORDER                                               :{RED} (不正な指令)
 
 # Time table window
-STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE}（時刻表）
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (ダイヤ)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}指令
-STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}指令表示に切り替え
+STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}指令表示に切り替えます
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}時刻表 - 指令を選択するにはクリックします。
+STR_TIMETABLE_TOOLTIP                                           :{BLACKダイヤ - 指令を選択するにはクリックします
 
-STR_TIMETABLE_NO_TRAVEL                                         :どこにも行かない
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :自動的運行（次の注文により時刻表を変更）
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :運行（未計画）
-STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}運行
-STR_TIMETABLE_STAY_FOR                                          :{STRING}停車
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :と{STRING}へ行く
-STR_TIMETABLE_DAYS                                              :{COMMA}日間
-STR_TIMETABLE_TICKS                                             :{COMMA}ティック
+STR_TIMETABLE_NO_TRAVEL                                         :運行計画無
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :該当区間を運行 (次の手動指令により自動設定)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :該当区間を運行 (ダイヤ設定無)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :最高速度{2:VELOCITY}で該当区間を運行 (ダイヤ設定無)
+STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}で該当区間を運行
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{STRING}で該当区間を運行(最高速度{VELOCITY})
+STR_TIMETABLE_STAY_FOR                                          :して{STRING}停車
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :して{STRING}運行
+STR_TIMETABLE_DAYS                                              :{COMMA}日
+STR_TIMETABLE_TICKS                                             :{COMMA}ゲーム時
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}この時刻を実行するには{STRING}がかかります
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}この時刻を実行するには少なくとも{STRING}がかかります（時刻されていない部分があります）
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}このダイヤを実行するには{STRING}必要です
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}このダイヤを実行するには少なくとも{STRING}必要です(ダイヤが組まれていない区間があります)
 
-STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}この車両は現在定刻しています
-STR_TIMETABLE_STATUS_LATE                                       :{BLACK}この車両は現在{STRING}遅刻しています
-STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}この車両は現在{STRING}早刻しています
-STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}このタイムテーブルはまだ始まってません
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}このタイムテーブルは{STRING}にスタート
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}この輸送機器は現在定刻で運転しています
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}この輸送機器は現在{STRING}遅延しています
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}この輸送機器は現在{STRING}早着しています
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}このダイヤはまだ始まってません
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}このダイヤの開始日時は{STRING}です
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}開始日
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}始発日
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}始発日時を設定します。Ctrl+クリックでは、指令を共有する輸送機器があり、ダイヤが完全に組まれている場合に限り、その総所要時間に基づき、各輸送機器に指定時刻から均等に始発日時を割り付けます
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}時間を変更
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}選択した指令の実行時間を変更します
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}選択した指令の行程時間を変更します
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}時刻を消去
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}選択した指令の実行時間を消去します
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}選択した指令の行程時間を消去します
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}制限速度を変更
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}選択した移動区間での最高速度を設定します
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}制限速度を撤廃
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}選択した移動区間にある最高速度を撤廃します
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}遅延回数をリセット
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}遅刻回数をリセットして、車両が定刻になります
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}遅延をリセット
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}ダイヤからの遅延量をリセットして、現状を定刻にします
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動時刻
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}自動的に全ての行き先を設定する(Ctrlキー+クリックで遅延時間をキープ)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}オートフィル
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}実際に各指令が実行された時の所要時間を収集してダイヤを作成します。Ctrl+クリックでは既存の停車時間は維持して移動時間のみ更新します(輸送機器を上位モデルに置き換えたときに便利です)
 
-STR_TIMETABLE_EXPECTED                                          :{BLACK}予想された
-STR_TIMETABLE_SCHEDULED                                         :{BLACK}予定されていた
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}推測と予定表を切り返える
+STR_TIMETABLE_EXPECTED                                          :{BLACK}予想日時
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}定刻日時
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}予想日時(現状の運転時刻から推定される今後の発着日時)と定刻日時(ダイヤから割り出される定刻の発着日時)の表示を切り返えます
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :着:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :発:
 
 
 # Date window (for timetable)
 STR_DATE_CAPTION                                                :{WHITE}日付設定
 STR_DATE_SET_DATE                                               :{BLACK}日付設定
-STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}タイムテーブルの選択日時と同じ開始日時を使う
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}現在のダイヤの日時を開始日時として使う
 STR_DATE_DAY_TOOLTIP                                            :{BLACK}日を選択
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}月を選択
 STR_DATE_YEAR_TOOLTIP                                           :{BLACK}年を選択
@@ -3774,64 +3803,83 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}年を�
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI/ゲームスクリプトのデバッグ
-STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (ver. {NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}スクリプト名
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}コンピュータのプレーヤの設定
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}コンピュータのプレーヤの設定を切り替える
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}設定
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}スクリプトの設定を変更します
 STR_AI_DEBUG_RELOAD                                             :{BLACK}AI を再起動
-STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}AI を停止して、スクリプトを読み込んで、AI を再起動します。
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}AIログメッセージがブレーク文字列にマッチしたときに停止する (有効/無効)
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}このAIを一度停止して、スクリプトを再読込の上、再起動します
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}ログメッセージが停止条件の文字列と一致したときにAIを停止するかどうかを切り替えます
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}停止条件:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}停止
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}AIログメッセージがこの文字列にマッチしたときゲームはポーズされます。
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}AIのログメッセージがこの文字列と一致したときにゲームをポーズします
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}文字種判別
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}AIのログメッセージと停止条件の文字列を比較する際に、大文字/小文字を区別するかどうかを切り替えます
-STR_AI_DEBUG_CONTINUE                                           :{BLACK}続ける
-STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}AIの一時中断を解く
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}AIのコンソールを見る
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}再開
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}ポーズを解除し、AIを継続運用します
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}このAIのデバッグ出力を見ます
+STR_AI_GAME_SCRIPT                                              :{BLACK}ゲームスクリプト
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}ゲームスクリプトのログを確認します
 
-STR_ERROR_AI_NO_AI_FOUND                                        :読み込む適切なAIが見つかりません。{}このAIはダミーAIで何も行いません。{}幾つかのAIを'オンラインコンテンツ'システム経由でダウンロード可能です。
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}実行中の AI の一つが予期せずに終了しました。AI の作者に AI デバッグのウインドウのスクリーンショットが含む電子メールをご送信ください。
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/ゲームスクリプトデバッグウインドウはサーバのみで使用することができます。
+STR_ERROR_AI_NO_AI_FOUND                                        :適切なAIが見つかりません。{}このAIはダミーAIで何も行いません。{}AIは「オンラインコンテンツの確認」経由でダウンロード可能です
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}実行中のAIの一つがクラッシュしました。AIの作者にデバッグウインドウのスクリーンショットを付け、ご報告ください
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/ゲームスクリプトのデバッグウインドウはサーバーでのみ使用することができます
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI の設定
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AIの設定
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}このゲームスクリプトは次のゲーム開始時からロードされます
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}}このAIは次のゲーム開始時からロードされます
 STR_AI_CONFIG_HUMAN_PLAYER                                      :人間のプレーヤー
-STR_AI_CONFIG_RANDOM_AI                                         :ランダムな AI
+STR_AI_CONFIG_RANDOM_AI                                         :ランダムなAI
+STR_AI_CONFIG_NONE                                              :(なし)
 
-STR_AI_CONFIG_MOVE_UP                                           :{BLACK}上にします
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}上に移動
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}選択したAIの順位を上げる
-STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}下にします
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}下に移動
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}選択したAIの順位を下げる
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}ゲームスクリプト
+STR_AI_CONFIG_AI                                                :{SILVER}AI
 
+STR_AI_CONFIG_CHANGE                                            :{BLACK}{STRING}を選択
 STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :AI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :ゲームスクリプト
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}他のスクリプトをロードします
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}設定
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}スクリプトのパラメータを設定します
 
 # Available AIs window
-STR_AI_LIST_TOOLTIP                                             :{BLACK}クリックしてスクリプトを選択します。
+STR_AI_LIST_CAPTION                                             :{WHITE}使用可能な{STRING}
+STR_AI_LIST_CAPTION_AI                                          :AI
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :ゲームスクリプト
+STR_AI_LIST_TOOLTIP                                             :{BLACK}クリックしてスクリプトを選択します
 
-STR_AI_LIST_AUTHOR                                              :{LTBLUE}作成者： {ORANGE}{STRING}
-STR_AI_LIST_VERSION                                             :{LTBLUE}バージョン： {ORANGE}{NUM}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}作成者: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}バージョン: {ORANGE}{NUM}
 STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
-STR_AI_LIST_ACCEPT                                              :{BLACK}OK
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}選択したスクリプトを使用します。
+STR_AI_LIST_ACCEPT                                              :{BLACK}適用
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}選択したスクリプトを使用します
 STR_AI_LIST_CANCEL                                              :{BLACK}キャンセル
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}スクリプトを変更しません
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} パラメータ
+STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :ゲームスクリプト
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}閉じる
 STR_AI_SETTINGS_RESET                                           :{BLACK}リセット
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :AI企業の設立間隔(倒産/買収後): {ORANGE}{STRING}
 
 
 # Textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme of {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} changelog of {STRING}
-STR_TEXTFILE_VIEW_README                                        :{BLACK}readmeを読む
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}変更履歴を読む
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING}のReadme
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}の変更履歴
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING}のライセンス
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Readmeを見る
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}変更履歴を見る
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}ライセンス
 
 
@@ -3860,70 +3908,71 @@ STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}費用(�
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}収益(見積): {CURRENCY_LONG}
 
 # Saveload messages
-STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}ゲームを保存しています{}完了までしばらくお待ちください！
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}ゲームを保存しています{}完了までしばらくお待ちください!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}自動保存に失敗しました
-STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}ドライブが読み込めません
+STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}ドライブを読み込めません
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}ゲームの保存に失敗しました{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}ファイルを削除できません
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}ゲームの読み込みに失敗しました{}{STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :内部エラー：{STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :壊れているセーブゲーム：{STRING}
-STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :セーブゲームはより新しいバージョンによって保存されました
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :内部エラー: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :破損したセーブゲーム: {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :このファイルは上位のバージョンによって保存されたものです
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :ファイルを読み込むことができません
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :ファイルに書き込むことができません
-STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :データインテグリティチェック失敗
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :データ保全性チェック失敗
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<使用不能>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}このゲームは路面電車に対応していないバージョンで保存されましたので、すべての路面電車が削除されました。
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}マップ生成中止...{}... 適合する街の配置がありません
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... このシナリオに市町村がありません
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}マップ生成中止{}街を配置するスペースがありません
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}このシナリオには街がありません
 
-STR_ERROR_PNGMAP                                                :{WHITE}PNG ファイルから地形が読み込めません...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... ファイルが見つかりませんでした
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... イメージのフォーマットが交換できませんでした。256色もしくは1670万色のPNGファイルしか対応していません。
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... 不明なエラーが発生しました。破損したファイルの可能性があります。
+STR_ERROR_PNGMAP                                                :{WHITE}PNGファイルから地形が読み込めません
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}ファイルが見つかりません
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}イメージのフォーマットを変換できませんでした。8ビットもしくは24ビットのPNGファイルにのみ対応しています
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}不明なエラーが発生しました。ファイルが破損している可能性があります
 
-STR_ERROR_BMPMAP                                                :{WHITE}BMP ファイルから地形が読み込めません...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... イメージのフォーマットが交換できませんでした。
+STR_ERROR_BMPMAP                                                :{WHITE}BMPファイルから地形が読み込めません
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}イメージのフォーマットを変換できませんでした
 
-STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE} イメージが大きすぎます。
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}イメージが大きすぎます
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}リサイズ警告
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}ソース地図をリサイズしすぎることはお勧めしません。地形作成を続けてもよろしいですか？
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}音セットは代替として使える１つの音セットしか見つかりませんでした。音セットは「オンラインの項目を確認」からダウンロード可能です。
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}フェイルバック用の効果音セットしか見つかりませんでした。効果音セットは「オンラインコンテンツを確認」からダウンロード可能です
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}巨大なスクリーンショット
-STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}このスクリーンショットは {COMMA} x {COMMA} ピクセルの解像度です。このまま続行しても良いですか？
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}このスクリーンショットのサイズは {COMMA}×{COMMA} ピクセルになります。このまま続行してもよろしいですか?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}スクリーンショットを'{STRING}'に正常に保存しました
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}スクリーンショットの保存に失敗しました！
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}スクリーンショットの保存に失敗しました!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}メッセージ
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}{STRING}からのメッセージ
 
 # Generic construction errors
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}地図の端を越えています
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}地図の端に近すぎます
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}資金が足りません。{CURRENCY_LONG}がかかります
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}マップからはみ出します
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}}マップ端に近すぎます
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}資金が足りません。{CURRENCY_LONG}必要です
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}平地が必要です
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}土地の傾きが違います
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}これはできません...
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}まずは建物を破壊しなければなりません
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}この土地を破壊できません
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... 地域が不適当です
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}... すでに建設されました
-STR_ERROR_OWNED_BY                                              :{WHITE}... 所有者は {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... この土地は他の会社に所有されています
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}風景の境界です。
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}タイルの境界を除去します。
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}それをすることはできません
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}先に建物を撤去しなければなりません
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}この範囲を撤去することは出来ません
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}地形が不適当です
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}既に設置されています
+STR_ERROR_OWNED_BY                                              :{WHITE}{STRING}の所有設備です
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}この土地は他の会社に所有されています
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}一度に出来る整地量を越えています
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}一度に出来る撤去量を越えています
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}木の本数が多すぎます
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名前は重複してはいけません
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING}があります
-STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}一時停止（ポーズ）中にはできない行動です
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}ポーズ中にはできない行動です
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}議会が反対しています
@@ -3932,332 +3981,334 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}�
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}あなたの行った贈収賄が地元当局に露見しました!
 
 # Levelling errors
-STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}ここの土地を上げられません
-STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}ここの土地を下げられません
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}ここの土地を平坦にできません...
-STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}掘削するとトンネルが破壊されます
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}この土地を上げられません
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}この土地を下げられません
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}この土地を平坦にできません...
+STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}ここを掘削するとトンネルが破壊されます
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}すでに海水位です
 STR_ERROR_TOO_HIGH                                              :{WHITE}高すぎます
-STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... すでに平坦です。
+STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}すでに平坦になっています
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}会社名が変更できません...
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}社長の名前を変更できません...
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}会社名を変更できません
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}社長名を変更できません
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... 最高借入金は{CURRENCY_LONG}です。
-STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}より借入できません...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... 残額がありません
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY_LONG}が必要
-STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}借入金が返済できません...
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}借入した資金が送金できません...
-STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}会社を買収できません...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}会社の本部ビルを建設できません...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}この会社の25%の株を購入できません...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}この会社の25%の株を売却できません...
-STR_ERROR_PROTECTED                                             :{WHITE}この会社は株式取引出来る年限に達していません...
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}最高借入金は{CURRENCY_LONG}です
+STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}これ以上は借入できません
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}全額返済済みです
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}{CURRENCY_LONG}が必要です
+STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}借入金を返済できません
+STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}借入金を送金することはできません
+STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}会社を買収できません
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}会社の本社ビルを建設できません
+STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}この会社の株を25%購入できません
+STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}この会社の株を25%売却できません
+STR_ERROR_PROTECTED                                             :{WHITE}この会社は開設から6年が経過していません
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}街を建設できません
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}町名を変更できません...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}ここで町が建設できません...
-STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}町を拡大できません...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... 地図の端に近すぎます
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... 他の町に近すぎます
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... 市町村数の制限を超えています
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 地図に空のスペースがありません
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}この町は道路を建設しません。「詳細設定->経済->市町村」によって道路の建設を行うことができます。
-STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}道路工事中
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}町を削除できません...{}この町を参照する駅または車庫か町に所有されたタイルが除去できません
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 街の中心部に像を建てるのに適した場所がありません。
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}街を開設できません
+STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}街名を変更できません
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}ここには街を建設できません
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}街を拡大できません
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}マップ端に近すぎます
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}他の街に近すぎます
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}街数の制限を超えています
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}マップに空きスペースがありません
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}この街は自動では道路を建設しません。詳細設定の「経済->街」で道路の建設を許可できます
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}道路補修工事中です
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}街を削除できません{}この街名を参照する停留施設・車庫か、街が所有するタイルが除去できません
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}街の中心部に像を建てるのに適した場所がありません
 
 # Industry related errors
-STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... 産業の件数制限を超えています
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}産業を建設できません...
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}ここに{STRING}が建設できません
-STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}この産業をここに建設できません...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... 他の産業に近すぎます。
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... 先に町を建設しなければなりません
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... 一町内に一つしか建設できません
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... 人口が1200人以上の市町のみに建設できます
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... 雨林地域のみに建設できます
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... 砂漠地域のみに建設できます
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... 町内のみに建設できます
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... 低高度領域にしか建設できません
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... 地図の端のみに設置できます
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... 雪線上のみに植林できます
-STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... 降雪線より上にのみ建設できます。
-STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... 降雪線より下にのみ建設できます。
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}産業の制限軒数を超えています
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}産業拠点を建設できません
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}ここに{STRING}を建設できません
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}この産業拠点はここには建設できません
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}他の産業に近すぎます
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}先に街を開設しなければなりません
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}街に一つしか建設できません
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}人口が1200人以上の街のみに建設できます
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}熱帯雨林地域のみに建設できます
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}砂漠地域のみに建設できます
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}街内のみに建設できます
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}街の中心部にのみ建設できます
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}高度が低い地域にのみ建設できます
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}マップ端部のみに設置できます
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}雪線上のみに植林できます
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}降雪線より上にのみ建設できます
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}降雪線より下にのみ建設できます
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}ここに駅を建設できません
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}バス停を建設できません...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}荷役所を建設できません...
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}旅客用電停を建設できません...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}貨物用電停を建設できません...
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}ここに埠頭を建設できません...
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}ここに空港を建設できません...
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}ここには駅を建設できません
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}ここにはバス停を建設できません
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}ここには荷役所を建設できません
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}ここには乗客用電停を建設できません
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}ここには貨物用電停を建設できません
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}ここには埠頭を建設できません
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}ここには空港を建設できません
 
-STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}複数のすでに存在している駅／バス停／荷役所に接しています
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... 駅が広すぎます
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}駅／バス停／荷役所が多すぎます
-STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}駅の部分が多すぎます。
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}複数の既存停留施設に接しています
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}駅が広すぎます
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}停留施設が多すぎます
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}駅の部分が多すぎます
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}バス停が多すぎます
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}荷役所が多すぎます
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}他の駅／荷役所に近すぎます
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}他の停留施設に近すぎます
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}他の埠頭に近すぎます
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}他の空港に近すぎます
-STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}駅名を変更できません...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... これは町の道です。
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... 道の方向が違います。
-STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... 路側型停留所は曲がり角には設置できません
-STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... 路側型停留所は交差点には設置できません。
+STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}駅名を変更できません
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}これは街所有の道です
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}道の向きが違います
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}路側型停留所は曲がり角には設置できません
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}路側型停留所は交差点には設置できません
 
 # Station destruction related errors
-STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}駅のこの部分を撤去できません...
+STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}駅のこの部分を撤去できません
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}先に駅を撤去しなければなりません
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}バス停を破壊できません...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}荷役所を破壊できません...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}旅客用電停を破壊できません...
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}貨物用電停を破壊できません...
-STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}先にバス停を破壊しなければなりません
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... ここには駅がありません
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}バス停を撤去できません
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}荷役所を撤去できません
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}旅客用電停を撤去できません
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}貨物用電停を撤去できません
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}先にバス停を撤去しなければなりません
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}ここには駅がありません
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}先に駅を破壊しなければなりません
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}先にバス停を破壊しなければなりません
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}先にバス停を破壊しなければなりません
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}先に乗客用路面電車駅を破壊しなければなりません
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}先に貨物用路面電車駅を破壊しなければなりません
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}先に埠頭を破壊しなければなりません
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}先に空港を破壊しなければなりません
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}先に駅を撤去しなければなりません
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}先にバス停を撤去しなければなりません
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}先にバス停を撤去しなければなりません
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}先に旅客用電停を撤去しなければなりません
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}先に貨物用電停を撤去しなければなりません
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}先に埠頭を撤去しなければなりません
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}先に空港を撤去しなければなりません
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}1個以上の既存の通過点と隣接しています。
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}他の通過点に近すぎます
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}複数の既存中継駅と隣接しています
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}他の中継駅に近すぎます
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}ここに線路通過点を建設できません...
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}ここにブイを設置できません
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}通過点名を変更できません...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}ここには中継駅を建設できません
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}ここにはブイを設置できません
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}中継駅名を変更できません
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}ここの線路通過点を破壊できません...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}鉄道通過点を先に取り除いてください。
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... ブイがあります
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... ブイは使用中です！
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}この中継駅を撤去できません
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}中継駅を先に撤去してください
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}ブイがあります
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}このブイは他社のものです!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}ここに鉄道車庫を建設できません
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}ここに車庫を建設できません...
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}ここに路面電車庫を建設できません...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}ここに造船所を建設できません...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}ここには列車庫を建設できません
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}ここには車庫を建設できません
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}ここには路面車両庫を建設できません
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}ここには造船所を建設できません
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}車庫の名前を変更できません...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}列車は車庫に止めなければなりません
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... 車庫内に停止しなければなりません
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}船舶は造船所内で停止しなければなりません
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}航空機は格納庫内で運用停止しなければなりません
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}列車庫に戻って運用を停止する必要があります
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}車庫に戻って運用を停止する必要があります
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}造船所に戻って運用を停止する必要があります
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}格納庫に戻って運用を停止する必要があります
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}列車の変更は鉄道車庫内でのみ行えます
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}列車の編成変更は列車庫内でのみ行えます
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車が長過ぎます
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}乗り物の進行方向を反転できません...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}多数の部分を含む車両が逆転できません
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :線路に互換がありません
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}進行方向を反転できません
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}重連車両を単体で反転させることはできません
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :線路に互換性がありません
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}この車輌を移動できません...
-STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}ダブルヘッドの場合、後部の機関車は常に前部の機関車について行きます
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}電車庫への経路が見つかりません
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}この輸送機器を移動できません
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}重連の後部車両のみを操作することはできません
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}付近の車庫への経路が見つかりません
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}付近に車庫が見つかりません
 
-STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :鉄道車庫の種類が一致していません
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :車庫の種類が一致しません
 
 # Autoreplace related errors
-STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} は交換後に長過ぎます。
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}自動交換/更新の規則は適用されませんでした。
-STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(資金の限度)
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE}は置換後では長すぎます
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}この輸送機器の自動置換/更新は行われませんでした
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(最低資金が確保できていません)
 
 # Rail construction errors
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}不可能な線路の組み合わせ
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}先に信号を破壊しなければなりません
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}不可能な線路の組み合わせです
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}先に信号を撤去しなければなりません
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}適当な線路がありません
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}先に線路を破壊しなければなりません
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}先に線路を撤去しなければなりません
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}道路は一方通行または進入禁止です
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}平面交差はこのレール種別には許可されていません。
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}ここに信号を建設できません
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}ここに線路を建設できません
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}ここの線路を破壊できません
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}ここに撤去できる信号がありません
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}ここの信号を交換できません...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... 線路がありません
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... 信号がありません
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}このレール種別との平面交差はできません
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}ここには信号を設置できません
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}ここには線路を建設できません
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}ここから線路を撤去できません
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}ここから信号を撤去できません
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}この信号を交換できません
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}線路がありません
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}信号がありません
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}ここの線路の種類を交換できません...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}この線路の種類を変更できません
 
 # Road construction errors
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}先に道路を破壊しなければなりません
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... 一方通行路上にジャンクションが建設できません
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}ここに道路を建設できません...
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}ここに路面電車線を建設できません...
-STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}ここから道路を破壊できません...
-STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}ここから路面電車線を破壊できません...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... 道路がありません
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... 路面電車軌道がありません。
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}先に道路を撤去しなければなりません
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}一方通行路は交差できません
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}ここには道路を建設できません
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}ここには軌道を建設できません
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}ここから道路を撤去できません
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}ここから軌道を撤去できません
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}道路がありません
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}軌道がありません
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}ここに運河を建設できません...
-STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}ここに水門を建設できません...
-STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}ここに川を設置できません
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... 水上に建設しなければなりません
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... 水上に建設できません
-STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... 海上には建設できません。
-STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... 水路上には建設できません
-STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... 河川上には建設できません。
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}先に運河を破壊しなければなりません
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}ここに水路橋を建設できません...
+STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}ここには運河を建設できません
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}ここには水門を建設できません
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}ここには川を設置できません
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}水上に建設しなければなりません
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}水上には建設できません
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}海上には建設できません
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}運河上には建設できません
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}河川上には建設できません
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}先に運河を撤去しなければなりません
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}ここには水路橋を建設できません
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... 木は既にあります
-STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... 木の種類に合わない地形です
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}ここに植林できません...
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}既に木が生えています
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}この樹種はこの地形に植林できまん
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}ここには植林できません
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}ここに橋を建設できません...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}先に橋を破壊しなければなりません
-STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}開始点と終了点は同じ位置に建設できません
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}ここには橋を建設できません
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}先に橋を撤去しなければなりません
+STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}開始点と終了点が同じです
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}橋端が同じ高さではありません
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}橋が低すぎて、地形に対応していません
-STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}一直線の橋しか建設できません
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... 橋の先端は両方地面に建設しなければなりません
-STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... 橋が長すぎます
-STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}橋がマップから出ますので建設できません
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}橋が低く、途中の起伏を越えられません
+STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}橋は直線である必要があります
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}橋の先端は両方地面である必要があります
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}橋が長すぎます
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}橋の反対端がマップ外です
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}ここにトンネルを建設できません...
-STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}この土地はトンネルの入り口に不適当です
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}先にトンネルを破壊しなければなりません
-STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}他のトンネルがすでにあります
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}トンネルの突き当たりは地図の外にあります。
-STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}向こうの土地を掘削できません
-STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... トンネルが長すぎます
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}ここにはトンネルを建設できません
+STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}斜面がトンネルの入り口に不適当です
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}先にトンネルを撤去しなければなりません
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}他のトンネルが既にあります
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}トンネル出口がマップ外です
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}トンネル出口を掘削できません
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}トンネルが長すぎます
 
 # Object related errors
-STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... オブジェクトが多すぎます
-STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}オブジェクトを構築できません ...
-STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}灯台／送信機があります
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... 本社ビルがあります
-STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}この地域を購入できません...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... すでに所有しています！
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}オブジェクトが多すぎます
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}オブジェクトを設置できません
+STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}灯台/電波塔があります
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}本社ビルがあります
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}この土地を購入できません
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}すでに所有しています!
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}グループが作成できません...
-STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}グループが削除できません...
-STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}グループ名を変更できません...
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}グループ内のすべての車両を取り除けません...
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}この車両がこのグループに追加できません...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}グループに共有車両を追加できません...
+STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}グループを作成できません
+STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}グループを削除できません
+STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}グループ名を変更できません
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}グループ内の全車両を移動できません
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}この車両をこのグループに追加できません
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}グループに共有車両を追加できません
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}列車があります
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}道路車両があります
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}船舶があります
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}航空機が進路にあります
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}航空機があります
 
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}列車が改装できません...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}道路車両が改装できません...
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}船舶を改装できません...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}航空機を改造できません...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}この列車を改造できません
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}この車両を改造できません
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}この船舶を改造できません
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}この航空機を改造できません
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}列車の名前を変更できません
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}道路車両が名付けません...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}車両の名前を変更できません
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}船舶の名前を変更できません
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}航空機の名前を変更できません
 
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}列車が開始／停止できません...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}道路車両を始動／停止できません...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}船舶を始動／停止できません...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}航空機を始動/停止できません...
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}列車の運用を開始/停止できません
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}車両の運用を開始/停止できません
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}船舶の運用を開始/停止できません
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}航空機の運用を開始/停止できません
 
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}列車を車庫へ回送できません...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}車両を車庫へ回送できません...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}船舶を造船所へ回送できません...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}航空機を格納庫へ回送できません...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}列車を列車庫へ回送できません
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}車両を車庫へ回送できません
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}船舶を造船所へ回送できません
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}航空機を格納庫へ回送できません
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}鉄道車両が購入できません...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}道路車両が購入できません...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}船舶が購入できません...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}航空機を購入できません...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}列車を購入できません
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}車両を購入できません
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}船舶を購入できません
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}航空機を購入できません
 
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}鉄道車両の名称を変更できません...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}道路車両の名称を変更できません...
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}船舶の名称が変更できません...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}航空機の名称を変更できません...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}列車の名称を変更できません
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}車両の名称を変更できません
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}船舶の名称を変更できません
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}航空機の名称を変更できません
 
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}鉄道車両を販売できません...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}道路車両を売却できません...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}船舶が販売できません...
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}航空機を売却できません...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}列車を売却できません
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}車両を売却できません
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}船舶を売却できません
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}航空機を売却できません
 
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}使用できない車両です
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}使用できない道路車両です
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}使用できない列車です
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}使用できない車両です
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}使用できない船舶です
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}使用できない航空機です
 
-STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}ゲームの車両数の制限を超えています
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}補修間隔を変更できません
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}輸送機器数の上限を超えています
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}点検周期を変更できません
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 乗り物が破壊されます
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}輸送機器が破壊されます
 
-STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}利用できる輸送機関がまだありません
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}利用可能な輸送機器がありません
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}{DATE_SHORT}年以降に開始するか、これより早い時期に輸送機器が開発されるNewGRFを利用して下さい
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}信号を無視して列車を進行させることができません...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}列車を逆転できません...
-STR_ERROR_TRAIN_START_NO_POWER                                  :列車に動力がありません。
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}赤信号を無視させることができません
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}列車を反転できません
+STR_ERROR_TRAIN_START_NO_POWER                                  :{WHITE}列車に動力車がありません
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}道路車両を転回できません ...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}車両を転回できません
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}飛行中です
 
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}これ以上の指令を追加できません
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}指令が多すぎます
-STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}新規指令を挿入できません...
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}この指令を削除できません...
-STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}この指令を変更できません...
-STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}この指令を移動できません...
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}実行中の指令はスキップできません...
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}選択した指令へスキップできません...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}乗り物は全ての駅に行くことが出来ません
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}その駅に行けません
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}命令を共有使用とする乗り物はその駅に行くことが出来ません。
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}新規指令を挿入できません
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}この指令を削除できません
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}この指令を変更できません
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}この指令を移動できません
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}実行中の指令はスキップできません
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}選択した指令へスキップできません
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}この輸送機器は指令されたいずれの停留施設にも辿り着けません
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}この輸送機器はその停留施設に辿り着けません
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}指令を共有している輸送機器がその停留施設に辿り着けません
 
-STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}指令リストを共有できません...
-STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}指令リストの共有を止める事ができません...
-STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}指令リストをコピーできません...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... 前の目的地から遠すぎます
-STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE} 航空機の航続距離が足りません
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}指令リストを共有できません
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}指令リストの共有を解除できません
+STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}指令リストをコピーできません
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}前の目的地から遠すぎます
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}航続距離が足りません
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}この車両に時刻表を設定できません...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}車両は駅／バス停のみで停車できます。
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}この車両はこの駅／バス停で停車しません。
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}この輸送機器にダイヤを設定できません
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}輸送機器は停留施設でのみ待機できます
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}この輸送機器はこの停留施設には停まれません
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... 標識が多すぎます
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}ここに標示を設置できません...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}標示のテキストを変更できません...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}標示を削除できません
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}標識が多すぎます
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}ここに標識を設置できません
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}標識のテキストを変更できません
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}標識を削除できません
 
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxeを基にしたシミュレーションゲーム
 
 # Translatable descriptions in media/baseset/*.ob* files
-STR_BASEGRAPHICS_DOS_DESCRIPTION                                :オリジナルDOS『トランスポートタイクンデラックス』版画像
-STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :オリジナルDOS『トランスポートタイクンデラックス』ドイツ語版 画像
-STR_BASEGRAPHICS_WIN_DESCRIPTION                                :オリジナルウィンドーズ『トランスポートタイクンデラックス』版 画像
-STR_BASESOUNDS_DOS_DESCRIPTION                                  :オリジナル DOS 『トランスポートタイクンデラックス』版音楽
-STR_BASESOUNDS_WIN_DESCRIPTION                                  :オリジナルウィンドーズ『トランスポートタイクンデラックス』版音楽
-STR_BASESOUNDS_NONE_DESCRIPTION                                 :音楽が無いミュージックパック
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :オリジナルウィンドーズ『トランスポートタイクンデラックス』版音楽
-STR_BASEMUSIC_NONE_DESCRIPTION                                  :音楽が無いミュージックパック
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Transport Tycoon Deluxe オリジナル版 グラフィック (DOS)
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Transport Tycoon Deluxe オリジナル版 グラフィック (DOS・ドイツ版)
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Transport Tycoon Deluxe オリジナル版 グラフィック (Windows)
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Transport Tycoon Deluxe オリジナル版 効果音 (DOS)
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Transport Tycoon Deluxe オリジナル版 効果音 (Windows)
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :空の効果音パック
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Transport Tycoon Deluxe オリジナル版 音楽 (Windows)
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :空の音楽パック
 
 ##id 0x2000
 # Town building names
@@ -4273,17 +4324,17 @@ STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :噴水
 STR_TOWN_BUILDING_NAME_PARK_1                                   :公園
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :オフィスビル
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :雑居ビル
-STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :近代のオフィスビル
+STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :近代的オフィスビル
 STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :倉庫
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :オフィスビル
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :スタジアム
-STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :老舗
+STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :旧家
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :小屋
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :家屋
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :アパート
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :大型オフィスビル
-STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :雑居
-STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :雑居
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :雑居ビル
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :雑居ビル
 STR_TOWN_BUILDING_NAME_THEATER_1                                :劇場
 STR_TOWN_BUILDING_NAME_STADIUM_2                                :スタジアム
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :オフィスビル
@@ -4293,19 +4344,19 @@ STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :商店街
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :イグルー
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :テント
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :茶瓶小屋
-STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :ブタ型貯金箱
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :ブタの貯金箱
 
 ##id 0x4800
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :炭鉱
 STR_INDUSTRY_NAME_POWER_STATION                                 :発電所
-STR_INDUSTRY_NAME_SAWMILL                                       :製材工場
+STR_INDUSTRY_NAME_SAWMILL                                       :製材所
 STR_INDUSTRY_NAME_FOREST                                        :森林
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :石油精製所
-STR_INDUSTRY_NAME_OIL_RIG                                       :石油掘削装置
+STR_INDUSTRY_NAME_OIL_RIG                                       :海上油田
 STR_INDUSTRY_NAME_FACTORY                                       :工場
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :印刷所
-STR_INDUSTRY_NAME_STEEL_MILL                                    :製鋼所
+STR_INDUSTRY_NAME_STEEL_MILL                                    :製鉄所
 STR_INDUSTRY_NAME_FARM                                          :農場
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :銅鉱山
 STR_INDUSTRY_NAME_OIL_WELLS                                     :油田
@@ -4318,17 +4369,17 @@ STR_INDUSTRY_NAME_DIAMOND_MINE                                  :ダイヤモン
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :鉄鉱山
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :果物農園
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :ゴム園
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :給水設備
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :水源施設
 STR_INDUSTRY_NAME_WATER_TOWER                                   :給水塔
 STR_INDUSTRY_NAME_FACTORY_2                                     :工場
 STR_INDUSTRY_NAME_FARM_2                                        :農場
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :製材所
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :綿菓子の森
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :菓子工場
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :お菓子工場
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :電池農園
-STR_INDUSTRY_NAME_COLA_WELLS                                    :コーラ井
-STR_INDUSTRY_NAME_TOY_SHOP                                      :玩具店
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :玩具工場
+STR_INDUSTRY_NAME_COLA_WELLS                                    :コーラ井戸
+STR_INDUSTRY_NAME_TOY_SHOP                                      :おもちゃ屋
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :おもちゃ工場
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :プラスチック泉
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :炭酸飲料工場
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :発泡所
@@ -4339,9 +4390,9 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :砂糖鉱山
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
-STR_SV_UNNAMED                                                  :名前無し
+STR_SV_UNNAMED                                                  :[未命名]
 STR_SV_TRAIN_NAME                                               :列車{COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :道路車両{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :車両{COMMA}
 STR_SV_SHIP_NAME                                                :船舶{COMMA}
 STR_SV_AIRCRAFT_NAME                                            :航空機{COMMA}
 
@@ -4363,7 +4414,7 @@ STR_SV_STNAME_OILFIELD                                          :{STRING}油田
 STR_SV_STNAME_MINES                                             :{STRING}山
 STR_SV_STNAME_DOCKS                                             :{STRING}埠頭
 STR_SV_STNAME_BUOY                                              :{STRING}
-STR_SV_STNAME_WAYPOINT                                          :通過地点{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}中継駅
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :新{STRING}
 STR_SV_STNAME_SIDINGS                                           :{STRING}里
@@ -4643,29 +4694,29 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 
 STR_FORMAT_BUOY_NAME                                            :{TOWN} ブイ
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} 第{COMMA}ブイ
-STR_FORMAT_COMPANY_NUM                                          :（会社{COMMA}）
+STR_FORMAT_COMPANY_NUM                                          :(会社{COMMA})
 STR_FORMAT_GROUP_NAME                                           :グループ {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}{STRING}
-STR_FORMAT_WAYPOINT_NAME                                        :{TOWN}の通過点
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} 通過点 {COMMA}
+STR_FORMAT_WAYPOINT_NAME                                        :{TOWN}中継駅
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :第{1:COMMA} {0:TOWN}中継駅
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} 列車庫
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} 第{COMMA}列車庫
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} 自動車車庫
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} 第{COMMA}自動車車庫
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} 車庫
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} 第{COMMA}車庫
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} 造船所
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} 第{COMMA}造船所
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} 格納庫
 
-STR_UNKNOWN_STATION                                             :不明な駅
-STR_DEFAULT_SIGN_NAME                                           :看板
-STR_COMPANY_SOMEONE                                             :誰かは
+STR_UNKNOWN_STATION                                             :不明な停留施設
+STR_DEFAULT_SIGN_NAME                                           :標識
+STR_COMPANY_SOMEONE                                             :誰か
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}、{STRING}
 STR_SAVEGAME_NAME_SPECTATOR                                     :観客、{1:STRING}
 
 # Viewport strings
-STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} （{COMMA}）
+STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
 STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
 STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}

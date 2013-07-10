@@ -230,6 +230,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Filterst
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriv inn søkefilter
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Skriv inn et søkeord for å filtrere listen med
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Velg grupperings-rekkefølge
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Velg sorteringsrekkefølge (synkende/stigende)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Velg sorteringskriterier
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Velg filtreringskriterier
@@ -242,7 +243,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Vindusti
 STR_TOOLTIP_SHADE                                               :{BLACK}Skyggevindu - Vis kun tittelfeltet
 STR_TOOLTIP_DEBUG                                               :{BLACK}Vis NewGRF-debuggingsinformasjon
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Gjennopprett vindu til standard størrelse. Ctrl + Klikk for å lagre gjeldende størrelse som standard
-STR_TOOLTIP_STICKY                                              :{BLACK}Beskytt dette vinduet mot 'Lukk alle vinduer'-knappen
+STR_TOOLTIP_STICKY                                              :{BLACK}Beskytt dette vinduet mot 'Lukk alle vinduer'-knappen. Ctrl + Klikk for å lagre tilstanden som standard.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klikk og dra for å endre størrelsen på vinduet
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Veksle mellom stor/liten vindustørrelse
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullefelt - ruller listen opp/ned
@@ -1378,7 +1379,7 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Spille av lyd f
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Avis: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Spille av lyd ved visning av aviser
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Utgangen av år: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Spille av lydeffekt ved utgangen av et år som oppsummerer selskapets resultater i løpet av året i forhold til forrige år
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Spille av lydeffekt ved utgangen av et år som oppsummerer selskapets resultater i løpet av året i forhold til året før
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Konstruksjon: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Spille av lydeffekt ved fullførte konstruksjoner eller andre tiltak
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Tastetrykk: {STRING}
@@ -1388,7 +1389,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Spill av lydeff
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Kjøretøy: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Spill lydeffekter til kjøretøy
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Omgivelse: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spill bakgrunns-lydeffekter til landskap, industrier og byer
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Spille lyder fra omgivelsene av landskapet, industrier og tettsteder
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Fjern infrastrukturbygging før tilhørende kjøretøy er tilgjengelige: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Når aktivert, vil infrastruktur bare være tilgjengelig hvis det også finnes kjøretøy tilgjengelig, for å forhindre sløsing av tid og penger på ubrukelig infrastruktur
@@ -1465,7 +1466,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Vise meldinger 
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nye kjøretøy: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Vise nyhetsoppdatering når nye kjøretøystyper blir tilgjengelig
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Endringer i godtatte varer: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Vise meldinger om stasjoners skiftende aksept av varetyper
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Vise meldinger om stasjoners skiftende aksept av godstyper
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidier: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Vise nyhetsoppdateringer om subsidie-relaterte hendelser
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Generell informasjon: {STRING}
@@ -1488,7 +1489,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Når du drar en
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Angi distansen for når signaler vil bli bygget på et spor frem til neste hinder (signal, kryss), hvis signaler blir dratt
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} kartelement{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Når du drar en linje, oppretthold fast avstand mellom signaler: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Velg opptredenen av signalplassering når ved Ctrl + dragning av signaler. Hvis deaktivert, blir signaler plassert ved tunneler eller broer for å unngå lange strekninger uten signaler. Hvis aktivert, blir signalene plassert for hver N ruter, noe som gjør justering av signaler på parallelle spor enklere
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Velg oppførselen til signalplassering ved Ctrl + dragning av signaler. Hvis deaktivert, blir signaler plassert ved tunneler eller broer for å unngå lange strekninger uten signaler. Hvis aktivert, blir signalene plassert for hver N ruter, noe som gjør justering av signaler på parallelle spor enklere
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Bygg vingesignal automatisk før: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Angi året når elektriske signal vil bi tatt i bruk for spor. Før dette året vil ikke-elektriske signal bli brukt (som har nøyaktig samme funksjon, men forskjellig utseende)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Aktiver signalgrensesnittet: {STRING}
@@ -1575,6 +1576,21 @@ STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisk
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrisk
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distribusjonsmodus for passasjerer: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symmetrisk" betyr at omtrent like mange passasjerer vil reise fra stasjon A til stasjon B som omvendt (fra B til A). "asymmetrisk" betyr at et vilkårlig antall passasjerer vil reise i begge retninger. "manuelt" betyr at det ikke vil forekomme automatisk distribusjon for passasjerene
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distribusjonsmodus for post: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetrisk" betyr at omrent samme mengde post vil bli sent fra stasjon A til stasjon B som omvendt (fra B til A). "asymmetrisk" betyr at vilkårlige mengder post kan bli sendt i begge retninger. "manuelt" betyr at ingen automatisk distribusjon vil forekomme for post.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distribusjonsmodus for den pansrede gods-klassen: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Den pansrede godsklassen inneholder verdisaker i det tempererte klimaet, diamanter i det subtropiske, og gull i det subarktiske. NEWGRF kan endre på dette. "symmetrisk" betyr at omtrent like mye gods vil bli sendt fra stasjon A til stasjon B som omvendt (fra B til A). "asymmetrisk" betyr at vilkårlige mengder gods kan sendes i begge retninger. "manuelt" betyr at ingen auomatisk distribusjon vil forekomme for lasten. Det anbefales å sette denne til asymmetrisk eller manuell når du spiller subarktisk, siden banker ikke vil sende noe gull tilbake til gullgruver. For temperert og subtropisk klima kan du også velge symmetrisk, da banker fint kan velge å sende verdisaker tilbake til opprinnelig bank.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distribusjonsmodus for andre godsklasser: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symmetrisk" betyr at omtrent samme mengde gods vil bli sendt fra stasjon A til stasjon B som omvendt (fra B til A). "asymmetrisk" betyr at vilkårlige mengder gods kan sendes i begge retninger. "manuelt" betyr at ingen automatisk distribusjon av gods vil forekomme for disse godstypene. Du vil sannsynligvis sette denne til enten asymmetrisk eller manuell.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distribusjons-nøyaktighet: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Jo høyere du setter denne, desto mer prosessor-tid vil beregningen av koblingsgrafen ta. Hvis dette bruker for lang tid, vil du oppleve etterslep. Hvis du setter den til en lav verdi, vil distribusjonen bli mer unøyaktig, og du vil kunne oppleve at gods ikke blir sendt til de stedene du forventer at den skal gå.
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efffekten av avstand på behov: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Hvis du setter denne til en verdi større enn 0, vil avstanden mellom opprinnelsesstasjonen (A) og en mulig destinasjon (B) ha en effekt på mengden av last som sendes fra A til B. Jo lengre vekk B er fra A, desto mindre gods vil bli sent. Jo høyere du setter den, desto mindre gods vil bli sendt til stasjoner langt vekk, og en større andel gods vil bli sendt til mer nærliggende stasjoner.
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Mengde retur-last ved symmetrisk modus: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Ved å sette denne til mindre enn 100%, vil symmetrisk distribusjon oppføre seg mer som den asymmetriske: Mindre gods vil ved automatikk bli sendt tilbake til den opprinnelige stasjonen. Hvis du setter denne til 0% vil symmetrisk distribusjon oppføre seg akkurat som den asymmetriske.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Metning av korte stier før man anvender rommelige stier: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofte er det flere stier mellom to gitte stasjoner. Varedistribusjons-algoritmen vil mette den korteste strekning først. Deretter vil den bruke den neste korteste veien inntil den er mettet, og så videre. Metning bestemmes ut fra en vurdering av kapasitet og planlagt bruk. Når den har mettet alle veier, vil den, hvis det fortsatt er etterspørsel, overbelaste alle veier, og foretrekke de med høy kapasitet. Algoritmen vil imidlertid ikke estimere kapasitet nøyaktig, mesteparten av tiden. Med denne innstillingen kan du angi opptil hvilken prosentandel en kortere sti må være metter før man velger en en lengre (ledig) sti. Sett denne til mindre enn 100% for å unngå overfylte stasjoner i tilfeller hvor kapasiteten overvurderes.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighetsenheter: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Når en hastighet vises i brukergrensesnittet, vise det i de valgte enheter
@@ -1618,6 +1634,7 @@ STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstru
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kjøretøy
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stasjoner
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Økonomi
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Gods-distribusjon
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Motstandere
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Visningsinnstillinger
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Samhandling
@@ -2955,6 +2972,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kjøp e
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Du kan bestikke bystyret for å forbedre vurderingen av firmaet ditt, men du risikerer å bli bøtelagt hvis du blir oppdaget.{}Kostnad: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Målsetninger
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globale mål
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globale mål:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
@@ -3041,7 +3059,27 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vis stas
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Månedlig forsyning og lokal rangering:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Gruppér etter
+STR_STATION_VIEW_WAITING_STATION                                :Stasjon: Venter på
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Beløp: Venter på
+STR_STATION_VIEW_PLANNED_STATION                                :Stasjon: Planlagt
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Beløp: Planlagt
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} fra {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} via {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} til {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} fra ukjent stasjon
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} til hvilken som helst stasjon
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} via hvilken som helst stasjon
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} fra denne stasjonen
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} stopper på denne stasjonen
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} til denne stasjonen
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} non-stop
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Utgangspunkt-Via-Destinasjon
+STR_STATION_VIEW_GROUP_S_D_V                                    :Utgangspunkt-Destinasjon-Via
+STR_STATION_VIEW_GROUP_V_S_D                                    :Via-Utgangspunkt-Destinasjon
+STR_STATION_VIEW_GROUP_V_D_S                                    :Via-Destinasjon-Utgangspunkt
+STR_STATION_VIEW_GROUP_D_S_V                                    :Destinasjon-Utgangspunkt-Via
 STR_STATION_VIEW_GROUP_D_V_S                                    :Mål via kilde
 
 ############ range for rating starts
@@ -3789,6 +3827,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Denne ru
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Denne rutetabellen vil bli startet {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdato
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Velg en dato som startpunkt for denne tidsplanen. Ctrl + Klikk setter utgangspunktet for denne tidsplanen og distribuerer alle kjøretøy som deler denne ordren jevnt basert på deres relative rekkefølge, hvis ordren har en komplett tidsplan.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Endre tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Endre varigheten for den merkede ordren
@@ -3810,7 +3849,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll ut 
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Ventet
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planlagt
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Veksle mellom ventet og planlagt
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Veksle mellom forventet og planlagt
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Ank:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Avg:
@@ -4663,10 +4702,10 @@ STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP-passasjerfe
 STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300-luftputeskip
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug-passasjerferje
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake-passasjerferje
-STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate-konteinerskip
-STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell-konteinerskip
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover-konteinerskip
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut-konteinerskip
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate konteinerskip
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell konteinerskip
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover konteinerskip
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut konteinerskip
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart

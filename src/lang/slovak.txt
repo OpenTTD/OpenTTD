@@ -1890,39 +1890,39 @@ STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Zobrazi�
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Zobraziť a/alebo nastaviť kód tváre
 STR_FACE_FACECODE_SET                                           :{WHITE}Nové číslo tváre bolo nastavené
 STR_FACE_FACECODE_ERR                                           :{WHITE}Nie je možné nastaviť kód tváre - povolené je číslo od 0 do 4 294 967 295!
-STR_FACE_SAVE                                                   :{BLACK}Uložit
-STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Uložit oblúbenú tvár
+STR_FACE_SAVE                                                   :{BLACK}Uložiť
+STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Uložiť obľúbenú tvár
 STR_FACE_SAVE_DONE                                              :{WHITE}Táto tvár bude uložená ako obľúbená do konfiguračného súboru OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}Európan
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Vybrať európske tváre
-STR_FACE_AFRICAN                                                :{BLACK}African
+STR_FACE_AFRICAN                                                :{BLACK}Afričan
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Vybrať africké tváre
 STR_FACE_YES                                                    :áno
 STR_FACE_NO                                                     :nie
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Povolit fúzy alebo náušnicu
+STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Povoliť fúzy alebo náušnicu
 STR_FACE_HAIR                                                   :Vlasy:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Zmenit vlasy
-STR_FACE_EYEBROWS                                               :Obocie:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Zmenit obocie
+STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Zmeniť vlasy
+STR_FACE_EYEBROWS                                               :Obočie:
+STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Zmeniť obočie
 STR_FACE_EYECOLOUR                                              :Farba očí:
 STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Zmeniť farbu očí
 STR_FACE_GLASSES                                                :Okuliare:
 STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Povoliť okuliare
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Zmenit okuliare
+STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Zmeniť okuliare
 STR_FACE_NOSE                                                   :Nos:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Zmenit nos
+STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Zmeniť nos
 STR_FACE_LIPS                                                   :Pery:
 STR_FACE_MOUSTACHE                                              :Fúzy:
 STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Zmenit pery alebo fúzy
 STR_FACE_CHIN                                                   :Brada:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Zmenit bradu
+STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Zmeniť bradu
 STR_FACE_JACKET                                                 :Sako
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Zmenit sako
+STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Zmeniť sako
 STR_FACE_COLLAR                                                 :Golier:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Zmenit golier
+STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Zmeniť golier
 STR_FACE_TIE                                                    :Kravata:
 STR_FACE_EARRING                                                :Náušnica:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Zmenit kravatu alebo náušnicu
+STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Zmeniť kravatu alebo náušnicu
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hra pre viac hráčov
