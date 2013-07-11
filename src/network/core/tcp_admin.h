@@ -33,6 +33,7 @@ enum PacketAdminType {
 	ADMIN_PACKET_ADMIN_CHAT,             ///< The admin sends a chat message to be distributed.
 	ADMIN_PACKET_ADMIN_RCON,             ///< The admin sends a remote console command.
 	ADMIN_PACKET_ADMIN_GAMESCRIPT,       ///< The admin sends a JSON string for the GameScript.
+	ADMIN_PACKET_ADMIN_PING,             ///< The admin sends a ping to the server, expecting a ping-reply (PONG) packet.
 
 	ADMIN_PACKET_SERVER_FULL = 100,      ///< The server tells the admin it cannot accept the admin.
 	ADMIN_PACKET_SERVER_BANNED,          ///< The server tells the admin it is banned.
@@ -61,6 +62,7 @@ enum PacketAdminType {
 	ADMIN_PACKET_SERVER_CMD_LOGGING,     ///< The server gives the admin copies of incoming command packets.
 	ADMIN_PACKET_SERVER_GAMESCRIPT,      ///< The server gives the admin information from the GameScript in JSON.
 	ADMIN_PACKET_SERVER_RCON_END,        ///< The server indicates that the remote console command has completed.
+	ADMIN_PACKET_SERVER_PONG,            ///< The server replies to a ping request from the admin.
 
 	INVALID_ADMIN_PACKET = 0xFF,         ///< An invalid marker for admin packets.
 };
@@ -180,6 +182,14 @@ protected:
 	 * @return The state the network should have.
 	 */
 	virtual NetworkRecvStatus Receive_ADMIN_GAMESCRIPT(Packet *p);
+
+	/**
+	 * Ping the server, requiring the server to reply with a pong packet.
+	 * uint32 Integer value to pass to the server, which is quoted in the reply.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
+	 */
+	virtual NetworkRecvStatus Receive_ADMIN_PING(Packet *p);
 
 	/**
 	 * The server is full (connection gets closed).
@@ -454,6 +464,14 @@ protected:
 	 * @return The state the network should have.
 	 */
 	virtual NetworkRecvStatus Receive_SERVER_CMD_LOGGING(Packet *p);
+
+	/**
+	 * Send a ping-reply (pong) to the admin that sent us the ping packet.
+	 * uint32  Integer identifier - should be the same as read from the admins ping packet.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
+	 */
+	virtual NetworkRecvStatus Receive_SERVER_PONG(Packet *p);
 
 	/**
 	 * Notify the admin connection that the rcon command has finished.

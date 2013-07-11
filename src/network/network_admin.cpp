@@ -540,6 +540,17 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_GAMESCRIPT(Pack
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_PING(Packet *p)
+{
+	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+
+	uint32 d1 = p->Recv_uint32();
+
+	DEBUG(net, 2, "[admin] Ping from '%s' (%s): '%d'", this->admin_name, this->admin_version, d1);
+
+	return this->SendPong(d1);
+}
+
 /**
  * Send console output of other clients.
  * @param origin The origin of the string.
@@ -576,6 +587,17 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendGameScript(const char *js
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_GAMESCRIPT);
 
 	p->Send_string(json);
+	this->SendPacket(p);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+/** Send ping-reply (pong) to admin **/
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendPong(uint32 d1)
+{
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_PONG);
+
+	p->Send_uint32(d1);
 	this->SendPacket(p);
 
 	return NETWORK_RECV_STATUS_OKAY;

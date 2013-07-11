@@ -35,8 +35,10 @@ protected:
 	virtual NetworkRecvStatus Receive_ADMIN_CHAT(Packet *p);
 	virtual NetworkRecvStatus Receive_ADMIN_RCON(Packet *p);
 	virtual NetworkRecvStatus Receive_ADMIN_GAMESCRIPT(Packet *p);
+	virtual NetworkRecvStatus Receive_ADMIN_PING(Packet *p);
 
 	NetworkRecvStatus SendProtocol();
+	NetworkRecvStatus SendPong(uint32 d1);
 public:
 	AdminUpdateFrequency update_frequency[ADMIN_UPDATE_END]; ///< Admin requested update intervals.
 	uint32 realtime_connect;                                 ///< Time of connection.
