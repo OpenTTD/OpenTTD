@@ -1742,37 +1742,37 @@ STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Установ�
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Насыщение коротких маршрутов перед использованием вместительных: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :При наличии нескольких маршрутов между станциями алгоритм распределения грузов будет использовать кратчайший маршрут до его загрузки, потом следующий по длине и т.{NBSP}д. При избытке груза маршруты будут перегружаться начиная с самых производительных. Загрузка рассчитывается исходя из оценки пропускной способности (которая может быть неточной) и интенсивности использования. Эта настройка определяет, насколько загружать маршрут перед тем, как начать использовать следующий. Установите значение ниже 100% для того, чтобы избежать задержки груза, если пропускная способность маршрута будет переоценена алгоритмом.
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Единицы измерения скорости: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Система единиц для скорости: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Показывать значения скорости в выбранной системе единиц
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :английская (миль/ч)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :метрическая (км/ч)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :СИ (м/с)
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Единицы измерения мощности: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Система единиц для мощности: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Показывать мощность двигателей транспортных средств в выбранной системе единиц
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :английская (л. с.)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :метрическая (л. с.)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :СИ (кВт)
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Единицы измерения массы: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Система единиц для массы: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Показывать величины массы в выбранной системе единиц
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :английская (малая тонна)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :метрическая (т)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :СИ (кг)
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Единицы измерения объёма: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Система единиц для объёма: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Показывать значения объёма в выбранной системе единиц
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :английская (галлон)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :метрическая (л)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :СИ (м³)
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Единицы измерения тягового усилия: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Система единиц для тягового усилия: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Показывать значения тягового усилия в выбранной системе единиц
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :английская (фунт-сила)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :метрическая (кгс)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :СИ (кН)
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Единицы измерения высоты: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Система единиц для высоты: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Показывать значения высоты в выбранной системе единиц
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :английская (фут)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :метрическая (м)
