@@ -60,6 +60,7 @@ enum PacketAdminType {
 	ADMIN_PACKET_SERVER_CMD_NAMES,       ///< The server sends out the names of the DoCommands to the admins.
 	ADMIN_PACKET_SERVER_CMD_LOGGING,     ///< The server gives the admin copies of incoming command packets.
 	ADMIN_PACKET_SERVER_GAMESCRIPT,      ///< The server gives the admin information from the GameScript in JSON.
+	ADMIN_PACKET_SERVER_RCON_END,        ///< The server indicates that the remote console command has completed.
 
 	INVALID_ADMIN_PACKET = 0xFF,         ///< An invalid marker for admin packets.
 };
@@ -453,6 +454,14 @@ protected:
 	 * @return The state the network should have.
 	 */
 	virtual NetworkRecvStatus Receive_SERVER_CMD_LOGGING(Packet *p);
+
+	/**
+	 * Notify the admin connection that the rcon command has finished.
+	 * string The command as requested by the admin connection.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
+	 */
+	virtual NetworkRecvStatus Receive_SERVER_RCON_END(Packet *p);
 
 	NetworkRecvStatus HandlePacket(Packet *p);
 public:

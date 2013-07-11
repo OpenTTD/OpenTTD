@@ -87,6 +87,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet *p)
 		case ADMIN_PACKET_SERVER_CONSOLE:         return this->Receive_SERVER_CONSOLE(p);
 		case ADMIN_PACKET_SERVER_CMD_NAMES:       return this->Receive_SERVER_CMD_NAMES(p);
 		case ADMIN_PACKET_SERVER_CMD_LOGGING:     return this->Receive_SERVER_CMD_LOGGING(p);
+		case ADMIN_PACKET_SERVER_RCON_END:        return this->Receive_SERVER_RCON_END(p);
 
 		default:
 			if (this->HasClientQuit()) {
@@ -162,5 +163,6 @@ NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_RCON(Packet *p) { re
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_CONSOLE(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_CONSOLE); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_CMD_NAMES(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_CMD_NAMES); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_CMD_LOGGING(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_CMD_LOGGING); }
+NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_RCON_END(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_RCON_END); }
 
 #endif /* ENABLE_NETWORK */

@@ -481,6 +481,20 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendChat(NetworkAction action
 }
 
 /**
+ * Send a notification indicating the rcon command has completed.
+ * @param command The original command sent.
+ */
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRconEnd(const char *command)
+{
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_RCON_END);
+
+	p->Send_string(command);
+	this->SendPacket(p);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+/**
  * Send the reply of an rcon command.
  * @param colour The colour of the text.
  * @param result The result of the command.
@@ -509,7 +523,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_RCON(Packet *p)
 	_redirect_console_to_admin = this->index;
 	IConsoleCmdExec(command);
 	_redirect_console_to_admin = INVALID_ADMIN_ID;
-	return NETWORK_RECV_STATUS_OKAY;
+	return this->SendRconEnd(command);
 }
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_GAMESCRIPT(Packet *p)

@@ -69,6 +69,7 @@ public:
 	NetworkRecvStatus SendGameScript(const char *json);
 	NetworkRecvStatus SendCmdNames();
 	NetworkRecvStatus SendCmdLogging(ClientID client_id, const CommandPacket *cp);
+	NetworkRecvStatus SendRconEnd(const char *command);
 
 	static void Send();
 	static void AcceptConnection(SOCKET s, const NetworkAddress &address);
