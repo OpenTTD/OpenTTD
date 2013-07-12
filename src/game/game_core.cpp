@@ -71,6 +71,8 @@
 	GameInfo *info = config->GetInfo();
 	if (info == NULL) return;
 
+	config->AnchorUnchangeableSettings();
+
 	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
 	cur_company.Change(OWNER_DEITY);
 

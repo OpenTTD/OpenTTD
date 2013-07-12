@@ -84,6 +84,15 @@ void ScriptConfig::ClearConfigList()
 	this->settings.clear();
 }
 
+void ScriptConfig::AnchorUnchangeableSettings()
+{
+	for (ScriptConfigItemList::const_iterator it = this->GetConfigList()->begin(); it != this->GetConfigList()->end(); it++) {
+		if (((*it).flags & SCRIPTCONFIG_INGAME) == 0) {
+			this->SetSetting((*it).name, this->GetSetting((*it).name));
+		}
+	}
+}
+
 int ScriptConfig::GetSetting(const char *name) const
 {
 	SettingValueList::const_iterator it = this->settings.find(name);
