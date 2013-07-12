@@ -1566,6 +1566,29 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :ゲーム開始
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :街路補修時に道路整理: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :街路補修に出資した際に、先が建物に塞がれた交差点などを整理撤去するようなります
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :分配グラフの更新頻度: {STRING}日
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :リンクグラフを再計算する時間間隔を設定します。それぞれの再計算では、グラフの単一要素に関わる経路計画だけを計算します。つまり、グラフの一部が更新されるだけで、全体が設定した間隔で更新されるという訳ではありません。この間隔を短くすると再計算のためにCPUへの負荷が大きくなります。長くすると、新たなルートが貨物分配に組み込まれるのに時間がかかるようになります。
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :分配グラフの再計算時間: {STRING}日
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :グラフの単一要素に関わる再計算にかけられる時間を設定します。再計算が開始されると、この日数のみ実行可能なスレッドが生成されます。この設定が短いと、期日までにスレッドが終了していない可能性が高くなり、終了するまでゲームが停止します(ラグ)。長くした場合、経路が変更された場合に分配が更新されるまでに時間がかかるようになります
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :無効
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :非対称
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :対称
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :旅客の行先分配法: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :旅客がどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう乗客とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう旅客数は独立に決められます。「無効」では行き先別分配をしなくなります
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :郵便物の行先分配法: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :郵便がどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう郵便とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう郵便数は独立に決められます。「無効」では行き先別分配をしなくなります
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :装甲車輸送品の行先分配法: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :装甲車輸送品とは貴重品(温帯)、金(亜寒帯)、ダイヤモンド(亜熱帯)のことです(NewGRFの導入状況よっては変わることがあります)。これらの品目ががどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう輸送品とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう輸送品数は独立に決められます。「無効」では行き先別分配をしなくなります。温帯では銀行同士で貴重品のやりとりがあるので「対称」を選択しても問題ありませんが、金やダイヤモンドが銀行から鉱山に送られるようなことはないので、亜寒帯・亜熱帯では「非対称」か「無効」にすることをお勧めします。
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :一般貨物の行先分配法: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :一般的な貨物がどのように行き先別に分配されるかを設定します。「対称」ではAからBへ向かう貨物とほぼ同数が、BからAに向かうようになります。 「非対称」ではそれぞれの方向に向かう貨物数は独立に決められます。「無効」では行き先別分配をしなくなります。一般的な貨物輸送は常に一方通行なので、「非対称」か「無効」にしておくことをお勧めします。
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :分配精度: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :この値を高くすると、リンクグラフ演算の為CPUへの負荷が大きくなります。演算に時間がかかりすぎると、目に見えてタイムラグが起こる場合があります。しかし低い値に設定すると、分配が不正確になり、望まれる場所に貨物が送られなくなる場合があります
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :距離効果: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :0より大きい値に設定すると、ある貨物の生産先Aと受取可能先Bとの距離がAからBへ送られる貨物量に影響を及ぼすようになります。高い値を設定すればするほど、遠い施設に送られる貨物量は少なくなり、近場の施設に送られる量が大きくなります
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :対称分配での戻り量: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :この値を100%未満に設定すると、対称分配の挙動が非対称分配に近くなります。値が小さいほど受け入れ量に対する送り返し量が小さくなります。0%に設定した場合、対称分配と非対称分配の挙動に違いはなくなります
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :最短経路を高収容力経路より優先: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :二つの停留施設間を結ぶ経路が複数存在することが往々にしてあります。そのような場合、貨物分配アルゴリズムは最初に最短となる経路を飽和するまで使用し、次いで2番目の最短経路を使用するというように埋めていきます。飽和したかどうかは、推定収容力、輸送計画によって判断されます。すべての経路を飽和してもまだ需要を満たせない場合、高容量な経路を優先しつつ、すべての経路に負荷を掛けます。しかしほとんどの場合、アルゴリズムは経路の輸送力を正確に見積もることができません。この設定では、高収容力の路線を使用し始める前にどの程度最短経路を飽和するかを設定します。収容力より需要が上回ると推定される時には、停留施設が混み合うのを避けるために100%未満に設定して下さい。
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :速度単位: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :ゲーム中の速度をいずれの単位系で表すか決定します
@@ -2845,15 +2868,15 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}一致�
 STR_NEWGRF_LIST_MISSING                                         :{RED}欠落ファイル
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' のビヘービアは 同期エラーやクラッシュを引き起こす可能性があります！
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}機関車の状態を'{1:ENGINE}'と車庫で交換しました。
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}列車の長さを '{1:ENGINE}'と車庫で交換しました。
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}「{1:COMPANY}」が所有している「{0:VEHICLE}」という列車は不正な長さです。使用している NewGRF が原因であるかもしれません。同期エラーやクラッシュが起こる可能性があります！
+STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF{0:STRING}の挙動によって同期エラーやクラッシュが引き起こされる可能性があります!
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}機関車の状態が車庫外で{1:ENGINE}に変更されました
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}列車の長さがに車庫外で{1:ENGINE}に変更されました
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}{1:COMPANY}が所有している{0:VEHICLE}という列車は不正な長さです。使用しているNewGRFが原因であるかもしれません。同期エラーやクラッシュが起こる可能性があります!
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' の情報が誤っています。
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}貨物/修理情報'{1:ENGINE}'建設の後に異なる購入リスト
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' は生産コールバック内で無限ループを起こしました.
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}コールバック {1:HEX} 戻り値が不正です {2:HEX}
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF{0:STRING}の情報が誤っています
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGINE}の貨物/改造情報が購入時とは異なります。自動更新/置換時に改造に失敗する恐れがあります
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}{1:STRING}が生産コールバック内で無限ループを起こしました
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}戻り値{1:HEX}が不明/不正の値{2:HEX}を返しました
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<無効な貨物>
@@ -2933,24 +2956,26 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :市街地開発
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :独占運送契約を締結
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :議会を買収
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}あなたの路線の利用率を増やす為に、{}町内で小規模な広告キャンペーンを行います。{} 価格：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}あなたの路線の利用率を増やす為に、{}町内で中規模な広告キャンペーンを行います。{} 価格：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}あなたの路線の利用率を増やす為に、{}町内で大規模な広告キャンペーンを行います。{} 価格：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}町内の道路の再建に出資します。{}最高6ヶ月間道路交通が途絶します。{} 価格：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}社長の栄誉を称える彫像を建設します{}価格：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}市街地の開発に出資します{}　価格：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}一年間の独占的運送権を購入します。{}町議会は乗客や貨物があなたの交通会社の運送経路のみを使用するように制御します。{}価格：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}議会内の評価を高めるために買収します。注意：露見した場合は処罰されます{}価格：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}旅客と貨物を確保する為に、街で新聞広告を実施します。{} 費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}旅客と貨物を確保する為に、街でラジオCMを実施します{} 費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}旅客と貨物を確保する為に、街でTV-CMを開始します{} 費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}街内の道路補修工事に出資します。{}最高6ヶ月間街中の道路交通が途絶します。{} 費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}社を称える彫像を建設します{} 費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}市街地の開発に出資します{}　費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}街と一年間の独占運送契約を締結します。{}乗客や貨物はあなたの会社の運送経路のみを使用するようになります。{} 費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}買収を行い、議会内の評判を高めます。注意: 露見した場合は処罰されます{} 費用: {CURRENCY_LONG}
 
 # Goal window
-STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}グローバルな目的
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}大きな目標:
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} 目標
+STR_GOALS_SPECTATOR_CAPTION                                     :{BLACK}大目標
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}大目標:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- なし -
-STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}-対象外-
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- 適用外 -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}会社の目標:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}クリックするとメイン画面を対象となる産業・街・タイルに移動します。Ctrl+クリックで新たなビューポートを開いて対象を表示します
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :質問
@@ -2961,8 +2986,8 @@ STR_GOAL_QUESTION_CAPTION_ERROR                                 :エラー
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :キャンセル
 STR_GOAL_QUESTION_BUTTON_OK                                     :OK
-STR_GOAL_QUESTION_BUTTON_NO                                     :No
-STR_GOAL_QUESTION_BUTTON_YES                                    :Yes
+STR_GOAL_QUESTION_BUTTON_NO                                     :いいえ
+STR_GOAL_QUESTION_BUTTON_YES                                    :はい
 STR_GOAL_QUESTION_BUTTON_DECLINE                                :辞退
 STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :受入
 STR_GOAL_QUESTION_BUTTON_IGNORE                                 :無視
@@ -2980,41 +3005,52 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :閉じる
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}助成金
-STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}次の運送経路に助成金が提案されました：
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING}を{STRING}から{STRING}へ{YELLOW}（有効期限：{DATE_SHORT}）
+STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}助成金が提案された経路:
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING}を{STRING}から{STRING}へ{YELLOW}(有効期限: {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- なし -
-STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}すでに助成金を受けている運送経路：
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING}を{STRING}から{STRING}へ{YELLOW}（{COMPANY}{YELLOW}、{DATE_SHORT}まで）
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}町／産業を見るためにサービスをクリックして下さい。コントロールキーを押しながらクリックすることでミニウィンドウ表示になります
+STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}助成金が交付されている経路:
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING}を{STRING}から{STRING}へ{YELLOW}({COMPANY}{YELLOW}、交付期限:{DATE_SHORT})
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}指定の街/産業の場所を見るにはクリックします。Ctrl+クリックで新規のビューポートに表示します
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} ゲーム背景
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}全体ゲーム背景
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :{NUM}ページ
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}ドロップダウンリストから選択して指定のページに飛びます
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}前ページ
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}前のページに戻ります
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}次ページ
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}次のページに進みます
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}駅名 - メイン画面を駅の場所に移動するには駅名をクリックします
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}複数の項目を選択するにはコントロールキーを押しながら選択します
-STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA}軒の駅
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}複数の施設を選択するにはCtrlを押しながら選択します
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA}箇所の停留施設
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- なし -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}すべての駅を選択
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}すべての貨物種類を選択（到着待たぬ貨物も含む）
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}到着待ちの貨物がありません
+STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}全停留施設を選択
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}全貨物種類を選択(積込待ちのない貨物も含む)
+STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}積込待ち貨物はありません
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
-STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}到着待ち：{WHITE}{STRING}
+STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}積込待ち: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}（{1:STATION}から運送途中の{0:CARGO_SHORT}）
-STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reserved for loading)
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}(うち、{1:STATION}からの転送{0:CARGO_SHORT})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT}が積込予約済み)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}受入れ貨物
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}受入れる貨物のリストを表示します
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}受入れ貨物：{WHITE}{CARGO_LIST}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}受入れ貨物: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}この停留施設は街の独占輸送契約の恩恵下にあります
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK}はこの街と独占輸送契約を締結しています
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}評価
-STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}駅の評価を表示します
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}今月の供給と評価
+STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}停留施設の評価を表示します
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}今月の貨物別供給と地元評価:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 
