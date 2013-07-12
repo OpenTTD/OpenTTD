@@ -579,10 +579,10 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendConsole(const char *origi
  */
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendGameScript(const char *json)
 {
-	/* At the moment we cannot transmit anything larger than MTU. So the string
-	 *  has to be no longer than the length of the json + '\0' + 3 bytes of the
-	 *  packet header. */
-	if (strlen(json) + 1 + 3 >= SEND_MTU) return NETWORK_RECV_STATUS_OKAY;
+	/* At the moment we cannot transmit anything larger than MTU. So we limit
+	 *  the maximum amount of json data that can be sent. Account also for
+	 *  the trailing \0 of the string */
+	if (strlen(json) + 1 >= NETWORK_GAMESCRIPT_JSON_LENGTH) return NETWORK_RECV_STATUS_OKAY;
 
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_GAMESCRIPT);
 
