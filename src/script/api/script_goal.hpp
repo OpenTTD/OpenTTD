@@ -57,6 +57,9 @@ public:
 		QT_ERROR,       ///< Showing an error; title: Error.
 	};
 
+	/**
+	 * Types of buttons that can be in the question window.
+	 */
 	enum QuestionButton {
 		/* Note: these values represent part of the string list starting with STR_GOAL_QUESTION_BUTTON_CANCEL */
 		BUTTON_CANCEL    = (1 << 0),  ///< Cancel button.

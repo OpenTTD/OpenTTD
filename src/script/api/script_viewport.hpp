@@ -24,7 +24,7 @@ public:
 	 * Scroll the viewport to the given tile, where the tile will be in the
 	 *  center of the screen.
 	 * @param tile The tile to put in the center of the screen.
-	 * @pre !ScriptGame::IsMultiplayer().
+	 * @pre ! ScriptGame::IsMultiplayer().
 	 * @pre ScriptMap::IsValidTile(tile).
 	 */
 	static void ScrollTo(TileIndex tile);
