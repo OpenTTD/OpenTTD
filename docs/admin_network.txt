@@ -150,7 +150,8 @@ Table of contents
 
   Note: No additional authentication is required for rcon commands.
 
-  The server will reply with a ADMIN_PACKET_SERVER_RCON packet. Applications
+  The server will reply with one or more ADMIN_PACKET_SERVER_RCON packets.
+  Finally an ADMIN_PACKET_ADMIN_RCON_END packet will be sent. Applications
   will not receive the answer twice if they have asked for the AdminUpdateType
   ADMIN_UPDATE_CONSOLE, as the result is not printed on the servers console
   (just like clients rcon commands).
@@ -159,6 +160,13 @@ Table of contents
   be sent back into the admin network.
   Chat from the server itself will only be sent to the admin network when it
   was not sent from the admin network.
+
+  Note that when content is queried or updated via rcon, the processing
+  happens asynchronously. But the ADMIN_PACKET_ADMIN_RCON_END packet is sent
+  already right after the content is requested as there's no immediate output.
+  Thus other packages and the output of content rcon command may be sent at
+  an arbitrary later time, mixing into the output of other console activity,
+  e.g. also of possible subsequent other rcon commands sent.
 
 
 5.0) Sending chat
