@@ -4418,6 +4418,9 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Cha ghab
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... chaidh an carbad a mhilleadh
 
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Chan eil carbad ri fhaighinn fhathast
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Tòisich geama ùr às dèidh {DATE_SHORT} no chleachd NewGRF a bheir carbadan tràtha dhut
+
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Chan urrainn dhut toirt air trèanaichean dol seachad air comharra fo chunnart...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Chan urrainn dhan trèana tilleadh...
@@ -5074,6 +5077,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
