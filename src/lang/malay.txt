@@ -1386,6 +1386,12 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Pengganda awal 
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Buang elemen jalanraya yang tidak masuk akal daripada pembinaan jalanraya: {STRING}
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Antaramuka (Interface)
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Pembinaan
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kenderaan
@@ -3989,6 +3995,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Terlalu 
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak boleh tukar tempoh perkhidmatan...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... kenderaan sudah musnah
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Keretapi tidak boleh melanggar isyarat kerana terdapat kemungkinan bahaya...

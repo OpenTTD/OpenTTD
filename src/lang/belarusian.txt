@@ -1860,6 +1860,12 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Выдаляц�
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Выдаляць "мёртвыя" канцы дарогаў, якія ўтварыліся пасля рэканструкцыі вуліц.
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Інтэрфэйс
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Будаўніцтва
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспарт
@@ -4535,6 +4541,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Зана
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не атрымалася зьмяніць інтэрвал абслугоўваньня...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... транспартны сродак зьнішчаны
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Немагчыма іґнараваць сыґнал. Небясьпечна...

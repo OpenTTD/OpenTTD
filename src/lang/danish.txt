@@ -1547,6 +1547,12 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Fjern absurde v
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Fjern døde vej-ender i løbet af finansierede vej-rekostruktioner
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Brugerflade
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruktion
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køretøjer
@@ -4182,6 +4188,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}For mang
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikke ændre serviceinterval...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... fartøjet er ødelagt
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikke få toget til at passere signalet...

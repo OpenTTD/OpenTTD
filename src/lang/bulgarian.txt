@@ -1554,6 +1554,12 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Премахв�
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Премахва краищата на пътища при финансиране на ремонт на пътя
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Интерфейс
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Строене
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Автомобили
@@ -4186,6 +4192,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Прек
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Интервала на техн. преглед не може да се промени...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... машината е унищожена
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Влака не може да пропусне сигнала при опасност...

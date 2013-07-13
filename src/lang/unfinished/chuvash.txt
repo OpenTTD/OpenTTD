@@ -605,6 +605,12 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Хӑвӑрт
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Питӗ хӑвӑрт
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Интерфейс
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Лартӑм
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ҫул-йӗр:
@@ -1344,6 +1350,7 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Ҫул �
 # Group related errors
 
 # Generic vehicle errors
+
 
 
 

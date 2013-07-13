@@ -1607,6 +1607,12 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Eemalda tupikte
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Liikluskoormus kõrgema läbilaskevõimega raja otsimiseks: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Kauba vedamisel ühest jaamast teise saab kasutada mitu rada. Kaubajaotusel arvestatakse läbilaskevõimet ja liikluskoormust. Kui liikluskoormus on suurem kui läbilaskevõime, suunatakse kaup kõigepealt kõrgema läbilaskevõimega radadele. Läbilaskevõime arvutamine ei ole täpne; antud seaded määravad liikluskoormuse millal kaup suunatakse järgmisele rajale. Ülekoormuse vältimiseks on soovitatav liikluskoormus alla 100%.
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Kasutajaliides
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Ehitamine
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Sõidukid
@@ -4238,6 +4244,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Mängus 
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Hooldusvahemiku ei saa muuta...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... sõiduk hävitatud
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Rongi ei saa ohu korral sundida signaale eirama...

@@ -1503,6 +1503,12 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Buang elemen ja
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Menghilangkan ujung jalan buntu saat rekonstruksi jalan
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Antaramuka
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruksi
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kendaraan
@@ -4134,6 +4140,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Terlalu 
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak dapat mengubah jarak waktu perbaikan...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... kendaraan hancur
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Tidak dapat memaksa kereta melanggar sinyal pada saat bahaya...

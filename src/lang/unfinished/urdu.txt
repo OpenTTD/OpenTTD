@@ -1282,6 +1282,12 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :شہر کا ش�
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :سڑک کی تعمیر کے دوران غلط تعمیر شدہ حصوں کو ہٹا دے: {STRING}
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}انٹرفیس
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}تعمیرات
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}گاڑیاں
@@ -2653,6 +2659,7 @@ STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}بہری
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}کھیل میں بہت زیادہ سواریاں
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}مرمت کا دورانیہ تبدیل نہین کرسکتے
+
 
 
 # Specific vehicle errors

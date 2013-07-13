@@ -1395,6 +1395,12 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Fjern absurde v
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Fjern blindvegar under finansiering av vegutbygging
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Grensesnitt
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruksjon
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Køyretøy
@@ -4024,6 +4030,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}For mang
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikkje endre vedlikehaldsintervall...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... køyretøy er øydelagd
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikkje tvinge tog til å passere signal ved fare...

@@ -1335,6 +1335,12 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :مضرب ابت
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :حذف عناصر پوچ جاده در طول ساخت و ساز جاده: {STRING}
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}واسط کاربری
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}ساخت و ساز
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}وسایل نقلیه
@@ -3421,6 +3427,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}هواپ
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}ماشین‌های زیادی در بازی هستند
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}امکان تغییر فواصل زمانی سرویس وجود ندارد...
+
 
 
 # Specific vehicle errors

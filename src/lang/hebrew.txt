@@ -1558,6 +1558,12 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :הסר רכיב
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :הסר קצות כבישים ללא מוצא בעת סלילה מחדש ממומנת של כבישים
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}ממשק חזותי
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}בנייה
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}כלי תחבורה
@@ -4178,6 +4184,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}יותר
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}לא ניתן לשנות את מרווחי הטיפול...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... הרכב נהרס
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}לא ניתן להכריח את הרכבת לעבור ברמזור בעת סכנה...

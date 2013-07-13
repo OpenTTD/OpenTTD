@@ -2798,54 +2798,58 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}パラメータ総数: {ORANGE}{NUM}
 
 # NewGRF inspect window
-STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}検査する - {STRING}
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}{STRING}を精査
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}派生元
-STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}オブジェクトの派生範囲を調べる
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}派生元のオブジェクトを調べます
 
-STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} at {HEX}
-STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :物
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{1:HEX}の{0:STRING}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :オブジェクト
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :線路の種類
 
-STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRFの変数 60+x のパラメーター (16進)
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRFの可変60+xパラメーター (16進)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}スプライトを整列{COMMA} ({STRING})
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}スプライト{COMMA} 配列 ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}次のスプライト
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}次のノーマルスプライトに進めます。疑似/リカラー/フォントスプライトとラッピングされた範囲は、終わりまでスキップします。
-STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}スプライトへ行く
-STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}所定のスプライトへ行く。それがノーマルスプライトでなければ、次のノーマルスプライトに進む。
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}次のノーマルスプライトに進みます。疑似/リカラー/フォントスプライトはスキップし、終端まで行を送ります
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}スプライトへ飛ぶ
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}所定のスプライトへ飛びます。指定のスプライトがノーマルスプライトでなければ、次のノーマルスプライトに進みます
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}前のスプライト
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}前のノーマルスプライトに戻ります。疑似/リカラー/フォントスプライトとラッピングされた範囲は、初めまでスキップします。
-STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}現在選択されているスプライトの代表。このスプライトを描画するときは、整列しません。
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}XとYオフセットを変更し、その周りにスプライトを移動します。
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}前のノーマルスプライトに戻ります。疑似/リカラー/フォントスプライトはスキップし、始端まで行を送ります
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}現在選択されているスプライトの代表絵を示します。この配列はスプライトを描画するときには無視されます
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X・Yオフセットを変更し、スプライトを移動します
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Xオフセット: {NUM}, Yオフセット: {NUM}
-STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}スプライトを選びます。
-STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}画面内のどこかから、スプライトを選びます
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}スプライトを選ぶ
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}画面内からスプライトを選びます
 
-STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}スプライトへ行きます。
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}スプライトへ行く
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
-STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告：{SILVER}{STRING}
-STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}エラー：{SILVER}{STRING}
-STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}エラー：{SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRFで致命的なエラーが発生しました: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING}はOpenTTDのTTDPatchバージョンに対応していません。
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}はTTDの{STRING}バージョンのみに対応しています。
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}を使用時に、{STRING}を入にしなければなりません
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING}のパラメータが不正：パラメータ　{STRING}（{NUM}）
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} は {STRING} の読み込み前に読み込めます
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} は {STRING} の読み込み後に読み込めます。
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} は OpenTTD バージョン {STRING} もしくはそれ以降のバージョンが必要です。
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :訳しにデザインされたGRFファイル
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :読み込んだ NewGRF が多すぎます。
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{2:STRING} を {1:STRING} を含む固定的な NewGRF として開くと、同期エラーを起こす可能性があります。
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :予期しないスプライト (スプライト {3:NUM})
-STR_NEWGRF_ERROR_INVALID_ID                                     :不正なIDを使用しました (スプライト {3:NUM})
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} は壊れたスプライトを含みます。壊れたスプライトは赤疑問符として表示されます。
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :8エントリ以上のアクションが含まれています (スプライト {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}現在を使ってるグラフィックセットが複数のダータが無いです。.{}セットを更新して下さいますよう、お願いします。
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING}は{STRING}により無効にされました。
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}エラー: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}致命的エラー: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRFに致命的なエラーが発生しました: {}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING}はOpenTTDのTTDPatchバージョンには対応していません
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}はTTDのバージョン{STRING}にのみ対応しています
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}を使用時には{STRING}を有効にしなければなりません
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING}のパラメータが不正です: パラメータ {STRING}({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING}は{STRING}の読み込み前にのみ読み込めます
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING}は{STRING}の読み込み後にのみ読み込めます
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING}にはバージョン{STRING}かそれ以降のOpenTTDが必要です
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :このGRFファイルは後発翻訳版です
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :NewGRFが多すぎます
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{2:STRING}を含む{1:STRING}を常用のNewGRFとして読み込むと、同期エラーを起こす可能性があります
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :予期しないスプライトです (スプライト {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :アクション0のプロパティ{4:HEX}は無効です (スプライト {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :不正なIDが使用されています (スプライト {3:NUM})
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING}には破損スプライトがあります。破損スプライトは赤疑問符({RED}?{YELLOW})として表示されます
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :アクション8のエントリが複数含まれています (スプライト {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :疑似スプライトのデータが十分にありません (スプライト {3:NUM})
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}使用中の基本グラフィックセットから複数のスプライトが欠落しています。{}セットを更新して下さいますよう、お願いします
+STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}使用中の基本グラフィックセットから複数のスプライトが欠落しています。{}セットを更新して下さいますよう、お願いします{}{YELLOW}OpenTTDの速報開発版{WHITE}をお使いの際は、{YELLOW}速報開発版に即したグラフィックセット{WHITE}が必要となる場合があります
+STR_NEWGRF_ERROR_GRM_FAILED                                     :要求されたGRFのリソースは使用できません (スプライト {3:NUM})
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING}は{STRING}により無効にされました
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :不正なレイアウト書式です (スプライト {3:NUM})
 
 # NewGRF related 'general' warnings
@@ -3053,7 +3057,28 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}停留�
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}今月の貨物別供給と地元評価:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}グループ分け:
+STR_STATION_VIEW_WAITING_STATION                                :積込待ち (停留施設別)
+STR_STATION_VIEW_WAITING_AMOUNT                                 :積込待ち (貨物量別)
+STR_STATION_VIEW_PLANNED_STATION                                :到着予定 (停留施設別)
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :到着予定 (貨物量別)
+STR_STATION_VIEW_FROM                                           :{YELLOW}{1:STATION}発: {0:CARGO_SHORT}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{1:STATION}経由: {0:CARGO_SHORT}
+STR_STATION_VIEW_TO                                             :{YELLOW}{1:STATION}着: {0:CARGO_SHORT}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}出発地不明: {CARGO_SHORT}
+STR_STATION_VIEW_TO_ANY                                         :{RED}目的地不明: {CARGO_SHORT}
+STR_STATION_VIEW_VIA_ANY                                        :{RED}経由地不明: {CARGO_SHORT}
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}当地発: {CARGO_SHORT}
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}当地経由: {CARGO_SHORT}
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}当地着: {CARGO_SHORT}
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}直行: {CARGO_SHORT}
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :出発地-経由地-目的地
+STR_STATION_VIEW_GROUP_S_D_V                                    :出発地-目的地-経由地
+STR_STATION_VIEW_GROUP_V_S_D                                    :経由地-出発地-目的地
+STR_STATION_VIEW_GROUP_V_D_S                                    :経由地-目的地-出発地
+STR_STATION_VIEW_GROUP_D_S_V                                    :目的地-出発地-経由地
+STR_STATION_VIEW_GROUP_D_V_S                                    :目的地-経由地-出発地
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :最低
@@ -4464,262 +4489,262 @@ STR_SV_STNAME_FALLBACK                                          :{STRING} 駅 {N
 
 ##id 0x8000
 # Vehicle names
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul社タンク機関車（蒸気）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS社250系（ディーゼル）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :ポンポン社「チュウチュウ」
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :パワーノート社「チュウチュウ」
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :マイティムーヴァー社「チュウチュウ」
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :ポンポン社ディーゼル
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :パワーノート社ディーゼル
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills社2-8-0（蒸気）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney社「記念祭」（蒸気）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu社A4（蒸気）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH社8P（蒸気）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel社気動車（ディーゼル）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :「ダッシュ」（ディーゼル）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH社25系「Hendry」（ディーゼル）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU社37系（ディーゼル）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss社47（ディーゼル）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS社4000系（ディーゼル）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS社2400系（ディーゼル）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :「百年祭」（ディーゼル）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling社3100（ディーゼル）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner社「ターボ」（ディーゼル）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS社1000系（ディーゼル）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH社125系（ディーゼル）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH社30系（電動）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH社40系（電動）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :「T.I.M.」（電動）
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :「アジアスター」（電動）
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (蒸気)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (ディーゼル)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :ポンポン社 シューシュー
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :パワーノート社 シューシュー
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :マイティムーヴァー社 シューシュー
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :ポンポン社 ディーゼル
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :パワーノート社 ディーゼル
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (蒸気)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney Jubilee (蒸気)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu A4 (蒸気)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH 8P (蒸気)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (ディーゼル)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :Dash (ディーゼル)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry 25 (ディーゼル)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU 37 (ディーゼル)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss 47 (ディーゼル)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (ディーゼル)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (ディーゼル)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (ディーゼル)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (ディーゼル)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (ディーゼル)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (ディーゼル)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH 125 (ディーゼル)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH 30 (電気)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH 40 (電気)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :T.I.M. (電気)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :AsiaStar (電気)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :客車
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :郵便車
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :石炭貨車
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :石炭車
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :石油タンク車
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :家畜貨車
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :商品貨車
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :穀物ホッパー
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :木材貨車
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :鉄鉱ホッパー
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :鋼鉄貨車
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :家畜車
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :商品車
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :穀物ホッパー車
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :木材車
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :鉄鉱ホッパー車
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :鉄鋼車
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :装甲車
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :食品貨車
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :食品車
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :紙貨車
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :銅鉱ホッパー
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :銅鉱ホッパー車
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :水タンク車
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :果物貨車
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :果物車
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :ゴム貨車
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :砂糖貨車
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :綿菓子ホッパー
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :タフィーホッパー
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :砂糖車
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :綿菓子ホッパー車
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :タフィーホッパー車
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :泡貨車
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :コーラタンク車
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :菓子トラック
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :玩具トラック
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :電池トラック
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :炭酸飲料トラック
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :プラスチックトラック
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :「X2001」（電動）
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :「ミレニアム Z1」（電動）
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :ヒューピュー社Z99系
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :菓子車
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :玩具車
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :電池車
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :炭酸飲料車
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :プラスチック貨車
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :X2001 (電気)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :Millennium Z1 (電気)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :ピューピュー社 Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :客車
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :郵便車
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :石炭貨車
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :石炭車
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :石油タンク車
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :家畜車
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :商品貨車
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :穀物ホッパー
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :木材貨車
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :鉄鉱ホッパー
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :鋼鉄貨車
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :商品車
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :穀物ホッパー車
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :木材車
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :鉄鉱ホッパー車
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :鉄鋼車
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :装甲車
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :食品貨車
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :食品車
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :紙貨車
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :銅鉱ホッパー
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :銅鉱ホッパー車
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :水タンク車
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :果物貨車
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :果物車
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :ゴム貨車
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :砂糖貨車
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :綿菓子ホッパー
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :タフィーホッパー
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :砂糖車
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :綿菓子ホッパー車
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :タフィーホッパー車
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :泡貨車
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :コーラタンク車
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :菓子トラック
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :玩具トラック
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :電池トラック
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :炭酸飲料トラック
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :プラスチックトラック
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 「リバイアサン」（電動）
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 「サイクロプス」（電動）
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 「ペガサス」（電動）
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 「キメラ」（電動）
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :ヒューピュー社「ロケット」
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :菓子車
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :玩具車
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :電池車
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :炭酸飲料車
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :プラスチック貨車
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 Leviathan (電気)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 Cyclops (電気)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 Pegasus (電気)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 Chimaera (電気)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :ピューピュー社 ロケッター
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :客車
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :郵便車
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :石炭貨車
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :石炭車
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :石油タンク車
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :家畜車
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :商品貨車
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :穀物ホッパー
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :木材貨車
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :鉄鉱ホッパー
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :鋼鉄貨車
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :商品車
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :穀物ホッパー車
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :木材車
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :鉄鉱ホッパー車
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :鉄鋼車
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :装甲車
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :食品貨車
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :食品車
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :紙貨車
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :銅鉱ホッパー
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :銅鉱ホッパー車
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :水タンク車
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :果物貨車
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :果物車
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :ゴム貨車
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :砂糖貨車
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :綿菓子ホッパー
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :タフィーホッパー
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :砂糖車
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :綿菓子ホッパー車
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :タフィーホッパー車
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :泡貨車
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :コーラタンク車
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :菓子トラック
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :玩具トラック
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :電池トラック
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :炭酸飲料トラック
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :プラスチックトラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS社「Regal」バス
-STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard社バス
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster社バス
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster社 マークⅡスーパーバス
-STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :ブーブー社マークⅠバス
-STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :ブーブー社マークⅡバス
-STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :ブーブー社マークⅢバス
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh社石炭トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl社石炭トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW社石炭トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS社郵便車
-STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard社郵便車
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry社郵便車
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :マイティムーヴァー社郵便車
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :パワーノート社郵便車
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :ヒューピュー社郵便車
-STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe社石油タンク車
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster社石油タンク車
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry社石油タンク車
-STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott社家畜トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl社家畜トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster社家畜トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh社商品トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead社商品トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss社商品トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford社穀物トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas社穀物トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss社穀物トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe社木材トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster社木材トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland社木材トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS社鉄鉱トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl社鉄鉱トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy社鉄鉱トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh社鋼鉄トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl社鋼鉄トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling社鋼鉄トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh社装甲車
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl社装甲車
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster社装甲車
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster社食品トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry社食品トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy社食品トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl社紙トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh社紙トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS社紙トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS社銅鉱トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl社銅鉱トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss社銅鉱トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl社給水車
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh社給水車
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS社給水車
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh社果物トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl社果物トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling社果物トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh社ゴムトラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl社ゴムトラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT社ゴムトラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :マイティムーヴァー社砂糖トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :パワーノート社砂糖トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :ヒューピュー社砂糖トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :マイティムーヴァー社コーラタンク車
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :パワーノート社コーラタンク車
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :ヒューピュー社コーラタンク車
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :マイティムーヴァー社綿菓子トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :パワーノート社綿菓子トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :ヒューピュー社綿菓子トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :マイティムーヴァー社タフィートラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :パワーノート社タフィートラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :ヒューピュー社タフィートラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :マイティムーヴァー社玩具トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :パワーノート社玩具トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :ヒューピュー社玩具トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :巨大ムーブ社菓子トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :パワーノート社菓子トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :ヒューピュー社菓子トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :マイティムーヴァー社電池トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :パワーノート社電池トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :ヒューピュー社電池トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :マイティムーヴァー社炭酸飲料トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :パワーノート社炭酸飲料トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :ヒューピュー社炭酸飲料トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :マイティムーヴァー社プラスチックトラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :パワーノート社プラスチックトラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :ヒューピュー社プラスチックトラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :マイティムーヴァー社泡トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :パワーノート社泡トラック
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :ヒューピュー社泡トラック
-STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS社油槽船
-STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS社油槽船
-STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS社客船
-STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP社客船
-STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell社300系ホバークラフト
-STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :シュッシュッ社客船
-STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :ビクビク社客船
-STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate社貨物船
-STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell社貨物船
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :巨大ムーブ社貨物船
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :パワーノート社貨物船
-STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson社U52型
-STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman社「カウント」
-STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP社「ダート」
-STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :コンコルド
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :Bakewell社「Cotswold」LB-3型
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_8                 :Bakewell社「Luckett」LB-8型
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :Bakewell社「Luckett」LB-9型
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :Bakewell社「Luckett」LB-80型
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :Bakewell社「Luckett」LB-10型
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :Bakewell社「Luckett」LB-11型
-STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :Yate エアロスペース社 YAC 1-11型
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :Darwin社100型
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :Darwin社200型
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :Darwin社300型
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :Darwin社400型
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :Darwin社500型
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :Darwin社600型
-STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :Guru社「ギャラクシー」
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :Airtaxi社A21型
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :Airtaxi社A31型
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Airtaxi社A32型
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :Airtaxi社A33型
-STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :Yate エアロスペース社YAe46型
-STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :Dinger社100型
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :Airtaxi社A34-100型
-STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :Yate社Z-Shuttle
-STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :Kelling社K1型
-STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :Kelling社K6型
-STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :Kelling社K7型
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :Darwin社700型
-STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP社ハイパーダート2型
-STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :Dinger社200型
-STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :Dinger社1000型
-STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :ポンポン社100型
-STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :ポンポン社500型
-STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :雷電社X1型
-STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :巨大エーロスペース社M1型
-STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :雷電社「ヒュー」
-STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Tricario社ヘリコプター
-STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Guru社X2型ヘリコプター
-STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :パワーノート社ヘリコプター
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :菓子車
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :玩具車
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :電池車
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :炭酸飲料車
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :プラスチック貨車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal バス
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard バス
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster バス
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII スーパーバス
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :ポンポン社 MkI バス
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :ポンポン社 MkII バス
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :ポンポン社 MkIII バス
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh 石炭トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl 石炭トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW 石炭トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS 郵便車
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard 郵便車
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry 郵便車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :マイティムーヴァー社 郵便車
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :パワーノート社 郵便車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :ピューピュー社 郵便車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe 石油タンク車
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster 石油タンク車
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry 石油タンク車
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott 家畜トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl 家畜トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster 家畜トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh 商品トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead 商品トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss 商品トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford 穀物トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas 穀物トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss 穀物トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe 木材トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster 木材トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland 木材トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS 鉄鉱トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl 鉄鉱トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy 鉄鉱トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh 鉄鋼トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl 鉄鋼トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling 鉄鋼トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh 装甲トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl 装甲トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster 装甲トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster 食品トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry 食品トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy 食品トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl 紙トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh 紙トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS 紙トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS 銅鉱トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl 銅鉱トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss 銅鉱トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl 水トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh 水トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS 水トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh 果物トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl 果物トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling 果物トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh ゴムトラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl ゴムトラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT ゴムトラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :マイティムーヴァー社 砂糖トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :パワーノート社 砂糖トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :ピューピュー社 砂糖トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :マイティムーヴァー社 コーラタンク車
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :パワーノート社 コーラタンク車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :ピューピュー社 コーラタンク車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :マイティムーヴァー社 綿菓子トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :パワーノート社 綿菓子トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :ピューピュー社 綿菓子トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :マイティムーヴァー社 タフィートラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :パワーノート社 タフィートラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :ピューピュー社 タフィートラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :マイティムーヴァー社 玩具トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :パワーノート社 玩具トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :ヒューピュー社 玩具トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :マイティムーヴァー社 菓子トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :パワーノート社 菓子トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :ピューピュー社 菓子トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :マイティムーヴァー社 電池トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :パワーノート社 電池トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :ピューピュー社 電池トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :マイティムーヴァー社 炭酸飲料トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :パワーノート社 炭酸飲料トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :ピューピュー社 炭酸飲料トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :マイティムーヴァー社 プラスチックトラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :パワーノート社 プラスチックトラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :ピューピュー社 プラスチックトラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :マイティムーヴァー社 泡トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :パワーノート社 泡トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :ピューピュー社 泡トラック
+STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS タンカー
+STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. タンカー
+STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS フェリー
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP フェリー
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 ホバークラフト
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :シュッシュッ社 フェリー
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :ビクビク社 フェリー
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate 貨物船
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell 貨物船
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :マイティムーヴァー社 貨物船
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :パワーノート社 貨物船
+STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
+STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
+STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
+STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :Yate Haugan
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :Bakewell Cotswald LB-3
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_8                 :Bakewell Luckett LB-8
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :Bakewell Luckett LB-9
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :Bakewell Luckett LB80
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :Bakewell Luckett LB-10
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :Bakewell Luckett LB-11
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :Yate Aerospace YAC 1-11
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :Darwin 100
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :Darwin 200
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :Darwin 300
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :Darwin 400
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :Darwin 500
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :Darwin 600
+STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :Guru Galaxy
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :Airtaxi A21
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :Airtaxi A31
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Airtaxi A32
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :Airtaxi A33
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :Yate Aerospace YAe46
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :Dinger 100
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :AirTaxi A34-1000
+STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :Yate Z-Shuttle
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :Kelling K1
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :Kelling K6
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :Kelling K7
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :Darwin 700
+STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP Hyperdart 2
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :Dinger 200
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :Dinger 1000
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :ポンポン社 100
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :ポンポン社 500
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :雷電社 X1
+STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :巨大機社 M1
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :雷電社 ピュー
+STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Tricario ヘリコプター
+STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Guru X2 ヘリコプター
+STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :パワーノート社 ヘリコプター
 
 ##id 0x8800
 # Formatting of some strings

@@ -1257,6 +1257,12 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Begjin stêdgru
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Helje frjemde stikken dyk fourt by it bouen fan nije routes: {STRING}
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}konstruksje
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Auto's
@@ -2722,6 +2728,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Te folle
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kin tiid tusken ûnderhâldsbeurten net feroarje...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... wein verneatige
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kin rydrjochting fan de trein net oanpasse

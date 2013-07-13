@@ -1517,6 +1517,12 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 út av {COMMA
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Eingin
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Takførisflati
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Bygging
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Flutningstól
@@ -3938,6 +3944,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Ov nógv
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kann ikki broyta tænastu títtleika...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... akfar smildra sundur
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kann ikki fáa tok at fara framvið jarnbreytatekin tá vandi er...

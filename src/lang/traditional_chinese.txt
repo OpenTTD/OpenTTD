@@ -1783,9 +1783,9 @@ STR_LIVERY_MONORAIL                                             :單軌鐵路機
 STR_LIVERY_MAGLEV                                               :磁浮機車
 STR_LIVERY_DMU                                                  :柴聯車組
 STR_LIVERY_EMU                                                  :電聯車組
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :載客車廂 (蒸氣)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :載客車廂 (柴油)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :載客車廂 (電力)
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :載客車廂 (蒸汽列車)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :載客車廂 (柴油列車)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :載客車廂 (電動列車)
 STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :載客車廂 (單軌)
 STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :載客車廂 (磁浮)
 STR_LIVERY_FREIGHT_WAGON                                        :載貨車廂
@@ -4489,17 +4489,17 @@ STR_SV_STNAME_FALLBACK                                          :{STRING} 車站
 
 ##id 0x8000
 # Vehicle names
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (蒸氣)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (蒸汽)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (柴油)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut 柴油
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut 柴油
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (蒸氣)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (蒸氣)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (蒸氣)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (蒸氣)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (蒸汽)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (蒸汽)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (蒸汽)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (蒸汽)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel 柴聯車組 (柴油)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (柴油)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (柴油)

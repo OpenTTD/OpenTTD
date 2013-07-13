@@ -818,6 +818,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}மானியம் இனிமேல் தரப்படாது:{}{}{STRING} இருந்து {STRING} {STRING} வரை போக்குவரத்திற்கு மானியம் வழங்கப்படாது
 
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}இல் சாலை போக்குவரத்து பாதிப்பு!{}{}Road rebuilding programme funded by {STRING} brings 6 months of misery to motorists!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}போக்குவரத்து தனியுரிமை!
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN} நகராட்சியின் முழு போக்குவரத்து உரிமைகளையும் ஒரு வருடத்திற்கு {STRING} வாங்கியுள்ளது!
 
@@ -1400,7 +1401,12 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :வாகன �
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :எடை பிரிவுகள்: {STRING}
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :கன அளவு பிரிவுகள்: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :இம்பீரியல் (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :மெட்ரிக் (I)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :இம்பீரியல் (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :மெட்ரிக் (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface

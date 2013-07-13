@@ -488,6 +488,12 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ippermetti l-uz
 
 
 
+
+
+
+
+
+
 # Config errors
 
 # Intro window
@@ -1090,6 +1096,7 @@ STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Dan il-v
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Dan l-ajruplan mhux disponibbli
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Hemm wisq vetturi fil-logħba
+
 
 
 # Specific vehicle errors

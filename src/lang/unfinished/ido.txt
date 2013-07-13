@@ -558,6 +558,12 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :omnube
 
 
 
+
+
+
+
+
+
 # Config errors
 
 # Intro window
@@ -1225,6 +1231,7 @@ STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Ne povas
 
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tro multa vehili en la ludo
+
 
 
 # Specific vehicle errors

@@ -1552,6 +1552,12 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Beim Stroosseba
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Huel Sakgaassen ewech wann d'Stroossen renovéiert ginn
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruktioun
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Gefierer
@@ -4211,6 +4217,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Ze vill 
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Den Service-Intervall kann net geännert ginn...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... Gefiert ass zerstéiert
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kann den Zuch net bei Gefohr lanscht d'Signal schecken...

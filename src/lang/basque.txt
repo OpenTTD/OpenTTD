@@ -1506,6 +1506,12 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Errepideak erai
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Errepide berreraikuntza ordaintzerakoan irteerarik gabeko errepideak kentzea
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfazea
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Eraikuntza
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ibilgailuak
@@ -4122,6 +4128,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Jokoan i
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ezin da garraio tartea aldatu...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... garraioa suntsituta
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ezin da trena seinalea pasatzera behartu, istripu arriskua...

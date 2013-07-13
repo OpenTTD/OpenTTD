@@ -1279,6 +1279,12 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Iolraitheoir to
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Bain gnéithe bóthair áiféiseacha agus bóithre á dtógáil: {STRING}
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Comhéadan
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Tógáil
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Feithiclí
@@ -3693,6 +3699,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}An iomar
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ní féidir an t-eatramh seirbhísithe a athrú...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... tá an fheithicil scriosta
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ní féidir iallach a chur ar thraein dul thar comhartha agus contúirt ann...

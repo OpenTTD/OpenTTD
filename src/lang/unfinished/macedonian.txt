@@ -887,6 +887,12 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 
 
+
+
+
+
+
+
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}Грешка со конфигурациската датотека...
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... грешка во низа '{STRING}'
@@ -1785,6 +1791,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Има �
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не може да се смени интервалот за сервисирање...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... возилото е уништено
+
 
 # Specific vehicle errors
 

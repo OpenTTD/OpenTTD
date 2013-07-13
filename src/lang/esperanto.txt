@@ -1310,6 +1310,12 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Komenca urbgran
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Forigu sensensajn straterojn dum stratkonstruado: {STRING}
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfaco
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruado
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Veturiloj
@@ -3725,6 +3731,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tro da v
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ne povas ŝanĝi prizorgintervalon...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... veturilo estas detrua
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ne povas igi trajnon transiri signalon je danĝero...

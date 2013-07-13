@@ -1555,6 +1555,12 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Dileu ffyrdd di
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Tynnu pytiau ffyrdd diddefnydd yn ystod ailadeiladu ffyrdd noddedig
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Rhyngwyneb
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Adeiladu
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Cerbydau
@@ -4208,6 +4214,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Mae gorm
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Methu newid hyd y cyfnod rhwng pob gwasanaeth...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... cerbyd wedi ei ddinistrio
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Does dim modd gwneud i drên basio signal pan fo perygl...

@@ -1671,6 +1671,12 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Прибрат�
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Дозволяє видаляти тупіки на дорогах міста під час рекострукції доріг.
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Інтерфейс
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Будівництво
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Транспорт
@@ -4292,6 +4298,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Дуже
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не можна змінити інтервал обслуговування...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... транспорт знищено
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Неможливо проїхати сигнал - небезпечно...

@@ -1638,6 +1638,12 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Odstrani absurd
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Odstrani slepe odseke cest med financirano obnovo cest.
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Vmesnik
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Gradnja
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozila
@@ -4246,6 +4252,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Preveč 
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ni mogoče spremeniti obdobja servisiranja...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozilo je uničeno
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ni mogoče, da vlak v nevarnosti pelje mimo signalov...

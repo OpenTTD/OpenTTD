@@ -616,6 +616,12 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :स्टेट
 
 
 
+
+
+
+
+
+
 # Config errors
 
 # Intro window
@@ -1345,6 +1351,7 @@ STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}पू�
 # Group related errors
 
 # Generic vehicle errors
+
 
 
 

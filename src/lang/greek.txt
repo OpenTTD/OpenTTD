@@ -1625,6 +1625,12 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Να αφαιρ
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Αφαίρεση αδιέξοδων άκρων κατά την χρηματοδοτούμενη ανακατασκευή δρόμων
 
 
+
+
+
+
+
+
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Περιβάλλον Λειτουργίας
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Κατασκευή
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Οχήματα
@@ -4265,6 +4271,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Πάρα
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Δεν μπορεί να αλλάξει το διάστημα της συντήρησης...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... το όχημα καταστράφηκε
+
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Δεν μπορεί το τρένο να περάσει σήμα με κίνδυνο...
