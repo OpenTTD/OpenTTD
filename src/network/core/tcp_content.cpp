@@ -153,12 +153,6 @@ void NetworkContentSocketHandler::Close()
 }
 
 /**
- * Defines a simple (switch) case for each network packet
- * @param type the packet type to create the case for
- */
-#define CONTENT_COMMAND(type) case type: return this->NetworkPacketReceive_ ## type ## _command(p); break;
-
-/**
  * Handle the given packet, i.e. pass it to the right
  * parser receive command.
  * @param p the packet to handle

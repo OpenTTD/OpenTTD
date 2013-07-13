@@ -283,12 +283,6 @@ void NetworkUDPSocketHandler::ReceiveNetworkGameInfo(Packet *p, NetworkGameInfo 
 }
 
 /**
- * Defines a simple (switch) case for each network packet
- * @param type the packet type to create the case for
- */
-#define UDP_COMMAND(type) case type: this->NetworkPacketReceive_ ## type ## _command(p, client_addr); break;
-
-/**
  * Handle an incoming packets by sending it to the correct function.
  * @param p the received packet
  * @param client_addr the sender of the packet
