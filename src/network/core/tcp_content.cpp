@@ -183,8 +183,9 @@ bool NetworkContentSocketHandler::HandlePacket(Packet *p)
 
 /**
  * Receive a packet at TCP level
+ * @return Whether at least one packet was received.
  */
-void NetworkContentSocketHandler::ReceivePackets()
+bool NetworkContentSocketHandler::ReceivePackets()
 {
 	/*
 	 * We read only a few of the packets. This as receiving packets can be expensive
@@ -206,12 +207,15 @@ void NetworkContentSocketHandler::ReceivePackets()
 	 * What arbitrary number to choose is the ultimate question though.
 	 */
 	Packet *p;
-	int i = 42;
+	static const int MAX_PACKETS_TO_RECEIVE = 42;
+	int i = MAX_PACKETS_TO_RECEIVE;
 	while (--i != 0 && (p = this->ReceivePacket()) != NULL) {
 		bool cont = this->HandlePacket(p);
 		delete p;
-		if (!cont) return;
+		if (!cont) return true;
 	}
+
+	return i != MAX_PACKETS_TO_RECEIVE - 1;
 }
 
 
