@@ -2320,7 +2320,7 @@ STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}入口�
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口信号 (色灯式){}動作は普通の閉塞信号と同様ですが、入口/コンボ信号を使用する場合に必要になります。ホームの入り口に良く使われます
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}コンボ信号 (色灯式){}コンボ信号は入口信号と出口信号の機能を併せ持つ信号です。この信号を使うと多数の分岐のあるような場内信号網を作ることができます
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}パス信号 (色灯式) {}パス信号では、互いに衝突しない経路が確保できる場合には1つの閉塞内に複数の列車が入ることを許容します。汎用性は高いですが、一方向式しか使えず信号の背面から進行してくる列車を防護することができません。この信号で列車が停車中に正面から対向列車が来ると問答無用で衝突事故を起こします!
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}一方通行パス信号 (色灯式) {}一方通行パス信号 (腕木式) {}パス信号では、互いに衝突しない経路が確保できる場合には1つの閉塞内に複数の列車が入ることを許容します。このタイプのパス信号は信号の背面から通過することはできません
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}一方通行パス信号 (色灯式) {}パス信号では、互いに衝突しない経路が確保できる場合には1つの閉塞内に複数の列車が入ることを許容します。このタイプのパス信号は信号の背面から通過することはできません
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}信号交換{}既存の信号を今選択している信号に交換します。Ctrl+クリックで種類は替えずに腕木/色灯の形式のみ切り替えます。Shift+クリックで費用を見積もります
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}ドラッグ時の信号設置間隔を指定します
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}ドラッグ時の信号設置間隔を減らします

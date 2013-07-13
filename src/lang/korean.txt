@@ -789,9 +789,9 @@ STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FON
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}{1:TOWN} 근처에 새로운 {0:STRING}{G 0 "이" "가"} 건설되고 있습니다!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}새 {STRING}{G 0 "이" "가"} {TOWN} 근처에서 자라나고 있습니다!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING}{G 0 "이" "가"} 곧 폐쇄됩니다!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}{STRING}{G 0 "이" "가"} 공급량이 부족해 곧 폐쇄될 예정입니다!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}주변에 나무가 부족하여 {STRING}{G 0 "이" "가"} 곧 폐쇄될 예정입니다!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} : 곧 폐쇄됩니다!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}{STRING} : 공급량이 부족해 곧 폐쇄될 예정입니다!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}{STRING} : 주변에 나무가 부족하여 곧 폐쇄될 예정입니다!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}유럽 화폐단위 통일!{}{}국가의 단일 유통 화폐로 유로화가 도입되었습니다!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}세계 공황!{}{}경제 전문가들이 경제 슬럼프에 대해 우려를 표망하고 있습니다!
@@ -2873,7 +2873,7 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}호환�
 STR_NEWGRF_LIST_MISSING                                         :{RED}파일 없음
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}'의 행동은 비동기화 혹은 충돌을 일으킬 수 있습니다.
+STR_NEWGRF_BROKEN                                               :{WHITE}'{STRING}' NewGRF이 하려는 행위는 비동기화 혹은 충돌을 일으킬 수 있습니다.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}차고지 안에 있지 않은 '{1:ENGINE}'에 대한 동력 차량 상태가 바뀌었습니다.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고지 안에 있지 않으면 차량 길이가 바뀝니다.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'에 속한 열차 '{0:VEHICLE}'의 길이가 잘못된 값을 가지고 있습니다. NewGRF에 의한 문제로 추축됩니다. 게임이 비동기화 또는 충돌을 일으킬 수 있습니다.

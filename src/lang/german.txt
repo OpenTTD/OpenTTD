@@ -1410,8 +1410,8 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Verbiete Comput
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Schiffe für den Computer abschalten: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Verbiete Computerspielern, Schiffe zu kaufen
 
-STR_CONFIG_SETTING_AI_PROFILE                                   :Standard-Einstellungen: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Wählen, welches Einstellungs-Profil für zufällige KIs oder anfängliche Werte von KIs oder Spielscripten genommen werden soll
+STR_CONFIG_SETTING_AI_PROFILE                                   :Standardeinstellungen: {STRING}
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Auswählen, welcher Schwierigkeitsgrad in den KI-Optionen von zufällig startenden Computerspielern eingestellt werden soll. Wird auch als Standardwert für einzeln ausgewählte KIs oder für Spielskripte verwendet
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Leicht
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mittel
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Schwierig
@@ -3173,7 +3173,7 @@ STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Firmensi
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Verlegen
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Errichte Firmensitz für 1% des Firmenwertes an anderer Stelle neu. Shift+Klick zeigt einen Kostenvoranschlag
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Details
-STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Detaillierte Infrastrukturinformationen anzeigen
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Detaillierte Informationen zur Infrastruktur dieser Firma anzeigen
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Neues Gesicht
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Neues Gesicht für Manager aussuchen
@@ -4317,6 +4317,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Das Wart
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... Fahrzeug ist zerstört
 
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Noch keine Fahrzeuge verfügbar
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Ein neues Spiel nach {DATE_SHORT} beginnen oder ein NewGRF-Fahrzeugset mit früher verfügbaren Fahrzeugen verwenden
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Der Zug kann das Signal nicht gefahrlos passieren...
