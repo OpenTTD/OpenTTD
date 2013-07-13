@@ -170,6 +170,7 @@ public:
 
 	SQBool _can_suspend;
 	SQInteger _ops_till_suspend;
+	SQBool _in_stackoverflow;
 
 	bool ShouldSuspend()
 	{
@@ -200,8 +201,10 @@ inline SQObjectPtr &stack_get(HSQUIRRELVM v,SQInteger idx){return ((idx>=0)?(v->
 
 #define PUSH_CALLINFO(v,nci){ \
 	if(v->_callsstacksize == v->_alloccallsstacksize) { \
-		if (v->_callsstacksize > 65535) {\
+		if (v->_callsstacksize > 65535 && !v->_in_stackoverflow) {\
+			v->_in_stackoverflow = true; \
 			v->Raise_Error(_SC("stack overflow"));\
+			v->CallErrorHandler(v->_lasterror);\
 			return false;\
 		}\
 		v->GrowCallStack(); \

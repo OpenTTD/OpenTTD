@@ -206,7 +206,7 @@ public:
 	/** On destructing of this class, the socket needs to be closed */
 	virtual ~NetworkContentSocketHandler() { this->Close(); }
 
-	void ReceivePackets();
+	bool ReceivePackets();
 };
 
 #ifndef OPENTTD_MSU

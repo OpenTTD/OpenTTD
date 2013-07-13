@@ -778,8 +778,10 @@ void ClientNetworkContentSocketHandler::SendReceive()
 	}
 
 	if (this->CanSendReceive()) {
-		this->ReceivePackets();
-		this->lastActivity = _realtime_tick;
+		if (this->ReceivePackets()) {
+			/* Only update activity once a packet is received, instead of everytime we try it. */
+			this->lastActivity = _realtime_tick;
+		}
 	}
 
 	this->SendPackets();

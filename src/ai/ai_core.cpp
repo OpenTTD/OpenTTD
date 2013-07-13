@@ -47,6 +47,7 @@
 		/* Load default data and store the name in the settings */
 		config->Change(info->GetName(), -1, false, true);
 	}
+	config->AnchorUnchangeableSettings();
 
 	Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
 	Company *c = Company::Get(company);

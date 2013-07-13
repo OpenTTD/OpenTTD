@@ -107,6 +107,7 @@ SQVM::SQVM(SQSharedState *ss)
 	_errorhandler = _null_;
 	_debughook = _null_;
 	_can_suspend = false;
+	_in_stackoverflow = false;
 	_ops_till_suspend = 0;
 	ci = NULL;
 	INIT_CHAIN();ADD_TO_CHAIN(&_ss(this)->_gc_chain,this);
