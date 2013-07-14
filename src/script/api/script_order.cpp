@@ -627,6 +627,7 @@ static void _DoCommandReturnSetOrderFlags(class ScriptInstance *instance)
 
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, order_position_move));
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, order_position_target));
+	EnforcePrecondition(false, order_position_move != order_position_target);
 
 	int order_pos_move = ScriptOrderPositionToRealOrderPosition(vehicle_id, order_position_move);
 	int order_pos_target = ScriptOrderPositionToRealOrderPosition(vehicle_id, order_position_target);
