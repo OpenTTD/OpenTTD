@@ -199,21 +199,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}hp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tấn
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lít
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -221,6 +228,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Lọc ch
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Nhập chuỗi lọc
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Nhập từ khóa vào để lọc danh sách
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Chọn cách gom nhóm
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Chọn thứ tự sắp xếp (giảm dần/tăng dần)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Chọn tiêu chí sắp xếp
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Chọn tiêu chí lọc bỏ
@@ -277,6 +285,8 @@ STR_SORT_BY_LENGTH                                              :Chiều dài
 STR_SORT_BY_LIFE_TIME                                           :Thời gian sử dụng còn lại
 STR_SORT_BY_TIMETABLE_DELAY                                     :Độ trễ lịch trình
 STR_SORT_BY_FACILITY                                            :Kiểu nhà ga
+STR_SORT_BY_WAITING_TOTAL                                       :Tổng số hàng hóa đang đợi
+STR_SORT_BY_WAITING_AVAILABLE                                   :Hàng hóa hiện đang đợi
 STR_SORT_BY_RATING_MAX                                          :Đánh giá mức hàng hoá cao nhất
 STR_SORT_BY_RATING_MIN                                          :Đánh giá mức hàng hoá thấp nhất
 STR_SORT_BY_ENGINE_ID                                           :ID Máy (sắp xếp thông thường)
@@ -302,6 +312,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Hiện t
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Hiển thị danh sách công ty
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Hiện thông tin tài chính của công ty
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Hiện thông tin tổng quát của công ty
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Hiển thị tình tiết
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Hiển thị danh sách mục tiêu
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Hiển thị biểu đồ
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Hiện bảng tầm cỡ các công ty
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Bỏ vốn cho những ngành mới hoặc hiện tất cả các ngành
@@ -1561,12 +1573,17 @@ STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Cập nhật đ
 
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Hoàng Gia (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Giao Diện
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Tiêu Chuẩn Đo Lường
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Xây Dựng
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Phương Tiện
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Ga, Bến, Cảng
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Kinh Tế
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Phân Bổ Hàng Hóa
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Đối Thủ
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Tùy chỉnh hiển thị
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Tương tác
@@ -2904,10 +2921,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Mua đ�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Đút lót quan chức địa phương để nâng cao quyền lợi, có một tỉ lệ rủi ro nếu bại lộ và sẽ mất hết quyền lợi lẫn tiền hối lộ.{}Chi phí: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Mục Tiêu Của {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Mục Tiêu Chung
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Các mục tiêu chung:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Không -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Không khả dụng -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Các mục tiêu của công ty:
@@ -2950,6 +2969,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Nháy v�
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Tình Tiết
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Bảng Tình Tiết Chung
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Trang {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Chuyển tới trang cụ thể bằng cách chọn trong danh sách sổ xuống
@@ -2988,7 +3008,24 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Hiện u
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Sản lượng và đánh giá địa phương hàng tháng:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Nhóm bằng
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} từ {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} qua {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} đến {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} từ một trạm chưa biết
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} đến bất cứ trạm nào
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} qua bất cứ trạm nào
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} từ trạm này
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} dừng ở trạm này
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} đến trạm này
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} chạy suốt
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Nguồn-Qua-Đích
+STR_STATION_VIEW_GROUP_S_D_V                                    :Nguồn-Đích-Qua
+STR_STATION_VIEW_GROUP_V_S_D                                    :Qua-Nguồn-Đích
+STR_STATION_VIEW_GROUP_V_D_S                                    :Qua-Đích-Nguồn
+STR_STATION_VIEW_GROUP_D_S_V                                    :Đích-Nguồn-Qua
+STR_STATION_VIEW_GROUP_D_V_S                                    :Đích-Qua-Nguồn
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Kinh hãi
