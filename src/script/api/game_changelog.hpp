@@ -24,13 +24,13 @@
  * \li GSGoal::SetCompleted
  * \li GSGoal::SetProgress
  * \li GSGoal::SetText
- * \li GSStation::HasRating
+ * \li GSStation::HasCargoRating
  * \li GSStoryPage
  * \li GSTile::GetTerrainType
  *
  * Other changes:
  * \li GSGoal::New can now create up to 64000 concurrent goals. The old limit was 256 goals.
- * \li GSStation::GetRating does return -1 for cargo-station combinations that
+ * \li GSStation::GetCargoRating does return -1 for cargo-station combinations that
  *     do not have a rating yet instead of returning 69.
  *
  * \b 1.3.0
