@@ -2934,6 +2934,9 @@
     <ClCompile Include="..\src\pathfinder\yapf\yapf_ship.cpp">
       <Filter>YAPF</Filter>
     </ClCompile>
+    <ClInclude Include="..\src\pathfinder\yapf\yapf_type.hpp">
+      <Filter>YAPF</Filter>
+    </ClInclude>
     <ClCompile Include="..\src\video\dedicated_v.cpp">
       <Filter>Video</Filter>
     </ClCompile>

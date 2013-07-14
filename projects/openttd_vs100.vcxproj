@@ -1235,6 +1235,7 @@
     <ClCompile Include="..\src\pathfinder\yapf\yapf_rail.cpp" />
     <ClCompile Include="..\src\pathfinder\yapf\yapf_road.cpp" />
     <ClCompile Include="..\src\pathfinder\yapf\yapf_ship.cpp" />
+    <ClInclude Include="..\src\pathfinder\yapf\yapf_type.hpp" />
     <ClCompile Include="..\src\video\dedicated_v.cpp" />
     <ClCompile Include="..\src\video\null_v.cpp" />
     <ClCompile Include="..\src\video\sdl_v.cpp" />

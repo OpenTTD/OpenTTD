@@ -4318,6 +4318,10 @@
 				RelativePath=".\..\src\pathfinder\yapf\yapf_ship.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\..\src\pathfinder\yapf\yapf_type.hpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Video"

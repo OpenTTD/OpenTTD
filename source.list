@@ -1038,6 +1038,7 @@ pathfinder/yapf/yapf_node_ship.hpp
 pathfinder/yapf/yapf_rail.cpp
 pathfinder/yapf/yapf_road.cpp
 pathfinder/yapf/yapf_ship.cpp
+pathfinder/yapf/yapf_type.hpp
 
 # Video
 video/dedicated_v.cpp
