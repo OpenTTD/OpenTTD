@@ -224,6 +224,21 @@ public:
 	}
 
 	/**
+	 * In some cases an intermediate node branch should be pruned.
+	 * The most prominent case is when a red EOL signal is encountered, but
+	 * there was a segment change (e.g. a rail type change) before that. If
+	 * the branch would not be pruned, the rail type change location would
+	 * remain the best intermediate node, and thus the vehicle would still
+	 * go towards the red EOL signal.
+	 */
+	void PruneIntermediateNodeBranch()
+	{
+		while (Yapf().m_pBestIntermediateNode != NULL && (Yapf().m_pBestIntermediateNode->m_segment->m_end_segment_reason & ESRB_CHOICE_FOLLOWS) == 0) {
+			Yapf().m_pBestIntermediateNode = Yapf().m_pBestIntermediateNode->m_parent;
+		}
+	}
+
+	/**
 	 * AddNewNode() - called by Tderived::PfFollowNode() for each child node.
 	 *  Nodes are evaluated here and added into open list
 	 */
