@@ -29,6 +29,7 @@
 #include "../../misc/dbg_helpers.h"
 #include "nodelist.hpp"
 #include "../follow_track.hpp"
+#include "yapf_type.hpp"
 #include "yapf_base.hpp"
 #include "yapf_node.hpp"
 #include "yapf_common.hpp"
