@@ -727,7 +727,7 @@ STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COM
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}모두 사용 안함
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}모두 사용
-STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}높이 표시
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}고도 표시
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}지도 상에 모든 산업 시설을 감춥니다.
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}지도 상에 모든 산업 시설을 보여줍니다.
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}지형의 높낮이를 표시합니다.
@@ -1241,7 +1241,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :차량의 수�
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :이 옵션을 켜면 지난 해에 수익이 없는 차량이 있으면 뉴스 메시지로 알려줍니다.
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :옛날 차량을 사라지지 않고 계속 만들 수 있게 함: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :이 옵션을 켜면 오래된 차량 모델을 포함하여 모든 차량 모델을 도입 이후 계속 사용할 수 있게 됩니다.
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :차량이 낡으면 열차를 자동으로 교체: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :차량이 낡으면 차량을 자동으로 교체: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :이 옵션을 켜면 제한 수명에 다다른 차량이 교체 조건을 만족할 경우 자동으로 차량을 교체할 수 있게 됩니다.
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :차량이 최대 수명의 {STRING}이면 자동 교체
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :자동 교체가 필요한 차량의 상대적인 연령을 설정합니다.
@@ -1720,7 +1720,7 @@ STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}고급 �
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF 설정 창을 엽니다.
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다.
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}인공지능/게임 스크립트 설정창을 엽니다.
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD'를 종료합니다
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD'를 종료합니다.
 
 STR_INTRO_TRANSLATION                                           :{BLACK}이 버전의 OpenTTD는 {NUM}개의 문장이 한국어로 번역되지 않았습니다. 한국어 번역자에게 번역을 의뢰하십시오.{}텔크 (telk5093@gmail.com)
 
@@ -1755,7 +1755,7 @@ STR_CHEAT_MONEY                                                 :{LTBLUE}재정�
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}다음 회사로 플레이: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설, 움직이지 못하는 건물 제거): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}터널 교차 허용: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}대형 항공기의 소형 공항에 충돌 빈도수 감소: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}대형 항공기가 소형 공항에서 (자주) 충돌하지 않게 함: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :온대 기후
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :냉대 기후
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :아열대 기후
@@ -2077,7 +2077,7 @@ STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}네트�
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}서버가 요청을 받지 않습니다.
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRF이 맞지 않아서 연결할 수 없습니다
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}네트워크와 게임을 동기화하는 데 실패하였습니다.
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}네트워크와 연결이 끊어졌습니다.
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}네트워크와의 연결이 끊어졌습니다.
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}게임 저장 파일을 불러올 수 없습니다
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}서버를 시작할 수 없습니다
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}접속할 수 없습니다
@@ -2636,7 +2636,7 @@ STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :수도교
 
 STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :송신기
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :등대
-STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :회사 HQ
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :회사 본사
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :회사 소유지
 
 # About OpenTTD window
@@ -3166,7 +3166,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}정거�
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}공항 {COMMA}개
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}없음
 
-STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}본사(HQ) 건설
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}본사 건설
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}회사 본사를 건설합니다.
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}본사 보기
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}회사 본사 위치로 이동합니다.
@@ -3348,15 +3348,15 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}이름 �
 STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}이름 지정
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}이름 지정
 
-STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}차량 타입의 이름을 다시 지정
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}자동차 타입의 이름 지정
-STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}선박 타입의 이름 지정
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}항공기의 이름을 변경합니다.
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}열차의 차량 이름을 변경합니다.
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}자동차의 차량 이름을 변경합니다.
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}선박의 차량 이름을 변경합니다.
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}항공기의 차량 이름을 변경합니다.
 
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}열차 차량 타입 이름 재지정
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}자동차 타입의 이름 지정
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}선박 타입의 이름 지정
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}항공기의 이름을 변경합니다.
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}열차의 차량 이름을 변경합니다.
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}자동차의 차량 이름을 변경합니다.
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}선박의 차량 이름을 변경합니다.
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}항공기의 차량 이름을 변경합니다.
 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
@@ -3493,8 +3493,8 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}이 차�
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}이 선박이 있는 곳으로 이동합니다. Ctrl+클릭하면 이 선박을 따라갑니다.
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}이 항공기가 있는 곳으로 이동합니다. Ctrl+클릭하면 이 항공기를 따라갑니다.
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}열차를 차량기지로 보냅니다. (CTRL+클릭시 점검만 합니다)
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}차량을 차고지로 보냅니다. Ctrl+클릭하면 점검만 합니다.
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}열차를 차량기지로 보냅니다. CTRL+클릭하면 점검만 합니다.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}차량을 차고지로 보냅니다. CTRL+클릭하면 점검만 합니다.
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}선박을 정박소로 보냅니다. CTRL+클릭하면 점검만 합니다.
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}항공기를 격납고로 보냅니다. CTRL+클릭하면 점검만 합니다
 
@@ -4254,7 +4254,7 @@ STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... 터�
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... 오브젝트가 너무 많습니다.
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}오브젝트를 건설할 수 없습니다...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}중간에 오브젝트가 있습니다
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... 중간에 회사 HQ가 있습니다.
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... 중간에 회사 본사가 있습니다.
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}이 지역을 매입할 수 없습니다...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... 이미 소유중입니다!
 
@@ -4297,20 +4297,20 @@ STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}자동�
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}선박을 구입할 수 없습니다...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}항공기를 구입 할 수 없습니다...
 
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}차량 타입의 이름을 다시 지정할 수 없습니다...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}자동차 타입의 이름을 지정할 수 없습니다...
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}선박 타입의 이름을 재지정할 수 없습니다...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}항공기의 이름을 바꿀 수 없습니다...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}열차의 차량 이름을 다시 지정할 수 없습니다...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}자동차의 차량 이름을 다시 지정할 수 없습니다...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}선박의 차량 이름을 다시 지정할 수 없습니다...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}항공기의 차량 이름을 다시 지정할 수 없습니다...
 
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}열차를 팔 수 없습니다...
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}자동차를 팔 수 없습니다...
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}선박을 팔 수 없습니다...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}항공기를 팔 수 없습니다...
 
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}이 열차는 사용 불가능합니다
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}해당 차량을 사용할 수 없는 상태입니다.
-STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}선박은 불가능합니다
-STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}항공기는 불가능합니다
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}이 열차은 사용할 수 없는 상태입니다.
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}이 차량은 사용할 수 없는 상태입니다.
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}이 선박은 사용할 수 없는 상태입니다.
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}이 항공기는 사용할 수 없는 상태입니다.
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}게임에 차량이 너무 많습니다!
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}점검 기간 간격을 바꿀 수 없습니다...

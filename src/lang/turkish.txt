@@ -300,7 +300,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Güç/Bakım Gi
 STR_SORT_BY_CARGO_CAPACITY                                      :Kapasite
 STR_SORT_BY_RANGE                                               :Menzil
 STR_SORT_BY_POPULATION                                          :Nüfus
-STR_SORT_BY_RATING                                              :Reyting
+STR_SORT_BY_RATING                                              :Değerlendirme
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Oyunu durdur
@@ -813,10 +813,10 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} aracının programında çok az emir var
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} aracının programında çok az talimat var
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} aracının boş bir emri var
-STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} emirleri arasında tekrarlanmış olanlar var
-STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} aracının geçersiz emirleri var
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} talimatları arasında tekrarlanmış olanlar var
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} aracının geçersiz talimatları var
 # end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} eskiyor
@@ -1124,7 +1124,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Etkinleştirild
 STR_CONFIG_SETTING_DISASTERS                                    :Felaketler: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Araçları ya da altyapıyı yok edebilecek felaketleri açın ya da kapatın
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Arazi şekillendirmeye karşı belediye meclisinin tavrı: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Şirketlerin sebep olduğu gürültü ve çevreye zararın kasaba reytinlerini ve ilerideki inşaatlarını nasıl etkileyeceğini seçin
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Şirketlerin sebep olduğu gürültü ve çevreye zararın kasaba beğenilerini ve ilerideki inşaatlarını nasıl etkileyeceğini seçin
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Kıyılara ve eğimli araziye inşaat izni: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Etkinleştirilirse raylar ve istasyonlar çoğu zaman eğimlerin üzerine inşa edilebilir. Etkinliği kaldırılırsa raylar ve istasyonlar sadece raylarla aynı doğrultuda olan eğimlerin üzerine inşa edilebilir, böylelikle altyapı gerektirmez
@@ -1180,10 +1180,10 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Sürücü taraf
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Sağda
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Sene sonunda ekonomik durumu göster: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Etkinleştirilirse her yılın sonunda şirketin mali durumunu gözlemlemek için mali tablo kendiliğinden belirir
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Yeni emirler için 'durmaksızın' varsayılır: {STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalde bir araç geçtiği tüm istasyonlarda durur. Bu ayarın etkinleştirilmesi ile araçlar son duraklarına kadarki istasyonlardan durmaksızın geçerler. Not: bu ayarlama yalnızca yeni emirler için önceden belirlenmiş bir değeri tarif eder. Tek başına verilen emirler yine ayrıca belirlenebilir
-STR_CONFIG_SETTING_STOP_LOCATION                                :Yeni tren emirleri için varsayılan durma yeri platformun {STRING} kısmıdır
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Bir trenin platformun neresinde duracağını ayarlayın. ‘Yakın uç’ giriş noktasına yakın demektir, ‘orta’ platformun ortasını ifade eder, ‘uzak uç’ giriş noktasından uzak olan ucu ifade eder. Not: bu ayarlama yalnızca yeni emirler için önceden belirlenmiş bir değeri tarif eder. Tek başına verilen emirler yine ayrıca belirlenebilir
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Yeni talimatlar öntanımlı olarak 'durmaksızın' yapılır: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalde bir araç geçtiği tüm istasyonlarda durur. Bu ayarın etkinleştirilmesi ile araçlar son duraklarına kadarki istasyonlardan durmaksızın geçerler. Not: bu ayarlama yalnızca yeni talimatlar için önceden belirlenmiş bir değeri tarif eder. Tek başına verilen talimatlar yine ayrıca belirlenebilir
+STR_CONFIG_SETTING_STOP_LOCATION                                :Yeni tren talimatları için varsayılan durma yeri platformun {STRING} kısmıdır
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Bir trenin platformun neresinde duracağını ayarlayın. ‘Yakın uç’ giriş noktasına yakın demektir, ‘orta’ platformun ortasını ifade eder, ‘uzak uç’ giriş noktasından uzak olan ucu ifade eder. Not: bu ayarlama yalnızca yeni talimatlar için önceden belirlenmiş bir değeri tarif eder. Tek başına verilen talimatlar yine ayrıca belirlenebilir
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :yakın uç
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :orta
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :uzak uç
@@ -1359,7 +1359,7 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Zaman tablosund
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Zaman çizelgelerinde yolculuk sürelerini gün yerine oyun zamanı cinsinden göster
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Çıkış ve varışları çizelgelerde göster: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Zaman çizelgelerinde tahmini varış ve ayrılış zamanlarını göster
-STR_CONFIG_SETTING_QUICKGOTO                                    :Araç emirlerinin hızlı oluşturulması: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :Araç talimatlarının hızlı oluşturulması: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Komutlar penceresi açılırken "git" düğmesini otomatik olarak seç
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Öntanımlı ray türü (yeni oyundan/oyun yüklemeden sonra): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Oyuna başlandığında veya oyun yüklendiğinde seçilecek ray cinsi. "ilk çıkan" en eski ray cinsini, "son çıkan" en yeni ray cinsini, "en çok kullanılan" ise en fazla kullanılmış olan ray cinsini seçer.
@@ -3053,9 +3053,9 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}İstenen
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Bu istasyon şehrin ulaşım haklarına sahip.
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} bu şehirdeki ulaşım haklarını satın aldı.
 
-STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Reyting
-STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}İstasyonun reytinglerini göster
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Aylık üretim ve yerel reyting
+STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Değerlendirmeler
+STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}İstasyon değerlendirmelerini göster
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Aylık üretim ve yerel değerlendirme:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} (%{COMMA})
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grupla
@@ -3498,10 +3498,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Aracı g
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Tersaneye gönder
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Uçağı hangara gönder
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Tüm vagonlarla birlikte treni kopyalar. Ctrl-tıklama emirleri paylaştırır. Shift+tıklama satın almadan tahmini maliyeti gösterir
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Karayolu aracının bir kopyasını satın alır. Ctrl+tıklama emirleri paylaştırır. Shift+tıklama satın almadan tahmini maliyeti gösterir
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Geminin bir kopyasını satın alır. Ctrl-tıklama emirleri paylaştırır. Shift+tıklama satın almadan tahmini maliyeti gösterir
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Uçağın bir kopyasını satın alır. Ctrl-tıklama emirleri paylaştırır. Shift-tıklama satın almadan tahmini maliyetigösterir
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Tüm vagonlarla birlikte treni kopyalar. Ctrl-Tıklama talimatları paylaştırır. Shift+Tıklama satın almadan tahmini maliyeti gösterir
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Karayolu aracının bir kopyasını satın alır. Ctrl+Tıklama talimatları paylaştırır. Shift+Tıklama satın almadan tahmini maliyeti gösterir
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Geminin bir kopyasını satın alır. Ctrl-Tıklama talimatları paylaştırır. Shift+Tıklama satın almadan tahmini maliyeti gösterir
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Uçağın bir kopyasını satın alır. Ctrl-Tıklama talimatları paylaştırır. Shift-Tıklama satın almadan tahmini maliyeti gösterir
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Treni sinyale uymadan ilerlemeye zorla
 
@@ -3513,10 +3513,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Başka b
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Treni ters çevir
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Aracı etrafta dolaşmaya zorla
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Trenin emirlerini göster. Ctrl-tık trenin çizelgesini gösterir
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Aracın talimatlarını göster. Ctrl-tık aracın çizelgesini gösterir
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Geminin emirlerini göster. Ctrl-tık geminin çizelgesini gösterir.
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Uçağın emirlerini göster. Ctrl-tık uçağın çizelgesini gösterir
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Trenin talimatlarını göster. Ctrl-Tık trenin çizelgesini gösterir
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Aracın talimatlarını göster. Ctrl-Tık aracın çizelgesini gösterir
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Geminin talimatlarını göster. Ctrl-Tık geminin çizelgesini gösterir.
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Uçağın talimatlarını göster. Ctrl-Tık uçağın çizelgesini gösterir
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Tren ayrıntılarını göster
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Karayolu aracı ayrıntılarını göster
@@ -3648,7 +3648,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Zaman çizelgesi
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Zaman tablosu görünümüne geç
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Talimat listesi - seçmek için komutu tıklayın. CTRL + tıklama istasyona kaydırir
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Talimat listesi - seçmek için komutu tıklayın. CTRL + tıklama istasyona kaydırır
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
@@ -3680,7 +3680,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Seçili 
 STR_ORDER_REFIT                                                 :{BLACK}Modifiye
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Bu talimatta değiştirilecek kargo türünü seçin. Değiştirmeyi kaldırmak için Ctrl ile tıklayın
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Otomatik modifiye et
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Bu emirde hangi cargo tipine otomatik modify edileceğini seçin. Ctrl+Tık ile modifye emrini kaldırın. Otomatik modifiye izin verilen araçlarda mümkündür
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Bu talimatta hangi kargo türünün otomatik onarılacağını seçin. Ctrl+Tık ile otomatik onarım talimatını kaldırın. Otomatik onarım izin verilen araçlarda mümkündür
 STR_ORDER_DROP_REFIT_AUTO                                       :Sabit kargo tipi
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Var olan kargo tipi
 
@@ -3719,16 +3719,16 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Şimdiki
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Sil
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Seçili talimatı sil
-STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Tüm emirleri sil
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Tüm talimatları sil
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Paylaşmaktan vazgeç
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Emir listesini paylaşmaktan vazgeç. Ctrl+Tık ayrıca tüm emir listesini siler
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Talimat listesini paylaşmaktan vazgeç. Ctrl+Tık ayrıca tüm talimat listesini siler
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Git
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :En yakın gara git
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :En yakın hangara git
 STR_ORDER_CONDITIONAL                                           :Duruma göre dallan
 STR_ORDER_SHARE                                                 :Emirleri paylaştır
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Seçili emrin önüne ya da listenin sonuna yeni emir ekle. Ctrl tuşuna basmak; istasyon emirlerini 'bir kargo tipini tam yükle', yol imi emirlerini 'durmaksızın', garaj emirlerini 'bakıma gir' olarak değiştirir. 'Emirleri paylaş' veya Ctrl bu aracın emirlerini seçili araçla paylaşmasını sağlar. Bir araca tıklamak o aracın emirlerini kopyalar. Bir garaj emri araca otomatik olarak bakım yapılması özelliğini kapatır
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Seçili talimatın önüne ya da listenin sonuna yeni talimat ekle. Ctrl tuşuna basmak; istasyon talimatlarını 'bir kargo tipini tam yükle', yol imi talimatlarını 'durmaksızın', garaj talimatlarını 'bakıma gir' olarak değiştirir. 'Talimatları paylaş' veya Ctrl bu aracın talimatlarını seçili araçla paylaşmasını sağlar. Bir araca tıklamak o aracın talimatlarını kopyalar. Bir garaj talimatı araca otomatik olarak bakım yapılması özelliğini kapatır
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Aynı talimatlara sahip bütün araçları göster
 
@@ -3806,7 +3806,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Emir gö
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Zaman çizelgesi - işaretlemek için bir talimata tıklayın
 
 STR_TIMETABLE_NO_TRAVEL                                         :Sefer yok
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Yolculuk (otomatik; bir sonraki manuel emir tarafından zamanlanır)
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Yolculuk (otomatik; bir sonraki elle verilmiş talimat tarafından zamanlanır)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Gezi (zamanlı değil)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :En çok {2:VELOCITY} hız ile git (zaman tablosu yok)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} boyunca yol al
@@ -4317,6 +4317,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Servis a
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... araç imha edilmiş
 
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Henüz hiçbir araç kullanılabilir değil
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}{DATE_SHORT} sonra yeni bir oyun başlat veya erken araç sağlayan NewGRF kullan
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Tehlikedeki tren sinyali geçemez...
@@ -4341,7 +4343,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... ara�
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... bu emri paylaşan bir araç bu istasyona gidemiyor
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Talimat listesi paylasilamiyor...
-STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Paylaşılan emir listesini durduramazsınız...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Paylaşılan talimat listesini durduramazsınız...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Talimat listesi kopyalanamiyor...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... önceki hedeften çok uzak
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... uçağın menzili yeterli değil

@@ -1148,7 +1148,7 @@ STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Bankrut!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} zostaje zamknięty przez wierzycieli i wszystkie udziały zostają sprzedane!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nowa firma rozpoczęła działalność!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} rozpoczyna budowę niedaleko {TOWN}!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} rozpoczyna budowę w pobliżu miasta {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} zostało przejęte przez {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Prezes)
 
@@ -1938,7 +1938,10 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Usuń ślepe za
 
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metryczne (t/tony)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Jednostka głośności: {STRING}
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperialna (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metryczna (kgf)
