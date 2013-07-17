@@ -328,9 +328,9 @@ struct TimetableWindow : Window {
 			this->SetWidgetDisabledState(WID_VT_CLEAR_SPEED, disable_speed);
 			this->SetWidgetDisabledState(WID_VT_SHARED_ORDER_LIST, !v->IsOrderListShared());
 
-			this->EnableWidget(WID_VT_START_DATE);
-			this->EnableWidget(WID_VT_RESET_LATENESS);
-			this->EnableWidget(WID_VT_AUTOFILL);
+			this->SetWidgetDisabledState(WID_VT_START_DATE, v->orders.list == NULL);
+			this->SetWidgetDisabledState(WID_VT_RESET_LATENESS, v->orders.list == NULL);
+			this->SetWidgetDisabledState(WID_VT_AUTOFILL, v->orders.list == NULL);
 		} else {
 			this->DisableWidget(WID_VT_START_DATE);
 			this->DisableWidget(WID_VT_CHANGE_TIME);
