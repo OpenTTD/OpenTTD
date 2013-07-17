@@ -1808,7 +1808,7 @@ STR_FACE_OK_TOOLTIP                                             :{BLACK}Seçimi 
 STR_FACE_MALE_BUTTON                                            :{BLACK}Erkek
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Erkek suratlarıni seç
 STR_FACE_FEMALE_BUTTON                                          :{BLACK}Bayan
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Bayan suratlarıni seç
+STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Bayan suratlarını seç
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Yeni Surat
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Rastgele surat yap
 STR_FACE_ADVANCED                                               :{BLACK}Gelişmiş
@@ -2384,7 +2384,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Yük tra
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Suyolu inşaatı
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Suyolu
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanal yap. Shift ile tıklama maliyet tahminini gösterir
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Kilit yap. Shift ile tıklama maliyet tahminini gösterir
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Yükseltme havuzu yap. Shift tuşu inşaat/maliyet tahminini gösterir
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Tersane yap (gemi satın alımı ve bakımları için). Shift ile tıklama maliyet tahminini gösterir
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}İskele inşa et. Ctrl istasyonları birleştirmeyi mümkün kılar. Shift ile tıklama maliyet tahminini gösterir
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Yerimi olarak kullanilabilecek bir şamandıra yerlestir. Shift ile tıklama maliyet tahminini gösterir
@@ -2468,7 +2468,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Şirkete
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Şehir Yapımı
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Yeni Şehir
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Yeni şehir kur. Shift+tıklama sadece tahmini maliyeti gösterir
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Yeni şehir kur. Shift+Tıklama sadece tahmini maliyeti gösterir
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Rastgele Şehir
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Rastgele bir yerde şehir kur
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Birçok rastgele şehir
@@ -3743,7 +3743,7 @@ STR_ORDER_NEAREST_DEPOT                                         :en yakın
 STR_ORDER_NEAREST_HANGAR                                        :en yakın Hangar
 STR_ORDER_TRAIN_DEPOT                                           :Tren Garı
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Karayolu Garajı
-STR_ORDER_SHIP_DEPOT                                            :Tershane
+STR_ORDER_SHIP_DEPOT                                            :Tersane
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
@@ -4078,7 +4078,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... çok
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... haritada boş yer yok
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Şehir yol yapmayacak. Yol yapımını Gelişmiş Ayarlar->Ekonomi->Şehirler'den etkinleştirebilirsiniz
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Yol çalışmaları
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Bu kasaba silinemiyor...{}Bir istasyon ya da garaj kasabaya atıfta bulunuyor ya da bir kasaba karesi kaldırılamıyor
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Bu kasaba silinemiyor...{}Bir istasyon veya garaj kasabaya atıfta bulunuyor ya da bir kasaba karesi kaldırılamıyor
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... bu şehrin merkezinde heykel için uygun bir yer yok
 
 # Industry related errors
@@ -4215,7 +4215,7 @@ STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... tram
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Buraya kanal yapılamaz...
-STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Buraya kilit yapılamaz...
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Buraya yükseltme havuzu yapılamaz...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Burada nehirler yapamazsınız...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... suya yapılmali
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... suya yapılamaz

@@ -578,21 +578,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}KM
 STR_UNITS_POWER_METRIC                                          :{COMMA}KM
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P a y ""}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P a y ""}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P "" y y}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P "" y ów}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} st{P opa, opy, óp}
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -656,6 +663,8 @@ STR_SORT_BY_LENGTH                                              :Długość
 STR_SORT_BY_LIFE_TIME                                           :Pozostały czas życia
 STR_SORT_BY_TIMETABLE_DELAY                                     :Opóźnienie rozkładu jazdy
 STR_SORT_BY_FACILITY                                            :Typ stacji
+STR_SORT_BY_WAITING_TOTAL                                       :Cały czekający ładunek
+STR_SORT_BY_WAITING_AVAILABLE                                   :Dostępny czekający ładunek
 STR_SORT_BY_RATING_MAX                                          :Towar najwyżej oceniany
 STR_SORT_BY_RATING_MIN                                          :Towar najniżej oceniany
 STR_SORT_BY_ENGINE_ID                                           :ID pojazdu (klasyczne sortowanie)
@@ -1936,12 +1945,25 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Usuwaj absurdal
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Usuń ślepe zaułki podczas sponsorowanych remontów dróg
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Jednostka prędkości: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kiedy prędkość jest pokazywana w interfejsie użytkownika, wyświetl ją w wybranych jednostkach
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperialne (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metryczne (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Jednostka mocy pojazdów: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperialne (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metryczne (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Jednostki wagi: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metryczne (t/tony)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Jednostka głośności: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperialne (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metryczne (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperialna (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metryczna (kgf)
@@ -3301,6 +3323,7 @@ STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Cele glo
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Cele globalne:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Brak -
+STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Nie dotyczy -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Cele firmy:
@@ -3373,6 +3396,14 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Pokaż o
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Miesięczna dostawa i lokalna ocena:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} ze stacji {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} przez stację {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} na stację {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} z nieznanej stacji
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} na dowolną stację
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} za pośrednictwem dowolnej stacji
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} z tej stacji
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} do tej stacji
 STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} non-stop
 
 

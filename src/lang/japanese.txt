@@ -1755,10 +1755,10 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}会社:
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}魔法のブルドーザー(産業拠点等、何でも撤去できる): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}トンネルの平面交差を許容: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}ジェット機の小型空港での墜落率を減少: {ORANGE}{STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :地域を温帯に変更
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :地域を亜寒帯に変更
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :地域を亜熱帯に変更
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :地域をおもちゃの国に変更
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :温帯
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :亜寒帯
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :亜熱帯
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :おもちゃの国
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}日付を変更: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}現在日時を変更
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}生産量変更: {ORANGE}{STRING}
@@ -3656,8 +3656,8 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 共有指�
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}直通運転
-STR_ORDER_GO_TO                                                 :各停運転し停車
-STR_ORDER_GO_NON_STOP_TO                                        :直通運転し停車
+STR_ORDER_GO_TO                                                 :各停運転
+STR_ORDER_GO_NON_STOP_TO                                        :直通運転
 STR_ORDER_GO_VIA                                                :各停運転し通過
 STR_ORDER_GO_NON_STOP_VIA                                       :直通運転し通過
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}選択した指令先にどのように向かうかを設定します
@@ -3735,8 +3735,8 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}この�
 STR_ORDER_GO_TO_WAYPOINT                                        :{WAYPOINT}を経由する
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :直通運転で{WAYPOINT}を経由する
 
-STR_ORDER_SERVICE_AT                                            :に保守回送
-STR_ORDER_SERVICE_NON_STOP_AT                                   :に保守回送(直行)
+STR_ORDER_SERVICE_AT                                            :保守回送
+STR_ORDER_SERVICE_NON_STOP_AT                                   :保守回送(直行)
 
 STR_ORDER_NEAREST_DEPOT                                         :最寄りの
 STR_ORDER_NEAREST_HANGAR                                        :最寄りの格納庫
@@ -3744,13 +3744,13 @@ STR_ORDER_TRAIN_DEPOT                                           :列車庫
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :車庫
 STR_ORDER_SHIP_DEPOT                                            :造船所
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{1:STRING}{2:STRING}{0:STRING}
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{1:DEPOT}{0:STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{1:DEPOT}へ{0:STRING}
 
 STR_ORDER_REFIT_ORDER                                           :({STRING}に改造)
 STR_ORDER_REFIT_STOP_ORDER                                      :({STRING}に改造して、運用停止)
 STR_ORDER_STOP_ORDER                                            :(運用停止)
 
-STR_ORDER_GO_TO_STATION                                         :{1:STATION}へ向かい{0:STRING} {2:STRING}
+STR_ORDER_GO_TO_STATION                                         :{1:STATION}へ{0:STRING} {2:STRING}
 
 STR_ORDER_IMPLICIT                                              :(自動)
 
