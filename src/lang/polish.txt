@@ -1945,7 +1945,7 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Usuwaj absurdal
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Usuń ślepe zaułki podczas sponsorowanych remontów dróg
 
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Jednostka prędkości: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Jednostki prędkości: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kiedy prędkość jest pokazywana w interfejsie użytkownika, wyświetl ją w wybranych jednostkach
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperialne (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metryczne (km/h)
@@ -1960,7 +1960,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Jednostki wagi:
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metryczne (t/tony)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Jednostka głośności: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Jednostki głośności: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperialne (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metryczne (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
@@ -1969,7 +1969,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperialna (lbf
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metryczna (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Jednostka wysokości: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Jednostki wysokości: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Jeśli kiedykolwiek wysokości są pokazywane w interfejsie użytkownika, pokaż je w wybranych jednostkach
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperialne (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrzyczne (m)
