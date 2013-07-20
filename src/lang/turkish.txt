@@ -318,10 +318,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Amaç li
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafikleri göster
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Şirketler ligini göster
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Yeni fabrika kur veya tüm fabrikaları listele
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Şirkete ait trenleri listele. Ctrl+Sol tık ile grup yada araç listesini açar veya kapatır
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Şirkete ait karayolu taşıtlarını listele. Ctrl+Sol tık ile grup yada araç listesini açıp kapatır
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Şirkete ait gemileri listele. Ctrl+Sol tık ile grup yada araç listesini açar veya kapatır
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Şirkete ait uçakları listele. Ctrl+Sol tık ile grup yada araç listesini açar veya kapatır
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Şirkete ait trenleri listele. Ctrl+Sol tıklama ile grup/araç listesini açar veya kapatır
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Şirkete ait karayolu taşıtlarını listele. Ctrl+Sol tıklama ile grup/araç listesini açıp kapatır
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Şirkete ait gemileri listele. Ctrl+Sol tık ile grup/araç listesini açar veya kapatır
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Şirkete ait uçakları listele. Ctrl+Sol tıklama grup/araç listesini açar veya kapatır
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Yakınlaş
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Uzaklaş
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Demiryolu yapımı
@@ -459,7 +459,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Mesaj Geçmişi
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Arazi bilgisi
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsolü aç/kapa
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsolu aç/kapa
 STR_ABOUT_MENU_AI_DEBUG                                         :YZ/Oyun betik hata ayıklama
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekran Görüntüsü
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ekran görüntüsüne tamamen yaklaşıldı
@@ -3539,9 +3539,9 @@ STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Elektrik y
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Boş yol bekleniyor
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Bir sonraki hedefe çok uzak
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Gidiyor {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{STATION} durağına gidiyor, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Talimat yok, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Gidiyor -> {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Gidilen -> {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{DEPOT}'na doğru hareket ediyor, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{DEPOT}'nda bakıma gir, {VELOCITY}
 
