@@ -88,6 +88,7 @@ static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32 reference
 		case SPET_GOAL:
 			pe.referenced_id = (GoalID)reference;
 			break;
+		default: NOT_REACHED();
 	}
 }
 

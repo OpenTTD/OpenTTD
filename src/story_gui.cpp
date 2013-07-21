@@ -535,6 +535,8 @@ public:
 					SetDParamStr(0, pe->text);
 					DrawActionElement(y_offset, right - x, line_height, GetPageElementSprite(*pe));
 					break;
+
+				default: NOT_REACHED();
 			}
 		}
 

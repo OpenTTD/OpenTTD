@@ -237,7 +237,6 @@ struct GoalListWindow : public Window {
 	void DrawListColumn(GoalColumn column, NWidgetBase *wid, uint progress_col_width) const
 	{
 		/* Get column draw area. */
-		bool rtl = _current_text_dir == TD_RTL;
 		int y = wid->pos_y + WD_FRAMERECT_TOP;
 		int x = wid->pos_x + WD_FRAMERECT_LEFT;
 		int right = x + wid->current_x - WD_FRAMERECT_RIGHT;
