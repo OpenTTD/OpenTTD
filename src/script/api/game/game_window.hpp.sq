@@ -496,8 +496,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GP_PROGRESS_TEXT,                      "WID_GP_PROGRESS_TEXT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GP_ABORT,                              "WID_GP_ABORT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GOAL_CAPTION,                          "WID_GOAL_CAPTION");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GOAL_GOAL,                             "WID_GOAL_GOAL");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GOAL_PROGRESS,                         "WID_GOAL_PROGRESS");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GOAL_LIST,                             "WID_GOAL_LIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GOAL_SCROLLBAR,                        "WID_GOAL_SCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GQ_CAPTION,                            "WID_GQ_CAPTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GQ_QUESTION,                           "WID_GQ_QUESTION");

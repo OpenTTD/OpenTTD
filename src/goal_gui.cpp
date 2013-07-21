@@ -27,6 +27,12 @@
 
 #include "table/strings.h"
 
+/** Goal list columns. */
+enum GoalColumn {
+	GC_GOAL = 0, ///< Goal text column.
+	GC_PROGRESS, ///< Goal progress column.
+};
+
 /** Window for displaying goals. */
 struct GoalListWindow : public Window {
 	Scrollbar *vscroll; ///< Reference to the scrollbar widget.
@@ -53,9 +59,9 @@ struct GoalListWindow : public Window {
 
 	/* virtual */ void OnClick(Point pt, int widget, int click_count)
 	{
-		if (widget != WID_GOAL_GOAL && widget != WID_GOAL_PROGRESS) return;
+		if (widget != WID_GOAL_LIST) return;
 
-		int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GOAL_GOAL, WD_FRAMERECT_TOP);
+		int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GOAL_LIST, WD_FRAMERECT_TOP);
 		int num = 0;
 		const Goal *s;
 		FOR_ALL_GOALS(s) {
@@ -153,24 +159,8 @@ struct GoalListWindow : public Window {
 
 	/* virtual */ void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget != WID_GOAL_GOAL && widget != WID_GOAL_PROGRESS) return;
+		if (widget != WID_GOAL_LIST) return;
 		Dimension d = maxdim(GetStringBoundingBox(STR_GOALS_GLOBAL_TITLE), GetStringBoundingBox(STR_GOALS_COMPANY_TITLE));
-
-		if (widget == WID_GOAL_PROGRESS) {
-			/* Get max progress width. */
-			d.width = 0;
-			Goal *s;
-			FOR_ALL_GOALS(s) {
-				if (s->progress != NULL) {
-					SetDParamStr(0, s->progress);
-					Dimension goal_d = GetStringBoundingBox(STR_GOALS_PROGRESS);
-
-					if (goal_d.width > d.width) {
-						d.width = goal_d.width;
-					}
-				}
-			}
-		}
 
 		resize->height = d.height;
 
@@ -189,29 +179,36 @@ struct GoalListWindow : public Window {
 	 * @param y Vertical position of the top edge of the window.
 	 * @param right Right edge of the text line to draw.
 	 * @param global_section Whether the global goals are printed.
+	 * @param column Which column to draw.
 	 */
-	void DrawPartialGoalList(int widget, int &pos, const int cap, int x, int y, int right, bool global_section) const
+	void DrawPartialGoalList(int &pos, const int cap, int x, int y, int right, uint progress_col_width, bool global_section, GoalColumn column) const
 	{
-		if (widget == WID_GOAL_GOAL && IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, global_section ? STR_GOALS_GLOBAL_TITLE : STR_GOALS_COMPANY_TITLE);
+		if (column == GC_GOAL && IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, global_section ? STR_GOALS_GLOBAL_TITLE : STR_GOALS_COMPANY_TITLE);
 		pos++;
+
+		bool rtl = _current_text_dir == TD_RTL;
 
 		uint num = 0;
 		const Goal *s;
 		FOR_ALL_GOALS(s) {
-			if (global_section ? s->company == INVALID_COMPANY : s->company == this->window_number && s->company != INVALID_COMPANY) {
+			if (global_section ? s->company == INVALID_COMPANY : (s->company == this->window_number && s->company != INVALID_COMPANY)) {
 				if (IsInsideMM(pos, 0, cap)) {
-					switch (widget) {
-						case WID_GOAL_GOAL:
+					switch (column) {
+						case GC_GOAL: {
 							/* Display the goal. */
 							SetDParamStr(0, s->text);
-							DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_GOALS_TEXT);
+							uint width_reduction = progress_col_width > 0 ? progress_col_width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT : 0;
+							DrawString(x + (rtl ? width_reduction : 0), right - (rtl ? 0 : width_reduction), y + pos * FONT_HEIGHT_NORMAL, STR_GOALS_TEXT);
 							break;
+						}
 
-						case WID_GOAL_PROGRESS:
+						case GC_PROGRESS:
 							if (s->progress != NULL) {
 								SetDParamStr(0, s->progress);
 								StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
-								DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, str, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
+								int progress_x = x;
+								int progress_right = rtl ? x + progress_col_width : right;
+								DrawString(progress_x, progress_right, y + pos * FONT_HEIGHT_NORMAL, str, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
 							}
 							break;
 					}
@@ -221,7 +218,7 @@ struct GoalListWindow : public Window {
 			}
 		}
 
-		if (widget == WID_GOAL_GOAL && num == 0) {
+		if (column == GC_GOAL && num == 0) {
 			if (IsInsideMM(pos, 0, cap)) {
 				StringID str = !global_section && this->window_number == INVALID_COMPANY ? STR_GOALS_SPECTATOR_NONE : STR_GOALS_NONE;
 				DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, str);
@@ -230,28 +227,60 @@ struct GoalListWindow : public Window {
 		}
 	}
 
-	/* virtual */ void DrawWidget(const Rect &r, int widget) const
+	/**
+	 * Draws a given column of the goal list.
+	 * @param column Which column to draw.
+	 * @wid Pointer to the goal list widget.
+	 * @progress_col_width Width of the progress column.
+	 * @return max width of drawn text
+	 */
+	void DrawListColumn(GoalColumn column, NWidgetBase *wid, uint progress_col_width) const
 	{
-		if (widget != WID_GOAL_GOAL && widget != WID_GOAL_PROGRESS) return;
-
-		int right = r.right - WD_FRAMERECT_RIGHT;
-		int y = r.top + WD_FRAMERECT_TOP;
-		int x = r.left + WD_FRAMERECT_LEFT;
+		/* Get column draw area. */
+		bool rtl = _current_text_dir == TD_RTL;
+		int y = wid->pos_y + WD_FRAMERECT_TOP;
+		int x = wid->pos_x + WD_FRAMERECT_LEFT;
+		int right = x + wid->current_x - WD_FRAMERECT_RIGHT;
 
 		int pos = -this->vscroll->GetPosition();
 		const int cap = this->vscroll->GetCapacity();
 
 		/* Draw partial list with global goals. */
-		DrawPartialGoalList(widget, pos, cap, x, y, right, true);
+		DrawPartialGoalList(pos, cap, x, y, right, progress_col_width, true, column);
 
 		/* Draw partial list with company goals. */
 		pos++;
-		DrawPartialGoalList(widget, pos, cap, x, y, right, false);
+		DrawPartialGoalList(pos, cap, x, y, right, progress_col_width, false, column);
+	}
+
+	/* virtual */ void OnPaint()
+	{
+		this->DrawWidgets();
+
+		/* Calculate progress column width. */
+		uint max_width = 0;
+		Goal *s;
+		FOR_ALL_GOALS(s) {
+			if (s->progress != NULL) {
+				SetDParamStr(0, s->progress);
+				StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
+				uint str_width = GetStringBoundingBox(str).width;
+				if (str_width > max_width) max_width = str_width;
+			}
+		}
+
+		NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_GOAL_LIST);
+		uint progress_col_width = min(max_width, wid->current_x);
+
+		/* Draw goal list. */
+		this->DrawListColumn(GC_PROGRESS, wid, progress_col_width);
+		this->DrawListColumn(GC_GOAL, wid, progress_col_width);
+
 	}
 
 	/* virtual */ void OnResize()
 	{
-		this->vscroll->SetCapacityFromWidget(this, WID_GOAL_GOAL);
+		this->vscroll->SetCapacityFromWidget(this, WID_GOAL_LIST);
 	}
 
 	/**
@@ -263,6 +292,7 @@ struct GoalListWindow : public Window {
 	{
 		if (!gui_scope) return;
 		this->vscroll->SetCount(this->CountLines());
+		this->SetWidgetDirty(WID_GOAL_LIST);
 	}
 };
 
@@ -275,14 +305,9 @@ static const NWidgetPart _nested_goals_list_widgets[] = {
 		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
-	NWidget(NWID_HORIZONTAL), SetFill(1, 1),
-		NWidget(WWT_PANEL, COLOUR_BROWN), SetDataTip(0x0, STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetResize(1, 1), SetFill(1, 0), SetScrollbar(WID_GOAL_SCROLLBAR),
-			NWidget(NWID_VERTICAL), SetPIP(WD_FRAMERECT_TOP, 4, WD_FRAMETEXT_BOTTOM),
-				NWidget(NWID_HORIZONTAL), SetPIP(2, 4, 2),
-					NWidget(WWT_EMPTY, COLOUR_GREY, WID_GOAL_GOAL), SetResize(1, 1), SetMinimalTextLines(2, 0), SetFill(1, 0),
-					NWidget(WWT_EMPTY, COLOUR_GREY, WID_GOAL_PROGRESS), SetResize(0, 1), SetMinimalTextLines(2, 0), SetFill(0, 1),
-				EndContainer(),
-			EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_BROWN), SetDataTip(0x0, STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetScrollbar(WID_GOAL_SCROLLBAR),
+			NWidget(WWT_EMPTY, COLOUR_GREY, WID_GOAL_LIST), SetResize(1, 1), SetMinimalTextLines(2, 0), SetFill(1, 1), SetPadding(WD_FRAMERECT_TOP, 2, WD_FRAMETEXT_BOTTOM, 2),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_GOAL_SCROLLBAR),
