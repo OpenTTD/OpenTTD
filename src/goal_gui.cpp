@@ -27,8 +27,9 @@
 
 #include "table/strings.h"
 
-struct GoalListWindow : Window {
-	Scrollbar *vscroll;
+/** Window for displaying goals. */
+struct GoalListWindow : public Window {
+	Scrollbar *vscroll; ///< Reference to the scrollbar widget.
 
 	GoalListWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
@@ -38,7 +39,7 @@ struct GoalListWindow : Window {
 		this->OnInvalidateData(0);
 	}
 
-	virtual void SetStringParameters(int widget) const
+	/* virtual */ void SetStringParameters(int widget) const
 	{
 		if (widget != WID_GOAL_CAPTION) return;
 
@@ -50,7 +51,7 @@ struct GoalListWindow : Window {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	/* virtual */ void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget != WID_GOAL_GOAL && widget != WID_GOAL_PROGRESS) return;
 
@@ -69,11 +70,11 @@ struct GoalListWindow : Window {
 		}
 
 		if (num == 0) {
-			y--; // "None"
+			y--; // "None" line.
 			if (y < 0) return;
 		}
 
-		y -= 2; // "Company specific goals:"
+		y -= 2; // "Company specific goals:" line.
 		if (y < 0) return;
 
 		FOR_ALL_GOALS(s) {
@@ -87,9 +88,13 @@ struct GoalListWindow : Window {
 		}
 	}
 
+	/**
+	 * Handle clicking at a goal.
+	 * @param s @Goal clicked at.
+	 */
 	void HandleClick(const Goal *s)
 	{
-		/* determine dst coordinate for goal and try to scroll to it */
+		/* Determine dst coordinate for goal and try to scroll to it. */
 		TileIndex xy;
 		switch (s->type) {
 			case GT_NONE: return;
@@ -122,11 +127,11 @@ struct GoalListWindow : Window {
 
 	/**
 	 * Count the number of lines in this window.
-	 * @return the number of lines
+	 * @return the number of lines.
 	 */
 	uint CountLines()
 	{
-		/* Count number of (non) awarded goals */
+		/* Count number of (non) awarded goals. */
 		uint num_global = 0;
 		uint num_company = 0;
 		const Goal *s;
@@ -138,7 +143,7 @@ struct GoalListWindow : Window {
 			}
 		}
 
-		/* Count the 'none' lines */
+		/* Count the 'none' lines. */
 		if (num_global  == 0) num_global = 1;
 		if (num_company == 0) num_company = 1;
 
@@ -146,7 +151,7 @@ struct GoalListWindow : Window {
 		return 3 + num_global + num_company;
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	/* virtual */ void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		if (widget != WID_GOAL_GOAL && widget != WID_GOAL_PROGRESS) return;
 		Dimension d = maxdim(GetStringBoundingBox(STR_GOALS_GLOBAL_TITLE), GetStringBoundingBox(STR_GOALS_COMPANY_TITLE));
@@ -177,7 +182,13 @@ struct GoalListWindow : Window {
 
 	/**
 	 * Draws either the global goals or the company goal section.
-	 * This is a helper method for DrawWidget.
+	 * This is a helper method for #DrawWidget.
+	 * @param pos [inout] Vertical line number to draw.
+	 * @param cap Number of lines to draw in the window.
+	 * @param x Left edge of the text line to draw.
+	 * @param y Vertical position of the top edge of the window.
+	 * @param right Right edge of the text line to draw.
+	 * @param global_section Whether the global goals are printed.
 	 */
 	void DrawPartialGoalList(int widget, int &pos, const int cap, int x, int y, int right, bool global_section) const
 	{
@@ -199,7 +210,8 @@ struct GoalListWindow : Window {
 						case WID_GOAL_PROGRESS:
 							if (s->progress != NULL) {
 								SetDParamStr(0, s->progress);
-								DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
+								StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
+								DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, str, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
 							}
 							break;
 					}
@@ -210,17 +222,17 @@ struct GoalListWindow : Window {
 		}
 
 		if (widget == WID_GOAL_GOAL && num == 0) {
-			if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, !global_section && this->window_number == INVALID_COMPANY ? STR_GOALS_SPECTATOR_NONE : STR_GOALS_NONE);
+			if (IsInsideMM(pos, 0, cap)) {
+				StringID str = !global_section && this->window_number == INVALID_COMPANY ? STR_GOALS_SPECTATOR_NONE : STR_GOALS_NONE;
+				DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, str);
+			}
 			pos++;
 		}
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	/* virtual */ void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget != WID_GOAL_GOAL && widget != WID_GOAL_PROGRESS) return;
-
-		YearMonthDay ymd;
-		ConvertDateToYMD(_date, &ymd);
 
 		int right = r.right - WD_FRAMERECT_RIGHT;
 		int y = r.top + WD_FRAMERECT_TOP;
@@ -229,15 +241,15 @@ struct GoalListWindow : Window {
 		int pos = -this->vscroll->GetPosition();
 		const int cap = this->vscroll->GetCapacity();
 
-		/* Draw partial list with global goals */
+		/* Draw partial list with global goals. */
 		DrawPartialGoalList(widget, pos, cap, x, y, right, true);
 
-		/* Draw partial list with company goals */
+		/* Draw partial list with company goals. */
 		pos++;
 		DrawPartialGoalList(widget, pos, cap, x, y, right, false);
 	}
 
-	virtual void OnResize()
+	/* virtual */ void OnResize()
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_GOAL_GOAL);
 	}
@@ -247,13 +259,14 @@ struct GoalListWindow : Window {
 	 * @param data Information about the changed data.
 	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
 	 */
-	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	/* virtual */ void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
 		if (!gui_scope) return;
 		this->vscroll->SetCount(this->CountLines());
 	}
 };
 
+/** Widgets of the #GoalListWindow. */
 static const NWidgetPart _nested_goals_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -285,6 +298,10 @@ static WindowDesc _goals_list_desc(
 	_nested_goals_list_widgets, lengthof(_nested_goals_list_widgets)
 );
 
+/**
+ * Open a goal list window.
+ * @param company %Company to display the goals for, use #INVALID_COMPANY to display global goals.
+ */
 void ShowGoalsList(CompanyID company)
 {
 	if (!Company::IsValidID(company)) company = (CompanyID)INVALID_COMPANY;
@@ -292,20 +309,19 @@ void ShowGoalsList(CompanyID company)
 	AllocateWindowDescFront<GoalListWindow>(&_goals_list_desc, company);
 }
 
-
-
-struct GoalQuestionWindow : Window {
-	char *question;
-	int buttons;
-	int button[3];
-	byte type;
+/** Ask a question about a goal. */
+struct GoalQuestionWindow : public Window {
+	char *question; ///< Question to ask (private copy).
+	int buttons;    ///< Number of valid buttons in #button.
+	int button[3];  ///< Buttons to display.
+	byte type;      ///< Type of question.
 
 	GoalQuestionWindow(WindowDesc *desc, WindowNumber window_number, byte type, uint32 button_mask, const char *question) : Window(desc), type(type)
 	{
 		assert(type < GOAL_QUESTION_TYPE_COUNT);
 		this->question = strdup(question);
 
-		/* Figure out which buttons we have to enable */
+		/* Figure out which buttons we have to enable. */
 		uint bit;
 		int n = 0;
 		FOR_EACH_SET_BIT(bit, button_mask) {
@@ -326,7 +342,7 @@ struct GoalQuestionWindow : Window {
 		free(this->question);
 	}
 
-	virtual void SetStringParameters(int widget) const
+	/* virtual */ void SetStringParameters(int widget) const
 	{
 		switch (widget) {
 			case WID_GQ_CAPTION:
@@ -347,7 +363,7 @@ struct GoalQuestionWindow : Window {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	/* virtual */ void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case WID_GQ_BUTTON_1:
@@ -367,7 +383,7 @@ struct GoalQuestionWindow : Window {
 		}
 	}
 
-	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	/* virtual */ void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		if (widget != WID_GQ_QUESTION) return;
 
@@ -375,7 +391,7 @@ struct GoalQuestionWindow : Window {
 		size->height = GetStringHeight(STR_JUST_RAW_STRING, size->width) + WD_PAR_VSEP_WIDE;
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	/* virtual */ void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget != WID_GQ_QUESTION) return;
 
@@ -384,6 +400,7 @@ struct GoalQuestionWindow : Window {
 	}
 };
 
+/** Widgets of the goal question window. */
 static const NWidgetPart _nested_goal_question_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
@@ -416,7 +433,13 @@ static WindowDesc _goal_question_list_desc(
 	_nested_goal_question_widgets, lengthof(_nested_goal_question_widgets)
 );
 
-
+/**
+ * Display a goal question.
+ * @param id Window number to use.
+ * @param type Type of question.
+ * @param button_mask Buttons to display.
+ * @param question Question to ask.
+ */
 void ShowGoalQuestion(uint16 id, byte type, uint32 button_mask, const char *question)
 {
 	new GoalQuestionWindow(&_goal_question_list_desc, id, type, button_mask, question);
