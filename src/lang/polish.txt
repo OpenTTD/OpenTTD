@@ -1944,6 +1944,12 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Średni rozmiar
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Usuwaj absurdalne fragmenty ulicy podczas rekonstrukcji dróg: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Usuń ślepe zaułki podczas sponsorowanych remontów dróg
 
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manualnie
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymetrycznie
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symetrycznie
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Tryb dystrybucji dla pasażerów: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Tryb dystrybucji dla poczty: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Tryb dystrybucji dla innych typów ładunku: {STRING}
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Jednostki prędkości: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kiedy prędkość jest pokazywana w interfejsie użytkownika, wyświetl ją w wybranych jednostkach
@@ -1981,6 +1987,7 @@ STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstru
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Pojazdy
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stacje
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomia
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Dystrybucja Ładunku (Cargo Distribution)
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Rywale
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Opcje wyświetlania
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakcja
@@ -3365,6 +3372,13 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik na usłudze żeby wyśrodkować widok na fabrykę/miasto. Ctrl+klik otwiera nowy podgląd na pozycji fabryki/miasta
 
 # Story book window
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Strona {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Skocz na specyficzną stronę wybierając ją z listy.
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Wstecz
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Idź na poprzednią stronę
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Dalej
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Idź na następną stronę
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nazwa stacji - kliknij na nazwie aby wyśrodkować główny widok na stacji. Ctrl+klik otwiera nowy podgląd na lokację stacji
@@ -3396,6 +3410,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Pokaż o
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Miesięczna dostawa i lokalna ocena:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Grupuj według
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} ze stacji {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} przez stację {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} na stację {STATION}

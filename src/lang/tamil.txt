@@ -215,6 +215,8 @@ STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} கே�
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} லிட்டர்{P "" கள்}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} அடி
@@ -1393,21 +1395,33 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :ஆட்டத
 
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :வேக அலகுகள்: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :இம்பீரியல் (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :மெட்ரிக் (கி.மீ/மணிநேரம்)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (மீ/நொடி)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :வாகன திறன் பிரிவுகள்: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :இம்பீரியல் (கு.ஆ)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :மெட்ரிக் (கு.ஆ)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (கி.வாட்)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :எடை பிரிவுகள்: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :இம்பீரியல் (சுருக்கம் ட/டன்)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :மெட்ரிக் (ட/டன்)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (கி.கி)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :கன அளவு பிரிவுகள்: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :இம்பீரியல் (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :மெட்ரிக் (I)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (மீ³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :இம்பீரியல் (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :மெட்ரிக் (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :உயரங்கள் அலகுகள்: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :இம்பீரியல் (அடி)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :மெட்ரிக் (மீ)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (மீ)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}கட்டுமானம்
@@ -2696,6 +2710,10 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}நி�
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}மாத வினியோகம் மற்றும் பகுதி தர மதிப்பீடு:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+STR_STATION_VIEW_WAITING_STATION                                :நிலையம்: காத்திருக்கிறது
+STR_STATION_VIEW_WAITING_AMOUNT                                 :தொகை: காத்திருக்கிறது
+STR_STATION_VIEW_PLANNED_STATION                                :நிலையம்: திட்டமிடப்பட்டது
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :தொகை: திட்டமிடப்பட்டது
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} {STATION} இலிருந்து
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} {STATION} வழியாக
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} {STATION} இந்கு
@@ -3892,6 +3910,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}சர�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... வாகனம் அழிக்கப்பட்டுள்ளது
 
+STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}தற்போது எந்த வாகனங்களும் கிடையாது
+STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}{DATE_SHORT} இற்கு பிறகு புதிய ஆட்டம் ஒன்றினைத் தொடங்கு அல்லது NewGRF ஒன்றினைப் பயன்படுத்தி பிற்கால வாகனங்களைப் பயன்படுத்து
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}இரயில் சிக்னலைத் தாண்டிச் செல்ல முடியாது...
