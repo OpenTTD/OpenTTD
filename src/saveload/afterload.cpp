@@ -2818,6 +2818,7 @@ bool AfterLoadGame()
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();
 	AfterLoadCompanyStats();
+	AfterLoadStoryBook();
 
 	GamelogPrintDebug(1);
 

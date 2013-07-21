@@ -12,6 +12,7 @@
 #include "stdafx.h"
 #include "story_base.h"
 #include "core/pool_func.hpp"
+#include "cmd_helper.h"
 #include "command_func.h"
 #include "company_base.h"
 #include "company_func.h"
@@ -44,7 +45,7 @@ INSTANTIATE_POOL_METHODS(StoryPage)
  * @param text The text parameter of the DoCommand proc
  * @return true, if and only if the given parameters are valid for the given page elment type and page id.
  */
-static bool VerifyElementContentParameters(uint32 page_id, StoryPageElementType type, TileIndex tile, uint32 reference, const char *text)
+static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElementType type, TileIndex tile, uint32 reference, const char *text)
 {
 	switch (type) {
 		case SPET_TEXT:
@@ -140,7 +141,7 @@ CommandCost CmdCreateStoryPage(TileIndex tile, DoCommandFlag flags, uint32 p1, u
  * @param flags type of operation
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0 -  15) - The page which the element belongs to.
- *        (bit  16 -  31) - Page element type
+ *        (bit  16 -  23) - Page element type
  * @param p2 Id of referenced object
  * @param text Text content in case it is a text or location page element
  * @return the cost of this operation or an error
@@ -150,7 +151,7 @@ CommandCost CmdCreateStoryPageElement(TileIndex tile, DoCommandFlag flags, uint3
 	if (!StoryPageElement::CanAllocateItem()) return CMD_ERROR;
 
 	StoryPageID page_id = (CompanyID)GB(p1, 0, 16);
-	StoryPageElementType type = (StoryPageElementType) GB(p1, 16, 16);
+	StoryPageElementType type = Extract<StoryPageElementType, 16, 8>(p1);
 
 	/* Allow at most 128 elements per page. */
 	uint16 element_count = 0;
@@ -221,7 +222,7 @@ CommandCost CmdUpdateStoryPageElement(TileIndex tile, DoCommandFlag flags, uint3
  * Update title of a story page.
  * @param tile unused.
  * @param flags type of operation
- * @param p1 StoryPageID to update.
+ * @param p1 = (bit 0 - 15) - StoryPageID to update.
  * @param p2 unused
  * @param text title text of the story page.
  * @return the cost of this operation or an error
@@ -229,7 +230,7 @@ CommandCost CmdUpdateStoryPageElement(TileIndex tile, DoCommandFlag flags, uint3
 CommandCost CmdSetStoryPageTitle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
-	StoryPageID page_id = (StoryPageID)p1;
+	StoryPageID page_id = (StoryPageID)GB(p1, 0, 16);
 	if (!StoryPage::IsValidID(page_id)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -252,7 +253,7 @@ CommandCost CmdSetStoryPageTitle(TileIndex tile, DoCommandFlag flags, uint32 p1,
  * view the story page.
  * @param tile unused.
  * @param flags type of operation
- * @param p1 StoryPageID to show.
+ * @param p1 = (bit 0 - 15) - StoryPageID to show.
  * @param p2 unused
  * @param text unused
  * @return the cost of this operation or an error
@@ -260,11 +261,12 @@ CommandCost CmdSetStoryPageTitle(TileIndex tile, DoCommandFlag flags, uint32 p1,
 CommandCost CmdShowStoryPage(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
-	if (!StoryPage::IsValidID(p1)) return CMD_ERROR;
+	StoryPageID page_id = (StoryPageID)GB(p1, 0, 16);
+	if (!StoryPage::IsValidID(page_id)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		StoryPage *g = StoryPage::Get(p1);
-		if ((g->company != INVALID_COMPANY && g->company == _local_company) || (g->company == INVALID_COMPANY && Company::IsValidID(_local_company))) ShowStoryBook(_local_company, p1);
+		StoryPage *g = StoryPage::Get(page_id);
+		if ((g->company != INVALID_COMPANY && g->company == _local_company) || (g->company == INVALID_COMPANY && Company::IsValidID(_local_company))) ShowStoryBook(_local_company, page_id);
 	}
 
 	return CommandCost();
@@ -273,7 +275,7 @@ CommandCost CmdShowStoryPage(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  * Remove a story page and associated story page elements.
  * @param tile unused.
  * @param flags type of operation
- * @param p1 StoryPageID to remove.
+ * @param p1 = (bit 0 - 15) - StoryPageID to remove.
  * @param p2 unused.
  * @param text unused.
  * @return the cost of this operation or an error

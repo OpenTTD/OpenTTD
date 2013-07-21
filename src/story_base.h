@@ -28,10 +28,16 @@ extern uint32 _story_page_next_sort_value;
  * Each story page element is one of these types.
  */
 enum StoryPageElementType {
-	SPET_TEXT,     ///< A text element.
+	SPET_TEXT = 0, ///< A text element.
 	SPET_LOCATION, ///< An element that references a tile along with a one-line text.
 	SPET_GOAL,     ///< An element that references a goal.
+	SPET_END,
+	INVALID_SPET = 0xFF,
 };
+
+/** Define basic enum properties */
+template <> struct EnumPropsT<StoryPageElementType> : MakeEnumPropsT<StoryPageElementType, byte, SPET_TEXT, SPET_END, INVALID_SPET, 8> {};
+typedef TinyEnumT<StoryPageElementType> StoryPageElementTypeByte; ///< typedefing-enumification of Direction
 
 /**
  * Struct about story page elements.
@@ -40,8 +46,8 @@ enum StoryPageElementType {
  **/
 struct StoryPageElement : StoryPageElementPool::PoolItem<&_story_page_element_pool> {
 	uint32 sort_value;   ///< A number that increases for every created story page element. Used for sorting. The id of a story page element is the pool index.
-	uint16 page; ///< Id of the page which the page element belongs to
-	StoryPageElementType type; ///< Type of page element
+	StoryPageID page; ///< Id of the page which the page element belongs to
+	StoryPageElementTypeByte type; ///< Type of page element
 
 	uint32 referenced_id; ///< Id of referenced object (location, goal etc.)
 	char *text;           ///< Static content text of page element
