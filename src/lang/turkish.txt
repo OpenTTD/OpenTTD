@@ -806,7 +806,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY} bölgesine böcek sürüsü girdi !{} Üretim %50 düştü
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{1:INDUSTRY}'nin {BLACK}{0:STRING} üretimi %{2:COMMA} azaldı!
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} tren hangarında bekliyor
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} tren garajda bekliyor
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} garajda bekliyor
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} tersanede bekliyor
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} hangarda bekliyor
@@ -3305,7 +3305,7 @@ STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Yeni Maglev
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Trenler
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Yeni Karayolu Araçları
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Yeni gemi
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Yeni Uçak
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Yeni Hava Aracı
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Fiyat: {GOLD}{CURRENCY_LONG}{BLACK} Ağırlık: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hız: {GOLD}{VELOCITY}{BLACK} Güç: {GOLD}{POWER}
@@ -3394,12 +3394,12 @@ STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Hangarda
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Yeni Araç
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Yeni Araçlar
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Yeni gemi
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Yeni Uçak
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Yeni Hava Aracı
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Yeni tren satın al
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Yeni yol aracı satın al
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Yeni gemi satın al
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Yeni uçak satın al
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Yeni hava aracı satın al
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Treni kopyala
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Aracı Kopyala
