@@ -1567,12 +1567,42 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Bỏ đi nhữn
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Xóa bỏ những khúc đường cụt trong khi đầu tư cải tạo lại đường
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Cập nhật đồ thị phân phối mỗi {STRING} ngày
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :bằng tay
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :bất đối xứng
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :đối xứng
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Đơn vị tốc độ: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Khi thể hiện tốc độ trên giao diện, thể hiện nó bằng đơn vị đã chọn.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metric (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Đơn vị công suất phương tiện: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Khi thể hiện công suất phương tiện, thể hiện nó bằng đơn vị đã chọn.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperial (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metric (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Đơn vị khối lượng: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Khi hiển thị khối lượng trên giao diện, thể hiện nó bằng đơn vị đã chọn.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (short t/ton)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metric (t/tonne)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Đơn vị dung tích: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Khi dung tích thể hiện, hiển thị nó trong đơn vị đã chọn.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metric (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Đơn vị gia tốc: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Mỗi đơn vị lực, cũng là gia tốc, hiển thị trên giao diện như là đơn vị đã chọn.
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metric (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Đơn vị độ cao: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Khi độ cao thể hiện trên giao diện, thì hiển thị nó trên đơn vị đã chọn.
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Hoàng Gia (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -3009,6 +3039,10 @@ STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Sản l�
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Nhóm bằng
+STR_STATION_VIEW_WAITING_STATION                                :Nhà ga: chờ đợi
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Khối lượng: đang chờ
+STR_STATION_VIEW_PLANNED_STATION                                :Nhà ga: kế hoạch
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Khối lượng: dự kiến
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} từ {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} qua {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} đến {STATION}
@@ -3772,6 +3806,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Bảng l
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Bảng lịch trình sẽ bắt đầu lúc {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Ngày bắt đầu
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Lựa chọn ngày bắt đầu trong bảng lịch trình này. Ctrl+Click chọn ngày bắt đầu trong bảng lịch trình và phân bổ nó cho tất cả các phương tiện chia sẻ lộ trình này, nếu như lộ trình đã lên lịch đầy đủ.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Đổi thời gian
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Thay đổi thời lượng của điểm lộ trình được phép sử dụng
