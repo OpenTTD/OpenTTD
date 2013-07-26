@@ -1158,7 +1158,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Vel á hvørjar
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Á vinstru síðu
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Á førara síðuni
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Á høgru síðu
-STR_CONFIG_SETTING_SHOWFINANCES                                 :Vís fíggjar vindeyga tá ári endar: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :Vís fíggjarglugga, tá árið endar: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Um gilda, kemur fíggjar vindeyga fram við árslok hvørt ár so tað er lætt at fáa fíggjarligt innlit í fyritøkuni
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nýggj boð eru vanligani 'non-stop': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Vanligani støðgar eitt flutningstól við allar støðir ta kemur framvi. Um henda áseting er gilda, koyra flutningstól gjøgnum støðir á veg til síni endamál uttan at steðga. Legg til merkis, henda ásetingin lýsir einans eitt vanligt virði fyri nýggj boð. Einstøk boð kunnu kortini skilligani ásetast báðar atburðir
@@ -1167,7 +1167,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Áset hvar við
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :nær endanum
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :miðjuni
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :fjart endanum
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Akfars bíðirað (við kvantum ávirkan): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Akfar í bíðirøð (við kvantum ávirkan): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Akfør bíða frammanfyri upptiknar veg steðgir til teir eru tómir
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Skotra vindeyga tá músin er við eggina: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Um gilda, byrja sýnisgluggar at skrulla tá músin er nær við egginar á vindeyganum
