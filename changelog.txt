@@ -1,3 +1,8 @@
+1.3.2 (2013-07-27)
+------------------------------------------------------------------------
+(None)
+
+
 1.3.2-RC2 (2013-07-13)
 ------------------------------------------------------------------------
 - Fix: [Admin] End-of-rcon data could not be determined reliably for any rcon command [FS#5643] (r25598, r25588, r25587)
@@ -6,7 +11,7 @@
 - Fix: [Admin] Ensure that sent and received length of json strings are the same [FS#5646] (r25590, r25589)
 - Fix: [Squirrel] Stack overflow did not show an error, due to the stack to throw the error already being full [FS#5320] (r25585)
 - Fix: [Script] Documentation implied that XXList::AddItem has a default for value if it isn't filled in [FS#5638] (r25579, r25577)
-- Fix: Layouter caused significant slowdown with text heavy windows, cache it to make it managable (r25574, r25570, r25569, r25567, r25564)
+- Fix: Layouter caused significant slowdown with text heavy windows, cache it to make it manageable (r25574, r25570, r25569, r25567, r25564)
 - Fix: Make content list appear faster (r25573)
 - Fix: Non-ICU layouter started new lines with the space which triggered the linebreak (r25568)
 - Fix: If the next order cannot be resolved, reset the current order property instead of leaving it in an intermediate state [FS#5633] (r25562)
