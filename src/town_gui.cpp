@@ -692,7 +692,7 @@ private:
 		uint32 a_population = (*a)->cache.population;
 		uint32 b_population = (*b)->cache.population;
 		if (a_population == b_population) return TownDirectoryWindow::TownNameSorter(a, b);
-		return (a_population > b_population) ? -1 : 1;
+		return (a_population < b_population) ? -1 : 1;
 	}
 
 	/** Sort by town rating */
@@ -706,7 +706,7 @@ private:
 				int16 a_rating = (*a)->ratings[_local_company];
 				int16 b_rating = (*b)->ratings[_local_company];
 				if (a_rating == b_rating) return TownDirectoryWindow::TownNameSorter(a, b);
-				return (a_rating > b_rating) ? -1 : 1;
+				return (a_rating < b_rating) ? -1 : 1;
 			}
 			return before;
 		}
