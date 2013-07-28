@@ -278,10 +278,10 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Filtri t
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sisesta filterkirjend
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sisesta märksõna mida loendist otsida
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Sorteerimise järjekorra valimine (kahanev/kasvav)
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Sorteerimistingimuse valimine
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vali järjestusviis (kahanev/kasvav)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Vali järjestusviis
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Vali sõelumisalused
-STR_BUTTON_SORT_BY                                              :{BLACK}Sorteeri:
+STR_BUTTON_SORT_BY                                              :{BLACK}Järjestusviis:
 STR_BUTTON_LOCATION                                             :{BLACK}Asukoht
 STR_BUTTON_RENAME                                               :{BLACK}Nimevahetus
 
@@ -330,7 +330,7 @@ STR_SORT_BY_MAX_SPEED                                           :Tippkiirus
 STR_SORT_BY_MODEL                                               :Mudel
 STR_SORT_BY_VALUE                                               :Väärtus
 STR_SORT_BY_LENGTH                                              :Pikkus
-STR_SORT_BY_LIFE_TIME                                           :Allesjäänud eluaeg
+STR_SORT_BY_LIFE_TIME                                           :Amortiseerumiseni
 STR_SORT_BY_TIMETABLE_DELAY                                     :Hilinemine sõiduplaanis
 STR_SORT_BY_FACILITY                                            :Jaama tüüp
 STR_SORT_BY_WAITING_TOTAL                                       :Kaupa kokku
@@ -351,23 +351,23 @@ STR_SORT_BY_POPULATION                                          :Rahvaarv
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Seisata mäng
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Mängu aja kiirendamine
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Valikud
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Seadistus
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Mängu salvestamine/laadimine, mängust lahkumine, väljumine
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Kuva kaart
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Kuva linnade nimistu
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Kuva toetused
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Ava kaart, vaateaken või siltide loend
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Ava linnade register
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Ava toetuste loend
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Kuvab ettevõtte jaamade nimistu
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Kuva ettevõtte finantsolukord
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Kuva üldine info ettevõtte kohta
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Ava ettevõtte finantsolukord
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Ava ettevõtte ülevaade
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Näite juturaamatut
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Näita eesmärke
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Kuva graafikuid
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Kuva ettevõtete edetabel
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Ava graafik
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Ava ettevõtete edetabel
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Rahasta uute ehitiste konstrueerimist
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Näita ettevõtte rongiloendit. Ctrl+klõpsu abil saab rühma või sõidukiloendi vahel lülitada.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Kuva nimekiri ettevõtte mootorsõidukitest. Ctrl+klõpsu abil saab rühma või sõidukinimekirja vahel lülitada
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Kuva ettevõtte laevade nimistu. Ctrl+klõpsu abil saab rühma või sõidukiloendi vahel lülitada
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Kuva nimekiri ettevõtte õhusõidukitest. Ctrl+klõpsu abil saab rühma või sõidukinimekirja vahel lülitada
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Ava ettevõtte rongide loend. Rühma- ja sõidukiregistrit vahetatakse CTRL-klõpsu abil
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Ava ettevõtte mootorsõidukite register. Rühma- ja sõidukiregistrit vahetatakse CTRL-klõpsu abil
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Ava ettevõtte laevade register. Rühma- ja sõidukiregistrit vahetatakse CTRL-klõpsu abil
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Ava ettevõtte õhusõidukite register. Rühma- ja sõidukiregistrit vahetatakse CTRL-klõpsu abil
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Suurenda vaadet
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Vähenda vaadet
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Ehita raudtee
@@ -376,7 +376,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Ehita la
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Ehita lennuväli
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Maastiku tööriistade avamine maa tõstmiseks/langetamiseks, puude istutamiseks, jne.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Näita heli/muusika akent
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Näita viimast teadet, kuva teadete valikud
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Näita viimast teadet, ava teadete seadistus
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Maa-ala andmed, konsool, skriptide debug, ekraanitõmmised, OpenTTDst
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Tööriistaribade vahetamine
 
@@ -400,18 +400,18 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Paigalda
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Salvesta kaart
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Laadi kaart
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Salvesta kõrguskaart
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Lae kõrguskaart
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Laadi kõrguskaart
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Lahku redaktorist
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Välju
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :Mängu valikud
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Täpsemad seaded
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Mängu seadistus
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Põhjalik seadistus
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Tehismõistuse / Mängu skriptide seaded
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF seadistused
-STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läbipaistvuse valikud
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-i seadistus
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läbipaistvuse seadistus
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Näidatavad linnanimed
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Näidatavad jaamanimed
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Näidatavad meldepunktid
@@ -425,7 +425,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Läbipaistvad s
 
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Salvesta mäng
-STR_FILE_MENU_LOAD_GAME                                         :Laadi mäng
+STR_FILE_MENU_LOAD_GAME                                         :Jätka mängu
 STR_FILE_MENU_QUIT_GAME                                         :Lahku mängust
 STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Välju
@@ -457,7 +457,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Veotasude mää
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Ettevõtete edetabel
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Täpsustatud tulemushinnang
-STR_GRAPH_MENU_HIGHSCORE                                        :Punktide edetabel
+STR_GRAPH_MENU_HIGHSCORE                                        :Punktitabel
 ############ range ends here
 
 ############ range for industry menu starts
@@ -502,7 +502,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Teadete ajalugu
 ############ range ends here
 
 ############ range for about menu starts
-STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Maaala andmed
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Maa-ala andmed
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Lülita konsool sisse/välja
 STR_ABOUT_MENU_AI_DEBUG                                         :Tehismõistuse / Mänguskriptide silumine
@@ -852,7 +852,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Sõidukil {VEHICLE} on plaanis liiga vähe käske
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} sõiduplaanis on liiga vähe korraldusi
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Sõidukil {VEHICLE} on tühistatud käsk
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Sõidukil {VEHICLE} on topeltkäske
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Sõiduki {VEHICLE} käskudes on väär jaam
@@ -898,7 +898,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Kleebi v
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Vaateala koha võtmine peamiseks vaateks
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Mängu valikud
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Liidese seadistus
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valuuta valimine
 
@@ -1029,7 +1029,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Määra 
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Mine eurole: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Mine eurole: {ORANGE}Mitte kunagi
-STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Määra eurole minemise aasta
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Määra eurole ülemineku aasta
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Mine eurole varem
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Mine eurole hiljem
 
@@ -1095,7 +1095,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Vaenulik
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Sobiv tehismõistus puudub...{}Tehismõistuseid võib laadida Internetisisu laadimise aknast.
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Täpsemad seaded
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Põhjalik seadistus
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtri tekst:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Laienda kõik harud
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Ahenda kõik harud
@@ -1141,7 +1141,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Keskel
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Paremal
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimaalne esialgne laenusumma: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maksimaalne summa mida ettevõte saab laenata (inflatsiooni arvesse võtmata)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Suurim summa, mida ettevõte saab laenata (inflatsiooni arvesse võtmata)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Intressimäär: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Laenu intressimäär; ühtlasi juhib inflatsiooni, kui inflatsioon on aktiveeritud
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Käituskulud: {STRING}
@@ -1241,7 +1241,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Luba ettevõtet
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Kohaliku omavalitsuse teede rekonstrueerimise rahastamine: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Luba ettevõtetel rahastada teede parandust, et saboteerida maantee põhist transporti selles linnas
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Raha saatmine teistele ettevõtetele: {STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Luba võrgumängus kanda raha erinevate ettevõtete vahel
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Luba mitmikmängus kanda raha erinevate ettevõtete vahel
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Raskete rongide simuleerimiseks kasutatav raskustegur: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Seadke kaupa vedavate rongide mõju. Suurem väärtus muudab kauba vedamise rongide jaoks raskemaks, eriti mägedes
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Kiiruse tegur lennukitele: {STRING}
@@ -1269,7 +1269,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Selle seade sis
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Hoiata kui sõiduk on eksinud: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Tekita teateid kui sõidukid ei suuda leida teekonda nendele määratud sihtkohani
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :Sõidukite sihtpunktide ülevaade: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Sõiduki korralduste ülevaade: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Kui on aktiveeritud, siis kontrollitakse perioodiliselt sõidukitele antud käsklusi ja leitud vead raporteeritakse uudistena
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Ei
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Jah, kuid jäta välja seisatud veovahendid
@@ -1298,7 +1298,7 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Kuva linna elan
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Graafiku joonte paksus: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Graafiku joonte paksus. Peenem joon on täpsemalt loetav, laiem joon on lihtsamini näha ja värvid on selgemini eristatavad
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :Maaala Generaator: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :Maa-ala generaator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Algupärane
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimaalne kaugus kaardi servast naftatöötlustehase jaoks: {STRING}
@@ -1453,8 +1453,8 @@ STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lihtne
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Keskmine
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Keeruline
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tehismõistus võrgumängudes: {STRING}
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Luba kõikidel TI mängijatel ühineda võrgumängudesse
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tehismõistus mitmikmängus: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Luba kõikidel TI mängijatel ühineda mitmikmängudesse
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcode-d ennem skripte on peatatud: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maksimaalne arv arvutamise käike mida skript võib teha ühel sammul
 
@@ -1671,38 +1671,38 @@ STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ingo
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Uus mäng
-STR_INTRO_LOAD_GAME                                             :{BLACK}Mängu laadimine
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Stsenaariumi mängimine
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Kõrguskaardil mängimine
+STR_INTRO_LOAD_GAME                                             :{BLACK}Jätkuv mäng
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Stsenaarium
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Kõrguskaart
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Stsenaariumiredaktor
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Võrgumäng
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Mitmikmäng
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}Mängu valikud
-STR_INTRO_HIGHSCORE                                             :{BLACK}Punktide edetabel
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Täpsemad seaded
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF seadistused
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Internetisisu kontrollimine
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Tehismõistuse / Mänguskriptide seaded
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Liidese seadistus
+STR_INTRO_HIGHSCORE                                             :{BLACK}Punktitabel
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Põhjalik seadistus
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-i seadistus
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Aineste internetiotsing
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Arvuti seadistus
 STR_INTRO_QUIT                                                  :{BLACK}Välju
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Alusta uut mängu. Ctrl+klõps jätab kaardi seadistamise vahele
-STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Laadi salvestatud mäng
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Alusta uut mängu kasutades kõrguskaarti maastikuna
+STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Jätka lõpetamata mängu
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Alusta uut mängu, mille maastik on tehtud kõrguskaardist
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Alusta omatehtud stsenaariumit kasutades uut mängu
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Loo oma mängukaart
-STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Alusta võrgumängu
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Alusta mitmikmängu
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Vali 'parasvöötme' maastik
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Vali 'lähispolaarne' maastik
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Vali 'lähistroopiline' maastik
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vali 'mänguasjamaa' maastik
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Kuva mängu valikuid
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Kuva punktide edetabel
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Näidata täpsemaid seadeid
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näita NewGRF-seadeid
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Otsi allalaadimiseks uut ja uuendatud sisu
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Kuva tehismõistuse ja mängu seaded
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Ava liidese seadistamine
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Kuva punktitabelit
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Ava põhjalik seadistamine
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Ava NewGRF-i seadistamine
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Otsi allalaadimiseks uut ja uuendatud aineseid
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Ava arvuti seadistamine
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Välju 'OpenTTD'st
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Sellel tõlkel on puudu {NUM} string{P "" i}. Palun aita teha OpenTTD veel paremaks ning registreeru tõlkijaks. Täpsem info asub failis readme.txt.
@@ -1727,7 +1727,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Mängu lõpetamine
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Kas te soovite selle mängu lõpetada?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Kas lõpetada mäng?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Kas sa oled kindel, et sa tahad kaardi tegemise lõpetada?
 
 # Cheat window
@@ -1841,7 +1841,7 @@ STR_FACE_EARRING                                                :Kõrvarõngas:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Vaheta kraed või kõrvarõngast
 
 # Network server list
-STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Võrgumäng
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Mitmikmäng
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ei
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Jah
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Mängija nimi:
@@ -1850,7 +1850,7 @@ STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Teised m
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Nimi
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Mängu nimi
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
-STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Kliendid
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Kliente
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Kliente sees / enim kliente{}Ettevõtteid sees / enim ettevõtteid
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kaardi suurus
@@ -1866,7 +1866,7 @@ STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server, 
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klõpsa, et valida server, kus sa viimati mängisid
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}MÄNGU ANDMED
-STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Kliendid: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Kliente: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Keel: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Maastik: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kaardi suurus: {WHITE}{COMMA}x{COMMA}
@@ -1884,21 +1884,21 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Liitu m�
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Uuenda andmeid
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Serveri info värskendamine
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Leia server
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Võrgust serveri otsimine
-STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Lisa server
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Pidevalt jälgitava serveri lisamine loendisse
-STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Alusta serverit
-STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Oma serveri alustamine
+STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Uuenda loendit
+STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Uuenda võrgus asuvate serverite loendit
+STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Sisesta server
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Sisesta loendisse uus server, milles toimuvaid mänge jälgida
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Tee server
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Tee oma server
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Sisesta enda nimi
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Sisesta serveri aadress
 
 # Start new multiplayer server
-STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Uue võrgumängu alustamine
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Mitmikmängu alustamine
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Mängu nimi:
-STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Mängu nime näidatakse teistele mänijatele võrgumängu serverite nimekirjas
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Mängu nime näidatakse teistele mänijatele mitmikmängu serverite nimekirjas
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Sea parool
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Kaitse oma mäng parooliga, kui sa ei taha, et kõik sellele ligi pääseksid
 
@@ -1916,7 +1916,7 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Teatud v
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Räägitav keel:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Teistele mängijatele teadmiseks, et mis keelt serveris räägitakse
 
-STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Sisesta võrgumängu nimi
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Sisesta mitmikmängu nimi
 
 # Network game languages
 ############ Leave those lines in this order!!
@@ -1959,7 +1959,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Läti
 ############ End of leave-in-this-order
 
 # Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Võrgumängu jututuba
+STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Mitmikmängu jututuba
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Liitumiseks valmistumine: {ORANGE}{STRING}
 STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Nimekiri mängus oelvatest ettevõtetest. Saad liituda ühega või alustada uut, kui on vabu kohti
@@ -2054,11 +2054,11 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Sisesta 
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Võrgukaarti ei leitud või kompileeritud ilma võtmeta ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Ei leidnud ühtegi võrgumängu
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Ei leidnud ühtegi mitmikmängu
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Server ei vastanud päringule
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Ühendus ebaõnnestus NewGRF-i sobimatuse tõttu
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Võrgumängu sünkroonimine ebaõnnestus
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Võrgumängu ühendus katkes
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Mitmikmängu sünkroonimine ebaõnnestus
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Mitmikmängu ühendus katkes
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Salvestatud mängu laadimine ebaõnnestus
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Ei saa uut serverit alustada
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Ei õnnestu ühendada
@@ -2123,38 +2123,41 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} li
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} liitus vaatajatega
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} alustas uue ettevõtte (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} lahkus mängust ({2:STRING})
-STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} vahetas oma nime {STRING}
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} uus nimi on {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} andis su ettevõttele {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Sa andsid {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server sulges sessiooni
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server restardib...{}Palun oota...
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Sisu allalaadimine
+STR_CONTENT_TITLE                                               :{WHITE}Aineste allalaadimine
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tüüp
-STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Sisu liik
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Ainese liik
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nimi
-STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Sisu nimi
+STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Ainese nimi
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Reale klõpsates näidatakse täpsustust{}Märkeruudule klõpsates märgitakse allalaaditavaks
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Vali kõik
-STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Märgi kõik sisu allalaaditavaks
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Märgi kõik ainesed allalaadimiseks
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Märgi uuendused
-STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Tähista allalaaditavaks kõik olemasoleva sisu uuendused
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Märgi kõik aineste uuendused allalaadimiseks
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Eemalda märgistus kõigilt
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Eemaldatakse allalaadimise märgistus
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Otsi kolmandatest lehtedest
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Otsi OpenTTD-st sõltumatutest lehtedest aineseid, mida OpenTTD aineste keskserver ei paku
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Sa oled lahkumas OpenTTD-st!
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Kolmandatest lehtedest allalaadimise tingimused sõltuvad lehest.{}Aineste paigaldamisel kasutada kolmandate lehtede juhiseid.{}Kas jätkata?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Sildi- ja nimefilter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Külasta lehekülge
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Külasta lehekülge selle sisu jaoks.
-STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Lae alla
-STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Alusta valitud sisu allalaadimist
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Laadi alla
+STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Alusta valitud aineste allalaadimist
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Allalaadimiste kogusuurus: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}SISU TEAVE
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Sa pole seda allalaaditavaks märkinud
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Te olete valinud selle allalaadimiseks
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}See sõltuvus on valitud allalaadimiseks
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Sul on juba see
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Selline sisu on tundmatu ja seda ei saa OpenTTD-se laadida
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}See ei ole ainesena tuvastatav, seega OpenTTD ei saa seda alla laadida
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}See on asendus olemasolevale {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nimi: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Osa: {WHITE}{STRING}
@@ -2166,7 +2169,7 @@ STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Valitud
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Sõltuvused: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Sildid: {WHITE}{STRING}
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD on kompileeritud ilma "zlib" toeta...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... sisu allalaadimine pole võimalik!
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... aineste allalaadimine pole võimalik!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Põhigraafika
@@ -2181,14 +2184,14 @@ STR_CONTENT_TYPE_GAME_SCRIPT                                    :Mängu skript
 STR_CONTENT_TYPE_GS_LIBRARY                                     :GS teek
 
 # Content downloading progress window
-STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Sisu allalaadimine...
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Aineste allalaadimine...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Küsin faile...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Hetkel laaditakse alla {STRING} ({NUM}/{NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Allalaadimine valmis
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES}/{BYTES} baiti allalaaditud ({NUM} %)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Sisuserveriga ei õnnestu ühenduda...
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Aineste keskserveriga ei õnnestu ühenduda...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Allalaadimine ebaõnnestus...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ühendus katkes
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fail pole kirjutatav
@@ -2200,7 +2203,7 @@ STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Jah, lae
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ei, lahku OpenTTD´st
 
 # Transparency settings window
-STR_TRANSPARENCY_CAPTION                                        :{WHITE}Läbipaistvusvalikud
+STR_TRANSPARENCY_CAPTION                                        :{WHITE}Läbipaistvuse seadistus
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Muuda jaamamärkide läbipaistvust. Ctrl+klõps lukustab
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Vaheta puude läbipaistvust. Ctrl+klõps lukustab
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Vaheta majade läbipaistvust. Ctrl+klõps lukustab
@@ -2420,7 +2423,7 @@ STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vali ist
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Suvalised puutüübid
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Istutab suvalisi puid. Shift valib ehitamise/hinna kuvamise režiimi
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Suvalised puud
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Istutab puid suvaliselt üle kogu maaala
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Istutab puid suvaliselt üle kogu maa-ala
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Maastiku loomine
@@ -2517,7 +2520,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Lennujaa
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Vastuvõetavad veosed: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
-STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Raudtee kiirusepiirang: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Raudtee kiiruspiirang: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Kaljud
@@ -2618,7 +2621,7 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Salvesta mäng
-STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Laadi mäng
+STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Jätka mängu
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Salvesta stsenaarium
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Laadi stsenaariumit
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Laadi kõrguskaart
@@ -2631,8 +2634,8 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Kustuta
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Kustuta valitud salvestus
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Salvesta
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Salvesta mäng valitud nimega
-STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Lae
-STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Lae valitud mäng
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Jätka
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Jätka valitud mängu
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Mängu üksikasjad
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Andmed puuduvad
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -2707,7 +2710,7 @@ STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Maailma 
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Jõgede genereerimine
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Puude genereerimine
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Liigutamatu tekitamine
-STR_GENERATION_CLEARING_TILES                                   :{BLACK}Mägise ja kivise maaala tegemine
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}Mägise ja kivise maa-ala tegemine
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Mängu seadistamine
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Klotsisilmuse täitmine
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Täitmisel olev skript
@@ -2744,8 +2747,8 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Vaheta p
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Vaheta valitud NewGRF-i paletti.{}Tee seda, kui NewGRF-i graafika paistab mängus roosa.
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Rakenda muudatused
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Otsi internetist puuduvat sisu
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Otsi kas puuduvat sisu leidub internetis
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Otsi internetist vajalike aineseid
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Proovi puuduvat ainest internetist leida
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Faili nimi: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
@@ -3196,7 +3199,7 @@ STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Saadaval laevad
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Saadaval õhusõidukid
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Vaata nimekirja saadaolevatest seda tüüpi veovahenditest
 
-STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Halda nimekirja
+STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Halda registrit
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Saada juhised kõikidele selles nimekirjas olevatele veovahenditele
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Asenda veovahendeid
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Saada hooldusesse
@@ -3473,7 +3476,7 @@ STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Rike
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Peatatud
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Peatub, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Vool puudub
-STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Ootamas vaba rada
+STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Vaba raja ootamine
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Liiga pikk vahemaa järgmise sihtpunktini
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Siht: {STATION}, {VELOCITY}
@@ -3577,7 +3580,7 @@ STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Seadista
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Seadista lennuk ümber, et kanda valitud kaubatüüpi
 
 # Order view
-STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (käsud)
+STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (korraldused)
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Sõiduplaan
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Näita sõiduplaani
 
@@ -3585,7 +3588,7 @@ STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Sihtpunk
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
-STR_ORDERS_END_OF_ORDERS                                        :- - Sihtpunktide lõpp - -
+STR_ORDERS_END_OF_ORDERS                                        :- - Sihid läbi - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Jagatud käskluste lõpp - -
 
 # Order bottom buttons
@@ -3597,15 +3600,15 @@ STR_ORDER_GO_NON_STOP_VIA                                       :Mine peatumata 
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Valitud sihtpunktis peatumise protseduuri muutmine
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Laadi üks täis
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Võimalusel laadi
-STR_ORDER_DROP_FULL_LOAD_ALL                                    :Täis laadida kogu laadung
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Täis laadida mistahes last
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Laadi peale
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Laadi kõik kaubad täis
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Laadi üks kaup täis
 STR_ORDER_DROP_NO_LOADING                                       :Mitte laadida
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Valitud sihtpunktis pealelaadimise protseduuri muutmine
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Laadi kõik maha
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Kui võetakse vastu, laadi maha
-STR_ORDER_DROP_UNLOAD                                           :Laadi kõik maha
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Laadi tühjaks nõudlusel
+STR_ORDER_DROP_UNLOAD                                           :Laadi tühjaks
 STR_ORDER_DROP_TRANSFER                                         :Laadi ümber
 STR_ORDER_DROP_NO_UNLOADING                                     :Mitte maha laadida
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Valitud sihtpunktis mahalaadimise protseduuri muutmine
@@ -3615,7 +3618,7 @@ STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vali, mi
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Automaatne ümberseadistamine
 STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Vali kauba tüüp millele peaks automaatse ümberseadistamisega üle minema. Ctrl-klõps eemaldab valiku. Automaatne ümberseadistamine saab toimuda ainult siis kui sõiduk seda lubab.
 STR_ORDER_DROP_REFIT_AUTO                                       :Fikseeritud kaubatüüp
-STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Saadavuses olev kaup
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Võimalikud kaubad
 
 STR_ORDER_SERVICE                                               :{BLACK}Hooldus
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Alati mine
@@ -3626,13 +3629,13 @@ STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Jäta se
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Sõiduki andmed, millel sihtpunkti vahetamine põhineb
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Koorem prontsentides
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Koorem protsentides
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Tehnoseisund
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Tippkiirus
 STR_ORDER_CONDITIONAL_AGE                                       :Vanus (aastates)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Vajab hooldust
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Alati
-STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Allesjäänud eluaeg (aastates)
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Amortiseerumiseni (aastaid)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kuidas sõiduki andmeid antud väärtusega võrreldakse
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :on võrdne
@@ -3652,14 +3655,14 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Jäta pr
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Kustuta
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Kustuta valitud käsk
-STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Kustuta kõik käsud
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Tühjenda sihiloend
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Lõpeta jagamine
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Peata käskude jagamine. Ctrl+klõps kustutab ka kõik sellele sõidukile antud käsud
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Lõpeta sihiloendi jagamine. Sihiloend tühjendatakse Ctrl+klõpsu abil
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Mine
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Mine lähimasse depoosse
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mine lähimasse angaari
-STR_ORDER_CONDITIONAL                                           :Tinglik sihtpunkti vahetamine
+STR_ORDER_CONDITIONAL                                           :Sihi vahetamine tingimusel
 STR_ORDER_SHARE                                                 :Jaga korraldusi
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisa uus käsk nimekirja lõppu, või enne valitud käsku. Ctrl määrab jaama puhul korralduseks 'lae üks täis', meldepunkti puhul 'peatuseta' ja depoo puhul 'hooldus'. 'Jaga korraldusi' või Ctrl lubab sellel sõidukil jagada korraldusi valitud veovahendiga. Klõpsates teisel sõidukil kopeeritakse selle korraldused
 
@@ -3688,36 +3691,36 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 STR_ORDER_IMPLICIT                                              :(Automaatne)
 
-STR_ORDER_FULL_LOAD                                             :(Laaditakse täis)
-STR_ORDER_FULL_LOAD_ANY                                         :(Ühte kaupa laaditakse täis)
-STR_ORDER_NO_LOAD                                               :(Ei laadita)
-STR_ORDER_UNLOAD                                                :(Laaditakse tühjaks ja laadung võetakse peale)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Laaditakse tühjaks ja oodatakse täislaadungit)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Laaditakse tühjaks ja oodatakse suvalist täislaadungit)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Laaditakse tühjaks ja jäetakse tühjaks)
-STR_ORDER_TRANSFER                                              :(Laaditakse ümber ja laadung võetakse peale)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Laaditakse ümber ja oodatakse täislaadungit)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Laaditakse ümber ja oodatakse suvalist täislaadungit)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Laaditakse ümber ja jäetakse tühjaks)
-STR_ORDER_NO_UNLOAD                                             :(Maha ei laadita ja laadung võetakse peale)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Maha ei laadita ja oodatakse täislaadungit)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Maha ei laadita ja oodatakse suvalist täislaadungit)
+STR_ORDER_FULL_LOAD                                             :(Laadida kõik kaubad täis)
+STR_ORDER_FULL_LOAD_ANY                                         :(Laadida üks kaup täis)
+STR_ORDER_NO_LOAD                                               :(Mitte laadida)
+STR_ORDER_UNLOAD                                                :(Laadida tühjaks ja laadida peale)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Laadida tühjaks ja laadida kõik kaubad täis)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Laadida tühjaks ja laadida üks kaup täis)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Laadida tühjaks ja peale mitte laadida)
+STR_ORDER_TRANSFER                                              :(Laadida ümber ja laadida peale)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Laadida ümber ja laadida kõik kaubad täis)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Laadida ümber ja laadida üks kaup täis)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Ümber laadida ja peale mitte laadida)
+STR_ORDER_NO_UNLOAD                                             :(Maha mitte laadida ja laadida peale)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Maha mitte laadida ja laadida kõik kaubad täis)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Maha mitte laadida ja laadida üks kaup täis)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Maha ei laadita ja peale ei laadita)
 
 STR_ORDER_AUTO_REFIT                                            :(Automaatne ümberseadistus tüüpile {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Täis last ja automaatne ümberseadistus kaubale {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Täis last suvalisele veosele koos ümberseadistamisega {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Lae tühjaks ja võta kaup koos ümberseadistaisega {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Lae tühjaks ja oota täis laadungit koos ümberseadistamisega {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Lae tühjaks ja oota suvalise kauba täislaadungit koos ümberseadistamisega {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Ümberlaadimine ja võta veos koos ümberlaadimisega {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Ümberlaadimine ja oota täis laadungit koos ümberseadistamisega {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Ümberlaadimine ja oota täis laadungit koos ümberseadistamisega {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Ilma maha laadimiseta ja võta veos koos ümberseadistamisega {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Maha ei laeta ja oota täis laadungit koos ümberseadistamisega {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ilma maha laadimiseta ja oota täis laadungit koos ümberseadistamisega {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Laadida kõik kaubad täis ja seadistada kaubale {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Laadida üks kaup täis ja seadistada kaubale {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Laadida tühjaks, laadida peale ja seadistada kaubale {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Laadida tühjaks, laadida kõik kaubad täis ja seadistada kaubale {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Laadida tühjaks, laadida üks kaup täis ja seadistada kaubale {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Laadida ümber, laadida peale ja seadistada kaubale {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Laadida ümber, laadida kõik kaubad täis ja seadistada kaubale {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Laadida ümber, laadida üks kaup täis ja seadistada kaubale {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Maha mitte laadida, laadida peale ja seadistada kaubale {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Maha mitte laadida, laadida kõik kaubad täis ja seadistada kaubale {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Maha mitte laadida, laadida üks kaup täis ja seadistada kaubale {STRING})
 
-STR_ORDER_AUTO_REFIT_ANY                                        :saadavuses olev kaup
+STR_ORDER_AUTO_REFIT_ANY                                        :võimalikud kaubad
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[lõpu lähedal]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[keskel]
@@ -3736,7 +3739,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Korraldused
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Lülita korralduste vaatesse
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Sõiduplaan - esiletõstmiseks klõpsa sihtpunktil
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Sõiduplaan - siht märgitakse klõpsuga
 
 STR_TIMETABLE_NO_TRAVEL                                         :Sõitu pole
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Reisi (automaatne; ajakava järgmise manuaalse käsu järgi)
@@ -3758,29 +3761,29 @@ STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}See sõi
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Sõiduplaani pole veel alustatud
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Sõiduplaani alustatakse {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Alustuskuupäev
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Alguskuupäev
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuda aega
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muuda, kaua esile tõstetud sihtpunkti peale aega peaks kuluma
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muuda märgitud korralduse täitmiseks vajaminevat aega
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Tühista aeg
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Tühista esile tõstetud sihtpunkti ajaperiood
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Eemalda korralduse täitmiseks vajaminev aeg
 
-STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Muuda kiirusepiirangut
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Muuda maksimum reisikiirust valitud järjekorras
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Muuda kiiruspiirangut
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Muuda märgitud korralduse kiiruspiirangut
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Tühjenda kiiruselimiit
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Tühjenda maksimum reisikiirus valitud järjekorras
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Eemalda märgitud korralduse kiiruspiirang
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Tühista hilinemisloendur
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Tühista hilinemisloendur, et sõiduk ei jääks hiljaks
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Täida ise
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Täida liiniplaan järgmise sõidu andmetega (Ctrl+klõps säilitamaks ooteaegu)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Kasuta liiniplaani täitmiseks järgmise sõidu andmeid (Ctrl+klõps säilitab ooteajad)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Eeldatav
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Plaanis
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Vaheta eeldatav ja plaan
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Vaheta eeldatava ja graafikupõhise sõiduplaani vahel
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :S:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :V:
@@ -3958,7 +3961,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... juba
 STR_ERROR_OWNED_BY                                              :{WHITE}... omanik on {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... ala kuulub teisele ettevõttele
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... maastikukujunduse limiit ületatud
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... maaala puhastamise limiit ületatud
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... puhastatavate ruutude piir on ületatud
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... puu istutamise limiit ületatud
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nime ei tohi korduda
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} on ees
@@ -4004,7 +4007,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... liig
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... liiga lähedal teisele linnale
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... liiga palju linnu
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... pole enam ruumi kaardil
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Linn ei ehita teid. Teedeehituse lubamiseks Täpsemad seaded->Majandus->Linnad
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Linn ei ehita teid. Teedeehituse lubamiseks Põhjalik seadistus->Majandus->Linnad
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Teede ehitamine
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Seda linna ei saa kustutada...{}Jaam või depoo viitab linnale või mõnd linna omanduses olevat tükki ei saa kustutada
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... linnakeskuses ei leidu kujule sobivat kohta
