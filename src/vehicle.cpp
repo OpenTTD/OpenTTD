@@ -1439,6 +1439,10 @@ void VehicleEnterDepot(Vehicle *v)
 		if (t.GetDepotActionType() & ODATFB_HALT) {
 			/* Vehicles are always stopped on entering depots. Do not restart this one. */
 			_vehicles_to_autoreplace[v] = false;
+			/* Invalidate last_loading_station. As the link from the station
+			 * before the stop to the station after the stop can't be predicted
+			 * we shouldn't construct it when the vehicle visits the next stop. */
+			v->last_loading_station = INVALID_STATION;
 			if (v->owner == _local_company) {
 				SetDParam(0, v->index);
 				AddVehicleAdviceNewsItem(STR_NEWS_TRAIN_IS_WAITING + v->type, v->index);
