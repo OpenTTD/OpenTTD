@@ -74,14 +74,21 @@ LinkGraphJob::~LinkGraphJob()
 
 		/* Swap shares and invalidate ones that are completely deleted. Don't
 		 * really delete them as we could then end up with unroutable cargo
-		 * somewhere. */
-		for (FlowStatMap::iterator it(ge.flows.begin()); it != ge.flows.end(); ++it) {
+		 * somewhere. Do delete them if automatic distribution has been turned
+		 * off for that cargo, though. */
+		for (FlowStatMap::iterator it(ge.flows.begin()); it != ge.flows.end();) {
 			FlowStatMap::iterator new_it = flows.find(it->first);
 			if (new_it == flows.end()) {
-				it->second.Invalidate();
+				if (_settings_game.linkgraph.GetDistributionType(this->Cargo()) != DT_MANUAL) {
+					it->second.Invalidate();
+					++it;
+				} else {
+					ge.flows.erase(it++);
+				}
 			} else {
 				it->second.SwapShares(new_it->second);
 				flows.erase(new_it);
+				++it;
 			}
 		}
 		ge.flows.insert(flows.begin(), flows.end());
