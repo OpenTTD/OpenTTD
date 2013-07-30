@@ -1133,7 +1133,7 @@ STR_CONFIG_SETTING_CATCHMENT                                    :現実的な受
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :駅や空港の種類の違いによって受入範囲が変動するようになります
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :街有道路・橋・トンネルの撤去容認: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :街有の交通インフラや建物の撤去をより容易にします
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :列車の最大長:{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :列車の最大長: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :列車の最大長を設定します
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA}タイル
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :煙・火花の量{STRING}
@@ -1436,7 +1436,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :故障切なら
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :有効にすると、故障が起こらない設定の時には点検も行わなくなります
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :貨車の上限速度: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :有効にすると、上限速度が設定されている貨車を使用した場合、列車はその速度以上出せなくなります
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :電気鉄道を無効化:{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :電気鉄道を無効化: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :この設定を有効にすると電気鉄道を建設できなくなります。ただし電気機関車・電車でも架線のない非電化の線路を走ることができるようになります
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :停留施設の開業(自社): {STRING}
