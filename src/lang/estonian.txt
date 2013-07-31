@@ -4373,8 +4373,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Hooldusv
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... sõiduk hävitatud
 
-STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Sõidukeid ei ole veel saadaval
-STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Alusta mängu pärast {DATE_SHORT} või kasuta NewGRF-i, milles on varasemaid sõidukeid
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Sõidukeid ei ole veel saadaval
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Alusta mängu pärast {DATE_SHORT} või kasuta NewGRF-i, milles on varasemaid sõidukeid
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Rongi ei saa ohu korral sundida signaale eirama...

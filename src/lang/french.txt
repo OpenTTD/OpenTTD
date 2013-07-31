@@ -4317,8 +4317,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Impossib
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... véhicule détruit
 
-STR_ERROR_NO_VEHICLES_AVAILABLE                                 :{WHITE}Il n'y a pas encore de véhicules disponibles
-STR_ERROR_NO_VEHICLES_AVAILABLE_EXPLANATION                     :{WHITE}Commencer un nouvelle partie après {DATE_SHORT} ou utiliser un NewGRF qui propose des véhicules plus tôt
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Il n'y a pas encore de véhicules disponibles
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Commencer un nouvelle partie après {DATE_SHORT} ou utiliser un NewGRF qui propose des véhicules plus tôt
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Impossible de forcer le train à avancer sous le danger...
