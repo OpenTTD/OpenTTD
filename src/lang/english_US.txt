@@ -4316,6 +4316,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Can't ch
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vehicle is destroyed
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}No vehicles will be available at all
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Change your NewGRF configuration
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}No vehicles are available yet
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Start a new game after {DATE_SHORT} or use a NewGRF that provides early vehicles
 

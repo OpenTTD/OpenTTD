@@ -387,21 +387,26 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}ks
 STR_UNITS_POWER_METRIC                                          :{COMMA}ks
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P a e a}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lit{P ar ra ara}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -409,6 +414,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrira
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Unesite tekst za filter
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Unesite ključnu reč kako bi se filtriralo spisak
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Izaberi red sortiranja
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Odaberite način sortiranja (opadajući/rastući)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Odaberite kriterijum za sortiranje
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Izaberite način filtriranja
@@ -420,7 +426,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zatvori 
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Naslov - povucite mišem da biste pomerili prozor
 STR_TOOLTIP_SHADE                                               :{BLACK}Zamotaj prozor - prikazuje se samo naslov
 STR_TOOLTIP_DEBUG                                               :{BLACK}Prikazuje NewGRF podatake o otklanjanju grešaka
-STR_TOOLTIP_STICKY                                              :{BLACK}Pridenite kako bi ovaj prozor ostao otvoren prilikom pritiska na dugme za zatvaranje svih prozora
+STR_TOOLTIP_STICKY                                              :{BLACK}Markirajte ovaj prozor kao ne za zatvaranje tipkom 'Zatvaranje svih prozora'. Uz Ctrl+Click to stanje će biti zapamćeno.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Pritisnite i povucite kako bi prozor promenio veličinu
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Izbor velikog/malog prozora
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skrol - pomera spisak gore/dole
@@ -489,6 +495,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Prikaži
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Prikaži spisak svih stanica preduzeća
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Prikaži finansijsko stanje preduzeća
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Prikaži opšte podatke preduzeća
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Pokaži listu ciljeva
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Prikaži grafikone
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Prikaži tabele lige preduzeća
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansiranje izgradnje nove fabrike, spisak svih fabrika
@@ -1644,13 +1651,37 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Inicijalni mno�
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Uklanjati besmislene kolovoze u naseljima: {STRING}
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Mere brzine: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kada brzina bude pokazana u interfejsu, pokaži u željenoj meri
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperialne mere (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metričke mere (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperialne mere (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metričke mere (hp)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Mera težine: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Kad težine budu pokazane u interfejsu, pokazi u željenoj meri
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metričke mere (t/toni)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperialne mere (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metričke mere (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperialne mere (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metričke mere (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Mera visine: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Kad visine budu pokazane u interfejsu, pokazi u željenoj meri
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperialne mere (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metričke mere (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Okruženje
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Prevod
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Izgradnja
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vozila
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stanice
@@ -2167,6 +2198,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Obeleži
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Obeležava sve preuzete dodatke koje imaju novija izdanja za preuzimanje
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Poništi izbor svega
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Otkazuje preuzimanje svih dodataka
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Pretraži eksterne web stranice
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Vi napuštate OpenTTD!
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter po oznaci/nazivu:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Idi na Web lokaciju
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Ovaj sadržaj nalazi se na Web lokaciji
@@ -2965,6 +2998,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kupovin
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Davanje mita lokalnoj vlasti kako bi porastao rejting vašeg preduzeća, uz rizik velike štete ukoliko se otkrije.{} Cena: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Ciljevi
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globalni ciljevi
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Opšti ciljevi:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nema -
@@ -3007,6 +3042,11 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikom na uslugu prebacuje glavni pogled na lokaciju fabrike/naselja. Ctrl+Klik otvara novi pogled na to mesto
 
 # Story book window
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Stranica {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Idi do željene stranice uz izbor te stranice u ovoj listi.
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Idi do prethodne stranice
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Sledeće
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Idi do sledeće stranice
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Imena stanica - klikom na ime se centrira glavni pogled na stanicu. Ctrl+Klik otvara novi pogled na lokaciju stanice
@@ -3029,11 +3069,26 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Prihvata
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Prikaži spisak tovara koje stanica prihvata
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Prihvata: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Ova stanica ima ekskluzivna transportna prava u ovom gradu.
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} je kupio ekskluzivna prava prevoza u ovom gradu.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ocene
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Prikaži ocene stanice
 
+STR_STATION_VIEW_GROUP                                          :{BLACK}Sortiraj po
+STR_STATION_VIEW_WAITING_STATION                                :Stanica: Čekajuća
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Količina: Čekajuća
+STR_STATION_VIEW_PLANNED_STATION                                :Stanica: Planirana
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Količina: Planirana
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} od {STATION}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} preko {STATION}
+STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} do {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} od nepoznate stanice
+STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} do bilo koje stanice
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} preko bilo koju stanicu
+STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} od ove stanice
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} do te stanice
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} bez prekida
 
 
 ############ range for rating starts
@@ -3057,6 +3112,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Prikazuj
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Preimenuj stanicu
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Zatvori aerodrom
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -3554,6 +3610,9 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Period s
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Povećava period servisiranja za 10. Ctrl+Klik povećava period servisiranja za 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Smanjuje period servisiranja za 10. Ctrl+Klik smanjuje period servisiranja za 5
 
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Promeni tip intervala za servis
+STR_VEHICLE_DETAILS_DEFAULT                                     :Standard
+STR_VEHICLE_DETAILS_DAYS                                        :dani
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Naziv voza
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Naziv drumskog vozila
@@ -3788,6 +3847,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ovaj ras
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Ovaj raspored počinje {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Datum početka
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Izaberi datum kao početak ovog rasporeda. Ctrl+Click namešta polaznu tačku ovog rasporeda i deli ovaj raspored sa svim povezanim rasporedima
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Promena Vremena
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Menjanje količine vremena za koje će obeležena naredba trajati
@@ -3913,6 +3973,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Trošak: {CURRENCY_LONG}
@@ -4773,6 +4835,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}

@@ -125,7 +125,7 @@ STR_QUANTITY_BUBBLES                                            :泡{COMMA}個
 STR_QUANTITY_TOFFEE                                             :タフィー{WEIGHT_LONG}
 STR_QUANTITY_BATTERIES                                          :電池{COMMA}本
 STR_QUANTITY_PLASTIC                                            :プラスチック{VOLUME_LONG}
-STR_QUANTITY_FIZZY_DRINKS                                       :炭酸飲料{COMMA}
+STR_QUANTITY_FIZZY_DRINKS                                       :炭酸飲料{COMMA}本
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
@@ -3161,7 +3161,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}インフ
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}　線路 {COMMA}タイル
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}　道路 {COMMA}タイル
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}　水運 {COMMA}タイル
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}　駅 {COMMA}タイル
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}　停留施設 {COMMA}タイル
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}　空港 {COMMA}箇所
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}　なし
 
@@ -3202,8 +3202,8 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}道路
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}軌道
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}水運長:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}運河
-STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}駅数:
-STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}駅(タイル数)
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}停留施設数:
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}停留施設(タイル数)
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}空港
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/年
 
@@ -4316,6 +4316,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}点検�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}輸送機器が破壊されます
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}利用できる輸送機器が全くなくなります
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}NewGRFの設定を変更してください
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}利用可能な輸送機器がありません
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}{DATE_SHORT}年以降に開始するか、これより早い時期に輸送機器が開発されるNewGRFを利用して下さい
 

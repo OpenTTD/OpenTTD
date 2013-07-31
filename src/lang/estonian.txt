@@ -298,7 +298,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Akna pea
 STR_TOOLTIP_SHADE                                               :{BLACK}Akna peitmine - näidatakse ainult pealkirjariba
 STR_TOOLTIP_DEBUG                                               :{BLACK}Näita NewGRF debug-i informatsiooni
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Aken vaikimisi suurusesse. Praegune suurus jääb vaikimisi suuruseks CTRL-klõpsu abil
-STR_TOOLTIP_STICKY                                              :{BLACK}Akna sulgemise keelamiseks klõpsa nupul 'Sulge kõik aknad'. Seisund jääb vaikimisi seisundiks Ctrl+klõpsu abil
+STR_TOOLTIP_STICKY                                              :{BLACK}Märgib, et «Sulge kõik aknad» nupp seda akent ei sulge. «Ctrl+klõps» jätab suletamatuse vaikekäitumiseks
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klõpsa ja lohista, et akna suurust muuta
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Lülita aken suureks/väikseks
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Kerimisriba - kerib nimistut üles/alla
@@ -1245,7 +1245,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :keskel
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :täiesti lõpus
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Mootorsõidukite järjekorrad (koos mahuefektidega): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Pane sõiduk ootama hõivatud peatuse ees kuni need on vabastatud
-STR_CONFIG_SETTING_AUTOSCROLL                                   :Vaate kerimine osutiga ekraaniserva puudutamisel: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Vaate liikumine, kui hiireosuti on akna servas: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Kui on aktiveeritud, siis vaateaknad hakkavad kerima kui hiire kursor on serve lähedal
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Väljas
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Peamine vaateaken, ainult täisekraan
@@ -1345,26 +1345,26 @@ STR_CONFIG_SETTING_STATION_SPREAD                               :Jaama küljepik
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Jaama ühe külje pikkuse ülempiir. Suur väärtus teeb mängu aeglaseks
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Automaatne helikopterihooldus maandumisplatsidel: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Hoolda helikoptereid peale igat maandumist, isegi kui lennujaamas pole depood
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Maastiku-, ning raudtee/tee/vee/lennujaamade tööriistaribade seostamine: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Maastikuriba sidumine rööbas-, maa-, vee- ja lennuväljaribadega: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Kui avatakse mingi transpordiliigi ehitamise menüü, siis ava ka maastiku muutmise menüü
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Maa värv väikesel kaardil: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Maa värv väikesel kaardil
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Roheline
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tumeroheline
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violetne
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Vaate kerimine vastassuunas: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Vaade liigub vastassuunas: {STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Meetod kaardi kerimiseks parema hiire nupuga. Kui on välja lülitatud siis liigutab hiir kaamerat. Kui on sisse lülitataud siis liigutab hiir kaarti
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Vaatevälja liigutatakse sujuvalt: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Juhib peamise vaateakna kerimiste määratud kohta kui väikesel kaardil vajutatakse mõnele punktile või kui sisestatakse käsklis kerimiseks määratud elemendi asukohale. Kui on aktiveeritud toimub kerimine sujuvalt, kui ei ole aktiveeritud siis hüpatakse kohe määratud asukohta
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Ehitamisel mõõtude näitamine: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Ehitamisel mõõtude arvesti näitamine: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Näitab ehitamise ajal kahe ruudu kaugus- ja kõrgusvahemikke
 STR_CONFIG_SETTING_LIVERIES                                     :Ettevõtte värve näidatakse: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Vali, kas sõiduki värv sõltub sõiduki liigist või ettevõttest
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Mitte ühelgi
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Oma ettevõttel
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Igal ettevõttel
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :<ENTER> vajutades meeskonnavestluse eelistamine: {STRING}
-STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Vaheta ettevõtte sisese ja avaliku suhtluse nuppud vastavalt <ENTER> ja <Ctrl+ENTER> vahel
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :«ENTER» avab meeskonnavestluse: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Vahetab «ENTER» ja «Ctrl+ENTER» klahvidega ettevõttesisese ja avaliku vestluse avamise
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Kerimisrulliku otstarve: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Lülitab sisse kerimise kahesuunaliste (hiire) kerimisratastega
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Kaardi suurendamine
@@ -1477,18 +1477,18 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Luba kõikidel 
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcode-d ennem skripte on peatatud: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maksimaalne arv arvutamise käike mida skript võib teha ühel sammul
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Protsentides hooldusvahemikud: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Hooldusvälp protsentides: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Vali kas sõiduki hooldus käivitub vastavalt ajale mis on möödunud viimasest hooldusest või kui sõiduki usaldusväärsus langeb allapoole lubatud piiri sõiduki maksimaalsest usaldusväärsuse protsendist
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :Vaikimisei hoolduse periood rongidele: {STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Määra vaikimisi hoolusperiood uutele rööbassõidukitele, kui antud sõidukile ei ole kindlat hooldusperioodi juba määratud
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Rongi hooldusvälba vaikeväärtus: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Määrab uute rööbassõidukite hooldusvälba, kui sõidukile eraldi hooldusvälpa ei määrata
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} päev{P 0 "" a}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Väljas
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Vaikimisi hooldusperiood veokitele: {STRING}
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Määra vaikimisi hoolusperiood uutele veokitele, kui antud sõidukile ei ole kindlat hooldusperioodi juba määratud
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Vaikimisi hooldusperiood lennukitele: {STRING}
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Määra vaikimisi hoolusperiood uutele õhusõidukitele, kui antud sõidukile ei ole kindlat hooldusperioodi juba määratud
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :Vaikimisi hooldusperiood laevadele: {STRING}
-STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Määra vaikimisi hoolusperiood uutele veesõidukitele, kui antud sõidukile ei ole kindlat hooldusperioodi juba määratud
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Mootorsõiduki hooldusvälba vaikeväärtus: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Määrab uute mootorsõidukite hooldusvälba, kui sõidukile eraldi hooldusvälpa ei määrata
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Lennuki hooldusvälba vaikeväärtus: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Määrab uute õhusõidukite hooldusvälba, kui sõidukile eraldi hooldusvälpa ei määrata
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Laevade hooldusvälba vaikeväärtus: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Määrab uute laevade hooldusvälba, kui sõidukile eraldi hooldusvälpa ei määrata
 STR_CONFIG_SETTING_NOSERVICE                                    :Hoolduse keelamine rikete väljalülitamisel: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Kui on aktiveeritud, siis ei teostata hooldust sõidukitele mille tõrkumine ei ole võimalik
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Vagunite kiiruspiirangud: {STRING}
@@ -1589,12 +1589,12 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :Tööriistariba
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horisontaalne asukoht tööriistariba jaoks mängu ekraani ülaservas
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Seisundiriba asukoht: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Horisontaalne asukoht staatuseriba jaoks mängu ekraani allservas
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :Akna ligitõmbe raadius: {STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Vahemaa mille pealt vaateaken tõmbub teise akna serva vastu
-STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piksel{P 0 "" it}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Akende haardumise ulatus: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Akendevaheline kaugus, enne, kui liigutatav aken joondatakse kõrvalakendega
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piks{P 0 el lit}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Väljas
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksimaalne kinnistamata akende arv: {STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Mittekinnitatud akende arv mille saavutamise järel hakatakse vanu aknaid sulgema, et teha ruumi uutele akendele
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Suletavate akende arvu ülempiir: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Suletavate akende arv, enne, kui vanad aknad suletakse, et uutele akendele ruumi teha
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :väljas
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Suurim suurendusaste: {STRING}
@@ -1692,7 +1692,7 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Majandu
 STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Kaubajaotus
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurendid
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Vaate seadistus
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Suhtlemine
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Käitumine
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Heliefektid
 STR_CONFIG_SETTING_NEWS                                         :{ORANGE}Uudised ja sõnumid
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaalid
@@ -2218,7 +2218,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Märgi k
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Eemalda märgistus kõigilt
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Eemaldatakse allalaadimise märgistus
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Otsi kolmandatest lehtedest
-STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Otsi OpenTTD-st sõltumatutest lehtedest aineseid, mida OpenTTD aineste keskserver ei paku
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Otsi OpenTTD-st sõltumatutest lehtedest aineseid, mida OpenTTD aineste keskserverist ei saa
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Sa oled lahkumas OpenTTD-st!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Kolmandatest lehtedest allalaadimise tingimused sõltuvad lehest.{}Aineste paigaldamisel kasutada kolmandate lehtede juhiseid.{}Kas jätkata?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Sildi- ja nimefilter:
@@ -3637,12 +3637,12 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kandevõ
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Ülekantud tulu: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Hooldusvahemik: {LTBLUE}{COMMA}päevad{BLACK}  Viimati hooldatud: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Hooldusvahemik: {LTBLUE}{COMMA}%{BLACK}   Viimati hooldatud: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Hooldusvälp: {LTBLUE}{COMMA}päevad{BLACK}  Viimati hooldatud: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Hooldusvälp: {LTBLUE}{COMMA}%{BLACK}   Viimati hooldatud: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Suurenda hooldusvahemiku 10 võrra. Ctrl-klahviga suurendatakse hooldusvahemiku 5 võrra.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Vähenda hooldusvahemiku 10 võrra. Ctrl+Klõps vähendab hooldusvahemikku 5 võrra.
 
-STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Muuda hooldusvahemiku liiki
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Muuda hooldusvälba liiki
 STR_VEHICLE_DETAILS_DEFAULT                                     :Vaikimisi
 STR_VEHICLE_DETAILS_DAYS                                        :Päeva
 STR_VEHICLE_DETAILS_PERCENT                                     :Protsent
@@ -3896,8 +3896,8 @@ STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Muuda m�
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Tühjenda kiiruselimiit
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Eemalda märgitud korralduse kiiruspiirang
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Tühista hilinemisloendur
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Tühista hilinemisloendur, et sõiduk ei jääks hiljaks
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Tühista hilinemisarvesti
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Tühista hilinemisarvesti, et sõiduk ei jääks hiljaks
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Täida ise
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Kasuta liiniplaani täitmiseks järgmise sõidu andmeid (Ctrl+klõps säilitab ooteajad)
@@ -4373,6 +4373,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Hooldusv
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... sõiduk hävitatud
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ühtegi sõidukit ei ole saadaval
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Muuda NewGRF-i seadistust
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Sõidukeid ei ole veel saadaval
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Alusta mängu pärast {DATE_SHORT} või kasuta NewGRF-i, milles on varasemaid sõidukeid
 

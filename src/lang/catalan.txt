@@ -4317,6 +4317,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}No es po
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vehicle està destruït
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}No hi haurà cap vehicle disponible
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Canvia la teva configuració dels NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Encara no hi ha vehicles disponibles
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Iniciar un nou joc desprès de {DATE_SHORT} o usar un NewGRF que proporciona vehicles primerencs
 
