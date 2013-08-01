@@ -297,7 +297,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Sulge ak
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Akna pealkiri. Liigutamiseks lohista seda hiirega.
 STR_TOOLTIP_SHADE                                               :{BLACK}Akna peitmine - näidatakse ainult pealkirjariba
 STR_TOOLTIP_DEBUG                                               :{BLACK}Näita NewGRF debug-i informatsiooni
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Aken vaikimisi suurusesse. Praegune suurus jääb vaikimisi suuruseks CTRL-klõpsu abil
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Taasta akna esialgne suurus. Ctrl+klõps muudab praeguse suuruse esialgseks
 STR_TOOLTIP_STICKY                                              :{BLACK}Märgib, et «Sulge kõik aknad» nupp seda akent ei sulge. «Ctrl+klõps» jätab suletamatuse vaikekäitumiseks
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klõpsa ja lohista, et akna suurust muuta
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Lülita aken suureks/väikseks
@@ -306,7 +306,7 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Kerimisr
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Ruudul asuvate hoonete jms. lammutamine. Ctrl valib ala diagonaalselt. Shift valib ehitamise/hinna kuvamise režiimi
 
 # Query window
-STR_BUTTON_DEFAULT                                              :{BLACK}Vaikimisi
+STR_BUTTON_DEFAULT                                              :{BLACK}Esialgne
 STR_BUTTON_CANCEL                                               :{BLACK}Tühista
 STR_BUTTON_OK                                                   :{BLACK}OK
 
@@ -373,7 +373,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Näita j
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Näita eesmärke
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Ava graafik
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Ava ettevõtete edetabel
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Rahasta uute ehitiste konstrueerimist
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Uue tööstuse rajamise rahastamine või tööstuste registri avamine
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Ava ettevõtte rongide register. Rühma- ja sõidukiregistrit vahetatakse Ctrl+klõpsu abil
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Ava ettevõtte mootorsõidukite register. Rühma- ja sõidukiregistrit vahetatakse Ctrl+klõpsu abil
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Ava ettevõtte laevade register. Rühma- ja sõidukiregistrit vahetatakse Ctrl+klõpsu abil
@@ -872,7 +872,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} sõiduplaanis on liiga vähe korraldusi
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Sõidukil {VEHICLE} on tühistatud käsk
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Sõidukil {VEHICLE} on topeltkäske
-STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Sõiduki {VEHICLE} käskudes on väär jaam
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Sõiduki «{VEHICLE}» korraldustes on kõlbmatu jaam
 # end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} on vanaks saamas
@@ -1121,7 +1121,7 @@ STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sulge k�
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(seletus puudub)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Vaikeväärtus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Seade rühm: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TYPE_CLIENT                                  :Kliendi seade (ei salvestu koos mänguga, mõjutab ainult uusi mänge)
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Kliendi seade (ei salvestu koos mänguga; mõjutab kõiki mänge)
 STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Mängu seade (salvestub koos mänguga; mõjutab ainult uusi mänge)
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Mängu seaded (hoitakse salvestuses; mõjutab ainult praegust mängu)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Ettevõtte seaded (hoitakse salvestuses; mõjutab ainult uusi mänge)
@@ -1137,7 +1137,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Seaded mis erin
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Piirab allolevat nimekirja valitud sätte tüübi järgi
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Kõik seadistused
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Kliendi seade (ei salvestu koos mänguga, mõjutab kõiki mänge)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Kliendi seade (ei salvestu koos mänguga; mõjutab kõiki mänge)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Mängu seaded (hoitakse salvestuses; mõjutab ainult uusi mänge)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Mängu seaded (hoitakse salvestuses; mõjutab ainult praegust mängu)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Firma seaded (hoitakse salvestuses; mõjutab ainult uusi mänge)
@@ -1236,17 +1236,17 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Sõltuvalt suun
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Paremal
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Aastalõpu rahavoogude aruanne: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Kui lubatud, siis ilmub finantside aken iga aasta lõpus lubades lihtsalt jälgida oma ettevõtte staatust
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Uued sihtpunktid on vaikimisi 'peatusteta': {STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Tavaliselt, peatub sõiduk igas peatuses mida ta läbib. Lubades seda seadet sõidab sõiduk peatumata läbi jaamade viimasesse sihtkohta. NB! See seade määrab ainult vaikimisi määratud väärtusi uutele käskutele. Individuaalseid käske saab lisada nii või naa
-STR_CONFIG_SETTING_STOP_LOCATION                                :Vaikimisi platvormiosa peatumiseks uute rongikäskudega: {STRING}
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Koht jaamas kus rong peatub vaikimisi. 'Lõpu lähedal' tähendab sisenemis koha lähistel. 'Keskel' tähendab keset jaama platvormi. 'Kaugel lõpus' tähendab kaugel sisenemis kohast. NB! See seade paneb paika vaikimisi kus peatuda, seda saab käskudes individuaalselt muuta!
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Korraldused on esialgselt «Peatusteta»: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Tavaliselt peatub sõiduk igas peatuses, mida ta läbib. Selle seadega sõidab sõiduk lõppsihini ilma vahejaamades peatumata. NB! See seade määrab vaid uute korralduse esialgse seadistuse. Korraldusi saab hiljem eraldi ümber seadistada
+STR_CONFIG_SETTING_STOP_LOCATION                                :Uue rongi korralduse esialgne platvormi peatumisosa: {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Esialgne peatumiskoht rongiplatvormil. «Lõpu lähedal» tähendab sisenemispunkti lähistel. «Keskel» tähendab keset platvormi. «Kaugel lõpus» tähendab kaugel sisenemispunktist. NB! Selle seadega sõidab sõiduk lõppsihini ilma vahejaamades peatumata. NB! See seade määrab vaid uute korralduse esialgse seadistuse. Korraldusi saab hiljem eraldi ümber seadistada
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :lõpu lähedal
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :keskel
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :täiesti lõpus
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Mootorsõidukite järjekorrad (koos mahuefektidega): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Pane sõiduk ootama hõivatud peatuse ees kuni need on vabastatud
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Vaate liikumine, kui hiireosuti on akna servas: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Kui on aktiveeritud, siis vaateaknad hakkavad kerima kui hiire kursor on serve lähedal
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Sisse lülitamisel liigub vaade, kui hiireosuti on aknaserva lähedal
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Väljas
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Peamine vaateaken, ainult täisekraan
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Peamine vaateaken
@@ -1353,9 +1353,9 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Roheline
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tumeroheline
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violetne
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Vaade liigub vastassuunas: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Meetod kaardi kerimiseks parema hiire nupuga. Kui on välja lülitatud siis liigutab hiir kaamerat. Kui on sisse lülitataud siis liigutab hiir kaarti
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Vaatevälja liigutatakse sujuvalt: {STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Juhib peamise vaateakna kerimiste määratud kohta kui väikesel kaardil vajutatakse mõnele punktile või kui sisestatakse käsklis kerimiseks määratud elemendi asukohale. Kui on aktiveeritud toimub kerimine sujuvalt, kui ei ole aktiveeritud siis hüpatakse kohe määratud asukohta
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Vaate liigutamine parema hiireklahviga. Kui see on välja lülitatud, siis hiireosuti juhib vaatepunkti. Kui sisse, siis kaarti
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Vaade keskendatakse sujuvalt: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Vaateakna asukohale keskendamise viis, kui vajutatakse väikesele kaardile, või kui vaade keskendatakse mõnele rekvisiidile. Sisse lülitades on liikumine sujuv, välja lülitades läheb vaade kohe sihtpunkti
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Ehitamisel mõõtude arvesti näitamine: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Näitab ehitamise ajal kahe ruudu kaugus- ja kõrgusvahemikke
 STR_CONFIG_SETTING_LIVERIES                                     :Ettevõtte värve näidatakse: {STRING}
@@ -1365,19 +1365,19 @@ STR_CONFIG_SETTING_LIVERIES_OWN                                 :Oma ettevõttel
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Igal ettevõttel
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :«ENTER» avab meeskonnavestluse: {STRING}
 STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Vahetab «ENTER» ja «Ctrl+ENTER» klahvidega ettevõttesisese ja avaliku vestluse avamise
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Kerimisrulliku otstarve: {STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Lülitab sisse kerimise kahesuunaliste (hiire) kerimisratastega
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Hiirerulli otstarve: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Võimaldab vaadet liigutada kahesuunalise hiirerulliga
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Kaardi suurendamine
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Kaardi kerimine
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Kaardil liikumine
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Väljas
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Kaardi kerimisrulliku kiirus: {STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Juhib hiire kettaga kerimise tundlikkust
-STR_CONFIG_SETTING_OSK_ACTIVATION                               :Ekraani klaviatuur: {STRING}
-STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Vali meetod mille järgi kuvatakse ekraanile klaviatuur teksti sisestamiseks osutamise seadmega. See on mõeldud väiksemate seadmete jaoks, millel puudub füüsiline klaviatuur.
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Hiirerulli tundlikkus: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Muudab hiirerulli tundlikkust
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Klaviatuuri näitamine ekraanil: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Ekraaniklaviatuuri avamise viis. Ekraaniklaviatuur võimaldab teksti sisestamist ainult hiireosutiga. See on mõeldud kasutamiseks väikeste seadmetega, millel ei ole klaviatuuri
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Väljas
-STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Topeltklõps
-STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Üks klõps (kui on fookuses)
-STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Üks klõps (koheselt)
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Topeltklõpsuga
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Ühe klõpsuga (kui on fookuses)
+STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Ühe klõpsuga (koheselt)
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Paremklõpsu matkimine: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Vali meetod mille järgi emuleeritakse hiite paremklõpse
@@ -1385,8 +1385,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+klõps
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+klõps
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Väljas
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Kerimine vasakklõpsul: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Lülita sisse kaardi kerimine lohistades hiire parema nupuga. See on eriti abiks puutetundliku ekraaniga mängimisel
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Vaate liigutamine vasaku hiireklahviga: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Lubab kaardi liigutamise vasaku hiireklahvi abil. See lihtsustab mängimist puutetundlikul ekraanil
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Salvestatud mängu nimes kasutatakse {STRING} kuupäevavormingut
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Kuupäeva vorming salvestatud mängu nimes
@@ -1394,8 +1394,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :pikka (31. dets
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :lühikest (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Vaikimisi palett NewGRF-le millel kindlat paletti määranud pole: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Vaikimisi palet nende NewGRF-ide jaoks, mis ise nõutud paletti ei määra
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Kasutatav NewGRF-i palett, kui NewGRF ise paletti ei määra: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Palett, kui NewGRF-i vajalikku paletti ei määra
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS-i palett
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows-i palett
 
@@ -1429,22 +1429,22 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Hoia sildade, t
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Kulutuste rühmitamine rahavoogude aruandes: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Määrab rahavoogude aruande ülesehituse
 
-STR_CONFIG_SETTING_SOUND_TICKER                                 :Uudise kokkuvõte: {STRING}
-STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Mängi heliefekte uudiste kokkuvõtete jaoks
-STR_CONFIG_SETTING_SOUND_NEWS                                   :Ajaleht: {STRING}
-STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Mängi häält ajalehe vaatamisel
-STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Aasta lõpp: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Mängi heliefekte aasta lõppus, ettevõtte aasta aruande võrdlemisel eelneva aasta aruandega
-STR_CONFIG_SETTING_SOUND_CONFIRM                                :Ehitis: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Mängi heliefekti edukatel rajamistel või muudel tegevustel
-STR_CONFIG_SETTING_SOUND_CLICK                                  :Nupu vajutused: {STRING}
-STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Piiksu nuppe klõpsates
-STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastroofid/õnnetused: {STRING}
-STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Mängi õnnetuste ja katastroofide heliefekte
-STR_CONFIG_SETTING_SOUND_VEHICLE                                :Sõidukid: {STRING}
-STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Mängi sõidukite helieffekte
-STR_CONFIG_SETTING_SOUND_AMBIENT                                :Keskkond: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Mängi ümbritseva keskkonna, ettevõtete ja linnade heliefekte
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Lühiteadetes: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Lühiteate ilmumisel kostub helisignaal
+STR_CONFIG_SETTING_SOUND_NEWS                                   :Ajalehes: {STRING}
+STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Ajalehe avamisel kostub hääl
+STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Aastalõpul: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Kui aasta lõpus ilmub ettevõtte rahavoogude aruanne, kus võrreldakse ettevõtte tulemusi eelmise aastaga, kõlab heli
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Ehitamisel: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Ehitamise käigus ja selle lõppemisel kostuvad helid
+STR_CONFIG_SETTING_SOUND_CLICK                                  :Nupuvajutustel: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Nupu vajutamisel kostub helisignaal
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastroofides/õnnetustes: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Õnnetustes ja katastroofides kõlavad helid
+STR_CONFIG_SETTING_SOUND_VEHICLE                                :Sõidukitel: {STRING}
+STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Kostuvad sõidukite helid
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Taustahelid: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Maastikult, tööstustest ja linnadest kostuvad taustahelid
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Taristu ehitamine ainult vastavate sõidukite olemasolul: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Kui on aktiveeritud, siis on taristu ehitamine avatud ainult juhul kui antud taristule vastavad sõidukid on saadaval. Väldib mõttetut ehitamist kui taristu kasutamiseks vajalikke sõidukeid pole saadaval.
@@ -1479,7 +1479,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maksimaalne arv
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Hooldusvälp protsentides: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Vali kas sõiduki hooldus käivitub vastavalt ajale mis on möödunud viimasest hooldusest või kui sõiduki usaldusväärsus langeb allapoole lubatud piiri sõiduki maksimaalsest usaldusväärsuse protsendist
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :Rongi hooldusvälba vaikeväärtus: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Rongide esialgne hooldusvälp: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Määrab uute rööbassõidukite hooldusvälba, kui sõidukile eraldi hooldusvälpa ei määrata
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} päev{P 0 "" a}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Väljas
@@ -1549,8 +1549,8 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Semafore ehitat
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Määra aasta alates millest hakatakse kasutama elektriga foore. Ennem seda aastat kasutatakse semafoore (mis täidavad sama eesmärki, aga näevad teist moodi välja)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Signaalide paigutamise graafiline kasutajaliides: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Kuva aken erinevate fooride tüüpidega mida saab ehitada, selle asemel et kuvada üks fooride nupp ja kasutada Ctrl+klõpsu fooride ehitamiseks
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Vaikimisi ehitatav signaalide liik: {STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Vaikimisi foori tüüp mida kasutada
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Esialgselt ehitatav signaaliliik: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Esialgselt kasutatav signaaliliik
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Tavaline
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Täiustatud
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Ühesuunaline täiustatud
@@ -1562,7 +1562,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Kõik
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Uute linnade tänavaplaneering: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Teedevõrgu paigutus linnades
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Vaikimisi
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Esialgne
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Paremad teed
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 võrgustik
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 võrgustik
@@ -1723,20 +1723,20 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Muuda se
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}Eksitus konfiguratsiooni failiga...
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... vigane massiiv '{STRING}'
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... tundmatu väärtus '{STRING}' '{STRING}' jaoks
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... väärtus «{STRING}» on «{STRING}» jaoks kõlbmatu
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... seadistuse lõpule järgnevad tähed '{STRING}'
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... vigast NewGRF-i '{STRING}' ei arvestata: korduv GRF-i ID '{STRING}'
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... vigast NewGRF-i '{STRING}' ei võeta arvesse: {STRING}
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... eiratakse kõlbmatut NewGRF-i «{STRING}»: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ei leitud
-STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :staatilise kasutuse puhul ohtlik
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :muutumatus kasutuses ohtlik
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :süsteem NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :Mitteühilduv selle OpenTTD versiooniga
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :tundmatu
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... pakkimise tihedus '{STRING}' ei ole lubatud
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... salvestatud mängu formaat '{STRING}' ei ole saadaval. Taastatakse formaat '{STRING}'
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... eiratakse alusgraafika kogu '{STRING}': ei leitud
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... eiratakse alushelide kogu '{STRING}': ei leitud
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... eiratakse alusmuusika kogu '{STRING}': ei leitud
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... tihendusaste «{STRING}» ei sobi
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... mängu salvestamise vormingut «{STRING}» ei ole. Taastatakse «{STRING}»
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... eiratakse alusgraafika kogu «{STRING}»: ei leitud
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... eiratakse alushelide kogu «{STRING}»: ei leitud
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... eiratakse alusmuusika kogu «{STRING}»: ei leitud
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Vahemälu on täis
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Pildipuhvri (ingl k «spritecache») suurendamine {BYTES} võrra ebaõnnestus. Pildipuhvri uus suurus on {BYTES}. Seetõttu on OpenTTD nüüd aeglasem. 32 bpp graafika keelamine ja suurendusastme ülempiiri vähendamine piirab vahemälu tarbimist
 
@@ -2104,8 +2104,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Sisesta 
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Sisestatud salasõna ei salvestata
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Määra ettevõtte uus salasõna
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Ettevõtte salasõna
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Vaikimisi määratud ettevõtte salasõna
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Kasuta selle ettevõtte salasõna uute ettevõtete vaikimisi määratud salasõnana
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Esialgne ettevõtte salasõna
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Määra ettevõtte salasõna uute ettevõtete esialgseks salasõnaks
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Liitu
@@ -2159,7 +2159,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :ühendus katkes
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokolli viga
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF-i kokkusobimatus
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :keelatud
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :kahtlane pakett vastu võetud
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :saadud pakett on kõlbmatu
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :vale osa
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nimi on juba kasutusel
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :vale salasõna
@@ -2361,7 +2361,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Ehita ja
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vali jaama klass mida tahad näidata
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vali ehitatava jaama tüüp
 
-STR_STATION_CLASS_DFLT                                          :Vaikimisi valitud jaam
+STR_STATION_CLASS_DFLT                                          :Esialgne jaam
 STR_STATION_CLASS_WAYP                                          :Meldepunktid
 
 # Signal window
@@ -2405,7 +2405,7 @@ STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Trammite
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Ehita sõidutee lõik. Ctrl vahetab tee ehitamise/eemaldamise vahel. Shift kuvab ehitamisehinna.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Ehita trammitee blokk. Ctrl valib tee ehitamise/eemaldamise. Shift valib ehitamise/hinna kuvamise režiimi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Ehita autotee osa kasutades Autoroad režiimi. Ctrl valib tee ehitamise/eemaldamise. Shift valib ehitamise/hinna kuvamise režiimi
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Ehita trammitee osa kasutades Autotram režiimi. Ctrl valib trammitee ehitamise/eemaldamise. Shift valib ehitamise/hinna kuvamise režiimi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Ehita trammitee lõik «Autotram» režiimis. Ctrl valib trammitee ehitamise/eemaldamise. Shift valib ehitamise/hinna kuvamise režiimi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Depoo ehitamine (veovahendite ostmiseks ja hooldamiseks). Shift valib ehitamise/hinna kuvamise režiimi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Ehita trammidepoo (veeremi ehitamiseks ja hoolduseks). Shift valib ehitamise/hinna kuvamise režiimi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Ehita bussijaam. Ctrl võimaldab jaamasid ühendada. Shift valib ehitamise/hinna kuvamise režiimi
@@ -2708,7 +2708,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Salvesta
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Laadi stsenaariumit
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Laadi kõrguskaart
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Salvesta kõrguskaart
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Vajuta siia, et minna praegusesse vaikimisi valitud salvestamise/laadimise kausta
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Vajutamisel avaneb salvestuste ja jätkamiste jaoks määratud algne kataloog
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} vaba
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Nimekiri ketastest, kataloogidest ja salvestatud mängudest
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Mängu salvestuse nimi
@@ -2890,7 +2890,7 @@ STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Esines r
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :OpenTTD väitel {1:STRING} ei tööta selle TTDPatch osaga.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} on {STRING} TTD osa jaoks.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} on mõeldud kasutamiseks {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :vigane parameeter {1:STRING} jaoks: parameeter {STRING} ({NUM})
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :kõlbmatu «{1:STRING}» parameeter: parameeter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} peab olema laetud enne {STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} peab olema laetud pärast {STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} nõuab OpenTTD osa {STRING} või uuemat
@@ -2899,7 +2899,7 @@ STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Liiga palju New
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laadides {1:STRING} staatilise NewGRF-na koos {STRING} võib põhjustada sünkrooni katkemist.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Ootamatu sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ootamatu tegevus 0 property {4:HEX} (sprite {3:NUM})
-STR_NEWGRF_ERROR_INVALID_ID                                     :Katse kasutada vigast ID'd (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Kasutati kõlbmatut ID-d («sprite» {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sisaldab vigast pilti. Kõiki vigaseid pilte näidatakse punase küsimärgina (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sisaldab mitut Action 8 kirjet (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Loe pseudo-sprite lõpust edasi (sprite {3:NUM})
@@ -2907,7 +2907,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Praegune
 STR_NEWGRF_ERROR_MISSING_SPRITES_UNSTABLE                       :{WHITE}Praegune alusgraafika kogu ei sisalda mitmeid spraite.{}Palun uuenda alusgraafika kogu.{}Kuna sa mängid {YELLOW}OpenTTD arendusversiooniga{WHITE}, siis ilmselt pead sa kasutama {YELLOW}alusgraafika kogu arendusversiooni{WHITE}
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Soovitud GRFi ressursid ei ole saadaval (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} blokeeriti {STRING} poolt
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Kehtetu/tundmatu sprite'i asetuse formaat (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :«Sprite» paigutus kõlbmatus vormis («sprite» {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Ettevaatust!
@@ -2932,19 +2932,19 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Puuduvad f
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}' käitumine põhjustab tõenäoliselt sünkrooni katkemisi ja/või mängu kokkujooksmiseid.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}See muutis sõiduki '{1:ENGINE}' vedavate vagunite olekut väljaspool depood
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Depoost väljas asudes on sõiduki '{1:ENGINE}' pikkus muudetud.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Ettevõtte '{1:COMPANY}' rongil '{0:VEHICLE}' on ebasobiv pikkus. See on tõenäoliselt põhjustatud problemaatilistest NewGRF-dest. Mäng võib kokku joosta või sünkroonist välja minna
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Ettevõtte «{1:COMPANY}» rongil «{0:VEHICLE}» pikkus on kõlbmatu. Midagi on valesti NewGRF-iga. Mäng võib kokku joosta või sünkroonist välja minna
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' sisaldab väära teavet.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Veose/ümberseadistamise teave sõidukil '{1:ENGINE}' erineb ehitamisaegsest ostunimekirjast. Seetõttu võib uuendamisel või asendamisel ümberseadistamine ebaõnnestuda
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' põhjustas toodangu tagasikutsumises lõpmatu korduse
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Tagasikutse {1:HEX} tagastas teadmata/kehtetu vaste {2:HEX}
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Tagasikutse «{1:HEX}» tulemus «{2:HEX}» on kõlbmatu
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
-STR_NEWGRF_INVALID_CARGO                                        :<vale või vigane kaup>
+STR_NEWGRF_INVALID_CARGO                                        :<kõlbmatu kaup>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
-STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <vale või vigane kaup>
-STR_NEWGRF_INVALID_ENGINE                                       :<sobimatu mootorimudel>
-STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<vigane tööstus>
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <kõlbmatu kaup>
+STR_NEWGRF_INVALID_ENGINE                                       :<kõlbmatu sõiduki mudel>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<kõlbmatu tööstus>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF-ide skanneerimine
@@ -3643,7 +3643,7 @@ STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Suurenda
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Vähenda hooldusvahemiku 10 võrra. Ctrl+Klõps vähendab hooldusvahemikku 5 võrra.
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Muuda hooldusvälba liiki
-STR_VEHICLE_DETAILS_DEFAULT                                     :Vaikimisi
+STR_VEHICLE_DETAILS_DEFAULT                                     :Esialgne
 STR_VEHICLE_DETAILS_DAYS                                        :Päeva
 STR_VEHICLE_DETAILS_PERCENT                                     :Protsent
 
@@ -3852,7 +3852,7 @@ STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Mine sihtpunkti
 STR_ORDER_CONDITIONAL_NUM                                       :Mine sihtpunkti {COMMA}, kui {STRING} {STRING} {COMMA}
 STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Mine sihtpunkti{COMMA}, kui {STRING} {STRING}
 
-STR_INVALID_ORDER                                               :{RED} (Ebasobiv järjekord)
+STR_INVALID_ORDER                                               :{RED} (Kõlbmatu järjekord)
 
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Sõiduplaan)

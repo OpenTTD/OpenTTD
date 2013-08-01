@@ -241,7 +241,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}ชื�
 STR_TOOLTIP_SHADE                                               :{BLACK}Shade window - แสดงเฉพาะแถบด้านบน
 STR_TOOLTIP_DEBUG                                               :{BLACK}แสดงข้อมูล debug NewGRF
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}ปรับขนาดหน้าจอเป็นแรกเริ่ม. กดปุ่ม Ctrl+Click เพื่อบันทึกหน้าจอปัจจุบันเป็นขนาดแรกเริ่ม
-STR_TOOLTIP_STICKY                                              :{BLACK}กำหนดไม่ให้ปิดหน้าต่างนี้เมื่อใช้ปุ่ม 'ปิดทุกหน้าต่าง'
+STR_TOOLTIP_STICKY                                              :{BLACK}กำหนดไม่ให้ปิดหน้าต่างนี้เมื่อใช้ปุ่ม 'ปิดทุกหน้าต่าง' Ctrl+Click เพื่อบันทึกเป็นค่าปริยาย
 STR_TOOLTIP_RESIZE                                              :{BLACK}คลิกค้างแล้วลากเพื่อเปลี่ยนขนาดของหน้าต่าง
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}เปลี่ยนขนาดหน้าต่าง ใหญ่/เล็ก
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}แถบเลื่อน - ใช้เลื่อนรายการ ขึ้น/ลง
@@ -1377,7 +1377,7 @@ STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :เล่นเ
 STR_CONFIG_SETTING_SOUND_NEWS                                   :หนังสือพิมพ์: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :เล่นเสียงเมื่อแสดงหน้าหนังสือพิมพ์
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :เสียงเตือนเมื่อถึงสิ้นปี: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :เล่นเสียงเมื่อแสดงรายงานผลประกอบการสิ้นปี
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :เล่นเสียงเมื่อแสดงรายงานผลประกอบการเปรียบเทียบกับปีที่แล้ว
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :การก่อสร้าง: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :เล่นเสียงเมื่อการก่อสร้างเสร็จหรือการกระทำอื่นๆ
 STR_CONFIG_SETTING_SOUND_CLICK                                  :เมื่อคลิ๊กเมาส์: {STRING}
@@ -4316,7 +4316,9 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}ไม�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... ยานพาหนะถูกทำลาย
 
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}ไม่มียานพาหานะให้เลือก
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}ไม่มียานพาหานะให้เลือก
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}เปลี่ยนการกำหนดค่าสำหรับ NewGRF
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}ยังไม่มียานพาหานะให้เลือก
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}เริ่มเกมหลังจาก {DATE_SHORT} หรือเลือกใช้งาน NewGRF ของยานพาหนะที่จัดเตรียมไว้ก่อนหน้านี้
 
 # Specific vehicle errors
@@ -4367,9 +4369,9 @@ STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :กราฟฟ
 STR_BASEGRAPHICS_WIN_DESCRIPTION                                :กราฟฟิกต้ำตำหรับของ Transport Tycoon Deluxe Windows edition
 STR_BASESOUNDS_DOS_DESCRIPTION                                  :เสียงต้นตำหรับของ Transport Tycoon Deluxe DOS edition
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :เสียงต้นตำหรับของ Transport Tycoon Deluxe Windows edition
-STR_BASESOUNDS_NONE_DESCRIPTION                                 :A sound pack without any sounds.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :ชุดเสียงแบบไร้เสียง
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :เพลงต้นตำหรับชอง Transport Tycoon Deluxe Windows edition
-STR_BASEMUSIC_NONE_DESCRIPTION                                  :A music pack without actual music.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :ชุดเพลงประกอบแบบไม่มีเสียงเพลง
 
 ##id 0x2000
 # Town building names

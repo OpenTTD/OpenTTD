@@ -1535,7 +1535,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :Posició de la 
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Posició horitzontal de la barra d'estat a la part inferior de la pantalla
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Radi d'acció de la finestra: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Distància entre finestres abans que la finestra moguda sigui automàticament alineada a una finestra propera
-STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} píxel{P 0 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Desactivat
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Nombre màxim de finestres no-enganxoses: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Nombre de finestres no-enganxoses obertes abans que les finestres antigues es tanquin automàticament per fer lloc a les noves finestres
@@ -1551,13 +1551,13 @@ STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :Velocitat de creixement de les ciutats: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :Velocitat de creixement de les poblacions: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Velocitat de creixement de les poblacions
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Cap
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lenta
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Ràpida
-STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Molt Ràpida
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Molt ràpida
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporció de pobles que es convertiran en ciutats: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Quantitat de pobles que esdevenen una ciutat, es a dir un poble que comença més gran i creix més ràpidament
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 en {COMMA}
@@ -1567,9 +1567,9 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :La grandària m
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Treu els elements de carretera absurds durant la reconstrucció de carretera: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Elimina les carreteres sense sortida durant les reconstruccions de carreteres finançades
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualitza el graf de distribució cada {STRING} dia{P 0:2 "" s}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Temps entre recàlculs successius del graf de connexions. Cada recàlcul calcula els plans per un component del graf. Això significa que un valor X per aquest paràmetre no implica que tot el graf serà actualitzat cada X dies. Només alguns components ho seran. Com més curt el valor, més temps de processador es requerirà per calcular-ho. Com més llarg, més temps passarà fins que la distribució de càrregues comenci en noves rutes.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Pren {STRING} dia{P 0:2 "" s} pel recàlcul del graf de distribució
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualitza el graf de distribució cada {STRING} di{P 0:2 a es}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Temps entre recàlculs successius del graf de distribució. Cada recàlcul calcula els plans per un component del graf. Això significa que un valor X per aquest paràmetre no implica que tot el graf serà actualitzat cada X dies. Només alguns components ho seran. Com més curt el valor, més temps de processador es requerirà per calcular-ho. Com més llarg, més temps passarà fins que la distribució de càrregues comenci en noves rutes.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Empra {STRING} di{P 0:2 a es} per al recàlcul del graf de distribució
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Temps dedicat a cada recàlcul d'un component del graf de connexions. Quan un recàlcul s'inicia, el programa crea un fil que pot executar-se durant aquest nombre de dies. Com més curt el valor, més probable que el fil no hagi acabat quan s'espera. Aleshores el programa s'atura fins que el fil acaba ("ralentització"). Com més llarg el valor, més temps requereix l'actualització de la distribució quan les rutes canvien.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimètric
@@ -1583,7 +1583,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La classe de c�
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Mode de distribució per altres classes de càrrega: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"simètric" significa que aproximadament la mateixa quantitat de càrrega s'enviarà de l'estació A a la B que de B a A. "asimètric" vol dir que quantitats arbitràries de càrrega poden ser enviades en qualsevol sentit. "manual" significa que no s'aplicarà cap distribució automàtica a aquestes càrregues. Probablement voldreu indicar "asimètric" o manual.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisió de la distribució: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Com més alt el valor indicat, més temps de processador requerirà el càlcul del graf de connexions. Si requereix massa temps podeu notar ralentització. Si indiqueu un valor baix, però, la distribució serà poc acurada, i us podeu trobar que la càrrega no és enviada als llocs que espereu.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Com més alt el valor indicat, més temps de processador requerirà el càlcul del graf de distribució. Si requereix massa temps podeu notar ralentització. Si indiqueu un valor baix, però, la distribució serà poc acurada, i us podeu trobar que la càrrega no és enviada als llocs que espereu.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efecte de la distància sobre les demandes: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Si indiqueu un valor major de 0, la distància entre l'estació d'origen A d'una càrrega i la possible destinació B, tindrà efecte en la quantitat de càrrega enviada de A a B. Com més lluny és B de A menys càrrega s'hi enviarà. Com més alt el valor, menys càrrega s'enviarà a estacions llunyanes i més càrrega a estacions properes.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Quantitat de càrrega retornada per mode simètric: {STRING}
@@ -1598,18 +1598,18 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Mètric (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unitats de potència dels vehicles: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Quan es mostra la potència d'n vehicle a la interfície d'usuari, presenta-la en les unitats seleccionades
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Quan es mostra la potència d'un vehicle a la interfície d'usuari, presenta-la en les unitats seleccionades
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperial (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Mètric (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Unitats dels pesos: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Quan es mostren pesos a la interfície d'usuari, presenta-les en les unitats seleccionades
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Unitats de massa: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Quan es mostren masses a la interfície d'usuari, presenta-les en les unitats seleccionades
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperial (t curta/tona)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Mètric (t/tona)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Unitats de volums: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Unitats de volum: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Quan es mostren volums a la interfície d'usuari, presenta'ls en les unitats seleccionades
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Imperial (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Mètric (l)
@@ -1621,8 +1621,8 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Imperial (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Mètric (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unitats de les alçades: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Quan es mostren alçades a la interfície d'usuari, presenta-les en les unitats seleccionades
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Unitats de longitud: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Quan es mostren longituds a la interfície d'usuari, presenta-les en les unitats seleccionades
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperial (peu)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Mètric (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -2055,7 +2055,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Utilitza
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Unir-se
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Unir-se i jugar amb aquesta companyia
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Contrasenya
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Protegeix la teva Empresa amb contrasenya per tal d'evitar que la utilitzin usuaris no autoritzats
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Protegeix la teva empresa amb contrasenya per tal d'evitar que la utilitzin usuaris no autoritzats
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Estableix la contrasenya de l'Empresa
 
 # Network chat
@@ -3864,7 +3864,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Seleccio
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}IA/Depuració de l'script del joc
+STR_AI_DEBUG                                                    :{WHITE}Depuració de la IA/Script de Joc
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nom de l'script
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Paràmetres
@@ -3888,16 +3888,16 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Un dels 
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}IA/La finestra de depuració de l'Script del Joc només està disponible pel servidor
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}IA/Configuració dels Scripts del joc
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuració de la IA/Script de Joc
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}L'Script del Joc que serà carregat al proper joc
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Les IA que seran carregades al proper joc
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador humà
-STR_AI_CONFIG_RANDOM_AI                                         :IA Aleatòria
+STR_AI_CONFIG_RANDOM_AI                                         :IA aleatòria
 STR_AI_CONFIG_NONE                                              :(cap)
 
-STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mou Amunt
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mou amunt
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mou la IA selecionada amunt a la llista
-STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mou Avall
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mou avall
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mou la IA selecionada avall a la llista
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script del Joc
@@ -4007,7 +4007,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Només s
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Captura de pantalla enorme
-STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}La captura de pantalla tindrà una resolució de {COMMA} x {COMMA} pixels. Es tardarà una estona a fer la captura. Vols continuar?
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}La captura de pantalla tindrà una resolució de {COMMA} x {COMMA} píxels. Es tardarà una estona a fer la captura. Vols continuar?
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de pantalla desada correctament com a '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Error en la captura de pantalla!
@@ -4046,7 +4046,7 @@ STR_ERROR_BRIBE_FAILED                                          :{WHITE}El teu i
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Aquí no es pot elevar el terreny...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Aquí no es pot rebaixar el terreny...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Aquí no es pot anivellar...
-STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}La excavació pot malmetre el túnel
+STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}L'excavació pot malmetre el túnel
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Ja ets a nivell del mar
 STR_ERROR_TOO_HIGH                                              :{WHITE}Massa alt
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ja és pla
