@@ -3893,7 +3893,7 @@ STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Das Skri
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Die KIs, die im nächsten Spiel geladen werden
 STR_AI_CONFIG_HUMAN_PLAYER                                      :menschlicher Spieler
 STR_AI_CONFIG_RANDOM_AI                                         :Zufällige KI
-STR_AI_CONFIG_NONE                                              :(keine)
+STR_AI_CONFIG_NONE                                              :-
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Nach oben bewegen
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Die ausgewählte KI in der Liste nach oben bewegen
@@ -4317,6 +4317,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Das Wart
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... Fahrzeug ist zerstört
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Es sind keine Fahrzeuge verfügbar!
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Bitte die NewGRF-Einstellungen ändern, damit Fahrzeuge früher verfügbar sind
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Noch keine Fahrzeuge verfügbar
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Ein neues Spiel nach {DATE_SHORT} beginnen oder ein NewGRF-Fahrzeugset mit früher verfügbaren Fahrzeugen verwenden
 
