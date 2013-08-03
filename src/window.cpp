@@ -2429,9 +2429,14 @@ EventState Window::HandleEditBoxKey(int wid, uint16 key, uint16 keycode)
 			break;
 
 		case QueryString::ACTION_CLEAR:
-			query->text.DeleteAll();
-			this->SetWidgetDirty(wid);
-			this->OnEditboxChanged(wid);
+			if (query->text.bytes <= 1) {
+				/* If already empty, unfocus instead */
+				this->UnfocusFocusedWidget();
+			} else {
+				query->text.DeleteAll();
+				this->SetWidgetDirty(wid);
+				this->OnEditboxChanged(wid);
+			}
 			break;
 
 		default:
