@@ -4412,6 +4412,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nije mog
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozilo je uništeno
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Neće biti dostupno nijedno vozilo
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Promijenite konfiguraciju NewGRF-a
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Još nema dostupnih vozila
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Pokreni novu igru nakon {DATE_SHORT} ili upotrijebi NewGRF koji daje vrlo rana vozila
 
