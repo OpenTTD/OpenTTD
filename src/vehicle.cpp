@@ -851,11 +851,12 @@ static void RunVehicleDayProc()
 			uint16 callback = GetVehicleCallback(CBID_VEHICLE_32DAY_CALLBACK, 0, 0, v->engine_type, v);
 			if (callback != CALLBACK_FAILED) {
 				if (HasBit(callback, 0)) {
-					/* After a vehicle trigger, the graphics and properties of the vehicle could change. */
 					TriggerVehicle(v, VEHICLE_TRIGGER_CALLBACK_32); // Trigger vehicle trigger 10
-					v->MarkDirty();
 				}
-				if (HasBit(callback, 1)) v->colourmap = PAL_NONE;
+
+				/* After a vehicle trigger, the graphics and properties of the vehicle could change.
+				 * Note: MarkDirty also invalidates the palette, which is the meaning of bit 1. So, nothing special there. */
+				if (callback != 0) v->MarkDirty();
 
 				if (callback & ~3) ErrorUnknownCallbackResult(v->GetGRFID(), CBID_VEHICLE_32DAY_CALLBACK, callback);
 			}

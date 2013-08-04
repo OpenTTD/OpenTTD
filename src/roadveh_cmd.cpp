@@ -234,9 +234,6 @@ void RoadVehUpdateCache(RoadVehicle *v, bool same_length)
 		/* Update visual effect */
 		v->UpdateVisualEffect();
 
-		/* Invalidate the vehicle colour map */
-		u->colourmap = PAL_NONE;
-
 		/* Update cargo aging period. */
 		u->vcache.cached_cargo_age_period = GetVehicleProperty(u, PROP_ROADVEH_CARGO_AGE_PERIOD, EngInfo(u->engine_type)->cargo_age_period);
 	}
@@ -394,7 +391,8 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 void RoadVehicle::MarkDirty()
 {
 	for (RoadVehicle *v = this; v != NULL; v = v->Next()) {
-		v->UpdateViewport(false, false);
+		v->colourmap = PAL_NONE;
+		v->UpdateViewport(true, false);
 	}
 	this->CargoChanged();
 }

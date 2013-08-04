@@ -478,18 +478,17 @@ CommandCost CmdRefitVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 			case VEH_SHIP:
 				v->InvalidateNewGRFCacheOfChain();
-				v->colourmap = PAL_NONE; // invalidate vehicle colour map
 				Ship::From(v)->UpdateCache();
 				break;
 
 			case VEH_AIRCRAFT:
 				v->InvalidateNewGRFCacheOfChain();
-				v->colourmap = PAL_NONE; // invalidate vehicle colour map
 				UpdateAircraftCache(Aircraft::From(v), true);
 				break;
 
 			default: NOT_REACHED();
 		}
+		front->MarkDirty();
 
 		InvalidateWindowData(WC_VEHICLE_DETAILS, front->index);
 		SetWindowDirty(WC_VEHICLE_DEPOT, front->tile);
