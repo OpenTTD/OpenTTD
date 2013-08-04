@@ -384,11 +384,11 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Ehita ra
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Ehita maantee
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Ehita laevakai
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Ehita lennuväli
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Maastiku tööriistade avamine maa tõstmiseks/langetamiseks, puude istutamiseks, jne.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Ava riba maastikutarvikutega, millega saab maad tõsta/langetada, puid istutada, jne.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Näita heli/muusika akent
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Näita viimast teadet, ava teadete seadistus
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Maa-ala andmed, konsool, skriptide debug, ekraanitõmmised, OpenTTDst
-STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Tööriistaribade vahetamine
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Vaheta tarvikuribad
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Kaardi salvestamine, kaardi laadimine, kaarditegemisest lahkumine, mängust väljumine
@@ -1205,7 +1205,7 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Kaldus ruudu kalle sõidukitele: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Kaldus ruudu kalle sõidukitele. Mida kõrgem on valik seda raskem on mäest ronida
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Rongidel ja laevadel keelatakse 90 kraadised pöörded: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 kraadine pööre ilmub kui horisontaalne rööbastee järgneb kohe vertikaalse rööbastee tükkile, seega peab rong tegema 90 kraadise pöörde tavalise 45 kraadise pöörde asemel. See lisandub ka laevade pöörderaadiusele!
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 kraadine pööre esineb, kui rõhtsele rööpale järgneb püstne rööbas, seega peab rong tegema 90 kraadise pöörde tavalise 45 kraadise pöörde asemel. Muudab ka laevade pöörderaadiust
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Mitte kõrvuti asetsevate jaamade liitmine: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Lubab lisada uusi jaamade osi ilma puudutamata olemasolevaid osi. Vajalik Ctrl+Vajutus, kui asetada uut osa
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Täiustatud laadimisalgoritm: {STRING}
@@ -1234,8 +1234,8 @@ STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Vali, kus pool 
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Vasakul
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Sõltuvalt suunast
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Paremal
-STR_CONFIG_SETTING_SHOWFINANCES                                 :Aastalõpu rahavoogude aruanne: {STRING}
-STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Kui lubatud, siis ilmub finantside aken iga aasta lõpus lubades lihtsalt jälgida oma ettevõtte staatust
+STR_CONFIG_SETTING_SHOWFINANCES                                 :Aasta lõpul näidatakse rahavoogude aruannet: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Sisse lülitamisel ilmub iga aasta lõpus rahavoogude aruanne, mis annab hea ülevaate ettevõtte rahalisest olukorrast
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Ülesanded on esialgselt «Peatusteta»: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Tavaliselt peatub sõiduk igas peatuses, mida ta läbib. Selle seadega sõidab sõiduk lõppsihini ilma vahejaamades peatumata. NB! See seade määrab vaid uute korralduse esialgse seadistuse. Korraldusi saab hiljem eraldi ümber seadistada
 STR_CONFIG_SETTING_STOP_LOCATION                                :Esialgne platvormi peatumisosa uute rongide ülesannetes: {STRING}
@@ -1306,16 +1306,16 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} kuu{P 0
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Nõutud rahasumma uuendamiseks: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Pangakontol oleva raha alammäär sõidukite uuendamiseks
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Veateadete kestvus: {STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Kestvus veateadete kuvamiseks punases aknas. Mõned (kriitilised) veateated ei sulgu automaatselt peale seda aega ja peavad käsitsi suletud saama
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Punases aknas olevate veateadete näitamise kestvus. On ka mõned (tähtsad) veateated, mis ise ei sulgu, vaid mis tuleb käsitsi sulgeda
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" it}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :Vihjete näitamine: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Viivitus, kui kaua peab hiirega liidese osale osutama, enne kui selle kohta vihjet näidatakse. Teine võimalus vihjeid näidata on parema hiireklõpsu abil
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :{COMMA} sekund{P 0 "" it} osutamist
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Paremklõpsul
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Vihjeid näidatakse pärast: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Viivitus, kui kaua peab hiirega liidese osale osutama, enne kui selle kohta vihjet näidatakse. On ka võimalik vihjeid parema hiireklõpsuga näidata
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :{COMMA} sekundilist osutamist
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Paremklõpsu
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Linna rahvaarv nimesildil: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Näitab linna nimesildil rahvaarvu
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Graafiku joonte paksus: {STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Graafiku joonte paksus. Peenem joon on täpsemalt loetav, laiem joon on lihtsamini näha ja värvid on selgemini eristatavad
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Graafikujoone laius: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Graafikutes kasutatava joone laius. Peenem joon on täpsem, laiem joon on paremini näha ja värvid on selgemini eristatavad
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Maatekituse meetod: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Algupärane
@@ -1394,38 +1394,38 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :pikka (31. dets
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :lühikest (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Kasutatav NewGRF-i palett, kui NewGRF ise paletti ei määra: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :NewGRF-i palett, mida kasutada, kui palett on määramata: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Palett, kui NewGRF-i vajalikku paletti ei määra
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS-i palett
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows-i palett
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windowsi palett
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Mängu alguses mäng seisab: {STRING}
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Kui on aktiveeritud siis on mängu alguses aeg peatatud, et lubada mängu alguses lähemlt tutvuda kaardiga
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Sisse lülitamisel mängu aeg seisab, mis annab rohkem aega kaardiga tutvuda
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Lubatud seisaku ajal: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Vali tegevuseg millede teostamine on lubatud mängu pausi ajal
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Mitte ükski toiming
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Kõik mitte-ehituslikud toimingud
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Kõik peale maastikku muutvate toimingute
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Kõik tõimingud
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Laiendatud sõidukinimekiri: {STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Luba kasutada täpsemaid sõidukite nimekirju et grupeerida sõidukeid
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Põhjalikku sõidukiregistrit näidatakse: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Lubab kasutada põhjalikke sõidukiregistreid, et rühmitada sõidukeid
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Laadimisnäidikute kasutamine: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Vali, kas näidata sõiduki peale- ja mahalaadimise ajal laadimisnäidikut
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Sõiduplaani ajaühik on sammud, mitte päevad: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Sõiduplaan on sammudes, mitte päevades: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Sõiduplaanis on ajad märgitud mitte päevades, vaid sammudes
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Sõiduplaanis on saabumised ja väljumised: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Kuva ennustatavaid saabumise ja väljumise aegu ajatabelites
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Sõiduplaanis on saabumis- ja väljumisajad: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Sõiduki sõiduplaanis esitatakse eeldatavaid saabumis- ja väljumisaegu
 STR_CONFIG_SETTING_QUICKGOTO                                    :Sõidukile määratakse kohe ülesandeid: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Sõiduki sihtide avamisel saab kohe «Mine» käske anda
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Algne rööbastee liik (mängu alustamisel/laadimisel): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Milline rööpa tüüp on automaatselt valitud mängu laadimise järel. 'Esimene avatud' valib vaniam rööpatüübi. 'Viimane avatud' valib uusima rööpatüübi. 'Enim kasutatud' valib enim kasutatud rööpatüübi.
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Esimene saadaval
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Viimane saadaval
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Algne rööbastee liik (mängu alustamisel/jätkamisel): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Määrab mängu alguses või selle jätkamisel käibel oleva rööbastee liigi. «Esimesena saadaval» valib kõige vanema rööbastee liigi, «Viimasena saadaval» valib kõige uuema rööbastee liigi, ning «Enim kasutatud» valib kõige rohkem kasutatud rööbastee liigi
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Esimesena saadaval
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Viimasena saadaval
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Enim kasutatud
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Kinnise raudteelõigu näitamine: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Värvib kinnise raudtee teist värvi. Lihtsustab vigade leidmist, kui rongid ei kasuta raudteelõiku
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Ehitustööriistad pärast kasutamist tegusad: {STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Hoia sildade, tunnelite jne ehitamise tööriistad avatuna peale nende kasutamist
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Ehitustarvikud on kasutamise järel käibel: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Sildade, tunnelite jne ehitamise tarvikud on kasutamise järel veel käibel
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Kulutuste rühmitamine rahavoogude aruandes: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Määrab rahavoogude aruande ülesehituse
 
@@ -1446,8 +1446,8 @@ STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Kostuvad sõidu
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Taustahelid: {STRING}
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Maastikult, tööstustest ja linnadest kostuvad taustahelid
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Taristu ehitamine ainult vastavate sõidukite olemasolul: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Kui on aktiveeritud, siis on taristu ehitamine avatud ainult juhul kui antud taristule vastavad sõidukid on saadaval. Väldib mõttetut ehitamist kui taristu kasutamiseks vajalikke sõidukeid pole saadaval.
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Sobivate sõidukite puudumisel on taristu ehitamine keelatud: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Sisse lülitamisel on taristu ehitamine võimalik ainult juhul, kui sellega seonduvad sõidukid on juba saadaval. Väldib mõttetut raha ja aja kulu, kui ehitatakse taristu, mida ei saa kasutada
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Ettevõtte rongide ülempiir: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Ettevõttele kuuluvate rongide arvu ülempiir
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Ettevõtte mootorsõidukite ülempiir: {STRING}
@@ -1497,33 +1497,33 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Elektrirongide 
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Selle seade sisse lülitamise korral ei ole tarvis rööpaid elektrifitseerida, et lubada elektrisõidukitel nendel rööbastel liikuda
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Esimese sõiduki saabumine mängija jaama: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Kuva ajaleht kui ettevõtte uude jaama saabub esimene sõiduk
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Kui ettevõtte uude jaama saabub esimene sõiduk, näidatakse seda ajalehes
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Esimese sõiduki saabumine vastase jaama: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Kuva ajaleht kui konkureeriva ettevõtte uude jaama saabub esimene sõiduk
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Kui vastasettevõtte uude jaama saabub esimene sõiduk, näidatakse seda ajalehes
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Õnnetused / katastroofid: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Kuva ajaleht õnnetuste või katastroofide korral
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Õnnetusi või katastroofi esinemisel näidatakse seda ajalehes
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Ettevõtte teave: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Kuva ajaleht kui uus ettevõte alustab või kui ettevõte riskib pankrotiga
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Kui uus ettevõte alustab, või ettevõte riskib pankrotiga, näidatakse seda ajalehes
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Tööstuste avamine: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Kuva ajaleht uute tööstuste avamise korral
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Uue tööstuste avamisel näidatakse seda ajalehes
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Tööstuste sulgemine: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Kuva ajaleht tööstuste sulgemise korral
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Tööstuste sulgemise korral näidatakse seda ajalehes
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Muutused majanduses: {STRING}
-STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Kuva ajaleht globaalse majanduse muutuste korral
+STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Maailmamajanduse muutumisel näidatakse seda ajalehes
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Ettevõtte poolt teenindavate tööstuste toodangumuutused: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Kuva ajaleht toodangu mahtude muutuste korral tööstuste kohta mis on teenindatud mängija ettevõtte poolt
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Ettevõttega seotud toodangumahtude muutuse korral näidatakse seda ajalehes
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Konkurentide poolt teenindavate tööstuste toodangumuutused: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Kuva ajaleht toodangu mahtude muutuste korral tööstuste kohta mida teenindavad konkurendid
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Vastasettevõtetega seotud toodangumahtude muutuste korral näidatakse seda ajalehes
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Ülejäänud tööstuste toodangumuutused: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Kuva ajaleht toodangu mahtude muutuste korral tööstuste kohta mis ei ole teenindatud mängija ettevõtte ega konkurentide poolt
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Ettevõtte või vastasettevõtetega mitteseotud toodangumahtude muutuste korral näidatakse seda ajalehes
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Teave ja nõuanded ettevõtte sõidukite kohta: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Kuva teateid sõidukite kohta mis vajavad tähelepanu
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Uued sõidukid: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Kuva ajaleht kui uus sõiduki tüüp muutub kättesaadavaks
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Uue sõiduki lisandumisel näidatakse seda ajalehes
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Veoste vastuvõtutingimuste muutumine: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Kuva teateid jaamades kaupade vastuvõtu muutuste korral
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Toetused: {STRING}
-STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Kuva ajaleht toetustega seotud sündmuste korral
+STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Toetustega seotud sündmuste korral näidatakse seda ajalehes
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Üldine teave: {STRING}
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Kuva ajalehe teated üldiste sündmuste kohta nagu eksklusiivsete õiguste ostmine ja kohalike teede rekonstrueerimine
 
@@ -1555,7 +1555,7 @@ STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Tavaline
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Täiustatud
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Ühesuunaline täiustatud
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Vaheta signaalide liike: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Vali milliseid fooride tüüpe läbi keritakse kui Ctrl+klõpsutada fooride ehitamise tööriistaga
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Muuda saadaval signaaliliike, kui «Ctrl»+klõpsu abil muuta signaali liiki
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Ainult tavaline
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Ainult täiustatud
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Kõik
@@ -1585,10 +1585,10 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ei {RED}(saeves
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Ainult vihmametsades
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Igal pool
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :Tööriistariba asukoht: {STRING}
-STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horisontaalne asukoht tööriistariba jaoks mängu ekraani ülaservas
-STR_CONFIG_SETTING_STATUSBAR_POS                                :Seisundiriba asukoht: {STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Horisontaalne asukoht staatuseriba jaoks mängu ekraani allservas
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :Peamine tarvikuriba paikneb: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Tarvikuriba rõhtne paiknemine ekraani ülaosas
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Näidikuriba paikneb: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Näidikuriba rõhtne paiknemine ekraani alaservas
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Akende haardumise ulatus: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Akendevaheline kaugus, enne, kui liigutatav aken joondatakse kõrvalakendega
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piks{P 0 el lit}
@@ -1623,28 +1623,28 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Keskmine linna 
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Mittevajaliku eemaldamine teedeehitusel: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Eemalda tupikteed kui rahastatakse kohalikku teedeehitust
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Jaotusgraafikut uuendatakse iga {STRING}. päev
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Jaotusgraafikuid uuendatakse igal {STRING}. päeval
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Aega ahelgraafikute koostamise vahel. Koostamine uuendab plaane ainult ühes graafiku osas. Seega X väärtusega ei uuendata graafikut iga X päeva tagant. Uuendatakse vaid ühte osa. Väiksema arvuga kasutatakse protsessorit rohkem. Suurema arvuga läheb kauem aega, kuni uuel teel alustatakse kaubavedu.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Jaotusgraafikuid koostatakse iga {STRING}. päev
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Jaotusgraafikud koostatakse {STRING} päeva jooksul
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Aega ahelgraafiku osa koostamiseks. Koostamise algul käivitatakse protsess, mis võib töötada määratud arv päevi. Väiksema väärtusega on suurem võimalus, et protsess lõppe. Kui protsess ei ole lõppenud, siis mäng seisatakse protsessi lõppemiseni (tekib viivitusi). Suurema arvuga läheb kauem, kuni muudetud teel uuendatakse kaubajaotust.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :väljas
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asümeetriline
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :sümeetriline
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Reisijate jaotuse viis: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Kui jaamast A läheb jaama B umbes sama hulk reisijaid, kui jaamast B jaama A, siis jaotus on «sümeetriline». Kui mõlemas suunas võib liikuda ükskõik, kui palju resijaid, siis jatous on «asümeetriline». Kui reisijate liikumist ei jaotata, siis jaotus on «väljas».
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Kui jaamast A läheb jaama B umbes sama hulk reisijaid, kui jaamast B jaama A, siis jaotus on «sümeetriline». Kui mõlemas suunas võib liikuda ükskõik, kui palju resijaid, siis jaotus on «asümeetriline». Kui reisijate liikumist ei jaotata, siis jaotus on «väljas».
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Posti jaotuse viis: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :Kui jaamast A viiakse jaama B umbes sama hulk posti, kui jaamast B jaama A, siis jaotus on «sümeetriline». Kui mõlemas suunas viiakse ükskõik, kui palju posti, siis jatous on «asümeetriline». Kui posti liikumist ei jaotata, siis jaotus on «väljas».
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :Kui jaamast A viiakse jaama B umbes sama hulk posti, kui jaamast B jaama A, siis jaotus on «sümeetriline». Kui mõlemas suunas viiakse ükskõik, kui palju posti, siis jaotus on «asümeetriline». Kui posti liikumist ei jaotata, siis jaotus on «väljas».
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :SOOMUSTATUD kaubarühma jaotuse viis: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Parasvöötmes on SOOMUSTATUD kaubarühm väärisasjad, lähistroopikas teemantid, ning lähisartikas kuld. Neid saab lisada NewGRF-iga. Kui jaamast A viiakse jaama B umbes sama hulk kaupa, kui jaamast B jaama A, siis jaotus on «sümeetriline». Kui mõlemas suunas viiakse ükskõik, kui palju kaupa, siis jatous on «asümeetriline». Kui posti liikumist ei jaotata, siis jaotus on «väljas». Lähisartikas valida asümeetriline või väljas, sest pankadest kulda tagasi ei tule. Parasvöötmes ja lähistroopikas on võimalik valida ka sümeetriline, sest pangad saadavad lähtepanka väärisasju tagasi.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Parasvöötmes on SOOMUSTATUD kaubarühm väärisasjad, lähistroopikas teemantid, ning lähisartikas kuld. Neid saab lisada NewGRF-iga. Kui jaamast A viiakse jaama B umbes sama hulk kaupa, kui jaamast B jaama A, siis jaotus on «sümeetriline». Kui mõlemas suunas viiakse ükskõik, kui palju kaupa, siis jaotus on «asümeetriline». Kui posti liikumist ei jaotata, siis jaotus on «väljas». Lähisartikas valida asümeetriline või väljas, sest pankadest kulda tagasi ei tule. Parasvöötmes ja lähistroopikas on võimalik valida ka sümeetriline, sest pangad saadavad lähtepanka väärisasju tagasi.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Teiste kaubarühmade jaotuse viis: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Kui jaamast A viiakse jaama B umbes sama hulk kaupa, kui jaamast B jaama A, siis jaotus on «sümeetriline». Kui mõlemas suunas viiakse ükskõik, kui palju kaupa, siis jatous on «asümeetriline». Kui posti liikumist ei jaotata, siis jaotus on «väljas». Tavaliselt on head valikud «asümeetriline» ja «väljas».
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Kui jaamast A viiakse jaama B umbes sama hulk kaupa, kui jaamast B jaama A, siis jaotus on «sümeetriline». Kui mõlemas suunas viiakse ükskõik, kui palju kaupa, siis jaotus on «asümeetriline». Kui posti liikumist ei jaotata, siis jaotus on «väljas». Tavaliselt on head valikud «asümeetriline» ja «väljas».
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Jaotuse täpsus: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Kõrgema väärtusega kasutatakse ahelgraafiku koostamiseks protsessorit rohkem. Kui see võtab liiga kaua, võib täheldada viivitusi. Madala väärtusega tekib ebatäpne jaotus, ning kaup ei pruugi õigesse sihtpunkti jõuda.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Kauguse mõju nõudlusele: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Juhul kui väärtus on suurem kui 0, siis jaama A ja B vaheline kaugus mõjutab jaamast A jaama B saadetava kauba hulka. Mida kaugeb jaam B on jaamast A, seda vähem kaupa saadetakse. Mida suurem väärtus, seda vähem kaupa saadetakse kaugel asuvatesse jaamadesse, ning rohkem kaupa saadetakse lähedal asuvatesse jaamadesse.
-STR_CONFIG_SETTING_DEMAND_SIZE                                  :Tagasitulev kaup sümeetrilises jaotusviisis: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Tagasitulevat kaupa, kui jaotus on sümeetriline: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Kui väärtus on alla 100%, siis sümeetriline jaotus sarnaneb asümeetrilisele jaotusele, sest tagasi saadetakse vähem kaupa, kui tuli. Sümeetriline ja asümeetriline jaotusviis on samad, kui väärtus on 0%.
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Liikluskoormus kõrgema läbilaskevõimega raja otsimiseks: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Liikluskoormus, kui otsitakse kõrgema läbilaskevõimega rada: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Kauba vedamisel ühest jaamast teise saab kasutada mitu rada. Kaubajaotusel arvestatakse läbilaskevõimet ja liikluskoormust. Kui liikluskoormus on suurem kui läbilaskevõime, suunatakse kaup kõigepealt kõrgema läbilaskevõimega radadele. Läbilaskevõime arvutamine ei ole täpne; antud seaded määravad liikluskoormuse millal kaup suunatakse järgmisele rajale. Ülekoormuse vältimiseks on soovitatav liikluskoormus alla 100%.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Kiirusühikud: {STRING}
@@ -3516,7 +3516,7 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Õhusõiduk
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vali asendatav veduritüüp
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vali uus vedur, millega sa soovid vasakult valitud vedurit asendada.
 
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Alusta Sõidukite Vahetamist
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Alusta sõidukite vahetamist
 STR_REPLACE_VEHICLES_NOW                                        :Asenda kohe kõik sõidukid
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Asenda ainult vanu sõidukeid
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Vajuta vasakul asuva veduri asendamiseks paremal valitud veduriga
