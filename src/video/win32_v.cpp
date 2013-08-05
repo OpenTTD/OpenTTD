@@ -21,8 +21,14 @@
 #include "../texteff.hpp"
 #include "../thread/thread.h"
 #include "../progress.h"
+#include "../window_func.h"
 #include "win32_v.h"
 #include <windows.h>
+
+/* Missing define in MinGW headers. */
+#ifndef MAPVK_VK_TO_CHAR
+#define MAPVK_VK_TO_CHAR    (2)
+#endif
 
 static struct {
 	HWND main_wnd;
@@ -432,6 +438,20 @@ static void PaintWindowThread(void *)
 	_draw_thread->Exit();
 }
 
+/** Forward key presses to the window system. */
+static LRESULT HandleCharMsg(uint keycode, uint charcode)
+{
+#if !defined(UNICODE)
+	wchar_t w;
+	int len = MultiByteToWideChar(_codepage, 0, (char*)&charcode, 1, &w, 1);
+	charcode = len == 1 ? w : 0;
+#endif /* UNICODE */
+
+	HandleKeypress(GB(charcode, 0, 16) | (keycode << 16));
+
+	return 0;
+}
+
 static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	static uint32 keycode = 0;
@@ -592,31 +612,50 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 				return 0;
 			}
 
-#if !defined(UNICODE)
-			wchar_t w;
-			int len = MultiByteToWideChar(_codepage, 0, (char*)&charcode, 1, &w, 1);
-			charcode = len == 1 ? w : 0;
-#endif /* UNICODE */
+			/* IMEs and other input methods sometimes send a WM_CHAR without a WM_KEYDOWN,
+			 * clear the keycode so a previous WM_KEYDOWN doesn't become 'stuck'. */
+			uint cur_keycode = keycode;
+			keycode = 0;
 
-			/* No matter the keyboard layout, we will map the '~' to the console */
-			scancode = scancode == 41 ? (int)WKC_BACKQUOTE : keycode;
-			HandleKeypress(GB(charcode, 0, 16) | (scancode << 16));
-			return 0;
+			return HandleCharMsg(cur_keycode, charcode);
 		}
 
 		case WM_KEYDOWN: {
-			keycode = MapWindowsKey(wParam);
+			/* No matter the keyboard layout, we will map the '~' to the console. */
+			uint scancode = GB(lParam, 16, 8);
+			keycode = scancode == 41 ? WKC_BACKQUOTE : MapWindowsKey(wParam);
 
 			/* Silently drop all messages handled by WM_CHAR. */
 			MSG msg;
 			if (PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE)) {
-				if (msg.message == WM_CHAR && GB(lParam, 16, 8) == GB(msg.lParam, 16, 8)) {
+				if ((msg.message == WM_CHAR || msg.message == WM_DEADCHAR) && GB(lParam, 16, 8) == GB(msg.lParam, 16, 8)) {
 					return 0;
 				}
 			}
 
-			HandleKeypress(0 | (keycode << 16));
-			return 0;
+			uint charcode = MapVirtualKey(wParam, MAPVK_VK_TO_CHAR);
+
+			/* No character translation? */
+			if (charcode == 0) {
+				HandleKeypress(0 | (keycode << 16));
+				return 0;
+			}
+
+			/* Is the console key a dead key? If yes, ignore the first key down event. */
+			if (HasBit(charcode, 31) && !console) {
+				if (scancode == 41) {
+					console = true;
+					return 0;
+				}
+			}
+			console = false;
+
+			/* IMEs and other input methods sometimes send a WM_CHAR without a WM_KEYDOWN,
+			 * clear the keycode so a previous WM_KEYDOWN doesn't become 'stuck'. */
+			uint cur_keycode = keycode;
+			keycode = 0;
+
+			return HandleCharMsg(cur_keycode, LOWORD(charcode));
 		}
 
 		case WM_SYSKEYDOWN: // user presses F10 or Alt, both activating the title-menu
@@ -979,7 +1018,8 @@ void VideoDriver_Win32::MainLoop()
 
 		while (PeekMessage(&mesg, NULL, 0, 0, PM_REMOVE)) {
 			InteractiveRandom(); // randomness
-			TranslateMessage(&mesg);
+			/* Convert key messages to char messages if we want text input. */
+			if (EditBoxInGlobalFocus()) TranslateMessage(&mesg);
 			DispatchMessage(&mesg);
 		}
 		if (_exit_game) return;

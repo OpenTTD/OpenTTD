@@ -350,7 +350,7 @@ void SetFocusedWindow(Window *w)
  * has a edit box as focused widget, or if a console is focused.
  * @return returns true if an edit box is in global focus or if the focused window is a console, else false
  */
-static bool EditBoxInGlobalFocus()
+bool EditBoxInGlobalFocus()
 {
 	if (_focused_window == NULL) return false;
 

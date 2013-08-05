@@ -52,4 +52,6 @@ void SetWindowClassesDirty(WindowClass cls);
 void DeleteWindowById(WindowClass cls, WindowNumber number, bool force = true);
 void DeleteWindowByClass(WindowClass cls);
 
+bool EditBoxInGlobalFocus();
+
 #endif /* WINDOW_FUNC_H */
