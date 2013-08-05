@@ -317,6 +317,14 @@ struct IConsoleWindow : Window
 		}
 	}
 
+	virtual Point GetCaretPosition() const
+	{
+		int delta = min(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
+		Point pt = {this->line_offset + delta + _iconsole_cmdline.caretxoffs, this->height - this->line_height};
+
+		return pt;
+	}
+
 	virtual void OnMouseWheel(int wheel)
 	{
 		this->Scroll(-wheel);

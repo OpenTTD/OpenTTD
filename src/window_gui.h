@@ -345,6 +345,8 @@ public:
 	const QueryString *GetQueryString(uint widnum) const;
 	QueryString *GetQueryString(uint widnum);
 
+	virtual Point GetCaretPosition() const;
+
 	void InitNested(WindowNumber number = 0);
 	void CreateNestedTree(bool fill_nested = true);
 	void FinishInitNested(WindowNumber window_number = 0);

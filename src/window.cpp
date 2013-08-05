@@ -323,6 +323,20 @@ QueryString *Window::GetQueryString(uint widnum)
 	return query != this->querystrings.End() ? query->second : NULL;
 }
 
+/**
+ * Get the current caret position if an edit box has the focus.
+ * @return Top-left location of the caret, relative to the window.
+ */
+/* virtual */ Point Window::GetCaretPosition() const
+{
+	if (this->nested_focus != NULL && this->nested_focus->type == WWT_EDITBOX) {
+		return this->GetQueryString(this->nested_focus->index)->GetCaretPosition(this, this->nested_focus->index);
+	}
+
+	Point pt = {0, 0};
+	return pt;
+}
+
 
 /**
  * Set the window that has the focus

@@ -21,6 +21,7 @@
 #include "../texteff.hpp"
 #include "../thread/thread.h"
 #include "../progress.h"
+#include "../window_gui.h"
 #include "../window_func.h"
 #include "win32_v.h"
 #include <windows.h>
@@ -500,6 +501,28 @@ static LRESULT HandleCharMsg(uint keycode, WChar charcode)
 }
 
 #if !defined(WINCE) || _WIN32_WCE >= 0x400
+/** Set position of the composition window to the caret position. */
+static void SetCompositionPos(HWND hwnd)
+{
+	HIMC hIMC = ImmGetContext(hwnd);
+	if (hIMC != NULL) {
+		COMPOSITIONFORM cf;
+		cf.dwStyle = CFS_POINT;
+
+		if (EditBoxInGlobalFocus()) {
+			/* Get caret position. */
+			Point pt = _focused_window->GetCaretPosition();
+			cf.ptCurrentPos.x = _focused_window->left + pt.x;
+			cf.ptCurrentPos.y = _focused_window->top  + pt.y;
+		} else {
+			cf.ptCurrentPos.x = 0;
+			cf.ptCurrentPos.y = 0;
+		}
+		ImmSetCompositionWindow(hIMC, &cf);
+	}
+	ImmReleaseContext(hwnd, hIMC);
+}
+
 /** Handle WM_IME_COMPOSITION messages. */
 static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 {
@@ -515,6 +538,7 @@ static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 
 			/* Transmit text to windowing system. */
 			if (len > 0) HandleTextInput(FS2OTTD(str));
+			SetCompositionPos(hwnd);
 
 			/* Don't pass the result string on to the default window proc. */
 			lParam &= ~(GCS_RESULTSTR | GCS_RESULTCLAUSE | GCS_RESULTREADCLAUSE | GCS_RESULTREADSTR);
@@ -535,6 +559,7 @@ static void CancelIMEComposition(HWND hwnd)
 
 #else
 
+static void SetCompositionPos(HWND hwnd) {}
 static void CancelIMEComposition(HWND hwnd) {}
 
 #endif /* !defined(WINCE) || _WIN32_WCE >= 0x400 */
@@ -548,6 +573,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 	switch (msg) {
 		case WM_CREATE:
 			SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
+			SetCompositionPos(hwnd);
 			break;
 
 		case WM_ENTERSIZEMOVE:
@@ -674,6 +700,10 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		}
 
 #if !defined(WINCE) || _WIN32_WCE >= 0x400
+		case WM_IME_STARTCOMPOSITION:
+			SetCompositionPos(hwnd);
+			break;
+
 		case WM_IME_COMPOSITION:
 			return HandleIMEComposition(hwnd, wParam, lParam);
 
@@ -861,6 +891,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 		case WM_SETFOCUS:
 			_wnd.has_focus = true;
+			SetCompositionPos(hwnd);
 			break;
 
 		case WM_KILLFOCUS:
@@ -1220,4 +1251,5 @@ bool VideoDriver_Win32::AfterBlitterChange()
 void VideoDriver_Win32::EditBoxLostFocus()
 {
 	CancelIMEComposition(_wnd.main_wnd);
+	SetCompositionPos(_wnd.main_wnd);
 }

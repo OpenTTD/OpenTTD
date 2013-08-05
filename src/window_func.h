@@ -14,6 +14,7 @@
 
 #include "window_type.h"
 #include "company_type.h"
+#include "core/geometry_type.hpp"
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);
 Window *FindWindowByClass(WindowClass cls);
@@ -53,5 +54,6 @@ void DeleteWindowById(WindowClass cls, WindowNumber number, bool force = true);
 void DeleteWindowByClass(WindowClass cls);
 
 bool EditBoxInGlobalFocus();
+Point GetCaretPosition();
 
 #endif /* WINDOW_FUNC_H */

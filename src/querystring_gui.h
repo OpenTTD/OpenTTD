@@ -53,6 +53,8 @@ public:
 	void DrawEditBox(const Window *w, int wid) const;
 	void ClickEditBox(Window *w, Point pt, int wid, int click_count, bool focus_changed);
 	void HandleEditBox(Window *w, int wid);
+
+	Point GetCaretPosition(const Window *w, int wid) const;
 };
 
 void ShowOnScreenKeyboard(Window *parent, int button);
