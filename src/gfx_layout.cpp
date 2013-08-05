@@ -423,7 +423,7 @@ ParagraphLayout *Layouter::GetParagraphLayout(WChar *buff, WChar *buff_end, Font
  * @param colour   The colour of the font.
  * @param fontsize The size of font to use.
  */
-Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsize)
+Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsize) : string(str)
 {
 	FontState state(colour, fontsize);
 	WChar c = 0;
@@ -510,6 +510,59 @@ Dimension Layouter::GetBounds()
 		d.height += (*l)->getLeading();
 	}
 	return d;
+}
+
+/**
+ * Get the position of a character in the layout.
+ * @param ch Character to get the position of.
+ * @return Upper left corner of the character relative to the start of the string.
+ * @note Will only work right for single-line strings.
+ */
+Point Layouter::GetCharPosition(const char *ch) const
+{
+	/* Find the code point index which corresponds to the char
+	 * pointer into our UTF-8 source string. */
+	size_t index = 0;
+	const char *str = this->string;
+	while (str < ch) {
+		WChar c;
+		size_t len = Utf8Decode(&c, str);
+		if (c == '\0' || c == '\n') break;
+		str += len;
+#ifdef WITH_ICU
+		/* ICU uses UTF-16 internally which means we need to account for surrogate pairs. */
+		index += len < 4 ? 1 : 2;
+#else
+		index++;
+#endif
+	}
+
+	if (str == ch) {
+		/* Valid character. */
+		const ParagraphLayout::Line *line = *this->Begin();
+
+		/* Pointer to the end-of-string/line marker? Return total line width. */
+		if (*ch == '\0' || *ch == '\n') {
+			Point p = { line->getWidth(), 0 };
+			return p;
+		}
+
+		/* Scan all runs until we've found our code point index. */
+		for (int run_index = 0; run_index < line->countRuns(); run_index++) {
+			const ParagraphLayout::VisualRun *run = line->getVisualRun(run_index);
+
+			for (int i = 0; i < run->getGlyphCount(); i++) {
+				/* Matching glyph? Return position. */
+				if ((size_t)run->getGlyphToCharMap()[i] == index) {
+					Point p = { run->getPositions()[i * 2], run->getPositions()[i * 2 + 1] };
+					return p;
+				}
+			}
+		}
+	}
+
+	Point p = { 0, 0 };
+	return p;
 }
 
 /**

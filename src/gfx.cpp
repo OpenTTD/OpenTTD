@@ -708,6 +708,20 @@ Dimension GetStringBoundingBox(StringID strid)
 }
 
 /**
+ * Get the leading corner of a character in a single-line string relative
+ * to the start of the string.
+ * @param str String containing the character.
+ * @param ch Pointer to the character in the string.
+ * @param start_fontsize Font size to start the text with.
+ * @return Upper left corner of the glyph associated with the character.
+ */
+Point GetCharPosInString(const char *str, const char *ch, FontSize start_fontsize)
+{
+	Layouter layout(str, INT32_MAX, TC_FROMSTRING, start_fontsize);
+	return layout.GetCharPosition(ch);
+}
+
+/**
  * Draw single character horizontally centered around (x,y)
  * @param c           Character (glyph) to draw
  * @param x           X position to draw character

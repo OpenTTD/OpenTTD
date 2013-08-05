@@ -126,6 +126,7 @@ int GetStringLineCount(StringID str, int maxw);
 Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestion);
 Dimension GetStringMultiLineBoundingBox(const char *str, const Dimension &suggestion);
 void LoadStringWidthTable(bool monospace = false);
+Point GetCharPosInString(const char *str, const char *ch, FontSize start_fontsize = FS_NORMAL);
 
 void DrawDirtyBlocks();
 void SetDirtyBlocks(int left, int top, int right, int bottom);

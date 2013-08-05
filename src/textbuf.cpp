@@ -81,18 +81,17 @@ void Textbuf::DelChar(bool backspace)
 	if (backspace) s = Utf8PrevChar(s);
 
 	uint16 len = (uint16)Utf8Decode(&c, s);
-	uint width = GetCharacterWidth(FS_NORMAL, c);
-
-	this->pixels -= width;
-	if (backspace) {
-		this->caretpos   -= len;
-		this->caretxoffs -= width;
-	}
 
 	/* Move the remaining characters over the marker */
 	memmove(s, s + len, this->bytes - (s - this->buf) - len);
 	this->bytes -= len;
 	this->chars--;
+
+	this->UpdateWidth();
+	if (backspace) {
+		this->caretpos -= len;
+		this->UpdateCaretPosition();
+	}
 }
 
 /**
@@ -159,17 +158,16 @@ void Textbuf::DeleteAll()
  */
 bool Textbuf::InsertChar(WChar key)
 {
-	const byte charwidth = GetCharacterWidth(FS_NORMAL, key);
 	uint16 len = (uint16)Utf8CharLen(key);
 	if (this->bytes + len <= this->max_bytes && this->chars + 1 <= this->max_chars) {
 		memmove(this->buf + this->caretpos + len, this->buf + this->caretpos, this->bytes - this->caretpos);
 		Utf8Encode(this->buf + this->caretpos, key);
 		this->chars++;
 		this->bytes  += len;
-		this->pixels += charwidth;
+		this->UpdateWidth();
 
 		this->caretpos   += len;
-		this->caretxoffs += charwidth;
+		this->UpdateCaretPosition();
 		return true;
 	}
 	return false;
@@ -187,7 +185,7 @@ bool Textbuf::InsertClipboard()
 
 	if (!GetClipboardContents(utf8_buf, lengthof(utf8_buf))) return false;
 
-	uint16 pixels = 0, bytes = 0, chars = 0;
+	uint16 bytes = 0, chars = 0;
 	WChar c;
 	for (const char *ptr = utf8_buf; (c = Utf8Consume(&ptr)) != '\0';) {
 		if (!IsValidChar(c, this->afilter)) break;
@@ -196,9 +194,6 @@ bool Textbuf::InsertClipboard()
 		if (this->bytes + bytes + len > this->max_bytes) break;
 		if (this->chars + chars + 1   > this->max_chars) break;
 
-		byte char_pixels = GetCharacterWidth(FS_NORMAL, c);
-
-		pixels += char_pixels;
 		bytes += len;
 		chars++;
 	}
@@ -207,8 +202,6 @@ bool Textbuf::InsertClipboard()
 
 	memmove(this->buf + this->caretpos + bytes, this->buf + this->caretpos, this->bytes - this->caretpos);
 	memcpy(this->buf + this->caretpos, utf8_buf, bytes);
-	this->pixels += pixels;
-	this->caretxoffs += pixels;
 
 	this->bytes += bytes;
 	this->chars += chars;
@@ -216,6 +209,9 @@ bool Textbuf::InsertClipboard()
 	assert(this->bytes <= this->max_bytes);
 	assert(this->chars <= this->max_chars);
 	this->buf[this->bytes - 1] = '\0'; // terminating zero
+
+	this->UpdateWidth();
+	this->UpdateCaretPosition();
 
 	return true;
 }
@@ -242,7 +238,7 @@ WChar Textbuf::MoveCaretLeft()
 	const char *s = Utf8PrevChar(this->buf + this->caretpos);
 	Utf8Decode(&c, s);
 	this->caretpos    = s - this->buf;
-	this->caretxoffs -= GetCharacterWidth(FS_NORMAL, c);
+	this->UpdateCaretPosition();
 
 	return c;
 }
@@ -267,10 +263,22 @@ WChar Textbuf::MoveCaretRight()
 
 	WChar c;
 	this->caretpos   += (uint16)Utf8Decode(&c, this->buf + this->caretpos);
-	this->caretxoffs += GetCharacterWidth(FS_NORMAL, c);
+	this->UpdateCaretPosition();
 
 	Utf8Decode(&c, this->buf + this->caretpos);
 	return c;
+}
+
+/** Update pixel width of the text. */
+void Textbuf::UpdateWidth()
+{
+	this->pixels = GetStringBoundingBox(this->buf, FS_NORMAL).width;
+}
+
+/** Update pixel position of the caret. */
+void Textbuf::UpdateCaretPosition()
+{
+	this->caretxoffs = this->chars > 1 ? GetCharPosInString(this->buf, this->buf + this->caretpos, FS_NORMAL).x : 0;
 }
 
 /**
@@ -336,12 +344,12 @@ bool Textbuf::MovePos(uint16 keycode)
 
 		case WKC_HOME:
 			this->caretpos = 0;
-			this->caretxoffs = 0;
+			this->UpdateCaretPosition();
 			return true;
 
 		case WKC_END:
 			this->caretpos = this->bytes - 1;
-			this->caretxoffs = this->pixels;
+			this->UpdateCaretPosition();
 			return true;
 
 		default:
@@ -418,21 +426,20 @@ void Textbuf::UpdateSize()
 {
 	const char *buf = this->buf;
 
-	this->pixels = 0;
 	this->chars = this->bytes = 1; // terminating zero
 
 	WChar c;
 	while ((c = Utf8Consume(&buf)) != '\0') {
-		this->pixels += GetCharacterWidth(FS_NORMAL, c);
 		this->bytes += Utf8CharLen(c);
 		this->chars++;
 	}
-
 	assert(this->bytes <= this->max_bytes);
 	assert(this->chars <= this->max_chars);
 
 	this->caretpos = this->bytes - 1;
-	this->caretxoffs = this->pixels;
+	this->UpdateWidth();
+
+	this->UpdateCaretPosition();
 }
 
 /**

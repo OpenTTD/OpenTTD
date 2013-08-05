@@ -168,6 +168,8 @@ class Layouter : public AutoDeleteSmallVector<ParagraphLayout::Line *, 4> {
 	typedef WChar CharType; ///< The type of character used within the layouter.
 #endif /* WITH_ICU */
 
+	const char *string; ///< Pointer to the original string.
+
 	size_t AppendToBuffer(CharType *buff, const CharType *buffer_last, WChar c);
 	ParagraphLayout *GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &fontMapping);
 
@@ -209,6 +211,7 @@ class Layouter : public AutoDeleteSmallVector<ParagraphLayout::Line *, 4> {
 public:
 	Layouter(const char *str, int maxw = INT32_MAX, TextColour colour = TC_FROMSTRING, FontSize fontsize = FS_NORMAL);
 	Dimension GetBounds();
+	Point GetCharPosition(const char *ch) const;
 
 	static void ResetFontCache(FontSize size);
 	static void ResetLineCache();

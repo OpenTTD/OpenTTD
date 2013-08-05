@@ -69,6 +69,8 @@ private:
 	bool CanMoveCaretRight();
 	WChar MoveCaretRight();
 
+	void UpdateWidth();
+	void UpdateCaretPosition();
 };
 
 #endif /* TEXTBUF_TYPE_H */
