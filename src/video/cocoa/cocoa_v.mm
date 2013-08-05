@@ -56,6 +56,7 @@ static bool _cocoa_video_dialog = false;
 
 CocoaSubdriver *_cocoa_subdriver = NULL;
 
+static const NSString *OTTDMainLaunchGameEngine = @"ottdmain_launch_game_engine";
 
 
 /**
@@ -63,15 +64,42 @@ CocoaSubdriver *_cocoa_subdriver = NULL;
  */
 @implementation OTTDMain
 /**
+ * Stop the game engine. Must be called on main thread.
+ */
+- (void)stopEngine
+{
+	[ NSApp stop:self ];
+
+	/* Send an empty event to return from the run loop. Without that, application is stuck waiting for an event. */
+	NSEvent *event = [ NSEvent otherEventWithType:NSApplicationDefined location:NSMakePoint(0, 0) modifierFlags:0 timestamp:0.0 windowNumber:0 context:nil subtype:0 data1:0 data2:0 ];
+	[ NSApp postEvent:event atStart:YES ];
+}
+
+/**
+ * Start the game loop.
+ */
+- (void)launchGameEngine: (NSNotification*) note
+{
+	/* Setup cursor for the current _game_mode. */
+	[ _cocoa_subdriver->cocoaview resetCursorRects ];
+
+	/* Hand off to main application code. */
+	QZ_GameLoop();
+
+	/* We are done, thank you for playing. */
+	[ self performSelectorOnMainThread:@selector(stopEngine) withObject:nil waitUntilDone:FALSE ];
+}
+
+/**
  * Called when the internal event loop has just started running.
  */
 - (void) applicationDidFinishLaunching: (NSNotification*) note
 {
-	/* Hand off to main application code */
-	QZ_GameLoop();
+	/* Add a notification observer so we can restart the game loop later on if necessary. */
+	[ [ NSNotificationCenter defaultCenter ] addObserver:self selector:@selector(launchGameEngine:) name:OTTDMainLaunchGameEngine object:nil ];
 
-	/* We're done, thank you for playing */
-	[ NSApp stop:_ottd_main ];
+	/* Start game loop. */
+	[ [ NSNotificationCenter defaultCenter ] postNotificationName:OTTDMainLaunchGameEngine object:nil ];
 }
 
 /**
@@ -79,10 +107,17 @@ CocoaSubdriver *_cocoa_subdriver = NULL;
  */
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication*) sender
 {
-
 	HandleExitGameRequest();
 
 	return NSTerminateCancel; // NSTerminateLater ?
+}
+
+/**
+ * Remove ourself as a notification observer.
+ */
+- (void)unregisterObserver
+{
+	[ [ NSNotificationCenter defaultCenter ] removeObserver:self ];
 }
 @end
 
@@ -326,6 +361,8 @@ void VideoDriver_Cocoa::Stop()
 {
 	if (!_cocoa_video_started) return;
 
+	[ _ottd_main unregisterObserver ];
+
 	delete _cocoa_subdriver;
 	_cocoa_subdriver = NULL;
 
@@ -385,7 +422,11 @@ void VideoDriver_Cocoa::MakeDirty(int left, int top, int width, int height)
  */
 void VideoDriver_Cocoa::MainLoop()
 {
-	/* Start the main event loop */
+	/* Restart game loop if it was already running (e.g. after bootstrapping),
+	 * otherwise this call is a no-op. */
+	[ [ NSNotificationCenter defaultCenter ] postNotificationName:OTTDMainLaunchGameEngine object:nil ];
+
+	/* Start the main event loop. */
 	[ NSApp run ];
 }
 
@@ -708,7 +749,7 @@ void cocoaReleaseAutoreleasePool()
 	[ super resetCursorRects ];
 	[ self clearTrackingRect ];
 	[ self setTrackingRect ];
-	[ self addCursorRect:[ self bounds ] cursor:[ NSCursor clearCocoaCursor ] ];
+	[ self addCursorRect:[ self bounds ] cursor:(_game_mode == GM_BOOTSTRAP ? [ NSCursor arrowCursor ] : [ NSCursor clearCocoaCursor ]) ];
 }
 /**
  * Prepare for moving the application window
