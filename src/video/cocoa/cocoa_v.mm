@@ -829,27 +829,60 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 }
 
 
+/** Insert the given text at the given range. */
+- (void)insertText:(id)aString replacementRange:(NSRange)replacementRange
+{
+	if (!EditBoxInGlobalFocus()) return;
+
+	NSString *s = [ aString isKindOfClass:[ NSAttributedString class ] ] ? [ aString string ] : (NSString *)aString;
+
+	const char *insert_point = NULL;
+	const char *replace_range = NULL;
+	if (replacementRange.location != NSNotFound) {
+		/* Calculate the part to be replaced. */
+		insert_point = Utf8AdvanceByUtf16Units(_focused_window->GetFocusedText(), replacementRange.location);
+		replace_range = Utf8AdvanceByUtf16Units(insert_point, replacementRange.length);
+	}
+
+	HandleTextInput(NULL, true);
+	HandleTextInput([ s UTF8String ], false, NULL, insert_point, replace_range);
+}
+
 /** Insert the given text at the caret. */
 - (void)insertText:(id)aString
 {
+	[ self insertText:aString replacementRange:NSMakeRange(NSNotFound, 0) ];
+}
+
+/** Set a new marked text and reposition the caret. */
+- (void)setMarkedText:(id)aString selectedRange:(NSRange)selRange replacementRange:(NSRange)replacementRange
+{
+	if (!EditBoxInGlobalFocus()) return;
+
 	NSString *s = [ aString isKindOfClass:[ NSAttributedString class ] ] ? [ aString string ] : (NSString *)aString;
 
-	HandleTextInput(NULL, true);
-	HandleTextInput([ s UTF8String ]);
+	const char *utf8 = [ s UTF8String ];
+	if (utf8 != NULL) {
+		const char *insert_point = NULL;
+		const char *replace_range = NULL;
+		if (replacementRange.location != NSNotFound) {
+			/* Calculate the part to be replaced. */
+			NSRange marked = [ self markedRange ];
+			insert_point = Utf8AdvanceByUtf16Units(_focused_window->GetFocusedText(), replacementRange.location + (marked.location != NSNotFound ? marked.location : 0u));
+			replace_range = Utf8AdvanceByUtf16Units(insert_point, replacementRange.length);
+		}
+
+		/* Convert caret index into a pointer in the UTF-8 string. */
+		const char *selection = Utf8AdvanceByUtf16Units(utf8, selRange.location);
+
+		HandleTextInput(utf8, true, selection, insert_point, replace_range);
+	}
 }
 
 /** Set a new marked text and reposition the caret. */
 - (void)setMarkedText:(id)aString selectedRange:(NSRange)selRange
 {
-	NSString *s = [ aString isKindOfClass:[ NSAttributedString class ] ] ? [ aString string ] : (NSString *)aString;
-
-	const char *utf8 = [ s UTF8String ];
-	if (utf8 != NULL) {
-		/* Convert caret index into a pointer in the UTF-8 string. */
-		const char *selection = Utf8AdvanceByUtf16Units(utf8, selRange.location);
-
-		HandleTextInput(utf8, true, selection);
-	}
+	[ self setMarkedText:aString selectedRange:selRange replacementRange:NSMakeRange(NSNotFound, 0) ];
 }
 
 /** Unmark the current marked text. */
@@ -894,16 +927,31 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 }
 
 /** Get a string corresponding to the given range. */
-- (NSAttributedString *)attributedSubstringFromRange:(NSRange)theRange
+- (NSAttributedString *)attributedSubstringForProposedRange:(NSRange)theRange actualRange:(NSRangePointer)actualRange
 {
 	if (!EditBoxInGlobalFocus()) return nil;
 
 	NSString *s = [ NSString stringWithUTF8String:_focused_window->GetFocusedText() ];
 	NSRange valid_range = NSIntersectionRange(NSMakeRange(0, [ s length ]), theRange);
 
+	if (actualRange != NULL) *actualRange = valid_range;
 	if (valid_range.length == 0) return nil;
 
 	return [ [ [ NSAttributedString alloc ] initWithString:[ s substringWithRange:valid_range ] ] autorelease ];
+}
+
+/** Get a string corresponding to the given range. */
+- (NSAttributedString *)attributedSubstringFromRange:(NSRange)theRange
+{
+	return [ self attributedSubstringForProposedRange:theRange actualRange:NULL ];
+}
+
+/** Get the current edit box string. */
+- (NSAttributedString *)attributedString
+{
+	if (!EditBoxInGlobalFocus()) return [ [ [ NSAttributedString alloc ] initWithString:@"" ] autorelease ];
+
+	return [ [ [ NSAttributedString alloc ] initWithString:[ NSString stringWithUTF8String:_focused_window->GetFocusedText() ] ] autorelease ];
 }
 
 /** Get the character that is rendered at the given point. */
@@ -943,6 +991,12 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 	NSRect window_rect = [ self convertRect:view_rect toView:nil ];
 	NSPoint origin = [ [ self window ] convertBaseToScreen:window_rect.origin ];
 	return NSMakeRect(origin.x, origin.y, window_rect.size.width, window_rect.size.height);
+}
+
+/** Get the bounding rect for the given range. */
+- (NSRect)firstRectForCharacterRange:(NSRange)aRange actualRange:(NSRangePointer)actualRange
+{
+	return [ self firstRectForCharacterRange:aRange ];
 }
 
 /** Get all string attributes that we can process for marked text. */
