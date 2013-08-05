@@ -328,6 +328,7 @@ stdafx.h
 story_base.h
 story_type.h
 strgen/strgen.h
+string_base.h
 string_func.h
 string_type.h
 stringfilter_type.h

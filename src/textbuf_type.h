@@ -14,6 +14,7 @@
 
 #include "string_type.h"
 #include "strings_type.h"
+#include "string_base.h"
 
 /**
  * Return values for Textbuf::HandleKeypress
@@ -61,6 +62,8 @@ struct Textbuf {
 	void UpdateSize();
 
 private:
+	StringIterator *char_iter;
+
 	bool CanDelChar(bool backspace);
 	WChar GetNextDelChar(bool backspace);
 	void DelChar(bool backspace);
@@ -69,6 +72,7 @@ private:
 	bool CanMoveCaretRight();
 	WChar MoveCaretRight();
 
+	void UpdateStringIter();
 	void UpdateWidth();
 	void UpdateCaretPosition();
 };

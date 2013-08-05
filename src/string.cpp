@@ -14,6 +14,7 @@
 #include "core/alloc_func.hpp"
 #include "core/math_func.hpp"
 #include "string_func.h"
+#include "string_base.h"
 
 #include "table/control_codes.h"
 
@@ -650,3 +651,123 @@ int strnatcmp(const char *s1, const char *s2, bool ignore_garbage_at_front)
 	/* Do a normal comparison if ICU is missing or if we cannot create a collator. */
 	return strcasecmp(s1, s2);
 }
+
+#ifdef WITH_ICU
+
+#include <unicode/utext.h>
+#include <unicode/brkiter.h>
+
+/** String iterator using ICU as a backend. */
+class IcuStringIterator : public StringIterator
+{
+	icu::BreakIterator *char_itr; ///< ICU iterator for characters.
+	const char *string;           ///< Iteration string in UTF-8.
+
+public:
+	IcuStringIterator() : char_itr(NULL)
+	{
+		UErrorCode status = U_ZERO_ERROR;
+		this->char_itr = icu::BreakIterator::createCharacterInstance(icu::Locale(_current_language != NULL ? _current_language->isocode : "en"), status);
+	}
+
+	virtual ~IcuStringIterator()
+	{
+		delete this->char_itr;
+	}
+
+	virtual void SetString(const char *s)
+	{
+		this->string = s;
+
+		UText text = UTEXT_INITIALIZER;
+		UErrorCode status = U_ZERO_ERROR;
+		utext_openUTF8(&text, s, -1, &status);
+		this->char_itr->setText(&text, status);
+		this->char_itr->first();
+	}
+
+	virtual size_t SetCurPosition(size_t pos)
+	{
+		/* isBoundary has the documented side-effect of setting the current
+		 * position to the first valid boundary equal to or greater than
+		 * the passed value. */
+		this->char_itr->isBoundary((int32_t)pos);
+		return this->char_itr->current();
+	}
+
+	virtual size_t Next()
+	{
+		int32_t pos = this->char_itr->next();
+		return pos == icu::BreakIterator::DONE ? END : pos;
+	}
+
+	virtual size_t Prev()
+	{
+		int32_t pos = this->char_itr->previous();
+		return pos == icu::BreakIterator::DONE ? END : pos;
+	}
+};
+
+/* static */ StringIterator *StringIterator::Create()
+{
+	return new IcuStringIterator();
+}
+
+#else
+
+/** Fallback simple string iterator. */
+class DefaultStringIterator : public StringIterator
+{
+	const char *string; ///< Current string.
+	size_t len;         ///< String length.
+	size_t cur_pos;     ///< Current iteration position.
+
+public:
+	DefaultStringIterator() : string(NULL)
+	{
+	}
+
+	virtual void SetString(const char *s)
+	{
+		this->string = s;
+		this->len = strlen(s);
+		this->cur_pos = 0;
+	}
+
+	virtual size_t SetCurPosition(size_t pos)
+	{
+		assert(this->string != NULL && pos <= this->len);
+		/* Sanitize in case we get a position inside an UTF-8 sequence. */
+		while (pos > 0 && IsUtf8Part(this->string[pos])) pos--;
+		return this->cur_pos = pos;
+	}
+
+	virtual size_t Next()
+	{
+		assert(this->string != NULL);
+
+		/* Already at the end? */
+		if (this->cur_pos >= this->len) return END;
+
+		WChar c;
+		this->cur_pos += Utf8Decode(&c, this->string + this->cur_pos);
+		return this->cur_pos;
+	}
+
+	virtual size_t Prev()
+	{
+		assert(this->string != NULL);
+
+		/* Already at the beginning? */
+		if (this->cur_pos == 0) return END;
+
+		return this->cur_pos = Utf8PrevChar(this->string + this->cur_pos) - this->string;
+	}
+};
+
+/* static */ StringIterator *StringIterator::Create()
+{
+	return new DefaultStringIterator();
+}
+
+#endif

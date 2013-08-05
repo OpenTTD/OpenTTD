@@ -595,6 +595,7 @@
     <ClInclude Include="..\src\story_base.h" />
     <ClInclude Include="..\src\story_type.h" />
     <ClInclude Include="..\src\strgen\strgen.h" />
+    <ClInclude Include="..\src\string_base.h" />
     <ClInclude Include="..\src\string_func.h" />
     <ClInclude Include="..\src\string_type.h" />
     <ClInclude Include="..\src\stringfilter_type.h" />

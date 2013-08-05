@@ -87,11 +87,11 @@ void Textbuf::DelChar(bool backspace)
 	this->bytes -= len;
 	this->chars--;
 
+	if (backspace) this->caretpos -= len;
+
+	this->UpdateStringIter();
 	this->UpdateWidth();
-	if (backspace) {
-		this->caretpos -= len;
-		this->UpdateCaretPosition();
-	}
+	this->UpdateCaretPosition();
 }
 
 /**
@@ -147,6 +147,7 @@ void Textbuf::DeleteAll()
 	memset(this->buf, 0, this->max_bytes);
 	this->bytes = this->chars = 1;
 	this->pixels = this->caretpos = this->caretxoffs = 0;
+	this->UpdateStringIter();
 }
 
 /**
@@ -163,10 +164,11 @@ bool Textbuf::InsertChar(WChar key)
 		memmove(this->buf + this->caretpos + len, this->buf + this->caretpos, this->bytes - this->caretpos);
 		Utf8Encode(this->buf + this->caretpos, key);
 		this->chars++;
-		this->bytes  += len;
-		this->UpdateWidth();
+		this->bytes    += len;
+		this->caretpos += len;
 
-		this->caretpos   += len;
+		this->UpdateStringIter();
+		this->UpdateWidth();
 		this->UpdateCaretPosition();
 		return true;
 	}
@@ -210,6 +212,7 @@ bool Textbuf::InsertClipboard()
 	assert(this->chars <= this->max_chars);
 	this->buf[this->bytes - 1] = '\0'; // terminating zero
 
+	this->UpdateStringIter();
 	this->UpdateWidth();
 	this->UpdateCaretPosition();
 
@@ -234,11 +237,14 @@ WChar Textbuf::MoveCaretLeft()
 {
 	assert(this->CanMoveCaretLeft());
 
-	WChar c;
-	const char *s = Utf8PrevChar(this->buf + this->caretpos);
-	Utf8Decode(&c, s);
-	this->caretpos    = s - this->buf;
+	size_t pos = this->char_iter->Prev();
+	if (pos == StringIterator::END) pos = 0;
+
+	this->caretpos = (uint16)pos;
 	this->UpdateCaretPosition();
+
+	WChar c;
+	Utf8Decode(&c, this->buf + this->caretpos);
 
 	return c;
 }
@@ -261,12 +267,22 @@ WChar Textbuf::MoveCaretRight()
 {
 	assert(this->CanMoveCaretRight());
 
-	WChar c;
-	this->caretpos   += (uint16)Utf8Decode(&c, this->buf + this->caretpos);
+	size_t pos = this->char_iter->Next();
+	if (pos == StringIterator::END) pos = this->bytes - 1;
+
+	this->caretpos = (uint16)pos;
 	this->UpdateCaretPosition();
 
+	WChar c;
 	Utf8Decode(&c, this->buf + this->caretpos);
 	return c;
+}
+
+/** Update the character iter after the text has changed. */
+void Textbuf::UpdateStringIter()
+{
+	this->char_iter->SetString(this->buf);
+	this->caretpos = (uint16)this->char_iter->SetCurPosition(this->caretpos);
 }
 
 /** Update pixel width of the text. */
@@ -372,6 +388,8 @@ Textbuf::Textbuf(uint16 max_bytes, uint16 max_chars)
 	assert(max_bytes != 0);
 	assert(max_chars != 0);
 
+	this->char_iter = StringIterator::Create();
+
 	this->afilter    = CS_ALPHANUMERAL;
 	this->max_bytes  = max_bytes;
 	this->max_chars  = max_chars == UINT16_MAX ? max_bytes : max_chars;
@@ -381,6 +399,7 @@ Textbuf::Textbuf(uint16 max_bytes, uint16 max_chars)
 
 Textbuf::~Textbuf()
 {
+	delete this->char_iter;
 	free(this->buf);
 }
 
@@ -437,6 +456,7 @@ void Textbuf::UpdateSize()
 	assert(this->chars <= this->max_chars);
 
 	this->caretpos = this->bytes - 1;
+	this->UpdateStringIter();
 	this->UpdateWidth();
 
 	this->UpdateCaretPosition();

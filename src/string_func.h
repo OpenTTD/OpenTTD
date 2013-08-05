@@ -147,6 +147,13 @@ static inline char *Utf8PrevChar(char *s)
 	return ret;
 }
 
+static inline const char *Utf8PrevChar(const char *s)
+{
+	const char *ret = s;
+	while (IsUtf8Part(*--ret)) {}
+	return ret;
+}
+
 size_t Utf8StringLength(const char *s);
 
 /**
