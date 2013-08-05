@@ -649,18 +649,12 @@ void cocoaReleaseAutoreleasePool()
 - (void)appWillUnhide:(NSNotification*)note
 {
 	driver->SetPortAlphaOpaque ();
-
-	/* save current visible surface */
-	[ self cacheImageInRect:[ driver->cocoaview frame ] ];
 }
 /**
  * Unhide and restore display plane and re-activate driver
  */
 - (void)appDidUnhide:(NSNotification*)note
 {
-	/* restore cached image, since it may not be current, post expose event too */
-	[ self restoreCachedImage ];
-
 	driver->active = true;
 }
 /**
