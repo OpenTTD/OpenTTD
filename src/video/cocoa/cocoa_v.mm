@@ -91,7 +91,7 @@ CocoaSubdriver *_cocoa_subdriver = NULL;
  */
 static void setApplicationMenu()
 {
-	NSString *appName = @"OTTD";
+	NSString *appName = @"OpenTTD";
 	NSMenu *appleMenu = [ [ NSMenu alloc ] initWithTitle:appName ];
 
 	/* Add menu items */
