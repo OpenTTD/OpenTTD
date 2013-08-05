@@ -488,7 +488,7 @@ public:
 	void UnfocusFocusedWidget();
 	bool SetFocusedWidget(int widget_index);
 
-	EventState HandleEditBoxKey(int wid, uint16 key, uint16 keycode);
+	EventState HandleEditBoxKey(int wid, WChar key, uint16 keycode);
 
 	void HandleButtonClick(byte widget);
 	int GetRowFromWidget(int clickpos, int widget, int padding, int line_height = -1) const;

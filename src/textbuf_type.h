@@ -56,7 +56,7 @@ struct Textbuf {
 	bool DeleteChar(uint16 keycode);
 	bool MovePos(uint16 keycode);
 
-	HandleKeyPressResult HandleKeyPress(uint16 key, uint16 keycode);
+	HandleKeyPressResult HandleKeyPress(WChar key, uint16 keycode);
 
 	bool HandleCaret();
 	void UpdateSize();
