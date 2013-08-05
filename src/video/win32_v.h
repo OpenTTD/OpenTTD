@@ -33,6 +33,8 @@ public:
 
 	/* virtual */ bool ClaimMousePointer();
 
+	/* virtual */ void EditBoxLostFocus();
+
 	/* virtual */ const char *GetName() const { return "win32"; }
 
 	bool MakeWindow(bool full_screen);

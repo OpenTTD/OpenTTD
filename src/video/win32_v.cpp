@@ -524,7 +524,20 @@ static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 
 	return lParam != 0 ? DefWindowProc(hwnd, WM_IME_COMPOSITION, wParam, lParam) : 0;
 }
-#endif
+
+/** Clear the current composition string. */
+static void CancelIMEComposition(HWND hwnd)
+{
+	HIMC hIMC = ImmGetContext(hwnd);
+	if (hIMC != NULL) ImmNotifyIME(hIMC, NI_COMPOSITIONSTR, CPS_CANCEL, 0);
+	ImmReleaseContext(hwnd, hIMC);
+}
+
+#else
+
+static void CancelIMEComposition(HWND hwnd) {}
+
+#endif /* !defined(WINCE) || _WIN32_WCE >= 0x400 */
 
 static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -1202,4 +1215,9 @@ bool VideoDriver_Win32::ToggleFullscreen(bool full_screen)
 bool VideoDriver_Win32::AfterBlitterChange()
 {
 	return AllocateDibSection(_screen.width, _screen.height, true) && this->MakeWindow(_fullscreen);
+}
+
+void VideoDriver_Win32::EditBoxLostFocus()
+{
+	CancelIMEComposition(_wnd.main_wnd);
 }
