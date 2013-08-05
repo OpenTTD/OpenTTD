@@ -193,3 +193,15 @@ uint GetCPUCoreCount()
 
 	return count;
 }
+
+/**
+ * Check if a font is a monospace font.
+ * @param name Name of the font.
+ * @return True if the font is a monospace font.
+ */
+bool IsMonospaceFont(CFStringRef name)
+{
+	NSFont *font = [ NSFont fontWithName:(NSString *)name size:0.0f ];
+
+	return font != NULL ? [ font isFixedPitch ] : false;
+}

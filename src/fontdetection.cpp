@@ -496,6 +496,8 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 			if ((symbolic_traits & kCTFontClassMaskTrait) == (CTFontStylisticClass)kCTFontSymbolicClass || (symbolic_traits & kCTFontVerticalTrait)) continue;
 			/* Skip bold fonts (especially Arial Bold, which looks worse than regular Arial). */
 			if (symbolic_traits & kCTFontBoldTrait) continue;
+			/* Select monospaced fonts if asked for. */
+			if (((symbolic_traits & kCTFontMonoSpaceTrait) == kCTFontMonoSpaceTrait) != callback->Monospace()) continue;
 
 			/* Get font name. */
 			char name[128];
@@ -530,7 +532,12 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 			CFStringRef font_name;
 			ATSFontGetName(font, kATSOptionFlagsDefault, &font_name);
 			CFStringGetCString(font_name, name, lengthof(name), kCFStringEncodingUTF8);
+
+			bool monospace = IsMonospaceFont(font_name);
 			CFRelease(font_name);
+
+			/* Select monospaced fonts if asked for. */
+			if (monospace != callback->Monospace()) continue;
 
 			/* We only want the base font and not bold or italic variants. */
 			if (strstr(name, "Italic") != NULL || strstr(name, "Bold")) continue;

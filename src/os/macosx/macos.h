@@ -36,4 +36,6 @@ static inline bool MacOSVersionIsAtLeast(long major, long minor, long bugfix)
 	return true;
 }
 
+bool IsMonospaceFont(CFStringRef name);
+
 #endif /* MACOS_H */
