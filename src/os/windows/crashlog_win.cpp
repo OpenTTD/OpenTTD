@@ -10,12 +10,6 @@
 /** @file crashlog_win.cpp Implementation of a crashlogger for Windows */
 
 #include "../../stdafx.h"
-#if defined(_MSC_VER) && defined(_M_AMD64)
-/* Redefine WinNT version to get RtlCaptureContext prototype. */
-#undef _WIN32_WINNT
-#undef NTDDI_VERSION
-#define _WIN32_WINNT _WIN32_WINNT_WINXP
-#endif /* defined(_MSC_VER) && defined(_M_AMD64) */
 #include "../../crashlog.h"
 #include "win32.h"
 #include "../../core/alloc_func.hpp"
