@@ -253,6 +253,7 @@ uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_i
 - (void)setDriver:(CocoaSubdriver*)drv;
 
 - (BOOL)windowShouldClose:(id)sender;
+- (void)windowDidEnterFullScreen:(NSNotification *)aNotification;
 @end
 
 
