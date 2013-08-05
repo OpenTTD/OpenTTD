@@ -240,12 +240,12 @@ void WindowQuartzSubdriver::GetDeviceInfo()
  */
 bool WindowQuartzSubdriver::ToggleFullscreen()
 {
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7)
-	[this->window toggleFullScreen:this->window];
-	return true;
-#else
+	if ([ this->window respondsToSelector:@selector(toggleFullScreen:) ]) {
+		[ this->window performSelector:@selector(toggleFullScreen:) withObject:this->window ];
+		return true;
+	}
+
 	return false;
-#endif
 }
 
 bool WindowQuartzSubdriver::SetVideoMode(int width, int height, int bpp)
@@ -280,15 +280,17 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height, int bpp)
 			return false;
 		}
 
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5
 		/* Add built in full-screen support when available (OS X 10.7 and higher)
 		 * This code actually compiles for 10.5 and later, but only makes sense in conjunction
 		 * with the quartz fullscreen support as found only in 10.7 and later
 		 */
-#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7)
 		if ([this->window respondsToSelector:@selector(toggleFullScreen:)]) {
-			/* Constants needed to build on pre-10.7 systems. Source: NSWindow documentation. */
+#if MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_7
+			/* Constants needed to build on pre-10.7 SDKs. Source: NSWindow documentation. */
 			const int NSWindowCollectionBehaviorFullScreenPrimary = 1 << 7;
 			const int NSWindowFullScreenButton = 7;
+#endif
 
 			NSWindowCollectionBehavior behavior = [ this->window collectionBehavior ];
 			behavior |= NSWindowCollectionBehaviorFullScreenPrimary;
