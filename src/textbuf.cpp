@@ -151,10 +151,17 @@ bool Textbuf::InsertChar(WChar key)
  * we don't care about the visual-length but only about the physical
  * length of the string.
  * @param str String to insert.
+ * @param marked Replace the currently marked text with the new text.
+ * @param caret Move the caret to this point in the insertion string.
  * @return True on successful change of Textbuf, or false otherwise.
  */
-bool Textbuf::InsertString(const char *str)
+bool Textbuf::InsertString(const char *str, bool marked, const char *caret)
 {
+	uint16 insertpos = (marked && this->marklength != 0) ? this->markpos : this->caretpos;
+
+	if (marked) this->DiscardMarkedText(str == NULL);
+
+	if (str == NULL) return false;
 
 	uint16 bytes = 0, chars = 0;
 	WChar c;
@@ -167,16 +174,24 @@ bool Textbuf::InsertString(const char *str)
 
 		bytes += len;
 		chars++;
+
+		/* Move caret if needed. */
+		if (ptr == caret) this->caretpos = insertpos + bytes;
 	}
 
 	if (bytes == 0) return false;
 
-	memmove(this->buf + this->caretpos + bytes, this->buf + this->caretpos, this->bytes - this->caretpos);
-	memcpy(this->buf + this->caretpos, str, bytes);
+	if (marked) {
+		this->markpos = insertpos;
+		this->markend = insertpos + bytes;
+	}
+
+	memmove(this->buf + insertpos + bytes, this->buf + insertpos, this->bytes - insertpos);
+	memcpy(this->buf + insertpos, str, bytes);
 
 	this->bytes += bytes;
 	this->chars += chars;
-	this->caretpos += bytes;
+	if (!marked && caret == NULL) this->caretpos += bytes;
 	assert(this->bytes <= this->max_bytes);
 	assert(this->chars <= this->max_chars);
 	this->buf[this->bytes - 1] = '\0'; // terminating zero
@@ -201,7 +216,7 @@ bool Textbuf::InsertClipboard()
 
 	if (!GetClipboardContents(utf8_buf, lengthof(utf8_buf))) return false;
 
-	return this->InsertString(utf8_buf);
+	return this->InsertString(utf8_buf, false);
 }
 
 /**

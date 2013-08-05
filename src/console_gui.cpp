@@ -311,9 +311,9 @@ struct IConsoleWindow : Window
 		return ES_HANDLED;
 	}
 
-	virtual void InsertTextString(int wid, const char *str)
+	virtual void InsertTextString(int wid, const char *str, bool marked, const char *caret)
 	{
-		if (_iconsole_cmdline.InsertString(str)) {
+		if (_iconsole_cmdline.InsertString(str, marked, caret)) {
 			IConsoleWindow::scroll = 0;
 			IConsoleResetHistoryPos();
 			this->SetDirty();

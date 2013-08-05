@@ -52,6 +52,9 @@ bool _window_maximize;
 uint _display_hz;
 uint _fullscreen_bpp;
 static Dimension _bck_resolution;
+#if !defined(WINCE) || _WIN32_WCE >= 0x400
+DWORD _imm_props;
+#endif
 
 /** Whether the drawing is/may be done in a separate thread. */
 static bool _draw_threaded;
@@ -501,6 +504,12 @@ static LRESULT HandleCharMsg(uint keycode, WChar charcode)
 }
 
 #if !defined(WINCE) || _WIN32_WCE >= 0x400
+/** Should we draw the composition string ourself, i.e is this a normal IME? */
+static bool DrawIMECompositionString()
+{
+	return (_imm_props & IME_PROP_AT_CARET) && !(_imm_props & IME_PROP_SPECIAL_UI);
+}
+
 /** Set position of the composition window to the caret position. */
 static void SetCompositionPos(HWND hwnd)
 {
@@ -571,11 +580,49 @@ static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 			str[len / sizeof(TCHAR)] = '\0';
 
 			/* Transmit text to windowing system. */
-			if (len > 0) HandleTextInput(FS2OTTD(str));
+			if (len > 0) {
+				HandleTextInput(NULL, true); // Clear marked string.
+				HandleTextInput(FS2OTTD(str));
+			}
 			SetCompositionPos(hwnd);
 
 			/* Don't pass the result string on to the default window proc. */
 			lParam &= ~(GCS_RESULTSTR | GCS_RESULTCLAUSE | GCS_RESULTREADCLAUSE | GCS_RESULTREADSTR);
+		}
+
+		if ((lParam & GCS_COMPSTR) && DrawIMECompositionString()) {
+			/* Read composition string from the IME. */
+			LONG len = ImmGetCompositionString(hIMC, GCS_COMPSTR, NULL, 0); // Length is always in bytes, even in UNICODE build.
+			TCHAR *str = (TCHAR *)_alloca(len + sizeof(TCHAR));
+			len = ImmGetCompositionString(hIMC, GCS_COMPSTR, str, len);
+			str[len / sizeof(TCHAR)] = '\0';
+
+			if (len > 0) {
+				static char utf8_buf[1024];
+				convert_from_fs(str, utf8_buf, lengthof(utf8_buf));
+
+				/* Convert caret position from bytes in the input string to a position in the UTF-8 encoded string. */
+				LONG caret_bytes = ImmGetCompositionString(hIMC, GCS_CURSORPOS, NULL, 0);
+				const char *caret = utf8_buf;
+				for (const TCHAR *c = str; *c != '\0' && *caret != '\0' && caret_bytes > 0; c++, caret_bytes--) {
+					/* Skip DBCS lead bytes or leading surrogates. */
+#ifdef UNICODE
+					if (Utf16IsLeadSurrogate(*c)) {
+#else
+					if (IsDBCSLeadByte(*c)) {
+#endif
+						c++;
+						caret_bytes--;
+					}
+					Utf8Consume(&caret);
+				}
+
+				HandleTextInput(utf8_buf, true, caret);
+			} else {
+				HandleTextInput(NULL, true);
+			}
+
+			lParam &= ~(GCS_COMPSTR | GCS_COMPATTR | GCS_COMPCLAUSE | GCS_CURSORPOS | GCS_DELTASTART);
 		}
 	}
 	ImmReleaseContext(hwnd, hIMC);
@@ -589,10 +636,13 @@ static void CancelIMEComposition(HWND hwnd)
 	HIMC hIMC = ImmGetContext(hwnd);
 	if (hIMC != NULL) ImmNotifyIME(hIMC, NI_COMPOSITIONSTR, CPS_CANCEL, 0);
 	ImmReleaseContext(hwnd, hIMC);
+	/* Clear any marked string from the current edit box. */
+	HandleTextInput(NULL, true);
 }
 
 #else
 
+static bool DrawIMECompositionString() { return false; }
 static void SetCompositionPos(HWND hwnd) {}
 static void SetCandidatePos(HWND hwnd) {}
 static void CancelIMEComposition(HWND hwnd) {}
@@ -609,6 +659,9 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		case WM_CREATE:
 			SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
 			SetCompositionPos(hwnd);
+#if !defined(WINCE) || _WIN32_WCE >= 0x400
+			_imm_props = ImmGetProperty(GetKeyboardLayout(0), IGP_PROPERTY);
+#endif
 			break;
 
 		case WM_ENTERSIZEMOVE:
@@ -735,12 +788,28 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		}
 
 #if !defined(WINCE) || _WIN32_WCE >= 0x400
+		case WM_INPUTLANGCHANGE:
+			_imm_props = ImmGetProperty(GetKeyboardLayout(0), IGP_PROPERTY);
+			break;
+
+		case WM_IME_SETCONTEXT:
+			/* Don't show the composition window if we draw the string ourself. */
+			if (DrawIMECompositionString()) lParam &= ~ISC_SHOWUICOMPOSITIONWINDOW;
+			break;
+
 		case WM_IME_STARTCOMPOSITION:
 			SetCompositionPos(hwnd);
+			if (DrawIMECompositionString()) return 0;
 			break;
 
 		case WM_IME_COMPOSITION:
 			return HandleIMEComposition(hwnd, wParam, lParam);
+
+		case WM_IME_ENDCOMPOSITION:
+			/* Clear any pending composition string. */
+			HandleTextInput(NULL, true);
+			if (DrawIMECompositionString()) return 0;
+			break;
 
 		case WM_IME_NOTIFY:
 			if (wParam == IMN_OPENCANDIDATE) SetCandidatePos(hwnd);

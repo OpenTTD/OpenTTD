@@ -2551,12 +2551,12 @@ void HandleCtrlChanged()
  * @param wid Edit box widget.
  * @param str Text string to insert.
  */
-/* virtual */ void Window::InsertTextString(int wid, const char *str)
+/* virtual */ void Window::InsertTextString(int wid, const char *str, bool marked, const char *caret)
 {
 	QueryString *query = this->GetQueryString(wid);
 	if (query == NULL) return;
 
-	if (query->text.InsertString(str)) {
+	if (query->text.InsertString(str, marked, caret) || marked) {
 		this->SetWidgetDirty(wid);
 		this->OnEditboxChanged(wid);
 	}
@@ -2565,12 +2565,14 @@ void HandleCtrlChanged()
 /**
  * Handle text input.
  * @param str Text string to input.
+ * @param marked Is the input a marked composition string from an IME?
+ * @param caret Move the caret to this point in the insertion string.
  */
-void HandleTextInput(const char *str)
+void HandleTextInput(const char *str, bool marked, const char *caret)
 {
 	if (!EditBoxInGlobalFocus()) return;
 
-	_focused_window->InsertTextString(_focused_window->window_class == WC_CONSOLE ? 0 : _focused_window->nested_focus->index, str);
+	_focused_window->InsertTextString(_focused_window->window_class == WC_CONSOLE ? 0 : _focused_window->nested_focus->index, str, marked, caret);
 }
 
 /**
