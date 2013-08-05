@@ -439,12 +439,31 @@ static void PaintWindowThread(void *)
 }
 
 /** Forward key presses to the window system. */
-static LRESULT HandleCharMsg(uint keycode, uint charcode)
+static LRESULT HandleCharMsg(uint keycode, WChar charcode)
 {
 #if !defined(UNICODE)
 	wchar_t w;
 	int len = MultiByteToWideChar(_codepage, 0, (char*)&charcode, 1, &w, 1);
 	charcode = len == 1 ? w : 0;
+#else
+	static WChar prev_char = 0;
+
+	/* Did we get a lead surrogate? If yes, store and exit. */
+	if (Utf16IsLeadSurrogate(charcode)) {
+		if (prev_char != 0) DEBUG(driver, 1, "Got two UTF-16 lead surrogates, dropping the first one");
+		prev_char = charcode;
+		return 0;
+	}
+
+	/* Stored lead surrogate and incoming trail surrogate? Combine and forward to input handling. */
+	if (prev_char != 0) {
+		if (Utf16IsTrailSurrogate(charcode)) {
+			charcode = Utf16DecodeSurrogate(prev_char, charcode);
+		} else {
+			DEBUG(driver, 1, "Got an UTF-16 lead surrogate without a trail surrogate, dropping the lead surrogate");
+		}
+	}
+	prev_char = 0;
 #endif /* UNICODE */
 
 	HandleKeypress(keycode, charcode);
