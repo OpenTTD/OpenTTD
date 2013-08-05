@@ -108,6 +108,14 @@ typedef unsigned int NSUInteger;
 #endif /* __LP64__ */
 #endif /* NSInteger */
 
+#ifndef CGFLOAT_DEFINED
+#if __LP64__
+typedef double CGFloat;
+#else
+typedef float CGFloat;
+#endif /* __LP64__ */
+#endif /* CGFLOAT_DEFINED */
+
 /* OS X SDK versions >= 10.5 have a non-const iconv. */
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5
 #	define HAVE_NON_CONST_ICONV

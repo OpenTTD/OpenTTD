@@ -58,8 +58,25 @@ enum RightMouseButtonEmulationState {
 static unsigned int _current_mods;
 static bool _tab_is_down;
 static bool _emulating_right_button;
+#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+static float _current_magnification;
+#endif
 #ifdef _DEBUG
 static uint32 _tEvent;
+#endif
+
+
+/* Support for touch gestures is only available starting with the
+ * 10.6 SDK, even if it says that support starts in fact with 10.5.2.
+ * Replicate the needed stuff for older SDKs. */
+#if MAC_OS_X_VERSION_MAX_ALLOWED == MAC_OS_X_VERSION_10_5
+static const NSUInteger NSEventTypeMagnify    = 30;
+static const NSUInteger NSEventTypeEndGesture = 20;
+
+@interface NSEvent ()
+/* This message is valid for events of type NSEventTypeMagnify, on 10.5.2 or later */
+- (CGFloat)magnification WEAK_IMPORT_ATTRIBUTE;
+@end
 #endif
 
 
@@ -541,6 +558,29 @@ static bool QZ_PollEvent()
 			_cursor.h_wheel -= (int)([ event deltaX ] * 5 * _settings_client.gui.scrollwheel_multiplier);
 			_cursor.v_wheel -= (int)([ event deltaY ] * 5 * _settings_client.gui.scrollwheel_multiplier);
 			break;
+
+#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+		case NSEventTypeMagnify:
+			/* Pinch open or close gesture. */
+			_current_magnification += [ event magnification ] * 5.0f;
+
+			while (_current_magnification >= 1.0f) {
+				_current_magnification -= 1.0f;
+				_cursor.wheel++;
+				HandleMouseEvents();
+			}
+			while (_current_magnification <= -1.0f) {
+				_current_magnification += 1.0f;
+				_cursor.wheel--;
+				HandleMouseEvents();
+			}
+			break;
+
+		case NSEventTypeEndGesture:
+			/* Gesture ended. */
+			_current_magnification = 0.0f;
+			break;
+#endif
 
 		case NSCursorUpdate:
 		case NSMouseEntered:
