@@ -78,12 +78,12 @@ bool LoadLibraryList(Function proc[], const char *dll)
 void ShowOSErrorBox(const char *buf, bool system)
 {
 	MyShowCursor(true);
-	MessageBox(GetActiveWindow(), MB_TO_WIDE(buf), _T("Error!"), MB_ICONSTOP);
+	MessageBox(GetActiveWindow(), OTTD2FS(buf), _T("Error!"), MB_ICONSTOP);
 }
 
 void OSOpenBrowser(const char *url)
 {
-	ShellExecute(GetActiveWindow(), _T("open"), MB_TO_WIDE(url), NULL, NULL, SW_SHOWNORMAL);
+	ShellExecute(GetActiveWindow(), _T("open"), OTTD2FS(url), NULL, NULL, SW_SHOWNORMAL);
 }
 
 /* Code below for windows version of opendir/readdir/closedir copied and
@@ -371,12 +371,10 @@ static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM
 				*q++ = *p++;
 			}
 			*q = '\0';
-#if defined(UNICODE)
 			/* We need to put the text in a separate buffer because the default
-			 * buffer in MB_TO_WIDE might not be large enough (512 chars) */
-			wchar_t help_msgW[8192];
-#endif
-			SetDlgItemText(wnd, 11, MB_TO_WIDE_BUFFER(help_msg, help_msgW, lengthof(help_msgW)));
+			 * buffer in OTTD2FS might not be large enough (512 chars). */
+			TCHAR help_msg_buf[8192];
+			SetDlgItemText(wnd, 11, convert_to_fs(help_msg, help_msg_buf, lengthof(help_msg_buf)));
 			SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
 		} return TRUE;
 
@@ -407,12 +405,10 @@ void ShowInfo(const char *str)
 			_help_msg = str;
 			DialogBox(GetModuleHandle(NULL), MAKEINTRESOURCE(101), NULL, HelpDialogFunc);
 		} else {
-#if defined(UNICODE)
 			/* We need to put the text in a separate buffer because the default
-			 * buffer in MB_TO_WIDE might not be large enough (512 chars) */
-			wchar_t help_msgW[8192];
-#endif
-			MessageBox(GetActiveWindow(), MB_TO_WIDE_BUFFER(str, help_msgW, lengthof(help_msgW)), _T("OpenTTD"), MB_ICONINFORMATION | MB_OK);
+			 * buffer in OTTD2FS might not be large enough (512 chars). */
+			TCHAR help_msg_buf[8192];
+			MessageBox(GetActiveWindow(), convert_to_fs(str, help_msg_buf, lengthof(help_msg_buf)), _T("OpenTTD"), MB_ICONINFORMATION | MB_OK);
 		}
 		MyShowCursor(old);
 	}
@@ -426,24 +422,18 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 {
 	int argc;
 	char *argv[64]; // max 64 command line arguments
-	char *cmdline;
 
 	CrashLog::InitialiseCrashLog();
 
-#if defined(UNICODE)
-
-#if !defined(WINCE)
+#if defined(UNICODE) && !defined(WINCE)
 	/* Check if a win9x user started the win32 version */
 	if (HasBit(GetVersion(), 31)) usererror("This version of OpenTTD doesn't run on windows 95/98/ME.\nPlease download the win9x binary and try again.");
 #endif
 
-	/* For UNICODE we need to convert the commandline to char* _AND_
-	 * save it because argv[] points into this buffer and thus needs to
-	 * be available between subsequent calls to FS2OTTD() */
-	char cmdlinebuf[MAX_PATH];
-#endif /* UNICODE */
-
-	cmdline = WIDE_TO_MB_BUFFER(GetCommandLine(), cmdlinebuf, lengthof(cmdlinebuf));
+	/* Convert the command line to UTF-8. We need a dedicated buffer
+	 * for this because argv[] points into this buffer and this needs to
+	 * be available between subsequent calls to FS2OTTD(). */
+	char *cmdline = strdup(FS2OTTD(GetCommandLine()));
 
 #if defined(_DEBUG)
 	CreateConsole();
@@ -459,6 +449,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	argc = ParseCommandLine(cmdline, argv, lengthof(argv));
 
 	openttd_main(argc, argv);
+	free(cmdline);
 	return 0;
 }
 
@@ -486,12 +477,10 @@ char *getcwd(char *buf, size_t size)
 	/* GetModuleFileName returns dir with file, so remove everything behind latest '\\' */
 	char *p = strrchr(buf, '\\');
 	if (p != NULL) *p = '\0';
-#elif defined(UNICODE)
+#else
 	TCHAR path[MAX_PATH];
 	GetCurrentDirectory(MAX_PATH - 1, path);
 	convert_from_fs(path, buf, size);
-#else
-	GetCurrentDirectory(size, buf);
 #endif
 	return buf;
 }
@@ -503,7 +492,7 @@ void DetermineBasePaths(const char *exe)
 	TCHAR path[MAX_PATH];
 #ifdef WITH_PERSONAL_DIR
 	if (SUCCEEDED(OTTDSHGetFolderPath(NULL, CSIDL_PERSONAL, NULL, SHGFP_TYPE_CURRENT, path))) {
-		strecpy(tmp, WIDE_TO_MB_BUFFER(path, tmp, lengthof(tmp)), lastof(tmp));
+		strecpy(tmp, FS2OTTD(path), lastof(tmp));
 		AppendPathSeparator(tmp, MAX_PATH);
 		ttd_strlcat(tmp, PERSONAL_DIR, MAX_PATH);
 		AppendPathSeparator(tmp, MAX_PATH);
@@ -513,7 +502,7 @@ void DetermineBasePaths(const char *exe)
 	}
 
 	if (SUCCEEDED(OTTDSHGetFolderPath(NULL, CSIDL_COMMON_DOCUMENTS, NULL, SHGFP_TYPE_CURRENT, path))) {
-		strecpy(tmp, WIDE_TO_MB_BUFFER(path, tmp, lengthof(tmp)), lastof(tmp));
+		strecpy(tmp, FS2OTTD(path), lastof(tmp));
 		AppendPathSeparator(tmp, MAX_PATH);
 		ttd_strlcat(tmp, PERSONAL_DIR, MAX_PATH);
 		AppendPathSeparator(tmp, MAX_PATH);
@@ -536,12 +525,12 @@ void DetermineBasePaths(const char *exe)
 		_searchpaths[SP_BINARY_DIR] = NULL;
 	} else {
 		TCHAR exec_dir[MAX_PATH];
-		_tcsncpy(path, MB_TO_WIDE_BUFFER(exe, path, lengthof(path)), lengthof(path));
+		_tcsncpy(path, convert_to_fs(exe, path, lengthof(path)), lengthof(path));
 		if (!GetFullPathName(path, lengthof(exec_dir), exec_dir, NULL)) {
 			DEBUG(misc, 0, "GetFullPathName failed (%lu)\n", GetLastError());
 			_searchpaths[SP_BINARY_DIR] = NULL;
 		} else {
-			strecpy(tmp, WIDE_TO_MB_BUFFER(exec_dir, tmp, lengthof(tmp)), lastof(tmp));
+			strecpy(tmp, convert_from_fs(exec_dir, tmp, lengthof(tmp)), lastof(tmp));
 			char *s = strrchr(tmp, PATHSEPCHAR);
 			*(s + 1) = '\0';
 			_searchpaths[SP_BINARY_DIR] = strdup(tmp);
