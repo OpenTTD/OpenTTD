@@ -495,6 +495,20 @@ bool VideoDriver_Cocoa::AfterBlitterChange()
 }
 
 /**
+ * An edit box lost the input focus. Abort character compositing if necessary.
+ */
+void VideoDriver_Cocoa::EditBoxLostFocus()
+{
+	if (_cocoa_subdriver != NULL) {
+		if ([ _cocoa_subdriver->cocoaview respondsToSelector:@selector(inputContext) ]) {
+			[ [ _cocoa_subdriver->cocoaview performSelector:@selector(inputContext) ] performSelector:@selector(discardMarkedText) ];
+		} else {
+			[ [ NSInputManager currentInputManager ] markedTextAbandoned:_cocoa_subdriver->cocoaview ];
+		}
+	}
+}
+
+/**
  * Catch asserts prior to initialization of the videodriver.
  *
  * @param title Window title.

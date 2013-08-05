@@ -50,6 +50,11 @@ public:
 	 */
 	/* virtual */ bool AfterBlitterChange();
 
+	/**
+	 * An edit box lost the input focus. Abort character compositing if necessary.
+	 */
+	/* virtual */ void EditBoxLostFocus();
+
 	/** Return driver name
 	 * @return driver name
 	 */
