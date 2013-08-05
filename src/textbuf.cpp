@@ -144,20 +144,18 @@ bool Textbuf::InsertChar(WChar key)
 }
 
 /**
- * Insert a chunk of text from the clipboard onto the textbuffer. Get TEXT clipboard
- * and append this up to the maximum length (either absolute or screenlength). If maxlength
- * is zero, we don't care about the screenlength but only about the physical length of the string
- * @return true on successful change of Textbuf, or false otherwise
+ * Insert a string into the text buffer. If maxwidth of the Textbuf is zero,
+ * we don't care about the visual-length but only about the physical
+ * length of the string.
+ * @param str String to insert.
+ * @return True on successful change of Textbuf, or false otherwise.
  */
-bool Textbuf::InsertClipboard()
+bool Textbuf::InsertString(const char *str)
 {
-	char utf8_buf[512];
-
-	if (!GetClipboardContents(utf8_buf, lengthof(utf8_buf))) return false;
 
 	uint16 bytes = 0, chars = 0;
 	WChar c;
-	for (const char *ptr = utf8_buf; (c = Utf8Consume(&ptr)) != '\0';) {
+	for (const char *ptr = str; (c = Utf8Consume(&ptr)) != '\0';) {
 		if (!IsValidChar(c, this->afilter)) break;
 
 		byte len = Utf8CharLen(c);
@@ -171,7 +169,7 @@ bool Textbuf::InsertClipboard()
 	if (bytes == 0) return false;
 
 	memmove(this->buf + this->caretpos + bytes, this->buf + this->caretpos, this->bytes - this->caretpos);
-	memcpy(this->buf + this->caretpos, utf8_buf, bytes);
+	memcpy(this->buf + this->caretpos, str, bytes);
 
 	this->bytes += bytes;
 	this->chars += chars;
@@ -185,6 +183,21 @@ bool Textbuf::InsertClipboard()
 	this->UpdateCaretPosition();
 
 	return true;
+}
+
+/**
+ * Insert a chunk of text from the clipboard onto the textbuffer. Get TEXT clipboard
+ * and append this up to the maximum length (either absolute or screenlength). If maxlength
+ * is zero, we don't care about the screenlength but only about the physical length of the string
+ * @return true on successful change of Textbuf, or false otherwise
+ */
+bool Textbuf::InsertClipboard()
+{
+	char utf8_buf[512];
+
+	if (!GetClipboardContents(utf8_buf, lengthof(utf8_buf))) return false;
+
+	return this->InsertString(utf8_buf);
 }
 
 /** Update the character iter after the text has changed. */

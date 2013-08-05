@@ -24,6 +24,7 @@
 #include "../window_func.h"
 #include "win32_v.h"
 #include <windows.h>
+#include <imm.h>
 
 /* Missing define in MinGW headers. */
 #ifndef MAPVK_VK_TO_CHAR
@@ -498,6 +499,33 @@ static LRESULT HandleCharMsg(uint keycode, WChar charcode)
 	return 0;
 }
 
+#if !defined(WINCE) || _WIN32_WCE >= 0x400
+/** Handle WM_IME_COMPOSITION messages. */
+static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
+{
+	HIMC hIMC = ImmGetContext(hwnd);
+
+	if (hIMC != NULL) {
+		if (lParam & GCS_RESULTSTR) {
+			/* Read result string from the IME. */
+			LONG len = ImmGetCompositionString(hIMC, GCS_RESULTSTR, NULL, 0); // Length is always in bytes, even in UNICODE build.
+			TCHAR *str = (TCHAR *)_alloca(len + sizeof(TCHAR));
+			len = ImmGetCompositionString(hIMC, GCS_RESULTSTR, str, len);
+			str[len / sizeof(TCHAR)] = '\0';
+
+			/* Transmit text to windowing system. */
+			if (len > 0) HandleTextInput(FS2OTTD(str));
+
+			/* Don't pass the result string on to the default window proc. */
+			lParam &= ~(GCS_RESULTSTR | GCS_RESULTCLAUSE | GCS_RESULTREADCLAUSE | GCS_RESULTREADSTR);
+		}
+	}
+	ImmReleaseContext(hwnd, hIMC);
+
+	return lParam != 0 ? DefWindowProc(hwnd, WM_IME_COMPOSITION, wParam, lParam) : 0;
+}
+#endif
+
 static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	static uint32 keycode = 0;
@@ -633,6 +661,9 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		}
 
 #if !defined(WINCE) || _WIN32_WCE >= 0x400
+		case WM_IME_COMPOSITION:
+			return HandleIMEComposition(hwnd, wParam, lParam);
+
 #if !defined(UNICODE)
 		case WM_IME_CHAR:
 			if (GB(wParam, 8, 8) != 0) {

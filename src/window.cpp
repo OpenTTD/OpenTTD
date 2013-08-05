@@ -2533,6 +2533,33 @@ void HandleCtrlChanged()
 }
 
 /**
+ * Insert a text string at the cursor position into the edit box widget.
+ * @param wid Edit box widget.
+ * @param str Text string to insert.
+ */
+/* virtual */ void Window::InsertTextString(int wid, const char *str)
+{
+	QueryString *query = this->GetQueryString(wid);
+	if (query == NULL) return;
+
+	if (query->text.InsertString(str)) {
+		this->SetWidgetDirty(wid);
+		this->OnEditboxChanged(wid);
+	}
+}
+
+/**
+ * Handle text input.
+ * @param str Text string to input.
+ */
+void HandleTextInput(const char *str)
+{
+	if (!EditBoxInGlobalFocus()) return;
+
+	_focused_window->InsertTextString(_focused_window->window_class == WC_CONSOLE ? 0 : _focused_window->nested_focus->index, str);
+}
+
+/**
  * Local counter that is incremented each time an mouse input event is detected.
  * The counter is used to stop auto-scrolling.
  * @see HandleAutoscroll()

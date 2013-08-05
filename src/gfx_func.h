@@ -71,6 +71,7 @@ extern Dimension _cur_resolution;
 extern Palette _cur_palette; ///< Current palette
 
 void HandleKeypress(uint keycode, WChar key);
+void HandleTextInput(const char *str);
 void HandleCtrlChanged();
 void HandleMouseEvents();
 void CSleep(int milliseconds);

@@ -308,6 +308,15 @@ struct IConsoleWindow : Window
 		return ES_HANDLED;
 	}
 
+	virtual void InsertTextString(int wid, const char *str)
+	{
+		if (_iconsole_cmdline.InsertString(str)) {
+			IConsoleWindow::scroll = 0;
+			IConsoleResetHistoryPos();
+			this->SetDirty();
+		}
+	}
+
 	virtual void OnMouseWheel(int wheel)
 	{
 		this->Scroll(-wheel);
