@@ -788,6 +788,23 @@ void cocoaReleaseAutoreleasePool()
 	if (_cocoa_subdriver != NULL) UndrawMouseCursor();
 	_cursor.in_window = false;
 }
+
+
+/** Insert the given text at the caret. */
+- (void)insertText:(id)aString
+{
+	NSString *s = [ aString isKindOfClass:[ NSAttributedString class ] ] ? [ aString string ] : (NSString *)aString;
+
+	HandleTextInput(NULL, true);
+	HandleTextInput([ s UTF8String ]);
+}
+
+/** Invoke the selector if we implement it. */
+- (void)doCommandBySelector:(SEL)aSelector
+{
+	if ([ self respondsToSelector:aSelector ]) [ self performSelector:aSelector ];
+}
+
 @end
 
 

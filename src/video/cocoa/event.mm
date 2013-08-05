@@ -35,6 +35,7 @@
 #include "../../network/network.h"
 #include "../../core/random_func.hpp"
 #include "../../texteff.hpp"
+#include "../../window_func.h"
 
 #import <sys/time.h> /* gettimeofday */
 
@@ -399,7 +400,6 @@ static bool QZ_PollEvent()
 
 	NSString *chars;
 	NSPoint  pt;
-	NSText   *fieldEditor;
 	switch ([ event type ]) {
 		case NSMouseMoved:
 		case NSOtherMouseDragged:
@@ -516,17 +516,18 @@ static bool QZ_PollEvent()
 					break;
 			}
 
-			fieldEditor = [[ event window ] fieldEditor:YES forObject:nil ];
-			[ fieldEditor setString:@"" ];
-			[ fieldEditor interpretKeyEvents: [ NSArray arrayWithObject:event ] ];
-
-			chars = [ event characters ];
-			if ([ chars length ] == 0) {
+			if (EditBoxInGlobalFocus()) {
+				[ _cocoa_subdriver->cocoaview interpretKeyEvents:[ NSArray arrayWithObject:event ] ];
 				QZ_KeyEvent([ event keyCode ], 0, YES);
 			} else {
-				QZ_KeyEvent([ event keyCode ], [ chars characterAtIndex:0 ], YES);
-				for (uint i = 1; i < [ chars length ]; i++) {
-					QZ_KeyEvent(0, [ chars characterAtIndex:i ], YES);
+				chars = [ event characters ];
+				if ([ chars length ] == 0) {
+					QZ_KeyEvent([ event keyCode ], 0, YES);
+				} else {
+					QZ_KeyEvent([ event keyCode ], [ chars characterAtIndex:0 ], YES);
+					for (uint i = 1; i < [ chars length ]; i++) {
+						QZ_KeyEvent(0, [ chars characterAtIndex:i ], YES);
+					}
 				}
 			}
 			break;
