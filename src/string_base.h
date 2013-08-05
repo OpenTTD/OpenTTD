@@ -15,6 +15,12 @@
 /** Class for iterating over different kind of parts of a string. */
 class StringIterator {
 public:
+	/** Type of the iterator. */
+	enum IterType {
+		ITER_CHARACTER, ///< Iterate over characters (or more exactly grapheme clusters).
+		ITER_WORD,      ///< Iterate over words.
+	};
+
 	/** Sentinel to indicate end-of-iteration. */
 	static const size_t END = SIZE_MAX;
 
@@ -45,13 +51,13 @@ public:
 	 * Advance the cursor by one iteration unit.
 	 * @return New cursor position (in bytes) or #END if the cursor is already at the end of the string.
 	 */
-	virtual size_t Next() = 0;
+	virtual size_t Next(IterType what = ITER_CHARACTER) = 0;
 
 	/**
 	 * Move the cursor back by one iteration unit.
 	 * @return New cursor position (in bytes) or #END if the cursor is already at the start of the string.
 	 */
-	virtual size_t Prev() = 0;
+	virtual size_t Prev(IterType what = ITER_CHARACTER) = 0;
 
 protected:
 	StringIterator() {}

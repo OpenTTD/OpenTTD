@@ -219,70 +219,12 @@ bool Textbuf::InsertClipboard()
 	return true;
 }
 
-/**
- * Checks if it is possible to move caret to the left
- * @return true if the caret can be moved to the left, otherwise false.
- */
-bool Textbuf::CanMoveCaretLeft()
-{
-	return this->caretpos != 0;
-}
-
-/**
- * Moves the caret to the left.
- * @pre Ensure that Textbuf::CanMoveCaretLeft returns true
- * @return The character under the caret.
- */
-WChar Textbuf::MoveCaretLeft()
-{
-	assert(this->CanMoveCaretLeft());
-
-	size_t pos = this->char_iter->Prev();
-	if (pos == StringIterator::END) pos = 0;
-
-	this->caretpos = (uint16)pos;
-	this->UpdateCaretPosition();
-
-	WChar c;
-	Utf8Decode(&c, this->buf + this->caretpos);
-
-	return c;
-}
-
-/**
- * Checks if it is possible to move caret to the right
- * @return true if the caret can be moved to the right, otherwise false.
- */
-bool Textbuf::CanMoveCaretRight()
-{
-	return this->caretpos < this->bytes - 1;
-}
-
-/**
- * Moves the caret to the right.
- * @pre Ensure that Textbuf::CanMoveCaretRight returns true
- * @return The character under the caret.
- */
-WChar Textbuf::MoveCaretRight()
-{
-	assert(this->CanMoveCaretRight());
-
-	size_t pos = this->char_iter->Next();
-	if (pos == StringIterator::END) pos = this->bytes - 1;
-
-	this->caretpos = (uint16)pos;
-	this->UpdateCaretPosition();
-
-	WChar c;
-	Utf8Decode(&c, this->buf + this->caretpos);
-	return c;
-}
-
 /** Update the character iter after the text has changed. */
 void Textbuf::UpdateStringIter()
 {
 	this->char_iter->SetString(this->buf);
-	this->caretpos = (uint16)this->char_iter->SetCurPosition(this->caretpos);
+	size_t pos = this->char_iter->SetCurPosition(this->caretpos);
+	this->caretpos = pos == StringIterator::END ? 0 : (uint16)pos;
 }
 
 /** Update pixel width of the text. */
@@ -307,64 +249,38 @@ bool Textbuf::MovePos(uint16 keycode)
 {
 	switch (keycode) {
 		case WKC_LEFT:
-			if (this->CanMoveCaretLeft()) {
-				this->MoveCaretLeft();
-				return true;
-			}
-			break;
-
 		case WKC_CTRL | WKC_LEFT: {
-			if (!this->CanMoveCaretLeft()) break;
+			if (this->caretpos == 0) break;
 
-			/* Unconditionally move one char to the left. */
-			WChar c = this->MoveCaretLeft();
-			/* Consume left whitespaces. */
-			while (IsWhitespace(c)) {
-				if (!this->CanMoveCaretLeft()) return true;
-				c = this->MoveCaretLeft();
-			}
-			/* Consume left word. */
-			while (!IsWhitespace(c)) {
-				if (!this->CanMoveCaretLeft()) return true;
-				c = this->MoveCaretLeft();
-			}
-			/* Place caret at the beginning of the left word. */
-			this->MoveCaretRight();
+			size_t pos = this->char_iter->Prev(keycode & WKC_CTRL ? StringIterator::ITER_WORD : StringIterator::ITER_CHARACTER);
+			if (pos == StringIterator::END) return true;
+
+			this->caretpos = (uint16)pos;
+			this->UpdateCaretPosition();
 			return true;
 		}
 
 		case WKC_RIGHT:
-			if (this->CanMoveCaretRight()) {
-				this->MoveCaretRight();
-				return true;
-			}
-			break;
-
 		case WKC_CTRL | WKC_RIGHT: {
-			if (!this->CanMoveCaretRight()) break;
+			if (this->caretpos >= this->bytes - 1) break;
 
-			/* Unconditionally move one char to the right. */
-			WChar c = this->MoveCaretRight();
-			/* Continue to consume current word. */
-			while (!IsWhitespace(c)) {
-				if (!this->CanMoveCaretRight()) return true;
-				c = this->MoveCaretRight();
-			}
-			/* Consume right whitespaces. */
-			while (IsWhitespace(c)) {
-				if (!this->CanMoveCaretRight()) return true;
-				c = this->MoveCaretRight();
-			}
+			size_t pos = this->char_iter->Next(keycode & WKC_CTRL ? StringIterator::ITER_WORD : StringIterator::ITER_CHARACTER);
+			if (pos == StringIterator::END) return true;
+
+			this->caretpos = (uint16)pos;
+			this->UpdateCaretPosition();
 			return true;
 		}
 
 		case WKC_HOME:
 			this->caretpos = 0;
+			this->char_iter->SetCurPosition(this->caretpos);
 			this->UpdateCaretPosition();
 			return true;
 
 		case WKC_END:
 			this->caretpos = this->bytes - 1;
+			this->char_iter->SetCurPosition(this->caretpos);
 			this->UpdateCaretPosition();
 			return true;
 
