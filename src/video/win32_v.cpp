@@ -439,9 +439,39 @@ static void PaintWindowThread(void *)
 static LRESULT HandleCharMsg(uint keycode, WChar charcode)
 {
 #if !defined(UNICODE)
-	wchar_t w;
-	int len = MultiByteToWideChar(_codepage, 0, (char*)&charcode, 1, &w, 1);
-	charcode = len == 1 ? w : 0;
+	static char prev_char = 0;
+
+	char input[2] = {(char)charcode, 0};
+	int input_len = 1;
+
+	if (prev_char != 0) {
+		/* We stored a lead byte previously, combine it with this byte. */
+		input[0] = prev_char;
+		input[1] = (char)charcode;
+		input_len = 2;
+	} else if (IsDBCSLeadByte(charcode)) {
+		/* We got a lead byte, store and exit. */
+		prev_char = charcode;
+		return 0;
+	}
+	prev_char = 0;
+
+	wchar_t w[2]; // Can get up to two code points as a result.
+	int len = MultiByteToWideChar(CP_ACP, 0, input, input_len, w, 2);
+	switch (len) {
+		case 1: // Normal unicode character.
+			charcode = w[0];
+			break;
+
+		case 2: // Got an UTF-16 surrogate pair back.
+			charcode = Utf16DecodeSurrogate(w[0], w[1]);
+			break;
+
+		default: // Some kind of error.
+			DEBUG(driver, 1, "Invalid DBCS character sequence encountered, dropping input");
+			charcode = 0;
+			break;
+	}
 #else
 	static WChar prev_char = 0;
 
@@ -601,6 +631,18 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			HandleMouseEvents();
 			return 0;
 		}
+
+#if !defined(WINCE) || _WIN32_WCE >= 0x400
+#if !defined(UNICODE)
+		case WM_IME_CHAR:
+			if (GB(wParam, 8, 8) != 0) {
+				/* DBCS character, send lead byte first. */
+				HandleCharMsg(0, GB(wParam, 8, 8));
+			}
+			HandleCharMsg(0, GB(wParam, 0, 8));
+			return 0;
+#endif
+#endif
 
 		case WM_DEADCHAR:
 			console = GB(lParam, 16, 8) == 41;
