@@ -35,6 +35,7 @@
 #include "statusbar_gui.h"
 #include "error.h"
 #include "game/game.hpp"
+#include "video/video_driver.hpp"
 
 /** Values for _settings_client.gui.auto_scrolling */
 enum ViewportAutoscrolling {
@@ -366,6 +367,8 @@ bool EditBoxInGlobalFocus()
 void Window::UnfocusFocusedWidget()
 {
 	if (this->nested_focus != NULL) {
+		if (this->nested_focus->type == WWT_EDITBOX) _video_driver->EditBoxLostFocus();
+
 		/* Repaint the widget that lost focus. A focused edit box may else leave the caret on the screen. */
 		this->nested_focus->SetDirty(this);
 		this->nested_focus = NULL;
@@ -388,9 +391,18 @@ bool Window::SetFocusedWidget(int widget_index)
 
 		/* Repaint the widget that lost focus. A focused edit box may else leave the caret on the screen. */
 		this->nested_focus->SetDirty(this);
+		if (this->nested_focus->type == WWT_EDITBOX) _video_driver->EditBoxLostFocus();
 	}
 	this->nested_focus = this->GetWidget<NWidgetCore>(widget_index);
 	return true;
+}
+
+/**
+ * Called when window looses focus
+ */
+void Window::OnFocusLost()
+{
+	if (this->nested_focus != NULL && this->nested_focus->type == WWT_EDITBOX) _video_driver->EditBoxLostFocus();
 }
 
 /**
@@ -953,7 +965,10 @@ Window::~Window()
 	if (_last_scroll_window == this) _last_scroll_window = NULL;
 
 	/* Make sure we don't try to access this window as the focused window when it doesn't exist anymore. */
-	if (_focused_window == this) _focused_window = NULL;
+	if (_focused_window == this) {
+		this->OnFocusLost();
+		_focused_window = NULL;
+	}
 
 	this->DeleteChildWindows();
 

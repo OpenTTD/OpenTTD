@@ -582,10 +582,7 @@ public:
 	 */
 	virtual void OnFocus() {}
 
-	/**
-	 * Called when window looses focus
-	 */
-	virtual void OnFocusLost() {}
+	virtual void OnFocusLost();
 
 	/**
 	 * A key has been pressed.

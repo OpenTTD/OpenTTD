@@ -21,6 +21,7 @@
 #include "settings_type.h"
 #include "console_func.h"
 #include "rev.h"
+#include "video/video_driver.hpp"
 
 #include "widgets/console_widget.h"
 
@@ -310,6 +311,11 @@ struct IConsoleWindow : Window
 	virtual void OnMouseWheel(int wheel)
 	{
 		this->Scroll(-wheel);
+	}
+
+	virtual void OnFocusLost()
+	{
+		_video_driver->EditBoxLostFocus();
 	}
 };
 
