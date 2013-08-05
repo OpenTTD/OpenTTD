@@ -621,12 +621,13 @@ const char *FS2OTTD(const TCHAR *name)
  * The returned value's contents can only be guaranteed until the next call to
  * this function. So if the value is needed for anything else, use convert_from_fs
  * @param name pointer to a valid string that will be converted (UTF8)
+ * @param console_cp convert to the console encoding instead of the normal system encoding.
  * @return pointer to the converted string; if failed string is of zero-length
  */
-const TCHAR *OTTD2FS(const char *name)
+const TCHAR *OTTD2FS(const char *name, bool console_cp)
 {
 	static TCHAR system_buf[512];
-	return convert_to_fs(name, system_buf, lengthof(system_buf));
+	return convert_to_fs(name, system_buf, lengthof(system_buf), console_cp);
 }
 
 
@@ -669,9 +670,10 @@ char *convert_from_fs(const TCHAR *name, char *utf8_buf, size_t buflen)
  * @param utf16_buf pointer to a valid wide-char buffer that will receive the
  * converted string
  * @param buflen length in wide characters of the receiving buffer
+ * @param console_cp convert to the console encoding instead of the normal system encoding.
  * @return pointer to utf16_buf. If conversion fails the string is of zero-length
  */
-TCHAR *convert_to_fs(const char *name, TCHAR *system_buf, size_t buflen)
+TCHAR *convert_to_fs(const char *name, TCHAR *system_buf, size_t buflen, bool console_cp)
 {
 #if defined(UNICODE)
 	int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, system_buf, (int)buflen);
@@ -686,7 +688,7 @@ TCHAR *convert_to_fs(const char *name, TCHAR *system_buf, size_t buflen)
 	WCHAR *wide_buf = AllocaM(WCHAR, len);
 	MultiByteToWideChar(CP_UTF8, 0, name, -1, wide_buf, len);
 
-	len = WideCharToMultiByte(CP_ACP, 0, wide_buf, len, system_buf, (int)buflen, NULL, NULL);
+	len = WideCharToMultiByte(console_cp ? CP_OEMCP : CP_ACP, 0, wide_buf, len, system_buf, (int)buflen, NULL, NULL);
 	if (len == 0) system_buf[0] = '\0';
 #endif
 

@@ -19,7 +19,7 @@ typedef void (*Function)(int);
 bool LoadLibraryList(Function proc[], const char *dll);
 
 char *convert_from_fs(const TCHAR *name, char *utf8_buf, size_t buflen);
-TCHAR *convert_to_fs(const char *name, TCHAR *utf16_buf, size_t buflen);
+TCHAR *convert_to_fs(const char *name, TCHAR *utf16_buf, size_t buflen, bool console_cp = false);
 
 /* Function shortcuts for UTF-8 <> UNICODE conversion. When unicode is not
  * defined these macros return the string passed to them, with UNICODE

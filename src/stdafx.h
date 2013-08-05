@@ -287,7 +287,7 @@
 		#endif /* WINCE */
 
 		const char *FS2OTTD(const TCHAR *name);
-		const TCHAR *OTTD2FS(const char *name);
+		const TCHAR *OTTD2FS(const char *name, bool console_cp = false);
 		#define SQ2OTTD(name) FS2OTTD(name)
 		#define OTTD2SQ(name) OTTD2FS(name)
 	#else
