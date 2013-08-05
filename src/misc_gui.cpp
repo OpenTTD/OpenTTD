@@ -775,6 +775,9 @@ void QueryString::DrawEditBox(const Window *w, int wid) const
 
 	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
 
+	/* If we have a marked area, draw a background highlight. */
+	if (tb->marklength != 0) GfxFillRect(delta + tb->markxoffs, 0, delta + tb->markxoffs + tb->marklength - 1, bottom - top, PC_GREY);
+
 	DrawString(delta, tb->pixels, 0, tb->buf, TC_YELLOW);
 	bool focussed = w->IsWidgetGloballyFocused(wid) || IsOSKOpenedFor(w, wid);
 	if (focussed && tb->caret) {

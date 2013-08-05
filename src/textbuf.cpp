@@ -103,6 +103,7 @@ bool Textbuf::DeleteChar(uint16 keycode)
 	this->UpdateStringIter();
 	this->UpdateWidth();
 	this->UpdateCaretPosition();
+	this->UpdateMarkedText();
 
 	return true;
 }
@@ -115,6 +116,7 @@ void Textbuf::DeleteAll()
 	memset(this->buf, 0, this->max_bytes);
 	this->bytes = this->chars = 1;
 	this->pixels = this->caretpos = this->caretxoffs = 0;
+	this->markpos = this->markend = this->markxoffs = this->marklength = 0;
 	this->UpdateStringIter();
 }
 
@@ -138,6 +140,7 @@ bool Textbuf::InsertChar(WChar key)
 		this->UpdateStringIter();
 		this->UpdateWidth();
 		this->UpdateCaretPosition();
+		this->UpdateMarkedText();
 		return true;
 	}
 	return false;
@@ -181,6 +184,7 @@ bool Textbuf::InsertString(const char *str)
 	this->UpdateStringIter();
 	this->UpdateWidth();
 	this->UpdateCaretPosition();
+	this->UpdateMarkedText();
 
 	return true;
 }
@@ -198,6 +202,45 @@ bool Textbuf::InsertClipboard()
 	if (!GetClipboardContents(utf8_buf, lengthof(utf8_buf))) return false;
 
 	return this->InsertString(utf8_buf);
+}
+
+/**
+ * Discard any marked text.
+ * @param update Set to true if the internal state should be updated.
+ */
+void Textbuf::DiscardMarkedText(bool update)
+{
+	if (this->markend == 0) return;
+
+	/* Count marked characters. */
+	uint c = 0;
+	const char *s = this->buf + this->markpos;
+	while (s < this->buf + this->markend) {
+		Utf8Consume(&s);
+		c++;
+	}
+
+	/* Strip marked characters from buffer. */
+	memmove(this->buf + this->markpos, this->buf + this->markend, this->bytes - this->markend);
+	this->bytes -= this->markend - this->markpos;
+	this->chars -= c;
+
+	/* Fixup caret if needed. */
+	if (this->caretpos > this->markpos) {
+		if (this->caretpos <= this->markend) {
+			this->caretpos = this->markpos;
+		} else {
+			this->caretpos -= this->markend - this->markpos;
+		}
+	}
+
+	this->markpos = this->markend = 0;
+
+	if (update) {
+		this->UpdateStringIter();
+		this->UpdateCaretPosition();
+		this->UpdateMarkedText();
+	}
 }
 
 /** Update the character iter after the text has changed. */
@@ -218,6 +261,17 @@ void Textbuf::UpdateWidth()
 void Textbuf::UpdateCaretPosition()
 {
 	this->caretxoffs = this->chars > 1 ? GetCharPosInString(this->buf, this->buf + this->caretpos, FS_NORMAL).x : 0;
+}
+
+/** Update pixel positions of the marked text area. */
+void Textbuf::UpdateMarkedText()
+{
+	if (this->markend != 0) {
+		this->markxoffs  = GetCharPosInString(this->buf, this->buf + this->markpos, FS_NORMAL).x;
+		this->marklength = GetCharPosInString(this->buf, this->buf + this->markend, FS_NORMAL).x - this->markxoffs;
+	} else {
+		this->markxoffs = this->marklength = 0;
+	}
 }
 
 /**
@@ -355,6 +409,7 @@ void Textbuf::UpdateSize()
 	this->caretpos = this->bytes - 1;
 	this->UpdateStringIter();
 	this->UpdateWidth();
+	this->UpdateMarkedText();
 
 	this->UpdateCaretPosition();
 }
