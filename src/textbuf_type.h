@@ -65,8 +65,6 @@ private:
 	StringIterator *char_iter;
 
 	bool CanDelChar(bool backspace);
-	WChar GetNextDelChar(bool backspace);
-	void DelChar(bool backspace);
 
 	void UpdateStringIter();
 	void UpdateWidth();

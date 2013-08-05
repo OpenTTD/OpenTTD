@@ -43,58 +43,6 @@ bool Textbuf::CanDelChar(bool backspace)
 }
 
 /**
- * Get the next character that will be removed by DelChar.
- * @param backspace if set, delete the character before the caret,
- * otherwise, delete the character after it.
- * @return the next character that will be removed by DelChar.
- * @warning You should ensure Textbuf::CanDelChar returns true before calling this function.
- */
-WChar Textbuf::GetNextDelChar(bool backspace)
-{
-	assert(this->CanDelChar(backspace));
-
-	const char *s;
-	if (backspace) {
-		s = Utf8PrevChar(this->buf + this->caretpos);
-	} else {
-		s = this->buf + this->caretpos;
-	}
-
-	WChar c;
-	Utf8Decode(&c, s);
-	return c;
-}
-
-/**
- * Delete a character at the caret position in a text buf.
- * @param backspace if set, delete the character before the caret,
- * else delete the character after it.
- * @warning You should ensure Textbuf::CanDelChar returns true before calling this function.
- */
-void Textbuf::DelChar(bool backspace)
-{
-	assert(this->CanDelChar(backspace));
-
-	WChar c;
-	char *s = this->buf + this->caretpos;
-
-	if (backspace) s = Utf8PrevChar(s);
-
-	uint16 len = (uint16)Utf8Decode(&c, s);
-
-	/* Move the remaining characters over the marker */
-	memmove(s, s + len, this->bytes - (s - this->buf) - len);
-	this->bytes -= len;
-	this->chars--;
-
-	if (backspace) this->caretpos -= len;
-
-	this->UpdateStringIter();
-	this->UpdateWidth();
-	this->UpdateCaretPosition();
-}
-
-/**
  * Delete a character from a textbuffer, either with 'Delete' or 'Backspace'
  * The character is delete from the position the caret is at
  * @param keycode Type of deletion, either WKC_BACKSPACE or WKC_DELETE
@@ -102,41 +50,61 @@ void Textbuf::DelChar(bool backspace)
  */
 bool Textbuf::DeleteChar(uint16 keycode)
 {
-	if (keycode == WKC_BACKSPACE || keycode == WKC_DELETE) {
-		bool backspace = keycode == WKC_BACKSPACE;
-		if (CanDelChar(backspace)) {
-			this->DelChar(backspace);
-			return true;
+	bool word = (keycode & WKC_CTRL) != 0;
+
+	keycode &= ~WKC_SPECIAL_KEYS;
+	if (keycode != WKC_BACKSPACE && keycode != WKC_DELETE) return false;
+
+	bool backspace = keycode == WKC_BACKSPACE;
+
+	if (!CanDelChar(backspace)) return false;
+
+	char *s = this->buf + this->caretpos;
+	uint16 len = 0;
+
+	if (word) {
+		/* Delete a complete word. */
+		if (backspace) {
+			/* Delete whitespace and word in front of the caret. */
+			len = this->caretpos - (uint16)this->char_iter->Prev(StringIterator::ITER_WORD);
+			s -= len;
+		} else {
+			/* Delete word and following whitespace following the caret. */
+			len = (uint16)this->char_iter->Next(StringIterator::ITER_WORD) - this->caretpos;
 		}
-		return false;
+		/* Update character count. */
+		for (const char *ss = s; ss < s + len; Utf8Consume(&ss)) {
+			this->chars--;
+		}
+	} else {
+		/* Delete a single character. */
+		if (backspace) {
+			/* Delete the last code point in front of the caret. */
+			s = Utf8PrevChar(s);
+			WChar c;
+			len = (uint16)Utf8Decode(&c, s);
+			this->chars--;
+		} else {
+			/* Delete the complete character following the caret. */
+			len = (uint16)this->char_iter->Next(StringIterator::ITER_CHARACTER) - this->caretpos;
+			/* Update character count. */
+			for (const char *ss = s; ss < s + len; Utf8Consume(&ss)) {
+				this->chars--;
+			}
+		}
 	}
 
-	if (keycode == (WKC_CTRL | WKC_BACKSPACE) || keycode == (WKC_CTRL | WKC_DELETE)) {
-		bool backspace = keycode == (WKC_CTRL | WKC_BACKSPACE);
+	/* Move the remaining characters over the marker */
+	memmove(s, s + len, this->bytes - (s - this->buf) - len);
+	this->bytes -= len;
 
-		if (!CanDelChar(backspace)) return false;
-		WChar c = this->GetNextDelChar(backspace);
+	if (backspace) this->caretpos -= len;
 
-		/* Backspace: Delete left whitespaces.
-		 * Delete:    Delete right word.
-		 */
-		while (backspace ? IsWhitespace(c) : !IsWhitespace(c)) {
-			this->DelChar(backspace);
-			if (!this->CanDelChar(backspace)) return true;
-			c = this->GetNextDelChar(backspace);
-		}
-		/* Backspace: Delete left word.
-		 * Delete:    Delete right whitespaces.
-		 */
-		while (backspace ? !IsWhitespace(c) : IsWhitespace(c)) {
-			this->DelChar(backspace);
-			if (!this->CanDelChar(backspace)) return true;
-			c = this->GetNextDelChar(backspace);
-		}
-		return true;
-	}
+	this->UpdateStringIter();
+	this->UpdateWidth();
+	this->UpdateCaretPosition();
 
-	return false;
+	return true;
 }
 
 /**
