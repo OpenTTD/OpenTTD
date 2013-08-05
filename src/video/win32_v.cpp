@@ -50,9 +50,6 @@ bool _window_maximize;
 uint _display_hz;
 uint _fullscreen_bpp;
 static Dimension _bck_resolution;
-#if !defined(UNICODE)
-uint _codepage;
-#endif
 
 /** Whether the drawing is/may be done in a separate thread. */
 static bool _draw_threaded;
@@ -604,17 +601,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			HandleMouseEvents();
 			return 0;
 		}
-
-#if !defined(UNICODE)
-		case WM_INPUTLANGCHANGE: {
-			TCHAR locale[6];
-			LCID lcid = GB(lParam, 0, 16);
-
-			int len = GetLocaleInfo(lcid, LOCALE_IDEFAULTANSICODEPAGE, locale, lengthof(locale));
-			if (len != 0) _codepage = _ttoi(locale);
-			return 1;
-		}
-#endif /* UNICODE */
 
 		case WM_DEADCHAR:
 			console = GB(lParam, 16, 8) == 41;

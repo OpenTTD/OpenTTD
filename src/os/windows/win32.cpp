@@ -428,10 +428,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	char *argv[64]; // max 64 command line arguments
 	char *cmdline;
 
-#if !defined(UNICODE)
-	_codepage = GetACP(); // get system codepage as some kind of a default
-#endif /* UNICODE */
-
 	CrashLog::InitialiseCrashLog();
 
 #if defined(UNICODE)
@@ -567,11 +563,11 @@ bool GetClipboardContents(char *buffer, size_t buff_len)
 		cbuf = GetClipboardData(CF_UNICODETEXT);
 
 		ptr = (const char*)GlobalLock(cbuf);
-		const char *ret = convert_from_fs((const wchar_t*)ptr, buffer, buff_len);
+		int out_len = WideCharToMultiByte(CP_UTF8, 0, (LPCWSTR)ptr, -1, buffer, (int)buff_len, NULL, NULL);
 		GlobalUnlock(cbuf);
 		CloseClipboard();
 
-		if (*ret == '\0') return false;
+		if (out_len == 0) return false;
 #if !defined(UNICODE)
 	} else if (IsClipboardFormatAvailable(CF_TEXT)) {
 		OpenClipboard(NULL);
@@ -613,26 +609,7 @@ void CSleep(int milliseconds)
 const char *FS2OTTD(const TCHAR *name)
 {
 	static char utf8_buf[512];
-#if defined(UNICODE)
 	return convert_from_fs(name, utf8_buf, lengthof(utf8_buf));
-#else
-	char *s = utf8_buf;
-
-	for (; *name != '\0'; name++) {
-		wchar_t w;
-		int len = MultiByteToWideChar(_codepage, 0, name, 1, &w, 1);
-		if (len != 1) {
-			DEBUG(misc, 0, "[utf8] M2W error converting '%c'. Errno %lu", *name, GetLastError());
-			continue;
-		}
-
-		if (s + Utf8CharLen(w) >= lastof(utf8_buf)) break;
-		s += Utf8Encode(s, w);
-	}
-
-	*s = '\0';
-	return utf8_buf;
-#endif /* UNICODE */
 }
 
 /**
@@ -645,33 +622,11 @@ const char *FS2OTTD(const TCHAR *name)
  * this function. So if the value is needed for anything else, use convert_from_fs
  * @param name pointer to a valid string that will be converted (UTF8)
  * @return pointer to the converted string; if failed string is of zero-length
- * @see the current code-page comes from video\win32_v.cpp, event-notification
- * WM_INPUTLANGCHANGE
  */
 const TCHAR *OTTD2FS(const char *name)
 {
 	static TCHAR system_buf[512];
-#if defined(UNICODE)
 	return convert_to_fs(name, system_buf, lengthof(system_buf));
-#else
-	char *s = system_buf;
-
-	for (WChar c; (c = Utf8Consume(&name)) != '\0';) {
-		if (s >= lastof(system_buf)) break;
-
-		char mb;
-		int len = WideCharToMultiByte(_codepage, 0, (wchar_t*)&c, 1, &mb, 1, NULL, NULL);
-		if (len != 1) {
-			DEBUG(misc, 0, "[utf8] W2M error converting '0x%X'. Errno %lu", c, GetLastError());
-			continue;
-		}
-
-		*s++ = mb;
-	}
-
-	*s = '\0';
-	return system_buf;
-#endif /* UNICODE */
 }
 
 
@@ -683,13 +638,25 @@ const TCHAR *OTTD2FS(const char *name)
  * @param buflen length in characters of the receiving buffer
  * @return pointer to utf8_buf. If conversion fails the string is of zero-length
  */
-char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen)
+char *convert_from_fs(const TCHAR *name, char *utf8_buf, size_t buflen)
 {
-	int len = WideCharToMultiByte(CP_UTF8, 0, name, -1, utf8_buf, (int)buflen, NULL, NULL);
-	if (len == 0) {
-		DEBUG(misc, 0, "[utf8] W2M error converting wide-string. Errno %lu", GetLastError());
+#if defined(UNICODE)
+	const WCHAR *wide_buf = name;
+#else
+	/* Convert string from the local codepage to UTF-16. */
+	int wide_len = MultiByteToWideChar(CP_ACP, 0, name, -1, NULL, 0);
+	if (wide_len == 0) {
 		utf8_buf[0] = '\0';
+		return utf8_buf;
 	}
+
+	WCHAR *wide_buf = AllocaM(WCHAR, wide_len);
+	MultiByteToWideChar(CP_ACP, 0, name, -1, wide_buf, wide_len);
+#endif
+
+	/* Convert UTF-16 string to UTF-8. */
+	int len = WideCharToMultiByte(CP_UTF8, 0, wide_buf, -1, utf8_buf, (int)buflen, NULL, NULL);
+	if (len == 0) utf8_buf[0] = '\0';
 
 	return utf8_buf;
 }
@@ -704,15 +671,26 @@ char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen)
  * @param buflen length in wide characters of the receiving buffer
  * @return pointer to utf16_buf. If conversion fails the string is of zero-length
  */
-wchar_t *convert_to_fs(const char *name, wchar_t *utf16_buf, size_t buflen)
+TCHAR *convert_to_fs(const char *name, TCHAR *system_buf, size_t buflen)
 {
-	int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, utf16_buf, (int)buflen);
+#if defined(UNICODE)
+	int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, system_buf, (int)buflen);
+	if (len == 0) system_buf[0] = '\0';
+#else
+	int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, NULL, 0);
 	if (len == 0) {
-		DEBUG(misc, 0, "[utf8] M2W error converting '%s'. Errno %lu", name, GetLastError());
-		utf16_buf[0] = '\0';
+		system_buf[0] = '\0';
+		return system_buf;
 	}
 
-	return utf16_buf;
+	WCHAR *wide_buf = AllocaM(WCHAR, len);
+	MultiByteToWideChar(CP_UTF8, 0, name, -1, wide_buf, len);
+
+	len = WideCharToMultiByte(CP_ACP, 0, wide_buf, len, system_buf, (int)buflen, NULL, NULL);
+	if (len == 0) system_buf[0] = '\0';
+#endif
+
+	return system_buf;
 }
 
 /**

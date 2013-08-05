@@ -18,8 +18,8 @@ bool MyShowCursor(bool show, bool toggle = false);
 typedef void (*Function)(int);
 bool LoadLibraryList(Function proc[], const char *dll);
 
-char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen);
-wchar_t *convert_to_fs(const char *name, wchar_t *utf16_buf, size_t buflen);
+char *convert_from_fs(const TCHAR *name, char *utf8_buf, size_t buflen);
+TCHAR *convert_to_fs(const char *name, TCHAR *utf16_buf, size_t buflen);
 
 /* Function shortcuts for UTF-8 <> UNICODE conversion. When unicode is not
  * defined these macros return the string passed to them, with UNICODE
