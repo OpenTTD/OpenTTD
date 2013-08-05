@@ -800,7 +800,7 @@ public:
 		}
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(WChar key, uint16 keycode)
 	{
 		switch (keycode) {
 			case WKC_UP:

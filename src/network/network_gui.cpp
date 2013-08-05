@@ -799,7 +799,7 @@ public:
 		this->SetDirty();
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(WChar key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
 

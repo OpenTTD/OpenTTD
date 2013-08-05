@@ -300,7 +300,7 @@ public:
 		if (_window_system_initialized) ShowFirstError();
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(WChar key, uint16 keycode)
 	{
 		if (keycode != WKC_SPACE) return ES_NOT_HANDLED;
 		delete this;

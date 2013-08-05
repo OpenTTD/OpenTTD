@@ -63,7 +63,7 @@ struct EndGameHighScoreBaseWindow : Window {
 		delete this;
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(WChar key, uint16 keycode)
 	{
 		/* All keys are 'handled' by this window but we want to make
 		 * sure that 'quit' still works correctly. Not handling the

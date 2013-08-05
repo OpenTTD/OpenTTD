@@ -19,6 +19,7 @@
 #include "widget_type.h"
 #include "core/smallvec_type.hpp"
 #include "core/smallmap_type.hpp"
+#include "string_type.h"
 
 /**
  * Flags to describe the look of the frame
@@ -593,7 +594,7 @@ public:
 	 * @return #ES_HANDLED if the key press has been handled and no other
 	 *         window should receive the event.
 	 */
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode) { return ES_NOT_HANDLED; }
+	virtual EventState OnKeyPress(WChar key, uint16 keycode) { return ES_NOT_HANDLED; }
 
 	virtual EventState OnHotkey(int hotkey);
 
