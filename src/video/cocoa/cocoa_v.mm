@@ -799,6 +799,69 @@ void cocoaReleaseAutoreleasePool()
 	HandleTextInput([ s UTF8String ]);
 }
 
+/** Set a new marked text and reposition the caret. */
+- (void)setMarkedText:(id)aString selectedRange:(NSRange)selRange
+{
+}
+
+/** Unmark the current marked text. */
+- (void)unmarkText
+{
+	HandleTextInput(NULL, true);
+}
+
+/** Get the caret position. */
+- (NSRange)selectedRange
+{
+	return NSMakeRange(NSNotFound, 0);
+}
+
+/** Get the currently marked range. */
+- (NSRange)markedRange
+{
+	return NSMakeRange(NSNotFound, 0);
+}
+
+/** Is any text marked? */
+- (BOOL)hasMarkedText
+{
+	return NO;
+}
+
+/** Get a string corresponding to the given range. */
+- (NSAttributedString *)attributedSubstringFromRange:(NSRange)theRange
+{
+	return nil;
+}
+
+/** Get the character that is rendered at the given point. */
+- (NSUInteger)characterIndexForPoint:(NSPoint)thePoint
+{
+	return NSNotFound;
+}
+
+/** Get the bounding rect for the given range. */
+- (NSRect)firstRectForCharacterRange:(NSRange)aRange
+{
+	return NSMakeRect(0, 0, 0, 0);
+}
+
+/** Get all string attributes that we can process for marked text. */
+- (NSArray*)validAttributesForMarkedText
+{
+	return [ NSArray array ];
+}
+
+/** Identifier for this text input instance. */
+#if MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_5
+- (long)conversationIdentifier
+#else
+- (NSInteger)conversationIdentifier
+#endif
+{
+	return 0;
+}
+
 /** Invoke the selector if we implement it. */
 - (void)doCommandBySelector:(SEL)aSelector
 {

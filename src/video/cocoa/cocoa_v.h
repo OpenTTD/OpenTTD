@@ -232,7 +232,7 @@ uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_i
 @end
 
 /** Subclass of NSView to fix Quartz rendering and mouse awareness */
-@interface OTTD_CocoaView : NSView {
+@interface OTTD_CocoaView : NSView <NSTextInput> {
 	CocoaSubdriver *driver;
 	NSTrackingRectTag trackingtag;
 }
