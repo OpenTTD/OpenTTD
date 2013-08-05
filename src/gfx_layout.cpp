@@ -554,7 +554,7 @@ Point Layouter::GetCharPosition(const char *ch) const
 			for (int i = 0; i < run->getGlyphCount(); i++) {
 				/* Matching glyph? Return position. */
 				if ((size_t)run->getGlyphToCharMap()[i] == index) {
-					Point p = { run->getPositions()[i * 2], run->getPositions()[i * 2 + 1] };
+					Point p = { (int)run->getPositions()[i * 2], (int)run->getPositions()[i * 2 + 1] };
 					return p;
 				}
 			}
