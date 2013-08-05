@@ -486,16 +486,26 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 		for (CFIndex i = 0; descs != NULL && i < CFArrayGetCount(descs); i++) {
 			CTFontDescriptorRef font = (CTFontDescriptorRef)CFArrayGetValueAtIndex(descs, i);
 
+			/* Get font traits. */
+			CFDictionaryRef traits = (CFDictionaryRef)CTFontDescriptorCopyAttribute(font, kCTFontTraitsAttribute);
+			CTFontSymbolicTraits symbolic_traits;
+			CFNumberGetValue((CFNumberRef)CFDictionaryGetValue(traits, kCTFontSymbolicTrait), kCFNumberIntType, &symbolic_traits);
+			CFRelease(traits);
+
+			/* Skip symbol fonts and vertical fonts. */
+			if ((symbolic_traits & kCTFontClassMaskTrait) == (CTFontStylisticClass)kCTFontSymbolicClass || (symbolic_traits & kCTFontVerticalTrait)) continue;
+			/* Skip bold fonts (especially Arial Bold, which looks worse than regular Arial). */
+			if (symbolic_traits & kCTFontBoldTrait) continue;
+
 			/* Get font name. */
 			char name[128];
 			CFStringRef font_name = (CFStringRef)CTFontDescriptorCopyAttribute(font, kCTFontDisplayNameAttribute);
 			CFStringGetCString(font_name, name, lengthof(name), kCFStringEncodingUTF8);
 			CFRelease(font_name);
 
-			/* Skip some inappropriate or ugly looking fonts that have better alternatives. */
-			if (strncmp(name, "Courier", 7) == 0 || strncmp(name, "Apple Symbols", 13) == 0 ||
-				strncmp(name, ".Aqua", 5) == 0 || strncmp(name, "LastResort", 10) == 0 ||
-				strncmp(name, "GB18030 Bitmap", 14) == 0) continue;
+			/* There are some special fonts starting with an '.' and the last
+			 * resort font that aren't usable. Skip them. */
+			if (name[0] == '.' || strncmp(name, "LastResort", 10) == 0) continue;
 
 			/* Save result. */
 			callback->SetFontNames(settings, name);
@@ -526,9 +536,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 			if (strstr(name, "Italic") != NULL || strstr(name, "Bold")) continue;
 
 			/* Skip some inappropriate or ugly looking fonts that have better alternatives. */
-			if (strncmp(name, "Courier", 7) == 0 || strncmp(name, "Apple Symbols", 13) == 0 ||
-				strncmp(name, ".Aqua", 5) == 0 || strncmp(name, "LastResort", 10) == 0 ||
-				strncmp(name, "GB18030 Bitmap", 14) == 0) continue;
+			if (name[0] == '.' || strncmp(name, "Apple Symbols", 13) == 0 || strncmp(name, "LastResort", 10) == 0) continue;
 
 			/* Save result. */
 			callback->SetFontNames(settings, name);
