@@ -346,6 +346,17 @@ struct IConsoleWindow : Window
 		return pt;
 	}
 
+	virtual Rect GetTextBoundingRect(const char *from, const char *to) const
+	{
+		int delta = min(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
+
+		Point p1 = GetCharPosInString(_iconsole_cmdline.buf, from, FS_NORMAL);
+		Point p2 = from != to ? GetCharPosInString(_iconsole_cmdline.buf, from, FS_NORMAL) : p1;
+
+		Rect r = {this->line_offset + delta + p1.x, this->height - this->line_height, this->line_offset + delta + p2.x, this->height};
+		return r;
+	}
+
 	virtual void OnMouseWheel(int wheel)
 	{
 		this->Scroll(-wheel);

@@ -896,7 +896,14 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 /** Get a string corresponding to the given range. */
 - (NSAttributedString *)attributedSubstringFromRange:(NSRange)theRange
 {
-	return nil;
+	if (!EditBoxInGlobalFocus()) return nil;
+
+	NSString *s = [ NSString stringWithUTF8String:_focused_window->GetFocusedText() ];
+	NSRange valid_range = NSIntersectionRange(NSMakeRange(0, [ s length ]), theRange);
+
+	if (valid_range.length == 0) return nil;
+
+	return [ [ [ NSAttributedString alloc ] initWithString:[ s substringWithRange:valid_range ] ] autorelease ];
 }
 
 /** Get the character that is rendered at the given point. */
@@ -908,7 +915,25 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 /** Get the bounding rect for the given range. */
 - (NSRect)firstRectForCharacterRange:(NSRange)aRange
 {
-	return NSMakeRect(0, 0, 0, 0);
+	if (!EditBoxInGlobalFocus()) return NSMakeRect(0, 0, 0, 0);
+
+	/* Convert range to UTF-8 string pointers. */
+	const char *start = Utf8AdvanceByUtf16Units(_focused_window->GetFocusedText(), aRange.location);
+	const char *end = aRange.length != 0 ? Utf8AdvanceByUtf16Units(_focused_window->GetFocusedText(), aRange.location + aRange.length) : start;
+
+	/* Get the bounding rect for the text range.*/
+	Rect r = _focused_window->GetTextBoundingRect(start, end);
+	NSRect view_rect = NSMakeRect(_focused_window->left + r.left, [ self frame ].size.height - _focused_window->top - r.bottom, r.right - r.left, r.bottom - r.top);
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7
+	if ([ [ self window ] respondsToSelector:@selector(convertRectToScreen:) ]) {
+		return [ [ self window ] convertRectToScreen:[ self convertRect:view_rect toView:nil ] ];
+	}
+#endif
+
+	NSRect window_rect = [ self convertRect:view_rect toView:nil ];
+	NSPoint origin = [ [ self window ] convertBaseToScreen:window_rect.origin ];
+	return NSMakeRect(origin.x, origin.y, window_rect.size.width, window_rect.size.height);
 }
 
 /** Get all string attributes that we can process for marked text. */

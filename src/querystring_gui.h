@@ -55,6 +55,7 @@ public:
 	void HandleEditBox(Window *w, int wid);
 
 	Point GetCaretPosition(const Window *w, int wid) const;
+	Rect GetBoundingRect(const Window *w, int wid, const char *from, const char *to) const;
 
 	/**
 	 * Get the current text.

@@ -377,6 +377,22 @@ QueryString *Window::GetQueryString(uint widnum)
 	return pt;
 }
 
+/**
+ * Get the bounding rectangle for a text range if an edit box has the focus.
+ * @param from Start of the string range.
+ * @param to End of the string range.
+ * @return Rectangle encompassing the string range, relative to the window.
+ */
+/* virtual */ Rect Window::GetTextBoundingRect(const char *from, const char *to) const
+{
+	if (this->nested_focus != NULL && this->nested_focus->type == WWT_EDITBOX) {
+		return this->GetQueryString(this->nested_focus->index)->GetBoundingRect(this, this->nested_focus->index, from, to);
+	}
+
+	Rect r = {0, 0, 0, 0};
+	return r;
+}
+
 
 /**
  * Set the window that has the focus

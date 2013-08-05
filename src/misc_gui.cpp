@@ -816,6 +816,44 @@ Point QueryString::GetCaretPosition(const Window *w, int wid) const
 	return pt;
 }
 
+/**
+ * Get the bounding rectangle for a range of the query string.
+ * @param w Window the edit box is in.
+ * @param wid Widget index.
+ * @param from Start of the string range.
+ * @param to End of the string range.
+ * @return Rectangle encompassing the string range, relative to the window.
+ */
+Rect QueryString::GetBoundingRect(const Window *w, int wid, const char *from, const char *to) const
+{
+	const NWidgetLeaf *wi = w->GetWidget<NWidgetLeaf>(wid);
+
+	assert((wi->type & WWT_MASK) == WWT_EDITBOX);
+
+	bool rtl = _current_text_dir == TD_RTL;
+	Dimension sprite_size = GetSpriteSize(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT);
+	int clearbtn_width = sprite_size.width + WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT;
+
+	int left   = wi->pos_x + (rtl ? clearbtn_width : 0);
+	int right  = wi->pos_x + (rtl ? wi->current_x : wi->current_x - clearbtn_width) - 1;
+
+	int top    = wi->pos_y + WD_FRAMERECT_TOP;
+	int bottom = wi->pos_y + wi->current_y - 1 - WD_FRAMERECT_BOTTOM;
+
+	/* Clamp caret position to be inside our current width. */
+	const Textbuf *tb = &this->text;
+	int delta = min(0, (right - left) - tb->pixels - 10);
+	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
+
+	/* Get location of first and last character. */
+	Point p1 = GetCharPosInString(tb->buf, from, FS_NORMAL);
+	Point p2 = from != to ? GetCharPosInString(tb->buf, to, FS_NORMAL) : p1;
+
+	Rect r = { Clamp(left + p1.x + delta + WD_FRAMERECT_LEFT, left, right), top, Clamp(left + p2.x + delta + WD_FRAMERECT_LEFT, left, right - WD_FRAMERECT_RIGHT), bottom };
+
+	return r;
+}
+
 void QueryString::ClickEditBox(Window *w, Point pt, int wid, int click_count, bool focus_changed)
 {
 	const NWidgetLeaf *wi = w->GetWidget<NWidgetLeaf>(wid);
