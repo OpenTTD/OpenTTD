@@ -351,10 +351,19 @@ struct IConsoleWindow : Window
 		int delta = min(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
 
 		Point p1 = GetCharPosInString(_iconsole_cmdline.buf, from, FS_NORMAL);
-		Point p2 = from != to ? GetCharPosInString(_iconsole_cmdline.buf, from, FS_NORMAL) : p1;
+		Point p2 = from != to ? GetCharPosInString(_iconsole_cmdline.buf, from) : p1;
 
 		Rect r = {this->line_offset + delta + p1.x, this->height - this->line_height, this->line_offset + delta + p2.x, this->height};
 		return r;
+	}
+
+	virtual const char *GetTextCharacterAtPosition(const Point &pt) const
+	{
+		int delta = min(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
+
+		if (!IsInsideMM(pt.y, this->height - this->line_height, this->height)) return NULL;
+
+		return GetCharAtPosition(_iconsole_cmdline.buf, pt.x - delta);
 	}
 
 	virtual void OnMouseWheel(int wheel)

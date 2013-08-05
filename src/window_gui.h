@@ -350,6 +350,7 @@ public:
 	virtual const char *GetMarkedText(size_t *length) const;
 	virtual Point GetCaretPosition() const;
 	virtual Rect GetTextBoundingRect(const char *from, const char *to) const;
+	virtual const char *GetTextCharacterAtPosition(const Point &pt) const;
 
 	void InitNested(WindowNumber number = 0);
 	void CreateNestedTree(bool fill_nested = true);

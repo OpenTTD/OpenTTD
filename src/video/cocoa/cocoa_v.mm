@@ -909,7 +909,16 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 /** Get the character that is rendered at the given point. */
 - (NSUInteger)characterIndexForPoint:(NSPoint)thePoint
 {
-	return NSNotFound;
+	if (!EditBoxInGlobalFocus()) return NSNotFound;
+
+	NSPoint view_pt = [ self convertPoint:[ [ self window ] convertScreenToBase:thePoint ] fromView:nil ];
+
+	Point pt = { view_pt.x, [ self frame ].size.height - view_pt.y };
+
+	const char *ch = _focused_window->GetTextCharacterAtPosition(pt);
+	if (ch == NULL) return NSNotFound;
+
+	return CountUtf16Units(_focused_window->GetFocusedText(), ch);
 }
 
 /** Get the bounding rect for the given range. */

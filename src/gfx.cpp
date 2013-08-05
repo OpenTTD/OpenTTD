@@ -722,6 +722,21 @@ Point GetCharPosInString(const char *str, const char *ch, FontSize start_fontsiz
 }
 
 /**
+ * Get the character from a string that is drawn at a specific position.
+ * @param str String to test.
+ * @param x Position relative to the start of the string.
+ * @param start_fontsize Font size to start the text with.
+ * @return Pointer to the character at the position or NULL if there is no character at the position.
+ */
+const char *GetCharAtPosition(const char *str, int x, FontSize start_fontsize)
+{
+	if (x < 0) return NULL;
+
+	Layouter layout(str, INT32_MAX, TC_FROMSTRING, start_fontsize);
+	return layout.GetCharAtPosition(x);
+}
+
+/**
  * Draw single character horizontally centered around (x,y)
  * @param c           Character (glyph) to draw
  * @param x           X position to draw character

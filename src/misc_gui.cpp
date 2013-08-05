@@ -854,6 +854,39 @@ Rect QueryString::GetBoundingRect(const Window *w, int wid, const char *from, co
 	return r;
 }
 
+/**
+ * Get the character that is rendered at a position.
+ * @param w Window the edit box is in.
+ * @param wid Widget index.
+ * @param pt Position to test.
+ * @return Pointer to the character at the position or NULL if no character is at the position.
+ */
+const char *QueryString::GetCharAtPosition(const Window *w, int wid, const Point &pt) const
+{
+	const NWidgetLeaf *wi = w->GetWidget<NWidgetLeaf>(wid);
+
+	assert((wi->type & WWT_MASK) == WWT_EDITBOX);
+
+	bool rtl = _current_text_dir == TD_RTL;
+	Dimension sprite_size = GetSpriteSize(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT);
+	int clearbtn_width = sprite_size.width + WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT;
+
+	int left   = wi->pos_x + (rtl ? clearbtn_width : 0);
+	int right  = wi->pos_x + (rtl ? wi->current_x : wi->current_x - clearbtn_width) - 1;
+
+	int top    = wi->pos_y + WD_FRAMERECT_TOP;
+	int bottom = wi->pos_y + wi->current_y - 1 - WD_FRAMERECT_BOTTOM;
+
+	if (!IsInsideMM(pt.y, top, bottom)) return NULL;
+
+	/* Clamp caret position to be inside our current width. */
+	const Textbuf *tb = &this->text;
+	int delta = min(0, (right - left) - tb->pixels - 10);
+	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
+
+	return ::GetCharAtPosition(tb->buf, pt.x - delta - left);
+}
+
 void QueryString::ClickEditBox(Window *w, Point pt, int wid, int click_count, bool focus_changed)
 {
 	const NWidgetLeaf *wi = w->GetWidget<NWidgetLeaf>(wid);

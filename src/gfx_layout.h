@@ -212,6 +212,7 @@ public:
 	Layouter(const char *str, int maxw = INT32_MAX, TextColour colour = TC_FROMSTRING, FontSize fontsize = FS_NORMAL);
 	Dimension GetBounds();
 	Point GetCharPosition(const char *ch) const;
+	const char *GetCharAtPosition(int x) const;
 
 	static void ResetFontCache(FontSize size);
 	static void ResetLineCache();

@@ -393,6 +393,19 @@ QueryString *Window::GetQueryString(uint widnum)
 	return r;
 }
 
+/**
+ * Get the character that is rendered at a position by the focused edit box.
+ * @param pt The position to test.
+ * @return Pointer to the character at the position or NULL if no character is at the position.
+ */
+/* virtual */ const char *Window::GetTextCharacterAtPosition(const Point &pt) const
+{
+	if (this->nested_focus != NULL && this->nested_focus->type == WWT_EDITBOX) {
+		return this->GetQueryString(this->nested_focus->index)->GetCharAtPosition(this, this->nested_focus->index, pt);
+	}
+
+	return NULL;
+}
 
 /**
  * Set the window that has the focus
