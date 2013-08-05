@@ -33,6 +33,8 @@
 #include "../../blitter/factory.hpp"
 #include "../../fileio_func.h"
 #include "../../gfx_func.h"
+#include "../../window_func.h"
+#include "../../window_gui.h"
 
 #import <sys/param.h> /* for MAXPATHLEN */
 
@@ -693,6 +695,43 @@ void cocoaReleaseAutoreleasePool()
 
 
 
+/**
+ * Count the number of UTF-16 code points in a range of an UTF-8 string.
+ * @param from Start of the range.
+ * @param to End of the range.
+ * @return Number of UTF-16 code points in the range.
+ */
+static NSUInteger CountUtf16Units(const char *from, const char *to)
+{
+	NSUInteger i = 0;
+
+	while (from < to) {
+		WChar c;
+		size_t len = Utf8Decode(&c, from);
+		i += len < 4 ? 1 : 2; // Watch for surrogate pairs.
+		from += len;
+	}
+
+	return i;
+}
+
+/**
+ * Advance an UTF-8 string by a number of equivalent UTF-16 code points.
+ * @param str UTF-8 string.
+ * @param count Number of UTF-16 code points to advance the string by.
+ * @return Advanced string pointer.
+ */
+static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
+{
+	for (NSUInteger i = 0; i < count && *str != '\0'; ) {
+		WChar c;
+		size_t len = Utf8Decode(&c, str);
+		i += len < 4 ? 1 : 2; // Watch for surrogates.
+		str += len;
+	}
+
+	return str;
+}
 
 @implementation OTTD_CocoaView
 /**
@@ -802,6 +841,15 @@ void cocoaReleaseAutoreleasePool()
 /** Set a new marked text and reposition the caret. */
 - (void)setMarkedText:(id)aString selectedRange:(NSRange)selRange
 {
+	NSString *s = [ aString isKindOfClass:[ NSAttributedString class ] ] ? [ aString string ] : (NSString *)aString;
+
+	const char *utf8 = [ s UTF8String ];
+	if (utf8 != NULL) {
+		/* Convert caret index into a pointer in the UTF-8 string. */
+		const char *selection = Utf8AdvanceByUtf16Units(utf8, selRange.location);
+
+		HandleTextInput(utf8, true, selection);
+	}
 }
 
 /** Unmark the current marked text. */
@@ -813,19 +861,36 @@ void cocoaReleaseAutoreleasePool()
 /** Get the caret position. */
 - (NSRange)selectedRange
 {
-	return NSMakeRange(NSNotFound, 0);
+	if (!EditBoxInGlobalFocus()) return NSMakeRange(NSNotFound, 0);
+
+	NSUInteger start = CountUtf16Units(_focused_window->GetFocusedText(), _focused_window->GetCaret());
+	return NSMakeRange(start, 0);
 }
 
 /** Get the currently marked range. */
 - (NSRange)markedRange
 {
+	if (!EditBoxInGlobalFocus()) return NSMakeRange(NSNotFound, 0);
+
+	size_t mark_len;
+	const char *mark = _focused_window->GetMarkedText(&mark_len);
+	if (mark != NULL) {
+		NSUInteger start = CountUtf16Units(_focused_window->GetFocusedText(), mark);
+		NSUInteger len = CountUtf16Units(mark, mark + mark_len);
+
+		return NSMakeRange(start, len);
+	}
+
 	return NSMakeRange(NSNotFound, 0);
 }
 
 /** Is any text marked? */
 - (BOOL)hasMarkedText
 {
-	return NO;
+	if (!EditBoxInGlobalFocus()) return NO;
+
+	size_t len;
+	return _focused_window->GetMarkedText(&len) != NULL;
 }
 
 /** Get a string corresponding to the given range. */

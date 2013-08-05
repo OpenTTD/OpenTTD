@@ -320,6 +320,24 @@ struct IConsoleWindow : Window
 		}
 	}
 
+	virtual const char *GetFocusedText() const
+	{
+		return _iconsole_cmdline.buf;
+	}
+
+	virtual const char *GetCaret() const
+	{
+		return _iconsole_cmdline.buf + _iconsole_cmdline.caretpos;
+	}
+
+	virtual const char *GetMarkedText(size_t *length) const
+	{
+		if (_iconsole_cmdline.markend == 0) return NULL;
+
+		*length = _iconsole_cmdline.markend - _iconsole_cmdline.markpos;
+		return _iconsole_cmdline.buf + _iconsole_cmdline.markpos;
+	}
+
 	virtual Point GetCaretPosition() const
 	{
 		int delta = min(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);

@@ -324,6 +324,46 @@ QueryString *Window::GetQueryString(uint widnum)
 }
 
 /**
+ * Get the current input text if an edit box has the focus.
+ * @return The currently focused input text or NULL if no input focused.
+ */
+/* virtual */ const char *Window::GetFocusedText() const
+{
+	if (this->nested_focus != NULL && this->nested_focus->type == WWT_EDITBOX) {
+		return this->GetQueryString(this->nested_focus->index)->GetText();
+	}
+
+	return NULL;
+}
+
+/**
+ * Get the string at the caret if an edit box has the focus.
+ * @return The text at the caret or NULL if no edit box is focused.
+ */
+/* virtual */ const char *Window::GetCaret() const
+{
+	if (this->nested_focus != NULL && this->nested_focus->type == WWT_EDITBOX) {
+		return this->GetQueryString(this->nested_focus->index)->GetCaret();
+	}
+
+	return NULL;
+}
+
+/**
+ * Get the range of the currently marked input text.
+ * @param[out] length Length of the marked text.
+ * @return Pointer to the start of the marked text or NULL if no text is marked.
+ */
+/* virtual */ const char *Window::GetMarkedText(size_t *length) const
+{
+	if (this->nested_focus != NULL && this->nested_focus->type == WWT_EDITBOX) {
+		return this->GetQueryString(this->nested_focus->index)->GetMarkedText(length);
+	}
+
+	return NULL;
+}
+
+/**
  * Get the current caret position if an edit box has the focus.
  * @return Top-left location of the caret, relative to the window.
  */

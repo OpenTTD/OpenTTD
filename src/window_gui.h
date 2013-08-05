@@ -345,6 +345,9 @@ public:
 	const QueryString *GetQueryString(uint widnum) const;
 	QueryString *GetQueryString(uint widnum);
 
+	virtual const char *GetFocusedText() const;
+	virtual const char *GetCaret() const;
+	virtual const char *GetMarkedText(size_t *length) const;
 	virtual Point GetCaretPosition() const;
 
 	void InitNested(WindowNumber number = 0);
