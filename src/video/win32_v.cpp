@@ -447,7 +447,7 @@ static LRESULT HandleCharMsg(uint keycode, uint charcode)
 	charcode = len == 1 ? w : 0;
 #endif /* UNICODE */
 
-	HandleKeypress(GB(charcode, 0, 16) | (keycode << 16));
+	HandleKeypress(keycode, charcode);
 
 	return 0;
 }
@@ -637,7 +637,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 			/* No character translation? */
 			if (charcode == 0) {
-				HandleKeypress(0 | (keycode << 16));
+				HandleKeypress(keycode, 0);
 				return 0;
 			}
 
@@ -669,11 +669,11 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 					return 0; // do nothing
 
 				case VK_F10: // F10, ignore activation of menu
-					HandleKeypress(MapWindowsKey(wParam) << 16);
+					HandleKeypress(MapWindowsKey(wParam), 0);
 					return 0;
 
 				default: // ALT in combination with something else
-					HandleKeypress(MapWindowsKey(wParam) << 16);
+					HandleKeypress(MapWindowsKey(wParam), 0);
 					break;
 			}
 			break;
