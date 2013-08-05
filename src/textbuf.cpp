@@ -153,13 +153,23 @@ bool Textbuf::InsertChar(WChar key)
  * @param str String to insert.
  * @param marked Replace the currently marked text with the new text.
  * @param caret Move the caret to this point in the insertion string.
+ * @param insert_location Position at which to insert the string.
+ * @param replacement_end Replace all characters from #insert_location up to this location with the new string.
  * @return True on successful change of Textbuf, or false otherwise.
  */
-bool Textbuf::InsertString(const char *str, bool marked, const char *caret)
+bool Textbuf::InsertString(const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end)
 {
 	uint16 insertpos = (marked && this->marklength != 0) ? this->markpos : this->caretpos;
+	if (insert_location != NULL) {
+		insertpos = insert_location - this->buf;
+		if (insertpos > this->bytes) return NULL;
 
-	if (marked) this->DiscardMarkedText(str == NULL);
+		if (replacement_end != NULL) {
+			this->DeleteText(insertpos, replacement_end - this->buf, str == NULL);
+		}
+	} else {
+		if (marked) this->DiscardMarkedText(str == NULL);
+	}
 
 	if (str == NULL) return false;
 
@@ -220,6 +230,42 @@ bool Textbuf::InsertClipboard()
 }
 
 /**
+ * Delete a part of the text.
+ * @param from Start of the text to delete.
+ * @param to End of the text to delete.
+ * @param update Set to true if the internal state should be updated.
+ */
+void Textbuf::DeleteText(uint16 from, uint16 to, bool update)
+{
+	uint c = 0;
+	const char *s = this->buf + from;
+	while (s < this->buf + to) {
+		Utf8Consume(&s);
+		c++;
+	}
+
+	/* Strip marked characters from buffer. */
+	memmove(this->buf + from, this->buf + to, this->bytes - to);
+	this->bytes -= to - from;
+	this->chars -= c;
+
+	/* Fixup caret if needed. */
+	if (this->caretpos > from) {
+		if (this->caretpos <= to) {
+			this->caretpos = from;
+		} else {
+			this->caretpos -= to - from;
+		}
+	}
+
+	if (update) {
+		this->UpdateStringIter();
+		this->UpdateCaretPosition();
+		this->UpdateMarkedText();
+	}
+}
+
+/**
  * Discard any marked text.
  * @param update Set to true if the internal state should be updated.
  */
@@ -227,35 +273,8 @@ void Textbuf::DiscardMarkedText(bool update)
 {
 	if (this->markend == 0) return;
 
-	/* Count marked characters. */
-	uint c = 0;
-	const char *s = this->buf + this->markpos;
-	while (s < this->buf + this->markend) {
-		Utf8Consume(&s);
-		c++;
-	}
-
-	/* Strip marked characters from buffer. */
-	memmove(this->buf + this->markpos, this->buf + this->markend, this->bytes - this->markend);
-	this->bytes -= this->markend - this->markpos;
-	this->chars -= c;
-
-	/* Fixup caret if needed. */
-	if (this->caretpos > this->markpos) {
-		if (this->caretpos <= this->markend) {
-			this->caretpos = this->markpos;
-		} else {
-			this->caretpos -= this->markend - this->markpos;
-		}
-	}
-
-	this->markpos = this->markend = 0;
-
-	if (update) {
-		this->UpdateStringIter();
-		this->UpdateCaretPosition();
-		this->UpdateMarkedText();
-	}
+	this->DeleteText(this->markpos, this->markend, update);
+	this->markpos = this->markend = this->markxoffs = this->marklength = 0;
 }
 
 /** Update the character iter after the text has changed. */
