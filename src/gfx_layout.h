@@ -125,6 +125,7 @@ public:
 		Font *font;       ///< The font used to layout these.
 		GlyphID *glyphs;  ///< The glyphs we're drawing.
 		float *positions; ///< The positions of the glyphs.
+		int *glyph_to_char; ///< The char index of the glyphs.
 		int glyph_count;  ///< The number of glyphs.
 
 	public:
@@ -135,6 +136,7 @@ public:
 		const GlyphID *getGlyphs() const;
 		float *getPositions() const;
 		int getLeading() const;
+		const int *getGlyphToCharMap() const;
 	};
 
 	/** A single line worth of VisualRuns. */
