@@ -1521,7 +1521,7 @@ STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Kuva teateid s�
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Uued sõidukid: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Uue sõiduki lisandumisel näidatakse seda ajalehes
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Veoste vastuvõtutingimuste muutumine: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Kuva teateid jaamades kaupade vastuvõtu muutuste korral
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Teate näitamine, kui jaamas vastuvõetavad kaubad muutuvad
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Toetused: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Toetustega seotud sündmuste korral näidatakse seda ajalehes
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Üldine teave: {STRING}
@@ -1544,7 +1544,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Kui lohistataks
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Määra vahemaa mille tagant paigutatakse rööbastele foorid kuni järgmise takistuseni (foor, ristmik), kui foore lohistatkse
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} ruut{P 0 "" u}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Lohistades hoia kindlat vahemaad fooride vahel: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Vali fooride paigutamise loogika kui kasutatakse Ctrl+lohistamist. Kui on välja lülitataud, siis paigutatakse foorid tunnelite ja sildade otstesse, et vältida pikki, ilma foorideta vahemaid. Kui on sisse lülitatud, siis paigutatakse foorid iga N ruudu taha, et hoida ühtlast sammu paraleelsetel rööbastel
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :«Ctrl»+lohistamise abil signaalide paigutamise viis. Välja lülitades ümbritsetakse tunnelid ja sillad fooridega, et vähendada signaliseerimata lõike. Sisse lülitades paigutatakse signaalid ühtlaselt iga n ruudu järele, et paralleelrööbastel signaalid ühtlaselt jaotada
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Semafore ehitatakse enne: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Määra aasta alates millest hakatakse kasutama elektriga foore. Ennem seda aastat kasutatakse semafoore (mis täidavad sama eesmärki, aga näevad teist moodi välja)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Signaalide paigutamise graafiline kasutajaliides: {STRING}
@@ -3099,7 +3099,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Veoseid 
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Ootel: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} teel jaamast {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} jaamast «{STATION}»)
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} kinni laadimiseks)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Võtab vastu

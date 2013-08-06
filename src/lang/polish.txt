@@ -3779,7 +3779,7 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Wiadomo�
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Właśnie zaprojektowaliśmy now{G y ą e} {STRING.b} - czy jesteś zainteresowany w rocznej wyłączności na użycie tego pojazdu, żebyśmy mogli zobaczyć przed wypuszczeniem na rynek jak się sprawuje?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}lokomotywa
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.b                        :{G=f}lokomotywę
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}samochód
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}pojazd
 STR_ENGINE_PREVIEW_ROAD_VEHICLE.b                               :{G=m}samochód
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}samolot
 STR_ENGINE_PREVIEW_AIRCRAFT.b                                   :{G=m}samolot

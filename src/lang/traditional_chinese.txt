@@ -4316,6 +4316,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}不能�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 運具已摧毀
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}沒有可用的運輸工具
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}請修改您的 NewGRF 設定
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}暫時沒有可用的運輸工具
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}在{DATE_SHORT}後開始新遊戲，或使用一款提供早期運輸工具的NewGRF
 

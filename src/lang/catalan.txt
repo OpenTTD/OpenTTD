@@ -1488,7 +1488,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :En arrossegar, 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Estableix la distància en les quals els senyals seran construïts a la via fins al següent obstacle (senyal, desviament), si els senyals són arrossegats
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} cel·la{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Quan arrosseguis, mantingues fixada la distància entre senyals: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecciona el comportament de la situació de senyals quan Ctrl+arrossega senyals. Si es desactiva els senyals són situats al voltant dels túnels o ponts per evitar grans troços sense senyals. Si s'activa, els senyals són situats cada n cel·les, fent l'aliniament de senyals en vies paral·leles més fàcil
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecciona el comportament de la situació de senyals quan Ctrl+arrossega senyals. Si es desactiva, els senyals són situats al voltant dels túnels o ponts per evitar grans trossos sense senyals. Si s'activa, els senyals són situats cada n cel·les, fent l'alineament de senyals en vies paral·leles més fàcil
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construir semàfors mecànics automàticament abans de: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Estableix l'any per utilitzar semàfors elèctrics. Abans d'aquest any s'utilitzaran senyals mecànics (que tenen exactament la mateixa funció, però amb diferent aspecte)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activa la interfície de senyals: {STRING}
@@ -1682,7 +1682,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... igno
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorant el conjunt de sons base '{STRING}': no trobats
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorant el conjunt de músiques base '{STRING}': no trobats
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Memòria exhaurida
-STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}L'assignació de {BYTES} de la memòria cau d'sprites ha fallat. La memòria cau d'sprites s'ha reduït a {BYTES}. Això reduirà el rendiment d'OpenTTD. Per reduir els requeriments de memòia pots probar a desactivar els gràfics de 32bpp i/o els nivells amb zoom
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}L'assignació de {BYTES} de la memòria cau d'sprites ha fallat. La memòria cau d'sprites s'ha reduït a {BYTES}. Això reduirà el rendiment d'OpenTTD. Per reduir els requeriments de memòria pots probar a desactivar els gràfics de 32bpp i/o els nivells amb zoom
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1722,7 +1722,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprova
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostra els paràmetres de la IA/Script del joc
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Surt d'OpenTTD
 
-STR_INTRO_TRANSLATION                                           :{BLACK}A aquesta traducció li falta {NUM} string{P "" s}. Si us plau ajuda a fer millor OpenTTD unint-te com a traductor. Veure readme.txt per més detalls.
+STR_INTRO_TRANSLATION                                           :{BLACK}A aquesta traducció li falten {NUM} caden{P a es}. Si us plau ajuda a fer millor OpenTTD unint-te com a traductor. Veure readme.txt per més detalls.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Surt
@@ -3196,9 +3196,9 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Busquem 
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastructura de {COMPANY}
-STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Troços de via:
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Trossos de via:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Senyals
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Troços de carretera:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Trossos de carretera:
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Carretera
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tramvia
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Cel·les d'aigua:
@@ -4320,7 +4320,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vehi
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}No hi haurà cap vehicle disponible
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Canvia la teva configuració dels NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Encara no hi ha vehicles disponibles
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Iniciar un nou joc desprès de {DATE_SHORT} o usar un NewGRF que proporciona vehicles primerencs
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Iniciar un nou joc després de {DATE_SHORT} o usar un NewGRF que proporciona vehicles primerencs
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}No pots fer que un tren passi d'una senyal amb perill...
