@@ -367,6 +367,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -429,6 +430,7 @@ STR_SORT_BY_LENGTH                                              :Dolžina
 STR_SORT_BY_LIFE_TIME                                           :Preostala življenjska doba
 STR_SORT_BY_TIMETABLE_DELAY                                     :Zamuda urnika
 STR_SORT_BY_FACILITY                                            :Vrsta postaje
+STR_SORT_BY_WAITING_AVAILABLE                                   :Tovor na razpolago
 STR_SORT_BY_RATING_MAX                                          :Najvišja ocena tovora
 STR_SORT_BY_RATING_MIN                                          :Najnižja ocena tovora
 STR_SORT_BY_ENGINE_ID                                           :ID motorja (klasično urejanje)
@@ -1643,6 +1645,8 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Odstrani slepe 
 
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperične (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrične (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Vmesnik
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Gradnja
@@ -2510,6 +2514,8 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Prikaži
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Prikaži oskrbo s tovorom in pripadajoče industrije
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Poveži z zemljevidom
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Izberi prikazane industrije tudi na zemljevidu
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Izberi tovor
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Izberi industrijo
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informacije o zemljišču
@@ -2955,6 +2961,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kupi en
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Podkupi lokalno oblast za izboljšavo svojih ocen kljub tveganju resnih kazni ob odkritju.{}Cena: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Cilji
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globalni cilji
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globalni cilji:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Brez -
@@ -3014,6 +3022,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Čaka: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} na poti iz {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervirano za nalaganje
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Sprejema
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Prikaži seznam sprejetega tovora
@@ -3025,6 +3034,9 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ocene
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Prikaz ocen postaje
 
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} na poti iz {STATION}
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} na poti iz neznane postaje
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} brez postanka
 
 
 ############ range for rating starts
@@ -3531,6 +3543,9 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Obdobje 
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Podaljšaj čas med servisi za 10. Ctrl+Klik podaljša za 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Skrajšaj čas med servisi za 10. Ctrl+Klik skrajša za 5
 
+STR_VEHICLE_DETAILS_DEFAULT                                     :Privzeto
+STR_VEHICLE_DETAILS_DAYS                                        :Dni
+STR_VEHICLE_DETAILS_PERCENT                                     :Odstotek
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Poimenuj vlak
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Poimenuj cestno vozilo
@@ -3902,6 +3917,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Prihodki: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Prenos: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Prenos: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Pretovori: {CURRENCY_LONG}{WHITE} / {GREEN}Prihodek: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Pretovori: {CURRENCY_LONG}{WHITE} / {GREEN}Prihodek: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Pretovori: {CURRENCY_LONG}{WHITE} / {RED}Cena: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Pretovori: {CURRENCY_LONG}{WHITE} / {RED}Cena: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Ocenjeni stroški: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Predvideni prihodki: {CURRENCY_LONG}
 
@@ -4253,6 +4272,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ni mogo�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozilo je uničeno
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Zamenjaj svojo NewGRF konfiguracijo
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ni mogoče, da vlak v nevarnosti pelje mimo signalov...
@@ -4799,6 +4819,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
