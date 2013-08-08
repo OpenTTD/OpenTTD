@@ -1079,7 +1079,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Asetukset, joid
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Asetukset, joiden arvo poikkeaa uusille peleille määritellystä arvosta
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Rajaa alla olevaa listaa näyttämään vain tietyt asetustyypit
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Kaikki asetukset
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Kaikki asetustyypit
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Paikalliset asetukset (ei tallenneta pelitallenteisiin; vaikuttavat kaikkiin peleihin)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Pelin asetukset (tallennetaan pelitallenteisiin; vaikuttavat vain uusiin peleihin)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Pelin asetukset (tallennetaan pelitallenteeseen; vaikuttavat vain nykyiseen peliin)

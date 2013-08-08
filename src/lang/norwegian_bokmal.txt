@@ -1081,7 +1081,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Innstillinger m
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Innstillinger med annen verdi enn innstillingene dine for nye spill
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Begrenser listen nedenfor til bestemte innstillingstyper
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alle instillinger
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Alle instillingstyper
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Klientinnstillinger (global innstilling; påvirker alle spill)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spillinnstillinger (lagres i lagringsfil; påvirker bare nye spill)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spillinnstillinger (lagres i lagringsfilen; påvirker bare gjeldende spill)
@@ -4318,6 +4318,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikke
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}...{NBSP}kjøretøy er ødelagt
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ingen kjøretøyer vil være tilgjengelig i det hele tatt
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Endre din NewGRF konfigurasjon
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Ingen kjøretøyer er tilgjengelig enda
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Starte et nytt spill etter {DATE_SHORT}, eller bruke en NewGRF som inneholder tidlige kjøretøy
 

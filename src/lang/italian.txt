@@ -1081,7 +1081,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Impostazioni co
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Impostazioni con un valore diverso di quello impostato a inizio partita
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Limita la lista sottostante alle impostazioni di un tipo specifico
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tutte le impostazioni
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tutti i tipi di impostazioni
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Impostazioni del client (non conservate nei salvataggi; influenzano tutte le partite)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Impostazioni di gioco (conservate nei salvataggi; influenzano solo le nuove partite)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Impostazioni di gioco (conservate nel salvataggio; influenzano solo la partita corrente)
