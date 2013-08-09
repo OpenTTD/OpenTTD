@@ -125,11 +125,11 @@ public:
 	static int32 GetNumHangars(TileIndex tile);
 
 	/**
-	 * Get the first hanger tile of the airport.
+	 * Get the first hangar tile of the airport.
 	 * @param tile Any tile of the airport.
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @pre GetNumHangars(tile) > 0.
-	 * @return The first hanger tile of the airport.
+	 * @return The first hangar tile of the airport.
 	 * @note Possible there are more hangars, but you won't be able to find them
 	 *  without walking over all the tiles of the airport and using
 	 *  IsHangarTile() on them.

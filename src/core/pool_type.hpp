@@ -100,7 +100,7 @@ struct Pool : PoolBase {
 	virtual void CleanPool();
 
 	/**
-	 * Returs Titem with given index
+	 * Returns Titem with given index
 	 * @param index of item to get
 	 * @return pointer to Titem
 	 * @pre index < this->first_unused
@@ -234,7 +234,7 @@ struct Pool : PoolBase {
 		}
 
 		/**
-		 * Returs Titem with given index
+		 * Returns Titem with given index
 		 * @param index of item to get
 		 * @return pointer to Titem
 		 * @pre index < this->first_unused
@@ -245,7 +245,7 @@ struct Pool : PoolBase {
 		}
 
 		/**
-		 * Returs Titem with given index
+		 * Returns Titem with given index
 		 * @param index of item to get
 		 * @return pointer to Titem
 		 * @note returns NULL for invalid index

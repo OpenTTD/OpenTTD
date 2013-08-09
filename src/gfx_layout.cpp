@@ -190,7 +190,7 @@ Font *ParagraphLayout::VisualRun::getFont() const
 }
 
 /**
- * Get the number of glyhps in this run.
+ * Get the number of glyphs in this run.
  * @return The number of glyphs.
  */
 int ParagraphLayout::VisualRun::getGlyphCount() const
@@ -199,7 +199,7 @@ int ParagraphLayout::VisualRun::getGlyphCount() const
 }
 
 /**
- * Get the glyhps of this run.
+ * Get the glyphs of this run.
  * @return The glyphs.
  */
 const GlyphID *ParagraphLayout::VisualRun::getGlyphs() const

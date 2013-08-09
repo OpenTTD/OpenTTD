@@ -177,22 +177,22 @@ static byte MapAircraftMovementState(const Aircraft *v)
 	switch (v->state) {
 		case HANGAR:
 			/* The international airport is a special case as helicopters can land in
-			 * front of the hanger. Helicopters also change their air.state to
+			 * front of the hangar. Helicopters also change their air.state to
 			 * AMED_HELI_LOWER some time before actually descending. */
 
 			/* This condition only occurs for helicopters, during descent,
-			 * to a landing by the hanger of an international airport. */
+			 * to a landing by the hangar of an international airport. */
 			if (amdflag & AMED_HELI_LOWER) return AMS_TTDP_HELI_LAND_AIRPORT;
 
 			/* This condition only occurs for helicopters, before starting descent,
-			 * to a landing by the hanger of an international airport. */
+			 * to a landing by the hangar of an international airport. */
 			if (amdflag & AMED_SLOWTURN) return AMS_TTDP_FLIGHT_TO_TOWER;
 
 			/* The final two conditions apply to helicopters or aircraft.
-			 * Has reached hanger? */
+			 * Has reached hangar? */
 			if (amdflag & AMED_EXACTPOS) return AMS_TTDP_HANGAR;
 
-			/* Still moving towards hanger. */
+			/* Still moving towards hangar. */
 			return AMS_TTDP_TO_HANGAR;
 
 		case TERM1:
@@ -320,7 +320,7 @@ static byte MapAircraftMovementAction(const Aircraft *v)
 		case STARTTAKEOFF: // Accelerating down runway
 		case ENDTAKEOFF:   // Ascent
 		case HELITAKEOFF:
-			/* @todo Need to find which terminal (or hanger) we've come from. How? */
+			/* @todo Need to find which terminal (or hangar) we've come from. How? */
 			return AMA_TTDP_PAD1_TO_TAKEOFF;
 
 		case FLYING:

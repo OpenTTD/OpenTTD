@@ -5771,7 +5771,7 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 		case 0x88: // GRF ID check
 			return 0;
 
-		/* case 0x99: Global ID offest not implemented */
+		/* case 0x99: Global ID offset not implemented */
 
 		default:
 			/* GRF Parameter */

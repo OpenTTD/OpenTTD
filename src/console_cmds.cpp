@@ -965,7 +965,7 @@ DEF_CONSOLE_CMD(ConExec)
 	}
 
 	if (ferror(script_file)) {
-		IConsoleError("Encountered errror while trying to read from script file");
+		IConsoleError("Encountered error while trying to read from script file");
 	}
 
 	_script_running = false;

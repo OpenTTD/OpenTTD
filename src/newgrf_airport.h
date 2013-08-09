@@ -91,7 +91,7 @@ enum TTDPAirportType {
 struct HangarTileTable {
 	TileIndexDiffC ti; ///< Tile offset from the top-most airport tile.
 	Direction dir;     ///< Direction of the exit.
-	byte hangar_num;   ///< The hanger to which this tile belongs.
+	byte hangar_num;   ///< The hangar to which this tile belongs.
 };
 
 /**
