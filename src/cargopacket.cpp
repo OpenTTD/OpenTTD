@@ -732,24 +732,28 @@ uint StationCargoList::Truncate(uint max_move, StationCargoAmountMap *cargo_per_
 
 /**
  * Reserves cargo for loading onto the vehicle.
- * @param dest VehicleCargoList to reserve for.
  * @param max_move Maximum amount of cargo to reserve.
+ * @param dest VehicleCargoList to reserve for.
  * @param load_place Tile index of the current station.
+ * @param next_station Next station the loading vehicle will visit.
  * @return Amount of cargo actually reserved.
  */
-uint StationCargoList::Reserve(uint max_move, VehicleCargoList *dest, TileIndex load_place, StationID next)
+uint StationCargoList::Reserve(uint max_move, VehicleCargoList *dest, TileIndex load_place, StationID next_station)
 {
-	max_move = min(this->count, max_move);
-	this->ShiftCargo(CargoReservation(this, dest, max_move, load_place), next, true);
-	return max_move;
+	return this->ShiftCargo(CargoReservation(this, dest, max_move, load_place), next_station, true);
 }
 
 /**
  * Loads cargo onto a vehicle. If the vehicle has reserved cargo load that.
  * Otherwise load cargo from the station.
- * @param dest Vehicle cargo list where the cargo resides.
  * @param max_move Amount of cargo to load.
+ * @param dest Vehicle cargo list where the cargo resides.
+ * @param load_place The new loaded_at_xy to be assigned to packets being moved.
+ * @param next_station Next station the loading vehicle will visit.
  * @return Amount of cargo actually loaded.
+ * @note Vehicles may or may not reserve, depending on their orders. The two
+ *       modes of loading are exclusive, though. If cargo is reserved we don't
+ *       need to load unreserved cargo.
  */
 uint StationCargoList::Load(uint max_move, VehicleCargoList *dest, TileIndex load_place, StationID next_station)
 {
@@ -759,8 +763,7 @@ uint StationCargoList::Load(uint max_move, VehicleCargoList *dest, TileIndex loa
 		dest->Reassign(move, VehicleCargoList::MTA_LOAD, VehicleCargoList::MTA_KEEP);
 		return move;
 	} else {
-		move = min(this->count, max_move);
-		return this->ShiftCargo(CargoLoad(this, dest, move, load_place), next_station, true);
+		return this->ShiftCargo(CargoLoad(this, dest, max_move, load_place), next_station, true);
 	}
 }
 
