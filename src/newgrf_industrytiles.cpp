@@ -212,15 +212,13 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 	IndustryTileResolverObject object(gfx, ti->tile, i);
 
 	const SpriteGroup *group = SpriteGroup::Resolve(inds->grf_prop.spritegroup[0], &object);
-	if (group == NULL || group->type != SGT_TILELAYOUT) {
-		return false;
-	} else {
-		/* Limit the building stage to the number of stages supplied. */
-		const TileLayoutSpriteGroup *tlgroup = (const TileLayoutSpriteGroup *)group;
-		byte stage = GetIndustryConstructionStage(ti->tile);
-		IndustryDrawTileLayout(ti, tlgroup, i->random_colour, stage, gfx);
-		return true;
-	}
+	if (group == NULL || group->type != SGT_TILELAYOUT) return false;
+
+	/* Limit the building stage to the number of stages supplied. */
+	const TileLayoutSpriteGroup *tlgroup = (const TileLayoutSpriteGroup *)group;
+	byte stage = GetIndustryConstructionStage(ti->tile);
+	IndustryDrawTileLayout(ti, tlgroup, i->random_colour, stage, gfx);
+	return true;
 }
 
 extern bool IsSlopeRefused(Slope current, Slope refused);
