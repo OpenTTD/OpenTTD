@@ -437,9 +437,9 @@ static int DrawLayoutLine(ParagraphLayout::Line *line, int y, int left, int righ
 			/* Not a valid glyph (empty) */
 			if (glyph == 0xFFFF) continue;
 
-			int begin_x = run->getPositions()[i * 2]     + left - offset_x;
-			int end_x   = run->getPositions()[i * 2 + 2] + left - offset_x  - 1;
-			int top     = run->getPositions()[i * 2 + 1] + y;
+			int begin_x = (int)run->getPositions()[i * 2]     + left - offset_x;
+			int end_x   = (int)run->getPositions()[i * 2 + 2] + left - offset_x  - 1;
+			int top     = (int)run->getPositions()[i * 2 + 1] + y;
 
 			/* Truncated away. */
 			if (truncation && (begin_x < min_x || end_x > max_x)) continue;

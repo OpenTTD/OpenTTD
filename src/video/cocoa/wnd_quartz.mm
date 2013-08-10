@@ -151,7 +151,7 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 	/* Calculate total area we are blitting */
 	uint32 blitArea = 0;
 	for (int n = 0; n < dirtyRectCount; n++) {
-		blitArea += dirtyRects[n].size.width * dirtyRects[n].size.height;
+		blitArea += (uint32)(dirtyRects[n].size.width * dirtyRects[n].size.height);
 	}
 
 	/*
@@ -335,10 +335,10 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height, int bpp)
 		[ this->window setContentSize:contentRect.size ];
 
 		/* Ensure frame height - title bar height >= view height */
-		contentRect.size.height = Clamp(height, 0, [ this->window frame ].size.height - 22 /* 22 is the height of title bar of window*/);
+		contentRect.size.height = Clamp(height, 0, (int)[ this->window frame ].size.height - 22 /* 22 is the height of title bar of window*/);
 
 		if (this->cocoaview != nil) {
-			height = contentRect.size.height;
+			height = (int)contentRect.size.height;
 			[ this->cocoaview setFrameSize:contentRect.size ];
 		}
 	}
@@ -569,8 +569,8 @@ bool WindowQuartzSubdriver::WindowResized()
 
 	NSRect newframe = [ this->cocoaview frame ];
 
-	this->window_width = newframe.size.width;
-	this->window_height = newframe.size.height;
+	this->window_width = (int)newframe.size.width;
+	this->window_height = (int)newframe.size.height;
 
 	/* Create Core Graphics Context */
 	free(this->window_buffer);

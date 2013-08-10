@@ -262,7 +262,7 @@ int ParagraphLayout::Line::getWidth() const
 	 * the last run gives us the end of the line and thus the width.
 	 */
 	const VisualRun *run = this->getVisualRun(this->countRuns() - 1);
-	return run->getPositions()[run->getGlyphCount() * 2];
+	return (int)run->getPositions()[run->getGlyphCount() * 2];
 }
 
 /**
@@ -593,8 +593,8 @@ const char *Layouter::GetCharAtPosition(int x) const
 			/* Not a valid glyph (empty). */
 			if (run->getGlyphs()[i] == 0xFFFF) continue;
 
-			int begin_x = run->getPositions()[i * 2];
-			int end_x   = run->getPositions()[i * 2 + 2];
+			int begin_x = (int)run->getPositions()[i * 2];
+			int end_x   = (int)run->getPositions()[i * 2 + 2];
 
 			if (IsInsideMM(x, begin_x, end_x)) {
 				/* Found our glyph, now convert to UTF-8 string index. */

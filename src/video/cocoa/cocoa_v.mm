@@ -961,7 +961,7 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 
 	NSPoint view_pt = [ self convertPoint:[ [ self window ] convertScreenToBase:thePoint ] fromView:nil ];
 
-	Point pt = { view_pt.x, [ self frame ].size.height - view_pt.y };
+	Point pt = { (int)view_pt.x, (int)[ self frame ].size.height - (int)view_pt.y };
 
 	const char *ch = _focused_window->GetTextCharacterAtPosition(pt);
 	if (ch == NULL) return NSNotFound;
