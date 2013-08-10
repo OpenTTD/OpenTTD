@@ -523,7 +523,7 @@ NSPoint WindowQuartzSubdriver::GetMouseLocation(NSEvent *event)
 {
 	NSPoint pt;
 
-	if (event.window == nil) {
+	if ( [ event window ] == nil) {
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_7
 		if ([ this->cocoaview respondsToSelector:@selector(convertRectFromScreen:) ]) {
 			pt = [ this->cocoaview convertPoint:[ [ this->cocoaview window ] convertRectFromScreen:NSMakeRect([ event locationInWindow ].x, [ event locationInWindow ].y, 0, 0) ].origin fromView:nil ];
