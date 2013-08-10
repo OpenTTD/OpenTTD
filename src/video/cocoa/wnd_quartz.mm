@@ -34,6 +34,13 @@
 #include "../../core/math_func.hpp"
 #include "../../gfx_func.h"
 
+/* On some old versions of MAC OS this may not be defined.
+ * Those versions generally only produce code for PPC. So it should be safe to
+ * set this to 0. */
+#ifndef kCGBitmapByteOrder32Host
+#define kCGBitmapByteOrder32Host 0
+#endif
+
 /**
  * Important notice regarding all modifications!!!!!!!
  * There are certain limitations because the file is objective C++.
