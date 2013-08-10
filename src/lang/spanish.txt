@@ -1080,7 +1080,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Opciones con un
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Opciones con un valor diferente a las opciones de partida nueva
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restringe la lista a ciertos tipos de opciones
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Todas las opciones
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Todos los tipos de opciones
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Opciones de cliente (no se almacena en partidas guardadas, afecta a todas las partidas)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Opciones de juego (se almacena en las partidas guardadas, afecta solamente a partidas nuevas)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Opciones de juego (se almacena en las partidas guardadas, afecta solamente a la partida actual)
@@ -4317,6 +4317,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Imposibl
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... el vehículo está destruido
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Ningún vehículo estará disponible
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Es necesario modificar la configuración NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}En esta fecha no hay vehículos disponibles
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Comienza una nueva partida después de {DATE_SHORT} o usa un NewGRF que provea vehículos más antiguos
 

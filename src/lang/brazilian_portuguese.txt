@@ -1080,7 +1080,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Configs. com va
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Configs. com um valor diferente das configs. para novos jogos
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Restringe a lista abaixo a determinados tipos
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Todas as configs.
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Todos os tipos de configs.
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Config. do cliente (não é guardado no savegame; afeta todos os jogos)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Config. do jogo (guardado no savegame; afeta apenas novos jogos)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Config. do jogo (guardado no savegame; afeta apenas o jogo atual)
@@ -4317,6 +4317,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Impossí
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... veículo está destruído
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Não haverá nenhum veículo disponível
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Altere sua configuração de NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Não há veículos disponíveis ainda
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :[WHITE]Inicie um jogo após {DATE_SHORT} ou use um NewGRF que tenha veículos anteriores
 
