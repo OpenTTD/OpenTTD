@@ -313,7 +313,7 @@ class FullscreenSubdriver: public CocoaSubdriver {
 		 * disable until a replacement can be found. */
 		if (MacOSVersionIsAtLeast(10, 7, 0)) {
 			this->window_buffer = NULL;
-			this->window_pitch  = NULL;
+			this->window_pitch  = 0;
 		} else {
 #if (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_7)
 			this->window_buffer = CGDisplayBaseAddress(this->display_id);
