@@ -58,7 +58,7 @@ static bool _cocoa_video_dialog = false;
 
 CocoaSubdriver *_cocoa_subdriver = NULL;
 
-static const NSString *OTTDMainLaunchGameEngine = @"ottdmain_launch_game_engine";
+static NSString *OTTDMainLaunchGameEngine = @"ottdmain_launch_game_engine";
 
 
 /**
