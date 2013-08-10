@@ -162,7 +162,7 @@ bool Textbuf::InsertString(const char *str, bool marked, const char *caret, cons
 	uint16 insertpos = (marked && this->marklength != 0) ? this->markpos : this->caretpos;
 	if (insert_location != NULL) {
 		insertpos = insert_location - this->buf;
-		if (insertpos > this->bytes) return NULL;
+		if (insertpos > this->bytes) return false;
 
 		if (replacement_end != NULL) {
 			this->DeleteText(insertpos, replacement_end - this->buf, str == NULL);
