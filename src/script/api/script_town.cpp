@@ -120,8 +120,8 @@
 
 /* static */ uint32 ScriptTown::GetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id)
 {
-	if (!IsValidTown(town_id)) return -1;
-	if (!ScriptCargo::IsValidTownEffect(towneffect_id)) return -1;
+	if (!IsValidTown(town_id)) return UINT32_MAX;
+	if (!ScriptCargo::IsValidTownEffect(towneffect_id)) return UINT32_MAX;
 
 	const Town *t = ::Town::Get(town_id);
 
