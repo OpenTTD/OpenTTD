@@ -2161,7 +2161,8 @@ void Vehicle::RefreshNextHopsStats()
 		 * deadlocks due to vehicles waiting for cargo that isn't being routed,
 		 * yet. That situation will not occur if the vehicle is actually
 		 * carrying a different cargo in the end. */
-		if (next->IsRefit() && !next->IsAutoRefit()) {
+		if ((next->IsType(OT_GOTO_DEPOT) || next->IsType(OT_GOTO_STATION)) &&
+				next->IsRefit() && !next->IsAutoRefit()) {
 			was_refit = true;
 			CargoID new_cid = next->GetRefitCargo();
 			RefitList::iterator refit_it = refit_capacities.begin();
