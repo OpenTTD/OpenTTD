@@ -230,8 +230,8 @@ STR_LIST_FILTER_OSKTITLE                                        :{BLACK}검색�
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}검색할 키워드를 입력하세요
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}그룹화 순서를 선택하세요.
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}정렬 방법을 선택하십시오 (내림차순/오름차순)
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}정렬 기준 선택
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}정렬 방법을 선택하십시오. (내림차순/오름차순)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}정렬 기준을 선택하십시오.
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}검색 기준 선택
 STR_BUTTON_SORT_BY                                              :{BLACK}정렬
 STR_BUTTON_LOCATION                                             :{BLACK}위치
@@ -946,7 +946,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :6개월마다
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12개월마다
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}언어
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}사용하실 언어를 선택하세요
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}사용하실 언어를 선택하세요.
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}전체화면
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}OpenTTD를 전체화면으로 플레이하려면 클릭하세요.
@@ -1601,7 +1601,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :차량의 힘 �
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :출력할 차량의 힘 단위를 선택합니다.
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :임페리얼법 (마력)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :미터법 (마력)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :국제표준규격 (킬로와트)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :국제표준규격 (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :무게 단위: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :출력할 무게 단위를 선택합니다.
@@ -2069,7 +2069,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[팀] {STRING}�
 STR_NETWORK_CHAT_CLIENT                                         :[귓속말] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[귓속말] {STRING}에게: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[모두] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}네트워크 채팅을 위한 텍스트를 입력하세요
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}채팅 메시지를 입력하세요.
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}네트워크 장치를 찾을수 없거나 게임 자체가 네트워크를 사용할 수 없는 버전으로 컴파일되었습니다.
@@ -2285,7 +2285,7 @@ STR_RAIL_NAME_MAGLEV                                            :자기부상열
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}차량기지 방향 선택
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}차량기지의 방향을 선택하세요
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}차량기지의 방향을 선택하세요.
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{G=f}{WHITE}경유지
@@ -3035,9 +3035,9 @@ STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- 없음 -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}모든 시설 선택
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}모든 종류의 화물이 있는 역을 목록에 포함시킵니다. (화물이 없는 역도 포함)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}화물이 하나도 없는 역을 목록에 포함시킵니다.
+STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}모든 시설을 선택합니다.
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}화물을 하나라도 취급하는 모든 역을 목록에 표시합니다. (화물이 없는 역도 포함)
+STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}화물을 취급하지 않는 역을 목록에 표시합니다.
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3248,8 +3248,8 @@ STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING}
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}열차 - 열차 정보를 보려면 클릭
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}자동차 - 자세히 보려면 클릭
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}항공기 - 항공기 정보를 보려면 클릭하세요
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요.
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}항공기 - 항공기 정보를 보려면 클릭하세요.
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}올해 수입: {CURRENCY_LONG} (작년: {CURRENCY_LONG})
 
@@ -3323,7 +3323,7 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}가격: 
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}수용량: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}전원 화물차: {GOLD}+{POWER}{BLACK} 중량: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}개조가능 화물: {GOLD}{STRING}
-STR_PURCHASE_INFO_ALL_TYPES                                     :모든 종류의 화물
+STR_PURCHASE_INFO_ALL_TYPES                                     :모든 화물
 STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST} 이외의 모든 화물
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 견인력: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}항속거리: {GOLD}{COMMA} 칸
@@ -3369,15 +3369,15 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} 차량{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차 - 열차 정보를 보려면 클릭, 차량을 드래그해서 추가하거나 삭제하세요
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}차량 - 차량 정보를 보려면 클릭
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}항공기 - 항공기 정보를 보려면 클릭하세요
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차 - 열차에 차량을 추가하거나 제거하려면 차량을 왼쪽 클릭으로 드래그하시고, 열차 정보를 보려면 오른쪽 클릭하십시오. 두 기능을 해당 차량 뒤에 딸려오는 차량에 적용하고 싶다면 Ctrl키를 누르고 계십시오.
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}자동차 - 자동차의 정보를 보려면 오른쪽 클릭하세요.
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}선박 - 선박의 정보를 보려면 오른쪽 클릭하세요.
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}항공기 - 항공기의 정보를 보려면 오른쪽 클릭하세요.
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}기관차/객차/화물차 한량만 제거하려면 여기로 드래그하세요
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}자동차를 팔려면 여기로 드래그하세요
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}선박을 팔려면 여기로 드래그하세요
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}항공기를 팔려면 여기로 드래그하세요
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}자동차를 팔려면 여기로 드래그하세요.
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}선박을 팔려면 여기로 드래그하세요.
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}항공기를 팔려면 여기로 드래그하세요.
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}열차 전체를 팔려면 기관차를 여기로 드래그하세요
 
@@ -3628,7 +3628,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}변경 �
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}변경 수송량: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}개조시 회수되는 비용: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}개조할 차량을 선택하십시오. 마우스로 드래그하면 여러 개의 차량을 선택 가능합니다. 빈 곳을 클릭하면 전체를 선택합니다. CTRL+클릭하시면 전체 차량을 선택 가능합니다.
 
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차가 수송할 화물의 종류를 선택하세요
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차가 수송할 화물의 종류를 선택하세요.
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}자동차가 수송할 화물의 종류를 선택하십시오.
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}선박이 운반할 화물의 종류를 선택하십시오
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}이 항공기가 수송할 화물의 종류를 선택하십시오
@@ -3712,7 +3712,7 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :있을 때
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :없을 때
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}비교조건에 대한 입력값입니다.
-STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}비교할 값을 입력하세요
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}비교할 값을 입력하세요.
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}건너뛰기
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}현재 경로를 건너뜁니다, 그리고 다음 경로를 시작합니다. Ctrl+클릭하면 선택한 경로로 건너뜁니다.
@@ -4317,6 +4317,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}점검 �
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 차량이 파괴되었습니다.
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}사용할 수 있는 차량이 모두 없어질 것입니다
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}NewGRF 설정을 변경하십시오
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}사용할 수 있는 차량이 하나도 없습니다
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}{DATE_SHORT}년 이후에 새로운 게임을 시작하거나 차량이 더 빨리 개발되는 NewGRF을 사용하십시오.
 

@@ -394,21 +394,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}AG
 STR_UNITS_POWER_METRIC                                          :{COMMA}AG
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P a os ų}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P a os ų}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P as ai ų}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P as ai ų}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -1775,13 +1782,44 @@ STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Pasiskirstymo r
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Pasiskirstymo tikslumas: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Nustatant šį parametrą žemiau nei 100%, simetrinis pasiskirstymas panašėja į asimetrinį pasiskirstymą. Jei krovinio į stotį bus atvežama mažiau, nei tam tikra nustatyta riba, jis bus priverstinai išsiųstas atgal. Jei bus nustatyta 0% riba, simetrinis pasiskirstymas taps asimetriniu.
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Greičio vienetai: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Vienetai, kuriais matuojamas greitis
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :imperiniai (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :metriniai (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Galios vienetai: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Vienetai, kuriais matuojama galia
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :imperiniai (ag)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :metriniai (ag)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Svorio vienetai: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Vienetai, kuriais matuojamas svoris
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :imperiniai (mažoji tona, ton)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :metriniai (t)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Tūrio vienetai: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Vienetai, kuriais matuojamas tūris
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :imperiniai (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :metriniai (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Traukos jėgos vienetai: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Vienetai, kuriais matuojama traukos jėga
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :imperiniai (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :metriniai (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Aukščio vienetai: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Vienetai, kuriais matuojamas aukštis
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :imperiniai (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :metriniai (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Vaizdas
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalizavimas
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstrukcijos
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Tr. priemonės
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stotelės
@@ -5285,6 +5323,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
