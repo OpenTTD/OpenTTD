@@ -435,7 +435,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Užverti
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Lango antraštė — tempkite ją, jei norite perkelti langą į kitą ekrano vietą
 STR_TOOLTIP_SHADE                                               :{BLACK}Sumažinti langą — rodyti tik lango antraštę
 STR_TOOLTIP_DEBUG                                               :{BLACK}Rodyti papildomą NewGRF derinimo informaciją
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Pakeisti lango dydį į numatytą. Ctrl+Click išsaugo į numatytą dydį
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Pakeisti lango dydį į numatytąjį. Spragtelėjus laikant nuspautą Ctrl klavišą, dabartinis lango dydis bus išsaugotas kaip numatytasis
 STR_TOOLTIP_STICKY                                              :{BLACK}Uždrausti komandai „Užverti visus langus“ užverti šį langą (komanda „Užverti visus langus“ iškviečiama „Delete“ klavišu)
 STR_TOOLTIP_RESIZE                                              :{BLACK}Tempkite už šios vietos, jei norite pakeisti lango matmenis
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Pakeisti lango matmenis
@@ -1759,7 +1759,7 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Panaikinti akla
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Pasiskirstymo grafiką atnaujinti kas {STRING} dienų
 STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Užtrukti {STRING} dienų pasiskirstymo grafikui perskaičiuoti
-STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :pasirinktinai
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :originalus
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetriškas
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC.kas                  :{G=vyr}asimetriškas
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC.ko                   :{G=vyr}asimetriško
@@ -1776,6 +1776,8 @@ STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC.ka                    :{G=vyr}simetri�
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC.kuo                   :{G=vyr}simetrišku
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC.kur                   :{G=vyr}simetriškame
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC.kreip                 :{G=vyr}simetriškas
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Keleivių paskirstymas: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :„Simetriškas“ reiškia, jog iš stoties A į stotį B keliaus apytiksliai toks pat keleivių srautas, kaip ir iš B į A. „Asimetriško“ režimo atveju, srautai pirmyn ir atgal gali skirtis. „Originalus“ reiškia, kad srautai nebus reguliuojami ir veiks kaip ir originaliame TTD žaidime.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Pasiskirstymo režimas paštui: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Pasiskirstymo režimas ŠARVUOTAI krovinių klasei: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Pasiskirstymo režimas kitoms krovinių klasėms: {STRING}
