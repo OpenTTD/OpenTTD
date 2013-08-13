@@ -1406,6 +1406,8 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Premikaj zemlje
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Izklopljeno
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Hitrost premika s kolescem miške: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontrola občutljivosti miške med pomikom pogleda
+STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Onemogočeno
+STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Dvojni klik
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulacija desnega gumba miške: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Izberi način emulacije klika desnega bumba miške
@@ -1494,6 +1496,9 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Če je omogoče
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Onemogoči ladje za računalnik: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Če je omogočeno, računalniški tekmec ne more graditi ladij.
 
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lahko
+STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Srednje težko
+STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Težko
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Dovoli UI v večigralskem načinu: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Dovoli UI računalniškim tekmecem sodelovanje v večigralskem načinu.
@@ -1520,8 +1525,10 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Onemogoči elek
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Če je omogočeno, ni potrebna elektrifikacija železnice za električni pogon.
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Prihod prvega vozila na igralčevo postajo: {STRING}
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Prikaži novice, ko prvo vozilo prispe na novo igralčevo postajo
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Prihod prvega vozila na nasprotnikovo postajo: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Nesreče / katastrofe: {STRING}
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Prikaži novice ko se zgodi nesreča
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informacije o podjetju: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Odpiranje industrij: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zapiranje industrij: {STRING}
@@ -1647,6 +1654,7 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Odstrani slepe 
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Imperične (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrične (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Vmesnik
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Gradnja
@@ -1697,6 +1705,7 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nezdružljivo s
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :neznano
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... nivo stiskanja '{STRING}' ni veljaven
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... format shranjevanja igre '{STRING}' ni na voljo. Vračanje na '{STRING}'
+STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Premalo pomnilnika
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1709,6 +1718,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Urejeval
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Več igralcev
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Možnosti
+STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela najboljših rezultatov
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Napredne nastavitve
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF nastavitve
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Preveri razpoložljive vsebine
@@ -1728,6 +1738,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Izberi s
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Izberi ozemlje v svetu igrač
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Prikaži možnosti igre
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Prikaži tabelo najboljših rezultatov
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Prikaz naprednih nastavitev
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikaži nastavitve NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Preveri posodobljene vsebine na strežniku,{} ki so na voljo za prenos
@@ -2167,6 +2178,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Izberi n
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Označi vse nadgradne vsebine za obstoječe vsebine prenosa
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Nobena
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Označi vse, da ne bo prenešeno
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Poišči zunanje spletne strani
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Oznaka/ime filtra:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Obišči spletno stran
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Obišči spletno mesto za to vsebino
@@ -2515,7 +2527,9 @@ STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Prikaži
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Poveži z zemljevidom
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Izberi prikazane industrije tudi na zemljevidu
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Izberi tovor
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Izberi tovor za prikaz
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Izberi industrijo
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Izberi industrijo za prikaz
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informacije o zemljišču
