@@ -1761,9 +1761,9 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Vidutinis miest
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Panaikinti beprasmius kelio elementus kelių statybos metu: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Panaikinti aklavietes po finansuojamų kelių rekonstrukcijos
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Pasiskirstymo grafiką atnaujinti kas {STRING} dien{P ą as ų}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Pasiskirstymo grafą atnaujinti kas {STRING} dien{P 0:2 ą as ų}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Laiko trukmė tarp grafo mazgų perskaičiavimo operacijų. Kiekviena operacija perskaičiuoja tik vieną mazgą, o ne visą grafą; tad jei šioje nuostatoje nurodytą, kad, pavyzdžiui, grafas bus atnaujinamas kas 4-ias dienas, tai nereiškia, kad jis visas bus atnaujintas, o atnaujinti bus tik kai kurie mazgai. Kuo trumpesnė trukmė tarp perskaičiavimų, tuo daugiau grafo perskaičiavimas sueikvos procesoriaus išteklių, tačiau pats grafas geriau atspindės realią situaciją. Kita vertus, ilgesnė trukmė mažiau apkraus procesorių, tačiau gali tekti ilgėliau palaukti, kol nauji maršrutai bus įtraukti į grafą.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Pasiskirstymo grafo perskaičiavimas užtruks {STRING} dien{P a os ų}
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Pasiskirstymo grafo perskaičiavimas užtruks {STRING} dien{P ą ų as}
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Laiko trukmė skirta pilnam krovinių paskirstymo grafui perskaičiuoti. Nustačius per mažą reikšmę, žaidimas gali trumpam pakibti, kol bus baigti skaičiavimai. Kita vertus, kuo ilgesnė ši trukmė, tuo vėliau į grafą bus įtraukti maršrutų pakeitimai.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :originalus
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetriškas

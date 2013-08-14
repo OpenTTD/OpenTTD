@@ -199,6 +199,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hk
 STR_UNITS_POWER_METRIC                                          :{COMMA}hk
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
@@ -214,6 +215,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} fot
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -1560,16 +1562,27 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Ta bort återv�
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuell
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisk
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrisk
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Avståndets påverkan på efterfrågan: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Belastning av korta ruter innan längre rutter används: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofta finns det flera rutter mellan två givna stationer. Godsdistributionen kommer att fylla upp den första rutten först och därefter den näst kortaste tills den är mättad osv. Mättnadsgraden bestäms utifrån en uppskattning av kapaciteten och planerad användning. När godsdristributionen har belastat samtliga rutter, och om det finns kvarvarande behov, då kommer samtliga rutter att överbelastas med preferens för rutterna med högst kapacitet. Uppskattningen av kapaciteten kommer oftast inte ske med hög noggrannhet. Denna inställning tillåter dig att ställa in hur många procent som en kort rutt ska belastas innan algoritmen ska välja nästa längre rutt. Sätt värdet till under 100 % om du vill undvika överfulla stationer i händelse av överskattad kapacitet.
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighetsenheter: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Viktenheter: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Volymenheter: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Gränssnitt
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalisering
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruktion
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Fordon
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stationer
@@ -4258,6 +4271,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan inte
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... fordonet är förstört
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Inga fordon alls kommer att vara tillgängliga
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Ändra din konfiguration av NewGRF:er
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Inga fordon är tillgängliga än
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Starta ett nytt spel efter {DATE_SHORT} eller använd en NewGRF som erbjuder tidiga fordon
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan inte tillåta tåg att passera signal under fara...

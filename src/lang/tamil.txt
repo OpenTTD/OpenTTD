@@ -1393,6 +1393,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ஒன்று
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :தொடக்க நகர அளவு பெருக்கம்: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :ஆட்டத்தின் தொடக்கத்தில் மாநகரங்களின் அளவு நகரங்களை ஒப்பிடுகையில்
 
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :பயணிகள் பரிமாற்றம் வகை: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :அஞ்சல் பரிமாற்றம் வகை: {STRING}
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :வேக அலகுகள்: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :இம்பீரியல் (mph)
@@ -2679,7 +2681,14 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}மா�
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} {STRING} இருந்து {STRING} வரை {YELLOW} ({COMPANY}{YELLOW}, {DATE_SHORT} வரை)
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} கதைப் புத்தகம்
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}உலக கதைப் புத்தகம்
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :பக்கம் {NUM}
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}முந்தைய
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}முந்தைய பக்கத்திற்குச் செல்லவும்
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}அடுத்தது
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}அடுத்த பக்கத்திற்கு செல்லவும்
 
 # Station list window
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl அழுத்தி ஒன்றிற்கும் மேற்ப்பட்ட பொருட்களைத் தேர்ந்தெடுக்கவும்
@@ -2725,6 +2734,7 @@ STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_S
 STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} இந்த நிலையத்திற்கு
 STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} எங்கும் நிற்காமல்
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :மூலம்-வழியாக-சேருமிடம்
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :மட்டம்
@@ -3910,6 +3920,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}சர�
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... வாகனம் அழிக்கப்பட்டுள்ளது
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}எந்த வாகனங்களும் தற்போது கிடையாது
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}தங்களது NewGRF அமைப்பினை மாற்றவும்
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}தற்போது எந்த வாகனங்களும் கிடையாது
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}{DATE_SHORT} இற்கு பிறகு புதிய ஆட்டம் ஒன்றினைத் தொடங்கு அல்லது NewGRF ஒன்றினைப் பயன்படுத்தி பிற்கால வாகனங்களைப் பயன்படுத்து
 

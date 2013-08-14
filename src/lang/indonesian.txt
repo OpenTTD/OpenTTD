@@ -199,9 +199,11 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}hp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
@@ -209,9 +211,12 @@ STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
@@ -279,7 +284,8 @@ STR_SORT_BY_LENGTH                                              :Panjang
 STR_SORT_BY_LIFE_TIME                                           :Sisa masa pakai
 STR_SORT_BY_TIMETABLE_DELAY                                     :Penundaan jadwal
 STR_SORT_BY_FACILITY                                            :Tipe Stasiun
-STR_SORT_BY_WAITING_TOTAL                                       :Total kargo menuggu
+STR_SORT_BY_WAITING_TOTAL                                       :Total kargo menunggu
+STR_SORT_BY_WAITING_AVAILABLE                                   :Kargo menunggu yang tersedia
 STR_SORT_BY_RATING_MAX                                          :Rating kargo tertinggi
 STR_SORT_BY_RATING_MIN                                          :Rating kargo terendah
 STR_SORT_BY_ENGINE_ID                                           :IDMesin (klasik)
@@ -305,6 +311,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Tampilka
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Tampilkan daftar stasiun perusahaan
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Tampilkan informasi keuangan perusahaan
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Tampilkan informasi umum perusahaan
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Tampilkan buku cerita
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Tampilkan daftar sasaran
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Tampilkan grafik
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Tampilkan daftar perusahaan
@@ -1318,11 +1325,13 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Non-aktifkan
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Geser dgn klik-kiri: {STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Gunakan format tanggal {STRING} untuk berkas simpanan
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format tanggal di nama berkas permainan tersimpan
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :panjang (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :pendek (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Palette standard digunakan untuk NewGRFs yang tidak punya setting: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Palet standar digunakan untuk NewGRF yang tidak menentukan yang mana itu perlu
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS palette
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palette
 
@@ -1336,37 +1345,57 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Gunakan daftar 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Tampilkan indikator pengangkutan: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Penjadwalan menggunakan satuan titik , bukan satuan hari: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Tampilkan keberangkatan dan kedatangan pada jadwal: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Tampilkan waktu diantisipasi kedatangan dan keberangkatan di jadwal
 STR_CONFIG_SETTING_QUICKGOTO                                    :Buat pemberhentian kendaraan secara cepat: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Jenis rel saat baru bermain/memuat permainan: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Jenis rel yang dipilih setelah memulai atau pemuatan permainan. 'tersedia pertama' pilihkan jenis rel paling tua, 'tersedia terakhir' pilihkan jenis rel paling baru, dan 'sering dipakai' pilihkan jenis yang sekarang paling sering dipakai
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Tersedia pertama
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Tersedia terakhir
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Sering dipakai
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Sorot rel yang akan terpakai: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Toolbar tetap aktif setelah dipakai: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Menjagakan alat pembangunan untuk jembatan, terowongan, etc. buka setelah dipakai
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Kelompokkan pengeluaran perusahaan dalam neraca: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Mendefinisikan tata ruang untuk tetingkap biaya perusahaan
 
+STR_CONFIG_SETTING_SOUND_TICKER                                 :Ticker berita: {STRING}
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Mainkan suara untuk pesanan berita yang diringkas
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Koran: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Mainkan suara saat penampilan koran
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Akhir tahun: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Mainkan suara di akhir tahun ringkaskan prestasi perusahaan selama tahun dibandingkan tahun terakhir
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :Pembangunan: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Mainkan suara waktu pembangunan yang berhasil atau aksi lain
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Klik tombol: {STRING}
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Berbunyi waktu mengklik tombol
 STR_CONFIG_SETTING_SOUND_DISASTER                               :Bencana/kecelakaan: {STRING}
 STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Mainkan efek suara kecelakaan dan bencana
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Kendaraan: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Mainkan efek suara kendaraan
+STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambien: {STRING}
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Mainkan suara ambien pemandangan, industri dan kota
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Matikan infrastruktur bangunan saat tak ada kendaraan yang tersedia: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Jika diaktifkan, infrastruktur cuma tersedia jika ada kendaraan tersedia, mencegah buang waktu dan uang di infrastruktur yang tidak bisa digunakan
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maks. kereta tiap pemain: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Batas jumlah kereta yang boleh dimiliki satu perusahaan
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maks. kendaraan jalan raya tiap pemain: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Batas jumlah kendaraan jalan raya yang boleh dimiliki satu perusahaan
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maks. pesawat tiap pemain: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Batas jumlah pesawat yang boleh dimiliki satu perusahaan
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Maks. kapal tiap pemain: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Jumlah maximum kapal yang boleh dimilki sebuah perusahaan
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Non-aktifkan kereta bagi pemain komputer: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Mengaktifkan pengaturan ini membuat pemain komputer (AI) tidak dapat membangun kereta
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Non-aktifkan kendaraan jalan raya bagi pemain komputer: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Mengaktifkan pengaturan ini membuat pemain komputer (AI) tidak dapat membangun kendaraan jalan raya
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Non-aktifkan pesawat bagi pemain komputer: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Mengaktifkan pengaturan ini membuat pemain komputer (AI) tidak dapat membangun pesawat
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Non-aktifkan kapal bagi pemain komputer: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Mengaktifkan pengaturan ini membuat pemain komputer (AI) tidak dapat membangun kapal
 
+STR_CONFIG_SETTING_AI_PROFILE                                   :Profil pengaturan standar: {STRING}
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Gampang
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Sedang
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Susah
@@ -1374,8 +1403,10 @@ STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Susah
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Ijinkan kecerdasan pada modus banyak pemain: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Bolehkan pemain komputer AI untuk ikut permainan multiplayer
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes sebelum scripts di-tahan: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Batas maksimal langkah perhitungan yang boleh ambil oleh skript dalam satu putaran
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Jangka waktu perbaikan dalam persen: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Pilih apakah servis kendaraan dipicu oleh waktu terlewat sejak servis terakhir atau dari kehandalan menjatuh beberapa persentase dari kehandalan maximum
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Interval dasar untuk kereta: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Setel interval dasar untuk kereta, jika tidak ada interval tetap
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} hari/%
@@ -1520,7 +1551,23 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Ukuran rata-rat
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Buang elemen jalan yang aneh saat membangun: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Menghilangkan ujung jalan buntu saat rekonstruksi jalan
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Perbarui grafik distribusi setiap {STRING} hari
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Waktu diantara dua penghitungan linkgraph berurutan. Setiap penghitungan hanya menghitung satu komponen perencanaan dari grafik. Namun, angka yang diberikan untuk seting ini bukan berarti seluruh grafik akan diperbaharui dalam angka hari yang sama, hanya beberapa bagian. Semakin sedikit semakin banyak proses CPU yang diperlukan untuk menghitung. Semakin banyak semakin lama waktu sebelum cargo distribution dimulai pada rute baru.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Ambil {STRING} hari untuk menghitung grafik distribusi
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Waktu dibutuhkan untuk setiap perhitungan dari komponen 'linkgraph'. Ketika perhitungan dimulai, ada utas 'dibuat' yang boleh dijalankan untuk jumlah hari ini. Semakin pendek anda mengatur ini lebih mungkin utas ini belum selesai ketika itu seharusnya. Kemudian permainan berhenti sampai itu ("lag"). Semakin lama anda mengatur semakin lama itu untuk distribusinya untuk memperbarui ketika rute mengganti.
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetris
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetris
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modus distribusi untuk penumpang: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"simetris" berarti kira-kira jumlah penumpang yang sama akan pergi dari stasiun A ke stasiun B sebagaimana dari B ke A. "asimetris" berarti jumlah penumpang yang pergi ke kedua arah bisa berbeda-beda. "manual" berarti bahwa tidak ada distribusi otomatis akan dilakukan untuk penumpang.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modus distribusi untuk barang pos: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"simetris" berarti kira-kira jumlah barang pos yang sama akan pergi dari stasiun A ke stasiun B sebagaimana dari B ke A. "asimetris" berarti jumlah barang pos yang pergi ke kedua arah bisa berbeda-beda. "manual" berarti bahwa tidak ada distribusi otomatis akan dilakukan untuk barang pos.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modus distribusi untuk kelas kargo BERLAPIS BAJA: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Kelas kargo BERLAPIS BAJA mengandung barang berharga di temperata, intan di sub tropis atau emas di iklim sub arktik. NewGRFs mungkin mengubah itu. "simetris" berarti bahwa kira-kira sama jumlah kargo itu akan pergi dari stasiun A ke stasiun B sebagai dari B ke A. "asimetris" berarti sewenang-wenang jumlah kargo itu bisa pergi di kedua arah. "manual" berarti bahwa tidak ada distribusi otomatis akan dilakukan untuk kargo itu. Disarankan untuk diaturkan ini ke asimetris atau manual ketika bermain sub arktik, sebagai bank tidak mengirim emas apapun kembali ke tambang emas. Untuk temperata dan sub tropis anda juga bisah pilih simetris sebagian bank akan mengirim barang berharga kembali ke bank orisinil dari beberapa banyak barang berharga.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modus distribusi untuk kelas kargo yang lain: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"simetris" berarti bahwa kira-kira sama jumlah kargo akan pergi dari stasiun A ke stasiun B sebagai dari B ke A. "asimetris" berarti sewenang-wenang jumlah kargo bisa pergi di kedua arah. "manual" berarti bahwa tidak ada distribusi otomatis akan dilakukan untuk kargo. Anda mungkin mau mengaturkan ini untuk "asimetris" atau manual.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Ketepatan distribusi: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Semakin tinggi anda mengatur ini semakin banyak waktu CPU perhitungan "linkgraph" akan mengambil. Jika waktu terlalu lama anda mungkin melihat "lag".Jika anda mengatur itu ke nilai rendah, tetapi, distribusi akan menjadi tidak akurat, dan anda mungkin melihat kargo tidak dikirim ke tempat anda berharap untuk pergi.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Satuan kecepatan: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Apabila kecepatan ditampilkan di antarmuka, nyatakan di satuan yang dipilih
