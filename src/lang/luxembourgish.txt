@@ -199,21 +199,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}bhp
 STR_UNITS_POWER_METRIC                                          :{COMMA}ps
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} Tonn{P "" en}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} Tonn{P "" en}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} Galloun{P "" en}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} Liter{P "" ""}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kgf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_METRIC                                         :{COMMA} m
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -1551,18 +1558,71 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Duerchschnëtts
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Beim Stroossebau absurd Stroossenelementer ofrappen: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Huel Sakgaassen ewech wann d'Stroossen renovéiert ginn
 
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Benotz {STRING} D{P 0:2 ag eeg} fir d'Neiberechnung vum Distributiounsgraf
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Zäit déi gebraucht gëtt fir all Neiberechnung vun enger Linkgrafikkomponent. Wann eng Neiberechnung ufenkt, gëtt en Thread erstallt den fir dës Unzuel un Deeg leeft. Wann den Wert ze kleng ass, kann den Thread net an der gewënschter Zäit faerdeg ginn an et kënnt zu engem Lag. Wann den Wert méi héig gesat gëtt, brauch d'Distributioun méi lang fir erneiert ze ginn wann eng Streck ännert
+STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuell
+STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrësch
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symetrësch
+STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributiounsmodus fir Passagéier: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symetrësch" heescht, dass ongeféier d'swlescht vill Passagéier vun A op B wéi vun B op A geschéckt ginn. "asymetrësch" heescht, dass eng arbiträr Unzuel un Wueren an d'jeweileg Richtung geschéckt ginn. "manuell" heescht dass keng automatësch Distributioun stattfënnt fir Passagéier
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distributiounsmodus fir Post: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symetrësch" heescht, dass ongeféier d'swlescht vill vun A op B wéi vun B op A geschéckt ginn. "asymetrësch" heescht, dass eng arbiträr Unzuel un Wueren an d'jeweileg Richtung geschéckt ginn. "manuell" heescht dass keng automatësch Distributioun stattfënnt fir Post
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distributiounsmodus fir d'GEPANZERT Wuereklass: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :D'GEPANZERT Wuereklass huet Wertsaachen am geméissgte Klima, Diamanten am Sub-Tropenklima an Gold am sub-arktësche Klima. NewGRFen kënnen dat änneren. "symetrësch" heescht, dass ongeféier d'swlescht vill vun A op B wéi vun B op A geschéckt ginn. "asymetrësch" heescht, dass eng arbiträr Unzuel un Wueren an d'jeweileg Richtung geschéckt ginn. "manuell" heescht dass keng automatësch Distributioun stattfënnt. Et gëtt emfuelen dëst op asymetrësch oder manuell ze loossen wann een sub-arktësch spillt, well Banken keen Gold zréck an d’Minen liwweren. Fir geméissegt Klima an sub-tropësch Klima kann eng Bank mat der anerer Wertsachen zréckschécken.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distributiounsmodus fir aner Wuerenklassen: {STRING}
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symetrësch" heescht dass ongeféier genausouvill Wueren vun A op B wéi vun B op A geschéckt ginn. "asymetrësch" heescht dass verschidden Unzuel un Wueren verschéckt ginn an béid Richtungen. "manuell" heescht dass keng automatësch Distributioun stattfënnt. Meeschtens gëtt "asymetrësch" oder manuell gewielt.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distributiounsgenauegkeet: {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Wat den Wert méi héig ass, wat méi CPU benotzt gëtt fir d'Linkgraphik ze zeechnen. Wann ze héig gesat, kann et zu Lags kommen. Ze niddreg gesat kann d'Distributioun ongenau ginn an d'Wueren net sou verdeelt ginn wéi geduet
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Afloss vun der Distanz op d'Nofro: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Wann'sde en méi héigen Wert wéi 0 wiels, huet d'Differenz tëscht 2 Statiounen A an B en Afloss op wéivill Wueren geschéckt ginn. Wat B méi wait ewech vun A ass, wat manner Wueren geschéckt ginn. Wat den Wert méi héig gesat gëtt, wat manner Wueren op eng Statioun wait ewech an méi Wueren op eng Statioun méi no gescheckt ginn.
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Unzuel vun zréckgeschéckten Wueren fir den symetrëschen Modus: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Wann een dëst op manner wéi 100% setzt, gëtt déi symetrësch Distributioun méi wéi eng asymetrësch behandelt. Manner Wueren ginn zréckgeschéckt wann en bestëmmten Wert op eng Statioun geschéckt gouf. Bei 0% verhält sech d'symetrësch Distributioun wéi eng asymetrësch
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Sättegung vun kuerzen Weeër befier grouss Weeër benotzt ginn: {STRING}
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Oft gëtt et e puer Weeër tëscht zwou Statiounen. Cargodist sättegt fir d'éischt den kierzten, dann den zweetkierzten a.s.w. Sättegung gëtt bestemmt durch Kapazitéit an geplangten Notzung. Wann all Wee gesiedegt ass, an nach emmer eng Nofro do ass, ginn all d'Weeër iwwersiedegt, mat Präferenz déi mat grousser Kapazitéit. Gréissten Deel vun der Zäit rechent den Algorithmus d'Kapazitéit allerdéngs net richteg. Des Astellung erlabt engem en Prozentsaz ze bestëmmen fir den éischten Wee befier en zweeten Wee benotzt gëtt. Setz en enner 100% fir iwwerfëllten Statiounen ze vermeiden wann d'Kapazitéit iwwerschad gouf.
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Geschwindegkeetseenheeten: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Emmer wann eng Geschwindegkeet am Userinterface ugewisen gëtt, weis se an den ausgewielten Unitéiten un
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Britësch (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrësch (km/h)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Kraafteenheeten: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Emmer wann d'Kraft vun engem Gefier am Userinterface ugewisen gëtt, weis se an den ausgewielten Eenheeten un
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Britësch (PS)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrësch (PS)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Gewichtseenheeten: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Emmer wann Gewiichter am Userinterface ugewisen ginn, weis se an den ausgewielten Unitéiten un
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Britësch (kuerz t/Tonn)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrësch (t/Tonn)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Volumenunitéiten: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Emmer wann Volumen am Userinterface ugewisen ginn, weis se an den ausgewielten Unitéiten un
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Britësch (gal)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrësch (l)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Zuchkraft Unitéiten: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Emmer wann eng Zuchkraft am Userinterface ugewisen gëtt weis se an den ugewielten Unitéiten un
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Britësch (lbf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrësch (kgf)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Héigtenunitéiten: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Emmer wann Héigten am Userinterface ugewisen ginn, weis se an den ausgewielten Unitéiten un
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Britësch (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrësch (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
+STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokaliséirung
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruktioun
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Gefierer
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Statiounen
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economie
+STR_CONFIG_SETTING_LINKGRAPH                                    :{ORANGE}Wuerendistributioun
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Géigner
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Displayoptiounen
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaktioun
@@ -1685,7 +1745,7 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Als Fir
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magëschen Bulldozer (Industrien ofrappen, onzerstéierbar Objekter): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnellen kënnen sech kräizen: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jet'en maachen net regelméisseg en Accident op klengen Fluchhäfen: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Temperéiert Landschaft
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Gemässegt Klima Landschaft
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub-Arktësch Landschaft
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-Tropësch Landschaft
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Spillland Landschaft
@@ -2887,6 +2947,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kaft fi
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}D'Gemeng bestiechen fir d'Bewäertung ze erhéijen, mam Risiko fir eng grouss Bestrofung, falls der erwëscht gitt.{} Käschten: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Ziler
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Global Ziler
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Global Zieler:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
@@ -3728,6 +3789,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Dësen Z
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Dësen Zäitplang start um {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Start Datum
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Wiel en Datum als Startpunkt fir dësen Zäitplang. Ctrl+Klick setzt den Startpunkt vun dësem Zäitplang an verdeelt et en gläichméisseg op all Gefierer déi dësen Ueder hunn, wann den Ueder komplett mat engem Zäitplang versinn ass
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zäit wiesselen
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Änner Zäit déi den ugewielten Optrag brauchen soll
@@ -4218,6 +4280,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Den Serv
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... Gefiert ass zerstéiert
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Keng Gefierer verfügbar
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Änner d'NewGRF Konfiguratioun
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Nach keng Gefierer verfügbar
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}En neit Spill no {DATE_SHORT} ufenken oder benotz en NewGRF den aal Gefierer erlabt
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kann den Zuch net bei Gefohr lanscht d'Signal schecken...
@@ -4711,6 +4777,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
