@@ -240,6 +240,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fënster
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Fënstertitel - hei zéien fir d'Fënster ze bewegen
 STR_TOOLTIP_SHADE                                               :{BLACK}Shade Fenster - Weis nëmmen Titelbar
 STR_TOOLTIP_DEBUG                                               :{BLACK}Weis NewGRF Debug Informatioun
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Änner d'Fënster op d'Standardgréisst. Ctrl+Klick fir déi aktuell Gréisst als Standard ze späichern
 STR_TOOLTIP_STICKY                                              :{BLACK}Markéier dës Fënster fir net zougemeet ze ginn vun dem "All Fënsteren zoumaachen" Knäppchen. Ctrl+Klick speichert déi Actioun als Standard
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klicken an zéihen fir d'Fënstergréisst ze änneren
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Wiesselt grouss/kleng Fënstergréisst
@@ -327,7 +328,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Stroosse
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Schëffhafen bauen
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Fluchhafen bauen
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Landschafts-Toolbar opman fir Land ze erhéijen/senken, Beem planzen, etc.
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Sound/Musék Fënster
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Sound/Musik Fënster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Weis déi lescht Meldung/Neiegkeet, oder d'Astellungen
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informatiounen zum Land, Konsole, Script debug, Screenshots, iwwer OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Wiessel Toolbars
@@ -386,6 +387,7 @@ STR_FILE_MENU_EXIT                                              :Eraus
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Weltkaart
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Extra Usiicht
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Cargo Flow Legend
 STR_MAP_MENU_SIGN_LIST                                          :Schëlderlëscht
 
 ############ range for town menu starts
@@ -445,7 +447,7 @@ STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Schëld opstell
 ############ range ends here
 
 ############ range for music menu starts
-STR_TOOLBAR_SOUND_MUSIC                                         :Sound/Musék
+STR_TOOLBAR_SOUND_MUSIC                                         :Sound/Musik
 ############ range ends here
 
 ############ range for message menu starts
@@ -611,7 +613,7 @@ STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLA
 STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Ezy Street
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Benotzerdéf. 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Benotzerdéf. 2
-STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Musék Lautstärkt
+STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Musik Lautstärkt
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Lautstärkt vun den Effekter
 STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
 STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAX
@@ -626,22 +628,22 @@ STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLA
 STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Programm
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Sprang op d'Stéck firdrun vun der Selektioun
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Sprang op dat nächst Stéck vun der Selektioun
-STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Stop d'Musék
-STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Start d'Musék
-STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Zéi den Regler fir d'Lautstärkt vun der Musék an den Effekter anzestellen
+STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Stop d'Musik
+STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Start d'Musik
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Zéi den Regler fir d'Lautstärkt vun der Musik an den Effekter anzestellen
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Selectionéier 'all Lidder' Programm
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Selectionéier 'aalen Style' Programm
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Selectionéier 'neien Style' Programm
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Wielt 'Ezy Street Musék' Programm
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Wielt 'Ezy Street Musik' Programm
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Selectionéier 'Benotzerdéf. 1' Programm
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selectionéier 'Benotzerdéf. 2' Programm
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Schalt den "shuffle" un/aus
-STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Weis Musékselektioneier-Fënster
+STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Weis d'Fënster fir Musik ze wielen
 
 STR_ERROR_NO_SONGS                                              :{WHITE}E Music Set ouni Lidder gouf gewielt. Et wärten keng Lidder gespillt gin
 
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musékprogramm Selectioun
+STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musikprogramm Selectioun
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Lidder Index
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programm - '{STRING}'
@@ -685,6 +687,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Weis d'V
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Weis d'Landbesëtzer op der Kaart
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klick op en Industrietyp fir en unzeweisen. Ctrl+Klick weist just déi ugewielten Wuer. Ctrl+Klick nach emol fir all Wueren unzeweisen
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klick op eng Forma fir den Besëtz unzeweisen. Ctrl+Klick weist just déi ugewielten aus. Ctrl+Klick nach emol fir all Firmen ze weisen
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Klick op eng Wuer fir tëscht den Eegenschaften ze wiesselen. Ctrl+Klick wielt Alles of ausser déi gewielten Wuer. Ctrl+Klick nach emol fir erëm Alles unzeweisen
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Stroossen
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Schinnen
@@ -718,6 +721,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Schalt d'Stiednimm op der Kaart un/aus
 STR_SMALLMAP_CENTER                                             :{BLACK}Zentréiert d'kleng Kaart op déi aktuell Positioun
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}All ausschalten
@@ -728,6 +732,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}All Indu
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Wiessel d'Usiicht vun der Héichtenkaart
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Weis keen Besëtz vun der Firma op der Kaart un
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Weis den ganzen Besëtz vun der Firma op der Kaart un
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Weis keng Wueren op der Kaart
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Weis all Wueren op der Kaart
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Lescht Meldung oder News
@@ -1560,60 +1566,62 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Duerchschnëtts
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Beim Stroossebau absurd Stroossenelementer ofrappen: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Huel Sakgaassen ewech wann d'Stroossen renovéiert ginn
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aktualiséier d'Distributiounsgrafik all {STRING} D{P 0:2 ag eeg}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Zäit tëscht nofolgenden Neiberechnungen vun der Linkgrafik. All Neiberechnung rechent d'Pläng fir eng Komponent vun der Grafik. Dat heescht dass en Wert X fir dës Astellung net all X Deeg aktualiséiert gëtt. Nëmmen een Komponent gëtt aktualiséiert. Wat méi kuerz gesat, wat méi CPU Rechenzäit gebraucht gëtt. Wat se méi laang gesat gëtt, wat méi Zäit vergeet bis Wuerendistributioun op enger neier Route gestart gëtt.
 STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Benotz {STRING} D{P 0:2 ag eeg} fir d'Neiberechnung vum Distributiounsgraf
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Zäit déi gebraucht gëtt fir all Neiberechnung vun enger Linkgrafikkomponent. Wann eng Neiberechnung ufenkt, gëtt en Thread erstallt den fir dës Unzuel un Deeg leeft. Wann den Wert ze kleng ass, kann den Thread net an der gewënschter Zäit faerdeg ginn an et kënnt zu engem Lag. Wann den Wert méi héig gesat gëtt, brauch d'Distributioun méi lang fir erneiert ze ginn wann eng Streck ännert
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuell
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrësch
-STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symetrësch
+STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrësch
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Distributiounsmodus fir Passagéier: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symetrësch" heescht, dass ongeféier d'swlescht vill Passagéier vun A op B wéi vun B op A geschéckt ginn. "asymetrësch" heescht, dass eng arbiträr Unzuel un Wueren an d'jeweileg Richtung geschéckt ginn. "manuell" heescht dass keng automatësch Distributioun stattfënnt fir Passagéier
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"symmetrësch" heescht, dass ongeféier d'selwecht vill Passagéier vun A op B wéi vun B op A geschéckt ginn. "asymmetrësch" heescht, dass eng arbiträr Unzuel un Wueren an d'jeweileg Richtung geschéckt ginn. "manuell" heescht dass keng automatësch Distributioun stattfënnt fir Passagéier
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Distributiounsmodus fir Post: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symetrësch" heescht, dass ongeféier d'swlescht vill vun A op B wéi vun B op A geschéckt ginn. "asymetrësch" heescht, dass eng arbiträr Unzuel un Wueren an d'jeweileg Richtung geschéckt ginn. "manuell" heescht dass keng automatësch Distributioun stattfënnt fir Post
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"symmetrësch" heescht, dass ongeféier d'selwecht vill vun A op B wéi vun B op A geschéckt ginn. "asymmetrësch" heescht, dass eng arbiträr Unzuel un Wueren an d'jeweileg Richtung geschéckt ginn. "manuell" heescht dass keng automatësch Distributioun stattfënnt fir Post
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Distributiounsmodus fir d'GEPANZERT Wuereklass: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :D'GEPANZERT Wuereklass huet Wertsaachen am geméissgte Klima, Diamanten am Sub-Tropenklima an Gold am sub-arktësche Klima. NewGRFen kënnen dat änneren. "symetrësch" heescht, dass ongeféier d'swlescht vill vun A op B wéi vun B op A geschéckt ginn. "asymetrësch" heescht, dass eng arbiträr Unzuel un Wueren an d'jeweileg Richtung geschéckt ginn. "manuell" heescht dass keng automatësch Distributioun stattfënnt. Et gëtt emfuelen dëst op asymetrësch oder manuell ze loossen wann een sub-arktësch spillt, well Banken keen Gold zréck an d’Minen liwweren. Fir geméissegt Klima an sub-tropësch Klima kann eng Bank mat der anerer Wertsachen zréckschécken.
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :D'GEPANZERT Wuereklass huet Wertsaachen am geméissegte Klima, Diamanten am Sub-Tropenklima an Gold am sub-arktësche Klima. NewGRFen kënnen dat änneren. "symmetrësch" heescht, dass ongeféier d'selwecht vill vun A op B wéi vun B op A geschéckt ginn. "asymmetrësch" heescht, dass eng arbiträr Unzuel un Wueren an d'jeweileg Richtung geschéckt ginn. "manuell" heescht dass keng automatësch Distributioun stattfënnt. Et gëtt emfuelen dëst op asymmetrësch oder manuell ze loossen wann een sub-arktësch spillt, well Banken keen Gold zréck an d’Minen liwweren. Fir geméissegt Klima an sub-tropësch Klima kann eng Bank mat der anerer Wertsachen zréckschécken.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Distributiounsmodus fir aner Wuerenklassen: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symetrësch" heescht dass ongeféier genausouvill Wueren vun A op B wéi vun B op A geschéckt ginn. "asymetrësch" heescht dass verschidden Unzuel un Wueren verschéckt ginn an béid Richtungen. "manuell" heescht dass keng automatësch Distributioun stattfënnt. Meeschtens gëtt "asymetrësch" oder manuell gewielt.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"symmetrësch" heescht dass ongeféier genausouvill Wueren vun A op B wéi vun B op A geschéckt ginn. "asymmetrësch" heescht dass verschidden Unzuel un Wueren verschéckt ginn an béid Richtungen. "manuell" heescht dass keng automatësch Distributioun stattfënnt. Meeschtens gëtt "asymmetrësch" oder manuell gewielt.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Distributiounsgenauegkeet: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Wat den Wert méi héig ass, wat méi CPU benotzt gëtt fir d'Linkgraphik ze zeechnen. Wann ze héig gesat, kann et zu Lags kommen. Ze niddreg gesat kann d'Distributioun ongenau ginn an d'Wueren net sou verdeelt ginn wéi geduet
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Afloss vun der Distanz op d'Nofro: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Wann'sde en méi héigen Wert wéi 0 wiels, huet d'Differenz tëscht 2 Statiounen A an B en Afloss op wéivill Wueren geschéckt ginn. Wat B méi wait ewech vun A ass, wat manner Wueren geschéckt ginn. Wat den Wert méi héig gesat gëtt, wat manner Wueren op eng Statioun wait ewech an méi Wueren op eng Statioun méi no gescheckt ginn.
-STR_CONFIG_SETTING_DEMAND_SIZE                                  :Unzuel vun zréckgeschéckten Wueren fir den symetrëschen Modus: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Wann een dëst op manner wéi 100% setzt, gëtt déi symetrësch Distributioun méi wéi eng asymetrësch behandelt. Manner Wueren ginn zréckgeschéckt wann en bestëmmten Wert op eng Statioun geschéckt gouf. Bei 0% verhält sech d'symetrësch Distributioun wéi eng asymetrësch
+STR_CONFIG_SETTING_DEMAND_SIZE                                  :Unzuel vun zréckgeschéckten Wueren fir den symmetrëschen Modus: {STRING}
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Wann een dëst op manner wéi 100% setzt, gëtt déi symmetrësch Distributioun méi wéi eng asymmetrësch behandelt. Manner Wueren ginn zréckgeschéckt wann en bestëmmten Wert op eng Statioun geschéckt gouf. Bei 0% verhält sech d'symmetrësch Distributioun wéi eng asymmetrësch
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Sättegung vun kuerzen Weeër befier grouss Weeër benotzt ginn: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Oft gëtt et e puer Weeër tëscht zwou Statiounen. Cargodist sättegt fir d'éischt den kierzten, dann den zweetkierzten a.s.w. Sättegung gëtt bestemmt durch Kapazitéit an geplangten Notzung. Wann all Wee gesiedegt ass, an nach emmer eng Nofro do ass, ginn all d'Weeër iwwersiedegt, mat Präferenz déi mat grousser Kapazitéit. Gréissten Deel vun der Zäit rechent den Algorithmus d'Kapazitéit allerdéngs net richteg. Des Astellung erlabt engem en Prozentsaz ze bestëmmen fir den éischten Wee befier en zweeten Wee benotzt gëtt. Setz en enner 100% fir iwwerfëllten Statiounen ze vermeiden wann d'Kapazitéit iwwerschad gouf.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Geschwindegkeetseenheeten: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Emmer wann eng Geschwindegkeet am Userinterface ugewisen gëtt, weis se an den ausgewielten Unitéiten un
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Emmer wann eng Geschwindegkeet am Userinterface ugewisen gëtt, weis se an den ausgewielten Eenheeten un
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Britësch (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrësch (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Kraafteenheeten: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Emmer wann d'Kraft vun engem Gefier am Userinterface ugewisen gëtt, weis se an den ausgewielten Eenheeten un
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Emmer wann d'Kraaft vun engem Gefier am Userinterface ugewisen gëtt, weis se an den ausgewielten Eenheeten un
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Britësch (PS)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metrësch (PS)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Gewichtseenheeten: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Emmer wann Gewiichter am Userinterface ugewisen ginn, weis se an den ausgewielten Unitéiten un
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Emmer wann Gewiichter am Userinterface ugewisen ginn, weis se an den ausgewielten Eenheeten un
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Britësch (kuerz t/Tonn)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metrësch (t/Tonn)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Volumenunitéiten: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Emmer wann Volumen am Userinterface ugewisen ginn, weis se an den ausgewielten Unitéiten un
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Volumeneenheeten: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Emmer wann Volumen am Userinterface ugewisen ginn, weis se an den ausgewielten Eenheeten un
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :Britësch (gal)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :Metrësch (l)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Zuchkraft Unitéiten: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Emmer wann eng Zuchkraft am Userinterface ugewisen gëtt weis se an den ugewielten Unitéiten un
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :Zuchkraaft Eenheeten: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :Emmer wann eng Zuchkraaft am Userinterface ugewisen gëtt weis se an den ugewielten Eenheeten un
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :Britësch (lbf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :Metrësch (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Héigtenunitéiten: {STRING}
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Emmer wann Héigten am Userinterface ugewisen ginn, weis se an den ausgewielten Unitéiten un
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :Héigteneenheeten: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :Emmer wann Héigten am Userinterface ugewisen ginn, weis se an den ausgewielten Eenheeten un
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :Britësch (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :Metrësch (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (m)
@@ -1850,6 +1858,10 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Krawatt 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
+STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Ugekënnegt
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Wiel tëschent engem ugekënnegten (Internet) an net ugekënnegten (LAN) Spill
+STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nee
+STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Jo
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spillernumm:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Daat ass den Numm mat deem iersch dei aaner Spiller Identifizéieren kënnen
 
@@ -1908,6 +1920,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Den Numm
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Passwuert setzen
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}En Passwuert fir d'Spill setzen, dass et net Public accessibel ass
 
+STR_NETWORK_START_SERVER_UNADVERTISED                           :Nee
+STR_NETWORK_START_SERVER_ADVERTISED                             :Jo
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} Spiller
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Max Spiller:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Maximal Unzuel vun den Clients. Et muss net all Slot gefëllt sin.
@@ -2220,8 +2234,15 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Wiesselt
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Setzt d'Objeten op onsichtbar amplaz transparent
 
 # Linkgraph legend window
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Cargo Flow Legend
+STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}All
+STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Keng
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Wiel d'Firmen aus déi ugewisen ginn
 
 # Linkgraph legend window and linkgraph legend in smallmap
+STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}onbenotzt
+STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLACK}gesättegt
+STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}iwwerlaascht
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Reechwäit
@@ -2955,6 +2976,8 @@ STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Global Z
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Keng -
 STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Net uwendbar -
+STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
+STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Firmenzieler:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klick op Ziel fir d'Haptfënster op d'Industrie/Stad/Feld ze zentréiren. Ctrl+Klick mëcht eng nei Fënster op der Industrie/Stad/Feld-Positioun op
 
@@ -2994,7 +3017,15 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klick op den Service fir d'Usiicht op d'Industrie/Stad ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht op d'Industrie/Stad
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Storybuch
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globalt Storybuch
+STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
+STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Säit {NUM}
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Géi op eng spezifësch Säit andems se aus der Dropdownlëscht ausgewielt gëtt
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Zréck
+STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Géi op d'Säit firdrun
+STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Nächst
+STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Géi op déi nächst Säit
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Statiounennimm - klick op den Numm fir d'Siicht drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht op d'Statioun
@@ -3023,6 +3054,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bewertungen
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Weis d'Statiounsbewertungen
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Lokal Bewertung an Liwwerung pro Mount
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Gruppéier no
 STR_STATION_VIEW_WAITING_STATION                                :Statioun: wardend
@@ -3188,6 +3221,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produkti
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportéiert)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Zentréiert d'Siicht op d'Industrie. Ctrl+Klick erstellt eng nei Usiicht op d'Industrie
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktiounslevel: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}D'Industrie annoncéiert dass se zougemet gëtt
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Brauch: {YELLOW}{STRING}{STRING}
@@ -3409,7 +3443,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :Monorail Lokomo
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Magnéitbunnlokomotiv
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Käschten: {CURRENCY_LONG} Gewiicht: {WEIGHT_SHORT}{}Geschwindegkeet: {VELOCITY}  Kraaft: {POWER}{}Betriibskäschten {CURRENCY_LONG}/joër{}Kapazitéit: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Käschten: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Geschw.: {VELOCITY}  Kraft: {POWER}  Max. T.E.: {6:FORCE}{}Betriebskäschten: {4:CURRENCY_LONG}/Jr{}Kapazitéit: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Käschten: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Geschw.: {VELOCITY}  Kraaft: {POWER}  Max. T.E.: {6:FORCE}{}Betriebskäschten: {4:CURRENCY_LONG}/Jr{}Kapazitéit: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO_LONG}, {CARGO_LONG}{}Betriibskäschten {CURRENCY_LONG}/Joer
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschwindegkeet: {VELOCITY}{}Kapazitéit: {CARGO_LONG}{}Betriibskäschten: {CURRENCY_LONG}/Joer
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Käschten: {CURRENCY_LONG} Max. Geschw.: {VELOCITY} Distanz: {COMMA} Felder{}Kapazitéit: {CARGO_LONG}, {CARGO_LONG}{}Betribskäschten: {CURRENCY_LONG}/Jr
@@ -4330,6 +4364,14 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kann d'S
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Eng Simulatioun déi op Transport Tycoon Deluxe baséiert
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Original Transport Tycoon Deluxe DOS Editioun Grafik.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Original Transport Tycoon Deluxe DOS (Däitsch) Editioun Grafik.
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Original Transport Tycoon Deluxe Windows Editioun Grafik.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Original Transport Tycoon Deluxe DOS Editioun Sound.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Original Transport Tycoon Deluxe Windows Editioun Sound.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :En Soundpack mat all den Sounds.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Original Transport Tycoon Deluxe Windows Editioun Music.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :E Musikpack ouni aktuell Musik.
 
 ##id 0x2000
 # Town building names
@@ -4370,7 +4412,7 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Spuerschwäin-B
 ##id 0x4800
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :Kuelenstollen
-STR_INDUSTRY_NAME_POWER_STATION                                 :Kraftwierk
+STR_INDUSTRY_NAME_POWER_STATION                                 :Kraaftwierk
 STR_INDUSTRY_NAME_SAWMILL                                       :Seeërei
 STR_INDUSTRY_NAME_FOREST                                        :Bësch
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :Uelegraffinerie
