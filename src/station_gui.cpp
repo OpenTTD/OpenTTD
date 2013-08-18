@@ -463,7 +463,7 @@ public:
 
 			case WID_STL_FACILALL: {
 				int cg_ofst = this->IsWidgetLowered(widget) ? 2 : 1;
-				DrawString(r.left + cg_ofst, r.right + cg_ofst, r.top + cg_ofst, STR_ABBREV_ALL, TC_BLACK);
+				DrawString(r.left + cg_ofst, r.right + cg_ofst, r.top + cg_ofst, STR_ABBREV_ALL, TC_BLACK, SA_HOR_CENTER);
 				break;
 			}
 
