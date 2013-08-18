@@ -1567,14 +1567,17 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Belastning av k
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Ofta finns det flera rutter mellan två givna stationer. Godsdistributionen kommer att fylla upp den första rutten först och därefter den näst kortaste tills den är mättad osv. Mättnadsgraden bestäms utifrån en uppskattning av kapaciteten och planerad användning. När godsdristributionen har belastat samtliga rutter, och om det finns kvarvarande behov, då kommer samtliga rutter att överbelastas med preferens för rutterna med högst kapacitet. Uppskattningen av kapaciteten kommer oftast inte ske med hög noggrannhet. Denna inställning tillåter dig att ställa in hur många procent som en kort rutt ska belastas innan algoritmen ska välja nästa längre rutt. Sätt värdet till under 100 % om du vill undvika överfulla stationer i händelse av överskattad kapacitet.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Hastighetsenheter: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Närhelst en hastighet visas i användargränssnittet, visa den i den valda enheten
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Viktenheter: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Närhelst vikter visas i användargränssnittet, visa dem i den valda enheten
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :Volymenheter: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :Närhelst volymer visas i användargränssnittet, visa dem i den valda enheten
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :SI (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)

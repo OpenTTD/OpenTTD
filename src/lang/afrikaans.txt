@@ -58,7 +58,7 @@ STR_CARGO_PLURAL_BUBBLES                                        :Borrels
 STR_CARGO_PLURAL_TOFFEE                                         :Toffie
 STR_CARGO_PLURAL_BATTERIES                                      :Batterye
 STR_CARGO_PLURAL_PLASTIC                                        :Plastiek
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Gas Koeldrank
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Gaskoeldrank
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -92,7 +92,7 @@ STR_CARGO_SINGULAR_BUBBLE                                       :Borrel
 STR_CARGO_SINGULAR_TOFFEE                                       :Toffie
 STR_CARGO_SINGULAR_BATTERY                                      :Battery
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastiek
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gas Koeldrank
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gaskoeldrank
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -169,7 +169,7 @@ STR_ABBREV_ALL                                                  :{TINY_FONT}ALMA
 STR_PASSENGERS                                                  :{COMMA} passasier{P "" s}
 STR_BAGS                                                        :{COMMA} sak{P "" ke}
 STR_TONS                                                        :{COMMA} ton{P "" ""}
-STR_LITERS                                                      :{COMMA} liter{P "" s}
+STR_LITERS                                                      :{COMMA} liter
 STR_ITEMS                                                       :{COMMA} item{P "" s}
 STR_CRATES                                                      :{COMMA} krat{P "" te}
 
@@ -193,7 +193,7 @@ STR_COLOUR_WHITE                                                :Wit
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mpu
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/u
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}pk
@@ -278,7 +278,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profyt verlede 
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profyt die jaar
 STR_SORT_BY_AGE                                                 :Ouderdom
 STR_SORT_BY_RELIABILITY                                         :Betroubaarheid
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Totaale kapasiteit per vrag tipe
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Totale kapasiteit per vragtipe
 STR_SORT_BY_MAX_SPEED                                           :Maksimum spoed
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Waarde
@@ -299,7 +299,7 @@ STR_SORT_BY_RUNNING_COST                                        :Loopkoste
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Krag/Loopkoste
 STR_SORT_BY_CARGO_CAPACITY                                      :Vrag Kapasiteit
 STR_SORT_BY_RANGE                                               :Afstand
-STR_SORT_BY_POPULATION                                          :Populasie
+STR_SORT_BY_POPULATION                                          :Bevolking
 STR_SORT_BY_RATING                                              :Waardering
 
 # Tooltips for the main toolbar
@@ -387,7 +387,7 @@ STR_FILE_MENU_EXIT                                              :Verlaat
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kaart van wêreld
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra gesigswerf
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra toonvenster
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Vragverspreidingsleutel
 STR_MAP_MENU_SIGN_LIST                                          :Teken lys
 
@@ -406,7 +406,7 @@ STR_GRAPH_MENU_INCOME_GRAPH                                     :Inkomste grafie
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Gelewerde vrag grafiek
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Werkverrigting geskiedenis grafiek
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Maatskappy waarde grafiek
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Vrag vergoeding koerse
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Vragbetalingstariewe
 ############ range ends here
 
 ############ range for company league menu starts
@@ -424,7 +424,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Konsolideer nuw
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Spoorweg konstruksie
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrifiseerde spoorweg konstruksie
-STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Enkelspoor konstruksie
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monospoor konstruksie
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Magneetsweeftrein konstruksie
 ############ range ends here
 
@@ -453,7 +453,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Klank/musiek
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Laaste boodskap/nuus verslag
-STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Boodskap Geskidenis
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Boodskapgeskiedenis
 ############ range ends here
 
 ############ range for about menu starts
@@ -541,15 +541,15 @@ STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STR
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
-STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Bedryfswins Grafiek
-STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Inkome Grafiek
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Bedryfswins grafiek
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Inkomstegrafiek
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Eenheide van vrag afgelewer
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Maatskappy prestasie graderings (maksimum gradering=1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Maatskappy waarde
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Maatskappywaarde
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Vrag Betaalings Grade
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Vragbetalingstariewe
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dae in deurtog
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Betaaling vir aflewering van 10 eenhuide (of 10,000 liters) van vrag 'n afstand van 20 blokkies
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Inkomste vir aflewering van 10 eenhede (of 10,000 liter) vrag oor 'n afstand van 20 teëls
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Skakel alles aan
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Skakel alles af
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Vertoon alle vragte op die vrag koste grafiek
@@ -604,7 +604,7 @@ STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Eenheide
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Nommer van vrag tipes afgelewer in die verlede kwartier
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Bedrag van geld die maatskappy het in die bank
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Die bedrag van geld dat die maatskappy het gevat op lening
-STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Totaale punte uit van moontlike punte
+STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Totale punte uit moontlike punte
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jazz Blêrkas
@@ -744,7 +744,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}OUTOSTOOR
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  STOOR SPELETJIE  *  *
 
 # News message history
-STR_MESSAGE_HISTORY                                             :{WHITE}Boodskap Geskidenis
+STR_MESSAGE_HISTORY                                             :{WHITE}Boodskapgeskiedenis
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}'n Lys van al die onlangs nuus boodskappe
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
@@ -786,12 +786,12 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} borg konstruksie van nuwe dorp {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Nuwe {STRING} word gebou naby {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}'n Nuwe {STRING} word naby {TOWN} gebou!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Nuwe {STRING} word naby {TOWN} beplant!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} aankondig dreigend sluiting!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Lewering probleme veroorsaak {STRING} om dreigend sluting te aankondig!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Tekort van naby boome veroorsaak {STRING} om dreigend sluiting te aankondig!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} het aangekondig dat hulle binnekort gaan sluit!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}{STRING} het aangekondig dat hulle binnekort gaan sluit as gevolg van 'n tekort aan die vereiste rou materiaal!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}{STRING} het aangekondig dat hulle binnekort gaan sluit as gevolg van 'n tekort aan bome in die omgewing!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Europees Geldelik Samesmelting!{}{}Die Euro is bekend gestel as die enigste geldeenheid vir daagliks transaksies in u land!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Wêreld Resessie!{}{}Finasiële kenners vrees die ergste terwyl ekonomie val!
@@ -852,10 +852,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK} die dorpsraad van {TOWN} het 'n kontrak met {STRING} aan gegaan vir een jaaar se eksklusiewe vervoer regte
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Gesigswerf {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopie na gesigswerf
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopieer die ligging van die hoof vertoning na die gesigswerf
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Deeg van gesigswerf
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Toonvenster {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopie na toonvenster
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Dupliseer die ligging van die hooftoonvenster na die toonvenster
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Plak vanaf toonvenster
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Plak die lokasie van die gesigspunt na die hoofskerm
 
 # Game options window
@@ -1256,8 +1256,8 @@ STR_CONFIG_SETTING_HOVER_DELAY                                  :wys sleutel-lei
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tydsduur voor nutswenke vertoon words as die muis oor koppelvlakelemente gehou word. Nutswenke kan ook aan die regter-muisknoppie verbind word.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Sweef vir {COMMA} sekonde{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Regs kliek
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Toon dorp populasie in die dorp naam etiket: {STRING}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Vertoon die populasie van 'n dorp in die naam etiket op die kaart
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Toon stadsbevolking in die naametiket: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Vertoon die bevolking van 'n stad in die naametiket op die kaart
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Dikte van lyn in grafieke: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Wydte van kaartlyne. A dun lyn is meer akkuraat om te lees, maar 'n dikker lyn is makliker om te sien en te onderskei van ander lyne.
 
@@ -1709,10 +1709,10 @@ STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Begin 'n
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Skep 'n doelgeboude spel wêreld/scenario
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Begin 'n multispeler spel
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Kies 'matige' landskap styl
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Kies 'toendra' landskap styl
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Kies 'subtropise' landskap styl
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Kies 'speelgoedland' landskap styl
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Kies 'matige' klimaat
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Kies sub-arktiese' klimaat
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Kies 'subtropiese' klimaat
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Kies 'speelgoedland' klimaat
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Vertoon speletjie opsies
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Vertoon hoogste tellings tafel
@@ -1751,12 +1751,12 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Is jy s
 STR_CHEATS                                                      :{WHITE}Kullery
 STR_CHEATS_TOOLTIP                                              :{BLACK}Keuseblokkies wys aan as jy die kulkode voorheen gebruik het
 STR_CHEATS_WARNING                                              :{BLACK}Waarskuwing! U staan op die punt om jou mededinger te veraai. Hou in gedagte dat so 'n skande vir ewigheid sal onthou word.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Vermeerder geld by {CURRENCY_LONG}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Vermeerder geld met {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Speel as maatskappy: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Tower stootskraper (verwyder nywerhede, onbeweegbare voorwerpe): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tonnels mag vir mekaar kruis: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Straalvliegtuie sal nie (dikwels) op klein lughawe bots nie: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Magtig landskap
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Matige klimaat
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub-artiese landskap
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-tropiese landskap
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Speelgoedland landskap
@@ -1777,17 +1777,17 @@ STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Kies die
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Kies 'n kleur skema te verander, of veelvoud skemas met CTRL+kliek. Kliek op die boks te skakel gebruik van skema
 
 STR_LIVERY_DEFAULT                                              :Standaard Lewery
-STR_LIVERY_STEAM                                                :Stoom Enjin
-STR_LIVERY_DIESEL                                               :Diesel Enjin
-STR_LIVERY_ELECTRIC                                             :Elektriese Enjin
-STR_LIVERY_MONORAIL                                             :Eenspoor Enjin
-STR_LIVERY_MAGLEV                                               :Maglev Enjin
+STR_LIVERY_STEAM                                                :Stoomlokomotief
+STR_LIVERY_DIESEL                                               :Diesellokomotief
+STR_LIVERY_ELECTRIC                                             :Elektriese lokomotief
+STR_LIVERY_MONORAIL                                             :Monospoorlokomotief
+STR_LIVERY_MAGLEV                                               :Maglev lokomotief
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passasier Rytuig (Stoom)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passasier Rytuig (Diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passasier Rytuig (Elektries)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Passasier koets (Monospeer)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Passasierkoets (Monospoor)
 STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Passasier koets (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Vraag Wa
 STR_LIVERY_BUS                                                  :Bus
@@ -2062,14 +2062,14 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Stel maa
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Stuur
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Span] :
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privaat] {STRING}:
-STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Almal] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Span] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Span] Na {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT                                         :[Privaat] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privaat] Na {STRING}:{WHITE}{STRING}
-STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Tik woord in vir netwerk kominikasie
+STR_NETWORK_CHAT_ALL                                            :[Almal] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Tik boodskap vir klets
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Geen netwerk ontwerp gevind of voldoen sonder ENABLE_NETWORK
@@ -2108,8 +2108,8 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :verkeerde hersi
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :naam reeds in gebruik
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :verkeerde wagwoord
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :verkeerde maatskapy-id in DoenBevel
-STR_NETWORK_ERROR_CLIENT_KICKED                                 :geskop by verskaffer
-STR_NETWORK_ERROR_CLIENT_CHEATER                                :het probeer om 'n bedreig te gebruik
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :geskop deur die bediener
+STR_NETWORK_ERROR_CLIENT_CHEATER                                :het probeer kul
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :verskaffer vol
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :het te veel opdragte gestuur
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :het geen wagwoord betyds gekry nie
@@ -2264,7 +2264,7 @@ STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bou 'm 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Spoorwegkonstruksie
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrifiseerde Spoorweg Konstruksie
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Enkelspoor Konstruksie
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monospoor Konstruksie
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magneetsweeftrein Konstruksie
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bou spoore. Ctrl skakel Bou/verwydering van spoorweg knstruksie. Shift skakel Bou/wys koste beraming
@@ -2280,7 +2280,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Verander
 
 STR_RAIL_NAME_RAILROAD                                          :Spoorweg
 STR_RAIL_NAME_ELRAIL                                            :Elektrifiseerde spoorweg
-STR_RAIL_NAME_MONORAIL                                          :Enkelspoor
+STR_RAIL_NAME_MONORAIL                                          :Monospoor
 STR_RAIL_NAME_MAGLEV                                            :Maglev
 
 # Rail depot construction window
@@ -2913,20 +2913,20 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Dorpe
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Geen -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Dorp name - Kliek op 'naam om skerm daarna te skuif. Ctrl+Click om 'n nuwe venster oor die drop oop te maak
-STR_TOWN_POPULATION                                             :{BLACK}Wêreld populasie: {COMMA}
+STR_TOWN_POPULATION                                             :{BLACK}Wêreldbevolking: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (City)
-STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Populasie: {ORANGE}{COMMA}{BLACK}  Huise: {ORANGE}{COMMA}
+STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Bevolking: {ORANGE}{COMMA}{BLACK}  Huise: {ORANGE}{COMMA}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passasiers verlede maand: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Pos verlede maand: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Vrag nodig om dorp te laat groei:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} vereis
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} vereis in winter
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} af gelewer
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} afgelewer
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (steeds benodig)
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (af gelewer)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (afgelewer)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Dorp groei elke {ORANGE}{COMMA}{BLACK} da{P g e}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Dorp groei elke {ORANGE}{COMMA}{BLACK} da{P g e} (befonds)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Dorp groei {RED}nie{BLACK}
@@ -3148,7 +3148,7 @@ STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastr
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Bestuurder)
 
-STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Bevestig: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Jaar gestig: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Kleur Skema
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Voertuie
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} trein{P "" e}
@@ -3159,10 +3159,10 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Geen
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Maatskappy waarde: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% besit by {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktuur:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} spoor stuk{P "" s}
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} pad stuk{P "" s}
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} water teel{P "" s}
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} stasie teel{P "" s}
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} spoorstuk{P "" ke}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} padstuk{P "" ke}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} waterteël{P "" s}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} stasieteël{P "" s}
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lughawe{P "" s}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Geen
 
@@ -3195,16 +3195,16 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Bestuurder se N
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ons is opsoek na 'n vervoer maatskappy wat ons se maatskappy sal oorvat.{}{}Wil jy {COMPANY} koop vir {CURRENCY_LONG}?
 
 # Company infrastructure window
-STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastruktuur van {COMPANY}
-STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Spoor dele:
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY} se infrastruktuur
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Spoorstukke:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Seine
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Pad dele:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Padstukke:
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Pad
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tremweg
-STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Water teels:
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Waterteëls:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanale
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stasies:
-STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Stasie teels
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Stasieteëls
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Lughawens
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/jr
 
@@ -3299,7 +3299,7 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}Hernoem 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nuwe treine
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nuwe Elektries Spoor Voertuie
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nuwe Eenspoor Voertuie
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nuwe monospoor voertuie
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nuwe Maglev Voertuie
 
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Spoorweg Voertuie
@@ -3440,7 +3440,7 @@ STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :spoorweg lokomo
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :pad voertuig
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :vliegtuig
 STR_ENGINE_PREVIEW_SHIP                                         :skip
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :eenspoor lokomotief
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monospoor lokomotief
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev lokomotief
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Koste: {CURRENCY_LONG} Massa: {WEIGHT_SHORT}{}Spoed: {VELOCITY}  Krag: {POWER}{}Loopkoste: {CURRENCY_LONG}/jr{}Kapasitiet: {CARGO_LONG}
@@ -3479,7 +3479,7 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Kies die
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Toon aan watter enjin die linker gekose enjin mee vervang moet word , indien enige
 STR_REPLACE_RAIL_VEHICLES                                       :Spoort voertuie
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrifiseerde Spoor Voertuie
-STR_REPLACE_MONORAIL_VEHICLES                                   :Eenspoor Voertuie
+STR_REPLACE_MONORAIL_VEHICLES                                   :Monospoor voertuie
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Voertuie
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wa verwydering: {ORANGE}{STRING}
@@ -3560,7 +3560,7 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Benoem p
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Benoem skip
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Benoem vliegtuig
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ouderdom: {LTBLUE}{STRING}{BLACK}   Lopende kostes: {LTBLUE}{CURRENCY_LONG}/yr
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ouderdom: {LTBLUE}{STRING}{BLACK}   Lopende koste: {LTBLUE}{CURRENCY_LONG}/jaar
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ja{P ar re} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ja{P ar re} ({COMMA})
@@ -3571,7 +3571,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewig: {
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Massa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Maks. spoed: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Wins hierdie jaar: {LTBLUE}{CURRENCY_LONG} (vorige jaar: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Betroubaarheid: {LTBLUE}{COMMA}%  {BLACK}Brekings sedert laaste diens: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Betroubaarheid: {LTBLUE}{COMMA}%  {BLACK}Hoeveel keer onklaar sedert laaste diens: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebou: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasiteit: {LTBLUE}Geen{STRING}
@@ -3600,7 +3600,7 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Benoem v
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Gebou: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Waarde: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Totaale vrag kapasitiet van die trein:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Totale vragkapasiteit van die trein:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
@@ -3615,7 +3615,7 @@ STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Wys beso
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapasiteite
 STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Wys kapasiteite van elke voertuig
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Totale Vrag
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Toon totaale kapasitiet van trein, verdeel by vrag tipe
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Toon totale kapasiteit van trein, per vragtipe
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasiteit: {LTBLUE}
 
@@ -4387,7 +4387,7 @@ STR_TOWN_BUILDING_NAME_STATUE_1                                 :Standbeeld
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Fontein
 STR_TOWN_BUILDING_NAME_PARK_1                                   :Park
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Kantoor blok
-STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Winkels en kantoore
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Winkels en kantore
 STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Moderne kantoor gebou
 STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Pakhuis
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Kantoor blok
@@ -4401,7 +4401,7 @@ STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Winkels en kant
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Winkels en kantoore
 STR_TOWN_BUILDING_NAME_THEATER_1                                :Teatre
 STR_TOWN_BUILDING_NAME_STADIUM_2                                :Stadion
-STR_TOWN_BUILDING_NAME_OFFICES_1                                :Kantoore
+STR_TOWN_BUILDING_NAME_OFFICES_1                                :Kantore
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Huise
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Kinema
 STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Winkelsentrum
@@ -4416,16 +4416,16 @@ STR_INDUSTRY_NAME_COAL_MINE                                     :Steenkoolmyn
 STR_INDUSTRY_NAME_POWER_STATION                                 :Kragsentrale
 STR_INDUSTRY_NAME_SAWMILL                                       :Saagmeul
 STR_INDUSTRY_NAME_FOREST                                        :Woud
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :Olie Raffineerdery
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :Olieraffinadery
 STR_INDUSTRY_NAME_OIL_RIG                                       :Olieboor
 STR_INDUSTRY_NAME_FACTORY                                       :Fabriek
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :Drukwerke
-STR_INDUSTRY_NAME_STEEL_MILL                                    :Staal Meule
-STR_INDUSTRY_NAME_FARM                                          :Boerdery
+STR_INDUSTRY_NAME_STEEL_MILL                                    :Staalfabriek
+STR_INDUSTRY_NAME_FARM                                          :Plaas
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Kopermyn
-STR_INDUSTRY_NAME_OIL_WELLS                                     :Olie Bron
+STR_INDUSTRY_NAME_OIL_WELLS                                     :Olieboorgat
 STR_INDUSTRY_NAME_BANK                                          :Bank
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Kos Verwerkings Fabriek
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Kosfabriek
 STR_INDUSTRY_NAME_PAPER_MILL                                    :Papiermeul
 STR_INDUSTRY_NAME_GOLD_MINE                                     :Goudmyn
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Bank
@@ -4433,20 +4433,20 @@ STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Diamantmyn
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Ystermyn
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Vrugte Plantasie
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Rubber Plantasie
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Water Verskaf
-STR_INDUSTRY_NAME_WATER_TOWER                                   :Water Toring
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Watertoevoer
+STR_INDUSTRY_NAME_WATER_TOWER                                   :Watertoring
 STR_INDUSTRY_NAME_FACTORY_2                                     :Fabriek
-STR_INDUSTRY_NAME_FARM_2                                        :Boerdery
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Timmerhout Meule
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Spookasem Woud
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Lekker Fabriek
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :Battery Boerdery
+STR_INDUSTRY_NAME_FARM_2                                        :Plaas
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :Houtmeul
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Spookasemwoud
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Lekkergoedfabriek
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :Batteryplaas
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Cola Spruite
-STR_INDUSTRY_NAME_TOY_SHOP                                      :Speelgoed Winkel
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :Speelgoed Fabriek
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Plastiek Fonteine
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Koeldrank Fabriek
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Borrel Genereerder
+STR_INDUSTRY_NAME_TOY_SHOP                                      :Speelgoedwinkel
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :Speelgoedfabriek
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Plastiekfontein
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Koeldrankfabriek
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Borrelopwekker
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Tamletjie Prooi
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Suikermyn
 
@@ -4551,7 +4551,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1'
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Passasier Rytuig
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Pos Wa
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Kool Trok
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Steenkoolwa
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Olie Tenkwa
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Lewende Hawe Wa
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Goedere Wa
