@@ -181,9 +181,9 @@ public:
 	NWidgetBase *prev;    ///< Pointer to previous widget in container. Managed by parent container widget.
 
 	uint8 padding_top;    ///< Paddings added to the top of the widget. Managed by parent container widget.
-	uint8 padding_right;  ///< Paddings added to the right of the widget. Managed by parent container widget.
+	uint8 padding_right;  ///< Paddings added to the right of the widget. Managed by parent container widget. (parent container may swap this with padding_left for RTL)
 	uint8 padding_bottom; ///< Paddings added to the bottom of the widget. Managed by parent container widget.
-	uint8 padding_left;   ///< Paddings added to the left of the widget. Managed by parent container widget.
+	uint8 padding_left;   ///< Paddings added to the left of the widget. Managed by parent container widget. (parent container may swap this with padding_right for RTL)
 
 protected:
 	inline void StoreSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height);

@@ -1579,24 +1579,25 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 	int start_x, start_y, base_offs_x, base_offs_y;
 	this->GetScrollOffsets(start_x, start_y, base_offs_x, base_offs_y);
 
-	/* Swap the x offset around for RTL, so it'll behave like LTR for RTL as well. */
 	bool rtl = _current_text_dir == TD_RTL;
-	if (rtl) base_offs_x -= (this->widgets_x - 1) * this->widget_w;
 
-	int widget_col = (x - base_offs_x - (int)this->pip_pre - (int)this->pos_x) / this->widget_w;
+	int widget_col = (rtl ?
+				-x + (int)this->pip_post + (int)this->pos_x + base_offs_x + (int)this->widget_w - 1 - (int)this->pip_inter :
+				 x - (int)this->pip_pre  - (int)this->pos_x - base_offs_x
+			) / this->widget_w;
+
 	int widget_row = (y - base_offs_y - (int)this->pip_pre - (int)this->pos_y) / this->widget_h;
 
-	if (widget_row * this->widgets_x + widget_col >= this->count) return NULL;
+	int sub_wid = (widget_row + start_y) * this->widgets_x + start_x + widget_col;
+	if (sub_wid >= this->count) return NULL;
 
 	NWidgetCore *child = dynamic_cast<NWidgetCore *>(this->head);
 	child->AssignSizePosition(ST_RESIZE,
-			this->pos_x + this->pip_pre + widget_col * this->widget_w + base_offs_x,
+			this->pos_x + (rtl ? this->pip_post - widget_col * this->widget_w : this->pip_pre + widget_col * this->widget_w) + base_offs_x,
 			this->pos_y + this->pip_pre + widget_row * this->widget_h + base_offs_y,
 			child->smallest_x, child->smallest_y, rtl);
 
-	/* "Undo" the RTL swap here to get the right widget index. */
-	if (rtl) widget_col = this->widgets_x - widget_col - 1;
-	SB(child->index, 16, 16, (widget_row + start_y) * this->widgets_x + widget_col + start_x);
+	SB(child->index, 16, 16, sub_wid);
 
 	return child->GetWidgetFromPos(x, y);
 }
@@ -1607,14 +1608,14 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 	GfxFillRect(this->pos_x, this->pos_y, this->pos_x + this->current_x - 1, this->pos_y + this->current_y - 1, _colour_gradient[this->colour & 0xF][5]);
 
 	/* Set up a clipping area for the previews. */
+	bool rtl = _current_text_dir == TD_RTL;
 	DrawPixelInfo tmp_dpi;
-	if (!FillDrawPixelInfo(&tmp_dpi, this->pos_x + this->pip_pre, this->pos_y + this->pip_pre, this->current_x - this->pip_pre - this->pip_post, this->current_y - this->pip_pre - this->pip_post)) return;
+	if (!FillDrawPixelInfo(&tmp_dpi, this->pos_x + (rtl ? this->pip_post : this->pip_pre), this->pos_y + this->pip_pre, this->current_x - this->pip_pre - this->pip_post, this->current_y - this->pip_pre - this->pip_post)) return;
 	DrawPixelInfo *old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;
 
 	/* Get the appropriate offsets so we can draw the right widgets. */
 	NWidgetCore *child = dynamic_cast<NWidgetCore *>(this->head);
-	bool rtl = _current_text_dir == TD_RTL;
 	int start_x, start_y, base_offs_x, base_offs_y;
 	this->GetScrollOffsets(start_x, start_y, base_offs_x, base_offs_y);
 
@@ -1650,28 +1651,28 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 
 /**
  * Get the different offsets that are influenced by scrolling.
- * @param [out] start_x     The start position in columns,
+ * @param [out] start_x     The start position in columns (index of the left-most column, swapped in RTL).
  * @param [out] start_y     The start position in rows.
- * @param [out] base_offs_x The base horizontal offset in pixels.
- * @param [out] base_offs_y The base vertical offset in pixels.
+ * @param [out] base_offs_x The base horizontal offset in pixels (X position of the column \a start_x).
+ * @param [out] base_offs_y The base vertical offset in pixels (Y position of the column \a start_y).
  */
 void NWidgetMatrix::GetScrollOffsets(int &start_x, int &start_y, int &base_offs_x, int &base_offs_y)
 {
-	base_offs_x = 0;
+	base_offs_x = _current_text_dir == TD_RTL ? this->widget_w * (this->widgets_x - 1) : 0;
 	base_offs_y = 0;
 	start_x = 0;
 	start_y = 0;
 	if (this->sb != NULL) {
 		if (this->sb->IsVertical()) {
 			start_y = this->sb->GetPosition() / this->widget_h;
-			base_offs_y = -this->sb->GetPosition() + start_y * this->widget_h;
-			if (_current_text_dir == TD_RTL) base_offs_x = this->pip_pre + this->widget_w * (this->widgets_x - 1) - this->pip_inter;
+			base_offs_y += -this->sb->GetPosition() + start_y * this->widget_h;
 		} else {
 			start_x = this->sb->GetPosition() / this->widget_w;
+			int sub_x = this->sb->GetPosition() - start_x * this->widget_w;
 			if (_current_text_dir == TD_RTL) {
-				base_offs_x = this->sb->GetCapacity() + this->sb->GetPosition() - (start_x + 1) * this->widget_w + this->pip_inter - this->pip_post - this->pip_pre;
+				base_offs_x += sub_x;
 			} else {
-				base_offs_x = -this->sb->GetPosition() + start_x * this->widget_w;
+				base_offs_x -= sub_x;
 			}
 		}
 	}
