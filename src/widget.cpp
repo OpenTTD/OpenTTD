@@ -1247,17 +1247,18 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 	assert(num_changing_childs == 0);
 
 	/* Third loop: Compute position and call the child. */
-	uint position = 0; // Place to put next child relative to origin of the container.
-	NWidgetBase *child_wid = rtl ? this->tail : this->head;
+	uint position = rtl ? this->current_x : 0; // Place to put next child relative to origin of the container.
+	NWidgetBase *child_wid = this->head;
 	while (child_wid != NULL) {
 		uint child_width = child_wid->current_x;
-		uint child_x = x + position + (rtl ? child_wid->padding_right : child_wid->padding_left);
+		uint child_x = x + position + (rtl ? -child_width - child_wid->padding_left : child_wid->padding_left);
 		uint child_y = y + child_wid->padding_top;
 
 		child_wid->AssignSizePosition(sizing, child_x, child_y, child_width, child_wid->current_y, rtl);
-		position += child_width + child_wid->padding_right + child_wid->padding_left;
+		uint padded_child_width = child_width + child_wid->padding_right + child_wid->padding_left;
+		position += rtl ? -padded_child_width : padded_child_width;
 
-		child_wid = rtl ? child_wid->prev : child_wid->next;
+		child_wid = child_wid->next;
 	}
 }
 
