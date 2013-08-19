@@ -274,8 +274,8 @@ STR_SORT_BY_PRODUCTION                                          :Produksie
 STR_SORT_BY_TYPE                                                :Tipe
 STR_SORT_BY_TRANSPORTED                                         :Vervoer
 STR_SORT_BY_NUMBER                                              :Nommer
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profyt verlede jaar
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profyt die jaar
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Wins verlede jaar
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Wins huidige jaar
 STR_SORT_BY_AGE                                                 :Ouderdom
 STR_SORT_BY_RELIABILITY                                         :Betroubaarheid
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Totale kapasiteit per vragtipe
@@ -586,7 +586,7 @@ STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Kyk beso
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Voertuie:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasies:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. profyt:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. wins:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. inkomste:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Maks. inkomste:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Afgelewer:
@@ -595,13 +595,13 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Geld:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lening:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totaal:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nommer van voertuie wat 'n profyt gemaak het laas jaar; dit sluit in pad voertuie, treine, skepe en vliegtuie
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Aantal voertuie wat verlede jaar wins gemaak het (insl. padvoertuie, treine, skepe en vliegtuie)
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Aantal stasies wat onlangs herstel is. Treinstasies, busstasies, lughawens ensovoorts word apart getel selfs al behoort hulle aan dieselfde stasie
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Die wins van die voertuig met die laagste inkomste (van alle voertuie ouer as 2 jaar)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Bedrag van kontant gemaak in die maand met die laagste profyt in die laaste 12 kwartiers
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Bedrag van kontant gemaak in die maand met die hoogste profyt in die laaste 12 kwartiers
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Eenheide van vrag afgelewer in die laaste vier kwartiers
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Nommer van vrag tipes afgelewer in die verlede kwartier
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Kontant verdien in die laaste kwartaal met die laagste wins van die laaste 12 kwartale
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Kontant verdien in die laaste kwartaal met die grootste wins van die laaste 12 kwartale
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Eenhede vrag in die laaste vier kwartale afgelewer
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Aantal vragtipes afgelewer in die verlede kwartaal
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Bedrag van geld die maatskappy het in die bank
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Die bedrag van geld dat die maatskappy het gevat op lening
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Totale punte uit moontlike punte
@@ -1437,7 +1437,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Sper diens wann
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :As dit geaktiveerd is, word voertuie nie gediens as hulle nie kan onklaar raak nie
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Laat wa spoed beperkings toe: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :As dit geaktiveer is bepaal die spoedbeperking van treinwaens ook die maksimum spoed van die hele trein
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiveer elektriese spoore: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiveer elektriese spore: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :As dit geaktiveerd is, is dit nie nodig om spore te elektrifiseer voordat elektriese treine die spore kan gebruik nie
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Aankoms van eerste voertuig by speler se stasie: {STRING}
@@ -1537,7 +1537,7 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :Window klamp ra
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Afstand tussen vensters voor dat die venster outomaties in lyn met die nabygeleë vensters geskuif word
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Gedeaktiveer
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksimum nommer nie-taaierige vensters: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksimum aantal nie-taaierige vensters: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Aantal non-sticky oop vensters voordat ou vensters outomaties toe gemaak word om die ruimte te maak vir nuwe vensters
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :gedeaktiveer
@@ -1925,7 +1925,7 @@ STR_NETWORK_START_SERVER_UNADVERTISED                           :Nee
 STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} Klient{P "" e}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maks kliente:
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Kies die maksimum nommer van kliente. Alle gleufe hoef nie om vol te wees nie
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Kies die maksimum aantal kliente. Alle posisies hoef nie om vol te wees nie
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} Maatskap{P py pye}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maks maatskappye:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Beperk die verskaffer na 'n sekere bedrag van maatskappye
@@ -2267,7 +2267,7 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrifiseerde
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monospoor Konstruksie
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magneetsweeftrein Konstruksie
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bou spoore. Ctrl skakel Bou/verwydering van spoorweg knstruksie. Shift skakel Bou/wys koste beraming
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bou spore. Ctrl skakel Bou/verwydering van spoorwegkonstruksie. Shift skakel Bou/wys koste beraming
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Gebruik Outo-bou om spoorweg te bou. Ctrl kies tussen bou/verwyder. Shift kies tussen bou/kwotasie
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bou trein diensstasie (om treine te koop en te diens). Shift kies tussen bou/kwotasie
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Verander treinspoor na baken. Druk Ctrl om bakens saam te voeg. Shift kies tussen bou/kwotasie
@@ -2275,7 +2275,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bou spoo
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bou treinspoor aanwysers. Ctrl kies tussen seinpaal/robot{} Kliek en trek om aanwysers al langs 'n reguit treinspoor te bou. Druk Ctrl om aanwysers tot by die volgende aansluiting te bou{}Ctrl+Kliek maak die aanwyser stelling boks oop. Shift kies tussen bou/kwotasie
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bou spoorweg brug. Shift skakel Bou/wys koste beraming
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bou spoorweg tonnel. Shift skakel Bou/wys koste beraming
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skakel bou/verwyder vir spoore en seinligte
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skakel bou/verwyder vir spore en seinligte
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Verander die treinspoor tipe. Shift kies tussen bou/kwotasie
 
 STR_RAIL_NAME_RAILROAD                                          :Spoorweg
@@ -2295,8 +2295,8 @@ STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Kies weg
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Spoor Stasie Keuse
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Orientasie
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Kies spoorweg stasie orientasie
-STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Nommer van spoore
-STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Kies nommer van verhoogte vir spoorweg stasie
+STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Aantal spore
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Kies die aantal spore wat in die stasie gebou gaan word
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Verhoog lengte
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Kies lengte van spoorweg stasie
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Sleep & Drop
@@ -2672,7 +2672,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Tik 'n n
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Wêreld generasie
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kaart groote:
-STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Selekteer die grootte van die kaart in teels. Die nommer werklike beskikbare teels sal ietwat minder wees.
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Kies kaartgrootte teëls. Die aantal werklike beskikbare teëls sal ietwat minder wees.
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Hoev. dorpe:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
@@ -4062,7 +4062,7 @@ STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CUR
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan nie lening terugbetaal nie...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan nie geld wat van die bank geleen is weggee nie...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Maatskappy kan nie aangekoop word nie...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Maatskappy hoofkwartiers kan nie hier gebou word nie...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Maatskappy hoofkwartier kan nie hier gebou word nie...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kan nie 25% aandeel in die maatskappy koop nie...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kan nie 25% aandeel in die maatskappy verkoop nie...
 STR_ERROR_PROTECTED                                             :{WHITE}Die maatskappy is nie oud genoeg om aandeele te handel nie...
@@ -4194,8 +4194,8 @@ STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Moet eer
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Pad is een rigting of geblok
 STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Vlak kruisings word nie toegelaat vir die spoor tipe nie
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kan nie seinligte hier bou nie...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan nie spoore hier bou nie...
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan nie spoore vanaf hier verwyder nie...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan nie spore hier bou nie...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan nie spore hier verwyder nie...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Kan nie seinligte vanaf hier verwyder nie...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kan nie seine hier verander nie...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... daar is geen trein spoor
@@ -4476,12 +4476,12 @@ STR_SV_STNAME_EXCHANGE                                          :{STRING} Wissel
 STR_SV_STNAME_AIRPORT                                           :{STRING} Lughawe
 STR_SV_STNAME_OILFIELD                                          :{STRING} Olieveld
 STR_SV_STNAME_MINES                                             :{STRING} Myne
-STR_SV_STNAME_DOCKS                                             :{STRING} Werfe
+STR_SV_STNAME_DOCKS                                             :{STRING} Hawe
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Anneks
-STR_SV_STNAME_SIDINGS                                           :{STRING} Wisselspoore
+STR_SV_STNAME_SIDINGS                                           :{STRING} Syspoor
 STR_SV_STNAME_BRANCH                                            :{STRING} Tak
 STR_SV_STNAME_UPPER                                             :Bo {STRING}
 STR_SV_STNAME_LOWER                                             :Laer {STRING}
