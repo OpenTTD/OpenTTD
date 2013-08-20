@@ -2132,7 +2132,8 @@ void Vehicle::ResetRefitCaps()
  * @param first Order that was checked first in the overall run. If this is
  *        encountered again the refreshing is considered finished.
  * @param cur Last stop where the consist could interact with cargo.
- * @param next Next order to be checked.
+ * @param next Next order to be checked. This can be the same as \a cur, the
+ *        next order will then be calculated from \a cur.
  * @param hops Number of hops already used up. If more than two times the
  *        number of orders in the list have been checked refreshing is stopped.
  * @param was_refit If the consist was refit since the last stop where it could
@@ -2145,6 +2146,7 @@ void Vehicle::RefreshNextHopsStats(CapacitiesMap &capacities,
 			RefitList &refit_capacities, const Order *first, const Order *cur,
 			const Order *next, uint hops, bool was_refit, bool has_cargo)
 {
+	bool skip_first_inc = (cur != next);
 	while (next != NULL) {
 
 		/* If the refit cargo is CT_AUTO_REFIT, we're optimistic and assume the
@@ -2207,11 +2209,35 @@ void Vehicle::RefreshNextHopsStats(CapacitiesMap &capacities,
 		 * it wasn't at all refit during the current hop. */
 		bool reset_refit = was_refit && (next->IsType(OT_GOTO_STATION) || next->IsType(OT_IMPLICIT));
 
-		/* Reassign next with the following stop. This can be a station or a
-		 * depot. Allow the order list to be walked twice so that we can
-		 * reassign "first" below without afterwards terminating early here. */
-		next = this->orders.list->GetNextDecisionNode(
-				this->orders.list->GetNext(next), hops++ / 2);
+		/* Resolve conditionals by recursion. */
+		do {
+			if (next->IsType(OT_CONDITIONAL)) {
+				const Order *skip_to = this->orders.list->GetNextDecisionNode(
+						this->orders.list->GetOrderAt(next->GetConditionSkipToOrder()),
+						hops / 2);
+
+				if (skip_to != NULL) {
+					/* Make copies of capacity tracking lists. */
+					CapacitiesMap skip_capacities = capacities;
+					RefitList skip_refit_capacities = refit_capacities;
+					this->RefreshNextHopsStats(skip_capacities,
+							skip_refit_capacities, first, cur, skip_to, hops + 1,
+							was_refit, has_cargo);
+				}
+			}
+			if (skip_first_inc) {
+				/* First incrementation has to be skipped if a "real" next hop,
+				 * different from cur, was given. */
+				skip_first_inc = false;
+			} else {
+				++hops;
+				/* Reassign next with the following stop. This can be a station or a
+				 * depot. Allow the order list to be walked twice so that we can
+				 * reassign "first" below without afterwards terminating early here. */
+				next = this->orders.list->GetNextDecisionNode(
+						this->orders.list->GetNext(next), hops / 2);
+			}
+		} while (next != NULL && next->IsType(OT_CONDITIONAL));
 		if (next == NULL) break;
 
 		if (next->IsType(OT_GOTO_STATION) || next->IsType(OT_IMPLICIT)) {
