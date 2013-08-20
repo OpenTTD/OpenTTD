@@ -1943,13 +1943,12 @@ void Vehicle::BeginLoading()
 
 	} else {
 		/* We weren't scheduled to stop here. Insert an implicit order
-		 * to show that we are stopping here, but only do that if the order
-		 * list isn't empty.
+		 * to show that we are stopping here.
 		 * While only groundvehicles have implicit orders, e.g. aircraft might still enter
 		 * the 'wrong' terminal when skipping orders etc. */
 		Order *in_list = this->GetOrder(this->cur_implicit_order_index);
-		if (this->IsGroundVehicle() && in_list != NULL &&
-				(!in_list->IsType(OT_IMPLICIT) ||
+		if (this->IsGroundVehicle() &&
+				(in_list == NULL || !in_list->IsType(OT_IMPLICIT) ||
 				in_list->GetDestination() != this->last_station_visited)) {
 			bool suppress_implicit_orders = HasBit(this->GetGroundVehicleFlags(), GVF_SUPPRESS_IMPLICIT_ORDERS);
 			/* Do not create consecutive duplicates of implicit orders */
@@ -1959,18 +1958,28 @@ void Vehicle::BeginLoading()
 					prev_order->GetDestination() != this->last_station_visited) {
 
 				/* Prefer deleting implicit orders instead of inserting new ones,
-				 * so test whether the right order follows later */
+				 * so test whether the right order follows later. In case of only
+				 * implicit orders treat the last order in the list like an
+				 * explicit one, except if the overall number of orders surpasses
+				 * IMPLICIT_ORDER_ONLY_CAP. */
 				int target_index = this->cur_implicit_order_index;
 				bool found = false;
-				while (target_index != this->cur_real_order_index) {
+				while (target_index != this->cur_real_order_index || this->GetNumManualOrders() == 0) {
 					const Order *order = this->GetOrder(target_index);
+					if (order == NULL) break; // No orders.
 					if (order->IsType(OT_IMPLICIT) && order->GetDestination() == this->last_station_visited) {
 						found = true;
 						break;
 					}
 					target_index++;
-					if (target_index >= this->orders.list->GetNumOrders()) target_index = 0;
-					assert(target_index != this->cur_implicit_order_index); // infinite loop?
+					if (target_index >= this->orders.list->GetNumOrders()) {
+						if (this->GetNumManualOrders() == 0 &&
+								this->GetNumOrders() < IMPLICIT_ORDER_ONLY_CAP) {
+							break;
+						}
+						target_index = 0;
+					}
+					if (target_index == this->cur_implicit_order_index) break; // Avoid infinite loop.
 				}
 
 				if (found) {
@@ -2000,7 +2009,10 @@ void Vehicle::BeginLoading()
 							assert(order != NULL);
 						}
 					}
-				} else if (!suppress_implicit_orders && this->orders.list->GetNumOrders() < MAX_VEH_ORDER_ID && Order::CanAllocateItem()) {
+				} else if (!suppress_implicit_orders &&
+						((this->orders.list == NULL && OrderList::CanAllocateItem()) ||
+						this->orders.list->GetNumOrders() < MAX_VEH_ORDER_ID) &&
+						Order::CanAllocateItem()) {
 					/* Insert new implicit order */
 					Order *implicit_order = new Order();
 					implicit_order->MakeImplicit(this->last_station_visited);
@@ -2381,7 +2393,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 	if (flags & DC_EXEC) {
 		if (this->current_order.IsType(OT_LOADING)) this->LeaveStation();
 
-		if (this->IsGroundVehicle()) {
+		if (this->IsGroundVehicle() && this->GetNumManualOrders() > 0) {
 			uint16 &gv_flags = this->GetGroundVehicleFlags();
 			SetBit(gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS);
 		}

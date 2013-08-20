@@ -27,6 +27,12 @@ static const VehicleOrderID MAX_VEH_ORDER_ID     = INVALID_VEH_ORDER_ID - 1;
 /** Invalid order (sentinel) */
 static const OrderID INVALID_ORDER = 0xFFFF;
 
+/**
+ * Maximum number of orders in implicit-only lists before we start searching
+ * harder for duplicates.
+ */
+static const uint IMPLICIT_ORDER_ONLY_CAP = 32;
+
 /** Order types */
 enum OrderType {
 	OT_BEGIN         = 0,
