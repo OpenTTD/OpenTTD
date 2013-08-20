@@ -2124,48 +2124,27 @@ void Vehicle::ResetRefitCaps()
 }
 
 /**
- * Simulated cargo type and capacity for prediction of future links.
- */
-struct RefitDesc {
-	CargoID cargo;    ///< Cargo type the vehicle will be carrying.
-	uint16 capacity;  ///< Capacity the vehicle will have.
-	uint16 remaining; ///< Capacity remaining from before the previous refit.
-	RefitDesc(CargoID cargo, uint16 capacity, uint16 remaining) :
-			cargo(cargo), capacity(capacity), remaining(remaining) {}
-};
-
-typedef std::list<RefitDesc> RefitList;
-typedef std::map<CargoID, uint> CapacitiesMap;
-
-/**
  * Predict a vehicle's course from its current state and refresh all links it
  * will visit.
+ * @param capacities Current added capacities per cargo ID in the consist.
+ * @param refit_capacities Current state of capacity remaining from previous
+ *        refits versus overall capacity per vehicle in the consist.
+ * @param first Order that was checked first in the overall run. If this is
+ *        encountered again the refreshing is considered finished.
+ * @param cur Last stop where the consist could interact with cargo.
+ * @param next Next order to be checked.
+ * @param hops Number of hops already used up. If more than two times the
+ *        number of orders in the list have been checked refreshing is stopped.
+ * @param was_refit If the consist was refit since the last stop where it could
+ *        interact with cargo.
+ * @param has_cargo If the consist could leave the last stop where it could
+ *        interact with cargo carrying cargo
+ *        (i.e. not an "unload all" + "no loading" order).
  */
-void Vehicle::RefreshNextHopsStats()
+void Vehicle::RefreshNextHopsStats(CapacitiesMap &capacities,
+			RefitList &refit_capacities, const Order *first, const Order *cur,
+			const Order *next, uint hops, bool was_refit, bool has_cargo)
 {
-	/* Assemble list of capacities and set last loading stations to 0. */
-	CapacitiesMap capacities;
-	RefitList refit_capacities;
-	for (Vehicle *v = this; v != NULL; v = v->Next()) {
-		refit_capacities.push_back(RefitDesc(v->cargo_type, v->cargo_cap, v->refit_cap));
-		if (v->refit_cap > 0) capacities[v->cargo_type] += v->refit_cap;
-	}
-
-	/* If orders were deleted while loading, we're done here.*/
-	if (this->orders.list == NULL) return;
-
-	const Order *first = this->GetOrder(this->cur_implicit_order_index);
-
-	/* Make sure the first order is a useful order. */
-	first = this->orders.list->GetNextDecisionNode(first, 0);
-	if (first == NULL) return;
-
-	const Order *cur = first;
-	const Order *next = first;
-	bool has_cargo = this->last_loading_station != INVALID_STATION;
-	bool was_refit = false;
-	uint hops = 0;
-
 	while (next != NULL) {
 
 		/* If the refit cargo is CT_AUTO_REFIT, we're optimistic and assume the
@@ -2273,6 +2252,33 @@ void Vehicle::RefreshNextHopsStats()
 			}
 		}
 	}
+}
+
+/**
+ * Predict a vehicle's course from its current state and refresh all links it
+ * will visit.
+ */
+void Vehicle::RefreshNextHopsStats()
+{
+	/* Assemble list of capacities and set last loading stations to 0. */
+	CapacitiesMap capacities;
+	RefitList refit_capacities;
+	for (Vehicle *v = this; v != NULL; v = v->Next()) {
+		refit_capacities.push_back(RefitDesc(v->cargo_type, v->cargo_cap, v->refit_cap));
+		if (v->refit_cap > 0) capacities[v->cargo_type] += v->refit_cap;
+	}
+
+	/* If orders were deleted while loading, we're done here.*/
+	if (this->orders.list == NULL) return;
+
+	const Order *first = this->GetOrder(this->cur_implicit_order_index);
+
+	/* Make sure the first order is a useful order. */
+	first = this->orders.list->GetNextDecisionNode(first, 0);
+	if (first == NULL) return;
+
+	this->RefreshNextHopsStats(capacities, refit_capacities, first, first,
+			first, 0, false, this->last_loading_station != INVALID_STATION);
 }
 
 /**
