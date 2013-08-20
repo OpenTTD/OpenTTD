@@ -2156,8 +2156,8 @@ void Vehicle::RefreshNextHopsStats()
 
 	const Order *first = this->GetOrder(this->cur_implicit_order_index);
 
-	/* Make sure the first order is a station order. */
-	first = this->orders.list->GetNextStoppingOrder(this, first, 0);
+	/* Make sure the first order is a useful order. */
+	first = this->orders.list->GetNextDecisionNode(first, 0);
 	if (first == NULL) return;
 
 	const Order *cur = first;
@@ -2231,7 +2231,7 @@ void Vehicle::RefreshNextHopsStats()
 		/* Reassign next with the following stop. This can be a station or a
 		 * depot. Allow the order list to be walked twice so that we can
 		 * reassign "first" below without afterwards terminating early here. */
-		next = this->orders.list->GetNextStoppingOrder(this,
+		next = this->orders.list->GetNextDecisionNode(
 				this->orders.list->GetNext(next), hops++ / 2);
 		if (next == NULL) break;
 
