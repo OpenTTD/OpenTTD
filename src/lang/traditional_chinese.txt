@@ -1079,7 +1079,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :與預設值有
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :與您開始新遊戲時所選擇的值有所不同的設定
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}用某些設定限制下方的目錄
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :所有設定
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :所有設定種類
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :客戶端設定 (儲存時不保存；影響所有遊戲)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :遊戲設定 (儲存時保存；只影響新遊戲)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :遊戲設定 (儲存時保存；只影響目前遊戲)
