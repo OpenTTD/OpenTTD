@@ -60,7 +60,7 @@ protected:
 	const LinkGraph link_graph;       ///< Link graph to by analyzed. Is copied when job is started and mustn't be modified later.
 	const LinkGraphSettings settings; ///< Copy of _settings_game.linkgraph at spawn time.
 	ThreadObject *thread;             ///< Thread the job is running in or NULL if it's running in the main thread.
-	const Date join_date;             ///< Date when the job is to be joined.
+	Date join_date;                   ///< Date when the job is to be joined.
 	NodeAnnotationVector nodes;       ///< Extra node data necessary for link graph calculation.
 	EdgeAnnotationMatrix edges;       ///< Extra edge data necessary for link graph calculation.
 
@@ -280,6 +280,12 @@ public:
 	 * @return Join date.
 	 */
 	inline Date JoinDate() const { return join_date; }
+
+	/**
+	 * Change the join date on date cheating.
+	 * @param interval Number of days to add.
+	 */
+	inline void ShiftJoinDate(int interval) { this->join_date += interval; }
 
 	/**
 	 * Get the link graph settings for this component.
