@@ -1080,7 +1080,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Geçerli değer
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Yeni oyun ayarlarınızdan farklı bir değere sahip ayarlar
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Aşağıdaki liste belirli bir ayar türüne göre kısıtlanır
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tüm Ayarlar
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tüm ayar türleri
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Kullanıcı Ayarları (kayıtlı dosyada saklanmadı; tüm oyunları etkilemektedir)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Oyun ayarları (kayıtlı dosyada saklandı; sadece yeni oyunu etkilemektedir)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Oyun ayarları (kayıtlı dosyada saklandı; sadece yeni oyunu etkilemektedir)
