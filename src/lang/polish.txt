@@ -607,6 +607,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Filtr:
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Wpisz słowo filtru
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Wpisz słowo, wg którego filtrować listę
 
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Wybierz kolejność grupowania
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Wybierz kolejność sortowania (malejąco/rosnąco)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Wybierz kryterium sortowania
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Wybierz kryteria filtrowania
@@ -690,6 +691,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Wyświet
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Wyświetl listę stacji firmy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Wyświetl informacje finansowe firmy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Wyświetl informacje ogólne firmy
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Pokaż okno opowieści
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Pokaż listę celów
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Wyświetl wykresy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Wyświetl tabele firm
@@ -1958,11 +1960,14 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metryczne (km/h
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Jednostka mocy pojazdów: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Kiedy moc pojazdu jest pokazywana w interfejsie użytkownika, wyświetl ją w wybranych jednostkach
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperialne (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Metryczne (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :Jednostki wagi: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :Kiedy ciężar jest pokazywany w interfejsie użytkownika, wyświetl go w wybranych jednostkach
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :Imperialne (skrót t/tona)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :Metryczne (t/tony)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :SI (kg)
 
@@ -3372,6 +3377,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik na usłudze żeby wyśrodkować widok na fabrykę/miasto. Ctrl+klik otwiera nowy podgląd na pozycji fabryki/miasta
 
 # Story book window
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globalne okno opowieści
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Strona {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Skocz na specyficzną stronę wybierając ją z listy.
@@ -3411,6 +3417,10 @@ STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Miesięc
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grupuj według
+STR_STATION_VIEW_WAITING_STATION                                :Stacja: W oczekiwaniu
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Ilość: W oczekiwaniu
+STR_STATION_VIEW_PLANNED_STATION                                :Stacja: Planowana
+STR_STATION_VIEW_PLANNED_AMOUNT                                 :Ilość: Planowana
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} ze stacji {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} przez stację {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} na stację {STATION}
@@ -3418,9 +3428,15 @@ STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHO
 STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} na dowolną stację
 STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} za pośrednictwem dowolnej stacji
 STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} z tej stacji
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} zatrzymuje się na tej stacji
 STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} do tej stacji
 STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} non-stop
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Źródło-Przez-Cel
+STR_STATION_VIEW_GROUP_S_D_V                                    :Źródło-Cel-Przez
+STR_STATION_VIEW_GROUP_V_S_D                                    :Przez-Źródło-Cel
+STR_STATION_VIEW_GROUP_D_S_V                                    :Cel-Źródło-Przez
+STR_STATION_VIEW_GROUP_D_V_S                                    :Cel-Przez-Źródło
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Zatrważające
@@ -4173,6 +4189,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ten rozk
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Ten rozkład jazdy rozpocznie się {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data początkowa
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Wybierz początkową datę rozkładu jazdy. Ctrl+klik ustawia startowy punkt tego rozkładu oraz, jeśli ten jest kompletny, rozdziela go po kolei wszystkim pojazdom współdzielącym go, zależnie od ich kolejności ułożenia
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmień czas
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmień ilość czasu którą zaznaczone zadanie powinno zająć
