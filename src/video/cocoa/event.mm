@@ -34,6 +34,7 @@
 #include "../../gfx_func.h"
 #include "../../network/network.h"
 #include "../../core/random_func.hpp"
+#include "../../core/math_func.hpp"
 #include "../../texteff.hpp"
 #include "../../window_func.h"
 
@@ -291,7 +292,10 @@ static void QZ_KeyEvent(unsigned short keycode, unsigned short unicode, BOOL dow
 
 	if (down) {
 		uint32 pressed_key = QZ_MapKey(keycode);
-		HandleKeypress(pressed_key, unicode);
+		/* Don't handle normal characters if an edit box has the focus. */
+		if (!EditBoxInGlobalFocus() || (!IsInsideMM(pressed_key, 'A', 'Z' + 1) && !IsInsideMM(pressed_key, '0', '9' + 1))) {
+			HandleKeypress(pressed_key, unicode);
+		}
 		DEBUG(driver, 2, "cocoa_v: QZ_KeyEvent: %x (%x), down, mapping: %x", keycode, unicode, pressed_key);
 	} else {
 		DEBUG(driver, 2, "cocoa_v: QZ_KeyEvent: %x (%x), up", keycode, unicode);
