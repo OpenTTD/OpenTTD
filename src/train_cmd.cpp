@@ -1300,6 +1300,9 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			CheckCargoCapacity(dst_head);
 		}
 
+		if (src_head != NULL) src_head->First()->MarkDirty();
+		if (dst_head != NULL) dst_head->First()->MarkDirty();
+
 		/* We are undoubtedly changing something in the depot and train list. */
 		InvalidateWindowData(WC_VEHICLE_DEPOT, src->tile);
 		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
