@@ -758,14 +758,14 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Masyarakat bergembira . . .{}Kapal pertama tiba di {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Masyarakat bergembira . . .{}Pesawat pertama tiba di {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Kecelakaan Kereta!{}{COMMA} mati dalam ledakan setelah kecelakaan
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Terjadi Tabrakan Kendaraan!{}Seorang sopir meninggal dalam ledakan setelah ditabrak kereta
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Kecelakaan Kereta!{}{COMMA} tewas dalam ledakan setelah kecelakaan
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Terjadi Tabrakan Kendaraan!{}Seorang sopir tewas dalam ledakan setelah ditabrak kereta
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Terjadi Tabrakan Kendaraan!{}{COMMA} orang meninggal dalam ledakan setelah ditabrak kereta
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Kecelakaan Pesawat!{}{COMMA} orang mati dalam kebakaran di {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Kecelakaan Pesawat!{}Pesawat kehabisan bahan bakar, {COMMA}orang mati dalam lautan api!
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Kecelakaan Pesawat!{}{COMMA} orang tewas dalam kebakaran di {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Kecelakaan Pesawat!{}Pesawat kehabisan bahan bakar, {COMMA}orang tewas dalam lautan api!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Bencana Zeppelin di {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Kendaraan hancur pada kecelakaan 'UFO'!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Kendaraan hancur dalam kecelakaan 'UFO'!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Kilang minyak meledak didekat {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Pabrik hancur akibat hubungan pendek arus listik di dekat {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'UFO' mendarat di dekat {TOWN}!
@@ -1121,7 +1121,7 @@ STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Jika dinyalakan
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :Melarang pemutaran kereta di stasiun: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Jika diaktifkan, kereta tidak akan berputar selain di stasiun ujung, termasuk jika ada jalan yang lebih pendek kalau berbalik
 STR_CONFIG_SETTING_DISASTERS                                    :Bencana: {STRING}
-STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :mengaktifkan bencana yang mungkin memblok atau menghancurkan kendaraan atau infrastruktur
+STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Mengaktifkan bencana yang mungkin dapat menghalangi atau menghancurkan kendaraan / infrastruktur
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Sikap pemerintah kota terhadap restrukturasi area: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Pilih seberapa banyak dampak kebisingan dan lingkungan oleh perusahaan terhadap peringkat kota karena pembangunan di daerah
 
@@ -2370,7 +2370,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Arah ben
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tentukan arah bengkel trem menghadap
 
 # Road vehicle station construction window
-STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientasi stasiun Bus
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientasi Terminal Bus
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Pilih arah terminal bus
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientasi stasiun truk
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Pilih arah terminal bongkar muat truk
@@ -3991,7 +3991,7 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... disa
 STR_ERROR_PNGMAP                                                :{WHITE}Tidak dapat memuat lansekap dari PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... berkas tidak ada
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... tak dapat mengkonversi. Diperlukan PNG 8 atau 24-bit
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... sepertinya ada yang salah. Maaf. (mungkin berkasnya rusak)
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... maaf, terjadi kesalahan (mungkin berkasnya rusak)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Tidak dapat memuat lansekap dari BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... tak dapat mengkonversi jenis gambar
@@ -4127,14 +4127,14 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... term
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Tidak dapat menghapus bagian dari stasiun...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Harus menghapus stasiun dulu
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Tidak dapat membongkar terminal Bus...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Tidak dapat membongkar stasiun truk...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Tidak dapat membongkar stasiun bongkar-muat...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Tidak dapat membongkar halte trem...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Tidak dapat membongkar stasiun kargo trem...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Terminal harus di hancurkan dulu.
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...tidak ada stasiun di sini
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Harus menghancurkan jalur rel stasiun terlebih dahul
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Harus menghancurkan stasiun bis terlebih dahulu
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Harus menghancurkan terminal bus terlebih dahulu
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Harus menghancurkan stasiun truk terlebih dahulu
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Harus menghancurkan terminal penumpang trem terlebih dahulu
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Harus menghancurkan terminal kargo trem terlebih dahulu

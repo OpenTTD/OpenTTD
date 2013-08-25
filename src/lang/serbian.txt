@@ -1261,7 +1261,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Podešavanja sa
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Podešavanja sa vrednošću različitom od vrednosti za novu igru
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Ograničava donju listu na određen tip podešavanja
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Sva podešavanja
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Tipovi svih podešavanja
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Podešavanja klijenta (nisu uskladištena u sačuvanoj igri; utiču na sve partije)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Podešavanja igre (biće uskladištena u sačuvanoj igri; ima efekta samo na nove partije)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Podešavanja igre (biće uskladištena u sačuvanoj igri; ima efekta samo na nove partije)
@@ -1371,7 +1371,9 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :kraj
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Vozila čekaju u koloni (na zauzetim stanicama): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Čini da drumsko vozilo čeka ispred zauzetih stanica dok se ne raščiste
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Pomeranje prozora kada miš priđe ivicama: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Ako je omogućeno, prikaz će početi da skroluje kada je kursor miša blizu ivice prozora
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Isključeno
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Glavni prikaz, samo u režimu preko celog ekrana
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Glavni prikaz
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Svaki prikaz
 STR_CONFIG_SETTING_BRIBE                                        :Dozvoljeno podmićivanje lokalnih vlasti: {STRING}
@@ -3044,6 +3046,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikom n
 # Story book window
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Stranica {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Idi do željene stranice uz izbor te stranice u ovoj listi.
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Prethodn{G i a o}
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Idi do prethodne stranice
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Sledeće
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Idi do sledeće stranice
@@ -3064,6 +3067,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Čeka: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} na putu iz {STATION})
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervisan{G "" a o} za utovar)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Prihvata
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Prikaži spisak tovara koje stanica prihvata
@@ -3074,6 +3078,8 @@ STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ocene
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Prikaži ocene stanice
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Mesečna proizvodnja i rejting preduzeća:
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Sortiraj po
 STR_STATION_VIEW_WAITING_STATION                                :Stanica: Čekajuća
@@ -3085,11 +3091,18 @@ STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} do {STATION}
 STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT} od nepoznate stanice
 STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT} do bilo koje stanice
-STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} preko bilo koju stanicu
+STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} preko bilo koje stanice
 STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} od ove stanice
+STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} uz stajanje na ovoj stanici
 STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} do te stanice
 STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} bez prekida
 
+STR_STATION_VIEW_GROUP_S_V_D                                    :Polazište-Via-Odredište
+STR_STATION_VIEW_GROUP_S_D_V                                    :Polazište-Odredište-Via
+STR_STATION_VIEW_GROUP_V_S_D                                    :Via-Polazište-Odredište
+STR_STATION_VIEW_GROUP_V_D_S                                    :Via-Odredište-Polazište
+STR_STATION_VIEW_GROUP_D_S_V                                    :Odredište-Polazište-Via
+STR_STATION_VIEW_GROUP_D_V_S                                    :Odredište-Via-Polazište
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :užas
@@ -3113,6 +3126,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Prikazuj
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Preimenuj stanicu
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Zatvori aerodrom
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Spreči letelicu da sleti na ovaj aerodrom
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -3231,6 +3245,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Prošlom
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% prevezeno)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Prebacuje glavni pogled na lokaciju fabrike. Ctrl+Klik otvara novi pogled na lokaciju fabrike
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivo proizvodnje: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Fabrika je objavila da može svakog trenutka da se zatvori!
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Potražuje: {YELLOW}{STRING.aku}{STRING}
@@ -3307,7 +3322,7 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}Preimenu
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nova Železnička Vozila
 STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nova Železnička Električna Vozila
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nova Jenodšinska Vozila
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nova Jednošinska Vozila
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nova Maglev Vozila
 
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Šinska Vozila
@@ -3560,7 +3575,7 @@ STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Pokvaren
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zaustavljen
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Zaustavlja se, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Nema struje
-STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Čekanje za slobadan prolaz
+STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Čekanje za slobodan prolaz
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Previše je daleko do sledeće destinacije
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Ide ka {STATION}, {VELOCITY}
@@ -3613,6 +3628,7 @@ STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Smanjuje
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Promeni tip intervala za servis
 STR_VEHICLE_DETAILS_DEFAULT                                     :Standard
 STR_VEHICLE_DETAILS_DAYS                                        :dani
+STR_VEHICLE_DETAILS_PERCENT                                     :Procenat
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Naziv voza
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Naziv drumskog vozila
@@ -3646,7 +3662,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Nosivost
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Prepravljanje)
 STR_REFIT_TITLE                                                 :{GOLD}Izaberite vrstu tereta za prevoz:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova nosivost: {GOLD}{CARGO_LONG}{}{BLACK}Cena prepravke: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nova nosivost: {GOLD}{CARGO_LONG}{}{BLACK}Prihod od prepravke: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova nosivost: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cena prepravke: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nova nosivost: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Prihod od prepravke: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Obeležavanje vozila za prepravku. Povlačenjem miša moguće je obležiti više vozila. Klikom na prazan prostor obležava celo vozilo. Sa Ctrl+Klik će se obeležiti vozilo i prateći lanac
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Označite vrstu tovara za prepravljanje voza
@@ -3983,6 +4001,10 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GRE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Prihod: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {GREEN}Prihod: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {GREEN}Prihod: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {RED}Trošak: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Transfer: {CURRENCY_LONG}{WHITE} / {RED}Trošak: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Procena troška: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Procena zarade: {CURRENCY_LONG}
 
@@ -4334,6 +4356,10 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Servisni
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozilo je uništeno
 
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Nijedno vozilo neće biti dostupno
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Promenite konfiguraciju za NewGRF
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Nijedno vozilo još uvek nije dostupno
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Pokrenite novu igru koja počinje posle {DATE_SHORT} ili koristite NewGRF koji omogućava ranija vozila
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nemoguć je prolaz voza na signal opasnosti...
