@@ -3104,7 +3104,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikom n
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Stranica {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Idi do željene stranice uz izbor te stranice u ovoj listi.
-STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Prethodn{G i a o}
+STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Prethodni
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Idi do prethodne stranice
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Sledeće
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Idi do sledeće stranice
@@ -3125,7 +3125,7 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Čeka: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} na putu iz {STATION})
-STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervisan{G "" a o} za utovar)
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} rezervisan za utovar)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Prihvata
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Prikaži spisak tovara koje stanica prihvata
